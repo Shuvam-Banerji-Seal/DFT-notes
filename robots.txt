@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shuvam-banerji-seal.github.io/DFT-notes/sitemap.xml

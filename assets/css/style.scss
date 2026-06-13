@@ -1,0 +1,117 @@
+---
+# Site-wide stylesheet. Imported by minima as `assets/css/style.scss`.
+# We add our own rules after the theme's defaults.
+
+@import "minima";
+
+/* ---------- Layout & typography tweaks ---------- */
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 { border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+h2 { border-bottom: 1px solid #eaecef; padding-bottom: 0.2em; margin-top: 2.2em; }
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Code & math ---------- */
+
+pre, code, kbd, samp {
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  padding: 14px 16px;
+  border-radius: 8px;
+  line-height: 1.45;
+  overflow-x: auto;
+}
+
+:not(pre) > code {
+  padding: 0.12em 0.35em;
+  border-radius: 4px;
+  background: rgba(27, 31, 35, 0.07);
+}
+
+/* Dark mode respect (GitHub auto dark) */
+@media (prefers-color-scheme: dark) {
+  :not(pre) > code { background: rgba(255, 255, 255, 0.08); }
+  h1, h2 { border-bottom-color: #30363d; }
+}
+
+/* ---------- KaTeX display tweaks ---------- */
+
+.katex-display {
+  margin: 1.2em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.3em 0;
+}
+
+.katex { font-size: 1.05em; }
+
+/* ---------- Tables (used in the index/TOC) ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+}
+th, td {
+  padding: 0.5em 0.75em;
+  border: 1px solid #e1e4e8;
+  text-align: left;
+}
+th { background: #f6f8fa; }
+@media (prefers-color-scheme: dark) {
+  th, td { border-color: #30363d; }
+  th { background: #161b22; }
+}
+
+/* ---------- Note callout boxes ---------- */
+
+.note-box {
+  border-left: 4px solid #0077b6;
+  background: #f0f7fb;
+  padding: 0.9em 1.1em;
+  margin: 1.2em 0;
+  border-radius: 0 6px 6px 0;
+}
+.note-box.warn  { border-color: #d97706; background: #fff7e6; }
+.note-box.idea { border-color: #16a34a; background: #ecfdf5; }
+.note-box.derivation { border-color: #7c3aed; background: #f5f3ff; }
+
+@media (prefers-color-scheme: dark) {
+  .note-box         { background: #0d2538; }
+  .note-box.warn    { background: #2b1d05; }
+  .note-box.idea    { background: #052b1a; }
+  .note-box.derivation { background: #1a103d; }
+}
+
+/* ---------- Tag chips (for topic labels) ---------- */
+
+.tag {
+  display: inline-block;
+  padding: 0.15em 0.55em;
+  font-size: 0.78em;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3730a3;
+  margin: 0 0.25em 0.25em 0;
+}
+@media (prefers-color-scheme: dark) {
+  .tag { background: #1e1b4b; color: #c7d2fe; }
+}

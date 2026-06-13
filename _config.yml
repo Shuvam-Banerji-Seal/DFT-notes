@@ -1,0 +1,75 @@
+# Jekyll configuration for the DFT notes static site.
+# Docs: https://jekyllrb.com/docs/configuration/
+#
+# The site is served at: https://shuvam-banerji-seal.github.io/DFT-notes/
+# Math is rendered with KaTeX (loaded from CDN in _includes/head-custom.html).
+
+title: "DFT Notes — Density Functional Theory Knowledge Base"
+title_separator: "—"
+name: "DFT Notes"
+description: >-
+  A curated, SEO-friendly knowledge base on Density Functional Theory (DFT).
+  Covers the Hohenberg–Kohn theorems, Kohn–Sham equations, exchange–correlation
+  functionals (LDA, GGA, hybrid, meta-GGA), basis sets, pseudopotentials, and
+  modern applications in quantum chemistry, materials science, and
+  computational chemistry. Notes are written in Markdown with LaTeX math and
+  rendered as a static site via Jekyll and KaTeX on GitHub Pages.
+email: ""
+url: "https://shuvam-banerji-seal.github.io"
+baseurl: "/DFT-notes"
+repository: "Shuvam-Banerji-Seal/DFT-notes"
+show_downloads: false
+kramdown:
+  math_engine: kramdown
+  syntax_highlighter: rouge
+markdown: kramdown
+highlighter: rouge
+theme: minima
+minima:
+  skin: auto
+  social_links:
+    github: Shuvam-Banerji-Seal
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+seo:
+  type: "WebSite"
+  name: "DFT Notes"
+  description: >-
+    Density Functional Theory (DFT) knowledge base — Hohenberg–Kohn theorems,
+    Kohn–Sham equations, exchange–correlation functionals, and computational
+    chemistry methods. Markdown notes with LaTeX math, served as a static site
+    on GitHub Pages.
+  url: "https://shuvam-banerji-seal.github.io/DFT-notes/"
+  image: "/DFT-notes/assets/img/og-image.png"
+  twitter:
+    card: summary_large_image
+    creator: ""
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: "page"
+  - scope:
+      path: "notes"
+    values:
+      layout: "page"
+      comments: false
+      sitemap: true
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - CHANGELOG.md
+  - CONTRIBUTING.md
+  - SECURITY.md
+  - .gitignore
+  - vendor
+  - node_modules
+include:
+  - _pages
+sass:
+  quiet_deps: true
