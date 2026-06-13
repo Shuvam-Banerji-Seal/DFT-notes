@@ -36,7 +36,12 @@
     // Allow trailing punctuation in headings (e.g. "See also:").
     "MD026": {
       "punctuation": ".,;:"
-    }
+    },
+
+    // LaTeX subscripts (`x_\text{...}`, `\nabla^2`, etc.) contain underscores
+    // that the linter mistakes for emphasis markers. The rule is purely
+    // stylistic — asterisk vs underscore — and provides no bug detection.
+    "MD049": false
   },
 
   "globs": [
