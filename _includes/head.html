@@ -1,4 +1,4 @@
-<!--
+{%- comment -%}
   Local override of minima's head include. Replicates the theme's
   default head verbatim, then adds MathJax at the end so the
   `$$...$$` math in dft_notes/ actually renders on the client.
@@ -7,10 +7,9 @@
   the same five slots (charset / IE / viewport / SEO / main.css)
   plus the MathJax include — that's the contract this file fulfils.
 
-  Note: minima 2.5 (which is what we use, with Jekyll 3.10) calls
-  other partials via `{%- include -%}`, not `{%- include_cached -%}`.
-  The cached variant is Jekyll 4+ only.
--->
+  Implementation note: the mathjax partial is included with the
+  standard Liquid include tag. The cached variant is Jekyll 4+ only.
+{%- endcomment -%}
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
