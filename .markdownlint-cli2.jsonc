@@ -50,6 +50,7 @@
     "_site/**",
     "node_modules/**",
     "vendor/**",
-    ".jekyll-cache/**"
+    ".jekyll-cache/**",
+    "design.md"
   ]
 }
