@@ -24,7 +24,7 @@ keywords:
 
 # DFT Notes
 
-### Density Functional Theory — a curated knowledge base
+## Density Functional Theory — a curated knowledge base
 
 </div>
 
