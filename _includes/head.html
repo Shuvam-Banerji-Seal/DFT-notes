@@ -6,6 +6,10 @@
   If the site ever drops minima, the new theme's head should keep
   the same five slots (charset / IE / viewport / SEO / main.css)
   plus the MathJax include — that's the contract this file fulfils.
+
+  Note: minima 2.5 (which is what we use, with Jekyll 3.10) calls
+  other partials via `{%- include -%}`, not `{%- include_cached -%}`.
+  The cached variant is Jekyll 4+ only.
 -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,4 +17,4 @@
 {%- seo -%}
 <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 {%- feed_meta -%}
-{%- include_cached mathjax.html -%}
+{%- include mathjax.html -%}
