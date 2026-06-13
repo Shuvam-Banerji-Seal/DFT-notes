@@ -41,7 +41,15 @@
     // LaTeX subscripts (`x_\text{...}`, `\nabla^2`, etc.) contain underscores
     // that the linter mistakes for emphasis markers. The rule is purely
     // stylistic — asterisk vs underscore — and provides no bug detection.
-    "MD049": false
+    "MD049": false,
+
+    // Table column alignment is a style preference. Research notes with
+    // long math, code, and varying cell widths are deliberately ragged
+    // (every row sized to its own content, not stretched to header width).
+    // Forcing alignment is noise that doesn't help the reader and breaks
+    // every time someone edits a single cell. Disabling matches the same
+    // treatment as MD013 (line length).
+    "MD060": false
   },
 
   "globs": [
