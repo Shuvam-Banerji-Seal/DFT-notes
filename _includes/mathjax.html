@@ -1,0 +1,49 @@
+<!--
+  MathJax 3 (TeX + AMS environments, with `\R`, `\N`, `\Z`, `\C` shortcuts).
+
+  Matches the `kramdown.math_engine: mathjax` setting in _config.yml.
+  Kramdown converts `$...$` / `$$...$$` markup into
+  `<script type="math/tex">` and `<script type="math/tex; mode=display">`
+  tags; this loader finds them and typesets them on the client.
+
+  Inline delimiters:   $...$   or   \(...\)
+  Display delimiters:  $$...$$ or   \[...\]
+
+  Refs:
+    https://docs.mathjax.org/en/latest/web/configuration.html
+    https://docs.mathjax.org/en/latest/options/input/tex.html
+
+  Future: when the chenglou/pretext e-reader (see design.md v3) takes
+  over rendering, the math engine will be KaTeX (faster, canvas-friendly)
+  rather than MathJax. At that point this file can be replaced with a
+  KaTeX auto-render include.
+-->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath:    [['$', '$'], ['\\(', '\\)']],
+      displayMath:   [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      tags: 'ams',
+      macros: {
+        '\\R': '\\mathbb{R}',
+        '\\N': '\\mathbb{N}',
+        '\\Z': '\\mathbb{Z}',
+        '\\C': '\\mathbb{C}'
+      }
+    },
+    loader: { load: ['[tex]/ams'] },
+    options: {
+      enableMenu: false,
+      // Don't typeset math inside <code> or <pre> (looks awful when an
+      // equation is shown as inline code in a sentence).
+      skipHtmlTags: { '[+]': ['code', 'pre'] }
+    }
+  };
+</script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
