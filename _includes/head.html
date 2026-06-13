@@ -121,3 +121,12 @@
   }
 }
 </script>
+
+{%- comment -%} 8. Text measurement & layout (chenglou/pretext) ----------
+    The pretext bundle attaches a PretextLayout object to window. Our
+    text-layout.js then uses prepare() and layout() to measure headings
+    and apply per-viewport font-sizes that prevent overflow. Load order:
+    pretext.js first, then text-layout.js. Both are deferred so they
+    don't block render. {%- endcomment -%}
+<script defer src="{{ '/assets/js/pretext.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/text-layout.js' | relative_url }}"></script>
