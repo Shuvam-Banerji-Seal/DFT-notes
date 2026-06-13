@@ -12,28 +12,37 @@ description: >-
 > the standard workhorse of modern quantum chemistry and computational
 > materials science.
 
-This site is being rebuilt. Notes will appear here as they're written.
+Notes on the theory, the math, and the practice of DFT — Schrödinger
+equation, Hartree–Fock, Kohn–Sham, exchange–correlation functionals.
 
-## What's coming
+## Chapters
 
-- **Hohenberg–Kohn theorems** — the existence proof of an exact
-  density functional.
-- **Kohn–Sham equations** — the practical route to computing the
-  density.
-- **Exchange–correlation functionals** — the Jacob's ladder from LDA
-  to hybrids to range-separated hybrids.
-- **References** — foundational papers, textbooks, and online
-  resources.
+The notes are organised as a progressive walk through DFT. Start with
+chapter 00 if you're new; jump straight to a later chapter if you're
+brushing up.
 
-## How to read
+- [Chapter 00 — Welcome]({{ "/dft-notes/chapter-00/" | relative_url }})
+- [Chapter 01 — Schrödinger equation]({{ "/dft-notes/chapter-01/" | relative_url }})
+- [Chapter 02 — The many-body problem]({{ "/dft-notes/chapter-02/" | relative_url }})
+- [Chapter 03 — Hartree–Fock]({{ "/dft-notes/chapter-03/" | relative_url }})
+- [Chapter 04 — Kohn–Sham DFT]({{ "/dft-notes/chapter-04/" | relative_url }})
+- [Chapter 05 — XC functionals]({{ "/dft-notes/chapter-05/" | relative_url }})
 
-- [Index of notes]({{ "/notes/" | relative_url }}) — table of
-  contents (under construction)
-- [Design spec]({{ "/design.md" | relative_url }}) — the design
-  system this site will use (under construction)
+The full table of contents is in the
+[chapter index]({{ "/dft-notes/" | relative_url }}).
+
+## Reading surface
+
+These notes are rendered as plain Jekyll pages today. The future
+plan — see [`design.md`]({{ "/design.md" | relative_url }}) at the
+root — is an `@chenglou/pretext`-backed canvas e-reader with
+faster-than-DOM layout, MathJax-rendered math, light/dark themes, and
+a font-size slider.
+
+## Other links
+
 - [Contributing]({{ "/CONTRIBUTING.md" | relative_url }}) — how to
   add a note or report an issue
-
-## License
-
-[MIT]({{ "/LICENSE" | relative_url }}) © 2026 Shuvam Banerji Seal.
+- [Security]({{ "/SECURITY.md" | relative_url }}) — how to report
+  vulnerabilities privately
+- [License]({{ "/LICENSE" | relative_url }}) — MIT

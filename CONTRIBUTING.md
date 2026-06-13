@@ -32,11 +32,18 @@ like to add and why.
 
 ### Markdown
 
-- Notes are `.md` files in the `notes/` directory. Use lowercase,
-  dash-separated filenames: `NN-kebab-name.md`, where `NN` is a
-  zero-padded sequence number.
+- Notes are `.md` files in the `dft_notes/` directory. The directory
+  is organised as `dft_notes/chapter_NN/` (zero-padded chapter
+  number, starting from `chapter_00`). The primary file in a chapter
+  is `dft_notes/chapter_NN/00-slug.md`; subsequent notes are
+  `01-slug.md`, `02-slug.md`, and so on.
+- Use lowercase, dash-separated filenames: `NN-kebab-name.md`, where
+  `NN` is a zero-padded sequence number.
 - Every note has YAML front matter with at least `title`, `permalink`,
   and `description`. Use `keywords` for SEO when relevant.
+- The permalink convention is `/dft-notes/chapter-NN/`. Don't put
+  `.html` on the end; Jekyll serves directories with a default
+  `index.html`.
 - All notes must be valid CommonMark with kramdown's GFM extensions
   (tables, fenced code blocks, task lists, autolinks).
 - The linter (`markdownlint-cli2-action` in CI) enforces style. The
@@ -107,21 +114,23 @@ Jekyll filter, e.g. `[link]({{ '/path/' | relative_url }})`.
 
 ## Adding a new note
 
-1. Create `notes/NN-slug.md` with front matter:
+1. Create `dft_notes/chapter_NN/00-slug.md` with front matter:
 
    ```yaml
    ---
    layout: page
-   title: "NN — Title"
-   permalink: /notes/NN-slug.html
+   title: "Chapter NN — Title"
+   permalink: /dft-notes/chapter-NN/
    description: "One-sentence description for SEO + meta tags."
    keywords: "comma, separated, keywords"
    ---
+
    ```
 
-2. Update `notes/README.md` to include the new note in the table of
-   contents.
-3. If the new note cites papers or books, add them to `notes/99-references.md`.
+2. Update `dft_notes/index.md` to add a row to the chapter table.
+3. If the new note cites papers or books, add them to
+   `dft_notes/chapter_NN/99-references.md` (or a future
+   `dft_notes/99-references.md` if we move to a single appendix).
 4. Verify locally and open a PR.
 
 ## Code of conduct
