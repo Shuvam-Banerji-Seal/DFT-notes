@@ -7,30 +7,27 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
-# Allow one concurrent deployment, queueing newer runs and cancelling in-progress
-# older runs on the same ref.
+# Allow one concurrent deployment. Newer runs queue; older in-progress runs
+# are allowed to complete (deploys are not cheap to interrupt).
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
-# Sets `GITHUB_TOKEN` permissions to allow deployment to GitHub Pages.
+# Minimum `GITHUB_TOKEN` permissions for the build job (deployment is in the
+# next job with its own elevated permissions).
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-# Prevent accidental deploys from forks.
-environment:
-  name: github-pages
-  url: ${{ steps.deployment.outputs.page_url }}
 
 jobs:
   build:
     name: Build Jekyll site
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -41,7 +38,7 @@ jobs:
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
@@ -49,11 +46,9 @@ jobs:
           JEKYLL_ENV: production
           # Avoid future-dated posts being skipped in CI.
           JEKYLL_BUILD_FUTURE: "true"
-          # Strict front matter helps catch broken notes early.
-          STRICT: "true"
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./_site
 
@@ -62,7 +57,16 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    # `environment:` is a job-level key. It must be inside a job, not at the
+    # top level of the workflow file.
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

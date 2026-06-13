@@ -1,0 +1,55 @@
+{
+  // Configuration for markdownlint-cli2.
+  // Reference: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+  //
+  // The defaults are tuned for short prose. Research notes with math, tables,
+  // and callout boxes naturally exceed them. We disable the noisy style rules
+  // and keep the ones that catch *real* bugs (broken tables, malformed links,
+  // inconsistent bullets, etc.).
+
+  "config": {
+    "default": true,
+
+    // Allow long lines — research prose and tables often exceed 80 chars.
+    "MD013": false,
+
+    // Inline HTML is required for the styled callout boxes (<div class="note-box">).
+    "MD033": false,
+
+    // Front matter contains an H1 (`title:`) and the body has the visible H1
+    // (Jekyll's `page` layout doesn't render the front-matter title by default).
+    // Allowing both is intentional.
+    "MD025": {
+      "front_matter_title": ""
+    },
+
+    // Some shell/pseudocode blocks don't have a meaningful language identifier.
+    // We allow plain ``` to mean "literal text".
+    "MD040": false,
+
+    // Allow duplicate headings under different parents (we use numbered sections
+    // like "## 1.1" across multiple notes, all titled "Problems" for example).
+    "MD024": {
+      "siblings_only": true
+    },
+
+    // Allow trailing punctuation in headings (e.g. "See also:").
+    "MD026": {
+      "punctuation": ".,;:"
+    }
+  },
+
+  "globs": [
+    "**/*.md",
+    "!_site/**",
+    "!node_modules/**",
+    "!vendor/**"
+  ],
+
+  "ignores": [
+    "_site/**",
+    "node_modules/**",
+    "vendor/**",
+    ".jekyll-cache/**"
+  ]
+}

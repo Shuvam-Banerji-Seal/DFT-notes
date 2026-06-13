@@ -15,13 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Run markdownlint-cli2
-        uses: DavidAnson/markdownlint-cli2-action@v17
-        with:
-          globs: |
-            **/*.md
-            !_site/**/*.md
-            !node_modules/**/*.md
-            !vendor/**/*.md
+        uses: DavidAnson/markdownlint-cli2-action@v19
