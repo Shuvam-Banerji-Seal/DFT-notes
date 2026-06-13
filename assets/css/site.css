@@ -530,166 +530,34 @@ article.page {
 
 
 /* ==========================================================================
-   7. SITE HEADER & NAVIGATION
+   7. NAVBAR — the old .site-header/.site-nav from minima is GONE.
+   The proper responsive navbar now lives in _includes/header.html
+   and assets/css/navbar.css. See navbar.css for the styles.
    ========================================================================== */
-
-.site-header {
-  background: var(--er-canvas-raised);
-  border-bottom: 1px solid var(--er-ink-faint);
-  font-family: var(--er-font-ui);
-  font-size: var(--er-text-ui);
-  letter-spacing: var(--er-ls-ui);
-}
-.site-header .wrapper {
-  width: min(100% - 2 * var(--er-margin-inline), 90rem);
-  margin-inline: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--er-space-sm) 0;
-}
-.site-title {
-  font-family: var(--er-font-display);
-  font-variation-settings: "opsz" 24;
-  font-weight: 500;
-  color: var(--er-ink);
-  letter-spacing: var(--er-ls-heading);
-}
-.site-title:hover { color: var(--er-accent); text-decoration: none; }
-
-.site-nav .page-link {
-  color: var(--er-ink-soft);
-  margin-left: var(--er-space-md);
-}
-.site-nav .page-link:hover { color: var(--er-accent); text-decoration: none; }
-
-.site-footer {
-  background: var(--er-canvas-raised);
-  border-top: 1px solid var(--er-ink-faint);
-  color: var(--er-ink-soft);
-  font-family: var(--er-font-ui);
-  font-size: var(--er-text-ui);
-  padding: var(--er-space-md) 0;
-}
-.site-footer .wrapper {
-  width: min(100% - 2 * var(--er-margin-inline), 90rem);
-  margin-inline: auto;
-}
 
 
 /* ==========================================================================
-   8. THEME PICKER
-   Fixed top-right, ~200x80px panel with 6 swatches + 3 mode buttons.
-   Persisted via localStorage (assets/js/theme-picker.js).
+   8. THEME PICKER — now lives inside the navbar (see _includes/header.html
+   and assets/css/navbar.css). The old fixed-positioned floating panel
+   is GONE. The button styles (.er-theme-swatch, .er-mode-btn) still
+   live in navbar.css.
    ========================================================================== */
-
-.er-theme-picker {
-  position: fixed;
-  top: var(--er-space-md);
-  right: var(--er-space-md);
-  z-index: 100;
-  background: var(--er-canvas-raised);
-  border: 1px solid var(--er-ink-faint);
-  border-radius: var(--er-radius-md);
-  padding: var(--er-space-sm);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  font-family: var(--er-font-ui);
-  font-size: var(--er-text-ui);
-  letter-spacing: var(--er-ls-ui);
-  display: flex;
-  flex-direction: column;
-  gap: var(--er-space-xs);
-  /* Doesn't interrupt reading flow; minimal visual weight. */
-  opacity: 0.9;
-  transition: opacity 0.15s ease;
-}
-.er-theme-picker:hover,
-.er-theme-picker:focus-within {
-  opacity: 1;
-}
-
-.er-theme-picker-label {
-  font-size: var(--er-text-caption);
-  color: var(--er-ink-soft);
-  letter-spacing: var(--er-ls-caption-uppercase);
-  text-transform: uppercase;
-  margin-bottom: var(--er-space-xs);
-}
-
-.er-theme-swatches {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: var(--er-space-xs);
-}
-
-.er-theme-swatch {
-  width: 22px;
-  height: 22px;
-  border-radius: var(--er-radius-full);
-  background: var(--swatch-canvas);
-  border: 2px solid var(--swatch-accent);
-  cursor: pointer;
-  padding: 0;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
-.er-theme-swatch:hover {
-  transform: scale(1.15);
-}
-.er-theme-swatch.is-active {
-  box-shadow: 0 0 0 2px var(--er-canvas-raised),
-              0 0 0 4px var(--er-accent);
-}
-
-.er-mode-toggle {
-  display: flex;
-  gap: var(--er-space-xs);
-}
-
-.er-mode-btn {
-  background: transparent;
-  color: var(--er-ink-soft);
-  border: 1px solid var(--er-ink-faint);
-  border-radius: var(--er-radius-xs);
-  padding: 0.15em 0.45em;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  transition: background 0.1s ease, color 0.1s ease;
-}
-.er-mode-btn:hover {
-  background: var(--er-canvas-sunken);
-  color: var(--er-ink);
-}
-.er-mode-btn.is-active {
-  background: var(--er-accent);
-  color: var(--er-canvas);
-  border-color: var(--er-accent);
-}
-
-/* On narrow viewports, collapse the picker to a single button that
-   expands to show controls on click. Disabled for now; just stacks. */
-@media (max-width: 540px) {
-  .er-theme-picker {
-    top: var(--er-space-sm);
-    right: var(--er-space-sm);
-  }
-  .er-theme-swatches { grid-template-columns: repeat(6, 1fr); }
-  .er-theme-swatch { width: 18px; height: 18px; }
-}
 
 
 /* ==========================================================================
-   9. READING PROGRESS BAR — 2px bar at top of viewport
+   9. READING PROGRESS BAR — 2px bar at the bottom edge of the navbar
+   No longer position: fixed (that competed with the sticky navbar).
+   The bar is in normal flow inside .er-navbar, so it scrolls with the
+   nav and sits right above the page content.
    ========================================================================== */
 
 .er-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
+  display: block;
   height: 2px;
   width: 0;
+  margin: 0;
+  padding: 0;
   background: var(--er-accent);
-  z-index: 200;
   transition: width 0.08s linear;
   pointer-events: none;
 }
@@ -881,21 +749,31 @@ pre {
 
 /* ==========================================================================
    12. TABLES
+   Design fix (2026-06-13, dark-mode contrast):
+   The th used `background: var(--er-canvas-raised)` which in dark
+   themes is only ~9 channels lighter than the surrounding canvas — a
+   near-invisible lift that made the header hard to distinguish. Fix:
+   keep the lifted background for an "inset" feel, but ALSO add a
+   strong 2px bottom border in --er-accent (the theme's bright accent
+   in every dark palette). The accent line draws the eye to the
+   header regardless of the subtle background shift.
    ========================================================================== */
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: var(--er-space-lg) 0;
+  margin: var(--er-space-xl) 0;
   font-size: var(--er-text-caption);
   font-family: var(--er-font-ui);
   border: 1px solid var(--er-ink-faint);
+  border-radius: var(--er-radius-sm);
+  overflow: hidden;
 }
 th, td {
   padding: var(--er-space-sm) var(--er-space-md);
-  border: 1px solid var(--er-ink-faint);
   text-align: left;
   vertical-align: top;
+  border-bottom: 1px solid var(--er-ink-faint);
 }
 th {
   background: var(--er-canvas-raised);
@@ -904,7 +782,10 @@ th {
   letter-spacing: var(--er-ls-ui);
   text-transform: uppercase;
   font-size: 0.85em;
+  /* The accent line is the load-bearing fix for dark-mode contrast. */
+  border-bottom: 2px solid var(--er-accent);
 }
+tr:last-child td { border-bottom: none; }
 tr:nth-child(even) td { background: var(--er-canvas-sunken); }
 
 

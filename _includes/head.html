@@ -29,6 +29,11 @@
                     our rules priority on overlap. See design.md. {%- endcomment -%}
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 
+{%- comment -%} 2c. Site navbar styles — proper responsive nav with
+                     theme picker inline, hamburger on mobile.
+                     Loaded after site.css so it wins on any overlap. {%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/css/navbar.css' | relative_url }}">
+
 {%- comment -%} 3. Atom feed link {%- endcomment -%}
 {%- feed_meta -%}
 
@@ -111,25 +116,28 @@
 }
 </script>
 
-{%- comment -%} 8. Reading progress bar (height/colour set by site.css).
-     Updated by assets/js/progress.js. {%- endcomment -%}
-<div id="er-progress" class="er-progress" role="progressbar"
-     aria-label="Reading progress" aria-hidden="true"></div>
+{%- comment -%} 8. Reading progress bar moved into _includes/header.html
+     (it now lives at the bottom edge of the sticky navbar, where it
+     visually belongs). Updated by assets/js/progress.js. {%- endcomment -%}
 
-{%- comment -%} 9. Theme picker (the actual swatch + mode buttons).
-     Behaviour is in assets/js/theme-picker.js. {%- endcomment -%}
-{%- include theme-picker.html -%}
+{%- comment -%} 9. Theme picker moved into _includes/header.html
+     (it now lives inline in the navbar, not as a fixed-position
+     floating panel). Behaviour is still in
+     assets/js/theme-picker.js, which queries [data-pick-theme] and
+     [data-pick-mode] regardless of where the buttons live in the DOM. {%- endcomment -%}
 
 {%- comment -%} 10. Site scripts (all deferred, in load order).
      - pretext.js:        the text-measurement library (window.PretextLayout)
      - text-layout.js:    our pretext integration (uses PretextLayout)
      - theme-picker.js:   theme/mode persistence + custom-event dispatch
+     - navbar.js:         hamburger toggle + auto-close behaviour
      - progress.js:       scroll-driven progress bar update
 
      Load order matters: pretext must be present before text-layout runs;
-     theme-picker can run independently. progress.js is harmless if it
-     runs last. {%- endcomment -%}
+     theme-picker, navbar, and progress can run independently. progress.js
+     is harmless if it runs last. {%- endcomment -%}
 <script defer src="{{ '/assets/js/pretext.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/js/text-layout.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/js/theme-picker.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/navbar.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/js/progress.js' | relative_url }}"></script>
