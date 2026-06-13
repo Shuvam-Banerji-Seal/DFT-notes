@@ -66,6 +66,7 @@ exclude:
   - CHANGELOG.md
   - CONTRIBUTING.md
   - SECURITY.md
+  - design.md
   - .gitignore
   - vendor
   - node_modules
