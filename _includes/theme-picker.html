@@ -1,0 +1,52 @@
+{#-
+  Theme picker — design.md v2.0
+  --------------------------------------------------------------------------
+  6 theme swatches (one per palette) + 3 mode buttons (light/dark/auto).
+  All behavior is in assets/js/theme-picker.js (localStorage + OS-pref
+  tracking + a custom 'dft-theme-changed' event so other code can react).
+
+  The swatches use the *light* variant's canvas+accent as the preview.
+  This is a deliberate trade-off — 6 swatches is plenty to recognise a
+  theme at a glance without 12 dots.
+
+  The picker is fixed top-right; on very narrow screens it stays small.
+-#}
+
+<div class="er-theme-picker"
+     role="group"
+     aria-label="Reading theme and mode">
+  <div class="er-theme-picker-label">Theme</div>
+
+  <div class="er-theme-swatches" role="radiogroup" aria-label="Theme">
+    <button class="er-theme-swatch" data-pick-theme="parchment"
+            title="Warm Parchment (default)"
+            aria-label="Warm Parchment"
+            style="--swatch-canvas: #f5edd8; --swatch-accent: #8b4513;"></button>
+    <button class="er-theme-swatch" data-pick-theme="coffee-green"
+            title="Coffee Green"
+            aria-label="Coffee Green"
+            style="--swatch-canvas: #eef4ec; --swatch-accent: #2e6b2e;"></button>
+    <button class="er-theme-swatch" data-pick-theme="obsidian"
+            title="Obsidian High-Contrast"
+            aria-label="Obsidian High-Contrast"
+            style="--swatch-canvas: #ffffff; --swatch-accent: #0000cc;"></button>
+    <button class="er-theme-swatch" data-pick-theme="midnight"
+            title="Midnight Blue"
+            aria-label="Midnight Blue"
+            style="--swatch-canvas: #edf1f7; --swatch-accent: #1a3a8b;"></button>
+    <button class="er-theme-swatch" data-pick-theme="rose-dusk"
+            title="Rose Dusk"
+            aria-label="Rose Dusk"
+            style="--swatch-canvas: #fdf0f0; --swatch-accent: #8b2252;"></button>
+    <button class="er-theme-swatch" data-pick-theme="terminal-amber"
+            title="Terminal Amber"
+            aria-label="Terminal Amber"
+            style="--swatch-canvas: #0a0800; --swatch-accent: #ffcc00;"></button>
+  </div>
+
+  <div class="er-mode-toggle" role="radiogroup" aria-label="Mode">
+    <button class="er-mode-btn" data-pick-mode="light" aria-label="Light mode">☀ Light</button>
+    <button class="er-mode-btn" data-pick-mode="dark"  aria-label="Dark mode">◑ Dark</button>
+    <button class="er-mode-btn" data-pick-mode="auto"  aria-label="Auto mode (follow OS)">⊙ Auto</button>
+  </div>
+</div>

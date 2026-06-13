@@ -2,18 +2,24 @@
 # Docs: https://jekyllrb.com/docs/configuration/
 #
 # The site is served at: https://shuvam-banerji-seal.github.io/DFT-notes/
-# Math is rendered with KaTeX (loaded from CDN in _includes/head-custom.html).
+# Math: MathJax 3 (loaded in _includes/head.html).
+# Design system: design.md v2.0 — token-driven, six reading themes ×
+# light/dark, fluid typography, theme picker UI, reading progress bar.
+# Cross-device text rendering: chenglou/pretext (assets/js/text-layout.js).
 
-title: "DFT Notes — Density Functional Theory Knowledge Base"
+title: "DFT Notes — a reader-first Density Functional Theory knowledge base"
 title_separator: "—"
 name: "DFT Notes"
 description: >-
-  A curated, SEO-friendly knowledge base on Density Functional Theory (DFT).
-  Covers the Hohenberg–Kohn theorems, Kohn–Sham equations, exchange–correlation
-  functionals (LDA, GGA, hybrid, meta-GGA), basis sets, pseudopotentials, and
-  modern applications in quantum chemistry, materials science, and
-  computational chemistry. Notes are written in Markdown with LaTeX math and
-  rendered as a static site via Jekyll and MathJax 3 on GitHub Pages.
+  A reader-first knowledge base on Density Functional Theory (DFT) —
+  Hohenberg–Kohn theorems, Kohn–Sham equations, exchange–correlation
+  functionals (LDA, GGA, hybrid, meta-GGA), basis sets, pseudopotentials,
+  and modern applications in quantum chemistry, materials science, and
+  computational chemistry. Notes are written in Markdown with LaTeX math
+  (MathJax 3) and rendered as a Jekyll static site on GitHub Pages with
+  a token-driven design system (six reading themes × light/dark modes,
+  fluid typography, theme picker) and chenglou/pretext for cross-device
+  text rendering. See design.md for the design spec.
 email: ""
 url: "https://shuvam-banerji-seal.github.io"
 baseurl: "/DFT-notes"
@@ -45,10 +51,12 @@ seo:
   type: "WebSite"
   name: "DFT Notes"
   description: >-
-    Density Functional Theory (DFT) knowledge base — Hohenberg–Kohn theorems,
-    Kohn–Sham equations, exchange–correlation functionals, and computational
-    chemistry methods. Markdown notes with LaTeX math, served as a static site
-    on GitHub Pages.
+    A reader-first knowledge base on Density Functional Theory (DFT) —
+    Hohenberg–Kohn theorems, Kohn–Sham equations, exchange–correlation
+    functionals, and computational chemistry methods. Markdown notes with
+    LaTeX math (MathJax 3), served as a Jekyll static site on GitHub Pages
+    with a token-driven design system (six reading themes, fluid typography,
+    theme picker) and chenglou/pretext for cross-device text rendering.
   url: "https://shuvam-banerji-seal.github.io/DFT-notes/"
   image: "/DFT-notes/assets/img/og-image.png"
   twitter:
