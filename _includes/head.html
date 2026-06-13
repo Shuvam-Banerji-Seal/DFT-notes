@@ -1,0 +1,118 @@
+{#-
+  Custom head include for the DFT Notes site.
+  Overrides the minima theme's _includes/head.html with a version that
+  also loads KaTeX for math rendering.
+
+  Order matters:
+    1. SEO meta (jekyll-seo-tag)
+    2. Site stylesheet
+    3. Atom feed (jekyll-feed)
+    4. Canonical URL
+    5. KaTeX CSS + JS (from jsDelivr CDN, version-pinned)
+    6. KaTeX auto-render trigger
+    7. JSON-LD structured data
+-}
+
+{%- comment -%}
+  1. SEO tag (produces title, description, Open Graph, Twitter card, JSON-LD).
+{%- endcomment -%}
+{%- seo -%}
+
+{%- comment -%}
+  2. Minima's main stylesheet.
+{%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+
+{%- comment -%}
+  3. Atom feed (jekyll-feed writes feed.xml; expose the link).
+{%- endcomment -%}
+{%- feed_meta -%}
+
+{%- comment -%}
+  4. Canonical URL to avoid duplicate-content SEO issues.
+{%- endcomment -%}
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+{%- comment -%}
+  5. KaTeX (v0.16.11, pinned). jsDelivr is the CDN.
+  The SRI integrity attributes are intentionally omitted — jsDelivr occasionally
+  rotates edge caches and a wrong hash here would silently break math. The
+  version pin is our primary defense.
+{%- endcomment -%}
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+      crossorigin="anonymous">
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+        crossorigin="anonymous"></script>
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        crossorigin="anonymous"></script>
+
+{%- comment -%}
+  6. KaTeX auto-render: process $...$, $$...$$, \(...\), \[...\] once
+  the DOM and KaTeX are both ready. A short retry covers the case where
+  the deferred scripts haven't finished by the time DOMContentLoaded fires.
+{%- endcomment -%}
+<script>
+  (function () {
+    function renderMath() {
+      if (typeof renderMathInElement === 'undefined') {
+        // KaTeX not loaded yet — try once more after a brief delay.
+        return setTimeout(renderMath, 80);
+      }
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true  },
+          { left: '$',  right: '$',  display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true  }
+        ],
+        throwOnError: false,
+        output: 'html',
+        strict: 'ignore',
+        trust: false,
+        macros: {
+          "\\R":      "\\mathbb{R}",
+          "\\C":      "\\mathbb{C}",
+          "\\Z":      "\\mathbb{Z}",
+          "\\N":      "\\mathbb{N}",
+          "\\HH":     "\\hat{H}",
+          "\\bra":    "\\langle{#1}|",
+          "\\ket":    "|{#1}\\rangle",
+          "\\braket": "\\langle{#1}\\rangle",
+          "\\exp":    "\\mathrm{e}^{#1}",
+          "\\dd":     "\\mathrm{d}{#1}",
+          "\\vc":     "\\mathbf{#1}",
+          "\\op":     "\\hat{#1}"
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', renderMath);
+    } else {
+      renderMath();
+    }
+  })();
+</script>
+
+{%- comment -%}
+  7. JSON-LD structured data for the site itself (in addition to what
+  jekyll-seo-tag already emits per page).
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "DFT Notes",
+  "alternateName": "Density Functional Theory Knowledge Base",
+  "url": "{{ '/' | absolute_url }}DFT-notes/",
+  "description": "A curated knowledge base on Density Functional Theory (DFT) — Hohenberg-Kohn theorems, Kohn-Sham equations, exchange-correlation functionals, and computational chemistry methods.",
+  "inLanguage": "en",
+  "publisher": {
+    "@type": "Person",
+    "name": "Shuvam Banerji Seal",
+    "url": "https://github.com/Shuvam-Banerji-Seal"
+  }
+}
+</script>
