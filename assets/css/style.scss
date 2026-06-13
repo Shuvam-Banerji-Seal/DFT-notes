@@ -1,6 +1,7 @@
----
-# Site-wide stylesheet. Imported by minima as `assets/css/style.scss`.
-# We add our own rules after the theme's defaults.
+// Site-wide stylesheet for the DFT Notes site.
+// Imported by the minima theme; we add our own rules on top.
+//
+// Math is rendered with KaTeX (loaded in _includes/head-custom.html).
 
 @import "minima";
 
@@ -46,7 +47,6 @@ pre {
   background: rgba(27, 31, 35, 0.07);
 }
 
-/* Dark mode respect (GitHub auto dark) */
 @media (prefers-color-scheme: dark) {
   :not(pre) > code { background: rgba(255, 255, 255, 0.08); }
   h1, h2 { border-bottom-color: #30363d; }
@@ -81,7 +81,7 @@ th { background: #f6f8fa; }
   th { background: #161b22; }
 }
 
-/* ---------- Note callout boxes ---------- */
+/* ---------- Note callout boxes (used in notes) ---------- */
 
 .note-box {
   border-left: 4px solid #0077b6;
@@ -90,15 +90,15 @@ th { background: #f6f8fa; }
   margin: 1.2em 0;
   border-radius: 0 6px 6px 0;
 }
-.note-box.warn  { border-color: #d97706; background: #fff7e6; }
-.note-box.idea { border-color: #16a34a; background: #ecfdf5; }
-.note-box.derivation { border-color: #7c3aed; background: #f5f3ff; }
+.note-box.warn        { border-color: #d97706; background: #fff7e6; }
+.note-box.idea        { border-color: #16a34a; background: #ecfdf5; }
+.note-box.derivation  { border-color: #7c3aed; background: #f5f3ff; }
 
 @media (prefers-color-scheme: dark) {
-  .note-box         { background: #0d2538; }
-  .note-box.warn    { background: #2b1d05; }
-  .note-box.idea    { background: #052b1a; }
-  .note-box.derivation { background: #1a103d; }
+  .note-box              { background: #0d2538; }
+  .note-box.warn         { background: #2b1d05; }
+  .note-box.idea         { background: #052b1a; }
+  .note-box.derivation   { background: #1a103d; }
 }
 
 /* ---------- Tag chips (for topic labels) ---------- */
