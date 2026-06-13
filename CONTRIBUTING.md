@@ -118,6 +118,7 @@ Jekyll filter, e.g. `[link]({{ '/path/' | relative_url }})`.
    keywords: "comma, separated, keywords"
    ---
    ```
+
 2. Update `notes/README.md` to include the new note in the table of
    contents.
 3. If the new note cites papers or books, add them to `notes/99-references.md`.

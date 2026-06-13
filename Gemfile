@@ -13,6 +13,9 @@ gem "webrick", "~> 1.7"
 # Theme (must be declared explicitly now that we don't depend on
 # the github-pages meta-gem).
 gem "minima", "~> 2.5"
+# kramdown's GFM (GitHub Flavored Markdown) parser. The github-pages
+# meta-gem used to pull this in transitively.
+gem "kramdown-parser-gfm", "~> 1.0"
 
 group :jekyll_plugins do
   gem "jekyll-seo-tag"
