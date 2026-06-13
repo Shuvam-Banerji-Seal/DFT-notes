@@ -1,0 +1,3 @@
+[submodule "vendor/pretext"]
+	path = vendor/pretext
+	url = https://github.com/chenglou/pretext.git
