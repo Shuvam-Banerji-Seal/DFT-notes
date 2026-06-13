@@ -1,9 +1,11 @@
-// Site-wide stylesheet for the DFT Notes site.
-// Imported by the minima theme; we add our own rules on top.
-//
-// Math is rendered with KaTeX (loaded in _includes/head-custom.html).
+/* ==========================================================================
+   DFT Notes — site overrides
+   --------------------------------------------------------------------------
+   This file is loaded AFTER minima's /assets/main.css. CSS cascade order
+   means our rules win when they overlap with the theme.
 
-@import "minima";
+   Math is rendered with MathJax 3 (tex-chtml.js, loaded in head.html).
+   ========================================================================== */
 
 /* ---------- Layout & typography tweaks ---------- */
 
@@ -27,7 +29,7 @@ h2 { border-bottom: 1px solid #eaecef; padding-bottom: 0.2em; margin-top: 2.2em;
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* ---------- Code & math ---------- */
+/* ---------- Code ---------- */
 
 pre, code, kbd, samp {
   font-family: "JetBrains Mono", "Fira Code", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
@@ -52,10 +54,9 @@ pre {
   h1, h2 { border-bottom-color: #30363d; }
 }
 
-/* ---------- MathJax 3 (CHTML output) display tweaks ----------
+/* ---------- MathJax 3 (CHTML output) ----------
    MathJax 3 renders inline math as <mjx-container class="mjx-chtml"> and
-   display math as <mjx-container class="mjx-chtml MJXc-display">.  We style
-   the display blocks to fit the reading column.                          */
+   display math as <mjx-container class="mjx-chtml MJXc-display">. */
 
 mjx-container[display="true"] {
   display: block;
@@ -63,7 +64,7 @@ mjx-container[display="true"] {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.3em 0;
-  text-align: left;  /* override MathJax's default center */
+  text-align: left;            /* override MathJax's default center */
 }
 
 /* Equation number (AMS tag, rendered at the right). */
@@ -75,16 +76,6 @@ mjx-container[display="true"] mjx-tag {
 /* Match prose font-size for inline math. */
 mjx-container:not([display="true"]) {
   font-size: 1.05em;
-}
-
-/* Old KaTeX selectors kept as a no-op in case any user-pasted content
-   still targets them. Safe to remove in a future pass. */
-.katex { font-size: 1.05em; }
-.katex-display {
-  margin: 1.2em 0 !important;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 0.3em 0;
 }
 
 /* ---------- Tables (used in the index/TOC) ---------- */

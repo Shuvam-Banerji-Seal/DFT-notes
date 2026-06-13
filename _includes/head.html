@@ -23,8 +23,13 @@
 {%- comment -%} 1. SEO tag {%- endcomment -%}
 {%- seo -%}
 
-{%- comment -%} 2. Minima's main stylesheet {%- endcomment -%}
+{%- comment -%} 2. Minima's main stylesheet (the theme's defaults) {%- endcomment -%}
 <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+
+{%- comment -%} 2b. Our site overrides — loaded after minima so cascade
+                    gives our rules priority on overlap. Plain CSS
+                    (no Sass pipeline dependency) so it always works. {%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 
 {%- comment -%} 3. Atom feed link {%- endcomment -%}
 {%- feed_meta -%}
