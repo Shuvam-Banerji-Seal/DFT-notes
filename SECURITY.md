@@ -20,7 +20,7 @@ a public issue**.
 
 Instead, open a **private security advisory**:
 
-> https://github.com/Shuvam-Banerji-Seal/DFT-notes/security/advisories/new
+<https://github.com/Shuvam-Banerji-Seal/DFT-notes/security/advisories/new>
 
 Or contact the maintainer directly through GitHub.
 

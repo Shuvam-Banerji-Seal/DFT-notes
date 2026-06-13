@@ -10,6 +10,9 @@ gem "jekyll", "~> 3.10"
 # Jekyll 3 no longer bundles webrick. Needed for `bundle exec jekyll
 # serve` on Ruby 3+.
 gem "webrick", "~> 1.7"
+# Theme (must be declared explicitly now that we don't depend on
+# the github-pages meta-gem).
+gem "minima", "~> 2.5"
 
 group :jekyll_plugins do
   gem "jekyll-seo-tag"

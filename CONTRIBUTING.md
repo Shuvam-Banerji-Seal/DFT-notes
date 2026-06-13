@@ -108,6 +108,7 @@ Jekyll filter, e.g. `[link]({{ '/path/' | relative_url }})`.
 ## Adding a new note
 
 1. Create `notes/NN-slug.md` with front matter:
+
    ```yaml
    ---
    layout: page
