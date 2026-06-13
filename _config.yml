@@ -13,15 +13,23 @@ description: >-
   functionals (LDA, GGA, hybrid, meta-GGA), basis sets, pseudopotentials, and
   modern applications in quantum chemistry, materials science, and
   computational chemistry. Notes are written in Markdown with LaTeX math and
-  rendered as a static site via Jekyll and KaTeX on GitHub Pages.
+  rendered as a static site via Jekyll and MathJax 3 on GitHub Pages.
 email: ""
 url: "https://shuvam-banerji-seal.github.io"
 baseurl: "/DFT-notes"
 repository: "Shuvam-Banerji-Seal/DFT-notes"
 show_downloads: false
+# kramdown processes Markdown. We use the GFM input mode (so fenced code
+# blocks with language hints and tables work cleanly) and the `mathjax` math
+# engine, which leaves $...$ / $$...$$ / \(...\) / \[...\] as raw LaTeX
+# in the HTML for client-side MathJax 3 to render. Numbered equations
+# (\begin{equation}, \label, \ref) work because MathJax 3's `ams` extension
+# is loaded in _includes/head.html.
 kramdown:
-  math_engine: kramdown
+  input: GFM
+  math_engine: mathjax
   syntax_highlighter: rouge
+  hard_wrap: false
 markdown: kramdown
 highlighter: rouge
 theme: minima

@@ -157,6 +157,40 @@ These are noted for context; details in dedicated notes later.
 
 ---
 
+## 3.7 Numbered equations (MathJax 3)
+
+The site renders math with **MathJax 3** (CHTML output, AMS extensions
+loaded). Numbered equations with `\label` / `\eqref` cross-references
+work out of the box. Example: the KS equation introduced in §3.2
+(equation \eqref{eq:ks}) can be re-derived by minimising $E_\text{KS}[\rho]$
+with respect to $\{\phi_i^*\}$ subject to orthonormalisation.
+
+\begin{equation}
+\hat{h}_\text{KS}\,\phi_i(\mathbf{r}) \equiv
+\left[-\tfrac{1}{2}\nabla^2 + v_\text{eff}(\mathbf{r})\right]\phi_i(\mathbf{r})
+= \varepsilon_i\,\phi_i(\mathbf{r})
+\label{eq:ks}
+\end{equation}
+
+A second numbered equation to demonstrate that the numbering is
+sequential within the page:
+
+\begin{equation}
+\rho(\mathbf{r}) = \sum_{i=1}^{N} f_i\,|\phi_i(\mathbf{r})|^2
+\label{eq:density}
+\end{equation}
+
+Both \eqref{eq:ks} and \eqref{eq:density} are now referenceable from any
+other note via the standard `\eqref{key}` macro. Use the form
+`\begin{equation} ... \label{eq:yourname} ... \end{equation}` for
+displayed, numbered equations; use plain `$$ ... $$` for unnumbered
+display math; use `$ ... $` for inline math.
+
+> **Conventions.** The label prefix `eq:` is the project's convention.
+> Stick to it so cross-note lookups stay clean.
+
+---
+
 ## See also
 
 - Previous: **[Hohenberg–Kohn theorems](02-hohenberg-kohn.html)**

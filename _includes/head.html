@@ -1,105 +1,105 @@
 {#-
   Custom head include for the DFT Notes site.
-  Overrides the minima theme's _includes/head.html with a version that
-  also loads KaTeX for math rendering.
+  Overrides the minima theme's _includes/head.html.
+
+  Renders math with **MathJax 3** (tex-chtml.js, output: CHTML).
+  - Supports $...$, $$...$$, \(...\), \[...\] delimiters.
+  - Supports \begin{equation}, \begin{align}, \label, \ref, \eqref.
+  - Tags: AMS-style auto-numbering for \begin{equation}.
+  - Output: CHTML (editable / selectable / a11y-friendly).
+  - Font: STIX-Web (the closest open-source match for the STIX Two Math
+    face that design.md specifies).
 
   Order matters:
     1. SEO meta (jekyll-seo-tag)
     2. Site stylesheet
-    3. Atom feed (jekyll-feed)
+    3. Atom feed
     4. Canonical URL
-    5. KaTeX CSS + JS (from jsDelivr CDN, version-pinned)
-    6. KaTeX auto-render trigger
+    5. MathJax 3 config (must run BEFORE the bundle loads)
+    6. MathJax 3 bundle (deferred)
     7. JSON-LD structured data
 -}
 
-{%- comment -%}
-  1. SEO tag (produces title, description, Open Graph, Twitter card, JSON-LD).
-{%- endcomment -%}
+{%- comment -%} 1. SEO tag {%- endcomment -%}
 {%- seo -%}
 
-{%- comment -%}
-  2. Minima's main stylesheet.
-{%- endcomment -%}
+{%- comment -%} 2. Minima's main stylesheet {%- endcomment -%}
 <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 
-{%- comment -%}
-  3. Atom feed (jekyll-feed writes feed.xml; expose the link).
-{%- endcomment -%}
+{%- comment -%} 3. Atom feed link {%- endcomment -%}
 {%- feed_meta -%}
 
-{%- comment -%}
-  4. Canonical URL to avoid duplicate-content SEO issues.
-{%- endcomment -%}
+{%- comment -%} 4. Canonical URL {%- endcomment -%}
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 
-{%- comment -%}
-  5. KaTeX (v0.16.11, pinned). jsDelivr is the CDN.
-  The SRI integrity attributes are intentionally omitted — jsDelivr occasionally
-  rotates edge caches and a wrong hash here would silently break math. The
-  version pin is our primary defense.
-{%- endcomment -%}
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
-      crossorigin="anonymous">
-<script defer
-        src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
-        crossorigin="anonymous"></script>
-<script defer
-        src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
-        crossorigin="anonymous"></script>
-
-{%- comment -%}
-  6. KaTeX auto-render: process $...$, $$...$$, \(...\), \[...\] once
-  the DOM and KaTeX are both ready. A short retry covers the case where
-  the deferred scripts haven't finished by the time DOMContentLoaded fires.
-{%- endcomment -%}
+{%- comment -%} 5. MathJax 3 configuration (runs before the bundle) {%- endcomment -%}
 <script>
-  (function () {
-    function renderMath() {
-      if (typeof renderMathInElement === 'undefined') {
-        // KaTeX not loaded yet — try once more after a brief delay.
-        return setTimeout(renderMath, 80);
+  window.MathJax = {
+    tex: {
+      // Delimiters: $...$ and $$...$$ for the casual style, plus
+      // \(...\) and \[...\] for the LaTeX-native style.
+      inlineMath:  [['$',  '$'],  ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+
+      // Auto-number equations (AMS style) and support \label / \ref.
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '0.8em',
+
+      // Extensions we want available.
+      //   ams        — \begin{equation|align|...}, \label, \ref, \eqref
+      //   noerrors   — don't visually mark-up LaTeX errors, just log them
+      //   noundefined — silently render undefined commands in red
+      //   color      — \color{...}
+      //   cancel     — \cancel, \bcancel
+      //   boldsymbol — \boldsymbol for bold math symbols
+      packages: { '[+]': ['ams', 'noerrors', 'noundefined', 'color', 'cancel', 'boldsymbol'] },
+
+      // Allow line-breaks in long inline math with \\.
+      // Keep inline math on a single line in HTML output (we control wrapping
+      // with CSS via .mjx-chtml).
+      processEscapes: true,
+      processEnvironments: true,
+      autoload: { color: [], colorv2: ['color'] }
+    },
+
+    // Render output as CHTML (compact HTML, accessible, editable, selectable).
+    output: {
+      font: 'mathjax-stix2',  // closest to STIX Two Math; falls back gracefully
+      scale: 1.0,
+      displayAlign: 'left',
+      displayIndent: '0'
+    },
+
+    // Don't show the right-click context menu (cleaner reading experience).
+    options: {
+      enableMenu: false,
+      renderActions: { addMenu: [] }
+    },
+
+    // Don't wait for a typeset promise if the page has no math.
+    skipStartupTypeset: false,
+    startup: {
+      ready: function () {
+        MathJax.startup.defaultReady();
+        // Tag all display equations with a data-eq attribute for CSS hooks.
+        MathJax.startup.promise.then(function () {
+          var blocks = document.querySelectorAll('mjx-container[display="true"]');
+          blocks.forEach(function (el, i) {
+            el.setAttribute('data-eq-index', i);
+          });
+        });
       }
-      renderMathInElement(document.body, {
-        delimiters: [
-          { left: '$$', right: '$$', display: true  },
-          { left: '$',  right: '$',  display: false },
-          { left: '\\(', right: '\\)', display: false },
-          { left: '\\[', right: '\\]', display: true  }
-        ],
-        throwOnError: false,
-        output: 'html',
-        strict: 'ignore',
-        trust: false,
-        macros: {
-          "\\R":      "\\mathbb{R}",
-          "\\C":      "\\mathbb{C}",
-          "\\Z":      "\\mathbb{Z}",
-          "\\N":      "\\mathbb{N}",
-          "\\HH":     "\\hat{H}",
-          "\\bra":    "\\langle{#1}|",
-          "\\ket":    "|{#1}\\rangle",
-          "\\braket": "\\langle{#1}\\rangle",
-          "\\exp":    "\\mathrm{e}^{#1}",
-          "\\dd":     "\\mathrm{d}{#1}",
-          "\\vc":     "\\mathbf{#1}",
-          "\\op":     "\\hat{#1}"
-        }
-      });
     }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', renderMath);
-    } else {
-      renderMath();
-    }
-  })();
+  };
 </script>
 
-{%- comment -%}
-  7. JSON-LD structured data for the site itself (in addition to what
-  jekyll-seo-tag already emits per page).
-{%- endcomment -%}
+{%- comment -%} 6. MathJax 3 bundle (CHTML, with TeX input and AMS extensions) {%- endcomment -%}
+<script defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        crossorigin="anonymous"></script>
+
+{%- comment -%} 7. JSON-LD structured data (in addition to jekyll-seo-tag) {%- endcomment -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

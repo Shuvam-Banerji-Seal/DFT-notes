@@ -52,16 +52,40 @@ pre {
   h1, h2 { border-bottom-color: #30363d; }
 }
 
-/* ---------- KaTeX display tweaks ---------- */
+/* ---------- MathJax 3 (CHTML output) display tweaks ----------
+   MathJax 3 renders inline math as <mjx-container class="mjx-chtml"> and
+   display math as <mjx-container class="mjx-chtml MJXc-display">.  We style
+   the display blocks to fit the reading column.                          */
 
+mjx-container[display="true"] {
+  display: block;
+  margin: 1.4em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.3em 0;
+  text-align: left;  /* override MathJax's default center */
+}
+
+/* Equation number (AMS tag, rendered at the right). */
+mjx-container[display="true"] mjx-tag {
+  margin-left: 0.8em;
+  font-style: normal;
+}
+
+/* Match prose font-size for inline math. */
+mjx-container:not([display="true"]) {
+  font-size: 1.05em;
+}
+
+/* Old KaTeX selectors kept as a no-op in case any user-pasted content
+   still targets them. Safe to remove in a future pass. */
+.katex { font-size: 1.05em; }
 .katex-display {
   margin: 1.2em 0 !important;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.3em 0;
 }
-
-.katex { font-size: 1.05em; }
 
 /* ---------- Tables (used in the index/TOC) ---------- */
 
