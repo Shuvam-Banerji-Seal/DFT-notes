@@ -1,0 +1,14 @@
+version: 2
+updates:
+  # Keep GitHub Actions versions current.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "dependencies"
+      - "ci"
+    open-pull-requests-limit: 5

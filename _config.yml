@@ -1,0 +1,68 @@
+title: "DFT Notes"
+title_separator: "—"
+name: "DFT Notes"
+description: >-
+  Reader-first notes on Density Functional Theory (DFT) — Hohenberg–Kohn
+  theorems, Kohn–Sham equations, exchange–correlation functionals, and
+  modern applications in quantum chemistry and materials science.
+email: ""
+url: "https://shuvam-banerji-seal.github.io"
+baseurl: "/DFT-notes"
+repository: "Shuvam-Banerji-Seal/DFT-notes"
+show_downloads: false
+
+# Minimal plugin set — keep the dependency surface small.
+# (github-pages meta-gem pulls in ~30 extra gems we don't use.)
+kramdown:
+  input: GFM
+  math_engine: mathjax
+  syntax_highlighter: rouge
+  hard_wrap: false
+markdown: kramdown
+highlighter: rouge
+theme: minima
+minima:
+  skin: auto
+  social_links:
+    github: Shuvam-Banerji-Seal
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+seo:
+  type: "WebSite"
+  name: "DFT Notes"
+  description: >-
+    Reader-first notes on Density Functional Theory (DFT) — Hohenberg–Kohn
+    theorems, Kohn–Sham equations, exchange–correlation functionals, and
+    modern applications in quantum chemistry and materials science.
+  url: "https://shuvam-banerji-seal.github.io/DFT-notes/"
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: "page"
+  - scope:
+      path: "notes"
+    values:
+      layout: "page"
+      comments: false
+      sitemap: true
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - CONTRIBUTING.md
+  - SECURITY.md
+  - CHANGELOG.md
+  - design.md
+  - .gitignore
+  - .markdownlint-cli2.jsonc
+  - vendor
+  - node_modules
