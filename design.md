@@ -1,22 +1,36 @@
 ---
-version: 1.0
+version: 2.0
 name: ebook-design-system
 description: >
-  A reader-first design system for ebook and long-form academic reading interfaces,
-  built on PreTeXt's fluid-layout philosophy. The system is palette-agnostic at its
-  core — a token architecture that swaps through six curated reading themes (each
-  with light and dark variants) without touching structure or typography. Type is
-  anchored in Literata (ebook-optimised serif) for prose, STIX Two Math / Latin
-  Modern Math for mathematical notation (rendered via KaTeX), and JetBrains Mono
-  for code. The layout engine follows PreTeXt's "know-nothing" column model — fluid
-  widths, no fixed breakpoints, everything scales to any viewport.
+  A reader-first design system for ebook and long-form academic reading
+  interfaces, originally inspired by PreTeXt's fluid-layout philosophy.
+  v2.0 retargets the system from PreTeXt (which was a misnomer in v1.0) to
+  its actual implementation substrate: **Jekyll + GitHub Pages**, with
+  **MathJax 3** for math, and **chenglou/pretext** for cross-device text
+  measurement and fluid font-scaling. The system is palette-agnostic at its
+  core — a token architecture that swaps through six curated reading themes
+  (each with light and dark variants) without touching structure or
+  typography. Type is anchored in Literata (ebook-optimised serif) for prose,
+  STIX Two Math (rendered via MathJax 3) for mathematical notation, JetBrains
+  Mono for code, and Inter for UI. The layout engine follows the original
+  "know-nothing" column model — fluid widths, no fixed breakpoints,
+  everything scales to any viewport.
 
 framework:
-  renderer: PreTeXt   # pretext-book.com — XML → HTML pipeline
-  math: KaTeX         # katex.min.js + katex.min.css (fallback: MathJax 3)
-  math-fallback: MathJax
-  fluid-type: true    # clamp()-based type scale; no fixed px sizes in body text
-  rtl-ready: true
+  renderer: Jekyll                       # jekyllrb.com — Markdown → static HTML
+  renderer-host: GitHub Pages            # deployed via .github/workflows/jekyll.yml
+  renderer-version: "~3.10"              # github-pages pinned
+  math: MathJax 3                        # tex-chtml.js (pinned 3.x)
+  math-fallback: none                    # MathJax 3 covers the LaTeX we use
+  text-measurement: "@chenglou/pretext"  # v0.0.8 — Cheng Lou's TS text layout
+  pretext-role: |
+    Bundled to IIFE via esbuild and loaded as window.PretextLayout.
+    assets/js/text-layout.js uses prepare() + layout() to measure h1–h4
+    at the current viewport and apply a font-size that keeps the heading
+    in one line. CSS clamp() is the first-pass guess; pretext refines
+    with real measurements. Re-runs on resize and after MathJax finishes.
+  fluid-type: true                       # clamp()-based type scale; no fixed px
+  rtl-ready: true                        # intent only; [dir=rtl] overrides deferred
 
 themes:
   - id: coffee-green
@@ -55,7 +69,42 @@ themes:
 
 default-theme: parchment
 default-mode: light
+
+changelog:
+  - version: 2.0
+    date: 2026-06-13
+    summary: >
+      Retargeted the system from the (misnamed) "PreTeXt" substrate to the
+      real Jekyll + GitHub Pages + MathJax 3 + chenglou/pretext stack. The
+      design philosophy, theme palettes, typography, and component specs
+      are unchanged. Only the framework metadata, the v1.0→v2.0 version
+      bump, and this changelog entry are new.
+  - version: 1.0
+    date: 2026-06-13
+    summary: >
+      Initial spec. PreTeXt-centric, never matched the actual site
+      implementation. Retained in v2.0 as a reference for the design
+      philosophy and theme palettes.
 ---
+
+> ## v2.0 changelog
+>
+> The original v1.0 of this spec was framed around **PreTeXt** (the
+> `pretextbook.org` XML→HTML/LaTeX book-authoring system). That was a
+> **misnomer** — PreTeXt is a real, separate project that we are not using.
+> The site is built on **Jekyll + MathJax 3 + chenglou/pretext**, all
+> running on **GitHub Pages**.
+>
+> The design **philosophy** (fluid layout, six curated reading themes,
+> typographic system, reader-first components) is unchanged. The change
+> in v2.0 is to the **framework metadata**: we now state the actual
+> implementation substrate, and the body's component specs (CSS tokens,
+> `data-theme`/`data-mode` switching, theme-picker JS, fluid type scale,
+> etc.) remain the implementation target.
+>
+> If/when the project migrates to a different renderer (Quarto, Hugo,
+> Pandoc, …), bump this to v3.0 and update the `framework` block.
+> Don't break the design tokens; that's the load-bearing part of the spec.
 
 ## Overview
 
