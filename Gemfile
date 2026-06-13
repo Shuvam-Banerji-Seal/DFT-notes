@@ -10,10 +10,10 @@ group :jekyll_plugins do
 end
 
 # Optional: Windows and JRuby do not include zoneinfo files
-platforms :mingw, :x64_mingw, :msys, :jruby do
+platforms :mingw, :x64_mingw, :jruby do
   gem "tzinfo", ">= 1", "< 3"
   gem "tzinfo-data"
 end
 
-gem "wdm", "~> 0.17.1", :platforms => [:mingw, :x64_mingw, :msys]
+gem "wdm", "~> 0.17.1", :platforms => [:mingw, :x64_mingw]
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
