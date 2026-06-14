@@ -821,9 +821,9 @@ every step from the new gradient information:
 \mathbf B^{(k+1)}
 \;=\; \mathbf B^{(k)}
    \;-\; \frac{\mathbf B^{(k)} \mathbf s^{(k)} {\mathbf s^{(k)}}^\text{T} \mathbf B^{(k)}}
-            {{\mathbf s^{(k)}}^\text{T} \mathbf B^{(k)} \mathbf s^{(k)}}
+            {\mathbf s^{(k)}}^\text{T} \mathbf B^{(k)} \mathbf s^{(k)}}
    \;+\; \frac{\mathbf y^{(k)} {\mathbf y^{(k)}}^\text{T}}
-            {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}}
+            {\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}
 \;}
 \end{equation}
 
@@ -846,12 +846,12 @@ inverse-Hessian form of \eqref{eq:ch-09-bfgs-update-formula} is
 \label{eq:ch-09-bfgs-inverse-update}
 \mathbf H_\text{inv}^{(k+1)}
 \;=\; \left( \mathbf I - \frac{\mathbf s^{(k)} {\mathbf y^{(k)}}^\text{T}}
-                            {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}} \right)
+                            {\mathbf y^{(k)}^\text{T} \mathbf s^{(k)}} \right)
       \mathbf H_\text{inv}^{(k)}
       \left( \mathbf I - \frac{\mathbf y^{(k)} {\mathbf s^{(k)}}^\text{T}}
-                            {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}} \right)
+                            {\mathbf y^{(k)}^\text{T} \mathbf s^{(k)}} \right)
    \;+\; \frac{\mathbf s^{(k)} {\mathbf s^{(k)}}^\text{T}}
-            {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}} .
+            {\mathbf y^{(k)}^\text{T} \mathbf s^{(k)}} .
 \end{equation}
 
 The BFGS method has the following attractive properties (proven
