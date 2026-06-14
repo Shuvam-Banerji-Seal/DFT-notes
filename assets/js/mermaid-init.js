@@ -38,6 +38,17 @@
   }
 
   function init() {
+    // Run the DOM-tag step FIRST so Mermaid sees the right elements
+    // regardless of whether it inspects the DOM via startOnLoad or
+    // via the explicit .run() call below.  Kramdown renders ````` ```mermaid ````
+    // fences as <pre><code class="language-mermaid">…</code></pre>
+    // but Mermaid 10 looks for elements that have class `mermaid`
+    // on the element itself (not on a child).  Tag the parent
+    // <pre> for every kramdown mermaid fence.
+    document.querySelectorAll("pre > code.language-mermaid").forEach(function (code) {
+      var pre = code.parentNode;
+      if (pre && pre.tagName === "PRE") pre.classList.add("mermaid");
+    });
     if (!window.mermaid) return;
     var dark = isDark();
     /* We pick the built-in theme as a starting point, then

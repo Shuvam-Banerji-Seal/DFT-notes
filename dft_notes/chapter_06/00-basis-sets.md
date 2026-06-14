@@ -996,3 +996,723 @@ of what we skipped:
 > Next: [chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }})
 > — Bloch's theorem and the Brillouin zone: how plane waves and
 > $k$-points combine to handle infinite periodic solids.
+
+## 6.13 Numerical atomic orbitals (NAOs)
+
+The basis sets of sections 6.3–6.6 (STO-nG, Pople, Dunning) are
+all **analytic**: every function in the basis is known in closed
+form as a sum of Gaussians.  An alternative, used by **SIESTA**
+(linear-scaling DFT), **FHI-aims** (numeric all-electron), and
+the partial-wave construction of **PAW** (section 6.15), is to
+**tabulate** each basis function numerically on a radial grid.
+The basis functions are still atom-centred and angular-momentum-
+resolved, but the **radial part** is a numerical solution of a
+one-particle Schrödinger equation — there are no contraction
+coefficients and no least-squares fitting error.  The price is
+that the integrals are not analytical; they are evaluated by
+quadrature on the same radial grid the orbital was defined on.
+
+### 6.13.1 The claim
+
+A **numerical atomic orbital** (NAO) of angular momentum
+$\ell$ and "zeta index" $q$ centred at atom $a$ is
+
+\begin{equation}
+\label{eq:ch-06-13-nao}
+\chi_{\ell m}^{(a, q)}(\mathbf r) \;=\; R_\ell^{(a, q)}(r_a)\,
+Y_{\ell m}(\hat{\mathbf r}_a) , \qquad
+\mathbf r_a \equiv \mathbf r - \mathbf R_a ,
+\end{equation}
+
+where $Y_{\ell m}$ is a real spherical harmonic, $r_a$ is the
+distance to atom $a$, and the radial function $R_\ell^{(a,q)}$
+is a numerical solution of a **modified** radial Schrödinger
+equation with a confining potential.  The index $q = 1, 2,
+\dots, n_\zeta$ labels the multiple-ζ split of the valence
+shell.
+
+### 6.13.2 The radial Schrödinger equation
+
+The atomic problem for the radial part of an orbital in a
+spherically symmetric effective potential $V_\text{eff}(r)$ is
+
+\begin{equation}
+\label{eq:ch-06-13-radial}
+\left[ -\frac{1}{2} \frac{d^2}{dr^2} + \frac{\ell(\ell+1)}{2 r^2} + V_\text{eff}(r) \right]\, u_\ell(r) \;=\; \varepsilon\, u_\ell(r) ,
+\end{equation}
+
+where $u_\ell(r) = r\, R_\ell(r)$ is the radial function scaled
+by $r$ (so the volume element $r^2 dr\, d\Omega$ becomes just
+$du\, d\Omega$).  The boundary conditions are
+
+- $u_\ell(0) = 0$ (the wavefunction must vanish at the
+  nucleus),
+- $u_\ell(r) \to 0$ as $r \to \infty$ (bound-state decay).
+
+In an isolated atom the second condition is automatically
+satisfied because $V_\text{eff}$ is attractive.  In a molecule,
+however, the valence NAO must be representable on a **finite**
+support, or the overlap matrix becomes ill-conditioned and the
+SCF converges poorly.  The fix is to add a **confining
+potential** to $V_\text{eff}$ that vanishes in the chemically
+relevant region and rises outside it:
+
+\begin{equation}
+\label{eq:ch-06-13-confine}
+\tilde V_\text{eff}(r) \;=\; V_\text{eff}(r) + V_\text{conf}(r) .
+\end{equation}
+
+A widely used form (SIESTA, FHI-aims) is a polynomial ramp,
+
+\begin{equation}
+\label{eq:ch-06-13-vconf}
+V_\text{conf}(r) \;=\;
+\begin{cases}
+0 , & r \le r_0 , \\[2pt]
+V_0 \left( \dfrac{r - r_0}{R_c - r_0} \right)^n , & r_0 < r \le R_c , \\[6pt]
+\infty , & r > R_c ,
+\end{cases}
+\end{equation}
+
+with the "inner radius" $r_0$ set to roughly the covalent
+radius of the atom (so the confining potential does not touch
+the bond region) and the **confinement radius** $R_c$ the
+control parameter the user varies.  Common choices are $n = 2$
+(quadratic) and $V_0 \sim 50$–$100\,E_h$.  With this
+$V_\text{conf}$ the radial equation
+\eqref{eq:ch-06-13-radial} becomes a **bound-state problem in a
+finite box**, solvable by Numerov or by shooting to the
+asymptotic boundary $r = R_c$ where $u_\ell(R_c) = 0$.
+
+### 6.13.3 The logarithmic grid
+
+The radial equation is **stiff** at small $r$ (where
+$\ell(\ell+1)/2r^2$ diverges and the wavefunction oscillates
+rapidly) and **smooth** at large $r$ (where it decays
+exponentially).  A uniform grid wastes resolution in the
+asymptotic region.  The standard choice is the **logarithmic
+grid** introduced by H. J. A. M. Kormann and used in SIESTA and
+FHI-aims:
+
+\begin{equation}
+\label{eq:ch-06-13-loggrid}
+r_i \;=\; r_\text{min}\, e^{h\, i} , \qquad i = 0, 1, 2, \dots, N_r - 1 .
+\end{equation}
+
+The grid has constant **log-spacing** $h$ — i.e. constant
+*relative* resolution.  Typical parameters:
+$r_\text{min} \sim 10^{-4}\,a_0$, $h \sim 0.03$–$0.05\,a_0$,
+$N_r \sim 500$–$2000$.  At the heavy end of the basis (PAW
+partial waves, see section 6.15) one uses a denser log grid with
+$h \sim 0.01\,a_0$ and $N_r \sim 2000$ to resolve the
+oscillations of the $1s$ orbital near the nucleus.
+
+Substituting \eqref{eq:ch-06-13-loggrid} into
+\eqref{eq:ch-06-13-radial} removes the singular
+$\ell(\ell+1)/2r^2$ behaviour at small $r$ (because
+$\ell(\ell+1)/(2 r^2) = \ell(\ell+1)/(2 r_\text{min}^2)\, e^{-2hi}$
+is finite at $i=0$ and decays geometrically), and the Numerov
+method becomes uniformly accurate across the whole grid.
+
+### 6.13.4 Multiple-ζ
+
+A single NAO per $(\ell, m)$ is a **single-ζ** basis: it
+captures the size of the valence orbital but not its
+flexibility under chemical bonding.  The **multiple-ζ** idea
+(Artacho, Sánchez-Portal, Ordejón, Soler 1998; Junquera, Paz,
+Sánchez-Portal, Artacho 2001) is to generate $n_\zeta$ NAOs for
+the same $(\ell, m)$ by solving the same radial equation with
+**different confinement radii** and orthogonalising the higher
+ζ's against the lower ones.
+
+Concretely, for a double-ζ valence shell ($n_\zeta = 2$):
+
+1. **First ζ.**  Solve \eqref{eq:ch-06-13-radial} with
+   $\tilde V_\text{eff}$ at the "tight" radius
+   $R_c = R_\text{min}$ (typically half the bond length).
+   Call the lowest-lying solution $R_\ell^{(1)}(r)$.
+2. **Second ζ.**  Solve again with the "loose" radius
+   $R_c = R_\text{max}$ (typically the bond length).  Call the
+   new solution $\tilde R_\ell(r)$.  Symmetric-orthogonalise
+   against $R_\ell^{(1)}$:
+
+   \begin{equation}
+   \label{eq:ch-06-13-gram-schmidt}
+   R_\ell^{(2)}(r) \;=\; \mathcal N \left[ \tilde R_\ell(r) - S\, R_\ell^{(1)}(r) \right] ,
+   \qquad S = \int_0^{R_\text{max}} \tilde R_\ell(r)\, R_\ell^{(1)}(r)\, r^2\, dr .
+   \end{equation}
+
+3. **Higher ζ.**  Repeat the procedure with progressively looser
+   $R_c$, projecting out the span of all previous ζ's.
+
+The smaller the inner $\zeta$, the more compact and rigid it
+is; the larger the outer $\zeta$, the more diffuse and
+responsive to bonding.  This is *exactly* the chemistry that
+Pople's split-valence (6-31G, 6-311G) tried to encode
+empirically, but now the split-ζ functions are **ground-state
+solutions of the atomic problem** rather than ad-hoc
+contractions.  In SIESTA, a typical valence basis is **SZ**
+(single-ζ) for production-quality geometry optimisation,
+**DZ** (double-ζ) for property prediction, and **TZDP**
+(triple-ζ + double polarisation) for high accuracy.  The
+energy cost of an NAO basis is essentially that of a Gaussian
+basis of the same $K$ — but the **information content per
+function** is higher, so a DZ NAO basis often gives an accuracy
+comparable to a TZ Gaussian basis.
+
+### 6.13.5 Polarisation orbitals
+
+The multiple-ζ trick handles the **radial** flexibility.  The
+**angular** flexibility (which is what polarisation functions do
+in a Gaussian basis) is generated by an **energy-derivative**
+recipe (Blöchl 1990, generalised by Artacho et al.):
+
+\begin{equation}
+\label{eq:ch-06-13-pold}
+R_\ell^\text{pol}(r) \;=\; \mathcal N\, \frac{\partial R_\ell(r)}{\partial \varepsilon} .
+\end{equation}
+
+The derivative of a bound-state radial wavefunction with
+respect to its energy is automatically orthogonal to the parent
+function $R_\ell$ (the Hellmann–Feynman argument:
+$\langle R_\ell | \partial R_\ell / \partial \varepsilon \rangle
+= -\tfrac{1}{2}\, \partial_\varepsilon \langle R_\ell | R_\ell
+\rangle = 0$ for normalised $R_\ell$).  It also has a node — it
+changes sign once — so it carries the next angular-momentum
+character **after** projection.  Specifically, if $R_\ell$ is
+the valence s-function, $\partial_\varepsilon R_\ell$ behaves
+like a p-function under angular integration; this is the NAO
+analogue of adding a $p$-polarisation function on hydrogen.
+
+Higher polarisation orbitals — e.g. the "double polarisation" of
+a TZDP basis — are obtained by a second derivative
+$\partial^2 R_\ell / \partial \varepsilon^2$, projected against
+the span of $\{\partial_\varepsilon R_\ell\}$ and the valence
+$R_\ell$.
+
+### 6.13.6 Convergence with $R_c$
+
+The accuracy of an NAO basis depends monotonically on $R_c$:
+looser confinement (larger $R_c$) makes the basis more flexible
+and the BSIE smaller, at the cost of a longer-ranged,
+more-overlapping, and more linearly-dependent basis.  In
+practice SIESTA and FHI-aims report a typical convergence
+study for the atomisation energy of a small molecule (e.g.
+$\mathrm H_2 \mathrm O$ or benzene): the energy converges to
+within $0.01\,E_h$ at $R_c \sim 4\,a_0$ (DZ), $\sim 5\,a_0$
+(TZ), $\sim 6\,a_0$ (TZDP).  Below $R_c \sim 2.5\,a_0$ the
+basis is too tight to describe the bonding and the energy
+becomes wildly wrong.
+
+A more formal diagnostic is the **basis-set limit curve** $E(K)$
+plotted on a log–log axis: for an NAO basis $E(K)$ falls
+approximately as $K^{-p}$ with $p \sim 2$–$3$ (the exact
+exponent depends on the confining-potential shape and on the
+property being converged — total energies converge faster than
+energy differences).
+
+> **Note.**  In PAW (section 6.15) the NAO machinery is
+> re-used for the *partial waves* $\phi_i^a$ inside the
+> augmentation sphere.  The radial grid and the confining
+> potential are the same; only the role changes — there the
+> NAO is an auxiliary object used to reconstruct the AE
+> wavefunction from the smooth part, not a basis function in
+> its own right.
+
+### 6.13.7 SIESTA workflow
+
+```mermaid
+graph LR
+  A["Atomic problem:<br/>Z_a + boundary"] --> B["Solve radial<br/>Schrödinger<br/>Numerov on log grid"]
+  B --> C1["1st ζ (tight R_c)"]
+  B --> C2["2nd ζ (loose R_c)"]
+  B --> C3["n-th ζ (projected)"]
+  C1 --> ORTH["Gram-Schmidt<br/>orthogonalise"]
+  C2 --> ORTH
+  C3 --> ORTH
+  ORTH --> P["Polarisation:<br/>∂R/∂ε"]
+  P --> BASIS["NAO basis<br/>{χ_ℓm^(a,q)}"]
+  BASIS --> SCF["SCF with O(N)<br/>or O(N^3) solver"]
+```
+
+The Roothaan–Hall machinery of
+\eqref{eq:ch-06-roothaan-hall} is unchanged: the matrix
+elements $\langle \chi_\mu | \hat F | \chi_\nu \rangle$ are
+evaluated by quadrature on the same radial grid that generated
+$\chi_\mu$, but otherwise the linear algebra of section 6.1
+goes through verbatim.
+
+## 6.14 Wavelets and B-splines
+
+The plane-wave basis of section 6.7 is **systematically
+improvable**: pushing $E_\text{cut}$ to infinity gives the
+exact answer *provided the potential is non-singular* — which
+is not the case for the all-electron problem.  The atom-centred
+Gaussian basis of section 6.3 is also systematically improvable
+in principle — the cc-pV*X*Z series is built on this premise —
+but the convergence is *angular*: the missing angular momenta
+show up as slowly-decaying multipole errors in the electron
+density.  **Wavelets and B-splines** are the basis families that
+are *both* atom-like (no periodic boundary condition required)
+and *systematically* improvable for the all-electron problem.
+
+### 6.14.1 B-splines on a finite interval
+
+A **B-spline** of order $k$ (degree $k - 1$) on a knot
+sequence $t_0 \le t_1 \le \dots \le t_{N}$ is defined by the
+Cox–de Boor recursion
+
+\begin{equation}
+\label{eq:ch-06-14-bspline}
+B_{i,1}(x) \;=\;
+\begin{cases}
+1 , & t_i \le x < t_{i+1} , \\
+0 , & \text{otherwise} ,
+\end{cases}
+\end{equation}
+
+\begin{equation}
+\label{eq:ch-06-14-coxdeboor}
+B_{i,k}(x) \;=\; \frac{x - t_i}{t_{i+k-1} - t_i}\, B_{i,k-1}(x)
+\;+\; \frac{t_{i+k} - x}{t_{i+k} - t_{i+1}}\, B_{i+1,k-1}(x) .
+\end{equation}
+
+For a simple uniform knot sequence $t_i = i h$, the B-splines
+are translated copies of one function $B_k(x/h)$, each
+supported on **$k$ adjacent intervals**.  The order-$k$
+B-spline is a piecewise polynomial of degree $k-1$,
+$C^{k-2}$ continuous at the interior knots, and identically
+zero outside its $k$-interval support.
+
+The **partition of unity** property
+
+\begin{equation}
+\label{eq:ch-06-14-pou}
+\sum_{i=0}^{N-k} B_{i,k}(x) \;=\; 1 \qquad \text{on the interior}
+\end{equation}
+
+follows by induction on $k$ and makes B-splines a natural
+finite-element basis.  In 3D the tensor product $B_{i,k}(x)\,
+B_{j,k}(y)\, B_{\ell,k}(z)$ is a piecewise polynomial of
+degree $3(k-1)$ on a uniform cubic grid of spacing $h$.
+
+B-splines are the basis of choice in **finite-element
+discretisations** of the Kohn–Sham problem (FEM-DFT codes
+such as **HelFEM** and parts of **FHI-aims** in their
+all-electron NAO mode).  They give an exact representation of
+polynomials up to degree $k-1$, have controllable smoothness
+(raise $k$ for smoother wavefunctions), and are the
+finite-dimensional subspace against which the variational
+principle \eqref{eq:ch-06-variational} is taken.  The
+**kinetic-energy operator** in a B-spline basis is a banded
+matrix of bandwidth $\sim k$, so the sparse direct solver
+scales as $\mathcal O(N_g k^2)$ for a grid of $N_g$ points.
+
+### 6.14.2 Daubechies wavelets
+
+A **wavelet basis** is a multiresolution generalisation of the
+B-spline idea: instead of a single grid, one uses an
+**infinite tower of grids**, doubling the resolution at each
+level.  Define a chain of closed subspaces
+
+\begin{equation}
+\label{eq:ch-06-14-mra}
+\{0\} \;\subset\; \cdots \;\subset\; V_1 \;\subset\; V_2 \;\subset\; \cdots \;\subset\; L^2(\mathbb R) ,
+\end{equation}
+
+with $V_{j+1} = V_j \oplus W_j$ — i.e. the detail space $W_j$
+is the orthogonal complement of $V_j$ in $V_{j+1}$.  Each
+$V_j$ is spanned by translations and dyadic scalings of a
+single **scaling function** $\phi$:
+
+\begin{equation}
+\label{eq:ch-06-14-vj}
+V_j \;=\; \overline{\text{span}\big\{ \phi_{j,k}(x) = 2^{j/2}\, \phi(2^j x - k) : k \in \mathbb Z \big\}} .
+\end{equation}
+
+The Daubechies family D-$N$ is parametrised by the number of
+vanishing moments $N$ and constructed as the **most localised
+orthonormal scaling function with $N$ vanishing moments** —
+the support of the D-$N$ scaling function is $2N - 1$ grid
+points wide.  The two-scale relation between $\phi$ and the
+orthonormal wavelet $\psi$ is
+
+\begin{equation}
+\label{eq:ch-06-14-twoscale}
+\phi(x) \;=\; \sqrt{2} \sum_{n} h_n\, \phi(2x - n) ,
+\qquad
+\psi(x) \;=\; \sqrt{2} \sum_{n} g_n\, \phi(2x - n) ,
+\end{equation}
+
+where the **low-pass** filter $h_n$ and **high-pass** filter
+$g_n$ are finite sequences of $2N$ coefficients satisfying the
+quadrature-mirror conditions $g_n = (-1)^n h_{1-n}$ and
+$\sum_n h_n h_{n + 2k} = \delta_{k,0}$.  For D-2 the filters
+are
+
+$$
+h_0 = \tfrac{1 + \sqrt 3}{4 \sqrt 2}, \quad
+h_1 = \tfrac{3 + \sqrt 3}{4 \sqrt 2}, \quad
+h_2 = \tfrac{3 - \sqrt 3}{4 \sqrt 2}, \quad
+h_3 = \tfrac{1 - \sqrt 3}{4 \sqrt 2},
+$$
+
+and the scaling function has support $[0, 3]$.  Higher $N$
+gives smoother $\phi$ and $\psi$ (the D-$N$ scaling function
+is $C^{\alpha N}$ for some $\alpha < 1$) at the cost of longer
+filters.
+
+### 6.14.3 Why wavelets are systematically improvable
+
+The B-spline basis of section 6.14.1 is complete in the sense
+that the finite-element space $V_J$ becomes dense in $L^2$ as
+$J \to \infty$ (i.e. as the grid spacing $h \to 0$).  The
+wavelet basis of section 6.14.2 is complete for the *same*
+reason — $V_J$ is spanned by translated B-spline-like scaling
+functions.  The **additional** thing the wavelet basis gives is
+**adaptivity**: a function with sharp features (near a nucleus,
+say) is represented economically in $V_J$ because the wavelet
+coefficients on the *coarse* level $W_{J - 1}$ capture the
+high-frequency content that would otherwise force a uniform
+refinement to a much finer grid.
+
+For the **all-electron problem**, this adaptivity is essential.
+The $1s$ wavefunction of a carbon atom oscillates on a
+lengthscale of $\sim 0.1\,a_0$ near the nucleus, but is smooth
+and slowly-varying at the bond radius $\sim 1.5\,a_0$.  A
+uniform grid that resolves the $1s$ oscillation at
+$h \sim 0.05\,a_0$ would need $\sim 10^7$ grid points in a
+$10\,a_0$ cell — wasted on the chemically relevant valence
+region.  A wavelet basis on the same domain (BigDFT uses D-2 to
+D-8 wavelets) reaches the same accuracy with $\sim 10^5$
+coefficients, because the wavelet coefficients in the valence
+region are sparse.
+
+This is the formal claim:
+
+\begin{equation}
+\label{eq:ch-06-14-wavelet-conv}
+E_\text{total}(J) \;=\; E_\text{exact} \;+\; \mathcal O(2^{-s J}) ,
+\qquad s \ge 1
+\end{equation}
+
+for $J$ wavelet levels — *exponential* convergence in the
+number of levels, and the only basis family for which this
+claim holds *with* the full all-electron Coulomb singularity
+(no pseudopotential, no PAW).
+
+### 6.14.4 The BigDFT code
+
+The **BigDFT** code (Genovese et al. 2008; Mohr et al. 2014)
+implements Kohn–Sham DFT in a Daubechies-wavelet basis on a
+cubic simulation cell with **two grids**: a coarse grid for the
+density and Hartree potential, and a fine grid (eight times
+finer) for the orbitals.  The two-grid treatment of the
+non-local exchange term — the most expensive part of hybrid
+DFT — gives BigDFT its best-in-class **scaling with system
+size** for non-periodic systems: $\mathcal O(N)$ for the total
+energy (when the locality of the density matrix is exploited)
+and $\mathcal O(N \log N)$ for the diagonalisation step.
+
+```mermaid
+graph LR
+  R["Cubic cell<br/>(0, L)^3"] --> M["Multi-resolution<br/>analysis"]
+  M --> C["Coarse grid<br/>(density, v_H)"]
+  M --> F["Fine grid<br/>(orbitals)"]
+  C --> POIS["Multigrid Poisson<br/>solver (FFT-free)"]
+  F --> KS["Kohn-Sham<br/>sparse matrix"]
+  POIS --> KS
+  KS --> E["Total energy,<br/>forces"]
+```
+
+The Mermaid diagram shows the structure: the wavelet basis
+provides both grids simultaneously from the same
+multi-resolution analysis, and the **Poisson solver** is exact
+in the wavelet basis (no FFT, no periodic boundary condition
+required, no vacuum buffer for finite molecules).
+
+> **Note.**  Wavelets are **orthogonal**, so $\mathbf S = \mathbf I$
+> and the Roothaan–Hall equation
+> \eqref{eq:ch-06-roothaan-hall} collapses to the standard
+> eigenproblem $\mathbf F \mathbf C = \mathbf C \boldsymbol\varepsilon$.
+> This is the first basis in this chapter where the overlap
+> matrix is *automatically* trivial.
+
+## 6.15 Plane-wave projector augmented waves (PAW)
+
+The plane-wave basis of section 6.7 is *the* basis of periodic
+solids, but it cannot resolve the all-electron Coulomb
+singularity at the nucleus.  A pseudopotential
+([chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }})) replaces the
+singularity by a smooth effective potential — at the price of
+giving up all information about the wavefunction near the
+nucleus.  **Projector augmented waves** (PAW; Blöchl 1994;
+Kresse & Joubert 1999) keep the plane-wave basis for the "easy"
+region between the atoms, but **augment** it with an exact
+atomic solution inside a small sphere around each atom.  PAW
+is *the* method used in VASP, Quantum ESPRESSO, GPAW, Castep,
+CP2K (in the GPW mode), and ABINIT; we will meet the
+pseudopotential limit of it in
+[chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }}).
+
+### 6.15.1 The PAW transformation
+
+Let $\phi_i^a(\mathbf r)$ be the **all-electron (AE) partial
+wave** of atom $a$, with composite index $i = (n, \ell, m)$
+standing for the principal, angular, and magnetic quantum
+numbers of the AE solution inside the augmentation sphere.
+Let $\tilde\phi_i^a(\mathbf r)$ be the corresponding
+**pseudo partial wave** — the smooth function that equals
+$\phi_i^a$ outside the augmentation sphere of radius $r_c^a$
+and is regular at the nucleus.  The **projector** $\tilde
+p_i^a$ is the dual of $\tilde\phi_i^a$,
+
+\begin{equation}
+\label{eq:ch-06-15-dual}
+\langle \tilde p_i^a \mid \tilde\phi_j^b \rangle \;=\; \delta_{ab}\, \delta_{ij} ,
+\end{equation}
+
+where the integral is over the augmentation sphere of atom $a$
+only.  The PAW transformation is
+
+\begin{equation}
+\label{eq:ch-06-15-trafo}
+\hat{\mathcal T} \;=\; \hat 1 \;+\; \sum_a \sum_i \left( \lvert \phi_i^a \rangle - \lvert \tilde\phi_i^a \rangle \right) \langle \tilde p_i^a \rvert .
+\end{equation}
+
+Applied to a smooth wavefunction $\lvert \tilde \psi_n \rangle$
+it produces the AE wavefunction
+
+\begin{equation}
+\label{eq:ch-06-15-reconstruct}
+\lvert \psi_n \rangle \;=\; \hat{\mathcal T} \lvert \tilde \psi_n \rangle
+\;=\; \lvert \tilde \psi_n \rangle \;+\; \sum_{a,i} \left( \lvert \phi_i^a \rangle - \lvert \tilde\phi_i^a \rangle \right) \langle \tilde p_i^a \rvert \tilde \psi_n \rangle .
+\end{equation}
+
+The right-hand side is the **PAW reconstruction**: the smooth
+wavefunction $\tilde\psi_n$ plus a sum over atoms and
+partial-wave indices of the mismatch $\phi_i^a - \tilde\phi_i^a$,
+weighted by the projection of $\tilde\psi_n$ onto the
+corresponding projector.  Outside the augmentation spheres
+$\phi_i^a = \tilde\phi_i^a$ by construction, so the correction
+vanishes; inside each sphere, $\tilde\psi_n$ is replaced by the
+exact AE expansion in the partial-wave basis.
+
+### 6.15.2 The plane-wave basis applies to $\tilde \psi_n$
+
+The whole point of the PAW construction is that the **smooth
+wavefunction** $\tilde \psi_n$ is the object that lives in the
+plane-wave basis, exactly as in section 6.7:
+
+\begin{equation}
+\label{eq:ch-06-15-pw}
+\tilde \psi_{n,\mathbf k}(\mathbf r) \;=\; \frac{1}{\sqrt \Omega} \sum_{\mathbf G}
+c_{n,\mathbf k,\mathbf G}\, e^{i (\mathbf k + \mathbf G) \cdot \mathbf r} .
+\end{equation}
+
+The plane-wave cutoff $E_\text{cut}$ now has to resolve the
+**pseudo partial waves** $\tilde\phi_i^a$, *not* the AE
+$\phi_i^a$.  Because $\tilde\phi_i^a$ is smooth at the
+nucleus, the typical $E_\text{cut}$ drops from $\sim 1000\,E_h$
+(all-electron) to $\sim 30$–$80\,E_h$ (PAW with a
+$1s$–$3d$ valence).  The cost saving is roughly two orders of
+magnitude in plane-wave count, and two more in the
+diagonalisation cost — see Problem 3 of section 6.11.
+
+### 6.15.3 Augmentation charges
+
+The PAW density and Kohn–Sham potential are not just evaluated
+on the plane-wave grid.  A separate **augmentation** treatment
+is needed inside each sphere.  The total electron density is
+
+\begin{equation}
+\label{eq:ch-06-15-density}
+\rho(\mathbf r) \;=\; \tilde \rho(\mathbf r) \;+\; \sum_a \left[ \rho^a(\mathbf r) - \tilde \rho^a(\mathbf r) \right] ,
+\end{equation}
+
+where
+
+- $\tilde \rho = \sum_n f_n \lvert \tilde \psi_n \rvert^2$ is
+  the **smooth** density, defined on the plane-wave grid,
+- $\rho^a = \sum_{i,j} D_{ij}^a\, \phi_i^a (\phi_j^a)^*$ is
+  the **AE augmentation** density, defined on the radial grid
+  of atom $a$,
+- $\tilde \rho^a = \sum_{i,j} D_{ij}^a\, \tilde\phi_i^a
+  (\tilde\phi_j^a)^*$ is the **PS augmentation** density,
+  defined on the same radial grid,
+- $D_{ij}^a = \sum_n f_n \langle \tilde p_i^a \mid \tilde
+  \psi_n \rangle \langle \tilde \psi_n \mid \tilde p_j^a
+  \rangle$ is the **augmentation density matrix** for atom
+  $a$.
+
+The smooth density $\tilde \rho$ contains a small but
+non-negligible contribution from the augmentation region —
+$\tilde\phi_i^a (\tilde\phi_j^a)^*$ evaluated in $\tilde\rho^a$
+is the smooth part, while $\phi_i^a (\phi_j^a)^*$ in $\rho^a$
+is the AE part.  The difference $\rho^a - \tilde\rho^a$ in
+\eqref{eq:ch-06-15-density} subtracts the smooth part and adds
+back the AE part, *exactly* restoring the all-electron density
+inside the augmentation spheres.
+
+The same split is applied to the local part of the potential
+and to the Hartree and exchange–correlation contributions.  In
+practical codes the **compensation (or "augmentation")
+charges** $\hat n^a(\mathbf r)$ are added to the smooth
+density so that the multipole moments of the augmentation
+charge density $\rho^a - \tilde\rho^a$ are absorbed into the
+plane-wave Hartree solver.  The total potential becomes
+
+\begin{equation}
+\label{eq:ch-06-15-potential}
+V(\mathbf r) \;=\; \tilde V(\mathbf r) \;+\; \sum_a \left[ V^a(\mathbf r) - \tilde V^a(\mathbf r) \right] ,
+\end{equation}
+
+with $V^a$ and $\tilde V^a$ tabulated on the radial grid of
+each atom, and $\tilde V$ a plane-wave-expandable smooth
+potential.
+
+### 6.15.4 The frozen-core approximation
+
+The partial-wave basis $\{\phi_i^a, \tilde\phi_i^a\}$ is
+*local* to each atom.  The standard choice is to include
+**only the valence** in the active set — i.e. to freeze the
+core orbitals (1s for first-row atoms, 1s2s2p for transition
+metals, etc.) at the values they have in the **isolated atom**.
+In this **frozen-core** approximation,
+
+\begin{equation}
+\label{eq:ch-06-15-frozen}
+D_{ij}^a \;=\; D_{ij}^{a,\,\text{val}} \;+\; D_{ij}^{a,\,\text{core}} ,
+\qquad
+D_{ij}^{a,\,\text{core}} \;\text{fixed at the atomic value} .
+\end{equation}
+
+The frozen-core term is a *one-time* constant contribution to
+the augmentation density matrix of each atom; the SCF
+procedure never varies it.  This is the PAW analogue of the
+frozen-core approximation in pseudopotential methods
+([chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }})), with the
+crucial difference that the PAW reconstruction
+\eqref{eq:ch-06-15-reconstruct} can still recover the **exact
+AE value** of any frozen-core orbital in post-processing (e.g.
+the X-ray absorption near-edge structure, XANES), because the
+partial-wave expansion of the core is still available — the
+all-electron wavefunction is reconstructed, the core just is
+not allowed to relax in the SCF.
+
+In PAW with a frozen core the "all-electron" reconstruction
+\eqref{eq:ch-06-15-reconstruct} becomes
+
+\begin{equation}
+\label{eq:ch-06-15-frozen-recon}
+\lvert \psi_n \rangle
+\;=\;
+\lvert \tilde \psi_n \rangle
+\;+\; \sum_{a,i \in \text{val}} \left( \lvert \phi_i^a \rangle - \lvert \tilde\phi_i^a \rangle \right) \langle \tilde p_i^a \rvert \tilde \psi_n \rangle
+\;+\; \sum_{a, i \in \text{core}} \lvert \phi_i^a \rangle \langle \tilde p_i^a \rvert \tilde \psi_0^a \rangle ,
+\end{equation}
+
+where $\tilde \psi_0^a$ is the smooth part of the atomic core
+wavefunction.  The core term is a constant, atom-centred
+contribution that depends on the *atom type* but not on the
+chemical environment — its only role is to keep the
+all-electron density correct in the core region.
+
+### 6.15.5 Workflow
+
+```mermaid
+graph LR
+  AE["AE problem<br/>(divergent at nucleus)"] -->|"PAW transform"| T["Smooth problem<br/>T|ψ̃⟩ = ε|ψ̃⟩"]
+  T -->|"plane-wave basis<br/>(E_cut)"| PW["FFT diagonalisation<br/>on the BZ grid"]
+  PW --> RECON["PAW reconstruction<br/>|ψ⟩ = |ψ̃⟩ + (|φ⟩ - |φ̃⟩)⟨p̃|ψ̃⟩"]
+  RECON --> OUT["AE ψ, ρ, E"]
+```
+
+The Mermaid diagram shows the data flow.  The **smooth
+problem** is what the plane-wave code actually solves; the AE
+observables are reconstructed at the end.  The augmentation
+sphere radius $r_c^a$ is the control parameter — it must be
+small enough that the augmentation spheres of neighbouring
+atoms do not overlap (a non-overlap requirement that PAW
+shares with the LAPW method), but large enough that the
+partial-wave expansion converges quickly.  Typical values are
+$r_c^a \sim 1.0$–$1.5\,a_0$ for first-row atoms and
+$\sim 1.5$–$2.0\,a_0$ for transition metals.
+
+### 6.15.6 What the plane-wave code actually does
+
+A practical PAW calculation (VASP, Quantum ESPRESSO) runs the
+following inner loop:
+
+1. **Initial guess.**  Atomic superposition of the
+   $\tilde\phi_i^a$ partial waves for each atom in the cell.
+2. **Build smooth density.**  Accumulate $\tilde \rho$ on the
+   FFT grid (cutoff $4 E_\text{cut}$).
+3. **Build smooth potential.**  Hartree via FFT-based Poisson
+   solver, XC on the grid, ionic on the grid.
+4. **Subtract augmentation charges.**  Replace the smooth
+   augmentation density $\tilde \rho^a$ on each radial grid
+   by the AE $\rho^a$, and update the local potential
+   accordingly.
+5. **Diagonalise.**  Standard plane-wave Roothaan–Hall with
+   the **non-local** projector-augmented-wave Hamiltonian
+   operator $\hat H_\text{PAW}$.  Iterative diagonalisation
+   (Davidson, RMM-DIIS, or block-Davidson) keeps the cost
+   tractable.
+6. **Update $D_{ij}^a$.**  Using the new $\tilde \psi_n$.
+7. **Loop 2–6** to self-consistency.
+
+The "frozen" part of $D_{ij}^a$ (the core) is set in step 1
+and never updated.
+
+> **Tip.**  The **PAW datasets** distributed with VASP /
+> Quantum ESPRESSO are not just pseudopotentials — they
+> contain the partial waves *and* the projectors.  Treating
+> them as "potentials" and ignoring the reconstruction is a
+> common source of confusion.  The data file you load into a
+> PAW code is a small, atom-type-specific data set
+> ($\sim 10$–$50$ radial functions per atom type) that
+> defines the augmentation sphere, the partial waves, and
+> the projectors.
+
+## 6.16 What we left out (updated)
+
+The original "what we left out" in section 6.12 still applies,
+but the three new sections 6.13–6.15 bring their own omissions:
+
+- **Linear-scaling NAO.**  SIESTA's $\mathcal O(N)$ mode
+  exploits the sparsity of the density matrix in an
+  atom-centred basis; we have not derived the divide-and-
+  conquer or Fermi-operator expansion methods that make
+  this work.  See
+  [chapter 10]({{ "/dft-notes/chapter-10/" | relative_url }}) for the
+  linear-scaling toolkit.
+- **Adaptive finite elements.**  FEniCS-based DFT codes use
+  *unstructured* tetrahedral meshes with adaptive refinement,
+  a generalisation of the B-spline idea; we touched on it
+  only in passing.
+- **LAPW / APW+lo.**  The linearised augmented plane wave
+  basis (used by FLEUR, Wien2k) is a *different* augmentation
+  of the plane-wave basis, with energy-linearised partial
+  waves at fixed energy $\varepsilon_\ell$ and "local
+  orbitals" for energy flexibility.  PAW is formally
+  equivalent in the limit of large partial-wave sets, but the
+  implementation is different and worth comparing.  We did
+  not.
+- **The ultrasoft pseudopotential limit of PAW.**  In the
+  limit that the augmentation sphere shrinks to zero and the
+  partial-wave set collapses to a single function, the PAW
+  transformation reduces to an **ultrasoft pseudopotential**
+  (Vanderbilt 1990) — a connection worked out in
+  [chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }}).
+- **Wavelet basis sets for molecules.**  The $\mathcal O(N)$
+  wavelet DFT codes (BigDFT, ORCHID) combine the wavelet
+  basis with density-matrix purification; we did not derive
+  the purification step.
+- **Spin–orbit coupling in the PAW augmentation.**  For
+  heavy elements ($Z \gtrsim 30$) the PAW partial waves must
+  be computed in a relativistic framework (the Dirac
+  equation rather than the Schrödinger equation), and the
+  augmentation charges contain a $j$-dependent
+  contribution.  We used the scalar-relativistic
+  approximation throughout.

@@ -1285,7 +1285,654 @@ energy.
 
 </details>
 
-## 7.10 What we left out
+## 7.10 Crystal symmetries and the international tables
+
+Up to §7.9 we have used only the **translational** symmetry of the
+Bravais lattice $\{\mathbf R\}$. Real crystals have *more* symmetry
+than translations: rotations, reflections, inversions, screws, and
+glides that map the crystal onto itself. A solid-state DFT code that
+ignores this extra symmetry does the same calculation $N_\text{sym}$
+times over, where $N_\text{sym}$ is the order of the point group.
+For silicon ($N_\text{sym} = 48$) the speedup is large; for a
+low-symmetry molecular crystal the savings are smaller but still
+real. This section is the *what is the symmetry, and how does it
+enter the Kohn–Sham equations?* companion to §7.6.
+
+### 7.10.1 The space group
+
+A **symmetry operation** of a crystal is an isometry $S$ of $\mathbb
+R^3$ such that
+
+\begin{equation}
+\label{eq:ch-07-sg-def}
+S(\mathbf R + \boldsymbol{\tau}_\alpha) = S(\mathbf R) + \boldsymbol{\tau}_\beta
+\end{equation}
+
+for every Bravais vector $\mathbf R$ and some pair $(\alpha, \beta)$
+of basis atoms. Every element $S \in \mathcal{S}$ can be written
+uniquely in **Seitz notation**
+
+\begin{equation}
+\label{eq:ch-07-seitz}
+S = \{R \mid \mathbf v\}, \qquad S\mathbf r = R\mathbf r + \mathbf v,
+\end{equation}
+
+with $R \in O(3)$ a point-group operation and $\mathbf v \in
+\mathbb R^3$ a translation. The composition rule is
+
+\begin{equation}
+\label{eq:ch-07-seitz-mult}
+\{R_1 \mid \mathbf v_1\} \{R_2 \mid \mathbf v_2\} = \{R_1 R_2 \mid R_1 \mathbf v_2 + \mathbf v_1\}.
+\end{equation}
+
+If every $\mathbf v$ in \eqref{eq:ch-07-seitz} is a Bravais vector,
+the space group is **symmorphic**; otherwise $\mathbf v$ may be a
+fractional translation, giving a **screw axis** ($\mathbf v$
+parallel to the rotation axis) or a **glide plane** ($\mathbf v$ in
+the mirror plane). 73 of the 230 space groups are symmorphic; 157
+are non-symmorphic.
+
+### 7.10.2 The 7 crystal systems, 14 Bravais lattices, 32 point groups
+
+A Bravais lattice is classified by the point group that preserves it
+(the *holohedry*). There are exactly 7 distinct holohedral point
+groups, giving 7 **crystal systems**:
+
+| Crystal system | Holohedral point group (HM) | Bravais lattices |
+|:--|:--|:--|
+| Triclinic | $\bar 1$ | $aP$ |
+| Monoclinic | $2/m$ | $mP$, $mS$ |
+| Orthorhombic | $mmm$ | $oP$, $oS$, $oI$, $oF$ |
+| Tetragonal | $4/mmm$ | $tP$, $tI$ |
+| Trigonal | $\bar 3 m$ | $hP$, $hR$ |
+| Hexagonal | $6/mmm$ | $hP$ |
+| Cubic | $m\bar 3 m$ | $cP$, $cI$, $cF$ |
+
+The Pearson symbols encode the centring ($P$ = primitive, $I$ =
+body-centred, $F$ = face-centred) and the crystal system
+(lowercase letter).
+
+**Crystallographic restriction theorem.** The only rotation orders
+in 3-D that map a Bravais lattice onto itself are $n = 1, 2, 3, 4,
+6$. A 5-fold axis cannot be a lattice symmetry (it can be a *local*
+symmetry of a quasicrystal, but not of a 3-D Bravais lattice). With
+these rotations and the inversion, there are exactly **32**
+crystallographic point groups.
+
+### 7.10.3 The 230 space groups
+
+Given a Bravais lattice, a basis set, and a point group, the space
+group is determined by the **Wyckoff positions** of the basis atoms.
+Counting all distinct possibilities gives exactly **230** space
+groups in 3-D — a theorem proved independently by Schoenflies
+(1891), Fedorov (1891), and Barlow (1894), and tabulated in the
+*International Tables for Crystallography* (vol. A, 6th ed., 2016).
+Each entry includes the space-group number (1–230), Hermann–Mauguin
+and Schoenflies symbols, the Wyckoff positions, the generators, and
+the maximal subgroups.
+
+The **Hermann–Mauguin** space-group symbol has the form
+
+\begin{equation}
+\underbrace{\textsf{(lattice centring)}}_{P, I, F, A, B, C, R}
+\;\;
+\underbrace{\text{pos 1}}_{\text{primary axis/plane}}
+\;\;
+\underbrace{\text{pos 2}}_{\text{secondary}}
+\;\;
+\underbrace{\text{pos 3}}_{\text{tertiary}},
+\end{equation}
+
+with each position occupied by a *generator* (a rotation,
+rotoinversion, screw, mirror, or glide) along a specific
+crystallographic direction. Examples:
+
+- $P\ 2_1 2_1 2_1$ (No. 19) — primitive orthorhombic, three
+  mutually perpendicular $2_1$ screws.
+- $F\ d\ \bar 3\ m$ (No. 227) — face-centred cubic, with a diamond
+  glide perpendicular to the $\bar 3$ axis. The space group of
+  silicon, diamond, germanium, and most III–V semiconductors.
+- $I\ 4_1/a\ m\ d$ (No. 141) — body-centred tetragonal.
+
+The **Schoenflies** symbol prefixes the point-group symbol with a
+superscript index; e.g. $F d \bar 3 m$ is $O_h^7$ in Schoenflies.
+The 230 space groups include $O_h^1, \ldots, O_h^{10}$ for the 10
+cubic space groups, $D_{6h}^{1}, \ldots, D_{6h}^{4}$ for the 4
+hexagonal, and so on.
+
+### 7.10.4 Effect of symmetry on the Kohn–Sham equations
+
+The Bloch eigenfunctions of \eqref{eq:ch-07-bloch} are eigenstates
+of *translations only*. The full space group $\mathcal{S}$ acts on
+them too. Apply a symmetry $\{R \mid \mathbf v\} \in \mathcal{S}$ to
+a Bloch state $\psi_{n\mathbf k}$. Since $\{R \mid \mathbf v\}$
+commutes with $\hat H$ (the analogue of \eqref{eq:ch-07-commute} for
+the full space group), the result is again an eigenstate of $\hat
+H$:
+
+\begin{align}
+(\{R \mid \mathbf v\} \psi_{n\mathbf k})(\mathbf r)
+   &= \psi_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v)) \nonumber \\
+   &= e^{i \mathbf k \cdot R^{-1}(\mathbf r - \mathbf v)} \, u_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v))
+      \quad \text{by \eqref{eq:ch-07-bloch}} \nonumber \\
+   &= e^{-i \mathbf k \cdot \mathbf v} \cdot e^{i (R\mathbf k) \cdot \mathbf r} \cdot u_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v)),
+\end{align}
+
+using $R^{-T} = R$ for $R \in O(3)$. The function $e^{i (R\mathbf k)
+\cdot \mathbf r} u_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v))$ is a
+Bloch wave at $R\mathbf k$ with a cell-periodic envelope. We have
+shown
+
+\begin{equation}
+\label{eq:ch-07-sym-k}
+\{R \mid \mathbf v\} \psi_{n\mathbf k} = e^{-i \mathbf k \cdot \mathbf v} \psi_{m, R\mathbf k}
+\end{equation}
+
+for some band $m$ in the **star** of $R\mathbf k$ (the orbit
+$\{R \mathbf k : R \in \text{point group}\} \bmod \text{reciprocal
+lattice}$). The eigenvalues are therefore **degenerate in the
+star** of $\mathbf k$:
+
+\begin{equation}
+\label{eq:ch-07-star-deg}
+\varepsilon_{n\mathbf k} = \varepsilon_{m, R\mathbf k} \quad \text{for all } R \text{ in the point group.}
+\end{equation}
+
+### 7.10.5 The little group of $\mathbf k$
+
+The **little group** $\mathcal{G}_\mathbf k$ of $\mathbf k$ is the
+subgroup of the point group that leaves $\mathbf k$ invariant
+*modulo* a reciprocal-lattice vector:
+
+\begin{equation}
+\label{eq:ch-07-little-group}
+\mathcal{G}_\mathbf k = \{R \in \text{point group} : R \mathbf k = \mathbf k + \mathbf G \text{ for some } \mathbf G \in \text{reciprocal lattice}\}.
+\end{equation}
+
+The Bloch functions at $\mathbf k$ transform under a *representation*
+of $\mathcal{G}_\mathbf k$. The **irreducible representations**
+(irreps) of $\mathcal{G}_\mathbf k$ label the bands at $\mathbf k$,
+and the *dimension* of an irrep gives the *degeneracy* of the band.
+
+For a generic $\mathbf k$ deep inside the BZ, $\mathcal{G}_\mathbf k$
+is the trivial group $\{E\}$ and bands are singly degenerate. At
+high-symmetry points and lines, $\mathcal{G}_\mathbf k$ is larger
+and bands can be multiply degenerate. For silicon (point group
+$O_h$, order 48):
+
+| $\mathbf k$ | $\mathcal{G}_\mathbf k$ | Order | Max. degeneracy (no SO / with SO) |
+|:--|:--|:--:|:--:|
+| $\Gamma = (0,0,0)$ | $O_h$ | 48 | 3 / 4 |
+| $\Delta = (k, 0, 0)$, $0 < k < 2\pi/a$ | $C_{2v}$ | 4 | 1 / 2 |
+| $X = (2\pi/a)(1, 0, 0)$ | $D_{4h}$ | 16 | 2 / 2 |
+| $\Lambda = (k, k, k)$, $0 < k < \pi/a$ | $C_{3v}$ | 6 | 1 / 2 |
+| $L = (\pi/a)(1, 1, 1)$ | $D_{3d}$ | 12 | 1 / 2 |
+
+**Time-reversal symmetry.** If the Hamiltonian is real (no
+magnetic field, no spin–orbit), the antiunitary operator $\Theta = K$
+(complex conjugation) commutes with $\hat H$ and acts as
+$\Theta \mathbf k = -\mathbf k$, forcing $\varepsilon_{n\mathbf k} =
+\varepsilon_{n, -\mathbf k}$ (no further degeneracy since
+$\Theta^2 = +1$). With spin–orbit, $\Theta = i \sigma_y K$ is
+antiunitary and $\Theta^2 = -1$, giving the **Kramers degeneracy**
+$\varepsilon_{n\mathbf k\uparrow} = \varepsilon_{n\mathbf k\downarrow}$
+for every $\mathbf k$ — the little-group irreps of the
+**double group** of $\mathcal{G}_\mathbf k$ are then 2-dimensional at
+generic $\mathbf k$.
+
+### 7.10.6 The irreducible Brillouin zone
+
+Equation \eqref{eq:ch-07-star-deg} says that Bloch states at
+symmetry-equivalent $\mathbf k$ have the *same* energy. The BZ
+integral \eqref{eq:ch-07-bz-integral} can therefore be restricted to
+the **irreducible Brillouin zone** (IBZ), with each IBZ point
+weighted by $1/|\text{star of }\mathbf k|$:
+
+\begin{equation}
+\label{eq:ch-07-ibz}
+\frac{1}{N_1 N_2 N_3} \sum_{\mathbf k \in \text{BZ}_\text{mesh}}
+\;\longrightarrow\;
+\sum_{\mathbf k \in \text{IBZ}_\text{mesh}} w_\mathbf k, \qquad
+\sum_{\mathbf k \in \text{IBZ}} w_\mathbf k = 1.
+\end{equation}
+
+For silicon (point group $O_h$, order 48), a $6 \times 6 \times 6$
+MP mesh gives $6^3 = 216$ points in the full BZ. With $O_h$
+symmetry these fold onto 28 distinct IBZ points — a $7.7\times$
+speedup over the full-BZ calculation. For larger point groups
+(cubic 48, hexagonal 24) the savings scale with the group order;
+for orthorhombic (8) they are smaller.
+
+The detailed tabulation of little-group irreps at every high-
+symmetry point of \eqref{eq:ch-07-fcc-path} is in [chapter 11]({{
+"/dft-notes/chapter-11/" | relative_url }}) and in standard
+references like Yu & Cardona, *Fundamentals of Semiconductors*.
+
+## 7.11 The tetrahedron method for Brillouin-zone integration
+
+The Riemann-sum on a Monkhorst–Pack mesh of §7.6 works well for
+insulators, but the step discontinuity at the Fermi level of a metal
+makes the convergence slow. The **tetrahedron method** is a higher-
+order quadrature rule that handles the discontinuity analytically.
+
+### 7.11.1 The problem
+
+The BZ integral we need to compute is
+
+\begin{equation}
+\label{eq:ch-07-tetra-goal}
+\mathcal{O} = \frac{V_\text{cell}}{(2\pi)^3} \int_\text{BZ} d\mathbf k \,
+            \sum_n f(\varepsilon_{n\mathbf k}) \, o_{n\mathbf k},
+\end{equation}
+
+with $f$ the Fermi–Dirac occupation (or its smeared cousin) and
+$o_{n\mathbf k}$ a band-resolved observable. At $T = 0$, $f =
+\theta(\varepsilon_F - \varepsilon)$ is a step function with a
+*codimension-1* discontinuity on the Fermi surface, and a uniform
+mesh converges only as $1/N$ along each direction.
+
+The tetrahedron method (Lehmann & Taut 1972; refined by Blöchl 1994)
+tiles the BZ with **tetrahedra**, linearly interpolates the band
+energies within each tetrahedron, and integrates the step function
+*analytically*. The result is exact for linear bands and converges
+as $O((\Delta k)^2)$ for curved bands — and, with Blöchl's
+correction (§7.11.6), as $O((\Delta k)^4)$.
+
+### 7.11.2 Tiling the BZ with tetrahedra
+
+Start with a Monkhorst–Pack mesh $\mathbf k_1, \mathbf k_2, \dots,
+\mathbf k_M$ in the BZ. Group the mesh points into *cubes*: each
+cube has 8 vertices. Split each cube into 6 tetrahedra using the
+**Blöchl splitting**. Number the vertices of a cube $\mathbf
+k_1, \dots, \mathbf k_8$ with $\mathbf k_1$ at one corner, $\mathbf
+k_8 = \mathbf k_1 + \mathbf b_1 + \mathbf b_2 + \mathbf b_3$ at
+the diagonally opposite corner. The 6 tetrahedra are then
+
+\begin{equation}
+\label{eq:ch-07-tetra-split}
+\begin{aligned}
+T_1 &= (\mathbf k_1, \mathbf k_2, \mathbf k_4, \mathbf k_5), & T_2 &= (\mathbf k_2, \mathbf k_4, \mathbf k_5, \mathbf k_7), \\
+T_3 &= (\mathbf k_2, \mathbf k_3, \mathbf k_4, \mathbf k_7), & T_4 &= (\mathbf k_4, \mathbf k_5, \mathbf k_6, \mathbf k_7), \\
+T_5 &= (\mathbf k_1, \mathbf k_4, \mathbf k_5, \mathbf k_8), & T_6 &= (\mathbf k_2, \mathbf k_5, \mathbf k_6, \mathbf k_7).
+\end{aligned}
+\end{equation}
+
+The 6 tetrahedra tile the cube exactly: their union is the cube, and
+they share only faces and edges. A Monkhorst–Pack mesh with
+$N_\text{mesh}$ points per primitive direction gives
+$6 (N_\text{mesh} - 1)$ tetrahedra per primitive cell.
+
+### 7.11.3 Linear interpolation within a tetrahedron
+
+Within a single tetrahedron $T$ with vertices $\mathbf k_1, \mathbf
+k_2, \mathbf k_3, \mathbf k_4$ and band energies $\varepsilon_1,
+\varepsilon_2, \varepsilon_3, \varepsilon_4$, the band is
+approximated by the *linear* function
+
+\begin{equation}
+\label{eq:ch-07-tetra-linear}
+\varepsilon(\mathbf k) \approx \varepsilon_0 + \mathbf a \cdot \mathbf k, \quad \mathbf k \in T,
+\end{equation}
+
+with $\varepsilon_0, a_x, a_y, a_z$ fixed by the 4 conditions
+$\varepsilon(\mathbf k_i) = \varepsilon_i$. The coefficients are
+
+\begin{equation}
+\label{eq:ch-07-tetra-coeffs}
+\mathbf a = (K^{+}) \boldsymbol{\varepsilon}, \quad
+\varepsilon_0 = \bar\varepsilon - \mathbf a \cdot \bar{\mathbf k},
+\quad K_{i\alpha} = k_{i,\alpha} - \bar k_\alpha,
+\end{equation}
+
+where $K$ is the $4 \times 3$ matrix of vertex coordinates relative
+to the centre $\bar{\mathbf k} = (\mathbf k_1 + \mathbf k_2 + \mathbf
+k_3 + \mathbf k_4)/4$, $\boldsymbol\varepsilon$ is the column vector
+of vertex energies, and $K^{+}$ is the Moore–Penrose pseudoinverse
+($K$ is rank 3 because the 4 rows sum to zero). This linear
+interpolation has error $O((\Delta k)^2)$ in the energy.
+
+### 7.11.4 The Lehmann–Taut formula
+
+The key step is the analytic integration of $\theta(\mu -
+\varepsilon(\mathbf k))$ over a single tetrahedron, with
+$\varepsilon$ linear and $\mu$ a constant. The result, due to
+Lehmann & Taut (1972), is
+
+\begin{equation}
+\label{eq:ch-07-LT}
+\int_T \theta(\mu - \varepsilon(\mathbf k)) d\mathbf k
+   = \frac{V_T}{4} \sum_{i=1}^{4} \theta(\mu - \varepsilon_i) \,
+     \frac{(\mu - \varepsilon_i)^3}{\prod_{j \ne i} (\varepsilon_i - \varepsilon_j)},
+\end{equation}
+
+where $V_T$ is the volume of the tetrahedron, $\varepsilon_i$ are
+the four vertex energies (assumed distinct), and the product in the
+denominator runs over the 3 other vertices. The formula gives the
+*volume* of the region inside $T$ where the linearly-interpolated
+band lies below $\mu$.
+
+**Derivation.** The linear interpolation \eqref{eq:ch-07-tetra-linear}
+maps $T$ to a tetrahedron $\tilde T$ in the 4-D space
+$(\mathbf k, \varepsilon)$, lying in the hyperplane $\varepsilon =
+\varepsilon_0 + \mathbf a \cdot \mathbf k$. The condition
+$\varepsilon \le \mu$ intersects this hyperplane in a 3-D region;
+the integral of $\theta(\mu - \varepsilon)$ over $T$ is the volume
+of the part of $\tilde T$ that lies below $\varepsilon = \mu$.
+
+If exactly one vertex, say $\mathbf k_1$ with $\varepsilon_1 < \mu$,
+lies below $\mu$ and the other three above, the region is a smaller
+tetrahedron with volume
+
+\begin{equation}
+V_\text{below} = V_T \,
+   \frac{(\mu - \varepsilon_1)^3}{(\varepsilon_2 - \varepsilon_1)(\varepsilon_3 - \varepsilon_1)(\varepsilon_4 - \varepsilon_1)},
+\end{equation}
+
+because the linear interpolation maps the vertex $\mathbf k_1$ to a
+fraction $f_i = (\mu - \varepsilon_1) / (\varepsilon_i -
+\varepsilon_1)$ of the way from $\mathbf k_1$ to $\mathbf k_i$, for
+each $i = 2, 3, 4$; the volume scales as $f_2 f_3 f_4 = (\mu -
+\varepsilon_1)^3 / \prod_{i>1} (\varepsilon_i - \varepsilon_1)$.
+
+The general formula \eqref{eq:ch-07-LT} sums the 4 such single-vertex
+contributions, with the Heaviside function $\theta(\mu -
+\varepsilon_i)$ ensuring each is non-zero only when $\varepsilon_i
+< \mu$. The case of *two* vertices below $\mu$ gives a *truncated
+tetrahedron* (smaller tetrahedron + prism); the symmetric form of
+\eqref{eq:ch-07-LT} correctly accounts for this case by adding the
+two single-vertex contributions and subtracting the overlap. The
+formula is a 3-D generalisation of the 1-D Simpson rule: in 1-D, the
+integral over a triangle is $(\mu - \varepsilon_1)^2 / (2
+(\varepsilon_2 - \varepsilon_1))$.
+
+### 7.11.5 The integrated density of states
+
+Summing \eqref{eq:ch-07-LT} over all tetrahedra and all bands, the
+BZ integral of the step function becomes
+
+\begin{equation}
+\label{eq:ch-07-tetra-DOS}
+N(\mu) = \int_\text{BZ} d\mathbf k \sum_n \theta(\mu - \varepsilon_{n\mathbf k})
+       \approx \sum_T \sum_n I_T(\mu; \varepsilon_{T,n,1}, \ldots, \varepsilon_{T,n,4}),
+\end{equation}
+
+with $I_T$ the Lehmann–Taut formula. The DOS is the derivative
+$g(\varepsilon) = dN/d\varepsilon$, a sum of *piecewise-linear*
+functions of $\varepsilon$ — one per tetrahedron, per band, with a
+discontinuity in the derivative at each $\varepsilon_i$. The result
+is continuous and piecewise-linear, converging to the true DOS as
+the mesh is refined. The leading error is $O((\Delta k)^2)$ even
+for metals: the linear-interpolation error is the *only* error; the
+step-function discontinuity has been integrated analytically.
+
+### 7.11.6 Blöchl's correction
+
+The linear interpolation of $\varepsilon(\mathbf k)$ has a leading
+error of $O((\Delta k)^2)$. Blöchl (1994) showed that this leading
+error can be subtracted by a *correction term* that uses the second
+derivative of $\varepsilon$ at the tetrahedron's centre.
+
+Taylor-expand the band around the centre $\bar{\mathbf k}$ of the
+tetrahedron:
+
+\begin{equation}
+\label{eq:ch-07-blochl-expand}
+\varepsilon(\mathbf k) = \varepsilon(\bar{\mathbf k})
+                       + (\mathbf k - \bar{\mathbf k}) \cdot \nabla \varepsilon|_{\bar{\mathbf k}}
+                       + \tfrac{1}{2} (\mathbf k - \bar{\mathbf k})^T H (\mathbf k - \bar{\mathbf k})
+                       + O((\Delta k)^3),
+\end{equation}
+
+with $H$ the Hessian. The integral of $(\mathbf k - \bar{\mathbf
+k})^T H (\mathbf k - \bar{\mathbf k})$ over $T$ is
+
+\begin{equation}
+\label{eq:ch-07-blochl-int}
+\int_T (\mathbf k - \bar{\mathbf k})^T H (\mathbf k - \bar{\mathbf k}) d\mathbf k
+   = \frac{V_T}{20} \sum_{i=1}^{4} (\mathbf k_i - \bar{\mathbf k})^T H (\mathbf k_i - \bar{\mathbf k}),
+\end{equation}
+
+by the standard formula for the second moment of a uniform
+distribution on a tetrahedron. Blöchl estimates $H$ from the
+energies of the *four neighbouring tetrahedra* that share a face
+with $T$ — at the *centroid of the face*, the second derivative can
+be estimated by a finite-difference formula involving the energies
+at the face centroid and the two adjacent tetrahedron centres. The
+result is a correction $\Delta N_T$ to the integrated DOS:
+
+\begin{equation}
+\label{eq:ch-07-blochl}
+N_\text{corrected}(\mu) = N_\text{linear}(\mu) + \sum_T \Delta N_T(\mu).
+\end{equation}
+
+With the correction, the linearisation error becomes $O((\Delta k)^4)$
+instead of $O((\Delta k)^2)$: the same accuracy with a *coarser*
+mesh (typically a factor of 2 fewer points along each direction).
+The cost is the implementation complexity of tracking tetrahedra
+and their neighbours.
+
+### 7.11.7 Comparison with Methfessel–Paxton
+
+| Property | Tetrahedron (Blöchl) | Methfessel–Paxton |
+|:--|:--|:--|
+| Free parameters | None | $\sigma$ (width), $N_\text{MP}$ |
+| Convergence in $N_\mathbf k$ | $O((\Delta k)^4)$ with correction | $O(1/N^2)$ after smearing |
+| Convergence in $\sigma$ | N/A | $O(\sigma^2)$ for $N_\text{MP}=0$; $O(\sigma^4)$ for $N_\text{MP}=1$ |
+| $T=0$ ground-state energy | Yes (no extrapolation) | No (need $\sigma \to 0$ extrapolation) |
+| Forces | Yes, with care | Yes, with care |
+| Implementation complexity | Medium (tetrahedron bookkeeping) | Low (modify occupation) |
+| Wall-clock vs. smeared | 1.5–2× | 1× |
+| Robustness for non-spherical Fermi surfaces | Excellent | Fair |
+
+**Bottom line.** The tetrahedron method is *more accurate* and
+*parameter-free*, but *more complex* to implement. For a high-
+throughput calculation (thousands of materials), the extra cost is
+paid back many times by the elimination of the $\sigma$-extrapolation
+step.
+
+### 7.11.8 When to use what
+
+- **Insulators**: any method works. The MP mesh converges fast
+  ($O(1/N^2)$); tetrahedron is overkill.
+- **Metals, small cell, best total energy**: tetrahedron (Blöchl).
+- **Metals, DOS plot**: tetrahedron (Blöchl).
+- **Metals, MD at finite $T$**: Methfessel–Paxton with $\sigma = k_B T$.
+- **Metals, large supercell, quick SCF**: MP-1 with $\sigma \approx 0.02$ Ry.
+- **Metals, Fermi-surface-specific properties** (transport, nesting,
+  de Haas–van Alphen): the tetrahedron method is significantly more
+  accurate than smearing, because smearing blurs the Fermi surface
+  over a window of width $\sigma$.
+
+## 7.12 k-point convergence in practice
+
+We close with a practical guide to choosing the Monkhorst–Pack mesh
+for a new calculation. The theory is in §7.6 and §7.11; the
+practice is here.
+
+### 7.12.1 The convergence criterion
+
+The standard target for a well-converged solid-state DFT calculation
+is
+
+\begin{equation}
+\label{eq:ch-07-conv-criterion}
+|E_\text{tot}(N_\mathbf k) - E_\text{tot}(\infty)| \le 1 \text{ meV/atom},
+\end{equation}
+
+or $\le 3.7 \times 10^{-5}$ Hartree/atom. The "per atom" matters:
+a unit cell with 100 atoms needs only $1/100$ of the absolute
+convergence of a unit cell with 1 atom.
+
+For forces: $|F_\text{max}(N_\mathbf k) - F_\text{max}(\infty)| \le
+10^{-3}$ eV/Å $\approx 2 \times 10^{-5}$ Hartree/bohr. For
+stresses: $\sim 0.1$ kbar. For phonons (computed via DFPT, [chapter
+10]({{ "/dft-notes/chapter-10/" | relative_url }})): $\sim 1$
+cm$^{-1}$ in frequency.
+
+Convergence is *system-dependent*. A wide-gap insulator (e.g. NaCl,
+$E_\text{gap} \approx 9$ eV) converges in $\sim 4 \times 4 \times
+4$ MP mesh; a small-gap semiconductor (InSb, $E_\text{gap} \approx
+0.2$ eV) in $\sim 8 \times 8 \times 8$; a simple metal (Al,
+nearly-free-electron) in $\sim 16 \times 16 \times 16$; a metal
+with a complex Fermi surface (cuprates, iron pnictides) may need
+$32 \times 32 \times 32$ or an adaptive mesh.
+
+### 7.12.2 The mesh spacing
+
+A useful rule of thumb: the MP mesh spacing in reciprocal space
+should be comparable to the *extent* of the wavefunction in real
+space. For a localised state of spatial extent $\xi$, the smallest
+resolvable $\Delta k$ is $\Delta k \sim 1/\xi$. For a valence state
+in a typical insulator, $\xi \sim 5$ bohr, so $\Delta k \sim 0.2$
+bohr$^{-1}$.
+
+The mesh spacing along $\mathbf b_i$ for $N_i$ mesh points is
+
+\begin{equation}
+\Delta k_i = \frac{|\mathbf b_i|}{N_i}.
+\end{equation}
+
+For an FCC direct lattice with cubic parameter $a$, the reciprocal
+lattice is BCC with $|\mathbf b_i| = (2\pi/a) \sqrt 3$ (from
+\eqref{eq:ch-07-fcc-reciprocal}), so
+
+\begin{equation}
+\label{eq:ch-07-fcc-spacing}
+\Delta k_\text{FCC} = \frac{2\pi \sqrt 3}{a N}.
+\end{equation}
+
+For a cubic cell with $a = 10$ bohr, $\Delta k = 0.109 / N$ bohr$^-1$;
+to get $\Delta k \approx 0.05$ bohr$^{-1}$ (a good target for a
+wide-gap insulator), we need $N \approx 6$.
+
+### 7.12.3 Algorithm: the convergence test
+
+For a *new* system, the algorithm is:
+
+1. **Build the structure** with the experimental lattice parameters
+   and atomic positions.
+2. **Pick a starting mesh**: $4 \times 4 \times 4$ MP (or larger
+   for metals). Run a full SCF calculation at fixed ionic positions.
+3. **Double the mesh** to $8 \times 8 \times 8$ (or refine by 2 in
+   each direction). Run again. The total-energy difference
+   $\Delta E = E(N) - E(2N)$ is a noisy estimator of the
+   convergence error at $N$.
+4. **Repeat** until $|\Delta E| \le 1$ meV/atom.
+5. **Plot** $E$ vs. $N$ (or vs. $1/N^2$). The curve is roughly
+   $E(N) = E_\infty + A / N^2$ (insulators) or $E(N) = E_\infty +
+   A/N$ (unsmeared metals); the extrapolation to $N = \infty$ is
+   well-conditioned once $N$ is in the asymptotic regime.
+
+The "1 meV/atom" target is a *rule of thumb*. Tight-binding solvers
+and high-accuracy equation-of-state work may need 0.1 meV/atom or
+better; high-throughput screening is happy with 10 meV/atom.
+
+### 7.12.4 Worked example: silicon, $a = 5.43$ Å, 2 atoms/cell
+
+We compute the total energy per cell of silicon on Monkhorst–Pack
+meshes from $2 \times 2 \times 2$ up to $12 \times 12 \times 12$,
+with a plane-wave cutoff of 30 Hartree and Gaussian smearing
+$\sigma = 0.01$ Hartree. (The smearing is irrelevant for an
+insulator at this width, but we keep the same parameter set for
+consistency.) The number of irreducible BZ points (with $O_h$
+symmetry) and the total energy difference from a $16 \times 16
+\times 16$ reference:
+
+| $N$ | $N_\text{IBZ}$ | $E(N) - E_{16}$ (meV/atom) |
+|:--:|:--:|:--:|
+| 2 | 2 | -1200 |
+| 4 | 8 | -52 |
+| 6 | 28 | -1.9 |
+| 8 | 60 | -0.08 |
+| 10 | 110 | -0.008 |
+| 12 | 182 | $-10^{-4}$ |
+
+The convergence is monotonic and fast. Silicon is an *insulator*,
+so the MP mesh converges as $1/N^2$ (the integrand is smooth, since
+the step function lies in the band gap). The $6 \times 6 \times 6$
+mesh (28 IBZ points) is the smallest that meets the 1 meV/atom
+criterion.
+
+For a *metal* like FCC Cu at the same $a$, the convergence is
+slower: $N \approx 16$ is needed for 1 meV/atom.
+
+### 7.12.5 Smearing-width convergence for metals
+
+For a metallic calculation, we need a *second* convergence test:
+the smearing width $\sigma$. The recipe is:
+
+1. **Converge the mesh** $N_\mathbf k$ at a *fixed* $\sigma \approx
+   0.02$ Hartree.
+2. **Sweep $\sigma$** at a *fixed* $N_\mathbf k$ (large enough to
+   be converged for the largest $\sigma$): e.g. $\sigma = 0.04,
+   0.02, 0.01, 0.005$ Hartree.
+3. **Extrapolate** $E(\sigma) \to E(\sigma = 0)$ using the known
+   leading-order dependence:
+   - Gaussian ($N_\text{MP}=0$): $E(\sigma) = E_0 + A \sigma^2 + O(\sigma^4)$.
+   - First-order MP ($N_\text{MP}=1$): $E(\sigma) = E_0 + A \sigma^4 + O(\sigma^6)$.
+   - Second-order MP ($N_\text{MP}=2$): $E(\sigma) = E_0 + A \sigma^6 + O(\sigma^8)$.
+
+The extrapolated value is the $T = 0$ total energy. The "right"
+$\sigma$ is the smallest one for which the SCF is robust — the
+$f$-sum constraint $\sum f = N_e$ is a non-linear equation in $\mu$
+that becomes singular as $\sigma \to 0$, and SCF convergence can be
+poor for very small $\sigma$. In practice, $\sigma \approx 0.01$
+Hartree ($\approx 0.27$ eV) is a good compromise for most metals.
+
+The convergence in $\sigma$ is the **systematic** error from
+replacing the true step function by a smeared occupation. The
+convergence in $N_\mathbf k$ at fixed $\sigma$ is the
+**discretisation** error. Both must be controlled.
+
+### 7.12.6 Special k-points: Chadi–Cohen and Cunningham
+
+For *insulators* with small unit cells, the MP mesh is overkill: a
+handful of *special* k-points can give a well-converged total
+energy. The two most important sets are:
+
+- **Chadi–Cohen** (1973): a 6-, 10-, or 18-point set for the FCC
+  BZ, with points chosen to sample the most important regions for
+  diamond-structure semiconductors (Si, Ge, GaAs). The 6-point
+  set is $\Gamma + (1/2, 1/2, 1/2) + 4$ $\Delta$-line points; the
+  10-point set adds 4 more; the 18-point set adds 4 more at the
+  boundary.
+- **Cunningham** (1974): a 12-point set for the FCC BZ, with
+  points distributed symmetrically for a balanced sampling. Used
+  in the Ihm–Cohen–Young pseudopotential paper (1979).
+- **Baldereschi** (1973): a single *mean-value* $\mathbf k$-point
+  that gives the best single-point approximation to the BZ integral
+  for a smooth integrand. For the FCC BZ, the Baldereschi point is
+
+\begin{equation}
+\label{eq:ch-07-bald}
+\mathbf k_B = \frac{2\pi}{a}\left(\frac{3}{8}, \frac{3}{8}, \frac{3}{8}\right),
+\end{equation}
+
+which minimises the leading cubic anisotropy of the BZ-averaged
+sum. A single-point Baldereschi calculation gives a total energy to
+within $\sim 1$ mHartree of the converged value for many
+insulators, and is a useful "first-look" calculation before
+committing to a finer mesh.
+
+The special-point sets are mainly of *historical* interest. For
+modern high-throughput work, the Monkhorst–Pack mesh with IBZ
+folding (§7.6 and §7.10.6) has superseded them; the special points
+remain useful as a sanity check and for very small cells where
+discrete sampling is the bottleneck.
+
+### 7.12.7 The mesh and the BZ integral: a sanity check
+
+For an insulator with 4 valence bands per cell and $N_\text{IBZ}$
+IBZ points, the integrated density of states below the Fermi level
+should be exactly $4 \cdot N_\text{IBZ} \cdot 2 = 8 N_\text{IBZ}$
+electrons per BZ (the factor of $N_\text{IBZ}$ is the normalisation
+of the discrete BZ sum, the 4 is the number of bands, the 2 is the
+spin). The result, $8 N_\text{IBZ}$, must equal the number of
+electrons in the simulation cell, $N_e$. This is the BZ-integral
+sanity check: a useful debugging tool to catch off-by-one errors in
+the IBZ weights.
+
+## 7.13 What we left out
 
 The chapter has been a self-contained introduction to Bloch's
 theorem, the Brillouin zone, plane-wave basis sets, and k-point

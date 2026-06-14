@@ -1235,6 +1235,877 @@ omissions.
   *exactly* the same as the choice of $r_c$ in a
   norm-conserving pseudo.
 
+## 8.12 PAW in detail
+
+The **projector augmented wave (PAW)** method was introduced by
+Blöchl (1994) as a generalisation of both the pseudopotential
+approach (§§ 8.1–8.6) and the linearised augmented plane wave
+(LAPW) method. The § 8.7 introduction was a sketch; this
+section is the full derivation.
+
+### 8.12.1 The PAW ansatz
+
+The fundamental object is a one-body state
+$|\Psi_n\rangle \in \mathcal{H}$ (the all-electron Hilbert
+space) and a smooth partner
+$|\tilde\Psi_n\rangle \in \tilde{\mathcal{H}}$ (the
+pseudo-Hilbert space of plane-wave-friendly functions). The
+two are related by a linear, invertible transformation
+$\hat{\mathcal{T}}$ that is the identity outside a set of
+**augmentation spheres** $\Omega_R$ of radius $r_a$ centred
+on each atom:
+
+\begin{equation}
+\label{eq:ch-08-paw-ansatz}
+|\Psi_n\rangle = \hat{\mathcal{T}}|\tilde\Psi_n\rangle.
+\end{equation}
+
+The transformation is required to:
+
+1. Act as the identity outside $\bigcup_R \Omega_R$.
+2. Reproduce the all-electron wavefunction inside each
+   $\Omega_R$ when applied to a smooth partner.
+3. Be invertible, so that the smooth partner can be
+   recovered from the all-electron state by
+   $|\tilde\Psi_n\rangle = \hat{\mathcal{T}}^{-1}|\Psi_n\rangle$.
+
+### 8.12.2 Partial waves, pseudo partial waves, and projectors
+
+Inside the augmentation sphere around atom $R$, both
+$|\Psi_n\rangle$ and $|\tilde\Psi_n\rangle$ are expanded in
+a local basis of **partial waves**. The basis is indexed by
+a composite quantum number $i = (R, n, l, m)$ where $R$ is
+the atom, $n$ labels the radial channel (e.g. $1s$, $2s$,
+$2p$ inside the sphere), $l$ is the angular momentum, and
+$m$ is its $z$-component. The partial waves are the
+solutions of the all-electron radial equation in the
+spherical potential well of atom $R$ at chosen reference
+energies $\varepsilon_{Ri}$:
+
+\begin{align}
+\phi_i^R(\mathbf r) &= \phi_{R,n_i,l_i}(r)\, Y_{l_i m_i}(\hat{\mathbf r}), \label{eq:ch-08-paw-ae-pw} \\
+\tilde\phi_i^R(\mathbf r) &= \tilde\phi_{R,n_i,l_i}(r)\, Y_{l_i m_i}(\hat{\mathbf r}). \label{eq:ch-08-paw-ps-pw}
+\end{align}
+
+The $\phi_i^R$ are the **all-electron partial waves** (the
+true atomic wavefunctions evaluated inside the sphere); the
+$\tilde\phi_i^R$ are the **pseudo partial waves** — smooth
+functions that agree with $\phi_i^R$ in value and derivative
+at $r = r_a$ and are nodeless inside.
+
+To each pseudo partial wave we associate a **projector**
+$\langle \tilde p_i^R |$, also a function of $\mathbf r$ with
+the same angular structure. The projectors are required to
+satisfy two conditions:
+
+1. **Biorthogonality with the pseudo partial waves:**
+   \begin{equation}
+   \label{eq:ch-08-paw-biorthog}
+   \langle \tilde p_i^R | \tilde\phi_j^{R'} \rangle = \delta_{RR'} \delta_{ij}.
+   \end{equation}
+
+2. **Completeness inside the augmentation sphere:**
+   \begin{equation}
+   \label{eq:ch-08-paw-completeness}
+   \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | = 1 \quad \text{inside } \Omega_R.
+   \end{equation}
+
+Condition 2 is the crucial one. It says that any smooth
+function can be expanded exactly in the basis of pseudo
+partial waves inside the augmentation sphere. (In practice
+the sum is truncated to a finite number of channels
+$i = 1, \ldots, N_{pw}$ per atom, typically $N_{pw} = 4$–$8$,
+and the completeness becomes approximate; the
+approximation is the "partial-wave basis" error of PAW.)
+
+### 8.12.3 The reconstruction formula
+
+The transformation $\hat{\mathcal{T}}$ is constructed by
+demanding that, inside each augmentation sphere, the
+all-electron wavefunction is recovered by *substituting* the
+all-electron partial waves for the pseudo partial waves,
+weighted by the overlap of the smooth partner with the
+projector:
+
+\begin{equation}
+\label{eq:ch-08-paw-reconstruct-derivation}
+\hat{\mathcal{T}} = 1 + \sum_R \sum_i \bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\bigr) \langle \tilde p_i^R |.
+\end{equation}
+
+To verify that this is correct, apply it to a smooth state
+$|\tilde\Psi_n\rangle$:
+
+\begin{equation}
+\label{eq:ch-08-paw-apply-t}
+|\Psi_n\rangle = |\tilde\Psi_n\rangle + \sum_{R,i} \bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle.
+\end{equation}
+
+Split the smooth state into "outside the augmentation
+spheres" and "inside each sphere":
+
+\begin{align}
+|\tilde\Psi_n\rangle &= |\tilde\Psi_n^{out}\rangle + \sum_R |\tilde\Psi_n^R\rangle, \label{eq:ch-08-paw-split} \\
+|\tilde\Psi_n^R\rangle &\equiv \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle. \label{eq:ch-08-paw-pw-expand}
+\end{align}
+
+Equation \eqref{eq:ch-08-paw-pw-expand} is just the
+completeness relation \eqref{eq:ch-08-paw-completeness}
+applied to $|\tilde\Psi_n^R\rangle$ inside $\Omega_R$. Now
+substitute into \eqref{eq:ch-08-paw-apply-t}:
+
+\begin{align}
+|\Psi_n\rangle &= |\tilde\Psi_n^{out}\rangle + \sum_R |\tilde\Psi_n^R\rangle + \sum_{R,i} \bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\
+&= |\tilde\Psi_n^{out}\rangle + \sum_R \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle + \sum_{R,i} \bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\
+&= |\tilde\Psi_n^{out}\rangle + \sum_R \sum_i |\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle. \label{eq:ch-08-paw-final}
+\end{align}
+
+So inside each augmentation sphere, $\Psi_n$ is the
+all-electron partial-wave expansion
+$\sum_i \phi_i^R \langle \tilde p_i^R | \tilde\Psi_n\rangle$;
+outside, $\Psi_n = \tilde\Psi_n$. The transformation is
+*exact* (within the partial-wave basis) and invertible:
+
+\begin{equation}
+\label{eq:ch-08-paw-inverse}
+\hat{\mathcal{T}}^{-1} = 1 + \sum_R \sum_i \bigl(|\tilde\phi_i^R\rangle - |\phi_i^R\rangle\bigr) \langle \tilde p_i^R |.
+\end{equation}
+
+The same derivation with $\phi \leftrightarrow \tilde\phi$
+gives the inverse; biorthogonality \eqref{eq:ch-08-paw-biorthog}
+guarantees that $\hat{\mathcal{T}}\hat{\mathcal{T}}^{-1} = 1$.
+
+### 8.12.4 The PAW Hamiltonian
+
+A general one-body operator $\hat O$ acting on the
+all-electron state becomes, in the PAW framework, an
+operator on the smooth state:
+
+\begin{equation}
+\label{eq:ch-08-paw-operator}
+\langle \Psi_n | \hat O | \Psi_m \rangle = \langle \tilde\Psi_n | \hat{\mathcal{T}}^\dagger \hat O \hat{\mathcal{T}} | \tilde\Psi_m \rangle \equiv \langle \tilde\Psi_n | \tilde O | \tilde\Psi_m \rangle.
+\end{equation}
+
+The "PAW-transformed" operator $\tilde O$ contains three
+pieces:
+
+\begin{equation}
+\label{eq:ch-08-paw-3pieces}
+\tilde O = \hat O + \sum_R \sum_{i,j} |\tilde p_i^R\rangle \bigl[ \langle \phi_i^R | \hat O | \phi_j^R \rangle - \langle \tilde\phi_i^R | \hat O | \tilde\phi_j^R \rangle \bigr] \langle \tilde p_j^R |.
+\end{equation}
+
+This follows from $\hat{\mathcal{T}} = 1 + \sum_{R,i}(|\phi_i^R\rangle
+- |\tilde\phi_i^R\rangle) \langle \tilde p_i^R |$ and the
+biorthogonality. The first term, $\hat O$, is the operator
+acting on the smooth wavefunction. The bracket is the
+**on-site correction**: the difference between the
+all-electron matrix element and the pseudo matrix element
+of $\hat O$, evaluated in the partial-wave basis. The sum
+runs over the partial-wave indices inside the augmentation
+sphere.
+
+For the Kohn–Sham Hamiltonian
+$\hat H_{KS} = -\tfrac{1}{2}\nabla^2 + V_{eff}[\rho](\mathbf r)$,
+the three pieces become:
+
+\begin{align}
+\tilde T &\equiv -\tfrac{1}{2}\nabla^2, \label{eq:ch-08-paw-T} \\
+\tilde V_{eff} &\equiv V_{eff}[\tilde\rho + \hat\rho^1](\mathbf r), \label{eq:ch-08-paw-Veff} \\
+\tilde H_{aug} &\equiv \sum_{R,ij} |\tilde p_i^R\rangle \bigl[ \langle \phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{eff}[\rho] | \phi_j^R \rangle - \langle \tilde\phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{eff}[\tilde\rho] | \tilde\phi_j^R \rangle \bigr] \langle \tilde p_j^R |. \label{eq:ch-08-paw-Haug}
+\end{align}
+
+The crucial point is the **double-counting subtraction** in
+\eqref{eq:ch-08-paw-Veff}: the smooth potential is evaluated
+on the *pseudo* charge density $\tilde\rho$, not on the
+all-electron $\rho$. The on-site augmentation
+$\tilde H_{aug}$ then adds back the difference. This
+decomposition is the key to the efficiency of PAW: the
+smooth potential is evaluated on a plane-wave grid, the
+on-site contributions are evaluated in real space on
+radial/angular grids around each atom.
+
+### 8.12.5 The augmentation charge
+
+The all-electron charge density is reconstructed in the
+same way as the wavefunction:
+
+\begin{equation}
+\label{eq:ch-08-paw-density-reconstruct}
+\rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\bigr],
+\end{equation}
+
+where
+
+\begin{equation}
+\label{eq:ch-08-paw-on-site-density}
+\rho^R(\mathbf r) = \sum_{n,\text{occ}} \sum_{i,j} \phi_i^R(\mathbf r) \phi_j^{R*}(\mathbf r) \langle \tilde\Psi_n | \tilde p_i^R \rangle \langle \tilde p_j^R | \tilde\Psi_n \rangle f_n,
+\end{equation}
+
+and similarly for $\tilde\rho^R$ with $\tilde\phi$ in place
+of $\phi$. The on-site density $\rho^R$ contains *all*
+one-body products of partial waves; for $N_{pw} = 4$ partial
+waves per atom there are $N_{pw}^2 = 16$ such products, and
+each is a function of $\mathbf r$ on the radial grid inside
+the augmentation sphere.
+
+Defining the **occupancy matrix**
+
+\begin{equation}
+\label{eq:ch-08-paw-occupancy}
+\rho_{ij}^R \equiv \sum_{n,\text{occ}} \langle \tilde p_i^R | \tilde\Psi_n \rangle f_n \langle \tilde\Psi_n | \tilde p_j^R \rangle,
+\end{equation}
+
+the on-site density is
+
+\begin{equation}
+\label{eq:ch-08-paw-on-site-density-2}
+\rho^R(\mathbf r) = \sum_{i,j} \rho_{ij}^R\, \phi_i^R(\mathbf r)\, \phi_j^{R*}(\mathbf r).
+\end{equation}
+
+The **augmentation charge** is the difference
+$\rho^R - \tilde\rho^R$, summed over atoms:
+
+\begin{equation}
+\label{eq:ch-08-paw-aug-charge}
+\hat\rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\bigr] = \tilde\rho(\mathbf r) + \sum_R \hat Q^R(\mathbf r).
+\end{equation}
+
+This is the PAW analogue of the USPP augmentation charge
+\eqref{eq:ch-08-uspp-density}, but the augmentation here
+is *charge-density on-site*, not a single function per
+channel. The on-site density can be decomposed into a
+**compensation-charge** background
+$\hat n^R(\mathbf r)$ plus the partial-wave density, and
+the compensation charge is chosen so that
+$\int \hat Q^R(\mathbf r) d^3 r = 0$ for each atom (the
+monopole of the augmentation charge vanishes, to avoid
+spurious long-range Coulomb interactions).
+
+### 8.12.6 The total energy
+
+The Kohn–Sham total energy in the PAW framework is
+
+\begin{equation}
+\label{eq:ch-08-paw-total-energy}
+E_{tot} = \tilde T[\tilde\rho] + \tilde E_{xc}[\tilde\rho + \hat\rho^1] + \tilde E_H[\tilde\rho + \hat\rho^1] + E_{ion} + \sum_R \bigl( E_{aug}^R - \tilde E_{aug}^R \bigr),
+\end{equation}
+
+where the first three terms are evaluated on the smooth
+density using plane waves, the last term is the on-site
+augmentation correction (the difference between the
+all-electron and pseudo on-site energy contributions), and
+$\hat\rho^1$ is the augmentation charge from
+\eqref{eq:ch-08-paw-aug-charge}.
+
+The on-site augmentation is decomposed into a sum over
+partial-wave channel pairs $(i,j)$:
+
+\begin{equation}
+\label{eq:ch-08-paw-Eaug}
+E_{aug}^R = \sum_{i,j} \rho_{ij}^R \bigl[ \langle \phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{loc}^R | \phi_j^R \rangle + \tfrac{1}{2}\langle \phi_i^R \phi_j^R | V_H[\rho^R] |\rangle \bigr],
+\end{equation}
+
+where $V_{loc}^R$ is a local (smooth) part of the potential
+inside the sphere and the Hartree term is evaluated on the
+on-site density. The corresponding pseudo on-site
+contributions are subtracted, giving the
+"$\text{ae} - \text{ps}$" structure that is the hallmark
+of PAW energy expressions.
+
+### 8.12.7 Comparison with USPP and LAPW
+
+PAW is the natural "interpolant" between the
+pseudopotential and LAPW methods. The following table
+summarises the limits:
+
+| Method | Inside augmentation sphere | Outside |
+|:-------|:---------------------------|:--------|
+| **Norm-conserving PP** | Smooth pseudo, no all-electron info | Smooth pseudo |
+| **USPP** | Smooth pseudo, augmented by single $Q_{lm}$ function | Smooth pseudo |
+| **PAW** | All-electron partial waves (exact, finite basis) | Smooth pseudo |
+| **LAPW** | All-electron linearised in energy, basis-dependent | Plane waves (no smooth partner) |
+
+PAW and USPP can be derived from each other: USPP is the
+**single-projector, linearised** version of PAW (one partial
+wave per channel, linearisation in the occupation matrix);
+PAW is the **complete-projector, non-linear** version of
+USPP (arbitrary number of partial waves per channel, full
+occupation matrix enters the energy). The PAW energy
+expression contains terms like $\rho_{ij}^R \rho_{kl}^R$
+that have no USPP analogue; these are the "non-linear core
+correction" terms of PAW.
+
+PAW is also the natural generalisation of LAPW. The
+difference is that PAW uses a *smooth* partner
+$\tilde\Psi_n$ that is expanded in plane waves, while LAPW
+uses a *linearised* partner inside the sphere and matches
+to plane waves outside. PAW's smooth partner is what makes
+the Hamiltonian a smooth function on the plane-wave grid,
+with the on-site corrections added as a localised
+$\sum_R |p_i^R\rangle \langle p_j^R|$ correction.
+
+> **Cross-reference.** The on-site occupancy matrix
+> $\rho_{ij}^R$ of \eqref{eq:ch-08-paw-occupancy} is the
+> natural object for the DFT+$U$ correction
+> ([chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }})),
+> where $U$ penalises deviations from idempotency of
+> the on-site density matrix. PAW provides the
+> on-site-projected density matrix that DFT+$U$
+> operates on; this is why almost all modern DFT+$U$
+> calculations use PAW.
+
+## 8.13 Relativistic pseudopotentials
+
+For light atoms ($Z \lesssim 20$), the non-relativistic
+Schrödinger equation is a good starting point. For
+$Z \gtrsim 30$, the innermost electrons move at a
+significant fraction of the speed of light: $v/c \sim
+Z\alpha \sim Z/137$. For the $1s$ electron of uranium,
+$Z = 92$ and $v/c \sim 0.67$, so the relativistic mass
+correction is a factor of $\sim 1.5$. A non-relativistic
+pseudopotential built from a non-relativistic
+all-electron reference would be wrong by a comparable
+amount in the core region, and the error would propagate
+to the valence eigenvalue and the chemistry.
+
+There are three ways to handle relativity in a
+pseudopotential calculation, in increasing order of
+sophistication and cost:
+
+1. **Scalar relativistic** — the spin-orbit coupling is
+   dropped; the remaining relativistic corrections
+   (mass-velocity, Darwin) are absorbed into the
+   $V_{ps,l}(r)$ potential. The valence Hamiltonian
+   stays spin-free, so standard non-spin-polarised and
+   spin-polarised (collinear) DFT codes work without
+   modification.
+
+2. **Spin-orbit coupled** — the scalar-relativistic
+   pseudo is augmented by a $V^{SO}(r) \mathbf{L} \cdot
+   \mathbf{S}$ term in the valence Hamiltonian. The
+   eigenstates are labeled by total angular momentum
+   $j = l \pm 1/2$, and the spinor structure of the
+   wavefunction must be tracked. Needed for heavy
+   elements where spin-orbit splitting of the valence
+   orbitals is comparable to chemical shifts
+   ($5d$ transition metals, lanthanides, actinides).
+
+3. **Fully relativistic (four-component)** — the
+   valence calculation is done with a four-component
+   Dirac Hamiltonian, and the pseudopotential is a
+   $4\times 4$ matrix in Dirac spinor space. Required
+   only for the heaviest elements and for properties
+   that depend on spinor structure (NMR chemical
+   shifts, electron chirality, topological
+   insulators).
+
+### 8.13.1 The Dirac equation
+
+The starting point is the one-electron Dirac equation
+(in atomic units, $c = 137.036$ a.u.):
+
+\begin{equation}
+\label{eq:ch-08-dirac}
+\bigl[ c\,\boldsymbol{\alpha} \cdot \mathbf{p} + (\beta - 1)c^2 + V(\mathbf r) \bigr] \Psi(\mathbf r) = E\,\Psi(\mathbf r),
+\end{equation}
+
+where $\Psi(\mathbf r) = (\psi_A, \psi_B)^T$ is a
+four-component spinor, $\boldsymbol{\alpha} = (\alpha_x,
+\alpha_y, \alpha_z)$ and $\beta$ are the $4\times 4$
+Dirac matrices, and the $-c^2$ has been subtracted to
+put the rest energy at zero. The two-component spinors
+$\psi_A$ (the "large" component) and $\psi_B$ (the
+"small" component) are each two-component Pauli
+spinors.
+
+For a central potential $V(r)$, the eigenstates are
+labelled by the angular-momentum quantum numbers
+$(\kappa, m_j)$ with $\kappa = \pm(j+1/2)$ and
+$j = |\kappa| - 1/2$. The radial functions $G_\kappa(r)$
+and $F_\kappa(r)$ — the large and small radial
+components — satisfy the coupled radial Dirac
+equations:
+
+\begin{align}
+\frac{dG_\kappa}{dr} + \frac{\kappa}{r}G_\kappa(r) &= \bigl[ 1 + (E - V(r))/c^2 \bigr] c\,F_\kappa(r), \label{eq:ch-08-dirac-G} \\
+-\frac{dF_\kappa}{dr} + \frac{\kappa}{r}F_\kappa(r) &= \bigl[ (E - V(r))/c^2 \bigr] c\,G_\kappa(r). \label{eq:ch-08-dirac-F}
+\end{align}
+
+The non-relativistic limit $c \to \infty$ recovers the
+Schrödinger equation for $G_\kappa$, with $F_\kappa \to
+0$ and $E \to E_{nr} - c^2$ (the rest energy
+contribution).
+
+### 8.13.2 The scalar relativistic approximation
+
+For a closed-shell or averaged-configuration atom, the
+spin-orbit splitting of the energy levels averages out
+when summed over the occupied orbitals. The
+**scalar relativistic (SR) approximation** exploits
+this: it solves the Dirac equation with the spin-orbit
+term projected out, keeping only the relativistic
+mass-velocity and Darwin corrections.
+
+Concretely, eliminate the small component $F_\kappa$ from
+\eqref{eq:ch-08-dirac-F}:
+
+\begin{equation}
+\label{eq:ch-08-sr-eliminate-F}
+F_\kappa(r) = \frac{1}{2 M(r) c^2}\left[\frac{dG_\kappa}{dr} - \frac{\kappa}{r} G_\kappa(r)\right],
+\end{equation}
+
+where $M(r) = 1 + (E - V(r))/c^2$ is the
+relativistic mass. Substituting into
+\eqref{eq:ch-08-dirac-G}:
+
+\begin{equation}
+\label{eq:ch-08-sr-eq}
+\left[-\frac{1}{2M(r)} \frac{d^2}{dr^2} + \frac{\kappa(\kappa+1)}{2M(r) r^2} - \frac{E}{c^2}\right] G_\kappa(r) + V_{SR}(r) G_\kappa(r) = 0,
+\end{equation}
+
+where the **scalar relativistic potential** is
+
+\begin{equation}
+\label{eq:ch-08-sr-potential}
+V_{SR}(r) = V(r) + \frac{1}{2M(r)c^2}\frac{dV}{dr}\frac{d}{dr} - \frac{1}{2M(r)c^2}\left(\frac{dV}{dr}\right)^2.
+\end{equation}
+
+The first correction term
+$\frac{1}{2M c^2}\frac{dV}{dr}\frac{d}{dr}$ is the
+**Darwin term**; the second,
+$-\frac{1}{2M c^2}\left(\frac{dV}{dr}\right)^2$, is the
+**mass-velocity** correction. The spin-orbit part of
+the full Dirac equation has been projected out
+(\eqref{eq:ch-08-so-term} below gives the spin-orbit
+form that is dropped). The resulting $V_{SR}(r)$
+depends on $l$ through the centrifugal term
+$\kappa(\kappa+1)/(2M r^2)$ but is *spin-independent*.
+
+The radial wavefunctions $G_\kappa(r)$ obtained this
+way are then used as the all-electron reference for
+the pseudopotential construction. The resulting
+$V_{ps,l}(r)$ is the **scalar relativistic
+pseudopotential**, used in standard non-relativistic
+or collinear-spin DFT codes. The error of the
+scalar-relativistic approximation (relative to the
+full Dirac treatment) is of order
+$(Z\alpha)^4$ and is negligible for $Z \lesssim 50$;
+for the actinides ($Z \gtrsim 90$) the error is
+$\sim 0.1$–$1\,\text{eV}$ per atom and the spin-orbit
+splitting must be added back as a separate term.
+
+### 8.13.3 Spin-orbit coupling
+
+The spin-orbit correction to the scalar relativistic
+Hamiltonian is the residual $\mathbf{L} \cdot
+\mathbf{S}$ term that was projected out in
+\eqref{eq:ch-08-sr-potential}. For a spherically
+symmetric potential, this is:
+
+\begin{equation}
+\label{eq:ch-08-so-term}
+\hat H_{SO} = \frac{1}{2M^2 c^2} \frac{1}{r}\frac{dV}{dr}\, \mathbf{L} \cdot \mathbf{S}.
+\end{equation}
+
+The expectation value of $\mathbf{L} \cdot \mathbf{S}$
+in a state of definite $j$ is
+
+\begin{equation}
+\label{eq:ch-08-LS-eigenvalue}
+\langle \mathbf{L} \cdot \mathbf{S} \rangle = \tfrac{1}{2}[j(j+1) - l(l+1) - s(s+1)],
+\end{equation}
+
+which gives the spin-orbit energy shift
+
+\begin{equation}
+\label{eq:ch-08-so-shift}
+\Delta E_{SO}(j) = \tfrac{1}{2}[j(j+1) - l(l+1) - s(s+1)] \cdot \frac{1}{2M^2 c^2}\left\langle \frac{1}{r}\frac{dV}{dr} \right\rangle.
+\end{equation}
+
+For $s = 1/2$, the splitting between $j = l + 1/2$ and
+$j = l - 1/2$ is
+
+\begin{equation}
+\label{eq:ch-08-so-splitting}
+\Delta E_l^{SO} = E_{SO}(j = l + 1/2) - E_{SO}(j = l - 1/2) = \frac{2l+1}{2} \cdot \frac{1}{2M^2 c^2}\left\langle \frac{1}{r}\frac{dV}{dr} \right\rangle.
+\end{equation}
+
+For a $5d$ transition metal like platinum, the
+spin-orbit splitting of the $5d$ states is $\sim 1$–
+$2\,\text{eV}$; this is comparable to chemical shifts
+and must be included for accurate thermochemistry of
+Pt complexes. For a $3d$ metal like iron, the splitting
+is $\sim 50\,\text{meV}$ and can often be neglected
+for ground-state properties.
+
+In a pseudopotential framework, the spin-orbit term
+is added as a *channel-dependent* correction. The
+**Kleinman–Bylander** (1982) form of the spin-orbit
+pseudopotential is
+
+\begin{equation}
+\label{eq:ch-08-so-kb}
+\hat V_{SO} = \sum_{R} \sum_{l,j} \lambda_{lj}^R\, V_{l}^{SO,R}(r) \, |\phi_{lj}^R\rangle \langle \phi_{lj}^R|\, \mathbf{L} \cdot \mathbf{S},
+\end{equation}
+
+where $\lambda_{lj}^R$ is a strength parameter fitted
+to the all-electron spin-orbit splitting
+\eqref{eq:ch-08-so-splitting}, $V_l^{SO,R}(r)$ is a
+radial function, and $|\phi_{lj}^R\rangle$ is a
+pseudo-atomic orbital. The expectation value of
+$\mathbf{L} \cdot \mathbf{S}$ in the basis of coupled
+spin-angular-momentum states $|l, s, j, m_j\rangle$
+is then the standard value
+\eqref{eq:ch-08-LS-eigenvalue}.
+
+### 8.13.4 Four-component Dirac pseudopotentials
+
+For the heaviest elements (actinides, super-heavies)
+and for properties that depend on the spinor structure
+of the wavefunction, the spin-orbit term is not enough
+and the full four-component Dirac equation must be
+used in the valence calculation. The pseudopotential
+is then a $4\times 4$ matrix in Dirac spinor space:
+
+\begin{equation}
+\label{eq:ch-08-dirac-ps}
+\hat V_{ps} = \sum_{R, \kappa, m_j} |\chi_{\kappa m_j}^R\rangle\, V_{ps,\kappa}^R(r)\, \langle \chi_{\kappa m_j}^R |,
+\end{equation}
+
+where the projectors $|\chi_{\kappa m_j}^R\rangle$ are
+four-component spinor spherical waves
+
+\begin{equation}
+\label{eq:ch-08-spinor-sw}
+|\chi_{\kappa m_j}\rangle = \binom{g_\kappa(r)\, \Omega_{\kappa m_j}(\hat{\mathbf r})}{i f_\kappa(r)\, \Omega_{-\kappa m_j}(\hat{\mathbf r})},
+\end{equation}
+
+with $\Omega_{\kappa m_j}$ the spinor spherical
+harmonics (the angular parts of the Dirac spinor
+solutions of definite $\kappa, m_j$). The functions
+$V_{ps,\kappa}^R(r)$ are obtained by inverting the
+radial Dirac equation for the pseudo wavefunctions
+$\tilde G_\kappa(r)$ and $\tilde F_\kappa(r)$, exactly
+analogous to the non-relativistic case but for the
+coupled pair of radial equations
+\eqref{eq:ch-08-dirac-G}–\eqref{eq:ch-08-dirac-F}.
+
+The fully-relativistic four-component pseudopotential
+is computationally demanding (the Hamiltonian is a
+$4N\times 4N$ matrix for $N$ electrons) and is used
+only in a few codes (DIRAC, ReSpect, BERTHA). For most
+applications the scalar-relativistic + spin-orbit split
+is sufficient.
+
+> **Tip.** In plane-wave codes, the
+> **spin-orbit coupling** can be included as a
+> non-collinear extension of the standard collinear
+> spin-polarisation framework: the Kohn–Sham
+> wavefunctions become two-component Pauli spinors
+> $\Psi_n(\mathbf r) = (\psi_{n\uparrow}(\mathbf r),
+> \psi_{n\downarrow}(\mathbf r))$, and the
+> Hamiltonian includes a $2\times 2$ matrix in spin
+> space. The pseudopotential contributes a
+> $\mathbf{L} \cdot \mathbf{S}$ term that couples
+> $\psi_{n\uparrow}$ to $\psi_{n\downarrow}$. The
+> cost increase over a non-spin-orbit calculation is
+> typically a factor of 2 in the diagonalisation and
+> 4–8 in memory (because the wavefunction is now
+> $2N$ complex numbers instead of $N$).
+>
+> **Cross-reference.** Spin-orbit coupling is
+> essential for the topological classification of
+> band structures
+> ([chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }})).
+> The $\mathbb{Z}_2$ invariant of a 2D or 3D
+> topological insulator is defined from the
+> occupied-band wavefunctions *including* spin-orbit
+> coupling; without it, every insulator is trivial.
+
+## 8.14 f-electron pseudopotentials and the small-core / large-core question
+
+The $f$-electron elements — the lanthanides
+($4f$, $Z = 57$–$71$) and the actinides
+($5f$, $Z = 89$–$103$) — are notoriously difficult to
+treat with pseudopotentials. Three reasons:
+
+1. **Compactness.** The $4f$ orbital of a lanthanide
+   is spatially compact: the radial extent is
+   $\langle r \rangle_{4f} \sim 0.4$–$0.6\,a_0$, much
+   smaller than the $5d$ and $6s$ valence orbitals
+   (with $\langle r \rangle \sim 1.5$–$2.5\,a_0$).
+   The $f$ electrons are "buried" inside the valence
+   shell.
+
+2. **Near-degeneracy with the valence.** The
+   $4f$ orbital energy is within $\sim 1$–$2\,\text{eV}$
+   of the $5d$ and $6s$ valence orbitals in many
+   lanthanides. The $f$ electrons are chemically
+   active (they participate in bonding in some
+   compounds, especially the early lanthanides La–Gd)
+   but are not "core" electrons in the usual sense.
+
+3. **Strong correlation.** The on-site Coulomb
+   repulsion $U_{ff}$ between $f$ electrons is
+   $\sim 5$–$10\,\text{eV}$, much larger than the
+   $f$-band width $\sim 1$–$3\,\text{eV}$. The $f$
+   electrons are strongly correlated and DFT in the
+   LDA or GGA often misplaces their energy relative
+   to the valence.
+
+The choice of how to treat the $f$ electrons in a
+pseudopotential is therefore not a technical detail; it
+is a *physical* choice about the role of the $f$
+electrons in the chemistry.
+
+### 8.14.1 Small-core vs. large core
+
+There are two conventional choices, illustrated for
+gadolinium ($Z = 64$, configuration
+$[Xe]4f^7 5d^1 6s^2$):
+
+**(A) Large-core pseudopotential.** The
+$4f$, $5s$, $5p$ electrons are frozen in the core;
+the valence is just $5d^1 6s^2$ (3 electrons). The
+cutoff radius $r_c$ is $\sim 1.5$–$2.0\,a_0$ for the
+$5d$ and $6s$ channels. The $4f$ electrons are
+absent from the valence. This is the cheapest option
+but it cannot describe any chemistry that involves
+$f$-electron promotion (e.g. Gd$^{3+}$ → Gd$^{2+}$
+redox, where an $f$ electron is removed) and it
+misplaces the relative energetics of $f$ and $d$
+configurations.
+
+**(B) Small-core pseudopotential.** The
+$5s$ and $5p$ electrons are frozen in the core; the
+valence is $4f^7 5d^1 6s^2$ (16 electrons). The
+cutoff radius $r_c$ for the $4f$ channel is
+$\sim 0.6$–$0.8\,a_0$, much smaller than for the
+$5d/6s$ channels. The $4f$ electrons are explicitly
+in the valence, so their chemistry is correctly
+described. The cost is higher (more electrons, harder
+pseudo for the $4f$ channel because of the small
+cutoff) and the calculation requires care with strong
+correlation (DFT+$U$ or hybrid functionals are
+typically required).
+
+The small-core / large-core choice is the $f$-electron
+analogue of the "frozen core" choice for transition
+metals. There is no universally correct option; the
+choice depends on the chemistry. For Gd metal (where
+the $4f$ electrons are localised and chemically inert
+in the metallic ground state), a large-core pseudo
+with the $4f$ electrons folded into the core works
+well. For GdOCl (where the $4f$ electrons participate
+in the bonding with the O $2p$ states), a small-core
+pseudo is needed.
+
+| Choice | Valence | Cost | Chemistry captured |
+|:-------|:--------|:-----|:-------------------|
+| Large core | $5d 6s$ (~3 el.) | Low | $d/s$ only |
+| Small core | $4f 5d 6s$ (~16 el.) | High | $f$ + $d/s$ |
+| "Frozen $f$" | $4f 5d 6s$, $f$ occupation fixed | Medium | $f$ as inert spectator |
+
+The intermediate **"frozen $f$"** option keeps the
+$f$ electrons in the valence but fixes their
+occupation matrix. This is the workhorse of many
+production calculations: the $f$ electrons are
+present in the density (so they contribute to the
+screening) but their occupation does not relax. It is
+a controlled approximation; the error relative to the
+fully relaxed small-core calculation can be checked
+by allowing $f$ relaxation in a benchmark.
+
+### 8.14.2 The REC potentials (VASP)
+
+The **recommended (REC)** pseudopotentials of
+Kresse and Hafner (1994, VASP) are a widely used set
+of ultrasoft PAW-style potentials covering the
+periodic table. For the lanthanides and actinides,
+the REC library provides:
+
+- **Lanthanides (La–Lu, $Z = 57$–$71$):**
+  small-core with $4f$ in the valence (where the
+  $4f$ electrons are chemically active) or
+  large-core with $4f$ in the core (where the
+  $4f$ electrons are spectators).
+- **Actinides (Ac–Lr, $Z = 89$–$103$):** small-core
+  with $5f$ in the valence is the *only* option
+  in REC; the $5f$ electrons are chemically active
+  in essentially all actinide compounds.
+
+The REC construction uses the
+**Vanderbilt ultrasoft** form (§ 8.6) with the PAW
+reconstruction (§ 8.12), giving a smooth pseudo with
+multiple projectors per channel. The cutoff radii for
+the $f$ channels are typically $r_c \sim 0.7$–
+$1.0\,a_0$ for actinides and $\sim 0.5$–$0.7\,a_0$
+for lanthanides (the $4f$ orbital is more compact
+than $5f$). The reference configuration is chosen to
+be the neutral atom ground state, and the cutoffs
+are optimised for transferability across the
+$+2$/$+3$/$+4$ oxidation states of the element.
+
+### 8.14.3 The HGH and ONCV potentials (ABINIT, CP2K, Quantum ESPRESSO)
+
+The **Hamann-generated HGH** (Hamann, 2013)
+pseudopotentials are an alternative family that
+focuses on *transferability* through a multireference
+optimisation. The construction procedure is:
+
+1. Solve the all-electron problem (scalar
+   relativistic, including the mass-velocity and
+   Darwin corrections) for several reference
+   configurations spanning the expected oxidation
+   states of the element.
+2. Construct the pseudo-wavefunctions
+   $\phi_{li}(r)$ for each reference state $i$ using
+   the TM exponential-in-$r^2$ ansatz
+   \eqref{eq:ch-08-tm-ansatz}.
+3. Optimise the cutoffs $r_{c,l}$ and the parameters
+   $c_n$ to minimise a *Frobenius-norm* error across
+   *all* reference states simultaneously:
+   \begin{equation}
+   \label{eq:ch-08-hgh-cost}
+   \mathcal{J}[V_{ps}] = \sum_{i} \int dE \sum_{l} \bigl| D_l^{ps}(E; r_c) - D_l^{ae}(E; r_c) \bigr|^2,
+   \end{equation}
+   where $D_l(E; r_c)$ is the logarithmic derivative
+   of the wavefunction at the cutoff radius, and the
+   sum is over the reference configurations.
+
+The Frobenius-norm cost function
+\eqref{eq:ch-08-hgh-cost} is a stronger
+transferability criterion than the single-configuration
+TM construction of § 8.4: it requires the pseudo to
+reproduce the energy dependence of the log-derivative
+*across* a set of configurations, not just at the
+single reference used for the construction. The
+resulting pseudos are more transferable at the cost
+of being slightly less smooth (the additional
+constraints require a smaller cutoff or more
+parameters).
+
+The HGH library is distributed in several formats:
+**HGH** (numerical tabulated potentials, the original
+form), **GTH** (Goedecker–Teter–Hutter, an
+analytical-fit form optimised for Gaussian basis
+sets in CP2K), and **ONCV** (Optimised Norm-Conserving
+Vanderbilt, the modern descendant in Quantum
+ESPRESSO and ABINIT). For $f$-electron systems the
+ONCV form is the most widely used, as it combines
+the HGH transferability criterion with the
+smoothness of the Vanderbilt form. The
+ONCV-PSlibrary (Dal Corso, 2014) provides
+$f$-electron ONCV potentials for the entire
+lanthanide and actinide series, with both
+small-core and large-core options where applicable.
+
+### 8.14.4 Worked example — Gd metal, large-core vs small-core
+
+Consider a calculation of the lattice parameter of
+gadolinium metal. The experimental value is
+$a = 3.63\,\text{Å}$ (hcp structure at room
+temperature). Two PAW potentials from the VASP REC
+library are compared:
+
+**(A) Large-core** (4 el.: $5d^1 6s^2$, $4f$ in
+core): $a_{calc} = 3.66\,\text{Å}$. The error is
+$+0.03\,\text{Å}$ ($\sim 1\%$). The calculation
+converges at $E_{cut} = 230\,\text{eV}$; the $4f$
+electrons do not contribute to the conduction and
+are well-described as a frozen core.
+
+**(B) Small-core** (16 el.: $4f^7 5d^1 6s^2$, $4f$
+in valence): $a_{calc} = 3.61\,\text{Å}$. The error
+is $-0.02\,\text{Å}$ ($\sim 0.5\%$). The
+calculation converges at $E_{cut} = 340\,\text{eV}$;
+the harder pseudo reflects the more compact $4f$
+orbital. DFT+$U$ with $U_{4f} \sim 6\,\text{eV}$ is
+required to localise the $4f$ electrons; without
+$U$, the small-core calculation converges to a
+*metallic* $4f$ state with the wrong volume.
+
+The two calculations give similar lattice parameters
+for the *ground state*, but they differ substantially
+for excited states (e.g. the energy required to
+promote an $f$ electron to a $d$ state, the
+$f \to d$ excitation energy that controls
+luminescence). For any property that depends on the
+relative energetics of the $4f$ and $5d$ shells, the
+small-core + DFT+$U$ is the correct choice.
+
+### 8.14.5 Practical recommendations
+
+For an $f$-electron calculation in a modern
+plane-wave code, the recommended workflow is:
+
+1. **Decide on the core/valence partition.** For
+   the early lanthanides (La–Nd) and for the
+   actinides (Ac–Cm), the $f$ electrons are
+   chemically active and a small-core potential is
+   almost always required. For the late lanthanides
+   (Tb–Lu) where the $4f$ shell is half-filled or
+   more, a large-core potential may be acceptable
+   for properties that do not involve $f$
+   excitations.
+
+2. **Check the reference configuration.** The
+   pseudo's transferability is anchored to the
+   reference configuration used in the
+   construction. If the actual valence
+   configuration is far from the reference
+   (e.g. Ce$^{4+}$ in CeO$_2$ with no $4f$
+   electron, while the reference is Ce$^{3+}$ with
+   one $4f$ electron), the pseudo can have large
+   errors.
+
+3. **Add a Hubbard-$U$ correction.** DFT+$U$ is
+   almost always required for $f$-electron
+   systems. The $U$ parameter is fitted to
+   reproduce a known experimental property
+   (band gap, oxidation energetics, lattice
+   parameter) and is typically
+   $U_{4f} \sim 5$–$7\,\text{eV}$ for the
+   lanthanides and $U_{5f} \sim 4$–$6\,\text{eV}$
+   for the actinides.
+
+4. **Benchmark against an all-electron reference.**
+   For production calculations on a new
+   $f$-electron system, it is worth running a
+   small all-electron calculation (LAPW or
+   full-potential PAW) on a representative
+   structure to validate the pseudo choice. The
+   cost of one all-electron calculation is
+   typically $\sim 10$–$100$ times that of the
+   PAW calculation, so this is a one-time
+   validation, not a production cost.
+
+> **Tip.** The PAW reconstruction
+> (§ 8.12) of an all-electron $4f$ orbital is
+> *very* accurate if the augmentation sphere
+> contains the orbital's first node (typically at
+> $\sim 0.5$–$0.7\,a_0$ for the lanthanide
+> $4f$ orbital) and the partial-wave basis
+> includes the $4f$ channel. The error of the
+> PAW reconstruction for a $4f$ eigenvalue is
+> typically $\sim 1$–$10\,\text{meV}$, which is
+> well below the DFT error of $\sim 0.1$–$1\,\text{eV}$
+> for the same orbital. PAW is therefore
+> *the* method of choice for $f$-electron
+> systems, and the small-core / large-core
+> choice is a *physics* decision (do the $f$
+> electrons participate in the chemistry?)
+> rather than a *numerics* decision.
+>
+> **Cross-reference.** The DFT+$U$ method for
+> treating strong correlation in $f$-electron
+> systems is in
+> [chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }}).
+> The combination "small-core PAW + DFT+$U$" is
+> the standard tool for actinide chemistry
+> (UO$_2$, PuO$_2$, CmO$_2$, etc.) and is used
+> in nuclear-fuel modelling and waste-form
+> design.
+>
 > Next: [chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }})
 > — forces and geometry optimisation. The
 > pseudopotential approximation is what makes the

@@ -34,6 +34,10 @@ rather than appendix-pinned.
 | 6  | [Basis sets]({{ site.baseurl }}/dft-notes/chapter-06/)           | Gaussians, plane waves, real-space grids, Roothaan–Hall      |
 | 7  | [Solids & PBC]({{ site.baseurl }}/dft-notes/chapter-07/)         | Bloch's theorem, Brillouin zone, plane-wave cutoff, k-grids  |
 | 8  | [Pseudopotentials]({{ site.baseurl }}/dft-notes/chapter-08/)     | Norm-conserving, ultrasoft, PAW, transferability            |
+| 9  | [Forces & geometry opt]({{ site.baseurl }}/dft-notes/chapter-09/) | Hellmann–Feynman, Pulay, BFGS, LBFGS, stress tensor       |
+| 10 | [Phonons & vibrations]({{ site.baseurl }}/dft-notes/chapter-10/) | Frozen-phonon, DFPT, LO-TO, Eliashberg, superconductivity    |
+| 11 | [Band structures]({{ site.baseurl }}/dft-notes/chapter-11/)      | DOS, Fermi surface, effective mass, graphene Dirac cone    |
+| 12 | [Time-dependent DFT]({{ site.baseurl }}/dft-notes/chapter-12/) | Runge–Gross, Casida, real-time TDDFT, UV/vis spectra      |
 
 > **Status:** these are *sample* notes — real prose, real math,
 > real code, but not yet encyclopaedic.  They exist to exercise
