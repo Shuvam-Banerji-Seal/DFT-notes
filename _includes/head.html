@@ -7,15 +7,36 @@
     2. preconnects to Google Fonts and pulls EB Garamond (display
        substitute for Copernicus / Tiempos Headline), Inter (body
        substitute for StyreneB) and JetBrains Mono;
-    3. keeps the MathJax 3 loader so the $...$ and $$...$$ markup
-       in dft_notes/ actually renders.
+    3. sets the theme attribute on <html> BEFORE the CSS loads, so
+       there is no flash of the wrong theme on first paint (the
+       persisted choice in localStorage wins, falling back to
+       prefers-color-scheme);
+    4. keeps the MathJax 3 loader so the $...$ and $$...$$ markup
+       in dft_notes/ renders;
+    5. loads Mermaid 10 from a CDN for the ` ```mermaid ` fences.
 {%- endcomment -%}
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#faf9f5">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#eef0e6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1814" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
 {%- seo -%}
+
+<!-- Theme: must run before the CSS to avoid a flash.  Reads the
+     persisted choice from localStorage (`dft-notes:theme` ∈
+     {`light`,`dark`}), falling back to the OS preference.  Sets
+     `data-theme` on the <html> element so the [data-theme="dark"]
+     rules in site.css take effect. -->
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('dft-notes:theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) { /* localStorage unavailable — fall back to light */ }
+  })();
+</script>
 
 <!-- Fonts: preconnect first, then the stylesheet.  `display=swap` so
      the browser can render text in the system fallback while the
@@ -36,3 +57,10 @@
 
 <!-- MathJax 3 (TeX + AMS).  See _includes/mathjax.html. -->
 {%- include mathjax.html -%}
+
+<!-- Mermaid 10 — used by the chapters map and the ` ```mermaid `
+     fences inside chapters.  The init script
+     (assets/js/mermaid-init.js) runs after the DOM is ready and
+     picks a theme that matches the current `data-theme`. -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+<script src="{{ '/assets/js/mermaid-init.js' | relative_url }}" defer></script>

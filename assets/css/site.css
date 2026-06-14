@@ -1,9 +1,11 @@
 /* =============================================================
  * DFT Notes — site.css
- * Implements the design.md spec (Claude / Anthropic — cream +
- * coral + dark navy, slab-serif display, humanist sans body).
+ * Implements the design.md spec — light (pastel poppy green) +
+ * dark (warm dark) + coral accent + slab-serif display +
+ * humanist sans body.
  *
- *   1. Design tokens (CSS custom properties)
+ *   1. Design tokens (CSS custom properties) — light by default,
+ *      dark overrides via [data-theme="dark"] on <html>.
  *   2. Base / reset
  *   3. Typography
  *   4. Layout primitives (skip link, container, main)
@@ -13,47 +15,56 @@
  *   8. Hero band
  *   9. Code (inline + block)
  *  10. Tables / lists / blockquotes
- *  11. Footer
- *  12. Responsive (mobile-first, then tablet + desktop)
- *  13. Accessibility / motion
+ *  11. Marginalia (figure captions, side notes)
+ *  12. Hidden answers (details / summary)
+ *  13. Mermaid diagrams
+ *  14. Footer
+ *  15. Responsive (mobile-first, then tablet + desktop)
+ *  16. Accessibility + motion
  * =========================================================== */
 
 
 /* === 1. Design tokens ====================================== */
 
+/* The LIGHT theme lives on :root.  The DARK theme is applied
+   via [data-theme="dark"] on <html> (set by a tiny inline
+   script in <head> before the CSS loads, to avoid a flash of
+   the wrong theme on first paint). */
 :root {
-  /* Brand & accent */
+  /* Brand & accent (coral is the same in both themes) */
   --color-primary:           #cc785c;
   --color-primary-active:    #a9583e;
-  --color-primary-disabled:  #e6dfd8;
+  --color-primary-disabled:  #d6dcc8;
   --color-accent-teal:       #5db8a6;
   --color-accent-amber:      #e8a55a;
 
-  /* Surface (cream → dark) */
-  --color-canvas:            #faf9f5;
-  --color-surface-soft:      #f5f0e8;
-  --color-surface-card:      #efe9de;
-  --color-surface-cream-strong: #e8e0d2;
-  --color-surface-dark:           #181715;
-  --color-surface-dark-elevated:  #252320;
-  --color-surface-dark-soft:      #1f1e1b;
-  --color-hairline:          #e6dfd8;
-  --color-hairline-soft:     #ebe6df;
+  /* Surface — LIGHT: pastel poppy green */
+  --color-canvas:            #eef0e6;
+  --color-surface-soft:      #e3e6d8;
+  --color-surface-card:      #d6dcc8;
+  --color-surface-cream-strong: #c8d0b8;
+  --color-surface-dark:           #1a1814;   /* same in both themes */
+  --color-surface-dark-elevated:  #252220;
+  --color-surface-dark-soft:      #211f1b;
+  --color-hairline:          #cdd3bd;
+  --color-hairline-soft:     #d8ddc8;
 
-  /* Text */
-  --color-ink:               #141413;
-  --color-body-strong:       #252523;
-  --color-body:              #3d3d3a;
-  --color-muted:             #6c6a64;
-  --color-muted-soft:        #8e8b82;
+  /* Text — LIGHT: warm dark green-gray */
+  --color-ink:               #1c1f17;
+  --color-body-strong:       #2a2d23;
+  --color-body:              #3a4031;
+  --color-muted:             #6b7060;
+  --color-muted-soft:        #8a8e7c;
   --color-on-primary:        #ffffff;
-  --color-on-dark:           #faf9f5;
+  --color-on-dark:           #f0ebde;          /* same in both themes */
   --color-on-dark-soft:      #a09d96;
 
   /* Semantic */
-  --color-success:           #5db872;
-  --color-warning:           #d4a017;
-  --color-error:             #c64545;
+  --color-success:           #5b8f4a;
+  --color-warning:           #b87a00;
+  --color-error:             #a8453b;
+  --color-code-highlight:    #f3a26a;          /* used for the language tag in code-window */
+  --color-link:              #2a6a4a;          /* inline text link in light theme */
 
   /* Typography */
   --font-display: "EB Garamond", "Tiempos Headline", "Copernicus",
@@ -98,6 +109,12 @@
   --radius-pill: 9999px;
   --radius-full: 9999px;
 
+  /* Reading column (progressive: mobile → wide) */
+  --reading-col-mobile:   100%;
+  --reading-col-tablet:   760px;
+  --reading-col-desktop:  960px;
+  --reading-col-wide:     1100px;
+
   /* Layout */
   --container-max:  1200px;
   --container-pad:  clamp(1rem, 4vw, 2.5rem);
@@ -112,6 +129,30 @@
   --z-nav:    50;
   --z-menu:   60;
   --z-modal:  100;
+}
+
+/* The DARK theme.  Inherits everything from :root and only
+   overrides the surface + text tokens that change.  Coral
+   stays. */
+[data-theme="dark"] {
+  --color-canvas:            #1a1814;
+  --color-surface-soft:      #252220;
+  --color-surface-card:      #2e2a24;
+  --color-surface-cream-strong: #38332a;
+  --color-hairline:          #3a342a;
+  --color-hairline-soft:     #2e2a24;
+
+  --color-ink:               #f0ebde;
+  --color-body-strong:       #ddd6c4;
+  --color-body:              #c4bca8;
+  --color-muted:             #9a9282;
+  --color-muted-soft:        #76705f;
+
+  --color-link:              #8fbf9b;
+
+  --color-success:           #6fae5c;
+  --color-warning:           #d4a55a;
+  --color-error:             #c75f55;
 }
 
 
@@ -161,7 +202,7 @@ button {
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-link);
   text-decoration: none;
   transition: color var(--t-fast) ease;
 }
@@ -258,14 +299,169 @@ hr {
    chapter index, etc.).  Used via _layouts/page.html which wraps
    the markdown body in <div class="page-content">.  Full-bleed
    sections (hero, callouts) should NOT use this layout — they
-   have their own .container / .hero-band__inner wrappers. */
+   have their own .container / .hero-band__inner wrappers.
+
+   The column grows progressively with the viewport:
+     < 768px          → 100% (with side padding)
+     768 – 1024px     → 760px  (mobile-friendly reading)
+     1024 – 1440px    → 960px  (slightly wider, fits figures)
+     ≥ 1440px         → 1100px (wide-screen reading, fits code+text) */
 .page-content {
-  max-width: 760px;
+  max-width: var(--reading-col-mobile);
   margin: 0 auto;
   padding: var(--space-xxl) var(--container-pad) var(--space-section);
 }
+@media (min-width: 768px) {
+  .page-content { max-width: var(--reading-col-tablet); }
+}
+@media (min-width: 1024px) {
+  .page-content { max-width: var(--reading-col-desktop); }
+}
+@media (min-width: 1440px) {
+  .page-content { max-width: var(--reading-col-wide); }
+}
 .page-content > *:last-child {
   margin-bottom: 0;
+}
+
+/* === 11. Marginalia (right-rail figure captions, side notes) === */
+
+/* A right-rail block used inside the wider reading column.  Renders
+   as a small caption or callout on the right of the main text on
+   wide screens, and as a normal in-flow block on narrow screens. */
+.marginalia {
+  background-color: var(--color-surface-soft);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-lg) 0;
+  font-size: var(--fs-body-sm);
+  color: var(--color-body);
+}
+@media (min-width: 1440px) {
+  .marginalia {
+    /* Wide-screen layout: float right, take ~280px, leave
+       the main text wrapping around it.  Disabled at narrower
+       widths because the column is too tight. */
+    float: right;
+    clear: right;
+    width: 280px;
+    margin: var(--space-md) -320px var(--space-md) var(--space-lg);
+    shape-outside: margin-box;
+  }
+}
+
+/* A figure that wants to be wider than the reading column.  Used
+   for full-bleed plots inside a chapter. */
+.figure-wide {
+  margin: var(--space-xl) calc(var(--container-pad) * -1);
+  max-width: calc(100% + var(--container-pad) * 2);
+}
+@media (min-width: 1024px) {
+  .figure-wide {
+    margin-left: -64px;
+    margin-right: -64px;
+    max-width: calc(100% + 128px);
+  }
+}
+.figure-wide img,
+.figure-wide svg,
+.figure-wide .code-window-card {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+/* === 12. Hidden answers (details / summary) === */
+
+/* <details class="problem"> and <details class="answer"> are
+   the two flavours the chapter template uses.  The summary
+   reveals on click, with a soft animation.  The contents are
+   styled like a blockquote (callout). */
+details.problem,
+details.answer {
+  background-color: var(--color-surface-soft);
+  border: 1px solid var(--color-hairline);
+  border-left-width: 3px;
+  border-left-color: var(--color-primary);
+  border-radius: var(--radius-md);
+  margin: var(--space-md) 0;
+  padding: 0;
+  overflow: hidden;
+  transition: background-color var(--t-fast) ease;
+}
+details.answer {
+  border-left-color: var(--color-accent-teal);
+  background-color: color-mix(in srgb, var(--color-accent-teal) 6%, var(--color-surface-soft));
+}
+details.problem > summary,
+details.answer > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: var(--space-md) var(--space-lg);
+  font-weight: 500;
+  font-size: var(--fs-body-md);
+  color: var(--color-ink);
+  position: relative;
+  user-select: none;
+}
+details.problem > summary::-webkit-details-marker,
+details.answer > summary::-webkit-details-marker { display: none; }
+details.problem > summary::before,
+details.answer > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: var(--space-sm);
+  color: var(--color-primary);
+  transition: transform var(--t-fast) ease;
+}
+details.answer > summary::before { color: var(--color-accent-teal); }
+details[open].problem > summary::before,
+details[open].answer > summary::before {
+  transform: rotate(90deg);
+}
+details.problem > summary > :first-child,
+details.answer > summary > :first-child {
+  display: inline;
+  margin: 0;
+}
+details.problem > :not(summary),
+details.answer > :not(summary) {
+  padding: 0 var(--space-lg) var(--space-lg);
+  border-top: 1px dashed var(--color-hairline);
+  margin-top: 0;
+  padding-top: var(--space-md);
+}
+details.problem > :not(summary) > :first-child,
+details.answer > :not(summary) > :first-child { margin-top: 0; }
+details.problem > :not(summary) > :last-child,
+details.answer > :not(summary) > :last-child { margin-bottom: 0; }
+
+/* === 13. Mermaid diagrams === */
+
+.mermaid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg);
+  background-color: var(--color-surface-soft);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  text-align: center;
+}
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  /* The default Mermaid text is small; bump it slightly. */
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+}
+/* The chapters-map page can opt into a wider diagram. */
+.mermaid--wide {
+  margin-left: calc(var(--container-pad) * -1);
+  margin-right: calc(var(--container-pad) * -1);
 }
 
 .container {
@@ -413,6 +609,42 @@ hr {
 }
 .top-nav__hamburger[aria-expanded="true"] .hamburger-bar:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Theme switcher — a small icon button next to the GitHub link.
+   Shows a sun when the active theme is dark (click → go to light),
+   a moon when the active theme is light (click → go to dark).
+   The icon swap is pure CSS based on [data-theme] on <html>. */
+.theme-switcher {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ink);
+  border-radius: var(--radius-md);
+  transition: background-color var(--t-fast) ease, color var(--t-fast) ease;
+}
+.theme-switcher:hover,
+.theme-switcher:focus-visible {
+  background-color: var(--color-surface-soft);
+  color: var(--color-primary);
+}
+.theme-switcher__icon {
+  display: none;
+}
+.theme-switcher__icon--sun  { color: var(--color-accent-amber); }
+.theme-switcher__icon--moon { color: var(--color-primary); }
+:root .theme-switcher__icon--sun  { display: none; }
+:root .theme-switcher__icon--moon { display: inline-block; }
+[data-theme="dark"] .theme-switcher__icon--sun  { display: inline-block; }
+[data-theme="dark"] .theme-switcher__icon--moon { display: none; }
+
+/* The top nav gets a subtle background tint that works on both
+   themes: in light it's a barely-there translucent canvas, in
+   dark it's a barely-there translucent dark. */
+[data-theme="dark"] .top-nav {
+  background-color: rgba(26, 24, 20, 0.85);
 }
 
 /* --- Mobile menu (cream sheet) --- */

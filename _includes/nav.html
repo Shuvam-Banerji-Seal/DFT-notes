@@ -1,18 +1,20 @@
 {%- comment -%}
-  Top navigation — cream canvas, 64px tall, sticky to the top of
-  every page.  Renders the spike-mark + wordmark on the left, the
-  primary menu in the middle, and a "GitHub" text-link + a coral
-  "Read the notes" CTA on the right.  Collapses to a hamburger at
-  < 768px.
+  Top navigation — sticky cream (or warm-dark in dark mode)
+  canvas, 64px tall.  Renders the spike-mark + wordmark on the
+  left, the primary menu in the middle, and a cluster of action
+  items on the right: theme switcher, GitHub text-link, coral
+  "Read the notes" CTA, and a hamburger button (mobile only).
 
-  Adapted from the Claude.com design spec (design.md):
-    - `top-nav` background  = canvas (#faf9f5)
-    - menu type             = nav-link (Inter 14px / 500)
-    - primary CTA           = button-primary (coral)
-    - wordmark prefix       = spike-mark
-  On mobile the menu becomes a full-screen cream sheet (#mobile-menu)
-  with the same links stacked vertically and a primary CTA at the
-  bottom.  The toggle behaviour lives in `assets/js/nav.js`.
+  Adapted from the design.md spec:
+    - `top-nav` background = canvas
+    - menu type            = nav-link (Inter 14px / 500)
+    - primary CTA          = button-primary (coral)
+    - wordmark prefix      = spike-mark (4-spoke radial)
+    - theme switcher       = small icon button, sun/moon swap
+                             on `[data-theme="dark"]` on <html>
+
+  The mobile sheet (data-mobile-menu) is hidden on desktop and
+  revealed by nav.js on hamburger click.
 {%- endcomment -%}
 <header class="top-nav" role="banner">
   <div class="top-nav__inner">
@@ -23,12 +25,40 @@
 
     <nav class="top-nav__menu" aria-label="Primary">
       <a href="{{ '/dft-notes/' | relative_url }}" class="top-nav__link">Chapters</a>
-      <a href="{{ '/dft-notes/chapter-00/' | relative_url }}" class="top-nav__link">About</a>
+      <a href="{{ '/dft-notes/chapters-map/' | relative_url }}" class="top-nav__link">Map</a>
+      <a href="{{ '/dft-notes/python_codes/' | relative_url }}" class="top-nav__link">Python</a>
       <a href="{{ '/design.md' | relative_url }}" class="top-nav__link">Design</a>
       <a href="{{ '/CONTRIBUTING.md' | relative_url }}" class="top-nav__link">Contributing</a>
     </nav>
 
     <div class="top-nav__actions">
+      <button
+        type="button"
+        class="theme-switcher"
+        aria-label="Switch theme"
+        data-theme-toggle
+      >
+        <svg class="theme-switcher__icon theme-switcher__icon--sun" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false">
+          <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none">
+            <circle cx="8" cy="8" r="2.6"/>
+            <line x1="8" y1="1.4" x2="8" y2="3"/>
+            <line x1="8" y1="13" x2="8" y2="14.6"/>
+            <line x1="1.4" y1="8" x2="3" y2="8"/>
+            <line x1="13" y1="8" x2="14.6" y2="8"/>
+            <line x1="3.1" y1="3.1" x2="4.3" y2="4.3"/>
+            <line x1="11.7" y1="11.7" x2="12.9" y2="12.9"/>
+            <line x1="3.1" y1="12.9" x2="4.3" y2="11.7"/>
+            <line x1="11.7" y1="4.3" x2="12.9" y2="3.1"/>
+          </g>
+        </svg>
+        <svg class="theme-switcher__icon theme-switcher__icon--moon" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false">
+          <path
+            d="M13.5 10.2 A5 5 0 0 1 5.8 2.5 A6 6 0 1 0 13.5 10.2 Z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+
       <a
         href="https://github.com/Shuvam-Banerji-Seal/DFT-notes"
         class="top-nav__link top-nav__link--text"
@@ -74,7 +104,8 @@
     </button>
     <nav class="mobile-menu__nav" aria-label="Mobile">
       <a href="{{ '/dft-notes/' | relative_url }}" class="mobile-menu__link" data-nav-link>Chapters</a>
-      <a href="{{ '/dft-notes/chapter-00/' | relative_url }}" class="mobile-menu__link" data-nav-link>About</a>
+      <a href="{{ '/dft-notes/chapters-map/' | relative_url }}" class="mobile-menu__link" data-nav-link>Chapters map</a>
+      <a href="{{ '/dft-notes/python_codes/' | relative_url }}" class="mobile-menu__link" data-nav-link>Python codes</a>
       <a href="{{ '/design.md' | relative_url }}" class="mobile-menu__link" data-nav-link>Design spec</a>
       <a href="{{ '/CONTRIBUTING.md' | relative_url }}" class="mobile-menu__link" data-nav-link>Contributing</a>
       <a

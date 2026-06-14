@@ -3,8 +3,45 @@
 
 # Design Specification
 
-> **Stack:** Jekyll + MathJax 3 · Cream / Coral / Dark Navy · Mobile-first ·
+> **Stack:** Jekyll + MathJax 3 · Mermaid diagrams · Theme switcher
+> (light + dark) · Pastel poppy-green / warm dark · Mobile-first ·
 > EB Garamond + Inter + JetBrains Mono
+
+---
+
+> **Iteration history** — this document is the single source of
+> truth and is updated as the site evolves.  Older iterations
+> stay below for reference.
+>
+> - **v1 (2026-06-14)** — Claude/Anthropic design (cream + coral +
+>   dark navy, slab-serif display, humanist sans body).  Single
+>   light theme, minima theme overridden.  See git history.
+> - **v2 (this version)** — reading-friendly rebuild:
+>   - Palette shifted to **pastel poppy green** (light) and
+>     **warm dark** (dark) for long-session comfort.  Coral
+>     retained as the brand accent.
+>   - **Theme switcher** with persistent preference
+>     (localStorage), no flash of wrong theme.
+>   - **Wider reading column** on large screens (max-width
+>     grows from 760px on mobile to 1100px on wide screens).
+>   - **Marginalia rail** for figure captions, side notes,
+>     and figure-with-caption blocks.
+>   - **Mermaid diagrams** supported via ```` ```mermaid ````
+>     code fences, theme-aware.
+>   - **Chapters map** (`dft_notes/chapters-map.md`) — a live
+>     Mermaid graph of the whole knowledge base with hover
+>     details.
+>   - **Python codes folder** (`dft_notes/python_codes/`) —
+>     per-chapter subfolders with the same code that runs
+>     inside the chapters, plus generated plots.
+>   - **Hidden answers** via `<details><summary>` for
+>     thought-provoking problems.
+>   - **agents.md** — the agent handbook documenting how
+>     everything is built and the parallel-research pattern.
+>   - **Footer** shrunk to four short link columns
+>     (Project / Built with / Legal / Contribute) — the
+>     chapter list lives in the **chapters map** and the
+>     nav, not the footer.
 
 ---
 
@@ -906,6 +943,24 @@ What this site has built from this spec:
 - [x] `footer` (dark navy, 4-col → 1-col on mobile)
 - [x] Mobile hamburger menu (vanilla JS, no framework)
 - [x] Skip-to-content link for a11y
+- [x] **v2** — Theme switcher (light + dark) with persistent
+      localStorage
+- [x] **v2** — Pastel poppy-green light palette, warm-dark
+      dark palette
+- [x] **v2** — Wider reading column on large screens
+      (760px → 960px → 1100px)
+- [x] **v2** — Marginalia rail for figures and side notes
+- [x] **v2** — Mermaid diagrams (` ```mermaid ` fences) with
+      theme-aware palette
+- [x] **v2** — `dft_notes/chapters-map.md` — a live Mermaid
+      graph of every chapter
+- [x] **v2** — `dft_notes/python_codes/` — per-chapter
+      subfolders with runnable Python + generated plots
+- [x] **v2** — Hidden answers via `<details><summary>` for
+      problem sets
+- [x] **v2** — `agents.md` — the agent handbook
+- [x] **v2** — Footer cleaned up: no chapter list, just four
+      short link columns
 
 What this site has not yet built (out of scope right now):
 
@@ -918,3 +973,207 @@ What this site has not yet built (out of scope right now):
       git history — future work, not the current Jekyll site)
 - [ ] Animated transitions (motion-reduced by default per
       `prefers-reduced-motion`)
+
+## Palette (v2)
+
+The v1 cream + coral palette worked for a marketing surface,
+but the user pointed out that for *reading* long sessions the
+cream was too close to white.  v2 picks a softer pastel:
+
+| Token                  | Light (v2) | Dark (v2)  | Notes |
+|:-----------------------|:-----------|:-----------|:------|
+| `--color-canvas`       | `#eef0e6`  | `#1a1814`  | Pastel poppy-green vs warm dark |
+| `--color-surface-soft` | `#e3e6d8`  | `#252220`  | One step darker than canvas |
+| `--color-surface-card` | `#d6dcc8`  | `#2e2a24`  | Feature cards, callouts in light |
+| `--color-hairline`     | `#cdd3bd`  | `#3a342a`  | 1px borders on the canvas |
+| `--color-ink`          | `#1c1f17`  | `#f0ebde`  | Headlines, body emphasis |
+| `--color-body`         | `#3a4031`  | `#c4bca8`  | Default running text |
+| `--color-muted`        | `#6b7060`  | `#8a8270`  | Secondary text |
+| `--color-primary`      | `#cc785c`  | `#cc785c`  | **Coral — unchanged in v2** |
+| `--color-primary-active` | `#a9583e` | `#a9583e` | Hover/active coral |
+| `--color-on-primary`   | `#ffffff`  | `#ffffff`  | Text on coral |
+| `--color-on-dark`      | —          | `#f0ebde`  | Cream-tinted text on dark surfaces |
+| `--color-on-dark-soft` | —          | `#a09d96`  | Secondary text on dark |
+
+The cream + dark-navy product surfaces (`--color-surface-dark`
+etc.) are **kept unchanged** for code-window cards, model
+comparisons, and the footer — they work on both themes.
+
+## Reading column (v2)
+
+The v1 chapter column was `max-width: 760px` everywhere.  On
+a 1920px screen that left ~580px of dead space on each side.
+v2 grows progressively:
+
+| Breakpoint     | `.page-content` max-width |
+|:---------------|:--------------------------|
+| `< 768px`      | `100%` (with 24px padding) |
+| `768 – 1024px` | `760px` (mobile-friendly) |
+| `1024 – 1440px` | `960px` (slightly wider) |
+| `≥ 1440px`     | `1100px` (wide-screen reading) |
+
+Inside the wider column, authors can use:
+
+- `<aside class="marginalia">` for right-rail figure captions
+  or side notes
+- `<figure class="figure-wide">` for full-width images
+- `<table class="table-scroll">` for wide tables with
+  horizontal scroll
+
+## Theme switcher (v2)
+
+The user wants to read for long sessions.  v2 adds a
+**light / dark** toggle:
+
+- The toggle is a small icon button in the top nav, between
+  the GitHub text-link and the "Read the notes" CTA.
+- Preference is persisted in `localStorage` under the key
+  `dft-notes:theme` with values `light` | `dark`.
+- A tiny inline script in `<head>` reads the stored value
+  (or the OS `prefers-color-scheme`) and sets
+  `data-theme="dark"` on `<html>` **before** the CSS loads —
+  this prevents a flash of the wrong theme on first paint.
+- CSS variables are organized so `:root` holds the light
+  palette and `[data-theme="dark"]` overrides the same names
+  with the dark palette.  All component styles are written
+  against the variable names, so the switch is automatic.
+
+## Mermaid (v2)
+
+Authors can drop a Mermaid diagram into any chapter with a
+fenced code block whose language is `mermaid`:
+
+````markdown
+```mermaid
+graph TD
+  A[Schrödinger] --> B[Hartree-Fock]
+  B --> C[Kohn-Sham]
+```
+````
+
+The Mermaid library is loaded from
+`https://cdn.jsdelivr.net/npm/mermaid@10` and initialized with
+`startOnLoad: true`.  The init script picks the theme palette
+from `[data-theme]` so diagrams match the page.
+
+`dft_notes/chapters-map.md` is the canonical example — a live
+Mermaid graph of every chapter, with the planned future
+chapters dimmed and labelled `(planned)`.
+
+## Python codes (v2)
+
+Code that runs in a chapter lives **twice**:
+
+1. **Inline in the chapter** (as a fenced code block) for
+   reading.
+2. **In `dft_notes/python_codes/chapter_NN/NN-slug.py`** as a
+   runnable file.
+
+The folder structure is:
+
+```
+dft_notes/python_codes/
+├── README.md                 ← how to run, how to add a new script
+├── chapter_00/
+│   ├── 01-particle-in-box.py
+│   ├── plots/
+│   │   └── particle-in-box.png  ← generated, committed
+│   └── ...
+├── chapter_01/
+│   └── ...
+```
+
+Scripts that produce plots commit the PNG alongside the
+script.  The README documents the `python` version, the
+required packages (numpy, matplotlib, scipy), and the
+convention for naming.
+
+## Hidden answers (v2)
+
+Problem sets use HTML `<details>` for the answer:
+
+```html
+<details class="problem">
+  <summary>Show hint</summary>
+  Start from $E = mc^2$ and the definition of momentum.
+</details>
+
+<details class="answer">
+  <summary>Show answer</summary>
+  Derivation: ...step by step...
+</details>
+```
+
+CSS styles `<details>` with the design system: a soft-card
+background, coral summary text, a thin left border, smooth
+open/close animation.
+
+## Repository structure (v2)
+
+The full tree, with purpose of each path:
+
+```
+DFT-notes/
+├── .github/
+│   ├── CODEOWNERS
+│   ├── dependabot.yml
+│   ├── ISSUE_TEMPLATE/bug_report.md
+│   ├── pull_request_template.md
+│   └── workflows/
+│       ├── jekyll.yml           ← build + deploy to Pages
+│       └── markdown-lint.yml   ← markdownlint-cli2 (v0.40)
+│
+├── _includes/                  ← Liquid partials
+│   ├── head.html               ← meta + fonts + CSS + SEO + MathJax + Mermaid
+│   ├── nav.html                ← top nav, mobile menu, theme switcher
+│   ├── footer.html             ← dark navy footer (no chapter list)
+│   ├── spike-mark.html         ← reusable 4-spoke radial SVG
+│   └── mathjax.html            ← MathJax 3 config
+│
+├── _layouts/                   ← Jekyll layouts
+│   ├── default.html            ← wrapper: skip + nav + main + footer + nav.js + theme init
+│   └── page.html               ← .page-content div for reading column
+│
+├── assets/
+│   ├── css/site.css            ← The design system (variables + components)
+│   └── js/
+│       ├── nav.js              ← mobile menu toggle
+│       ├── theme.js            ← theme switcher (persist + toggle)
+│       └── mermaid-init.js     ← mermaid.initialize() with theme-aware palette
+│
+├── design.md                   ← THIS FILE (excluded from served site)
+├── agents.md                   ← The agent handbook (excluded from served site)
+│
+├── dft_notes/                  ← The actual content
+│   ├── index.md                ← chapter index
+│   ├── chapters-map.md         ← Mermaid graph of all chapters
+│   ├── chapter_00/00-welcome.md
+│   ├── chapter_NN/00-topic.md
+│   ├── python_codes/
+│   │   ├── README.md
+│   │   ├── chapter_00/
+│   │   │   ├── 01-particle-in-box.py
+│   │   │   ├── plots/particle-in-box.png
+│   │   │   └── ...
+│   │   └── chapter_NN/
+│   └── ...
+│
+├── _config.yml                 ← Jekyll config
+├── Gemfile                     ← jekyll 3.10 + minima + kramdown-parser-gfm
+├── 404.md
+├── index.md                    ← hero-band home page
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── LICENSE
+├── README.md                   ← repo overview + this structure
+└── .markdownlint-cli2.jsonc    ← linter config (MD013, MD033, MD025,
+                                  MD040, MD024, MD026, MD049, MD060
+                                  disabled by design)
+```
+
+This is the structure that **must not drift**.  Adding a
+new chapter goes in `dft_notes/chapter_NN/`.  Adding a new
+Python script goes in `dft_notes/python_codes/chapter_NN/`.
+Adding a new component class goes in `assets/css/site.css`.
+Adding a new page-level layout goes in `_layouts/`.  No new
+top-level directories without updating this file.

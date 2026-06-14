@@ -31,12 +31,26 @@ rather than appendix-pinned.
 | 3  | [Hartree–Fock]({{ site.baseurl }}/dft-notes/chapter-03/)         | Mean-field theory, the Fock operator, and the SCF loop      |
 | 4  | [Kohn–Sham DFT]({{ site.baseurl }}/dft-notes/chapter-04/)        | Hohenberg–Kohn existence + Kohn–Sham practical map          |
 | 5  | [XC functionals]({{ site.baseurl }}/dft-notes/chapter-05/)       | Jacob's ladder: LDA, GGA, hybrids, range-separated          |
+| 6  | [Basis sets]({{ site.baseurl }}/dft-notes/chapter-06/)           | Gaussians, plane waves, real-space grids, Roothaan–Hall      |
+| 7  | [Solids & PBC]({{ site.baseurl }}/dft-notes/chapter-07/)         | Bloch's theorem, Brillouin zone, plane-wave cutoff, k-grids  |
+| 8  | [Pseudopotentials]({{ site.baseurl }}/dft-notes/chapter-08/)     | Norm-conserving, ultrasoft, PAW, transferability            |
 
 > **Status:** these are *sample* notes — real prose, real math,
-> real code, but not yet encyclopaedic. They exist to exercise
+> real code, but not yet encyclopaedic.  They exist to exercise
 > every rendering feature of the future e-reader (see
 > [`design.md`]({{ site.baseurl }}/design.md) at the root of
 > the repo).
+
+## Where to go next
+
+- The [chapters map]({{ site.baseurl }}/dft-notes/chapters-map/)
+  is a live Mermaid graph of every chapter that exists or will
+  exist — past, present, and planned.  It shows the natural
+  reading order and the three tracks (Methods / Solids /
+  Dynamics) you can branch into after chapter 05.
+- The [Python codes]({{ site.baseurl }}/dft-notes/python_codes/)
+  folder has the runnable version of every code sample that
+  appears in a chapter, plus the generated plots.
 
 ## Reading order
 
