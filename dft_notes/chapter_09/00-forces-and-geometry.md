@@ -474,6 +474,61 @@ comparable in cost to the SCF routine itself.
 > difference between a published structure being correct and
 > being off by 0.05 Å.
 
+### 9.3.4 Diagram — Hellmann–Feynman and Pulay contributions to the force
+
+The flow below shows how the *complete* force on a nucleus in a
+finite, atom-centred basis is built up from three pieces: the
+classical electron–nuclear and nuclear–nuclear Coulomb
+contributions (the Hellmann–Feynman part), the integral-derivative
+contribution (the Pulay part), and the orthonormality correction
+(the $\mathbf S$-derivative part). The two Pulay terms combine
+into the single matrix element of the KS residual
+$\hat H_\text{KS} - \varepsilon_i$ between $\partial\chi_\mu/\partial\mathbf R_I$
+and $\chi_\nu$, eq. \eqref{eq:ch-09-pulay-derivation}.
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph TD
+  I0["Geometry<br/>R_I, basis chi_mu"] --> SCF["SCF at fixed R<br/>yields rho r, P mu nu<br/>and orbitals phi_i"]
+  SCF --> CLS["Classical Coulomb<br/>nuclear repulsion<br/>(constant basis)"]
+  CLS --> HF1["-Z_I integral rho r d/dr(1/r)<br/>Hellmann-Feynman<br/>electron-nuclear term"]
+  CLS --> HF2["+ sum_{J != I} Z_I Z_J (R_I - R_J) / R^3<br/>Hellmann-Feynman<br/>nuclear-nuclear term"]
+  HF1 --> FHF["F_I^HF<br/>(eq. 9.20)"]
+  HF2 --> FHF
+  SCF --> D1["Basis-derivative<br/>integrals d chi_mu / d R_I"]
+  D1 --> D2["(d chi_mu / d R_I) is p-type<br/>(for s-type Gaussian)"]
+  D2 --> D3["One-electron matrix elements<br/>h_mu nu^(I) and G_mu nu^(I)"]
+  D3 --> D4["S_mu nu^(I) = d S_mu nu / d R_I<br/>from orthonormality"]
+  D4 --> P1["- sum P_mu nu h_mu nu^(I)<br/>+ sum P_mu nu G_mu nu^(I)"]
+  D4 --> P2["- 2 sum_i eps_i<br/>sum C_mu i C_nu i S_mu nu^(I)"]
+  P1 --> P3["Combine using<br/>F C = S C epsilon<br/>and Hermiticity"]
+  P2 --> P3
+  D1 --> P3
+  P3 --> FP["F_I^Pulay<br/>(eq. 9.12)"]
+  FHF --> FTOT["F_I = F_I^HF + F_I^Pulay"]
+  FP --> FTOT
+  FTOT --> OUT["Total analytic force<br/>on nucleus I"]
+
+  classDef hf fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef pulay fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class I0,SCF,CLS,HF1,HF2,FHF hf
+  class D1,D2,D3,D4,P1,P2,P3,FP pulay
+  class FTOT,OUT out
+```
+
+The two **left-most** branches (`HF1` and `HF2`) are the
+Hellmann–Feynman contribution, computed from the SCF density and
+nuclear positions only — no basis-derivative integrals are
+required. The **right-most** branches are the Pulay contribution,
+which is a *linear* operation in the density matrix once the
+basis-derivative integrals are in hand. The
+**final box** combines the two with the algebraic move (using
+$\mathbf F \mathbf C = \mathbf S \mathbf C \boldsymbol\varepsilon$
+and Hermiticity) that turns the integral-derivative and
+overlap-derivative pieces into the single residual matrix element
+of eq. \eqref{eq:ch-09-pulay-derivation}.
+
 ## 9.4 Forces in a plane-wave basis: complete basis → only the external-potential term contributes
 
 In a plane-wave basis (chapter 06 §6.7) the basis functions are
@@ -1122,6 +1177,64 @@ This is \eqref{eq:ch-09-bfgs-update-formula}, restated. $\quad\blacksquare$
 > matrix plus a rank-one update with positive denominator
 > remains positive-definite.
 
+### 9.7.5 Diagram — the BFGS update as a data flow
+
+The BFGS update of eq. \eqref{eq:ch-09-bfgs-update-formula} can
+be read as a *pipeline*: the current Hessian approximation
+$\mathbf B^{(k)}$ and the new correction pair
+$(\mathbf s^{(k)}, \mathbf y^{(k)})$ enter on the left; the
+updated Hessian $\mathbf B^{(k+1)}$ comes out on the right. The
+two rank-one terms inside the box (the *subtraction* of the
+$\mathbf B s s^\text{T} \mathbf B / (s^\text{T} \mathbf B s)$
+"memory" of the old curvature, and the *addition* of the
+$y y^\text{T} / (y^\text{T} s)$ piece that injects the new
+curvature information) are the two rank-one pieces of a
+rank-two symmetric correction.
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph LR
+  B["B(k)<br/>(current Hessian<br/>approximation)"] --> M
+  S["s(k) = R(k+1) - R(k)<br/>(step taken)"] --> M
+  B --> SBT["s^T B s<br/>(scalar denominator)"]
+  SBT --> M
+  M["B(k) s(k) s(k)^T B(k)<br/>/ s(k)^T B(k) s(k)<br/>(old-curvature<br/>subtraction)"] --> N
+  Y["y(k) = F(k+1) - F(k)<br/>(force difference)"] --> N
+  S --> N
+  S --> SBT2["y^T s<br/>(scalar denominator,<br/>curvature condition)"]
+  Y --> SBT2
+  SBT2 --> N
+  N["y(k) y(k)^T / y(k)^T s(k)<br/>(new-curvature<br/>addition)"] --> ADD(("+"))
+  M --> SUB(("-"))
+  SUB --> ADD
+  ADD --> OUT["B(k+1)<br/>secant condition:<br/>B(k+1) s(k) = y(k)"]
+  OUT --> NEXT["Used as B(k) in<br/>the next iteration"]
+
+  classDef input fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef step  fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out  fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class B,S,Y input
+  class SBT,SBT2,M,N,ADD,SUB step
+  class OUT,NEXT out
+```
+
+The *left* side of the diagram is what the optimiser measures at
+the end of step $k$: where the geometry went
+($\mathbf s^{(k)} = \mathbf R^{(k+1)} - \mathbf R^{(k)}$) and
+how the force changed
+($\mathbf y^{(k)} = \mathbf F^{(k+1)} - \mathbf F^{(k)}$). The
+*right* side is the new $\mathbf B^{(k+1)}$ that will be used
+at step $k+1$. The **two scalar denominators** are the
+"curvature" $s^\text{T} \mathbf B s$ (the predicted change in
+force along the step, given the current model) and the
+**secant denominator** $y^\text{T} s$ (the actual change in force
+along the step). The curvature condition
+$y^\text{T} s > 0$ that guarantees
+$\mathbf B^{(k+1)} \succ 0$ is the requirement that the
+denominator on the *right* is positive — i.e. that the *measured*
+curvature agrees in sign with what a positive-definite model
+should predict.
+
 ## 9.8 LBFGS for large systems (limited memory)
 
 For a system of $N$ atoms the BFGS Hessian approximation is an
@@ -1308,6 +1421,56 @@ cell-shape.
 > needed whenever the equilibrium cell shape is unknown (the
 > default in solid-state DFT) or when the calculation is run
 > at a target pressure (e.g. to explore a phase diagram).
+
+### 9.9.4 Diagram — the variable-cell relaxation loop
+
+The variable-cell loop is the geometry-optimisation loop of
+§9.11 with the cell degrees of freedom added. The state vector
+$\mathbf X = (\{\mathbf R_I\}, \{\mathbf a_i\})$ now contains
+both ionic positions and cell vectors. The gradient
+$\mathbf G = (-\mathbf F_I, -\Omega \boldsymbol\sigma)$ contains
+both the forces and the stress. The convergence check is
+extended: $\max|\mathbf F_I| < F_\text{tol}$ *and*
+$\max_{\alpha \neq \beta} |\sigma_{\alpha\beta}| < S_\text{tol}$
+*and* the diagonal stress matches the target pressure.
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph TD
+  X0["X(0) = R_I(0), a_i(0)"] --> SCF["SCF at X(k)<br/>(chapter 04)"]
+  SCF --> E["E, rho r, phi_i"]
+  E --> F1["Compute forces F_I<br/>(HF + Pulay, sec 9.3)"]
+  E --> F2["Compute stress sigma_ab<br/>(HF + Pulay stress,<br/>sec 9.9.1-9.9.2)"]
+  F1 --> G["G(k) = -F, -Omega sigma"]
+  F2 --> G
+  G --> CK{"Converged?<br/>|F| < F_tol<br/>sigma_diag ~ P_ext<br/>sigma_offdiag < S_tol"}
+  CK -->|yes| DONE["Equilibrium cell<br/>R*, a*, E*"]
+  CK -->|no| BFGS["BFGS / LBFGS<br/>on augmented state<br/>(positions + cell)"]
+  BFGS --> STEP["alpha_k, p(k)"]
+  STEP --> XNEW["X(k+1) = X(k) +<br/>alpha_k p(k)"]
+  XNEW --> SCF
+
+  classDef input fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef step  fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out  fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class X0,E input
+  class SCF,F1,F2,G,BFGS,STEP,XNEW step
+  class CK,DONE out
+```
+
+The **two compute boxes** (`F1` and `F2`) are the workhorses:
+the force evaluation is the *ionic* part of the gradient, the
+stress evaluation is the *cell* part. Both depend on the
+self-consistent density from `SCF`, but they are otherwise
+*independent* and can be computed in parallel. The
+**BFGS / LBFGS** step uses the *same* algorithm as for fixed-
+cell relaxation, with the state vector now including the cell
+parameters — the BFGS machinery of §9.6.3 does not care whether
+a coordinate is an ion position or a cell vector. The
+**convergence check** is the *stricter* of the two checks
+(forces *and* stress) — a cell may be at zero force on every
+ion but still have non-zero off-diagonal stress, in which case
+it must be sheared further.
 
 ## 9.10 Worked example: relax the geometry of H2 in a STO-3G basis using analytical forces + steepest descent
 

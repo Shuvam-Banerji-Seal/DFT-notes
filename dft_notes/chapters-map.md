@@ -52,8 +52,8 @@ graph TD
 
   classDef shipped fill:#d6dcc8,stroke:#3a4031,color:#1c1f17,stroke-width:1.5px;
   classDef planned stroke-dasharray: 6 4,stroke:#a09d96,fill:#eef0e6,color:#6b7060,stroke-width:1.5px;
-  class C00,C01,C02,C03,C04,C05,C06,C07,C08,C09,C10,C11,C12 shipped;
-  class C13 planned;
+  class C00,C01,C02,C03,C04,C05,C06,C07,C08,C09,C10,C11,C12,C13 shipped;
+  classDef planned stroke-dasharray: 6 4,stroke:#a09d96,fill:#eef0e6,color:#6b7060,stroke-width:1.5px;
 
   click C00 "javascript:void(0)" "How to read these notes, the notation table, and the prerequisites for the DFT Notes series."
   click C01 "javascript:void(0)" "The postulates of quantum mechanics, the electronic Hamiltonian, and a worked particle-in-a-box derivation."
@@ -68,7 +68,7 @@ graph TD
   click C10 "javascript:void(0)" "Frozen-phonon supercells, density-functional perturbation theory, and electron–phonon coupling."
   click C11 "javascript:void(0)" "Density of states, projected DOS, band-structure plots, and Fermi-surface visualisation."
   click C12 "javascript:void(0)" "Runge–Gross theorem, linear-response TDDFT, the Casida equations, and excitons."
-  click C13 "javascript:void(0)" "DFT+U for strong correlation, hybrid functionals revisited, and a DMFT outlook. (Planned.)"
+  click C13 "javascript:void(0)" "DFT+U for strong correlation, hybrid functionals revisited, and a DMFT outlook."
 ```
 
 ## Edges

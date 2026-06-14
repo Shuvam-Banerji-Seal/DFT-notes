@@ -155,6 +155,53 @@ A few words on each.
   antisymmetrised product of two identical spin-orbitals is
   identically zero.
 
+### 1.2.1 Mermaid — the postulates as a dependency graph
+
+The six postulates are not independent: states (P1) are what
+observables (P2) act on, measurements (P3) and expectation values
+(P4) are statistics of the same object, time evolution (P5) is
+the dynamical law for that object, and the Pauli principle (P6)
+is the extra constraint that makes chemistry non-trivial. The
+diagram below makes those dependencies explicit.
+
+```mermaid
+graph TD
+  subgraph foundations["Foundations"]
+    P1["P1 — States<br/>|ψ⟩ ∈ ℋ, ||ψ|| = 1<br/>(ray in Hilbert space)"]
+    P2["P2 — Observables<br/>Â = Â†<br/>(self-adjoint operator)"]
+  end
+
+  subgraph statics["Statics (TISE)"]
+    P3["P3 — Measurement<br/>Pr(aₙ) = |⟨aₙ|ψ⟩|²"]
+    P4["P4 — Expectation<br/>⟨Â⟩ = ⟨ψ|Â|ψ⟩"]
+  end
+
+  subgraph dynamics["Dynamics (TDSE)"]
+    P5["P5 — Evolution<br/>i ∂ₜ|ψ⟩ = Ĥ|ψ⟩"]
+  end
+
+  subgraph symmetry["Symmetry"]
+    P6["P6 — Antisymmetry<br/>Ψ(…, xᵢ, …, xⱼ, …) = −Ψ(…, xⱼ, …, xᵢ, …)"]
+  end
+
+  P1 --> P3
+  P1 --> P4
+  P2 --> P3
+  P2 --> P4
+  P1 --> P5
+  P5 -->|"stationary limit<br/>(separation of vars)"| P3
+  P3 --> P4
+  P4 --> P5
+  P6 -.->|"P1: antisymmetrised<br/>Slater determinants"| P1
+  P6 -.->|"P5: phase-free,<br/>conserves norm"| P5
+```
+
+The solid arrows are "is-used-by"; the dashed arrows are
+"constrains". P1–P5 are the *kinematic* postulates (they apply
+to any quantum system); P6 is the *symmetry* postulate and is
+what makes *electronic-structure* theory distinct from the
+quantum mechanics of distinguishable particles.
+
 ## 1.3 A minimal example: the particle in a box
 
 To make the formalism concrete, consider a single electron in a 1-D box
@@ -1352,6 +1399,39 @@ $$
 $$
 
 with $m \in \{-1, 0, 1\}$ for the three degenerate $2p$ states.
+
+### 1.10.6.1 Mermaid — the hydrogen solution path
+
+The hydrogen derivation above is a long chain of reductions:
+3-D two-body → 1-D radial × angular, $rR$ substitution, asymptotic
+analysis, polynomial truncation. The diagram below summarises the
+chain; each box is a step in §1.10.1–§1.10.6, and each arrow
+labels the *new variable* or *new operator* introduced at that step.
+
+```mermaid
+graph TD
+  SE["Schrödinger equation<br/>Ĥψ = Eψ<br/>3-D, two-body, Coulomb"]
+  SE --> SEP["Separate centre-of-mass<br/>Ψ = Φ(R_cm)·ψ(r)<br/>(composite → two 1-body)"]
+  SEP --> SPH["Spherical ansatz<br/>ψ = R(r)·Yₗᵐ(θ,φ)<br/>(3-D → 1-D radial)"]
+  SPH --> U["u(r) = r·R(r) substitution<br/>(remove first-derivative)"]
+  U --> ASYMP["Asymptotic analysis<br/>u ~ r^(ℓ+1) at 0<br/>u ~ e^(-κr) at ∞"]
+  ASYMP --> RAD["Radial equation<br/>+ boundary conditions<br/>(regular at 0, decays at ∞)"]
+  RAD --> QN["Quantisation<br/>n = 1, 2, 3, …<br/>ℓ = 0, …, n-1<br/>m = -ℓ, …, ℓ"]
+  QN --> LAG["Laguerre polynomial<br/>L_{n-ℓ-1}^(2ℓ+1)(2Zr/n)"]
+  LAG --> R["Radial eigenfunctions<br/>R_{nℓ}(r)"]
+  R --> PSI["Full eigenfunctions<br/>ψ_{nℓm} = R_{nℓ}·Yₗᵐ"]
+  QN --> EN["Energy levels<br/>Eₙ = -Z²/(2n²) Eₕ<br/>(ℓ, m degeneracy)"]
+  PSI --> RADII["Worked example:<br/>radial plots (§1.10.9)"]
+  EN --> TRANS["Application:<br/>2p→1s Lyman-α (§1.10.7)"]
+  QN --> LEVELS["Application:<br/>level diagram (§1.10.8)"]
+```
+
+The left half of the diagram (Schrödinger → radial equation)
+is the *separation-of-variables* reduction; the right half
+(radial equation → R_{nℓ}) is the *asymptotic* +
+*polynomial-truncation* argument. The quantisation box is the
+*only* place where the discrete quantum numbers $(n, \ell, m)$
+appear; the rest of the derivation is continuum analysis.
 
 ### 1.10.7 The 2p → 1s transition and Fermi's golden rule
 

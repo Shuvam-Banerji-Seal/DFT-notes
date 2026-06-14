@@ -38,6 +38,7 @@ rather than appendix-pinned.
 | 10 | [Phonons & vibrations]({{ site.baseurl }}/dft-notes/chapter-10/) | Frozen-phonon, DFPT, LO-TO, Eliashberg, superconductivity    |
 | 11 | [Band structures]({{ site.baseurl }}/dft-notes/chapter-11/)      | DOS, Fermi surface, effective mass, graphene Dirac cone    |
 | 12 | [Time-dependent DFT]({{ site.baseurl }}/dft-notes/chapter-12/) | Runge–Gross, Casida, real-time TDDFT, UV/vis spectra      |
+| 13 | [DFT+U & beyond]({{ site.baseurl }}/dft-notes/chapter-13/) | Strong correlation, DFT+U, hybrid functionals, DMFT     |
 
 > **Status:** these are *sample* notes — real prose, real math,
 > real code, but not yet encyclopaedic.  They exist to exercise

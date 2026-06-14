@@ -94,6 +94,49 @@ chapter.
 > unchanged. The density is manifestly gauge-invariant, so the
 > freedom drops out of the density-to-potential map.
 
+### 12.1.1 Diagram — the Runge–Gross one-to-one mapping
+
+The Runge–Gross theorem is the *foundation* of TD-DFT: it
+guarantees that the time-dependent external potential
+$v_\text{ext}(\mathbf r, t)$ is in one-to-one correspondence
+with the time-dependent density $\rho(\mathbf r, t)$ (up to a
+gauge $c(t)$), given a fixed initial state $|\Psi_0\rangle$.
+The diagram below shows the *forward* map (potential → wave
+function → density, the natural arrow of the Schrödinger
+equation) and the *Runge–Gross* inverse (density → potential,
+which is what makes TD-DFT possible).
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph LR
+  V["v_ext(r, t)<br/>(time-dependent<br/>external potential)"] --> SE["Schrodinger equation<br/>i hbar d/dt |Psi(t)><br/>= H(t) |Psi(t)>"]
+  PSI0["Initial state |Psi_0><br/>at t = t_0"] --> SE
+  SE --> PSI["|Psi(t)><br/>(time-dependent<br/>many-body state)"]
+  PSI --> RHO["rho(r, t)<br/>time-dependent<br/>density"]
+  RHO -.->|"RG:<br/>one-to-one (up to c(t))"| V
+  RHO --> OBS["Every observable<br/>O(t) = <Psi(t) | O | Psi(t)><br/>is a functional of<br/>rho(r, t) and |Psi_0>"]
+
+  classDef inp fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  classDef mid fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  class V,PSI0 inp
+  class SE,PSI,RHO mid
+  class OBS out
+```
+
+The **solid** arrows are the forward map — the Schrödinger
+equation determines the wave function from the potential, and
+the density is the diagonal of the one-body density matrix. The
+**dashed** arrow is the *Runge–Gross* inverse, which says:
+given the *density* $\rho(\mathbf r, t)$ and the *initial state*
+$|\Psi_0\rangle$, the potential $v_\text{ext}(\mathbf r, t)$ is
+*uniquely* determined (up to a purely time-dependent function
+$c(t)$). This is the time-dependent analogue of the
+Hohenberg–Kohn theorem (chapter 04) and is the foundation of
+*every* practical TD-DFT calculation: it is what justifies
+writing the time-dependent KS potential as a *functional* of
+the time-dependent density.
+
 ## 12.2 The time-dependent Kohn–Sham equations
 
 The Runge–Gross theorem guarantees the *existence* of a
@@ -1036,6 +1079,64 @@ is non-local in $\mathbf r$ but frequency-independent.
 > practical backbone of production TD-DFT codes (Q-Chem,
 > TURBOMOLE, ORCA, NWChem).
 
+### 12.7.4 Diagram — the Casida construction pipeline
+
+The Casida equation is the practical realisation of
+linear-response TD-DFT for *excitation spectra*. The pipeline
+runs from a *ground-state* calculation (which provides the KS
+orbitals and energies) through the *KS response function*
+$\chi_s$, the *coupling matrix* $\mathbf K$ (which contains the
+electron–electron interaction through the kernel $f_\text{xc}$),
+and finally a *matrix eigenvalue problem* whose eigenvalues are
+the excitation energies $\omega_I$ and whose eigenvectors
+$(\mathbf X, \mathbf Y)$ are the *excitation amplitudes*.
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph TD
+  GS["Ground state<br/>phi_i, phi_a, eps_i, eps_a<br/>(chapter 04)"] --> TD["Transition densities<br/>xi_ia(r) = phi_i* phi_a"]
+  TD --> CHI["KS response function<br/>chi_s(omega)<br/>(Lehmann representation)"]
+  CHI --> KERN{"Choose kernel<br/>f_xc(omega)"}
+  KERN -->|"ALDA"| ALDA["f_xc = d^2(rho eps_xc)/drho^2<br/>local, omega-independent"]
+  KERN -->|"EXX"| EXX["f_xc^EXX<br/>non-local, omega-independent"]
+  KERN -->|"BSE"| BSE["K^x + K^direct<br/>non-local, omega-dependent"]
+  ALDA --> K["Coupling matrix<br/>K_ia,jb<br/>(eq. 12.78)"]
+  EXX --> K
+  BSE --> K
+  CHI --> A["Diagonal A_ia,jb<br/>= delta_ij delta_ab omega_ia<br/>+ K_ia,jb"]
+  K --> A
+  K --> B["Off-diagonal B_ia,jb<br/>= K_ia,jb"]
+  A --> EIG["Casida eigenvalue problem<br/>(2 N_occ N_virt) x<br/>(2 N_occ N_virt)"]
+  B --> EIG
+  EIG --> OMEGA["Excitation energies<br/>omega_I<br/>(eigenvalues)"]
+  EIG --> XY["Excitation amplitudes<br/>(X_I, Y_I)"]
+  XY --> FOSC["Oscillator strength f_I<br/>(eq. 12.80)"]
+  OMEGA --> SPEC["UV/vis absorption<br/>spectrum"]
+  FOSC --> SPEC
+
+  classDef inp fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef step fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class GS inp
+  class TD,CHI,KERN,ALDA,EXX,BSE,K,A,B,EIG,XY,FOSC step
+  class OMEGA,SPEC out
+```
+
+The **three vertical branches** of the diagram converge on the
+`EIG` box. `A` (top branch) provides the *diagonal* of the
+Casida matrix — it contains the KS excitation energies
+$\omega_{ia}$ and is the part that survives the *Tamm–Dancoff*
+approximation (TDA, where `B` is neglected). `K` (middle
+branch) is the *coupling matrix*, computed from the chosen
+xc kernel; it is the *only* branch where the kernel choice
+matters. `B` (bottom branch) is the *de-excitation* amplitude
+coupling; it is the same matrix as `K` but appears in the
+off-diagonal block of the Casida equation. The single matrix
+diagonalisation in `EIG` produces *all* excitation energies and
+amplitudes at once; the spectrum is then constructed by
+assigning each $\omega_I$ an oscillator strength $f_I$ from the
+corresponding eigenvector $(\mathbf X_I, \mathbf Y_I)$.
+
 ## 12.8 Real-time TD-DFT
 
 The Casida equation gives the *linear* response. For strong
@@ -1141,6 +1242,50 @@ molecular dynamics with electronic excitations; we will
 not derive the surface-hopping machinery here (it is
 covered in the molecular-dynamics chapters of the
 literature).
+
+### 12.8.4 Diagram — the real-time TD-DFT propagation loop
+
+Real-time TD-DFT propagates the time-dependent KS orbitals
+forward in time, monitors the time-dependent dipole moment, and
+extracts the absorption spectrum by Fourier transform. The
+diagram below shows the *propagation loop* (top half) and the
+*post-processing* chain (bottom half).
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph TD
+  GS["Ground state<br/>phi_i(0) = phi_i^GS<br/>(chapter 04)"] --> KICK["Apply perturbation<br/>delta-kick delta v = -k.r delta(t)<br/>or short pulse"]
+  KICK --> PHI0["phi_i(t_0+) = phi_i(0)<br/>(kick in v_ext only)"]
+  PHI0 --> LOOP["t = t_0, t_0+dt, t_0+2dt, ..."]
+  LOOP --> CN["Crank-Nicolson step<br/>phi_i(t+dt) =<br/>(1 - i dt/2 H)/(1 + i dt/2 H) phi_i(t)"]
+  CN --> VEFF["Build rho(r, t)<br/>and v_eff[rho](r, t)"]
+  VEFF --> CK{"t < T_max?"}
+  CK -->|yes| LOOP
+  CK -->|no| DONE["Orbital trajectory<br/>phi_i(t), 0 <= t <= T_max"]
+  DONE --> MU["Dipole moment<br/>mu(t) = int rho r dr<br/>(eq. 12.97)"]
+  MU --> WIN["Multiply by window<br/>(Hann / Gaussian)<br/>suppresses FFT sidelobes"]
+  WIN --> FFT["Fourier transform<br/>alpha(omega) = int mu(t) e^{-i omega t} dt"]
+  FFT --> SPEC["Absorption spectrum<br/>sigma(omega) ~<br/>omega Im alpha(omega)"]
+
+  classDef inp fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef prop fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class GS,KICK,PHI0 inp
+  class LOOP,CN,VEFF,CK prop
+  class DONE,MU,WIN,FFT,SPEC out
+```
+
+The **inner loop** (`LOOP` → `CN` → `VEFF` → `CK`) is the
+propagator: at every time step, the Crank–Nicolson update
+rotates each orbital by the Cayley transform of $\hat H_s$,
+then a new density and effective potential are built. The
+cost per step is $\mathcal O(K^2)$ per orbital (the matrix
+solve) plus $\mathcal O(K^2)$ for the density build — total
+$\mathcal O(N_\text{steps} N_\text{orb} K^2)$ for the whole
+trajectory. The **post-processing** chain (`MU` → `WIN` → `FFT`
+→ `SPEC`) takes the trajectory and extracts the absorption
+spectrum in a single Fourier transform, after windowing to
+suppress spectral leakage.
 
 ## 12.9 Applications
 

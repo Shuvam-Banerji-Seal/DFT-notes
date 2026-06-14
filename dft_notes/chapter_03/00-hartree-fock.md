@@ -206,6 +206,67 @@ with $V_\text{nn}$ the classical nuclear–nuclear repulsion.  The
 half-trace form \eqref{eq:ch-03-hf-energy-dm} is what we evaluate
 at every SCF step.
 
+### 3.2.1 Mermaid — the Fock matrix and the energy components
+
+The Fock operator $\hat F = \hat h + \hat J - \hat K$ is the
+*potential* that each orbital feels; the **energy** is a
+different functional of the same ingredients, with a factor of
+$\tfrac{1}{2}$ to correct the double counting of
+electron–electron repulsion. The diagram below pairs the
+Fock-matrix terms on the left with the energy components on
+the right.
+
+```mermaid
+graph LR
+  subgraph fock["Fock operator (one-electron potential)"]
+    H1["ĥ<br/>kinetic +<br/>nuclear attraction"]
+    JH["Ĵ[ρ]<br/>Coulomb (Hartree)<br/>classical e-e repulsion"]
+    KH["K̂[ρ]<br/>exchange (non-local)<br/>Pauli, same-spin only"]
+  end
+
+  F["F̂ = ĥ + Ĵ − K̂"]
+
+  subgraph energy["Energy components (E_HF)"]
+    T["T = ⟨T̂⟩<br/>kinetic"]
+    VNUC["⟨V_nuc⟩<br/>electron–nuclear"]
+    J["J = ⟨Ĵ⟩<br/>classical Coulomb"]
+    K["−K = −⟨K̂⟩<br/>exchange<br/>(stabilising, negative)"]
+    VNN["V_nn<br/>nuclear–nuclear<br/>(classical)"]
+  end
+
+  H1 --> F
+  JH --> F
+  KH --> F
+
+  F --> T
+  F --> VNUC
+  F --> J
+  F --> K
+  J --> E["E_HF = T + V_nuc + J − K + V_nn<br/>(½ Tr P (h + F) + V_nn)"]
+  K --> E
+  T --> E
+  VNUC --> E
+  VNN --> E
+  J -. "counted twice in F → ÷2 here" .-> E
+```
+
+Two things to notice:
+
+- The Coulomb energy $J$ appears *with a factor of one* in the
+  energy expression but the Fock matrix contains the *full*
+  $J$. The factor of $\tfrac{1}{2}$ in the energy trace formula
+  compensates for the fact that $\hat J$ acts on the *same*
+  electron density that built it — every electron–electron pair
+  is counted twice in $\mathbf J$ and the half undoes that.
+- The exchange term enters the Fock matrix with a *minus* sign
+  ($\hat F = \hat h + \hat J - \hat K$) but appears with a
+  *minus* sign in the energy too, so the energy contribution is
+  $-K < 0$ — the exchange energy is *attractive* (it lowers
+  the total energy relative to the classical Coulomb picture).
+  This sign convention is the source of almost every confusion
+  about HF energies; the diagram encodes the convention once
+  and for all.
+
 ## 3.3 The self-consistent field
 
 The Fock operator depends on the orbitals (through the density),
@@ -311,6 +372,61 @@ precisely $\hat F \chi_p = \varepsilon_p \chi_p$.
 > basis.  The Slater–Condon rules work in any orthonormal basis;
 > the AO basis is not orthonormal, but the Fock operator is the
 > same differential operator regardless.
+
+### 3.4.1 Mermaid — the Slater–Condon rules as a matrix
+
+The Slater–Condon rules are best read as a recipe for filling in
+the *Hamiltonian matrix* in the basis of Slater determinants.
+The determinant basis is enormous (combinatorial in the number
+of spin-orbitals), but the matrix is *extremely* sparse: most
+entries are zero, and the non-zero entries fall into three
+classes. The diagram below makes that sparsity structure
+explicit.
+
+```mermaid
+graph LR
+  subgraph det["Determinant basis {|Φ_I⟩}"]
+    I["Φ_I<br/>(reference)"]
+    SI["Φ_I^a<br/>single excitation<br/>(occ i → virt a)"]
+    DI["Φ_I^{ab}_{ij}<br/>double excitation<br/>(occ ij → virt ab)"]
+    TRI["Φ_I^{abc}_{ijk}<br/>triple+<br/>excitation"]
+  end
+
+  subgraph rule["Slater–Condon matrix element ⟨Φ_I|Ĥ|Φ_J⟩"]
+    D0["Δ = 0<br/>DIAGONAL<br/>Σᵢ h_{ii} + ½ Σ_{ij} (J_{ij} − K_{ij})"]
+    D1["Δ = 1<br/>h_{ab} + Σⱼ(⟨ab|jj⟩−⟨aj|bj⟩)"]
+    D2["Δ = 2<br/>⟨ab|cd⟩ − ⟨ab|dc⟩"]
+    D3["Δ ≥ 3<br/>= 0"]
+  end
+
+  subgraph use["Why this matters"]
+    U1["Configuration interaction<br/>(CI): only singles + doubles<br/>couple to the reference"]
+    U2["MP2, CCSD: never touch the<br/>Hamiltonian matrix directly"]
+    U3["Justifies the Fock operator:<br/>vary w.r.t. one orbital<br/>→ F̂ χ_p = ε_p χ_p"]
+  end
+
+  I --> D0
+  SI --> D1
+  DI --> D2
+  TRI --> D3
+
+  D0 --> U3
+  D1 --> U3
+  D2 --> U1
+  D3 --> U1
+  D2 --> U2
+  D3 --> U2
+```
+
+The determinant basis is the *first-quantised* language in which
+post-HF methods (CI, MP2, CC, EOM-CC) are written; the
+Slater–Condon rules are the *only* property of the Hamiltonian
+that makes these methods tractable. The "Δ = 0" and "Δ = 1"
+boxes, taken together, are what the Fock operator encapsulates:
+the first-order variation of the HF energy w.r.t. a single
+orbital uses exactly the diagonal (I = J) and single-excitation
+(I differs by one orbital) rules, and the result is
+$\hat F \chi_p = \varepsilon_p \chi_p$.
 
 ## 3.5 What Hartree–Fock gets wrong
 
@@ -788,6 +904,65 @@ $\mathbf P (\mathbf h + \mathbf F)$ in disguise.  The two forms
 agree to numerical precision at convergence; the half-trace form
 is what every code prints because it does not require a final
 MO transformation.
+
+### 3.6.5.1 Mermaid — the AO-basis data flow
+
+The SCF algorithm above has six steps, but the *data* it carries
+between steps falls into four categories. The diagram below
+arranges the algorithm by *what is moving*, not by *when*:
+
+- the **atomic-orbital integrals** (one-time setup, geometry-fixed),
+- the **density matrix** $\mathbf P$ (the SCF iterate),
+- the **Fock matrix** $\mathbf F[\mathbf P]$ (built from $\mathbf P$),
+- the **MO coefficients** $\mathbf C$ and orbital energies
+  $\boldsymbol\varepsilon$ (output of the generalised eigenproblem).
+
+```mermaid
+graph TD
+  subgraph setup["Setup (one-time, geometry fixed)"]
+    GEOM["Geometry<br/>{R_A, Z_A}"]
+    BASIS["Basis {χ_μ}<br/>(GTO, see ch.06)"]
+    GEOM --> INT1["One-electron integrals<br/>S_μν, h_μν"]
+    BASIS --> INT1
+    GEOM --> INT2["Two-electron integrals<br/>(μν|ρσ) — 4-index tensor<br/>(or recompute on the fly, §3.8)"]
+    BASIS --> INT2
+  end
+
+  subgraph scf["SCF iterate"]
+    P["P^(n)<br/>density matrix<br/>(K × K)"]
+    P --> BF["Build F^(n)<br/>F = h + J[P] − ½ K[P]<br/>O(K⁴) with ERI"]
+    INT1 --> BF
+    INT2 --> BF
+    BF --> GEP["Generalised eigenproblem<br/>F^(n) C = S C ε<br/>(Löwdin / Cholesky)"]
+    GEP --> PNEW["P_new = 2 C_occ C_occ^T"]
+    PNEW --> CHK{"‖P_new − P‖<br/>< tol ?"}
+    CHK -- "no" --> MIX["Mix: P = (1−α)P + α P_new<br/>(or DIIS, §3.8)"]
+    MIX --> P
+  end
+
+  subgraph out["Output (at convergence)"]
+    COUT["MO coefficients C"]
+    EPS["Orbital energies ε₁ ≤ ε₂ ≤ …"]
+    EOUT["E_HF = ½ Tr P(h + F) + V_nn"]
+  end
+
+  GEP --> COUT
+  GEP --> EPS
+  PNEW --> EOUT
+  CHK -- "yes" --> COUT
+  CHK -- "yes" --> EPS
+  CHK -- "yes" --> EOUT
+```
+
+The diagram makes the *cost-hiding* of HF explicit: every cycle
+through the SCF inner loop re-builds $\mathbf F$ from $\mathbf P$
+at a cost of $\mathcal O(K^4)$ (the two-electron integral
+contraction), and then diagonalises an $K \times K$ matrix at
+$\mathcal O(K^3)$. The two costs are in *opposite scaling
+regimes*; the crossover between them is exactly what determines
+whether a code uses *conventional* SCF (small $K$, store the
+ERI) or *direct* SCF (large $K$, recompute the ERI on the fly)
+— see §3.8.
 
 ### 3.6.6 Orthogonalisation
 

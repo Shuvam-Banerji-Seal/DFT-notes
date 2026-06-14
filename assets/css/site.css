@@ -464,6 +464,86 @@ details.answer > :not(summary) > :last-child { margin-bottom: 0; }
   margin-right: calc(var(--container-pad) * -1);
 }
 
+/* Figure wrapper: holds the rendered <svg> and the "Download PNG"
+   button.  Built by assets/js/mermaid-init.js right after the
+   async render completes. */
+.dft-mermaid-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: var(--space-xl) 0;
+  position: relative;
+}
+.dft-mermaid-figure > .mermaid,
+.dft-mermaid-figure > pre.mermaid {
+  margin: 0;
+}
+.dft-mermaid-figure > pre.mermaid {
+  background-color: var(--color-surface-soft);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  overflow-x: auto;
+  text-align: center;
+}
+.dft-mermaid-download {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: calc(-1 * var(--space-md));
+  margin-bottom: var(--space-md);
+  margin-right: var(--space-xs);
+  padding: var(--space-2xs) var(--space-sm);
+  font: 500 12px/1 var(--font-ui);
+  color: var(--color-muted-ink);
+  background: transparent;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+.dft-mermaid-download:hover,
+.dft-mermaid-download:focus-visible {
+  color: var(--color-ink);
+  border-color: var(--color-accent);
+  background-color: var(--color-surface-soft);
+  outline: none;
+}
+.dft-mermaid-download svg {
+  flex-shrink: 0;
+}
+.dft-mermaid-download.is-success {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background-color: var(--color-surface-soft);
+}
+.dft-mermaid-download.is-error {
+  color: #b54a3a;
+  border-color: #b54a3a;
+}
+/* While the page is still loading, before Mermaid kicks in, the
+   raw <pre> should look like a code block, not a flex row. */
+pre.dft-mermaid-pre {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-muted-ink);
+  background-color: var(--color-surface-soft);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  margin: var(--space-lg) 0;
+  overflow-x: auto;
+}
+pre.dft-mermaid-pre code.language-mermaid {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+}
+
 .container {
   max-width: var(--container-max);
   margin-left: auto;

@@ -620,6 +620,56 @@ requires an FFT of each band to a real-space grid; in a localised-
 basis code it is just a sum of basis-function densities weighted
 by the squared expansion coefficients.
 
+### 11.3.6 Diagram — DOS, projected DOS, and Fermi surface
+
+The DOS $g(E)$, the *projected* DOS $g_{a,\ell}(E)$ on each
+atomic orbital $(a, \ell)$, and the *Fermi surface* (the
+$E = \varepsilon_F$ level set of $\varepsilon_{n\mathbf k}$) are
+three different *compressions* of the same band structure
+$\varepsilon_{n\mathbf k}$. They answer three different
+questions: *how many states* are at a given energy
+(`DOS`); *of which character* (`pDOS`); *and where in the
+Brillouin zone* (`Fermi surface`).
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph LR
+  BS["Band structure<br/>eps_{n,k}<br/>(n = 1..N_band)"] --> DOS["DOS<br/>g(E) = sum_nk delta(E - eps_{n,k})<br/>(eq. 11.18)"]
+  BS --> PDOS["Projected DOS<br/>g_{a,l}(E) = sum_nk |P_n^a, l|^2 delta(E - eps_{n,k})<br/>(eq. 11.32)"]
+  BS --> FS["Fermi surface<br/>isosurface eps_{n,k} = eps_F<br/>(3-D surface or 2-D curve)"]
+  BS --> BAND["Band plot<br/>eps_{n,k} along k-path<br/>(chapter 11.2)"]
+  DOS --> Q1["Q: how many states<br/>at energy E?"]
+  PDOS --> Q2["Q: of which atomic orbital?"]
+  FS --> Q3["Q: where in the BZ<br/>are the metallic states?"]
+  BAND --> Q4["Q: dispersion along<br/>a high-symmetry line?"]
+  DOS --> DOSD["van Hove singularities,<br/>band edges,<br/>pseudogap"]
+  PDOS --> DOSD2["orbital character of<br/>each spectral feature"]
+  FS --> FSD["Fermi velocity v_F(k),<br/>nesting, topology<br/>(open / closed)"]
+  BAND --> BANDD["effective masses,<br/>band crossings,<br/>topology"]
+  Q1 --> DOSD
+  Q2 --> DOSD2
+  Q3 --> FSD
+  Q4 --> BANDD
+
+  classDef src fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef comp fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class BS src
+  class DOS,PDOS,FS,BAND,Q1,Q2,Q3,Q4 comp
+  class DOSD,DOSD2,FSD,BANDD out
+```
+
+The three central compressions (`DOS`, `PDOS`, `FS`) are all
+*linear* in the band energies and eigenvectors — they do not
+require a new SCF. They differ in *what is summed* over:
+the DOS sums over $\mathbf k$ and $n$ (and bins by energy), the
+PDOS adds a *weight* $|P_n^{a,\ell}|^2$ (the projection of
+band $n$ on orbital $(a,\ell)$) before binning, and the Fermi
+surface picks the *single* energy slice
+$\varepsilon = \varepsilon_F$. The `BAND` box on the right is
+the band-structure *plot* of §11.2 — the same data as the DOS
+but on a 1-D k-path instead of summed over the BZ.
+
 ## 11.4 The Fermi surface
 
 The Fermi surface is the *level set* of the band structure at the
@@ -1077,6 +1127,56 @@ masses.  The DOS effective mass controls the **electronic specific
 heat** of a metal (which is proportional to $m^*_\text{DOS}$) and
 the **thermopower** (via the Mott formula).
 
+### 11.7.4 Diagram — the effective mass from a parabolic fit
+
+The effective-mass tensor at a band extremum is the *curvature*
+of $\varepsilon_{n\mathbf k}$ in the three Cartesian directions
+of $\mathbf k$:
+
+$$(m^*)^{-1}_{\alpha\beta} = \frac{1}{\hbar^2}\,
+   \frac{\partial^2 \varepsilon_{n\mathbf k}}{\partial k_\alpha\, \partial k_\beta} .$$
+
+The flow below shows the three-step procedure: pick a
+high-symmetry point where a band has an extremum; sample
+$\varepsilon_{n\mathbf k}$ on a fine $\mathbf k$-mesh around it;
+fit a quadratic form in $(k - k_0)$; read off the inverse-mass
+tensor. The diagram makes explicit that the *anisotropic*
+effective mass (a tensor, sec. 11.7.2) and the *DOS* effective
+mass (a scalar, sec. 11.7.3) are different reductions of the
+same curvature tensor.
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph TD
+  BSE["eps_{n,k}<br/>(full band structure)"] --> PICK["Locate extremum at k0<br/>(CBM, VBM, or saddle)"]
+  PICK --> SAMP["Sample on fine mesh<br/>around k0<br/>(N_k ~ 11^3)"]
+  SAMP --> FIT["Fit quadratic form<br/>eps_n(k) ~ eps_n(k0)<br/>+ (1/2) (k-k0)^T H (k-k0)"]
+  FIT --> HESS["Hessian matrix<br/>H_ab = d^2 eps / dk_a dk_b"]
+  HESS --> INV["Inverse-mass tensor<br/>(m*)^-1_ab = H_ab / hbar^2<br/>(rank 2, symmetric 3x3)"]
+  INV --> DIAG["Diagonalise<br/>-> principal masses<br/>m*_1, m*_2, m*_3"]
+  INV --> TRACE["Trace -> DOS mass<br/>m*_DOS = (det m*)^(1/3)<br/>(3-D); geometric mean<br/>in 2-D / 1-D"]
+  INV --> COND["Conductivity mass<br/>(weighted average over<br/>Fermi surface)"]
+  DIAG --> OUT1["Anisotropic effective mass<br/>(sec. 11.7.2)"]
+  TRACE --> OUT2["Density-of-states<br/>effective mass<br/>(sec. 11.7.3)"]
+  COND --> OUT3["Transport effective mass<br/>(sec. 11.7.3)"]
+
+  classDef inp fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef step fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class BSE inp
+  class PICK,SAMP,FIT,HESS,INV,DIAG,TRACE,COND step
+  class OUT1,OUT2,OUT3 out
+```
+
+The **key branch** is `INV` (the inverse-mass tensor). The three
+*downstream* boxes (`DIAG`, `TRACE`, `COND`) are different
+*reductions* of the same tensor: the principal axes (eigenvectors
+of $\mathbf H$) and the principal masses (eigenvalues divided by
+$\hbar^2$) come from `DIAG`; the DOS mass is the geometric mean
+of the principal masses; the conductivity mass is a
+direction-weighted average that depends on the Fermi-surface
+integral of the inverse mass.
+
 ## 11.8 Band structure of specific materials
 
 We now apply the machinery to four canonical materials.  Each
@@ -1254,6 +1354,52 @@ semiconductor.  The same physics — spin–orbit-split valence bands
 in a 2-D hexagonal lattice — applies to all the 2-H
 transition-metal dichalcogenides (WS₂, WSe₂, MoSe₂, MoTe₂), with
 heavier transition metals giving larger spin–orbit splittings.
+
+### 11.8.5 Diagram — the graphene Dirac cone construction
+
+The graphene Dirac cone is built from a *two-atom* basis (A and
+B sublattices) with *nearest-neighbour* hopping $t$ between
+them. The two-atom basis gives a $2 \times 2$ Bloch Hamiltonian
+$\hat H(\mathbf k)$; its eigenvalues are $\pm |f(\mathbf k)|$,
+which vanish at the BZ corners $K$ and $K'$. Expanding $f$ to
+linear order in $\mathbf q = \mathbf k - K$ gives a *massless
+Dirac* Hamiltonian $H \approx \hbar v_F \boldsymbol\sigma \cdot
+\mathbf q$, with linear dispersion $\varepsilon_\pm(\mathbf q)
+= \pm \hbar v_F |\mathbf q|$.
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph TD
+  L1["Honeycomb lattice<br/>(2-D, two atoms per cell:<br/>A and B sublattices)"] --> L2["Tight-binding<br/>nearest-neighbour hopping t<br/>(sec. 11.9.2)"]
+  L2 --> H2["2x2 Bloch Hamiltonian<br/>H(k) = [[0, f(k)], [f*(k), 0]]<br/>f(k) = t(1 + e^{ik.a1} + e^{ik.a2})"]
+  H2 --> EG["Eigenvalues<br/>eps_pm(k) = +/- |f(k)|<br/>(eq. 11.55)"]
+  EG --> ZERO["Zero set:<br/>f(k) = 0 at BZ corners<br/>K = (4 pi / 3a, 0)<br/>K' = (-4 pi / 3a, 0)"]
+  ZERO --> EXP["Expand around K:<br/>f(K + q) ~ - (sqrt 3 a / 2) t (q_x - i q_y)<br/>(linear in q)"]
+  EXP --> DIRAC["Massless Dirac<br/>H ~ hbar v_F sigma . q<br/>v_F = (sqrt 3 / 2) a t / hbar"]
+  DIRAC --> CONE["Linear dispersion<br/>eps_pm(q) = +/- hbar v_F |q|"]
+  CONE --> OUT["Conical band crossing<br/>at K, K'<br/>(the Dirac cone)"]
+
+  classDef inp  fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef step fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out  fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class L1,L2 inp
+  class H2,EG,ZERO,EXP,DIRAC,CONE step
+  class OUT out
+```
+
+The **two-atom basis** (`L1`) is the structural origin of the
+Dirac cone: a single atom per cell would give a scalar band and
+*no* crossing. The **nearest-neighbour hopping** (`L2`) is the
+minimal interaction that *couples* the two sublattices; the
+matrix element $f(\mathbf k)$ encodes the *interference* of the
+three hopping paths from one A atom to its three B neighbours.
+The **expansion around $K$** (`EXP`) is the key step: $f$ is
+*linear* in $\mathbf q = \mathbf k - K$ (because the gradient of
+$f$ is non-zero at $K$), so the effective Hamiltonian is
+*Dirac-like* rather than Schrödinger-like. The result
+(`CONE`) is the famous linear dispersion that gives graphene its
+unusual transport properties (anomalous quantum Hall effect,
+Klein tunnelling, finite minimum conductivity).
 
 ## 11.9 Worked example: tight-binding band structure of graphene
 

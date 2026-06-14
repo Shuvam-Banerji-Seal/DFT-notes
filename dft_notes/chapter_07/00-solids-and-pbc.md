@@ -983,26 +983,33 @@ calculation is summarised below.
 
 ```mermaid
 graph TD
-  A[Choose crystal structure<br/>lattice vectors a₁, a₂, a₃] --> B[Compute reciprocal lattice<br/>b₁, b₂, b₃]
-  B --> C[Set BvK supercell<br/>N₁ × N₂ × N₃ cells]
-  C --> D[Build k-point mesh<br/>Monkhorst–Pack N₁×N₂×N₃]
-  D --> E[Choose kinetic cutoff E_cut]
-  E --> F[Build plane-wave basis<br/>|k+G|² ≤ E_cut]
-  F --> G[For each k-point:<br/>build H(k) in PW basis]
-  G --> H[Diagonalise H(k)<br/>get εₙₖ, cₙₖ]
-  H --> I[Build density ρ(r)<br/>sum over occupied bands]
-  I --> J[Build V_eff[ρ]<br/>Hartree + xc + external]
-  J --> K{SCF converged?}
-  K -- No --> G
-  K -- Yes --> L[Compute total energy,<br/>forces, stress]
-  L --> M[Plot bands along<br/>Γ-X-W-K-Γ-L-W]
+  A["Choose crystal structure<br/>lattice vectors a₁, a₂, a₃"]
+  B["Compute reciprocal lattice<br/>b₁, b₂, b₃"]
+  C["Set BvK supercell<br/>N₁ × N₂ × N₃ cells"]
+  D["Build k-point mesh<br/>Monkhorst–Pack N₁×N₂×N₃"]
+  E["Choose kinetic cutoff E_cut"]
+  F["Build plane-wave basis<br/>|k+G|² ≤ E_cut"]
+  G["For each k-point:<br/>build H(k) in PW basis"]
+  H["Diagonalise H(k)<br/>get εₙₖ, cₙₖ"]
+  I["Build density ρ(r)<br/>sum over occupied bands"]
+  J["Build V_eff[ρ]<br/>Hartree + xc + external"]
+  K{"SCF converged?"}
+  L["Compute total energy,<br/>forces, stress"]
+  M["Plot bands along<br/>Γ-X-W-K-Γ-L-W"]
 
-  classDef decision fill:#e8e0d2,stroke:#3d3d3a,stroke-width:2px;
-  classDef input fill:#faf9f5,stroke:#6c6a64,stroke-width:1px;
-  classDef output fill:#cc785c,stroke:#ffffff,stroke-width:1px;
-  class A,B,C,D,E,F input
-  class K decision
-  class H,I,J,L,M output
+  A --> B
+  B --> C
+  C --> D
+  D --> E
+  E --> F
+  F --> G
+  G --> H
+  H --> I
+  I --> J
+  J --> K
+  K -- No --> G
+  K -- Yes --> L
+  L --> M
 ```
 
 The decision node `K{SCF converged?}` is the inner loop of every

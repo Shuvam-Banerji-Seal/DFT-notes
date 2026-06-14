@@ -73,6 +73,40 @@ state energy of an interacting $N$-electron system to the problem of
 *minimising a functional over all admissible densities*. The catch:
 $F_\text{HK}[\rho]$ is unknown.
 
+### 4.1.1 Mermaid — the Hohenberg–Kohn mapping
+
+Theorem 1 is a *bijection* between external potentials (up to a
+trivial additive constant) and ground-state densities (up to a
+trivial multiplicative rescaling). Every observable of the
+ground state is a functional of $\rho$ alone because $v_\text{ext}$
+*is* a functional of $\rho$, and the Hamiltonian is determined by
+$v_\text{ext}$ plus the universal electron–electron term.
+
+```mermaid
+graph LR
+  V["v_ext(r)<br/>external potential<br/>(system-specific)"]
+  H["Ĥ = T̂ + Û_ee + V̂_ext<br/>(Hamiltonian)"]
+  PSI["Ψ₀(r₁, …, r_N)<br/>ground-state wavefunction<br/>(Schrödinger)"]
+  RHO["ρ₀(r) = N ∫ |Ψ₀|² dr₂…dr_N<br/>ground-state density"]
+  E["E₀, all ground-state<br/>observables"]
+
+  V -->|"additive constant<br/>irrelevant"| H
+  H -->|"solve<br/>ĤΨ₀ = E₀Ψ₀"| PSI
+  PSI -->|"reduce 3N-D → 3-D"| RHO
+  RHO -.->|"Theorem 1:<br/>bijection (HK)"| V
+  RHO -->|"Theorem 2:<br/>E[ρ̃] ≥ E₀"| E
+  PSI --> E
+```
+
+The horizontal axis (top) is the *forward Schrödinger problem*:
+$V_\text{ext} \to \Psi_0 \to \rho_0$. That is what we have known
+how to do (in principle, modulo the exponential wall) since 1926.
+The dashed bottom arrow is the *Hohenberg–Kohn inverse*: $\rho_0
+\to V_\text{ext}$, which is the new content of the 1964 theorem.
+DFT works because the inverse exists; the entire problem of
+electronic-structure theory becomes "find the $\rho$ that minimises
+$E[\rho]$".
+
 ## 4.2 The Kohn–Sham ansatz
 
 Kohn and Sham's 1965 observation is that the *minimisation problem* is
@@ -113,6 +147,47 @@ don't know how to compute:
 $$
 E_\text{xc}[\rho] = (T - T_s) + (U_{ee} - J) = \text{exchange} + \text{correlation} + \text{kinetic correction}.
 $$
+
+### 4.2.1 Mermaid — the energy components of $E[\rho]$
+
+The Kohn–Sham energy expression splits the exact energy into
+five pieces, four of which we know *exactly how to compute* and
+one of which ($E_\text{xc}$) is approximated. The diagram below
+shows the split: each box is one term, the *input* is $\rho$
+(or, for $T_s$, the occupied KS orbitals), and the *cost* of
+each is the dominant scaling with basis size $K$.
+
+```mermaid
+graph TD
+  EKS["E_xc[ρ]<br/>(exchange + correlation<br/>+ kinetic correction)<br/>— APPROXIMATED —"]
+  TS["T_s[ρ]<br/>(non-interacting<br/>kinetic energy)"]
+  INT["∫ ρ v_ext dr<br/>(electron–nuclear)"]
+  J["J[ρ]<br/>(Hartree /<br/>classical Coulomb)"]
+  ENN["E_nn<br/>(nuclear–nuclear,<br/>classical)"]
+
+  EKS -->|"the only piece<br/>we approximate"| OUT["E_KS[ρ] = T_s + ∫ρv_ext + J + E_xc<br/>(KS total energy)"]
+  TS --> OUT
+  INT --> OUT
+  J --> OUT
+  ENN --> OUT
+
+  TS -. "exact, O(K)" .-> OUT
+  INT -. "exact, O(K)" .-> OUT
+  J -. "exact, O(K)" .-> OUT
+  ENN -. "classical, O(N²)" .-> OUT
+  EKS -. "LDA: O(K)<br/>hybrid: O(K⁴)<br/>RPA: O(K⁴–K⁶)" .-> OUT
+
+  OUT --> MIN["E₀ = min_ρ E_KS[ρ]<br/>(variational principle)"]
+  MIN --> SCF["Self-consistent loop<br/>(§4.4 / §4.6)"]
+```
+
+The diagram makes the **"DFT is exact"** claim of §4.3
+operational: every term *except* $E_\text{xc}$ is exactly
+computable from $\rho$ (and the occupied KS orbitals for $T_s$).
+The error budget of a DFT calculation is the error in
+$E_\text{xc}[\rho]$; the rest of the machinery is exact in
+principle and arbitrarily accurate in practice (it is just
+quadrature, linear algebra, and FFTs).
 
 ## 4.3 Why the reformulation is exact
 
@@ -199,6 +274,40 @@ increasing accuracy:
 > surprisingly good for simple metals and is often the cheapest,
 > most robust choice for screening crystal structures. A bad hybrid
 > can be much worse than a good GGA on the same system.
+
+### 4.5.1 Mermaid — Jacob's ladder of $E_\text{xc}$ approximations
+
+The "Jacob's ladder" metaphor is taken from the biblical dream:
+each rung is a more faithful image of the *true* $E_\text{xc}$ (in
+heaven), with each new rung adding one more piece of *non-local*
+information about the density. The diagram below shows the ladder
+as a vertical flow; the right-hand column is the *new ingredient*
+added at each rung, the leftmost column is the cost.
+
+```mermaid
+graph TD
+  TRUTH["E_xc EXACT<br/>(unknown, in 'heaven')<br/>+ all orders of density,<br/>occupied + virtual orbitals"]
+  R0["Rung 0 (earth)<br/>LDA<br/>E_xc = ∫ ρ ε_xc(ρ) dr<br/>(local density only)"]
+  R1["Rung 1<br/>GGA<br/>+ density gradient ∇ρ(r)"]
+  R2["Rung 2<br/>Meta-GGA<br/>+ kinetic-energy density τ(r)"]
+  R3["Rung 3<br/>Hybrid<br/>E_x = a·E_x^HF + (1-a)·E_x^DFT<br/>(PBE0, B3LYP, …)"]
+  R4["Rung 4<br/>Range-separated hybrid<br/>E_x = E_x^SR(DFT) + E_x^LR(HF)"]
+  R5["Rung 5<br/>Double hybrid<br/>E_x = a·E_x^HF + (1-a)·E_x^DFT<br/>E_c = MP2-like from KS orbitals"]
+
+  TRUTH -.->|"goal<br/>(unknown)"| R5
+  R0 -->|"add ∇ρ<br/><small>O(K)</small>"| R1
+  R1 -->|"add τ<br/><small>O(K)</small>"| R2
+  R2 -->|"mix in exact E_x^HF<br/><small>O(K⁴)</small>"| R3
+  R3 -->|"range-separation<br/><small>O(K⁴)</small>"| R4
+  R4 -->|"add MP2-like E_c<br/><small>O(K⁵)</small>"| R5
+```
+
+The rungs are not an absolute ordering of "better" — for a
+particular system, a *low* rung (LDA) can outperform a *high*
+rung (a poorly-tuned hybrid). The ladder is a
+*cost–complexity* ordering, not a monotonic-accuracy ordering;
+chapter 05 devotes itself to the practical question of "which
+rung for which system".
 
 ## 4.6 Mixing schemes for SCF convergence
 

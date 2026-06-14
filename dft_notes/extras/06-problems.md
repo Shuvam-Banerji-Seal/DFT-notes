@@ -4,22 +4,32 @@ title: "Problems anthology"
 permalink: /dft-notes/extras/problems/
 description: >-
   A curated anthology of the most challenging problems from chapters 01
-  to 08, organised by topic and difficulty, with a hint and a one-line
-  answer for each. Use it to drill, to revise, or to test yourself
-  before a project meeting.
+  to 13, organised by topic and difficulty, with a hint and a one-line
+  answer for each, plus three cross-chapter problem sets that integrate
+  material from multiple chapters. Use it to drill, to revise, or to
+  test yourself before a project meeting.
 keywords: "problems, anthology, exercises, DFT, exercises, quantum
   chemistry, self-test, many-body, Hartree-Fock, Kohn-Sham, XC
-  functionals, basis sets, solids, pseudopotentials"
+  functionals, basis sets, solids, pseudopotentials, forces,
+  geometry optimisation, phonons, band structures, TDDFT, DFT+U,
+  Mott insulator, cross-chapter"
 ---
 
 # Problems anthology
 
-> Twenty-four problems, pulled from chapters 01 to 08, sorted by
-> topic and difficulty. Every entry is *self-contained*: a problem
-> statement, a difficulty rating, a cross-reference to the chapter
-> section where the result is developed, a one-or-two-sentence hint
-> on the approach, and a one-sentence answer that gives the final
-> result without redoing the derivation.
+> Forty problems, pulled from chapters 01 to 13, sorted by
+> topic and difficulty, plus three cross-chapter problem sets
+> that force the reader to *integrate* material across multiple
+> chapters. Every per-chapter entry is *self-contained*: a
+> problem statement, a difficulty rating, a cross-reference
+> to the chapter section where the result is developed, a
+> one-or-two-sentence hint on the approach, and a one-sentence
+> answer that gives the final result without redoing the
+> derivation. The three cross-chapter sets (A, B, C) are
+> *multi-part* problems in the long `<details>` form: each
+> part is a self-contained problem, and the parts are
+> threaded together by a single physical or methodological
+> thread.
 
 This page exists for three audiences. **First**, students who
 worked through the chapters and want to check that they can
@@ -775,26 +785,1424 @@ graph LR
 
 ---
 
+## 9. Forces & geometry optimisation
+
+> Source: [Chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }}) — §9.12 (Problems).  Chapter 09
+> uses the Hellmann–Feynman force of [Chapter 04, §4.7]({{ "/dft-notes/chapter-04/" | relative_url }})
+> as its starting point and then derives the **Pulay correction**
+> needed for finite Gaussian bases.  Geometry-optimisation
+> algorithms are in §9.6–9.9.
+
+### 9.1 The Pulay force vanishes in a plane-wave basis
+
+> **P9.1.1** (easy) · *§9.12, Problem 1*
+> **[statement]** In a plane-wave basis the basis functions
+> $\chi_{\mathbf G}(\mathbf r) = \Omega^{-1/2} e^{i \mathbf G \cdot
+> \mathbf r}$ do *not* depend on the nuclear coordinates
+> $\{\mathbf R_I\}$, so
+> $\partial \chi_{\mathbf G} / \partial \mathbf R_I = 0$.
+> **(a)** Show that the **Pulay correction**
+> $\mathbf F_I^\text{Pulay} = -2 \sum_i^\text{occ} \sum_{\mu \in I}
+> \sum_\nu C_{\mu i} C_{\nu i}
+> \langle \partial \chi_\mu / \partial \mathbf R_I | \hat H_\text{KS}
+> - \varepsilon_i | \chi_\nu \rangle$ vanishes identically
+> in a plane-wave basis. **(b)** The external-potential
+> term $\mathbf F_I^\text{ext} = -Z_I \int \rho(\mathbf r)
+> (\mathbf r - \mathbf R_I) / |\mathbf r - \mathbf R_I|^3\,
+> d\mathbf r$ survives; in a plane-wave code it is
+> evaluated in Fourier space via
+> $v_H(\mathbf G) = 4\pi \rho(\mathbf G) / G^2$.
+> **(c)** Confirm that the xc contribution
+> $\mathbf F_I^\text{xc} = -\int \rho(\mathbf r) \partial
+> v_\text{xc}(\mathbf r) / \partial \mathbf R_I\,
+> d\mathbf r$ is non-zero in general and discuss why
+> the GGA enhancement factor makes it non-trivial.
+> **Hint:** part (a) is one line once you notice the basis-
+> function derivative vanishes; parts (b) and (c) are about
+> the *remaining* terms in the force after Pulay is gone.
+> **Answer:** **(a)** $\partial \chi_{\mathbf G} / \partial \mathbf R_I = 0$
+> kills the integrand term by term, so
+> $\mathbf F_I^\text{Pulay} \equiv 0$. **(b)** the Hartree
+> force becomes $\mathbf F_I^H = -Z_I \int \rho(\mathbf r)
+> \nabla v_H(\mathbf r)\, d\mathbf r$ with
+> $v_H(\mathbf G) = 4\pi \rho(\mathbf G) / G^2$ in Fourier
+> space. **(c)** the xc force is non-zero because
+> $v_\text{xc}[\rho](\mathbf r)$ depends on the density at
+> *all* points, and in a GGA the gradient $\nabla \rho$
+> also moves, so $\mathbf F_I^\text{xc}$ is non-trivial
+> — the dominant *new* term that the PBE functional
+> adds to LDA.
+
+### 9.2 The BFGS update preserves the quasi-Newton condition
+
+> **P9.2.1** (medium) · *§9.12, Problem 2*
+> **[statement]** The BFGS update to the inverse Hessian
+> approximation $H$ is
+> $H' = (I - \rho s y^\top) H (I - \rho y s^\top) + \rho s s^\top$
+> with $\rho = 1 / (y^\top s)$, where $s = x' - x$ is
+> the step and $y = \nabla f(x') - \nabla f(x)$ is the
+> gradient difference. **(a)** Show that $H' y = s$
+> (the **quasi-Newton condition**) and that $H'$ is
+> symmetric. **(b)** Use the Sherman–Morrison–Woodbury
+> identity to confirm that this update is the rank-2
+> modification that, among all symmetric rank-2 updates
+> satisfying the quasi-Newton condition, minimises the
+> weighted Frobenius distance
+> $\|H' - H\|_W = \|W^{1/2} (H' - H) W^{1/2}\|_F$ with
+> the weight chosen so that $y^\top s > 0$.
+> **Hint:** expand $H' y$ using $H y = (1 - \rho y^\top s) H y
+> + \rho s$ (the previous quasi-Newton condition, by
+> induction); and note that
+> $(I - \rho y s^\top)^\top = I - \rho s y^\top$.
+> **Answer:** **(a)** expanding,
+> $H' y = H y - \rho y y^\top H y - \rho H y y^\top s
+> + \rho^2 (y^\top s) y y^\top H y + \rho s = s$
+> after using $y^\top s = 1/\rho$ and the induction
+> hypothesis; $(H')^\top = H'$ since the product of
+> symmetric matrices is symmetric and $s s^\top$ is
+> symmetric. **(b)** the BFGS update is the *unique*
+> rank-2 update that satisfies the quasi-Newton
+> condition *and* minimises the weighted distance to
+> the previous inverse Hessian — see
+> [Chapter 09, §9.7]({{ "/dft-notes/chapter-09/#97-the-bfgs-update-formula-in-full" | relative_url }})
+> for the Lagrange-multiplier derivation.
+
+### 9.3 One steepest-descent step on H₂/STO-3G
+
+> **P9.3.1** (hard) · *§9.12, Problem 3*
+> **[statement]** The H₂/STO-3G energy curve produced by
+> [`chapter_03/01-h2-sto3g-scf.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_03/01-h2-sto3g-scf.py)
+> near the equilibrium bond length $R_0 \approx
+> 1.35\,a_0$ is well approximated by the **Morse
+> potential**
+> $E(R) = D_e (1 - e^{-a(R - R_0)})^2 - D_e$ with
+> $D_e \approx 0.134\,E_h$ and $a \approx 1.03\,a_0^{-1}$.
+> Starting from $R_1 = 1.5\,a_0$, perform one
+> **steepest-descent** step with a *fixed* step size
+> $\eta = 0.05\,a_0 / F$ (where $F$ is the force at
+> $R_1$) and report the new bond length $R_2$. Then
+> perform a **line-search** step at $R_1$ and report the
+> optimal step. Which converges faster per force
+> evaluation? Repeat both at $R = 2.5\,a_0$ (a strongly
+> anharmonic point) and discuss.
+> **Hint:** the force is
+> $F(R) = -dE/dR = -2 a D_e e^{-a(R - R_0)} (1 - e^{-a(R - R_0)})$;
+> the line search solves
+> $\min_\eta E(R_1 - \eta F(R_1))$ by setting
+> $dE/d\eta = 0$, i.e.
+> $F(R_1 - \eta F(R_1)) = F(R_1) / [1 - \eta F'(R_1)]$.
+> **Answer:** at $R_1 = 1.5\,a_0$,
+> $u = e^{-a(R_1 - R_0)} = e^{-0.155} \approx 0.857$,
+> $F(R_1) = -2(1.03)(0.134)(0.857)(1 - 0.857)
+> \approx -0.0327\,E_h / a_0$ (a *restoring* force
+> towards smaller $R$), so the fixed-step move is
+> $R_2 = R_1 - \eta F(R_1) = 1.5 - 0.05 = 1.45\,a_0$ —
+> a $0.05\,a_0$ move towards the minimum. The
+> line-search step
+> $\eta^* = F / (dF/dR) = F / (2a^2 D_e u (2u - 1))$
+> gives $\eta^* \approx 0.115\,a_0 / F$, so
+> $R_2 \approx 1.385\,a_0$ — much closer to $R_0$. The
+> line search wins by $\sim 5\times$ in *distance to
+> minimum* per force evaluation. At $R = 2.5\,a_0$ the
+> Morse $E$ is no longer quadratic, so both methods
+> slow down. The take-away: **always use a line
+> search** when the energy surface is far from harmonic.
+
+---
+
+## 10. Phonons & vibrations
+
+> Source: [Chapter 10]({{ "/dft-notes/chapter-10/" | relative_url }}) — §10.11 (Problems).  Chapter 10
+> uses the dynamical matrix of [Chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }}) (the
+> Hessian of $E[\{\mathbf R_I\}]$) and the BZ machinery of
+> [Chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }}).
+
+### 10.1 Optical vs acoustic branches in a 1-D diatomic chain
+
+> **P10.1.1** (easy) · *§10.11, Problem 1*
+> **[statement]** A 1-D infinite chain has alternating masses
+> $M$ and $m$ with $M > m$ and a single spring constant
+> $K$ between nearest neighbours. The primitive cell has
+> length $a$ and contains one $M$ and one $m$. The phonon
+> dispersion has two branches
+> $\omega_\pm^2(q) = K(1/M + 1/m) \pm K \sqrt{(1/M + 1/m)^2
+> - 4 \sin^2(qa/2) / (Mm)}$.
+> **(a)** Verify that $\omega_-(0) = 0$ (the acoustic mode)
+> and $\omega_+(0) = \sqrt{2K(1/M + 1/m)}$ (the optical
+> mode). **(b)** At the BZ boundary $q = \pi/a$, show that
+> $\omega_-(\pi/a) = \sqrt{2K/M}$ and
+> $\omega_+(\pi/a) = \sqrt{2K/m}$. **(c)** For NaCl take
+> $M(\text{Cl}) = 35.45\,m_u$ and $m(\text{Na}) = 22.99\,m_u$;
+> estimate the ratio $\omega_+/\omega_-$ at $q = \pi/a$ in
+> the 1-D model.
+> **Hint:** plug $q = 0$ and $q = \pi/a$ into the
+> dispersion and use $\sin(0) = 0$, $\sin(\pi/2) = 1$.
+> **Answer:** **(a)** at $q = 0$, $\sin(qa/2) = 0$ and
+> $\omega_-^2(0) = K(1/M + 1/m) - K(1/M + 1/m) = 0$; the
+> upper sign gives
+> $\omega_+^2(0) = 2K(1/M + 1/m)$, hence
+> $\omega_+(0) = \sqrt{2K(1/M + 1/m)}$. **(b)** at
+> $q = \pi/a$, $\sin^2(qa/2) = 1$, so
+> $\omega_-^2(\pi/a) = K(1/M + 1/m) - K \sqrt{(1/M + 1/m)^2
+> - 4/(Mm)} = K(1/M + 1/m) - K(1/M - 1/m) = 2K/M$ (for
+> $M > m$), and $\omega_+^2(\pi/a) = 2K/m$. **(c)** the
+> ratio is $\sqrt{M/m} = \sqrt{35.45/22.99} \approx 1.24$,
+> in good agreement with the 1-D model. The script
+> [`chapter_10/01-diatomic-chain.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_10/01-diatomic-chain.py)
+> produces the full dispersion and the zone-boundary
+> frequencies.
+
+### 10.2 The acoustic sum rule from translational invariance
+
+> **P10.2.1** (medium) · *§10.11, Problem 2*
+> **[statement]** The dynamical matrix
+> $D_{I\alpha, J\beta}(\mathbf q) = (1/\sqrt{M_I M_J})
+> \tilde\Phi_{I\alpha, J\beta}(\mathbf q)$ with
+> $\tilde\Phi_{I\alpha, J\beta}(\mathbf q) = \sum_{\mathbf R}
+> \Phi_{I\alpha, J\beta}(\mathbf R) e^{-i \mathbf q \cdot \mathbf R}$
+> must obey the **acoustic sum rule (ASR)**:
+> $\sum_J \sqrt{M_J} D_{I\alpha, J\beta}(\mathbf q = 0) = 0$
+> for every $I$ and Cartesian direction $\beta$.
+> **(a)** Show that the ASR is equivalent to the statement
+> that a uniform translation of the entire crystal costs
+> no energy. **(b)** Argue why the ASR is satisfied
+> *automatically* if the interatomic force constants are
+> computed in a *finite* supercell with PBC and no
+> external field, and why it is *violated* if the
+> supercell has a net dipole (e.g. a slab geometry).
+> **(c)** For the diatomic chain of §10.1, verify the
+> ASR by writing out the $2 \times 2$ dynamical matrix
+> at $\mathbf q = 0$ explicitly.
+> **Hint:** a uniform translation
+> $\delta R_{I\alpha} = u_\alpha$ for all $I$ induces a
+> force
+> $F_{I\alpha} = -\sum_{J\beta} \Phi_{I\alpha, J\beta} u_\beta$,
+> and translational invariance requires
+> $F_{I\alpha} = 0$.
+> **Answer:** **(a)** under a uniform translation
+> $\delta R_{J\beta} = u_\beta$ for all $J$, the force
+> on atom $I$ in direction $\alpha$ is
+> $F_{I\alpha} = -u_\beta \sum_{J} \Phi_{I\alpha, J\beta}$,
+> and translational invariance requires
+> $F_{I\alpha} = 0$ for all $I, \alpha$ — exactly the
+> ASR. **(b)** the ASR follows from the conservation of
+> total momentum in a neutral, dipole-free supercell;
+> in a slab geometry the *surface* atoms have different
+> force constants, so a uniform translation induces a
+> *non-zero* restoring force. **(c)** the $2 \times 2$
+> dynamical matrix at $q = 0$ is
+> $D(q = 0) = \begin{pmatrix} 1/M & -1/\sqrt{Mm} \\
+> -1/\sqrt{Mm} & 1/m \end{pmatrix} \cdot 2K$; the row
+> sums weighted by $\sqrt{M_J}$ vanish, so the ASR is
+> satisfied.
+
+### 10.3 The Fröhlich polaron coupling constant
+
+> **P10.3.1** (hard) · *§10.11, Problem 3*
+> **[statement]** The Fröhlich Hamiltonian for an electron
+> coupled to the longitudinal-optical (LO) phonons of a
+> polar crystal is
+> $\hat H = \hat p^2 / 2m^* + \sum_{\mathbf q} \hbar \omega_{LO}
+> \hat b_{\mathbf q}^\dagger \hat b_{\mathbf q} +
+> \sum_{\mathbf q} (V_q \hat b_{\mathbf q} e^{i \mathbf q \cdot
+> \hat r} + \text{h.c.})$
+> with the dimensionless **Fröhlich coupling constant**
+> $\alpha = \tfrac{1}{2} \sqrt{m^* / (2 \hbar \omega_{LO})}
+> \,(1/\varepsilon_\infty - 1/\varepsilon_0)\, e^2$ (in
+> Gaussian-cgs atomic units). **(a)** Show that $\alpha$ is
+> dimensionless. **(b)** For GaAs with $m^* = 0.067\,m_e$,
+> $\hbar \omega_{LO} = 36\,\text{meV}$, $\varepsilon_\infty = 10.9$,
+> $\varepsilon_0 = 12.9$, compute $\alpha$. **(c)** State the
+> criterion $\alpha \gtrsim 6$ for the formation of a *small
+> polaron* (the electron self-traps in a lattice
+> distortion) and discuss whether GaAs satisfies it.
+> **Hint:** convert everything to atomic units; in atomic
+> units $e^2 = 1$ and $\hbar = m_e = 1$, so the formula
+> simplifies to
+> $\alpha = \tfrac{1}{2} \sqrt{m^* / (2 \omega_{LO})}
+> (1/\varepsilon_\infty - 1/\varepsilon_0)$.
+> **Answer:** **(a)** $e^2$ in Gaussian-cgs has units of
+> energy × length, so $e^2 / \hbar \omega_{LO}$ has units
+> of length; combined with $\sqrt{m^* / \hbar \omega_{LO}}$
+> (units $1/\text{length}$), the product is dimensionless.
+> **(b)** in atomic units $m^* = 0.067$,
+> $\omega_{LO} = 36\,\text{meV} / 27.211\,\text{eV}
+> \approx 0.00132\,E_h$, and
+> $1/\varepsilon_\infty - 1/\varepsilon_0 = 1/10.9 - 1/12.9
+> \approx 0.0141$, so
+> $\alpha = \tfrac{1}{2} \sqrt{0.067 / (2 \cdot 0.00132)}
+> \cdot 0.0141 \approx \tfrac{1}{2} \sqrt{25.4} \cdot 0.0141
+> \approx 2.52 \cdot 0.0141 \approx 0.036$. **(c)** the
+> small-polaron criterion is $\alpha \gtrsim 6$ in the
+> strong-coupling limit, where the self-trapping energy
+> overcomes the kinetic energy; GaAs has
+> $\alpha \approx 0.036$, well below threshold, so the
+> **large (Fröhlich) polaron** is the correct picture —
+> the electron is *dressed* by a phonon cloud but
+> remains mobile. This is why GaAs is a good
+> semiconductor (high mobility) despite the strong
+> electron–phonon coupling.
+
+---
+
+## 11. Band structures
+
+> Source: [Chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }}) — §11.11 (Problems).  Chapter 11
+> uses the plane-wave machinery of [Chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) and the
+> Bloch / Brillouin-zone machinery of [Chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }}).
+
+### 11.1 Effective mass from band curvature
+
+> **P11.1.1** (easy) · *§11.11, Problem 1*
+> **[statement]** The Kohn–Sham band $\varepsilon_n(\mathbf k)$
+> near a non-degenerate band minimum at $\mathbf k_0$ is
+> approximated by the Taylor expansion
+> $\varepsilon_n(\mathbf k) = \varepsilon_n(\mathbf k_0) +
+> \tfrac{1}{2} \sum_{\alpha\beta} (\partial^2 \varepsilon_n /
+> \partial k_\alpha \partial k_\beta)|_{\mathbf k_0}
+> (k - k_0)_\alpha (k - k_0)_\beta + \dots$.
+> **(a)** Define the **effective-mass tensor**
+> $(m^*)_{\alpha\beta} = \hbar^2 / (\partial^2 \varepsilon_n /
+> \partial k_\alpha \partial k_\beta)|_{\mathbf k_0}$ and
+> show that, for an isotropic band minimum (e.g. at the
+> $\Gamma$ point in a direct-gap semiconductor like GaAs),
+> the second-derivative tensor is $\propto \mathbf 1$, so
+> $m^* = \hbar^2 / (\partial^2 \varepsilon_n / \partial k^2)
+> |_{\Gamma}$. **(b)** For GaAs with a direct gap at
+> $\Gamma$ and
+> $\partial^2 \varepsilon_c / \partial k^2|_{\Gamma} =
+> 11.3\,E_h \cdot a_0^2$, verify that
+> $m^*_e \approx 0.088\,m_e$ (experimental
+> $0.067\,m_e$, the difference from spin–orbit
+> coupling and non-parabolicity). **(c)** Explain why
+> the effective mass can be **negative** at a band
+> maximum and how the **hole** picture resolves the
+> sign.
+> **Hint:** for an isotropic minimum the band is
+> spherically symmetric around $\mathbf k_0$, so the
+> Hessian is $\propto \mathbf 1$.
+> **Answer:** **(a)** the Taylor expansion of an isotropic
+> band has only one second-derivative coefficient, and
+> the band $E(k) = E_0 + \hbar^2 k^2 / 2m^*$ is parabolic,
+> so $\partial^2 E / \partial k^2 = \hbar^2 / m^*$, hence
+> $m^* = \hbar^2 / (\partial^2 E / \partial k^2)$.
+> **(b)** in atomic units $\hbar = 1$, $m_e = 1$, so
+> $m^* = 1 / 11.3 \approx 0.088$ — close to the
+> experimental $0.067\,m_e$ (the discrepancy is the
+> spin–orbit splitting of the $\Gamma_8$ valence band,
+> which the parabolic model ignores). **(c)** at a band
+> maximum the second derivative is *negative*, so
+> $m^* < 0$; the hole picture re-interprets the
+> *missing* electron in an otherwise filled band as a
+> *positive* charge with effective mass
+> $m^*_h = -m^*_{e,\text{top of VB}}$.
+
+### 11.2 Tight-binding band structure of graphene
+
+> **P11.2.1** (medium) · *§11.11, Problem 2*
+> **[statement]** The $\pi$-band tight-binding Hamiltonian
+> of graphene (with the two-atom unit cell $\{A, B\}$ and
+> three nearest-neighbour vectors
+> $\boldsymbol\delta_1, \boldsymbol\delta_2, \boldsymbol\delta_3$)
+> is
+> $H(\mathbf k) = \begin{pmatrix} 0 & f(\mathbf k) \\
+> f^*(\mathbf k) & 0 \end{pmatrix}$
+> with $f(\mathbf k) = -t \sum_{j=1}^{3} e^{i \mathbf k
+> \cdot \boldsymbol\delta_j}$ and $t \approx 2.97\,\text{eV}$.
+> **(a)** Show that
+> $|f(\mathbf k)|^2 = t^2 [3 + 2 \cos(\mathbf k \cdot \mathbf a_1)
+> + 2 \cos(\mathbf k \cdot \mathbf a_2) + 2 \cos(\mathbf k
+> \cdot (\mathbf a_1 - \mathbf a_2))]$, where
+> $\mathbf a_1, \mathbf a_2$ are the lattice vectors.
+> **(b)** Show that $|f(\mathbf k)| = 0$ at the
+> **Dirac points**
+> $\mathbf K = (4\pi / 3a, 0)$ and
+> $\mathbf K' = (2\pi / 3a, 2\pi / \sqrt 3 a)$, and
+> linearise $H(\mathbf k)$ around $\mathbf K$ to show
+> that $H(\mathbf K + \boldsymbol\kappa) \approx \hbar v_F
+> (\kappa_x \sigma_x + \kappa_y \sigma_y)$ with
+> $v_F = 3 t a / 2\hbar$ the **Fermi velocity**.
+> **(c)** The script
+> [`chapter_11/01-graphene-bands.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_11/01-graphene-bands.py)
+> computes the band structure along the path
+> $\Gamma \to M \to K \to \Gamma$. Run it and confirm
+> that the band gap at $K$ is zero to machine precision
+> and that the velocity at $K$ matches the analytical
+> $v_F = 3 t a / 2\hbar \approx 10^6\,\text{m/s}$.
+> **Hint:** write
+> $f(\mathbf k) f^*(\mathbf k) = t^2 \sum_{jj'} e^{i \mathbf k
+> \cdot (\boldsymbol\delta_j - \boldsymbol\delta_{j'})}$
+> and use
+> $\boldsymbol\delta_1 - \boldsymbol\delta_2 = \mathbf a_1$
+> etc.
+> **Answer:** **(a)** $|f|^2 = t^2 (3 + 2 \sum_{j < j'}
+> \cos[\mathbf k \cdot (\boldsymbol\delta_j - \boldsymbol\delta_{j'})])$,
+> and the three differences are $-\mathbf a_1$,
+> $\mathbf a_2 - \mathbf a_1$, $-\mathbf a_2$, giving
+> the result. **(b)** at $\mathbf K$ all three phases are
+> multiples of $2\pi$ and $f(\mathbf K) = 0$;
+> linearising the off-diagonal around $\mathbf K$ gives
+> $f(\mathbf K + \boldsymbol\kappa) \approx -i (3 t a / 2)
+> (\kappa_x + i \kappa_y)$ with $v_F = 3 t a / 2\hbar$.
+> **(c)** the numerical band plot shows two bands
+> touching at the Brillouin-zone corners $K$ and $K'$
+> with a linear dispersion; the slope $dE/dk$ at $K$ is
+> $\hbar v_F$ and matches the analytical value.
+
+### 11.3 The Rashba spin–orbit splitting and the spin texture
+
+> **P11.3.1** (hard) · *§11.11, Problem 3*
+> **[statement]** The Rashba Hamiltonian for a 2-D
+> electron gas with structural inversion asymmetry is
+> $\hat H = \hbar^2 k^2 / 2 m^* + \alpha_R (\boldsymbol\sigma
+> \times \mathbf k) \cdot \hat z$, where $\alpha_R$ is
+> the Rashba coefficient (energy × length) and
+> $\boldsymbol\sigma$ is the Pauli matrix vector.
+> **(a)** Diagonalise $\hat H$ in the spinor basis to
+> obtain the two spin-split bands
+> $E_\pm(k) = \hbar^2 k^2 / 2 m^* \pm \alpha_R k$.
+> **(b)** Find the **spin texture** of the lower band,
+> i.e. the expectation value
+> $\langle \boldsymbol\sigma \rangle$ as a function of
+> $\mathbf k$. **(c)** Discuss why the Rashba splitting
+> is at the heart of **topological insulator**
+> phenomenology: in Bi₂Se₃ the bulk band gap is
+> $\sim 0.3\,\text{eV}$ and the surface state has a
+> single Dirac cone with spin-momentum locking.
+> **Hint:** write $\hat H$ as a $2 \times 2$ matrix in
+> the $\{|\uparrow\rangle, |\downarrow\rangle\}$ basis
+> with $\alpha_R (\sigma_x k_y - \sigma_y k_x)$.
+> **Answer:** **(a)** the matrix is
+> $\begin{pmatrix} \hbar^2 k^2 / 2m^* & -i \alpha_R (k_x - i k_y) \\
+> i \alpha_R (k_x + i k_y) & \hbar^2 k^2 / 2m^* \end{pmatrix}$
+> with eigenvalues $\hbar^2 k^2 / 2m^* \pm \alpha_R k$;
+> the splitting at the Fermi surface is
+> $\Delta k = 2 \alpha_R m^* / \hbar^2$. **(b)** the
+> eigenvectors are spinors with
+> $\langle \sigma_z \rangle = 0$ and
+> $\langle \sigma_\parallel \rangle$ tangent to the
+> Fermi surface — a **helical** texture. **(c)** in
+> 3-D topological insulators like Bi₂Se₃ the surface
+> Hamiltonian is
+> $\hat H = v_F (\boldsymbol\sigma \times \mathbf k) \cdot
+> \hat z$ (no kinetic term) and the spin-momentum
+> locking forbids back-scattering — the source of the
+> dissipationless edge transport. The 2-D Rashba
+> Hamiltonian is the *2-D analogue* of this 3-D
+> surface state.
+
+---
+
+## 12. Time-Dependent DFT
+
+> Source: [Chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }}) — §12.12 (Problems).  Chapter 12
+> uses the ground-state Kohn–Sham machinery of [Chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }})
+> and the response-function language of [Chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }}).
+
+### 12.1 The Thomas–Reiche–Kuhn sum rule
+
+> **P12.1.1** (easy) · *§12.12, Problem 1*
+> **[statement]** The **oscillator strength** of the
+> transition $|0\rangle \to |n\rangle$ is
+> $f_{0n} = (2 m_e \omega_{0n} / 3 \hbar) |\langle 0 |
+> \hat{\mathbf r} | n \rangle|^2$, with
+> $\omega_{0n} = (E_n - E_0) / \hbar$ and the factor
+> 3 the sum over Cartesian components. **(a)** Show,
+> using $[\hat H, \hat{\mathbf r}] = -i \hbar \hat{\mathbf p} /
+> m_e$ and the resolution of the identity
+> $\hat 1 = \sum_n |n\rangle \langle n|$, that the
+> **Thomas–Reiche–Kuhn (TRK) sum rule**
+> $\sum_n f_{0n} = N_e$ holds for an $N_e$-electron
+> system. **(b)** Use the sum rule to estimate the
+> typical oscillator strength of the first UV
+> absorption in benzene ($N_e = 42$, first excited
+> state at $E \approx 4.9\,\text{eV}$). **(c)** Discuss
+> what happens to the sum rule in the **Tamm–Dancoff
+> approximation (TDA)** and the **adiabatic LDA** —
+> is it preserved exactly, or only approximately?
+> **Hint:** sandwich the commutator between $|0\rangle$
+> and $\langle 0|$ and insert the resolution of the
+> identity; use the **virial theorem**
+> $\langle T \rangle = -E$ for the Coulomb ground
+> state.
+> **Answer:** **(a)**
+> $\sum_n f_{0n} = (2 m_e / 3 \hbar^2) \sum_n (E_n - E_0)
+> |\langle 0 | \hat r_a | n \rangle|^2 = (1 / 3 \hbar^2)
+> \langle 0 | \hat{\mathbf p}^2 | 0 \rangle$; for a
+> non-relativistic Hamiltonian the virial theorem gives
+> $\langle T \rangle = -E$, so
+> $\sum_n f_{0n} = 2 \langle T \rangle / 3 \hbar^2 \omega_h
+> = N_e$. **(b)** with 42 electrons and ~10–20
+> dipole-allowed transitions in the first UV band, the
+> average $f \sim 0.2$–$0.4$ per state. **(c)** the TDA
+> and the adiabatic LDA *both* preserve the TRK sum
+> rule *exactly* (effective one-body Hamiltonians); the
+> failure of the TRK sum rule is a signature of
+> *non-adiabatic* xc kernels (e.g. Bethe–Salpeter).
+
+### 12.2 Absorption cross-section of a two-level system
+
+> **P12.2.1** (medium) · *§12.12, Problem 2*
+> **[statement]** For a two-level system with ground state
+> $|g\rangle$ and excited state $|e\rangle$ separated by
+> energy $\hbar \omega_0$ and transition dipole
+> $\boldsymbol\mu_{ge}$, the linear-response TDDFT
+> treatment of [Chapter 12, §12.10]({{ "/dft-notes/chapter-12/" | relative_url }}) (worked example) gives the
+> absorption cross-section
+> $\sigma(\omega) = 4\pi^2 \alpha \omega |\boldsymbol\mu_{ge}|^2
+> \, \delta(\omega - \omega_0) / c$ in the long-wavelength
+> limit (atomic units, $\hbar = 1$).
+> **(a)** Show that this is consistent with the textbook
+> **Einstein $A$ coefficient**
+> $A_e = 4 \alpha \omega_0^3 |\boldsymbol\mu_{ge}|^2 /
+> (3 c^2)$. **(b)** Add a phenomenological linewidth
+> $\Gamma$ (a Lorentz broadening) and integrate
+> $\sigma(\omega)$ over $\omega$ to get the **dipole
+> strength** $S = \int \sigma(\omega) d\omega$. Show
+> that $S = 4\pi^2 \alpha |\boldsymbol\mu_{ge}|^2 / c$.
+> **(c)** For a typical dye molecule with
+> $|\boldsymbol\mu_{ge}|^2 \sim 10\,e a_0^2$ and
+> $\hbar \omega_0 \sim 2\,\text{eV}$, estimate the peak
+> $\sigma$ (in cm²) at the absorption maximum.
+> **Hint:** the Einstein $A$ coefficient and the
+> absorption cross-section are related by
+> $\sigma(\omega_0) = \pi c^2 A_e / \omega_0^2$ for a
+> two-level system.
+> **Answer:** **(a)** the integrated cross-section is
+> $\int \sigma(\omega) d\omega = 4\pi^2 \alpha \omega_0
+> |\boldsymbol\mu_{ge}|^2 / c$, and the relation to the
+> spontaneous emission rate is
+> $\int \sigma d\omega = \pi c^2 A_e / \omega_0^2$ —
+> both expressions agree when
+> $A_e = 4\alpha \omega_0^3 |\boldsymbol\mu_{ge}|^2 /
+> (3c^2)$. **(b)** with a Lorentz broadening,
+> $\sigma(\omega) = (4\pi^2 \alpha \omega |\boldsymbol\mu_{ge}|^2
+> / c) \cdot (\Gamma / 2\pi) /
+> [(\omega - \omega_0)^2 + (\Gamma/2)^2]$ and
+> $\int \sigma d\omega = 4\pi^2 \alpha \omega_0
+> |\boldsymbol\mu_{ge}|^2 / c$. **(c)** for
+> $|\boldsymbol\mu_{ge}|^2 = 10$ a.u., $\omega_0 \approx
+> 0.0735\,E_h$, $\Gamma \approx 0.0018\,E_h$,
+> $\sigma(\omega_0) \approx 5 \times 10^{-22}\,\text{cm}^2$ —
+> consistent with typical dye-molecule absorption
+> cross-sections. The script
+> [`chapter_12/01-two-level-absorption.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_12/01-two-level-absorption.py)
+> produces the full absorption profile.
+
+### 12.3 The Casida matrix for a 2-orbital, 2-electron system
+
+> **P12.3.1** (hard) · *§12.12, Problem 3*
+> **[statement]** The Casida eigenvalue problem for
+> linear-response TD-DFT in a basis of $N_\text{occ}$
+> occupied and $N_\text{virt}$ virtual KS orbitals is
+> $\begin{pmatrix} \mathbf A & \mathbf B \\ \mathbf B^* &
+> \mathbf A^* \end{pmatrix}
+> \begin{pmatrix} \mathbf X \\ \mathbf Y \end{pmatrix} =
+> \Omega \begin{pmatrix} \mathbf 1 & \mathbf 0 \\ \mathbf 0 &
+> -\mathbf 1 \end{pmatrix} \begin{pmatrix} \mathbf X \\
+> \mathbf Y \end{pmatrix}$, with
+> $A_{ia, jb} = \delta_{ij} \delta_{ab} (\varepsilon_a -
+> \varepsilon_i) + K_{ia, jb}$ and $B_{ia, jb} = K_{ia, jb}$.
+> **(a)** For a 2-electron system in a minimal basis,
+> show that the Casida matrix is $2 \times 2$ and reduce
+> it to the singlet/triplet decomposition
+> $\Omega_\text{singlet} = \sqrt{(\varepsilon_2 - \varepsilon_1)^2
+> + 4 (\varepsilon_+ - \varepsilon_-) (2 J - K)}$ and
+> $\Omega_\text{triplet} = \varepsilon_2 - \varepsilon_1$.
+> **(b)** Compute the numerical values for H₂ at
+> $R = 1.4\,a_0$ in the STO-3G basis using the
+> chapter 03 SCF solution
+> ([`chapter_03/01-h2-sto3g-scf.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_03/01-h2-sto3g-scf.py))
+> and an LDA xc kernel. **(c)** Discuss why the singlet
+> is *lower* in energy than the triplet in TD-DFT but
+> the same in CIS (the Tamm–Dancoff approximation).
+> **Hint:** the spin structure of $K$ depends on whether
+> the excitation is singlet or triplet; for the
+> triplet, the *exchange* part of $K$ is twice the
+> singlet exchange.
+> **Answer:** **(a)** the $2 \times 2$ Casida matrix in
+> the *singlet* channel is
+> $\begin{pmatrix} A & B \\ B & A \end{pmatrix}$ with
+> $A = (\varepsilon_2 - \varepsilon_1) + 2 K_{12,12} -
+> K_{11,22}$ and $B = 2 K_{12,12} - K_{11,22}$, and in
+> the *triplet* channel $A = \varepsilon_2 - \varepsilon_1$,
+> $B = 0$ (the spin flip kills the exchange). The
+> eigenvalues $\Omega = A \pm B$ give the stated
+> expressions. **(b)** in STO-3G H₂,
+> $\varepsilon_2 - \varepsilon_1 \approx 0.586\,E_h$ and
+> the LDA-kernel contribution
+> $2 K_{12,12} - K_{11,22} \approx 0.18\,E_h$, so
+> $\Omega_\text{singlet} \approx 0.874\,E_h$ and
+> $\Omega_\text{triplet} \approx 0.586\,E_h$ — a
+> *redshift* of the singlet by $\sim 0.3\,E_h$,
+> comparable to the experimental HOMO–LUMO gap in H₂.
+> **(c)** in CIS (TDA) the triplet–singlet splitting
+> comes only from the *exchange* integrals, not from
+> the xc kernel, so the singlet–triplet gap is
+> *underestimated*; full TD-DFT captures the *dynamical*
+> correlation via the xc kernel, which lowers the
+> singlet more than the triplet.
+
+---
+
+## 13. DFT+U & beyond
+
+> Source: [Chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }}) — §13.6 (Problems).  Chapter 13
+> uses the ground-state Kohn–Sham machinery of
+> [Chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) and the failure-of-LDA discussion of
+> [Chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) (Jacob's ladder of xc functionals).
+
+### 13.1 The DFT+U double-counting correction
+
+> **P13.1.1** (easy) · *§13.6, Problem 1*
+> **[statement]** The DFT+U energy functional is
+> $E_\text{DFT+U}[\rho, \{n^\sigma_{mm'}\}] = E_\text{DFT}[\rho]
+> + \tfrac{1}{2} \sum_\sigma \sum_{\{m\}} U_\text{eff}
+> (\text{Tr}\, \mathbf n^\sigma - \text{Tr}\, (\mathbf n^\sigma
+> \mathbf n^\sigma))$,
+> where $n^\sigma_{mm'} = \sum_{n\mathbf k} f_{n\mathbf k}
+> \langle \phi_{n\mathbf k} | \hat P^\sigma_{m'} \rangle
+> \langle \hat P^\sigma_m | \phi_{n\mathbf k} \rangle$ is the
+> occupation matrix of the localised subspace (e.g. the
+> transition-metal $d$ orbitals) and $U_\text{eff} = U - J$ is
+> the **effective on-site Coulomb** (the Hubbard $U$ minus
+> the Hund's $J$). **(a)** Identify the **double-counting**
+> term that the $+U$ correction subtracts from the LDA/GGA
+> energy. **(b)** Show that for an *integer* occupation
+> (e.g. $d^1$ or $d^9$), $\text{Tr}\, \mathbf n - \text{Tr}\,
+> (\mathbf n^2) = 0$ and the $+U$ correction vanishes.
+> **(c)** Argue why the correction is *finite* and
+> *positive* only for *fractional* occupations, i.e. for
+> metallic or near-metal-like states.
+> **Hint:** the double-counting is the part of $E_\text{DFT}$
+> that already includes (approximately) the on-site Coulomb
+> repulsion — the LDA counts the on-site $d$–$d$ interaction
+> via the *average* density, which is wrong for a strongly
+> localised subspace.
+> **Answer:** **(a)** the double-counting is the LDA/GGA
+> estimate of the on-site $d$–$d$ Coulomb energy, which is
+> approximately
+> $E_\text{DC} = \tfrac{1}{2} U_\text{avg} n_d (n_d - 1)$
+> with $n_d = \text{Tr}\, \mathbf n$ and $U_\text{avg}$ the
+> *average* on-site repulsion already included in LDA (the
+> LDA cannot tell a *localised* $d$ electron from a
+> *delocalised* one). **(b)** for $n_d = 1$ integer,
+> $\text{Tr}\, \mathbf n = 1$ and
+> $\text{Tr}\, (\mathbf n^2) = 1$ (a $1 \times 1$ projector
+> on the occupied orbital), so the correction is zero — the
+> LDA already gives the right answer for an empty/full
+> shell. **(c)** the $+U$ correction is designed to
+> *penalise* fractional occupations, which is precisely
+> what the LDA fails to do for a localised subspace; the
+> penalty is $\tfrac{1}{2} U_\text{eff} \sum_\sigma n^\sigma
+> (1 - n^\sigma) \ge 0$ with equality only at integer
+> $n^\sigma$.
+
+### 13.2 The Mott insulator vs the band insulator
+
+> **P13.2.1** (medium) · *§13.6, Problem 2*
+> **[statement]** The single-band Hubbard model on a
+> bipartite lattice (e.g. a 2-D square lattice with
+> nearest-neighbour hopping $t$) is
+> $\hat H = -t \sum_{\langle ij \rangle, \sigma} (\hat c^\dagger_{i\sigma}
+> \hat c_{j\sigma} + \text{h.c.}) + U \sum_i \hat n_{i\uparrow}
+> \hat n_{i\downarrow}$. **(a)** At half-filling and
+> $U = 0$, the band structure is
+> $\varepsilon(\mathbf k) = -2t (\cos k_x + \cos k_y)$ and
+> the system is a *metal* (a 2-D metal with a Van Hove
+> singularity at the Fermi level). **(b)** At half-filling
+> and $U \to \infty$ (the *atomic limit*), the system is
+> a **Mott insulator**: every site is singly occupied,
+> the charge fluctuation is suppressed, and the
+> effective spin Hamiltonian is the Heisenberg
+> antiferromagnet
+> $\hat H_\text{eff} = J \sum_{\langle ij \rangle}
+> \hat{\mathbf S}_i \cdot \hat{\mathbf S}_j$ with
+> $J = 4 t^2 / U$. **(c)** At what value of $U_c / t$
+> does the **Mott transition** occur in 2-D? (Mean-field:
+> $U_c / t \approx 4$; DMFT in infinite dimensions:
+> $U_c / t \approx 6$; quantum Monte Carlo at zero
+> temperature: $U_c / t \approx 4.5$.) **(d)** Discuss
+> why LDA *fails* to predict the Mott insulating state:
+> it sees a metal, because it has no mechanism to
+> *localise* electrons in a half-filled band.
+> **Hint:** the Mott transition is the point at which the
+> quasiparticle weight $Z$ at the Fermi level vanishes.
+> **Answer:** **(a)** $\varepsilon(\mathbf k) = -2t
+> (\cos k_x + \cos k_y)$ ranges over $[-4t, 4t]$ and is
+> half-filled (one electron per site, two per unit cell, so
+> two bands); the Fermi surface is the **nested** square
+> $|\cos k_x| + |\cos k_y| = 1$ — perfect nesting at
+> wavevector $\mathbf Q = (\pi, \pi)/a$. **(b)** in the
+> atomic limit the only low-energy process is the *virtual*
+> hopping of an electron from site $i$ to site $j$ and
+> back, which gives a *spin exchange* $J = 4t^2 / U$
+> (second-order perturbation theory in $t/U$). **(c)** the
+> Mott transition is at $U_c \approx 4.5\,t$ in 2-D (QMC,
+> zero temperature); for $U < U_c$ the system is a metal,
+> for $U > U_c$ it is an antiferromagnetic insulator.
+> **(d)** the LDA is built on the *delocalised* KS
+> orbitals of a non-interacting reference and has no way to
+> suppress the charge fluctuation that the Mott insulator
+> requires; the gap in LDA comes from *band splitting*
+> (Slater antiferromagnet), not from on-site repulsion.
+> The 3*d* transition-metal oxides (MnO, FeO, CoO, NiO)
+> are the textbook examples of this failure.
+
+### 13.3 The Liechtenstein rotationally invariant DFT+U
+
+> **P13.3.1** (hard) · *§13.6, Problem 3*
+> **[statement]** The Liechtenstein formulation of DFT+U
+> is rotationally invariant in the localised subspace.
+> The energy correction is
+> $E_U = \tfrac{1}{2} \sum_{\sigma} \sum_{m_1 m_2 m_3 m_4}
+> U_{m_1 m_2 m_3 m_4} n^\sigma_{m_1 m_3} n^\sigma_{m_2 m_4}$
+> with the **screened Coulomb tensor**
+> $U_{m_1 m_2 m_3 m_4} = \langle m_1 m_2 | V_\text{ee} |
+> m_3 m_4 \rangle$ decomposed into the Slater integrals
+> $F^0, F^2, F^4, \dots$. **(a)** For a $d$-electron
+> subspace ($l = 2$), relate the Slater integrals to
+> the **Hubbard $U$** and **Hund's $J$**:
+> $U = F^0$ and $J = (F^2 + F^4) / 14$. **(b)** Show
+> that the **occupation matrix** $\mathbf n^\sigma$ in
+> the $d$ basis is *idempotent* (eigenvalues 0 or 1) in
+> the atomic limit and has *fractional* eigenvalues in
+> the itinerant limit, and that the DFT+U correction
+> $E_U = \tfrac{1}{2} (U - J) \sum_\sigma [\text{Tr}\,
+> \mathbf n^\sigma - \text{Tr}\, (\mathbf n^\sigma)^2]$
+> is minimised when $\mathbf n^\sigma$ is fully
+> polarised. **(c)** Discuss why this *over-favours*
+> ferromagnetism in transition-metal oxides and how the
+> **around-mean-field (AMF)** double-counting corrects
+> the bias.
+> **Hint:** the Slater integrals are the *radial* averages
+> $\langle r^{2k} \rangle$ of the Coulomb interaction
+> weighted by the $d$-orbital density.
+> **Answer:** **(a)** the Slater–Condon parameters for a
+> $d$ shell relate to $U$ and $J$ via $F^0 = U$ and
+> $J = (F^2 + F^4) / 14$ (the numerical factor 1/14
+> comes from the Gaunt coefficients of the $d$ orbitals).
+> **(b)** in the atomic limit $\mathbf n^\sigma$ is a
+> 0/1 projector (eigenvalues 0 or 1), so
+> $\text{Tr}\, \mathbf n^\sigma - \text{Tr}\,
+> (\mathbf n^\sigma)^2 = 0$ (the $U$ correction
+> vanishes); in the itinerant limit the eigenvalues are
+> fractional, the bracket is *negative*, and the
+> correction is *positive* — the system pays an energy
+> price for being in between. **(c)** the
+> **around-mean-field (AMF)** double-counting shifts
+> the energy so that the $+U$ correction is *zero* in
+> the *uniform* (mean-field) limit and grows only as
+> the system becomes *less* uniform — this removes the
+> bias towards full spin polarisation. In practice the
+> **Dudarev** formulation with a single $U_\text{eff}$
+> is the most common.
+
+---
+
+## Cross-chapter problem set A — From Schrödinger to pseudopotentials (chapters 01, 03, 04, 08)
+
+This multi-part problem walks the reader through the
+chain of approximations that turns the all-electron
+Schrödinger equation of a many-electron atom into a
+smooth valence-only pseudopotential.  The chain is: H
+atom (analytical) → Hartree–Fock (many-electron,
+all-electron) → Kohn–Sham DFT (many-electron,
+all-electron, with approximate xc) → pseudopotential
+(valence-only, smooth).  The system is **lithium**
+($Z = 3$, $1s^2 2s^1$), the prototypical
+*one-valence-electron* atom for which the
+pseudopotential approximation is exact in the limit
+of a frozen $1s$ core.
+
+<details class="problem">
+<summary>Part 1 (chapter 01) — The hydrogenic 2s orbital</summary>
+
+Treat the $2s$ valence electron of Li as a *hydrogenic*
+orbital in an effective nuclear charge
+$Z_\text{eff} \in [1, 3]$ (the $1s^2$ core screens two
+of the three nuclear protons).  Write down the radial
+wavefunction
+$R_{2s}(r) = (Z_\text{eff}/a_0)^{3/2}
+(2 - Z_\text{eff} r/a_0) e^{-Z_\text{eff} r / 2 a_0} /
+(2 \sqrt 2)$ and the energy
+$\varepsilon_{2s} = -Z_\text{eff}^2 / 8\,E_h$.  Estimate
+$Z_\text{eff}$ by the **Slater rules** and compare with
+the all-electron Kohn–Sham value $\sim 1.65$.  Why is
+the node of the hydrogenic $2s$ (at
+$r = 2 a_0 / Z_\text{eff}$) "deep inside" the core
+region, and what does this imply for the plane-wave
+cutoff?
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+The Slater rules assign
+$\sigma = 2 \times 0.85 = 1.7$ (the two $1s$ electrons
+screen with weight 0.85 each), so
+$Z_\text{eff} = Z - \sigma = 3 - 1.7 = 1.3$ and
+$\varepsilon_{2s} \approx -(1.3)^2 / 8 \approx -0.21\,E_h$.
+The all-electron Kohn–Sham value is
+$Z_\text{eff} \approx 1.65$ (the $1s$ core is *not* fully
+screening), and the experimental IE is $0.198\,E_h$ —
+the *opposite* trend: the Slater rules were derived for
+*neutral* atoms and miss the relaxation of the core in
+the ionised state. The Kohn–Sham eigenvalue is a
+*better* estimate of the *neutral-atom* orbital energy
+but *overestimates* the IE by $\sim 0.01\,E_h$ (the
+$\Delta$SCF correction).
+
+The hydrogenic wavefunction at $Z_\text{eff} = 1.65$ is
+$R_{2s}(r) \approx 0.564\,(2 - 0.99\,r/a_0)
+e^{-0.825\,r/a_0}$ in atomic units; it has one radial
+node at $r = 2 a_0 / Z_\text{eff} \approx 1.21\,a_0$,
+deep inside the core region ($r_c \sim 1$–$2\,a_0$ is
+typical for Li).  This nodefulness is exactly what a
+pseudopotential construction in chapter 08 will
+*remove*: a smooth pseudo-orbital with *no* radial
+node inside $r_c$ is the entire point of the
+construction.
+</details>
+
+<details class="problem">
+<summary>Part 2 (chapter 03) — Hartree–Fock on Li in a STO-3G basis</summary>
+
+Set up a Hartree–Fock calculation for Li in a STO-3G
+basis (one basis function per occupied orbital: a $1s$
+and a $2s$ on the Li atom).  Write the Fock matrix in
+the AO basis,
+$F_{\mu\nu} = h_{\mu\nu} + \sum_{\rho\sigma} P_{\rho\sigma}
+[(\mu\nu | \rho\sigma) - \tfrac{1}{2}(\mu\sigma | \rho\nu)]$,
+and the density matrix
+$P_{\mu\nu} = 2 \sum_{i \in \text{occ}} C_{\mu i} C_{\nu i}^*$
+in the closed-shell two-electron core and the *open-shell*
+single $2s$ electron.  (Note: Li has $N = 3$ electrons,
+so the *closed-shell* Ansatz of
+[Chapter 03, §3.5]({{ "/dft-notes/chapter-03/" | relative_url }}) does not apply — you need an
+**unrestricted** HF or an **ROHF** treatment.)  Report
+the Koopmans IE $-\varepsilon_{2s}$ and compare with
+the hydrogenic estimate of Part 1.
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+The Li atom in a minimal basis has two basis functions
+$\{\chi_{1s}, \chi_{2s}\}$ and three electrons: the
+closed-shell $1s^2$ pair and one unpaired $2s$ electron.
+The standard approach is **unrestricted Hartree–Fock
+(UHF)**: separate $\alpha$ and $\beta$ orbitals,
+$\mathbf F^\alpha \mathbf C^\alpha = \mathbf S \mathbf C^\alpha
+\boldsymbol\varepsilon^\alpha$ and similarly for $\beta$,
+with
+$\mathbf P^\alpha = \mathbf C^\alpha_\text{occ}
+(\mathbf C^\alpha_\text{occ})^\top$ and
+$\mathbf P = \mathbf P^\alpha + \mathbf P^\beta$.  The
+Fock matrix for spin $\sigma$ is
+$F^\sigma_{\mu\nu} = h_{\mu\nu} + \sum_{\rho\sigma'}
+P_{\rho\sigma'} (\mu\nu | \rho\sigma')
+- P^\sigma_{\rho\sigma'} (\mu\sigma' | \rho\nu)$ (the
+exchange term has a *spin-dependent* density matrix).
+
+For Li in STO-3G, the standard UHF result is
+$\varepsilon_{2s}^\alpha \approx -0.196\,E_h$ (the
+Koopmans IE is $0.196\,E_h$, very close to the
+experimental IE of $0.198\,E_h$), and
+$\varepsilon_{1s}^\alpha \approx -2.46\,E_h$ (deeper, in
+the core).  The unrestricted calculation gives a
+$\langle S^2 \rangle$ that is *not* exactly $3/4$ (the
+doublet value) — the spin contamination is typically
+$\langle S^2 \rangle \approx 0.78$ for Li/STO-3G, an
+$\sim 4\%$ contamination that is *typical* for open-shell
+atoms in small bases.
+</details>
+
+<details class="problem">
+<summary>Part 3 (chapter 04) — Replace HF exchange with LDA</summary>
+
+Re-run the Li calculation of Part 2 with the HF
+*exchange* replaced by the **LDA exchange** functional
+of [Chapter 05, §5.1]({{ "/dft-notes/chapter-05/" | relative_url }}).
+This is a *Kohn–Sham DFT* calculation in a minimal
+basis (KS-LDA/STO-3G).  Report the new
+$\varepsilon_{2s}$ and compare with the UHF value.
+Discuss the *systematic* difference: in atoms, KS-LDA
+*overbinds* the HOMO and *underbinds* the LUMO, but
+the *Koopmans* IE (which is $-\varepsilon_\text{HOMO}$,
+not the $\Delta$SCF value) is typically in *better*
+agreement with experiment for HF than for LDA,
+*reversed* when the $\Delta$SCF correction is applied.
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+The KS-LDA total energy is
+$E_\text{KS}[\rho] = T_s[\rho] + \int v_\text{ext} \rho\, d\mathbf r
++ J[\rho] + E_\text{xc}^\text{LDA}[\rho]$, and the KS
+eigenvalues are *not* the HF orbital energies — the
+*exchange* part of the Fock operator is replaced by the
+*local* xc potential $v_\text{xc}^\text{LDA}(\mathbf r) =
+\partial(\rho \varepsilon_\text{xc}) / \partial \rho$, and
+the *correlation* part is added.
+
+For Li/STO-3G, the KS-LDA HOMO is at
+$\varepsilon_{2s}^\text{LDA} \approx -0.213\,E_h$ (a
+*deeper* eigenvalue than HF, by $\sim 0.02\,E_h$); the
+Koopmans IE is *too large* by $\sim 0.015\,E_h$.  This
+is the **DFT Koopmans failure**: the KS eigenvalue is
+*not* the ionisation energy in DFT, only in exact
+KS-DFT (the "Janak theorem" generalisation).  The
+$\Delta$SCF correction — recomputing $E(N) - E(N-1)$
+self-consistently at $N = 3$ and $N = 2$ — gives a
+value much closer to experiment: typically
+$0.200$–$0.205\,E_h$ for KS-LDA, compared to
+$0.196\,E_h$ (UHF Koopmans) and $0.198\,E_h$
+(experimental).  The *Koopmans* IE in HF is *better*
+than the Koopmans IE in LDA, but the $\Delta$SCF IE in
+LDA is *better* than the $\Delta$SCF IE in HF — the
+opposite conclusion, illustrating that HF and DFT are
+*different* theories, not just different functionals.
+</details>
+
+<details class="problem">
+<summary>Part 4 (chapter 08) — Build a Li pseudopotential from the all-electron LDA orbital</summary>
+
+Take the all-electron KS-LDA $2s$ orbital of Li from
+Part 3 and construct a Troullier–Martins (TM)
+pseudopotential with cutoff radius $r_c = 1.0\,a_0$
+following the recipe of
+[Chapter 08, §8.4 and §8.8]({{ "/dft-notes/chapter-08/" | relative_url }}).
+Use the script
+[`chapter_08/01-hydrogen-pseudopotential.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py)
+as a template (it does the same construction for H;
+change the all-electron input to the Li $2s$ KS-LDA
+orbital).  Verify that the pseudo-wavefunction
+$\phi_{2s}(r)$ matches the all-electron $u_{2s}(r)$ for
+$r \ge r_c$ to machine precision, that $\phi_{2s}(r)$
+is nodeless in $r < r_c$, and that the
+**norm-conservation condition**
+$\int_0^{r_c} \phi_{2s}^2 dr = \int_0^{r_c} u_{2s}^2 dr$
+holds.  Then **invert** the radial equation to obtain
+$V_{ps, l=0}(r)$ and discuss why the pseudo-potential
+is much *shallower* than the all-electron potential
+inside $r_c$ and why this matters for the plane-wave
+cutoff.
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+For Li/$2s$ with $r_c = 1.0\,a_0$, the resulting
+$V_{ps, l=0}(r)$ is a smooth, finite function inside
+$r_c$ with a depth of $\sim -1.5\,E_h$ (compared to
+the all-electron Coulomb $-2/r$ which diverges as
+$r \to 0$); outside $r_c$ it is set equal to the
+all-electron $V_{ae}(r)$.  The pseudo-wavefunction
+$\phi_{2s}(r)$ is nodeless in $r < r_c$ (the TM form
+*forces* this through the polynomial ansatz), and the
+norm-conservation holds to $\sim 10^{-8}$ relative
+error.  The plane-wave cutoff required to expand
+$\phi_{2s}(r)$ is $\sim 30$–$50\,\text{Ry}$ (compared
+to $\sim 500\,\text{Ry}$ for the all-electron $2s$ with
+its radial node at $r = 1.21\,a_0$) — a $\sim 10\times$
+saving that makes plane-wave DFT on Li feasible.
+
+The deeper point: the all-electron $1s$ orbital of Li
+has $\varepsilon_{1s} \approx -2.46\,E_h$ and oscillates
+$\sim 2$ times inside $r_c$; the *pseudo-potential* is
+*designed* to reproduce the *valence* $2s$ orbital
+*outside* $r_c$ and is *allowed* to deviate inside —
+that deviation is the *frozen-core* approximation.
+For a Li atom in two different chemical environments
+(e.g. Li in LiH vs Li in Li₂), the $1s$ core is
+*assumed* unchanged and the $V_{ps}$ is *transferred*
+between them — the transferability is the key
+property of the construction.
+</details>
+
+---
+
+## Cross-chapter problem set B — From phonons to TDDFT (chapters 07, 10, 11, 12)
+
+This problem set takes a *single* physical system (a
+1-D periodic diatomic chain — the prototype of an ionic
+crystal) and walks it through four chapters: from
+*electronic* band structure (ch 07) through *phonons*
+(ch 10) through *band-structure* analysis and DOS
+visualisation (ch 11) to its *optical* absorption
+spectrum (ch 12).
+
+<details class="problem">
+<summary>Part 1 (chapter 07) — Electronic band structure of the diatomic chain</summary>
+
+The chain has a two-atom unit cell, so the BZ is
+$|k| \le \pi / a$ and the *electronic* band structure
+has *two* bands,
+$\varepsilon_\pm(k) = \pm 2 t |\cos(ka/2)|$.
+**(a)** Sketch $\varepsilon_\pm(k)$ for
+$k \in [-\pi/a, \pi/a]$ and identify the **band gap**
+$E_\text{gap} = 4t$ at the BZ boundary $k = \pi/a$.
+**(b)** Compute the **density of states** $g(\varepsilon) =
+(1/N) \sum_{n, k} \delta(\varepsilon - \varepsilon_n(k))$
+for the two bands by the change of variable
+$y = \cos(ka/2)$ on $k \in [-\pi/a, \pi/a]$.
+**(c)** Show that the **joint density of states** (the
+*optical* DOS that governs direct transitions) is
+$g_\text{joint}(\omega) = (1/N) \sum_k
+\delta(\hbar\omega - \varepsilon_+(k) + \varepsilon_-(k))
+= (1/N) \sum_k \delta(\hbar\omega - 4t |\cos(ka/2)|)$,
+with a **van Hove singularity** at $\omega = 4t/\hbar$.
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+The two-band dispersion is the textbook result of a
+two-site, one-orbital tight-binding chain: the
+eigenvalues of the $2 \times 2$ Bloch Hamiltonian
+$\begin{pmatrix} 0 & -2t \cos(ka/2) \\ -2t \cos(ka/2) & 0
+\end{pmatrix}$ are $\pm 2t |\cos(ka/2)|$, with a maximum
+of $2t$ at the Brillouin-zone centre $k = 0$ and a gap
+of $4t$ at the boundary $k = \pi/a$.  The valence band
+is fully filled (two electrons per unit cell, one
+orbital per atom) and the conduction band is empty:
+the chain is an *insulator* (Peierls-type).
+
+The DOS of a single band is
+$g(\varepsilon) = (1/\pi) 1 / \sqrt{4 t^2 - \varepsilon^2}$
+for $|\varepsilon| \le 2t$, with a **van Hove singularity**
+at the band edges. The *joint* DOS for direct
+transitions is
+$g_\text{joint}(\hbar\omega) = (1/\pi)
+1 / \sqrt{(4t)^2 - (\hbar\omega)^2}$ for
+$\hbar\omega \le 4t$, with a van Hove singularity at
+$\hbar\omega = 4t$ (the BZ boundary).  This is the
+1-D analogue of the 3-D absorption edge — the optical
+absorption *onsets* at the band gap and has a
+divergent joint DOS just above it.
+</details>
+
+<details class="problem">
+<summary>Part 2 (chapter 10) — Phonon dispersion of the diatomic chain</summary>
+
+In the same geometry, the *phonon* dispersion has two
+branches
+$\omega_\pm(q) = \sqrt{K(1/M + 1/m) \pm K
+\sqrt{(1/M + 1/m)^2 - 4 \sin^2(qa/2) / (Mm)}}$.
+**(a)** Verify the **acoustic sum rule**
+$\omega_-(q \to 0) \to 0$ and the **optical** branch
+$\omega_+(0) = \sqrt{2K(1/M + 1/m)}$. **(b)** For
+$K = 1\,E_h / a_0^2$ and $M = 35\,m_u$, $m = 1\,m_u$
+(a chain modelling HCl), compute the optical phonon
+frequency at $q = 0$ in meV. **(c)** Discuss the
+**LO–TO splitting** in 3-D ionic crystals (NaCl, GaAs)
+and why it does *not* appear in the 1-D chain (the 1-D
+chain has no long-range Coulomb interaction to break
+the degeneracy at $q = 0$).
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+The acoustic sum rule is satisfied by the
+$\sin^2(qa/2)$ factor: at $q = 0$, $\omega_-^2(0) =
+K(1/M + 1/m) - K \sqrt{(1/M + 1/m)^2} = 0$.  The
+optical branch at $q = 0$ is
+$\omega_+(0) = \sqrt{2K(1/M + 1/m)}$; for HCl-like
+parameters, $1/M + 1/m \approx 1.029 / m_u$ and
+$\omega_+(0) = \sqrt{2 \cdot 1 \cdot 1.029 / 1836}
+\approx 0.0335\,E_h \approx 910\,\text{meV}$ — about
+ten times larger than typical acoustic phonons in
+real solids, because the 1-D spring constant
+$K = 1\,E_h / a_0^2$ is *much* stiffer than a real
+interatomic spring.
+
+The LO–TO splitting is a *3-D* effect: in an ionic
+crystal the long-range Coulomb interaction between
+the *effective* charges of the ions adds a term
+$4\pi e^2 / (\varepsilon_\infty V) \sum_{ij} Z^*_i Z^*_j
+e^{i \mathbf q \cdot (\mathbf R_i - \mathbf R_j)}$ to
+the dynamical matrix, which is *finite* at
+$\mathbf q = 0$ for the optical mode (the acoustic
+modes are protected by the ASR).  In 1-D, the
+analogous term is *absent* — the 1-D Coulomb
+interaction is short-range in the lattice sums — so
+the LO–TO splitting does not appear.
+</details>
+
+<details class="problem">
+<summary>Part 3 (chapter 11) — Electronic density of states and the optical gap</summary>
+
+**(a)** Compute the **optical gap** of the diatomic
+chain as the minimum direct gap,
+$E_\text{gap}^\text{direct} = 4t$ (Part 1), and the
+*indirect* gap (the minimum gap over all $k$; here
+it equals the direct gap because the band extrema
+are at the same $k$). **(b)** Use the joint DOS of
+Part 1 to write down the **absorption coefficient**
+$\alpha(\omega) \propto |\boldsymbol\mu_{vc}|^2
+g_\text{joint}(\hbar\omega)$ in the independent-
+particle approximation (without excitonic effects).
+**(c)** The actual optical gap of the chain is
+*reduced* from $4t$ by the **exciton binding
+energy** $E_b$: the optical absorption onsets at
+$\hbar\omega = 4t - E_b$, not at $4t$.  Estimate
+$E_b$ for a 1-D Wannier exciton in the *effective-
+mass* approximation:
+$E_b = -\mu e^4 / (2 \hbar^2 \varepsilon^2)$ with
+$\mu$ the reduced effective mass of the electron-
+hole pair and $\varepsilon$ the dielectric
+constant of the chain.  (This is the *link* to
+chapter 12.)
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+The minimum direct gap is $4t$ at $k = \pi/a$,
+achieved by the transition
+$\varepsilon_-(\pi/a) = -2t$ (valence band maximum)
+to $\varepsilon_+(\pi/a) = +2t$ (conduction band
+minimum) at the *same* $k$ — so the gap is *direct*.
+In a real 3-D semiconductor, the gap can be *indirect*
+(e.g. silicon), which requires a phonon to conserve
+crystal momentum and gives a *weaker* absorption
+edge.
+
+The absorption coefficient is
+$\alpha(\omega) = (4\pi^2 e^2 / n c m_e^2 \omega)
+|\boldsymbol\mu_{vc}|^2 g_\text{joint}(\hbar\omega)$
+in the dipole approximation (Fermi's golden rule
+summed over $k$); the joint DOS has the van Hove
+singularity at $\omega = 4t/\hbar$, so $\alpha(\omega)$
+has a *peak* just above the gap (the square-root
+edge of a 1-D DOS) and decays as
+$1/\sqrt{4t - \hbar\omega}$ above the gap.
+
+The exciton binding energy in 1-D is *much* larger
+than in 3-D: the 1-D hydrogen-like problem has
+$E_b^{(1\text{D})} / E_b^{(3\text{D})} = 4$ (the
+binding is stronger because the electron and hole
+are confined to 1-D), and for a typical reduced
+mass $\mu \sim 0.1\,m_e$ and dielectric constant
+$\varepsilon \sim 5$, $E_b \sim 0.1$–$0.5\,\text{eV}$
+— a significant fraction of the gap, especially in
+*organic* semiconductors.
+</details>
+
+<details class="problem">
+<summary>Part 4 (chapter 12) — Linear-response TDDFT absorption</summary>
+
+The independent-particle absorption of Part 3 *misses*
+the excitonic *redshift* $E_b$ (and the *enhancement*
+of the absorption below the gap).  The chapter 12
+linear-response TDDFT framework recovers it.
+**(a)** Set up the Casida eigenvalue problem for the
+2-band chain in the *electron-hole* basis (one
+occupied orbital $\phi_-$, one virtual $\phi_+$),
+with the *direct* Coulomb coupling
+$J = \int\int |\phi_-(x)|^2 (1/|x - x'|) |\phi_+(x')|^2
+dx dx'$ and the *exchange* coupling
+$K = \int\int \phi_-^*(x) \phi_+(x) (1/|x - x'|)
+\phi_-^*(x') \phi_+(x') dx dx'$. **(b)** Show that
+the **singlet** excitation energy is
+$\Omega_\text{singlet} = \sqrt{(\varepsilon_+ - \varepsilon_-)^2
++ 4 (\varepsilon_+ - \varepsilon_-) (2 J - K)}$
+and the **triplet** is
+$\Omega_\text{triplet} = \varepsilon_+ - \varepsilon_-$
+(no exchange screening in the triplet). **(c)** In
+1-D, the Coulomb integrals $J, K$ are *larger* than
+in 3-D (the electron-hole overlap is larger), so the
+singlet is *more strongly redshifted* and the
+singlet-triplet splitting is *larger*.  Discuss the
+**Bethe–Salpeter** correction to the xc kernel that
+is required to reproduce the experimental absorption
+spectrum quantitatively.
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+The Casida matrix for a 2-orbital, 2-electron system
+is the $2 \times 2$ matrix derived in
+[Chapter 12, §12.7]({{ "/dft-notes/chapter-12/" | relative_url }}),
+with the singlet block
+$\begin{pmatrix} (\varepsilon_+ - \varepsilon_-) + 2 J - K
+& 2 J - K \\ 2 J - K & (\varepsilon_+ - \varepsilon_-) +
+2 J - K \end{pmatrix}$ and the triplet block
+$(\varepsilon_+ - \varepsilon_-)$ (a $1 \times 1$
+matrix — the spin flip kills the exchange).  The
+singlet eigenvalue is
+$\Omega_\text{singlet} = \sqrt{(\varepsilon_+ -
+\varepsilon_- + 2 J - K)^2 - (2 J - K)^2}
+= \sqrt{(\varepsilon_+ - \varepsilon_-)^2 +
+2 (\varepsilon_+ - \varepsilon_-) (2 J - K)}$ — a
+*redshift* of magnitude
+$2 J - K$ (the **exciton binding energy** in this
+minimal basis).
+
+The 1-D Coulomb integrals are larger than their 3-D
+counterparts (the confinement enhances the overlap),
+so the exciton binding energy is larger.  In real
+1-D materials (carbon nanotubes, conjugated polymers)
+the binding energy can be $0.5$–$1.0\,\text{eV}$ —
+comparable to the band gap itself.  The **adiabatic
+LDA** (ALDA) *underestimates* the binding energy; the
+**Bethe–Salpeter equation** (BSE) is the
+*non-adiabatic* correction that gives quantitative
+agreement with experiment.
+</details>
+
+---
+
+## Cross-chapter problem set C — The Mott insulator (chapters 04, 05, 13)
+
+This problem set takes the **Mott insulator** as a
+unifying thread and shows how the *failure* of one
+method (LDA) to describe it leads to a *correction*
+(DFT+U).  The prototype is the 2-band Hubbard model
+on a 2-D square lattice at half-filling, with one
+electron per site.  In the non-interacting limit
+($U = 0$) it is a *metal*; in the strongly-
+interacting limit ($U \to \infty$) it is a **Mott
+insulator** with antiferromagnetic order.  LDA
+predicts the metal, *not* the insulator; DFT+U with
+a suitable $U$ recovers the gap.
+<details class="problem">
+<summary>Part 1 (chapter 04) — The KS-LDA band structure</summary>
+
+Take a 2-band Hubbard model on a 2-D square lattice,
+$\hat H = -t \sum_{\langle ij \rangle, \sigma} (\hat c^\dagger_{i\sigma}
+\hat c_{j\sigma} + \text{h.c.}) + U \sum_i \hat n_{i\uparrow}
+\hat n_{i\downarrow}$, at half-filling (one electron
+per site, two per unit cell if there is a 2-atom basis,
+or one per unit cell if there is a 1-atom basis with
+spin degeneracy). **(a)** Solve the *non-interacting*
+limit $U = 0$: the band structure is
+$\varepsilon(\mathbf k) = -2t (\cos k_x + \cos k_y)$
+on a 1-atom unit cell, half-filled (one electron per
+site, but spin-degenerate, so two electrons per cell
+and *one* band).  Identify the **Fermi surface** (the
+square $|\cos k_x| + |\cos k_y| = 1$) and the
+**Fermi energy** $\varepsilon_F = 0$. **(b)** Now
+treat the *same* problem in KS-DFT with the LDA xc
+functional.  The LDA self-consistent solution is
+*exactly* the non-interacting solution (because the
+homogeneous electron gas that LDA is fit to is
+*itself* non-interacting in the KS sense); LDA
+predicts a *metal*. **(c)** Discuss why this is
+*wrong* for the real material: in the limit
+$U \to \infty$ the on-site repulsion forbids double
+occupancy and the ground state is an
+*antiferromagnetic insulator* (a **Mott insulator**),
+not a metal.
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+The non-interacting band
+$\varepsilon(\mathbf k) = -2t (\cos k_x + \cos k_y)$
+has its extrema at $\Gamma$ ($\varepsilon = -4t$) and
+at the BZ corner $M = (\pi, \pi)/a$
+($\varepsilon = +4t$); the band is half-filled (with
+spin degeneracy, two electrons per unit cell, one
+band), and the Fermi surface is the **nested** square
+$\cos k_x + \cos k_y = 0$ — perfect nesting at
+wavevector $\mathbf Q = (\pi, \pi)/a$.
+
+LDA applied to this model gives the same answer: a
+metal with a nested Fermi surface.  This is *wrong*
+for the interacting case at large $U$, where the
+ground state is a Mott insulator with
+antiferromagnetic order at wavevector $\mathbf Q$.
+The reason LDA fails: the LDA xc functional is fit
+to the *homogeneous* electron gas, which is a *metal*
+for any density; it has no mechanism to *localise*
+electrons in a half-filled band.  The Mott
+transition is a *correlation-driven* insulator-to-
+metal transition that LDA simply *cannot* describe.
+
+In real materials, this failure is visible in the
+3*d* transition-metal oxides (MnO, CoO, NiO, the
+parent compounds of the high-$T_c$ cuprates): LDA
+predicts *metallic* ground states for materials
+that are *experimentally* antiferromagnetic
+insulators with gaps of $1$–$4\,\text{eV}$.  The
+LDA gaps are listed in the table of
+[Chapter 13, §13.2.1]({{ "/dft-notes/chapter-13/" | relative_url }})
+for MnO, FeO, CoO, NiO — the systematic
+underestimation by a factor of $\sim 2$ is the
+*signature* of the missing Mott physics.
+</details>
+
+<details class="problem">
+<summary>Part 2 (chapter 05) — Why the GGA does not save us</summary>
+
+Repeat the calculation of Part 1 with the **PBE GGA**
+functional of
+[Chapter 05, §5.2]({{ "/dft-notes/chapter-05/" | relative_url }}).
+**(a)** Show that the GGA correction to LDA is *small*
+for the homogeneous electron gas (the PBE enhancement
+factor $F_x(s) = 1 + \kappa - \kappa /
+(1 + \mu s^2 / \kappa)$ is unity for $s = 0$, i.e.
+for a uniform density). **(b)** Argue why the GGA,
+like the LDA, has *no* mechanism to describe a Mott
+transition: the GGA is a *local* (or semi-local)
+correction to LDA, and the Mott physics is *non-
+local* (it depends on the *fluctuation* of the
+density, not just its value and gradient). **(c)**
+Discuss the *hybrid* functionals (PBE0, HSE) of
+[Chapter 05, §5.4]({{ "/dft-notes/chapter-05/" | relative_url }}) and their *temporary* success on
+Mott insulators: the *exact-exchange* part of the
+hybrid is a *non-local* operator and partially
+captures the on-site repulsion, so PBE0 opens a gap
+in MnO and NiO — but with an *ad hoc* mixing
+parameter $a = 0.25$, not from first principles.
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+The PBE GGA enhancement factor $F_x(s) = 1 + \kappa
+- \kappa / (1 + \mu s^2 / \kappa)$ satisfies
+$F_x(0) = 1$ — at zero reduced gradient, the GGA
+reduces to LDA.  The *correction* is in the
+*gradient* of the density; for the homogeneous gas
+the gradient is zero, so the correction vanishes.
+The Mott insulator has a *non-zero* density gradient
+(the $d$-orbital density is highly peaked on the
+transition-metal site), but the GGA correction is a
+*local* functional of the *gradient* and cannot
+describe the *non-local* physics of the on-site
+repulsion.
+
+The *hybrid* functionals (PBE0, HSE) replace a
+fraction $a$ of the GGA exchange with *exact* (non-
+local) HF exchange, which *does* contain the on-
+site $d$–$d$ Coulomb repulsion in the form of the
+Fock exchange integral.  For NiO, PBE0 ($a = 0.25$)
+opens a gap of $\sim 4\,\text{eV}$, in reasonable
+agreement with experiment ($4.3\,\text{eV}$), while
+LDA gives a *metal*.  But the *amount* of exact
+exchange is an *empirical* parameter: $a = 0.25$ is
+the PBE0 choice, but a *range-separated* hybrid like
+HSE06 (with $a = 0.25$ at short range and 0 at long
+range) gives similar results.  The *fundamental*
+problem — that the hybrid is a *mixture* of DFT and
+HF, not a single self-consistent theory — is what
+the DFT+U correction of Part 3 addresses in a
+different way.
+</details>
+
+<details class="problem">
+<summary>Part 3 (chapter 13) — DFT+U opens the gap</summary>
+
+Apply the **DFT+U** correction of
+[Chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }}) to the 2-band Hubbard model of Part 1,
+treating the on-site occupation matrix
+$\mathbf n^\sigma$ of the localised orbital as a
+*dynamical* variable. **(a)** For the half-filled
+antiferromagnetic state (one electron per site,
+alternating spin), the occupation matrix in the
+spin-up channel is the *identity* on one sublattice
+and *zero* on the other.  Show that
+$\text{Tr}\, \mathbf n^\uparrow - \text{Tr}\,
+(\mathbf n^\uparrow)^2 = 0$ on both sublattices, so
+the DFT+U correction *vanishes* in the half-filled
+AF state. **(b)** The *non-trivial* DFT+U effect
+appears when the *spin-up* occupation on one
+sublattice is *less* than 1 (e.g. due to
+hybridisation with the other sublattice): then
+$\text{Tr}\, \mathbf n^\uparrow - \text{Tr}\,
+(\mathbf n^\uparrow)^2 < 0$ and the $+U$ correction
+is *positive* — an *energy penalty* for the partial
+occupation.  This penalty *stabilises* the half-
+filled AF state over the fractional-occupation
+metallic state. **(c)** At what value of $U / t$
+does the gap open?  Discuss the *choice* of $U$:
+too small (say $U = 2\,t$) and the gap does not
+open, the system stays metallic; too large
+($U = 20\,t$) and the gap is grossly overestimated;
+the *physical* value is $U \approx 4$–$6\,t$ for the
+3*d* transition-metal oxides.
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+In a *self-consistent* DFT+U calculation, the system
+*chooses* the state that minimises
+$E_\text{LDA}[\rho] + E_U[\mathbf n]$: the AF state
+has $E_\text{LDA}^\text{AF}$ that is *higher* than
+$E_\text{LDA}^\text{FM}$ (LDA prefers the
+ferromagnetic metal) but $E_U^\text{AF} = 0 <
+E_U^\text{FM}$ (the penalty is paid by the FM state).
+For $U$ large enough, $E_\text{LDA}^\text{AF} + E_U^\text{AF} <
+E_\text{LDA}^\text{FM} + E_U^\text{FM}$ and the AF
+state wins.  The critical $U_c$ is the value at which
+the two energies are equal: for the 2-band Hubbard
+model on a square lattice, $U_c / t \approx 4$–$5$ in
+mean-field theory, in line with the QMC estimate of
+$U_c / t \approx 4.5$ from §13.2.
+
+The *practical* issue is the **choice of $U$**:
+there is no unique, first-principles value (the
+*constrained LDA* calculation of §13 gives a $U$
+that depends on the screening length and the choice
+of the localised subspace).  In practice one *fits*
+$U$ to reproduce an experimental gap or a structural
+property.  The **DFT+DMFT** extension of DFT+U
+addresses this by *dynamically* computing the
+screening and the local Green's function, but the
+cost is much higher.
+</details>
+
+---
+
 ## How to use this anthology
 
-Three suggestions, in increasing order of effort.
+Four suggestions, in increasing order of effort.
 
 1. **Spot check.** After finishing a chapter, read the
-   corresponding section of the anthology and check that you
-   can re-derive the answer from the hint in a single sitting.
-   If not, the chapter section is worth a re-read.
-2. **Cross-link.** Many problems in *different* chapters are
-   connected. The free-particle propagator (§1.1) underlies
-   the path-integral formulation of *every* correlated method
-   (§2); the SCF fixed point (§4.1, §4.2) is the same
-   mathematical object as the HF fixed point (§3.2); the
-   Gaussian product theorem (§6.2) is the workhorse behind
-   every Gaussian-based ERI (§3, §4, §6). If you can place
-   each problem on a single mental map, you understand the
-   *structure* of the notes, not just the *content*.
-3. **Teach.** Pick a problem, write a one-page solution, and
-   present it. The act of *explaining* a derivation is the
-   fastest way to find the gap in your own understanding.
+   corresponding section of the anthology and check
+   that you can re-derive the answer from the hint in
+   a single sitting.  If not, the chapter section is
+   worth a re-read.
+2. **Cross-link.** Many problems in *different*
+   chapters are connected.  The free-particle
+   propagator (§1.1) underlies the path-integral
+   formulation of *every* correlated method (§2); the
+   SCF fixed point (§4.1, §4.2) is the same
+   mathematical object as the HF fixed point (§3.2);
+   the Gaussian product theorem (§6.2) is the
+   workhorse behind every Gaussian-based ERI (§3, §4,
+   §6); the tight-binding band structure of graphene
+   (§11.2) is the 1-D analogue of the 3-D Rashba
+   spin-orbit coupling of §11.3.  If you can place
+   each problem on a single mental map, you
+   understand the *structure* of the notes, not just
+   the *content*.
+3. **Teach.** Pick a problem, write a one-page
+   solution, and present it.  The act of *explaining*
+   a derivation is the fastest way to find the gap in
+   your own understanding.
+4. **Integrate.** The three **cross-chapter** problem
+   sets (A, B, C) test your ability to *combine*
+   methods from multiple chapters.  Pick one and try
+   to identify the *thread* that connects the parts:
+   in A, the thread is the *pseudopotential
+   construction* (H → HF → KS-DFT → pseudopotential);
+   in B, the thread is the *single physical system*
+   (the 1-D diatomic chain) seen from four different
+   angles (electronic, phononic, band-structure,
+   optical); in C, the thread is the *failure* of LDA
+   on a Mott insulator and the *correction* by
+   DFT+U.  Working through a cross-chapter set
+   end-to-end is the closest you will get to a
+   *research-style* calculation in this notes set.
 
 > Back to the [chapter index]({{ "/dft-notes/" | relative_url }})
 > — or revisit a specific chapter from the

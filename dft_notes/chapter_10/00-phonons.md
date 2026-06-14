@@ -386,6 +386,49 @@ q$-mesh and diagonalising again. The latter is the
 and is the standard way to get a smooth dispersion curve from a
 finite-supercell frozen-phonon calculation.
 
+### 10.2.4 Diagram — the frozen-phonon workflow
+
+The frozen-phonon route from a *converged ground-state calculation*
+to a *phonon dispersion* is a sequence of $O(N_\text{atom})$
+displacement-force pairs, followed by a Fourier interpolation.
+The box below summarises the pipeline; every box is one full
+*self-consistent field* (SCF) calculation on a supercell.
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph TD
+  R0["Equilibrium geometry<br/>R(0), a(0)<br/>(chapter 09)"] --> SCF0["SCF on primitive cell<br/>yields E(0) and rho(0)"]
+  SCF0 --> SUPC["Build supercell<br/>L1 x L2 x L3 primitive cells<br/>(commensurate with q-mesh)"]
+  SUPC --> LOOP["For each atom I and<br/>Cartesian direction alpha:<br/>displace by +/- delta"]
+  LOOP --> DISP["Apply Bloch ansatz<br/>u(R) = U e^{iq.R}<br/>(commensurate q)"]
+  DISP --> SCF1["SCF on supercell<br/>with frozen displacement<br/>(one full KS solve)"]
+  SCF1 --> FORCES["Extract forces F_I on every atom<br/>(Hellmann-Feynman,<br/>chapter 09)"]
+  FORCES --> FIT["Fit force constants<br/>Phi(R) = (F(+d) - F(-d)) / 2d"]
+  FIT --> NEXT{"More I, alpha?"}
+  NEXT -->|yes| LOOP
+  NEXT -->|no| FFT["Fourier transform<br/>Phi(R) -> D(q)<br/>discrete sum on supercell"]
+  FFT --> DIAG["Diagonalise D(q)<br/>at each commensurate q<br/>yields omega_s(q)"]
+  DIAG --> OUT["Phonon dispersion<br/>omega_s(q) at supercell q-points"]
+
+  classDef input fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef scf   fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out   fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class R0,SCF0 input
+  class SUPC,LOOP,DISP,SCF1,FORCES,FIT,NEXT,FFT,DIAG scf
+  class OUT out
+```
+
+The **inner loop** `LOOP` is the cost driver: it runs
+$2 \times 3 N_\text{atom-in-supercell}$ independent SCF
+calculations. By symmetry of $\Phi$ (which is symmetric under
+$I \leftrightarrow J$, $\alpha \leftrightarrow \beta$) this can
+be halved. The **outer box** `FFT` is the cheap step (a single
+discrete Fourier transform), and `DIAG` is one matrix
+diagonalisation per $\mathbf q$. The set of $\mathbf q$ values
+reachable is the *commensurate* set determined by the
+supercell — to resolve a finer $\mathbf q$-mesh one must use a
+larger supercell, which is the bottleneck of the method.
+
 ## 10.3 Density-functional perturbation theory (DFPT)
 
 The frozen-phonon method has a cost that grows with the supercell
@@ -569,6 +612,51 @@ is $4 \times$ higher than a ground-state calculation. The
 trade-off vs. frozen-phonon is favourable whenever the supercell
 needed to fit the lowest interesting $\mathbf q$ would contain
 more than $\sim 4$ atoms.
+
+### 10.3.5 Diagram — the DFPT 2n+1 linear-response cycle
+
+DFPT replaces the $O(N_\text{atom})$ SCF cycles of the frozen-
+phonon method by a *single* linear-response solve at every
+$\mathbf q$ — the *Sternheimer equation* for the first-order
+wavefunction $\psi_n^{(1)}$. The $2n+1$ theorem then guarantees
+that the *second-order* property of interest (the force-constant
+matrix $\partial^2 E / \partial \lambda^2$) can be extracted from
+*only* the first-order wavefunction.
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph TD
+  GS["Ground state<br/>psi_n^(0), epsilon_n^(0)<br/>from SCF (chapter 04)"] --> PERT["Perturbation<br/>with wavevector q<br/>lambda * e^{iq.R}<br/>(nuclear displacement)"]
+  PERT --> SH["Sternheimer equation<br/>(H0 - epsilon_n) psi_n^(1)<br/>= -(H1 - epsilon_n^(1)) psi_n^(0)<br/>- V_Hxc^(1) psi_n^(0)"]
+  SH --> GUESS["Initial guess:<br/>V_Hxc^(1) = 0"]
+  GUESS --> SOLVE["Solve linear system<br/>in orthogonal complement<br/>of psi_n^(0)"]
+  SOLVE --> RHO1["Build first-order density<br/>rho^(1) = sum_n psi_n^(0)* psi_n^(1) + c.c."]
+  RHO1 --> V1["Update V_Hxc^(1) = V_H[rho^(1)] + f_xc * rho^(1)"]
+  V1 --> CK{"Self-consistent?<br/>|d rho^(1)| < tol"}
+  CK -->|no| SOLVE
+  CK -->|yes| DONE["Self-consistent<br/>psi_n^(1), rho^(1)<br/>for this q"]
+  DONE --> FC["2n+1 formula<br/>(eq. 10.36)<br/>yields Phi_IJ, J"]
+  FC --> DYN["D(q) = Phi / sqrt(M_I M_J)<br/>diagonalise<br/>yields omega_s(q)"]
+
+  classDef input fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef step  fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out   fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class GS,PERT input
+  class SH,GUESS,SOLVE,RHO1,V1,CK step
+  class DONE,FC,DYN out
+```
+
+The **inner loop** (`SOLVE` → `RHO1` → `V1` → `CK`) is a
+*linear* iteration: each step solves a single linear system for
+$\psi_n^{(1)}$ given a fixed $V_\text{Hxc}^{(1)}$, then updates
+$V_\text{Hxc}^{(1)}$ from the new $\rho^{(1)}$. This is the
+*same* structure as a non-linear ground-state SCF, but the
+equation being solved is **linear in $\psi_n^{(1)}$**, so the
+convergence is much faster (typically 5–10 iterations to
+$10^{-10}$ in the density residual). Once `DONE` is reached,
+the **single** `FC` step applies the $2n+1$ formula to *all*
+force-constant matrix elements $\Phi_{I\alpha, J\beta}$ at the
+chosen $\mathbf q$ from the *same* $\psi_n^{(1)}$.
 
 ## 10.4 The acoustic sum rule
 
@@ -1378,6 +1466,58 @@ McMillan regime.
 > the **EPW** code
 > ([Noffsinger, Kioupakis, van de Walle, Louie, Cohen (2010)](https://doi.org/10.1016/j.cpc.2010.04.010)),
 > which works in tandem with Quantum ESPRESSO.
+
+### 10.8.6 Diagram — from electron–phonon coupling to McMillan $T_c$
+
+The full chain from *first principles* to a *superconducting
+$T_c$* runs through the Eliashberg function
+$\alpha^2 F(\omega)$ and a non-linear integral equation (the
+Eliashberg equation), which the McMillan formula approximates
+analytically. The flow below shows the *inputs* (DFPT phonon
+frequencies and electron–phonon matrix elements), the
+*intermediate quantities* (the Eliashberg spectral function and
+the coupling constant $\lambda$), and the *output* ($T_c$).
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph TD
+  PH["Phonons<br/>omega_s(q)<br/>(ch. 10, sec 10.2-10.3)"] --> DOS["Phonon DOS<br/>g(omega)"]
+  DOS --> ALF["Eliashberg function<br/>alpha^2 F(omega)<br/>(eq. 10.81)"]
+  EP["e-ph matrix elements<br/>g_mn^nu(k, q)<br/>(eq. 10.78)"] --> ALF
+  FS["Fermi surface<br/>delta(eps_nk)<br/>(chapter 11)"] --> ALF
+  ALF --> LBD["lambda = 2 int alpha^2 F / omega d omega<br/>(dimensionless coupling)"]
+  ALF --> OML["omega_log<br/>(log-average phonon energy)"]
+  LBD --> MMC["McMillan formula<br/>(eq. 10.84)"]
+  OML --> MMC
+  MU["mu^*<br/>(Coulomb pseudopotential,<br/>~ 0.1-0.15)"] --> MMC
+  MMC --> TC["T_c<br/>(superconducting critical<br/>temperature)"]
+  ALF --> ELB["Eliashberg equations<br/>(non-linear integral eq.)"]
+  LBD --> ELB
+  OML --> ELB
+  MU --> ELB
+  ELB --> TC
+
+  classDef inp   fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
+  classDef mid   fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
+  classDef out   fill:#cc785c,stroke:#1c1f17,color:#ffffff;
+  class PH,EP,FS,MU inp
+  class DOS,ALF,LBD,OML,ELB mid
+  class TC out
+```
+
+The three *upstream* inputs (`PH`, `EP`, `FS`) come from three
+different first-principles calculations: the phonon dispersion
+(chapter 10 itself), the electron–phonon matrix elements (also
+chapter 10, by DFPT), and the Fermi surface (chapter 11). They
+combine into the **Eliashberg function** `ALF`, which is the
+spectral density of the coupling. From `ALF` one can either
+*directly* solve the non-linear Eliashberg equations (`ELB`), or
+*approximately* evaluate the McMillan formula (`MMC`) — the two
+paths converge in the weak-coupling limit $\lambda \lesssim 1.5$.
+The Coulomb pseudopotential $\mu^*$ is the *only* free parameter
+in the chain; it is a phenomenological correction for the
+screened Coulomb repulsion that the phonon-mediated pairing has
+to overcome.
 
 ## 10.9 Worked example — the 1-D diatomic chain
 
