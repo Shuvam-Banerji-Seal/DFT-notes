@@ -11,7 +11,7 @@ description: >-
 
 | #  | Script | Plot | What it does |
 |:---|:-------|:-----|:-------------|
-| 01 | [01-particle-in-box.py]({{ '/dft-notes/python_codes/chapter_00/01-particle-in-box.py' | relative_url }}) | [01-particle-in-box.png]({{ '/dft-notes/python_codes/chapter_00/plots/01-particle-in-box.png' | relative_url }}) | Plots the first four particle-in-a-box eigenfunctions and probability densities. |
+| 01 | [01-particle-in-box.py]({{ site.baseurl }}/dft-notes/python_codes/chapter_00/01-particle-in-box.py) | [01-particle-in-box.png]({{ site.baseurl }}/dft-notes/python_codes/chapter_00/plots/01-particle-in-box.png) | Plots the first four particle-in-a-box eigenfunctions and probability densities. |
 
 Run from the repo root:
 
@@ -19,4 +19,4 @@ Run from the repo root:
 python dft_notes/python_codes/chapter_00/01-particle-in-box.py
 ```
 
-See [python_codes/]({{ '/dft-notes/python_codes/' | relative_url }}) for the conventions and dependencies.
+See [python_codes/]({{ site.baseurl }}/dft-notes/python_codes/) for the conventions and dependencies.
