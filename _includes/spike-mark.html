@@ -1,0 +1,31 @@
+{%- comment -%}
+  The 4-spoke radial asterisk that anchors the Anthropic wordmark.
+  Used in the top nav (cream) and the footer (dark).  Inherits its
+  stroke colour from `currentColor`, so wrap it in any element whose
+  `color` you want the mark to take.
+
+  Optional `size` parameter (default 18):
+    {%- include spike-mark.html size=24 -%}
+{%- endcomment -%}
+{%- assign size = include.size | default: 18 -%}
+<svg
+  class="spike-mark{% if include.on_dark %} spike-mark--on-dark{% endif %}"
+  viewBox="0 0 16 16"
+  width="{{ size }}"
+  height="{{ size }}"
+  aria-hidden="true"
+  focusable="false"
+  role="img"
+>
+  <g
+    stroke="currentColor"
+    stroke-width="1.6"
+    stroke-linecap="round"
+    fill="none"
+  >
+    <line x1="8"  y1="1"    x2="8"  y2="15"   />
+    <line x1="1"  y1="8"    x2="15" y2="8"    />
+    <line x1="2.6" y1="2.6" x2="13.4" y2="13.4" />
+    <line x1="13.4" y1="2.6" x2="2.6" y2="13.4" />
+  </g>
+</svg>

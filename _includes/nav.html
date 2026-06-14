@@ -1,0 +1,97 @@
+{%- comment -%}
+  Top navigation — cream canvas, 64px tall, sticky to the top of
+  every page.  Renders the spike-mark + wordmark on the left, the
+  primary menu in the middle, and a "GitHub" text-link + a coral
+  "Read the notes" CTA on the right.  Collapses to a hamburger at
+  < 768px.
+
+  Adapted from the Claude.com design spec (design.md):
+    - `top-nav` background  = canvas (#faf9f5)
+    - menu type             = nav-link (Inter 14px / 500)
+    - primary CTA           = button-primary (coral)
+    - wordmark prefix       = spike-mark
+  On mobile the menu becomes a full-screen cream sheet (#mobile-menu)
+  with the same links stacked vertically and a primary CTA at the
+  bottom.  The toggle behaviour lives in `assets/js/nav.js`.
+{%- endcomment -%}
+<header class="top-nav" role="banner">
+  <div class="top-nav__inner">
+    <a href="{{ '/' | relative_url }}" class="top-nav__brand" aria-label="DFT Notes — home">
+      {%- include spike-mark.html size=18 -%}
+      <span class="top-nav__wordmark">DFT&nbsp;Notes</span>
+    </a>
+
+    <nav class="top-nav__menu" aria-label="Primary">
+      <a href="{{ '/dft-notes/' | relative_url }}" class="top-nav__link">Chapters</a>
+      <a href="{{ '/dft-notes/chapter-00/' | relative_url }}" class="top-nav__link">About</a>
+      <a href="{{ '/design.md' | relative_url }}" class="top-nav__link">Design</a>
+      <a href="{{ '/CONTRIBUTING.md' | relative_url }}" class="top-nav__link">Contributing</a>
+    </nav>
+
+    <div class="top-nav__actions">
+      <a
+        href="https://github.com/Shuvam-Banerji-Seal/DFT-notes"
+        class="top-nav__link top-nav__link--text"
+        rel="noopener"
+      >
+        GitHub
+        <span class="top-nav__external" aria-hidden="true">↗</span>
+      </a>
+      <a
+        href="{{ '/dft-notes/chapter-00/' | relative_url }}"
+        class="btn btn--primary btn--sm top-nav__cta"
+      >
+        Read the notes
+      </a>
+      <button
+        type="button"
+        class="top-nav__hamburger"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-nav-toggle
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" hidden data-mobile-menu>
+    <button
+      type="button"
+      class="mobile-menu__close"
+      aria-label="Close menu"
+      data-nav-close
+    >
+      <svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false">
+        <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <line x1="3" y1="3" x2="13" y2="13"/>
+          <line x1="13" y1="3" x2="3" y2="13"/>
+        </g>
+      </svg>
+    </button>
+    <nav class="mobile-menu__nav" aria-label="Mobile">
+      <a href="{{ '/dft-notes/' | relative_url }}" class="mobile-menu__link" data-nav-link>Chapters</a>
+      <a href="{{ '/dft-notes/chapter-00/' | relative_url }}" class="mobile-menu__link" data-nav-link>About</a>
+      <a href="{{ '/design.md' | relative_url }}" class="mobile-menu__link" data-nav-link>Design spec</a>
+      <a href="{{ '/CONTRIBUTING.md' | relative_url }}" class="mobile-menu__link" data-nav-link>Contributing</a>
+      <a
+        href="https://github.com/Shuvam-Banerji-Seal/DFT-notes"
+        class="mobile-menu__link"
+        rel="noopener"
+        data-nav-link
+      >GitHub ↗</a>
+    </nav>
+    <div class="mobile-menu__footer">
+      <a
+        href="{{ '/dft-notes/chapter-00/' | relative_url }}"
+        class="btn btn--primary btn--block"
+        data-nav-link
+      >
+        Read the notes
+      </a>
+    </div>
+  </div>
+</header>

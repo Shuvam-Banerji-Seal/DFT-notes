@@ -1,0 +1,27 @@
+{%- comment -%}
+  Custom default layout — replaces minima's default.html entirely.
+  Wraps page content with:
+    - a skip-to-content link (a11y)
+    - the top navigation (cream, 64px, sticky)
+    - the page content
+    - the dark navy footer
+
+  The minima theme's other layouts (page.html, post.html) all
+  declare `layout: default` so they automatically inherit this
+  wrapper.
+{%- endcomment -%}
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<head>
+  {%- include head.html -%}
+</head>
+<body class="layout--{{ page.layout | default: 'default' }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {%- include nav.html -%}
+  <main id="main" class="site-main" tabindex="-1">
+    {{ content }}
+  </main>
+  {%- include footer.html -%}
+  <script src="{{ '/assets/js/nav.js' | relative_url }}" defer></script>
+</body>
+</html>

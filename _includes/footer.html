@@ -1,0 +1,78 @@
+{%- comment -%}
+  Dark navy footer — closes every page.  4-column link list at
+  desktop collapsing to 1-column on mobile.  The spike-mark +
+  wordmark sit at the top in `on-dark` cream.
+
+  Adapted from design.md's `footer` component:
+    - background  = surface-dark (#181715)
+    - body text   = on-dark-soft (#a09d96)
+    - wordmark    = on-dark (#faf9f5)
+    - padding     = 64px top/bottom
+{%- endcomment -%}
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      {%- include spike-mark.html size=22 on_dark=true -%}
+      <span class="site-footer__wordmark">DFT&nbsp;Notes</span>
+      <p class="site-footer__tagline">
+        Reader-first notes on Density&nbsp;Functional Theory.
+      </p>
+    </div>
+
+    <div class="site-footer__grid">
+      <div class="site-footer__col">
+        <h3 class="site-footer__heading">Content</h3>
+        <ul class="site-footer__list">
+          <li><a href="{{ '/dft-notes/' | relative_url }}">All chapters</a></li>
+          <li><a href="{{ '/dft-notes/chapter-00/' | relative_url }}">00 · Welcome</a></li>
+          <li><a href="{{ '/dft-notes/chapter-01/' | relative_url }}">01 · Schrödinger</a></li>
+          <li><a href="{{ '/dft-notes/chapter-02/' | relative_url }}">02 · Many-body</a></li>
+          <li><a href="{{ '/dft-notes/chapter-03/' | relative_url }}">03 · Hartree–Fock</a></li>
+          <li><a href="{{ '/dft-notes/chapter-04/' | relative_url }}">04 · Kohn–Sham</a></li>
+          <li><a href="{{ '/dft-notes/chapter-05/' | relative_url }}">05 · XC functionals</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col">
+        <h3 class="site-footer__heading">Project</h3>
+        <ul class="site-footer__list">
+          <li><a href="{{ '/CONTRIBUTING.md' | relative_url }}">Contributing</a></li>
+          <li><a href="{{ '/SECURITY.md' | relative_url }}">Security</a></li>
+          <li><a href="{{ '/design.md' | relative_url }}">Design spec</a></li>
+          <li>
+            <a
+              href="https://github.com/Shuvam-Banerji-Seal/DFT-notes"
+              rel="noopener"
+            >GitHub ↗</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col">
+        <h3 class="site-footer__heading">Built with</h3>
+        <ul class="site-footer__list">
+          <li><a href="https://jekyllrb.com" rel="noopener">Jekyll</a></li>
+          <li><a href="https://docs.mathjax.org" rel="noopener">MathJax&nbsp;3</a></li>
+          <li><a href="https://github.com/chenglou/pretext" rel="noopener">chenglou/pretext</a></li>
+          <li><a href="https://fonts.google.com" rel="noopener">Google Fonts</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col">
+        <h3 class="site-footer__heading">Legal</h3>
+        <ul class="site-footer__list">
+          <li><a href="{{ '/LICENSE' | relative_url }}">MIT License</a></li>
+          <li>© 2026 Shuvam Banerji Seal</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__legal">
+      <p>
+        Notes published under the MIT License.  DFT and the underlying
+        physics are the work of countless researchers; see each chapter
+        for citations.
+      </p>
+    </div>
+  </div>
+</footer>

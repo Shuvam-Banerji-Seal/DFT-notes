@@ -1,19 +1,38 @@
 {%- comment -%}
-  Local override of minima's head include. Replicates the theme's
-  default head verbatim, then adds MathJax at the end so the
-  `$$...$$` math in dft_notes/ actually renders on the client.
-
-  If the site ever drops minima, the new theme's head should keep
-  the same five slots (charset / IE / viewport / SEO / main.css)
-  plus the MathJax include — that's the contract this file fulfils.
-
-  Implementation note: the mathjax partial is included with the
-  standard Liquid include tag. The cached variant is Jekyll 4+ only.
+  Local override of minima's head include.  Replicates the theme's
+  default head verbatim (charset, IE-compat, viewport, Jekyll SEO,
+  feed-meta) and:
+    1. loads our custom CSS at /assets/css/site.css instead of
+       minima's compiled /assets/main.css;
+    2. preconnects to Google Fonts and pulls EB Garamond (display
+       substitute for Copernicus / Tiempos Headline), Inter (body
+       substitute for StyreneB) and JetBrains Mono;
+    3. keeps the MathJax 3 loader so the $...$ and $$...$$ markup
+       in dft_notes/ actually renders.
 {%- endcomment -%}
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#faf9f5">
+<meta name="color-scheme" content="light">
 {%- seo -%}
-<link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+
+<!-- Fonts: preconnect first, then the stylesheet.  `display=swap` so
+     the browser can render text in the system fallback while the
+     web font loads (no FOIT). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+>
+
+<!-- Our design system.  Loaded *after* fonts so the @font-face
+     fallback is already in place by the time the CSS variables
+     resolve. -->
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+
 {%- feed_meta -%}
+
+<!-- MathJax 3 (TeX + AMS).  See _includes/mathjax.html. -->
 {%- include mathjax.html -%}

@@ -1,23 +1,25 @@
 ---
 layout: page
-title: "DFT Notes — Index"
+title: "Chapters — DFT Notes"
 permalink: /dft-notes/
 description: >-
-  Reader-first knowledge base on Density Functional Theory, organised as a
-  progressive walk through the foundations, methods, and practice of DFT.
+  Reader-first knowledge base on Density Functional Theory, organised
+  as a progressive walk through the foundations, methods, and
+  practice of DFT.
 ---
 
 # DFT Notes
 
-> A reader-first knowledge base on Density Functional Theory — the
-> standard workhorse of modern quantum chemistry and computational
-> materials science.
+> A reader-first knowledge base on Density Functional Theory —
+> the standard workhorse of modern quantum chemistry and
+> computational materials science.
 
-These notes are organised as a **progressive walk** through DFT. Each
-chapter builds on the last, but every chapter is also self-contained
-enough to be read in isolation. Math is rendered inline (KaTeX-style);
-code samples are Python unless otherwise noted; tables and figures are
-inline rather than appendix-pinned.
+These notes are organised as a **progressive walk** through DFT.
+Each chapter builds on the last, but every chapter is also
+self-contained enough to be read in isolation. Math is rendered
+inline (MathJax 3, with AMS environments loaded); code samples
+are Python unless otherwise noted; tables and figures are inline
+rather than appendix-pinned.
 
 ## Chapters
 
@@ -30,27 +32,31 @@ inline rather than appendix-pinned.
 | 4  | [Kohn–Sham DFT]({{ site.baseurl }}/dft-notes/chapter-04/)        | Hohenberg–Kohn existence + Kohn–Sham practical map          |
 | 5  | [XC functionals]({{ site.baseurl }}/dft-notes/chapter-05/)       | Jacob's ladder: LDA, GGA, hybrids, range-separated          |
 
-> **Status:** these are *sample* notes — real prose, real math, real
-> code, but not yet encyclopaedic. They exist to exercise every
-> rendering feature of the future e-reader (see
-> [`design.md`]({{ "/design.md" | relative_url }}) at the root).
+> **Status:** these are *sample* notes — real prose, real math,
+> real code, but not yet encyclopaedic. They exist to exercise
+> every rendering feature of the future e-reader (see
+> [`design.md`]({{ site.baseurl }}/design.md) at the root of
+> the repo).
 
 ## Reading order
 
-If you're new to DFT, read top-to-bottom. If you're returning to brush
-up on a specific topic, each chapter is internally cross-referenced and
-the section headers follow the same template:
+If you're new to DFT, read top-to-bottom. If you're returning to
+brush up on a specific topic, each chapter is internally
+cross-referenced and the section headers follow the same
+template:
 
 1. **The claim** — the result or definition, stated precisely.
-2. **The proof (or derivation)** — short, with the load-bearing steps
-   called out.
-3. **The code** — a minimal implementation that produces the result.
-4. **The catch** — what the formula *doesn't* tell you, and the regime
-   where it breaks.
+2. **The proof (or derivation)** — short, with the load-bearing
+   steps called out.
+3. **The code** — a minimal implementation that produces the
+   result.
+4. **The catch** — what the formula *doesn't* tell you, and the
+   regime where it breaks.
 
 ## Notation
 
-A short, opinionated list — see the welcome chapter for the full table.
+A short, opinionated list — see [chapter 00]({{ site.baseurl }}/dft-notes/chapter-00/) for the full
+table.
 
 | Symbol              | Meaning                                                |
 |:--------------------|:-------------------------------------------------------|
