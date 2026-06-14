@@ -1486,7 +1486,7 @@ fig, ax = plt.subplots(figsize=(7.0, 4.5))
 for n, ell, label in [(1, 0, "1s"), (2, 0, "2s"), (2, 1, "2p"),
                       (3, 0, "3s"), (3, 1, "3p"), (3, 2, "3d")]:
     R = R_nl(n, ell, r)
-    ax.plot(r, R, label=f"$R_{{n {label[1:]}}}(r)$  E={-1/(2*n*n):+.4f} $E_h$")
+    ax.plot(r, R, label=f"$R_\u007bn{label[1:]}\u007d(r)$  E={-1/(2*n*n):+.4f} $E_h$")
 ax.axhline(0, color="black", lw=0.5)
 ax.set_xlabel("r  /  $a_0$")
 ax.set_ylabel("$R_{n\\ell}(r)$  /  $a_0^{-3/2}$")
