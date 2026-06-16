@@ -718,7 +718,7 @@ for it in range(64):
     P, E_prev = P_new, E_elec
 ```
 
-![Plot output from `dft_notes/python_codes/chapter_06/01-sto-3g-h2.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_06/plots/01-sto-3g-h2.png)
+![Plot output from `dft_notes/python_codes/chapter_06/01-sto-3g-h2.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_06/plots/01-sto-3g-h2.png)
 
 *Figure 1.* The two molecular orbitals of $\rm H_2$ in the
 STO-3G basis at $R = 1.4\,a_0$, sampled along the bond axis.

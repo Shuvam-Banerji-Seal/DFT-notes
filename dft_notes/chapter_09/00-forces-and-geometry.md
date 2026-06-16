@@ -1526,7 +1526,7 @@ diatomic is a single number — the bond length $R$ — and the
 5. Plot the potential curve and the trajectory.
 
 The Python script is at
-[`dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_09/01-h2-bond-relaxation.py)
+[`dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py)
 and produces the figure below.
 
 ### 9.10.1 The integrals at arbitrary $R$
@@ -1671,7 +1671,7 @@ step or two: the trajectory would converge in 3–4 steps
 instead of 10. The script keeps steepest descent throughout
 so the convergence rate is easy to see.
 
-![Plot output from `dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_09/plots/01-h2-bond-relaxation.png)
+![Plot output from `dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_09/plots/01-h2-bond-relaxation.png)
 
 *Figure 1.* **Top:** the STO-3G HF potential-energy curve of
 $\rm H_2$ as a function of bond length, with the steepest-
@@ -1686,7 +1686,7 @@ $E(R) \approx E_\text{min} + \tfrac{1}{2} k (R - R^\star)^2$
 with $k = d^2 E/dR^2 \approx 0.4\,E_h/a_0^2$.
 
 The full source is at
-[`dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_09/01-h2-bond-relaxation.py).
+[`dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py).
 The main pieces are the integral routines (inherited from
 [chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }})), the SCF loop,
 the gradient evaluation by central differences, the HF force

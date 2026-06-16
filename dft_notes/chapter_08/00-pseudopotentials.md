@@ -737,7 +737,7 @@ $(c_1, c_2, c_3)$ — $c_0$ is fixed by \eqref{eq:ch-08-h-match-1}
 \eqref{eq:ch-08-h-match-2}, \eqref{eq:ch-08-h-match-3},
 \eqref{eq:ch-08-h-match-norm}. The system is solved
 numerically; the Python code in
-[`dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py)
+[`dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py)
 uses `scipy.optimize.fsolve`. The numerical values
 are reported by the script when it runs; the analytical
 solution of the *linear* sub-system
@@ -835,7 +835,7 @@ the correct scattering outside $r_c$.
 > all-electron $E_{cut}$ is $\sim 10^5\,\text{Ry}$, the
 > USPP $E_{cut}$ is $\sim 30\,\text{Ry}$.)
 
-![Plot output from `dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_08/plots/01-hydrogen-pseudopotential.png)
+![Plot output from `dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_08/plots/01-hydrogen-pseudopotential.png)
 
 The left panel shows the all-electron $u_0(r) = 2r e^{-r}$
 (grey) and the pseudo-wavefunction $\phi_0(r)$ (coral)

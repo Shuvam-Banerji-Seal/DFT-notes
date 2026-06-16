@@ -281,6 +281,29 @@ is what makes time evolution non-trivial. The *probability density*
 $|\psi(x,t)|^2$ is time-independent only for a single eigenstate or a
 degenerate superposition.
 
+### Visualisation — the first four eigenstates, animated
+
+The static plot above is the end-state of the calculation. The
+animation below shows how the four wavefunctions appear one after
+the other, with a "particle" marker that traces the spatial
+oscillation; then a summary panel with the energy spectrum and the
+square moduli $|\psi_n|^2$.
+
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%"
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_01/videos/01-particle-in-box.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_01/videos/01-particle-in-box.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_01/videos/01-particle-in-box.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Figure 1.2 — the first four particle-in-a-box eigenfunctions
+    and their probability densities. Rendered with
+    <a href="https://www.manim.community/">Manim Community</a>;
+    source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_01/01-particle-in-box.py">chapter 1's animation folder</a>.</figcaption>
+</figure>
+
 ## 1.4 Operators you will see again
 
 The following operators are the alphabet of electronic-structure
@@ -2494,7 +2517,7 @@ ax.set_ylim(-0.5, 0.6)
 ax.legend(fontsize=8, loc="upper right")
 ax.set_title("Hydrogen radial eigenfunctions  (Z = 1)")
 fig.tight_layout()
-fig.savefig("plots/03-hydrogen-radial.png", dpi=140)
+fig.savefig("plots/03-hydrogen-orbitals.png", dpi=140)
 ```
 
 The script produces a single PNG that we will reference in the
@@ -2507,7 +2530,7 @@ proportional to $r^2$ at the origin).
 ![Hydrogen radial eigenfunctions, $R_{n\ell}(r)$ for $n = 1,
 2, 3$ and $\ell = 0, 1, 2$. Output of
 `dft_notes/python_codes/chapter_01/03-hydrogen-radial.py`.]({{
-site.baseurl }}/dft-notes/python_codes/chapter_01/plots/03-hydrogen-radial.png)
+site.baseurl }}/dft_notes/python_codes/chapter_01/plots/03-hydrogen-orbitals.png)
 
 *Figure.* Hydrogen radial eigenfunctions $R_{n\ell}(r)$ for
 $Z = 1$, plotted on a linear radial grid. The principal quantum
@@ -2587,7 +2610,7 @@ ax.set_ylabel("energy  /  $\\omega$")
 ax.legend(fontsize=8, loc="upper right")
 ax.set_title("1-D harmonic oscillator  —  finite-difference eigenstates")
 fig.tight_layout()
-fig.savefig("plots/02-harmonic-oscillator.png", dpi=140)
+fig.savefig("plots/02-finite-square-well.png", dpi=140)
 ```
 
 Running this with the default $L = 8$ and $N = 800$ returns
@@ -2601,7 +2624,7 @@ the WKB approximation.
 ![Harmonic oscillator eigenstates from finite differences.
 Output of
 `dft_notes/python_codes/chapter_01/02-harmonic-oscillator.py`.]({{
-site.baseurl }}/dft-notes/python_codes/chapter_01/plots/02-harmonic-oscillator.png)
+site.baseurl }}/dft_notes/python_codes/chapter_01/plots/02-finite-square-well.png)
 
 *Figure.* Lowest four eigenfunctions of the 1-D harmonic
 oscillator, computed by finite-difference diagonalisation of a

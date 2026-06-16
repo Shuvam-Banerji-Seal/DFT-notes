@@ -57,7 +57,7 @@ rather than appendix-pinned.
   exist — past, present, and planned.  It shows the natural
   reading order and the three tracks (Methods / Solids /
   Dynamics) you can branch into after chapter 05.
-- The [Python codes]({{ site.baseurl }}/dft-notes/python_codes/)
+- The [Python codes]({{ site.baseurl }}/dft_notes/python_codes/)
   folder has the runnable version of every code sample that
   appears in a chapter, plus the generated plots.
 

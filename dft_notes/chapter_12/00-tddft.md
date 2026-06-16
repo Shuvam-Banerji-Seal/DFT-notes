@@ -1602,7 +1602,7 @@ limited value for a damping constant $\eta = 0.05\,E_h$.
 
 The absorption spectrum is plotted in figure 1:
 
-![Plot output from `dft_notes/python_codes/chapter_12/01-two-level-absorption.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_12/plots/01-two-level-absorption.png)
+![Plot output from `dft_notes/python_codes/chapter_12/01-two-level-absorption.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_12/plots/01-two-level-absorption.png)
 
 *Figure 1.* Absorption spectrum of a two-level system
 computed by real-time TD-DFT (orange) and by the Casida

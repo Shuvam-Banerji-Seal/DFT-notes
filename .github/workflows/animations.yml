@@ -1,0 +1,151 @@
+name: Render Manim animations
+
+# Triggers
+# - push to main when an animation script changes
+# - manual dispatch
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dft_notes/animations/**/*.py'
+      - '.github/workflows/animations.yml'
+  workflow_dispatch:
+    inputs:
+      script:
+        description: 'Path to a single .py to render (empty = all)'
+        required: false
+        default: ''
+
+# Don't run the same scene twice in 30 minutes (Manim renders are slow)
+concurrency:
+  group: animations-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    name: Render ${{ matrix.script }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      # One job per scene so they run in parallel. Don't fail the whole
+      # matrix on one scene's failure.
+      fail-fast: false
+      matrix:
+        include:
+          - script: dft_notes/animations/chapter_01/01-particle-in-box.py
+            scene: ParticleInBox
+            slug: 01-particle-in-box
+          - script: dft_notes/animations/chapter_01/02-hydrogen-orbitals.py
+            scene: HydrogenOrbitals
+            slug: 02-hydrogen-orbitals
+          - script: dft_notes/animations/chapter_02/03-many-body-slater.py
+            scene: ManyBodySlater
+            slug: 03-many-body-slater
+          - script: dft_notes/animations/chapter_03/04-scf-convergence.py
+            scene: SCFConvergence
+            slug: 04-scf-convergence
+          - script: dft_notes/animations/chapter_04/05-kohn-sham-mapping.py
+            scene: KohnShamMapping
+            slug: 05-kohn-sham-mapping
+          - script: dft_notes/animations/chapter_05/06-jacobs-ladder.py
+            scene: JacobsLadder
+            slug: 06-jacobs-ladder
+          - script: dft_notes/animations/chapter_07/07-bloch-factorisation.py
+            scene: BlochFactorisation
+            slug: 07-bloch-factorisation
+          - script: dft_notes/animations/chapter_08/08-pseudopotential-inversion.py
+            scene: PseudopotentialInversion
+            slug: 08-pseudopotential-inversion
+          - script: dft_notes/animations/chapter_10/09-phonon-chain.py
+            scene: PhononChain
+            slug: 09-phonon-chain
+          - script: dft_notes/animations/chapter_13/10-dft-u.py
+            scene: DFTU
+            slug: 10-dft-u
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y ffmpeg libcairo2-dev libpango1.0-dev \
+            texlive-full texlive-latex-extra texlive-fonts-extra \
+            texlive-latex-recommended texlive-science texlive-fonts-recommended
+
+      - name: Install Manim
+        run: |
+          pip install --upgrade pip
+          pip install manim==0.19.1
+
+      - name: Check if the script exists
+        id: check
+        run: |
+          if [ -f "${{ matrix.script }}" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Script ${{ matrix.script }} not present yet — skipping"
+          fi
+
+      - name: Render the animation
+        if: steps.check.outputs.exists == 'true'
+        run: |
+          manim -qm --disable_caching \
+            "${{ matrix.script }}" \
+            "${{ matrix.scene }}"
+
+      - name: Move the MP4 to its final home
+        if: steps.check.outputs.exists == 'true'
+        run: |
+          CHAPTER_DIR=$(dirname "${{ matrix.script }}")
+          mkdir -p "$CHAPTER_DIR/videos"
+          # Manim writes to ./media/videos/<file-stem>/720p30/<Scene>.mp4
+          SRC="media/videos/$(basename "${{ matrix.script }}" .py)/720p30/${{ matrix.scene }}.mp4"
+          DST="$CHAPTER_DIR/videos/${{ matrix.slug }}.mp4"
+          if [ -f "$SRC" ]; then
+            mv "$SRC" "$DST"
+            echo "Moved $SRC -> $DST"
+          else
+            echo "::error::Expected render at $SRC but it does not exist"
+            exit 1
+          fi
+
+      - name: Capture the poster frame
+        if: steps.check.outputs.exists == 'true'
+        run: |
+          CHAPTER_DIR=$(dirname "${{ matrix.script }}")
+          MP4="$CHAPTER_DIR/videos/${{ matrix.slug }}.mp4"
+          PNG="$CHAPTER_DIR/videos/${{ matrix.slug }}.png"
+          ffmpeg -sseof -0.1 -i "$MP4" -frames:v 1 -q:v 2 "$PNG" -y
+          echo "Captured poster: $PNG"
+
+      - name: Upload rendered video as artifact
+        if: steps.check.outputs.exists == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.slug }}
+          path: |
+            dft_notes/animations/**/${{ matrix.slug }}.mp4
+            dft_notes/animations/**/${{ matrix.slug }}.png
+
+      - name: Commit the rendered files
+        if: steps.check.outputs.exists == 'true' && github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "dft_notes/animations/**/${{ matrix.slug }}.mp4" \
+                  "dft_notes/animations/**/${{ matrix.slug }}.png"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Render ${{ matrix.slug }} via Manim CI"
+            git push
+          fi

@@ -2590,7 +2590,7 @@ DIIS — once the iteration history is rich enough — converges
 superlinearly.  All three reach the same energy to
 $10^{-10}\,E_h$, confirming that the fixed point is unique.
 
-![Convergence plot from `dft_notes/python_codes/chapter_04/01-diis-scf.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_04/plots/01-diis-scf.png)
+![Convergence plot from `dft_notes/python_codes/chapter_04/01-diis-scf.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_04/plots/01-diis-scf.png)
 
 *Figure 1.* Convergence of the 2×2 toy SCF under three
 acceleration schemes.  Left: $E^{(n)} - E_\text{conv}$

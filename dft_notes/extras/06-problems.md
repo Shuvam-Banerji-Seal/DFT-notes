@@ -869,7 +869,7 @@ graph LR
 
 > **P9.3.1** (hard) · *§9.12, Problem 3*
 > **[statement]** The H₂/STO-3G energy curve produced by
-> [`chapter_03/01-h2-sto3g-scf.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_03/01-h2-sto3g-scf.py)
+> [`chapter_03/01-h2-sto3g-scf.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_03/01-h2-sto3g-scf.py)
 > near the equilibrium bond length $R_0 \approx
 > 1.35\,a_0$ is well approximated by the **Morse
 > potential**
@@ -946,7 +946,7 @@ graph LR
 > $M > m$), and $\omega_+^2(\pi/a) = 2K/m$. **(c)** the
 > ratio is $\sqrt{M/m} = \sqrt{35.45/22.99} \approx 1.24$,
 > in good agreement with the 1-D model. The script
-> [`chapter_10/01-diatomic-chain.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_10/01-diatomic-chain.py)
+> [`chapter_10/01-diatomic-chain.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/01-diatomic-chain.py)
 > produces the full dispersion and the zone-boundary
 > frequencies.
 
@@ -1121,7 +1121,7 @@ graph LR
 > (\kappa_x \sigma_x + \kappa_y \sigma_y)$ with
 > $v_F = 3 t a / 2\hbar$ the **Fermi velocity**.
 > **(c)** The script
-> [`chapter_11/01-graphene-bands.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_11/01-graphene-bands.py)
+> [`chapter_11/01-graphene-bands.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/01-graphene-bands.py)
 > computes the band structure along the path
 > $\Gamma \to M \to K \to \Gamma$. Run it and confirm
 > that the band gap at $K$ is zero to machine precision
@@ -1284,7 +1284,7 @@ graph LR
 > $\sigma(\omega_0) \approx 5 \times 10^{-22}\,\text{cm}^2$ —
 > consistent with typical dye-molecule absorption
 > cross-sections. The script
-> [`chapter_12/01-two-level-absorption.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_12/01-two-level-absorption.py)
+> [`chapter_12/01-two-level-absorption.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_12/01-two-level-absorption.py)
 > produces the full absorption profile.
 
 ### 12.3 The Casida matrix for a 2-orbital, 2-electron system
@@ -1310,7 +1310,7 @@ graph LR
 > **(b)** Compute the numerical values for H₂ at
 > $R = 1.4\,a_0$ in the STO-3G basis using the
 > chapter 03 SCF solution
-> ([`chapter_03/01-h2-sto3g-scf.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_03/01-h2-sto3g-scf.py))
+> ([`chapter_03/01-h2-sto3g-scf.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_03/01-h2-sto3g-scf.py))
 > and an LDA xc kernel. **(c)** Discuss why the singlet
 > is *lower* in energy than the triplet in TD-DFT but
 > the same in CIS (the Tamm–Dancoff approximation).
@@ -1673,7 +1673,7 @@ pseudopotential with cutoff radius $r_c = 1.0\,a_0$
 following the recipe of
 [Chapter 08, §8.4 and §8.8]({{ "/dft-notes/chapter-08/" | relative_url }}).
 Use the script
-[`chapter_08/01-hydrogen-pseudopotential.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py)
+[`chapter_08/01-hydrogen-pseudopotential.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py)
 as a template (it does the same construction for H;
 change the all-electron input to the Li $2s$ KS-LDA
 orbital).  Verify that the pseudo-wavefunction

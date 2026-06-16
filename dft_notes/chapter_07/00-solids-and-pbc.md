@@ -693,10 +693,10 @@ slightly perturbed by a weak periodic potential. We will:
 
 The script that does this is
 [`dft_notes/python_codes/chapter_07/01-free-electron-bands.py`]({{
-site.baseurl }}/dft-notes/python_codes/chapter_07/01-free-electron-bands.py);
+site.baseurl }}/dft_notes/python_codes/chapter_07/01-free-electron-bands.py);
 the plot it produces is in
 [`plots/01-free-electron-bands.png`]({{ site.baseurl
-}}/dft-notes/python_codes/chapter_07/plots/01-free-electron-bands.png).
+}}/dft_notes/python_codes/chapter_07/plots/01-free-electron-bands.png).
 
 ### 7.7.1 The Fourier coefficients of the potential
 
@@ -891,7 +891,7 @@ comparison. Note:
   that are less perturbed by the cosine potential (which has only
   one non-trivial Fourier component).
 
-![Free-electron band structure of a 1-D lattice with $V(x) = -0.5 \cos(2\pi x/a)$ and $a = 5$ bohr. The first four bands are shown in colour; the free-electron parabolas $\tfrac{1}{2}(k + m \cdot 2\pi/a)^2$ for $m = 0, -1, 1, -2$ are shown in light grey.]({{ site.baseurl }}/dft-notes/python_codes/chapter_07/plots/01-free-electron-bands.png)
+![Free-electron band structure of a 1-D lattice with $V(x) = -0.5 \cos(2\pi x/a)$ and $a = 5$ bohr. The first four bands are shown in colour; the free-electron parabolas $\tfrac{1}{2}(k + m \cdot 2\pi/a)^2$ for $m = 0, -1, 1, -2$ are shown in light grey.]({{ site.baseurl }}/dft_notes/python_codes/chapter_07/plots/01-free-electron-bands.png)
 
 The relevant code is reproduced below; the script is the source of
 truth.

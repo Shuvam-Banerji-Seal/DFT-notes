@@ -1774,7 +1774,7 @@ $f(\mathbf k)$ on the sampled k-points, and plots
 $\varepsilon_\pm = \pm |f|$ along $\Gamma$–$M$–$K$–$\Gamma$.  The
 output is the figure below.
 
-![Tight-binding band structure of graphene along the path $\Gamma$–$M$–$K$–$\Gamma$ in the hexagonal Brillouin zone, with a single $p_z$ orbital per carbon and nearest-neighbour hopping $t = -2.8$ eV. The lower blue band is the bonding $\pi$ band, the upper orange band is the antibonding $\pi^*$ band. The two bands touch at the $K$ point (the Dirac point), with linear dispersion and Fermi velocity $v_F = 3|t|a / 2\hbar \approx 9.4 \times 10^5$ m/s. The Fermi level is at $\varepsilon = 0$ (dashed line); graphene is a zero-gap semiconductor.]({{ site.baseurl }}/dft-notes/python_codes/chapter_11/plots/01-graphene-bands.png)
+![Tight-binding band structure of graphene along the path $\Gamma$–$M$–$K$–$\Gamma$ in the hexagonal Brillouin zone, with a single $p_z$ orbital per carbon and nearest-neighbour hopping $t = -2.8$ eV. The lower blue band is the bonding $\pi$ band, the upper orange band is the antibonding $\pi^*$ band. The two bands touch at the $K$ point (the Dirac point), with linear dispersion and Fermi velocity $v_F = 3|t|a / 2\hbar \approx 9.4 \times 10^5$ m/s. The Fermi level is at $\varepsilon = 0$ (dashed line); graphene is a zero-gap semiconductor.]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/plots/01-graphene-bands.png)
 
 *Figure 1.*  Tight-binding band structure of graphene along the
 path $\Gamma$–$M$–$K$–$\Gamma$, computed by the script

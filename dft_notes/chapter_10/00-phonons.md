@@ -1767,13 +1767,13 @@ $\sqrt{2K/M_2} = 24.7$ THz (lower), a gap of
 $\sim 3.7$ THz.
 
 The script
-[`dft_notes/python_codes/chapter_10/01-diatomic-chain.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_10/01-diatomic-chain.py)
+[`dft_notes/python_codes/chapter_10/01-diatomic-chain.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/01-diatomic-chain.py)
 evaluates \eqref{eq:ch-10-worked-dispersion} on a fine $\mathbf
 q$-mesh and produces the plot of the two branches.
 
 ### 10.9.6 The plot
 
-![Phonon dispersion of a 1-D diatomic chain with $M_1 = 12$ amu, $M_2 = 16$ amu, $K = 10$ eV/Å$^2$, $a = 5$ Å. The acoustic branch (lower) starts at $\omega = 0$ at the zone centre and rises with slope $v_s \approx 8.96 \times 10^4$ m/s. The optical branch (upper) starts at $\omega \approx 25.5$ THz at the zone centre. At the BZ boundary $q = \pi/a$ the branches reach $\omega_- = 24.7$ THz (lower) and $\omega_+ = 28.4$ THz (upper).]({{ site.baseurl }}/dft-notes/python_codes/chapter_10/plots/01-diatomic-chain.png)
+![Phonon dispersion of a 1-D diatomic chain with $M_1 = 12$ amu, $M_2 = 16$ amu, $K = 10$ eV/Å$^2$, $a = 5$ Å. The acoustic branch (lower) starts at $\omega = 0$ at the zone centre and rises with slope $v_s \approx 8.96 \times 10^4$ m/s. The optical branch (upper) starts at $\omega \approx 25.5$ THz at the zone centre. At the BZ boundary $q = \pi/a$ the branches reach $\omega_- = 24.7$ THz (lower) and $\omega_+ = 28.4$ THz (upper).]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/plots/01-diatomic-chain.png)
 
 *Figure 1.* Phonon dispersion of a 1-D diatomic chain.
 The horizontal axis is the phonon wavevector $q$ in units of

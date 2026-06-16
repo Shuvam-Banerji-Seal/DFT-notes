@@ -43,3 +43,6 @@ package-lock.json
 
 # Vendored gems (extracted from Docker image for local builds)
 vendor/bundle/
+
+# Manim cache (renders go to dft_notes/animations/chapter_NN/videos/)
+media/

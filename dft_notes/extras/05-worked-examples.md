@@ -21,7 +21,7 @@ keywords: "worked examples, Python, DFT, plot, anthology,
 > One page that pulls together the **most important worked
 > examples** from the DFT Notes, organised by topic rather than
 > by chapter. Every entry links to (i) the runnable Python in
-> [`dft_notes/python_codes/`]({{ site.baseurl }}/dft-notes/python_codes/),
+> [`dft_notes/python_codes/`]({{ site.baseurl }}/dft_notes/python_codes/),
 > (ii) the committed plot in `plots/`, (iii) the chapter section
 > that does the derivation, and (iv) the expected numerical
 > output. The anthology is the natural starting point for a
@@ -85,8 +85,8 @@ The script samples the closed-form solution on a fine grid,
 plots $\psi_n$ and $|\psi_n|^2$ for $n = 1, 2, 3, 4$, and
 labels each curve with its eigenvalue.
 
-- **Script** — [chapter_00/01-particle-in-box.py]({{ site.baseurl }}/dft-notes/python_codes/chapter_00/01-particle-in-box.py)
-- **Plot** — [chapter_00/plots/01-particle-in-box.png]({{ site.baseurl }}/dft-notes/python_codes/chapter_00/plots/01-particle-in-box.png)
+- **Script** — [chapter_00/01-particle-in-box.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_00/01-particle-in-box.py)
+- **Plot** — [chapter_00/plots/01-particle-in-box.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_00/plots/01-particle-in-box.png)
 - **Chapter section** — [Chapter 01, §1.3 (Particle in a box)]({{ site.baseurl }}/dft-notes/chapter-01/#13-a-minimal-example-the-particle-in-a-box); also discussed in [Chapter 00, *Hello world*]({{ site.baseurl }}/dft-notes/chapter-00/) (the 1s-density version of the same idea).
 - **Expected output.** Eigenvalues in atomic units:
   $E_1 = 4.9348$, $E_2 = 19.7392$, $E_3 = 44.4132$, $E_4 = 78.9568$ (in $E_h$).
@@ -213,8 +213,8 @@ $\mathbf F = \mathbf h + \mathbf J[\mathbf P] - \tfrac{1}{2}
 stop moving. Diagonalise the Fock matrix at every iteration
 with `scipy.linalg.eigh(F, S)`.
 
-- **Script** — [chapter_06/01-sto-3g-h2.py]({{ site.baseurl }}/dft-notes/python_codes/chapter_06/01-sto-3g-h2.py)
-- **Plot** — [chapter_06/plots/01-sto-3g-h2.png]({{ site.baseurl }}/dft-notes/python_codes/chapter_06/plots/01-sto-3g-h2.png)
+- **Script** — [chapter_06/01-sto-3g-h2.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py)
+- **Plot** — [chapter_06/plots/01-sto-3g-h2.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_06/plots/01-sto-3g-h2.png)
 - **Chapter section** — [Chapter 06, §6.9 (STO-3G H₂ worked example)]({{ site.baseurl }}/dft-notes/chapter-06/#69-worked-example-sto-3g-h), the central numerical anchor of the notes.
 - **Expected output.**
   - Overlap $\mathbf S$: `[[1.0000, 0.6593], [0.6593, 1.0000]]`.
@@ -1829,7 +1829,7 @@ subspace (the **Gutzwiller approximation**, Ch 13
 
 ## What's next
 
-- The [Python codes]({{ site.baseurl }}/dft-notes/python_codes/)
+- The [Python codes]({{ site.baseurl }}/dft_notes/python_codes/)
   index has a chapter-by-chapter list of every script in
   the repository, with the plots in `plots/`.
 - The [chapters map]({{ site.baseurl }}/dft-notes/chapters-map/)
