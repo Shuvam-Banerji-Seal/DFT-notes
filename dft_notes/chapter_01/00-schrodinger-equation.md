@@ -2058,6 +2058,30 @@ Coulomb interaction for which the Schrödinger equation is
 some effective nuclear charge. The derivation below anchors
 chapter 3's Hartree–Fock method and chapter 6's STO basis sets.
 
+### Visualisation — the first nine hydrogen orbitals, animated
+
+The static plots in §1.13.x are the end-state of the calculation.
+The animation below shows the six lowest-ℓ radial functions $R_{n\ell}(r)$
+one after the other, with the energy $E_n$ and the mean radius
+$\langle r\rangle_{n\ell}$ annotated. The full set of nine
+orbitals ($n = 1, 2, 3$ and $\ell = 0, 1, 2$) is then summarised on
+one set of axes.
+
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%"
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_01/videos/02-hydrogen-orbitals.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_01/videos/02-hydrogen-orbitals.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_01/videos/02-hydrogen-orbitals.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Figure 1.X — the first six hydrogen radial wavefunctions
+    $R_{n\ell}(r)$ for $(n,\ell) = (1,0), (2,0), (2,1), (3,0), (3,1), (3,2)$.
+    Rendered with <a href="https://www.manim.community/">Manim Community</a>;
+    source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_01/02-hydrogen-orbitals.py">chapter 1's animation folder</a>.</figcaption>
+</figure>
+
 ### 1.13.1 The Hamiltonian and separation of centre-of-mass motion
 
 In atomic units the hydrogen Hamiltonian is
