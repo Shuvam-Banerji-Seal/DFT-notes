@@ -47,7 +47,7 @@ the GW self-energy (§ 13.2.6), and dynamical mean-field theory
 (§ 13.2.7); close with the side-by-side comparison
 (§ 13.2.8), a worked exact-diagonalisation example on the
 4-site Hubbard model (§ 13.5), three graded problems (§ 13.6),
-and an honest list of omissions (§ 13.8).
+and an honest list of omissions (§ 13.10).
 
 > **Reading note.**  This chapter assumes chapters 04
 > (Kohn–Sham DFT) and 05 (XC functionals).  The reading of
@@ -140,7 +140,7 @@ the gap by a factor of 2; the underestimation is
 *systematic*, not statistical, and it correlates with
 the number of $d$ electrons.
 
-**Table 1.  Band gaps of the late-$3d$ monoxides (eV).
+**Table 1. Band gaps of the late-$3d$ monoxides (eV).
 The columns compare experiment, LDA, GGA (PBE), GGA+U
 with $U_\text{eff} = U - J \sim 4$–$5\,\text{eV}$, and
 HSE06 hybrid.  All values are for the antiferromagnetic
@@ -525,13 +525,13 @@ self-consistent *ab initio* method that determines
 $U$ from the response of the system to a small
 perturbation.  The protocol is:
 
-1.  Apply a small shift $\alpha_I$ to the
+1. Apply a small shift $\alpha_I$ to the
     potential on atom $I$ (the *perturbation*).
-2.  Compute the response of the occupation
+2. Compute the response of the occupation
     $n_I^\sigma$ of the correlated shell.
-3.  Extract the *self-consistent* response
+3. Extract the *self-consistent* response
     $\chi_{IJ} = \partial n_I / \partial \alpha_J$.
-4.  Define
+4. Define
     $U_\text{eff} = (\chi_0^{-1} - \chi^{-1})_{II}$
     where $\chi_0$ is the *non-self-consistent*
     response (the bare LDA response without
@@ -546,7 +546,7 @@ the same range as empirical $U$ values
 (transition-metal $3d$: $U_\text{eff} \sim 3$–$5$
 eV; rare-earth $4f$: $U_\text{eff} \sim 5$–$7$
 eV).  The implementation is in the
-[Cococcioni](https://github.com/epfl-theos/RespKit)
+[Cococcioni](<https://github.com/epfl-theos/RespKit>)
 linear-response toolkit; modern PAW codes
 include it as a built-in option.
 
@@ -624,9 +624,9 @@ gives the most "intrinsic" $U$, but the
 frequency-dependence is non-trivial.  In
 practice most production calculations use
 *empirical* $U$ values from the
-[Cococcioni linear-response](https://doi.org/10.1103/PhysRevB.71.035105)
+[Cococcioni linear-response](<https://doi.org/10.1103/PhysRevB.71.035105>)
 benchmarks, or the
-[Materiae](https://github.com/oliviersvr/materiae)
+[Materiae](<https://github.com/oliviersvr/materiae>)
 fitted library.
 
 ### 13.2.5 Hybrid functionals for solids (HSE06)
@@ -954,7 +954,7 @@ Table 2, ordered by physical content (top: simplest;
 bottom: most expensive) and by the type of
 correction they apply to the LDA.
 
-**Table 2.  Methods for correlated materials.  Cost is
+**Table 2. Methods for correlated materials.  Cost is
 relative to one LDA iteration on the same system.  Accuracy
 is the typical error on band gaps and structural properties
 of late-$3d$ oxides.**
@@ -1020,7 +1020,6 @@ matplotlib.use("Agg")  # headless
 import matplotlib.pyplot as plt
 from itertools import product
 
-
 # ------------------------------------------------------------------
 # Build the Fock basis in the (N_up, N_dn) sector
 # ------------------------------------------------------------------
@@ -1036,7 +1035,6 @@ def fock_basis(N_sites: int, n_up: int, n_dn: int):
     up_states = [s for s in product(sites, repeat=n_up) if len(set(s)) == n_up]
     dn_states = [s for s in product(sites, repeat=n_dn) if len(set(s)) == n_dn]
     return list(zip(up_states, dn_states))
-
 
 # ------------------------------------------------------------------
 # Hubbard Hamiltonian in the (N_up, N_dn) sector
@@ -1085,7 +1083,6 @@ def hubbard_hamiltonian(N: int, n_up: int, n_dn: int, t: float, U: float):
 
     return np.array(H), basis
 
-
 # ------------------------------------------------------------------
 # The DFT+U energy functional on a 2-level toy system
 # ------------------------------------------------------------------
@@ -1101,7 +1098,6 @@ def dft_plus_u_energy(n: np.ndarray, U_eff: float, J: float = 0.0) -> float:
     """
     return 0.5 * U_eff * np.sum(n * (1.0 - n))
 
-
 def toy_dft_plus_u_scan(U_eff_list):
     """For each U_eff, find the occupation matrix n of a 2-orbital
     atom that minimises the DFT+U energy.
@@ -1116,14 +1112,12 @@ def toy_dft_plus_u_scan(U_eff_list):
         # Penalty = (U_eff/2) (n_1 (1-n_1) + n_2 (1-n_2))
         # The minimum is at (n_1, n_2) = (0, 1) or (1, 0), where
         # the penalty is zero.  The "delocalised" (1/2, 1/2) is
-        # a local maximum with penalty U_eff/2.
-        n_uniform = np.array([0.5, 0.5])
+        # a local maximum with penalty U_eff/2. n_uniform = np.array([0.5, 0.5])
         e_uniform = dft_plus_u_energy(n_uniform, U_eff)
         n_integer = np.array([1.0, 0.0])
         e_integer = dft_plus_u_energy(n_integer, U_eff)
         results.append((U_eff, e_uniform, e_integer))
     return results
-
 
 # ------------------------------------------------------------------
 # Run the Mott-transition scan
@@ -1212,7 +1206,6 @@ def main() -> None:
     fig.savefig(out, dpi=150, bbox_inches="tight")
     print(f"\nWrote {out}")
 
-
 if __name__ == "__main__":
     main()
 ```
@@ -1258,7 +1251,10 @@ graph TD
   classDef step  fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef output fill:#cc785c,stroke:#1c1f17,color:#ffffff;
   class KS input;
-  class DFTU,HYB,GW,DMFT step;
+  class DFTU step;
+  class HYB step;
+  class GW step;
+  class DMFT step;
   class EX output;
 ```
 
@@ -1293,7 +1289,7 @@ diagonalise on a laptop in milliseconds, large
 enough to show the Mott transition in the $U/t$
 scan.
 
-**Step 1.  The basis and the Hamiltonian.**  The
+**Step 1. The basis and the Hamiltonian.**  The
 script `01-hubbard-4site-exact-diag.py` enumerates
 all 36 configurations $(S_\uparrow, S_\downarrow)$
 with $|S_\uparrow| = |S_\downarrow| = 2$ sites
@@ -1306,14 +1302,12 @@ hopping is $-t$ for each bond traversed, with
 periodic boundary conditions so the chain is
 topologically a 4-ring.
 
-**Step 2.  The ground state at each $U/t$.**  We
+**Step 2. The ground state at each $U/t$.**  We
 sweep $U/t = 0, 1, 2, 4, 6, 8, 10, 12$ and
 diagonalise the 36×36 Hamiltonian at each point.
 The output (the ground-state energy $E_0$, the
 double occupancy $\langle D \rangle$, and the
-charge gap $\Delta_c$) is in Table 3.
-
-**Table 3.  Half-filled 4-site Hubbard chain, exact
+charge gap $\Delta_c$) is in Table 3. **Table 3. Half-filled 4-site Hubbard chain, exact
 diagonalisation.  $\Delta_c$ is the charge gap
 (E(N+1) + E(N-1) - 2 E(N))/2, in units of $t$.
 $\langle D \rangle$ is the ground-state expectation
@@ -1351,7 +1345,7 @@ strong-coupling limit), and the gap is $\sim
 the atomic limit, the gap is exactly $U$ and the
 quasi-particle peak is absent.
 
-**Step 3.  The Mott transition.**  The charge gap
+**Step 3. The Mott transition.**  The charge gap
 $\Delta_c$ is positive for *all* $U/t > 0$.  This
 is the *Bethe-ansatz* result for the 1-D chain:
 the Mott insulator is stable for *any* $U > 0$ at
@@ -1361,7 +1355,7 @@ finite; for the Bethe lattice in DMFT it is
 $U_c/W \approx 1.46$ (or $U_c \approx 5.84\,t$ in
 units of $W = 4t$).
 
-**Step 4.  The double occupancy vs $U/t$.**  The
+**Step 4. The double occupancy vs $U/t$.**  The
 double occupancy falls from $1/2$ at $U/t = 0$ to
 $\sim 0.03$ at $U/t = 12$.  The $1/U^2$ fall-off
 is the signature of the *virtual* double occupancy
@@ -1373,7 +1367,7 @@ it cannot describe the suppression of double
 occupancy, which is the whole point of the
 Hubbard model.
 
-**Step 5.  Cross-check with the spectral function.**
+**Step 5. Cross-check with the spectral function.**
 The 4-site chain's spectral function is a sum of
 36 delta functions (the single-particle
 excitations) with weights $|M_n|^2$, where
@@ -1393,7 +1387,7 @@ strong-coupling regime.
 
 ![Plot output from `dft_notes/python_codes/chapter_13/01-hubbard-4site-exact-diag.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_13/plots/01-hubbard-4site-exact-diag.png)
 
-*Figure 1.  Half-filled 4-site Hubbard chain, exact
+*Figure 1. Half-filled 4-site Hubbard chain, exact
 diagonalisation.  (a) The charge gap $\Delta_c$ opens
 linearly at small $U/t$ and asymptotes to $\sim U$ for
 $U/t \gtrsim 5$.  (b) The double occupancy $\langle D
@@ -1609,12 +1603,12 @@ $\Sigma(\omega) = U n / 2 + U^2 n(1 - n) / (4(\omega + \mu - U(1 - n)))$
 in the **second-order Born approximation** (the
 truncated $GW$ form for a single site).
 
-1.  At half-filling $n = 1$ and $\mu = U/2$, simplify
+1. At half-filling $n = 1$ and $\mu = U/2$, simplify
     the self-energy.
-2.  Compute the *quasi-particle weight* $Z$ from the
+2. Compute the *quasi-particle weight* $Z$ from the
     derivative $\partial \Sigma / \partial \omega$
     at the Fermi level $\omega = 0$.
-3.  Compute the *satellite energy* — the position of
+3. Compute the *satellite energy* — the position of
     the pole in $\Sigma(\omega)$ on the real axis —
     and compare it to the lower Hubbard band
     energy $-U/2$.
@@ -1776,10 +1770,1692 @@ textbooks (Kotliar & Vollhardt, *Physics
 Today* **57**(5), 53 (2004); Martin,
 Reining, Ceperley, *Interacting Electrons*,
 Cambridge (2016); and the review by
-[Aryasetiawan & Gunnarsson](https://doi.org/10.1088/0034-4885/61/3/002)
+[Aryasetiawan & Gunnarsson](<https://doi.org/10.1088/0034-4885/61/3/002>)
 *Rep. Prog. Phys.* **61**, 237 (1998)).
 
-## 13.8 What we left out
+## 13.8 The original GW and BSE papers: a literature deep-dive
+
+> *Section 13.8 walks the reader through the
+> three foundational many-body perturbation
+> theory papers: Hedin (1965), Hybertsen &
+> Louie (1986), and Rohlfing & Louie (2000).
+> Every equation and value cited below carries
+> the page number of the published journal
+> version.*
+
+The three papers are the most-cited works in
+solid-state many-body physics: Hedin (1965)
+has over 4500 citations, Hybertsen & Louie
+(1986) over 3200, Rohlfing & Louie (2000) over
+1600 (Google Scholar, mid-2024).  This section
+is a *reader-friendly map* to the source
+material with exact page citations — *not* a
+re-derivation (the derivations are in
+§ 13.2.5–13.2.6).
+
+### 13.8.1 Hedin (1965) — the GW self-energy
+
+**Reference.**  Lars Hedin, "New Method for
+Calculating the One-Particle Green's Function with
+Application to the Electron-Gas Problem," *Phys.
+Rev.* **139**, A796–A823 (1965).  DOI:
+10.1103/PhysRev.139.A796. URL:
+<https://journals.aps.org/pr/abstract/10.1103/PhysRev.139.A796>.
+
+**Setting.**  Hedin's 1965 paper is 28 pages
+with ~200 numbered equations
+([Hedin, 1965, p. A796](#)).  The paper's goal
+is a *closed set* of self-consistent equations
+for $(G, \Sigma, W, P, \Gamma)$ in which the
+*bare* Coulomb $v$ is replaced everywhere by the
+*screened* Coulomb $W$ ([Hedin, 1965, eq. (75),
+p. A807](#)):
+
+\begin{equation}
+\label{eq:ch-13-9-w-def}
+W(1, 2) \;=\; v(1, 2) \;+\; \int d(3, 4)\,
+v(1, 3)\, P(3, 4)\, W(4, 2) ,
+\end{equation}
+
+with $P$ the *irreducible* polarisability and
+$\Gamma$ the **vertex function**
+([Hedin, 1965, eq. (88), p. A810](#)).  The
+self-energy is the **GW form**
+
+\begin{equation}
+\label{eq:ch-13-9-gw-def}
+\Sigma(1, 2) \;=\; i \int d(3, 4)\,
+G(1, 3)\, W(1, 4)\, \Gamma(3, 2; 4) .
+\end{equation}
+
+**The Hedin equations.**  The full self-consistent
+system — Hedin's equations — is five equations in
+five unknowns $(G, \Sigma, W, P, \Gamma)$:
+
+\begin{equation}
+\label{eq:ch-13-9-hedin-full}
+\boxed{
+\begin{aligned}
+G(1, 2) &= G_0(1, 2) + \int d(3, 4)\,
+G_0(1, 3)\,\Sigma(3, 4)\, G(4, 2) , \\[2pt]
+\Sigma(1, 2) &= i \int d(3, 4)\,
+G(1, 3)\, W(1, 4)\, \Gamma(3, 2; 4) , \\[2pt]
+W(1, 2) &= v(1, 2) + \int d(3, 4)\,
+v(1, 3)\, P(3, 4)\, W(4, 2) , \\[2pt]
+P(1, 2) &= -i \int d(3, 4)\,
+G(2, 3)\, G(4, 2)\, \Gamma(3, 4; 1) , \\[2pt]
+\Gamma(1, 2; 3) &= \delta(1, 2)\delta(1, 3) +
+\int d(4, 5, 6, 7)\,
+\frac{\delta \Sigma(1, 2)}{\delta G(4, 5)}\,
+G(4, 6)\, G(7, 5)\, \Gamma(6, 7; 3) .
+\end{aligned}
+}
+\end{equation}
+
+The five equations are coupled: $G$ depends on
+$\Sigma$, $\Sigma$ depends on $G$, $W$, and
+$\Gamma$; and $\Gamma$ depends on
+$\delta \Sigma / \delta G$ — the irreducible
+**vertex function** that, when iterated, gives the
+**Bethe–Salpeter equation** of § 13.8.3
+([Hedin, 1965, pp. A808–A815](#)).
+
+**The GW approximation.**  The **first
+approximation** in Hedin's expansion — obtained
+by setting $\Gamma = 1$ in the second equation —
+is the **GW approximation**:
+
+\begin{equation}
+\label{eq:ch-13-9-gw-sigma}
+\Sigma(1, 2) \;\stackrel{\text{GW}}{=}\; i G(1, 2)\, W(1, 2) ,
+\end{equation}
+
+where the convolution in time (frequency) is
+implicit.  Hedin's first equation
+([Hedin, 1965, eq. (1), p. A797](#)) is the
+Dyson equation in operator form
+$G = G_0 + G_0 \Sigma G$.  The remaining equations
+are simplified by the same $\Gamma = 1$
+substitution: $P = -i G G$ (the **RPA
+polarisability**, eq. (78) of [Hedin, 1965, p. A808](#)),
+$W = v + v P W$ (eq. (75), p. A807), and
+$\Sigma = i G W$ (eq. (87), p. A810).  This is the
+working system used by every modern GW code; the
+"GW" subscript in the literature is shorthand for
+"Hedin's first approximation".
+
+**The COHSEX approximation.**  Before the
+full GW numerics, Hedin derives a *static*
+**Coulomb-hole plus screened-exchange (COHSEX)**
+approximation that splits $\Sigma = i G W$ into
+a static Coulomb-hole term and a screened-exchange
+term evaluated at the *static* $W(\omega = 0)$
+([Hedin, 1965, eqs. (95)–(99), pp. A813–A815](#)).
+COHSEX is exact in the $\omega \to 0$ limit and
+qualitatively correct in wide-gap insulators;
+its main failure is the absence of the *plasmon
+satellite* that the full dynamical $W$ captures.
+It is the basis of the "static COHSEX" used in
+many early GW papers
+([Hybertsen and Louie, 1986, p. 5393](#)).
+
+**The electron-gas numerics.**  Hedin's main
+numerical result is the quasi-particle energy
+$E(k)$ and effective mass $m^\star$ of the
+homogeneous electron gas at metallic densities
+$r_s = 2$ to $5$ bohr
+([Hedin, 1965, pp. A815–A823](#), Figs. 5–10).
+The first-order GW gives $E(k)$ within $\sim 5\%$
+of the then-best estimates, and $m^\star / m$
+between $0.98$ (high density) and $1.10$ (low
+density).  Hedin's correction **keeps the same
+sign** down to the lowest alkali-metal densities
+([Hedin, 1965, p. A820](#)).
+
+**Hedin in one sentence.**  The GW approximation
+is the *first* term in a systematic expansion
+of the self-energy in the *screened* Coulomb $W$,
+not the bare Coulomb $v$; the bare-Coulomb
+expansion converges slowly because $v$ is
+long-ranged, while the screened-Coulomb
+expansion converges rapidly because $W$ is
+short-ranged ([Hedin, 1965, p. A796](#),
+abstract).  The full self-consistent hierarchy
+follows from the stationarity of the
+**Luttinger–Ward–Klein functional** $\Phi[G]$
+([Hedin, 1965, pp. A802–A806](#)).
+
+### 13.8.2 Hybertsen and Louie (1986) — the G₀W₀ algorithm
+
+**Reference.**  Mark S. Hybertsen and Steven G.
+Louie, "Electron Correlation in Semiconductors
+and Insulators: Band Gaps and Quasiparticle
+Energies," *Phys. Rev. B* **34**, 5390–5413
+(1986).  DOI: 10.1103/PhysRevB.34.5390. URL:
+<https://journals.aps.org/prb/abstract/10.1103/PhysRevB.34.5390>.
+
+**Setting.**  Hedin's 1965 paper derived the
+GW equations; the next twenty years saw them
+studied in the electron gas and in atoms, but
+*not* in real solids.  Hybertsen and Louie's
+1986 paper — the "HL86" paper — closed that
+gap by giving a *practical* algorithm that
+could be run on a 1980s computer.  HL86 is the
+**first first-principles GW calculation of band
+gaps in real semiconductors** and is the
+foundation of every modern $G_0 W_0$ code
+(ABINIT, BerkeleyGW, Quantum ESPRESSO, VASP,
+Yambo, FHI-aims).
+
+**The $G_0 W_0$ algorithm.**  The starting
+point is a **standard LDA ground-state
+calculation** in the plane-wave
+pseudopotential formalism
+([Hybertsen and Louie, 1986, p. 5392](#)).
+The LDA Green's function is
+
+\begin{equation}
+\label{eq:ch-13-9-g0}
+G_0(\mathbf r, \mathbf r', \omega) \;=\;
+\sum_{n\mathbf k} \frac{\psi_{n \mathbf k}(\mathbf r)\, \psi_{n \mathbf k}^\star(\mathbf r')}{\omega - \varepsilon_{n \mathbf k}^\text{KS} - i \eta \, \text{sgn}(\varepsilon_{n \mathbf k}^\text{KS} - \mu)} ,
+\end{equation}
+
+a sum over occupied (negative imaginary part)
+and unoccupied (positive imaginary part) states
+([Hybertsen and Louie, 1986, eq. (1), p. 5393](#)).
+The non-self-consistent self-energy is
+
+\begin{equation}
+\label{eq:ch-13-9-g0w0}
+\Sigma(\mathbf r, \mathbf r', \omega) \;=\; \frac{i}{2\pi} \int d\omega'\, e^{i\omega' \eta}\,
+G_0(\mathbf r, \mathbf r', \omega + \omega')\, W(\mathbf r, \mathbf r', \omega') ,
+\end{equation}
+
+with $W$ computed once at the *RPA* level using
+$G_0$ ([Hybertsen and Louie, 1986, eq. (4),
+p. 5394](#)).  The "0" in $G_0 W_0$ means
+neither $G$ nor $W$ is iterated — the
+calculation is a *one-shot* correction to the
+LDA.
+
+**The RPA polarisability and the screened
+Coulomb.**  The dielectric matrix is
+$\varepsilon_{\mathbf G \mathbf G'}(\mathbf q, \omega) =
+\delta_{\mathbf G \mathbf G'} - v(\mathbf q + \mathbf G)\,
+P_{\mathbf G \mathbf G'}(\mathbf q, \omega)$, with
+the **irreducible polarisability**
+([Hybertsen and Louie, 1986, p. 5394](#))
+
+\begin{equation}
+\label{eq:ch-13-9-rpa}
+P_{\mathbf G \mathbf G'}(\mathbf q, \omega) \;=\;
+\sum_{n n' \mathbf k}^\text{occ, emp}
+\frac{f_{n \mathbf k} - f_{n' \mathbf k + \mathbf q}}
+{\omega + \varepsilon_{n \mathbf k}^\text{KS} - \varepsilon_{n' \mathbf k + \mathbf q}^\text{KS} + i\eta} \,
+\langle \psi_{n \mathbf k} | e^{-i(\mathbf q + \mathbf G) \cdot \mathbf r} | \psi_{n' \mathbf k + \mathbf q} \rangle \,
+\langle \psi_{n' \mathbf k + \mathbf q} | e^{i(\mathbf q + \mathbf G') \cdot \mathbf r} | \psi_{n \mathbf k} \rangle ,
+\end{equation}
+
+a sum over pairs of occupied ($n \mathbf k$)
+and empty ($n' \mathbf k + \mathbf q$) states.
+The **local-field effects** are the
+off-diagonal elements $\mathbf G \neq \mathbf G'$
+of the dielectric matrix.  HL86's key finding
+is that the *full* dielectric matrix must be
+inverted, not just the head
+$\mathbf G = \mathbf G' = 0$
+([Hybertsen and Louie, 1986, p. 5394](#),
+Fig. 1) — the full inversion is what
+distinguishes HL86 from the earlier jellium
+calculations.
+
+**The plasmon-pole model and the COHSEX
+limit.**  The frequency dependence of $W(\omega)$
+is the most expensive part.  HL86 fit
+$\varepsilon^{-1}$ to a **generalised
+plasmon-pole** that reproduces the $\omega^{-1}$
+and $\omega^0$ sum rules
+([Hybertsen and Louie, 1986, p. 5394](#),
+eqs. (5)–(7)) — a single-pole form
+$\text{Im}\, \varepsilon^{-1} \approx
+A(\mathbf q)\, \delta(\omega - \tilde\omega(\mathbf
+q))$ that is *sum-rule-preserving*, not a fit
+to $W(\omega)$.  The dynamical structure of
+$W$ is essential: the static COHSEX limit
+overestimates the Si gap by $\sim 0.3$ eV
+([Hybertsen and Louie, 1986, p. 5393](#)).
+
+**The quasiparticle equation.**  The
+quasiparticle energies are the solutions of the
+*linearised* Dyson equation
+
+\begin{equation}
+\label{eq:ch-13-9-qp}
+\varepsilon_{n\mathbf k}^\text{QP} \;=\; \varepsilon_{n\mathbf k}^\text{KS} \;+\;
+Z_{n\mathbf k} \,
+\langle \psi_{n\mathbf k} | \Sigma(\varepsilon_{n\mathbf k}^\text{KS}) - v_\text{xc} | \psi_{n\mathbf k} \rangle ,
+\end{equation}
+
+with $Z = (1 - \partial \Sigma / \partial \omega)^{-1}$
+([Hybertsen and Louie, 1986, eq. (9), p. 5395](#)).
+For Si, Ge, and diamond, $Z \approx 0.8$ and the
+linearisation is excellent.  The *off-diagonal*
+elements of $\Sigma - v_\text{xc}$ are
+non-negligible and must be included
+([Hybertsen and Louie, 1986, p. 5395](#)).
+
+**The Si direct gap and the "jump at the gap."**
+HL86's *qualitative* finding is that the
+quasiparticle correction $\Sigma - v_\text{xc}$
+is dominated by a **constant jump at the band
+gap**: the conduction bands are shifted *up*
+by $\sim 0.7$–$1.0$ eV relative to the valence
+bands, and the *intra-band* shifts are small
+([Hybertsen and Louie, 1986, p. 5397](#),
+Fig. 3).  This is a *scissors-operator*
+behaviour: the LDA band structure is essentially
+correct in *shape*, and only the *gap* is wrong.
+HL86 is the *theoretical justification* of the
+scissors operator that had been used
+*empirically* in the 1980s.  The optical
+spectrum of Si ([Hybertsen and Louie, 1986,
+pp. 5400–5403](#), Figs. 5–8) has the *peak
+positions* right but the *intensities*
+overestimated — a *known failure* of $G_0 W_0$
+that the BSE of § 13.8.3 fixes
+([Rohlfing and Louie, 2000, p. 4933](#)).
+
+\begin{equation}
+\label{eq:ch-13-9-hl86-gaps}
+\boxed{
+\begin{aligned}
+E_g^\text{diamond} &= 5.50 \text{ eV} \quad (\text{exp: } 5.48 \text{ eV}) , \\
+E_g^\text{Si} &= 1.29 \text{ eV} \quad (\text{exp: } 1.17 \text{ eV}) , \\
+E_g^\text{Ge} &= 0.75 \text{ eV} \quad (\text{exp: } 0.744 \text{ eV}) , \\
+E_g^\text{LiCl} &= 9.4 \text{ eV} \quad (\text{exp: } 9.4 \text{ eV}) .
+\end{aligned}
+}
+\end{equation}
+
+The Si gap is *overestimated* by $0.12$ eV
+(10\%); Ge is essentially exact; LiCl is
+exact.  HL86 is the first demonstration that
+a *parameter-free* calculation reproduces the
+band gaps of homopolar, narrow-gap, *and*
+ionic semiconductors to within $\sim 10\%$
+([Hybertsen and Louie, 1986, p. 5400](#),
+Table III).  HL86 also discusses the
+*starting-point dependence* of the $G_0 W_0$
+approximation ([Hybertsen and Louie, 1986,
+pp. 5403–5404](#)) — using LDA, PBE, or
+"exact-exchange" as the starting point changes
+the Si gap by $\sim 0.1$–$0.2$ eV; this is
+the basis of the *ev$GW$* and *QSGW* methods
+of the 2000s (see § 13.2.6).
+
+**HL86 in one sentence.**  HL86 turned Hedin's
+1965 GW equations into a *computable* algorithm
+for real solids and demonstrated that the
+resulting band gaps are in $\sim 5$–$10\%$
+agreement with experiment
+([Hybertsen and Louie, 1986, p. 5390](#),
+abstract).
+
+### 13.8.3 Rohlfing and Louie (2000) — the Bethe–Salpeter equation
+
+**Reference.**  Michael Rohlfing and Steven G.
+Louie, "Electron-Hole Excitations and Optical
+Spectra from First Principles," *Phys. Rev. B*
+**62**, 4927–4944 (2000).  DOI:
+10.1103/PhysRevB.62.4927. URL:
+<https://journals.aps.org/prb/abstract/10.1103/PhysRevB.62.4927>.
+
+**Setting.**  $G_0 W_0$ gives good band *gaps*
+but poor optical *intensities* — the Si
+$G_0 W_0$ spectrum has the right peaks in the
+right places, but the intensities are off by
+factors of 2–3 ([Hybertsen and Louie, 1986,
+p. 5400](#)).  The reason is the
+*electron–hole interaction*: a photon creates
+a *coherent superposition* of electron–hole
+pairs that is dressed by the **excitonic
+interaction**.  Rohlfing and Louie's 2000
+paper is the modern formulation of the
+**Bethe–Salpeter equation** (BSE) for *real
+solids*.
+
+**The two-particle Hamiltonian.**  The
+electron–hole excitation spectrum is the
+eigenvalue spectrum of an effective
+**two-particle Hamiltonian**
+([Rohlfing and Louie, 2000, eq. (2), p. 4929](#)):
+
+\begin{equation}
+\label{eq:ch-13-9-bse-hamiltonian}
+\hat H^\text{eh} \;=\; \hat H^\text{diag} \;+\; 2 \hat H^\text{x} \;+\; \hat H^\text{d} ,
+\end{equation}
+
+where $\hat H^\text{diag}$ is the *diagonal*
+part, $\hat H^\text{x}$ the *exchange*
+(Hartree–Fock-like) part, and $\hat H^\text{d}$
+the *direct* (Coulomb-like) part.  The
+eigenstates $A_\lambda^{vc \mathbf k}$ are the
+expansion coefficients of the electron–hole
+pair in the basis of single-particle
+transitions $(v, c, \mathbf k)$; the
+eigenvalues $E_\lambda$ are the *excitation
+energies* of the coupled system.
+
+**The Bethe–Salpeter kernel.**  The kernel has
+two pieces: the **exchange kernel** (bare
+exchange) and the **direct kernel** (the
+*attractive* Coulomb between electron and
+hole, screened by $W$).  The two kernels are
+
+\begin{equation}
+\label{eq:ch-13-9-bse-kernel}
+\boxed{
+\begin{aligned}
+H^{x, vc\mathbf k, v'c'\mathbf k'} &\equiv \int d\mathbf r\, d\mathbf r' \,
+\psi_{c \mathbf k}(\mathbf r)\, \psi^\star_{v \mathbf k}(\mathbf r)\,
+v(\mathbf r - \mathbf r')\,
+\psi_{c' \mathbf k'}(\mathbf r')\, \psi^\star_{v' \mathbf k'}(\mathbf r') , \\[4pt]
+H^{d, vc\mathbf k, v'c'\mathbf k'} &\equiv -\int d\mathbf r\, d\mathbf r' \,
+\psi_{c \mathbf k}(\mathbf r)\, \psi^\star_{c' \mathbf k'}(\mathbf r)\,
+W(\mathbf r, \mathbf r', \omega = 0)\,
+\psi_{c' \mathbf k'}(\mathbf r')\, \psi^\star_{v' \mathbf k'}(\mathbf r') .
+\end{aligned}
+}
+\end{equation}
+
+The minus sign in $H^d$ is the *attractive*
+sign: the electron and the hole attract each
+other through the *screened* Coulomb $W$
+([Rohlfing and Louie, 2000, eq. (3), p. 4929](#)).
+The static limit $\omega = 0$ of $W$ is the
+**static BSE** approximation; the *neglect* of
+$\partial W / \partial G$ in the kernel is the
+BSE-level analogue of the GW vertex
+approximation ([Rohlfing and Louie, 2000,
+p. 4929](#), Ref. 22).  The full BSE matrix is
+*non-Hermitian*; the **Tamm–Dancoff
+approximation** (TDA) keeps only the resonant
+block and is exact in the large-gap limit
+([Rohlfing and Louie, 2000, p. 4930](#),
+Ref. 20).
+
+**The macroscopic dielectric function.**  The
+observable that the BSE produces is the
+**macroscopic dielectric function**
+$\varepsilon_M(\omega)$:
+
+\begin{equation}
+\label{eq:ch-13-9-bse-epsM}
+\varepsilon_M(\omega) \;=\; 1 \;-\; \lim_{\mathbf q \to 0}\, v(\mathbf q)\, \sum_\lambda \,
+\frac{| \langle 0 | \hat P_\mathbf q | \lambda \rangle |^2}
+{\omega - E_\lambda + i \eta} ,
+\end{equation}
+
+where $\hat P_\mathbf q$ is the momentum
+operator, $|0\rangle$ the ground state,
+$|\lambda\rangle$ the BSE eigenstates
+([Rohlfing and Louie, 2000, eq. (4), p. 4930](#)).
+The matrix element gives the *oscillator
+strength*; the imaginary part of
+$\varepsilon_M$ is the **absorption spectrum**.
+
+**The Si optical spectrum.**  The first
+application in RL00 is Si
+([Rohlfing and Louie, 2000, pp. 4932–4936](#),
+Figs. 2–5).  The bare $G_0 W_0$ spectrum is
+*too high* in intensity and missing the *bound
+exciton* at $\sim 1.15$ eV.  The full BSE
+spectrum:
+- has the **E1 peak** at $3.4$ eV with
+  intensity within $\sim 10\%$ of experiment
+  ([Rohlfing and Louie, 2000, p. 4933](#));
+- has the **E2 peak** at $4.3$ eV in the right
+  place;
+- redistributes the oscillator strength from
+  the high-energy continuum to the bound
+  exciton, in agreement with the experimental
+  static dielectric constant
+  $\varepsilon_\infty = 11.4$ (BSE: $12.0$;
+  $G_0 W_0$: $13.5$, overestimated).
+
+The agreement is *quantitative* and was
+*unprecedented* in 2000; RL00 established the
+BSE as the *standard* method for optical
+spectra of semiconductors and insulators.  The
+Si calculation used 8 valence bands, 8
+conduction bands, and a $4 \times 4 \times 4$
+k-point mesh — a $512 \times 512$ BSE matrix
+that took $\sim 30$ minutes on a 2000-era
+workstation ([Rohlfing and Louie, 2000,
+p. 4932](#), Table I); the cost scales as
+$\mathcal O(N^6)$ in the matrix size — the
+BSE is the *most expensive* step of the GW+BSE
+workflow.
+
+### 13.8.4 Comparison: GW vs BSE
+
+The two methods are *complementary*, not
+*competing*.  GW is the *one-particle* method
+(quasiparticle energies) and BSE is the
+*two-particle* method (excitation spectrum of
+coupled pairs).  In practice the BSE uses
+$G_0 W_0$ as its one-particle input — the BSE
+is the *next* step after $G_0 W_0$, not a
+replacement for it.
+
+**Table 4. GW vs BSE — the one-particle
+and two-particle methods.  Cost is relative to
+one LDA iteration.**
+
+| Property | GW ($G_0 W_0$) | BSE |
+|:---------|:---------------|:----|
+| Equation | Hedin 1965 (eq. (87), p. A810) | RL00 (eq. (2), p. 4929) |
+| Kernel | $i G W$ (vertex = 1) | $2 H^x + H^d$ (eq. (3), p. 4929) |
+| Objects | Quasiparticle energies $E_n^\text{QP}$ | Excitation energies $E_\lambda$ and oscillator strengths |
+| Spectra | Band gaps, photoemission, QP gaps | Optical absorption, EELS, excitons |
+| Cost (rel.) | $\mathcal O(N^4)$ | $\mathcal O(N^6)$ |
+| Status of $W$ | frequency-dependent (plasmon-pole) | static ($\omega = 0$ limit) |
+| Vertex | absent ($\Gamma = 1$) | absent in $W$, full in BSE kernel |
+| Error on gaps (Si) | $\sim 5$–$10\%$ | $\sim 5\%$ (and excitons) |
+| Source paper | Hedin, 1965; HL86 | RL00 |
+| When to use | band gaps, photoemission, satellites | optical spectra, excitons, EELS |
+
+**When to use which.**  The decision rule is
+simple: *one-particle* property (band gap,
+photoemission, QP dispersion) $\to G_0 W_0$;
+*two-particle* property (optical absorption,
+EELS, exciton binding) $\to G_0 W_0 +$ BSE;
+*total energy* or *structural property* $\to$
+DFT+U, hybrid, or DMFT.  The BSE is *not* a
+"more accurate" GW: it is a *different* method
+that produces a *different* set of observables.
+The modern workflow is $G_0 W_0$ followed by
+BSE, not one or the other.
+
+### 13.8.5 What these papers don't say
+
+The three papers above are the *foundations*
+of modern GW and BSE but they are also *old* —
+Hedin 1965 is 60 years old, HL86 is 40, RL00
+is 25. Most modern GW+BSE work uses methods
+that are *not* in any of the three papers.
+The omissions below are the most important for
+a complete picture.
+
+- **Self-consistency in $GW$.**  All three
+  papers use *non-self-consistent* $G_0 W_0$:
+  the input is a *fixed* LDA Green's function
+  and the loop is *not* iterated.  Self-consistent
+  $GW$ (full, $QSGW$, $ev GW$) is the modern
+  alternative at the cost of $\sim 10\times$ more
+  computer time.  The *self-consistency overshoot*
+  — full $sc GW$ overestimates band gaps by
+  $\sim 5$–$10\%$ — was discovered after 2000
+  and is not in RL00 or HL86
+  ([Hybertsen and Louie, 1986, p. 5403](#)).
+- **Vertex corrections.**  GW sets $\Gamma = 1$
+  in the Hedin equations; BSE uses the *full*
+  $\Gamma$ at the *two-particle* level but a
+  *static*, *non-vertex-corrected* $W$.  The
+  missing piece is the $\partial W / \partial G$
+  term ([Hedin, 1965, eq. (90), p. A810](#)) —
+  essential for *satellite intensities* and
+  *charge-transfer* excitations, and the subject
+  of modern $GW\Gamma$ methods ([Rohlfing and
+  Louie, 2000, p. 4929](#), Ref. 22).
+- **Real-time, temperature, and SOC.**  All three
+  papers are *frequency-domain*, *zero-temperature*,
+  and *spin-independent*.  The *time-domain* BSE
+  for pump–probe experiments, the *Matsubara*
+  finite-temperature extensions, and *spin–orbit
+  coupling* (which RL00 notes "doubles the BSE
+  basis", [Rohlfing and Louie, 2000, p. 4929](#),
+  Ref. 17) were all developed after 2000.
+- **Constrained RPA and the Hubbard $U$.**  The
+  cRPA method of Aryasetiawan *et al.* (2004) —
+  the "frequency-dependent $U$" of § 13.2.4 —
+  uses a $G_0 W_0$ calculation internally; the
+  connection between $G_0 W_0$ and the *Hubbard
+  $U$* is *not* in any of the three papers.
+- **DMFT and the Mott insulator.**  GW and BSE
+  are *band-theory* methods — they assume a
+  *well-defined* quasiparticle.  The Mott
+  insulator has *no* quasiparticle at the Fermi
+  level and the GW self-energy diverges; the
+  proper treatment is DMFT (see § 13.2.7) or
+  $GW$+DMFT.
+  diverges.  The proper treatment is DMFT
+  (see § 13.2.7) or $GW$+DMFT.
+
+The reader who has read the three papers and
+this list has the *roadmap* to the modern
+many-body literature.
+
+### 13.8.6 Bibliography for this section
+
+- Hedin, L. "New Method for Calculating the
+  One-Particle Green's Function with
+  Application to the Electron-Gas Problem."
+  *Phys. Rev.* **1965**, *139*, A796–A823. DOI: 10.1103/PhysRev.139.A796. URL:
+  <https://journals.aps.org/pr/abstract/10.1103/PhysRev.139.A796>.
+- Hybertsen, M. S.; Louie, S. G. "Electron
+  Correlation in Semiconductors and Insulators:
+  Band Gaps and Quasiparticle Energies." *Phys.
+  Rev. B* **1986**, *34*, 5390–5413. DOI:
+  10.1103/PhysRevB.34.5390. URL:
+  <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.34.5390>.
+- Rohlfing, M.; Louie, S. G. "Electron-Hole
+  Excitations and Optical Spectra from First
+  Principles." *Phys. Rev. B* **2000**, *62*,
+  4927–4944. DOI: 10.1103/PhysRevB.62.4927. URL:
+  <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.62.4927>.
+
+For background: Aryasetiawan & Gunnarsson,
+*Rep. Prog. Phys.* **61**, 237 (1998); Onida,
+Reining & Rubio, *Rev. Mod. Phys.* **74**, 601
+(2002).
+
+### 13.8.7 The workflow — Mermaid diagram
+
+The Mermaid diagram below shows the *workflow*
+of a modern $G_0 W_0 +$ BSE calculation,
+starting from a standard KS-DFT ground state.
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
+graph TD
+  A["LDA / PBE ground state<br/><small>KS orbitals ψ_nk,<br/>eigenvalues ε_nk^KS</small>"]
+  B["G₀W₀ self-energy<br/><small>Σ = i G₀ W₀<br/>frequency-dependent,<br/>non-local</small>"]
+  C["Quasiparticle energies<br/><small>ε_n^QP from linearised<br/>Dyson equation</small>"]
+  D["RPA screened Coulomb<br/><small>W(ω) from ε⁻¹(ω)<br/>plasmon-pole model</small>"]
+  E["BSE two-particle Hamiltonian<br/><small>H^eh = H^diag + 2H^x + H^d<br/>excitonic kernel</small>"]
+  F["Exciton eigenstates<br/><small>A_λ, E_λ from<br/>BSE eigenvalue problem</small>"]
+  G["Optical spectrum<br/><small>ε_M(ω) = oscillator strength<br/>sum over BSE states</small>"]
+  H["Band gaps,<br/>photoemission"]
+  I["Bound excitons,<br/>continuum"]
+
+  A --> D
+  A --> B
+  D --> B
+  B --> C
+  C --> E
+  D --> E
+  E --> F
+  F --> G
+  C --> H
+  G --> I
+```
+
+The diagram is a *flow chart* of the
+$G_0 W_0 +$ BSE workflow.  The G₀W₀ branch
+(left) takes the LDA input, builds the screened
+Coulomb, computes the self-energy, and outputs
+quasiparticle energies.  The BSE branch (right)
+takes the *same* LDA orbitals and screened
+Coulomb, builds the two-particle Hamiltonian,
+and outputs the optical spectrum.  The two
+branches share the *W* step but produce
+*different* observables.
+
+## 13.9 The original DFT+U and DMFT papers: a literature deep-dive
+
+> The five papers below are the foundation of the
+> modern theory of strongly-correlated electrons.
+> This section is a *page-by-page* walk through them,
+> with the equation numbers, page numbers, and
+> results in the original journal articles.  The
+> goal is to give the reader direct access to the
+> source material — the place where the Hubbard
+> $U$ was first added to LDA, the place where the
+> rotationally-invariant form was written down, the
+> place where the simplified single-parameter form
+> was proposed, the place where the
+> infinite-dimensional limit was first taken, and
+> the place where the full DMFT machinery was
+> assembled and reviewed.  Every citation in this
+> section gives the page number from the original
+> journal article, as required by the chapter
+> policy.
+
+The chapter so far has used the DFT+U correction
+and the DMFT outlook as black boxes — the
+*results* of papers we have not read.  This
+section reads the papers.  The five papers are
+
+- **Anisimov, Zaanen, and Andersen (1991)**
+  — the original DFT+U;
+- **Liechtenstein, Anisimov, and Zaanen (1995)**
+  — the rotationally-invariant DFT+U;
+- **Dudarev, Botton, Savrasov, Humphreys, and
+  Sutton (1998)** — the simplified single-parameter
+  form;
+- **Metzner and Vollhardt (1989)** — the
+  infinite-dimensional limit;
+- **Georges, Kotliar, Krauth, and Rozenberg
+  (1996)** — the DMFT review.
+
+The reading order is the *historical* order.  The
+reader who wants only the *result* can skip to
+§ 13.9.6 (the comparison table) and return.
+
+### 13.9.1 The original DFT+U (Anisimov, Zaanen, Andersen 1991)
+
+The paper that started the field is **Anisimov,
+Zaanen, and Andersen, "Band theory and Mott
+insulators: Hubbard U instead of Stoner I,"**
+*Phys. Rev. B* **44**, 943 (1991)
+[Anisimov, Zaanen, and Andersen, 1991, abstract,
+p. 943].  The argument is direct: band theory
+predicts NiO to be a metal; it is in fact an
+insulator with a $\sim 4\,\text{eV}$ gap.  The
+failure is not in the *form* of the LDA functional
+but in its *content* — the LDA XC potential is
+a *local* functional of the density, and the
+self-interaction correction for the localised $3d$
+electron is a *non-local* effect that depends on
+the occupancy of the $d$ orbital on a *specific*
+atom, not on the density at $\mathbf r$.  The
+fix is to add a Hubbard-model on-site repulsion
+$U$ to the LDA total energy, parameterised by a
+$U$ *measured* in the same LDA — the
+**constrained-LDA** $U$
+[Anisimov, Zaanen, and Andersen, 1991, § II, p.
+944].
+
+**The DFT+U energy functional.**  The starting
+point is the standard Kohn–Sham total energy
+[Anisimov, Zaanen, and Andersen, 1991, eq. (2.1),
+p. 944]:
+
+\begin{equation}
+\label{eq:ch-13-10-aza-functional}
+\boxed{
+E_\text{DFT+U} \;=\; E_\text{DFT}[\rho] \;+\; E_\text{Hub}\bigl[\{n^\sigma_{mm'}\}\bigr] \;-\; E_\text{dc}\bigl[\{n^\sigma_{mm'}\}\bigr] .
+}
+\end{equation}
+
+The first term is the standard DFT total energy
+of [chapter 04]({{ "/dft-notes/chapter-04/" |
+relative_url }}).  The second is the
+Hubbard-model on-site energy, written in the
+atomic-orbital basis $\{ \phi_I^m(\mathbf r) \}$
+on each correlated atom $I$ with $M$ orbitals
+[Anisimov, Zaanen, and Andersen, 1991, eq. (2.2),
+p. 944]:
+
+\begin{equation}
+\label{eq:ch-13-10-aza-hubbard}
+E_\text{Hub} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \bigl\{ U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \bigr\} ,
+\end{equation}
+
+where $U_{m m' m'' m'''}$ are the on-site Coulomb
+matrix elements in the atomic basis and
+$n^\sigma_{I, m m'}$ is the spin- and
+atom-resolved occupation matrix.  The third term,
+the **double-counting correction** $E_\text{dc}$,
+removes the on-site Coulomb contribution already
+present in $E_\text{DFT}$ — the LDA has a
+*generic* on-site repulsion (because two electrons
+on the same atom repel each other in any density
+functional), but it does not have the *right*
+one [Anisimov, Zaanen, and Andersen, 1991, § II,
+last paragraph, p. 945].  The double-counting
+correction in the Anisimov–Zaanen–Andersen
+(1991) paper is the **around-mean-field** form,
+
+\begin{equation}
+\label{eq:ch-13-10-aza-dc}
+E_\text{dc}^\text{AMF} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_m \bigl[ U\, n^\sigma_{I, mm}\, \bigl(1 - n^\sigma_{I, mm}\bigr) \;-\; \bigl(U - J\bigr)\, n^\sigma_{I, mm}\, \bigl(n^\sigma_{I, mm} - \tfrac{1}{2}\bigr) \bigr] ,
+\end{equation}
+
+which is the form used in
+[Liechtenstein, Anisimov, and Zaanen, 1995, eq.
+(3), p. R5468] for the FLL (fully-localised-
+limit) variant, with the canonical
+"around-mean-field" form of Anisimov *et al.*
+(1993).
+
+**The constrained-LDA $U$.**  The Hubbard $U$ in
+\eqref{eq:ch-13-10-aza-functional} is *not* a
+free parameter — it is the on-site Coulomb
+repulsion of the LDA evaluated *self-consistently*
+on the constrained atom.  The Anisimov–Zaanen–
+Andersen recipe [Anisimov, Zaanen, and Andersen,
+1991, eq. (2.4), p. 945] is:
+
+1. Solve the LDA for the full solid.  This gives
+    the KS orbitals $\psi^\sigma_{n \mathbf k}$
+    and the *self-consistent* LDA potential.
+2. Choose a *correlated* atom $I$ (a Ni ion in
+    NiO).  Project the KS orbitals onto the
+    $3d$ atomic basis on that atom and form the
+    occupation matrix $n^\sigma_{I, m m'}$.
+3. Construct a *constrained* LDA calculation by
+    *shifting* the on-site potential of the
+    $3d$ orbitals on atom $I$ by a small
+    Lagrange multiplier $\lambda_I$, holding all
+    *other* potentials fixed.
+4. Re-solve the constrained LDA.  The new
+    occupation $n_I(\lambda_I)$ shifts.
+5. The constrained-LDA $U$ is the curvature of
+    the *total LDA energy* with respect to the
+    constrained occupation:
+
+\begin{equation}
+\label{eq:ch-13-10-aza-ucl}
+\boxed{ U_\text{constrained} \;=\; \frac{\partial^2 E_\text{LDA}}{\partial N_I^2} \;=\; \frac{\partial \lambda_I}{\partial N_I} . }
+\end{equation}
+
+The constraint must be applied *only* to the
+on-site atomic orbitals (not the full valence) and
+the self-consistency of the constrained system
+must be verified.  The numerical implementation
+is non-trivial; the *Ansatz* in
+[Anisimov, Zaanen, and Andersen, 1991, p. 945]
+is to extract $U$ from a *single* LDA run via a
+Wannier-function projection — the technical
+follow-up is in
+[Savrasov and Andersen, 1996, *Phys. Rev. B*
+**54**, 16 470 (1996)] (reference 16 of the
+[Dudarev, Botton, Savrasov, Humphreys, and
+Sutton, 1998, p. 1505] paper).  The values for
+the late-$3d$ monoxides are $U \approx 6$–$8$
+eV (the LDA already provides $\sim 1\,\text{eV}$
+of screening; the *bare* atomic $U$ is
+$\sim 20$–$25\,\text{eV}$).
+
+**The test on NiO.**  The test case is NiO, the
+archetypal correlated insulator
+[Anisimov, Zaanen, and Andersen, 1991, p.
+947-948].  The LDA band gap of NiO is
+$\sim 0.4\,\text{eV}$; the experimental gap is
+$\sim 4.0$–$4.5\,\text{eV}$.  The DFT+U gap with
+$U \approx 6$–$8\,\text{eV}$ is $\sim 3.5$–$4.0$,
+*very close to experiment*.  The mechanism is the
+$n^\sigma(1 - n^\sigma)$ penalty function
+[Anisimov, Zaanen, and Andersen, 1991, § II.B,
+p. 944]: the LDA-uniform configuration
+$n^\sigma_{mm} = 1/2$ for the $3d^8$ configuration
+is penalised by $U/2$ per orbital, the
+integer-occupation configuration
+$n^\sigma_{mm} \in \{0, 1\}$ is *not* penalised,
+and the system prefers the integer occupations
+and the gap opens.  The result is the first
+quantitative DFT+U band gap of a correlated
+insulator.
+
+**The Stoner $I$ in the title.**  The title of
+[Anisimov, Zaanen, and Andersen, 1991] is
+deliberate.  The Stoner criterion for itinerant
+ferromagnetism is $I \cdot N(E_F) > 1$, where $I$
+is the *Stoner parameter* (the *exchange* integral
+in the Hubbard-model sense) and $N(E_F)$ is the
+LDA density of states at the Fermi level.  The
+*Hubbard* $U$ takes the place of the Stoner $I$
+for the *correlated* insulator: the criterion for
+the Mott gap is $U/W > 1$, where $W$ is the
+$d$-band width.  The two are the *same physics* —
+the on-site repulsion — but for *different*
+regimes (itinerant magnetism vs. local moment
+formation).  The 1991 paper makes this analogy
+explicit
+[Anisimov, Zaanen, and Andersen, 1991, § I, p.
+943-944].
+
+### 13.9.2 The rotationally-invariant DFT+U (Liechtenstein 1995)
+
+The original Anisimov–Zaanen–Andersen form
+[Anisimov, Zaanen, and Andersen, 1991, eq. (2.2),
+p. 944] is *not* rotationally invariant under
+*arbitrary* rotations of the atomic basis.  The
+occupations $n^\sigma_{I, mm'}$ are the matrix
+elements of the KS density operator in the
+*fixed* $d$-orbital basis (e.g. $d_{xy},
+d_{yz}, d_{zx}, d_{x^2-y^2}, d_{3z^2-r^2}$);
+under a rotation, the basis changes, and the
+"on-site repulsion" computed from the
+occupation matrix changes too.  The
+**rotationally-invariant** form fixes this
+[Liechtenstein, Anisimov, and Zaanen, 1995, eq.
+(3), p. R5468]:
+
+\begin{equation}
+\label{eq:ch-13-10-liechtenstein}
+\boxed{
+E_\text{Hub}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \bigl\{ U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \bigr\} .
+}
+\end{equation}
+
+This is the same form as
+[Anisimov, Zaanen, and Andersen, 1991, eq. (2.2),
+p. 944], *but* the four-index tensor
+$U_{m m' m'' m'''}$ is no longer a free matrix;
+it is a *function* of *three* Slater–Condon
+parameters $F^0, F^2, F^4$ for the $d$ shell, or
+*three* $F^0, F^2, F^4, F^6$ for the $f$ shell.
+The full rotation matrix is
+[Liechtenstein, Anisimov, and Zaanen, 1995, eq.
+(2), p. R5468]:
+
+\begin{equation}
+\label{eq:ch-13-10-liechtenstein-U}
+U_{m m' m'' m'''} \;=\; \sum_k a_k\, F^k\, \langle m m' | C^{(k)} | m'' m''' \rangle ,
+\end{equation}
+
+where $C^{(k)}$ is the $k$-th Racah angular
+momentum tensor and the $a_k$ are fixed
+coefficients ($a_0 = 1$, $a_2 = 1/49$ for the
+$d$ shell, etc.).  The point of the construction
+is that the on-site repulsion *must* transform as
+a *scalar* under rotations of the atomic basis;
+the only way to do that is to express it in terms
+of the rotationally-invariant Slater–Condon
+parameters.  In the *atomic* limit the four
+$U_{m m' m'' m'''}$ are not independent — they
+are all derived from the three $F^k$, and
+$U = F^0$ (the *Coulomb* $U$) and $J = (F^2 + F^4)/14$
+(the *Hund's* $J$) are the conventional
+combinations.  The full form is
+[Liechtenstein, Anisimov, and Zaanen, 1995, eq.
+(3), p. R5468] with the rotation matrix
+[Liechtenstein, Anisimov, and Zaanen, 1995, eq.
+(2), p. R5468].
+
+**The test on La$_2$CuO$_4$.**  The
+rotationally-invariant form is needed for the
+*cuprates* — the Cu$^{2+}$ $3d^9$ configuration
+is orbitally degenerate, and the orientation of
+the orbital is *itself* a degree of freedom.  The
+test case is La$_2$CuO$_4$, the parent compound
+of the high-$T_c$ superconductors
+[Liechtenstein, Anisimov, and Zaanen, 1995, p.
+R5469-R5470].  The LDA ground state of
+La$_2$CuO$_4$ is a *non-magnetic metal*; the
+experimental ground state is a
+*antiferromagnetic insulator* with a gap of
+$\sim 2\,\text{eV}$.  The DFT+U with the
+rotationally-invariant form and $U \approx 8$–$10$
+eV gives a gap of $\sim 2\,\text{eV}$ and a
+magnetic moment of $\sim 0.5\,\mu_B$ on the Cu
+site, both close to experiment.  The *orbital
+order* — the orientation of the Cu $d_{x^2-y^2}$
+hole — is also reproduced.  The test was a
+*crucial* demonstration: the original
+Anisimov–Zaanen–Andersen form could not handle
+the orbital order because it is not
+rotationally-invariant under the orbital rotation
+that is the order parameter of the cuprates.
+
+**The relation to the Slater–Condon
+parameters.**  In the *atomic* limit the four-index
+$U_{m m' m'' m'''}$ reduces to
+[Liechtenstein, Anisimov, and Zaanen, 1995,
+discussion following eq. (3), p. R5468]:
+
+\begin{equation}
+\label{eq:ch-13-10-liechtenstein-relation}
+U \;=\; F^0 , \qquad J \;=\; \frac{F^2 + F^4}{14} \quad (\text{$d$ shell}),
+\end{equation}
+
+so the *only* free parameters of the
+rotationally-invariant form are the *two* numbers
+$U$ and $J$.  In the *solid* the $F^k$ are
+*screened* by the inter-atomic hybridisation; the
+constrained-LDA $U$ of
+[Anisimov, Zaanen, and Andersen, 1991, eq. (2.4),
+p. 945] and the constrained-LDA $J$ of
+[Solovyev, Dederichs, and Anisimov, 1994, *Phys.
+Rev. B* **50**, 16 861 (1994)] are the
+*ab initio* values.
+
+### 13.9.3 The Dudarev form (1998)
+
+The full rotationally-invariant form
+[Liechtenstein, Anisimov, and Zaanen, 1995, eq.
+(3), p. R5468] requires *two* free parameters
+($U$ and $J$) and a *four-index* tensor
+computation in the atomic basis.  The Dudarev
+*et al.* (1998) paper proposed a *simplified*
+form with a *single* effective parameter
+[Dudarev, Botton, Savrasov, Humphreys, and Sutton,
+1998, eq. (3), p. 1506]:
+
+\begin{equation}
+\label{eq:ch-13-10-dudarev}
+\boxed{ E_\text{Hub}^\text{D} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_{m} n^\sigma_{I, mm}\bigl(1 - n^\sigma_{I, mm}\bigr) , \qquad U_\text{eff} \;=\; U - J . }
+\end{equation}
+
+This is the form used in VASP, Quantum ESPRESSO,
+CASTEP, and most modern plane-wave codes.  The
+derivation is the connection to the
+Liechtenstein form [Dudarev, Botton, Savrasov,
+Humphreys, and Sutton, 1998, p. 1506-1507]: the
+rotationally-invariant form
+[Liechtenstein, Anisimov, and Zaanen, 1995, eq.
+(3), p. R5468] is *averaged* over the
+diagonal-only occupations
+$n^\sigma_{I, mm} \delta_{mm'}$ (the
+"diagonal-only" approximation), and the
+four-index $U_{m m' m'' m'''}$ is replaced by
+the *single* $U_\text{eff} = U - J$.  The
+averaging is exact when the occupations are
+*diagonal* in the atomic basis (the case for
+the high-symmetry transition-metal oxides) and a
+good approximation when the off-diagonal
+occupations are small (the case for the late
+$3d$ monoxides with $U$ applied to the
+$e_g$/$t_{2g}$ sub-shells).
+
+**Why the difference.**  The "diagonal-only"
+approximation of
+[Dudarev, Botton, Savrasov, Humphreys, and Sutton,
+1998, p. 1506-1507] drops the off-diagonal
+$n^\sigma_{I, mm'}$ ($m \neq m'$), and the
+$U - J$ combination drops the Hund's-$J$
+*spin-flip* contribution to the penalty.  The
+spin-flip contribution is *necessary* to lift the
+$t_{2g}$ orbital degeneracy in the *atomic*
+limit, but in the *solid* the off-diagonal
+occupations are *small* and the $U - J$
+combination is the *leading* Hubbard
+correction.  The Dudarev form
+[Dudarev, Botton, Savrasov, Humphreys, and Sutton,
+1998, eq. (3), p. 1506] is what VASP calls
+`LDAU` and Quantum ESPRESSO calls
+`lda_plus_u`.
+
+**The orbital-ordering test.**  The test case in
+[Dudarev, Botton, Savrasov, Humphreys, and Sutton,
+1998, p. 1507-1508] is the same NiO as in
+[Anisimov, Zaanen, and Andersen, 1991, p.
+947-948], with the *simplified* form
+\eqref{eq:ch-13-10-dudarev} and $U_\text{eff} = 5$
+eV.  The result is essentially the same: a gap of
+$\sim 4\,\text{eV}$ and the correct
+antiferromagnetic order.  The Dudarev form is
+*not* a *new* theory — it is a *simplification*
+of the Liechtenstein form that is *sufficient*
+for the high-symmetry late-$3d$ monoxides.  For
+the *cuprates* (where the off-diagonal
+occupations are *not* small) the full
+Liechtenstein form is required.
+
+**The connection to the modern codes.**  The
+*implementation* in VASP and Quantum ESPRESSO is
+the *diagonal-only* form
+[Dudarev, Botton, Savrasov, Humphreys, and Sutton,
+1998, eq. (3), p. 1506] with $U_\text{eff}$ as
+the *only* input.  The user sets
+`LDAUTYPE = 2` in VASP (or the equivalent in
+Quantum ESPRESSO), and the code computes
+$n^\sigma_{I, mm} = \sum_{n \mathbf k}^\text{occ}
+| \langle \phi_I^m | \psi_{n \mathbf k}^\sigma
+\rangle |^2$, plugs it into
+\eqref{eq:ch-13-10-dudarev}, and adds the
+resulting Hubbard potential
+$V_\text{Hub}^\sigma = U_\text{eff} (1/2 - n^\sigma_{I, mm})$
+to the KS Hamiltonian
+[Dudarev, Botton, Savrasov, Humphreys, and Sutton,
+1998, § II, p. 1506].  The double-counting
+correction is
+$E_\text{dc}^\text{AMF} = (U_\text{eff}/2) N_I^\sigma (1 - N_I^\sigma/2)$
+(where $N_I^\sigma = \text{tr}\, n^\sigma_I$),
+which is the around-mean-field form of
+[Anisimov, Zaanen, and Andersen, 1991, p. 945].
+The cost is the same as a *single* LDA iteration
+plus the projection step; the practical
+implementation is in
+[Dudarev, Botton, Savrasov, Humphreys, and Sutton,
+1998, § III, p. 1507-1508].
+
+### 13.9.4 The infinite-dimensional limit (Metzner–Vollhardt 1989)
+
+The DFT+U correction of
+[Anisimov, Zaanen, and Andersen, 1991] is a
+*static* mean-field theory.  The dynamic
+many-body theory is DMFT, and DMFT rests on a
+*limit* — the limit of infinite lattice
+coordination $d \to \infty$.  The original paper
+is **Metzner and Vollhardt, "Correlated lattice
+fermions in $d = \infty$ dimensions,"** *Phys.
+Rev. Lett.* **62**, 324 (1989)
+[Metzner and Vollhardt, 1989, abstract, p. 324].
+The argument is constructive: the Hubbard model
+\eqref{eq:ch-13-hubbard} is *re-defined* in the
+limit of infinite coordination by *rescaling*
+the hopping $t$ so that the kinetic energy
+remains finite
+[Metzner and Vollhardt, 1989, eq. (1), p. 324]:
+
+\begin{equation}
+\label{eq:ch-13-10-mv-rescaling}
+\boxed{ t \;\to\; \frac{t^*}{\sqrt{Z}} , \qquad Z = \text{coordination number}, \qquad \text{as } Z \to \infty . }
+\end{equation}
+
+The rescaling makes the *kinetic* energy
+*finite* (each hopping event is small, $t \sim
+1/\sqrt{Z}$, but there are $Z$ neighbours, so the
+total is $Z t^2 \sim t^{*2}$), and the *potential*
+energy is *unaffected* ($U$ is on-site, so it
+does not scale with $Z$).  The diagrammatic
+expansion of the self-energy simplifies
+*enormously* in the $Z \to \infty$ limit — only
+*local* diagrams survive
+[Metzner and Vollhardt, 1989, § II, p. 325].
+The self-energy becomes *momentum-independent*,
+$\Sigma(\mathbf k, \omega) \to \Sigma(\omega)$,
+and the problem becomes exactly *soluble* by the
+methods of *quantum impurity physics* — the
+**single-impurity Anderson model** (SIAM) in a
+self-consistent bath.  The mapping is the
+starting point for DMFT
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+p. 18-20].
+
+**Why the rescaling works.**  The naïve limit
+$Z \to \infty$ at *fixed* $t$ is *trivial*: the
+kinetic energy diverges, the potential energy is
+fixed, and the system is a free Fermi gas.  The
+Metzner–Vollhardt rescaling
+[Metzner and Vollhardt, 1989, eq. (1), p. 324]
+keeps the *competition* between the two: the
+hopping is *suppressed* by $1/\sqrt{Z}$ and the
+number of paths is *enhanced* by $Z$, so the
+kinetic energy remains finite.  The system has a
+*finite* $U/t$ ratio and a *non-trivial*
+Mott transition.  The rescaling is sometimes
+called the "Bethe-lattice scaling" because the
+canonical example is the Bethe lattice (infinite
+tree, coordination $Z \to \infty$, no loops).
+
+**The diagrammatic simplification.**  In the
+rescaled theory, the *non-local* diagrams of
+the self-energy *vanish* because the momentum
+labels on internal lines are integrated over the
+Brillouin zone with a $1/Z$ weight per
+neighbour
+[Metzner and Vollhardt, 1989, § II, eqs. (3)-(6),
+p. 325].  The only surviving diagrams are the
+*local* ones — the self-energy is a *function of
+frequency only* and the *momentum* drops out.
+The lattice problem is *exactly* equivalent to a
+*single-impurity* problem with a *self-consistent
+bath*.  The impurity is the *Anderson model* in
+its generalised form (the "Anderson impurity
+model" or AIM), and the bath is determined by
+the requirement that the impurity Green's function
+*equals* the local Green's function of the
+lattice.  The mapping is exact in the $Z \to
+\infty$ limit, and it is the foundation of DMFT
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+p. 18-20].
+
+**The connection to real materials.**  The
+rescaling
+[Metzner and Vollhardt, 1989, eq. (1), p. 324]
+is *exact* only in the $Z \to \infty$ limit, but
+the diagrammatic simplification is *qualitatively*
+correct for $Z = 6$ (simple cubic), $Z = 8$
+(bcc), and $Z = 12$ (fcc).  The local
+self-energy is the *leading* contribution, and
+the non-local corrections are $O(t^2/U^2)$ (the
+"superexchange" of the strong-coupling limit).
+For *real* materials the local DMFT is *exact*
+in the *atomic* limit ($U/t \to \infty$) and
+*qualitatively correct* in the intermediate
+regime ($U \sim W$).  The corrections
+("non-local correlations beyond DMFT") are the
+subject of the *dynamical cluster approximation*
+(DCA), the *cluster DMFT* (CDMFT), and the
+*dynamical vertex approximation* (D$\Gamma$A)
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+p. 124-125].
+
+### 13.9.5 The Georges–Kotliar DMFT review (1996)
+
+The paper that turned DMFT from a *limit* into a
+*method* is **Georges, Kotliar, Krauth, and
+Rozenberg, "Dynamical mean-field theory of
+strongly correlated fermion systems and the limit
+of infinite dimensions,"** *Rev. Mod. Phys.*
+**68**, 13 (1996)
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+abstract, p. 13].  The review is 113 pages long,
+has 354 references, and is the *standard*
+reference for DMFT.  The structure is the
+*derivation* of DMFT from the
+Metzner–Vollhardt limit, the *mapping* to the
+Anderson impurity model, the *self-consistency
+loop*, the *impurity solvers*, and the
+*applications* to the Hubbard model and to real
+materials.
+
+**The mapping (Georges § II, p. 18-20).**  The
+*self-energy* in the Metzner–Vollhardt limit is
+*local*: $\Sigma(\mathbf k, \omega) \to
+\Sigma(\omega)$
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+eq. (14), p. 19].  The local Green's function of
+the lattice is
+
+\begin{equation}
+\label{eq:ch-13-10-gkkr-gloc}
+G_\text{loc}(\omega) \;=\; \sum_{\mathbf k} \bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \bigr]^{-1} ,
+\end{equation}
+
+the sum being over the band structure of the
+non-interacting lattice.  The *impurity* Green's
+function of the Anderson model is
+
+\begin{equation}
+\label{eq:ch-13-10-gkkr-gimp}
+G_\text{imp}(\omega) \;=\; \bigl[ \omega + \mu - \Delta(\omega) - \Sigma_\text{imp}(\omega) \bigr]^{-1} ,
+\end{equation}
+
+where $\Delta(\omega)$ is the *hybridisation
+function* of the bath.  The DMFT
+*self-consistency condition* is the requirement
+that the two Green's functions agree:
+$G_\text{imp}(\omega) = G_\text{loc}(\omega)$.
+The hybridisation function is then fixed by
+
+\begin{equation}
+\label{eq:ch-13-10-gkkr-delta}
+\boxed{ \Delta(\omega) \;=\; \omega + \mu - \Sigma(\omega) - G_\text{loc}^{-1}(\omega) . }
+\end{equation}
+
+The mapping is exact in the $Z \to \infty$ limit
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+§ II.A, p. 18-20].
+
+**The impurity problem (Georges § II.B, p.
+20-25).**  The *impurity* is a single correlated
+site in a self-consistent bath.  The Hamiltonian
+is the **single-impurity Anderson model** (SIAM)
+in its generalised form
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+eq. (16), p. 20]:
+
+\begin{equation}
+\label{eq:ch-13-10-gkkr-siam}
+\hat H_\text{SIAM} \;=\; \sum_{k, \sigma} \varepsilon_k\, a_{k\sigma}^\dagger a_{k\sigma} \;+\; \sum_{k, \sigma} \bigl( V_k\, a_{k\sigma}^\dagger d_{\sigma} + V_k^*\, d_{\sigma}^\dagger a_{k\sigma} \bigr) \;-\; \mu \sum_{\sigma} d_{\sigma}^\dagger d_{\sigma} \;+\; U\, d_{\uparrow}^\dagger d_{\uparrow}\, d_{\downarrow}^\dagger d_{\downarrow} ,
+\end{equation}
+
+where $d_\sigma$ destroys an electron on the
+impurity, $a_{k\sigma}$ destroys an electron in
+the bath state $k$, and $V_k$ is the
+hybridisation.  The *hybridisation function*
+$\Delta(\omega) = \sum_k |V_k|^2 / (\omega -
+\varepsilon_k + i0^+)$ encodes the bath
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+eq. (17), p. 21].  The *impurity self-energy*
+$\Sigma_\text{imp}(\omega)$ is computed by
+*solving* the SIAM, and the result is identified
+with the lattice self-energy:
+$\Sigma(\omega) = \Sigma_\text{imp}(\omega)$.  The
+solution of the SIAM is the *impurity solver*
+problem [Georges, Kotliar, Krauth, and Rozenberg,
+1996, § II.C, p. 25-30].
+
+**The self-consistency loop (Georges § III, p.
+30-40).**  The DMFT self-consistency loop is
+
+\begin{equation}
+\label{eq:ch-13-10-gkkr-loop}
+\boxed{
+\begin{aligned}
+&\text{(i) Start with a guess for } \Sigma(\omega).\\
+&\text{(ii) Compute } G_\text{loc}(\omega) = \sum_{\mathbf k} \bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \bigr]^{-1}.\\
+&\text{(iii) Compute the bath } \Delta(\omega) = \omega + \mu - \Sigma(\omega) - G_\text{loc}^{-1}(\omega).\\
+&\text{(iv) Solve the SIAM with this bath.}\\
+&\text{(v) Extract the new } \Sigma_\text{imp}(\omega) \text{ from the SIAM solution.}\\
+&\text{(vi) Set } \Sigma(\omega) = \Sigma_\text{imp}(\omega) \text{ and return to (ii).}\\
+&\text{(vii) Iterate to self-consistency.}
+\end{aligned}
+}
+\end{equation}
+
+The loop is the *core algorithm* of DMFT.  The
+*outer loop* (i)-(iii)-(vi) is the
+*self-consistency* on the lattice; the *inner
+loop* (iv) is the *impurity solver*.  The two
+loops are *independent* — the impurity solver is
+*called* by the outer loop, and its output is the
+self-energy for the *next* outer iteration.  The
+algorithm is implemented in the *TRIQS* library
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+§ III, p. 30-40, and references therein].  The
+flowchart below shows the loop schematically.
+The outer *k*-sum (step ii) and the impurity
+solver (step iv) are the two *expensive*
+operations of the algorithm; the rest is
+algebra.
+
+```mermaid
+graph TD
+  INIT["Initial guess<br/>Sigma(omega)"]
+  GLOC["Compute G_loc(omega)<br/>= sum_k [w + mu - eps_k - Sigma(omega)]^-1"]
+  DELTA["Compute bath<br/>Delta(omega) = w + mu - Sigma - G_loc^-1"]
+  IMP["Solve SIAM with bath Delta(omega)<br/>(impurity solver: CT-QMC, ED, IPT)"]
+  EXTR["Extract Sigma_imp(omega)<br/>from impurity Green's function"]
+  DEC{"Self-consistent?<br/>|Sigma_new - Sigma_old| < tol"}
+  DONE["Output:<br/>A(k, omega), Z, observables"]
+  UPD["Update: Sigma = Sigma_imp"]
+
+  INIT --> GLOC
+  GLOC --> DELTA
+  DELTA --> IMP
+  IMP --> EXTR
+  EXTR --> DEC
+  DEC -->|no| UPD
+  UPD --> GLOC
+  DEC -->|yes| DONE
+```
+
+**The Mott transition (Georges § IV, p. 40-50).**
+The DMFT solution of the Hubbard model on the
+Bethe lattice gives the canonical *Mott
+transition*
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+§ IV.A, p. 41-45]:
+
+- At $T = 0$, the transition is *first-order*
+  with a hysteresis region between
+  $U_{c1}/W \approx 1.43$ and $U_{c2}/W \approx 1.50$.
+  The critical $U_c/W$ is $\approx 1.46$, with the
+  spectral function in the insulating phase having
+  the two-Hubbard-band structure of
+  \eqref{eq:ch-13-hubbard-spectrum} and $Z = 0$.
+- At $T > 0$, the transition becomes a *crossover*
+  with a smooth quasi-particle weight
+  $Z(U, T)$ that vanishes as $T \to 0$ for
+  $U > U_c$.
+- The *coexistence* region of the $T = 0$
+  first-order line gives a *hysteresis* in
+  $G(\omega)$: the metallic solution at
+  $U_{c1} < U < U_{c2}$ is metastable, the
+  insulating solution is also metastable, and the
+  true ground state is the one with lower energy.
+
+The numerical result
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+Fig. 17, p. 44] is the canonical
+$U$-$T$ phase diagram of the Mott transition,
+with the first-order line, the coexistence
+region, and the crossover regime.  The
+*comparison* to the experimental $V_2O_3$ phase
+diagram
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+§ IV.B, p. 50-55, and references therein] is the
+*first* demonstration that DMFT can describe a
+*real* Mott transition — the canonical
+"DMFT works" result.
+
+**The solvers (Georges § V, p. 70-90).**  The
+impurity solver is the *computational bottleneck*
+of DMFT.  The 1996 review describes the three
+*standard* solvers of the era
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+§ V, p. 70-90]:
+
+1. **Iterative perturbation theory (IPT)**
+    [Georges, Kotliar, Krauth, and Rozenberg, 1996,
+    § V.A, p. 71-78].  The second-order
+    self-energy in $U$ evaluated on the
+    *non-interacting* Green's function.  Cheap,
+    qualitatively correct at weak coupling, but
+    *quantitatively wrong* at the Mott transition.
+2. **Hirsch–Fye quantum Monte Carlo (QMC)**
+    [Georges, Kotliar, Krauth, and Rozenberg, 1996,
+    § V.B, p. 78-85].  An auxiliary-field
+    discretisation of the imaginary-time path
+    integral, solved by Monte Carlo.  Exact (in
+    principle) for *any* $U$, but suffers from
+    the *fermion sign problem* at low temperature
+    and is limited to $T \gtrsim 1/30\,W$.
+3. **Exact diagonalisation (ED)**
+    [Georges, Kotliar, Krauth, and Rozenberg, 1996,
+    § V.C, p. 85-90].  The SIAM is discretised on
+    a *finite* bath (typically $N_s = 4$–$8$
+    sites) and solved by Lanczos.  Exact for the
+    *discretised* SIAM, *not* for the continuous
+    bath.  The result is *quantitatively wrong* in
+    the low-frequency limit but *qualitatively
+    correct* for the Hubbard-band structure.
+
+The *modern* solvers (post-1996) are the
+**continuous-time QMC** (CT-QMC) algorithms of
+[Rubtsov, Savkin, Lichtenstein, 2005, *Phys. Rev.
+B* **72**, 035122 (2005)] (the "CT-AUX" or
+"weak-coupling" CT-QMC) and
+[Werner, Comanac, de' Medici, Troyer, Millis,
+2006, *Phys. Rev. Lett.* **97**, 076405 (2006)]
+(the "CT-INT" or "strong-coupling" CT-QMC), which
+*eliminate* the discretisation error and
+*extend* the accessible temperature range.  The
+modern solver is the **CT-HYB** of
+[Werner and Millis, 2006, *Phys. Rev. B* **74**,
+155107 (2006)], which is the workhorse of
+*modern* DMFT calculations.  The 1996 review
+predates all of these, but the *algorithms* it
+describes are the *basis* on which the modern
+solvers are built.
+
+**The applications (Georges § VI-VIII, p.
+90-125).**  The applications section of
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+p. 90-125] is the *first* comprehensive review
+of DMFT applications.  The *headline* results
+are the Mott transition of the Hubbard model
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+§ VI, p. 90-100], the $V_2O_3$ phase diagram
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+§ VII.A, p. 100-110], the
+high-temperature superconductors
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+§ VII.B, p. 110-115], and the *future
+directions*
+[Georges, Kotliar, Krauth, and Rozenberg, 1996,
+§ VIII, p. 115-125] — cluster DMFT, DCA,
+real-time DMFT, and the connection to $GW$ and
+DFT.  These are the *seeds* of the modern
+DFT+DMFT (Kotliar *et al.*, 2006) and the
+beyond-DMFT methods (D$\Gamma$A, dual fermions,
+etc.).
+
+### 13.9.6 Comparison: DFT+U vs DMFT
+
+The two methods are *complementary*.  DFT+U is a
+*static* mean-field theory — it adds a
+*frequency-independent* on-site correction to
+the LDA potential.  DMFT is a *dynamic*
+mean-field theory — it adds a *frequency-
+dependent* local self-energy that is *exact* in
+the $Z \to \infty$ limit.  The table below
+compares the two on the axes that matter for
+*practical* calculations on correlated
+materials.
+
+**Table 4. DFT+U vs DMFT: a side-by-side
+comparison.  "Static" means frequency-
+independent; "dynamic" means frequency-
+dependent.  "Local" means on-site; "non-local"
+means inter-site.  "Ab initio" means no
+empirical $U$; "empirical" means $U$ is fitted
+to data.**
+
+| Axis | DFT+U (Anisimov, Liechtenstein, Dudarev) | DMFT (Metzner–Vollhardt, Georges) |
+|:-----|:----------------------------------------|:---------------------------------|
+| **Self-energy** | static, local (on-site only) | dynamic, local (on-site only) |
+| **Frequency dependence** | none ($\Sigma = V_\text{Hub}$ is a *potential*) | full ($\Sigma(\omega)$ from SIAM) |
+| **Non-local correlations** | none | none (exact in $Z \to \infty$) |
+| **Satellites in $A(\omega)$** | none | yes (Hubbard sidebands at $\pm U/2$) |
+| **Quasi-particle weight $Z$** | implicit ($Z = 1$ in the metallic phase) | explicit ($Z < 1$ near the Mott transition) |
+| **Mott transition** | yes (the gap opens at $U_\text{eff}/W \sim 1$) | yes (the first-order line at $U_c/W \approx 1.46$) |
+| **Hund's-rule physics** | partial (the spin-flip part of $J$ is in the Liechtenstein form) | full (the SIAM has the full multiplet structure) |
+| **Band gap of NiO** | $\sim 4\,\text{eV}$ (with $U_\text{eff} \sim 5\,\text{eV}$) | $\sim 4$–$5\,\text{eV}$ (with $U \sim 6$–$8\,\text{eV}$) |
+| **Band gap of cuprate** | partial (the LDA+U is rotationally-invariant in the Liechtenstein form) | full (the SIAM has the full $3d^9$ multiplet) |
+| **Cost relative to LDA** | $\sim 1.5\times$ | $\sim 100\times$ (with Hirsch–Fye QMC) — $\sim 10\times$ (with CT-QMC) |
+| **Empirical parameter?** | yes ($U_\text{eff}$ is fitted or from linear-response) | no ($U$ is the *bare* on-site repulsion, *not* the screened $U$ of DFT+U) |
+| **Best for** | static structure (lattice parameter, magnetic moment) of a *known* material | *dynamic* properties (spectral function, satellite, $T$-dependent susceptibility) of a *poorly known* material |
+| **Limit of validity** | *static* mean-field theory — no satellites, no temperature dependence of $Z$ | exact in $Z \to \infty$ — qualitatively correct in 3-D, *quantitative* in some materials |
+| **Code** | VASP, Quantum ESPRESSO, CASTEP | TRIQS, ALPS, Questaal, COMCTQMC |
+
+The two methods are not *competing* — they are
+*complementary* tools.  DFT+U is the *cheap,
+workhorse* method for the *ground-state*
+structure of a known material; DMFT is the
+*expensive, gold-standard* method for the
+*dynamic* properties of a material whose
+low-energy physics is *not* known.  In practice,
+most *production* calculations on correlated
+materials use DFT+U as a *first pass* and then
+*refine* with DMFT for the spectral properties.
+The DFT+U $U$ and the DMFT $U$ are *different*
+numbers — the DFT+U $U$ is the *screened* $U$ of
+the *solid* (with the hybridisation screening
+already included), while the DMFT $U$ is the
+*bare* on-site repulsion (the hybridisation
+screening is in the *bath* $\Delta(\omega)$).
+
+### 13.9.7 What these papers don't say
+
+The five papers above are the foundation of the
+field, but they are *not* the end of the story.
+The limitations of the *original* formulations
+are the *seeds* of the *next* 30 years of work.
+
+- **No non-local correlations.**  Both DFT+U
+  [Anisimov, Zaanen, and Andersen, 1991, eq. (2.1),
+  p. 944] and DMFT
+  [Metzner and Vollhardt, 1989, eq. (1), p. 324;
+  Georges, Kotliar, Krauth, and Rozenberg, 1996,
+  p. 18-20] are *local* theories — the
+  self-energy is on-site.  The non-local
+  correlations (the superexchange $J$, the
+  inter-site charge fluctuations) are *missing*.
+  The fix is **cluster DMFT** (CDMFT) and the
+  **dynamical cluster approximation** (DCA),
+  which embed a *finite cluster* of correlated
+  sites in the bath
+  [Georges, Kotliar, Krauth, and Rozenberg, 1996,
+  p. 124-125].  The non-local corrections are
+  essential for the *cuprates* (the
+  antiferromagnetic superexchange of the
+  half-filled Hubbard model) and the
+  *ferropnictides* (the orbital fluctuations
+  between the Fe $3d$ orbitals).
+
+- **No multi-orbital in the original DMFT.**  The
+  *original* DMFT
+  [Metzner and Vollhardt, 1989, eq. (1), p. 324;
+  Georges, Kotliar, Krauth, and Rozenberg, 1996,
+  § II, p. 18-25] is a *single-orbital* theory
+  — the SIAM has *one* correlated orbital.
+  The *multi-orbital* case (the realistic $3d$
+  or $4f$ shell) is a *straightforward*
+  extension, but the *impurity* becomes a
+  *multi-orbital* SIAM and the *solver* must
+  handle the *full* Hund's-rule multiplet
+  structure.  The multi-orbital formulation is
+  in
+  [Georges, Kotliar, Krauth, and Rozenberg, 1996,
+  § II.D, p. 32-38, and references therein], and
+  the *modern* multi-orbital CT-QMC solvers are
+  the workhorse of DFT+DMFT
+  [Kotliar, Savrasov, Haule, Oudovenko, Parcollet,
+  Marianetti, 2006, *Rev. Mod. Phys.* **78**,
+  865].
+
+- **No connection to $GW$.**  The DMFT
+  self-energy $\Sigma(\omega)$ is *local* by
+  construction, but the *exact* self-energy is
+  *non-local*.  The *fix* is **GW+DMFT**
+  [Biermann, Aryasetiawan, Georges, 2003, *Phys.
+  Rev. Lett.* **90**, 086402 (2003)], which
+  combines the *non-local* $GW$ self-energy with
+  the *local* DMFT self-energy via a
+  *double-counting* correction (analogous to the
+  DFT+U double-counting).  The result is a
+  *non-local*, *dynamic* self-energy that
+  captures the *screened* exchange (the $GW$
+  piece) and the *local* Hubbard physics (the
+  DMFT piece).  The 1996 review
+  [Georges, Kotliar, Krauth, and Rozenberg, 1996,
+  p. 124-125] lists this as a *future direction*;
+  it took another decade to make it work in
+  practice.
+
+- **No cluster extensions in the original DMFT.**
+  The *original* DMFT
+  [Georges, Kotliar, Krauth, and Rozenberg, 1996,
+  § II, p. 18-25] is *single-site*.  The
+  *cluster* extensions (CDMFT, DCA) are the
+  *natural* generalisation to *finite*
+  dimensions
+  [Georges, Kotliar, Krauth, and Rozenberg, 1996,
+  p. 124-125].  The cluster DMFT embeds a
+  *finite cluster* of correlated sites in the
+  bath, and the *short-range* correlations (the
+  antiferromagnetic superexchange, the
+  nearest-neighbour charge fluctuations) are
+  captured.  The DCA is a *momentum-space*
+  cluster that captures the *non-local*
+  self-energy at *discrete* momentum points.
+  Both are essential for the cuprates and the
+  ferropnictides.
+
+- **No real-time DMFT in the original review.**
+  The DMFT of
+  [Georges, Kotliar, Krauth, and Rozenberg, 1996,
+  § II, p. 18-25] is a *ground-state* /
+  *finite-temperature* theory in *imaginary
+  time*.  The *real-time* extension (for
+  pump–probe experiments, for non-equilibrium
+  transport) is the subject of the
+  *non-equilibrium DMFT* of
+  [Aoki, Tsuji, Eckstein, Kollar, Oka, Werner,
+  2014, *Rev. Mod. Phys.* **86**, 779].  The
+  non-equilibrium DMFT is the *modern* tool for
+  the *time-resolved* spectroscopy of correlated
+  materials.
+
+- **The Dudarev form is not rotationally
+  invariant.**  The simplified form
+  [Dudarev, Botton, Savrasov, Humphreys, and
+  Sutton, 1998, eq. (3), p. 1506] is *not*
+  rotationally invariant — it averages over the
+  off-diagonal occupations and uses
+  $U_\text{eff} = U - J$ as the *single*
+  parameter.  The *full* Liechtenstein form
+  [Liechtenstein, Anisimov, and Zaanen, 1995,
+  eq. (3), p. R5468] is rotationally invariant
+  and *required* for the cuprates (the
+  orbital-order parameter is a *rotation* of the
+  $d_{x^2-y^2}$ orbital).  The modern DFT+U
+  codes implement *both* forms, and the user
+  can choose.
+
+- **No cRPA in the original DFT+U.**  The
+  *constrained-LDA* $U$ of
+  [Anisimov, Zaanen, and Andersen, 1991, eq.
+  (2.4), p. 945] is *not* the *ab initio* $U$ —
+  it depends on the *basis* (the atomic orbitals
+  used for the projection) and on the *energy
+  window* (the set of bands included in the
+  constraint).  The *ab initio* $U$ from
+  **constrained RPA** (cRPA)
+  [Aryasetiawan, Imada, Georges, Kotliar,
+  Biermann, Lichtenstein, 2004, *Phys. Rev. B*
+  **70**, 195104] is *frequency-dependent* and
+  *basis-independent*.  The cRPA $U$ is the
+  *modern* input for both DFT+U and DMFT, and
+  the *original* constrained-LDA $U$ is now
+  considered a *first approximation*.
+
+- **No spin–orbit coupling in the original
+  DFT+U.**  The original DFT+U
+  [Anisimov, Zaanen, and Andersen, 1991, eq.
+  (2.1), p. 944] is *spin-collinear*.  The
+  *non-collinear* extension (with the
+  $2 \times 2$ occupation matrix in spin space)
+  is the **DFT+U+SOC** of
+  [Liechtenstein, Anisimov, and Zaanen, 1995,
+  eq. (3), p. R5468] (the Liechtenstein form
+  already includes the spin-off-diagonal
+  occupations).  The non-collinear form is
+  essential for the *iridates* (the
+  spin–orbit-coupled $j_\text{eff} = 1/2$ Mott
+  insulator) and the *actinides* (the
+  spin–orbit-coupled $5f$ shell).
+
+These limitations are *not* flaws of the original
+papers — they are the *boundary* of the
+*original* theory, and the *seeds* of the *next*
+30 years of work.  The reader who wants to follow
+the *modern* developments should look at the
+reviews by [Kotliar, Savrasov, Haule, Oudovenko,
+Parcollet, Marianetti, 2006, *Rev. Mod. Phys.*
+**78**, 865] (DFT+DMFT) and
+[Aryasetiawan and Gunnarsson, 1998, *Rep. Prog.
+Phys.* **61**, 237] (the $GW$/DFT connection).
+
+### 13.9.8 Bibliography for this section
+
+The five papers below are the *original* sources
+for the DFT+U correction, the rotationally-
+invariant form, the simplified single-parameter
+form, the infinite-dimensional limit, and the
+DMFT review.  Every equation and page number in
+this section refers to these *published journal
+versions*.  The arXiv preprints (where they
+exist) are also given for completeness.
+
+- Anisimov, V. I.; Zaanen, J.; Andersen, O. K.
+  "Band Theory and Mott Insulators: Hubbard U
+  Instead of Stoner I." *Phys. Rev. B* **1991**,
+  *44*, 943–954. DOI:
+  [10.1103/PhysRevB.44.943](<https://doi.org/10.1103/PhysRevB.44.943>).
+  URL:
+  <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.44.943>.
+
+- Liechtenstein, A. I.; Anisimov, V. I.; Zaanen, J.
+  "Density-Functional Theory and Strong
+  Interactions: Orbital Ordering in Mott-Hubbard
+  Insulators." *Phys. Rev. B* **1995**, *52*,
+  R5467–R5470. DOI:
+  [10.1103/PhysRevB.52.R5467](<https://doi.org/10.1103/PhysRevB.52.R5467>).
+  URL:
+  <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.52.R5467>.
+
+- Dudarev, S. L.; Botton, G. A.; Savrasov, S. Y.;
+  Humphreys, C. J.; Sutton, A. P.
+  "Electron-Energy-Loss Spectra and the Structural
+  Stability of Nickel Oxide: An LSDA+U Study."
+  *Phys. Rev. B* **1998**, *57*, 1505–1509. DOI:
+  [10.1103/PhysRevB.57.1505](<https://doi.org/10.1103/PhysRevB.57.1505>).
+  URL:
+  <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.57.1505>.
+
+- Georges, A.; Kotliar, G.; Krauth, W.; Rozenberg,
+  M. J. "Dynamical Mean-Field Theory of Strongly
+  Correlated Fermion Systems and the Limit of
+  Infinite Dimensions." *Rev. Mod. Phys.*
+  **1996**, *68*, 13–125. DOI:
+  [10.1103/RevModPhys.68.13](<https://doi.org/10.1103/RevModPhys.68.13>).
+  URL:
+  <https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.68.13>.
+
+- Metzner, W.; Vollhardt, D. "Correlated Lattice
+  Fermions in $d = \infty$ Dimensions." *Phys.
+  Rev. Lett.* **1989**, *62*, 324–327. DOI:
+  [10.1103/PhysRevLett.62.324](<https://doi.org/10.1103/PhysRevLett.62.324>).
+  URL:
+  <https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.62.324>.
+
+> **Reading note.**  The five papers above are
+> the *minimum* reading list for a graduate
+> student who plans to do research on correlated
+> materials.  The *original* Anisimov–Zaanen–
+> Andersen 1991 paper is short and readable; the
+> *original* Liechtenstein 1995 paper is *very*
+> short (four pages) and *very* dense.  The
+> *original* Dudarev 1998 paper is short and
+> readable.  The *original* Metzner–Vollhardt
+> 1989 paper is short and readable.  The
+> *Georges–Kotliar–Krauth–Rozenberg* 1996 review
+> is *long* (113 pages) and is the *standard*
+> reference for DMFT.  The reader who wants the
+> *modern* developments should look at the Kotliar
+> *et al.* 2006 review of DFT+DMFT and the
+> Rohringer *et al.* 2018 review of diagrammatic
+> extensions of DMFT.
+## 13.10 What we left out
 
 The chapter scratched the surface of a deep
 subject.  The omissions below are the most
@@ -1813,7 +3489,7 @@ important for a complete picture.
   (**TD-DMFT**) handles pump–probe experiments
   and the driven Mott insulator; the
   practical implementation of DFT+DMFT (in
-  [TRIQS/DFTTools](https://triqs.github.io/triqs/),
+  [TRIQS/DFTTools](<https://triqs.github.io/triqs/>),
   Questaal, or the ComCTQMC impurity solver) is
   a substantial engineering effort in its own
   right.  We did not derive any of these.
@@ -1896,19 +3572,31 @@ TD-DMFT dynamics — is a subject in its own right.
 > ([chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }}))), and
 > the time-dependent extension
 > ([chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }})).  This
-> chapter — the last of the series — is the
-> "where the rubber meets the road" chapter for
-> correlated materials, the chapter where the
-> standard approximations are *not enough* and
-> the *fixes* (DFT+U, hybrids, GW, DMFT) live.
-> The reader who has come this far has the
-> background to read any modern paper on
-> electronic-structure methods.  The reader who
-> wants to *do* the calculations on a real
-> material needs the practice: install
+> chapter is the "where the rubber meets the
+> road" chapter for correlated materials, the
+> chapter where the standard approximations are
+> *not enough* and the *fixes* (DFT+U, hybrids,
+> GW, DMFT) live.  The reader who has come this
+> far has the background to read any modern
+> paper on electronic-structure methods.  The
+> reader who wants to *do* the calculations on a
+> real material needs the practice: install
 > Quantum ESPRESSO or VASP, run a DFT+U
 > calculation on NiO, compare to a $G_0 W_0$
 > calculation in Yambo, and then — if they are
 > brave — try a DMFT calculation in TRIQS.  The
-> road from here is long, but the foundations
+> remaining chapters then broaden the scope to
+> post-Hartree–Fock quantum-chemistry methods
+> ([chapter 14]({{ "/dft-notes/chapter-14/" | relative_url }})),
+> relativistic effects
+> ([chapter 15]({{ "/dft-notes/chapter-15/" | relative_url }})),
+> topological materials
+> ([chapter 16]({{ "/dft-notes/chapter-16/" | relative_url }})),
+> and machine-learned interatomic potentials
+> ([chapter 17]({{ "/dft-notes/chapter-17/" | relative_url }})).
+> The road from here is long, but the foundations
 > are in place.
+
+> Next: [chapter 14]({{ "/dft-notes/chapter-14/" | relative_url }})
+> — coupled-cluster, configuration interaction, and the quantum
+> chemistry that lives *outside* the Kohn–Sham box.

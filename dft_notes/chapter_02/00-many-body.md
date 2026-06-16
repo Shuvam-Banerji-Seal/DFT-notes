@@ -57,8 +57,7 @@ various ways, an attempt to add **electron correlation** on top of it
 without paying the full exponential cost.
 
 > **Reading note.** This chapter assumes the postulates and the
-> electronic Hamiltonian of [chapter 01]({{ site.baseurl
-> }}/dft-notes/chapter-01/).  It introduces two new pieces of
+> electronic Hamiltonian of [chapter 01]({{ site.baseurl}}/dft-notes/chapter-01/).  It introduces two new pieces of
 > notation — *spin-orbitals* and *Slater determinants* — and one new
 > piece of vocabulary — the *correlation energy*.  All three are
 > defined the first time they appear, and the section-level
@@ -614,7 +613,7 @@ and *two-electron integrals*
 
 The notation $\langle pq \mid rs \rangle$ is **physicists'** notation
 — the bar separates the bra/ket for electron 1 from the bra/ket for
-electron 2.  (The equivalent **chemists'** notation is $[pq|rs]$;
+electron 2. (The equivalent **chemists'** notation is $[pq|rs]$;
 they differ by a complex conjugation of the second pair, and the
 two are equal for real orbitals.)
 
@@ -956,7 +955,7 @@ where we stand:
    all of this kind; they work because they avoid the
    exponentially-hard problem rather than solving it.
 
-The rest of these notes is almost entirely about option 2.  We
+The rest of these notes is almost entirely about option 2. We
 take a *short* detour through Hartree–Fock first, because the HF
 orbitals and eigenvalues are the language in which Kohn–Sham DFT is
 written, and because the Fock operator is the cleanest example of a
@@ -970,8 +969,7 @@ matrix — but it is *easy* to *make* visible in a toy problem.  We
 build a one-dimensional model of two electrons in a box of length
 $L = 4$ bohr, with a soft short-range repulsion between them, and
 solve the model in a tiny basis by hand.  The script
-[`dft_notes/python_codes/chapter_02/01-two-electron-box.py`]({{
-site.baseurl }}/dft_notes/python_codes/chapter_02/01-two-electron-box.py)
+[`dft_notes/python_codes/chapter_02/01-two-electron-box.py`]({{site.baseurl }}/dft_notes/python_codes/chapter_02/01-two-electron-box.py)
 does exactly this.
 
 ```python
@@ -982,8 +980,7 @@ Two electrons in a 1-D box with a soft short-range repulsion.
 A toy many-body problem solved by direct full CI in a sine basis.
 
   - One-electron basis: the first K sin(n pi x / L) functions on
-    [0, L] with the particle-in-a-box Hamiltonian h_1.
-  - Two-electron interaction: a soft Gaussian repulsion
+    [0, L] with the particle-in-a-box Hamiltonian h_1. - Two-electron interaction: a soft Gaussian repulsion
     V(x1, x2) = lambda * exp(-(x1 - x2)^2 / sigma^2) with
     lambda = 1.0 Hartree, sigma = 0.5 bohr.
   - N_alpha = N_beta = 1, so N_det = K^2 (spin-adapted CI:  K_orb
@@ -1011,18 +1008,15 @@ LAMBDA  = 1.0       # repulsion strength, Hartree
 SIGMA   = 0.5       # repulsion range,    bohr
 N_GRID  = 400       # spatial grid for integrals
 
-
 # --- One-electron grid --------------------------------------------------
 x  = np.linspace(0.0, L, N_GRID)
 dx = x[1] - x[0]
-
 
 # --- One-electron basis: sine functions ---------------------------------
 def sin_basis(K, L, x):
     """Return the K lowest sin(n pi x / L) functions on a grid."""
     n = np.arange(1, K + 1)[:, None]
     return np.sqrt(2.0 / L) * np.sin(n * np.pi * x / L)
-
 
 # --- One-electron Hamiltonian matrix -----------------------------------
 def one_electron_hamiltonian(K, L, x, dx):
@@ -1034,7 +1028,6 @@ def one_electron_hamiltonian(K, L, x, dx):
     lap[:,  0] = 0.0
     lap[:, -1] = 0.0
     return -0.5 * chi @ lap.T * dx       # (K, K)
-
 
 # --- Two-electron integrals <pq|rs> -------------------------------------
 def two_electron_integrals(K, L, x, dx, lam, sig):
@@ -1054,8 +1047,7 @@ def two_electron_integrals(K, L, x, dx, lam, sig):
 
 The complete script (with the Slater–Condon rules, the
 diagonalisation, and the convergence plot) is in
-[`dft_notes/python_codes/chapter_02/01-two-electron-box.py`]({{
-site.baseurl }}/dft_notes/python_codes/chapter_02/01-two-electron-box.py);
+[`dft_notes/python_codes/chapter_02/01-two-electron-box.py`]({{site.baseurl }}/dft_notes/python_codes/chapter_02/01-two-electron-box.py);
 the run command from the repo root is
 `python dft_notes/python_codes/chapter_02/01-two-electron-box.py`.
 The script produces two plots: a convergence plot of the first few
@@ -1101,9 +1093,14 @@ graph TD
   classDef next fill:#1c1f17,stroke:#f0ebde,stroke-width:1px;
 
   class GEOM input
-  class AOINT,DETS,HCORE,EIG compute
+  class AOINT compute
+  class DETS compute
+  class HCORE compute
+  class EIG compute
   class DETS explosion
-  class E0,C0,RHO output
+  class E0 output
+  class C0 output
+  class RHO output
   class NEXT next
 ```
 
@@ -1225,13 +1222,10 @@ configurations and is added at the end.
 > **Note (units and accuracy).**  The numbers in
 > \eqref{eq:ch-02-h2-h} and \eqref{eq:ch-02-h2-v} are given to
 > four decimal places.  The integrals in
-> [`dft_notes/python_codes/chapter_06/01-sto-3g-h2.py`]({{
-> site.baseurl }}/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py)
+> [`dft_notes/python_codes/chapter_06/01-sto-3g-h2.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py)
 > are computed to ten decimal places; the truncation here is for
 > readability.  The four-decimal figures reproduce the Szabo–
-> Ostlund *Modern Quantum Chemistry* Table 4.1.
-
-### 2.5.3 The 4 × 4 CI matrix
+> Ostlund *Modern Quantum Chemistry* Table 4.1. ### 2.5.3 The 4 × 4 CI matrix
 
 The Slater–Condon rules of §2.2.6 give the matrix elements.  We
 list the matrix elements of $\hat H_{\text{el}}$ between the four
@@ -1537,9 +1531,7 @@ $\alpha(1)\beta(2) - \beta(1)\alpha(2)$ is antisymmetric (it is
 the spin singlet, which flips sign under exchange of the *spin*
 labels).  The product is therefore antisymmetric in
 $(\mathbf r, \sigma) \leftrightarrow (\mathbf r', \sigma')$,
-which is the content of postulate P6.
-
-**Vanishing for same spin and same orbital.**  Suppose both
+which is the content of postulate P6. **Vanishing for same spin and same orbital.**  Suppose both
 electrons are $\alpha$ and both in $\phi_{1s}$:
 
 $$
@@ -1630,9 +1622,7 @@ Project onto $\Phi_1$ and integrate:
   spin integral is 1, and the spatial integral is $h_{11}$.
 
 - **$\hat h_2$:** $\langle \Phi_1 \mid \hat h_2 \mid \Phi_1 \rangle = h_{11}$
-  by the same argument with electron 2.
-
-- **$\hat v_{12}$:** $\langle \Phi_1 \mid \hat v_{12} \mid \Phi_1
+  by the same argument with electron 2. - **$\hat v_{12}$:** $\langle \Phi_1 \mid \hat v_{12} \mid \Phi_1
   \rangle$ involves the two-electron operator
   $1/|\mathbf r_1 - \mathbf r_2|$.  The spin factors are still
   $\langle \alpha \mid \alpha \rangle \langle \beta \mid \beta
@@ -1843,7 +1833,7 @@ rest of the correlation energy.
 - [Chapter 03]({{ site.baseurl }}/dft-notes/chapter-03/) —
   Hartree–Fock theory.  The HF method is the *single-determinant
   approximation* of §2.2.3, and the HF energy is the *reference*
-  for the correlation energy of §2.2.7.  The Slater–Condon rules
+  for the correlation energy of §2.2.7. The Slater–Condon rules
   of §2.2.6 are used to derive the Fock matrix.
 - [Chapter 04]({{ site.baseurl }}/dft-notes/chapter-04/) —
   Kohn–Sham DFT.  The *only* output of a Kohn–Sham calculation
@@ -1878,10 +1868,10 @@ rest of the correlation energy.
 
 - A. Szabo and N. S. Ostlund, *Modern Quantum Chemistry:
   Introduction to Advanced Electronic Structure Theory*,
-  §3–4.  The source of the Slater–Condon rules derivation and
+  §3–4. The source of the Slater–Condon rules derivation and
   the STO-3G $\mathrm{H}_2$ benchmark.
 - T. Helgaker, P. Jorgensen, J. Olsen, *Molecular Electronic-
-  Structure Theory*, §11.  The modern treatment in the language
+  Structure Theory*, §11. The modern treatment in the language
   of second quantisation.
 - R. J. Bartlett, "Coupled-cluster theory in quantum chemistry",
   *Rev. Mod. Phys.* **79**, 291 (2007).  The standard review

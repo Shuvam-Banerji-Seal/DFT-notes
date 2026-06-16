@@ -100,9 +100,7 @@ and used without comment thereafter.
 Position vectors, momenta, lattice vectors, and the angular
 momenta.  All vectors in this section are 3-D Euclidean
 vectors; in this section and throughout, *bold* indicates a
-vector.  Operators on them are in §3.
-
-| Symbol | LaTeX | Plain text | Description | First appearance |
+vector.  Operators on them are in §3. | Symbol | LaTeX | Plain text | Description | First appearance |
 |:------|:------|:-----------|:------------|:-----------------|
 | $\mathbf r$ | `\mathbf r` | **r** | Position of an electron in $\mathbb R^3$ | Ch 00 §"Notation" |
 | $\mathbf r_i$ | `\mathbf r_i` | **r_i** | Position of the $i$-th electron | Ch 01 §1.1 |
@@ -495,7 +493,7 @@ and 11 (band structures).
 > *Bloch wavevector* $\mathbf k$ in chapter 07, and a
 > *high-symmetry point* in chapter 07 (the FCC band-structure
 > path).  $L$ is the *angular-momentum quantum number* in
-> chapter 01 and a *high-symmetry point* in chapter 07.  The
+> chapter 01 and a *high-symmetry point* in chapter 07. The
 > context always disambiguates.
 
 ---

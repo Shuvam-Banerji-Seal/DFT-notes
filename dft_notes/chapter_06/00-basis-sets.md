@@ -318,7 +318,7 @@ worked example in section 6.9 uses this set verbatim.
 > errors against the basis-set limit are tens of milli-Hartree,
 > and its predicted bond lengths and frequencies have known,
 > systematic biases.  Nobody publishes STO-3G *production*
-> numbers in 2025.  But its small size — two functions for
+> numbers in 2025. But its small size — two functions for
 > $\rm H_2$, ten for $\rm H_2 O$ — makes it the right basis for
 > a worked example (section 6.9).
 
@@ -585,8 +585,8 @@ companion script (Python, full source below) returns
 
 ```text
 Overlap S:
-[[1.     0.6593]
- [0.6593 1.    ]]
+[[1. 0.6593]
+ [0.6593 1. ]]
 
 Kinetic T:
 [[0.76   0.2365]
@@ -679,9 +679,7 @@ result.  The bonding orbital $\sigma_g$ has no node and most
 of its amplitude in the bond midpoint; the antibonding
 $\sigma_u^*$ has a node at $z = R/2$ and opposite signs on the
 two atoms.  The plot of both MOs along the bond axis is in
-figure 1.
-
-The full source (with the integral routines, the SCF loop,
+figure 1. The full source (with the integral routines, the SCF loop,
 and the plotting) lives at
 `dft_notes/python_codes/chapter_06/01-sto-3g-h2.py`.  The
 key piece is the contracted-integral helper and the SCF
@@ -707,7 +705,6 @@ def contracted_eri(aA, dA, aB, dB, aC, dC, aD, dD,
                             * prim_eri(ai, bj, ck, dl,
                                        rAB2, rCD2, rPQ2))
     return eri
-
 
 # ... in main() ...
 for it in range(64):
@@ -1517,9 +1514,7 @@ nucleus, the typical $E_\text{cut}$ drops from $\sim 1000\,E_h$
 (all-electron) to $\sim 30$–$80\,E_h$ (PAW with a
 $1s$–$3d$ valence).  The cost saving is roughly two orders of
 magnitude in plane-wave count, and two more in the
-diagonalisation cost — see Problem 3 of section 6.11.
-
-### 6.15.3 Augmentation charges
+diagonalisation cost — see Problem 3 of section 6.11. ### 6.15.3 Augmentation charges
 
 The PAW density and Kohn–Sham potential are not just evaluated
 on the plane-wave grid.  A separate **augmentation** treatment

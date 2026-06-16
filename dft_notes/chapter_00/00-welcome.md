@@ -301,11 +301,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-
 def hydrogen_1s_density(r, Z=1):
     """Electron density of the hydrogen 1s orbital, |psi_1s(r)|^2."""
     return (Z ** 3 / np.pi) * np.exp(-2.0 * Z * r)
-
 
 def main():
     r = np.linspace(0.0, 20.0, 400)
@@ -322,7 +320,6 @@ def main():
     fig.tight_layout()
     fig.savefig(out, dpi=120)
     print(f"Wrote {out}")
-
 
 if __name__ == "__main__":
     main()
@@ -544,7 +541,7 @@ graph TD
 
 The graph has one source (chapter 00) and a "fan-in" structure
 in the middle: chapters 03 and 04 both depend on chapter 02 and
-both feed chapter 05.  This is deliberate — Hartree–Fock and
+both feed chapter 05. This is deliberate — Hartree–Fock and
 Kohn–Sham are alternative answers to the same question (chapter
 02's "what is the best independent-particle approximation?"),
 and the two paths merge again when we discuss exchange–
@@ -658,7 +655,7 @@ whole.
 
 To see the *cross-chapter* version of the same idea, follow the
 symbol $\rho(\mathbf r)$ — the electron density — from chapter
-01 to chapter 06.  It is the single most reused symbol in the
+01 to chapter 06. It is the single most reused symbol in the
 notes.
 
 | Chapter | Role of $\rho(\mathbf r)$                                                          |
@@ -795,7 +792,7 @@ Each of those is a separate knowledge base.
 |:-----------------------------------|:---------------------------------------------------------|
 | Parr & Yang, *Density-Functional Theory of Atoms and Molecules* (1989) | The classical text. Dense but complete. |
 | Engel & Dreizler, *Density Functional Theory* (2011) | A gentler, more modern alternative. |
-| Burke, *The ABC of DFT* ([ABC of DFT](https://dft.uci.edu/doc/ABC_of_DFT.pdf)) | A 40-page primer. Read this first. |
+| Burke, *The ABC of DFT* ([ABC of DFT](<https://dft.uci.edu/doc/ABC_of_DFT.pdf>)) | A 40-page primer. Read this first. |
 | Koch & Holthausen, *A Chemist's Guide to DFT* (2nd ed., 2001) | For the chemistry-oriented practitioner. |
 | Mardirossian & Head-Gordon, *Thirty Years of Density Functional Theory* (2017) | The modern XC-functional landscape. |
 
@@ -810,7 +807,7 @@ chapters the problems are DFT problems proper.
 <summary>Problem 1 (easy) — Locate the claim</summary>
 
 Open [chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) and
-look at section 6.1.  Write down:
+look at section 6.1. Write down:
 
 1. the *label* of the first numbered equation (the "headline" of
    chapter 06);
@@ -819,9 +816,7 @@ look at section 6.1.  Write down:
 3. one sentence saying *what physical claim* the chapter is
    making.
 
-Do not skip ahead; the answer is all in section 6.1.
-
-</details>
+Do not skip ahead; the answer is all in section 6.1. </details>
 
 <details class="answer">
 <summary>Show answer</summary>

@@ -209,8 +209,7 @@ eliminates the Pulay force
 
 ### 2.1 Quantum ESPRESSO
 
-- **License:** GPL. **Language:** Fortran 2003.
-  **Repo:** <https://gitlab.com/QEF/q-e>
+- **License:** GPL. **Language:** Fortran 2003. **Repo:** <https://gitlab.com/QEF/q-e>
 - **DFT methods:** KS-DFT (LDA, GGA, meta-GGA, hybrid
   HSE06, PBE0, exact exchange), spin-polarised and
   non-collinear DFT, DFT+U(+V), Wannier-function methods
@@ -295,8 +294,7 @@ eliminates the Pulay force
 
 ### 2.4 ABINIT
 
-- **License:** GPL. **Language:** Fortran 2003.
-  **Repo:** <https://github.com/abinit/abinit>
+- **License:** GPL. **Language:** Fortran 2003. **Repo:** <https://github.com/abinit/abinit>
 - **DFT methods:** KS-DFT (LDA, GGA, meta-GGA, hybrid,
   exact exchange), spin-polarised DFT, DFT+U,
   linear-response DFPT for phonons, dielectric response,
@@ -421,8 +419,7 @@ $f$-electron localisation
 
 ### 3.2 Elk
 
-- **License:** GPL. **Language:** Fortran 2003.
-  **Repo:** <https://elk.sourceforge.io/>
+- **License:** GPL. **Language:** Fortran 2003. **Repo:** <https://elk.sourceforge.io/>
 - **DFT methods:** Full-potential LAPW. LDA, GGA,
   meta-GGA (SCAN), hybrid (HSE06, PBE0, exact exchange),
   DFT+U, spin-polarised and non-collinear DFT, spin–orbit
@@ -550,8 +547,7 @@ localised excitation.
 
 ### 4.3 SIESTA
 
-- **License:** GPL. **Language:** Fortran 2003.
-  **Repo:** <https://gitlab.com/siesta-project/siesta>
+- **License:** GPL. **Language:** Fortran 2003. **Repo:** <https://gitlab.com/siesta-project/siesta>
 - **DFT methods:** KS-DFT with **numerical atomic
   orbitals (NAOs)** as the basis
   ([chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) §6.13).
@@ -779,9 +775,7 @@ $G_0W_0$ and BSE).
   $G_0W_0$ benchmarks. The community is centred in the
   FHI Berlin and surrounding groups. The trade-off is
   the licence and the smaller user community relative
-  to ORCA / Psi4.
-
-### 7.3 exciting
+  to ORCA / Psi4. ### 7.3 exciting
 
 - **License:** GPL. **Language:** Fortran.
   **Repo:** <https://exciting-code.org/>
@@ -826,8 +820,7 @@ $G_0W_0$ and BSE).
 
 ### 7.5 Yambo
 
-- **License:** GPL. **Language:** Fortran 2003.
-  **Repo:** <https://www.yambo-code.org/>
+- **License:** GPL. **Language:** Fortran 2003. **Repo:** <https://www.yambo-code.org/>
 - **DFT methods:** Many-body perturbation theory:
   $G_0W_0$, $GW_0$, $evGW$, BSE, time-dependent BSE,
   dielectric response, EELS, $GW$ in the "full-frequency"
@@ -941,9 +934,7 @@ then the GW correction") and turns it into a sequence of
 job submissions, with dependency tracking, error
 recovery, and provenance. Workflow managers are not
 electronic-structure codes; they sit *on top of* the
-production codes from sections 1–7.
-
-| Code      | License  | Language   | Best at                                          |
+production codes from sections 1–7. | Code      | License  | Language   | Best at                                          |
 |:----------|:---------|:-----------|:-------------------------------------------------|
 | ASE       | LGPL     | Python     | Lightweight scripting, structure handling, IO    |
 | AiiDA     | MIT      | Python     | Workflow + provenance, sharing, materials cloud  |
@@ -1351,7 +1342,7 @@ Automatic mesh
 0              # 0 = auto: Monkhorst-Pack with explicit offsets
 Gamma          # Gamma-centred (use Monkhorst for non-Gamma-centred)
 8  8  8        # mesh
-0.  0.  0.     # shift
+0. 0. 0. # shift
 ```
 
 ```
@@ -1668,9 +1659,7 @@ of code.
 - PAW method: [chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }}) §8.7.
 - TDDFT: [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.10.3
   (Runge–Gross, Casida).
-- Real-space grids: [chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) §6.8.
-
----
+- Real-space grids: [chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) §6.8. ---
 
 ### 10.4 SIESTA
 

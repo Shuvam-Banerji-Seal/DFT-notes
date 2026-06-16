@@ -95,9 +95,7 @@ Combined with the definitions of the metre and the second, this
 fixes $h$ and hence (via the de Broglie relation
 $p = h/\lambda$) the kilogram.  The old "Le Grand K" prototype
 cylinder, kept at the BIPM in Sèvres, was retired on 20 May
-2019.
-
-### 1.3 Second (time)
+2019. ### 1.3 Second (time)
 
 The **second**, symbol $\text{s}$, is the SI unit of time,
 defined by fixing the cesium-133 ground-state hyperfine
@@ -196,12 +194,10 @@ the SI); its relative uncertainty is $2.3 \times 10^{-10}$.  The
 ## 2. The 2019 CODATA constants
 
 The 2019 CODATA recommended values of the fundamental physical
-constants, in the SI units of §1.  The values flagged *(exact)*
+constants, in the SI units of §1. The values flagged *(exact)*
 are fixed by the 2019 SI redefinition; the rest are the
 2019 CODATA recommended values.  References: Tiesinga, Mohr,
-Newell, Taylor (2021), *Rev. Mod. Phys.* **93**, 025010.
-
-### 2.1 The five defining constants (also in §1)
+Newell, Taylor (2021), *Rev. Mod. Phys.* **93**, 025010. ### 2.1 The five defining constants (also in §1)
 
 | Symbol | Name | Value (SI) | Comment |
 |:-------|:-----|:-----------|:--------|
@@ -381,9 +377,7 @@ electromagnetic potentials only.
 
 The combination $E_h/a_0$ is sometimes called a "natural
 unit" of force.  The atomic units below are the units in
-which the defining constants of \eqref{eq:pc-au-def} are 1.
-
-### 3.1 The atomic unit of length — the Bohr radius
+which the defining constants of \eqref{eq:pc-au-def} are 1. ### 3.1 The atomic unit of length — the Bohr radius
 
 \begin{equation}
 \label{eq:pc-au-length}
@@ -492,7 +486,7 @@ at the Bohr radius is exactly 1 a.u. of electric field.
 \;\approx\; 27.211\,386\,245\,988\;\text{V} .
 \end{equation>
 
-Numerically equal to the conversion factor of §4.2.  The
+Numerically equal to the conversion factor of §4.2. The
 first ionisation potential of hydrogen is
 $\approx 0.5\;\text{a.u.} = 13.6057\;\text{V}$.
 
@@ -928,7 +922,7 @@ The values in this page are taken from:
 - **Tiesinga, E., Mohr, P. J., Newell, D. B. & Taylor, B. N.**
   (2021).  "CODATA recommended values of the fundamental
   physical constants: 2019."  *Reviews of Modern Physics*
-  **93**, 025010.  The five defining constants of the 2019
+  **93**, 025010. The five defining constants of the 2019
   SI redefinition ($c$, $h$, $k_B$, $N_A$, $e$) are
   **exact by definition**; the rest are the 2019 CODATA
   recommended values.
@@ -937,7 +931,7 @@ The values in this page are taken from:
   Structure Theory.*  Dover/McGraw-Hill.  The atomic-unit
   conventions follow this reference.
 - **NIST Reference on Constants, Units, and Uncertainty**
-  ([physics.nist.gov/cuu](https://physics.nist.gov/cuu/Constants/)).
+  ([physics.nist.gov/cuu](<https://physics.nist.gov/cuu/Constants/>)).
 
 ### 8.1 Discrepancies with earlier tables
 
@@ -960,13 +954,13 @@ code, not the *output*.  Specifically:
 
 - The **atomic-orbital basis** coefficients (Chapter 06 §6.3)
   are basis-set parameters, not physical constants; see the
-  [EMSL basis-set exchange](https://www.basissetexchange.org/).
+  [EMSL basis-set exchange](<https://www.basissetexchange.org/>).
 - The **nuclear charges** $Z_I$ of the chemical elements are
   integers, defined by the atomic number.
 - The **Standard Model** constants (Fermi constant, CKM
   angles, …) do not enter DFT and are not listed here.
 - The **isotopic masses** are tabulated by the
-  [NIST Atomic Spectra Database](https://www.nist.gov/pml/atomic-spectra-database).
+  [NIST Atomic Spectra Database](<https://www.nist.gov/pml/atomic-spectra-database>).
 
 ### 8.3 Recommended reading
 

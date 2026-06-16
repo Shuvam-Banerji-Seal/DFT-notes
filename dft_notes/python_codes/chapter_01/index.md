@@ -11,8 +11,7 @@ keywords: "Python, numpy, scipy, matplotlib, Schrödinger, particle in a box,
 
 # Chapter 01 — Python codes
 
-> Runnable companions to [Chapter 01 (Schrödinger equation)]({{
-> site.baseurl }}/dft-notes/chapter-01/) — the three prototype
+> Runnable companions to [Chapter 01 (Schrödinger equation)]({{ site.baseurl }}/dft-notes/chapter-01/) — the three prototype
 > one-body problems whose analytic solutions are the building
 > blocks of every later chapter.  Each script is the source of
 > truth for the numbers quoted in the chapter prose; if a

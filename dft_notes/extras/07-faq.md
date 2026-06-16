@@ -459,7 +459,7 @@ The map \(\mathcal F\) is the **SCF map**; its fixed point is
 the self-consistent solution.  Convergence can be
 *accelerated* by density mixing (Pulay, Broyden, DIIS); see
 [Chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }})
-§4.6.  "SCF" stands for "self-consistent field" — a
+§4.6. "SCF" stands for "self-consistent field" — a
 historical name from the Hartree–Fock days.
 
 **See:** [Chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.6; [Chapter 03]({{ "/dft-notes/chapter-03/" | relative_url }}) §3.6
@@ -809,7 +809,7 @@ struggles.  Smearing also helps with **fractional
 occupations** in near-degenerate cases (HOMO–LUMO near
 zero, transition states).  The price is that the energy you
 get is the *free energy*, not the ground-state energy, and
-the occupations are no longer 0 or 1.  A pragmatic recipe:
+the occupations are no longer 0 or 1. A pragmatic recipe:
 run with smearing (e.g. \(\sigma = 0.05\)–0.1 eV) and **tight
 SCF**; **re-converge the final result without smearing** (or
 with a very small width), starting from the smeared density.
@@ -995,7 +995,7 @@ A few common ones and what they usually mean:
 | `BRMIX: linear search failed` (VASP) | Same as above; the Kerker-style mixer cannot find a step that lowers the energy. |
 | `subspacematrix not positive definite` (VASP) | Almost-empty bands / numerical instability in subspace diagonalisation.  Try a different `ALGO`, or add more bands. |
 | `cannot orthogonalise` (CP2K) | Linear-dependency collapse in a Gaussian basis (very diffuse functions).  Tighten the basis, or use `EPS_DEFAULT`. |
-| `SCF run did not converge` (ORCA) | As in C.9.  Try `SlowConv`, `DIIS`, or change `MAXITER`. |
+| `SCF run did not converge` (ORCA) | As in C.9. Try `SlowConv`, `DIIS`, or change `MAXITER`. |
 | `k-point fold > max` (Quantum ESPRESSO) | Lattice vectors are too small; the BZ is over-folded.  Check the structure. |
 | `poisson solver failed` (SIESTA, GPAW) | Bad initial guess; try `DM.Init.State random` or `density_init` from a previous run. |
 
@@ -1149,17 +1149,15 @@ paper** that you cite in addition to the code website.
 **6**, 15; Kresse & Joubert (1999) *Phys. Rev. B* **59**, 1758
 (for PAW).  **Quantum ESPRESSO** — Giannozzi et al. (2009)
 *J. Phys. Condens. Matter* **21**, 395502; Giannozzi et al.
-(2017) *J. Phys. Condens. Matter* **29**, 465901.  **CP2K** —
+(2017) *J. Phys. Condens. Matter* **29**, 465901. **CP2K** —
 Hutter et al. (2014) *WIREs Comput. Mol. Sci.* **4**, 15.
 **SIESTA** — Soler et al. (2002) *J. Phys. Condens. Matter*
-**14**, 2745.  **ORCA** — Neese (2012) *WIREs Comput. Mol.
+**14**, 2745. **ORCA** — Neese (2012) *WIREs Comput. Mol.
 Sci.* **2**, 73; Neese (2018) *WIREs Comput. Mol. Sci.* **8**,
-e1327.  **Gaussian** — Frisch et al., *Gaussian 16 Revision
-C.01*, Gaussian Inc., 2016.  **CASTEP** — Clark et al. (2005)
-*Z. Kristallogr.* **220**, 567.  **PySCF** — Sun et al.
-(2018) *J. Chem. Phys.* **153**, 024109.
-
-Always cite the *version* (e.g. "VASP 6.3.0"), the
+e1327. **Gaussian** — Frisch et al., *Gaussian 16 Revision
+C.01*, Gaussian Inc., 2016. **CASTEP** — Clark et al. (2005)
+*Z. Kristallogr.* **220**, 567. **PySCF** — Sun et al.
+(2018) *J. Chem. Phys.* **153**, 024109. Always cite the *version* (e.g. "VASP 6.3.0"), the
 *functional* (e.g. "PBE-D3"), the *pseudopotential library*
 (e.g. "PAW_PBE from the VASP library"), and the *convergence
 parameters* in the methods section.  This is the most common

@@ -21,7 +21,7 @@ keywords: "Schrödinger equation, postulates, Hamiltonian, wavefunction,
 > mean-field approximation, or a comment on this one.
 
 This chapter is the foundation under everything that follows. It does
-four things. **(1)** States the postulates that fix the formalism
+five things. **(1)** States the postulates that fix the formalism
 (section 1.2) and writes down the **time-independent** Schrödinger
 equation (TISE) for the electronic Hamiltonian in atomic units
 (section 1.1). **(2)** Walks through the particle in a box as a
@@ -32,14 +32,22 @@ catalogue of the operators that recur in every later chapter
 equation (TDSE) from the time-dependent variational principle,
 reconstructs the TISE as the special case of a stationary state, and
 states the unitarity + continuity consequences (section 1.7).
-**(4)** Builds, on top of the TDSE, the Dyson-series machinery of
-time-dependent perturbation theory, derives **Fermi's golden rule**
-(section 1.8), and applies the framework to the two exactly
-soluble many-body problems that anchor all of quantum chemistry:
-the **harmonic oscillator** (section 1.9) and the **hydrogen atom**
-(section 1.10). No prior quantum knowledge is assumed; every
-operator and every symbol is defined where it first appears.
-
+**(4)** Develops the **operator formalism** — linear operators on
+Hilbert space, the canonical commutation relations, the spectral
+theorem, and functions of operators such as the time-evolution
+operator $\hat U(t) = e^{-i\hat H t}$ (section 1.10) — and uses
+it to re-derive the time-evolution propagator, the stationary-state
+phase factor, and Fermi’s golden rule in operator language
+(section 1.11). **(5)** Closes the formal foundation with a
+preview of the **symmetry and conservation-law** structure of
+quantum mechanics (section 1.12): Noether’s theorem, the
+discrete symmetries of parity / time-reversal / particle–hole,
+and the selection rules they imply. The two exactly soluble
+many-body problems that anchor all of quantum chemistry are then
+solved within that framework: the **harmonic oscillator**
+(section 1.9) and the **hydrogen atom** (section 1.13). No prior
+quantum knowledge is assumed; every operator and every symbol is
+defined where it first appears.
 > **Notation.** We work throughout in **atomic units** ($\hbar = m_e
 > = e = 4\pi\varepsilon_0 = 1$). Lengths are in Bohr ($a_0$),
 > energies in Hartree ($E_h$). The conversion factors
@@ -325,14 +333,13 @@ successive approximations that make the problem tractable: mean-field
 theory, density-functional reformulation, and the zoo of
 exchange–correlation functionals.
 
-This chapter anchors every later one with four **exact** results
-that follow from the postulates alone: the harmonic oscillator
-(section 1.9), the hydrogen atom (section 1.10), the Dyson
-series and Fermi's golden rule for time-dependent perturbations
-(section 1.8), and the time-dependent Schrödinger equation
-(section 1.7). All four are needed before we can say *what
-DFT is approximating*.
-
+This chapter anchors every later one with five **exact** results
+that follow from the postulates alone: the operator formalism
+(commutators, spectral theorem, time-evolution operator) of section 1.10, the Dyson series and Fermi’s golden rule for time-dependent
+perturbations (section 1.8), the time-dependent Schrödinger
+equation (section 1.7), the harmonic oscillator (section 1.9), and
+the hydrogen atom (section 1.13). All five are needed before we
+can say *what DFT is approximating*.
 > Next: [chapter 02]({{ "/dft-notes/chapter-02/" | relative_url }}) —
 > the many-body problem and why a single Slater determinant isn't
 > enough.
@@ -791,7 +798,7 @@ $2\pi$). Equation \eqref{eq:ch-01-fermi} is the workhorse of
 spectroscopy: the rate of an $|i\rangle \to |f\rangle$ transition
 is the *square* of the matrix element of the perturbation
 between the two states, times the density of final states at the
-resonance energy. We will use it in section 1.10 to compute the
+resonance energy. We will use it in section 1.13 to compute the
 spontaneous-emission rate of the hydrogen $2p \to 1s$ transition.
 
 > **Tip.** Fermi's golden rule is **first order in the
@@ -1107,7 +1114,919 @@ graph TD
   C --> P4["Resolves the identity:<br/>(1/π)∫ |α⟩⟨α| d²α = 1̂"]
 ```
 
-## 1.10 The hydrogen atom
+## 1.10 Operator formalism
+
+Sections 1.7–1.9 used operators freely — the Hamiltonian, the
+position and momentum operators, the annihilation and creation
+operators — but treated them as the *objects* of differential
+equations. This section lifts that treatment to the **abstract
+operator level**: definitions that do not depend on a particular
+representation, properties of operators under addition and
+multiplication, and the key commutator structure that makes
+quantum mechanics what it is.
+
+### 1.10.1 Linear operators on Hilbert space
+
+A **linear operator** on the Hilbert space $\mathcal H$ is a map
+$\hat A: \mathcal H \to \mathcal H$ that preserves linear
+combinations,
+
+\begin{equation}
+\hat A \big( \alpha \lvert \psi \rangle + \beta \lvert \phi \rangle \big)
+\;=\; \alpha\, \hat A \lvert \psi \rangle + \beta\, \hat A \lvert \phi \rangle .
+\label{eq:ch-01-10-linear}
+\tag{1.10.1}
+\end{equation}
+
+Every operator used in the rest of these notes is linear. The
+**adjoint** (or **Hermitian conjugate**) $\hat A^\dagger$ of a
+linear operator is defined by
+
+\begin{equation}
+\langle \phi \rvert \hat A \psi \rangle
+\;=\; \langle \hat A^\dagger \phi \rvert \psi \rangle
+\qquad \text{for all } \lvert \phi \rangle, \lvert \psi \rangle \in \mathcal H .
+\label{eq:ch-01-10-adjoint}
+\tag{1.10.2}
+\end{equation}
+
+The adjoint reverses the order of products,
+$(\hat A \hat B)^\dagger = \hat B^\dagger \hat A^\dagger$, and maps
+scalars to their complex conjugates, $(\alpha \hat A)^\dagger =
+\alpha^* \hat A^\dagger$. Three special cases are worth
+singling out.
+
+1. **Hermitian (self-adjoint) operators** satisfy
+   $\hat A^\dagger = \hat A$. They are the candidates for
+   **observables** (postulate P2): their eigenvalues are real,
+   and their eigenstates at distinct eigenvalues are orthogonal.
+   All operators in section 1.4 (kinetic, potential, Coulomb,
+   exchange, …) are Hermitian.
+2. **Unitary operators** satisfy
+
+\begin{equation}
+\hat U^\dagger \hat U \;=\; \hat U \hat U^\dagger \;=\; \hat 1 .
+\label{eq:ch-01-10-unitary}
+\tag{1.10.3}
+\end{equation}
+
+   They preserve inner products
+   ($\langle \hat U \psi \rvert \hat U \phi \rangle = \langle \psi \rvert \phi \rangle$)
+   and norms, and are the candidates for **symmetry operations**
+   (translations, rotations, time evolution). The time-evolution
+   operator of section 1.11 is the most important unitary
+   operator in these notes.
+3. **Antiunitary operators** satisfy
+   $\hat A^\dagger \hat A = \hat 1$ but additionally take the
+   complex conjugate of scalars,
+   $\hat A (\alpha \lvert \psi \rangle) = \alpha^* \hat A \lvert \psi \rangle$.
+   The time-reversal operator of section 1.12.2 is the only
+   antiunitarian we will meet.
+
+> **Tip.** The bra-ket notation makes the adjoint operation
+> easy: $\hat A^\dagger$ is the unique operator such that
+> $\hat A^\dagger \lvert \phi \rangle$ is the **bra**
+> $\langle \phi \rvert \hat A$. This is also why bras and kets
+> come paired: a bra is the adjoint of a ket, and *applying* an
+> operator to a ket is the same as *premultiplying* the
+> corresponding bra by the adjoint.
+
+### 1.10.2 Commutators and the canonical commutation relations
+
+The **commutator** of two operators is
+
+\begin{equation}
+[\hat A, \hat B] \;=\; \hat A \hat B - \hat B \hat A .
+\label{eq:ch-01-10-commutator}
+\tag{1.10.4}
+\end{equation}
+
+Two operators **commute** if their commutator is zero; in that
+case they can be simultaneously diagonalised, and every
+eigenstate of one is an eigenstate of the other. The
+non-commutativity of operators is the **distinguishing feature
+of quantum mechanics**: it is what makes the uncertainty
+principle possible (see Problem 1), and it is the reason that
+position and momentum cannot both be sharp.
+
+The commutation relations that define non-relativistic quantum
+mechanics are the **canonical commutation relations** (CCR),
+
+\begin{equation}
+[\hat x_a, \hat p_b] \;=\; i \delta_{ab} , \qquad
+[\hat x_a, \hat x_b] = [\hat p_a, \hat p_b] = 0 ,
+\label{eq:ch-01-10-ccr}
+\tag{1.10.5}
+\end{equation}
+
+where $a, b \in \{x, y, z\}$. (We work in atomic units, so
+$\hbar = 1$ is implicit; the SI form is
+$[\hat x_a, \hat p_b] = i\hbar \delta_{ab}$.) The multi-particle
+generalisation is
+$[\hat r_{ia}, \hat p_{jb}] = i \delta_{ij} \delta_{ab}$ for
+$i, j \in \{1, \dots, N\}$. The CCR is *not* derived from
+anything more fundamental; it is the **defining algebraic
+structure** of quantum mechanics, and every other commutation
+relation in these notes — angular-momentum algebra, fermionic
+and bosonic commutation rules, the Lie algebra of the Lorentz
+group — is built on top of it.
+
+Two operator identities are used so often that we name them
+now. The **Leibniz rule** for commutators,
+
+\begin{equation}
+[\hat A, \hat B \hat C] \;=\; [\hat A, \hat B]\, \hat C + \hat B\, [\hat A, \hat C] ,
+\label{eq:ch-01-10-leibniz}
+\tag{1.10.6}
+\end{equation}
+
+and its analogue for the **anticommutator**
+$\{\hat A, \hat B\} = \hat A \hat B + \hat B \hat A$,
+
+\begin{equation}
+[\hat A, \hat B \hat C] \;=\; \{\hat A, \hat B\}\,\hat C - \hat B\,\{\hat A, \hat C\} .
+\label{eq:ch-01-10-anticomm}
+\tag{1.10.7}
+\end{equation}
+
+Both follow by writing the product in two orders; they are
+used constantly in the angular-momentum algebra of chapter 2
+and the second-quantised algebra of chapter 3. Applied to a **single-particle Hamiltonian**
+$\hat H = \hat p^2 / 2m + V(\hat{\mathbf r})$ (atomic units:
+$\hat H = \tfrac{1}{2}\hat p^2 + V(\hat{\mathbf r})$), the CCR
+gives
+
+\begin{equation}
+[\hat H, \hat x] \;=\; \frac{i}{m}\, \hat p , \qquad
+[\hat H, \hat{\mathbf p}] \;=\; i\, \nabla V(\hat{\mathbf r}) .
+\label{eq:ch-01-10-H-comm}
+\tag{1.10.8}
+\end{equation}
+
+The first equation is the **Heisenberg form of Newton's second
+law** in the absence of a potential: $d\hat x / dt = \hat p / m$
+via the Heisenberg equation of motion
+$d\hat A/dt = -i[\hat A, \hat H]$ (more on this in section
+1.12.1). The second equation is the same law in momentum
+space: $d\hat{\mathbf p} / dt = -\nabla V$, the gradient of the
+potential. These two relations are the operator-level statement
+of **Ehrenfest's theorem** (section 1.7.5): the centroid of a
+wavepacket obeys Newton's second law.
+
+> **Warning.** The order matters. $[\hat H, \hat x] = i\hat p / m$
+> is the *Heisenberg* commutator (i.e. $[\hat A, \hat H]$ with
+> $\hat A = \hat x$), not $[\hat x, \hat H]$; the two differ by
+> an overall sign. Always write which order you mean.
+
+### 1.10.3 Spectral theorem
+
+The **spectral theorem** is the operator-level statement that
+"an observable has eigenstates and eigenvalues". For a
+self-adjoint operator $\hat A$ on a (separable) Hilbert space,
+the theorem guarantees
+
+1. A complete set of (possibly generalised) eigenstates
+   $\{|a\rangle\}$ satisfying
+
+\begin{equation}
+\hat A \lvert a \rangle \;=\; a\, \lvert a \rangle ,
+\label{eq:ch-01-10-eigen}
+\tag{1.10.9}
+\end{equation}
+
+   where $a$ ranges over the **spectrum** $\sigma(\hat A)$ of
+   $\hat A$. The spectrum is real (because $\hat A$ is
+   Hermitian) and is the disjoint union of a *point spectrum*
+   $\sigma_p$ (eigenvalues with square-integrable eigenstates,
+   like the bound states of hydrogen) and a *continuous
+   spectrum* $\sigma_c$ (eigenvalues for which the eigenstates
+   are distributions, like the scattering states of a free
+   particle).
+
+2. A **spectral decomposition** of the identity,
+
+\begin{equation}
+\hat 1 \;=\; \sum_{a \in \sigma_p} \lvert a \rangle \langle a \rvert
+\;+\; \int_{\sigma_c} d a\, \lvert a \rangle \langle a \rvert .
+\label{eq:ch-01-10-resolution}
+\tag{1.10.10}
+\end{equation}
+
+   (The sum runs over the point spectrum, the integral over the
+   continuous spectrum.) Equation \eqref{eq:ch-01-10-resolution}
+   is the statement that *any* state can be expanded in the
+   eigenbasis of $\hat A$, $|\psi\rangle = \sum_a \psi(a) |a\rangle$
+   with $\psi(a) = \langle a | \psi \rangle$. It is the
+   operator-level foundation of every expansion-based method in
+   chapters 3, 5, and 6. 3. A **spectral representation of the operator itself**,
+
+\begin{equation}
+\hat A \;=\; \sum_{a \in \sigma_p} a\, \lvert a \rangle \langle a \rvert
+\;+\; \int_{\sigma_c} d a\, a\, \lvert a \rangle \langle a \rvert .
+\label{eq:ch-01-10-spectral}
+\tag{1.10.11}
+\end{equation}
+
+   Equations \eqref{eq:ch-01-10-resolution} and
+   \eqref{eq:ch-01-10-spectral} are the same identity with one
+   extra factor of $a$.
+
+> **Tip.** "Complete set of eigenstates" is a stronger claim
+> than "eigenstates exist". A self-adjoint operator on a
+> finite-dimensional Hilbert space always has a complete
+> orthonormal eigenbasis; on an infinite-dimensional one,
+> completeness has to be **proved** (it is what makes the
+> operator "self-adjoint" rather than merely "symmetric"). The
+> proof uses the spectral theorem.
+
+### 1.10.4 Functions of operators
+
+The spectral decomposition makes it possible to define
+**functions of operators** in a representation-independent way.
+For a self-adjoint $\hat A$ with spectrum $\{a\}$ and a
+*Borel-measurable* function $f: \mathbb R \to \mathbb C$,
+
+\begin{equation}
+f(\hat A) \;=\; \sum_{a \in \sigma_p} f(a)\, \lvert a \rangle \langle a \rvert
+\;+\; \int_{\sigma_c} d a\, f(a)\, \lvert a \rangle \langle a \rvert .
+\label{eq:ch-01-10-fun-op}
+\tag{1.10.12}
+\end{equation}
+
+The construction is unambiguous: it does not depend on the
+basis in which we choose to write the operators, only on
+$\hat A$'s spectrum. Three applications recur in these notes.
+
+- **The resolvent** $1/(\hat A - z)$ for $z \notin \sigma(\hat A)$,
+  which builds the Green's functions of chapter 4 and the
+  response functions of chapter 11.
+- **The projector** $P_\Omega = \int_{\Omega} d a\, |a\rangle\langle a|$
+  onto a subset $\Omega$ of the spectrum, which builds the
+  density matrix and the Fermi–Dirac occupation numbers in
+  chapter 7.
+- **The exponential** $e^{\hat A} = \sum_n \hat A^n / n!$
+  (operator series), which by the spectral theorem is
+  equivalent to \eqref{eq:ch-01-10-fun-op} with $f(a) = e^{a}$.
+  The **time-evolution operator** is the most important
+  exponential in these notes:
+
+\begin{equation}
+\hat U(t) \;=\; e^{-i \hat H t} .
+\label{eq:ch-01-10-U}
+\tag{1.10.13}
+\end{equation}
+
+  (Atomic units: $\hbar = 1$; the SI form is
+  $\hat U(t) = e^{-i \hat H t / \hbar}$.) Equation
+  \eqref{eq:ch-01-10-U} is the solution of the TDSE
+  $i \partial_t |\psi\rangle = \hat H |\psi\rangle$ for
+  time-independent $\hat H$, and we will spend section 1.11
+  unpacking its consequences. The series
+  $e^{-i \hat H t} = \sum_n (-i t)^n \hat H^n / n!$ converges
+  for all $t$ because $\hat H$ is bounded below on the
+  physical subspace; this is the operator-level reason that
+  the time-dependent Schrödinger equation has a solution for
+  *all* $t$.
+
+> **Warning.** $f(\hat A)$ is well-defined only when the
+> *functional calculus* of the spectral theorem applies. The
+> operator $\hat A$ must be self-adjoint (or, more generally,
+> *normal*: $\hat A \hat A^\dagger = \hat A^\dagger \hat A$).
+> For non-normal operators the spectral theorem does not apply
+> and "functions of $\hat A$" must be defined case-by-case
+> through operator series (which may not converge) or through
+> the Jordan normal form.
+
+## 1.11 Time evolution
+
+The TDSE was already stated as postulate P5 (section 1.2) and
+its consequences worked out for closed systems with
+time-independent Hamiltonians (section 1.7). This section is
+the **operator-level re-derivation**: starting from the same
+postulate, we now use the operator formalism of section 1.10
+to derive the propagator, the stationary-state phase, the
+time evolution of superpositions, and the perturbative rate
+formulas.
+
+### 1.11.1 The time-dependent Schrödinger equation (TDSE)
+
+The TDSE is postulate P5 of section 1.2, restated in atomic
+units:
+
+\begin{equation}
+i\, \frac{\partial}{\partial t}\, \lvert \psi(t) \rangle
+\;=\; \hat H\, \lvert \psi(t) \rangle .
+\label{eq:ch-01-11-tdse}
+\tag{1.11.1}
+\end{equation}
+
+For an explicitly time-dependent Hamiltonian $\hat H(t)$ the
+same equation holds with $\hat H$ replaced by $\hat H(t)$. We
+assume a *time-independent* Hamiltonian in this section; the
+time-dependent case is the starting point of time-dependent
+perturbation theory (covered separately in section 1.11.5; see
+also section 1.8 for the Dyson-series machinery).
+
+### 1.11.2 The propagator
+
+Equation \eqref{eq:ch-01-11-tdse} is a first-order linear ODE
+in $t$ with operator coefficients. Its general solution can be
+written as
+
+\begin{equation}
+\lvert \psi(t) \rangle \;=\; \hat U(t, t_0)\, \lvert \psi(t_0) \rangle ,
+\label{eq:ch-01-11-propagator}
+\tag{1.11.2}
+\end{equation}
+
+where $\hat U(t, t_0)$ is the **time-evolution operator** (or
+**propagator**) from $t_0$ to $t$. Substituting back into the
+TDSE gives the equation of motion for $\hat U$,
+
+\begin{equation}
+i\, \frac{\partial}{\partial t}\, \hat U(t, t_0)
+\;=\; \hat H\, \hat U(t, t_0) , \qquad
+\hat U(t_0, t_0) \;=\; \hat 1 .
+\label{eq:ch-01-11-U-eom}
+\tag{1.11.3}
+\end{equation}
+
+For time-independent $\hat H$ the equation is solved by the
+operator exponential \eqref{eq:ch-01-10-U}:
+
+\begin{equation}
+\hat U(t, t_0) \;=\; e^{-i \hat H (t - t_0)} .
+\label{eq:ch-01-11-U-explicit}
+\tag{1.11.4}
+\end{equation}
+
+Two algebraic identities follow directly from the Hermiticity
+of $\hat H$.
+
+1. **Group property**:
+   \begin{equation}
+   \hat U(t_2, t_1)\, \hat U(t_1, t_0) \;=\; \hat U(t_2, t_0) .
+   \label{eq:ch-01-11-group}
+   \tag{1.11.5}
+   \end{equation}
+   Time evolution is deterministic: knowing the state at
+   $t_0$ determines it at all times, and the intermediate
+   propagators compose as an ordinary one-parameter group.
+2. **Unitarity**:
+   \begin{equation}
+   \hat U^\dagger(t, t_0)\, \hat U(t, t_0) \;=\; \hat 1 .
+   \label{eq:ch-01-11-unitary}
+   \tag{1.11.6}
+   \end{equation}
+   The propagator is a unitary operator; the inner product of
+   two states is preserved by time evolution, and the norm of
+   a single state is preserved (postulate P1 in motion).
+
+The composition property \eqref{eq:ch-01-11-group} and the
+existence of the inverse
+$\hat U(t_0, t) = \hat U^\dagger(t, t_0)$ are what it means
+for $\hat U$ to be a **one-parameter unitary group**. Stone's
+theorem guarantees that every such group is of the form
+$e^{-i \hat H t}$ for some self-adjoint $\hat H$; conversely,
+every self-adjoint $\hat H$ generates a one-parameter unitary
+group. The TDSE and Stone's theorem are the two sides of the
+same coin.
+
+> **Tip.** For an explicitly time-dependent Hamiltonian, the
+> propagator is a **time-ordered exponential**,
+> $\hat U(t, t_0) = \mathcal T \exp\!\big[-i \int_{t_0}^{t} \hat H(t')\, dt'\big]$,
+> and the Dyson series of section 1.8 is the perturbative
+> expansion of that object in powers of $\hat V(t)$.
+
+### 1.11.3 Stationary states
+
+If the initial state is an **energy eigenstate**
+$\hat H \lvert \psi_n \rangle = E_n \lvert \psi_n \rangle$, the
+propagator \eqref{eq:ch-01-11-U-explicit} acts on it by a
+global phase:
+
+\begin{equation}
+\hat U(t, 0)\, \lvert \psi_n \rangle \;=\; e^{-i E_n t}\, \lvert \psi_n \rangle
+\quad\Longrightarrow\quad
+\lvert \psi_n(t) \rangle \;=\; e^{-i E_n t}\, \lvert \psi_n(0) \rangle .
+\label{eq:ch-01-11-stationary}
+\tag{1.11.7}
+\end{equation}
+
+The probability density
+$|\psi_n(\mathbf r, t)|^2 = \langle \psi_n(t) | \psi_n(t) \rangle$
+is time-independent (because $|e^{-iE_n t}| = 1$), which is
+why such states are called **stationary**. *Every* measurement
+of an operator that commutes with $\hat H$ is time-independent
+in a stationary state; measurements of operators that do *not*
+commute with $\hat H$ (e.g. position, in a hydrogen eigenstate)
+do *not* settle — but the average over a stationary state is
+the same at all times.
+
+> **Tip.** The global phase $e^{-iE_n t}$ carries no physics
+> (postulate P1, "states are rays"). The *physical* content
+> of equation \eqref{eq:ch-01-11-stationary} is the *absence*
+> of time evolution, not the accumulation of a phase. We will
+> see in section 1.11.4 that *relative* phases between energy
+> eigenstates — that is, differences
+> $e^{-i(E_n - E_m)t}$ — are physical and produce the
+> interference phenomena that spectroscopy and time-dependent
+> quantum mechanics rely on.
+
+### 1.11.4 Coherent superpositions
+
+A general state $|\psi(0)\rangle$ can be expanded in the energy
+eigenbasis at $t = 0$,
+$|\psi(0)\rangle = \sum_n c_n \lvert \psi_n \rangle$ with
+$c_n = \langle \psi_n | \psi(0) \rangle$. Each eigenstate picks
+up its own stationary phase, so the state at time $t$ is
+
+\begin{equation}
+\lvert \psi(t) \rangle \;=\; \sum_{n} c_n\, e^{-i E_n t}\, \lvert \psi_n \rangle .
+\label{eq:ch-01-11-superposition}
+\tag{1.11.8}
+\end{equation}
+
+This is **the most general solution of the TDSE for
+time-independent $\hat H$**: any state, evolved forward in time,
+is a sum of stationary states with time-dependent phases. The
+probability density $|\psi(\mathbf r, t)|^2$ is in general
+*time-dependent*, because of the interference between terms
+with different $E_n$.
+
+The time dependence of an expectation value
+$\langle \hat A \rangle$ is computed directly from
+\eqref{eq:ch-01-11-superposition}:
+
+\begin{equation}
+\langle \hat A \rangle(t)
+\;=\; \sum_{n, m} c_n^*\, c_m\, e^{i (E_n - E_m) t}\, A_{nm} ,
+\qquad
+A_{nm} \;=\; \langle \psi_n \rvert \hat A \rvert \psi_m \rangle .
+\label{eq:ch-01-11-expval}
+\tag{1.11.9}
+\end{equation}
+
+Three observations. **(1)** The *diagonal* terms
+($n = m$) are time-independent. **(2)** The *off-diagonal*
+terms oscillate at the **transition frequencies**
+$(E_n - E_m)$, and they are what make $\langle \hat A \rangle$
+time-dependent. **(3)** If $\hat A$ commutes with $\hat H$,
+then $A_{nm} \propto \delta_{nm}$ and $\langle \hat A \rangle$
+is time-independent. This is the operator-level statement of
+the "stationary-state" property of section 1.11.3. > **Tip.** The energy-resolved expansion
+> \eqref{eq:ch-01-11-superposition} is a Fourier series in
+> $t$ with frequencies $\omega_{mn} = E_n - E_m$. A
+> *spectroscopic* experiment measures the intensities
+> $|A_{nm}|^2$ at these frequencies. The rest of these notes
+> (chapters 11, 12) is largely about how to compute these
+> matrix elements efficiently for the many-body case.
+
+### 1.11.5 Time-dependent perturbation theory
+
+The machinery of section 1.8 (interaction picture, Dyson
+series, Fermi's golden rule) is the time-dependent perturbation
+theory that sits on top of the propagator formalism. We
+restate the main result here in the operator language, for
+completeness.
+
+Split $\hat H(t) = \hat H_0 + \hat V(t)$ with $\hat H_0$
+exactly soluble and $\hat V(t)$ small. The transition rate from
+an initial eigenstate $|i\rangle$ of $\hat H_0$ to a final
+eigenstate $|f\rangle$ is, in first-order time-dependent
+perturbation theory, **Fermi's golden rule**:
+
+\begin{equation}
+w_{i \to f} \;=\; \frac{2\pi}{\hbar}\,
+\lvert \langle f \rvert \hat V \rvert i \rangle \rvert^2\,
+\delta(E_f - E_i) .
+\label{eq:ch-01-11-fermi}
+\tag{1.11.10}
+\end{equation}
+
+For a *monochromatic* perturbation
+$\hat V(t) = \hat V\, e^{-i\omega t} + \hat V^\dagger e^{+i\omega t}$
+(a sinusoidal field, e.g. a laser), the
+conservation-of-energy delta function is replaced by
+**resonance conditions**: absorption of a photon matches
+$E_f - E_i = \hbar\omega$ and stimulated emission matches
+$E_i - E_f = \hbar\omega$. The rate for absorption is
+
+\begin{equation}
+w_{i \to f}^\text{(abs)}
+\;=\; \frac{2\pi}{\hbar}\, \lvert V_{fi} \rvert^2\,
+\delta(E_f - E_i - \hbar\omega) ,
+\label{eq:ch-01-11-fermi-abs}
+\tag{1.11.11}
+\end{equation}
+
+and for stimulated emission,
+
+\begin{equation}
+w_{i \to f}^\text{(em)}
+\;=\; \frac{2\pi}{\hbar}\, \lvert V_{if} \rvert^2\,
+\delta(E_i - E_f - \hbar\omega) .
+\label{eq:ch-01-11-fermi-em}
+\tag{1.11.12}
+\end{equation}
+
+(Atomic units: $\hbar = 1$, so the prefactor is $2\pi$ and
+the arguments of the delta functions drop the $\hbar$ factors.)
+Both rates are proportional to the **matrix element squared**
+of the perturbation, and non-zero only when energy conservation
+is satisfied. Section 1.11.6 applies
+\eqref{eq:ch-01-11-fermi-abs} to a driven two-level system and
+derives the **Rabi formula**.
+
+### 1.11.6 Worked example: a two-level system driven by a sinusoidal field
+
+The simplest non-trivial quantum dynamics that cannot be
+solved by stationary-state phase factors alone is a **two-level
+system** with Hamiltonian
+
+\begin{equation}
+\hat H(t) \;=\; \hat H_0 + \hat V(t)
+\;=\; \frac{\hbar \omega_0}{2}\, \hat \sigma_z
+\;+\; V_0 \cos(\omega t)\, \hat \sigma_x ,
+\label{eq:ch-01-11-rabi-H}
+\tag{1.11.13}
+\end{equation}
+
+where $\hat H_0 = (\hbar\omega_0/2) \hat \sigma_z$ has
+eigenstates $|0\rangle$ (energy $-\hbar\omega_0/2$) and
+$|1\rangle$ (energy $+\hbar\omega_0/2$) with
+$\hat \sigma_z |0\rangle = -|0\rangle$,
+$\hat \sigma_z |1\rangle = +|1\rangle$, and the **driving
+field** $\hat V(t) = V_0 \cos(\omega t)\, \hat \sigma_x$ couples
+the two levels through the off-diagonal Pauli matrix
+$\hat \sigma_x$ (whose matrix elements are
+$\langle 0|\hat \sigma_x|1\rangle = \langle 1|\hat \sigma_x|0\rangle = 1$).
+This is the textbook Hamiltonian of **magnetic resonance** and
+**laser-driven atomic transitions**.
+
+Write the state as
+$|\psi(t)\rangle = c_0(t) |0\rangle + c_1(t) |1\rangle$ and
+substitute into the TDSE. In the **rotating-wave
+approximation** (RWA), we keep only the near-resonant term in
+the field (the "co-rotating" component at frequency $\omega$,
+not the "counter-rotating" one at $-\omega$), and pass to a
+frame rotating at the field frequency $\omega$ by defining
+$\tilde c_0 = c_0 e^{+i\omega t/2}$,
+$\tilde c_1 = c_1 e^{-i\omega t/2}$. The result is a system of
+two ODEs with constant coefficients,
+
+\begin{equation}
+i \frac{d}{dt} \begin{pmatrix} \tilde c_0 \\ \tilde c_1 \end{pmatrix}
+\;=\;
+\begin{pmatrix} -\Delta/2 & V_0 / 2 \\ V_0 / 2 & +\Delta/2 \end{pmatrix}
+\begin{pmatrix} \tilde c_0 \\ \tilde c_1 \end{pmatrix} ,
+\label{eq:ch-01-11-rabi-ode}
+\tag{1.11.14}
+\end{equation}
+
+where $\Delta = \omega - \omega_0$ is the **detuning** of the
+driving field from the atomic transition. Diagonalising the
+matrix in \eqref{eq:ch-01-11-rabi-ode} gives the **generalised
+Rabi frequency**
+
+\begin{equation}
+\Omega_R \;=\; \sqrt{\left( \frac{V_0}{\hbar} \right)^{\!2} + \Delta^2} .
+\label{eq:ch-01-11-rabi-omega}
+\tag{1.11.15}
+\end{equation}
+
+(Atomic units: $V_0$ has dimensions of energy, so $V_0 / \hbar$
+has dimensions of frequency; the formula reduces to
+$\Omega_R = \sqrt{V_0^2 + \Delta^2}$.) For an initial
+condition $|\psi(0)\rangle = |0\rangle$ — the system starts in
+the ground state — the population of the excited state is
+
+\begin{equation}
+P_1(t) \;=\; \lvert \tilde c_1(t) \rvert^2
+\;=\; \frac{V_0^2}{\hbar^2 \Omega_R^2}\,
+\sin^2\!\left( \frac{\Omega_R t}{2} \right) .
+\label{eq:ch-01-11-rabi-formula}
+\tag{1.11.16}
+\end{equation}
+
+This is the **Rabi formula**. Three limits are worth noting.
+**(1)** On **exact resonance** ($\Delta = 0$),
+$\Omega_R = V_0/\hbar$ and
+$P_1(t) = \sin^2(V_0 t / 2\hbar)$: the population oscillates
+between 0 and 1 with period
+$T_\text{Rabi} = 2\pi \hbar / V_0$. The system is fully
+transferred from $|0\rangle$ to $|1\rangle$ at
+$t = T_\text{Rabi}/2$ — a *pi pulse*. **(2)** For large
+detuning $\Delta \gg V_0/\hbar$, $\Omega_R \approx \Delta$ and
+$P_1(t) \approx (V_0/\hbar\Delta)^2 \sin^2(\Delta t / 2) \ll 1$:
+the field is too far off-resonance to drive a significant
+excitation. **(3)** In the **rotating-wave limit**
+$V_0 \ll \hbar\omega$ the RWA is exact; outside that limit
+**Bloch–Siegert shifts** of order $(V_0/\hbar\omega)^2$ appear.
+
+The Mermaid diagram below summarises the two-level Rabi
+system: two states coupled by a sinusoidal driving field, with
+population oscillating between them at the generalised Rabi
+frequency.
+
+```mermaid
+graph TD
+  G["Ground state |0⟩<br/>E₀ = -ℏω₀/2"]
+  E["Excited state |1⟩<br/>E₁ = +ℏω₀/2"]
+  F["External driving field<br/>V̂(t) = V₀ cos(ωt) σ̂_x"]
+  G <-->|"Rabi oscillation<br/>P₁(t) = (V₀/ℏ Ω_R)² sin²(Ω_R t / 2)<br/>Ω_R = √((V₀/ℏ)² + Δ²)"| E
+  F -.->|"induces transition<br/>V₀ = ⟨0|V̂|1⟩"| G
+  F -.-> E
+  RES["Δ = ω - ω₀<br/>detuning"] -.->|"sets Ω_R"| F
+  G -->|"P₀(t) = 1 - P₁(t)"| OBS["Population oscillates<br/>at frequency Ω_R"]
+  E --> OBS
+```
+
+This is the prototypical driven two-level problem in quantum
+optics, magnetic resonance, and qubit dynamics. Its
+first-order time-dependent perturbation-theory limit (small
+$V_0$, no RWA) reproduces Fermi's golden rule
+\eqref{eq:ch-01-11-fermi-abs} on resonance; the full Rabi
+formula goes beyond perturbation theory and captures the
+strong-coupling regime.
+
+## 1.12 Symmetry and conservation laws
+
+Quantum mechanics has the unusual property that **every
+symmetry of the Hamiltonian is a conservation law** (Noether's
+theorem in its quantum-mechanical form), and every conservation
+law is a selection rule on matrix elements. This section
+previews the structure: the continuous symmetries that produce
+the energy, momentum, and angular-momentum conservation laws,
+the discrete symmetries of parity, time-reversal, and
+particle–hole conjugation, and the selection rules that
+follow. Full coverage of the many-body consequences is in
+chapters 14–16. ### 1.12.1 Continuous symmetries and Noether's theorem
+
+In the operator language, a **continuous symmetry** of a
+Hamiltonian $\hat H$ is a one-parameter family of unitary
+operators $\hat U(\lambda) = e^{-i \lambda \hat G / \hbar}$
+(with $\lambda \in \mathbb R$ and $\hat G$ self-adjoint) that
+leaves $\hat H$ invariant:
+
+\begin{equation}
+[\hat H, \hat G] \;=\; 0 .
+\label{eq:ch-01-12-conserved}
+\tag{1.12.1}
+\end{equation}
+
+The operator $\hat G$ is called the **generator** of the
+symmetry. The Heisenberg equation of motion,
+
+\begin{equation}
+\frac{d \hat G}{dt} \;=\; \frac{i}{\hbar}\, [\hat H, \hat G]
++ \frac{\partial \hat G}{\partial t} ,
+\label{eq:ch-01-12-heisenberg}
+\tag{1.12.2}
+\end{equation}
+
+(derived in section 1.7.5) gives, for $\hat G$ with no explicit
+time dependence, $d\hat G/dt = (i/\hbar)[\hat H, \hat G]$.
+Equation \eqref{eq:ch-01-12-conserved} therefore implies
+$d\hat G/dt = 0$ — **the generator of a continuous symmetry
+is a constant of the motion**. This is the **quantum Noether
+theorem**: every continuous symmetry of $\hat H$ is a
+conservation law, and conversely.
+
+The three continuous symmetries of a free (or
+external-potential-only) Hamiltonian give the three
+conservation laws that anchor the rest of these notes.
+
+1. **Translation invariance**
+   $\hat H(\mathbf r + \mathbf a) = \hat H(\mathbf r)$ for all
+   $\mathbf a \in \mathbb R^3$. The generator is the total
+   momentum operator
+   $\hat{\mathbf p} = -i \sum_i \nabla_i$, and the unitary
+   family is
+
+\begin{equation}
+\hat T(\mathbf a) \;=\; e^{-i \hat{\mathbf p} \cdot \mathbf a / \hbar} .
+\label{eq:ch-01-12-translation}
+\tag{1.12.3}
+\end{equation}
+
+   For a translation-invariant $\hat H$, $[\hat H, \hat{\mathbf p}] = 0$,
+   so $\hat{\mathbf p}$ is conserved: the total momentum of a
+   closed system is constant in time. Broken in the presence
+   of an external potential: $\hat V_\text{ext}(\mathbf r)$
+   breaks translation invariance and momentum is no longer
+   conserved.
+2. **Rotation invariance**
+   $\hat H(\hat R \mathbf r) = \hat H(\mathbf r)$ for all
+   rotations $\hat R \in SO(3)$. The generator is the total
+   angular momentum
+   $\hat{\mathbf L} = \sum_i \hat{\mathbf r}_i \times \hat{\mathbf p}_i$,
+   and the unitary family is
+   $\hat R(\hat n, \theta) = e^{-i \theta\, \hat{\mathbf n} \cdot \hat{\mathbf L} / \hbar}$.
+   For a rotation-invariant $\hat H$,
+   $[\hat H, \hat{\mathbf L}] = 0$, so $\hat{\mathbf L}$ is
+   conserved. Broken, e.g., by an external electric field
+   that picks a direction.
+3. **Time-translation invariance** $\hat H(t) = \hat H$ (no
+   explicit time dependence). The generator is the Hamiltonian
+   itself, $\hat G = \hat H$, and the unitary family is
+   $\hat U(t) = e^{-i \hat H t / \hbar}$. Equation
+   \eqref{eq:ch-01-12-conserved} gives $[\hat H, \hat H] = 0$,
+   so the energy is conserved.
+
+> **Tip.** The "conservation law" in
+> \eqref{eq:ch-01-12-conserved} is an operator statement: the
+> *expectation value* $\langle \hat G \rangle$ is conserved,
+> *and* every eigenstate of $\hat H$ can be chosen to be an
+> eigenstate of $\hat G$. The latter is the *labelling*
+> principle used in section 1.10.3 to label atomic eigenstates
+> by $(\ell, m)$ in addition to $n$, or in chapter 2 to label
+> Slater determinants by the occupation numbers
+> $n_i \in \{0, 1\}$.
+
+### 1.12.2 Discrete symmetries
+
+Three discrete symmetry operations are central to chemistry
+and condensed-matter physics. They are not "Noether" symmetries
+in the continuous sense (they have no infinitesimal
+generator), but each one is an **involution** ($\hat S^2 = \hat 1$)
+and each one gives a **selection rule** or a **degeneracy** when
+it commutes with $\hat H$.
+
+1. **Parity** $\hat P$ is the unitary operator that inverts all
+   coordinates,
+
+\begin{equation}
+\hat P \lvert \mathbf r \rangle \;=\; \lvert -\mathbf r \rangle .
+\label{eq:ch-01-12-parity}
+\tag{1.12.4}
+\end{equation}
+
+   $\hat P$ is Hermitian and unitary ($\hat P^2 = \hat 1$); its
+   eigenvalues are $\pm 1$ and classify states as **even**
+   ($\hat P \psi = +\psi$) or **odd** ($\hat P \psi = -\psi$).
+   The Coulomb Hamiltonian
+   $\hat H = \hat p^2/2m + V(\mathbf r)$ commutes with $\hat P$
+   iff $V(-\mathbf r) = V(\mathbf r)$, i.e. for any central
+   potential. Hydrogen eigenstates have definite parity,
+   $\hat P |n, \ell, m\rangle = (-1)^\ell |n, \ell, m\rangle$.
+
+2. **Time reversal** $\hat T$ is the **antiunitary** operator
+   that reverses the direction of motion. Its defining
+   properties are
+
+\begin{equation}
+\hat T\, i\, \hat T^{-1} \;=\; -i , \qquad
+\hat T \hat{\mathbf p}\, \hat T^{-1} \;=\; -\hat{\mathbf p} , \qquad
+\hat T \hat{\mathbf r}\, \hat T^{-1} \;=\; +\hat{\mathbf r} .
+\label{eq:ch-01-12-timerev}
+\tag{1.12.5}
+\end{equation}
+
+   The first equation ($\hat T$ takes the complex conjugate) is
+   what makes $\hat T$ antiunitary rather than unitary. On
+   spin-1/2 particles, $\hat T$ also flips the spin,
+   $\hat T \hat{\mathbf S}\, \hat T^{-1} = -\hat{\mathbf S}$. The
+   most important consequence is **Kramers' theorem**: for a
+   system with **half-integer total spin** (so $\hat T^2 = -\hat 1$)
+   and time-reversal-symmetric $\hat H$ (i.e. $[\hat H, \hat T] = 0$),
+   every energy level is at least **doubly degenerate** (Kramers
+   degeneracy). The doublet is $\{|n\rangle, \hat T |n\rangle\}$,
+   and the two states are orthogonal because $\hat T^2 = -\hat 1$
+   on a half-integer-spin state.
+
+3. **Particle–hole conjugation** $\hat C$ is the unitary
+   operator that exchanges particles and holes,
+
+\begin{equation}
+\hat C\, \hat a_i\, \hat C^{-1} \;=\; \hat a_i^\dagger , \qquad
+\hat C\, \hat a_i^\dagger\, \hat C^{-1} \;=\; \hat a_i ,
+\label{eq:ch-01-12-particle-hole}
+\tag{1.12.6}
+\end{equation}
+
+   where $\hat a_i^\dagger$, $\hat a_i$ are the fermionic
+   creation and annihilation operators of chapter 2. The
+   operator $\hat C$ is a symmetry of the **superconducting**
+   (or **charge-conjugate**) mean-field Hamiltonians of
+   chapter 13. In a molecule it is *not* a symmetry of the
+   electronic Hamiltonian, but in solids it gives the
+   **electron–hole symmetry** of simple tight-binding models
+   (the half-filled Hubbard model on a bipartite lattice is a
+   textbook example).
+
+> **Warning.** The "time reversal" here is the
+> *quantum-mechanical* time-reversal operation. It is **not** a
+> literal $t \to -t$ substitution in the equations of motion;
+> the TDSE is **not** time-reversal-invariant in this sense
+> (the equation
+> $i \partial_t |\psi\rangle = \hat H |\psi\rangle$ becomes
+> $i \partial_t \hat T |\psi\rangle = \hat H \hat T |\psi\rangle$
+> only if $\hat H$ commutes with $\hat T$, which is a property
+> of $\hat H$, not of the dynamics). The classical "movie played
+> backwards" picture corresponds to $\hat T$ acting *only* on
+> the *state* and not on the parameters of $\hat H$.
+
+### 1.12.3 Selection rules
+
+A **selection rule** is the statement that a matrix element
+$\langle m | \hat O | n \rangle$ vanishes by symmetry. The
+general principle is
+
+\begin{equation}
+\langle m \rvert \hat O \rvert n \rangle \;\neq\; 0
+\quad\Longleftrightarrow\quad
+\text{the direct product } \Gamma_m \otimes \Gamma_O \otimes \Gamma_n
+\text{ contains the trivial representation}.
+\label{eq:ch-01-12-selection}
+\tag{1.12.7}
+\end{equation}
+
+where $\Gamma_m$, $\Gamma_O$, $\Gamma_n$ are the
+**irreducible representations** of the symmetry group carried
+by $|m\rangle$, $\hat O$, and $|n\rangle$. The trivial
+representation (the totally symmetric one) appears in the
+direct product iff the *symmetry species* of the three objects
+can multiply to give the trivial species. For an Abelian
+group (e.g. parity), this is the *parity-matching* condition
+
+\begin{equation}
+\pi_m \cdot \pi_O \cdot \pi_n \;=\; +1
+\quad\Longleftrightarrow\quad
+\langle m \rvert \hat O \rvert n \rangle \neq 0 ,
+\label{eq:ch-01-12-parity-rule}
+\tag{1.12.8}
+\end{equation}
+
+i.e. an even number of the three objects must be odd. The
+**electric-dipole operator**
+$\hat{\boldsymbol\mu} = \hat{\mathbf r}$ is **odd** under
+parity, so a dipole transition $|i\rangle \to |f\rangle$
+requires $\pi_i \cdot \pi_f = -1$, i.e. the two states must
+have **opposite parity**. In hydrogen this gives the
+**electric-dipole selection rule** $\Delta \ell = \pm 1$: a
+$1s \to 2s$ transition is parity-forbidden (both states are
+even), a $1s \to 2p$ transition is allowed
+(even × odd = odd), and the spontaneous-emission rate of the
+latter is computed using Fermi's golden rule.
+
+For continuous symmetries the same rule applies in
+infinitesimal form. For the **angular-momentum selection rule**
+on the matrix element of a spherical tensor operator
+$\hat T_q^{(k)}$ (Wigner–Eckart theorem),
+
+\begin{equation}
+\langle n' \ell' m' \rvert \hat T_q^{(k)} \rvert n \ell m \rangle
+\;\neq\; 0 \quad\Longleftrightarrow\quad
+m' = m + q \text{ and } |\ell' - \ell| \le k \le \ell + \ell' .
+\label{eq:ch-01-12-wigner-eckart}
+\tag{1.12.9}
+\end{equation}
+
+This is the source of every selection rule in atomic and
+nuclear spectroscopy: the rank $k = 1$ dipole rule
+$\Delta \ell = \pm 1$ is the special case of the second
+condition with $k = 1$.
+
+### 1.12.4 How this connects to the rest of the notes
+
+The selection rules and conservation laws of this section are
+*statements about* $\hat H$ — they constrain what $\hat H$
+*can* do, given its symmetries. The remainder of the notes is
+largely about the *consequences* of those statements.
+
+- **[Chapter 14 — multi-reference methods]({{ "/dft-notes/chapter-14/" | relative_url }})**
+  will need to *break* (and sometimes restore) the symmetries
+  of $\hat H$ to capture the strong correlation that a single
+  Slater determinant misses. Spontaneous symmetry breaking (a
+  non-zero magnetisation in an antiferromagnet, a non-zero
+  $\langle \hat T \rangle$ in a superconductor) is a feature,
+  not a bug, of the multi-reference world.
+- **[Chapter 15 — relativistic DFT]({{ "/dft-notes/chapter-15/" | relative_url }})**
+  puts the symmetry structure of section 1.12.2 to work in
+  the four-component Dirac formalism. Time-reversal symmetry
+  doubles every Kramers-degenerate level; the ZORA and Pauli
+  limits of section 1.12.1 become essential tools.
+- **[Chapter 16 — topology]({{ "/dft-notes/chapter-16/" | relative_url }})**
+  uses symmetries to **protect** topological invariants: the
+  **Chern number** of a 2-D insulator is invariant under
+  continuous deformations that preserve the gap and the
+  symmetry, the **$\mathbb Z_2$ invariant** of a
+  time-reversal-symmetric topological insulator is *quantised*
+  by Kramers' theorem, and **crystalline topological
+  insulators** are protected by the point-group symmetries of
+  the lattice.
+
+For now, the takeaway is that every observable in the next
+fifteen chapters is either *constrained* by a symmetry of
+$\hat H$ (selection rule, conservation law) or is *a*
+symmetry generator (the magnetisation $\mathbf m$ is a
+generator of spin-rotation symmetry, the charge density
+$\rho$ is a generator of $U(1)$ phase symmetry, etc.).
+Recognising which is which is the first step in every
+problem.
+
+## 1.13 The hydrogen atom
 
 The hydrogen atom is the only multi-particle system with a
 Coulomb interaction for which the Schrödinger equation is
@@ -1116,13 +2035,13 @@ Coulomb interaction for which the Schrödinger equation is
 some effective nuclear charge. The derivation below anchors
 chapter 3's Hartree–Fock method and chapter 6's STO basis sets.
 
-### 1.10.1 The Hamiltonian and separation of centre-of-mass motion
+### 1.13.1 The Hamiltonian and separation of centre-of-mass motion
 
 In atomic units the hydrogen Hamiltonian is
 
 $$
 \hat H \;=\; -\frac{1}{2} \nabla_r^2 - \frac{1}{2 m_N} \nabla_R^2 - \frac{Z}{r} ,
-\tag{1.10.1}
+\tag{1.10.1.13.1}
 $$
 
 where $\mathbf r$ is the electron coordinate in the lab frame,
@@ -1153,7 +2072,7 @@ an effective one-body problem in $\boldsymbol\rho$:
 
 $$
 \hat H \;=\; -\frac{1}{2M} \nabla_{R_\text{cm}}^2 - \frac{\mu}{2} \nabla_\rho^2 - \frac{Z}{\rho} .
-\tag{1.10.2}
+\tag{1.10.1.13.2}
 $$
 
 The Coulomb potential depends only on $\rho = |\boldsymbol\rho|$,
@@ -1165,7 +2084,7 @@ Hamiltonian
 
 $$
 \hat H_\text{rel} \;=\; -\frac{\mu}{2} \nabla_\rho^2 - \frac{Z}{\rho} .
-\tag{1.10.3}
+\tag{1.10.1.13.3}
 $$
 
 In the infinite-nuclear-mass limit $m_N \to \infty$ (the
@@ -1178,7 +2097,7 @@ correction to the energies is at the level of $3 \times 10^{-4}$
 — small, but measurable. We ignore it for the rest of this
 section.
 
-### 1.10.2 Spherical symmetry and the ansatz
+### 1.13.2 Spherical symmetry and the ansatz
 
 With the centre-of-mass part removed, the Schrödinger equation
 in atomic units is
@@ -1186,7 +2105,7 @@ in atomic units is
 $$
 \Big( -\frac{1}{2} \nabla^2 - \frac{Z}{r} \Big) \psi(\mathbf r) \;=\; E\, \psi(\mathbf r) ,
 \qquad r = |\mathbf r| .
-\tag{1.10.4}
+\tag{1.10.1.13.4}
 $$
 
 The Coulomb potential is **spherically symmetric**: it depends
@@ -1207,7 +2126,7 @@ separable form
 
 $$
 \psi_{n \ell m}(\mathbf r) \;=\; R_{n \ell}(r)\, Y_\ell^m(\theta, \phi) ,
-\tag{1.10.5}
+\tag{1.10.1.13.5}
 $$
 
 where $Y_\ell^m$ are the **spherical harmonics** (the
@@ -1218,7 +2137,7 @@ $\ell \ge 0$ and $-\ell \le m \le \ell$ are the **azimuthal**
 and **magnetic** quantum numbers. The radial part
 $R_{n\ell}(r)$ is determined by the equation we now derive.
 
-### 1.10.3 The radial equation and the $u = rR$ substitution
+### 1.13.3 The radial equation and the $u = rR$ substitution
 
 Write the Laplacian in spherical coordinates and apply it to
 the product \eqref{eq:ch-01-H-ansatz}:
@@ -1236,7 +2155,7 @@ $-\ell(\ell+1)/r^2$. Therefore the radial equation is
 $$
 -\frac{1}{2} \frac{1}{r^2} \frac{d}{dr} \!\left( r^2 \frac{dR}{dr} \right)
 + \frac{\ell(\ell+1)}{2 r^2} R - \frac{Z}{r} R \;=\; E\, R .
-\tag{1.10.6}
+\tag{1.10.1.13.6}
 $$
 
 The $1/r$ divergence of the Laplacian at the origin is awkward.
@@ -1244,7 +2163,7 @@ Substitute
 
 $$
 u(r) \;\equiv\; r\, R(r) ,
-\tag{1.10.7}
+\tag{1.10.1.13.7}
 $$
 
 so that $\partial_r (r^2 \partial_r R) = r\, u''(r)$ (where
@@ -1253,7 +2172,7 @@ by $r$,
 
 $$
 -\frac{1}{2}\, u''(r) + \frac{\ell(\ell+1)}{2 r^2}\, u(r) - \frac{Z}{r}\, u(r) \;=\; E\, u(r) .
-\tag{1.10.8}
+\tag{1.10.1.13.8}
 $$
 
 The Coulomb singularity has been "regularised" — the
@@ -1262,14 +2181,14 @@ equation is now a one-dimensional Schrödinger equation in $r \in
 
 $$
 V_\text{eff}(r) \;=\; -\frac{Z}{r} + \frac{\ell(\ell+1)}{2 r^2} .
-\tag{1.10.9}
+\tag{1.10.1.13.9}
 $$
 
 The second term is the **centrifugal barrier**; it diverges
 positively at the origin, which is what regularises the
 singular Coulomb $-Z/r$ at small $r$ and forces $u(0) = 0$.
 
-### 1.10.4 Bound-state boundary conditions and dimensional analysis
+### 1.13.4 Bound-state boundary conditions and dimensional analysis
 
 The energy $E < 0$ (bound states). Balancing kinetic and
 Coulomb energies, $\tfrac{1}{2} k^2 \sim Z/r$, suggests
@@ -1277,7 +2196,7 @@ $r \sim 1/(Zk)$. The dimensionless substitution
 
 $$
 \rho \;\equiv\; 2 r \sqrt{-2E} \;\equiv\; 2 r / n a_0 ,
-\tag{1.10.10}
+\tag{1.10.1.13.10}
 $$
 
 absorbs the binding energy into the radial coordinate (the
@@ -1287,17 +2206,17 @@ the *dimensionless charge*
 
 $$
 \nu \;\equiv\; \frac{Z}{\sqrt{-2 E}} ,
-\tag{1.10.11}
+\tag{1.10.1.13.11}
 $$
 
 In these variables the radial equation is
 
 $$
 \frac{d^2 u}{d\rho^2} \;=\; \left[ \frac{1}{4} - \frac{\nu}{\rho} + \frac{\ell(\ell+1)}{\rho^2} \right] u(\rho) .
-\tag{1.10.12}
+\tag{1.10.1.13.12}
 $$
 
-### 1.10.5 Asymptotic behaviour
+### 1.13.5 Asymptotic behaviour
 
 At $\rho \to \infty$ the $1/\rho$ and $1/\rho^2$ terms are
 negligible, and \eqref{eq:ch-01-radial-rho} becomes
@@ -1312,7 +2231,7 @@ Combine the two limits into a Frobenius ansatz,
 
 $$
 u(\rho) \;=\; e^{-\rho/2}\, \rho^{\ell+1}\, v(\rho) ,
-\tag{1.10.13}
+\tag{1.10.1.13.13}
 $$
 
 where $v(\rho)$ is a regular function to be determined. Substituting
@@ -1323,7 +2242,7 @@ collecting the coefficients of $v''$, $v'$, and $v$, the
 
 $$
 \rho\, \frac{d^2 v}{d\rho^2} + \big( 2(\ell+1) - \rho \big)\, \frac{dv}{d\rho} + \big( \nu - (\ell+1) \big) v \;=\; 0 .
-\tag{1.10.14}
+\tag{1.10.1.13.14}
 $$
 
 This is the standard form of the associated-Laguerre equation. Its
@@ -1333,7 +2252,7 @@ $k = n - \ell - 1 \ge 0$:
 
 $$
 \nu - (\ell + 1) \;=\; n - \ell - 1 .
-\tag{1.10.15}
+\tag{1.10.1.13.15}
 $$
 
 Therefore $\nu = n$ and, from the definition
@@ -1342,7 +2261,7 @@ Therefore $\nu = n$ and, from the definition
 $$
 E_n \;=\; -\frac{Z^2}{2 n^2} ,
 \qquad n = 1, 2, 3, \dots
-\tag{1.10.17}
+\tag{1.10.1.13.17}
 $$
 
 — the **Bohr formula** in atomic units. For $Z = 1$ the
@@ -1360,7 +2279,7 @@ $121.6\,$nm).
 > that one breaks $g_n$ down to the $g_n$ of the *highest* $\ell$
 > in the multi-electron atom (Hund's rules).
 
-### 1.10.6 The full eigenfunctions
+### 1.13.6 The full eigenfunctions
 
 The radial part of the eigenfunction, including the
 normalisation, is
@@ -1369,7 +2288,7 @@ $$
 R_{n \ell}(r) \;=\; -\sqrt{\left( \frac{2Z}{n} \right)^{\!3} \frac{(n - \ell - 1)!}{2 n\, [(n + \ell)!]^3}}\;
                 e^{-Z r / n}\, (2Zr/n)^\ell\,
                 L_{n - \ell - 1}^{2\ell+1}(2 Z r / n) .
-\tag{1.10.18}
+\tag{1.10.1.13.18}
 $$
 
 The full eigenfunctions are
@@ -1378,14 +2297,14 @@ $$
 \psi_{n \ell m}(\mathbf r) \;=\; R_{n \ell}(r)\, Y_\ell^m(\theta, \phi) ,
 \qquad
 \ell = 0, \dots, n-1, \quad m = -\ell, \dots, \ell .
-\tag{1.10.19}
+\tag{1.10.1.13.19}
 $$
 
 The ground state ($n = 1, \ell = 0, m = 0$, "1s") is
 
 $$
 \psi_{1s}(\mathbf r) \;=\; \frac{Z^{3/2}}{\sqrt \pi}\, e^{-Zr} ,
-\tag{1.10.20}
+\tag{1.10.1.13.20}
 $$
 
 and the first few excited states are
@@ -1400,12 +2319,12 @@ $$
 
 with $m \in \{-1, 0, 1\}$ for the three degenerate $2p$ states.
 
-### 1.10.6.1 Mermaid — the hydrogen solution path
+### 1.13.6.1 Mermaid — the hydrogen solution path
 
 The hydrogen derivation above is a long chain of reductions:
 3-D two-body → 1-D radial × angular, $rR$ substitution, asymptotic
 analysis, polynomial truncation. The diagram below summarises the
-chain; each box is a step in §1.10.1–§1.10.6, and each arrow
+chain; each box is a step in §1.13.1–§1.13.6, and each arrow
 labels the *new variable* or *new operator* introduced at that step.
 
 ```mermaid
@@ -1421,9 +2340,9 @@ graph TD
   LAG --> R["Radial eigenfunctions<br/>R_{nℓ}(r)"]
   R --> PSI["Full eigenfunctions<br/>ψ_{nℓm} = R_{nℓ}·Yₗᵐ"]
   QN --> EN["Energy levels<br/>Eₙ = -Z²/(2n²) Eₕ<br/>(ℓ, m degeneracy)"]
-  PSI --> RADII["Worked example:<br/>radial plots (§1.10.9)"]
-  EN --> TRANS["Application:<br/>2p→1s Lyman-α (§1.10.7)"]
-  QN --> LEVELS["Application:<br/>level diagram (§1.10.8)"]
+  PSI --> RADII["Worked example:<br/>radial plots (§1.13.9)"]
+  EN --> TRANS["Application:<br/>2p→1s Lyman-α (§1.13.7)"]
+  QN --> LEVELS["Application:<br/>level diagram (§1.13.8)"]
 ```
 
 The left half of the diagram (Schrödinger → radial equation)
@@ -1433,7 +2352,7 @@ is the *separation-of-variables* reduction; the right half
 *only* place where the discrete quantum numbers $(n, \ell, m)$
 appear; the rest of the derivation is continuum analysis.
 
-### 1.10.7 The 2p → 1s transition and Fermi's golden rule
+### 1.13.7 The 2p → 1s transition and Fermi's golden rule
 
 As an application that ties sections 1.8 and 1.10 together, we
 compute the **spontaneous emission rate** of the hydrogen
@@ -1447,7 +2366,7 @@ by Fermi's golden rule \eqref{eq:ch-01-fermi}:
 
 $$
 \Gamma_{2p \to 1s} \;=\; \frac{4 \alpha \omega^3}{3 c^2} \sum_{m = -1}^{1} \big| \langle 1s \rvert \hat{\mathbf r} \rvert 2p_m \rangle \big|^2 ,
-\tag{1.10.21}
+\tag{1.10.1.13.21}
 $$
 
 where $\alpha \approx 1/137$ is the fine-structure constant, $c$
@@ -1486,7 +2405,7 @@ Therefore
 $$
 \Gamma_{2p \to 1s} \;=\; \frac{4 \alpha \omega^3}{3 c^2}\, I_r^2
 \;=\; \frac{2^{17} \alpha \omega^3}{3^{11} c^2\, Z^2} .
-\tag{1.10.22}
+\tag{1.10.1.13.22}
 $$
 
 For hydrogen ($Z = 1$, $\omega = 3/8$):
@@ -1510,7 +2429,7 @@ emission channel and (small) relativistic corrections.
 > It is one of the cleanest atomic-physics predictions of
 > non-relativistic quantum mechanics.
 
-### 1.10.8 Mermaid: hydrogen level diagram and selection rules
+### 1.13.8 Mermaid: hydrogen level diagram and selection rules
 
 ```mermaid
 graph TD
@@ -1533,7 +2452,7 @@ proceed by **two-photon emission**, with a lifetime of
 $\sim 0.12\,$s, fourteen orders of magnitude longer than the
 allowed $2p \to 1s$.
 
-### 1.10.9 Worked example: hydrogen radial eigenfunctions
+### 1.13.9 Worked example: hydrogen radial eigenfunctions
 
 We now make the abstract solution concrete. The script below
 evaluates the first few radial hydrogen eigenfunctions on a
@@ -1597,7 +2516,7 @@ azimuthal quantum number $\ell$ sets the number of radial nodes
 ($n - \ell - 1$) and the behaviour at the origin
 ($R_{n\ell} \sim r^\ell$).
 
-## 1.11 The code — numerical solutions of the QHO and hydrogen
+## 1.14 The code — numerical solutions of the QHO and hydrogen
 
 This section consolidates the runnable Python for the chapter.
 The full source files are in `dft_notes/python_codes/chapter_01/`
@@ -1606,12 +2525,12 @@ script imports only `numpy`, `scipy`, and `matplotlib`
 (with `matplotlib.use("Agg")`), as required by the agent
 handbook.
 
-### 1.11.1 Particle in a box
+### 1.14.1 Particle in a box
 
 Already given in section 1.3; source file
 `dft_notes/python_codes/chapter_01/01-particle-in-box.py`.
 
-### 1.11.2 Harmonic oscillator via finite differences
+### 1.14.2 Harmonic oscillator via finite differences
 
 The algebraic solution of section 1.9 is correct to all
 orders, but it is useful to see the same problem solved
@@ -1692,12 +2611,12 @@ $E_n = n + 1/2$ to better than $10^{-6}$. Dotted lines mark
 the eigen-energies; the solid curve is the potential
 $V(x) = x^2/2$.
 
-### 1.11.3 Hydrogen radial eigenfunctions
+### 1.14.3 Hydrogen radial eigenfunctions
 
-Already given in section 1.10.9; source file
+Already given in section 1.13.9; source file
 `dft_notes/python_codes/chapter_01/03-hydrogen-radial.py`.
 
-## 1.12 The diagram — chapter structure
+## 1.15 The diagram — chapter structure
 
 The chapter as a whole is organised as a single flowchart.
 Each box is a numbered section; the arrows are the
@@ -1710,27 +2629,32 @@ graph TD
   TISE --> PIB["§1.3 Particle in a box<br/>(minimal worked example)"]
   TISE --> OPS["§1.4 Operator alphabet<br/>(T, V_ext, U_ee, J, K, v_xc)"]
   TDSE --> VAR["TD variational principle<br/>(McLachlan)"]
-  TDSE --> DY["§1.8 Dyson series +<br/>Fermi's golden rule"]
+  TDSE --> DY["§1.8 Dyson series +<br/>Fermi’s golden rule"]
   TISE --> HO["§1.9 Harmonic oscillator<br/>(ladder operators)"]
-  TISE --> H["§1.10 Hydrogen atom<br/>(Laguerre polynomial eigenfunctions)"]
+  TISE --> H["§1.13 Hydrogen atom<br/>(Laguerre polynomial eigenfunctions)"]
+  TISE --> OPS2["§1.10 Operator formalism<br/>(adjoint, CCR, spectral<br/>theorem, f(Â))"]
+  OPS2 --> TEV["§1.11 Time evolution<br/>(propagator U(t),<br/>stationary phases,<br/>Fermi golden rule)"]
+  OPS2 --> SYM["§1.12 Symmetry +<br/>conservation laws<br/>(Noether, parity,<br/>time-reversal)"]
+  TEV --> DY
+  TEV --> HO
+  SYM --> TR
   HO --> COH["Coherent states<br/>(â|α⟩ = α|α⟩)"]
   H --> TR["2p→1s spontaneous emission<br/>(Fermi golden rule applied)"]
   DY --> TR
   P --> POST["§1.5 What we left in:<br/>spin (P6) and non-relativistic"]
   POST --> OUT["§1.6 Outlook:<br/>why a single Slater determinant is not enough"]
+
 ```
 
 Sections 1.7–1.10 are the new material added in this expansion
 of the chapter.
 
-## 1.13 Problems
+## 1.16 Problems
 
 The first three problems test the basics of the postulates and
 the particle in a box; the remaining three are graduate-level
 applications of the time-dependent and exactly-soluble
-machinery of sections 1.7–1.10.
-
-<details class="problem">
+machinery of sections 1.7–1.10. <details class="problem">
 <summary>Problem 1 (easy) — The commutator and the uncertainty
 principle</summary>
 
@@ -2171,7 +3095,7 @@ structure, two-photon decay to $2s$, proton finite size) are
 out of scope here. $\quad\blacksquare$
 </details>
 
-## 1.14 What we left out
+## 1.17 What we left out
 
 This chapter covers the postulates of non-relativistic quantum
 mechanics, the time-independent and time-dependent Schrödinger

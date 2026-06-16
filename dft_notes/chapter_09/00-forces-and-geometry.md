@@ -26,7 +26,7 @@ $E(\{\mathbf R_I\})$.  The Born–Oppenheimer separation itself
 is laid out in [chapter 01]({{ "/dft-notes/chapter-01/" | relative_url }})
 (§1.4); the operators that enter the electronic Hamiltonian
 (kinetic, Coulomb, position) are the alphabet of
-[chapter 01]({{ "/dft-notes/chapter-01/" | relative_url }}) §1.5.  This
+[chapter 01]({{ "/dft-notes/chapter-01/" | relative_url }}) §1.5. This
 chapter is about the next quantity a practical calculation
 needs: the **gradient** of that number with respect to the
 nuclear coordinates.  The gradient is a vector
@@ -512,9 +512,22 @@ graph TD
   classDef hf fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
   classDef pulay fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff;
-  class I0,SCF,CLS,HF1,HF2,FHF hf
-  class D1,D2,D3,D4,P1,P2,P3,FP pulay
-  class FTOT,OUT out
+  class I0 hf
+  class SCF hf
+  class CLS hf
+  class HF1 hf
+  class HF2 hf
+  class FHF hf
+  class D1 pulay
+  class D2 pulay
+  class D3 pulay
+  class D4 pulay
+  class P1 pulay
+  class P2 pulay
+  class P3 pulay
+  class FP pulay
+  class FTOT out
+  class OUT out
 ```
 
 The two **left-most** branches (`HF1` and `HF2`) are the
@@ -1213,9 +1226,17 @@ graph LR
   classDef input fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
   classDef step  fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef out  fill:#cc785c,stroke:#1c1f17,color:#ffffff;
-  class B,S,Y input
-  class SBT,SBT2,M,N,ADD,SUB step
-  class OUT,NEXT out
+  class B input
+  class S input
+  class Y input
+  class SBT step
+  class SBT2 step
+  class M step
+  class N step
+  class ADD step
+  class SUB step
+  class OUT out
+  class NEXT out
 ```
 
 The *left* side of the diagram is what the optimiser measures at
@@ -1453,9 +1474,17 @@ graph TD
   classDef input fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
   classDef step  fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef out  fill:#cc785c,stroke:#1c1f17,color:#ffffff;
-  class X0,E input
-  class SCF,F1,F2,G,BFGS,STEP,XNEW step
-  class CK,DONE out
+  class X0 input
+  class E input
+  class SCF step
+  class F1 step
+  class F2 step
+  class G step
+  class BFGS step
+  class STEP step
+  class XNEW step
+  class CK out
+  class DONE out
 ```
 
 The **two compute boxes** (`F1` and `F2`) are the workhorses:
@@ -1639,7 +1668,7 @@ per step near the minimum — about what we see.
 
 For *production* use one would switch to BFGS after the first
 step or two: the trajectory would converge in 3–4 steps
-instead of 10.  The script keeps steepest descent throughout
+instead of 10. The script keeps steepest descent throughout
 so the convergence rate is easy to see.
 
 ![Plot output from `dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py`]({{ site.baseurl }}/dft-notes/python_codes/chapter_09/plots/01-h2-bond-relaxation.png)

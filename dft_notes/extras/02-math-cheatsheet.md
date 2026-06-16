@@ -212,9 +212,7 @@ in series form. The second lets you reduce a commutator with a
 product to a sum of simpler commutators. The third is the
 **cyclicity of the trace** applied to a commutator; it is the
 reason the Fock-operator trace formulas of chapter 03 (§3.2)
-collapse so cleanly. Cross-reference: chapters 01, 03.
-
----
+collapse so cleanly. Cross-reference: chapters 01, 03. ---
 
 ## 3. Hilbert-space identities
 
@@ -261,9 +259,7 @@ The Frobenius / Hilbert–Schmidt norm is
 $\lVert \mathbf A \rVert_\text{HS}^2 = \operatorname{Tr}(\mathbf A^\dagger \mathbf A)$.
 This is the inner product used in the **DIIS metric**
 $\mathbf B_{ij} = \langle R_i, R_j \rangle$ in
-chapter 04 (§4.6.2). Cross-reference: chapter 04.
-
-### 3.4 Trace of a projector
+chapter 04 (§4.6.2). Cross-reference: chapter 04. ### 3.4 Trace of a projector
 
 \begin{equation}
 \label{eq:ch-extra-traceproj}
@@ -330,9 +326,7 @@ For fermions, $\hat \psi$ and $\hat \psi^\dagger$ satisfy the
 
 The one-body density is $\hat\rho(\mathbf r) = \hat\psi^\dagger(\mathbf r) \hat\psi(\mathbf r)$;
 its expectation value is the **one-particle density matrix**
-of chapter 03 (§3.6.4). Cross-reference: chapters 02, 03.
-
-### 4.4 Wick's theorem (statement)
+of chapter 03 (§3.6.4). Cross-reference: chapters 02, 03. ### 4.4 Wick's theorem (statement)
 
 For a product of $2n$ creation/annihilation operators,
 Wick's theorem says
@@ -434,9 +428,7 @@ The **sinc kernel**
 arises whenever a function is truncated to a box of length $L$.
 In 3-D it generalises to a product of three 1-D sincs. Used in
 the **planar-averaging** and **slab-coupling** corrections of
-chapter 07.
-
----
+chapter 07. ---
 
 ## 6. Green's functions
 
@@ -537,16 +529,12 @@ language** of chapter 07: at the Hartree–Fock level
 ($\hat\Sigma = \hat V_\text{HF}$), $A(\omega)$ is a sum of
 delta peaks at the HF orbital energies, weighted by the
 **spectral weights** of the one-particle states. Cross-
-reference: chapters 01, 03, 04, 07.
-
-> **Tip.** The **density of states** is
+reference: chapters 01, 03, 04, 07. > **Tip.** The **density of states** is
 > $g(\omega) = \operatorname{Tr} \mathbf A(\omega) = \sum_i A_{ii}(\omega)$.
 > In Kohn–Sham DFT the spectral function is *approximated* by
 > the KS density of states, which is a sum of delta peaks at the
 > KS eigenvalues — this is the *physical content* of the
-> "Kohn–Sham band structure" of chapter 07.
-
----
+> "Kohn–Sham band structure" of chapter 07. ---
 
 ## 7. Special functions
 
@@ -711,9 +699,7 @@ are the identities used in evaluating the **Gaussian
 overlaps** and **Boys-function integrals** of chapter 06. The
 **Bohr radius** and **Hartree energy** of atomic units are
 $\Gamma$-function normalisations in disguise. Cross-reference:
-chapters 01, 03, 06.
-
-### 7.7 The Boys function
+chapters 01, 03, 06. ### 7.7 The Boys function
 
 The **Boys function**
 
@@ -747,9 +733,7 @@ $\operatorname{erfc}(x) \sim e^{-x^2}/(x\sqrt\pi)$ as
 $x \to \infty$. Used in the **Boys function** above, in the
 **range-separation of the Coulomb kernel** (chapter 05, §5.5),
 and in the **Gaussian smearing** occupation function
-(chapter 07, §7.6.3). Cross-reference: chapters 03, 05, 06, 07.
-
----
+(chapter 07, §7.6.3). Cross-reference: chapters 03, 05, 06, 07. ---
 
 ## 8. Tensor identities
 
@@ -810,9 +794,7 @@ E_\text{el} &\;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu}\, (h_{\mu\nu} + F_{\mu\n
 \end{align}
 
 The `numpy.einsum` call in chapter 03 (§3.3) implements these
-contractions verbatim. Cross-reference: chapters 03, 04, 06.
-
-### 8.4 Rotation of tensors
+contractions verbatim. Cross-reference: chapters 03, 04, 06. ### 8.4 Rotation of tensors
 
 Under an orthogonal transformation $R$ with $R^T R = \mathbf 1$
 and $\det R = +1$ (proper rotation), a rank-2 tensor
@@ -874,9 +856,7 @@ $\mathbf F \mathbf C = \mathbf S \mathbf C \boldsymbol\varepsilon$
 of chapters 03 (§3.6) and 06 (§6.1). The standard numerical
 recipe is `scipy.linalg.eigh(F, S)`, which forms
 $\mathbf X$ by Cholesky factorisation of $\mathbf S$. Cross-
-reference: chapters 03, 06.
-
-### 9.3 Singular value decomposition (SVD)
+reference: chapters 03, 06. ### 9.3 Singular value decomposition (SVD)
 
 Every $m \times n$ matrix $\mathbf A$ admits the decomposition
 
@@ -904,9 +884,7 @@ where $a_i$ are the eigenvalues of $\mathbf A$. The second
 equality is the **trace-invariance under similarity**: the
 trace of $\mathbf A$ equals the trace of $\mathbf U^\dagger
 \mathbf A \mathbf U$, and the diagonal form has the eigenvalues
-on the diagonal. Cross-reference: chapters 03, 04.
-
-### 9.5 Determinant of a matrix
+on the diagonal. Cross-reference: chapters 03, 04. ### 9.5 Determinant of a matrix
 
 \begin{equation}
 \label{eq:ch-extra-det}
@@ -918,9 +896,7 @@ a determinant: $d(\ln \det \mathbf A) = \operatorname{Tr}(\mathbf A^{-1}\, d\mat
 The determinant of an antisymmetric matrix
 is the **square of the Pfaffian**; the determinant of a
 Slater matrix is the **Slater determinant** of chapter 02
-(§2.2). Cross-reference: chapter 02.
-
-### 9.6 Matrix exponential
+(§2.2). Cross-reference: chapter 02. ### 9.6 Matrix exponential
 
 The **matrix exponential** is defined by the Taylor series
 
@@ -942,9 +918,7 @@ Used in the **time-evolution operator**
 $\hat U(t) = e^{-i \hat H t}$ of chapter 01 (§1.7.1) and in
 the **Löwdin orthogonaliser**
 $\mathbf X = \mathbf S^{-1/2}$ of chapter 03 (§3.6.6). Cross-
-reference: chapters 01, 03.
-
-### 9.7 Sherman–Morrison–Woodbury identities
+reference: chapters 01, 03. ### 9.7 Sherman–Morrison–Woodbury identities
 
 \begin{align}
 (\mathbf A + \mathbf u \mathbf v^T)^{-1} &\;=\; \mathbf A^{-1} - \frac{\mathbf A^{-1} \mathbf u \mathbf v^T \mathbf A^{-1}}{1 + \mathbf v^T \mathbf A^{-1} \mathbf u} \quad &\text{(rank-1)} , \label{eq:ch-extra-sm1} \\
@@ -954,9 +928,7 @@ reference: chapters 01, 03.
 The first is the **Sherman–Morrison formula**, the second the
 **Woodbury identity**. The latter is the workhorse of the
 **Broyden update** in chapter 04 (§4.6.3). Cross-reference:
-chapter 04.
-
----
+chapter 04. ---
 
 ## 10. Differential operators
 
@@ -1037,9 +1009,7 @@ out the band structure of a **single-wall nanotube** or a
 Identity \eqref{eq:ch-extra-vec-id3} is the reason the
 **Coulomb gauge** $\nabla \cdot \mathbf A = 0$ and the
 **continuity equation** of chapter 01 (§1.7.4) have the
-structure they do. Cross-reference: chapter 01.
-
----
+structure they do. Cross-reference: chapter 01. ---
 
 ## 11. Functional derivatives
 
@@ -1111,9 +1081,7 @@ the functional derivative with respect to $\rho(\mathbf r)$ is
 The right-hand side is the **Kohn–Sham effective potential**.
 The functional derivative $\delta E_\text{xc}/\delta\rho$ is
 the **XC potential** of chapter 04 (§4.2, §4.5). Cross-
-reference: chapter 04.
-
----
+reference: chapter 04. ---
 
 ## 12. Variational calculus
 
@@ -1183,9 +1151,7 @@ Differentiating with respect to the MO coefficients $\mathbf C$
 gives the **Roothaan–Hall equation** (chapters 03 and 06),
 with $\boldsymbol\Lambda$ identified as the diagonal orbital
 energy matrix $\boldsymbol\varepsilon$. Cross-reference:
-chapters 03, 06.
-
----
+chapters 03, 06. ---
 
 ## 13. The Coulomb kernel $1 / |\mathbf r - \mathbf r'|$ and the Ewald sum
 
@@ -1239,9 +1205,7 @@ $\omega \to 0$ recovers the full $1/r$ on the long-range
 side; $\omega \to \infty$ puts everything on the short-range
 side. The two pieces are treated with different functionals
 in **range-separated hybrid** XC functionals (chapter 05,
-§5.5). Cross-reference: chapter 05.
-
-### 13.3 The Ewald sum
+§5.5). Cross-reference: chapter 05. ### 13.3 The Ewald sum
 
 The **lattice sum**
 
@@ -1283,9 +1247,7 @@ The Ewald sum is the **Madelung constant** of the lattice
 finite-size ions and to the **electron–ion** interaction in
 periodic DFT. It is the heart of every plane-wave and
 real-space-grid periodic code. Cross-reference: chapters 04
-(the Hartree potential in a periodic cell), 07.
-
-### 13.4 The Madelung constant
+(the Hartree potential in a periodic cell), 07. ### 13.4 The Madelung constant
 
 The **Madelung constant** $\mathcal M$ of a Bravais lattice is
 defined by
@@ -1465,9 +1427,7 @@ This is the **Stefan–Boltzmann constant** in disguise:
 $\sigma = (2\pi^5 k_B^4)/(15 h^3 c^2)$. It is the integral that
 sets the scale of the **zero-point radiation** that gives the
 **Lamb shift** of chapter 01 (§1.14, "what we left out"). Cross-
-reference: chapter 01.
-
-### 14.8 The complete elliptic integrals
+reference: chapter 01. ### 14.8 The complete elliptic integrals
 
 The two **complete elliptic integrals** of the first and second
 kind,
@@ -1489,7 +1449,7 @@ $K(1) = \infty$ (logarithmic divergence) and $E(1) = 1$.
 ## Where to look for what you forgot
 
 - **NIST Digital Library of Mathematical Functions**
-  ([dlmf.nist.gov](https://dlmf.nist.gov)) — the standard
+  ([dlmf.nist.gov](<https://dlmf.nist.gov>)) — the standard
   reference for everything in §7 and §14.
 - **Abramowitz & Stegun** (the older print companion to the
   DLMF) — same content, harder to search.
@@ -1503,9 +1463,7 @@ $K(1) = \infty$ (logarithmic divergence) and $E(1) = 1$.
   in the context of quantum chemistry.
 - **Martin** — *Electronic Structure: Basic Theory and
   Practical Methods*, for the DFT-specific identities in §3,
-  §6, §11, §12, §13.
-
-> **Disclaimer.** This cheatsheet is a *reference*, not a
+  §6, §11, §12, §13. > **Disclaimer.** This cheatsheet is a *reference*, not a
 > textbook. Every identity is stated without proof; the proof
 > is in the linked chapter (and ultimately in the references
 > above). Cite the chapter, not the cheatsheet, in any

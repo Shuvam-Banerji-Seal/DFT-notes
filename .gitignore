@@ -40,3 +40,6 @@ package-lock.json
 # Local env
 .env
 .env.local
+
+# Vendored gems (extracted from Docker image for local builds)
+vendor/bundle/

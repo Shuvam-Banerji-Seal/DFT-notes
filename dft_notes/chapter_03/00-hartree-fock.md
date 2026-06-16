@@ -282,9 +282,7 @@ resolve the circularity by **iteration**:
 3. Diagonalise $F^{(n)}$ to get new orbitals and a new density
    $\rho^{(n+1)}$.
 4. Mix $\rho^{(n)}$ and $\rho^{(n+1)}$ for numerical stability.
-5. Check convergence.  If not converged, go to step 2.
-
-A minimal SCF loop in Python (using a pre-built one-electron
+5. Check convergence.  If not converged, go to step 2. A minimal SCF loop in Python (using a pre-built one-electron
 Hamiltonian and two-electron integrals):
 
 ```python
@@ -331,9 +329,7 @@ def scf_loop(H_core, eri, S, n_elec, max_iter=100, tol=1e-8, mixing=0.3):
 The call `np.einsum` is doing what a real quantum-chemistry code
 does in its innermost loop.  In production, the ERI tensor is
 recomputed on the fly and never stored; this is the *direct SCF*
-trick we will examine in section 3.8.
-
-> **Warning.**  Plain density mixing is enough for stable
+trick we will examine in section 3.8. > **Warning.**  Plain density mixing is enough for stable
 > closed-shell molecules.  Open-shell, near-degenerate, or
 > metallic systems need **level-shifting**, **DIIS** (direct
 > inversion in the iterative subspace), or both.  Adding DIIS to
@@ -962,9 +958,7 @@ $\mathcal O(K^3)$. The two costs are in *opposite scaling
 regimes*; the crossover between them is exactly what determines
 whether a code uses *conventional* SCF (small $K$, store the
 ERI) or *direct* SCF (large $K$, recompute the ERI on the fly)
-— see §3.8.
-
-### 3.6.6 Orthogonalisation
+— see §3.8. ### 3.6.6 Orthogonalisation
 
 Equation \eqref{eq:ch-03-roothaan-hall} is a GEP.  The standard
 numerical trick is to *symmetrically orthogonalise* the basis.
@@ -1035,9 +1029,7 @@ appears below.
 > $-0.578\,E_h$ corresponds to an ionisation energy of $+0.578$
 > $E_h$ by Koopmans' theorem, but the true ionisation energy of
 > H₂ is closer to $+0.594\,E_h$ (the orbital *relaxes* on
-> removal of the electron).  This is the topic of section 3.9.
-
-## 3.7 The open-shell case: unrestricted Hartree–Fock
+> removal of the electron).  This is the topic of section 3.9. ## 3.7 The open-shell case: unrestricted Hartree–Fock
 
 The derivation in section 3.6 assumed a *closed-shell* molecule:
 all spatial orbitals doubly occupied, every spatial orbital
@@ -1475,9 +1467,7 @@ The key piece is `build_J_direct` / `build_K_direct`, which loop
 over basis-function quartets, apply the Schwarz test
 \eqref{eq:ch-03-screen}, and accumulate only the
 non-negligible contributions.  The full implementation appears
-in section 3.8.5.
-
-### 3.8.4 DIIS — Pulay's accelerator
+in section 3.8.5. ### 3.8.4 DIIS — Pulay's accelerator
 
 Plain density mixing converges in 20–50 iterations for most closed-
 shell molecules.  For open-shell systems, transition-metal
@@ -1566,7 +1556,7 @@ energy) is unchanged.
 > non-negative.
 
 **Storage cost of DIIS.**  The DIIS history stores the last $m$
-Fock matrices and error vectors, with $m$ typically 6–10.  The
+Fock matrices and error vectors, with $m$ typically 6–10. The
 cost is $\mathcal O(m K^2)$ memory — negligible compared to the
 ERI tensor that DIIS is *not* trying to store.  The DIIS linear
 system \eqref{eq:ch-03-diis-system} is of size $m+1$ and is
@@ -1594,7 +1584,6 @@ table 3.5 (also recovered in chapter 6 of these notes).
 import numpy as np
 from scipy.linalg import eigh
 
-
 # STO-3G basis for hydrogen (Hehre-Stewart-Pople fit, zeta = 1.24)
 STO3G_H = {
     "prims": [(0.168856, 0.444635),
@@ -1602,11 +1591,9 @@ STO3G_H = {
               (3.425250, 0.154329)],
 }
 
-
 def norm_s(alpha):
     """Normalisation of a primitive s-Gaussian: (2 alpha / pi)^(3/4)."""
     return (2.0 * alpha / np.pi) ** 0.75
-
 
 def overlap_ss(alpha, A, beta, B):
     """<g_A | g_B> for two normalised primitive s-Gaussians."""
@@ -1614,7 +1601,6 @@ def overlap_ss(alpha, A, beta, B):
     Rab2 = np.sum((A - B) ** 2)
     Kab  = np.exp(-alpha * beta / gamma * Rab2)
     return norm_s(alpha) * norm_s(beta) * Kab * (np.pi / gamma) ** 1.5
-
 
 def kinetic_ss(alpha, A, beta, B):
     """<g_A | -1/2 nabla^2 | g_B> for two primitive s-Gaussians."""
@@ -1624,14 +1610,12 @@ def kinetic_ss(alpha, A, beta, B):
     pre  = norm_s(alpha) * norm_s(beta) * Kab * (np.pi / gamma) ** 1.5
     return pre * (alpha * beta / gamma) * (3.0 - 2.0 * alpha * beta / gamma * Rab2)
 
-
 def boys_f0(t):
     """Boys function F_0(t) = (1/2) sqrt(pi/t) erf(sqrt(t)); F_0(0) = 1."""
     if t < 1e-12:
         return 1.0
     from scipy.special import erf
     return 0.5 * np.sqrt(np.pi / t) * erf(np.sqrt(t))
-
 
 def nuclear_ss(alpha, A, beta, B, Z, C):
     """<g_A | -Z/|r - C| | g_B> for two primitive s-Gaussians."""
@@ -1642,7 +1626,6 @@ def nuclear_ss(alpha, A, beta, B, Z, C):
     PC2  = np.sum((P - C) ** 2)
     return (-Z) * norm_s(alpha) * norm_s(beta) * Kab \
                 * (2.0 * np.pi / gamma) * boys_f0(gamma * PC2)
-
 
 def contracted_1e(shell_A, shell_B, op, Z=None, C=None):
     """One-electron integral between two contracted s-shells."""
@@ -1659,7 +1642,6 @@ def contracted_1e(shell_A, shell_B, op, Z=None, C=None):
                 val += da * db * nuclear_ss(a, shell_A["center"],
                                             b, shell_B["center"], Z, C)
     return val
-
 
 def eri_prim_ss(alpha, A, beta, B, gamma, C, delta, D):
     """(ab|cd) for four primitive s-Gaussians."""
@@ -1678,7 +1660,6 @@ def eri_prim_ss(alpha, A, beta, B, gamma, C, delta, D):
     return pre * (2.0 * np.pi ** 2.5) / (ab * cd * np.sqrt(ab + cd)) \
                 * boys_f0(rho * RPQ2)
 
-
 def diagonal_eri(shell_A, shell_B):
     """(AA|BB) for two contracted s-shells -- used for Schwarz bounds."""
     val = 0.0
@@ -1688,7 +1669,6 @@ def diagonal_eri(shell_A, shell_B):
                 a, shell_A["center"], b, shell_B["center"],
                 a, shell_A["center"], b, shell_B["center"])
     return abs(val)
-
 
 def build_F_direct(shells, P, schwarz, threshold=1e-12):
     """Direct Fock-matrix build with Schwarz screening."""
@@ -1738,7 +1718,6 @@ def build_F_direct(shells, P, schwarz, threshold=1e-12):
             F[mu, nu] -= 0.5 * Kval
     return F
 
-
 def diis_extrapolate(F_list, err_list):
     """Pulay DIIS in the AO basis using the commutator error."""
     m = len(F_list)
@@ -1751,11 +1730,9 @@ def diis_extrapolate(F_list, err_list):
     c = np.linalg.solve(B, rhs)
     return sum(c[i] * F_list[i] for i in range(m))
 
-
 def commutator_error(F, P, S):
     """Commutator [F, P] in the AO basis (zero at convergence)."""
     return F @ P @ S - S @ P @ F
-
 
 def h2_sto3g_direct_scf(R=1.4, max_iter=64, tol=1e-10, diis_start=2):
     """Direct RHF for H2 / STO-3G at bond length R (in bohr)."""
@@ -1807,7 +1784,6 @@ def h2_sto3g_direct_scf(R=1.4, max_iter=64, tol=1e-10, diis_start=2):
     E_el = 0.5 * np.trace(P @ (h + F))
     E_nn = 1.0 / R
     return E_el + E_nn, eps, C, P
-
 
 if __name__ == "__main__":
     E, eps, C, P = h2_sto3g_direct_scf()

@@ -791,9 +791,7 @@ graph LR
 > uses the Hellmann–Feynman force of [Chapter 04, §4.7]({{ "/dft-notes/chapter-04/" | relative_url }})
 > as its starting point and then derives the **Pulay correction**
 > needed for finite Gaussian bases.  Geometry-optimisation
-> algorithms are in §9.6–9.9.
-
-### 9.1 The Pulay force vanishes in a plane-wave basis
+> algorithms are in §9.6–9.9. ### 9.1 The Pulay force vanishes in a plane-wave basis
 
 > **P9.1.1** (easy) · *§9.12, Problem 1*
 > **[statement]** In a plane-wave basis the basis functions
@@ -2146,9 +2144,7 @@ state wins.  The critical $U_c$ is the value at which
 the two energies are equal: for the 2-band Hubbard
 model on a square lattice, $U_c / t \approx 4$–$5$ in
 mean-field theory, in line with the QMC estimate of
-$U_c / t \approx 4.5$ from §13.2.
-
-The *practical* issue is the **choice of $U$**:
+$U_c / t \approx 4.5$ from §13.2. The *practical* issue is the **choice of $U$**:
 there is no unique, first-principles value (the
 *constrained LDA* calculation of §13 gives a $U$
 that depends on the screening length and the choice
@@ -2181,7 +2177,7 @@ Four suggestions, in increasing order of effort.
    workhorse behind every Gaussian-based ERI (§3, §4,
    §6); the tight-binding band structure of graphene
    (§11.2) is the 1-D analogue of the 3-D Rashba
-   spin-orbit coupling of §11.3.  If you can place
+   spin-orbit coupling of §11.3. If you can place
    each problem on a single mental map, you
    understand the *structure* of the notes, not just
    the *content*.

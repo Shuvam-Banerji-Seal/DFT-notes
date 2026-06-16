@@ -98,9 +98,7 @@ $\omega_s(\mathbf q)$ comes from the eigenvalues of
 between $\Phi$ and the Kohn–Sham energy is the *force theorem* of
 [chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }}) §9.4; the
 matrix $\tilde\Phi$ and its relation to $\Phi$ is the discrete
-Fourier transform derived in §10.1.3.
-
-### 10.1.1 Why a Fourier transform?
+Fourier transform derived in §10.1.3. ### 10.1.1 Why a Fourier transform?
 
 The solid is infinite. We want a wavevector $\mathbf q$ to label the
 modes by crystal momentum (the phonon analogue of the electronic
@@ -382,7 +380,7 @@ M \to \Gamma$ in a cubic BZ) is then obtained by interpolation,
 or by *re-fourier-interpolating* $\Phi$ to a finer $\mathbf
 q$-mesh and diagonalising again. The latter is the
 **Fourier-interpolation** method of
-[Gonze, Charlier, Allan, Teter (1994)](https://doi.org/10.1103/PhysRevB.50.13035),
+[Gonze, Charlier, Allan, Teter (1994)](<https://doi.org/10.1103/PhysRevB.50.13035>),
 and is the standard way to get a smooth dispersion curve from a
 finite-supercell frozen-phonon calculation.
 
@@ -413,8 +411,17 @@ graph TD
   classDef input fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
   classDef scf   fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef out   fill:#cc785c,stroke:#1c1f17,color:#ffffff;
-  class R0,SCF0 input
-  class SUPC,LOOP,DISP,SCF1,FORCES,FIT,NEXT,FFT,DIAG scf
+  class R0 input
+  class SCF0 input
+  class SUPC scf
+  class LOOP scf
+  class DISP scf
+  class SCF1 scf
+  class FORCES scf
+  class FIT scf
+  class NEXT scf
+  class FFT scf
+  class DIAG scf
   class OUT out
 ```
 
@@ -439,8 +446,8 @@ dispersion along a high-symmetry path of length 6–10 segments
 requires $O(10)$ supercell SCF calculations at $O(10)$ supercell
 sizes — easily $O(100)$ SCF cycles in total. The
 **density-functional perturbation theory** (DFPT) approach of
-[Baroni, Giannozzi, Testa (1987)](https://doi.org/10.1103/PhysRevLett.58.1861)
-and [Gonze (1995)](https://doi.org/10.1103/PhysRevB.52.1096) gets
+[Baroni, Giannozzi, Testa (1987)](<https://doi.org/10.1103/PhysRevLett.58.1861>)
+and [Gonze (1995)](<https://doi.org/10.1103/PhysRevB.52.1096>) gets
 the *same* force-constant matrix from a *single* unit-cell
 calculation by solving a *linear-response* problem for the
 self-consistent potential at every $\mathbf q$.
@@ -451,7 +458,7 @@ DFPT rests on a deep formal result. Consider a *static*
 perturbation parameter $\lambda$ that couples to the system
 through some one-electron operator $\partial \hat V_\lambda /
 \partial \lambda$. The **$2n + 1$ theorem** (or "third-order
-analyticity" theorem, see [Gonze & Vigneron (1989)](https://doi.org/10.1103/PhysRevB.39.13120))
+analyticity" theorem, see [Gonze & Vigneron (1989)](<https://doi.org/10.1103/PhysRevB.39.13120>))
 states that the $2n+1$-th derivative of the total energy with
 respect to $\lambda$ can be computed from a knowledge of the wave-
 function perturbed to *only* order $n$:
@@ -577,9 +584,9 @@ self-consistent machinery is *just* the Sternheimer equation, and
 the force constant is a *post-processing* of $\psi_n^{(1)}$.
 
 > **Tip.** DFPT is implemented in production codes like
-> [Quantum ESPRESSO](https://www.quantum-espresso.org/),
-> [ABINIT](https://www.abinit.org/), and
-> [CASTEP](https://www.castep.org/) under the keyword
+> [Quantum ESPRESSO](<https://www.quantum-espresso.org/>),
+> [ABINIT](<https://www.abinit.org/>), and
+> [CASTEP](<https://www.castep.org/>) under the keyword
 > `phonon` / `dfpt` / `linear response`. For each $\mathbf q$ the
 > code runs *one* Sternheimer SCF cycle (linear in the occupied
 > states) and outputs the dynamical matrix. The cost of a full
@@ -641,9 +648,17 @@ graph TD
   classDef input fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
   classDef step  fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef out   fill:#cc785c,stroke:#1c1f17,color:#ffffff;
-  class GS,PERT input
-  class SH,GUESS,SOLVE,RHO1,V1,CK step
-  class DONE,FC,DYN out
+  class GS input
+  class PERT input
+  class SH step
+  class GUESS step
+  class SOLVE step
+  class RHO1 step
+  class V1 step
+  class CK step
+  class DONE out
+  class FC out
+  class DYN out
 ```
 
 The **inner loop** (`SOLVE` → `RHO1` → `V1` → `CK`) is a
@@ -1024,9 +1039,7 @@ A few more useful identities in the harmonic approximation:
 
 - The *thermal expansion* of a crystal is **not** contained in
   the harmonic approximation — it requires the *anharmonic*
-  corrections of §10.7.
-
-> **Tip.** In a plane-wave code, the vibrational free energy
+  corrections of §10.7. > **Tip.** In a plane-wave code, the vibrational free energy
 > \eqref{eq:ch-10-free-energy-dos} is computed by sampling a
 > $\mathbf q$-mesh of $N_\mathbf q$ points, summing the
 > frequencies, and (optionally) Fourier-interpolating to a
@@ -1081,9 +1094,7 @@ The harmonic approximation is $E \approx E^{(0)} + E^{(2)}$; the
 first anharmonic correction is $E^{(3)}$ (cubic), the second is
 $E^{(4)}$ (quartic), and so on. The cubic and quartic force
 constants are computable by finite differences of forces, just
-like the second-order force constants of §10.2.
-
-### 10.7.2 Phonon–phonon scattering and the phonon self-energy
+like the second-order force constants of §10.2. ### 10.7.2 Phonon–phonon scattering and the phonon self-energy
 
 The cubic term $E^{(3)}$ couples three phonons. In perturbation
 theory, it gives a phonon a *self-energy* $\Sigma_s(\mathbf q,
@@ -1180,8 +1191,8 @@ dependence of the electronic band structure* — the band gap
 anharmonicity on the *electrons* (mediated by the *zero-point
 motion* of the phonons), and it is captured by the
 **Allen–Heine–Cardona (AHC) formalism** of
-[Allen & Heine (1976)](https://doi.org/10.1088/0022-3719/9/12/013) and
-[Allen & Cardona (1981)](https://doi.org/10.1103/PhysRevB.23.1499).
+[Allen & Heine (1976)](<https://doi.org/10.1088/0022-3719/9/12/013>) and
+[Allen & Cardona (1981)](<https://doi.org/10.1103/PhysRevB.23.1499>).
 
 The AHC formalism computes the *self-energy* of an electronic
 state due to the *zero-point* and *thermal* motion of the
@@ -1208,8 +1219,8 @@ The two are usually added and quoted together as the
 The AHC formalism is computationally expensive: it requires the
 *electron-phonon matrix elements* (§10.8) at every $\mathbf q$ in
 a fine mesh, summed over the entire BZ. It is implemented in
-modern DFPT codes (e.g. [Quantum ESPRESSO](https://www.quantum-espresso.org/),
-[EPW](https://epw-code.org/)) and is the state of the art for
+modern DFPT codes (e.g. [Quantum ESPRESSO](<https://www.quantum-espresso.org/>),
+[EPW](<https://epw-code.org/>)) and is the state of the art for
 predicting $T$-dependent band gaps from first principles.
 
 ## 10.8 Electron–phonon coupling
@@ -1398,7 +1409,7 @@ metal, the *carrier lifetime* in a semiconductor, and the
 > **Note.** The factor $1/g(\omega)$ in the definition
 > \eqref{eq:ch-10-eliashberg} is *controversial*. Some authors
 > include it, some do not. The convention used here follows
-> [Allen & Mitrović (1982)](https://doi.org/10.1088/0034-4885/45/2/001)
+> [Allen & Mitrović (1982)](<https://doi.org/10.1088/0034-4885/45/2/001>)
 > and is the one used in the modern literature; the alternative
 > convention (without the $1/g$) leads to an $\alpha^2 F(\omega)$
 > that has the dimensions of *inverse frequency* and is harder to
@@ -1421,10 +1432,10 @@ metal, the *carrier lifetime* in a semiconductor, and the
 In **Eliashberg theory**, the *superconducting critical
 temperature* $T_c$ is determined by the Eliashberg function
 $\alpha^2 F(\omega)$ through a non-linear integral equation
-([Eliashberg (1960)](https://doi.org/10.1007/BF01031348)). For
+([Eliashberg (1960)](<https://doi.org/10.1007/BF01031348>)). For
 *weak to intermediate* coupling ($\lambda \lesssim 1.5$), a good
 analytical approximation is the **McMillan formula**
-([McMillan (1968)](https://doi.org/10.1103/PhysRev.167.331)):
+([McMillan (1968)](<https://doi.org/10.1103/PhysRev.167.331>)):
 
 \begin{equation}
 \label{eq:ch-10-mcmillan}
@@ -1464,7 +1475,7 @@ McMillan regime.
 > $\mathbf q$-mesh to a fine mesh (the Brillouin zone is sampled
 > at $\sim 10^5$–$10^6$ points). The standard tool for this is
 > the **EPW** code
-> ([Noffsinger, Kioupakis, van de Walle, Louie, Cohen (2010)](https://doi.org/10.1016/j.cpc.2010.04.010)),
+> ([Noffsinger, Kioupakis, van de Walle, Louie, Cohen (2010)](<https://doi.org/10.1016/j.cpc.2010.04.010>)),
 > which works in tandem with Quantum ESPRESSO.
 
 ### 10.8.6 Diagram — from electron–phonon coupling to McMillan $T_c$
@@ -1500,8 +1511,15 @@ graph TD
   classDef inp   fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
   classDef mid   fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef out   fill:#cc785c,stroke:#1c1f17,color:#ffffff;
-  class PH,EP,FS,MU inp
-  class DOS,ALF,LBD,OML,ELB mid
+  class PH inp
+  class EP inp
+  class FS inp
+  class MU inp
+  class DOS mid
+  class ALF mid
+  class LBD mid
+  class OML mid
+  class ELB mid
   class TC out
 ```
 
@@ -1873,9 +1891,24 @@ graph TD
   classDef input fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
   classDef step  fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef output fill:#cc785c,stroke:#1c1f17,color:#ffffff;
-  class A,B input
-  class C,D,E,F,G,H,H2,I,J,K,L,N,P step
-  class M,O,Q output
+  class A input
+  class B input
+  class C step
+  class D step
+  class E step
+  class F step
+  class G step
+  class H step
+  class H2 step
+  class I step
+  class J step
+  class K step
+  class L step
+  class N step
+  class P step
+  class M output
+  class O output
+  class Q output
 ```
 
 The decision node `C{Choose method}` is the one a practitioner
@@ -2193,7 +2226,7 @@ formula in the form \eqref{eq:ch-10-mcmillan} is *quantitative*
 only for $\lambda \lesssim 1.3$; for stronger coupling it
 *overestimates* $T_c$ by a factor of 2–10. The
 **Allen–Dynes修正 formula** of
-[Allen & Dynes (1975)](https://doi.org/10.1103/PhysRevB.12.905)
+[Allen & Dynes (1975)](<https://doi.org/10.1103/PhysRevB.12.905>)
 extends the McMillan formula to strong coupling:
 
 $$
@@ -2235,7 +2268,7 @@ what we skipped:
   "renormalisation-group" approaches), and the *fourth-order*
   $E^{(4)}$ contributes both a frequency shift and a *quartic*
   broadening. We did not derive the full diagrammatic
-  machinery; see [Maradudin & Fein (1962)](https://doi.org/10.1103/PhysRev.128.2589)
+  machinery; see [Maradudin & Fein (1962)](<https://doi.org/10.1103/PhysRev.128.2589>)
   for the original treatment.
 - **The Allen–Heine–Cardona formalism in detail.** Equation
   \eqref{eq:ch-10-ahc} is the *zero-order* (i.e. non-self-
@@ -2283,7 +2316,7 @@ what we skipped:
   bosonic modes, and is the foundation of *infrared
   spectroscopy* of solids. We did not give the polariton
   dispersion relation; see [Kittel, *Introduction to Solid
-  State Physics*](https://www.wiley.com/en-us/Introduction+to+Solid+State+Physics%2C+8th+Edition-p-9780471415268)
+  State Physics*](<https://www.wiley.com/en-us/Introduction+to+Solid+State+Physics%2C+8th+Edition-p-9780471415268>)
   chapter on optical processes.
 
 > Next: [chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }})

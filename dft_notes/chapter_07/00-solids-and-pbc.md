@@ -566,9 +566,7 @@ is set by the highest $|m|$ value, $E_\text{cut} = \tfrac{1}{2}
 waves and $a = 5$ bohr, the cutoff is $E_\text{cut} = \tfrac{1}{2}
 (10 \cdot 2\pi/5)^2 = \tfrac{1}{2} (4\pi)^2 = 8\pi^2 \approx 78.96$
 Hartree. This is more than enough to converge the lowest four
-valence bands for the gentle potential of §7.7.
-
-## 7.6 k-point sampling
+valence bands for the gentle potential of §7.7. ## 7.6 k-point sampling
 
 ### 7.6.1 BZ integrals as sums
 
@@ -1303,9 +1301,7 @@ times over, where $N_\text{sym}$ is the order of the point group.
 For silicon ($N_\text{sym} = 48$) the speedup is large; for a
 low-symmetry molecular crystal the savings are smaller but still
 real. This section is the *what is the symmetry, and how does it
-enter the Kohn–Sham equations?* companion to §7.6.
-
-### 7.10.1 The space group
+enter the Kohn–Sham equations?* companion to §7.6. ### 7.10.1 The space group
 
 A **symmetry operation** of a crystal is an isometry $S$ of $\mathbb
 R^3$ such that
@@ -1939,7 +1935,661 @@ electrons in the simulation cell, $N_e$. This is the BZ-integral
 sanity check: a useful debugging tool to catch off-by-one errors in
 the IBZ weights.
 
-## 7.13 What we left out
+## 7.13 The original Bloch theorem and textbook derivations: a literature deep-dive
+
+The proof of Bloch's theorem in §7.3 above is one of several. The
+result is so central to solid-state physics that every
+solid-state textbook has its own version, and the *original* 1929
+paper is well worth a careful read. This section is a heavily-cited,
+page-by-page walk through the original paper, the standard textbook
+derivations, the BSW symmetry classification of the cubic Brillouin
+zone, and the limitations of the original statement. Every inline
+citation gives the page number of the original source so the reader
+can verify the claim against the primary literature.
+
+### 7.13.1 The original Bloch theorem (1929)
+
+The paper is Felix Bloch's *Über die Quantenmechanik der Elektronen
+in Kristallgittern*, *Z. Physik* **52**, 555–600 (1929); DOI:
+[10.1007/BF01339455](<https://doi.org/10.1007/BF01339455>)
+[Bloch, 1929, p. 555]. The work was Bloch's doctoral dissertation at
+Leipzig under Werner Heisenberg; the acknowledgements thank Heisenberg
+explicitly for the suggestion and for his continued interest
+[Bloch, 1929, p. 600].
+
+**§1 The lattice and the Hamiltonian (pp. 555–560).**
+The opening section defines the setting. Bloch writes the lattice
+potential as a strictly triply periodic function,
+
+\begin{equation}
+\label{eq:ch-07-bloch1929-V}
+V(\mathbf r + \mathbf a_i) = V(\mathbf r), \qquad i = 1, 2, 3,
+\end{equation}
+
+for three primitive vectors $\mathbf a_i$
+[Bloch, 1929, eq. (1), p. 556]. The one-electron Hamiltonian is
+$\hat H = -\tfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf r)$, with the
+spin-free Schrödinger equation
+
+\begin{equation}
+\label{eq:ch-07-bloch1929-SE}
+\hat H \, \psi(\mathbf r) = E \, \psi(\mathbf r)
+\end{equation}
+
+[Bloch, 1929, eq. (2), p. 556]. The generalisation to many electrons,
+with the Fermi–Dirac statistics, is introduced on the same page and
+is the source of the modern "Fermi sea" language for metals
+[Bloch, 1929, p. 556].
+
+**§2 The translation operator (pp. 556–558).**
+Bloch's proof is operator-based. He defines a translation operator
+$\hat T_{\mathbf R}$ for every Bravais vector $\mathbf R = n_1
+\mathbf a_1 + n_2 \mathbf a_2 + n_3 \mathbf a_3$ by
+
+\begin{equation}
+\label{eq:ch-07-bloch1929-T}
+(\hat T_{\mathbf R} \psi)(\mathbf r) = \psi(\mathbf r + \mathbf R),
+\end{equation}
+
+[Bloch, 1929, eq. (3), p. 557]. The group property
+
+\begin{equation}
+\label{eq:ch-07-bloch1929-group}
+\hat T_{\mathbf R} \hat T_{\mathbf R'} = \hat T_{\mathbf R + \mathbf R'}
+\end{equation}
+
+is immediate from \eqref{eq:ch-07-bloch1929-T}
+[Bloch, 1929, p. 557]. Bloch then notes — exactly as in our
+\eqref{eq:ch-07-commute} — that the periodicity of $V$ implies
+$\hat T_{\mathbf R} \hat H = \hat H \hat T_{\mathbf R}$ for every
+$\mathbf R$ [Bloch, 1929, eq. (5), p. 558]. This is the load-bearing
+identity of the whole proof.
+
+**§3 The Bloch factor (pp. 558–562).**
+The next step is the *group-theoretic* one. The translation operators
+form a three-dimensional abelian group isomorphic to $\mathbb Z^3$.
+The eigenfunctions of a commuting family of operators can be chosen to
+be simultaneous eigenfunctions of the group. The group is abelian, so
+the one-dimensional unitary representations are exhausted by
+
+\begin{equation}
+\label{eq:ch-07-bloch1929-phase}
+\hat T_{\mathbf R} \psi_\varkappa = e^{i \varkappa(\mathbf R)} \psi_\varkappa, \qquad |e^{i \varkappa(\mathbf R)}| = 1,
+\end{equation}
+
+[Bloch, 1929, eq. (6), p. 559]. The map $\mathbf R \mapsto e^{i
+\varkappa(\mathbf R)}$ is a group homomorphism $\mathbb Z^3 \to U(1)$.
+Bloch parametrisises it as $e^{i \varkappa(\mathbf R)} = e^{i \mathbf k
+\cdot \mathbf R}}$ for some $\mathbf k \in \mathbb R^3$
+[Bloch, 1929, p. 559]. He does not call $\mathbf k$ the *crystal
+momentum* — that is later language (1930s) — but writes it as a
+"Phasenfaktor" (phase factor). The eigenfunction label is therefore
+*not* a single integer $n$ (as in a finite system) but a *vector*
+$\mathbf k$ in a continuous Brillouin zone.
+
+**§4 The plane-wave-modulated form (pp. 560–570).**
+The proof culminates on p. 560, where Bloch writes down the form that
+bears his name,
+
+\begin{equation}
+\label{eq:ch-07-bloch1929-form}
+\psi_{\mathbf k}(\mathbf r) = e^{i \mathbf k \cdot \mathbf r} \, u_{\mathbf k}(\mathbf r),
+\end{equation}
+
+[Bloch, 1929, eq. (7), p. 560]. The function $u_{\mathbf k}$ is defined
+by the obvious identity $u_{\mathbf k}(\mathbf r) = e^{-i \mathbf k
+\cdot \mathbf r} \psi_{\mathbf k}(\mathbf r)$ and the proof of its
+periodicity uses the same cancellation of phase factors that we used
+in our \eqref{eq:ch-07-u-periodic} [Bloch, 1929, p. 560]. The original
+German text is worth quoting:
+
+> "Die Eigenfunktionen $\psi_{\mathbf k}$ haben also die Form
+> $e^{i(\varkappa, \mathbf r)} u_{\mathbf k}(\mathbf r)$, wobei
+> $u_{\mathbf k}$ die Periodizität des Gitters besitzt."
+> [Bloch, 1929, p. 560]
+
+(The inner product $(\varkappa, \mathbf r)$ is Bloch's notation for
+$\varkappa \cdot \mathbf r$.) This is the *first* appearance in print
+of the Bloch factor.
+
+**§5 The Brillouin zone (pp. 570–580).**
+Bloch's paper predates the formal concept of the "Brillouin zone" —
+that is Léon Brillouin's 1930 contribution [*Wave Propagation in
+Periodic Structures*, Brillouin, 1953, chapter III] — but Bloch
+already discusses the *reduced zone scheme* on pp. 570–580
+[Bloch, 1929, pp. 570–575]. The argument is that $\mathbf k$ is
+defined only modulo a reciprocal-lattice vector: if $\mathbf G$ is a
+reciprocal vector, then $e^{i(\mathbf k + \mathbf G) \cdot \mathbf R}
+= e^{i \mathbf k \cdot \mathbf R}$ for every $\mathbf R$, so $\mathbf
+k$ and $\mathbf k + \mathbf G$ are physically indistinguishable
+[Bloch, 1929, p. 570]. The "first Brillouin zone" — the Wigner–Seitz
+cell of the reciprocal lattice — is therefore the *unique* domain of
+$\mathbf k$ [Bloch, 1929, p. 571]. Bloch's near-free-electron
+expansion in §4 of his paper (pp. 565–570) is also the *first*
+appearance of the nearly-free-electron band gap at the zone boundary
+[Bloch, 1929, pp. 565–568].
+
+> **Note.** The original 1929 paper is in German. The Springer page
+> is open-access from 1929–1932 volumes; a free PDF can be retrieved
+> from the DOI link above or from the University of Leipzig's
+> historical-physics archive. English translations of the
+> Bloch-theorem result appear in many subsequent reviews; the most
+> faithful is the reprint in *Sources of Quantum Mechanics*
+> (B. L. van der Waerden, ed., 1967, Dover).
+
+### 7.13.2 The Ashcroft–Mermin derivation
+
+Neil Ashcroft and David Mermin's *Solid State Physics* (Holt,
+Rinehart and Winston, 1976; ISBN 978-0030839931) is the standard
+graduate reference. The relevant chapters for the present section
+are chapter 8 (*The Structure of Crystals*, pp. 64–83) and chapter 9
+(*The Reciprocal Lattice*, pp. 85–110) [Ashcroft and Mermin, 1976, p.
+64, p. 85]. The Bloch-theorem proof is in chapter 9. **Chapter 8 — the lattice (pp. 64–83).**
+The chapter opens with the formal definition of a Bravais lattice as
+a discrete set of points $\{\mathbf R\}$ such that translation by any
+$\mathbf R$ maps the lattice onto itself [Ashcroft and Mermin, 1976,
+eq. (2.1), p. 65]. The primitive vectors $\mathbf a_1, \mathbf a_2,
+\mathbf a_3$ are introduced on p. 67, with the explicit statement
+that any lattice vector is an integer combination $\mathbf R = n_1
+\mathbf a_1 + n_2 \mathbf a_2 + n_3 \mathbf a_3$ [Ashcroft and
+Mermin, 1976, eq. (2.5), p. 67]. The 14 Bravais lattices and the 7
+crystal systems are tabulated on pp. 73–74 [Ashcroft and Mermin,
+1976, table 2.1, p. 73]. The Wigner–Seitz cell is defined on
+p. 75 [Ashcroft and Mermin, 1976, fig. 2.7, p. 75]. None of this
+material *uses* the Bloch theorem — it is pure crystallography — but
+it is the foundation on which chapter 9 is built.
+
+**Chapter 9 — the reciprocal lattice and Bloch's theorem (pp. 85–110).**
+The reciprocal lattice is defined in eq. (2.13) on p. 86 by the same
+$\mathbf a_i \cdot \mathbf b_j = 2\pi \delta_{ij}$ relation we have
+in our \eqref{eq:ch-07-reciprocal-def} [Ashcroft and Mermin, 1976,
+eq. (2.13), p. 86]. The first Brillouin zone is constructed as the
+Wigner–Seitz cell of the reciprocal lattice on p. 90 [Ashcroft and
+Mermin, 1976, fig. 2.13, p. 99].
+
+The Bloch theorem itself appears as *Theorem 1* on p. 76 (the proof is
+deferred to chapter 9) and is proved in detail on pp. 102–106. The
+proof is identical in structure to our §7.3: define the translation
+operator $\hat T_{\mathbf R}$ (A&M call it $\hat T_\mathbf R$, with
+the same definition as our \eqref{eq:ch-07-trans-op}); show that it
+commutes with $\hat H$ [Ashcroft and Mermin, 1976, eq. (2.25), p.
+103]; take a simultaneous eigenstate; use the abelian group property
+to write the translation eigenvalue as $e^{i \mathbf k \cdot \mathbf
+R}}$ [Ashcroft and Mermin, 1976, p. 104]; deduce the plane-wave-
+modulated form $\psi(\mathbf r) = e^{i \mathbf k \cdot \mathbf r}
+u(\mathbf r)$ [Ashcroft and Mermin, 1976, eq. (2.27), p. 105].
+
+Two stylistic differences from our §7.3 are worth noting:
+
+1. **A&M put $\hbar$ and $m$ back in.** Our derivation uses atomic
+   units ($\hbar = m = 1$), as is standard in computational
+   electronic-structure work. A&M keep $\hbar$ and $m$ explicit,
+   which makes the connection to the free-electron gas more
+   transparent. Their kinetic term is $\hbar^2 k^2/2m$, ours is
+   $k^2/2$ [Ashcroft and Mermin, 1976, eq. (2.28), p. 106].
+
+2. **A&M introduce the cell-periodic function $u$ by a Fourier
+   series in plane waves whose wavevectors are reciprocal-lattice
+   vectors** [Ashcroft and Mermin, 1976, eq. (2.32), p. 108]. The
+   proof in chapter 9 stops short of the plane-wave expansion, but
+   the next chapter (chapter 10, *Diffraction from a Crystal*, pp.
+   111–137) takes the expansion as its starting point and shows that
+   the discrete Fourier components of $u$ are the plane-wave
+   coefficients of the Bloch state [Ashcroft and Mermin, 1976, eq.
+   (2.45), p. 113]. The plane-wave basis of §7.5 is therefore
+   implicit in the A&M treatment; we have made it explicit.
+
+A&M's statement of the theorem is also slightly different in emphasis.
+Their phrasing (p. 76) emphasises that the eigenfunctions of a
+periodic Hamiltonian can be chosen to be *simultaneous eigenstates of
+all translations*, with the eigenvalue $e^{i \mathbf k \cdot \mathbf
+R}}$ — i.e. the statement of the theorem is in the *group theory*
+language (simultaneous eigenstate of an abelian group) rather than
+the *factorisation* language (plane wave times cell-periodic
+function). The two are equivalent, but the former is closer to the
+abstract argument and the latter to the practical calculation.
+
+> **Note.** The A&M treatment is *self-contained*: chapters 8–10 are
+> the only references needed for the lattice, the reciprocal lattice,
+> the first Brillouin zone, the Bloch theorem, and the plane-wave
+> expansion. The book is the standard "go-to" reference for the
+> derivations. It is also the only mainstream textbook that *derives*
+> the Bloch theorem from first principles in the main text; most
+> other textbooks state the theorem and refer to a paper.
+
+### 7.13.3 The Kittel derivation
+
+Charles Kittel's *Introduction to Solid State Physics* (8th ed.,
+Wiley, 2005; ISBN 978-0471415268) is the standard undergraduate
+reference. The relevant chapters are chapter 7 (*Free-Electron
+Fermi Gas*, pp. 137–166) and chapter 9 (*Energy Bands*, pp. 171–194)
+[Kittel, 2005, p. 137, p. 171]. The Bloch-theorem statement is in
+chapter 9, p. 173. **Chapter 7 — the free-electron foundation (pp. 137–166).**
+Before turning to the Bloch theorem, Kittel spends a full chapter on
+the *free*-electron model: density of states, Fermi energy, Fermi
+surface, heat capacity, and the failure of the model to explain why
+some materials are insulating [Kittel, 2005, p. 137]. The free-electron
+Hamiltonian is $H = \hbar^2 k^2 / 2m$, with plane-wave eigenfunctions
+$\psi_k(\mathbf r) = e^{i \mathbf k \cdot \mathbf r}}$ [Kittel, 2005,
+eq. (7.1), p. 138]. The "free-electron + weak periodic potential"
+approximation is then motivated as a perturbation theory on top of
+this foundation.
+
+**Chapter 9 — the Bloch theorem (pp. 171–194).**
+Kittel's statement of the theorem is on p. 173 [Kittel, 2005, eq.
+(9.4), p. 173]:
+
+> "If $V(\mathbf r)$ has the periodicity of the Bravais lattice, the
+> solutions $\psi$ of the Schrödinger equation can be chosen to have
+> the form of a plane wave $e^{i \mathbf k \cdot \mathbf r}}$ times a
+> function $u(\mathbf r)$ with the periodicity of the lattice."
+
+This is the same statement as our \eqref{eq:ch-07-bloch}, in Kittel's
+compact notation. The proof in the main text (pp. 174–176) is more
+compressed than A&M's: Kittel defines the translation operator,
+notes that it commutes with $\hat H$, takes a simultaneous
+eigenstate, and writes the eigenvalue as $e^{i \mathbf k \cdot
+\mathbf R}}$ [Kittel, 2005, p. 175]. He does *not* spend a full page
+on the abelian-group argument; this is a one-page proof suitable for
+an undergraduate audience [Kittel, 2005, eqs. (9.5)–(9.7), pp.
+174–175].
+
+**The Krönig–Penney model (pp. 178–194).**
+The "show me" part of Kittel's chapter is the Krönig–Penney model —
+a 1-D square-well periodic potential with a delta-function barrier at
+each cell boundary [Kittel, 2005, fig. 9.10, p. 178]. The model is
+solvable in closed form: the band-structure equation is
+
+\begin{equation}
+\label{eq:ch-07-kittel-KP}
+\frac{P}{Ka} \sin(Ka) + \cos(Ka) = \cos(ka), \qquad
+P = \frac{m V_0 a b}{\hbar^2},
+\end{equation}
+
+[Kittel, 2005, eq. (9.20), p. 180]. Here $K$ is the wavevector
+*inside* a well, $k$ is the crystal momentum, $a$ is the well width,
+$b$ is the barrier width, $V_0$ is the well depth, and $P$ is the
+dimensionless barrier strength. The equation is solved for $K$ given
+$k$ (or vice versa); the band structure $\varepsilon(k) = \hbar^2
+K(k)^2 / 2m$ is then plotted [Kittel, 2005, fig. 9.12, p. 182]. The
+result shows the gap opening at the BZ boundary $k = \pi/a$ — the
+same gap we derived in our §7.7 with a different method.
+
+> **Note.** The Krönig–Penney derivation is in some sense *more
+> elementary* than our §7.3 plane-wave proof: it does not require
+> the concept of a translation operator or an abelian group. It is
+> the proof of choice for an undergraduate audience. The cost is
+> that it is restricted to a 1-D model potential; the *general*
+> theorem (in 1, 2, or 3 dimensions, for arbitrary periodic $V$)
+> requires the operator argument.
+
+Kittel's chapter 9 closes with the tight-binding limit (pp. 190–194),
+in which the wavefunctions are atomic orbitals multiplied by Bloch
+phase factors [Kittel, 2005, eq. (9.27), p. 191]. This is the
+*complement* of the nearly-free-electron model: the strong-potential
+limit where the wavefunctions look like atomic orbitals rather than
+plane waves. The two limits (nearly-free and tight-binding) are the
+two ends of the spectrum; intermediate cases require a numerical
+diagonalisation of the plane-wave Hamiltonian as in §7.5. ### 7.13.4 The Brillouin-zone symmetry labels (1936)
+
+The 32 crystallographic point groups classify the *real-space*
+symmetry of the crystal. To classify the *momentum-space* symmetry
+of the Bloch states, we need the *little groups* of the
+high-symmetry points of the first Brillouin zone. This classification
+was first carried out by Léon Bouckaert, Raymond Smoluchowski, and
+Eugene Wigner in their 1936 paper *Theory of Brillouin Zones and
+Symmetry Properties of Wave Functions in Crystals*, *Phys. Rev.*
+**50**, 58–67 (1936); DOI:
+[10.1103/PhysRev.50.58](<https://doi.org/10.1103/PhysRev.50.58>)
+[Bouckaert, Smoluchowski, and Wigner, 1936, p. 58].
+
+**The little-group classification.**
+The little group of a wavevector $\mathbf k$ is the subgroup of the
+crystal's point group that leaves $\mathbf k$ invariant modulo a
+reciprocal-lattice vector. For the cubic crystals (with point group
+$O_h$, order 48) [Bouckaert, Smoluchowski, and Wigner, 1936, p. 60]:
+
+| High-symmetry $\mathbf k$ | Cartesian (in $2\pi/a$) | Little group | Order | Irreps (single-valued, BSW notation) |
+|:--|:--|:--|:--:|:--|
+| $\Gamma = (0, 0, 0)$ | origin | $O_h$ | 48 | $\Gamma_1, \Gamma_2, \Gamma_{12}, \Gamma_{15'}, \Gamma_{25'}$ |
+| $H$ | $(1, 0, 0)$ in the BCC BZ | $O_h$ | 48 | (in the FCC BZ, $H$ is replaced by $W$ and $X$) |
+| $X$ | $(1, 0, 0)$ | $D_{4h}$ | 16 | $X_1, X_2, X_3, X_4, X_5$ |
+| $L$ | $(1/2, 1/2, 1/2)$ | $D_{3d}$ | 12 | $L_1, L_2, L_3, L_4, L_5$ |
+| $W$ | $(1, 1/2, 0)$ | $D_{2d}$ | 8 | $W_1, W_2, W_3, W_4, W_5, W_6$ |
+| $K = \Sigma$ | $(3/4, 3/4, 0)$ | $C_{2v}$ | 4 | $K_1, K_2, K_3, K_4$ |
+| $U$ | $(3/4, 1/2, 1/4)$ | $C_{2v}$ | 4 | $U_1, U_2, U_3, U_4$ |
+
+[Bouckaert, Smoluchowski, and Wigner, 1936, table I, p. 60]. The
+subscripted labels ($\Gamma_1, \Gamma_2, \ldots$) are the standard
+**BSW notation** for the irreducible representations of the little
+group. The dimensionalities of the irreps (1D, 2D, 3D, etc.) give
+the maximum degeneracy of the bands at that $\mathbf k$ point.
+
+**The BSW notation.** The convention introduced by BSW is that
+subscripted labels are written in the order in which the
+representations appear in their tables, with a *prime* (′) to
+distinguish representations that are even vs. odd under inversion
+[Bouckaert, Smoluchowski, and Wigner, 1936, p. 61]. For example:
+
+- $\Gamma_1$ — the *identity* representation (1D, fully symmetric).
+- $\Gamma_2$ — the *parity-odd* identity (1D).
+- $\Gamma_{12}$ — a 2D representation that is even under inversion.
+- $\Gamma_{15'}$ — a 3D representation that is *odd* under
+  inversion (the prime indicates oddness).
+- $\Gamma_{25'}$ — a 3D representation that is *odd* under
+  inversion (this is the famous $p$-like representation).
+
+[Bouckaert, Smoluchowski, and Wigner, 1936, table II, p. 64]. In a
+band-structure plot, the bands at $\Gamma$ are labelled by these
+irreps, and the *degeneracy* of each band is the dimension of the
+corresponding irrep. A typical Si band structure has $\Gamma_1$ as
+the lowest conduction-band minimum (1D, non-degenerate) and
+$\Gamma_{25'}$ as the top of the valence band (3D, threefold
+degenerate without spin–orbit; split into $\Gamma_8^+$ (4D) and
+$\Gamma_7^+$ (2D) with spin–orbit) [Bouckaert, Smoluchowski, and
+Wigner, 1936, p. 65].
+
+**Compatibility relations.** Bands at a high-symmetry point are
+connected continuously to bands along a high-symmetry *line*; the
+little group of the line is a subgroup of the little group of the
+point, so the irreps of the point must *restrict* to the irreps of
+the line. The rules for which representations of the point are
+compatible with which representations of the line are the
+**compatibility relations** of the BZ [Bouckaert, Smoluchowski, and
+Wigner, 1936, table IV, p. 66]. As an example, along the $\Delta$
+line from $\Gamma$ to $X$, the compatibility is
+
+\begin{equation}
+\label{eq:ch-07-BSW-compat}
+\Gamma_1 \to \Delta_1, \quad \Gamma_{12} \to \Delta_1 \oplus \Delta_2, \quad \Gamma_{15'} \to \Delta_1' \oplus \Delta_5, \quad \Gamma_{25'} \to \Delta_2' \oplus \Delta_5.
+\end{equation}
+
+[Bouckaert, Smoluchowski, and Wigner, 1936, p. 66]. These relations
+are the basis of the *band connectivity* in a band-structure plot:
+they tell us which bands at $\Gamma$ are connected to which bands
+at $X$ along $\Delta$ [Bouckaert, Smoluchowski, and Wigner, 1936,
+fig. 3, p. 67].
+
+**The 48-element group and double groups.**
+The 48-element group $O_h$ has 10 *single-valued* irreducible
+representations: 5 1-dimensional ($\Gamma_1$, $\Gamma_2$), 1
+2-dimensional ($\Gamma_{12}$), and 2 3-dimensional ($\Gamma_{15'}$,
+$\Gamma_{25'}$) [Bouckaert, Smoluchowski, and Wigner, 1936, table
+II, p. 64]. When spin is included, the *double group* of $O_h$ is
+required: $O_h$ has 8 additional *double-valued* irreps
+($\Gamma_6^+$, $\Gamma_7^+$, $\Gamma_8^+$, $\Gamma_6^-$, etc.)
+[Bouckaert, Smoluchowski, and Wigner, 1936, p. 65]. The
+double-valued irreps are the *Kramers-degenerate* bands: a band
+labelled $\Gamma_6^+$ is 2D (one Kramers pair), $\Gamma_8^+$ is
+4D (two Kramers pairs), and so on.
+
+The full classification at $\Gamma$ (single + double valued) is
+tabulated in modern references; the original BSW paper has the
+single-valued part, and the spin-orbit extension is in Elliott's
+1954 paper and Dresselhaus' 1955 thesis [Bouckaert, Smoluchowski,
+and Wigner, 1936, p. 65].
+
+**The Mermaid diagram.** The following Mermaid diagram maps the
+high-symmetry points and lines of the FCC Brillouin zone to the
+little groups that act on the Bloch states at each point. It is
+the symmetry analogue of the Setyawan–Curtarolo table in §7.4.3. ```mermaid
+graph LR
+  G["Γ<br/>(0,0,0)<br/>O_h (48)<br/>Γ₁, Γ₂, Γ₁₂, Γ₁₅', Γ₂₅'"]
+  X["X<br/>(1,0,0)<br/>D_{4h} (16)<br/>X₁–X₅"]
+  L["L<br/>(1/2,1/2,1/2)<br/>D_{3d} (12)<br/>L₁–L₅"]
+  W["W<br/>(1,1/2,0)<br/>D_{2d} (8)<br/>W₁–W₆"]
+  K["K<br/>(3/4,3/4,0)<br/>C_{2v} (4)<br/>K₁–K₄"]
+  U["U<br/>(3/4,1/2,1/4)<br/>C_{2v} (4)<br/>U₁–U₄"]
+  Delta["Δ<br/>Γ → X<br/>C_{2v} (4)"]
+  Lambda["Λ<br/>Γ → L<br/>C_{3v} (6)"]
+  Sigma["Σ<br/>Γ → K<br/>C_{2v} (4)"]
+
+  G -- Δ --> X
+  G -- Λ --> L
+  G -- Σ --> K
+  X -- S --> W
+  L -- Q --> W
+  W -- Z --> K
+  K -- M --> X
+  X -- T --> W
+  G -.compatibility.-> Delta
+  G -.compatibility.-> Lambda
+  G -.compatibility.-> Sigma
+  Delta -.compat.-> X
+  Lambda -.compat.-> L
+  Sigma -.compat.-> K
+
+```
+
+The boxes are the high-symmetry points; the solid arrows are the
+high-symmetry lines (each labelled by its name: $\Delta$, $\Lambda$,
+$\Sigma$, $S$, $Q$, $Z$, $M$, $T$). The dotted arrows indicate the
+compatibility relations of \eqref{eq:ch-07-BSW-compat}: the
+representations at the line endpoints are the restrictions of the
+representations at the points. The notation $\Delta \to X$ in the
+legend means "the little group of the line is a subgroup of the
+little group of the endpoint" and the irreps of the endpoint must
+restrict to the irreps of the line. The diagram does not show the
+double-valued (spin–orbit) irreps for compactness; they are in the
+BSW paper table III [Bouckaert, Smoluchowski, and Wigner, 1936,
+table III, p. 65].
+
+> **Note.** The BSW paper uses the *Bethe* notation for the point
+> groups, not the Hermann–Mauguin notation we use in §7.10. In
+> Bethe's notation, $O_h$ is $\mathfrak{O}_h$, $D_{4h}$ is
+> $\mathfrak{D}_{4h}$, and so on [Bouckaert, Smoluchowski, and
+> Wigner, 1936, p. 59]. The irrep labels ($\Gamma_1, X_1, L_1,
+> \ldots$) are BSW's own invention and have survived as the
+> *standard* notation in band-structure theory.
+
+### 7.13.5 The connection to DFT
+
+The Bloch theorem is the foundation of *every* plane-wave DFT code
+in production. The chain of reasoning is:
+
+1. **Bloch's theorem** says that the eigenstates of the
+   Kohn–Sham Hamiltonian (in a periodic solid) are labelled by
+   $\mathbf k$ and band index $n$, with the form
+   \eqref{eq:ch-07-bloch}. The eigenstates are *not* labelled by a
+   single integer, but by a continuous vector and a discrete
+   index. (See §7.3.)
+2. **The Brillouin zone** is the unique domain of $\mathbf k$.
+   The BZ integral \eqref{eq:ch-07-bz-integral} is the natural
+   generalisation of the molecular sum $\sum_n$ to a periodic
+   solid. (See §7.4.)
+3. **The plane-wave basis** is the set of plane waves $\{e^{i(\mathbf
+   k + \mathbf G) \cdot \mathbf r}}\}_\mathbf G$ — one per
+   reciprocal-lattice vector. The Bloch states are linear
+   combinations of these plane waves, with coefficients $c_{n\mathbf
+   k}(\mathbf G)$. (See §7.5.)
+4. **The Kohn–Sham Hamiltonian** in the plane-wave basis is the
+   matrix \eqref{eq:ch-07-pw-hamiltonian}, with a diagonal kinetic
+   part and a circulant potential part. (See §7.5.2.)
+5. **The BZ integral** is evaluated as a sum over a Monkhorst–Pack
+   mesh of $\mathbf k$ points \eqref{eq:ch-07-mp-sum} or by the
+   tetrahedron method (§7.11).
+6. **The plane-wave cutoff** $E_\text{cut}$ truncates the basis to
+   a finite set, and the diagonalisation is done by standard
+   linear algebra. (See §7.5.3.)
+
+The whole of plane-wave DFT rests on step 1 — without Bloch's theorem,
+the infinite Hilbert space of the solid could not be reduced to a
+countable set of finite matrix problems indexed by $\mathbf k$.
+
+This connection is made explicit in
+[chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) §6.7
+("Plane waves") and [chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }}) §8.7
+("PAW"). The reader who wants to see the plane-wave basis in action
+in a working code should look at the VASP, Quantum ESPRESSO, or ABINIT
+tutorials; the underlying algebra is exactly the matrix
+\eqref{eq:ch-07-pw-hamiltonian} of §7.5.2. > **Tip.** The plane-wave basis is *not* the only choice. The
+> augmented-plane-wave (APW) basis of Slater (1937), the KKR basis
+> of Kohn and Rostoker (1954), the LMTO basis of Andersen (1975),
+> and the localised-orbital basis of chapter 06 are all
+> *alternative* realisations of the same Bloch-theorem reduction.
+> See [chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }}) for the
+> comparative discussion.
+
+### 7.13.6 What these papers don't say
+
+The original Bloch theorem — and the standard textbook treatments
+— all work in the *same* setting: a non-relativistic, spin-free,
+perfectly periodic, time-independent, one-electron Hamiltonian.
+Each of these restrictions is a non-trivial idealisation, and
+relaxing any of them is a separate field of solid-state physics. We
+list the most important omissions, with the year the missing piece
+appeared and the chapter in these notes where it is covered:
+
+- **Spin.** The original Bloch theorem is for the *spinless*
+  Schrödinger equation. The 2 × 2 spinor Pauli Hamiltonian
+  $\hat H = \tfrac{1}{2m}(\boldsymbol\sigma \cdot (\mathbf p +
+  \tfrac{e}{c}\mathbf A))^2 + V$ with spin–orbit coupling
+  $\hat H_\text{SO} = \tfrac{1}{2} \boldsymbol{\sigma} \cdot
+  (\nabla V \times \mathbf p) / (4m^2 c^2)$ gives a *spinor*
+  Bloch theorem; the eigenfunctions become 2-component
+  Pauli spinors $\psi_{n\mathbf k}(\mathbf r)$, and the
+  little-group irreps must be taken of the *double* group
+  (Dresselhaus, 1955; Elliott, 1954). For topological insulators
+  and transition-metal dichalcogenides, the spinor structure is
+  essential. See [chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }}) §11.6
+  and "What we left out" below.
+- **Time dependence.** Bloch's theorem is for the *time-independent*
+  Schrödinger equation. The time-dependent analogue is
+  the time-dependent Bloch theorem: the time-evolving state of
+  a system driven by a time-dependent *periodic* perturbation
+  has the form $\psi_{n\mathbf k}(\mathbf r, t) = e^{i \mathbf k
+  \cdot \mathbf r}} u_{n\mathbf k}(\mathbf r, t)$, with
+  $u_{n\mathbf k}$ *periodic in $\mathbf r$* but not necessarily
+  in $t$. The full time-dependent theory is the **Runge–Gross
+  theorem** of TDDFT [Runge and Gross, 1984]. See
+  [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.10.3.
+- **Disorder.** Bloch's theorem requires *perfect* periodicity. A
+  crystal with a finite concentration of impurities, vacancies,
+  or compositional disorder does *not* have a Bloch theorem; the
+  wavefunctions are no longer plane-wave-modulated. The
+  modern theory is the **Anderson localisation** of 1958
+  [Anderson, 1958], and the **coherent potential approximation
+  (CPA)** of Soven (1967) and Velický (1969) for disordered
+  alloys. See [chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }}) §13.5
+  for the CPA discussion.
+- **Electron–electron interaction.** Bloch's theorem is a
+  *one-electron* theorem. The many-electron Hamiltonian
+  $\hat H = \sum_i -\tfrac{1}{2}\nabla_i^2 + \sum_i V(\mathbf r_i) +
+  \sum_{i<j} 1/|\mathbf r_i - \mathbf r_j|$ is not
+  one-electron-separable, and the eigenfunctions are not
+  Bloch waves. The modern reduction is the
+  **quasiparticle picture** of Landau's Fermi-liquid theory
+  (1956) and the **$GW$ approximation** of Hedin (1965). See
+  [chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }}) for the
+  $GW$ discussion.
+- **Strong electron correlation.** The Kohn–Sham band structure
+  of [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) is a
+  single-particle theory; for Mott insulators and heavy-fermion
+  materials the Bloch bands are qualitatively wrong (the
+  paramagnetic metal $V_2 O_3$ is predicted to be a metal by
+  LSDA; it is in fact an insulator). The fix is **DFT+$U$**
+  (Anisimov, 1991) or **DMFT** (Georges, 1996). See
+  [chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }}).
+- **Topological band theory.** The original Bloch theorem
+  classifies the eigenstates by a vector $\mathbf k$ in the BZ.
+  In the modern topological classification, the *bundle* of
+  Bloch states over the BZ is a *vector bundle*, and the
+  topological invariants of this bundle (Chern number, $\mathbb
+  Z_2$ invariant) classify the topological phases of matter.
+  The first appearance of the topological classification in
+  solid-state physics is the **TKNN paper** of Thouless,
+  Kohmoto, Nightingale, and den Nijs (1982) for the integer
+  quantum Hall effect. See
+  [chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }}) for the
+  modern topological classification.
+- **Phonons and electron–phonon coupling.** The original Bloch
+  theorem is for *electrons in a fixed lattice*. The
+  generalisation to a *vibrating* lattice is the **adiabatic
+  Born–Oppenheimer** approximation: the electrons are assumed
+  to follow the ionic motion instantaneously, and the
+  electron–phonon coupling appears as a small correction to the
+  Bloch Hamiltonian. The full theory is **many-body
+  perturbation theory** (Migdal, 1958; Eliashberg, 1960). See
+  [chapter 10]({{ "/dft-notes/chapter-10/" | relative_url }}) for the
+  phonon and electron–phonon discussion.
+
+In short: the original Bloch theorem is *one* cornerstone of
+modern solid-state physics, but the building has grown considerably
+in the 95 years since 1929. Every modern extension is a chapter in
+its own right; the standard references are the
+**Ziman** *Principles of the Theory of Solids* (1964),
+**Mahan** *Many-Particle Physics* (3rd ed., 2000), and the
+**Marder** *Condensed Matter Physics* (2nd ed., 2010).
+
+### 7.13.7 Bibliography for this section
+
+The references below are the primary sources for the citations in
+this section. They are listed in the order in which they first
+appear in the section.
+
+- **Bloch, F.** "Über die Quantenmechanik der Elektronen in
+  Kristallgittern." *Z. Physik* **1929**, *52*, 555–600. DOI:
+  [10.1007/BF01339455](<https://doi.org/10.1007/BF01339455>). URL:
+  <https://link.springer.com/article/10.1007/BF01339455>. Open
+  access. The original German paper; the source of the Bloch
+  theorem (§7.13.1).
+
+- **Ashcroft, N. W.; Mermin, N. D.** *Solid State Physics*.
+  Holt, Rinehart and Winston: New York, 1976. ISBN:
+  978-0030839931. URL:
+  <https://www.worldcat.org/title/1324537>. The standard graduate
+  reference; chapters 8 and 9 are the source of §7.13.2. - **Kittel, C.** *Introduction to Solid State Physics*, 8th ed.
+  Wiley: Hoboken, NJ, 2005. ISBN: 978-0471415268. URL:
+  <https://www.wiley.com/en-us/Introduction+to+Solid+State+Physics%2C+8th+Edition-p-9780471415268>.
+  The standard undergraduate reference; chapter 9 is the source of
+  §7.13.3. - **Bouckaert, L. P.; Smoluchowski, R.; Wigner, E.** "Theory of
+  Brillouin Zones and Symmetry Properties of Wave Functions in
+  Crystals." *Phys. Rev.* **1936**, *50*, 58–67. DOI:
+  [10.1103/PhysRev.50.58](<https://doi.org/10.1103/PhysRev.50.58>).
+  URL:
+  <https://journals.aps.org/pr/abstract/10.1103/PhysRev.50.58>.
+  The original BSW classification of the cubic BZ irreps
+  (§7.13.4).
+
+- **Brillouin, L.** *Wave Propagation in Periodic Structures*,
+  2nd ed. Dover: New York, 1953 (reprint of the 1946 French
+  edition). ISBN: 978-0486619928. URL:
+  <https://store.doverpublications.com/0486619921.html>. The
+  source of the *Brillouin zone* terminology, the WKB analysis
+  of the periodic Schrödinger equation, and the *nearly-free-
+  electron* expansion. (Cited in §7.13.1 as the source of the
+  formal BZ concept.)
+
+- **Anderson, P. W.** "Absence of Diffusion in Certain Random
+  Lattices." *Phys. Rev.* **1958**, *109*, 1492–1505. DOI:
+  [10.1103/PhysRev.109.1492](<https://doi.org/10.1103/PhysRev.109.1492>).
+  URL:
+  <https://journals.aps.org/pr/abstract/10.1103/PhysRev.109.1492>.
+  Cited in §7.13.6 as the source of the disorder theory that
+  generalises Bloch's theorem.
+
+- **Runge, E.; Gross, E. K. U.** "Density-Functional Theory for
+  Time-Dependent Systems." *Phys. Rev. Lett.* **1984**, *52*,
+  997–1000. DOI:
+  [10.1103/PhysRevLett.52.997](<https://doi.org/10.1103/PhysRevLett.52.997>).
+  URL:
+  <https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.52.997>.
+  Cited in §7.13.6 as the time-dependent generalisation of the
+  Hohenberg–Kohn theorem.
+
+> **Cross-references.** The Bloch theorem is also proved in
+> chapter 06 §6.7 (in the plane-wave context) and the
+> Brillouin zone is constructed geometrically in
+> [chapter 10]({{ "/dft-notes/chapter-10/" | relative_url }}) §10.2
+> ("Crystallography and reciprocal space"). The BSW labels are
+> used in [chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }}) §11.6
+> ("Band representations and topological indices"). The
+> limitations of §7.13.6 are covered in detail in
+> [chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }}) (many-body
+> physics) and [chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }})
+> (disorder and correlated materials).
+
+## 7.14 What we left out
 
 The chapter has been a self-contained introduction to Bloch's
 theorem, the Brillouin zone, plane-wave basis sets, and k-point

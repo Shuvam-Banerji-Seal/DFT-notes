@@ -35,6 +35,10 @@ graph TD
   C11["11 · Band structures<br/><small>DOS, projected DOS,<br/>Fermi surfaces</small>"]
   C12["12 · TDDFT<br/><small>Runge–Gross theorem,<br/>linear response, excitons</small>"]
   C13["13 · DFT+U & beyond<br/><small>Strong correlation,<br/>hybrid functionals, DMFT</small>"]
+  C14["14 · Quantum chemistry beyond DFT<br/><small>MP2, CI, CC, CASSCF,<br/>semiempirical, CBS</small>"]
+  C15["15 · Relativistic effects<br/><small>Dirac equation, DKH, ZORA,<br/>spin-orbit coupling</small>"]
+  C16["16 · Topological materials<br/><small>Chern numbers, Z₂ invariants,<br/>Weyl/Dirac semimetals</small>"]
+  C17["17 · Machine learning for DFT<br/><small>Equivariant NNs, MACE,<br/>delta-learning, foundation models</small>"]
 
   C00 --> C01
   C01 --> C02
@@ -49,10 +53,32 @@ graph TD
   C07 --> C11
   C04 --> C12
   C04 --> C13
+  C03 --> C14
+  C08 --> C15
+  C15 --> C16
+  C04 --> C17
+  C16 --> C17
 
   classDef shipped fill:#d6dcc8,stroke:#3a4031,color:#1c1f17,stroke-width:1.5px;
   classDef planned stroke-dasharray: 6 4,stroke:#a09d96,fill:#eef0e6,color:#6b7060,stroke-width:1.5px;
-  class C00,C01,C02,C03,C04,C05,C06,C07,C08,C09,C10,C11,C12,C13 shipped;
+  class C00 shipped;
+  class C01 shipped;
+  class C02 shipped;
+  class C03 shipped;
+  class C04 shipped;
+  class C05 shipped;
+  class C06 shipped;
+  class C07 shipped;
+  class C08 shipped;
+  class C09 shipped;
+  class C10 shipped;
+  class C11 shipped;
+  class C12 shipped;
+  class C13 shipped;
+  class C14 shipped;
+  class C15 shipped;
+  class C16 shipped;
+  class C17 shipped;
   classDef planned stroke-dasharray: 6 4,stroke:#a09d96,fill:#eef0e6,color:#6b7060,stroke-width:1.5px;
 
   click C00 "javascript:void(0)" "How to read these notes, the notation table, and the prerequisites for the DFT Notes series."
@@ -69,6 +95,10 @@ graph TD
   click C11 "javascript:void(0)" "Density of states, projected DOS, band-structure plots, and Fermi-surface visualisation."
   click C12 "javascript:void(0)" "Runge–Gross theorem, linear-response TDDFT, the Casida equations, and excitons."
   click C13 "javascript:void(0)" "DFT+U for strong correlation, hybrid functionals revisited, and a DMFT outlook."
+  click C14 "javascript:void(0)" "Quantum chemistry methods beyond DFT: MP2, CI, CCSD(T), CASSCF, NEVPT2, and the basis-set extrapolation ladder."
+  click C15 "javascript:void(0)" "The Dirac equation, scalar-relativistic corrections, and spin-orbit coupling in modern DFT."
+  click C16 "javascript:void(0)" "Topology in band theory: Chern numbers, Z₂ invariants, topological insulators, and Weyl semimetals."
+  click C17 "javascript:void(0)" "Machine learning for DFT: interatomic potentials, equivariant networks, delta-learning, and foundation models."
 ```
 
 ## Edges
@@ -93,6 +123,11 @@ table below lists every edge and the reason it exists.
 | C07 | C11 | Band structures are defined on the Brillouin zone of a periodic system. |
 | C04 | C12 | TDDFT is a time-dependent extension of ground-state KS-DFT. |
 | C04 | C13 | DFT+U is a correction to the KS exchange–correlation. |
+| C03 | C14 | Post-HF methods (MP2, CI, CC, CASSCF) are alternatives to KS-DFT; HF from chapter 3 is the starting point. |
+| C08 | C15 | Relativistic effects enter DFT through the pseudopotential (scalar-relativistic and fully-relativistic PPs). |
+| C15 | C16 | Topological materials need spin-orbit coupling from chapter 15 (SOC opens band gaps, gives Z₂ invariants). |
+| C04 | C17 | ML for DFT uses KS-DFT energies, forces, and densities as the ground truth for training. |
+| C16 | C17 | ML methods are increasingly used to predict topological invariants (Chern numbers, Z₂) from band structures. |
 
 ## Tracks
 
@@ -101,10 +136,14 @@ tracks.  Pick the track that matches your problem domain — you
 do not have to read all of them.
 
 - **Methods track** (always relevant) — 06 basis sets, 08
-  pseudopotentials, 13 DFT+U & beyond.
+  pseudopotentials, 13 DFT+U & beyond, 14 quantum chemistry
+  beyond DFT (alternative to DFT), 17 machine learning for DFT
+  (fast surrogate).
 - **Solids track** (for periodic systems) — 07 PBC, 10 phonons,
-  11 band structures.
+  11 band structures, 15 relativistic effects (heavy elements),
+  16 topological materials.
 - **Dynamics track** (for time-dependent and static-response
+  phenomena) — 09 forces & geometry optimisation, 12 TDDFT.
   phenomena) — 09 forces & geometry optimisation, 12 TDDFT.
 
 ## Conventions

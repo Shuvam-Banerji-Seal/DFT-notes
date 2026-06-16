@@ -38,7 +38,7 @@ reading it correctly is the single most useful skill in solid-state
 DFT.
 
 > **Reading note.**  This chapter assumes you have read chapters
-> 01–07.  It uses the plane-wave machinery of
+> 01–07. It uses the plane-wave machinery of
 > [chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) and the
 > Bloch / Brillouin-zone / k-point sampling machinery of
 > [chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }}) without
@@ -76,9 +76,7 @@ second derivatives $\partial^2 \varepsilon_{n\mathbf k} / \partial k_i
 is that the *set* $\{\varepsilon_{n\mathbf k}\}_n$ is continuous in
 $\mathbf k$ even where individual bands are not differentiable.  We
 will return to this point when we discuss avoided crossings and the
-analytic properties of the band structure in section 11.7.
-
-### 11.1.1 Why "Kohn–Sham" and not "physical"?
+analytic properties of the band structure in section 11.7. ### 11.1.1 Why "Kohn–Sham" and not "physical"?
 
 Strictly speaking, the Kohn–Sham eigenvalues are *not* quasiparticle
 energies.  The KS gap (the gap between the highest occupied and
@@ -98,9 +96,7 @@ spectrum, whether from KS-DFT, Hartree–Fock, or $G_0W_0$.  The
 qualitative shapes of the band structures are usually correct in
 LDA/GGA; the *positions* of the bands are systematically shifted by
 the well-known "band-gap problem".  We will flag this caveat again
-in section 11.8.
-
-### 11.1.2 The density of states
+in section 11.8. ### 11.1.2 The density of states
 
 The **density of states** (DOS) at energy $E$ is the number of
 single-particle states per unit energy per unit cell volume.  In a
@@ -327,9 +323,7 @@ basal plane $k_z = 0$; the second half ($\Gamma$–$A$–$L$–$H$–$A$)
 samples the $k_z$ dispersion.  For a 2-D material such as graphene,
 the band structure is $k_z$-independent and the second half is
 redundant — the path reduces to $\Gamma$–$M$–$K$–$\Gamma$, which is
-the path used in section 11.9.
-
-> **Reading note.**  The labels of high-symmetry points are
+the path used in section 11.9. > **Reading note.**  The labels of high-symmetry points are
 > **convention-dependent** but the geometry of the path is not.
 > When a band-structure plot says "$\Gamma$–$X$" in a cubic
 > material, the path is a straight line in the BZ from the centre
@@ -380,9 +374,7 @@ The algorithm to plot a band structure is:
 
 A practical Python function that maps a k-path to a list of k-points
 and cumulative distances is short enough to inline here.  We will
-use it in section 11.9.
-
-```python
+use it in section 11.9. ```python
 # dft_notes/python_codes/chapter_11/_kpath.py
 import numpy as np
 
@@ -416,13 +408,12 @@ def kpath(points, n_per_segment=60):
         klist.append(seg)
         dlist.extend(dlist[-1] + np.cumsum(d).tolist())
     return np.vstack(klist), np.array(dlist)
+
 ```
 
 The first k-point is `kpts[0]`, the last is `kpts[-1]`, and the
 length along the path is `dist[-1]`.  We use this helper in the
-graphene worked example of section 11.9.
-
-## 11.3 The density of states
+graphene worked example of section 11.9. ## 11.3 The density of states
 
 The DOS of \eqref{eq:ch-11-dos} is a Brillouin-zone integral of a
 delta function.  In practice the integral is approximated by a
@@ -557,7 +548,7 @@ g_\mu(E) \;=\; \frac{1}{V_\text{BZ}} \sum_n \int_\text{BZ} d\mathbf k \;
 
 The square of the projection amplitude
 $| \langle \chi_\mu^{(a)} \mid \psi_{n\mathbf k} \rangle |^2$ is a
-**band- and k-resolved weight** between 0 and 1.  The pDOS onto
+**band- and k-resolved weight** between 0 and 1. The pDOS onto
 *all* the orbitals of a given atom $a$ and angular momentum $\ell$
 is the sum over the $(2\ell+1)$ $m$-degenerate orbitals of the
 shell:
@@ -632,6 +623,7 @@ questions: *how many states* are at a given energy
 Brillouin zone* (`Fermi surface`).
 
 ```mermaid
+
 %%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
 graph LR
   BS["Band structure<br/>eps_{n,k}<br/>(n = 1..N_band)"] --> DOS["DOS<br/>g(E) = sum_nk delta(E - eps_{n,k})<br/>(eq. 11.18)"]
@@ -655,8 +647,19 @@ graph LR
   classDef comp fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff;
   class BS src
-  class DOS,PDOS,FS,BAND,Q1,Q2,Q3,Q4 comp
-  class DOSD,DOSD2,FSD,BANDD out
+  class DOS comp
+  class PDOS comp
+  class FS comp
+  class BAND comp
+  class Q1 comp
+  class Q2 comp
+  class Q3 comp
+  class Q4 comp
+  class DOSD out
+  class DOSD2 out
+  class FSD out
+  class BANDD out
+
 ```
 
 The three central compressions (`DOS`, `PDOS`, `FS`) are all
@@ -1146,6 +1149,7 @@ mass (a scalar, sec. 11.7.3) are different reductions of the
 same curvature tensor.
 
 ```mermaid
+
 %%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
 graph TD
   BSE["eps_{n,k}<br/>(full band structure)"] --> PICK["Locate extremum at k0<br/>(CBM, VBM, or saddle)"]
@@ -1164,8 +1168,18 @@ graph TD
   classDef step fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff;
   class BSE inp
-  class PICK,SAMP,FIT,HESS,INV,DIAG,TRACE,COND step
-  class OUT1,OUT2,OUT3 out
+  class PICK step
+  class SAMP step
+  class FIT step
+  class HESS step
+  class INV step
+  class DIAG step
+  class TRACE step
+  class COND step
+  class OUT1 out
+  class OUT2 out
+  class OUT3 out
+
 ```
 
 The **key branch** is `INV` (the inverse-mass tensor). The three
@@ -1191,7 +1205,7 @@ transition-metal dichalcogenide.
 
 Silicon crystallises in the diamond structure (space group $F d
 \bar 3 m$, No. 227).  The conventional cell has 8 atoms; the
-primitive cell has 2.  With 4 valence electrons per atom, the
+primitive cell has 2. With 4 valence electrons per atom, the
 primitive cell contributes 8 valence electrons, filling 4 bands at
 zero temperature.
 
@@ -1368,6 +1382,7 @@ Dirac* Hamiltonian $H \approx \hbar v_F \boldsymbol\sigma \cdot
 = \pm \hbar v_F |\mathbf q|$.
 
 ```mermaid
+
 %%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
 graph TD
   L1["Honeycomb lattice<br/>(2-D, two atoms per cell:<br/>A and B sublattices)"] --> L2["Tight-binding<br/>nearest-neighbour hopping t<br/>(sec. 11.9.2)"]
@@ -1382,9 +1397,16 @@ graph TD
   classDef inp  fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
   classDef step fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef out  fill:#cc785c,stroke:#1c1f17,color:#ffffff;
-  class L1,L2 inp
-  class H2,EG,ZERO,EXP,DIRAC,CONE step
+  class L1 inp
+  class L2 inp
+  class H2 step
+  class EG step
+  class ZERO step
+  class EXP step
+  class DIRAC step
+  class CONE step
   class OUT out
+
 ```
 
 The **two-atom basis** (`L1`) is the structural origin of the
@@ -1676,6 +1698,7 @@ on a single axis.  The script is short and runs in well under a
 second:
 
 ```python
+
 # dft_notes/python_codes/chapter_11/01-graphene-bands.py
 import os
 import numpy as np
@@ -1743,6 +1766,7 @@ os.makedirs(plots_dir, exist_ok=True)
 out = os.path.join(plots_dir, "01-graphene-bands.png")
 fig.savefig(out, dpi=150, bbox_inches="tight")
 print(f"Wrote {out}")
+
 ```
 
 The script uses the function `kpath` of section 11.2.6, computes
@@ -1793,6 +1817,7 @@ The end-to-end workflow of a band-structure calculation is
 summarised below.
 
 ```mermaid
+
 %%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
 graph LR
   A["Crystal structure<br/><small>lattice, atoms,<br/>magnetic order</small>"]
@@ -1813,9 +1838,18 @@ graph LR
   classDef input fill:#faf9f5,stroke:#6c6a64,stroke-width:1px;
   classDef scf fill:#e8e0d2,stroke:#3d3d3a,stroke-width:1px;
   classDef post fill:#cc785c,stroke:#ffffff,stroke-width:1px;
-  class A,B,C input
-  class D,E scf
-  class F1,F2,F3,F4,G,H post
+  class A input
+  class B input
+  class C input
+  class D scf
+  class E scf
+  class F1 post
+  class F2 post
+  class F3 post
+  class F4 post
+  class G post
+  class H post
+
 ```
 
 The central column is the SCF: a converged density and effective
@@ -1846,7 +1880,7 @@ $$
 \qquad n = 0, \pm 1, \pm 2, \dots
 $$
 
-with the spin degeneracy giving a factor of 2.  Show that the
+with the spin degeneracy giving a factor of 2. Show that the
 density of states (per unit length) is
 
 $$
@@ -2077,9 +2111,7 @@ f(\mathbf k) \;=\; t \bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
                               + e^{i \mathbf k \cdot \mathbf a_2} \bigr) .
 $$
 
-This is equation \eqref{eq:ch-11-graphene-hk2} of section 11.9.2.
-
-**Part 2.**  The eigenvalues of the $2 \times 2$ matrix are
+This is equation \eqref{eq:ch-11-graphene-hk2} of section 11.9.2. **Part 2.**  The eigenvalues of the $2 \times 2$ matrix are
 
 $$
 \varepsilon_\pm(\mathbf k) \;=\; \pm |f(\mathbf k)| .

@@ -381,7 +381,6 @@ import matplotlib
 matplotlib.use("Agg")  # headless
 import matplotlib.pyplot as plt
 
-
 def build_scf_map(A, B):
     """Build the SCF map rho_out = F(rho_in) for a 2x2 Kohn–Sham model.
 
@@ -402,7 +401,6 @@ def build_scf_map(A, B):
         return np.diag(P)
     return F
 
-
 def linear_mixing(F, rho0, alpha=0.3, max_iter=80, tol=1e-9):
     """Linear-mixing fixed-point iteration, eq. (nm-scf-linear-mix)."""
     rho = rho0.copy()
@@ -414,7 +412,6 @@ def linear_mixing(F, rho0, alpha=0.3, max_iter=80, tol=1e-9):
             break
         rho = rho_new
     return rho, history
-
 
 def diis(F, rho0, m_max=6, alpha=0.3, max_iter=40, tol=1e-9, eps=1e-10):
     """Pulay's DIIS, eqs. (nm-scf-diis-extrap) to (nm-scf-diis-aug).
@@ -429,8 +426,7 @@ def diis(F, rho0, m_max=6, alpha=0.3, max_iter=40, tol=1e-9, eps=1e-10):
     max_iter : safety bound.
     tol    : convergence on the L2 norm of the residual.
     eps    : diagonal shift in the DIIS metric, the epsilon
-             discussed in §1.5.1.
-    """
+             discussed in §1.5.1. """
     rho = rho0.copy()
     residuals = []
     densities  = []
@@ -470,7 +466,6 @@ def diis(F, rho0, m_max=6, alpha=0.3, max_iter=40, tol=1e-9, eps=1e-10):
         rho = rho_new
     return rho, history
 
-
 def main():
     A = np.array([[1.0, 0.5], [0.5, 1.2]])
     B = np.array([[0.8, 0.0], [0.0, 0.6]])
@@ -493,7 +488,6 @@ def main():
     print(f"linear:  {len(h_lin)-1} iters, final |R| = {h_lin[-1]:.2e}")
     print(f"DIIS:    {len(h_diis)-1} iters, final |R| = {h_diis[-1]:.2e}")
 
-
 if __name__ == "__main__":
     main()
 ```
@@ -514,7 +508,7 @@ the chapters discuss: every iteration roughly squares the residual.
 
 > **Cross-reference.** The full Kohn–Sham SCF on a real system is
 > the topic of [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }})
-> §4.6.  The H₂ example in STO-3G is worked out in detail in
+> §4.6. The H₂ example in STO-3G is worked out in detail in
 > [chapter 03]({{ "/dft-notes/chapter-03/" | relative_url }}) §3.6.7
 > and in [chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) §6.4.
 > The Python source above lives in
@@ -543,9 +537,7 @@ nucleus $I$.  The fixed point of $\mathbf F_I = 0$ is the
 optimisation methods that find it.  The worked example below is
 the 2-D Rosenbrock function, in the same spirit as the H₂
 bond-relaxation in
-[chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }}) §9.6.3.
-
-### 2.1 The optimisation problem
+[chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }}) §9.6.3. ### 2.1 The optimisation problem
 
 The energy $E(\mathbf R)$ is a function of the $3 N_\text{atoms}$
 Cartesian coordinates.  The goal is to find the
@@ -644,6 +636,7 @@ year) maintains a *symmetric positive-definite* approximation
 $\mathbf B^{(k)} \approx \mathbf H^{(k)}$ and updates it from
 the new gradient information:
 
+{% raw %}
 \begin{equation}
 \label{eq:nm-opt-bfgs-update}
 \boxed{
@@ -654,6 +647,7 @@ the new gradient information:
           {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}}
 }
 \end{equation}
+{% endraw %}
 
 with
 
@@ -666,6 +660,7 @@ with
 
 The **inverse-Hessian form** of \eqref{eq:nm-opt-bfgs-update} is
 
+{% raw %}
 \begin{equation}
 \label{eq:nm-opt-bfgs-inverse}
 \mathbf H_\text{inv}^{(k+1)}
@@ -677,6 +672,7 @@ The **inverse-Hessian form** of \eqref{eq:nm-opt-bfgs-update} is
    + \frac{\mathbf s^{(k)} {\mathbf s^{(k)}}^\text{T}}
           {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}} .
 \end{equation}
+{% endraw %}
 
 BFGS has the four attractive properties:
 
@@ -793,24 +789,19 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-
 def rosenbrock(x):
-    """The 2-D Rosenbrock function:  f(x, y) = (1-x)^2 + 100 (y - x^2)^2.
-
-    The minimum is at (1, 1) with f(1, 1) = 0.  The valley is
+    """The 2-D Rosenbrock function:  f(x, y) = (1-x)^2 + 100 (y - x^2)^2. The minimum is at (1, 1) with f(1, 1) = 0. The valley is
     narrow and parabolic: a steepest-descent step zig-zags
     across the valley walls.  BFGS catches the curvature and
     converges super-linearly.
     """
     return (1 - x[0])**2 + 100.0 * (x[1] - x[0]**2)**2
 
-
 def rosenbrock_grad(x):
     """The analytic gradient of rosenbrock(x)."""
     dfdx = -2 * (1 - x[0]) - 400 * x[0] * (x[1] - x[0]**2)
     dfdy = 200 * (x[1] - x[0]**2)
     return np.array([dfdx, dfdy])
-
 
 def steepest_descent(f, grad, x0, alpha=1e-3, max_iter=5000, tol=1e-8):
     """Plain steepest-descent, eq. (nm-opt-sd) with fixed step alpha."""
@@ -824,7 +815,6 @@ def steepest_descent(f, grad, x0, alpha=1e-3, max_iter=5000, tol=1e-8):
             break
         x = x_new
     return x, history
-
 
 def bfgs(f, grad, x0, B0=None, max_iter=100, tol=1e-8,
          armijo_c1=1e-4, armijo_rho=0.5):
@@ -861,7 +851,6 @@ def bfgs(f, grad, x0, B0=None, max_iter=100, tol=1e-8,
         history.append(f(x))
     return x, history
 
-
 def main():
     x0 = np.array([-1.2, 1.0])
     x_sd, h_sd = steepest_descent(rosenbrock, rosenbrock_grad, x0,
@@ -880,7 +869,6 @@ def main():
     plt.savefig("nm-02-bfgs-rosenbrock.png", dpi=150)
     print(f"SD:    {len(h_sd)} iters, f = {h_sd[-1]:.3e}")
     print(f"BFGS:  {len(h_bf)} iters, f = {h_bf[-1]:.3e}")
-
 
 if __name__ == "__main__":
     main()
@@ -981,9 +969,7 @@ in the uniform mesh, *reduced* by the symmetry operations of the
 crystal point group to give the IBZ (irreducible BZ) weights
 $w_\mathbf k^\text{IBZ}$.  For an FCC lattice and a $8 \times
 8 \times 8$ mesh the IBZ has only 29 inequivalent $\mathbf k$'s
-out of 512.
-
-#### 3.2.1 Convergence of the Riemann sum
+out of 512. #### 3.2.1 Convergence of the Riemann sum
 
 For a smooth integrand (insulators, semiconductors) the
 Monkhorst–Pack sum converges as $1/N_\mathbf k$ in the simplest
@@ -1141,7 +1127,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-
 def monkhorst_pack(n1, n2, n3, shift=(0.0, 0.0, 0.0)):
     """Generate a Monkhorst–Pack mesh of (n1 x n2 x n3) points,
     eq. (nm-bz-mp).  The default is the centred mesh; pass
@@ -1158,7 +1143,6 @@ def monkhorst_pack(n1, n2, n3, shift=(0.0, 0.0, 0.0)):
                 kz = (2 * m3 - n3 + 1) / (2 * n3) + shift[2] / n3
                 out.append([kx, ky, kz])
     return np.array(out)
-
 
 def reduce_to_ibz_simple_cubic(klist, atol=1e-9):
     """Reduce a k-list to the irreducible BZ of the simple
@@ -1189,7 +1173,6 @@ def reduce_to_ibz_simple_cubic(klist, atol=1e-9):
             seen.add(key)
             ibz.append(canon)
     return np.array(ibz)
-
 
 def main():
     n = 4
@@ -1225,7 +1208,6 @@ def main():
     plt.tight_layout()
     plt.savefig("nm-03-monkhorst-pack.png", dpi=150)
     print("wrote nm-03-monkhorst-pack.png")
-
 
 if __name__ == "__main__":
     main()
@@ -1430,7 +1412,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-
 def qr_eigenvalues(A, max_iter=200, tol=1e-12):
     """The basic QR iteration, eq. (nm-diag-qr-iter).
 
@@ -1449,7 +1430,6 @@ def qr_eigenvalues(A, max_iter=200, tol=1e-12):
         if off < tol:
             break
     return np.sort(np.diag(A)), history
-
 
 def main():
     rng = np.random.default_rng(42)
@@ -1472,7 +1452,6 @@ def main():
     print(f"QR eigenvalues : {eigs_qr}")
     print(f"eigvalsh ref   : {eigs_ref}")
     print(f"max |diff|     : {np.max(np.abs(eigs_qr - eigs_ref)):.3e}")
-
 
 if __name__ == "__main__":
     main()
@@ -1534,9 +1513,7 @@ collects the four algorithms every iterative solver in
 production uses: the **power method** (§5.1), **inverse
 iteration** (§5.2), the **Lanczos** algorithm (§5.3), and
 **Davidson's method** (§5.4).  The fifth, **LOBPCG**, is in
-§5.5.
-
-### 5.1 The power method
+§5.5. ### 5.1 The power method
 
 The simplest iterative method.  Start with a random vector
 $\mathbf v^{(0)}$, normalise, and iterate
@@ -1559,9 +1536,7 @@ here because it is the *starting point* for every more
 sophisticated method.  In particular, **block** power methods
 ($\mathbf V \in \mathbb R^{n \times m}$) converge to the *top
 $m* eigenvectors at once, and are the basis of the **LOBPCG**
-method of §5.5.
-
-### 5.2 Inverse iteration
+method of §5.5. ### 5.2 Inverse iteration
 
 The **inverse iteration** (Wielandt, 1944) finds the eigenvector
 *closest to a target* $\sigma$ by iterating
@@ -1649,7 +1624,7 @@ of *distinct diagonal elements* of $\mathbf A$ near the target
 eigenvalue — a number that is typically 50–500 for a plane-wave
 DFT matrix, vs the $10^5$–$10^6$ iterations Lanczos would need.
 The cost is dominated by the matrix-vector products
-$\mathbf A \mathbf v^{(k)}$ — $\mathcal O(m n)$ per iteration — 
+$\mathbf A \mathbf v^{(k)}$ — $\mathcal O(m n)$ per iteration —
 and the small dense diagonalisation of $\mathbf H$.
 
 #### 5.4.1 Variants
@@ -1722,7 +1697,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-
 def davidson(A, k=4, tol=1e-8, max_iter=200, preconditioner="diagonal"):
     """Davidson's method for the lowest k eigenpairs of a
     symmetric sparse matrix A.  Eq. (nm-eig-davidson).
@@ -1760,7 +1734,6 @@ def davidson(A, k=4, tol=1e-8, max_iter=200, preconditioner="diagonal"):
         V, _ = np.linalg.qr(V_new)
     return lam, X, history
 
-
 def main():
     n = 200
     diag = 2.0 * np.ones(n)
@@ -1782,7 +1755,6 @@ def main():
     print(f"Davidson eigs:  {eigs}")
     print(f"eigvalsh ref:  {eigs_ref}")
     print(f"max |diff|:    {np.max(np.abs(eigs - eigs_ref)):.3e}")
-
 
 if __name__ == "__main__":
     main()
@@ -1809,7 +1781,6 @@ of iterations for the *lowest* eigenpair but Davidson converges
 > (the plane-wave basis that *forces* iterative methods).
 > The Python file `dft_notes/python_codes/chapter_07/01-free-electron-bands.py`
 > is the production version with a real plane-wave Hamiltonian.
-
 
 ---
 
@@ -1946,7 +1917,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-
 def diis_step(residuals, densities, m_max=6, eps=1e-10):
     """Solve the DIIS sub-problem, eq. (nm-scf-diis-aug), and
     return the extrapolated density.
@@ -1974,7 +1944,6 @@ def diis_step(residuals, densities, m_max=6, eps=1e-10):
     c = sol[:m_use]
     return sum(ci * di for ci, di in zip(c, ds))
 
-
 def toy_scf_map(P):
     """A toy SCF map on the 2x2 H2 density matrix.
 
@@ -1988,7 +1957,6 @@ def toy_scf_map(P):
     out[1] = 0.5 + 0.2 * np.tanh(2.0 * (P[1] - 0.4)) + 0.1 * P[0]
     return out
 
-
 def linear_mixing(F, P0, alpha=0.3, max_iter=80, tol=1e-9):
     P = P0.copy()
     history = [np.linalg.norm(F(P) - P)]
@@ -1999,7 +1967,6 @@ def linear_mixing(F, P0, alpha=0.3, max_iter=80, tol=1e-9):
             break
         P = P_new
     return P, history
-
 
 def pulay_mixing(F, P0, m_max=6, alpha=0.3, max_iter=40, tol=1e-9, eps=1e-10):
     P = P0.copy()
@@ -2019,7 +1986,6 @@ def pulay_mixing(F, P0, m_max=6, alpha=0.3, max_iter=40, tol=1e-9, eps=1e-10):
         P = P_new
     return P, history
 
-
 def main():
     P0 = np.array([0.5, 0.5])
     P_lin, h_lin = linear_mixing(toy_scf_map, P0, alpha=0.3, max_iter=80)
@@ -2037,7 +2003,6 @@ def main():
     plt.savefig("nm-06-pulay-toy.png", dpi=150)
     print(f"linear:  {len(h_lin)-1} iters, |R| = {h_lin[-1]:.2e}")
     print(f"Pulay:   {len(h_pul)-1} iters, |R| = {h_pul[-1]:.2e}")
-
 
 if __name__ == "__main__":
     main()
@@ -2232,7 +2197,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 
-
 def hydrogen_all_electron(E=-0.5, r_max=20.0, n_grid=2000):
     """Integrate the radial Schrodinger equation for H 1s."""
     r = np.linspace(1e-10, r_max, n_grid)
@@ -2243,7 +2207,6 @@ def hydrogen_all_electron(E=-0.5, r_max=20.0, n_grid=2000):
 
     sol = odeint(rhs, [0.0, 1e-6], r)
     return r, sol[:, 0]
-
 
 def hydrogen_pseudo_fit(r_c=1.2):
     """Construct the Troullier–Martins pseudo for H 1s."""
@@ -2274,7 +2237,6 @@ def hydrogen_pseudo_fit(r_c=1.2):
     from scipy.optimize import fsolve
     sol = fsolve(residuals, coeffs)
     return r, u_ae_i, sol, r_c
-
 
 def main():
     r, u_ae, coeffs, r_c = hydrogen_pseudo_fit(r_c=1.2)
@@ -2318,7 +2280,6 @@ def main():
     plt.savefig("nm-07-troullier-martins.png", dpi=150)
     print("wrote nm-07-troullier-martins.png")
 
-
 if __name__ == "__main__":
     main()
 ```
@@ -2334,7 +2295,7 @@ origin).
 > [chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }})
 > (pseudopotentials).  The Troullier–Martins construction is in
 > §8.4; the Kleinman–Bylander factorisation in §8.5; the
-> ghost-state problem in §8.6.  The Python file
+> ghost-state problem in §8.6. The Python file
 > `dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py`
 > is the production version with the full p(r) polynomial
 > fit and the norm-conservation constraint.
@@ -2527,7 +2488,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-
 def energy_of_displacement(M1, M2, K, a, u1, u2):
     """Total energy of a 1-D diatomic chain with displacements
     u1 (atom 1) and u2 (atom 2) of the central cell, all
@@ -2538,7 +2498,6 @@ def energy_of_displacement(M1, M2, K, a, u1, u2):
     # so the energy is 0.5 * K * (u1 - 0)^2 + 0.5 * K * (0 - u2)^2
     # = 0.5 * K * (u1^2 + u2^2) (the central cell is special)
     return 0.5 * K * (u1**2 + u2**2)
-
 
 def force_constants(M1, M2, K, a, eps=0.01):
     """Compute the 2x2 force-constant matrix Phi_{IJ} for the
@@ -2562,7 +2521,6 @@ def force_constants(M1, M2, K, a, eps=0.01):
     Phi[1, 0] = Phi[0, 1]
     return Phi
 
-
 def analytical_dispersion(M1, M2, K, a, nq=200):
     """The analytical dispersion relation, eq. (nm-ph-chain-disp)."""
     q = np.linspace(0, np.pi / a, nq)
@@ -2571,7 +2529,6 @@ def analytical_dispersion(M1, M2, K, a, nq=200):
     omega_plus  = np.sqrt(K * (mu + delta))
     omega_minus = np.sqrt(K * (mu - delta))
     return q, omega_minus, omega_plus
-
 
 def frozen_phonon_dispersion(M1, M2, K, a, nq=200):
     """Build the dynamical matrix D(q) and diagonalise it."""
@@ -2588,7 +2545,6 @@ def frozen_phonon_dispersion(M1, M2, K, a, nq=200):
         e = np.linalg.eigvalsh(D)
         bands[:, iq] = np.sqrt(np.abs(e))
     return q_arr, bands
-
 
 def main():
     M1, M2, K, a = 1.0, 3.0, 1.0, 1.0
@@ -2608,7 +2564,6 @@ def main():
     plt.tight_layout()
     plt.savefig("nm-08-frozen-phonon-1d.png", dpi=150)
     print("wrote nm-08-frozen-phonon-1d.png")
-
 
 if __name__ == "__main__":
     main()
@@ -2638,32 +2593,31 @@ This appendix collects the *one* reference for each section,
 in the form the working DFT computationalist reaches for
 first.
 
-- **§1 (SCF).** [Martin](https://www.cambridge.org/9780521534406),
-  *Electronic Structure*, §10.  Standard derivation of the SCF
+- **§1 (SCF).** [Martin](<https://www.cambridge.org/9780521534406>),
+  *Electronic Structure*, §10. Standard derivation of the SCF
   map, linear mixing, DIIS, Broyden.  The original Pulay (1980)
   paper is also a clean read.
 - **§2 (Optimisation).** Nocedal & Wright,
   *Numerical Optimization* (Springer, 2nd ed., 2006),
   chapters 6 (BFGS) and 4 (line search / trust region).
   The de facto standard.
-- **§3 (BZ integration).** [Martin](https://www.cambridge.org/9780521534406),
+- **§3 (BZ integration).** [Martin](<https://www.cambridge.org/9780521534406>),
   §8 (Monkhorst–Pack, smearing).  The Blöchl (1994) paper is
   the canonical reference for the corrected tetrahedron method.
 - **§4 (Diagonalisation).** Trefethen & Bau,
-  *Numerical Linear Algebra* (SIAM, 1997), lectures 24–28.
-  Demmel,
+  *Numerical Linear Algebra* (SIAM, 1997), lectures 24–28. Demmel,
   *Applied Numerical Linear Algebra* (SIAM, 1997), chapter 4.
 - **§5 (Iterative eigensolvers).** Saad,
   *Iterative Methods for Sparse Linear Systems* (SIAM, 2nd
-  ed., 2003), chapter 6.  The Knyazev (2001) paper is the
+  ed., 2003), chapter 6. The Knyazev (2001) paper is the
   canonical reference for LOBPCG.
 - **§6 (Mixing / preconditioners).** The Kerker (1981) paper
   is one page long and well worth reading.  For Pulay–Kerker
   mixing, the VASP manual
-  ([vasp.at](https://www.vasp.at/wiki/index.php/IMIX)) has
+  ([vasp.at](<https://www.vasp.at/wiki/index.php/IMIX>)) has
   the practical recipe.
-- **§7 (Pseudopotentials).** [Martin](https://www.cambridge.org/9780521534406),
-  chapter 11.  The original Hamann–Schlüter–Chiang (1979)
+- **§7 (Pseudopotentials).** [Martin](<https://www.cambridge.org/9780521534406>),
+  chapter 11. The original Hamann–Schlüter–Chiang (1979)
   paper is the canonical reference for norm conservation.
 - **§8 (Phonons / DFPT).** Baroni, de Gironcoli, Dal Corso
   (2001), *Rev. Mod. Phys.* **73**, 515 — the canonical
@@ -2676,10 +2630,7 @@ first.
 > references above.  Cite the original papers, not this
 > appendix, in any publication that uses one of these methods.
 >
-> **Cross-reference index.**  SCF mixing: ch. 03, 04.  BFGS:
-> ch. 09.  Monkhorst–Pack: ch. 07.  Tetrahedron: ch. 07.
-> Davidson: ch. 04.  Kerker preconditioning: ch. 04.  Frozen
-> phonons: ch. 10.  DFPT: ch. 10.  Pseudopotentials: ch. 08.
-
-
----
+> **Cross-reference index.**  SCF mixing: ch. 03, 04. BFGS:
+> ch. 09. Monkhorst–Pack: ch. 07. Tetrahedron: ch. 07.
+> Davidson: ch. 04. Kerker preconditioning: ch. 04. Frozen
+> phonons: ch. 10. DFPT: ch. 10. Pseudopotentials: ch. 08. ---

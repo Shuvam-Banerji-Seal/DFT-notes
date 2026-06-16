@@ -39,6 +39,10 @@ rather than appendix-pinned.
 | 11 | [Band structures]({{ site.baseurl }}/dft-notes/chapter-11/)      | DOS, Fermi surface, effective mass, graphene Dirac cone    |
 | 12 | [Time-dependent DFT]({{ site.baseurl }}/dft-notes/chapter-12/) | Runge–Gross, Casida, real-time TDDFT, UV/vis spectra      |
 | 13 | [DFT+U & beyond]({{ site.baseurl }}/dft-notes/chapter-13/) | Strong correlation, DFT+U, hybrid functionals, DMFT     |
+| 14 | [Quantum chemistry beyond DFT]({{ site.baseurl }}/dft-notes/chapter-14/) | MP2, CI, CCSD(T), CASSCF, NEVPT2, semiempirical, CBS   |
+| 15 | [Relativistic effects]({{ site.baseurl }}/dft-notes/chapter-15/) | Dirac equation, DKH, ZORA, X2C, spin-orbit coupling        |
+| 16 | [Topological materials]({{ site.baseurl }}/dft-notes/chapter-16/) | Chern numbers, Z₂ invariants, Weyl/Dirac semimetals, HOTIs |
+| 17 | [Machine learning for DFT]({{ site.baseurl }}/dft-notes/chapter-17/) | Behler-Parrinello, MACE, NequIP, delta-learning, foundation models |
 
 > **Status:** these are *sample* notes — real prose, real math,
 > real code, but not yet encyclopaedic.  They exist to exercise

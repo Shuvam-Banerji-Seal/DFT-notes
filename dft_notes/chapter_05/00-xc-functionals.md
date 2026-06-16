@@ -578,9 +578,7 @@ parameter is fixed by a single constraint, with no empirical
 fitting. SCAN is the *first* functional to satisfy all 17
 constraints simultaneously; its predecessor, the TPSS meta-GGA
 ([Tao, Perdew, Staroverov, Scuseria 2003]({{ site.baseurl }}/dft-notes/extras/references/#tpss-2003)),
-satisfied 12.
-
-The accuracy gain of SCAN over PBE on the G2 atomisation set is
+satisfied 12. The accuracy gain of SCAN over PBE on the G2 atomisation set is
 roughly a factor of 3: PBE has a mean absolute error (MAE) of
 $\sim 20$ kcal/mol; SCAN drops this to $\sim 8$ kcal/mol. The
 gain on lattice constants and bulk moduli of solids is smaller
@@ -700,9 +698,7 @@ fitted number; it is the second-order GL2 prediction.
 > was designed with 3 fitted parameters to be slightly less
 > "exact-exchange-y" than PBE0 for thermochemistry. The reader
 > should think of the ACFDT derivation as a *reason* the mixing
-> is "around 0.25", not as a proof that it is *exactly* 0.25.
-
-**B3LYP.** The **Becke 3-parameter Lee–Yang–Parr** functional
+> is "around 0.25", not as a proof that it is *exactly* 0.25. **B3LYP.** The **Becke 3-parameter Lee–Yang–Parr** functional
 (B3LYP) is the canonical example of a *fitted* hybrid. The
 functional form is
 
@@ -989,9 +985,7 @@ sophisticated way than D3. D4 is more accurate than D3 on
 transition-metal complexes (where the polarisability of a metal
 atom depends strongly on its oxidation state) and on
 non-covalent benchmarks more generally. The cost is the same as
-D3.
-
-**Many-body dispersion (MBD).** The **MBD** method (Tkatchenko,
+D3. **Many-body dispersion (MBD).** The **MBD** method (Tkatchenko,
 DiStasio, Car, Scheffler 2012) goes beyond the *pairwise*
 approximation by including *three-body* and *higher* Axilrod–
 Teller–Muto contributions. The form is
@@ -1107,7 +1101,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-
 # ─── Reference values ──────────────────────────────────────────────
 # The Dirac-LDA exchange coefficient.  eps_x(r_s) = -Cx / r_s with
 #   Cx = (3 / (4 pi)) * (9 pi / 4)^{1/3} = 0.45816519...
@@ -1128,13 +1121,11 @@ PZ_LOW_DENSITY = {
     "C": 0.3334,
 }
 
-
 def dirac_exchange(rs):
     """LDA exchange per particle (Dirac, 1930) in Hartree.
     eps_x(r_s) = -Cx / r_s
     """
     return -DIRAC_X_COEF / rs
-
 
 def pz81_correlation_unpolarized(rs):
     """Perdew-Zunger (1981) fit to Ceperley-Alder QMC, unpolarized."""
@@ -1153,7 +1144,6 @@ def pz81_correlation_unpolarized(rs):
     c = PZ_LOW_DENSITY
     ec[~mask_lo] = c["A"] / (1.0 + c["B"] * np.sqrt(rs_hi) + c["C"] * rs_hi)
     return ec
-
 
 def main() -> None:
     rs = np.linspace(0.5, 10.0, 500)
@@ -1246,9 +1236,7 @@ chapter: section 5.2.1–5.2.2 covers Rung 1 (LDA), section
 (meta-GGA), section 5.2.6 covers Rung 4 (hybrid), section
 5.2.7 covers Rung 5 (range-separated), section 5.2.8 covers
 Rung 6 (double hybrid), and section 5.2.9 covers the
-dispersion "patch" that is glued onto rungs 4–7.
-
-> **Note.**  A second, complementary Mermaid diagram showing
+dispersion "patch" that is glued onto rungs 4–7. > **Note.**  A second, complementary Mermaid diagram showing
 > the **cost vs accuracy** trade-off across the rungs is in
 > `dft_notes/python_codes/chapter_05/03-jacobs-ladder-cost-accuracy.py`
 > (the plot is a Python scatter, not a Mermaid graph, but the

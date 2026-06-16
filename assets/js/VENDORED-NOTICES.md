@@ -6,7 +6,7 @@ runtime) so the site has no runtime network dependency.
 
 ## Mermaid 10.9.1 — `assets/js/mermaid.min.js`
 
-- **Upstream:** https://github.com/mermaid-js/mermaid
+- **Upstream:** <https://github.com/mermaid-js/mermaid>
 - **Version:** 10.9.1
 - **File size:** ~3.3 MB
 - **Licence:** MIT
@@ -39,7 +39,7 @@ silently.
 
 Mermaid is distributed under the MIT licence.  The full licence
 text is in the upstream repository:
-https://github.com/mermaid-js/mermaid/blob/develop/LICENSE
+<https://github.com/mermaid-js/mermaid/blob/develop/LICENSE>
 
 The relevant permission notice:
 

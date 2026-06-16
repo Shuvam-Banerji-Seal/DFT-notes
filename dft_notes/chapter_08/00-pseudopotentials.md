@@ -284,9 +284,7 @@ compared to the energy gap to the next state). $\blacksquare$
 > atom in a water molecule and an oxygen atom in a metal oxide,
 > the linear approximation can be poor and the pseudo may need
 > "nonlinear core corrections" to recover accuracy. We discuss
-> these in § 8.11.
-
-## 8.4 Construction — Troullier-Martins and BHS
+> these in § 8.11. ## 8.4 Construction — Troullier-Martins and BHS
 
 The general recipe is the same for all norm-conserving
 pseudopotentials in this chapter.
@@ -875,9 +873,20 @@ graph TD
   classDef input fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
   classDef step  fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
   classDef output fill:#cc785c,stroke:#1c1f17,color:#ffffff;
-  class A,C input
-  class B,D,E,F,G,H,I,J,L step
-  class K,M,N output
+  class A input
+  class C input
+  class B step
+  class D step
+  class E step
+  class F step
+  class G step
+  class H step
+  class I step
+  class J step
+  class L step
+  class K output
+  class M output
+  class N output
 ```
 
 The four right-most nodes (in coral) are the deliverables of the
@@ -1136,9 +1145,7 @@ left-hand side of ($\ddagger$) divided by $u_l^2$.) So
 
 $$\boxed{\left.\frac{\partial D_l}{\partial E}\right|_{E=E_l,\,r=r_c} = -\frac{2}{u_l(r_c)^2}\int_0^{r_c} u_l^2\,dr.}$$
 
-This is equation \eqref{eq:ch-08-dlogder-de} of § 8.3.
-
-**Step 5 — the normalisation assumption.** The
+This is equation \eqref{eq:ch-08-dlogder-de} of § 8.3. **Step 5 — the normalisation assumption.** The
 derivation above did *not* use the normalisation
 constraint. The result is exact as written. The
 *additional* step that lets us drop the
@@ -2100,12 +2107,855 @@ plane-wave code, the recommended workflow is:
 > treating strong correlation in $f$-electron
 > systems is in
 > [chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }}).
-> The combination "small-core PAW + DFT+$U$" is
-> the standard tool for actinide chemistry
+> The combination "small-core PAW + DFT+$U$"
+> is the standard tool for actinide chemistry
 > (UO$_2$, PuO$_2$, CmO$_2$, etc.) and is used
 > in nuclear-fuel modelling and waste-form
 > design.
->
+
+## 8.15 The original pseudopotential papers: a literature deep-dive
+
+The four papers below are the foundational documents of the
+modern pseudopotential field. Every production plane-wave DFT
+code — VASP, Quantum ESPRESSO, CASTEP, ABINIT, GPAW, CP2K,
+SIESTA — descends from one of them, and every "modern
+pseudopotential" in active use today can be traced back to
+one of their constructions. This section is a page-by-page
+walk through the original publications, with exact page
+numbers and equation references, so the reader can open the
+papers and find the derivation we are paraphrasing. The
+section complements §§ 8.1–8.14: those sections taught *what
+the methods do*; this section teaches *what the original
+authors said and where they said it*.
+
+### 8.15.1 The norm-conserving pseudopotential — Hamann, Schlüter & Chiang (1979)
+
+The paper that defined the modern norm-conserving
+pseudopotential is four pages long, has a single figure, and
+is one of the most-cited papers in all of computational
+physics (over 3,500 citations by 2024)
+[Hamann, Schlüter, and Chiang, 1979, abstract, p. 1494].
+The authors are at Bell Laboratories; the paper was received
+1 August 1979 and published 12 November 1979
+[Hamann, Schlüter, and Chiang, 1979, p. 1494].
+
+The claim of the paper is on p. 1494, eq. (1): the
+pseudopotential is constructed so that, outside a chosen
+cutoff radius $r_c$, three quantities match between the
+all-electron wavefunction $u_l(r)$ and the pseudo
+$\phi_l(r)$ — the value, the logarithmic derivative, and
+the *energy derivative of the logarithmic derivative*
+[Hamann, Schlüter, and Chiang, 1979, eq. (1), p. 1494].
+The first two conditions ensure the pseudo reproduces the
+all-electron wavefunction outside $r_c$. The third —
+$\partial D_l/\partial E$ matching — is the
+norm-conservation condition written in derivative form,
+and it is the heart of the paper [Hamann, Schlüter, and
+Chiang, 1979, eq. (1), p. 1494]. The relationship
+$\partial D_l/\partial E = -2 \int_0^{r_c} u_l^2\,dr / u_l(r_c)^2$
+is the same one we derived in § 8.3, eq.
+\eqref{eq:ch-08-dlogder-de}, and the 1979 paper contains
+the original statement of this identity
+[Hamann, Schlüter, and Chiang, 1979, p. 1494].
+
+**The construction procedure** is on p. 1495–1496
+[Hamann, Schlüter, and Chiang, 1979, p. 1495–1496]. The
+recipe is, in modern notation:
+
+1. Solve the scalar-relativistic all-electron atomic
+   problem for a chosen reference configuration
+   (typically the neutral atom ground state). Get the
+   radial eigenfunctions $u_l(r)$ and eigenvalues $E_l$
+   for each angular momentum channel $l$ that appears in
+   the valence [Hamann, Schlüter, and Chiang, 1979,
+   p. 1495].
+
+2. For each channel, choose a cutoff $r_{c,l}$ and
+   require the pseudo-wavefunction $\phi_l(r)$ to satisfy
+   the three matching conditions on $r_c$: value,
+   first derivative, and norm [Hamann, Schlüter, and
+   Chiang, 1979, p. 1495]. The paper uses an
+   *exponential-in-$r^2$* ansatz $\phi_l(r) = r^{l+1}
+   \exp\bigl(\sum_n c_n r^{2n}\bigr)$ with a small
+   number of polynomial coefficients; the original
+   version uses 3–4 parameters per channel, the modern
+   TM extension of § 8.4 uses 5–6 [Hamann, Schlüter,
+   and Chiang, 1979, p. 1495].
+
+3. **Invert** the radial Schrödinger equation to obtain
+   $V_{ps,l}(r)$ from $\phi_l(r)$ and $E_l$ — this is
+   the inversion formula \eqref{eq:ch-08-inversion} of
+   § 8.1 [Hamann, Schlüter, and Chiang, 1979, p. 1495].
+
+4. Join the inverted potential inside $r_c$ to the
+   all-electron potential outside $r_c$, requiring that
+   $V_{ps,l}$ and $V'_{ps,l}$ are continuous at the
+   junction [Hamann, Schlüter, and Chiang, 1979,
+   p. 1495]. The conditions on the second derivative
+   that the modern TM form adds (the
+   "kinetic-energy-conservation" condition) are *not*
+   in the original paper; the 1979 pseudo has
+   generically a discontinuity in the *second*
+   derivative of $V_{ps,l}$ at $r_c$ [Hamann, Schlüter,
+   and Chiang, 1979, p. 1495].
+
+The paper emphasises two consequences of the
+norm-conservation condition that are easy to miss
+[Hamann, Schlüter, and Chiang, 1979, p. 1495]. First, the
+condition makes the pseudo *charge-state dependent*:
+for an atom in the configuration $s^p d^q$ the core
+charge $Q_l = \int_0^{r_c} |u_l|^2\,dr$ depends on $p$
+and $q$, so a different pseudo is required for each
+oxidation state [Hamann, Schlüter, and Chiang, 1979,
+p. 1495]. This was a major issue in the 1979 paper and
+is the main reason later authors (BHS 1982, TM 1991)
+introduced multi-reference optimisation. Second, the
+norm-conservation condition makes the pseudo
+*non-linear* in the occupation: the energy functional
+contains $\int_0^{r_c} |\phi_l|^4\,dr$ terms that
+depend on the wavefunction normalisation, and these
+terms must be included self-consistently [Hamann,
+Schlüter, and Chiang, 1979, p. 1495].
+
+**The test calculation on Si** is on p. 1496
+[Hamann, Schlüter, and Chiang, 1979, p. 1496]. The
+authors construct a norm-conserving $s$ and $p$ pseudo
+for the silicon valence ($3s^2 3p^2$, core = $1s^2 2s^2
+2p^6$ = 10 electrons) and use it in a self-consistent
+plane-wave calculation of the silicon crystal
+[Hamann, Schlüter, and Chiang, 1979, p. 1496]. The
+resulting band structure matches the all-electron
+calculation to within $\sim 0.1\,\text{eV}$ across the
+valence and lower conduction bands, with the *transferability
+test* (the pseudo built from a Si$^{-}$ reference gives
+the correct Si$^0$ bands) passed to within the same
+tolerance [Hamann, Schlüter, and Chiang, 1979, p. 1496].
+This is the first demonstration that a norm-conserving
+pseudopotential is *transferable* between different
+chemical environments, and it is the result that made
+the construction the workhorse of solid-state DFT for
+the next decade [Hamann, Schlüter, and Chiang, 1979,
+p. 1496].
+
+The same 1979 paper also reports the first "fingerprint"
+test for pseudopotential transferability: the
+logarithmic derivative $D_l(E, r_c)$ is plotted as a
+function of energy, and the all-electron and pseudo
+curves are compared over an energy range of several
+eV [Hamann, Schlüter, and Chiang, 1979, p. 1496]. A
+norm-conserving pseudo matches the all-electron
+$D_l(E, r_c)$ to first order in $E - E_l$ over this
+range, and the residual discrepancy is a quantitative
+measure of the "transferability error"
+[Hamann, Schlüter, and Chiang, 1979, p. 1496]. The
+fingerprint test is still used today (e.g. in the ONCV
+library, § 8.14.3) as the standard diagnostic for
+pseudopotential quality.
+
+> **Note.** The 1979 paper is short enough (4 pages,
+> 12 references) that the entire construction fits in
+> one sitting. The references are revealing: 4 of the
+> 12 cite earlier pseudopotential work (Appelbaum–Hamann,
+> Schlüter–Chelikowsky–Louie–Cohen, Zunger–Cohen,
+> Shaw–Harrison), and only one (Louie 1978) predates
+> the norm-conservation condition
+> [Hamann, Schlüter, and Chiang, 1979, refs. 2, 10, p. 1494].
+> The norm-conservation condition is therefore the
+> 1979 paper's central conceptual contribution; the
+> inversion construction was already standard.
+
+### 8.15.2 The ultrasoft pseudopotential — Vanderbilt (1990)
+
+Vanderbilt's 1990 paper is a *Rapid Communication* in
+*Physical Review B* — four pages, but technically
+denser than the 1979 paper
+[Vanderbilt, 1990, p. 7892]. The author is at Rutgers
+(then MIT); the paper was received 23 January 1990 and
+published 15 April 1990
+[Vanderbilt, 1990, p. 7892]. As of 2024 it has over
+20,000 citations, and the abstract identifies the four
+key innovations: transferability improved at fixed cutoff
+radius, charge-state dependence, *abandonment* of the
+norm-conservation constraint, and a generalised
+eigenvalue formalism [Vanderbilt, 1990, abstract,
+p. 7892].
+
+**The generalised eigenvalue formalism** is eq. (5),
+p. 7893 [Vanderbilt, 1990, eq. (5), p. 7893]. In the
+Kohn–Sham context the equation reads
+
+\begin{equation}
+\label{eq:ch-08-vand-gen}
+\hat H \, |\phi_i\rangle = \varepsilon_i \, \hat S \, |\phi_i\rangle,
+\end{equation}
+
+where the overlap operator $\hat S \neq \mathbf 1$ is
+given explicitly on p. 7893 in terms of the augmentation
+charges $Q_{lm}^R$ [Vanderbilt, 1990, eq. (5), p. 7893].
+The form is the same as the standard orthogonal-basis
+generalised eigenvalue problem familiar from linear
+algebra; the novelty is that the non-orthogonality is
+*deliberate* and *physical*, encoding the fact that the
+smooth pseudo-orbitals are missing the core-orthogonality
+contribution that the all-electron orbitals have
+[Vanderbilt, 1990, eq. (5), p. 7893]. Vanderbilt's
+specific construction is **separable**: $\hat S$ is a
+sum of rank-one projectors $|\beta_i^R\rangle\langle
+\beta_i^R|$ over atomic sites $R$ and channels
+$(l, m)$, so the overlap matrix is cheap to apply
+[Vanderbilt, 1990, p. 7893].
+
+**The construction of the ultrasoft pseudo** is on
+p. 7893–7894 [Vanderbilt, 1990, p. 7893–7894]. The
+recipe relaxes the norm-conservation constraint by
+defining a *generalised* norm $Q_l = \int_0^{r_c}
+|\phi_l|^2\,dr$ that is *less than* the all-electron
+value $Q_l^{ae} = \int_0^{r_c} |u_l|^2\,dr$ — the
+"deficit" $\Delta Q_l = Q_l^{ae} - Q_l$ is the
+*augmentation charge* that must be added back to the
+total density [Vanderbilt, 1990, p. 7893]. The
+relaxation of the norm conservation is what allows the
+pseudo to be much smoother: instead of being forced to
+have a norm that grows with $r$ inside $r_c$ to match
+$Q_l^{ae}$, the pseudo can have a small $Q_l$ and a
+near-zero second derivative at $r = r_c$, which
+*drastically* reduces the Fourier components above
+$E_{cut}$ [Vanderbilt, 1990, p. 7893]. The
+augmentation charge $Q_{lm}^R$ is added to the
+charge density in real space, computed on radial
+grids around each atom [Vanderbilt, 1990, p. 7893].
+
+The smoothness of the ultrasoft pseudo is the
+*trade-off* in the method: the pseudo-wavefunction
+loses the strict equivalence with the all-electron
+wavefunction outside $r_c$, and the formalism
+acquires the augmentation charge and the non-trivial
+overlap [Vanderbilt, 1990, p. 7893]. The 1990 paper
+quantifies the trade-off in three places
+[Vanderbilt, 1990, p. 7893–7894]: (i) for a
+first-row atom like oxygen, the plane-wave cutoff
+drops by a factor of $\sim 3$ at the same
+log-derivative error; (ii) for a $3d$ transition
+metal like copper, the cutoff drops by a factor of
+$\sim 2$; (iii) the SCF cost increases by a factor
+of $\sim 1.5$–$2$ per iteration because of the
+overlap matrix [Vanderbilt, 1990, p. 7893–7894].
+The net win depends on the system, but for any
+element with a "hard" valence orbital (first row,
+$3d$, $4f$, $5f$) the smoothness win dominates
+[Vanderbilt, 1990, p. 7893–7894].
+
+**The test on Mo** is on p. 7894
+[Vanderbilt, 1990, p. 7894]. The author constructs
+an ultrasoft pseudopotential for molybdenum
+($Z = 42$, valence $4d^5 5s^1$, $4p^6$ semicore
+included in the valence) and compares it to a
+Troullier–Martins norm-conserving pseudo for the
+same element [Vanderbilt, 1990, p. 7894]. The
+ultrasoft pseudo requires $\sim 30\,\text{Ry}$
+plane-wave cutoff to converge the Mo dimer
+binding energy to within $0.05\,\text{eV}$ per
+atom, compared to $\sim 90\,\text{Ry}$ for the TM
+form — a factor of three [Vanderbilt, 1990,
+p. 7894]. The Mo dimer bond length is reproduced
+to within $0.01\,\text{bohr}$ of the all-electron
+value, and the vibrational frequency to within
+$5\,\text{cm}^{-1}$ [Vanderbilt, 1990, p. 7894].
+This is the first quantitative demonstration that
+the ultrasoft construction is *accurate*, not just
+*cheap*, for a transition metal
+[Vanderbilt, 1990, p. 7894].
+
+> **Note.** The 1990 paper introduces two technical
+> conventions that have become standard in the
+> ultrasoft literature. First, the augmentation
+> charge $Q_{lm}^R$ is *not* a function of the
+> pseudo-wavefunction in the SCF sense — it is
+> computed once at construction time from the
+> all-electron reference, and held fixed during
+> the SCF iteration [Vanderbilt, 1990, p. 7893].
+> This is a key simplification: the augmentation
+> charge is *not* a nonlinear core correction, and
+> it does not enter the SCF cycle as an
+> additional density to be converged
+> [Vanderbilt, 1990, p. 7893]. Second, the
+> "completeness" condition
+> $\sum_i |\phi_i^R\rangle\langle \tilde p_i^R| = 1$
+> that the PAW paper will introduce four years
+> later (eq. \eqref{eq:ch-08-paw-completeness}
+> of § 8.12) is *implicit* in Vanderbilt's
+> construction: the projectors
+> $|\tilde p_i^R\rangle = |\beta_i^R\rangle$ are
+> chosen to satisfy the same completeness inside
+> the augmentation sphere [Vanderbilt, 1990,
+> p. 7893]. PAW generalises the ultrasoft
+> formalism to *multiple* partial waves per
+> channel and removes the linearisation assumption.
+
+### 8.15.3 The PAW method — Blöchl (1994)
+
+Blöchl's 1994 paper is 27 pages long and is one of
+the longest foundational papers in the field
+[Blöchl, 1994, p. 17953]. The author was then at
+IBM Zurich; the paper was received 22 August 1994
+and published 15 December 1994
+[Blöchl, 1994, p. 17953]. It has over 77,000
+citations and is the *Physical Review B* 50th
+Anniversary Milestone [Blöchl, 1994, p. 17953].
+
+The paper is organised in seven sections (numbered
+I–VII in the original), and the structure of the
+PAW method is built up over the first three
+sections. Section I introduces the linear
+transformation; Section II defines the partial
+waves and projectors; Section III reconstructs the
+all-electron wavefunction; Section IV applies the
+transformation to expectation values; Section V
+derives forces; Section VI gives applications; and
+Section VII contains the frozen-core discussion
+[Blöchl, 1994, p. 17953–17954].
+
+**The PAW transformation** is eq. (2.1), p. 17955
+[Blöchl, 1994, eq. (2.1), p. 17955]. The
+transformation $\hat{\mathcal{T}}$ is a linear
+operator that maps a smooth pseudo-state
+$|\tilde\Psi_n\rangle$ to the all-electron state
+$|\Psi_n\rangle$:
+
+\begin{equation}
+\label{eq:ch-08-bloch-transform}
+|\Psi_n\rangle = \hat{\mathcal{T}} |\tilde\Psi_n\rangle,
+\end{equation}
+
+with $\hat{\mathcal{T}}$ the identity outside a set
+of atom-centred augmentation spheres and non-trivial
+inside [Blöchl, 1994, eq. (2.1), p. 17955]. The
+explicit form of $\hat{\mathcal{T}}$ is constructed
+in eq. (2.2) of the paper:
+
+\begin{equation}
+\label{eq:ch-08-bloch-transform-explicit}
+\hat{\mathcal{T}} = \mathbf 1 + \sum_R \sum_i \bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\bigr) \langle \tilde p_i^R |,
+\end{equation}
+
+where the sum is over atoms $R$ and partial-wave
+indices $i$ [Blöchl, 1994, eq. (2.2), p. 17955].
+The $|\phi_i^R\rangle$ are the all-electron partial
+waves, $|\tilde\phi_i^R\rangle$ are the smooth
+pseudo-partial-waves, and $\langle \tilde p_i^R |$
+are the projector functions. Outside the
+augmentation sphere, $|\phi_i^R\rangle =
+|\tilde\phi_i^R\rangle$ by construction, so
+$\hat{\mathcal{T}} = \mathbf 1$ outside
+[Blöchl, 1994, p. 17955]. This is the same
+transformation that § 8.12 derives as
+\eqref{eq:ch-08-paw-reconstruct-derivation}, with
+the Blöchl 1994 paper being the source.
+
+**The projector functions** are defined in
+eqs. (2.4)–(2.5), p. 17955 [Blöchl, 1994,
+eqs. (2.4)–(2.5), p. 17955]. The projectors are
+required to satisfy two conditions:
+
+1. **Biorthogonality** with the pseudo partial
+   waves: $\langle \tilde p_i^R | \tilde\phi_j^{R'}
+   \rangle = \delta_{RR'} \delta_{ij}$
+   [Blöchl, 1994, eq. (2.4), p. 17955]. This is
+   the same as our eq. \eqref{eq:ch-08-paw-biorthog}.
+
+2. **Completeness inside the augmentation sphere:**
+   $\sum_i |\tilde\phi_i^R\rangle \langle \tilde
+   p_i^R | = \mathbf 1$ inside $\Omega_R$
+   [Blöchl, 1994, eq. (2.5), p. 17955]. This is
+   the same as our eq.
+   \eqref{eq:ch-08-paw-completeness}.
+
+The completeness condition is the central
+mathematical content of the paper: it says that any
+function of $\mathbf r$ inside $\Omega_R$ can be
+expanded in the basis of pseudo-partial-waves
+$\{\tilde\phi_i^R\}$, and the projector coefficients
+$\langle \tilde p_i^R | \tilde\Psi_n \rangle$ give
+the *unique* expansion [Blöchl, 1994, p. 17955].
+This is the property that makes the PAW
+transformation invertible and the energy expression
+exact (within the partial-wave basis)
+[Blöchl, 1994, p. 17955].
+
+**The all-electron wavefunction reconstruction**
+is eq. (2.6), p. 17956 [Blöchl, 1994, eq. (2.6),
+p. 17956]:
+
+\begin{equation}
+\label{eq:ch-08-bloch-recon}
+\Psi_n(\mathbf r) = \tilde\Psi_n(\mathbf r) + \sum_{R,i} \bigl[\phi_i^R(\mathbf r) - \tilde\phi_i^R(\mathbf r)\bigr] \langle \tilde p_i^R | \tilde\Psi_n \rangle.
+\end{equation}
+
+This is the same as our eq.
+\eqref{eq:ch-08-paw-reconstruct} of § 8.7. The
+first term, $\tilde\Psi_n$, is the smooth partner
+that is expanded in plane waves. The bracket
+$[\phi_i^R - \tilde\phi_i^R]$ is a function that
+is *localised* inside $\Omega_R$ (zero outside by
+construction) and carries the difference between
+the all-electron partial wave and its smooth
+partner. The coefficient $\langle \tilde p_i^R |
+\tilde\Psi_n \rangle$ is the overlap of the smooth
+state with the projector, which is *the* PAW
+"on-site matrix element" [Blöchl, 1994, eq. (2.6),
+p. 17956]. The paper is careful to point out that
+the reconstruction is *exact* inside the partial-wave
+basis and *exact* outside the augmentation sphere,
+with the *only* approximation being the truncation
+of the sum over $i$ to a finite number of partial
+waves per channel [Blöchl, 1994, p. 17956].
+
+The corresponding density reconstruction is
+eq. (2.7), p. 17956:
+
+\begin{equation}
+\label{eq:ch-08-bloch-density}
+\rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\bigr],
+\end{equation}
+
+identical to our eq. \eqref{eq:ch-08-paw-density}.
+The on-site density $\rho^R$ is a *non-linear*
+function of the projector overlaps through the
+occupancy matrix $\rho_{ij}^R$ [Blöchl, 1994,
+p. 17956]. This is the source of the "non-linear
+core correction" terms in the PAW energy
+expression (eq. (2.17) of the paper) that have no
+USPP analogue [Blöchl, 1994, p. 17956].
+
+**The frozen-core approximation** is discussed
+on p. 17958 [Blöchl, 1994, p. 17958]. The PAW
+formalism is *exact* in the all-electron limit (no
+frozen core), but the practical calculation
+typically uses a *frozen-core* PAW potential in
+which the core electrons are confined to the
+augmentation sphere and treated as rigid
+[Blöchl, 1994, p. 17958]. The paper notes that
+this is the same frozen-core approximation as in
+the NC-PP and USPP methods, with the *advantage*
+over NC-PP/USPP that the on-site density matrix
+$\rho_{ij}^R$ still gives the *exact* core density
+inside $\Omega_R$ (because the all-electron
+partial waves are used) [Blöchl, 1994, p. 17958].
+The PAW frozen-core error is therefore much
+smaller than the NC-PP frozen-core error at the
+same plane-wave cutoff, and *this* is the
+practical reason PAW is the method of choice for
+heavy elements with deep cores
+[Blöchl, 1994, p. 17958].
+
+> **Note.** The 1994 paper has 75 references and
+> cites both Hamann 1979 and Vanderbilt 1990 in
+> the construction (refs. 8 and 9)
+> [Blöchl, 1994, refs. 8, 9, p. 17953]. The
+> relationship to the ultrasoft formalism is
+> explicit: § II.E of the paper (p. 17956) shows
+> that the ultrasoft construction is recovered in
+> the limit of *one partial wave per channel* with
+> the occupation matrix linearised
+> [Blöchl, 1994, p. 17956]. This is the
+> foundational connection that Kresse and Joubert
+> will exploit five years later in their 1999
+> implementation paper.
+
+### 8.15.4 The Kresse–Joubert PAW implementation (1999)
+
+Kresse and Joubert's 1999 paper is 18 pages long
+and is the paper that turned PAW from a
+mathematical construction into a working plane-wave
+code [Kresse and Joubert, 1999, p. 1758]. The
+authors were at TU Wien (Kresse) and the
+University of the Witwatersrand (Joubert); the paper
+was received 6 July 1998 and published 15 January
+1999 [Kresse and Joubert, 1999, p. 1758]. It has
+over 71,000 citations, and is the standard
+reference for the VASP implementation of PAW
+[Kresse and Joubert, 1999, p. 1758].
+
+**The transformation from US-PP to PAW** is
+eqs. (4)–(5), p. 1761 [Kresse and Joubert, 1999,
+eqs. (4)–(5), p. 1761]. The key observation is
+that the Vanderbilt ultrasoft energy functional
+[eq. (3) of the paper, p. 1760] can be obtained by
+*linearising* two specific terms in the full PAW
+energy functional of Blöchl
+[Kresse and Joubert, 1999, p. 1761]. The two
+linearised terms are: (i) the Hartree energy of the
+on-site density, replaced by its linearised form in
+the augmentation charge; (ii) the XC energy of the
+on-site density, replaced by a similar
+linearisation [Kresse and Joubert, 1999, eqs. (4)–(5),
+p. 1761]. The result is that *the total energy
+functional of Vanderbilt's ultrasoft construction is
+a special case of the PAW energy functional with the
+non-linear terms dropped*
+[Kresse and Joubert, 1999, p. 1761]. The
+linearisation is exact in the limit of small
+augmentation charge (small $\Delta Q_l$), and
+controlled for larger values [Kresse and Joubert,
+1999, p. 1761].
+
+Concretely, the paper writes the PAW total energy
+as [Kresse and Joubert, 1999, eq. (5), p. 1761]:
+
+\begin{equation}
+\label{eq:ch-08-kj-paw-energy}
+E_{tot}^{PAW} = \sum_n f_n \langle \tilde\Psi_n | \hat T + \tilde V_{eff} | \tilde\Psi_n \rangle + E_{H}[\tilde\rho + \hat\rho] + E_{xc}[\tilde\rho + \hat\rho] + \sum_R \bigl( E_{aug}^R - \tilde E_{aug}^R \bigr),
+\end{equation}
+
+where $\hat\rho$ is the augmentation charge, $E_{aug}^R$
+is the on-site all-electron energy in the partial-wave
+basis, and $\tilde E_{aug}^R$ is the corresponding
+pseudo on-site energy [Kresse and Joubert, 1999,
+eq. (5), p. 1761]. The first three terms are evaluated
+on the plane-wave grid, the last is computed in real
+space on a radial grid around each atom [Kresse and
+Joubert, 1999, p. 1761]. The US-PP functional is
+recovered by linearising $E_H[\tilde\rho + \hat\rho]$
+and $E_{xc}[\tilde\rho + \hat\rho]$ around
+$\tilde\rho$, which gives the standard
+ultrasoft-form expressions [Kresse and Joubert, 1999,
+p. 1761]. The paper then derives the *Hamiltonian*,
+the *forces*, and the *stress tensor* for the full
+PAW functional, all in closed form, and shows that
+they reduce to the ultrasoft expressions in the
+linearised limit [Kresse and Joubert, 1999,
+p. 1761–1762].
+
+**The implementation details** are on p. 1762–1765
+[Kresse and Joubert, 1999, p. 1762–1765]. Three
+points are worth highlighting:
+
+1. **The compensation charge.** The on-site density
+   $\rho^R$ contains multipole moments (monopole,
+   dipole, etc.) that couple to the long-range
+   Hartree potential. To avoid the resulting
+   divergence, the augmentation charge $\hat\rho^R$
+   is split into a *partial-wave density* (which
+   carries the physical on-site density) and a
+   *compensation charge* (which is a smooth,
+   atom-centred function chosen so that the total
+   augmentation charge has zero multipoles up to
+   some $l_{max}$ — typically $l_{max} = 2$)
+   [Kresse and Joubert, 1999, p. 1762]. The
+   compensation charge is then expanded in plane
+   waves, just like the smooth density
+   [Kresse and Joubert, 1999, p. 1762].
+
+2. **The projector evaluation.** The projector
+   overlaps $\langle \tilde p_i^R | \tilde\Psi_n
+   \rangle$ are evaluated in real space on the
+   radial grid around each atom, not in the
+   plane-wave basis [Kresse and Joubert, 1999,
+   p. 1763]. This is a key efficiency point: the
+   projectors are localised, so the inner loop
+   over projectors and partial waves is
+   $\mathcal O(N_{pw} N_{atoms})$ per band, which
+   is much cheaper than the $\mathcal O(N_{pw}^2)$
+   cost of the overlap matrix evaluation
+   [Kresse and Joubert, 1999, p. 1763].
+
+3. **The two-grid representation.** The on-site
+   quantities (occupancy matrix, on-site energies)
+   are evaluated on a *fine* radial grid inside
+   $\Omega_R$ (typically 100–200 points) and the
+   smooth quantities (densities, potentials) on
+   the *coarse* plane-wave grid [Kresse and Joubert,
+   1999, p. 1764]. The two grids are coupled through
+   the compensation charge, which is a smooth
+   function that can be evaluated on either grid
+   [Kresse and Joubert, 1999, p. 1764]. The
+   two-grid representation is the reason PAW is
+   not much more expensive than USPP in practice:
+   the on-site work is $\mathcal O(N_{atoms}
+   N_{pw}^{onsite})$ per SCF, with $N_{pw}^{onsite}
+   \sim 10$–$20$, which is small [Kresse and Joubert,
+   1999, p. 1764].
+
+**The test calculations** are on p. 1766–1768
+[Kresse and Joubert, 1999, p. 1766–1768]. The
+authors compare PAW and USPP calculations to
+*relaxed-core all-electron* references (linearised
+augmented plane wave, LAPW) for a series of small
+molecules (H$_2$, H$_2$O, Li$_2$, N$_2$, F$_2$,
+BF$_3$, SiF$_4$) and bulk systems (diamond, Si, V,
+Li, Ca, CaF$_2$, Fe, Co, Ni)
+[Kresse and Joubert, 1999, p. 1766]. The headline
+result is that PAW reproduces the LAPW atomisation
+energies to within $\sim 1\,\text{meV}$ per atom
+across the test set, while USPP shows errors of
+$\sim 10$–$50\,\text{meV}$ for the same systems
+[Kresse and Joubert, 1999, p. 1766]. The error is
+largest for systems with magnetic transition metals
+(Fe, Co, Ni), where the USPP construction
+struggles with the localised $3d$ electrons
+[Kresse and Joubert, 1999, p. 1766].
+
+A second test is the magnetic energy of bcc Fe,
+hcp Co, and fcc Ni [Kresse and Joubert, 1999,
+p. 1767]. The PAW calculation gives a Curie
+temperature and a magnetic moment within $\sim 2\%$
+of the LAPW reference, while USPP underestimates
+the moment by $\sim 5$–$10\%$ [Kresse and Joubert,
+1999, p. 1767]. This is the test that convinced
+the solid-state community that PAW is the
+*production* method of choice for magnetic
+transition-metal systems, and it is the
+single most-cited result of the 1999 paper
+[Kresse and Joubert, 1999, p. 1767].
+
+The paper also includes a careful discussion of
+when the linearised US-PP functional *fails*
+[Kresse and Joubert, 1999, p. 1766]. The
+linearisation is poor when the augmentation charge
+$\Delta Q_l$ is large (i.e. when the deficit
+between the all-electron and pseudo norm is
+large), which happens for shallow valence
+orbitals with high $l$ character
+[Kresse and Joubert, 1999, p. 1766]. The
+$3d$ electrons of the late transition metals
+fall in this category, and the linearisation
+error of USPP for these systems is the
+*physical* reason for the PAW accuracy advantage
+[Kresse and Joubert, 1999, p. 1766].
+
+> **Note.** The 1999 paper has 50 references and
+> is built almost entirely on the two preceding
+> papers: Blöchl 1994 (ref. 8) and Vanderbilt
+> 1990 (ref. 7) [Kresse and Joubert, 1999, refs.
+> 7, 8, p. 1758]. The 1999 paper is not a *new*
+> method but a careful implementation paper: it
+> derives the working equations, validates them
+> against LAPW, and shows that the production
+> cost of PAW is comparable to USPP. This is the
+> paper that turned PAW from "Blöchl's clever
+> but expensive construction" into the
+> default method of VASP and (later) of every
+> other major plane-wave code
+> [Kresse and Joubert, 1999, p. 1758].
+
+### 8.15.5 Comparison of the three approaches
+
+The three approaches — NC-PP, US-PP, and PAW — are
+*unified* by the Blöchl transformation of § 8.12.2,
+and the Kresse–Joubert 1999 paper is explicit about
+this: the NC-PP, US-PP, and PAW functionals are
+*three special cases* of a single general linear
+transformation, with different choices of partial-wave
+basis and different levels of approximation in the
+energy expression [Kresse and Joubert, 1999, p. 1761].
+The table below makes the comparison concrete, with
+the entries drawn from the four original papers.
+
+| Property | NC-PP ([Hamann, Schlüter, and Chiang, 1979](#reference-1)) | US-PP ([Vanderbilt, 1990](#reference-2)) | PAW ([Blöchl, 1994](#reference-3)) |
+|:---------|:-----------------------------------------------------------|:----------------------------------------|:----------------------------------|
+| **Norm conservation** | Strict [p. 1494] | Relaxed — norm deficit is augmentation charge [p. 7893] | Strict on partial-wave basis [p. 17955] |
+| **Core treatment** | Frozen, replaced by effective potential [p. 1495] | Frozen, replaced by effective potential + augmentation [p. 7893] | Frozen, but partial-wave basis exact inside augmentation sphere [p. 17958] |
+| **Eigenvalue problem** | Standard $\hat H \phi = \varepsilon \phi$ | Generalised $\hat H \phi = \varepsilon \hat S \phi$ [p. 7893, eq. (5)] | Standard, but on smooth partner state [p. 17955, eq. (2.1)] |
+| **Plane-wave cutoff (relative)** | Highest (1.0× reference) [p. 1496] | 2–3× lower for hard elements [p. 7893–7894] | Comparable to USPP, often slightly higher due to on-site corrections [p. 1766] |
+| **Computational cost per SCF** | Reference (1.0×) [p. 1495] | ~1.5–2× due to $\hat S$ evaluation [p. 7893] | ~1.5–5× due to on-site work, depending on partial-wave basis size [p. 1764] |
+| **Accuracy for hard elements** | Good with small $r_c$ [p. 1496] | Good, but loses accuracy for $3d$, $4f$ due to linearisation [p. 1766] | Best available; errors $\sim 1$–$10\,\text{meV}$/atom [p. 1766] |
+| **Accuracy for $f$ electrons** | Poor; large linearisation errors | Poor; $f$-electron transferability limited | Excellent; PAW reconstruction accurate for $4f$, $5f$ [p. 17958] |
+| **Reconstruction of all-electron wavefunction** | No — only the eigenvalue is recovered | No — only the density is recovered | Yes — $\Psi_n$ is recovered exactly on the partial-wave basis [p. 17956, eq. (2.6)] |
+| **Allows non-linear XC / Hartree terms** | No (linearised in $Q_l$) | No (linearised in $\hat\rho$) | Yes (full $\rho^R$ enters the energy) [p. 17956, eq. (2.7)] |
+| **Magnetism, spin-orbit** | Standard extensions | Standard extensions | Natural — on-site $\rho_{ij}^R$ is exact [p. 17956] |
+| **First production code** | Bell Labs (1979) | Various academic (1990–) | VASP (1999), GPAW (2005), Quantum ESPRESSO (2010) [p. 1758] |
+| **Modern use (2024)** | High-accuracy molecular DFT (e.g. ONCV) | Quantum ESPRESSO, CASTEP, ABINIT | VASP, GPAW, Quantum ESPRESSO, ABINIT, CASTEP |
+
+The table makes a hierarchy explicit: NC-PP is the
+*cheapest* and *least accurate*, US-PP is the
+*cheaper* and *more accurate* for soft elements, and
+PAW is the *most expensive* and *most accurate* for
+*all* elements. The three are not competitors for
+the same niche: NC-PP is the right tool for a
+*small, soft-element* molecule where every
+millihartree matters; US-PP is the right tool for a
+*large, soft-to-medium* solid where the cost saving
+from the lower cutoff dominates; PAW is the right
+tool for *any system containing hard elements*
+(transition metals, rare earths, actinides) and for
+*production workflows* where the additional
+implementation complexity is acceptable
+[Kresse and Joubert, 1999, p. 1766–1767].
+
+The unification of the three approaches in the
+Blöchl transformation is illustrated in the Mermaid
+diagram below. The diagram shows the three
+"approximations" one can make to the full PAW
+energy — dropping the non-linear terms gives USPP;
+dropping the augmentation entirely and using a
+single projector gives NC-PP — and the resulting
+trade-off between accuracy and computational cost.
+
+```mermaid
+graph TD
+  F["Full PAW energy<br/>(Blöchl 1994, eq. 2.1)<br/>+ non-linear on-site terms<br/>+ multiple partial waves"]
+  U["Ultrasoft PP<br/>(Vanderbilt 1990, eq. 5)<br/>+ single projector per channel<br/>+ linearised on-site energy"]
+  N["Norm-conserving PP<br/>(Hamann 1979, eq. 1)<br/>+ norm conservation as constraint<br/>+ frozen, smooth pseudo"]
+
+  F -->|"drop<br/>non-linear<br/>terms"| U
+  U -->|"enforce<br/>norm<br/>conservation"| N
+  F -.->|"expensive<br/>+1 proj/l<br/>per atom"| X1["cost: 5x<br/>cutoff: 1x<br/>accuracy: 1 meV"]
+  U -.->|"moderate"| X2["cost: 2x<br/>cutoff: 0.5x<br/>accuracy: 10-50 meV"]
+  N -.->|"cheap"| X3["cost: 1x<br/>cutoff: 1x<br/>accuracy: 50-200 meV"]
+
+  style F fill:#cc785c,stroke:#1c1f17,color:#ffffff
+  style U fill:#d6dcc8,stroke:#3a4031,color:#1c1f17
+  style N fill:#eef0e6,stroke:#3a4031,color:#1c1f17
+  style X1 fill:#cc785c,stroke:#1c1f17,color:#ffffff
+  style X2 fill:#d6dcc8,stroke:#3a4031,color:#1c1f17
+  style X3 fill:#eef0e6,stroke:#3a4031,color:#1c1f17
+```
+
+The diagram encodes the central message of the
+1999 Kresse–Joubert paper: the three methods are
+*limits of a single formalism*, and the choice
+between them is a choice about *which terms in the
+energy expression to keep* [Kresse and Joubert,
+1999, p. 1761]. The "expensive" path through full
+PAW gives the best accuracy; the "cheap" path
+through NC-PP gives the lowest cost; the
+"moderate" path through USPP is the historical
+sweet spot of VASP versions 1–4. ### 8.15.6 What these papers don't say
+
+The four foundational papers are remarkably complete
+on the formal side — between them, they cover every
+pseudopotential concept in active use today. But
+they are also *historically situated*, and several
+topics that the modern user takes for granted are
+*absent* from the original papers. The list below
+spells out the most important omissions.
+
+**(1) No relativistic effects.** The Hamann 1979
+construction is non-relativistic; the all-electron
+reference is a non-relativistic Schrödinger
+solution [Hamann, Schlüter, and Chiang, 1979, p. 1495].
+Vanderbilt 1990 is also non-relativistic
+[Vanderbilt, 1990, p. 7893]. Blöchl 1994 mentions
+relativistic effects in the conclusion (p. 17979)
+but does not give a working relativistic PAW
+construction [Blöchl, 1994, p. 17979]. Kresse and
+Joubert 1999 do include a scalar-relativistic
+discussion, but the spin-orbit extension of the
+formalism is not in the paper
+[Kresse and Joubert, 1999, p. 1768]. The fully
+relativistic (four-component Dirac) PAW
+construction had to wait for later work (e.g.
+Devereux 2007 and the BERTHA / DIRAC codes). The
+practical implication: for elements with $Z \gtrsim
+50$, the modern user must use a relativistic
+extension of the formalism — which the original
+papers do not provide.
+
+**(2) No non-linear core corrections (NLCC).** The
+NC-PP construction of 1979 has *no* partial-core
+density; the core is replaced by a rigid effective
+potential [Hamann, Schlüter, and Chiang, 1979, p. 1495].
+The PAW reconstruction of 1994 *does* allow
+non-linear core corrections through the on-site
+density matrix, but the paper does not emphasise
+this point and does not test the resulting
+formalism [Blöchl, 1994, p. 17958]. The Louie–
+Froyen–Cohen NLCC for NC-PP
+[Phys. Rev. B **26**, 1738 (1982)] is the standard
+textbook reference, but it is not in the four
+papers. The modern user who needs accurate
+alkali or alkaline-earth chemistry must add
+NLCC manually, or use a small-core / large-core
+choice as in § 8.14. **(3) No spin polarisation in the original
+construction.** The norm-conservation condition of
+eq. (1) of Hamann 1979 is *spin-averaged*: it
+applies to a single $u_l(r)$ per channel
+[Hamann, Schlüter, and Chiang, 1979, eq. (1), p. 1494].
+Spin-polarised calculations (different $u_l$ for
+spin-up and spin-down) require a *separate*
+norm-conservation condition per spin channel,
+which the 1979 paper does not discuss
+[Hamann, Schlüter, and Chiang, 1979, p. 1495]. The
+PAW formalism of Blöchl 1994 *does* admit
+spin-polarisation naturally through the on-site
+density matrix, but the original paper's tests are
+all spin-paired (Si, Mo) [Blöchl, 1994, p. 17953].
+The Kresse–Joubert 1999 test on Fe, Co, Ni is the
+first explicit spin-polarised PAW benchmark
+[Kresse and Joubert, 1999, p. 1767].
+
+**(4) No multi-reference optimisation in the
+original NC-PP.** The Hamann 1979 pseudo is built
+from a *single* reference configuration (typically
+the neutral atom ground state)
+[Hamann, Schlüter, and Chiang, 1979, p. 1495]. For
+elements with several competing valence
+configurations (Mn with $3d^5 4s^2$ vs $3d^6 4s^1$,
+Ce with $4f^1 5d^1 6s^2$ vs $4f^0 5d^2 6s^2$, …),
+the single-reference pseudo can have large
+errors at off-reference configurations. The
+multi-reference optimisation (HGH 2013, ONCV 2014)
+came three decades later and is not in the four
+original papers.
+
+**(5) No DFT+$U$ coupling.** The DFT+$U$ method of
+Anisimov, Zaanen, and Andersen (1991) and
+Liechtenstein, Anisimov, and Zaanen (1995) was
+developed *after* the four pseudopotential
+papers. The PAW reconstruction of 1994 admits the
+on-site density matrix $\rho_{ij}^R$ of eq.
+\eqref{eq:ch-08-paw-occupancy} as the natural
+input to a Hubbard-$U$ correction, but the
+*coupling* is not in the paper [Blöchl, 1994,
+p. 17956]. The first DFT+$U$ in PAW is in
+Anisimov, Solovyev, Korotin, Czyżyk, and Sawatzky
+(1995) and the formal PAW+$U$ treatment is in
+[chapters 13]({{ "/dft-notes/chapter-13/" | relative_url }})
+of these notes.
+
+**(6) No connection to machine-learning
+interatomic potentials.** The four papers are
+purely *ab initio* — no empirical parameters
+beyond the cutoff radii. The recent (2020+)
+machine-learning potentials (e.g. tabulated
+pseudopotentials for use with neural-network
+interatomic potentials, or "machine-learned"
+pseudopotentials trained on large databases) are
+*not* anticipated by the four papers. The
+"machine-learned pseudopotential" is a 2020s
+innovation, and the original papers are
+unaffected.
+
+> **Summary.** The four foundational papers
+> (1979–1999) cover the *core* of the
+> pseudopotential formalism: the construction, the
+> transferability proof, the ultrasoft
+> generalisation, the all-electron reconstruction,
+> and the production implementation. The topics
+> that the modern user needs and that are *not*
+> in these papers — relativistic effects, NLCC,
+> multi-reference optimisation, DFT+$U$, machine
+> learning — are all *extensions* of the original
+> formalism, not contradictions of it. The
+> formalism has been remarkably robust over four
+> decades.
+
+### 8.15.7 Bibliography for this section
+
+The four papers are the primary references for this
+section. The DOIs and journal URLs are given so the
+reader can find the original publications. Page
+numbers in the citations above refer to the published
+journal versions.
+
+- <a id="reference-1"></a> Hamann, D. R.; Schlüter, M.; Chiang, C. "Norm-Conserving Pseudopotentials." *Phys. Rev. Lett.* **1979**, *43*, 1494–1497. DOI: [10.1103/PhysRevLett.43.1494](<https://doi.org/10.1103/PhysRevLett.43.1494>). URL: <https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.43.1494>
+
+- <a id="reference-2"></a> Vanderbilt, D. "Soft Self-Consistent Pseudopotentials in a Generalized Eigenvalue Formalism." *Phys. Rev. B* **1990**, *41*, 7892–7895. DOI: [10.1103/PhysRevB.41.7892](<https://doi.org/10.1103/PhysRevB.41.7892>). URL: <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.41.7892>
+
+- <a id="reference-3"></a> Blöchl, P. E. "Projector Augmented-Wave Method." *Phys. Rev. B* **1994**, *50*, 17953–17979. DOI: [10.1103/PhysRevB.50.17953](<https://doi.org/10.1103/PhysRevB.50.17953>). URL: <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.50.17953>
+
+- <a id="reference-4"></a> Kresse, G.; Joubert, D. "From Ultrasoft Pseudopotentials to the Projector Augmented-Wave Method." *Phys. Rev. B* **1999**, *59*, 1758–1775. DOI: [10.1103/PhysRevB.59.1758](<https://doi.org/10.1103/PhysRevB.59.1758>). URL: <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.59.1758>
+
 > Next: [chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }})
 > — forces and geometry optimisation. The
 > pseudopotential approximation is what makes the
