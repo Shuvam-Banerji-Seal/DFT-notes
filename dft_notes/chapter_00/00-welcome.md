@@ -382,8 +382,8 @@ The body of the chapter.  The derivation takes the claim apart
 into the smaller facts it is built on, and shows — **step by
 step**, with every algebraic step explicit — how those smaller
 facts combine to give the claim.  The author is bound by the "no
-step skipped" rule: no "by a straightforward manipulation", no
-"after some algebra", no "it can be shown that".  If a step is
+step skipped" rule: no "by a straightforward manipulation", no <!-- no-summaries-ok -->
+"after some algebra", no "it can be shown that". <!-- no-summaries-ok -->  If a step is
 purely mechanical (expand, distribute, collect), the chapter
 says so in one line, but it writes the result.
 

@@ -146,7 +146,7 @@ accuracy.
 ## 7.3 Derivation of Bloch's theorem
 
 We prove \eqref{eq:ch-07-bloch} in seven explicit steps. Every step
-appears below — no "it can be shown that" hand-waves.
+appears below — no "it can be shown that" hand-waves <!-- no-summaries-ok -->.
 
 ### Step 1. Define the translation operator
 
