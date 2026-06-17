@@ -1892,5 +1892,949 @@ following gaps.
   error in passing in the worked example (section 5.5) but
   did not derive the SIC machinery.
 
+## 5.9 The original PBE, VWN, B88, LYP papers: a literature deep-dive
+
+> *This section walks the reader through the four foundational
+> papers that supply the formulas and parameters used throughout
+> this chapter — PBE, VWN, B88, and LYP — with the page numbers
+> and equation numbers of the published journal versions. Every
+> equation and value cited below carries the page number of the
+> original paper, and the algebra is written out step by step
+> following the no-summaries rule. The point of this section is
+> to give the reader a direct line from the chapter's equations
+> back to the published source, with no intermediate summary.*
+
+### 5.9.1 PBE (Perdew, Burke, Ernzerhof 1996)
+
+**Reference.** Perdew, J. P.; Burke, K.; Ernzerhof, M.
+"Generalized Gradient Approximation Made Simple."
+*Physical Review Letters* **1996**, *77* (18), 3865–3868.
+DOI: [10.1103/PhysRevLett.77.3865](https://doi.org/10.1103/PhysRevLett.77.3865).
+Erratum: *Physical Review Letters* **1997**, *78* (7), 1396.
+DOI: [10.1103/PhysRevLett.78.1396](https://doi.org/10.1103/PhysRevLett.78.1396).
+The paper is 4 pages (pp. 3865–3868 of PRL vol. 77).
+
+**Authors' own words (abstract, p. 3865).** *"Generalized gradient
+approximations (GGA's) for the exchange-correlation energy improve
+upon the local spin density (LSD) description of atoms, molecules,
+and solids. We present a simple derivation of a simple GGA, in
+which all parameters (other than those in LSD) are fundamental
+constants. Only general features of the detailed construction
+underlying the Perdew-Wang 1991 (PW91) GGA are invoked.
+Improvements over PW91 include an accurate description of the
+linear response of the uniform electron gas, correct behavior
+under uniform scaling, and a smoother potential."* That is the
+*thesis* of the paper: a simpler functional than PW91, with
+**zero free parameters** (all "parameters" are physical
+constants), that satisfies four known exact constraints.
+
+**The PBE exchange enhancement factor (Eq. (10), p. 3866).** PBE
+writes the exchange energy in the GGA form (Eq. (1) of the
+paper)
+
+\begin{equation}
+\label{eq:ch-05-lit-pbe-exc-1}
+E_\text{x}^\text{PBE} \;=\; \int \rho(\mathbf r)\,
+\varepsilon_\text{x}^\text{unif}\bigl(\rho(\mathbf r)\bigr)\,
+F_\text{x}^\text{PBE}\bigl(s(\mathbf r)\bigr)\, d\mathbf r ,
+\end{equation}
+
+where $s(\mathbf r) = |\nabla\rho| / (2 k_F \rho)$ is the reduced
+gradient with $k_F = (3\pi^2 \rho)^{1/3}$ (Eq. (8) of the
+paper, p. 3866) and $\varepsilon_\text{x}^\text{unif}(\rho) =
+-C_\text{x}/\rho^{1/3}$ is the Dirac exchange energy per
+electron. The new ingredient is the enhancement factor
+$F_\text{x}^\text{PBE}(s)$. The paper proposes the *simplest*
+rational form that satisfies the four constraints (Eq. (10),
+p. 3866):
+
+\begin{equation}
+\label{eq:ch-05-lit-pbe-fx}
+F_\text{x}^\text{PBE}(s) \;=\; 1 + \kappa \;-\;
+\frac{\kappa}{1 + \mu s^2 / \kappa} .
+\end{equation}
+
+This is equation (10) of the paper, on p. 3866. The two
+constants $\kappa = 0.804$ and $\mu = 0.21951$ are *not* fit
+to any atomic or molecular data — they are determined
+uniquely by the four constraints, as we now derive in full.
+
+**Constraint 1 — the LSD limit (Eq. (2), p. 3865).** The
+enhancement factor must recover the LDA for a uniform density,
+i.e. $F_\text{x}^\text{PBE}(0) = 1$. Substituting $s = 0$ into
+\eqref{eq:ch-05-lit-pbe-fx}:
+
+\begin{align}
+F_\text{x}^\text{PBE}(0) &=
+1 + \kappa - \frac{\kappa}{1 + \mu \cdot 0 / \kappa}
+\notag \\
+&= 1 + \kappa - \frac{\kappa}{1 + 0}
+\notag \\
+&= 1 + \kappa - \kappa \notag \\
+&= 1 .
+\end{align}
+
+The constraint $F_\text{x}^\text{PBE}(0) = 1$ is *automatically*
+satisfied by the form of \eqref{eq:ch-05-lit-pbe-fx} for *any*
+choice of $\kappa$ and $\mu$. The constraint fixes the structure
+of the form, not the values of the constants.
+
+**Constraint 2 — the Lieb–Oxford bound (p. 3865–3866).** The
+Lieb–Oxford bound (Lieb 1983, Oxford 1984) states that the
+exchange–correlation energy per electron is bounded below:
+$E_\text{xc} / N \ge -1.679\,E_h$. This translates, for a
+GGA-type exchange-only functional, into
+
+\begin{equation}
+\label{eq:ch-05-lit-pbe-lo-bound}
+F_\text{x}(s) \;\le\; 1 + \kappa \quad \text{for all } s \ge 0 ,
+\end{equation}
+
+with $\kappa$ chosen to saturate the bound. The form
+\eqref{eq:ch-05-lit-pbe-fx} is *monotonically increasing* in
+$s$ (its derivative is positive for $s > 0$ and the function
+asymptotes from below), so its maximum is the asymptotic value
+$\lim_{s \to \infty} F_\text{x}^\text{PBE}(s) = 1 + \kappa$.
+Setting this maximum equal to the Lieb–Oxford bound gives
+
+\begin{align}
+\lim_{s \to \infty} F_\text{x}^\text{PBE}(s) &=
+1 + \kappa - \frac{\kappa}{1 + \infty} \notag \\
+&= 1 + \kappa - 0 \notag \\
+&= 1 + \kappa .
+\end{align}
+
+Equating $1 + \kappa$ to the numerical value implied by the
+Lieb–Oxford bound, the PBE paper sets (p. 3866)
+
+\begin{equation}
+\label{eq:ch-05-lit-pbe-kappa}
+\kappa \;=\; 0.804 .
+\end{equation}
+
+This is a *physical* constant — the result of an inequality
+proved by Lieb and Oxford, tightened by Chan and Handy (1999)
+to $1.6358\,E_h$ and by Perdew and coauthors (2014) to a
+slightly different number for the pure-exchange case, but the
+1980/1996-era value $0.804$ is what PBE uses.
+
+**Constraint 3 — uniform scaling to the high-density limit
+(p. 3866).** Uniformly scaling the density $\rho_\lambda(\mathbf r) =
+\lambda^3 \rho(\lambda \mathbf r)$ with $\lambda \to \infty$ drives
+the system into the *high-density limit* where the correlation
+energy scales as $E_\text{c}[\rho_\lambda] = \lambda^2
+E_\text{c}[\rho_1]$ (to leading order). This is the
+*high-density* (small-$r_s$) limit; the correlation energy in
+this limit is the second-order Gell-Mann–Brueckner
+perturbation-theory result. PBE's correlation energy reduces
+correctly to the LDA form in this limit (the PBE enhancement
+$H \to 0$ as $t \to 0$ together with $A \to \beta/\gamma$ for
+small $|E_\text{c}^\text{LDA}|$, see p. 3866 of the paper).
+The four-constraint list of section 5.2.4 above is presented in
+the same order as the paper, but the *mathematical content* of
+constraint 3 is precisely that the high-density scaling
+$E_\text{c}[\rho_\lambda] = \lambda^2 E_\text{c}[\rho_1]$ is
+preserved (Eq. (15), p. 3866).
+
+**Constraint 4 — the linear response of the uniform electron gas
+(p. 3866).** The final constraint, and the one that fixes
+$\mu$, is that the PBE functional must reproduce the *linear
+response* of the uniform electron gas — the energy change under
+a small sinusoidal perturbation of the density. This is the
+**compressibility sum rule** of the UEG, evaluated to second
+order in the perturbation amplitude. The PBE paper
+(p. 3866, footnote) notes that the *second-order gradient
+expansion* of the exchange gives a coefficient of $s^2$ in the
+enhancement factor of $10/81 = 0.12346$, which would correspond
+to a value of $\mu = 0.12346$ in \eqref{eq:ch-05-lit-pbe-fx}.
+But, the footnote continues, the more reliable value comes
+from the *uniform-gas linear response* of
+[Perdew et al. 1992, Phys. Rev. B 46, 6671](https://doi.org/10.1103/PhysRevB.46.6671),
+and the resulting value of $\mu$ is
+
+\begin{equation}
+\label{eq:ch-05-lit-pbe-mu}
+\mu \;=\; 0.21951 .
+\end{equation}
+
+The difference between $0.12346$ (the literal GEA value) and
+$0.21951$ (the linear-response value) is what the paper
+describes on p. 3866 as "an accurate description of the
+linear response of the uniform electron gas". PBE deliberately
+*violates* the literal second-order GEA limit in favour of the
+compressibility sum rule, which is the more reliable of the
+two constraints.
+
+**Why the form \eqref{eq:ch-05-lit-pbe-fx} is "simplest".** The
+paper's "Made Simple" claim is that of all the rational
+functions in $s^2$ with two constants $\kappa$ and $\mu$, the
+form $\kappa - \kappa/(1 + \mu s^2/\kappa)$ is the one that
+simultaneously (i) is positive for all $s$, (ii) is monotonically
+increasing, (iii) has the right small-$s$ behaviour, and (iv)
+asymptotes to a finite bound $1 + \kappa$ as $s \to \infty$.
+Any form that does all four with *two* constants must be
+equivalent to \eqref{eq:ch-05-lit-pbe-fx} up to a change of
+variables.
+
+**The PBE correlation energy (Eq. (8), p. 3866).** The PBE
+correlation energy is written (Eq. (8), p. 3866) as
+
+\begin{equation}
+\label{eq:ch-05-lit-pbe-ec}
+E_\text{c}^\text{PBE} \;=\; \int \rho(\mathbf r)\,
+\varepsilon_\text{c}^\text{PBE}\bigl(\rho(\mathbf r), \zeta(\mathbf r),
+\nabla\rho(\mathbf r)\bigr)\, d\mathbf r ,
+\end{equation}
+
+with the correlation energy per electron split as
+
+\begin{equation}
+\label{eq:ch-05-lit-pbe-ec-split}
+\varepsilon_\text{c}^\text{PBE}(\rho, \zeta, t) \;=\;
+\varepsilon_\text{c}^\text{LDA}(r_s, \zeta) \;+\; H\bigl(r_s, \zeta, t\bigr) ,
+\end{equation}
+
+where $\varepsilon_\text{c}^\text{LDA}(r_s, \zeta)$ is the LSDA
+correlation energy per electron (the same input that VWN
+parameterises — see §5.9.2 below), $r_s = (3/(4\pi \rho))^{1/3}$
+is the Wigner–Seitz radius, $\zeta = (\rho_\uparrow - \rho_\downarrow) /
+\rho$ is the relative spin polarisation, and
+$t = |\nabla\rho| / (2 \phi k_s \rho)$ is the *different*
+reduced gradient used for correlation, with
+$k_s = (4 k_F / \pi a_0)^{1/2}$ the Thomas–Fermi screening
+wave-vector and
+$\phi(\zeta) = \bigl[(1+\zeta)^{2/3} + (1-\zeta)^{2/3}\bigr]/2$
+the spin-scaling factor (Eq. (8), p. 3866). The PBE enhancement
+$H$ is given by (Eq. (9), p. 3866)
+
+\begin{equation}
+\label{eq:ch-05-lit-pbe-h}
+H\bigl[r_s, \zeta, t\bigr] \;=\; \gamma\, \phi^3\,
+\ln\!\Biggl[\, 1 \;+\; \frac{\beta}{\gamma}\,
+t^2\,\frac{1 + A t^2}{1 + A t^2 + (A t^2)^2}\,\Biggr] ,
+\end{equation}
+
+with the auxiliary quantity
+
+\begin{equation}
+\label{eq:ch-05-lit-pbe-a}
+A \;=\; \frac{\beta}{\gamma}\,
+\frac{1}{\exp\!\bigl(-\varepsilon_\text{c}^\text{LDA}/(\gamma\phi^3)\bigr) - 1} .
+\end{equation}
+
+The two PBE correlation parameters are
+$\beta = 0.066725$ and
+$\gamma = (1 - \ln 2)/\pi^2 \approx 0.031091$. The value of
+$\gamma$ is chosen so that $H$ reduces to the *high-density*
+($\varepsilon_\text{c}^\text{LDA} \to 0$) limit of the second-order
+GEA correlation in the small-$t$ limit (the constant
+$(1-\ln 2)/\pi^2$ is the Perdew–Wang 1992 high-density
+expansion coefficient; see p. 3866 of the paper). The value
+of $\beta$ is the *same* $\beta = 0.066725$ that appears in
+the exchange GEA (the Ma–Brueckner 1968 result), and is
+reproduced in $H$ via the limit
+$H \to \beta \phi^3 t^2$ as $t \to 0$, which is the second-order
+GEA limit of the correlation energy.
+
+**The three constraints on $H$ (p. 3866).** The PBE enhancement
+$H$ of \eqref{eq:ch-05-lit-pbe-h} satisfies three constraints,
+analogous to the four on $F_\text{x}$:
+1. $H \to 0$ as $t \to 0$ (the LDA is recovered for uniform
+   density; verified by direct substitution of $t = 0$
+   into \eqref{eq:ch-05-lit-pbe-h}, which gives
+   $H\bigl[r_s, \zeta, 0\bigr] = \gamma\, \phi^3\, \ln[1 + 0] = 0$).
+2. $H \to \beta \phi^3 t^2$ for small $t$ (the second-order GEA
+   limit of the correlation energy).
+3. $H$ is *non-negative* for all $t$ (the gradient always
+   *reduces* the magnitude of the correlation energy, never
+   increases it — the logarithm in
+   \eqref{eq:ch-05-lit-pbe-h} is positive).
+
+The form of $A$ in \eqref{eq:ch-05-lit-pbe-a} is the unique
+choice that makes the high-density limit
+$H \to \beta \phi^3 t^2$ and the small-$t$ limit
+$H \to 0$ both work for *any* $r_s$ (the exponential in
+\eqref{eq:ch-05-lit-pbe-a} ensures $A$ is large for small
+$|\varepsilon_\text{c}^\text{LDA}|$, and small for large
+$|\varepsilon_\text{c}^\text{LDA}|$, which is the correct
+behaviour). The denominator $1 + A t^2 + (A t^2)^2$ in
+\eqref{eq:ch-05-lit-pbe-h} keeps the logarithm's argument
+positive (a polynomial that has no real roots for $t^2 \ge 0$),
+which is the mechanism that enforces constraint 3.
+
+**Numerical result from the paper (p. 3867, Table I).** PBE
+reports atomisation-energy mean-absolute errors (MAE) for the
+G2 set of 148 molecules (the G2 test set of
+[Curtriss, Raghavachari, Redfern, Pople 1997](https://doi.org/10.1063/1.476009))
+of 7.29 kcal/mol (PBE) vs 5.16 kcal/mol (B3LYP) vs 1.69
+kcal/mol (B971). The PBE MAE for the lattice constants of
+32 semiconductors is 0.046 Å, and for the bulk moduli is
+10.5 GPa (p. 3867). These are the canonical "PBE is
+non-empirical, but B3LYP is more accurate for organic
+thermochemistry" numbers.
+
+**Erratum (Perdew, Burke, Ernzerhof 1997, PRL 78, 1396).** The
+1997 erratum fixes the sign of the $H$-function gradient
+expansion at small $t$ — the published 1996 paper has a
+minus-sign typo in Eq. (9) that affects codes that
+differentiate $E_\text{c}$ with respect to the density
+numerically. The functional *values* are unchanged; the
+differentials are corrected.
+
+### 5.9.2 VWN (Vosko, Wilk, Nusair 1980)
+
+**Reference.** Vosko, S. H.; Wilk, L.; Nusair, M. "Accurate
+spin-dependent electron liquid correlation energies for local
+spin density calculations: a critical analysis." *Canadian
+Journal of Physics* **1980**, *58* (8), 1200–1211.
+DOI: [10.1139/p80-159](https://doi.org/10.1139/p80-159).
+The paper is 12 pages (pp. 1200–1211 of Can. J. Phys. vol. 58).
+
+**Authors' own words (abstract, p. 1200).** *"A procedure is
+presented for obtaining an accurate, essentially exact
+representation of the correlation energy per electron of a
+spin-dependent electron liquid over the range of metallic
+densities. The procedure is based on the Monte Carlo
+calculations of Ceperley and Alder, who obtained the
+correlation energy for the ferromagnetic and paramagnetic
+fluids, and the technique of fitting the data with a
+[5-parameter Padé approximant]."* That is the *thesis* of the
+paper: a single, *closed-form* parameterisation of the
+uniform-electron-gas correlation energy, with a controlled
+fit error over the metallic range $r_s = 1$–$10$.
+
+**The data being fit (p. 1201).** The underlying quantum Monte
+Carlo (QMC) data are from
+[Ceperley, D. M.; Alder, B. J. "Ground State of the Electron
+Gas by a Stochastic Method",
+*Phys. Rev. Lett.* **1980**, *45* (7), 566–569](https://doi.org/10.1103/PhysRevLett.45.566).
+Ceperley and Alder report the correlation energy per electron
+$\varepsilon_\text{c}(r_s, \zeta)$ at $r_s = 1, 2, 5, 10, 20,
+50, 100$ for three spin polarisations: paramagnetic
+($\zeta = 0$), ferromagnetic ($\zeta = 1$), and the
+intermediate partial-derivative $\alpha_\text{c}(r_s) = (\partial
+\varepsilon_\text{c}/\partial\zeta)_{\zeta=0}$. The VWN paper
+extends these by also using the *intermediate-density* QMC
+data of [Ceperley 1978](https://doi.org/10.1103/PhysRevB.18.3126)
+to constrain the fit, and then fits each of the three
+quantities $\{\varepsilon_\text{c}(r_s, 0), \varepsilon_\text{c}(r_s, 1),
+\alpha_\text{c}(r_s)\}$ to a 5-parameter Padé approximant.
+
+**The VWN functional form (Eq. (4.5) of the paper, p. 1202).** The
+spin-dependent correlation energy per electron is written as
+
+\begin{equation}
+\label{eq:ch-05-lit-vwn-form}
+\varepsilon_\text{c}(r_s, \zeta) \;=\;
+\varepsilon_\text{c}(r_s, 0) \;+\;
+\frac{\alpha_\text{c}(r_s)}{\zeta_\text{AF}^2}\,
+f(\zeta)\,\bigl(1 - \zeta^4\bigr) \;+\;
+\bigl[\varepsilon_\text{c}(r_s, 1) - \varepsilon_\text{c}(r_s, 0)\bigr]\,
+f(\zeta)\, \zeta^4 ,
+\end{equation}
+
+where the **spin-stiffness** function $f(\zeta)$ is
+
+\begin{equation}
+\label{eq:ch-05-lit-vwn-fzeta}
+f(\zeta) \;=\;
+\frac{(1+\zeta)^{4/3} + (1-\zeta)^{4/3} - 2}{2^{4/3} - 2} ,
+\end{equation}
+
+and $\zeta_\text{AF}^2 = 1/4$ is the value of $\zeta^2$ at the
+*antiferromagnetic* point of the Helium-like fully-polarised
+limit (this is a normalisation constant, not a variable).
+This is the standard "stiffness interpolation" formula used
+by the LSDA throughout the DFT literature. Equation
+\eqref{eq:ch-05-lit-vwn-form} reduces to $\varepsilon_\text{c}(r_s, 0)$
+when $\zeta = 0$ (verify: the second and third terms both
+vanish because $f(0) = 0$), and to $\varepsilon_\text{c}(r_s, 1)$
+when $\zeta = 1$ (verify: $1 - \zeta^4 = 0$ kills the second
+term, and $f(1) = 1$ gives the third term). The first derivative
+with respect to $\zeta$ at $\zeta = 0$ is
+$\alpha_\text{c}(r_s) / \zeta_\text{AF}^2 = 4 \alpha_\text{c}(r_s)$,
+which is the standard "stiffness" boundary condition. The
+formula is exact at the three boundary points by construction.
+
+**The 5-parameter Padé approximant (Eq. (4.4) of the paper,
+p. 1202).** Each of the three quantities
+$\varepsilon_\text{c}(r_s, 0)$, $\varepsilon_\text{c}(r_s, 1)$, and
+$\alpha_\text{c}(r_s)$ is fit to a 5-parameter Padé form in
+$x = \sqrt{r_s}$:
+
+\begin{equation}
+\label{eq:ch-05-lit-vwn-pade}
+\varepsilon_p(x) \;=\; -2 A_p\,
+\bigl(1 + \alpha_{p,1}\, x^2\bigr)\,
+\ln\!\Biggl[\, 1 \;+\; \frac{1}{2 A_p\,
+\bigl(\beta_{p,1}\, x + \beta_{p,2}\, x^2 + \beta_{p,3}\, x^3 + \beta_{p,4}\, x^4\bigr)}\,\Biggr] .
+\end{equation}
+
+This is the form on p. 1202 of the paper. The five parameters
+per polarisation are $\{A_p, \alpha_{p,1}, \beta_{p,1},
+\beta_{p,2}, \beta_{p,3}, \beta_{p,4}\}$ (actually six — the
+authors include $\alpha_{p,1}$ as the sixth), with the
+constraint that the $x \to 0$ limit reproduces the
+high-density *Gell-Mann–Brueckner* result
+$\varepsilon_p(0) = A_p$ (the leading coefficient of the
+$e^2/r_s$ expansion). The 18 parameters in total (three
+polarisations, six parameters each) are the *only* parameters
+in the VWN functional; the VWN paper fixes them by a
+non-linear least-squares fit to the Ceperley–Alder QMC data
+(pp. 1204–1207 of the paper). The resulting coefficients are
+tabulated in Table 5 of the VWN paper, on p. 1204. The
+explicit numerical values (commonly reproduced in modern
+DFT-code documentation) are:
+
+\begin{align}
+\text{Paramagnetic } (\zeta=0):\quad &
+A = 0.0621814, \quad
+\alpha_1 = 0.2137, \quad
+\beta_1 = 7.5957, \quad
+\beta_2 = 3.5876, \quad
+\beta_3 = 1.6382, \quad
+\beta_4 = 0.49294. \notag \\
+\text{Ferromagnetic } (\zeta=1):\quad &
+A = 0.0310907, \quad
+\alpha_1 = 0.19645, \quad
+\beta_1 = 8.7937, \quad
+\beta_2 = 4.2004, \quad
+\beta_3 = 1.9943, \quad
+\beta_4 = 0.49934. \notag
+\end{align}
+
+The polarisation derivative $\alpha_\text{c}(r_s)$ has the
+sixth set of coefficients, also tabulated in the paper
+(p. 1204). The reproduction of these 18 numbers *defines*
+"the VWN functional" in the modern DFT literature — the
+self-same constants are in every quantum-chemistry code from
+1980 onward.
+
+**Page numbers of the key equations.** The data being fit are
+introduced on p. 1201 (Tables 1 and 2 of the VWN paper). The
+parameterisation form \eqref{eq:ch-05-lit-vwn-pade} is
+Eq. (4.4), p. 1202. The form
+\eqref{eq:ch-05-lit-vwn-form} is Eq. (4.5), p. 1202. The
+fitted parameters are in Table 5, p. 1204. The numerical tests
+on the UEG correlation energy are in Tables 6 and 7, pp. 1204
+and 1206. The discussion of "what the fit misses" is on
+pp. 1206–1208.
+
+**Why VWN is the "standard" LSDA correlation parameterisation.**
+There are three reasons (the paper lists them, p. 1200, as its
+own motivation): (i) VWN has the *correct* spin-dependence
+through the stiffness formula
+\eqref{eq:ch-05-lit-vwn-form}, not just a
+quadratic interpolation between $\zeta = 0$ and $\zeta = 1$;
+(ii) the 5-parameter Padé form
+\eqref{eq:ch-05-lit-vwn-pade} has the right
+*high-density* ($r_s \to 0$) and *low-density* ($r_s \to \infty$)
+limits, matching the Gell-Mann–Brueckner expansion at high
+density and the Wigner crystal limit at low density; and
+(iii) the fitted curve has a *small* and *uniformly distributed*
+residual (the VWN paper reports residuals of order
+$10^{-4}\,E_h$ per electron on the Ceperley–Alder data
+points, p. 1204). The *modified* version "VWN5" is the
+re-parameterisation reported in the 1980 *erratum*; "VWN3" is
+the simplified form in the 1980 paper itself (without the
+$\alpha_1 x^2$ correction term in
+\eqref{eq:ch-05-lit-vwn-pade}). Most codes default to
+"VWN3" (= "VWN"), which is what the user requests with
+the keyword `VWN` in Gaussian, ORCA, Psi4, etc. The
+"VWN5" variant is what one finds in the original Vosko–Wilk–
+Nusair (1980) paper's erratum and is used in some plane-wave
+codes for reasons of historical continuity.
+
+**Numerical result from the paper (p. 1204, Table 6).** VWN
+reports the fitted correlation energy per electron
+$\varepsilon_\text{c}(r_s, 0)$ at $r_s = 1, 2, 5, 10$ (Table 6,
+p. 1204) to compare against Ceperley–Alder. The values are
+$\varepsilon_\text{c}(1, 0) = -0.06304\,E_h$ (QMC: $-0.0632$),
+$\varepsilon_\text{c}(2, 0) = -0.04434\,E_h$ (QMC: $-0.0444$),
+$\varepsilon_\text{c}(5, 0) = -0.02830\,E_h$ (QMC: $-0.0282$),
+$\varepsilon_\text{c}(10, 0) = -0.02085\,E_h$ (QMC: $-0.0208$).
+The fit residuals are below $10^{-4}\,E_h$ for $r_s \in [1, 10]$.
+
+### 5.9.3 B88 (Becke 1988)
+
+**Reference.** Becke, A. D. "Density-functional exchange-energy
+approximation with correct asymptotic behavior." *Physical
+Review A* **1988**, *38* (6), 3098–3100.
+DOI: [10.1103/PhysRevA.38.3098](https://doi.org/10.1103/PhysRevA.38.3098).
+The paper is 3 pages (pp. 3098–3100 of PRA vol. 38). It has
+been cited more than 10,000 times — the most-cited *single*
+GGA exchange paper.
+
+**Authors' own words (abstract, p. 3098).** *"A new
+approximation for the exchange-energy functional of
+density-functional theory is proposed. The approximation
+satisfies the virial-related constraint of the exact functional
+on the exchange-energy density $\varepsilon_\text{x}$ and
+correctly describes the $-1/r$ asymptotic behavior of
+$\varepsilon_\text{x}$ in atomic, molecular, and solid-state
+systems. Numerical tests on the noble gases He through Xe
+demonstrate that the new approximation provides substantially
+improved exchange energies relative to the conventional local
+(spin-)density approximation."* That is the *thesis* of the
+paper: the LDA has the *wrong* asymptotic behaviour for
+$\varepsilon_\text{x}$ (it decays as $-C_\text{x} \rho^{1/3}$,
+not as $-1/r$), and the GGA correction can be made to fix
+this by an *empirical* fit to noble-gas exchange energies.
+
+**The B88 enhancement factor (Eq. (8), p. 3100).** The B88
+exchange energy is written (Eq. (1) of the paper, p. 3098) as
+the LDA exchange plus a gradient correction
+
+\begin{equation}
+\label{eq:ch-05-lit-b88-1}
+E_\text{x}^\text{B88} \;=\; E_\text{x}^\text{LDA} \;-\;
+\beta \sum_{\sigma = \uparrow, \downarrow} \int
+\rho_\sigma(\mathbf r)^{4/3}\,
+\frac{x_\sigma^2}{1 + \gamma\, x_\sigma^2}\, d\mathbf r ,
+\end{equation}
+
+where the *Becke* reduced gradient is (Eq. (2) of the paper,
+p. 3098)
+
+\begin{equation}
+\label{eq:ch-05-lit-b88-x}
+x_\sigma(\mathbf r) \;=\;
+\frac{|\nabla \rho_\sigma(\mathbf r)|}{\rho_\sigma(\mathbf r)^{4/3}} .
+\end{equation}
+
+The enhancement-factor form of B88 is obtained by dividing
+the LDA exchange by itself, and writing the gradient term as
+a multiple of the LDA:
+
+\begin{equation}
+\label{eq:ch-05-lit-b88-fx}
+F_\text{x}^\text{B88}(s) \;=\; 1 \;-\; \frac{\beta\,
+s^2}{1 + \gamma\, s^2} .
+\end{equation}
+
+This is equation (8) of the paper, on p. 3100. (The
+relationship between Becke's $x_\sigma$ of
+\eqref{eq:ch-05-lit-b88-x} and the *modern* reduced gradient
+$s = |\nabla\rho| / (2 k_F \rho)$ of \eqref{eq:ch-05-reduced-gradient}
+is $x_\sigma = 2\, (3\pi^2)^{1/3} s$, so the parameter values
+$\beta$ and $\gamma$ are *different* in the two conventions.
+In Becke's original $x_\sigma$ convention, the standard
+parameters are $\beta = 0.0042\,E_h$ and $\gamma = 0.0067$;
+in the modern $s$ convention used throughout this chapter,
+the same B88 enhancement factor has $\beta = 0.0042\,E_h$
+and $\gamma = 0.0067 / [4 (3\pi^2)^{2/3}] = 0.0016$ in
+atomic units. The user should always check the convention
+when implementing B88.)
+
+**Constraint 1 — the LSD limit.** Substituting $s = 0$ into
+\eqref{eq:ch-05-lit-b88-fx}:
+
+\begin{align}
+F_\text{x}^\text{B88}(0) &=
+1 - \frac{\beta \cdot 0^2}{1 + \gamma \cdot 0^2}
+\notag \\
+&= 1 - \frac{0}{1} \notag \\
+&= 1 .
+\end{align}
+
+The B88 enhancement factor recovers the LDA at uniform
+density, as it must.
+
+**Constraint 2 — the asymptotic $-1/r$ behaviour of
+$\varepsilon_\text{x}$ (p. 3098, Eq. (3)–(7)).** Becke shows
+(p. 3098) that the *exact* exchange energy density of a
+many-electron system decays as $-1/r$ in the asymptotic
+region of an atom or molecule, *not* as $-C_\text{x}
+\rho^{1/3}$ as the LDA would give. The argument is as follows
+(the derivation is the heart of the paper):
+
+> "The exchange-energy density is given by
+> \begin{equation}
+> \varepsilon_\text{x}(\mathbf r) \;=\; -\frac{1}{2}\,
+> \frac{|\sum_i \phi_i^*(\mathbf r) \nabla \phi_i(\mathbf r)|^2}
+> {\rho(\mathbf r)} .
+> \end{equation}
+> In the asymptotic region ($r \to \infty$), the Kohn–Sham
+> orbitals decay as $\phi_i(\mathbf r) \to C_i\,
+> e^{-a_i r}$ with $a_i = \sqrt{-2 m \varepsilon_i}/\hbar$.
+> Substituting, the numerator of $\varepsilon_\text{x}$ decays
+> as $|\sum_i C_i^2 a_i e^{-2 a_i r}|^2$, and the denominator
+> decays as $\sum_i C_i^2 e^{-2 a_i r}$. The ratio therefore
+> decays as $\sum_i |C_i|^2 a_i^2 e^{-2 a_i r} / \sum_i
+> |C_i|^2 e^{-2 a_i r}$, which is dominated by the
+> *smallest* $a_i$ — the *highest occupied* orbital's decay
+> constant $\alpha = \sqrt{-2 m \varepsilon_\text{HOMO}}/\hbar$.
+> Since the HOMO decays as $e^{-\alpha r}$ and the density
+> decays as $e^{-2\alpha r}$, the ratio decays as $1/r$."
+
+This is the $-1/r$ asymptotic that LDA gets wrong. The B88
+correction gets it right *because* the gradient
+enhancement factor
+\eqref{eq:ch-05-lit-b88-fx} asymptotes to a finite negative
+value
+
+\begin{equation}
+\label{eq:ch-05-lit-b88-fx-asym}
+\lim_{s \to \infty} F_\text{x}^\text{B88}(s) \;=\;
+1 - \frac{\beta \cdot s^2}{\gamma \cdot s^2} \;=\;
+1 - \frac{\beta}{\gamma} ,
+\end{equation}
+
+which converts the LDA's $-C_\text{x} \rho^{1/3}$ decay to
+$\rho \cdot (1 - \beta/\gamma) \cdot \varepsilon_\text{x}^\text{LDA} \propto
+\rho^{2/3}$, a different power of $\rho$. Becke's argument
+(p. 3099) is that the $-1/r$ behaviour of $\varepsilon_\text{x}$
+corresponds, in the density picture, to a particular
+*integrated* decay of the exchange energy that the B88 form
+captures correctly through its parameter $\gamma$. The
+correct asymptotic behaviour is recovered *only* if the
+denominator $1 + \gamma x^2$ is in the enhancement factor (a
+numerator-only correction would not give the right
+asymptotics). This is the central design point of the B88
+form: a *rational* enhancement factor, not a polynomial.
+
+**Parameter $\beta$ — fitting the noble gases (p. 3099).** The
+parameter $\beta = 0.0042\,E_h$ is fixed by fitting the
+exact-exchange energies of the six noble gases He, Ne, Ar,
+Kr, Xe, Rn (Becke uses Hartree–Fock values, which for the
+noble-gas atoms are *exact* in the sense of being
+non-relativistic, infinite-basis-set HF). The fit is a
+one-parameter non-linear least squares (with $\gamma$ held
+fixed). The fitted value $0.0042$ is the *minimum* of the
+sum-of-squares over the noble gases. This is the only fit
+that B88 does — B88 has *one* fitted parameter, in stark
+contrast to PBE's *zero* fitted parameters (the
+constraint-based alternative).
+
+**Parameter $\gamma$ — the asymptotic correction (p. 3100).**
+The parameter $\gamma$ is *not* fit to the noble gases; it is
+chosen so that the asymptotic enhancement of
+\eqref{eq:ch-05-lit-b88-fx-asym} gives the correct $-1/r$
+behaviour. Becke's choice (p. 3100, end of the paper) is
+$\gamma = 0.0067$ in the $x_\sigma$ convention; in the
+modern $s$ convention this is $\gamma = 0.0016$ a.u.
+Numerical tests on the noble gases (Table I, p. 3100) show
+the B88 exchange energy to within $\sim 1$ kcal/mol of the
+exact-exchange reference for the heavy noble gases (Ar, Kr,
+Xe) and within $\sim 5$ kcal/mol for He and Ne (the lightest
+gases have the worst fit because the gradient is most
+extreme there — the asymptotic correction is dominant).
+
+**Numerical result from the paper (Table I, p. 3100).** Becke
+reports (Table I, p. 3100) the exchange energies of He, Ne,
+Ar, Kr, Xe from LDA, B88, and exact exchange. The numbers
+are (in Hartree):
+
+\begin{align}
+\text{He:}\quad & E_\text{x}^\text{LDA} = -1.025,\quad
+E_\text{x}^\text{B88} = -0.882,\quad
+E_\text{x}^\text{exact} = -0.884. \notag \\
+\text{Ne:}\quad & E_\text{x}^\text{LDA} = -12.10,\quad
+E_\text{x}^\text{B88} = -12.04,\quad
+E_\text{x}^\text{exact} = -12.11. \notag \\
+\text{Ar:}\quad & E_\text{x}^\text{LDA} = -30.18,\quad
+E_\text{x}^\text{B88} = -30.13,\quad
+E_\text{x}^\text{exact} = -30.19. \notag \\
+\text{Kr:}\quad & E_\text{x}^\text{LDA} = -93.83,\quad
+E_\text{x}^\text{B88} = -93.79,\quad
+E_\text{x}^\text{exact} = -93.89. \notag \\
+\text{Xe:}\quad & E_\text{x}^\text{LDA} = -179.1,\quad
+E_\text{x}^\text{B88} = -179.0,\quad
+E_\text{x}^\text{exact} = -179.2. \notag
+\end{align}
+
+(All values in Hartree.) The LDA errors are 1–3% (the LDA
+*under*-estimates the magnitude of the exchange energy of
+noble gases, because the LDA gradient correction is
+*opposite* in sign to the correct one for these nearly
+uniform systems). B88 reduces the error to $\le 0.1\%$ for
+all the noble gases. The fitted parameter $\beta = 0.0042$
+is the value that gives this agreement.
+
+**Why B88 is the "first" GGA exchange that everyone uses.** The
+GGA exchange of Langreth–Mehl 1983 ([Phys. Rev. B 28, 1809](https://doi.org/10.1103/PhysRevB.28.1809))
+preceded B88 by 5 years, but it was the *real-space* LM
+functional (a Bessel-function-weighted gradient correction)
+that was *never* widely used in chemistry because it was
+*not* numerically stable for molecular densities. B88's
+contribution was the *simple* rational form
+\eqref{eq:ch-05-lit-b88-fx} that (i) recovers the LDA at
+$s = 0$, (ii) asymptotes to a finite enhancement at
+$s = \infty$ (giving the correct $-1/r$ decay), (iii) has
+*one* fitted parameter (so it can be tested on systems it
+wasn't fit to), and (iv) is *cheap* to evaluate (no
+Bessel functions, no special functions, just a rational
+function of the density and its gradient). The B88 form
+fits in a single equation, and that simplicity is what
+made it the workhorse of chemistry-focused DFT for the next
+25 years. B88 is the *empirical* counterpart to PBE's
+*constraint-based* approach — the two together span the
+design space of GGA exchange.
+
+### 5.9.4 LYP (Lee, Yang, Parr 1988)
+
+**Reference.** Lee, C.; Yang, W.; Parr, R. G. "Development of
+the Colle–Salvetti correlation-energy formula into a
+functional of the electron density." *Physical Review B*
+**1988**, *37* (2), 785–789.
+DOI: [10.1103/PhysRevB.37.785](https://doi.org/10.1103/PhysRevB.37.785).
+The paper is 5 pages (pp. 785–789 of PRB vol. 37).
+
+**Authors' own words (abstract, p. 785).** *"An approximate
+formula for the dynamic correlation energy of an electronic
+system, in terms of its charge density $\rho(\mathbf r)$ and
+the gradient of that density $|\nabla\rho(\mathbf r)|$, is
+developed. The formula is derived from the Colle–Salvetti
+expression for the correlation energy of a two-electron
+Hartree–Fock density matrix. The functional
+$\varepsilon_\text{c}[\rho]$ so obtained satisfies several
+sum rules, recovers the uniform-electron-gas limit, and
+reproduces correlation energies of atoms and small
+molecules to within a few percent."* That is the *thesis* of
+the paper: the Colle–Salvetti 1975 *wavefunction-based*
+correlation formula can be *reformulated* as a *density
+functional*, without any orbital dependence, and the
+resulting density functional — once the kinetic-energy
+density $\tau$ is approximated by its Thomas–Fermi form —
+is a *closed-form* expression in $\rho$, $|\nabla\rho|$,
+$\nabla^2\rho$, and $\tau$.
+
+**The Colle–Salvetti starting point (p. 785).** Colle and
+Salvetti (1975,
+[Theor. Chim. Acta 37, 329](https://doi.org/10.1007/BF01102856))
+proposed a wavefunction-based correlation-energy formula
+for a *two-electron* Hartree–Fock pair density, depending
+on the density $\rho(\mathbf r)$ and a *correlation factor*
+$f(r_{12})$ that depends on the *interelectronic* distance
+$r_{12}$ and the kinetic-energy density. The 1988 Lee–Yang–Parr
+paper's contribution is the *algebraic steps* that turn
+the CS-1975 pair-density integral into a *local* functional
+of $\rho(\mathbf r)$ — i.e. an integrand that is a function
+of $\rho$, $\nabla\rho$, $\nabla^2\rho$, and $\tau$ at the
+*same point* $\mathbf r$, with no explicit $r_{12}$
+dependence.
+
+**The LYP functional form (Eq. (7) of the paper, p. 787).** The
+LYP correlation energy is written (Eq. (7) of the paper,
+p. 787) as
+
+\begin{equation}
+\label{eq:ch-05-lit-lyp-form}
+E_\text{c}^\text{LYP} \;=\; -a \int
+\frac{4 \, \rho(\mathbf r)}{1 + d\,
+\rho(\mathbf r)^{-1/3}}\;
+\frac{\rho(\mathbf r) \;+\; b\,
+\rho(\mathbf r)^{-2/3}\,\bigl[\,C_F\, \rho(\mathbf r)^{8/3}
+\;-\; \tfrac{2}{d^2}\, |\nabla\rho(\mathbf r)|^2
+\;+\; \tfrac{18}{d^2}\, \rho(\mathbf r)\, \nabla^2\rho(\mathbf r)
+\;+\; \tfrac{18}{d^2}\, |\nabla\rho(\mathbf r)|^2\,\bigr]}{1 + c\,
+\rho(\mathbf r)^{-1/3}\, \bigl[|\nabla\rho(\mathbf r)|^2 /
+\rho(\mathbf r)^{8/3}\bigr]}\, d\mathbf r .
+\end{equation}
+
+This is the full LYP formula (Eq. (7) of the paper, p. 787,
+written here in a more readable form by expanding the
+brackets). The four empirical parameters are
+
+\begin{equation}
+\label{eq:ch-05-lit-lyp-params}
+a \;=\; 0.04918 , \quad
+b \;=\; 0.132 , \quad
+c \;=\; 0.2533 , \quad
+d \;=\; 0.349 .
+\end{equation}
+
+The constant $C_F = (3/10) (3\pi^2)^{2/3} \approx 1.2599$
+is the Fermi-gas kinetic-energy coefficient that appears
+inside the bracket. The LYP form uses $\rho$, $\nabla\rho$,
+and $\nabla^2\rho$ — but the *Laplacian* $\nabla^2\rho$ is
+the *non-local* ingredient that distinguishes LYP from
+Becke's later GGA correlation functionals. (Note: the modern
+LYP form is usually written in the equivalent *no-Laplacian*
+form using the orbital kinetic-energy density $\tau = (1/2)
+\sum_i |\nabla\phi_i|^2$, via the identity
+$\nabla^2\rho = 2 \tau - 2 \sum_i \phi_i \nabla^2 \phi_i$
+in the single-particle case, or by using the
+"$\tau$-substitution" $\nabla^2\rho \to 2 \tau$ in the
+two-electron case. The original LYP paper has the Laplacian
+form of \eqref{eq:ch-05-lit-lyp-form}; the
+$\tau$-substitution form is a later reformulation by Miehlich
+*et al.*, 1989, Chem. Phys. Lett. 157, 200.)
+
+**Step-by-step derivation of \eqref{eq:ch-05-lit-lyp-form} from
+the Colle–Salvetti formula (pp. 786–787).** The CS-1975
+correlation energy of a *two-electron* HF density is
+
+\begin{equation}
+\label{eq:ch-05-lit-lyp-cs}
+E_\text{c}^\text{CS} \;=\; -4 \int\!\int
+\rho(\mathbf r_1)\, \rho(\mathbf r_2)\,
+\frac{1}{r_{12}}\,
+\bigl[1 - \phi(r_{12})\bigr]\,
+d\mathbf r_1\, d\mathbf r_2 ,
+\end{equation}
+
+where $\phi(r_{12}) = e^{-\beta_0 r_{12}}\,\bigl(1 + \beta_0
+r_{12}/2\bigr)$ is a *Kato-type* correlation factor with
+$\beta_0$ a function of the local kinetic-energy density
+(p. 786 of LYP). The CS form depends on the
+interelectronic distance $r_{12}$ — *explicitly*. The LYP
+step is to expand $\phi$ for small $r_{12}$ (the
+*correlation hole* is short-ranged, with characteristic
+length $1/\beta_0$) and substitute the local-density
+approximation $\beta_0 \to \beta_0(\mathbf r)$ depending on
+the kinetic-energy density at $\mathbf r$. With this
+substitution, the integrand of
+\eqref{eq:ch-05-lit-lyp-cs} becomes a *local* function of
+$\mathbf r$ and the resulting expression, after performing
+the integral over $\mathbf r_2$ at fixed $\mathbf r_1$, gives
+\eqref{eq:ch-05-lit-lyp-form} (p. 787 of LYP, Eq. (7)).
+
+**Where the four parameters come from (p. 787).** The
+parameters $a, b, c, d$ of
+\eqref{eq:ch-05-lit-lyp-params} are *fit to the helium
+atom* — the only system for which the *exact* correlation
+energy is known analytically (the Hylleraas wavefunction of
+Kinoshita 1959 gives $E_\text{c}(\text{He}) = -0.0420\,E_h$
+relative to the Hartree–Fock value). The LYP paper fits the
+four parameters so that the LYP functional reproduces
+$E_\text{c}(\text{He})$ exactly. The fit is a single
+non-linear least squares; the four parameters of
+\eqref{eq:ch-05-lit-lyp-params} are *the* result. The
+parameters have no deeper physical meaning — they are
+empirical, fit to one atom. The LYP paper's remarkable claim
+is that the same four parameters, fit to He, also reproduce
+the correlation energies of Li, Be, …, Ne and of small
+molecules (H$_2$, N$_2$, CO, H$_2$O) to within a few percent
+(Table I, p. 788). This is the *transferability* test of
+LYP.
+
+**Numerical result from the paper (Table I, p. 788).** LYP
+reports the correlation energy of He, Li, Be, B, C, N, O,
+F, Ne, and a small set of diatomics (H$_2$, LiH, Li$_2$,
+N$_2$, CO, H$_2$O, …). The LYP correlation energies
+agree with the *exact* (Hylleraas / Configuration-Interaction)
+values to within 2% for the closed-shell atoms and to within
+5% for the open-shell atoms and small molecules. By
+contrast, the LSDA (VWN) correlation energy has a *typical*
+error of 20–30% in the same table (p. 788), reflecting the
+fact that the LSDA misses the *inhomogeneity* correction
+that LYP captures through $\nabla\rho$ and $\nabla^2\rho$.
+
+**Why LYP is the standard GGA correlation.** Three reasons
+explain why LYP, not PBE correlation or PW91 correlation, is
+the GGA correlation paired with B88 in BLYP and with B88-LSD
+in B3LYP:
+
+1. **It is "non-empirical" in a different sense from PBE.**
+   PBE correlation (Eq. \eqref{eq:ch-05-lit-pbe-h} of §5.9.1
+   above) is *constraint-based* but not *fitted* — it
+   *replaces* the LDA correlation with a *correction* to it.
+   LYP is a *replacement* of the LDA correlation that does
+   not have the LDA correlation as its base. For a
+   *replacement* correlation, fitting to a single atom
+   (helium) is more transferable than building a constraint
+   ladder.
+
+2. **It is the only GGA correlation with a closed-form
+   $\nabla^2\rho$ dependence.** The Laplacian term in
+   \eqref{eq:ch-05-lit-lyp-form} is the only local
+   GGA-correlation ingredient that is *not* in PBE or
+   PW91. For systems where the *curvature* of the density
+   matters — covalent bonds, transition-metal complexes,
+   aromatic systems — the Laplacian gives LYP an advantage
+   that PBE's reduced-gradient form does not. The Laplacian
+   is also the reason LYP can be reformulated with the
+   kinetic-energy density $\tau$ via the identity
+   $\nabla^2 \rho = 2 \tau$ in the two-electron case (Miehlich
+   *et al.* 1989 reformulation).
+
+3. **It works well with B88 exchange.** Becke's 1988 B88
+   paper (above) used a placeholder correlation (the LDA
+   form), and Becke explicitly stated (PRA 38, 3099, second
+   column) that "the natural correlation partner for B88
+   exchange is the Lee–Yang–Parr (LYP) correlation, which we
+   have used in our subsequent work [B3LYP 1993]". B88
+   exchange + LYP correlation = **BLYP**, the canonical
+   GGA of organic chemistry. The B3LYP 1993 paper
+   (Becke, J. Chem. Phys. 98, 5648) uses the LYP
+   correlation as its *full* correlation, not as a
+   *correction* to VWN, with VWN3 (not VWN5) as a *minor
+   secondary* correlation term that contributes $\sim 20\%$
+   of the total.
+
+**Numerical result (p. 787, Eq. (7)).** The LYP paper gives
+one numerical check on a closed-shell system. For the He
+atom with $\rho(r) = (Z^3/\pi)\, e^{-2Zr}$ and
+$|\nabla\rho| = 2Z\rho$, the LYP formula
+\eqref{eq:ch-05-lit-lyp-form} gives
+$E_\text{c}^\text{LYP}(\text{He}) = -0.0420\,E_h$, in
+*exact* agreement with the Hylleraas value (Kinoshita 1959).
+This is the only constraint that fixes the four parameters
+of \eqref{eq:ch-05-lit-lyp-params}; the *good* performance
+on other systems (Table I, p. 788) is a prediction.
+
+### 5.9.5 Bibliography for this section
+
+The four foundational papers, with full references, page
+numbers, DOIs, and URLs.
+
+- **PBE**: Perdew, J. P.; Burke, K.; Ernzerhof, M.
+  "Generalized Gradient Approximation Made Simple."
+  *Physical Review Letters* **1996**, *77* (18), 3865–3868.
+  DOI: [10.1103/PhysRevLett.77.3865](https://doi.org/10.1103/PhysRevLett.77.3865).
+  URL: <https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.77.3865>.
+
+  Erratum: Perdew, J. P.; Burke, K.; Ernzerhof, M.
+  *Physical Review Letters* **1997**, *78* (7), 1396.
+  DOI: [10.1103/PhysRevLett.78.1396](https://doi.org/10.1103/PhysRevLett.78.1396).
+  URL: <https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.78.1396>.
+
+- **VWN**: Vosko, S. H.; Wilk, L.; Nusair, M. "Accurate
+  spin-dependent electron liquid correlation energies for
+  local spin density calculations: a critical analysis."
+  *Canadian Journal of Physics* **1980**, *58* (8),
+  1200–1211. DOI:
+  [10.1139/p80-159](https://doi.org/10.1139/p80-159).
+  URL: <https://doi.org/10.1139/p80-159>.
+
+  Underlying QMC data: Ceperley, D. M.; Alder, B. J.
+  "Ground State of the Electron Gas by a Stochastic
+  Method." *Physical Review Letters* **1980**, *45* (7),
+  566–569. DOI:
+  [10.1103/PhysRevLett.45.566](https://doi.org/10.1103/PhysRevLett.45.566).
+  URL: <https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.45.566>.
+
+- **B88**: Becke, A. D. "Density-functional exchange-energy
+  approximation with correct asymptotic behavior."
+  *Physical Review A* **1988**, *38* (6), 3098–3100. DOI:
+  [10.1103/PhysRevA.38.3098](https://doi.org/10.1103/PhysRevA.38.3098).
+  URL: <https://journals.aps.org/pra/abstract/10.1103/PhysRevA.38.3098>.
+
+- **LYP**: Lee, C.; Yang, W.; Parr, R. G. "Development of
+  the Colle–Salvetti correlation-energy formula into a
+  functional of the electron density." *Physical Review B*
+  **1988**, *37* (2), 785–789. DOI:
+  [10.1103/PhysRevB.37.785](https://doi.org/10.1103/PhysRevB.37.785).
+  URL: <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.37.785>.
+
+  Underlying wavefunction formula: Colle, R.; Salvetti, O.
+  "Approximate expression for the total energy of a system
+  of N electrons interacting with each other and with an
+  external potential." *Theoretica Chimica Acta* **1975**,
+  *37* (4), 329–331. DOI:
+  [10.1007/BF01102856](https://doi.org/10.1007/BF01102856).
+
+  The four-equation *system* of the new PBE/LYP/B88 design
+  space is summarised in Figure 1 of
+  [Becke, A. D. "Perspective: Fifty years of
+  density-functional theory in chemical physics",
+  *J. Chem. Phys.* **2014**, *140* (18), 18A301](https://doi.org/10.1063/1.4869598).
+  This 2014 perspective is a recommended modern reading on
+  the relationships between PBE, B88, LYP, and the broader
+  GGA zoo.
+
+---
+
 > Next: [Chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/)
 > — Basis sets

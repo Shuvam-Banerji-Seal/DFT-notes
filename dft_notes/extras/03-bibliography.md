@@ -172,7 +172,8 @@ URL: <https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.78.1396>.
 
 Cited in: [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.2
 ("GGA — adding the gradient"), as the canonical non-empirical
-GGA.
+GGA; also [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.9.1
+("The PBE paper: a literature deep-dive").
 
 The PBE functional replaces the earlier ad-hoc PW91 form with a
 *constraint-satisfying* GGA: the enhancement factor over LDA
@@ -228,7 +229,8 @@ URL: <https://doi.org/10.1139/p80-159>.
 
 Cited in: [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.8.2
 and [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.4 (as a
-component of B3LYP).
+component of B3LYP); also [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.9.2
+("The VWN paper: a literature deep-dive").
 
 The standard closed-form parameterisation of the LSDA
 correlation energy, derived from the Ceperley–Alder (1980)
@@ -247,7 +249,9 @@ with correct asymptotic behavior." *Physical Review A* **1988**, *38*
 URL: <https://journals.aps.org/pra/abstract/10.1103/PhysRevA.38.3098>.
 
 Cited in: [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.2
-and §5.4 (as the exchange component of BLYP and B3LYP).
+and §5.4 (as the exchange component of BLYP and B3LYP); also
+[chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.9.3
+("The B88 paper: a literature deep-dive").
 
 The B88 exchange functional was the first GGA exchange to fix
 the LDA's spurious self-interaction by adding a gradient
@@ -268,7 +272,9 @@ DOI:
 URL: <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.37.785>.
 
 Cited in: [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.4
-(as the correlation component of BLYP and B3LYP).
+(as the correlation component of BLYP and B3LYP); also
+[chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.9.4
+("The LYP paper: a literature deep-dive").
 
 The LYP correlation functional is derived from the
 Colle–Salvetti (1975) expression for the correlation energy of
