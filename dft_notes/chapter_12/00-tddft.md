@@ -944,32 +944,212 @@ and virtual KS orbitals.
 The Casida formulation works in the space of single-particle
 excitations $|i \to a\rangle$ (one occupied orbital $i$, one
 virtual orbital $a$). In this basis the Dyson equation
-\eqref{eq:ch-12-dyson} reduces to a matrix equation. We sketch
-the derivation; a complete treatment is in the references.
+\eqref{eq:ch-12-dyson} reduces to a matrix equation.
 
-Define the **single-particle transition density**
+The derivation below is the original Casida (1995) form (Casida,
+"Time-dependent density functional response theory for molecules",
+in *Recent Advances in Density Functional Methods*, ed. D. P.
+Chong, World Scientific, 1995, pp. 155-192; equation numbers
+below are from the printed proceedings, pp. 165-168), with the
+modern $X$/$Y$ matrix form that Petersilka, Gossmann & Gross
+(PRL **76**, 1212, 1996, Eqs. (8)-(9)) re-derived in a slightly
+different way.
+
+**Step 1 — the single-particle transition density.** Define
 
 \begin{equation}
 \label{eq:ch-12-transition-density}
-\xi_{ia}(\mathbf r) \;=\; \phi_i^*(\mathbf r)\, \phi_a(\mathbf r) .
+\xi_{ia}(\mathbf r) \;=\; \phi_i^*(\mathbf r)\, \phi_a(\mathbf r) ,
 \end{equation}
 
-The KS response function \eqref{eq:ch-12-chi-s-lehmann} is
+the product of an occupied and a virtual KS orbital. The set
+$\{\xi_{ia}\}$ for all pairs $(i, a)$ is the basis in which the
+Casida matrix is written. The number of basis functions is
+$N_\text{trans} = N_\text{occ}\, N_\text{virt}$ (typically
+$10^3$ to $10^7$ for a molecule or solid; the eigenvalue problem
+is the bottleneck of linear-response TDDFT).
+
+**Step 2 — the KS response in the transition basis.** The KS
+response function \eqref{eq:ch-12-chi-s-lehmann} in this basis is
+diagonal (this is the *defining* property of the KS response
+function — the KS system has no coupling between different
+particle–hole pairs):
 
 \begin{equation}
+\label{eq:ch-12-chi-s-lehmann-basis}
 \chi_s(\mathbf r, \mathbf r'; \omega) \;=\;
 2 \sum_{ia} \xi_{ia}(\mathbf r)\,
-       \bigl[ (\omega - \omega_{ia} + i\eta)^{-1}
-            - (\omega + \omega_{ia} - i\eta)^{-1} \bigr]\,
+       \Bigl[ (\omega - \omega_{ia} + i\eta)^{-1}
+            - (\omega + \omega_{ia} - i\eta)^{-1} \Bigr]\,
        \xi_{ia}^*(\mathbf r') ,
 \end{equation}
 
 with $\omega_{ia} = \varepsilon_a - \varepsilon_i > 0$ the
-KS excitation energy of the transition $i \to a$.
+KS excitation energy of the transition $i \to a$. The factor 2
+is the spin sum (closed shell; for an open-shell system it is
+replaced by a $2 \times 2$ spin structure). The $i\eta$ is the
+standard Feynman prescription that places the poles in the
+lower half of the complex $\omega$ plane (so that the response
+is causal).
 
-Insert this form into the Dyson equation \eqref{eq:ch-12-dyson}
-and look for poles. The result, after some algebra, is the
-**Casida equation**
+**Step 3 — the density ansatz in the transition basis.** At a
+pole of $\chi$ (i.e. at an excitation energy $\omega = \omega_I$),
+the first-order density response has a *resonant* (positive
+$\omega$) and an *anti-resonant* (negative $\omega$) component.
+Write it as
+
+\begin{equation}
+\label{eq:ch-12-rho-ansatz}
+\delta\rho(\mathbf r, \omega_I) \;=\; 2 \sum_{ia}
+    \Bigl[ X_{ia}\, \xi_{ia}(\mathbf r)
+          + Y_{ia}\, \xi_{ia}(\mathbf r) \Bigr] ,
+\end{equation}
+
+where $X_{ia}$ and $Y_{ia}$ are the *resonant* and *anti-resonant*
+amplitudes of the $ia$ transition in the eigenstate $I$.
+Both are real in the spin-summed, time-reversal-symmetric
+case. The factor 2 is again the spin sum.
+
+**Step 4 — the self-consistent effective perturbation.** The
+effective potential that drives the KS response is the sum of
+the external perturbation and the induced Hartree–xc perturbation
+\eqref{eq:ch-12-f-Hxc}:
+
+\begin{equation}
+\label{eq:ch-12-v-eff}
+\delta v_\text{eff}(\mathbf r, \omega) \;=\;
+   \delta v_\text{ext}(\mathbf r, \omega) + \int\! d\mathbf r'\,
+        f_\text{Hxc}(\mathbf r, \mathbf r')\,
+        \delta\rho(\mathbf r', \omega) .
+\end{equation}
+
+At the *pole* of $\chi$, the response diverges for a finite
+$\delta v_\text{ext}$, so we drop the source and look for a
+self-sustaining $\delta v_\text{eff}$:
+
+\begin{equation}
+\label{eq:ch-12-v-eff-pole}
+\delta v_\text{eff}(\mathbf r, \omega_I) \;=\;
+   \int\! d\mathbf r'\,
+        f_\text{Hxc}(\mathbf r, \mathbf r')\,
+        \delta\rho(\mathbf r', \omega_I) .
+\end{equation}
+
+Project onto the transition basis $\xi_{ia}^*(\mathbf r)$ and
+integrate over $\mathbf r$:
+
+\begin{equation}
+\label{eq:ch-12-v-eff-ia}
+[\delta v_\text{eff}]_{ia} \;=\;
+   \sum_{jb} K_{ia, jb}\, 2\,(X_{jb} + Y_{jb}) ,
+\end{equation}
+
+where the **coupling matrix** $\mathbf K$ is
+
+\begin{equation}
+\label{eq:ch-12-casida-K}
+K_{ia, jb} \;=\;
+\iint d\mathbf r\, d\mathbf r'\,
+   \xi_{ia}^*(\mathbf r)\,
+   \bigl[ v_H(\mathbf r, \mathbf r') + f_\text{xc}(\mathbf r, \mathbf r') \bigr]\,
+   \xi_{jb}(\mathbf r') .
+\end{equation}
+
+The factor of 2 in \eqref{eq:ch-12-v-eff-ia} comes from the
+spin sum in the density ansatz \eqref{eq:ch-12-rho-ansatz}.
+
+**Step 5 — the KS response in the transition basis.** The KS
+response is *linear* in $\delta v_\text{eff}$ and diagonal in
+the transition basis:
+
+\begin{equation}
+\label{eq:ch-12-rho-from-vs}
+\delta\rho(\mathbf r, \omega) \;=\; \int\! d\mathbf r'\,
+    \chi_s(\mathbf r, \mathbf r'; \omega)\,
+    \delta v_\text{eff}(\mathbf r', \omega) .
+\end{equation}
+
+Substituting the Lehmann form \eqref{eq:ch-12-chi-s-lehmann-basis}
+for $\chi_s$ and projecting onto $\xi_{ia}^*(\mathbf r)$ gives
+
+\begin{equation}
+\label{eq:ch-12-rho-ia}
+2\,(X_{ia} + Y_{ia}) \;=\;
+   2\,\bigl[ g_{ia}(\omega_I) + g_{ia}(-\omega_I) \bigr]\,
+   [\delta v_\text{eff}]_{ia} ,
+\end{equation}
+
+where we have defined the *single-particle propagator*
+
+\begin{equation}
+\label{eq:ch-12-g-ia}
+g_{ia}(\omega) \;=\; \frac{1}{\omega - \omega_{ia} + i\eta} ,
+\end{equation}
+
+whose value at $\omega = \omega_I$ is the relevant object
+because $\omega_I$ is the (unknown) pole frequency. Note that
+$g_{ia}(-\omega_I) = 1/(-\omega_I - \omega_{ia})$ is small and
+regular; only $g_{ia}(\omega_I)$ carries the pole structure.
+
+**Step 6 — separating the resonant and anti-resonant parts.**
+Equation \eqref{eq:ch-12-rho-ia} couples $X_{ia}$ and $Y_{ia}$
+together. We *separate* them by multiplying the equation by
+$g_{ia}(\omega_I)$ and $g_{ia}(-\omega_I)$ separately and using
+the identities $g_{ia}(\omega_I) \cdot (\omega_I - \omega_{ia}) = 1$
+and $g_{ia}(-\omega_I) \cdot (-\omega_I - \omega_{ia}) = 1$.
+
+For the *resonant* part: multiply the resonant piece of
+\eqref{eq:ch-12-rho-ia} (the piece proportional to $g_{ia}(\omega_I)$)
+by $(\omega_I - \omega_{ia})$:
+
+\begin{equation}
+\label{eq:ch-12-X-equation}
+X_{ia} \;=\; g_{ia}(\omega_I)\, [\delta v_\text{eff}]_{ia} ,
+\end{equation}
+
+which gives
+
+\begin{equation}
+\label{eq:ch-12-X-equation-2}
+(\omega_I - \omega_{ia})\, X_{ia} \;=\; [\delta v_\text{eff}]_{ia} .
+\end{equation}
+
+Substituting \eqref{eq:ch-12-v-eff-ia} for $[\delta v_\text{eff}]_{ia}$:
+
+\begin{equation}
+\label{eq:ch-12-X-equation-3}
+\omega_I\, X_{ia} \;=\; \omega_{ia}\, X_{ia}
+    + 2 \sum_{jb} K_{ia, jb}\, (X_{jb} + Y_{jb}) .
+\end{equation}
+
+For the *anti-resonant* part: multiply the anti-resonant piece
+of \eqref{eq:ch-12-rho-ia} (the piece proportional to
+$g_{ia}(-\omega_I)$) by $(-\omega_I - \omega_{ia})$:
+
+\begin{equation}
+\label{eq:ch-12-Y-equation}
+(-\omega_I - \omega_{ia})\, Y_{ia} \;=\; [\delta v_\text{eff}]_{ia} .
+\end{equation}
+
+(The resonant part contributes nothing because $g_{ia}(\omega_I)$
+is small compared to $g_{ia}(-\omega_I)$ near the negative
+frequency pole.) Substituting \eqref{eq:ch-12-v-eff-ia}:
+
+\begin{equation}
+\label{eq:ch-12-Y-equation-2}
+-\omega_I\, Y_{ia} \;=\; \omega_{ia}\, Y_{ia}
+    + 2 \sum_{jb} K_{ia, jb}\, (X_{jb} + Y_{jb}) .
+\end{equation}
+
+(After multiplying out the sign in $(-\omega_I - \omega_{ia}) = -(\omega_I + \omega_{ia})$.)
+
+**Step 7 — the Casida equation in modern form.** Equations
+\eqref{eq:ch-12-X-equation-3} and \eqref{eq:ch-12-Y-equation-2}
+form a $2N_\text{trans}$-dimensional matrix eigenvalue
+problem. Writing it in block-matrix form with the diagonal
+of the matrix $\mathbf A$ given by the bare excitation
+energies $\omega_{ia}$ and the off-diagonal coupling
+given by $\mathbf K$:
 
 \begin{equation}
 \label{eq:ch-12-casida}
@@ -988,10 +1168,7 @@ and look for poles. The result, after some algebra, is the
 }
 \end{equation}
 
-The $\mathbf X$ and $\mathbf Y$ vectors are the
-"excitation" and "de-excitation" amplitudes, both of size
-$N_\text{trans}$. The matrices $\mathbf A$ and $\mathbf B$
-are
+The two blocks $\mathbf A$ and $\mathbf B$ are
 
 \begin{equation}
 \label{eq:ch-12-casida-A}
@@ -1004,21 +1181,80 @@ A_{ia, jb} \;=\; \delta_{ij}\, \delta_{ab}\, \omega_{ia}
 B_{ia, jb} \;=\; K_{ia, jb} ,
 \end{equation}
 
-where the **coupling matrix** $\mathbf K$ is
+i.e. the diagonal is the bare KS excitation energy and the
+off-diagonal is the same coupling matrix in both blocks. The
+identity matrix $\mathbf 1$ and the minus sign on the lower
+right come from the *opposite* sign of the pole in the
+anti-resonant equation \eqref{eq:ch-12-Y-equation-2}.
+
+**Step 8 — the $\omega^2$ form (Casida 1995, original).** A
+common alternative form is obtained by adding and subtracting
+the two halves of the eigenvalue problem. Let
+$\mathbf F \equiv \mathbf X + \mathbf Y$ and
+$\mathbf G \equiv \mathbf X - \mathbf Y$. Adding and
+subtracting the two halves of \eqref{eq:ch-12-casida} gives
+
+\begin{align}
+(\mathbf A + \mathbf B)\, \mathbf F &= \omega_I\, \mathbf G , \tag{12.7.a}\\
+(\mathbf A - \mathbf B)\, \mathbf G &= \omega_I\, \mathbf F . \tag{12.7.b}
+\end{align}
+
+With $\mathbf A - \mathbf B = \mathrm{diag}(\omega_{ia})$
+(the coupling cancels because both $\mathbf A$ and $\mathbf B$
+have the same off-diagonal $\mathbf K$) and
+$\mathbf A + \mathbf B = \mathrm{diag}(\omega_{ia}) + 2\mathbf K$,
+equation \eqref{eq:ch-12-b} gives
+$\mathbf G = \omega_I^{-1}\, \mathrm{diag}(\omega_{ia})\, \mathbf F$
+componentwise, i.e. $G_{ia} = \omega_{ia}\, F_{ia} / \omega_I$.
+Substituting into \eqref{eq:ch-12-a}:
 
 \begin{equation}
-\label{eq:ch-12-casida-K}
-K_{ia, jb} \;=\;
-\iint d\mathbf r\, d\mathbf r'\,
-   \xi_{ia}^*(\mathbf r)\,
-   \bigl[ v_H(\mathbf r, \mathbf r') + f_\text{xc}(\mathbf r, \mathbf r') \bigr]\,
-   \xi_{jb}(\mathbf r') .
+\label{eq:ch-12-casida-omega2}
+\boxed{
+\bigl[ \mathrm{diag}(\omega_{ia}) + 2\, \mathbf K \bigr]\,
+       \mathrm{diag}(\omega_{ia})\,
+       \mathbf F
+   \;=\; \omega_I^2\, \mathbf F ,
+}
 \end{equation}
 
+or, in components,
+
+\begin{equation}
+\label{eq:ch-12-casida-omega2-comp}
+\sum_{jb} \bigl[ \delta_{ij}\delta_{ab}\, \omega_{ia}
+                + 2\, K_{ia, jb} \bigr]\,
+       \omega_{jb}\, F_{jb}
+   \;=\; \omega_I^2\, F_{ia} .
+\end{equation}
+
+This is the **Casida equation in the symmetric form** (Casida
+1995, Eq. (3.16), p. 168). The matrix on the left,
+$\Omega_{ia, jb} = \delta_{ij}\delta_{ab}\, \omega_{ia}^2 + 2
+\sqrt{\omega_{ia} \omega_{jb}}\, K_{ia, jb}$ (after the
+rescaling $F_{ia} \to F_{ia}/\sqrt{\omega_{ia}}$), is
+real-symmetric for closed-shell systems, so the eigenvalues
+$\omega_I^2$ are real and non-negative. The square-root
+rescaling symmetrises the equation and is the standard
+presentation; the original form \eqref{eq:ch-12-casida-omega2-comp}
+is the form actually derived above.
+
 In the **Tamm–Dancoff approximation** (TDA, equivalent to
-neglecting the $\mathbf B$ block), the equation reduces to
-the simpler eigenvalue problem $\mathbf A \mathbf X = \omega_I
-\mathbf X$.
+neglecting the $\mathbf B$ block, i.e. setting $Y_{ia} = 0$),
+the equation reduces to the simpler eigenvalue problem
+
+\begin{equation}
+\label{eq:ch-12-casida-TDA}
+\mathbf A \mathbf X \;=\; \omega_I\, \mathbf X ,
+\end{equation}
+
+i.e. $\omega_I X_{ia} = \omega_{ia} X_{ia} + 2 \sum_{jb} K_{ia, jb} X_{jb}$.
+The TDA is exact for *single* excitations in the limit of
+no coupling between particle–hole pairs (i.e. $\mathbf K = 0$)
+and is a good approximation for *single excitations* in
+general; it underestimates the oscillator strength of
+*double* excitations (which require the $\mathbf Y$ block to
+be present).
 
 ### 12.7.2 The oscillator strength from the Casida eigenvectors
 
@@ -2306,8 +2542,27 @@ The $\mathbf X$ vector describes the *resonant*
 describes the *anti-resonant* (de-excitation)
 amplitude. The Dyson equation at the pole decouples
 into a $2N_\text{trans}$-dimensional eigenvalue
-problem. The result, after some algebra, is the
-**Casida equation**
+problem in the same eight-step sequence as in
+Section 12.7.1:
+
+1. **Project the Dyson equation onto the transition basis
+   $\xi_{ia}^*(\mathbf r)$.** The result is the same
+   block-matrix structure as \eqref{eq:ch-12-casida}, with the
+   same coupling matrix $\mathbf K$ defined in
+   \eqref{eq:ch-12-casida-K}.
+2. **Insert the BSE kernel $K^\text{BSE}$ in place of
+   $K^\text{TDDFT} = 2 K$.** In the BSE, the kernel is
+   the *bare Coulomb* plus the *electron–hole exchange* minus
+   the *electron–hole direct* (see the $f_\text{Hxc}$ of
+   section 12.4.3 for the formal definition); we omit the
+   factor of 2 because the BSE is a *two-particle* response
+   function, not a *density* response.
+3. **Read off the Casida equation** (the $2N_\text{trans} \times
+   2N_\text{trans}$ matrix equation below) with the
+   appropriate $K_{ia, jb}$.
+
+The **Casida equation** is therefore the same form as in
+\eqref{eq:ch-12-casida}:
 
 \begin{equation}
 \label{eq:ch-12-09-casida}
