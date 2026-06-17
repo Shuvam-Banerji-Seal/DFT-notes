@@ -2152,8 +2152,9 @@ bulk–boundary correspondence — using the modern textbook
 language. The purpose of this section is to *return to the
 sources*: the five papers that defined the field, in their
 original notation, with citations to the *page* of the original
-publication so the reader can verify the derivation in
-context. The five papers are:
+publication (each entry below has the page on which the
+load-bearing equation is derived, so the reader can pull the
+PDF and check the algebra in context). The five papers are:
 
 1. **Kane, C. L.; Mele, E. J.** "Z$_2$ Topological Order and
    the Quantum Spin Hall Effect." *Phys. Rev. Lett.*

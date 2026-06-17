@@ -1335,8 +1335,12 @@ is computed.  Determinants with a coupling above a
 $\epsilon$ is the *control parameter*: $\epsilon = 0$
 gives FCI, $\epsilon = \infty$ gives HF.  HBCI is
 *fast* (linear in the number of external determinants,
-with a small constant) and *parallelises* trivially.
-For $\epsilon \sim 10^{-5}\,E_h$, the HBCI
+with a small constant) and *parallelises without
+inter-process communication* — each worker thread iterates
+its own subset of external determinants and the resulting
+$\Phi_I$ amplitudes are reduced at the end of each macro-iteration
+(a single MPI_Allreduce on the coefficient vector of
+size $\le 10^4$).  For $\epsilon \sim 10^{-5}\,E_h$, the HBCI
 perturbative correction is *converged* to within a few
 $\mu E_h$ of FCI.
 

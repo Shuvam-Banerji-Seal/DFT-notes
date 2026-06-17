@@ -1626,7 +1626,10 @@ The KS equations of section 4.2 require a *local* multiplicative
 potential $v_\text{xc}(\mathbf r)$.  For LDA, GGA, and other
 density-only functionals, $v_\text{xc}(\mathbf r) = \delta E_\text{xc}
 / \delta \rho(\mathbf r)$ is a local function of $\rho$ and is
-straightforward to evaluate.  For *orbital-dependent* functionals —
+evaluated by differentiating the analytic form
+$E_\text{xc}^\text{LDA}[\rho] = \int \rho(\mathbf r) \varepsilon_\text{xc}(\rho(\mathbf r))\, d\mathbf r$,
+which gives $v_\text{xc}^\text{LDA}(\mathbf r) = \varepsilon_\text{xc}(\rho) +
+\rho\, d\varepsilon_\text{xc}/d\rho$.  For *orbital-dependent* functionals —
 exact exchange, MP2, RPA, DFT+$U$ — the functional derivative is no
 longer a local function of $\rho$, and the inversion
 $\delta E_\text{xc} / \delta \rho(\mathbf r)$ is a non-trivial integral
@@ -2867,8 +2870,9 @@ is purely virtual, and the matrix element is zero.  In a finite
 basis, the basis-derivative has components inside the basis, and
 the Pulay term is non-zero.  In a plane-wave basis the basis
 functions are *independent* of $\mathbf R_I$, so
-$\partial \chi_\mu/\partial \mathbf R_I = 0$ and the Pulay term
-vanishes trivially.
+$\partial \chi_\mu/\partial \mathbf R_I = 0$ (each plane wave
+$e^{i\mathbf G \cdot \mathbf r}$ has no $\mathbf R_I$ dependence),
+and the Pulay term vanishes.
 
 $\blacksquare$
 </details>

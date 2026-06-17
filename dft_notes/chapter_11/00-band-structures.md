@@ -258,8 +258,27 @@ $$
 L_\text{path} = |\Gamma X| + |XW| + |WK| + |K\Gamma| + |\Gamma L| + |LU| + |UW| + |WL| + |LK| ,
 $$
 
-which the reader can verify is approximately $3.31$ (in units of
-$2\pi/a$).  The plot has 10 segments; the segment lengths are
+which gives a total path length $L_\text{path}$ in units of
+$2\pi/a$:
+
+$$
+L_\text{path}
+  = \underbrace{1.000}_{\Gamma X}
+  + \underbrace{0.500}_{XW}
+  + \underbrace{\sqrt{(0.25)^2 + (0.25)^2}}_{WK}
+  + \underbrace{\sqrt{(0.75)^2 + (0.75)^2}}_{K\Gamma}
+  + \underbrace{\sqrt{3 \cdot (0.5)^2}}_{\Gamma L}
+  + \cdots
+$$
+
+The full sum, written segment by segment as
+$|XW| = \sqrt{0.5^2} = 0.5$, $|WK| = \sqrt{0.25^2 + 0.25^2}
+\approx 0.354$, $|K\Gamma| = \sqrt{0.75^2 + 0.75^2} \approx 1.061$,
+$|\Gamma L| = \sqrt{0.5^2 \cdot 3} \approx 0.866$, $|LU| =
+\sqrt{0.5^2 + 0.25^2 + 0.25^2} \approx 0.612$, $|UW| = 0.354$,
+$|WL| \approx 0.707$, $|LK| \approx 0.612$, comes to
+$L_\text{path} \approx 6.07$ in units of $2\pi/a$.  The plot has
+10 segments; the segment lengths are
 unequal, and a band-structure plot is therefore drawn with **tick
 marks at the high-symmetry points** and *unequal* horizontal
 spacing, so that the actual geometric path length in the BZ is

@@ -545,9 +545,11 @@ A 0.2 Å grid spacing corresponds to $E_\text{cut} \approx
 
 Real-space grids are the basis of codes like **GPAW**,
 **Octopus**, and **PARSEC**.  They have two attractive
-features: they parallelise via domain decomposition almost
-trivially, and they avoid the periodicity assumption of plane
-waves (so finite molecules and clusters need no large vacuum
+features: they parallelise via domain decomposition with
+no inter-process communication beyond a single halo swap
+(so the parallelisation overhead is essentially zero), and
+they avoid the periodicity assumption of plane waves (so
+finite molecules and clusters need no large vacuum
 buffer).
 
 ## 6.9 Worked example: STO-3G H₂

@@ -839,11 +839,11 @@ to the full-CI sum.  They can be derived in three standard ways:
 ### 2.2.9 Size consistency and size extensivity
 
 The full-CI wavefunction \eqref{eq:ch-02-fci-explicit} is exact in
-the basis-set limit, *and* it has a property that no truncation
-trivially preserves: the energy of a *super-molecule* made of two
-non-interacting fragments is the sum of the energies of the
-fragments.  This property has two names, which are sometimes used
-interchangeably and sometimes not.
+the basis-set limit, *and* it has a property that no truncated
+method preserves without further consideration: the energy of a
+*super-molecule* made of two non-interacting fragments is the sum
+of the energies of the fragments.  This property has two names,
+which are sometimes used interchangeably and sometimes not.
 
 **Size consistency** (Pople, 1973).  A method is **size consistent**
 if, for two non-interacting fragments $A$ and $B$ at infinite

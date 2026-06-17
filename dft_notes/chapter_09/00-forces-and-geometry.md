@@ -444,8 +444,11 @@ equation is identically zero in the subspace spanned by the basis;
 ([chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) §6.7) and
 real-space grids ([chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) §6.8)
 do not depend on the nuclear positions.  Therefore
-$\partial\chi_\mu/\partial\mathbf R_I = 0$ for every $\mu$, and
-\eqref{eq:ch-09-pulay-derivation} is zero *by inspection*.  In a
+$\partial\chi_\mu/\partial\mathbf R_I = 0$ for every $\mu$
+(plane waves $e^{i\mathbf G \cdot \mathbf r}$ have no $\mathbf R_I$
+dependence, and real-space grid points $\mathbf r_i$ are fixed in
+the lab frame), and every term in the sum over $\mu$ in
+\eqref{eq:ch-09-pulay-derivation} vanishes.  In a
 plane-wave code the force is computed from
 \eqref{eq:ch-09-force-nucleus} alone.  This is one of the main
 reasons plane waves are the workhorse of geometry optimisation
@@ -1351,12 +1354,17 @@ The strain derivative of a position-space operator is
 \end{equation}
 
 so the strain derivative of the kinetic operator is
-$-\tfrac{1}{2} \partial^2 / \partial r_\alpha \partial r_\beta$,
+$-\tfrac{1}{2} \partial^2 / \partial r_\alpha \partial r_\beta$
+(from $\partial_\epsilon (-\tfrac{1}{2}\nabla^2) =
+-\tfrac{1}{2}\, r_\beta\, \partial_\alpha \nabla^2 - \tfrac{1}{2}\,
+\partial_\alpha (r_\beta \nabla^2) = -\partial_\alpha \partial_\beta$
+after commuting the derivatives and using the chain rule on the
+strained coordinates),
 and the strain derivative of the external potential is
 $\sum_I Z_I\, r_{I\beta}\, \partial v_\text{ext}(\mathbf r) / \partial r_{I\alpha}$
-(with a sign from the sign convention in the Hamiltonian).  The
-result, after some algebra that mirrors the force derivation
-exactly, is
+(with a sign from the sign convention in the Hamiltonian).  Combining
+the two contributions and re-arranging the matrix elements so the
+KS orbitals are projected out gives
 
 \begin{equation}
 \label{eq:ch-09-stress-hf}
