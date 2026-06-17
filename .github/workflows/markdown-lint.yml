@@ -19,3 +19,31 @@ jobs:
 
       - name: Run markdownlint-cli2
         uses: DavidAnson/markdownlint-cli2-action@v23
+
+  no-summaries:
+    name: No-summaries grep
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Run the no-summaries grep
+        run: |
+          set -e
+          # The "no-summaries" rule from agents.md §"The 'no-summaries,
+          # every step explicit' rule". The list is maintained in
+          # agents.md; if you add a new banned phrase, add it there
+          # AND to the regex below.
+          PATTERN='by inspection|after some algebra|it can be shown|straightforward to evaluate|by a similar argument|leaves as an exercise|after some manipulation|it is easy to verify|trivially|analogously,|a straightforward manipulation|omitted for brevity|we do not show the details here|the reader can verify|as a quick check|one can verify|the result follows from|as the reader can check|we omit the details|it is left as|left to the reader|an exercise for the reader|details are left|for the interested reader|see the original paper for details|we refer the reader to'
+          # The grep is restricted to the chapter MD files. The
+          # banned-phrase list is allowed in agents.md itself, design.md
+          # (which is linter-ignored), and the cited-literature sections
+          # (which quote the original papers, including their
+          # omissions).
+          if grep -nE "$PATTERN" dft_notes/chapter_*/00-*.md; then
+            echo ""
+            echo "FAIL: Banned 'summarise-and-skip' phrases found."
+            echo "See agents.md §'The no-summaries, every step explicit rule'."
+            exit 1
+          fi
+          echo "OK: no banned phrases found"
