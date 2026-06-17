@@ -1052,6 +1052,166 @@ linear-response machinery.
 
 ---
 
+## 11. Modern DFT+DMFT (the LDA+DMFT formalism and solvers)
+
+The papers that built the *machinery* used in production
+LDA+DMFT codes. Cited in [chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }}) §13.10.
+
+### 11.1 Kotliar, Savrasov, Haule, Oudovenko, Parcollet & Marianetti (2006) — the standard review
+
+**Kotliar, G.; Savrasov, S. Y.; Haule, K.; Oudovenko, V. S.; Parcollet, O.; Marianetti, C.** *Electronic structure calculations with dynamical mean-field theory: A review of the LDA+DMFT approach*. **Reviews of Modern Physics** **2006**, *78* (3), 865–951.
+DOI: [10.1103/RevModPhys.78.865](https://doi.org/10.1103/RevModPhys.78.865).
+URL: <https://link.aps.org/doi/10.1103/RevModPhys.78.865>.
+
+The 87-page review that defined the modern LDA+DMFT formalism.
+Covers the Wannier projection, the Hubbard Hamiltonian, the
+double-counting correction, the Hirsch–Fye solver, and the
+applications to $\alpha$-Mn, $\gamma$-Mn, $\delta$-Pu, and
+the 3$d$ ferromagnets. Equation numbers in chapter 13 §13.10.1
+refer to this review.
+
+### 11.2 Haule (2007) — the CT-HYB solver
+
+**Haule, K.** *Quantum Monte Carlo Impurity Solver for Cluster DMFT and Electronic Structure Calculations in Adjustable Base*. **Physical Review B** **2007**, *75* (15), 155113.
+DOI: [10.1103/PhysRevB.75.155113](https://doi.org/10.1103/PhysRevB.75.155113).
+URL: <https://link.aps.org/doi/10.1103/PhysRevB.75.155113>.
+
+The continuous-time quantum Monte Carlo impurity solver that
+is the workhorse of modern LDA+DMFT. Replaces the older
+Hirsch–Fye auxiliary-field QMC and gives a continuous-time,
+no-$\Delta\tau$ algorithm. The partition function is
+expanded in powers of the bath hybridisation $V$.
+
+### 11.3 Werner, Comanac, de' Medici, Troyer & Millis (2006) — the original CT-HYB
+
+**Werner, P.; Comanac, A.; de' Medici, L.; Troyer, M.; Millis, A. J.** *Continuous-Time Solver for Quantum Impurity Models*. **Physical Review Letters** **2006**, *97* (7), 076405.
+DOI: [10.1103/PhysRevLett.97.076405](https://doi.org/10.1103/PhysRevLett.97.076405).
+URL: <https://link.aps.org/doi/10.1103/PhysRevLett.97.076405>.
+
+The first CT-HYB paper, published simultaneously with Haule
+2007. Slightly less general than the Haule framework but
+introduces the key idea of the stochastic series expansion
+in the bath hybridisation.
+
+### 11.4 Haule, Yee & Kim (2010) — the full-potential LDA+DMFT and the force formula
+
+**Haule, K.; Yee, C.-H.; Kim, K.** *Dynamical mean-field theory within the full-potential methods: Electronic structure of CeIrIn$_5$, CeCoIn$_5$, and CeRhIn$_5$*. **Physical Review B** **2010**, *81* (19), 195107.
+DOI: [10.1103/PhysRevB.81.195107](https://doi.org/10.1103/PhysRevB.81.195107).
+URL: <https://link.aps.org/doi/10.1103/PhysRevB.81.195107>.
+
+The first full-potential LDA+DMFT implementation (no
+approximations to the potential shape). Derives the
+DFT+DMFT force formula (Eq. 12 of this paper, cited in
+chapter 13 §13.10.1) which is required for
+geometry optimisation and molecular dynamics.
+
+### 11.5 Haule & Birol (2015) — the stationary free-energy functional
+
+**Haule, K.; Birol, T.** *Free Energy from Stationary Implementation of the DFT+DMFT*. **Physical Review Letters** **2015**, *115* (25), 256402.
+DOI: [10.1103/PhysRevLett.115.256402](https://doi.org/10.1103/PhysRevLett.115.256402).
+URL: <https://link.aps.org/doi/10.1103/PhysRevLett.115.256402>.
+
+The stationary free-energy functional (Eq. 1 of this paper)
+that makes the DFT+DMFT forces well-defined. Solves a
+long-standing problem in the formalism: the "naïve" energy
+$E[\rho, G]$ is not stationary with respect to the
+self-energy, so the Hellmann–Feynman theorem does not apply.
+
+### 11.6 Rubtsov, Savkin & Lichtenstein (2005) — the weak-coupling CT-INT solver
+
+**Rubtsov, A. N.; Savkin, V. V.; Lichtenstein, A. I.** *Continuous-time quantum Monte Carlo method for fermions*. **Physical Review B** **2005**, *72* (3), 035122.
+DOI: [10.1103/PhysRevB.72.035122](https://doi.org/10.1103/PhysRevB.72.035122).
+URL: <https://link.aps.org/doi/10.1103/PhysRevB.72.035122>.
+
+The weak-coupling CT-INT solver. Complementary to CT-HYB:
+works well at small $U$ and poorly at large $U$.
+
+### 11.7 Lichtenstein & Katsnelson (1998) — the original LDA+DMFT
+
+**Lichtenstein, A. I.; Katsnelson, M. I.** *Ab initio calculations of the electronic structure of strongly correlated systems: LDA+U+DMFT*. **Physical Review B** **1998**, *57* (12), 6884–6895.
+DOI: [10.1103/PhysRevB.57.6884](https://doi.org/10.1103/PhysRevB.57.6884).
+URL: <https://link.aps.org/doi/10.1103/PhysRevB.57.6884>.
+
+The original "LDA+U+DMFT" paper that combined the
+Liechtenstein 1995 DFT+U with the Metzner–Vollhardt DMFT
+self-consistency. Introduces the Wannier projection and the
+double-counting correction.
+
+### 11.8 Czyzyk & Sawatzky (1994) — the around-mean-field double counting
+
+**Czyzyk, M. T.; Sawatzky, G. A.** *Local-density functional and on-site correlations: The electronic structure of La$_2$CuO$_4$ and LaCuO$_3$*. **Physical Review B** **1994**, *49* (20), 14211–14228.
+DOI: [10.1103/PhysRevB.49.14211](https://doi.org/10.1103/PhysRevB.49.14211).
+URL: <https://link.aps.org/doi/10.1103/PhysRevB.49.14211>.
+
+The around-mean-field (AMF) double-counting formula (Eq. 17
+of this paper, cited in chapter 13 §13.10.1). The alternative
+to the FLL double-counting, preferred for metallic systems.
+
+### 11.9 Yin, Haule & Kotliar (2011) — Hund's metals
+
+**Yin, Z. P.; Haule, K.; Kotliar, G.** *Kinetic frustration and the nature of the magnetic and paramagnetic states in iron pnictides and iron chalcogenides*. **Nature Materials** **2011**, *10*, 932–935.
+DOI: [10.1038/nmat3120](https://doi.org/10.1038/nmat3120).
+URL: <https://www.nature.com/articles/nmat3120>.
+
+The "Hund's metal" classification of the iron pnictides from
+DFT+DMFT. The correlations in these materials are driven by
+the Hund's-rule coupling $J_H$, not by the Hubbard $U$.
+
+### 11.10 Hirsch & Fye (1986) — the older auxiliary-field solver
+
+**Hirsch, J. E.; Fye, R. M.** *Monte Carlo Method for Magnetic Impurities in Metals*. **Physical Review Letters** **1986**, *56* (23), 2521–2524.
+DOI: [10.1103/PhysRevLett.56.2521](https://doi.org/10.1103/PhysRevLett.56.2521).
+URL: <https://link.aps.org/doi/10.1103/PhysRevLett.56.2521>.
+
+The Hirsch–Fye auxiliary-field QMC impurity solver. The old
+workhorse, now superseded by CT-HYB.
+
+### 11.11 Marzari & Vanderbilt (1997) — maximally-localised Wannier functions
+
+**Marzari, N.; Vanderbilt, D.** *Maximally localized generalized Wannier functions for composite energy bands*. **Physical Review B** **1997**, *56* (20), 12847–12865.
+DOI: [10.1103/PhysRevB.56.12847](https://doi.org/10.1103/PhysRevB.56.12847).
+URL: <https://link.aps.org/doi/10.1103/PhysRevB.56.12847>.
+
+The maximally-localised Wannier function construction used
+in Step 2 of the LDA+DMFT loop.
+
+### 11.12 Biermann, Aryasetiawan & Georges (2003) — the first GW+DMFT
+
+**Biermann, S.; Aryasetiawan, F.; Georges, A.** *First-principles calculation of the electronic structure of the strongly correlated system $\alpha$-MnS*. **Physical Review Letters** **2003**, *90* (8), 086402.
+DOI: [10.1103/PhysRevLett.90.086402](https://doi.org/10.1103/PhysRevLett.90.086402).
+URL: <https://link.aps.org/doi/10.1103/PhysRevLett.90.086402>.
+
+The first GW+DMFT calculation. Captures both the non-local
+screening (from GW) and the local strong correlations (from DMFT).
+
+### 11.13 Rohringer et al. (2018) — diagrammatic extensions of DMFT
+
+**Rohringer, G.; Hafermann, H.; Toschi, A.; Katanin, A. A.; Antipov, A. E.; Buser, M. I.; Tomczak, J. M.; Thunström, P.; Held, K.; Lombardo, L.; Valli, R.; Toschi, A.; Held, K.** *Diagrammatic routes to non-local correlations beyond dynamical mean field theory*. **Reviews of Modern Physics** **2018**, *90* (2), 025003.
+DOI: [10.1103/RevModPhys.90.025003](https://doi.org/10.1103/RevModPhys.90.025003).
+URL: <https://link.aps.org/doi/10.1103/RevModPhys.90.025003>.
+
+The modern review of diagrammatic extensions of DMFT (DCA,
+CDMFT, dual fermion, etc.). Cited in chapter 13 §13.10.5.
+
+### 11.14 Freericks, Turkowski & Zlatić (2006) — non-equilibrium DMFT
+
+**Freericks, J. K.; Turkowski, V. M.; Zlatić, V.** *Nonequilibrium dynamical mean-field theory*. **Physical Review Letters** **2006**, *97* (26), 266408.
+DOI: [10.1103/PhysRevLett.97.266408](https://doi.org/10.1103/PhysRevLett.97.266408).
+URL: <https://link.aps.org/doi/10.1103/PhysRevLett.97.266408>.
+
+The Keldysh-DMFT formalism for non-equilibrium. Cited in
+chapter 13 §13.10.5.
+
+### 11.15 Held (2000) — the LDA+DMFT energy formula
+
+**Held, K.; Nekrasov, I. A.; Keller, G.; Eyert, V.; Oudovenko, V. S.; Kunes, J.; McMahan, A. K.; Scalettar, R. T.; Albers, R. C.; Anisimov, V. I.; Lichtenstein, A. I.** *Mott transition in paramagnetic V$_2$O$_3$ within LDA+DMFT*. **2000**, lecture notes and the standard reference for the LDA+DMFT total energy formula.
+URL: <https://arxiv.org/abs/cond-mat/0112078>.
+
+The Mott transition in V$_2$O$_3$ as the textbook example
+of the LDA+DMFT methodology. The 2006 RMP review by Kotliar
+et al. above superseded this for the formalism.
+
+---
 ## 10. Standard textbooks
 
 The five monographs that should sit on the shelf of anyone

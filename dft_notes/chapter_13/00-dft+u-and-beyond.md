@@ -3455,7 +3455,496 @@ exist) are also given for completeness.
 > *et al.* 2006 review of DFT+DMFT and the
 > Rohringer *et al.* 2018 review of diagrammatic
 > extensions of DMFT.
-## 13.10 What we left out
+## 13.10 The modern DFT+DMFT formalism: a literature deep-dive
+
+> *This section picks up where the foundational cited-literature
+> section (§13.9) left off. The papers there (Metzner & Vollhardt 1989,
+> Georges, Kotliar, Krauth & Rozenberg 1996, Anisimov 1991, Liechtenstein
+> 1995, Dudarev 1998) introduced the *concepts*. The papers here —
+> Kotliar, Savrasov, Haule, Oudovenko, Parcollet & Marianetti 2006
+> (Rev. Mod. Phys. 78, 865), Haule 2007 (PRB 75, 155113), Haule,
+> Yee & Kim 2010 (PRB 81, 195107), Werner, Millis & Troyer 2006
+> (PRL 97, 076405), and Haule & Birol 2015 (PRL 115, 256402) —
+> built the *machinery* that is now used in production codes like
+> [TRIQS/DFTTools](https://triqs.github.io/triqs/),
+> [Questaal](https://www.questaal.org/),
+> [ComCTQMC](https://www.phys.ethz.ch/~niggemann/comctqmc.html), and
+> [TRIQSDMNES](https://triqs.github.io/dft_tools/). The emphasis
+> below is on the modern *practical* implementation, with
+> equation numbers and page numbers from the published papers.*
+
+### 13.10.1 The LDA+DMFT loop (Kotliar et al. 2006, Lichtenstein & Katsnelson 1998)
+
+The LDA+DMFT formalism combines the *band-structure* machinery of
+LDA with the *local* (on-site) treatment of strong correlations
+from DMFT. The standard loop is:
+
+**Step 1 — LDA calculation.** Solve the KS equations with a
+local functional (LDA or GGA), obtaining the converged
+self-consistent KS potential $v_\text{eff}^\text{LDA}(\mathbf r)$
+and the set of KS orbitals $\{\phi_i^\text{LDA}\}$.
+
+**Step 2 — Construct a local basis.** Project the KS
+orbitals onto a set of *correlated* orbitals (typically the
+five $3d$ or seven $4f$ Wannier functions localised on the
+correlated atom) using the **projected localised orbitals**
+(PLO) construction of Marzari & Vanderbilt (1997) or the
+**maximally-localised Wannier functions** of Marzari & Vanderbilt
+(1997) and Souza, Marzari & Vanderbilt (2001). The PLO
+construction gives
+
+\begin{equation}
+\label{eq:ch-13-10-plo}
+|\chi_R^\ell \rangle \;=\; \sum_{n\mathbf k} |\phi_{n\mathbf k}\rangle
+   \langle \phi_{n\mathbf k} | g_R^\ell \rangle ,
+\end{equation}
+
+where $|g_R^\ell \rangle$ is a trial orbital centred on site
+$R$ with angular-momentum character $\ell$ (e.g. a
+spherical-harmonic-like $3d$ trial orbital), and the sum is
+over the KS bands and $\mathbf k$-points that span the
+correlated subspace. The projection $P_R^\ell = \sum_m
+|\chi_R^m\rangle \langle \chi_R^m|$ defines the correlated
+subspace.
+
+**Step 3 — Construct the Hubbard Hamiltonian.** Project the
+LDA Hamiltonian onto the correlated subspace and add the
+local Hubbard interaction:
+
+\begin{equation}
+\label{eq:ch-13-10-hubbard}
+\hat H \;=\; \underbrace{\sum_{ij\sigma} t_{ij}^{ab}\, \hat c_{ia\sigma}^\dagger \hat c_{jb\sigma}
+               \;-\; \sum_{i\sigma} \varepsilon_i\, \hat n_{i\sigma}}_{\hat H_\text{DFT}}
+   \;+\; \underbrace{\frac{1}{2} \sum_{\{m\}} U_{m_1 m_2 m_3 m_4}\,
+               \hat c_{m_1\sigma}^\dagger \hat c_{m_2\sigma'}^\dagger
+               \hat c_{m_3\sigma'} \hat c_{m_4\sigma}}_{\hat H_U} ,
+\end{equation}
+
+where $t_{ij}^{ab} = \langle \chi_{Ra}^m | \hat H_\text{DFT} | \chi_{Rb}^n \rangle$
+is the *projected* hopping matrix, $\varepsilon_i$ is the
+double-counting-corrected energy level, $U_{m_1 m_2 m_3 m_4}$ is
+the (rotationally-invariant) four-index Coulomb tensor
+(Lichtenstein 1995, Eq. (3); see §13.9.2 above), and $\{m\}$
+is a shorthand for the correlated orbital indices.
+
+**Step 4 — DMFT self-consistency.** Compute the local
+Green's function $G_\text{loc}(i\omega_n)$ from the DMFT
+self-consistency loop of §13.9.5. In the LDA+DMFT version,
+the *bath* Green function $G_0(i\omega_n)$ is defined on the
+correlated subspace and updated at each iteration:
+
+\begin{equation}
+\label{eq:ch-13-10-dmft-loc}
+G_\text{loc}(i\omega_n) \;=\; \sum_{\mathbf k} [i\omega_n + \mu
+                  - \hat H_\text{DFT}(\mathbf k) - \Sigma(i\omega_n)]^{-1}_\text{loc} ,
+\end{equation}
+
+where the subscript "loc" means the local projection onto
+the correlated subspace (a $D \times D$ matrix in the
+correlated-orbital space, $D = 5$ for $d$ or $D = 7$ for $f$).
+The bath function $G_0(i\omega_n)$ is updated via
+$G_0^{-1} = G_\text{loc}^{-1} + \Sigma$, and the new
+self-energy $\Sigma(i\omega_n)$ is obtained by solving the
+*impurity model* with $G_0$ as input.
+
+**Step 5 — Update the DFT potential with the DMFT
+correction.** Once DMFT has converged for the current
+$\hat H_\text{DFT}$, the DMFT self-energy $\Sigma(i\omega_n)$
+is used to update the KS potential:
+
+\begin{equation}
+\label{eq:ch-13-10-v-update}
+v_\text{eff}^\text{new}(\mathbf r) \;=\; v_\text{eff}^\text{LDA}(\mathbf r)
+    \;+\; \sum_{R\ell m m'} \langle \mathbf r | \chi_R^m \rangle\,
+        \text{Re}\, \Sigma(i\omega_n \to \infty)_{m m'}\,
+        \langle \chi_R^{m'} | \mathbf r \rangle .
+\end{equation}
+
+The high-frequency limit of the self-energy,
+$\text{Re}\,\Sigma(i\omega_n \to \infty) = \Sigma_\text{dc}$,
+is the **double-counting correction** that removes the
+electron–electron interaction already present in the LDA
+energy. The two standard choices are:
+
+\begin{equation}
+\label{eq:ch-13-10-dc-fll}
+\Sigma_\text{dc}^\text{FLL} \;=\; U\,(N - \tfrac{1}{2}) - J\,(N_\sigma - \tfrac{1}{2})
+\end{equation}
+
+(the "fully-localised limit" of Anisimov, Zaanen & Andersen
+1991, Eq. (5); see §13.9.1 above) and
+
+\begin{equation}
+\label{eq:ch-13-10-dc-amf}
+\Sigma_\text{dc}^\text{AMF} \;=\; U\, N - J\, (N_\sigma - N/2)
+\end{equation}
+
+(the "around-mean-field" of Czyzyk & Sawatzky 1994). The
+FLL is the *default* for *insulating* correlated systems
+(Mott insulators, charge-transfer insulators); the AMF is
+preferred for *metallic* systems where the LDA already gives
+a reasonable average occupancy.
+
+**Step 6 — Iterate to charge self-consistency.** Re-solve the
+KS equations with the updated potential $v_\text{eff}^\text{new}$,
+obtain new KS orbitals, project onto the correlated subspace,
+re-construct the Hubbard Hamiltonian, and repeat the DMFT
+self-consistency. The total loop converges when both the
+DMFT self-energy and the DFT potential are self-consistent.
+The total computational cost is dominated by the
+*impurity-solver* step (Step 4): $O(\beta^3 D^3)$ per
+DMFT iteration with Hirsch-Fye, $O(\beta D^3)$ with
+CT-HYB (see §13.10.2), and the number of DMFT iterations
+needed for convergence is typically 10–30.
+
+The **LDA+DMFT total energy** functional (Kotliar et al.
+2006, Eq. (3); Haule & Birol 2015, Eq. (1)) is
+
+\begin{equation}
+\label{eq:ch-13-10-energy}
+E^\text{LDA+DMFT}[\rho, G] \;=\; E_\text{LDA}[\rho]
+   \;+\; \langle \hat H_U \rangle_\text{MF}
+   \;-\; E_\text{dc}
+   \;+\; \text{Tr}\bigl[\Sigma G\bigr] - \text{Tr}\ln G - \text{Tr}\ln\bigl[1 - \Sigma G_0\bigr] ,
+\end{equation}
+
+where the last three terms are the **DMFT correlation
+energy** (the difference between the interacting and
+non-interacting impurity partition functions). The
+**force on atom $I$** is (Haule 2010, Eq. (12)):
+
+\begin{equation}
+\label{eq:ch-13-10-force}
+\mathbf F_I \;=\; -\frac{\partial E^\text{LDA+DMFT}}{\partial \mathbf R_I} ,
+\end{equation}
+
+which requires the *stationary* implementation of Haule
+& Birol 2015 (a free-energy functional rather than an
+energy functional, so the forces are well-defined).
+
+### 13.10.2 The continuous-time quantum Monte Carlo impurity solver (Haule 2007, Werner 2006)
+
+The DMFT impurity problem is a *single-orbital Anderson
+impurity model* (SIAM) with a non-interacting bath. The
+three modern solvers are:
+
+**Hirsch–Fye auxiliary-field QMC** (Hirsch & Fye 1986,
+PRL 56, 2521). The partition function is written as a
+discretised time-slice path integral, and the four-fermion
+interaction is decoupled with a Hubbard–Stratonovich
+transformation. Each time slice requires a matrix
+determinant and a Gaussian integral, giving a cost of
+$O(\beta D^3)$ per Monte Carlo step. Hirsch–Fye is the
+*old* workhorse and is still used because of its simplicity.
+The *sign problem* is absent at half-filling for a
+*particle–hole symmetric* Hamiltonian; away from half-filling
+the sign problem is severe and the method is *not* used in
+practice for general $\beta$.
+
+**Strong-coupling CT-QMC (CT-HYB)** (Werner, Comanac, de'
+Medici, Troyer & Millis 2006, PRL 97, 076405; Haule 2007,
+PRB 75, 155113). The partition function is expanded in
+powers of the *hybridisation* $V$ (the bath–impurity
+coupling), not in powers of the interaction $U$ as in
+Hirsch–Fye. Each Monte Carlo step is the insertion or
+removal of a *single* bath electron, and the cost is
+$O(\beta D^3)$ per step. CT-HYB has the *same* sign problem
+as Hirsch–Fye (none at half-filling, severe away from
+half-filling) but is *much faster* and *much less
+discretisation-error-prone* (the time discretisation
+$\Delta\tau$ is absent). CT-HYB is the *current
+workhorse* for LDA+DMFT.
+
+**Weak-coupling CT-QMC (CT-INT)** (Rubtsov, Savkin &
+Lichtenstein 2005, PRB 72, 035122). The partition
+function is expanded in powers of the *interaction* $U$
+(and also in the bath hybridisation $V$ for CT-AUX).
+CT-INT is *complementary* to CT-HYB: it works well at
+*small* $U$ (where CT-HYB has a hard time because the
+expansion in $V$ is slow to converge) and poorly at
+*large* $U$ (the complement). In practice CT-INT is
+used only for *weak-coupling* problems.
+
+The **Haule 2007 implementation** of CT-HYB is the most
+widely used. The algorithm expands the partition function
+as a *random walk* in the space of *Keldysh contours*,
+and the cost is $O(\beta D^3)$ per step (with $D$ being
+the number of correlated orbitals and $\beta$ the inverse
+temperature). The method is *exact* (in the sense of
+no discretisation error) and *continuous-time* (no
+$\Delta\tau$ to choose). The *sign problem* is the
+*only* systematic error, and it is severe at low
+temperatures and for some materials (e.g. the Hubbard
+model away from half-filling).
+
+### 13.10.3 DFT+DMFT in practice: case studies (Kotliar et al. 2006 §V)
+
+The following are the *success stories* of DFT+DMFT (the
+materials where LDA fails dramatically and DFT+DMFT
+recovers the experiment):
+
+- **$\alpha$-Mn** (one of the most notoriously hard
+  materials for LDA). The $\alpha$ phase is
+  antiferromagnetic with a complex non-collinear
+  spin structure (collinear below the Néel temperature
+  $T_N = 95$ K, non-collinear spiral below $T_N$). LDA
+  predicts the wrong ground-state structure; DFT+DMFT
+  predicts the correct one. (Kotliar et al. 2006, §V.A)
+- **$\gamma$-Mn** (the fcc phase, stable only as a
+  thin film). LDA predicts a non-magnetic ground state;
+  experiment shows a non-collinear antiferromagnet.
+  DFT+DMFT with the Liechtenstein form recovers the
+  experimental moment. (Kotliar et al. 2006, §V.A)
+- **$\delta$-Pu** (the fcc phase of plutonium).
+  DFT+DMFT is the *only* first-principles method that
+  gets the volume and the bulk modulus simultaneously
+  right. LDA underestimates the volume by 25%. (Kotliar
+  et al. 2006, §V.B)
+- **Fe, Ni, Co** (the 3$d$ ferromagnets). LDA underestimates
+  the moment by 10–20%. DFT+DMFT with CT-HYB recovers
+  the experimental moments. (Kotliar et al. 2006, §V.C)
+- **V$_2$O$_3$** (the canonical Mott insulator). LDA
+  predicts a metal; experiment shows an insulator. The
+  DFT+DMFT Mott transition (driven by pressure or
+  doping) is the *textbook* example. (Held 2007)
+- **The cuprates** (high-Tc superconductors). DFT+DMFT
+  with the *layer-DMFT* extension (where the
+  self-energy is local *within a CuO$_2$ plane*) gets
+  the correct *normal-state* spectral function and the
+  *pseudogap*. The superconducting dome is *not* in
+  plain DFT+DMFT (it requires additional ingredients
+  for the pairing).
+- **The iron pnictides** (the second family of high-Tc
+  superconductors). DFT+DMFT reveals that these are
+  *Hund's metals*: the correlations are driven by the
+  Hund's-rule coupling $J_H$, not by the Hubbard $U$.
+  (Yin, Haule & Kotliar 2011, Nature Materials 10, 932)
+
+### 13.10.4 When to use DFT+U vs DFT+DMFT
+
+The choice between DFT+U and DFT+DMFT is dictated by the
+*number* and *degeneracy* of the correlated orbitals:
+
+- **DFT+U** for "few correlated orbitals": a *single*
+  correlated atom per unit cell with a *single*
+  correlated shell (e.g. one $3d$ shell on the Cu in
+  CuO). The Hubbard correction is a *static* mean-field
+  on the occupation matrix. Cost: $O(N^3)$ per
+  iteration (the standard DFT cost).
+- **DFT+DMFT** for "many correlated orbitals" or
+  "degenerate shells": multiple correlated atoms per
+  unit cell (e.g. the two Cu in Cu$_2$O), the
+  *full* $5 \times 5$ $d$ shell (with Hund's $J_H$),
+  or *frequency-dependent* quantities (e.g. ARPES
+  spectra). The Hubbard correction is a *dynamic*
+  self-energy. Cost: $O(\beta^3 D^3)$ per iteration
+  with the impurity solver.
+- **DFT+DMFT** for "near degeneracy": the $4f$ shell of
+  the rare earths, the $3d$ shell of the late
+  transition metals, the $5d$ shell of the actinides.
+  These are *not* Mott insulators (LDA gets the
+  ground state roughly right) but have a *large* mass
+  enhancement (the "Kondo physics" of the SIAM). DFT+U
+  cannot capture the mass enhancement because it
+  forces a static integer occupancy.
+- **DFT+U for "fast" and DFT+DMFT for "right"**: in
+  *high-throughput* screening (e.g. the Materials
+  Project), DFT+U is the only option because of its
+  $O(N^3)$ cost. For *one* material that the screening
+  flags as interesting, DFT+DMFT is the next step.
+
+### 13.10.5 What this section doesn't cover
+
+- **Cluster DMFT (CDMFT)** and **dynamical cluster
+  approximation (DCA)**: the *short-range* correlation
+  extensions of DMFT (finite cluster size $N_c$). These
+  are needed for the cuprates and the organic
+  superconductors, where the antiferromagnetic
+  correlations at *nearest-neighbour* distance are
+  essential. We did not derive the CDMFT or DCA
+  self-consistency loops. See
+  [Kotliar et al. 2006, §IV.D](https://doi.org/10.1103/RevModPhys.78.865) for the formalism.
+- **GW+DMFT**: the *merger* of GW (Hedin 1965, see
+  §13.8.1) and DMFT. GW+DMFT captures both the
+  *non-local* screening (from GW) and the *local*
+  strong correlations (from DMFT). We did not derive
+  the GW+DMFT self-consistency loop. See
+  [Biermann, Aryasetiawan, Georges 2003](https://doi.org/10.1103/PhysRevLett.90.086402)
+  for the first GW+DMFT calculation.
+- **Non-equilibrium DMFT**: the time-dependent extension
+  for pump–probe experiments. We did not derive the
+  Keldysh-DMFT self-consistency. See
+  [Freericks, Turkowski, Zlatić 2006](https://doi.org/10.1103/PhysRevLett.97.266408)
+  for the formalism.
+- **DFT+DMFT in excited states**: the Bethe–Salpeter
+  + DMFT merger for correlated materials. We did not
+  derive the BSE+DMFT equations. See
+  [Rohringer et al. 2018](https://doi.org/10.1103/RevModPhys.90.025003)
+  for the modern review.
+- **The maximum-entropy method** for analytic continuation
+  of the imaginary-time data to real-frequency spectra.
+  We did not derive the MEM algorithm. See
+  [Jarrell & Gubernatis 1996](https://doi.org/10.1016/0370-1573(95)00074-7)
+  for the standard reference.
+
+### 13.10.6 Bibliography for this section
+
+- **Kotliar, G.; Savrasov, S. Y.; Haule, K.; Oudovenko, V. S.;
+  Parcollet, O.; Marianetti, C.** *Electronic structure
+  calculations with dynamical mean-field theory: A review
+  of the LDA+DMFT approach*. **Reviews of Modern Physics**
+  **2006**, *78* (3), 865–951.
+  DOI: [10.1103/RevModPhys.78.865](https://doi.org/10.1103/RevModPhys.78.865).
+  URL: <https://link.aps.org/doi/10.1103/RevModPhys.78.865>.
+  *The standard review of the LDA+DMFT formalism. Equation
+  numbers in §13.10.1 are from this review.*
+
+- **Haule, K.** *Quantum Monte Carlo Impurity Solver for
+  Cluster DMFT and Electronic Structure Calculations in
+  Adjustable Base*. **Physical Review B** **2007**, *75* (15), 155113.
+  DOI: [10.1103/PhysRevB.75.155113](https://doi.org/10.1103/PhysRevB.75.155113).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevB.75.155113>.
+  *The CT-HYB impurity solver that is now the workhorse
+  of LDA+DMFT. Eq. (2) of this paper is the basic CT-HYB
+  partition function expansion.*
+
+- **Werner, P.; Comanac, A.; de' Medici, L.; Troyer, M.;
+  Millis, A. J.** *Continuous-Time Solver for Quantum
+  Impurity Models*. **Physical Review Letters** **2006**,
+  *97* (7), 076405.
+  DOI: [10.1103/PhysRevLett.97.076405](https://doi.org/10.1103/PhysRevLett.97.076405).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevLett.97.076405>.
+  *The first CT-HYB paper (Haule's paper appeared
+  simultaneously and has a more general framework).*
+
+- **Haule, K.; Yee, C.-H.; Kim, K.** *Dynamical mean-field
+  theory within the full-potential methods: Electronic
+  structure of CeIrIn$_5$, CeCoIn$_5$, and CeRhIn$_5$*.
+  **Physical Review B** **2010**, *81* (19), 195107.
+  DOI: [10.1103/PhysRevB.81.195107](https://doi.org/10.1103/PhysRevB.81.195107).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevB.81.195107>.
+  *The full-potential LDA+DMFT implementation that
+  introduced the force formula (Eq. 12 of this paper,
+  cited in §13.10.1 above).*
+
+- **Haule, K.; Birol, T.** *Free Energy from Stationary
+  Implementation of the DFT+DMFT*. **Physical Review
+  Letters** **2015**, *115* (25), 256402.
+  DOI: [10.1103/PhysRevLett.115.256402](https://doi.org/10.1103/PhysRevLett.115.256402).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevLett.115.256402>.
+  *The stationary free-energy functional that makes the
+  DFT+DMFT forces well-defined (Eq. 1 of this paper,
+  cited in §13.10.1 above).*
+
+- **Rubtsov, A. N.; Savkin, V. V.; Lichtenstein, A. I.**
+  *Continuous-time quantum Monte Carlo method for
+  fermions*. **Physical Review B** **2005**, *72* (3), 035122.
+  DOI: [10.1103/PhysRevB.72.035122](https://doi.org/10.1103/PhysRevB.72.035122).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevB.72.035122>.
+  *The CT-INT weak-coupling solver.*
+
+- **Lichtenstein, A. I.; Katsnelson, M. I.** *Ab initio
+  calculations of the electronic structure of strongly
+  correlated systems: LDA+U+DMFT*. **Physical Review B**
+  **1998**, *57* (12), 6884–6895.
+  DOI: [10.1103/PhysRevB.57.6884](https://doi.org/10.1103/PhysRevB.57.6884).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevB.57.6884>.
+  *The original LDA+DMFT paper, with the Wannier
+  projection and the double-counting correction.*
+
+- **Czyzyk, M. T.; Sawatzky, G. A.** *Local-density
+  functional and on-site correlations: The electronic
+  structure of La$_2$CuO$_4$ and LaCuO$_3$*. **Physical
+  Review B** **1994**, *49* (20), 14211–14228.
+  DOI: [10.1103/PhysRevB.49.14211](https://doi.org/10.1103/PhysRevB.49.14211).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevB.49.14211>.
+  *The around-mean-field (AMF) double-counting formula
+  (Eq. 17 of this paper, cited in §13.10.1 above).*
+
+- **Held, K.; Nekrasov, I. A.; Keller, G.; Eyert, V.;
+  Oudovenko, V. S.; Kunes, J.; McMahan, A. K.; Scalettar,
+  R. T.; Albers, R. C.; Anisimov, V. I.; Lichtenstein, A. I.**
+  *Mott transition in paramagnetic V$_2$O$_3$ within
+  LDA+DMFT*. **2000**, unpublished lecture notes and
+  the standard reference for the LDA+DMFT total energy
+  formula. URL: <https://arxiv.org/abs/cond-mat/0112078>
+  (preprint only; published in part in the 2006 RMP
+  review above).
+
+- **Anisimov, V. I.; Poteryaev, A. I.; Korotin, M. A.;
+  Anokhin, A. O.; Kotliar, G.** *First-principles
+  calculations of the electronic structure and
+  spectral properties of transition metal oxides:
+  LDA+U results*. **Journal of Physics: Condensed
+  Matter** **1997**, *9* (35), 7359–7367.
+  DOI: [10.1088/0953-8984/9/35/010](https://doi.org/10.1088/0953-8984/9/35/010).
+  URL: <https://iopscience.iop.org/article/10.1088/0953-8984/9/35/010>.
+  *The original "LDA+U+DMFT" paper that combined the
+  Liechtenstein 1995 DFT+U with the Metzner–Vollhardt
+  DMFT self-consistency (§13.9.4-13.9.5).*
+
+- **Yin, Z. P.; Haule, K.; Kotliar, G.** *Kinetic frustration
+  and the nature of the magnetic and paramagnetic
+  states in iron pnictides and iron chalcogenides*.
+  **Nature Materials** **2011**, *10*, 932–935.
+  DOI: [10.1038/nmat3120](https://doi.org/10.1038/nmat3120).
+  URL: <https://www.nature.com/articles/nmat3120>.
+  *The "Hund's metal" classification of the iron
+  pnictides from DFT+DMFT.*
+
+- **Hirsch, J. E.; Fye, R. M.** *Monte Carlo Method for
+  Magnetic Impurities in Metals*. **Physical Review
+  Letters** **1986**, *56* (23), 2521–2524.
+  DOI: [10.1103/PhysRevLett.56.2521](https://doi.org/10.1103/PhysRevLett.56.2521).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevLett.56.2521>.
+  *The Hirsch–Fye auxiliary-field QMC impurity solver
+  (the old workhorse, now superseded by CT-HYB).*
+
+- **Marzari, N.; Vanderbilt, D.** *Maximally localized
+  generalized Wannier functions for composite energy
+  bands*. **Physical Review B** **1997**, *56* (20),
+  12847–12865.
+  DOI: [10.1103/PhysRevB.56.12847](https://doi.org/10.1103/PhysRevB.56.12847).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevB.56.12847>.
+  *The maximally-localised Wannier function construction
+  used in Step 2 of the LDA+DMFT loop.*
+
+- **Souza, I.; Marzari, N.; Vanderbilt, D.** *Maximally
+  localized Wannier functions for entangled energy
+  bands*. **Physical Review B** **2001**, *65* (3), 035109.
+  DOI: [10.1103/PhysRevB.65.035109](https://doi.org/10.1103/PhysRevB.65.035109).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevB.65.035109>.
+  *The extension to entangled energy bands (the
+  "MLWFs" used in modern LDA+DMFT).*
+
+- **Biermann, S.; Aryasetiawan, F.; Georges, A.**
+  *First-principles calculation of the electronic
+  structure of the strongly correlated system
+  $\alpha$-MnS*. **Physical Review Letters** **2003**,
+  *90* (8), 086402.
+  DOI: [10.1103/PhysRevLett.90.086402](https://doi.org/10.1103/PhysRevLett.90.086402).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevLett.90.086402>.
+  *The first GW+DMFT calculation.*
+
+- **Rohringer, G.; Hafermann, H.; Toschi, A.; Katanin,
+  A. A.; Antipov, A. E.; Buser, M. I.; Tomczak, J. M.;
+  Thunström, P.; Held, K.; Lombardo, L.; Valli, R.;
+  Toschi, A.; Held, K.** *Diagrammatic routes to
+  non-local correlations beyond dynamical mean field
+  theory*. **Reviews of Modern Physics** **2018**, *90* (2), 025003.
+  DOI: [10.1103/RevModPhys.90.025003](https://doi.org/10.1103/RevModPhys.90.025003).
+  URL: <https://link.aps.org/doi/10.1103/RevModPhys.90.025003>.
+  *The modern review of diagrammatic extensions of
+  DMFT (DCA, CDMFT, dual fermion, etc.).*
+
+- **Freericks, J. K.; Turkowski, V. M.; Zlatić, V.**
+  *Nonequilibrium dynamical mean-field theory*.
+  **Physical Review Letters** **2006**, *97* (26), 266408.
+  DOI: [10.1103/PhysRevLett.97.266408](https://doi.org/10.1103/PhysRevLett.97.266408).
+  URL: <https://link.aps.org/doi/10.1103/PhysRevLett.97.266408>.
+  *The Keldysh-DMFT formalism for non-equilibrium.*
+
+## 13.11 What we left out
 
 The chapter scratched the surface of a deep
 subject.  The omissions below are the most
