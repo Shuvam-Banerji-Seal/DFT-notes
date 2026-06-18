@@ -46,3 +46,6 @@ vendor/bundle/
 
 # Manim cache (renders go to dft_notes/animations/chapter_NN/videos/)
 media/
+# Python pycache
+**/__pycache__/
+**/*.pyc
