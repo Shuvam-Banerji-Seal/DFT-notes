@@ -47,7 +47,7 @@ of arithmetic.
 > structure constant is $\alpha \approx 1/137.036$. The speed of
 > light in atomic units is $c \approx 137.036$. Hydrogen-like
 > eigenfunctions and energies are those of
-> [Chapter 01, §1.10]({{ "/dft-notes/chapter-01/#110-the-hydrogen-atom" | relative_url }}).
+> [Chapter 01, §1.13]({{ "/dft-notes/chapter-01/#113-the-hydrogen-atom" | relative_url }}).
 > Notation follows the chapters — see the "Notation" callout in
 > Chapter 01 for the conventions.
 

@@ -47,7 +47,7 @@ rather than appendix-pinned.
 > **Status:** these are *sample* notes — real prose, real math,
 > real code, but not yet encyclopaedic.  They exist to exercise
 > every rendering feature of the future e-reader (see
-> [`design.md`]({{ site.baseurl }}/design.md) at the root of
+> [`design.md`]({{ "/dft-notes/design/" | relative_url }}) at the root of
 > the repo).
 
 ## Where to go next

@@ -51,7 +51,7 @@ the [software cheatsheet]({{ "/dft-notes/extras/software-cheatsheet/" | relative
 the [worked examples]({{ "/dft-notes/extras/worked-examples/" | relative_url }}),
 or the [problems anthology]({{ "/dft-notes/extras/problems/" | relative_url }}).
 File an issue against `agent:docs-keeper` (see
-[`agents.md`]({{ "/agents.html" | relative_url }}) for the
+[`agents.md`]({{ "/dft-notes/agents/" | relative_url }}) for the
 contract) if it is still not there.
 
 ## Table of contents

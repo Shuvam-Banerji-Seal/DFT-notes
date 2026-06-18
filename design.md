@@ -1,4 +1,13 @@
 ---
+layout: default
+title: "Design Specification — DFT Notes"
+permalink: /dft-notes/design/
+description: >-
+  The complete design specification for the DFT Notes site:
+  typography, layout, colour palette, Mermaid, MathJax,
+  Jekyll configuration, and the implementation status of every
+  component.
+keywords: "design, typography, layout, color palette, mermaid, mathjax, jekyll, implementation"
 ---
 
 # Design Specification
@@ -1177,3 +1186,6 @@ Python script goes in `dft_notes/python_codes/chapter_NN/`.
 Adding a new component class goes in `assets/css/site.css`.
 Adding a new page-level layout goes in `_layouts/`.  No new
 top-level directories without updating this file.
+
+
+

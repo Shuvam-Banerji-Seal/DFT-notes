@@ -3520,7 +3520,7 @@ electron affinity is *positive* for most anions (the LDA
 predicts that no anion is bound), and the dissociation of
 H$_2^+$ in LDA gives an error of $\sim 1$ eV.  All of these
 failures are *systematically* tied to the SIE.  The
-[Perdew–Zunger self-interaction correction (SIC)]({{ "/dft-notes/extras/03-bibliography/" | relative_url }})
+[Perdew–Zunger self-interaction correction (SIC)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 subtracts the SIE on an orbital-by-orbital basis and
 produces significantly improved atomisation energies and
 ionisation potentials.

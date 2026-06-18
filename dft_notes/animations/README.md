@@ -94,11 +94,11 @@ Each chapter that has an animation gets a short section like:
 
 <figure class="dft-animation">
   <video controls preload="metadata" width="100%"
-         poster="{{ site.baseurl }}/dft-notes/animations/chapter_01/videos/01-particle-in-box.png">
-    <source src="{{ site.baseurl }}/dft-notes/animations/chapter_01/videos/01-particle-in-box.mp4"
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_01/videos/01-particle-in-box.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_01/videos/01-particle-in-box.mp4"
             type="video/mp4">
     Your browser does not support embedded video.
-    <a href="{{ site.baseurl }}/dft-notes/animations/chapter_01/videos/01-particle-in-box.mp4">Download the MP4</a>.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_01/videos/01-particle-in-box.mp4">Download the MP4</a>.
   </video>
   <figcaption>Figure 1.X — ...</figcaption>
 </figure>

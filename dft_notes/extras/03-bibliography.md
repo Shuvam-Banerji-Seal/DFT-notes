@@ -51,7 +51,7 @@ The seven papers below are the theoretical foundation of
 Kohn–Sham DFT. Every chapter of these notes (except chapter 01)
 cites at least one of them.
 
-### 1.1 Hohenberg & Kohn (1964) — Inhomogeneous electron gas
+### 1.1 Hohenberg & Kohn (1964) — Inhomogeneous electron gas {#hk-1964}
 
 **Hohenberg, P.; Kohn, W.** "Inhomogeneous Electron Gas." *Physical
 Review* **1964**, *136* (3B), B864–B871. DOI:
@@ -72,7 +72,7 @@ ground-state density. The 1964 paper proves *existence* of the
 density functional, but does not give a practical algorithm —
 that is what Kohn–Sham 1965 adds.
 
-### 1.2 Kohn & Sham (1965) — Self-consistent equations
+### 1.2 Kohn & Sham (1965) — Self-consistent equations {#ks-1965}
 
 **Kohn, W.; Sham, L. J.** "Self-Consistent Equations Including
 Exchange and Correlation Effects." *Physical Review* **1965**, *140*
@@ -94,7 +94,7 @@ unknown functional, $E_\text{xc}[\rho]$. The 1965 paper also
 introduces the L(S)DA, the local approximation to $E_\text{xc}$
 using the homogeneous electron gas as the local reference.
 
-### 1.3 Sham & Kohn (1966) — Uniform electron gas
+### 1.3 Sham & Kohn (1966) — Uniform electron gas {#sk-1966}
 
 **Sham, L. J.; Kohn, W.** "One-Particle Properties of an
 Inhomogeneous Interacting Electron Gas." *Physical Review* **1966**,
@@ -115,7 +115,7 @@ spin-unpolarised case and demonstrates that the local
 approximation is well defined for the XC energy, the XC
 potential, and the quasiparticle spectrum alike.
 
-### 1.4 Perdew & Zunger (1981) — Self-interaction correction
+### 1.4 Perdew & Zunger (1981) — Self-interaction correction {#pz-1981}
 
 **Perdew, J. P.; Zunger, A.** "Self-interaction correction to
 density-functional approximations for many-electron systems."
@@ -137,7 +137,7 @@ potentials. The paper is also the standard source for the LDA
 parameterisation in terms of $r_s$ using the Ceperley–Alder
 (1980) quantum Monte Carlo data.
 
-### 1.5 Perdew & Wang (1992) — LDA parameterisation
+### 1.5 Perdew & Wang (1992) — LDA parameterisation {#pw-1992}
 
 **Perdew, J. P.; Wang, Y.** "Accurate and simple analytic
 representation of the electron-gas correlation energy." *Physical
@@ -158,7 +158,7 @@ the "LDA" used in essentially every production DFT code from
 1992 onward. The PW92 fit reproduces the QMC data to better
 than 1 mHartree/electron.
 
-### 1.6 Perdew, Burke & Ernzerhof (1996) — PBE
+### 1.6 Perdew, Burke & Ernzerhof (1996) — PBE {#pbe-1996}
 
 **Perdew, J. P.; Burke, K.; Ernzerhof, M.** "Generalized Gradient
 Approximation Made Simple." *Physical Review Letters* **1996**, *77*
@@ -186,7 +186,7 @@ expansion at small $|\nabla\rho|$, and several more. PBE has
 solid-state literature. The 1997 erratum fixes the sign of one
 of the constraints.
 
-### 1.7 Sun, Ruzsinszky & Perdew (2015) — SCAN
+### 1.7 Sun, Ruzsinszky & Perdew (2015) — SCAN {#scan-2015}
 
 **Sun, J.; Ruzsinszky, A.; Perdew, J. P.** "Strongly Constrained and
 Appropriately Normed Semilocal Density Functional." *Physical Review
@@ -218,7 +218,7 @@ The XC zoo — from the local-density approximation through
 hybrids and range-separated hybrids. Each functional below adds
 one more ingredient to the local-density picture.
 
-### 2.1 Vosko, Wilk & Nusair (1980) — VWN
+### 2.1 Vosko, Wilk & Nusair (1980) — VWN {#vwn-1980}
 
 **Vosko, S. H.; Wilk, L.; Nusair, M.** "Accurate spin-dependent
 electron liquid correlation energies for local spin density
@@ -240,7 +240,7 @@ the most-cited LSDA correlation parameterisation in
 chemistry-focused DFT codes. It enters many composite
 functionals (notably B3LYP) as a component.
 
-### 2.2 Becke (1988) — B88 exchange
+### 2.2 Becke (1988) — B88 exchange {#b88-1988}
 
 **Becke, A. D.** "Density-functional exchange-energy approximation
 with correct asymptotic behavior." *Physical Review A* **1988**, *38*
@@ -262,7 +262,7 @@ counterpart to the constraint-based PBE. It is the most widely
 used GGA exchange in chemistry-focused DFT (B88-PW91, B88-LYP,
 B88-P86, B3LYP).
 
-### 2.3 Lee, Yang & Parr (1988) — LYP correlation
+### 2.3 Lee, Yang & Parr (1988) — LYP correlation {#lyp-1988}
 
 **Lee, C.; Yang, W.; Parr, R. G.** "Development of the
 Colle–Salvetti correlation-energy formula into a functional of the
@@ -286,7 +286,7 @@ correlation, not a correction. Combined with B88 exchange it
 gives the famous "BLYP" functional, the default GGA in
 pre-B3LYP computational chemistry.
 
-### 2.4 Becke (1993) — B3LYP hybrid
+### 2.4 Becke (1993) — B3LYP hybrid {#b3lyp-1993}
 
 **Becke, A. D.** "Density-functional thermochemistry. III. The role
 of exact exchange." *The Journal of Chemical Physics* **1993**, *98*
@@ -307,7 +307,7 @@ affinities, and 10 total atomic energies. B3LYP is the default
 of essentially every quantum-chemistry code from 1993 onward
 and remains the workhorse of organic thermochemistry.
 
-### 2.5 Heyd, Scuseria & Ernzerhof (2003) — HSE
+### 2.5 Heyd, Scuseria & Ernzerhof (2003) — HSE {#hse-2003}
 
 **Heyd, J.; Scuseria, G. E.; Ernzerhof, M.** "Hybrid functionals
 based on a screened Coulomb potential." *The Journal of Chemical
@@ -337,6 +337,83 @@ production runs.
 
 ---
 
+### 2.6 Tao, Perdew, Staroverov & Scuseria (2003) — TPSS meta-GGA {#tpss-2003}
+
+**Tao, J.; Perdew, J. P.; Staroverov, V. N.; Scuseria, G. E.**
+"Climbing the Density-Functional Ladder: Nonempirical
+Meta–Generalized Gradient Approximation Designed for Molecules
+and Solids." *Physical Review Letters* **2003**, *91* (14),
+146401. DOI: [10.1103/PhysRevLett.91.146401](https://doi.org/10.1103/PhysRevLett.91.146401).
+URL: <https://link.aps.org/doi/10.1103/PhysRevLett.91.146401>.
+
+Cited in: [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.4
+("Meta-GGAs") and §5.5 ("The Jacob's ladder metaphor").
+
+The first *meta-GGA*: a functional that depends not only on
+$
+ho(\mathbf r)$ and $
+abla
+ho(\mathbf r)$ but also on the
+kinetic-energy density
+$    au(\mathbf r) =     frac{1}{2} \sum_i^    ext{occ} |
+abla\phi_i(\mathbf r)|^2$.
+TPSS satisfies 12 of the 17 known exact constraints on the
+XC functional; SCAN (§1.7 above) satisfies all 17. The TPSS
+exchange enhancement factor is a rational function of $p = |
+abla
+ho|/(2(3\pi^2)^{1/3}
+ho^{4/3})$
+designed to recover the fourth-order gradient expansion at
+small $p$ and the uniform scaling at large $p$.
+
+### 2.7 Perdew & Schmidt (2001) — Jacob's ladder of XC functionals {#jacobsladder-2001}
+
+**Perdew, J. P.; Schmidt, K.** "Jacob's ladder of density
+functional approximations for the exchange-correlation
+energy." In *Density Functional Theory and Its Applications
+to Materials*, edited by V. E. Van Doren, C. P. Alsenoy,
+P. Geerlings (American Institute of Physics, Melville NY,
+2001). DOI: [10.1063/1.1396675]<https://doi.org/10.1063/1.1396675>).
+URL: <https://pubs.aip.org/aip/acp/article-abstract/577/1/1/822036>.
+
+Cited in: [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.1
+("The rungs of Jacob's ladder").
+
+The paper that introduced the "Jacob's ladder" metaphor: each
+successive rung of the DFT ladder (LDA, GGA, meta-GGA, hybrid,
+double-hybrid, ...) adds a new ingredient to the exchange–
+correlation functional and improves the accuracy on standard
+benchmarks. The hierarchy has *no top rung*; the exact XC
+functional is the "last rung" but is unknown in closed form.
+The metaphor is useful pedagogically because each rung can be
+motivated as a *correction* to the rung below.
+
+### 2.8 Herman, Van Dyke & Ortenburger (1969) — Gradient expansion of exchange {#hvo-1969}
+
+**Herman, F.; Van Dyke, J. P.; Ortenburger, I. B.** "Improved
+Statistical Exchange Approximation for Inhomogeneous Many-Electron
+Systems." *Physical Review Letters* **1969**, *22* (16),
+807–811. DOI: [10.1103/PhysRevLett.22.807](https://doi.org/10.1103/PhysRevLett.22.807).
+URL: <https://link.aps.org/doi/10.1103/PhysRevLett.22.807>.
+
+Cited in: [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.2
+("The gradient expansion of the GEA") and §5.3 ("Becke's
+correction to LDA").
+
+The original derivation of the *gradient expansion of exchange*
+(GEA) for the slowly-varying electron gas. The GEA is the
+first non-trivial correction to LDA, including the leading
+$|
+abla
+ho|^2$ term. The GEA is *not* a usable functional
+(it is negative for many atoms and has no lower bound) but it
+is the mathematical starting point for the GGA family. The
+Becke 1988 paper (B88, §2.2) was the first to *tame* the
+gradient expansion by adding an empirical correction designed
+to give the correct $-1/r$ asymptotic behaviour of exchange.
+
+---
+
 ## 3. Many-body methods
 
 The hierarchy of wavefunction-based methods that DFT replaces
@@ -344,7 +421,7 @@ for problems where it is too expensive. The benchmarks and
 calibration points for every DFT functional are computed with
 these methods.
 
-### 3.1 Møller & Plesset (1934) — MP perturbation theory
+### 3.1 Møller & Plesset (1934) — MP perturbation theory {#mp-1934}
 
 **Møller, C.; Plesset, M. S.** "Note on an Approximation Treatment
 for Many-Electron Systems." *Physical Review* **1934**, *46* (7),
@@ -366,7 +443,7 @@ closed-shell organic molecule near equilibrium. The 1934 paper
 contains the full perturbative formalism; the modern MP2
 implementation is in every quantum-chemistry code.
 
-### 3.2 Čížek (1966) — Coupled cluster
+### 3.2 Čížek (1966) — Coupled cluster {#cc-1966}
 
 **Čížek, J.** "On the Correlation Problem in Atomic and Molecular
 Systems. Calculation of Wavefunction Components in Ursell-Type
@@ -390,7 +467,7 @@ CCSDT, …  The connection to nuclear physics and to the
 linked-cluster theorem of Brueckner is explained in the
 original.
 
-### 3.3 Purvis & Bartlett (1982) — CCSD
+### 3.3 Purvis & Bartlett (1982) — CCSD {#ccsd-1982}
 
 **Purvis, G. D., III; Bartlett, R. J.** "A full coupled-cluster
 singles and doubles model: the inclusion of disconnected triples."
@@ -413,7 +490,7 @@ every modern CCSD code uses. CCSD scales as $\mathcal O(K^6)$
 and is the workhorse of small-molecule correlated quantum
 chemistry.
 
-### 3.4 Raghavachari, Trucks, Pople & Head-Gordon (1989) — CCSD(T)
+### 3.4 Raghavachari, Trucks, Pople & Head-Gordon (1989) — CCSD(T) {#ccsdt-1989}
 
 **Raghavachari, K.; Trucks, G. W.; Pople, J. A.; Head-Gordon, M.**
 "A fifth-order perturbation comparison of electron correlation
@@ -448,7 +525,7 @@ ultrasoft extension, and the PAW reformulation. Every
 plane-wave DFT calculation uses one of the four flavours in
 this section.
 
-### 4.1 Hamann, Schlüter & Chiang (1979) — Norm-conserving pseudopotentials
+### 4.1 Hamann, Schlüter & Chiang (1979) — Norm-conserving pseudopotentials {#hsc-1979}
 
 **Hamann, D. R.; Schlüter, M.; Chiang, C.** "Norm-Conserving
 Pseudopotentials." *Physical Review Letters* **1979**, *43* (20),
@@ -474,7 +551,7 @@ in any chemical environment — is the heart of the paper. NC-PPs
 are the workhorse of high-accuracy plane-wave DFT and the
 starting point of every later pseudopotential family.
 
-### 4.2 Troullier & Martins (1991) — Efficient construction
+### 4.2 Troullier & Martins (1991) — Efficient construction {#tm-1991}
 
 **Troullier, N.; Martins, J. L.** "Efficient pseudopotentials for
 plane-wave calculations." *Physical Review B* **1991**, *43* (3),
@@ -499,7 +576,7 @@ Hamann–Schlüter–Chiang (1979) form at the same accuracy, and
 therefore requires a smaller plane-wave cutoff — typically
 $E_\text{cut} \sim 30$–$50$ Ry for first-row atoms.
 
-### 4.3 Vanderbilt (1990) — Ultrasoft pseudopotentials
+### 4.3 Vanderbilt (1990) — Ultrasoft pseudopotentials {#v-1990}
 
 **Vanderbilt, D.** "Soft self-consistent pseudopotentials in a
 generalized eigenvalue formalism." *Physical Review B* **1990**, *41*
@@ -527,7 +604,7 @@ reduction in the required plane-wave cutoff for hard elements
 accuracy. USPPs are the default in VASP, Quantum ESPRESSO,
 and CASTEP.
 
-### 4.4 Blöchl (1994) — PAW
+### 4.4 Blöchl (1994) — PAW {#paw-1994}
 
 **Blöchl, P. E.** "Projector augmented-wave method." *Physical Review
 B* **1994**, *50* (24), 17953–17979. DOI:
@@ -564,7 +641,7 @@ finite matrix. Three families of basis are used in practice:
 atom-centred Gaussians (chemistry), plane waves (solid-state),
 and numerical atomic orbitals (linear scaling).
 
-### 5.1 Boys (1950) — Gaussian basis functions
+### 5.1 Boys (1950) — Gaussian basis functions {#boys-1950}
 
 **Boys, S. F.** "Electronic wave functions. I. A general method of
 calculation for the stationary states of any molecular system."
@@ -590,7 +667,7 @@ the entire Gaussian-based quantum-chemistry industry. Every
 production quantum-chemistry code (Gaussian, PSI4, PySCF, ORCA,
 NWChem, …) uses a Gaussian basis.
 
-### 5.2 Hehre, Stewart & Pople (1969) — STO-nG minimal basis
+### 5.2 Hehre, Stewart & Pople (1969) — STO-nG minimal basis {#sto-ng-1969}
 
 **Hehre, W. J.; Stewart, R. F.; Pople, J. A.** "Self-Consistent
 Molecular-Orbital Methods. I. Use of Gaussian Expansions of
@@ -614,7 +691,7 @@ universal starting point of every quantum chemistry education.
 (Modern use: STO-3G is too small for production work but is the
 workhorse of pedagogical examples and large-scale screening.)
 
-### 5.3 Krishnan, Binkley, Seeger & Pople (1980) — 6-31G split-valence
+### 5.3 Krishnan, Binkley, Seeger & Pople (1980) — 6-31G split-valence {#kbs-1980}
 
 **Krishnan, R.; Binkley, J. S.; Seeger, R.; Pople, J. A.**
 "Self-consistent molecular orbital methods. XX. A basis set for
@@ -641,7 +718,7 @@ the Pople split-valence family dominated computational
 chemistry from 1980 until the Dunning correlation-consistent
 bases displaced it in the 1990s.
 
-### 5.4 Dunning (1989) — cc-pVXZ correlation-consistent bases
+### 5.4 Dunning (1989) — cc-pVXZ correlation-consistent bases {#dunning-1989}
 
 **Dunning, T. H., Jr.** "Gaussian basis sets for use in correlated
 molecular calculations. I. The atoms boron through neon and
@@ -675,7 +752,7 @@ The periodic-symmetry machinery — Bloch's theorem, k-point
 sampling, and the methods that take advantage of translational
 symmetry to make the infinite-lattice problem finite.
 
-### 6.1 Bloch (1929) — Bloch's theorem
+### 6.1 Bloch (1929) — Bloch's theorem {#bloch-1929}
 
 **Bloch, F.** "Über die Quantenmechanik der Elektronen in
 Kristallgittern." *Zeitschrift für Physik* **1929**, *52*, 555–600.
@@ -703,7 +780,7 @@ result appears in every solid-state textbook under "Bloch's
 theorem" with the standard proof via commutativity of $\hat
 H$ and the translation operator.
 
-### 6.2 Kohn & Rostoker (1954) — KKR method
+### 6.2 Kohn & Rostoker (1954) — KKR method {#kr-1954}
 
 **Kohn, W.; Rostoker, N.** "Solution of the Schrödinger Equation in
 Periodic Lattices with an Application to Metallic Lithium." *Physical
@@ -730,7 +807,7 @@ alloys. The 1954 paper is the source of the formal KKR
 equations and of the muffin-tin approximation still used in
 many all-electron codes (WIEN2k, Elk, SPR-KKR).
 
-### 6.3 Andersen (1975) — LMTO method
+### 6.3 Andersen (1975) — LMTO method {#lmto-1975}
 
 **Andersen, O. K.** "Linear methods in band theory." *Physical Review
 B* **1975**, *12* (8), 3060–3083. DOI:
@@ -755,7 +832,7 @@ constants, and the connection to the KKR formalism. Modern
 descendants — the full-potential LMTO (FP-LMTO) and the NMTO
 (order-$N$ MTO) methods — remain in use.
 
-### 6.4 Monkhorst & Pack (1976) — k-point sampling
+### 6.4 Monkhorst & Pack (1976) — k-point sampling {#mp-1976}
 
 **Monkhorst, H. J.; Pack, J. D.** "Special points for Brillouin-zone
 integrations." *Physical Review B* **1976**, *13* (12), 5188–5192.
@@ -781,7 +858,7 @@ integration of [Blöchl (1994)](#44-blöchl-1994--paw) it provides
 the practical infrastructure for converging the BZ integral
 to arbitrary precision.
 
-### 6.5 Blöchl, Jepsen & Andersen (1994) — Improved tetrahedron integration
+### 6.5 Blöchl, Jepsen & Andersen (1994) — Improved tetrahedron integration {#bja-1994}
 
 **Blöchl, P. E.; Jepsen, O.; Andersen, O. K.** "Improved tetrahedron
 method for Brillouin-zone integration." *Physical Review B* **1994**,
@@ -813,7 +890,7 @@ Haas–van Alphen).
 The TDDFT machinery that extends ground-state KS DFT to
 excited states and to the linear-response regime.
 
-### 7.1 Runge & Gross (1984) — The RG theorem
+### 7.1 Runge & Gross (1984) — The RG theorem {#rg-1984}
 
 **Runge, E.; Gross, E. K. U.** "Density-Functional Theory for
 Time-Dependent Systems." *Physical Review Letters* **1984**, *52*
@@ -840,7 +917,7 @@ stationary point. The RG theorem is the foundation of TDDFT:
 every observable that depends on the time-evolving state is,
 in principle, a functional of $\rho(\mathbf r, t)$.
 
-### 7.2 Casida (1995) — Linear response formulation
+### 7.2 Casida (1995) — Linear response formulation {#casida-1995}
 
 **Casida, M. E.** "Time-dependent density functional response theory
 for molecules." In *Recent Advances in Density Functional Methods*,
@@ -875,7 +952,7 @@ The theorems and algorithms that turn a converged SCF into a
 force on the nuclei, the input to every geometry optimisation
 and molecular-dynamics run.
 
-### 8.1 Hellmann (1937) — The Hellmann–Feynman theorem
+### 8.1 Hellmann (1937) — The Hellmann–Feynman theorem {#hellmann-1937}
 
 **Hellmann, H.** *Einführung in die Quantenchemie*; **Franz Deuticke**:
 Leipzig, **1937**; p 285. (No ISBN — pre-ISBN era.)
@@ -898,7 +975,7 @@ density, evaluated at fixed geometry. In a *complete* basis,
 this is the entire force; in a finite basis, the Pulay
 correction (next entry) is required.
 
-### 8.2 Feynman (1939) — The Feynman theorem
+### 8.2 Feynman (1939) — The Feynman theorem {#feynman-1939}
 
 **Feynman, R. P.** "Forces in Molecules." *Physical Review* **1939**,
 *56* (4), 340–343. DOI:
@@ -922,7 +999,7 @@ example of a diatomic molecule to demonstrate that the nuclear
 motion is adiabatic to leading order. Every modern force
 theorem in quantum chemistry traces back to this paper.
 
-### 8.3 Pulay (1969) — Forces in a Gaussian basis
+### 8.3 Pulay (1969) — Forces in a Gaussian basis {#pulay-1969}
 
 **Pulay, P.** "Ab initio calculation of the force constant in
 molecules." *Molecular Physics* **1969**, *17* (2), 197–204. DOI:
@@ -953,7 +1030,7 @@ numerical-atomic-orbital, and finite-element code. The 1969
 paper is the foundation of analytic-gradient Hartree–Fock and
 DFT.
 
-### 8.4 Pulay (1980) — Improved force formula and DIIS
+### 8.4 Pulay (1980) — Improved force formula and DIIS {#pulay-1980}
 
 **Pulay, P.** "Convergence acceleration of iterative sequences. The
 case of SCF iteration." *Chemical Physics Letters* **1980**, *73* (2),
@@ -990,7 +1067,7 @@ The two references that bridge the static DFT energy to the
 dynamical properties of crystals — phonons, dielectric
 response, electron–phonon coupling.
 
-### 9.1 Born & Huang (1954) — Dynamical theory of crystal lattices
+### 9.1 Born & Huang (1954) — Dynamical theory of crystal lattices {#bh-1954}
 
 **Born, M.; Huang, K.** *Dynamical Theory of Crystal Lattices*;
 **Oxford University Press (Clarendon Press)**: Oxford, **1954**;
@@ -1057,7 +1134,7 @@ linear-response machinery.
 The papers that built the *machinery* used in production
 LDA+DMFT codes. Cited in [chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }}) §13.10.
 
-### 11.1 Kotliar, Savrasov, Haule, Oudovenko, Parcollet & Marianetti (2006) — the standard review
+### 11.1 Kotliar, Savrasov, Haule, Oudovenko, Parcollet & Marianetti (2006) — the standard review {#kotliar-2006}
 
 **Kotliar, G.; Savrasov, S. Y.; Haule, K.; Oudovenko, V. S.; Parcollet, O.; Marianetti, C.** *Electronic structure calculations with dynamical mean-field theory: A review of the LDA+DMFT approach*. **Reviews of Modern Physics** **2006**, *78* (3), 865–951.
 DOI: [10.1103/RevModPhys.78.865](https://doi.org/10.1103/RevModPhys.78.865).
@@ -1070,7 +1147,7 @@ applications to $\alpha$-Mn, $\gamma$-Mn, $\delta$-Pu, and
 the 3$d$ ferromagnets. Equation numbers in chapter 13 §13.10.1
 refer to this review.
 
-### 11.2 Haule (2007) — the CT-HYB solver
+### 11.2 Haule (2007) — the CT-HYB solver {#haule-2007}
 
 **Haule, K.** *Quantum Monte Carlo Impurity Solver for Cluster DMFT and Electronic Structure Calculations in Adjustable Base*. **Physical Review B** **2007**, *75* (15), 155113.
 DOI: [10.1103/PhysRevB.75.155113](https://doi.org/10.1103/PhysRevB.75.155113).
@@ -1082,7 +1159,7 @@ Hirsch–Fye auxiliary-field QMC and gives a continuous-time,
 no-$\Delta\tau$ algorithm. The partition function is
 expanded in powers of the bath hybridisation $V$.
 
-### 11.3 Werner, Comanac, de' Medici, Troyer & Millis (2006) — the original CT-HYB
+### 11.3 Werner, Comanac, de' Medici, Troyer & Millis (2006) — the original CT-HYB {#werner-2006}
 
 **Werner, P.; Comanac, A.; de' Medici, L.; Troyer, M.; Millis, A. J.** *Continuous-Time Solver for Quantum Impurity Models*. **Physical Review Letters** **2006**, *97* (7), 076405.
 DOI: [10.1103/PhysRevLett.97.076405](https://doi.org/10.1103/PhysRevLett.97.076405).
@@ -1093,7 +1170,7 @@ The first CT-HYB paper, published simultaneously with Haule
 introduces the key idea of the stochastic series expansion
 in the bath hybridisation.
 
-### 11.4 Haule, Yee & Kim (2010) — the full-potential LDA+DMFT and the force formula
+### 11.4 Haule, Yee & Kim (2010) — the full-potential LDA+DMFT and the force formula {#haule-2010}
 
 **Haule, K.; Yee, C.-H.; Kim, K.** *Dynamical mean-field theory within the full-potential methods: Electronic structure of CeIrIn$_5$, CeCoIn$_5$, and CeRhIn$_5$*. **Physical Review B** **2010**, *81* (19), 195107.
 DOI: [10.1103/PhysRevB.81.195107](https://doi.org/10.1103/PhysRevB.81.195107).
@@ -1105,7 +1182,7 @@ DFT+DMFT force formula (Eq. 12 of this paper, cited in
 chapter 13 §13.10.1) which is required for
 geometry optimisation and molecular dynamics.
 
-### 11.5 Haule & Birol (2015) — the stationary free-energy functional
+### 11.5 Haule & Birol (2015) — the stationary free-energy functional {#haule-2015}
 
 **Haule, K.; Birol, T.** *Free Energy from Stationary Implementation of the DFT+DMFT*. **Physical Review Letters** **2015**, *115* (25), 256402.
 DOI: [10.1103/PhysRevLett.115.256402](https://doi.org/10.1103/PhysRevLett.115.256402).
@@ -1117,7 +1194,7 @@ long-standing problem in the formalism: the "naïve" energy
 $E[\rho, G]$ is not stationary with respect to the
 self-energy, so the Hellmann–Feynman theorem does not apply.
 
-### 11.6 Rubtsov, Savkin & Lichtenstein (2005) — the weak-coupling CT-INT solver
+### 11.6 Rubtsov, Savkin & Lichtenstein (2005) — the weak-coupling CT-INT solver {#rubtsov-2005}
 
 **Rubtsov, A. N.; Savkin, V. V.; Lichtenstein, A. I.** *Continuous-time quantum Monte Carlo method for fermions*. **Physical Review B** **2005**, *72* (3), 035122.
 DOI: [10.1103/PhysRevB.72.035122](https://doi.org/10.1103/PhysRevB.72.035122).
@@ -1126,7 +1203,7 @@ URL: <https://link.aps.org/doi/10.1103/PhysRevB.72.035122>.
 The weak-coupling CT-INT solver. Complementary to CT-HYB:
 works well at small $U$ and poorly at large $U$.
 
-### 11.7 Lichtenstein & Katsnelson (1998) — the original LDA+DMFT
+### 11.7 Lichtenstein & Katsnelson (1998) — the original LDA+DMFT {#lk-1998}
 
 **Lichtenstein, A. I.; Katsnelson, M. I.** *Ab initio calculations of the electronic structure of strongly correlated systems: LDA+U+DMFT*. **Physical Review B** **1998**, *57* (12), 6884–6895.
 DOI: [10.1103/PhysRevB.57.6884](https://doi.org/10.1103/PhysRevB.57.6884).
@@ -1137,7 +1214,7 @@ Liechtenstein 1995 DFT+U with the Metzner–Vollhardt DMFT
 self-consistency. Introduces the Wannier projection and the
 double-counting correction.
 
-### 11.8 Czyzyk & Sawatzky (1994) — the around-mean-field double counting
+### 11.8 Czyzyk & Sawatzky (1994) — the around-mean-field double counting {#cs-1994}
 
 **Czyzyk, M. T.; Sawatzky, G. A.** *Local-density functional and on-site correlations: The electronic structure of La$_2$CuO$_4$ and LaCuO$_3$*. **Physical Review B** **1994**, *49* (20), 14211–14228.
 DOI: [10.1103/PhysRevB.49.14211](https://doi.org/10.1103/PhysRevB.49.14211).
@@ -1147,7 +1224,7 @@ The around-mean-field (AMF) double-counting formula (Eq. 17
 of this paper, cited in chapter 13 §13.10.1). The alternative
 to the FLL double-counting, preferred for metallic systems.
 
-### 11.9 Yin, Haule & Kotliar (2011) — Hund's metals
+### 11.9 Yin, Haule & Kotliar (2011) — Hund's metals {#yin-2011}
 
 **Yin, Z. P.; Haule, K.; Kotliar, G.** *Kinetic frustration and the nature of the magnetic and paramagnetic states in iron pnictides and iron chalcogenides*. **Nature Materials** **2011**, *10*, 932–935.
 DOI: [10.1038/nmat3120](https://doi.org/10.1038/nmat3120).
@@ -1157,7 +1234,7 @@ The "Hund's metal" classification of the iron pnictides from
 DFT+DMFT. The correlations in these materials are driven by
 the Hund's-rule coupling $J_H$, not by the Hubbard $U$.
 
-### 11.10 Hirsch & Fye (1986) — the older auxiliary-field solver
+### 11.10 Hirsch & Fye (1986) — the older auxiliary-field solver {#hf-1986}
 
 **Hirsch, J. E.; Fye, R. M.** *Monte Carlo Method for Magnetic Impurities in Metals*. **Physical Review Letters** **1986**, *56* (23), 2521–2524.
 DOI: [10.1103/PhysRevLett.56.2521](https://doi.org/10.1103/PhysRevLett.56.2521).
@@ -1166,7 +1243,7 @@ URL: <https://link.aps.org/doi/10.1103/PhysRevLett.56.2521>.
 The Hirsch–Fye auxiliary-field QMC impurity solver. The old
 workhorse, now superseded by CT-HYB.
 
-### 11.11 Marzari & Vanderbilt (1997) — maximally-localised Wannier functions
+### 11.11 Marzari & Vanderbilt (1997) — maximally-localised Wannier functions {#mv-1997}
 
 **Marzari, N.; Vanderbilt, D.** *Maximally localized generalized Wannier functions for composite energy bands*. **Physical Review B** **1997**, *56* (20), 12847–12865.
 DOI: [10.1103/PhysRevB.56.12847](https://doi.org/10.1103/PhysRevB.56.12847).
@@ -1175,7 +1252,7 @@ URL: <https://link.aps.org/doi/10.1103/PhysRevB.56.12847>.
 The maximally-localised Wannier function construction used
 in Step 2 of the LDA+DMFT loop.
 
-### 11.12 Biermann, Aryasetiawan & Georges (2003) — the first GW+DMFT
+### 11.12 Biermann, Aryasetiawan & Georges (2003) — the first GW+DMFT {#bag-2003}
 
 **Biermann, S.; Aryasetiawan, F.; Georges, A.** *First-principles calculation of the electronic structure of the strongly correlated system $\alpha$-MnS*. **Physical Review Letters** **2003**, *90* (8), 086402.
 DOI: [10.1103/PhysRevLett.90.086402](https://doi.org/10.1103/PhysRevLett.90.086402).
@@ -1184,7 +1261,7 @@ URL: <https://link.aps.org/doi/10.1103/PhysRevLett.90.086402>.
 The first GW+DMFT calculation. Captures both the non-local
 screening (from GW) and the local strong correlations (from DMFT).
 
-### 11.13 Rohringer et al. (2018) — diagrammatic extensions of DMFT
+### 11.13 Rohringer et al. (2018) — diagrammatic extensions of DMFT {#rohringer-2018}
 
 **Rohringer, G.; Hafermann, H.; Toschi, A.; Katanin, A. A.; Antipov, A. E.; Buser, M. I.; Tomczak, J. M.; Thunström, P.; Held, K.; Lombardo, L.; Valli, R.; Toschi, A.; Held, K.** *Diagrammatic routes to non-local correlations beyond dynamical mean field theory*. **Reviews of Modern Physics** **2018**, *90* (2), 025003.
 DOI: [10.1103/RevModPhys.90.025003](https://doi.org/10.1103/RevModPhys.90.025003).
@@ -1193,7 +1270,7 @@ URL: <https://link.aps.org/doi/10.1103/RevModPhys.90.025003>.
 The modern review of diagrammatic extensions of DMFT (DCA,
 CDMFT, dual fermion, etc.). Cited in chapter 13 §13.10.5.
 
-### 11.14 Freericks, Turkowski & Zlatić (2006) — non-equilibrium DMFT
+### 11.14 Freericks, Turkowski & Zlatić (2006) — non-equilibrium DMFT {#ftz-2006}
 
 **Freericks, J. K.; Turkowski, V. M.; Zlatić, V.** *Nonequilibrium dynamical mean-field theory*. **Physical Review Letters** **2006**, *97* (26), 266408.
 DOI: [10.1103/PhysRevLett.97.266408](https://doi.org/10.1103/PhysRevLett.97.266408).
@@ -1202,7 +1279,7 @@ URL: <https://link.aps.org/doi/10.1103/PhysRevLett.97.266408>.
 The Keldysh-DMFT formalism for non-equilibrium. Cited in
 chapter 13 §13.10.5.
 
-### 11.15 Held (2000) — the LDA+DMFT energy formula
+### 11.15 Held (2000) — the LDA+DMFT energy formula {#held-2000}
 
 **Held, K.; Nekrasov, I. A.; Keller, G.; Eyert, V.; Oudovenko, V. S.; Kunes, J.; McMahan, A. K.; Scalettar, R. T.; Albers, R. C.; Anisimov, V. I.; Lichtenstein, A. I.** *Mott transition in paramagnetic V$_2$O$_3$ within LDA+DMFT*. **2000**, lecture notes and the standard reference for the LDA+DMFT total energy formula.
 URL: <https://arxiv.org/abs/cond-mat/0112078>.
@@ -1221,7 +1298,7 @@ they are the *next step* after these notes for a reader who
 wants the full mathematical apparatus, the historical context,
 or the production-code perspective.
 
-### 10.1 Parr & Yang (1989) — Density-Functional Theory of Atoms and Molecules
+### 10.1 Parr & Yang (1989) — Density-Functional Theory of Atoms and Molecules {#parryang-1989}
 
 **Parr, R. G.; Yang, W.** *Density-Functional Theory of Atoms and
 Molecules*; **Oxford University Press**: New York, **1989**; ix +
@@ -1239,7 +1316,7 @@ chemists use. It assumes only an undergraduate background in
 quantum mechanics and is the most accessible entry in this
 section.
 
-### 10.2 Martin (2004) — Electronic Structure
+### 10.2 Martin (2004) — Electronic Structure {#martin-2004}
 
 **Martin, R. M.** *Electronic Structure: Basic Theory and Practical
 Methods*; **Cambridge University Press**: Cambridge, UK, **2004**;
@@ -1260,7 +1337,7 @@ production codes are made explicit, and the worked examples
 and problem sets are uniformly excellent. **The book to own
 if you can own only one.**
 
-### 10.3 Dreizler & Gross (1990) — Density Functional Theory
+### 10.3 Dreizler & Gross (1990) — Density Functional Theory {#dg-1990}
 
 **Dreizler, R. M.; Gross, E. K. U.** *Density Functional Theory: An
 Approach to the Quantum Many-Body Problem*; **Springer-Verlag**:
@@ -1277,7 +1354,7 @@ limitations, the early GGAs, and the time-dependent formalism
 mathematical than Parr–Yang, more physics-oriented than
 Martin; the standard reference on the formal side of DFT.
 
-### 10.4 Szabo & Ostlund (1989) — Modern Quantum Chemistry
+### 10.4 Szabo & Ostlund (1989) — Modern Quantum Chemistry {#szabo-1989}
 
 **Szabo, A.; Ostlund, N. S.** *Modern Quantum Chemistry: Introduction
 to Advanced Electronic Structure Theory*; **McGraw-Hill**: New York,
@@ -1298,7 +1375,7 @@ quantum-chemistry text that consistently derives each equation
 step-by-step before quoting it. Out of print from McGraw-Hill
 but freely available from the Dover edition.
 
-### 10.5 Helgaker, Jorgensen & Olsen (2000) — Molecular Electronic-Structure Theory
+### 10.5 Helgaker, Jorgensen & Olsen (2000) — Molecular Electronic-Structure Theory {#hjo-2000}
 
 **Helgaker, T.; Jørgensen, P.; Olsen, J.** *Molecular
 Electronic-Structure Theory*; **John Wiley & Sons**: Chichester, UK,

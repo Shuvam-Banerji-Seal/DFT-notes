@@ -51,7 +51,7 @@ a gradient piece, a kinetic-energy piece, a fraction of exact
 non-local Hartree–Fock exchange, a range-separation of that exchange,
 an MP2-like correlation correction, and an empirical dispersion patch.
 The "Jacob's ladder" metaphor of Perdew and Schmidt
-([2001]({{ site.baseurl }}/dft-notes/extras/references/#perdew-2001))
+([2001]({{ site.baseurl }}/dft-notes/extras/bibliography/#perdew-2001))
 orders these ingredients by increasing **rung**, and the rule of thumb
 is "higher rung = more ingredients = more physics = (usually) more
 accuracy and (always) more cost":
@@ -291,7 +291,7 @@ spin densities. The polarisation
 $\zeta = (\rho_\uparrow - \rho_\downarrow)/\rho$ interpolates
 between the unpolarised gas ($\zeta = 0$) and the fully polarised
 gas ($\zeta = 1$). The standard interpolation
-([Vosko-Wilk-Nusair 1980]({{ site.baseurl }}/dft-notes/extras/references/#vwn-1980),
+([Vosko-Wilk-Nusair 1980]({{ site.baseurl }}/dft-notes/extras/bibliography/#vwn-1980),
 VWN) is a rational function of $\zeta$ that fits the QMC
 correlation energies of Ceperley and Alder for both limits.
 
@@ -313,7 +313,7 @@ The "obvious" generalisation of the LDA is the **gradient expansion
 approximation** (GEA): expand the integrand in powers of the local
 density gradient $\nabla\rho$ and keep the first non-trivial term.
 The exchange part of the GEA, due to Herman, Van Dyke, and Ortenburger
-([1969]({{ site.baseurl }}/dft-notes/extras/references/#hvo-1969)),
+([1969]({{ site.baseurl }}/dft-notes/extras/bibliography/#hvo-1969)),
 gives
 
 \begin{equation}
@@ -348,7 +348,7 @@ empirical fits (B88, LYP).
 
 > **Note.**  The history of the GGA is a history of attempts to
 > *tame* the gradient expansion. The original PBE paper
-> ([Perdew, Burke, Ernzerhof 1996]({{ site.baseurl }}/dft-notes/extras/references/#pbe-1996))
+> ([Perdew, Burke, Ernzerhof 1996]({{ site.baseurl }}/dft-notes/extras/bibliography/#pbe-1996))
 > makes the "no free parameters" point by showing that the simplest
 > *constraint-satisfying* enhancement factor already does most of
 > the work. The competing "empirical" school — Becke 1988 (B88)
@@ -577,7 +577,7 @@ technical conditions on the second functional derivative. The
 parameter is fixed by a single constraint, with no empirical
 fitting. SCAN is the *first* functional to satisfy all 17
 constraints simultaneously; its predecessor, the TPSS meta-GGA
-([Tao, Perdew, Staroverov, Scuseria 2003]({{ site.baseurl }}/dft-notes/extras/references/#tpss-2003)),
+([Tao, Perdew, Staroverov, Scuseria 2003]({{ site.baseurl }}/dft-notes/extras/bibliography/#tpss-2003)),
 satisfied 12. The accuracy gain of SCAN over PBE on the G2 atomisation set is
 roughly a factor of 3: PBE has a mean absolute error (MAE) of
 $\sim 20$ kcal/mol; SCAN drops this to $\sim 8$ kcal/mol. The

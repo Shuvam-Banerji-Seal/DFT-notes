@@ -124,12 +124,12 @@ are normalised to unit $L^2$ norm on the grid. The expected
 eigenvalues are $E_n = n + 1/2$ in units of $\omega$.
 
 - **Script** — the code is inlined in
-  [Chapter 01, §1.11.2]({{ site.baseurl }}/dft-notes/chapter-01/#1112-harmonic-oscillator-via-finite-differences)
+  [Chapter 01, §1.14.2]({{ site.baseurl }}/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences)
   (`dft_notes/python_codes/chapter_01/02-harmonic-oscillator.py`,
   in chapter markdown only; the runnable file in
   `python_codes/chapter_01/` is forthcoming from `agent:code-runner`).
 - **Plot** — referenced in
-  [§1.11.2 of chapter 01]({{ site.baseurl }}/dft-notes/chapter-01/#1112-harmonic-oscillator-via-finite-differences)
+  [§1.14.2 of chapter 01]({{ site.baseurl }}/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences)
   as `plots/02-harmonic-oscillator.png`.
 - **Chapter section** — [Chapter 01, §1.9 (Ladder operators and the QHO spectrum)]({{ site.baseurl }}/dft-notes/chapter-01/#19-the-harmonic-oscillator); §1.11.2 (numerical solution).
 - **Expected output.** Eigenvalues (in units of $\omega$):
@@ -163,14 +163,14 @@ $L_{n-\ell-1}^{2\ell+1}$ are evaluated with
 linear $r$ grid from $0.05$ to $30\,a_0$.
 
 - **Script** — the code is inlined in
-  [Chapter 01, §1.11.3]({{ site.baseurl }}/dft-notes/chapter-01/#1113-hydrogen-radial-eigenfunctions)
+  [Chapter 01, §1.14.3]({{ site.baseurl }}/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences)
   (referenced path:
   `dft_notes/python_codes/chapter_01/03-hydrogen-radial.py`;
   runnable file in `python_codes/chapter_01/` is forthcoming).
 - **Plot** — referenced in
-  [§1.11.3 of chapter 01]({{ site.baseurl }}/dft-notes/chapter-01/#1113-hydrogen-radial-eigenfunctions)
+  [§1.14.3 of chapter 01]({{ site.baseurl }}/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences)
   as `plots/03-hydrogen-radial.png`.
-- **Chapter section** — [Chapter 01, §1.10 (Hydrogen atom; the Bohr formula and the explicit eigenfunctions)]({{ site.baseurl }}/dft-notes/chapter-01/#110-the-hydrogen-atom).
+- **Chapter section** — [Chapter 01, §1.13 (Hydrogen atom; the Bohr formula and the explicit eigenfunctions)]({{ site.baseurl }}/dft-notes/chapter-01/#113-the-hydrogen-atom).
 - **Expected output.** Six curves with the expected node
   counts: 1s (nodeless, peaked at the origin), 2s (one
   radial node at $r = 2\,a_0$), 2p (one peak, no radial
@@ -254,7 +254,7 @@ F^{(i)}$ with the $c_i$ chosen to minimise the norm of the
 extrapolated error.
 
 - **Script** — the code is inlined in
-  [Chapter 03, §3.8.5]({{ site.baseurl }}/dft-notes/chapter-03/#385-full-implementation-h₂-sto-3g-with-diis)
+  [Chapter 03, §3.8.5]({{ site.baseurl }}/dft-notes/chapter-03/#38-direct-scf-conventional-scf-and-diis)
   (referenced path:
   `dft_notes/python_codes/chapter_03/01-direct-scf-h2-sto3g-diis.py`;
   runnable file in `python_codes/chapter_03/` is forthcoming).
@@ -758,7 +758,7 @@ the error growing linearly in $\lvert E - E_2 \rvert$
 
 - **Script** — [chapter_08/02-1d-carbon-pseudopotential.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_08/02-1d-carbon-pseudopotential.py)
 - **Plot** — [chapter_08/plots/02-1d-carbon-pseudopotential.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_08/plots/02-1d-carbon-pseudopotential.png)
-- **Chapter section** — [Chapter 08, §8.6 (Troullier–Martins parameterisation)]({{ site.baseurl }}/dft-notes/chapter-08/#86-the-troulliermartins-parameterisation); §8.3 (norm conservation); §8.8 (the H 1s worked example).
+- **Chapter section** — [Chapter 08, §8.6 (Troullier–Martins parameterisation)]({{ site.baseurl }}/dft-notes/chapter-08/#86-ultrasoft-pseudopotentials-vanderbilt); §8.3 (norm conservation); §8.8 (the H 1s worked example).
 - **Expected output.** Coefficients
   $c_0, c_1, c_2, c_3$ matching
   \eqref{eq:we-08-tm-coeffs} to 6 d.p. Residuals on
@@ -937,7 +937,7 @@ graph LR
 
 - **Script** — [chapter_07/02-h-chain-tight-binding.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_07/02-h-chain-tight-binding.py)
 - **Plot** — [chapter_07/plots/02-h-chain-tight-binding.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_07/plots/02-h-chain-tight-binding.png)
-- **Chapter section** — [Chapter 07, §7.6 (Tight binding vs. nearly-free electron)]({{ site.baseurl }}/dft-notes/chapter-07/#76-tight-binding-vs-nearly-free-electron); §11.4 (graphene, the 2-D tight-binding extension).
+- **Chapter section** — [Chapter 07, §7.6 (Tight binding vs. nearly-free electron)]({{ site.baseurl }}/dft-notes/chapter-07/) §11.4 (graphene, the 2-D tight-binding extension).
 - **Expected output.** With
   $a = 2\,a_0$ (twice the H–H equilibrium distance,
   in the "stretched H chain" regime), $t = 0.1\,E_h$
@@ -1211,7 +1211,7 @@ graph LR
 
 - **Script** — [chapter_10/01-diatomic-chain.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/01-diatomic-chain.py)
 - **Plot** — [chapter_10/plots/01-diatomic-chain.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/plots/01-diatomic-chain.png)
-- **Chapter section** — [Chapter 10, §10.3 (The 1-D diatomic chain)]({{ site.baseurl }}/dft-notes/chapter-10/#103-the-1-d-diatomic-chain); §10.1 (the dynamical matrix).
+- **Chapter section** — [Chapter 10, §10.3 (The 1-D diatomic chain)]({{ site.baseurl }}/dft-notes/chapter-10/#103-density-functional-perturbation-theory-dfpt); §10.1 (the dynamical matrix).
 - **Expected output.** With
   $m_1 = 1\,m_\text{p}$, $m_2 = 3\,m_\text{p}$, $K = 1\,E_h/a_0^2$,
   $a = 2\,a_0$:
@@ -1362,7 +1362,7 @@ graph TD
 
 - **Script** — [chapter_11/01-graphene-bands.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/01-graphene-bands.py)
 - **Plot** — [chapter_11/plots/01-graphene-bands.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/plots/01-graphene-bands.png)
-- **Chapter section** — [Chapter 11, §11.4 (Graphene tight-binding bands)]({{ site.baseurl }}/dft-notes/chapter-11/#114-graphene-tight-binding-bands); §11.3 (k-paths, FCC, hexagonal).
+- **Chapter section** — [Chapter 11, §11.4 (Graphene tight-binding bands)]({{ site.baseurl }}/dft-notes/chapter-11/#1114-the-band-structure-as-a-function); §11.3 (k-paths, FCC, hexagonal).
 - **Expected output.** With
   $a = 4.65\,a_0$, $t = -0.0993\,E_h$,
   k-path $\Gamma \to \text{M} \to \text{K} \to \Gamma$ sampled
@@ -1549,7 +1549,7 @@ graph TD
 
 - **Script** — [chapter_12/01-two-level-absorption.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_12/01-two-level-absorption.py)
 - **Plot** — [chapter_12/plots/01-two-level-absorption.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_12/plots/01-two-level-absorption.png)
-- **Chapter section** — [Chapter 12, §12.3 (Fermi's golden rule and the two-level model)]({{ site.baseurl }}/dft-notes/chapter-12/#123-fermis-golden-rule-and-the-two-level-model); §12.7 (Casida); §12.8 (oscillator strengths); §12.9 (Kramers–Kronig).
+- **Chapter section** — [Chapter 12, §12.13 (Worked example: a two-level system)]({{ site.baseurl }}/dft-notes/chapter-12/#1213-worked-example-a-two-level-system); §12.7 (Casida); §12.8 (oscillator strengths); §12.9 (Kramers–Kronig).
 - **Expected output.** With
   $\omega_0 = 1.0\,E_h$, $\gamma = 0.05\,E_h$,
   $\mu_{ge} = 1.0\,e\,a_0$ (a typical dipole moment for
@@ -1771,7 +1771,7 @@ subspace (the **Gutzwiller approximation**, Ch 13
 
 - **Script** — [chapter_13/01-hubbard-4site.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_13/01-hubbard-4site.py)
 - **Plot** — [chapter_13/plots/01-hubbard-4site.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_13/plots/01-hubbard-4site.png)
-- **Chapter section** — [Chapter 13, §13.1 (The Hubbard model)]({{ site.baseurl }}/dft-notes/chapter-13/#131-the-hubbard-model); §13.3 (exact diagonalisation); §13.4 (Mott transition); §13.5 (DFT+U).
+- **Chapter section** — [Chapter 13, §13.1 (The Hubbard model)]({{ site.baseurl }}/dft-notes/chapter-13/#1322-the-hubbard-model); §13.3 (exact diagonalisation); §13.4 (Mott transition); §13.5 (DFT+U).
 - **Expected output.** A plot of the **single-
   particle gap** $\Delta(U) = E_\text{gs}(k = \pi) -
   E_\text{gs}(k = 0)$ as a function of $U/t$ at

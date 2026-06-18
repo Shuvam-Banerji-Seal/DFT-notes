@@ -11,7 +11,7 @@ description: >-
 
 | #  | Script | Plot | What it does |
 |:---|:-------|:-----|:-------------|
-| 01 | [01-hydrogen-pseudopotential.py]({{ site.baseurl }}/dft-notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py) | [01-hydrogen-pseudopotential.png]({{ site.baseurl }}/dft-notes/python_codes/chapter_08/plots/01-hydrogen-pseudopotential.png) | Constructs the Troullier–Martins pseudopotential for hydrogen (Z=1, r_c=0.5 a₀, l=0), inverts the radial Schrödinger equation inside r_c, and plots the all-electron 1s and pseudo wavefunction on the same axes. Norm conservation is verified to ~2 × 10⁻¹⁶. |
+| 01 | [01-hydrogen-pseudopotential.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py) | [01-hydrogen-pseudopotential.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_08/plots/01-hydrogen-pseudopotential.png) | Constructs the Troullier–Martins pseudopotential for hydrogen (Z=1, r_c=0.5 a₀, l=0), inverts the radial Schrödinger equation inside r_c, and plots the all-electron 1s and pseudo wavefunction on the same axes. Norm conservation is verified to ~2 × 10⁻¹⁶. |
 
 Run from the repo root:
 

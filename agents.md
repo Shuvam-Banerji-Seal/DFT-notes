@@ -1,4 +1,11 @@
 ---
+layout: default
+title: "Agents Handbook — DFT Notes"
+permalink: /dft-notes/agents/
+description: >-
+  How the DFT Notes site is built and maintained. The reference
+  for any agent (human or AI) that contributes to the repo.
+keywords: "agents, content-writer, code-runner, qa-reviewer, visualizer, literature-scholar, enricher, bug-hunter, contributors"
 ---
 
 # Agents Handbook
@@ -263,7 +270,7 @@ A chapter written by `agent:content-writer` follows this
 template. Sections in **bold** are required; everything else
 is recommended.
 
-```markdown
+````markdown
 ---
 layout: page
 title: "Chapter NN — <Title>"
@@ -376,7 +383,7 @@ bullet per topic.  Two to five bullets is the norm.>
 
 > Next: [Chapter NN+1]({{ site.baseurl }}/dft-notes/chapter-NN+1/)
 > — <one-sentence teaser of the next chapter>
-```
+````
 
 ---
 
@@ -712,8 +719,8 @@ you need a layout change, file a request against this agent.
 Reasons:
 
 - Jekyll's front-matter parser is fragile around
-  `{% comment %}` blocks (see git history for
-  `Fix head.html: use {% comment %} block, not HTML <!-- -->`).
+  `&#123;% comment %&#125;` blocks (see git history for
+  `Fix head.html: use &#123;% comment %&#125; block, not HTML <!-- -->`).
   One character of carelessness here silently breaks the
   layout chain.
 - The CSS uses CSS custom properties; renaming a variable is
@@ -814,3 +821,6 @@ fails the test and blocks merge.
 - When does `agent:visualizer` retire? Tier 1 (Manim MP4)
   is the current goal; Tier 2 (interactive JS) and Tier 3
   (animated SVG) are deferred to a later phase.
+
+
+

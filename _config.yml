@@ -61,8 +61,6 @@ exclude:
   - CONTRIBUTING.md
   - SECURITY.md
   - CHANGELOG.md
-  - design.md
-  - agents.md
   - .gitignore
   - .markdownlint-cli2.jsonc
   - vendor

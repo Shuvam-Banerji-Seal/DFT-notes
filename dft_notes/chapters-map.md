@@ -148,7 +148,7 @@ do not have to read all of them.
 
 ## Conventions
 
-- Each chapter follows the [template]({{ site.baseurl }}/agents.md#the-chapter-rigor-checklist)
+- Each chapter follows the [template]({{ "/dft-notes/agents/#the-chapter-rigor-checklist" | relative_url }})
   in `agents.md`.  All derivations are step-by-step; no
   calculation is omitted; problem sets have hidden answers.
 - The Python code that runs in a chapter also lives in

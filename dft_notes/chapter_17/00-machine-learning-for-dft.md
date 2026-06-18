@@ -63,7 +63,7 @@ calculation on a single CPU core — a **$\sim\! 10^3$**
 speedup, with **$\sim\! 10^5$–$10^6$** speedups possible at
 the scale of large MD simulations.  The accuracy
 advantage is also large: the MACE-MP-0 universal potential
-[Batatia et al. 2024]({{ "/dft-notes/extras/references/" | relative_url }}) reaches
+[Batatia et al. 2024]({{ "/dft-notes/extras/bibliography/" | relative_url }}) reaches
 $\sim\! 10$ meV/atom on the Materials Project formation
 energy benchmark, compared to the $\sim\! 150$ meV/atom
 typical of PBE on the same benchmark, and the same
@@ -423,7 +423,7 @@ The **Behler–Parrinello (BP) symmetry functions** were
 introduced in 2007 by Jörg Behler and Michele Parrinello
 in their foundational paper on neural-network potentials
 ([Behler & Parrinello, *Phys. Rev. Lett.* **98**, 146401
-(2007)]({{ "/dft-notes/extras/references/" | relative_url }})).  The
+(2007)]({{ "/dft-notes/extras/bibliography/" | relative_url }})).  The
 idea is to construct a *hand-crafted* set of
 *invariant* features of the atomic neighbourhood.  The
 features come in two families: the *radial* $G_i^1$ and
@@ -457,7 +457,7 @@ eq i} e^{-\eta r_{ij}^2} \cdot f_c(r_{ij}) .
 
 The **Smooth Overlap of Atomic Positions (SOAP)**
 descriptor of Bartók, Payne, Risi and Csányi
-([2010, *Phys. Rev. Lett.* **104**, 136403]({{ "/dft-notes/extras/references/" | relative_url }}))
+([2010, *Phys. Rev. Lett.* **104**, 136403]({{ "/dft-notes/extras/bibliography/" | relative_url }}))
 takes a *systematic* approach.  The starting point
 is the **atomic density** centred on atom $i$:
 
@@ -551,7 +551,7 @@ basis, complete as $\ell_\text{max} \to \infty$.
 ### 17.3.4 Atomic Cluster Expansion (ACE)
 
 The **Atomic Cluster Expansion (ACE)** of
-Drautz ([2019, *Phys. Rev. B* **99**, 014104]({{ "/dft-notes/extras/references/" | relative_url }}))
+Drautz ([2019, *Phys. Rev. B* **99**, 014104]({{ "/dft-notes/extras/bibliography/" | relative_url }}))
 is the *most general* atomic descriptor in current
 use.  ACE is a *systematic, complete* basis for
 atomic environments, in the same sense that a
@@ -883,7 +883,7 @@ invariant case.
 
 The **NequIP** (Neural Equivariant Interatomic
 Potential) of Batzner et al. ([2022, *Nat.
-Commun.* **13**, 2453]({{ "/dft-notes/extras/references/" | relative_url }})) is the
+Commun.* **13**, 2453]({{ "/dft-notes/extras/bibliography/" | relative_url }})) is the
 first equivariant message-passing network for
 MLIPs.  The architecture is a *graph neural
 network* in which each atom is a node, each
@@ -897,7 +897,7 @@ $j$.  The *update* aggregates the messages and
 applies an equivariant linear layer.
 
 The **Allegro** architecture of Musaelian et
-al. ([2023, *Nat. Commun.* **14**, 579]({{ "/dft-notes/extras/references/" | relative_url }})) is
+al. ([2023, *Nat. Commun.* **14**, 579]({{ "/dft-notes/extras/bibliography/" | relative_url }})) is
 the *fully local* variant of NequIP: the
 features are *two-body* (edge) features, not
 three-body (triangle) features, and the
@@ -940,7 +940,7 @@ the system size.
 
 The **MACE** (Message Passing Atomic Cluster
 Expansion) architecture of Batatia et al.
-([2022, *NeurIPS*; 2024, *npj Comput. Mater.*]({{ "/dft-notes/extras/references/" | relative_url }}))
+([2022, *NeurIPS*; 2024, *npj Comput. Mater.*]({{ "/dft-notes/extras/bibliography/" | relative_url }}))
 is the *higher-order* generalisation of NequIP.
 The message function *includes* the
 higher-body-order terms of the ACE basis
@@ -1192,7 +1192,7 @@ to the *dielectric screening*, which depends on
 the *non-local* electronic structure.  The 2024
 *deep* $\Delta$-ML approach of
 [Materese et al., *Nat. Commun.* **14**, 5988
-(2023)]({{ "/dft-notes/extras/references/" | relative_url }})
+(2023)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 uses a *transformer* on the *atomic structure
 graph* and reaches MAE $\sim\! 0.15$ eV for
 HSE06 gaps on the Materials Project.  The
@@ -1223,7 +1223,7 @@ training example).
 ### 17.7.1 DeepH and HamGNN
 
 The **DeepH** (Deep Hamiltonian) approach of
-[Li et al., *Nat. Phys.* **18**, 992 (2022)]({{ "/dft-notes/extras/references/" | relative_url }})
+[Li et al., *Nat. Phys.* **18**, 992 (2022)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 predicts the *tight-binding Hamiltonian* from
 the atomic structure.  The architecture is a
 graph neural network in which the *edge
@@ -1250,7 +1250,7 @@ and the *transferability* is limited to the
 training distribution.  The **HamGNN**
 (Hamiltonian Graph Neural Network) of
 [Zhong et al., *Nat. Commun.* **14**, 8283
-(2023)]({{ "/dft-notes/extras/references/" | relative_url }})
+(2023)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 is a *physics-informed* variant of DeepH
 (constrained to satisfy the *symmetries* of
 the tight-binding Hamiltonian — Hermiticity,
@@ -1270,11 +1270,11 @@ the electron density from the atomic
 structure (MAE $\sim\! 0.01\,e/\text{bohr}^3$).
 The **DeepDFT** architecture of
 [Grisafi et al., *Phys. Rev. Lett.* **128**, 036001
-(2022)]({{ "/dft-notes/extras/references/" | relative_url }})
+(2022)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 predicts the *Kohn–Sham Hamiltonian* in an
 atomic-orbital basis, and the **OrbNet** of
 [Qiao et al., *Nat. Chem.* **14**, 160
-(2022)]({{ "/dft-notes/extras/references/" | relative_url }})
+(2022)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 is a *transformer* that predicts the
 *occupied molecular orbitals* directly.  The
 *advantage* is that the *predicted* Hamiltonian
@@ -1310,7 +1310,7 @@ system size — the *only* practical approach
 for *linear-scaling DFT* of systems with
 $\sim\! 10^5$–$10^6$ atoms.  The 2024 review
 of [Kirkpatrick et al., *Chem. Rev.* **124**,
-5613 (2024)]({{ "/dft-notes/extras/references/" | relative_url }}) surveys the
+5613 (2024)]({{ "/dft-notes/extras/bibliography/" | relative_url }}) surveys the
 state of the art; the most accurate 2024
 ML-XC functionals reach $\sim\! 30$ meV/atom
 on the formation-energy benchmark,
@@ -1336,7 +1336,7 @@ is *trained* on a finite set of systems is
 
 The **NeuralXC** architecture of [Dick &
 Fernandez-Serra, *Phys. Rev. B* **104**, L161112
-(2021)]({{ "/dft-notes/extras/references/" | relative_url }})
+(2021)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 is a *neural-network-based* XC functional that
 *augments* a standard Kohn–Sham DFT calculation.
 The architecture is: (1) run a *standard*
@@ -1405,7 +1405,7 @@ inverted).
 ### 17.8.3 DM21
 
 The **DM21** functional of [DeepMind, *Science*
-**374**, 1385 (2021)]({{ "/dft-notes/extras/references/" | relative_url }}) is the
+**374**, 1385 (2021)]({{ "/dft-notes/extras/bibliography/" | relative_url }}) is the
 *most publicised* ML functional.  The
 architecture is a *neural network* that takes
 the *density* and the *gradient of the density*
@@ -1564,7 +1564,7 @@ good default.
 
 The **MACE-OSP** (MACE On-the-fly Sparse
 Potential) framework of [Magdău et al.,
-*npj Comput. Mater.* **9**, 146 (2023)]({{ "/dft-notes/extras/references/" | relative_url }})
+*npj Comput. Mater.* **9**, 146 (2023)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 is the *standard* implementation of the
 AL loop for MLIPs in 2024. The framework:
 (1) start with a *small* initial training
@@ -3045,7 +3045,7 @@ picture.
   SCF, ML-diagonalisation, ML-tight-binding)
   is a *separate* subject.  The 2024 review
   of [Kirkpatrick et al., *Chem. Rev.*
-  **124**, 5613 (2024)]({{ "/dft-notes/extras/references/" | relative_url }})
+  **124**, 5613 (2024)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
   surveys the field.
 - **Foundation models beyond the chemical
   domain.**  We treated the *MACE-MP-0*,
@@ -3067,7 +3067,7 @@ picture.
   object of DFT, and *learning* $\rho(\mathbf
   r)$ directly is a *subject* in its own
   right.  The 2023 DeepDFT paper of
-  [Grisafi et al.]({{ "/dft-notes/extras/references/" | relative_url }})
+  [Grisafi et al.]({{ "/dft-notes/extras/bibliography/" | relative_url }})
   is the standard reference; we did not
   derive the *density-learning* approach.
 

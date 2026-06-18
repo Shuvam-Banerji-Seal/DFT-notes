@@ -37,8 +37,8 @@ That uniformity is the whole point of writing a fixed template: once
 you have read one chapter, you know the shape of every chapter, and
 you can navigate directly to the part that interests you.  The
 template is enforced by
-[`agent:qa-reviewer`](../agents.html#the-chapter-rigor-checklist) and
-recorded in [`agents.md`](../agents.html).
+[`agent:qa-reviewer`]({{ "/dft-notes/agents/#the-chapter-rigor-checklist" | relative_url }}) and
+recorded in [`agents.md`]({{ "/dft-notes/agents/" | relative_url }}).
 
 ### How to read a chapter
 
@@ -238,7 +238,7 @@ The notes are accompanied by a parallel set of Python scripts under
 `dft_notes/python_codes/`.  Every chapter has its own folder; every
 script in that folder corresponds to one of the chapter's
 worked-example snippets.  The conventions are spelled out in
-[`agents.md`](../agents.html#the-python-code-conventions); the
+[`agents.md`]({{ "/dft-notes/agents/#the-python-code-conventions" | relative_url }}); the
 short version is:
 
 - **Python 3.11+** (the version pinned in `python_codes/README.md`).
@@ -352,7 +352,7 @@ $r = 10\,a_0$.
 
 Every content chapter (chapters 01 and later) is built from the
 **same seven-part template**.  The template is enforced by
-[`agent:qa-reviewer`](../agents.html#the-chapter-rigor-checklist)
+[`agent:qa-reviewer`]({{ "/dft-notes/agents/#the-chapter-rigor-checklist" | relative_url }})
 and is reproduced verbatim from `agents.md`.  Below, each part is
 described in plain language: *what it is for*, *what level of
 detail to expect*, and *what the reader should take away*.

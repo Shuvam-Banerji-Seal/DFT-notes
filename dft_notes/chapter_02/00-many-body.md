@@ -339,7 +339,7 @@ and call the pair a "spatial orbital" (sloppy but standard usage).
 This is what every quantum-chemistry code means when it talks about
 "$N/2$ doubly-occupied spatial orbitals".
 
-**Postulate [P6]({{ site.baseurl }}/dft-notes/chapter-01/}), in
+**Postulate [P6]({{ site.baseurl }}/dft-notes/chapter-01/), in
 mathematics.**  The $N$-electron wavefunction
 $\Psi(\mathbf x_1, \dots, \mathbf x_N)$ must be *totally
 antisymmetric* under the exchange of any two combined coordinates
