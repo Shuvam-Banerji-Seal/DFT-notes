@@ -154,6 +154,7 @@
     "vendor/**",
     ".jekyll-cache/**",
     "design.md",
-    "agents.md"
+    "agents.md",
+    "session-*.md"
   ]
 }

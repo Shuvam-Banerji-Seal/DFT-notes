@@ -48,24 +48,29 @@
   }
 
   ready(function () {
-    var btn = document.querySelector("[data-theme-toggle]");
-    if (!btn) return;
+    var btns = document.querySelectorAll("[data-theme-toggle]");
+    if (!btns.length) return;
 
-    // Update the aria-label so the button announces which way it
-    // will switch.  "Switch to dark" if the current is light, etc.
-    function syncLabel() {
+    // Update the aria-label on every theme toggle so the buttons
+    // announce which way they will switch.  "Switch to dark" if
+    // the current is light, etc.
+    function syncLabels() {
       var t = currentTheme();
-      btn.setAttribute(
-        "aria-label",
-        t === "dark" ? "Switch to light theme" : "Switch to dark theme"
-      );
+      btns.forEach(function (btn) {
+        btn.setAttribute(
+          "aria-label",
+          t === "dark" ? "Switch to light theme" : "Switch to dark theme"
+        );
+      });
     }
-    syncLabel();
+    syncLabels();
 
-    btn.addEventListener("click", function () {
-      var next = currentTheme() === "dark" ? "light" : "dark";
-      applyTheme(next);
-      syncLabel();
+    btns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var next = currentTheme() === "dark" ? "light" : "dark";
+        applyTheme(next);
+        syncLabels();
+      });
     });
 
     // If the OS preference changes (e.g. user toggled the system
@@ -77,7 +82,7 @@
     var onChange = function (e) {
       if (readStored()) return; // explicit user choice wins
       applyTheme(e.matches ? "dark" : "light");
-      syncLabel();
+      syncLabels();
     };
     if (mq.addEventListener) mq.addEventListener("change", onChange);
     else if (mq.addListener) mq.addListener(onChange); // older Safari

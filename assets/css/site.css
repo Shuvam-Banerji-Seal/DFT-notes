@@ -759,27 +759,98 @@ pre.dft-mermaid-pre code.language-mermaid {
   background-color: rgba(26, 24, 20, 0.85);
 }
 
-/* --- Mobile menu (cream sheet) --- */
-.mobile-menu {
+/* --- Mobile drawer (right-side slide-in) + backdrop --- */
+
+/* Backdrop: full-viewport dim layer behind the drawer.
+   Hidden by default; shown via [data-mobile-open] on <html>
+   (set by nav.js).  The fade-in is opacity-only so it's
+   smooth on every browser. */
+.mobile-backdrop {
   position: fixed;
   inset: 0;
   z-index: var(--z-menu);
-  background-color: var(--color-canvas);
-  display: flex;
-  flex-direction: column;
-  padding: var(--space-lg) var(--container-pad) var(--space-xl);
-  animation: mobile-menu-in var(--t-normal) ease;
+  background-color: rgba(20, 18, 14, 0.45);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity var(--t-normal) ease;
+  /* Below the drawer when both are present. */
+  pointer-events: none;
 }
-.mobile-menu[hidden] {
+.mobile-backdrop[hidden] {
   display: none;
 }
-@keyframes mobile-menu-in {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
+.mobile-backdrop--visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.mobile-menu__close {
-  align-self: flex-end;
+/* The drawer is a right-side <aside>.  Hidden by default;
+   when [data-mobile-open] is set on <html>, the .mobile-drawer
+   inside the matching [data-mobile-menu] gets .mobile-drawer--open
+   and slides in. */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* Drawer width: max 320px, 86% of viewport, min 280px. */
+  width: min(320px, 86vw);
+  min-width: 280px;
+  z-index: calc(var(--z-menu) + 1);
+  background-color: var(--color-canvas);
+  border-left: 1px solid var(--color-hairline-soft);
+  box-shadow: -8px 0 24px rgba(20, 18, 14, 0.12);
+  display: flex;
+  flex-direction: column;
+  /* Drawer is always off-screen to the right; the open class
+     brings it back.  The transition runs on the transform
+     so it's smooth and GPU-accelerated. */
+  transform: translateX(100%);
+  transition: transform 280ms cubic-bezier(0.32, 0.72, 0.32, 1);
+  /* Respect safe areas on notched phones. */
+  padding-top: env(safe-area-inset-top, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  /* Hidden attribute wins until the open class is added. */
+}
+.mobile-drawer[hidden] {
+  display: none;
+}
+.mobile-drawer--open {
+  transform: translateX(0);
+}
+
+/* Drawer header: brand on the left, close button on the right. */
+.mobile-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-hairline-soft);
+  flex-shrink: 0;
+}
+.mobile-drawer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  min-height: 44px;
+}
+.mobile-drawer__brand:hover,
+.mobile-drawer__brand:focus-visible {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.mobile-drawer__wordmark {
+  white-space: nowrap;
+}
+.mobile-drawer__close {
   width: 44px;
   height: 44px;
   display: inline-flex;
@@ -787,37 +858,216 @@ pre.dft-mermaid-pre code.language-mermaid {
   justify-content: center;
   color: var(--color-ink);
   border-radius: var(--radius-md);
+  flex-shrink: 0;
+  transition: background-color var(--t-fast) ease, color var(--t-fast) ease;
 }
-.mobile-menu__close:hover,
-.mobile-menu__close:focus-visible {
+.mobile-drawer__close:hover,
+.mobile-drawer__close:focus-visible {
   background-color: var(--color-surface-card);
+  color: var(--color-primary);
 }
 
-.mobile-menu__nav {
+/* Drawer inner: the scrollable area between header and footer. */
+.mobile-drawer__inner {
+  flex: 1;
+  overflow-y: auto;
+  /* Momentum scroll on iOS. */
+  -webkit-overflow-scrolling: touch;
+  padding: var(--space-lg) var(--space-lg) var(--space-xl);
+  overscroll-behavior: contain;
+}
+
+/* Theme row inside the drawer.  Since the top-nav theme
+   switcher is hidden on mobile, the drawer's row is the
+   only place to flip light/dark. */
+.mobile-drawer__theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-hairline-soft);
+  margin-bottom: var(--space-md);
+}
+.mobile-drawer__theme-label {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption-up);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Theme switcher — drawer variant.  Renders the icon +
+   a text label that mirrors the active theme. */
+.theme-switcher--drawer {
+  width: auto;
+  height: 44px;
+  padding: 0 var(--space-md);
+  gap: var(--space-xs);
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-soft);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  transition: background-color var(--t-fast) ease,
+              border-color var(--t-fast) ease,
+              color var(--t-fast) ease,
+              transform var(--t-fast) ease;
+}
+.theme-switcher--drawer:hover,
+.theme-switcher--drawer:focus-visible {
+  background-color: var(--color-surface-card);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.theme-switcher--drawer:active {
+  transform: scale(0.97);
+}
+.theme-switcher__label {
+  min-width: 2.5em;
+  text-align: left;
+}
+
+/* Primary nav inside the drawer. */
+.mobile-drawer__nav {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
-  margin-top: var(--space-xl);
+  margin-top: var(--space-xs);
 }
-
-.mobile-menu__link {
+.mobile-drawer__link {
   font-family: var(--font-display);
-  font-size: var(--fs-display-sm);
+  font-size: var(--fs-title-md);
   font-weight: 400;
   letter-spacing: -0.01em;
   color: var(--color-ink);
-  padding: var(--space-md) 0;
+  padding: var(--space-sm) 0;
+  /* 44px minimum tap target via min-height + flex centering. */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-bottom: 1px solid var(--color-hairline-soft);
+  text-decoration: none;
+  transition: color var(--t-fast) ease, padding-left var(--t-fast) ease;
 }
-.mobile-menu__link:hover,
-.mobile-menu__link:focus-visible {
+.mobile-drawer__link:hover,
+.mobile-drawer__link:focus-visible {
+  color: var(--color-primary);
+  text-decoration: none;
+  padding-left: var(--space-xs);
+}
+.mobile-drawer__link:active {
+  background-color: var(--color-surface-soft);
+}
+.mobile-drawer__link--external {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+/* Quick-jump: <details> with a chapter grid. */
+.mobile-drawer__quickjump {
+  margin-top: var(--space-lg);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-soft);
+  overflow: hidden;
+}
+.mobile-drawer__quickjump-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  transition: background-color var(--t-fast) ease;
+}
+.mobile-drawer__quickjump-summary::-webkit-details-marker {
+  display: none;
+}
+.mobile-drawer__quickjump-summary:hover,
+.mobile-drawer__quickjump-summary:focus-visible {
+  background-color: var(--color-surface-card);
+}
+.mobile-drawer__quickjump-summary svg {
+  transition: transform var(--t-fast) ease;
+}
+.mobile-drawer__quickjump[open] .mobile-drawer__quickjump-summary svg {
+  transform: rotate(180deg);
+}
+.mobile-drawer__quickjump-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background-color: var(--color-hairline-soft);
+  padding: 1px;
+}
+.mobile-drawer__chapter {
+  background-color: var(--color-canvas);
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  color: var(--color-ink);
+  text-decoration: none;
+  /* Tap target: at least 44px tall via min-height + line-height. */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  transition: background-color var(--t-fast) ease, color var(--t-fast) ease;
+}
+.mobile-drawer__chapter:hover,
+.mobile-drawer__chapter:focus-visible {
+  background-color: var(--color-surface-soft);
   color: var(--color-primary);
   text-decoration: none;
 }
+.mobile-drawer__chapter:active {
+  background-color: var(--color-surface-card);
+}
 
-.mobile-menu__footer {
-  margin-top: auto;
-  padding-top: var(--space-xl);
+/* Divider between nav and footer/external links. */
+.mobile-drawer__divider {
+  height: 1px;
+  background-color: var(--color-hairline-soft);
+  margin: var(--space-md) 0;
+}
+
+/* Footer: CTA "Read the notes" pinned to bottom. */
+.mobile-drawer__footer {
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  border-top: 1px solid var(--color-hairline-soft);
+  background-color: var(--color-canvas);
+  flex-shrink: 0;
+}
+
+/* Body scroll lock while the drawer is open.
+   We lock <html> (not body) so the lock works on iOS too.
+   When there's enough horizontal room, we shift the page
+   slightly so the drawer doesn't fully obscure the content
+   — gives the user context. */
+[data-mobile-open] {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* Reduced motion: skip the slide animation, instant open. */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-drawer {
+    transition: none;
+  }
+  .mobile-backdrop {
+    transition: none;
+  }
 }
 
 
@@ -1451,12 +1701,28 @@ mjx-container[display="true"] {
   }
 }
 
-/* Below 768px: hide the horizontal nav and CTA, show hamburger. */
+/* Below 768px: hide the horizontal nav and CTA, show hamburger.
+   The top-nav stays a single row so the wordmark + theme toggle +
+   hamburger fit comfortably on a 320px-wide screen. */
 @media (max-width: 767.98px) {
+  .top-nav {
+    height: 56px;
+  }
+  .top-nav__inner {
+    gap: var(--space-sm);
+    padding: 0 var(--space-md);
+  }
   .top-nav__menu { display: none; }
   .top-nav__link--text { display: none; }
   .top-nav__cta { display: none; }
   .top-nav__hamburger { display: inline-flex; }
+  .top-nav__brand {
+    font-size: 1.0625rem;
+  }
+  .theme-switcher {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 /* Desktop: 1024px and up — full nav, full grids, 3-up features. */
@@ -1536,6 +1802,16 @@ mjx-container[display="true"] {
 
 /* === 13. Accessibility + motion ============================ */
 
+/* Page-load fade-in.  The <main> element fades and rises slightly
+   on initial paint.  Disabled for users with reduced-motion. */
+.site-main {
+  animation: page-fade-in 280ms cubic-bezier(0.32, 0.72, 0.32, 1) both;
+}
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* Visible focus ring for keyboard users. */
 :focus-visible {
   outline: 2px solid var(--color-primary);
@@ -1546,7 +1822,10 @@ mjx-container[display="true"] {
 .top-nav__link:focus-visible,
 .top-nav__brand:focus-visible,
 .top-nav__hamburger:focus-visible,
-.mobile-menu__link:focus-visible {
+.mobile-drawer__link:focus-visible,
+.mobile-drawer__brand:focus-visible,
+.mobile-drawer__close:focus-visible,
+.mobile-drawer__chapter:focus-visible {
   outline-offset: 4px;
 }
 
@@ -1558,9 +1837,4 @@ mjx-container[display="true"] {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* Body lock when the mobile menu is open. */
-body.nav-open {
-  overflow: hidden;
 }

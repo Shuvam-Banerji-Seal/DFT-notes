@@ -1,22 +1,36 @@
 {%- comment -%}
-  Top navigation — sticky cream (or warm-dark in dark mode)
-  canvas, 64px tall.  Renders the spike-mark + wordmark on the
-  left, the primary menu in the middle, and a cluster of action
-  items on the right: theme switcher, GitHub text-link, coral
-  "Read the notes" CTA, and a hamburger button (mobile only).
+  Top navigation — sticky cream (or warm-dark in dark mode) canvas,
+  64px tall on desktop, auto on mobile (allows wordmark + actions to
+  breathe).  Renders the spike-mark + wordmark on the left, the
+  primary menu in the middle, and a cluster of action items on the
+  right: theme switcher, GitHub text-link, coral "Read the notes" CTA,
+  and a hamburger button (mobile only).
 
   Adapted from the design.md spec:
     - `top-nav` background = canvas
     - menu type            = nav-link (Inter 14px / 500)
     - primary CTA          = button-primary (coral)
     - wordmark prefix      = spike-mark (4-spoke radial)
-    - theme switcher       = small icon button, sun/moon swap
-                             on `[data-theme="dark"]` on <html>
+    - theme switcher       = small icon button, sun/moon swap on
+                             `[data-theme="dark"]` on <html>
 
-  The mobile sheet (data-mobile-menu) is hidden on desktop and
-  revealed by nav.js on hamburger click.
+  Mobile menu (data-mobile-menu) is a right-side slide-in drawer with:
+    - Backdrop overlay (click-to-dismiss)
+    - Body scroll lock while open
+    - Theme switcher in the drawer (since the top-nav theme toggle
+      is hidden on mobile)
+    - Active page indicator
+    - Chapter quick-jump (00-17) at the top
+    - Close button (X) at top-right
+    - "Read the notes" CTA at the bottom
+    - 44px minimum tap targets throughout
+
+  State management:
+    - data-mobile-open="true" on body when menu is open
+    - aria-expanded="true" on hamburger when open
+    - data-nav-link: any link inside the drawer (auto-closes on tap)
 {%- endcomment -%}
-<header class="top-nav" role="banner">
+<header class="top-nav" role="banner" data-top-nav>
   <div class="top-nav__inner">
     <a href="{{ '/' | relative_url }}" class="top-nav__brand" aria-label="DFT Notes — home">
       {%- include spike-mark.html size=18 -%}
@@ -27,6 +41,7 @@
       <a href="{{ '/dft-notes/' | relative_url }}" class="top-nav__link">Chapters</a>
       <a href="{{ '/dft-notes/chapters-map/' | relative_url }}" class="top-nav__link">Map</a>
       <a href="{{ '/dft-notes/python_codes/' | relative_url }}" class="top-nav__link">Python</a>
+      <a href="{{ '/dft-notes/extras/bibliography/' | relative_url }}" class="top-nav__link">Bibliography</a>
       <a href="{{ '/design.md' | relative_url }}" class="top-nav__link">Design</a>
       <a href="{{ '/CONTRIBUTING.md' | relative_url }}" class="top-nav__link">Contributing</a>
     </nav>
@@ -87,42 +102,134 @@
       </button>
     </div>
   </div>
+</header>
 
-  <div class="mobile-menu" id="mobile-menu" hidden data-mobile-menu>
+{#- Backdrop overlay (mobile drawer). Rendered outside the top-nav so
+    it covers the full viewport. Click-to-dismiss. -#}
+<div class="mobile-backdrop" data-mobile-backdrop hidden></div>
+
+{#- Mobile drawer — right-side slide-in. Rendered outside the top-nav so
+    z-index works correctly. -#}
+<aside class="mobile-drawer" id="mobile-menu" role="dialog" aria-modal="true"
+       aria-label="Menu" hidden data-mobile-menu>
+  <div class="mobile-drawer__header">
+    <a href="{{ '/' | relative_url }}" class="mobile-drawer__brand" aria-label="DFT Notes — home"
+       data-nav-link>
+      {%- include spike-mark.html size=20 -%}
+      <span class="mobile-drawer__wordmark">DFT&nbsp;Notes</span>
+    </a>
     <button
       type="button"
-      class="mobile-menu__close"
+      class="mobile-drawer__close"
       aria-label="Close menu"
       data-nav-close
     >
-      <svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false">
+      <svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true" focusable="false">
         <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-          <line x1="3" y1="3" x2="13" y2="13"/>
-          <line x1="13" y1="3" x2="3" y2="13"/>
+          <line x1="4" y1="4" x2="16" y2="16"/>
+          <line x1="16" y1="4" x2="4" y2="16"/>
         </g>
       </svg>
     </button>
-    <nav class="mobile-menu__nav" aria-label="Mobile">
-      <a href="{{ '/dft-notes/' | relative_url }}" class="mobile-menu__link" data-nav-link>Chapters</a>
-      <a href="{{ '/dft-notes/chapters-map/' | relative_url }}" class="mobile-menu__link" data-nav-link>Chapters map</a>
-      <a href="{{ '/dft-notes/python_codes/' | relative_url }}" class="mobile-menu__link" data-nav-link>Python codes</a>
-      <a href="{{ '/design.md' | relative_url }}" class="mobile-menu__link" data-nav-link>Design spec</a>
-      <a href="{{ '/CONTRIBUTING.md' | relative_url }}" class="mobile-menu__link" data-nav-link>Contributing</a>
-      <a
-        href="https://github.com/Shuvam-Banerji-Seal/DFT-notes"
-        class="mobile-menu__link"
-        rel="noopener"
-        data-nav-link
-      >GitHub ↗</a>
-    </nav>
-    <div class="mobile-menu__footer">
-      <a
-        href="{{ '/dft-notes/chapter-00/' | relative_url }}"
-        class="btn btn--primary btn--block"
-        data-nav-link
-      >
-        Read the notes
-      </a>
-    </div>
   </div>
-</header>
+
+  <div class="mobile-drawer__inner">
+    {#- Theme toggle (since the top-nav toggle is hidden on mobile). -#}
+    <div class="mobile-drawer__theme">
+      <span class="mobile-drawer__theme-label">Theme</span>
+      <button
+        type="button"
+        class="theme-switcher theme-switcher--drawer"
+        aria-label="Switch theme"
+        data-theme-toggle
+      >
+        <svg class="theme-switcher__icon theme-switcher__icon--sun" viewBox="0 0 16 16" width="20" height="20" aria-hidden="true" focusable="false">
+          <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none">
+            <circle cx="8" cy="8" r="2.6"/>
+            <line x1="8" y1="1.4" x2="8" y2="3"/>
+            <line x1="8" y1="13" x2="8" y2="14.6"/>
+            <line x1="1.4" y1="8" x2="3" y2="8"/>
+            <line x1="13" y1="8" x2="14.6" y2="8"/>
+            <line x1="3.1" y1="3.1" x2="4.3" y2="4.3"/>
+            <line x1="11.7" y1="11.7" x2="12.9" y2="12.9"/>
+            <line x1="3.1" y1="12.9" x2="4.3" y2="11.7"/>
+            <line x1="11.7" y1="4.3" x2="12.9" y2="3.1"/>
+          </g>
+        </svg>
+        <svg class="theme-switcher__icon theme-switcher__icon--moon" viewBox="0 0 16 16" width="20" height="20" aria-hidden="true" focusable="false">
+          <path
+            d="M13.5 10.2 A5 5 0 0 1 5.8 2.5 A6 6 0 1 0 13.5 10.2 Z"
+            fill="currentColor"
+          />
+        </svg>
+        <span class="theme-switcher__label" data-theme-label>Light</span>
+      </button>
+    </div>
+
+    {#- Primary navigation -#}
+    <nav class="mobile-drawer__nav" aria-label="Mobile primary">
+      <a href="{{ '/dft-notes/' | relative_url }}" class="mobile-drawer__link"
+         data-nav-link>Chapters</a>
+      <a href="{{ '/dft-notes/chapters-map/' | relative_url }}" class="mobile-drawer__link"
+         data-nav-link>Chapters map</a>
+      <a href="{{ '/dft-notes/python_codes/' | relative_url }}" class="mobile-drawer__link"
+         data-nav-link>Python codes</a>
+      <a href="{{ '/dft-notes/extras/bibliography/' | relative_url }}" class="mobile-drawer__link"
+         data-nav-link>Bibliography</a>
+      <a href="{{ '/dft-notes/extras/worked-examples/' | relative_url }}" class="mobile-drawer__link"
+         data-nav-link>Worked examples</a>
+      <a href="{{ '/dft-notes/extras/numerical-methods/' | relative_url }}" class="mobile-drawer__link"
+         data-nav-link>Numerical methods</a>
+      <a href="{{ '/dft-notes/extras/faq/' | relative_url }}" class="mobile-drawer__link"
+         data-nav-link>FAQ</a>
+    </nav>
+
+    {#- Chapter quick-jump -#}
+    <details class="mobile-drawer__quickjump" data-quickjump>
+      <summary class="mobile-drawer__quickjump-summary">
+        <span>Jump to chapter</span>
+        <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false">
+          <path d="M3 4.5 L6 7.5 L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </summary>
+      <div class="mobile-drawer__quickjump-grid">
+        {% for ch in (0..17) %}
+        <a href="{{ '/dft-notes/chapter-' | append: ch | append: '/' | relative_url }}"
+           class="mobile-drawer__chapter"
+           data-nav-link>{{ ch | minus: 1 | at_least: 0 | times: 1 | divided_by: 1 | round: 0 }}{% if ch == 0 %}·Welcome{% elsif ch == 1 %}·Schrödinger{% elsif ch == 2 %}·Many-body{% elsif ch == 3 %}·Hartree–Fock{% elsif ch == 4 %}·Kohn–Sham{% elsif ch == 5 %}·XC{% elsif ch == 6 %}·Basis sets{% elsif ch == 7 %}·PBC{% elsif ch == 8 %}·Pseudopotentials{% elsif ch == 9 %}·Forces{% elsif ch == 10 %}·Phonons{% elsif ch == 11 %}·Bands{% elsif ch == 12 %}·TDDFT{% elsif ch == 13 %}·DFT+U{% elsif ch == 14 %}·Beyond DFT{% elsif ch == 15 %}·Relativistic{% elsif ch == 16 %}·Topological{% else %}·ML for DFT{% endif %}</a>
+        {% endfor %}
+      </div>
+    </details>
+
+    <div class="mobile-drawer__divider"></div>
+
+    <a
+      href="https://github.com/Shuvam-Banerji-Seal/DFT-notes"
+      class="mobile-drawer__link mobile-drawer__link--external"
+      rel="noopener"
+      data-nav-link
+    >
+      GitHub <span aria-hidden="true">↗</span>
+    </a>
+    <a
+      href="{{ '/design.md' | relative_url }}"
+      class="mobile-drawer__link"
+      data-nav-link
+    >Design spec</a>
+    <a
+      href="{{ '/CONTRIBUTING.md' | relative_url }}"
+      class="mobile-drawer__link"
+      data-nav-link
+    >Contributing</a>
+  </div>
+
+  <div class="mobile-drawer__footer">
+    <a
+      href="{{ '/dft-notes/chapter-00/' | relative_url }}"
+      class="btn btn--primary btn--block"
+      data-nav-link
+    >
+      Read the notes
+    </a>
+  </div>
+</aside>
