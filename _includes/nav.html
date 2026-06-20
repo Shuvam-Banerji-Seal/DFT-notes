@@ -104,12 +104,12 @@
   </div>
 </header>
 
-{#- Backdrop overlay (mobile drawer). Rendered outside the top-nav so
-    it covers the full viewport. Click-to-dismiss. -#}
+{%- comment -%} Backdrop overlay (mobile drawer). Rendered outside the top-nav so
+    it covers the full viewport. Click-to-dismiss. {%- endcomment -%}
 <div class="mobile-backdrop" data-mobile-backdrop hidden></div>
 
-{#- Mobile drawer — right-side slide-in. Rendered outside the top-nav so
-    z-index works correctly. -#}
+{%- comment -%} Mobile drawer — right-side slide-in. Rendered outside the top-nav so
+    z-index works correctly. {%- endcomment -%}
 <aside class="mobile-drawer" id="mobile-menu" role="dialog" aria-modal="true"
        aria-label="Menu" hidden data-mobile-menu>
   <div class="mobile-drawer__header">
@@ -134,7 +134,7 @@
   </div>
 
   <div class="mobile-drawer__inner">
-    {#- Theme toggle (since the top-nav toggle is hidden on mobile). -#}
+    {%- comment -%} Theme toggle (since the top-nav toggle is hidden on mobile). {%- endcomment -%}
     <div class="mobile-drawer__theme">
       <span class="mobile-drawer__theme-label">Theme</span>
       <button
@@ -166,7 +166,7 @@
       </button>
     </div>
 
-    {#- Primary navigation -#}
+    {%- comment -%} Primary navigation {%- endcomment -%}
     <nav class="mobile-drawer__nav" aria-label="Mobile primary">
       <a href="{{ '/dft-notes/' | relative_url }}" class="mobile-drawer__link"
          data-nav-link>Chapters</a>
@@ -184,7 +184,7 @@
          data-nav-link>FAQ</a>
     </nav>
 
-    {#- Chapter quick-jump -#}
+    {%- comment -%} Chapter quick-jump {%- endcomment -%}
     <details class="mobile-drawer__quickjump" data-quickjump>
       <summary class="mobile-drawer__quickjump-summary">
         <span>Jump to chapter</span>

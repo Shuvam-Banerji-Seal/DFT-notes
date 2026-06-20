@@ -65,3 +65,4 @@ exclude:
   - .markdownlint-cli2.jsonc
   - vendor
   - node_modules
+  - session-*.md
