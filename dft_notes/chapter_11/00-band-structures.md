@@ -106,7 +106,7 @@ Dirac delta:
 \begin{equation}
 \label{eq:ch-11-dos}
 g(E) \;=\; \frac{1}{V_\text{BZ}} \sum_n \int_\text{BZ} d\mathbf k \;
-         \delta\bigl(E - \varepsilon_{n\mathbf k}\bigr) ,
+         \delta\Bigl(E - \varepsilon_{n\mathbf k}\Bigr) ,
 \end{equation}
 
 where $V_\text{BZ} = (2\pi)^3 / V_\text{cell}$ is the volume of the
@@ -142,9 +142,9 @@ which the band energy equals the Fermi energy:
 
 \begin{equation}
 \label{eq:ch-11-fs}
-\text{FS} \;=\; \bigl\{ \mathbf k \in \text{BZ} \;:\;
+\text{FS} \;=\; \Bigl\lbrace \mathbf k \in \text{BZ} \;:\;
                 \varepsilon_{n\mathbf k} = \varepsilon_F
-                \text{ for some band } n \bigr\}.
+                \text{ for some band } n \Bigr\rbrace.
 \end{equation}
 
 For a metal, this is a 2-D surface in the 3-D Brillouin zone (or, in
@@ -499,7 +499,7 @@ behaviour of the total energy at small $\sigma$:
 The $l = 0$ term is the Gaussian.  The coefficients $A_l$ are
 chosen so that the integral of $\delta_\sigma^\text{MP}$ over a
 band-pass $[-\infty, E]$ reproduces the step function to order
-$\sigma^{2N_\text{MP}}$: the *systematic* error in the total energy
+$\sigma^{2N_\text{MP}$: the *systematic* error in the total energy
 falls as $\sigma^2$ for $N_\text{MP} = 0$ (Gaussian), $\sigma^4$
 for $N_\text{MP} = 1$, $\sigma^6$ for $N_\text{MP} = 2$, and so on.
 The MP smearing is the standard for high-throughput DFT: the total
@@ -561,8 +561,8 @@ $a$, orbital index $\mu$) is
 \begin{equation}
 \label{eq:ch-11-pdos}
 g_\mu(E) \;=\; \frac{1}{V_\text{BZ}} \sum_n \int_\text{BZ} d\mathbf k \;
-   \bigl| \langle \chi_\mu^{(a)} \mid \psi_{n\mathbf k} \rangle \bigr|^2 \,
-   \delta\bigl(E - \varepsilon_{n\mathbf k}\bigr) .
+   \Bigl| \langle \chi_\mu^{(a)} \mid \psi_{n\mathbf k} \rangle \Bigr|^2 \,
+   \delta\Bigl(E - \varepsilon_{n\mathbf k}\Bigr) .
 \end{equation}
 
 The square of the projection amplitude
@@ -611,8 +611,8 @@ point $\mathbf r$:
 \begin{equation}
 \label{eq:ch-11-ldos}
 g(\mathbf r, E) \;=\; \sum_n \int_\text{BZ} d\mathbf k \;
-   \bigl| \psi_{n\mathbf k}(\mathbf r) \bigr|^2 \,
-   \delta\bigl(E - \varepsilon_{n\mathbf k}\bigr) .
+   \Bigl| \psi_{n\mathbf k}(\mathbf r) \Bigr|^2 \,
+   \delta\Bigl(E - \varepsilon_{n\mathbf k}\Bigr) .
 \end{equation}
 
 A 2-D plot of $g(\mathbf r, E_F)$ on a surface is the standard
@@ -813,7 +813,7 @@ adding a term
 \begin{equation}
 \label{eq:ch-11-soc}
 \hat H_\text{SO} \;=\; \frac{1}{2} \boldsymbol\sigma \cdot
-                     \bigl(\nabla V \times \hat{\mathbf p}\bigr) ,
+                     \Bigl(\nabla V \times \hat{\mathbf p}\Bigr) ,
 \end{equation}
 
 where $\boldsymbol\sigma = (\sigma_x, \sigma_y, \sigma_z)$ are the
@@ -957,7 +957,7 @@ inner product:
 
 \begin{equation}
 \label{eq:ch-11-proj-amp}
-w_{n\mathbf k, \mu}^{(a)} \;=\; \bigl| \langle \chi_\mu^{(a)} \mid \psi_{n\mathbf k} \rangle \bigr|^2 .
+w_{n\mathbf k, \mu}^{(a)} \;=\; \Bigl| \langle \chi_\mu^{(a)} \mid \psi_{n\mathbf k} \rangle \Bigr|^2 .
 \end{equation}
 
 The sum over all orbitals of the cell,
@@ -1283,8 +1283,8 @@ The tight-binding band structure on a minimal $\pi$-orbital basis
 \label{eq:ch-11-graphene-dispersion}
 \varepsilon_\pm(\mathbf k) \;=\; \pm |f(\mathbf k)| ,
 \qquad
-f(\mathbf k) \;=\; t \bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
-                                 + e^{i \mathbf k \cdot \mathbf a_2} \bigr) .
+f(\mathbf k) \;=\; t \Bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
+                                 + e^{i \mathbf k \cdot \mathbf a_2} \Bigr) .
 \end{equation}
 
 The two bands are the $\pi$ (occupied, lower) and $\pi^*$ (empty,
@@ -1457,8 +1457,8 @@ direct lattice are
 
 \begin{equation}
 \label{eq:ch-11-graphene-a1a2}
-\mathbf a_1 \;=\; a \bigl(1, 0\bigr) , \qquad
-\mathbf a_2 \;=\; a \bigl(\tfrac{1}{2}, \tfrac{\sqrt 3}{2}\bigr) ,
+\mathbf a_1 \;=\; a \Bigl(1, 0\Bigr) , \qquad
+\mathbf a_2 \;=\; a \Bigl(\tfrac{1}{2}, \tfrac{\sqrt 3}{2}\Bigr) ,
 \end{equation}
 
 where $a \approx 2.46\,\text{Å} \approx 4.65\,a_0$ is the
@@ -1469,15 +1469,15 @@ sublattice at
 
 \begin{equation}
 \label{eq:ch-11-graphene-tau}
-\boldsymbol\tau_B \;=\; \bigl(0, a/\sqrt 3\bigr) .
+\boldsymbol\tau_B \;=\; \Bigl(0, a/\sqrt 3\Bigr) .
 \end{equation}
 
 The three nearest neighbours of an A atom are
 
 \begin{align}
-\boldsymbol\delta_1 &\;=\; \bigl(0, a/\sqrt 3\bigr) \;=\; \boldsymbol\tau_B , \nonumber \\
-\boldsymbol\delta_2 &\;=\; \bigl(a/2, -a/(2\sqrt 3)\bigr) \;=\; \boldsymbol\tau_B - \mathbf a_1 , \nonumber \\
-\boldsymbol\delta_3 &\;=\; \bigl(-a/2, -a/(2\sqrt 3)\bigr) \;=\; \boldsymbol\tau_B - \mathbf a_2 .
+\boldsymbol\delta_1 &\;=\; \Bigl(0, a/\sqrt 3\Bigr) \;=\; \boldsymbol\tau_B , \nonumber \\
+\boldsymbol\delta_2 &\;=\; \Bigl(a/2, -a/(2\sqrt 3)\Bigr) \;=\; \boldsymbol\tau_B - \mathbf a_1 , \nonumber \\
+\boldsymbol\delta_3 &\;=\; \Bigl(-a/2, -a/(2\sqrt 3)\Bigr) \;=\; \boldsymbol\tau_B - \mathbf a_2 .
 \end{align}
 
 The three nearest neighbours of a B atom are the negatives:
@@ -1488,8 +1488,8 @@ $\mathbf a_i \cdot \mathbf b_j = 2\pi \delta_{ij}$:
 
 \begin{equation}
 \label{eq:ch-11-graphene-b1b2}
-\mathbf b_1 \;=\; \frac{2\pi}{a} \bigl(1, -1/\sqrt 3\bigr) , \qquad
-\mathbf b_2 \;=\; \frac{2\pi}{a} \bigl(0, 2/\sqrt 3\bigr) .
+\mathbf b_1 \;=\; \frac{2\pi}{a} \Bigl(1, -1/\sqrt 3\Bigr) , \qquad
+\mathbf b_2 \;=\; \frac{2\pi}{a} \Bigl(0, 2/\sqrt 3\Bigr) .
 \end{equation}
 
 The first Brillouin zone is a regular hexagon.  The high-symmetry
@@ -1535,8 +1535,8 @@ between A and B:
 \begin{equation}
 \label{eq:ch-11-graphene-offdiag}
 \langle \phi_A | \hat H | \phi_B \rangle_\mathbf k
-   \;=\; t \bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
-                   + e^{i \mathbf k \cdot \mathbf a_2} \bigr)
+   \;=\; t \Bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
+                   + e^{i \mathbf k \cdot \mathbf a_2} \Bigr)
    \;\equiv\; f(\mathbf k) .
 \end{equation}
 
@@ -1562,8 +1562,8 @@ H(\mathbf k) \;=\;
 f^*(\mathbf k) & 0
 \end{pmatrix} ,
 \qquad
-f(\mathbf k) \;=\; t \bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
-                              + e^{i \mathbf k \cdot \mathbf a_2} \bigr) .
+f(\mathbf k) \;=\; t \Bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
+                              + e^{i \mathbf k \cdot \mathbf a_2} \Bigr) .
 \end{equation}
 
 The off-diagonal complex conjugate is from the Hermiticity of $H$:
@@ -1600,13 +1600,13 @@ the $\pi^*$ band at $\Gamma$.
 The explicit form of $|f(\mathbf k)|^2$ is
 
 \begin{align}
-|f(\mathbf k)|^2 &= t^2 \bigl(1 + e^{i \mathbf k \cdot \mathbf a_1}
-                                     + e^{i \mathbf k \cdot \mathbf a_2}\bigr)
-                        \bigl(1 + e^{-i \mathbf k \cdot \mathbf a_1}
-                                     + e^{-i \mathbf k \cdot \mathbf a_2}\bigr) \nonumber \\
+|f(\mathbf k)|^2 &= t^2 \Bigl(1 + e^{i \mathbf k \cdot \mathbf a_1}
+                                     + e^{i \mathbf k \cdot \mathbf a_2}\Bigr)
+                        \Bigl(1 + e^{-i \mathbf k \cdot \mathbf a_1}
+                                     + e^{-i \mathbf k \cdot \mathbf a_2}\Bigr) \nonumber \\
    &= t^2 \Bigl[ 3 + 2 \cos(\mathbf k \cdot \mathbf a_1)
                   + 2 \cos(\mathbf k \cdot \mathbf a_2)
-                  + 2 \cos\bigl(\mathbf k \cdot (\mathbf a_1 - \mathbf a_2)\bigr) \Bigr] .
+                  + 2 \cos\Bigl(\mathbf k \cdot (\mathbf a_1 - \mathbf a_2)\Bigr) \Bigr] .
 \end{align}
 
 This is the standard "three-cosine" tight-binding band of graphene.
@@ -1643,7 +1643,7 @@ the second:
 
 $$
 \pi / 3 + k_y a \sqrt 3 / 2 = 4\pi / 3 \;\Longrightarrow\;
-k_y = \frac{2\pi}{a \sqrt 3} \bigl( 4\pi/3 - \pi/3 \bigr) \frac{1}{\pi}
+k_y = \frac{2\pi}{a \sqrt 3} \Bigl( 4\pi/3 - \pi/3 \Bigr) \frac{1}{\pi}
    \;=\; \frac{2\pi}{a \sqrt 3} .
 $$
 
@@ -1950,7 +1950,7 @@ $$
 **The DOS.**  The number of states with energy $\le E$ is
 
 $$
-\mathcal{N}(E) \;=\; N\bigl( k(E) \bigr) \;=\; \frac{L}{\pi} \sqrt{\frac{2mE}{\hbar^2}} .
+\mathcal{N}(E) \;=\; N\Bigl( k(E) \Bigr) \;=\; \frac{L}{\pi} \sqrt{\frac{2mE}{\hbar^2}} .
 $$
 
 The DOS (number of states per unit length per unit energy) is the
@@ -1987,7 +1987,7 @@ $\varepsilon_0$, the band energy has a Taylor expansion
 
 $$
 \varepsilon_{n\mathbf k} \;=\; \varepsilon_0 \;+\;
-   \frac{1}{2} \sum_{ij} (k - k_0)_i \, H_{ij} \, (k - k_0)_j \;+\; O\bigl((\Delta k)^3\bigr) ,
+   \frac{1}{2} \sum_{ij} (k - k_0)_i \, H_{ij} \, (k - k_0)_j \;+\; O\Bigl((\Delta k)^3\Bigr) ,
 $$
 
 where $H_{ij} = \partial^2 \varepsilon / \partial k_i \partial k_j$
@@ -2126,8 +2126,8 @@ with the diagonal elements set to $\varepsilon_A = \varepsilon_B = 0$
 (we measure energies from the centre of the $\pi$–$\pi^*$ pair), and
 
 $$
-f(\mathbf k) \;=\; t \bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
-                              + e^{i \mathbf k \cdot \mathbf a_2} \bigr) .
+f(\mathbf k) \;=\; t \Bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
+                              + e^{i \mathbf k \cdot \mathbf a_2} \Bigr) .
 $$
 
 This is equation \eqref{eq:ch-11-graphene-hk2} of section 11.9.2. **Part 2.**  The eigenvalues of the $2 \times 2$ matrix are
@@ -2159,8 +2159,8 @@ The first term is $f(\mathbf k_K) = 0$ (the bands touch here).  The
 gradient is
 
 $$
-\nabla_\mathbf k f \;=\; i t \bigl( \mathbf a_1 e^{i \mathbf k \cdot \mathbf a_1}
-                                       + \mathbf a_2 e^{i \mathbf k \cdot \mathbf a_2} \bigr) .
+\nabla_\mathbf k f \;=\; i t \Bigl( \mathbf a_1 e^{i \mathbf k \cdot \mathbf a_1}
+                                       + \mathbf a_2 e^{i \mathbf k \cdot \mathbf a_2} \Bigr) .
 $$
 
 At $\mathbf k = \mathbf k_K$, $e^{i \mathbf k_K \cdot \mathbf a_1}
@@ -2169,10 +2169,10 @@ e^{4\pi i / 3}$.  Write the primitive vectors in Cartesian form:
 $\mathbf a_1 = a(1, 0)$ and $\mathbf a_2 = a(1/2, \sqrt 3/2)$.  Then
 
 $$
-\nabla_\mathbf k f \big|_{\mathbf k_K} \;=\; i t a \bigl[
+\nabla_\mathbf k f \big|_{\mathbf k_K} \;=\; i t a \Bigl[
    (1, 0) e^{2\pi i / 3}
  + (1/2, \sqrt 3/2) e^{4\pi i / 3}
-\bigr] .
+\Bigr] .
 $$
 
 Compute the components:

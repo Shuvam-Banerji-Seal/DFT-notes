@@ -475,7 +475,7 @@ descriptor is the *overlap* of $\rho_i$ with itself,
 
 \begin{equation}
 \label{eq:ch-17-soap-overlap}
-k_i(R, R') \;=\; \int d\hat R \;\bigl| \int d\mathbf r\; \rho_i(\mathbf r) \rho_i(\hat R\,\mathbf r') \bigr|^2 .
+k_i(R, R') \;=\; \int d\hat R \;\Bigl| \int d\mathbf r\; \rho_i(\mathbf r) \rho_i(\hat R\,\mathbf r') \Bigr|^2 .
 \end{equation}
 
 The integral over $\hat R \in \text{SO}(3)$ is the
@@ -504,7 +504,7 @@ density.  The rotation-invariant kernel is
 
 \begin{equation}
 \label{eq:ch-17-soap-power}
-k_i(R, R') \;=\; \sum_{n n' \ell} \bigl| p_{n n' \ell}^{(i)}(R) \bigr| \cdot \bigl| p_{n n' \ell}^{(i)}(R') \bigr| ,
+k_i(R, R') \;=\; \sum_{n n' \ell} \Bigl| p_{n n' \ell}^{(i)}(R) \Bigr| \cdot \Bigl| p_{n n' \ell}^{(i)}(R') \Bigr| ,
 \end{equation}
 
 where the **power-spectrum** coefficients are
@@ -721,7 +721,7 @@ mean-squared error of the energies:
 
 \begin{equation}
 \label{eq:ch-17-loss-energy}
-\mathcal L_E \;=\; \frac{1}{|\mathcal D|} \sum_{R \in \mathcal D} \bigl| E_\text{MLIP}(R) - E_\text{DFT}(R) \bigr|^2 .
+\mathcal L_E \;=\; \frac{1}{|\mathcal D|} \sum_{R \in \mathcal D} \Bigl| E_\text{MLIP}(R) - E_\text{DFT}(R) \Bigr|^2 .
 \end{equation}
 
 For a *production* MLIP, the loss includes
@@ -743,7 +743,7 @@ The **force loss** is
 
 \begin{equation}
 \label{eq:ch-17-loss-force}
-\mathcal L_F \;=\; \frac{1}{|\mathcal D|} \sum_{R \in \mathcal D} \frac{1}{N_\text{at}(R)} \sum_i \bigl| \mathbf F_i^\text{MLIP}(R) - \mathbf F_i^\text{DFT}(R) \bigr|^2 ,
+\mathcal L_F \;=\; \frac{1}{|\mathcal D|} \sum_{R \in \mathcal D} \frac{1}{N_\text{at}(R)} \sum_i \Bigl| \mathbf F_i^\text{MLIP}(R) - \mathbf F_i^\text{DFT}(R) \Bigr|^2 ,
 \end{equation}
 
 the mean-squared error of the per-atom forces,
@@ -1531,7 +1531,7 @@ predictions:
 
 \begin{equation}
 \label{eq:ch-17-qbc}
-\sigma_\text{QBC}(R) \;=\; \sqrt{\frac{1}{K} \sum_{k=1}^K \bigl| E_{\mathcal M_k}(R) - \bar E(R) \bigr|^2} ,
+\sigma_\text{QBC}(R) \;=\; \sqrt{\frac{1}{K} \sum_{k=1}^K \Bigl| E_{\mathcal M_k}(R) - \bar E(R) \Bigr|^2} ,
 \end{equation}
 
 where $\bar E(R) = \tfrac{1}{K} \sum_k E_{\mathcal
@@ -2225,7 +2225,7 @@ of the total energy:
 
 \begin{equation}
 \label{eq:ch-17-bp-energy}
-E_\text{tot}(R) \;\approx\; \sum_{i=1}^{N_\text{at}} E_i\bigl(\mathbf d_i(R)\bigr) ,
+E_\text{tot}(R) \;\approx\; \sum_{i=1}^{N_\text{at}} E_i\Bigl(\mathbf d_i(R)\Bigr) ,
 \end{equation}
 
 where $\mathbf d_i(R) \in \mathbb R^D$ is a
@@ -2364,7 +2364,7 @@ key equation is the *Gaussian-process regression*:
 \begin{equation}
 \label{eq:ch-17-gap}
 E(R) \;\approx\; \sum_{\alpha} w_\alpha \,
-k\bigl(\mathbf d(R), \mathbf d(R_\alpha)\bigr) ,
+k\Bigl(\mathbf d(R), \mathbf d(R_\alpha)\Bigr) ,
 \end{equation}
 
 where $\mathbf d(R)$ is the descriptor of the
@@ -2498,7 +2498,7 @@ environments is
 
 \begin{equation}
 \label{eq:ch-17-soap-kernel}
-k(R, R') \;=\; \sum_{n n' \ell} \bigl| p_{n n' \ell}(R) \bigr| \cdot \bigl| p_{n n' \ell}(R') \bigr| ,
+k(R, R') \;=\; \sum_{n n' \ell} \Bigl| p_{n n' \ell}(R) \Bigr| \cdot \Bigl| p_{n n' \ell}(R') \Bigr| ,
 \end{equation}
 
 a positive-definite function on the space of atomic
@@ -2594,7 +2594,7 @@ $Z_i$ and then *refined* by $T$ *interaction passes*
 
 \begin{equation}
 \label{eq:ch-17-schnet-pass}
-\mathbf x_i^{(t+1)} \;=\; \mathbf x_i^{(t)} \;+\; \sum_{j \neq i} \mathbf v_{ij}^{(t)}\bigl(\mathbf x_i^{(t)}, \mathbf x_j^{(t)}, r_{ij}\bigr) ,
+\mathbf x_i^{(t+1)} \;=\; \mathbf x_i^{(t)} \;+\; \sum_{j \neq i} \mathbf v_{ij}^{(t)}\Bigl(\mathbf x_i^{(t)}, \mathbf x_j^{(t)}, r_{ij}\Bigr) ,
 \end{equation}
 
 a *message* from atom $j$ to atom $i$ that depends on
@@ -2617,7 +2617,7 @@ factorisation has the form
 
 \begin{equation}
 \label{eq:ch-17-schnet-cfconv}
-\mathbf v_{ij} \;=\; \bigl(\mathbf W_f \cdot \mathbf x_i \bigr) \circ \bigl(\mathbf W_d \cdot \mathbf d_{ij}\bigr) \circ \bigl(\mathbf W_c \cdot \mathbf x_j\bigr) ,
+\mathbf v_{ij} \;=\; \Bigl(\mathbf W_f \cdot \mathbf x_i \Bigr) \circ \Bigl(\mathbf W_d \cdot \mathbf d_{ij}\Bigr) \circ \Bigl(\mathbf W_c \cdot \mathbf x_j\Bigr) ,
 \end{equation}
 
 where $\mathbf d_{ij} \in \mathbb R^K$ is the

@@ -402,7 +402,7 @@ coordinates and summed over all $2^N$ spin configurations, is
 \langle \Phi \mid \Phi \rangle \;=\;
    \frac{1}{N!}
    \int d\mathbf x_1 \cdots d\mathbf x_N\;
-   \left| \det\bigl[\chi_i(\mathbf x_j)\bigr] \right|^2 .
+   \left| \det\Bigl[\chi_i(\mathbf x_j)\Bigr] \right|^2 .
 \end{equation}
 
 A classic result (sometimes called the **Cauchy–Binet identity**)
@@ -411,8 +411,8 @@ reduces this multiple integral to a product of one-electron norms:
 \begin{equation}
 \label{eq:ch-02-cauchy-binet}
 \frac{1}{N!} \int d\mathbf x_1 \cdots d\mathbf x_N\;
-   \bigl| \det[\chi_i(\mathbf x_j)] \bigr|^2
-   \;=\; \det\bigl[ \langle \chi_i \mid \chi_j \rangle \bigr]_{i,j=1}^{N} .
+   \Bigl| \det[\chi_i(\mathbf x_j)] \Bigr|^2
+   \;=\; \det\Bigl[ \langle \chi_i \mid \chi_j \rangle \Bigr]_{i,j=1}^{N} .
 \end{equation}
 
 For orthonormal $\chi_i$, the overlap matrix on the right is the
@@ -435,7 +435,7 @@ The **one-particle density** associated with a single determinant is
 \label{eq:ch-02-1pdm}
 \rho(\mathbf r) \;=\; \sum_{i=1}^{N}
                      \sum_{\sigma \in \{\uparrow,\downarrow\}}
-                     \bigl| \chi_i(\mathbf r, \sigma) \bigr|^2 .
+                     \Bigl| \chi_i(\mathbf r, \sigma) \Bigr|^2 .
 \end{equation}
 
 For a closed-shell determinant with $N/2$ doubly-occupied spatial
@@ -642,8 +642,8 @@ basis:
 \langle \Phi_I \mid \hat H_{\text{el}} \mid \Phi_I \rangle
    \;=\; \sum_{i \in I} h_{ii}
       +\tfrac{1}{2}\sum_{i, j \in I}
-       \bigl(\langle ij \mid ij \rangle
-            -\langle ij \mid ji \rangle\bigr) .
+       \Bigl(\langle ij \mid ij \rangle
+            -\langle ij \mid ji \rangle\Bigr) .
 \end{equation}
 
 - **$I$ and $J$ differ by one spin-orbital** ($I$ has $a$ where
@@ -653,8 +653,8 @@ basis:
 \langle \Phi_I \mid \hat H_{\text{el}} \mid \Phi_J \rangle
    \;=\; h_{ab}
       +\sum_{i \in I}
-       \bigl(\langle ai \mid bi \rangle
-            -\langle ai \mid ib \rangle\bigr) .
+       \Bigl(\langle ai \mid bi \rangle
+            -\langle ai \mid ib \rangle\Bigr) .
 \end{equation}
 
 - **$I$ and $J$ differ by two spin-orbitals** ($I$ has $a, b$ where
@@ -794,7 +794,7 @@ to the full-CI sum.  They can be derived in three standard ways:
   \begin{equation}
   \label{eq:ch-02-mp2}
   E^{(2)} \;=\; \sum_{i<j}\sum_{a<b}
-      \frac{\bigl| \langle ij \mid ab \rangle \bigr|^2}
+      \frac{\Bigl| \langle ij \mid ab \rangle \Bigr|^2}
            {\varepsilon_i + \varepsilon_j - \varepsilon_a - \varepsilon_b} ,
   \end{equation}
   a sum over *occupied* spin-orbitals $i, j$ and *virtual* ones
@@ -1376,10 +1376,10 @@ positive off-diagonal $H_{14} > 0$ — the lower eigenvalue is the
 
 \begin{equation}
 \label{eq:ch-02-h2-gs}
-\Psi_0 \;=\; \frac{1}{\sqrt 2}\bigl(\Phi_1 - \Phi_4\bigr)
+\Psi_0 \;=\; \frac{1}{\sqrt 2}\Bigl(\Phi_1 - \Phi_4\Bigr)
    \;=\; \frac{1}{\sqrt 2}
-         \bigl(|\chi_1 \bar\chi_1\rangle
-              -|\chi_2 \bar\chi_2\rangle\bigr) .
+         \Bigl(|\chi_1 \bar\chi_1\rangle
+              -|\chi_2 \bar\chi_2\rangle\Bigr) .
 \end{equation}
 
 In the spatial-orbital language, this is the **Hund–Mulliken**
@@ -1437,8 +1437,8 @@ ground-state density is
 
 \begin{equation}
 \label{eq:ch-02-h2-density}
-\rho(\mathbf r) \;=\; 2 \cdot \tfrac{1}{2}\bigl(|\chi_1(\mathbf r)|^2
-                                            + |\chi_2(\mathbf r)|^2\bigr)
+\rho(\mathbf r) \;=\; 2 \cdot \tfrac{1}{2}\Bigl(|\chi_1(\mathbf r)|^2
+                                            + |\chi_2(\mathbf r)|^2\Bigr)
    \;=\; |\chi_1(\mathbf r)|^2 + |\chi_2(\mathbf r)|^2 .
 \end{equation}
 
@@ -1519,8 +1519,8 @@ $$
 \Phi_{\text{He}}(\mathbf x_1, \mathbf x_2) \;=\;
    \frac{1}{\sqrt 2}\,
    \phi_{1s}(\mathbf r_1)\phi_{1s}(\mathbf r_2)
-   \bigl[\alpha(\sigma_1)\beta(\sigma_2)
-       -\beta(\sigma_1)\alpha(\sigma_2)\bigr] .
+   \Bigl[\alpha(\sigma_1)\beta(\sigma_2)
+       -\beta(\sigma_1)\alpha(\sigma_2)\Bigr] .
 $$
 
 **Antisymmetry.**  Exchange $\mathbf x_1 \leftrightarrow
@@ -1895,8 +1895,8 @@ covered, and the reader should know are missing, are:
   Hamiltonian
   \begin{equation}
   \label{eq:ch-02-dirac}
-  \hat H_{\text{DC}} \;=\; \sum_i \bigl[ c\, \boldsymbol\alpha_i
-     \cdot \mathbf p_i + c^2 \beta_i \bigr]
+  \hat H_{\text{DC}} \;=\; \sum_i \Bigl[ c\, \boldsymbol\alpha_i
+     \cdot \mathbf p_i + c^2 \beta_i \Bigr]
      - \sum_{iA} \frac{Z_A}{r_{iA}}
      + \sum_{i<j} \frac{1}{r_{ij}}
   \end{equation}

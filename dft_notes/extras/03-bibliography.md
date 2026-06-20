@@ -566,7 +566,7 @@ preferred modern construction recipe.
 The Troullier–Martins (TM) construction is the standard
 high-accuracy, smooth-pseudo recipe. It parameterises the
 pseudo-wavefunction inside $r_c$ as
-$\phi_l(r) = r^{l+1} \exp\bigl(\sum_{n=0}^N c_n r^{2n}\bigr)$
+$\phi_l(r) = r^{l+1} \exp\Bigl(\sum_{n=0}^N c_n r^{2n}\Bigr)$
 with $N = 5$ or 6 polynomial coefficients, and uses six
 matching conditions (value, first and second derivative at
 $r_c$, plus a "kinetic-energy-conservation" condition matching

@@ -484,7 +484,7 @@ Substituting $G_\text{max} = \sqrt{2 E_\text{cut}}$,
 \begin{equation}
 \label{eq:ch-06-npw}
 N_\text{PW} \;\approx\; \frac{\Omega}{6 \pi^2}\,
-\bigl(2 E_\text{cut}\bigr)^{3/2} .
+\Bigl(2 E_\text{cut}\Bigr)^{3/2} .
 \end{equation}
 
 Two consequences of \eqref{eq:ch-06-npw} drive everything in
@@ -1326,7 +1326,7 @@ single **scaling function** $\phi$:
 
 \begin{equation}
 \label{eq:ch-06-14-vj}
-V_j \;=\; \overline{\text{span}\big\{ \phi_{j,k}(x) = 2^{j/2}\, \phi(2^j x - k) : k \in \mathbb Z \big\}} .
+V_j \;=\; \overline{\text{span}\big\lbrace \phi_{j,k}(x) = 2^{j/2}\, \phi(2^j x - k) : k \in \mathbb Z \big\rbrace} .
 \end{equation}
 
 The Daubechies family D-$N$ is parametrised by the number of

@@ -809,9 +809,9 @@ gives the formal definition:
 
 \begin{equation}
 \label{eq:cryst-bz}
-\text{1st BZ} \;=\; \bigl\{ \mathbf k \in \mathbb R^3 \;:\;
+\text{1st BZ} \;=\; \Bigl\lbrace \mathbf k \in \mathbb R^3 \;:\;
    |\mathbf k| \le |\mathbf k - \mathbf G| \text{ for every }
-   \mathbf G \in \text{reciprocal lattice} \bigr\} .
+   \mathbf G \in \text{reciprocal lattice} \Bigr\rbrace .
 \end{equation}
 
 The boundary of the 1st BZ is built from the perpendicular

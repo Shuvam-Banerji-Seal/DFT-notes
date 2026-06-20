@@ -121,9 +121,9 @@ occupied subspace. Cross-reference: chapter 03 (§3.6.4).
 
 > **Tip.** The Hermitian conjugate of $\rvert u \rangle \langle v \rvert$
 > is $\rvert v \rangle \langle u \rvert$. The trace of an outer
-> product is $\operatorname{Tr}\bigl(\rvert u \rangle \langle v \rvert\bigr) = \langle v \rvert u \rangle$.
+> product is $\operatorname{Tr}\Bigl(\rvert u \rangle \langle v \rvert\Bigr) = \langle v \rvert u \rangle$.
 > Both facts are used in the half-trace form of the HF energy,
-> $E_\text{HF} = \tfrac{1}{2} \operatorname{Tr}\bigl[ \mathbf P (\mathbf h + \mathbf F) \bigr]$.
+> $E_\text{HF} = \tfrac{1}{2} \operatorname{Tr}\Bigl[ \mathbf P (\mathbf h + \mathbf F) \Bigr]$.
 
 ---
 
@@ -201,11 +201,15 @@ matrix** (chapter 03).
 
 ### 2.4 Useful specific identities
 
-\begin{align}
-e^{\hat A} \hat B e^{-\hat A} &\;=\; \hat B + [\hat A, \hat B] + \tfrac{1}{2!}[\hat A, [\hat A, \hat B]] + \tfrac{1}{3!}[\hat A, [\hat A, [\hat A, \hat B]]] + \cdots \quad &\text{(similarity transform)} , \label{eq:ch-extra-sim} \\
-[\hat A \hat B, \hat C] &\;=\; \hat A [\hat B, \hat C] + [\hat A, \hat C] \hat B \quad &\text{(product rule)} , \label{eq:ch-extra-prodcom} \\
-\operatorname{Tr}[\hat A, \hat B] &\;=\; 0 \quad &\text{(trace of a commutator)} . \label{eq:ch-extra-tracecom}
-\end{align}
+\begin{equation}
+e^{\hat A} \hat B e^{-\hat A} \;=\; \hat B + [\hat A, \hat B] + \tfrac{1}{2!}[\hat A, [\hat A, \hat B]] + \tfrac{1}{3!}[\hat A, [\hat A, [\hat A, \hat B]]] + \cdots \quad \text{(similarity transform)} , \label{eq:ch-extra-sim}
+\end{equation}
+\begin{equation}
+[\hat A \hat B, \hat C] \;=\; \hat A [\hat B, \hat C] + [\hat A, \hat C] \hat B \quad \text{(product rule)} , \label{eq:ch-extra-prodcom}
+\end{equation}
+\begin{equation}
+\operatorname{Tr}[\hat A, \hat B] \;=\; 0 \quad \text{(trace of a commutator)} . \label{eq:ch-extra-tracecom}
+\end{equation}
 
 The first is the **Hadamard lemma** (or **Campbell identity**)
 in series form. The second lets you reduce a commutator with a
@@ -218,11 +222,15 @@ collapse so cleanly. Cross-reference: chapters 01, 03. ---
 
 ### 3.1 Trace identities
 
-\begin{align}
-\operatorname{Tr}(\mathbf A \mathbf B) &\;=\; \operatorname{Tr}(\mathbf B \mathbf A) , \label{eq:ch-extra-tracecyc} \\
-\operatorname{Tr}(\mathbf A + \mathbf B) &\;=\; \operatorname{Tr}\mathbf A + \operatorname{Tr}\mathbf B , \label{eq:ch-extra-tracelin} \\
-\operatorname{Tr}(\mathbf A \mathbf B \mathbf C) &\;=\; \operatorname{Tr}(\mathbf C \mathbf A \mathbf B) = \operatorname{Tr}(\mathbf B \mathbf C \mathbf A) \quad \text{(cyclic)} . \label{eq:ch-extra-tracecyc3}
-\end{align}
+\begin{equation}
+\operatorname{Tr}(\mathbf A \mathbf B) \;=\; \operatorname{Tr}(\mathbf B \mathbf A) , \label{eq:ch-extra-tracecyc}
+\end{equation}
+\begin{equation}
+\operatorname{Tr}(\mathbf A + \mathbf B) \;=\; \operatorname{Tr}\mathbf A + \operatorname{Tr}\mathbf B , \label{eq:ch-extra-tracelin}
+\end{equation}
+\begin{equation}
+\operatorname{Tr}(\mathbf A \mathbf B \mathbf C) \;=\; \operatorname{Tr}(\mathbf C \mathbf A \mathbf B) = \operatorname{Tr}(\mathbf B \mathbf C \mathbf A) \quad \text{(cyclic)} . \label{eq:ch-extra-tracecyc3}
+\end{equation}
 
 The cyclic property is the engine behind every trace formula
 in DFT: $E = \operatorname{Tr}[\mathbf P \mathbf h]$ follows
@@ -281,10 +289,12 @@ collects the identities the chapters use.
 
 ### 4.1 Bosonic creation and annihilation operators
 
-\begin{align}
-[\hat a, \hat a^\dagger] &\;=\; \hat 1 , \label{eq:ch-extra-bosonic} \\
-[\hat a, \hat a] &\;=\; [\hat a^\dagger, \hat a^\dagger] \;=\; 0 . \label{eq:ch-extra-bosonic2}
-\end{align}
+\begin{equation}
+[\hat a, \hat a^\dagger] \;=\; \hat 1 , \label{eq:ch-extra-bosonic}
+\end{equation}
+\begin{equation}
+[\hat a, \hat a] \;=\; [\hat a^\dagger, \hat a^\dagger] \;=\; 0 . \label{eq:ch-extra-bosonic2}
+\end{equation}
 
 The **number operator** $\hat n = \hat a^\dagger \hat a$ has
 eigenvalues $n = 0, 1, 2, \dots$ (any non-negative integer) and
@@ -293,10 +303,12 @@ Cross-reference: chapter 01 (§1.9, ladder operators).
 
 ### 4.2 Fermionic creation and annihilation operators
 
-\begin{align}
-\{\hat c_p, \hat c_q^\dagger\} &\;=\; \delta_{pq} , \label{eq:ch-extra-fermionic} \\
-\{\hat c_p, \hat c_q\} &\;=\; \{\hat c_p^\dagger, \hat c_q^\dagger\} \;=\; 0 . \label{eq:ch-extra-fermionic2}
-\end{align}
+\begin{equation}
+\{\hat c_p, \hat c_q^\dagger\} \;=\; \delta_{pq} , \label{eq:ch-extra-fermionic}
+\end{equation}
+\begin{equation}
+\{\hat c_p, \hat c_q\} \;=\; \{\hat c_p^\dagger, \hat c_q^\dagger\} \;=\; 0 . \label{eq:ch-extra-fermionic2}
+\end{equation}
 
 The $\delta_{pq}$ is **Kronecker**, not Dirac — the
 anticommutation is only between operators in the *same* single-
@@ -368,10 +380,12 @@ assumed in chapter 04 (§4.6.4, the Kerker preconditioner).
 
 ### 5.1 One dimension
 
-\begin{align}
-\tilde f(k) &\;=\; \int_{-\infty}^{\infty} f(x)\, e^{-i k x}\, dx , \label{eq:ch-extra-ft1d-fwd} \\
-f(x) &\;=\; \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde f(k)\, e^{+i k x}\, dk . \label{eq:ch-extra-ft1d-inv}
-\end{align}
+\begin{equation}
+\tilde f(k) \;=\; \int_{-\infty}^{\infty} f(x)\, e^{-i k x}\, dx , \label{eq:ch-extra-ft1d-fwd}
+\end{equation}
+\begin{equation}
+f(x) \;=\; \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde f(k)\, e^{+i k x}\, dk . \label{eq:ch-extra-ft1d-inv}
+\end{equation}
 
 The **Parseval / Plancherel identity** is
 $\int |f(x)|^2\, dx = (1/2\pi) \int |\tilde f(k)|^2\, dk$.
@@ -380,20 +394,24 @@ propagator by path integration).
 
 ### 5.2 Three dimensions
 
-\begin{align}
-\tilde f(\mathbf k) &\;=\; \int_{\mathbb R^3} f(\mathbf r)\, e^{-i \mathbf k \cdot \mathbf r}}\, d\mathbf r , \label{eq:ch-extra-ft3d-fwd} \\
-f(\mathbf r) &\;=\; \frac{1}{(2\pi)^3} \int_{\mathbb R^3} \tilde f(\mathbf k)\, e^{+i \mathbf k \cdot \mathbf r}}\, d\mathbf k . \label{eq:ch-extra-ft3d-inv}
-\end{align}
+\begin{equation}
+\tilde f(\mathbf k) \;=\; \int_{\mathbb R^3} f(\mathbf r)\, e^{-i \mathbf k \cdot \mathbf r}}\, d\mathbf r , \label{eq:ch-extra-ft3d-fwd}
+\end{equation}
+\begin{equation}
+f(\mathbf r) \;=\; \frac{1}{(2\pi)^3} \int_{\mathbb R^3} \tilde f(\mathbf k)\, e^{+i \mathbf k \cdot \mathbf r}}\, d\mathbf k . \label{eq:ch-extra-ft3d-inv}
+\end{equation}
 
 For a **cell-periodic** function $u(\mathbf r)$ on a lattice
 with primitive cell volume $\Omega$, the natural transform is
 the **discrete Fourier series** on the reciprocal lattice
 $\{\mathbf G\}$:
 
-\begin{align}
-u(\mathbf r) &\;=\; \frac{1}{\sqrt{\Omega}} \sum_{\mathbf G} \tilde u(\mathbf G)\, e^{i \mathbf G \cdot \mathbf r} , \label{eq:ch-extra-fs-fwd} \\
-\tilde u(\mathbf G) &\;=\; \frac{1}{\sqrt{\Omega}} \int_\Omega u(\mathbf r)\, e^{-i \mathbf G \cdot \mathbf r}}\, d\mathbf r . \label{eq:ch-extra-fs-inv}
-\end{align}
+\begin{equation}
+u(\mathbf r) \;=\; \frac{1}{\sqrt{\Omega}} \sum_{\mathbf G} \tilde u(\mathbf G)\, e^{i \mathbf G \cdot \mathbf r} , \label{eq:ch-extra-fs-fwd}
+\end{equation}
+\begin{equation}
+\tilde u(\mathbf G) \;=\; \frac{1}{\sqrt{\Omega}} \int_\Omega u(\mathbf r)\, e^{-i \mathbf G \cdot \mathbf r}}\, d\mathbf r . \label{eq:ch-extra-fs-inv}
+\end{equation}
 
 The reciprocal-lattice vectors are defined by
 $\mathbf a_i \cdot \mathbf b_j = 2\pi \delta_{ij}$
@@ -405,10 +423,12 @@ of chapter 07 (§7.5) and chapter 06 (§6.7) uses this convention.
 
 The two transforms every DFT code needs:
 
-\begin{align}
-\int_{\mathbb R^3} \frac{e^{-i \mathbf k \cdot \mathbf r}}{r}\, d\mathbf r &\;=\; \frac{4\pi}{k^2} , \label{eq:ch-extra-fourier-1r} \\
-\int_{\mathbb R^3} \frac{e^{-i \mathbf k \cdot \mathbf r}}{r^2}\, d\mathbf r &\;=\; \frac{\pi^2}{k} \quad \text{(distributional sense)} . \label{eq:ch-extra-fourier-1r2}
-\end{align}
+\begin{equation}
+\int_{\mathbb R^3} \frac{e^{-i \mathbf k \cdot \mathbf r}}{r}\, d\mathbf r \;=\; \frac{4\pi}{k^2} , \label{eq:ch-extra-fourier-1r}
+\end{equation}
+\begin{equation}
+\int_{\mathbb R^3} \frac{e^{-i \mathbf k \cdot \mathbf r}}{r^2}\, d\mathbf r \;=\; \frac{\pi^2}{k} \quad \text{(distributional sense)} . \label{eq:ch-extra-fourier-1r2}
+\end{equation}
 
 The first is the **Coulomb kernel in reciprocal space** — the
 Fourier transform of $1/r$ — and is the foundation of the
@@ -477,7 +497,7 @@ $\beta = 1/k_B T$),
 \begin{equation}
 \label{eq:ch-extra-matsubara}
 \mathcal G(\mathbf r, \mathbf r'; i\omega_n)
-\;=\; \int_0^\beta d\tau\, e^{i\omega_n \tau}\, \bigl\langle \hat\psi(\mathbf r, \tau)\, \hat\psi^\dagger(\mathbf r', 0) \bigr\rangle ,
+\;=\; \int_0^\beta d\tau\, e^{i\omega_n \tau}\, \Bigl\langle \hat\psi(\mathbf r, \tau)\, \hat\psi^\dagger(\mathbf r', 0) \bigr\rangle ,
 \end{equation}
 
 where $\hat\psi(\tau) = e^{\tau \hat H}\, \hat\psi\, e^{-\tau \hat H}$
@@ -510,7 +530,7 @@ across the real axis,
 
 \begin{equation}
 \label{eq:ch-extra-spectral}
-\mathbf A(\omega) \;\equiv\; \frac{i}{2\pi} \bigl[ \hat G(\omega + i\eta) - \hat G(\omega - i\eta) \bigr] ,
+\mathbf A(\omega) \;\equiv\; \frac{i}{2\pi} \Bigl[ \hat G(\omega + i\eta) - \hat G(\omega - i\eta) \Bigr] ,
 \end{equation}
 
 and is **positive semi-definite** with unit weight
@@ -519,7 +539,7 @@ $\int \mathbf A(\omega)\, d\omega = \hat 1$. In the
 
 \begin{equation}
 \label{eq:ch-extra-lehmann}
-A_{ij}(\omega) \;=\; \sum_{n} \bigl[ \langle i \rvert n \rangle \langle n \rvert j \rangle \bigr]\, \delta(\omega - (E_n - E_0)) ,
+A_{ij}(\omega) \;=\; \sum_{n} \Bigl[ \langle i \rvert n \rangle \langle n \rvert j \rangle \Bigr]\, \delta(\omega - (E_n - E_0)) ,
 \end{equation}
 
 where the sum runs over the many-body eigenstates $|n\rangle$.
@@ -769,10 +789,12 @@ antisymmetric in its three indices:
 The two **Levi–Civita contraction identities** every DFT code
 uses are
 
-\begin{align}
-\sum_k \epsilon_{ijk}\, \epsilon_{\ell m k} &\;=\; \delta_{i\ell}\, \delta_{jm} - \delta_{im}\, \delta_{j\ell} , \label{eq:ch-extra-eps2} \\
-\sum_j \epsilon_{ijk}\, \epsilon_{\ell j m} &\;=\; \delta_{i\ell}\, \delta_{km} - \delta_{im}\, \delta_{k\ell} . \label{eq:ch-extra-eps1}
-\end{align}
+\begin{equation}
+\sum_k \epsilon_{ijk}\, \epsilon_{\ell m k} \;=\; \delta_{i\ell}\, \delta_{jm} - \delta_{im}\, \delta_{j\ell} , \label{eq:ch-extra-eps2}
+\end{equation}
+\begin{equation}
+\sum_j \epsilon_{ijk}\, \epsilon_{\ell j m} \;=\; \delta_{i\ell}\, \delta_{km} - \delta_{im}\, \delta_{k\ell} . \label{eq:ch-extra-eps1}
+\end{equation}
 
 The **cross product** is
 $(\mathbf a \times \mathbf b)_i = \sum_{jk} \epsilon_{ijk}\, a_j b_k$;
@@ -788,10 +810,12 @@ For an orthogonal basis, upper and lower indices are equivalent
 and the convention reduces to summing over any repeated index.
 Examples used in the chapters:
 
-\begin{align}
-\mathbf F \mathbf c_i &\;=\; \sum_{\mu\nu} F_{\mu\nu}\, c_{\nu i} \quad &\text{(matrix–vector)} , \label{eq:ch-extra-eins-mat} \\
-E_\text{el} &\;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu}\, (h_{\mu\nu} + F_{\mu\nu}) \quad &\text{(half-trace)} . \label{eq:ch-extra-eins-half}
-\end{align}
+\begin{equation}
+\mathbf F \mathbf c_i \;=\; \sum_{\mu\nu} F_{\mu\nu}\, c_{\nu i} \quad \text{(matrix–vector)} , \label{eq:ch-extra-eins-mat}
+\end{equation}
+\begin{equation}
+E_\text{el} \;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu}\, (h_{\mu\nu} + F_{\mu\nu}) \quad \text{(half-trace)} . \label{eq:ch-extra-eins-half}
+\end{equation}
 
 The `numpy.einsum` call in chapter 03 (§3.3) implements these
 contractions verbatim. Cross-reference: chapters 03, 04, 06. ### 8.4 Rotation of tensors
@@ -920,10 +944,12 @@ the **Löwdin orthogonaliser**
 $\mathbf X = \mathbf S^{-1/2}$ of chapter 03 (§3.6.6). Cross-
 reference: chapters 01, 03. ### 9.7 Sherman–Morrison–Woodbury identities
 
-\begin{align}
-(\mathbf A + \mathbf u \mathbf v^T)^{-1} &\;=\; \mathbf A^{-1} - \frac{\mathbf A^{-1} \mathbf u \mathbf v^T \mathbf A^{-1}}{1 + \mathbf v^T \mathbf A^{-1} \mathbf u} \quad &\text{(rank-1)} , \label{eq:ch-extra-sm1} \\
-(\mathbf A + \mathbf U \mathbf C \mathbf V^T)^{-1} &\;=\; \mathbf A^{-1} - \mathbf A^{-1} \mathbf U (\mathbf C^{-1} + \mathbf V^T \mathbf A^{-1} \mathbf U)^{-1} \mathbf V^T \mathbf A^{-1} \quad &\text{(rank-}k\text{)} . \label{eq:ch-extra-smk}
-\end{align}
+\begin{equation}
+(\mathbf A + \mathbf u \mathbf v^T)^{-1} \;=\; \mathbf A^{-1} - \frac{\mathbf A^{-1} \mathbf u \mathbf v^T \mathbf A^{-1}}{1 + \mathbf v^T \mathbf A^{-1} \mathbf u} \quad \text{(rank-1)} , \label{eq:ch-extra-sm1}
+\end{equation}
+\begin{equation}
+(\mathbf A + \mathbf U \mathbf C \mathbf V^T)^{-1} \;=\; \mathbf A^{-1} - \mathbf A^{-1} \mathbf U (\mathbf C^{-1} + \mathbf V^T \mathbf A^{-1} \mathbf U)^{-1} \mathbf V^T \mathbf A^{-1} \quad \text{(rank-}k\text{)} . \label{eq:ch-extra-smk}
+\end{equation}
 
 The first is the **Sherman–Morrison formula**, the second the
 **Woodbury identity**. The latter is the workhorse of the
@@ -938,14 +964,20 @@ polar**, and **cylindrical**.
 
 ### 10.1 Cartesian
 
-\begin{align}
-\nabla f &\;=\; \left( \frac{\partial f}{\partial x},\, \frac{\partial f}{\partial y},\, \frac{\partial f}{\partial z} \right) , \label{eq:ch-extra-grad} \\
-\nabla \cdot \mathbf F &\;=\; \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z} , \label{eq:ch-extra-div} \\
-\nabla \times \mathbf F &\;=\; \left( \frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z},\;
+\begin{equation}
+\nabla f \;=\; \left( \frac{\partial f}{\partial x},\, \frac{\partial f}{\partial y},\, \frac{\partial f}{\partial z} \right) , \label{eq:ch-extra-grad}
+\end{equation}
+\begin{equation}
+\nabla \cdot \mathbf F \;=\; \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z} , \label{eq:ch-extra-div}
+\end{equation}
+\begin{equation}
+\nabla \times \mathbf F \;=\; \left( \frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z},\;
                                  \frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x},\;
-                                 \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} \right) , \label{eq:ch-extra-curl} \\
-\nabla^2 f &\;=\; \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} . \label{eq:ch-extra-lap-cart}
-\end{align}
+                                 \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} \right) , \label{eq:ch-extra-curl}
+\end{equation}
+\begin{equation}
+\nabla^2 f \;=\; \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} . \label{eq:ch-extra-lap-cart}
+\end{equation}
 
 The **vector Laplacian** acts component-wise on a vector field:
 $\nabla^2 \mathbf F = (\nabla^2 F_x, \nabla^2 F_y, \nabla^2 F_z)$.
@@ -962,15 +994,19 @@ time. The **gradient of a dot product** is
 With $r = |\mathbf r|$, $\theta$ the polar angle from $\hat z$
 and $\phi$ the azimuth,
 
-\begin{align}
-\nabla f &\;=\; \hat{\mathbf r}\, \frac{\partial f}{\partial r} + \hat{\boldsymbol\theta}\, \frac{1}{r}\, \frac{\partial f}{\partial \theta} + \hat{\boldsymbol\phi}\, \frac{1}{r \sin\theta}\, \frac{\partial f}{\partial \phi} , \label{eq:ch-extra-grad-sph} \\
-\nabla \cdot \mathbf F &\;=\; \frac{1}{r^2} \frac{\partial (r^2 F_r)}{\partial r}
+\begin{equation}
+\nabla f \;=\; \hat{\mathbf r}\, \frac{\partial f}{\partial r} + \hat{\boldsymbol\theta}\, \frac{1}{r}\, \frac{\partial f}{\partial \theta} + \hat{\boldsymbol\phi}\, \frac{1}{r \sin\theta}\, \frac{\partial f}{\partial \phi} , \label{eq:ch-extra-grad-sph}
+\end{equation}
+\begin{equation}
+\nabla \cdot \mathbf F \;=\; \frac{1}{r^2} \frac{\partial (r^2 F_r)}{\partial r}
                        + \frac{1}{r \sin\theta} \frac{\partial (\sin\theta\, F_\theta)}{\partial \theta}
-                       + \frac{1}{r \sin\theta} \frac{\partial F_\phi}{\partial \phi} , \label{eq:ch-extra-div-sph} \\
-\nabla^2 f &\;=\; \frac{1}{r^2} \frac{\partial}{\partial r} \!\left( r^2 \frac{\partial f}{\partial r} \right)
+                       + \frac{1}{r \sin\theta} \frac{\partial F_\phi}{\partial \phi} , \label{eq:ch-extra-div-sph}
+\end{equation}
+\begin{equation}
+\nabla^2 f \;=\; \frac{1}{r^2} \frac{\partial}{\partial r} \!\left( r^2 \frac{\partial f}{\partial r} \right)
                 + \frac{1}{r^2 \sin\theta} \frac{\partial}{\partial \theta} \!\left( \sin\theta\, \frac{\partial f}{\partial \theta} \right)
                 + \frac{1}{r^2 \sin^2\theta} \frac{\partial^2 f}{\partial \phi^2} . \label{eq:ch-extra-lap-sph}
-\end{align}
+\end{equation}
 
 The angular part of $\nabla^2$ is $-\hat L^2 / r^2$, so
 $\nabla^2 (R Y_\ell^m) = [r^{-2} \partial_r(r^2 \partial_r R) -
@@ -982,12 +1018,14 @@ chapter 01 (§1.10.3). Cross-reference: chapter 01 (§1.10).
 With $\rho = \sqrt{x^2 + y^2}$, $\phi$ the azimuth, and $z$ the
 axial coordinate,
 
-\begin{align}
-\nabla f &\;=\; \hat{\boldsymbol\rho}\, \frac{\partial f}{\partial \rho} + \hat{\boldsymbol\phi}\, \frac{1}{\rho}\, \frac{\partial f}{\partial \phi} + \hat{\mathbf z}\, \frac{\partial f}{\partial z} , \label{eq:ch-extra-grad-cyl} \\
-\nabla^2 f &\;=\; \frac{1}{\rho} \frac{\partial}{\partial \rho} \!\left( \rho \frac{\partial f}{\partial \rho} \right)
+\begin{equation}
+\nabla f \;=\; \hat{\boldsymbol\rho}\, \frac{\partial f}{\partial \rho} + \hat{\boldsymbol\phi}\, \frac{1}{\rho}\, \frac{\partial f}{\partial \phi} + \hat{\mathbf z}\, \frac{\partial f}{\partial z} , \label{eq:ch-extra-grad-cyl}
+\end{equation}
+\begin{equation}
+\nabla^2 f \;=\; \frac{1}{\rho} \frac{\partial}{\partial \rho} \!\left( \rho \frac{\partial f}{\partial \rho} \right)
                 + \frac{1}{\rho^2} \frac{\partial^2 f}{\partial \phi^2}
                 + \frac{\partial^2 f}{\partial z^2} . \label{eq:ch-extra-lap-cyl}
-\end{align}
+\end{equation}
 
 The cylindrical Laplacian is the natural operator for systems
 with axial symmetry: nanotubes, wires, the
@@ -998,13 +1036,21 @@ out the band structure of a **single-wall nanotube** or a
 
 ### 10.4 Vector identities
 
-\begin{align}
-\nabla \cdot (\nabla \times \mathbf F) &\;=\; 0 , \label{eq:ch-extra-vec-id1} \\
-\nabla \times (\nabla f) &\;=\; \mathbf 0 , \label{eq:ch-extra-vec-id2} \\
-\nabla \times (\nabla \times \mathbf F) &\;=\; \nabla(\nabla \cdot \mathbf F) - \nabla^2 \mathbf F , \label{eq:ch-extra-vec-id3} \\
-\nabla \cdot (f \mathbf F) &\;=\; f\, \nabla \cdot \mathbf F + \mathbf F \cdot \nabla f , \label{eq:ch-extra-vec-id4} \\
-\nabla \times (f \mathbf F) &\;=\; f\, \nabla \times \mathbf F + \nabla f \times \mathbf F . \label{eq:ch-extra-vec-id5}
-\end{align}
+\begin{equation}
+\nabla \cdot (\nabla \times \mathbf F) \;=\; 0 , \label{eq:ch-extra-vec-id1}
+\end{equation}
+\begin{equation}
+\nabla \times (\nabla f) \;=\; \mathbf 0 , \label{eq:ch-extra-vec-id2}
+\end{equation}
+\begin{equation}
+\nabla \times (\nabla \times \mathbf F) \;=\; \nabla(\nabla \cdot \mathbf F) - \nabla^2 \mathbf F , \label{eq:ch-extra-vec-id3}
+\end{equation}
+\begin{equation}
+\nabla \cdot (f \mathbf F) \;=\; f\, \nabla \cdot \mathbf F + \mathbf F \cdot \nabla f , \label{eq:ch-extra-vec-id4}
+\end{equation}
+\begin{equation}
+\nabla \times (f \mathbf F) \;=\; f\, \nabla \times \mathbf F + \nabla f \times \mathbf F . \label{eq:ch-extra-vec-id5}
+\end{equation}
 
 Identity \eqref{eq:ch-extra-vec-id3} is the reason the
 **Coulomb gauge** $\nabla \cdot \mathbf A = 0$ and the
@@ -1144,7 +1190,7 @@ matrix $\boldsymbol\Lambda$ in the variational principle:
 
 \begin{equation}
 \label{eq:ch-extra-constraint}
-\delta \bigl[ E - \operatorname{Tr}(\boldsymbol\Lambda^\dagger (\mathbf C^\dagger \mathbf S \mathbf C - \mathbf 1)) \bigr] \;=\; 0 .
+\delta \Bigl[ E - \operatorname{Tr}(\boldsymbol\Lambda^\dagger (\mathbf C^\dagger \mathbf S \mathbf C - \mathbf 1)) \Bigr] \;=\; 0 .
 \end{equation}
 
 Differentiating with respect to the MO coefficients $\mathbf C$
@@ -1226,11 +1272,15 @@ convergent by writing
 
 The sum then splits into three pieces:
 
-\begin{align}
-V_\text{Mad} &\;=\; \underbrace{\frac{1}{2} \sum_{\mathbf R \ne 0} \frac{\operatorname{erfc}(\alpha \lvert \mathbf R \rvert)}{\lvert \mathbf R \rvert}}_{V_\text{real}} \label{eq:ch-extra-ewald-real} \\
-&\quad + \underbrace{\frac{1}{2\Omega} \sum_{\mathbf G \ne 0} \frac{4\pi e^{-\lvert \mathbf G \rvert^2 / 4\alpha^2}}{G^2}}_{V_\text{recip}} \label{eq:ch-extra-ewald-recip} \\
-&\quad - \underbrace{\frac{\alpha}{\sqrt\pi}}_{V_\text{self}} . \label{eq:ch-extra-ewald-self}
-\end{align}
+\begin{equation}
+V_\text{Mad} \;=\; \underbrace{\frac{1}{2} \sum_{\mathbf R \ne 0} \frac{\operatorname{erfc}(\alpha \lvert \mathbf R \rvert)}{\lvert \mathbf R \rvert}}_{V_\text{real}} \label{eq:ch-extra-ewald-real}
+\end{equation}
+\begin{equation}
+\quad + \underbrace{\frac{1}{2\Omega} \sum_{\mathbf G \ne 0} \frac{4\pi e^{-\lvert \mathbf G \rvert^2 / 4\alpha^2}}{G^2}}_{V_\text{recip}} \label{eq:ch-extra-ewald-recip}
+\end{equation}
+\begin{equation}
+\quad - \underbrace{\frac{\alpha}{\sqrt\pi}}_{V_\text{self}} . \label{eq:ch-extra-ewald-self}
+\end{equation}
 
 The real-space sum $V_\text{real}$ converges rapidly because
 $\operatorname{erfc}(\alpha r) \sim e^{-\alpha^2 r^2}$ at large
@@ -1369,7 +1419,7 @@ crystal is
 
 \begin{equation}
 \label{eq:ch-extra-phonon-f}
-F_\text{ph} \;=\; k_B T \sum_{\mathbf q, s} \ln\!\bigl(1 - e^{-\hbar\omega_{\mathbf q s}/k_B T}\bigr) ,
+F_\text{ph} \;=\; k_B T \sum_{\mathbf q, s} \ln\!\Bigl(1 - e^{-\hbar\omega_{\mathbf q s}/k_B T}\Bigr) ,
 \end{equation}
 
 where the sum is over phonon branches $s$ and wavevectors
@@ -1432,10 +1482,12 @@ reference: chapter 01. ### 14.8 The complete elliptic integrals
 The two **complete elliptic integrals** of the first and second
 kind,
 
-\begin{align}
-K(k) &\;=\; \int_0^{\pi/2} \frac{d\theta}{\sqrt{1 - k^2 \sin^2 \theta}} , \label{eq:ch-extra-ellip-k} \\
-E(k) &\;=\; \int_0^{\pi/2} \sqrt{1 - k^2 \sin^2 \theta}\, d\theta , \label{eq:ch-extra-ellip-e}
-\end{align}
+\begin{equation}
+K(k) \;=\; \int_0^{\pi/2} \frac{d\theta}{\sqrt{1 - k^2 \sin^2 \theta}} , \label{eq:ch-extra-ellip-k}
+\end{equation}
+\begin{equation}
+E(k) \;=\; \int_0^{\pi/2} \sqrt{1 - k^2 \sin^2 \theta}\, d\theta , \label{eq:ch-extra-ellip-e}
+\end{equation}
 
 appear in the **2-D Coulomb problem** and in the **image-charge
 sums of surface science**. They are not in the main text of

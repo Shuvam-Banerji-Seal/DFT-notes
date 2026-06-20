@@ -162,7 +162,7 @@ $e^{(n)} = \rho^{(n)} - \rho^\star$.  Substituting
 
 \begin{align}
 e^{(n+1)} &= (1 - \alpha)\, e^{(n)} + \alpha\, \mathcal F' e^{(n)} \notag \\
-          &= \bigl[ (1 - \alpha) \mathbf 1 + \alpha \mathcal F' \bigr] e^{(n)} . \label{eq:nm-scf-err-rec}
+          &= \Bigl[ (1 - \alpha) \mathbf 1 + \alpha \mathcal F' \Bigr] e^{(n)} . \label{eq:nm-scf-err-rec}
 \end{align}
 
 The damped map has eigenvalues
@@ -612,7 +612,7 @@ If the **Hessian** $\mathbf H^{(k)} = \partial^2 E / \partial
 
 \begin{equation}
 \label{eq:nm-opt-newton}
-\mathbf p^{(k)} = - \bigl[ \mathbf H^{(k)} \bigr]^{-1}\, \mathbf F^{(k)} .
+\mathbf p^{(k)} = - \Bigl[ \mathbf H^{(k)} \Bigr]^{-1}\, \mathbf F^{(k)} .
 \end{equation}
 
 Newton's method converges **quadratically** in the neighbourhood
@@ -720,7 +720,7 @@ positive definite.  The solution is
 
 \begin{equation}
 \label{eq:nm-opt-trust-soln}
-\mathbf p^{(k)} = - \bigl[ \mathbf B^{(k)} + \lambda_k \mathbf I \bigr]^{-1}\,
+\mathbf p^{(k)} = - \Bigl[ \mathbf B^{(k)} + \lambda_k \mathbf I \Bigr]^{-1}\,
                     \mathbf F^{(k)} ,
 \end{equation}
 
@@ -1075,7 +1075,7 @@ of order $N_\text{MP}$:
 
 with $x = (\varepsilon - \mu) / \sigma$ and $A_n$ chosen so
 that the scheme reproduces the Fermi–Dirac entropy to order
-$\sigma^{2 N_\text{MP}}$.  For $N_\text{MP} = 0$ this reduces
+$\sigma^{2 N_\text{MP}$.  For $N_\text{MP} = 0$ this reduces
 to Gaussian smearing; for $N_\text{MP} = 1, 2$ the convergence
 in $\sigma$ is $O(\sigma^2), O(\sigma^4)$ respectively.
 
@@ -1246,7 +1246,7 @@ with the electronic entropy
 
 \begin{equation}
 \label{eq:nm-bz-entropy}
-S = -k_B \sum_{n\mathbf k} \bigl[ f \ln f + (1 - f) \ln(1 - f) \bigr] .
+S = -k_B \sum_{n\mathbf k} \Bigl[ f \ln f + (1 - f) \ln(1 - f) \Bigr] .
 \end{equation}
 
 To recover the $T = 0$ total energy one must either
@@ -1805,7 +1805,7 @@ The **error recursion** of
 \label{eq:nm-mix-err}
 \hat e^{(n+1)}(\mathbf G) = \hat M(\mathbf G)\, \hat e^{(n)}(\mathbf G) ,
 \qquad
-\hat M(\mathbf G) = 1 - \alpha \bigl( 1 - \hat \chi(\mathbf G) \bigr) .
+\hat M(\mathbf G) = 1 - \alpha \Bigl( 1 - \hat \chi(\mathbf G) \Bigr) .
 \end{equation}
 
 For a metal the Lindhard function
@@ -1846,13 +1846,13 @@ untouched.  The new mixed density is
 \label{eq:nm-mix-kerker-mix}
 \hat\rho^{(n+1)}(\mathbf G)
   = \hat\rho^{(n)}(\mathbf G) + \alpha\, \hat K(\mathbf G)\,
-     \bigl( \hat\rho_\text{out}^{(n)}(\mathbf G) - \hat\rho^{(n)}(\mathbf G) \bigr) .
+     \Bigl( \hat\rho_\text{out}^{(n)}(\mathbf G) - \hat\rho^{(n)}(\mathbf G) \Bigr) .
 \end{equation}
 
 In real space, $\hat K$ is the **screened-Coulomb Green's
 function**:
 $K(\mathbf r, \mathbf r')$ is the solution of
-$\bigl( -\nabla^2 + k_\text{TF}^2 \bigr) K(\mathbf r, \mathbf r')
+$\Bigl( -\nabla^2 + k_\text{TF}^2 \Bigr) K(\mathbf r, \mathbf r')
 = \delta(\mathbf r - \mathbf r')$.
 
 The Thomas–Fermi wavevector $k_\text{TF}$ is the only
@@ -2434,7 +2434,7 @@ The DFPT equation is the **Sternheimer equation**
 
 \begin{equation}
 \label{eq:nm-ph-sternheimer}
-\bigl( \hat H_\text{KS} - \varepsilon_i \bigr) \lvert \phi_i^{(1)} \bigr\rangle
+\Bigl( \hat H_\text{KS} - \varepsilon_i \Bigr) \lvert \phi_i^{(1)} \bigr\rangle
    = - \hat P_c\, \hat H^{(1)} \lvert \phi_i \bigr\rangle ,
 \end{equation}
 

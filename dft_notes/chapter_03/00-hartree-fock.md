@@ -135,7 +135,7 @@ The three terms are:
 
   \begin{equation}
   \label{eq:ch-03-coulomb}
-  \bigl(\hat J[\rho]\, \chi\bigr)(\mathbf x)
+  \Bigl(\hat J[\rho]\, \chi\Bigr)(\mathbf x)
   \;=\;
   \int \frac{\rho(\mathbf x')}{|\mathbf r - \mathbf r'|}\, \chi(\mathbf x)\, d\mathbf x' ,
   \end{equation}
@@ -150,7 +150,7 @@ The three terms are:
 
   \begin{equation}
   \label{eq:ch-03-exchange}
-  \bigl(\hat K[\rho]\, \chi_p\bigr)(\mathbf x)
+  \Bigl(\hat K[\rho]\, \chi_p\Bigr)(\mathbf x)
   \;=\;
   \sum_{q \in \text{occ}} \chi_q(\mathbf x)
   \int \frac{\chi_q^*(\mathbf x')\, \chi_p(\mathbf x')}{|\mathbf r - \mathbf r'|}\, d\mathbf x' .
@@ -198,7 +198,7 @@ self-consistent field iteration below,
 
 \begin{equation}
 \label{eq:ch-03-hf-energy-dm}
-E_\text{HF} \;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu} \bigl( h_{\mu\nu} + F_{\mu\nu} \bigr)
+E_\text{HF} \;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu} \Bigl( h_{\mu\nu} + F_{\mu\nu} \Bigr)
 \;+\; V_\text{nn} ,
 \end{equation}
 
@@ -545,12 +545,14 @@ $$
 
 **Step 3.**  Define the matrix elements
 
-\begin{align}
-F_{\nu\mu} &\;\equiv\; \langle \chi_\nu \rvert \hat F \rvert \chi_\mu \rangle ,
-\label{eq:ch-03-F-def} \\
-S_{\nu\mu} &\;\equiv\; \langle \chi_\nu \rvert \chi_\mu \rangle .
+\begin{equation}
+F_{\nu\mu} \;\equiv\; \langle \chi_\nu \rvert \hat F \rvert \chi_\mu \rangle ,
+\label{eq:ch-03-F-def}
+\end{equation}
+\begin{equation}
+S_{\nu\mu} \;\equiv\; \langle \chi_\nu \rvert \chi_\mu \rangle .
 \label{eq:ch-03-S-def}
-\end{align}
+\end{equation}
 
 The projected equation becomes
 
@@ -825,12 +827,14 @@ $\mathbf C$.  The algorithm:
    In tensor notation with $\mathbf G$ the 4-index ERI and
    $\mathbf P$ the 2-index density,
 
-   \begin{align}
-   J_{\mu\nu} &\;=\; \text{Tr}\bigl[\mathbf P\, (\mu\nu \rvert \cdot\cdot) \bigr] ,
-   \label{eq:ch-03-J-tr} \\
-   K_{\mu\nu} &\;=\; \text{Tr}\bigl[\mathbf P\, (\mu\cdot \rvert \nu\cdot) \bigr] .
+   \begin{equation}
+J_{\mu\nu} \;=\; \text{Tr}\Bigl[\mathbf P\, (\mu\nu \rvert \cdot\cdot) \Bigr] ,
+   \label{eq:ch-03-J-tr}
+\end{equation}
+\begin{equation}
+K_{\mu\nu} \;=\; \text{Tr}\Bigl[\mathbf P\, (\mu\cdot \rvert \nu\cdot) \Bigr] .
    \label{eq:ch-03-K-tr}
-   \end{align}
+\end{equation}
 
    In `numpy`, both are `einsum`s — see the snippet in
    section 3.3.
@@ -876,7 +880,7 @@ $\mathbf C$.  The algorithm:
 
    \begin{equation}
    \label{eq:ch-03-E-hf-ao}
-   E_\text{el} \;=\; \frac{1}{2}\, \text{Tr}\bigl[\mathbf P\, (\mathbf h + \mathbf F)\bigr]
+   E_\text{el} \;=\; \frac{1}{2}\, \text{Tr}\Bigl[\mathbf P\, (\mathbf h + \mathbf F)\Bigr]
    \;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu}\, (h_{\mu\nu} + F_{\mu\nu}) .
    \end{equation}
 
@@ -889,8 +893,8 @@ $\mathbf C$.  The algorithm:
 > form of the energy uses the orbital energies:
 
 $$
-E_\text{el} \;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu} \bigl( h_{\mu\nu} + F_{\mu\nu} \bigr)
-\;=\; \frac{1}{2} \sum_{i \in \text{occ}} \bigl( h_{ii} + \varepsilon_i \bigr) ,
+E_\text{el} \;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu} \Bigl( h_{\mu\nu} + F_{\mu\nu} \Bigr)
+\;=\; \frac{1}{2} \sum_{i \in \text{occ}} \Bigl( h_{ii} + \varepsilon_i \Bigr) ,
 $$
 
 where $h_{ii} = \mathbf c_i^\dagger \mathbf h \mathbf c_i$ and
@@ -1015,7 +1019,7 @@ E_\text{HF}(\mathrm{H_2}, R=1.4\,a_0) \;=\; -1.1167\,E_h ,
 $$
 
 with MO coefficients
-$\mathbf C = \begin{psmallmatrix} -0.5489 & -1.2115 \\ -0.5489 & +1.2115 \end{psmallmatrix}$
+$\mathbf C = \begin{smallmatrix} -0.5489 & -1.2115 \\ -0.5489 & +1.2115 \end{smallmatrix}$
 and orbital energies
 $\boldsymbol\varepsilon = (-0.5782,\, +0.6703)\,E_h$.  The
 *implementation* of section 3.6 is *exactly* the script in
@@ -1082,14 +1086,16 @@ The two sets of spatial orbitals $\{\phi_i^\alpha\}$ and
 $\{\phi_i^\beta\}$ are, a priori, *unrelated*.  Each set is
 expanded in the same AO basis:
 
-\begin{align}
-\phi_i^\alpha(\mathbf r) &\;=\; \sum_{\mu=1}^{K} C_{\mu i}^\alpha\, \chi_\mu(\mathbf r) ,
+\begin{equation}
+\phi_i^\alpha(\mathbf r) \;=\; \sum_{\mu=1}^{K} C_{\mu i}^\alpha\, \chi_\mu(\mathbf r) ,
 \qquad i = 1, \dots, N_\alpha ,
-\label{eq:ch-03-uhf-alpha-exp} \\
-\phi_i^\beta(\mathbf r) &\;=\; \sum_{\mu=1}^{K} C_{\mu i}^\beta\, \chi_\mu(\mathbf r) ,
+\label{eq:ch-03-uhf-alpha-exp}
+\end{equation}
+\begin{equation}
+\phi_i^\beta(\mathbf r) \;=\; \sum_{\mu=1}^{K} C_{\mu i}^\beta\, \chi_\mu(\mathbf r) ,
 \qquad i = 1, \dots, N_\beta .
 \label{eq:ch-03-uhf-beta-exp}
-\end{align}
+\end{equation}
 
 The two sets of coefficients are collected into $K \times
 N_\alpha$ and $K \times N_\beta$ matrices $\mathbf C^\alpha$ and
@@ -1116,14 +1122,18 @@ with
 
 In the AO basis, define the **spin density matrices**
 
-\begin{align}
-P_{\mu\nu}^\alpha &\;=\; \sum_{i=1}^{N_\alpha} C_{\mu i}^\alpha\, (C_{\nu i}^\alpha)^* ,
-\label{eq:ch-03-P-alpha} \\
-P_{\mu\nu}^\beta &\;=\; \sum_{i=1}^{N_\beta} C_{\mu i}^\beta\, (C_{\nu i}^\beta)^* ,
-\label{eq:ch-03-P-beta} \\
-P_{\mu\nu} &\;=\; P_{\mu\nu}^\alpha + P_{\mu\nu}^\beta .
+\begin{equation}
+P_{\mu\nu}^\alpha \;=\; \sum_{i=1}^{N_\alpha} C_{\mu i}^\alpha\, (C_{\nu i}^\alpha)^* ,
+\label{eq:ch-03-P-alpha}
+\end{equation}
+\begin{equation}
+P_{\mu\nu}^\beta \;=\; \sum_{i=1}^{N_\beta} C_{\mu i}^\beta\, (C_{\nu i}^\beta)^* ,
+\label{eq:ch-03-P-beta}
+\end{equation}
+\begin{equation}
+P_{\mu\nu} \;=\; P_{\mu\nu}^\alpha + P_{\mu\nu}^\beta .
 \label{eq:ch-03-P-total}
-\end{align}
+\end{equation}
 
 Note the *absence* of the factor of 2 in the UHF density matrices
 (unlike the closed-shell case, eq. 3.24): each spatial orbital
@@ -1142,25 +1152,29 @@ $\alpha$- and $\beta$-spin orbitals independently gives two
 coupled eigenvalue equations — the **Pople–Nesbet equations** —
 in the AO basis
 
-\begin{align}
-\mathbf F^\alpha\, \mathbf C^\alpha &\;=\; \mathbf S\, \mathbf C^\alpha\, \boldsymbol\varepsilon^\alpha ,
-\label{eq:ch-03-pn-alpha} \\
-\mathbf F^\beta\, \mathbf C^\beta &\;=\; \mathbf S\, \mathbf C^\beta\, \boldsymbol\varepsilon^\beta .
+\begin{equation}
+\mathbf F^\alpha\, \mathbf C^\alpha \;=\; \mathbf S\, \mathbf C^\alpha\, \boldsymbol\varepsilon^\alpha ,
+\label{eq:ch-03-pn-alpha}
+\end{equation}
+\begin{equation}
+\mathbf F^\beta\, \mathbf C^\beta \;=\; \mathbf S\, \mathbf C^\beta\, \boldsymbol\varepsilon^\beta .
 \label{eq:ch-03-pn-beta}
-\end{align}
+\end{equation}
 
 The **$\alpha$ and $\beta$ Fock matrices** are
 
-\begin{align}
-F_{\mu\nu}^\alpha &\;=\; h_{\mu\nu}
+\begin{equation}
+F_{\mu\nu}^\alpha \;=\; h_{\mu\nu}
 \;+\; \sum_{\rho\sigma} P_{\rho\sigma}\, (\mu\nu \rvert \rho\sigma)
 \;-\; \sum_{\rho\sigma} P_{\rho\sigma}^\alpha\, (\mu\sigma \rvert \rho\nu) ,
-\label{eq:ch-03-F-alpha} \\
-F_{\mu\nu}^\beta &\;=\; h_{\mu\nu}
+\label{eq:ch-03-F-alpha}
+\end{equation}
+\begin{equation}
+F_{\mu\nu}^\beta \;=\; h_{\mu\nu}
 \;+\; \sum_{\rho\sigma} P_{\rho\sigma}\, (\mu\nu \rvert \rho\sigma)
 \;-\; \sum_{\rho\sigma} P_{\rho\sigma}^\beta\, (\mu\sigma \rvert \rho\nu) .
 \label{eq:ch-03-F-beta}
-\end{align}
+\end{equation}
 
 The Coulomb part is the *same* in $\mathbf F^\alpha$ and $\mathbf
 F^\beta$ — it depends only on the *total* density — and it is
@@ -1187,17 +1201,17 @@ The UHF electronic energy is the natural generalisation of
 \begin{equation}
 \label{eq:ch-03-E-uhf}
 E_\text{el}^\text{UHF} \;=\;
-\tfrac{1}{2}\, \text{Tr}\bigl[\mathbf P^\alpha\, \mathbf F^\alpha\bigr]
-\;+\; \tfrac{1}{2}\, \text{Tr}\bigl[\mathbf P^\beta\, \mathbf F^\beta\bigr]
-\;+\; \tfrac{1}{2}\, \text{Tr}\bigl[\mathbf h\, \mathbf P\bigr] .
+\tfrac{1}{2}\, \text{Tr}\Bigl[\mathbf P^\alpha\, \mathbf F^\alpha\Bigr]
+\;+\; \tfrac{1}{2}\, \text{Tr}\Bigl[\mathbf P^\beta\, \mathbf F^\beta\Bigr]
+\;+\; \tfrac{1}{2}\, \text{Tr}\Bigl[\mathbf h\, \mathbf P\Bigr] .
 \end{equation}
 
 Equivalently, the sum-over-orbitals form
 
 $$
 E_\text{el}^\text{UHF} \;=\;
-\sum_{i=1}^{N_\alpha} \bigl( h_{ii}^\alpha + \varepsilon_i^\alpha \bigr) / 2
-\;+\; \sum_{i=1}^{N_\beta} \bigl( h_{ii}^\beta + \varepsilon_i^\beta \bigr) / 2 ,
+\sum_{i=1}^{N_\alpha} \Bigl( h_{ii}^\alpha + \varepsilon_i^\alpha \Bigr) / 2
+\;+\; \sum_{i=1}^{N_\beta} \Bigl( h_{ii}^\beta + \varepsilon_i^\beta \Bigr) / 2 ,
 $$
 
 where the matrix elements are in the *respective* MO bases.
@@ -1214,7 +1228,7 @@ determinant is
 \begin{equation}
 \label{eq:ch-03-S2-uhf}
 \langle \hat S^2 \rangle_\text{UHF}
-\;=\; S_z (S_z + 1) \;+\; N_\beta \;-\; \sum_{i=1}^{N_\alpha} \sum_{j=1}^{N_\beta} \bigl| \langle \phi_i^\alpha \rvert \phi_j^\beta \rangle \bigr|^2 .
+\;=\; S_z (S_z + 1) \;+\; N_\beta \;-\; \sum_{i=1}^{N_\alpha} \sum_{j=1}^{N_\beta} \Bigl| \langle \phi_i^\alpha \rvert \phi_j^\beta \rangle \Bigr|^2 .
 \end{equation}
 
 The first two terms are the eigenvalue of a *spin-pure*
@@ -1231,8 +1245,8 @@ density matrix,
 \begin{equation}
 \label{eq:ch-03-S2-ao}
 \sum_{i=1}^{N_\alpha} \sum_{j=1}^{N_\beta}
-\bigl| \langle \phi_i^\alpha \rvert \phi_j^\beta \rangle \bigr|^2
-\;=\; \text{Tr}\bigl[\mathbf P^\alpha \mathbf S \mathbf P^\beta \mathbf S\bigr] .
+\Bigl| \langle \phi_i^\alpha \rvert \phi_j^\beta \rangle \Bigr|^2
+\;=\; \text{Tr}\Bigl[\mathbf P^\alpha \mathbf S \mathbf P^\beta \mathbf S\Bigr] .
 \end{equation}
 
 > **Note.**  The "physical" expectation value of $\hat S^2$ is
@@ -1381,7 +1395,7 @@ negligibly small.  The dominant screening inequality is the
 
 \begin{equation}
 \label{eq:ch-03-schwarz}
-\bigl| (\mu\nu \rvert \rho\sigma) \bigr|
+\Bigl| (\mu\nu \rvert \rho\sigma) \Bigr|
 \;\le\; \sqrt{ (\mu\nu \rvert \mu\nu)\, (\rho\sigma \rvert \rho\sigma) } .
 \end{equation}
 
@@ -1391,7 +1405,7 @@ non-negligible only if
 
 \begin{equation}
 \label{eq:ch-03-screen}
-Q_{\mu\nu} \cdot \max_\sigma \bigl| P_{\rho\sigma} Q_{\rho\sigma} \bigr|
+Q_{\mu\nu} \cdot \max_\sigma \Bigl| P_{\rho\sigma} Q_{\rho\sigma} \Bigr|
 \;\ge\; \tau ,
 \end{equation}
 
@@ -1498,7 +1512,7 @@ orthogonal basis.  Let $\mathbf X = \mathbf S^{1/2}$; then
 
 \begin{equation}
 \label{eq:ch-03-diis-error}
-\mathbf e^{(i)} \;=\; \mathbf X^\dagger\, \bigl[ \mathbf F^{(i)}, \mathbf P^{(i)} \bigr]\, \mathbf X
+\mathbf e^{(i)} \;=\; \mathbf X^\dagger\, \Bigl[ \mathbf F^{(i)}, \mathbf P^{(i)} \Bigr]\, \mathbf X
 \;=\; \mathbf F'^{(i)}\, \mathbf P'^{(i)} \;-\; \mathbf P'^{(i)}\, \mathbf F'^{(i)} ,
 \end{equation}
 
@@ -1520,7 +1534,7 @@ constraint:
 
 \begin{equation}
 \label{eq:ch-03-diis-min}
-\min_{\{c_i\}} \;\bigl\| \mathbf e^\text{DIIS} \bigr\|^2
+\min_{\{c_i\}} \;\Bigl\| \mathbf e^\text{DIIS} \Bigr\|^2
 \;=\; \min_{\{c_i\}} \; \sum_{i,j} c_i c_j\, B_{ij} ,
 \end{equation}
 
@@ -1872,7 +1886,7 @@ basis is
 
 \begin{equation}
 \label{eq:ch-03-E-hf-mo}
-E_\text{HF} \;=\; 2 \sum_{i=1}^{N/2} h_{ii} \;+\; \sum_{i=1}^{N/2} \sum_{j=1}^{N/2} \bigl( 2 J_{ij} - K_{ij} \bigr) .
+E_\text{HF} \;=\; 2 \sum_{i=1}^{N/2} h_{ii} \;+\; \sum_{i=1}^{N/2} \sum_{j=1}^{N/2} \Bigl( 2 J_{ij} - K_{ij} \Bigr) .
 \end{equation}
 
 Here $h_{ii} = \langle \phi_i \rvert \hat h \rvert \phi_i \rangle$,
@@ -1888,8 +1902,8 @@ this is the natural choice).  The resulting UHF energy is
 \begin{align}
 E_\text{HF}(N-1)
 &\;=\; 2 \sum_{i \ne a} h_{ii} \;+\; h_{aa}
-\;+\; \sum_{i,j \ne a} \bigl( 2 J_{ij} - K_{ij} \bigr) \notag \\
-&\quad\;+\; \sum_{j \ne a} \bigl( 2 J_{aj} - K_{aj} \bigr)
+\;+\; \sum_{i,j \ne a} \Bigl( 2 J_{ij} - K_{ij} \Bigr) \notag \\
+&\quad\;+\; \sum_{j \ne a} \Bigl( 2 J_{aj} - K_{aj} \Bigr)
 \;-\; \sum_{j \ne a} K_{ja} .
 \end{align}
 
@@ -1908,7 +1922,7 @@ closed-shell MO basis,
 I_a
 &\;=\; E_\text{HF}(N-1) - E_\text{HF}(N)
 \notag \\
-&\;=\; -h_{aa} \;-\; \sum_{j} \bigl( 2 J_{aj} - K_{aj} \bigr)
+&\;=\; -h_{aa} \;-\; \sum_{j} \Bigl( 2 J_{aj} - K_{aj} \Bigr)
 \notag \\
 &\;=\; -\varepsilon_a .
 \end{align}
@@ -2212,7 +2226,7 @@ $$
 **3.**  Equation \eqref{eq:ch-03-E-hf-ao}:
 
 $$
-E_\text{el} \;=\; \frac{1}{2}\, \text{Tr}\bigl[\mathbf P\,(\mathbf h + \mathbf F)\bigr] .
+E_\text{el} \;=\; \frac{1}{2}\, \text{Tr}\Bigl[\mathbf P\,(\mathbf h + \mathbf F)\Bigr] .
 $$
 
 In the MO basis the trace becomes a sum:
@@ -2280,7 +2294,7 @@ The density matrix is *invariant* under unitary rotations of the
 occupied orbitals.  The HF energy in the AO basis is
 
 $$
-E_\text{HF} \;=\; \frac{1}{2}\, \text{Tr}\bigl[\mathbf P\,(\mathbf h + \mathbf F)\bigr] ,
+E_\text{HF} \;=\; \frac{1}{2}\, \text{Tr}\Bigl[\mathbf P\,(\mathbf h + \mathbf F)\Bigr] ,
 $$
 
 with $\mathbf h$ and $\mathbf F$ built from $\mathbf P$.  Since

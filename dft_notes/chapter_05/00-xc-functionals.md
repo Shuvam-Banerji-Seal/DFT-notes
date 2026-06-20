@@ -62,7 +62,7 @@ E_\text{xc}^{\text{approx}}[\rho] \;=\; \underbrace{E_\text{xc}^{(0)}[\rho]}_{\t
 \;+\; \underbrace{E_\text{xc}^{(1)}[\rho, \nabla\rho]}_{\text{GGA: } + \nabla\rho}
 \;+\; \underbrace{E_\text{xc}^{(2)}[\rho, \nabla\rho, \tau]}_{\text{meta-GGA: } + \tau}
 \;+\; \underbrace{a\, E_\text{x}^\text{HF}}_{\text{hybrid}}
-\;+\; \underbrace{\text{RS}\bigl[E_\text{x}^\text{HF}\bigr]}_{\text{range-separated}}
+\;+\; \underbrace{\text{RS}\Bigl[E_\text{x}^\text{HF}\Bigr]}_{\text{range-separated}}
 \;+\; \underbrace{b\, E_\text{c}^\text{MP2}}_{\text{double hybrid}}
 \;+\; \underbrace{E_\text{disp}}_{\text{dispersion}} .
 \end{equation}
@@ -81,8 +81,8 @@ known pieces,
 
 \begin{equation}
 \label{eq:ch-05-exc-definition}
-E_\text{xc}[\rho] \;=\; \bigl( \langle \hat T \rangle - T_s[\rho] \bigr)
-\;+\; \bigl( \langle \hat V_{ee} \rangle - J[\rho] \bigr) .
+E_\text{xc}[\rho] \;=\; \Bigl( \langle \hat T \rangle - T_s[\rho] \Bigr)
+\;+\; \Bigl( \langle \hat V_{ee} \rangle - J[\rho] \Bigr) .
 \end{equation}
 
 The first bracket is the **kinetic-correlation** correction: the
@@ -252,7 +252,7 @@ approximation has the form
 
 \begin{equation}
 \label{eq:ch-05-lda-form}
-E_\text{xc}^\text{LDA}[\rho] \;=\; \int \rho(\mathbf r)\, \varepsilon_\text{xc}\bigl(\rho(\mathbf r)\bigr)\, d\mathbf r ,
+E_\text{xc}^\text{LDA}[\rho] \;=\; \int \rho(\mathbf r)\, \varepsilon_\text{xc}\Bigl(\rho(\mathbf r)\Bigr)\, d\mathbf r ,
 \end{equation}
 
 i.e. the integrand of the UEG formula is *kept* and the constant
@@ -270,7 +270,7 @@ is, by the chain rule,
 
 \begin{equation}
 \label{eq:ch-05-lda-potential}
-v_\text{xc}^\text{LDA}(\mathbf r) \;=\; \varepsilon_\text{xc}\bigl(\rho(\mathbf r)\bigr)
+v_\text{xc}^\text{LDA}(\mathbf r) \;=\; \varepsilon_\text{xc}\Bigl(\rho(\mathbf r)\Bigr)
 \;+\; \rho(\mathbf r)\,\frac{d\varepsilon_\text{xc}}{d\rho}\bigg|_{\rho(\mathbf r)} .
 \end{equation}
 
@@ -283,7 +283,7 @@ atoms, radicals, and ferromagnets — is
 \begin{equation}
 \label{eq:ch-05-lsda-form}
 E_\text{xc}^\text{LSDA}[\rho_\uparrow, \rho_\downarrow] \;=\;
-\int \rho(\mathbf r)\, \varepsilon_\text{xc}\bigl(\rho_\uparrow(\mathbf r), \rho_\downarrow(\mathbf r)\bigr)\, d\mathbf r ,
+\int \rho(\mathbf r)\, \varepsilon_\text{xc}\Bigl(\rho_\uparrow(\mathbf r), \rho_\downarrow(\mathbf r)\Bigr)\, d\mathbf r ,
 \end{equation}
 
 where $\varepsilon_\text{xc}$ is now a function of *two* local
@@ -365,8 +365,8 @@ that depends on a *dimensionless* reduced gradient $s$,
 \begin{equation}
 \label{eq:ch-05-gga-form}
 E_\text{xc}^\text{GGA}[\rho] \;=\; \int \rho(\mathbf r)\,
-\varepsilon_\text{xc}^\text{LDA}\bigl(\rho(\mathbf r)\bigr)\,
-F_\text{xc}\bigl(s(\mathbf r)\bigr)\, d\mathbf r ,
+\varepsilon_\text{xc}^\text{LDA}\Bigl(\rho(\mathbf r)\Bigr)\,
+F_\text{xc}\Bigl(s(\mathbf r)\Bigr)\, d\mathbf r ,
 \end{equation}
 
 where the **reduced gradient** is
@@ -375,7 +375,7 @@ where the **reduced gradient** is
 \label{eq:ch-05-reduced-gradient}
 s(\mathbf r) \;=\; \frac{|\nabla\rho(\mathbf r)|}{2 k_F(\mathbf r)\, \rho(\mathbf r)} ,
 \qquad
-k_F(\mathbf r) \;=\; \bigl(3\pi^2 \rho(\mathbf r)\bigr)^{1/3} .
+k_F(\mathbf r) \;=\; \Bigl(3\pi^2 \rho(\mathbf r)\Bigr)^{1/3} .
 \end{equation}
 
 The factor $2 k_F \rho$ in the denominator makes $s$
@@ -437,7 +437,7 @@ that vanishes in the uniform limit,
 
 \begin{equation}
 \label{eq:ch-05-pbe-h}
-H\bigl[\varepsilon_\text{c}^\text{LDA}, t\bigr] \;=\;
+H\Bigl[\varepsilon_\text{c}^\text{LDA}, t\Bigr] \;=\;
 \gamma\,\ln\!\left[ 1 + \frac{\beta}{\gamma} t^2\,
 \frac{1 + A t^2}{1 + A t^2 + (A t^2)^2} \right] ,
 \end{equation}
@@ -465,7 +465,7 @@ enhancement factors, the full PBE exchange–correlation energy is
 \begin{equation}
 \label{eq:ch-05-pbe-total}
 E_\text{xc}^\text{PBE}[\rho] \;=\; \int \rho\, \varepsilon_\text{x}^\text{unif}(\rho)\, F_\text{x}^\text{PBE}(s)\, d\mathbf r
-\;+\; \int \rho\, \bigl[\varepsilon_\text{c}^\text{LDA}(r_s) + H(t)\bigr]\, d\mathbf r .
+\;+\; \int \rho\, \Bigl[\varepsilon_\text{c}^\text{LDA}(r_s) + H(t)\Bigr]\, d\mathbf r .
 \end{equation}
 
 PBE is the *de facto* default functional of solid-state physics. It
@@ -544,7 +544,7 @@ exchange–correlation energy has the form
 \begin{equation}
 \label{eq:ch-05-meta-gga-form}
 E_\text{xc}^\text{meta-GGA}[\rho] \;=\; \int \rho(\mathbf r)\, \varepsilon_\text{x}^\text{unif}(\rho(\mathbf r))\,
-F_\text{xc}\bigl(\rho, \nabla\rho, \tau\bigr)\, d\mathbf r .
+F_\text{xc}\Bigl(\rho, \nabla\rho, \tau\Bigr)\, d\mathbf r .
 \end{equation}
 
 A common reparametrisation uses the **dimensionless orbital
@@ -594,7 +594,7 @@ enhancement factor of the form
 
 \begin{equation}
 \label{eq:ch-05-tpss-form}
-F_\text{x}^\text{TPSS}(\rho, s, \alpha) \;=\; F_\text{x}^\text{PBE}(s)\,\bigl[1 + d\, \alpha\, s^2\bigr]^{-1} ,
+F_\text{x}^\text{TPSS}(\rho, s, \alpha) \;=\; F_\text{x}^\text{PBE}(s)\,\Bigl[1 + d\, \alpha\, s^2\Bigr]^{-1} ,
 \end{equation}
 
 where $d$ is a constant chosen by a constraint. The PBE part is
@@ -669,7 +669,7 @@ theory** result
 
 \begin{equation}
 \label{eq:ch-05-gl-perturbation}
-E_\text{xc} \;=\; E_\text{xc}^\text{GL2} \;+\; \mathcal{O}\bigl[(\hat V_{ee} - \hat V_\text{H} - \hat V_\text{xc})^3\bigr] .
+E_\text{xc} \;=\; E_\text{xc}^\text{GL2} \;+\; \mathcal{O}\Bigl[(\hat V_{ee} - \hat V_\text{H} - \hat V_\text{xc})^3\Bigr] .
 \end{equation}
 
 At *second order* in the coupling, the integrand of
@@ -1935,8 +1935,8 @@ paper)
 \begin{equation}
 \label{eq:ch-05-lit-pbe-exc-1}
 E_\text{x}^\text{PBE} \;=\; \int \rho(\mathbf r)\,
-\varepsilon_\text{x}^\text{unif}\bigl(\rho(\mathbf r)\bigr)\,
-F_\text{x}^\text{PBE}\bigl(s(\mathbf r)\bigr)\, d\mathbf r ,
+\varepsilon_\text{x}^\text{unif}\Bigl(\rho(\mathbf r)\Bigr)\,
+F_\text{x}^\text{PBE}\Bigl(s(\mathbf r)\Bigr)\, d\mathbf r ,
 \end{equation}
 
 where $s(\mathbf r) = |\nabla\rho| / (2 k_F \rho)$ is the reduced
@@ -2082,8 +2082,8 @@ correlation energy is written (Eq. (8), p. 3866) as
 \begin{equation}
 \label{eq:ch-05-lit-pbe-ec}
 E_\text{c}^\text{PBE} \;=\; \int \rho(\mathbf r)\,
-\varepsilon_\text{c}^\text{PBE}\bigl(\rho(\mathbf r), \zeta(\mathbf r),
-\nabla\rho(\mathbf r)\bigr)\, d\mathbf r ,
+\varepsilon_\text{c}^\text{PBE}\Bigl(\rho(\mathbf r), \zeta(\mathbf r),
+\nabla\rho(\mathbf r)\Bigr)\, d\mathbf r ,
 \end{equation}
 
 with the correlation energy per electron split as
@@ -2091,7 +2091,7 @@ with the correlation energy per electron split as
 \begin{equation}
 \label{eq:ch-05-lit-pbe-ec-split}
 \varepsilon_\text{c}^\text{PBE}(\rho, \zeta, t) \;=\;
-\varepsilon_\text{c}^\text{LDA}(r_s, \zeta) \;+\; H\bigl(r_s, \zeta, t\bigr) ,
+\varepsilon_\text{c}^\text{LDA}(r_s, \zeta) \;+\; H\Bigl(r_s, \zeta, t\Bigr) ,
 \end{equation}
 
 where $\varepsilon_\text{c}^\text{LDA}(r_s, \zeta)$ is the LSDA
@@ -2103,13 +2103,13 @@ $t = |\nabla\rho| / (2 \phi k_s \rho)$ is the *different*
 reduced gradient used for correlation, with
 $k_s = (4 k_F / \pi a_0)^{1/2}$ the Thomas–Fermi screening
 wave-vector and
-$\phi(\zeta) = \bigl[(1+\zeta)^{2/3} + (1-\zeta)^{2/3}\bigr]/2$
+$\phi(\zeta) = \Bigl[(1+\zeta)^{2/3} + (1-\zeta)^{2/3}\Bigr]/2$
 the spin-scaling factor (Eq. (8), p. 3866). The PBE enhancement
 $H$ is given by (Eq. (9), p. 3866)
 
 \begin{equation}
 \label{eq:ch-05-lit-pbe-h}
-H\bigl[r_s, \zeta, t\bigr] \;=\; \gamma\, \phi^3\,
+H\Bigl[r_s, \zeta, t\Bigr] \;=\; \gamma\, \phi^3\,
 \ln\!\Biggl[\, 1 \;+\; \frac{\beta}{\gamma}\,
 t^2\,\frac{1 + A t^2}{1 + A t^2 + (A t^2)^2}\,\Biggr] ,
 \end{equation}
@@ -2119,7 +2119,7 @@ with the auxiliary quantity
 \begin{equation}
 \label{eq:ch-05-lit-pbe-a}
 A \;=\; \frac{\beta}{\gamma}\,
-\frac{1}{\exp\!\bigl(-\varepsilon_\text{c}^\text{LDA}/(\gamma\phi^3)\bigr) - 1} .
+\frac{1}{\exp\!\Bigl(-\varepsilon_\text{c}^\text{LDA}/(\gamma\phi^3)\Bigr) - 1} .
 \end{equation}
 
 The two PBE correlation parameters are
@@ -2142,7 +2142,7 @@ analogous to the four on $F_\text{x}$:
 1. $H \to 0$ as $t \to 0$ (the LDA is recovered for uniform
    density; verified by direct substitution of $t = 0$
    into \eqref{eq:ch-05-lit-pbe-h}, which gives
-   $H\bigl[r_s, \zeta, 0\bigr] = \gamma\, \phi^3\, \ln[1 + 0] = 0$).
+   $H\Bigl[r_s, \zeta, 0\Bigr] = \gamma\, \phi^3\, \ln[1 + 0] = 0$).
 2. $H \to \beta \phi^3 t^2$ for small $t$ (the second-order GEA
    limit of the correlation energy).
 3. $H$ is *non-negative* for all $t$ (the gradient always
@@ -2228,8 +2228,8 @@ spin-dependent correlation energy per electron is written as
 \varepsilon_\text{c}(r_s, \zeta) \;=\;
 \varepsilon_\text{c}(r_s, 0) \;+\;
 \frac{\alpha_\text{c}(r_s)}{\zeta_\text{AF}^2}\,
-f(\zeta)\,\bigl(1 - \zeta^4\bigr) \;+\;
-\bigl[\varepsilon_\text{c}(r_s, 1) - \varepsilon_\text{c}(r_s, 0)\bigr]\,
+f(\zeta)\,\Bigl(1 - \zeta^4\Bigr) \;+\;
+\Bigl[\varepsilon_\text{c}(r_s, 1) - \varepsilon_\text{c}(r_s, 0)\Bigr]\,
 f(\zeta)\, \zeta^4 ,
 \end{equation}
 
@@ -2265,9 +2265,9 @@ $x = \sqrt{r_s}$:
 \begin{equation}
 \label{eq:ch-05-lit-vwn-pade}
 \varepsilon_p(x) \;=\; -2 A_p\,
-\bigl(1 + \alpha_{p,1}\, x^2\bigr)\,
+\Bigl(1 + \alpha_{p,1}\, x^2\Bigr)\,
 \ln\!\Biggl[\, 1 \;+\; \frac{1}{2 A_p\,
-\bigl(\beta_{p,1}\, x + \beta_{p,2}\, x^2 + \beta_{p,3}\, x^3 + \beta_{p,4}\, x^4\bigr)}\,\Biggr] .
+\Bigl(\beta_{p,1}\, x + \beta_{p,2}\, x^2 + \beta_{p,3}\, x^3 + \beta_{p,4}\, x^4\Bigr)}\,\Biggr] .
 \end{equation}
 
 This is the form on p. 1202 of the paper. The five parameters
@@ -2624,12 +2624,12 @@ E_\text{c}^\text{LYP} \;=\; -a \int
 \frac{4 \, \rho(\mathbf r)}{1 + d\,
 \rho(\mathbf r)^{-1/3}}\;
 \frac{\rho(\mathbf r) \;+\; b\,
-\rho(\mathbf r)^{-2/3}\,\bigl[\,C_F\, \rho(\mathbf r)^{8/3}
+\rho(\mathbf r)^{-2/3}\,\Bigl[\,C_F\, \rho(\mathbf r)^{8/3}
 \;-\; \tfrac{2}{d^2}\, |\nabla\rho(\mathbf r)|^2
 \;+\; \tfrac{18}{d^2}\, \rho(\mathbf r)\, \nabla^2\rho(\mathbf r)
-\;+\; \tfrac{18}{d^2}\, |\nabla\rho(\mathbf r)|^2\,\bigr]}{1 + c\,
-\rho(\mathbf r)^{-1/3}\, \bigl[|\nabla\rho(\mathbf r)|^2 /
-\rho(\mathbf r)^{8/3}\bigr]}\, d\mathbf r .
+\;+\; \tfrac{18}{d^2}\, |\nabla\rho(\mathbf r)|^2\,\Bigr]}{1 + c\,
+\rho(\mathbf r)^{-1/3}\, \Bigl[|\nabla\rho(\mathbf r)|^2 /
+\rho(\mathbf r)^{8/3}\Bigr]}\, d\mathbf r .
 \end{equation}
 
 This is the full LYP formula (Eq. (7) of the paper, p. 787,
@@ -2670,12 +2670,12 @@ correlation energy of a *two-electron* HF density is
 E_\text{c}^\text{CS} \;=\; -4 \int\!\int
 \rho(\mathbf r_1)\, \rho(\mathbf r_2)\,
 \frac{1}{r_{12}}\,
-\bigl[1 - \phi(r_{12})\bigr]\,
+\Bigl[1 - \phi(r_{12})\Bigr]\,
 d\mathbf r_1\, d\mathbf r_2 ,
 \end{equation}
 
-where $\phi(r_{12}) = e^{-\beta_0 r_{12}}\,\bigl(1 + \beta_0
-r_{12}/2\bigr)$ is a *Kato-type* correlation factor with
+where $\phi(r_{12}) = e^{-\beta_0 r_{12}}\,\Bigl(1 + \beta_0
+r_{12}/2\Bigr)$ is a *Kato-type* correlation factor with
 $\beta_0$ a function of the local kinetic-energy density
 (p. 786 of LYP). The CS form depends on the
 interelectronic distance $r_{12}$ — *explicitly*. The LYP

@@ -191,10 +191,12 @@ $0$ to $r_c$, then subtract the same equation with $u_l$ and
 $\dot u_l$ swapped. The left-hand side collapses by two integration
 by parts:
 
-\begin{align}
-\int_0^{r_c} \!\!\!\left[-\frac{1}{2}u_l \dot u_l'' + \left(\frac{l(l+1)}{2r^2} + V_{ae} - E\right) u_l \dot u_l\right] dr & = \int_0^{r_c} u_l^2 dr, \label{eq:ch-08-deriv-1} \\
-\int_0^{r_c} \!\!\!\left[-\frac{1}{2}\dot u_l u_l'' + \left(\frac{l(l+1)}{2r^2} + V_{ae} - E\right) \dot u_l u_l\right] dr & = \int_0^{r_c} \dot u_l u_l dr. \label{eq:ch-08-deriv-2}
-\end{align}
+\begin{equation}
+\int_0^{r_c} \!\!\!\left[-\frac{1}{2}u_l \dot u_l'' + \left(\frac{l(l+1)}{2r^2} + V_{ae} - E\right) u_l \dot u_l\right] dr  = \int_0^{r_c} u_l^2 dr, \label{eq:ch-08-deriv-1}
+\end{equation}
+\begin{equation}
+\int_0^{r_c} \!\!\!\left[-\frac{1}{2}\dot u_l u_l'' + \left(\frac{l(l+1)}{2r^2} + V_{ae} - E\right) \dot u_l u_l\right] dr  = \int_0^{r_c} \dot u_l u_l dr. \label{eq:ch-08-deriv-2}
+\end{equation}
 
 Subtracting, and using the boundary condition $u_l(0) = 0$,
 $\dot u_l(0) = 0$:
@@ -638,10 +640,12 @@ u_0(r) = 2r\,e^{-r}, \qquad E_0 = -\tfrac{1}{2}\,E_h.
 
 The derivatives are
 
-\begin{align}
-u_0'(r) &= 2(1 - r)\,e^{-r}, \label{eq:ch-08-h-1s-d1} \\
-u_0''(r) &= -2(2 - r)\,e^{-r}. \label{eq:ch-08-h-1s-d2}
-\end{align}
+\begin{equation}
+u_0'(r) = 2(1 - r)\,e^{-r}, \label{eq:ch-08-h-1s-d1}
+\end{equation}
+\begin{equation}
+u_0''(r) = -2(2 - r)\,e^{-r}. \label{eq:ch-08-h-1s-d2}
+\end{equation}
 
 To verify: substituting into the radial equation
 $-\frac{1}{2}u_0'' - \frac{1}{r}u_0 = E_0 u_0$,
@@ -653,11 +657,15 @@ $-\frac{1}{2}u_0'' - \frac{1}{r}u_0 = E_0 u_0$,
 
 At the chosen cutoff $r_c = 0.5\,a_0$:
 
-\begin{align}
-u_0(r_c) &= 2(0.5)\,e^{-0.5} = e^{-0.5} \approx 0.6065, \label{eq:ch-08-h-1s-rcval} \\
-u_0'(r_c) &= 2(0.5)\,e^{-0.5} = e^{-0.5} \approx 0.6065, \label{eq:ch-08-h-1s-rcder} \\
-u_0''(r_c) &= -2(1.5)\,e^{-0.5} = -3\,e^{-0.5} \approx -1.820. \label{eq:ch-08-h-1s-rcd2}
-\end{align}
+\begin{equation}
+u_0(r_c) = 2(0.5)\,e^{-0.5} = e^{-0.5} \approx 0.6065, \label{eq:ch-08-h-1s-rcval}
+\end{equation}
+\begin{equation}
+u_0'(r_c) = 2(0.5)\,e^{-0.5} = e^{-0.5} \approx 0.6065, \label{eq:ch-08-h-1s-rcder}
+\end{equation}
+\begin{equation}
+u_0''(r_c) = -2(1.5)\,e^{-0.5} = -3\,e^{-0.5} \approx -1.820. \label{eq:ch-08-h-1s-rcd2}
+\end{equation}
 
 The logarithmic derivative at $r_c$ is
 $D_0(E_0) = u_0'(r_c)/u_0(r_c) = 1\,a_0^{-1}$.
@@ -667,7 +675,7 @@ ansatz
 
 \begin{equation}
 \label{eq:ch-08-h-ansatz}
-\phi_0(r) = r\,\exp\!\bigl(c_0 + c_1 r^2 + c_2 r^4 + c_3 r^6\bigr) \quad (r \le r_c),
+\phi_0(r) = r\,\exp\!\Bigl(c_0 + c_1 r^2 + c_2 r^4 + c_3 r^6\Bigr) \quad (r \le r_c),
 \end{equation}
 
 the four conditions are value, first derivative, second
@@ -677,8 +685,8 @@ through the matching step by step, then solve.
 **Step 1 — value at $r_c$.**
 
 \begin{align}
-\phi_0(r_c) = r_c\,\exp\!\bigl(c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6\bigr) &= u_0(r_c) = 2r_c\,e^{-r_c}, \notag \\
-\exp\!\bigl(c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6\bigr) &= 2\,e^{-r_c}, \notag \\
+\phi_0(r_c) = r_c\,\exp\!\Bigl(c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6\Bigr) &= u_0(r_c) = 2r_c\,e^{-r_c}, \notag \\
+\exp\!\Bigl(c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6\Bigr) &= 2\,e^{-r_c}, \notag \\
 c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6 &= \ln 2 - r_c. \label{eq:ch-08-h-match-1}
 \end{align}
 
@@ -722,7 +730,7 @@ The matching condition is
 \eqref{eq:ch-08-norm-conservation} for $l = 0$:
 
 \begin{equation}
-\int_0^{r_c} r^2\,\exp\!\bigl(2c_0 + 2c_1 r^2 + 2c_2 r^4 + 2c_3 r^6\bigr) dr = \int_0^{r_c} 4r^2 e^{-2r} dr. \label{eq:ch-08-h-match-norm}
+\int_0^{r_c} r^2\,\exp\!\Bigl(2c_0 + 2c_1 r^2 + 2c_2 r^4 + 2c_3 r^6\Bigr) dr = \int_0^{r_c} 4r^2 e^{-2r} dr. \label{eq:ch-08-h-match-norm}
 \end{equation}
 
 The right-hand side has a closed form
@@ -777,7 +785,7 @@ $l = 0$ gives:
 
 \begin{equation}
 \label{eq:ch-08-h-vps-inside}
-V_{ps,0}(r) = E_0 + \tfrac{1}{2}\bigl[2p'(r)/r + p'(r)^2 + p''(r)\bigr].
+V_{ps,0}(r) = E_0 + \tfrac{1}{2}\Bigl[2p'(r)/r + p'(r)^2 + p''(r)\Bigr].
 \end{equation}
 
 **At the cutoff** $r = r_c$ (using the analytical
@@ -803,7 +811,7 @@ exactly.
 values $c_1 = -1.5$, $c_2 = +1$, $c_3 = 0$):
 
 \begin{align}
-\lim_{r \to 0} \frac{2p'(r)}{r} &= \lim_{r \to 0}\bigl(4c_1 + 8c_2 r^2 + 12 c_3 r^4\bigr) = 4c_1 = -6.0, \notag \\
+\lim_{r \to 0} \frac{2p'(r)}{r} &= \lim_{r \to 0}\Bigl(4c_1 + 8c_2 r^2 + 12 c_3 r^4\Bigr) = 4c_1 = -6.0, \notag \\
 \lim_{r \to 0} p'(r)^2 &= 0, \quad \lim_{r \to 0} p''(r) = 2c_1 = -3.0, \notag \\
 V_{ps,0}(0) &= -0.5 + \tfrac{1}{2}(-6.0 + 0 - 3.0) = -0.5 - 4.5 = -5.0\,E_h. \label{eq:ch-08-h-vps-zero}
 \end{align}
@@ -916,7 +924,7 @@ that required to expand the all-electron wavefunction.
 
 For the TM ansatz \eqref{eq:ch-08-tm-ansatz} with
 $l = 0$, the pseudo-wavefunction is
-$\phi_0(r) = r \exp\bigl(c_0 + c_1 r^2 + c_2 r^4 + c_3 r^6\bigr)$.
+$\phi_0(r) = r \exp\Bigl(c_0 + c_1 r^2 + c_2 r^4 + c_3 r^6\Bigr)$.
 Substituting into \eqref{eq:ch-08-tm-inversion}:
 
 $$V_{ps,0}(r) = E_0 + \frac{1}{2}\!\left[\frac{2p'(r)}{r} + p'(r)^2 + p''(r)\right], \quad p(r) = c_0 + c_1 r^2 + c_2 r^4 + c_3 r^6.$$
@@ -988,7 +996,7 @@ pseudo-potential?
 <summary>Show answer</summary>
 
 **Closed form for $Q_0^{ae}$.** Differentiate
-$\frac{d}{dr}\bigl[-(r^2/2) e^{-2r}\bigr] = -(r - r^2)
+$\frac{d}{dr}\Bigl[-(r^2/2) e^{-2r}\Bigr] = -(r - r^2)
 e^{-2r}$ twice by parts, or recognise the standard
 integral
 
@@ -1005,7 +1013,7 @@ $$Q_0^{ae} = 1 - 2 e^{-1}(0.25 + 0.5 + 0.5) = 1 - 2.5\,e^{-1} \approx 1 - 0.9197
 **Pseudo integral for the 4-parameter form.** With
 $c_0, c_1, c_2, c_3$ from \eqref{eq:ch-08-h-coeffs}:
 
-$$Q_0^{ps} = \int_0^{0.5} r^2 \exp\!\bigl(2c_0 + 2c_1 r^2 + 2c_2 r^4 + 2c_3 r^6\bigr) dr.$$
+$$Q_0^{ps} = \int_0^{0.5} r^2 \exp\!\Bigl(2c_0 + 2c_1 r^2 + 2c_2 r^4 + 2c_3 r^6\Bigr) dr.$$
 
 This is computed by quadrature in the script. The TM
 4-parameter form was constructed with the norm
@@ -1107,20 +1115,20 @@ $$\left[-\frac{1}{2}u_l \dot u_l'' + (U_l - E) u_l \dot u_l\right] - \left[-\fra
 
 The $(U_l - E) u_l \dot u_l$ terms cancel, leaving
 
-$$\frac{1}{2}\bigl[\dot u_l u_l'' - u_l \dot u_l''\bigr] = u_l^2.$$
+$$\frac{1}{2}\Bigl[\dot u_l u_l'' - u_l \dot u_l''\Bigr] = u_l^2.$$
 
 Integrate from $0$ to $r_c$:
 
-$$\frac{1}{2}\int_0^{r_c} \bigl[\dot u_l u_l'' - u_l \dot u_l''\bigr] dr = \int_0^{r_c} u_l^2\,dr. \tag{$\dagger$}$$
+$$\frac{1}{2}\int_0^{r_c} \Bigl[\dot u_l u_l'' - u_l \dot u_l''\Bigr] dr = \int_0^{r_c} u_l^2\,dr. \tag{$\dagger$}$$
 
 **Step 3 — integration by parts.** Integrate the second
 term by parts once:
 
-$$\int_0^{r_c} u_l \dot u_l''\,dr = \bigl[u_l \dot u_l'\bigr]_0^{r_c} - \int_0^{r_c} u_l' \dot u_l'\,dr.$$
+$$\int_0^{r_c} u_l \dot u_l''\,dr = \Bigl[u_l \dot u_l'\Bigr]_0^{r_c} - \int_0^{r_c} u_l' \dot u_l'\,dr.$$
 
 Integrate the first term by parts once:
 
-$$\int_0^{r_c} \dot u_l u_l''\,dr = \bigl[\dot u_l u_l'\bigr]_0^{r_c} - \int_0^{r_c} \dot u_l' u_l'\,dr.$$
+$$\int_0^{r_c} \dot u_l u_l''\,dr = \Bigl[\dot u_l u_l'\Bigr]_0^{r_c} - \int_0^{r_c} \dot u_l' u_l'\,dr.$$
 
 The two integrals $\int_0^{r_c} u_l' \dot u_l'\,dr$ are
 identical, so they cancel. The boundary terms give
@@ -1289,10 +1297,12 @@ solutions of the all-electron radial equation in the
 spherical potential well of atom $R$ at chosen reference
 energies $\varepsilon_{Ri}$:
 
-\begin{align}
-\phi_i^R(\mathbf r) &= \phi_{R,n_i,l_i}(r)\, Y_{l_i m_i}(\hat{\mathbf r}), \label{eq:ch-08-paw-ae-pw} \\
-\tilde\phi_i^R(\mathbf r) &= \tilde\phi_{R,n_i,l_i}(r)\, Y_{l_i m_i}(\hat{\mathbf r}). \label{eq:ch-08-paw-ps-pw}
-\end{align}
+\begin{equation}
+\phi_i^R(\mathbf r) = \phi_{R,n_i,l_i}(r)\, Y_{l_i m_i}(\hat{\mathbf r}), \label{eq:ch-08-paw-ae-pw}
+\end{equation}
+\begin{equation}
+\tilde\phi_i^R(\mathbf r) = \tilde\phi_{R,n_i,l_i}(r)\, Y_{l_i m_i}(\hat{\mathbf r}). \label{eq:ch-08-paw-ps-pw}
+\end{equation}
 
 The $\phi_i^R$ are the **all-electron partial waves** (the
 true atomic wavefunctions evaluated inside the sphere); the
@@ -1336,7 +1346,7 @@ projector:
 
 \begin{equation}
 \label{eq:ch-08-paw-reconstruct-derivation}
-\hat{\mathcal{T}} = 1 + \sum_R \sum_i \bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\bigr) \langle \tilde p_i^R |.
+\hat{\mathcal{T}} = 1 + \sum_R \sum_i \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R |.
 \end{equation}
 
 To verify that this is correct, apply it to a smooth state
@@ -1344,16 +1354,18 @@ $|\tilde\Psi_n\rangle$:
 
 \begin{equation}
 \label{eq:ch-08-paw-apply-t}
-|\Psi_n\rangle = |\tilde\Psi_n\rangle + \sum_{R,i} \bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle.
+|\Psi_n\rangle = |\tilde\Psi_n\rangle + \sum_{R,i} \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle.
 \end{equation}
 
 Split the smooth state into "outside the augmentation
 spheres" and "inside each sphere":
 
-\begin{align}
-|\tilde\Psi_n\rangle &= |\tilde\Psi_n^{out}\rangle + \sum_R |\tilde\Psi_n^R\rangle, \label{eq:ch-08-paw-split} \\
-|\tilde\Psi_n^R\rangle &\equiv \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle. \label{eq:ch-08-paw-pw-expand}
-\end{align}
+\begin{equation}
+|\tilde\Psi_n\rangle = |\tilde\Psi_n^{out}\rangle + \sum_R |\tilde\Psi_n^R\rangle, \label{eq:ch-08-paw-split}
+\end{equation}
+\begin{equation}
+|\tilde\Psi_n^R\rangle \equiv \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle. \label{eq:ch-08-paw-pw-expand}
+\end{equation}
 
 Equation \eqref{eq:ch-08-paw-pw-expand} is just the
 completeness relation \eqref{eq:ch-08-paw-completeness}
@@ -1361,8 +1373,8 @@ applied to $|\tilde\Psi_n^R\rangle$ inside $\Omega_R$. Now
 substitute into \eqref{eq:ch-08-paw-apply-t}:
 
 \begin{align}
-|\Psi_n\rangle &= |\tilde\Psi_n^{out}\rangle + \sum_R |\tilde\Psi_n^R\rangle + \sum_{R,i} \bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\
-&= |\tilde\Psi_n^{out}\rangle + \sum_R \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle + \sum_{R,i} \bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\
+|\Psi_n\rangle &= |\tilde\Psi_n^{out}\rangle + \sum_R |\tilde\Psi_n^R\rangle + \sum_{R,i} \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\
+&= |\tilde\Psi_n^{out}\rangle + \sum_R \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle + \sum_{R,i} \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\
 &= |\tilde\Psi_n^{out}\rangle + \sum_R \sum_i |\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle. \label{eq:ch-08-paw-final}
 \end{align}
 
@@ -1374,7 +1386,7 @@ outside, $\Psi_n = \tilde\Psi_n$. The transformation is
 
 \begin{equation}
 \label{eq:ch-08-paw-inverse}
-\hat{\mathcal{T}}^{-1} = 1 + \sum_R \sum_i \bigl(|\tilde\phi_i^R\rangle - |\phi_i^R\rangle\bigr) \langle \tilde p_i^R |.
+\hat{\mathcal{T}}^{-1} = 1 + \sum_R \sum_i \Bigl(|\tilde\phi_i^R\rangle - |\phi_i^R\rangle\Bigr) \langle \tilde p_i^R |.
 \end{equation}
 
 The same derivation with $\phi \leftrightarrow \tilde\phi$
@@ -1397,7 +1409,7 @@ pieces:
 
 \begin{equation}
 \label{eq:ch-08-paw-3pieces}
-\tilde O = \hat O + \sum_R \sum_{i,j} |\tilde p_i^R\rangle \bigl[ \langle \phi_i^R | \hat O | \phi_j^R \rangle - \langle \tilde\phi_i^R | \hat O | \tilde\phi_j^R \rangle \bigr] \langle \tilde p_j^R |.
+\tilde O = \hat O + \sum_R \sum_{i,j} |\tilde p_i^R\rangle \Bigl[ \langle \phi_i^R | \hat O | \phi_j^R \rangle - \langle \tilde\phi_i^R | \hat O | \tilde\phi_j^R \rangle \Bigr] \langle \tilde p_j^R |.
 \end{equation}
 
 This follows from $\hat{\mathcal{T}} = 1 + \sum_{R,i}(|\phi_i^R\rangle
@@ -1414,11 +1426,15 @@ For the Kohn–Sham Hamiltonian
 $\hat H_{KS} = -\tfrac{1}{2}\nabla^2 + V_{eff}[\rho](\mathbf r)$,
 the three pieces become:
 
-\begin{align}
-\tilde T &\equiv -\tfrac{1}{2}\nabla^2, \label{eq:ch-08-paw-T} \\
-\tilde V_{eff} &\equiv V_{eff}[\tilde\rho + \hat\rho^1](\mathbf r), \label{eq:ch-08-paw-Veff} \\
-\tilde H_{aug} &\equiv \sum_{R,ij} |\tilde p_i^R\rangle \bigl[ \langle \phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{eff}[\rho] | \phi_j^R \rangle - \langle \tilde\phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{eff}[\tilde\rho] | \tilde\phi_j^R \rangle \bigr] \langle \tilde p_j^R |. \label{eq:ch-08-paw-Haug}
-\end{align}
+\begin{equation}
+\tilde T \equiv -\tfrac{1}{2}\nabla^2, \label{eq:ch-08-paw-T}
+\end{equation}
+\begin{equation}
+\tilde V_{eff} \equiv V_{eff}[\tilde\rho + \hat\rho^1](\mathbf r), \label{eq:ch-08-paw-Veff}
+\end{equation}
+\begin{equation}
+\tilde H_{aug} \equiv \sum_{R,ij} |\tilde p_i^R\rangle \Bigl[ \langle \phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{eff}[\rho] | \phi_j^R \rangle - \langle \tilde\phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{eff}[\tilde\rho] | \tilde\phi_j^R \rangle \Bigr] \langle \tilde p_j^R |. \label{eq:ch-08-paw-Haug}
+\end{equation}
 
 The crucial point is the **double-counting subtraction** in
 \eqref{eq:ch-08-paw-Veff}: the smooth potential is evaluated
@@ -1437,7 +1453,7 @@ same way as the wavefunction:
 
 \begin{equation}
 \label{eq:ch-08-paw-density-reconstruct}
-\rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\bigr],
+\rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \Bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\Bigr],
 \end{equation}
 
 where
@@ -1473,7 +1489,7 @@ $\rho^R - \tilde\rho^R$, summed over atoms:
 
 \begin{equation}
 \label{eq:ch-08-paw-aug-charge}
-\hat\rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\bigr] = \tilde\rho(\mathbf r) + \sum_R \hat Q^R(\mathbf r).
+\hat\rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \Bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\Bigr] = \tilde\rho(\mathbf r) + \sum_R \hat Q^R(\mathbf r).
 \end{equation}
 
 This is the PAW analogue of the USPP augmentation charge
@@ -1493,7 +1509,7 @@ The Kohn–Sham total energy in the PAW framework is
 
 \begin{equation}
 \label{eq:ch-08-paw-total-energy}
-E_{tot} = \tilde T[\tilde\rho] + \tilde E_{xc}[\tilde\rho + \hat\rho^1] + \tilde E_H[\tilde\rho + \hat\rho^1] + E_{ion} + \sum_R \bigl( E_{aug}^R - \tilde E_{aug}^R \bigr),
+E_{tot} = \tilde T[\tilde\rho] + \tilde E_{xc}[\tilde\rho + \hat\rho^1] + \tilde E_H[\tilde\rho + \hat\rho^1] + E_{ion} + \sum_R \Bigl( E_{aug}^R - \tilde E_{aug}^R \Bigr),
 \end{equation}
 
 where the first three terms are evaluated on the smooth
@@ -1508,7 +1524,7 @@ partial-wave channel pairs $(i,j)$:
 
 \begin{equation}
 \label{eq:ch-08-paw-Eaug}
-E_{aug}^R = \sum_{i,j} \rho_{ij}^R \bigl[ \langle \phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{loc}^R | \phi_j^R \rangle + \tfrac{1}{2}\langle \phi_i^R \phi_j^R | V_H[\rho^R] |\rangle \bigr],
+E_{aug}^R = \sum_{i,j} \rho_{ij}^R \Bigl[ \langle \phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{loc}^R | \phi_j^R \rangle + \tfrac{1}{2}\langle \phi_i^R \phi_j^R | V_H[\rho^R] |\rangle \Bigr],
 \end{equation}
 
 where $V_{loc}^R$ is a local (smooth) part of the potential
@@ -1612,7 +1628,7 @@ The starting point is the one-electron Dirac equation
 
 \begin{equation}
 \label{eq:ch-08-dirac}
-\bigl[ c\,\boldsymbol{\alpha} \cdot \mathbf{p} + (\beta - 1)c^2 + V(\mathbf r) \bigr] \Psi(\mathbf r) = E\,\Psi(\mathbf r),
+\Bigl[ c\,\boldsymbol{\alpha} \cdot \mathbf{p} + (\beta - 1)c^2 + V(\mathbf r) \Bigr] \Psi(\mathbf r) = E\,\Psi(\mathbf r),
 \end{equation}
 
 where $\Psi(\mathbf r) = (\psi_A, \psi_B)^T$ is a
@@ -1632,10 +1648,12 @@ and $F_\kappa(r)$ — the large and small radial
 components — satisfy the coupled radial Dirac
 equations:
 
-\begin{align}
-\frac{dG_\kappa}{dr} + \frac{\kappa}{r}G_\kappa(r) &= \bigl[ 1 + (E - V(r))/c^2 \bigr] c\,F_\kappa(r), \label{eq:ch-08-dirac-G} \\
--\frac{dF_\kappa}{dr} + \frac{\kappa}{r}F_\kappa(r) &= \bigl[ (E - V(r))/c^2 \bigr] c\,G_\kappa(r). \label{eq:ch-08-dirac-F}
-\end{align}
+\begin{equation}
+\frac{dG_\kappa}{dr} + \frac{\kappa}{r}G_\kappa(r) = \Bigl[ 1 + (E - V(r))/c^2 \Bigr] c\,F_\kappa(r), \label{eq:ch-08-dirac-G}
+\end{equation}
+\begin{equation}
+-\frac{dF_\kappa}{dr} + \frac{\kappa}{r}F_\kappa(r) = \Bigl[ (E - V(r))/c^2 \Bigr] c\,G_\kappa(r). \label{eq:ch-08-dirac-F}
+\end{equation}
 
 The non-relativistic limit $c \to \infty$ recovers the
 Schrödinger equation for $G_\kappa$, with $F_\kappa \to
@@ -1973,7 +1991,7 @@ optimisation. The construction procedure is:
    *all* reference states simultaneously:
    \begin{equation}
    \label{eq:ch-08-hgh-cost}
-   \mathcal{J}[V_{ps}] = \sum_{i} \int dE \sum_{l} \bigl| D_l^{ps}(E; r_c) - D_l^{ae}(E; r_c) \bigr|^2,
+   \mathcal{J}[V_{ps}] = \sum_{i} \int dE \sum_{l} \Bigl| D_l^{ps}(E; r_c) - D_l^{ae}(E; r_c) \Bigr|^2,
    \end{equation}
    where $D_l(E; r_c)$ is the logarithmic derivative
    of the wavefunction at the cutoff radius, and the
@@ -2176,7 +2194,7 @@ recipe is, in modern notation:
    first derivative, and norm [Hamann, Schlüter, and
    Chiang, 1979, p. 1495]. The paper uses an
    *exponential-in-$r^2$* ansatz $\phi_l(r) = r^{l+1}
-   \exp\bigl(\sum_n c_n r^{2n}\bigr)$ with a small
+   \exp\Bigl(\sum_n c_n r^{2n}\Bigr)$ with a small
    number of polynomial coefficients; the original
    version uses 3–4 parameters per channel, the modern
    TM extension of § 8.4 uses 5–6 [Hamann, Schlüter,
@@ -2435,7 +2453,7 @@ in eq. (2.2) of the paper:
 
 \begin{equation}
 \label{eq:ch-08-bloch-transform-explicit}
-\hat{\mathcal{T}} = \mathbf 1 + \sum_R \sum_i \bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\bigr) \langle \tilde p_i^R |,
+\hat{\mathcal{T}} = \mathbf 1 + \sum_R \sum_i \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R |,
 \end{equation}
 
 where the sum is over atoms $R$ and partial-wave
@@ -2488,7 +2506,7 @@ p. 17956]:
 
 \begin{equation}
 \label{eq:ch-08-bloch-recon}
-\Psi_n(\mathbf r) = \tilde\Psi_n(\mathbf r) + \sum_{R,i} \bigl[\phi_i^R(\mathbf r) - \tilde\phi_i^R(\mathbf r)\bigr] \langle \tilde p_i^R | \tilde\Psi_n \rangle.
+\Psi_n(\mathbf r) = \tilde\Psi_n(\mathbf r) + \sum_{R,i} \Bigl[\phi_i^R(\mathbf r) - \tilde\phi_i^R(\mathbf r)\Bigr] \langle \tilde p_i^R | \tilde\Psi_n \rangle.
 \end{equation}
 
 This is the same as our eq.
@@ -2515,7 +2533,7 @@ eq. (2.7), p. 17956:
 
 \begin{equation}
 \label{eq:ch-08-bloch-density}
-\rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\bigr],
+\rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \Bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\Bigr],
 \end{equation}
 
 identical to our eq. \eqref{eq:ch-08-paw-density}.
@@ -2604,7 +2622,7 @@ as [Kresse and Joubert, 1999, eq. (5), p. 1761]:
 
 \begin{equation}
 \label{eq:ch-08-kj-paw-energy}
-E_{tot}^{PAW} = \sum_n f_n \langle \tilde\Psi_n | \hat T + \tilde V_{eff} | \tilde\Psi_n \rangle + E_{H}[\tilde\rho + \hat\rho] + E_{xc}[\tilde\rho + \hat\rho] + \sum_R \bigl( E_{aug}^R - \tilde E_{aug}^R \bigr),
+E_{tot}^{PAW} = \sum_n f_n \langle \tilde\Psi_n | \hat T + \tilde V_{eff} | \tilde\Psi_n \rangle + E_{H}[\tilde\rho + \hat\rho] + E_{xc}[\tilde\rho + \hat\rho] + \sum_R \Bigl( E_{aug}^R - \tilde E_{aug}^R \Bigr),
 \end{equation}
 
 where $\hat\rho$ is the augmentation charge, $E_{aug}^R$

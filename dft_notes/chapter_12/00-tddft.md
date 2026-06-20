@@ -741,8 +741,8 @@ the KS response $\chi_s$ by the **Dyson equation**
 \chi_s(\mathbf r, \mathbf r'; \omega)
    + \int d\mathbf r''\, d\mathbf r'''\,
    \chi_s(\mathbf r, \mathbf r''; \omega)\,
-   \bigl[ v_\text{H}(\mathbf r'', \mathbf r''')
-        + f_\text{xc}(\mathbf r'', \mathbf r''', \omega) \bigr]\,
+   \Bigl[ v_\text{H}(\mathbf r'', \mathbf r''')
+        + f_\text{xc}(\mathbf r'', \mathbf r''', \omega) \Bigr]\,
    \chi(\mathbf r''', \mathbf r'; \omega) .
 }
 \end{equation}
@@ -812,8 +812,8 @@ side, and rearrange:
      \delta v_\text{ext}(\mathbf r', \omega) \\
 &\quad + \int d\mathbf r'\, d\mathbf r''\,
      \chi_s(\mathbf r, \mathbf r'; \omega)\,
-     \bigl[ v_H(\mathbf r', \mathbf r'')
-          + f_\text{xc}(\mathbf r', \mathbf r''; \omega) \bigr]\,
+     \Bigl[ v_H(\mathbf r', \mathbf r'')
+          + f_\text{xc}(\mathbf r', \mathbf r''; \omega) \Bigr]\,
      \delta\rho(\mathbf r'', \omega) .
 \end{align}
 
@@ -848,7 +848,7 @@ multiplication:
 \boldsymbol\chi(\omega) \;=\;
 \boldsymbol\chi_s(\omega)
    + \boldsymbol\chi_s(\omega)\,
-     \bigl[ \mathbf v_H + \mathbf f_\text{xc}(\omega) \bigr]\,
+     \Bigl[ \mathbf v_H + \mathbf f_\text{xc}(\omega) \Bigr]\,
      \boldsymbol\chi(\omega) .
 \end{equation}
 
@@ -868,9 +868,9 @@ in operator form as
 \begin{equation}
 \label{eq:ch-12-chi-resolvent}
 \boldsymbol\chi(\omega) \;=\;
-\bigl[ \mathbf 1 - \boldsymbol\chi_s(\omega)\,
-     \bigl( \mathbf v_H + \mathbf f_\text{xc}(\omega) \bigr)
-\bigr]^{-1}\, \boldsymbol\chi_s(\omega) .
+\Bigl[ \mathbf 1 - \boldsymbol\chi_s(\omega)\,
+     \Bigl( \mathbf v_H + \mathbf f_\text{xc}(\omega) \Bigr)
+\Bigr]^{-1}\, \boldsymbol\chi_s(\omega) .
 \end{equation}
 
 The poles of $\boldsymbol\chi(\omega)$ are the frequencies
@@ -880,7 +880,7 @@ which
 \begin{equation}
 \label{eq:ch-12-pole-equation}
 \det\Bigl[ \mathbf 1 - \boldsymbol\chi_s(\omega_I)\,
-                \bigl( \mathbf v_H + \mathbf f_\text{xc}(\omega_I) \bigr)
+                \Bigl( \mathbf v_H + \mathbf f_\text{xc}(\omega_I) \Bigr)
        \Bigr] \;=\; 0 .
 \end{equation}
 
@@ -913,7 +913,7 @@ strength in the dipole-length gauge is
 \label{eq:ch-12-fI}
 f_I \;=\; \frac{2\, m\, \omega_I}{3\hbar}\,
    \sum_{\alpha = x, y, z}
-   \bigl| \langle \Psi_I | \hat r_\alpha | \Psi_0 \rangle \bigr|^2 ,
+   \Bigl| \langle \Psi_I | \hat r_\alpha | \Psi_0 \rangle \Bigr|^2 ,
 \end{equation}
 
 with $\Psi_0$ the ground state, $\Psi_I$ the excited state, and
@@ -1051,7 +1051,7 @@ where the **coupling matrix** $\mathbf K$ is
 K_{ia, jb} \;=\;
 \iint d\mathbf r\, d\mathbf r'\,
    \xi_{ia}^*(\mathbf r)\,
-   \bigl[ v_H(\mathbf r, \mathbf r') + f_\text{xc}(\mathbf r, \mathbf r') \bigr]\,
+   \Bigl[ v_H(\mathbf r, \mathbf r') + f_\text{xc}(\mathbf r, \mathbf r') \Bigr]\,
    \xi_{jb}(\mathbf r') .
 \end{equation}
 
@@ -1075,7 +1075,7 @@ for $\chi_s$ and projecting onto $\xi_{ia}^*(\mathbf r)$ gives
 \begin{equation}
 \label{eq:ch-12-rho-ia}
 2\,(X_{ia} + Y_{ia}) \;=\;
-   2\,\bigl[ g_{ia}(\omega_I) + g_{ia}(-\omega_I) \bigr]\,
+   2\,\Bigl[ g_{ia}(\omega_I) + g_{ia}(-\omega_I) \Bigr]\,
    [\delta v_\text{eff}]_{ia} ,
 \end{equation}
 
@@ -1194,10 +1194,12 @@ $\mathbf F \equiv \mathbf X + \mathbf Y$ and
 $\mathbf G \equiv \mathbf X - \mathbf Y$. Adding and
 subtracting the two halves of \eqref{eq:ch-12-casida} gives
 
-\begin{align}
-(\mathbf A + \mathbf B)\, \mathbf F &= \omega_I\, \mathbf G , \tag{12.7.a}\\
-(\mathbf A - \mathbf B)\, \mathbf G &= \omega_I\, \mathbf F . \tag{12.7.b}
-\end{align}
+\begin{equation}
+(\mathbf A + \mathbf B)\, \mathbf F = \omega_I\, \mathbf G , \tag{12.7.a}
+\end{equation}
+\begin{equation}
+(\mathbf A - \mathbf B)\, \mathbf G = \omega_I\, \mathbf F . \tag{12.7.b}
+\end{equation}
 
 With $\mathbf A - \mathbf B = \mathrm{diag}(\omega_{ia})$
 (the coupling cancels because both $\mathbf A$ and $\mathbf B$
@@ -1211,7 +1213,7 @@ Substituting into \eqref{eq:ch-12-a}:
 \begin{equation}
 \label{eq:ch-12-casida-omega2}
 \boxed{
-\bigl[ \mathrm{diag}(\omega_{ia}) + 2\, \mathbf K \bigr]\,
+\Bigl[ \mathrm{diag}(\omega_{ia}) + 2\, \mathbf K \Bigr]\,
        \mathrm{diag}(\omega_{ia})\,
        \mathbf F
    \;=\; \omega_I^2\, \mathbf F ,
@@ -1222,8 +1224,8 @@ or, in components,
 
 \begin{equation}
 \label{eq:ch-12-casida-omega2-comp}
-\sum_{jb} \bigl[ \delta_{ij}\delta_{ab}\, \omega_{ia}
-                + 2\, K_{ia, jb} \bigr]\,
+\sum_{jb} \Bigl[ \delta_{ij}\delta_{ab}\, \omega_{ia}
+                + 2\, K_{ia, jb} \Bigr]\,
        \omega_{jb}\, F_{jb}
    \;=\; \omega_I^2\, F_{ia} .
 \end{equation}
@@ -1647,7 +1649,7 @@ dynamics and we set it to zero. The states are
 $|1\rangle = (1, 0)^T$ and $|2\rangle = (0, 1)^T$. The
 dipole operator (which couples the two states) is
 $\hat d = d_{12}\, \sigma_x = d_{12}\,
-\bigl(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\bigr)$.
+\Bigl(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\Bigr)$.
 
 We choose numerical values $\omega_{12} = 1.0\,E_h$ (the
 unit of energy) and $d_{12} = 1.0\,e\,a_0$ (the unit of
@@ -1665,7 +1667,7 @@ For a two-level system with one occupied orbital
 
 \begin{equation}
 \label{eq:ch-12-2l-casida-A}
-\mathbf A \;=\; \bigl[ \omega_{12} + K \bigr] , \qquad
+\mathbf A \;=\; \Bigl[ \omega_{12} + K \Bigr] , \qquad
 \mathbf B \;=\; K ,
 \end{equation}
 
@@ -1955,7 +1957,7 @@ $\omega_I$:
 \begin{align}
 \sum_I f_I\, \omega_I
 &= \frac{2\,m}{3\hbar}\, \sum_{\alpha, I}
-   \omega_I\, \bigl|\langle \Psi_I | \hat r_\alpha | \Psi_0 \rangle\bigr|^2 \\
+   \omega_I\, \Bigl|\langle \Psi_I | \hat r_\alpha | \Psi_0 \rangle\Bigr|^2 \\
 &= -\frac{2\,m}{3\hbar}\, \sum_\alpha
    \langle \Psi_0 | \hat r_\alpha [\hat H_0, [\hat H_0, \hat r_\alpha]] | \Psi_0 \rangle .
 \end{align}
@@ -2052,7 +2054,7 @@ The Lehmann representation
 \label{eq:ch-12-chi-s-resonant}
 \chi_s(\mathbf r, \mathbf r'; \omega)
 \;=\; \sum_{ia} \xi_{ia}(\mathbf r)\,
-       \bigl[ g_{ia}(\omega) + g_{ia}(-\omega) \bigr]\,
+       \Bigl[ g_{ia}(\omega) + g_{ia}(-\omega) \Bigr]\,
        \xi_{ia}^*(\mathbf r') ,
 \end{equation}
 
@@ -2118,7 +2120,7 @@ $(\mathbf X - \mathbf Y)$ directions.  The positive-
 frequency eigenvalue equation becomes
 
 \begin{equation}
-\bigl[ (\mathbf A - \mathbf B)(\mathbf A + \mathbf B) \bigr]\,
+\Bigl[ (\mathbf A - \mathbf B)(\mathbf A + \mathbf B) \Bigr]\,
 (\mathbf X + \mathbf Y) \;=\; \omega^2\, (\mathbf X + \mathbf Y) .
 \end{equation}
 
@@ -2247,8 +2249,8 @@ $\chi \chi^{-1} = \mathbf 1$, we get
 &= \chi(\mathbf r, \mathbf r'; \omega)
    - \int d\mathbf r''\, d\mathbf r'''\,
    \chi(\mathbf r, \mathbf r''; \omega)\,
-   \bigl[ v_H(\mathbf r'', \mathbf r''')
-       + f_\text{xc}(\mathbf r'', \mathbf r'''; \omega) \bigr]\,
+   \Bigl[ v_H(\mathbf r'', \mathbf r''')
+       + f_\text{xc}(\mathbf r'', \mathbf r'''; \omega) \Bigr]\,
    \chi_s(\mathbf r''', \mathbf r'; \omega) .
 \end{align}
 
@@ -2259,8 +2261,8 @@ Solving for $\chi$,
 &= \chi_s(\mathbf r, \mathbf r'; \omega)
    + \int d\mathbf r''\, d\mathbf r'''\,
    \chi_s(\mathbf r, \mathbf r''; \omega)\,
-   \bigl[ v_H(\mathbf r'', \mathbf r''')
-       + f_\text{xc}(\mathbf r'', \mathbf r'''; \omega) \bigr]\,
+   \Bigl[ v_H(\mathbf r'', \mathbf r''')
+       + f_\text{xc}(\mathbf r'', \mathbf r'''; \omega) \Bigr]\,
    \chi(\mathbf r''', \mathbf r'; \omega) .
 \end{align}
 
@@ -2282,8 +2284,8 @@ In the Dyson equation, this implies that the kernel
 $v_H + f_\text{xc}$ must satisfy the same condition:
 
 \begin{equation}
-\int d\mathbf r'\, \bigl[ v_H(\mathbf r, \mathbf r')
-   + f_\text{xc}(\mathbf r, \mathbf r'; \omega) \bigr] \;=\; 0 .
+\int d\mathbf r'\, \Bigl[ v_H(\mathbf r, \mathbf r')
+   + f_\text{xc}(\mathbf r, \mathbf r'; \omega) \Bigr] \;=\; 0 .
 \end{equation}
 
 The Hartree kernel has the right property (the
@@ -2436,7 +2438,7 @@ for clarity), the Dyson equation is
 \;=\;
 \boldsymbol\chi_s(\omega)
    + \boldsymbol\chi_s(\omega)\,
-     \bigl[ \mathbf v_H + \mathbf f_\text{xc}(\omega) \bigr]\,
+     \Bigl[ \mathbf v_H + \mathbf f_\text{xc}(\omega) \Bigr]\,
      \boldsymbol\chi(\omega) .
 }
 \end{equation}
@@ -2488,8 +2490,8 @@ from the KS values to the dressed $\Omega_n$.
 > **Tip.** Equation \eqref{eq:ch-12-09-dyson} is
 > usually solved by **inverting** it as
 > $\boldsymbol\chi(\omega) =
-> \bigl[\boldsymbol\chi_s(\omega)^{-1} -
-> \mathbf v_H - \mathbf f_\text{xc}(\omega)\bigr]^{-1}$.
+> \Bigl[\boldsymbol\chi_s(\omega)^{-1} -
+> \mathbf v_H - \mathbf f_\text{xc}(\omega)\Bigr]^{-1}$.
 > The poles of $\boldsymbol\chi$ are the *zeros* of
 > $\boldsymbol\chi_s^{-1} - \mathbf v_H -
 > \mathbf f_\text{xc}$. The Casida formulation of
@@ -2519,7 +2521,7 @@ The KS response \eqref{eq:ch-12-09-chi-s-lehmann} is then
 \label{eq:ch-12-09-chi-s-compact}
 \chi_s(\mathbf r, \mathbf r'; \omega) \;=\;
 \sum_{ia} \xi_{ia}(\mathbf r)\,
-       \bigl[ g_{ia}(\omega) + g_{ia}(-\omega) \bigr]\,
+       \Bigl[ g_{ia}(\omega) + g_{ia}(-\omega) \Bigr]\,
        \xi_{ia}^*(\mathbf r') ,
 \end{equation}
 
@@ -2601,8 +2603,8 @@ and the **coupling matrix**
 K_{ia, jb} \;=\;
 \iint d\mathbf r\, d\mathbf r'\,
    \xi_{ia}^*(\mathbf r)\,
-   \bigl[ v_H(\mathbf r, \mathbf r')
-        + f_\text{xc}(\mathbf r, \mathbf r') \bigr]\,
+   \Bigl[ v_H(\mathbf r, \mathbf r')
+        + f_\text{xc}(\mathbf r, \mathbf r') \Bigr]\,
    \xi_{jb}(\mathbf r') .
 \end{equation}
 
@@ -3498,7 +3500,7 @@ through the *momentum* operator:
 \begin{equation}
 \label{eq:ch-12-11-velocity}
 \hat H_\text{ext}^\text{velocity}(t)
-\;=\; \frac{1}{2m}\, \bigl[\hat{\mathbf p} + e\, \mathbf A(t)\bigr]^2
+\;=\; \frac{1}{2m}\, \Bigl[\hat{\mathbf p} + e\, \mathbf A(t)\Bigr]^2
 \;-\; \frac{\hat{\mathbf p}^2}{2m}
 \;\approx\; \frac{e}{m}\, \mathbf A(t) \cdot \hat{\mathbf p}
 \;+\; \mathcal O(A^2) .
@@ -4257,8 +4259,8 @@ The **coupling matrix** $K$ has matrix elements
 K_{ia, jb}
 \;=\; \iint d\mathbf r\, d\mathbf r'\,
    \xi_{ia}(\mathbf r)\,
-   \bigl[ v_H(\mathbf r, \mathbf r')
-        + f_\text{xc}(\mathbf r, \mathbf r') \bigr]\,
+   \Bigl[ v_H(\mathbf r, \mathbf r')
+        + f_\text{xc}(\mathbf r, \mathbf r') \Bigr]\,
    \xi_{jb}(\mathbf r') ,
 \end{equation}
 

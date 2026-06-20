@@ -137,7 +137,7 @@ R_{I\alpha}^{(0)}$ around the equilibrium geometry:
 
 \begin{equation}
 \label{eq:ch-10-quadratic}
-E\bigl[\{\mathbf R\}\bigr] \;\approx\;
+E\Bigl[\{\mathbf R\}\Bigr] \;\approx\;
 E^{(0)} \;+\; \frac{1}{2}\,
 \sum_{I, J}\; \sum_{\alpha, \beta}\;
 u_{I\alpha}\, \Phi_{I\alpha, J\beta}(\mathbf 0)\, u_{J\beta} .
@@ -465,8 +465,8 @@ function perturbed to *only* order $n$:
 
 \begin{equation}
 \label{eq:ch-10-2n1}
-\frac{\partial^{2n+1} E}{\partial \lambda^{2n+1}} \;=\; F\bigl[
-\{\psi^{(0)}\}, \{\psi^{(1)}\}, \ldots, \{\psi^{(n)}\} \bigr] .
+\frac{\partial^{2n+1} E}{\partial \lambda^{2n+1}} \;=\; F\Bigl[
+\{\psi^{(0)}\}, \{\psi^{(1)}\}, \ldots, \{\psi^{(n)}\} \Bigr] .
 \end{equation}
 
 For phonons, $\lambda$ is the *amplitude* of a nuclear
@@ -510,8 +510,8 @@ $\psi_n^{(1)}$ satisfies the **Sternheimer equation**
 
 \begin{equation}
 \label{eq:ch-10-sternheimer}
-\bigl(\hat H^{(0)} - \varepsilon_n^{(0)}\bigr)\, \psi_n^{(1)}
-\;=\; -\bigl(\hat H^{(1)} - \varepsilon_n^{(1)}\bigr)\, \psi_n^{(0)} ,
+\Bigl(\hat H^{(0)} - \varepsilon_n^{(0)}\Bigr)\, \psi_n^{(1)}
+\;=\; -\Bigl(\hat H^{(1)} - \varepsilon_n^{(1)}\Bigr)\, \psi_n^{(0)} ,
 \end{equation}
 
 where $\varepsilon_n^{(1)} = \langle \psi_n^{(0)} \rvert \hat H^{(1)}
@@ -530,8 +530,8 @@ through the Hartree and exchange–correlation potentials. The
 
 \begin{equation}
 \label{eq:ch-10-sternheimer-scf}
-\bigl(\hat H^{(0)} - \varepsilon_n^{(0)}\bigr)\, \psi_n^{(1)}
-\;=\; -\bigl(\hat H^{(1)} - \varepsilon_n^{(1)}\bigr)\, \psi_n^{(0)}
+\Bigl(\hat H^{(0)} - \varepsilon_n^{(0)}\Bigr)\, \psi_n^{(1)}
+\;=\; -\Bigl(\hat H^{(1)} - \varepsilon_n^{(1)}\Bigr)\, \psi_n^{(0)}
 \;-\; \hat V_\text{Hxc}^{(1)}\, \psi_n^{(0)} ,
 \end{equation}
 
@@ -906,7 +906,7 @@ wavevectors:
 \label{eq:ch-10-pdos-def}
 g(\omega) \;=\; \frac{1}{N_\mathbf q}\,
 \sum_{s, \mathbf q}\;
-\delta\!\bigl(\omega - \omega_s(\mathbf q)\bigr) .
+\delta\!\Bigl(\omega - \omega_s(\mathbf q)\Bigr) .
 \end{equation}
 
 In a 3-D crystal with $N_\text{atom}$ atoms per primitive cell,
@@ -946,7 +946,7 @@ product over all modes:
 
 \begin{equation}
 \label{eq:ch-10-partition}
-Z_\text{ph}(T) \;=\; \prod_{s, \mathbf q}\; Z\bigl(\omega_s(\mathbf q), T\bigr) .
+Z_\text{ph}(T) \;=\; \prod_{s, \mathbf q}\; Z\Bigl(\omega_s(\mathbf q), T\Bigr) .
 \end{equation}
 
 ### 10.6.2 The Helmholtz free energy
@@ -957,7 +957,7 @@ The Helmholtz free energy $F(T) = -k_B T \ln Z$ is
 \label{eq:ch-10-free-energy}
 F(T) \;=\; \frac{1}{2}\sum_{s, \mathbf q}\; \hbar\omega_s(\mathbf q)
 \;+\; k_B T \sum_{s, \mathbf q}\,
-\ln\!\bigl[1 - e^{-\beta\hbar\omega_s(\mathbf q)}\bigr] .
+\ln\!\Bigl[1 - e^{-\beta\hbar\omega_s(\mathbf q)}\Bigr] .
 \end{equation}
 
 The first term is the **zero-point energy** (the energy of the
@@ -974,7 +974,7 @@ In terms of the DOS, equation \eqref{eq:ch-10-free-energy} becomes
 F(T) \;=\; 3 N_\text{atom} N_\text{cell}
 \int_0^\infty\! d\omega\;
 g(\omega)\,
-\Bigl[\tfrac{1}{2}\hbar\omega + k_B T \ln\bigl(1 - e^{-\beta\hbar\omega}\bigr)\Bigr] .
+\Bigl[\tfrac{1}{2}\hbar\omega + k_B T \ln\Bigl(1 - e^{-\beta\hbar\omega}\Bigr)\Bigr] .
 \end{equation}
 
 ### 10.6.3 The entropy and the specific heat
@@ -987,7 +987,7 @@ S(T) \;=\; 3 N_\text{atom} N_\text{cell}\, k_B
 \int_0^\infty\! d\omega\;
 g(\omega)\,
 \Bigl[\beta\hbar\omega\, \frac{1}{e^{\beta\hbar\omega} - 1}
-       - \ln\bigl(1 - e^{-\beta\hbar\omega}\bigr)\Bigr] .
+       - \ln\Bigl(1 - e^{-\beta\hbar\omega}\Bigr)\Bigr] .
 \end{equation}
 
 The constant-volume specific heat $C_V = T \partial S / \partial T$ is
@@ -1023,11 +1023,11 @@ A few more useful identities in the harmonic approximation:
   \frac{\hbar}{2 M_I}\;
   \sum_{s, \mathbf q}\;
   \frac{|U_{s, I\alpha}(\mathbf q)|^2}{\omega_s(\mathbf q)}\,
-  \coth\!\bigl(\beta\hbar\omega_s(\mathbf q)/2\bigr) .
+  \coth\!\Bigl(\beta\hbar\omega_s(\mathbf q)/2\Bigr) .
   \end{equation}
 
   This determines the Debye–Waller factor
-  $\exp\!\bigl[-\tfrac{1}{2}\langle (\mathbf q\cdot \mathbf u)^2\rangle\bigr]$
+  $\exp\!\Bigl[-\tfrac{1}{2}\langle (\mathbf q\cdot \mathbf u)^2\rangle\Bigr]$
   in temperature-dependent diffraction intensities.
 
 - The *zero-point energy* of a mode, $\tfrac{1}{2}\hbar\omega$,
@@ -1110,7 +1110,7 @@ $E^{(3)}$ is
 \frac{\pi \hbar}{4\, \omega_s(\mathbf q)}\,
 \frac{1}{N_\mathbf q}\,
 \sum_{s_1, s_2}\; \sum_{\mathbf q_1, \mathbf q_2}\;
-\bigl| V^{(3)}_{s s_1 s_2}(\mathbf q, \mathbf q_1, \mathbf q_2) \bigr|^2\;
+\Bigl| V^{(3)}_{s s_1 s_2}(\mathbf q, \mathbf q_1, \mathbf q_2) \Bigr|^2\;
 \delta(\omega_s \pm \omega_{s_1} \pm \omega_{s_2})\,
 (n_1 + \tfrac{1}{2} \pm \tfrac{1}{2})(n_2 + \tfrac{1}{2} \mp \tfrac{1}{2}) ,
 \end{equation}
@@ -1152,7 +1152,7 @@ $a$ at every $T$:
 
 \begin{equation}
 \label{eq:ch-10-qha}
-a(T) \;=\; \mathrm{argmin}_a\; F\bigl(a, T\bigr) ,
+a(T) \;=\; \mathrm{argmin}_a\; F\Bigl(a, T\Bigr) ,
 \end{equation}
 
 where $F(a, T)$ is the harmonic free energy \eqref{eq:ch-10-free-energy-dos}
@@ -1381,10 +1381,10 @@ phonon matrix element, summed over the Fermi surface:
 \frac{1}{g(\omega)\, N(\varepsilon_F)}\,
 \frac{1}{N_\mathbf k N_\mathbf q}\,
 \sum_{n, m,\; \nu}\; \sum_{\mathbf k, \mathbf q}\;
-\bigl| g_{mn}^\nu(\mathbf k, \mathbf q) \bigr|^2\;
+\Bigl| g_{mn}^\nu(\mathbf k, \mathbf q) \Bigr|^2\;
 \delta(\varepsilon_{n\mathbf k})\,
 \delta(\varepsilon_{m, \mathbf k + \mathbf q})\,
-\delta\!\bigl(\omega - \omega_\nu(\mathbf q)\bigr) .
+\delta\!\Bigl(\omega - \omega_\nu(\mathbf q)\Bigr) .
 \end{equation}
 
 Three pieces to recognise:
@@ -1590,18 +1590,22 @@ $$
 so that $\ddot u = -\omega^2 u$ and similarly for $v$. The
 equations of motion become
 
-\begin{align}
--M_1 \omega^2 A &\;=\; K B\,(1 + e^{-i q a}) \;-\; 2 K A , \label{eq:ch-10-worked-bloch1}\\
--M_2 \omega^2 B &\;=\; K A\,(1 + e^{+i q a}) \;-\; 2 K B . \label{eq:ch-10-worked-bloch2}
-\end{align}
+\begin{equation}
+-M_1 \omega^2 A \;=\; K B\,(1 + e^{-i q a}) \;-\; 2 K A , \label{eq:ch-10-worked-bloch1}
+\end{equation}
+\begin{equation}
+-M_2 \omega^2 B \;=\; K A\,(1 + e^{+i q a}) \;-\; 2 K B . \label{eq:ch-10-worked-bloch2}
+\end{equation}
 
 Using the identity $1 + e^{\pm i q a} = 2 e^{\pm i q a/2}
 \cos(q a / 2)$, and collecting the $A$ and $B$ terms on the left:
 
-\begin{align}
-(2K - M_1 \omega^2)\, A &\;=\; 2K \cos(q a / 2)\, B , \label{eq:ch-10-worked-bloch3}\\
-(2K - M_2 \omega^2)\, B &\;=\; 2K \cos(q a / 2)\, A . \label{eq:ch-10-worked-bloch4}
-\end{align}
+\begin{equation}
+(2K - M_1 \omega^2)\, A \;=\; 2K \cos(q a / 2)\, B , \label{eq:ch-10-worked-bloch3}
+\end{equation}
+\begin{equation}
+(2K - M_2 \omega^2)\, B \;=\; 2K \cos(q a / 2)\, A . \label{eq:ch-10-worked-bloch4}
+\end{equation}
 
 This is a $2 \times 2$ linear eigenvalue problem in $(A, B)$. A
 non-trivial solution exists iff the determinant of the matrix
@@ -2029,7 +2033,7 @@ $$
 Factor $2K$ from under the square root:
 
 $$
-\sqrt{\,4K^2 \bigl[(M_1 + M_2)^2 - 4 M_1 M_2 \sin^2(qa/2)\bigr]\,}
+\sqrt{\,4K^2 \Bigl[(M_1 + M_2)^2 - 4 M_1 M_2 \sin^2(qa/2)\Bigr]\,}
 \;=\; 2K \sqrt{(M_1 + M_2)^2 - 4 M_1 M_2 \sin^2(qa/2)} .
 $$
 
@@ -2047,7 +2051,7 @@ which is \eqref{eq:ch-10-worked-dispersion}.
 
 $$
 \omega^2_\pm \;=\; \frac{2K}{M} \pm \frac{2K}{M}\,\sqrt{1 - \sin^2(qa/2)}
-\;=\; \frac{2K}{M} \pm \frac{2K}{M}\,\bigl|\cos(qa/2)\bigr| .
+\;=\; \frac{2K}{M} \pm \frac{2K}{M}\,\Bigl|\cos(qa/2)\Bigr| .
 $$
 
 So $\omega^2_+ = (2K/M)(1 + |\cos(qa/2)|)$ and
@@ -2155,7 +2159,7 @@ $\lambda \propto N(\varepsilon_F) \langle I^2 \rangle / (M
 gap* $\Delta_n$ at the Matsubara frequency $i\omega_n$ is
 
 $$
-\Delta_n \;=\; \pi T \sum_{m} \bigl[\lambda(n - m) - \mu^* \bigr]\,
+\Delta_n \;=\; \pi T \sum_{m} \Bigl[\lambda(n - m) - \mu^* \Bigr]\,
 \frac{\Delta_m}{\sqrt{\omega_m^2 + \Delta_m^2}} ,
 $$
 
@@ -2181,7 +2185,7 @@ and $\lambda \ll 1$, the Eliashberg equation reduces to the BCS
 self-consistency equation
 
 $$
-1 \;=\; \bigl[\lambda - \mu^*\bigr]\, \ln\!\Bigl(\frac{1.13 \hbar \omega_\text{log}}{k_B T_c}\Bigr) ,
+1 \;=\; \Bigl[\lambda - \mu^*\Bigr]\, \ln\!\Bigl(\frac{1.13 \hbar \omega_\text{log}}{k_B T_c}\Bigr) ,
 $$
 
 which gives

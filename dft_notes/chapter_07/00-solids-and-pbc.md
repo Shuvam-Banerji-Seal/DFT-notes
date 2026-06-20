@@ -360,8 +360,8 @@ shortest $\mathbf G$ vectors. Formally,
 
 \begin{equation}
 \label{eq:ch-07-bz}
-\text{1st BZ} = \left\{ \mathbf k \in \mathbb R^3 \;:\;
-|\mathbf k| \le |\mathbf k - \mathbf G| \text{ for every reciprocal-lattice vector } \mathbf G \right\}.
+\text{1st BZ} = \left\lbrace \mathbf k \in \mathbb R^3 \;:\;
+|\mathbf k| \le |\mathbf k - \mathbf G| \text{ for every reciprocal-lattice vector } \mathbf G \right\rbrace.
 \end{equation}
 
 Every physically distinct crystal momentum is represented exactly
@@ -469,7 +469,7 @@ broader context), the **plane-wave basis** is the discrete set
 
 \begin{equation}
 \label{eq:ch-07-pw-basis}
-\left\{ \tfrac{1}{\sqrt{\Omega}} e^{i(\mathbf k + \mathbf G) \cdot \mathbf r} \right\}_{\mathbf G \in \text{reciprocal lattice}}.
+\left\lbrace \tfrac{1}{\sqrt{\Omega}} e^{i(\mathbf k + \mathbf G) \cdot \mathbf r} \right\rbrace_{\mathbf G \in \text{reciprocal lattice}}.
 \end{equation}
 
 ### 7.5.2 The plane-wave Hamiltonian
@@ -618,7 +618,7 @@ integral. For a smooth integrand, the discretisation error scales as
 \text{error} = O\!\left(\frac{1}{N^2}\right)
 \quad \text{in 1-D,}
 \qquad
-O\!\left(\frac{1}{N^{2/3}}\right)
+O\!\left(\frac{1}{N^{2/3}\right)
 \quad \text{in 3-D,}
 \end{equation}
 
@@ -747,7 +747,7 @@ $21 \times 21$ matrix
 
 \begin{equation}
 \label{eq:ch-07-worked-H}
-H_{m m'}(k) = \tfrac{1}{2}\bigl(k + m \cdot 2\pi/a\bigr)^2 \delta_{m m'} \;+\; V_{\text{per}}\bigl((m' - m) \cdot 2\pi/a\bigr).
+H_{m m'}(k) = \tfrac{1}{2}\bigl(k + m \cdot 2\pi/a\bigr)^2 \delta_{m m'} \;+\; V_{\text{per}\bigl((m' - m) \cdot 2\pi/a\bigr).
 \end{equation}
 
 Substituting the explicit $V_{\text{per}}$ from
@@ -2020,7 +2020,7 @@ the one-dimensional unitary representations are exhausted by
 [Bloch, 1929, eq. (6), p. 559]. The map $\mathbf R \mapsto e^{i
 \varkappa(\mathbf R)}$ is a group homomorphism $\mathbb Z^3 \to U(1)$.
 Bloch parametrisises it as $e^{i \varkappa(\mathbf R)} = e^{i \mathbf k
-\cdot \mathbf R}}$ for some $\mathbf k \in \mathbb R^3$
+\cdot \mathbf R}$ for some $\mathbf k \in \mathbb R^3$
 [Bloch, 1929, p. 559]. He does not call $\mathbf k$ the *crystal
 momentum* — that is later language (1930s) — but writes it as a
 "Phasenfaktor" (phase factor). The eigenfunction label is therefore
@@ -2115,7 +2115,7 @@ the same definition as our \eqref{eq:ch-07-trans-op}); show that it
 commutes with $\hat H$ [Ashcroft and Mermin, 1976, eq. (2.25), p.
 103]; take a simultaneous eigenstate; use the abelian group property
 to write the translation eigenvalue as $e^{i \mathbf k \cdot \mathbf
-R}}$ [Ashcroft and Mermin, 1976, p. 104]; deduce the plane-wave-
+R}$ [Ashcroft and Mermin, 1976, p. 104]; deduce the plane-wave-
 modulated form $\psi(\mathbf r) = e^{i \mathbf k \cdot \mathbf r}
 u(\mathbf r)$ [Ashcroft and Mermin, 1976, eq. (2.27), p. 105].
 
@@ -2143,7 +2143,7 @@ A&M's statement of the theorem is also slightly different in emphasis.
 Their phrasing (p. 76) emphasises that the eigenfunctions of a
 periodic Hamiltonian can be chosen to be *simultaneous eigenstates of
 all translations*, with the eigenvalue $e^{i \mathbf k \cdot \mathbf
-R}}$ — i.e. the statement of the theorem is in the *group theory*
+R}$ — i.e. the statement of the theorem is in the *group theory*
 language (simultaneous eigenstate of an abelian group) rather than
 the *factorisation* language (plane wave times cell-periodic
 function). The two are equivalent, but the former is closer to the
@@ -2170,7 +2170,7 @@ the *free*-electron model: density of states, Fermi energy, Fermi
 surface, heat capacity, and the failure of the model to explain why
 some materials are insulating [Kittel, 2005, p. 137]. The free-electron
 Hamiltonian is $H = \hbar^2 k^2 / 2m$, with plane-wave eigenfunctions
-$\psi_k(\mathbf r) = e^{i \mathbf k \cdot \mathbf r}}$ [Kittel, 2005,
+$\psi_k(\mathbf r) = e^{i \mathbf k \cdot \mathbf r}$ [Kittel, 2005,
 eq. (7.1), p. 138]. The "free-electron + weak periodic potential"
 approximation is then motivated as a perturbation theory on top of
 this foundation.
@@ -2181,7 +2181,7 @@ Kittel's statement of the theorem is on p. 173 [Kittel, 2005, eq.
 
 > "If $V(\mathbf r)$ has the periodicity of the Bravais lattice, the
 > solutions $\psi$ of the Schrödinger equation can be chosen to have
-> the form of a plane wave $e^{i \mathbf k \cdot \mathbf r}}$ times a
+> the form of a plane wave $e^{i \mathbf k \cdot \mathbf r}$ times a
 > function $u(\mathbf r)$ with the periodicity of the lattice."
 
 This is the same statement as our \eqref{eq:ch-07-bloch}, in Kittel's
@@ -2189,7 +2189,7 @@ compact notation. The proof in the main text (pp. 174–176) is more
 compressed than A&M's: Kittel defines the translation operator,
 notes that it commutes with $\hat H$, takes a simultaneous
 eigenstate, and writes the eigenvalue as $e^{i \mathbf k \cdot
-\mathbf R}}$ [Kittel, 2005, p. 175]. He does *not* spend a full page
+\mathbf R}$ [Kittel, 2005, p. 175]. He does *not* spend a full page
 on the abelian-group argument; this is a one-page proof suitable for
 an undergraduate audience [Kittel, 2005, eqs. (9.5)–(9.7), pp.
 174–175].
@@ -2397,8 +2397,7 @@ in production. The chain of reasoning is:
    The BZ integral \eqref{eq:ch-07-bz-integral} is the natural
    generalisation of the molecular sum $\sum_n$ to a periodic
    solid. (See §7.4.)
-3. **The plane-wave basis** is the set of plane waves $\{e^{i(\mathbf
-   k + \mathbf G) \cdot \mathbf r}}\}_\mathbf G$ — one per
+3. **The plane-wave basis** is the set of plane waves $\{e^{i(\mathbf k + \mathbf G) \cdot \mathbf r}\}_\mathbf G$ — one per
    reciprocal-lattice vector. The Bloch states are linear
    combinations of these plane waves, with coefficients $c_{n\mathbf
    k}(\mathbf G)$. (See §7.5.)
@@ -2458,7 +2457,7 @@ appeared and the chapter in these notes where it is covered:
   the time-dependent Bloch theorem: the time-evolving state of
   a system driven by a time-dependent *periodic* perturbation
   has the form $\psi_{n\mathbf k}(\mathbf r, t) = e^{i \mathbf k
-  \cdot \mathbf r}} u_{n\mathbf k}(\mathbf r, t)$, with
+  \cdot \mathbf r} u_{n\mathbf k}(\mathbf r, t)$, with
   $u_{n\mathbf k}$ *periodic in $\mathbf r$* but not necessarily
   in $t$. The full time-dependent theory is the **Runge–Gross
   theorem** of TDDFT [Runge and Gross, 1984]. See

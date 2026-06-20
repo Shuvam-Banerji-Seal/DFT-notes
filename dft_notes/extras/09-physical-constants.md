@@ -589,14 +589,24 @@ the table, multiply the entry by the source quantity.
 
 For convenience — these are the row of §4.1 for the Hartree:
 
-\begin{align}
-1\;E_h &\;=\; 27.211\,386\,245\,988\;\text{eV} , \label{eq:pc-Eh-eV} \\
-1\;E_h &\;=\; 627.509\,474\,063\,1\;\text{kcal}\,\text{mol}^{-1} , \label{eq:pc-Eh-kcal} \\
-1\;E_h &\;=\; 219\,474.631\,363\,2\;\text{cm}^{-1} , \label{eq:pc-Eh-cm} \\
-1\;E_h &\;=\; 4.359\,744\,722\,2071 \times 10^{-18}\;\text{J} , \label{eq:pc-Eh-J} \\
-1\;E_h &\;=\; 2625.499\,639\,479\,9\;\text{kJ}\,\text{mol}^{-1} , \label{eq:pc-Eh-kJ} \\
-1\;E_h &\;=\; 315\,775.13\;\text{K} \times k_B . \label{eq:pc-Eh-K}
-\end{align}
+\begin{equation}
+1\;E_h \;=\; 27.211\,386\,245\,988\;\text{eV} , \label{eq:pc-Eh-eV}
+\end{equation}
+\begin{equation}
+1\;E_h \;=\; 627.509\,474\,063\,1\;\text{kcal}\,\text{mol}^{-1} , \label{eq:pc-Eh-kcal}
+\end{equation}
+\begin{equation}
+1\;E_h \;=\; 219\,474.631\,363\,2\;\text{cm}^{-1} , \label{eq:pc-Eh-cm}
+\end{equation}
+\begin{equation}
+1\;E_h \;=\; 4.359\,744\,722\,2071 \times 10^{-18}\;\text{J} , \label{eq:pc-Eh-J}
+\end{equation}
+\begin{equation}
+1\;E_h \;=\; 2625.499\,639\,479\,9\;\text{kJ}\,\text{mol}^{-1} , \label{eq:pc-Eh-kJ}
+\end{equation}
+\begin{equation}
+1\;E_h \;=\; 315\,775.13\;\text{K} \times k_B . \label{eq:pc-Eh-K}
+\end{equation}
 
 The **hydrogen 1s binding energy** $E_h/2 = 13.6057\;\text{eV}
 = 313.755\;\text{kcal/mol} = 109\,737.3\;\text{cm}^{-1}$ is
@@ -616,11 +626,15 @@ one volt:
 
 The conversion to atomic units:
 
-\begin{align}
-1\;\text{eV} &\;=\; 0.036\,749\,322\,175\,654\,43\;E_h , \label{eq:pc-eV-Eh} \\
-1\;\text{eV} &\;=\; 23.060\,547\,830\,619\,929\;\text{kcal}\,\text{mol}^{-1} , \label{eq:pc-eV-kcal} \\
-1\;\text{eV} &\;=\; 8065.543\,937\,321\,525\;\text{cm}^{-1} . \label{eq:pc-eV-cm}
-\end{align}
+\begin{equation}
+1\;\text{eV} \;=\; 0.036\,749\,322\,175\,654\,43\;E_h , \label{eq:pc-eV-Eh}
+\end{equation}
+\begin{equation}
+1\;\text{eV} \;=\; 23.060\,547\,830\,619\,929\;\text{kcal}\,\text{mol}^{-1} , \label{eq:pc-eV-kcal}
+\end{equation}
+\begin{equation}
+1\;\text{eV} \;=\; 8065.543\,937\,321\,525\;\text{cm}^{-1} . \label{eq:pc-eV-cm}
+\end{equation}
 
 A 1 eV excitation corresponds to a thermal energy of
 $\sim 23\;\text{kcal/mol}$, well above $k_B T$ at room
@@ -633,12 +647,18 @@ The wavenumber $\tilde\nu$ in cm⁻¹ is the *practical* unit
 for vibrational and rotational spectroscopy; the
 corresponding energy is $E = h c \tilde\nu$:
 
-\begin{align}
-1\;\text{cm}^{-1} &\;=\; 1.986\,445\,857\,1489 \times 10^{-23}\;\text{J} , \label{eq:pc-cm-J} \\
-1\;\text{cm}^{-1} &\;=\; 4.556\,335\,834\,8019 \times 10^{-6}\;E_h , \label{eq:pc-cm-Eh} \\
-1\;\text{cm}^{-1} &\;=\; 1.239\,841\,984\,3322 \times 10^{-4}\;\text{eV} , \label{eq:pc-cm-eV} \\
-1\;\text{cm}^{-1} &\;=\; 1.438\,776\,877\,0001\;\text{K} \times k_B . \label{eq:pc-cm-K}
-\end{align}
+\begin{equation}
+1\;\text{cm}^{-1} \;=\; 1.986\,445\,857\,1489 \times 10^{-23}\;\text{J} , \label{eq:pc-cm-J}
+\end{equation}
+\begin{equation}
+1\;\text{cm}^{-1} \;=\; 4.556\,335\,834\,8019 \times 10^{-6}\;E_h , \label{eq:pc-cm-Eh}
+\end{equation}
+\begin{equation}
+1\;\text{cm}^{-1} \;=\; 1.239\,841\,984\,3322 \times 10^{-4}\;\text{eV} , \label{eq:pc-cm-eV}
+\end{equation}
+\begin{equation}
+1\;\text{cm}^{-1} \;=\; 1.438\,776\,877\,0001\;\text{K} \times k_B . \label{eq:pc-cm-K}
+\end{equation}
 
 The CO stretch at $\sim 2170\;\text{cm}^{-1}$ corresponds to
 $0.254\;\text{eV} = 5.85\;\text{kcal/mol}$.
@@ -672,12 +692,14 @@ The **joule** is the SI unit of energy, with conversion
 
 The two relations that come up in thermochemistry are
 
-\begin{align}
-1\;\text{kJ}\,\text{mol}^{-1} &\;=\; 3.80871 \times 10^{-4}\;E_h \,\text{(molecule)}^{-1}
-\;=\; 1.03643 \times 10^{-2}\;\text{eV}\,\text{(molecule)}^{-1} , \label{eq:pc-kJmol} \\
-1\;\text{kcal}\,\text{mol}^{-1} &\;=\; 1.59360 \times 10^{-3}\;E_h \,\text{(molecule)}^{-1}
+\begin{equation}
+1\;\text{kJ}\,\text{mol}^{-1} \;=\; 3.80871 \times 10^{-4}\;E_h \,\text{(molecule)}^{-1}
+\;=\; 1.03643 \times 10^{-2}\;\text{eV}\,\text{(molecule)}^{-1} , \label{eq:pc-kJmol}
+\end{equation}
+\begin{equation}
+1\;\text{kcal}\,\text{mol}^{-1} \;=\; 1.59360 \times 10^{-3}\;E_h \,\text{(molecule)}^{-1}
 \;=\; 4.33640 \times 10^{-2}\;\text{eV}\,\text{(molecule)}^{-1} . \label{eq:pc-kcalmol}
-\end{align}
+\end{equation}
 
 The factor $1\;\text{kcal/mol} = 4.184\;\text{kJ/mol}$ is
 exact in the post-2019 SI.  The most common energy-unit
@@ -761,10 +783,12 @@ The atomic unit of force is $E_h/a_0$ (§3.4).  The most
 common practical unit is eV/Å, used by every solid-state code
 (VASP, Quantum ESPRESSO, CASTEP, …):
 
-\begin{align}
-1\;\text{eV}\,\text{Å}^{-1} &\;=\; 1.944\,691\,754 \times 10^{-2}\;E_h\,a_0^{-1} , \label{eq:pc-eVperA} \\
-1\;E_h\,a_0^{-1} &\;=\; 5.142\,206\,748 \times 10^{11}\;\text{eV}\,\text{m}^{-1} . \label{eq:pc-EhperB-eVperm}
-\end{align}
+\begin{equation}
+1\;\text{eV}\,\text{Å}^{-1} \;=\; 1.944\,691\,754 \times 10^{-2}\;E_h\,a_0^{-1} , \label{eq:pc-eVperA}
+\end{equation}
+\begin{equation}
+1\;E_h\,a_0^{-1} \;=\; 5.142\,206\,748 \times 10^{11}\;\text{eV}\,\text{m}^{-1} . \label{eq:pc-EhperB-eVperm}
+\end{equation}
 
 A converged SCF force on a light atom in a molecule is
 $\sim 10^{-3}\;E_h/a_0 = 5.1 \times 10^{8}\;\text{eV/m} =
@@ -793,10 +817,12 @@ The atomic unit of dipole moment is $e a_0$ (§3.10).  The
 **Debye** is the most common practical unit
 (1 D $\equiv 3.335\,64 \times 10^{-30}\;\text{C}\,\text{m}$):
 
-\begin{align}
-1\;\text{D} &\;=\; 0.393\,430\,227\;\text{a.u. of dipole} , \label{eq:pc-D-au} \\
-1\;\text{a.u. of dipole} &\;=\; 2.5417\,\text{D} . \label{eq:pc-au-D}
-\end{align}
+\begin{equation}
+1\;\text{D} \;=\; 0.393\,430\,227\;\text{a.u. of dipole} , \label{eq:pc-D-au}
+\end{equation}
+\begin{equation}
+1\;\text{a.u. of dipole} \;=\; 2.5417\,\text{D} . \label{eq:pc-au-D}
+\end{equation}
 
 Typical molecular dipoles: HCl $\sim 1.08$ D, water
 $\sim 1.85$ D, NaCl $\sim 9$ D, CO $\sim 0.12$ D.

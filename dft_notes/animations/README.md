@@ -74,7 +74,6 @@ from manim import (Axes, Create, Dot, FadeIn, FadeOut, MathTex,
                    Scene, Text, VGroup, Write, config)
 import numpy as np
 
-
 class SceneName(Scene):
     def construct(self):
         # ... 30-100 lines of Manim code

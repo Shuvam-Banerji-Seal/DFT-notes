@@ -228,11 +228,15 @@ orthogonal complement of $|\Psi^{(0)}\rangle$.  The
 first three energy corrections, obtained by
 projecting onto $|\Psi^{(0)}\rangle$, are
 
-\begin{align}
-E^{(0)} &\;=\; \langle \Psi^{(0)} \rvert \hat H^{(0)} \rvert \Psi^{(0)} \rangle , \label{eq:ch-14-rspt-e0} \\
-E^{(1)} &\;=\; \langle \Psi^{(0)} \rvert \hat V \rvert \Psi^{(0)} \rangle , \label{eq:ch-14-rspt-e1} \\
-E^{(2)} &\;=\; \langle \Psi^{(0)} \rvert \hat V \rvert \Psi^{(1)} \rangle \;\equiv\; \sum_{k \ne 0} \frac{\lvert \langle \Psi^{(0)} \rvert \hat V \rvert \Psi_k^{(0)} \rangle \rvert^2}{E^{(0)} - E_k^{(0)}} . \label{eq:ch-14-rspt-e2}
-\end{align}
+\begin{equation}
+E^{(0)} \;=\; \langle \Psi^{(0)} \rvert \hat H^{(0)} \rvert \Psi^{(0)} \rangle , \label{eq:ch-14-rspt-e0}
+\end{equation}
+\begin{equation}
+E^{(1)} \;=\; \langle \Psi^{(0)} \rvert \hat V \rvert \Psi^{(0)} \rangle , \label{eq:ch-14-rspt-e1}
+\end{equation}
+\begin{equation}
+E^{(2)} \;=\; \langle \Psi^{(0)} \rvert \hat V \rvert \Psi^{(1)} \rangle \;\equiv\; \sum_{k \ne 0} \frac{\lvert \langle \Psi^{(0)} \rvert \hat V \rvert \Psi_k^{(0)} \rangle \rvert^2}{E^{(0)} - E_k^{(0)}} . \label{eq:ch-14-rspt-e2}
+\end{equation}
 
 The sum in \eqref{eq:ch-14-rspt-e2} is over all
 *other* eigenstates of $\hat H^{(0)}$; the sign is
@@ -262,10 +266,12 @@ perturbation is the *fluctuation potential* — the part of
 the true two-electron interaction that is *not* captured by
 the mean-field Fock operator.  Explicitly,
 
-\begin{align}
-\hat H^{(0)} &\;=\; \hat F , \label{eq:ch-14-mp-h0} \\
-\hat V &\;=\; \hat H - \hat F \;=\; \hat V_{ee} - \hat V_\text{HF} . \label{eq:ch-14-mp-v}
-\end{align}
+\begin{equation}
+\hat H^{(0)} \;=\; \hat F , \label{eq:ch-14-mp-h0}
+\end{equation}
+\begin{equation}
+\hat V \;=\; \hat H - \hat F \;=\; \hat V_{ee} - \hat V_\text{HF} . \label{eq:ch-14-mp-v}
+\end{equation}
 
 The zeroth-order eigenstates of $\hat F$ are the *Slater
 determinants* $|\Phi_I\rangle$ built from the HF orbitals,
@@ -370,7 +376,7 @@ together, the **MP2 correlation energy** is
 \begin{equation}
 \label{eq:ch-14-mp2}
 \boxed{\;
-E_\text{MP2} \;=\; - \sum_{i<j} \sum_{a<b} \frac{\bigl\lvert \langle ij \rvert \rvert ab \rangle \bigr\rvert^2}{\varepsilon_a + \varepsilon_b - \varepsilon_i - \varepsilon_j} .
+E_\text{MP2} \;=\; - \sum_{i<j} \sum_{a<b} \frac{\Bigl\lvert \langle ij \rvert \rvert ab \rangle \bigr\rvert^2}{\varepsilon_a + \varepsilon_b - \varepsilon_i - \varepsilon_j} .
 \;}
 \end{equation}
 
@@ -395,7 +401,7 @@ order in $K$, but with a different prefactor.
 
 \begin{equation}
 \label{eq:ch-14-mp2-sf}
-E_\text{MP2}^\text{closed} \;=\; - \sum_{i<j}^{n} \sum_{a<b}^{K-n} \frac{2 \bigl[ (ia \rvert jb) - (ib \rvert ja) \bigr]^2}{\varepsilon_a + \varepsilon_b - \varepsilon_i - \varepsilon_j} ,
+E_\text{MP2}^\text{closed} \;=\; - \sum_{i<j}^{n} \sum_{a<b}^{K-n} \frac{2 \Bigl[ (ia \rvert jb) - (ib \rvert ja) \Bigr]^2}{\varepsilon_a + \varepsilon_b - \varepsilon_i - \varepsilon_j} ,
 \end{equation}
 
 where $i, j$ now run over *spatial* occupied orbitals,
@@ -443,7 +449,7 @@ Slater–Condon rules,
 
 \begin{equation}
 \label{eq:ch-14-mp3}
-E_\text{MP3} \;=\; \sum_{I \ne 0, J \ne 0} \frac{\langle \Phi_0 \rvert \hat V \rvert \Phi_I \rangle \langle \Phi_I \rvert \hat V - E^{(1)} \rvert \Phi_J \rangle \langle \Phi_J \rvert \hat V \rvert \Phi_0 \rangle}{\bigl(E_0^{(0)} - E_I^{(0)}\bigr) \bigl(E_0^{(0)} - E_J^{(0)}\bigr)} \;-\; E^{(2)} \langle \Psi^{(1)} \rvert \Psi^{(1)} \rangle .
+E_\text{MP3} \;=\; \sum_{I \ne 0, J \ne 0} \frac{\langle \Phi_0 \rvert \hat V \rvert \Phi_I \rangle \langle \Phi_I \rvert \hat V - E^{(1)} \rvert \Phi_J \rangle \langle \Phi_J \rvert \hat V \rvert \Phi_0 \rangle}{\Bigl(E_0^{(0)} - E_I^{(0)}\Bigr) \Bigl(E_0^{(0)} - E_J^{(0)}\Bigr)} \;-\; E^{(2)} \langle \Psi^{(1)} \rvert \Psi^{(1)} \rangle .
 \end{equation}
 
 The dominant cost in \eqref{eq:ch-14-mp3} is the
@@ -608,13 +614,21 @@ expansion \eqref{eq:ch-14-fci} to determinants of
 excitation rank $\le n_\text{max}$.  The standard
 abbreviations are
 
-\begin{align}
-\text{CIS}    \;&:\; \text{singles,    } |\Psi_\text{CIS}\rangle    = (1 + \hat C_1) |\Phi_0\rangle , \label{eq:ch-14-cis} \\
-\text{CID}    \;&:\; \text{doubles,    } |\Psi_\text{CID}\rangle    = (1 + \hat C_2) |\Phi_0\rangle , \label{eq:ch-14-cid} \\
-\text{CISD}   \;&:\; \text{singles + doubles, } |\Psi_\text{CISD}\rangle = (1 + \hat C_1 + \hat C_2) |\Phi_0\rangle , \label{eq:ch-14-cisd} \\
-\text{CISDT}  \;&:\; \text{singles + doubles + triples, } |\Psi_\text{CISDT}\rangle = (1 + \hat C_1 + \hat C_2 + \hat C_3) |\Phi_0\rangle , \label{eq:ch-14-cisdt} \\
-\text{CISDTQ} \;&:\; \text{singles + doubles + triples + quadruples, } |\Psi_\text{CISDTQ}\rangle = (1 + \hat C_1 + \hat C_2 + \hat C_3 + \hat C_4) |\Phi_0\rangle , \label{eq:ch-14-cisdtq}
-\end{align}
+\begin{equation}
+\text{CIS}    \;:\; \text{singles,    } |\Psi_\text{CIS}\rangle    = (1 + \hat C_1) |\Phi_0\rangle , \label{eq:ch-14-cis}
+\end{equation}
+\begin{equation}
+\text{CID}    \;:\; \text{doubles,    } |\Psi_\text{CID}\rangle    = (1 + \hat C_2) |\Phi_0\rangle , \label{eq:ch-14-cid}
+\end{equation}
+\begin{equation}
+\text{CISD}   \;:\; \text{singles + doubles, } |\Psi_\text{CISD}\rangle = (1 + \hat C_1 + \hat C_2) |\Phi_0\rangle , \label{eq:ch-14-cisd}
+\end{equation}
+\begin{equation}
+\text{CISDT}  \;:\; \text{singles + doubles + triples, } |\Psi_\text{CISDT}\rangle = (1 + \hat C_1 + \hat C_2 + \hat C_3) |\Phi_0\rangle , \label{eq:ch-14-cisdt}
+\end{equation}
+\begin{equation}
+\text{CISDTQ} \;:\; \text{singles + doubles + triples + quadruples, } |\Psi_\text{CISDTQ}\rangle = (1 + \hat C_1 + \hat C_2 + \hat C_3 + \hat C_4) |\Phi_0\rangle , \label{eq:ch-14-cisdtq}
+\end{equation}
 
 where the **excitation operators** $\hat C_n$ create
 $n$-fold excitations out of the HF reference,
@@ -826,11 +840,15 @@ The **CC ansatz** is
 The **cluster operators** $\hat T_n$ create $n$-fold
 excitations out of the reference $|\Phi_0\rangle$,
 
-\begin{align}
-\hat T_1 &\;=\; \sum_{i, a} t_i^a\, \hat a_a^\dagger \hat a_i , \label{eq:ch-14-cc-t1} \\
-\hat T_2 &\;=\; \frac{1}{4} \sum_{i, j, a, b} t_{ij}^{ab}\, \hat a_a^\dagger \hat a_b^\dagger \hat a_j \hat a_i , \label{eq:ch-14-cc-t2} \\
-\hat T_3 &\;=\; \frac{1}{(3!)^2} \sum_{i, j, k, a, b, c} t_{ijk}^{abc}\, \hat a_a^\dagger \hat a_b^\dagger \hat a_c^\dagger \hat a_k \hat a_j \hat a_i , \label{eq:ch-14-cc-t3}
-\end{align}
+\begin{equation}
+\hat T_1 \;=\; \sum_{i, a} t_i^a\, \hat a_a^\dagger \hat a_i , \label{eq:ch-14-cc-t1}
+\end{equation}
+\begin{equation}
+\hat T_2 \;=\; \frac{1}{4} \sum_{i, j, a, b} t_{ij}^{ab}\, \hat a_a^\dagger \hat a_b^\dagger \hat a_j \hat a_i , \label{eq:ch-14-cc-t2}
+\end{equation}
+\begin{equation}
+\hat T_3 \;=\; \frac{1}{(3!)^2} \sum_{i, j, k, a, b, c} t_{ijk}^{abc}\, \hat a_a^\dagger \hat a_b^\dagger \hat a_c^\dagger \hat a_k \hat a_j \hat a_i , \label{eq:ch-14-cc-t3}
+\end{equation}
 
 where the **cluster amplitudes** $t_i^a$, $t_{ij}^{ab}$,
 $t_{ijk}^{abc}$, ... are the unknowns.  The
@@ -841,7 +859,7 @@ expands as
 
 \begin{equation}
 \label{eq:ch-14-cc-expand}
-e^{\hat T} \lvert \Phi_0 \rangle \;=\; \lvert \Phi_0 \rangle + \hat T_1 \lvert \Phi_0 \rangle + \bigl(\hat T_2 + \tfrac{1}{2}\hat T_1^2\bigr) \lvert \Phi_0 \rangle + \bigl(\hat T_3 + \hat T_2 \hat T_1 + \tfrac{1}{6}\hat T_1^3\bigr) \lvert \Phi_0 \rangle + \cdots .
+e^{\hat T} \lvert \Phi_0 \rangle \;=\; \lvert \Phi_0 \rangle + \hat T_1 \lvert \Phi_0 \rangle + \Bigl(\hat T_2 + \tfrac{1}{2}\hat T_1^2\Bigr) \lvert \Phi_0 \rangle + \Bigl(\hat T_3 + \hat T_2 \hat T_1 + \tfrac{1}{6}\hat T_1^3\Bigr) \lvert \Phi_0 \rangle + \cdots .
 \end{equation}
 
 The *connected* terms are the *linear* $\hat T_n |\Phi_0\rangle$;
@@ -899,7 +917,7 @@ $\hat T_1 + \hat T_2$ gives
 
 \begin{equation}
 \label{eq:ch-14-ccsd-expand}
-e^{\hat T_1 + \hat T_2} \lvert \Phi_0 \rangle \;=\; \lvert \Phi_0 \rangle + \hat T_1 \lvert \Phi_0 \rangle + \bigl(\hat T_2 + \tfrac{1}{2} \hat T_1^2\bigr) \lvert \Phi_0 \rangle + \bigl(\hat T_1 \hat T_2 + \tfrac{1}{2} \hat T_2^2 + \tfrac{1}{6}\hat T_1^3\bigr) \lvert \Phi_0 \rangle + \cdots .
+e^{\hat T_1 + \hat T_2} \lvert \Phi_0 \rangle \;=\; \lvert \Phi_0 \rangle + \hat T_1 \lvert \Phi_0 \rangle + \Bigl(\hat T_2 + \tfrac{1}{2} \hat T_1^2\Bigr) \lvert \Phi_0 \rangle + \Bigl(\hat T_1 \hat T_2 + \tfrac{1}{2} \hat T_2^2 + \tfrac{1}{6}\hat T_1^3\Bigr) \lvert \Phi_0 \rangle + \cdots .
 \end{equation}
 
 The first three lines are the *singles*, *doubles*, and
@@ -950,10 +968,12 @@ projecting \eqref{eq:ch-14-cc-sim} onto the *singly*
 and *doubly* excited determinants $\langle \Phi_i^a \rvert$
 and $\langle \Phi_{ij}^{ab} \rvert$:
 
-\begin{align}
-0 &\;=\; \langle \Phi_i^a \rvert e^{-\hat T}\, \hat H\, e^{\hat T} \rvert \Phi_0 \rangle , \label{eq:ch-14-ccsd-t1} \\
-0 &\;=\; \langle \Phi_{ij}^{ab} \rvert e^{-\hat T}\, \hat H\, e^{\hat T} \rvert \Phi_0 \rangle . \label{eq:ch-14-ccsd-t2}
-\end{align}
+\begin{equation}
+0 \;=\; \langle \Phi_i^a \rvert e^{-\hat T}\, \hat H\, e^{\hat T} \rvert \Phi_0 \rangle , \label{eq:ch-14-ccsd-t1}
+\end{equation}
+\begin{equation}
+0 \;=\; \langle \Phi_{ij}^{ab} \rvert e^{-\hat T}\, \hat H\, e^{\hat T} \rvert \Phi_0 \rangle . \label{eq:ch-14-ccsd-t2}
+\end{equation}
 
 Equations \eqref{eq:ch-14-ccsd-t1}–\eqref{eq:ch-14-ccsd-t2}
 are the **singles** and **doubles amplitude equations**,
@@ -1008,7 +1028,7 @@ where the **perturbative triples correction** is
 
 \begin{equation}
 \label{eq:ch-14-ccsdt-t}
-E_\text{T}^{(5)} \;=\; \sum_{i<j<k} \sum_{a<b<c} \frac{\bigl\lvert \langle \Phi_{ijk}^{abc} \rvert \hat V \rvert \Phi_0 \rangle \bigr\rvert^2}{E_0 - E_{ijk}^{abc}} \;-\; \text{(similar terms from $\hat T_1 \hat T_2$, $\hat T_2^2$)} .
+E_\text{T}^{(5)} \;=\; \sum_{i<j<k} \sum_{a<b<c} \frac{\Bigl\lvert \langle \Phi_{ijk}^{abc} \rvert \hat V \rvert \Phi_0 \rangle \bigr\rvert^2}{E_0 - E_{ijk}^{abc}} \;-\; \text{(similar terms from $\hat T_1 \hat T_2$, $\hat T_2^2$)} .
 \end{equation}
 
 The first term is the *direct* contribution of the
@@ -1269,7 +1289,7 @@ Phys.* **102**, 4909 (1995)):
 
 \begin{equation}
 \label{eq:ch-14-nevpt2-h0}
-\hat H^{(0)}_\text{NEVPT2} \;=\; \sum_{r \in \text{core}, s \in \text{virt}} \bigl(\varepsilon_r + \varepsilon_s - \varepsilon_a - \varepsilon_b\bigr)\, \lvert \Phi_{ab}^{rs} \rangle \langle \Phi_{ab}^{rs} \rvert \;+\; \cdots ,
+\hat H^{(0)}_\text{NEVPT2} \;=\; \sum_{r \in \text{core}, s \in \text{virt}} \Bigl(\varepsilon_r + \varepsilon_s - \varepsilon_a - \varepsilon_b\Bigr)\, \lvert \Phi_{ab}^{rs} \rangle \langle \Phi_{ab}^{rs} \rvert \;+\; \cdots ,
 \end{equation}
 
 where the sum is over determinants generated by a
@@ -1284,7 +1304,7 @@ the same as CASPT2. The **NEVPT2 energy** is
 
 \begin{equation}
 \label{eq:ch-14-nevpt2}
-E_\text{NEVPT2} \;=\; E_\text{CAS} \;+\; \sum_{I \notin \text{CAS}} \frac{\bigl\lvert \langle \Psi_\text{CAS} \rvert \hat H \rvert \Phi_I \rangle \bigr\rvert^2}{E_0^{(0)} - E_I^{(0)_\text{NEVPT2}}} ,
+E_\text{NEVPT2} \;=\; E_\text{CAS} \;+\; \sum_{I \notin \text{CAS}} \frac{\Bigl\lvert \langle \Psi_\text{CAS} \rvert \hat H \rvert \Phi_I \rangle \bigr\rvert^2}{E_0^{(0)} - E_I^{(0)_\text{NEVPT2}}} ,
 \end{equation}
 
 where the sum is over the *external* determinants
@@ -1654,10 +1674,12 @@ The **Helgaker** two-point extrapolation formula
 (Helgaker, Klopper, Koch, Noga, *J. Chem. Phys.*
 **106**, 9639 (1997)) is
 
-\begin{align}
-E_\text{HF}(X) &\;=\; E_\text{HF}^\text{CBS} \;+\; A\, X^{-3} , \label{eq:ch-14-helgaker-hf} \\
-E_\text{corr}(X) &\;=\; E_\text{corr}^\text{CBS} \;+\; B\, (X - 1)^{-3} . \label{eq:ch-14-helgaker-corr}
-\end{align}
+\begin{equation}
+E_\text{HF}(X) \;=\; E_\text{HF}^\text{CBS} \;+\; A\, X^{-3} , \label{eq:ch-14-helgaker-hf}
+\end{equation}
+\begin{equation}
+E_\text{corr}(X) \;=\; E_\text{corr}^\text{CBS} \;+\; B\, (X - 1)^{-3} . \label{eq:ch-14-helgaker-corr}
+\end{equation}
 
 The **Hartree–Fock** energy converges *exponentially*
 with the cardinal number $X$; the leading correction
@@ -2042,11 +2064,15 @@ D_e(\text{H}_2\text{O}) \;=\; E(\text{O}) + 2\, E(\text{H}) - E(\text{H}_2\text{
 The *atomic* reference energies (in the same cc-pVDZ
 basis) are
 
-\begin{align}
-E_\text{HF}(\text{O}) &\;=\; -74.778\,451\,E_h , \label{eq:ch-14-h2o-O-hf} \\
-E_\text{HF}(\text{H}) &\;=\; -0.499\,278\,E_h , \label{eq:ch-14-h2o-H-hf} \\
-E_\text{HF}(\text{H}_2\text{O}) &\;=\; -76.024\,547\,E_h . \label{eq:ch-14-h2o-h2o-hf}
-\end{align}
+\begin{equation}
+E_\text{HF}(\text{O}) \;=\; -74.778\,451\,E_h , \label{eq:ch-14-h2o-O-hf}
+\end{equation}
+\begin{equation}
+E_\text{HF}(\text{H}) \;=\; -0.499\,278\,E_h , \label{eq:ch-14-h2o-H-hf}
+\end{equation}
+\begin{equation}
+E_\text{HF}(\text{H}_2\text{O}) \;=\; -76.024\,547\,E_h . \label{eq:ch-14-h2o-h2o-hf}
+\end{equation}
 
 The HF atomisation energy is therefore
 

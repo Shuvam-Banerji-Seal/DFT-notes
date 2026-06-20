@@ -296,7 +296,7 @@ position-space representation it is the integral
 
 \begin{equation}
 \label{eq:faq-brak}
-\langle \phi \rvert \hat A \rvert \psi \rangle \;\equiv\; \int \phi^*(\mathbf r)\, \bigl(\hat A \psi(\mathbf r)\bigr)\, d\mathbf r .
+\langle \phi \rvert \hat A \rvert \psi \rangle \;\equiv\; \int \phi^*(\mathbf r)\, \Bigl(\hat A \psi(\mathbf r)\Bigr)\, d\mathbf r .
 \end{equation}
 
 When \(\phi = \psi\) this is the **expectation value** of
@@ -360,7 +360,7 @@ of single-particle orbitals:
 
 \begin{equation}
 \label{eq:faq-Psipsi}
-\Psi(\mathbf x_1, \dots, \mathbf x_N) \;\approx\; \Phi[\{\psi_i\}] \;=\; \frac{1}{\sqrt{N!}} \det\bigl[\psi_i(\mathbf x_j)\bigr] .
+\Psi(\mathbf x_1, \dots, \mathbf x_N) \;\approx\; \Phi[\{\psi_i\}] \;=\; \frac{1}{\sqrt{N!}} \det\Bigl[\psi_i(\mathbf x_j)\Bigr] .
 \end{equation}
 
 The mapping \(\Psi \to \{\psi_i\}\) is the Kohn–Sham Ansatz.

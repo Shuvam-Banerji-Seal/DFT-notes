@@ -362,7 +362,7 @@ $\varepsilon_{n,j} = E_{n,j} - mc^2$ in the Pauli form
 
 \begin{equation}
 \label{eq:ch-15-pauli-binding}
-\varepsilon_{n,j} \;=\; -\frac{Z^2}{2 n^2} \left[ 1 + \frac{(Z\alpha)^2}{n^2}\left(\frac{n}{j + 1/2} - \frac{3}{4}\right) + O\bigl((Z\alpha)^4\bigr) \right] ,
+\varepsilon_{n,j} \;=\; -\frac{Z^2}{2 n^2} \left[ 1 + \frac{(Z\alpha)^2}{n^2}\left(\frac{n}{j + 1/2} - \frac{3}{4}\right) + O\Bigl((Z\alpha)^4\Bigr) \right] ,
 \end{equation}
 
 where the leading $-Z^2/(2n^2)$ is the non-relativistic
@@ -385,7 +385,7 @@ and $j = \ell - 1/2$ levels (for $\ell \ge 1$) is
 
 \begin{equation}
 \label{eq:ch-15-so-split}
-\Delta E_\text{SO} \;=\; E_{n,j=\ell+1/2} - E_{n,j=\ell-1/2} \;\approx\; \frac{(Z\alpha)^2}{2n}\,\frac{E_n^\text{nr}}{\bigl(\ell + \tfrac{1}{2}\bigr)\bigl(\ell + 1\bigr)} ,
+\Delta E_\text{SO} \;=\; E_{n,j=\ell+1/2} - E_{n,j=\ell-1/2} \;\approx\; \frac{(Z\alpha)^2}{2n}\,\frac{E_n^\text{nr}}{\Bigl(\ell + \tfrac{1}{2}\Bigr)\Bigl(\ell + 1\Bigr)} ,
 \end{equation}
 
 where $E_n^\text{nr} = -Z^2/(2n^2)$ is the non-relativistic
@@ -599,7 +599,7 @@ spin-orbit splitting of a $p$ shell is
 
 \begin{equation}
 \label{eq:ch-15-p-split}
-\Delta E_\text{SO}(p) \;=\; \bigl\langle \hat H_\text{SO} \bigr\rangle_{p_{3/2}} - \bigl\langle \hat H_\text{SO} \bigr\rangle_{p_{1/2}} \;=\; \tfrac{3}{2}\,\bigl\langle \xi(r) \bigr\rangle_{p} ,
+\Delta E_\text{SO}(p) \;=\; \Bigl\langle \hat H_\text{SO} \bigr\rangle_{p_{3/2}} - \Bigl\langle \hat H_\text{SO} \bigr\rangle_{p_{1/2}} \;=\; \tfrac{3}{2}\,\Bigl\langle \xi(r) \bigr\rangle_{p} ,
 \end{equation}
 
 which is positive (the $j = \ell + 1/2$ level is
@@ -666,7 +666,7 @@ the energy correction is
 
 \begin{equation}
 \label{eq:ch-15-mv-scaling}
-\bigl| \langle \hat H_\text{MV} \rangle \bigr| \;\sim\; \frac{Z^4}{n^3}\,\frac{\alpha^2}{2} \times E_h \;\sim\; \frac{Z^4}{n^3} \times 13.6\,\text{eV} \times \frac{\alpha^2}{2} .
+\Bigl| \langle \hat H_\text{MV} \rangle \Bigr| \;\sim\; \frac{Z^4}{n^3}\,\frac{\alpha^2}{2} \times E_h \;\sim\; \frac{Z^4}{n^3} \times 13.6\,\text{eV} \times \frac{\alpha^2}{2} .
 \end{equation}
 
 For the $1s$ electron of hydrogen ($Z = 1$, $n = 1$)
@@ -682,7 +682,7 @@ is
 
 \begin{equation}
 \label{eq:ch-15-darwin-scaling}
-\bigl| \langle \hat H_\text{D} \rangle \bigr| \;\sim\; \frac{Z^4 \alpha^2}{n^3} \times E_h ,
+\Bigl| \langle \hat H_\text{D} \rangle \Bigr| \;\sim\; \frac{Z^4 \alpha^2}{n^3} \times E_h ,
 \end{equation}
 
 the same $Z^4 \alpha^2 / n^3$ scaling as the kinetic-
@@ -700,7 +700,7 @@ on a hydrogenic orbital scales as
 
 \begin{equation}
 \label{eq:ch-15-soc-scaling}
-\bigl| \langle \hat H_\text{SO} \rangle \bigr| \;\sim\; \frac{Z^4 \alpha^2}{n^3} \times \frac{1}{\ell(\ell+1)} \times E_h .
+\Bigl| \langle \hat H_\text{SO} \rangle \Bigr| \;\sim\; \frac{Z^4 \alpha^2}{n^3} \times \frac{1}{\ell(\ell+1)} \times E_h .
 \end{equation}
 
 The $1/(\ell(\ell+1))$ is a *kinematic* angular-momentum
@@ -955,7 +955,7 @@ positive-energy block:
 
 \begin{equation}
 \label{eq:ch-15-dkh2}
-\hat H_+^{(\text{DKH2})} \;=\; \hat E - mc^2 + v(\mathbf r) + \tfrac{1}{2}\bigl[\hat A, [\hat A, v(\mathbf r)]\bigr] + \cdots ,
+\hat H_+^{(\text{DKH2})} \;=\; \hat E - mc^2 + v(\mathbf r) + \tfrac{1}{2}\Bigl[\hat A, [\hat A, v(\mathbf r)]\Bigr] + \cdots ,
 \end{equation}
 
 where $\hat A = \boldsymbol\alpha \cdot \hat{\mathbf p} / (2\hat E + 2mc^2 - 2v)$ is
@@ -1502,14 +1502,14 @@ are
 
 \begin{equation}
 \label{eq:ch-15-ls-eigenvalue}
-\bigl\langle \xi(r) \hat{\mathbf L} \cdot \hat{\mathbf S} \bigr\rangle_{n,\ell,j} \;=\; \tfrac{1}{2}\bigl[\ell(\ell+1) + s(s+1) - j(j+1)\bigr] \langle \xi \rangle_{n\ell} \;=\; \begin{cases} +\tfrac{\ell}{2}\,\langle \xi \rangle, & j = \ell + 1/2, \\ -\tfrac{\ell+1}{2}\,\langle \xi \rangle, & j = \ell - 1/2. \end{cases}
+\Bigl\langle \xi(r) \hat{\mathbf L} \cdot \hat{\mathbf S} \bigr\rangle_{n,\ell,j} \;=\; \tfrac{1}{2}\Bigl[\ell(\ell+1) + s(s+1) - j(j+1)\Bigr] \langle \xi \rangle_{n\ell} \;=\; \begin{cases} +\tfrac{\ell}{2}\,\langle \xi \rangle, & j = \ell + 1/2, \\ -\tfrac{\ell+1}{2}\,\langle \xi \rangle, & j = \ell - 1/2. \end{cases}
 \end{equation}
 
 The SOC splitting of an $\ell \ge 1$ shell is therefore
 
 \begin{equation}
 \label{eq:ch-15-ls-splitting}
-\Delta E_\text{SO}(n\ell) \;=\; \bigl\langle \xi \bigr\rangle_{n\ell}\,\bigl(\ell + 1\bigr) \;=\; \frac{(Z\alpha)^2}{2}\,\frac{E_n^\text{nr}}{\bigl(\ell + \tfrac{1}{2}\bigr)(\ell + 1)} \quad \text{(hydrogenic)} .
+\Delta E_\text{SO}(n\ell) \;=\; \Bigl\langle \xi \bigr\rangle_{n\ell}\,\Bigl(\ell + 1\Bigr) \;=\; \frac{(Z\alpha)^2}{2}\,\frac{E_n^\text{nr}}{\Bigl(\ell + \tfrac{1}{2}\Bigr)(\ell + 1)} \quad \text{(hydrogenic)} .
 \end{equation}
 
 For an attractive Coulomb potential $\langle \xi \rangle > 0$ (since
@@ -1629,7 +1629,7 @@ a mean-field (MF) one-electron operator**:
 \label{eq:ch-15-soc-mf}
 \hat H_\text{SO}^\text{MF} \;=\; \sum_i \hat h_\text{SO}^\text{MF}(i) ,
 \qquad
-\hat h_\text{SO}^\text{MF}(i) \;=\; \sum_{j\,\text{occ}} \bigl[ \langle \phi_j | \hat H_\text{SOO}(i, j) | \phi_j \rangle - \langle \phi_j | \hat H_\text{SOO}(i, j) | \phi_j \rangle_\text{exch} \bigr] .
+\hat h_\text{SO}^\text{MF}(i) \;=\; \sum_{j\,\text{occ}} \Bigl[ \langle \phi_j | \hat H_\text{SOO}(i, j) | \phi_j \rangle - \langle \phi_j | \hat H_\text{SOO}(i, j) | \phi_j \rangle_\text{exch} \Bigr] .
 \end{equation}
 
 The MF-SOC operator is a one-electron operator (it
@@ -1660,7 +1660,7 @@ in spin space at every $\mathbf r$:
 
 \begin{equation}
 \label{eq:ch-15-frpp}
-\hat V_\text{ps}^\text{rel}(\mathbf r, \boldsymbol\sigma) \;=\; \sum_\ell \sum_{m=-\ell}^{\ell} \bigl| Y_\ell^m \bigr\rangle \bigl[ V_\text{ps,\ell}^\text{SR}(r) + V_\text{ps,\ell}^\text{SO}(r)\,\hat{\mathbf L}\!\cdot\!\hat{\mathbf S} \bigr] \bigl\langle Y_\ell^m \bigr| ,
+\hat V_\text{ps}^\text{rel}(\mathbf r, \boldsymbol\sigma) \;=\; \sum_\ell \sum_{m=-\ell}^{\ell} \Bigl| Y_\ell^m \bigr\rangle \Bigl[ V_\text{ps,\ell}^\text{SR}(r) + V_\text{ps,\ell}^\text{SO}(r)\,\hat{\mathbf L}\!\cdot\!\hat{\mathbf S} \Bigr] \Bigl\langle Y_\ell^m \Bigr| ,
 \end{equation}
 
 where the first term is the scalar-relativistic
@@ -1690,7 +1690,7 @@ the SOC in the augmentation sphere:
 
 \begin{equation}
 \label{eq:ch-15-paw-soc}
-|\Psi_i\rangle \;=\; \sum_n |\tilde\phi_n\rangle \langle \tilde p_n | \Psi_i\rangle + \sum_A \sum_\ell \bigl( |\phi_A^\ell\rangle - |\tilde\phi_A^\ell\rangle \bigr) \langle \tilde p_A^\ell | \Psi_i \rangle ,
+|\Psi_i\rangle \;=\; \sum_n |\tilde\phi_n\rangle \langle \tilde p_n | \Psi_i\rangle + \sum_A \sum_\ell \Bigl( |\phi_A^\ell\rangle - |\tilde\phi_A^\ell\rangle \Bigr) \langle \tilde p_A^\ell | \Psi_i \rangle ,
 \end{equation}
 
 where the augmentation functions $|\phi_A^\ell\rangle$
@@ -1844,7 +1844,7 @@ density
 
 \begin{equation}
 \label{eq:ch-15-dks-density}
-n(\mathbf r) \;=\; \sum_{i\,\text{occ}} \Psi_i^\dagger(\mathbf r)\, \Psi_i(\mathbf r) \;=\; \sum_{i\,\text{occ}} \bigl[ |\Phi_i^L(\mathbf r)|^2 + |\Phi_i^S(\mathbf r)|^2 \bigr] .
+n(\mathbf r) \;=\; \sum_{i\,\text{occ}} \Psi_i^\dagger(\mathbf r)\, \Psi_i(\mathbf r) \;=\; \sum_{i\,\text{occ}} \Bigl[ |\Phi_i^L(\mathbf r)|^2 + |\Phi_i^S(\mathbf r)|^2 \Bigr] .
 \end{equation}
 
 The DKS equations are *exact* in the sense that they
@@ -1915,14 +1915,14 @@ Pauli spinors. The density is
 
 \begin{equation}
 \label{eq:ch-15-2c-density}
-n(\mathbf r) \;=\; \sum_{i\,\text{occ}} \bigl[ |\phi_{i,\uparrow}(\mathbf r)|^2 + |\phi_{i,\downarrow}(\mathbf r)|^2 \bigr] ,
+n(\mathbf r) \;=\; \sum_{i\,\text{occ}} \Bigl[ |\phi_{i,\uparrow}(\mathbf r)|^2 + |\phi_{i,\downarrow}(\mathbf r)|^2 \Bigr] ,
 \end{equation}
 
 and the magnetisation is
 
 \begin{equation}
 \label{eq:ch-15-2c-magnetisation}
-\mathbf m(\mathbf r) \;=\; \mu_B \sum_{i\,\text{occ}} \bigl[ \phi_{i,\uparrow}^*(\mathbf r), \phi_{i,\downarrow}^*(\mathbf r) \bigr] \boldsymbol\sigma \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} .
+\mathbf m(\mathbf r) \;=\; \mu_B \sum_{i\,\text{occ}} \Bigl[ \phi_{i,\uparrow}^*(\mathbf r), \phi_{i,\downarrow}^*(\mathbf r) \Bigr] \boldsymbol\sigma \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} .
 \end{equation}
 
 The 2c-KS equations are solved self-consistently in
@@ -1975,7 +1975,7 @@ of all three:
 
 \begin{equation}
 \label{eq:ch-15-scxc}
-E_\text{xc}[n, \mathbf j_p, \mathbf m] \;=\; \int \varepsilon_\text{xc}\bigl(n(\mathbf r), \mathbf j_p(\mathbf r), \mathbf m(\mathbf r)\bigr)\, d\mathbf r .
+E_\text{xc}[n, \mathbf j_p, \mathbf m] \;=\; \int \varepsilon_\text{xc}\Bigl(n(\mathbf r), \mathbf j_p(\mathbf r), \mathbf m(\mathbf r)\Bigr)\, d\mathbf r .
 \end{equation}
 
 The functional derivative of $E_\text{xc}$ with respect
@@ -2319,7 +2319,7 @@ to a spin-current operator):
 
 \begin{equation}
 \label{eq:ch-15-shc-kubo}
-\sigma_{xy}^s \;=\; -\frac{e^2}{\hbar} \int_{\text{BZ}} \frac{d\mathbf k}{(2\pi)^3} \sum_n f(\varepsilon_{n\mathbf k}) \sum_{m \ne n} \frac{2\,\text{Im}\bigl[\langle n\mathbf k | \hat j_x^s | m\mathbf k \rangle \langle m\mathbf k | \hat v_y | n\mathbf k \rangle\bigr]}{(\varepsilon_{n\mathbf k} - \varepsilon_{m\mathbf k})^2} ,
+\sigma_{xy}^s \;=\; -\frac{e^2}{\hbar} \int_{\text{BZ}} \frac{d\mathbf k}{(2\pi)^3} \sum_n f(\varepsilon_{n\mathbf k}) \sum_{m \ne n} \frac{2\,\text{Im}\Bigl[\langle n\mathbf k | \hat j_x^s | m\mathbf k \rangle \langle m\mathbf k | \hat v_y | n\mathbf k \rangle\Bigr]}{(\varepsilon_{n\mathbf k} - \varepsilon_{m\mathbf k})^2} ,
 \end{equation}
 
 where $f$ is the Fermi occupation, $\hat v_y$ the
@@ -2570,7 +2570,7 @@ shell of the atom.
 The Au–Au bond can be modelled as a Morse oscillator
 
 $$
-V(r) \;=\; D_e \bigl( e^{-2a(r - r_e)} - 2 e^{-a(r - r_e)} \bigr) ,
+V(r) \;=\; D_e \Bigl( e^{-2a(r - r_e)} - 2 e^{-a(r - r_e)} \Bigr) ,
 $$
 
 with $D_e$ the binding energy, $r_e$ the equilibrium

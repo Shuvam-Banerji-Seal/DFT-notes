@@ -189,7 +189,7 @@ photoemission spectrum at energy $\omega$ is
 
 \begin{equation}
 \label{eq:ch-13-spectral}
-A(\mathbf k, \omega) \;=\; \sum_n \bigl| \langle \phi_n | \psi_{\mathbf k} \rangle \bigr|^2\, \delta(\omega - \varepsilon_n) ,
+A(\mathbf k, \omega) \;=\; \sum_n \Bigl| \langle \phi_n | \psi_{\mathbf k} \rangle \Bigr|^2\, \delta(\omega - \varepsilon_n) ,
 \end{equation}
 
 a sum of delta functions at the quasi-particle (QP)
@@ -399,9 +399,9 @@ is
 
 \begin{equation}
 \label{eq:ch-13-liechtenstein}
-E_\text{Hubbard}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \bigl\{
+E_\text{Hubbard}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \Bigl\lbrace
 U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''}
-\;+\; (U_{m m' m'' m'''} - U_{m m' m''' m''})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \bigr\} ,
+\;+\; (U_{m m' m'' m'''} - U_{m m' m''' m''})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace ,
 \end{equation}
 
 where $U_{m m' m'' m'''}$ are the on-site Coulomb
@@ -412,7 +412,7 @@ tensor is reduced to a single effective $U$:
 
 \begin{equation}
 \label{eq:ch-13-dudarev}
-E_\text{Hubbard}^\text{D} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_m n^\sigma_{I, mm}\bigl(1 - n^\sigma_{I, mm}\bigr) ,
+E_\text{Hubbard}^\text{D} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_m n^\sigma_{I, mm}\Bigl(1 - n^\sigma_{I, mm}\Bigr) ,
 \end{equation}
 
 where $U_\text{eff} = U - J$ is the difference of
@@ -439,7 +439,7 @@ LDA part:
 
 \begin{equation}
 \label{eq:ch-13-dc}
-E_\text{dc} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_m n^\sigma_{I, mm}\bigl(N_I^\sigma/2 - n^\sigma_{I, mm}\bigr) ,
+E_\text{dc} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_m n^\sigma_{I, mm}\Bigl(N_I^\sigma/2 - n^\sigma_{I, mm}\Bigr) ,
 \end{equation}
 
 a simple quadratic form whose specific value is
@@ -460,7 +460,7 @@ occupation matrix gives the **Hubbard potential**
 
 \begin{equation}
 \label{eq:ch-13-hubbard-pot}
-V^\sigma_{I, mm'} \;=\; U_\text{eff} \bigl(\tfrac{1}{2} - n^\sigma_{I, mm'}\bigr) \delta_{mm'} ,
+V^\sigma_{I, mm'} \;=\; U_\text{eff} \Bigl(\tfrac{1}{2} - n^\sigma_{I, mm'}\Bigr) \delta_{mm'} ,
 \end{equation}
 
 which is added to the KS Hamiltonian.  The
@@ -469,7 +469,7 @@ Hubbard correction is
 
 \begin{equation}
 \label{eq:ch-13-ks+u}
-\bigl[ \hat H_\text{KS} + \hat V_\text{Hub} \bigr] |\psi_{n \mathbf k}^\sigma\rangle
+\Bigl[ \hat H_\text{KS} + \hat V_\text{Hub} \Bigr] |\psi_{n \mathbf k}^\sigma\rangle
 \;=\; \varepsilon_{n \mathbf k}^\sigma |\psi_{n \mathbf k}^\sigma\rangle ,
 \end{equation}
 
@@ -744,7 +744,7 @@ of the **Dyson equation**
 
 \begin{equation}
 \label{eq:ch-13-dyson}
-\bigl[ \hat H_\text{KS} + \hat \Sigma(\varepsilon_n^\text{QP}) - \varepsilon_n^\text{QP} \bigr] |\psi_n\rangle \;=\; 0 ,
+\Bigl[ \hat H_\text{KS} + \hat \Sigma(\varepsilon_n^\text{QP}) - \varepsilon_n^\text{QP} \Bigr] |\psi_n\rangle \;=\; 0 ,
 \end{equation}
 
 a *non-linear* eigenvalue problem in the energy.
@@ -760,7 +760,7 @@ where the **quasi-particle weight** is
 
 \begin{equation}
 \label{eq:ch-13-z-factor}
-Z_n \;=\; \Bigl( 1 - \bigl\langle \psi_n \bigr| \frac{\partial \Sigma(\omega)}{\partial \omega} \Bigl|_{\omega = \varepsilon_n^\text{KS}} \bigl| \psi_n \bigr\rangle \Bigr)^{-1} .
+Z_n \;=\; \Bigl( 1 - \Bigl\langle \psi_n \Bigr| \frac{\partial \Sigma(\omega)}{\partial \omega} \Bigl|_{\omega = \varepsilon_n^\text{KS}} \Bigl| \psi_n \bigr\rangle \Bigr)^{-1} .
 \end{equation}
 
 For weakly-correlated semiconductors (Si, Ge,
@@ -858,7 +858,7 @@ Anderson Hamiltonian
 \begin{equation}
 \label{eq:ch-13-anderson}
 \hat H_\text{And} \;=\; \sum_{k, \sigma} \varepsilon_k\, a_{k\sigma}^\dagger a_{k\sigma}
-\;+\; \sum_{k, \sigma} \bigl( V_k\, a_{k\sigma}^\dagger d_{\sigma} + V_k^*\, d_{\sigma}^\dagger a_{k\sigma} \bigr)
+\;+\; \sum_{k, \sigma} \Bigl( V_k\, a_{k\sigma}^\dagger d_{\sigma} + V_k^*\, d_{\sigma}^\dagger a_{k\sigma} \Bigr)
 \;-\; \mu \sum_{\sigma} d_{\sigma}^\dagger d_{\sigma}
 \;+\; U\, d_{\uparrow}^\dagger d_{\uparrow}\, d_{\downarrow}^\dagger d_{\downarrow} ,
 \end{equation}
@@ -879,7 +879,7 @@ is
 
 \begin{equation}
 \label{eq:ch-13-impurity-gf}
-G_\text{imp}(\omega) \;=\; \bigl[ \omega + \mu - \Delta(\omega) - \Sigma_\text{imp}(\omega) \bigr]^{-1} .
+G_\text{imp}(\omega) \;=\; \Bigl[ \omega + \mu - \Delta(\omega) - \Sigma_\text{imp}(\omega) \Bigr]^{-1} .
 \end{equation}
 
 The DMFT self-consistency loop is
@@ -887,7 +887,7 @@ The DMFT self-consistency loop is
 \begin{equation}
 \label{eq:ch-13-dmft-loop}
 \boxed{
-G_\text{loc}(\omega) = \sum_{\mathbf k} \bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \bigr]^{-1} , \quad
+G_\text{loc}(\omega) = \sum_{\mathbf k} \Bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \Bigr]^{-1} , \quad
 \Delta(\omega) = \omega + \mu - \Sigma(\omega) - G_\text{loc}^{-1}(\omega) .
 }
 \end{equation}
@@ -937,7 +937,7 @@ atom.  The full spectral function is
 \begin{equation}
 \label{eq:ch-13-dft+dmft}
 A(\mathbf k, \omega) \;=\; -\frac{1}{\pi} \text{Im}\, \sum_{m m'}\,
-\bigl[ \omega + \mu - \hat H_\text{KS}(\mathbf k) - \hat \Sigma(\omega) \bigr]^{-1}_{m m'} ,
+\Bigl[ \omega + \mu - \hat H_\text{KS}(\mathbf k) - \hat \Sigma(\omega) \Bigr]^{-1}_{m m'} ,
 \end{equation}
 
 a momentum-resolved spectral function that
@@ -1430,7 +1430,7 @@ E_\text{DFT} = -I (1/2 + 1/2) = -I = -5\,\text{eV},
 $$
 
 $$
-E_U = \frac{U_\text{eff}}{2} \bigl[ (1/2)(1/2) + (1/2)(1/2) \bigr]
+E_U = \frac{U_\text{eff}}{2} \Bigl[ (1/2)(1/2) + (1/2)(1/2) \Bigr]
      = \frac{U_\text{eff}}{2} \cdot \frac{1}{2} = \frac{U_\text{eff}}{4}
      = \frac{4}{4} = +1\,\text{eV},
 $$
@@ -1447,7 +1447,7 @@ E_\text{DFT} = -I (1 + 0) = -I = -5\,\text{eV},
 $$
 
 $$
-E_U = \frac{U_\text{eff}}{2} \bigl[ (1)(0) + (0)(1) \bigr] = 0,
+E_U = \frac{U_\text{eff}}{2} \Bigl[ (1)(0) + (0)(1) \Bigr] = 0,
 $$
 
 $$
@@ -1642,7 +1642,7 @@ The simplest non-trivial dynamic self-energy for
 the *Hubbard atom* is the **iterated second-order**
 
 $$
-\Sigma^{(2)}_\text{iter}(\omega) \;=\; \frac{U^2}{4} \bigl[ G_\text{HF}(\omega) \bigr] ,
+\Sigma^{(2)}_\text{iter}(\omega) \;=\; \frac{U^2}{4} \Bigl[ G_\text{HF}(\omega) \Bigr] ,
 $$
 
 where $G_\text{HF}$ is the Hartree–Fock Green's
@@ -1685,7 +1685,7 @@ is in the *incoherent* Hubbard sideband.  The other
 half is in the QP peak, at the energy
 
 $$
-\varepsilon_\text{QP} \;=\; -\mu + Z \bigl( \Sigma(0) - v_\text{xc} \bigr)
+\varepsilon_\text{QP} \;=\; -\mu + Z \Bigl( \Sigma(0) - v_\text{xc} \Bigr)
 \;=\; 0 + 0.5 \cdot (U/2 - 0) \;=\; U/4 .
 $$
 
@@ -2475,7 +2475,7 @@ p. 944]:
 \begin{equation}
 \label{eq:ch-13-10-aza-functional}
 \boxed{
-E_\text{DFT+U} \;=\; E_\text{DFT}[\rho] \;+\; E_\text{Hub}\bigl[\{n^\sigma_{mm'}\}\bigr] \;-\; E_\text{dc}\bigl[\{n^\sigma_{mm'}\}\bigr] .
+E_\text{DFT+U} \;=\; E_\text{DFT}[\rho] \;+\; E_\text{Hub}\Bigl[\{n^\sigma_{mm'}\}\Bigr] \;-\; E_\text{dc}\Bigl[\{n^\sigma_{mm'}\}\Bigr] .
 }
 \end{equation}
 
@@ -2490,7 +2490,7 @@ p. 944]:
 
 \begin{equation}
 \label{eq:ch-13-10-aza-hubbard}
-E_\text{Hub} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \bigl\{ U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \bigr\} ,
+E_\text{Hub} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \Bigl\lbrace U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace ,
 \end{equation}
 
 where $U_{m m' m'' m'''}$ are the on-site Coulomb
@@ -2510,7 +2510,7 @@ correction in the Anisimov–Zaanen–Andersen
 
 \begin{equation}
 \label{eq:ch-13-10-aza-dc}
-E_\text{dc}^\text{AMF} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_m \bigl[ U\, n^\sigma_{I, mm}\, \bigl(1 - n^\sigma_{I, mm}\bigr) \;-\; \bigl(U - J\bigr)\, n^\sigma_{I, mm}\, \bigl(n^\sigma_{I, mm} - \tfrac{1}{2}\bigr) \bigr] ,
+E_\text{dc}^\text{AMF} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_m \Bigl[ U\, n^\sigma_{I, mm}\, \Bigl(1 - n^\sigma_{I, mm}\Bigr) \;-\; \Bigl(U - J\Bigr)\, n^\sigma_{I, mm}\, \Bigl(n^\sigma_{I, mm} - \tfrac{1}{2}\Bigr) \Bigr] ,
 \end{equation}
 
 which is the form used in
@@ -2627,7 +2627,7 @@ occupation matrix changes too.  The
 \begin{equation}
 \label{eq:ch-13-10-liechtenstein}
 \boxed{
-E_\text{Hub}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \bigl\{ U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \bigr\} .
+E_\text{Hub}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \Bigl\lbrace U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace .
 }
 \end{equation}
 
@@ -2727,7 +2727,7 @@ form with a *single* effective parameter
 
 \begin{equation}
 \label{eq:ch-13-10-dudarev}
-\boxed{ E_\text{Hub}^\text{D} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_{m} n^\sigma_{I, mm}\bigl(1 - n^\sigma_{I, mm}\bigr) , \qquad U_\text{eff} \;=\; U - J . }
+\boxed{ E_\text{Hub}^\text{D} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_{m} n^\sigma_{I, mm}\Bigl(1 - n^\sigma_{I, mm}\Bigr) , \qquad U_\text{eff} \;=\; U - J . }
 \end{equation}
 
 This is the form used in VASP, Quantum ESPRESSO,
@@ -2945,7 +2945,7 @@ the lattice is
 
 \begin{equation}
 \label{eq:ch-13-10-gkkr-gloc}
-G_\text{loc}(\omega) \;=\; \sum_{\mathbf k} \bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \bigr]^{-1} ,
+G_\text{loc}(\omega) \;=\; \sum_{\mathbf k} \Bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \Bigr]^{-1} ,
 \end{equation}
 
 the sum being over the band structure of the
@@ -2954,7 +2954,7 @@ function of the Anderson model is
 
 \begin{equation}
 \label{eq:ch-13-10-gkkr-gimp}
-G_\text{imp}(\omega) \;=\; \bigl[ \omega + \mu - \Delta(\omega) - \Sigma_\text{imp}(\omega) \bigr]^{-1} ,
+G_\text{imp}(\omega) \;=\; \Bigl[ \omega + \mu - \Delta(\omega) - \Sigma_\text{imp}(\omega) \Bigr]^{-1} ,
 \end{equation}
 
 where $\Delta(\omega)$ is the *hybridisation
@@ -2983,7 +2983,7 @@ eq. (16), p. 20]:
 
 \begin{equation}
 \label{eq:ch-13-10-gkkr-siam}
-\hat H_\text{SIAM} \;=\; \sum_{k, \sigma} \varepsilon_k\, a_{k\sigma}^\dagger a_{k\sigma} \;+\; \sum_{k, \sigma} \bigl( V_k\, a_{k\sigma}^\dagger d_{\sigma} + V_k^*\, d_{\sigma}^\dagger a_{k\sigma} \bigr) \;-\; \mu \sum_{\sigma} d_{\sigma}^\dagger d_{\sigma} \;+\; U\, d_{\uparrow}^\dagger d_{\uparrow}\, d_{\downarrow}^\dagger d_{\downarrow} ,
+\hat H_\text{SIAM} \;=\; \sum_{k, \sigma} \varepsilon_k\, a_{k\sigma}^\dagger a_{k\sigma} \;+\; \sum_{k, \sigma} \Bigl( V_k\, a_{k\sigma}^\dagger d_{\sigma} + V_k^*\, d_{\sigma}^\dagger a_{k\sigma} \Bigr) \;-\; \mu \sum_{\sigma} d_{\sigma}^\dagger d_{\sigma} \;+\; U\, d_{\uparrow}^\dagger d_{\uparrow}\, d_{\downarrow}^\dagger d_{\downarrow} ,
 \end{equation}
 
 where $d_\sigma$ destroys an electron on the
@@ -3010,7 +3010,7 @@ problem [Georges, Kotliar, Krauth, and Rozenberg,
 \boxed{
 \begin{aligned}
 &\text{(i) Start with a guess for } \Sigma(\omega).\\
-&\text{(ii) Compute } G_\text{loc}(\omega) = \sum_{\mathbf k} \bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \bigr]^{-1}.\\
+&\text{(ii) Compute } G_\text{loc}(\omega) = \sum_{\mathbf k} \Bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \Bigr]^{-1}.\\
 &\text{(iii) Compute the bath } \Delta(\omega) = \omega + \mu - \Sigma(\omega) - G_\text{loc}^{-1}(\omega).\\
 &\text{(iv) Solve the SIAM with this bath.}\\
 &\text{(v) Extract the new } \Sigma_\text{imp}(\omega) \text{ from the SIAM solution.}\\
@@ -3605,7 +3605,7 @@ The **LDA+DMFT total energy** functional (Kotliar et al.
 E^\text{LDA+DMFT}[\rho, G] \;=\; E_\text{LDA}[\rho]
    \;+\; \langle \hat H_U \rangle_\text{MF}
    \;-\; E_\text{dc}
-   \;+\; \text{Tr}\bigl[\Sigma G\bigr] - \text{Tr}\ln G - \text{Tr}\ln\bigl[1 - \Sigma G_0\bigr] ,
+   \;+\; \text{Tr}\Bigl[\Sigma G\Bigr] - \text{Tr}\ln G - \text{Tr}\ln\Bigl[1 - \Sigma G_0\Bigr] ,
 \end{equation}
 
 where the last three terms are the **DMFT correlation

@@ -281,7 +281,6 @@ from manim import (Axes, Create, Dot, FadeIn, FadeOut, MathTex,
 
 import numpy as np
 
-
 class ParticleInBox(Scene):
     def construct(self):
         # ... 30-40 lines of Manim code

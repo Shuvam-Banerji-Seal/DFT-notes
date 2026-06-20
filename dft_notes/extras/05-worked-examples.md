@@ -414,7 +414,7 @@ is (Ch 06 §6.5)
 V_{\mu\nu}^{(A)} \;=\; -\sum_{p,q} d_{\mu p} d_{\nu q}\,
                       \frac{2\pi}{\alpha_p + \alpha_q}\,
                       Z_A\,
-                      F_0\!\bigl((\alpha_p + \alpha_q)\, |\mathbf P - \mathbf A|^2\bigr)\,
+                      F_0\!\Bigl((\alpha_p + \alpha_q)\, |\mathbf P - \mathbf A|^2\Bigr)\,
                       \exp\!\Bigl[-\frac{\alpha_p \alpha_q}{\alpha_p + \alpha_q}\, R_{\mu\nu}^2\Bigr] ,
 \end{equation}
 
@@ -589,7 +589,7 @@ the all-electron reference.
 the ansatz
 
 $$
-\phi(r) = r \exp\bigl(c_0 + c_1 r^2 + c_2 r^4 + c_3 r^6\bigr)
+\phi(r) = r \exp\Bigl(c_0 + c_1 r^2 + c_2 r^4 + c_3 r^6\Bigr)
 $$
 
 inside $r_c$. Enforce (1) value, (2) first derivative, (3)
@@ -672,7 +672,7 @@ parameterised as (Ch 08 §8.6)
 
 \begin{equation}
 \label{eq:we-08-tm-ansatz}
-\phi(x) \;=\; \exp\!\bigl(c_0 + c_1 x^2 + c_2 x^4 + c_3 x^6\bigr) ,
+\phi(x) \;=\; \exp\!\Bigl(c_0 + c_1 x^2 + c_2 x^4 + c_3 x^6\Bigr) ,
 \end{equation}
 
 where the four **Troullier–Martins** coefficients
@@ -818,8 +818,8 @@ $|k + m \cdot 2\pi/a\rangle$ for $m = -10, \dots, +10$. The
 $21 \times 21$ Hamiltonian at each $k$ is
 
 $$
-H_{mm'}(k) = \tfrac{1}{2}\bigl(k + m \cdot 2\pi/a\bigr)^2 \delta_{mm'}
-           + V_\text{per}\bigl((m' - m) \cdot 2\pi/a\bigr) ,
+H_{mm'}(k) = \tfrac{1}{2}\Bigl(k + m \cdot 2\pi/a\Bigr)^2 \delta_{mm'}
+           + V_\text{per}\Bigl((m' - m) \cdot 2\pi/a\Bigr) ,
 $$
 
 with $V_\text{per}$ nonzero only for
@@ -1016,7 +1016,7 @@ step:
    \begin{equation}
    \label{eq:we-09-hf-force}
    F(R) \;=\; -2 Z \!\int\!\rho(\mathbf r)\,
-              \frac{z - R/2}{\bigl[(z-R/2)^2 + x^2 + y^2\bigr]^{3/2}}\, d\mathbf r
+              \frac{z - R/2}{\Bigl[(z-R/2)^2 + x^2 + y^2\Bigr]^{3/2}}\, d\mathbf r
               \;+\; \frac{Z^2}{R^2} ,
    \end{equation}
 
@@ -1030,7 +1030,7 @@ step:
    \label{eq:we-09-pulay}
    F^\text{Pulay}(R) \;=\; -2 \sum_i^\text{occ}
                           \sum_{\mu,\nu} C_{\mu i} C_{\nu i}\,
-                          \bigl\langle \partial_{R}\chi_\mu \rvert
+                          \Bigl\langle \partial_{R}\chi_\mu \rvert
                           \hat F - \varepsilon_i \rvert \chi_\nu \bigr\rangle .
    \end{equation}
 
@@ -1052,8 +1052,8 @@ step:
 
    \begin{equation}
    \label{eq:we-09-bfgs}
-   H_{k+1} \;=\; \bigl(\mathbf 1 - \rho_k \mathbf s_k \mathbf y_k^\top\bigr) H_k
-                  \bigl(\mathbf 1 - \rho_k \mathbf y_k \mathbf s_k^\top\bigr)
+   H_{k+1} \;=\; \Bigl(\mathbf 1 - \rho_k \mathbf s_k \mathbf y_k^\top\Bigr) H_k
+                  \Bigl(\mathbf 1 - \rho_k \mathbf y_k \mathbf s_k^\top\Bigr)
                   \;+\; \rho_k \mathbf s_k \mathbf s_k^\top ,
    \end{equation}
 

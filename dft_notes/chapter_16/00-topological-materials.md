@@ -345,7 +345,7 @@ $P(\mathbf k) = \sum_{n \in \text{occ}} |u_{n\mathbf k}\rangle
 
 \begin{equation}
 \label{eq:ch-16-multiband-chern}
-C \;=\; \frac{1}{2\pi} \int_{\text{BZ}} \text{Tr}\bigl[ P\, dP \wedge dP \bigr] \;\in\; \mathbb Z .
+C \;=\; \frac{1}{2\pi} \int_{\text{BZ}} \text{Tr}\Bigl[ P\, dP \wedge dP \Bigr] \;\in\; \mathbb Z .
 \end{equation}
 
 Equation \eqref{eq:ch-16-multiband-chern} is invariant under
@@ -391,7 +391,7 @@ Fu–Kane formula is
 \begin{equation}
 \label{eq:ch-16-fu-kane-2d}
 \boxed{
-(-1)^\nu \;=\; \prod_{a=1}^{4} \frac{\sqrt{\det\bigl[w(\Lambda_a)\bigr]}}{\text{Pf}\bigl[w(\Lambda_a)\bigr]} .
+(-1)^\nu \;=\; \prod_{a=1}^{4} \frac{\sqrt{\det\Bigl[w(\Lambda_a)\Bigr]}}{\text{Pf}\Bigl[w(\Lambda_a)\Bigr]} .
 }
 \end{equation}
 
@@ -437,7 +437,7 @@ index:
 
 \begin{equation}
 \label{eq:ch-16-fu-kane-3d-strong}
-(-1)^{\nu_0} \;=\; \prod_{i=1}^{8} \frac{\sqrt{\det\bigl[w(\Lambda_i)\bigr]}}{\text{Pf}\bigl[w(\Lambda_i)\bigr]} ,
+(-1)^{\nu_0} \;=\; \prod_{i=1}^{8} \frac{\sqrt{\det\Bigl[w(\Lambda_i)\Bigr]}}{\text{Pf}\Bigl[w(\Lambda_i)\Bigr]} ,
 \end{equation}
 
 and three *weak* indices
@@ -447,7 +447,7 @@ $n_k$:
 
 \begin{equation}
 \label{eq:ch-16-fu-kane-3d-weak}
-(-1)^{\nu_k} \;=\; \prod_{i\,:\,n_k = 1} \frac{\sqrt{\det\bigl[w(\Lambda_i)\bigr]}}{\text{Pf}\bigl[w(\Lambda_i)\bigr]} ,
+(-1)^{\nu_k} \;=\; \prod_{i\,:\,n_k = 1} \frac{\sqrt{\det\Bigl[w(\Lambda_i)\Bigr]}}{\text{Pf}\Bigl[w(\Lambda_i)\Bigr]} ,
 \qquad k = 1, 2, 3 .
 \end{equation}
 
@@ -579,7 +579,7 @@ The spectrum is the solution of the **Harper equation**
 
 \begin{equation}
 \label{eq:ch-16-harper}
-\psi_{n+1} + \psi_{n-1} + 2 \cos\!\bigl( 2\pi n \phi + k_y \bigr) \psi_n \;=\; \varepsilon_n(k_y)\, \psi_n ,
+\psi_{n+1} + \psi_{n-1} + 2 \cos\!\Bigl( 2\pi n \phi + k_y \Bigr) \psi_n \;=\; \varepsilon_n(k_y)\, \psi_n ,
 \end{equation}
 
 where $\phi = \Phi/\Phi_0$. The bands and gaps are
@@ -638,7 +638,7 @@ The four terms in detail:
 \\[4pt]
 \hat H_\text{SO} &= i \lambda_\text{SO} \sum_{\langle\langle i j \rangle\rangle, \sigma} \nu_{ij}\, c^\dagger_{i\sigma} \sigma^z_{\sigma\sigma'}\, c_{j\sigma'} ,
 \\[4pt]
-\hat H_R &= i \lambda_R \sum_{\langle i j \rangle, \sigma\sigma'} c^\dagger_{i\sigma} \bigl( \mathbf s_{\sigma\sigma'} \times \mathbf d_{ij} \bigr)_z\, c_{j\sigma'} ,
+\hat H_R &= i \lambda_R \sum_{\langle i j \rangle, \sigma\sigma'} c^\dagger_{i\sigma} \Bigl( \mathbf s_{\sigma\sigma'} \times \mathbf d_{ij} \Bigr)_z\, c_{j\sigma'} ,
 \\[4pt]
 \hat H_\text{staggered} &= \lambda_v \sum_{i, \sigma} \nu_i\, c^\dagger_{i\sigma} c_{i\sigma} .
 \end{align}
@@ -762,7 +762,7 @@ $\mathbb Z_2$ index of the 2D insulator is
 
 \begin{equation}
 \label{eq:ch-16-fu-kane-pol}
-\nu \;=\; 2 \bigl[ P(\pi) - P(0) \bigr] \;\mod 2 \;\in\; \{0, 1\} .
+\nu \;=\; 2 \Bigl[ P(\pi) - P(0) \Bigr] \;\mod 2 \;\in\; \{0, 1\} .
 \end{equation}
 
 The factor of 2 converts the *continuous* 1D polarisation
@@ -1323,7 +1323,7 @@ Green's function is
 
 \begin{equation}
 \label{eq:ch-16-surface-gf}
-G_\text{surf}(\mathbf k_\parallel, \omega) \;=\; \bigl[ \omega - H_\text{slab}(\mathbf k_\parallel) - \Sigma(\mathbf k_\parallel, \omega) \bigr]^{-1} ,
+G_\text{surf}(\mathbf k_\parallel, \omega) \;=\; \Bigl[ \omega - H_\text{slab}(\mathbf k_\parallel) - \Sigma(\mathbf k_\parallel, \omega) \Bigr]^{-1} ,
 \end{equation}
 
 where $H_\text{slab}$ is the surface unit-cell Hamiltonian
@@ -1332,7 +1332,7 @@ bulk:
 
 \begin{equation}
 \label{eq:ch-16-self-energy}
-\Sigma(\mathbf k_\parallel, \omega) \;=\; \bigl[ \omega - H_\text{bulk}(\mathbf k_\parallel) - V \bigr]^{-1}_{\text{boundary}} ,
+\Sigma(\mathbf k_\parallel, \omega) \;=\; \Bigl[ \omega - H_\text{bulk}(\mathbf k_\parallel) - V \Bigr]^{-1}_{\text{boundary}} ,
 \end{equation}
 
 with $V$ the surface-to-bulk coupling. The surface
@@ -1386,7 +1386,7 @@ number* of the WCC as $k_\perp$ traverses the BZ:
 
 \begin{equation}
 \label{eq:ch-16-chern-wilson}
-C \;=\; \frac{1}{2\pi} \sum_{n=1}^{N_\text{occ}} \int_0^{2\pi} dk_\perp\, \partial_{k_\perp} \theta_n(k_\perp) \;=\; \frac{1}{2\pi} \sum_{n=1}^{N_\text{occ}} \bigl[ \theta_n(2\pi) - \theta_n(0) \bigr] .
+C \;=\; \frac{1}{2\pi} \sum_{n=1}^{N_\text{occ}} \int_0^{2\pi} dk_\perp\, \partial_{k_\perp} \theta_n(k_\perp) \;=\; \frac{1}{2\pi} \sum_{n=1}^{N_\text{occ}} \Bigl[ \theta_n(2\pi) - \theta_n(0) \Bigr] .
 \end{equation}
 
 The total winding number is the Chern number. For a

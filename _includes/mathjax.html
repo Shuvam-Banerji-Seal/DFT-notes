@@ -1,22 +1,41 @@
 <!--
-  MathJax 3 (TeX + AMS environments, with `\R`, `\N`, `\Z`, `\C` shortcuts).
+  MathJax 3 — TeX input, SVG output.
 
-  Matches the `kramdown.math_engine: mathjax` setting in _config.yml.
-  Kramdown converts `$...$` / `$$...$$` markup into
-  `<script type="math/tex">` and `<script type="math/tex; mode=display">`
-  tags; this loader finds them and typesets them on the client.
+  Why SVG (was CHTML in the previous version):
+    The CHTML bundle (tex-mml-chtml.js) emits internal MathML for
+    assistive technology. The MathML it emits uses three attributes
+    that the MathML spec has deprecated:
 
-  Inline delimiters:   $...$   or   \(...\)
-  Display delimiters:  $$...$$ or   \[...\]
+      - mathvariant='bold' on <mi>           (replaced by CSS)
+      - accent / accentunder inferred from   (replaced by explicit
+        a core operator on <mover>/<munder>   attributes)
+
+    These produced console warnings on every chapter:
+      "mathvariant='bold' on MathML elements is deprecated..."
+      "Inferring the accent property from the core operator..."
+      "Inferring the accentunder property from the core operator..."
+
+    Switching to SVG (tex-svg.js) makes MathJax skip the MathML output
+    entirely, so all three warnings go away. SVG also gives us:
+
+      - Crisp rendering at any zoom level
+      - Identical output across browsers (no font-loading races)
+      - Smaller HTML footprint per equation
+      - Consistent print quality
+
+    Accessibility cost: SVG has no assistive text by default. We
+    keep it accessible via MathJax's internal MathML (the SVG
+    elements are emitted with aria-hidden="true" but MathJax also
+    injects an aria-label carrying the MathML representation into
+    the parent <mjx-container> for screen readers).
+
+  Input delimiters:
+    Inline:     $...$   or   \(...\)
+    Display:    $$...$$ or   \[...\]
 
   Refs:
-    https://docs.mathjax.org/en/latest/web/configuration.html
+    https://docs.mathjax.org/en/latest/output/svg.html
     https://docs.mathjax.org/en/latest/options/input/tex.html
-
-  Future: when the chenglou/pretext e-reader (see design.md v3) takes
-  over rendering, the math engine will be KaTeX (faster, canvas-friendly)
-  rather than MathJax. At that point this file can be replaced with a
-  KaTeX auto-render include.
 -->
 <script>
   window.MathJax = {
@@ -36,14 +55,13 @@
     loader: { load: ['[tex]/ams'] },
     options: {
       enableMenu: false,
-      // Don't typeset math inside <code> or <pre> (looks awful when an
-      // equation is shown as inline code in a sentence).
-      skipHtmlTags: { '[+]': ['code', 'pre'] }
+      skipHtmlTags: { '[+]': ['code', 'pre'] },
+      renderActions: { addMenu: [] }
     }
   };
 </script>
 <script
   id="MathJax-script"
   async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
 ></script>

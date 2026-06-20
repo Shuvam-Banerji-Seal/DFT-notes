@@ -248,7 +248,7 @@ graph LR
 > $\langle \Phi_i^a | e^{-\hat T} \hat H e^{\hat T} | \Phi_0 \rangle = 0$.
 > Show that for two non-interacting fragments A and B at
 > infinite separation, the CCSD amplitude equations *factor*:
-> $t_i^a = t_i^{a,\text{A}} + t_i^{a,\text{B}}$ (with mixed
+> $t_i^a = t_i^{a,\text{A}} + t_i^{a,\text{B}$ (with mixed
 > terms zero), and the CCSD energy is
 > $E_\text{CCSD}^\text{AB} = E_\text{CCSD}^\text{A} + E_\text{CCSD}^\text{B}$.
 > **Hint:** use the Campbell–Baker–Hausdorff theorem
