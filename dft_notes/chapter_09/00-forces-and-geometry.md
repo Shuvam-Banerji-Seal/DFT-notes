@@ -30,7 +30,7 @@ is laid out in [chapter 01]({{ "/dft-notes/chapter-01/" | relative_url }})
 chapter is about the next quantity a practical calculation
 needs: the **gradient** of that number with respect to the
 nuclear coordinates.  The gradient is a vector
-field $\{\mathbf F_I = -\partial E/\partial \mathbf R_I\}_{I=1}^{N_\text{atoms}}$
+field $\{\mathbf F_I = -\partial E/\partial \mathbf R_I\}_{I=1}^{N_\text{atoms}$
 that drives geometry optimisation ([chapter 09, §9.6](#96-geometry-optimisation)),
 molecular dynamics
 ([§9.13](#913-what-we-left-out)), vibrational analysis
@@ -190,7 +190,7 @@ out the $\hat H$:
 \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle
 + \left\langle \Psi \bigg| \hat H \bigg| \frac{\partial \Psi}{\partial \lambda} \right\rangle
 &= \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle
- + \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle^*  \\
+ + \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle^*  \\\
 &= 2\, \operatorname{Re}\left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle .
 \end{align}
 
@@ -203,8 +203,8 @@ $\langle\Psi|\hat H = E(\lambda)\langle\Psi|$.  Explicitly,
 \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle
 + \left\langle \Psi \bigg| \hat H \bigg| \frac{\partial \Psi}{\partial \lambda} \right\rangle
 &= E(\lambda) \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \Psi \right\rangle
- + E(\lambda) \left\langle \Psi \bigg| \frac{\partial \Psi}{\partial \lambda} \right\rangle  \\
-&= E(\lambda)\, \frac{\partial}{\partial \lambda} \langle \Psi | \Psi \rangle \\
+ + E(\lambda) \left\langle \Psi \bigg| \frac{\partial \Psi}{\partial \lambda} \right\rangle  \\\
+&= E(\lambda)\, \frac{\partial}{\partial \lambda} \langle \Psi | \Psi \rangle \\\
 &= 0 ,
 \end{align}
 
@@ -242,7 +242,7 @@ where the two-body terms are
 
 \begin{align}
 \hat V_{en} &= -\sum_{i=1}^{N_e} \sum_{I=1}^{N_\text{atoms}}
-             \frac{Z_I}{|\mathbf r_i - \mathbf R_I|} ,  \\
+             \frac{Z_I}{|\mathbf r_i - \mathbf R_I|} ,  \\\
 \hat V_{nn} &= \phantom{-}\frac{1}{2} \sum_{I \neq J}
              \frac{Z_I Z_J}{|\mathbf R_I - \mathbf R_J|} .
 \end{align}
@@ -252,7 +252,7 @@ Only $\hat V_{en}$ and $\hat V_{nn}$ depend on $\mathbf R_I$:
 \begin{align}
 \frac{\partial \hat V_{en}}{\partial \mathbf R_I}
   &= \sum_{i=1}^{N_e}
-     \frac{Z_I (\mathbf r_i - \mathbf R_I)}{|\mathbf r_i - \mathbf R_I|^3} , \\
+     \frac{Z_I (\mathbf r_i - \mathbf R_I)}{|\mathbf r_i - \mathbf R_I|^3} , \\\
 \frac{\partial \hat V_{nn}}{\partial \mathbf R_I}
   &= -\sum_{J \neq I} \frac{Z_I Z_J (\mathbf R_I - \mathbf R_J)}{|\mathbf R_I - \mathbf R_J|^3} .
 \end{align}
@@ -368,12 +368,12 @@ gives
     C_{\mu i}\, C_{\nu i}\,
     \Bigg[
     \left\langle \frac{\partial \chi_\mu}{\partial \mathbf R_I} \bigg|
-         \hat h + 2\hat J - \hat K_\text{xc} \bigg| \chi_\nu \right\rangle \\
+         \hat h + 2\hat J - \hat K_\text{xc} \bigg| \chi_\nu \right\rangle \\\
 &\qquad\qquad\qquad\qquad
     + \left\langle \chi_\mu \bigg|
          \hat h + 2\hat J - \hat K_\text{xc} \bigg|
          \frac{\partial \chi_\nu}{\partial \mathbf R_I} \right\rangle
-    \Bigg] \\
+    \Bigg] \\\
 &\quad - 2 \sum_i^\text{occ} \varepsilon_i \sum_{\mu \in I} \sum_\nu
     C_{\mu i}\, C_{\nu i}\,
     \frac{\partial S_{\mu\nu}}{\partial \mathbf R_I} ,
@@ -661,12 +661,12 @@ h_{\mu\nu}^{(I)} &\equiv
    \left\langle \frac{\partial \chi_\mu}{\partial \mathbf R_I}
        \bigg| \hat h \bigg| \chi_\nu \right\rangle
    + \left\langle \chi_\mu \bigg| \hat h \bigg|
-       \frac{\partial \chi_\nu}{\partial \mathbf R_I} \right\rangle , \\
+       \frac{\partial \chi_\nu}{\partial \mathbf R_I} \right\rangle , \\\
 G_{\mu\nu}^{(I)} &\equiv
    \left\langle \frac{\partial \chi_\mu}{\partial \mathbf R_I}
        \bigg| 2\hat J - \hat K_\text{xc} \bigg| \chi_\nu \right\rangle
    + \left\langle \chi_\mu \bigg| 2\hat J - \hat K_\text{xc} \bigg|
-       \frac{\partial \chi_\nu}{\partial \mathbf R_I} \right\rangle , \\
+       \frac{\partial \chi_\nu}{\partial \mathbf R_I} \right\rangle , \\\
 S_{\mu\nu}^{(I)} &\equiv
    \frac{\partial S_{\mu\nu}}{\partial \mathbf R_I} .
 \end{align}
@@ -814,9 +814,9 @@ $\alpha_k$ is a *step length*.  Convergence is reached when
 
 \begin{equation}
 \label{eq:ch-09-opt-conv}
-\max_I \bigl| \mathbf F_I \bigr| \;<\; \text{F\_tol} ,
+\max_I \Bigl| \mathbf F_I \Bigr| \;<\; \text{F\_tol} ,
 \qquad
-\bigl| E^{(k+1)} - E^{(k)} \bigr| \;<\; \text{E\_tol} .
+\Bigl| E^{(k+1)} - E^{(k)} \Bigr| \;<\; \text{E\_tol} .
 \end{equation}
 
 Typical tolerances are
@@ -862,7 +862,7 @@ is available, the *Newton* step is
 
 \begin{equation}
 \label{eq:ch-09-newton}
-\mathbf p^{(k)} \;=\; -\bigl[\mathbf H^{(k)}\bigr]^{-1}\, \mathbf F^{(k)} .
+\mathbf p^{(k)} \;=\; -\Bigl[\mathbf H^{(k)}\Bigr]^{-1}\, \mathbf F^{(k)} .
 \end{equation}
 
 Newton's method converges **quadratically** in the neighbourhood
@@ -972,7 +972,7 @@ definite.  The solution of \eqref{eq:ch-09-trust} is
 
 \begin{equation}
 \label{eq:ch-09-trust-solution}
-\mathbf p^{(k)} \;=\; -\bigl[\mathbf B^{(k)} + \lambda_k \mathbf I\bigr]^{-1}\, \mathbf F^{(k)} ,
+\mathbf p^{(k)} \;=\; -\Bigl[\mathbf B^{(k)} + \lambda_k \mathbf I\Bigr]^{-1}\, \mathbf F^{(k)} ,
 \end{equation}
 
 where $\lambda_k \ge 0$ is a *Lagrange multiplier* chosen so that
@@ -1111,7 +1111,7 @@ Plug \eqref{eq:ch-09-bfgs-vectors} into \eqref{eq:ch-09-bfgs-ansatz}:
 \begin{align}
 \mathbf B^{(k+1)}
 &= \mathbf B^{(k)} + \mathbf B^{(k)} \mathbf s^{(k)} (\beta \mathbf y^{(k)})^\text{T}
-   + \beta \mathbf y^{(k)} (\mathbf B^{(k)} \mathbf s^{(k)})^\text{T}  \\
+   + \beta \mathbf y^{(k)} (\mathbf B^{(k)} \mathbf s^{(k)})^\text{T}  \\\
 &= \mathbf B^{(k)} + \beta\, \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
    + \beta\, \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} .
 \end{align}
@@ -1122,7 +1122,7 @@ Substitute $\beta = \frac{1}{2 a} - \frac{1}{2 b}$ and split:
 \mathbf B^{(k+1)}
 &= \mathbf B^{(k)}
    + \frac{1}{2 a}\, \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
-   + \frac{1}{2 a}\, \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \\
+   + \frac{1}{2 a}\, \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \\\
 &\quad - \frac{1}{2 b}\, \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
    - \frac{1}{2 b}\, \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} .
 \end{align}
@@ -1134,7 +1134,7 @@ Group the first two lines and the last two:
 &= \mathbf B^{(k)}
    + \frac{1}{\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}\,
      \Bigl[ \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
-          + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \Bigr] / 2 \\
+          + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \Bigr] / 2 \\\
 &\quad - \frac{1}{\mathbf y^{(k)\text{T}} \mathbf s^{(k)}}\,
      \Bigl[ \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
           + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \Bigr] / 2 .
@@ -1152,8 +1152,8 @@ its compact form:
           {\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}
    - \frac{\mathbf B^{(k)} \mathbf s^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)}}
           {\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}
-   + \frac{1}{2 a}\, \bigl[ \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
-                        + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \bigr] \\
+   + \frac{1}{2 a}\, \Bigl[ \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
+                        + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \Bigr] \\\
 &\quad - \frac{1}{\mathbf y^{(k)\text{T}} \mathbf s^{(k)}}\,
      \Bigl[ \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
           + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \Bigr] / 2
@@ -1282,14 +1282,14 @@ Hessian is
 \begin{equation}
 \label{eq:ch-09-lbfgs-loop}
 \begin{aligned}
-\mathbf q &\leftarrow -\mathbf F^{(k)} , \\
-\text{for } i &= k, k-1, \dots, k-m+1: \\
-&\quad \alpha_i \leftarrow \rho_i\, \mathbf s^{(i)\text{T}} \mathbf q , \\
-&\quad \mathbf q \leftarrow \mathbf q - \alpha_i \mathbf y^{(i)} , \\
-\mathbf r &\leftarrow \gamma_k \mathbf q , \\
-\text{for } i &= k-m+1, \dots, k: \\
-&\quad \beta \leftarrow \rho_i\, \mathbf y^{(i)\text{T}} \mathbf r , \\
-&\quad \mathbf r \leftarrow \mathbf r + (\alpha_i - \beta) \mathbf s^{(i)} , \\
+\mathbf q &\leftarrow -\mathbf F^{(k)} , \\\
+\text{for } i &= k, k-1, \dots, k-m+1: \\\
+&\quad \alpha_i \leftarrow \rho_i\, \mathbf s^{(i)\text{T}} \mathbf q , \\\
+&\quad \mathbf q \leftarrow \mathbf q - \alpha_i \mathbf y^{(i)} , \\\
+\mathbf r &\leftarrow \gamma_k \mathbf q , \\\
+\text{for } i &= k-m+1, \dots, k: \\\
+&\quad \beta \leftarrow \rho_i\, \mathbf y^{(i)\text{T}} \mathbf r , \\\
+&\quad \mathbf r \leftarrow \mathbf r + (\alpha_i - \beta) \mathbf s^{(i)} , \\\
 \mathbf p^{(k)} &\leftarrow \mathbf r .
 \end{aligned}
 \end{equation}
@@ -1433,7 +1433,7 @@ target pressure).
 
 The optimisation is the natural extension of \eqref{eq:ch-09-opt-loop}:
 the state vector now includes both
-$\{\mathbf R_I\}_{I=1}^{N_\text{atoms}}$ *and* the cell
+$\{\mathbf R_I\}_{I=1}^{N_\text{atoms}$ *and* the cell
 parameters $\{\mathbf a_i\}_{i=1}^{3}$ (or, equivalently, the
 six independent components of the strain tensor in a triclinic
 cell).  The BFGS / LBFGS machinery of
@@ -1590,7 +1590,7 @@ z-components are
 \begin{align}
 F_{A_z}^\text{HF} &=
    -Z_H \int \rho(\mathbf r)\, \frac{z + R/2}{|\mathbf r - \mathbf A|^3}\, d\mathbf r
-   \;-\; \frac{Z_H^2\,(-R)}{R^3} , \\
+   \;-\; \frac{Z_H^2\,(-R)}{R^3} , \\\
 F_{B_z}^\text{HF} &=
    -Z_H \int \rho(\mathbf r)\, \frac{z - R/2}{|\mathbf r - \mathbf B|^3}\, d\mathbf r
    \;-\; \frac{Z_H^2\,(R)}{R^3} .
@@ -1963,8 +1963,8 @@ By the matrix determinant lemma,
 
 $$
 \det \mathbf B^{(k+1)} \;=\; \det \mathbf B^{(k)} \cdot
-   \bigl( 1 - \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)} / a \bigr)
-   \cdot \bigl( 1 + \mathbf y^{(k)\text{T}} \mathbf B^{(k)\,-1} \mathbf y^{(k)} / b \bigr) .
+   \Bigl( 1 - \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)} / a \Bigr)
+   \cdot \Bigl( 1 + \mathbf y^{(k)\text{T}} \mathbf B^{(k)\,-1} \mathbf y^{(k)} / b \Bigr) .
 $$
 
 The first bracket is $0$ (by definition of $a$).  For the

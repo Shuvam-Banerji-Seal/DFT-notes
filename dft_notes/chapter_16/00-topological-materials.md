@@ -635,11 +635,11 @@ The four terms in detail:
 \begin{align}
 \label{eq:ch-16-kane-mele-terms}
 \hat H_0 &= -t \sum_{\langle i j \rangle, \sigma} c^\dagger_{i\sigma} c_{j\sigma} ,
-\\[4pt]
+\\\\[4pt]
 \hat H_\text{SO} &= i \lambda_\text{SO} \sum_{\langle\langle i j \rangle\rangle, \sigma} \nu_{ij}\, c^\dagger_{i\sigma} \sigma^z_{\sigma\sigma'}\, c_{j\sigma'} ,
-\\[4pt]
+\\\\[4pt]
 \hat H_R &= i \lambda_R \sum_{\langle i j \rangle, \sigma\sigma'} c^\dagger_{i\sigma} \Bigl( \mathbf s_{\sigma\sigma'} \times \mathbf d_{ij} \Bigr)_z\, c_{j\sigma'} ,
-\\[4pt]
+\\\\[4pt]
 \hat H_\text{staggered} &= \lambda_v \sum_{i, \sigma} \nu_i\, c^\dagger_{i\sigma} c_{i\sigma} .
 \end{align}
 
@@ -698,7 +698,7 @@ with spin degeneracy giving a four-band model:
 
 \begin{equation}
 \label{eq:ch-16-bhz}
-H(\mathbf k) \;=\; \begin{pmatrix} h(\mathbf k) & 0 \\ 0 & h^*(-\mathbf k) \end{pmatrix} ,
+H(\mathbf k) \;=\; \begin{pmatrix} h(\mathbf k) & 0 \\\\ 0 & h^*(-\mathbf k) \end{pmatrix} ,
 \qquad
 h(\mathbf k) \;=\; \mathbf d(\mathbf k) \cdot \boldsymbol \sigma ,
 \end{equation}
@@ -711,7 +711,7 @@ $H(\mathbf k)$ is TR-symmetric), and
 \begin{align}
 \label{eq:ch-16-bhz-d}
 d_a(\mathbf k) &= A \sin k_a , \quad a = x, y ,
-\\
+\\\
 d_z(\mathbf k) &= M - B (k_x^2 + k_y^2) .
 \end{align}
 
@@ -827,7 +827,7 @@ The minimal four-band effective Hamiltonian at $\Gamma$ is
 
 \begin{equation}
 \label{eq:ch-16-bi2se3-hamiltonian}
-H_\text{eff}(\mathbf k) \;=\; \epsilon_0(\mathbf k) \mathbb 1_{4} + \begin{pmatrix} M(\mathbf k) & A_1 k_z & 0 & A_2 k_- \\ A_1 k_z & -M(\mathbf k) & A_2 k_- & 0 \\ 0 & A_2 k_+ & M(\mathbf k) & -A_1 k_z \\ A_2 k_+ & 0 & -A_1 k_z & -M(\mathbf k) \end{pmatrix} ,
+H_\text{eff}(\mathbf k) \;=\; \epsilon_0(\mathbf k) \mathbb 1_{4} + \begin{pmatrix} M(\mathbf k) & A_1 k_z & 0 & A_2 k_- \\\\ A_1 k_z & -M(\mathbf k) & A_2 k_- & 0 \\\\ 0 & A_2 k_+ & M(\mathbf k) & -A_1 k_z \\\\ A_2 k_+ & 0 & -A_1 k_z & -M(\mathbf k) \end{pmatrix} ,
 \end{equation}
 
 with $M(\mathbf k) = M_0 - B_1 k_z^2 - B_2 (k_x^2 + k_y^2)$,
@@ -911,7 +911,7 @@ the Fermi energy, with the low-energy Hamiltonian
 
 \begin{equation}
 \label{eq:ch-16-dirac-hamiltonian}
-H_\text{Dirac}(\mathbf q) \;=\; \begin{pmatrix} m & v \, \mathbf q \cdot \boldsymbol \sigma \\ v\, \mathbf q \cdot \boldsymbol \sigma & -m \end{pmatrix} ,
+H_\text{Dirac}(\mathbf q) \;=\; \begin{pmatrix} m & v \, \mathbf q \cdot \boldsymbol \sigma \\\\ v\, \mathbf q \cdot \boldsymbol \sigma & -m \end{pmatrix} ,
 \end{equation}
 
 a 4×4 matrix in the basis of the two Kramers pairs. The
@@ -1517,7 +1517,7 @@ $\{|A,\uparrow\rangle, |B,\uparrow\rangle\}$, is
 
 \begin{equation}
 \label{eq:ch-16-km-up}
-H_\uparrow(\mathbf k) \;=\; \begin{pmatrix} h_\text{so}(\mathbf k) & -t\, f(\mathbf k) \\ -t\, f^*(\mathbf k) & -h_\text{so}(\mathbf k) \end{pmatrix} ,
+H_\uparrow(\mathbf k) \;=\; \begin{pmatrix} h_\text{so}(\mathbf k) & -t\, f(\mathbf k) \\\\ -t\, f^*(\mathbf k) & -h_\text{so}(\mathbf k) \end{pmatrix} ,
 \end{equation}
 
 where
@@ -1740,7 +1740,7 @@ parameterisation of a spin-1/2 state on a cone, the
 ground-state eigenvector along $\hat{\mathbf n}$ is
 
 $$
-|\psi_0(\phi)\rangle \;=\; \begin{pmatrix} -\sin(\theta/2)\, e^{-i\phi} \\ \cos(\theta/2) \end{pmatrix} .
+|\psi_0(\phi)\rangle \;=\; \begin{pmatrix} -\sin(\theta/2)\, e^{-i\phi} \\\\ \cos(\theta/2) \end{pmatrix} .
 $$
 
 This is a *normalised* state with $\langle \psi_0 | \psi_0
@@ -1754,13 +1754,13 @@ the azimuthal phase $e^{-i\phi}$.
 $|\psi_0(\phi)\rangle$ with respect to $\phi$:
 
 $$
-\partial_\phi |\psi_0(\phi)\rangle \;=\; \begin{pmatrix} i \sin(\theta/2)\, e^{-i\phi} \\ 0 \end{pmatrix} .
+\partial_\phi |\psi_0(\phi)\rangle \;=\; \begin{pmatrix} i \sin(\theta/2)\, e^{-i\phi} \\\\ 0 \end{pmatrix} .
 $$
 
 Form the inner product with $|\psi_0(\phi)\rangle$:
 
 $$
-\langle \psi_0 | \partial_\phi \psi_0 \rangle \;=\; \begin{pmatrix} -\sin(\theta/2)\, e^{i\phi} & \cos(\theta/2) \end{pmatrix} \begin{pmatrix} i \sin(\theta/2)\, e^{-i\phi} \\ 0 \end{pmatrix} \;=\; -i \sin^2(\theta/2) .
+\langle \psi_0 | \partial_\phi \psi_0 \rangle \;=\; \begin{pmatrix} -\sin(\theta/2)\, e^{i\phi} & \cos(\theta/2) \end{pmatrix} \begin{pmatrix} i \sin(\theta/2)\, e^{-i\phi} \\\\ 0 \end{pmatrix} \;=\; -i \sin^2(\theta/2) .
 $$
 
 The Berry connection is
@@ -1945,7 +1945,7 @@ $\Theta = i \sigma_y K$ in each block.
 $\mathbf k$, the $h$ block has two eigenvectors
 
 $$
-|u_{\mathbf k}^\pm\rangle \;=\; \frac{1}{\sqrt{2 d(d \mp d_z)}} \begin{pmatrix} \pm (d_z \mp d) \\ d_x + i d_y \end{pmatrix} ,
+|u_{\mathbf k}^\pm\rangle \;=\; \frac{1}{\sqrt{2 d(d \mp d_z)}} \begin{pmatrix} \pm (d_z \mp d) \\\\ d_x + i d_y \end{pmatrix} ,
 $$
 
 where $d = |\mathbf d| = \sqrt{d_x^2 + d_y^2 + d_z^2}$.
@@ -1969,18 +1969,18 @@ $M > 0$ and we are at a TRIM with $n_1 = n_2 = 0$, so
 $d_z = M > 0$):
 
 $$
-|u_{\Lambda_a}^-\rangle \;=\; \begin{pmatrix} 0 \\ 1 \end{pmatrix} ,
+|u_{\Lambda_a}^-\rangle \;=\; \begin{pmatrix} 0 \\\\ 1 \end{pmatrix} ,
 \qquad
-|u_{\Lambda_a}^+\rangle \;=\; \begin{pmatrix} 1 \\ 0 \end{pmatrix} .
+|u_{\Lambda_a}^+\rangle \;=\; \begin{pmatrix} 1 \\\\ 0 \end{pmatrix} .
 $$
 
 For $d_z < 0$ (the other TRIM, with
 $n_1^2 + n_2^2 = 1$ or $2$):
 
 $$
-|u_{\Lambda_a}^-\rangle \;=\; \begin{pmatrix} 1 \\ 0 \end{pmatrix} ,
+|u_{\Lambda_a}^-\rangle \;=\; \begin{pmatrix} 1 \\\\ 0 \end{pmatrix} ,
 \qquad
-|u_{\Lambda_a}^+\rangle \;=\; \begin{pmatrix} 0 \\ 1 \end{pmatrix} .
+|u_{\Lambda_a}^+\rangle \;=\; \begin{pmatrix} 0 \\\\ 1 \end{pmatrix} .
 $$
 
 The sewing matrix at a TRIM is
@@ -1991,7 +1991,7 @@ eigenvectors are simple, and the TR operator $\Theta = i
 basis) and complex-conjugates the coefficients, we have
 
 $$
-\Theta |u_{\Lambda_a}^-\rangle \;=\; \Theta \begin{pmatrix} \alpha \\ \beta \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \alpha^* \\ \beta^* \end{pmatrix} \;=\; i \begin{pmatrix} \beta^* \\ -\alpha^* \end{pmatrix} .
+\Theta |u_{\Lambda_a}^-\rangle \;=\; \Theta \begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \alpha^* \\\\ \beta^* \end{pmatrix} \;=\; i \begin{pmatrix} \beta^* \\\\ -\alpha^* \end{pmatrix} .
 $$
 
 At the TRIM, $\alpha, \beta$ are real, so
@@ -2020,7 +2020,7 @@ model the four-band model is block-diagonal, and each
 block is one Kramers pair):
 
 $$
-w(\Lambda_a) \;=\; \begin{cases} +i & \text{if } d_z(\Lambda_a) > 0 \\ -i & \text{if } d_z(\Lambda_a) < 0 \end{cases} .
+w(\Lambda_a) \;=\; \begin{cases} +i & \text{if } d_z(\Lambda_a) > 0 \\\\ -i & \text{if } d_z(\Lambda_a) < 0 \end{cases} .
 $$
 
 **3. Pfaffian and determinant.** For a $1 \times 1$
@@ -2459,7 +2459,7 @@ Hughes, and Zhang, 2006, eq. (1), p. 1757]:
 \begin{equation}
 \label{eq:ch-16-bhz-orig}
 \boxed{
-H_\text{eff}(k_x, k_y) \;=\; \begin{pmatrix} h(\mathbf k) & 0 \\ 0 & h^*(-\mathbf k) \end{pmatrix} , \qquad h(\mathbf k) \;=\; \mathbf d(\mathbf k) \cdot \boldsymbol \sigma .
+H_\text{eff}(k_x, k_y) \;=\; \begin{pmatrix} h(\mathbf k) & 0 \\\\ 0 & h^*(-\mathbf k) \end{pmatrix} , \qquad h(\mathbf k) \;=\; \mathbf d(\mathbf k) \cdot \boldsymbol \sigma .
 }
 \end{equation}
 

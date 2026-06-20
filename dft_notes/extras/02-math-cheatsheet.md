@@ -57,7 +57,7 @@ $L^2(\mathbb R^3)$ (for the continuous Hilbert space).
 \label{eq:ch-extra-inner}
 \langle u \rvert v \rangle \;\equiv\;
 \begin{cases}
-\displaystyle \sum_{i=1}^{n} u_i^* v_i & \text{in } \mathbb C^n, \\[6pt]
+\displaystyle \sum_{i=1}^{n} u_i^* v_i & \text{in } \mathbb C^n, \\\\[6pt]
 \displaystyle \int u^*(\mathbf r)\, v(\mathbf r)\, d\mathbf r & \text{in } L^2(\mathbb R^3).
 \end{cases}
 \end{equation}
@@ -761,7 +761,7 @@ and in the **Gaussian smearing** occupation function
 
 \begin{equation}
 \label{eq:ch-extra-kron}
-\delta_{ij} \;=\; \begin{cases} 1, & i = j, \\ 0, & i \ne j. \end{cases}
+\delta_{ij} \;=\; \begin{cases} 1, & i = j, \\\\ 0, & i \ne j. \end{cases}
 \end{equation}
 
 The **completeness** of an orthonormal basis is
@@ -780,8 +780,8 @@ antisymmetric in its three indices:
 \label{eq:ch-extra-levicivita}
 \epsilon_{ijk} \;=\;
 \begin{cases}
-+1 & \text{even permutation of } (1, 2, 3), \\
--1 & \text{odd permutation of } (1, 2, 3), \\
++1 & \text{even permutation of } (1, 2, 3), \\\
+-1 & \text{odd permutation of } (1, 2, 3), \\\
 0 & \text{otherwise}.
 \end{cases}
 \end{equation}

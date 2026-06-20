@@ -905,7 +905,7 @@ the matrix
 
 \begin{equation}
 \label{eq:ch-00-2x2}
-\mathbf A \;=\; \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix} .
+\mathbf A \;=\; \begin{pmatrix} 2 & 1 \\\\ 1 & 2 \end{pmatrix} .
 \end{equation}
 
 1. Write out the characteristic polynomial
@@ -929,7 +929,7 @@ minutes.  If you cannot, revisit the *Linear algebra* bullet in
 
 $$
 \det(\mathbf A - \lambda \mathbf 1)
-= \det\begin{pmatrix} 2 - \lambda & 1 \\ 1 & 2 - \lambda \end{pmatrix}
+= \det\begin{pmatrix} 2 - \lambda & 1 \\\\ 1 & 2 - \lambda \end{pmatrix}
 = (2 - \lambda)^2 - 1 .
 $$
 
@@ -944,7 +944,7 @@ $$
 $(\mathbf A - \mathbf 1)\mathbf v_1 = 0$, i.e.
 
 $$
-\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = 0
+\begin{pmatrix} 1 & 1 \\\\ 1 & 1 \end{pmatrix} \begin{pmatrix} x \\\\ y \end{pmatrix} = 0
 \;\Longrightarrow\; x + y = 0 .
 $$
 
@@ -955,7 +955,7 @@ For $\lambda_2 = 3$, the eigenvector satisfies
 $(\mathbf A - 3 \mathbf 1)\mathbf v_2 = 0$, i.e.
 
 $$
-\begin{pmatrix} -1 & 1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = 0
+\begin{pmatrix} -1 & 1 \\\\ 1 & -1 \end{pmatrix} \begin{pmatrix} x \\\\ y \end{pmatrix} = 0
 \;\Longrightarrow\; -x + y = 0 .
 $$
 
@@ -971,9 +971,9 @@ The spectral decomposition is
 
 $$
 \mathbf A = \hat{\mathbf v}_1 \hat{\mathbf v}_1^\dagger + 3\, \hat{\mathbf v}_2 \hat{\mathbf v}_2^\dagger
-= \frac{1}{2}\begin{pmatrix} 1 \\ -1 \end{pmatrix}(1, -1)
-+ \frac{3}{2}\begin{pmatrix} 1 \\ 1 \end{pmatrix}(1, 1)
-= \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix} . \quad\blacksquare
+= \frac{1}{2}\begin{pmatrix} 1 \\\\ -1 \end{pmatrix}(1, -1)
++ \frac{3}{2}\begin{pmatrix} 1 \\\\ 1 \end{pmatrix}(1, 1)
+= \begin{pmatrix} 2 & 1 \\\\ 1 & 2 \end{pmatrix} . \quad\blacksquare
 $$
 
 </details>

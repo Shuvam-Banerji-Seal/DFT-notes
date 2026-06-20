@@ -609,7 +609,7 @@ routinely computed by Gaussian integral codes.  Substituting
 \begin{align}
 F_{\mu\nu}
 &\;=\; \langle \chi_\mu \rvert \hat h + \hat J[\rho] - \hat K[\rho] \rvert \chi_\nu \rangle
-\notag \\
+\notag \\\
 &\;=\; \underbrace{\langle \chi_\mu \rvert \hat h \rvert \chi_\nu \rangle}_{h_{\mu\nu}}
 \;+\; \underbrace{\langle \chi_\mu \rvert \hat J[\rho] \rvert \chi_\nu \rangle}_{J_{\mu\nu}}
 \;-\; \underbrace{\langle \chi_\mu \rvert \hat K[\rho] \rvert \chi_\nu \rangle}_{K_{\mu\nu}} .
@@ -641,7 +641,7 @@ J_{\mu\nu}
 \chi_\mu^*(\mathbf r_1)\, \chi_\nu(\mathbf r_1)\,
 \frac{\rho(\mathbf r_2)}{|\mathbf r_1 - \mathbf r_2|}\,
 d\mathbf r_1\, d\mathbf r_2
-\notag \\
+\notag \\\
 &\;=\; \sum_{\rho\sigma} P_{\rho\sigma}
 \underbrace{\int\!\!\!\int
 \chi_\mu^*(\mathbf r_1)\, \chi_\nu(\mathbf r_1)\,
@@ -1115,7 +1115,7 @@ with
 
 \begin{align}
 \rho^\alpha(\mathbf r) &\;=\; \sum_{i=1}^{N_\alpha} |\phi_i^\alpha(\mathbf r)|^2 ,
-\notag \\
+\notag \\\
 \rho^\beta(\mathbf r) &\;=\; \sum_{i=1}^{N_\beta} |\phi_i^\beta(\mathbf r)|^2 .
 \label{eq:ch-03-rho-spin}
 \end{align}
@@ -1546,14 +1546,14 @@ $(m+1) \times (m+1)$ **DIIS linear system**
 
 \begin{equation}
 \label{eq:ch-03-diis-system}
-\begin{pmatrix} B_{11} & B_{12} & \cdots & B_{1m} & 1 \\
-                B_{21} & B_{22} & \cdots & B_{2m} & 1 \\
-                \vdots & \vdots & \ddots & \vdots & \vdots \\
-                B_{m1} & B_{m2} & \cdots & B_{mm} & 1 \\
+\begin{pmatrix} B_{11} & B_{12} & \cdots & B_{1m} & 1 \\\
+                B_{21} & B_{22} & \cdots & B_{2m} & 1 \\\
+                \vdots & \vdots & \ddots & \vdots & \vdots \\\
+                B_{m1} & B_{m2} & \cdots & B_{mm} & 1 \\\
                 1      & 1      & \cdots & 1      & 0 \end{pmatrix}
-\begin{pmatrix} c_1 \\ c_2 \\ \vdots \\ c_m \\ \lambda \end{pmatrix}
+\begin{pmatrix} c_1 \\\\ c_2 \\\\ \vdots \\\\ c_m \\\\ \lambda \end{pmatrix}
 \;=\;
-\begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ 1 \end{pmatrix} .
+\begin{pmatrix} 0 \\\\ 0 \\\\ \vdots \\\\ 0 \\\\ 1 \end{pmatrix} .
 \end{equation}
 
 Solving for $\mathbf c$ and substituting into
@@ -1902,7 +1902,7 @@ this is the natural choice).  The resulting UHF energy is
 \begin{align}
 E_\text{HF}(N-1)
 &\;=\; 2 \sum_{i \ne a} h_{ii} \;+\; h_{aa}
-\;+\; \sum_{i,j \ne a} \Bigl( 2 J_{ij} - K_{ij} \Bigr) \notag \\
+\;+\; \sum_{i,j \ne a} \Bigl( 2 J_{ij} - K_{ij} \Bigr) \notag \\\
 &\quad\;+\; \sum_{j \ne a} \Bigl( 2 J_{aj} - K_{aj} \Bigr)
 \;-\; \sum_{j \ne a} K_{ja} .
 \end{align}
@@ -1921,9 +1921,9 @@ closed-shell MO basis,
 \begin{align}
 I_a
 &\;=\; E_\text{HF}(N-1) - E_\text{HF}(N)
-\notag \\
+\notag \\\
 &\;=\; -h_{aa} \;-\; \sum_{j} \Bigl( 2 J_{aj} - K_{aj} \Bigr)
-\notag \\
+\notag \\\
 &\;=\; -\varepsilon_a .
 \end{align}
 
@@ -2366,9 +2366,9 @@ integrals,
 \begin{align}
 E_\text{HF}(N-1)
 &\;=\; 2 \sum_{i \ne a} h_{ii} \;+\; h_{aa}
-\;+\; \sum_{i,j \ne a} (2 J_{ij} - K_{ij}) \notag \\
+\;+\; \sum_{i,j \ne a} (2 J_{ij} - K_{ij}) \notag \\\
 &\quad\;+\; 2 \sum_{j \ne a} J_{aj}
-\;-\; \sum_{j \ne a} K_{aj} \;-\; \sum_{j \ne a} K_{ja} \notag \\
+\;-\; \sum_{j \ne a} K_{aj} \;-\; \sum_{j \ne a} K_{ja} \notag \\\
 &\;=\; 2 \sum_{i \ne a} h_{ii} \;+\; h_{aa}
 \;+\; \sum_{i,j \ne a} (2 J_{ij} - K_{ij})
 \;+\; \sum_{j \ne a} (2 J_{aj} - K_{aj}) .
@@ -2381,9 +2381,9 @@ permutational symmetry of the ERI tensor.)
 
 \begin{align}
 I_a
-&\;=\; E_\text{HF}(N-1) - E_\text{HF}(N) \notag \\
-&\;=\; -h_{aa} \;-\; \sum_j (2 J_{aj} - K_{aj}) \notag \\
-&\;=\; -\Bigl( h_{aa} + \sum_j (2 J_{aj} - K_{aj}) \Bigr) \notag \\
+&\;=\; E_\text{HF}(N-1) - E_\text{HF}(N) \notag \\\
+&\;=\; -h_{aa} \;-\; \sum_j (2 J_{aj} - K_{aj}) \notag \\\
+&\;=\; -\Bigl( h_{aa} + \sum_j (2 J_{aj} - K_{aj}) \Bigr) \notag \\\
 &\;=\; -\varepsilon_a ,
 \end{align*}
 

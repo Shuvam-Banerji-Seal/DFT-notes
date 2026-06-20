@@ -124,20 +124,20 @@ production calculation.
 \begin{equation}
 \label{eq:ch-14-claim}
 \boxed{\;
-\begin{array}{lccc}
+\begin{array}{|lccc|}
 \hline
-\text{Method} & \text{Cost} & \text{Error} & \text{When} \\
-             &            & (\text{kcal mol}^{-1}) & \\
+\text{Method} & \text{Cost} & \text{Error} & \text{When} \\\
+             &            & (\text{kcal mol}^{-1}) & \\\
 \hline
-\text{HF}                  & K^4   & 100\!-\!300  & \text{orbitals, qualitative} \\
-\text{MP2}                 & K^5   & 5\!-\!15     & \text{large systems, dispersion} \\
-\text{MP3}                 & K^6   & 3\!-\!8      & \text{rare; not size-extensive in open-shell} \\
-\text{CISD}                & K^6   & 3\!-\!10     & \text{not size-extensive — see § 14.3.4} \\
-\text{MP4 (SDQ)}           & K^6   & 2\!-\!5      & \text{composite methods G1/G2} \\
-\text{CCSD}                & K^6   & 1\!-\!3      & \text{small to medium molecules} \\
-\text{CCSD(T)}             & K^7   & 0.1\!-\!0.5  & \text{gold standard} \\
-\text{CCSDT}               & K^8   & < 0.1        & \text{rare; multi-reference problematic} \\
-\text{FCI}                 & K^N   & 0            & \text{exact in a basis; benchmark only} \\
+\text{HF}                  & K^4   & 100\!-\!300  & \text{orbitals, qualitative} \\\
+\text{MP2}                 & K^5   & 5\!-\!15     & \text{large systems, dispersion} \\\
+\text{MP3}                 & K^6   & 3\!-\!8      & \text{rare; not size-extensive in open-shell} \\\
+\text{CISD}                & K^6   & 3\!-\!10     & \text{not size-extensive — see § 14.3.4} \\\
+\text{MP4 (SDQ)}           & K^6   & 2\!-\!5      & \text{composite methods G1/G2} \\\
+\text{CCSD}                & K^6   & 1\!-\!3      & \text{small to medium molecules} \\\
+\text{CCSD(T)}             & K^7   & 0.1\!-\!0.5  & \text{gold standard} \\\
+\text{CCSDT}               & K^8   & < 0.1        & \text{rare; multi-reference problematic} \\\
+\text{FCI}                 & K^N   & 0            & \text{exact in a basis; benchmark only} \\\
 \hline
 \end{array}
 \;}
@@ -301,7 +301,7 @@ Subtracting \eqref{eq:ch-14-mp-e0-det} from
 order** energies,
 
 \begin{align}
-E^{(0)} + E^{(1)} &\;=\; \langle \Phi_0 \rvert \hat F \rvert \Phi_0 \rangle + \langle \Phi_0 \rvert \hat H \rvert \Phi_0 \rangle - \langle \Phi_0 \rvert \hat F \rvert \Phi_0 \rangle \notag \\
+E^{(0)} + E^{(1)} &\;=\; \langle \Phi_0 \rvert \hat F \rvert \Phi_0 \rangle + \langle \Phi_0 \rvert \hat H \rvert \Phi_0 \rangle - \langle \Phi_0 \rvert \hat F \rvert \Phi_0 \rangle \notag \\\
 &\;=\; \langle \Phi_0 \rvert \hat H \rvert \Phi_0 \rangle \;\equiv\; E_\text{HF} . \label{eq:ch-14-mp-e01}
 \end{align}
 
@@ -1409,8 +1409,8 @@ The Hückel Hamiltonian is
 \label{eq:ch-14-huckel}
 H^\text{Hückel}_{ij} \;=\;
 \begin{cases}
-\alpha & \text{if } i = j, \\
-\beta & \text{if } (i, j) \text{ is a bond}, \\
+\alpha & \text{if } i = j, \\\
+\beta & \text{if } (i, j) \text{ is a bond}, \\\
 0 & \text{otherwise}.
 \end{cases}
 \end{equation}
@@ -1848,27 +1848,27 @@ choice.
 \begin{equation}
 \label{eq:ch-14-zoo}
 \boxed{\;
-\begin{array}{lccp{5.5cm}}
+\begin{array}{|lccp{5.5cm|}}
 \hline
-\text{Method} & \text{Scaling} & \text{Accuracy} & \text{When} \\
+\text{Method} & \text{Scaling} & \text{Accuracy} & \text{When} \\\
 \hline
-\text{HF}                  & K^4   & 100\!-\!300  & \text{qualitative orbitals, geometries} \\
-\text{MP2}                 & K^5   & 5\!-\!15     & \text{large systems, dispersion-dominated} \\
-\text{MP3}                 & K^6   & 3\!-\!8      & \text{rare; mostly in composite methods} \\
-\text{CISD}                & K^6   & 3\!-\!10     & \text{not size-extensive — use CCSD instead} \\
-\text{MP4(SDTQ)}           & K^7   & 2\!-\!5      & \text{composite methods G1, G2} \\
-\text{CCSD}                & K^6   & 1\!-\!3      & \text{small to medium molecules} \\
-\text{CCSD(T)}             & K^7   & 0.1\!-\!0.5  & \text{gold standard; default} \\
-\text{CCSDT}               & K^8   & 0.05\!-\!0.2 & \text{benchmark on small systems} \\
-\text{CCSDTQ}              & K^{10}& 0.01         & \text{reference only} \\
-\text{CASSCF}              & D_\text{act}^2  & 5\!-\!20     & \text{bond breaking, diradicals, multiplets} \\
-\text{CASPT2}              & D_\text{act} K^4 & 1\!-\!3    & \text{multireference with dynamic correlation} \\
-\text{NEVPT2}              & D_\text{act} K^4 & 1\!-\!3    & \text{multireference, intruder-state-free} \\
-\text{Selected CI}         & D_\text{act}     & 0.1        & \text{benchmark, FCI solver} \\
-\text{DFT (GGA)}           & K^3   & 3\!-\!10     & \text{large systems, solids} \\
-\text{DFT (hybrid)}        & K^4   & 1\!-\!3      & \text{medium systems, thermochemistry} \\
-\text{Semiempirical (PM7)} & K^2   & 3\!-\!10     & \text{conformational search, screening} \\
-\text{DFTB3}               & K^3   & 3\!-\!10     & \text{molecular dynamics, millions of atoms} \\
+\text{HF}                  & K^4   & 100\!-\!300  & \text{qualitative orbitals, geometries} \\\
+\text{MP2}                 & K^5   & 5\!-\!15     & \text{large systems, dispersion-dominated} \\\
+\text{MP3}                 & K^6   & 3\!-\!8      & \text{rare; mostly in composite methods} \\\
+\text{CISD}                & K^6   & 3\!-\!10     & \text{not size-extensive — use CCSD instead} \\\
+\text{MP4(SDTQ)}           & K^7   & 2\!-\!5      & \text{composite methods G1, G2} \\\
+\text{CCSD}                & K^6   & 1\!-\!3      & \text{small to medium molecules} \\\
+\text{CCSD(T)}             & K^7   & 0.1\!-\!0.5  & \text{gold standard; default} \\\
+\text{CCSDT}               & K^8   & 0.05\!-\!0.2 & \text{benchmark on small systems} \\\
+\text{CCSDTQ}              & K^{10}& 0.01         & \text{reference only} \\\
+\text{CASSCF}              & D_\text{act}^2  & 5\!-\!20     & \text{bond breaking, diradicals, multiplets} \\\
+\text{CASPT2}              & D_\text{act} K^4 & 1\!-\!3    & \text{multireference with dynamic correlation} \\\
+\text{NEVPT2}              & D_\text{act} K^4 & 1\!-\!3    & \text{multireference, intruder-state-free} \\\
+\text{Selected CI}         & D_\text{act}     & 0.1        & \text{benchmark, FCI solver} \\\
+\text{DFT (GGA)}           & K^3   & 3\!-\!10     & \text{large systems, solids} \\\
+\text{DFT (hybrid)}        & K^4   & 1\!-\!3      & \text{medium systems, thermochemistry} \\\
+\text{Semiempirical (PM7)} & K^2   & 3\!-\!10     & \text{conformational search, screening} \\\
+\text{DFTB3}               & K^3   & 3\!-\!10     & \text{molecular dynamics, millions of atoms} \\\
 \hline
 \end{array}
 \;}
@@ -2077,7 +2077,7 @@ E_\text{HF}(\text{H}_2\text{O}) \;=\; -76.024\,547\,E_h . \label{eq:ch-14-h2o-h2
 The HF atomisation energy is therefore
 
 \begin{align}
-D_e^\text{HF/cc-pVDZ} &\;=\; (-74.778\,451) + 2 (-0.499\,278) - (-76.024\,547) \notag \\
+D_e^\text{HF/cc-pVDZ} &\;=\; (-74.778\,451) + 2 (-0.499\,278) - (-76.024\,547) \notag \\\
 &\;=\; 0.247\,540\,E_h \;\approx\; 155.4\,\text{kcal mol}^{-1} . \label{eq:ch-14-h2o-dhf}
 \end{align}
 
@@ -2096,8 +2096,8 @@ energy's correlation contribution — is *huge*.
 The MP2 atomisation energy is
 
 \begin{align}
-D_e^\text{MP2/cc-pVDZ} &\;=\; D_e^\text{HF/cc-pVDZ} + \Delta E_\text{MP2, corr} \notag \\
-&\;=\; 0.247\,540 + 0.215\,864 \notag \\
+D_e^\text{MP2/cc-pVDZ} &\;=\; D_e^\text{HF/cc-pVDZ} + \Delta E_\text{MP2, corr} \notag \\\
+&\;=\; 0.247\,540 + 0.215\,864 \notag \\\
 &\;=\; 0.463\,404\,E_h \;\approx\; 290.8\,\text{kcal mol}^{-1} . \label{eq:ch-14-h2o-dmp2}
 \end{align}
 
@@ -2116,8 +2116,8 @@ atomic and molecular MP2 energies is
 The CCSD(T) atomisation energy is
 
 \begin{align}
-D_e^\text{CCSD(T)/cc-pVDZ} &\;=\; D_e^\text{HF/cc-pVDZ} + \Delta E_\text{CCSD(T), corr} \notag \\
-&\;=\; 0.247\,540 + 0.236\,358 \notag \\
+D_e^\text{CCSD(T)/cc-pVDZ} &\;=\; D_e^\text{HF/cc-pVDZ} + \Delta E_\text{CCSD(T), corr} \notag \\\
+&\;=\; 0.247\,540 + 0.236\,358 \notag \\\
 &\;=\; 0.483\,898\,E_h \;\approx\; 303.7\,\text{kcal mol}^{-1} . \label{eq:ch-14-h2o-dccsdt}
 \end{align}
 
@@ -2313,7 +2313,7 @@ $2 \varepsilon_2 - 2 \varepsilon_1 = 2(0.670) - 2(-0.578) = 2.496\,E_h$.
 **Step 3 — assemble the MP2 energy.**
 
 \begin{align}
-E_\text{MP2} &\;=\; - \frac{(0.236)^2}{2.496} \;=\; -0.0223\,E_h , \notag \\
+E_\text{MP2} &\;=\; - \frac{(0.236)^2}{2.496} \;=\; -0.0223\,E_h , \notag \\\
 E_\text{MP2}^\text{STO-3G} &\;=\; E_\text{HF} + E_\text{MP2} \;=\; -1.117 - 0.022 \;=\; -1.139\,E_h . \label{eq:ch-14-prob-mp2}
 \end{align}
 

@@ -161,7 +161,7 @@ $e^{(n)} = \rho^{(n)} - \rho^\star$.  Substituting
 \eqref{eq:nm-scf-lin} into \eqref{eq:nm-scf-linear-mix}:
 
 \begin{align}
-e^{(n+1)} &= (1 - \alpha)\, e^{(n)} + \alpha\, \mathcal F' e^{(n)} \notag \\
+e^{(n+1)} &= (1 - \alpha)\, e^{(n)} + \alpha\, \mathcal F' e^{(n)} \notag \\\
           &= \Bigl[ (1 - \alpha) \mathbf 1 + \alpha \mathcal F' \Bigr] e^{(n)} . \label{eq:nm-scf-err-rec}
 \end{align}
 
@@ -309,10 +309,10 @@ is the $(m + 1)$-th.  Stacking them:
 
 \begin{equation}
 \label{eq:nm-scf-diis-aug}
-\begin{pmatrix} B & \mathbf 1 \\ \mathbf 1^\text{T} & 0 \end{pmatrix}
-\begin{pmatrix} \mathbf c \\ -\lambda \end{pmatrix}
+\begin{pmatrix} B & \mathbf 1 \\\\ \mathbf 1^\text{T} & 0 \end{pmatrix}
+\begin{pmatrix} \mathbf c \\\\ -\lambda \end{pmatrix}
 =
-\begin{pmatrix} \mathbf 0 \\ 1 \end{pmatrix} .
+\begin{pmatrix} \mathbf 0 \\\\ 1 \end{pmatrix} .
 \end{equation}
 
 This is the **DIIS sub-problem**.  It is an
@@ -1569,9 +1569,9 @@ representation
 \mathbf T_m = \mathbf Q_m^\text{T} \mathbf A \mathbf Q_m ,
 \qquad
 \mathbf T_m = \begin{pmatrix}
-\alpha_1 & \beta_1 & & \\
-\beta_1 & \alpha_2 & \beta_2 & \\
-         & \ddots   & \ddots  & \beta_{m-1} \\
+\alpha_1 & \beta_1 & & \\\
+\beta_1 & \alpha_2 & \beta_2 & \\\
+         & \ddots   & \ddots  & \beta_{m-1} \\\
          &          & \beta_{m-1} & \alpha_m
 \end{pmatrix} ,
 \end{equation}

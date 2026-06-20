@@ -365,9 +365,9 @@ mechanical, not conceptual):
 \begin{equation}
 \label{eq:we-06-S12-num}
 \begin{aligned}
-S_{12} &\;=\; 0.4446 \cdot 0.4446 \cdot 0.2825 \cdot e^{-0.0663 \cdot 1.96} \\
-       &\quad + 0.4446 \cdot 0.5353 \cdot 0.2307 \cdot e^{-0.1030 \cdot 1.96} \\
-       &\quad + \cdots \quad \text{(seven more terms)} \\
+S_{12} &\;=\; 0.4446 \cdot 0.4446 \cdot 0.2825 \cdot e^{-0.0663 \cdot 1.96} \\\
+       &\quad + 0.4446 \cdot 0.5353 \cdot 0.2307 \cdot e^{-0.1030 \cdot 1.96} \\\
+       &\quad + \cdots \quad \text{(seven more terms)} \\\
        &\;=\; 0.6593 .
 \end{aligned}
 \end{equation}
@@ -396,7 +396,7 @@ $R = 1.4\,a_0$:
 \label{eq:we-06-T12-num}
 \mathbf T \;=\;
 \begin{pmatrix}
-0.7600 & 0.2365 \\ 0.2365 & 0.7600 \end{pmatrix} .
+0.7600 & 0.2365 \\\\ 0.2365 & 0.7600 \end{pmatrix} .
 \end{equation}
 
 The diagonal element $T_{11} = 0.7600$ is the kinetic
@@ -443,7 +443,7 @@ nuclei) at $R = 1.4\,a_0$ is
 \label{eq:we-06-V-num}
 \mathbf V \;=\;
 \begin{pmatrix}
--1.8804 & -1.1949 \\ -1.1949 & -1.8804 \end{pmatrix} ,
+-1.8804 & -1.1949 \\\\ -1.1949 & -1.8804 \end{pmatrix} ,
 \end{equation}
 
 so the **core Hamiltonian** $\mathbf h = \mathbf T +
@@ -453,7 +453,7 @@ so the **core Hamiltonian** $\mathbf h = \mathbf T +
 \label{eq:we-06-h-num}
 \mathbf h \;=\;
 \begin{pmatrix}
--1.1204 & -0.9584 \\ -0.9584 & -1.1204 \end{pmatrix} .
+-1.1204 & -0.9584 \\\\ -0.9584 & -1.1204 \end{pmatrix} .
 \end{equation}
 
 These numbers reproduce the
@@ -872,8 +872,8 @@ relationship to the H–H distance.
 H_{nm} \;=\; \langle \phi_n \rvert \hat H \rvert \phi_m \rangle
 \;=\;
 \begin{cases}
-\varepsilon_0 & n = m, \\
--t & \lvert n - m \rvert = 1, \\
+\varepsilon_0 & n = m, \\\
+-t & \lvert n - m \rvert = 1, \\\
 0 & \lvert n - m \rvert \ge 2,
 \end{cases}
 \end{equation}
@@ -1151,7 +1151,7 @@ the $2 \times 2$ **dynamical matrix** (Ch 10 §10.3)
 \label{eq:we-10-dynmat}
 \mathbf D(q) \;=\; \frac{K}{m_1 m_2}
 \begin{pmatrix}
-2 m_2 & -(1 + e^{-i q a}) \\
+2 m_2 & -(1 + e^{-i q a}) \\\
 -(1 + e^{+i q a}) & 2 m_1
 \end{pmatrix} .
 \end{equation}
@@ -1167,8 +1167,8 @@ $\omega_\text{ac}(q)^2$ and $\omega_\text{op}(q)^2$
 \begin{equation}
 \label{eq:we-10-limits}
 \begin{aligned}
-\omega_\text{ac}(q \to 0) &\;=\; \sqrt{\frac{K}{2 (m_1 + m_2)}}\, \lvert q a \rvert \;+\; O(q^3) , \\[4pt]
-\omega_\text{op}(q \to 0) &\;=\; \sqrt{2K\!\left(\frac{1}{m_1} + \frac{1}{m_2}\right)} \;-\; \frac{K\,(m_1 - m_2)^2}{2 (m_1 + m_2) m_1 m_2}\, (q a)^2 \;+\; O(q^4) , \\[4pt]
+\omega_\text{ac}(q \to 0) &\;=\; \sqrt{\frac{K}{2 (m_1 + m_2)}}\, \lvert q a \rvert \;+\; O(q^3) , \\\\[4pt]
+\omega_\text{op}(q \to 0) &\;=\; \sqrt{2K\!\left(\frac{1}{m_1} + \frac{1}{m_2}\right)} \;-\; \frac{K\,(m_1 - m_2)^2}{2 (m_1 + m_2) m_1 m_2}\, (q a)^2 \;+\; O(q^4) , \\\\[4pt]
 \omega_\text{ac}(\pi/a) &\;=\; \omega_\text{op}(\pi/a) \;=\; \sqrt{\frac{2K}{m_1}} \quad (m_1 \le m_2) .
 \end{aligned}
 \end{equation}
@@ -1307,7 +1307,7 @@ basis $\{|\text{A}\rangle, |\text{B}\rangle\}$ is
 \label{eq:we-11-graphene-Hk}
 H(\mathbf k) \;=\;
 \begin{pmatrix}
-0 & t\, f(\mathbf k) \\
+0 & t\, f(\mathbf k) \\\
 t\, f^*(\mathbf k) & 0
 \end{pmatrix} ,
 \qquad
@@ -1441,7 +1441,7 @@ sanity check that the TDDFT machinery of chapter 12
 \label{eq:we-12-2level-H}
 \hat H_0 \;=\;
 \begin{pmatrix}
-0 & 0 \\ 0 & \omega_0
+0 & 0 \\\\ 0 & \omega_0
 \end{pmatrix} ,
 \qquad \omega_0 = 1.0\,E_h
 \end{equation}

@@ -495,25 +495,25 @@ gives
 \begin{equation}
 \label{eq:ch-04-pulay-coefficients}
 \begin{pmatrix}
-B_{11} & B_{12} & \cdots & B_{1m} & 1 \\
-B_{21} & B_{22} & \cdots & B_{2m} & 1 \\
-\vdots  & \vdots  & \ddots & \vdots  & \vdots \\
-B_{m1} & B_{m2} & \cdots & B_{mm} & 1 \\
+B_{11} & B_{12} & \cdots & B_{1m} & 1 \\\
+B_{21} & B_{22} & \cdots & B_{2m} & 1 \\\
+\vdots  & \vdots  & \ddots & \vdots  & \vdots \\\
+B_{m1} & B_{m2} & \cdots & B_{mm} & 1 \\\
 1      & 1      & \cdots & 1      & 0
 \end{pmatrix}
-\begin{pmatrix} c_1 \\ c_2 \\ \vdots \\ c_m \\ -\lambda \end{pmatrix}
+\begin{pmatrix} c_1 \\\\ c_2 \\\\ \vdots \\\\ c_m \\\\ -\lambda \end{pmatrix}
 =
-\begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ 1 \end{pmatrix} .
+\begin{pmatrix} 0 \\\\ 0 \\\\ \vdots \\\\ 0 \\\\ 1 \end{pmatrix} .
 \end{equation}
 
 In compact form, with $\mathbf 1$ the $m$-vector of ones,
 
 \begin{equation}
 \label{eq:ch-04-pulay-augmented}
-\begin{pmatrix} B & \mathbf 1 \\ \mathbf 1^T & 0 \end{pmatrix}
-\begin{pmatrix} \mathbf c \\ -\lambda \end{pmatrix}
+\begin{pmatrix} B & \mathbf 1 \\\\ \mathbf 1^T & 0 \end{pmatrix}
+\begin{pmatrix} \mathbf c \\\\ -\lambda \end{pmatrix}
 =
-\begin{pmatrix} \mathbf 0 \\ 1 \end{pmatrix} .
+\begin{pmatrix} \mathbf 0 \\\\ 1 \end{pmatrix} .
 \end{equation}
 
 The system \eqref{eq:ch-04-pulay-augmented} is $(m{+}1) \times (m{+}1)$,
@@ -857,7 +857,7 @@ functions and the nuclear–nuclear repulsion:
 \mathbf F_I
 &= -\frac{\partial}{\partial \mathbf R_I} \sum_{\mu, \nu, i}^\text{occ}
      C_{\mu i}\, C_{\nu i}\, h_{\mu\nu}(\mathbf R)
- \;-\; \frac{\partial V_{nn}}{\partial \mathbf R_I} \\
+ \;-\; \frac{\partial V_{nn}}{\partial \mathbf R_I} \\\
 &\quad
    -\frac{\partial}{\partial \mathbf R_I}
     \bigg[ 2 \sum_{i}^\text{occ} \sum_{\mu, \nu} C_{\mu i} C_{\nu i} J_{\mu\nu} \bigg]
@@ -877,7 +877,7 @@ a basis-derivative term.  The basis-derivative term is
    \bigg[ \langle \frac{\partial \chi_\mu}{\partial \mathbf R_I} |
             \hat h | \chi_\nu \rangle
         + \langle \chi_\mu | \hat h | \frac{\partial \chi_\nu}{\partial \mathbf R_I} \rangle
-   \bigg] \\
+   \bigg] \\\
 &\quad - \sum_{\mu, \nu, i}^\text{occ} C_{\mu i} C_{\nu i}\,
      \langle \frac{\partial \chi_\mu}{\partial \mathbf R_I} | 2 \hat J - \hat K_\text{xc} | \chi_\nu \rangle
    - (\text{symmetric term with } \partial\chi_\nu) .
@@ -939,7 +939,7 @@ the scalar density by a **2-component spin density**
 
 \begin{equation}
 \label{eq:ch-04-spin-density}
-\boldsymbol\rho(\mathbf r) = \begin{pmatrix} \rho_\uparrow(\mathbf r) \\ \rho_\downarrow(\mathbf r) \end{pmatrix}
+\boldsymbol\rho(\mathbf r) = \begin{pmatrix} \rho_\uparrow(\mathbf r) \\\\ \rho_\downarrow(\mathbf r) \end{pmatrix}
 \quad\text{with}\quad
 \rho(\mathbf r) = \rho_\uparrow(\mathbf r) + \rho_\downarrow(\mathbf r),
 \end{equation}
@@ -1101,7 +1101,7 @@ The eigenstates of \eqref{eq:ch-04-nonc-collinear} are 2-component
 spinors
 
 $$
-\Psi_i(\mathbf r) = \begin{pmatrix} \psi_i^\uparrow(\mathbf r) \\ \psi_i^\downarrow(\mathbf r) \end{pmatrix},
+\Psi_i(\mathbf r) = \begin{pmatrix} \psi_i^\uparrow(\mathbf r) \\\\ \psi_i^\downarrow(\mathbf r) \end{pmatrix},
 $$
 
 and the spinor density matrix is
@@ -1412,7 +1412,7 @@ proof follows from the trace relation
 \begin{align}
 \int h_\text{xc}(\mathbf r, \mathbf r')\, d\mathbf r'
 &= \int \frac{\bar n_2(\mathbf r, \mathbf r')}{\rho(\mathbf r')}\, d\mathbf r'
- \;-\; \int \rho(\mathbf r)\, d\mathbf r' \\
+ \;-\; \int \rho(\mathbf r)\, d\mathbf r' \\\
 &= (N - 1) \;-\; N \;=\; -1 .
 \end{align}
 
@@ -1961,7 +1961,7 @@ evaluated at $\rho_0$:
 
 \begin{align}
 v_\text{xc}^{(1)}[\rho_0](\mathbf r)
-   &= \frac{\delta E_\text{xc}}{\delta \rho(\mathbf r)} \bigg|_{\rho_0} , \\
+   &= \frac{\delta E_\text{xc}}{\delta \rho(\mathbf r)} \bigg|_{\rho_0} , \\\
 f_\text{xc}^{(2)}[\rho_0](\mathbf r, \mathbf r')
    &= \frac{\delta^2 E_\text{xc}}{\delta \rho(\mathbf r)\, \delta \rho(\mathbf r')} \bigg|_{\rho_0} .
 \end{align}
@@ -2139,9 +2139,9 @@ light, $m$ the electron mass, and $v(\mathbf r)$ the external
 scalar potential.  The $4 \times 4$ matrices
 
 $$
-\boldsymbol\alpha = \begin{pmatrix} \mathbf 0 & \boldsymbol\sigma \\ \boldsymbol\sigma & \mathbf 0 \end{pmatrix},
+\boldsymbol\alpha = \begin{pmatrix} \mathbf 0 & \boldsymbol\sigma \\\\ \boldsymbol\sigma & \mathbf 0 \end{pmatrix},
 \qquad
-\boldsymbol\beta = \begin{pmatrix} \mathbf 1 & \mathbf 0 \\ \mathbf 0 & -\mathbf 1 \end{pmatrix}
+\boldsymbol\beta = \begin{pmatrix} \mathbf 1 & \mathbf 0 \\\\ \mathbf 0 & -\mathbf 1 \end{pmatrix}
 $$
 
 are block-off-diagonal and block-diagonal, respectively, with
@@ -2383,10 +2383,10 @@ model is
 
 $$
 \mathbf h_\text{core}
-= \begin{pmatrix} -1.0 & -0.5 \\ -0.5 & -1.0 \end{pmatrix},
+= \begin{pmatrix} -1.0 & -0.5 \\\\ -0.5 & -1.0 \end{pmatrix},
 \qquad
 \mathbf v_\text{xc}[\mathbf P]
-= 0.3 \begin{pmatrix} P_{00} & 0 \\ 0 & P_{11} \end{pmatrix},
+= 0.3 \begin{pmatrix} P_{00} & 0 \\\\ 0 & P_{11} \end{pmatrix},
 \qquad
 \mathbf P^{(0)} = \mathbf 0,
 $$
@@ -2705,10 +2705,10 @@ $(m{+}1)$-th equation.
 **Step 4 — the augmented system.**  Stack the two pieces:
 
 $$
-\begin{pmatrix} B & -\mathbf 1 \\ -\mathbf 1^T & 0 \end{pmatrix}
-\begin{pmatrix} \mathbf c \\ \lambda \end{pmatrix}
+\begin{pmatrix} B & -\mathbf 1 \\\\ -\mathbf 1^T & 0 \end{pmatrix}
+\begin{pmatrix} \mathbf c \\\\ \lambda \end{pmatrix}
 =
-\begin{pmatrix} \mathbf 0 \\ -1 \end{pmatrix} .
+\begin{pmatrix} \mathbf 0 \\\\ -1 \end{pmatrix} .
 $$
 
 Multiply the second block-row by $-1$ and the second block-column
@@ -2717,10 +2717,10 @@ form quoted in the text,
 \eqref{eq:ch-04-pulay-augmented}:
 
 $$
-\begin{pmatrix} B & \mathbf 1 \\ \mathbf 1^T & 0 \end{pmatrix}
-\begin{pmatrix} \mathbf c \\ -\lambda \end{pmatrix}
+\begin{pmatrix} B & \mathbf 1 \\\\ \mathbf 1^T & 0 \end{pmatrix}
+\begin{pmatrix} \mathbf c \\\\ -\lambda \end{pmatrix}
 =
-\begin{pmatrix} \mathbf 0 \\ 1 \end{pmatrix} .
+\begin{pmatrix} \mathbf 0 \\\\ 1 \end{pmatrix} .
 $$
 
 **Step 5 — invertibility.**  The matrix
@@ -2777,7 +2777,7 @@ $\{\chi_\mu(\mathbf r; \mathbf R)\}$ is
 E(\mathbf C, \mathbf R)
 &= 2 \sum_i^\text{occ} \sum_{\mu, \nu} C_{\mu i} C_{\nu i} h_{\mu\nu}(\mathbf R)
  \;+\; 2 \sum_{i, j}^\text{occ} \sum_{\mu, \nu, \rho, \sigma}
-   C_{\mu i} C_{\nu i} C_{\rho j} C_{\sigma j}\, (\mu\nu | \rho\sigma) \\
+   C_{\mu i} C_{\nu i} C_{\rho j} C_{\sigma j}\, (\mu\nu | \rho\sigma) \\\
 &\quad +\; E_\text{xc}[\rho] + V_{nn}(\mathbf R) ,
 \end{align}
 
@@ -2793,7 +2793,7 @@ with the orthonormality constraint $C_{\mu i}^* S_{\mu\nu} C_{\nu j}^* = \delta_
 
 \begin{align}
 \frac{dE}{d\mathbf R_I}\bigg|_{\mathbf C = \mathbf C^*}
-&= \underbrace{\frac{\partial E}{\partial \mathbf R_I}\bigg|_{\mathbf C}}_{\text{(A) basis + Vnn derivatives}} \\
+&= \underbrace{\frac{\partial E}{\partial \mathbf R_I}\bigg|_{\mathbf C}}_{\text{(A) basis + Vnn derivatives}} \\\
 &\quad + \underbrace{\sum_{\mu, i} \frac{\partial E}{\partial C_{\mu i}}\,
    \frac{\partial C_{\mu i}^*}{\partial \mathbf R_I}}_{\text{(B) MO response}} .
 \end{align}
@@ -2821,7 +2821,7 @@ respect to $\mathbf R_I$ at fixed $\mathbf C$:
 &= 2 \sum_{i, \mu, \nu} C_{\mu i} C_{\nu i}\,
    \frac{\partial h_{\mu\nu}}{\partial \mathbf R_I}
  + 2 \sum_{i, j, \mu, \nu, \rho, \sigma} C_{\mu i} C_{\nu i} C_{\rho j} C_{\sigma j}\,
-   \frac{\partial (\mu\nu|\rho\sigma)}{\partial \mathbf R_I} \\
+   \frac{\partial (\mu\nu|\rho\sigma)}{\partial \mathbf R_I} \\\
 &\quad + \frac{\partial E_\text{xc}}{\partial \mathbf R_I}
  + \frac{\partial V_{nn}}{\partial \mathbf R_I} .
 \end{align}
@@ -2928,7 +2928,7 @@ and the total energy
 \begin{align}
 E[\rho_\uparrow, \rho_\downarrow; v, B]
 &= F_\text{HK}[\rho_\uparrow, \rho_\downarrow]
- + \int \rho(\mathbf r) v(\mathbf r)\, d\mathbf r \\
+ + \int \rho(\mathbf r) v(\mathbf r)\, d\mathbf r \\\
 &\quad - \mu_B \int B(\mathbf r)\, m(\mathbf r)\, d\mathbf r ,
 \end{align}
 

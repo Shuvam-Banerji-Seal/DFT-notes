@@ -310,9 +310,9 @@ $\alpha$ ("spin up") and $\beta$ ("spin down"),
 
 \begin{equation}
 \label{eq:ch-02-spin-basis}
-\alpha(\sigma) \;=\; \begin{pmatrix} 1 \\ 0 \end{pmatrix},
+\alpha(\sigma) \;=\; \begin{pmatrix} 1 \\\\ 0 \end{pmatrix},
 \qquad
-\beta(\sigma) \;=\; \begin{pmatrix} 0 \\ 1 \end{pmatrix},
+\beta(\sigma) \;=\; \begin{pmatrix} 0 \\\\ 1 \end{pmatrix},
 \qquad
 \sigma \in \{-\tfrac{1}{2}, +\tfrac{1}{2}\}.
 \end{equation}
@@ -325,7 +325,7 @@ single-electron state is a **spin-orbital**
 \label{eq:ch-02-spinorbital}
 \chi(\mathbf x) \;=\;
    \begin{cases}
-      \phi(\mathbf r)\, \alpha(\sigma) & \text{(spin up)}, \\[4pt]
+      \phi(\mathbf r)\, \alpha(\sigma) & \text{(spin up)}, \\\\[4pt]
       \phi(\mathbf r)\, \beta(\sigma)  & \text{(spin down)} ,
    \end{cases}
 \end{equation}
@@ -379,9 +379,9 @@ $\{\chi_i\}_{i=1}^{N}$,
 \Phi(\mathbf x_1, \dots, \mathbf x_N) \;=\;
    \frac{1}{\sqrt{N!}}
    \begin{vmatrix}
-      \chi_1(\mathbf x_1) & \chi_2(\mathbf x_1) & \cdots & \chi_N(\mathbf x_1) \\
-      \chi_1(\mathbf x_2) & \chi_2(\mathbf x_2) & \cdots & \chi_N(\mathbf x_2) \\
-      \vdots              & \vdots              & \ddots & \vdots              \\
+      \chi_1(\mathbf x_1) & \chi_2(\mathbf x_1) & \cdots & \chi_N(\mathbf x_1) \\\
+      \chi_1(\mathbf x_2) & \chi_2(\mathbf x_2) & \cdots & \chi_N(\mathbf x_2) \\\
+      \vdots              & \vdots              & \ddots & \vdots              \\\
       \chi_1(\mathbf x_N) & \chi_2(\mathbf x_N) & \cdots & \chi_N(\mathbf x_N)
    \end{vmatrix}.
 \end{equation}
@@ -1208,9 +1208,9 @@ symmetry.)
 \label{eq:ch-02-h2-v}
 \begin{aligned}
 \langle 11 \mid 11 \rangle &= 0.7746, &
-\langle 11 \mid 22 \rangle &= 0.5697, \\
+\langle 11 \mid 22 \rangle &= 0.5697, \\\
 \langle 12 \mid 12 \rangle &= 0.2970, &
-\langle 11 \mid 12 \rangle &= 0.4441, \\
+\langle 11 \mid 12 \rangle &= 0.4441, \\\
 \langle 12 \mid 22 \rangle &= 0.4441, &
 \langle 22 \mid 22 \rangle &= 0.7746 .
 \end{aligned}
@@ -1296,9 +1296,9 @@ determinant basis is
 \label{eq:ch-02-h2-ci-matrix}
 \mathbf H_{\text{el}} \;=\;
    \begin{pmatrix}
-      -1.4662 & 0       & 0       & 0.2727 \\
-       0       & -1.6711 & 0       & 0      \\
-       0       & 0       & -1.6711 & 0      \\
+      -1.4662 & 0       & 0       & 0.2727 \\\
+       0       & -1.6711 & 0       & 0      \\\
+       0       & 0       & -1.6711 & 0      \\\
        0.2727  & 0       & 0       & -1.4662
    \end{pmatrix}\; E_h .
 \end{equation}
@@ -1324,7 +1324,7 @@ problem.  The eigenvalues are the roots of
 \begin{equation}
 \label{eq:ch-02-h2-closed-2x2}
 \det\!\begin{pmatrix}
-   H_{11} - E & H_{14} \\
+   H_{11} - E & H_{14} \\\
    H_{41}     & H_{44} - E
 \end{pmatrix}
 \;=\; (H_{11} - E)^2 - H_{14}^2 \;=\; 0,
@@ -1337,7 +1337,7 @@ so
 E_\pm^{(\text{closed})} \;=\; H_{11} \pm |H_{14}|
    \;=\; -1.4662 \pm 0.2727
    \;=\; \begin{cases}
-            -1.1935\; E_h, \\
+            -1.1935\; E_h, \\\
             -1.7389\; E_h .
    \end{cases}
 \end{equation}
@@ -1507,7 +1507,7 @@ $$
    \frac{1}{\sqrt 2}
    \begin{vmatrix}
       \phi_{1s}(\mathbf r_1)\,\alpha(\sigma_1) &
-      \phi_{1s}(\mathbf r_1)\,\beta(\sigma_1) \\
+      \phi_{1s}(\mathbf r_1)\,\beta(\sigma_1) \\\
       \phi_{1s}(\mathbf r_2)\,\alpha(\sigma_2) &
       \phi_{1s}(\mathbf r_2)\,\beta(\sigma_2)
    \end{vmatrix}.
@@ -1539,7 +1539,7 @@ $$
    \frac{1}{\sqrt 2}
    \begin{vmatrix}
       \phi_{1s}(\mathbf r_1)\alpha(\sigma_1) &
-      \phi_{1s}(\mathbf r_1)\alpha(\sigma_1) \\
+      \phi_{1s}(\mathbf r_1)\alpha(\sigma_1) \\\
       \phi_{1s}(\mathbf r_2)\alpha(\sigma_2) &
       \phi_{1s}(\mathbf r_2)\alpha(\sigma_2)
    \end{vmatrix} \;=\; 0 ,

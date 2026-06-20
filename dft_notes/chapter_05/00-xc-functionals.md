@@ -215,7 +215,7 @@ the most-used is **Perdew–Zunger 1981** (PZ81):
 \label{eq:ch-05-pz81-correlation}
 \varepsilon_\text{c}^\text{PZ81}(r_s) \;=\;
 \begin{cases}
-B + A \ln r_s + D\, r_s + C\, r_s \ln r_s , & r_s < 1 , \\[2pt]
+B + A \ln r_s + D\, r_s + C\, r_s \ln r_s , & r_s < 1 , \\\\[2pt]
 \dfrac{A_\text{PZ}}{1 + B_\text{PZ}\sqrt{r_s} + C_\text{PZ}\, r_s} , & r_s \ge 1 .
 \end{cases}
 \end{equation}
@@ -1967,10 +1967,10 @@ i.e. $F_\text{x}^\text{PBE}(0) = 1$. Substituting $s = 0$ into
 \begin{align}
 F_\text{x}^\text{PBE}(0) &=
 1 + \kappa - \frac{\kappa}{1 + \mu \cdot 0 / \kappa}
-\notag \\
+\notag \\\
 &= 1 + \kappa - \frac{\kappa}{1 + 0}
-\notag \\
-&= 1 + \kappa - \kappa \notag \\
+\notag \\\
+&= 1 + \kappa - \kappa \notag \\\
 &= 1 .
 \end{align}
 
@@ -1999,8 +1999,8 @@ Setting this maximum equal to the Lieb–Oxford bound gives
 
 \begin{align}
 \lim_{s \to \infty} F_\text{x}^\text{PBE}(s) &=
-1 + \kappa - \frac{\kappa}{1 + \infty} \notag \\
-&= 1 + \kappa - 0 \notag \\
+1 + \kappa - \frac{\kappa}{1 + \infty} \notag \\\
+&= 1 + \kappa - 0 \notag \\\
 &= 1 + \kappa .
 \end{align}
 
@@ -2293,7 +2293,7 @@ A = 0.0621814, \quad
 \beta_1 = 7.5957, \quad
 \beta_2 = 3.5876, \quad
 \beta_3 = 1.6382, \quad
-\beta_4 = 0.49294. \notag \\
+\beta_4 = 0.49294. \notag \\\
 \text{Ferromagnetic } (\zeta=1):\quad &
 A = 0.0310907, \quad
 \alpha_1 = 0.19645, \quad
@@ -2432,8 +2432,8 @@ when implementing B88.)
 \begin{align}
 F_\text{x}^\text{B88}(0) &=
 1 - \frac{\beta \cdot 0^2}{1 + \gamma \cdot 0^2}
-\notag \\
-&= 1 - \frac{0}{1} \notag \\
+\notag \\\
+&= 1 - \frac{0}{1} \notag \\\
 &= 1 .
 \end{align}
 
@@ -2528,16 +2528,16 @@ are (in Hartree):
 \begin{align}
 \text{He:}\quad & E_\text{x}^\text{LDA} = -1.025,\quad
 E_\text{x}^\text{B88} = -0.882,\quad
-E_\text{x}^\text{exact} = -0.884. \notag \\
+E_\text{x}^\text{exact} = -0.884. \notag \\\
 \text{Ne:}\quad & E_\text{x}^\text{LDA} = -12.10,\quad
 E_\text{x}^\text{B88} = -12.04,\quad
-E_\text{x}^\text{exact} = -12.11. \notag \\
+E_\text{x}^\text{exact} = -12.11. \notag \\\
 \text{Ar:}\quad & E_\text{x}^\text{LDA} = -30.18,\quad
 E_\text{x}^\text{B88} = -30.13,\quad
-E_\text{x}^\text{exact} = -30.19. \notag \\
+E_\text{x}^\text{exact} = -30.19. \notag \\\
 \text{Kr:}\quad & E_\text{x}^\text{LDA} = -93.83,\quad
 E_\text{x}^\text{B88} = -93.79,\quad
-E_\text{x}^\text{exact} = -93.89. \notag \\
+E_\text{x}^\text{exact} = -93.89. \notag \\\
 \text{Xe:}\quad & E_\text{x}^\text{LDA} = -179.1,\quad
 E_\text{x}^\text{B88} = -179.0,\quad
 E_\text{x}^\text{exact} = -179.2. \notag

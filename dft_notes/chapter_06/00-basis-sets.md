@@ -647,9 +647,9 @@ $$
 P_{\mu\nu} \;=\; 2\, C_{\mu 1}\, C_{\nu 1}^* ,
 \qquad
 \mathbf P \;=\; 2 \cdot (0.5489)^2
-\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}
+\begin{pmatrix} 1 & 1 \\\\ 1 & 1 \end{pmatrix}
 \;=\;
-\begin{pmatrix} 0.6026 & 0.6026 \\ 0.6026 & 0.6026 \end{pmatrix} .
+\begin{pmatrix} 0.6026 & 0.6026 \\\\ 0.6026 & 0.6026 \end{pmatrix} .
 $$
 
 Updating the Fock matrix with this $\mathbf P$ and iterating
@@ -1067,8 +1067,8 @@ A widely used form (SIESTA, FHI-aims) is a polynomial ramp,
 \label{eq:ch-06-13-vconf}
 V_\text{conf}(r) \;=\;
 \begin{cases}
-0 , & r \le r_0 , \\[2pt]
-V_0 \left( \dfrac{r - r_0}{R_c - r_0} \right)^n , & r_0 < r \le R_c , \\[6pt]
+0 , & r \le r_0 , \\\\[2pt]
+V_0 \left( \dfrac{r - r_0}{R_c - r_0} \right)^n , & r_0 < r \le R_c , \\\\[6pt]
 \infty , & r > R_c ,
 \end{cases}
 \end{equation}
@@ -1265,7 +1265,7 @@ Cox–de Boor recursion
 \label{eq:ch-06-14-bspline}
 B_{i,1}(x) \;=\;
 \begin{cases}
-1 , & t_i \le x < t_{i+1} , \\
+1 , & t_i \le x < t_{i+1} , \\\
 0 , & \text{otherwise} ,
 \end{cases}
 \end{equation}

@@ -1699,10 +1699,10 @@ $\tilde c_1 = c_1 e^{-i\omega t/2}$. The result is a system of
 two ODEs with constant coefficients,
 
 \begin{equation}
-i \frac{d}{dt} \begin{pmatrix} \tilde c_0 \\ \tilde c_1 \end{pmatrix}
+i \frac{d}{dt} \begin{pmatrix} \tilde c_0 \\\\ \tilde c_1 \end{pmatrix}
 \;=\;
-\begin{pmatrix} -\Delta/2 & V_0 / 2 \\ V_0 / 2 & +\Delta/2 \end{pmatrix}
-\begin{pmatrix} \tilde c_0 \\ \tilde c_1 \end{pmatrix} ,
+\begin{pmatrix} -\Delta/2 & V_0 / 2 \\\\ V_0 / 2 & +\Delta/2 \end{pmatrix}
+\begin{pmatrix} \tilde c_0 \\\\ \tilde c_1 \end{pmatrix} ,
 \label{eq:ch-01-11-rabi-ode}
 \tag{1.11.14}
 \end{equation}

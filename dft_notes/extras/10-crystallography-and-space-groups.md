@@ -300,7 +300,7 @@ The scalar triple product is
 
 \begin{align}
 \mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)
-   &\;=\; \frac{a^3}{8} \det \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix} \nonumber \\
+   &\;=\; \frac{a^3}{8} \det \begin{pmatrix} 0 & 1 & 1 \\\\ 1 & 0 & 1 \\\\ 1 & 1 & 0 \end{pmatrix} \nonumber \\\
    &\;=\; \frac{a^3}{8} (0 + 1 + 1) \;=\; \frac{a^3}{4} ,
 \end{align}
 
@@ -385,13 +385,13 @@ integer combination of $\mathbf a$ and $\mathbf b$.  In matrix
 form,
 
 \begin{equation}
-\begin{pmatrix} a'_x \\ a'_y \end{pmatrix}
+\begin{pmatrix} a'_x \\\\ a'_y \end{pmatrix}
 \;=\;
-\begin{pmatrix} \cos(2\pi/n) & -\sin(2\pi/n) \\ \sin(2\pi/n) & \cos(2\pi/n) \end{pmatrix}
-\begin{pmatrix} a_x \\ a_y \end{pmatrix}
+\begin{pmatrix} \cos(2\pi/n) & -\sin(2\pi/n) \\\\ \sin(2\pi/n) & \cos(2\pi/n) \end{pmatrix}
+\begin{pmatrix} a_x \\\\ a_y \end{pmatrix}
 \;=\;
-\begin{pmatrix} p & q \\ r & s \end{pmatrix}
-\begin{pmatrix} a_x \\ a_y \end{pmatrix}
+\begin{pmatrix} p & q \\\\ r & s \end{pmatrix}
+\begin{pmatrix} a_x \\\\ a_y \end{pmatrix}
 \end{equation}
 
 with $p, q, r, s$ integers (this is a property of the rotation

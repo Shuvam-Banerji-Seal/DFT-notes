@@ -701,7 +701,7 @@ change in energy is
 \Delta E
 &\;=\; \frac{1}{2}\,
 \sum_{I, J, \mathbf R}\; u_\alpha\, \Phi_{I\alpha, J\beta}(\mathbf R)\,
-u_\beta \nonumber \\
+u_\beta \nonumber \\\
 &\;=\; \frac{1}{2}\, u_\alpha\,
 \Bigl(\sum_{I, J, \mathbf R}\; \Phi_{I\alpha, J\beta}(\mathbf R)\Bigr)\, u_\beta .
 \end{align}

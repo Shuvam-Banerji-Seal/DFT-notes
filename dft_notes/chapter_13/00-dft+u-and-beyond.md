@@ -1837,13 +1837,13 @@ five unknowns $(G, \Sigma, W, P, \Gamma)$:
 \boxed{
 \begin{aligned}
 G(1, 2) &= G_0(1, 2) + \int d(3, 4)\,
-G_0(1, 3)\,\Sigma(3, 4)\, G(4, 2) , \\[2pt]
+G_0(1, 3)\,\Sigma(3, 4)\, G(4, 2) , \\\\[2pt]
 \Sigma(1, 2) &= i \int d(3, 4)\,
-G(1, 3)\, W(1, 4)\, \Gamma(3, 2; 4) , \\[2pt]
+G(1, 3)\, W(1, 4)\, \Gamma(3, 2; 4) , \\\\[2pt]
 W(1, 2) &= v(1, 2) + \int d(3, 4)\,
-v(1, 3)\, P(3, 4)\, W(4, 2) , \\[2pt]
+v(1, 3)\, P(3, 4)\, W(4, 2) , \\\\[2pt]
 P(1, 2) &= -i \int d(3, 4)\,
-G(2, 3)\, G(4, 2)\, \Gamma(3, 4; 1) , \\[2pt]
+G(2, 3)\, G(4, 2)\, \Gamma(3, 4; 1) , \\\\[2pt]
 \Gamma(1, 2; 3) &= \delta(1, 2)\delta(1, 3) +
 \int d(4, 5, 6, 7)\,
 \frac{\delta \Sigma(1, 2)}{\delta G(4, 5)}\,
@@ -2069,9 +2069,9 @@ that the BSE of § 13.8.3 fixes
 \label{eq:ch-13-9-hl86-gaps}
 \boxed{
 \begin{aligned}
-E_g^\text{diamond} &= 5.50 \text{ eV} \quad (\text{exp: } 5.48 \text{ eV}) , \\
-E_g^\text{Si} &= 1.29 \text{ eV} \quad (\text{exp: } 1.17 \text{ eV}) , \\
-E_g^\text{Ge} &= 0.75 \text{ eV} \quad (\text{exp: } 0.744 \text{ eV}) , \\
+E_g^\text{diamond} &= 5.50 \text{ eV} \quad (\text{exp: } 5.48 \text{ eV}) , \\\
+E_g^\text{Si} &= 1.29 \text{ eV} \quad (\text{exp: } 1.17 \text{ eV}) , \\\
+E_g^\text{Ge} &= 0.75 \text{ eV} \quad (\text{exp: } 0.744 \text{ eV}) , \\\
 E_g^\text{LiCl} &= 9.4 \text{ eV} \quad (\text{exp: } 9.4 \text{ eV}) .
 \end{aligned}
 }
@@ -2159,7 +2159,7 @@ hole, screened by $W$).  The two kernels are
 H^{x, vc\mathbf k, v'c'\mathbf k'} &\equiv \int d\mathbf r\, d\mathbf r' \,
 \psi_{c \mathbf k}(\mathbf r)\, \psi^\star_{v \mathbf k}(\mathbf r)\,
 v(\mathbf r - \mathbf r')\,
-\psi_{c' \mathbf k'}(\mathbf r')\, \psi^\star_{v' \mathbf k'}(\mathbf r') , \\[4pt]
+\psi_{c' \mathbf k'}(\mathbf r')\, \psi^\star_{v' \mathbf k'}(\mathbf r') , \\\\[4pt]
 H^{d, vc\mathbf k, v'c'\mathbf k'} &\equiv -\int d\mathbf r\, d\mathbf r' \,
 \psi_{c \mathbf k}(\mathbf r)\, \psi^\star_{c' \mathbf k'}(\mathbf r)\,
 W(\mathbf r, \mathbf r', \omega = 0)\,
@@ -3009,12 +3009,12 @@ problem [Georges, Kotliar, Krauth, and Rozenberg,
 \label{eq:ch-13-10-gkkr-loop}
 \boxed{
 \begin{aligned}
-&\text{(i) Start with a guess for } \Sigma(\omega).\\
-&\text{(ii) Compute } G_\text{loc}(\omega) = \sum_{\mathbf k} \Bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \Bigr]^{-1}.\\
-&\text{(iii) Compute the bath } \Delta(\omega) = \omega + \mu - \Sigma(\omega) - G_\text{loc}^{-1}(\omega).\\
-&\text{(iv) Solve the SIAM with this bath.}\\
-&\text{(v) Extract the new } \Sigma_\text{imp}(\omega) \text{ from the SIAM solution.}\\
-&\text{(vi) Set } \Sigma(\omega) = \Sigma_\text{imp}(\omega) \text{ and return to (ii).}\\
+&\text{(i) Start with a guess for } \Sigma(\omega).\\\
+&\text{(ii) Compute } G_\text{loc}(\omega) = \sum_{\mathbf k} \Bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \Bigr]^{-1}.\\\
+&\text{(iii) Compute the bath } \Delta(\omega) = \omega + \mu - \Sigma(\omega) - G_\text{loc}^{-1}(\omega).\\\
+&\text{(iv) Solve the SIAM with this bath.}\\\
+&\text{(v) Extract the new } \Sigma_\text{imp}(\omega) \text{ from the SIAM solution.}\\\
+&\text{(vi) Set } \Sigma(\omega) = \Sigma_\text{imp}(\omega) \text{ and return to (ii).}\\\
 &\text{(vii) Iterate to self-consistency.}
 \end{aligned}
 }

@@ -257,8 +257,8 @@ representation** or **standard representation**) is
 
 \begin{equation}
 \label{eq:ch-15-dirac-matrices}
-\boldsymbol\alpha \;=\; \begin{pmatrix} \mathbf 0 & \boldsymbol\sigma \\ \boldsymbol\sigma & \mathbf 0 \end{pmatrix}, \qquad
-\beta \;=\; \begin{pmatrix} \mathbf 1_2 & \mathbf 0 \\ \mathbf 0 & -\mathbf 1_2 \end{pmatrix},
+\boldsymbol\alpha \;=\; \begin{pmatrix} \mathbf 0 & \boldsymbol\sigma \\\\ \boldsymbol\sigma & \mathbf 0 \end{pmatrix}, \qquad
+\beta \;=\; \begin{pmatrix} \mathbf 1_2 & \mathbf 0 \\\\ \mathbf 0 & -\mathbf 1_2 \end{pmatrix},
 \end{equation}
 
 where $\boldsymbol\sigma = (\sigma_x, \sigma_y, \sigma_z)$
@@ -293,7 +293,7 @@ interpretation. Group the 4-spinor into two 2-spinors
 
 \begin{equation}
 \label{eq:ch-15-large-small}
-\Psi(\mathbf r) \;=\; \begin{pmatrix} \Phi^L(\mathbf r) \\ \Phi^S(\mathbf r) \end{pmatrix},
+\Psi(\mathbf r) \;=\; \begin{pmatrix} \Phi^L(\mathbf r) \\\\ \Phi^S(\mathbf r) \end{pmatrix},
 \qquad
 \Phi^L, \Phi^S \in \mathbb C^2 .
 \end{equation}
@@ -472,7 +472,7 @@ $2 \times 2$ block form. In the standard representation,
 
 \begin{equation}
 \label{eq:ch-15-dirac-block}
-\hat H_\text{Dirac} - mc^2 \;=\; \begin{pmatrix} v(\mathbf r) & c\,\boldsymbol\sigma\!\cdot\!\hat{\mathbf p} \\ c\,\boldsymbol\sigma\!\cdot\!\hat{\mathbf p} & v(\mathbf r) - 2mc^2 \end{pmatrix} .
+\hat H_\text{Dirac} - mc^2 \;=\; \begin{pmatrix} v(\mathbf r) & c\,\boldsymbol\sigma\!\cdot\!\hat{\mathbf p} \\\\ c\,\boldsymbol\sigma\!\cdot\!\hat{\mathbf p} & v(\mathbf r) - 2mc^2 \end{pmatrix} .
 \end{equation}
 
 The off-diagonal blocks couple $\Phi^L$ to $\Phi^S$ and
@@ -786,7 +786,7 @@ $\hat U$ that brings $\hat H_D$ to block-diagonal form:
 
 \begin{equation}
 \label{eq:ch-15-block-decomp}
-\hat H_\text{BD} \;=\; \hat U\, \hat H_D\, \hat U^\dagger \;=\; \begin{pmatrix} \hat H_+ & 0 \\ 0 & \hat H_- \end{pmatrix} ,
+\hat H_\text{BD} \;=\; \hat U\, \hat H_D\, \hat U^\dagger \;=\; \begin{pmatrix} \hat H_+ & 0 \\\\ 0 & \hat H_- \end{pmatrix} ,
 \end{equation}
 
 where $\hat H_+$ acts on the (transformed) large component
@@ -810,7 +810,7 @@ the decoupling is
 
 \begin{equation}
 \label{eq:ch-15-fw-x}
-\hat U \;=\; \begin{pmatrix} \hat\Omega_+ & - \hat R\, \hat\Omega_- \\ \hat R\, \hat\Omega_+ & \hat\Omega_- \end{pmatrix} ,
+\hat U \;=\; \begin{pmatrix} \hat\Omega_+ & - \hat R\, \hat\Omega_- \\\\ \hat R\, \hat\Omega_+ & \hat\Omega_- \end{pmatrix} ,
 \qquad
 \hat R \;=\; \hat X\, (\hat H_+ - \hat H_{--})^{-1} ,
 \end{equation}
@@ -1110,7 +1110,7 @@ $\{\chi_\mu\}$ is
 
 \begin{equation}
 \label{eq:ch-15-x2c-h}
-\mathbf h_D \;=\; \begin{pmatrix} \mathbf v & c\,\mathbf T \\ c\,\mathbf T & \mathbf v - 2mc^2 \mathbf 1 \end{pmatrix} ,
+\mathbf h_D \;=\; \begin{pmatrix} \mathbf v & c\,\mathbf T \\\\ c\,\mathbf T & \mathbf v - 2mc^2 \mathbf 1 \end{pmatrix} ,
 \qquad
 T_{\mu\nu} \;=\; \langle \chi_\mu | \boldsymbol\sigma \cdot \hat{\mathbf p} | \chi_\nu \rangle ,
 \end{equation}
@@ -1126,7 +1126,7 @@ the positive-energy subspace:
 
 \begin{equation}
 \label{eq:ch-15-x2c-eig}
-\mathbf h_D \begin{pmatrix} \mathbf C_+ \\ \mathbf C_- \end{pmatrix} \;=\; \begin{pmatrix} \mathbf C_+ \\ \mathbf C_- \end{pmatrix} \boldsymbol\varepsilon_+ ,
+\mathbf h_D \begin{pmatrix} \mathbf C_+ \\\\ \mathbf C_- \end{pmatrix} \;=\; \begin{pmatrix} \mathbf C_+ \\\\ \mathbf C_- \end{pmatrix} \boldsymbol\varepsilon_+ ,
 \end{equation}
 
 where $\mathbf C_+$ are the upper $K$ spinor
@@ -1136,7 +1136,7 @@ matrix is
 
 \begin{equation}
 \label{eq:ch-15-x2c-u}
-\mathbf U_\text{X2C} \;=\; \begin{pmatrix} \mathbf C_+ & -\mathbf C_- \\ \mathbf C_- & \mathbf C_+ \end{pmatrix} ,
+\mathbf U_\text{X2C} \;=\; \begin{pmatrix} \mathbf C_+ & -\mathbf C_- \\\\ \mathbf C_- & \mathbf C_+ \end{pmatrix} ,
 \end{equation}
 
 and the X2C Hamiltonian is the upper block of the
@@ -1502,7 +1502,7 @@ are
 
 \begin{equation}
 \label{eq:ch-15-ls-eigenvalue}
-\Bigl\langle \xi(r) \hat{\mathbf L} \cdot \hat{\mathbf S} \bigr\rangle_{n,\ell,j} \;=\; \tfrac{1}{2}\Bigl[\ell(\ell+1) + s(s+1) - j(j+1)\Bigr] \langle \xi \rangle_{n\ell} \;=\; \begin{cases} +\tfrac{\ell}{2}\,\langle \xi \rangle, & j = \ell + 1/2, \\ -\tfrac{\ell+1}{2}\,\langle \xi \rangle, & j = \ell - 1/2. \end{cases}
+\Bigl\langle \xi(r) \hat{\mathbf L} \cdot \hat{\mathbf S} \bigr\rangle_{n,\ell,j} \;=\; \tfrac{1}{2}\Bigl[\ell(\ell+1) + s(s+1) - j(j+1)\Bigr] \langle \xi \rangle_{n\ell} \;=\; \begin{cases} +\tfrac{\ell}{2}\,\langle \xi \rangle, & j = \ell + 1/2, \\\\ -\tfrac{\ell+1}{2}\,\langle \xi \rangle, & j = \ell - 1/2. \end{cases}
 \end{equation}
 
 The SOC splitting of an $\ell \ge 1$ shell is therefore
@@ -1907,7 +1907,7 @@ non-collinear KS equations of chapter 04:
 
 \begin{equation}
 \label{eq:ch-15-2c-ks-eig}
-\hat H_\text{2c-KS} \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} \;=\; \varepsilon_i \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} ,
+\hat H_\text{2c-KS} \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\\\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} \;=\; \varepsilon_i \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\\\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} ,
 \end{equation}
 
 where the $\phi_{i,\sigma}(\mathbf r)$ are 2-component
@@ -1922,7 +1922,7 @@ and the magnetisation is
 
 \begin{equation}
 \label{eq:ch-15-2c-magnetisation}
-\mathbf m(\mathbf r) \;=\; \mu_B \sum_{i\,\text{occ}} \Bigl[ \phi_{i,\uparrow}^*(\mathbf r), \phi_{i,\downarrow}^*(\mathbf r) \Bigr] \boldsymbol\sigma \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} .
+\mathbf m(\mathbf r) \;=\; \mu_B \sum_{i\,\text{occ}} \Bigl[ \phi_{i,\uparrow}^*(\mathbf r), \phi_{i,\downarrow}^*(\mathbf r) \Bigr] \boldsymbol\sigma \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\\\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} .
 \end{equation}
 
 The 2c-KS equations are solved self-consistently in
@@ -2035,7 +2035,7 @@ where $\hat K$ is complex conjugation. The action on a
 
 \begin{equation}
 \label{eq:ch-15-tr-action}
-\hat{\mathcal T} \begin{pmatrix} \phi_\uparrow(\mathbf r) \\ \phi_\downarrow(\mathbf r) \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \phi_\uparrow^*(\mathbf r) \\ \phi_\downarrow^*(\mathbf r) \end{pmatrix} \;=\; \begin{pmatrix} -\phi_\downarrow^*(\mathbf r) \\ \phi_\uparrow^*(\mathbf r) \end{pmatrix} .
+\hat{\mathcal T} \begin{pmatrix} \phi_\uparrow(\mathbf r) \\\\ \phi_\downarrow(\mathbf r) \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \phi_\uparrow^*(\mathbf r) \\\\ \phi_\downarrow^*(\mathbf r) \end{pmatrix} \;=\; \begin{pmatrix} -\phi_\downarrow^*(\mathbf r) \\\\ \phi_\uparrow^*(\mathbf r) \end{pmatrix} .
 \end{equation}
 
 The time-reversal operator squares to $-1$ for a

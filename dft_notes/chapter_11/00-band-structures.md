@@ -1475,8 +1475,8 @@ sublattice at
 The three nearest neighbours of an A atom are
 
 \begin{align}
-\boldsymbol\delta_1 &\;=\; \Bigl(0, a/\sqrt 3\Bigr) \;=\; \boldsymbol\tau_B , \nonumber \\
-\boldsymbol\delta_2 &\;=\; \Bigl(a/2, -a/(2\sqrt 3)\Bigr) \;=\; \boldsymbol\tau_B - \mathbf a_1 , \nonumber \\
+\boldsymbol\delta_1 &\;=\; \Bigl(0, a/\sqrt 3\Bigr) \;=\; \boldsymbol\tau_B , \nonumber \\\
+\boldsymbol\delta_2 &\;=\; \Bigl(a/2, -a/(2\sqrt 3)\Bigr) \;=\; \boldsymbol\tau_B - \mathbf a_1 , \nonumber \\\
 \boldsymbol\delta_3 &\;=\; \Bigl(-a/2, -a/(2\sqrt 3)\Bigr) \;=\; \boldsymbol\tau_B - \mathbf a_2 .
 \end{align}
 
@@ -1513,7 +1513,7 @@ basis gives a $2 \times 2$ Hamiltonian at each $\mathbf k$:
 H(\mathbf k) \;=\;
 \begin{pmatrix}
 \langle \phi_A | \hat H | \phi_A \rangle_\mathbf k
-   & \langle \phi_A | \hat H | \phi_B \rangle_\mathbf k \\
+   & \langle \phi_A | \hat H | \phi_B \rangle_\mathbf k \\\
 \langle \phi_B | \hat H | \phi_A \rangle_\mathbf k
    & \langle \phi_B | \hat H | \phi_B \rangle_\mathbf k
 \end{pmatrix} .
@@ -1558,7 +1558,7 @@ The $2 \times 2$ Hamiltonian is therefore
 \label{eq:ch-11-graphene-hk2}
 H(\mathbf k) \;=\;
 \begin{pmatrix}
-0 & f(\mathbf k) \\
+0 & f(\mathbf k) \\\
 f^*(\mathbf k) & 0
 \end{pmatrix} ,
 \qquad
@@ -1587,8 +1587,8 @@ $\mathbf k = 0$ (the $\Gamma$ point) the three terms in $f$ all
 add in phase:
 
 \begin{align}
-f(\Gamma) &= t (1 + 1 + 1) = 3 t , \nonumber \\
-|f(\Gamma)| &= 3 |t| , \nonumber \\
+f(\Gamma) &= t (1 + 1 + 1) = 3 t , \nonumber \\\
+|f(\Gamma)| &= 3 |t| , \nonumber \\\
 \varepsilon_\pm(\Gamma) &= \pm 3 |t| .
 \end{align}
 
@@ -1603,7 +1603,7 @@ The explicit form of $|f(\mathbf k)|^2$ is
 |f(\mathbf k)|^2 &= t^2 \Bigl(1 + e^{i \mathbf k \cdot \mathbf a_1}
                                      + e^{i \mathbf k \cdot \mathbf a_2}\Bigr)
                         \Bigl(1 + e^{-i \mathbf k \cdot \mathbf a_1}
-                                     + e^{-i \mathbf k \cdot \mathbf a_2}\Bigr) \nonumber \\
+                                     + e^{-i \mathbf k \cdot \mathbf a_2}\Bigr) \nonumber \\\
    &= t^2 \Bigl[ 3 + 2 \cos(\mathbf k \cdot \mathbf a_1)
                   + 2 \cos(\mathbf k \cdot \mathbf a_2)
                   + 2 \cos\Bigl(\mathbf k \cdot (\mathbf a_1 - \mathbf a_2)\Bigr) \Bigr] .
@@ -1634,7 +1634,7 @@ A solution of this 2-equation-in-2-unknowns problem is $\mathbf k
 4\pi/3$ (modulo $2\pi$).  Solving for the Cartesian $\mathbf k$:
 
 \begin{align}
-k_x a + 0 \cdot k_y a &= 2\pi / 3 , \nonumber \\
+k_x a + 0 \cdot k_y a &= 2\pi / 3 , \nonumber \\\
 k_x a / 2 + k_y a \sqrt 3 / 2 &= 4 \pi / 3 .
 \end{align}
 
@@ -1650,7 +1650,7 @@ $$
 Wait, let me redo this carefully.  We have
 
 \begin{align}
-k_x a &= 2\pi / 3 , \nonumber \\
+k_x a &= 2\pi / 3 , \nonumber \\\
 k_x a / 2 + k_y a \sqrt 3 / 2 &= 4 \pi / 3 .
 \end{align}
 
@@ -2117,7 +2117,7 @@ single $p_z$ orbital per atom.  Use the convention
 $$
 H(\mathbf k) \;=\;
 \begin{pmatrix}
-\varepsilon_A & f(\mathbf k) \\
+\varepsilon_A & f(\mathbf k) \\\
 f^*(\mathbf k) & \varepsilon_B
 \end{pmatrix} ,
 $$

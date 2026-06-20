@@ -202,8 +202,8 @@ Subtracting, and using the boundary condition $u_l(0) = 0$,
 $\dot u_l(0) = 0$:
 
 \begin{align}
-&\int_0^{r_c} \frac{1}{2}\left[\dot u_l u_l'' - u_l \dot u_l''\right] dr = \int_0^{r_c} u_l^2 dr - \int_0^{r_c} \dot u_l u_l dr, \\
-&\frac{1}{2}\left[\dot u_l(r) u_l'(r) - u_l(r) \dot u_l'(r)\right]_0^{r_c} = \int_0^{r_c} u_l^2 dr - \int_0^{r_c} \dot u_l u_l dr, \\
+&\int_0^{r_c} \frac{1}{2}\left[\dot u_l u_l'' - u_l \dot u_l''\right] dr = \int_0^{r_c} u_l^2 dr - \int_0^{r_c} \dot u_l u_l dr, \\\
+&\frac{1}{2}\left[\dot u_l(r) u_l'(r) - u_l(r) \dot u_l'(r)\right]_0^{r_c} = \int_0^{r_c} u_l^2 dr - \int_0^{r_c} \dot u_l u_l dr, \\\
 &\frac{1}{2}\left[u_l'(r_c) \dot u_l(r_c) - u_l(r_c) \dot u_l'(r_c)\right] = \int_0^{r_c} u_l^2 dr - \int_0^{r_c} \dot u_l u_l dr. \label{eq:ch-08-deriv-3}
 \end{align}
 
@@ -386,10 +386,10 @@ To derive \eqref{eq:ch-08-phi-pp}, differentiate
 \eqref{eq:ch-08-phi-deriv}:
 
 \begin{align}
-\frac{\phi_l''}{\phi_l} - \frac{(\phi_l')^2}{\phi_l^2} &= -\frac{l+1}{r^2} + p''(r), \notag \\
-\frac{\phi_l''}{\phi_l} &= \frac{(\phi_l')^2}{\phi_l^2} - \frac{l+1}{r^2} + p''(r) \notag \\
-&= \left(\frac{l+1}{r} + p'(r)\right)^2 - \frac{l+1}{r^2} + p''(r) \notag \\
-&= \frac{(l+1)^2}{r^2} + \frac{2(l+1)p'(r)}{r} + p'(r)^2 - \frac{l+1}{r^2} + p''(r) \notag \\
+\frac{\phi_l''}{\phi_l} - \frac{(\phi_l')^2}{\phi_l^2} &= -\frac{l+1}{r^2} + p''(r), \notag \\\
+\frac{\phi_l''}{\phi_l} &= \frac{(\phi_l')^2}{\phi_l^2} - \frac{l+1}{r^2} + p''(r) \notag \\\
+&= \left(\frac{l+1}{r} + p'(r)\right)^2 - \frac{l+1}{r^2} + p''(r) \notag \\\
+&= \frac{(l+1)^2}{r^2} + \frac{2(l+1)p'(r)}{r} + p'(r)^2 - \frac{l+1}{r^2} + p''(r) \notag \\\
 &= \frac{l(l+1)}{r^2} + \frac{2(l+1)p'(r)}{r} + p'(r)^2 + p''(r).
 \end{align}
 
@@ -409,7 +409,7 @@ $-(Z - Z_\text{core})/r$. The pseudo-potential is therefore:
 
 \begin{equation}
 \label{eq:ch-08-ps-form}
-V_{ps,l}(r) = \begin{cases} E_l + \frac{1}{2}\left[\frac{2(l+1)p'(r)}{r} + p'(r)^2 + p''(r)\right], & r \le r_c, \\ V_{ae}(r), & r > r_c. \end{cases}
+V_{ps,l}(r) = \begin{cases} E_l + \frac{1}{2}\left[\frac{2(l+1)p'(r)}{r} + p'(r)^2 + p''(r)\right], & r \le r_c, \\\\ V_{ae}(r), & r > r_c. \end{cases}
 \end{equation}
 
 The function $V_{ps,l}(r)$ constructed this way is continuous and
@@ -651,7 +651,7 @@ To verify: substituting into the radial equation
 $-\frac{1}{2}u_0'' - \frac{1}{r}u_0 = E_0 u_0$,
 
 \begin{align}
-\text{LHS} &= -\frac{1}{2}\cdot[-2(2-r)e^{-r}] - \frac{1}{r}\cdot 2r\,e^{-r} \notag \\
+\text{LHS} &= -\frac{1}{2}\cdot[-2(2-r)e^{-r}] - \frac{1}{r}\cdot 2r\,e^{-r} \notag \\\
 &= (2-r)\,e^{-r} - 2\,e^{-r} = -r\,e^{-r} = -\frac{1}{2}\cdot 2r\,e^{-r} = -\frac{1}{2}\,u_0(r) = E_0\,u_0(r).\quad\checkmark \notag
 \end{align}
 
@@ -685,8 +685,8 @@ through the matching step by step, then solve.
 **Step 1 — value at $r_c$.**
 
 \begin{align}
-\phi_0(r_c) = r_c\,\exp\!\Bigl(c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6\Bigr) &= u_0(r_c) = 2r_c\,e^{-r_c}, \notag \\
-\exp\!\Bigl(c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6\Bigr) &= 2\,e^{-r_c}, \notag \\
+\phi_0(r_c) = r_c\,\exp\!\Bigl(c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6\Bigr) &= u_0(r_c) = 2r_c\,e^{-r_c}, \notag \\\
+\exp\!\Bigl(c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6\Bigr) &= 2\,e^{-r_c}, \notag \\\
 c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6 &= \ln 2 - r_c. \label{eq:ch-08-h-match-1}
 \end{align}
 
@@ -706,7 +706,7 @@ The all-electron ratio is
 $u_0'(r_c)/u_0(r_c) = (1 - r_c)/r_c$, so
 
 \begin{align}
-\frac{1}{r_c} + 2c_1 r_c + 4c_2 r_c^3 + 6c_3 r_c^5 &= \frac{1}{r_c} - 1, \notag \\
+\frac{1}{r_c} + 2c_1 r_c + 4c_2 r_c^3 + 6c_3 r_c^5 &= \frac{1}{r_c} - 1, \notag \\\
 2c_1 r_c + 4c_2 r_c^3 + 6c_3 r_c^5 &= -1. \label{eq:ch-08-h-match-2}
 \end{align}
 
@@ -792,9 +792,9 @@ V_{ps,0}(r) = E_0 + \tfrac{1}{2}\Bigl[2p'(r)/r + p'(r)^2 + p''(r)\Bigr].
 3-parameter values $c_1 = -1.5$, $c_2 = +1$):
 
 \begin{align}
-p'(r_c) &= 2c_1 r_c + 4c_2 r_c^3 = 2(-1.5)(0.5) + 4(1)(0.5)^3 = -1.5 + 0.5 = -1.0, \notag \\
-p''(r_c) &= 2c_1 + 12 c_2 r_c^2 = 2(-1.5) + 12(1)(0.5)^2 = -3.0 + 3.0 = 0.0, \notag \\
-2p'(r_c)/r_c &= -4.0, \quad p'(r_c)^2 = 1.0, \notag \\
+p'(r_c) &= 2c_1 r_c + 4c_2 r_c^3 = 2(-1.5)(0.5) + 4(1)(0.5)^3 = -1.5 + 0.5 = -1.0, \notag \\\
+p''(r_c) &= 2c_1 + 12 c_2 r_c^2 = 2(-1.5) + 12(1)(0.5)^2 = -3.0 + 3.0 = 0.0, \notag \\\
+2p'(r_c)/r_c &= -4.0, \quad p'(r_c)^2 = 1.0, \notag \\\
 V_{ps,0}(r_c^-) &= -0.5 + \tfrac{1}{2}(-4.0 + 1.0 + 0.0) = -0.5 - 1.5 = -2.0. \notag
 \end{align}
 
@@ -811,8 +811,8 @@ exactly.
 values $c_1 = -1.5$, $c_2 = +1$, $c_3 = 0$):
 
 \begin{align}
-\lim_{r \to 0} \frac{2p'(r)}{r} &= \lim_{r \to 0}\Bigl(4c_1 + 8c_2 r^2 + 12 c_3 r^4\Bigr) = 4c_1 = -6.0, \notag \\
-\lim_{r \to 0} p'(r)^2 &= 0, \quad \lim_{r \to 0} p''(r) = 2c_1 = -3.0, \notag \\
+\lim_{r \to 0} \frac{2p'(r)}{r} &= \lim_{r \to 0}\Bigl(4c_1 + 8c_2 r^2 + 12 c_3 r^4\Bigr) = 4c_1 = -6.0, \notag \\\
+\lim_{r \to 0} p'(r)^2 &= 0, \quad \lim_{r \to 0} p''(r) = 2c_1 = -3.0, \notag \\\
 V_{ps,0}(0) &= -0.5 + \tfrac{1}{2}(-6.0 + 0 - 3.0) = -0.5 - 4.5 = -5.0\,E_h. \label{eq:ch-08-h-vps-zero}
 \end{align}
 
@@ -1373,8 +1373,8 @@ applied to $|\tilde\Psi_n^R\rangle$ inside $\Omega_R$. Now
 substitute into \eqref{eq:ch-08-paw-apply-t}:
 
 \begin{align}
-|\Psi_n\rangle &= |\tilde\Psi_n^{out}\rangle + \sum_R |\tilde\Psi_n^R\rangle + \sum_{R,i} \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\
-&= |\tilde\Psi_n^{out}\rangle + \sum_R \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle + \sum_{R,i} \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\
+|\Psi_n\rangle &= |\tilde\Psi_n^{out}\rangle + \sum_R |\tilde\Psi_n^R\rangle + \sum_{R,i} \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\\
+&= |\tilde\Psi_n^{out}\rangle + \sum_R \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle + \sum_{R,i} \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\\
 &= |\tilde\Psi_n^{out}\rangle + \sum_R \sum_i |\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle. \label{eq:ch-08-paw-final}
 \end{align}
 

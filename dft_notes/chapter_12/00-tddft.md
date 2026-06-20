@@ -260,8 +260,8 @@ are the coupled system
 \boxed{
 \begin{aligned}
 i\, \partial_t \phi_i(\mathbf r, t) &= \Bigl[-\tfrac{1}{2}\nabla^2
-   + v_\text{eff}[\rho_t](\mathbf r, t) \Bigr]\, \phi_i(\mathbf r, t) , \\
-\rho(\mathbf r, t) &= 2 \sum_{i=1}^{N/2} |\phi_i(\mathbf r, t)|^2 , \\
+   + v_\text{eff}[\rho_t](\mathbf r, t) \Bigr]\, \phi_i(\mathbf r, t) , \\\
+\rho(\mathbf r, t) &= 2 \sum_{i=1}^{N/2} |\phi_i(\mathbf r, t)|^2 , \\\
 v_\text{eff}[\rho](\mathbf r, t) &=
    v_\text{ext}(\mathbf r, t)
  + v_\text{H}[\rho_t](\mathbf r, t)
@@ -809,7 +809,7 @@ side, and rearrange:
 \delta\rho(\mathbf r, \omega)
 &= \int d\mathbf r'\,
      \chi_s(\mathbf r, \mathbf r'; \omega)\,
-     \delta v_\text{ext}(\mathbf r', \omega) \\
+     \delta v_\text{ext}(\mathbf r', \omega) \\\
 &\quad + \int d\mathbf r'\, d\mathbf r''\,
      \chi_s(\mathbf r, \mathbf r'; \omega)\,
      \Bigl[ v_H(\mathbf r', \mathbf r'')
@@ -1155,16 +1155,16 @@ given by $\mathbf K$:
 \label{eq:ch-12-casida}
 \boxed{
 \begin{pmatrix}
-  \mathbf A & \mathbf B \\
+  \mathbf A & \mathbf B \\\
   \mathbf B & \mathbf A
 \end{pmatrix}
-\begin{pmatrix} \mathbf X \\ \mathbf Y \end{pmatrix}
+\begin{pmatrix} \mathbf X \\\\ \mathbf Y \end{pmatrix}
 \;=\; \omega_I\,
 \begin{pmatrix}
-  \mathbf 1 & \mathbf 0 \\
+  \mathbf 1 & \mathbf 0 \\\
   \mathbf 0 & -\mathbf 1
 \end{pmatrix}
-\begin{pmatrix} \mathbf X \\ \mathbf Y \end{pmatrix} .
+\begin{pmatrix} \mathbf X \\\\ \mathbf Y \end{pmatrix} .
 }
 \end{equation}
 
@@ -1631,12 +1631,12 @@ The two-level Hamiltonian is
 \label{eq:ch-12-2l-hamiltonian}
 \hat H_0 \;=\;
 \begin{pmatrix}
-\varepsilon_1 & 0 \\
+\varepsilon_1 & 0 \\\
 0 & \varepsilon_2
 \end{pmatrix}
 \;=\; \omega_{12}\,
 \begin{pmatrix}
--1/2 & 0 \\
+-1/2 & 0 \\\
 0 & +1/2
 \end{pmatrix}
 \;+\; \frac{\varepsilon_1 + \varepsilon_2}{2}\, \mathbf 1 ,
@@ -1677,10 +1677,10 @@ matrix element. The general equation
 
 \begin{equation}
 \label{eq:ch-12-2l-casida}
-\begin{pmatrix} A & B \\ B & A \end{pmatrix}
-\begin{pmatrix} X \\ Y \end{pmatrix}
+\begin{pmatrix} A & B \\\\ B & A \end{pmatrix}
+\begin{pmatrix} X \\\\ Y \end{pmatrix}
 \;=\; \omega_I\,
-\begin{pmatrix} X \\ -Y \end{pmatrix} .
+\begin{pmatrix} X \\\\ -Y \end{pmatrix} .
 \end{equation}
 
 The eigenvalues of \eqref{eq:ch-12-2l-casida} are
@@ -1957,7 +1957,7 @@ $\omega_I$:
 \begin{align}
 \sum_I f_I\, \omega_I
 &= \frac{2\,m}{3\hbar}\, \sum_{\alpha, I}
-   \omega_I\, \Bigl|\langle \Psi_I | \hat r_\alpha | \Psi_0 \rangle\Bigr|^2 \\
+   \omega_I\, \Bigl|\langle \Psi_I | \hat r_\alpha | \Psi_0 \rangle\Bigr|^2 \\\
 &= -\frac{2\,m}{3\hbar}\, \sum_\alpha
    \langle \Psi_0 | \hat r_\alpha [\hat H_0, [\hat H_0, \hat r_\alpha]] | \Psi_0 \rangle .
 \end{align}
@@ -2070,7 +2070,7 @@ equation is
 
 \begin{align}
 \chi(\mathbf r, \mathbf r'; \omega)
-&= \chi_s(\mathbf r, \mathbf r'; \omega) \\
+&= \chi_s(\mathbf r, \mathbf r'; \omega) \\\
 &\quad + \int d\mathbf r''\, d\mathbf r'''\,
    \chi_s(\mathbf r, \mathbf r''; \omega)\,
    K(\mathbf r'', \mathbf r''')\,
@@ -2102,7 +2102,7 @@ For the eigenvalue problem these decouple into
 \begin{equation}
 \label{eq:ch-12-casida-XY-system}
 \begin{aligned}
-A\, X + B\, Y &= \omega\, X , \\
+A\, X + B\, Y &= \omega\, X , \\\
 B\, X + A\, Y &= -\omega\, Y ,
 \end{aligned}
 \end{equation}
@@ -2134,16 +2134,16 @@ The result is the Casida equation
 \begin{equation}
 \boxed{
 \begin{pmatrix}
-  \mathbf A & \mathbf B \\
+  \mathbf A & \mathbf B \\\
   \mathbf B & \mathbf A
 \end{pmatrix}
-\begin{pmatrix} \mathbf X \\ \mathbf Y \end{pmatrix}
+\begin{pmatrix} \mathbf X \\\\ \mathbf Y \end{pmatrix}
 \;=\; \omega_I\,
 \begin{pmatrix}
-  \mathbf 1 & \mathbf 0 \\
+  \mathbf 1 & \mathbf 0 \\\
   \mathbf 0 & -\mathbf 1
 \end{pmatrix}
-\begin{pmatrix} \mathbf X \\ \mathbf Y \end{pmatrix} ,
+\begin{pmatrix} \mathbf X \\\\ \mathbf Y \end{pmatrix} ,
 }
 \end{equation}
 
@@ -2570,16 +2570,16 @@ The **Casida equation** is therefore the same form as in
 \label{eq:ch-12-09-casida}
 \boxed{
 \begin{pmatrix}
-  \mathbf A & \mathbf B \\
+  \mathbf A & \mathbf B \\\
   \mathbf B & \mathbf A
 \end{pmatrix}
-\begin{pmatrix} \mathbf X \\ \mathbf Y \end{pmatrix}
+\begin{pmatrix} \mathbf X \\\\ \mathbf Y \end{pmatrix}
 \;=\; \omega_I\,
 \begin{pmatrix}
-  \mathbf 1 & \mathbf 0 \\
+  \mathbf 1 & \mathbf 0 \\\
   \mathbf 0 & -\mathbf 1
 \end{pmatrix}
-\begin{pmatrix} \mathbf X \\ \mathbf Y \end{pmatrix}
+\begin{pmatrix} \mathbf X \\\\ \mathbf Y \end{pmatrix}
 }
 \end{equation}
 
@@ -3428,7 +3428,7 @@ i\, \partial_t\, \phi_i(\mathbf r, t)
         + v_\text{ext}(\mathbf r, t)
         + v_\text{H}[\rho_t](\mathbf r, t)
         + v_\text{xc}[\rho_t](\mathbf r, t)
-   \right] \phi_i(\mathbf r, t) , \\[4pt]
+   \right] \phi_i(\mathbf r, t) , \\\\[4pt]
 \rho(\mathbf r, t)
    &= 2 \sum_{i=1}^{N/2} |\phi_i(\mathbf r, t)|^2 .
 \end{aligned}

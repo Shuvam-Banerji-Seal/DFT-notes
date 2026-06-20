@@ -166,10 +166,10 @@ For any two square-integrable functions $f, g$:
 
 \begin{align}
 \langle \hat T_{\mathbf R} f \mid \hat T_{\mathbf R} g \rangle
-  &= \int_{\mathbb R^3} \bigl[(\hat T_{\mathbf R} f)(\mathbf r)\bigr]^* \, (\hat T_{\mathbf R} g)(\mathbf r) \, d^3r \nonumber \\
-  &= \int_{\mathbb R^3} f^*(\mathbf r + \mathbf R) \, g(\mathbf r + \mathbf R) \, d^3r \nonumber \\
+  &= \int_{\mathbb R^3} \Bigl[(\hat T_{\mathbf R} f)(\mathbf r)\Bigr]^* \, (\hat T_{\mathbf R} g)(\mathbf r) \, d^3r \nonumber \\\
+  &= \int_{\mathbb R^3} f^*(\mathbf r + \mathbf R) \, g(\mathbf r + \mathbf R) \, d^3r \nonumber \\\
   &= \int_{\mathbb R^3} f^*(\mathbf u) \, g(\mathbf u) \, d^3u
-      \quad \text{(substituting } \mathbf u = \mathbf r + \mathbf R,\; d^3u = d^3r) \nonumber \\
+      \quad \text{(substituting } \mathbf u = \mathbf r + \mathbf R,\; d^3u = d^3r) \nonumber \\\
   &= \langle f \mid g \rangle.
 \end{align}
 
@@ -200,9 +200,9 @@ $V(\mathbf r + \mathbf R) = V(\mathbf r)$ for every $\mathbf R$.
 Apply the two operators in succession:
 
 \begin{align}
-\bigl(\hat T_{\mathbf R} \hat H f\bigr)(\mathbf r)
-   &= (\hat H f)(\mathbf r + \mathbf R) \nonumber \\
-   &= -\tfrac{1}{2} \nabla^2 f(\mathbf r + \mathbf R) + V(\mathbf r + \mathbf R) f(\mathbf r + \mathbf R) \nonumber \\
+\Bigl(\hat T_{\mathbf R} \hat H f\Bigr)(\mathbf r)
+   &= (\hat H f)(\mathbf r + \mathbf R) \nonumber \\\
+   &= -\tfrac{1}{2} \nabla^2 f(\mathbf r + \mathbf R) + V(\mathbf r + \mathbf R) f(\mathbf r + \mathbf R) \nonumber \\\
    &= -\tfrac{1}{2} \nabla^2 f(\mathbf r + \mathbf R) + V(\mathbf r) f(\mathbf r + \mathbf R).
 \end{align}
 
@@ -212,9 +212,9 @@ $\nabla_\mathbf r f(\mathbf r + \mathbf R) = \nabla_\mathbf u f(\mathbf u)$, so
 
 \begin{equation}
 \label{eq:ch-07-commute}
-\bigl(\hat T_{\mathbf R} \hat H f\bigr)(\mathbf r)
+\Bigl(\hat T_{\mathbf R} \hat H f\Bigr)(\mathbf r)
    = -\tfrac{1}{2} \nabla^2 f(\mathbf r + \mathbf R) + V(\mathbf r) f(\mathbf r + \mathbf R)
-   = \bigl(\hat H \, \hat T_{\mathbf R} f\bigr)(\mathbf r).
+   = \Bigl(\hat H \, \hat T_{\mathbf R} f\Bigr)(\mathbf r).
 \end{equation}
 
 The two operators therefore commute:
@@ -286,11 +286,11 @@ Compute $u_{\mathbf k}$ at a translated point:
 
 \begin{align}
 u_{\mathbf k}(\mathbf r + \mathbf R)
-   &= e^{-i \mathbf k \cdot (\mathbf r + \mathbf R)} \, \psi(\mathbf r + \mathbf R) \nonumber \\
+   &= e^{-i \mathbf k \cdot (\mathbf r + \mathbf R)} \, \psi(\mathbf r + \mathbf R) \nonumber \\\
    &= e^{-i \mathbf k \cdot \mathbf r} \, e^{-i \mathbf k \cdot \mathbf R} \,
-      \bigl( e^{i \mathbf k \cdot \mathbf R} \, \psi(\mathbf r) \bigr)
-      \quad \text{by \eqref{eq:ch-07-bloch-phase}} \nonumber \\
-   &= e^{-i \mathbf k \cdot \mathbf r} \, \psi(\mathbf r) \nonumber \\
+      \Bigl( e^{i \mathbf k \cdot \mathbf R} \, \psi(\mathbf r) \Bigr)
+      \quad \text{by \eqref{eq:ch-07-bloch-phase}} \nonumber \\\
+   &= e^{-i \mathbf k \cdot \mathbf r} \, \psi(\mathbf r) \nonumber \\\
    &= u_{\mathbf k}(\mathbf r).
 \end{align}
 
@@ -481,7 +481,7 @@ $\hat H = -\tfrac{1}{2}\nabla^2 + V(\mathbf r)$ with periodic $V$:
 \begin{align}
 \langle \mathbf k + \mathbf G' \mid \hat H \mid \mathbf k + \mathbf G \rangle
    &= \int \frac{d^3r}{\Omega} \, e^{-i(\mathbf k + \mathbf G') \cdot \mathbf r} \,
-      \left[-\tfrac{1}{2}\nabla^2 + V(\mathbf r)\right] e^{i(\mathbf k + \mathbf G) \cdot \mathbf r} \nonumber \\
+      \left[-\tfrac{1}{2}\nabla^2 + V(\mathbf r)\right] e^{i(\mathbf k + \mathbf G) \cdot \mathbf r} \nonumber \\\
    &= \tfrac{1}{2} |\mathbf k + \mathbf G|^2 \, \delta_{\mathbf G \mathbf G'} + V_{\text{per}}(\mathbf G' - \mathbf G),
 \end{align}
 
@@ -645,8 +645,8 @@ The most common choices are:
 
 | Scheme | Function $f(\varepsilon)$ | Tail behaviour | Order in $T$ |
 |:-------|:---------------------------|:---------------|:-------------|
-| Fermi–Dirac | $\bigl[1 + e^{(\varepsilon - \mu)/k_B T}\bigr]^{-1}$ | Exponential | Exact |
-| Gaussian | $\tfrac{1}{2}\operatorname{erfc}\!\bigl[(\varepsilon - \mu)/\sigma\bigr]$ | Exponential | — |
+| Fermi–Dirac | $\Bigl[1 + e^{(\varepsilon - \mu)/k_B T}\Bigr]^{-1}$ | Exponential | Exact |
+| Gaussian | $\tfrac{1}{2}\operatorname{erfc}\!\Bigl[(\varepsilon - \mu)/\sigma\Bigr]$ | Exponential | — |
 | Methfessel–Paxton | Hermite polynomial expansion of the step | $\sim e^{-x^2}$ | $O(\sigma^{2N})$ |
 
 The **Methfessel–Paxton** (MP-x) scheme, in particular, replaces the
@@ -716,8 +716,8 @@ reciprocal-lattice grid $G = m \cdot 2\pi/a$ are
 \label{eq:ch-07-worked-Vhat}
 V_{\text{per}}(G) =
 \begin{cases}
-\phantom{-}0 & \text{if } G = 0, \\
--\tfrac{1}{4} & \text{if } G = \pm 2\pi/a, \\
+\phantom{-}0 & \text{if } G = 0, \\\
+-\tfrac{1}{4} & \text{if } G = \pm 2\pi/a, \\\
 \phantom{-}0 & \text{otherwise}.
 \end{cases}
 \end{equation}
@@ -731,7 +731,7 @@ $G = \pm 2\pi/a$, each equal to $-1/4$. In the matrix
 \label{eq:ch-07-worked-V-matrix}
 V_{\text{per}}(G' - G) =
 \begin{cases}
--\tfrac{1}{4} & \text{if } m' - m = \pm 1, \\
+-\tfrac{1}{4} & \text{if } m' - m = \pm 1, \\\
 \phantom{-}0 & \text{otherwise}.
 \end{cases}
 \end{equation}
@@ -747,7 +747,7 @@ $21 \times 21$ matrix
 
 \begin{equation}
 \label{eq:ch-07-worked-H}
-H_{m m'}(k) = \tfrac{1}{2}\bigl(k + m \cdot 2\pi/a\bigr)^2 \delta_{m m'} \;+\; V_{\text{per}\bigl((m' - m) \cdot 2\pi/a\bigr).
+H_{m m'}(k) = \tfrac{1}{2}\Bigl(k + m \cdot 2\pi/a\Bigr)^2 \delta_{m m'} \;+\; V_{\text{per}\Bigl((m' - m) \cdot 2\pi/a\Bigr).
 \end{equation}
 
 Substituting the explicit $V_{\text{per}}$ from
@@ -755,11 +755,11 @@ Substituting the explicit $V_{\text{per}}$ from
 
 \begin{align}
 H_{m m'}(k)
-  &= \tfrac{1}{2}\bigl(k + m \cdot 2\pi/a\bigr)^2 \delta_{m m'} \;
-     - \tfrac{1}{4}\bigl(\delta_{m', m+1} + \delta_{m', m-1}\bigr) \nonumber \\
+  &= \tfrac{1}{2}\Bigl(k + m \cdot 2\pi/a\Bigr)^2 \delta_{m m'} \;
+     - \tfrac{1}{4}\Bigl(\delta_{m', m+1} + \delta_{m', m-1}\Bigr) \nonumber \\\
   &= \begin{cases}
-       \tfrac{1}{2}\bigl(k + m \cdot 2\pi/a\bigr)^2 & m = m', \\
-       -\tfrac{1}{4} & m' = m \pm 1, \\
+       \tfrac{1}{2}\Bigl(k + m \cdot 2\pi/a\Bigr)^2 & m = m', \\\
+       -\tfrac{1}{4} & m' = m \pm 1, \\\
        \phantom{-}0 & \text{otherwise}.
      \end{cases}
 \end{align}
@@ -769,11 +769,11 @@ The first two rows of this matrix at $k = 0$ are:
 \begin{equation}
 \label{eq:ch-07-worked-H-at-0}
 H(0) = \frac{1}{2}\!\begin{pmatrix}
-4\pi^2/a^2 \cdot 100 & -1/2 & 0 & \cdots & 0 & 0 \\
--1/2 & 4\pi^2/a^2 \cdot 81 & -1/2 & \cdots & 0 & 0 \\
-0 & -1/2 & 4\pi^2/a^2 \cdot 64 & \cdots & 0 & 0 \\
-\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-0 & 0 & 0 & \cdots & 4\pi^2/a^2 \cdot 81 & -1/2 \\
+4\pi^2/a^2 \cdot 100 & -1/2 & 0 & \cdots & 0 & 0 \\\
+-1/2 & 4\pi^2/a^2 \cdot 81 & -1/2 & \cdots & 0 & 0 \\\
+0 & -1/2 & 4\pi^2/a^2 \cdot 64 & \cdots & 0 & 0 \\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\\
+0 & 0 & 0 & \cdots & 4\pi^2/a^2 \cdot 81 & -1/2 \\\
 0 & 0 & 0 & \cdots & -1/2 & 4\pi^2/a^2 \cdot 100
 \end{pmatrix}.
 \end{equation}
@@ -820,7 +820,7 @@ this submatrix). The 2 × 2 submatrix is therefore
 
 \begin{equation}
 \label{eq:ch-07-worked-gap-H}
-H_{2 \times 2}(k = \pi/a) = \tfrac{1}{2}(\pi/a)^2 \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} - \tfrac{1}{4} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}.
+H_{2 \times 2}(k = \pi/a) = \tfrac{1}{2}(\pi/a)^2 \begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix} - \tfrac{1}{4} \begin{pmatrix} 0 & 1 \\\\ 1 & 0 \end{pmatrix}.
 \end{equation}
 
 The eigenvalues of this 2 × 2 matrix are
@@ -855,7 +855,7 @@ Numerically, with $a = 5$ bohr:
 The two degenerate levels at the BZ boundary split into
 
 \begin{align}
-\varepsilon_-(\pi/a) &= 0.1974 - 0.2500 = -0.0526 \text{ Hartree}, \nonumber \\
+\varepsilon_-(\pi/a) &= 0.1974 - 0.2500 = -0.0526 \text{ Hartree}, \nonumber \\\
 \varepsilon_+(\pi/a) &= 0.1974 + 0.2500 = 0.4474 \text{ Hartree},
 \end{align}
 
@@ -1064,9 +1064,9 @@ matrix element $V_{\text{per}}((-\pi/a) - (\pi/a)) = V_{\text{per}}(-2\pi/a)
 
 $$
 H = \tfrac{1}{2}(\pi/a)^2
-    \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+    \begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix}
   + \tfrac{V_0}{2}
-    \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}.
+    \begin{pmatrix} 0 & 1 \\\\ 1 & 0 \end{pmatrix}.
 $$
 
 **Part 3.** The eigenvalues of this matrix are
@@ -1208,7 +1208,7 @@ $$
    energy is
 
 $$
--T S_\text{el} = \sum_{n\mathbf k} \bigl[ \varepsilon_{n\mathbf k} f_{n\mathbf k} - \sigma \, g_{n\mathbf k} \bigr],
+-T S_\text{el} = \sum_{n\mathbf k} \Bigl[ \varepsilon_{n\mathbf k} f_{n\mathbf k} - \sigma \, g_{n\mathbf k} \Bigr],
 $$
 
 for some smooth function $g_{n\mathbf k}$, and identify $g$ for
@@ -1216,7 +1216,7 @@ $N_\text{MP} = 0$ (Gaussian smearing).
 3. The "true" $T = 0$ total energy is
 
 $$
-E_0 = \lim_{\sigma \to 0} \bigl[ E_\text{band}(\sigma) + T S_\text{el}(\sigma) \bigr],
+E_0 = \lim_{\sigma \to 0} \Bigl[ E_\text{band}(\sigma) + T S_\text{el}(\sigma) \Bigr],
 $$
 
 where $E_\text{band}(\sigma) = \sum_{n\mathbf k} \varepsilon_{n\mathbf k} f_{n\mathbf k}$.
@@ -1244,11 +1244,11 @@ bisection.
 **Part 2.** The electronic entropy of a Fermi–Dirac distribution is
 
 $$
-S = -k_B \sum_{n\mathbf k} \bigl[ f_{n\mathbf k} \ln f_{n\mathbf k} + (1 - f_{n\mathbf k}) \ln(1 - f_{n\mathbf k}) \bigr].
+S = -k_B \sum_{n\mathbf k} \Bigl[ f_{n\mathbf k} \ln f_{n\mathbf k} + (1 - f_{n\mathbf k}) \ln(1 - f_{n\mathbf k}) \Bigr].
 $$
 
 For Gaussian smearing ($N_\text{MP} = 0$), the occupations are
-$f = \tfrac{1}{2} \operatorname{erfc}\!\bigl[(\varepsilon - \mu)/\sigma\bigr]$.
+$f = \tfrac{1}{2} \operatorname{erfc}\!\Bigl[(\varepsilon - \mu)/\sigma\Bigr]$.
 Inserting into the entropy gives, after a Gaussian integral,
 
 $$
@@ -1415,9 +1415,9 @@ H$:
 
 \begin{align}
 (\{R \mid \mathbf v\} \psi_{n\mathbf k})(\mathbf r)
-   &= \psi_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v)) \nonumber \\
+   &= \psi_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v)) \nonumber \\\
    &= e^{i \mathbf k \cdot R^{-1}(\mathbf r - \mathbf v)} \, u_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v))
-      \quad \text{by \eqref{eq:ch-07-bloch}} \nonumber \\
+      \quad \text{by \eqref{eq:ch-07-bloch}} \nonumber \\\
    &= e^{-i \mathbf k \cdot \mathbf v} \cdot e^{i (R\mathbf k) \cdot \mathbf r} \cdot u_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v)),
 \end{align}
 
@@ -1554,8 +1554,8 @@ the diagonally opposite corner. The 6 tetrahedra are then
 \begin{equation}
 \label{eq:ch-07-tetra-split}
 \begin{aligned}
-T_1 &= (\mathbf k_1, \mathbf k_2, \mathbf k_4, \mathbf k_5), & T_2 &= (\mathbf k_2, \mathbf k_4, \mathbf k_5, \mathbf k_7), \\
-T_3 &= (\mathbf k_2, \mathbf k_3, \mathbf k_4, \mathbf k_7), & T_4 &= (\mathbf k_4, \mathbf k_5, \mathbf k_6, \mathbf k_7), \\
+T_1 &= (\mathbf k_1, \mathbf k_2, \mathbf k_4, \mathbf k_5), & T_2 &= (\mathbf k_2, \mathbf k_4, \mathbf k_5, \mathbf k_7), \\\
+T_3 &= (\mathbf k_2, \mathbf k_3, \mathbf k_4, \mathbf k_7), & T_4 &= (\mathbf k_4, \mathbf k_5, \mathbf k_6, \mathbf k_7), \\\
 T_5 &= (\mathbf k_1, \mathbf k_4, \mathbf k_5, \mathbf k_8), & T_6 &= (\mathbf k_2, \mathbf k_5, \mathbf k_6, \mathbf k_7).
 \end{aligned}
 \end{equation}

@@ -323,9 +323,9 @@ A **Slater determinant** is an antisymmetrised product of
 \begin{equation}
 \label{eq:faq-slater}
 \Psi(\mathbf x_1, \dots, \mathbf x_N) \;=\; \frac{1}{\sqrt{N!}} \begin{vmatrix}
-\chi_1(\mathbf x_1) & \chi_2(\mathbf x_1) & \cdots & \chi_N(\mathbf x_1) \\
-\chi_1(\mathbf x_2) & \chi_2(\mathbf x_2) & \cdots & \chi_N(\mathbf x_2) \\
-\vdots & \vdots & \ddots & \vdots \\
+\chi_1(\mathbf x_1) & \chi_2(\mathbf x_1) & \cdots & \chi_N(\mathbf x_1) \\\
+\chi_1(\mathbf x_2) & \chi_2(\mathbf x_2) & \cdots & \chi_N(\mathbf x_2) \\\
+\vdots & \vdots & \ddots & \vdots \\\
 \chi_1(\mathbf x_N) & \chi_2(\mathbf x_N) & \cdots & \chi_N(\mathbf x_N)
 \end{vmatrix} .
 \end{equation}
