@@ -1,0 +1,2254 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 06 — Basis sets" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: The Fock and Kohn–Sham operators live in an infinite-dimensional Hilbert space. We can only diagonalise finite matrices. A basis set is the bridge between the two — and the choice of bridge is what every practical DFT calculation rides on.
+      - paragraph [ref=e30]:
+        - text: By the end of
+        - link "chapter 05" [ref=e31] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: we had reduced the electronic-structure problem to a one-body eigenvalue equation for the Kohn–Sham (or Fock) orbitals. Both
+        - img [ref=e33]
+        - text: (
+        - link "chapter 03" [ref=e59] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: ) and
+        - img [ref=e61]
+        - text: (
+        - link "chapter 04" [ref=e91] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: ) are differential equations in
+        - img [ref=e93]
+        - text: whose unknown is a function. A computer cannot store a function; it can only store a finite array of numbers. The standard trick is to expand each orbital in a chosen,
+        - strong [ref=e102]: finite
+        - text: set of
+        - img [ref=e104]
+        - text: "known functions ${\\chi_\\mu}"
+        - emphasis [ref=e109]:
+          - text: "{\\mu=1}^K$ — the"
+          - strong [ref=e110]: basis set
+          - text: — so that the orbital is encoded by
+          - img [ref=e112]
+          - text: "expansion coefficients. The differential eigenvalue equation then collapses to a matrix eigenvalue problem. This chapter explains which ${\\chi"
+        - text: "\\mu}$ are used in practice, why each family was invented, and what numerical price each charges."
+      - heading "6.1 The claim — Roothaan–Hall" [level=2] [ref=e117]
+      - paragraph [ref=e118]:
+        - text: For a closed-shell molecule, expanding each spatial orbital in the same
+        - img [ref=e120]
+        - text: basis functions
+        - img [ref=e126]
+        - text: ","
+      - img [ref=e136]:
+        - generic [ref=e140]:
+          - img [ref=e141]
+          - img [ref=e194]
+      - paragraph [ref=e202]:
+        - text: turns the Fock equation
+        - img [ref=e204]
+        - text: into the
+        - strong [ref=e230]: Roothaan–Hall
+        - text: matrix equation
+      - img [ref=e232]:
+        - generic [ref=e236]:
+          - img [ref=e237]
+          - img [ref=e259]
+      - paragraph [ref=e266]:
+        - text: where
+        - img [ref=e268]
+        - text: ","
+        - img [ref=e275]
+        - text: ","
+        - img [ref=e282]
+        - text: are
+        - img [ref=e289]
+        - text: matrices and
+        - img [ref=e299]
+        - text: is the diagonal matrix of orbital energies. The matrix elements are
+      - img [ref=e305]:
+        - generic [ref=e309]:
+          - img [ref=e310]
+          - img [ref=e378]
+      - paragraph [ref=e386]:
+        - strong [ref=e387]: Derivation.
+        - text: Substitute
+        - img [ref=e389]:
+          - link [ref=e392] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-basis-expansion"
+        - text: into
+        - img [ref=e400]
+        - text: ","
+      - img [ref=e427]
+      - paragraph [ref=e481]:
+        - text: Project both sides on
+        - img [ref=e483]
+        - text: by multiplying with
+        - img [ref=e492]
+        - text: and integrating over
+        - img [ref=e503]
+        - text: ":"
+      - img [ref=e510]:
+        - generic [ref=e512]:
+          - generic [ref=e554]:
+            - img [ref=e560]
+            - img [ref=e562]
+          - generic [ref=e613]:
+            - img [ref=e619]
+            - img [ref=e621]
+      - paragraph [ref=e634]:
+        - text: This is the
+        - img [ref=e636]
+        - text: "-th"
+        - emphasis [ref=e641]: column
+        - text: of the matrix equation
+        - img [ref=e643]
+        - text: . Collecting all
+        - img [ref=e663]
+        - text: MOs (i.e. all values of
+        - img [ref=e669]
+        - text: ) into one matrix gives
+        - img [ref=e675]:
+          - link [ref=e678] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-roothaan-hall"
+        - text: .
+      - blockquote [ref=e685]:
+        - paragraph [ref=e686]:
+          - strong [ref=e687]: Tip.
+          - text: The basis is in general
+          - strong [ref=e688]: non-orthogonal
+          - text: ", so the right-hand side carries an"
+          - img [ref=e690]
+          - text: that the orthonormal
+          - img [ref=e697]
+          - text: does not have. This is not a mistake; it is the price of choosing a basis adapted to the
+          - emphasis [ref=e723]: physics
+          - text: (atom-centred Gaussians look like atomic orbitals) rather than to the
+          - emphasis [ref=e724]: "mat`h"
+          - text: ’ (an orthonormal basis is mathematically clean but physically unmotivated).
+      - paragraph [ref=e725]:
+        - text: Equation
+        - img [ref=e727]:
+          - link [ref=e730] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-roothaan-hall"
+        - text: "is a generalised eigenvalue problem. `scipy.linalg.eigh(F, S)’ solves it directly; internally it computes"
+        - img [ref=e738]
+        - text: ", forms"
+        - img [ref=e761]
+        - text: ", diagonalises"
+        - img [ref=e785]
+        - text: (now a standard eigenproblem), and transforms the eigenvectors back via
+        - img [ref=e795]
+        - text: .
+      - heading "6.2 Why we need a basis" [level=2] [ref=e812]
+      - paragraph [ref=e813]:
+        - text: The exact orbital
+        - img [ref=e815]
+        - text: lives in
+        - img [ref=e830]
+        - text: ", an infinite-dimensional Hilbert space. Every basis we will meet is a"
+        - emphasis [ref=e848]: finite
+        - text: subset
+        - img [ref=e850]
+        - text: that spans a
+        - img [ref=e887]
+        - text: "-dimensional subspace"
+        - img [ref=e893]
+        - text: . The variational principle (
+        - link "chapter 03" [ref=e902] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: ) says
+      - img [ref=e904]:
+        - generic [ref=e908]:
+          - img [ref=e909]
+          - img [ref=e971]
+      - paragraph [ref=e979]:
+        - text: with equality only in the limit
+        - img [ref=e981]
+        - text: along a sequence of basis sets whose span becomes dense in
+        - img [ref=e991]
+        - text: . The gap between
+        - img [ref=e1010]
+        - text: and
+        - img [ref=e1031]
+        - text: is the
+        - strong [ref=e1045]: basis-set incompleteness error
+        - text: ":"
+      - img [ref=e1047]:
+        - generic [ref=e1051]:
+          - img [ref=e1052]
+          - img [ref=e1104]
+      - paragraph [ref=e1112]:
+        - text: where
+        - img [ref=e1114]
+        - text: is the value at the
+        - strong [ref=e1126]: complete-basis-set limit
+        - text: (CBS,
+        - img [ref=e1128]
+        - text: ). For atom-centred Gaussians on small molecules, a typical empirical rule is that
+        - img [ref=e1138]
+        - text: falls roughly
+        - emphasis [ref=e1151]: exponentially
+        - text: with the
+        - strong [ref=e1152]: cardinal number
+        - img [ref=e1154]
+        - text: of the Dunning correlation-consistent family (cc-pV
+        - emphasis [ref=e1159]: X
+        - text: Z),
+      - img [ref=e1161]:
+        - generic [ref=e1165]:
+          - img [ref=e1166]
+          - img [ref=e1203]
+      - paragraph [ref=e1211]:
+        - text: which is the formula used to
+        - emphasis [ref=e1212]: extrapolate
+        - text: to
+        - img [ref=e1214]
+        - text: from two or three calculations at
+        - img [ref=e1225]
+        - text: .
+      - blockquote [ref=e1242]:
+        - paragraph [ref=e1243]:
+          - strong [ref=e1244]: Note.
+          - text: The BSIE is one of
+          - emphasis [ref=e1245]: two
+          - text: approximation errors in any practical calculation. The other is the exchange–correlation functional (
+          - link "chapter 05" [ref=e1246] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: ). A converged DFT energy is only meaningful once both have been pushed to a known tolerance. Quoting a DFT energy without naming the basis is like quoting a price without naming the currency.
+      - heading "6.3 Gaussian-type orbitals (GTOs)" [level=2] [ref=e1247]
+      - paragraph [ref=e1248]:
+        - text: A
+        - strong [ref=e1249]: primitive Cartesian Gaussian
+        - text: centred at
+        - img [ref=e1251]
+        - text: with exponent
+        - img [ref=e1258]
+        - text: and angular indices
+        - img [ref=e1264]
+        - text: is
+      - img [ref=e1291]:
+        - generic [ref=e1295]:
+          - img [ref=e1296]
+          - img [ref=e1422]
+      - paragraph [ref=e1430]:
+        - text: with
+        - img [ref=e1432]
+        - text: chosen so that
+        - img [ref=e1448]
+        - text: . The total angular momentum is
+        - img [ref=e1474]
+        - text: ", with"
+        - img [ref=e1501]
+        - text: called “s-type”,
+        - img [ref=e1511]
+        - text: “p-type”,
+        - img [ref=e1521]
+        - text: “d-type”, and so on.
+      - paragraph [ref=e1530]:
+        - text: For
+        - img [ref=e1532]
+        - text: the normalisation collapses to
+      - img [ref=e1542]:
+        - generic [ref=e1546]:
+          - img [ref=e1547]
+          - img [ref=e1586]
+      - paragraph [ref=e1594]:
+        - strong [ref=e1595]: Why Gaussians and not Slater functions?
+        - text: Slater-type orbitals (STOs)
+        - img [ref=e1597]
+        - text: have the
+        - emphasis [ref=e1610]: right
+        - text: short-range cusp at the nucleus and the
+        - emphasis [ref=e1611]: right
+        - text: "exponential decay at infinity — properties Gaussians do not share. Yet every production quantum-chemistry code uses Gaussians, because of one critical algebraic identity: the"
+        - strong [ref=e1612]: Gaussian product theorem
+        - text: . For two s-primitives at centres
+        - img [ref=e1614]
+        - text: and
+        - img [ref=e1621]
+        - text: with exponents
+        - img [ref=e1628]
+        - text: and
+        - img [ref=e1634]
+        - text: ","
+      - img [ref=e1640]:
+        - generic [ref=e1644]:
+          - img [ref=e1645]
+          - img [ref=e1741]
+      - paragraph [ref=e1749]:
+        - text: with the
+        - strong [ref=e1750]: Gaussian midpoint
+        - img [ref=e1752]
+        - text: and the
+        - strong [ref=e1789]: prefactor
+        - img [ref=e1791]
+        - text: . A two-centre integral has therefore been reduced to a one-centre integral — the integrand is again a Gaussian, located at
+        - img [ref=e1853]
+        - text: . No such collapse exists for STOs, which is why all four-centre two-electron integrals are tractable in a Gaussian basis and not in a Slater basis.
+      - paragraph [ref=e1859]:
+        - strong [ref=e1860]: A contracted Gaussian-type orbital (CGTO)
+        - text: is a fixed linear combination of primitives,
+      - img [ref=e1862]:
+        - generic [ref=e1866]:
+          - img [ref=e1867]
+          - img [ref=e1945]
+      - paragraph [ref=e1954]:
+        - text: where the
+        - strong [ref=e1955]: contraction coefficients
+        - img [ref=e1957]
+        - text: and
+        - strong [ref=e1968]: exponents
+        - img [ref=e1970]
+        - text: are fixed at the moment of designing the basis set, not optimised during the SCF. The contraction
+        - img [ref=e1982]
+        - text: is the
+        - emphasis [ref=e1990]: one basis function
+        - text: the self-consistent procedure sees; the primitives are implementation detail.
+      - heading "The (ss|ss) two-electron integral" [level=3] [ref=e1991]
+      - paragraph [ref=e1992]:
+        - text: The simplest of the four-centre two-electron integrals is the one between four normalised primitive s-Gaussians (centres
+        - img [ref=e1994]
+        - text: ","
+        - img [ref=e2001]
+        - text: ","
+        - img [ref=e2008]
+        - text: ","
+        - img [ref=e2015]
+        - text: and exponents
+        - img [ref=e2022]
+        - text: ). Apply
+        - img [ref=e2040]:
+          - link [ref=e2043] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-gpt"
+        - text: twice — once to the bra
+        - img [ref=e2051]
+        - text: and once to the ket
+        - img [ref=e2085]
+        - text: — to collapse the integrand into a product of two Gaussians at the midpoints
+        - img [ref=e2119]
+        - text: and
+        - img [ref=e2126]
+        - text: ":"
+      - img [ref=e2133]
+      - paragraph [ref=e2303]:
+        - text: The double integral over the Coulomb kernel can be done analytically (Boys 1950) by inserting the identity
+        - img [ref=e2305]
+        - text: and integrating
+        - img [ref=e2370]
+        - text: as a Gaussian. The result, in normalised form, is
+      - img [ref=e2388]:
+        - generic [ref=e2392]:
+          - img [ref=e2393]
+          - img [ref=e2553]
+      - paragraph [ref=e2562]:
+        - text: where the
+        - strong [ref=e2563]: Boys function
+      - img [ref=e2565]:
+        - generic [ref=e2569]:
+          - img [ref=e2570]
+          - img [ref=e2664]
+      - paragraph [ref=e2673]:
+        - text: handles the Coulomb singularity. Every four-centre ERI in quantum chemistry is, after the Gaussian product theorem and McMurchie–Davidson-style recursion in
+        - img [ref=e2675]
+        - text: ", ultimately a sum of"
+        - img [ref=e2681]:
+          - link [ref=e2684] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-ssss"
+        - text: "-type expressions. This is why"
+        - strong [ref=e2692]: GTOs win
+        - text: ": they buy analytical ERIs."
+      - heading "6.4 STO-nG — the minimal basis" [level=2] [ref=e2693]
+      - paragraph [ref=e2694]:
+        - text: The cheapest atom-centred basis is the
+        - strong [ref=e2695]: minimal basis
+        - text: ": one contracted s-function for each occupied s-shell, one contracted p-shell for each occupied p-shell, and nothing else. For H it is a single 1s; for C it is 1s, 2s,"
+        - img [ref=e2697]
+        - text: ","
+        - img [ref=e2708]
+        - text: ","
+        - img [ref=e2719]
+        - text: (five functions); for the second row it is nine.
+      - paragraph [ref=e2729]:
+        - text: The historical and pedagogical default for a minimal basis is
+        - strong [ref=e2730]: STO-nG
+        - text: "(Hehre, Stewart, Pople, 1969): fit each Slater 1s"
+        - img [ref=e2732]
+        - text: by a least-squares contraction of
+        - img [ref=e2746]
+        - text: primitive Gaussians,
+      - img [ref=e2752]:
+        - generic [ref=e2756]:
+          - img [ref=e2757]
+          - img [ref=e2862]
+      - paragraph [ref=e2871]:
+        - text: The
+        - img [ref=e2873]
+        - text: case,
+        - emphasis [ref=e2882]:
+          - text: "*"
+          - code [ref=e2883]: STO-3G*
+        - text: ", is the canonical example. The underlying"
+        - img [ref=e2885]
+        - text: fit for the 1s function (HSP 1969, Table II) is
+      - table [ref=e2896]:
+        - rowgroup [ref=e2897]:
+          - row "( )" [ref=e2898]:
+            - columnheader [ref=e2899]:
+              - img [ref=e2901]
+            - columnheader "( )" [ref=e2906]:
+              - img [ref=e2908]
+              - text: (
+              - img [ref=e2917]
+              - text: )
+            - columnheader [ref=e2928]:
+              - img [ref=e2930]
+        - rowgroup [ref=e2938]:
+          - row "1 0.10982 0.444635" [ref=e2939]:
+            - cell "1" [ref=e2940]
+            - cell "0.10982" [ref=e2941]
+            - cell "0.444635" [ref=e2942]
+          - row "2 0.40578 0.535328" [ref=e2943]:
+            - cell "2" [ref=e2944]
+            - cell "0.40578" [ref=e2945]
+            - cell "0.535328" [ref=e2946]
+          - row "3 2.22766 0.154329" [ref=e2947]:
+            - cell "3" [ref=e2948]
+            - cell "2.22766" [ref=e2949]
+            - cell "0.154329" [ref=e2950]
+      - paragraph [ref=e2951]:
+        - text: For a different
+        - img [ref=e2953]
+        - text: ", the exponents scale as"
+        - img [ref=e2959]
+        - text: while the
+        - img [ref=e2980]
+        - text: are unchanged — a consequence of the Gaussian dimension analysis
+        - img [ref=e2989]
+        - text: . The recommended Pople value for H
+        - emphasis [ref=e3026]: in molecules
+        - text: is
+        - img [ref=e3028]
+        - text: ", so the H STO-3G exponents"
+        - emphasis [ref=e3040]: "actually use`d"
+        - text: ’ in calculations are
+        - img [ref=e3042]
+        - text: ","
+      - table [ref=e3074]:
+        - rowgroup [ref=e3075]:
+          - row "( , EMSL default)" [ref=e3076]:
+            - columnheader [ref=e3077]:
+              - img [ref=e3079]
+            - columnheader "( , EMSL default)" [ref=e3084]:
+              - img [ref=e3086]
+              - text: (
+              - img [ref=e3095]
+              - text: ", EMSL default)"
+            - columnheader [ref=e3107]:
+              - img [ref=e3109]
+        - rowgroup [ref=e3117]:
+          - row "1 0.168856 0.444635" [ref=e3118]:
+            - cell "1" [ref=e3119]
+            - cell "0.168856" [ref=e3120]
+            - cell "0.444635" [ref=e3121]
+          - row "2 0.623913 0.535328" [ref=e3122]:
+            - cell "2" [ref=e3123]
+            - cell "0.623913" [ref=e3124]
+            - cell "0.535328" [ref=e3125]
+          - row "3 3.425250 0.154329" [ref=e3126]:
+            - cell "3" [ref=e3127]
+            - cell "3.425250" [ref=e3128]
+            - cell "0.154329" [ref=e3129]
+      - paragraph [ref=e3130]: which is the form distributed by the EMSL Basis Set Exchange and consumed directly by every quantum-chemistry code. The worked example in section 6.9 uses this set verbatim.
+      - blockquote [ref=e3131]:
+        - paragraph [ref=e3132]:
+          - strong [ref=e3133]: Warning.
+          - text: STO-3G is a
+          - emphasis [ref=e3134]: teaching
+          - text: basis. Its absolute errors against the basis-set limit are tens of milli-Hartree, and its predicted bond lengths and frequencies have known, systematic biases. Nobody publishes STO-3G
+          - emphasis [ref=e3135]: production
+          - text: numbers in 2025. But its small size — two functions for
+          - img [ref=e3137]
+          - text: ", ten for"
+          - img [ref=e3146]
+          - text: — makes it the right basis for a worked example (section 6.9).
+      - 'heading "6.5 Split-valence: 3-21G, 6-31G, 6-311G" [level=2] [ref=e3156]'
+      - paragraph [ref=e3157]:
+        - text: The minimal basis treats the
+        - emphasis [ref=e3158]: core
+        - text: and the valence the same way — one contracted function per shell. Chemistry happens in the valence, so a small improvement is to leave the core contracted (it barely changes between molecules) and
+        - strong [ref=e3159]: split the valence
+        - text: ": replace one valence function by two (or three) of different size, letting the SCF readjust the valence “radius” molecule by molecule."
+      - paragraph [ref=e3160]:
+        - text: The
+        - strong [ref=e3161]: Pople split-valence notation
+        - text: is
+      - img [ref=e3163]:
+        - generic [ref=e3165]:
+          - generic [ref=e3171]:
+            - img [ref=e3177]
+            - img [ref=e3179]
+          - generic [ref=e3201]:
+            - img [ref=e3207]
+            - img [ref=e3209]
+          - generic [ref=e3232]:
+            - img [ref=e3238]
+            - img [ref=e3240]
+      - paragraph [ref=e3261]:
+        - text: "read as: “the core orbital is a single contraction of"
+        - img [ref=e3263]
+        - text: primitives; each valence shell is split into one inner function (contraction of
+        - img [ref=e3269]
+        - text: primitives) and one outer function (contraction of
+        - img [ref=e3278]
+        - text: "primitives)”. Examples:"
+      - table [ref=e3286]:
+        - rowgroup [ref=e3287]:
+          - row "Basis Core (per shell) Valence (per shell) Cost class" [ref=e3288]:
+            - columnheader "Basis" [ref=e3289]
+            - columnheader "Core (per shell)" [ref=e3290]
+            - columnheader "Valence (per shell)" [ref=e3291]
+            - columnheader "Cost class" [ref=e3292]
+        - rowgroup [ref=e3293]:
+          - row "3-21G 3 prims, 1 CGTO (2 + 1) prims, 2 CGTOs “double-zeta valence”" [ref=e3294]:
+            - cell "3-21G" [ref=e3295]
+            - cell "3 prims, 1 CGTO" [ref=e3296]
+            - cell "(2 + 1) prims, 2 CGTOs" [ref=e3297]
+            - cell "“double-zeta valence”" [ref=e3298]
+          - row "6-31G 6 prims, 1 CGTO (3 + 1) prims, 2 CGTOs double-zeta valence" [ref=e3299]:
+            - cell "6-31G" [ref=e3300]
+            - cell "6 prims, 1 CGTO" [ref=e3301]
+            - cell "(3 + 1) prims, 2 CGTOs" [ref=e3302]
+            - cell "double-zeta valence" [ref=e3303]
+          - row "6-311G 6 prims, 1 CGTO (3 + 1 + 1) prims, 3 CGTOs “triple-zeta valence”" [ref=e3304]:
+            - cell "6-311G" [ref=e3305]
+            - cell "6 prims, 1 CGTO" [ref=e3306]
+            - cell "(3 + 1 + 1) prims, 3 CGTOs" [ref=e3307]
+            - cell "“triple-zeta valence”" [ref=e3308]
+      - paragraph [ref=e3309]:
+        - text: "For H, which has no core, the basis is purely valence: in 6-31G, H carries 4 primitive s-Gaussians contracted into one “inner”"
+        - img [ref=e3311]
+        - text: (3 prims) and one “outer”
+        - img [ref=e3319]
+        - text: (1 prim), so two basis functions per H. In 3-21G it is 3 primitives → two basis functions per H. In 6-311G, three basis functions per H.
+      - paragraph [ref=e3329]:
+        - strong [ref=e3330]: Counting basis functions.
+        - text: Add up
+        - emphasis [ref=e3331]: "contracte`d"
+        - text: ’ functions across atoms. For
+        - img [ref=e3333]
+        - text: "in 6-31G:"
+      - list [ref=e3343]:
+        - listitem [ref=e3344]:
+          - text: "O:"
+          - img [ref=e3346]
+          - text: (core, 1 CGTO) +
+          - img [ref=e3354]
+          - text: +
+          - img [ref=e3362]
+          - text: + three
+          - img [ref=e3373]
+          - text: + three
+          - img [ref=e3381]
+          - text: = 9 CGTOs
+        - listitem [ref=e3391]:
+          - text: "H:"
+          - img [ref=e3393]
+          - text: +
+          - img [ref=e3401]
+          - text: = 2 CGTOs
+      - paragraph [ref=e3411]:
+        - text: Total
+        - img [ref=e3413]
+        - text: basis functions.
+      - heading "6.6 Polarisation, diffuse, and the cc-pVXZ family" [level=2] [ref=e3435]
+      - paragraph [ref=e3436]:
+        - text: A double-zeta valence basis can resize a
+        - img [ref=e3438]
+        - text: orbital on carbon, but it cannot give it the
+        - strong [ref=e3445]: angular
+        - text: flexibility it needs to bend in a bond. For that, add functions of
+        - emphasis [ref=e3446]: higher
+        - text: "angular momentum than the highest occupied shell on each atom:"
+      - list [ref=e3447]:
+        - listitem [ref=e3448]:
+          - text: on H (highest occupied
+          - img [ref=e3450]
+          - text: ) add a
+          - img [ref=e3460]
+          - text: "-function,"
+        - listitem [ref=e3465]:
+          - text: on C, N, O (highest occupied
+          - img [ref=e3467]
+          - text: ) add a
+          - img [ref=e3477]
+          - text: "-function,"
+        - listitem [ref=e3482]:
+          - text: on first-row transition metals (highest occupied
+          - img [ref=e3484]
+          - text: ) add an
+          - img [ref=e3494]
+          - text: "-function."
+      - paragraph [ref=e3499]:
+        - text: These are
+        - strong [ref=e3500]: polarisation functions
+        - text: ". Pople’s notation marks them with a star: $6\\text{-}31\\text{G}^"
+        - emphasis [ref=e3501]:
+          - img [ref=e3503]
+          - text: d
+          - img [ref=e3515]
+          - text: "6\\text{-}31\\text{G}^{**}"
+          - img [ref=e3553]
+          - text: "d$ on heavy atoms *an`d"
+        - text: ’
+        - img [ref=e3565]
+        - text: on H. More polarisation = more flexibility = lower
+        - img [ref=e3571]
+        - text: — but more functions and quartic ERI count.
+      - paragraph [ref=e3582]:
+        - text: A complementary direction is to add
+        - strong [ref=e3583]: diffuse
+        - text: "functions: primitive Gaussians with very small exponents ("
+        - img [ref=e3585]
+        - text: –
+        - img [ref=e3598]
+        - text: ) for the long-range tail of the electron density. Diffuse functions are essential for anions, Rydberg states, hydrogen-bonded systems, and any property that probes the density far from the nuclei (polarisabilities, dipole moments). Pople marks them with a
+        - img [ref=e3606]
+        - text: ":"
+        - img [ref=e3612]
+        - text: adds diffuse
+        - img [ref=e3626]
+        - text: and
+        - img [ref=e3632]
+        - text: on heavy atoms;
+        - img [ref=e3638]
+        - text: also on H.
+      - 'heading "Correlation-consistent: cc-pVXZ" [level=3] [ref=e3652]'
+      - paragraph [ref=e3653]:
+        - text: Dunning’s
+        - strong [ref=e3654]: correlation-consistent
+        - text: family (cc-pV
+        - emphasis [ref=e3655]: X
+        - text: Z,
+        - emphasis [ref=e3656]: X
+        - text: = D, T, Q, 5, 6, …) is designed so that each rung adds the functions that recover the
+        - emphasis [ref=e3657]: next decade
+        - text: of correlation energy. At cardinal number
+        - img [ref=e3659]
+        - text: each atom carries contractions up to angular momentum
+        - img [ref=e3665]
+        - text: "(for first- row atoms; H lags by one):"
+      - table [ref=e3678]:
+        - rowgroup [ref=e3679]:
+          - row "Basis Composition per first-row atom (s, p, d, f, g, …) for C" [ref=e3680]:
+            - columnheader "Basis" [ref=e3681]
+            - columnheader "Composition per first-row atom (s, p, d, f, g, …)" [ref=e3682]
+            - columnheader "for C" [ref=e3683]:
+              - img [ref=e3685]
+              - text: for C
+        - rowgroup [ref=e3690]:
+          - row "cc-pVDZ (3s, 2p, 1d) 14" [ref=e3691]:
+            - cell "cc-pVDZ" [ref=e3692]
+            - cell "(3s, 2p, 1d)" [ref=e3693]
+            - cell "14" [ref=e3694]
+          - row "cc-pVTZ (4s, 3p, 2d, 1f) 30" [ref=e3695]:
+            - cell "cc-pVTZ" [ref=e3696]
+            - cell "(4s, 3p, 2d, 1f)" [ref=e3697]
+            - cell "30" [ref=e3698]
+          - row "cc-pVQZ (5s, 4p, 3d, 2f, 1g) 55" [ref=e3699]:
+            - cell "cc-pVQZ" [ref=e3700]
+            - cell "(5s, 4p, 3d, 2f, 1g)" [ref=e3701]
+            - cell "55" [ref=e3702]
+          - row "cc-pV5Z (6s, 5p, 4d, 3f, 2g, 1h) 91" [ref=e3703]:
+            - cell "cc-pV5Z" [ref=e3704]
+            - cell "(6s, 5p, 4d, 3f, 2g, 1h)" [ref=e3705]
+            - cell "91" [ref=e3706]
+      - paragraph [ref=e3707]:
+        - text: The
+        - strong [ref=e3708]: augmented
+        - text: variant
+        - strong [ref=e3709]: aug-cc-pVXZ
+        - text: prepends one diffuse function at each angular momentum. The empirical fact that
+        - img [ref=e3711]:
+          - link [ref=e3714] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-cbs-extrap"
+        - text: holds for this family is what makes the cc-pV
+        - emphasis [ref=e3721]: X
+        - text: Z series the de facto path to converged post-HF results.
+      - blockquote [ref=e3722]:
+        - paragraph [ref=e3723]:
+          - strong [ref=e3724]: Note.
+          - img [ref=e3726]
+          - text: corresponds to “double, triple, quadruple, quintuple, sextuple” zeta — the
+          - emphasis [ref=e3751]: number of exponents
+          - text: in the contracted valence shells. The label tracks the angular completeness, not just the radial resolution.
+      - heading "6.7 Plane waves" [level=2] [ref=e3752]
+      - paragraph [ref=e3753]:
+        - text: For a
+        - strong [ref=e3754]: periodic
+        - text: system — a crystal, or a molecule placed in a sufficiently large simulation box — the Kohn–Sham orbitals satisfy Bloch’s theorem (we will treat this carefully in
+        - link "chapter 07" [ref=e3755] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: "):"
+      - img [ref=e3757]:
+        - generic [ref=e3761]:
+          - img [ref=e3762]
+          - img [ref=e3865]
+      - paragraph [ref=e3874]:
+        - text: where
+        - img [ref=e3876]
+        - text: is any lattice vector and
+        - img [ref=e3883]
+        - text: lies in the first Brillouin zone. The cell-periodic part
+        - img [ref=e3890]
+        - text: has a natural Fourier expansion on the
+        - strong [ref=e3904]: reciprocal lattice
+        - img [ref=e3906]
+        - text: ":"
+      - img [ref=e3914]:
+        - generic [ref=e3918]:
+          - img [ref=e3919]
+          - img [ref=e4002]
+      - paragraph [ref=e4011]:
+        - text: with
+        - img [ref=e4013]
+        - text: the cell volume. This is the
+        - strong [ref=e4018]: plane-wave basis
+        - text: . Each basis function
+        - img [ref=e4020]
+        - text: is an exact eigenfunction of
+        - img [ref=e4080]
+        - text: with eigenvalue
+        - img [ref=e4098]
+        - text: . Truncating the expansion at the
+        - strong [ref=e4124]: kinetic-energy cutoff
+        - img [ref=e4126]
+        - text: ","
+      - img [ref=e4137]:
+        - generic [ref=e4141]:
+          - img [ref=e4142]
+          - img [ref=e4181]
+      - paragraph [ref=e4190]:
+        - text: gives a finite basis. The largest wavevector retained is
+        - img [ref=e4192]
+        - text: .
+      - heading "How many plane waves?" [level=3] [ref=e4218]
+      - paragraph [ref=e4219]:
+        - text: The reciprocal-lattice vectors lie on a discrete grid of spacing
+        - img [ref=e4221]
+        - text: per cell of
+        - img [ref=e4241]
+        - text: ", i.e. each"
+        - img [ref=e4251]
+        - text: occupies a volume
+        - img [ref=e4258]
+        - text: in reciprocal space. The number of
+        - img [ref=e4278]
+        - text: inside the sphere
+        - img [ref=e4285]
+        - text: "is approximately the sphere volume divided by the per-vector volume:"
+      - img [ref=e4311]
+      - paragraph [ref=e4386]:
+        - text: Substituting
+        - img [ref=e4388]
+        - text: ","
+      - img [ref=e4415]:
+        - generic [ref=e4419]:
+          - img [ref=e4420]
+          - img [ref=e4470]
+      - paragraph [ref=e4479]:
+        - text: Two consequences of
+        - img [ref=e4481]:
+          - link [ref=e4484] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-npw"
+        - text: "drive everything in plane-wave DFT:"
+      - list [ref=e4492]:
+        - listitem [ref=e4493]:
+          - strong [ref=e4494]: The basis is independent of nuclear position.
+          - text: Atom centres do not appear anywhere in
+          - img [ref=e4496]:
+            - link [ref=e4499] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-06-pw-expansion"
+          - text: . This makes plane-wave methods
+          - emphasis [ref=e4507]: "unbiase`d"
+          - text: ’ — no atom is given a head start — and
+          - emphasis [ref=e4508]: natural for forces
+          - text: (no Pulay correction, see
+          - link "chapter 09" [ref=e4509] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-09/
+          - text: ).
+        - listitem [ref=e4510]:
+          - strong [ref=e4511]:
+            - text: The basis grows as
+            - img [ref=e4513]
+            - text: .
+          - text: Doubling the cell or moving from
+          - img [ref=e4536]
+          - text: Ha to
+          - img [ref=e4552]
+          - text: Ha makes the basis
+          - img [ref=e4559]
+          - text: larger, and the diagonalisation cost
+          - img [ref=e4582]
+          - text: . This is why plane-wave codes use iterative eigensolvers and
+          - strong [ref=e4595]: pseudopotentials
+          - text: (
+          - link "chapter 08" [ref=e4596] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: "): smooth core potentials let you use a much smaller"
+          - img [ref=e4598]
+          - text: .
+      - blockquote [ref=e4608]:
+        - paragraph [ref=e4609]:
+          - strong [ref=e4610]: Tip.
+          - text: Densities (and the Hartree potential, and the XC potential) are
+          - emphasis [ref=e4611]: "quadrati`c"
+          - text: ’ in the orbitals. A plane-wave code therefore uses
+          - emphasis [ref=e4612]: two
+          - text: "grids: an “orbital” grid cut at"
+          - img [ref=e4614]
+          - text: ", and a “density” grid cut at"
+          - img [ref=e4625]
+          - text: so that all products
+          - img [ref=e4638]
+          - text: are band-limited. The factor of 4 is geometric, not empirical.
+      - heading "6.8 Real-space grids" [level=2] [ref=e4659]
+      - paragraph [ref=e4660]:
+        - text: A third style of basis avoids both atomic Gaussians and plane waves and instead represents the orbital by its
+        - emphasis [ref=e4661]:
+          - text: "*values on a uniform real-space gri"
+          - code [ref=e4662]: d*
+        - img [ref=e4664]
+        - text: ":"
+      - img [ref=e4689]:
+        - generic [ref=e4693]:
+          - img [ref=e4694]
+          - img [ref=e4751]
+      - paragraph [ref=e4760]:
+        - text: The kinetic operator
+        - img [ref=e4762]
+        - text: is then a sparse finite-difference matrix on the grid; the XC potential is diagonal (it acts pointwise on the density); and the Hartree potential is obtained by solving Poisson’s equation on the grid (typically with a multigrid or FFT-based solver).
+      - paragraph [ref=e4779]:
+        - text: "The relation to plane waves is geometric: a real-space grid of spacing"
+        - img [ref=e4781]
+        - text: has a Nyquist limit
+        - img [ref=e4787]
+        - text: ", so the"
+        - emphasis [ref=e4806]: implicit
+        - text: kinetic cutoff of the grid is
+      - img [ref=e4808]:
+        - generic [ref=e4812]:
+          - img [ref=e4813]
+          - img [ref=e4866]
+      - paragraph [ref=e4875]:
+        - text: A 0.2 Å grid spacing corresponds to
+        - img [ref=e4877]
+        - text: Ha — comparable to a heavy-element pseudopotential cutoff.
+      - paragraph [ref=e4892]:
+        - text: Real-space grids are the basis of codes like
+        - strong [ref=e4893]: GPAW
+        - text: ","
+        - strong [ref=e4894]: Octopus
+        - text: ", and"
+        - strong [ref=e4895]: PARSEC
+        - text: ". They have two attractive features: they parallelise via domain decomposition with no inter-process communication beyond a single halo swap (so the parallelisation overhead is essentially zero), and they avoid the periodicity assumption of plane waves (so finite molecules and clusters need no large vacuum buffer)."
+      - 'heading "6.9 Worked example: STO-3G H₂" [level=2] [ref=e4896]'
+      - paragraph [ref=e4897]:
+        - text: We now make the Roothaan–Hall equations
+        - img [ref=e4899]:
+          - link [ref=e4902] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-roothaan-hall"
+        - text: concrete. Take
+        - img [ref=e4910]
+        - text: at the equilibrium bond length
+        - img [ref=e4920]
+        - text: ", with one STO-3G contracted s-function (with the molecular-H parameterisation"
+        - img [ref=e4937]
+        - text: ) on each H atom. The basis is
+      - img [ref=e4950]
+      - paragraph [ref=e5097]:
+        - text: with
+        - img [ref=e5099]
+        - text: and
+        - img [ref=e5122]
+        - text: . The exponents and contraction coefficients in the EMSL Basis Set Exchange entry for STO-3G H already incorporate
+        - img [ref=e5147]
+        - text: (they are the underlying
+        - img [ref=e5160]
+        - text: Hehre–Stewart–Pople fit scaled by
+        - img [ref=e5172]
+        - text: "), so we use them directly:"
+      - table [ref=e5189]:
+        - rowgroup [ref=e5190]:
+          - row "(a )" [ref=e5191]:
+            - columnheader [ref=e5192]:
+              - img [ref=e5194]
+            - columnheader "(a )" [ref=e5199]:
+              - img [ref=e5201]
+              - text: (a
+              - img [ref=e5210]
+              - text: )
+            - columnheader [ref=e5221]:
+              - img [ref=e5223]
+        - rowgroup [ref=e5231]:
+          - row "1 0.168856 0.444635" [ref=e5232]:
+            - cell "1" [ref=e5233]
+            - cell "0.168856" [ref=e5234]
+            - cell "0.444635" [ref=e5235]
+          - row "2 0.623913 0.535328" [ref=e5236]:
+            - cell "2" [ref=e5237]
+            - cell "0.623913" [ref=e5238]
+            - cell "0.535328" [ref=e5239]
+          - row "3 3.425250 0.154329" [ref=e5240]:
+            - cell "3" [ref=e5241]
+            - cell "3.425250" [ref=e5242]
+            - cell "0.154329" [ref=e5243]
+      - paragraph [ref=e5244]:
+        - img [ref=e5246]
+        - text: basis functions,
+        - img [ref=e5256]
+        - text: electrons, one doubly-occupied MO.
+      - paragraph [ref=e5265]:
+        - text: The integrals reduce to nine primitive contributions per matrix element via
+        - img [ref=e5267]:
+          - link [ref=e5270] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-contraction"
+        - text: . Running the companion script (Python, full source below) returns
+      - code [ref=e5281]: "Overlap S: [[1. 0.6593] [0.6593 1. ]] Kinetic T: [[0.76 0.2365] [0.2365 0.76 ]] Nuclear attraction V: [[-1.8804 -1.1948] [-1.1948 -1.8804]] Core Hamiltonian h = T + V: [[-1.1204 -0.9584] [-0.9584 -1.1204]] Selected ERIs (chemists' notation [ij|kl]): [11|11] = (AA|AA) = 0.774608 [11|22] = (AA|BB) = 0.569677 [12|12] = (AB|AB) = 0.297029 [11|12] = (AA|AB) = 0.444109"
+      - paragraph [ref=e5282]:
+        - text: The numbers reproduce Szabo & Ostlund,
+        - emphasis [ref=e5283]: Modern Quantum Chemistry
+        - text: ", Table 3.5, to four significant figures. Note that because the molecule is homonuclear,"
+        - img [ref=e5285]
+        - text: and
+        - img [ref=e5294]
+        - text: are related by reflection symmetry, so
+        - img [ref=e5303]
+        - text: ","
+        - img [ref=e5323]
+        - text: ", and the off-diagonal element of every matrix is real and identical for"
+        - img [ref=e5343]
+        - text: and
+        - img [ref=e5357]
+        - text: .
+      - heading "Solving FC = SCE" [level=3] [ref=e5370]
+      - paragraph [ref=e5371]:
+        - text: For two electrons in two basis functions, the density matrix in the first SCF iteration (starting from
+        - img [ref=e5373]
+        - text: ", so the initial Fock matrix is just"
+        - img [ref=e5385]
+        - text: ) is built from the lowest eigenvector of
+        - img [ref=e5392]
+        - text: . Symmetry forces the bonding MO to be
+      - img [ref=e5412]
+      - paragraph [ref=e5519]: and the antibonding MO to be
+      - img [ref=e5521]
+      - paragraph [ref=e5628]:
+        - text: The normalisation
+        - img [ref=e5630]
+        - text: is exact by construction. The density matrix from the two electrons in
+        - img [ref=e5651]
+        - text: is
+      - img [ref=e5660]:
+        - generic [ref=e5662]:
+          - generic [ref=e5718]:
+            - img [ref=e5722]
+            - img [ref=e5742]
+          - generic [ref=e5746]:
+            - img [ref=e5750]
+            - img [ref=e5790]
+      - paragraph [ref=e5794]:
+        - text: Updating the Fock matrix with this
+        - img [ref=e5796]
+        - text: "and iterating the SCF to convergence (the script does this in a single fixed-point loop) gives:"
+      - code [ref=e5805]: "SCF converged in 3 iterations (dE = 0.00e+00, dP = 0.00e+00) *** Converged H2 STO-3G HF energy *** MO energies (E_h) : [-0.5782 0.6703] MO coefficients C : [[-0.5489 -1.2115] [-0.5489 1.2115]] E_electronic = -1.831000 E_h E_nuc-nuc (1/R) = +0.714286 E_h E_total HF = -1.116714 E_h (Szabo & Ostlund table 3.5 quote -1.1167 E_h)"
+      - paragraph [ref=e5806]:
+        - text: (The signs of both eigenvectors are arbitrary — eigenvectors are defined up to an overall phase — so the bonding MO appears here with two negative coefficients rather than two positive, but it is the
+        - emphasis [ref=e5807]: same
+        - text: orbital. Multiplying
+        - img [ref=e5809]
+        - text: by
+        - img [ref=e5816]
+        - text: column-wise reproduces the conventional textbook signs.)
+      - paragraph [ref=e5823]:
+        - text: The MOs and their numerical values reproduce the textbook result. The bonding orbital
+        - img [ref=e5825]
+        - text: has no node and most of its amplitude in the bond midpoint; the antibonding
+        - img [ref=e5834]
+        - text: has a node at
+        - img [ref=e5845]
+        - text: and opposite signs on the two atoms. The plot of both MOs along the bond axis is in figure 1. The full source (with the integral routines, the SCF loop, and the plotting) lives at
+        - code [ref=e5859]: dft_notes/python_codes/chapter_06/01-sto-3g-h2.py
+        - text: ". The key piece is the contracted-integral helper and the SCF update:"
+      - code [ref=e5863]: "def contracted_eri(aA, dA, aB, dB, aC, dC, aD, dD, RA, RB, RC, RD): \"\"\"Two-electron integral (AB|CD) in chemists' notation.\"\"\" eri = 0.0 rAB2 = float(np.sum((RA - RB) ** 2)) rCD2 = float(np.sum((RC - RD) ** 2)) for ai, di in zip(aA, dA): for bj, ej in zip(aB, dB): P = (ai * RA + bj * RB) / (ai + bj) for ck, fk in zip(aC, dC): for dl, gl in zip(aD, dD): Q = (ck * RC + dl * RD) / (ck + dl) rPQ2 = float(np.sum((P - Q) ** 2)) eri += (di * ej * fk gl * norm_s(ai) * norm_s(bj) * norm_s(ck) * norm_s(dl) * prim_eri(ai, bj, ck, dl, rAB2, rCD2, rPQ2)) return eri # ... in main() ... for it in range(64): J = np.einsum(\"pqrs,rs->pq\", ERI, P) Kx = np.einsum(\"prqs,rs->pq\", ERI, P) F = Hcore + J - 0.5 * Kx evals, C = eigh(F, S) P_new = 2.0 * np.outer(C[:, 0], C[:, 0]) if abs(E_elec - E_prev) < 1e-10: break P, E_prev = P_new, E_elec"
+      - paragraph [ref=e5864]:
+        - 'img "Plot output from `dft_notes/python_codes/chapter_06/01-sto-3g-h2.py`" [ref=e5865]'
+      - paragraph [ref=e5866]:
+        - emphasis [ref=e5867]: Figure 1.
+        - text: The two molecular orbitals of
+        - img [ref=e5869]
+        - text: in the STO-3G basis at
+        - img [ref=e5878]
+        - text: ", sampled along the bond axis. Top:"
+        - img [ref=e5895]
+        - text: bonding orbital (
+        - img [ref=e5904]
+        - text: "), no node, amplitude concentrated in the bond midpoint. Bottom:"
+        - img [ref=e5928]
+        - text: antibonding orbital (
+        - img [ref=e5939]
+        - text: ), one node at
+        - img [ref=e5963]
+        - text: ", opposite signs on the two atoms."
+      - heading "6.10 The workflow, end to end" [level=2] [ref=e5977]
+      - figure [ref=e5979]:
+        - code [ref=e5980]:
+          - document [ref=e5981]:
+            - generic [ref=e5983]:
+              - generic [ref=e5994]:
+                - generic [ref=e5998]: atom-centred
+                - generic [ref=e6002]: periodic
+                - generic [ref=e6006]: finite cluster
+                - generic [ref=e6010]: "no"
+                - generic [ref=e6014]: "yes"
+              - generic [ref=e6015]:
+                - generic [ref=e6021]:
+                  - text: Molecule or
+                  - text: periodic cell
+                  - text: geometry + Z
+                - generic [ref=e6027]:
+                  - text: Choose basis
+                  - text: family
+                - generic [ref=e6033]:
+                  - text: Gaussians
+                  - generic [ref=e6034]:
+                    - text: STO-3G, 6-31G,
+                    - text: cc-pVTZ, aug-cc-pVTZ
+                - generic [ref=e6040]:
+                  - text: Plane waves
+                  - text: E_cut, Brillouin-zone grid
+                - generic [ref=e6046]:
+                  - text: Real-space grid
+                  - text: grid spacing h
+                - generic [ref=e6052]:
+                  - text: Build S, h_core,
+                  - text: ERI tensor
+                - generic [ref=e6058]:
+                  - text: Build kinetic diagonal,
+                  - text: density on FFT grid
+                - generic [ref=e6064]:
+                  - text: Build sparse Laplacian,
+                  - text: diagonal v_xc
+                - generic [ref=e6070]:
+                  - text: Roothaan-Hall
+                  - text: FC = SCE
+                  - text: iterate to self-consistency
+                - generic [ref=e6076]:
+                  - text: Orbitals, density,
+                  - text: total energy
+                - generic [ref=e6082]:
+                  - text: Converged with
+                  - text: basis?
+                - generic [ref=e6087]: Report E, ρ, forces
+        - button "Download this diagram as a PNG" [ref=e6088] [cursor=pointer]:
+          - img [ref=e6089]
+          - generic [ref=e6092]: Download PNG
+      - paragraph [ref=e6093]:
+        - text: The decision in the top-left box is the one a practitioner spends most of their time on. Atom-centred Gaussians dominate finite-molecule chemistry; plane waves dominate solid-state physics; real-space grids are a niche favoured for parallelisation and for systems where the periodicity assumption is awkward. All three feed the
+        - emphasis [ref=e6094]: same
+        - text: self-consistent loop and, in the basis-set limit, give the
+        - emphasis [ref=e6095]: same
+        - text: answer.
+      - heading "6.11 Problems" [level=2] [ref=e6096]
+      - group [ref=e6097]:
+        - generic "▸ Problem 1 (easy) — Counting basis functions for water" [ref=e6098] [cursor=pointer]
+        - text: "Water (H O) has one O and two H atoms. Count the number of contracted basis functions that the basis sets **`STO-3G*`*, **`6-31G*`*, **`6-31G*`**, and **cc-pVDZ** give for water. Use the per-atom compositions stated in sections 6.4–6.6 and the spherical-harmonic convention for -functions (5 per shell, not 6)."
+      - group [ref=e6099]:
+        - generic "▸ Show answer" [ref=e6100] [cursor=pointer]
+        - text: "Per-atom contributions: | Basis | H (per atom) | O (per atom) | for H O | |:---------|:-------------|:-------------|:------------------| | STO-3G | → 1 | → 5 | | | 6-31G | → 2 | → 9 | | | `6-31G*' | same as 6-31G | + (5 spherical) → 14 | | | cc-pVDZ | → 5 | → | | (For cc-pVDZ the on H is one shell of three Cartesian -functions, i.e. five basis functions per H: two and three .) The headline numbers: STO-3G gives , 6-31G gives , `6-31G*' gives , cc-pVDZ gives — and cc-pVTZ, cc-pVQZ, cc-pV5Z grow to 58, 115, 201 respectively. The ERI count scales as , so each step up the ladder is a factor of 5–10 more expensive."
+      - group [ref=e6101]:
+        - generic "▸ Problem 2 (medium) — Prove the Gaussian product theorem" [ref=e6102] [cursor=pointer]
+        - text: Show by direct algebra that for any two centres and positive exponents , where . You may work in one dimension; the three-dimensional result follows from the factorisation .
+      - group [ref=e6103]:
+        - generic "▸ Show answer" [ref=e6104] [cursor=pointer]
+        - text: In one dimension, write the exponent of the product as Define and , so the linear coefficient matches. Completing the square in , It remains to evaluate the constant . Substituting , Subtracting under a common denominator gives Expanding the second numerator term, , and cancelling the and pieces, Therefore the exponent of the product is which exponentiates to the claimed identity. In three dimensions, repeat for each Cartesian component; accumulates to and the piece becomes .
+      - group [ref=e6105]:
+        - generic "▸ Problem 3 (hard) — Plane-wave count and Hamiltonian cost" [ref=e6106] [cursor=pointer]
+        - text: "A cubic simulation cell of side Å is used to contain an isolated water molecule. In atomic units, , so . Compute: 1. The number of plane waves at the point ( ) for kinetic-energy cutoffs , , . 2. The corresponding diagonalisation cost ratios (full diagonalisation is ). 3. Discuss qualitatively why a pseudopotential ([chapter 08](/DFT-notes/dft-notes/chapter-08/)) can reduce from (all-electron for first-row atoms) to – ."
+      - group [ref=e6107]:
+        - generic "▸ Show answer" [ref=e6108] [cursor=pointer]
+        - text: "**Step 1.** Apply directly, For : . For : . For : . **Step 2.** Full diagonalisation is . Relative costs, normalised to : | | | (relative) | |:---------------|--------------:|---------------------------:| | 30 | 52 966 | 1 | | 60 | 149 787 | | | 100 | 322 308 | | Doubling the cutoff costs a factor of (the basis grows as and the cubic diagonalisation eats another factor of on top), and tripling the cutoff costs more than two orders of magnitude. **Step 3.** An all-electron description of, say, oxygen needs plane waves that resolve the orbital, whose characteristic length scale is . By the real-space grid argument this requires — hopeless for a plane-wave code. A pseudopotential replaces the (and ) core orbitals by a smooth effective potential whose Fourier components die off above – , so a cutoff of – is enough. In practice every plane-wave DFT calculation on anything heavier than helium uses a pseudopotential — the quadratic cost saving (from down to ) is what makes the method usable at all."
+      - heading "6.12 What we left out" [level=2] [ref=e6109]
+      - paragraph [ref=e6110]: "This chapter scratched the surface of basis-set design. Some of what we skipped:"
+      - list [ref=e6111]:
+        - listitem [ref=e6112]:
+          - strong [ref=e6113]: Basis-set superposition error (BSSE).
+          - text: When two fragments are computed in the
+          - emphasis [ref=e6114]: union
+          - text: of their atomic bases, each fragment can use functions centred on the other to artificially lower its own energy. The standard fix is the
+          - strong [ref=e6115]: counterpoise correction
+          - text: (Boys & Bernardi 1970). We ignored it.
+        - listitem [ref=e6116]:
+          - strong [ref=e6117]: Numerical atom-centred orbitals.
+          - text: Codes like SIESTA, DMol3, and FHI-aims use
+          - emphasis [ref=e6118]: "numerically tabulate`d"
+          - text: ’ atomic orbitals — a third family between Gaussians and plane waves — that are systematically improvable like Gaussians but carry no contraction-fitting error. We did not discuss them.
+        - listitem [ref=e6119]:
+          - strong [ref=e6120]: Resolution-of-the-identity / density-fitting.
+          - text: The ERI tensor
+          - img [ref=e6122]
+          - text: is the bottleneck of every Gaussian SCF. Density-fitting (DF / RI) approximates it as a product of three-centre integrals over an auxiliary basis, reducing storage from
+          - img [ref=e6141]
+          - text: to
+          - img [ref=e6157]
+          - text: . Standard in every production code; out of scope here.
+        - listitem [ref=e6172]:
+          - strong [ref=e6173]: Effective-core potentials (ECPs) and relativistic contractions.
+          - text: For heavy elements (
+          - img [ref=e6175]
+          - text: ) the inner-shell electrons demand a relativistic treatment and a basis tuned for it. We will revisit this in
+          - link "chapter 08" [ref=e6185] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: in the pseudopotential context.
+        - listitem [ref=e6186]:
+          - strong [ref=e6187]: Wavelets and B-splines.
+          - text: Multiresolution and finite- element methods (BigDFT, FHI-aims’ NAOs) avoid the uniform-grid Nyquist limit and are increasingly relevant for large molecules. We mentioned them in passing only.
+      - blockquote [ref=e6188]:
+        - paragraph [ref=e6189]:
+          - text: "Next:"
+          - link "chapter 07" [ref=e6190] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: "— Bloch’s theorem and the Brillouin zone: how plane waves and"
+          - img [ref=e6192]
+          - text: "-points combine to handle infinite periodic solids."
+      - heading "6.13 Numerical atomic orbitals (NAOs)" [level=2] [ref=e6197]
+      - paragraph [ref=e6198]:
+        - text: The basis sets of sections 6.3–6.6 (STO-nG, Pople, Dunning) are all
+        - strong [ref=e6199]: analytic
+        - text: ": every function in the basis is known in closed form as a sum of Gaussians. An alternative, used by"
+        - strong [ref=e6200]: SIESTA
+        - text: (linear-scaling DFT),
+        - strong [ref=e6201]: FHI-aims
+        - text: (numeric all-electron), and the partial-wave construction of
+        - strong [ref=e6202]: PAW
+        - text: (section 6.15), is to
+        - strong [ref=e6203]: tabulate
+        - text: each basis function numerically on a radial grid. The basis functions are still atom-centred and angular-momentum- resolved, but the
+        - strong [ref=e6204]: radial part
+        - text: is a numerical solution of a one-particle Schrödinger equation — there are no contraction coefficients and no least-squares fitting error. The price is that the integrals are not analytical; they are evaluated by quadrature on the same radial grid the orbital was defined on.
+      - heading "6.13.1 The claim" [level=3] [ref=e6205]
+      - paragraph [ref=e6206]:
+        - text: A
+        - strong [ref=e6207]: numerical atomic orbital
+        - text: (NAO) of angular momentum
+        - img [ref=e6209]
+        - text: and “zeta index”
+        - img [ref=e6215]
+        - text: centred at atom
+        - img [ref=e6221]
+        - text: is
+      - img [ref=e6227]:
+        - generic [ref=e6231]:
+          - img [ref=e6232]
+          - img [ref=e6334]
+      - paragraph [ref=e6343]:
+        - text: where
+        - img [ref=e6345]
+        - text: is a real spherical harmonic,
+        - img [ref=e6357]
+        - text: is the distance to atom
+        - img [ref=e6366]
+        - text: ", and the radial function"
+        - img [ref=e6372]
+        - text: is a numerical solution of a
+        - strong [ref=e6391]: modified
+        - text: radial Schrödinger equation with a confining potential. The index
+        - img [ref=e6393]
+        - text: labels the multiple-ζ split of the valence shell.
+      - heading "6.13.2 The radial Schrödinger equation" [level=3] [ref=e6417]
+      - paragraph [ref=e6418]:
+        - text: The atomic problem for the radial part of an orbital in a spherically symmetric effective potential
+        - img [ref=e6420]
+        - text: is
+      - img [ref=e6437]:
+        - generic [ref=e6441]:
+          - img [ref=e6442]
+          - img [ref=e6542]
+      - paragraph [ref=e6551]:
+        - text: where
+        - img [ref=e6553]
+        - text: is the radial function scaled by
+        - img [ref=e6583]
+        - text: (so the volume element
+        - img [ref=e6589]
+        - text: becomes just
+        - img [ref=e6606]
+        - text: ). The boundary conditions are
+      - list [ref=e6617]:
+        - listitem [ref=e6618]:
+          - img [ref=e6620]
+          - text: (the wavefunction must vanish at the nucleus),
+        - listitem [ref=e6638]:
+          - img [ref=e6640]
+          - text: as
+          - img [ref=e6659]
+          - text: (bound-state decay).
+      - paragraph [ref=e6668]:
+        - text: In an isolated atom the second condition is automatically satisfied because
+        - img [ref=e6670]
+        - text: is attractive. In a molecule, however, the valence NAO must be representable on a
+        - strong [ref=e6680]: finite
+        - text: support, or the overlap matrix becomes ill-conditioned and the SCF converges poorly. The fix is to add a
+        - strong [ref=e6681]: confining potential
+        - text: to
+        - img [ref=e6683]
+        - text: "that vanishes in the chemically relevant region and rises outside it:"
+      - img [ref=e6694]:
+        - generic [ref=e6698]:
+          - img [ref=e6699]
+          - img [ref=e6753]
+      - paragraph [ref=e6762]: A widely used form (SIESTA, FHI-aims) is a polynomial ramp,
+      - img [ref=e6764]:
+        - generic [ref=e6768]:
+          - img [ref=e6769]:
+            - generic [ref=e6790]:
+              - img [ref=e6794]
+              - img [ref=e6796]
+          - img [ref=e6897]
+      - paragraph [ref=e6905]:
+        - text: with the “inner radius”
+        - img [ref=e6907]
+        - text: set to roughly the covalent radius of the atom (so the confining potential does not touch the bond region) and the
+        - strong [ref=e6915]: confinement radius
+        - img [ref=e6917]
+        - text: the control parameter the user varies. Common choices are
+        - img [ref=e6926]
+        - text: (quadratic) and
+        - img [ref=e6936]
+        - text: –
+        - img [ref=e6950]
+        - text: . With this
+        - img [ref=e6963]
+        - text: the radial equation
+        - img [ref=e6975]:
+          - link [ref=e6978] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-13-radial"
+        - text: becomes a
+        - strong [ref=e6986]: bound-state problem in a finite box
+        - text: ", solvable by Numerov or by shooting to the asymptotic boundary"
+        - img [ref=e6988]
+        - text: where
+        - img [ref=e7001]
+        - text: .
+      - heading "6.13.3 The logarithmic grid" [level=3] [ref=e7022]
+      - paragraph [ref=e7023]:
+        - text: The radial equation is
+        - strong [ref=e7024]: stiff
+        - text: at small
+        - img [ref=e7026]
+        - text: (where
+        - img [ref=e7032]
+        - text: diverges and the wavefunction oscillates rapidly) and
+        - strong [ref=e7057]: smooth
+        - text: at large
+        - img [ref=e7059]
+        - text: (where it decays exponentially). A uniform grid wastes resolution in the asymptotic region. The standard choice is the
+        - emphasis [ref=e7064]:
+          - text: "*logarithmic gri"
+          - code [ref=e7065]: d*
+        - text: "introduced by H. J. A. M. Kormann and used in SIESTA and FHI-aims:"
+      - img [ref=e7067]:
+        - generic [ref=e7071]:
+          - img [ref=e7072]
+          - img [ref=e7131]
+      - paragraph [ref=e7140]:
+        - text: The grid has constant
+        - strong [ref=e7141]: log-spacing
+        - img [ref=e7143]
+        - text: — i.e. constant
+        - emphasis [ref=e7148]: relative
+        - text: "resolution. Typical parameters:"
+        - img [ref=e7150]
+        - text: ","
+        - img [ref=e7177]
+        - text: –
+        - img [ref=e7190]
+        - text: ","
+        - img [ref=e7204]
+        - text: –
+        - img [ref=e7219]
+        - text: . At the heavy end of the basis (PAW partial waves, see section 6.15) one uses a denser log grid with
+        - img [ref=e7228]
+        - text: and
+        - img [ref=e7246]
+        - text: to resolve the oscillations of the
+        - img [ref=e7262]
+        - text: orbital near the nucleus.
+      - paragraph [ref=e7269]:
+        - text: Substituting
+        - img [ref=e7271]:
+          - link [ref=e7274] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-13-loggrid"
+        - text: into
+        - img [ref=e7283]:
+          - link [ref=e7286] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-13-radial"
+        - text: removes the singular
+        - img [ref=e7295]
+        - text: behaviour at small
+        - img [ref=e7321]
+        - text: (because
+        - img [ref=e7327]
+        - text: is finite at
+        - img [ref=e7401]
+        - text: and decays geometrically), and the Numerov method becomes uniformly accurate across the whole grid.
+      - heading "6.13.4 Multiple-ζ" [level=3] [ref=e7410]
+      - paragraph [ref=e7411]:
+        - text: A single NAO per
+        - img [ref=e7413]
+        - text: is a
+        - strong [ref=e7426]: single-ζ
+        - text: "basis: it captures the size of the valence orbital but not its flexibility under chemical bonding. The"
+        - strong [ref=e7427]: multiple-ζ
+        - text: idea (Artacho, Sánchez-Portal, Ordejón, Soler 1998; Junquera, Paz, Sánchez-Portal, Artacho 2001) is to generate
+        - img [ref=e7429]
+        - text: NAOs for the same
+        - img [ref=e7438]
+        - text: by solving the same radial equation with
+        - strong [ref=e7451]: different confinement radii
+        - text: and orthogonalising the higher ζ’s against the lower ones.
+      - paragraph [ref=e7452]:
+        - text: Concretely, for a double-ζ valence shell (
+        - img [ref=e7454]
+        - text: "):"
+      - list [ref=e7466]:
+        - listitem [ref=e7467]:
+          - strong [ref=e7468]: First ζ.
+          - text: Solve
+          - img [ref=e7470]:
+            - link [ref=e7473] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-06-13-radial"
+          - text: with
+          - img [ref=e7482]
+          - text: at the “tight” radius
+          - img [ref=e7497]
+          - text: (typically half the bond length). Call the lowest-lying solution
+          - img [ref=e7515]
+          - text: .
+        - listitem [ref=e7536]:
+          - strong [ref=e7537]: Second ζ.
+          - text: Solve again with the “loose” radius
+          - img [ref=e7539]
+          - text: (typically the bond length). Call the new solution
+          - img [ref=e7557]
+          - text: . Symmetric-orthogonalise against
+          - img [ref=e7576]
+          - text: ":"
+      - img [ref=e7592]:
+        - generic [ref=e7596]:
+          - img [ref=e7597]
+          - img [ref=e7729]
+      - list [ref=e7738]:
+        - listitem [ref=e7739]:
+          - strong [ref=e7740]: Higher ζ.
+          - text: Repeat the procedure with progressively looser
+          - img [ref=e7742]
+          - text: ", projecting out the span of all previous ζ’s."
+      - paragraph [ref=e7750]:
+        - text: The smaller the inner
+        - img [ref=e7752]
+        - text: ", the more compact and rigid it is; the larger the outer"
+        - img [ref=e7758]
+        - text: ", the more diffuse and responsive to bonding. This is"
+        - emphasis [ref=e7763]: exactly
+        - text: the chemistry that Pople’s split-valence (6-31G, 6-311G) tried to encode empirically, but now the split-ζ functions are
+        - strong [ref=e7764]: ground-state solutions of the atomic problem
+        - text: rather than ad-hoc contractions. In SIESTA, a typical valence basis is
+        - strong [ref=e7765]: SZ
+        - text: (single-ζ) for production-quality geometry optimisation,
+        - strong [ref=e7766]: DZ
+        - text: (double-ζ) for property prediction, and
+        - strong [ref=e7767]: TZDP
+        - text: (triple-ζ + double polarisation) for high accuracy. The energy cost of an NAO basis is essentially that of a Gaussian basis of the same
+        - img [ref=e7769]
+        - text: — but the
+        - strong [ref=e7774]: information content per function
+        - text: is higher, so a DZ NAO basis often gives an accuracy comparable to a TZ Gaussian basis.
+      - heading "6.13.5 Polarisation orbitals" [level=3] [ref=e7775]
+      - paragraph [ref=e7776]:
+        - text: The multiple-ζ trick handles the
+        - strong [ref=e7777]: radial
+        - text: flexibility. The
+        - strong [ref=e7778]: angular
+        - text: flexibility (which is what polarisation functions do in a Gaussian basis) is generated by an
+        - strong [ref=e7779]: energy-derivative
+        - text: "recipe (Blöchl 1990, generalised by Artacho et al.):"
+      - img [ref=e7781]:
+        - generic [ref=e7785]:
+          - img [ref=e7786]
+          - img [ref=e7833]
+      - paragraph [ref=e7842]:
+        - text: The derivative of a bound-state radial wavefunction with respect to its energy is automatically orthogonal to the parent function
+        - img [ref=e7844]
+        - text: "(the Hellmann–Feynman argument:"
+        - img [ref=e7853]
+        - text: for normalised
+        - img [ref=e7920]
+        - text: ). It also has a node — it changes sign once — so it carries the next angular-momentum character
+        - strong [ref=e7928]: after
+        - text: projection. Specifically, if
+        - img [ref=e7930]
+        - text: is the valence s-function,
+        - img [ref=e7939]
+        - text: behaves like a p-function under angular integration; this is the NAO analogue of adding a
+        - img [ref=e7953]
+        - text: "-polarisation function on hydrogen."
+      - paragraph [ref=e7958]:
+        - text: Higher polarisation orbitals — e.g. the “double polarisation” of a TZDP basis — are obtained by a second derivative
+        - img [ref=e7960]
+        - text: ", projected against the span of"
+        - img [ref=e7984]
+        - text: and the valence
+        - img [ref=e7999]
+        - text: .
+      - heading "6.13.6 Convergence with" [level=3] [ref=e8007]:
+        - text: 6.13.6 Convergence with
+        - img [ref=e8009]
+      - paragraph [ref=e8017]:
+        - text: The accuracy of an NAO basis depends monotonically on
+        - img [ref=e8019]
+        - text: ": looser confinement (larger"
+        - img [ref=e8028]
+        - text: ) makes the basis more flexible and the BSIE smaller, at the cost of a longer-ranged, more-overlapping, and more linearly-dependent basis. In practice SIESTA and FHI-aims report a typical convergence study for the atomisation energy of a small molecule (e.g.
+        - img [ref=e8037]
+        - text: "or benzene): the energy converges to within"
+        - img [ref=e8050]
+        - text: at
+        - img [ref=e8064]
+        - text: (DZ),
+        - img [ref=e8082]
+        - text: (TZ),
+        - img [ref=e8095]
+        - text: (TZDP). Below
+        - img [ref=e8108]
+        - text: the basis is too tight to describe the bonding and the energy becomes wildly wrong.
+      - paragraph [ref=e8127]:
+        - text: A more formal diagnostic is the
+        - strong [ref=e8128]: basis-set limit curve
+        - img [ref=e8130]
+        - text: "plotted on a log–log axis: for an NAO basis"
+        - img [ref=e8142]
+        - text: falls approximately as
+        - img [ref=e8154]
+        - text: with
+        - img [ref=e8166]
+        - text: –
+        - img [ref=e8176]
+        - text: (the exact exponent depends on the confining-potential shape and on the property being converged — total energies converge faster than energy differences).
+      - blockquote [ref=e8181]:
+        - paragraph [ref=e8182]:
+          - strong [ref=e8183]: Note.
+          - text: In PAW (section 6.15) the NAO machinery is re-used for the
+          - emphasis [ref=e8184]: partial waves
+          - img [ref=e8186]
+          - text: inside the augmentation sphere. The radial grid and the confining potential are the same; only the role changes — there the NAO is an auxiliary object used to reconstruct the AE wavefunction from the smooth part, not a basis function in its own right.
+      - heading "6.13.7 SIESTA workflow" [level=3] [ref=e8196]
+      - figure [ref=e8198]:
+        - code [ref=e8199]:
+          - document [ref=e8200]:
+            - generic [ref=e8208]:
+              - generic [ref=e8214]:
+                - text: "Atomic problem:"
+                - text: Z_a + boundary
+              - generic [ref=e8220]:
+                - text: Solve radial
+                - text: Schrödinger
+                - text: Numerov on log grid
+              - generic [ref=e8225]: 1st ζ (tight R_c)
+              - generic [ref=e8230]: 2nd ζ (loose R_c)
+              - generic [ref=e8235]: n-th ζ (projected)
+              - generic [ref=e8241]:
+                - text: Gram-Schmidt
+                - text: orthogonalise
+              - generic [ref=e8247]:
+                - text: "Polarisation:"
+                - text: ∂R/∂ε
+              - generic [ref=e8253]:
+                - text: NAO basis
+                - text: "{χ_ℓm^(a,q)}"
+              - generic [ref=e8259]:
+                - text: SCF with O(N)
+                - text: or O(N^3) solver
+        - button "Download this diagram as a PNG" [ref=e8260] [cursor=pointer]:
+          - img [ref=e8261]
+          - generic [ref=e8264]: Download PNG
+      - paragraph [ref=e8265]:
+        - text: The Roothaan–Hall machinery of
+        - img [ref=e8267]:
+          - link [ref=e8270] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-roothaan-hall"
+        - text: "is unchanged: the matrix elements"
+        - img [ref=e8278]
+        - text: are evaluated by quadrature on the same radial grid that generated
+        - img [ref=e8308]
+        - text: ", but otherwise the linear algebra of section 6.1 goes through verbatim."
+      - heading "6.14 Wavelets and B-splines" [level=2] [ref=e8316]
+      - paragraph [ref=e8317]:
+        - text: The plane-wave basis of section 6.7 is
+        - strong [ref=e8318]: systematically improvable
+        - text: ": pushing"
+        - img [ref=e8320]
+        - text: to infinity gives the exact answer
+        - emphasis [ref=e8330]: provided the potential is non-singular
+        - text: — which is not the case for the all-electron problem. The atom-centred Gaussian basis of section 6.3 is also systematically improvable in principle — the cc-pV
+        - emphasis [ref=e8331]: X
+        - text: Z series is built on this premise — but the convergence is
+        - emphasis [ref=e8332]: angular
+        - text: ": the missing angular momenta show up as slowly-decaying multipole errors in the electron density."
+        - strong [ref=e8333]: Wavelets and B-splines
+        - text: are the basis families that are
+        - emphasis [ref=e8334]: "bot`h"
+        - text: ’ atom-like (no periodic boundary condition required) and
+        - emphasis [ref=e8335]: systematically
+        - text: improvable for the all-electron problem.
+      - heading "6.14.1 B-splines on a finite interval" [level=3] [ref=e8336]
+      - paragraph [ref=e8337]:
+        - text: A
+        - strong [ref=e8338]: B-spline
+        - text: of order
+        - img [ref=e8340]
+        - text: (degree
+        - img [ref=e8346]
+        - text: ) on a knot sequence
+        - img [ref=e8356]
+        - text: is defined by the Cox–de Boor recursion
+      - img [ref=e8384]:
+        - generic [ref=e8388]:
+          - img [ref=e8389]
+          - img [ref=e8464]
+      - img [ref=e8473]:
+        - generic [ref=e8477]:
+          - img [ref=e8478]
+          - img [ref=e8622]
+      - paragraph [ref=e8631]:
+        - text: For a simple uniform knot sequence
+        - img [ref=e8633]
+        - text: ", the B-splines are translated copies of one function"
+        - img [ref=e8648]
+        - text: ", each supported on"
+        - strong [ref=e8667]:
+          - img [ref=e8669]
+          - text: adjacent intervals
+        - text: . The order-
+        - img [ref=e8675]
+        - text: B-spline is a piecewise polynomial of degree
+        - img [ref=e8681]
+        - text: ","
+        - img [ref=e8691]
+        - text: continuous at the interior knots, and identically zero outside its
+        - img [ref=e8705]
+        - text: "-interval support."
+      - paragraph [ref=e8710]:
+        - text: The
+        - strong [ref=e8711]: partition of unity
+        - text: property
+      - img [ref=e8713]:
+        - generic [ref=e8717]:
+          - img [ref=e8718]
+          - img [ref=e8773]
+      - paragraph [ref=e8782]:
+        - text: follows by induction on
+        - img [ref=e8784]
+        - text: and makes B-splines a natural finite-element basis. In 3D the tensor product
+        - img [ref=e8790]
+        - text: is a piecewise polynomial of degree
+        - img [ref=e8842]
+        - text: on a uniform cubic grid of spacing
+        - img [ref=e8858]
+        - text: .
+      - paragraph [ref=e8863]:
+        - text: B-splines are the basis of choice in
+        - strong [ref=e8864]: finite-element discretisations
+        - text: of the Kohn–Sham problem (FEM-DFT codes such as
+        - strong [ref=e8865]: HelFEM
+        - text: and parts of
+        - strong [ref=e8866]: FHI-aims
+        - text: in their all-electron NAO mode). They give an exact representation of polynomials up to degree
+        - img [ref=e8868]
+        - text: ", have controllable smoothness (raise"
+        - img [ref=e8878]
+        - text: for smoother wavefunctions), and are the finite-dimensional subspace against which the variational principle
+        - img [ref=e8884]:
+          - link [ref=e8887] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-variational"
+        - text: is taken. The
+        - strong [ref=e8894]: kinetic-energy operator
+        - text: in a B-spline basis is a banded matrix of bandwidth
+        - img [ref=e8896]
+        - text: ", so the sparse direct solver scales as"
+        - img [ref=e8904]
+        - text: for a grid of
+        - img [ref=e8925]
+        - text: points.
+      - heading "6.14.2 Daubechies wavelets" [level=3] [ref=e8933]
+      - paragraph [ref=e8934]:
+        - text: A
+        - strong [ref=e8935]: wavelet basis
+        - text: "is a multiresolution generalisation of the B-spline idea: instead of a single grid, one uses an"
+        - strong [ref=e8936]: infinite tower of grids
+        - text: ", doubling the resolution at each level. Define a chain of closed subspaces"
+      - img [ref=e8938]:
+        - generic [ref=e8942]:
+          - img [ref=e8943]
+          - img [ref=e8988]
+      - paragraph [ref=e8997]:
+        - text: with
+        - img [ref=e8999]
+        - text: — i.e. the detail space
+        - img [ref=e9027]
+        - text: is the orthogonal complement of
+        - img [ref=e9036]
+        - text: in
+        - img [ref=e9045]
+        - text: . Each
+        - img [ref=e9059]
+        - text: is spanned by translations and dyadic scalings of a single
+        - strong [ref=e9067]: scaling function
+        - img [ref=e9069]
+        - text: ":"
+      - img [ref=e9075]:
+        - generic [ref=e9079]:
+          - img [ref=e9080]:
+            - img [ref=e9160]
+          - img [ref=e9164]
+      - paragraph [ref=e9173]:
+        - text: The Daubechies family D-
+        - img [ref=e9175]
+        - text: is parametrised by the number of vanishing moments
+        - img [ref=e9181]
+        - text: and constructed as the
+        - strong [ref=e9186]:
+          - text: most localised orthonormal scaling function with
+          - img [ref=e9188]
+          - text: vanishing moments
+        - text: — the support of the D-
+        - img [ref=e9194]
+        - text: scaling function is
+        - img [ref=e9200]
+        - text: grid points wide. The two-scale relation between
+        - img [ref=e9212]
+        - text: and the orthonormal wavelet
+        - img [ref=e9218]
+        - text: is
+      - img [ref=e9224]:
+        - generic [ref=e9228]:
+          - img [ref=e9229]
+          - img [ref=e9321]
+      - paragraph [ref=e9330]:
+        - text: where the
+        - strong [ref=e9331]: low-pass
+        - text: filter
+        - img [ref=e9333]
+        - text: and
+        - strong [ref=e9341]: high-pass
+        - text: filter
+        - img [ref=e9343]
+        - text: are finite sequences of
+        - img [ref=e9352]
+        - text: coefficients satisfying the quadrature-mirror conditions
+        - img [ref=e9360]
+        - text: and
+        - img [ref=e9392]
+        - text: . For D-2 the filters are
+      - img [ref=e9430]
+      - paragraph [ref=e9569]:
+        - text: and the scaling function has support
+        - img [ref=e9571]
+        - text: . Higher
+        - img [ref=e9585]
+        - text: gives smoother
+        - img [ref=e9591]
+        - text: and
+        - img [ref=e9597]
+        - text: (the D-
+        - img [ref=e9603]
+        - text: scaling function is
+        - img [ref=e9609]
+        - text: for some
+        - img [ref=e9621]
+        - text: ) at the cost of longer filters.
+      - heading "6.14.3 Why wavelets are systematically improvable" [level=3] [ref=e9630]
+      - paragraph [ref=e9631]:
+        - text: The B-spline basis of section 6.14.1 is complete in the sense that the finite-element space
+        - img [ref=e9633]
+        - text: becomes dense in
+        - img [ref=e9642]
+        - text: as
+        - img [ref=e9651]
+        - text: (i.e. as the grid spacing
+        - img [ref=e9661]
+        - text: ). The wavelet basis of section 6.14.2 is complete for the
+        - emphasis [ref=e9670]: same
+        - text: reason —
+        - img [ref=e9672]
+        - text: is spanned by translated B-spline-like scaling functions. The
+        - strong [ref=e9680]: additional
+        - text: thing the wavelet basis gives is
+        - strong [ref=e9681]: adaptivity
+        - text: ": a function with sharp features (near a nucleus, say) is represented economically in"
+        - img [ref=e9683]
+        - text: because the wavelet coefficients on the
+        - emphasis [ref=e9691]: coarse
+        - text: level
+        - img [ref=e9693]
+        - text: capture the high-frequency content that would otherwise force a uniform refinement to a much finer grid.
+      - paragraph [ref=e9706]:
+        - text: For the
+        - strong [ref=e9707]: all-electron problem
+        - text: ", this adaptivity is essential. The"
+        - img [ref=e9709]
+        - text: wavefunction of a carbon atom oscillates on a lengthscale of
+        - img [ref=e9717]
+        - text: near the nucleus, but is smooth and slowly-varying at the bond radius
+        - img [ref=e9732]
+        - text: . A uniform grid that resolves the
+        - img [ref=e9747]
+        - text: oscillation at
+        - img [ref=e9755]
+        - text: would need
+        - img [ref=e9773]
+        - text: grid points in a
+        - img [ref=e9785]
+        - text: cell — wasted on the chemically relevant valence region. A wavelet basis on the same domain (BigDFT uses D-2 to D-8 wavelets) reaches the same accuracy with
+        - img [ref=e9797]
+        - text: coefficients, because the wavelet coefficients in the valence region are sparse.
+      - paragraph [ref=e9808]: "This is the formal claim:"
+      - img [ref=e9810]:
+        - generic [ref=e9814]:
+          - img [ref=e9815]
+          - img [ref=e9872]
+      - paragraph [ref=e9881]:
+        - text: for
+        - img [ref=e9883]
+        - text: wavelet levels —
+        - emphasis [ref=e9888]: exponential
+        - text: convergence in the number of levels, and the only basis family for which this claim holds
+        - emphasis [ref=e9889]: "wit`h"
+        - text: ’ the full all-electron Coulomb singularity (no pseudopotential, no PAW).
+      - heading "6.14.4 The BigDFT code" [level=3] [ref=e9890]
+      - paragraph [ref=e9891]:
+        - text: The
+        - strong [ref=e9892]: BigDFT
+        - text: code (Genovese et al. 2008; Mohr et al. 2014) implements Kohn–Sham DFT in a Daubechies-wavelet basis on a cubic simulation cell with
+        - strong [ref=e9893]: two grids
+        - text: ": a coarse grid for the density and Hartree potential, and a fine grid (eight times finer) for the orbitals. The two-grid treatment of the non-local exchange term — the most expensive part of hybrid DFT — gives BigDFT its best-in-class"
+        - strong [ref=e9894]: scaling with system size
+        - text: "for non-periodic systems:"
+        - img [ref=e9896]
+        - text: for the total energy (when the locality of the density matrix is exploited) and
+        - img [ref=e9909]
+        - text: for the diagonalisation step.
+      - figure [ref=e9928]:
+        - code [ref=e9929]:
+          - document [ref=e9930]:
+            - generic [ref=e9938]:
+              - generic [ref=e9944]:
+                - text: Cubic cell
+                - text: (0, L)^3
+              - generic [ref=e9950]:
+                - text: Multi-resolution
+                - text: analysis
+              - generic [ref=e9956]:
+                - text: Coarse grid
+                - text: (density, v_H)
+              - generic [ref=e9962]:
+                - text: Fine grid
+                - text: (orbitals)
+              - generic [ref=e9968]:
+                - text: Multigrid Poisson
+                - text: solver (FFT-free)
+              - generic [ref=e9974]:
+                - text: Kohn-Sham
+                - text: sparse matrix
+              - generic [ref=e9980]:
+                - text: Total energy,
+                - text: forces
+        - button "Download this diagram as a PNG" [ref=e9981] [cursor=pointer]:
+          - img [ref=e9982]
+          - generic [ref=e9985]: Download PNG
+      - paragraph [ref=e9986]:
+        - text: "The Mermaid diagram shows the structure: the wavelet basis provides both grids simultaneously from the same multi-resolution analysis, and the"
+        - strong [ref=e9987]: Poisson solver
+        - text: is exact in the wavelet basis (no FFT, no periodic boundary condition required, no vacuum buffer for finite molecules).
+      - blockquote [ref=e9988]:
+        - paragraph [ref=e9989]:
+          - strong [ref=e9990]: Note.
+          - text: Wavelets are
+          - strong [ref=e9991]: orthogonal
+          - text: ", so"
+          - img [ref=e9993]
+          - text: and the Roothaan–Hall equation
+          - img [ref=e10005]:
+            - link [ref=e10008] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-06-roothaan-hall"
+          - text: collapses to the standard eigenproblem
+          - img [ref=e10016]
+          - text: . This is the first basis in this chapter where the overlap matrix is
+          - emphasis [ref=e10032]: automatically
+          - text: trivial.
+      - heading "6.15 Plane-wave projector augmented waves (PAW)" [level=2] [ref=e10033]
+      - paragraph [ref=e10034]:
+        - text: The plane-wave basis of section 6.7 is
+        - emphasis [ref=e10035]: the
+        - text: basis of periodic solids, but it cannot resolve the all-electron Coulomb singularity at the nucleus. A pseudopotential (
+        - link "chapter 08" [ref=e10036] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: ) replaces the singularity by a smooth effective potential — at the price of giving up all information about the wavefunction near the nucleus.
+        - strong [ref=e10037]: Projector augmented waves
+        - text: (PAW; Blöchl 1994; Kresse & Joubert 1999) keep the plane-wave basis for the “easy” region between the atoms, but
+        - strong [ref=e10038]: augment
+        - text: it with an exact atomic solution inside a small sphere around each atom. PAW is
+        - emphasis [ref=e10039]: the
+        - text: method used in VASP, Quantum ESPRESSO, GPAW, Castep, CP2K (in the GPW mode), and ABINIT; we will meet the pseudopotential limit of it in
+        - link "chapter 08" [ref=e10040] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: .
+      - heading "6.15.1 The PAW transformation" [level=3] [ref=e10041]
+      - paragraph [ref=e10042]:
+        - text: Let
+        - img [ref=e10044]
+        - text: be the
+        - strong [ref=e10061]: all-electron (AE) partial wave
+        - text: of atom
+        - img [ref=e10063]
+        - text: ", with composite index"
+        - img [ref=e10069]
+        - text: standing for the principal, angular, and magnetic quantum numbers of the AE solution inside the augmentation sphere. Let
+        - img [ref=e10091]
+        - text: be the corresponding
+        - strong [ref=e10112]: pseudo partial wave
+        - text: — the smooth function that equals
+        - img [ref=e10114]
+        - text: outside the augmentation sphere of radius
+        - img [ref=e10125]
+        - text: and is regular at the nucleus. The
+        - strong [ref=e10135]: projector
+        - img [ref=e10137]
+        - text: is the dual of
+        - img [ref=e10152]
+        - text: ","
+      - img [ref=e10167]:
+        - generic [ref=e10171]:
+          - img [ref=e10172]
+          - img [ref=e10224]
+      - paragraph [ref=e10233]:
+        - text: where the integral is over the augmentation sphere of atom
+        - img [ref=e10235]
+        - text: only. The PAW transformation is
+      - img [ref=e10241]:
+        - generic [ref=e10245]:
+          - img [ref=e10246]
+          - img [ref=e10327]
+      - paragraph [ref=e10336]:
+        - text: Applied to a smooth wavefunction
+        - img [ref=e10338]
+        - text: it produces the AE wavefunction
+      - img [ref=e10355]:
+        - generic [ref=e10359]:
+          - img [ref=e10360]
+          - img [ref=e10483]
+      - paragraph [ref=e10492]:
+        - text: The right-hand side is the
+        - strong [ref=e10493]: PAW reconstruction
+        - text: ": the smooth wavefunction"
+        - img [ref=e10495]
+        - text: plus a sum over atoms and partial-wave indices of the mismatch
+        - img [ref=e10508]
+        - text: ", weighted by the projection of"
+        - img [ref=e10532]
+        - text: onto the corresponding projector. Outside the augmentation spheres
+        - img [ref=e10545]
+        - text: by construction, so the correction vanishes; inside each sphere,
+        - img [ref=e10569]
+        - text: is replaced by the exact AE expansion in the partial-wave basis.
+      - heading "6.15.2 The plane-wave basis applies to" [level=3] [ref=e10581]:
+        - text: 6.15.2 The plane-wave basis applies to
+        - img [ref=e10583]
+      - paragraph [ref=e10595]:
+        - text: The whole point of the PAW construction is that the
+        - strong [ref=e10596]: smooth wavefunction
+        - img [ref=e10598]
+        - text: "is the object that lives in the plane-wave basis, exactly as in section 6.7:"
+      - img [ref=e10611]:
+        - generic [ref=e10615]:
+          - img [ref=e10616]
+          - img [ref=e10703]
+      - paragraph [ref=e10712]:
+        - text: The plane-wave cutoff
+        - img [ref=e10714]
+        - text: now has to resolve the
+        - strong [ref=e10724]: pseudo partial waves
+        - img [ref=e10726]
+        - text: ","
+        - emphasis [ref=e10740]: not
+        - text: the AE
+        - img [ref=e10742]
+        - text: . Because
+        - img [ref=e10753]
+        - text: is smooth at the nucleus, the typical
+        - img [ref=e10768]
+        - text: drops from
+        - img [ref=e10779]
+        - text: (all-electron) to
+        - img [ref=e10795]
+        - text: –
+        - img [ref=e10804]
+        - text: (PAW with a
+        - img [ref=e10816]
+        - text: –
+        - img [ref=e10824]
+        - text: "valence). The cost saving is roughly two orders of magnitude in plane-wave count, and two more in the diagonalisation cost — see Problem 3 of section 6.11. ### 6.15.3 Augmentation charges"
+      - paragraph [ref=e10831]:
+        - text: The PAW density and Kohn–Sham potential are not just evaluated on the plane-wave grid. A separate
+        - strong [ref=e10832]: augmentation
+        - text: treatment is needed inside each sphere. The total electron density is
+      - img [ref=e10834]:
+        - generic [ref=e10838]:
+          - img [ref=e10839]
+          - img [ref=e10911]
+      - paragraph [ref=e10920]: where
+      - list [ref=e10921]:
+        - listitem [ref=e10922]:
+          - img [ref=e10924]
+          - text: is the
+          - strong [ref=e10961]: smooth
+          - text: density, defined on the plane-wave grid,
+        - listitem [ref=e10962]:
+          - img [ref=e10964]
+          - text: is the
+          - strong [ref=e11015]: AE augmentation
+          - text: density, defined on the radial grid of atom
+          - img [ref=e11017]
+          - text: ","
+        - listitem [ref=e11022]:
+          - img [ref=e11024]
+          - text: is the
+          - strong [ref=e11087]: PS augmentation
+          - text: density, defined on the same radial grid,
+        - listitem [ref=e11088]:
+          - img [ref=e11090]
+          - text: is the
+          - strong [ref=e11167]: augmentation density matrix
+          - text: for atom
+          - img [ref=e11169]
+          - text: .
+      - paragraph [ref=e11174]:
+        - text: The smooth density
+        - img [ref=e11176]
+        - text: contains a small but non-negligible contribution from the augmentation region — $\tilde\phi_i^a (\tilde\phi_j^a)^
+        - emphasis [ref=e11185]:
+          - img [ref=e11187]
+          - text: \tilde\rho^a
+          - img [ref=e11213]
+          - text: \phi_i^a (\phi_j^a)^
+        - img [ref=e11259]
+        - text: \rho^a
+        - img [ref=e11267]
+        - text: \rho^a - \tilde\rho^a$ in
+        - img [ref=e11321]:
+          - link [ref=e11324] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-15-density"
+        - text: subtracts the smooth part and adds back the AE part,
+        - emphasis [ref=e11332]: exactly
+        - text: restoring the all-electron density inside the augmentation spheres.
+      - paragraph [ref=e11333]:
+        - text: The same split is applied to the local part of the potential and to the Hartree and exchange–correlation contributions. In practical codes the
+        - strong [ref=e11334]: compensation (or “augmentation”) charges
+        - img [ref=e11336]
+        - text: are added to the smooth density so that the multipole moments of the augmentation charge density
+        - img [ref=e11356]
+        - text: are absorbed into the plane-wave Hartree solver. The total potential becomes
+      - img [ref=e11376]:
+        - generic [ref=e11380]:
+          - img [ref=e11381]
+          - img [ref=e11453]
+      - paragraph [ref=e11462]:
+        - text: with
+        - img [ref=e11464]
+        - text: and
+        - img [ref=e11473]
+        - text: tabulated on the radial grid of each atom, and
+        - img [ref=e11486]
+        - text: a plane-wave-expandable smooth potential.
+      - heading "6.15.4 The frozen-core approximation" [level=3] [ref=e11495]
+      - paragraph [ref=e11496]:
+        - text: The partial-wave basis
+        - img [ref=e11498]
+        - text: is
+        - emphasis [ref=e11522]: local
+        - text: to each atom. The standard choice is to include
+        - strong [ref=e11523]: only the valence
+        - text: in the active set — i.e. to freeze the core orbitals (1s for first-row atoms, 1s2s2p for transition metals, etc.) at the values they have in the
+        - strong [ref=e11524]: isolated atom
+        - text: . In this
+        - strong [ref=e11525]: frozen-core
+        - text: approximation,
+      - img [ref=e11527]:
+        - generic [ref=e11531]:
+          - img [ref=e11532]
+          - img [ref=e11629]
+      - paragraph [ref=e11638]:
+        - text: The frozen-core term is a
+        - emphasis [ref=e11639]: one-time
+        - text: constant contribution to the augmentation density matrix of each atom; the SCF procedure never varies it. This is the PAW analogue of the frozen-core approximation in pseudopotential methods (
+        - link "chapter 08" [ref=e11640] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: ), with the crucial difference that the PAW reconstruction
+        - img [ref=e11642]:
+          - link [ref=e11645] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-15-reconstruct"
+        - text: can still recover the
+        - strong [ref=e11653]: exact AE value
+        - text: of any frozen-core orbital in post-processing (e.g. the X-ray absorption near-edge structure, XANES), because the partial-wave expansion of the core is still available — the all-electron wavefunction is reconstructed, the core just is not allowed to relax in the SCF.
+      - paragraph [ref=e11654]:
+        - text: In PAW with a frozen core the “all-electron” reconstruction
+        - img [ref=e11656]:
+          - link [ref=e11659] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-06-15-reconstruct"
+        - text: becomes
+      - img [ref=e11668]:
+        - generic [ref=e11672]:
+          - img [ref=e11673]
+          - img [ref=e11838]
+      - paragraph [ref=e11847]:
+        - text: where
+        - img [ref=e11849]
+        - text: is the smooth part of the atomic core wavefunction. The core term is a constant, atom-centred contribution that depends on the
+        - emphasis [ref=e11863]: atom type
+        - text: but not on the chemical environment — its only role is to keep the all-electron density correct in the core region.
+      - heading "6.15.5 Workflow" [level=3] [ref=e11864]
+      - figure [ref=e11866]:
+        - code [ref=e11867]:
+          - document [ref=e11868]:
+            - generic [ref=e11870]:
+              - generic [ref=e11871]:
+                - generic [ref=e11875]: PAW transform
+                - generic [ref=e11880]:
+                  - text: plane-wave basis
+                  - text: (E_cut)
+              - generic [ref=e11881]:
+                - generic [ref=e11887]:
+                  - text: AE problem
+                  - text: (divergent at nucleus)
+                - generic [ref=e11893]:
+                  - text: Smooth problem
+                  - text: T|ψ̃⟩ = ε|ψ̃⟩
+                - generic [ref=e11899]:
+                  - text: FFT diagonalisation
+                  - text: on the BZ grid
+                - generic [ref=e11905]:
+                  - text: PAW reconstruction
+                  - text: "|ψ⟩ = |ψ̃⟩ + (|φ⟩ - |φ̃⟩)⟨p̃|ψ̃⟩"
+                - generic [ref=e11910]: AE ψ, ρ, E
+        - button "Download this diagram as a PNG" [ref=e11911] [cursor=pointer]:
+          - img [ref=e11912]
+          - generic [ref=e11915]: Download PNG
+      - paragraph [ref=e11916]:
+        - text: The Mermaid diagram shows the data flow. The
+        - strong [ref=e11917]: smooth problem
+        - text: is what the plane-wave code actually solves; the AE observables are reconstructed at the end. The augmentation sphere radius
+        - img [ref=e11919]
+        - text: is the control parameter — it must be small enough that the augmentation spheres of neighbouring atoms do not overlap (a non-overlap requirement that PAW shares with the LAPW method), but large enough that the partial-wave expansion converges quickly. Typical values are
+        - img [ref=e11930]
+        - text: –
+        - img [ref=e11947]
+        - text: for first-row atoms and
+        - img [ref=e11960]
+        - text: –
+        - img [ref=e11970]
+        - text: for transition metals.
+      - heading "6.15.6 What the plane-wave code actually does" [level=3] [ref=e11982]
+      - paragraph [ref=e11983]: "A practical PAW calculation (VASP, Quantum ESPRESSO) runs the following inner loop:"
+      - list [ref=e11984]:
+        - listitem [ref=e11985]:
+          - strong [ref=e11986]: Initial guess.
+          - text: Atomic superposition of the
+          - img [ref=e11988]
+          - text: partial waves for each atom in the cell.
+        - listitem [ref=e12002]:
+          - strong [ref=e12003]: Build smooth density.
+          - text: Accumulate
+          - img [ref=e12005]
+          - text: on the FFT grid (cutoff
+          - img [ref=e12015]
+          - text: ).
+        - listitem [ref=e12027]:
+          - strong [ref=e12028]: Build smooth potential.
+          - text: Hartree via FFT-based Poisson solver, XC on the grid, ionic on the grid.
+        - listitem [ref=e12029]:
+          - strong [ref=e12030]: Subtract augmentation charges.
+          - text: Replace the smooth augmentation density
+          - img [ref=e12032]
+          - text: on each radial grid by the AE
+          - img [ref=e12045]
+          - text: ", and update the local potential accordingly."
+        - listitem [ref=e12053]:
+          - strong [ref=e12054]: Diagonalise.
+          - text: Standard plane-wave Roothaan–Hall with the
+          - strong [ref=e12055]: non-local
+          - text: projector-augmented-wave Hamiltonian operator
+          - img [ref=e12057]
+          - text: . Iterative diagonalisation (Davidson, RMM-DIIS, or block-Davidson) keeps the cost tractable.
+        - listitem [ref=e12071]:
+          - strong [ref=e12072]:
+            - text: Update
+            - img [ref=e12074]
+            - text: .
+          - text: Using the new
+          - img [ref=e12088]
+          - text: .
+        - listitem [ref=e12100]:
+          - strong [ref=e12101]: Loop 2–6
+          - text: to self-consistency.
+      - paragraph [ref=e12102]:
+        - text: The “frozen” part of
+        - img [ref=e12104]
+        - text: (the core) is set in step 1 and never updated.
+      - blockquote [ref=e12117]:
+        - paragraph [ref=e12118]:
+          - strong [ref=e12119]: Tip.
+          - text: The
+          - strong [ref=e12120]: PAW datasets
+          - text: distributed with VASP / Quantum ESPRESSO are not just pseudopotentials — they contain the partial waves
+          - emphasis [ref=e12121]: "an`d"
+          - text: ’ the projectors. Treating them as “potentials” and ignoring the reconstruction is a common source of confusion. The data file you load into a PAW code is a small, atom-type-specific data set (
+          - img [ref=e12123]
+          - text: –
+          - img [ref=e12132]
+          - text: radial functions per atom type) that defines the augmentation sphere, the partial waves, and the projectors.
+      - heading "6.16 What we left out (updated)" [level=2] [ref=e12138]
+      - paragraph [ref=e12139]: "The original “what we left out” in section 6.12 still applies, but the three new sections 6.13–6.15 bring their own omissions:"
+      - list [ref=e12140]:
+        - listitem [ref=e12141]:
+          - strong [ref=e12142]: Linear-scaling NAO.
+          - text: SIESTA’s
+          - img [ref=e12144]
+          - text: mode exploits the sparsity of the density matrix in an atom-centred basis; we have not derived the divide-and- conquer or Fermi-operator expansion methods that make this work. See
+          - link "chapter 10" [ref=e12156] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/
+          - text: for the linear-scaling toolkit.
+        - listitem [ref=e12157]:
+          - strong [ref=e12158]: Adaptive finite elements.
+          - text: FEniCS-based DFT codes use
+          - emphasis [ref=e12159]: "unstructure`d"
+          - text: ’ tetrahedral meshes with adaptive refinement, a generalisation of the B-spline idea; we touched on it only in passing.
+        - listitem [ref=e12160]:
+          - strong [ref=e12161]: LAPW / APW+lo.
+          - text: The linearised augmented plane wave basis (used by FLEUR, Wien2k) is a
+          - emphasis [ref=e12162]: different
+          - text: augmentation of the plane-wave basis, with energy-linearised partial waves at fixed energy
+          - img [ref=e12164]
+          - text: and “local orbitals” for energy flexibility. PAW is formally equivalent in the limit of large partial-wave sets, but the implementation is different and worth comparing. We did not.
+        - listitem [ref=e12172]:
+          - strong [ref=e12173]: The ultrasoft pseudopotential limit of PAW.
+          - text: In the limit that the augmentation sphere shrinks to zero and the partial-wave set collapses to a single function, the PAW transformation reduces to an
+          - strong [ref=e12174]: ultrasoft pseudopotential
+          - text: (Vanderbilt 1990) — a connection worked out in
+          - link "chapter 08" [ref=e12175] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: .
+        - listitem [ref=e12176]:
+          - strong [ref=e12177]: Wavelet basis sets for molecules.
+          - text: The
+          - img [ref=e12179]
+          - text: wavelet DFT codes (BigDFT, ORCHID) combine the wavelet basis with density-matrix purification; we did not derive the purification step.
+        - listitem [ref=e12191]:
+          - strong [ref=e12192]: Spin–orbit coupling in the PAW augmentation.
+          - text: For heavy elements (
+          - img [ref=e12194]
+          - text: ) the PAW partial waves must be computed in a relativistic framework (the Dirac equation rather than the Schrödinger equation), and the augmentation charges contain a
+          - img [ref=e12205]
+          - text: "-dependent contribution. We used the scalar-relativistic approximation throughout."
+  - contentinfo [ref=e12210]:
+    - generic [ref=e12211]:
+      - generic [ref=e12212]:
+        - img [ref=e12213]
+        - generic [ref=e12217]: DFT Notes
+        - paragraph [ref=e12218]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e12219]:
+        - generic [ref=e12220]:
+          - heading "Project" [level=3] [ref=e12221]
+          - list [ref=e12222]:
+            - listitem [ref=e12223]:
+              - link "Chapters map" [ref=e12224] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e12225]:
+              - link "Python codes" [ref=e12226] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e12227]:
+              - link "Contributing" [ref=e12228] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e12229]:
+              - link "Security" [ref=e12230] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e12231]:
+              - link "Design spec" [ref=e12232] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e12233]:
+              - link "GitHub ↗" [ref=e12234] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e12235]:
+          - heading "Built with" [level=3] [ref=e12236]
+          - list [ref=e12237]:
+            - listitem [ref=e12238]:
+              - link "Jekyll" [ref=e12239] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e12240]:
+              - link "MathJax 3" [ref=e12241] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e12242]:
+              - link "Mermaid" [ref=e12243] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e12244]:
+              - link "chenglou/pretext" [ref=e12245] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e12246]:
+              - link "Google Fonts" [ref=e12247] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e12248]:
+          - heading "Legal" [level=3] [ref=e12249]
+          - list [ref=e12250]:
+            - listitem [ref=e12251]:
+              - link "MIT License" [ref=e12252] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e12253]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e12255]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

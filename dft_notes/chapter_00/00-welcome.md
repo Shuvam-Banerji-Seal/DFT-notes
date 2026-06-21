@@ -276,20 +276,16 @@ plot of the hydrogen 1s density.  The 1s wavefunction of a
 hydrogenic atom with nuclear charge $Z$ is
 
 $$
-\begin{equation}
 \label{eq:ch-00-h1s}
 \psi_{1s}(\mathbf r) \;=\; \sqrt{\frac{Z^3}{\pi}}\, e^{-Z r} ,
-\end{equation}
 $$
 
 so the corresponding one-electron density is
 
 $$
-\begin{equation}
 \label{eq:ch-00-rho-1s}
 \rho_{1s}(\mathbf r) \;=\; \rvert \psi_{1s}(\mathbf r) \rvert^2
 \;=\; \frac{Z^3}{\pi}\, e^{-2 Z r} .
-\end{equation}
 $$
 
 The full source below produces a PNG that lives in
@@ -617,10 +613,8 @@ chapter 06 it is in section 6.1 and is the Roothaan–Hall matrix
 equation:
 
 $$
-\begin{equation}
 \label{eq:ch-00-example-rh}
 \mathbf F\, \mathbf C \;=\; \mathbf S\, \mathbf C\, \boldsymbol\varepsilon .
-\end{equation}
 $$
 
 That is **the claim** of chapter 06: *the Fock eigenvalue problem
@@ -912,10 +906,8 @@ This is a self-test of the linear-algebra prerequisite.  Diagonalise
 the matrix
 
 $$
-\begin{equation}
 \label{eq:ch-00-2x2}
 \mathbf A \;=\; \begin{pmatrix} 2 & 1 \\\\ 1 & 2 \end{pmatrix} .
-\end{equation}
 $$
 
 1. Write out the characteristic polynomial

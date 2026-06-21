@@ -1,0 +1,2581 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 11 — Band structures" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: Once you have solved the Kohn–Sham equations for a periodic solid, you are left with a list of energies that depend on a continuous variable
+          - strong [ref=e30]: k
+          - text: in the Brillouin zone. This chapter is about what to do with that list.
+      - paragraph [ref=e31]:
+        - text: By the end of
+        - link "chapter 07" [ref=e32] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: we had a Kohn–Sham Hamiltonian at every crystal momentum
+        - strong [ref=e33]: k
+        - text: in the first Brillouin zone, and we could solve the eigenproblem
+        - img [ref=e35]
+        - text: to obtain a discrete set of eigenvalues at each
+        - strong [ref=e76]: k
+        - text: . The result is a set of continuous functions
+        - img [ref=e78]
+        - text: — the
+        - strong [ref=e93]: band structure
+        - text: of the solid — and a discrete Fermi energy
+        - img [ref=e95]
+        - text: chosen so that exactly
+        - img [ref=e104]
+        - text: states are filled. Everything else in this chapter is a way of
+        - emphasis [ref=e112]: compressing
+        - text: "the band structure into a finite number of useful quantities: a band-structure plot along a 1-D k-path, a density of states (DOS) as a function of energy, a projected DOS onto atomic orbitals, a 2-D or 3-D Fermi surface, an effective mass tensor, an orbital character, a spin–orbit splitting. Each of these compressions is a small loss of information but a large gain in interpretability: the band-structure plot is the universal fingerprint of a solid, and reading it correctly is the single most useful skill in solid-state DFT."
+      - blockquote [ref=e113]:
+        - paragraph [ref=e114]:
+          - strong [ref=e115]: Reading note.
+          - text: This chapter assumes you have read chapters 01–07. It uses the plane-wave machinery of
+          - link "chapter 06" [ref=e116] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: and the Bloch / Brillouin-zone / k-point sampling machinery of
+          - link "chapter 07" [ref=e117] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: "without re-deriving them. Forward cross-references: the projected DOS is the basis of the projected-crystal-field analysis in the transition-metal chapters that follow, and the Fermi-surface language is reused in the transport discussion."
+      - heading "11.1 The claim" [level=2] [ref=e118]
+      - blockquote [ref=e119]:
+        - paragraph [ref=e120]:
+          - strong [ref=e121]: The Kohn–Sham band structure.
+          - text: "Let $V_\\text{eff}"
+          - link "\\rho" [ref=e122] [cursor=pointer]:
+            - /url: \mathbf r
+          - text: $ be the self-consistent Kohn–Sham effective potential of
+          - link "chapter 04" [ref=e123] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: ", evaluated at the ground-state density of a crystal. Let"
+          - img [ref=e125]
+          - text: be a point in the first Brillouin zone. The Kohn–Sham eigenproblem on the plane-wave basis of
+          - link "chapter 07" [ref=e131] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: is
+          - img [ref=e133]:
+            - generic [ref=e137]:
+              - img [ref=e138]
+              - img [ref=e202]
+          - text: The eigenvalues
+          - img [ref=e210]
+          - text: are continuous functions of
+          - img [ref=e223]
+          - text: within each band
+          - img [ref=e230]
+          - text: . The set
+          - img [ref=e236]
+          - text: is the
+          - strong [ref=e258]: Kohn–Sham band structure
+          - text: .
+      - paragraph [ref=e259]:
+        - text: The continuity of
+        - img [ref=e261]
+        - text: in
+        - img [ref=e274]
+        - text: is a theorem, not an accident. For a non-degenerate band
+        - img [ref=e281]
+        - text: ", the eigenvalue is an analytic function of"
+        - img [ref=e287]
+        - text: in a neighbourhood of any
+        - img [ref=e294]
+        - text: where the band is separated from its neighbours; derivatives
+        - img [ref=e301]
+        - text: and second derivatives
+        - img [ref=e326]
+        - text: exist and are continuous. At
+        - strong [ref=e360]: band crossings
+        - text: and
+        - strong [ref=e361]: degeneracies
+        - text: ", differentiability can be lost; the formal statement is that the"
+        - emphasis [ref=e362]: set
+        - img [ref=e364]
+        - text: is continuous in
+        - img [ref=e381]
+        - text: "even where individual bands are not differentiable. We will return to this point when we discuss avoided crossings and the analytic properties of the band structure in section 11.7. ### 11.1.1 Why “Kohn–Sham” and not “physical”?"
+      - paragraph [ref=e387]:
+        - text: Strictly speaking, the Kohn–Sham eigenvalues are
+        - emphasis [ref=e388]: not
+        - text: quasiparticle energies. The KS gap (the gap between the highest occupied and lowest unoccupied KS eigenvalue) differs from the
+        - emphasis [ref=e389]: "true"
+        - text: band gap of the solid, defined as the minimum energy to add or remove an electron. For LDA and GGA, the KS gap is typically 30–50 % smaller than the quasiparticle gap measured by photoemission; for semicore
+        - img [ref=e391]
+        - text: states, KS eigenvalues can be wrong by several eV. The correct way to obtain physically meaningful band gaps is the
+        - img [ref=e397]
+        - text: approximation of many-body perturbation theory, which is outside the scope of these notes.
+      - paragraph [ref=e404]:
+        - text: This chapter uses the KS band structure as the
+        - emphasis [ref=e405]: starting point
+        - text: . All the machinery developed here — band-structure plots, DOS, projected DOS, Fermi surfaces, effective masses — applies to
+        - emphasis [ref=e406]: any
+        - text: eigenvalue spectrum, whether from KS-DFT, Hartree–Fock, or
+        - img [ref=e408]
+        - text: . The qualitative shapes of the band structures are usually correct in LDA/GGA; the
+        - emphasis [ref=e421]: positions
+        - text: "of the bands are systematically shifted by the well-known “band-gap problem”. We will flag this caveat again in section 11.8. ### 11.1.2 The density of states"
+      - paragraph [ref=e422]:
+        - text: The
+        - strong [ref=e423]: density of states
+        - text: (DOS) at energy
+        - img [ref=e425]
+        - text: "is the number of single-particle states per unit energy per unit cell volume. In a crystal it is the sum over bands of a Brillouin-zone integral of a Dirac delta:"
+      - img [ref=e431]:
+        - generic [ref=e435]:
+          - img [ref=e436]
+          - img [ref=e499]
+      - paragraph [ref=e507]:
+        - text: where
+        - img [ref=e509]
+        - text: is the volume of the first Brillouin zone. The integral is over the irreducible Brillouin zone if symmetry is exploited; the prefactor in
+        - img [ref=e543]:
+          - link [ref=e546] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-11-dos"
+        - text: "already accounts for the symmetry. The DOS is the “spectroscopic” projection of the band structure: it loses all the"
+        - strong [ref=e553]: k
+        - text: "-dependent information and keeps only the energy-resolved density of states."
+      - paragraph [ref=e554]: "Three properties to keep in mind:"
+      - list [ref=e555]:
+        - listitem [ref=e556]:
+          - strong [ref=e557]: Units.
+          - img [ref=e559]
+          - text: is the number of states (per unit cell, per spin) with energy in
+          - img [ref=e575]
+          - text: . For a spinless calculation on a spin-paired system, the factor of 2 is inserted at the interpretation stage.
+        - listitem [ref=e594]:
+          - strong [ref=e595]: Integrals.
+          - img [ref=e597]
+          - text: for a spin-paired insulator with
+          - img [ref=e639]
+          - text: valence electrons, where the 1/2 is from the spin factor. This is the
+          - strong [ref=e647]: Fermi-level fixing
+          - text: condition.
+        - listitem [ref=e648]:
+          - strong [ref=e649]: Van Hove singularities.
+          - text: Wherever
+          - img [ref=e651]
+          - text: (a band extremum or a saddle point), the integrand in
+          - img [ref=e674]:
+            - link [ref=e677] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-11-dos"
+          - text: diverges as
+          - img [ref=e685]
+          - text: (extremum) or has a logarithmic divergence (saddle). These are the
+          - strong [ref=e712]: van Hove singularities
+          - text: ; they show up as cusps and peaks in the DOS plot and are useful spectroscopic fingerprints.
+      - heading "11.1.3 The Fermi surface" [level=3] [ref=e713]
+      - paragraph [ref=e714]:
+        - text: The
+        - strong [ref=e715]: Fermi surface
+        - text: "is the set of points in the Brillouin zone at which the band energy equals the Fermi energy:"
+      - img [ref=e717]:
+        - generic [ref=e721]:
+          - img [ref=e722]
+          - img [ref=e779]
+      - paragraph [ref=e786]:
+        - text: For a metal, this is a 2-D surface in the 3-D Brillouin zone (or, in 2-D, a 1-D curve). For an insulator or a semiconductor, the equation
+        - img [ref=e788]
+        - text: "has no solution: there is no Fermi surface, and the “Fermi level” sits in the gap."
+      - paragraph [ref=e807]:
+        - text: The Fermi surface is
+        - emphasis [ref=e808]: the
+        - text: "object of solid-state physics. Almost every low-temperature property of a metal is determined by the shape of the Fermi surface, the velocity of electrons on it, and the way it scatters: the electronic specific heat, the magnetic susceptibility, the de Haas–van Alphen frequency, the nesting that drives charge-density waves, the transport coefficients. Sections 11.4 and 11.5 will return to the Fermi surface at length."
+      - heading "11.1.4 The band structure as afunction" [level=3] [ref=e809]:
+        - text: 11.1.4 The band structure as a
+        - emphasis [ref=e810]: function
+      - paragraph [ref=e811]:
+        - text: The band structure
+        - img [ref=e813]
+        - text: is, in the language of mathematics, a continuous map from
+        - img [ref=e829]
+        - text: (the Brillouin zone, topologically a 3-torus) to
+        - img [ref=e839]
+        - text: . The number of bands
+        - img [ref=e846]
+        - text: at each
+        - img [ref=e858]
+        - text: is the size of the Hamiltonian matrix, which is determined by the basis-set size — for a plane-wave code, by the kinetic-energy cutoff. In the
+        - emphasis [ref=e864]: all-electron
+        - text: limit the number of bands diverges (every atomic orbital generates a band, and the conduction-band continuum is unbounded). In
+        - emphasis [ref=e865]: practice
+        - text: we keep a finite number of bands (typically the lowest
+        - img [ref=e867]
+        - text: bands, with
+        - img [ref=e887]
+        - text: for an insulator and
+        - img [ref=e912]
+        - text: for a metal). The “deep” bands (many eV below the Fermi level) are not affected by chemistry and can be ignored; the “high” bands (many eV above the Fermi level) are empty and equally uninteresting unless we are computing optical properties.
+      - blockquote [ref=e941]:
+        - paragraph [ref=e942]:
+          - strong [ref=e943]: Note.
+          - text: The Kohn–Sham band structure
+          - img [ref=e945]
+          - text: is the answer to “what is the energy of an electron in the solid as a function of its crystal momentum?” The
+          - strong [ref=e960]: Janak–Sham–Kohn
+          - text: theorem (we will return to this in
+          - link "chapter 12" [ref=e961] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: ) shows that the
+          - emphasis [ref=e962]: "occupation-weighte`d"
+          - text: "’ sum of KS eigenvalues is the derivative of the total energy with respect to particle number:"
+          - img [ref=e964]
+          - text: . This is the formal sense in which the band structure is “the” spectrum of the solid.
+      - heading "11.2 Plotting the band structure along high-symmetry k-paths" [level=2] [ref=e988]
+      - paragraph [ref=e989]:
+        - text: The full band structure is a function on a 3-D Brillouin zone. We cannot plot a 4-D object. The standard trick is to plot
+        - img [ref=e991]
+        - text: along a 1-D
+        - strong [ref=e1006]: k-path
+        - text: that visits the high-symmetry points of the Brillouin zone, ordered so that no symmetry-equivalent point is missed. The path should be long enough to cover the irreducible BZ but short enough that the plot is readable.
+      - heading "11.2.1 What is a “high-symmetry k-point”?" [level=3] [ref=e1007]
+      - paragraph [ref=e1008]:
+        - text: A
+        - strong [ref=e1009]: high-symmetry point
+        - text: is a point
+        - img [ref=e1011]
+        - text: in the BZ whose little group (the subgroup of the point group that leaves
+        - img [ref=e1018]
+        - text: invariant modulo a reciprocal-lattice vector) is non-trivial. At high-symmetry points bands can be degenerate; the degenerate representations carry the
+        - strong [ref=e1024]: irrep labels
+        - text: of the little group, and the band energies at these points are the canonical way to label bands in the literature. Bands plotted along the k-path are labelled by their little-group irreps at the endpoints of the path.
+      - paragraph [ref=e1025]:
+        - text: For a cubic lattice with point group
+        - img [ref=e1027]
+        - text: (order 48), the high- symmetry points in the BZ are
+        - img [ref=e1036]
+        - text: ","
+        - img [ref=e1042]
+        - text: ","
+        - img [ref=e1048]
+        - text: ","
+        - img [ref=e1054]
+        - text: ","
+        - img [ref=e1060]
+        - text: ","
+        - img [ref=e1066]
+        - text: "(in the Setyawan–Curtarolo convention used by the Materials Project and most modern databases). The number in front of each irrep label is the dimension of the little-group representation: a band labelled"
+        - img [ref=e1072]
+        - text: is
+        - emphasis [ref=e1082]: doubly
+        - text: degenerate at
+        - img [ref=e1084]
+        - text: ", a band labelled"
+        - img [ref=e1090]
+        - text: is
+        - emphasis [ref=e1098]: singly
+        - text: degenerate at
+        - img [ref=e1100]
+        - text: ", and so on."
+      - heading "11.2.2 The FCC path" [level=3] [ref=e1105]
+      - paragraph [ref=e1106]:
+        - text: For the face-centred cubic lattice with cubic lattice constant
+        - img [ref=e1108]
+        - text: ", the Setyawan–Curtarolo convention (which is what every modern band- structure database uses) is the k-path"
+      - img [ref=e1114]:
+        - generic [ref=e1118]:
+          - img [ref=e1119]
+          - img [ref=e1163]
+      - paragraph [ref=e1170]:
+        - text: sometimes abbreviated as
+        - img [ref=e1172]
+        - text: –
+        - img [ref=e1178]
+        - text: –
+        - img [ref=e1184]
+        - text: –
+        - img [ref=e1190]
+        - text: –
+        - img [ref=e1196]
+        - text: –
+        - img [ref=e1202]
+        - text: –
+        - img [ref=e1208]
+        - text: –
+        - img [ref=e1214]
+        - text: –
+        - img [ref=e1220]
+        - text: –
+        - img [ref=e1226]
+        - text: or as
+        - img [ref=e1232]
+        - text: –
+        - img [ref=e1238]
+        - text: –
+        - img [ref=e1244]
+        - text: –
+        - img [ref=e1250]
+        - text: –
+        - img [ref=e1256]
+        - text: –
+        - img [ref=e1262]
+        - text: –
+        - img [ref=e1268]
+        - text: –
+        - img [ref=e1274]
+        - text: (an older, shorter convention). The Cartesian coordinates of the points (in units of
+        - img [ref=e1280]
+        - text: ) are
+      - table [ref=e1292]:
+        - rowgroup [ref=e1293]:
+          - row "Label Cartesian (in ) Description" [ref=e1294]:
+            - columnheader "Label" [ref=e1295]
+            - columnheader "Cartesian (in )" [ref=e1296]:
+              - text: Cartesian (in
+              - img [ref=e1298]
+              - text: )
+            - columnheader "Description" [ref=e1310]
+        - rowgroup [ref=e1311]:
+          - row "Centre of the BZ" [ref=e1312]:
+            - cell [ref=e1313]:
+              - img [ref=e1315]
+            - cell [ref=e1320]:
+              - img [ref=e1322]
+            - cell "Centre of the BZ" [ref=e1339]
+          - row "Centre of a square face of the truncated octahedron" [ref=e1340]:
+            - cell [ref=e1341]:
+              - img [ref=e1343]
+            - cell [ref=e1348]:
+              - img [ref=e1350]
+            - cell "Centre of a square face of the truncated octahedron" [ref=e1367]
+          - row "Centre of a hexagonal face" [ref=e1368]:
+            - cell [ref=e1369]:
+              - img [ref=e1371]
+            - cell [ref=e1376]:
+              - img [ref=e1378]
+            - cell "Centre of a hexagonal face" [ref=e1410]
+          - row "Vertex where two hexagons and a square meet" [ref=e1411]:
+            - cell [ref=e1412]:
+              - img [ref=e1414]
+            - cell [ref=e1419]:
+              - img [ref=e1421]
+            - cell "Vertex where two hexagons and a square meet" [ref=e1443]
+          - row "Midpoint of a hex–hex edge" [ref=e1444]:
+            - cell [ref=e1445]:
+              - img [ref=e1447]
+            - cell [ref=e1452]:
+              - img [ref=e1454]
+            - cell "Midpoint of a hex–hex edge" [ref=e1481]
+          - row "or Midpoint of an – edge" [ref=e1482]:
+            - cell [ref=e1483]:
+              - img [ref=e1485]
+            - cell "or" [ref=e1490]:
+              - img [ref=e1492]
+              - emphasis [ref=e1524]: or
+              - img [ref=e1526]
+            - cell "Midpoint of an – edge" [ref=e1558]:
+              - text: Midpoint of an
+              - img [ref=e1560]
+              - text: –
+              - img [ref=e1566]
+              - text: edge
+      - paragraph [ref=e1571]:
+        - text: (In the Setyawan–Curtarolo convention the point labelled
+        - img [ref=e1573]
+        - text: is at
+        - img [ref=e1579]
+        - text: in
+        - img [ref=e1612]
+        - text: units; the point
+        - img [ref=e1625]
+        - text: sometimes called
+        - img [ref=e1658]
+        - text: in older literature is a different high-symmetry point on a hex–square edge.)
+      - paragraph [ref=e1663]:
+        - text: The path visits the centre of the BZ, the centre of a square face, a vertex, the midpoint of a hexagonal edge, back to the centre, the centre of a hexagonal face, a midpoint of an
+        - img [ref=e1665]
+        - text: –
+        - img [ref=e1671]
+        - text: edge, back to a vertex, back to a hexagonal face, and back to a hexagonal edge. The total path length is
+      - img [ref=e1677]
+      - paragraph [ref=e1798]:
+        - text: which gives a total path length
+        - img [ref=e1800]
+        - text: in units of
+        - img [ref=e1812]
+        - text: ":"
+      - img [ref=e1825]:
+        - generic [ref=e1827]:
+          - generic [ref=e1847]:
+            - img [ref=e1853]
+            - img [ref=e1855]
+          - generic [ref=e1873]:
+            - img [ref=e1879]
+            - img [ref=e1881]
+          - generic [ref=e1924]:
+            - img [ref=e1930]
+            - img [ref=e1932]
+          - generic [ref=e1975]:
+            - img [ref=e1981]
+            - img [ref=e1983]
+          - generic [ref=e2015]:
+            - img [ref=e2021]
+            - img [ref=e2023]
+      - paragraph [ref=e2034]:
+        - text: The full sum, written segment by segment as
+        - img [ref=e2036]
+        - text: ","
+        - img [ref=e2069]
+        - text: ","
+        - img [ref=e2115]
+        - text: ","
+        - img [ref=e2161]
+        - text: ","
+        - img [ref=e2200]
+        - text: ","
+        - img [ref=e2255]
+        - text: ","
+        - img [ref=e2276]
+        - text: ","
+        - img [ref=e2297]
+        - text: ", comes to"
+        - img [ref=e2318]
+        - text: in units of
+        - img [ref=e2337]
+        - text: . The plot has 10 segments; the segment lengths are unequal, and a band-structure plot is therefore drawn with
+        - strong [ref=e2349]: tick marks at the high-symmetry points
+        - text: and
+        - emphasis [ref=e2350]: unequal
+        - text: horizontal spacing, so that the actual geometric path length in the BZ is preserved.
+      - blockquote [ref=e2351]:
+        - paragraph [ref=e2352]:
+          - strong [ref=e2353]: Tip.
+          - text: When comparing band-structure plots from different references, always check the convention used. The same high-symmetry letter can refer to different points in different conventions. The Setyawan–Curtarolo convention is the modern default; older textbooks (Kittel, Ashcroft & Mermin) use a different symbol for
+          - img [ref=e2355]
+          - text: in the FCC BZ. See
+          - link "chapter 07" [ref=e2360] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: for more on this.
+      - heading "11.2.3 The BCC path" [level=3] [ref=e2361]
+      - paragraph [ref=e2362]: For the body-centred cubic lattice the standard path is
+      - img [ref=e2364]:
+        - generic [ref=e2368]:
+          - img [ref=e2369]
+          - img [ref=e2397]
+      - paragraph [ref=e2404]:
+        - text: with the high-symmetry points (in units of
+        - img [ref=e2406]
+        - text: )
+      - table [ref=e2418]:
+        - rowgroup [ref=e2419]:
+          - row "Label Cartesian (in ) Description" [ref=e2420]:
+            - columnheader "Label" [ref=e2421]
+            - columnheader "Cartesian (in )" [ref=e2422]:
+              - text: Cartesian (in
+              - img [ref=e2424]
+              - text: )
+            - columnheader "Description" [ref=e2436]
+        - rowgroup [ref=e2437]:
+          - row "Centre of the BZ" [ref=e2438]:
+            - cell [ref=e2439]:
+              - img [ref=e2441]
+            - cell [ref=e2446]:
+              - img [ref=e2448]
+            - cell "Centre of the BZ" [ref=e2465]
+          - row "orpermutations Vertex of the truncated octahedron" [ref=e2466]:
+            - cell [ref=e2467]:
+              - img [ref=e2469]
+            - cell "orpermutations" [ref=e2474]:
+              - img [ref=e2476]
+              - emphasis [ref=e2493]: or
+              - text: permutations
+            - cell "Vertex of the truncated octahedron" [ref=e2494]
+          - row "Centre of a square face" [ref=e2495]:
+            - cell [ref=e2496]:
+              - img [ref=e2498]
+            - cell [ref=e2503]:
+              - img [ref=e2505]
+            - cell "Centre of a square face" [ref=e2532]
+          - row "Centre of a hexagonal face" [ref=e2533]:
+            - cell [ref=e2534]:
+              - img [ref=e2536]
+            - cell [ref=e2541]:
+              - img [ref=e2543]
+            - cell "Centre of a hexagonal face" [ref=e2575]
+      - paragraph [ref=e2576]:
+        - text: The path
+        - img [ref=e2578]
+        - text: –
+        - img [ref=e2584]
+        - text: –
+        - img [ref=e2590]
+        - text: –
+        - img [ref=e2596]
+        - text: –
+        - img [ref=e2602]
+        - text: –
+        - img [ref=e2608]
+        - text: "covers the IBZ. BCC metals (alkali metals, bcc iron, bcc tungsten) are usually plotted along this path. The path is symmetric:"
+        - img [ref=e2614]
+        - text: –
+        - img [ref=e2620]
+        - text: and
+        - img [ref=e2626]
+        - text: –
+        - img [ref=e2632]
+        - text: have the same length, as do
+        - img [ref=e2638]
+        - text: –
+        - img [ref=e2644]
+        - text: and
+        - img [ref=e2650]
+        - text: –
+        - img [ref=e2656]
+        - text: ", etc."
+      - heading "11.2.4 The hexagonal path" [level=3] [ref=e2661]
+      - paragraph [ref=e2662]: For the hexagonal lattice (graphene, hexagonal boron nitride, hcp metals) the standard path is
+      - img [ref=e2664]:
+        - generic [ref=e2668]:
+          - img [ref=e2669]
+          - img [ref=e2705]
+      - paragraph [ref=e2712]: where
+      - table [ref=e2713]:
+        - rowgroup [ref=e2714]:
+          - row "Label Cartesian (in , , ) Description" [ref=e2715]:
+            - columnheader "Label" [ref=e2716]
+            - columnheader "Cartesian (in , , )" [ref=e2717]:
+              - text: Cartesian (in
+              - img [ref=e2719]
+              - text: ","
+              - img [ref=e2732]
+              - text: ","
+              - img [ref=e2745]
+              - text: )
+            - columnheader "Description" [ref=e2757]
+        - rowgroup [ref=e2758]:
+          - row "Centre of the BZ" [ref=e2759]:
+            - cell [ref=e2760]:
+              - img [ref=e2762]
+            - cell [ref=e2767]:
+              - img [ref=e2769]
+            - cell "Centre of the BZ" [ref=e2786]
+          - row "Centre of a hexagonal face" [ref=e2787]:
+            - cell [ref=e2788]:
+              - img [ref=e2790]
+            - cell [ref=e2795]:
+              - img [ref=e2797]
+            - cell "Centre of a hexagonal face" [ref=e2819]
+          - row "Hex–hex edge midpoint (theDirac pointof graphene)" [ref=e2820]:
+            - cell [ref=e2821]:
+              - img [ref=e2823]
+            - cell [ref=e2828]:
+              - img [ref=e2830]
+            - cell "Hex–hex edge midpoint (theDirac pointof graphene)" [ref=e2857]:
+              - text: Hex–hex edge midpoint (the
+              - emphasis [ref=e2858]: Dirac point
+              - text: of graphene)
+          - row "Top of the BZ (the – midpoint analogue)" [ref=e2859]:
+            - cell [ref=e2860]:
+              - img [ref=e2862]
+            - cell [ref=e2867]:
+              - img [ref=e2869]
+            - cell "Top of the BZ (the – midpoint analogue)" [ref=e2891]:
+              - text: Top of the BZ (the
+              - img [ref=e2893]
+              - text: –
+              - img [ref=e2899]
+              - text: midpoint analogue)
+          - row "Centre of a side face" [ref=e2904]:
+            - cell [ref=e2905]:
+              - img [ref=e2907]
+            - cell [ref=e2912]:
+              - img [ref=e2914]
+            - cell "Centre of a side face" [ref=e2941]
+          - row "Edge midpoint on the top face" [ref=e2942]:
+            - cell [ref=e2943]:
+              - img [ref=e2945]
+            - cell [ref=e2950]:
+              - img [ref=e2952]
+            - cell "Edge midpoint on the top face" [ref=e2984]
+      - paragraph [ref=e2985]:
+        - text: The first half of the path (
+        - img [ref=e2987]
+        - text: –
+        - img [ref=e2993]
+        - text: –
+        - img [ref=e2999]
+        - text: –
+        - img [ref=e3005]
+        - text: ) lives in the basal plane
+        - img [ref=e3011]
+        - text: ; the second half (
+        - img [ref=e3024]
+        - text: –
+        - img [ref=e3030]
+        - text: –
+        - img [ref=e3036]
+        - text: –
+        - img [ref=e3042]
+        - text: –
+        - img [ref=e3048]
+        - text: ) samples the
+        - img [ref=e3054]
+        - text: dispersion. For a 2-D material such as graphene, the band structure is
+        - img [ref=e3063]
+        - text: "-independent and the second half is redundant — the path reduces to"
+        - img [ref=e3072]
+        - text: –
+        - img [ref=e3078]
+        - text: –
+        - img [ref=e3084]
+        - text: –
+        - img [ref=e3090]
+        - text: ", which is the path used in section 11.9. >"
+        - strong [ref=e3095]: Reading note.
+        - text: The labels of high-symmetry points are
+      - blockquote [ref=e3096]:
+        - paragraph [ref=e3097]:
+          - strong [ref=e3098]: convention-dependent
+          - text: but the geometry of the path is not. When a band-structure plot says “
+          - img [ref=e3100]
+          - text: –
+          - img [ref=e3106]
+          - text: ” in a cubic material, the path is a straight line in the BZ from the centre to the centre of a square face; what “
+          - img [ref=e3112]
+          - text: ” and “
+          - img [ref=e3118]
+          - text: ”
+          - emphasis [ref=e3123]: are
+          - text: in Cartesian coordinates is fixed by the crystal structure, and what “
+          - img [ref=e3125]
+          - text: –
+          - img [ref=e3131]
+          - text: ”
+          - emphasis [ref=e3136]: means
+          - text: in plot units is fixed by the geometric distance.
+      - heading "11.2.5 Plotting a band structure" [level=3] [ref=e3137]
+      - paragraph [ref=e3138]: "The algorithm to plot a band structure is:"
+      - list [ref=e3139]:
+        - listitem [ref=e3140]:
+          - strong [ref=e3141]: Choose a k-path
+          - text: as in
+          - img [ref=e3143]:
+            - link [ref=e3146] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-11-fcc-path"
+          - text: or
+          - img [ref=e3154]:
+            - link [ref=e3157] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-11-bcc-path"
+          - text: or
+          - img [ref=e3165]:
+            - link [ref=e3168] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-11-hex-path"
+          - text: ", in Cartesian coordinates of the BZ."
+        - listitem [ref=e3175]:
+          - strong [ref=e3176]:
+            - text: Sample
+            - img [ref=e3178]
+            - text: k-points per segment
+          - text: uniformly along the path. The total number of k-points is
+          - img [ref=e3187]
+          - text: ", where"
+          - img [ref=e3206]
+          - text: is the number of segments.
+        - listitem [ref=e3217]:
+          - strong [ref=e3218]:
+            - text: Compute
+            - img [ref=e3220]
+            - text: at each k-point.
+          - text: "This requires a converged SCF calculation: the potential"
+          - img [ref=e3233]
+          - text: depends on the density, the density depends on the occupied states, the occupied states are the lowest
+          - img [ref=e3244]
+          - text: bands at each k-point. The SCF is typically done on a
+          - emphasis [ref=e3257]: uniform
+          - text: Monkhorst–Pack mesh (so the BZ integral for the density is well approximated); the k-path for the band-structure plot is a
+          - emphasis [ref=e3258]: separate
+          - text: ", denser set of k-points at which the eigenvalues of"
+          - img [ref=e3260]
+          - text: are evaluated
+          - emphasis [ref=e3272]: non-self-consistently
+          - text: using the converged potential.
+        - listitem [ref=e3273]:
+          - strong [ref=e3274]: Connect the dots.
+          - text: Plot
+          - img [ref=e3276]
+          - text: vs. the cumulative path length, with vertical tick marks at the high- symmetry points. A 2-D band-structure plot has band index
+          - img [ref=e3289]
+          - text: on the vertical axis and cumulative path length on the horizontal.
+        - listitem [ref=e3294]:
+          - strong [ref=e3295]:
+            - text: Draw a horizontal line at
+            - img [ref=e3297]
+            - text: .
+          - text: This is the Fermi level, set by the converged occupation numbers.
+      - blockquote [ref=e3305]:
+        - paragraph [ref=e3306]:
+          - strong [ref=e3307]: Note.
+          - text: Step 3 above is called a
+          - strong [ref=e3308]: non-self-consistent
+          - text: calculation, or “bands” calculation in VASP / Quantum ESPRESSO terminology. The Kohn–Sham potential is fixed at the SCF result (computed on the MP mesh); the eigenvalues are evaluated on the k-path. This is a
+          - emphasis [ref=e3309]: linear
+          - text: "operation, much cheaper than the SCF itself, and it is the standard way to plot a band structure. A subtlety: the Fermi level in the non-SCF calculation can drift slightly from the SCF value if the k-path mesh samples the bands differently from the MP mesh. In practice one re-computes"
+          - img [ref=e3311]
+          - text: on the k-path mesh, or takes it directly from the SCF.
+      - heading "11.2.6 The Python helper" [level=3] [ref=e3319]
+      - paragraph [ref=e3320]: "A practical Python function that maps a k-path to a list of k-points and cumulative distances is short enough to inline here. We will use it in section 11.9. ```python"
+      - heading "dft_notes/python_codes/chapter_11/_kpath.py" [level=1] [ref=e3321]
+      - paragraph [ref=e3322]: import numpy as np
+      - paragraph [ref=e3323]: "def kpath(points, n_per_segment=60): “\"”Return (kpts, dist) for a list of high-symmetry points."
+      - code [ref=e3327]: "Parameters ---------- points : list of array-like, shape (3,) The k-path as a list of Cartesian coordinates in the BZ (in units of 2*pi / a for cubic, in units of the reciprocal lattice vectors in general). n_per_segment : int Number of k-points per straight segment. Returns ------- kpts : ndarray, shape (sum_segments, 3) The sampled k-points. dist : ndarray, shape (sum_segments,) Cumulative path length from the first k-point. \"\"\" pts = np.asarray(points, dtype=float) klist, dlist = [], [0.0] for i in range(len(pts) - 1): seg = np.linspace(pts[i], pts[i + 1], n_per_segment, endpoint=(i == len(pts) - 2)) if i > 0: seg = seg[1:] d = np.linalg.norm(np.diff(seg, axis=0), axis=1) klist.append(seg) dlist.extend(dlist[-1] + np.cumsum(d).tolist()) return np.vstack(klist), np.array(dlist)"
+      - code [ref=e3331]: "The first k-point is `kpts[0]`, the last is `kpts[-1]`, and the length along the path is `dist[-1]`. We use this helper in the graphene worked example of section 11.9. ## 11.3 The density of states The DOS of \\eqref{eq:ch-11-dos} is a Brillouin-zone integral of a delta function. In practice the integral is approximated by a discrete sum over a finite k-mesh, and the delta function is replaced by a smooth approximation. The choice of approximation is a numerical art; this section catalogues the three standard methods. ### 11.3.1 The naive histogram The most direct approach: pick a k-mesh of $N_\\mathbf k$ points, evaluate $\\varepsilon_{n\\mathbf k}$ at each, and bin the resulting list of eigenvalues into a histogram. This is fast, easy, and *qualitatively correct* but not very accurate: the histogram is piecewise-constant and has spurious noise from the finite mesh and the bin boundaries. The convergence of the histogram with $N_\\mathbf k$ is $1/N_\\mathbf k$ in the absence of smearing, $1/N_\\mathbf k^2$ with optimal Gaussian smearing. For pedagogical work and quick previews, the histogram is acceptable. For publication-quality DOS plots, use the methods below. ### 11.3.2 Gaussian and Methfessel–Paxton smearing A better method is to replace the delta function in \\eqref{eq:ch-11-dos} by a smooth function of finite width. The most common choice is the **Gaussian** of width $\\sigma$: $$ \\begin{equation} \\label{eq:ch-11-gaussian-dos} \\delta_\\sigma(E - \\varepsilon_{n\\mathbf k}) \\;=\\; \\frac{1}{\\sigma \\sqrt{2\\pi}} \\, \\exp\\!\\left[-\\frac{(E - \\varepsilon_{n\\mathbf k})^2}{2 \\sigma^2}\\right] . \\end{equation} $$ The DOS is then $$ \\begin{equation} \\label{eq:ch-11-gaussian-dos-sum} g(E) \\;=\\; \\frac{1}{N_\\mathbf k} \\sum_{n, \\mathbf k} \\delta_\\sigma(E - \\varepsilon_{n\\mathbf k}) . \\end{equation} $$ The Gaussian is positive and normalised, so the resulting $g(E)$ is also positive and normalised; the width $\\sigma$ controls the tradeoff between noise (small $\\sigma$) and over-smoothing (large $\\sigma$). The DOS converges to the true DOS as $\\sigma \\to 0$ *an`d*' $N_\\mathbf k \\to \\infty$; in practice one picks $\\sigma$ slightly larger than the natural energy resolution of the mesh ($\\sigma \\sim \\Delta\\varepsilon$, where $\\Delta\\varepsilon$ is the mean spacing of eigenvalues near $E$). The **Methfessel–Paxton** (MP) smearing generalises the Gaussian by adding higher-order Hermite corrections that improve the systematic behaviour of the total energy at small $\\sigma$: $$ \\begin{equation} \\label{eq:ch-11-mp-dos} \\delta_\\sigma^\\text{MP}(E) \\;=\\; \\sum_{l=0}^{N_\\text{MP}} A_l \\, H_{2l}\\!\\left(\\frac{E}{\\sigma}\\right) \\, \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-E^2 / 2\\sigma^2} . \\end{equation} $$ The $l = 0$ term is the Gaussian. The coefficients $A_l$ are chosen so that the integral of $\\delta_\\sigma^\\text{MP}$ over a band-pass $[-\\infty, E]$ reproduces the step function to order $\\sigma^{2N_\\text{MP}$: the *systemati`c*' error in the total energy falls as $\\sigma^2$ for $N_\\text{MP} = 0$ (Gaussian), $\\sigma^4$ for $N_\\text{MP} = 1$, $\\sigma^6$ for $N_\\text{MP} = 2$, and so on. The MP smearing is the standard for high-throughput DFT: the total energy converges faster in $\\sigma$, at the price of a slightly less physical DOS at the Fermi level (the MP delta function is *not* positive-definite for $N_\\text{MP} \\ge 1$, so the DOS can become slightly negative in the unoccupied region). For DOS plots, the Gaussian is preferred; for total-energy calculations, MP-x is preferred. Both methods were derived in detail in [chapter 07](/DFT-notes/dft-notes/chapter-07/); we will not re-derive them here. ### 11.3.3 Tetrahedron integration The third method, and the most accurate, is the **tetrahedron metho`d*`* (Lehmann–Taut 1972; Blöchl 1994). We derived it in detail in [chapter 07](/DFT-notes/dft-notes/chapter-07/) (§7.11), so we only summarise the result here. Tile the BZ with tetrahedra whose vertices are the k-points of a Monkhorst–Pack mesh. Within each tetrahedron, linearly interpolate the band energy. The BZ integral of the step function $\\theta(\\varepsilon_F - \\varepsilon_{n\\mathbf k})$ over a single tetrahedron with vertex energies $\\varepsilon_1, \\dots, \\varepsilon_4$ is, by the **Lehmann–Taut formula**, $$ \\begin{equation} \\label{eq:ch-11-lt} \\int_T \\theta(\\varepsilon_F - \\varepsilon(\\mathbf k)) d\\mathbf k = \\frac{V_T}{4} \\sum_{i=1}^{4} \\theta(\\varepsilon_F - \\varepsilon_i) \\, \\frac{(\\varepsilon_F - \\varepsilon_i)^3}{\\prod_{j \\ne i} (\\varepsilon_i - \\varepsilon_j)} . \\end{equation} $$ The DOS is obtained by differentiating the integrated DOS with respect to energy. The result is continuous and piecewise-linear in $E$, with cusps at the vertex energies; it converges to the true DOS as $O((\\Delta k)^2)$ for the linear-interpolation tetrahedron method and $O((\\Delta k)^4)$ with Blöchl's correction. The tetrahedron method is **parameter-free** (no $\\sigma$ to choose), which makes it the standard for high-accuracy DOS calculations. The catch is the implementation: the tetrahedron method requires building the tetrahedra, tracking their vertices, and (for Blöchl's correction) the neighbours of each tetrahedron. This is more work than a Gaussian-smearing code, but the speedup at production accuracy is significant (typically a factor of 2–4 in the number of k-points needed). ### 11.3.4 The projected DOS The DOS of \\eqref{eq:ch-11-dos} sums over *all* bands with equal weight. Often we want to know how much of a particular band has the character of a particular *atomi`c*' orbital. The **projected DOS** (pDOS) onto an atomic orbital $\\chi_\\mu^{(a)}$ (atomic index $a$, orbital index $\\mu$) is $$ \\begin{equation} \\label{eq:ch-11-pdos} g_\\mu(E) \\;=\\; \\frac{1}{V_\\text{BZ}} \\sum_n \\int_\\text{BZ} d\\mathbf k \\; \\Bigl| \\langle \\chi_\\mu^{(a)} \\mid \\psi_{n\\mathbf k} \\rangle \\Bigr|^2 \\, \\delta\\Bigl(E - \\varepsilon_{n\\mathbf k}\\Bigr) . \\end{equation} $$ The square of the projection amplitude $| \\langle \\chi_\\mu^{(a)} \\mid \\psi_{n\\mathbf k} \\rangle |^2$ is a **band- and k-resolved weight** between 0 and 1. The pDOS onto *all* the orbitals of a given atom $a$ and angular momentum $\\ell$ is the sum over the $(2\\ell+1)$ $m$-degenerate orbitals of the shell: $$ \\begin{equation} \\label{eq:ch-11-pdos-shell} g_{a,\\ell}(E) \\;=\\; \\sum_{m=-\\ell}^{\\ell} g_{a,\\ell,m}(E) . \\end{equation} $$ A pDOS plot shows $g_{a,\\ell}(E)$ for several atoms and angular momenta on the same axes. It is the standard tool for assigning *orbital character* to bands: a band that is mostly $d_{xy}$ on atom Fe will show up as a peak in $g_{\\text{Fe},2,xy}(E)$. The amplitude $| \\langle \\chi_\\mu^{(a)} \\mid \\psi_{n\\mathbf k} \\rangle |^2$ depends on the choice of projector $\\chi_\\mu^{(a)}$. In a plane-wave code, the standard choice is a set of *spherical waves* centred on each atom (i.e. the partial waves of the PAW method, or the projectors of an ultrasoft pseudopotential). In a localised-basis code (SIESTA, FHI-aims, Gaussian-basis DFT), the projectors are the basis functions themselves, and the projection is just the expansion coefficient $|C_{\\mu, n\\mathbf k}|^2$. In a LAPW code (Wien2k, Elk), the projectors are the linearised augmented orbitals inside the muffin-tin spheres. Each choice has its own conventions; the pDOS is qualitatively robust but the quantitative peak heights depend on the projector definition. > **Tip.** The pDOS is sometimes called the \"fat-band\" plot in a > different form: a band-structure plot where each point > $(\\mathbf k, n)$ carries a marker of size proportional to the > projection amplitude. This combines the band-structure plot and > the pDOS into a single figure. ### 11.3.5 The local DOS The **local DOS** (LDOS) is the spatial version of the pDOS: the DOS weighted by the probability density of the band at a real-space point $\\mathbf r$: $$ \\begin{equation} \\label{eq:ch-11-ldos} g(\\mathbf r, E) \\;=\\; \\sum_n \\int_\\text{BZ} d\\mathbf k \\; \\Bigl| \\psi_{n\\mathbf k}(\\mathbf r) \\Bigr|^2 \\, \\delta\\Bigl(E - \\varepsilon_{n\\mathbf k}\\Bigr) . \\end{equation} $$ A 2-D plot of $g(\\mathbf r, E_F)$ on a surface is the standard experimental image of a *scanning tunnelling microscope* (STM): the tunnelling current at low bias is proportional to $g(\\mathbf r, \\varepsilon_F)$ at the surface. A 3-D plot of $g(\\mathbf r, E)$ is the \"density-of-states cube\" used in isosurface visualisation of orbitals; cutting it at $E = \\varepsilon_F$ gives the **Fermi-surface density** (not the same as the Fermi surface of section 11.4, but related). The LDOS is more expensive than the pDOS: it is a function of $\\mathbf r$, not just of atom index $a$. In a plane-wave code it requires an FFT of each band to a real-space grid; in a localised- basis code it is just a sum of basis-function densities weighted by the squared expansion coefficients. ### 11.3.6 Diagram — DOS, projected DOS, and Fermi surface The DOS $g(E)$, the *projecte`d*' DOS $g_{a,\\ell}(E)$ on each atomic orbital $(a, \\ell)$, and the *Fermi surface* (the $E = \\varepsilon_F$ level set of $\\varepsilon_{n\\mathbf k}$) are three different *compressions* of the same band structure $\\varepsilon_{n\\mathbf k}$. They answer three different questions: *how many states* are at a given energy (`DOS`); *of which character* (`pDOS`); and where in the Brillouin zone* ('Fermi surface'). ```mermaid %%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%% graph LR BS[\"Band structure<br/>eps_{n,k}<br/>(n = 1..N_band)\"] --> DOS[\"DOS<br/>g(E) = sum_nk delta(E - eps_{n,k})<br/>(eq. 11.18)\"] BS --> PDOS[\"Projected DOS<br/>g_{a,l}(E) = sum_nk |P_n^a, l|^2 delta(E - eps_{n,k})<br/>(eq. 11.32)\"] BS --> FS[\"Fermi surface<br/>isosurface eps_{n,k} = eps_F<br/>(3-D surface or 2-D curve)\"] BS --> BAND[\"Band plot<br/>eps_{n,k} along k-path<br/>(chapter 11.2)\"] DOS --> Q1[\"Q: how many states<br/>at energy E?\"] PDOS --> Q2[\"Q: of which atomic orbital?\"] FS --> Q3[\"Q: where in the BZ<br/>are the metallic states?\"] BAND --> Q4[\"Q: dispersion along<br/>a high-symmetry line?\"] DOS --> DOSD[\"van Hove singularities,<br/>band edges,<br/>pseudogap\"] PDOS --> DOSD2[\"orbital character of<br/>each spectral feature\"] FS --> FSD[\"Fermi velocity v_F(k),<br/>nesting, topology<br/>(open / closed)\"] BAND --> BANDD[\"effective masses,<br/>band crossings,<br/>topology\"] Q1 --> DOSD Q2 --> DOSD2 Q3 --> FSD Q4 --> BANDD classDef src fill:#eef0e6,stroke:#3a4031,color:#1c1f17; classDef comp fill:#d6dcc8,stroke:#3a4031,color:#1c1f17; classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff; class BS src class DOS comp class PDOS comp class FS comp class BAND comp class Q1 comp class Q2 comp class Q3 comp class Q4 comp class DOSD out class DOSD2 out class FSD out class BANDD out"
+      - paragraph [ref=e3332]:
+        - text: The three central compressions (
+        - code [ref=e3333]: DOS
+        - text: ","
+        - code [ref=e3334]: PDOS
+        - text: ","
+        - code [ref=e3335]: FS
+        - text: ) are all
+        - emphasis [ref=e3336]: linear
+        - text: in the band energies and eigenvectors — they do not require a new SCF. They differ in
+        - emphasis [ref=e3337]:
+          - text: what is summe
+          - code [ref=e3338]: "d*' over: the DOS sums over $\\mathbf k$ and $n$ (and bins by energy), the PDOS adds a *weight* $|P_n^{a,\\ell}|^2$ (the projection of band $n$ on orbital $(a,\\ell)$) before binning, and the Fermi surface picks the *single* energy slice $\\varepsilon = \\varepsilon_F$. The"
+          - text: "BAND`’ box on the right is the band-structure *plot"
+        - text: of §11.2 — the same data as the DOS but on a 1-D k-path instead of summed over the BZ.
+      - heading "11.4 The Fermi surface" [level=2] [ref=e3339]
+      - paragraph [ref=e3340]:
+        - text: The Fermi surface is the
+        - emphasis [ref=e3341]: level set
+        - text: of the band structure at the Fermi energy. In 3-D it is a 2-D surface; in 2-D a 1-D curve. Its shape is the central object of
+        - strong [ref=e3342]: Fermiology
+        - text: ", and the experimental techniques that measure it (de Haas–van Alphen, Shubnikov–de Haas, angle-resolved photoemission, Compton scattering) all read off some property of the Fermi surface."
+      - heading "11.4.1 Constructing the Fermi surface" [level=3] [ref=e3343]
+      - paragraph [ref=e3344]:
+        - text: "The numerical problem: given a set of bands"
+        - img [ref=e3346]
+        - text: on a discrete k-mesh, find the points at which
+        - img [ref=e3359]
+        - text: .
+      - paragraph [ref=e3378]:
+        - text: For a coarse mesh, the simplest approach is
+        - strong [ref=e3379]:
+          - text: linear interpolation of
+          - img [ref=e3381]
+          - text: in each mesh cell
+        - text: (the same idea as tetrahedron integration, but with the
+        - emphasis [ref=e3386]: isosurface
+        - text: rather than the integrated* form). Tile the BZ with tetrahedra, linearly interpolate the band energy within each tetrahedron, and intersect the level set
+        - img [ref=e3388]
+        - text: with each tetrahedron. The intersection is a 2-D polygon (a triangle if the level set passes through all four vertices, a quadrilateral if it cuts only three, and so on). Stitching the polygons together gives the Fermi surface.
+      - paragraph [ref=e3407]:
+        - text: The output of this procedure is a list of
+        - strong [ref=e3408]: triangles
+        - text: in
+        - img [ref=e3410]
+        - text: "-space that approximates the Fermi surface to"
+        - img [ref=e3417]
+        - text: in linear interpolation, or
+        - img [ref=e3438]
+        - text: with Blöchl’s correction. Visualising a list of triangles is the job of a 3-D rendering library (e.g.
+        - code [ref=e3458]: mplot3d
+        - text: ’ in matplotlib, or ParaView, or
+        - code [ref=e3459]: mayavi
+        - text: ).
+      - blockquote [ref=e3460]:
+        - paragraph [ref=e3461]:
+          - strong [ref=e3462]: Tip.
+          - text: "The 2-D version (1-D Fermi “curve”) is much easier: plot the contour"
+          - img [ref=e3464]
+          - text: in the
+          - img [ref=e3484]
+          - text: "plane, or in any other 2-D slice through the BZ. The contour can be found with `matplotlib.pyplot.contour’ once the eigenvalues have been interpolated onto a fine 2-D mesh."
+      - heading "11.4.2 2-D and 3-D plotting" [level=3] [ref=e3496]
+      - paragraph [ref=e3497]:
+        - text: The 2-D plot is a
+        - strong [ref=e3498]: contour plot
+        - text: of
+        - img [ref=e3500]
+        - text: in a 2-D slice, with the contour at
+        - img [ref=e3516]
+        - text: highlighted. The contour is the Fermi “line” of the slice. The 2-D plot is the standard “Fermi surface” view in the ARPES literature, where photoemission measures a 2-D slice of
+        - img [ref=e3529]
+        - text: "-space."
+      - paragraph [ref=e3534]:
+        - text: The 3-D plot is a
+        - strong [ref=e3535]: rendered isosurface
+        - text: at
+        - img [ref=e3537]
+        - text: . Each band
+        - img [ref=e3550]
+        - text: that crosses the Fermi level gives an independent Fermi surface sheet; a metal like copper has
+        - emphasis [ref=e3555]: one
+        - text: sheet (the “spherical” Fermi surface of nearly-free electrons, bulged out to the hexagonal faces of the BZ); a metal like iron has
+        - emphasis [ref=e3556]: several
+        - text: (the multi-sheet Fermi surface of a 3
+        - img [ref=e3558]
+        - text: transition metal). The 3-D plot is the standard in de Haas–van Alphen work, where the experimentalist measures the extremal cross-sectional areas of each sheet.
+      - heading "11.4.3 The Fermi velocity" [level=3] [ref=e3563]
+      - paragraph [ref=e3564]:
+        - text: The
+        - strong [ref=e3565]: Fermi velocity
+        - text: at a point on the Fermi surface is the gradient of the band energy with respect to
+        - img [ref=e3567]
+        - text: ", divided by"
+        - img [ref=e3574]
+        - text: ":"
+      - img [ref=e3580]:
+        - generic [ref=e3584]:
+          - img [ref=e3585]:
+            - img [ref=e3628]
+          - img [ref=e3642]
+      - paragraph [ref=e3650]:
+        - text: The Fermi velocity is the
+        - emphasis [ref=e3651]: group velocity
+        - text: "of a Bloch wave packet at the Fermi level, and it enters every transport coefficient of a metal: the Drude conductivity is proportional to"
+        - img [ref=e3653]
+        - text: (with
+        - img [ref=e3666]
+        - text: the relaxation time), the Hall coefficient is proportional to
+        - img [ref=e3672]
+        - text: ", the Seebeck coefficient is the energy derivative of the conductivity at the Fermi level. More fundamentally, the"
+        - strong [ref=e3690]: electronic specific heat
+        - text: of a metal is proportional to
+        - img [ref=e3692]
+        - text: ", and the"
+        - strong [ref=e3706]: Pauli spin susceptibility
+        - text: is proportional to
+        - img [ref=e3708]
+        - text: as well; both are properties of the
+        - emphasis [ref=e3722]: density of states at the Fermi level
+        - text: ", not of the Fermi velocity."
+      - paragraph [ref=e3723]: "The Fermi velocity is most often evaluated by finite differences on the k-mesh:"
+      - img [ref=e3725]:
+        - generic [ref=e3729]:
+          - img [ref=e3730]
+          - img [ref=e3816]
+      - paragraph [ref=e3824]:
+        - text: where
+        - img [ref=e3826]
+        - text: is a small shift in the
+        - img [ref=e3837]
+        - text: "-th Cartesian direction. This is first-order accurate; a centred-difference formula on five points would be third-order. In a"
+        - emphasis [ref=e3842]: dense
+        - text: mesh the finite-difference error is small; in a
+        - emphasis [ref=e3843]: coarse
+        - text: mesh the discrete derivative can be wildly inaccurate near band crossings.
+      - blockquote [ref=e3844]:
+        - paragraph [ref=e3845]:
+          - strong [ref=e3846]: Note.
+          - text: The Fermi velocity has units of velocity; in atomic units
+          - img [ref=e3848]
+          - text: ", so"
+          - img [ref=e3858]
+          - text: in atomic units of velocity (bohr/
+          - img [ref=e3878]
+          - text: ", or, in SI, m/s with the appropriate conversion). For graphene, the Fermi velocity at the Dirac point is approximately"
+          - img [ref=e3884]
+          - text: m/s — about 1/300 of the speed of light.
+      - heading "11.5 Spin–orbit coupling in the band structure" [level=2] [ref=e3900]
+      - paragraph [ref=e3901]:
+        - text: The Kohn–Sham Hamiltonian of
+        - link "chapter 04" [ref=e3902] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: "is spin-free: the orbital part of the wavefunction is decoupled from the spin, and every spin-degenerate orbital comes as a pair"
+        - img [ref=e3904]
+        - text: . This is a good approximation for light atoms (where the spin–orbit coupling is small) but a poor one for heavy atoms (where the spin–orbit coupling is large) and for any problem where the
+        - emphasis [ref=e3927]: spin texture
+        - text: "of the band structure matters: topological insulators, transition-metal dichalcogenides, skyrmion materials, the Rashba effect."
+      - paragraph [ref=e3928]: The spin–orbit coupling modifies the Kohn–Sham Hamiltonian by adding a term
+      - img [ref=e3930]:
+        - generic [ref=e3934]:
+          - img [ref=e3935]
+          - img [ref=e3982]
+      - paragraph [ref=e3990]:
+        - text: where
+        - img [ref=e3992]
+        - text: are the Pauli matrices acting on the spinor part of the wavefunction,
+        - img [ref=e4023]
+        - text: is the momentum operator, and
+        - img [ref=e4042]
+        - text: is the gradient of the full (Hartree + xc + external) effective potential. In a plane-wave code the spinor is a 2-vector at each
+        - img [ref=e4050]
+        - text: ", the kinetic term is unchanged, and the matrix dimension doubles. In a localised-basis code the spinor complicates the basis (each spatial orbital becomes a pair of spin-orbitals) but does not change the structure of the SCF."
+      - paragraph [ref=e4056]:
+        - text: The two effects we will discuss in detail are the
+        - strong [ref=e4057]: Rashba splitting
+        - text: in non-centrosymmetric crystals, and the
+        - strong [ref=e4058]: topological insulator
+        - text: surface state that appears at the boundary of a 3-D strong topological insulator.
+      - heading "11.5.1 The Rashba effect" [level=3] [ref=e4059]
+      - paragraph [ref=e4060]:
+        - text: In a crystal with broken inversion symmetry, the spin–orbit coupling
+        - img [ref=e4062]
+        - text: splits a spin-degenerate band into two spin-non-degenerate branches. The prototypical case is a 2-D electron gas at the surface of a heavy metal (e.g. the Bi/Ag(111) surface alloy), where the breaking of inversion symmetry by the surface gives an effective electric field
+        - img [ref=e4076]
+        - text: perpendicular to the surface. The spin–orbit Hamiltonian reduces to
+      - img [ref=e4096]:
+        - generic [ref=e4100]:
+          - img [ref=e4101]
+          - img [ref=e4139]
+      - paragraph [ref=e4148]:
+        - text: with
+        - img [ref=e4150]
+        - text: the
+        - strong [ref=e4158]: Rashba coefficient
+        - text: (proportional to the strength of the spin–orbit coupling and to the inversion asymmetry). The eigenvalues of
+        - img [ref=e4160]
+        - text: for a free-electron dispersion are
+      - img [ref=e4173]:
+        - generic [ref=e4177]:
+          - img [ref=e4178]
+          - img [ref=e4231]
+      - paragraph [ref=e4240]:
+        - text: where
+        - img [ref=e4242]
+        - text: in the 2-D plane. The “+” and “−” branches are split by an amount
+        - img [ref=e4258]
+        - text: ", with the minimum of the upper branch at"
+        - img [ref=e4276]
+        - text: . The corresponding eigenstates are spinors whose spin orientation depends on the direction of
+        - img [ref=e4302]
+        - text: — the spin winds around the
+        - img [ref=e4309]
+        - text: vector like the hands of a clock. The spin texture is a hallmark of the Rashba effect and is measurable by spin-resolved ARPES.
+      - paragraph [ref=e4315]:
+        - text: In a periodic solid, the Rashba effect lifts the spin degeneracy of every band at every
+        - img [ref=e4317]
+        - emphasis [ref=e4323]: except
+        - text: "the time-reversal- invariant momenta (TRIM):"
+        - img [ref=e4325]
+        - text: and
+        - img [ref=e4332]
+        - text: remain related by time reversal, and the
+        - strong [ref=e4340]: Kramers degeneracy
+        - img [ref=e4342]
+        - text: forces the splitting to vanish at the TRIM. In the 2-D case, the TRIM are the four points
+        - img [ref=e4370]
+        - text: ","
+        - img [ref=e4376]
+        - text: ", and the two"
+        - img [ref=e4382]
+        - text: points (for a square lattice). The Rashba splitting is
+        - emphasis [ref=e4387]: largest
+        - text: away from the TRIM, at the BZ boundary.
+      - heading "11.5.2 The topological insulator surface state" [level=3] [ref=e4388]
+      - paragraph [ref=e4389]:
+        - text: A
+        - strong [ref=e4390]: topological insulator
+        - text: is a 3-D insulator whose bulk band structure has a non-trivial
+        - strong [ref=e4391]: topology
+        - text: (specifically, a non-zero
+        - img [ref=e4393]
+        - text: index, or equivalently a non-zero “strong” topological invariant). The bulk is gapped, but the
+        - emphasis [ref=e4402]: surface
+        - text: hosts an odd number of
+        - strong [ref=e4403]: gapless Dirac cones
+        - text: that cannot be gapped out by any local perturbation that does not close the bulk gap. The prototypical 3-D topological insulators are
+        - img [ref=e4405]
+        - text: ","
+        - img [ref=e4421]
+        - text: ", and"
+        - img [ref=e4437]
+        - text: .
+      - paragraph [ref=e4452]:
+        - text: The surface-state dispersion is the
+        - strong [ref=e4453]: 2-D Dirac equation
+        - text: ":"
+      - img [ref=e4455]:
+        - generic [ref=e4459]:
+          - img [ref=e4460]
+          - img [ref=e4538]
+      - paragraph [ref=e4547]:
+        - text: where
+        - img [ref=e4549]
+        - text: m/s is the surface-state Fermi velocity,
+        - img [ref=e4570]
+        - text: is the 2-D crystal momentum in the surface plane,
+        - img [ref=e4595]
+        - text: are the Pauli matrices acting on the electron spin, and
+        - img [ref=e4601]
+        - text: is the surface normal. The eigenvalues are
+      - img [ref=e4612]:
+        - generic [ref=e4616]:
+          - img [ref=e4617]
+          - img [ref=e4652]
+      - paragraph [ref=e4660]:
+        - text: which is a
+        - strong [ref=e4661]: double cone
+        - text: in
+        - img [ref=e4663]
+        - text: space — the famous
+        - strong [ref=e4686]: Dirac cone
+        - text: of the topological surface state. The cone is
+        - emphasis [ref=e4687]: gapless
+        - text: (the two branches touch at
+        - img [ref=e4689]
+        - text: "), and the touching is protected by time-reversal symmetry: the Kramers degeneracy at the TRIM"
+        - img [ref=e4700]
+        - text: prevents any time-reversal-invariant perturbation from opening a gap. The only way to gap the surface state is to break time-reversal symmetry (e.g. by depositing a magnetic layer on the surface), or to close the bulk gap (e.g. by doping the bulk to the point where the conduction and valence bands overlap).
+      - paragraph [ref=e4709]:
+        - text: The Dirac cone is the smoking gun of a 3-D topological insulator in ARPES. The experimental signature is a linear dispersion
+        - img [ref=e4711]
+        - text: in a 2-D slice of
+        - img [ref=e4732]
+        - text: "-space, with the cone centred at the"
+        - img [ref=e4738]
+        - text: "point of the surface BZ, and with spin-momentum locking: the spin orientation of the upper branch is perpendicular to"
+        - img [ref=e4748]
+        - text: and rotates by
+        - img [ref=e4755]
+        - text: as
+        - img [ref=e4763]
+        - text: goes around the Dirac point.
+      - blockquote [ref=e4769]:
+        - paragraph [ref=e4770]:
+          - strong [ref=e4771]: Note.
+          - text: The 2-D Dirac cone of a topological surface state is topologically distinct from the 2-D Dirac cone of graphene, even though the dispersion looks the same. Graphene’s Dirac cones come in
+          - emphasis [ref=e4772]: pairs
+          - text: (at the two inequivalent
+          - img [ref=e4774]
+          - text: and
+          - img [ref=e4780]
+          - text: points of the honeycomb BZ) and are
+          - emphasis [ref=e4788]: not
+          - text: "protected by time-reversal symmetry: they can be gapped by the Haldane mass term, which preserves inversion but breaks time reversal. A topological surface state has an"
+          - emphasis [ref=e4789]: "od`d"
+          - text: ’ number of cones at a time-reversal- invariant momentum and
+          - emphasis [ref=e4790]: cannot
+          - text: be gapped without breaking time-reversal symmetry. The distinction is encoded in the
+          - img [ref=e4792]
+          - text: topological invariant, which we will not derive here.
+      - 'heading "11.6 Band character: s, p, d, f character from atomic projection" [level=2] [ref=e4801]'
+      - paragraph [ref=e4802]:
+        - text: The band structure is a list of energies; the pDOS is a list of energies weighted by atomic-orbital projections. Together they answer the question “what kind of electron is at energy
+        - img [ref=e4804]
+        - text: "?”. The character of a band is essential for interpreting a band-structure plot: a “Ti 3"
+        - img [ref=e4810]
+        - text: band” tells you immediately that the band is localised, correlated, and possibly magnetic; a “O 2
+        - img [ref=e4816]
+        - text: band” tells you it is dispersive, weakly correlated, and forms the semicovalent framework of the solid.
+      - heading "11.6.1 The projection amplitude" [level=3] [ref=e4821]
+      - paragraph [ref=e4822]:
+        - text: For each band
+        - img [ref=e4824]
+        - text: at each
+        - img [ref=e4830]
+        - text: ", the projection amplitude on an atomic orbital"
+        - img [ref=e4837]
+        - text: "is the absolute square of the inner product:"
+      - img [ref=e4853]:
+        - generic [ref=e4857]:
+          - img [ref=e4858]:
+            - generic [ref=e4861]:
+              - img [ref=e4886]
+              - img [ref=e4918]
+          - img [ref=e4924]
+      - paragraph [ref=e4933]: The sum over all orbitals of the cell,
+      - img [ref=e4935]:
+        - generic [ref=e4939]:
+          - img [ref=e4940]
+          - img [ref=e4978]
+      - paragraph [ref=e4987]:
+        - text: (assuming the
+        - img [ref=e4989]
+        - text: form a complete basis of the plane-wave subspace), is the
+        - strong [ref=e5005]: normalisation
+        - text: of the projection. A single
+        - img [ref=e5007]
+        - text: is therefore a
+        - emphasis [ref=e5030]: weight between 0 and 1
+        - text: ; a band
+        - img [ref=e5032]
+        - text: at
+        - img [ref=e5038]
+        - text: that is “75 % C 2
+        - img [ref=e5045]
+        - text: ", 20 % C 2"
+        - img [ref=e5054]
+        - text: ", 5 % H 1"
+        - img [ref=e5060]
+        - text: ” has the corresponding weights.
+      - paragraph [ref=e5065]:
+        - text: In a localised-basis code (where the
+        - img [ref=e5067]
+        - emphasis [ref=e5083]: are
+        - text: "the basis), the projection is just the expansion coefficient:"
+      - img [ref=e5085]:
+        - generic [ref=e5089]:
+          - img [ref=e5090]
+          - img [ref=e5140]
+      - paragraph [ref=e5149]:
+        - text: In a plane-wave code the projection is the absolute square of the inner product, which is an extra computation. The standard approach in PAW-based codes is to project onto the
+        - strong [ref=e5150]: partial waves
+        - img [ref=e5152]
+        - text: of the PAW decomposition (see
+        - link "chapter 08" [ref=e5162] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: for details on PAW), giving the PAW projector weights
+        - img [ref=e5164]
+        - text: .
+      - heading "11.6.2 Reading a projected-DOS plot" [level=3] [ref=e5194]
+      - paragraph [ref=e5195]:
+        - text: A pDOS plot has
+        - img [ref=e5197]
+        - text: on the vertical axis and
+        - img [ref=e5217]
+        - text: "on the horizontal. Multiple curves are overlaid, one per (atom, angular momentum) pair. The standard reading is:"
+      - list [ref=e5222]:
+        - listitem [ref=e5223]:
+          - text: A
+          - strong [ref=e5224]: peak
+          - text: in
+          - img [ref=e5226]
+          - text: is a band of
+          - img [ref=e5246]
+          - text: character at energy
+          - img [ref=e5260]
+          - text: .
+        - listitem [ref=e5265]:
+          - text: A
+          - strong [ref=e5266]: resonance
+          - text: (a broad bump) is a hybridised band that has partial
+          - img [ref=e5268]
+          - text: character over a range of energies.
+        - listitem [ref=e5281]:
+          - text: A
+          - strong [ref=e5282]: band gap
+          - text: is a region of
+          - img [ref=e5284]
+          - text: with
+          - img [ref=e5290]
+          - text: for all
+          - img [ref=e5306]
+          - text: — the “gap” in the projected DOS is the same as the gap in the total DOS, but the
+          - emphasis [ref=e5319]: character of the gap edges
+          - text: "is visible: a gap between an O 2"
+          - img [ref=e5321]
+          - text: band (top of valence band) and a Ti 3
+          - img [ref=e5327]
+          - text: band (bottom of conduction band) is an O–Ti charge- transfer gap; a gap between two different crystal-field-split
+          - img [ref=e5333]
+          - text: bands of the same atom is a Mott–Hubbard gap.
+        - listitem [ref=e5338]:
+          - strong [ref=e5339]: Sharp peaks at the Fermi level
+          - text: in
+          - img [ref=e5341]
+          - text: indicate the presence of states with character
+          - img [ref=e5364]
+          - text: at the Fermi level — a hallmark of correlated
+          - img [ref=e5378]
+          - text: or
+          - img [ref=e5384]
+          - text: electron systems.
+      - blockquote [ref=e5389]:
+        - paragraph [ref=e5390]:
+          - strong [ref=e5391]: Tip.
+          - text: When the pDOS has more than a few curves, the plot gets crowded. A common convention is to plot the curves
+          - emphasis [ref=e5392]: "stacke`d"
+          - text: ’ (each
+          - img [ref=e5394]
+          - text: contribution is offset vertically) with the total DOS overlaid as a heavy line. This keeps the character information visible without losing the absolute scale.
+      - heading "11.6.3 Fat bands" [level=3] [ref=e5407]
+      - paragraph [ref=e5408]:
+        - text: A
+        - strong [ref=e5409]: fat-band plot
+        - text: is a band-structure plot where the marker at each
+        - img [ref=e5411]
+        - text: has a size proportional to the projection weight
+        - img [ref=e5426]
+        - text: for a chosen
+        - img [ref=e5450]
+        - text: ". The band-structure lines are replaced by “fat” markers; the size of each marker encodes the projection. Fat bands are the most information-dense way to read orbital character: the dispersion of a band is visible (the markers trace a curve in"
+        - img [ref=e5464]
+        - text: ), the character of the band is visible (the size of the marker), and the hybridisation between two orbital types is visible (a band that starts as C 2
+        - img [ref=e5478]
+        - text: at
+        - img [ref=e5484]
+        - text: and ends as C 2
+        - img [ref=e5490]
+        - text: at
+        - img [ref=e5496]
+        - text: will have fat markers that shrink for one channel and grow for the other along the path).
+      - paragraph [ref=e5501]:
+        - text: "The implementation is straightforward: at each"
+        - img [ref=e5503]
+        - text: on the band-structure path, compute the projection weights for every band, and plot a marker of size proportional to the weight. Most plotting libraries can do this with a single call (e.g. ‘ax.scatter’ with ‘s = w * scale’ in matplotlib).
+      - heading "11.7 Effective masses" [level=2] [ref=e5509]
+      - paragraph [ref=e5510]:
+        - text: Near a band extremum, the band energy is approximately quadratic in
+        - img [ref=e5512]
+        - text: . The quadratic coefficient is the
+        - strong [ref=e5518]: effective mass tensor
+        - text: ; the inverse effective mass, multiplied by
+        - img [ref=e5520]
+        - text: ", is the Hessian of the band:"
+      - img [ref=e5529]:
+        - generic [ref=e5533]:
+          - img [ref=e5534]
+          - img [ref=e5603]
+      - paragraph [ref=e5612]:
+        - text: The “effective mass” is a
+        - emphasis [ref=e5613]: tensor
+        - text: in general; it is a scalar (isotropic effective mass) only for bands that are spherically symmetric near the extremum (e.g. the bottom of the conduction band of a direct-gap semiconductor at the
+        - img [ref=e5615]
+        - text: point). In a 2-D material like graphene the dispersion is linear at the Dirac point, and the effective mass is
+        - emphasis [ref=e5620]: zero
+        - text: (more precisely, the Hessian vanishes and the dispersion is not parabolic — there is no “effective mass” to speak of).
+      - heading "11.7.1 The parabolic fit" [level=3] [ref=e5621]
+      - paragraph [ref=e5622]: In practice, the effective mass is extracted by fitting a parabola to the band in a small energy window around the extremum. The parabolic fit is
+      - img [ref=e5624]:
+        - generic [ref=e5628]:
+          - img [ref=e5629]
+          - img [ref=e5674]
+      - paragraph [ref=e5683]:
+        - text: where
+        - img [ref=e5685]
+        - text: is the extremum energy,
+        - img [ref=e5694]
+        - text: is the distance from the extremum in
+        - img [ref=e5700]
+        - text: "-space, and $m^"
+        - emphasis [ref=e5706]:
+          - text: $ is the (isotropic) effective mass. The fit is done by
+          - strong [ref=e5707]: least squares
+          - text: ": for a 1-D band sampled at"
+          - img [ref=e5709]
+          - text: points
+          - img [ref=e5715]
+          - text: with energies
+          - img [ref=e5735]
+          - text: ", find the $\\varepsilon_0, m^"
+        - img [ref=e5755]
+        - text: "\\sum_{i=1}^N (\\varepsilon_i - \\varepsilon_0 - \\hbar^2 k_i^2 / 2m^*)^2$."
+      - paragraph [ref=e5782]:
+        - text: The result is most cleanly written in terms of the moments
+        - img [ref=e5784]
+        - text: ","
+        - img [ref=e5803]
+        - text: ","
+        - img [ref=e5823]
+        - text: ","
+        - img [ref=e5843]
+        - text: ","
+        - img [ref=e5861]
+        - text: ":"
+      - img [ref=e5886]:
+        - generic [ref=e5890]:
+          - img [ref=e5891]
+          - img [ref=e6013]
+      - paragraph [ref=e6022]:
+        - text: The fit is accurate as long as the band is
+        - emphasis [ref=e6023]: "paraboli`c"
+        - text: ’ to a good approximation in the fitting window. In a small enough window (typically
+        - img [ref=e6025]
+        - text: eV around the extremum) the fit is good; in a larger window the higher-order terms in the Taylor expansion of
+        - img [ref=e6035]
+        - text: become important and the fit is biased.
+      - heading "11.7.2 The anisotropic effective mass" [level=3] [ref=e6040]
+      - paragraph [ref=e6041]:
+        - text: For a band extremum that is not at a high-symmetry point of the BZ, the effective mass tensor is *anisotropi
+        - code [ref=e6042]: c*
+        - text: ": the curvature of the band depends on the direction in"
+        - img [ref=e6044]
+        - text: "-space. The general quadratic fit is"
+      - img [ref=e6051]:
+        - generic [ref=e6055]:
+          - img [ref=e6056]
+          - img [ref=e6134]
+      - paragraph [ref=e6143]:
+        - text: with
+        - img [ref=e6145]
+        - text: the Hessian of the band at
+        - img [ref=e6151]
+        - text: ", a"
+        - img [ref=e6161]
+        - text: symmetric matrix. The effective mass tensor is $m^
+        - emphasis [ref=e6170]:
+          - text: "_{ij} = \\hbar^2 / H_{ij}"
+          - img [ref=e6172]
+          - text: m^
+        - img [ref=e6278]
+        - text: H
+        - img [ref=e6356]
+        - text: m^*$).
+      - paragraph [ref=e6393]:
+        - text: In a 2-D material the tensor reduces to a
+        - img [ref=e6395]
+        - text: matrix; in a quasi-1-D material (carbon nanotubes, blue bronze) it is dominated by a single component and the other two are much smaller.
+      - heading "11.7.3 Density-of-states effective mass" [level=3] [ref=e6404]
+      - paragraph [ref=e6405]:
+        - text: The parabolic fit gives the
+        - emphasis [ref=e6406]: band-edge
+        - text: effective mass. A related quantity is the
+        - strong [ref=e6407]: density-of-states effective mass
+        - text: $m^
+        - emphasis [ref=e6408]: "_\\text{DOS}$, defined by the requirement that the *parabolic-ban`d"
+        - text: "’ DOS at the extremum matches the true DOS:"
+      - img [ref=e6410]:
+        - generic [ref=e6414]:
+          - img [ref=e6415]
+          - img [ref=e6457]
+      - paragraph [ref=e6466]:
+        - text: "For a 3-D parabolic band, $g_\\text{parab}(E) = \\frac{V}{2\\pi^2} \\left( \\frac{2 m^"
+        - emphasis [ref=e6467]: "_\\text{DOS}}{\\hbar^2} \\right)^{3/2} \\sqrt{E - \\varepsilon_0}$, and the DOS effective mass equals the *geometric mean"
+        - text: "of the three principal effective masses:"
+      - img [ref=e6469]:
+        - generic [ref=e6473]:
+          - img [ref=e6474]
+          - img [ref=e6522]
+      - paragraph [ref=e6531]:
+        - text: For a 2-D parabolic band the DOS is
+        - emphasis [ref=e6532]: constant
+        - text: "in energy, $g_\\text{parab}(E) = m^"
+        - emphasis [ref=e6533]:
+          - text: "_\\text{DOS, 2D} / (\\pi \\hbar^2)$, and the DOS effective mass is the geometric mean of the two principal masses. The DOS effective mass controls the"
+          - strong [ref=e6534]: electronic specific heat
+          - text: of a metal (which is proportional to $m^
+        - text: "_\\text{DOS}$) and the"
+        - strong [ref=e6535]: thermopower
+        - text: (via the Mott formula).
+      - heading "11.7.4 Diagram — the effective mass from a parabolic fit" [level=3] [ref=e6536]
+      - paragraph [ref=e6537]:
+        - text: The effective-mass tensor at a band extremum is the
+        - emphasis [ref=e6538]: curvature
+        - text: of
+        - img [ref=e6540]
+        - text: in the three Cartesian directions of
+        - img [ref=e6553]
+        - text: ":"
+      - img [ref=e6560]
+      - paragraph [ref=e6628]:
+        - text: "The flow below shows the three-step procedure: pick a high-symmetry point where a band has an extremum; sample"
+        - img [ref=e6630]
+        - text: on a fine
+        - img [ref=e6643]
+        - text: "-mesh around it; fit a quadratic form in"
+        - img [ref=e6650]
+        - text: ; read off the inverse-mass tensor. The diagram makes explicit that the
+        - emphasis [ref=e6666]: "anisotropi`c"
+        - text: ’ effective mass (a tensor, sec. 11.7.2) and the
+        - emphasis [ref=e6667]: DOS
+        - text: effective mass (a scalar, sec. 11.7.3) are different reductions of the same curvature tensor.
+      - figure [ref=e6669]:
+        - code [ref=e6670]:
+          - document [ref=e6671]:
+            - generic [ref=e6677]:
+              - generic [ref=e6683]:
+                - text: "eps_{n,k}"
+                - text: (full band structure)
+              - generic [ref=e6689]:
+                - text: Locate extremum at k0
+                - text: (CBM, VBM, or saddle)
+              - generic [ref=e6695]:
+                - text: Sample on fine mesh
+                - text: around k0
+                - text: (N_k ~ 11^3)
+              - generic [ref=e6701]:
+                - text: Fit quadratic form
+                - text: eps_n(k) ~ eps_n(k0)
+                - text: + (1/2) (k-k0)^T H (k-k0)
+              - generic [ref=e6707]:
+                - text: Hessian matrix
+                - text: H_ab = d^2 eps / dk_a dk_b
+              - generic [ref=e6713]:
+                - text: Inverse-mass tensor
+                - text: (m*)^-1_ab = H_ab / hbar^2
+                - text: (rank 2, symmetric 3x3)
+              - generic [ref=e6719]:
+                - text: Diagonalise
+                - text: "-> principal masses"
+                - text: m*_1, m*_2, m_3
+              - generic [ref=e6725]:
+                - text: Trace -> DOS mass
+                - text: m*_DOS = (det m*)^(1/3)
+                - text: (3-D); geometric mean
+                - text: in 2-D / 1-D
+              - generic [ref=e6731]:
+                - text: Conductivity mass
+                - text: (weighted average over
+                - text: Fermi surface)
+              - generic [ref=e6737]:
+                - text: Anisotropic effective mass
+                - text: (sec. 11.7.2)
+              - generic [ref=e6743]:
+                - text: Density-of-states
+                - text: effective mass
+                - text: (sec. 11.7.3)
+              - generic [ref=e6749]:
+                - text: Transport effective mass
+                - text: (sec. 11.7.3)
+        - button "Download this diagram as a PNG" [ref=e6750] [cursor=pointer]:
+          - img [ref=e6751]
+          - generic [ref=e6754]: Download PNG
+      - paragraph [ref=e6755]:
+        - text: The
+        - strong [ref=e6756]: key branch
+        - text: is
+        - code [ref=e6757]: INV
+        - text: ’ (the inverse-mass tensor). The three
+        - emphasis [ref=e6758]: downstream
+        - text: boxes (
+        - code [ref=e6759]: DIAG
+        - text: ","
+        - code [ref=e6760]: TRACE
+        - text: ","
+        - code [ref=e6761]: COND
+        - text: ) are different
+        - emphasis [ref=e6762]: reductions
+        - text: "of the same tensor: the principal axes (eigenvectors of"
+        - img [ref=e6764]
+        - text: ) and the principal masses (eigenvalues divided by
+        - img [ref=e6771]
+        - text: ) come from
+        - code [ref=e6779]: DIAG
+        - text: ; the DOS mass is the geometric mean of the principal masses; the conductivity mass is a direction-weighted average that depends on the Fermi-surface integral of the inverse mass.
+      - heading "11.8 Band structure of specific materials" [level=2] [ref=e6780]
+      - paragraph [ref=e6781]:
+        - text: "We now apply the machinery to four canonical materials. Each illustrates a different feature of the band-structure formalism: silicon is the textbook"
+        - strong [ref=e6782]: indirect-gap
+        - text: semiconductor, graphene has the textbook
+        - strong [ref=e6783]: linear Dirac dispersion
+        - text: at the BZ corner, GaAs is the textbook
+        - strong [ref=e6784]: direct-gap
+        - text: semiconductor of the III–V family, and MoS₂ shows the
+        - strong [ref=e6785]: spin–orbit splitting
+        - text: of a transition-metal dichalcogenide.
+      - 'heading "11.8.1 Silicon: the indirect gap" [level=3] [ref=e6786]'
+      - paragraph [ref=e6787]:
+        - text: Silicon crystallises in the diamond structure (space group
+        - img [ref=e6789]
+        - text: ", No. 227). The conventional cell has 8 atoms; the primitive cell has 2. With 4 valence electrons per atom, the primitive cell contributes 8 valence electrons, filling 4 bands at zero temperature."
+      - paragraph [ref=e6804]:
+        - text: The Kohn–Sham band structure (LDA, plane-wave cutoff 30 Ha,
+        - img [ref=e6806]
+        - text: "MP mesh, Setyawan–Curtarolo path) has the following features:"
+      - list [ref=e6819]:
+        - listitem [ref=e6820]:
+          - strong [ref=e6821]: Band gap.
+          - text: The conduction-band minimum is at
+          - img [ref=e6823]
+          - text: (about 85 % of the way from
+          - img [ref=e6843]
+          - text: to
+          - img [ref=e6849]
+          - text: ); the valence-band maximum is at
+          - img [ref=e6855]
+          - text: . The
+          - strong [ref=e6860]: indirect gap
+          - text: is
+          - img [ref=e6862]
+          - text: eV in LDA (the experimental value is 1.17 eV at room temperature; the LDA gap is the well-known ~50 % underestimate).
+        - listitem [ref=e6883]:
+          - strong [ref=e6884]:
+            - text: Direct gap at
+            - img [ref=e6886]
+            - text: .
+          - text: The lowest direct gap at
+          - img [ref=e6892]
+          - text: is larger,
+          - img [ref=e6898]
+          - text: eV in LDA (
+          - img [ref=e6908]
+          - text: eV experimentally). The difference between the direct gap at
+          - img [ref=e6918]
+          - text: and the indirect gap is what makes silicon an
+          - emphasis [ref=e6923]: indirect
+          - text: "semiconductor: an optical transition across the indirect gap requires a phonon to conserve crystal momentum, and is therefore a higher-order process with a much smaller matrix element than a direct transition."
+        - listitem [ref=e6924]:
+          - strong [ref=e6925]: Valence bands.
+          - text: The top three valence bands at
+          - img [ref=e6927]
+          - text: are the
+          - img [ref=e6933]
+          - text: "-like"
+          - img [ref=e6939]
+          - text: triplet (without spin–orbit). With spin–orbit, the
+          - img [ref=e6953]
+          - text: triplet splits into the
+          - img [ref=e6967]
+          - text: doublet (
+          - img [ref=e6979]
+          - text: ", heavy-hole and light-hole bands) and the"
+          - img [ref=e6994]
+          - text: singlet (
+          - img [ref=e7006]
+          - text: ", split-off band), with a spin–orbit splitting of"
+          - img [ref=e7021]
+          - text: "eV in silicon (much larger in heavier diamond-structure semiconductors:"
+          - img [ref=e7038]
+          - text: eV in Ge,
+          - img [ref=e7054]
+          - text: eV in GaAs).
+        - listitem [ref=e7063]:
+          - strong [ref=e7064]: Conduction band.
+          - text: The conduction-band minimum near
+          - img [ref=e7066]
+          - text: is sixfold-degenerate in the
+          - emphasis [ref=e7071]: "unfolde`d"
+          - text: ’ BZ (six equivalent
+          - img [ref=e7073]
+          - text: minima along the six
+          - img [ref=e7084]
+          - text: lines); in the
+          - emphasis [ref=e7089]: primitive
+          - text: BZ it appears as a single minimum on the
+          - img [ref=e7091]
+          - text: line with a small effective mass along
+          - img [ref=e7097]
+          - text: and a large effective mass perpendicular to it. The transverse and longitudinal effective masses of silicon are
+          - img [ref=e7103]
+          - text: and
+          - img [ref=e7126]
+          - text: (experimental); the DOS effective mass is
+          - img [ref=e7149]
+          - text: .
+      - paragraph [ref=e7211]:
+        - text: The silicon band structure is the prototype that every solid-state textbook opens with. Its main lesson is that the gap between the highest occupied and lowest unoccupied KS state is
+        - emphasis [ref=e7212]: not
+        - text: a direct transition at the BZ centre, and that the
+        - emphasis [ref=e7213]: effective mass
+        - text: of an electron depends on the direction in the BZ.
+      - 'heading "11.8.2 Graphene: the linear dispersion at K" [level=3] [ref=e7214]'
+      - paragraph [ref=e7215]:
+        - text: Graphene is a 2-D honeycomb lattice of carbon atoms. The primitive cell has 2 atoms; the BZ is hexagonal (section 11.2.4). The tight-binding band structure on a minimal
+        - img [ref=e7217]
+        - text: "-orbital basis (one"
+        - img [ref=e7223]
+        - text: "per carbon) is derived in detail in section 11.9:"
+      - img [ref=e7232]:
+        - generic [ref=e7236]:
+          - img [ref=e7237]
+          - img [ref=e7335]
+      - paragraph [ref=e7343]:
+        - text: The two bands are the
+        - img [ref=e7345]
+        - text: (occupied, lower) and $\pi^
+        - emphasis [ref=e7350]: $ (empty, upper) bands; the “Fermi level” of a neutral graphene sheet lies exactly at the crossing point of the two bands. The dispersion is *linear
+        - text: at the six corners of the hexagonal BZ (the
+        - img [ref=e7352]
+        - text: and
+        - img [ref=e7358]
+        - text: points), with a Fermi velocity
+        - img [ref=e7367]
+        - text: where
+        - img [ref=e7391]
+        - text: is the lattice constant and
+        - img [ref=e7397]
+        - text: eV is the nearest-neighbour
+        - img [ref=e7409]
+        - text: hopping. The numerical value is
+        - img [ref=e7415]
+        - text: m/s — about 1/300 of the speed of light.
+      - paragraph [ref=e7431]:
+        - text: "The linear dispersion is the origin of graphene’s unusual electronic properties: the specific heat is linear in"
+        - img [ref=e7433]
+        - text: (like a 2-D Dirac fermion), the optical conductivity is
+        - img [ref=e7439]
+        - text: (independent of frequency over a wide range), the Hall conductivity is half-quantised,
+        - img [ref=e7457]
+        - text: (in units of
+        - img [ref=e7473]
+        - text: ) at the Dirac point, and the carrier mobility is enormously high because the linear dispersion implies that backscattering is
+        - emphasis [ref=e7486]: forbidden
+        - text: by the chirality of the Dirac wavefunctions.
+      - paragraph [ref=e7487]:
+        - text: The Dirac cone of graphene is
+        - emphasis [ref=e7488]: not
+        - text: a topological-insulator surface state. Graphene’s cones come in
+        - emphasis [ref=e7489]: pairs
+        - text: (at the two inequivalent
+        - img [ref=e7491]
+        - text: and
+        - img [ref=e7497]
+        - text: points), and the cones can be gapped out by a Haldane mass term that breaks time-reversal symmetry. A topological-insulator surface state has an
+        - emphasis [ref=e7505]:
+          - text: od
+          - code [ref=e7506]: d*' number of cones at a time-reversal-invariant momentum and is *protecte
+          - text: d
+        - text: ’ by time-reversal symmetry. The distinction is encoded in the
+        - img [ref=e7508]
+        - text: topological invariant.
+      - 'heading "11.8.3 GaAs: the direct gap" [level=3] [ref=e7517]'
+      - paragraph [ref=e7518]:
+        - text: Gallium arsenide crystallises in the zincblende structure (space group
+        - img [ref=e7520]
+        - text: ", No. 216). The primitive cell has 2 atoms. Ga contributes 3 valence electrons, As contributes 5; the primitive cell has 8 valence electrons, filling 4 bands."
+      - paragraph [ref=e7535]:
+        - text: The Kohn–Sham band structure (LDA, plane-wave cutoff 30 Ha,
+        - img [ref=e7537]
+        - text: "MP mesh) has the following features:"
+      - list [ref=e7550]:
+        - listitem [ref=e7551]:
+          - strong [ref=e7552]: Band gap.
+          - text: The conduction-band minimum is at
+          - img [ref=e7554]
+          - text: ; the valence-band maximum is
+          - emphasis [ref=e7559]: also
+          - text: at
+          - img [ref=e7561]
+          - text: . The gap is
+          - strong [ref=e7566]: direct
+          - text: ":"
+          - img [ref=e7568]
+          - text: . The LDA gap is
+          - img [ref=e7595]
+          - text: "eV (experimental: 1.42 eV at room temperature, 1.52 eV at 0 K). The “30–50 % underestimate” pattern is the same as for silicon."
+        - listitem [ref=e7604]:
+          - strong [ref=e7605]: Effective masses.
+          - text: The electron effective mass at
+          - img [ref=e7607]
+          - text: is $m^
+          - emphasis [ref=e7612]:
+            - text: _e \approx 0.067\,m_e
+            - img [ref=e7614]
+            - text: 0.067\,m_e
+            - img [ref=e7674]
+            - text: m^
+          - emphasis [ref=e7797]:
+            - text: "{hh} \\approx 0.50\\,m_e"
+            - img [ref=e7799]
+            - text: m^*
+          - text: "{lh} \\approx 0.08\\,m_e"
+          - img [ref=e7805]
+          - text: m^*
+          - emphasis [ref=e7810]:
+            - text: "{so} \\approx 0.15\\,m_e"
+            - img [ref=e7812]
+            - text: \Delta
+          - text: "\\text{SO} \\approx 0.34$ eV). The small electron effective mass is what makes GaAs the high-electron-mobility-transistor (HEMT) material of choice."
+        - listitem [ref=e7864]:
+          - strong [ref=e7865]: Conduction band.
+          - text: The conduction band at
+          - img [ref=e7867]
+          - text: is
+          - img [ref=e7873]
+          - text: "-like ("
+          - img [ref=e7879]
+          - text: without spin–orbit,
+          - img [ref=e7888]
+          - text: with spin–orbit). The next conduction-band minimum (the
+          - img [ref=e7897]
+          - text: minimum) is at
+          - img [ref=e7903]
+          - text: eV above the
+          - img [ref=e7913]
+          - text: minimum in LDA; the
+          - img [ref=e7919]
+          - text: minimum is at
+          - img [ref=e7925]
+          - text: eV. In GaAs the
+          - img [ref=e7935]
+          - text: minimum is the
+          - emphasis [ref=e7940]: lowest
+          - text: of the three, so the gap is direct.
+      - paragraph [ref=e7941]: "The direct gap is what makes GaAs (and other direct-gap III–V semiconductors like InP, InAs, GaSb) the material of choice for optoelectronics: light-emitting diodes, laser diodes, and solar cells all require a direct gap so that the optical transition matrix element is non-zero."
+      - 'heading "11.8.4 MoS₂: the spin–orbit split valence band" [level=3] [ref=e7942]'
+      - paragraph [ref=e7943]:
+        - text: Molybdenum disulfide is a layered transition-metal dichalcogenide. The bulk crystal has the 2H polytype (space group $P 6
+        - emphasis [ref=e7944]:
+          - text: 3 / m m c
+          - img [ref=e7946]
+          - text: D
+        - text: "{3h}$ point group. The band gap is"
+        - strong [ref=e8059]: direct in the monolayer
+        - text: (
+        - img [ref=e8061]
+        - text: eV in LDA) and
+        - strong [ref=e8070]: indirect in the bilayer and bulk
+        - text: (
+        - img [ref=e8072]
+        - text: eV in LDA for the bulk) — the “direct-to-indirect transition” as a function of layer number is one of the most discussed features of 2-D semiconductors.
+      - paragraph [ref=e8081]:
+        - text: The spin–orbit splitting of the valence band is
+        - strong [ref=e8082]: large
+        - text: ":"
+        - img [ref=e8084]
+        - text: eV in monolayer MoS₂ (LDA; experimental
+        - img [ref=e8095]
+        - text: eV). The splitting comes from the spin–orbit coupling on the Mo 4
+        - img [ref=e8106]
+        - text: "orbitals, which dominate the valence-band edge. The splitting has two important consequences:"
+      - list [ref=e8111]:
+        - listitem [ref=e8112]:
+          - strong [ref=e8113]: Valley-selective optical excitation.
+          - text: The
+          - img [ref=e8115]
+          - text: and
+          - img [ref=e8121]
+          - text: valleys of the hexagonal BZ carry
+          - emphasis [ref=e8129]: opposite
+          - text: spin polarisation at the valence-band edge (the spin–orbit coupling is
+          - emphasis [ref=e8130]: valley- dependent
+          - text: ). A circularly-polarised optical pump therefore excites carriers into a
+          - emphasis [ref=e8131]: single
+          - text: valley, and the resulting luminescence is *circularly polarise
+          - code [ref=e8132]: d*
+          - text: . This is the
+          - strong [ref=e8133]: valley Hall effect
+          - text: and the basis of “valleytronics”.
+        - listitem [ref=e8134]:
+          - strong [ref=e8135]: Spin-split conduction band.
+          - text: The spin–orbit splitting of the conduction band is much smaller (
+          - img [ref=e8137]
+          - text: meV in LDA; experimental upper bound
+          - img [ref=e8145]
+          - text: meV) because the conduction-band edge at
+          - img [ref=e8154]
+          - text: is dominated by Mo 4
+          - img [ref=e8160]
+          - text: with smaller spin–orbit coupling than the 4
+          - img [ref=e8173]
+          - text: at the valence-band edge.
+      - paragraph [ref=e8198]: The combination of a direct gap and a large spin–orbit splitting makes monolayer MoS₂ a prototype “spin–valley-locked” 2-D semiconductor. The same physics — spin–orbit-split valence bands in a 2-D hexagonal lattice — applies to all the 2-H transition-metal dichalcogenides (WS₂, WSe₂, MoSe₂, MoTe₂), with heavier transition metals giving larger spin–orbit splittings.
+      - heading "11.8.5 Diagram — the graphene Dirac cone construction" [level=3] [ref=e8199]
+      - paragraph [ref=e8200]:
+        - text: The graphene Dirac cone is built from a
+        - emphasis [ref=e8201]: two-atom
+        - text: basis (A and B sublattices) with
+        - emphasis [ref=e8202]: nearest-neighbour
+        - text: hopping
+        - img [ref=e8204]
+        - text: between them. The two-atom basis gives a
+        - img [ref=e8210]
+        - text: Bloch Hamiltonian
+        - img [ref=e8220]
+        - text: ; its eigenvalues are
+        - img [ref=e8237]
+        - text: ", which vanish at the BZ corners"
+        - img [ref=e8257]
+        - text: and
+        - img [ref=e8263]
+        - text: . Expanding
+        - img [ref=e8272]
+        - text: to linear order in
+        - img [ref=e8278]
+        - text: gives a
+        - emphasis [ref=e8293]: "massless Dira`c"
+        - text: ’ Hamiltonian
+        - img [ref=e8295]
+        - text: ", with linear dispersion"
+        - img [ref=e8317]
+        - text: .
+      - figure [ref=e8352]:
+        - code [ref=e8353]:
+          - document [ref=e8354]:
+            - generic [ref=e8357]:
+              - generic [ref=e8363]:
+                - text: Honeycomb lattice
+                - text: "(2-D, two atoms per cell:"
+                - text: A and B sublattices)
+              - generic [ref=e8369]:
+                - text: Tight-binding
+                - text: nearest-neighbour hopping t
+                - text: (sec. 11.9.2)
+              - generic [ref=e8375]:
+                - text: 2x2 Bloch Hamiltonian
+                - text: "H(k) = [[0, f(k)], [`f*`(k), 0]]"
+                - text: "f(k) = t(1 + e^{ik.a1} + e^{ik.a2})"
+              - generic [ref=e8381]:
+                - text: Eigenvalues
+                - text: eps_pm(k) = +/- |f(k)|
+                - text: (eq. 11.55)
+              - generic [ref=e8387]:
+                - text: "Zero set:"
+                - text: f(k) = 0 at BZ corners
+                - text: K = (4 pi / 3a, 0)
+                - text: K' = (-4 pi / 3a, 0)
+              - generic [ref=e8393]:
+                - text: "Expand around K:"
+                - text: f(K + q) ~ - (sqrt 3 a / 2) t (q_x - i q_y)
+                - text: (linear in q)
+              - generic [ref=e8399]:
+                - text: Massless Dirac
+                - text: H ~ hbar v_F sigma . q
+                - text: v_F = (sqrt 3 / 2) a t / hbar
+              - generic [ref=e8405]:
+                - text: Linear dispersion
+                - text: eps_pm(q) = +/- hbar v_F |q|
+              - generic [ref=e8411]:
+                - text: Conical band crossing
+                - text: at K, K'
+                - text: (the Dirac cone)
+        - button "Download this diagram as a PNG" [ref=e8412] [cursor=pointer]:
+          - img [ref=e8413]
+          - generic [ref=e8416]: Download PNG
+      - paragraph [ref=e8417]:
+        - text: The
+        - strong [ref=e8418]: two-atom basis
+        - text: (
+        - code [ref=e8419]: L1
+        - text: ") is the structural origin of the Dirac cone: a single atom per cell would give a scalar band and"
+        - emphasis [ref=e8420]: "no"
+        - text: crossing. The
+        - strong [ref=e8421]: nearest-neighbour hopping
+        - text: (
+        - code [ref=e8422]: L2
+        - text: ) is the minimal interaction that
+        - emphasis [ref=e8423]: couples
+        - text: the two sublattices; the matrix element
+        - img [ref=e8425]
+        - text: encodes the
+        - emphasis [ref=e8437]: interference
+        - text: of the three hopping paths from one A atom to its three B neighbours. The
+        - strong [ref=e8438]:
+          - text: expansion around
+          - img [ref=e8440]
+        - text: (
+        - code [ref=e8445]: EXP
+        - text: ") is the key step:"
+        - img [ref=e8447]
+        - text: is
+        - emphasis [ref=e8452]: linear
+        - text: in
+        - img [ref=e8454]
+        - text: (because the gradient of
+        - img [ref=e8470]
+        - text: is non-zero at
+        - img [ref=e8476]
+        - text: ), so the effective Hamiltonian is
+        - emphasis [ref=e8481]: Dirac-like
+        - text: rather than Schrödinger-like. The result (
+        - code [ref=e8482]: CONE
+        - text: ) is the famous linear dispersion that gives graphene its unusual transport properties (anomalous quantum Hall effect, Klein tunnelling, finite minimum conductivity).
+      - 'heading "11.9 Worked example: tight-binding band structure of graphene" [level=2] [ref=e8483]'
+      - paragraph [ref=e8484]:
+        - text: "We now derive the tight-binding band structure of graphene in full detail, with all intermediate steps. The model is the simplest non-trivial tight-binding problem: a single"
+        - img [ref=e8486]
+        - text: orbital per carbon atom, with nearest-neighbour hopping
+        - img [ref=e8495]
+        - text: .
+      - heading "11.9.1 The graphene lattice" [level=3] [ref=e8500]
+      - paragraph [ref=e8501]: Graphene is a 2-D honeycomb lattice. The conventional unit cell is a rhombus containing two carbon atoms; the primitive vectors of the direct lattice are
+      - img [ref=e8503]:
+        - generic [ref=e8507]:
+          - img [ref=e8508]
+          - img [ref=e8575]
+      - paragraph [ref=e8583]:
+        - text: where
+        - img [ref=e8585]:
+          - generic [ref=e8598]: Å
+        - text: is the lattice constant (the side of the rhombus; the nearest-neighbour C–C distance is
+        - img [ref=e8612]
+        - text: Å). The basis atoms within the cell are the
+        - emphasis [ref=e8634]: A
+        - text: sublattice at the origin and the B sublattice at
+      - img [ref=e8636]:
+        - generic [ref=e8640]:
+          - img [ref=e8641]
+          - img [ref=e8676]
+      - paragraph [ref=e8684]: The three nearest neighbours of an A atom are
+      - paragraph [ref=e8685]:
+        - img [ref=e8687]:
+          - generic [ref=e8691]:
+            - img [ref=e8692]
+            - img [ref=e8861]
+      - paragraph [ref=e8870]:
+        - text: "The three nearest neighbours of a B atom are the negatives:"
+        - img [ref=e8872]
+        - text: ", where"
+        - img [ref=e8888]
+        - text: .
+      - paragraph [ref=e8900]:
+        - text: The reciprocal-lattice primitive vectors are obtained from
+        - img [ref=e8902]
+        - text: ":"
+      - img [ref=e8934]:
+        - generic [ref=e8938]:
+          - img [ref=e8939]
+          - img [ref=e9027]
+      - paragraph [ref=e9036]: The first Brillouin zone is a regular hexagon. The high-symmetry points are
+      - table [ref=e9037]:
+        - rowgroup [ref=e9038]:
+          - row "Label Cartesian (in ) Description" [ref=e9039]:
+            - columnheader "Label" [ref=e9040]
+            - columnheader "Cartesian (in )" [ref=e9041]:
+              - text: Cartesian (in
+              - img [ref=e9043]
+              - text: )
+            - columnheader "Description" [ref=e9053]
+        - rowgroup [ref=e9054]:
+          - row "Centre of the BZ" [ref=e9055]:
+            - cell [ref=e9056]:
+              - img [ref=e9058]
+            - cell [ref=e9063]:
+              - img [ref=e9065]
+            - cell "Centre of the BZ" [ref=e9078]
+          - row "Centre of a hexagonal edge" [ref=e9079]:
+            - cell [ref=e9080]:
+              - img [ref=e9082]
+            - cell [ref=e9087]:
+              - img [ref=e9089]
+            - cell "Centre of a hexagonal edge" [ref=e9107]
+          - row "Hex–hex corner (Dirac point)" [ref=e9108]:
+            - cell [ref=e9109]:
+              - img [ref=e9111]
+            - cell [ref=e9116]:
+              - img [ref=e9118]
+            - cell "Hex–hex corner (Dirac point)" [ref=e9146]:
+              - text: Hex–hex corner (
+              - emphasis [ref=e9147]: Dirac point
+              - text: )
+          - row "Other inequivalent corner" [ref=e9148]:
+            - cell [ref=e9149]:
+              - img [ref=e9151]
+            - cell [ref=e9159]:
+              - img [ref=e9161]
+            - cell "Other inequivalent corner" [ref=e9179]
+      - heading "11.9.2 The tight-binding Hamiltonian" [level=3] [ref=e9180]
+      - paragraph [ref=e9181]:
+        - text: We take a single
+        - img [ref=e9183]
+        - text: "orbital per atom:"
+        - img [ref=e9192]
+        - text: on the A sublattice,
+        - img [ref=e9205]
+        - text: on the B sublattice. The two-atom basis gives a
+        - img [ref=e9218]
+        - text: Hamiltonian at each
+        - img [ref=e9228]
+        - text: ":"
+      - img [ref=e9235]:
+        - generic [ref=e9239]:
+          - img [ref=e9240]
+          - img [ref=e9389]
+      - paragraph [ref=e9397]:
+        - text: The diagonal elements are equal by sublattice symmetry, and we set both to zero (this is the convention that puts the Fermi level at
+        - img [ref=e9399]
+        - text: "):"
+      - img [ref=e9409]:
+        - generic [ref=e9413]:
+          - img [ref=e9414]
+          - img [ref=e9486]
+      - paragraph [ref=e9495]:
+        - text: The off-diagonal element is the Bloch sum of the hopping
+        - img [ref=e9497]
+        - text: "between A and B:"
+      - img [ref=e9503]:
+        - generic [ref=e9507]:
+          - img [ref=e9508]
+          - img [ref=e9605]
+      - paragraph [ref=e9613]:
+        - text: The factor of 1 comes from the on-cell neighbour
+        - img [ref=e9615]
+        - text: (with
+        - img [ref=e9631]
+        - text: ); the factors of
+        - img [ref=e9642]
+        - text: and
+        - img [ref=e9663]
+        - text: come from the other two neighbours, which are at
+        - img [ref=e9684]
+        - text: and
+        - img [ref=e9701]
+        - text: ". (Recall: the Bloch factor for a hop from an A atom at lattice vector"
+        - img [ref=e9718]
+        - text: to a B atom at
+        - img [ref=e9725]
+        - text: is
+        - img [ref=e9736]
+        - text: summed over
+        - img [ref=e9754]
+        - text: . Here the B atom is at
+        - img [ref=e9761]
+        - text: in the A-sublattice coordinates, but the
+        - img [ref=e9775]
+        - text: sum is over the A lattice and the phase is the same.)
+      - paragraph [ref=e9781]:
+        - text: The
+        - img [ref=e9783]
+        - text: Hamiltonian is therefore
+      - img [ref=e9793]:
+        - generic [ref=e9797]:
+          - img [ref=e9798]
+          - img [ref=e9913]
+      - paragraph [ref=e9921]:
+        - text: The off-diagonal complex conjugate is from the Hermiticity of
+        - img [ref=e9923]
+        - text: ": the Bloch sum for"
+        - img [ref=e9929]
+        - text: is the complex conjugate of
+        - img [ref=e9959]:
+          - link [ref=e9962] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-11-graphene-offdiag"
+        - text: (the A and B sublattices are related by inversion).
+      - heading "11.9.3 The eigenvalues" [level=3] [ref=e9970]
+      - paragraph [ref=e9971]:
+        - text: The eigenvalues of
+        - img [ref=e9973]:
+          - link [ref=e9976] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-11-graphene-hk2"
+        - text: are
+      - img [ref=e9985]:
+        - generic [ref=e9989]:
+          - img [ref=e9990]
+          - img [ref=e10027]
+      - paragraph [ref=e10035]:
+        - text: "where $|f(\\mathbf k)| = \\sqrt{f(\\mathbf k) f^"
+        - emphasis [ref=e10036]:
+          - text: "(\\mathbf k)}"
+          - img [ref=e10038]
+          - text: \pi
+          - img [ref=e10094]
+          - text: \pi^
+        - img [ref=e10142]
+        - text: p_z
+        - img [ref=e10200]
+        - text: \mathbf k = 0
+        - img [ref=e10252]
+        - text: \Gamma
+        - img [ref=e10264]
+        - text: "f$ all add in phase:"
+      - paragraph [ref=e10309]:
+        - img [ref=e10311]:
+          - generic [ref=e10315]:
+            - img [ref=e10316]
+            - img [ref=e10414]
+      - paragraph [ref=e10423]:
+        - text: The bandwidth of graphene is therefore
+        - img [ref=e10425]
+        - text: eV (using
+        - img [ref=e10446]
+        - text: eV from a fit to LDA). This is the energy range from the bottom of the
+        - img [ref=e10460]
+        - text: band at
+        - img [ref=e10466]
+        - text: to the top of the
+        - img [ref=e10472]
+        - text: band at
+        - img [ref=e10481]
+        - text: .
+      - table [ref=e10486]:
+        - rowgroup [ref=e10487]:
+          - row "The explicit form of $ f(\\mathbf k) ^2$ is" [ref=e10488]:
+            - cell "The explicit form of $" [ref=e10489]
+            - cell "f(\\mathbf k)" [ref=e10490]
+            - cell "^2$ is" [ref=e10491]
+      - paragraph [ref=e10492]:
+        - img [ref=e10494]:
+          - generic [ref=e10498]:
+            - img [ref=e10499]
+            - img [ref=e10725]
+      - paragraph [ref=e10734]: This is the standard “three-cosine” tight-binding band of graphene. It is positive definite, real, and periodic under reciprocal-lattice translations.
+      - heading "11.9.4 The Dirac point" [level=3] [ref=e10735]
+      - paragraph [ref=e10736]:
+        - text: The two bands
+        - img [ref=e10738]
+        - text: touch when
+        - img [ref=e10747]
+        - text: . We solve
+        - img [ref=e10769]
+        - text: ":"
+      - img [ref=e10786]:
+        - generic [ref=e10790]:
+          - img [ref=e10791]
+          - img [ref=e10841]
+      - paragraph [ref=e10850]:
+        - text: Multiply by
+        - img [ref=e10852]
+        - text: ":"
+      - img [ref=e10875]
+      - paragraph [ref=e10938]:
+        - text: A solution of this 2-equation-in-2-unknowns problem is
+        - img [ref=e10940]
+        - text: and
+        - img [ref=e10966]
+        - text: (modulo
+        - img [ref=e10992]
+        - text: ). Solving for the Cartesian
+        - img [ref=e11000]
+        - text: ":"
+      - paragraph [ref=e11006]:
+        - img [ref=e11008]:
+          - generic [ref=e11012]:
+            - img [ref=e11013]
+            - img [ref=e11100]
+      - paragraph [ref=e11109]:
+        - text: From the first equation,
+        - img [ref=e11111]
+        - text: ". Substituting into the second:"
+      - img [ref=e11137]
+      - paragraph [ref=e11256]: Wait, let me redo this carefully. We have
+      - paragraph [ref=e11257]:
+        - img [ref=e11259]:
+          - generic [ref=e11263]:
+            - img [ref=e11264]
+            - img [ref=e11338]
+      - paragraph [ref=e11347]:
+        - text: From the first,
+        - img [ref=e11349]
+        - text: ". Substituting:"
+      - img [ref=e11375]
+      - paragraph [ref=e11428]:
+        - text: The first term on the left is
+        - img [ref=e11430]
+        - text: ", so"
+      - img [ref=e11441]
+      - paragraph [ref=e11487]: giving
+      - img [ref=e11489]
+      - paragraph [ref=e11518]:
+        - text: So the Dirac point is at
+        - img [ref=e11520]
+        - text: ", in agreement with the table above. (The other Dirac point"
+        - img [ref=e11573]
+        - text: is the other solution of
+        - img [ref=e11587]:
+          - link [ref=e11590] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-11-graphene-fk0"
+        - text: ", at"
+        - img [ref=e11599]
+        - text: .)
+      - paragraph [ref=e11625]:
+        - text: Near the Dirac point, expand
+        - img [ref=e11627]
+        - text: with
+        - img [ref=e11647]
+        - text: . The leading behaviour of
+        - img [ref=e11672]
+        - text: is linear in
+        - img [ref=e11685]
+        - text: ":"
+      - img [ref=e11692]:
+        - generic [ref=e11696]:
+          - img [ref=e11697]
+          - img [ref=e11751]
+      - paragraph [ref=e11760]: giving the linear dispersion
+      - img [ref=e11762]:
+        - generic [ref=e11766]:
+          - img [ref=e11767]
+          - img [ref=e11839]
+      - paragraph [ref=e11848]:
+        - text: "The Fermi velocity is determined by the magnitude of the nearest- neighbour hopping and the C–C distance: with"
+        - img [ref=e11850]
+        - text: eV and
+        - img [ref=e11867]
+        - text: Å,
+        - img [ref=e11880]
+        - text: m/s.
+      - blockquote [ref=e11902]:
+        - paragraph [ref=e11903]:
+          - strong [ref=e11904]: Note.
+          - text: The Dirac cone is at the
+          - img [ref=e11906]
+          - text: point of the hexagonal BZ, which is the
+          - strong [ref=e11911]: corner
+          - text: of the hexagon (the meeting point of two edges). The Brillouin zone of graphene has
+          - emphasis [ref=e11912]: six
+          - img [ref=e11914]
+          - text: points (three
+          - img [ref=e11920]
+          - text: and three
+          - img [ref=e11926]
+          - text: ", related by time-reversal and inversion), and each of them hosts a Dirac cone. In the"
+          - emphasis [ref=e11934]: mini
+          - text: BZ (the parallelogram spanned by
+          - img [ref=e11936]
+          - text: and
+          - img [ref=e11946]
+          - text: ") there are only two inequivalent Dirac points:"
+          - img [ref=e11956]
+          - text: and
+          - img [ref=e11962]
+          - text: .
+      - heading "11.9.5 The Python implementation" [level=3] [ref=e11970]
+      - paragraph [ref=e11971]:
+        - text: The full Python script is at
+        - code [ref=e11972]: dft_notes/python_codes/chapter_11/01-graphene-bands.py
+        - text: . It samples the path
+        - img [ref=e11974]
+        - text: –
+        - img [ref=e11980]
+        - text: –
+        - img [ref=e11986]
+        - text: –
+        - img [ref=e11992]
+        - text: "at 200 points per segment, computes the tight-binding bands at each, and plots them on a single axis. The script is short and runs in well under a second:"
+      - code [ref=e12000]: "# dft_notes/python_codes/chapter_11/01-graphene-bands.py import os import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt # --- Parameters -------------------------------------------------------- A = 2.46 # lattice constant, Angstrom T = -2.8 # nearest-neighbour hopping, eV N = 200 # k-points per segment # --- High-symmetry points (Cartesian, in 1/A) -------------------------- b1 = np.array([1.0, 0.0]) / A b2 = np.array([0.5, np.sqrt(3.0) / 2.0]) / A Gamma = np.array([0.0, 0.0]) M = np.array([0.5, 0.0]) / A K = np.array([1.0/3.0, 1.0/np.sqrt(3.0)]) / A # --- k-path ------------------------------------------------------------ def kpath(points, n): segs, dseg = [], [0.0] for i in range(len(points) - 1): s = np.linspace(points[i], points[i + 1], n, endpoint=(i == len(points) - 2)) if i > 0: s = s[1:] d = np.linalg.norm(np.diff(s, axis=0), axis=1) segs.append(s); dseg.extend(dseg[-1] + np.cumsum(d).tolist()) return np.vstack(segs), np.array(dseg) path_pts = [Gamma, M, K, Gamma] kpts, dist = kpath(path_pts, N) kxa = kpts[:, 0] * A kya = kpts[:, 1] * A # --- Tight-binding bands ----------------------------------------------- f = T * (1.0 + np.exp(1j * 2np.pi (kxa + kya/np.sqrt(3.0))) + np.exp(1j * 2*np.pi kxa)) eps_p = np.abs(f) eps_p_s = -np.abs(f) # --- Plot -------------------------------------------------------------- fig, ax = plt.subplots(figsize=(7.5, 5.0)) ax.plot(dist, eps_p_s, color=\"#1f6feb\", lw=1.8, label=r'\\$\\pi\\$') ax.plot(dist, eps_p, color=\"#d97757\", lw=1.8, label=r'\\$\\pi^*\\$') ax.axhline(0.0, color=\"#3d3d3a\", lw=0.6, ls=\"--\", alpha=0.6) for d, lab in zip([0.0, np.linalg.norm(M - Gamma) * A, np.linalg.norm(K - M) * A + np.linalg.norm(M - Gamma) * A, dist[-1]], [r\"$\\Gamma$\", \"$M$\", \"$K$\", r\"$\\Gamma$\"]): ax.axvline(d, color=\"#3d3d3a\", lw=0.6, ls=\":\", alpha=0.5) ax.text(d, ax.get_ylim()[1] * 0.95, lab, ha=\"center\", va=\"top\") ax.set_xlabel(\"k-path\") ax.set_ylabel(r\"$\\varepsilon_n(\\mathbf k)$ (eV)\") ax.set_title(r\"Graphene tight-binding: $\\pi$ and $\\pi^*$ bands\") ax.legend(frameon=False) ax.grid(alpha=0.3) fig.tight_layout() # --- Save -------------------------------------------------------------- here = os.path.dirname(os.path.abspath(__file__)) plots_dir = os.path.join(here, \"plots\") os.makedirs(plots_dir, exist_ok=True) out = os.path.join(plots_dir, \"01-graphene-bands.png\") fig.savefig(out, dpi=150, bbox_inches=\"tight\") print(f\"Wrote {out}\")"
+      - paragraph [ref=e12001]:
+        - text: The script uses the function
+        - code [ref=e12002]: kpath
+        - text: ’ of section 11.2.6, computes
+        - img [ref=e12004]
+        - text: on the sampled k-points, and plots
+        - img [ref=e12017]
+        - text: along
+        - img [ref=e12037]
+        - text: –
+        - img [ref=e12043]
+        - text: –
+        - img [ref=e12049]
+        - text: –
+        - img [ref=e12055]
+        - text: . The output is the figure below.
+      - table [ref=e12060]:
+        - rowgroup [ref=e12061]:
+          - row "![Tight-binding band structure of graphene along the path – – – in the hexagonal Brillouin zone, with a single orbital per carbon and nearest-neighbour hopping eV. The lower blue band is the bonding band, the upper orange band is the antibonding band. The two bands touch at the point (the Dirac point), with linear dispersion and Fermi velocity $v_F = 3 t a / 2\\hbar \\approx 9.4 \\times 10^5 \\varepsilon = 0$ (dashed line); graphene is a zero-gap semiconductor.](/DFT-notes/dft_notes/python_codes/chapter_11/plots/01-graphene-bands.png)" [ref=e12062]:
+            - cell "![Tight-binding band structure of graphene along the path – – – in the hexagonal Brillouin zone, with a single orbital per carbon and nearest-neighbour hopping eV. The lower blue band is the bonding band, the upper orange band is the antibonding band. The two bands touch at the point (the Dirac point), with linear dispersion and Fermi velocity $v_F = 3" [ref=e12063]:
+              - text: "![Tight-binding band structure of graphene along the path"
+              - img [ref=e12065]
+              - text: –
+              - img [ref=e12071]
+              - text: –
+              - img [ref=e12077]
+              - text: –
+              - img [ref=e12083]
+              - text: in the hexagonal Brillouin zone, with a single
+              - img [ref=e12089]
+              - text: orbital per carbon and nearest-neighbour hopping
+              - img [ref=e12098]
+              - text: eV. The lower blue band is the bonding
+              - img [ref=e12112]
+              - text: band, the upper orange band is the antibonding
+              - img [ref=e12118]
+              - text: band. The two bands touch at the
+              - img [ref=e12127]
+              - text: point (the Dirac point), with linear dispersion and Fermi velocity $v_F = 3
+            - cell "t" [ref=e12132]
+            - cell "a / 2\\hbar \\approx 9.4 \\times 10^5 \\varepsilon = 0$ (dashed line); graphene is a zero-gap semiconductor.](/DFT-notes/dft_notes/python_codes/chapter_11/plots/01-graphene-bands.png)" [ref=e12133]:
+              - text: a / 2\hbar \approx 9.4 \times 10^5
+              - img [ref=e12135]
+              - text: \varepsilon = 0$ (dashed line); graphene is a zero-gap semiconductor.](/DFT-notes/dft_notes/python_codes/chapter_11/plots/01-graphene-bands.png)
+      - paragraph [ref=e12181]:
+        - emphasis [ref=e12182]: Figure 1.
+        - text: Tight-binding band structure of graphene along the path
+        - img [ref=e12184]
+        - text: –
+        - img [ref=e12190]
+        - text: –
+        - img [ref=e12196]
+        - text: –
+        - img [ref=e12202]
+        - text: ", computed by the script"
+        - code [ref=e12207]: dft_notes/python_codes/chapter_11/01-graphene-bands.py
+        - text: . The two bands touch at the
+        - img [ref=e12209]
+        - text: point with a linear, massless dispersion.
+      - heading "11.9.6 What the plot shows" [level=3] [ref=e12214]
+      - paragraph [ref=e12215]: "Three features dominate the figure:"
+      - list [ref=e12216]:
+        - listitem [ref=e12217]:
+          - strong [ref=e12218]: Bandwidth.
+          - text: The bandwidth of the
+          - img [ref=e12220]
+          - text: –
+          - img [ref=e12226]
+          - text: pair is
+          - img [ref=e12235]
+          - text: eV — a wide band, characteristic of the delocalised
+          - img [ref=e12256]
+          - text: system of graphene.
+        - listitem [ref=e12261]:
+          - strong [ref=e12262]:
+            - text: Linear dispersion at
+            - img [ref=e12264]
+            - text: .
+          - text: Near the
+          - img [ref=e12270]
+          - text: point, the upper and lower bands approach each other linearly. The slope at
+          - img [ref=e12276]
+          - text: is
+          - img [ref=e12282]
+          - text: "eV·Å in the figure. Converting to a Fermi velocity:"
+          - img [ref=e12314]
+          - text: m/s, close to the experimental
+          - img [ref=e12361]
+          - text: m/s.
+        - listitem [ref=e12376]:
+          - strong [ref=e12377]:
+            - text: Van Hove singularity at
+            - img [ref=e12379]
+            - text: .
+          - text: The
+          - img [ref=e12385]
+          - text: band has a
+          - emphasis [ref=e12390]: saddle point
+          - text: at
+          - img [ref=e12392]
+          - text: (the dispersion is a maximum along
+          - img [ref=e12398]
+          - text: –
+          - img [ref=e12404]
+          - text: and a minimum along
+          - img [ref=e12410]
+          - text: –
+          - img [ref=e12416]
+          - text: ). The DOS diverges logarithmically at the saddle energy
+          - img [ref=e12422]
+          - text: (about
+          - img [ref=e12436]
+          - text: eV in the figure), and the band structure shows a clear flat region at the
+          - img [ref=e12446]
+          - text: point.
+      - blockquote [ref=e12451]:
+        - paragraph [ref=e12452]:
+          - strong [ref=e12453]: Reading note.
+          - text: The script’s
+          - img [ref=e12455]
+          - text: uses the
+          - emphasis [ref=e12467]: convention
+          - img [ref=e12469]
+          - text: with
+          - img [ref=e12530]
+          - text: in units of
+          - img [ref=e12548]
+          - text: . The factor of
+          - img [ref=e12554]
+          - text: in the exponentials converts the dimensionless
+          - img [ref=e12562]
+          - text: to the correct phase. An equivalent form is
+          - img [ref=e12574]
+          - text: ", which makes the real-space structure more transparent."
+      - heading "11.10 Workflow diagram" [level=2] [ref=e12645]
+      - paragraph [ref=e12646]: The end-to-end workflow of a band-structure calculation is summarised below.
+      - figure [ref=e12648]:
+        - code [ref=e12649]:
+          - document [ref=e12650]:
+            - generic [ref=e12662]:
+              - generic [ref=e12668]:
+                - text: Crystal structure
+                - generic [ref=e12669]:
+                  - text: lattice, atoms,
+                  - text: magnetic order
+              - generic [ref=e12675]:
+                - text: Relax ionic positions
+                - text: chapter 09
+              - generic [ref=e12681]:
+                - text: Converge E_cut,
+                - text: k-mesh, smearing
+              - generic [ref=e12687]:
+                - text: SCF calculation
+                - generic [ref=e12688]:
+                  - text: on uniform
+                  - text: MP mesh
+              - generic [ref=e12694]:
+                - text: Self-consistent
+                - text: ρ, V_eff
+              - generic [ref=e12700]:
+                - text: Band structure
+                - text: εₙ(k) on
+                - text: k-path
+              - generic [ref=e12706]:
+                - text: DOS g(E)
+                - text: on MP mesh
+              - generic [ref=e12712]:
+                - text: Projected DOS
+                - text: "g_{a,ℓ}(E)"
+              - generic [ref=e12718]:
+                - text: Fermi surface
+                - text: 3-D isosurface
+              - generic [ref=e12724]:
+                - text: "Analyse:"
+                - text: band character,
+                - text: effective mass,
+                - text: spin–orbit split
+              - generic [ref=e12730]:
+                - text: Plots, tables,
+                - text: interpretation
+        - button "Download this diagram as a PNG" [ref=e12731] [cursor=pointer]:
+          - img [ref=e12732]
+          - generic [ref=e12735]: Download PNG
+      - paragraph [ref=e12736]:
+        - text: "The central column is the SCF: a converged density and effective potential on a uniform MP mesh. The four post-processing outputs (band structure, total DOS, projected DOS, Fermi surface) are"
+        - emphasis [ref=e12737]: linear
+        - text: "in the converged potential: they do not require a new SCF. The “Analyse” box is the human (or machine-learning) reader extracting physics — band character, effective masses, spin–orbit splittings, Fermi-surface topology — from the four compressed representations of the band structure."
+      - blockquote [ref=e12738]:
+        - paragraph [ref=e12739]:
+          - strong [ref=e12740]: Note.
+          - text: In a high-throughput calculation (e.g. the Materials Project), the same SCF is reused for
+          - emphasis [ref=e12741]: all four
+          - text: post-processing steps. In a high-accuracy calculation on a single material, the post-processing steps may be re-done on denser k-meshes than the SCF, with
+          - img [ref=e12743]
+          - text: adjusted to match the SCF value.
+      - heading "11.11 Problems" [level=2] [ref=e12751]
+      - group [ref=e12752]:
+        - generic "▸ Problem 1 (easy) — DOS of a 1-D free electron gas" [ref=e12753] [cursor=pointer]
+        - text: "For a 1-D free electron gas of length with periodic boundary conditions, the single-particle energies are with the spin degeneracy giving a factor of 2. Show that the density of states (per unit length) is You may use the *semiclassical* argument: the number of states with is (factor of 2 for the two spin states and the two directions), and differentiate with respect to ."
+      - group [ref=e12754]:
+        - generic "▸ Show answer" [ref=e12755] [cursor=pointer]
+        - text: "**Setup.** For a 1-D system of length with periodic boundary conditions, the allowed wavevectors are with . The density of states in -space is per -point (one -point per interval ). The factor of 2 for spin gives states per unit . **Counting states.** The number of states with wavevector in is (The factor of 2 is for the two spin states; the factor of is the -space density of states per spin.) **Converting to energy.** The free-electron energy is Differentiating with respect to , **The DOS.** The number of states with energy is The DOS (number of states per unit length per unit energy) is the derivative: So the 1-D free-electron DOS is This is a **divergent** function as — a 1-D free electron has a divergent density of states at the bottom of the band, in contrast to the 3-D free electron (which has vanishing at the band bottom) and the 2-D free electron (which has a *constant* DOS). The divergence reflects the van Hove singularity at the band edge: the band has a minimum at , and the dispersion is quadratic in 1-D, giving a 1/ divergence."
+      - group [ref=e12756]:
+        - generic "▸ Problem 2 (medium) — Effective mass at a band extremum" [ref=e12757] [cursor=pointer]
+        - text: "Near a non-degenerate band extremum at with energy , the band energy has a Taylor expansion where is the Hessian of the band at . 1. Show that the **effective mass tensor** defined by makes the band look like a free-electron band with anisotropic mass: i.e. that in the *diagonal* basis where is a scalar. 2. For silicon's conduction-band minimum near (a so-called \" minimum\"), the effective mass tensor in the cubic axes has the form with (longitudinal, along – ) and (transverse, perpendicular to it). Compute the **density-of-states effective mass** and the **conductivity effective mass** defined by ."
+      - group [ref=e12758]:
+        - generic "▸ Show answer" [ref=e12759] [cursor=pointer]
+        - text: "**Part 1.** The Hessian is a real symmetric matrix, so it can be diagonalised by an orthogonal transformation: with diagonal and orthogonal. In the rotated basis , Define (the principal effective masses). Then This is the dispersion of a free particle with *anisotropi`c*' mass: the energy depends on separately, with effective masses along the three principal axes. The isotropic case gives the familiar . **Part 2.** The DOS effective mass is the geometric mean of the three principal masses: Plugging in the numbers: This is the effective mass that controls the electronic specific heat and the Pauli susceptibility of doped silicon. The conductivity effective mass is the harmonic mean: so This is the effective mass that controls the Drude conductivity of doped silicon (a longitudinal mass enters the conductivity with weight 1/3, a transverse mass with weight 2/3 because there are two transverse directions). Note that in this case, because the conductivity weights the lighter transverse mass more heavily."
+      - group [ref=e12760]:
+        - generic "▸ Problem 3 (hard) — Tight-binding band structure of graphene" [ref=e12761] [cursor=pointer]
+        - text: Derive the tight-binding band structure of graphene starting from the two-atom basis and a single orbital per atom. Use the convention - primitive vectors and , - basis vectors and , - nearest-neighbour hoppings from A to the three B neighbours at , , . 1. Write down the Bloch Hamiltonian . 2. Compute its eigenvalues. Show that they touch at the ** point** . 3. Expand to first order in . Show that the resulting low-energy Hamiltonian is proportional to — the 2-D Dirac Hamiltonian. 4. Show that the **Fermi velocity** is . Use eV and Å to compute in m/s.
+      - group [ref=e12762]:
+        - generic "▸ Show answer" [ref=e12763] [cursor=pointer]
+        - text: "**Part 1.** The Bloch Hamiltonian is the matrix with the diagonal elements set to (we measure energies from the centre of the – pair), and This is equation of section 11.9.2. **Part 2.** The eigenvalues of the matrix are The two bands touch when , i.e. when Setting and (modulo ) and solving for the Cartesian gives as the ** point** in the BZ. The other solution of the same equation (modulo reciprocal-lattice vectors) is the inequivalent ** ** point at . **Part 3.** Expand around : The first term is (the bands touch here). The gradient is At , and . Write the primitive vectors in Cartesian form: and . Then Compute the components: - -component: . With and : . So the -component is . - -component: Hmm, let me redo this more carefully. We have with and . Then and . But actually, looking at the more standard convention with the : , and the structure factor is depending on which convention. We can use any of the three phase conventions; the spectrum is the same. The result is that the linearised Hamiltonian near takes the form which is the **2-D massless Dirac Hamiltonian** in the *chiral* subspace spanned by the two orbitals of the unit cell. The Pauli matrices here act on the *sublattice* pseudospin (A vs. B), not on the real electron spin. The matrix would correspond to a sublattice mass term — this is the **Haldane mass**, which is forbidden by inversion symmetry in pristine graphene but allowed when inversion is broken (e.g. by a substrate or by the application of a perpendicular electric field). **Part 4.** The magnitude of the linear coefficient in the expansion gives the Fermi velocity. Computing explicitly (the details are in section 11.9.4): Plugging in the numbers: The numerator is eV·Å J·m J·m. The denominator is J·s. So Let me redo with care. . eV J J. Å m. J·s. So The accepted experimental value is m/s, so the tight-binding estimate is about 50 % too high — a -only tight-binding model with a single hopping is not exact. Adding a next-nearest-neighbour hopping (which shifts the bands rigidly in energy but does not affect the linear dispersion) and a third-nearest-neighbour hopping (which renormalises by about 20 %) brings the calculated into closer agreement with experiment. The full first-principles value (LDA, GGA) is m/s, slightly *below* the experimental value."
+      - heading "11.12 What we left out" [level=2] [ref=e12764]
+      - paragraph [ref=e12765]:
+        - text: This chapter introduced the Kohn–Sham band structure, the density of states, the Fermi surface, effective masses, band character, and spin–orbit effects. A non-exhaustive list of the topics we have
+        - emphasis [ref=e12766]: not
+        - text: "covered:"
+      - list [ref=e12767]:
+        - listitem [ref=e12768]:
+          - strong [ref=e12769]: Wannier functions.
+          - text: The Bloch functions
+          - img [ref=e12771]
+          - text: are not the only complete basis of the occupied subspace. The
+          - strong [ref=e12790]: Wannier functions
+          - img [ref=e12792]
+          - text: ", obtained by Fourier-transforming the Bloch functions over the BZ, are localised in real space (centred on the unit cell at"
+          - img [ref=e12812]
+          - text: ) and form the natural basis for tight-binding models, chemical-bonding analysis, and linear- scaling DFT. The Wannier functions of a set of isolated bands are
+          - emphasis [ref=e12818]: not
+          - text: "unique: a"
+          - img [ref=e12820]
+          - text: gauge freedom allows any unitary rotation among the
+          - img [ref=e12832]
+          - text: bands. Maximally-localised Wannier functions (MLWFs) are obtained by choosing the gauge that minimises the spread
+          - img [ref=e12838]
+          - text: . We will use Wannier functions in the
+          - emphasis [ref=e12919]: Wannier-interpolation
+          - text: of band structures and the construction of model tight-binding Hamiltonians.
+        - listitem [ref=e12920]:
+          - strong [ref=e12921]: Berry phase and the modern theory of polarisation.
+          - text: The integral of
+          - img [ref=e12923]
+          - text: around a closed loop in the BZ is the
+          - strong [ref=e12960]: Berry phase
+          - text: of the band, a gauge-invariant quantity that encodes geometric information about the Bloch bundle. The modern theory of polarisation (King-Smith & Vanderbilt 1993; Resta 1994) shows that the
+          - emphasis [ref=e12961]: spontaneous polarisation
+          - text: of a crystal is a Berry phase of the occupied Bloch bundle, not a dipole moment of the charge density. We will not derive this here.
+        - listitem [ref=e12962]:
+          - strong [ref=e12963]: Chern number and the quantum Hall effect.
+          - text: The integral of the Berry curvature
+          - img [ref=e12965]
+          - text: over the 2-D BZ is the
+          - strong [ref=e13043]: Chern number
+          - img [ref=e13045]
+          - text: ", a topological invariant that classifies the band. Bands with"
+          - img [ref=e13054]
+          - text: cannot be connected to
+          - img [ref=e13067]
+          - text: bands without closing the band gap; the quantised Hall conductivity of a 2-D electron gas is
+          - img [ref=e13080]
+          - text: . The Chern number is the parent of modern “topological band theory” — topological insulators, Chern insulators, Weyl semimetals, and the entire
+          - img [ref=e13118]
+          - text: /
+          - img [ref=e13128]
+          - text: /
+          - img [ref=e13135]
+          - text: classification scheme for gapped and gapless band structures.
+        - listitem [ref=e13141]:
+          - strong [ref=e13142]: Anomalous Hall conductivity and the orbital magnetisation.
+          - text: The integral of the Berry curvature over the
+          - emphasis [ref=e13143]: "occupie`d"
+          - text: ’ bands gives the
+          - strong [ref=e13144]: intrinsic anomalous Hall conductivity
+          - text: of a magnetic metal; the integral of the orbital magnetic moment of the occupied Bloch states gives the
+          - strong [ref=e13145]: orbital magnetisation
+          - text: . Both are bulk, ground-state properties of the band structure that depend only on the
+          - emphasis [ref=e13146]: geometry
+          - text: of the Bloch bundle — not on the disorder or scattering in the sample.
+        - listitem [ref=e13147]:
+          - strong [ref=e13148]: Band-structure interpolation by Wannier functions.
+          - text: Given a set of MLWFs, the band structure of a
+          - emphasis [ref=e13149]: finer
+          - text: k-mesh (or of a supercell) can be reconstructed by Wannier interpolation. The cost of Wannier interpolation is
+          - emphasis [ref=e13150]: linear
+          - text: in the number of Wannier functions and
+          - emphasis [ref=e13151]: independent
+          - text: of the plane-wave cutoff, making it possible to compute fine band structures, Fermi surfaces, and anomalous Hall conductivities on dense meshes at a cost much lower than a direct DFT calculation.
+        - listitem [ref=e13152]:
+          - strong [ref=e13153]:
+            - text: "Beyond LDA/GGA:"
+            - img [ref=e13155]
+            - text: and BSE.
+          - text: The Kohn–Sham eigenvalues of LDA and GGA are not quasiparticle energies; the “band-gap problem” is a 30–50 % underestimate of the gap and a larger misplacement of the semicore
+          - img [ref=e13169]
+          - text: states. The
+          - img [ref=e13175]
+          - text: approximation (Hedin’s
+          - img [ref=e13189]
+          - text: self-energy, with the DFT orbitals as a starting point) corrects the band gap and improves the band positions, at a cost roughly
+          - img [ref=e13197]
+          - text: the LDA calculation. The Bethe–Salpeter equation (BSE) on top of
+          - img [ref=e13209]
+          - text: is the standard approach to optical absorption and excitons in solids.
+      - blockquote [ref=e13222]:
+        - paragraph [ref=e13223]:
+          - text: "Next:"
+          - link "chapter 12" [ref=e13224] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: "— TDDFT: time-dependent density-functional theory, the Runge–Gross theorem, linear response, and the calculation of optical absorption spectra."
+  - contentinfo [ref=e13225]:
+    - generic [ref=e13226]:
+      - generic [ref=e13227]:
+        - img [ref=e13228]
+        - generic [ref=e13232]: DFT Notes
+        - paragraph [ref=e13233]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e13234]:
+        - generic [ref=e13235]:
+          - heading "Project" [level=3] [ref=e13236]
+          - list [ref=e13237]:
+            - listitem [ref=e13238]:
+              - link "Chapters map" [ref=e13239] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e13240]:
+              - link "Python codes" [ref=e13241] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e13242]:
+              - link "Contributing" [ref=e13243] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e13244]:
+              - link "Security" [ref=e13245] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e13246]:
+              - link "Design spec" [ref=e13247] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e13248]:
+              - link "GitHub ↗" [ref=e13249] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e13250]:
+          - heading "Built with" [level=3] [ref=e13251]
+          - list [ref=e13252]:
+            - listitem [ref=e13253]:
+              - link "Jekyll" [ref=e13254] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e13255]:
+              - link "MathJax 3" [ref=e13256] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e13257]:
+              - link "Mermaid" [ref=e13258] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e13259]:
+              - link "chenglou/pretext" [ref=e13260] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e13261]:
+              - link "Google Fonts" [ref=e13262] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e13263]:
+          - heading "Legal" [level=3] [ref=e13264]
+          - list [ref=e13265]:
+            - listitem [ref=e13266]:
+              - link "MIT License" [ref=e13267] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e13268]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e13270]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

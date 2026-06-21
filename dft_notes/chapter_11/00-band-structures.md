@@ -106,11 +106,9 @@ crystal it is the sum over bands of a Brillouin-zone integral of a
 Dirac delta:
 
 $$
-\begin{equation}
 \label{eq:ch-11-dos}
 g(E) \;=\; \frac{1}{V_\text{BZ}} \sum_n \int_\text{BZ} d\mathbf k \;
          \delta\Bigl(E - \varepsilon_{n\mathbf k}\Bigr) ,
-\end{equation}
 $$
 
 where $V_\text{BZ} = (2\pi)^3 / V_\text{cell}$ is the volume of the
@@ -145,12 +143,10 @@ The **Fermi surface** is the set of points in the Brillouin zone at
 which the band energy equals the Fermi energy:
 
 $$
-\begin{equation}
 \label{eq:ch-11-fs}
 \text{FS} \;=\; \Bigl\lbrace \mathbf k \in \text{BZ} \;:\;
                 \varepsilon_{n\mathbf k} = \varepsilon_F
                 \text{ for some band } n \Bigr\rbrace.
-\end{equation}
 $$
 
 For a metal, this is a 2-D surface in the 3-D Brillouin zone (or, in
@@ -231,10 +227,8 @@ the Setyawan–Curtarolo convention (which is what every modern band-
 structure database uses) is the k-path
 
 $$
-\begin{equation}
 \label{eq:ch-11-fcc-path}
 \Gamma \;\to\; X \;\to\; W \;\to\; K \;\to\; \Gamma \;\to\; L \;\to\; U \;\to\; W \;\to\; L \;\to\; K,
-\end{equation}
 $$
 
 sometimes abbreviated as $\Gamma$–$X$–$W$–$K$–$\Gamma$–$L$–$U$–$W$–$L$–$K$
@@ -306,10 +300,8 @@ preserved.
 For the body-centred cubic lattice the standard path is
 
 $$
-\begin{equation}
 \label{eq:ch-11-bcc-path}
 \Gamma \;\to\; H \;\to\; N \;\to\; \Gamma \;\to\; P \;\to\; H,
-\end{equation}
 $$
 
 with the high-symmetry points (in units of $2\pi/a$)
@@ -332,10 +324,8 @@ For the hexagonal lattice (graphene, hexagonal boron nitride, hcp
 metals) the standard path is
 
 $$
-\begin{equation}
 \label{eq:ch-11-hex-path}
 \Gamma \;\to\; M \;\to\; K \;\to\; \Gamma \;\to\; A \;\to\; L \;\to\; H \;\to\; A,
-\end{equation}
 $$
 
 where
@@ -475,21 +465,17 @@ A better method is to replace the delta function in
 common choice is the **Gaussian** of width $\sigma$:
 
 $$
-\begin{equation}
 \label{eq:ch-11-gaussian-dos}
 \delta_\sigma(E - \varepsilon_{n\mathbf k}) \;=\;
    \frac{1}{\sigma \sqrt{2\pi}} \,
    \exp\!\left[-\frac{(E - \varepsilon_{n\mathbf k})^2}{2 \sigma^2}\right] .
-\end{equation}
 $$
 
 The DOS is then
 
 $$
-\begin{equation}
 \label{eq:ch-11-gaussian-dos-sum}
 g(E) \;=\; \frac{1}{N_\mathbf k} \sum_{n, \mathbf k} \delta_\sigma(E - \varepsilon_{n\mathbf k}) .
-\end{equation}
 $$
 
 The Gaussian is positive and normalised, so the resulting $g(E)$ is
@@ -506,12 +492,10 @@ adding higher-order Hermite corrections that improve the systematic
 behaviour of the total energy at small $\sigma$:
 
 $$
-\begin{equation}
 \label{eq:ch-11-mp-dos}
 \delta_\sigma^\text{MP}(E) \;=\;
    \sum_{l=0}^{N_\text{MP}} A_l \, H_{2l}\!\left(\frac{E}{\sigma}\right) \,
    \frac{1}{\sigma\sqrt{2\pi}} e^{-E^2 / 2\sigma^2} .
-\end{equation}
 $$
 
 The $l = 0$ term is the Gaussian.  The coefficients $A_l$ are
@@ -547,12 +531,10 @@ tetrahedron with vertex energies $\varepsilon_1, \dots, \varepsilon_4$
 is, by the **Lehmann–Taut formula**,
 
 $$
-\begin{equation}
 \label{eq:ch-11-lt}
 \int_T \theta(\varepsilon_F - \varepsilon(\mathbf k)) d\mathbf k
    = \frac{V_T}{4} \sum_{i=1}^{4} \theta(\varepsilon_F - \varepsilon_i) \,
      \frac{(\varepsilon_F - \varepsilon_i)^3}{\prod_{j \ne i} (\varepsilon_i - \varepsilon_j)} .
-\end{equation}
 $$
 
 The DOS is obtained by differentiating the integrated DOS with
@@ -579,12 +561,10 @@ DOS** (pDOS) onto an atomic orbital $\chi_\mu^{(a)}$ (atomic index
 $a$, orbital index $\mu$) is
 
 $$
-\begin{equation}
 \label{eq:ch-11-pdos}
 g_\mu(E) \;=\; \frac{1}{V_\text{BZ}} \sum_n \int_\text{BZ} d\mathbf k \;
    \Bigl| \langle \chi_\mu^{(a)} \mid \psi_{n\mathbf k} \rangle \Bigr|^2 \,
    \delta\Bigl(E - \varepsilon_{n\mathbf k}\Bigr) .
-\end{equation}
 $$
 
 The square of the projection amplitude
@@ -595,10 +575,8 @@ is the sum over the $(2\ell+1)$ $m$-degenerate orbitals of the
 shell:
 
 $$
-\begin{equation}
 \label{eq:ch-11-pdos-shell}
 g_{a,\ell}(E) \;=\; \sum_{m=-\ell}^{\ell} g_{a,\ell,m}(E) .
-\end{equation}
 $$
 
 A pDOS plot shows $g_{a,\ell}(E)$ for several atoms and angular
@@ -633,12 +611,10 @@ DOS weighted by the probability density of the band at a real-space
 point $\mathbf r$:
 
 $$
-\begin{equation}
 \label{eq:ch-11-ldos}
 g(\mathbf r, E) \;=\; \sum_n \int_\text{BZ} d\mathbf k \;
    \Bigl| \psi_{n\mathbf k}(\mathbf r) \Bigr|^2 \,
    \delta\Bigl(E - \varepsilon_{n\mathbf k}\Bigr) .
-\end{equation}
 $$
 
 A 2-D plot of $g(\mathbf r, E_F)$ on a surface is the standard
@@ -782,11 +758,9 @@ gradient of the band energy with respect to $\mathbf k$, divided by
 $\hbar$:
 
 $$
-\begin{equation}
 \label{eq:ch-11-fermi-velocity}
 \mathbf v_F(\mathbf k) \;=\; \frac{1}{\hbar} \nabla_\mathbf k
                           \varepsilon_{n\mathbf k}\bigg|_{\varepsilon = \varepsilon_F} .
-\end{equation}
 $$
 
 The Fermi velocity is the *group velocity* of a Bloch wave packet
@@ -805,12 +779,10 @@ The Fermi velocity is most often evaluated by finite differences
 on the k-mesh:
 
 $$
-\begin{equation}
 \label{eq:ch-11-fermi-velocity-fd}
 v_{F,i}(\mathbf k) \;\approx\; \frac{1}{\hbar} \,
    \frac{\varepsilon_{n, \mathbf k + \Delta k_i} - \varepsilon_{n, \mathbf k - \Delta k_i}}
         {2 \Delta k_i} ,
-\end{equation}
 $$
 
 where $\Delta k_i$ is a small shift in the $i$-th Cartesian
@@ -841,11 +813,9 @@ The spin–orbit coupling modifies the Kohn–Sham Hamiltonian by
 adding a term
 
 $$
-\begin{equation}
 \label{eq:ch-11-soc}
 \hat H_\text{SO} \;=\; \frac{1}{2} \boldsymbol\sigma \cdot
                      \Bigl(\nabla V \times \hat{\mathbf p}\Bigr) ,
-\end{equation}
 $$
 
 where $\boldsymbol\sigma = (\sigma_x, \sigma_y, \sigma_z)$ are the
@@ -875,10 +845,8 @@ $\mathbf E = -\nabla V / e$ perpendicular to the surface.  The
 spin–orbit Hamiltonian reduces to
 
 $$
-\begin{equation}
 \label{eq:ch-11-rashba}
 \hat H_\text{R} \;=\; \alpha_R \, (\mathbf E \times \mathbf k) \cdot \boldsymbol\sigma ,
-\end{equation}
 $$
 
 with $\alpha_R$ the **Rashba coefficient** (proportional to the
@@ -887,10 +855,8 @@ The eigenvalues of $\hat H_\text{R}$ for a free-electron dispersion
 are
 
 $$
-\begin{equation}
 \label{eq:ch-11-rashba-eigen}
 \varepsilon_\pm(\mathbf k) \;=\; \frac{\hbar^2 k^2}{2 m} \;\pm\; \alpha_R |k| ,
-\end{equation}
 $$
 
 where $k = |\mathbf k|$ in the 2-D plane.  The "+" and "−" branches
@@ -926,11 +892,9 @@ $\text{Sb}_2\text{Te}_3$.
 The surface-state dispersion is the **2-D Dirac equation**:
 
 $$
-\begin{equation}
 \label{eq:ch-11-ti-surface}
 \hat H_\text{surf} \;=\; v_F (\boldsymbol\sigma \times \mathbf k) \cdot \hat{\mathbf z}
                      \;=\; v_F (k_y \sigma_x - k_x \sigma_y) ,
-\end{equation}
 $$
 
 where $v_F \sim 5 \times 10^5$ m/s is the surface-state Fermi
@@ -940,10 +904,8 @@ acting on the electron spin, and $\hat{\mathbf z}$ is the surface
 normal.  The eigenvalues are
 
 $$
-\begin{equation}
 \label{eq:ch-11-ti-eigen}
 \varepsilon_\pm(\mathbf k) \;=\; \pm v_F |k| ,
-\end{equation}
 $$
 
 which is a **double cone** in $(k_x, k_y, E)$ space — the famous
@@ -996,19 +958,15 @@ an atomic orbital $\chi_\mu^{(a)}$ is the absolute square of the
 inner product:
 
 $$
-\begin{equation}
 \label{eq:ch-11-proj-amp}
 w_{n\mathbf k, \mu}^{(a)} \;=\; \Bigl| \langle \chi_\mu^{(a)} \mid \psi_{n\mathbf k} \rangle \Bigr|^2 .
-\end{equation}
 $$
 
 The sum over all orbitals of the cell,
 
 $$
-\begin{equation}
 \label{eq:ch-11-proj-sum}
 \sum_{\mu, a} w_{n\mathbf k, \mu}^{(a)} \;=\; 1
-\end{equation}
 $$
 
 (assuming the $\{\chi_\mu^{(a)}\}$ form a complete basis of the
@@ -1021,10 +979,8 @@ In a localised-basis code (where the $\{\chi_\mu^{(a)}\}$ *are* the
 basis), the projection is just the expansion coefficient:
 
 $$
-\begin{equation}
 \label{eq:ch-11-proj-amp-lcao}
 w_{n\mathbf k, \mu}^{(a)} \;=\; |C_{\mu, n\mathbf k}|^2 .
-\end{equation}
 $$
 
 In a plane-wave code the projection is the absolute square of the
@@ -1091,12 +1047,10 @@ tensor**; the inverse effective mass, multiplied by $\hbar^2$, is
 the Hessian of the band:
 
 $$
-\begin{equation}
 \label{eq:ch-11-eff-mass}
 \left( \frac{1}{m^*} \right)_{ij} \;=\;
    \frac{1}{\hbar^2} \frac{\partial^2 \varepsilon_{n\mathbf k}}
                               {\partial k_i \partial k_j} .
-\end{equation}
 $$
 
 The "effective mass" is a *tensor* in general; it is a scalar
@@ -1115,11 +1069,9 @@ to the band in a small energy window around the extremum.  The
 parabolic fit is
 
 $$
-\begin{equation}
 \label{eq:ch-11-parabolic-fit}
 \varepsilon_{n\mathbf k} \;\approx\; \varepsilon_0 \;
                                    + \frac{\hbar^2 k^2}{2 m^*} ,
-\end{equation}
 $$
 
 where $\varepsilon_0$ is the extremum energy, $k$ is the distance
@@ -1135,12 +1087,10 @@ $S_0 = \sum 1 = N$, $S_2 = \sum k_i^2$, $S_4 = \sum k_i^4$,
 $T_0 = \sum \varepsilon_i$, $T_2 = \sum k_i^2 \varepsilon_i$:
 
 $$
-\begin{equation}
 \label{eq:ch-11-eff-mass-parabolic}
 \frac{\hbar^2}{2 m^*} \;=\;
    \frac{S_0 T_2 - S_2 T_0}{S_0 S_4 - S_2^2} , \qquad
 \varepsilon_0 \;=\; \frac{S_4 T_0 - S_2 T_2}{S_0 S_4 - S_2^2} .
-\end{equation}
 $$
 
 The fit is accurate as long as the band is *paraboli`c*' to a good
@@ -1157,11 +1107,9 @@ band depends on the direction in $\mathbf k$-space.  The general
 quadratic fit is
 
 $$
-\begin{equation}
 \label{eq:ch-11-eff-mass-aniso}
 \varepsilon_{n\mathbf k} \;\approx\; \varepsilon_0 \;
    + \frac{1}{2} \sum_{ij} (k - k_0)_i \, H_{ij} \, (k - k_0)_j ,
-\end{equation}
 $$
 
 with $H$ the Hessian of the band at $\mathbf k_0$, a $3 \times 3$
@@ -1182,10 +1130,8 @@ defined by the requirement that the *parabolic-ban`d*' DOS at the
 extremum matches the true DOS:
 
 $$
-\begin{equation}
 \label{eq:ch-11-dos-eff-mass}
 g(E) \;\approx\; g_\text{parab}(E; m^*_\text{DOS}) .
-\end{equation}
 $$
 
 For a 3-D parabolic band,
@@ -1194,10 +1140,8 @@ and the DOS effective mass equals the *geometric mean* of the three
 principal effective masses:
 
 $$
-\begin{equation}
 \label{eq:ch-11-dos-eff-mass-mean}
 m^*_\text{DOS, 3D} \;=\; (m_1 m_2 m_3)^{1/3} .
-\end{equation}
 $$
 
 For a 2-D parabolic band the DOS is *constant* in energy,
@@ -1338,13 +1282,11 @@ The tight-binding band structure on a minimal $\pi$-orbital basis
 (one $p_z$ per carbon) is derived in detail in section 11.9:
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-dispersion}
 \varepsilon_\pm(\mathbf k) \;=\; \pm |f(\mathbf k)| ,
 \qquad
 f(\mathbf k) \;=\; t \Bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
                                  + e^{i \mathbf k \cdot \mathbf a_2} \Bigr) .
-\end{equation}
 $$
 
 The two bands are the $\pi$ (occupied, lower) and $\pi^*$ (empty,
@@ -1516,11 +1458,9 @@ a rhombus containing two carbon atoms; the primitive vectors of the
 direct lattice are
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-a1a2}
 \mathbf a_1 \;=\; a \Bigl(1, 0\Bigr) , \qquad
 \mathbf a_2 \;=\; a \Bigl(\tfrac{1}{2}, \tfrac{\sqrt 3}{2}\Bigr) ,
-\end{equation}
 $$
 
 where $a \approx 2.46\,\text{Å} \approx 4.65\,a_0$ is the
@@ -1530,10 +1470,8 @@ within the cell are the *A* sublattice at the origin and the B
 sublattice at
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-tau}
 \boldsymbol\tau_B \;=\; \Bigl(0, a/\sqrt 3\Bigr) .
-\end{equation}
 $$
 
 The three nearest neighbours of an A atom are
@@ -1551,11 +1489,9 @@ The reciprocal-lattice primitive vectors are obtained from
 $\mathbf a_i \cdot \mathbf b_j = 2\pi \delta_{ij}$:
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-b1b2}
 \mathbf b_1 \;=\; \frac{2\pi}{a} \Bigl(1, -1/\sqrt 3\Bigr) , \qquad
 \mathbf b_2 \;=\; \frac{2\pi}{a} \Bigl(0, 2/\sqrt 3\Bigr) .
-\end{equation}
 $$
 
 The first Brillouin zone is a regular hexagon.  The high-symmetry
@@ -1575,7 +1511,6 @@ sublattice, $|\phi_B\rangle$ on the B sublattice.  The two-atom
 basis gives a $2 \times 2$ Hamiltonian at each $\mathbf k$:
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-hk}
 H(\mathbf k) \;=\;
 \begin{pmatrix}
@@ -1584,7 +1519,6 @@ H(\mathbf k) \;=\;
 \langle \phi_B | \hat H | \phi_A \rangle_\mathbf k
    & \langle \phi_B | \hat H | \phi_B \rangle_\mathbf k
 \end{pmatrix} .
-\end{equation}
 $$
 
 The diagonal elements are equal by sublattice symmetry, and we set
@@ -1592,24 +1526,20 @@ both to zero (this is the convention that puts the Fermi level at
 $E = 0$):
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-diag}
 \langle \phi_A | \hat H | \phi_A \rangle_\mathbf k \;=\;
 \langle \phi_B | \hat H | \phi_B \rangle_\mathbf k \;=\; 0 .
-\end{equation}
 $$
 
 The off-diagonal element is the Bloch sum of the hopping $t$
 between A and B:
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-offdiag}
 \langle \phi_A | \hat H | \phi_B \rangle_\mathbf k
    \;=\; t \Bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
                    + e^{i \mathbf k \cdot \mathbf a_2} \Bigr)
    \;\equiv\; f(\mathbf k) .
-\end{equation}
 $$
 
 The factor of 1 comes from the on-cell neighbour $\boldsymbol\delta_1
@@ -1627,7 +1557,6 @@ lattice and the phase is the same.)
 The $2 \times 2$ Hamiltonian is therefore
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-hk2}
 H(\mathbf k) \;=\;
 \begin{pmatrix}
@@ -1637,7 +1566,6 @@ f^*(\mathbf k) & 0
 \qquad
 f(\mathbf k) \;=\; t \Bigl( 1 + e^{i \mathbf k \cdot \mathbf a_1}
                               + e^{i \mathbf k \cdot \mathbf a_2} \Bigr) .
-\end{equation}
 $$
 
 The off-diagonal complex conjugate is from the Hermiticity of $H$:
@@ -1650,10 +1578,8 @@ sublattices are related by inversion).
 The eigenvalues of \eqref{eq:ch-11-graphene-hk2} are
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-eig}
 \varepsilon_\pm(\mathbf k) \;=\; \pm |f(\mathbf k)| ,
-\end{equation}
 $$
 
 where $|f(\mathbf k)| = \sqrt{f(\mathbf k) f^*(\mathbf k)}$.  The
@@ -1695,10 +1621,8 @@ The two bands $\varepsilon_\pm$ touch when $|f(\mathbf k)| = 0$.  We
 solve $f(\mathbf k) = 0$:
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-fk0}
 1 + e^{i \mathbf k \cdot \mathbf a_1} + e^{i \mathbf k \cdot \mathbf a_2} = 0 .
-\end{equation}
 $$
 
 Multiply by $e^{-i \mathbf k \cdot \mathbf a_1}$:
@@ -1760,21 +1684,17 @@ with $|\mathbf q| \ll |\mathbf k_K|$.  The leading behaviour of
 $f(\mathbf k)$ is linear in $\mathbf q$:
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-dispersion-near-k}
 f(\mathbf k_K + \mathbf q) \;\approx\; \frac{3 t a}{2} (i q_x - q_y) ,
-\end{equation}
 $$
 
 giving the linear dispersion
 
 $$
-\begin{equation}
 \label{eq:ch-11-graphene-linear}
 \varepsilon_\pm(\mathbf k_K + \mathbf q) \;=\; \pm v_F |q| ,
 \qquad
 v_F \;=\; \frac{3 |t| a}{2 \hbar} .
-\end{equation}
 $$
 
 The Fermi velocity is determined by the magnitude of the nearest-

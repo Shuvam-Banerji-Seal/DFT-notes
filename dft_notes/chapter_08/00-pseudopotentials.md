@@ -66,20 +66,16 @@ wavefunction, but with the pseudo-potential $V_{ps,l}$ in place of
 $V_{ae}$:
 
 $$
-\begin{equation}
 \label{eq:ch-08-radial-ps}
 -\frac{1}{2}\frac{d^2 \phi_l}{dr^2} + \left[\frac{l(l+1)}{2r^2} + V_{ps,l}(r)\right]\phi_l(r) = E_l\,\phi_l(r).
-\end{equation}
 $$
 
 Given $\phi_l(r)$ and $E_l$, the pseudo-potential is obtained by
 **inverting** the radial equation:
 
 $$
-\begin{equation}
 \label{eq:ch-08-inversion}
 V_{ps,l}(r) = E_l + \frac{1}{2\,\phi_l(r)}\frac{d^2 \phi_l}{dr^2} - \frac{l(l+1)}{2r^2}.
-\end{equation}
 $$
 
 For $r \ge r_c$, $V_{ps,l}(r)$ is set equal to $V_{ae}(r)$ so that
@@ -154,10 +150,8 @@ will reproduce the all-electron valence eigenvalue. This is the
 **norm-conservation condition**:
 
 $$
-\begin{equation}
 \label{eq:ch-08-norm-conservation}
 \int_0^{r_c} \phi_l^2(r)\,dr = \int_0^{r_c} u_l^2(r)\,dr.
-\end{equation}
 $$
 
 Why this integral? The connection is the following theorem
@@ -181,19 +175,15 @@ proof is short; we work it out.
 $E + \delta E$:
 
 $$
-\begin{equation}
 \label{eq:ch-08-radial-perturbed}
 -\frac{1}{2}\frac{d^2 u_l}{dr^2}(r; E + \delta E) + \left[\frac{l(l+1)}{2r^2} + V_{ae}(r) - (E + \delta E)\right] u_l(r; E + \delta E) = 0.
-\end{equation}
 $$
 
 Differentiate with respect to $E$ and write $\dot u_l = \partial u_l/\partial E$:
 
 $$
-\begin{equation}
 \label{eq:ch-08-radial-deriv}
 -\frac{1}{2}\dot u_l''(r) + \left[\frac{l(l+1)}{2r^2} + V_{ae}(r) - E\right]\dot u_l(r) = u_l(r).
-\end{equation}
 $$
 
 Multiply \eqref{eq:ch-08-radial-deriv} by $u_l$ and integrate from
@@ -202,14 +192,10 @@ $\dot u_l$ swapped. The left-hand side collapses by two integration
 by parts:
 
 $$
-\begin{equation}
 \int_0^{r_c} \!\!\!\left[-\frac{1}{2}u_l \dot u_l'' + \left(\frac{l(l+1)}{2r^2} + V_{ae} - E\right) u_l \dot u_l\right] dr  = \int_0^{r_c} u_l^2 dr, \label{eq:ch-08-deriv-1}
-\end{equation}
 $$
 $$
-\begin{equation}
 \int_0^{r_c} \!\!\!\left[-\frac{1}{2}\dot u_l u_l'' + \left(\frac{l(l+1)}{2r^2} + V_{ae} - E\right) \dot u_l u_l\right] dr  = \int_0^{r_c} \dot u_l u_l dr. \label{eq:ch-08-deriv-2}
-\end{equation}
 $$
 
 Subtracting, and using the boundary condition $u_l(0) = 0$,
@@ -228,10 +214,8 @@ preserved (the all-electron wavefunction is normalised at every
 energy), so:
 
 $$
-\begin{equation}
 \label{eq:ch-08-norm-deriv}
 \int_0^{r_c} \dot u_l u_l dr = \frac{1}{2}\frac{d}{dE}\int_0^{r_c} u_l^2 dr = \frac{1}{2}\frac{d}{dE}\int_0^{r_c} u_l^2 dr.
-\end{equation}
 $$
 
 Define $Q_l(E) = \int_0^{r_c} u_l^2 dr$. To leading order, the
@@ -239,10 +223,8 @@ wavefunction outside $r_c$ does not change with energy (the inner
 part absorbs all the normalisation change):
 
 $$
-\begin{equation}
 \label{eq:ch-08-q-deriv}
 \frac{dQ_l}{dE} \approx 0 \quad \text{(for } r_c \text{ at the first node or beyond)}.
-\end{equation}
 $$
 
 In practice this assumption is accurate because the all-electron
@@ -255,20 +237,16 @@ $\int_0^{r_c} \dot u_l u_l dr \approx 0$, and \eqref{eq:ch-08-deriv-3}
 collapses to:
 
 $$
-\begin{equation}
 \label{eq:ch-08-deriv-result}
 u_l'(r_c) \dot u_l(r_c) - u_l(r_c) \dot u_l'(r_c) = 2 \int_0^{r_c} u_l^2 dr.
-\end{equation}
 $$
 
 Divide by $u_l(r_c)^2$ and recognise the energy derivative of the
 logarithmic derivative $D_l(E) = u_l'(r_c)/u_l(r_c)$:
 
 $$
-\begin{equation}
 \label{eq:ch-08-dlogder-de}
 \boxed{\left.\frac{\partial D_l}{\partial E}\right|_{E=E_l, r=r_c} = -\frac{2}{u_l(r_c)^2}\int_0^{r_c} u_l^2 dr.}
-\end{equation}
 $$
 
 This is the key identity. The right-hand side involves only the
@@ -283,10 +261,8 @@ matching conditions at $r_c$ and the norm-conservation condition
 giving:
 
 $$
-\begin{equation}
 \label{eq:ch-08-dlogder-ps}
 \left.\frac{\partial D_l^{ps}}{\partial E}\right|_{E=E_l, r=r_c} = -\frac{2}{\phi_l(r_c)^2}\int_0^{r_c} \phi_l^2 dr = -\frac{2}{u_l(r_c)^2}\int_0^{r_c} u_l^2 dr,
-\end{equation}
 $$
 
 which is *identical* to \eqref{eq:ch-08-dlogder-de}. So the
@@ -333,10 +309,8 @@ a function with several free parameters. The Troullier–Martins
 (TM, 1991) ansatz is:
 
 $$
-\begin{equation}
 \label{eq:ch-08-tm-ansatz}
 \phi_l(r) = r^{l+1}\,\exp\left(\sum_{n=0}^{N} c_n r^{2n}\right) \quad \text{for } r \le r_c,
-\end{equation}
 $$
 
 with $N$ typically 5 or 6. The factor $r^{l+1}$ enforces the
@@ -389,10 +363,8 @@ Newton–Raphson or a similar method.
 \eqref{eq:ch-08-inversion} for $r \le r_c$:
 
 $$
-\begin{equation}
 \label{eq:ch-08-ps-inside}
 V_{ps,l}(r) = E_l + \frac{1}{2\,\phi_l(r)}\frac{d^2\phi_l}{dr^2} - \frac{l(l+1)}{2r^2} \quad (r \le r_c).
-\end{equation}
 $$
 
 For the TM ansatz \eqref{eq:ch-08-tm-ansatz}, the second derivative
@@ -401,17 +373,13 @@ $\phi_l(r) = r^{l+1}\,e^{p(r)}$ with
 $p(r) = \sum_n c_n r^{2n}$:
 
 $$
-\begin{equation}
 \label{eq:ch-08-phi-deriv}
 \frac{\phi_l'(r)}{\phi_l(r)} = \frac{l+1}{r} + p'(r),
-\end{equation}
 $$
 
 $$
-\begin{equation}
 \label{eq:ch-08-phi-pp}
 \frac{\phi_l''(r)}{\phi_l(r)} = \left(\frac{l+1}{r} + p'(r)\right)^2 - \frac{l+1}{r^2} + p''(r) = \frac{2(l+1)p'(r)}{r} + p'(r)^2 + p''(r).
-\end{equation}
 $$
 
 To derive \eqref{eq:ch-08-phi-pp}, differentiate
@@ -430,10 +398,8 @@ centrifugal term) gives the cleanest form of the inversion
 formula for the TM ansatz:
 
 $$
-\begin{equation}
 \label{eq:ch-08-tm-inversion}
 V_{ps,l}(r) = E_l + \frac{1}{2}\left[\frac{2(l+1)p'(r)}{r} + p'(r)^2 + p''(r)\right] \quad (r \le r_c).
-\end{equation}
 $$
 
 The corresponding all-electron potential outside $r_c$ is
@@ -442,10 +408,8 @@ frozen core of $Z_\text{core}$ electrons is the Coulomb tail
 $-(Z - Z_\text{core})/r$. The pseudo-potential is therefore:
 
 $$
-\begin{equation}
 \label{eq:ch-08-ps-form}
 V_{ps,l}(r) = \begin{cases} E_l + \frac{1}{2}\left[\frac{2(l+1)p'(r)}{r} + p'(r)^2 + p''(r)\right], & r \le r_c, \\\\ V_{ae}(r), & r > r_c. \end{cases}
-\end{equation}
 $$
 
 The function $V_{ps,l}(r)$ constructed this way is continuous and
@@ -462,10 +426,8 @@ ansatz as TM, but with a smaller number of parameters and a
 slightly different set of matching conditions:
 
 $$
-\begin{equation}
 \label{eq:ch-08-hst-ansatz}
 \phi_l(r) = r^{l+1}\,\exp\left(c_0 + c_1 r^2 + c_2 r^4 + c_3 r^6\right) \quad (r \le r_c).
-\end{equation}
 $$
 
 Four coefficients. The HST conditions are:
@@ -521,10 +483,8 @@ The idea is the following.
 Define a *generalise`d*' norm-conservation:
 
 $$
-\begin{equation}
 \label{eq:ch-08-uspp-norm}
 \langle\phi_l | \phi_l\rangle_{r \le r_c} = \int_0^{r_c} \phi_l^2(r)\,dr = Q_l,
-\end{equation}
 $$
 
 where $Q_l$ is the "partial norm" — a number less than 1 that
@@ -541,10 +501,8 @@ to $Q_l^{ae} - Q_l$ in the core region. The total valence
 charge density becomes
 
 $$
-\begin{equation}
 \label{eq:ch-08-uspp-density}
 \rho(\mathbf r) = \sum_i |\tilde\phi_i(\mathbf r)|^2 + \sum_{R,lm} Q_{lm}^{R}\,g_{lm}^R(\mathbf r - \mathbf R),
-\end{equation}
 $$
 
 where $\tilde\phi_i$ are the *smoot`h*' pseudo-orbitals (no
@@ -560,10 +518,8 @@ $S_{ij} = \langle \tilde\phi_i | \tilde\phi_j \rangle$ that
 differs from the identity:
 
 $$
-\begin{equation}
 \label{eq:ch-08-uspp-gen}
 \hat H_{KS} \tilde\phi_i = \varepsilon_i \hat S \tilde\phi_i.
-\end{equation}
 $$
 
 The overlap $\hat S$ comes from the fact that the smooth
@@ -601,10 +557,8 @@ between the all-electron single-particle state $|\Psi_n\rangle$
 and a smooth pseudo-state $|\tilde\Psi_n\rangle$:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-transform}
 |\Psi_n\rangle = \hat{\mathcal{T}}|\tilde\Psi_n\rangle = |\tilde\Psi_n\rangle + \sum_R \left(|\Psi_n^R\rangle - |\tilde\Psi_n^R\rangle\right),
-\end{equation}
 $$
 
 where the sum is over atomic sites $R$ and
@@ -618,10 +572,8 @@ inside the augmentation sphere.
 Explicitly, the all-electron wavefunction is reconstructed as:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-reconstruct}
 \Psi_n(\mathbf r) = \tilde\Psi_n(\mathbf r) + \sum_{R,i} \left[\phi_i^R(\mathbf r) - \tilde\phi_i^R(\mathbf r)\right]\,\langle \tilde p_i^R | \tilde\Psi_n\rangle,
-\end{equation}
 $$
 
 where $\phi_i^R(\mathbf r)$ are the all-electron partial
@@ -630,10 +582,8 @@ augmentation sphere) and $\tilde\phi_i^R(\mathbf r)$ are
 their smooth counterparts. The all-electron density is
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-density}
 \rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \left[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\right],
-\end{equation}
 $$
 
 where $\tilde\rho$ is built from the smooth orbitals and the
@@ -684,23 +634,17 @@ all-electron wavefunction, using the TM recipe.
 hydrogen $1s$ radial wavefunction and energy are
 
 $$
-\begin{equation}
 \label{eq:ch-08-h-1s}
 u_0(r) = 2r\,e^{-r}, \qquad E_0 = -\tfrac{1}{2}\,E_h.
-\end{equation}
 $$
 
 The derivatives are
 
 $$
-\begin{equation}
 u_0'(r) = 2(1 - r)\,e^{-r}, \label{eq:ch-08-h-1s-d1}
-\end{equation}
 $$
 $$
-\begin{equation}
 u_0''(r) = -2(2 - r)\,e^{-r}. \label{eq:ch-08-h-1s-d2}
-\end{equation}
 $$
 
 To verify: substituting into the radial equation
@@ -714,19 +658,13 @@ $-\frac{1}{2}u_0'' - \frac{1}{r}u_0 = E_0 u_0$,
 At the chosen cutoff $r_c = 0.5\,a_0$:
 
 $$
-\begin{equation}
 u_0(r_c) = 2(0.5)\,e^{-0.5} = e^{-0.5} \approx 0.6065, \label{eq:ch-08-h-1s-rcval}
-\end{equation}
 $$
 $$
-\begin{equation}
 u_0'(r_c) = 2(0.5)\,e^{-0.5} = e^{-0.5} \approx 0.6065, \label{eq:ch-08-h-1s-rcder}
-\end{equation}
 $$
 $$
-\begin{equation}
 u_0''(r_c) = -2(1.5)\,e^{-0.5} = -3\,e^{-0.5} \approx -1.820. \label{eq:ch-08-h-1s-rcd2}
-\end{equation}
 $$
 
 The logarithmic derivative at $r_c$ is
@@ -736,10 +674,8 @@ $D_0(E_0) = u_0'(r_c)/u_0(r_c) = 1\,a_0^{-1}$.
 ansatz
 
 $$
-\begin{equation}
 \label{eq:ch-08-h-ansatz}
 \phi_0(r) = r\,\exp\!\Bigl(c_0 + c_1 r^2 + c_2 r^4 + c_3 r^6\Bigr) \quad (r \le r_c),
-\end{equation}
 $$
 
 the four conditions are value, first derivative, second
@@ -763,9 +699,7 @@ $p(r) = c_0 + c_1 r^2 + c_2 r^4 + c_3 r^6$,
 $p'(r) = 2c_1 r + 4c_2 r^3 + 6c_3 r^5$:
 
 $$
-\begin{equation}
 \frac{\phi_0'(r_c)}{\phi_0(r_c)} = \frac{1}{r_c} + p'(r_c).
-\end{equation}
 $$
 
 The all-electron ratio is
@@ -789,18 +723,14 @@ which at $r = r_c$ is $-(2 - r_c)/r_c$.
 The matching condition is
 
 $$
-\begin{equation}
 \frac{2p'(r_c)}{r_c} + p'(r_c)^2 + p''(r_c) = -\frac{2 - r_c}{r_c}. \label{eq:ch-08-h-match-3}
-\end{equation}
 $$
 
 **Step 4 — norm conservation.** Equation
 \eqref{eq:ch-08-norm-conservation} for $l = 0$:
 
 $$
-\begin{equation}
 \int_0^{r_c} r^2\,\exp\!\Bigl(2c_0 + 2c_1 r^2 + 2c_2 r^4 + 2c_3 r^6\Bigr) dr = \int_0^{r_c} 4r^2 e^{-2r} dr. \label{eq:ch-08-h-match-norm}
-\end{equation}
 $$
 
 The right-hand side has a closed form
@@ -824,10 +754,8 @@ solution of the *linear* sub-system
 is given by:
 
 $$
-\begin{equation}
 \label{eq:ch-08-h-coeffs}
 c_0 = \ln 2 - 0.1875 \approx 0.5056, \quad c_1 = -1.5, \quad c_2 = +1, \quad c_3 = 0.
-\end{equation}
 $$
 
 These are the values used in the analytic worked-example
@@ -856,10 +784,8 @@ TM inversion formula \eqref{eq:ch-08-tm-inversion} with
 $l = 0$ gives:
 
 $$
-\begin{equation}
 \label{eq:ch-08-h-vps-inside}
 V_{ps,0}(r) = E_0 + \tfrac{1}{2}\Bigl[2p'(r)/r + p'(r)^2 + p''(r)\Bigr].
-\end{equation}
 $$
 
 **At the cutoff** $r = r_c$ (using the analytical
@@ -1345,10 +1271,8 @@ $\hat{\mathcal{T}}$ that is the identity outside a set of
 on each atom:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-ansatz}
 |\Psi_n\rangle = \hat{\mathcal{T}}|\tilde\Psi_n\rangle.
-\end{equation}
 $$
 
 The transformation is required to:
@@ -1374,14 +1298,10 @@ spherical potential well of atom $R$ at chosen reference
 energies $\varepsilon_{Ri}$:
 
 $$
-\begin{equation}
 \phi_i^R(\mathbf r) = \phi_{R,n_i,l_i}(r)\, Y_{l_i m_i}(\hat{\mathbf r}), \label{eq:ch-08-paw-ae-pw}
-\end{equation}
 $$
 $$
-\begin{equation}
 \tilde\phi_i^R(\mathbf r) = \tilde\phi_{R,n_i,l_i}(r)\, Y_{l_i m_i}(\hat{\mathbf r}). \label{eq:ch-08-paw-ps-pw}
-\end{equation}
 $$
 
 The $\phi_i^R$ are the **all-electron partial waves** (the
@@ -1397,18 +1317,14 @@ satisfy two conditions:
 
 1. **Biorthogonality with the pseudo partial waves:**
 $$
-   \begin{equation}
    \label{eq:ch-08-paw-biorthog}
    \langle \tilde p_i^R | \tilde\phi_j^{R'} \rangle = \delta_{RR'} \delta_{ij}.
-   \end{equation}
 $$
 
 2. **Completeness inside the augmentation sphere:**
 $$
-   \begin{equation}
    \label{eq:ch-08-paw-completeness}
    \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | = 1 \quad \text{inside } \Omega_R.
-   \end{equation}
 $$
 
 Condition 2 is the crucial one. It says that any smooth
@@ -1429,34 +1345,26 @@ weighted by the overlap of the smooth partner with the
 projector:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-reconstruct-derivation}
 \hat{\mathcal{T}} = 1 + \sum_R \sum_i \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R |.
-\end{equation}
 $$
 
 To verify that this is correct, apply it to a smooth state
 $|\tilde\Psi_n\rangle$:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-apply-t}
 |\Psi_n\rangle = |\tilde\Psi_n\rangle + \sum_{R,i} \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle.
-\end{equation}
 $$
 
 Split the smooth state into "outside the augmentation
 spheres" and "inside each sphere":
 
 $$
-\begin{equation}
 |\tilde\Psi_n\rangle = |\tilde\Psi_n^{out}\rangle + \sum_R |\tilde\Psi_n^R\rangle, \label{eq:ch-08-paw-split}
-\end{equation}
 $$
 $$
-\begin{equation}
 |\tilde\Psi_n^R\rangle \equiv \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle. \label{eq:ch-08-paw-pw-expand}
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-08-paw-pw-expand} is just the
@@ -1477,10 +1385,8 @@ outside, $\Psi_n = \tilde\Psi_n$. The transformation is
 *exact* (within the partial-wave basis) and invertible:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-inverse}
 \hat{\mathcal{T}}^{-1} = 1 + \sum_R \sum_i \Bigl(|\tilde\phi_i^R\rangle - |\phi_i^R\rangle\Bigr) \langle \tilde p_i^R |.
-\end{equation}
 $$
 
 The same derivation with $\phi \leftrightarrow \tilde\phi$
@@ -1494,20 +1400,16 @@ all-electron state becomes, in the PAW framework, an
 operator on the smooth state:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-operator}
 \langle \Psi_n | \hat O | \Psi_m \rangle = \langle \tilde\Psi_n | \hat{\mathcal{T}}^\dagger \hat O \hat{\mathcal{T}} | \tilde\Psi_m \rangle \equiv \langle \tilde\Psi_n | \tilde O | \tilde\Psi_m \rangle.
-\end{equation}
 $$
 
 The "PAW-transformed" operator $\tilde O$ contains three
 pieces:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-3pieces}
 \tilde O = \hat O + \sum_R \sum_{i,j} |\tilde p_i^R\rangle \Bigl[ \langle \phi_i^R | \hat O | \phi_j^R \rangle - \langle \tilde\phi_i^R | \hat O | \tilde\phi_j^R \rangle \Bigr] \langle \tilde p_j^R |.
-\end{equation}
 $$
 
 This follows from $\hat{\mathcal{T}} = 1 + \sum_{R,i}(|\phi_i^R\rangle
@@ -1525,19 +1427,13 @@ $\hat H_{KS} = -\tfrac{1}{2}\nabla^2 + V_{eff}[\rho](\mathbf r)$,
 the three pieces become:
 
 $$
-\begin{equation}
 \tilde T \equiv -\tfrac{1}{2}\nabla^2, \label{eq:ch-08-paw-T}
-\end{equation}
 $$
 $$
-\begin{equation}
 \tilde V_{eff} \equiv V_{eff}[\tilde\rho + \hat\rho^1](\mathbf r), \label{eq:ch-08-paw-Veff}
-\end{equation}
 $$
 $$
-\begin{equation}
 \tilde H_{aug} \equiv \sum_{R,ij} |\tilde p_i^R\rangle \Bigl[ \langle \phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{eff}[\rho] | \phi_j^R \rangle - \langle \tilde\phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{eff}[\tilde\rho] | \tilde\phi_j^R \rangle \Bigr] \langle \tilde p_j^R |. \label{eq:ch-08-paw-Haug}
-\end{equation}
 $$
 
 The crucial point is the **double-counting subtraction** in
@@ -1556,19 +1452,15 @@ The all-electron charge density is reconstructed in the
 same way as the wavefunction:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-density-reconstruct}
 \rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \Bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\Bigr],
-\end{equation}
 $$
 
 where
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-on-site-density}
 \rho^R(\mathbf r) = \sum_{n,\text{occ}} \sum_{i,j} \phi_i^R(\mathbf r) \phi_j^{R*}(\mathbf r) \langle \tilde\Psi_n | \tilde p_i^R \rangle \langle \tilde p_j^R | \tilde\Psi_n \rangle f_n,
-\end{equation}
 $$
 
 and similarly for $\tilde\rho^R$ with $\tilde\phi$ in place
@@ -1581,29 +1473,23 @@ the augmentation sphere.
 Defining the **occupancy matrix**
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-occupancy}
 \rho_{ij}^R \equiv \sum_{n,\text{occ}} \langle \tilde p_i^R | \tilde\Psi_n \rangle f_n \langle \tilde\Psi_n | \tilde p_j^R \rangle,
-\end{equation}
 $$
 
 the on-site density is
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-on-site-density-2}
 \rho^R(\mathbf r) = \sum_{i,j} \rho_{ij}^R\, \phi_i^R(\mathbf r)\, \phi_j^{R*}(\mathbf r).
-\end{equation}
 $$
 
 The **augmentation charge** is the difference
 $\rho^R - \tilde\rho^R$, summed over atoms:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-aug-charge}
 \hat\rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \Bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\Bigr] = \tilde\rho(\mathbf r) + \sum_R \hat Q^R(\mathbf r).
-\end{equation}
 $$
 
 This is the PAW analogue of the USPP augmentation charge
@@ -1622,10 +1508,8 @@ spurious long-range Coulomb interactions).
 The Kohn–Sham total energy in the PAW framework is
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-total-energy}
 E_{tot} = \tilde T[\tilde\rho] + \tilde E_{xc}[\tilde\rho + \hat\rho^1] + \tilde E_H[\tilde\rho + \hat\rho^1] + E_{ion} + \sum_R \Bigl( E_{aug}^R - \tilde E_{aug}^R \Bigr),
-\end{equation}
 $$
 
 where the first three terms are evaluated on the smooth
@@ -1639,10 +1523,8 @@ The on-site augmentation is decomposed into a sum over
 partial-wave channel pairs $(i,j)$:
 
 $$
-\begin{equation}
 \label{eq:ch-08-paw-Eaug}
 E_{aug}^R = \sum_{i,j} \rho_{ij}^R \Bigl[ \langle \phi_i^R | -\tfrac{1}{2}\nabla^2 + V_{loc}^R | \phi_j^R \rangle + \tfrac{1}{2}\langle \phi_i^R \phi_j^R | V_H[\rho^R] |\rangle \Bigr],
-\end{equation}
 $$
 
 where $V_{loc}^R$ is a local (smooth) part of the potential
@@ -1745,10 +1627,8 @@ The starting point is the one-electron Dirac equation
 (in atomic units, $c = 137.036$ a.u.):
 
 $$
-\begin{equation}
 \label{eq:ch-08-dirac}
 \Bigl[ c\,\boldsymbol{\alpha} \cdot \mathbf{p} + (\beta - 1)c^2 + V(\mathbf r) \Bigr] \Psi(\mathbf r) = E\,\Psi(\mathbf r),
-\end{equation}
 $$
 
 where $\Psi(\mathbf r) = (\psi_A, \psi_B)^T$ is a
@@ -1769,14 +1649,10 @@ components — satisfy the coupled radial Dirac
 equations:
 
 $$
-\begin{equation}
 \frac{dG_\kappa}{dr} + \frac{\kappa}{r}G_\kappa(r) = \Bigl[ 1 + (E - V(r))/c^2 \Bigr] c\,F_\kappa(r), \label{eq:ch-08-dirac-G}
-\end{equation}
 $$
 $$
-\begin{equation}
 -\frac{dF_\kappa}{dr} + \frac{\kappa}{r}F_\kappa(r) = \Bigl[ (E - V(r))/c^2 \Bigr] c\,G_\kappa(r). \label{eq:ch-08-dirac-F}
-\end{equation}
 $$
 
 The non-relativistic limit $c \to \infty$ recovers the
@@ -1798,10 +1674,8 @@ Concretely, eliminate the small component $F_\kappa$ from
 \eqref{eq:ch-08-dirac-F}:
 
 $$
-\begin{equation}
 \label{eq:ch-08-sr-eliminate-F}
 F_\kappa(r) = \frac{1}{2 M(r) c^2}\left[\frac{dG_\kappa}{dr} - \frac{\kappa}{r} G_\kappa(r)\right],
-\end{equation}
 $$
 
 where $M(r) = 1 + (E - V(r))/c^2$ is the
@@ -1809,19 +1683,15 @@ relativistic mass. Substituting into
 \eqref{eq:ch-08-dirac-G}:
 
 $$
-\begin{equation}
 \label{eq:ch-08-sr-eq}
 \left[-\frac{1}{2M(r)} \frac{d^2}{dr^2} + \frac{\kappa(\kappa+1)}{2M(r) r^2} - \frac{E}{c^2}\right] G_\kappa(r) + V_{SR}(r) G_\kappa(r) = 0,
-\end{equation}
 $$
 
 where the **scalar relativistic potential** is
 
 $$
-\begin{equation}
 \label{eq:ch-08-sr-potential}
 V_{SR}(r) = V(r) + \frac{1}{2M(r)c^2}\frac{dV}{dr}\frac{d}{dr} - \frac{1}{2M(r)c^2}\left(\frac{dV}{dr}\right)^2.
-\end{equation}
 $$
 
 The first correction term
@@ -1857,39 +1727,31 @@ Hamiltonian is the residual $\mathbf{L} \cdot
 symmetric potential, this is:
 
 $$
-\begin{equation}
 \label{eq:ch-08-so-term}
 \hat H_{SO} = \frac{1}{2M^2 c^2} \frac{1}{r}\frac{dV}{dr}\, \mathbf{L} \cdot \mathbf{S}.
-\end{equation}
 $$
 
 The expectation value of $\mathbf{L} \cdot \mathbf{S}$
 in a state of definite $j$ is
 
 $$
-\begin{equation}
 \label{eq:ch-08-LS-eigenvalue}
 \langle \mathbf{L} \cdot \mathbf{S} \rangle = \tfrac{1}{2}[j(j+1) - l(l+1) - s(s+1)],
-\end{equation}
 $$
 
 which gives the spin-orbit energy shift
 
 $$
-\begin{equation}
 \label{eq:ch-08-so-shift}
 \Delta E_{SO}(j) = \tfrac{1}{2}[j(j+1) - l(l+1) - s(s+1)] \cdot \frac{1}{2M^2 c^2}\left\langle \frac{1}{r}\frac{dV}{dr} \right\rangle.
-\end{equation}
 $$
 
 For $s = 1/2$, the splitting between $j = l + 1/2$ and
 $j = l - 1/2$ is
 
 $$
-\begin{equation}
 \label{eq:ch-08-so-splitting}
 \Delta E_l^{SO} = E_{SO}(j = l + 1/2) - E_{SO}(j = l - 1/2) = \frac{2l+1}{2} \cdot \frac{1}{2M^2 c^2}\left\langle \frac{1}{r}\frac{dV}{dr} \right\rangle.
-\end{equation}
 $$
 
 For a $5d$ transition metal like platinum, the
@@ -1906,10 +1768,8 @@ is added as a *channel-dependent* correction. The
 pseudopotential is
 
 $$
-\begin{equation}
 \label{eq:ch-08-so-kb}
 \hat V_{SO} = \sum_{R} \sum_{l,j} \lambda_{lj}^R\, V_{l}^{SO,R}(r) \, |\phi_{lj}^R\rangle \langle \phi_{lj}^R|\, \mathbf{L} \cdot \mathbf{S},
-\end{equation}
 $$
 
 where $\lambda_{lj}^R$ is a strength parameter fitted
@@ -1932,20 +1792,16 @@ used in the valence calculation. The pseudopotential
 is then a $4\times 4$ matrix in Dirac spinor space:
 
 $$
-\begin{equation}
 \label{eq:ch-08-dirac-ps}
 \hat V_{ps} = \sum_{R, \kappa, m_j} |\chi_{\kappa m_j}^R\rangle\, V_{ps,\kappa}^R(r)\, \langle \chi_{\kappa m_j}^R |,
-\end{equation}
 $$
 
 where the projectors $|\chi_{\kappa m_j}^R\rangle$ are
 four-component spinor spherical waves
 
 $$
-\begin{equation}
 \label{eq:ch-08-spinor-sw}
 |\chi_{\kappa m_j}\rangle = \binom{g_\kappa(r)\, \Omega_{\kappa m_j}(\hat{\mathbf r})}{i f_\kappa(r)\, \Omega_{-\kappa m_j}(\hat{\mathbf r})},
-\end{equation}
 $$
 
 with $\Omega_{\kappa m_j}$ the spinor spherical
@@ -2134,10 +1990,8 @@ optimisation. The construction procedure is:
    $c_n$ to minimise a *Frobenius-norm* error across
    *all* reference states simultaneously:
 $$
-   \begin{equation}
    \label{eq:ch-08-hgh-cost}
    \mathcal{J}[V_{ps}] = \sum_{i} \int dE \sum_{l} \Bigl| D_l^{ps}(E; r_c) - D_l^{ae}(E; r_c) \Bigr|^2,
-   \end{equation}
 $$
    where $D_l(E; r_c)$ is the logarithmic derivative
    of the wavefunction at the cutoff radius, and the
@@ -2449,10 +2303,8 @@ p. 7893 [Vanderbilt, 1990, eq. (5), p. 7893]. In the
 Kohn–Sham context the equation reads
 
 $$
-\begin{equation}
 \label{eq:ch-08-vand-gen}
 \hat H \, |\phi_i\rangle = \varepsilon_i \, \hat S \, |\phi_i\rangle,
-\end{equation}
 $$
 
 where the overlap operator $\hat S \neq \mathbf 1$ is
@@ -2589,10 +2441,8 @@ $|\tilde\Psi_n\rangle$ to the all-electron state
 $|\Psi_n\rangle$:
 
 $$
-\begin{equation}
 \label{eq:ch-08-bloch-transform}
 |\Psi_n\rangle = \hat{\mathcal{T}} |\tilde\Psi_n\rangle,
-\end{equation}
 $$
 
 with $\hat{\mathcal{T}}$ the identity outside a set
@@ -2602,10 +2452,8 @@ explicit form of $\hat{\mathcal{T}}$ is constructed
 in eq. (2.2) of the paper:
 
 $$
-\begin{equation}
 \label{eq:ch-08-bloch-transform-explicit}
 \hat{\mathcal{T}} = \mathbf 1 + \sum_R \sum_i \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R |,
-\end{equation}
 $$
 
 where the sum is over atoms $R$ and partial-wave
@@ -2657,10 +2505,8 @@ is eq. (2.6), p. 17956 [Blöchl, 1994, eq. (2.6),
 p. 17956]:
 
 $$
-\begin{equation}
 \label{eq:ch-08-bloch-recon}
 \Psi_n(\mathbf r) = \tilde\Psi_n(\mathbf r) + \sum_{R,i} \Bigl[\phi_i^R(\mathbf r) - \tilde\phi_i^R(\mathbf r)\Bigr] \langle \tilde p_i^R | \tilde\Psi_n \rangle.
-\end{equation}
 $$
 
 This is the same as our eq.
@@ -2686,10 +2532,8 @@ The corresponding density reconstruction is
 eq. (2.7), p. 17956:
 
 $$
-\begin{equation}
 \label{eq:ch-08-bloch-density}
 \rho(\mathbf r) = \tilde\rho(\mathbf r) + \sum_R \Bigl[\rho^R(\mathbf r) - \tilde\rho^R(\mathbf r)\Bigr],
-\end{equation}
 $$
 
 identical to our eq. \eqref{eq:ch-08-paw-density}.
@@ -2777,10 +2621,8 @@ Concretely, the paper writes the PAW total energy
 as [Kresse and Joubert, 1999, eq. (5), p. 1761]:
 
 $$
-\begin{equation}
 \label{eq:ch-08-kj-paw-energy}
 E_{tot}^{PAW} = \sum_n f_n \langle \tilde\Psi_n | \hat T + \tilde V_{eff} | \tilde\Psi_n \rangle + E_{H}[\tilde\rho + \hat\rho] + E_{xc}[\tilde\rho + \hat\rho] + \sum_R \Bigl( E_{aug}^R - \tilde E_{aug}^R \Bigr),
-\end{equation}
 $$
 
 where $\hat\rho$ is the augmentation charge, $E_{aug}^R$

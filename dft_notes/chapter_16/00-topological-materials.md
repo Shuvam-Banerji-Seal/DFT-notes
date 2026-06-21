@@ -80,14 +80,12 @@ correspondence** in its sharpest form.
 > edge modes. The bulk–boundary correspondence states
 
 $$
-\begin{equation}
 \label{eq:ch-16-bulk-boundary}
 \boxed{
 \sigma_{xy} = \frac{e^2}{h} \sum_{n\,:\,\text{occupied}} C_n ,
 \qquad
 \text{edge states} = \text{``hologram`'' of the bulk Chern number}.
 }
-\end{equation}
 $$
 
 The first equation is the **TKNN formul`a** (Thouless, Kohmoto, Nightingale, den Nijs, 1982): the off-diagonal Hall conductivity of an insulator is the sum of the Chern numbers* of its occupied bands, in units of $e^2/h$. The second is the
@@ -182,10 +180,8 @@ stays in the instantaneous ground state, acquiring only a
 dynamical phase
 
 $$
-\begin{equation}
 \label{eq:ch-16-dynamical-phase}
 \theta_\text{dyn}(T) = -\int_0^T E_n(\mathbf R(t))\, dt .
-\end{equation}
 $$
 
 Berry (1984) pointed out that on top of the dynamical
@@ -194,12 +190,10 @@ on the *pat`h*' $\mathcal C : [0, T] \to \mathcal M$ in
 parameter space:
 
 $$
-\begin{equation}
 \label{eq:ch-16-berry-phase}
 \boxed{
 \gamma_n[\mathcal C] \;=\; i \oint_{\mathcal C} \langle n(\mathbf R) \mid \nabla_{\mathbf R} n(\mathbf R) \rangle \cdot d\mathbf R .
 }
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-16-berry-phase} is the **Berry phase**.
@@ -216,10 +210,8 @@ $\mathcal C$
 in the BZ is
 
 $$
-\begin{equation}
 \label{eq:ch-16-berry-1d}
 \gamma_n[\mathcal C] \;=\; i \oint_{\mathcal C} \langle u_{n\mathbf k} \mid \nabla_{\mathbf k} u_{n\mathbf k} \rangle \cdot d\mathbf k .
-\end{equation}
 $$
 
 > **Note.** The Berry phase is defined modulo $2\pi$. The
@@ -234,12 +226,10 @@ Define the **Berry connection** (also called the "Berry
 vector potential") of band $n$ as the 1-form
 
 $$
-\begin{equation}
 \label{eq:ch-16-berry-connection}
 \boxed{
 \mathcal A_n(\mathbf k) \;=\; i \langle u_{n\mathbf k} \mid \nabla_{\mathbf k} u_{n\mathbf k} \rangle .
 }
-\end{equation}
 $$
 
 The Berry connection is *gauge-dependent*: under a
@@ -256,23 +246,19 @@ The **Berry curvature** is the exterior derivative of the
 Berry connection,
 
 $$
-\begin{equation}
 \label{eq:ch-16-berry-curvature}
 \boxed{
 \boldsymbol \Omega_n(\mathbf k) \;=\; \nabla_{\mathbf k} \times \mathcal A_n(\mathbf k) .
 }
-\end{equation}
 $$
 
 The Berry curvature is a *gauge-invariant* pseudo-vector in
 $\mathbf k$-space. In components,
 
 $$
-\begin{equation}
 \label{eq:ch-16-berry-curvature-comp}
 \Omega_{n,a}(\mathbf k) \;=\; \epsilon_{abc}\, \partial_{k_b} \mathcal A_{n,c}(\mathbf k) ,
 \qquad a, b, c \in \{x, y, z\}.
-\end{equation}
 $$
 
 Unlike the connection, the curvature is a *physical*
@@ -281,12 +267,10 @@ equations of motion of a wave packet in band $n$ as an
 anomalous velocity term
 
 $$
-\begin{equation}
 \label{eq:ch-16-anomalous-velocity}
 \dot{\mathbf r}_n = \frac{\partial \varepsilon_n}{\hbar \partial \mathbf k} - \dot{\mathbf k} \times \boldsymbol \Omega_n(\mathbf k) ,
 \qquad
 \hbar \dot{\mathbf k}_n = -\frac{\partial \varepsilon_n}{\partial \mathbf r} - \hbar \dot{\mathbf r} \times \boldsymbol \Omega_n(\mathbf k) .
-\end{equation}
 $$
 
 The second term is the **anomalous velocity**,
@@ -299,10 +283,8 @@ For an isolated non-degenerate band, the curvature can also
 be written explicitly in terms of the other bands:
 
 $$
-\begin{equation}
 \label{eq:ch-16-curvature-other-bands}
 \Omega_{n,ab}(\mathbf k) \;=\; i \sum_{m \neq n} \frac{\langle u_{n\mathbf k} \mid \partial_{k_a} \hat H \mid u_{m\mathbf k} \rangle \langle u_{m\mathbf k} \mid \partial_{k_b} \hat H \mid u_{n\mathbf k} \rangle - (a \leftrightarrow b)}{(\varepsilon_{m\mathbf k} - \varepsilon_{n\mathbf k})^2} .
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-16-curvature-other-bands} is sometimes
@@ -321,10 +303,8 @@ relevant closed surface is the 2D BZ *itsel`f*' (a torus, $T^2$).
 Stokes' theorem on a torus gives
 
 $$
-\begin{equation}
 \label{eq:ch-16-stokes-torus}
 \oint_{\partial(\text{BZ})} \mathcal A_n \cdot d\mathbf k \;=\; \int_{\text{BZ}} \Omega_{n,z}(\mathbf k)\, d^2k \;=\; 0 \pmod{2\pi} .
-\end{equation}
 $$
 
 The "modulo $2\pi$" is the only place the topology of the
@@ -333,12 +313,10 @@ multiple of $2\pi$, and the integer is the **Chern number** of
 the band:
 
 $$
-\begin{equation}
 \label{eq:ch-16-chern-number}
 \boxed{
 C_n \;=\; \frac{1}{2\pi} \int_{\text{BZ}} \Omega_{n,z}(\mathbf k)\, d^2 k \;=\; \frac{1}{2\pi} \oint_{\partial(\text{BZ})} \mathcal A_n \cdot d\mathbf k \in \mathbb Z .
 }
-\end{equation}
 $$
 
 The two expressions in \eqref{eq:ch-16-chern-number} are equal
@@ -366,10 +344,8 @@ $P(\mathbf k) = \sum_{n \in \text{occ}} |u_{n\mathbf k}\rangle
 \langle u_{n\mathbf k}|$ and define
 
 $$
-\begin{equation}
 \label{eq:ch-16-multiband-chern}
 C \;=\; \frac{1}{2\pi} \int_{\text{BZ}} \text{Tr}\Bigl[ P\, dP \wedge dP \Bigr] \;\in\; \mathbb Z .
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-16-multiband-chern} is invariant under
@@ -384,10 +360,8 @@ k)$, so its BZ integral vanishes), but a *weaker*
 invariant can still be non-trivial:
 
 $$
-\begin{equation}
 \label{eq:ch-16-z2-definition}
 \nu \;\in\; \{0, 1\}.
-\end{equation}
 $$
 
 The physical meaning of $\nu = 1$: there is an *od`d*'
@@ -401,12 +375,10 @@ $w(\mathbf k)$ that relates the Kramers partners at
 $\mathbf k$ and at $-\mathbf k$:
 
 $$
-\begin{equation}
 \label{eq:ch-16-sewing}
 w_{mn}(\mathbf k) \;=\; \langle u_{m,\mathbf k} \mid \Theta \mid u_{n, -\mathbf k} \rangle ,
 \qquad
 m, n \in \{1, \ldots, 2N\}.
-\end{equation}
 $$
 
 The sewing matrix is *antisymmetri`c*' at the four **time-
@@ -417,12 +389,10 @@ Pfaffian is well-defined at those four points. The
 Fu–Kane formula is
 
 $$
-\begin{equation}
 \label{eq:ch-16-fu-kane-2d}
 \boxed{
 (-1)^\nu \;=\; \prod_{a=1}^{4} \frac{\sqrt{\det\Bigl[w(\Lambda_a)\Bigr]}}{\text{Pf}\Bigl[w(\Lambda_a)\Bigr]} .
 }
-\end{equation}
 $$
 
 Each factor in the product is $\pm 1$ (the ratio of the
@@ -438,10 +408,8 @@ geometric form. Define the **Wilson loop** of the
 occupied subspace along $b_2$ as a function of $k_1$:
 
 $$
-\begin{equation}
 \label{eq:ch-16-wilson-loop}
 W(k_1) \;=\; \mathcal P \exp\!\left( i \int_{0}^{2\pi} \mathcal A_{k_2}(k_1, k_2)\, dk_2 \right) ,
-\end{equation}
 $$
 
 where $\mathcal P$ is path-ordering and $\mathcal A_{k_2}$
@@ -454,10 +422,8 @@ from $0$ to $2\pi$); a non-trivial insulator gives a
 set of loops with an *odd*' number of them not closing:
 
 $$
-\begin{equation}
 \label{eq:ch-16-z2-wilson}
 \nu \;=\; \left( \frac{1}{2\pi} \sum_n \oint dk_1\, \partial_{k_1} \theta_n(k_1) \right) \!\!\mod 2 .
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-16-z2-wilson} is the practical
@@ -470,10 +436,8 @@ sewing-matrix product over all eight gives the *strong*
 index:
 
 $$
-\begin{equation}
 \label{eq:ch-16-fu-kane-3d-strong}
 (-1)^{\nu_0} \;=\; \prod_{i=1}^{8} \frac{\sqrt{\det\Bigl[w(\Lambda_i)\Bigr]}}{\text{Pf}\Bigl[w(\Lambda_i)\Bigr]} ,
-\end{equation}
 $$
 
 and three *wea`k*' indices
@@ -482,11 +446,9 @@ restricting the product to TRIM with a common value of
 $n_k$:
 
 $$
-\begin{equation}
 \label{eq:ch-16-fu-kane-3d-weak}
 (-1)^{\nu_k} \;=\; \prod_{i\,:\,n_k = 1} \frac{\sqrt{\det\Bigl[w(\Lambda_i)\Bigr]}}{\text{Pf}\Bigl[w(\Lambda_i)\Bigr]} ,
 \qquad k = 1, 2, 3 .
-\end{equation}
 $$
 
 A 3D TI with $\nu_0 = 1$ is a **strong TI** and has a
@@ -517,55 +479,45 @@ interface — in a perpendicular magnetic field $\mathbf B =
 B \hat{\mathbf z}$. The single-particle Hamiltonian is
 
 $$
-\begin{equation}
 \label{eq:ch-16-2deg-hamiltonian}
 \hat H \;=\; \frac{1}{2m} \left( \mathbf p + e \mathbf A \right)^2 ,
 \qquad
 \mathbf A = (0, B x, 0)
-\end{equation}
 $$
 
 in the Landau gauge. The eigenstates are the **Landau
 levels**
 
 $$
-\begin{equation}
 \label{eq:ch-16-landau-levels}
 E_n \;=\; \hbar \omega_c \left( n + \tfrac{1}{2} \right) ,
 \qquad
 \omega_c = \frac{eB}{m} ,
-\end{equation}
 $$
 
 each with a macroscopic degeneracy per unit area
 
 $$
-\begin{equation}
 \label{eq:ch-16-ll-degeneracy}
 n_B \;=\; \frac{eB}{h}
-\end{equation}
 $$
 
 (the number of flux quanta per unit area). The filling
 factor is
 
 $$
-\begin{equation}
 \label{eq:ch-16-filling}
 \nu \;=\; \frac{n_s}{n_B} \;=\; \frac{n_s h}{eB} ,
-\end{equation}
 $$
 
 where $n_s$ is the 2D electron density. **The Hall
 conductivity at integer $\nu$ is the quantised value**
 
 $$
-\begin{equation}
 \label{eq:ch-16-iqhe-sigma}
 \sigma_{xy} \;=\; \nu \frac{e^2}{h} ,
 \qquad
 \rho_{xy} = \frac{h}{\nu e^2} .
-\end{equation}
 $$
 
 This is the **integer quantum Hall effect** (von Klitzing,
@@ -581,12 +533,10 @@ is the sum of the Chern numbers of the *occupie`d*' Landau
 levels:
 
 $$
-\begin{equation}
 \label{eq:ch-16-tknn}
 \boxed{
 \sigma_{xy} \;=\; \frac{e^2}{h} \sum_{n\,:\,\text{occupied}} C_n .
 }
-\end{equation}
 $$
 
 This is the **TKNN invariant**, the first explicit
@@ -628,10 +578,8 @@ recursively splits as the flux per unit cell is increased.
 The spectrum is the solution of the **Harper equation**
 
 $$
-\begin{equation}
 \label{eq:ch-16-harper}
 \psi_{n+1} + \psi_{n-1} + 2 \cos\!\Bigl( 2\pi n \phi + k_y \Bigr) \psi_n \;=\; \varepsilon_n(k_y)\, \psi_n ,
-\end{equation}
 $$
 
 where $\phi = \Phi/\Phi_0$. The bands and gaps are
@@ -639,10 +587,8 @@ labelled by a pair of integers $(s, t)$ via the
 **Diophantine equation**
 
 $$
-\begin{equation}
 \label{eq:ch-16-diophantine}
 r \;=\; s \phi + t ,
-\end{equation}
 $$
 
 where $r$ is the number of sub-bands below the gap and
@@ -680,10 +626,8 @@ honeycomb-lattice tight-binding model of graphene (see
 worked example). The model has four terms:
 
 $$
-\begin{equation}
 \label{eq:ch-16-kane-mele-hamiltonian}
 \hat H \;=\; \hat H_0 + \hat H_\text{SO} + \hat H_R + \hat H_\text{staggered} .
-\end{equation}
 $$
 
 The four terms in detail:
@@ -753,12 +697,10 @@ $\Gamma_6$ and the $p$-like $\Gamma_8$ (heavy-hole),
 with spin degeneracy giving a four-band model:
 
 $$
-\begin{equation}
 \label{eq:ch-16-bhz}
 H(\mathbf k) \;=\; \begin{pmatrix} h(\mathbf k) & 0 \\\\ 0 & h^*(-\mathbf k) \end{pmatrix} ,
 \qquad
 h(\mathbf k) \;=\; \mathbf d(\mathbf k) \cdot \boldsymbol \sigma ,
-\end{equation}
 $$
 
 with $h(\mathbf k)$ acting in the orbital subspace
@@ -806,10 +748,8 @@ polarisation $\Delta P$ across a TR-symmetric deformation
 satisfies
 
 $$
-\begin{equation}
 \label{eq:ch-16-tr-pol}
 \Delta P \;=\; 0 \;\text{ or }\; e/2 \pmod{e} .
-\end{equation}
 $$
 
 The two possibilities are the two values of the $\mathbb
@@ -821,10 +761,8 @@ have 1D polarisations $P(0)$ and $P(\pi)$. The
 $\mathbb Z_2$ index of the 2D insulator is
 
 $$
-\begin{equation}
 \label{eq:ch-16-fu-kane-pol}
 \nu \;=\; 2 \Bigl[ P(\pi) - P(0) \Bigr] \;\mod 2 \;\in\; \{0, 1\} .
-\end{equation}
 $$
 
 The factor of 2 converts the *continuous* 1D polarisation
@@ -888,10 +826,8 @@ The minimal four-band effective Hamiltonian at $\Gamma$ is
 (Zhang *et al.*, Nature Physics **5**, 438 (2009))
 
 $$
-\begin{equation}
 \label{eq:ch-16-bi2se3-hamiltonian}
 H_\text{eff}(\mathbf k) \;=\; \epsilon_0(\mathbf k) \mathbb 1_{4} + \begin{pmatrix} M(\mathbf k) & A_1 k_z & 0 & A_2 k_- \\\\ A_1 k_z & -M(\mathbf k) & A_2 k_- & 0 \\\\ 0 & A_2 k_+ & M(\mathbf k) & -A_1 k_z \\\\ A_2 k_+ & 0 & -A_1 k_z & -M(\mathbf k) \end{pmatrix} ,
-\end{equation}
 $$
 
 with $M(\mathbf k) = M_0 - B_1 k_z^2 - B_2 (k_x^2 + k_y^2)$,
@@ -974,10 +910,8 @@ A 3D Dirac semimetal has a *four-fol`d*' band crossing near
 the Fermi energy, with the low-energy Hamiltonian
 
 $$
-\begin{equation}
 \label{eq:ch-16-dirac-hamiltonian}
 H_\text{Dirac}(\mathbf q) \;=\; \begin{pmatrix} m & v \, \mathbf q \cdot \boldsymbol \sigma \\\\ v\, \mathbf q \cdot \boldsymbol \sigma & -m \end{pmatrix} ,
-\end{equation}
 $$
 
 a 4×4 matrix in the basis of the two Kramers pairs. The
@@ -1017,10 +951,8 @@ A 3D Weyl semimetal has a *two-fol`d*' band crossing near the
 Fermi energy, with the low-energy Hamiltonian
 
 $$
-\begin{equation}
 \label{eq:ch-16-weyl-hamiltonian}
 H_\text{Weyl}(\mathbf q) \;=\; v\, \mathbf q \cdot \boldsymbol \sigma ,
-\end{equation}
 $$
 
 a 2×2 matrix in the basis of a single (spinless) Weyl
@@ -1032,10 +964,8 @@ the node is a 2-sphere, and the Chern number of that sphere
 is non-zero,
 
 $$
-\begin{equation}
 \label{eq:ch-16-weyl-chern}
 C_\text{Weyl} \;=\; \frac{1}{2\pi} \oint_{S^2} \boldsymbol \Omega(\mathbf k) \cdot d\mathbf S \;=\; \pm 1 .
-\end{equation}
 $$
 
 The sign is the **chirality** of the Weyl node: $+1$ is a
@@ -1076,10 +1006,8 @@ massless Dirac Hamiltonian in the plane perpendicular to
 the line:
 
 $$
-\begin{equation}
 \label{eq:ch-16-nodal-line}
 H(\mathbf q) \;=\; v_\perp\, (q_x \sigma_x + q_y \sigma_y) ,
-\end{equation}
 $$
 
 where $\mathbf q$ is the displacement from the line, $q_x,
@@ -1172,12 +1100,10 @@ Weyl fermions in 3D. The chiral current $j_5^\mu = \bar\psi
 presence of electromagnetic fields:
 
 $$
-\begin{equation}
 \label{eq:ch-16-chiral-anomaly}
 \boxed{
 \partial_\mu j_5^\mu \;=\; \frac{e^2}{16 \pi^2 \hbar^2}\, \epsilon^{\mu\nu\rho\sigma} F_{\mu\nu} F_{\rho\sigma} \;=\; \frac{e^3}{2 \pi^2 \hbar^2}\, \mathbf E \cdot \mathbf B .
 }
-\end{equation}
 $$
 
 The right-hand side is non-zero when $\mathbf E \parallel
@@ -1197,10 +1123,8 @@ ways:
    *current* along $\mathbf B$,
 
 $$
-   \begin{equation}
    \label{eq:ch-16-chiral-magnetic}
    \mathbf j \;=\; \frac{e^2 \mu_5}{2 \pi^2 \hbar^2}\, \mathbf B .
-   \end{equation}
 $$
 
    This is the "**chiral magnetic effect**" (CME), predicted
@@ -1247,10 +1171,8 @@ localised in real space. For a set of $N$ isolated bands,
 the Wannier functions are
 
 $$
-\begin{equation}
 \label{eq:ch-16-wannier-def}
 | w_{n\mathbf R} \rangle \;=\; \frac{V}{(2\pi)^3} \int_{\text{BZ}} d^3k\, e^{-i \mathbf k \cdot \mathbf R} \sum_{m=1}^{N} U_{mn}(\mathbf k)\, | u_{m\mathbf k} \rangle ,
-\end{equation}
 $$
 
 where the integral is over the first BZ and $U_{mn}(\mathbf
@@ -1263,10 +1185,8 @@ functions. The **maximally-localised Wannier functions
 by choosing $U(\mathbf k)$ to *minimise* the total spread
 
 $$
-\begin{equation}
 \label{eq:ch-16-wannier-spread}
 \Omega \;=\; \sum_{n=1}^{N} \left( \langle w_{n\mathbf 0} | r^2 | w_{n\mathbf 0} \rangle - \langle w_{n\mathbf 0} | \mathbf r | w_{n\mathbf 0} \rangle^2 \right) .
-\end{equation}
 $$
 
 The minimisation is a non-linear problem in $U(\mathbf
@@ -1307,10 +1227,8 @@ practical algorithm proceeds in three steps:
    matrix of the cell-periodic Bloch functions:
 
 $$
-   \begin{equation}
    \label{eq:ch-16-overlap}
    M_{\mathbf k, \mathbf k + \Delta \mathbf k}^{(mn)} \;=\; \langle u_{m, \mathbf k} | u_{n, \mathbf k + \Delta \mathbf k} \rangle , \quad m, n \in \text{occ} .
-   \end{equation}
 $$
 
    In the Wannier basis, the overlap is computed from
@@ -1321,11 +1239,9 @@ $$
    along the loop:
 
 $$
-   \begin{equation}
    \label{eq:ch-16-wilson-discrete}
    W[\mathcal C] \;=\; \prod_{i=1}^{L} M_{\mathbf k_i, \mathbf k_{i+1}} ,
    \qquad \mathbf k_{L+1} = \mathbf k_1 .
-   \end{equation}
 $$
 
    The eigenvalues of $W[\mathcal C]$ are
@@ -1406,10 +1322,8 @@ space $z > 0$ with surface at $z = 0$. The surface
 Green's function is
 
 $$
-\begin{equation}
 \label{eq:ch-16-surface-gf}
 G_\text{surf}(\mathbf k_\parallel, \omega) \;=\; \Bigl[ \omega - H_\text{slab}(\mathbf k_\parallel) - \Sigma(\mathbf k_\parallel, \omega) \Bigr]^{-1} ,
-\end{equation}
 $$
 
 where $H_\text{slab}$ is the surface unit-cell Hamiltonian
@@ -1417,20 +1331,16 @@ and $\Sigma$ is the **self-energy** of the semi-infinite
 bulk:
 
 $$
-\begin{equation}
 \label{eq:ch-16-self-energy}
 \Sigma(\mathbf k_\parallel, \omega) \;=\; \Bigl[ \omega - H_\text{bulk}(\mathbf k_\parallel) - V \Bigr]^{-1}_{\text{boundary}} ,
-\end{equation}
 $$
 
 with $V$ the surface-to-bulk coupling. The surface
 spectral function
 
 $$
-\begin{equation}
 \label{eq:ch-16-spectral-surface}
 A(\mathbf k_\parallel, \omega) \;=\; -\frac{1}{\pi}\, \text{Im}\, \text{Tr}\, G_\text{surf}(\mathbf k_\parallel, \omega + i 0^+)
-\end{equation}
 $$
 
 has delta-function peaks at the energies of *true* surface
@@ -1475,10 +1385,8 @@ Wilson loop matrix $W$. The *Chern number* is the winding
 number* of the WCC as $k_\perp$ traverses the BZ:
 
 $$
-\begin{equation}
 \label{eq:ch-16-chern-wilson}
 C \;=\; \frac{1}{2\pi} \sum_{n=1}^{N_\text{occ}} \int_0^{2\pi} dk_\perp\, \partial_{k_\perp} \theta_n(k_\perp) \;=\; \frac{1}{2\pi} \sum_{n=1}^{N_\text{occ}} \Bigl[ \theta_n(2\pi) - \theta_n(0) \Bigr] .
-\end{equation}
 $$
 
 The total winding number is the Chern number. For a
@@ -1608,28 +1516,22 @@ spin. The spin-up block, in the basis
 $\{|A,\uparrow\rangle, |B,\uparrow\rangle\}$, is
 
 $$
-\begin{equation}
 \label{eq:ch-16-km-up}
 H_\uparrow(\mathbf k) \;=\; \begin{pmatrix} h_\text{so}(\mathbf k) & -t\, f(\mathbf k) \\\\ -t\, f^*(\mathbf k) & -h_\text{so}(\mathbf k) \end{pmatrix} ,
-\end{equation}
 $$
 
 where
 
 $$
-\begin{equation}
 \label{eq:ch-16-km-f}
 f(\mathbf k) \;=\; 1 + e^{i \mathbf k \cdot \mathbf a_1} + e^{i \mathbf k \cdot \mathbf a_2}
-\end{equation}
 $$
 
 is the honeycomb structure factor and
 
 $$
-\begin{equation}
 \label{eq:ch-16-km-hso}
 h_\text{so}(\mathbf k) \;=\; 2 \lambda_\text{SO} \sum_{i=1}^{3} \sin(\mathbf k \cdot \mathbf b_i)
-\end{equation}
 $$
 
 is the Haldane-like spin–orbit term with the three
@@ -1641,10 +1543,8 @@ H_\uparrow^*(-\mathbf k)$, the time-reversed partner.
 eigenvalues of $H_\uparrow(\mathbf k)$ are
 
 $$
-\begin{equation}
 \label{eq:ch-16-km-eigs}
 \varepsilon_{\uparrow, \pm}(\mathbf k) \;=\; \pm \sqrt{ h_\text{so}^2(\mathbf k) + t^2 |f(\mathbf k)|^2 } .
-\end{equation}
 $$
 
 At the Dirac points $K$ and $K'$, $f(\mathbf k) = 0$, so
@@ -1653,10 +1553,8 @@ For $\lambda_\text{SO} > 0$ and the conventional sign
 convention,
 
 $$
-\begin{equation}
 \label{eq:ch-16-km-gap}
 \varepsilon_{\text{gap}} \;=\; 2 |h_\text{so}(K)| \;=\; 6\sqrt{3}\, \lambda_\text{SO} .
-\end{equation}
 $$
 
 This is the bulk gap at the Dirac points. The system is
@@ -1673,10 +1571,8 @@ The total Chern number vanishes (TRS is preserved), but the
 **spin Chern number**
 
 $$
-\begin{equation}
 \label{eq:ch-16-km-spin-chern}
 C_s \;=\; \frac{C_\uparrow - C_\downarrow}{2} \;=\; 1
-\end{equation}
 $$
 
 is non-zero. The system is a quantum spin Hall insulator
@@ -2334,12 +2230,10 @@ This is the **time-reversal polarisation** [Kane and Mele,
 2005, eq. (3), p. 146802-2]:
 
 $$
-\begin{equation}
 \label{eq:ch-16-km-tr-pol}
 \boxed{
 \delta P \;=\; P_1 - P_2 \;=\; n \cdot \frac{e}{2} \quad \text{with} \quad n \in \{0, 1\} .
 }
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-16-km-tr-pol} is the one-dimensional
@@ -2359,10 +2253,8 @@ polarisations, taken modulo 2 [Kane and Mele, 2005, eq.
 (4), p. 146802-2]:
 
 $$
-\begin{equation}
 \label{eq:ch-16-km-2d-z2}
 \nu \;=\; 2 \left[ P(k_y = \pi) - P(k_y = 0) \right] \pmod{2} \in \{0, 1\} .
-\end{equation}
 $$
 
 The factor of 2 converts the *continuous* 1D
@@ -2417,10 +2309,8 @@ the time-reversal invariant momenta.
 $2N$ occupied Kramers pairs, the *sewing matrix*
 
 $$
-\begin{equation}
 \label{eq:ch-16-fk-sewing}
 w_{mn}(\mathbf k) \;=\; \langle u_{m,\mathbf k} | \Theta | u_{n, -\mathbf k} \rangle , \qquad m, n = 1, \ldots, 2N ,
-\end{equation}
 $$
 
 relates the Kramers partners at $\mathbf k$ and at
@@ -2429,12 +2319,10 @@ TRIM, $w(\Lambda_a) = -w^T(\Lambda_a)$, so its Pfaffian
 is well-defined [Fu and Kane, 2006, eq. (8), p. 045312-3]:
 
 $$
-\begin{equation}
 \label{eq:ch-16-fk-pfaffian}
 \boxed{
 (-1)^\nu \;=\; \prod_{a=1}^{4} \frac{\sqrt{\det w(\Lambda_a)}}{\text{Pf}\, w(\Lambda_a)} .
 }
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-16-fk-pfaffian} is the **Fu–Kane
@@ -2467,12 +2355,10 @@ The Fu–Kane formula simplifies to [Fu and Kane, 2006,
 eq. (15), p. 045312-4]:
 
 $$
-\begin{equation}
 \label{eq:ch-16-fk-inversion}
 \boxed{
 (-1)^\nu \;=\; \prod_{a=1}^{4} \prod_{m=1}^{N} \xi_{2m}(\Lambda_a) .
 }
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-16-fk-inversion} is the
@@ -2494,12 +2380,10 @@ with $n_k \in \{0, 1\}$. The full product gives the
 *strong* index $\nu_0$:
 
 $$
-\begin{equation}
 \label{eq:ch-16-fk-3d-strong}
 \boxed{
 (-1)^{\nu_0} \;=\; \prod_{i=1}^{8} \frac{\sqrt{\det w(\Lambda_i)}}{\text{Pf}\, w(\Lambda_i)} .
 }
-\end{equation}
 $$
 
 The three *wea`k*' indices are defined by restricting
@@ -2507,12 +2391,10 @@ the product to TRIM with a common value of $n_k$ [Fu
 and Kane, 2006, eqs. (20)–(22), p. 045312-7]:
 
 $$
-\begin{equation}
 \label{eq:ch-16-fk-3d-weak}
 \boxed{
 (-1)^{\nu_k} \;=\; \prod_{i\,:\,n_k = 1} \frac{\sqrt{\det w(\Lambda_i)}}{\text{Pf}\, w(\Lambda_i)} , \qquad k = 1, 2, 3 .
 }
-\end{equation}
 $$
 
 A 3D TI with $\nu_0 = 1$ is a **strong TI** and has a
@@ -2530,12 +2412,10 @@ criterion \eqref{eq:ch-16-fk-inversion} reads [Fu and
 Kane, 2006, eq. (16), p. 045312-5]:
 
 $$
-\begin{equation}
 \label{eq:ch-16-fk-3d-inversion}
 \boxed{
 (-1)^{\nu_0} \;=\; \prod_{i=1}^{8} \prod_{m=1}^{N} \xi_{2m}(\Lambda_i) .
 }
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-16-fk-3d-inversion} is the
@@ -2577,12 +2457,10 @@ this basis, to lowest order in $\mathbf k$, is [Bernevig,
 Hughes, and Zhang, 2006, eq. (1), p. 1757]:
 
 $$
-\begin{equation}
 \label{eq:ch-16-bhz-orig}
 \boxed{
 H_\text{eff}(k_x, k_y) \;=\; \begin{pmatrix} h(\mathbf k) & 0 \\\\ 0 & h^*(-\mathbf k) \end{pmatrix} , \qquad h(\mathbf k) \;=\; \mathbf d(\mathbf k) \cdot \boldsymbol \sigma .
 }
-\end{equation}
 $$
 
 with $d_1 + i d_2 = A(k_x + i k_y) \equiv A k_+$, $d_3
@@ -2744,10 +2622,8 @@ components [Weyl, 1929, p. 332].
 is the limit $m \to 0$ of the Dirac equation:
 
 $$
-\begin{equation}
 \label{eq:ch-16-weyl-equation}
 i \hbar\, \partial_t \psi \;=\; c\, \mathbf p \cdot \boldsymbol \sigma\, \psi ,
-\end{equation}
 $$
 
 where $\boldsymbol \sigma$ are the Pauli matrices on

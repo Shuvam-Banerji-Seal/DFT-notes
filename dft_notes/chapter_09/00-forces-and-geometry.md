@@ -60,7 +60,6 @@ A *complete*-basis KS calculation, at the self-consistent fixed
 point, obeys
 
 $$
-\begin{equation}
 \label{eq:ch-09-headline}
 \boxed{\;
 \mathbf F_I \;\equiv\; -\frac{\partial E}{\partial \mathbf R_I}
@@ -68,7 +67,6 @@ $$
         \frac{\mathbf r - \mathbf R_I}{|\mathbf r - \mathbf R_I|^3}\, d\mathbf r
         \;+\; \sum_{J \neq I} \frac{Z_I Z_J\,(\mathbf R_I - \mathbf R_J)}{|\mathbf R_I - \mathbf R_J|^3}
 \;}
-\end{equation}
 $$
 
 — the *classical* Coulomb force on a point charge $Z_I$ sitting at
@@ -86,16 +84,13 @@ contains a term from the *basis-function* motion that
 as
 
 $$
-\begin{equation}
 \label{eq:ch-09-pulay-split}
 \mathbf F_I \;=\; \mathbf F_I^\text{HF} \;+\; \mathbf F_I^\text{Pulay} ,
-\end{equation}
 $$
 
 where $\mathbf F_I^\text{HF}$ is \eqref{eq:ch-09-headline} and
 
 $$
-\begin{equation}
 \label{eq:ch-09-pulay}
 \boxed{\;
 \mathbf F_I^\text{Pulay}
@@ -105,7 +100,6 @@ $$
         \;\bigg|\; \hat H_\text{KS} - \varepsilon_i \;\bigg|\;
         \chi_\nu \right\rangle
 \;}
-\end{equation}
 $$
 
 is the **Pulay correction** ([§9.3](#93-pulay-forces-the-correction-needed-for-incomplete-basis-sets)).
@@ -150,25 +144,21 @@ real parameter $\lambda$, and let $|\Psi(\lambda)\rangle$ be its
 *exact* normalised ground state,
 
 $$
-\begin{equation}
 \label{eq:ch-09-hf-ene}
 E(\lambda) \;=\; \langle \Psi(\lambda) | \hat H(\lambda) | \Psi(\lambda) \rangle ,
 \qquad
 \langle \Psi(\lambda) | \Psi(\lambda) \rangle = 1 .
-\end{equation}
 $$
 
 Then
 
 $$
-\begin{equation}
 \label{eq:ch-09-hellmann-feynman}
 \boxed{\;
 \frac{dE}{d\lambda} \;=\; \langle \Psi(\lambda) |
             \frac{\partial \hat H}{\partial \lambda} |
             \Psi(\lambda) \rangle
 \;}
-\end{equation}
 $$
 
 — the derivative of the energy is the expectation value of the
@@ -225,9 +215,7 @@ $\langle\Psi|\Psi\rangle = 1$ (constant in $\lambda$).
 vanish; the only survivor is the operator-derivative term:
 
 $$
-\begin{equation}
 \frac{dE}{d\lambda} \;=\; \left\langle \Psi(\lambda) \bigg| \frac{\partial \hat H(\lambda)}{\partial \lambda} \bigg| \Psi(\lambda) \right\rangle . \qquad\blacksquare
-\end{equation}
 $$
 
 The derivative of the energy is the expectation value of the
@@ -246,10 +234,8 @@ component of the position of nucleus $I$.  The full
 Born–Oppenheimer Hamiltonian of a molecule is
 
 $$
-\begin{equation}
 \label{eq:ch-09-hamiltonian}
 \hat H \;=\; \hat T_e + \hat V_{ee} + \hat V_{en} + \hat V_{nn} ,
-\end{equation}
 $$
 
 where the two-body terms are
@@ -284,7 +270,6 @@ Adding the nuclear–nuclear term explicitly gives the
 **Hellmann–Feynman force** on nucleus $I$:
 
 $$
-\begin{equation}
 \label{eq:ch-09-force-nucleus}
 \boxed{\;
 \mathbf F_I
@@ -292,7 +277,6 @@ $$
    \frac{\mathbf r - \mathbf R_I}{|\mathbf r - \mathbf R_I|^3}\, d\mathbf r
    \;+\; \sum_{J \neq I} \frac{Z_I Z_J\,(\mathbf R_I - \mathbf R_J)}{|\mathbf R_I - \mathbf R_J|^3}
 \;}
-\end{equation}
 $$
 
 This is exactly \eqref{eq:ch-09-headline}.  In a KS DFT
@@ -338,10 +322,8 @@ The additional term is the **Pulay force**, after Péter Pulay
 Let
 
 $$
-\begin{equation}
 \label{eq:ch-09-mos}
 \phi_i(\mathbf r) \;=\; \sum_{\mu=1}^{K} C_{\mu i}\, \chi_\mu(\mathbf r; \mathbf R)
-\end{equation}
 $$
 
 be the MO expansion ([chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }})
@@ -354,14 +336,12 @@ the total derivative with respect to $\mathbf R_I$ into a
 SCF solution shifts):
 
 $$
-\begin{equation}
 \label{eq:ch-09-force-split}
 \mathbf F_I
 \;=\; \underbrace{-\frac{\partial E}{\partial \mathbf R_I}\bigg|_{\mathbf C, \text{fixed}}}_{\text{direct}}
    \;-\; \sum_{\mu, \nu, i}
         \frac{\partial E}{\partial C_{\mu i}}\,
         \frac{\partial C_{\mu i}}{\partial \mathbf R_I}\bigg|_\text{chain} .
-\end{equation}
 $$
 
 The chain-rule term is the response of the SCF solution to a
@@ -421,7 +401,6 @@ two-electron terms and the $\mathbf S$-derivative combine into a
 single matrix element:
 
 $$
-\begin{equation}
 \label{eq:ch-09-pulay-derivation}
 \mathbf F_I^\text{Pulay}
 \;=\; -2 \sum_i^\text{occ} \sum_{\mu \in I} \sum_\nu
@@ -429,7 +408,6 @@ $$
      \left\langle \frac{\partial \chi_\mu}{\partial \mathbf R_I}
      \;\bigg|\; \hat H_\text{KS} - \varepsilon_i \;\bigg|\;
      \chi_\nu \right\rangle .
-\end{equation}
 $$
 
 This is \eqref{eq:ch-09-pulay}.  The combination
@@ -572,10 +550,8 @@ of eq. \eqref{eq:ch-09-pulay-derivation}.
 In a plane-wave basis (chapter 06 §6.7) the basis functions are
 
 $$
-\begin{equation}
 \label{eq:ch-09-pw}
 \chi_{\mathbf G}^{\mathbf k}(\mathbf r) \;=\; \frac{1}{\sqrt{\Omega}}\, e^{i(\mathbf k + \mathbf G) \cdot \mathbf r} ,
-\end{equation}
 $$
 
 parameterised by a reciprocal-lattice vector $\mathbf G$ and a
@@ -585,10 +561,8 @@ positions; only the *cell shape* enters through $\Omega$ and the
 $\mathbf G$ grid.  Therefore
 
 $$
-\begin{equation}
 \label{eq:ch-09-pw-deriv}
 \frac{\partial}{\partial \mathbf R_I} \chi_{\mathbf G}^{\mathbf k}(\mathbf r) \;=\; 0 ,
-\end{equation}
 $$
 
 and the Pulay correction \eqref{eq:ch-09-pulay-derivation}
@@ -604,13 +578,11 @@ After some algebra (see problem 2 of [chapter 06]({{ "/dft-notes/chapter-06/" | 
 for a similar manipulation) the electron–nuclear term becomes
 
 $$
-\begin{equation}
 \label{eq:ch-09-pw-electron-nuclear}
 -Z_I \int \rho(\mathbf r)\,
         \frac{\mathbf r - \mathbf R_I}{|\mathbf r - \mathbf R_I|^3}\, d\mathbf r
 \;=\; -\frac{4\pi i\, Z_I}{\Omega} \sum_{\mathbf G \neq 0}
      \frac{\tilde\rho(\mathbf G)\, e^{-i\mathbf G \cdot \mathbf R_I}}{G^2}\, \hat{\mathbf G} .
-\end{equation}
 $$
 
 In a periodic code this is evaluated by FFTs, and the cost is
@@ -661,13 +633,11 @@ basis-derivative integrals are known.
 Write the contracted s-type Gaussian basis function on atom $I$ as
 
 $$
-\begin{equation}
 \label{eq:ch-09-cgto}
 \chi_{\mu}(\mathbf r; \mathbf R) \;=\; \sum_{p=1}^{n_\mu} d_{\mu p}\,
    N(\alpha_{\mu p})\,
    (\mathbf r - \mathbf R_I)^{l_\mu}\,
    e^{-\alpha_{\mu p} |\mathbf r - \mathbf R_I|^2} ,
-\end{equation}
 $$
 
 so the centre is $\mathbf A_\mu = \mathbf R_{I(\mu)}$ and the
@@ -675,10 +645,8 @@ derivative with respect to the position of atom $I$ is non-zero
 only for $\mu$ centred on $I$:
 
 $$
-\begin{equation}
 \frac{\partial \chi_\mu}{\partial \mathbf R_I} \;\neq\; 0
 \;\;\Longleftrightarrow\;\; I(\mu) = I .
-\end{equation}
 $$
 
 (For higher angular momenta the derivative picks up a term
@@ -707,7 +675,6 @@ The Pulay formula \eqref{eq:ch-09-pulay-derivation} becomes, in
 matrix form,
 
 $$
-\begin{equation}
 \label{eq:ch-09-pulay-matrix}
 \boxed{\;
 \mathbf F_I^\text{Pulay}
@@ -716,7 +683,6 @@ $$
      \;-\; 2 \sum_{i}^\text{occ} \varepsilon_i
             \sum_{\mu, \nu} C_{\mu i} C_{\nu i}\, S_{\mu\nu}^{(I)}
 \;}
-\end{equation}
 $$
 
 (in closed-shell notation; $\mathbf P$ is the density matrix in
@@ -732,33 +698,27 @@ derivative of every AO integral with respect to every nuclear
 position.  The chain rule is
 
 $$
-\begin{equation}
 \label{eq:ch-09-cgto-deriv}
 \frac{\partial}{\partial \mathbf R_I} \chi_\mu(\mathbf r; \mathbf R)
 \;=\; \frac{\partial \mathbf A_\mu}{\partial \mathbf R_I} \cdot
       \frac{\partial \chi_\mu}{\partial \mathbf A_\mu}
 \;=\; \delta_{I, I(\mu)}\, \frac{\partial \chi_\mu}{\partial \mathbf A_\mu} .
-\end{equation}
 $$
 
 For an s-type primitive $g(\mathbf r; \alpha, \mathbf A) = e^{-\alpha|\mathbf r - \mathbf A|^2}$,
 
 $$
-\begin{equation}
 \label{eq:ch-09-s-deriv}
 \frac{\partial g}{\partial \mathbf A} \;=\; 2\alpha\, (\mathbf r - \mathbf A)\, e^{-\alpha|\mathbf r - \mathbf A|^2} .
-\end{equation}
 $$
 
 The derivative of an s-type CGTO is therefore
 
 $$
-\begin{equation}
 \frac{\partial \chi_\mu}{\partial \mathbf A_\mu}
 \;=\; \sum_p d_{\mu p}\, N(\alpha_{\mu p})\,
     2\alpha_{\mu p}\, (\mathbf r - \mathbf A_\mu)\,
     e^{-\alpha_{\mu p} |\mathbf r - \mathbf A_\mu|^2} ,
-\end{equation}
 $$
 
 which is a *p-type* function (one factor of $\mathbf r$ in front
@@ -801,19 +761,16 @@ Kleinman–Bylander form
 ([chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }}) §8.4),
 
 $$
-\begin{equation}
 \label{eq:ch-09-nlpp}
 \hat V_\text{NL} \;=\; \sum_{I, \ell, m}
    |\, Y_{\ell m}\, \phi_{I\ell}^\text{ps}\,\rangle\,
    \varepsilon_{I\ell}\,
    \langle\, \phi_{I\ell}^\text{ps}\, Y_{\ell m}\,| ,
-\end{equation}
 $$
 
 the **non-local force** is
 
 $$
-\begin{equation}
 \label{eq:ch-09-nlpp-force}
 \mathbf F_I^\text{NL}
 \;=\; -2 \sum_i^\text{occ} \sum_{\ell, m}
@@ -822,7 +779,6 @@ $$
          \frac{\langle \phi_i | Y_{\ell m} \phi_{I\ell}^\text{ps} \rangle
                \langle \phi_{I\ell}^\text{ps} Y_{\ell m} | \phi_j \rangle}
               {\varepsilon_j - \varepsilon_i} \bigg] .
-\end{equation}
 $$
 
 The first term is the *local* (i.e. one-centre) derivative that
@@ -848,10 +804,8 @@ The rest of this chapter is about what to do with the forces
 once they are in hand.  A *geometry optimisation* is the iteration
 
 $$
-\begin{equation}
 \label{eq:ch-09-opt-loop}
 \mathbf R^{(k+1)} \;=\; \mathbf R^{(k)} + \alpha_k\, \mathbf p^{(k)} ,
-\end{equation}
 $$
 
 where $\mathbf p^{(k)}$ is a *search direction* (a vector in the
@@ -859,12 +813,10 @@ $N = 3 N_\text{atoms}$-dimensional configuration space) and
 $\alpha_k$ is a *step lengt`h*`.  Convergence is reached when
 
 $$
-\begin{equation}
 \label{eq:ch-09-opt-conv}
 \max_I \Bigl| \mathbf F_I \Bigr| \;<\; \text{F\_tol} ,
 \qquad
 \Bigl| E^{(k+1)} - E^{(k)} \Bigr| \;<\; \text{E\_tol} .
-\end{equation}
 $$
 
 Typical tolerances are
@@ -879,10 +831,8 @@ direction $\mathbf p^{(k)}$.
 The simplest choice is to walk downhill along the force:
 
 $$
-\begin{equation}
 \label{eq:ch-09-sd}
 \mathbf p^{(k)} \;=\; -\mathbf F^{(k)} \;=\; +\frac{\partial E}{\partial \mathbf R}\bigg|_{\mathbf R^{(k)}} .
-\end{equation}
 $$
 
 Steepest descent is **trivial to implement** and **always
@@ -911,10 +861,8 @@ If the **Hessian** $\mathbf H^{(k)} = \partial^2 E / \partial \mathbf R^2$
 is available, the *Newton* step is
 
 $$
-\begin{equation}
 \label{eq:ch-09-newton}
 \mathbf p^{(k)} \;=\; -\Bigl[\mathbf H^{(k)}\Bigr]^{-1}\, \mathbf F^{(k)} .
-\end{equation}
 $$
 
 Newton's method converges **quadratically** in the neighbourhood
@@ -939,7 +887,6 @@ $\mathbf B^{(k)} \approx \mathbf H^{(k)}$ and updates it at
 every step from the new gradient information:
 
 $$
-\begin{equation}
 \label{eq:ch-09-bfgs-update-formula}
 \boxed{\;
 \mathbf B^{(k+1)}
@@ -949,18 +896,15 @@ $$
    \;+\; \frac{\mathbf y^{(k)} ({\mathbf y^{(k)}})^{\text{T}}}
             {({\mathbf y^{(k)}})^{\text{T}} \mathbf s^{(k)} }
 \;}
-\end{equation}
 $$
 
 with
 
 $$
-\begin{equation}
 \label{eq:ch-09-bfgs-quantities}
 \mathbf s^{(k)} \;=\; \mathbf R^{(k+1)} - \mathbf R^{(k)} ,
 \qquad
 \mathbf y^{(k)} \;=\; \mathbf F^{(k+1)} - \mathbf F^{(k)} .
-\end{equation}
 $$
 
 (We follow the convention that $\mathbf B \approx \mathbf H$ and
@@ -970,7 +914,6 @@ form.  Some texts flip the sign; the algebra is unchanged.)  The
 inverse-Hessian form of \eqref{eq:ch-09-bfgs-update-formula} is
 
 $$
-\begin{equation}
 \label{eq:ch-09-bfgs-inverse-update}
 \mathbf H_\text{inv}^{(k+1)}
 \;=\; \left( \mathbf I - \frac{\mathbf s^{(k)} ({\mathbf y^{(k)}})^{\text{T}}}
@@ -980,7 +923,6 @@ $$
                             {({\mathbf y^{(k)}})^{\text{T}} \mathbf s^{(k)}} \right)
    \;+\; \frac{\mathbf s^{(k)} ({\mathbf s^{(k)}})^{\text{T}}}
             {({\mathbf y^{(k)}})^{\text{T}} \mathbf s^{(k)}} .
-\end{equation}
 $$
 
 The BFGS method has the following attractive properties (proven
@@ -1018,12 +960,10 @@ E(\mathbf R^{(k)}) + \mathbf F \cdot \mathbf p + \tfrac{1}{2}
 \mathbf p^\text{T} \mathbf B\, \mathbf p$ is trusted:
 
 $$
-\begin{equation}
 \label{eq:ch-09-trust}
 \min_{\|\mathbf p\| \le \Delta_k}
   E(\mathbf R^{(k)}) + \mathbf F \cdot \mathbf p + \tfrac{1}{2}
    \mathbf p^\text{T} \mathbf B\, \mathbf p .
-\end{equation}
 $$
 
 The constraint $\|\mathbf p\| \le \Delta_k$ is what makes the
@@ -1031,10 +971,8 @@ problem well-posed even when $\mathbf B$ is not positive
 definite.  The solution of \eqref{eq:ch-09-trust} is
 
 $$
-\begin{equation}
 \label{eq:ch-09-trust-solution}
 \mathbf p^{(k)} \;=\; -\Bigl[\mathbf B^{(k)} + \lambda_k \mathbf I\Bigr]^{-1}\, \mathbf F^{(k)} ,
-\end{equation}
 $$
 
 where $\lambda_k \ge 0$ is a *Lagrange multiplier* chosen so that
@@ -1068,10 +1006,8 @@ We require the *update`d*' Hessian to satisfy the **secant
 condition**
 
 $$
-\begin{equation}
 \label{eq:ch-09-secant}
 \mathbf B^{(k+1)} \mathbf s^{(k)} \;=\; \mathbf y^{(k)} .
-\end{equation}
 $$
 
 The condition says: the new quadratic model, evaluated along the
@@ -1089,10 +1025,8 @@ BFGS writes the new Hessian as the old one plus a *rank-two
 correction*:
 
 $$
-\begin{equation}
 \label{eq:ch-09-bfgs-ansatz}
 \mathbf B^{(k+1)} \;=\; \mathbf B^{(k)} + \mathbf a\, \mathbf u^\text{T} + \mathbf u\, \mathbf a^\text{T} ,
-\end{equation}
 $$
 
 with two vectors $\mathbf a$ and $\mathbf u$ to be determined.
@@ -1114,32 +1048,26 @@ Apply $\mathbf B^{(k+1)}$ to $\mathbf s^{(k)}$:
 For this to equal $\mathbf y^{(k)}$ we need
 
 $$
-\begin{equation}
 \label{eq:ch-09-secant-required}
 \mathbf B^{(k)} \mathbf s^{(k)} + (\mathbf u^\text{T} \mathbf s^{(k)})\, \mathbf a + (\mathbf a^\text{T} \mathbf s^{(k)})\, \mathbf u \;=\; \mathbf y^{(k)} .
-\end{equation}
 $$
 
 BFGS takes the special choice
 
 $$
-\begin{equation}
 \label{eq:ch-09-bfgs-vectors}
 \mathbf a \;=\; \mathbf B^{(k)} \mathbf s^{(k)} , \qquad
 \mathbf u \;=\; \beta \mathbf y^{(k)} ,
-\end{equation}
 $$
 
 where $\beta$ is a scalar.  Substituting into
 \eqref{eq:ch-09-secant-required}:
 
 $$
-\begin{equation}
 \mathbf B^{(k)} \mathbf s^{(k)}
  + \beta\, (\mathbf y^{(k)\text{T}} \mathbf s^{(k)})\, \mathbf B^{(k)} \mathbf s^{(k)}
  + \beta\, (\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)})\, \mathbf y^{(k)}
  \;=\; \mathbf y^{(k)} .
-\end{equation}
 $$
 
 Solve for $\beta$ by taking the inner product with
@@ -1149,12 +1077,10 @@ $(\mathbf B^{(k)} \mathbf s^{(k)}) \cdot \mathbf s^{(k)} =
 $\mathbf B$ is symmetric):
 
 $$
-\begin{equation}
 \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}
  + \beta\, (\mathbf y^{(k)\text{T}} \mathbf s^{(k)})\, \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}
  + \beta\, (\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)})\, \mathbf y^{(k)\text{T}} \mathbf s^{(k)}
  \;=\; \mathbf y^{(k)\text{T}} \mathbf s^{(k)} .
-\end{equation}
 $$
 
 The first and second terms have a common factor
@@ -1164,22 +1090,18 @@ Letting $a = \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}$
 and $b = \mathbf y^{(k)\text{T}} \mathbf s^{(k)}$:
 
 $$
-\begin{equation}
 a + \beta\, b\, a + \beta\, a\, b \;=\; b
 \;\;\Longrightarrow\;\;
 a + 2 \beta\, a b \;=\; b
 \;\;\Longrightarrow\;\;
 \beta \;=\; \frac{b - a}{2 a b} \;=\; \frac{1}{2 a} - \frac{1}{2 b} .
-\end{equation}
 $$
 
 So
 
 $$
-\begin{equation}
 \beta \;=\; \frac{1}{2 \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}
           - \frac{1}{2 \mathbf y^{(k)\text{T}} \mathbf s^{(k)}} .
-\end{equation}
 $$
 
 ### 9.7.4 The result
@@ -1248,7 +1170,6 @@ combine the rank-two terms into a single rank-one update of
 $\mathbf B^{-1}$) the result is the famous **BFGS formula**
 
 $$
-\begin{equation}
 \label{eq:ch-09-bfgs-derived}
 \mathbf B^{(k+1)}
 \;=\; \mathbf B^{(k)}
@@ -1256,7 +1177,6 @@ $$
             {\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}
    \;+\; \frac{\mathbf y^{(k)} \mathbf y^{(k)\text{T}}}
             {\mathbf y^{(k)\text{T}} \mathbf s^{(k)}} .
-\end{equation}
 $$
 
 This is \eqref{eq:ch-09-bfgs-update-formula}, restated. $\quad\blacksquare$
@@ -1360,7 +1280,6 @@ The two-loop recursion that implements the implicit inverse
 Hessian is
 
 $$
-\begin{equation}
 \label{eq:ch-09-lbfgs-loop}
 \begin{aligned}
 \mathbf q &\leftarrow -\mathbf F^{(k)} , \\\
@@ -1373,17 +1292,14 @@ $$
 &\quad \mathbf r \leftarrow \mathbf r + (\alpha_i - \beta) \mathbf s^{(i)} , \\\
 \mathbf p^{(k)} &\leftarrow \mathbf r .
 \end{aligned}
-\end{equation}
 $$
 
 with the *scaling factor*
 
 $$
-\begin{equation}
 \label{eq:ch-09-lbfgs-scaling}
 \gamma_k \;=\; \frac{\mathbf s^{(k-m+1)\text{T}} \mathbf y^{(k-m+1)}}
                     {\mathbf y^{(k-m+1)\text{T}} \mathbf y^{(k-m+1)}} .
-\end{equation}
 $$
 
 The scalars $\rho_i = 1 / (\mathbf y^{(i)\text{T}} \mathbf s^{(i)})$
@@ -1413,10 +1329,8 @@ on the same footing as the ionic positions.  The
 analogue of the force for the cell is the **stress tensor**
 
 $$
-\begin{equation}
 \label{eq:ch-09-stress-def}
 \sigma_{\alpha\beta} \;=\; -\frac{1}{\Omega}\, \frac{\partial E}{\partial \epsilon_{\alpha\beta}}\bigg|_{\text{ions at fixed fractional coords}} ,
-\end{equation}
 $$
 
 where $\epsilon_{\alpha\beta}$ is a strain — an infinitesimal
@@ -1435,10 +1349,8 @@ $\langle \Psi | \partial \hat H / \partial \epsilon_{\alpha\beta} | \Psi \rangle
 The strain derivative of a position-space operator is
 
 $$
-\begin{equation}
 \label{eq:ch-09-strain-deriv}
 \frac{\partial}{\partial \epsilon_{\alpha\beta}} f(\mathbf r) \;=\; r_\beta\, \frac{\partial f}{\partial r_\alpha} ,
-\end{equation}
 $$
 
 so the strain derivative of the kinetic operator is
@@ -1455,7 +1367,6 @@ the two contributions and re-arranging the matrix elements so the
 KS orbitals are projected out gives
 
 $$
-\begin{equation}
 \label{eq:ch-09-stress-hf}
 \sigma_{\alpha\beta}^\text{HF}
 \;=\; -\frac{1}{\Omega} \bigg[
@@ -1463,7 +1374,6 @@ $$
        - \int \rho(\mathbf r)\, v_\text{eff}(\mathbf r)\, r_\beta
          \frac{\partial}{\partial r_\alpha} \ln \rho(\mathbf r)\, d\mathbf r
      \bigg] \;+\; \text{(Ewald stress)} .
-\end{equation}
 $$
 
 The first term is the **quantum stress** (kinetic-energy
@@ -1483,7 +1393,6 @@ conventions).  The basis-derivative contribution is the
 **Pulay stress**, the cell analogue of the Pulay force:
 
 $$
-\begin{equation}
 \label{eq:ch-09-stress-pulay}
 \sigma_{\alpha\beta}^\text{Pulay}
 \;=\; -\frac{1}{\Omega} \cdot 2 \sum_i^\text{occ} \sum_{\mu, \nu}
@@ -1491,7 +1400,6 @@ $$
        \left\langle \frac{\partial \chi_\mu}{\partial \epsilon_{\alpha\beta}}
        \;\bigg|\; \hat H_\text{KS} - \varepsilon_i \;\bigg|\;
        \chi_\nu \right\rangle .
-\end{equation}
 $$
 
 In a **plane-wave basis** the strain derivative of the basis
@@ -1511,10 +1419,8 @@ so the Pulay stress is non-zero.)
 The **pressure** is the negative trace of the stress tensor
 
 $$
-\begin{equation}
 \label{eq:ch-09-pressure}
 P \;=\; -\tfrac{1}{3} \operatorname{tr} \boldsymbol\sigma \;=\; -\tfrac{1}{3} (\sigma_{xx} + \sigma_{yy} + \sigma_{zz}) .
-\end{equation}
 $$
 
 At equilibrium the cell is stress-free:
@@ -1669,13 +1575,11 @@ $\mathbf M = (0, 0, R/2)$, and the z-component of the HF force
 on each nucleus is
 
 $$
-\begin{equation}
 \label{eq:ch-09-h2-hf-force}
 F_{I_z}^\text{HF}
 \;=\; -Z_H \int \rho(\mathbf r)\,
        \frac{z - I_z}{|\mathbf r - \mathbf R_I|^3}\, d\mathbf r
    \;-\; \frac{Z_H^2\,(I_z - J_z)}{|R_I - R_J|^3} ,
-\end{equation}
 $$
 
 with $J$ the *other* hydrogen.  By the centre-of-mass-fixed
@@ -1732,10 +1636,8 @@ together recover the true gradient of $E(R)$.
 The 1-D steepest-descent step is
 
 $$
-\begin{equation}
 \label{eq:ch-09-h2-sd}
 R^{(k+1)} \;=\; R^{(k)} - \alpha_k\, \frac{dE}{dR}\bigg|_{R^{(k)}} .
-\end{equation}
 $$
 
 with a backtracking line search:  start with

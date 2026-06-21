@@ -156,10 +156,8 @@ Consider a fictitious system of $N$ non-interacting electrons in
 an effective time-dependent potential $v_\text{eff}(\mathbf r, t)$.
 Its one-body Hamiltonian is
 
-\begin{equation}
 \label{eq:ch-12-tdks-hamiltonian}
 \hat H_s(t) \;=\; -\frac{1}{2}\nabla^2 + v_\text{eff}(\mathbf r, t) ,
-\end{equation}
 $$
 
 and its wavefunction is a single time-dependent Slater determinant
@@ -167,20 +165,16 @@ $\Phi_s(t)$ built from $N$ orthonormal orbitals
 $\{\phi_i(\mathbf r, t)\}$ that satisfy
 
 $$
-\begin{equation}
 \label{eq:ch-12-tdks-orbital}
 i\, \frac{\partial}{\partial t}\, \phi_i(\mathbf r, t)
 \;=\; \hat H_s(t)\, \phi_i(\mathbf r, t) .
-\end{equation}
 $$
 
 The auxiliary density is
 
 $$
-\begin{equation}
 \label{eq:ch-12-tdks-density}
 \rho(\mathbf r, t) \;=\; 2 \sum_{i=1}^{N/2} |\phi_i(\mathbf r, t)|^2
-\end{equation}
 $$
 
 for a closed-shell (spin-paired) system, the factor of 2 again
@@ -196,13 +190,11 @@ potential $v_\text{eff}(\mathbf r, t)$ that does this. The standard
 decomposition of $v_\text{eff}$ mirrors the static case:
 
 $$
-\begin{equation}
 \label{eq:ch-12-veff}
 v_\text{eff}[\rho](\mathbf r, t)
 \;=\; v_\text{ext}(\mathbf r, t)
     + v_\text{H}[\rho_t](\mathbf r, t)
     + v_\text{xc}[\rho_{\le t}](\mathbf r, t) .
-\end{equation}
 $$
 
 Three comments on \eqref{eq:ch-12-veff}:
@@ -210,11 +202,9 @@ Three comments on \eqref{eq:ch-12-veff}:
 1. **The Hartree term** $v_\text{H}[\rho_t](\mathbf r, t)$ is the
    *instantaneous* classical Coulomb potential of the density
 $$
-   \begin{equation}
    \label{eq:ch-12-vh}
    v_\text{H}[\rho](\mathbf r, t)
    \;=\; \int \frac{\rho(\mathbf r', t)}{|\mathbf r - \mathbf r'|}\, d\mathbf r' .
-   \end{equation}
 $$
    The subscript $\rho_t$ emphasises that the Hartree potential at
    time $t$ depends on the density at the *same* time $t$ — i.e. it
@@ -266,7 +256,6 @@ Putting it all together, the **time-dependent Kohn–Sham equations**
 are the coupled system
 
 $$
-\begin{equation}
 \label{eq:ch-12-tdks-coupled}
 \boxed{
 \begin{aligned}
@@ -279,7 +268,6 @@ v_\text{eff}[\rho](\mathbf r, t) &=
  + v_\text{xc}[\rho_{\le t}](\mathbf r, t) .
 \end{aligned}
 }
-\end{equation}
 $$
 
 The first equation is a (nonlinear) one-body Schrödinger equation;
@@ -307,13 +295,11 @@ with initial condition $|\Psi(t_0)\rangle = |\Psi_0\rangle$, the
 **quantum-mechanical action functional** is
 
 $$
-\begin{equation}
 \label{eq:ch-12-action}
 \mathcal A[\Psi]
 \;=\; \int_{t_0}^{t_1}
    \Bigl\langle \Psi(t) \Big|
    i\, \partial_t - \hat H(t) \Big| \Psi(t) \rangle \Bigr\rangle\, dt .
-\end{equation}
 $$
 
 The action is **stationary** ($\delta \mathcal A = 0$) at the
@@ -339,13 +325,11 @@ matrix at time $t$ — and hence the action that generates it —
 involves both forward and backward propagation in time. Define
 
 $$
-\begin{equation}
 \label{eq:ch-12-keldysh-action}
 \mathcal A_\gamma[\Psi]
 \;=\; \int_\gamma
    \Bigl\langle \Psi(\bar t) \Big|
    i\, \partial_{\bar t} - \hat H(\bar t) \Big| \Psi(\bar t) \rangle \Bigr\rangle\, d\bar t ,
-\end{equation}
 $$
 
 where $\bar t$ parameterises the contour. The integrand on the
@@ -370,14 +354,12 @@ the density.
 To do this, write the interacting action as
 
 $$
-\begin{equation}
 \label{eq:ch-12-rg-action}
 \mathcal A_\gamma[v_\text{ext}, \Psi]
 \;=\; \mathcal B_\gamma[\Psi]
    - \int_\gamma \int d\mathbf r\,
        \rho_\Psi(\mathbf r, \bar t)\,
        v_\text{ext}(\mathbf r, \bar t) ,
-\end{equation}
 $$
 
 where $\mathcal B_\gamma[\Psi] = \int_\gamma d\bar t\, \langle
@@ -391,28 +373,24 @@ time-dependent density.
 Now define the **density functional**
 
 $$
-\begin{equation}
 \label{eq:ch-12-A-density-functional}
 \mathcal A_\gamma[v_\text{ext}, \rho]
 \;=\; \mathcal B_\gamma[\rho]
    - \int_\gamma \int d\mathbf r\,
        \rho(\mathbf r, \bar t)\,
        v_\text{ext}(\mathbf r, \bar t) ,
-\end{equation}
 $$
 
 where $\mathcal B_\gamma[\rho]$ is the **Levy–Lieb** constrained-
 search functional
 
 $$
-\begin{equation}
 \label{eq:ch-12-B-rho}
 \mathcal B_\gamma[\rho]
 \;=\; \min_{\Psi \to \rho}
    \int_\gamma d\bar t\,
    \Bigl\langle \Psi \Big|
    i\partial_{\bar t} - \hat T - \hat W \Big| \Psi \Bigr\rangle ,
-\end{equation}
 $$
 
 with the minimum taken over all $N$-electron states
@@ -431,11 +409,9 @@ $\rho(\mathbf r, \bar t)$ on the upper branch of the contour
 (for $\bar t \in (t_0, t_1)$). The first variation gives
 
 $$
-\begin{equation}
 \label{eq:ch-12-fp-equation}
 \frac{\delta \mathcal B_\gamma}{\delta \rho(\mathbf r, \bar t)}
 \;-\; v_\text{ext}(\mathbf r, \bar t) \;=\; 0 .
-\end{equation}
 $$
 
 The functional derivative $\delta \mathcal B_\gamma / \delta
@@ -454,21 +430,17 @@ state. By the same fixed-point argument applied to
 $v'_\text{ext}$, the density is also a fixed point of
 
 $$
-\begin{equation}
 \label{eq:ch-12-fp-equation-prime}
 \frac{\delta \mathcal B_\gamma}{\delta \rho(\mathbf r, \bar t)}
 \;-\; v'_\text{ext}(\mathbf r, \bar t) \;=\; 0 .
-\end{equation}
 $$
 
 Subtracting \eqref{eq:ch-12-fp-equation} from
 \eqref{eq:ch-12-fp-equation-prime},
 
 $$
-\begin{equation}
 \label{eq:ch-12-difference}
 v'_\text{ext}(\mathbf r, t) - v_\text{ext}(\mathbf r, t) \;=\; 0 .
-\end{equation}
 $$
 
 This is the original Runge–Gross conclusion: **two external
@@ -546,11 +518,9 @@ local-density approximation** (ALDA, sometimes "ALDA" or just
 the *instantaneous* density:
 
 $$
-\begin{equation}
 \label{eq:ch-12-alda}
 v_\text{xc}^\text{ALDA}[\rho](\mathbf r, t)
 \;=\; v_\text{xc}^\text{LDA}\big[\rho(\mathbf r, t)\big](\mathbf r) .
-\end{equation}
 $$
 
 In a spin-paired, spin-unpolarised system the LDA xc potential
@@ -603,13 +573,11 @@ approximated by the **Fock exchange kernel** of the KS
 orbitals:
 
 $$
-\begin{equation}
 \label{eq:ch-12-exx-kernel}
 f_\text{x}^\text{EXX}(\mathbf r, \mathbf r', t - t')
 \;=\; -\frac{1}{2} \sum_{\sigma}
    \frac{|\gamma_s(\mathbf r, \mathbf r'; t, t')|^2}
         {|\mathbf r - \mathbf r'|\, \rho(\mathbf r, t)\, \rho(\mathbf r', t')}\, \delta(t - t') .
-\end{equation}
 $$
 
 (The $\delta(t - t')$ enforces the *adiabati`c*' approximation;
@@ -645,7 +613,6 @@ The BSE for the two-particle correlation function
 $L(1, 2; 3, 4)$ is
 
 $$
-\begin{equation}
 \label{eq:ch-12-bse}
 L(1, 2; 3, 4)
 \;=\; L_0(1, 2; 3, 4)
@@ -653,7 +620,6 @@ L(1, 2; 3, 4)
    L_0(1, 5; 3, 7)\,
    K(5, 6; 7, 8)\,
    L(8, 6; 2, 4) ,
-\end{equation}
 $$
 
 where $L_0$ is the non-interacting two-particle propagator
@@ -697,13 +663,11 @@ $\delta v_\text{ext}(\mathbf r, t)$ is described by the
 **density-density response function** $\chi$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-chi-def}
 \delta\rho(\mathbf r, t) \;=\;
 \int dt' \int d\mathbf r'\,
    \chi(\mathbf r, t; \mathbf r', t')\,
    \delta v_\text{ext}(\mathbf r', t') .
-\end{equation}
 $$
 
 In a time-translation-invariant system the response depends
@@ -712,13 +676,11 @@ $\tau = t - t'$ gives the **frequency-dependent** response
 function $\chi(\mathbf r, \mathbf r'; \omega)$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-chi-fourier}
 \delta\rho(\mathbf r, \omega) \;=\;
 \int d\mathbf r'\,
    \chi(\mathbf r, \mathbf r'; \omega)\,
    \delta v_\text{ext}(\mathbf r', \omega) .
-\end{equation}
 $$
 
 The poles of $\chi(\mathbf r, \mathbf r'; \omega)$ as a
@@ -733,13 +695,11 @@ $\chi_s$, which describes how the KS density responds to a
 weak perturbation of the KS effective potential:
 
 $$
-\begin{equation}
 \label{eq:ch-12-chi-s-def}
 \delta\rho_s(\mathbf r, \omega) \;=\;
 \int d\mathbf r'\,
    \chi_s(\mathbf r, \mathbf r'; \omega)\,
    \delta v_\text{eff}(\mathbf r', \omega) .
-\end{equation}
 $$
 
 In a basis of KS orbitals the KS response function is
@@ -748,7 +708,6 @@ only on the KS orbitals and eigenvalues. Its Lehmann
 representation is
 
 $$
-\begin{equation}
 \label{eq:ch-12-chi-s-lehmann}
 \chi_s(\mathbf r, \mathbf r'; \omega) \;=\;
 2 \sum_{i}^\text{occ} \sum_{a}^\text{virt}
@@ -756,7 +715,6 @@ $$
          \phi_a^*(\mathbf r')\, \phi_i(\mathbf r')}
         {\omega - (\varepsilon_a - \varepsilon_i) + i\eta}
    \;-\; \text{c.c.}(\omega \to -\omega) .
-\end{equation}
 $$
 
 The "2" is again the Kramers spin-pairing factor; the sum is
@@ -779,7 +737,6 @@ The full interacting response function $\chi$ is connected to
 the KS response $\chi_s$ by the **Dyson equation**
 
 $$
-\begin{equation}
 \label{eq:ch-12-dyson}
 \boxed{
 \chi(\mathbf r, \mathbf r'; \omega) \;=\;
@@ -790,7 +747,6 @@ $$
         + f_\text{xc}(\mathbf r'', \mathbf r''', \omega) \Bigr]\,
    \chi(\mathbf r''', \mathbf r'; \omega) .
 }
-\end{equation}
 $$
 
 The kernel is the sum of the **Hartree kernel**
@@ -798,12 +754,10 @@ $v_\text{H}(\mathbf r, \mathbf r') = 1/|\mathbf r - \mathbf r'|$
 and the **exchange–correlation kernel**
 
 $$
-\begin{equation}
 \label{eq:ch-12-fxc}
 f_\text{xc}(\mathbf r, \mathbf r', \omega) \;=\;
 \frac{\delta v_\text{xc}(\mathbf r, \omega)}
      {\delta \rho(\mathbf r', \omega)} ,
-\end{equation}
 $$
 
 which is the *functional derivative* of the time-dependent
@@ -822,7 +776,6 @@ is not the bare $\delta v_\text{ext}$ but the *self-consistent*
 $\delta v_\text{eff}$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-veff-response}
 \delta v_\text{eff}(\mathbf r, \omega)
 \;=\; \delta v_\text{ext}(\mathbf r, \omega)
@@ -832,7 +785,6 @@ $$
    + \int d\mathbf r'\,
        f_\text{xc}(\mathbf r, \mathbf r'; \omega)\,
        \delta\rho(\mathbf r', \omega) .
-\end{equation}
 $$
 
 Substitute into \eqref{eq:ch-12-chi-s-def} and use
@@ -894,14 +846,12 @@ $\int d\mathbf r''\, d\mathbf r'''$ becomes matrix
 multiplication:
 
 $$
-\begin{equation}
 \label{eq:ch-12-dyson-matrix}
 \boldsymbol\chi(\omega) \;=\;
 \boldsymbol\chi_s(\omega)
    + \boldsymbol\chi_s(\omega)\,
      \Bigl[ \mathbf v_H + \mathbf f_\text{xc}(\omega) \Bigr]\,
      \boldsymbol\chi(\omega) .
-\end{equation}
 $$
 
 This is a $K \times K$ matrix equation for the $K \times K$
@@ -918,13 +868,11 @@ To see this, write the Dyson equation \eqref{eq:ch-12-dyson-matrix}
 in operator form as
 
 $$
-\begin{equation}
 \label{eq:ch-12-chi-resolvent}
 \boldsymbol\chi(\omega) \;=\;
 \Bigl[ \mathbf 1 - \boldsymbol\chi_s(\omega)\,
      \Bigl( \mathbf v_H + \mathbf f_\text{xc}(\omega) \Bigr)
 \Bigr]^{-1}\, \boldsymbol\chi_s(\omega) .
-\end{equation}
 $$
 
 The poles of $\boldsymbol\chi(\omega)$ are the frequencies
@@ -932,12 +880,10 @@ $\omega_I$ at which the bracketed matrix is singular, i.e. at
 which
 
 $$
-\begin{equation}
 \label{eq:ch-12-pole-equation}
 \det\Bigl[ \mathbf 1 - \boldsymbol\chi_s(\omega_I)\,
                 \Bigl( \mathbf v_H + \mathbf f_\text{xc}(\omega_I) \Bigr)
        \Bigr] \;=\; 0 .
-\end{equation}
 $$
 
 At such a frequency the response is *infinite* for a finite
@@ -955,10 +901,8 @@ dipole approximation) and is directly comparable to
 experimental absorption cross-sections via the relation
 
 $$
-\begin{equation}
 \label{eq:ch-12-oscillator-strength}
 \sigma(\omega) \;=\; \frac{2\pi^2}{c} \sum_I f_I\, \delta(\omega - \omega_I) ,
-\end{equation}
 $$
 
 where $\sigma(\omega)$ is the cross-section for absorption of
@@ -968,12 +912,10 @@ For a closed-shell, dipole-allowed excitation the oscillator
 strength in the dipole-length gauge is
 
 $$
-\begin{equation}
 \label{eq:ch-12-fI}
 f_I \;=\; \frac{2\, m\, \omega_I}{3\hbar}\,
    \sum_{\alpha = x, y, z}
    \Bigl| \langle \Psi_I | \hat r_\alpha | \Psi_0 \rangle \Bigr|^2 ,
-\end{equation}
 $$
 
 with $\Psi_0$ the ground state, $\Psi_I$ the excited state, and
@@ -1018,10 +960,8 @@ different way.
 **Step 1 — the single-particle transition density.** Define
 
 $$
-\begin{equation}
 \label{eq:ch-12-transition-density}
 \xi_{ia}(\mathbf r) \;=\; \phi_i^*(\mathbf r)\, \phi_a(\mathbf r) ,
-\end{equation}
 $$
 
 the product of an occupied and a virtual KS orbital. The set
@@ -1038,14 +978,12 @@ function — the KS system has no coupling between different
 particle–hole pairs):
 
 $$
-\begin{equation}
 \label{eq:ch-12-chi-s-lehmann-basis}
 \chi_s(\mathbf r, \mathbf r'; \omega) \;=\;
 2 \sum_{ia} \xi_{ia}(\mathbf r)\,
        \Bigl[ (\omega - \omega_{ia} + i\eta)^{-1}
             - (\omega + \omega_{ia} - i\eta)^{-1} \Bigr]\,
        \xi_{ia}^*(\mathbf r') ,
-\end{equation}
 $$
 
 with $\omega_{ia} = \varepsilon_a - \varepsilon_i > 0$ the
@@ -1063,12 +1001,10 @@ $\omega$) and an *anti-resonant* (negative $\omega$) component.
 Write it as
 
 $$
-\begin{equation}
 \label{eq:ch-12-rho-ansatz}
 \delta\rho(\mathbf r, \omega_I) \;=\; 2 \sum_{ia}
     \Bigl[ X_{ia}\, \xi_{ia}(\mathbf r)
           + Y_{ia}\, \xi_{ia}(\mathbf r) \Bigr] ,
-\end{equation}
 $$
 
 where $X_{ia}$ and $Y_{ia}$ are the *resonant* and anti-resonant
@@ -1082,13 +1018,11 @@ the external perturbation and the induced Hartree–xc perturbation
 \eqref{eq:ch-12-f-Hxc}:
 
 $$
-\begin{equation}
 \label{eq:ch-12-v-eff}
 \delta v_\text{eff}(\mathbf r, \omega) \;=\;
    \delta v_\text{ext}(\mathbf r, \omega) + \int\! d\mathbf r'\,
         f_\text{Hxc}(\mathbf r, \mathbf r')\,
         \delta\rho(\mathbf r', \omega) .
-\end{equation}
 $$
 
 At the *pole* of $\chi$, the response diverges for a finite
@@ -1096,37 +1030,31 @@ $\delta v_\text{ext}$, so we drop the source and look for a
 self-sustaining $\delta v_\text{eff}$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-v-eff-pole}
 \delta v_\text{eff}(\mathbf r, \omega_I) \;=\;
    \int\! d\mathbf r'\,
         f_\text{Hxc}(\mathbf r, \mathbf r')\,
         \delta\rho(\mathbf r', \omega_I) .
-\end{equation}
 $$
 
 Project onto the transition basis $\xi_{ia}^*(\mathbf r)$ and
 integrate over $\mathbf r$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-v-eff-ia}
 [\delta v_\text{eff}]_{ia} \;=\;
    \sum_{jb} K_{ia, jb}\, 2\,(X_{jb} + Y_{jb}) ,
-\end{equation}
 $$
 
 where the **coupling matrix** $\mathbf K$ is
 
 $$
-\begin{equation}
 \label{eq:ch-12-casida-K}
 K_{ia, jb} \;=\;
 \iint d\mathbf r\, d\mathbf r'\,
    \xi_{ia}^*(\mathbf r)\,
    \Bigl[ v_H(\mathbf r, \mathbf r') + f_\text{xc}(\mathbf r, \mathbf r') \Bigr]\,
    \xi_{jb}(\mathbf r') .
-\end{equation}
 $$
 
 The factor of 2 in \eqref{eq:ch-12-v-eff-ia} comes from the
@@ -1137,33 +1065,27 @@ response is *linear* in $\delta v_\text{eff}$ and diagonal in
 the transition basis:
 
 $$
-\begin{equation}
 \label{eq:ch-12-rho-from-vs}
 \delta\rho(\mathbf r, \omega) \;=\; \int\! d\mathbf r'\,
     \chi_s(\mathbf r, \mathbf r'; \omega)\,
     \delta v_\text{eff}(\mathbf r', \omega) .
-\end{equation}
 $$
 
 Substituting the Lehmann form \eqref{eq:ch-12-chi-s-lehmann-basis}
 for $\chi_s$ and projecting onto $\xi_{ia}^*(\mathbf r)$ gives
 
 $$
-\begin{equation}
 \label{eq:ch-12-rho-ia}
 2\,(X_{ia} + Y_{ia}) \;=\;
    2\,\Bigl[ g_{ia}(\omega_I) + g_{ia}(-\omega_I) \Bigr]\,
    [\delta v_\text{eff}]_{ia} ,
-\end{equation}
 $$
 
 where we have defined the *single-particle propagator*
 
 $$
-\begin{equation}
 \label{eq:ch-12-g-ia}
 g_{ia}(\omega) \;=\; \frac{1}{\omega - \omega_{ia} + i\eta} ,
-\end{equation}
 $$
 
 whose value at $\omega = \omega_I$ is the relevant object
@@ -1183,29 +1105,23 @@ For the *resonant* part: multiply the resonant piece of
 by $(\omega_I - \omega_{ia})$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-X-equation}
 X_{ia} \;=\; g_{ia}(\omega_I)\, [\delta v_\text{eff}]_{ia} ,
-\end{equation}
 $$
 
 which gives
 
 $$
-\begin{equation}
 \label{eq:ch-12-X-equation-2}
 (\omega_I - \omega_{ia})\, X_{ia} \;=\; [\delta v_\text{eff}]_{ia} .
-\end{equation}
 $$
 
 Substituting \eqref{eq:ch-12-v-eff-ia} for $[\delta v_\text{eff}]_{ia}$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-X-equation-3}
 \omega_I\, X_{ia} \;=\; \omega_{ia}\, X_{ia}
     + 2 \sum_{jb} K_{ia, jb}\, (X_{jb} + Y_{jb}) .
-\end{equation}
 $$
 
 For the *anti-resonant* part: multiply the anti-resonant piece
@@ -1213,10 +1129,8 @@ of \eqref{eq:ch-12-rho-ia} (the piece proportional to
 $g_{ia}(-\omega_I)$) by $(-\omega_I - \omega_{ia})$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-Y-equation}
 (-\omega_I - \omega_{ia})\, Y_{ia} \;=\; [\delta v_\text{eff}]_{ia} .
-\end{equation}
 $$
 
 (The resonant part contributes nothing because $g_{ia}(\omega_I)$
@@ -1224,11 +1138,9 @@ is small compared to $g_{ia}(-\omega_I)$ near the negative
 frequency pole.) Substituting \eqref{eq:ch-12-v-eff-ia}:
 
 $$
-\begin{equation}
 \label{eq:ch-12-Y-equation-2}
 -\omega_I\, Y_{ia} \;=\; \omega_{ia}\, Y_{ia}
     + 2 \sum_{jb} K_{ia, jb}\, (X_{jb} + Y_{jb}) .
-\end{equation}
 $$
 
 (After multiplying out the sign in $(-\omega_I - \omega_{ia}) = -(\omega_I + \omega_{ia})$.)
@@ -1242,7 +1154,6 @@ energies $\omega_{ia}$ and the off-diagonal coupling
 given by $\mathbf K$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-casida}
 \boxed{
 \begin{pmatrix}
@@ -1257,24 +1168,19 @@ $$
 \end{pmatrix}
 \begin{pmatrix} \mathbf X \\\\ \mathbf Y \end{pmatrix} .
 }
-\end{equation}
 $$
 
 The two blocks $\mathbf A$ and $\mathbf B$ are
 
 $$
-\begin{equation}
 \label{eq:ch-12-casida-A}
 A_{ia, jb} \;=\; \delta_{ij}\, \delta_{ab}\, \omega_{ia}
                 + K_{ia, jb} ,
-\end{equation}
 $$
 
 $$
-\begin{equation}
 \label{eq:ch-12-casida-B}
 B_{ia, jb} \;=\; K_{ia, jb} ,
-\end{equation}
 $$
 
 i.e. the diagonal is the bare KS excitation energy and the
@@ -1291,14 +1197,10 @@ $\mathbf G \equiv \mathbf X - \mathbf Y$. Adding and
 subtracting the two halves of \eqref{eq:ch-12-casida} gives
 
 $$
-\begin{equation}
 (\mathbf A + \mathbf B)\, \mathbf F = \omega_I\, \mathbf G , \tag{12.7.a}
-\end{equation}
 $$
 $$
-\begin{equation}
 (\mathbf A - \mathbf B)\, \mathbf G = \omega_I\, \mathbf F . \tag{12.7.b}
-\end{equation}
 $$
 
 With $\mathbf A - \mathbf B = \mathrm{diag}(\omega_{ia})$
@@ -1311,7 +1213,6 @@ componentwise, i.e. $G_{ia} = \omega_{ia}\, F_{ia} / \omega_I$.
 Substituting into \eqref{eq:ch-12-a}:
 
 $$
-\begin{equation}
 \label{eq:ch-12-casida-omega2}
 \boxed{
 \Bigl[ \mathrm{diag}(\omega_{ia}) + 2\, \mathbf K \Bigr]\,
@@ -1319,19 +1220,16 @@ $$
        \mathbf F
    \;=\; \omega_I^2\, \mathbf F ,
 }
-\end{equation}
 $$
 
 or, in components,
 
 $$
-\begin{equation}
 \label{eq:ch-12-casida-omega2-comp}
 \sum_{jb} \Bigl[ \delta_{ij}\delta_{ab}\, \omega_{ia}
                 + 2\, K_{ia, jb} \Bigr]\,
        \omega_{jb}\, F_{jb}
    \;=\; \omega_I^2\, F_{ia} .
-\end{equation}
 $$
 
 This is the **Casida equation in the symmetric form** (Casida
@@ -1350,10 +1248,8 @@ neglecting the $\mathbf B$ block, i.e. setting $Y_{ia} = 0$),
 the equation reduces to the simpler eigenvalue problem
 
 $$
-\begin{equation}
 \label{eq:ch-12-casida-TDA}
 \mathbf A \mathbf X \;=\; \omega_I\, \mathbf X ,
-\end{equation}
 $$
 
 i.e. $\omega_I X_{ia} = \omega_{ia} X_{ia} + 2 \sum_{jb} K_{ia, jb} X_{jb}$.
@@ -1369,13 +1265,11 @@ be present).
 The dipole oscillator strength of excitation $I$ is
 
 $$
-\begin{equation}
 \label{eq:ch-12-casida-f}
 f_I \;=\; \frac{2}{3} \sum_{\alpha = x, y, z}
    \Bigl| \sum_{ia} \sqrt{\frac{\omega_{ia}}{\omega_I}}\,
         (X_{ia} + Y_{ia})\,
         \langle \phi_a | \hat r_\alpha | \phi_i \rangle \Bigr|^2 .
-\end{equation}
 $$
 
 The sum runs over all single-particle transitions, weighted
@@ -1509,13 +1403,11 @@ The CN update of the orbital $\phi_i$ from $t_n$ to
 $t_{n+1} = t_n + \Delta t$ is
 
 $$
-\begin{equation}
 \label{eq:ch-12-cn}
 \phi_i(t_{n+1}) \;=\;
 \frac{\mathbf 1 - i\, \tfrac{\Delta t}{2}\, \hat H_s(t_{n+1/2})}
      {\mathbf 1 + i\, \tfrac{\Delta t}{2}\, \hat H_s(t_{n+1/2})}\,
 \phi_i(t_n) .
-\end{equation}
 $$
 
 The fraction on the right is the Cayley transform of the
@@ -1544,11 +1436,9 @@ Once the orbitals have been propagated, the time-dependent
 **dipole moment** is
 
 $$
-\begin{equation}
 \label{eq:ch-12-dipole}
 \boldsymbol\mu(t) \;=\; \int \rho(\mathbf r, t)\, \mathbf r\, d\mathbf r
 \;=\; 2 \sum_{i=1}^{N/2} \langle \phi_i(t) | \hat{\mathbf r} | \phi_i(t) \rangle .
-\end{equation}
 $$
 
 The Fourier transform of $\boldsymbol\mu(t)$ gives the
@@ -1556,11 +1446,9 @@ The Fourier transform of $\boldsymbol\mu(t)$ gives the
 via the optical theorem, the **absorption spectrum**:
 
 $$
-\begin{equation}
 \label{eq:ch-12-spectra-from-dipole}
 \alpha(\omega) \;\propto\; \int_0^T \boldsymbol\mu(t)\,
    e^{-i\omega t}\, dt .
-\end{equation}
 $$
 
 In practice the Fourier transform of a *finite-lengt`h*' time
@@ -1742,7 +1630,6 @@ they give the same answer.
 The two-level Hamiltonian is
 
 $$
-\begin{equation}
 \label{eq:ch-12-2l-hamiltonian}
 \hat H_0 \;=\;
 \begin{pmatrix}
@@ -1755,7 +1642,6 @@ $$
 0 & +1/2
 \end{pmatrix}
 \;+\; \frac{\varepsilon_1 + \varepsilon_2}{2}\, \mathbf 1 ,
-\end{equation}
 $$
 
 with $\omega_{12} = \varepsilon_2 - \varepsilon_1 > 0$. The
@@ -1782,11 +1668,9 @@ For a two-level system with one occupied orbital
 \eqref{eq:ch-12-casida} is $2 \times 2$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-2l-casida-A}
 \mathbf A \;=\; \Bigl[ \omega_{12} + K \Bigr] , \qquad
 \mathbf B \;=\; K ,
-\end{equation}
 $$
 
 where $K = K_{1\to 2,\, 1\to 2}$ is the only coupling
@@ -1794,13 +1678,11 @@ matrix element. The general equation
 \eqref{eq:ch-12-casida} becomes
 
 $$
-\begin{equation}
 \label{eq:ch-12-2l-casida}
 \begin{pmatrix} A & B \\\\ B & A \end{pmatrix}
 \begin{pmatrix} X \\\\ Y \end{pmatrix}
 \;=\; \omega_I\,
 \begin{pmatrix} X \\\\ -Y \end{pmatrix} .
-\end{equation}
 $$
 
 The eigenvalues of \eqref{eq:ch-12-2l-casida} are
@@ -1809,10 +1691,8 @@ $\omega_\pm = \pm\sqrt{A^2 - B^2} = \pm\sqrt{\omega_{12}
 **excitation energy** of the dressed two-level system:
 
 $$
-\begin{equation}
 \label{eq:ch-12-2l-excitation}
 \omega_\text{exc} \;=\; \sqrt{\omega_{12}\,(\omega_{12} + 2 K)} .
-\end{equation}
 $$
 
 For ALDA in this minimal model, $K$ is the (real, positive)
@@ -1872,10 +1752,8 @@ $|\Psi(0^-)\rangle = |1\rangle$ and applies a
 $t = 0$,
 
 $$
-\begin{equation}
 \label{eq:ch-12-kick}
 \delta v(t) \;=\; -k\, \hat d\, \delta(t) .
-\end{equation}
 $$
 
 The kick rotates the ground state into a superposition
@@ -1890,11 +1768,9 @@ excitation frequency $\omega_\text{exc}$ with amplitude
 $2\, k\, d_{12}^2$ (in the small-$k$ limit):
 
 $$
-\begin{equation}
 \label{eq:ch-12-dipole-oscillation}
 \mu(t) \;\approx\; 2\, k\, d_{12}^2\,
    \cos(\omega_\text{exc}\, t)\, e^{-\eta t} ,
-\end{equation}
 $$
 
 with the exponential damping $e^{-\eta t}$ representing
@@ -2069,10 +1945,8 @@ between *all* pairs of orbitals, and the sum rule
 follows from the **commutator identity**
 
 $$
-\begin{equation}
 \label{eq:ch-12-trk-commutator}
 [\hat r_\alpha, \hat p_\beta] \;=\; i\, \delta_{\alpha\beta}
-\end{equation}
 $$
 
 (atomic units).  The double-commutator
@@ -2096,9 +1970,7 @@ $[\hat H_0, \hat p_\alpha / m] = 0$ in a field-free
 Hamiltonian, so the inner commutator is
 
 $$
-\begin{equation}
 [\hat H_0, [\hat H_0, \hat r_\alpha]] = \frac{1}{m} [\hat H_0, \hat p_\alpha] = -\frac{1}{m}\, \partial_\alpha v_\text{ext} .
-\end{equation}
 $$
 
 For a Hamiltonian with at most quadratic momentum
@@ -2108,12 +1980,10 @@ sum rule in this form is $\sum_I f_I \omega_I = 0$? No
 — the standard form is
 
 $$
-\begin{equation}
 \label{eq:ch-12-trk-trace}
 \sum_I f_I \;=\; \frac{2\,m}{3\hbar}\,
   \sum_\alpha\, \langle \Psi_0 | [\hat r_\alpha, [\hat H_0, \hat r_\alpha]] | \Psi_0 \rangle
 \;=\; N .
-\end{equation}
 $$
 
 For a one-electron system ($N = 1$) this gives the
@@ -2123,19 +1993,15 @@ The key identity that the commutator produces the
 number operator is
 
 $$
-\begin{equation}
 [\hat r_\alpha, [\hat H_0, \hat r_\alpha]]
 \;=\; [\hat r_\alpha, \hat p_\alpha / m] \;=\; i / m
-\end{equation}
 $$
 
 (in atomic units), so the matrix element in
 \eqref{eq:ch-12-trk-trace} is
 
 $$
-\begin{equation}
 \langle \Psi_0 | i / m | \Psi_0 \rangle \;=\; N / m .
-\end{equation}
 $$
 
 Multiplying by $2m/3$ gives the sum rule.  The full
@@ -2148,9 +2014,7 @@ chapter 3; or Bethe & Salpeter, chapter 4).
 The conclusion is
 
 $$
-\begin{equation}
 \boxed{\sum_I f_I = N \text{ (many-electron TRK sum rule)}}
-\end{equation}
 $$
 
 with $N = 1$ for the one-electron case.  In atomic
@@ -2189,13 +2053,11 @@ The Lehmann representation
 \eqref{eq:ch-12-chi-s-lehmann} is then
 
 $$
-\begin{equation}
 \label{eq:ch-12-chi-s-resonant}
 \chi_s(\mathbf r, \mathbf r'; \omega)
 \;=\; \sum_{ia} \xi_{ia}(\mathbf r)\,
        \Bigl[ g_{ia}(\omega) + g_{ia}(-\omega) \Bigr]\,
        \xi_{ia}^*(\mathbf r') ,
-\end{equation}
 $$
 
 with $g_{ia}(\omega) = (\omega - \omega_{ia} + i\eta)^{-1}$
@@ -2240,13 +2102,11 @@ for the resonant and anti-resonant parts of $\chi$.
 For the eigenvalue problem these decouple into
 
 $$
-\begin{equation}
 \label{eq:ch-12-casida-XY-system}
 \begin{aligned}
 A\, X + B\, Y &= \omega\, X , \\\
 B\, X + A\, Y &= -\omega\, Y ,
 \end{aligned}
-\end{equation}
 $$
 
 with $\mathbf A$, $\mathbf B$ given by
@@ -2262,10 +2122,8 @@ $(\mathbf X - \mathbf Y)$ directions.  The positive-
 frequency eigenvalue equation becomes
 
 $$
-\begin{equation}
 \Bigl[ (\mathbf A - \mathbf B)(\mathbf A + \mathbf B) \Bigr]\,
 (\mathbf X + \mathbf Y) \;=\; \omega^2\, (\mathbf X + \mathbf Y) .
-\end{equation}
 $$
 
 This is the form solved in the standard
@@ -2276,7 +2134,6 @@ eigenvalue problem \eqref{eq:ch-12-casida} directly.
 The result is the Casida equation
 
 $$
-\begin{equation}
 \boxed{
 \begin{pmatrix}
   \mathbf A & \mathbf B \\\
@@ -2290,7 +2147,6 @@ $$
 \end{pmatrix}
 \begin{pmatrix} \mathbf X \\\\ \mathbf Y \end{pmatrix} ,
 }
-\end{equation}
 $$
 
 with $\mathbf A$ and $\mathbf B$ as in
@@ -2336,7 +2192,6 @@ potential, $\int d\mathbf r\, dt\, \delta\rho\,
 v_\text{ext}$.  The second-order term is the kernel
 
 $$
-\begin{equation}
 \label{eq:ch-12-rg-2nd-order}
 \mathcal A^{(2)}[\delta\rho]
 \;=\; -\frac{1}{2} \int d\mathbf r\, d\mathbf r'\,
@@ -2344,7 +2199,6 @@ $$
    \delta\rho(\mathbf r, t)\,
    f_\text{Hxc}(\mathbf r, t; \mathbf r', t')\,
    \delta\rho(\mathbf r', t') ,
-\end{equation}
 $$
 
 where $f_\text{Hxc}$ is the **Hartree–xc kernel** of
@@ -2361,11 +2215,9 @@ $f_\text{s}(\mathbf r, \mathbf r'; \omega)$, which in
 the time domain is
 
 $$
-\begin{equation}
 f_\text{s}(\mathbf r, \mathbf r'; t - t')
 \;=\; \frac{\delta^2 T_s}{\delta\rho(\mathbf r, t)\,
                           \delta\rho(\mathbf r', t')} .
-\end{equation}
 $$
 
 In frequency space the kernel of the KS action is
@@ -2379,12 +2231,10 @@ when evaluated on the physical density.  Therefore the
 second-order kernels satisfy
 
 $$
-\begin{equation}
 \chi^{-1}(\mathbf r, \mathbf r'; \omega)
 \;=\; \chi_s^{-1}(\mathbf r, \mathbf r'; \omega)
    - v_H(\mathbf r, \mathbf r')
    - f_\text{xc}(\mathbf r, \mathbf r'; \omega) ,
-\end{equation}
 $$
 
 where $v_H = 1/|\mathbf r - \mathbf r'|$ is the
@@ -2428,20 +2278,16 @@ that adds a time-dependent phase to the wavefunction).
 Therefore the response function $\chi$ must satisfy
 
 $$
-\begin{equation}
 \int d\mathbf r'\,
    \chi(\mathbf r, \mathbf r'; \omega) \;=\; 0 .
-\end{equation}
 $$
 
 In the Dyson equation, this implies that the kernel
 $v_H + f_\text{xc}$ must satisfy the same condition:
 
 $$
-\begin{equation}
 \int d\mathbf r'\, \Bigl[ v_H(\mathbf r, \mathbf r')
    + f_\text{xc}(\mathbf r, \mathbf r'; \omega) \Bigr] \;=\; 0 .
-\end{equation}
 $$
 
 The Hartree kernel has the right property (the
@@ -2500,12 +2346,10 @@ respect to the time-dependent external potential, both
 taken around the ground state:
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-chi-def}
 \chi(\mathbf r, t;\, \mathbf r', t')
 \;\equiv\;
 \frac{\delta \rho(\mathbf r, t)}{\delta v_\text{ext}(\mathbf r', t')} .
-\end{equation}
 $$
 
 The two time arguments $t$ and $t'$ are *bot`h*' on the
@@ -2519,14 +2363,12 @@ and the Fourier transform with respect to $\tau$ gives
 the **frequency-dependent** response
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-chi-fourier}
 \chi(\mathbf r, \mathbf r'; \omega)
 \;\equiv\;
 \int_{-\infty}^{\infty} d\tau\;
    e^{i\omega\tau}\,
    \chi(\mathbf r, t+\tau;\, \mathbf r', t) .
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-12-09-chi-fourier} is the object
@@ -2539,7 +2381,6 @@ identity $\hat{\mathbf 1} = \sum_n |n\rangle\langle n|$
 twice into \eqref{eq:ch-12-09-chi-def}:
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-lehmann-chi}
 \chi(\mathbf r, \mathbf r'; \omega) \;=\;
 \sum_{n > 0}
@@ -2548,7 +2389,6 @@ $$
         {\omega - (E_n - E_0) + i\eta}
 \;-\;
 \text{c.c.}\,(\omega \to -\omega) .
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-12-09-lehmann-chi} shows three
@@ -2594,7 +2434,6 @@ In the operator form of
 for clarity), the Dyson equation is
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-dyson}
 \boxed{
 \boldsymbol\chi(\omega)
@@ -2604,7 +2443,6 @@ $$
      \Bigl[ \mathbf v_H + \mathbf f_\text{xc}(\omega) \Bigr]\,
      \boldsymbol\chi(\omega) .
 }
-\end{equation}
 $$
 
 The two operators are the **Hartree kernel**
@@ -2614,13 +2452,11 @@ real symmetric operator) and the **exchange–correlation
 kernel**
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-fxc}
 f_\text{xc}(\mathbf r, \mathbf r'; \omega)
 \;\equiv\;
 \frac{\delta v_\text{xc}(\mathbf r; \omega)}
      {\delta \rho(\mathbf r'; \omega)} .
-\end{equation}
 $$
 
 The matrix $\mathbf f_\text{xc}(\omega)$ is in general
@@ -2634,7 +2470,6 @@ in the Lehmann representation
 \eqref{eq:ch-12-chi-s-lehmann}:
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-chi-s-lehmann}
 \chi_s(\mathbf r, \mathbf r'; \omega) \;=\;
 2 \sum_{i}^\text{occ} \sum_{a}^\text{virt}
@@ -2642,7 +2477,6 @@ $$
          \phi_a^*(\mathbf r')\,\phi_i(\mathbf r')}
         {\omega - \omega_{ia} + i\eta}
 \;-\; \text{c.c.}\,(\omega \to -\omega) .
-\end{equation}
 $$
 
 The poles of $\chi_s$ sit at the **Kohn–Sham single-
@@ -2679,22 +2513,18 @@ derivation runs as follows.
 Define the **single-particle transition density**
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-xi-ia}
 \xi_{ia}(\mathbf r) \;\equiv\; \phi_i^*(\mathbf r)\, \phi_a(\mathbf r) .
-\end{equation}
 $$
 
 The KS response \eqref{eq:ch-12-09-chi-s-lehmann} is then
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-chi-s-compact}
 \chi_s(\mathbf r, \mathbf r'; \omega) \;=\;
 \sum_{ia} \xi_{ia}(\mathbf r)\,
        \Bigl[ g_{ia}(\omega) + g_{ia}(-\omega) \Bigr]\,
        \xi_{ia}^*(\mathbf r') ,
-\end{equation}
 $$
 
 with $g_{ia}(\omega) = (\omega - \omega_{ia} + i\eta)^{-1}$
@@ -2705,12 +2535,10 @@ Dyson equation \eqref{eq:ch-12-09-dyson}, and write the
 density response at a pole as the *ansatz*
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-dens-ansatz}
 \delta\rho(\mathbf r, \omega) \;=\;
 \sum_{ia} \Bigl[ X_{ia}\, \xi_{ia}(\mathbf r)
                  + Y_{ia}\, \xi_{ia}(\mathbf r) \Bigr] .
-\end{equation}
 $$
 
 The $\mathbf X$ vector describes the *resonant*
@@ -2741,7 +2569,6 @@ The **Casida equation** is therefore the same form as in
 \eqref{eq:ch-12-casida}:
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-casida}
 \boxed{
 \begin{pmatrix}
@@ -2756,30 +2583,24 @@ $$
 \end{pmatrix}
 \begin{pmatrix} \mathbf X \\\\ \mathbf Y \end{pmatrix}
 }
-\end{equation}
 $$
 
 with the matrices
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-casida-A}
 A_{ia, jb} \;=\; \delta_{ij}\, \delta_{ab}\, \omega_{ia}
                 + K_{ia, jb} ,
-\end{equation}
 $$
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-casida-B}
 B_{ia, jb} \;=\; K_{ia, jb} ,
-\end{equation}
 $$
 
 and the **coupling matrix**
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-coupling-K}
 K_{ia, jb} \;=\;
 \iint d\mathbf r\, d\mathbf r'\,
@@ -2787,7 +2608,6 @@ K_{ia, jb} \;=\;
    \Bigl[ v_H(\mathbf r, \mathbf r')
         + f_\text{xc}(\mathbf r, \mathbf r') \Bigr]\,
    \xi_{jb}(\mathbf r') .
-\end{equation}
 $$
 
 The derivation is a useful exercise; it is done in
@@ -2829,7 +2649,6 @@ sections via Fermi's golden rule
 formulation it is
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-fI}
 f_I \;=\; \frac{2}{3}\, \omega_I\,
    \sum_{\alpha = x, y, z}
@@ -2837,7 +2656,6 @@ f_I \;=\; \frac{2}{3}\, \omega_I\,
         (X_{ia} + Y_{ia})\,
         \langle \phi_a | \hat r_\alpha | \phi_i \rangle
    \Bigr|^2 .
-\end{equation}
 $$
 
 The factor of $2/3$ comes from the spherical average
@@ -2866,10 +2684,8 @@ the sum of all oscillator strengths of an $N$-electron
 system is exactly $N$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-sum-rule}
 \boxed{\sum_I f_I \;=\; N .}
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-12-09-sum-rule} is independent
@@ -2894,7 +2710,6 @@ approximation is the **adiabatic** kernel, in which the
 frequency dependence is dropped:
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-adiabatic}
 f_\text{xc}^\text{ad}(\mathbf r, \mathbf r'; \omega)
 \;\approx\;
@@ -2903,7 +2718,6 @@ f_\text{xc}^\text{ad}(\mathbf r, \mathbf r')
 \frac{\delta^2 E_\text{xc}^\text{gs}[\rho]}
      {\delta \rho(\mathbf r)\, \delta \rho(\mathbf r')}
 \;\Bigg|_{\rho = \rho_\text{gs}} .
-\end{equation}
 $$
 
 The right-hand side is evaluated on the *ground-state*
@@ -2918,14 +2732,12 @@ The adiabatic kernel is named by the underlying static
 xc functional:
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-alda}
 f_\text{xc}^\text{ALDA}(\mathbf r, \mathbf r')
 \;=\; \delta(\mathbf r - \mathbf r')\,
        \frac{d^2\,[\rho\, \varepsilon_\text{xc}(\rho)]}
             {d\rho^2}
 \;\Bigg|_{\rho = \rho(\mathbf r)} .
-\end{equation}
 $$
 
 The **adiabatic LDA** (ALDA) is the most-used
@@ -2979,10 +2791,8 @@ practical approximation to the full Casida equation.
 It drops the de-excitation block $\mathbf B$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-09-tda}
 \boxed{ \mathbf A\, \mathbf X_I \;=\; \omega_I\, \mathbf X_I . }
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-12-09-tda} is a standard
@@ -3140,14 +2950,12 @@ Green's function** (or, more precisely, the four-
 point correlation function)
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-L-def}
 L(1, 2; 3, 4) \;\equiv\;
 -i \langle \Psi_0 | T\,
      \hat\psi(1)\, \hat\psi^\dagger(2)\,
      \hat\psi(3)\, \hat\psi^\dagger(4)
    | \Psi_0 \rangle .
-\end{equation}
 $$
 
 The compound index "$1$" stands for
@@ -3168,7 +2976,6 @@ some algebra, is the **Bethe–Salpeter equation** at
 the four-point level:
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-bse}
 \boxed{
 L(1, 2; 3, 4) \;=\; L_0(1, 2; 3, 4)
@@ -3177,7 +2984,6 @@ L(1, 2; 3, 4) \;=\; L_0(1, 2; 3, 4)
    K(5, 6; 7, 8)\,
    L(8, 6; 2, 4) .
 }
-\end{equation}
 $$
 
 The **non-interacting** two-particle propagator
@@ -3190,13 +2996,11 @@ respect to the Green's function, evaluated on $G_0$.
 The standard approximation is
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-bse-kernel}
 K(5, 6; 7, 8) \;=\;
 \underbrace{-\,i\, \delta(5, 6)\, \delta(7, 8)\, v(5, 7)}_{\displaystyle K^x = -W(\text{exchange})}
 \;+\;
 \underbrace{i\, \delta(5, 7)\, \delta(6, 8)\, W(5, 6)}_{\displaystyle K^d = W(\text{direct})} ,
-\end{equation}
 $$
 
 where $W$ is the *statically screene`d*' Coulomb
@@ -3227,13 +3031,11 @@ orbital $i$, one virtual orbital $a$). The expansion
 is
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-bse-expansion}
 \chi^{S/C}_{ia}(\mathbf r_e, \mathbf r_h)
 \;=\;
 \sum_{ia} A^{S/C}_{ia}\,
        \phi_i(\mathbf r_h)\, \phi_a^*(\mathbf r_e) .
-\end{equation}
 $$
 
 The label $S$ (singlet) or $C$ (triplet)
@@ -3247,18 +3049,15 @@ The BSE eigenvalue problem in the transition basis
 is
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-bse-eig}
 \boxed{
 \sum_{jb} H^{eh}_{ia, jb}\, A^{S/C}_{jb} \;=\; \Omega^{S/C}\, A^{S/C}_{ia} ,
 }
-\end{equation}
 $$
 
 where the **electron–hole Hamiltonian** is
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-H-eh}
 H^{eh}_{ia, jb}
 \;=\;
@@ -3267,7 +3066,6 @@ H^{eh}_{ia, jb}
 \;+\; 2\, \langle ij | V | ab \rangle
 \;-\; \langle ij | V | ba \rangle
 \;+\; \langle ia | K^\text{xc} | jb \rangle .
-\end{equation}
 $$
 
 The four terms in \eqref{eq:ch-12-10-H-eh} have
@@ -3331,12 +3129,10 @@ form is unknown; the standard approximation is the
 **screened-exchange Coulomb-hole (SCH)** form
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-Kxc}
 K^\text{xc}(\mathbf r_e, \mathbf r_h)
 \;=\;
 -\,W(\mathbf r_e, \mathbf r_h) \;+\; \overline{v}(\mathbf r_e, \mathbf r_h) .
-\end{equation}
 $$
 
 The first term $-W$ is the **screened exchange**:
@@ -3360,7 +3156,6 @@ A simpler (and cheaper) alternative is to use the
 TD-DFT xc kernel of section 12.9.5:
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-Kxc-tddf}
 K^\text{xc}_{ia, jb}
 \;\approx\;
@@ -3368,7 +3163,6 @@ K^\text{xc}_{ia, jb}
    \xi_{ia}(\mathbf r)\,
    f_\text{xc}^\text{ad}(\mathbf r, \mathbf r')\,
    \xi_{jb}(\mathbf r') .
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-12-10-Kxc-tddf} is the
@@ -3407,11 +3201,9 @@ The Haydock method builds a *continued-fraction*
 representation of the BSE Green's function
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-haydock}
 G^{S/C}_{ia, jb}(\omega) \;=\;
 \langle ia | (\omega - H^{eh} + i\eta)^{-1} | jb \rangle ,
-\end{equation}
 $$
 
 by constructing a sequence of *Lanczos vectors* in
@@ -3421,13 +3213,11 @@ the continued-fraction form of
 \eqref{eq:ch-12-10-haydock} is
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-haydock-cf}
 G(\omega) \;=\;
 \cfrac{1}
         {\omega - a_0 - \cfrac{b_1^2}
                               {\omega - a_1 - \cfrac{b_2^2}{\ddots}}} .
-\end{equation}
 $$
 
 The poles of $G(\omega)$ are the excitation
@@ -3467,7 +3257,6 @@ conduction states. The **imaginary part** of the
 dielectric function is
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-eps2}
 \varepsilon_2(\omega)
 \;=\;
@@ -3477,7 +3266,6 @@ $$
         \langle a | \hat{\mathbf p} | i \rangle
    \Bigr|^2\,
    \delta(\omega - \Omega^S_\lambda) ,
-\end{equation}
 $$
 
 where $\Omega$ is the cell volume and $\hat{\mathbf p}$
@@ -3486,12 +3274,10 @@ obtained from $\varepsilon_2$ by the Kramers–Kronig
 relation. The **macroscopic dielectric function** is
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-eps-M}
 \varepsilon_M(\omega) \;=\;
 \lim_{\mathbf q \to 0}\,
    \frac{1}{[\varepsilon^{-1}(\mathbf q, \omega)]_{\mathbf G = 0, \mathbf G' = 0}} .
-\end{equation}
 $$
 
 The limit $\mathbf q \to 0$ is the **long-wavelength**
@@ -3557,11 +3343,9 @@ Wannier exciton equation, which has the
 analytical solution
 
 $$
-\begin{equation}
 \label{eq:ch-12-10-wannier}
 \Omega^S_n \;=\; \Delta \;-\; \frac{\mu e^4}{2\hbar^2\, n^2}
 \;\equiv\; \Delta \;-\; \frac{R_X}{n^2} ,
-\end{equation}
 $$
 
 with $R_X$ the exciton Rydberg and $\mu$ the
@@ -3638,7 +3422,6 @@ calculation. We restate them here in the form
 that is actually solved:
 
 $$
-\begin{equation}
 \label{eq:ch-12-11-tdks-restated}
 \boxed{
 \begin{aligned}
@@ -3652,7 +3435,6 @@ i\, \partial_t\, \phi_i(\mathbf r, t)
    &= 2 \sum_{i=1}^{N/2} |\phi_i(\mathbf r, t)|^2 .
 \end{aligned}
 }
-\end{equation}
 $$
 
 The factor of 2 is the closed-shell spin-pairing
@@ -3701,11 +3483,9 @@ In the **length gauge** the coupling is through
 the *position* operator:
 
 $$
-\begin{equation}
 \label{eq:ch-12-11-length}
 v_\text{ext}^\text{length}(\mathbf r, t)
 \;=\; v_0(\mathbf r) \;+\; e\, \mathbf E(t) \cdot \mathbf r .
-\end{equation}
 $$
 
 The position operator is unbounded (it grows
@@ -3720,14 +3500,12 @@ In the **velocity gauge** the coupling is
 through the *momentum* operator:
 
 $$
-\begin{equation}
 \label{eq:ch-12-11-velocity}
 \hat H_\text{ext}^\text{velocity}(t)
 \;=\; \frac{1}{2m}\, \Bigl[\hat{\mathbf p} + e\, \mathbf A(t)\Bigr]^2
 \;-\; \frac{\hat{\mathbf p}^2}{2m}
 \;\approx\; \frac{e}{m}\, \mathbf A(t) \cdot \hat{\mathbf p}
 \;+\; \mathcal O(A^2) .
-\end{equation}
 $$
 
 The vector potential $\mathbf A(t) = -\int^t
@@ -3783,14 +3561,12 @@ the *same* time-reversed propagator on each
 half. The result is
 
 $$
-\begin{equation}
 \label{eq:ch-12-11-etr}
 \phi_i(t_{n+1})
 \;=\;
 \hat U(t_{n+1}, t_{n+1/2})\,
    \hat U(t_{n+1/2}, t_n)\,
    \phi_i(t_n) ,
-\end{equation}
 $$
 
 with the propagator on each half-step the
@@ -3808,13 +3584,11 @@ real-time TD-DFT problem), the time-evolution
 operator is the time-ordered exponential
 
 $$
-\begin{equation}
 \label{eq:ch-12-11-magnus}
 \hat U(t, 0)
 \;=\; \mathcal T\, \exp\!\Bigl[ -i
    \int_0^t \hat H_s(\tau)\, d\tau
 \Bigr] .
-\end{equation}
 $$
 
 The Magnus expansion writes $\hat U(t, 0) =
@@ -3851,13 +3625,11 @@ the **kinetic-energy cutoff** $E_\text{cut}$). The
 condition is
 
 $$
-\begin{equation}
 \label{eq:ch-12-11-timestep}
 \boxed{
 \Delta t \;\le\; \frac{\pi}{2\, E_\text{HOMO}}
 \;\approx\; \frac{1.57}{E_\text{HOMO}} .
 }
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-12-11-timestep} is the
@@ -3918,11 +3690,9 @@ moment. The procedure is:
    potential at $t = 0$:
 
 $$
-   \begin{equation}
    \label{eq:ch-12-11-kick}
    \delta v_\text{ext}(\mathbf r, t)
    \;=\; -k\, \hat{\boldsymbol\epsilon} \cdot \mathbf r\, \delta(t) .
-   \end{equation}
 $$
 
    The kick rotates the orbitals by a
@@ -3940,24 +3710,20 @@ $$
    dipole moment
 
 $$
-   \begin{equation}
    \label{eq:ch-12-11-dipole-t}
    \boldsymbol\mu(t)
    \;=\; \int \rho(\mathbf r, t)\, \mathbf r\, d\mathbf r
    \;=\; 2 \sum_{i=1}^{N/2} \langle \phi_i(t) | \hat{\mathbf r} | \phi_i(t) \rangle .
-   \end{equation}
 $$
 
 4. **Fourier transform.** Compute the
    frequency-dependent polarisability
 
 $$
-   \begin{equation}
    \label{eq:ch-12-11-alpha-omega}
    \alpha(\omega)
    \;\propto\;
    \int_0^T \boldsymbol\mu(t)\, e^{-i\omega t}\, dt .
-   \end{equation}
 $$
 
 5. **Window.** Multiply $\boldsymbol\mu(t)$ by
@@ -3974,11 +3740,9 @@ $$
    section
 
 $$
-   \begin{equation}
    \label{eq:ch-12-11-cross-section}
    \sigma(\omega) \;=\; \frac{4\pi\omega}{c}\,
       \text{Im}\, \alpha(\omega) .
-   \end{equation}
 $$
 
 The peak of $\sigma(\omega)$ at the
@@ -4017,14 +3781,12 @@ at the current nuclear coordinates.
 The nuclear equation of motion is
 
 $$
-\begin{equation}
 \label{eq:ch-12-11-ehrenfest}
 M_I \ddot{\mathbf R}_I(t)
 \;=\; -\nabla_{\mathbf R_I}
      \langle \Phi_s(t) |
         \hat H(\{\mathbf R_I(t)\})
      | \Phi_s(t) \rangle .
-\end{equation}
 $$
 
 The right-hand side is the gradient of the
@@ -4183,11 +3945,9 @@ Runge and Gross begin by defining the
 many-body state $\Phi(t)$:
 
 $$
-\begin{equation}
 \label{eq:ch-12-14-action}
 A[\Phi] \;=\; \int_{t_0}^{t_1} dt\;
    \langle \Phi(t) | i\, \partial_t - \hat H(t) | \Phi(t) \rangle .
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-12-14-action} is Runge and
@@ -4323,24 +4083,20 @@ for a *single* orbital in the non-interacting
 auxiliary system:
 
 $$
-\begin{equation}
 \label{eq:ch-12-14-tdks-original}
 i\, \frac{\partial}{\partial t}\, \phi_i(\mathbf r, t)
 \;=\; \left[ -\frac{1}{2}\nabla^2 + v_\text{eff}(\mathbf r, t) \right]
    \phi_i(\mathbf r, t) ,
-\end{equation}
 $$
 
 with the effective potential
 
 $$
-\begin{equation}
 \label{eq:ch-12-14-veff-original}
 v_\text{eff}(\mathbf r, t) \;=\;
    v_\text{ext}(\mathbf r, t)
    + v_\text{H}[\rho_t](\mathbf r, t)
    + v_\text{xc}[\rho_{t'} \le t](\mathbf r, t) .
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-12-14-tdks-original} is the
@@ -4460,21 +4216,17 @@ p. 168** of the chapter [Casida, 1995, eq. (3.16), p. 168].
 In the original 1995 notation it is
 
 $$
-\begin{equation}
 \label{eq:ch-12-14-casida-original}
 \boldsymbol{\Omega}\, \mathbf F_I \;=\; \omega_I^2\, \mathbf F_I ,
-\end{equation}
 $$
 
 where the matrix $\boldsymbol{\Omega}$ has elements
 
 $$
-\begin{equation}
 \label{eq:ch-12-14-casida-omega}
 \Omega_{ia, jb}
 \;=\; \delta_{ij}\, \delta_{ab}\, \omega_{ia}^2
        + 2\, \sqrt{\omega_{ia}}\, K_{ia, jb}\, \sqrt{\omega_{jb}} .
-\end{equation}
 $$
 
 The $\omega_{ia}^2$ diagonal is the square of the KS
@@ -4505,7 +4257,6 @@ The **coupling matrix** $K$ has matrix elements
 [Casida, 1995, p. 166, eq. (3.8)]:
 
 $$
-\begin{equation}
 \label{eq:ch-12-14-coupling-K}
 K_{ia, jb}
 \;=\; \iint d\mathbf r\, d\mathbf r'\,
@@ -4513,7 +4264,6 @@ K_{ia, jb}
    \Bigl[ v_H(\mathbf r, \mathbf r')
         + f_\text{xc}(\mathbf r, \mathbf r') \Bigr]\,
    \xi_{jb}(\mathbf r') ,
-\end{equation}
 $$
 
 where $\xi_{ia}(\mathbf r) = \phi_i^*(\mathbf r)\,
@@ -4539,7 +4289,6 @@ given in the 1995 chapter on **p. 175**, eq. (3.24)
 notation:
 
 $$
-\begin{equation}
 \label{eq:ch-12-14-f-oscillator}
 f_I \;=\; \frac{2}{3}\, \omega_I\,
    \sum_{\alpha = x, y, z}
@@ -4547,7 +4296,6 @@ f_I \;=\; \frac{2}{3}\, \omega_I\,
         F_{I, ia}\,
         \langle \phi_a | \hat r_\alpha | \phi_i \rangle
    \Bigr|^2 ,
-\end{equation}
 $$
 
 where the factor $2/3$ is the spherical average

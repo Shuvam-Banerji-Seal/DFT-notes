@@ -1,0 +1,2802 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 10 — Phonons & vibrations" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: The nuclei in a solid are not static. They oscillate around their equilibrium positions with small amplitudes, and these oscillations are
+          - emphasis [ref=e30]:
+            - text: quantise
+            - code [ref=e31]: d*
+            - text: ": the energy comes in lumps,"
+            - img [ref=e33]
+            - text: ", called *phonons"
+          - text: . This chapter is the construction of the dispersion
+          - img [ref=e51]
+          - text: from first principles — the dynamical matrix
+          - img [ref=e67]
+          - text: that is to vibrations what the Hamiltonian is to electrons.
+      - paragraph [ref=e79]:
+        - text: By the end of
+        - link "chapter 09" [ref=e80] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-09/
+        - text: "we had a procedure for finding the equilibrium geometry of a molecule or solid: minimise the Kohn–Sham total energy"
+        - img [ref=e82]
+        - text: with respect to the nuclear positions
+        - img [ref=e99]
+        - text: . The minimum of
+        - img [ref=e110]
+        - text: defines the
+        - emphasis [ref=e115]: ground-state
+        - text: geometry
+        - img [ref=e117]
+        - text: . Around this minimum the energy has a quadratic form, so a small displacement of one nucleus produces a restoring
+        - emphasis [ref=e133]: force
+        - text: on every other nucleus. The matrix of these second derivatives,
+        - img [ref=e135]
+        - text: (where
+        - img [ref=e169]
+        - text: ), is called the
+        - strong [ref=e191]: force-constant matrix
+        - img [ref=e193]
+        - text: . It is the spring constant of the solid.
+      - paragraph [ref=e210]:
+        - text: This chapter turns
+        - img [ref=e212]
+        - text: into a
+        - strong [ref=e217]: dynamical matrix
+        - img [ref=e219]
+        - text: by a Fourier transform, and diagonalises
+        - img [ref=e232]
+        - text: at every
+        - strong [ref=e244]: phonon wavevector
+        - img [ref=e246]
+        - text: in the Brillouin zone to obtain the
+        - emphasis [ref=e252]: phonon dispersion
+        - img [ref=e254]
+        - text: — the analogue of the electronic band structure
+        - img [ref=e270]
+        - text: of
+        - link "chapter 07" [ref=e285] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: ". The plan is: (1) state the claim; (2) introduce the"
+        - emphasis [ref=e286]: frozen-phonon
+        - text: method (§10.2), in which the force-constant matrix is built from a finite number of
+        - emphasis [ref=e287]: supercell
+        - text: force calculations; (3) explain the
+        - emphasis [ref=e288]: linear-response
+        - text: method (
+        - strong [ref=e289]: DFPT
+        - text: ", §10.3) that gives"
+        - img [ref=e291]
+        - text: for any
+        - img [ref=e297]
+        - text: from a single unit cell; (4) give the
+        - emphasis [ref=e303]: acoustic sum rule
+        - text: (§10.4) and the
+        - emphasis [ref=e304]:
+          - text: LO-TO splitting (§10.5) that pin down
+          - img [ref=e306]
+          - text: at the two limits
+          - img [ref=e322]
+          - text: and
+          - img [ref=e333]
+          - text: for ionic crystals; (5) connect the dispersion to the *phonon density of states
+        - text: and the thermodynamic* functions (§10.6); (6) sketch the
+        - emphasis [ref=e343]: "anharmoni`c"
+        - text: ’ corrections that go beyond the harmonic approximation (§10.7); and (7) treat the
+        - emphasis [ref=e344]: electron-phonon
+        - text: coupling (§10.8) that ties phonons back to electrons and opens the door to superconductivity.
+      - blockquote [ref=e345]:
+        - paragraph [ref=e346]:
+          - strong [ref=e347]: Reading note.
+          - text: This chapter assumes
+          - link "chapter 07" [ref=e348] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: (Bloch theorem, Brillouin zone, k-point sampling) and
+          - link "chapter 09" [ref=e349] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-09/
+          - text: (Hellmann–Feynman forces, geometry optimisation). It uses concepts from
+          - link "chapter 04" [ref=e350] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: (Kohn–Sham DFT) and
+          - link "chapter 08" [ref=e351] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: (pseudopotentials).
+      - heading "10.1 The claim" [level=2] [ref=e352]
+      - blockquote [ref=e353]:
+        - paragraph [ref=e354]:
+          - strong [ref=e355]: Phonons are the normal modes of small nuclear displacements around the equilibrium geometry of a solid.
+          - text: Their frequencies
+          - img [ref=e357]
+          - text: at a given phonon wavevector
+          - img [ref=e373]
+          - text: and branch index
+          - img [ref=e380]
+          - text: are the eigenvalues of the
+          - strong [ref=e385]: dynamical matrix
+        - img [ref=e387]:
+          - generic [ref=e391]:
+            - img [ref=e392]
+            - img [ref=e465]
+        - paragraph [ref=e473]:
+          - text: where
+          - img [ref=e475]
+          - text: is the Fourier transform of the real-space
+          - strong [ref=e484]: force-constant matrix
+        - img [ref=e486]:
+          - generic [ref=e490]:
+            - img [ref=e491]
+            - img [ref=e566]
+        - paragraph [ref=e574]:
+          - img [ref=e576]
+          - text: is the mass of nucleus
+          - img [ref=e585]
+          - text: ", and"
+          - img [ref=e591]
+          - text: is the Kohn–Sham total energy in the Born–Oppenheimer approximation.
+      - paragraph [ref=e596]:
+        - text: The rest of this section unpacks the claim. The proof that
+        - img [ref=e598]
+        - text: comes from the eigenvalues of
+        - img [ref=e614]:
+          - link [ref=e617] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-dyn-def"
+        - text: is the content of §10.1.2; the link between
+        - img [ref=e625]
+        - text: and the Kohn–Sham energy is the
+        - emphasis [ref=e630]: force theorem
+        - text: of
+        - link "chapter 09" [ref=e631] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-09/
+        - text: §9.4; the matrix
+        - img [ref=e633]
+        - text: and its relation to
+        - img [ref=e643]
+        - text: "is the discrete Fourier transform derived in §10.1.3. ### 10.1.1 Why a Fourier transform?"
+      - paragraph [ref=e648]:
+        - text: The solid is infinite. We want a wavevector
+        - img [ref=e650]
+        - text: to label the modes by crystal momentum (the phonon analogue of the electronic
+        - img [ref=e657]
+        - text: of
+        - link "chapter 07" [ref=e663] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: ). For a 1-D chain of
+        - img [ref=e665]
+        - text: atoms with mass
+        - img [ref=e671]
+        - text: and lattice constant
+        - img [ref=e677]
+        - text: ", Bloch’s theorem says a normal mode with wavevector"
+        - img [ref=e683]
+        - text: has the form
+      - img [ref=e689]
+      - paragraph [ref=e755]:
+        - text: i.e. the displacement of atom
+        - img [ref=e757]
+        - text: is a plane wave in
+        - img [ref=e763]
+        - text: modulated by an amplitude
+        - img [ref=e769]
+        - text: that is
+        - emphasis [ref=e786]: the same in every cell
+        - text: . This ansatz is exact if
+        - img [ref=e788]
+        - text: is translationally invariant — i.e. if the force constant between atom
+        - img [ref=e794]
+        - text: and atom
+        - img [ref=e800]
+        - text: depends only on
+        - img [ref=e806]
+        - text: ", which is true for a perfect crystal."
+      - paragraph [ref=e815]:
+        - text: The ansatz is what makes the dynamical matrix
+        - strong [ref=e816]: finite
+        - text: (size
+        - img [ref=e818]
+        - text: per unit cell, where
+        - img [ref=e832]
+        - text: is the number of atoms in the
+        - emphasis [ref=e843]: primitive
+        - text: cell) at every
+        - img [ref=e845]
+        - text: . Without it, we would have a
+        - img [ref=e852]
+        - text: "-by-"
+        - img [ref=e860]
+        - text: matrix for a solid of
+        - img [ref=e868]
+        - text: atoms (an integer that diverges in the thermodynamic limit). The Fourier transform from real-space force constants
+        - img [ref=e874]
+        - text: to dynamical matrix elements
+        - img [ref=e899]
+        - text: is the operation that takes advantage of the translational symmetry to reduce an infinite matrix to a
+        - img [ref=e924]
+        - text: "-by-"
+        - img [ref=e938]
+        - text: matrix indexed by atom
+        - emphasis [ref=e951]: within one cell
+        - text: .
+      - heading "10.1.2 The equation of motion" [level=3] [ref=e952]
+      - paragraph [ref=e953]:
+        - text: Expand the Born–Oppenheimer energy of
+        - link "chapter 01" [ref=e954] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: to second order in the nuclear displacements
+        - img [ref=e956]
+        - text: "around the equilibrium geometry:"
+      - img [ref=e995]:
+        - generic [ref=e999]:
+          - img [ref=e1000]
+          - img [ref=e1098]
+      - paragraph [ref=e1106]:
+        - text: (The first-order terms vanish at the equilibrium geometry; the definition of
+        - img [ref=e1108]
+        - text: is the second derivative, equation
+        - img [ref=e1114]:
+          - link [ref=e1117] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-fc-def"
+        - text: ", which is a"
+        - emphasis [ref=e1124]: Hessian
+        - text: of the energy landscape.)
+      - paragraph [ref=e1125]:
+        - text: The classical equation of motion for nucleus
+        - img [ref=e1127]
+        - text: in direction
+        - img [ref=e1133]
+        - text: is Newton’s law,
+      - img [ref=e1139]
+      - paragraph [ref=e1226]:
+        - text: Substituting the Bloch ansatz
+        - img [ref=e1228]
+        - text: (where
+        - img [ref=e1294]
+        - text: here denotes the position of atom
+        - img [ref=e1303]
+        - text: within the supercell) and using
+        - img [ref=e1309]
+        - text: ", we get"
+      - img [ref=e1344]:
+        - generic [ref=e1348]:
+          - img [ref=e1349]
+          - img [ref=e1434]
+      - paragraph [ref=e1442]:
+        - text: Define the
+        - strong [ref=e1443]: dynamical matrix
+      - img [ref=e1445]:
+        - generic [ref=e1449]:
+          - img [ref=e1450]
+          - img [ref=e1523]
+      - paragraph [ref=e1531]: with the Fourier transform
+      - img [ref=e1533]:
+        - generic [ref=e1537]:
+          - img [ref=e1538]
+          - img [ref=e1615]
+      - paragraph [ref=e1623]:
+        - text: Equation
+        - img [ref=e1625]:
+          - link [ref=e1628] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-eom-bloch"
+        - text: is then the eigenvalue problem
+      - img [ref=e1636]:
+        - generic [ref=e1640]:
+          - img [ref=e1641]
+          - img [ref=e1728]
+      - paragraph [ref=e1736]:
+        - text: The eigenvalues of
+        - img [ref=e1738]
+        - text: are
+        - img [ref=e1751]
+        - text: ", with"
+        - img [ref=e1769]
+        - text: (three branches per atom in the primitive cell). The corresponding eigenvectors
+        - img [ref=e1799]
+        - text: are the polarisation vectors of the mode.
+      - blockquote [ref=e1813]:
+        - paragraph [ref=e1814]:
+          - strong [ref=e1815]: Note.
+          - text: We wrote the equation of motion with
+          - img [ref=e1817]
+          - text: — the
+          - emphasis [ref=e1841]: on-site
+          - text: force constant. The Fourier transform
+          - img [ref=e1843]:
+            - link [ref=e1846] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-10-fc-fourier"
+          - text: will re-introduce the
+          - emphasis [ref=e1853]: off-cell
+          - text: matrix elements in the standard way. The argument generalises straightforwardly to multiple atoms per cell; the only change is that the
+          - emphasis [ref=e1854]: index
+          - img [ref=e1856]
+          - text: now runs over
+          - emphasis [ref=e1861]: all
+          - text: atoms in the crystal (i.e. over all
+          - img [ref=e1863]
+          - text: atoms in every cell), and the matrix
+          - img [ref=e1875]
+          - text: is
+          - img [ref=e1888]
+          - text: in size.
+      - heading "10.1.3 The Fourier transform in practice" [level=3] [ref=e1913]
+      - paragraph [ref=e1914]:
+        - text: For a perfect crystal under Born–von Karman boundary conditions (
+        - link "chapter 07" [ref=e1915] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: "), the force-constant matrix is invariant under simultaneous translation of the unit-cell labels:"
+      - img [ref=e1917]:
+        - generic [ref=e1921]:
+          - img [ref=e1922]
+          - img [ref=e1988]
+      - paragraph [ref=e1996]:
+        - text: The discrete Fourier transform from the relative-cell index to the phonon wavevector
+        - img [ref=e1998]
+        - text: is then
+      - img [ref=e2005]:
+        - generic [ref=e2009]:
+          - img [ref=e2010]
+          - img [ref=e2087]
+      - paragraph [ref=e2095]:
+        - text: (Here
+        - img [ref=e2097]
+        - text: is the force constant between atom
+        - img [ref=e2122]
+        - text: in the reference cell and atom
+        - img [ref=e2128]
+        - text: in the cell
+        - img [ref=e2134]
+        - text: away.) The phonon wavevectors
+        - img [ref=e2141]
+        - text: live on the same Monkhorst–Pack mesh as the electronic
+        - img [ref=e2148]
+        - text: of
+        - link "chapter 07" [ref=e2154] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: §7.6 — i.e. on a uniform mesh in the first Brillouin zone of the
+        - emphasis [ref=e2155]: primitive
+        - text: lattice, with
+        - img [ref=e2157]
+        - text: points per BZ where
+        - img [ref=e2167]
+        - text: in the Born–von Karman supercell.
+      - blockquote [ref=e2193]:
+        - paragraph [ref=e2194]:
+          - strong [ref=e2195]: Tip.
+          - text: The convention for the sign in
+          - img [ref=e2197]:
+            - link [ref=e2200] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-10-dft"
+          - text: varies by author. We use
+          - img [ref=e2208]
+          - text: for the cell-phase, so that the Bloch ansatz
+          - img [ref=e2228]
+          - text: is
+          - emphasis [ref=e2288]: positive-frequency
+          - text: (i.e. travels in the direction of
+          - img [ref=e2290]
+          - text: ). Some authors use the opposite sign; both are correct as long as they are used consistently in
+          - img [ref=e2297]:
+            - link [ref=e2300] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-10-dyn-eig"
+          - text: and
+          - img [ref=e2308]:
+            - link [ref=e2311] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-10-dft"
+          - text: .
+      - heading "10.2 The frozen-phonon method" [level=2] [ref=e2318]
+      - paragraph [ref=e2319]:
+        - text: The
+        - emphasis [ref=e2320]: frozen-phonon
+        - text: method builds the force-constant matrix by explicitly displacing atoms and computing the forces that result. It is conceptually the simplest route from a DFT code to a phonon dispersion, and it is the one that ties most directly to the
+        - emphasis [ref=e2321]: forces
+        - text: machinery of
+        - link "chapter 09" [ref=e2322] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-09/
+        - text: .
+      - heading "10.2.1 The supercell trick" [level=3] [ref=e2323]
+      - paragraph [ref=e2324]:
+        - text: Phonons with wavevector
+        - img [ref=e2326]
+        - text: in the primitive BZ are
+        - emphasis [ref=e2332]: commensurate
+        - text: with a supercell of size
+        - img [ref=e2334]
+        - text: along the direction of
+        - img [ref=e2343]
+        - text: ", where"
+        - img [ref=e2350]
+        - text: is the smallest integer such that
+        - img [ref=e2356]
+        - text: for some integer
+        - img [ref=e2378]
+        - text: "(in 1-D:"
+        - img [ref=e2384]
+        - text: ", so"
+        - img [ref=e2402]
+        - text: ). For a
+        - emphasis [ref=e2428]: general
+        - img [ref=e2430]
+        - text: ","
+        - img [ref=e2437]
+        - text: is infinite and the supercell is the
+        - emphasis [ref=e2442]: infinite
+        - text: crystal. The frozen-phonon approach handles this by
+        - strong [ref=e2443]: approximating
+        - text: a general
+        - img [ref=e2445]
+        - text: by a commensurate one in a finite supercell.
+      - paragraph [ref=e2451]:
+        - text: "Concretely: pick a supercell of"
+        - img [ref=e2453]
+        - text: primitive cells. Apply the Bloch ansatz
+        - img [ref=e2476]
+        - emphasis [ref=e2522]: exactly
+        - text: — i.e. the same amplitude
+        - img [ref=e2524]
+        - text: is applied to every copy of atom
+        - img [ref=e2533]
+        - text: in the cell
+        - img [ref=e2539]
+        - text: (modulo the phase factor
+        - img [ref=e2546]
+        - text: ). This is a perfectly periodic distortion of the supercell, so a single SCF calculation in the supercell gives the
+        - emphasis [ref=e2563]: force on every atom in the supercell
+        - text: . The forces are then interpreted as the forces at the corresponding
+        - img [ref=e2565]
+        - text: in the primitive cell.
+      - blockquote [ref=e2571]:
+        - paragraph [ref=e2572]:
+          - strong [ref=e2573]: Note.
+          - text: The commensurate approximation works for
+          - emphasis [ref=e2574]: any
+          - img [ref=e2576]
+          - text: that is a rational multiple of a reciprocal-lattice vector. The discrete set of
+          - img [ref=e2583]
+          - text: "values you can reach is determined by the supercell size: an"
+          - img [ref=e2590]
+          - text: supercell gives a
+          - img [ref=e2613]
+          - text: "-mesh of"
+          - img [ref=e2620]
+          - text: points in the BZ (analogous to the BvK mesh for electronic
+          - img [ref=e2643]
+          - text: in
+          - link "chapter 07" [ref=e2649] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: ). To compute the dispersion at a fine
+          - img [ref=e2651]
+          - text: "-mesh you need a correspondingly large supercell — which is the practical bottleneck of the frozen-phonon method."
+      - heading "10.2.2 From forces to the force-constant matrix" [level=3] [ref=e2657]
+      - paragraph [ref=e2658]:
+        - text: A single force calculation tells you the
+        - emphasis [ref=e2659]: force
+        - text: on each atom induced by a particular displacement pattern, not the second derivative directly. To extract the second derivative, you need
+        - emphasis [ref=e2660]: two
+        - text: displacement patterns and a finite-difference fit, or you need to invert the relationship
+      - img [ref=e2662]:
+        - generic [ref=e2666]:
+          - img [ref=e2667]
+          - img [ref=e2715]
+      - paragraph [ref=e2724]:
+        - text: by computing
+        - img [ref=e2726]
+        - text: for enough linearly independent displacement patterns
+        - img [ref=e2732]
+        - text: that the linear system for
+        - img [ref=e2738]
+        - text: becomes determined or over-determined.
+      - paragraph [ref=e2743]:
+        - text: The simplest recipe is the
+        - emphasis [ref=e2744]: finite-difference
+        - text: "central-difference formula: for each atom"
+        - img [ref=e2746]
+        - text: and each Cartesian direction
+        - img [ref=e2752]
+        - text: ", apply the displacement"
+        - img [ref=e2758]
+        - text: (i.e. displace atom
+        - img [ref=e2792]
+        - text: by
+        - img [ref=e2798]
+        - text: in direction
+        - img [ref=e2806]
+        - text: and
+        - emphasis [ref=e2811]: only
+        - text: that atom), and compute the resulting forces. The off-diagonal element
+        - img [ref=e2813]
+        - text: for
+        - img [ref=e2831]
+        - text: is then
+      - img [ref=e2841]:
+        - generic [ref=e2845]:
+          - img [ref=e2846]
+          - img [ref=e2920]
+      - paragraph [ref=e2929]:
+        - text: where
+        - img [ref=e2931]
+        - text: is the force on atom
+        - img [ref=e2957]
+        - text: in direction
+        - img [ref=e2963]
+        - text: after atom
+        - img [ref=e2969]
+        - text: has been displaced by
+        - img [ref=e2975]
+        - text: in direction
+        - img [ref=e2983]
+        - text: . For the
+        - emphasis [ref=e2988]: diagonal
+        - text: element
+        - img [ref=e2990]
+        - text: ", the displacement is along the same direction as the force, and the same formula applies. The finite-difference step"
+        - img [ref=e3008]
+        - text: is typically
+        - img [ref=e3014]
+        - text: –
+        - img [ref=e3023]
+        - text: Å.
+      - paragraph [ref=e3031]:
+        - text: The total number of force calculations required by the
+        - emphasis [ref=e3032]: single- atom
+        - text: finite-difference scheme is
+        - img [ref=e3034]
+        - text: for a
+        - emphasis [ref=e3059]: primitive cell
+        - text: and
+        - img [ref=e3061]
+        - text: for a supercell. By the symmetry of
+        - img [ref=e3092]
+        - text: (it is symmetric in
+        - img [ref=e3098]
+        - text: ), this can be halved.
+      - blockquote [ref=e3111]:
+        - paragraph [ref=e3112]:
+          - strong [ref=e3113]: Warning.
+          - text: The single-atom finite-difference scheme misses any force-constant matrix element that connects atoms in
+          - emphasis [ref=e3114]: different
+          - text: supercell images when only one atom is displaced. To get the
+          - emphasis [ref=e3115]: inter-cell
+          - text: force constants
+          - img [ref=e3117]
+          - text: for
+          - img [ref=e3142]
+          - text: ", you must use a"
+          - emphasis [ref=e3152]:
+            - text: supercell large enoug
+            - code [ref=e3153]: h*' to fit the longest-ranged force constant you want to resolve. For insulators the force constants are usually short-ranged (a few Å), but for metals the long-range Friedel oscillations in the dielectric response make the force constants effectively *long-range
+            - text: d
+          - text: "`; the supercell must be sized accordingly or periodic-image interactions will pollute the fit."
+      - heading "10.2.3 The Fourier transform back to" [level=3] [ref=e3154]:
+        - text: 10.2.3 The Fourier transform back to
+        - img [ref=e3156]
+      - paragraph [ref=e3168]:
+        - text: Once the full force-constant matrix
+        - img [ref=e3170]
+        - text: is in hand, the dynamical matrix is obtained by the discrete Fourier transform
+        - img [ref=e3195]:
+          - link [ref=e3198] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-dft"
+        - text: . In a frozen-phonon calculation on a
+        - emphasis [ref=e3205]: commensurate
+        - text: supercell, the
+        - img [ref=e3207]
+        - text: that the supercell supports are exactly the discrete set
+        - img [ref=e3214]
+        - text: "corresponding to the supercell, so the Fourier transform is just a sum over the supercell cells:"
+      - img [ref=e3228]:
+        - generic [ref=e3232]:
+          - img [ref=e3233]
+          - img [ref=e3349]
+      - paragraph [ref=e3358]:
+        - text: Diagonalising
+        - img [ref=e3360]
+        - text: for every
+        - img [ref=e3379]
+        - text: gives the phonon frequencies at those mesh points. The dispersion along a high-symmetry path (e.g.
+        - img [ref=e3392]
+        - text: in a cubic BZ) is then obtained by interpolation, or by
+        - emphasis [ref=e3409]: re-fourier-interpolating
+        - img [ref=e3411]
+        - text: to a finer
+        - img [ref=e3417]
+        - text: "-mesh and diagonalising again. The latter is the"
+        - strong [ref=e3423]: Fourier-interpolation
+        - text: method of
+        - link "Gonze, Charlier, Allan, Teter (1994)" [ref=e3424] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.50.13035
+        - text: ", and is the standard way to get a smooth dispersion curve from a finite-supercell frozen-phonon calculation."
+      - heading "10.2.4 Diagram — the frozen-phonon workflow" [level=3] [ref=e3425]
+      - paragraph [ref=e3426]:
+        - text: The frozen-phonon route from a
+        - emphasis [ref=e3427]: converged ground-state calculation
+        - text: to a
+        - emphasis [ref=e3428]: phonon dispersion
+        - text: is a sequence of
+        - img [ref=e3430]
+        - text: displacement-force pairs, followed by a Fourier interpolation. The box below summarises the pipeline; every box is one full
+        - emphasis [ref=e3447]: "self-consistent fiel`d"
+        - text: ’ (SCF) calculation on a supercell.
+      - figure [ref=e3449]:
+        - code [ref=e3450]:
+          - document [ref=e3451]:
+            - generic [ref=e3453]:
+              - generic [ref=e3459]:
+                - generic [ref=e3463]: "yes"
+                - generic [ref=e3467]: "no"
+              - generic [ref=e3468]:
+                - generic [ref=e3474]: Equilibrium geometryR(0), a(0)(chapter 09)
+                - generic [ref=e3480]: SCF on primitive cellyields E(0) and rho(0)
+                - generic [ref=e3486]: Build supercellL1 x L2 x L3 primitive cells(commensurate with q-mesh)
+                - generic [ref=e3492]: For each atom I andCartesian direction alpha:displace by +/- delta
+                - generic [ref=e3498]: "Apply Bloch ansatzu(R) = U e^{iq.R}(commensurate q)"
+                - generic [ref=e3504]: SCF on supercellwith frozen displacement(one full KS solve)
+                - generic [ref=e3510]: Extract forces F_I on every atom(Hellmann-Feynman,chapter 09)
+                - generic [ref=e3516]: Fit force constantsPhi(R) = (F(+d) - F(-d)) / 2d
+                - generic [ref=e3521]: More I, alpha?
+                - generic [ref=e3527]: Fourier transformPhi(R) -> D(q)discrete sum on supercell
+                - generic [ref=e3533]: Diagonalise D(q)at each commensurate qyields omega_s(q)
+                - generic [ref=e3539]: Phonon dispersionomega_s(q) at supercell q-points
+        - button "Download this diagram as a PNG" [ref=e3540] [cursor=pointer]:
+          - img [ref=e3541]
+          - generic [ref=e3544]: Download PNG
+      - paragraph [ref=e3545]:
+        - text: The
+        - strong [ref=e3546]: inner loop
+        - code [ref=e3547]: LOOP
+        - text: "’ is the cost driver: it runs"
+        - img [ref=e3549]
+        - text: independent SCF calculations. By symmetry of
+        - img [ref=e3580]
+        - text: (which is symmetric under
+        - img [ref=e3586]
+        - text: ","
+        - img [ref=e3596]
+        - text: ) this can be halved. The
+        - strong [ref=e3605]: outer box
+        - code [ref=e3606]: FFT
+        - text: ’ is the cheap step (a single discrete Fourier transform), and
+        - code [ref=e3607]: DIAG
+        - text: ’ is one matrix diagonalisation per
+        - img [ref=e3609]
+        - text: . The set of
+        - img [ref=e3616]
+        - text: values reachable is the
+        - emphasis [ref=e3622]: commensurate
+        - text: set determined by the supercell — to resolve a finer
+        - img [ref=e3624]
+        - text: "-mesh one must use a larger supercell, which is the bottleneck of the method."
+      - heading "10.3 Density-functional perturbation theory (DFPT)" [level=2] [ref=e3630]
+      - paragraph [ref=e3631]:
+        - text: The frozen-phonon method has a cost that grows with the supercell size — linearly with the number of atoms, but the
+        - emphasis [ref=e3632]: number of distinct force calculations
+        - text: is
+        - img [ref=e3634]
+        - text: and each force calculation is an
+        - emphasis [ref=e3651]: entire SCF cycle
+        - text: on a supercell. A phonon dispersion along a high-symmetry path of length 6–10 segments requires
+        - img [ref=e3653]
+        - text: supercell SCF calculations at
+        - img [ref=e3666]
+        - text: supercell sizes — easily
+        - img [ref=e3679]
+        - text: SCF cycles in total. The
+        - strong [ref=e3692]: density-functional perturbation theory
+        - text: (DFPT) approach of
+        - link "Baroni, Giannozzi, Testa (1987)" [ref=e3693] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.58.1861
+        - text: and
+        - link "Gonze (1995)" [ref=e3694] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.52.1096
+        - text: gets the
+        - emphasis [ref=e3695]: same
+        - text: force-constant matrix from a single unit-cell calculation by solving a
+        - emphasis [ref=e3696]: linear-response
+        - text: problem for the self-consistent potential at every
+        - img [ref=e3698]
+        - text: .
+      - heading "10.3.1 The theorem" [level=3] [ref=e3704]:
+        - text: 10.3.1 The
+        - img [ref=e3706]
+        - text: theorem
+      - paragraph [ref=e3717]:
+        - text: DFPT rests on a deep formal result. Consider a
+        - emphasis [ref=e3718]: "stati`c"
+        - text: ’ perturbation parameter
+        - img [ref=e3720]
+        - text: that couples to the system through some one-electron operator
+        - img [ref=e3726]
+        - text: . The
+        - strong [ref=e3747]:
+          - img [ref=e3749]
+          - text: theorem
+        - text: (or “third-order analyticity” theorem, see
+        - link "Gonze & Vigneron (1989)" [ref=e3760] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.39.13120
+        - text: ) states that the
+        - img [ref=e3762]
+        - text: "-th derivative of the total energy with respect to"
+        - img [ref=e3774]
+        - text: can be computed from a knowledge of the wave- function perturbed to
+        - emphasis [ref=e3779]: only
+        - text: order
+        - img [ref=e3781]
+        - text: ":"
+      - img [ref=e3787]:
+        - generic [ref=e3791]:
+          - img [ref=e3792]
+          - img [ref=e3890]
+      - paragraph [ref=e3899]:
+        - text: For phonons,
+        - img [ref=e3901]
+        - text: is the
+        - emphasis [ref=e3906]: amplitude
+        - text: of a nuclear displacement with wavevector
+        - img [ref=e3908]
+        - text: ", and the relevant quantity is the"
+        - strong [ref=e3914]: second derivative
+        - text: of the energy (
+        - img [ref=e3916]
+        - text: ","
+        - img [ref=e3926]
+        - text: ", but we want"
+        - img [ref=e3942]
+        - text: — see below). The
+        - img [ref=e3953]
+        - text: theorem guarantees that the second derivative of the energy is computable from a knowledge of
+        - emphasis [ref=e3964]: only the first-order change in the wavefunction
+        - img [ref=e3966]
+        - text: ", which in turn is determined by a"
+        - emphasis [ref=e3979]: single linear equation
+        - text: (the Sternheimer equation, §10.3.2) — not by a separate self-consistent calculation at each amplitude.
+      - paragraph [ref=e3980]:
+        - text: In practice the
+        - img [ref=e3982]
+        - text: theorem is invoked differently. The
+        - emphasis [ref=e3993]: first
+        - text: derivative of the energy (the force) is the Hellmann– Feynman theorem of
+        - link "chapter 09" [ref=e3994] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-09/
+        - text: . The
+        - emphasis [ref=e3995]:
+          - text: secon
+          - code [ref=e3996]: d*' derivative (the force-constant matrix) is $2n + 1$ for $n = 0$ (since $2(0) + 1 = 1$, but we want the *2n
+          - text: d
+        - text: "’ derivative — so the theorem is sometimes stated as: “the energy to order"
+        - img [ref=e3998]
+        - text: requires the wavefunction to order
+        - img [ref=e4010]
+        - text: ”, which for the
+        - emphasis [ref=e4015]: force-constant matrix
+        - text: (
+        - img [ref=e4017]
+        - text: for the second derivative of the energy) means
+        - emphasis [ref=e4026]: no wavefunction perturbation at all
+        - text: — but the
+        - emphasis [ref=e4027]: force-constant matrix itself
+        - text: is second-order in the perturbation amplitude, so we need
+        - img [ref=e4029]
+        - text: "to compute it). Either way, the practical consequence is the same: a"
+        - emphasis [ref=e4042]: single
+        - text: linear-response calculation gives the second derivative of the energy with respect to
+        - emphasis [ref=e4043]: every
+        - text: perturbation of the chosen wavevector.
+      - heading "10.3.2 The Sternheimer equation" [level=3] [ref=e4044]
+      - paragraph [ref=e4045]:
+        - text: Let
+        - img [ref=e4047]
+        - text: be the unperturbed Kohn–Sham Hamiltonian, with eigenstates
+        - img [ref=e4065]
+        - text: and eigenvalues
+        - img [ref=e4081]
+        - text: . Apply a small static perturbation with wavevector
+        - img [ref=e4097]
+        - text: and amplitude
+        - img [ref=e4104]
+        - text: (think of a phonon displacement
+        - img [ref=e4110]
+        - text: ). The first-order change in the Hamiltonian is
+        - img [ref=e4154]
+        - text: at
+        - img [ref=e4189]
+        - text: . The first-order change in the wavefunction
+        - img [ref=e4199]
+        - text: satisfies the
+        - strong [ref=e4214]: Sternheimer equation
+      - img [ref=e4216]:
+        - generic [ref=e4220]:
+          - img [ref=e4221]
+          - img [ref=e4323]
+      - paragraph [ref=e4331]:
+        - text: where
+        - img [ref=e4333]
+        - text: is the first-order change in the eigenvalue (the Hellmann–Feynman contribution to the force on the displaced nucleus). The operator on the left is
+        - emphasis [ref=e4396]: singular
+        - text: (it has a zero eigenvalue corresponding to
+        - img [ref=e4398]
+        - text: itself); the standard fix is to project out the
+        - img [ref=e4414]
+        - text: component and solve in the
+        - emphasis [ref=e4429]: orthogonal complement
+        - text: of the unperturbed eigenstate. This is a
+        - emphasis [ref=e4430]: linear
+        - text: equation in
+        - img [ref=e4432]
+        - text: ", not a self-consistent one — but the Hamiltonian"
+        - img [ref=e4448]
+        - text: depends on the
+        - emphasis [ref=e4465]: density
+        - img [ref=e4467]
+        - text: ", so the self-consistent density response"
+        - img [ref=e4473]
+        - text: couples all the
+        - img [ref=e4487]
+        - text: together through the Hartree and exchange–correlation potentials. The
+        - strong [ref=e4502]: self-consistent
+        - text: Sternheimer equation is
+      - img [ref=e4504]:
+        - generic [ref=e4508]:
+          - img [ref=e4509]
+          - img [ref=e4643]
+      - paragraph [ref=e4651]:
+        - text: with
+        - img [ref=e4653]
+        - text: the linear change in the Hartree+XC potential induced by the linear density response
+        - img [ref=e4689]
+        - text: .
+      - paragraph [ref=e4746]:
+        - text: "The Sternheimer equation is solved iteratively: start with"
+        - img [ref=e4748]
+        - text: ", solve for"
+        - img [ref=e4774]
+        - text: ", build"
+        - img [ref=e4790]
+        - text: ", rebuild"
+        - img [ref=e4804]
+        - text: ", and iterate to self-consistency. The cost is"
+        - emphasis [ref=e4839]: one
+        - text: linear-response cycle per
+        - img [ref=e4841]
+        - text: point, comparable to a
+        - emphasis [ref=e4847]: single
+        - text: SCF iteration in a regular ground-state calculation.
+      - heading "10.3.3 The dynamical matrix from DFPT" [level=3] [ref=e4848]
+      - paragraph [ref=e4849]:
+        - text: Once the self-consistent first-order density response
+        - img [ref=e4851]
+        - text: is known, the second derivative of the energy with respect to the phonon amplitude follows from the
+        - img [ref=e4865]
+        - text: theorem applied at
+        - img [ref=e4877]
+        - text: for the second derivative, or by direct application of the
+        - strong [ref=e4886]:
+          - img [ref=e4888]
+          - text: formula
+        - text: "for the second derivative:"
+      - img [ref=e4900]:
+        - generic [ref=e4904]:
+          - img [ref=e4905]
+          - img [ref=e5079]
+      - paragraph [ref=e5088]:
+        - text: (Here
+        - img [ref=e5090]
+        - text: is the derivative of the Hamiltonian with respect to the displacement of atom
+        - img [ref=e5105]
+        - text: in the chosen direction; the result is a
+        - emphasis [ref=e5110]: Hessian
+        - text: of the energy with respect to the displacement amplitudes, which is the force-constant matrix element
+        - img [ref=e5112]
+        - text: in the limit
+        - img [ref=e5130]
+        - text: or its Fourier transform in general.)
+      - paragraph [ref=e5140]:
+        - text: The crucial point is that the only piece of
+        - img [ref=e5142]:
+          - link [ref=e5145] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-dyn-dfpt"
+        - text: that depends on the
+        - emphasis [ref=e5153]: self-consistent response
+        - text: is the second term with
+        - img [ref=e5155]
+        - text: . The first term — the “bare” second derivative of the Hamiltonian, which includes the change in the
+        - emphasis [ref=e5170]: external
+        - text: potential when the nuclei are displaced — is known analytically (it is the change in the electron-nucleus Coulomb attraction plus the change in the nucleus-nucleus repulsion). So the entire self-consistent machinery is
+        - emphasis [ref=e5171]: just
+        - text: the Sternheimer equation, and the force constant is a
+        - emphasis [ref=e5172]: post-processing
+        - text: of
+        - img [ref=e5174]
+        - text: .
+      - blockquote [ref=e5189]:
+        - paragraph [ref=e5190]:
+          - strong [ref=e5191]: Tip.
+          - text: DFPT is implemented in production codes like
+          - link "Quantum ESPRESSO" [ref=e5192] [cursor=pointer]:
+            - /url: https://www.quantum-espresso.org/
+          - text: ","
+          - link "ABINIT" [ref=e5193] [cursor=pointer]:
+            - /url: https://www.abinit.org/
+          - text: ", and"
+          - link "CASTEP" [ref=e5194] [cursor=pointer]:
+            - /url: https://www.castep.org/
+          - text: under the keyword ‘phonon’ / ‘dfpt’ / ‘linear response’. For each
+          - img [ref=e5196]
+          - text: the code runs
+          - emphasis [ref=e5202]: one
+          - text: Sternheimer SCF cycle (linear in the occupied states) and outputs the dynamical matrix. The cost of a full phonon dispersion is then
+          - img [ref=e5204]
+          - emphasis [ref=e5213]: linear
+          - text: calculations, not
+          - img [ref=e5215]
+          - emphasis [ref=e5224]: non-linear
+          - text: ones — a savings of a factor of 5–10 per
+          - img [ref=e5226]
+          - text: over a frozen-phonon approach.
+      - heading "10.3.4 Why DFPT scales better" [level=3] [ref=e5232]
+      - paragraph [ref=e5233]:
+        - text: The frozen-phonon method requires a separate supercell calculation for
+        - emphasis [ref=e5234]:
+          - text: eac
+          - code [ref=e5235]: h*' $\mathbf q$, and the supercell grows without bound as one moves to fine $\mathbf q$ meshes. The DFPT method always works in the *primitive cell* (or the unit cell of the perturbation), and the cost grows only with the size of the *basis* needed to represent the self-consistent response. For a plane-wave code the basis size scales with the *kinetic cutof
+          - text: f
+        - text: "`, not with the supercell, so the cost of one"
+        - img [ref=e5237]
+        - text: "-point is roughly that of one ground-state SCF cycle on the"
+        - emphasis [ref=e5243]: primitive cell
+        - text: — independent of how fine the
+        - img [ref=e5245]
+        - text: "-mesh is."
+      - paragraph [ref=e5251]:
+        - text: The catch is that the
+        - emphasis [ref=e5252]: basis for the response
+        - text: has to resolve both the original orbitals and their first-order change, so the cutoff for the DFPT calculation is typically
+        - img [ref=e5254]
+        - text: (the same as the density-grid cutoff, see
+        - link "chapter 06" [ref=e5266] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.7) — not
+        - img [ref=e5268]
+        - text: as in a ground-state calculation. The total cost is therefore
+        - img [ref=e5279]
+        - text: DFPT cycles, each at a kinetic cutoff that is
+        - img [ref=e5289]
+        - text: higher than a ground-state calculation. The trade-off vs. frozen-phonon is favourable whenever the supercell needed to fit the lowest interesting
+        - img [ref=e5297]
+        - text: would contain more than
+        - img [ref=e5304]
+        - text: atoms.
+      - heading "10.3.5 Diagram — the DFPT 2n+1 linear-response cycle" [level=3] [ref=e5311]
+      - paragraph [ref=e5312]:
+        - text: DFPT replaces the
+        - img [ref=e5314]
+        - text: SCF cycles of the frozen- phonon method by a
+        - emphasis [ref=e5331]: single
+        - text: linear-response solve at every
+        - img [ref=e5333]
+        - text: — the
+        - emphasis [ref=e5339]: Sternheimer equation
+        - text: for the first-order wavefunction
+        - img [ref=e5341]
+        - text: . The
+        - img [ref=e5357]
+        - text: theorem then guarantees that the
+        - emphasis [ref=e5368]: second-order
+        - text: property of interest (the force-constant matrix
+        - img [ref=e5370]
+        - text: ) can be extracted from
+        - emphasis [ref=e5390]: only
+        - text: the first-order wavefunction.
+      - figure [ref=e5392]:
+        - code [ref=e5393]:
+          - document [ref=e5394]:
+            - generic [ref=e5396]:
+              - generic [ref=e5402]:
+                - generic [ref=e5406]: "no"
+                - generic [ref=e5410]: "yes"
+              - generic [ref=e5411]:
+                - generic [ref=e5417]: Ground statepsi_n^(0), epsilon_n^(0)from SCF (chapter 04)
+                - generic [ref=e5423]: "Perturbationwith wavevector qlambda * e^{iq.R}(nuclear displacement)"
+                - generic [ref=e5429]: Sternheimer equation(H0 - epsilon_n) psi_n^(1)= -(H1 - epsilon_n^(1)) psi_n^(0)- V_Hxc^(1) psi_n^(0)
+                - generic [ref=e5435]: Initial guess:V_Hxc^(1) = 0
+                - generic [ref=e5441]: Solve linear systemin orthogonal complementof psi_n^(0)
+                - generic [ref=e5447]: Build first-order densityrho^(1) = sum_n psi_n^(0)* psi_n^(1) + c.c.
+                - generic [ref=e5452]: Update V_Hxc^(1) = V_H[rho^(1)] + f_xc * rho^(1)
+                - generic [ref=e5458]: Self-consistent?|d rho^(1)| < tol
+                - generic [ref=e5464]: Self-consistentpsi_n^(1), rho^(1)for this q
+                - generic [ref=e5470]: 2n+1 formula(eq. 10.36)yields Phi_IJ, J
+                - generic [ref=e5476]: D(q) = Phi / sqrt(M_I M_J)diagonaliseyields omega_s(q)
+        - button "Download this diagram as a PNG" [ref=e5477] [cursor=pointer]:
+          - img [ref=e5478]
+          - generic [ref=e5481]: Download PNG
+      - paragraph [ref=e5482]:
+        - text: The
+        - strong [ref=e5483]: inner loop
+        - text: (‘SOLVE’ → ‘RHO1’ → ‘V1’ → ‘CK
+        - code [ref=e5484]: ") is a *linear* iteration: each step solves a single linear system for $\\psi_n^{(1)}$ given a fixed $V_\\text{Hxc}^{(1)}$, then updates $V_\\text{Hxc}^{(1)}$ from the new $\\rho^{(1)}$. This is the *same* structure as a non-linear ground-state SCF, but the equation being solved is **linear in $\\psi_n^{(1)}$**, so the convergence is much faster (typically 5–10 iterations to $10^{-10}$ in the density residual). Once"
+        - text: DONE
+        - code [ref=e5485]: "' is reached, the **single**"
+        - text: "FC`’ step applies the"
+        - img [ref=e5487]
+        - text: formula to
+        - emphasis [ref=e5498]: all
+        - text: force-constant matrix elements
+        - img [ref=e5500]
+        - text: at the chosen
+        - img [ref=e5518]
+        - text: from the
+        - emphasis [ref=e5524]: same
+        - img [ref=e5526]
+        - text: .
+      - heading "10.4 The acoustic sum rule" [level=2] [ref=e5541]
+      - paragraph [ref=e5542]:
+        - text: A non-accidental property of every harmonic crystal is that at
+        - img [ref=e5544]
+        - text: there are
+        - emphasis [ref=e5554]: three
+        - text: phonon modes with frequency exactly
+        - img [ref=e5556]
+        - text: . These are the
+        - strong [ref=e5565]: acoustic modes
+        - text: at the
+        - strong [ref=e5566]: Brillouin-zone centre
+        - img [ref=e5568]
+        - text: ". They correspond to uniform translations of the entire crystal: every nucleus moves by the same infinitesimal amount in the same direction, and because the energy is invariant under such a translation, there is no restoring force and the mode has zero frequency."
+      - paragraph [ref=e5573]:
+        - text: Mathematically, the acoustic sum rule (ASR) is a constraint on the
+        - emphasis [ref=e5574]: force-constant matrix
+        - text: ":"
+      - img [ref=e5576]:
+        - generic [ref=e5580]:
+          - img [ref=e5581]
+          - img [ref=e5642]
+      - paragraph [ref=e5651]:
+        - text: The proof uses translation invariance. Consider a uniform displacement
+        - img [ref=e5653]
+        - text: of every nucleus in the crystal. The change in energy is
+      - paragraph [ref=e5659]:
+        - img [ref=e5661]:
+          - generic [ref=e5665]:
+            - img [ref=e5666]
+            - img [ref=e5793]
+      - paragraph [ref=e5802]:
+        - text: The right-hand side must vanish for
+        - emphasis [ref=e5803]: every
+        - text: uniform
+        - img [ref=e5805]
+        - text: — because
+        - img [ref=e5811]
+        - text: for a uniform translation (the energy depends only on
+        - emphasis [ref=e5822]: relative
+        - text: positions of nuclei, not on the absolute position of the centre of mass). The matrix in parentheses must therefore be the zero matrix, which is
+        - img [ref=e5824]:
+          - link [ref=e5827] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-asr"
+        - text: .
+      - paragraph [ref=e5835]:
+        - text: The Fourier transform of
+        - img [ref=e5837]:
+          - link [ref=e5840] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-asr"
+        - text: at
+        - img [ref=e5849]
+        - text: is
+      - img [ref=e5860]:
+        - generic [ref=e5864]:
+          - img [ref=e5865]
+          - img [ref=e5910]
+      - paragraph [ref=e5919]:
+        - text: Summing
+        - img [ref=e5921]:
+          - link [ref=e5924] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-dyn-def"
+        - text: over
+        - img [ref=e5932]
+        - text: (and dividing by
+        - img [ref=e5938]
+        - text: ) gives
+      - img [ref=e5952]:
+        - generic [ref=e5956]:
+          - img [ref=e5957]
+          - img [ref=e6004]
+      - paragraph [ref=e6013]:
+        - text: For every
+        - img [ref=e6015]
+        - text: ", the dynamical-matrix column"
+        - img [ref=e6029]
+        - text: is zero. So the
+        - img [ref=e6062]
+        - text: "-by-"
+        - img [ref=e6076]
+        - text: dynamical matrix
+        - img [ref=e6090]
+        - text: has a
+        - emphasis [ref=e6102]: null space
+        - text: of dimension at least 3, spanned by the three uniform-translation vectors
+        - img [ref=e6104]
+        - text: for
+        - img [ref=e6134]
+        - text: (where
+        - img [ref=e6152]
+        - text: indexes the three Cartesian directions). Three of the eigenvalues of
+        - img [ref=e6158]
+        - text: are therefore exactly zero — these are the three acoustic modes at
+        - img [ref=e6171]
+        - text: .
+      - blockquote [ref=e6176]:
+        - paragraph [ref=e6177]:
+          - strong [ref=e6178]: Tip.
+          - text: In a
+          - emphasis [ref=e6179]: finite
+          - text: supercell calculation, the acoustic sum rule is
+          - emphasis [ref=e6180]: not
+          - text: exactly satisfied because the supercell is not exactly translationally invariant (the Born–von Karman boundary conditions break the continuous translation group down to a
+          - emphasis [ref=e6181]: discrete
+          - text: one). The largest spurious contribution to the ASR comes from the
+          - emphasis [ref=e6182]: long-range
+          - text: part of the force constants, which in a finite supercell is replaced by an interaction with the periodic images. The standard fix is to
+          - emphasis [ref=e6183]: enforce
+          - text: the ASR
+          - emphasis [ref=e6184]: a posteriori
+          - text: by replacing the Fourier transform
+          - img [ref=e6186]:
+            - link [ref=e6189] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-10-fc-fourier"
+          - text: with the
+          - emphasis [ref=e6196]: "ASR-projecte`d"
+          - text: ’ form
+          - img [ref=e6198]:
+            - generic [ref=e6202]:
+              - img [ref=e6203]
+              - img [ref=e6315]
+          - text: which subtracts the average of the
+          - img [ref=e6325]
+          - text: column (the “spurious acoustic-mode contribution”) from every
+          - img [ref=e6336]
+          - text: . This is what the
+          - strong [ref=e6342]: frozen-phonon post-processing
+          - text: of Quantum ESPRESSO’s ‘q2r’ + ‘matdyn’ does by default.
+      - heading "10.5 LO–TO splitting at in ionic crystals" [level=2] [ref=e6343]:
+        - text: 10.5 LO–TO splitting at
+        - img [ref=e6345]
+        - text: in ionic crystals
+      - paragraph [ref=e6354]:
+        - text: For a crystal made of
+        - emphasis [ref=e6355]: one
+        - text: atom per primitive cell, the dispersion near
+        - img [ref=e6357]
+        - text: has three acoustic modes that are
+        - emphasis [ref=e6367]: linearly
+        - text: "dispersing:"
+        - img [ref=e6369]
+        - text: for
+        - img [ref=e6400]
+        - text: (one longitudinal, two transverse). The
+        - emphasis [ref=e6417]: slopes
+        - img [ref=e6419]
+        - text: are the speeds of sound in the three acoustic branches.
+      - paragraph [ref=e6427]:
+        - text: For a crystal with
+        - emphasis [ref=e6428]: two or more
+        - text: atoms per primitive cell, the story is richer. There are
+        - emphasis [ref=e6429]: "three acousti`c"
+        - text: ’ branches (which go to zero at
+        - img [ref=e6431]
+        - text: as above) and
+        - emphasis [ref=e6436]: 3(N-1) optical
+        - text: branches (which have non-zero frequency at
+        - img [ref=e6438]
+        - text: ). The
+        - emphasis [ref=e6443]: longitudinal optical
+        - text: "(LO) branch in an ionic* crystal has a particularly subtle behaviour: its frequency at"
+        - img [ref=e6445]
+        - text: is
+        - emphasis [ref=e6455]: not
+        - text: the same as the frequency of the transverse optical (TO) branch. The split is called the
+        - strong [ref=e6456]: LO–TO splitting
+        - text: ", and it is a macroscopic electrostatic effect that the"
+        - emphasis [ref=e6457]: interatomic force constants
+        - text: alone do not capture. The bridge between the two frequencies is the
+        - strong [ref=e6458]: Born effective charge
+        - text: tensor.
+      - heading "10.5.1 The Born effective charge" [level=3] [ref=e6459]
+      - paragraph [ref=e6460]:
+        - text: When a nucleus
+        - img [ref=e6462]
+        - text: is displaced by an infinitesimal amount
+        - img [ref=e6468]
+        - text: in a
+        - emphasis [ref=e6479]: neutral
+        - text: crystal (the electron density is allowed to relax to its new ground state), the change in the total
+        - emphasis [ref=e6480]: polarisation
+        - text: is
+      - img [ref=e6482]:
+        - generic [ref=e6486]:
+          - img [ref=e6487]
+          - img [ref=e6528]
+      - paragraph [ref=e6537]:
+        - text: where
+        - img [ref=e6539]
+        - text: is the unit-cell volume and $Z^
+        - emphasis [ref=e6544]:
+          - text: _I$ is the
+          - strong [ref=e6545]: Born effective charge tensor
+          - text: of atom
+          - img [ref=e6547]
+          - text: . The factor
+          - img [ref=e6553]
+          - text: converts the sum (a dipole moment per unit cell) into a polarisation. The Born effective charge is a *rank-2 tensor
+        - text: in the Cartesian indices, so for a general non-cubic site it is
+        - emphasis [ref=e6563]: not
+        - text: "a scalar. By the acoustic sum rule, the net effective charge summed over all atoms in the unit cell vanishes in a neutral crystal:"
+      - img [ref=e6565]:
+        - generic [ref=e6569]:
+          - img [ref=e6570]
+          - img [ref=e6594]
+      - paragraph [ref=e6603]:
+        - text: In a
+        - emphasis [ref=e6604]: non-ionic
+        - text: crystal (e.g. pure silicon) $Z^
+        - emphasis [ref=e6605]: "_\\text{Si} = 0$ by symmetry, even though Si has 4 valence electrons. In an *ioni`c"
+        - text: ’ crystal like NaCl, $Z^
+        - emphasis [ref=e6606]:
+          - text: "_\\text{Na} \\approx +1.1\\, e"
+          - img [ref=e6608]
+          - text: Z^
+        - text: "_\\text{Cl} \\approx -1.1\\, e"
+        - img [ref=e6618]
+        - text: \pm 1$ by the partial covalent character of the bond.
+      - heading "10.5.2 The Lyddane–Sachs–Teller relation" [level=3] [ref=e6718]
+      - paragraph [ref=e6719]:
+        - text: The LO–TO splitting is the difference in frequency between the longitudinal optical (LO) and transverse optical (TO) modes at
+        - img [ref=e6721]
+        - text: . The classical result is the
+        - strong [ref=e6731]: Lyddane–Sachs–Teller (LST) relation
+      - img [ref=e6733]:
+        - generic [ref=e6737]:
+          - img [ref=e6738]
+          - img [ref=e6776]
+      - paragraph [ref=e6785]:
+        - text: where
+        - img [ref=e6787]
+        - text: is the
+        - emphasis [ref=e6795]: "stati`c"
+        - text: ’ dielectric constant of the crystal (measured at zero frequency) and
+        - img [ref=e6797]
+        - text: is the
+        - emphasis [ref=e6805]: high-frequency
+        - text: "dielectric constant (measured at frequencies above the phonons but below the electronic band gap). The LST relation says: the larger the ratio of static to high-frequency polarisability, the larger the LO–TO splitting."
+      - blockquote [ref=e6806]:
+        - paragraph [ref=e6807]:
+          - strong [ref=e6808]: Note.
+          - text: The LST relation holds exactly for a
+          - emphasis [ref=e6809]:
+            - text: cubi
+            - code [ref=e6810]: c*' crystal with *one* optic mode of each symmetry (i.e. a 2-atom basis like NaCl or GaAs). For more complex unit cells the generalisation is a sum over the modes, and the LO and TO frequencies at $\mathbf q = 0$ are obtained by diagonalising the dynamical matrix *wit
+            - text: h
+          - text: ’ the long-range Coulomb interaction included — see below.
+      - heading "10.5.3 The non-analytic long-range term" [level=3] [ref=e6811]
+      - paragraph [ref=e6812]:
+        - text: The LO–TO splitting arises from the
+        - emphasis [ref=e6813]:
+          - text: macroscopic electric fiel
+          - code [ref=e6814]: d*' that accompanies a longitudinal optical phonon at $\mathbf q \to 0$. A polar crystal is *piezoelectri
+          - text: c
+        - code [ref=e6815]: ": a displacement of the ions creates a polarisation, and the polarisation creates an electric field, and the electric field *acts bac"
+        - text: k
+        - emphasis [ref=e6816]:
+          - text: ’ on the ions. The electric field is singular at
+          - img [ref=e6818]
+          - text: — it scales as
+          - img [ref=e6829]
+          - text: — and it *couples only to the longitudinal mode
+        - text: (the transverse modes have no macroscopic polarisation in a cubic crystal, by symmetry). The result is a
+        - emphasis [ref=e6845]: "non-analyti`c"
+        - text: ’ correction to the dynamical matrix at
+        - img [ref=e6847]
+        - text: ":"
+      - img [ref=e6858]:
+        - generic [ref=e6862]:
+          - img [ref=e6863]
+          - img [ref=e6979]
+      - paragraph [ref=e6988]:
+        - text: (For a cubic crystal
+        - img [ref=e6990]
+        - text: and
+        - img [ref=e7009]:
+          - link [ref=e7012] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-na-term"
+        - text: reduces to $(\mathbf q \cdot Z^
+        - emphasis [ref=e7020]: _I)_\alpha (\mathbf q \cdot Z^
+        - emphasis [ref=e7021]: J)
+        - text: \beta / |\mathbf q|^2$.)
+      - paragraph [ref=e7022]:
+        - text: The non-analytic term is
+        - emphasis [ref=e7023]: zero
+        - text: at
+        - img [ref=e7025]
+        - text: in the sense that it does not depend on
+        - img [ref=e7036]
+        - text: (it depends only on the
+        - emphasis [ref=e7046]: direction
+        - text: of
+        - img [ref=e7048]
+        - text: ); but it is non-zero for any
+        - img [ref=e7055]
+        - text: . The effect on the
+        - emphasis [ref=e7065]: longitudinal
+        - text: optical mode is to
+        - emphasis [ref=e7066]: raise
+        - text: its frequency by an amount set by
+        - img [ref=e7068]
+        - text: and
+        - img [ref=e7077]
+        - text: ":"
+      - img [ref=e7086]:
+        - generic [ref=e7090]:
+          - img [ref=e7091]
+          - img [ref=e7165]
+      - paragraph [ref=e7174]:
+        - text: where
+        - img [ref=e7176]
+        - text: is the appropriate reduced mass of the mode. This is the LST relation
+        - img [ref=e7182]:
+          - link [ref=e7185] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-lst"
+        - text: in disguise.
+      - blockquote [ref=e7193]:
+        - paragraph [ref=e7194]:
+          - strong [ref=e7195]: Warning.
+          - text: The non-analytic term is
+          - emphasis [ref=e7196]: invisible
+          - text: to a
+          - emphasis [ref=e7197]: supercell
+          - text: frozen-phonon calculation, because the supercell is
+          - emphasis [ref=e7198]: neutral
+          - text: ": the macroscopic electric field of a LO phonon is"
+          - emphasis [ref=e7199]:
+            - text: screene
+            - code [ref=e7200]: "d*' by the periodic images of the LO mode in the supercell. To get the LO–TO splitting right you must *either* use DFPT (which works in the primitive cell and *does* see the macroscopic field) *or* add the non-analytic term \\eqref{eq:ch-10-na-term} to the dynamical matrix *by han"
+            - text: d
+          - text: ’ after the frozen-phonon calculation. Most production codes do the latter.
+      - heading "10.6 Phonon density of states and the thermodynamic functions" [level=2] [ref=e7201]
+      - paragraph [ref=e7202]:
+        - text: The phonon
+        - strong [ref=e7203]: density of states
+        - text: "(DOS) is the number of phonon modes per unit frequency, summed over all branches and wavevectors:"
+      - img [ref=e7205]:
+        - generic [ref=e7209]:
+          - img [ref=e7210]
+          - img [ref=e7271]
+      - paragraph [ref=e7280]:
+        - text: In a 3-D crystal with
+        - img [ref=e7282]
+        - text: atoms per primitive cell,
+        - img [ref=e7294]
+        - text: is a sum of
+        - img [ref=e7306]
+        - text: branches and has
+        - img [ref=e7320]
+        - emphasis [ref=e7333]: van Hove singularities
+        - text: — non-differentiable points where the gradient of
+        - img [ref=e7335]
+        - text: vanishes (a
+        - emphasis [ref=e7350]: saddle point
+        - text: in the dispersion). These show up as kinks in
+        - img [ref=e7352]
+        - text: and dominate the thermodynamic response at corresponding temperatures.
+      - paragraph [ref=e7363]:
+        - text: The integral of
+        - img [ref=e7365]
+        - text: "is fixed by the branch count:"
+      - img [ref=e7377]:
+        - generic [ref=e7381]:
+          - img [ref=e7382]
+          - img [ref=e7419]
+      - paragraph [ref=e7428]:
+        - text: The DOS is the bridge from the dispersion
+        - img [ref=e7430]
+        - text: to all the
+        - emphasis [ref=e7445]: "thermodynami`c"
+        - text: ’ functions of the crystal in the harmonic approximation. The standard textbook results are summarised below; the derivations are exercises (problems 1 and 2).
+      - heading "10.6.1 The vibrational partition function" [level=3] [ref=e7446]
+      - paragraph [ref=e7447]:
+        - text: The phonon modes are independent harmonic oscillators (
+        - link "chapter 01" [ref=e7448] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: §1.5). The partition function of a single mode of frequency
+        - img [ref=e7450]
+        - text: at temperature
+        - img [ref=e7456]
+        - text: is
+      - img [ref=e7462]
+      - paragraph [ref=e7546]:
+        - text: where
+        - img [ref=e7548]
+        - text: ". The total partition function is the product over all modes:"
+      - img [ref=e7572]:
+        - generic [ref=e7576]:
+          - img [ref=e7577]
+          - img [ref=e7632]
+      - heading "10.6.2 The Helmholtz free energy" [level=3] [ref=e7641]
+      - paragraph [ref=e7642]:
+        - text: The Helmholtz free energy
+        - img [ref=e7644]
+        - text: is
+      - img [ref=e7672]:
+        - generic [ref=e7676]:
+          - img [ref=e7677]
+          - img [ref=e7779]
+      - paragraph [ref=e7788]:
+        - text: The first term is the
+        - strong [ref=e7789]: zero-point energy
+        - text: (the energy of the phonons at
+        - img [ref=e7791]
+        - text: ); the second is the
+        - strong [ref=e7800]: thermal
+        - text: "contribution. Both terms are essential for thermochemistry: the"
+        - emphasis [ref=e7801]: change
+        - text: in zero-point energy between two phases contributes to phase stability even at
+        - img [ref=e7803]
+        - text: ", and the thermal contribution determines the"
+        - img [ref=e7813]
+        - text: "-dependence of the free energy."
+      - paragraph [ref=e7818]:
+        - text: In terms of the DOS, equation
+        - img [ref=e7820]:
+          - link [ref=e7823] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-free-energy"
+        - text: becomes
+      - img [ref=e7832]:
+        - generic [ref=e7836]:
+          - img [ref=e7837]
+          - img [ref=e7941]
+      - heading "10.6.3 The entropy and the specific heat" [level=3] [ref=e7950]
+      - paragraph [ref=e7951]:
+        - text: The vibrational entropy follows from
+        - img [ref=e7953]
+        - text: ":"
+      - img [ref=e7974]:
+        - generic [ref=e7978]:
+          - img [ref=e7979]
+          - img [ref=e8095]
+      - paragraph [ref=e8104]:
+        - text: The constant-volume specific heat
+        - img [ref=e8106]
+        - text: is
+      - img [ref=e8130]:
+        - generic [ref=e8134]:
+          - img [ref=e8135]
+          - img [ref=e8241]
+      - paragraph [ref=e8249]:
+        - text: At
+        - emphasis [ref=e8250]: low
+        - text: temperature (
+        - img [ref=e8252]
+        - text: ), the low-frequency modes (
+        - img [ref=e8271]
+        - text: ) contribute the classical Dulong–Petit value
+        - img [ref=e8288]
+        - text: ", but the high-frequency modes are exponentially suppressed, so"
+        - img [ref=e8322]
+        - text: as
+        - img [ref=e8335]
+        - text: in a way determined by the
+        - emphasis [ref=e8344]: low- frequency
+        - text: behaviour of
+        - img [ref=e8346]
+        - text: ": for a 3-D solid"
+        - img [ref=e8358]
+        - text: ", giving"
+        - img [ref=e8377]
+        - text: (the Debye
+        - img [ref=e8393]
+        - text: law). At
+        - emphasis [ref=e8401]: "hig`h"
+        - text: ’ temperature (
+        - img [ref=e8403]
+        - text: ), all modes are in the classical regime and
+        - img [ref=e8422]
+        - text: saturates at the Dulong–Petit value
+        - img [ref=e8431]
+        - text: .
+      - heading "10.6.4 The vibrational contribution to other properties" [level=3] [ref=e8457]
+      - paragraph [ref=e8458]: "A few more useful identities in the harmonic approximation:"
+      - list [ref=e8459]:
+        - listitem [ref=e8460]:
+          - text: The
+          - emphasis [ref=e8461]: mean-square thermal displacement
+          - text: of atom
+          - img [ref=e8463]
+          - text: ":"
+      - img [ref=e8469]:
+        - generic [ref=e8473]:
+          - img [ref=e8474]
+          - img [ref=e8601]
+      - paragraph [ref=e8610]:
+        - text: This determines the Debye–Waller factor
+        - img [ref=e8612]
+        - text: in temperature-dependent diffraction intensities.
+      - list [ref=e8655]:
+        - listitem [ref=e8656]:
+          - paragraph [ref=e8657]:
+            - text: The
+            - emphasis [ref=e8658]: zero-point energy
+            - text: of a mode,
+            - img [ref=e8660]
+            - text: ", contributes a"
+            - emphasis [ref=e8674]: renormalisation
+            - text: of the total energy even at
+            - img [ref=e8676]
+            - text: . The difference in zero-point energies between two phases is the
+            - emphasis [ref=e8685]: zero-point contribution
+            - text: to phase stability; it is responsible, e.g., for the relative stability of the graphite and diamond phases of carbon at low
+            - img [ref=e8687]
+            - text: .
+        - listitem [ref=e8692]:
+          - paragraph [ref=e8693]:
+            - text: The
+            - emphasis [ref=e8694]: thermal expansion
+            - text: of a crystal is
+            - strong [ref=e8695]: not
+            - text: contained in the harmonic approximation — it requires the
+            - emphasis [ref=e8696]: "anharmoni`c"
+            - text: ’ corrections of §10.7. >
+            - strong [ref=e8697]: Tip.
+            - text: In a plane-wave code, the vibrational free energy
+          - blockquote [ref=e8698]:
+            - paragraph [ref=e8699]:
+              - img [ref=e8701]:
+                - link [ref=e8704] [cursor=pointer]:
+                  - /url: "#mjx-eqn%3Aeq%3Ach-10-free-energy-dos"
+              - text: is computed by sampling a
+              - img [ref=e8713]
+              - text: "-mesh of"
+              - img [ref=e8720]
+              - text: points, summing the frequencies, and (optionally) Fourier-interpolating to a finer mesh to improve the convergence. The convergence in
+              - img [ref=e8730]
+              - text: is similar to the convergence of the BZ integral in
+              - link "chapter 07" [ref=e8739] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-07/
+              - text: §7.6 — a
+              - img [ref=e8741]
+              - text: convergence in 3-D for the
+              - emphasis [ref=e8755]: "thermodynami`c"
+              - text: ’ integrals, which is slow. A converged free-energy calculation typically needs
+              - img [ref=e8757]
+              - text: for a 2-atom primitive cell.
+      - heading "10.7 Anharmonic effects" [level=2] [ref=e8774]
+      - paragraph [ref=e8775]:
+        - text: The harmonic approximation is a quadratic expansion of the energy in the nuclear displacements. It is exact in the limit of small displacements at
+        - img [ref=e8777]
+        - text: ", but it is"
+        - emphasis [ref=e8786]: not
+        - text: exact at finite temperature, and it is
+        - emphasis [ref=e8787]: not
+        - text: exact for the thermal expansion even at
+        - img [ref=e8789]
+        - text: . The missing physics is the
+        - strong [ref=e8798]: anharmonic corrections
+        - text: — the third, fourth, and higher derivatives of the energy with respect to nuclear displacements.
+      - heading "10.7.1 The cubic and quartic force constants" [level=3] [ref=e8799]
+      - paragraph [ref=e8800]: "Write the energy as a Taylor expansion in displacements:"
+      - img [ref=e8802]:
+        - generic [ref=e8806]:
+          - img [ref=e8807]
+          - img [ref=e8867]
+      - paragraph [ref=e8876]:
+        - text: where the
+        - img [ref=e8878]
+        - text: "-th order term is"
+      - img [ref=e8884]:
+        - generic [ref=e8888]:
+          - img [ref=e8889]
+          - img [ref=e9021]
+      - paragraph [ref=e9030]:
+        - text: with the
+        - strong [ref=e9031]:
+          - img [ref=e9033]
+          - text: "-th-order force constant"
+        - text: tensor
+      - img [ref=e9039]:
+        - generic [ref=e9043]:
+          - img [ref=e9044]:
+            - img [ref=e9135]
+          - img [ref=e9147]
+      - paragraph [ref=e9156]:
+        - text: The harmonic approximation is
+        - img [ref=e9158]
+        - text: ; the first anharmonic correction is
+        - img [ref=e9188]
+        - text: (cubic), the second is
+        - img [ref=e9202]
+        - text: "(quartic), and so on. The cubic and quartic force constants are computable by finite differences of forces, just like the second-order force constants of §10.2. ### 10.7.2 Phonon–phonon scattering and the phonon self-energy"
+      - paragraph [ref=e9215]:
+        - text: The cubic term
+        - img [ref=e9217]
+        - text: couples three phonons. In perturbation theory, it gives a phonon a
+        - emphasis [ref=e9230]: self-energy
+        - img [ref=e9232]
+        - text: with both a
+        - emphasis [ref=e9251]: real
+        - text: part (which shifts the frequency
+        - img [ref=e9253]
+        - text: ) and an
+        - emphasis [ref=e9275]: imaginary
+        - text: part (which gives the mode a finite
+        - emphasis [ref=e9276]: "linewidt`h"
+        - text: ’
+        - img [ref=e9278]
+        - text: ). The imaginary part at second order in
+        - img [ref=e9296]
+        - text: is
+      - img [ref=e9310]:
+        - generic [ref=e9314]:
+          - img [ref=e9315]:
+            - generic [ref=e9318]:
+              - img [ref=e9405]
+              - img [ref=e9456]
+          - img [ref=e9549]
+      - paragraph [ref=e9558]:
+        - text: where
+        - img [ref=e9560]
+        - text: is the cubic matrix element
+        - img [ref=e9574]
+        - text: and
+        - img [ref=e9612]
+        - text: is the Bose–Einstein occupation. The delta function enforces
+        - emphasis [ref=e9649]: energy conservation
+        - text: ; the conservation of crystal momentum is already built into the matrix element by the way the wavevectors enter. The widths
+        - img [ref=e9651]
+        - text: determine the
+        - emphasis [ref=e9659]: thermal conductivity
+        - text: via the Boltzmann transport equation, the
+        - emphasis [ref=e9660]: Raman and *infrared
+        - text: ’ linewidths, and the lifetime of a coherent phonon.
+      - blockquote [ref=e9661]:
+        - paragraph [ref=e9662]:
+          - strong [ref=e9663]: Note.
+          - text: At room temperature,
+          - img [ref=e9665]
+          - text: is typically 1–10
+          - img [ref=e9674]
+          - text: (0.1–1 meV) for an acoustic phonon in a simple metal, and an order of magnitude larger in a strongly anharmonic crystal like a thermoelectric. These widths are directly measurable by inelastic neutron scattering (for acoustic modes) and by Raman spectroscopy (for optical modes at
+          - img [ref=e9687]
+          - text: ).
+      - heading "10.7.3 Thermal expansion and the quasi-harmonic approximation" [level=3] [ref=e9692]
+      - paragraph [ref=e9693]:
+        - text: Thermal expansion is a
+        - emphasis [ref=e9694]: "macroscopi`c"
+        - text: ’ signature of anharmonicity. In a strictly harmonic crystal, the equilibrium lattice parameter
+        - img [ref=e9696]
+        - text: does not depend on
+        - img [ref=e9702]
+        - text: — the free energy is
+        - img [ref=e9708]
+        - text: and both
+        - img [ref=e9724]
+        - text: and
+        - img [ref=e9730]
+        - text: are independent of
+        - img [ref=e9736]
+        - text: at the harmonic level (the frequencies depend on
+        - img [ref=e9742]
+        - text: ", but the"
+        - emphasis [ref=e9747]: partition function
+        - img [ref=e9749]:
+          - link [ref=e9752] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-partition"
+        - text: does not have a classical limit that would prefer larger
+        - img [ref=e9761]
+        - text: ). The
+        - emphasis [ref=e9766]: expansion
+        - text: is the first non-trivial
+        - img [ref=e9768]
+        - text: dependence of the
+        - emphasis [ref=e9773]: equilibrium
+        - img [ref=e9775]
+        - text: .
+      - paragraph [ref=e9780]:
+        - text: The
+        - strong [ref=e9781]: quasi-harmonic approximation
+        - text: (QHA) restores the
+        - img [ref=e9783]
+        - text: dependence of
+        - img [ref=e9789]
+        - text: by
+        - emphasis [ref=e9794]: re-evaluating
+        - text: the harmonic free energy
+        - img [ref=e9796]:
+          - link [ref=e9799] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-free-energy-dos"
+        - text: at every value of
+        - img [ref=e9808]
+        - text: (or equivalently, every volume
+        - img [ref=e9814]
+        - text: ), and minimising with respect to
+        - img [ref=e9820]
+        - text: at every
+        - img [ref=e9826]
+        - text: ":"
+      - img [ref=e9832]:
+        - generic [ref=e9836]:
+          - img [ref=e9837]
+          - img [ref=e9878]
+      - paragraph [ref=e9886]:
+        - text: where
+        - img [ref=e9888]
+        - text: is the harmonic free energy
+        - img [ref=e9904]:
+          - link [ref=e9907] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-free-energy-dos"
+        - text: evaluated with the phonon frequencies
+        - img [ref=e9916]
+        - text: computed at the lattice parameter
+        - img [ref=e9936]
+        - text: . The QHA “freezes” the phonon populations in their harmonic form (no
+        - img [ref=e9942]
+        - text: ","
+        - img [ref=e9956]
+        - text: in the energy), but lets the frequencies depend on
+        - img [ref=e9970]
+        - text: — the Grüneisen parameter
+      - img [ref=e9976]:
+        - generic [ref=e9980]:
+          - img [ref=e9981]
+          - img [ref=e10031]
+      - paragraph [ref=e10040]: encodes this dependence.
+      - paragraph [ref=e10041]:
+        - text: The QHA gives
+        - emphasis [ref=e10042]: qualitatively
+        - text: "correct thermal expansion: most solids have"
+        - img [ref=e10044]
+        - text: (the frequencies decrease under expansion), so the free energy is minimised at
+        - emphasis [ref=e10053]: larger
+        - img [ref=e10055]
+        - text: as
+        - img [ref=e10061]
+        - text: increases. Quantitatively, the QHA fails for strongly anharmonic crystals (some perovskites, clathrates, skutterudites) where the harmonic approximation to the
+        - emphasis [ref=e10066]: occupation
+        - text: of the phonons is not accurate even for a single static
+        - img [ref=e10068]
+        - text: . For these materials one must go to
+        - emphasis [ref=e10073]: full
+        - text: "anharmonic methods: molecular dynamics with a machine-learning potential,"
+        - emphasis [ref=e10074]: ab initio
+        - text: molecular dynamics, or self-consistent phonon theory (in which the harmonic Hamiltonian is
+        - emphasis [ref=e10075]: "renormalise`d"
+        - text: ’ by the cubic and quartic terms and solved self-consistently).
+      - heading "10.7.4 Phonon linewidths and the Allen–Heine–Cardona formalism" [level=3] [ref=e10076]
+      - paragraph [ref=e10077]:
+        - text: A different kind of “anharmonicity” is the
+        - emphasis [ref=e10078]: temperature dependence of the electronic band structure
+        - text: — the band gap
+        - emphasis [ref=e10079]: shrinks
+        - text: as
+        - img [ref=e10081]
+        - text: increases. This is a zero-phonon effect of anharmonicity on the
+        - emphasis [ref=e10086]: electrons
+        - text: (mediated by the zero-point motion* of the phonons), and it is captured by the
+        - strong [ref=e10087]: Allen–Heine–Cardona (AHC) formalism
+        - text: of
+        - link "Allen & Heine (1976)" [ref=e10088] [cursor=pointer]:
+          - /url: https://doi.org/10.1088/0022-3719/9/12/013
+        - text: and
+        - link "Allen & Cardona (1981)" [ref=e10089] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.23.1499
+        - text: .
+      - paragraph [ref=e10090]:
+        - text: The AHC formalism computes the
+        - emphasis [ref=e10091]: self-energy
+        - text: of an electronic state due to the
+        - emphasis [ref=e10092]: zero-point
+        - text: and thermal motion of the phonons, treating the electron-phonon coupling perturbatively (see §10.8 below). The renormalisation of the band gap at temperature
+        - img [ref=e10094]
+        - text: is
+      - img [ref=e10100]:
+        - generic [ref=e10104]:
+          - img [ref=e10105]
+          - img [ref=e10199]
+      - paragraph [ref=e10208]:
+        - text: where
+        - img [ref=e10210]
+        - text: is the Bose–Einstein occupation and
+        - img [ref=e10223]
+        - text: is the rate of change of the gap with the population of mode
+        - img [ref=e10248]
+        - text: . The
+        - img [ref=e10263]
+        - text: contribution is the
+        - emphasis [ref=e10272]: zero-point renormalisation
+        - text: (ZPR); the
+        - img [ref=e10274]
+        - text: contribution is the
+        - emphasis [ref=e10283]: thermal renormalisation
+        - text: (TR). The two are usually added and quoted together as the “temperature-dependent band gap”.
+      - paragraph [ref=e10284]:
+        - text: "The AHC formalism is computationally expensive: it requires the"
+        - emphasis [ref=e10285]: electron-phonon matrix elements
+        - text: (§10.8) at every
+        - img [ref=e10287]
+        - text: in a fine mesh, summed over the entire BZ. It is implemented in modern DFPT codes (e.g.
+        - link "Quantum ESPRESSO" [ref=e10293] [cursor=pointer]:
+          - /url: https://www.quantum-espresso.org/
+        - text: ","
+        - link "EPW" [ref=e10294] [cursor=pointer]:
+          - /url: https://epw-code.org/
+        - text: ) and is the state of the art for predicting
+        - img [ref=e10296]
+        - text: "-dependent band gaps from first principles."
+      - heading "10.8 Electron–phonon coupling" [level=2] [ref=e10301]
+      - paragraph [ref=e10302]:
+        - text: The phonons we have discussed so far are
+        - emphasis [ref=e10303]: Born–Oppenheimer
+        - text: "phonons: the electrons are assumed to be in their ground state for every nuclear configuration. The energy"
+        - img [ref=e10305]
+        - text: of
+        - img [ref=e10319]:
+          - link [ref=e10322] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-quadratic"
+        - text: is the
+        - emphasis [ref=e10329]: ground-state
+        - text: Kohn–Sham energy as a function of nuclear position. The phonons are the
+        - emphasis [ref=e10330]: normal modes
+        - text: of this energy surface.
+      - paragraph [ref=e10331]:
+        - text: A different — and very rich — piece of physics appears when we
+        - emphasis [ref=e10332]:
+          - text: let the electrons respon
+          - code [ref=e10333]: d*' to the phonons. The displacement of a nucleus perturbs the electron-nucleus potential, which in turn perturbs the electron density, which in turn *feels bac
+          - text: k
+        - text: ’ on the nuclei (in a way that the force-constant matrix does not describe). This
+        - emphasis [ref=e10334]: electron-phonon coupling
+        - text: is the origin of conventional superconductivity, the temperature dependence of band gaps, the carrier mobility in semiconductors, the temperature dependence of the resistivity in metals, and a long list of other phenomena.
+      - heading "10.8.1 The deformation potential" [level=3] [ref=e10335]
+      - paragraph [ref=e10336]:
+        - text: The simplest piece of electron-phonon coupling is the
+        - strong [ref=e10337]: deformation potential
+        - text: — the linear change in an electronic band energy
+        - img [ref=e10339]
+        - text: with respect to a uniform dilatation or compression of the crystal. For a long-wavelength acoustic phonon of wavevector
+        - img [ref=e10352]
+        - text: and branch
+        - img [ref=e10363]
+        - text: ", the change in"
+        - img [ref=e10369]
+        - text: is
+      - img [ref=e10382]:
+        - generic [ref=e10386]:
+          - img [ref=e10387]
+          - img [ref=e10428]
+      - paragraph [ref=e10437]:
+        - text: where
+        - img [ref=e10439]
+        - text: is the dilatation (for a longitudinal acoustic mode) and
+        - img [ref=e10473]
+        - text: is the
+        - strong [ref=e10486]: deformation potential constant
+        - text: (units of energy). The deformation potential is the band-structure analogue of the electron-phonon matrix element of the next subsection; it is
+        - emphasis [ref=e10487]: diagonal
+        - text: in the electronic index and q-independent to leading order.
+      - blockquote [ref=e10488]:
+        - paragraph [ref=e10489]:
+          - strong [ref=e10490]: Tip.
+          - text: The deformation potential of silicon is about
+          - img [ref=e10492]
+          - text: eV for the conduction-band minimum; that of germanium is about
+          - img [ref=e10502]
+          - text: eV. The deformation potential controls the
+          - emphasis [ref=e10509]: intravalley
+          - text: electron-phonon scattering rate in semiconductors and is a key input to the
+          - emphasis [ref=e10510]: drift mobility
+          - text: in Boltzmann transport.
+      - heading "10.8.2 The Fröhlich polaron" [level=3] [ref=e10511]
+      - paragraph [ref=e10512]:
+        - text: For
+        - emphasis [ref=e10513]: long-wavelength longitudinal optical
+        - text: (LO) phonons in an
+        - emphasis [ref=e10514]: "ioni`c"
+        - text: ’ crystal, the macroscopic electric field of the LO phonon couples to the electron via the Fröhlich interaction
+      - img [ref=e10516]:
+        - generic [ref=e10520]:
+          - img [ref=e10521]
+          - img [ref=e10615]
+      - paragraph [ref=e10624]: with the coupling constant
+      - img [ref=e10626]:
+        - generic [ref=e10630]:
+          - img [ref=e10631]
+          - img [ref=e10717]
+      - paragraph [ref=e10726]:
+        - text: where
+        - img [ref=e10728]
+        - text: is the electron band mass and
+        - img [ref=e10734]
+        - text: is the dimensionless
+        - strong [ref=e10743]: Fröhlich coupling constant
+      - img [ref=e10745]:
+        - generic [ref=e10749]:
+          - img [ref=e10750]
+          - img [ref=e10819]
+      - paragraph [ref=e10828]:
+        - text: For GaAs,
+        - img [ref=e10830]
+        - text: (weak coupling); for TiO$
+        - emphasis [ref=e10846]:
+          - text: "2"
+          - img [ref=e10848]
+          - text: \alpha
+        - text: "\\text{LO} \\approx 2$ (strong coupling)."
+      - paragraph [ref=e10871]:
+        - text: The electron + LO-phonon system has a bound state — the electron
+        - emphasis [ref=e10872]: dresses
+        - text: itself with a cloud of LO phonons — called the
+        - strong [ref=e10873]: Fröhlich polaron
+        - text: . The polaron has a lower energy than the bare electron (by an amount
+        - img [ref=e10875]
+        - text: ) and an
+        - emphasis [ref=e10894]: effective mass
+        - text: heavier than the bare mass by a factor of
+        - img [ref=e10896]
+        - text: (weak coupling). The polaron picture is the starting point for transport in polar semiconductors and in ionic crystals like the alkali halides.
+      - heading "10.8.3 The general electron-phonon matrix element" [level=3] [ref=e10916]
+      - paragraph [ref=e10917]:
+        - text: For a
+        - emphasis [ref=e10918]: general
+        - text: electron-phonon coupling, the matrix element is
+      - img [ref=e10920]:
+        - generic [ref=e10924]:
+          - img [ref=e10925]
+          - img [ref=e11010]
+      - paragraph [ref=e11019]:
+        - text: where
+        - img [ref=e11021]
+        - text: is the derivative of the Kohn–Sham potential with respect to the amplitude of the phonon mode
+        - img [ref=e11045]
+        - text: ", and"
+        - img [ref=e11060]
+        - text: is the unperturbed Bloch state. In a plane-wave code with norm-conserving pseudopotentials, the matrix element is
+      - img [ref=e11079]:
+        - generic [ref=e11083]:
+          - img [ref=e11084]
+          - img [ref=e11198]
+      - paragraph [ref=e11207]:
+        - text: where the prefactor converts the
+        - emphasis [ref=e11208]: "normalise`d"
+        - text: ’ phonon amplitude to a
+        - emphasis [ref=e11209]: physical
+        - text: displacement,
+        - img [ref=e11211]
+        - text: is a mode-effective mass (the sum of
+        - img [ref=e11220]
+        - text: over the atoms in the unit cell, with the polarisation vector normalised to one), and the matrix element involves the
+        - emphasis [ref=e11248]: external
+        - text: (pseudo-) potential because the XC and Hartree contributions to the derivative of
+        - img [ref=e11250]
+        - text: are absorbed in the
+        - emphasis [ref=e11263]: screening
+        - text: of the external potential (a consequence of the
+        - img [ref=e11265]
+        - text: theorem).
+      - paragraph [ref=e11276]:
+        - text: The matrix element
+        - img [ref=e11278]:
+          - link [ref=e11281] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-ep-pw"
+        - text: is the central object of electron-phonon physics. It is
+        - strong [ref=e11289]: complex
+        - text: ","
+        - strong [ref=e11290]: k- and q-dependent
+        - text: ", and is computed by DFPT (§10.3) on a fine electronic"
+        - img [ref=e11292]
+        - text: "-mesh and phonon"
+        - img [ref=e11299]
+        - text: "-mesh. The square modulus"
+        - img [ref=e11306]
+        - text: ", summed over initial and final states, is the"
+        - emphasis [ref=e11326]: probability
+        - text: of scattering from
+        - img [ref=e11328]
+        - text: to
+        - img [ref=e11343]
+        - text: by emitting or absorbing a phonon of mode
+        - img [ref=e11363]
+        - text: .
+      - heading "10.8.4 The Eliashberg function" [level=3] [ref=e11377]:
+        - text: 10.8.4 The Eliashberg function
+        - img [ref=e11379]
+      - paragraph [ref=e11395]:
+        - text: The
+        - strong [ref=e11396]: Eliashberg function
+        - img [ref=e11398]
+        - text: is the
+        - emphasis [ref=e11414]: "phonon-density-of-states-weighte`d"
+        - text: "’ average of the electron- phonon matrix element, summed over the Fermi surface:"
+      - img [ref=e11416]:
+        - generic [ref=e11420]:
+          - img [ref=e11421]:
+            - generic [ref=e11424]:
+              - img [ref=e11509]
+              - img [ref=e11536]
+          - img [ref=e11603]
+      - paragraph [ref=e11612]: "Three pieces to recognise:"
+      - list [ref=e11613]:
+        - listitem [ref=e11614]:
+          - text: The two Fermi-surface delta functions
+          - img [ref=e11616]
+          - text: restrict the sum to
+          - emphasis [ref=e11656]: "electroni`c"
+          - text: ’ states at the Fermi level.
+        - listitem [ref=e11657]:
+          - text: The phonon-energy delta function
+          - img [ref=e11659]
+          - text: restricts the phonon to a given frequency.
+        - listitem [ref=e11684]:
+          - text: The prefactor
+          - img [ref=e11686]
+          - text: is the
+          - emphasis [ref=e11702]: phonon DOS
+          - text: ", so that"
+          - img [ref=e11704]
+          - text: has the dimensions of a
+          - emphasis [ref=e11720]: frequency
+          - text: (it is the spectral function of the electron-phonon coupling, weighted by the phonon density of states).
+      - paragraph [ref=e11721]:
+        - text: The Eliashberg function is the central input to the
+        - strong [ref=e11722]: Eliashberg theory of superconductivity
+        - text: (see §10.8.5). It is also a key input to the
+        - emphasis [ref=e11723]: temperature-dependent resistivity
+        - text: of a metal, the
+        - emphasis [ref=e11724]: carrier lifetime
+        - text: in a semiconductor, and the
+        - emphasis [ref=e11725]: "linewidt`h"
+        - text: ’ of an electronic excitation that couples to phonons.
+      - blockquote [ref=e11726]:
+        - paragraph [ref=e11727]:
+          - strong [ref=e11728]: Note.
+          - text: The factor
+          - img [ref=e11730]
+          - text: in the definition
+          - img [ref=e11747]:
+            - link [ref=e11750] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-10-eliashberg"
+          - text: is
+          - emphasis [ref=e11758]: controversial
+          - text: . Some authors include it, some do not. The convention used here follows
+          - link "Allen & Mitrović (1982)" [ref=e11759] [cursor=pointer]:
+            - /url: https://doi.org/10.1088/0034-4885/45/2/001
+          - text: and is the one used in the modern literature; the alternative convention (without the
+          - img [ref=e11761]
+          - text: ) leads to an
+          - img [ref=e11772]
+          - text: that has the dimensions of
+          - emphasis [ref=e11788]: inverse frequency
+          - text: and is harder to interpret as a spectral function. The dimensionless
+          - strong [ref=e11789]: electron-phonon coupling constant
+          - img [ref=e11791]
+          - text: "is the same in both conventions:"
+        - img [ref=e11797]:
+          - generic [ref=e11801]:
+            - img [ref=e11802]
+            - img [ref=e11843]
+        - paragraph [ref=e11852]:
+          - img [ref=e11854]
+          - text: is a
+          - emphasis [ref=e11859]: measure
+          - text: "of the strength of the electron-phonon coupling: weak coupling is"
+          - img [ref=e11861]
+          - text: ", intermediate is"
+          - img [ref=e11873]
+          - text: –
+          - img [ref=e11885]
+          - text: ", strong is"
+          - img [ref=e11891]
+          - text: .
+      - heading "10.8.5 The McMillan formula and superconductivity" [level=3] [ref=e11900]
+      - paragraph [ref=e11901]:
+        - text: In
+        - strong [ref=e11902]: Eliashberg theory
+        - text: ", the"
+        - emphasis [ref=e11903]: superconducting critical temperature
+        - img [ref=e11905]
+        - text: is determined by the Eliashberg function
+        - img [ref=e11914]
+        - text: through a non-linear integral equation (
+        - link "Eliashberg (1960)" [ref=e11930] [cursor=pointer]:
+          - /url: https://doi.org/10.1007/BF01031348
+        - text: ). For
+        - emphasis [ref=e11931]: weak to intermediate
+        - text: coupling (
+        - img [ref=e11933]
+        - text: ), a good analytical approximation is the
+        - strong [ref=e11944]: McMillan formula
+        - text: (
+        - link "McMillan (1968)" [ref=e11945] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRev.167.331
+        - text: "):"
+      - img [ref=e11947]:
+        - generic [ref=e11951]:
+          - img [ref=e11952]
+          - img [ref=e12042]
+      - paragraph [ref=e12050]: where
+      - img [ref=e12052]:
+        - generic [ref=e12056]:
+          - img [ref=e12057]
+          - img [ref=e12128]
+      - paragraph [ref=e12137]:
+        - text: is the
+        - strong [ref=e12138]: logarithmic average phonon energy
+        - text: and $\mu^
+        - emphasis [ref=e12139]:
+          - text: $ is the
+          - strong [ref=e12140]: Coulomb pseudopotential
+          - text: (a dimensionless measure of the Coulomb repulsion between electrons, screened by the high-frequency dielectric constant; typically $\mu^
+        - text: \sim 0.10
+        - img [ref=e12142]
+        - text: 0.15$).
+      - paragraph [ref=e12148]:
+        - text: The McMillan formula is famously
+        - emphasis [ref=e12149]: quantitative
+        - text: for the
+        - emphasis [ref=e12150]: conventional
+        - text: (electron-phonon-mediated) superconductors — Al, Pb, Nb, Nb
+        - img [ref=e12152]
+        - text: Sn, MgB
+        - img [ref=e12159]
+        - text: — and
+        - emphasis [ref=e12165]: qualitatively correct
+        - text: for the
+        - emphasis [ref=e12166]: unconventional
+        - text: superconductors (cuprates, pnictides) where the pairing is not electron-phonon mediated. The conventional superconductors have
+        - img [ref=e12168]
+        - text: in the range 0.3 (Al) to 1.5 (Pb); the cuprates and Fe-based superconductors are outside the McMillan regime.
+      - blockquote [ref=e12173]:
+        - paragraph [ref=e12174]:
+          - strong [ref=e12175]: Tip.
+          - text: The Eliashberg function
+          - img [ref=e12177]
+          - text: is computed by a
+          - emphasis [ref=e12193]: Wannier interpolation
+          - text: of the electron-phonon matrix elements from DFPT on a coarse
+          - img [ref=e12195]
+          - text: "- and"
+          - img [ref=e12202]
+          - text: "-mesh to a fine mesh (the Brillouin zone is sampled at"
+          - img [ref=e12209]
+          - text: –
+          - img [ref=e12221]
+          - text: points). The standard tool for this is the
+          - strong [ref=e12230]: EPW
+          - text: code (
+          - link "Noffsinger, Kioupakis, van de Walle, Louie, Cohen (2010)" [ref=e12231] [cursor=pointer]:
+            - /url: https://doi.org/10.1016/j.cpc.2010.04.010
+          - text: ), which works in tandem with Quantum ESPRESSO.
+      - heading "10.8.6 Diagram — from electron–phonon coupling to McMillan" [level=3] [ref=e12232]:
+        - text: 10.8.6 Diagram — from electron–phonon coupling to McMillan
+        - img [ref=e12234]
+      - paragraph [ref=e12242]:
+        - text: The full chain from
+        - emphasis [ref=e12243]: first principles
+        - text: to a superconducting
+        - img [ref=e12245]
+        - text: "* runs through the Eliashberg function"
+        - img [ref=e12254]
+        - text: and a non-linear integral equation (the Eliashberg equation), which the McMillan formula approximates analytically. The flow below shows the
+        - emphasis [ref=e12270]: inputs
+        - text: (DFPT phonon frequencies and electron–phonon matrix elements), the
+        - emphasis [ref=e12271]: intermediate quantities
+        - text: (the Eliashberg spectral function and the coupling constant
+        - img [ref=e12273]
+        - text: ), and the
+        - emphasis [ref=e12278]: output
+        - text: (
+        - img [ref=e12280]
+        - text: ).
+      - figure [ref=e12289]:
+        - code [ref=e12290]:
+          - document [ref=e12291]:
+            - generic [ref=e12308]:
+              - generic [ref=e12314]: Phononsomega_s(q)(ch. 10, sec 10.2-10.3)
+              - generic [ref=e12320]: Phonon DOSg(omega)
+              - generic [ref=e12326]: Eliashberg functionalpha^2 F(omega)(eq. 10.81)
+              - generic [ref=e12332]: e-ph matrix elementsg_mn^nu(k, q)(eq. 10.78)
+              - generic [ref=e12338]: Fermi surfacedelta(eps_nk)(chapter 11)
+              - generic [ref=e12344]: lambda = 2 int alpha^2 F / omega d omega(dimensionless coupling)
+              - generic [ref=e12350]: omega_log(log-average phonon energy)
+              - generic [ref=e12356]: McMillan formula(eq. 10.84)
+              - generic [ref=e12362]: mu^*(Coulomb pseudopotential,~ 0.1-0.15)
+              - generic [ref=e12368]: T_c(superconducting criticaltemperature)
+              - generic [ref=e12374]: Eliashberg equations(non-linear integral eq.)
+        - button "Download this diagram as a PNG" [ref=e12375] [cursor=pointer]:
+          - img [ref=e12376]
+          - generic [ref=e12379]: Download PNG
+      - paragraph [ref=e12380]:
+        - text: The three
+        - emphasis [ref=e12381]: upstream
+        - text: inputs (
+        - code [ref=e12382]: PH
+        - text: ","
+        - code [ref=e12383]: EP
+        - text: ","
+        - code [ref=e12384]: FS
+        - text: ") come from three different first-principles calculations: the phonon dispersion (chapter 10 itself), the electron–phonon matrix elements (also chapter 10, by DFPT), and the Fermi surface (chapter 11). They combine into the"
+        - strong [ref=e12385]: Eliashberg function
+        - code [ref=e12386]: ALF
+        - text: ", which is the spectral density of the coupling. From"
+        - code [ref=e12387]: ALF
+        - text: ’ one can either
+        - emphasis [ref=e12388]: directly
+        - text: solve the non-linear Eliashberg equations (
+        - code [ref=e12389]: ELB
+        - text: ), or
+        - emphasis [ref=e12390]: approximately
+        - text: evaluate the McMillan formula (
+        - code [ref=e12391]: MMC
+        - text: ) — the two paths converge in the weak-coupling limit
+        - img [ref=e12393]
+        - text: . The Coulomb pseudopotential
+        - img [ref=e12405]
+        - text: is the *only free parameter in the chain; it is a phenomenological correction for the screened Coulomb repulsion that the phonon-mediated pairing has to overcome.
+      - heading "10.9 Worked example — the 1-D diatomic chain" [level=2] [ref=e12413]
+      - paragraph [ref=e12414]:
+        - text: "The simplest non-trivial phonon problem is the 1-D diatomic chain:"
+        - img [ref=e12416]
+        - text: unit cells, each containing two atoms of masses
+        - img [ref=e12422]
+        - text: and
+        - img [ref=e12431]
+        - text: (
+        - img [ref=e12440]
+        - text: ), connected by springs of force constant
+        - img [ref=e12456]
+        - text: between nearest neighbours. The lattice constant is
+        - img [ref=e12462]
+        - text: ", so the two atoms within a cell are separated by"
+        - img [ref=e12468]
+        - text: . The dispersion relation has two branches —
+        - emphasis [ref=e12478]: acoustic
+        - text: ’ (lower) and optical (upper) — with a frequency gap at the Brillouin-zone boundary.
+      - heading "10.9.1 Setting up the equations of motion" [level=3] [ref=e12479]
+      - paragraph [ref=e12480]:
+        - text: Label the atoms within the unit cell at position
+        - img [ref=e12482]
+        - text: (for integer
+        - img [ref=e12494]
+        - text: ") as follows: atom 1 has mass"
+        - img [ref=e12500]
+        - text: and is at the
+        - emphasis [ref=e12508]: left
+        - text: of the cell (position
+        - img [ref=e12510]
+        - text: ), atom 2 has mass
+        - img [ref=e12518]
+        - text: and is at the
+        - emphasis [ref=e12526]: right
+        - text: (position
+        - img [ref=e12528]
+        - text: ). The displacement of atom 1 in cell
+        - img [ref=e12545]
+        - text: is
+        - img [ref=e12551]
+        - text: ", and the displacement of atom 2 in cell"
+        - img [ref=e12573]
+        - text: is
+        - img [ref=e12579]
+        - text: "(renamed to keep the two atoms distinct). The forces are:"
+      - list [ref=e12600]:
+        - listitem [ref=e12601]:
+          - text: The force on atom 1 in cell
+          - img [ref=e12603]
+          - text: comes from its bonds to atom 2 in cell
+          - img [ref=e12609]
+          - text: (to the right) and to atom 2 in cell
+          - img [ref=e12615]
+          - text: "(to the left):"
+      - img [ref=e12625]:
+        - generic [ref=e12629]:
+          - img [ref=e12630]
+          - img [ref=e12730]
+      - list [ref=e12739]:
+        - listitem [ref=e12740]:
+          - text: The force on atom 2 in cell
+          - img [ref=e12742]
+          - text: comes from its bonds to atom 1 in cell
+          - img [ref=e12748]
+          - text: (to the left) and to atom 1 in cell
+          - img [ref=e12754]
+          - text: "(to the right):"
+      - img [ref=e12764]:
+        - generic [ref=e12768]:
+          - img [ref=e12769]
+          - img [ref=e12869]
+      - heading "10.9.2 The Bloch ansatz" [level=3] [ref=e12878]
+      - paragraph [ref=e12879]: Substitute the Bloch ansatz
+      - img [ref=e12881]
+      - paragraph [ref=e12976]:
+        - text: so that
+        - img [ref=e12978]
+        - text: and similarly for
+        - img [ref=e12999]
+        - text: . The equations of motion become
+      - paragraph [ref=e13004]:
+        - img [ref=e13006]:
+          - generic [ref=e13010]:
+            - img [ref=e13011]
+            - img [ref=e13065]
+        - img [ref=e13075]:
+          - generic [ref=e13079]:
+            - img [ref=e13080]
+            - img [ref=e13134]
+      - paragraph [ref=e13143]:
+        - text: Using the identity
+        - img [ref=e13145]
+        - text: ", and collecting the"
+        - img [ref=e13203]
+        - text: and
+        - img [ref=e13209]
+        - text: "terms on the left:"
+      - paragraph [ref=e13214]:
+        - img [ref=e13216]:
+          - generic [ref=e13220]:
+            - img [ref=e13221]
+            - img [ref=e13274]
+        - img [ref=e13284]:
+          - generic [ref=e13288]:
+            - img [ref=e13289]
+            - img [ref=e13342]
+      - paragraph [ref=e13351]:
+        - text: This is a
+        - img [ref=e13353]
+        - text: linear eigenvalue problem in
+        - img [ref=e13363]
+        - text: ". A non-trivial solution exists iff the determinant of the matrix vanishes:"
+      - img [ref=e13377]:
+        - generic [ref=e13381]:
+          - img [ref=e13382]
+          - img [ref=e13461]
+      - heading "10.9.3 The dispersion relation" [level=3] [ref=e13470]
+      - paragraph [ref=e13471]:
+        - text: Expanding
+        - img [ref=e13473]:
+          - link [ref=e13476] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-worked-det"
+        - text: ":"
+      - img [ref=e13485]
+      - paragraph [ref=e13574]:
+        - text: Using
+        - img [ref=e13576]
+        - text: "and rearranging:"
+      - img [ref=e13626]:
+        - generic [ref=e13630]:
+          - img [ref=e13631]
+          - img [ref=e13712]
+      - paragraph [ref=e13721]:
+        - text: This is a quadratic in
+        - img [ref=e13723]
+        - text: ". Solving by the quadratic formula:"
+      - img [ref=e13732]:
+        - generic [ref=e13736]:
+          - img [ref=e13737]
+          - img [ref=e13868]
+      - paragraph [ref=e13877]:
+        - text: "The two signs give the two branches:"
+        - img [ref=e13879]
+        - text: is the
+        - strong [ref=e13893]: acoustic
+        - text: branch (lower frequency),
+        - img [ref=e13895]
+        - text: is the
+        - strong [ref=e13909]: optical
+        - text: branch (upper frequency).
+      - heading "10.9.4 Limiting cases" [level=3] [ref=e13910]
+      - paragraph [ref=e13911]:
+        - strong [ref=e13912]:
+          - text: Long-wavelength limit,
+          - img [ref=e13914]
+          - text: .
+        - text: Expand
+        - img [ref=e13924]
+        - text: to leading order. The square root in
+        - img [ref=e13966]:
+          - link [ref=e13969] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-worked-dispersion"
+        - text: becomes
+      - img [ref=e13978]
+      - paragraph [ref=e14155]: Therefore
+      - img [ref=e14157]
+      - paragraph [ref=e14303]:
+        - text: where
+        - img [ref=e14305]
+        - text: is the
+        - emphasis [ref=e14341]: reduced mass
+        - text: . So
+        - img [ref=e14343]
+        - text: with the
+        - strong [ref=e14371]: speed of sound
+      - img [ref=e14373]:
+        - generic [ref=e14377]:
+          - img [ref=e14378]
+          - img [ref=e14408]
+      - paragraph [ref=e14417]:
+        - text: For the optical branch at
+        - img [ref=e14419]
+        - text: ":"
+      - img [ref=e14429]:
+        - generic [ref=e14433]:
+          - img [ref=e14434]
+          - img [ref=e14499]
+      - paragraph [ref=e14507]:
+        - text: The acoustic branch starts at 0 (and rises linearly), the optical branch starts at
+        - img [ref=e14509]
+        - text: .
+      - paragraph [ref=e14530]:
+        - strong [ref=e14531]:
+          - text: Brillouin-zone boundary,
+          - img [ref=e14533]
+          - text: .
+        - text: At this point
+        - img [ref=e14548]
+        - text: ", and the square root in"
+        - img [ref=e14596]:
+          - link [ref=e14599] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-worked-dispersion"
+        - text: reduces to
+        - img [ref=e14608]
+        - text: ":"
+      - img [ref=e14638]:
+        - generic [ref=e14696]:
+          - img [ref=e14698]
+          - img [ref=e14721]
+      - paragraph [ref=e14775]:
+        - text: (assuming
+        - img [ref=e14777]
+        - text: so
+        - img [ref=e14793]
+        - text: ). The gap at the BZ boundary is therefore
+      - img [ref=e14819]:
+        - generic [ref=e14823]:
+          - img [ref=e14824]
+          - img [ref=e14899]
+      - paragraph [ref=e14907]:
+        - text: For
+        - img [ref=e14909]
+        - text: the gap closes, the dispersion becomes
+        - img [ref=e14925]
+        - text: ", and the chain reduces to the monoatomic case."
+      - heading "10.9.5 Numerical example" [level=3] [ref=e14968]
+      - paragraph [ref=e14969]:
+        - text: Take
+        - img [ref=e14971]
+        - text: amu,
+        - img [ref=e14985]
+        - text: amu,
+        - img [ref=e14999]
+        - text: eV/Å
+        - img [ref=e15010]
+        - text: ","
+        - img [ref=e15017]
+        - text: Å. The unit conversion is
+      - img [ref=e15027]:
+        - generic [ref=e15042]: Å
+      - paragraph [ref=e15119]: The acoustic-branch speed of sound is
+      - img [ref=e15121]
+      - paragraph [ref=e15258]:
+        - text: In other words the sound speed is
+        - img [ref=e15260]
+        - text: m/s in this artificial diatomic solid.
+      - paragraph [ref=e15275]:
+        - text: The optical-branch frequency at
+        - img [ref=e15277]
+        - text: is
+      - img [ref=e15287]
+      - paragraph [ref=e15399]: The gap at the BZ boundary is
+      - img [ref=e15401]
+      - paragraph [ref=e15543]:
+        - text: i.e. the BZ-boundary frequencies are
+        - img [ref=e15545]
+        - text: THz (upper) and
+        - img [ref=e15573]
+        - text: THz (lower), a gap of
+        - img [ref=e15601]
+        - text: THz.
+      - paragraph [ref=e15610]:
+        - text: The script
+        - link "dft_notes/python_codes/chapter_10/01-diatomic-chain.py" [ref=e15611] [cursor=pointer]:
+          - /url: /DFT-notes/dft_notes/python_codes/chapter_10/01-diatomic-chain.py
+          - code [ref=e15612]: dft_notes/python_codes/chapter_10/01-diatomic-chain.py
+        - text: evaluates
+        - img [ref=e15614]:
+          - link [ref=e15617] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-worked-dispersion"
+        - text: on a fine
+        - img [ref=e15626]
+        - text: "-mesh and produces the plot of the two branches."
+      - heading "10.9.6 The plot" [level=3] [ref=e15632]
+      - paragraph [ref=e15633]:
+        - img "Phonon dispersion of a 1-D diatomic chain with $M_1 = 12$ amu, $M_2 = 16$ amu, $K = 10$ eV/Å$^2$, $a = 5$ Å. The acoustic branch (lower) starts at $\\omega = 0$ at the zone centre and rises with slope $v_s \\approx 8.96 \\times 10^4$ m/s. The optical branch (upper) starts at $\\omega \\approx 25.5$ THz at the zone centre. At the BZ boundary $q = \\pi/a$ the branches reach $\\omega_- = 24.7$ THz (lower) and $\\omega_+ = 28.4$ THz (upper)." [ref=e15634]
+      - paragraph [ref=e15635]:
+        - emphasis [ref=e15636]: Figure 1.
+        - text: Phonon dispersion of a 1-D diatomic chain. The horizontal axis is the phonon wavevector
+        - img [ref=e15638]
+        - text: in units of
+        - img [ref=e15644]
+        - text: (the BZ boundary is at
+        - img [ref=e15655]
+        - text: ). The vertical axis is the frequency in THz. The two branches are non-degenerate everywhere except at
+        - img [ref=e15672]
+        - text: (where the acoustic branch touches zero) and at the
+        - img [ref=e15682]
+        - text: point of the
+        - emphasis [ref=e15687]: "acousti`c"
+        - text: ’ zone, where the optical mode sits. The frequency gap at the BZ boundary is
+        - img [ref=e15689]
+        - text: THz, in agreement with the analytical expression
+        - img [ref=e15711]:
+          - link [ref=e15714] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-10-worked-gap"
+        - text: .
+      - paragraph [ref=e15722]: The relevant code is reproduced below; the script is the source of truth.
+      - code [ref=e15726]: "# dft_notes/python_codes/chapter_10/01-diatomic-chain.py import os import numpy as np import matplotlib matplotlib.use(\"Agg\") # headless - no display required import matplotlib.pyplot as plt M1 = 12.0 # mass of atom 1, amu M2 = 16.0 # mass of atom 2, amu K = 10.0 # force constant, eV/Å^2 A = 5.0 # lattice constant, Å eV_to_J = 1.602176634e-19 A_to_m = 1.0e-10 amu_to_kg = 1.66053906660e-27 THz_to_Hz = 1.0e12 K_SI = K * eV_to_J / A_to_m ** 2 M1_SI = M1 * amu_to_kg M2_SI = M2 * amu_to_kg N_Q = 401 q_frac = np.linspace(0.0, 1.0, N_Q) q_vals = q_frac * np.pi / A sum_inv = 1.0 / M1_SI + 1.0 / M2_SI inside = sum_inv ** 2 - 4.0 * np.sin(q_vals * A / 2.0) ** 2 / (M1_SI * M2_SI) omega_sq_plus = K_SI * (sum_inv + np.sqrt(inside)) omega_sq_minus = K_SI * (sum_inv - np.sqrt(inside)) nu_plus_THz = np.sqrt(omega_sq_plus) / (2.0 * np.pi) * 1.0e-12 nu_minus_THz = np.sqrt(omega_sq_minus) / (2.0 * np.pi) * 1.0e-12 fig, ax = plt.subplots(figsize=(8, 6)) ax.plot(q_frac, nu_minus_THz, color=\"#cc785c\", lw=2.2, label=r\"acoustic $\\omega_-(q)$\") ax.plot(q_frac, nu_plus_THz, color=\"#5db8a6\", lw=2.2, label=r\"optical $\\omega_+(q)$\") ax.axvline(1.0, color=\"#3d3d3a\", lw=0.8, ls=\"--\", alpha=0.5) ax.set_xlabel(r\"$q\\, a\\,/\\,\\pi$\") ax.set_ylabel(r\"$\\nu$ (THz)\") ax.set_title(r\"1-D diatomic chain: $M_1 = 12$ amu, $M_2 = 16$ amu, \" r\"$K = 10$ eV/Å$^2$, $a = 5$ Å\") ax.legend(frameon=False, loc=\"lower right\") ax.grid(True, alpha=0.25) ax.set_xlim(0.0, 1.0) for spine in (\"top\", \"right\"): ax.spines[spine].set_visible(False) fig.tight_layout() here = os.path.dirname(os.path.abspath(__file__)) plots_dir = os.path.join(here, \"plots\") os.makedirs(plots_dir, exist_ok=True) out = os.path.join(plots_dir, \"01-diatomic-chain.png\") fig.savefig(out, dpi=150, bbox_inches=\"tight\") print(f\"Wrote {out}\")"
+      - blockquote [ref=e15727]:
+        - paragraph [ref=e15728]:
+          - strong [ref=e15729]: Note.
+          - text: The numerical values can be cross-checked with the analytical expressions of §10.9.4. At
+          - img [ref=e15731]
+          - text: the script returns the optical-branch frequency
+          - img [ref=e15741]
+          - text: THz and the acoustic-branch frequency
+          - img [ref=e15768]
+          - text: — both in agreement with
+          - img [ref=e15781]:
+            - link [ref=e15784] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-10-worked-optic"
+          - text: and the limit
+          - img [ref=e15793]
+          - text: as
+          - img [ref=e15811]
+          - text: . At
+          - img [ref=e15821]
+          - text: the script returns
+          - img [ref=e15836]
+          - text: THz and
+          - img [ref=e15852]
+          - text: THz, the two values given by
+          - img [ref=e15868]
+          - text: and
+          - img [ref=e15884]
+          - text: in the same units.
+      - heading "10.10 Workflow" [level=2] [ref=e15899]
+      - paragraph [ref=e15900]: The end-to-end workflow of a phonon calculation in the harmonic approximation is summarised below. The two main routes are frozen-phonon (top branch) and DFPT (bottom branch); they share the same starting geometry and the same output (the dispersion + DOS), but the intermediate steps differ.
+      - figure [ref=e15902]:
+        - code [ref=e15903]:
+          - document [ref=e15904]:
+            - generic [ref=e15906]:
+              - generic [ref=e15915]:
+                - generic [ref=e15919]: frozen phonon
+                - generic [ref=e15923]: DFPT
+              - generic [ref=e15924]:
+                - generic [ref=e15930]: Relax geometryHellmann-Feynman forces(ch. 09)
+                - generic [ref=e15936]: Convergedequilibrium cell(a, c, atomic positions)
+                - generic [ref=e15941]: Choose method
+                - generic [ref=e15947]: Build supercellL1 x L2 x L3 primitive cells
+                - generic [ref=e15953]: Stay in primitive cell(unit cell of the perturbation)
+                - generic [ref=e15959]: "Apply commensuratedisplacement patternu_I = U e^{i q.R_I}"
+                - generic [ref=e15965]: Solve Sternheimerequation for eachq and branch s
+                - generic [ref=e15971]: SCF on supercell(N times, one per displacement)
+                - generic [ref=e15977]: Self-consistentrho^(1) and psi_n^(1)
+                - generic [ref=e15983]: Fit force constantsPhi(R) from forces
+                - generic [ref=e15989]: Compute force constantsfrom 2n+1 formula
+                - generic [ref=e15995]: Fourier transformPhi(R) to D(q)
+                - generic [ref=e16001]: Diagonalise D(q)at each q
+                - generic [ref=e16007]: Phonon dispersionomega_s(q)
+                - generic [ref=e16012]: Phonon DOS g(omega)
+                - generic [ref=e16018]: Thermodynamic functionsF(T), S(T), C_V(T)
+                - generic [ref=e16024]: "Optional: e-ph couplingg_mn(q,k), alpha^2 F(omega)"
+                - generic [ref=e16030]: Superconducting T_c(McMillan / Eliashberg)
+        - button "Download this diagram as a PNG" [ref=e16031] [cursor=pointer]:
+          - img [ref=e16032]
+          - generic [ref=e16035]: Download PNG
+      - paragraph [ref=e16036]:
+        - text: "The decision node `C{Choose method}’ is the one a practitioner spends the most time on."
+        - strong [ref=e16037]: DFPT
+        - text: is preferred for
+        - emphasis [ref=e16038]: primitive cells
+        - text: and for
+        - emphasis [ref=e16039]: long-wavelength
+        - text: properties (LO–TO splitting, Born effective charges, the dielectric tensor).
+        - strong [ref=e16040]: Frozen phonon
+        - text: is preferred for
+        - emphasis [ref=e16041]: supercells
+        - text: (defects, alloys) and when DFPT is not available. The two routes converge to the same answer in the limit of a converged
+        - img [ref=e16043]
+        - text: "-mesh; the cost is just different."
+      - heading "10.11 Problems" [level=2] [ref=e16049]
+      - group [ref=e16050]:
+        - generic "▸ Problem 1 (easy) — Acoustic dispersion of a monoatomic 1-D chain" [ref=e16051] [cursor=pointer]
+        - text: "A 1-D chain of identical atoms of mass connected by springs of force constant (lattice constant ) has the monoatomic-chain dispersion relation Show that the *long-wavelengt`h*' limit gives the linear dispersion and compute the speed of sound in terms of , , and ."
+      - group [ref=e16052]:
+        - generic "▸ Show answer" [ref=e16053] [cursor=pointer]
+        - text: For we have , so The slope of vs. at the zone centre is therefore the speed of sound For Å, eV/Å (i.e. N/m), and amu ( kg), this gives m/s. The acoustic dispersion of the diatomic chain of §10.9 has the *same* for the *light* mass at the zone centre, reduced by a factor of where is the reduced mass.
+      - group [ref=e16054]:
+        - generic "▸ Problem 2 (medium) — Diatomic chain dispersion" [ref=e16055] [cursor=pointer]
+        - text: Starting from the equations of motion and for the 1-D diatomic chain, derive the dispersion relation in full detail. Then specialise to and show that the dispersion reduces to the monoatomic case .
+      - group [ref=e16056]:
+        - generic "▸ Show answer" [ref=e16057] [cursor=pointer]
+        - text: "**Step 1: Bloch ansatz.** Substitute and into : Re-arranging, which is . The same substitution into gives . **Step 2: eigenvalue problem.** Bring the and terms to the left: This is a homogeneous linear system in . A non-trivial solution exists iff the determinant vanishes, which is . **Step 3: Solve the quadratic in .** Expand : Using : Apply the quadratic formula with : Factor from under the square root: So which is . **Step 4: Reduce to the monoatomic case.** Set : So and . These look like *two* different branches, but they are not! Using the identity , one finds that *bot`h*' branches reduce to the same monoatomic-chain dispersion but on *halve`d*' Brillouin zones — the \"diatomic\" chain with has the same dispersion as the monoatomic chain with a *halve`d*' lattice constant . The original is *not* the primitive lattice constant of the chain (it is twice the primitive constant), so the \"first\" BZ is only by accident; the true primitive BZ is , and the \"optical\" branch in the wrong BZ folds back onto the acoustic branch in the right BZ. Folding the dispersion back gives the standard monoatomic chain."
+      - group [ref=e16058]:
+        - generic "▸ Problem 3 (hard) — The Eliashberg function α²F(ω)" [ref=e16059] [cursor=pointer]
+        - text: "Starting from the electron-phonon matrix element of and the definition of the Eliashberg function : 1. Show that the dimensionless coupling constant of is bounded above by , where is the Fermi-surface average of the squared matrix element, is a typical atomic mass, and is a Fermi-surface-and-phonon-weighted average of . 2. Use the Eliashberg equation (in the weak-coupling, constant- limit) to derive the McMillan formula . State the *physical* content of the Coulomb pseudopotential in one or two sentences. 3. Estimate for elemental Pb, which has , meV, and . Compare to the experimental K."
+      - group [ref=e16060]:
+        - generic "▸ Show answer" [ref=e16061] [cursor=pointer]
+        - text: "**Part 1.** The Eliashberg function is a *four-current* average: two Fermi-surface delta functions restrict the electronic indices to the Fermi level; the phonon-energy delta function fixes the phonon frequency; the matrix element is a *squared amplitude* for the electron-phonon coupling. Pulling the matrix element outside the average and defining the Fermi-surface average we have The standard Fermi-surface-averaged squared matrix element is where the factor is the *phonon zero-point amplitude* (this is what the prefactor in gives). Substituting into : This is the bound on in the strong-coupling limit where all phonons are at the *same* frequency . For a real Eliashberg function with a distribution of phonon frequencies, the relationship is more nuanced, but the scaling holds. **Part 2.** The Eliashberg equation for the *superconducting ga`p*' at the Matsubara frequency is where is the Matsubara-frequency-space version of the Eliashberg function, The Coulomb pseudopotential appears as the *constant piece of the kernel that subtracts the *high-frequency* Coulomb repulsion (which is treated as instantaneous in the Eliashberg formalism). Its physical content is: the bare Coulomb repulsion between electrons is screened by the high-frequency dielectric constant of the crystal, and the *residual* repulsion after this screening (parametrised by ) opposes the electron-phonon-mediated attraction. In the *weak-coupling* limit and , the Eliashberg equation reduces to the BCS self-consistency equation which gives This is the BCS limit of the McMillan formula; the *strong- coupling* correction (the factor of in the denominator) accounts for the fact that, when is comparable to 1, the renormalisation of the electronic quasiparticle mass by the electron-phonon coupling *suppresses* relative to the weak-coupling estimate. The full McMillan formula is an *interpolation* between the BCS and the strong-coupling limits, calibrated against numerical solutions of the Eliashberg equation for a range of shapes. **Part 3.** Substitute into the McMillan formula: The denominator is . So Converting to temperature: K. Hmm, that's higher than the experimental 7.2 K. The reason is that the McMillan formula in the form is *quantitative* only for ; for stronger coupling it *overestimates* by a factor of 2–10. The **Allen–Dynes修正 formula** of [Allen & Dynes (1975)](<https://doi.org/10.1103/PhysRevB.12.905>) extends the McMillan formula to strong coupling: where and are *strong-coupling correction factors* that depend on , , and the *shape* of (specifically, on the *second moment* ). For Pb with , the correction factors are and , giving a *correcte`d*' of K — in much better agreement with experiment. The lesson is that the McMillan formula is a *first-order* approximation: it captures the *qualitative* dependence of on , , and , but for *quantitative* predictions of in strong-coupling superconductors one must solve the full Eliashberg equations numerically (or use the Allen–Dynes修正 formula as a *correction*). Pb is on the strong-coupling side of the McMillan regime, and the discrepancy with experiment is *expecte`d*`."
+      - heading "10.12 What we left out" [level=2] [ref=e16062]
+      - paragraph [ref=e16063]: "This chapter scratched the surface of phonon physics. Some of what we skipped:"
+      - list [ref=e16064]:
+        - listitem [ref=e16065]:
+          - strong [ref=e16066]: Phonon linewidths and anharmonic self-energies in detail.
+          - text: Equation
+          - img [ref=e16068]:
+            - link [ref=e16071] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-10-pp-width"
+          - text: is the
+          - emphasis [ref=e16079]: second-order
+          - text: expression for the linewidth from cubic anharmonicity. The
+          - emphasis [ref=e16080]: full
+          - text: anharmonic self-energy requires a self-consistent summation of diagrams (the “self-consistent phonon” or “renormalisation-group” approaches), and the
+          - emphasis [ref=e16081]: fourth-order
+          - img [ref=e16083]
+          - text: contributes both a frequency shift and a
+          - emphasis [ref=e16096]: "quarti`c"
+          - text: ’ broadening. We did not derive the full diagrammatic machinery; see
+          - link "Maradudin & Fein (1962)" [ref=e16097] [cursor=pointer]:
+            - /url: https://doi.org/10.1103/PhysRev.128.2589
+          - text: for the original treatment.
+        - listitem [ref=e16098]:
+          - strong [ref=e16099]: The Allen–Heine–Cardona formalism in detail.
+          - text: Equation
+          - img [ref=e16101]:
+            - link [ref=e16104] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-10-ahc"
+          - text: is the
+          - emphasis [ref=e16112]: zero-order
+          - text: (i.e. non-self- consistent) version of the AHC theory. The
+          - emphasis [ref=e16113]: self-consistent
+          - text: version (sometimes called the “AHC-SC” or “cumulant” expansion) accounts for the
+          - emphasis [ref=e16114]: renormalisation
+          - text: of the electronic states by the phonon self-energy, and gives quantitatively accurate band-gap renormalisations even in strongly anharmonic materials. The implementation in modern DFPT codes (Quantum ESPRESSO, ABINIT) is non-trivial and we did not give the formulas.
+        - listitem [ref=e16115]:
+          - strong [ref=e16116]: Phonons in magnetic materials.
+          - text: In a magnetically ordered crystal (ferromagnet, antiferromagnet) the spin degrees of freedom couple to the lattice, and there are
+          - emphasis [ref=e16117]: magnon–phonon
+          - text: hybrid modes. The spin–lattice coupling is a separate electron-phonon-like matrix element involving the
+          - emphasis [ref=e16118]: spin
+          - text: density rather than the charge density, and is not covered by the formalism of §10.8. We did not treat it.
+        - listitem [ref=e16119]:
+          - strong [ref=e16120]: Phonons at surfaces and interfaces.
+          - text: The translational symmetry of a surface or interface is
+          - emphasis [ref=e16121]: broken
+          - text: in the direction normal to the surface, so the surface-phonon dispersion lives in a 2-D Brillouin zone and has
+          - emphasis [ref=e16122]: additional
+          - text: modes (the Rayleigh surface acoustic wave, the Lucas modes, the Fuchs–Kliewer modes at surfaces of ionic crystals). The
+          - emphasis [ref=e16123]: ab initio
+          - text: treatment follows the same DFPT recipe as for bulk, but the supercell must contain enough vacuum to isolate the two surfaces. We did not give the formulas.
+        - listitem [ref=e16124]:
+          - strong [ref=e16125]: Phonon dynamics in real time.
+          - text: The harmonic approximation gives
+          - emphasis [ref=e16126]: static
+          - text: ’ normal modes. To describe real-time phonon dynamics (e.g. coherent-phonon experiments, phonon Boltzmann transport in the
+          - emphasis [ref=e16127]: transient
+          - text: regime) one needs the
+          - emphasis [ref=e16128]: time-dependent
+          - text: extension of the harmonic Hamiltonian, the
+          - emphasis [ref=e16129]: phonon Boltzmann transport equation
+          - text: ", or ab initio molecular dynamics. The state of the art is the"
+          - emphasis [ref=e16130]: non-equilibrium
+          - text: Green’s function (NEGF) treatment of phonons, which generalises the phonon self-energy to a
+          - img [ref=e16132]
+          - text: matrix in Keldysh space. We did not derive it.
+        - listitem [ref=e16141]:
+          - strong [ref=e16142]: Phonon–photon coupling (polaritons).
+          - text: In an ionic crystal, the
+          - emphasis [ref=e16143]: "long-wavelengt`h"
+          - text: ’ TO phonons couple to
+          - emphasis [ref=e16144]: infrared photons
+          - text: through the macroscopic electric field, and the resulting
+          - emphasis [ref=e16145]: polariton
+          - text: modes are hybrid phonon–photon excitations. The polariton dispersion is a textbook example of
+          - emphasis [ref=e16146]: strong coupling
+          - text: between two bosonic modes, and is the foundation of
+          - emphasis [ref=e16147]: infrared spectroscopy
+          - text: of solids. We did not give the polariton dispersion relation; see
+          - link "Kittel,Introduction to Solid State Physics" [ref=e16148] [cursor=pointer]:
+            - /url: https://www.wiley.com/en-us/Introduction+to+Solid+State+Physics%2C+8th+Edition-p-9780471415268
+            - text: Kittel,
+            - emphasis [ref=e16149]: Introduction to Solid State Physics
+          - text: chapter on optical processes.
+      - blockquote [ref=e16150]:
+        - paragraph [ref=e16151]:
+          - text: "Next:"
+          - link "chapter 11" [ref=e16152] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: "— Band structures: the electronic density of states, projected DOS, Fermi-surface topology, and the connection to transport."
+  - contentinfo [ref=e16153]:
+    - generic [ref=e16154]:
+      - generic [ref=e16155]:
+        - img [ref=e16156]
+        - generic [ref=e16160]: DFT Notes
+        - paragraph [ref=e16161]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e16162]:
+        - generic [ref=e16163]:
+          - heading "Project" [level=3] [ref=e16164]
+          - list [ref=e16165]:
+            - listitem [ref=e16166]:
+              - link "Chapters map" [ref=e16167] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e16168]:
+              - link "Python codes" [ref=e16169] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e16170]:
+              - link "Contributing" [ref=e16171] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e16172]:
+              - link "Security" [ref=e16173] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e16174]:
+              - link "Design spec" [ref=e16175] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e16176]:
+              - link "GitHub ↗" [ref=e16177] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e16178]:
+          - heading "Built with" [level=3] [ref=e16179]
+          - list [ref=e16180]:
+            - listitem [ref=e16181]:
+              - link "Jekyll" [ref=e16182] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e16183]:
+              - link "MathJax 3" [ref=e16184] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e16185]:
+              - link "Mermaid" [ref=e16186] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e16187]:
+              - link "chenglou/pretext" [ref=e16188] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e16189]:
+              - link "Google Fonts" [ref=e16190] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e16191]:
+          - heading "Legal" [level=3] [ref=e16192]
+          - list [ref=e16193]:
+            - listitem [ref=e16194]:
+              - link "MIT License" [ref=e16195] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e16196]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e16198]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

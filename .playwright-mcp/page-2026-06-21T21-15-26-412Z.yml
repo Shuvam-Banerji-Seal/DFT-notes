@@ -1,0 +1,3648 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 08 — Pseudopotentials" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: The whole valence-electron problem can be solved without ever describing the core electrons explicitly, provided we replace the true nuclear-plus-core potential by an
+          - emphasis [ref=e30]: effective
+          - text: potential that reproduces what the valence electron actually feels outside a cutoff radius
+          - img [ref=e32]
+          - text: . The construction is exact in the limit
+          - img [ref=e41]
+          - text: and very accurate in practice for
+          - img [ref=e54]
+          - text: between half and twice the core radius.
+      - paragraph [ref=e62]:
+        - text: A self-consistent Kohn–Sham calculation (
+        - link "chapter 04" [ref=e63] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: ) treats
+        - emphasis [ref=e64]: every
+        - text: "electron in the system on the same footing. For a silicon atom this is 14 electrons; for a platinum atom it is 78. Of these, the inner-shell electrons never participate in chemistry — they sit in tight orbitals close to the nucleus, contribute a nearly-constant charge density at the bond length scale, and barely respond to changes in the chemical environment. The cost of treating them in the basis is enormous: their wavefunctions oscillate rapidly near the nucleus (an atomic unit of length is"
+        - img [ref=e66]
+        - text: ", so the"
+        - img [ref=e79]
+        - text: orbital of uranium has 30 oscillations inside a typical basis-set cutoff). The
+        - strong [ref=e86]: pseudopotential approximation
+        - text: replaces the all-electron problem with a much smaller
+        - emphasis [ref=e87]: valence-only
+        - text: problem that, by construction, reproduces the all-electron valence wavefunction outside a chosen
+        - strong [ref=e88]: cutoff radius
+        - img [ref=e90]
+        - text: . Inside
+        - img [ref=e99]
+        - text: the wavefunction is replaced by a smooth
+        - strong [ref=e107]: pseudo-wavefunction
+        - text: that has
+        - emphasis [ref=e108]: no nodes
+        - text: and matches the all-electron one continuously. The replacement is not a mathematical identity; it is an
+        - emphasis [ref=e109]: approximation
+        - text: whose accuracy is controlled by the choice of
+        - img [ref=e111]
+        - text: and by the
+        - strong [ref=e119]: norm-conservation condition
+        - text: that ensures the pseudo-potential is
+        - emphasis [ref=e120]: transferable
+        - text: between different chemical environments. This chapter is the construction recipe, the proofs, and the algorithms (Troullier– Martins, Hamann–Schlüter–Teter, Vanderbilt ultrasoft, and Blöchl’s PAW) by which the approximation is made usable.
+      - heading "8.1 The claim" [level=2] [ref=e121]
+      - paragraph [ref=e122]:
+        - text: A
+        - strong [ref=e123]: pseudopotential
+        - text: is a channel-dependent effective potential
+        - img [ref=e125]
+        - text: that, when used in the radial Schrödinger equation in place of the all-electron potential
+        - img [ref=e147]
+        - text: ", produces a"
+        - strong [ref=e164]: pseudo-wavefunction
+        - img [ref=e166]
+        - text: "satisfying three properties:"
+      - list [ref=e180]:
+        - listitem [ref=e181]:
+          - text: For
+          - img [ref=e183]
+          - text: ","
+          - img [ref=e196]
+          - text: ", where"
+          - img [ref=e224]
+          - text: is the all-electron radial wavefunction.
+        - listitem [ref=e238]:
+          - text: For
+          - img [ref=e240]
+          - text: ","
+          - img [ref=e253]
+          - text: is smooth and nodeless (has no zeros in the core region, in contrast to the all-electron wavefunction which has
+          - img [ref=e268]
+          - text: radial nodes inside
+          - img [ref=e282]
+          - text: ).
+        - listitem [ref=e290]:
+          - text: The
+          - strong [ref=e291]: norm-conservation
+          - text: "condition holds:"
+          - img [ref=e293]
+          - text: .
+      - paragraph [ref=e342]:
+        - text: The pseudo-wavefunction is a solution of the radial Schrödinger equation with the same eigenvalue
+        - img [ref=e344]
+        - text: as the all-electron wavefunction, but with the pseudo-potential
+        - img [ref=e353]
+        - text: in place of
+        - img [ref=e369]
+        - text: ":"
+      - img [ref=e381]:
+        - generic [ref=e385]:
+          - img [ref=e386]
+          - img [ref=e500]
+      - paragraph [ref=e508]:
+        - text: Given
+        - img [ref=e510]
+        - text: and
+        - img [ref=e525]
+        - text: ", the pseudo-potential is obtained by"
+        - strong [ref=e533]: inverting
+        - text: "the radial equation:"
+      - img [ref=e535]:
+        - generic [ref=e539]:
+          - img [ref=e540]
+          - img [ref=e637]
+      - paragraph [ref=e645]:
+        - text: For
+        - img [ref=e647]
+        - text: ","
+        - img [ref=e660]
+        - text: is set equal to
+        - img [ref=e682]
+        - text: so that the pseudo-wavefunction is exactly the all-electron one in the bond-forming region.
+      - paragraph [ref=e699]:
+        - text: The
+        - strong [ref=e700]: headline
+        - text: is that the all-electron valence problem is replaced by a single-particle problem with a finite, smooth, energy-independent effective potential. The replacement is exact when
+        - img [ref=e702]
+        - text: (no core region to replace) and approximate otherwise, with the error controlled by the norm-conservation condition.
+      - heading "8.2 Why pseudopotentials" [level=2] [ref=e714]
+      - paragraph [ref=e715]: Three motivations, in increasing order of practical importance.
+      - paragraph [ref=e716]:
+        - strong [ref=e717]: (1) Smoothness of the wavefunction.
+        - text: The all-electron
+        - img [ref=e719]
+        - text: orbital of a heavy atom has
+        - img [ref=e727]
+        - text: oscillations inside a Bohr radius. Expanding such a function in a plane-wave basis (the natural basis for periodic solids,
+        - link "chapter 07" [ref=e734] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: ", and one of the two main basis families of"
+        - link "chapter 06" [ref=e735] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: ) requires a cutoff
+        - img [ref=e737]
+        - text: — a prohibitive cost. The pseudo-wavefunction is nodeless inside
+        - img [ref=e767]
+        - text: ", so its Fourier transform decays as"
+        - img [ref=e776]
+        - text: for small
+        - img [ref=e798]
+        - text: and the required cutoff drops to
+        - img [ref=e804]
+        - text: –
+        - img [ref=e813]
+        - text: ", independent of"
+        - img [ref=e823]
+        - text: . This is the single biggest reason plane-wave DFT is feasible at all.
+      - paragraph [ref=e828]:
+        - strong [ref=e829]: (2) Absorption of relativistic effects.
+        - text: Near a heavy nucleus, the electron moves at a significant fraction of the speed of light and the non-relativistic Schrödinger equation breaks down. With a pseudopotential, the relativistic correction is absorbed into
+        - img [ref=e831]
+        - text: at
+        - emphasis [ref=e852]: construction time
+        - text: (using a four-component Dirac–Fock all-electron reference instead of a non-relativistic one) and the valence calculation can stay non-relativistic.
+      - paragraph [ref=e853]:
+        - strong [ref=e854]: (3) Valence-only chemistry.
+        - text: Chemistry is determined by the valence electrons. A carbon atom inside a methane molecule and a carbon atom inside a benzene ring have nearly identical
+        - img [ref=e856]
+        - text: orbitals. Treating only the 4 valence electrons instead of all 12 cuts the cost of the SCF loop by a factor of 3
+        - emphasis [ref=e863]: "an`d"
+        - text: "’ removes a stiff constraint (the orthogonality of valence orbitals to the core) that would otherwise force the valence basis to span the rapidly- oscillating core. The frozen-core approximation is implicit in every pseudopotential: the core is assumed to be the same in every chemical environment."
+      - table [ref=e864]:
+        - rowgroup [ref=e865]:
+          - row "Property All-electron Pseudopotential" [ref=e866]:
+            - columnheader "Property" [ref=e867]
+            - columnheader "All-electron" [ref=e868]
+            - columnheader "Pseudopotential" [ref=e869]
+        - rowgroup [ref=e870]:
+          - row "Number of electrons (all of them) (valence only)" [ref=e871]:
+            - cell "Number of electrons" [ref=e872]
+            - cell "(all of them)" [ref=e873]:
+              - img [ref=e875]
+              - text: (all of them)
+            - cell "(valence only)" [ref=e880]:
+              - img [ref=e882]
+              - text: (valence only)
+          - row "Wavefunction near nucleus with radial nodes , nodeless" [ref=e897]:
+            - cell "Wavefunction near nucleus" [ref=e898]
+            - cell "with radial nodes" [ref=e899]:
+              - img [ref=e901]
+              - text: with
+              - img [ref=e912]
+              - text: radial nodes
+            - cell ", nodeless" [ref=e925]:
+              - img [ref=e927]
+              - text: ", nodeless"
+          - row "Plane-wave cutoff (Ry) , independent of" [ref=e937]:
+            - cell "Plane-wave cutoff (Ry)" [ref=e938]
+            - cell [ref=e939]:
+              - img [ref=e941]
+            - cell ", independent of" [ref=e961]:
+              - img [ref=e963]
+              - text: ", independent of"
+              - img [ref=e976]
+          - row "Relativistic correction Must be done explicitly Absorbed into" [ref=e981]:
+            - cell "Relativistic correction" [ref=e982]
+            - cell "Must be done explicitly" [ref=e983]
+            - cell "Absorbed into" [ref=e984]:
+              - text: Absorbed into
+              - img [ref=e986]
+          - row "Transferable? Exact (within the chosen Hamiltonian) Exact at the construction reference; approximate elsewhere" [ref=e997]:
+            - cell "Transferable?" [ref=e998]
+            - cell "Exact (within the chosen Hamiltonian)" [ref=e999]
+            - cell "Exact at the construction reference; approximate elsewhere" [ref=e1000]
+      - blockquote [ref=e1001]:
+        - paragraph [ref=e1002]:
+          - strong [ref=e1003]: Tip.
+          - text: The frozen-core approximation is the same idea as the Born–Oppenheimer approximation (
+          - link "chapter 01" [ref=e1004] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/
+          - text: "§ 1.1): if a degree of freedom does not participate in the phenomenon of interest, freeze it out and capture its effect through an effective potential acting on the remaining degrees of freedom. The two approximations are formally similar; the frozen core is just a frozen-core Born–Oppenheimer separation."
+      - heading "8.3 The norm-conservation condition" [level=2] [ref=e1005]
+      - paragraph [ref=e1006]:
+        - text: The claim of pseudopotential theory is not just that the pseudo-wavefunction matches the all-electron one outside
+        - img [ref=e1008]
+        - text: . It is that the pseudo-potential, used in
+        - emphasis [ref=e1016]: any
+        - text: chemical environment, will reproduce the all-electron valence eigenvalue. This is the
+        - strong [ref=e1017]: transferability
+        - text: requirement, and it is enforced by the
+        - strong [ref=e1018]: norm-conservation condition
+        - text: ":"
+      - img [ref=e1020]:
+        - generic [ref=e1024]:
+          - img [ref=e1025]
+          - img [ref=e1089]
+      - paragraph [ref=e1097]: "Why this integral? The connection is the following theorem (Hamann, 1979):"
+      - paragraph [ref=e1098]:
+        - strong [ref=e1099]: Theorem (transferability).
+        - text: Let
+        - img [ref=e1101]
+        - text: be a pseudo-wavefunction matching
+        - img [ref=e1116]
+        - text: in value, first derivative, and second derivative at
+        - img [ref=e1131]
+        - text: ", and satisfying the norm-conservation condition"
+        - img [ref=e1144]:
+          - link [ref=e1147] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-norm-conservation"
+        - text: . Then the pseudo-potential
+        - img [ref=e1155]
+        - text: constructed by inverting the radial equation
+        - img [ref=e1177]:
+          - link [ref=e1180] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-inversion"
+        - text: reproduces the all-electron logarithmic derivative
+        - img [ref=e1188]
+        - text: and its energy derivative
+        - img [ref=e1238]
+        - text: to first order in
+        - img [ref=e1256]
+        - text: at
+        - img [ref=e1269]
+        - text: .
+      - paragraph [ref=e1281]:
+        - text: The first part (
+        - img [ref=e1283]
+        - text: matching) follows from the value and derivative matching. The second part (
+        - img [ref=e1292]
+        - text: matching) is a consequence of the norm-conservation condition. The proof is short; we work it out.
+      - paragraph [ref=e1309]:
+        - strong [ref=e1310]: Proof.
+        - text: Consider the radial equation at a perturbed energy
+        - img [ref=e1312]
+        - text: ":"
+      - img [ref=e1324]:
+        - generic [ref=e1328]:
+          - img [ref=e1329]
+          - img [ref=e1464]
+      - paragraph [ref=e1472]:
+        - text: Differentiate with respect to
+        - img [ref=e1474]
+        - text: and write
+        - img [ref=e1480]
+        - text: ":"
+      - img [ref=e1509]:
+        - generic [ref=e1513]:
+          - img [ref=e1514]
+          - img [ref=e1625]
+      - paragraph [ref=e1633]:
+        - text: Multiply
+        - img [ref=e1635]:
+          - link [ref=e1638] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-radial-deriv"
+        - text: by
+        - img [ref=e1646]
+        - text: and integrate from
+        - img [ref=e1655]
+        - text: to
+        - img [ref=e1661]
+        - text: ", then subtract the same equation with"
+        - img [ref=e1670]
+        - text: and
+        - img [ref=e1679]
+        - text: "swapped. The left-hand side collapses by two integration by parts:"
+      - paragraph [ref=e1691]:
+        - img [ref=e1693]:
+          - generic [ref=e1697]:
+            - img [ref=e1698]
+            - img [ref=e1832]
+        - img [ref=e1841]:
+          - generic [ref=e1845]:
+            - img [ref=e1846]
+            - img [ref=e1987]
+      - paragraph [ref=e1995]:
+        - text: Subtracting, and using the boundary condition
+        - img [ref=e1997]
+        - text: ","
+        - img [ref=e2016]
+        - text: ":"
+      - paragraph [ref=e2038]:
+        - img [ref=e2040]:
+          - generic [ref=e2044]:
+            - img [ref=e2045]
+            - img [ref=e2447]
+      - paragraph [ref=e2468]:
+        - text: Now, the
+        - emphasis [ref=e2469]: "secon`d"
+        - text: ’ integral on the right,
+        - img [ref=e2471]
+        - text: ", is the"
+        - emphasis [ref=e2503]: change
+        - text: in norm on
+        - img [ref=e2505]
+        - text: when the energy changes by
+        - img [ref=e2522]
+        - text: . To first order, the total
+        - img [ref=e2530]
+        - text: "is preserved (the all-electron wavefunction is normalised at every energy), so:"
+      - img [ref=e2556]:
+        - generic [ref=e2560]:
+          - img [ref=e2561]
+          - img [ref=e2674]
+      - paragraph [ref=e2683]:
+        - text: Define
+        - img [ref=e2685]
+        - text: . To leading order, the wavefunction outside
+        - img [ref=e2724]
+        - text: "does not change with energy (the inner part absorbs all the normalisation change):"
+      - img [ref=e2733]:
+        - generic [ref=e2737]:
+          - img [ref=e2738]
+          - img [ref=e2797]
+      - paragraph [ref=e2806]:
+        - text: In practice this assumption is accurate because the all-electron wavefunction’s nodal structure outside
+        - img [ref=e2808]
+        - text: changes slowly with energy. We will use it as a
+        - emphasis [ref=e2816]: defining
+        - text: "property of a “good” cutoff: the cutoff is at or beyond the first radial node of"
+        - img [ref=e2818]
+        - text: beyond the outermost lobe, so the inner integral is essentially energy-independent. With this,
+        - img [ref=e2827]:
+          - link [ref=e2830] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-norm-deriv"
+        - text: gives
+        - img [ref=e2839]
+        - text: ", and"
+        - img [ref=e2876]:
+          - link [ref=e2879] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-deriv-3"
+        - text: "collapses to:"
+      - img [ref=e2888]:
+        - generic [ref=e2892]:
+          - img [ref=e2893]
+          - img [ref=e2995]
+      - paragraph [ref=e3004]:
+        - text: Divide by
+        - img [ref=e3006]
+        - text: and recognise the energy derivative of the logarithmic derivative
+        - img [ref=e3027]
+        - text: ":"
+      - img [ref=e3077]:
+        - generic [ref=e3081]:
+          - img [ref=e3082]:
+            - img [ref=e3109]
+          - img [ref=e3183]
+      - paragraph [ref=e3192]:
+        - text: This is the key identity. The right-hand side involves only the all-electron wavefunction inside
+        - img [ref=e3194]
+        - text: and at
+        - img [ref=e3203]
+        - text: ; the left-hand side is the energy slope of the log-derivative, which controls how the energy shifts when the pseudo-potential is embedded in a different chemical environment.
+      - paragraph [ref=e3211]:
+        - text: Now construct the pseudo-wavefunction
+        - img [ref=e3213]
+        - text: with the
+        - emphasis [ref=e3221]: same
+        - text: matching conditions at
+        - img [ref=e3223]
+        - text: and the norm-conservation condition
+        - img [ref=e3232]:
+          - link [ref=e3235] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-norm-conservation"
+        - text: ". The same derivation applies, giving:"
+      - img [ref=e3243]:
+        - generic [ref=e3247]:
+          - img [ref=e3248]:
+            - img [ref=e3275]
+          - img [ref=e3396]
+      - paragraph [ref=e3405]:
+        - text: which is
+        - emphasis [ref=e3406]: identical
+        - text: to
+        - img [ref=e3408]:
+          - link [ref=e3411] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-dlogder-de"
+        - text: . So the pseudo-potential and the all-electron atom have the same logarithmic derivative and the same energy slope at
+        - img [ref=e3420]
+        - text: ", which means the pseudo will reproduce the all-electron valence eigenvalue in any environment where the change in the potential outside"
+        - img [ref=e3429]
+        - text: is small (i.e. the change in eigenenergy is small compared to the energy gap to the next state).
+        - img [ref=e3438]
+      - blockquote [ref=e3443]:
+        - paragraph [ref=e3444]:
+          - strong [ref=e3445]: Tip.
+          - text: The integral
+          - img [ref=e3447]
+          - text: is sometimes called the
+          - strong [ref=e3472]: core charge
+          - img [ref=e3474]
+          - text: . The norm-conservation condition says the pseudo has the same core charge as the all-electron atom. The core charge controls how strongly the pseudo-orbital “sees” any change in the potential inside the core.
+        - paragraph [ref=e3482]:
+          - strong [ref=e3483]: Warning.
+          - text: The transferability theorem is a
+          - emphasis [ref=e3484]: first-order
+          - text: "statement. It guarantees that the pseudo-energy matches the all-electron one to leading order in the perturbation. For perturbations as large as the difference between, say, an oxygen atom in a water molecule and an oxygen atom in a metal oxide, the linear approximation can be poor and the pseudo may need “nonlinear core corrections” to recover accuracy. We discuss these in § 8.11. ## 8.4 Construction — Troullier-Martins and BHS"
+      - paragraph [ref=e3485]: The general recipe is the same for all norm-conserving pseudopotentials in this chapter.
+      - paragraph [ref=e3486]:
+        - strong [ref=e3487]: Step 1.
+        - text: Solve the all-electron problem for the valence configuration of interest (typically a neutral atom or a small ion). Get the radial wavefunction
+        - img [ref=e3489]
+        - text: and the eigenvalue
+        - img [ref=e3504]
+        - text: for each angular momentum channel
+        - img [ref=e3513]
+        - text: .
+      - paragraph [ref=e3534]:
+        - strong [ref=e3535]: Step 2.
+        - text: For each channel, choose a cutoff
+        - img [ref=e3537]
+        - text: ". The choice is a trade-off: a small"
+        - img [ref=e3546]
+        - text: is more accurate (the pseudo has less freedom to differ from the all-electron atom) but produces a less smooth pseudo-wavefunction (the curvature of
+        - img [ref=e3555]
+        - text: "at the origin is larger). Typical values:"
+        - img [ref=e3564]
+        - text: –
+        - img [ref=e3579]
+        - text: for valence
+        - img [ref=e3592]
+        - text: and
+        - img [ref=e3598]
+        - text: orbitals,
+        - img [ref=e3604]
+        - text: –
+        - img [ref=e3619]
+        - text: for
+        - img [ref=e3632]
+        - text: orbitals (which have a smaller radial extent).
+      - paragraph [ref=e3637]:
+        - strong [ref=e3638]: Step 3.
+        - text: Parameterise the pseudo-wavefunction inside
+        - img [ref=e3640]
+        - text: "as a function with several free parameters. The Troullier–Martins (TM, 1991) ansatz is:"
+      - img [ref=e3649]:
+        - generic [ref=e3653]:
+          - img [ref=e3654]
+          - img [ref=e3731]
+      - paragraph [ref=e3739]:
+        - text: with
+        - img [ref=e3741]
+        - text: typically 5 or 6. The factor
+        - img [ref=e3747]
+        - text: enforces the correct behaviour at the origin (
+        - img [ref=e3761]
+        - text: as
+        - img [ref=e3782]
+        - text: ", the same as"
+        - img [ref=e3792]
+        - text: ); the exponential in
+        - img [ref=e3801]
+        - text: gives a function that is smooth and nodeless. The polynomial coefficients
+        - img [ref=e3810]
+        - text: are the unknowns.
+      - paragraph [ref=e3836]:
+        - text: The older
+        - strong [ref=e3837]: Bachelet–Hamann–Schlüter (BHS, 1982)
+        - text: ansatz uses the same exponential-in-
+        - img [ref=e3839]
+        - text: form but fits the polynomial coefficients to a
+        - emphasis [ref=e3847]: "pre-define`d"
+        - text: ’ pseudo-potential shape, rather than constructing the pseudo-potential by inversion. BHS is therefore an
+        - emphasis [ref=e3848]: analytic-fit
+        - text: method; TM is an inversion method. We will use the TM approach in the worked example because the inversion step makes the construction more transparent.
+      - paragraph [ref=e3849]:
+        - strong [ref=e3850]: Step 4.
+        - text: Enforce
+        - strong [ref=e3851]: matching conditions
+        - text: at
+        - img [ref=e3853]
+        - text: ":"
+      - list [ref=e3865]:
+        - listitem [ref=e3866]:
+          - img [ref=e3868]
+          - text: — value continuity
+        - listitem [ref=e3901]:
+          - img [ref=e3903]
+          - text: — first-derivative continuity
+        - listitem [ref=e3940]:
+          - img [ref=e3942]
+          - text: — second-derivative continuity (this is what makes the inverted
+          - img [ref=e3984]
+          - text: continuous at
+          - img [ref=e4000]
+          - text: )
+        - listitem [ref=e4008]:
+          - img [ref=e4010]
+          - text: — norm conservation
+      - paragraph [ref=e4059]:
+        - text: The first three conditions determine the leading three coefficients
+        - img [ref=e4061]
+        - text: ","
+        - img [ref=e4070]
+        - text: ","
+        - img [ref=e4079]
+        - text: (one each, given that
+        - img [ref=e4088]
+        - text: "is set by value continuity and the rest by derivatives). The fourth condition provides one further equation; in the TM 6-parameter ansatz two more conditions are used:"
+      - paragraph [ref=e4096]:
+        - text: Six conditions, six unknowns. The last two are transcendental (nonlinear in the
+        - img [ref=e4098]
+        - text: ); the system is solved numerically by Newton–Raphson or a similar method.
+      - paragraph [ref=e4106]: "So the explicit list of two additional conditions is:"
+      - list [ref=e4107]:
+        - listitem [ref=e4108]:
+          - img [ref=e4110]
+          - text: — third-derivative continuity (continuity of
+          - img [ref=e4156]
+          - text: at
+          - img [ref=e4174]
+          - text: )
+        - listitem [ref=e4182]:
+          - img [ref=e4184]
+          - text: — the “kinetic-energy-conservation” condition (sometimes called “enhanced norm conservation”).
+      - paragraph [ref=e4243]:
+        - text: Six conditions, six unknowns. The last two are transcendental (nonlinear in the
+        - img [ref=e4245]
+        - text: ); the system is solved numerically by Newton–Raphson or a similar method.
+      - paragraph [ref=e4253]:
+        - strong [ref=e4254]: Step 5.
+        - strong [ref=e4255]: Invert
+        - text: the radial equation
+        - img [ref=e4257]:
+          - link [ref=e4260] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-inversion"
+        - text: for
+        - img [ref=e4268]
+        - text: ":"
+      - img [ref=e4281]:
+        - generic [ref=e4285]:
+          - img [ref=e4286]
+          - img [ref=e4396]
+      - paragraph [ref=e4405]:
+        - text: For the TM ansatz
+        - img [ref=e4407]:
+          - link [ref=e4410] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-tm-ansatz"
+        - text: ", the second derivative is given by a useful closed form. Writing"
+        - img [ref=e4419]
+        - text: with
+        - img [ref=e4458]
+        - text: ":"
+      - img [ref=e4490]:
+        - generic [ref=e4494]:
+          - img [ref=e4495]
+          - img [ref=e4555]
+      - img [ref=e4565]:
+        - generic [ref=e4569]:
+          - img [ref=e4570]
+          - img [ref=e4732]
+      - paragraph [ref=e4741]:
+        - text: To derive
+        - img [ref=e4743]:
+          - link [ref=e4746] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-phi-pp"
+        - text: ", differentiate"
+        - img [ref=e4755]:
+          - link [ref=e4758] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-phi-deriv"
+        - text: ":"
+      - paragraph [ref=e4766]:
+        - img [ref=e4768]:
+          - generic [ref=e4772]:
+            - img [ref=e4773]
+            - img [ref=e5187]
+      - paragraph [ref=e5196]:
+        - text: Multiplying by
+        - img [ref=e5198]
+        - text: and subtracting
+        - img [ref=e5209]
+        - text: "(the centrifugal term) gives the cleanest form of the inversion formula for the TM ansatz:"
+      - img [ref=e5239]:
+        - generic [ref=e5243]:
+          - img [ref=e5244]
+          - img [ref=e5360]
+      - paragraph [ref=e5369]:
+        - text: The corresponding all-electron potential outside
+        - img [ref=e5371]
+        - text: is
+        - img [ref=e5380]
+        - text: ", which for an atom with nuclear charge"
+        - img [ref=e5398]
+        - text: and a frozen core of
+        - img [ref=e5404]
+        - text: electrons is the Coulomb tail
+        - img [ref=e5416]
+        - text: ". The pseudo-potential is therefore:"
+      - img [ref=e5443]:
+        - generic [ref=e5447]:
+          - img [ref=e5448]:
+            - generic [ref=e5473]:
+              - img [ref=e5477]
+              - img [ref=e5479]
+          - img [ref=e5605]
+      - paragraph [ref=e5613]:
+        - text: The function
+        - img [ref=e5615]
+        - text: constructed this way is continuous and has continuous first derivative at
+        - img [ref=e5637]
+        - text: (by conditions 3 and 5 of step 4), and is finite at
+        - img [ref=e5646]
+        - text: (the singular
+        - img [ref=e5656]
+        - text: terms in the true Coulomb potential have been absorbed into the polynomial-in-
+        - img [ref=e5667]
+        - text: exponential ansatz).
+      - heading "8.5 The Hamann–Schlüter–Teter form" [level=2] [ref=e5672]
+      - paragraph [ref=e5673]:
+        - text: The
+        - strong [ref=e5674]: Hamann–Schlüter–Teter (HST, 1979)
+        - text: form is the predecessor of the TM construction. It uses the same exponential-in-
+        - img [ref=e5676]
+        - text: "ansatz as TM, but with a smaller number of parameters and a slightly different set of matching conditions:"
+      - img [ref=e5685]:
+        - generic [ref=e5689]:
+          - img [ref=e5690]
+          - img [ref=e5782]
+      - paragraph [ref=e5791]: "Four coefficients. The HST conditions are:"
+      - list [ref=e5792]:
+        - listitem [ref=e5793]:
+          - img [ref=e5795]
+          - text: (value) — sets
+          - img [ref=e5829]
+        - listitem [ref=e5837]:
+          - img [ref=e5839]
+          - text: (first derivative)
+        - listitem [ref=e5876]:
+          - img [ref=e5878]
+          - text: (second derivative)
+        - listitem [ref=e5919]:
+          - img [ref=e5921]
+          - text: (zero curvature of the pseudo-potential at the origin)
+      - paragraph [ref=e5950]:
+        - text: The last condition is a
+        - emphasis [ref=e5951]: shape
+        - text: "constraint: it forces the pseudo-potential to be flat at the origin, which is what physically reasonable effective potentials look like. With these four conditions and four parameters, the system is determined."
+      - paragraph [ref=e5952]: The HST form is what one finds in the older Bachelet–Hamann–Schlüter (BHS) tabulations (BHS 1982) and in the original Vanderbilt norm-conserving tables. It is sufficiently accurate for most solid-state applications but yields a pseudo-wavefunction that is slightly less smooth than TM (because there are fewer free parameters to absorb the constraint violations). For a worked example the differences between HST and TM are minor; for a high-throughput production pseudo-potential library, TM is the standard.
+      - blockquote [ref=e5953]:
+        - paragraph [ref=e5954]:
+          - strong [ref=e5955]: Tip.
+          - text: The norm-conservation condition in HST is
+          - emphasis [ref=e5956]: not
+          - text: a matching condition at
+          - img [ref=e5958]
+          - text: — it is replaced by the
+          - img [ref=e5967]
+          - text: shape constraint. The HST pseudo is therefore only
+          - emphasis [ref=e5996]: approximately
+          - text: norm-conserving; the
+          - img [ref=e5998]
+          - text: integral differs from the all-electron value by an amount that depends on
+          - img [ref=e6024]
+          - text: and on the orbital. For transferability, one often
+          - emphasis [ref=e6032]: re-scales
+          - text: the pseudo-potential after the HST construction to enforce norm-conservation exactly; this is the “norm-conserving HST” variant in some libraries.
+      - heading "8.6 Ultrasoft pseudopotentials (Vanderbilt)" [level=2] [ref=e6033]
+      - paragraph [ref=e6034]:
+        - text: The constraint that
+        - img [ref=e6036]
+        - text: be nodeless and norm-conserving inside
+        - img [ref=e6045]
+        - text: forces a
+        - emphasis [ref=e6053]: minimum
+        - text: smoothness on the pseudo-wavefunction. For elements with shallow valence orbitals (the
+        - img [ref=e6055]
+        - text: transition metals, the
+        - img [ref=e6063]
+        - text: "rare earths, the alkali and alkaline-earth metals), the required smoothness is still demanding:"
+        - img [ref=e6071]
+        - text: is common.
+      - paragraph [ref=e6092]:
+        - strong [ref=e6093]: Vanderbilt (1990)
+        - text: showed that one can
+        - emphasis [ref=e6094]: relax
+        - text: the norm-conservation condition and recover a
+        - emphasis [ref=e6095]: "muc`h"
+        - text: ’ smoother pseudo-wavefunction, at the cost of a more elaborate formalism. The idea is the following.
+      - paragraph [ref=e6096]:
+        - text: Define a
+        - emphasis [ref=e6097]: "generalise`d"
+        - text: "’ norm-conservation:"
+      - img [ref=e6099]:
+        - generic [ref=e6103]:
+          - img [ref=e6104]
+          - img [ref=e6175]
+      - paragraph [ref=e6184]:
+        - text: where
+        - img [ref=e6186]
+        - text: is the “partial norm” — a number less than 1 that the constructor chooses. In a norm-conserving pseudo,
+        - img [ref=e6195]
+        - text: equals the all-electron core charge
+        - img [ref=e6204]
+        - text: . In an ultrasoft pseudo,
+        - img [ref=e6242]
+        - text: is left as a free parameter (typically much smaller than
+        - img [ref=e6251]
+        - text: ).
+      - paragraph [ref=e6264]:
+        - text: The “missing” norm is recovered by adding an
+        - strong [ref=e6265]: augmentation charge
+        - text: to the electron density. The augmentation charge is a sum over channels of atom-centred functions that integrate to
+        - img [ref=e6267]
+        - text: in the core region. The total valence charge density becomes
+      - img [ref=e6288]:
+        - generic [ref=e6292]:
+          - img [ref=e6293]
+          - img [ref=e6387]
+      - paragraph [ref=e6396]:
+        - text: where
+        - img [ref=e6398]
+        - text: are the
+        - emphasis [ref=e6410]: "smoot`h"
+        - text: ’ pseudo-orbitals (no tildes in our notation, but the literature uses tildes to emphasise that they are the smooth part), the sum is over atomic sites
+        - img [ref=e6412]
+        - text: and angular-momentum channels
+        - img [ref=e6418]
+        - text: ", and"
+        - img [ref=e6426]
+        - text: are the augmentation functions.
+      - paragraph [ref=e6439]:
+        - text: The price of the smooth pseudo-wavefunction is that the Kohn–Sham eigenvalue problem becomes a
+        - strong [ref=e6440]: generalised
+        - text: eigenvalue problem with a non-trivial overlap matrix
+        - img [ref=e6442]
+        - text: "that differs from the identity:"
+      - img [ref=e6481]:
+        - generic [ref=e6485]:
+          - img [ref=e6486]
+          - img [ref=e6535]
+      - paragraph [ref=e6544]:
+        - text: The overlap
+        - img [ref=e6546]
+        - text: comes from the fact that the smooth orbitals are not orthonormal; their norm deficit is the augmentation charge.
+      - paragraph [ref=e6555]: In practice, ultrasoft pseudopotentials (USPP) are about a factor of 2–3 more efficient than norm-conserving pseudo- potentials at the same accuracy for the same element. They are the workhorse of modern plane-wave DFT codes (VASP, Quantum ESPRESSO, CASTEP, ABINIT) for systems containing transition metals or rare earths.
+      - blockquote [ref=e6556]:
+        - paragraph [ref=e6557]:
+          - strong [ref=e6558]: Warning.
+          - text: The generalised eigenvalue problem
+          - img [ref=e6560]:
+            - link [ref=e6563] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-08-uspp-gen"
+          - text: costs roughly twice as much per SCF iteration as a standard eigenvalue problem (because both
+          - img [ref=e6572]
+          - text: and
+          - img [ref=e6582]
+          - text: must be applied to the trial vectors, and an inner-loop Cholesky decomposition of
+          - img [ref=e6592]
+          - text: is required). The cost is recouped by the smaller basis set enabled by the smoother pseudo-wavefunction; for hard pseudopotentials the trade-off favours USPP, for soft elements it does not.
+      - heading "8.7 The PAW method (Blöchl)" [level=2] [ref=e6601]
+      - paragraph [ref=e6602]:
+        - text: The
+        - strong [ref=e6603]: projector augmented wave (PAW)
+        - text: method (Blöchl, 1994) combines the best of pseudopotentials (smooth pseudo-wavefunctions, plane-wave-friendly) with the best of all-electron methods (exact treatment of the core region, no frozen-core approximation). It is the most accurate of the three families and the most expensive to implement.
+      - paragraph [ref=e6604]:
+        - text: The PAW ansatz starts from a
+        - strong [ref=e6605]: linear transformation
+        - img [ref=e6607]
+        - text: between the all-electron single-particle state
+        - img [ref=e6618]
+        - text: and a smooth pseudo-state
+        - img [ref=e6631]
+        - text: ":"
+      - img [ref=e6648]:
+        - generic [ref=e6652]:
+          - img [ref=e6653]
+          - img [ref=e6749]
+      - paragraph [ref=e6758]:
+        - text: where the sum is over atomic sites
+        - img [ref=e6760]
+        - text: and
+        - img [ref=e6766]
+        - text: are the all-electron and pseudo partial-wave expansions inside the augmentation sphere at
+        - img [ref=e6799]
+        - text: . The partial waves are characterised by a set of projectors
+        - img [ref=e6805]
+        - text: that obey
+        - img [ref=e6824]
+        - text: inside the augmentation sphere.
+      - paragraph [ref=e6868]: "Explicitly, the all-electron wavefunction is reconstructed as:"
+      - img [ref=e6870]:
+        - generic [ref=e6874]:
+          - img [ref=e6875]
+          - img [ref=e6989]
+      - paragraph [ref=e6998]:
+        - text: where
+        - img [ref=e7000]
+        - text: are the all-electron partial waves (the true atomic orbitals evaluated inside the augmentation sphere) and
+        - img [ref=e7018]
+        - text: are their smooth counterparts. The all-electron density is
+      - img [ref=e7040]:
+        - generic [ref=e7044]:
+          - img [ref=e7045]
+          - img [ref=e7117]
+      - paragraph [ref=e7126]:
+        - text: where
+        - img [ref=e7128]
+        - text: is built from the smooth orbitals and the brackets are the on-site densities built from the partial waves.
+      - paragraph [ref=e7137]:
+        - text: The total energy is written as a smooth part (computed on the plane-wave grid) plus on-site corrections that are evaluated in real space around each atom. The energy expression is
+        - emphasis [ref=e7138]: exact
+        - text: (within the chosen partial-wave basis and the chosen augmentation-sphere radius), because the PAW transformation is invertible.
+      - paragraph [ref=e7139]:
+        - text: "The trade-off: PAW is more expensive than USPP per atom (typically a factor of 2–5), but the augmentation-sphere treatment of the core is much more accurate and the method admits a wide variety of partial-wave basis sets (including"
+        - img [ref=e7141]
+        - text: ","
+        - img [ref=e7147]
+        - text: ","
+        - img [ref=e7153]
+        - text: ","
+        - img [ref=e7159]
+        - text: channels, and even multiple partial waves per channel for high accuracy). It is the method of choice in VASP and GPAW for high-accuracy calculations on transition-metal and rare-earth systems.
+      - blockquote [ref=e7164]:
+        - paragraph [ref=e7165]:
+          - strong [ref=e7166]: Tip.
+          - text: PAW is the “no frozen core” limit of USPP. The augmentation charge in USPP is a single function per channel; in PAW it is a sum of partial-wave densities weighted by the projector overlaps. The USPP formalism can be derived as a linearised, single-projector version of PAW; conversely, PAW can be derived as the “non-linear, complete-projector” version of USPP. The two methods live on the same continuum.
+        - paragraph [ref=e7167]:
+          - strong [ref=e7168]: Cross-reference.
+          - text: PAW is essential for the DFT+
+          - img [ref=e7170]
+          - text: treatment of strongly-correlated
+          - img [ref=e7176]
+          - text: and
+          - img [ref=e7182]
+          - text: systems (
+          - link "chapter 13" [ref=e7187] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-13/
+          - text: ), because the Hubbard-
+          - img [ref=e7189]
+          - text: correction is naturally expressed in terms of the on-site occupancy matrix, and the on-site density is exactly what PAW provides.
+      - heading "8.8 Worked example — hydrogen , ," [level=2] [ref=e7194]:
+        - text: 8.8 Worked example — hydrogen
+        - img [ref=e7196]
+        - text: ","
+        - img [ref=e7204]
+        - text: ","
+        - img [ref=e7214]
+      - paragraph [ref=e7233]:
+        - text: The simplest non-trivial construction is for the hydrogen
+        - img [ref=e7235]
+        - text: state. Hydrogen has no core, so the pseudo-potential is just a smoother replacement for the
+        - img [ref=e7243]
+        - text: Coulomb tail. The work is to construct
+        - img [ref=e7256]
+        - text: and
+        - img [ref=e7271]
+        - text: from the all-electron wavefunction, using the TM recipe.
+      - paragraph [ref=e7292]:
+        - strong [ref=e7293]: The all-electron reference.
+        - text: In atomic units, the hydrogen
+        - img [ref=e7295]
+        - text: radial wavefunction and energy are
+      - img [ref=e7303]:
+        - generic [ref=e7307]:
+          - img [ref=e7308]
+          - img [ref=e7362]
+      - paragraph [ref=e7371]: The derivatives are
+      - paragraph [ref=e7372]:
+        - img [ref=e7374]:
+          - generic [ref=e7378]:
+            - img [ref=e7379]
+            - img [ref=e7420]
+        - img [ref=e7430]:
+          - generic [ref=e7434]:
+            - img [ref=e7435]
+            - img [ref=e7480]
+      - paragraph [ref=e7489]:
+        - text: "To verify: substituting into the radial equation"
+        - img [ref=e7491]
+        - text: ","
+      - paragraph [ref=e7536]:
+        - img [ref=e7538]
+      - paragraph [ref=e7724]:
+        - text: At the chosen cutoff
+        - img [ref=e7726]
+        - text: ":"
+      - paragraph [ref=e7745]:
+        - img [ref=e7747]:
+          - generic [ref=e7751]:
+            - img [ref=e7752]
+            - img [ref=e7815]
+        - img [ref=e7825]:
+          - generic [ref=e7829]:
+            - img [ref=e7830]
+            - img [ref=e7895]
+        - img [ref=e7905]:
+          - generic [ref=e7909]:
+            - img [ref=e7910]
+            - img [ref=e7984]
+      - paragraph [ref=e7993]:
+        - text: The logarithmic derivative at
+        - img [ref=e7995]
+        - text: is
+        - img [ref=e8004]
+        - text: .
+      - paragraph [ref=e8070]:
+        - strong [ref=e8071]: The pseudo ansatz.
+        - text: For
+        - img [ref=e8073]
+        - text: with a four-parameter ansatz
+      - img [ref=e8083]:
+        - generic [ref=e8087]:
+          - img [ref=e8088]
+          - img [ref=e8173]
+      - paragraph [ref=e8181]:
+        - text: the four conditions are value, first derivative, second derivative, and norm conservation at
+        - img [ref=e8183]
+        - text: . We will work through the matching step by step, then solve.
+      - paragraph [ref=e8191]:
+        - strong [ref=e8192]:
+          - text: Step 1 — value at
+          - img [ref=e8194]
+          - text: .
+      - paragraph [ref=e8202]:
+        - img [ref=e8204]:
+          - generic [ref=e8208]:
+            - img [ref=e8209]
+            - img [ref=e8477]
+      - paragraph [ref=e8486]:
+        - text: Equation
+        - img [ref=e8488]:
+          - link [ref=e8491] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-h-match-1"
+        - text: fixes
+        - img [ref=e8500]
+        - text: once
+        - img [ref=e8509]
+        - text: are known.
+      - paragraph [ref=e8531]:
+        - strong [ref=e8532]:
+          - text: Step 2 — first derivative at
+          - img [ref=e8534]
+          - text: .
+        - text: From
+        - img [ref=e8543]:
+          - link [ref=e8546] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-phi-deriv"
+        - text: with
+        - img [ref=e8555]
+        - text: ","
+        - img [ref=e8565]
+        - text: ","
+        - img [ref=e8620]
+        - text: ":"
+      - img [ref=e8674]:
+        - generic [ref=e8678]:
+          - img [ref=e8679]
+          - img [ref=e8746]
+      - paragraph [ref=e8755]:
+        - text: The all-electron ratio is
+        - img [ref=e8757]
+        - text: ", so"
+      - paragraph [ref=e8816]:
+        - img [ref=e8818]:
+          - generic [ref=e8822]:
+            - img [ref=e8823]
+            - img [ref=e8954]
+      - paragraph [ref=e8963]:
+        - strong [ref=e8964]:
+          - text: Step 3 — second derivative at
+          - img [ref=e8966]
+          - text: .
+        - text: From
+        - img [ref=e8975]:
+          - link [ref=e8978] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-phi-pp"
+        - text: with
+        - img [ref=e8987]
+        - text: ","
+        - img [ref=e8997]
+        - text: ", and"
+        - img [ref=e9069]
+        - text: . The all-electron ratio is
+      - img [ref=e9125]
+      - paragraph [ref=e9215]:
+        - text: which at
+        - img [ref=e9217]
+        - text: is
+        - img [ref=e9230]
+        - text: .
+      - paragraph [ref=e9256]: The matching condition is
+      - img [ref=e9258]:
+        - generic [ref=e9262]:
+          - img [ref=e9263]
+          - img [ref=e9351]
+      - paragraph [ref=e9360]:
+        - strong [ref=e9361]: Step 4 — norm conservation.
+        - text: Equation
+        - img [ref=e9363]:
+          - link [ref=e9366] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-norm-conservation"
+        - text: for
+        - img [ref=e9374]
+        - text: ":"
+      - img [ref=e9384]:
+        - generic [ref=e9388]:
+          - img [ref=e9389]
+          - img [ref=e9508]
+      - paragraph [ref=e9517]:
+        - text: The right-hand side has a closed form
+        - img [ref=e9519]
+        - text: ", verifiable by integrating"
+        - img [ref=e9569]
+        - text: twice by parts. The left-hand side has no closed form and must be evaluated numerically.
+      - paragraph [ref=e9587]:
+        - strong [ref=e9588]: The transcendental system.
+        - text: We have three unknowns
+        - img [ref=e9590]
+        - text: —
+        - img [ref=e9617]
+        - text: is fixed by
+        - img [ref=e9626]:
+          - link [ref=e9629] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-h-match-1"
+        - text: — and three nonlinear equations
+        - img [ref=e9638]:
+          - link [ref=e9641] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-h-match-2"
+        - text: ","
+        - img [ref=e9650]:
+          - link [ref=e9653] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-h-match-3"
+        - text: ","
+        - img [ref=e9662]:
+          - link [ref=e9665] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-h-match-norm"
+        - text: . The system is solved numerically; the Python code in
+        - link "dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py" [ref=e9673] [cursor=pointer]:
+          - /url: /DFT-notes/dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py
+          - code [ref=e9674]: dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py
+        - text: uses
+        - code [ref=e9675]: scipy.optimize.fsolve
+        - text: . The numerical values are reported by the script when it runs; the analytical solution of the
+        - emphasis [ref=e9676]: linear
+        - text: sub-system (
+        - img [ref=e9678]:
+          - link [ref=e9681] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-h-match-2"
+        - text: and
+        - img [ref=e9690]:
+          - link [ref=e9693] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-h-match-3"
+        - text: alone, with
+        - img [ref=e9702]
+        - text: "by hand) is given by:"
+      - img [ref=e9715]:
+        - generic [ref=e9719]:
+          - img [ref=e9720]
+          - img [ref=e9794]
+      - paragraph [ref=e9802]:
+        - text: These are the values used in the analytic worked-example formulas below. The full 4-parameter TM solution — the one the script computes — is close to these values but with
+        - img [ref=e9804]
+        - text: shifted to a small negative number that absorbs the
+        - img [ref=e9813]
+        - text: norm error of the 3-parameter form, and
+        - img [ref=e9823]
+        - text: shifted by a comparable amount. The
+        - img [ref=e9839]
+        - text: value computed below is therefore exact for the 3-parameter form; the 4-parameter TM value is within
+        - img [ref=e9861]
+        - text: of it.
+      - paragraph [ref=e9873]:
+        - strong [ref=e9874]: The pseudo-wavefunction.
+        - text: For
+        - img [ref=e9876]
+        - text: ","
+        - img [ref=e9889]
+        - text: is given by
+        - img [ref=e9904]:
+          - link [ref=e9907] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-h-ansatz"
+        - text: with the coefficients
+        - img [ref=e9916]:
+          - link [ref=e9919] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-h-coeffs"
+        - text: . For
+        - img [ref=e9928]
+        - text: ","
+        - img [ref=e9941]
+        - text: . At the origin,
+        - img [ref=e9983]
+        - text: as
+        - img [ref=e10047]
+        - text: — the same
+        - img [ref=e10057]
+        - text: behaviour as
+        - img [ref=e10071]
+        - text: but with a smaller slope (
+        - img [ref=e10080]
+        - text: versus
+        - img [ref=e10116]
+        - text: ); the cusp has been softened.
+      - paragraph [ref=e10136]:
+        - strong [ref=e10137]: The pseudo-potential.
+        - text: For
+        - img [ref=e10139]
+        - text: ","
+        - img [ref=e10152]
+        - text: . For
+        - img [ref=e10201]
+        - text: ", the TM inversion formula"
+        - img [ref=e10214]:
+          - link [ref=e10217] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-tm-inversion"
+        - text: with
+        - img [ref=e10226]
+        - text: "gives:"
+      - img [ref=e10236]:
+        - generic [ref=e10240]:
+          - img [ref=e10241]
+          - img [ref=e10336]
+      - paragraph [ref=e10344]:
+        - strong [ref=e10345]: At the cutoff
+        - img [ref=e10347]
+        - text: (using the analytical 3-parameter values
+        - img [ref=e10360]
+        - text: ","
+        - img [ref=e10377]
+        - text: "):"
+      - paragraph [ref=e10391]:
+        - img [ref=e10393]
+      - paragraph [ref=e10765]:
+        - text: The all-electron value is
+        - img [ref=e10767]
+        - text: ", so the pseudo-potential is"
+        - emphasis [ref=e10809]: exactly
+        - text: continuous at
+        - img [ref=e10811]
+        - text: for the 3-parameter form. The 4-parameter TM form has
+        - img [ref=e10820]
+        - text: (to within the
+        - code [ref=e10860]: fsolve
+        - text: ’ solver’s numerical tolerance), differing from
+        - img [ref=e10862]
+        - text: by
+        - img [ref=e10872]
+        - text: because condition (3) is now satisfied
+        - emphasis [ref=e10887]: jointly
+        - text: with the norm condition rather than exactly.
+      - paragraph [ref=e10888]:
+        - strong [ref=e10889]: At the origin
+        - img [ref=e10891]
+        - text: (using the analytical 3-parameter values
+        - img [ref=e10901]
+        - text: ","
+        - img [ref=e10918]
+        - text: ","
+        - img [ref=e10933]
+        - text: "):"
+      - paragraph [ref=e10945]:
+        - img [ref=e10947]:
+          - generic [ref=e10951]:
+            - img [ref=e10952]
+            - img [ref=e11228]
+      - paragraph [ref=e11237]:
+        - text: The 4-parameter TM form gives
+        - img [ref=e11239]
+        - text: (a difference of
+        - img [ref=e11275]
+        - text: from the analytical value, due to the norm-conservation correction shifting
+        - img [ref=e11290]
+        - text: and
+        - img [ref=e11299]
+        - text: by a few percent).
+      - paragraph [ref=e11307]:
+        - text: This is a
+        - emphasis [ref=e11308]: finite
+        - text: value, in contrast to
+        - img [ref=e11310]
+        - text: which diverges to
+        - img [ref=e11339]
+        - text: as
+        - img [ref=e11347]
+        - text: ". The smoothing of the singularity is the whole point of the pseudo-potential approximation: the divergent Coulomb singularity is replaced by a finite effective potential that reproduces the correct scattering outside"
+        - img [ref=e11357]
+        - text: .
+      - blockquote [ref=e11365]:
+        - paragraph [ref=e11366]:
+          - strong [ref=e11367]: Tip.
+          - text: The value
+          - img [ref=e11369]
+          - text: (analytical 3-parameter form) is much larger (less negative) than the all-electron
+          - img [ref=e11404]
+          - text: . The pseudo- potential “looks like” a finite well of depth
+          - img [ref=e11437]
+          - text: to a valence electron, not the deep
+          - img [ref=e11450]
+          - text: Coulomb well. A plane-wave basis needs a kinetic-energy cutoff
+          - img [ref=e11463]
+          - text: to resolve the well; for hydrogen this is
+          - img [ref=e11499]
+          - text: ", compared with"
+          - img [ref=e11522]
+          - text: that would be required to resolve the
+          - img [ref=e11537]
+          - text: "singularity. (For heavier atoms the difference is even more dramatic: for platinum, the all-electron"
+          - img [ref=e11550]
+          - text: is
+          - img [ref=e11564]
+          - text: ", the USPP"
+          - img [ref=e11579]
+          - text: is
+          - img [ref=e11593]
+          - text: .)
+      - paragraph [ref=e11604]:
+        - 'img "Plot output from `dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py`" [ref=e11605]'
+      - paragraph [ref=e11606]:
+        - text: The left panel shows the all-electron
+        - img [ref=e11608]
+        - text: (grey) and the pseudo-wavefunction
+        - img [ref=e11637]
+        - text: (coral) over
+        - img [ref=e11652]
+        - text: . They match exactly outside
+        - img [ref=e11671]
+        - text: (dashed line); inside, the pseudo is nodeless and has a smoother turn-over near the origin. The right panel shows the all-electron
+        - img [ref=e11686]
+        - text: (grey) and the pseudo-potential
+        - img [ref=e11715]
+        - text: (coral). The pseudo is continuous and has finite value at
+        - img [ref=e11737]
+        - text: ", while the all-electron potential diverges to"
+        - img [ref=e11747]
+        - text: .
+      - heading "8.9 Workflow" [level=2] [ref=e11754]
+      - paragraph [ref=e11755]: The construction pipeline, end to end, for a single angular-momentum channel.
+      - figure [ref=e11757]:
+        - code [ref=e11758]:
+          - document [ref=e11759]:
+            - generic [ref=e11768]:
+              - generic [ref=e11774]: All-electron atom(Z, configuration)
+              - generic [ref=e11780]: Self-consistentall-electron solve
+              - generic [ref=e11786]: Valence orbitalsu_l(r), eigenvalues E_l
+              - generic [ref=e11792]: Choose r_c(per channel l)
+              - generic [ref=e11798]: Parameterise pseudophi_l(r) for r ≤ r_c(TM/BHS/HST ansatz)
+              - generic [ref=e11804]: Match at r_c:value, 1st deriv,2nd deriv, norm
+              - generic [ref=e11810]: Solve forc_0, c_1, …, c_N
+              - generic [ref=e11816]: Invert radialequation(Eq. 8.5)
+              - generic [ref=e11821]: V_ps,l(r) for r ≤ r_c
+              - generic [ref=e11827]: V_ps,l(r) = V_ae(r)for r > r_c
+              - generic [ref=e11833]: Channel lpseudo-potential
+              - generic [ref=e11839]: Repeat forall l channels
+              - generic [ref=e11845]: Pseudopotentialfile (UPF/PSP8/…)
+              - generic [ref=e11851]: Use inmolecule / solid(Kohn-Sham SCF)
+        - button "Download this diagram as a PNG" [ref=e11852] [cursor=pointer]:
+          - img [ref=e11853]
+          - generic [ref=e11856]: Download PNG
+      - paragraph [ref=e11857]: "The four right-most nodes (in coral) are the deliverables of the construction; everything upstream is the same recipe as in any quantum-mechanical inverse problem: pick a target function, parameterise it, fit the parameters to the constraints, recover the source."
+      - heading "8.10 Problems" [level=2] [ref=e11858]
+      - group [ref=e11859]:
+        - generic "▸ Problem 1 (easy) — the pseudo-potential at the origin" [ref=e11860] [cursor=pointer]
+        - text: For the hydrogen pseudo constructed in § 8.8 with , use the inversion formula to show that is finite. Compute the value using the coefficients and confirm it is on the order of . Then argue, in one or two sentences, why the plane-wave cutoff required to expand a wavefunction in the pseudo-potential is much smaller than that required to expand the all-electron wavefunction.
+      - group [ref=e11861]:
+        - generic "▸ Show answer" [ref=e11862] [cursor=pointer]
+        - text: "For the TM ansatz with , the pseudo-wavefunction is . Substituting into : The potentially singular term is . With : which is finite at (no divergence). The remaining terms and are also finite at the origin. So exists and equals With the analytical 3-parameter values from : The 4-parameter TM form (computed by the script) gives , which is within of the analytical value; the difference is the norm-conservation correction. The all-electron potential at the same point is , and at it is . The plane-wave cutoff needed to resolve a potential of depth is roughly (because the wavefunction has oscillations per unit length inside the well, and the Fourier spectrum of an oscillating function of frequency decays on the scale ). The pseudo-potential well has depth , requiring . The all-electron well diverges, so any finite is insufficient to converge; the all-electron problem *cannot* be solved in a plane-wave basis without resorting to a pseudo."
+      - group [ref=e11863]:
+        - generic "▸ Problem 2 (medium) — verify norm conservation numerically" [ref=e11864] [cursor=pointer]
+        - text: For the hydrogen pseudo of § 8.8, evaluate the two integrals and confirm that they agree to numerical precision when the four-parameter TM form is used. The all-electron integral has the closed form ; the pseudo integral must be evaluated by quadrature. Then repeat the calculation for the *three*-parameter TM form (i.e. set and re-solve conditions 1, 2, 3 only). How large is the norm-conservation error ? What does this tell you about the trade-off between the number of free parameters and the transferability of the resulting pseudo-potential?
+      - group [ref=e11865]:
+        - generic "▸ Show answer" [ref=e11866] [cursor=pointer]
+        - text: "**Closed form for .** Differentiate twice by parts, or recognise the standard integral So At : **Pseudo integral for the 4-parameter form.** With from : This is computed by quadrature in the script. The TM 4-parameter form was constructed with the norm conservation as an explicit constraint, so the result is to machine precision. (The `fsolve`' solver iterates until the residual is below .) **3-parameter form.** With , the linear conditions , , give (working through the algebra as in § 8.8): Evaluating for this case: The norm-conservation error is or about in relative terms. **Interpretation.** The 3-parameter form matches the all-electron value, first derivative, and second derivative at exactly; the norm is then *approximately* conserved, with an error of order . For a 3-parameter form, the norm error of translates to a logarithmic-derivative mismatch of in a perturbed environment. For most applications this is acceptable; for high-pressure or high-strain calculations where the chemical environment changes significantly from the construction reference, the 6-parameter TM form is preferred."
+      - group [ref=e11867]:
+        - generic "▸ Problem 3 (hard) — derive the log-derivative identity" [ref=e11868] [cursor=pointer]
+        - text: In § 8.3 we used the identity to prove the transferability theorem. Re-derive this identity from the radial Schrödinger equation by the following steps. 1. Write the radial equation with , and the analogous equation for the energy derivative . 2. Multiply the equation for by and the equation for by , subtract, and integrate from to . Use the boundary conditions , to drop the lower-limit terms. 3. Combine the two resulting boundary terms at into a single expression, then divide by to recognise the energy derivative of the logarithmic derivative . 4. Finally, use the *normalisation* constraint to argue that the change in norm on is small, so the integral can be neglected. (The assumption is exact when is beyond the first radial node of .)
+      - group [ref=e11869]:
+        - generic "▸ Show answer" [ref=e11870] [cursor=pointer]
+        - text: "**Step 1 — the two radial equations.** The all-electron radial Schrödinger equation is Differentiate with respect to : where . Equivalently, **Step 2 — subtract and integrate.** Multiply by and by , then subtract: The terms cancel, leaving Integrate from to : **Step 3 — integration by parts.** Integrate the second term by parts once: Integrate the first term by parts once: The two integrals are identical, so they cancel. The boundary terms give (with , ): Rearranging: **Step 4 — the log-derivative identity.** Divide by . The right-hand side is a known integral; the left-hand side is, by the quotient rule, (Note the minus sign from the order in the quotient rule: , , which is the negative of the left-hand side of ( ) divided by .) So This is equation of § 8.3. **Step 5 — the normalisation assumption.** The derivation above did *not* use the normalisation constraint. The result is exact as written. The *additional* step that lets us drop the term in § 8.3 came from the *boundary* form of the integral, not the volume form. The volume form would be which is non-zero in general. We can drop it in ( )-style derivations only when the energy derivative of the *total* normalisation is zero (i.e. when the normalisation is preserved), and the energy derivative of the *outside* norm is also zero. The latter is exact when is at or beyond the first radial node of — the wavefunction outside then has fixed shape and its squared-norm only changes by the trivial normalisation correction. (For a hydrogen orbital, has no nodes at all, so the assumption is approximate; the correction is small and proportional to the energy derivative of the exponential tail, which is also small.)"
+      - heading "8.11 What we left out" [level=2] [ref=e11871]
+      - paragraph [ref=e11872]: Pseudopotential theory is a deep subject with many branches we did not cover. The following are the most important omissions.
+      - list [ref=e11873]:
+        - listitem [ref=e11874]:
+          - paragraph [ref=e11875]:
+            - strong [ref=e11876]: Non-linear core corrections (NLCC).
+            - text: When the pseudo-potential is used in an environment where the valence density overlaps significantly with the core (high-pressure phases,
+            - img [ref=e11878]
+            - text: transition metals with semicore states, alkali metals), the linear-response transferability theorem of § 8.3 is not enough. The correction is to add a partial core density
+            - img [ref=e11886]
+            - text: to the XC potential computation, evaluated self-consistently. Louie, Froyen, and Cohen,
+            - emphasis [ref=e11903]: Phys. Rev. B
+            - strong [ref=e11904]: "26"
+            - text: ", 1738 (1982)."
+        - listitem [ref=e11905]:
+          - paragraph [ref=e11906]:
+            - strong [ref=e11907]: Relativistic and scalar-relativistic pseudo-potentials.
+            - text: For
+            - img [ref=e11909]
+            - text: the all-electron reference must be a four-component Dirac–Fock (or scalar-relativistic approximation). The resulting pseudo has a spin–orbit term that we did not write down. Kleinman,
+            - emphasis [ref=e11919]: Phys. Rev. B
+            - strong [ref=e11920]: "21"
+            - text: ", 2630 (1980)."
+        - listitem [ref=e11921]:
+          - paragraph [ref=e11922]:
+            - strong [ref=e11923]: Frobenius norm and multi-reference optimisation.
+            - text: The TM construction in § 8.4 uses a
+            - emphasis [ref=e11924]: single
+            - text: reference configuration (typically the neutral atom ground state). For elements with several competing valence configurations (e.g. Mn with
+            - img [ref=e11926]
+            - text: vs
+            - img [ref=e11944]
+            - text: ), one must minimise the error across
+            - emphasis [ref=e11961]: all
+            - text: reference states simultaneously. The construction then becomes a non-linear optimisation in a high-dimensional parameter space; the “fingerprint” test of accuracy is the reproduction of the all-electron eigenvalue spectrum across the reference set. Hamann,
+            - emphasis [ref=e11962]: Phys. Rev. B
+            - strong [ref=e11963]: "88"
+            - text: ", 085117 (2013)."
+        - listitem [ref=e11964]:
+          - paragraph [ref=e11965]:
+            - strong [ref=e11966]:
+              - text: The
+              - img [ref=e11968]
+              - text: "-channel and beyond."
+            - text: Our example used
+            - img [ref=e11974]
+            - text: only. For each new
+            - img [ref=e11984]
+            - text: the same recipe applies, but the polynomial ansatz must be re-parameterised and the matching conditions re-evaluated. In practice one constructs
+            - img [ref=e11990]
+            - text: up to
+            - img [ref=e12000]
+            - text: (typically
+            - img [ref=e12015]
+            - text: or
+            - img [ref=e12030]
+            - text: ) explicitly and uses a local part
+            - img [ref=e12036]
+            - text: for all higher
+            - img [ref=e12067]
+            - text: — the high-
+            - img [ref=e12073]
+            - text: channels see only a tiny fraction of the core and are well approximated by the local part alone.
+        - listitem [ref=e12078]:
+          - paragraph [ref=e12079]:
+            - strong [ref=e12080]: The on-the-fly generation of pseudo-potentials.
+            - text: Modern all-electron codes (FLEUR, exciting, Elk) do not use tabulated pseudo-potentials at all; they solve the all-electron problem in a muffin-tin geometry. This is conceptually simpler (no pseudo-potential construction) but computationally more demanding and harder to combine with plane-wave basis sets.
+        - listitem [ref=e12081]:
+          - paragraph [ref=e12082]:
+            - strong [ref=e12083]: Frozen-core vs. all-electron PAW.
+            - text: The PAW method of § 8.7 was presented as “exact within the partial- wave basis”, but the partial-wave basis is itself a choice. The deeper the partial waves are taken (i.e. the larger the augmentation-sphere radius), the more accurate the PAW reconstruction, but the more expensive the computation. The trade-off is
+            - emphasis [ref=e12084]: exactly
+            - text: the same as the choice of
+            - img [ref=e12086]
+            - text: in a norm-conserving pseudo.
+      - heading "8.12 PAW in detail" [level=2] [ref=e12094]
+      - paragraph [ref=e12095]:
+        - text: The
+        - strong [ref=e12096]: projector augmented wave (PAW)
+        - text: method was introduced by Blöchl (1994) as a generalisation of both the pseudopotential approach (§§ 8.1–8.6) and the linearised augmented plane wave (LAPW) method. The § 8.7 introduction was a sketch; this section is the full derivation.
+      - heading "8.12.1 The PAW ansatz" [level=3] [ref=e12097]
+      - paragraph [ref=e12098]:
+        - text: The fundamental object is a one-body state
+        - img [ref=e12100]
+        - text: (the all-electron Hilbert space) and a smooth partner
+        - img [ref=e12118]
+        - text: (the pseudo-Hilbert space of plane-wave-friendly functions). The two are related by a linear, invertible transformation
+        - img [ref=e12144]
+        - text: that is the identity outside a set of
+        - strong [ref=e12154]: augmentation spheres
+        - img [ref=e12156]
+        - text: of radius
+        - img [ref=e12165]
+        - text: "centred on each atom:"
+      - img [ref=e12174]:
+        - generic [ref=e12178]:
+          - img [ref=e12179]
+          - img [ref=e12217]
+      - paragraph [ref=e12226]: "The transformation is required to:"
+      - list [ref=e12227]:
+        - listitem [ref=e12228]:
+          - text: Act as the identity outside
+          - img [ref=e12230]
+          - text: .
+        - listitem [ref=e12243]:
+          - text: Reproduce the all-electron wavefunction inside each
+          - img [ref=e12245]
+          - text: when applied to a smooth partner.
+        - listitem [ref=e12253]:
+          - text: Be invertible, so that the smooth partner can be recovered from the all-electron state by
+          - img [ref=e12255]
+          - text: .
+      - heading "8.12.2 Partial waves, pseudo partial waves, and projectors" [level=3] [ref=e12296]
+      - paragraph [ref=e12297]:
+        - text: Inside the augmentation sphere around atom
+        - img [ref=e12299]
+        - text: ", both"
+        - img [ref=e12305]
+        - text: and
+        - img [ref=e12318]
+        - text: are expanded in a local basis of
+        - strong [ref=e12334]: partial waves
+        - text: . The basis is indexed by a composite quantum number
+        - img [ref=e12336]
+        - text: where
+        - img [ref=e12362]
+        - text: is the atom,
+        - img [ref=e12368]
+        - text: labels the radial channel (e.g.
+        - img [ref=e12374]
+        - text: ","
+        - img [ref=e12382]
+        - text: ","
+        - img [ref=e12390]
+        - text: inside the sphere),
+        - img [ref=e12398]
+        - text: is the angular momentum, and
+        - img [ref=e12404]
+        - text: is its
+        - img [ref=e12410]
+        - text: "-component. The partial waves are the solutions of the all-electron radial equation in the spherical potential well of atom"
+        - img [ref=e12416]
+        - text: at chosen reference energies
+        - img [ref=e12422]
+        - text: ":"
+      - paragraph [ref=e12433]:
+        - img [ref=e12435]:
+          - generic [ref=e12439]:
+            - img [ref=e12440]
+            - img [ref=e12513]
+        - img [ref=e12523]:
+          - generic [ref=e12527]:
+            - img [ref=e12528]
+            - img [ref=e12609]
+      - paragraph [ref=e12618]:
+        - text: The
+        - img [ref=e12620]
+        - text: are the
+        - strong [ref=e12630]: all-electron partial waves
+        - text: (the true atomic wavefunctions evaluated inside the sphere); the
+        - img [ref=e12632]
+        - text: are the
+        - strong [ref=e12646]: pseudo partial waves
+        - text: — smooth functions that agree with
+        - img [ref=e12648]
+        - text: in value and derivative at
+        - img [ref=e12659]
+        - text: and are nodeless inside.
+      - paragraph [ref=e12671]:
+        - text: To each pseudo partial wave we associate a
+        - strong [ref=e12672]: projector
+        - img [ref=e12674]
+        - text: ", also a function of"
+        - img [ref=e12693]
+        - text: "with the same angular structure. The projectors are required to satisfy two conditions:"
+      - list [ref=e12699]:
+        - listitem [ref=e12700]:
+          - paragraph [ref=e12701]:
+            - strong [ref=e12702]: "Biorthogonality with the pseudo partial waves:"
+            - img [ref=e12704]:
+              - generic [ref=e12708]:
+                - img [ref=e12709]
+                - img [ref=e12769]
+        - listitem [ref=e12778]:
+          - paragraph [ref=e12779]:
+            - strong [ref=e12780]: "Completeness inside the augmentation sphere:"
+            - img [ref=e12782]:
+              - generic [ref=e12786]:
+                - img [ref=e12787]
+                - img [ref=e12846]
+      - paragraph [ref=e12855]:
+        - text: Condition 2 is the crucial one. It says that any smooth function can be expanded exactly in the basis of pseudo partial waves inside the augmentation sphere. (In practice the sum is truncated to a finite number of channels
+        - img [ref=e12857]
+        - text: per atom, typically
+        - img [ref=e12881]
+        - text: –
+        - img [ref=e12897]
+        - text: ", and the completeness becomes approximate; the approximation is the “partial-wave basis” error of PAW.)"
+      - heading "8.12.3 The reconstruction formula" [level=3] [ref=e12902]
+      - paragraph [ref=e12903]:
+        - text: The transformation
+        - img [ref=e12905]
+        - text: is constructed by demanding that, inside each augmentation sphere, the all-electron wavefunction is recovered by
+        - emphasis [ref=e12915]: substituting
+        - text: "the all-electron partial waves for the pseudo partial waves, weighted by the overlap of the smooth partner with the projector:"
+      - img [ref=e12917]:
+        - generic [ref=e12921]:
+          - img [ref=e12922]
+          - img [ref=e13003]
+      - paragraph [ref=e13012]:
+        - text: To verify that this is correct, apply it to a smooth state
+        - img [ref=e13014]
+        - text: ":"
+      - img [ref=e13031]:
+        - generic [ref=e13035]:
+          - img [ref=e13036]
+          - img [ref=e13142]
+      - paragraph [ref=e13151]: "Split the smooth state into “outside the augmentation spheres” and “inside each sphere”:"
+      - paragraph [ref=e13152]:
+        - img [ref=e13154]:
+          - generic [ref=e13158]:
+            - img [ref=e13159]
+            - img [ref=e13224]
+        - img [ref=e13234]:
+          - generic [ref=e13238]:
+            - img [ref=e13239]
+            - img [ref=e13310]
+      - paragraph [ref=e13319]:
+        - text: Equation
+        - img [ref=e13321]:
+          - link [ref=e13324] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-pw-expand"
+        - text: is just the completeness relation
+        - img [ref=e13333]:
+          - link [ref=e13336] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-completeness"
+        - text: applied to
+        - img [ref=e13345]
+        - text: inside
+        - img [ref=e13364]
+        - text: . Now substitute into
+        - img [ref=e13373]:
+          - link [ref=e13376] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-apply-t"
+        - text: ":"
+      - paragraph [ref=e13384]:
+        - img [ref=e13386]:
+          - generic [ref=e13390]:
+            - img [ref=e13391]
+            - img [ref=e13759]
+      - paragraph [ref=e13768]:
+        - text: So inside each augmentation sphere,
+        - img [ref=e13770]
+        - text: is the all-electron partial-wave expansion
+        - img [ref=e13779]
+        - text: ; outside,
+        - img [ref=e13822]
+        - text: . The transformation is
+        - emphasis [ref=e13841]: exact
+        - text: "(within the partial-wave basis) and invertible:"
+      - img [ref=e13843]:
+        - generic [ref=e13847]:
+          - img [ref=e13848]
+          - img [ref=e13935]
+      - paragraph [ref=e13944]:
+        - text: The same derivation with
+        - img [ref=e13946]
+        - text: gives the inverse; biorthogonality
+        - img [ref=e13960]:
+          - link [ref=e13963] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-biorthog"
+        - text: guarantees that
+        - img [ref=e13972]
+        - text: .
+      - heading "8.12.4 The PAW Hamiltonian" [level=3] [ref=e13999]
+      - paragraph [ref=e14000]:
+        - text: A general one-body operator
+        - img [ref=e14002]
+        - text: "acting on the all-electron state becomes, in the PAW framework, an operator on the smooth state:"
+      - img [ref=e14012]:
+        - generic [ref=e14016]:
+          - img [ref=e14017]
+          - img [ref=e14138]
+      - paragraph [ref=e14147]:
+        - text: The “PAW-transformed” operator
+        - img [ref=e14149]
+        - text: "contains three pieces:"
+      - img [ref=e14159]:
+        - generic [ref=e14163]:
+          - img [ref=e14164]
+          - img [ref=e14309]
+      - paragraph [ref=e14318]: "This follows from $\\hat{\\mathcal{T}} = 1 + \\sum_{R,i}(|\\phi_i^R\\rangle"
+      - list [ref=e14319]:
+        - listitem [ref=e14320]:
+          - text: "|\\tilde\\phi_i^R\\rangle) \\langle \\tilde p_i^R |"
+          - img [ref=e14322]
+          - text: \hat O$, is the operator acting on the smooth wavefunction. The bracket is the
+          - strong [ref=e14395]: on-site correction
+          - text: ": the difference between the all-electron matrix element and the pseudo matrix element of"
+          - img [ref=e14397]
+          - text: ", evaluated in the partial-wave basis. The sum runs over the partial-wave indices inside the augmentation sphere."
+      - paragraph [ref=e14406]:
+        - text: "For the Kohn–Sham Hamiltonian $\\hat H_{KS} = -\\tfrac{1}{2}\\nabla^2 + V_{eff}"
+        - link "\\rho" [ref=e14407] [cursor=pointer]:
+          - /url: \mathbf r
+        - text: "$, the three pieces become:"
+      - paragraph [ref=e14408]:
+        - img [ref=e14410]:
+          - generic [ref=e14414]:
+            - img [ref=e14415]
+            - img [ref=e14443]
+        - img [ref=e14453]:
+          - generic [ref=e14457]:
+            - img [ref=e14458]
+            - img [ref=e14518]
+        - img [ref=e14528]:
+          - generic [ref=e14532]:
+            - img [ref=e14533]
+            - img [ref=e14731]
+      - paragraph [ref=e14740]:
+        - text: The crucial point is the
+        - strong [ref=e14741]: double-counting subtraction
+        - text: in
+        - img [ref=e14743]:
+          - link [ref=e14746] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-Veff"
+        - text: ": the smooth potential is evaluated on the"
+        - emphasis [ref=e14754]: pseudo
+        - text: charge density
+        - img [ref=e14756]
+        - text: ", not on the all-electron"
+        - img [ref=e14766]
+        - text: . The on-site augmentation
+        - img [ref=e14772]
+        - text: "then adds back the difference. This decomposition is the key to the efficiency of PAW: the smooth potential is evaluated on a plane-wave grid, the on-site contributions are evaluated in real space on radial/angular grids around each atom."
+      - heading "8.12.5 The augmentation charge" [level=3] [ref=e14789]
+      - paragraph [ref=e14790]: "The all-electron charge density is reconstructed in the same way as the wavefunction:"
+      - img [ref=e14792]:
+        - generic [ref=e14796]:
+          - img [ref=e14797]
+          - img [ref=e14870]
+      - paragraph [ref=e14879]: where
+      - img [ref=e14881]:
+        - generic [ref=e14885]:
+          - img [ref=e14886]
+          - img [ref=e15018]
+      - paragraph [ref=e15027]:
+        - text: and similarly for
+        - img [ref=e15029]
+        - text: with
+        - img [ref=e15042]
+        - text: in place of
+        - img [ref=e15052]
+        - text: . The on-site density
+        - img [ref=e15058]
+        - text: contains
+        - emphasis [ref=e15066]: all
+        - text: one-body products of partial waves; for
+        - img [ref=e15068]
+        - text: partial waves per atom there are
+        - img [ref=e15084]
+        - text: such products, and each is a function of
+        - img [ref=e15103]
+        - text: on the radial grid inside the augmentation sphere.
+      - paragraph [ref=e15109]:
+        - text: Defining the
+        - strong [ref=e15110]: occupancy matrix
+      - img [ref=e15112]:
+        - generic [ref=e15116]:
+          - img [ref=e15117]
+          - img [ref=e15206]
+      - paragraph [ref=e15215]: the on-site density is
+      - img [ref=e15217]:
+        - generic [ref=e15221]:
+          - img [ref=e15222]
+          - img [ref=e15293]
+      - paragraph [ref=e15302]:
+        - text: The
+        - strong [ref=e15303]: augmentation charge
+        - text: is the difference
+        - img [ref=e15305]
+        - text: ", summed over atoms:"
+      - img [ref=e15325]:
+        - generic [ref=e15329]:
+          - img [ref=e15330]
+          - img [ref=e15445]
+      - paragraph [ref=e15454]:
+        - text: This is the PAW analogue of the USPP augmentation charge
+        - img [ref=e15456]:
+          - link [ref=e15459] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-uspp-density"
+        - text: ", but the augmentation here is"
+        - emphasis [ref=e15467]: charge-density on-site
+        - text: ", not a single function per channel. The on-site density can be decomposed into a"
+        - strong [ref=e15468]: compensation-charge
+        - text: background
+        - img [ref=e15470]
+        - text: plus the partial-wave density, and the compensation charge is chosen so that
+        - img [ref=e15490]
+        - text: for each atom (the monopole of the augmentation charge vanishes, to avoid spurious long-range Coulomb interactions).
+      - heading "8.12.6 The total energy" [level=3] [ref=e15522]
+      - paragraph [ref=e15523]: The Kohn–Sham total energy in the PAW framework is
+      - img [ref=e15525]:
+        - generic [ref=e15529]:
+          - img [ref=e15530]
+          - img [ref=e15686]
+      - paragraph [ref=e15695]:
+        - text: where the first three terms are evaluated on the smooth density using plane waves, the last term is the on-site augmentation correction (the difference between the all-electron and pseudo on-site energy contributions), and
+        - img [ref=e15697]
+        - text: is the augmentation charge from
+        - img [ref=e15710]:
+          - link [ref=e15713] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-aug-charge"
+        - text: .
+      - paragraph [ref=e15721]:
+        - text: The on-site augmentation is decomposed into a sum over partial-wave channel pairs
+        - img [ref=e15723]
+        - text: ":"
+      - img [ref=e15737]:
+        - generic [ref=e15741]:
+          - img [ref=e15742]
+          - img [ref=e15887]
+      - paragraph [ref=e15896]:
+        - text: where
+        - img [ref=e15898]
+        - text: is a local (smooth) part of the potential inside the sphere and the Hartree term is evaluated on the on-site density. The corresponding pseudo on-site contributions are subtracted, giving the “
+        - img [ref=e15914]
+        - text: ” structure that is the hallmark of PAW energy expressions.
+      - heading "8.12.7 Comparison with USPP and LAPW" [level=3] [ref=e15925]
+      - paragraph [ref=e15926]: "PAW is the natural “interpolant” between the pseudopotential and LAPW methods. The following table summarises the limits:"
+      - table [ref=e15927]:
+        - rowgroup [ref=e15928]:
+          - row "Method Inside augmentation sphere Outside" [ref=e15929]:
+            - columnheader "Method" [ref=e15930]
+            - columnheader "Inside augmentation sphere" [ref=e15931]
+            - columnheader "Outside" [ref=e15932]
+        - rowgroup [ref=e15933]:
+          - row "Norm-conserving PP Smooth pseudo, no all-electron info Smooth pseudo" [ref=e15934]:
+            - cell "Norm-conserving PP" [ref=e15935]:
+              - strong [ref=e15936]: Norm-conserving PP
+            - cell "Smooth pseudo, no all-electron info" [ref=e15937]
+            - cell "Smooth pseudo" [ref=e15938]
+          - row "USPP Smooth pseudo, augmented by single function Smooth pseudo" [ref=e15939]:
+            - cell "USPP" [ref=e15940]:
+              - strong [ref=e15941]: USPP
+            - cell "Smooth pseudo, augmented by single function" [ref=e15942]:
+              - text: Smooth pseudo, augmented by single
+              - img [ref=e15944]
+              - text: function
+            - cell "Smooth pseudo" [ref=e15955]
+          - row "PAW All-electron partial waves (exact, finite basis) Smooth pseudo" [ref=e15956]:
+            - cell "PAW" [ref=e15957]:
+              - strong [ref=e15958]: PAW
+            - cell "All-electron partial waves (exact, finite basis)" [ref=e15959]
+            - cell "Smooth pseudo" [ref=e15960]
+          - row "LAPW All-electron linearised in energy, basis-dependent Plane waves (no smooth partner)" [ref=e15961]:
+            - cell "LAPW" [ref=e15962]:
+              - strong [ref=e15963]: LAPW
+            - cell "All-electron linearised in energy, basis-dependent" [ref=e15964]
+            - cell "Plane waves (no smooth partner)" [ref=e15965]
+      - paragraph [ref=e15966]:
+        - text: "PAW and USPP can be derived from each other: USPP is the"
+        - strong [ref=e15967]: single-projector, linearised
+        - text: version of PAW (one partial wave per channel, linearisation in the occupation matrix); PAW is the
+        - strong [ref=e15968]: complete-projector, non-linear
+        - text: version of USPP (arbitrary number of partial waves per channel, full occupation matrix enters the energy). The PAW energy expression contains terms like
+        - img [ref=e15970]
+        - text: that have no USPP analogue; these are the “non-linear core correction” terms of PAW.
+      - paragraph [ref=e15993]:
+        - text: PAW is also the natural generalisation of LAPW. The difference is that PAW uses a
+        - emphasis [ref=e15994]:
+          - text: smoot
+          - code [ref=e15995]: h*' partner $\tilde\Psi_n$ that is expanded in plane waves, while LAPW uses a *linearise
+          - text: d
+        - text: ’ partner inside the sphere and matches to plane waves outside. PAW’s smooth partner is what makes the Hamiltonian a smooth function on the plane-wave grid, with the on-site corrections added as a localised
+        - img [ref=e15997]
+        - text: correction.
+      - blockquote [ref=e16028]:
+        - paragraph [ref=e16029]:
+          - strong [ref=e16030]: Cross-reference.
+          - text: The on-site occupancy matrix
+          - img [ref=e16032]
+          - text: of
+          - img [ref=e16046]:
+            - link [ref=e16049] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-occupancy"
+          - text: is the natural object for the DFT+
+          - img [ref=e16058]
+          - text: correction (
+          - link "chapter 13" [ref=e16063] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-13/
+          - text: ), where
+          - img [ref=e16065]
+          - text: penalises deviations from idempotency of the on-site density matrix. PAW provides the on-site-projected density matrix that DFT+
+          - img [ref=e16071]
+          - text: operates on; this is why almost all modern DFT+
+          - img [ref=e16077]
+          - text: calculations use PAW.
+      - heading "8.13 Relativistic pseudopotentials" [level=2] [ref=e16082]
+      - paragraph [ref=e16083]:
+        - text: For light atoms (
+        - img [ref=e16085]
+        - text: ), the non-relativistic Schrödinger equation is a good starting point. For
+        - img [ref=e16096]
+        - text: ", the innermost electrons move at a significant fraction of the speed of light:"
+        - img [ref=e16107]
+        - text: . For the
+        - img [ref=e16135]
+        - text: electron of uranium,
+        - img [ref=e16143]
+        - text: and
+        - img [ref=e16154]
+        - text: ", so the relativistic mass correction is a factor of"
+        - img [ref=e16172]
+        - text: . A non-relativistic pseudopotential built from a non-relativistic all-electron reference would be wrong by a comparable amount in the core region, and the error would propagate to the valence eigenvalue and the chemistry.
+      - paragraph [ref=e16181]: "There are three ways to handle relativity in a pseudopotential calculation, in increasing order of sophistication and cost:"
+      - list [ref=e16182]:
+        - listitem [ref=e16183]:
+          - paragraph [ref=e16184]:
+            - strong [ref=e16185]: Scalar relativistic
+            - text: — the spin-orbit coupling is dropped; the remaining relativistic corrections (mass-velocity, Darwin) are absorbed into the
+            - img [ref=e16187]
+            - text: potential. The valence Hamiltonian stays spin-free, so standard non-spin-polarised and spin-polarised (collinear) DFT codes work without modification.
+        - listitem [ref=e16208]:
+          - paragraph [ref=e16209]:
+            - strong [ref=e16210]: Spin-orbit coupled
+            - text: — the scalar-relativistic pseudo is augmented by a
+            - img [ref=e16212]
+            - text: term in the valence Hamiltonian. The eigenstates are labeled by total angular momentum
+            - img [ref=e16238]
+            - text: ", and the spinor structure of the wavefunction must be tracked. Needed for heavy elements where spin-orbit splitting of the valence orbitals is comparable to chemical shifts ("
+            - img [ref=e16257]
+            - text: transition metals, lanthanides, actinides).
+        - listitem [ref=e16264]:
+          - paragraph [ref=e16265]:
+            - strong [ref=e16266]: Fully relativistic (four-component)
+            - text: — the valence calculation is done with a four-component Dirac Hamiltonian, and the pseudopotential is a
+            - img [ref=e16268]
+            - text: matrix in Dirac spinor space. Required only for the heaviest elements and for properties that depend on spinor structure (NMR chemical shifts, electron chirality, topological insulators).
+      - heading "8.13.1 The Dirac equation" [level=3] [ref=e16277]
+      - paragraph [ref=e16278]:
+        - text: The starting point is the one-electron Dirac equation (in atomic units,
+        - img [ref=e16280]
+        - text: "a.u.):"
+      - img [ref=e16296]:
+        - generic [ref=e16300]:
+          - img [ref=e16301]
+          - img [ref=e16372]
+      - paragraph [ref=e16380]:
+        - text: where
+        - img [ref=e16382]
+        - text: is a four-component spinor,
+        - img [ref=e16416]
+        - text: and
+        - img [ref=e16447]
+        - text: are the
+        - img [ref=e16453]
+        - text: Dirac matrices, and the
+        - img [ref=e16463]
+        - text: has been subtracted to put the rest energy at zero. The two-component spinors
+        - img [ref=e16474]
+        - text: (the “large” component) and
+        - img [ref=e16483]
+        - text: (the “small” component) are each two-component Pauli spinors.
+      - paragraph [ref=e16491]:
+        - text: For a central potential
+        - img [ref=e16493]
+        - text: ", the eigenstates are labelled by the angular-momentum quantum numbers"
+        - img [ref=e16505]
+        - text: with
+        - img [ref=e16522]
+        - text: and
+        - img [ref=e16547]
+        - text: . The radial functions
+        - img [ref=e16572]
+        - text: and
+        - img [ref=e16587]
+        - text: "— the large and small radial components — satisfy the coupled radial Dirac equations:"
+      - paragraph [ref=e16601]:
+        - img [ref=e16603]:
+          - generic [ref=e16607]:
+            - img [ref=e16608]
+            - img [ref=e16697]
+        - img [ref=e16707]:
+          - generic [ref=e16711]:
+            - img [ref=e16712]
+            - img [ref=e16799]
+      - paragraph [ref=e16808]:
+        - text: The non-relativistic limit
+        - img [ref=e16810]
+        - text: recovers the Schrödinger equation for
+        - img [ref=e16820]
+        - text: ", with"
+        - img [ref=e16829]
+        - text: and
+        - img [ref=e16842]
+        - text: (the rest energy contribution).
+      - heading "8.13.2 The scalar relativistic approximation" [level=3] [ref=e16864]
+      - paragraph [ref=e16865]:
+        - text: For a closed-shell or averaged-configuration atom, the spin-orbit splitting of the energy levels averages out when summed over the occupied orbitals. The
+        - strong [ref=e16866]: scalar relativistic (SR) approximation
+        - text: "exploits this: it solves the Dirac equation with the spin-orbit term projected out, keeping only the relativistic mass-velocity and Darwin corrections."
+      - paragraph [ref=e16867]:
+        - text: Concretely, eliminate the small component
+        - img [ref=e16869]
+        - text: from
+        - img [ref=e16878]:
+          - link [ref=e16881] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-dirac-F"
+        - text: ":"
+      - img [ref=e16890]:
+        - generic [ref=e16894]:
+          - img [ref=e16895]
+          - img [ref=e16973]
+      - paragraph [ref=e16982]:
+        - text: where
+        - img [ref=e16984]
+        - text: is the relativistic mass. Substituting into
+        - img [ref=e17026]:
+          - link [ref=e17029] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-dirac-G"
+        - text: ":"
+      - img [ref=e17038]:
+        - generic [ref=e17042]:
+          - img [ref=e17043]
+          - img [ref=e17172]
+      - paragraph [ref=e17181]:
+        - text: where the
+        - strong [ref=e17182]: scalar relativistic potential
+        - text: is
+      - img [ref=e17184]:
+        - generic [ref=e17188]:
+          - img [ref=e17189]
+          - img [ref=e17304]
+      - paragraph [ref=e17313]:
+        - text: The first correction term
+        - img [ref=e17315]
+        - text: is the
+        - strong [ref=e17353]: Darwin term
+        - text: ; the second,
+        - img [ref=e17355]
+        - text: ", is the"
+        - strong [ref=e17394]: mass-velocity
+        - text: correction. The spin-orbit part of the full Dirac equation has been projected out (
+        - img [ref=e17396]:
+          - link [ref=e17399] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-so-term"
+        - text: below gives the spin-orbit form that is dropped). The resulting
+        - img [ref=e17408]
+        - text: depends on
+        - img [ref=e17426]
+        - text: through the centrifugal term
+        - img [ref=e17432]
+        - text: but is
+        - emphasis [ref=e17463]: spin-independent
+        - text: .
+      - paragraph [ref=e17464]:
+        - text: The radial wavefunctions
+        - img [ref=e17466]
+        - text: obtained this way are then used as the all-electron reference for the pseudopotential construction. The resulting
+        - img [ref=e17481]
+        - text: is the
+        - strong [ref=e17502]: scalar relativistic pseudopotential
+        - text: ", used in standard non-relativistic or collinear-spin DFT codes. The error of the scalar-relativistic approximation (relative to the full Dirac treatment) is of order"
+        - img [ref=e17504]
+        - text: and is negligible for
+        - img [ref=e17519]
+        - text: ; for the actinides (
+        - img [ref=e17530]
+        - text: ) the error is
+        - img [ref=e17541]
+        - text: –
+        - img [ref=e17551]
+        - text: per atom and the spin-orbit splitting must be added back as a separate term.
+      - heading "8.13.3 Spin-orbit coupling" [level=3] [ref=e17559]
+      - paragraph [ref=e17560]:
+        - text: The spin-orbit correction to the scalar relativistic Hamiltonian is the residual
+        - img [ref=e17562]
+        - text: term that was projected out in
+        - img [ref=e17574]:
+          - link [ref=e17577] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-sr-potential"
+        - text: ". For a spherically symmetric potential, this is:"
+      - img [ref=e17586]:
+        - generic [ref=e17590]:
+          - img [ref=e17591]
+          - img [ref=e17654]
+      - paragraph [ref=e17663]:
+        - text: The expectation value of
+        - img [ref=e17665]
+        - text: in a state of definite
+        - img [ref=e17677]
+        - text: is
+      - img [ref=e17683]:
+        - generic [ref=e17687]:
+          - img [ref=e17688]
+          - img [ref=e17759]
+      - paragraph [ref=e17768]: which gives the spin-orbit energy shift
+      - img [ref=e17770]:
+        - generic [ref=e17774]:
+          - img [ref=e17775]
+          - img [ref=e17892]
+      - paragraph [ref=e17900]:
+        - text: For
+        - img [ref=e17902]
+        - text: ", the splitting between"
+        - img [ref=e17917]
+        - text: and
+        - img [ref=e17936]
+        - text: is
+      - img [ref=e17955]:
+        - generic [ref=e17959]:
+          - img [ref=e17960]
+          - img [ref=e18093]
+      - paragraph [ref=e18101]:
+        - text: For a
+        - img [ref=e18103]
+        - text: transition metal like platinum, the spin-orbit splitting of the
+        - img [ref=e18111]
+        - text: states is
+        - img [ref=e18119]
+        - text: –
+        - img [ref=e18127]
+        - text: ; this is comparable to chemical shifts and must be included for accurate thermochemistry of Pt complexes. For a
+        - img [ref=e18136]
+        - text: metal like iron, the splitting is
+        - img [ref=e18144]
+        - text: and can often be neglected for ground-state properties.
+      - paragraph [ref=e18156]:
+        - text: In a pseudopotential framework, the spin-orbit term is added as a
+        - emphasis [ref=e18157]: channel-dependent
+        - text: correction. The
+        - strong [ref=e18158]: Kleinman–Bylander
+        - text: (1982) form of the spin-orbit pseudopotential is
+      - img [ref=e18160]:
+        - generic [ref=e18164]:
+          - img [ref=e18165]
+          - img [ref=e18270]
+      - paragraph [ref=e18279]:
+        - text: where
+        - img [ref=e18281]
+        - text: is a strength parameter fitted to the all-electron spin-orbit splitting
+        - img [ref=e18295]:
+          - link [ref=e18298] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-so-splitting"
+        - text: ","
+        - img [ref=e18307]
+        - text: is a radial function, and
+        - img [ref=e18331]
+        - text: is a pseudo-atomic orbital. The expectation value of
+        - img [ref=e18349]
+        - text: in the basis of coupled spin-angular-momentum states
+        - img [ref=e18361]
+        - text: is then the standard value
+        - img [ref=e18386]:
+          - link [ref=e18389] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-LS-eigenvalue"
+        - text: .
+      - heading "8.13.4 Four-component Dirac pseudopotentials" [level=3] [ref=e18397]
+      - paragraph [ref=e18398]:
+        - text: For the heaviest elements (actinides, super-heavies) and for properties that depend on the spinor structure of the wavefunction, the spin-orbit term is not enough and the full four-component Dirac equation must be used in the valence calculation. The pseudopotential is then a
+        - img [ref=e18400]
+        - text: "matrix in Dirac spinor space:"
+      - img [ref=e18410]:
+        - generic [ref=e18414]:
+          - img [ref=e18415]
+          - img [ref=e18508]
+      - paragraph [ref=e18517]:
+        - text: where the projectors
+        - img [ref=e18519]
+        - text: are four-component spinor spherical waves
+      - img [ref=e18540]:
+        - generic [ref=e18544]:
+          - img [ref=e18545]
+          - img [ref=e18648]
+      - paragraph [ref=e18657]:
+        - text: with
+        - img [ref=e18659]
+        - text: the spinor spherical harmonics (the angular parts of the Dirac spinor solutions of definite
+        - img [ref=e18674]
+        - text: ). The functions
+        - img [ref=e18687]
+        - text: are obtained by inverting the radial Dirac equation for the pseudo wavefunctions
+        - img [ref=e18711]
+        - text: and
+        - img [ref=e18730]
+        - text: ", exactly analogous to the non-relativistic case but for the coupled pair of radial equations"
+        - img [ref=e18749]:
+          - link [ref=e18752] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-dirac-G"
+        - text: –
+        - img [ref=e18761]:
+          - link [ref=e18764] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-dirac-F"
+        - text: .
+      - paragraph [ref=e18772]:
+        - text: The fully-relativistic four-component pseudopotential is computationally demanding (the Hamiltonian is a
+        - img [ref=e18774]
+        - text: matrix for
+        - img [ref=e18788]
+        - text: electrons) and is used only in a few codes (DIRAC, ReSpect, BERTHA). For most applications the scalar-relativistic + spin-orbit split is sufficient.
+      - blockquote [ref=e18793]:
+        - paragraph [ref=e18794]:
+          - strong [ref=e18795]: Tip.
+          - text: In plane-wave codes, the
+          - strong [ref=e18796]: spin-orbit coupling
+          - text: "can be included as a non-collinear extension of the standard collinear spin-polarisation framework: the Kohn–Sham wavefunctions become two-component Pauli spinors"
+          - img [ref=e18798]
+          - text: ", and the Hamiltonian includes a"
+          - img [ref=e18852]
+          - text: matrix in spin space. The pseudopotential contributes a
+          - img [ref=e18862]
+          - text: term that couples
+          - img [ref=e18874]
+          - text: to
+          - img [ref=e18886]
+          - text: . The cost increase over a non-spin-orbit calculation is typically a factor of 2 in the diagonalisation and 4–8 in memory (because the wavefunction is now
+          - img [ref=e18898]
+          - text: complex numbers instead of
+          - img [ref=e18906]
+          - text: ).
+        - paragraph [ref=e18911]:
+          - strong [ref=e18912]: Cross-reference.
+          - text: Spin-orbit coupling is essential for the topological classification of band structures (
+          - link "chapter 07" [ref=e18913] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: ). The
+          - img [ref=e18915]
+          - text: invariant of a 2D or 3D topological insulator is defined from the occupied-band wavefunctions
+          - emphasis [ref=e18924]: including
+          - text: spin-orbit coupling; without it, every insulator is trivial.
+      - heading "8.14 f-electron pseudopotentials and the small-core / large-core question" [level=2] [ref=e18925]
+      - paragraph [ref=e18926]:
+        - text: The
+        - img [ref=e18928]
+        - text: "-electron elements — the lanthanides ("
+        - img [ref=e18934]
+        - text: ","
+        - img [ref=e18942]
+        - text: –
+        - img [ref=e18953]
+        - text: ) and the actinides (
+        - img [ref=e18960]
+        - text: ","
+        - img [ref=e18968]
+        - text: –
+        - img [ref=e18979]
+        - text: ") — are notoriously difficult to treat with pseudopotentials. Three reasons:"
+      - list [ref=e18986]:
+        - listitem [ref=e18987]:
+          - paragraph [ref=e18988]:
+            - strong [ref=e18989]: Compactness.
+            - text: The
+            - img [ref=e18991]
+            - text: "orbital of a lanthanide is spatially compact: the radial extent is"
+            - img [ref=e18999]
+            - text: –
+            - img [ref=e19021]
+            - text: ", much smaller than the"
+            - img [ref=e19034]
+            - text: and
+            - img [ref=e19042]
+            - text: valence orbitals (with
+            - img [ref=e19050]
+            - text: –
+            - img [ref=e19066]
+            - text: ). The
+            - img [ref=e19079]
+            - text: electrons are “buried” inside the valence shell.
+        - listitem [ref=e19084]:
+          - paragraph [ref=e19085]:
+            - strong [ref=e19086]: Near-degeneracy with the valence.
+            - text: The
+            - img [ref=e19088]
+            - text: orbital energy is within
+            - img [ref=e19096]
+            - text: –
+            - img [ref=e19104]
+            - text: of the
+            - img [ref=e19113]
+            - text: and
+            - img [ref=e19121]
+            - text: valence orbitals in many lanthanides. The
+            - img [ref=e19129]
+            - text: electrons are chemically active (they participate in bonding in some compounds, especially the early lanthanides La–Gd) but are not “core” electrons in the usual sense.
+        - listitem [ref=e19134]:
+          - paragraph [ref=e19135]:
+            - strong [ref=e19136]: Strong correlation.
+            - text: The on-site Coulomb repulsion
+            - img [ref=e19138]
+            - text: between
+            - img [ref=e19150]
+            - text: electrons is
+            - img [ref=e19156]
+            - text: –
+            - img [ref=e19164]
+            - text: ", much larger than the"
+            - img [ref=e19174]
+            - text: "-band width"
+            - img [ref=e19180]
+            - text: –
+            - img [ref=e19188]
+            - text: . The
+            - img [ref=e19197]
+            - text: electrons are strongly correlated and DFT in the LDA or GGA often misplaces their energy relative to the valence.
+      - paragraph [ref=e19202]:
+        - text: The choice of how to treat the
+        - img [ref=e19204]
+        - text: electrons in a pseudopotential is therefore not a technical detail; it is a
+        - emphasis [ref=e19209]: physical
+        - text: choice about the role of the
+        - img [ref=e19211]
+        - text: electrons in the chemistry.
+      - heading "8.14.1 Small-core vs. large core" [level=3] [ref=e19216]
+      - paragraph [ref=e19217]:
+        - text: There are two conventional choices, illustrated for gadolinium (
+        - img [ref=e19219]
+        - text: ", configuration"
+        - img [ref=e19230]
+        - text: "):"
+      - paragraph [ref=e19262]:
+        - strong [ref=e19263]: (A) Large-core pseudopotential.
+        - text: The
+        - img [ref=e19265]
+        - text: ","
+        - img [ref=e19273]
+        - text: ","
+        - img [ref=e19281]
+        - text: electrons are frozen in the core; the valence is just
+        - img [ref=e19289]
+        - text: (3 electrons). The cutoff radius
+        - img [ref=e19307]
+        - text: is
+        - img [ref=e19316]
+        - text: –
+        - img [ref=e19326]
+        - text: for the
+        - img [ref=e19339]
+        - text: and
+        - img [ref=e19347]
+        - text: channels. The
+        - img [ref=e19355]
+        - text: electrons are absent from the valence. This is the cheapest option but it cannot describe any chemistry that involves
+        - img [ref=e19363]
+        - text: "-electron promotion (e.g. Gd"
+        - img [ref=e19369]
+        - text: → Gd
+        - img [ref=e19379]
+        - text: redox, where an
+        - img [ref=e19389]
+        - text: electron is removed) and it misplaces the relative energetics of
+        - img [ref=e19395]
+        - text: and
+        - img [ref=e19401]
+        - text: configurations.
+      - paragraph [ref=e19406]:
+        - strong [ref=e19407]: (B) Small-core pseudopotential.
+        - text: The
+        - img [ref=e19409]
+        - text: and
+        - img [ref=e19417]
+        - text: electrons are frozen in the core; the valence is
+        - img [ref=e19425]
+        - text: (16 electrons). The cutoff radius
+        - img [ref=e19450]
+        - text: for the
+        - img [ref=e19459]
+        - text: channel is
+        - img [ref=e19467]
+        - text: –
+        - img [ref=e19477]
+        - text: ", much smaller than for the"
+        - img [ref=e19490]
+        - text: channels. The
+        - img [ref=e19505]
+        - text: electrons are explicitly in the valence, so their chemistry is correctly described. The cost is higher (more electrons, harder pseudo for the
+        - img [ref=e19513]
+        - text: channel because of the small cutoff) and the calculation requires care with strong correlation (DFT+
+        - img [ref=e19521]
+        - text: or hybrid functionals are typically required).
+      - paragraph [ref=e19526]:
+        - text: The small-core / large-core choice is the
+        - img [ref=e19528]
+        - text: "-electron analogue of the “frozen core” choice for transition metals. There is no universally correct option; the choice depends on the chemistry. For Gd metal (where the"
+        - img [ref=e19534]
+        - text: electrons are localised and chemically inert in the metallic ground state), a large-core pseudo with the
+        - img [ref=e19542]
+        - text: electrons folded into the core works well. For GdOCl (where the
+        - img [ref=e19550]
+        - text: electrons participate in the bonding with the O
+        - img [ref=e19558]
+        - text: states), a small-core pseudo is needed.
+      - table [ref=e19565]:
+        - rowgroup [ref=e19566]:
+          - row "Choice Valence Cost Chemistry captured" [ref=e19567]:
+            - columnheader "Choice" [ref=e19568]
+            - columnheader "Valence" [ref=e19569]
+            - columnheader "Cost" [ref=e19570]
+            - columnheader "Chemistry captured" [ref=e19571]
+        - rowgroup [ref=e19572]:
+          - row "Large core (~3 el.) Low only" [ref=e19573]:
+            - cell "Large core" [ref=e19574]
+            - cell "(~3 el.)" [ref=e19575]:
+              - img [ref=e19577]
+              - text: (~3 el.)
+            - cell "Low" [ref=e19588]
+            - cell "only" [ref=e19589]:
+              - img [ref=e19591]
+              - text: only
+          - row "Small core (~16 el.) High +" [ref=e19601]:
+            - cell "Small core" [ref=e19602]
+            - cell "(~16 el.)" [ref=e19603]:
+              - img [ref=e19605]
+              - text: (~16 el.)
+            - cell "High" [ref=e19620]
+            - cell "+" [ref=e19621]:
+              - img [ref=e19623]
+              - text: +
+              - img [ref=e19629]
+          - row "“Frozen ” , occupation fixed Medium as inert spectator" [ref=e19639]:
+            - cell "“Frozen ”" [ref=e19640]:
+              - text: “Frozen
+              - img [ref=e19642]
+              - text: ”
+            - cell ", occupation fixed" [ref=e19647]:
+              - img [ref=e19649]
+              - text: ","
+              - img [ref=e19665]
+              - text: occupation fixed
+            - cell "Medium" [ref=e19670]
+            - cell "as inert spectator" [ref=e19671]:
+              - img [ref=e19673]
+              - text: as inert spectator
+      - paragraph [ref=e19678]:
+        - text: The intermediate
+        - strong [ref=e19679]:
+          - text: “frozen
+          - img [ref=e19681]
+          - text: ”
+        - text: option keeps the
+        - img [ref=e19687]
+        - text: "electrons in the valence but fixes their occupation matrix. This is the workhorse of many production calculations: the"
+        - img [ref=e19693]
+        - text: electrons are present in the density (so they contribute to the screening) but their occupation does not relax. It is a controlled approximation; the error relative to the fully relaxed small-core calculation can be checked by allowing
+        - img [ref=e19699]
+        - text: relaxation in a benchmark.
+      - heading "8.14.2 The REC potentials (VASP)" [level=3] [ref=e19704]
+      - paragraph [ref=e19705]:
+        - text: The
+        - strong [ref=e19706]: recommended (REC)
+        - text: "pseudopotentials of Kresse and Hafner (1994, VASP) are a widely used set of ultrasoft PAW-style potentials covering the periodic table. For the lanthanides and actinides, the REC library provides:"
+      - list [ref=e19707]:
+        - listitem [ref=e19708]:
+          - strong [ref=e19709]:
+            - text: Lanthanides (La–Lu,
+            - img [ref=e19711]
+            - text: –
+            - img [ref=e19722]
+            - text: "):"
+          - text: small-core with
+          - img [ref=e19729]
+          - text: in the valence (where the
+          - img [ref=e19737]
+          - text: electrons are chemically active) or large-core with
+          - img [ref=e19745]
+          - text: in the core (where the
+          - img [ref=e19753]
+          - text: electrons are spectators).
+        - listitem [ref=e19760]:
+          - strong [ref=e19761]:
+            - text: Actinides (Ac–Lr,
+            - img [ref=e19763]
+            - text: –
+            - img [ref=e19774]
+            - text: "):"
+          - text: small-core with
+          - img [ref=e19782]
+          - text: in the valence is the
+          - emphasis [ref=e19789]: only
+          - text: option in REC; the
+          - img [ref=e19791]
+          - text: electrons are chemically active in essentially all actinide compounds.
+      - paragraph [ref=e19798]:
+        - text: The REC construction uses the
+        - strong [ref=e19799]: Vanderbilt ultrasoft
+        - text: form (§ 8.6) with the PAW reconstruction (§ 8.12), giving a smooth pseudo with multiple projectors per channel. The cutoff radii for the
+        - img [ref=e19801]
+        - text: channels are typically
+        - img [ref=e19807]
+        - text: –
+        - img [ref=e19822]
+        - text: for actinides and
+        - img [ref=e19835]
+        - text: –
+        - img [ref=e19845]
+        - text: for lanthanides (the
+        - img [ref=e19858]
+        - text: orbital is more compact than
+        - img [ref=e19866]
+        - text: ). The reference configuration is chosen to be the neutral atom ground state, and the cutoffs are optimised for transferability across the
+        - img [ref=e19874]
+        - text: /
+        - img [ref=e19882]
+        - text: /
+        - img [ref=e19890]
+        - text: oxidation states of the element.
+      - heading "8.14.3 The HGH and ONCV potentials (ABINIT, CP2K, Quantum ESPRESSO)" [level=3] [ref=e19897]
+      - paragraph [ref=e19898]:
+        - text: The
+        - strong [ref=e19899]: Hamann-generated HGH
+        - text: (Hamann, 2013) pseudopotentials are an alternative family that focuses on
+        - emphasis [ref=e19900]: transferability
+        - text: "through a multireference optimisation. The construction procedure is:"
+      - list [ref=e19901]:
+        - listitem [ref=e19902]: Solve the all-electron problem (scalar relativistic, including the mass-velocity and Darwin corrections) for several reference configurations spanning the expected oxidation states of the element.
+        - listitem [ref=e19903]:
+          - text: Construct the pseudo-wavefunctions
+          - img [ref=e19905]
+          - text: for each reference state
+          - img [ref=e19923]
+          - text: using the TM exponential-in-
+          - img [ref=e19929]
+          - text: ansatz
+          - img [ref=e19938]:
+            - link [ref=e19941] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-08-tm-ansatz"
+          - text: .
+        - listitem [ref=e19949]:
+          - text: Optimise the cutoffs
+          - img [ref=e19951]
+          - text: and the parameters
+          - img [ref=e19965]
+          - text: to minimise a
+          - emphasis [ref=e19973]: Frobenius-norm
+          - text: error across
+          - emphasis [ref=e19974]: all
+          - text: "reference states simultaneously:"
+          - img [ref=e19976]:
+            - generic [ref=e19980]:
+              - img [ref=e19981]:
+                - generic [ref=e19984]:
+                  - img [ref=e20022]
+                  - img [ref=e20075]
+              - img [ref=e20081]
+          - text: where
+          - img [ref=e20091]
+          - text: is the logarithmic derivative of the wavefunction at the cutoff radius, and the sum is over the reference configurations.
+      - paragraph [ref=e20112]:
+        - text: The Frobenius-norm cost function
+        - img [ref=e20114]:
+          - link [ref=e20117] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-hgh-cost"
+        - text: "is a stronger transferability criterion than the single-configuration TM construction of § 8.4: it requires the pseudo to reproduce the energy dependence of the log-derivative"
+        - emphasis [ref=e20125]: across
+        - text: a set of configurations, not just at the single reference used for the construction. The resulting pseudos are more transferable at the cost of being slightly less smooth (the additional constraints require a smaller cutoff or more parameters).
+      - paragraph [ref=e20126]:
+        - text: "The HGH library is distributed in several formats:"
+        - strong [ref=e20127]: HGH
+        - text: (numerical tabulated potentials, the original form),
+        - strong [ref=e20128]: GTH
+        - text: (Goedecker–Teter–Hutter, an analytical-fit form optimised for Gaussian basis sets in CP2K), and
+        - strong [ref=e20129]: ONCV
+        - text: (Optimised Norm-Conserving Vanderbilt, the modern descendant in Quantum ESPRESSO and ABINIT). For
+        - img [ref=e20131]
+        - text: "-electron systems the ONCV form is the most widely used, as it combines the HGH transferability criterion with the smoothness of the Vanderbilt form. The ONCV-PSlibrary (Dal Corso, 2014) provides"
+        - img [ref=e20137]
+        - text: "-electron ONCV potentials for the entire lanthanide and actinide series, with both small-core and large-core options where applicable."
+      - heading "8.14.4 Worked example — Gd metal, large-core vs small-core" [level=3] [ref=e20142]
+      - paragraph [ref=e20143]:
+        - text: Consider a calculation of the lattice parameter of gadolinium metal. The experimental value is
+        - img [ref=e20145]:
+          - generic [ref=e20158]: Å
+        - text: "(hcp structure at room temperature). Two PAW potentials from the VASP REC library are compared:"
+      - paragraph [ref=e20159]:
+        - strong [ref=e20160]: (A) Large-core
+        - text: "(4 el.:"
+        - img [ref=e20162]
+        - text: ","
+        - img [ref=e20180]
+        - text: "in core):"
+        - img [ref=e20188]:
+          - generic [ref=e20211]: Å
+        - text: . The error is
+        - img [ref=e20213]:
+          - generic [ref=e20224]: Å
+        - text: (
+        - img [ref=e20226]
+        - text: ). The calculation converges at
+        - img [ref=e20236]
+        - text: ; the
+        - img [ref=e20259]
+        - text: electrons do not contribute to the conduction and are well-described as a frozen core.
+      - paragraph [ref=e20266]:
+        - strong [ref=e20267]: (B) Small-core
+        - text: "(16 el.:"
+        - img [ref=e20269]
+        - text: ","
+        - img [ref=e20294]
+        - text: "in valence):"
+        - img [ref=e20302]:
+          - generic [ref=e20325]: Å
+        - text: . The error is
+        - img [ref=e20327]:
+          - generic [ref=e20338]: Å
+        - text: (
+        - img [ref=e20340]
+        - text: ). The calculation converges at
+        - img [ref=e20352]
+        - text: ; the harder pseudo reflects the more compact
+        - img [ref=e20375]
+        - text: orbital. DFT+
+        - img [ref=e20383]
+        - text: with
+        - img [ref=e20389]
+        - text: is required to localise the
+        - img [ref=e20408]
+        - text: electrons; without
+        - img [ref=e20416]
+        - text: ", the small-core calculation converges to a"
+        - emphasis [ref=e20421]: "metalli`c"
+        - text: ’
+        - img [ref=e20423]
+        - text: state with the wrong volume.
+      - paragraph [ref=e20430]:
+        - text: The two calculations give similar lattice parameters for the
+        - emphasis [ref=e20431]: ground state
+        - text: ", but they differ substantially for excited states (e.g. the energy required to promote an"
+        - img [ref=e20433]
+        - text: electron to a
+        - img [ref=e20439]
+        - text: state, the
+        - img [ref=e20445]
+        - text: excitation energy that controls luminescence). For any property that depends on the relative energetics of the
+        - img [ref=e20455]
+        - text: and
+        - img [ref=e20463]
+        - text: shells, the small-core + DFT+
+        - img [ref=e20471]
+        - text: is the correct choice.
+      - heading "8.14.5 Practical recommendations" [level=3] [ref=e20476]
+      - paragraph [ref=e20477]:
+        - text: For an
+        - img [ref=e20479]
+        - text: "-electron calculation in a modern plane-wave code, the recommended workflow is:"
+      - list [ref=e20484]:
+        - listitem [ref=e20485]:
+          - paragraph [ref=e20486]:
+            - strong [ref=e20487]: Decide on the core/valence partition.
+            - text: For the early lanthanides (La–Nd) and for the actinides (Ac–Cm), the
+            - img [ref=e20489]
+            - text: electrons are chemically active and a small-core potential is almost always required. For the late lanthanides (Tb–Lu) where the
+            - img [ref=e20495]
+            - text: shell is half-filled or more, a large-core potential may be acceptable for properties that do not involve
+            - img [ref=e20503]
+            - text: excitations.
+        - listitem [ref=e20508]:
+          - paragraph [ref=e20509]:
+            - strong [ref=e20510]: Check the reference configuration.
+            - text: The pseudo’s transferability is anchored to the reference configuration used in the construction. If the actual valence configuration is far from the reference (e.g. Ce
+            - img [ref=e20512]
+            - text: in CeO
+            - img [ref=e20522]
+            - text: with no
+            - img [ref=e20529]
+            - text: electron, while the reference is Ce
+            - img [ref=e20537]
+            - text: with one
+            - img [ref=e20547]
+            - text: electron), the pseudo can have large errors.
+        - listitem [ref=e20554]:
+          - paragraph [ref=e20555]:
+            - strong [ref=e20556]:
+              - text: Add a Hubbard-
+              - img [ref=e20558]
+              - text: correction.
+            - text: DFT+
+            - img [ref=e20564]
+            - text: is almost always required for
+            - img [ref=e20570]
+            - text: "-electron systems. The"
+            - img [ref=e20576]
+            - text: parameter is fitted to reproduce a known experimental property (band gap, oxidation energetics, lattice parameter) and is typically
+            - img [ref=e20582]
+            - text: –
+            - img [ref=e20598]
+            - text: for the lanthanides and
+            - img [ref=e20607]
+            - text: –
+            - img [ref=e20623]
+            - text: for the actinides.
+        - listitem [ref=e20631]:
+          - paragraph [ref=e20632]:
+            - strong [ref=e20633]: Benchmark against an all-electron reference.
+            - text: For production calculations on a new
+            - img [ref=e20635]
+            - text: "-electron system, it is worth running a small all-electron calculation (LAPW or full-potential PAW) on a representative structure to validate the pseudo choice. The cost of one all-electron calculation is typically"
+            - img [ref=e20641]
+            - text: –
+            - img [ref=e20650]
+            - text: times that of the PAW calculation, so this is a one-time validation, not a production cost.
+      - blockquote [ref=e20657]:
+        - paragraph [ref=e20658]:
+          - strong [ref=e20659]: Tip.
+          - text: The PAW reconstruction (§ 8.12) of an all-electron
+          - img [ref=e20661]
+          - text: orbital is
+          - emphasis [ref=e20668]: very
+          - text: accurate if the augmentation sphere contains the orbital’s first node (typically at
+          - img [ref=e20670]
+          - text: –
+          - img [ref=e20680]
+          - text: for the lanthanide
+          - img [ref=e20693]
+          - text: orbital) and the partial-wave basis includes the
+          - img [ref=e20701]
+          - text: channel. The error of the PAW reconstruction for a
+          - img [ref=e20709]
+          - text: eigenvalue is typically
+          - img [ref=e20717]
+          - text: –
+          - img [ref=e20725]
+          - text: ", which is well below the DFT error of"
+          - img [ref=e20736]
+          - text: –
+          - img [ref=e20746]
+          - text: for the same orbital. PAW is therefore
+          - emphasis [ref=e20754]: the
+          - text: method of choice for
+          - img [ref=e20756]
+          - text: "-electron systems, and the small-core / large-core choice is a"
+          - emphasis [ref=e20761]: physics
+          - text: decision (do the
+          - img [ref=e20763]
+          - text: electrons participate in the chemistry?) rather than a
+          - emphasis [ref=e20768]: numerics
+          - text: decision.
+        - paragraph [ref=e20769]:
+          - strong [ref=e20770]: Cross-reference.
+          - text: The DFT+
+          - img [ref=e20772]
+          - text: method for treating strong correlation in
+          - img [ref=e20778]
+          - text: "-electron systems is in"
+          - link "chapter 13" [ref=e20783] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-13/
+          - text: . The combination “small-core PAW + DFT+
+          - img [ref=e20785]
+          - text: ” is the standard tool for actinide chemistry (UO
+          - img [ref=e20791]
+          - text: ", PuO"
+          - img [ref=e20798]
+          - text: ", CmO"
+          - img [ref=e20805]
+          - text: ", etc.) and is used in nuclear-fuel modelling and waste-form design."
+      - 'heading "8.15 The original pseudopotential papers: a literature deep-dive" [level=2] [ref=e20811]'
+      - paragraph [ref=e20812]:
+        - text: "The four papers below are the foundational documents of the modern pseudopotential field. Every production plane-wave DFT code — VASP, Quantum ESPRESSO, CASTEP, ABINIT, GPAW, CP2K, SIESTA — descends from one of them, and every “modern pseudopotential” in active use today can be traced back to one of their constructions. This section is a page-by-page walk through the original publications, with exact page numbers and equation references, so the reader can open the papers and find the derivation we are paraphrasing. The section complements §§ 8.1–8.14: those sections taught"
+        - emphasis [ref=e20813]: what the methods do
+        - text: ; this section teaches
+        - emphasis [ref=e20814]: what the original authors said and where they said it
+        - text: .
+      - heading "8.15.1 The norm-conserving pseudopotential — Hamann, Schlüter & Chiang (1979)" [level=3] [ref=e20815]
+      - paragraph [ref=e20816]: The paper that defined the modern norm-conserving pseudopotential is four pages long, has a single figure, and is one of the most-cited papers in all of computational physics (over 3,500 citations by 2024) [Hamann, Schlüter, and Chiang, 1979, abstract, p. 1494]. The authors are at Bell Laboratories; the paper was received 1 August 1979 and published 12 November 1979 [Hamann, Schlüter, and Chiang, 1979, p. 1494].
+      - paragraph [ref=e20817]:
+        - text: "The claim of the paper is on p. 1494, eq. (1): the pseudopotential is constructed so that, outside a chosen cutoff radius"
+        - img [ref=e20819]
+        - text: ", three quantities match between the all-electron wavefunction"
+        - img [ref=e20828]
+        - text: and the pseudo
+        - img [ref=e20843]
+        - text: — the value, the logarithmic derivative, and the
+        - emphasis [ref=e20857]: energy derivative of the logarithmic derivative
+        - text: "[Hamann, Schlüter, and Chiang, 1979, eq. (1), p. 1494]. The first two conditions ensure the pseudo reproduces the all-electron wavefunction outside"
+        - img [ref=e20859]
+        - text: . The third —
+        - img [ref=e20868]
+        - text: matching — is the norm-conservation condition written in derivative form, and it is the heart of the paper [Hamann, Schlüter, and Chiang, 1979, eq. (1), p. 1494]. The relationship
+        - img [ref=e20886]
+        - text: is the same one we derived in § 8.3, eq.
+        - img [ref=e20952]:
+          - link [ref=e20955] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-dlogder-de"
+        - text: ", and the 1979 paper contains the original statement of this identity [Hamann, Schlüter, and Chiang, 1979, p. 1494]."
+      - paragraph [ref=e20963]:
+        - strong [ref=e20964]: The construction procedure
+        - text: "is on p. 1495–1496 [Hamann, Schlüter, and Chiang, 1979, p. 1495–1496]. The recipe is, in modern notation:"
+      - list [ref=e20965]:
+        - listitem [ref=e20966]:
+          - paragraph [ref=e20967]:
+            - text: Solve the scalar-relativistic all-electron atomic problem for a chosen reference configuration (typically the neutral atom ground state). Get the radial eigenfunctions
+            - img [ref=e20969]
+            - text: and eigenvalues
+            - img [ref=e20984]
+            - text: for each angular momentum channel
+            - img [ref=e20993]
+            - text: that appears in the valence [Hamann, Schlüter, and Chiang, 1979, p. 1495].
+        - listitem [ref=e20998]:
+          - paragraph [ref=e20999]:
+            - text: For each channel, choose a cutoff
+            - img [ref=e21001]
+            - text: and require the pseudo-wavefunction
+            - img [ref=e21015]
+            - text: to satisfy the three matching conditions on
+            - img [ref=e21030]
+            - text: ": value, first derivative, and norm [Hamann, Schlüter, and Chiang, 1979, p. 1495]. The paper uses an"
+            - emphasis [ref=e21038]:
+              - text: exponential-in-
+              - img [ref=e21040]
+            - text: ansatz
+            - img [ref=e21049]
+            - text: with a small number of polynomial coefficients; the original version uses 3–4 parameters per channel, the modern TM extension of § 8.4 uses 5–6 [Hamann, Schlüter, and Chiang, 1979, p. 1495].
+        - listitem [ref=e21103]:
+          - paragraph [ref=e21104]:
+            - strong [ref=e21105]: Invert
+            - text: the radial Schrödinger equation to obtain
+            - img [ref=e21107]
+            - text: from
+            - img [ref=e21129]
+            - text: and
+            - img [ref=e21144]
+            - text: — this is the inversion formula
+            - img [ref=e21153]:
+              - link [ref=e21156] [cursor=pointer]:
+                - /url: "#mjx-eqn%3Aeq%3Ach-08-inversion"
+            - text: of § 8.1 [Hamann, Schlüter, and Chiang, 1979, p. 1495].
+        - listitem [ref=e21163]:
+          - paragraph [ref=e21164]:
+            - text: Join the inverted potential inside
+            - img [ref=e21166]
+            - text: to the all-electron potential outside
+            - img [ref=e21175]
+            - text: ", requiring that"
+            - img [ref=e21184]
+            - text: and $V’
+            - emphasis [ref=e21199]:
+              - text: "{ps,l}"
+              - img [ref=e21201]:
+                - generic [ref=e21281]: ü
+              - text: V
+            - text: "{ps,l}"
+            - img [ref=e21723]
+            - text: r_c$ [Hamann, Schlüter, and Chiang, 1979, p. 1495].
+      - paragraph [ref=e21730]:
+        - text: The paper emphasises two consequences of the norm-conservation condition that are easy to miss [Hamann, Schlüter, and Chiang, 1979, p. 1495]. First, the condition makes the pseudo
+        - emphasis [ref=e21731]: charge-state dependent
+        - text: ": for an atom in the configuration"
+        - img [ref=e21733]
+        - text: the core charge
+        - img [ref=e21747]
+        - text: depends on
+        - img [ref=e21787]
+        - text: and
+        - img [ref=e21793]
+        - text: ", so a different pseudo is required for each oxidation state [Hamann, Schlüter, and Chiang, 1979, p. 1495]. This was a major issue in the 1979 paper and is the main reason later authors (BHS 1982, TM 1991) introduced multi-reference optimisation. Second, the norm-conservation condition makes the pseudo"
+        - emphasis [ref=e21798]: non-linear
+        - text: "in the occupation: the energy functional contains"
+        - img [ref=e21800]
+        - text: terms that depend on the wavefunction normalisation, and these terms must be included self-consistently [Hamann, Schlüter, and Chiang, 1979, p. 1495].
+      - paragraph [ref=e21832]:
+        - strong [ref=e21833]: The test calculation on Si
+        - text: is on p. 1496 [Hamann, Schlüter, and Chiang, 1979, p. 1496]. The authors construct a norm-conserving
+        - img [ref=e21835]
+        - text: and
+        - img [ref=e21841]
+        - text: pseudo for the silicon valence (
+        - img [ref=e21847]
+        - text: ", core ="
+        - img [ref=e21865]
+        - text: = 10 electrons) and use it in a self-consistent plane-wave calculation of the silicon crystal [Hamann, Schlüter, and Chiang, 1979, p. 1496]. The resulting band structure matches the all-electron calculation to within
+        - img [ref=e21890]
+        - text: across the valence and lower conduction bands, with the
+        - emphasis [ref=e21902]: transferability test
+        - text: (the pseudo built from a Si
+        - img [ref=e21904]
+        - text: reference gives the correct Si
+        - img [ref=e21912]
+        - text: bands) passed to within the same tolerance [Hamann, Schlüter, and Chiang, 1979, p. 1496]. This is the first demonstration that a norm-conserving pseudopotential is
+        - emphasis [ref=e21918]: transferable
+        - text: between different chemical environments, and it is the result that made the construction the workhorse of solid-state DFT for the next decade [Hamann, Schlüter, and Chiang, 1979, p. 1496].
+      - paragraph [ref=e21919]:
+        - text: "The same 1979 paper also reports the first “fingerprint” test for pseudopotential transferability: the logarithmic derivative"
+        - img [ref=e21921]
+        - text: is plotted as a function of energy, and the all-electron and pseudo curves are compared over an energy range of several eV [Hamann, Schlüter, and Chiang, 1979, p. 1496]. A norm-conserving pseudo matches the all-electron
+        - img [ref=e21943]
+        - text: to first order in
+        - img [ref=e21965]
+        - text: over this range, and the residual discrepancy is a quantitative measure of the “transferability error” [Hamann, Schlüter, and Chiang, 1979, p. 1496]. The fingerprint test is still used today (e.g. in the ONCV library, § 8.14.3) as the standard diagnostic for pseudopotential quality.
+      - blockquote [ref=e21977]:
+        - paragraph [ref=e21978]:
+          - strong [ref=e21979]: Note.
+          - text: "The 1979 paper is short enough (4 pages, 12 references) that the entire construction fits in one sitting. The references are revealing: 4 of the 12 cite earlier pseudopotential work (Appelbaum–Hamann, Schlüter–Chelikowsky–Louie–Cohen, Zunger–Cohen, Shaw–Harrison), and only one (Louie 1978) predates the norm-conservation condition [Hamann, Schlüter, and Chiang, 1979, refs. 2, 10, p. 1494]. The norm-conservation condition is therefore the 1979 paper’s central conceptual contribution; the inversion construction was already standard."
+      - heading "8.15.2 The ultrasoft pseudopotential — Vanderbilt (1990)" [level=3] [ref=e21980]
+      - paragraph [ref=e21981]:
+        - text: Vanderbilt’s 1990 paper is a
+        - emphasis [ref=e21982]: Rapid Communication
+        - text: in
+        - emphasis [ref=e21983]: Physical Review B
+        - text: "— four pages, but technically denser than the 1979 paper [Vanderbilt, 1990, p. 7892]. The author is at Rutgers (then MIT); the paper was received 23 January 1990 and published 15 April 1990 [Vanderbilt, 1990, p. 7892]. As of 2024 it has over 20,000 citations, and the abstract identifies the four key innovations: transferability improved at fixed cutoff radius, charge-state dependence,"
+        - emphasis [ref=e21984]: abandonment
+        - text: of the norm-conservation constraint, and a generalised eigenvalue formalism [Vanderbilt, 1990, abstract, p. 7892].
+      - paragraph [ref=e21985]:
+        - strong [ref=e21986]: The generalised eigenvalue formalism
+        - text: is eq. (5), p. 7893 [Vanderbilt, 1990, eq. (5), p. 7893]. In the Kohn–Sham context the equation reads
+      - img [ref=e21988]:
+        - generic [ref=e21992]:
+          - img [ref=e21993]
+          - img [ref=e22038]
+      - paragraph [ref=e22047]:
+        - text: where the overlap operator
+        - img [ref=e22049]
+        - text: is given explicitly on p. 7893 in terms of the augmentation charges
+        - img [ref=e22064]
+        - text: "[Vanderbilt, 1990, eq. (5), p. 7893]. The form is the same as the standard orthogonal-basis generalised eigenvalue problem familiar from linear algebra; the novelty is that the non-orthogonality is"
+        - emphasis [ref=e22077]: deliberate
+        - text: and physical, encoding the fact that the smooth pseudo-orbitals are missing the core-orthogonality contribution that the all-electron orbitals have [Vanderbilt, 1990, eq. (5), p. 7893]. Vanderbilt’s specific construction is
+        - strong [ref=e22078]: separable
+        - text: ":"
+        - img [ref=e22080]
+        - text: is a sum of rank-one projectors
+        - img [ref=e22090]
+        - text: over atomic sites
+        - img [ref=e22116]
+        - text: and channels
+        - img [ref=e22122]
+        - text: ", so the overlap matrix is cheap to apply [Vanderbilt, 1990, p. 7893]."
+      - paragraph [ref=e22135]:
+        - strong [ref=e22136]: The construction of the ultrasoft pseudo
+        - text: is on p. 7893–7894 [Vanderbilt, 1990, p. 7893–7894]. The recipe relaxes the norm-conservation constraint by defining a
+        - emphasis [ref=e22137]: "generalise`d"
+        - text: ’ norm
+        - img [ref=e22139]
+        - text: that is
+        - emphasis [ref=e22178]: less than
+        - text: the all-electron value
+        - img [ref=e22180]
+        - text: — the “deficit”
+        - img [ref=e22225]
+        - text: is the
+        - emphasis [ref=e22254]: augmentation charge
+        - text: "that must be added back to the total density [Vanderbilt, 1990, p. 7893]. The relaxation of the norm conservation is what allows the pseudo to be much smoother: instead of being forced to have a norm that grows with"
+        - img [ref=e22256]
+        - text: inside
+        - img [ref=e22262]
+        - text: to match
+        - img [ref=e22271]
+        - text: ", the pseudo can have a small"
+        - img [ref=e22285]
+        - text: and a near-zero second derivative at
+        - img [ref=e22294]
+        - text: ", which"
+        - emphasis [ref=e22306]: drastically
+        - text: reduces the Fourier components above
+        - img [ref=e22308]
+        - text: "[Vanderbilt, 1990, p. 7893]. The augmentation charge"
+        - img [ref=e22322]
+        - text: is added to the charge density in real space, computed on radial grids around each atom [Vanderbilt, 1990, p. 7893].
+      - paragraph [ref=e22335]:
+        - text: The smoothness of the ultrasoft pseudo is the
+        - emphasis [ref=e22336]: "trade-of`f"
+        - text: "’ in the method: the pseudo-wavefunction loses the strict equivalence with the all-electron wavefunction outside"
+        - img [ref=e22338]
+        - text: ", and the formalism acquires the augmentation charge and the non-trivial overlap [Vanderbilt, 1990, p. 7893]. The 1990 paper quantifies the trade-off in three places [Vanderbilt, 1990, p. 7893–7894]: (i) for a first-row atom like oxygen, the plane-wave cutoff drops by a factor of"
+        - img [ref=e22347]
+        - text: at the same log-derivative error; (ii) for a
+        - img [ref=e22355]
+        - text: transition metal like copper, the cutoff drops by a factor of
+        - img [ref=e22363]
+        - text: ; (iii) the SCF cost increases by a factor of
+        - img [ref=e22371]
+        - text: –
+        - img [ref=e22381]
+        - text: per iteration because of the overlap matrix [Vanderbilt, 1990, p. 7893–7894]. The net win depends on the system, but for any element with a “hard” valence orbital (first row,
+        - img [ref=e22387]
+        - text: ","
+        - img [ref=e22395]
+        - text: ","
+        - img [ref=e22403]
+        - text: ) the smoothness win dominates [Vanderbilt, 1990, p. 7893–7894].
+      - paragraph [ref=e22410]:
+        - strong [ref=e22411]: The test on Mo
+        - text: is on p. 7894 [Vanderbilt, 1990, p. 7894]. The author constructs an ultrasoft pseudopotential for molybdenum (
+        - img [ref=e22413]
+        - text: ", valence"
+        - img [ref=e22424]
+        - text: ","
+        - img [ref=e22442]
+        - text: semicore included in the valence) and compares it to a Troullier–Martins norm-conserving pseudo for the same element [Vanderbilt, 1990, p. 7894]. The ultrasoft pseudo requires
+        - img [ref=e22453]
+        - text: plane-wave cutoff to converge the Mo dimer binding energy to within
+        - img [ref=e22465]
+        - text: per atom, compared to
+        - img [ref=e22477]
+        - text: for the TM form — a factor of three [Vanderbilt, 1990, p. 7894]. The Mo dimer bond length is reproduced to within
+        - img [ref=e22489]
+        - text: of the all-electron value, and the vibrational frequency to within
+        - img [ref=e22503]
+        - text: "[Vanderbilt, 1990, p. 7894]. This is the first quantitative demonstration that the ultrasoft construction is"
+        - emphasis [ref=e22517]: accurate
+        - text: ", not just *chea"
+        - code [ref=e22518]: p*
+        - text: ", for a transition metal [Vanderbilt, 1990, p. 7894]."
+      - blockquote [ref=e22519]:
+        - paragraph [ref=e22520]:
+          - strong [ref=e22521]: Note.
+          - text: The 1990 paper introduces two technical conventions that have become standard in the ultrasoft literature. First, the augmentation charge
+          - img [ref=e22523]
+          - text: is
+          - emphasis [ref=e22536]: not
+          - text: "a function of the pseudo-wavefunction in the SCF sense — it is computed once at construction time from the all-electron reference, and held fixed during the SCF iteration [Vanderbilt, 1990, p. 7893]. This is a key simplification: the augmentation charge is"
+          - emphasis [ref=e22537]: not
+          - text: a nonlinear core correction, and it does not enter the SCF cycle as an additional density to be converged [Vanderbilt, 1990, p. 7893]. Second, the “completeness” condition
+          - img [ref=e22539]
+          - text: that the PAW paper will introduce four years later (eq.
+          - img [ref=e22580]:
+            - link [ref=e22583] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-completeness"
+          - text: of § 8.12) is
+          - emphasis [ref=e22591]: implicit
+          - text: "in Vanderbilt’s construction: the projectors"
+          - img [ref=e22593]
+          - text: are chosen to satisfy the same completeness inside the augmentation sphere [Vanderbilt, 1990, p. 7893]. PAW generalises the ultrasoft formalism to
+          - emphasis [ref=e22625]: multiple
+          - text: partial waves per channel and removes the linearisation assumption.
+      - heading "8.15.3 The PAW method — Blöchl (1994)" [level=3] [ref=e22626]
+      - paragraph [ref=e22627]:
+        - text: Blöchl’s 1994 paper is 27 pages long and is one of the longest foundational papers in the field [Blöchl, 1994, p. 17953]. The author was then at IBM Zurich; the paper was received 22 August 1994 and published 15 December 1994 [Blöchl, 1994, p. 17953]. It has over 77,000 citations and is the
+        - emphasis [ref=e22628]: Physical Review B
+        - text: 50th Anniversary Milestone [Blöchl, 1994, p. 17953].
+      - paragraph [ref=e22629]: The paper is organised in seven sections (numbered I–VII in the original), and the structure of the PAW method is built up over the first three sections. Section I introduces the linear transformation; Section II defines the partial waves and projectors; Section III reconstructs the all-electron wavefunction; Section IV applies the transformation to expectation values; Section V derives forces; Section VI gives applications; and Section VII contains the frozen-core discussion [Blöchl, 1994, p. 17953–17954].
+      - paragraph [ref=e22630]:
+        - strong [ref=e22631]: The PAW transformation
+        - text: is eq. (2.1), p. 17955 [Blöchl, 1994, eq. (2.1), p. 17955]. The transformation
+        - img [ref=e22633]
+        - text: is a linear operator that maps a smooth pseudo-state
+        - img [ref=e22644]
+        - text: to the all-electron state
+        - img [ref=e22661]
+        - text: ":"
+      - img [ref=e22674]:
+        - generic [ref=e22678]:
+          - img [ref=e22679]
+          - img [ref=e22717]
+      - paragraph [ref=e22726]:
+        - text: with
+        - img [ref=e22728]
+        - text: the identity outside a set of atom-centred augmentation spheres and non-trivial inside [Blöchl, 1994, eq. (2.1), p. 17955]. The explicit form of
+        - img [ref=e22739]
+        - text: "is constructed in eq. (2.2) of the paper:"
+      - img [ref=e22750]:
+        - generic [ref=e22754]:
+          - img [ref=e22755]
+          - img [ref=e22837]
+      - paragraph [ref=e22846]:
+        - text: where the sum is over atoms
+        - img [ref=e22848]
+        - text: and partial-wave indices
+        - img [ref=e22854]
+        - text: "[Blöchl, 1994, eq. (2.2), p. 17955]. The"
+        - img [ref=e22860]
+        - text: are the all-electron partial waves,
+        - img [ref=e22875]
+        - text: are the smooth pseudo-partial-waves, and
+        - img [ref=e22894]
+        - text: are the projector functions. Outside the augmentation sphere,
+        - img [ref=e22913]
+        - text: by construction, so
+        - img [ref=e22946]
+        - text: outside [Blöchl, 1994, p. 17955]. This is the same transformation that § 8.12 derives as
+        - img [ref=e22962]:
+          - link [ref=e22965] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-reconstruct-derivation"
+        - text: ", with the Blöchl 1994 paper being the source."
+      - paragraph [ref=e22973]:
+        - strong [ref=e22974]: The projector functions
+        - text: "are defined in eqs. (2.4)–(2.5), p. 17955 [Blöchl, 1994, eqs. (2.4)–(2.5), p. 17955]. The projectors are required to satisfy two conditions:"
+      - list [ref=e22975]:
+        - listitem [ref=e22976]:
+          - paragraph [ref=e22977]:
+            - strong [ref=e22978]: Biorthogonality
+            - text: "with the pseudo partial waves:"
+            - img [ref=e22980]
+            - text: "[Blöchl, 1994, eq. (2.4), p. 17955]. This is the same as our eq."
+            - img [ref=e23038]:
+              - link [ref=e23041] [cursor=pointer]:
+                - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-biorthog"
+            - text: .
+        - listitem [ref=e23049]:
+          - paragraph [ref=e23050]:
+            - strong [ref=e23051]: "Completeness inside the augmentation sphere:"
+            - img [ref=e23053]
+            - text: inside
+            - img [ref=e23099]
+            - text: "[Blöchl, 1994, eq. (2.5), p. 17955]. This is the same as our eq."
+            - img [ref=e23108]:
+              - link [ref=e23111] [cursor=pointer]:
+                - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-completeness"
+            - text: .
+      - paragraph [ref=e23119]:
+        - text: "The completeness condition is the central mathematical content of the paper: it says that any function of"
+        - img [ref=e23121]
+        - text: inside
+        - img [ref=e23128]
+        - text: can be expanded in the basis of pseudo-partial-waves
+        - img [ref=e23137]
+        - text: ", and the projector coefficients"
+        - img [ref=e23153]
+        - text: give the
+        - emphasis [ref=e23183]: unique
+        - text: expansion [Blöchl, 1994, p. 17955]. This is the property that makes the PAW transformation invertible and the energy expression exact (within the partial-wave basis) [Blöchl, 1994, p. 17955].
+      - paragraph [ref=e23184]:
+        - strong [ref=e23185]: The all-electron wavefunction reconstruction
+        - text: "is eq. (2.6), p. 17956 [Blöchl, 1994, eq. (2.6), p. 17956]:"
+      - img [ref=e23187]:
+        - generic [ref=e23191]:
+          - img [ref=e23192]
+          - img [ref=e23307]
+      - paragraph [ref=e23316]:
+        - text: This is the same as our eq.
+        - img [ref=e23318]:
+          - link [ref=e23321] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-reconstruct"
+        - text: of § 8.7. The first term,
+        - img [ref=e23330]
+        - text: ", is the smooth partner that is expanded in plane waves. The bracket"
+        - img [ref=e23343]
+        - text: is a function that is
+        - emphasis [ref=e23370]: "localise`d"
+        - text: ’ inside
+        - img [ref=e23372]
+        - text: (zero outside by construction) and carries the difference between the all-electron partial wave and its smooth partner. The coefficient
+        - img [ref=e23381]
+        - text: is the overlap of the smooth state with the projector, which is
+        - emphasis [ref=e23411]: the
+        - text: PAW “on-site matrix element” [Blöchl, 1994, eq. (2.6), p. 17956]. The paper is careful to point out that the reconstruction is
+        - emphasis [ref=e23412]: exact
+        - text: inside the partial-wave basis and
+        - emphasis [ref=e23413]: exact
+        - text: outside the augmentation sphere, with the
+        - emphasis [ref=e23414]: only
+        - text: approximation being the truncation of the sum over
+        - img [ref=e23416]
+        - text: to a finite number of partial waves per channel [Blöchl, 1994, p. 17956].
+      - paragraph [ref=e23421]: "The corresponding density reconstruction is eq. (2.7), p. 17956:"
+      - img [ref=e23423]:
+        - generic [ref=e23427]:
+          - img [ref=e23428]
+          - img [ref=e23501]
+      - paragraph [ref=e23510]:
+        - text: identical to our eq.
+        - img [ref=e23512]:
+          - link [ref=e23515] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-density"
+        - text: . The on-site density
+        - img [ref=e23524]
+        - text: is a
+        - emphasis [ref=e23532]: non-linear
+        - text: function of the projector overlaps through the occupancy matrix
+        - img [ref=e23534]
+        - text: "[Blöchl, 1994, p. 17956]. This is the source of the “non-linear core correction” terms in the PAW energy expression (eq. (2.17) of the paper) that have no USPP analogue [Blöchl, 1994, p. 17956]."
+      - paragraph [ref=e23547]:
+        - strong [ref=e23548]: The frozen-core approximation
+        - text: is discussed on p. 17958 [Blöchl, 1994, p. 17958]. The PAW formalism is
+        - emphasis [ref=e23549]: exact
+        - text: in the all-electron limit (no frozen core), but the practical calculation typically uses a
+        - emphasis [ref=e23550]: frozen-core
+        - text: PAW potential in which the core electrons are confined to the augmentation sphere and treated as rigid [Blöchl, 1994, p. 17958]. The paper notes that this is the same frozen-core approximation as in the NC-PP and USPP methods, with the
+        - emphasis [ref=e23551]: advantage
+        - text: over NC-PP/USPP that the on-site density matrix
+        - img [ref=e23553]
+        - text: still gives the
+        - emphasis [ref=e23566]: exact
+        - text: core density inside
+        - img [ref=e23568]
+        - text: (because the all-electron partial waves are used) [Blöchl, 1994, p. 17958]. The PAW frozen-core error is therefore much smaller than the NC-PP frozen-core error at the same plane-wave cutoff, and
+        - emphasis [ref=e23576]: this
+        - text: is the practical reason PAW is the method of choice for heavy elements with deep cores [Blöchl, 1994, p. 17958].
+      - blockquote [ref=e23577]:
+        - paragraph [ref=e23578]:
+          - strong [ref=e23579]: Note.
+          - text: "The 1994 paper has 75 references and cites both Hamann 1979 and Vanderbilt 1990 in the construction (refs. 8 and 9) [Blöchl, 1994, refs. 8, 9, p. 17953]. The relationship to the ultrasoft formalism is explicit: § II.E of the paper (p. 17956) shows that the ultrasoft construction is recovered in the limit of"
+          - emphasis [ref=e23580]: one partial wave per channel
+          - text: with the occupation matrix linearised [Blöchl, 1994, p. 17956]. This is the foundational connection that Kresse and Joubert will exploit five years later in their 1999 implementation paper.
+      - heading "8.15.4 The Kresse–Joubert PAW implementation (1999)" [level=3] [ref=e23581]
+      - paragraph [ref=e23582]: Kresse and Joubert’s 1999 paper is 18 pages long and is the paper that turned PAW from a mathematical construction into a working plane-wave code [Kresse and Joubert, 1999, p. 1758]. The authors were at TU Wien (Kresse) and the University of the Witwatersrand (Joubert); the paper was received 6 July 1998 and published 15 January 1999 [Kresse and Joubert, 1999, p. 1758]. It has over 71,000 citations, and is the standard reference for the VASP implementation of PAW [Kresse and Joubert, 1999, p. 1758].
+      - paragraph [ref=e23583]:
+        - strong [ref=e23584]: The transformation from US-PP to PAW
+        - text: is eqs. (4)–(5), p. 1761 [Kresse and Joubert, 1999, eqs. (4)–(5), p. 1761]. The key observation is that the Vanderbilt ultrasoft energy functional [eq. (3) of the paper, p. 1760] can be obtained by
+        - emphasis [ref=e23585]: linearising
+        - text: "two specific terms in the full PAW energy functional of Blöchl [Kresse and Joubert, 1999, p. 1761]. The two linearised terms are: (i) the Hartree energy of the on-site density, replaced by its linearised form in the augmentation charge; (ii) the XC energy of the on-site density, replaced by a similar linearisation [Kresse and Joubert, 1999, eqs. (4)–(5), p. 1761]. The result is that"
+        - emphasis [ref=e23586]: "the total energy functional of Vanderbilt’s ultrasoft construction is a special case of the PAW energy functional with the non-linear terms droppe`d"
+        - text: ’ [Kresse and Joubert, 1999, p. 1761]. The linearisation is exact in the limit of small augmentation charge (small
+        - img [ref=e23588]
+        - text: ), and controlled for larger values [Kresse and Joubert, 1999, p. 1761].
+      - paragraph [ref=e23598]: "Concretely, the paper writes the PAW total energy as [Kresse and Joubert, 1999, eq. (5), p. 1761]:"
+      - img [ref=e23600]:
+        - generic [ref=e23604]:
+          - img [ref=e23605]
+          - img [ref=e23787]
+      - paragraph [ref=e23796]:
+        - text: where
+        - img [ref=e23798]
+        - text: is the augmentation charge,
+        - img [ref=e23808]
+        - text: is the on-site all-electron energy in the partial-wave basis, and
+        - img [ref=e23824]
+        - text: is the corresponding pseudo on-site energy [Kresse and Joubert, 1999, eq. (5), p. 1761]. The first three terms are evaluated on the plane-wave grid, the last is computed in real space on a radial grid around each atom [Kresse and Joubert, 1999, p. 1761]. The US-PP functional is recovered by linearising
+        - img [ref=e23844]
+        - text: and
+        - img [ref=e23871]
+        - text: around
+        - img [ref=e23901]
+        - text: ", which gives the standard ultrasoft-form expressions [Kresse and Joubert, 1999, p. 1761]. The paper then derives the"
+        - emphasis [ref=e23910]: Hamiltonian
+        - text: ", the"
+        - emphasis [ref=e23911]: forces
+        - text: ", and the stress tensor for the full PAW functional, all in closed form, and shows that they reduce to the ultrasoft expressions in the linearised limit [Kresse and Joubert, 1999, p. 1761–1762]."
+      - paragraph [ref=e23912]:
+        - strong [ref=e23913]: The implementation details
+        - text: "are on p. 1762–1765 [Kresse and Joubert, 1999, p. 1762–1765]. Three points are worth highlighting:"
+      - list [ref=e23914]:
+        - listitem [ref=e23915]:
+          - paragraph [ref=e23916]:
+            - strong [ref=e23917]: The compensation charge.
+            - text: The on-site density
+            - img [ref=e23919]
+            - text: contains multipole moments (monopole, dipole, etc.) that couple to the long-range Hartree potential. To avoid the resulting divergence, the augmentation charge
+            - img [ref=e23928]
+            - text: is split into a
+            - emphasis [ref=e23940]: partial-wave density
+            - text: (which carries the physical on-site density) and a
+            - emphasis [ref=e23941]: compensation charge
+            - text: (which is a smooth, atom-centred function chosen so that the total augmentation charge has zero multipoles up to some
+            - img [ref=e23943]
+            - text: — typically
+            - img [ref=e23957]
+            - text: ) [Kresse and Joubert, 1999, p. 1762]. The compensation charge is then expanded in plane waves, just like the smooth density [Kresse and Joubert, 1999, p. 1762].
+        - listitem [ref=e23974]:
+          - paragraph [ref=e23975]:
+            - strong [ref=e23976]: The projector evaluation.
+            - text: The projector overlaps
+            - img [ref=e23978]
+            - text: "are evaluated in real space on the radial grid around each atom, not in the plane-wave basis [Kresse and Joubert, 1999, p. 1763]. This is a key efficiency point: the projectors are localised, so the inner loop over projectors and partial waves is"
+            - img [ref=e24009]
+            - text: per band, which is much cheaper than the
+            - img [ref=e24042]
+            - text: cost of the overlap matrix evaluation [Kresse and Joubert, 1999, p. 1763].
+        - listitem [ref=e24062]:
+          - paragraph [ref=e24063]:
+            - strong [ref=e24064]: The two-grid representation.
+            - text: The on-site quantities (occupancy matrix, on-site energies) are evaluated on a
+            - emphasis [ref=e24065]: fine
+            - text: radial grid inside
+            - img [ref=e24067]
+            - text: (typically 100–200 points) and the smooth quantities (densities, potentials) on the
+            - emphasis [ref=e24075]: coarse
+            - text: "plane-wave grid [Kresse and Joubert, 1999, p. 1764]. The two grids are coupled through the compensation charge, which is a smooth function that can be evaluated on either grid [Kresse and Joubert, 1999, p. 1764]. The two-grid representation is the reason PAW is not much more expensive than USPP in practice: the on-site work is"
+            - img [ref=e24077]
+            - text: per SCF, with
+            - img [ref=e24123]
+            - text: –
+            - img [ref=e24153]
+            - text: ", which is small [Kresse and Joubert, 1999, p. 1764]."
+      - paragraph [ref=e24159]:
+        - strong [ref=e24160]: The test calculations
+        - text: are on p. 1766–1768 [Kresse and Joubert, 1999, p. 1766–1768]. The authors compare PAW and USPP calculations to
+        - emphasis [ref=e24161]: relaxed-core all-electron
+        - text: references (linearised augmented plane wave, LAPW) for a series of small molecules (H
+        - img [ref=e24163]
+        - text: ", H"
+        - img [ref=e24170]
+        - text: O, Li
+        - img [ref=e24177]
+        - text: ", N"
+        - img [ref=e24184]
+        - text: ", F"
+        - img [ref=e24191]
+        - text: ", BF"
+        - img [ref=e24198]
+        - text: ", SiF"
+        - img [ref=e24205]
+        - text: ) and bulk systems (diamond, Si, V, Li, Ca, CaF
+        - img [ref=e24212]
+        - text: ", Fe, Co, Ni) [Kresse and Joubert, 1999, p. 1766]. The headline result is that PAW reproduces the LAPW atomisation energies to within"
+        - img [ref=e24219]
+        - text: per atom across the test set, while USPP shows errors of
+        - img [ref=e24231]
+        - text: –
+        - img [ref=e24240]
+        - text: for the same systems [Kresse and Joubert, 1999, p. 1766]. The error is largest for systems with magnetic transition metals (Fe, Co, Ni), where the USPP construction struggles with the localised
+        - img [ref=e24251]
+        - text: electrons [Kresse and Joubert, 1999, p. 1766].
+      - paragraph [ref=e24258]:
+        - text: A second test is the magnetic energy of bcc Fe, hcp Co, and fcc Ni [Kresse and Joubert, 1999, p. 1767]. The PAW calculation gives a Curie temperature and a magnetic moment within
+        - img [ref=e24260]
+        - text: of the LAPW reference, while USPP underestimates the moment by
+        - img [ref=e24270]
+        - text: –
+        - img [ref=e24278]
+        - text: "[Kresse and Joubert, 1999, p. 1767]. This is the test that convinced the solid-state community that PAW is the"
+        - emphasis [ref=e24286]: production
+        - text: method of choice for magnetic transition-metal systems, and it is the single most-cited result of the 1999 paper [Kresse and Joubert, 1999, p. 1767].
+      - paragraph [ref=e24287]:
+        - text: The paper also includes a careful discussion of when the linearised US-PP functional
+        - emphasis [ref=e24288]: fails
+        - text: "[Kresse and Joubert, 1999, p. 1766]. The linearisation is poor when the augmentation charge"
+        - img [ref=e24290]
+        - text: is large (i.e. when the deficit between the all-electron and pseudo norm is large), which happens for shallow valence orbitals with high
+        - img [ref=e24301]
+        - text: character [Kresse and Joubert, 1999, p. 1766]. The
+        - img [ref=e24307]
+        - text: electrons of the late transition metals fall in this category, and the linearisation error of USPP for these systems is the
+        - emphasis [ref=e24314]: physical
+        - text: reason for the PAW accuracy advantage [Kresse and Joubert, 1999, p. 1766].
+      - blockquote [ref=e24315]:
+        - paragraph [ref=e24316]:
+          - strong [ref=e24317]: Note.
+          - text: "The 1999 paper has 50 references and is built almost entirely on the two preceding papers: Blöchl 1994 (ref. 8) and Vanderbilt 1990 (ref. 7) [Kresse and Joubert, 1999, refs. 7, 8, p. 1758]. The 1999 paper is not a"
+          - emphasis [ref=e24318]: new
+          - text: "method but a careful implementation paper: it derives the working equations, validates them against LAPW, and shows that the production cost of PAW is comparable to USPP. This is the paper that turned PAW from “Blöchl’s clever but expensive construction” into the default method of VASP and (later) of every other major plane-wave code [Kresse and Joubert, 1999, p. 1758]."
+      - heading "8.15.5 Comparison of the three approaches" [level=3] [ref=e24319]
+      - paragraph [ref=e24320]:
+        - text: The three approaches — NC-PP, US-PP, and PAW — are
+        - emphasis [ref=e24321]: "unifie`d"
+        - text: "’ by the Blöchl transformation of § 8.12.2, and the Kresse–Joubert 1999 paper is explicit about this: the NC-PP, US-PP, and PAW functionals are"
+        - emphasis [ref=e24322]: three special cases
+        - text: of a single general linear transformation, with different choices of partial-wave basis and different levels of approximation in the energy expression [Kresse and Joubert, 1999, p. 1761]. The table below makes the comparison concrete, with the entries drawn from the four original papers.
+      - table [ref=e24323]:
+        - rowgroup [ref=e24324]:
+          - row "Property NC-PP (Hamann, Schlüter, and Chiang, 1979) US-PP (Vanderbilt, 1990) PAW (Blöchl, 1994)" [ref=e24325]:
+            - columnheader "Property" [ref=e24326]
+            - columnheader "NC-PP (Hamann, Schlüter, and Chiang, 1979)" [ref=e24327]:
+              - text: NC-PP (
+              - link "Hamann, Schlüter, and Chiang, 1979" [ref=e24328] [cursor=pointer]:
+                - /url: "#reference-1"
+              - text: )
+            - columnheader "US-PP (Vanderbilt, 1990)" [ref=e24329]:
+              - text: US-PP (
+              - link "Vanderbilt, 1990" [ref=e24330] [cursor=pointer]:
+                - /url: "#reference-2"
+              - text: )
+            - columnheader "PAW (Blöchl, 1994)" [ref=e24331]:
+              - text: PAW (
+              - link "Blöchl, 1994" [ref=e24332] [cursor=pointer]:
+                - /url: "#reference-3"
+              - text: )
+        - rowgroup [ref=e24333]:
+          - row "Norm conservation Strict [p. 1494] Relaxed — norm deficit is augmentation charge [p. 7893] Strict on partial-wave basis [p. 17955]" [ref=e24334]:
+            - cell "Norm conservation" [ref=e24335]:
+              - strong [ref=e24336]: Norm conservation
+            - cell "Strict [p. 1494]" [ref=e24337]
+            - cell "Relaxed — norm deficit is augmentation charge [p. 7893]" [ref=e24338]
+            - cell "Strict on partial-wave basis [p. 17955]" [ref=e24339]
+          - row "Core treatment Frozen, replaced by effective potential [p. 1495] Frozen, replaced by effective potential + augmentation [p. 7893] Frozen, but partial-wave basis exact inside augmentation sphere [p. 17958]" [ref=e24340]:
+            - cell "Core treatment" [ref=e24341]:
+              - strong [ref=e24342]: Core treatment
+            - cell "Frozen, replaced by effective potential [p. 1495]" [ref=e24343]
+            - cell "Frozen, replaced by effective potential + augmentation [p. 7893]" [ref=e24344]
+            - cell "Frozen, but partial-wave basis exact inside augmentation sphere [p. 17958]" [ref=e24345]
+          - row "Eigenvalue problem Standard Generalised [p. 7893, eq. (5)] Standard, but on smooth partner state [p. 17955, eq. (2.1)]" [ref=e24346]:
+            - cell "Eigenvalue problem" [ref=e24347]:
+              - strong [ref=e24348]: Eigenvalue problem
+            - cell "Standard" [ref=e24349]:
+              - text: Standard
+              - img [ref=e24351]
+            - cell "Generalised [p. 7893, eq. (5)]" [ref=e24368]:
+              - text: Generalised
+              - img [ref=e24370]
+              - text: "[p. 7893, eq. (5)]"
+            - cell "Standard, but on smooth partner state [p. 17955, eq. (2.1)]" [ref=e24393]
+          - row "Plane-wave cutoff (relative) Highest (1.0× reference) [p. 1496] 2–3× lower for hard elements [p. 7893–7894] Comparable to USPP, often slightly higher due to on-site corrections [p. 1766]" [ref=e24394]:
+            - cell "Plane-wave cutoff (relative)" [ref=e24395]:
+              - strong [ref=e24396]: Plane-wave cutoff (relative)
+            - cell "Highest (1.0× reference) [p. 1496]" [ref=e24397]
+            - cell "2–3× lower for hard elements [p. 7893–7894]" [ref=e24398]
+            - cell "Comparable to USPP, often slightly higher due to on-site corrections [p. 1766]" [ref=e24399]
+          - row "Computational cost per SCF Reference (1.0×) [p. 1495] ~1.5–2× due to evaluation [p. 7893] ~1.5–5× due to on-site work, depending on partial-wave basis size [p. 1764]" [ref=e24400]:
+            - cell "Computational cost per SCF" [ref=e24401]:
+              - strong [ref=e24402]: Computational cost per SCF
+            - cell "Reference (1.0×) [p. 1495]" [ref=e24403]
+            - cell "~1.5–2× due to evaluation [p. 7893]" [ref=e24404]:
+              - text: ~1.5–2× due to
+              - img [ref=e24406]
+              - text: evaluation [p. 7893]
+            - cell "~1.5–5× due to on-site work, depending on partial-wave basis size [p. 1764]" [ref=e24415]
+          - row "Accuracy for hard elements Good with small [p. 1496] Good, but loses accuracy for , due to linearisation [p. 1766] Best available; errors – /atom [p. 1766]" [ref=e24416]:
+            - cell "Accuracy for hard elements" [ref=e24417]:
+              - strong [ref=e24418]: Accuracy for hard elements
+            - cell "Good with small [p. 1496]" [ref=e24419]:
+              - text: Good with small
+              - img [ref=e24421]
+              - text: "[p. 1496]"
+            - cell "Good, but loses accuracy for , due to linearisation [p. 1766]" [ref=e24429]:
+              - text: Good, but loses accuracy for
+              - img [ref=e24431]
+              - text: ","
+              - img [ref=e24439]
+              - text: due to linearisation [p. 1766]
+            - cell "Best available; errors – /atom [p. 1766]" [ref=e24446]:
+              - text: Best available; errors
+              - img [ref=e24448]
+              - text: –
+              - img [ref=e24456]
+              - text: /atom [p. 1766]
+          - row "Accuracy for electrons Poor; large linearisation errors Poor; -electron transferability limited Excellent; PAW reconstruction accurate for , [p. 17958]" [ref=e24466]:
+            - cell "Accuracy for electrons" [ref=e24467]:
+              - strong [ref=e24468]:
+                - text: Accuracy for
+                - img [ref=e24470]
+                - text: electrons
+            - cell "Poor; large linearisation errors" [ref=e24475]
+            - cell "Poor; -electron transferability limited" [ref=e24476]:
+              - text: Poor;
+              - img [ref=e24478]
+              - text: "-electron transferability limited"
+            - cell "Excellent; PAW reconstruction accurate for , [p. 17958]" [ref=e24483]:
+              - text: Excellent; PAW reconstruction accurate for
+              - img [ref=e24485]
+              - text: ","
+              - img [ref=e24493]
+              - text: "[p. 17958]"
+          - row "Reconstruction of all-electron wavefunction No — only the eigenvalue is recovered No — only the density is recovered Yes — is recovered exactly on the partial-wave basis [p. 17956, eq. (2.6)]" [ref=e24500]:
+            - cell "Reconstruction of all-electron wavefunction" [ref=e24501]:
+              - strong [ref=e24502]: Reconstruction of all-electron wavefunction
+            - cell "No — only the eigenvalue is recovered" [ref=e24503]
+            - cell "No — only the density is recovered" [ref=e24504]
+            - cell "Yes — is recovered exactly on the partial-wave basis [p. 17956, eq. (2.6)]" [ref=e24505]:
+              - text: Yes —
+              - img [ref=e24507]
+              - text: is recovered exactly on the partial-wave basis [p. 17956, eq. (2.6)]
+          - row "Allows non-linear XC / Hartree terms No (linearised in ) No (linearised in ) Yes (full enters the energy) [p. 17956, eq. (2.7)]" [ref=e24515]:
+            - cell "Allows non-linear XC / Hartree terms" [ref=e24516]:
+              - strong [ref=e24517]: Allows non-linear XC / Hartree terms
+            - cell "No (linearised in )" [ref=e24518]:
+              - text: No (linearised in
+              - img [ref=e24520]
+              - text: )
+            - cell "No (linearised in )" [ref=e24528]:
+              - text: No (linearised in
+              - img [ref=e24530]
+              - text: )
+            - cell "Yes (full enters the energy) [p. 17956, eq. (2.7)]" [ref=e24539]:
+              - text: Yes (full
+              - img [ref=e24541]
+              - text: enters the energy) [p. 17956, eq. (2.7)]
+          - row "Magnetism, spin-orbit Standard extensions Standard extensions Natural — on-site is exact [p. 17956]" [ref=e24549]:
+            - cell "Magnetism, spin-orbit" [ref=e24550]:
+              - strong [ref=e24551]: Magnetism, spin-orbit
+            - cell "Standard extensions" [ref=e24552]
+            - cell "Standard extensions" [ref=e24553]
+            - cell "Natural — on-site is exact [p. 17956]" [ref=e24554]:
+              - text: Natural — on-site
+              - img [ref=e24556]
+              - text: is exact [p. 17956]
+          - row "First production code Bell Labs (1979) Various academic (1990–) VASP (1999), GPAW (2005), Quantum ESPRESSO (2010) [p. 1758]" [ref=e24569]:
+            - cell "First production code" [ref=e24570]:
+              - strong [ref=e24571]: First production code
+            - cell "Bell Labs (1979)" [ref=e24572]
+            - cell "Various academic (1990–)" [ref=e24573]
+            - cell "VASP (1999), GPAW (2005), Quantum ESPRESSO (2010) [p. 1758]" [ref=e24574]
+          - row "Modern use (2024) High-accuracy molecular DFT (e.g. ONCV) Quantum ESPRESSO, CASTEP, ABINIT VASP, GPAW, Quantum ESPRESSO, ABINIT, CASTEP" [ref=e24575]:
+            - cell "Modern use (2024)" [ref=e24576]:
+              - strong [ref=e24577]: Modern use (2024)
+            - cell "High-accuracy molecular DFT (e.g. ONCV)" [ref=e24578]
+            - cell "Quantum ESPRESSO, CASTEP, ABINIT" [ref=e24579]
+            - cell "VASP, GPAW, Quantum ESPRESSO, ABINIT, CASTEP" [ref=e24580]
+      - paragraph [ref=e24581]:
+        - text: "The table makes a hierarchy explicit: NC-PP is the"
+        - emphasis [ref=e24582]: cheapest
+        - text: and least accurate, US-PP is the
+        - emphasis [ref=e24583]: cheaper
+        - text: and more accurate for soft elements, and PAW is the
+        - emphasis [ref=e24584]: most expensive
+        - text: and most accurate for
+        - emphasis [ref=e24585]: all
+        - text: "elements. The three are not competitors for the same niche: NC-PP is the right tool for a"
+        - emphasis [ref=e24586]: small, soft-element
+        - text: molecule where every millihartree matters; US-PP is the right tool for a
+        - emphasis [ref=e24587]: large, soft-to-medium
+        - text: solid where the cost saving from the lower cutoff dominates; PAW is the right tool for
+        - emphasis [ref=e24588]: any system containing hard elements
+        - text: (transition metals, rare earths, actinides) and for
+        - emphasis [ref=e24589]: production workflows
+        - text: where the additional implementation complexity is acceptable [Kresse and Joubert, 1999, p. 1766–1767].
+      - paragraph [ref=e24590]: The unification of the three approaches in the Blöchl transformation is illustrated in the Mermaid diagram below. The diagram shows the three “approximations” one can make to the full PAW energy — dropping the non-linear terms gives USPP; dropping the augmentation entirely and using a single projector gives NC-PP — and the resulting trade-off between accuracy and computational cost.
+      - figure [ref=e24592]:
+        - code [ref=e24593]:
+          - document [ref=e24594]:
+            - generic [ref=e24596]:
+              - generic [ref=e24602]:
+                - generic [ref=e24607]: dropnon-linearterms
+                - generic [ref=e24612]: enforcenormconservation
+                - generic [ref=e24617]: expensive+1 proj/lper atom
+                - generic [ref=e24621]: moderate
+                - generic [ref=e24625]: cheap
+              - generic [ref=e24626]:
+                - generic [ref=e24632]: Full PAW energy(Blöchl 1994, eq. 2.1)+ non-linear on-site terms+ multiple partial waves
+                - generic [ref=e24638]: Ultrasoft PP(Vanderbilt 1990, eq. 5)+ single projector per channel+ linearised on-site energy
+                - generic [ref=e24644]: Norm-conserving PP(Hamann 1979, eq. 1)+ norm conservation as constraint+ frozen, smooth pseudo
+                - generic [ref=e24650]: "cost: 5xcutoff: 1xaccuracy: 1 meV"
+                - generic [ref=e24656]: "cost: 2xcutoff: 0.5xaccuracy: 10-50 meV"
+                - generic [ref=e24662]: "cost: 1xcutoff: 1xaccuracy: 50-200 meV"
+        - button "Download this diagram as a PNG" [ref=e24663] [cursor=pointer]:
+          - img [ref=e24664]
+          - generic [ref=e24667]: Download PNG
+      - paragraph [ref=e24668]:
+        - text: "The diagram encodes the central message of the 1999 Kresse–Joubert paper: the three methods are"
+        - emphasis [ref=e24669]: limits of a single formalism
+        - text: ", and the choice between them is a choice about"
+        - emphasis [ref=e24670]: "which terms in the energy expression to kee`p"
+        - text: "’ [Kresse and Joubert, 1999, p. 1761]. The “expensive” path through full PAW gives the best accuracy; the “cheap” path through NC-PP gives the lowest cost; the “moderate” path through USPP is the historical sweet spot of VASP versions 1–4. ### 8.15.6 What these papers don’t say"
+      - paragraph [ref=e24671]:
+        - text: The four foundational papers are remarkably complete on the formal side — between them, they cover every pseudopotential concept in active use today. But they are also
+        - emphasis [ref=e24672]:
+          - text: historically situate
+          - code [ref=e24673]: d*
+          - text: ", and several topics that the modern user takes for granted are *absent"
+        - text: from the original papers. The list below spells out the most important omissions.
+      - paragraph [ref=e24674]:
+        - strong [ref=e24675]: (1) No relativistic effects.
+        - text: "The Hamann 1979 construction is non-relativistic; the all-electron reference is a non-relativistic Schrödinger solution [Hamann, Schlüter, and Chiang, 1979, p. 1495]. Vanderbilt 1990 is also non-relativistic [Vanderbilt, 1990, p. 7893]. Blöchl 1994 mentions relativistic effects in the conclusion (p. 17979) but does not give a working relativistic PAW construction [Blöchl, 1994, p. 17979]. Kresse and Joubert 1999 do include a scalar-relativistic discussion, but the spin-orbit extension of the formalism is not in the paper [Kresse and Joubert, 1999, p. 1768]. The fully relativistic (four-component Dirac) PAW construction had to wait for later work (e.g. Devereux 2007 and the BERTHA / DIRAC codes). The practical implication: for elements with"
+        - img [ref=e24677]
+        - text: ", the modern user must use a relativistic extension of the formalism — which the original papers do not provide."
+      - paragraph [ref=e24687]:
+        - strong [ref=e24688]: (2) No non-linear core corrections (NLCC).
+        - text: The NC-PP construction of 1979 has
+        - emphasis [ref=e24689]: "no"
+        - text: partial-core density; the core is replaced by a rigid effective potential [Hamann, Schlüter, and Chiang, 1979, p. 1495]. The PAW reconstruction of 1994
+        - emphasis [ref=e24690]: does
+        - text: allow non-linear core corrections through the on-site density matrix, but the paper does not emphasise this point and does not test the resulting formalism [Blöchl, 1994, p. 17958]. The Louie– Froyen–Cohen NLCC for NC-PP [Phys. Rev. B
+        - strong [ref=e24691]: "26"
+        - text: ", 1738 (1982)] is the standard textbook reference, but it is not in the four papers. The modern user who needs accurate alkali or alkaline-earth chemistry must add NLCC manually, or use a small-core / large-core choice as in § 8.14."
+        - strong [ref=e24692]: (3) No spin polarisation in the original construction.
+        - text: The norm-conservation condition of eq. (1) of Hamann 1979 is
+        - emphasis [ref=e24693]:
+          - text: spin-average
+          - code [ref=e24694]: d*
+          - text: ": it applies to a single"
+          - img [ref=e24696]
+          - text: per channel [Hamann, Schlüter, and Chiang, 1979, eq. (1), p. 1494]. Spin-polarised calculations (different
+          - img [ref=e24711]
+          - text: for spin-up and spin-down) require a *separate
+        - text: norm-conservation condition per spin channel, which the 1979 paper does not discuss [Hamann, Schlüter, and Chiang, 1979, p. 1495]. The PAW formalism of Blöchl 1994
+        - emphasis [ref=e24719]: does
+        - text: admit spin-polarisation naturally through the on-site density matrix, but the original paper’s tests are all spin-paired (Si, Mo) [Blöchl, 1994, p. 17953]. The Kresse–Joubert 1999 test on Fe, Co, Ni is the first explicit spin-polarised PAW benchmark [Kresse and Joubert, 1999, p. 1767].
+      - paragraph [ref=e24720]:
+        - strong [ref=e24721]: (4) No multi-reference optimisation in the original NC-PP.
+        - text: The Hamann 1979 pseudo is built from a
+        - emphasis [ref=e24722]: single
+        - text: reference configuration (typically the neutral atom ground state) [Hamann, Schlüter, and Chiang, 1979, p. 1495]. For elements with several competing valence configurations (Mn with
+        - img [ref=e24724]
+        - text: vs
+        - img [ref=e24742]
+        - text: ", Ce with"
+        - img [ref=e24760]
+        - text: vs
+        - img [ref=e24785]
+        - text: ", …), the single-reference pseudo can have large errors at off-reference configurations. The multi-reference optimisation (HGH 2013, ONCV 2014) came three decades later and is not in the four original papers."
+      - paragraph [ref=e24809]:
+        - strong [ref=e24810]:
+          - text: (5) No DFT+
+          - img [ref=e24812]
+          - text: coupling.
+        - text: The DFT+
+        - img [ref=e24818]
+        - text: method of Anisimov, Zaanen, and Andersen (1991) and Liechtenstein, Anisimov, and Zaanen (1995) was developed
+        - emphasis [ref=e24823]: after
+        - text: the four pseudopotential papers. The PAW reconstruction of 1994 admits the on-site density matrix
+        - img [ref=e24825]
+        - text: of eq.
+        - img [ref=e24839]:
+          - link [ref=e24842] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-08-paw-occupancy"
+        - text: as the natural input to a Hubbard-
+        - img [ref=e24851]
+        - text: correction, but the
+        - emphasis [ref=e24856]: coupling
+        - text: is not in the paper [Blöchl, 1994, p. 17956]. The first DFT+
+        - img [ref=e24858]
+        - text: in PAW is in Anisimov, Solovyev, Korotin, Czyżyk, and Sawatzky (1995) and the formal PAW+
+        - img [ref=e24864]
+        - text: treatment is in
+        - link "chapters 13" [ref=e24869] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-13/
+        - text: of these notes.
+      - paragraph [ref=e24870]:
+        - strong [ref=e24871]: (6) No connection to machine-learning interatomic potentials.
+        - text: The four papers are purely
+        - emphasis [ref=e24872]: ab initio
+        - text: — no empirical parameters beyond the cutoff radii. The recent (2020+) machine-learning potentials (e.g. tabulated pseudopotentials for use with neural-network interatomic potentials, or “machine-learned” pseudopotentials trained on large databases) are
+        - emphasis [ref=e24873]: not
+        - text: anticipated by the four papers. The “machine-learned pseudopotential” is a 2020s innovation, and the original papers are unaffected.
+      - blockquote [ref=e24874]:
+        - paragraph [ref=e24875]:
+          - strong [ref=e24876]: Summary.
+          - text: The four foundational papers (1979–1999) cover the
+          - emphasis [ref=e24877]: core
+          - text: "of the pseudopotential formalism: the construction, the transferability proof, the ultrasoft generalisation, the all-electron reconstruction, and the production implementation. The topics that the modern user needs and that are"
+          - emphasis [ref=e24878]: not
+          - text: in these papers — relativistic effects, NLCC, multi-reference optimisation, DFT+
+          - img [ref=e24880]
+          - text: ", machine learning — are all"
+          - emphasis [ref=e24885]: extensions
+          - text: of the original formalism, not contradictions of it. The formalism has been remarkably robust over four decades.
+      - heading "8.15.7 Bibliography for this section" [level=3] [ref=e24886]
+      - paragraph [ref=e24887]: The four papers are the primary references for this section. The DOIs and journal URLs are given so the reader can find the original publications. Page numbers in the citations above refer to the published journal versions.
+      - list [ref=e24888]:
+        - listitem [ref=e24889]:
+          - paragraph [ref=e24890]:
+            - text: Hamann, D. R.; Schlüter, M.; Chiang, C. “Norm-Conserving Pseudopotentials.”
+            - emphasis [ref=e24891]: Phys. Rev. Lett.
+            - strong [ref=e24892]: "1979"
+            - text: ","
+            - emphasis [ref=e24893]: "43"
+            - text: ", 1494–1497. DOI:"
+            - link "10.1103/PhysRevLett.43.1494" [ref=e24894] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRevLett.43.1494
+            - text: ". URL:"
+            - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.43.1494" [ref=e24895] [cursor=pointer]:
+              - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.43.1494
+        - listitem [ref=e24896]:
+          - paragraph [ref=e24897]:
+            - text: Vanderbilt, D. “Soft Self-Consistent Pseudopotentials in a Generalized Eigenvalue Formalism.”
+            - emphasis [ref=e24898]: Phys. Rev. B
+            - strong [ref=e24899]: "1990"
+            - text: ","
+            - emphasis [ref=e24900]: "41"
+            - text: ", 7892–7895. DOI:"
+            - link "10.1103/PhysRevB.41.7892" [ref=e24901] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRevB.41.7892
+            - text: ". URL:"
+            - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.41.7892" [ref=e24902] [cursor=pointer]:
+              - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.41.7892
+        - listitem [ref=e24903]:
+          - paragraph [ref=e24904]:
+            - text: Blöchl, P. E. “Projector Augmented-Wave Method.”
+            - emphasis [ref=e24905]: Phys. Rev. B
+            - strong [ref=e24906]: "1994"
+            - text: ","
+            - emphasis [ref=e24907]: "50"
+            - text: ", 17953–17979. DOI:"
+            - link "10.1103/PhysRevB.50.17953" [ref=e24908] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRevB.50.17953
+            - text: ". URL:"
+            - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.50.17953" [ref=e24909] [cursor=pointer]:
+              - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.50.17953
+        - listitem [ref=e24910]:
+          - paragraph [ref=e24911]:
+            - text: Kresse, G.; Joubert, D. “From Ultrasoft Pseudopotentials to the Projector Augmented-Wave Method.”
+            - emphasis [ref=e24912]: Phys. Rev. B
+            - strong [ref=e24913]: "1999"
+            - text: ","
+            - emphasis [ref=e24914]: "59"
+            - text: ", 1758–1775. DOI:"
+            - link "10.1103/PhysRevB.59.1758" [ref=e24915] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRevB.59.1758
+            - text: ". URL:"
+            - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.59.1758" [ref=e24916] [cursor=pointer]:
+              - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.59.1758
+      - blockquote [ref=e24917]:
+        - paragraph [ref=e24918]:
+          - text: "Next:"
+          - link "chapter 09" [ref=e24919] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-09/
+          - text: — forces and geometry optimisation. The pseudopotential approximation is what makes the forces on the nuclei cheap to evaluate (the core contribution is absorbed into the pseudo), so the present chapter is a prerequisite for the next.
+  - contentinfo [ref=e24920]:
+    - generic [ref=e24921]:
+      - generic [ref=e24922]:
+        - img [ref=e24923]
+        - generic [ref=e24927]: DFT Notes
+        - paragraph [ref=e24928]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e24929]:
+        - generic [ref=e24930]:
+          - heading "Project" [level=3] [ref=e24931]
+          - list [ref=e24932]:
+            - listitem [ref=e24933]:
+              - link "Chapters map" [ref=e24934] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e24935]:
+              - link "Python codes" [ref=e24936] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e24937]:
+              - link "Contributing" [ref=e24938] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e24939]:
+              - link "Security" [ref=e24940] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e24941]:
+              - link "Design spec" [ref=e24942] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e24943]:
+              - link "GitHub ↗" [ref=e24944] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e24945]:
+          - heading "Built with" [level=3] [ref=e24946]
+          - list [ref=e24947]:
+            - listitem [ref=e24948]:
+              - link "Jekyll" [ref=e24949] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e24950]:
+              - link "MathJax 3" [ref=e24951] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e24952]:
+              - link "Mermaid" [ref=e24953] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e24954]:
+              - link "chenglou/pretext" [ref=e24955] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e24956]:
+              - link "Google Fonts" [ref=e24957] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e24958]:
+          - heading "Legal" [level=3] [ref=e24959]
+          - list [ref=e24960]:
+            - listitem [ref=e24961]:
+              - link "MIT License" [ref=e24962] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e24963]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e24965]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

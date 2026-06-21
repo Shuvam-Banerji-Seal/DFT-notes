@@ -57,7 +57,6 @@ is "higher rung = more ingredients = more physics = (usually) more
 accuracy and (always) more cost":
 
 $$
-\begin{equation}
 \label{eq:ch-05-jacobs-ladder}
 E_\text{xc}^{\text{approx}}[\rho] \;=\; \underbrace{E_\text{xc}^{(0)}[\rho]}_{\text{LDA: }\rho \text{ only}}
 \;+\; \underbrace{E_\text{xc}^{(1)}[\rho, \nabla\rho]}_{\text{GGA: } + \nabla\rho}
@@ -66,7 +65,6 @@ E_\text{xc}^{\text{approx}}[\rho] \;=\; \underbrace{E_\text{xc}^{(0)}[\rho]}_{\t
 \;+\; \underbrace{\text{RS}\Bigl[E_\text{x}^\text{HF}\Bigr]}_{\text{range-separated}}
 \;+\; \underbrace{b\, E_\text{c}^\text{MP2}}_{\text{double hybrid}}
 \;+\; \underbrace{E_\text{disp}}_{\text{dispersion}} .
-\end{equation}
 $$
 
 Equation \eqref{eq:ch-05-jacobs-ladder} is the **menu**, not a
@@ -82,11 +80,9 @@ the part of the exact energy left over after subtracting the four
 known pieces,
 
 $$
-\begin{equation}
 \label{eq:ch-05-exc-definition}
 E_\text{xc}[\rho] \;=\; \Bigl( \langle \hat T \rangle - T_s[\rho] \Bigr)
 \;+\; \Bigl( \langle \hat V_{ee} \rangle - J[\rho] \Bigr) .
-\end{equation}
 $$
 
 The first bracket is the **kinetic-correlation** correction: the
@@ -147,12 +143,10 @@ radius** $r_s$ — the radius (in Bohr) of the sphere whose volume
 is the average volume per electron,
 
 $$
-\begin{equation}
 \label{eq:ch-05-wigner-seitz}
 \frac{4\pi}{3} r_s^3 \;=\; \frac{V}{N} \;=\; \frac{1}{n}
 \qquad\Longrightarrow\qquad
 r_s \;=\; \left( \frac{3}{4\pi n} \right)^{1/3} .
-\end{equation}
 $$
 
 The density is $n = N/V$, with units of $a_0^{-3}$. The Wigner–Seitz
@@ -168,10 +162,8 @@ $\varepsilon_\text{xc}(r_s)$, is the *defining* data of the LDA. It
 is the sum of two pieces,
 
 $$
-\begin{equation}
 \label{eq:ch-05-ueg-decomposition}
 \varepsilon_\text{xc}(r_s) \;=\; \varepsilon_\text{x}(r_s) \;+\; \varepsilon_\text{c}(r_s) ,
-\end{equation}
 $$
 
 with $\varepsilon_\text{x}$ the **exchange** (Fermi-hole) part and
@@ -181,12 +173,10 @@ $\varepsilon_\text{c}$ the **correlation** (Coulomb-hole) part.
 (1929) and Dirac (1930). The result, in Hartree per electron, is
 
 $$
-\begin{equation}
 \label{eq:ch-05-dirac-exchange}
 \varepsilon_\text{x}(r_s) \;=\; -\frac{C_\text{x}}{r_s}
 \;=\; -\frac{3}{4\pi}\,\left(\frac{9\pi}{4}\right)^{1/3} \frac{1}{r_s}
 \;=\; -\frac{0.458165\ldots}{r_s} .
-\end{equation}
 $$
 
 The coefficient $C_\text{x} = (3/4\pi)(9\pi/4)^{1/3} = 0.458165\ldots$
@@ -198,11 +188,9 @@ is occupied for $|\mathbf k| \le k_F$, where $k_F$ is the
 The exchange energy per electron is then
 
 $$
-\begin{equation}
 \label{eq:ch-05-dirac-exchange-derivation}
 \varepsilon_\text{x} \;=\; -\frac{1}{n}\,\frac{1}{2}\int\!\!\int
 \frac{|\rho(\mathbf r_1, \mathbf r_2)|^2}{r_{12}} d\mathbf r_1 d\mathbf r_2 ,
-\end{equation}
 $$
 
 where the off-diagonal density matrix of the non-interacting KS system
@@ -224,14 +212,12 @@ The QMC data are then parametrised by an analytical fit, of which
 the most-used is **Perdew–Zunger 1981** (PZ81):
 
 $$
-\begin{equation}
 \label{eq:ch-05-pz81-correlation}
 \varepsilon_\text{c}^\text{PZ81}(r_s) \;=\;
 \begin{cases}
 B + A \ln r_s + D\, r_s + C\, r_s \ln r_s , & r_s < 1 , \\\\[2pt]
 \dfrac{A_\text{PZ}}{1 + B_\text{PZ}\sqrt{r_s} + C_\text{PZ}\, r_s} , & r_s \ge 1 .
 \end{cases}
-\end{equation}
 $$
 
 The unpolarised coefficients are
@@ -265,10 +251,8 @@ extrapolation of the UEG data to a non-uniform system. The
 approximation has the form
 
 $$
-\begin{equation}
 \label{eq:ch-05-lda-form}
 E_\text{xc}^\text{LDA}[\rho] \;=\; \int \rho(\mathbf r)\, \varepsilon_\text{xc}\Bigl(\rho(\mathbf r)\Bigr)\, d\mathbf r ,
-\end{equation}
 $$
 
 i.e. the integrand of the UEG formula is *kept* and the constant
@@ -285,11 +269,9 @@ $v_\text{xc}(\mathbf r) = \delta E_\text{xc}/\delta\rho(\mathbf r)$ —
 is, by the chain rule,
 
 $$
-\begin{equation}
 \label{eq:ch-05-lda-potential}
 v_\text{xc}^\text{LDA}(\mathbf r) \;=\; \varepsilon_\text{xc}\Bigl(\rho(\mathbf r)\Bigr)
 \;+\; \rho(\mathbf r)\,\frac{d\varepsilon_\text{xc}}{d\rho}\bigg|_{\rho(\mathbf r)} .
-\end{equation}
 $$
 
 The first term is the *local* XC energy per electron; the second
@@ -299,11 +281,9 @@ The **spin-localised** version — the **LSDA**, used for open-shell
 atoms, radicals, and ferromagnets — is
 
 $$
-\begin{equation}
 \label{eq:ch-05-lsda-form}
 E_\text{xc}^\text{LSDA}[\rho_\uparrow, \rho_\downarrow] \;=\;
 \int \rho(\mathbf r)\, \varepsilon_\text{xc}\Bigl(\rho_\uparrow(\mathbf r), \rho_\downarrow(\mathbf r)\Bigr)\, d\mathbf r ,
-\end{equation}
 $$
 
 where $\varepsilon_\text{xc}$ is now a function of *two* local
@@ -337,14 +317,12 @@ The exchange part of the GEA, due to Herman, Van Dyke, and Ortenburger
 gives
 
 $$
-\begin{equation}
 \label{eq:ch-05-gea-exchange}
 E_\text{x}^\text{GEA}[\rho] \;=\; E_\text{x}^\text{LDA}[\rho] \;-\; \frac{1}{4\pi}\int\!\!\int
 \frac{|\nabla\rho(\mathbf r_1)|\, |\nabla\rho(\mathbf r_2)|}{\rho(\mathbf r_1)\,\rho(\mathbf r_2)}\,
 \frac{1}{|\mathbf r_1 - \mathbf r_2|}\,
 \rho\!\left(\frac{\mathbf r_1 + \mathbf r_2}{2}\right)
 \,d\mathbf r_1 d\mathbf r_2 \;+\; \cdots
-\end{equation}
 $$
 
 The second term in \eqref{eq:ch-05-gea-exchange} — sometimes written
@@ -385,23 +363,19 @@ structure as the LDA but with an *enhancement factor* $F_\text{xc}$
 that depends on a *dimensionless* reduced gradient $s$,
 
 $$
-\begin{equation}
 \label{eq:ch-05-gga-form}
 E_\text{xc}^\text{GGA}[\rho] \;=\; \int \rho(\mathbf r)\,
 \varepsilon_\text{xc}^\text{LDA}\Bigl(\rho(\mathbf r)\Bigr)\,
 F_\text{xc}\Bigl(s(\mathbf r)\Bigr)\, d\mathbf r ,
-\end{equation}
 $$
 
 where the **reduced gradient** is
 
 $$
-\begin{equation}
 \label{eq:ch-05-reduced-gradient}
 s(\mathbf r) \;=\; \frac{|\nabla\rho(\mathbf r)|}{2 k_F(\mathbf r)\, \rho(\mathbf r)} ,
 \qquad
 k_F(\mathbf r) \;=\; \Bigl(3\pi^2 \rho(\mathbf r)\Bigr)^{1/3} .
-\end{equation}
 $$
 
 The factor $2 k_F \rho$ in the denominator makes $s$
@@ -429,10 +403,8 @@ factor for exchange is the simplest form that satisfies four
 *exact* constraints:
 
 $$
-\begin{equation}
 \label{eq:ch-05-pbe-fx}
 F_\text{x}^\text{PBE}(s) \;=\; 1 + \kappa - \frac{\kappa}{1 + \mu s^2 / \kappa} ,
-\end{equation}
 $$
 
 with $\kappa = 0.804$ and $\mu = 0.21951$ (in atomic units). The
@@ -464,21 +436,17 @@ $\varepsilon_\text{c}^\text{LDA}(r_s)$; the PBE adds an enhancement
 that vanishes in the uniform limit,
 
 $$
-\begin{equation}
 \label{eq:ch-05-pbe-h}
 H\Bigl[\varepsilon_\text{c}^\text{LDA}, t\Bigr] \;=\;
 \gamma\,\ln\!\left[ 1 + \frac{\beta}{\gamma} t^2\,
 \frac{1 + A t^2}{1 + A t^2 + (A t^2)^2} \right] ,
-\end{equation}
 $$
 
 with
 
 $$
-\begin{equation}
 \label{eq:ch-05-pbe-a}
 A \;=\; \frac{\beta}{\gamma}\,\frac{1}{\exp(-\varepsilon_\text{c}^\text{LDA}/\gamma) - 1} .
-\end{equation}
 $$
 
 The PBE parameters are $\beta = 0.066725$ and
@@ -495,11 +463,9 @@ limit). The structure of $H$ guarantees three constraints:
 enhancement factors, the full PBE exchange–correlation energy is
 
 $$
-\begin{equation}
 \label{eq:ch-05-pbe-total}
 E_\text{xc}^\text{PBE}[\rho] \;=\; \int \rho\, \varepsilon_\text{x}^\text{unif}(\rho)\, F_\text{x}^\text{PBE}(s)\, d\mathbf r
 \;+\; \int \rho\, \Bigl[\varepsilon_\text{c}^\text{LDA}(r_s) + H(t)\Bigr]\, d\mathbf r .
-\end{equation}
 $$
 
 PBE is the *de facto* default functional of solid-state physics. It
@@ -530,12 +496,10 @@ enhancement factor form (an *inverse-square-root* rather than a
 of the H atom:
 
 $$
-\begin{equation}
 \label{eq:ch-05-b88-fx}
 F_\text{x}^\text{B88}(s) \;=\; 1 + \frac{\beta\, s^2}{1 + \gamma\, s\, \operatorname{arcsinh}(c s)} ,
 \qquad
 \beta = 0.0042 , \; \gamma = 0.002 , \; c = 6 .
-\end{equation}
 $$
 
 The B88 enhancement factor asymptotes to $\sim 1.69$ for large $s$,
@@ -556,10 +520,8 @@ A **meta-GGA** adds a third local ingredient to the GGA menu: the
 **orbital kinetic-energy density**
 
 $$
-\begin{equation}
 \label{eq:ch-05-tau}
 \tau(\mathbf r) \;=\; \frac{1}{2}\sum_i^\text{occ} |\nabla\phi_i(\mathbf r)|^2 .
-\end{equation}
 $$
 
 The functional now depends on three local variables: $\rho$,
@@ -580,25 +542,21 @@ factor $F_\text{xc}(\rho, \nabla\rho, \tau)$, so the meta-GGA
 exchange–correlation energy has the form
 
 $$
-\begin{equation}
 \label{eq:ch-05-meta-gga-form}
 E_\text{xc}^\text{meta-GGA}[\rho] \;=\; \int \rho(\mathbf r)\, \varepsilon_\text{x}^\text{unif}(\rho(\mathbf r))\,
 F_\text{xc}\Bigl(\rho, \nabla\rho, \tau\Bigr)\, d\mathbf r .
-\end{equation}
 $$
 
 A common reparametrisation uses the **dimensionless orbital
 indicator**
 
 $$
-\begin{equation}
 \label{eq:ch-05-orbital-indicator}
 \alpha(\mathbf r) \;=\; \frac{\tau(\mathbf r) - \tau^\text{TF}(\mathbf r)}{\tau^\text{UEG}(\mathbf r)} ,
 \qquad
 \tau^\text{TF} \;=\; \frac{3}{10}(3\pi^2)^{2/3} \rho^{5/3} ,
 \qquad
 \tau^\text{UEG} \;=\; \frac{3}{10}(3\pi^2)^{2/3} \rho^{5/3} .
-\end{equation}
 $$
 
 In a *single-orbital* region, $\tau \gg \tau^\text{TF}$ and
@@ -635,10 +593,8 @@ non-empirical and constraint-satisfying (12 constraints), with an
 enhancement factor of the form
 
 $$
-\begin{equation}
 \label{eq:ch-05-tpss-form}
 F_\text{x}^\text{TPSS}(\rho, s, \alpha) \;=\; F_\text{x}^\text{PBE}(s)\,\Bigl[1 + d\, \alpha\, s^2\Bigr]^{-1} ,
-\end{equation}
 $$
 
 where $d$ is a constant chosen by a constraint. The PBE part is
@@ -655,10 +611,8 @@ The fourth rung of Jacob's ladder is the **hybrid** functional: a
 of *exact* non-local Hartree–Fock exchange,
 
 $$
-\begin{equation}
 \label{eq:ch-05-hybrid-form}
 E_\text{xc}^\text{hybrid} \;=\; a\, E_\text{x}^\text{exact} \;+\; (1 - a)\, E_\text{x}^\text{GGA} \;+\; E_\text{c}^\text{GGA} ,
-\end{equation}
 $$
 
 where $a \in [0, 1]$ is the **mixing parameter**. The
@@ -691,10 +645,8 @@ interacting system ($\lambda = 1$). The Hamiltonian along the path
 is
 
 $$
-\begin{equation}
 \label{eq:ch-05-ac-hamiltonian}
 \hat H_\lambda \;=\; \hat T \;+\; \lambda\, \hat V_{ee} \;+\; \hat V_\text{ext}^\lambda ,
-\end{equation}
 $$
 
 where $\hat V_\text{ext}^\lambda$ is adjusted at each $\lambda$ to
@@ -703,11 +655,9 @@ keep the *density fixe`d*' at the physical density $\rho$. The
 *integral* over $\lambda$:
 
 $$
-\begin{equation}
 \label{eq:ch-05-acfdt-exc}
 E_\text{xc}[\rho] \;=\; \int_0^1 \langle \Psi_\lambda | \hat V_{ee} | \Psi_\lambda \rangle\, d\lambda
 \;-\; J[\rho] .
-\end{equation}
 $$
 
 The integrand is the *expectation value of the electron–electron
@@ -718,10 +668,8 @@ $\lambda = 1$ limits gives the famous **Görling–Levy perturbation
 theory** result
 
 $$
-\begin{equation}
 \label{eq:ch-05-gl-perturbation}
 E_\text{xc} \;=\; E_\text{xc}^\text{GL2} \;+\; \mathcal{O}\Bigl[(\hat V_{ee} - \hat V_\text{H} - \hat V_\text{xc})^3\Bigr] .
-\end{equation}
 $$
 
 At *second order* in the coupling, the integrand of
@@ -734,10 +682,8 @@ the KS orbitals. The GGA part of the integrand accounts for the
 *correlation* contribution. The recipe is therefore:
 
 $$
-\begin{equation}
 \label{eq:ch-05-pbe0-acfdt}
 E_\text{xc}^\text{PBE0} \;=\; \frac{1}{4}\, E_\text{x}^\text{exact} \;+\; \frac{3}{4}\, E_\text{x}^\text{PBE} \;+\; E_\text{c}^\text{PBE} .
-\end{equation}
 $$
 
 The factor $1/4$ comes from the *midpoint* of the linear
@@ -757,13 +703,11 @@ fitted number; it is the second-order GL2 prediction.
 functional form is
 
 $$
-\begin{equation}
 \label{eq:ch-05-b3lyp-form}
 E_\text{xc}^\text{B3LYP} \;=\; a_0\, E_\text{x}^\text{exact}
 \;+\; (1 - a_0)\, E_\text{x}^\text{LDA}
 \;+\; a_\text{x}\, \Delta E_\text{x}^\text{B88}
 \;+\; E_\text{c}^\text{LYP} \;+\; (1 - a_\text{c})\, E_\text{c}^\text{VWN} ,
-\end{equation}
 $$
 
 where $\Delta E_\text{x}^\text{B88} = E_\text{x}^\text{B88} -
@@ -827,10 +771,8 @@ hybri`d*`* exploits this by splitting the Coulomb operator into a
 *short-range* and a long-range part,
 
 $$
-\begin{equation}
 \label{eq:ch-05-rs-split}
 \frac{1}{r_{12}} \;=\; \underbrace{\frac{\operatorname{erfc}(\omega r_{12})}{r_{12}}}_{\text{short range}} \;+\; \underbrace{\frac{\operatorname{erf}(\omega r_{12})}{r_{12}}}_{\text{long range}} .
-\end{equation}
 $$
 
 The split is parameterised by the **range-separation
@@ -846,10 +788,8 @@ where the useful range-separated hybrids live.
 The functional form is
 
 $$
-\begin{equation}
 \label{eq:ch-05-rs-form}
 E_\text{xc}^\text{RS} \;=\; E_\text{x}^\text{SR,DFT} \;+\; E_\text{x}^\text{LR,HF} \;+\; E_\text{c}^\text{DFT} ,
-\end{equation}
 $$
 
 where the *short-range* exchange is treated by the DFT
@@ -876,11 +816,9 @@ Tew, and Handy (2004) is the canonical example of a
 range-separated hybrid. The functional form is
 
 $$
-\begin{equation}
 \label{eq:ch-05-camb3lyp-form}
 E_\text{xc}^\text{CAM-B3LYP} \;=\; \alpha\, E_\text{x}^\text{HF} \;+\; \beta\, E_\text{x}^\text{LR,HF} \;+\; (1 - \alpha)\, E_\text{x}^\text{B88}
 \;+\; 0.19\, E_\text{c}^\text{LYP} \;+\; 0.81\, E_\text{c}^\text{VWN} ,
-\end{equation}
 $$
 
 with $\alpha = 0.19$, $\beta = 0.46$, and $\omega = 0.33\,a_0^{-1}$.
@@ -931,10 +869,8 @@ A **double hybri'd** is the sixt'h*' rung: a hybrid functional with
 **MP2-like correlation** computed from the KS orbitals,
 
 $$
-\begin{equation}
 \label{eq:ch-05-double-hybrid-form}
 E_\text{xc}^\text{double} \;=\; a\, E_\text{x}^\text{exact} \;+\; (1 - a)\, E_\text{x}^\text{DFT} \;+\; b\, E_\text{c}^\text{MP2} \;+\; (1 - b)\, E_\text{c}^\text{DFT} .
-\end{equation}
 $$
 
 The MP2-like correlation is the **second-order Møller–Plesset**
@@ -954,10 +890,8 @@ threshold of 1 kcal/mol.
 example. The functional form is
 
 $$
-\begin{equation}
 \label{eq:ch-05-b2plyp-form}
 E_\text{xc}^\text{B2-PLYP} \;=\; 0.53\, E_\text{x}^\text{HF} \;+\; 0.47\, E_\text{x}^\text{B88} \;+\; 0.73\, E_\text{c}^\text{LYP} \;+\; 0.27\, E_\text{c}^\text{MP2} .
-\end{equation}
 $$
 
 The mixing parameters $(0.53, 0.27)$ were fit to a thermochemical
@@ -975,10 +909,8 @@ scale`d*' (SCS) variant. The MP2-like correlation is split into
 contributions are scaled *separately*. The form is
 
 $$
-\begin{equation}
 \label{eq:ch-05-dsdpbep86-form}
 E_\text{c}^\text{DSD-PBEP86} \;=\; c_\text{SS}\, E_\text{c}^\text{SS,MP2} \;+\; c_\text{OS}\, E_\text{c}^\text{OS,MP2} ,
-\end{equation}
 $$
 
 with $c_\text{SS} \approx 0.5$ and $c_\text{OS} \approx 1.0$ (the
@@ -1010,10 +942,8 @@ $\mathbf r_1$ and $\mathbf r_2$ that are *not* close. The
 standard fix is to *add*' a dispersion correction a posteriori:
 
 $$
-\begin{equation}
 \label{eq:ch-05-dispersion-correction}
 E_\text{total} \;=\; E_\text{DFT} \;+\; E_\text{disp} ,
-\end{equation}
 $$
 
 where $E_\text{disp}$ is a correction term that is *pairwise*
@@ -1024,11 +954,9 @@ and higher dipole interactions).
 the most-used dispersion patch. The form is
 
 $$
-\begin{equation}
 \label{eq:ch-05-d3-form}
 E_\text{disp}^\text{D3} \;=\; -\sum_{a < b} \sum_{n=6,8} \frac{C_n^{ab}}{R_{ab}^n}\,
 f_\text{damp}(R_{ab}) ,
-\end{equation}
 $$
 
 where the $C_n^{ab}$ are *pairwise* dispersion coefficients
@@ -1063,10 +991,8 @@ approximation by including *three-body* and higher Axilrod–
 Teller–Muto contributions. The form is
 
 $$
-\begin{equation}
 \label{eq:ch-05-mbd-form}
 E_\text{disp}^\text{MBD} \;=\; \frac{1}{2}\sum_{a, b} V_{ab}^\text{TS} \;+\; \frac{1}{2}\sum_{a, b, c} V_{abc}^\text{ATM} \;+\; \cdots ,
-\end{equation}
 $$
 
 where the pairwise part uses the **Tkatchenko–Scheffler**
@@ -1086,10 +1012,8 @@ correlation functional that is *integrated into* the XC
 functional rather than added *a posteriori*. The form is
 
 $$
-\begin{equation}
 \label{eq:ch-05-vdwdf-form}
 E_\text{c}^\text{nl}[\rho] \;=\; \frac{1}{2}\iint \rho(\mathbf r_1)\, \phi(\mathbf r_1, \mathbf r_2)\, \rho(\mathbf r_2)\, d\mathbf r_1 d\mathbf r_2 ,
-\end{equation}
 $$
 
 where $\phi(\mathbf r_1, \mathbf r_2)$ is a *kernel* that
@@ -2009,12 +1933,10 @@ writes the exchange energy in the GGA form (Eq. (1) of the
 paper)
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-pbe-exc-1}
 E_\text{x}^\text{PBE} \;=\; \int \rho(\mathbf r)\,
 \varepsilon_\text{x}^\text{unif}\Bigl(\rho(\mathbf r)\Bigr)\,
 F_\text{x}^\text{PBE}\Bigl(s(\mathbf r)\Bigr)\, d\mathbf r ,
-\end{equation}
 $$
 
 where $s(\mathbf r) = |\nabla\rho| / (2 k_F \rho)$ is the reduced
@@ -2027,11 +1949,9 @@ rational form that satisfies the four constraints (Eq. (10),
 p. 3866):
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-pbe-fx}
 F_\text{x}^\text{PBE}(s) \;=\; 1 + \kappa \;-\;
 \frac{\kappa}{1 + \mu s^2 / \kappa} .
-\end{equation}
 $$
 
 This is equation (10) of the paper, on p. 3866. The two
@@ -2066,10 +1986,8 @@ $E_\text{xc} / N \ge -1.679\,E_h$. This translates, for a
 GGA-type exchange-only functional, into
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-pbe-lo-bound}
 F_\text{x}(s) \;\le\; 1 + \kappa \quad \text{for all } s \ge 0 ,
-\end{equation}
 $$
 
 with $\kappa$ chosen to saturate the bound. The form
@@ -2090,10 +2008,8 @@ Equating $1 + \kappa$ to the numerical value implied by the
 Lieb–Oxford bound, the PBE paper sets (p. 3866)
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-pbe-kappa}
 \kappa \;=\; 0.804 .
-\end{equation}
 $$
 
 This is a *physical* constant — the result of an inequality
@@ -2137,10 +2053,8 @@ from the *uniform-gas linear response* of
 and the resulting value of $\mu$ is
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-pbe-mu}
 \mu \;=\; 0.21951 .
-\end{equation}
 $$
 
 The difference between $0.12346$ (the literal GEA value) and
@@ -2166,22 +2080,18 @@ variables.
 correlation energy is written (Eq. (8), p. 3866) as
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-pbe-ec}
 E_\text{c}^\text{PBE} \;=\; \int \rho(\mathbf r)\,
 \varepsilon_\text{c}^\text{PBE}\Bigl(\rho(\mathbf r), \zeta(\mathbf r),
 \nabla\rho(\mathbf r)\Bigr)\, d\mathbf r ,
-\end{equation}
 $$
 
 with the correlation energy per electron split as
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-pbe-ec-split}
 \varepsilon_\text{c}^\text{PBE}(\rho, \zeta, t) \;=\;
 \varepsilon_\text{c}^\text{LDA}(r_s, \zeta) \;+\; H\Bigl(r_s, \zeta, t\Bigr) ,
-\end{equation}
 $$
 
 where $\varepsilon_\text{c}^\text{LDA}(r_s, \zeta)$ is the LSDA
@@ -2198,22 +2108,18 @@ the spin-scaling factor (Eq. (8), p. 3866). The PBE enhancement
 $H$ is given by (Eq. (9), p. 3866)
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-pbe-h}
 H\Bigl[r_s, \zeta, t\Bigr] \;=\; \gamma\, \phi^3\,
 \ln\!\Biggl[\, 1 \;+\; \frac{\beta}{\gamma}\,
 t^2\,\frac{1 + A t^2}{1 + A t^2 + (A t^2)^2}\,\Biggr] ,
-\end{equation}
 $$
 
 with the auxiliary quantity
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-pbe-a}
 A \;=\; \frac{\beta}{\gamma}\,
 \frac{1}{\exp\!\Bigl(-\varepsilon_\text{c}^\text{LDA}/(\gamma\phi^3)\Bigr) - 1} .
-\end{equation}
 $$
 
 The two PBE correlation parameters are
@@ -2318,7 +2224,6 @@ quantities $\{\varepsilon_\text{c}(r_s, 0), \varepsilon_\text{c}(r_s, 1),
 spin-dependent correlation energy per electron is written as
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-vwn-form}
 \varepsilon_\text{c}(r_s, \zeta) \;=\;
 \varepsilon_\text{c}(r_s, 0) \;+\;
@@ -2326,17 +2231,14 @@ $$
 f(\zeta)\,\Bigl(1 - \zeta^4\Bigr) \;+\;
 \Bigl[\varepsilon_\text{c}(r_s, 1) - \varepsilon_\text{c}(r_s, 0)\Bigr]\,
 f(\zeta)\, \zeta^4 ,
-\end{equation}
 $$
 
 where the **spin-stiffness** function $f(\zeta)$ is
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-vwn-fzeta}
 f(\zeta) \;=\;
 \frac{(1+\zeta)^{4/3} + (1-\zeta)^{4/3} - 2}{2^{4/3} - 2} ,
-\end{equation}
 $$
 
 and $\zeta_\text{AF}^2 = 1/4$ is the value of $\zeta^2$ at the
@@ -2361,13 +2263,11 @@ $\alpha_\text{c}(r_s)$ is fit to a 5-parameter Padé form in
 $x = \sqrt{r_s}$:
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-vwn-pade}
 \varepsilon_p(x) \;=\; -2 A_p\,
 \Bigl(1 + \alpha_{p,1}\, x^2\Bigr)\,
 \ln\!\Biggl[\, 1 \;+\; \frac{1}{2 A_p\,
 \Bigl(\beta_{p,1}\, x + \beta_{p,2}\, x^2 + \beta_{p,3}\, x^3 + \beta_{p,4}\, x^4\Bigr)}\,\Biggr] .
-\end{equation}
 $$
 
 This is the form on p. 1202 of the paper. The five parameters
@@ -2486,24 +2386,20 @@ exchange energy is written (Eq. (1) of the paper, p. 3098) as
 the LDA exchange plus a gradient correction
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-b88-1}
 E_\text{x}^\text{B88} \;=\; E_\text{x}^\text{LDA} \;-\;
 \beta \sum_{\sigma = \uparrow, \downarrow} \int
 \rho_\sigma(\mathbf r)^{4/3}\,
 \frac{x_\sigma^2}{1 + \gamma\, x_\sigma^2}\, d\mathbf r ,
-\end{equation}
 $$
 
 where the *Becke* reduced gradient is (Eq. (2) of the paper,
 p. 3098)
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-b88-x}
 x_\sigma(\mathbf r) \;=\;
 \frac{|\nabla \rho_\sigma(\mathbf r)|}{\rho_\sigma(\mathbf r)^{4/3}} .
-\end{equation}
 $$
 
 The enhancement-factor form of B88 is obtained by dividing
@@ -2511,11 +2407,9 @@ the LDA exchange by itself, and writing the gradient term as
 a multiple of the LDA:
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-b88-fx}
 F_\text{x}^\text{B88}(s) \;=\; 1 \;-\; \frac{\beta\,
 s^2}{1 + \gamma\, s^2} .
-\end{equation}
 $$
 
 This is equation (8) of the paper, on p. 3100. (The
@@ -2582,12 +2476,10 @@ enhancement factor
 value
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-b88-fx-asym}
 \lim_{s \to \infty} F_\text{x}^\text{B88}(s) \;=\;
 1 - \frac{\beta \cdot s^2}{\gamma \cdot s^2} \;=\;
 1 - \frac{\beta}{\gamma} ,
-\end{equation}
 $$
 
 which converts the LDA's $-C_\text{x} \rho^{1/3}$ decay to
@@ -2729,7 +2621,6 @@ LYP correlation energy is written (Eq. (7) of the paper,
 p. 787) as
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-lyp-form}
 E_\text{c}^\text{LYP} \;=\; -a \int
 \frac{4 \, \rho(\mathbf r)}{1 + d\,
@@ -2741,7 +2632,6 @@ E_\text{c}^\text{LYP} \;=\; -a \int
 \;+\; \tfrac{18}{d^2}\, |\nabla\rho(\mathbf r)|^2\,\Bigr]}{1 + c\,
 \rho(\mathbf r)^{-1/3}\, \Bigl[|\nabla\rho(\mathbf r)|^2 /
 \rho(\mathbf r)^{8/3}\Bigr]}\, d\mathbf r .
-\end{equation}
 $$
 
 This is the full LYP formula (Eq. (7) of the paper, p. 787,
@@ -2749,13 +2639,11 @@ written here in a more readable form by expanding the
 brackets). The four empirical parameters are
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-lyp-params}
 a \;=\; 0.04918 , \quad
 b \;=\; 0.132 , \quad
 c \;=\; 0.2533 , \quad
 d \;=\; 0.349 .
-\end{equation}
 $$
 
 The constant $C_F = (3/10) (3\pi^2)^{2/3} \approx 1.2599$
@@ -2780,14 +2668,12 @@ the Colle–Salvetti formula (pp. 786–787).** The CS-1975
 correlation energy of a *two-electron* HF density is
 
 $$
-\begin{equation}
 \label{eq:ch-05-lit-lyp-cs}
 E_\text{c}^\text{CS} \;=\; -4 \int\!\int
 \rho(\mathbf r_1)\, \rho(\mathbf r_2)\,
 \frac{1}{r_{12}}\,
 \Bigl[1 - \phi(r_{12})\Bigr]\,
 d\mathbf r_1\, d\mathbf r_2 ,
-\end{equation}
 $$
 
 where $\phi(r_{12}) = e^{-\beta_0 r_{12}}\,\Bigl(1 + \beta_0

@@ -194,10 +194,8 @@ lattice, the **reciprocal lattice**, with primitive vectors
 $\mathbf b_1, \mathbf b_2, \mathbf b_3$ defined by
 
 $$
-\begin{equation}
 \label{eq:cryst-recip-def}
 \mathbf a_i \cdot \mathbf b_j \;=\; 2\pi \delta_{ij}, \qquad i, j \in \{1, 2, 3\}.
-\end{equation}
 $$
 
 This is the definition adopted by the solid-state community
@@ -212,19 +210,15 @@ and [chapter 07 §7.4.1]({{ "/dft-notes/chapter-07/" | relative_url }})).
 Every reciprocal-lattice vector is an integer combination
 
 $$
-\begin{equation}
 \label{eq:cryst-recip-vector}
 \mathbf G \;=\; h \mathbf b_1 + k \mathbf b_2 + l \mathbf b_3, \qquad h, k, l \in \mathbb Z,
-\end{equation}
 $$
 
 and the **volume of the reciprocal primitive cell** is
 
 $$
-\begin{equation}
 \label{eq:cryst-recip-volume}
 V_\text{BZ}^* \;=\; \mathbf b_1 \cdot (\mathbf b_2 \times \mathbf b_3) \;=\; \frac{(2\pi)^3}{V_\text{cell}},
-\end{equation}
 $$
 
 where $V_\text{cell} = \mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)$
@@ -237,14 +231,12 @@ An explicit construction of the reciprocal primitive vectors
 that avoids solving a $3 \times 3$ linear system is
 
 $$
-\begin{equation}
 \label{eq:cryst-recip-explicit}
 \mathbf b_1 \;=\; 2\pi\, \frac{\mathbf a_2 \times \mathbf a_3}{\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)},
 \qquad
 \mathbf b_2 \;=\; 2\pi\, \frac{\mathbf a_3 \times \mathbf a_1}{\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)},
 \qquad
 \mathbf b_3 \;=\; 2\pi\, \frac{\mathbf a_1 \times \mathbf a_2}{\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)} .
-\end{equation}
 $$
 
 The denominator $\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)$ is
@@ -300,12 +292,10 @@ The conventional FCC lattice with cubic parameter $a$ has
 primitive vectors
 
 $$
-\begin{equation}
 \label{eq:cryst-fcc-prim}
 \mathbf a_1 = \frac{a}{2}(0, 1, 1), \quad
 \mathbf a_2 = \frac{a}{2}(1, 0, 1), \quad
 \mathbf a_3 = \frac{a}{2}(1, 1, 0).
-\end{equation}
 $$
 
 The scalar triple product is
@@ -328,21 +318,17 @@ $\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3) = a^3/4$
 gives
 
 $$
-\begin{equation}
 \label{eq:cryst-b1}
 \mathbf b_1 \;=\; \frac{2\pi}{a}(-1, 1, 0) .
-\end{equation}
 $$
 
 Cyclic permutation gives the full set:
 
 $$
-\begin{equation}
 \label{eq:cryst-fcc-recip}
 \mathbf b_1 = \frac{2\pi}{a}(-1, 1, 1), \quad
 \mathbf b_2 = \frac{2\pi}{a}(1, -1, 1), \quad
 \mathbf b_3 = \frac{2\pi}{a}(1, 1, -1) .
-\end{equation}
 $$
 
 The shortest reciprocal-lattice vectors are
@@ -351,10 +337,8 @@ $\pm (2\pi/a)(\pm 1, \pm 1, \pm 1)$ — 8 in total — and the
 parameter
 
 $$
-\begin{equation}
 \label{eq:cryst-fcc-bcc-conv}
 a^* \;=\; \frac{4\pi}{a} ,
-\end{equation}
 $$
 
 with body-centring translations $(2\pi/a)(1, 1, 1)$ etc.  The
@@ -384,10 +368,8 @@ The only rotation orders $n$ for which an $n$-fold rotation
 axis can be a symmetry of a 3-D Bravais lattice are
 
 $$
-\begin{equation}
 \label{eq:cryst-restriction}
 n \;\in\; \{1, 2, 3, 4, 6\} .
-\end{equation}
 $$
 
 A 5-fold axis, an 8-fold axis, or a 7-fold axis is *not* a
@@ -405,7 +387,6 @@ integer combination of $\mathbf a$ and $\mathbf b$.  In matrix
 form,
 
 $$
-\begin{equation}
 \begin{pmatrix} a'_x \\\\ a'_y \end{pmatrix}
 \;=\;
 \begin{pmatrix} \cos(2\pi/n) & -\sin(2\pi/n) \\\\ \sin(2\pi/n) & \cos(2\pi/n) \end{pmatrix}
@@ -413,7 +394,6 @@ $$
 \;=\;
 \begin{pmatrix} p & q \\\\ r & s \end{pmatrix}
 \begin{pmatrix} a_x \\\\ a_y \end{pmatrix}
-\end{equation}
 $$
 
 with $p, q, r, s$ integers (this is a property of the rotation
@@ -569,10 +549,8 @@ Every element $g$ of a space group can be written in **Seitz
 notation**
 
 $$
-\begin{equation}
 \label{eq:cryst-seitz}
 g \;=\; \{R \mid \mathbf v\}, \qquad g \mathbf r \;=\; R \mathbf r + \mathbf v,
-\end{equation}
 $$
 
 with $R \in O(3)$ a point-group operation (rotation,
@@ -581,11 +559,9 @@ $\mathbf v \in \mathbb R^3$ a translation.  The composition rule
 is
 
 $$
-\begin{equation}
 \label{eq:cryst-seitz-mult}
 \{R_1 \mid \mathbf v_1\} \{R_2 \mid \mathbf v_2\}
 \;=\; \{R_1 R_2 \mid R_1 \mathbf v_2 + \mathbf v_1\} .
-\end{equation}
 $$
 
 The translation subgroup is $\{\mathbf E \mid \mathbf R\}$ for
@@ -834,12 +810,10 @@ other reciprocal-lattice point.  Equation (7.16) of chapter 07
 gives the formal definition:
 
 $$
-\begin{equation}
 \label{eq:cryst-bz}
 \text{1st BZ} \;=\; \Bigl\lbrace \mathbf k \in \mathbb R^3 \;:\;
    |\mathbf k| \le |\mathbf k - \mathbf G| \text{ for every }
    \mathbf G \in \text{reciprocal lattice} \Bigr\rbrace .
-\end{equation}
 $$
 
 The boundary of the 1st BZ is built from the perpendicular
@@ -942,12 +916,10 @@ the reciprocal hexagonal lattice in the basal plane.  The
 primitive reciprocal vectors are
 
 $$
-\begin{equation}
 \label{eq:cryst-hex-recip}
 \mathbf b_1 = \frac{2\pi}{a} \left(1, -\frac{1}{\sqrt 3}, 0\right), \quad
 \mathbf b_2 = \frac{2\pi}{a} \left(0, \frac{2}{\sqrt 3}, 0\right), \quad
 \mathbf b_3 = \frac{2\pi}{c} (0, 0, 1) .
-\end{equation}
 $$
 
 The 1st BZ is a **regular hexagonal prism** with hexagonal

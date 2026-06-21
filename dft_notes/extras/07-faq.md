@@ -97,10 +97,8 @@ true interacting density.  In Kohn–Sham DFT, the central
 equation is
 
 $$
-\begin{equation}
 \label{eq:faq-ks}
 \left[-\tfrac{1}{2}\nabla^2 + v_\text{ext}(\mathbf r) + v_\text{H}[\rho](\mathbf r) + v_\text{xc}[\rho](\mathbf r)\right] \phi_i(\mathbf r) = \varepsilon_i\, \phi_i(\mathbf r) ,
-\end{equation}
 $$
 
 a set of one-electron Schrödinger-like equations solved
@@ -297,10 +295,8 @@ then inner-producted with \(\langle \phi \rvert\).  In
 position-space representation it is the integral
 
 $$
-\begin{equation}
 \label{eq:faq-brak}
 \langle \phi \rvert \hat A \rvert \psi \rangle \;\equiv\; \int \phi^*(\mathbf r)\, \Bigl(\hat A \psi(\mathbf r)\Bigr)\, d\mathbf r .
-\end{equation}
 $$
 
 When \(\phi = \psi\) this is the **expectation value** of
@@ -325,7 +321,6 @@ A **Slater determinant** is an antisymmetrised product of
 \(\chi_i(\mathbf x)\):
 
 $$
-\begin{equation}
 \label{eq:faq-slater}
 \Psi(\mathbf x_1, \dots, \mathbf x_N) \;=\; \frac{1}{\sqrt{N!}} \begin{vmatrix}
 \chi_1(\mathbf x_1) & \chi_2(\mathbf x_1) & \cdots & \chi_N(\mathbf x_1) \\\
@@ -333,7 +328,6 @@ $$
 \vdots & \vdots & \ddots & \vdots \\\
 \chi_1(\mathbf x_N) & \chi_2(\mathbf x_N) & \cdots & \chi_N(\mathbf x_N)
 \end{vmatrix} .
-\end{equation}
 $$
 
 The determinant form **enforces the Pauli exclusion principle
@@ -365,10 +359,8 @@ many-body wavefunction is approximated by a Slater determinant
 of single-particle orbitals:
 
 $$
-\begin{equation}
 \label{eq:faq-Psipsi}
 \Psi(\mathbf x_1, \dots, \mathbf x_N) \;\approx\; \Phi[\{\psi_i\}] \;=\; \frac{1}{\sqrt{N!}} \det\Bigl[\psi_i(\mathbf x_j)\Bigr] .
-\end{equation}
 $$
 
 The mapping \(\Psi \to \{\psi_i\}\) is the Kohn–Sham Ansatz.
@@ -391,10 +383,8 @@ The **one-electron density** is the integral of \(|\Psi|^2\)
 over all electron coordinates but one, summed over spins:
 
 $$
-\begin{equation}
 \label{eq:faq-rho}
 \rho(\mathbf r) \;=\; N \sum_{\sigma_1, \dots, \sigma_N} \int \lvert \Psi(\mathbf r, \sigma_1, \mathbf r_2, \sigma_2, \dots, \mathbf r_N, \sigma_N) \rvert^2 d\mathbf r_2 \cdots d\mathbf r_N .
-\end{equation}
 $$
 
 It is a non-negative, real, three-dimensional scalar field
@@ -424,10 +414,8 @@ A **basis set** is a finite set of known functions
 molecular orbitals:
 
 $$
-\begin{equation}
 \label{eq:faq-basis}
 \phi_i(\mathbf r) \;\approx\; \sum_{\mu=1}^{K} C_{\mu i}\, \chi_\mu(\mathbf r) .
-\end{equation}
 $$
 
 The choice of basis set controls both the **accuracy** and
@@ -462,11 +450,9 @@ the density that was used to build the Hamiltonian.  In
 practice, the SCF loop is iterated until convergence:
 
 $$
-\begin{equation}
 \label{eq:faq-scf}
 \rho^{(n+1)}(\mathbf r) \;=\; \mathcal F[\rho^{(n)}](\mathbf r) ,
 \qquad \rho^{(n+1)} \approx \rho^{(n)} .
-\end{equation}
 $$
 
 The map \(\mathcal F\) is the **SCF map**; its fixed point is
@@ -489,10 +475,8 @@ to another function).  For example, the Kohn–Sham total
 energy is a functional of the density:
 
 $$
-\begin{equation}
 \label{eq:faq-func}
 E[\rho] \;=\; T_s[\rho] + \int \rho(\mathbf r)\, v_\text{ext}(\mathbf r)\, d\mathbf r + J[\rho] + E_\text{xc}[\rho] .
-\end{equation}
 $$
 
 Each term is itself a functional: \(T_s[\rho]\) returns a
@@ -729,10 +713,8 @@ The **density of states (DOS)** is the number of orbitals
 per unit energy:
 
 $$
-\begin{equation}
 \label{eq:faq-dos}
 g(\varepsilon) \;=\; \sum_{n\mathbf k}\, \delta(\varepsilon - \varepsilon_{n\mathbf k}) .
-\end{equation}
 $$
 
 In a plane-wave code you compute it by: (i) running a
