@@ -21,12 +21,8 @@
     screen-reader fallback, and that assistive MathML uses the same
     deprecated attributes. So the warnings persist.
 
-    The fix below registers a `pageReady` callback that runs BEFORE
-    MathJax scans the document, walks every <p> / <li> / <div> /
-    <blockquote> that contains a math environment, and rewrites any
-    <br /> children back to the literal `\\` text node that MathJax
-    expects. After typesetting, the assistive-mml cleanup runs once
-    to remove the deprecated MathML.
+    The fix below chains into the default pageReady and runs a
+    post-typeset cleanup that removes the deprecated MathML.
 
   Kramdown line-break repair:
     The site's kramdown config uses GFM input, which (correctly per
@@ -35,9 +31,20 @@
     inside math (`\begin{array}...\end{array}`), and MathJax rejects
     `<br />` inside math with "Misplaced \hline" or "Extra close
     brace" errors. The repair function converts these <br /> back to
-    `\\` text nodes before MathJax scans the document. Code blocks
-    (`<pre><code>`) are skipped, so legitimate `<br />` inside
-    inline code is preserved.
+    `\\` text nodes BEFORE MathJax scans the document.
+
+  Why no MutationObserver:
+    An earlier iteration used a MutationObserver to re-run the
+    repair and re-typeset on every DOM mutation. That design caused
+    an infinite loop (typeset -> DOM-mutation -> observer -> typeset)
+    which hung the page. Kramdown generates all math content
+    server-side, so a one-shot pass is sufficient.
+
+  pageReady must return a promise:
+    When overriding pageReady, you must return a promise. If you
+    return a non-promise value (e.g. `true`), MathJax thinks
+    typesetting is done and never runs the actual typeset. This is
+    documented in the MathJax 3 startup-actions page.
 
   Side benefits of SVG output:
     - Crisp rendering at any zoom level
@@ -50,8 +57,8 @@
     Display:    $$...$$ or   \[...\]
 
   Refs:
+    https://docs.mathjax.org/en/latest/web/actions.html
     https://docs.mathjax.org/en/latest/output/svg.html
-    https://docs.mathjax.org/en/latest/options/input/tex.html
 -->
 <script>
   // ------- Helper: rewrite <br> back to \\ inside math envs -------
@@ -88,10 +95,6 @@
     for (var i = 0; i < els.length; i++) els[i].remove();
   }
 
-  // Expose for the theme toggle / re-render hooks in layout
-  window.repairBrInMath = repairBrInMath;
-  window.cleanupAssistiveMml = cleanupAssistiveMml;
-
   window.MathJax = {
     tex: {
       inlineMath:    [['$', '$'], ['\\(', '\\)']],
@@ -113,31 +116,23 @@
       renderActions: { addMenu: [] }
     },
     startup: {
+      // CRITICAL: pageReady MUST return a promise. If it returns a
+      // non-promise value, MathJax treats that as typesetting
+      // having completed and never runs the actual typeset.
+      //
+      // Flow: run the repair (BEFORE defaultPageReady so MathJax
+      // sees "\\" not "<br>"), then defaultPageReady which does
+      // the actual typeset, then cleanup to strip the deprecated
+      // assistive MathML.
       pageReady: function () {
-        // Run BEFORE MathJax scans the document so it sees \\ not <br />
         repairBrInMath();
-        return true;
+        return MathJax.startup.defaultPageReady().then(cleanupAssistiveMml);
+      },
+      ready: function () {
+        MathJax.startup.defaultReady();
       }
     }
   };
-
-  // After MathJax finishes its initial typeset, strip the
-  // deprecated assistive MathML. We do this by listening to the
-  // startup promise; that fires exactly once per page load.
-  // No MutationObserver — that was causing an infinite loop
-  // (typeset -> DOM-mutation -> observer -> typeset) and broke
-  // the page. The static math content is generated server-side,
-  // so a one-shot cleanup is sufficient.
-  document.addEventListener('DOMContentLoaded', function () {
-    var tryCleanup = function () {
-      if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
-        window.MathJax.startup.promise.then(cleanupAssistiveMml);
-      } else {
-        setTimeout(tryCleanup, 100);
-      }
-    };
-    tryCleanup();
-  });
 </script>
 <script
   id="MathJax-script"
