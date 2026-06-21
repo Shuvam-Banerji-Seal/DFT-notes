@@ -2626,7 +2626,7 @@ for n in range(4):
     ax.axhline(n + 0.5, color="grey", lw=0.5, ls=":")
     scale = 0.6
     ax.plot(x, scale * evecs[:, n] + (n + 0.5),
-            label=f"$\\psi_{{n}}$,  E = {n + 0.5:.1f}")
+            label=f"$\\psi_{n}$,  E = {n + 0.5:.1f}")
 ax.set_xlim(-6, 6)
 ax.set_ylim(-0.5, 4.5)
 ax.set_xlabel("x  /  $x_0$")

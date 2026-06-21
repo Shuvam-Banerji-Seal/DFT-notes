@@ -1761,8 +1761,8 @@ eps_p_s = -np.abs(f)
 
 # --- Plot --------------------------------------------------------------
 fig, ax = plt.subplots(figsize=(7.5, 5.0))
-ax.plot(dist, eps_p_s, color="#1f6feb", lw=1.8, label=r'$\pi$')
-ax.plot(dist, eps_p,   color="#d97757", lw=1.8, label=r'$\pi^*$')
+ax.plot(dist, eps_p_s, color="#1f6feb", lw=1.8, label=r'\$\pi\$')
+ax.plot(dist, eps_p,   color="#d97757", lw=1.8, label=r'\$\pi^*\$')
 ax.axhline(0.0, color="#3d3d3a", lw=0.6, ls="--", alpha=0.6)
 for d, lab in zip([0.0,
                    np.linalg.norm(M - Gamma) * A,
