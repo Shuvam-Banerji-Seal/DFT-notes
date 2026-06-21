@@ -139,7 +139,6 @@ $$
 \text{FCI}                 & K^N   & 0            & \text{exact in a basis; benchmark only} \\\
 \hline
 \end{array}
-\;}
 $$
 
 The "cost" column in \eqref{eq:ch-14-claim} is the *asymptotic
