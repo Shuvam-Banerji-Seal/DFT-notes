@@ -62,21 +62,29 @@
 -->
 <script>
   // ------- Helper: rewrite <br> back to \\ inside math envs -------
-  // MathJax sees the raw HTML before typesetting, so if Kramdown's
-  // GFM pass converted a trailing "\\" to "<br>", MathJax will choke
-  // on the <br> inside a math environment. Run this BEFORE MathJax
-  // scans the document so it sees the original "\\" text.
+  // MathJax sees the raw HTML before typesetting. Kramdown's GFM
+  // pass converts a trailing "\\" at end of line into a <br /> in
+  // HTML. So a source line like:
   //
-  // Kramdown often emits BOTH the original "\\" AND the "<br />"
-  // it inserted (e.g. inside a $$...$$ block, where the
-  // Markdown line-break rule is "ends with two spaces OR \\"
-  // and Kramdown produces both). In that case, replacing the
-  // <br> with another "\\" gives us "\\\\" (two line breaks)
-  // which then breaks any "\\hline" or "\\end" that follows.
+  //     x \\
+  //     y
   //
-  // Fix: if the text immediately before the <br> already ends
-  // with "\\", just remove the <br> entirely. Otherwise
-  // replace it with a "\\" text node.
+  // becomes:
+  //
+  //     x \<br>y
+  //
+  // in the HTML. (The leading "x \" is a single backslash that
+  // is the residue of the original "\\".)
+  //
+  // MathJax doesn't know about <br> tags. We need the line break
+  // to appear as "\\" in the TeX stream. Two cases:
+  //
+  //  1. The text before the <br> already ends in "\\" (i.e. the
+  //     source markdown used "\\\\" and kramdown kept it). Just
+  //     remove the <br>; the line break is already there.
+  //  2. The text before the <br> ends in "\" (i.e. kramdown
+  //     stripped one backslash). Replace the <br> with "\\" to
+  //     make up the missing escape.
   function repairBrInMath() {
     var candidates = document.body.querySelectorAll('p, li, dd, dt, div, blockquote');
     for (var i = 0; i < candidates.length; i++) {
@@ -89,18 +97,17 @@
       var brs = node.querySelectorAll('br');
       for (var j = 0; j < brs.length; j++) {
         var br = brs[j];
-        // Inspect the previous sibling text to decide
         var prev = br.previousSibling;
         var prevText = '';
         if (prev) {
           if (prev.nodeType === 3) prevText = prev.textContent || '';
           else if (prev.nodeType === 1) prevText = prev.textContent || '';
         }
-        if (/\\\s*$/.test(prevText)) {
-          // The "\\" is already there from the source markdown.
-          // Removing the <br> leaves a clean "\\" line break.
+        if (/\\\\\s*$/.test(prevText)) {
+          // Case 1: "\\\\" is already there; just remove the <br>
           br.parentNode.removeChild(br);
         } else {
+          // Case 2: missing one backslash; replace <br> with "\\"
           var newText = document.createTextNode('\\\\');
           br.parentNode.replaceChild(newText, br);
         }
