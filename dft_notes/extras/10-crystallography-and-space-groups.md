@@ -35,6 +35,7 @@ here and is linked back to its source.
 **Conventions used in this page.**
 
 - MathJax 3 is used.  Numbered equations use
+{% raw %}
   '\begin{equation} ... \label{eq:cryst-foo} ... \end{equation}';
   cross-references in this file are `\eqref{eq:cryst-foo}`.
 - Crystallographic angles $\alpha$, $\beta$, $\gamma$ are the
@@ -195,6 +196,7 @@ $\mathbf b_1, \mathbf b_2, \mathbf b_3$ defined by
 \label{eq:cryst-recip-def}
 \mathbf a_i \cdot \mathbf b_j \;=\; 2\pi \delta_{ij}, \qquad i, j \in \{1, 2, 3\}.
 \end{equation}
+{% endraw %}
 
 This is the definition adopted by the solid-state community
 (Kittel, Ashcroft & Mermin, the DFT notes themselves).  The
@@ -207,17 +209,21 @@ reading.  In the DFT notes the $2\pi$ convention is universal
 and [chapter 07 §7.4.1]({{ "/dft-notes/chapter-07/" | relative_url }})).
 Every reciprocal-lattice vector is an integer combination
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-recip-vector}
 \mathbf G \;=\; h \mathbf b_1 + k \mathbf b_2 + l \mathbf b_3, \qquad h, k, l \in \mathbb Z,
 \end{equation}
+{% endraw %}
 
 and the **volume of the reciprocal primitive cell** is
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-recip-volume}
 V_\text{BZ}^* \;=\; \mathbf b_1 \cdot (\mathbf b_2 \times \mathbf b_3) \;=\; \frac{(2\pi)^3}{V_\text{cell}},
 \end{equation}
+{% endraw %}
 
 where $V_\text{cell} = \mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)$
 is the direct-lattice primitive-cell volume.  Equation
@@ -228,6 +234,7 @@ reciprocal space with a smaller BZ.
 An explicit construction of the reciprocal primitive vectors
 that avoids solving a $3 \times 3$ linear system is
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-recip-explicit}
 \mathbf b_1 \;=\; 2\pi\, \frac{\mathbf a_2 \times \mathbf a_3}{\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)},
@@ -236,6 +243,7 @@ that avoids solving a $3 \times 3$ linear system is
 \qquad
 \mathbf b_3 \;=\; 2\pi\, \frac{\mathbf a_1 \times \mathbf a_2}{\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)} .
 \end{equation}
+{% endraw %}
 
 The denominator $\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)$ is
 six times the volume of the primitive cell (the scalar triple
@@ -289,12 +297,14 @@ $\leftrightarrow$ face-centred orthorhombi`c*`*.
 The conventional FCC lattice with cubic parameter $a$ has
 primitive vectors
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-fcc-prim}
 \mathbf a_1 = \frac{a}{2}(0, 1, 1), \quad
 \mathbf a_2 = \frac{a}{2}(1, 0, 1), \quad
 \mathbf a_3 = \frac{a}{2}(1, 1, 0).
 \end{equation}
+{% endraw %}
 
 The scalar triple product is
 
@@ -315,29 +325,35 @@ by hand or use `numpy.cross`), and dividing by
 $\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3) = a^3/4$
 gives
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-b1}
 \mathbf b_1 \;=\; \frac{2\pi}{a}(-1, 1, 0) .
 \end{equation}
+{% endraw %}
 
 Cyclic permutation gives the full set:
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-fcc-recip}
 \mathbf b_1 = \frac{2\pi}{a}(-1, 1, 1), \quad
 \mathbf b_2 = \frac{2\pi}{a}(1, -1, 1), \quad
 \mathbf b_3 = \frac{2\pi}{a}(1, 1, -1) .
 \end{equation}
+{% endraw %}
 
 The shortest reciprocal-lattice vectors are
 $\pm (2\pi/a)(\pm 1, \pm 1, \pm 1)$ — 8 in total — and the
 **conventional cubic cell** of the reciprocal lattice has
 parameter
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-fcc-bcc-conv}
 a^* \;=\; \frac{4\pi}{a} ,
 \end{equation}
+{% endraw %}
 
 with body-centring translations $(2\pi/a)(1, 1, 1)$ etc.  The
 reciprocal lattice is therefore **BCC** with conventional
@@ -365,10 +381,12 @@ translations.
 The only rotation orders $n$ for which an $n$-fold rotation
 axis can be a symmetry of a 3-D Bravais lattice are
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-restriction}
 n \;\in\; \{1, 2, 3, 4, 6\} .
 \end{equation}
+{% endraw %}
 
 A 5-fold axis, an 8-fold axis, or a 7-fold axis is *not* a
 Bravais-lattice symmetry.  (5-fold symmetries do appear in
@@ -384,6 +402,7 @@ $\mathbf a' - \mathbf a$ must be a lattice vector, hence an
 integer combination of $\mathbf a$ and $\mathbf b$.  In matrix
 form,
 
+{% raw %}
 \begin{equation}
 \begin{pmatrix} a'_x \\\\ a'_y \end{pmatrix}
 \;=\;
@@ -393,6 +412,7 @@ form,
 \begin{pmatrix} p & q \\\\ r & s \end{pmatrix}
 \begin{pmatrix} a_x \\\\ a_y \end{pmatrix}
 \end{equation}
+{% endraw %}
 
 with $p, q, r, s$ integers (this is a property of the rotation
 matrix with determinant 1 and integer entries).  Taking the
@@ -546,21 +566,25 @@ classification is tabulated in the
 Every element $g$ of a space group can be written in **Seitz
 notation**
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-seitz}
 g \;=\; \{R \mid \mathbf v\}, \qquad g \mathbf r \;=\; R \mathbf r + \mathbf v,
 \end{equation}
+{% endraw %}
 
 with $R \in O(3)$ a point-group operation (rotation,
 reflection, inversion, rotoinversion, or a product thereof) and
 $\mathbf v \in \mathbb R^3$ a translation.  The composition rule
 is
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-seitz-mult}
 \{R_1 \mid \mathbf v_1\} \{R_2 \mid \mathbf v_2\}
 \;=\; \{R_1 R_2 \mid R_1 \mathbf v_2 + \mathbf v_1\} .
 \end{equation}
+{% endraw %}
 
 The translation subgroup is $\{\mathbf E \mid \mathbf R\}$ for
 $\mathbf R \in \text{Bravais lattice}$, and the point group is
@@ -807,12 +831,14 @@ reciprocal space that are closer to the origin than to any
 other reciprocal-lattice point.  Equation (7.16) of chapter 07
 gives the formal definition:
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-bz}
 \text{1st BZ} \;=\; \Bigl\lbrace \mathbf k \in \mathbb R^3 \;:\;
    |\mathbf k| \le |\mathbf k - \mathbf G| \text{ for every }
    \mathbf G \in \text{reciprocal lattice} \Bigr\rbrace .
 \end{equation}
+{% endraw %}
 
 The boundary of the 1st BZ is built from the perpendicular
 bisector planes of the **shortest** reciprocal-lattice vectors
@@ -913,12 +939,14 @@ The hexagonal lattice with $a = b \ne c$, $\gamma = 120°$ has
 the reciprocal hexagonal lattice in the basal plane.  The
 primitive reciprocal vectors are
 
+{% raw %}
 \begin{equation}
 \label{eq:cryst-hex-recip}
 \mathbf b_1 = \frac{2\pi}{a} \left(1, -\frac{1}{\sqrt 3}, 0\right), \quad
 \mathbf b_2 = \frac{2\pi}{a} \left(0, \frac{2}{\sqrt 3}, 0\right), \quad
 \mathbf b_3 = \frac{2\pi}{c} (0, 0, 1) .
 \end{equation}
+{% endraw %}
 
 The 1st BZ is a **regular hexagonal prism** with hexagonal
 faces at $k_z = \pm \pi/c$ and rectangular side faces.  The

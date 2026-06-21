@@ -98,6 +98,7 @@ is *not* a phase transition of the LDA — the standard
 XC functional does not know about $U$ at all.  The
 result is the characteristic failure:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-claim}
 \boxed{\;
@@ -105,6 +106,7 @@ result is the characteristic failure:
 \text{for } 3d\text{ oxides and } 4f\text{ compounds.}
 \;}
 \end{equation}
+{% endraw %}
 
 The first equality says that the LDA band gap is roughly
 *hal`f*' the experimental gap; the second says that the
@@ -187,10 +189,12 @@ The **spectral function** is the cleanest way to see
 the failure.  In a one-particle picture, the
 photoemission spectrum at energy $\omega$ is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-spectral}
 A(\mathbf k, \omega) \;=\; \sum_n \Bigl| \langle \phi_n | \psi_{\mathbf k} \rangle \Bigr|^2\, \delta(\omega - \varepsilon_n) ,
 \end{equation}
+{% endraw %}
 
 a sum of delta functions at the quasi-particle (QP)
 energies.  In a Mott insulator, the *many-body*
@@ -203,10 +207,12 @@ costs an energy $\sim -(\varepsilon_d + U)$ (the
 (the **upper Hubbard band**).  The splitting between
 the two is the **Hubbard $U$**:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-hubbard-split}
 \Delta_\text{Hubbard} \;=\; \varepsilon_{d}^{UHB} - \varepsilon_{d}^{LHB} \;\approx\; U - W ,
 \end{equation}
+{% endraw %}
 
 where $W$ is the $d$-band width.  The LDA misses
 the splitting entirely: it puts the $d$ band in *one*
@@ -233,11 +239,13 @@ limit (delocalised electrons, $U \to 0$) and the
 atomic limit (localised electrons, $t \to 0$).  In
 its grand-canonical form,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-hubbard}
 \hat H \;=\; -t \sum_{\langle ij\rangle, \sigma} c_{i\sigma}^\dagger c_{j\sigma}
 \;+\; U \sum_i n_{i\uparrow} n_{i\downarrow} \;-\; \mu \sum_{i, \sigma} n_{i\sigma} ,
 \end{equation}
+{% endraw %}
 
 where $c_{i\sigma}^\dagger$ creates an electron of
 spin $\sigma \in \{\uparrow, \downarrow\}$ on site $i$,
@@ -253,10 +261,12 @@ on a laptop.
 **The atomic limit.**  When $t = 0$ the sites decouple.
 The single-site Hamiltonian is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-atomic}
 \hat H_\text{at} \;=\; U n_{\uparrow} n_{\downarrow} - \mu (n_{\uparrow} + n_{\downarrow}) .
 \end{equation}
+{% endraw %}
 
 The four Fock states of a single site have energies
 $E_{00} = 0$, $E_{10} = E_{01} = -\mu$,
@@ -266,11 +276,13 @@ between adding and removing an electron).  The
 single-particle spectral function of the atom is two
 delta functions at
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-atomic-spectrum}
 \varepsilon_\text{add} = -\mu = -U/2 , \qquad
 \varepsilon_\text{rem} = -(U - \mu) = -U/2 ,
 \end{equation}
+{% endraw %}
 
 both equal: the atom is *metalli`c*' in the single-
 particle sense, but the *real* spectrum has the
@@ -278,11 +290,13 @@ charge gap $U$ between the two- and three-particle
 sectors, and the single-particle Green's function has
 a non-trivial multi-peak structure:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-atomic-gf}
 G_\text{at}(\omega) \;=\; \frac{1 - \langle n \rangle/2}{\omega + U/2 - i0^+}
 \;+\; \frac{\langle n \rangle/2}{\omega - U/2 + i0^+} .
 \end{equation}
+{% endraw %}
 
 For $\langle n \rangle = 1$ (half-filling), the two
 poles are at $\omega = \mp U/2$ with equal weight
@@ -315,11 +329,13 @@ For the purposes of this chapter the key fact is
 the *form* of the single-particle spectrum in the
 strongly-correlated regime $U \gg t$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-hubbard-spectrum}
 A(\mathbf k, \omega) \;=\; Z\, \delta(\omega - \varepsilon_\text{QP}(\mathbf k))
 \;+\; A_\text{inc}(\omega) ,
 \end{equation}
+{% endraw %}
 
 a quasi-particle peak of weight $Z \ll 1$ at the
 QP energy $\varepsilon_\text{QP}$, plus an incoherent
@@ -335,10 +351,12 @@ DFT+U adds the Hubbard-model physics to a chosen
 set of atomic-like orbitals $\{|m \sigma\rangle\}$
 on each correlated atom.  The energy functional is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-dft+u-energy}
 E_\text{DFT+U}[\rho, n^\sigma] \;=\; E_\text{DFT}[\rho] \;+\; E_\text{Hubbard}[\{n^\sigma\}] \;-\; E_\text{dc}[\{n^\sigma\}] .
 \end{equation}
+{% endraw %}
 
 The first term is the standard DFT total energy
 ([chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }})).  The
@@ -367,12 +385,14 @@ problem in the chosen XC functional.
 **The occupation matrix.**  Project the KS
 orbitals onto the atomic basis:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-occ-matrix}
 n^\sigma_{I, mm'} \;=\; \sum_{n, \mathbf k}^\text{occ} f_{n \mathbf k}\,
 \langle \phi_I^m | \psi_{n \mathbf k}^\sigma \rangle \,
 \langle \psi_{n \mathbf k}^\sigma | \phi_I^{m'} \rangle .
 \end{equation}
+{% endraw %}
 
 The sum is over all occupied KS orbitals, $f_{n
 \mathbf k}$ is the occupation number ($0 \le f \le 1$
@@ -397,12 +417,14 @@ channel-dependent combinations.  The
 rotationally-invariant form of the Hubbard energy
 is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-liechtenstein}
 E_\text{Hubbard}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \Bigl\lbrace
 U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''}
 \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m''})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace ,
 \end{equation}
+{% endraw %}
 
 where $U_{m m' m'' m'''}$ are the on-site Coulomb
 integrals evaluated in the atomic basis.  In the
@@ -410,10 +432,12 @@ integrals evaluated in the atomic basis.  In the
 *Phys. Rev. B* **57**, 1505 (1998)) the four-index
 tensor is reduced to a single effective $U$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-dudarev}
 E_\text{Hubbard}^\text{D} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_m n^\sigma_{I, mm}\Bigl(1 - n^\sigma_{I, mm}\Bigr) ,
 \end{equation}
+{% endraw %}
 
 where $U_\text{eff} = U - J$ is the difference of
 the direct and exchange integrals.  The
@@ -437,10 +461,12 @@ energy \eqref{eq:ch-13-dudarev} is in addition to
 that.  The double-counting correction removes the
 LDA part:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-dc}
 E_\text{dc} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_m n^\sigma_{I, mm}\Bigl(N_I^\sigma/2 - n^\sigma_{I, mm}\Bigr) ,
 \end{equation}
+{% endraw %}
 
 a simple quadratic form whose specific value is
 the **around-mean-field** (AMF) double counting.
@@ -458,20 +484,24 @@ The complete DFT+U functional is
 The functional derivative with respect to the
 occupation matrix gives the **Hubbard potential**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-hubbard-pot}
 V^\sigma_{I, mm'} \;=\; U_\text{eff} \Bigl(\tfrac{1}{2} - n^\sigma_{I, mm'}\Bigr) \delta_{mm'} ,
 \end{equation}
+{% endraw %}
 
 which is added to the KS Hamiltonian.  The
 effective KS equation in the presence of the
 Hubbard correction is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-ks+u}
 \Bigl[ \hat H_\text{KS} + \hat V_\text{Hub} \Bigr] |\psi_{n \mathbf k}^\sigma\rangle
 \;=\; \varepsilon_{n \mathbf k}^\sigma |\psi_{n \mathbf k}^\sigma\rangle ,
 \end{equation}
+{% endraw %}
 
 with $\hat V_\text{Hub}$ acting only on the
 correlated subspace (it is zero outside).  The
@@ -563,21 +593,25 @@ occupation).  The constraint is implemented by
 adding a Lagrange multiplier $\lambda_I$ to the
 Hamiltonian:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-constrained}
 \hat H_\lambda \;=\; \hat H_\text{KS} \;+\; \sum_I \lambda_I \hat n_I ,
 \end{equation}
+{% endraw %}
 
 where $\hat n_I = \sum_{m \sigma} |\phi_I^m
 \rangle \langle \phi_I^m|$ is the constrained
 occupation operator.  The $U$ from constrained
 DFT is the **constrained-occupation $U$**:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-constrained-u}
 U_\text{constrained} \;=\; \frac{\partial^2 E}{\partial N_I^2}
 \;=\; \frac{\partial \lambda_I}{\partial N_I} .
 \end{equation}
+{% endraw %}
 
 The implementation is conceptually simple but
 technically delicate: the constraint must be
@@ -597,12 +631,14 @@ are removed.  The constrained $U$ is then the
 Coulomb matrix element of the partially-screened
 interaction:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-crpa}
 U_{m m' m'' m'''}^\text{cRPA} \;=\; \int d\mathbf r\, d\mathbf r' \,
 \phi_I^{m*}(\mathbf r) \phi_I^{m'}(\mathbf r)\,
 \tilde W(\mathbf r, \mathbf r')\, \phi_I^{m''*}(\mathbf r') \phi_I^{m'''}(\mathbf r') ,
 \end{equation}
+{% endraw %}
 
 where $\tilde W$ is the constrained
 screened-Coulomb interaction.  cRPA gives
@@ -640,6 +676,7 @@ canonical parameterisation is HSE06 (Heyd,
 Scuseria, Ernzerhof, *J. Chem. Phys.* **118**,
 8207 (2003)):
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-hse}
 E_\text{xc}^\text{HSE} \;=\; a\, E_x^\text{HF,SR}(\omega)
@@ -647,6 +684,7 @@ E_\text{xc}^\text{HSE} \;=\; a\, E_x^\text{HF,SR}(\omega)
 \;+\; E_x^\text{PBE,LR}(\omega)
 \;+\; E_c^\text{PBE} ,
 \end{equation}
+{% endraw %}
 
 where $E_x^\text{HF,SR}$ is the short-range part
 of the Hartree–Fock exchange, $E_x^\text{PBE,SR}$
@@ -712,10 +750,12 @@ self-energy is the convolution of the single-
 particle Green's function $G$ and the screened
 Coulomb interaction $W$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-gw-sigma}
 \Sigma(\mathbf r, \mathbf r', \omega) \;=\; \frac{i}{2\pi} \int d\omega'\, G(\mathbf r, \mathbf r', \omega - \omega')\, W(\mathbf r, \mathbf r', \omega') .
 \end{equation}
+{% endraw %}
 
 In frequency space the convolution is a product:
 the GW self-energy is the product $GW$ in
@@ -725,12 +765,14 @@ from the $G \cdot W$ structure.
 **The $G_0 W_0$ approximation.**  The standard
 non-self-consistent implementation:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-g0w0}
 G = G_0 \quad (\text{DFT Green's function}), \qquad
 W = (1 - v P)^{-1} v \quad (\text{RPA screened Coulomb}), \qquad
 \Sigma = i G_0 W_0 .
 \end{equation}
+{% endraw %}
 
 The input is the DFT ground state; $G_0$ is
 constructed from the KS eigenvalues and orbitals,
@@ -742,26 +784,32 @@ approximation), and $\Sigma$ is the resulting
 self-energy.  The QP energies are the solutions
 of the **Dyson equation**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-dyson}
 \Bigl[ \hat H_\text{KS} + \hat \Sigma(\varepsilon_n^\text{QP}) - \varepsilon_n^\text{QP} \Bigr] |\psi_n\rangle \;=\; 0 ,
 \end{equation}
+{% endraw %}
 
 a *non-linear* eigenvalue problem in the energy.
 In practice one linearises around the KS
 eigenvalue $\varepsilon_n^\text{KS}$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-qp-linear}
 \varepsilon_n^\text{QP} \;\approx\; \varepsilon_n^\text{KS} \;+\; Z_n\, \langle \psi_n | \Sigma(\varepsilon_n^\text{KS}) - v_\text{xc} | \psi_n \rangle ,
 \end{equation}
+{% endraw %}
 
 where the **quasi-particle weight** is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-z-factor}
 Z_n \;=\; \Bigl( 1 - \Bigl\langle \psi_n \Bigr| \frac{\partial \Sigma(\omega)}{\partial \omega} \Bigl|_{\omega = \varepsilon_n^\text{KS}} \Bigl| \psi_n \bigr\rangle \Bigr)^{-1} .
 \end{equation}
+{% endraw %}
 
 For weakly-correlated semiconductors (Si, Ge,
 GaAs), $Z_n \approx 0.8$–$0.9$ and the linear
@@ -775,12 +823,14 @@ the *cheapest* $GW$ approximation; it is the
 starting point.  Three higher levels of
 self-consistency are possible:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-gw-ladder}
 \boxed{
 G_0 W_0 \;\to\; ev GW \;\to\; ev GW_0 \;\to\; \text{full sc} GW
 }
 \end{equation}
+{% endraw %}
 
 - **$G_0 W_0$** (Hedin's 1969 starting point) —
   one-shot $G$ from DFT, one-shot $W$ from $G_0$.
@@ -824,11 +874,13 @@ mechanism: the self-energy $\Sigma(\omega)$ has
 a frequency dependence that, in the spectral
 representation,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-sigma-spectral}
 \Sigma(\omega) \;=\; v_\text{xc} \;+\; \int_0^\infty d\omega' \,
 \frac{S(\omega')}{\omega - \omega' - i0^+ \cdot \text{sgn}(\omega - \mu)} ,
 \end{equation}
+{% endraw %}
 
 where $S(\omega)$ is the *spectral function of
 the self-energy*.  The structure in $S(\omega)$
@@ -855,6 +907,7 @@ impurity site embedded in a bath of non-interacting
 electrons, with the impurity described by the
 Anderson Hamiltonian
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-anderson}
 \hat H_\text{And} \;=\; \sum_{k, \sigma} \varepsilon_k\, a_{k\sigma}^\dagger a_{k\sigma}
@@ -862,6 +915,7 @@ Anderson Hamiltonian
 \;-\; \mu \sum_{\sigma} d_{\sigma}^\dagger d_{\sigma}
 \;+\; U\, d_{\uparrow}^\dagger d_{\uparrow}\, d_{\downarrow}^\dagger d_{\downarrow} ,
 \end{equation}
+{% endraw %}
 
 where $d_\sigma$ destroys an electron on the
 impurity, $a_{k\sigma}$ destroys an electron in
@@ -869,21 +923,26 @@ the bath state $k$, $\varepsilon_k$ is the bath
 energy, and $V_k$ is the hybridisation.  The
 **hybridisation function**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-hybridisation}
 \Delta(\omega) \;=\; \sum_k \frac{|V_k|^2}{\omega - \varepsilon_k + i0^+}
 \end{equation}
+{% endraw %}
 
 encodes the bath.  The impurity Green's function
 is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-impurity-gf}
 G_\text{imp}(\omega) \;=\; \Bigl[ \omega + \mu - \Delta(\omega) - \Sigma_\text{imp}(\omega) \Bigr]^{-1} .
 \end{equation}
+{% endraw %}
 
 The DMFT self-consistency loop is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-dmft-loop}
 \boxed{
@@ -891,6 +950,7 @@ G_\text{loc}(\omega) = \sum_{\mathbf k} \Bigl[ \omega + \mu - \varepsilon_{\math
 \Delta(\omega) = \omega + \mu - \Sigma(\omega) - G_\text{loc}^{-1}(\omega) .
 }
 \end{equation}
+{% endraw %}
 
 The left equation computes the *local* Green's
 function of the lattice by summing over the band
@@ -934,11 +994,13 @@ self-consistently computes the local self-energy
 $\Sigma_{I, mm'}(\omega)$ on each correlated
 atom.  The full spectral function is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-dft+dmft}
 A(\mathbf k, \omega) \;=\; -\frac{1}{\pi} \text{Im}\, \sum_{m m'}\,
 \Bigl[ \omega + \mu - \hat H_\text{KS}(\mathbf k) - \hat \Sigma(\omega) \Bigr]^{-1}_{m m'} ,
 \end{equation}
+{% endraw %}
 
 a momentum-resolved spectral function that
 contains the full *dynami`c*' (frequency-dependent)
@@ -1811,27 +1873,32 @@ for $(G, \Sigma, W, P, \Gamma)$ in which the
 *screene`d*' Coulomb $W$ ([Hedin, 1965, eq. (75),
 p. A807](#)):
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-w-def}
 W(1, 2) \;=\; v(1, 2) \;+\; \int d(3, 4)\,
 v(1, 3)\, P(3, 4)\, W(4, 2) ,
 \end{equation}
+{% endraw %}
 
 with $P$ the *irreducible* polarisability and
 $\Gamma$ the **vertex function**
 ([Hedin, 1965, eq. (88), p. A810](#)).  The
 self-energy is the **GW form**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-gw-def}
 \Sigma(1, 2) \;=\; i \int d(3, 4)\,
 G(1, 3)\, W(1, 4)\, \Gamma(3, 2; 4) .
 \end{equation}
+{% endraw %}
 
 **The Hedin equations.**  The full self-consistent
 system — Hedin's equations — is five equations in
 five unknowns $(G, \Sigma, W, P, \Gamma)$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-hedin-full}
 \boxed{
@@ -1851,6 +1918,7 @@ G(4, 6)\, G(7, 5)\, \Gamma(6, 7; 3) .
 \end{aligned}
 }
 \end{equation}
+{% endraw %}
 
 The five equations are coupled: $G$ depends on
 $\Sigma$, $\Sigma$ depends on $G$, $W$, and
@@ -1865,10 +1933,12 @@ approximation** in Hedin's expansion — obtained
 by setting $\Gamma = 1$ in the second equation —
 is the **GW approximation**:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-gw-sigma}
 \Sigma(1, 2) \;\stackrel{\text{GW}}{=}\; i G(1, 2)\, W(1, 2) ,
 \end{equation}
+{% endraw %}
 
 where the convolution in time (frequency) is
 implicit.  Hedin's first equation
@@ -1954,22 +2024,26 @@ pseudopotential formalism
 ([Hybertsen and Louie, 1986, p. 5392](#)).
 The LDA Green's function is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-g0}
 G_0(\mathbf r, \mathbf r', \omega) \;=\;
 \sum_{n\mathbf k} \frac{\psi_{n \mathbf k}(\mathbf r)\, \psi_{n \mathbf k}^\star(\mathbf r')}{\omega - \varepsilon_{n \mathbf k}^\text{KS} - i \eta \, \text{sgn}(\varepsilon_{n \mathbf k}^\text{KS} - \mu)} ,
 \end{equation}
+{% endraw %}
 
 a sum over occupied (negative imaginary part)
 and unoccupied (positive imaginary part) states
 ([Hybertsen and Louie, 1986, eq. (1), p. 5393](#)).
 The non-self-consistent self-energy is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-g0w0}
 \Sigma(\mathbf r, \mathbf r', \omega) \;=\; \frac{i}{2\pi} \int d\omega'\, e^{i\omega' \eta}\,
 G_0(\mathbf r, \mathbf r', \omega + \omega')\, W(\mathbf r, \mathbf r', \omega') ,
 \end{equation}
+{% endraw %}
 
 with $W$ computed once at the *RPA* level using
 $G_0$ ([Hybertsen and Louie, 1986, eq. (4),
@@ -1986,6 +2060,7 @@ P_{\mathbf G \mathbf G'}(\mathbf q, \omega)$, with
 the **irreducible polarisability**
 ([Hybertsen and Louie, 1986, p. 5394](#))
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-rpa}
 P_{\mathbf G \mathbf G'}(\mathbf q, \omega) \;=\;
@@ -1995,6 +2070,7 @@ P_{\mathbf G \mathbf G'}(\mathbf q, \omega) \;=\;
 \langle \psi_{n \mathbf k} | e^{-i(\mathbf q + \mathbf G) \cdot \mathbf r} | \psi_{n' \mathbf k + \mathbf q} \rangle \,
 \langle \psi_{n' \mathbf k + \mathbf q} | e^{i(\mathbf q + \mathbf G') \cdot \mathbf r} | \psi_{n \mathbf k} \rangle ,
 \end{equation}
+{% endraw %}
 
 a sum over pairs of occupied ($n \mathbf k$)
 and empty ($n' \mathbf k + \mathbf q$) states.
@@ -2029,12 +2105,14 @@ overestimates the Si gap by $\sim 0.3$ eV
 quasiparticle energies are the solutions of the
 *linearise`d*' Dyson equation
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-qp}
 \varepsilon_{n\mathbf k}^\text{QP} \;=\; \varepsilon_{n\mathbf k}^\text{KS} \;+\;
 Z_{n\mathbf k} \,
 \langle \psi_{n\mathbf k} | \Sigma(\varepsilon_{n\mathbf k}^\text{KS}) - v_\text{xc} | \psi_{n\mathbf k} \rangle ,
 \end{equation}
+{% endraw %}
 
 with $Z = (1 - \partial \Sigma / \partial \omega)^{-1}$
 ([Hybertsen and Louie, 1986, eq. (9), p. 5395](#)).
@@ -2065,6 +2143,7 @@ overestimated — a *known failure* of $G_0 W_0$
 that the BSE of § 13.8.3 fixes
 ([Rohlfing and Louie, 2000, p. 4933](#)).
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-hl86-gaps}
 \boxed{
@@ -2076,6 +2155,7 @@ E_g^\text{LiCl} &= 9.4 \text{ eV} \quad (\text{exp: } 9.4 \text{ eV}) .
 \end{aligned}
 }
 \end{equation}
+{% endraw %}
 
 The Si gap is *overestimate`d*' by $0.12$ eV
 (10\%); Ge is essentially exact; LiCl is
@@ -2130,10 +2210,12 @@ eigenvalue spectrum of an effective
 **two-particle Hamiltonian**
 ([Rohlfing and Louie, 2000, eq. (2), p. 4929](#)):
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-bse-hamiltonian}
 \hat H^\text{eh} \;=\; \hat H^\text{diag} \;+\; 2 \hat H^\text{x} \;+\; \hat H^\text{d} ,
 \end{equation}
+{% endraw %}
 
 where $\hat H^\text{diag}$ is the *diagonal*
 part, $\hat H^\text{x}$ the *exchange*
@@ -2152,6 +2234,7 @@ exchange) and the **direct kernel** (the
 *attractive* Coulomb between electron and
 hole, screened by $W$).  The two kernels are
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-bse-kernel}
 \boxed{
@@ -2167,6 +2250,7 @@ W(\mathbf r, \mathbf r', \omega = 0)\,
 \end{aligned}
 }
 \end{equation}
+{% endraw %}
 
 The minus sign in $H^d$ is the *attractive*
 sign: the electron and the hole attract each
@@ -2189,12 +2273,14 @@ observable that the BSE produces is the
 **macroscopic dielectric function**
 $\varepsilon_M(\omega)$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-9-bse-epsM}
 \varepsilon_M(\omega) \;=\; 1 \;-\; \lim_{\mathbf q \to 0}\, v(\mathbf q)\, \sum_\lambda \,
 \frac{| \langle 0 | \hat P_\mathbf q | \lambda \rangle |^2}
 {\omega - E_\lambda + i \eta} ,
 \end{equation}
+{% endraw %}
 
 where $\hat P_\mathbf q$ is the momentum
 operator, $|0\rangle$ the ground state,
@@ -2472,12 +2558,14 @@ point is the standard Kohn–Sham total energy
 [Anisimov, Zaanen, and Andersen, 1991, eq. (2.1),
 p. 944]:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-aza-functional}
 \boxed{
 E_\text{DFT+U} \;=\; E_\text{DFT}[\rho] \;+\; E_\text{Hub}\Bigl[\{n^\sigma_{mm'}\}\Bigr] \;-\; E_\text{dc}\Bigl[\{n^\sigma_{mm'}\}\Bigr] .
 }
 \end{equation}
+{% endraw %}
 
 The first term is the standard DFT total energy
 of [chapter 04]({{ "/dft-notes/chapter-04/" |
@@ -2488,10 +2576,12 @@ on each correlated atom $I$ with $M$ orbitals
 [Anisimov, Zaanen, and Andersen, 1991, eq. (2.2),
 p. 944]:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-aza-hubbard}
 E_\text{Hub} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \Bigl\lbrace U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace ,
 \end{equation}
+{% endraw %}
 
 where $U_{m m' m'' m'''}$ are the on-site Coulomb
 matrix elements in the atomic basis and
@@ -2508,10 +2598,12 @@ last paragraph, p. 945].  The double-counting
 correction in the Anisimov–Zaanen–Andersen
 (1991) paper is the **around-mean-field** form,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-aza-dc}
 E_\text{dc}^\text{AMF} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_m \Bigl[ U\, n^\sigma_{I, mm}\, \Bigl(1 - n^\sigma_{I, mm}\Bigr) \;-\; \Bigl(U - J\Bigr)\, n^\sigma_{I, mm}\, \Bigl(n^\sigma_{I, mm} - \tfrac{1}{2}\Bigr) \Bigr] ,
 \end{equation}
+{% endraw %}
 
 which is the form used in
 [Liechtenstein, Anisimov, and Zaanen, 1995, eq.
@@ -2546,10 +2638,12 @@ Andersen recipe [Anisimov, Zaanen, and Andersen,
     the *total LDA energy* with respect to the
     constrained occupation:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-aza-ucl}
 \boxed{ U_\text{constrained} \;=\; \frac{\partial^2 E_\text{LDA}}{\partial N_I^2} \;=\; \frac{\partial \lambda_I}{\partial N_I} . }
 \end{equation}
+{% endraw %}
 
 The constraint must be applied *only* to the
 on-site atomic orbitals (not the full valence) and
@@ -2624,12 +2718,14 @@ occupation matrix changes too.  The
 [Liechtenstein, Anisimov, and Zaanen, 1995, eq.
 (3), p. R5468]:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-liechtenstein}
 \boxed{
 E_\text{Hub}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \Bigl\lbrace U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace .
 }
 \end{equation}
+{% endraw %}
 
 This is the same form as
 [Anisimov, Zaanen, and Andersen, 1991, eq. (2.2),
@@ -2642,10 +2738,12 @@ The full rotation matrix is
 [Liechtenstein, Anisimov, and Zaanen, 1995, eq.
 (2), p. R5468]:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-liechtenstein-U}
 U_{m m' m'' m'''} \;=\; \sum_k a_k\, F^k\, \langle m m' | C^{(k)} | m'' m''' \rangle ,
 \end{equation}
+{% endraw %}
 
 where $C^{(k)}$ is the $k$-th Racah angular
 momentum tensor and the $a_k$ are fixed
@@ -2697,10 +2795,12 @@ $U_{m m' m'' m'''}$ reduces to
 [Liechtenstein, Anisimov, and Zaanen, 1995,
 discussion following eq. (3), p. R5468]:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-liechtenstein-relation}
 U \;=\; F^0 , \qquad J \;=\; \frac{F^2 + F^4}{14} \quad (\text{$d$ shell}),
 \end{equation}
+{% endraw %}
 
 so the *only* free parameters of the
 rotationally-invariant form are the *two* numbers
@@ -2725,10 +2825,12 @@ form with a *single* effective parameter
 [Dudarev, Botton, Savrasov, Humphreys, and Sutton,
 1998, eq. (3), p. 1506]:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-dudarev}
 \boxed{ E_\text{Hub}^\text{D} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_{m} n^\sigma_{I, mm}\Bigl(1 - n^\sigma_{I, mm}\Bigr) , \qquad U_\text{eff} \;=\; U - J . }
 \end{equation}
+{% endraw %}
 
 This is the form used in VASP, Quantum ESPRESSO,
 CASTEP, and most modern plane-wave codes.  The
@@ -2832,10 +2934,12 @@ the hopping $t$ so that the kinetic energy
 remains finite
 [Metzner and Vollhardt, 1989, eq. (1), p. 324]:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-mv-rescaling}
 \boxed{ t \;\to\; \frac{t^*}{\sqrt{Z}} , \qquad Z = \text{coordination number}, \qquad \text{as } Z \to \infty . }
 \end{equation}
+{% endraw %}
 
 The rescaling makes the *kineti`c*' energy
 *finite* (each hopping event is small, $t \sim
@@ -2943,19 +3047,23 @@ materials.
 eq. (14), p. 19].  The local Green's function of
 the lattice is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-gkkr-gloc}
 G_\text{loc}(\omega) \;=\; \sum_{\mathbf k} \Bigl[ \omega + \mu - \varepsilon_{\mathbf k} - \Sigma(\omega) \Bigr]^{-1} ,
 \end{equation}
+{% endraw %}
 
 the sum being over the band structure of the
 non-interacting lattice.  The *impurity* Green's
 function of the Anderson model is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-gkkr-gimp}
 G_\text{imp}(\omega) \;=\; \Bigl[ \omega + \mu - \Delta(\omega) - \Sigma_\text{imp}(\omega) \Bigr]^{-1} ,
 \end{equation}
+{% endraw %}
 
 where $\Delta(\omega)$ is the *hybridisation
 function* of the bath.  The DMFT
@@ -2964,10 +3072,12 @@ that the two Green's functions agree:
 $G_\text{imp}(\omega) = G_\text{loc}(\omega)$.
 The hybridisation function is then fixed by
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-gkkr-delta}
 \boxed{ \Delta(\omega) \;=\; \omega + \mu - \Sigma(\omega) - G_\text{loc}^{-1}(\omega) . }
 \end{equation}
+{% endraw %}
 
 The mapping is exact in the $Z \to \infty$ limit
 [Georges, Kotliar, Krauth, and Rozenberg, 1996,
@@ -2981,10 +3091,12 @@ in its generalised form
 [Georges, Kotliar, Krauth, and Rozenberg, 1996,
 eq. (16), p. 20]:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-gkkr-siam}
 \hat H_\text{SIAM} \;=\; \sum_{k, \sigma} \varepsilon_k\, a_{k\sigma}^\dagger a_{k\sigma} \;+\; \sum_{k, \sigma} \Bigl( V_k\, a_{k\sigma}^\dagger d_{\sigma} + V_k^*\, d_{\sigma}^\dagger a_{k\sigma} \Bigr) \;-\; \mu \sum_{\sigma} d_{\sigma}^\dagger d_{\sigma} \;+\; U\, d_{\uparrow}^\dagger d_{\uparrow}\, d_{\downarrow}^\dagger d_{\downarrow} ,
 \end{equation}
+{% endraw %}
 
 where $d_\sigma$ destroys an electron on the
 impurity, $a_{k\sigma}$ destroys an electron in
@@ -3005,6 +3117,7 @@ problem [Georges, Kotliar, Krauth, and Rozenberg,
 **The self-consistency loop (Georges § III, p.
 30-40).**  The DMFT self-consistency loop is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-gkkr-loop}
 \boxed{
@@ -3019,6 +3132,7 @@ problem [Georges, Kotliar, Krauth, and Rozenberg,
 \end{aligned}
 }
 \end{equation}
+{% endraw %}
 
 The loop is the *core algorithm* of DMFT.  The
 *outer loo`p*' (i)-(iii)-(vi) is the
@@ -3493,11 +3607,13 @@ correlated atom) using the **projected localised orbitals**
 (1997) and Souza, Marzari & Vanderbilt (2001). The PLO
 construction gives
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-plo}
 |\chi_R^\ell \rangle \;=\; \sum_{n\mathbf k} |\phi_{n\mathbf k}\rangle
    \langle \phi_{n\mathbf k} | g_R^\ell \rangle ,
 \end{equation}
+{% endraw %}
 
 where $|g_R^\ell \rangle$ is a trial orbital centred on site
 $R$ with angular-momentum character $\ell$ (e.g. a
@@ -3511,6 +3627,7 @@ subspace.
 LDA Hamiltonian onto the correlated subspace and add the
 local Hubbard interaction:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-hubbard}
 \hat H \;=\; \underbrace{\sum_{ij\sigma} t_{ij}^{ab}\, \hat c_{ia\sigma}^\dagger \hat c_{jb\sigma}
@@ -3519,6 +3636,7 @@ local Hubbard interaction:
                \hat c_{m_1\sigma}^\dagger \hat c_{m_2\sigma'}^\dagger
                \hat c_{m_3\sigma'} \hat c_{m_4\sigma}}_{\hat H_U} ,
 \end{equation}
+{% endraw %}
 
 where $t_{ij}^{ab} = \langle \chi_{Ra}^m | \hat H_\text{DFT} | \chi_{Rb}^n \rangle$
 is the *projecte`d*' hopping matrix, $\varepsilon_i$ is the
@@ -3533,11 +3651,13 @@ self-consistency loop of §13.9.5. In the LDA+DMFT version,
 the *bat`h*' Green function $G_0(i\omega_n)$ is defined on the
 correlated subspace and updated at each iteration:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-dmft-loc}
 G_\text{loc}(i\omega_n) \;=\; \sum_{\mathbf k} [i\omega_n + \mu
                   - \hat H_\text{DFT}(\mathbf k) - \Sigma(i\omega_n)]^{-1}_\text{loc} ,
 \end{equation}
+{% endraw %}
 
 where the subscript "loc" means the local projection onto
 the correlated subspace (a $D \times D$ matrix in the
@@ -3552,6 +3672,7 @@ correction.** Once DMFT has converged for the current
 $\hat H_\text{DFT}$, the DMFT self-energy $\Sigma(i\omega_n)$
 is used to update the KS potential:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-v-update}
 v_\text{eff}^\text{new}(\mathbf r) \;=\; v_\text{eff}^\text{LDA}(\mathbf r)
@@ -3559,6 +3680,7 @@ v_\text{eff}^\text{new}(\mathbf r) \;=\; v_\text{eff}^\text{LDA}(\mathbf r)
         \text{Re}\, \Sigma(i\omega_n \to \infty)_{m m'}\,
         \langle \chi_R^{m'} | \mathbf r \rangle .
 \end{equation}
+{% endraw %}
 
 The high-frequency limit of the self-energy,
 $\text{Re}\,\Sigma(i\omega_n \to \infty) = \Sigma_\text{dc}$,
@@ -3566,18 +3688,22 @@ is the **double-counting correction** that removes the
 electron–electron interaction already present in the LDA
 energy. The two standard choices are:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-dc-fll}
 \Sigma_\text{dc}^\text{FLL} \;=\; U\,(N - \tfrac{1}{2}) - J\,(N_\sigma - \tfrac{1}{2})
 \end{equation}
+{% endraw %}
 
 (the "fully-localised limit" of Anisimov, Zaanen & Andersen
 1991, Eq. (5); see §13.9.1 above) and
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-dc-amf}
 \Sigma_\text{dc}^\text{AMF} \;=\; U\, N - J\, (N_\sigma - N/2)
 \end{equation}
+{% endraw %}
 
 (the "around-mean-field" of Czyzyk & Sawatzky 1994). The
 FLL is the *default* for insulating correlated systems
@@ -3600,6 +3726,7 @@ needed for convergence is typically 10–30.
 The **LDA+DMFT total energy** functional (Kotliar et al.
 2006, Eq. (3); Haule & Birol 2015, Eq. (1)) is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-energy}
 E^\text{LDA+DMFT}[\rho, G] \;=\; E_\text{LDA}[\rho]
@@ -3607,16 +3734,19 @@ E^\text{LDA+DMFT}[\rho, G] \;=\; E_\text{LDA}[\rho]
    \;-\; E_\text{dc}
    \;+\; \text{Tr}\Bigl[\Sigma G\Bigr] - \text{Tr}\ln G - \text{Tr}\ln\Bigl[1 - \Sigma G_0\Bigr] ,
 \end{equation}
+{% endraw %}
 
 where the last three terms are the **DMFT correlation
 energy** (the difference between the interacting and
 non-interacting impurity partition functions). The
 **force on atom $I$** is (Haule 2010, Eq. (12)):
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-13-10-force}
 \mathbf F_I \;=\; -\frac{\partial E^\text{LDA+DMFT}}{\partial \mathbf R_I} ,
 \end{equation}
+{% endraw %}
 
 which requires the *stationary* implementation of Haule
 & Birol 2015 (a free-energy functional rather than an

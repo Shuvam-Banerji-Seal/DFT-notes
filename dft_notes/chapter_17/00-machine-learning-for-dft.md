@@ -94,6 +94,7 @@ DFT calculator only on the configurations the MLIP is
 The claim can be sharpened into a single equation that
 captures the *trading relation*:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-claim}
 \boxed{\;
@@ -104,6 +105,7 @@ captures the *trading relation*:
 \text{supp}(\mathcal D_\text{train}) .
 \;}
 \end{equation}
+{% endraw %}
 
 The first inequality says that, on the support of the
 training distribution $\mathcal D_\text{train}$, the
@@ -205,10 +207,12 @@ single-point calculation has three contributions:
 
 The result is the *cubic wall* of Kohn–Sham DFT:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-cubic}
 \text{Cost}_\text{KS} \;\sim\; N_\text{SCF} \cdot N_k \cdot K^3 ,
 \end{equation}
+{% endraw %}
 
 where $N_k$ is the number of *`k*`-points.  For a
 periodic solid with 50 atoms in the unit cell, $K \sim
@@ -230,20 +234,24 @@ scales *linearly* in the number of atoms (the
 descriptor and the network evaluation are both local
 operations):
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-linear}
 \text{Cost}_\text{MLIP} \;\sim\; N_\text{at} \cdot d_\text{feat} \cdot N_\text{layer} ,
 \end{equation}
+{% endraw %}
 
 where $d_\text{feat}$ is the per-atom feature dimension
 (typically 64–128) and $N_\text{layer}$ is the number of
 message-passing layers (typically 2–4).  The
 **speedup** is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-speedup}
 \frac{\text{Cost}_\text{KS}}{\text{Cost}_\text{MLIP}} \;\sim\; \frac{N_\text{SCF}\, N_k\, K^3}{N_\text{at}\, d_\text{feat}\, N_\text{layer}} \;\sim\; 10^3 \text{--} 10^6 ,
 \end{equation}
+{% endraw %}
 
 with the higher end of the range achieved for
 large systems ($N_\text{at} \gtrsim 10^3$) and the lower
@@ -406,10 +414,12 @@ by automatic differentiation, with both the
 *network gradient* and the descriptor gradient
 available in closed form):
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-forces}
 \mathbf F_i \;=\; -\frac{\partial E_\text{MLIP}}{\partial \mathbf R_i} \;=\; -\sum_{i'} \frac{\partial E_\text{MLIP}}{\partial d_{i'}} \cdot \frac{\partial d_{i'}}{\partial \mathbf R_i} .
 \end{equation}
+{% endraw %}
 
 The descriptor should also be **complete** (the
 map from configuration to descriptor should be
@@ -435,17 +445,21 @@ functions, which depend on triples of atoms.
 The **radial** symmetry functions are sums over the
 neighbours of atom $i$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-bp-radial-1}
 G_i^1 \;=\; \sum_{j
 eq i} e^{-\eta (r_{ij} - r_s)^2} \cdot f_c(r_{ij}) ,
 \end{equation}
+{% endraw %}
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-bp-radial-2}
 G_i^2 \;=\; \sum_{j
 eq i} e^{-\eta r_{ij}^2} \cdot f_c(r_{ij}) .
 \end{equation}
+{% endraw %}
 
 > **The hand-crafted limitation.**  The BP
 > hyperparameters $(\eta, r_s, \zeta, \lambda)$ are
@@ -461,10 +475,12 @@ descriptor of Bartók, Payne, Risi and Csányi
 takes a *systemati`c*' approach.  The starting point
 is the **atomic density** centred on atom $i$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-soap-density}
 \rho_i(\mathbf r) \;=\; \sum_{j} e^{-|\mathbf r - \mathbf R_{ij}|^2 / (2\sigma^2)} \cdot f_c(r_{ij}) ,
 \end{equation}
+{% endraw %}
 
 a sum of Gaussians of width $\sigma$ centred on the
 neighbours of atom $i$ (with a cutoff $f_c$).  The
@@ -473,10 +489,12 @@ positions; it encodes the local geometry.  The SOAP
 descriptor is the *overla`p*' of $\rho_i$ with itself,
 *integrated over all rotations*:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-soap-overlap}
 k_i(R, R') \;=\; \int d\hat R \;\Bigl| \int d\mathbf r\; \rho_i(\mathbf r) \rho_i(\hat R\,\mathbf r') \Bigr|^2 .
 \end{equation}
+{% endraw %}
 
 The integral over $\hat R \in \text{SO}(3)$ is the
 *rotation-integration* trick: it averages over all
@@ -491,10 +509,12 @@ The kernel is *expande`d*' in a basis of products of
 spherical harmonics.  The atomic density is expanded
 in spherical harmonics centred on atom $i$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-soap-expansion}
 \rho_i(\mathbf r) \;=\; \sum_{n \ell m} c_{n \ell m}^{(i)} \, R_n(r) \, Y_{\ell m}(\hat r) ,
 \end{equation}
+{% endraw %}
 
 where $R_n(r)$ is a radial basis (typically a
 Gaussian or a polynomial), $Y_{\ell m}$ is a real
@@ -502,17 +522,21 @@ spherical harmonic, and the coefficients $c_{n \ell
 m}^{(i)}$ are the *partial-power spectrum* of the
 density.  The rotation-invariant kernel is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-soap-power}
 k_i(R, R') \;=\; \sum_{n n' \ell} \Bigl| p_{n n' \ell}^{(i)}(R) \Bigr| \cdot \Bigl| p_{n n' \ell}^{(i)}(R') \Bigr| ,
 \end{equation}
+{% endraw %}
 
 where the **power-spectrum** coefficients are
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-soap-pnnel}
 p_{n n' \ell}^{(i)} \;=\; \sum_m c_{n \ell m}^{(i)} \, (c_{n' \ell m}^{(i)})^* .
 \end{equation}
+{% endraw %}
 
 The power spectrum is a *finite* set of numbers
 indexed by $(n, n', \ell)$ — typically $\sim\! 100$–
@@ -532,10 +556,12 @@ network.  The kernel $k_i(R, R')$ is a positive-
 definite function on the space of atomic
 environments, and the model is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-soap-krr}
 E_\text{MLIP} \;=\; \sum_i \sum_{\alpha} w_\alpha \cdot k_i(R, R_\alpha) ,
 \end{equation}
+{% endraw %}
 
 a linear combination of kernel evaluations on the
 training configurations $R_\alpha$, with weights
@@ -558,10 +584,12 @@ atomic environments, in the same sense that a
 Fourier basis is a systematic, complete basis for
 periodic functions.  The ACE basis is:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-ace-basis}
 \phi_i^{(n)} \;=\; \sum_{j_1, \ldots, j_n} \prod_{k=1}^n R^{(k)}(r_{i j_k}) \cdot \prod_{k=1}^{n-1} Y_{\ell_k m_k}(\hat r_{i j_k}) \cdot c^{(n)}_{\ell_1 m_1, \ldots, \ell_n m_n} \cdot \delta(\sum_k m_k) .
 \end{equation}
+{% endraw %}
 
 The basis functions are labelled by a *body order*
 $n$ (the number of neighbours involved) and a
@@ -690,12 +718,14 @@ The *active-learning* loop (§ 17.9) is the
 *iterative* procedure that builds the training
 set.  The loop has three steps:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-al-loop}
 \text{Train} \;\to\; \text{Predict} \;\to\;
 \text{Sample where uncertain} \;\to\;
 \text{Retrain} .
 \end{equation}
+{% endraw %}
 
 The "sample where uncertain" step is the *query
 strategy*; the most common is *query-by-
@@ -719,18 +749,22 @@ the training minimises.  For a *stati`c*' MLIP
 (no forces, no stress), the loss is the
 mean-squared error of the energies:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-loss-energy}
 \mathcal L_E \;=\; \frac{1}{|\mathcal D|} \sum_{R \in \mathcal D} \Bigl| E_\text{MLIP}(R) - E_\text{DFT}(R) \Bigr|^2 .
 \end{equation}
+{% endraw %}
 
 For a *production* MLIP, the loss includes
 forces (and, optionally, stress):
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-loss-full}
 \mathcal L \;=\; \lambda_E \mathcal L_E \;+\; \lambda_F \mathcal L_F \;+\; \lambda_S \mathcal L_S ,
 \end{equation}
+{% endraw %}
 
 with relative weights $\lambda_E, \lambda_F,
 \lambda_S$ that the user picks.  The typical
@@ -741,10 +775,12 @@ is less important for most applications).
 
 The **force loss** is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-loss-force}
 \mathcal L_F \;=\; \frac{1}{|\mathcal D|} \sum_{R \in \mathcal D} \frac{1}{N_\text{at}(R)} \sum_i \Bigl| \mathbf F_i^\text{MLIP}(R) - \mathbf F_i^\text{DFT}(R) \Bigr|^2 ,
 \end{equation}
+{% endraw %}
 
 the mean-squared error of the per-atom forces,
 averaged over atoms and configurations.  The
@@ -1065,10 +1101,12 @@ $\Delta$-ML model is trained on a *small* set of
 
 The $\Delta$-learning decomposition is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-delta}
 E_\text{expensive}^\text{DFT}(R) \;\approx\; E_\text{cheap}^\text{DFT}(R) \;+\; \Delta E_\text{ML}(R) ,
 \end{equation}
+{% endraw %}
 
 where $E_\text{cheap}^\text{DFT}(R)$ is the
 *chea`p*' DFT calculation (e.g. PBE), $\Delta
@@ -1379,10 +1417,12 @@ the corresponding *exact* XC energies (from
 quantum-chemical calculations or from inverse
 DFT).  The model is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-krr-xc}
 E_\text{xc}^\text{KRR}[\rho] \;=\; \sum_\alpha w_\alpha \, k(\rho, \rho_\alpha) ,
 \end{equation}
+{% endraw %}
 
 a linear combination of kernel evaluations
 on the training densities, with weights
@@ -1529,10 +1569,12 @@ trained on the *same* data but with
 $R$ is the *standard deviation* of the
 predictions:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-qbc}
 \sigma_\text{QBC}(R) \;=\; \sqrt{\frac{1}{K} \sum_{k=1}^K \Bigl| E_{\mathcal M_k}(R) - \bar E(R) \Bigr|^2} ,
 \end{equation}
+{% endraw %}
 
 where $\bar E(R) = \tfrac{1}{K} \sum_k E_{\mathcal
 M_k}(R)$ is the *ensemble mean*.  A large
@@ -1655,12 +1697,14 @@ distances in Å, time in fs.  The
 *conversions* the working calculator
 needs are:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-units}
 1\;E_h \;=\; 27.2114\;\text{eV}, \qquad
 1\;a_0 \;=\; 0.529177\;\text{Å}, \qquad
 1\;E_h/a_0 \;=\; 51.4221\;\text{eV/Å}.
 \end{equation}
+{% endraw %}
 
 The *standar`d*' ML-for-DFT libraries
 (MACE, NequIP, Allegro, SchNet, fairchem)
@@ -2223,10 +2267,12 @@ The **architecture** is laid out on pp. 146401-1 to
 146401-2. The key idea is the *per-atom decomposition*
 of the total energy:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-bp-energy}
 E_\text{tot}(R) \;\approx\; \sum_{i=1}^{N_\text{at}} E_i\Bigl(\mathbf d_i(R)\Bigr) ,
 \end{equation}
+{% endraw %}
 
 where $\mathbf d_i(R) \in \mathbb R^D$ is a
 *descriptor* of the local environment of atom $i$ and
@@ -2251,15 +2297,19 @@ p. 146401-1. Two families are introduced: the *radial*
 $G^1$ and $G^2$ and the *angular* $G^3$, $G^4$, $G^5$.
 The *radial* family is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-bp-G1}
 G_i^1 \;=\; \sum_{j \neq i} e^{-\eta (r_{ij} - r_s)^2} \cdot f_c(r_{ij}) ,
 \end{equation}
+{% endraw %}
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-bp-G2}
 G_i^2 \;=\; \sum_{j \neq i} e^{-\eta r_{ij}^2} \cdot f_c(r_{ij}) ,
 \end{equation}
+{% endraw %}
 
 where $r_{ij} = |\mathbf R_j - \mathbf R_i|$ is the
 distance, $\eta$ and $r_s$ are *hyperparameters* chosen
@@ -2268,6 +2318,7 @@ goes smoothly to zero at the cutoff radius $r_c$
 [Behler and Parrinello, 2007, p. 146401-1].  The
 *angular* family is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-bp-G3}
 G_i^3 \;=\; \sum_{j \neq i} \sum_{k \neq i, j}
@@ -2275,6 +2326,7 @@ G_i^3 \;=\; \sum_{j \neq i} \sum_{k \neq i, j}
 e^{-\eta (r_{ij}^2 + r_{ik}^2 + r_{jk}^2)} \cdot
 f_c(r_{ij}) \cdot f_c(r_{ik}) \cdot f_c(r_{jk}) ,
 \end{equation}
+{% endraw %}
 
 where $\theta_{ijk}$ is the angle at vertex $i$ in the
 triangle $i$-$j$-$k$, and $\lambda$, $\zeta$, $\eta$ are
@@ -2361,11 +2413,13 @@ atomic neighbourhood density, later named SOAP — and to
 The **framework** is laid out on p. 136403-1. The
 key equation is the *Gaussian-process regression*:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-gap}
 E(R) \;\approx\; \sum_{\alpha} w_\alpha \,
 k\Bigl(\mathbf d(R), \mathbf d(R_\alpha)\Bigr) ,
 \end{equation}
+{% endraw %}
 
 where $\mathbf d(R)$ is the descriptor of the
 configuration $R$, $\{R_\alpha\}$ is the training set,
@@ -2468,38 +2522,46 @@ density in a basis of spherical harmonics* and the
 The **descriptor** is defined on pp. 184115-1 to
 184115-2. The starting point is the *atomic density*
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-soap-rho}
 \rho_i(\mathbf r) \;=\; \sum_{j} e^{-|\mathbf r - \mathbf R_{ij}|^2 / (2\sigma^2)} \cdot f_c(r_{ij}) ,
 \end{equation}
+{% endraw %}
 
 a sum of Gaussians of width $\sigma$ centred on the
 neighbours of atom $i$ [Bartók, Kondor, and Csányi,
 2013, p. 184115-1].  The density is expanded in a basis
 of spherical harmonics
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-soap-exp}
 \rho_i(\mathbf r) \;=\; \sum_{n \ell m} c_{n \ell m}^{(i)} \, R_n(r) \, Y_{\ell m}(\hat r) ,
 \end{equation}
+{% endraw %}
 
 and the *rotation-invariant power-spectrum* coefficients
 are
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-soap-pnnl}
 p_{n n' \ell}^{(i)} \;=\; \sum_m c_{n \ell m}^{(i)} \, (c_{n' \ell m}^{(i)})^* .
 \end{equation}
+{% endraw %}
 
 The vector $\mathbf p^{(i)} = (p_{n n' \ell}^{(i)})$ is
 the *SOAP descriptor* [Bartók, Kondor, and Csányi,
 2013, p. 184115-1].  The *kernel* of two atomic
 environments is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-soap-kernel}
 k(R, R') \;=\; \sum_{n n' \ell} \Bigl| p_{n n' \ell}(R) \Bigr| \cdot \Bigl| p_{n n' \ell}(R') \Bigr| ,
 \end{equation}
+{% endraw %}
 
 a positive-definite function on the space of atomic
 environments, with $k = 1$ for two identical
@@ -2592,10 +2654,12 @@ embeddings are *initialise`d*' from the nuclear charge
 $Z_i$ and then *refined*' by $T$ interaction passes
 [Schütt et al., 2017, p. 2].  Each interaction pass is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-schnet-pass}
 \mathbf x_i^{(t+1)} \;=\; \mathbf x_i^{(t)} \;+\; \sum_{j \neq i} \mathbf v_{ij}^{(t)}\Bigl(\mathbf x_i^{(t)}, \mathbf x_j^{(t)}, r_{ij}\Bigr) ,
 \end{equation}
+{% endraw %}
 
 a *message* from atom $j$ to atom $i$ that depends on
 the current embeddings of both atoms and on the
@@ -2615,10 +2679,12 @@ an *angular* part (a tensor product of the two
 embeddings) [Schütt et al., 2017, p. 3].  The
 factorisation has the form
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-schnet-cfconv}
 \mathbf v_{ij} \;=\; \Bigl(\mathbf W_f \cdot \mathbf x_i \Bigr) \circ \Bigl(\mathbf W_d \cdot \mathbf d_{ij}\Bigr) \circ \Bigl(\mathbf W_c \cdot \mathbf x_j\Bigr) ,
 \end{equation}
+{% endraw %}
 
 where $\mathbf d_{ij} \in \mathbb R^K$ is the
 *Gaussian-expande`d*' inter-atomic distance, $\circ$ is
@@ -2711,6 +2777,7 @@ radial basis [Batatia et al., 2022, p. 3].  The
 the *symmetrise`d*' $T$-body correlation of the
 edge features:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-17-mace-message}
 \mathbf m_i^{(T)} \;=\; \sum_{j_1, \ldots, j_T} \;
@@ -2718,6 +2785,7 @@ edge features:
 \mathbf e_{i j_1} \otimes \mathbf e_{i j_2} \otimes \cdots \otimes \mathbf e_{i j_T}
 \Bigr) ,
 \end{equation}
+{% endraw %}
 
 where the symmetrisation enforces *permutation
 invariance* of the neighbours and the tensor product

@@ -333,6 +333,7 @@ centred on atom $\mathbf A_\mu$ ($\mu = 1, 2$). Each
 contracted function is a fixed linear combination of
 three primitive Cartesian $s$-Gaussians (Ch 06 §6.4):
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-sto3g-contract}
 \chi_\mu(\mathbf r) \;=\; \sum_{p=1}^{3} d_{\mu p}\, g(\mathbf r; \alpha_p, \mathbf A_\mu, \mathbf 0) ,
@@ -341,6 +342,7 @@ d_{\mu p} \in \{0.444635,\, 0.535328,\, 0.154329\} ,
 \quad
 \alpha_p \in \{0.168856,\, 0.623913,\, 3.425250\} .
 \end{equation}
+{% endraw %}
 
 The contraction coefficients and exponents are
 universal (the same for every H atom, every molecule,
@@ -351,17 +353,20 @@ STO-3G primitive set**.
 For two $s$-Gaussians on different centres the **Gaussian
 product theorem** (Ch 06 §6.4) gives
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-S12}
 S_{12} \;=\; \sum_{p,q=1}^{3} d_{1p} d_{2q}\,
              \Bigl(\frac{\pi}{\alpha_p + \alpha_q}\Bigr)^{3/2}\,
              \exp\!\Bigl[-\frac{\alpha_p \alpha_q}{\alpha_p + \alpha_q}\, R^2\Bigr] ,
 \end{equation}
+{% endraw %}
 
 where $R = 1.4\,a_0$ is the bond length. Carrying out
 the sum (three terms per index, nine total; this is
 mechanical, not conceptual):
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-S12-num}
 \begin{aligned}
@@ -371,6 +376,7 @@ S_{12} &\;=\; 0.4446 \cdot 0.4446 \cdot 0.2825 \cdot e^{-0.0663 \cdot 1.96} \\\
        &\;=\; 0.6593 .
 \end{aligned}
 \end{equation}
+{% endraw %}
 
 The diagonal elements are
 $S_{11} = S_{22} = 1$ by construction (the contraction
@@ -379,6 +385,7 @@ is normalised).
 **Step 2 — Kinetic $T_{\mu\nu} = \langle \chi_\mu \rvert -\tfrac{1}{2}\nabla^2 \rvert \chi_\nu \rangle$.**
 The matrix element between two $s$-Gaussians is
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-T12}
 T_{\mu\nu} \;=\; \sum_{p,q} d_{\mu p} d_{\nu q}\,
@@ -387,17 +394,20 @@ T_{\mu\nu} \;=\; \sum_{p,q} d_{\mu p} d_{\nu q}\,
                 \Bigl[3 - 2 \frac{\alpha_p \alpha_q}{\alpha_p + \alpha_q}\, R^2\Bigr]\,
                 \exp\!\Bigl[-\frac{\alpha_p \alpha_q}{\alpha_p + \alpha_q}\, R^2\Bigr] ,
 \end{equation}
+{% endraw %}
 
 a closed form that involves only the contracted
 exponents and the bond length. Numerically, with
 $R = 1.4\,a_0$:
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-T12-num}
 \mathbf T \;=\;
 \begin{pmatrix}
 0.7600 & 0.2365 \\\\ 0.2365 & 0.7600 \end{pmatrix} .
 \end{equation}
+{% endraw %}
 
 The diagonal element $T_{11} = 0.7600$ is the kinetic
 energy of one STO-3G $1s$ on a single H atom; the
@@ -409,6 +419,7 @@ The matrix element between two $s$-Gaussians and a
 single nucleus of charge $Z_A$ at position $\mathbf A$
 is (Ch 06 §6.5)
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-V12}
 V_{\mu\nu}^{(A)} \;=\; -\sum_{p,q} d_{\mu p} d_{\nu q}\,
@@ -417,6 +428,7 @@ V_{\mu\nu}^{(A)} \;=\; -\sum_{p,q} d_{\mu p} d_{\nu q}\,
                       F_0\!\Bigl((\alpha_p + \alpha_q)\, |\mathbf P - \mathbf A|^2\Bigr)\,
                       \exp\!\Bigl[-\frac{\alpha_p \alpha_q}{\alpha_p + \alpha_q}\, R_{\mu\nu}^2\Bigr] ,
 \end{equation}
+{% endraw %}
 
 where $\mathbf P$ is the Gaussian midpoint of the
 $\mu p, \nu q$ pair, $R_{\mu\nu}$ is the
@@ -430,31 +442,37 @@ $F_0(0) = 1$, so the inner sum is the
 **self-attraction** of the $1s$ Gaussian with its
 own nucleus:
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-V11-self}
 V_{11}^{(1)} \;=\; -\sum_{p,q} d_{1p} d_{1q}\, \frac{2\pi}{\alpha_p + \alpha_q}\,
                   Z_1 \;=\; -1.8804 .
 \end{equation}
+{% endraw %}
 
 The full nuclear-attraction matrix (summed over both
 nuclei) at $R = 1.4\,a_0$ is
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-V-num}
 \mathbf V \;=\;
 \begin{pmatrix}
 -1.8804 & -1.1949 \\\\ -1.1949 & -1.8804 \end{pmatrix} ,
 \end{equation}
+{% endraw %}
 
 so the **core Hamiltonian** $\mathbf h = \mathbf T +
 \mathbf V$ is
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-h-num}
 \mathbf h \;=\;
 \begin{pmatrix}
 -1.1204 & -0.9584 \\\\ -0.9584 & -1.1204 \end{pmatrix} .
 \end{equation}
+{% endraw %}
 
 These numbers reproduce the
 Szabo & Ostlund table 3.5 to four decimal places.
@@ -468,6 +486,7 @@ $K = 2$ there are $2^4 = 16$ unique ERIs, but the
 8-fold permutational symmetry (Ch 03 §3.6.3) reduces
 this to **3 distinct** values:
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-eri-distinct}
 (11 \rvert 11) \;=\; 0.7746 ,
@@ -478,6 +497,7 @@ this to **3 distinct** values:
 \quad
 (11 \rvert 12) \;=\; 0.4441 .
 \end{equation}
+{% endraw %}
 
 $(11 \rvert 11)$ is the **Coulomb self-repulsion** of
 the $1s$ orbital on one centre; $(11 \rvert 22)$ is
@@ -512,19 +532,23 @@ moving to machine precision.
 **Step 6 — Total energy.** The SCF total energy in
 the AO basis (Ch 03 §3.6.5) is
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-hf-energy}
 E_\text{HF} \;=\; \tfrac{1}{2}\, \text{Tr}[\mathbf P(\mathbf h + \mathbf F)] \;+\; \frac{Z_A Z_B}{R} ,
 \end{equation}
+{% endraw %}
 
 with $Z_A Z_B / R = 1 / 1.4 = 0.7143\,E_h$ the
 nuclear–nuclear repulsion. Substituting the converged
 $\mathbf P$ and $\mathbf F$:
 
+{% raw %}
 \begin{equation}
 \label{eq:we-06-hf-num}
 E_\text{HF} \;=\; -1.8310 + 0.7143 \;=\; -1.1167\,E_h .
 \end{equation}
+{% endraw %}
 
 The number $-1.1167$ is the canonical Szabo & Ostlund
 reference, and the SCF iteration history should
@@ -653,10 +677,12 @@ Coulomb singularity at the origin). The
 all-electron radial Schrödinger equation in 1-D
 (Ch 08 §8.2) is
 
+{% raw %}
 \begin{equation}
 \label{eq:we-08-1d-schrod}
 -\tfrac{1}{2}\, \frac{d^2 u}{d x^2} + V_\text{ae}(x)\, u(x) \;=\; E\, u(x) ,
 \end{equation}
+{% endraw %}
 
 solved on a fine grid $x \in [-20, +20]\,a_0$ with
 $N = 4001$ points and a 3-point finite-difference
@@ -670,10 +696,12 @@ the carbon $2s$ orbital).
 $r_c = 1.0\,a_0$, the pseudo-wavefunction is
 parameterised as (Ch 08 §8.6)
 
+{% raw %}
 \begin{equation}
 \label{eq:we-08-tm-ansatz}
 \phi(x) \;=\; \exp\!\Bigl(c_0 + c_1 x^2 + c_2 x^4 + c_3 x^6\Bigr) ,
 \end{equation}
+{% endraw %}
 
 where the four **Troullier–Martins** coefficients
 $(c_0, c_1, c_2, c_3)$ are determined by four
@@ -697,6 +725,7 @@ u(r_c)))$.
 **Step 2 — Numerical result.** With
 $Z = 4, \epsilon = 0.3\,a_0, r_c = 1.0\,a_0$:
 
+{% raw %}
 \begin{equation}
 \label{eq:we-08-tm-coeffs}
 c_0 = -0.412\,305 ,
@@ -707,6 +736,7 @@ c_2 = +0.030\,551 ,
 \quad
 c_3 = -0.005\,982 .
 \end{equation}
+{% endraw %}
 
 Residuals on the four matching conditions:
 $\lvert \phi(r_c) - u(r_c) \rvert < 10^{-9}$,
@@ -720,10 +750,12 @@ that ensures transferability.
 **Step 3 — Inversion.** The pseudo-potential is
 obtained by inverting \eqref{eq:we-08-1d-schrod}:
 
+{% raw %}
 \begin{equation}
 \label{eq:we-08-inversion}
 V_\text{ps}(x) \;=\; E_2 + \tfrac{1}{2}\, \frac{\phi''(x)}{\phi(x)} ,
 \end{equation}
+{% endraw %}
 
 (angular-momentum term is zero in 1-D). The result is
 finite at the origin: $V_\text{ps}(0) = E_2 + 2 c_1
@@ -744,12 +776,14 @@ construction reference. The TM pseudo reproduces
 both at $r = r_c$ to first order in
 $E - E_2$:
 
+{% raw %}
 \begin{equation}
 \label{eq:we-08-logder}
 D_\text{ps}(E_2) = D_\text{ae}(E_2) = -0.804\,a_0^{-1} ,
 \quad
 \partial_E D_\text{ps}(E_2) = \partial_E D_\text{ae}(E_2) = +0.412\,a_0^{-1}/E_h .
 \end{equation}
+{% endraw %}
 
 The reproduction is exact at the construction
 reference and is approximate for $E \ne E_2$, with
@@ -867,6 +901,7 @@ relationship to the H–H distance.
 (atomic-orbital) basis $\{|\phi_{n}\rangle\}_{n =
 -\infty}^{\infty}$ has matrix elements
 
+{% raw %}
 \begin{equation}
 \label{eq:we-07-tb-H}
 H_{nm} \;=\; \langle \phi_n \rvert \hat H \rvert \phi_m \rangle
@@ -877,6 +912,7 @@ H_{nm} \;=\; \langle \phi_n \rvert \hat H \rvert \phi_m \rangle
 0 & \lvert n - m \rvert \ge 2,
 \end{cases}
 \end{equation}
+{% endraw %}
 
 with $\varepsilon_0$ the on-site $1s$ energy
 ($\varepsilon_0 = -0.5\,E_h$ for an isolated H atom
@@ -889,11 +925,13 @@ the secular equation reduces to a $1 \times 1$
 matrix in the (single-orbital-per-site) basis, with
 eigenvalue
 
+{% raw %}
 \begin{equation}
 \label{eq:we-07-tb-eps}
 \varepsilon(k) \;=\; \varepsilon_0 - 2 t \cos(k a) ,
 \qquad k \in [-\pi/a, +\pi/a] .
 \end{equation}
+{% endraw %}
 
 The band has **bandwidth** $W = 4 t$ and is
 **symmetric** about $\varepsilon_0$ at $k = \pm\pi/(2 a)$
@@ -906,10 +944,12 @@ The relationship to the H–H distance $a$ is
 overlap $\langle \phi_n \rvert \phi_{n+1} \rangle$
 drops exponentially,
 
+{% raw %}
 \begin{equation}
 \label{eq:we-07-tb-t}
 t(a) \;\approx\; t_0\, e^{-(a - a_0) / \ell} ,
 \end{equation}
+{% endraw %}
 
 where $a_0$ is some reference distance (the H–H
 equilibrium in a 3-D H₂ molecule is
@@ -1013,12 +1053,14 @@ step:
    with one basis function per atom, the Hellmann–Feynman
    force is
 
+{% raw %}
    \begin{equation}
    \label{eq:we-09-hf-force}
    F(R) \;=\; -2 Z \!\int\!\rho(\mathbf r)\,
               \frac{z - R/2}{\Bigl[(z-R/2)^2 + x^2 + y^2\Bigr]^{3/2}}\, d\mathbf r
               \;+\; \frac{Z^2}{R^2} ,
    \end{equation}
+{% endraw %}
 
    with $Z = 1$, the bond on the $z$-axis, and the molecule
    centred at the origin. The two-electron contribution is
@@ -1026,6 +1068,7 @@ step:
    $\rho(\mathbf r)$ (the density depends on $R$ through the
    Fock matrix). The **Pulay correction** is
 
+{% raw %}
    \begin{equation}
    \label{eq:we-09-pulay}
    F^\text{Pulay}(R) \;=\; -2 \sum_i^\text{occ}
@@ -1033,6 +1076,7 @@ step:
                           \Bigl\langle \partial_{R}\chi_\mu \rvert
                           \hat F - \varepsilon_i \rvert \chi_\nu \bigr\rangle .
    \end{equation}
+{% endraw %}
 
    For H₂ in STO-3G with one $s$-function per atom, the
    reflection symmetry through the bond midpoint means the
@@ -1050,12 +1094,14 @@ step:
    from $H_0 = 1$ (a Newton step with unit Hessian), the
    BFGS update reads
 
+{% raw %}
    \begin{equation}
    \label{eq:we-09-bfgs}
    H_{k+1} \;=\; \Bigl(\mathbf 1 - \rho_k \mathbf s_k \mathbf y_k^\top\Bigr) H_k
                   \Bigl(\mathbf 1 - \rho_k \mathbf y_k \mathbf s_k^\top\Bigr)
                   \;+\; \rho_k \mathbf s_k \mathbf s_k^\top ,
    \end{equation}
+{% endraw %}
 
    with $\mathbf s_k = R_{k+1} - R_k$, $\mathbf y_k = g_{k+1}
    - g_k$, $\rho_k = 1 / (\mathbf y_k^\top \mathbf s_k)$.

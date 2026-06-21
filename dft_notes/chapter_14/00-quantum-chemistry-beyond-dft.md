@@ -121,6 +121,7 @@ set** of 148 molecule-formation enthalpies, with the
 kind of problem where the method is the *default* in a
 production calculation.
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-claim}
 \boxed{\;
@@ -142,6 +143,7 @@ production calculation.
 \end{array}
 \;}
 \end{equation}
+{% endraw %}
 
 The "cost" column in \eqref{eq:ch-14-claim} is the *asymptotic
 scaling* of the most expensive step; it is what determines
@@ -199,44 +201,56 @@ The starting point is the *Rayleigh–Schrödinger*
 perturbation theory (RSPT) of non-degenerate quantum
 mechanics.  Split the Hamiltonian as
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-rspt-split}
 \hat H \;=\; \hat H^{(0)} \;+\; \lambda \hat V ,
 \end{equation}
+{% endraw %}
 
 where $\hat H^{(0)}$ has a *known* spectrum, $\hat V$
 is the **perturbation**, and $\lambda$ is a
 book-keeping parameter (set to $1$ at the end).  The
 energy and eigenstate are power series in $\lambda$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-rspt-series}
 E(\lambda) \;=\; E^{(0)} + \lambda E^{(1)} + \lambda^2 E^{(2)} + \cdots , \qquad
 |\Psi(\lambda)\rangle \;=\; |\Psi^{(0)}\rangle + \lambda |\Psi^{(1)}\rangle + \lambda^2 |\Psi^{(2)}\rangle + \cdots .
 \end{equation}
+{% endraw %}
 
 Substituting into $\hat H(\lambda) |\Psi(\lambda)\rangle = E(\lambda) |\Psi(\lambda)\rangle$
 and collecting powers of $\lambda$ gives the recursion
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-rspt-recursion}
 (\hat H^{(0)} - E^{(0)})\, |\Psi^{(n)}\rangle \;=\; E^{(1)} |\Psi^{(n-1)}\rangle + \cdots + E^{(n)} |\Psi^{(0)}\rangle - \hat V |\Psi^{(n-1)}\rangle ,
 \end{equation}
+{% endraw %}
 
 solved by inverting $(\hat H^{(0)} - E^{(0)})$ on the
 orthogonal complement of $|\Psi^{(0)}\rangle$.  The
 first three energy corrections, obtained by
 projecting onto $|\Psi^{(0)}\rangle$, are
 
+{% raw %}
 \begin{equation}
 E^{(0)} \;=\; \langle \Psi^{(0)} \rvert \hat H^{(0)} \rvert \Psi^{(0)} \rangle , \label{eq:ch-14-rspt-e0}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 E^{(1)} \;=\; \langle \Psi^{(0)} \rvert \hat V \rvert \Psi^{(0)} \rangle , \label{eq:ch-14-rspt-e1}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 E^{(2)} \;=\; \langle \Psi^{(0)} \rvert \hat V \rvert \Psi^{(1)} \rangle \;\equiv\; \sum_{k \ne 0} \frac{\lvert \langle \Psi^{(0)} \rvert \hat V \rvert \Psi_k^{(0)} \rangle \rvert^2}{E^{(0)} - E_k^{(0)}} . \label{eq:ch-14-rspt-e2}
 \end{equation}
+{% endraw %}
 
 The sum in \eqref{eq:ch-14-rspt-e2} is over all
 *other* eigenstates of $\hat H^{(0)}$; the sign is
@@ -244,10 +258,12 @@ The sum in \eqref{eq:ch-14-rspt-e2} is over all
 state, numerator positive).  The first-order wavefunction
 correction is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-rspt-psi1}
 |\Psi^{(1)}\rangle \;\equiv\; \sum_{k \ne 0} \frac{\langle \Psi_k^{(0)} \rvert \hat V \rvert \Psi^{(0)} \rangle}{E^{(0)} - E_k^{(0)}}\, |\Psi_k^{(0)}\rangle .
 \end{equation}
+{% endraw %}
 
 The $n$-th order correction is a *product* of $n$
 matrix elements of $\hat V$ divided by products of
@@ -266,22 +282,28 @@ perturbation is the *fluctuation potential* — the part of
 the true two-electron interaction that is *not* captured by
 the mean-field Fock operator.  Explicitly,
 
+{% raw %}
 \begin{equation}
 \hat H^{(0)} \;=\; \hat F , \label{eq:ch-14-mp-h0}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 \hat V \;=\; \hat H - \hat F \;=\; \hat V_{ee} - \hat V_\text{HF} . \label{eq:ch-14-mp-v}
 \end{equation}
+{% endraw %}
 
 The zeroth-order eigenstates of $\hat F$ are the *Slater
 determinants* $|\Phi_I\rangle$ built from the HF orbitals,
 and the zeroth-order energies are the *sums* of the orbital
 energies,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-mp-e0-det}
 E_I^{(0)} \;=\; \langle \Phi_I \rvert \hat F \rvert \Phi_I \rangle \;=\; \sum_{p \in \text{occ}(I)} \varepsilon_p .
 \end{equation}
+{% endraw %}
 
 For the *HF determinant* $|\Phi_0\rangle$ the occupied set
 is the $N$ lowest spin-orbitals and the unoccupied set is
@@ -291,10 +313,12 @@ $\hat F$.
 The first-order energy correction is, by
 \eqref{eq:ch-14-rspt-e1},
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-mp-e1}
 E^{(1)} \;=\; \langle \Phi_0 \rvert \hat H - \hat F \rvert \Phi_0 \rangle \;=\; \langle \Phi_0 \rvert \hat H \rvert \Phi_0 \rangle - \langle \Phi_0 \rvert \hat F \rvert \Phi_0 \rangle .
 \end{equation}
+{% endraw %}
 
 Subtracting \eqref{eq:ch-14-mp-e0-det} from
 \eqref{eq:ch-14-mp-e1} gives the **sum of zeroth- and first-
@@ -318,10 +342,12 @@ and using the *intermediate normalisation*
 $\langle \Phi_0 | \Psi \rangle = 1$ (so $|\Psi^{(1)}\rangle$ has
 no component along $|\Phi_0\rangle$) gives
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-mp2-e2}
 E_\text{MP2} \;=\; \sum_{I \ne 0} \frac{\lvert \langle \Phi_0 \rvert \hat H - \hat F \rvert \Phi_I \rangle \rvert^2}{E_0^{(0)} - E_I^{(0)}} .
 \end{equation}
+{% endraw %}
 
 The matrix element
 $\langle \Phi_0 \rvert \hat F \rvert \Phi_I \rangle$ vanishes
@@ -347,10 +373,12 @@ The matrix element of $\hat H$ between $|\Phi_0\rangle$ and
 a double $|\Phi_{ij}^{ab}\rangle$ is, by the Slater–Condon
 rules,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-mp2-me}
 \langle \Phi_0 \rvert \hat H \rvert \Phi_{ij}^{ab} \rangle \;=\; \langle ij \rvert \rvert ab \rangle \;=\; \langle ij \rvert ab \rangle - \langle ij \rvert ba \rangle .
 \end{equation}
+{% endraw %}
 
 In the **physicists'** notation (the bra-ket-with-two-pipes
 $\langle ij \rvert \rvert ab \rangle$), this is the
@@ -362,10 +390,12 @@ the same integral is $(ia \rvert jb) - (ib \rvert ja)$.
 The energy denominator in \eqref{eq:ch-14-mp2-e2} for a
 double excitation $|\Phi_{ij}^{ab}\rangle$ is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-mp2-denom}
 E_0^{(0)} - E_{ij}^{ab\,(0)} \;=\; \varepsilon_i + \varepsilon_j - \varepsilon_a - \varepsilon_b .
 \end{equation}
+{% endraw %}
 
 The denominator is *negative* (the virtuals have higher
 orbital energy than the occupieds); the square of the matrix
@@ -373,12 +403,14 @@ element is positive; the ratio is therefore *negative* —
 MP2 is a *stabilising* correction.  Putting the pieces
 together, the **MP2 correlation energy** is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-mp2}
 \boxed{\;
 E_\text{MP2} \;=\; - \sum_{i<j} \sum_{a<b} \frac{\Bigl\lvert \langle ij \rvert \rvert ab \rangle \bigr\rvert^2}{\varepsilon_a + \varepsilon_b - \varepsilon_i - \varepsilon_j} .
 \;}
 \end{equation}
+{% endraw %}
 
 The sums run over *pairs* of occupied spin-orbitals and
 *pairs* of virtual spin-orbitals.  For a closed-shell
@@ -399,10 +431,12 @@ order in $K$, but with a different prefactor.
 *closed-shell* system, the spin-summed form of
 \eqref{eq:ch-14-mp2} is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-mp2-sf}
 E_\text{MP2}^\text{closed} \;=\; - \sum_{i<j}^{n} \sum_{a<b}^{K-n} \frac{2 \Bigl[ (ia \rvert jb) - (ib \rvert ja) \Bigr]^2}{\varepsilon_a + \varepsilon_b - \varepsilon_i - \varepsilon_j} ,
 \end{equation}
+{% endraw %}
 
 where $i, j$ now run over *spatial* occupied orbitals,
 $a, b$ over *spatial* virtual orbitals, and the factor $2$
@@ -447,10 +481,12 @@ the perturbation.  Using the recursion
 \eqref{eq:ch-14-rspt-recursion} at $n = 3$ and the
 Slater–Condon rules,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-mp3}
 E_\text{MP3} \;=\; \sum_{I \ne 0, J \ne 0} \frac{\langle \Phi_0 \rvert \hat V \rvert \Phi_I \rangle \langle \Phi_I \rvert \hat V - E^{(1)} \rvert \Phi_J \rangle \langle \Phi_J \rvert \hat V \rvert \Phi_0 \rangle}{\Bigl(E_0^{(0)} - E_I^{(0)}\Bigr) \Bigl(E_0^{(0)} - E_J^{(0)}\Bigr)} \;-\; E^{(2)} \langle \Psi^{(1)} \rvert \Psi^{(1)} \rangle .
 \end{equation}
+{% endraw %}
 
 The dominant cost in \eqref{eq:ch-14-mp3} is the
 *triple* sum over determinants $I$, $J$ that are reachable
@@ -468,10 +504,12 @@ that limits its use.
 **MP4 and the SDTQ partition.**  The fourth-order
 correction is, in the standard partition,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-mp4}
 E_\text{MP4} \;=\; E_\text{S}^{(4)} + E_\text{D}^{(4)} + E_\text{Q}^{(4)} + E_\text{T}^{(4)} .
 \end{equation}
+{% endraw %}
 
 The four terms are the **singles**, **doubles**,
 **quadruples**, and **triples** contributions.  The
@@ -503,10 +541,12 @@ non-interacting fragments equals the sum of the energies of
 the fragments computed separately.  Formally, for two
 fragments A and B separated by an infinite distance,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-size-consistency}
 E(\text{A}\cdots\text{B},\, R \to \infty) \;=\; E(\text{A}) + E(\text{B}) .
 \end{equation}
+{% endraw %}
 
 MP2 *is* size consistent.  The MP2 energy
 \eqref{eq:ch-14-mp2} is a *sum* over pairs of occupied*
@@ -570,10 +610,12 @@ recovers by replacing the linear ansatz with an
 The **full CI** wavefunction is the *exact* ground
 state in the chosen one-particle basis,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-fci}
 \lvert \Psi_\text{FCI} \rangle \;=\; \sum_{I} c_I \lvert \Phi_I \rangle ,
 \end{equation}
+{% endraw %}
 
 where the sum runs over *all* Slater determinants
 $|\Phi_I\rangle$ that can be built from the $K$
@@ -584,10 +626,12 @@ full CI energy is the lowest eigenvalue of the CI
 matrix $\mathbf H_{IJ} = \langle \Phi_I \rvert \hat H \rvert \Phi_J \rangle$,
 a $D \times D$ Hermitian matrix with
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-fci-dim}
 D \;=\; \binom{K}{N} ,
 \end{equation}
+{% endraw %}
 
 where $N$ is the number of electrons.  For a
 closed-shell system with $N = 2n$ electrons in $K$
@@ -596,10 +640,12 @@ spatial orbitals, $D = \binom{K}{2n}$; for $K = 30$
 $D \sim 10^{10}$.  The *asymptoti`c*' scaling of full
 CI is therefore
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-fci-scaling}
 \text{Cost}_\text{FCI} \;\sim\; D^2 \;\sim\; \binom{K}{N}^2 \;\sim\; K^N ,
 \end{equation}
+{% endraw %}
 
 which is **exponential** in the number of electrons.
 Full CI is *never* feasible for production use; it
@@ -614,21 +660,31 @@ expansion \eqref{eq:ch-14-fci} to determinants of
 excitation rank $\le n_\text{max}$.  The standard
 abbreviations are
 
+{% raw %}
 \begin{equation}
 \text{CIS}    \;:\; \text{singles,    } |\Psi_\text{CIS}\rangle    = (1 + \hat C_1) |\Phi_0\rangle , \label{eq:ch-14-cis}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 \text{CID}    \;:\; \text{doubles,    } |\Psi_\text{CID}\rangle    = (1 + \hat C_2) |\Phi_0\rangle , \label{eq:ch-14-cid}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 \text{CISD}   \;:\; \text{singles + doubles, } |\Psi_\text{CISD}\rangle = (1 + \hat C_1 + \hat C_2) |\Phi_0\rangle , \label{eq:ch-14-cisd}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 \text{CISDT}  \;:\; \text{singles + doubles + triples, } |\Psi_\text{CISDT}\rangle = (1 + \hat C_1 + \hat C_2 + \hat C_3) |\Phi_0\rangle , \label{eq:ch-14-cisdt}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 \text{CISDTQ} \;:\; \text{singles + doubles + triples + quadruples, } |\Psi_\text{CISDTQ}\rangle = (1 + \hat C_1 + \hat C_2 + \hat C_3 + \hat C_4) |\Phi_0\rangle , \label{eq:ch-14-cisdtq}
 \end{equation}
+{% endraw %}
 
 where the **excitation operators** $\hat C_n$ create
 $n$-fold excitations out of the HF reference,
@@ -694,10 +750,12 @@ iteration by a *correction vector* built from the
 *residual* $\mathbf r = (\mathbf H - E)\, \mathbf c$.  The
 correction is the **Davidson correction**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-davidson}
 \delta \mathbf q \;=\; \frac{\mathbf r_i}{H_{ii} - E_\text{approx}} ,
 \end{equation}
+{% endraw %}
 
 where $i$ is the index of the *dominant* component of the
 current eigenvector $\mathbf c$, $H_{ii}$ is the diagonal
@@ -775,19 +833,23 @@ product of atomic doubles, and their coefficients are
 even at $R \to \infty$.  The CISD energy of the He
 dimer at $R \to \infty$ is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-he-dimer}
 E_\text{CISD}(\text{He}_2) \;\to\; 2\,E_\text{CISD}(\text{He}) + \Delta_\text{SE} ,
 \end{equation}
+{% endraw %}
 
 where the **size-extensivity error** $\Delta_\text{SE}$
 arises from the *normalisation* of the truncated-CI
 wavefunction.  Quantitatively,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-extensivity}
 \Delta_\text{SE} \;\sim\; - (2n) \cdot \frac{c_2^2}{1 - c_2^2} \cdot E_\text{corr}^{(2)} ,
 \end{equation}
+{% endraw %}
 
 where $n$ is the number of fragments, $c_2$ the
 doubles amplitude, and $E_\text{corr}^{(2)}$ the
@@ -831,24 +893,32 @@ price of solving a *non-linear* set of amplitude equations
 
 The **CC ansatz** is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-cc-ansatz}
 \lvert \Psi_\text{CC} \rangle \;=\; e^{\hat T} \lvert \Phi_0 \rangle , \qquad
 \hat T \;\equiv\; \hat T_1 + \hat T_2 + \hat T_3 + \cdots .
 \end{equation}
+{% endraw %}
 
 The **cluster operators** $\hat T_n$ create $n$-fold
 excitations out of the reference $|\Phi_0\rangle$,
 
+{% raw %}
 \begin{equation}
 \hat T_1 \;=\; \sum_{i, a} t_i^a\, \hat a_a^\dagger \hat a_i , \label{eq:ch-14-cc-t1}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 \hat T_2 \;=\; \frac{1}{4} \sum_{i, j, a, b} t_{ij}^{ab}\, \hat a_a^\dagger \hat a_b^\dagger \hat a_j \hat a_i , \label{eq:ch-14-cc-t2}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 \hat T_3 \;=\; \frac{1}{(3!)^2} \sum_{i, j, k, a, b, c} t_{ijk}^{abc}\, \hat a_a^\dagger \hat a_b^\dagger \hat a_c^\dagger \hat a_k \hat a_j \hat a_i , \label{eq:ch-14-cc-t3}
 \end{equation}
+{% endraw %}
 
 where the **cluster amplitudes** $t_i^a$, $t_{ij}^{ab}$,
 $t_{ijk}^{abc}$, ... are the unknowns.  The
@@ -857,10 +927,12 @@ factor that compensates for over-counting in the
 sum over ordered indices.  The exponential $e^{\hat T}$
 expands as
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-cc-expand}
 e^{\hat T} \lvert \Phi_0 \rangle \;=\; \lvert \Phi_0 \rangle + \hat T_1 \lvert \Phi_0 \rangle + \Bigl(\hat T_2 + \tfrac{1}{2}\hat T_1^2\Bigr) \lvert \Phi_0 \rangle + \Bigl(\hat T_3 + \hat T_2 \hat T_1 + \tfrac{1}{6}\hat T_1^3\Bigr) \lvert \Phi_0 \rangle + \cdots .
 \end{equation}
+{% endraw %}
 
 The *connected*' terms are the linear $\hat T_n |\Phi_0\rangle$;
 the *disconnected*' terms are products
@@ -882,10 +954,12 @@ advantage of the exponential ansatz.
 The CC equations follow from the *similarity-
 transforme`d*' Schrödinger equation
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-cc-sim}
 e^{-\hat T}\, \hat H\, e^{\hat T} \lvert \Phi_0 \rangle \;=\; E\, \lvert \Phi_0 \rangle .
 \end{equation}
+{% endraw %}
 
 Projecting \eqref{eq:ch-14-cc-sim} onto the
 *reference* $|\Phi_0\rangle$ gives the CC energy;
@@ -907,18 +981,22 @@ amplitudes, with *no* infinite series to truncate.
 \eqref{eq:ch-14-cc-ansatz} to $\hat T = \hat T_1 + \hat T_2$.
 The CCSD wavefunction is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-ccsd}
 \lvert \Psi_\text{CCSD} \rangle \;=\; e^{\hat T_1 + \hat T_2} \lvert \Phi_0 \rangle .
 \end{equation}
+{% endraw %}
 
 The expansion \eqref{eq:ch-14-cc-expand} truncated to
 $\hat T_1 + \hat T_2$ gives
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-ccsd-expand}
 e^{\hat T_1 + \hat T_2} \lvert \Phi_0 \rangle \;=\; \lvert \Phi_0 \rangle + \hat T_1 \lvert \Phi_0 \rangle + \Bigl(\hat T_2 + \tfrac{1}{2} \hat T_1^2\Bigr) \lvert \Phi_0 \rangle + \Bigl(\hat T_1 \hat T_2 + \tfrac{1}{2} \hat T_2^2 + \tfrac{1}{6}\hat T_1^3\Bigr) \lvert \Phi_0 \rangle + \cdots .
 \end{equation}
+{% endraw %}
 
 The first three lines are the *singles*, doubles, and
 *triples* sectors of the CCSD wavefunction.  The
@@ -935,10 +1013,12 @@ diradicals), fixed by the (T) of § 14.4.3. The CCSD *energy* follows from proje
 \eqref{eq:ch-14-cc-sim} onto $|\Phi_0\rangle$ and using
 the linked-cluster theorem,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-ccsd-energy}
 E_\text{CCSD} \;=\; \langle \Phi_0 \rvert e^{-\hat T}\, \hat H\, e^{\hat T} \rvert \Phi_0 \rangle \;=\; \langle \Phi_0 \rvert \hat H\, e^{\hat T} \rvert \Phi_0 \rangle_\text{connected} .
 \end{equation}
+{% endraw %}
 
 For CCSD the *only* connected contractions are the
 *linear* $\hat H$ term, the quadratic*
@@ -949,10 +1029,12 @@ $\tfrac{1}{6}\hat H \hat T_1^3$ term (which gives the
 in CCSD, so this term vanishes).  The final
 *closed-shell* form of the CCSD energy is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-ccsd-energy-cs}
 E_\text{CCSD}^\text{closed} \;=\; E_\text{HF} \;+\; \sum_{i, j, a, b} t_i^a\, t_j^b\, (2\, \langle ij \rvert ab \rangle - \langle ij \rvert ba \rangle) \;+\; \frac{1}{4} \sum_{i, j, a, b} t_{ij}^{ab}\, \langle ij \rvert \rvert ab \rangle ,
 \end{equation}
+{% endraw %}
 
 where the $t_i^a$ are the singles amplitudes and the
 $t_{ij}^{ab}$ are the doubles amplitudes.  The first
@@ -968,12 +1050,16 @@ projecting \eqref{eq:ch-14-cc-sim} onto the *singly*
 and *doubly* excited determinants $\langle \Phi_i^a \rvert$
 and $\langle \Phi_{ij}^{ab} \rvert$:
 
+{% raw %}
 \begin{equation}
 0 \;=\; \langle \Phi_i^a \rvert e^{-\hat T}\, \hat H\, e^{\hat T} \rvert \Phi_0 \rangle , \label{eq:ch-14-ccsd-t1}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 0 \;=\; \langle \Phi_{ij}^{ab} \rvert e^{-\hat T}\, \hat H\, e^{\hat T} \rvert \Phi_0 \rangle . \label{eq:ch-14-ccsd-t2}
 \end{equation}
+{% endraw %}
 
 Equations \eqref{eq:ch-14-ccsd-t1}–\eqref{eq:ch-14-ccsd-t2}
 are the **singles** and **doubles amplitude equations**,
@@ -1019,17 +1105,21 @@ Plesset correction.
 
 The **CCSD(T) energy** is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-ccsdt-energy}
 E_\text{CCSD(T)} \;=\; E_\text{CCSD} \;+\; E_\text{T}^{(5)} ,
 \end{equation}
+{% endraw %}
 
 where the **perturbative triples correction** is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-ccsdt-t}
 E_\text{T}^{(5)} \;=\; \sum_{i<j<k} \sum_{a<b<c} \frac{\Bigl\lvert \langle \Phi_{ijk}^{abc} \rvert \hat V \rvert \Phi_0 \rangle \bigr\rvert^2}{E_0 - E_{ijk}^{abc}} \;-\; \text{(similar terms from $\hat T_1 \hat T_2$, $\hat T_2^2$)} .
 \end{equation}
+{% endraw %}
 
 The first term is the *direct* contribution of the
 connected triple excitation; the second and third are
@@ -1177,10 +1267,12 @@ and $M_\text{el}$ electrons, with the *orbitals*
 themselves optimised self-consistently.  The CASSCF
 wavefunction is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-casscf}
 \lvert \Psi_\text{CAS} \rangle \;=\; \sum_{I \in \text{active}} c_I \lvert \Phi_I \rangle ,
 \end{equation}
+{% endraw %}
 
 where the sum is over *all* determinants in the
 **complete active space** — all possible
@@ -1256,10 +1348,12 @@ with $\hat H^{(0)}_\text{CAS}$ the *generalised Foc`k*'
 operator built from the CASSCF density.  The CASPT2
 energy is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-caspt2}
 E_\text{CASPT2} \;=\; E_\text{CAS} + \sum_{I \notin \text{CAS}} \frac{\lvert \langle \Psi_\text{CAS} \rvert \hat H \rvert \Phi_I \rangle \rvert^2}{E_\text{CAS} - E_I^{(0)}} ,
 \end{equation}
+{% endraw %}
 
 where the sum is over all determinants *outside* the
 CAS.  The CASPT2 energy is *not* a strict upper
@@ -1287,10 +1381,12 @@ theory**) fixes the intruder-state problem by a
 of the **Dyall** Hamiltonian (Dyall, *J. Chem.
 Phys.* **102**, 4909 (1995)):
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-nevpt2-h0}
 \hat H^{(0)}_\text{NEVPT2} \;=\; \sum_{r \in \text{core}, s \in \text{virt}} \Bigl(\varepsilon_r + \varepsilon_s - \varepsilon_a - \varepsilon_b\Bigr)\, \lvert \Phi_{ab}^{rs} \rangle \langle \Phi_{ab}^{rs} \rvert \;+\; \cdots ,
 \end{equation}
+{% endraw %}
 
 where the sum is over determinants generated by a
 single- or double-excitation from a CAS determinant
@@ -1302,10 +1398,12 @@ energy gap of the *inactive* orbitals is finite).
 The intruder-state problem is *solve`d*`; the cost is
 the same as CASPT2. The **NEVPT2 energy** is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-nevpt2}
 E_\text{NEVPT2} \;=\; E_\text{CAS} \;+\; \sum_{I \notin \text{CAS}} \frac{\Bigl\lvert \langle \Psi_\text{CAS} \rvert \hat H \rvert \Phi_I \rangle \bigr\rvert^2}{E_0^{(0)} - E_I^{(0)_\text{NEVPT2}}} ,
 \end{equation}
+{% endraw %}
 
 where the sum is over the *external* determinants
 and the denominator is the *Dyall* gap.  The NEVPT2
@@ -1405,6 +1503,7 @@ $\beta$ for every nearest-neighbour coupling and a
 *single* on-site energy $\alpha$ for every carbon.
 The Hückel Hamiltonian is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-huckel}
 H^\text{Hückel}_{ij} \;=\;
@@ -1414,6 +1513,7 @@ H^\text{Hückel}_{ij} \;=\;
 0 & \text{otherwise}.
 \end{cases}
 \end{equation}
+{% endraw %}
 
 The Hückel method has *no* overlap matrix, no
 two-electron integrals, and *no* geometry
@@ -1467,10 +1567,12 @@ is the *defining* simplification of the
 *intermediate* semiempirical methods (CNDO, INDO,
 MINDO, MNDO, AM1, PM3).  The approximation sets
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-zdo}
 \chi_\mu(\mathbf r)\, \chi_\nu(\mathbf r) \;=\; 0 \quad \text{for } \mu \ne \nu ,
 \end{equation}
+{% endraw %}
 
 i.e. *products* of different basis functions are
 *neglecte`d*' in the two-electron integral
@@ -1505,10 +1607,12 @@ value that depends only on the atom types.  CNDO is
 
 The *family tree* is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-zdo-lineage}
 \text{Hückel} \;\to\; \text{Extended Hückel} \;\to\; \text{PPP} \;\to\; \text{CNDO} \;\to\; \text{INDO} \;\to\; \text{MINDO} \;\to\; \text{MNDO} \;\to\; \text{AM1} \;\to\; \text{PM3} \;\to\; \text{PM6} \;\to\; \text{PM7} .
 \end{equation}
+{% endraw %}
 
 The methods in \eqref{eq:ch-14-zdo-lineage} are in
 *increasing* order of sophistication: each method adds
@@ -1548,10 +1652,12 @@ method with *re-optimise`d*' parameters fitted to
 $\sim 900$ reference data points.  The PM3
 Hamiltonian is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-pm3}
 H_{\mu\nu}^\text{PM3} \;=\; \langle \mu \rvert \hat h_\text{core} \rvert \nu \rangle \;+\; \sum_B \sum_{\rho, \sigma \in B} P_{\rho\sigma}\, (\mu\nu \rvert \rho\sigma) ,
 \end{equation}
+{% endraw %}
 
 where the *one-electron* integrals are parameterised*
 (not evaluated), the *two-electron* integrals are
@@ -1593,10 +1699,12 @@ around a *reference* density $\rho_0$ (the
 *superposition* of atomic* densities).  The DFTB
 total energy is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-dftb}
 E_\text{DFTB} \;=\; \sum_{i}^\text{occ} \langle \psi_i \rvert \hat H_0 \rvert \psi_i \rangle \;+\; E_\text{rep}[\rho_A, \rho_B, \ldots] \;+\; \frac{1}{2} \sum_{A, B} \frac{\partial^2 E_\text{xc}}{\partial \rho_A \partial \rho_B}\, \delta \rho_A\, \delta \rho_B ,
 \end{equation}
+{% endraw %}
 
 where the first term is the *tight-binding* sum of
 occupied orbital energies, the second is a
@@ -1674,12 +1782,16 @@ The **Helgaker** two-point extrapolation formula
 (Helgaker, Klopper, Koch, Noga, *J. Chem. Phys.*
 **106**, 9639 (1997)) is
 
+{% raw %}
 \begin{equation}
 E_\text{HF}(X) \;=\; E_\text{HF}^\text{CBS} \;+\; A\, X^{-3} , \label{eq:ch-14-helgaker-hf}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 E_\text{corr}(X) \;=\; E_\text{corr}^\text{CBS} \;+\; B\, (X - 1)^{-3} . \label{eq:ch-14-helgaker-corr}
 \end{equation}
+{% endraw %}
 
 The **Hartree–Foc`k** energy converges exponentially*
 with the cardinal number $X$; the leading correction
@@ -1772,10 +1884,12 @@ Martin and co-workers).
 Pople, *J. Chem. Phys.* **109**, 7764 (1998))
 approximates the **QCISD(T)/CBS** energy as
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-g3}
 E_\text{G3} \;=\; E[\text{MP4/6-31G(d)}] \;+\; \Delta E(\text{MP2 extrapolation}) \;+\; \Delta E(\text{CCSD(T) correction}) \;+\; \Delta E(\text{empirical higher-order}) \;+\; \Delta E(\text{spin–orbit, ZPE}) .
 \end{equation}
+{% endraw %}
 
 The first term is the *base* MP4 calculation in the
 *small* 6-31G(d) basis; the second is the
@@ -1796,10 +1910,12 @@ the MP4/6-31G(d) step ($\mathcal O(K^7)$); the
 alternative to G3, with *tighter* convergence
 parameters and a *smaller* empirical correction:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-w1}
 E_\text{W1} \;=\; E[\text{CCSD(T)/cc-pVTZ + cc-pVQZ basis extrapolation}] \;+\; \Delta E(\text{inner-shell correlation}) \;+\; \Delta E(\text{scalar relativistic}) .
 \end{equation}
+{% endraw %}
 
 The first term is the *CCSD(T) basis-set
 extrapolation* using cc-pVTZ and cc-pVQZ, with the
@@ -1845,6 +1961,7 @@ $\text{kcal mol}^{-1}$; the **when to use** column is
 the kind of problem where the method is the *default*
 choice.
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-zoo}
 \boxed{\;
@@ -1873,6 +1990,7 @@ choice.
 \end{array}
 \;}
 \end{equation}
+{% endraw %}
 
 The cost-accuracy trade-off in Table
 \eqref{eq:ch-14-zoo} is the *engineer's* view of
@@ -2038,10 +2156,12 @@ correlation energy ($\sim -0.310\,E_h$).**
 | CCSD   | $-0.220\,684$         | $71\%$    |
 | CCSD(T)| $-0.225\,512$         | $73\%$    |
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-h2o-hf}
 E_\text{HF/cc-pVDZ} \;=\; -76.024\,547\,E_h ,
 \end{equation}
+{% endraw %}
 
 is the *uncorrelate`d*' reference.  The
 *atomisation* energy of H₂O is almost entirely
@@ -2056,23 +2176,31 @@ wrong.
 
 The H₂O atomisation energy is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-14-h2o-atomisation}
 D_e(\text{H}_2\text{O}) \;=\; E(\text{O}) + 2\, E(\text{H}) - E(\text{H}_2\text{O}) .
 \end{equation}
+{% endraw %}
 
 The *atomi`c*' reference energies (in the same cc-pVDZ
 basis) are
 
+{% raw %}
 \begin{equation}
 E_\text{HF}(\text{O}) \;=\; -74.778\,451\,E_h , \label{eq:ch-14-h2o-O-hf}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 E_\text{HF}(\text{H}) \;=\; -0.499\,278\,E_h , \label{eq:ch-14-h2o-H-hf}
 \end{equation}
+{% endraw %}
+{% raw %}
 \begin{equation}
 E_\text{HF}(\text{H}_2\text{O}) \;=\; -76.024\,547\,E_h . \label{eq:ch-14-h2o-h2o-hf}
 \end{equation}
+{% endraw %}
 
 The HF atomisation energy is therefore
 
@@ -2258,9 +2386,11 @@ that is *exponentially small* in $R$ (fact 3).  All
 denominators are unchanged (fact 4), so the dimer MP2
 correlation energy is
 
+{% raw %}
 \begin{equation}
 \boxed{E_\text{MP2}^\text{dimer}(R \to \infty) \;=\; E_\text{MP2}^\text{left} + E_\text{MP2}^\text{right} .}
 \end{equation}
+{% endraw %}
 
 The analogous argument for CISD *fails* — the
 truncated-CI normalisation introduces *disconnecte`d*'
@@ -2325,9 +2455,11 @@ $\sim 0.002\,E_h$ ($\sim 10\%$ of the correlation
 energy) — *typical* for a minimal basis, and
 *systemati`c*' (overcorrelation).
 
+{% raw %}
 \begin{equation}
 \boxed{E_\text{MP2}^\text{STO-3G} \;=\; -1.139\,E_h \quad (\text{vs. FCI } -1.137\,E_h)}
 \end{equation}
+{% endraw %}
 
 The *take-home*: the Møller–Plesset series is a
 *power series*, and a truncated* series is not a
@@ -2402,9 +2534,11 @@ into a *left-atom* sum plus a *right-atom sum.
 the *left* atom; the right-atom sum is the
 *right*-atom energy.  Therefore
 
+{% raw %}
 \begin{equation}
 \boxed{E_\text{CCSD}^\text{dimer}(R \to \infty) \;=\; E_\text{CCSD}^\text{left} + E_\text{CCSD}^\text{right} .}
 \end{equation}
+{% endraw %}
 
 This is the *defining* advantage of the exponential
 ansatz of CC theory over the linear CI ansatz: the

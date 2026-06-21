@@ -88,20 +88,24 @@ The headline result is the following.
 > the ground-state energy and density are obtained by
 > minimising the **Dirac–Kohn–Sham** energy functional
 >
+{% raw %}
 > \begin{equation}
 > \label{eq:ch-15-dks-functional}
 > E_\text{DKS}[n, \mathbf j] \;=\; T_s[n, \mathbf j] + \int v_\text{ext}(\mathbf r)\, n(\mathbf r)\, d\mathbf r + E_\text{H}[n] + E_\text{xc}[n, \mathbf j] ,
 > \end{equation}
+{% endraw %}
 >
 > subject to a four-component (or, after a unitary
 > decoupling, a two-component) single-particle constraint
 >
+{% raw %}
 > \begin{equation}
 > \label{eq:ch-15-dks-equations}
 > \hat H_\text{DKS}\, \Psi_i(\mathbf x) \;=\; \varepsilon_i\, \Psi_i(\mathbf x),
 > \qquad
 > \hat H_\text{DKS} \;=\; c\,\boldsymbol\alpha\!\cdot\!\hat{\mathbf p} + \boldsymbol\beta\,mc^2 + v_\text{eff}(\mathbf r) + \hat H_\text{SO} ,
 > \end{equation}
+{% endraw %}
 >
 > where $n(\mathbf r)$ is the electron density, $\mathbf j(\mathbf r)$
 > is the **paramagnetic current density**, $v_\text{eff}$ is the
@@ -109,10 +113,12 @@ The headline result is the following.
 > [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}),
 > $\hat H_\text{SO}$ is the spin-orbit coupling operator
 >
+{% raw %}
 > \begin{equation}
 > \label{eq:ch-15-soc-claim}
 > \hat H_\text{SO} \;=\; \frac{1}{2m^2c^2}\,\frac{1}{r}\,\frac{dv}{dr}\,\hat{\mathbf L}\!\cdot\!\hat{\mathbf S} \;=\; \xi(r)\,\hat{\mathbf L}\!\cdot\!\hat{\mathbf S} ,
 > \end{equation}
+{% endraw %}
 >
 > and $\Psi_i(\mathbf x) \in \mathbb C^4$ is a four-component
 > spinor. The non-relativistic limit $c \to \infty$ recovers
@@ -193,10 +199,12 @@ non-relativistic energy-momentum relation
 $E = p^2 / 2m + v$. Special relativity replaces this with
 the **relativistic energy-momentum relation**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-rel-energy}
 E^2 \;=\; p^2 c^2 + m^2 c^4 ,
 \end{equation}
+{% endraw %}
 
 where $c$ is the speed of light and $m$ the rest mass of
 the particle. To make a wave equation out of
@@ -204,10 +212,12 @@ the particle. To make a wave equation out of
 quantisation rule $E \to i\hbar\partial_t$,
 $\mathbf p \to -i\hbar\nabla$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-klein-gordon}
 -\hbar^2 \frac{\partial^2 \Psi}{\partial t^2} \;=\; -\hbar^2 c^2 \nabla^2 \Psi + m^2 c^4 \Psi .
 \end{equation}
+{% endraw %}
 
 Equation \eqref{eq:ch-15-klein-gordon} is the
 **Klein–Gordon equation** and is correct for a
@@ -225,10 +235,12 @@ positive-definite conserved probability density
 $\Psi^\dagger \Psi$ and admits a clean probabilistic
 interpretation. The factorisation is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dirac-factor}
 E \;=\; \boldsymbol\alpha \cdot \mathbf p\, c + \beta m c^2 ,
 \end{equation}
+{% endraw %}
 
 where $\boldsymbol\alpha = (\alpha_x, \alpha_y, \alpha_z)$
 and $\beta$ are *matrices* (not c-numbers), to be
@@ -236,30 +248,36 @@ determined by the requirement that
 \eqref{eq:ch-15-dirac-factor} squared reproduces
 \eqref{eq:ch-15-rel-energy}:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dirac-sq}
 E^2 \;=\; (\boldsymbol\alpha\!\cdot\!\mathbf p\, c + \beta m c^2)^2 \;=\; \sum_i \alpha_i^2 p_i^2 c^2 + \beta^2 m^2 c^4 + \sum_{i<j}(\alpha_i \alpha_j + \alpha_j \alpha_i) p_i p_j c^2 + (\boldsymbol\alpha \beta + \beta \boldsymbol\alpha)\cdot\mathbf p\, m c^3 .
 \end{equation}
+{% endraw %}
 
 For this to equal $p^2 c^2 + m^2 c^4$ for *every* $\mathbf p$,
 the matrices $\alpha_i$ and $\beta$ must satisfy
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dirac-algebra}
 \alpha_i^2 = \beta^2 = \mathbf 1, \qquad
 \alpha_i \alpha_j + \alpha_j \alpha_i = 0 \;\; (i \ne j), \qquad
 \boldsymbol\alpha \beta + \beta \boldsymbol\alpha = \mathbf 0 .
 \end{equation}
+{% endraw %}
 
 The smallest matrices that satisfy \eqref{eq:ch-15-dirac-algebra}
 are $4 \times 4$, and the standard choice (the **Dirac
 representation** or **standard representation**) is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dirac-matrices}
 \boldsymbol\alpha \;=\; \begin{pmatrix} \mathbf 0 & \boldsymbol\sigma \\\\ \boldsymbol\sigma & \mathbf 0 \end{pmatrix}, \qquad
 \beta \;=\; \begin{pmatrix} \mathbf 1_2 & \mathbf 0 \\\\ \mathbf 0 & -\mathbf 1_2 \end{pmatrix},
 \end{equation}
+{% endraw %}
 
 where $\boldsymbol\sigma = (\sigma_x, \sigma_y, \sigma_z)$
 is the $2 \times 2$ Pauli-matrix vector and $\mathbf 1_2$
@@ -267,12 +285,14 @@ is the $2 \times 2$ identity. With the quantisation
 $E \to i\hbar\partial_t$, $\mathbf p \to -i\hbar\nabla$,
 and adding the external scalar potential $v(\mathbf r)$,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dirac-hamiltonian}
 i\hbar\frac{\partial \Psi}{\partial t} \;=\; \hat H_\text{Dirac}\, \Psi,
 \qquad
 \hat H_\text{Dirac} \;=\; c\,\boldsymbol\alpha\!\cdot\!\hat{\mathbf p} + \beta m c^2 + v(\mathbf r)\,\mathbf 1_4 ,
 \end{equation}
+{% endraw %}
 
 where $\Psi(\mathbf r, t) \in \mathbb C^4$ is a
 four-component spinor. This is the **Dirac equation**.
@@ -291,12 +311,14 @@ The four components of $\Psi$ have a clear physical
 interpretation. Group the 4-spinor into two 2-spinors
 ("upper" and "lower"):
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-large-small}
 \Psi(\mathbf r) \;=\; \begin{pmatrix} \Phi^L(\mathbf r) \\\\ \Phi^S(\mathbf r) \end{pmatrix},
 \qquad
 \Phi^L, \Phi^S \in \mathbb C^2 .
 \end{equation}
+{% endraw %}
 
 $\Phi^L$ is the **large component** — it becomes the
 non-relativistic Pauli spinor in the limit $c \to \infty$
@@ -311,12 +333,14 @@ $2 \times 2$ block structure are off-diagonal. Writing
 out \eqref{eq:ch-15-dirac-hamiltonian} in the
 $(\Phi^L, \Phi^S)$ block form gives the coupled system
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dirac-coupled}
 c\,\boldsymbol\sigma\!\cdot\!\hat{\mathbf p}\, \Phi^S \;=\; (E - mc^2 - v)\, \Phi^L ,
 \qquad
 c\,\boldsymbol\sigma\!\cdot\!\hat{\mathbf p}\, \Phi^L \;=\; (E + mc^2 - v)\, \Phi^S .
 \end{equation}
+{% endraw %}
 
 These are the equations of motion of a *single* electron
 in a fixed external potential. The electron–electron
@@ -342,28 +366,34 @@ $\ell$ (orbital, $\ell = j \pm 1/2$).
 
 The bound-state eigenvalues are
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dirac-energies}
 E_{n,j} \;=\; mc^2 \left[ 1 + \left(\frac{Z\alpha}{n - \delta_{n,j}}\right)^2 \right]^{-1/2} ,
 \end{equation}
+{% endraw %}
 
 where $\alpha = e^2/(\hbar c) \approx 1/137.036$ is the
 **fine-structure constant** and $\delta_{n,j}$ is the
 **quantum defect** of the level $(n, j)$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-quantum-defect}
 \delta_{n,j} \;=\; j + \tfrac{1}{2} - \sqrt{\left(j + \tfrac{1}{2}\right)^2 - (Z\alpha)^2} .
 \end{equation}
+{% endraw %}
 
 Expanding \eqref{eq:ch-15-dirac-energies}–\eqref{eq:ch-15-quantum-defect}
 to first order in $(Z\alpha)^2$ gives the binding energy
 $\varepsilon_{n,j} = E_{n,j} - mc^2$ in the Pauli form
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-pauli-binding}
 \varepsilon_{n,j} \;=\; -\frac{Z^2}{2 n^2} \left[ 1 + \frac{(Z\alpha)^2}{n^2}\left(\frac{n}{j + 1/2} - \frac{3}{4}\right) + O\Bigl((Z\alpha)^4\Bigr) \right] ,
 \end{equation}
+{% endraw %}
 
 where the leading $-Z^2/(2n^2)$ is the non-relativistic
 result, and the $(Z\alpha)^2$ correction is the
@@ -383,19 +413,23 @@ and the **relativistic contraction** of the $s$ orbitals.
 The spin-orbit splitting between the $j = \ell + 1/2$
 and $j = \ell - 1/2$ levels (for $\ell \ge 1$) is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-so-split}
 \Delta E_\text{SO} \;=\; E_{n,j=\ell+1/2} - E_{n,j=\ell-1/2} \;\approx\; \frac{(Z\alpha)^2}{2n}\,\frac{E_n^\text{nr}}{\Bigl(\ell + \tfrac{1}{2}\Bigr)\Bigl(\ell + 1\Bigr)} ,
 \end{equation}
+{% endraw %}
 
 where $E_n^\text{nr} = -Z^2/(2n^2)$ is the non-relativistic
 binding energy. For the hydrogen $2p$ level
 ($Z = 1$, $\ell = 1$, $n = 2$),
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-so-h}
 \Delta E_\text{SO}(2p,\, Z=1) \;\approx\; \frac{(1/137)^2}{4}\,\frac{-1/8}{3/2 \cdot 2} \;\approx\; -4.5 \times 10^{-5}\,\text{eV} ,
 \end{equation}
+{% endraw %}
 
 i.e. a $45$ micro-electron-volt splitting — invisible
 in chemistry. For the gold $5d$ level
@@ -405,10 +439,12 @@ right order of magnitude and comparable to a chemical
 bond. The **$Z^4$ scaling** is therefore the
 headline: the absolute splitting scales as
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-z4-scaling}
 \Delta E_\text{SO}(n, j) \;\propto\; (Z\alpha)^2 \times E_n^\text{nr} \;\propto\; \frac{Z^4 \alpha^2}{n^3} .
 \end{equation}
+{% endraw %}
 
 Doubling the nuclear charge increases the spin-orbit
 splitting by a factor of $16$.
@@ -421,10 +457,12 @@ The Dirac radial wavefunction for the same quantum
 numbers, averaged over the upper component, has a
 smaller mean radius. To leading order in $(Z\alpha)^2$,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-1s-contraction}
 \frac{\langle r \rangle_{1s}^\text{Dirac}}{\langle r \rangle_{1s}^\text{nr}} \;\approx\; 1 - \frac{(Z\alpha)^2}{2} .
 \end{equation}
+{% endraw %}
 
 For hydrogen this is a $3 \times 10^{-5}$ effect; for
 gold, $\langle r \rangle_{6s}^\text{Dirac} / \langle r \rangle_{6s}^\text{nr} \approx 0.78$, a $22\%$
@@ -470,10 +508,12 @@ $\varepsilon = E - mc^2$, and rewrite the Hamiltonian of
 \eqref{eq:ch-15-dirac-hamiltonian} in the
 $2 \times 2$ block form. In the standard representation,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dirac-block}
 \hat H_\text{Dirac} - mc^2 \;=\; \begin{pmatrix} v(\mathbf r) & c\,\boldsymbol\sigma\!\cdot\!\hat{\mathbf p} \\\\ c\,\boldsymbol\sigma\!\cdot\!\hat{\mathbf p} & v(\mathbf r) - 2mc^2 \end{pmatrix} .
 \end{equation}
+{% endraw %}
 
 The off-diagonal blocks couple $\Phi^L$ to $\Phi^S$ and
 are the source of all relativistic effects. The diagonal
@@ -486,22 +526,26 @@ $\hat U_\text{FW}$ that block-diagonalises the
 Hamiltonian order by order in $1/c$. The standard
 choice (to second order) is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-fw-u}
 \hat U_\text{FW} \;=\; \exp\!\left( i \hat S\right),
 \qquad
 \hat S \;=\; -\frac{i}{2mc^2}\,\beta\,\boldsymbol\alpha\!\cdot\!\hat{\mathbf p} \;=\; \frac{1}{2mc^2}\,\boldsymbol\Sigma\!\cdot\!\hat{\mathbf p} ,
 \end{equation}
+{% endraw %}
 
 where $\boldsymbol\Sigma = \begin{pmatrix} \boldsymbol\sigma & \mathbf 0 \\ \mathbf 0 & \boldsymbol\sigma \end{pmatrix}$
 is the $4 \times 4$ spin matrix. To leading order in
 $1/c$, $\hat S$ is small (it is $O(v/c)$), and the
 transformed Hamiltonian is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-fw-h}
 \hat H'_\text{FW} \;=\; \hat U_\text{FW}\, \hat H_\text{Dirac}\, \hat U_\text{FW}^\dagger \;\approx\; \hat H_\text{Dirac} + i[\hat S, \hat H_\text{Dirac}] + \tfrac{1}{2}\,i[\hat S, i[\hat S, \hat H_\text{Dirac}]] + \cdots .
 \end{equation}
+{% endraw %}
 
 Substituting \eqref{eq:ch-15-dirac-block} and
 \eqref{eq:ch-15-fw-u} and using the Clifford algebra
@@ -509,10 +553,12 @@ Substituting \eqref{eq:ch-15-dirac-block} and
 the block-diagonal part of \eqref{eq:ch-15-fw-h} is the
 **Pauli Hamiltonian**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-pauli-hamiltonian}
 \hat H_\text{Pauli} \;=\; \underbrace{\frac{\hat{\mathbf p}^2}{2m} + v(\mathbf r)}_{\hat H_\text{Schr\"odinger}} \;\underbrace{-\; \frac{\hat{\mathbf p}^4}{8 m^3 c^2}}_{\text{kinetic-relativistic}} \;\underbrace{-\; \frac{\hbar^2}{4 m^2 c^2}\,\nabla^2 v}_{\text{Darwin}} \;\underbrace{+\; \frac{1}{2 m^2 c^2}\,\frac{1}{r}\frac{dv}{dr}\,\hat{\mathbf L}\!\cdot\!\hat{\mathbf S}}_{\text{spin-orbit}} ,
 \end{equation}
+{% endraw %}
 
 where we have used the operator identity
 $\boldsymbol\sigma \cdot (\nabla v \times \hat{\mathbf p}) = (1/r)(dv/dr) \hat{\mathbf L} \cdot \boldsymbol\sigma$
@@ -525,10 +571,12 @@ corrections are the content of the Pauli limit.
 
 **The kinetic-relativistic (mass-velocity) term:**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-mass-velocity}
 \hat H_\text{MV} \;=\; -\frac{\hat{\mathbf p}^4}{8 m^3 c^2} .
 \end{equation}
+{% endraw %}
 
 This is the Taylor expansion of the relativistic
 kinetic energy
@@ -543,18 +591,22 @@ are contracted in heavy atoms.
 
 **The Darwin term:**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-darwin}
 \hat H_\text{D} \;=\; -\frac{\hbar^2}{4 m^2 c^2}\,\nabla^2 v(\mathbf r) .
 \end{equation}
+{% endraw %}
 
 The Darwin term can be rewritten in two useful forms.
 First, integration by parts gives
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-darwin-int}
 \langle \hat H_\text{D} \rangle \;=\; +\frac{\hbar^2}{4 m^2 c^2} \int |\nabla \psi|^2\, d\mathbf r \quad\text{(for real } \psi\text{)},
 \end{equation}
+{% endraw %}
 
 which is positive-definite and therefore *repulsive*
 (it stabilises the energy, not destabilises it). Second,
@@ -562,10 +614,12 @@ substituting the Coulomb potential
 $v = -Z/r$ gives $\nabla^2 v = 4\pi Z\, \delta(\mathbf r)$,
 so the Darwin term is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-darwin-coulomb}
 \hat H_\text{D}^\text{Coulomb} \;=\; -\frac{\pi \hbar^2 Z}{m^2 c^2}\,\delta(\mathbf r) .
 \end{equation}
+{% endraw %}
 
 The Darwin correction therefore acts *only* on
 wavefunctions with a finite amplitude at the nucleus —
@@ -582,10 +636,12 @@ $\psi(\mathbf 0) = 0$ for $\ell \ge 1$.
 
 **The spin-orbit term:**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-spin-orbit}
 \hat H_\text{SO} \;=\; \frac{1}{2 m^2 c^2}\,\frac{1}{r}\,\frac{dv}{dr}\,\hat{\mathbf L}\!\cdot\!\hat{\mathbf S} \;=\; \xi(r)\,\hat{\mathbf L}\!\cdot\!\hat{\mathbf S} .
 \end{equation}
+{% endraw %}
 
 The operator $\hat{\mathbf L} \cdot \hat{\mathbf S}$ has
 eigenvalues $\tfrac{1}{2}[\ell(\ell+1) + s(s+1) - j(j+1)]$ in
@@ -597,10 +653,12 @@ this single-electron form. For a $p_{1/2}$ electron
 a $p_{3/2}$ electron ($j = 3/2$) it is $+1/2$. The
 spin-orbit splitting of a $p$ shell is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-p-split}
 \Delta E_\text{SO}(p) \;=\; \Bigl\langle \hat H_\text{SO} \bigr\rangle_{p_{3/2}} - \Bigl\langle \hat H_\text{SO} \bigr\rangle_{p_{1/2}} \;=\; \tfrac{3}{2}\,\Bigl\langle \xi(r) \bigr\rangle_{p} ,
 \end{equation}
+{% endraw %}
 
 which is positive (the $j = \ell + 1/2$ level is
 *higher* in energy than the $j = \ell - 1/2$ level for
@@ -637,10 +695,12 @@ arises from the non-zero probability of finding the
 electron at the nucleus. In the Breit–Pauli operator
 (§15.5.2) the contact term is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-contact}
 \hat H_\text{contact} \;=\; -\frac{8\pi}{3}\,\frac{\hbar^2}{2m^2 c^2}\,\boldsymbol\sigma_1 \!\cdot\! \boldsymbol\sigma_2\, \delta(\mathbf r_1 - \mathbf r_2) ,
 \end{equation}
+{% endraw %}
 
 and is the source of the hyperfine splitting of atomic
 $s$ levels (the $21$ cm line of hydrogen, the Mössbauer
@@ -664,10 +724,12 @@ $\langle p^2 \rangle \sim Z^2/n^2$ and
 $\langle p^4 \rangle \sim Z^4/n^4$). In absolute terms
 the energy correction is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-mv-scaling}
 \Bigl| \langle \hat H_\text{MV} \rangle \Bigr| \;\sim\; \frac{Z^4}{n^3}\,\frac{\alpha^2}{2} \times E_h \;\sim\; \frac{Z^4}{n^3} \times 13.6\,\text{eV} \times \frac{\alpha^2}{2} .
 \end{equation}
+{% endraw %}
 
 For the $1s$ electron of hydrogen ($Z = 1$, $n = 1$)
 this is $\sim 9 \times 10^{-4}$ eV; for the $1s$
@@ -680,10 +742,12 @@ value on a hydrogenic $s$ orbital,
 $-\pi Z \alpha \lambdabar_C^3 \langle \delta(\mathbf r) \rangle$,
 is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-darwin-scaling}
 \Bigl| \langle \hat H_\text{D} \rangle \Bigr| \;\sim\; \frac{Z^4 \alpha^2}{n^3} \times E_h ,
 \end{equation}
+{% endraw %}
 
 the same $Z^4 \alpha^2 / n^3$ scaling as the kinetic-
 relativistic term, but the Darwin term only acts on
@@ -698,10 +762,12 @@ $s$ electron near the nucleus.
 value $\langle \xi(r) \rangle = \langle (1/2mc^2r)(dv/dr) \rangle$
 on a hydrogenic orbital scales as
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-soc-scaling}
 \Bigl| \langle \hat H_\text{SO} \rangle \Bigr| \;\sim\; \frac{Z^4 \alpha^2}{n^3} \times \frac{1}{\ell(\ell+1)} \times E_h .
 \end{equation}
+{% endraw %}
 
 The $1/(\ell(\ell+1))$ is a *kinemati`c*' angular-momentum
 factor; the leading $Z^4$ is the same as for the
@@ -784,10 +850,12 @@ Let $\hat H_D$ denote the Dirac Hamiltonian of
 $2 \times 2$ block form. We want a unitary transformation
 $\hat U$ that brings $\hat H_D$ to block-diagonal form:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-block-decomp}
 \hat H_\text{BD} \;=\; \hat U\, \hat H_D\, \hat U^\dagger \;=\; \begin{pmatrix} \hat H_+ & 0 \\\\ 0 & \hat H_- \end{pmatrix} ,
 \end{equation}
+{% endraw %}
 
 where $\hat H_+$ acts on the (transformed) large component
 and $\hat H_-$ on the (transformed) small component. The
@@ -808,12 +876,14 @@ the Dirac Hamiltonian with off-diagonal block
 $\hat X = c\,\boldsymbol\sigma \cdot \hat{\mathbf p}$,
 the decoupling is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-fw-x}
 \hat U \;=\; \begin{pmatrix} \hat\Omega_+ & - \hat R\, \hat\Omega_- \\\\ \hat R\, \hat\Omega_+ & \hat\Omega_- \end{pmatrix} ,
 \qquad
 \hat R \;=\; \hat X\, (\hat H_+ - \hat H_{--})^{-1} ,
 \end{equation}
+{% endraw %}
 
 where $\hat H_{--}$ is the (negative-energy) lower
 diagonal block of the *untransforme`d*' Hamiltonian, and
@@ -827,10 +897,12 @@ a small quantity of order $v/c$, as expected.
 
 The transformed upper block is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-hplus}
 \hat H_+ \;=\; \hat U_{LL}\, \hat H_{++}\, \hat U_{LL}^\dagger + \hat U_{LL}\, \hat X\, \hat U_{SL}^\dagger + \hat U_{SL}\, \hat X\, \hat U_{LL}^\dagger ,
 \end{equation}
+{% endraw %}
 
 where $\hat H_{++} = v(\mathbf r)$ is the upper diagonal
 block of \eqref{eq:ch-15-dirac-block}. The first two
@@ -883,6 +955,7 @@ expansion of the ratio operator $\hat R$ with an *exact*
 square-root transformation. The starting point is the
 Dirac Hamiltonian in the *external-fiel`d*' form
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dkh-h}
 \hat H_D \;=\; \beta m c^2 + \mathcal E + \mathcal O ,
@@ -891,6 +964,7 @@ Dirac Hamiltonian in the *external-fiel`d*' form
 \qquad
 \mathcal O \;=\; c\,\boldsymbol\alpha \cdot \hat{\mathbf p} ,
 \end{equation}
+{% endraw %}
 
 where $\mathcal E$ is the (diagonal, even) "electric"
 block and $\mathcal O$ is the (off-diagonal, odd) "odd"
@@ -902,23 +976,27 @@ vanishes to successively higher order in $1/c^2$.
 **First step: the free-particle FW transformation.**
 The free-particle FW operator is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dkh-u0}
 \hat U_0 \;=\; \beta \frac{\hat E + mc^2}{\sqrt{2\hat E\,(mc^2 + \hat E)}} ,
 \qquad
 \hat E \;=\; \sqrt{\hat{\mathbf p}^2 c^2 + m^2 c^4} .
 \end{equation}
+{% endraw %}
 
 $\hat U_0$ is *independent* of the external potential
 and block-diagonalises the *free* Dirac Hamiltonian. The
 diagonal blocks of the transformed Hamiltonian are
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dkh-h0}
 \hat H_0^{(+)} \;=\; \beta(\hat E - mc^2) + \mathcal E ,
 \qquad
 \hat H_0^{(-)} \;=\; -\beta(\hat E + mc^2) + \mathcal E .
 \end{equation}
+{% endraw %}
 
 The transformed Hamiltonian is block-diagonal *in the
 free-particle sense*; the external potential is in the
@@ -926,10 +1004,12 @@ diagonal block but the off-diagonal block of the
 transformed Hamiltonian is not identically zero. The
 remaining off-diagonal block is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dkh-oo}
 \hat H_0^{(\text{off})} \;=\; \hat U_0\, \mathcal O\, \hat U_0^\dagger \;=\; \frac{c\,\boldsymbol\alpha_\text{DKH}\!\cdot\!\hat{\mathbf p}}{2} \left( 1 + \frac{\hat E}{mc^2}\right)^{-1} + \text{H.c.} ,
 \end{equation}
+{% endraw %}
 
 where $\boldsymbol\alpha_\text{DKH}$ is the transformed
 $\boldsymbol\alpha$ matrix in the new basis. The
@@ -942,10 +1022,12 @@ The second unitary operator $\hat U_1$ is chosen to
 eliminate $\hat H_0^{(\text{off})}$ to second order in
 $1/c$. The explicit form is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dkh-u1}
 \hat U_1 \;=\; \sqrt{ \frac{ \sqrt{1 + \hat X^\dagger \hat X} + 1 }{2 \sqrt{1 + \hat X^\dagger \hat X}} } + \beta \sqrt{ \frac{ \sqrt{1 + \hat X^\dagger \hat X} - 1 }{2 \sqrt{1 + \hat X^\dagger \hat X}} } ,
 \end{equation}
+{% endraw %}
 
 where $\hat X$ is the off-diagonal block of the
 transformed Hamiltonian measured in units of the energy
@@ -953,10 +1035,12 @@ gap $2mc^2$. Substituting and truncating at second
 order in $\hat X$ gives the **DKH2 Hamiltonian** for the
 positive-energy block:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dkh2}
 \hat H_+^{(\text{DKH2})} \;=\; \hat E - mc^2 + v(\mathbf r) + \tfrac{1}{2}\Bigl[\hat A, [\hat A, v(\mathbf r)]\Bigr] + \cdots ,
 \end{equation}
+{% endraw %}
 
 where $\hat A = \boldsymbol\alpha \cdot \hat{\mathbf p} / (2\hat E + 2mc^2 - 2v)$ is
 the first-order anti-Hermitian generator of the
@@ -1012,10 +1096,12 @@ Eliminating the large component from
 from the large as DKH does) gives an equation for
 $\Phi^S$ that, in the limit $E + mc^2 - v \approx 2mc^2$, is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-zora-s}
 \Phi^S \;\approx\; \frac{c\,\boldsymbol\sigma \cdot \hat{\mathbf p}}{2mc^2}\,\Phi^L .
 \end{equation}
+{% endraw %}
 
 This is the *naive* non-relativistic reduction, and it
 gives the Pauli Hamiltonian
@@ -1033,17 +1119,21 @@ The ZORA *fix* is to keep $E - v$ in the denominator
 of the kinetic-energy operator, which *regularises* the
 divergence. The ZORA Hamiltonian is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-zora}
 \hat H_\text{ZORA} \;=\; \frac{\hat{\mathbf p}\,(\mathbf 1 + \tfrac{1}{2mc^2}[v - E])^{-1}\,\hat{\mathbf p}}{2m} + v(\mathbf r) + \hat H_\text{SO}^\text{ZORA} ,
 \end{equation}
+{% endraw %}
 
 where the second term is the ZORA spin-orbit coupling
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-zora-soc}
 \hat H_\text{SO}^\text{ZORA} \;=\; \frac{1}{2mc^2}\,\boldsymbol\sigma \cdot (\nabla v \times \hat{\mathbf p}) \left( 1 + \frac{v - E}{2mc^2}\right)^{-1} .
 \end{equation}
+{% endraw %}
 
 The ZORA Hamiltonian is *not* a simple expansion in
 $1/c^2$. It contains the *regularise`d*' kinetic operator
@@ -1076,10 +1166,12 @@ the method of choice in the ADF code.
 > added to recover the missing second-order Pauli
 > terms. The scaled ZORA is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-scaled-zora}
 \hat H_\text{scaled ZORA} \;=\; \frac{\hat{\mathbf p}\,(\mathbf 1 + \tfrac{1}{2mc^2}[v - E])^{-1}\,\hat{\mathbf p}}{2m} \left( 1 + \frac{\langle [v - E] \rangle}{2mc^2}\right) + v(\mathbf r) + \hat H_\text{SO}^\text{ZORA} ,
 \end{equation}
+{% endraw %}
 
 > where $\langle [v - E] \rangle$ is the expectation
 > value of $v - E$ on the orbital. The scaled ZORA is
@@ -1108,12 +1200,14 @@ following.
 Dirac Hamiltonian in a spinor basis
 $\{\chi_\mu\}$ is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-x2c-h}
 \mathbf h_D \;=\; \begin{pmatrix} \mathbf v & c\,\mathbf T \\\\ c\,\mathbf T & \mathbf v - 2mc^2 \mathbf 1 \end{pmatrix} ,
 \qquad
 T_{\mu\nu} \;=\; \langle \chi_\mu | \boldsymbol\sigma \cdot \hat{\mathbf p} | \chi_\nu \rangle ,
 \end{equation}
+{% endraw %}
 
 where $\mathbf v$ is the $K \times K$ potential matrix
 and $\mathbf T$ the $K \times K$ kinetic matrix in
@@ -1124,28 +1218,34 @@ free-particle limit.** The **X2C decoupling matrix** is
 the $2K \times 2K$ unitary that diagonalises $\mathbf h_D$ in
 the positive-energy subspace:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-x2c-eig}
 \mathbf h_D \begin{pmatrix} \mathbf C_+ \\\\ \mathbf C_- \end{pmatrix} \;=\; \begin{pmatrix} \mathbf C_+ \\\\ \mathbf C_- \end{pmatrix} \boldsymbol\varepsilon_+ ,
 \end{equation}
+{% endraw %}
 
 where $\mathbf C_+$ are the upper $K$ spinor
 coefficients of the $K$ positive-energy eigenvectors
 and $\mathbf C_-$ the lower $K$. The X2C transformation
 matrix is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-x2c-u}
 \mathbf U_\text{X2C} \;=\; \begin{pmatrix} \mathbf C_+ & -\mathbf C_- \\\\ \mathbf C_- & \mathbf C_+ \end{pmatrix} ,
 \end{equation}
+{% endraw %}
 
 and the X2C Hamiltonian is the upper block of the
 transformed Dirac matrix:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-x2c}
 \mathbf h_\text{X2C} \;=\; \mathbf C_+^\dagger\, \mathbf h_D\, \mathbf C_+ \;=\; \boldsymbol\varepsilon_+ .
 \end{equation}
+{% endraw %}
 
 The diagonal $\boldsymbol\varepsilon_+$ are the
 *exact* positive-energy eigenvalues of the Dirac
@@ -1164,12 +1264,14 @@ $\mathbf Y$ matrix to the transformed Hamiltonian that
 restores the matrix elements of *any* operator $\hat Q$ to
 their original value. The corrected X2C Hamiltonian is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-x2c-pc}
 \mathbf h_\text{X2C, pc} \;=\; \mathbf h_\text{X2C} + \mathbf Y(\hat Q) ,
 \qquad
 \mathbf Y(\hat Q) \;=\; \mathbf C_+^\dagger \hat Q\, \mathbf C_+ - \hat Q .
 \end{equation}
+{% endraw %}
 
 The picture-change correction is small for
 energy-related operators (it is $O((Z\alpha)^4)$ for the
@@ -1230,10 +1332,12 @@ The **mass-velocity (MV) term** is the
 kinetic-relativistic correction of
 \eqref{eq:ch-15-mass-velocity}:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-mv-15}
 \hat H_\text{MV} \;=\; -\frac{\hat{\mathbf p}^4}{8 m^3 c^2} .
 \end{equation}
+{% endraw %}
 
 The MV correction is a *negative* definite operator (for
 any wavefunction, $\langle p^4 \rangle > 0$ so the
@@ -1250,27 +1354,33 @@ depends on $\ell$ through the radial wavefunction.
 The MV term can be written as a perturbation of the
 kinetic-energy operator:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-mv-pert}
 \hat H_\text{MV} \;=\; -\frac{1}{2mc^2}\left(\frac{\hat{\mathbf p}^2}{2m}\right)^2 \;=\; -\frac{1}{2mc^2}\,\hat T^2 .
 \end{equation}
+{% endraw %}
 
 To first order in $1/c^2$, the MV shift of an orbital
 with non-relativistic kinetic energy $T = \langle p^2/2m \rangle$
 is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-mv-shift}
 \Delta E_\text{MV} \;\approx\; -\frac{T^2}{2mc^2} .
 \end{equation}
+{% endraw %}
 
 For a $1s$ hydrogenic orbital, $T = Z^2/2$ (atomic
 units), so
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-mv-h}
 \Delta E_\text{MV}(1s,\,Z) \;\approx\; -\frac{Z^4}{8c^2} \;\approx\; -9 \times 10^{-4}\,\text{eV} \times Z^4 .
 \end{equation}
+{% endraw %}
 
 For hydrogen ($Z = 1$) this is $\sim 10^{-3}$ eV; for
 gold ($Z = 79$) the same scaling gives $\sim 350$ eV on
@@ -1293,10 +1403,12 @@ of conduction in simple metals.
 The **Darwin term** is the second correction of
 \eqref{eq:ch-15-darwin}:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-darwin-15}
 \hat H_\text{D} \;=\; -\frac{\hbar^2}{4 m^2 c^2}\,\nabla^2 v(\mathbf r) .
 \end{equation}
+{% endraw %}
 
 The Darwin term is **non-zero only for wavefunctions
 with a finite amplitude at the nucleus**, i.e. for
@@ -1312,18 +1424,22 @@ non-zero.)
 For a Coulomb potential $v = -Z/r$ the Laplacian is
 $\nabla^2 v = 4\pi Z \delta(\mathbf r)$, so
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-darwin-coulomb-15}
 \hat H_\text{D}^\text{Coulomb} \;=\; -\frac{\pi \hbar^2 Z}{m^2 c^2}\,\delta(\mathbf r) .
 \end{equation}
+{% endraw %}
 
 The Darwin expectation value on a hydrogenic $ns$
 orbital is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-darwin-ns}
 \langle \hat H_\text{D} \rangle_{ns} \;=\; -\frac{\pi \hbar^2 Z}{m^2 c^2}\, |\psi_{ns}(0)|^2 \;=\; -\frac{\pi \hbar^2 Z}{m^2 c^2}\,\frac{Z^3}{\pi n^3 a_0^3} \;=\; -\frac{Z^4 \alpha^2}{n^3}\,E_h .
 \end{equation}
+{% endraw %}
 
 For hydrogen ($Z = 1$, $n = 1$) the Darwin shift of
 the $1s$ orbital is
@@ -1357,10 +1473,12 @@ The **scalar relativistic (SR) approximation** keeps
 only the spin-independent terms of
 \eqref{eq:ch-15-pauli-hamiltonian}:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-sr-hamiltonian}
 \hat H_\text{SR} \;=\; \frac{\hat{\mathbf p}^2}{2m} + v(\mathbf r) - \frac{\hat{\mathbf p}^4}{8 m^3 c^2} - \frac{\hbar^2}{4 m^2 c^2}\,\nabla^2 v(\mathbf r) .
 \end{equation}
+{% endraw %}
 
 The SR Hamiltonian is *spin-independent*: the eigenstates
 are still 2-component Pauli spinors, but the upper and
@@ -1374,10 +1492,12 @@ non-relativistic calculation.
 The energy shift of the SR approximation (relative to
 the non-relativistic Schrödinger) is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-sr-shift}
 \Delta E_\text{SR} \;=\; \langle \hat H_\text{MV} \rangle + \langle \hat H_\text{D} \rangle \;=\; -\frac{1}{2mc^2}\langle T^2 \rangle - \frac{\hbar^2}{4 m^2 c^2}\int |\nabla \psi|^2\, d\mathbf r .
 \end{equation}
+{% endraw %}
 
 The second form comes from integrating the Darwin term
 by parts (the surface term vanishes at infinity) and is
@@ -1500,17 +1620,21 @@ in the $|j, m_j, \ell\rangle$ basis (the coupled basis of
 orbital and spin angular momenta), and the eigenvalues
 are
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-ls-eigenvalue}
 \Bigl\langle \xi(r) \hat{\mathbf L} \cdot \hat{\mathbf S} \bigr\rangle_{n,\ell,j} \;=\; \tfrac{1}{2}\Bigl[\ell(\ell+1) + s(s+1) - j(j+1)\Bigr] \langle \xi \rangle_{n\ell} \;=\; \begin{cases} +\tfrac{\ell}{2}\,\langle \xi \rangle, & j = \ell + 1/2, \\\\ -\tfrac{\ell+1}{2}\,\langle \xi \rangle, & j = \ell - 1/2. \end{cases}
 \end{equation}
+{% endraw %}
 
 The SOC splitting of an $\ell \ge 1$ shell is therefore
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-ls-splitting}
 \Delta E_\text{SO}(n\ell) \;=\; \Bigl\langle \xi \bigr\rangle_{n\ell}\,\Bigl(\ell + 1\Bigr) \;=\; \frac{(Z\alpha)^2}{2}\,\frac{E_n^\text{nr}}{\Bigl(\ell + \tfrac{1}{2}\Bigr)(\ell + 1)} \quad \text{(hydrogenic)} .
 \end{equation}
+{% endraw %}
 
 For an attractive Coulomb potential $\langle \xi \rangle > 0$ (since
 $dv/dr > 0$ for an attractive $v = -Z/r$), so the
@@ -1593,19 +1717,23 @@ order $1/c^2$. It contains:
 
 The two-electron Breit–Pauli Hamiltonian is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-breit-pauli}
 \hat H_\text{BP}^{(2)} \;=\; -\sum_{i<j} \left[ \frac{\hat{\mathbf p}_i \cdot \hat{\mathbf p}_j}{m^2 c^2} + \frac{\boldsymbol\sigma_i \cdot \boldsymbol\sigma_j}{m^2 c^2}\,\frac{1}{r_{ij}} - \frac{(\boldsymbol\sigma_i \cdot \boldsymbol\sigma_j)}{m^2 c^2}\,\frac{1}{r_{ij}^3} + \cdots \right] ,
 \end{equation}
+{% endraw %}
 
 where the explicit form contains $\sim 10$ distinct
 operators. The two-electron SOC is the **spin-other-
 orbit** term:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-so-other}
 \hat H_\text{SOO} \;=\; -\frac{1}{m^2 c^2} \sum_{i\ne j} \frac{1}{r_{ij}^3}\,\hat{\mathbf r}_{ij} \times \hat{\mathbf p}_i \cdot \hat{\mathbf S}_j \;=\; -\frac{1}{m^2 c^2} \sum_{i\ne j} \frac{1}{r_{ij}^3}\,\hat{\mathbf L}_{ij} \cdot \hat{\mathbf S}_j ,
 \end{equation}
+{% endraw %}
 
 where $\hat{\mathbf L}_{ij} = \hat{\mathbf r}_{ij} \times \hat{\mathbf p}_i$ is the
 angular momentum of electron $i$ about electron $j$.
@@ -1625,12 +1753,14 @@ two-electron operator with up to 6 spin components.
 In practice, the two-electron SOC is **approximated by
 a mean-field (MF) one-electron operator**:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-soc-mf}
 \hat H_\text{SO}^\text{MF} \;=\; \sum_i \hat h_\text{SO}^\text{MF}(i) ,
 \qquad
 \hat h_\text{SO}^\text{MF}(i) \;=\; \sum_{j\,\text{occ}} \Bigl[ \langle \phi_j | \hat H_\text{SOO}(i, j) | \phi_j \rangle - \langle \phi_j | \hat H_\text{SOO}(i, j) | \phi_j \rangle_\text{exch} \Bigr] .
 \end{equation}
+{% endraw %}
 
 The MF-SOC operator is a one-electron operator (it
 depends only on the coordinates of electron $i$, with
@@ -1658,10 +1788,12 @@ reappears at the spin-orbit level. A **fully-
 relativistic pseudopotential** is a $2 \times 2$ matrix
 in spin space at every $\mathbf r$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-frpp}
 \hat V_\text{ps}^\text{rel}(\mathbf r, \boldsymbol\sigma) \;=\; \sum_\ell \sum_{m=-\ell}^{\ell} \Bigl| Y_\ell^m \bigr\rangle \Bigl[ V_\text{ps,}\ell^\text{SR}(r) + V_\text{ps,}\ell^\text{SO}(r)\,\hat{\mathbf L}\!\cdot\!\hat{\mathbf S} \Bigr] \Bigl\langle Y_\ell^m \Bigr| ,
 \end{equation}
+{% endraw %}
 
 where the first term is the scalar-relativistic
 pseudopotential of §15.4.4 and the second is the
@@ -1688,10 +1820,12 @@ PAW formalism of [chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }}) §8
 naturally accommodates the on-site SOC by including
 the SOC in the augmentation sphere:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-paw-soc}
 |\Psi_i\rangle \;=\; \sum_n |\tilde\phi_n\rangle \langle \tilde p_n | \Psi_i\rangle + \sum_A \sum_\ell \Bigl( |\phi_A^\ell\rangle - |\tilde\phi_A^\ell\rangle \Bigr) \langle \tilde p_A^\ell | \Psi_i \rangle ,
 \end{equation}
+{% endraw %}
 
 where the augmentation functions $|\phi_A^\ell\rangle$
 are now *spinor* partial waves (2-component, with
@@ -1830,22 +1964,26 @@ $\hat H_\text{KS} = -\frac{1}{2}\nabla^2 + v_\text{eff}(\mathbf r)$
 of [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) with the Dirac
 Hamiltonian of \eqref{eq:ch-15-dirac-hamiltonian}:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dks}
 \hat H_\text{DKS}\, \Psi_i(\mathbf r) \;=\; \varepsilon_i\, \Psi_i(\mathbf r),
 \qquad
 \hat H_\text{DKS} \;=\; c\,\boldsymbol\alpha \cdot \hat{\mathbf p} + \boldsymbol\beta\, m c^2 + v_\text{eff}(\mathbf r)\,\mathbf 1_4 ,
 \end{equation}
+{% endraw %}
 
 where $v_\text{eff}(\mathbf r) = v_\text{ext}(\mathbf r) + v_\text{H}[n](\mathbf r) + v_\text{xc}[n](\mathbf r)$
 is the *same* KS effective potential as in the
 non-relativistic case, evaluated on the *relativisti`c*'
 density
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-dks-density}
 n(\mathbf r) \;=\; \sum_{i\,\text{occ}} \Psi_i^\dagger(\mathbf r)\, \Psi_i(\mathbf r) \;=\; \sum_{i\,\text{occ}} \Bigl[ |\Phi_i^L(\mathbf r)|^2 + |\Phi_i^S(\mathbf r)|^2 \Bigr] .
 \end{equation}
+{% endraw %}
 
 The DKS equations are *exact* in the sense that they
 reproduce the *positive-energy* spectrum of the
@@ -1892,10 +2030,12 @@ obtained by applying one of the transformations of
 projecting onto the positive-energy block. The result
 is a 2-component Hamiltonian
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-2c-ks}
 \hat H_\text{2c-KS} \;=\; \hat H_+ + v_\text{H}[n] + v_\text{xc}[n, \mathbf m] ,
 \end{equation}
+{% endraw %}
 
 where $\hat H_+$ is the 2-component relativistic
 Hamiltonian (DKH2, ZORA, or X2C), $v_\text{H}$ is the
@@ -1905,25 +2045,31 @@ non-collinear XC potential of
 equations are a 2-component generalisation of the
 non-collinear KS equations of chapter 04:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-2c-ks-eig}
 \hat H_\text{2c-KS} \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\\\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} \;=\; \varepsilon_i \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\\\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} ,
 \end{equation}
+{% endraw %}
 
 where the $\phi_{i,\sigma}(\mathbf r)$ are 2-component
 Pauli spinors. The density is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-2c-density}
 n(\mathbf r) \;=\; \sum_{i\,\text{occ}} \Bigl[ |\phi_{i,\uparrow}(\mathbf r)|^2 + |\phi_{i,\downarrow}(\mathbf r)|^2 \Bigr] ,
 \end{equation}
+{% endraw %}
 
 and the magnetisation is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-2c-magnetisation}
 \mathbf m(\mathbf r) \;=\; \mu_B \sum_{i\,\text{occ}} \Bigl[ \phi_{i,\uparrow}^*(\mathbf r), \phi_{i,\downarrow}^*(\mathbf r) \Bigr] \boldsymbol\sigma \begin{pmatrix} \phi_{i,\uparrow}(\mathbf r) \\\\ \phi_{i,\downarrow}(\mathbf r) \end{pmatrix} .
 \end{equation}
+{% endraw %}
 
 The 2c-KS equations are solved self-consistently in
 the same way as the non-collinear KS equations of
@@ -1973,10 +2119,12 @@ $\mathbf m(\mathbf r)$ (or, equivalently, the spin
 current $\mathbf J_s$). The XC energy is a functional
 of all three:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-scxc}
 E_\text{xc}[n, \mathbf j_p, \mathbf m] \;=\; \int \varepsilon_\text{xc}\Bigl(n(\mathbf r), \mathbf j_p(\mathbf r), \mathbf m(\mathbf r)\Bigr)\, d\mathbf r .
 \end{equation}
+{% endraw %}
 
 The functional derivative of $E_\text{xc}$ with respect
 to the 4-current gives the XC 4-potential, which
@@ -2025,18 +2173,22 @@ operator** $\hat{\mathcal T}$ is antiunitary
 ($\hat{\mathcal T} i \hat{\mathcal T}^{-1} = -i$) and,
 in the Pauli basis, takes the form
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-time-reversal}
 \hat{\mathcal T} \;=\; i \sigma_y \hat K ,
 \end{equation}
+{% endraw %}
 
 where $\hat K$ is complex conjugation. The action on a
 2-component spinor is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-tr-action}
 \hat{\mathcal T} \begin{pmatrix} \phi_\uparrow(\mathbf r) \\\\ \phi_\downarrow(\mathbf r) \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \phi_\uparrow^*(\mathbf r) \\\\ \phi_\downarrow^*(\mathbf r) \end{pmatrix} \;=\; \begin{pmatrix} -\phi_\downarrow^(\mathbf r) \\\\ \phi_\uparrow^(\mathbf r) \end{pmatrix} .
 \end{equation}
+{% endraw %}
 
 The time-reversal operator squares to $-1$ for a
 spin-½ particle,
@@ -2049,10 +2201,12 @@ time-reversal-invariant Hamiltonian is at least
 **two-fold degenerate**. The two degenerate states are
 called a **Kramers pair** and are related by
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-kramers}
 \Psi_\text{K2}(\mathbf r) \;=\; \hat{\mathcal T} \Psi_\text{K1}(\mathbf r) .
 \end{equation}
+{% endraw %}
 
 The Kramers degeneracy is the *only* degeneracy that
 *cannot* be lifted by a time-reversal-invariant
@@ -2296,10 +2450,12 @@ motion that adds up to a macroscopic spin current. The
 **spin Hall conductivity** $\sigma_{xy}^s$ is the
 material parameter that quantifies the effect:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-shc-def}
 j_{i}^s \;=\; \sigma_{ij}^s\, E_j ,
 \end{equation}
+{% endraw %}
 
 where $j_i^s$ is the $i$-th component of the spin
 current (a *pseudovector* with units of
@@ -2317,19 +2473,23 @@ time-reversal-invariant metal is given by the
 ([chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }}) §12.3 generalised
 to a spin-current operator):
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-shc-kubo}
 \sigma_{xy}^s \;=\; -\frac{e^2}{\hbar} \int_{\text{BZ}} \frac{d\mathbf k}{(2\pi)^3} \sum_n f(\varepsilon_{n\mathbf k}) \sum_{m \ne n} \frac{2\,\text{Im}\Bigl[\langle n\mathbf k | \hat j_x^s | m\mathbf k \rangle \langle m\mathbf k | \hat v_y | n\mathbf k \rangle\Bigr]}{(\varepsilon_{n\mathbf k} - \varepsilon_{m\mathbf k})^2} ,
 \end{equation}
+{% endraw %}
 
 where $f$ is the Fermi occupation, $\hat v_y$ the
 velocity operator, and $\hat j_x^s$ the spin-current
 operator
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-spin-current-op}
 \hat j_x^s \;=\; \frac{1}{2}\,\{\hat s_x, \hat v_x\} ,
 \end{equation}
+{% endraw %}
 
 with $\hat s_x = (\hbar/2) \sigma_x$ the spin operator.
 The sum is over all *Kramers pairs* $(n, m)$ at each
@@ -2354,10 +2514,12 @@ the **spin Berry curvature** of the Kramers pair.
 For a **topological insulator** the intrinsic spin
 Hall conductivity is quantised. The formula is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-shc-quantised}
 \sigma_{xy}^s \;=\; \frac{e^2}{2h}\,\mathcal C ,
 \end{equation}
+{% endraw %}
 
 where $\mathcal C$ is the **Chern number** of the
 occupied Kramers pair. The factor of $1/2$ (compared
@@ -2368,10 +2530,12 @@ insulator, the Chern number vanishes by symmetry, but
 the **$\mathbb Z_2$ invariant** $\nu$ takes its place,
 and the spin Hall conductivity is quantised to
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-z2-shc}
 \sigma_{xy}^s \;=\; \frac{e^2}{2h}\,(2\nu) \;=\; \nu\,\frac{e^2}{h} ,
 \end{equation}
+{% endraw %}
 
 in units of the spin Hall conductivity quantum
 $e^2/h = (25812\;\Omega)^{-1} = 3.874 \times 10^{-5}\;\text{S}$. This
@@ -2454,10 +2618,12 @@ $(\hbar/e)(\Omega\,\text{m})^{-1}$.
 
 The numerical value for Pt with the above setup is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-15-pt-shc}
 \sigma_{xy}^s(\text{Pt, theory}) \;\approx\; 2200\;\frac{\hbar}{e}\,\frac{1}{\Omega\,\text{m}} \;\approx\; \frac{e^2}{h} \times 0.057 \;\approx\; \frac{e^2}{h} \times \frac{1}{17} .
 \end{equation}
+{% endraw %}
 
 This is $\sim 1/17$ of the spin Hall conductivity
 quantum $e^2/h$, i.e. a $\mathbb Z_2$ invariant of

@@ -45,22 +45,28 @@ machinery that does this is what every production solid-state code
 > **Bloch's theorem.** Let the Hamiltonian $\hat H$ have the
 > discrete translational symmetry of a Bravais lattice
 > $\{\mathbf R\}$,
+{% raw %}
 > \begin{equation}
 > \label{eq:ch-07-bloch-translation}
 > \hat H(\mathbf r + \mathbf R) = \hat H(\mathbf r) \quad \text{for every } \mathbf R \in \{\mathbf R\}.
 > \end{equation}
+{% endraw %}
 > Then every eigenfunction of $\hat H$ can be written in the form
+{% raw %}
 > \begin{equation}
 > \label{eq:ch-07-bloch}
 > \boxed{\psi_{n\mathbf k}(\mathbf r) = e^{i \mathbf k \cdot \mathbf r}\, u_{n\mathbf k}(\mathbf r),}
 > \end{equation}
+{% endraw %}
 > where $\mathbf k$ is a real vector, the *band index* $n$ labels the
 > eigenstates at a given $\mathbf k$, and the cell-periodic function
 > $u_{n\mathbf k}$ has the same periodicity as the lattice,
+{% raw %}
 > \begin{equation}
 > \label{eq:ch-07-bloch-periodic}
 > u_{n\mathbf k}(\mathbf r + \mathbf R) = u_{n\mathbf k}(\mathbf r) \quad \text{for every } \mathbf R.
 > \end{equation}
+{% endraw %}
 
 Equation \eqref{eq:ch-07-bloch} is the single most-quoted line in
 solid-state physics. It says that *every* eigenstate of a periodic
@@ -87,10 +93,12 @@ Pick three primitive lattice vectors $\mathbf a_1, \mathbf a_2,
 primitive cells. Impose **Born–von Karman** (BvK) periodic boundary
 conditions on the supercell: for any wavefunction $\psi$,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bvk}
 \psi(\mathbf r + N_i \mathbf a_i) = \psi(\mathbf r), \qquad i = 1, 2, 3.
 \end{equation}
+{% endraw %}
 
 The supercell is the basic repeat unit; anything that happens in it is
 copied $N_1 N_2 N_3$ times to fill space. As $N_1, N_2, N_3 \to
@@ -101,12 +109,14 @@ The boundary conditions \eqref{eq:ch-07-bvk} restrict the allowed
 wavefunctions. In particular, a plane wave $e^{i\mathbf k \cdot \mathbf r}$
 satisfies \eqref{eq:ch-07-bvk} iff
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bvk-k}
 e^{i \mathbf k \cdot (N_i \mathbf a_i)} = 1 \quad \text{for } i = 1, 2, 3
 \;\;\Longrightarrow\;\;
 \mathbf k \cdot \mathbf a_i = \frac{2\pi m_i}{N_i}, \quad m_i \in \mathbb Z.
 \end{equation}
+{% endraw %}
 
 The allowed $\mathbf k$ values are therefore a discrete mesh inside
 the Brillouin zone (defined in §7.4), with $N_1 N_2 N_3$ points
@@ -125,10 +135,12 @@ For a molecule, "summing over all states" is the discrete sum
 $\sum_n$ of chapter 04. For a solid under BvK, every "sum over
 states" becomes a sum over **bands and k-points**,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bvk-sum}
 \sum_n f(\varepsilon_n) \;\;\longrightarrow\;\; \sum_n \sum_{\mathbf k \in \text{BZ}_\text{mesh}} w_\mathbf k \, f(\varepsilon_{n\mathbf k}),
 \end{equation}
+{% endraw %}
 
 with weights $w_\mathbf k = 1 / N_\mathbf k$ (uniform mesh). The
 mesh has to be fine enough that this sum approximates the BZ integral
@@ -152,10 +164,12 @@ appears below — no "it can be shown that" hand-waves <!-- no-summaries-ok -->.
 
 For every Bravais-lattice vector $\mathbf R$, define the operator
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-trans-op}
 (\hat T_{\mathbf R} f)(\mathbf r) := f(\mathbf r + \mathbf R).
 \end{equation}
+{% endraw %}
 
 $\hat T_{\mathbf R}$ shifts the argument of a function by $\mathbf R$.
 It is linear and bounded.
@@ -177,21 +191,25 @@ So $\hat T_{\mathbf R}$ preserves inner products. In particular it
 preserves norms ($\|\hat T_{\mathbf R} f\| = \|f\|$), so it is
 **unitary**:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-trans-unitary}
 \hat T_{\mathbf R}^\dagger = \hat T_{\mathbf R}^{-1}, \qquad
 \hat T_{\mathbf R}^\dagger = \hat T_{-\mathbf R}.
 \end{equation}
+{% endraw %}
 
 ### Step 3. $\hat T_{\mathbf R}$ commutes with $\hat H$
 
 Compute $\hat T_{\mathbf R} \hat H f$ for an arbitrary smooth $f$. The
 Hamiltonian in the Born–Oppenheimer picture (chapter 01) is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-hamiltonian}
 \hat H = -\frac{1}{2} \nabla^2 + V(\mathbf r),
 \end{equation}
+{% endraw %}
 
 where $V(\mathbf r)$ is the total (ionic + Hartree + xc) one-electron
 potential. By the **crystal periodicity** \eqref{eq:ch-07-bloch-translation},
@@ -210,19 +228,23 @@ The gradient $\nabla$ in the last line is taken with respect to
 $\mathbf r$; substituting $\mathbf u = \mathbf r + \mathbf R$ leaves
 $\nabla_\mathbf r f(\mathbf r + \mathbf R) = \nabla_\mathbf u f(\mathbf u)$, so
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-commute}
 \Bigl(\hat T_{\mathbf R} \hat H f\Bigr)(\mathbf r)
    = -\tfrac{1}{2} \nabla^2 f(\mathbf r + \mathbf R) + V(\mathbf r) f(\mathbf r + \mathbf R)
    = \Bigl(\hat H \, \hat T_{\mathbf R} f\Bigr)(\mathbf r).
 \end{equation}
+{% endraw %}
 
 The two operators therefore commute:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-commute-final}
 \boxed{[\hat T_{\mathbf R}, \hat H] = 0 \quad \text{for every } \mathbf R.}
 \end{equation}
+{% endraw %}
 
 ### Step 4. $\hat T_{\mathbf R}$ and $\hat H$ can be simultaneously diagonalised
 
@@ -240,18 +262,22 @@ The group of Bravais translations is abelian: $\hat T_{\mathbf R}
 representation of an abelian group are one-dimensional, i.e. complex
 numbers of unit modulus. We therefore write
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-trans-eigval}
 \hat T_{\mathbf R} \psi = \lambda(\mathbf R) \, \psi, \qquad |\lambda(\mathbf R)| = 1.
 \end{equation}
+{% endraw %}
 
 The map $\mathbf R \mapsto \lambda(\mathbf R)$ is a group
 homomorphism $\mathbb Z^3 \to U(1)$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-trans-hom}
 \lambda(\mathbf R + \mathbf R') = \lambda(\mathbf R) \, \lambda(\mathbf R').
 \end{equation}
+{% endraw %}
 
 The most general such homomorphism is $\lambda(\mathbf R) = e^{i
 \mathbf k \cdot \mathbf R}$ for some fixed vector $\mathbf k \in
@@ -262,10 +288,12 @@ reciprocal-lattice additions).
 
 So the eigenstates of $\hat T_{\mathbf R}$ satisfy
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bloch-phase}
 \psi(\mathbf r + \mathbf R) = e^{i \mathbf k \cdot \mathbf R} \, \psi(\mathbf r) \quad \text{for every } \mathbf R.
 \end{equation}
+{% endraw %}
 
 This is sometimes called the *Bloch condition*.
 
@@ -273,10 +301,12 @@ This is sometimes called the *Bloch condition*.
 
 Define
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-define-u}
 u_{\mathbf k}(\mathbf r) := e^{-i \mathbf k \cdot \mathbf r} \, \psi(\mathbf r).
 \end{equation}
+{% endraw %}
 
 Equation \eqref{eq:ch-07-bloch} is just a rearrangement of
 \eqref{eq:ch-07-define-u}; the work is to show that $u_{\mathbf k}$
@@ -296,10 +326,12 @@ u_{\mathbf k}(\mathbf r + \mathbf R)
 
 The two phase factors cancel exactly, and we have
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-u-periodic}
 u_{\mathbf k}(\mathbf r + \mathbf R) = u_{\mathbf k}(\mathbf r) \quad \text{for every } \mathbf R.
 \end{equation}
+{% endraw %}
 
 This is \eqref{eq:ch-07-bloch-periodic}, and it completes the proof:
 the eigenfunction factorises as $\psi(\mathbf r) = e^{i \mathbf k \cdot
@@ -325,27 +357,33 @@ has primitive vectors $\mathbf a_1, \mathbf a_2, \mathbf a_3$, the
 reciprocal lattice has primitive vectors $\mathbf b_1, \mathbf b_2,
 \mathbf b_3$ defined by
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-reciprocal-def}
 \mathbf a_i \cdot \mathbf b_j = 2\pi \delta_{ij}.
 \end{equation}
+{% endraw %}
 
 An explicit construction is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-reciprocal-explicit}
 \mathbf b_1 = \frac{2\pi \, \mathbf a_2 \times \mathbf a_3}{\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)},
 \qquad \text{and cyclic permutations}.
 \end{equation}
+{% endraw %}
 
 Every reciprocal-lattice vector is an integer combination $\mathbf G
 = h \mathbf b_1 + k \mathbf b_2 + l \mathbf b_3$ with $h, k, l \in
 \mathbb Z$. The volume of the reciprocal primitive cell is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-reciprocal-volume}
 V_\text{BZ}^* = \mathbf b_1 \cdot (\mathbf b_2 \times \mathbf b_3) = \frac{(2\pi)^3}{V_\text{cell}},
 \end{equation}
+{% endraw %}
 
 where $V_\text{cell} = \mathbf a_1 \cdot (\mathbf a_2 \times \mathbf
 a_3)$ is the direct-lattice primitive-cell volume.
@@ -358,11 +396,13 @@ closer to the origin than to any other reciprocal-lattice point. Its
 boundary is built from the perpendicular bisector planes of the
 shortest $\mathbf G$ vectors. Formally,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bz}
 \text{1st BZ} = \left\lbrace \mathbf k \in \mathbb R^3 \;:\;
 |\mathbf k| \le |\mathbf k - \mathbf G| \text{ for every reciprocal-lattice vector } \mathbf G \right\rbrace.
 \end{equation}
+{% endraw %}
 
 Every physically distinct crystal momentum is represented exactly
 once in the 1st BZ, so the "sum over $\mathbf k$" in
@@ -374,22 +414,26 @@ As an example, the reciprocal lattice of a face-centred cubic (FCC)
 direct lattice is body-centred cubic (BCC). The primitive vectors of
 the FCC lattice with conventional cubic parameter $a$ are
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-fcc-primitive}
 \mathbf a_1 = \frac{a}{2}(0, 1, 1),\quad
 \mathbf a_2 = \frac{a}{2}(1, 0, 1),\quad
 \mathbf a_3 = \frac{a}{2}(1, 1, 0).
 \end{equation}
+{% endraw %}
 
 Equation \eqref{eq:ch-07-reciprocal-explicit} gives the reciprocal
 primitive vectors
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-fcc-reciprocal}
 \mathbf b_1 = \frac{2\pi}{a}(-1, 1, 1),\quad
 \mathbf b_2 = \frac{2\pi}{a}(1, -1, 1),\quad
 \mathbf b_3 = \frac{2\pi}{a}(1, 1, -1),
 \end{equation}
+{% endraw %}
 
 which span a BCC lattice. The shortest $\mathbf G$ vectors are
 $\pm \tfrac{2\pi}{a}(1,1,1)$ and permutations with sign, with length
@@ -418,10 +462,12 @@ coordinate is the value in the table multiplied by $2\pi/a$.
 
 The standard band-structure path traces the irreducible BZ:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-fcc-path}
 \Gamma \;\to\; X \;\to\; W \;\to\; K \;\to\; \Gamma \;\to\; L \;\to\; W.
 \end{equation}
+{% endraw %}
 
 The path $\Gamma$–$X$–$W$–$K$–$\Gamma$ visits the square face
 centre, a vertex, the edge midpoint between two hexagonal faces, and
@@ -443,10 +489,12 @@ Equation \eqref{eq:ch-07-bloch-periodic} says that $u_{n\mathbf k}$
 is cell-periodic. Any cell-periodic function can be expanded in plane
 waves whose wavevectors are reciprocal-lattice vectors:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-pw-expand-u}
 u_{n\mathbf k}(\mathbf r) = \frac{1}{\sqrt{\Omega}} \sum_{\mathbf G} c_{n\mathbf k}(\mathbf G) \, e^{i \mathbf G \cdot \mathbf r}.
 \end{equation}
+{% endraw %}
 
 Here $\Omega$ is the crystal volume (taken to infinity in the BvK
 formalism) and the sum runs over all reciprocal-lattice vectors. The
@@ -456,10 +504,12 @@ convention.
 Substituting \eqref{eq:ch-07-pw-expand-u} into
 \eqref{eq:ch-07-bloch}:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-pw-expand-psi}
 \psi_{n\mathbf k}(\mathbf r) = \frac{1}{\sqrt{\Omega}} \sum_{\mathbf G} c_{n\mathbf k}(\mathbf G) \, e^{i(\mathbf k + \mathbf G) \cdot \mathbf r}.
 \end{equation}
+{% endraw %}
 
 The wavefunction is a linear combination of plane waves with
 wavevectors $\mathbf k + \mathbf G$, one per reciprocal-lattice
@@ -467,10 +517,12 @@ vector. In a basis-set language (see
 [chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) for the
 broader context), the **plane-wave basis** is the discrete set
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-pw-basis}
 \left\lbrace \tfrac{1}{\sqrt{\Omega}} e^{i(\mathbf k + \mathbf G) \cdot \mathbf r} \right\rbrace_{\mathbf G \in \text{reciprocal lattice}}.
 \end{equation}
+{% endraw %}
 
 ### 7.5.2 The plane-wave Hamiltonian
 
@@ -487,10 +539,12 @@ $\hat H = -\tfrac{1}{2}\nabla^2 + V(\mathbf r)$ with periodic $V$:
 
 where
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-vper}
 V_{\text{per}}(\mathbf q) := \frac{1}{V_\text{cell}} \int_{\text{cell}} V(\mathbf r) \, e^{-i \mathbf q \cdot \mathbf r} \, d^3r
 \end{equation}
+{% endraw %}
 
 is the Fourier transform of the *cell-periodi`c*' potential, with the
 integral restricted to a single primitive cell (or any other cell-
@@ -498,11 +552,13 @@ shaped domain) of volume $V_\text{cell}$.
 
 The matrix form of $\hat H$ in the plane-wave basis is therefore
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-pw-hamiltonian}
 \boxed{H_{\mathbf G \mathbf G'}(\mathbf k)
   = \tfrac{1}{2} |\mathbf k + \mathbf G|^2 \, \delta_{\mathbf G \mathbf G'} + V_{\text{per}}(\mathbf G' - \mathbf G).}
 \end{equation}
+{% endraw %}
 
 Two structural facts to notice:
 
@@ -525,20 +581,24 @@ potential. The plane-wave structure is unchanged.
 The infinite basis \eqref{eq:ch-07-pw-basis} must be truncated for
 numerical work. The standard truncation is a kinetic-energy cutoff:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-cutoff}
 \tfrac{1}{2} |\mathbf k + \mathbf G|^2 \le E_\text{cut}.
 \end{equation}
+{% endraw %}
 
 Only those $\mathbf G$ for which \eqref{eq:ch-07-cutoff} holds are
 included in the basis; the rest are dropped. The truncated basis is
 finite, the Hamiltonian \eqref{eq:ch-07-pw-hamiltonian} becomes a
 finite matrix, and the eigenvalue problem
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-pw-eig}
 H(\mathbf k) \, \mathbf c_{n\mathbf k} = \varepsilon_{n\mathbf k} \, \mathbf c_{n\mathbf k}
 \end{equation}
+{% endraw %}
 
 is solved by standard linear algebra.
 
@@ -555,10 +615,12 @@ is solved by standard linear algebra.
 For a 1-D lattice with lattice constant $a$, the cutoff
 \eqref{eq:ch-07-cutoff} becomes
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-cutoff-1d}
 \tfrac{1}{2} (k + m \, 2\pi/a)^2 \le E_\text{cut}, \qquad m \in \mathbb Z.
 \end{equation}
+{% endraw %}
 
 If we use $N_\text{PW}$ plane waves centred on the origin, the cutoff
 is set by the highest $|m|$ value, $E_\text{cut} = \tfrac{1}{2}
@@ -575,11 +637,13 @@ crystal to a label $(\mathbf k, n)$ with $\mathbf k$ in the 1st BZ.
 Every observable that sums over filled states becomes an integral
 over $\mathbf k$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bz-integral}
 \mathcal O = \frac{V_\text{cell}}{(2\pi)^3} \int_{\text{BZ}} d\mathbf k \,
             \sum_n f(\varepsilon_{n\mathbf k}) \, o_{n\mathbf k}.
 \end{equation}
+{% endraw %}
 
 The prefactor $V_\text{cell}/(2\pi)^3$ ensures one state per
 $(\mathbf k, n, \text{spin})$ per cell.
@@ -588,22 +652,26 @@ The BvK boundary conditions \eqref{eq:ch-07-bvk} discretise
 $\mathbf k$ on a uniform mesh. With $N_i$ mesh points along the $i$-th
 reciprocal-lattice direction,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-mp-mesh}
 \mathbf k_{m_1, m_2, m_3}
    = \frac{m_1}{N_1} \mathbf b_1 + \frac{m_2}{N_2} \mathbf b_2 + \frac{m_3}{N_3} \mathbf b_3,
    \qquad m_i = 0, 1, \ldots, N_i - 1.
 \end{equation}
+{% endraw %}
 
 Equation \eqref{eq:ch-07-bz-integral} is then approximated by a
 Riemann sum
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-mp-sum}
 \mathcal O \approx \frac{1}{N_1 N_2 N_3}
                  \sum_{m_1, m_2, m_3} \,
                  \sum_n f(\varepsilon_{n\mathbf k}) \, o_{n\mathbf k}.
 \end{equation}
+{% endraw %}
 
 This is the **Monkhorst–Pack** (MP) mesh, the workhorse of
 solid-state DFT.
@@ -613,6 +681,7 @@ solid-state DFT.
 The MP sum \eqref{eq:ch-07-mp-sum} is a midpoint rule for the BZ
 integral. For a smooth integrand, the discretisation error scales as
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-mp-error}
 \text{error} = O\!\left(\frac{1}{N^2}\right)
@@ -621,6 +690,7 @@ integral. For a smooth integrand, the discretisation error scales as
 O\!\left(\frac{1}{N^{2/3}\right)
 \quad \text{in 3-D,}
 \end{equation}
+{% endraw %}
 
 if the integrand is smooth. **Crucially**, the integrand is *not*
 smooth in two cases:
@@ -677,10 +747,12 @@ We put the machinery to work on the simplest non-trivial periodic
 problem: a 1-D lattice of period $a = 5$ bohr with a cosine
 potential of depth $V_0 = -1/2$ Hartree,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-V}
 V(x) = -\tfrac{1}{2} \cos(2\pi x / a).
 \end{equation}
+{% endraw %}
 
 This is the textbook **nearly-free-electron** model: a free electron
 slightly perturbed by a weak periodic potential. We will:
@@ -703,15 +775,18 @@ the plot it produces is in
 Using the identity $\cos\theta = \tfrac{1}{2}(e^{i\theta} +
 e^{-i\theta})$,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-V-decomp}
 V(x) = -\tfrac{1}{2} \cos(2\pi x / a)
      = -\tfrac{1}{4} e^{i 2\pi x / a} - \tfrac{1}{4} e^{-i 2\pi x / a}.
 \end{equation}
+{% endraw %}
 
 The Fourier coefficients of \eqref{eq:ch-07-worked-V} on the
 reciprocal-lattice grid $G = m \cdot 2\pi/a$ are
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-Vhat}
 V_{\text{per}}(G) =
@@ -721,12 +796,14 @@ V_{\text{per}}(G) =
 \phantom{-}0 & \text{otherwise}.
 \end{cases}
 \end{equation}
+{% endraw %}
 
 There is no $G = 0$ term (the average of $V$ over one period is
 zero), and there are only two non-zero Fourier components, at
 $G = \pm 2\pi/a$, each equal to $-1/4$. In the matrix
 \eqref{eq:ch-07-pw-hamiltonian} this means
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-V-matrix}
 V_{\text{per}}(G' - G) =
@@ -735,6 +812,7 @@ V_{\text{per}}(G' - G) =
 \phantom{-}0 & \text{otherwise}.
 \end{cases}
 \end{equation}
+{% endraw %}
 
 The potential matrix is **tridiagonal** in the plane-wave basis.
 
@@ -745,10 +823,12 @@ The plane-wave basis vectors are $G_m = m \cdot 2\pi/a$ for $m \in
 Hamiltonian \eqref{eq:ch-07-pw-hamiltonian} at wavevector $k$ is the
 $21 \times 21$ matrix
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-H}
 H_{m m'}(k) = \tfrac{1}{2}\Bigl(k + m \cdot 2\pi/a\Bigr)^2 \delta_{m m'} \;+\; V_{\text{per}\Bigl((m' - m) \cdot 2\pi/a\Bigr).
 \end{equation}
+{% endraw %}
 
 Substituting the explicit $V_{\text{per}}$ from
 \eqref{eq:ch-07-worked-V-matrix}:
@@ -766,6 +846,7 @@ H_{m m'}(k)
 
 The first two rows of this matrix at $k = 0$ are:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-H-at-0}
 H(0) = \frac{1}{2}\!\begin{pmatrix}
@@ -777,6 +858,7 @@ H(0) = \frac{1}{2}\!\begin{pmatrix}
 0 & 0 & 0 & \cdots & -1/2 & 4\pi^2/a^2 \cdot 100
 \end{pmatrix}.
 \end{equation}
+{% endraw %}
 
 (We have used the symmetry $V_{\text{per}}(q) = V_{\text{per}}(-q)$ for
 real $V$ to combine the two off-diagonals into a single factor of
@@ -797,11 +879,13 @@ In 1-D, the BZ is the interval $k \in [-\pi/a, \pi/a]$. For $a = 5$
 bohr, this is $k \in [-\pi/5, \pi/5] = [-0.628, 0.628]$ bohr$^{-1}$.
 We sample 100 uniformly-spaced points in this interval:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-k-mesh}
 k_j = -\pi/a + (j + \tfrac{1}{2}) \cdot \frac{2\pi/a}{100},
    \qquad j = 0, 1, \ldots, 99.
 \end{equation}
+{% endraw %}
 
 (The "half-integer" shift places the k-mesh symmetrically about $k =
 0$. It does not matter for the band-structure plot, but it matters
@@ -818,25 +902,31 @@ $\tfrac{1}{2}(\pi/a)^2$. The potential $V_{\text{per}}$ couples them
 with matrix element $-1/4$ (it is the only non-zero off-diagonal in
 this submatrix). The 2 × 2 submatrix is therefore
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-gap-H}
 H_{2 \times 2}(k = \pi/a) = \tfrac{1}{2}(\pi/a)^2 \begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix} - \tfrac{1}{4} \begin{pmatrix} 0 & 1 \\\\ 1 & 0 \end{pmatrix}.
 \end{equation}
+{% endraw %}
 
 The eigenvalues of this 2 × 2 matrix are
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-gap}
 \boxed{\varepsilon_\pm(\pi/a) = \tfrac{1}{2}(\pi/a)^2 \mp \tfrac{1}{2} \cdot 2 \cdot \tfrac{1}{4}
                = \tfrac{1}{2}(\pi/a)^2 \mp \tfrac{1}{4},}
 \end{equation}
+{% endraw %}
 
 giving a band gap of
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-gap-size}
 E_\text{gap} = \varepsilon_+ - \varepsilon_- = 2 \cdot \tfrac{1}{4} = \tfrac{1}{2} \text{ Hartree}.
 \end{equation}
+{% endraw %}
 
 This is the elementary band-gap result for a weak periodic potential:
 the gap is **twice the absolute value of the leading Fourier
@@ -847,10 +937,12 @@ same energy scale as the kinetic term at the BZ boundary.
 
 Numerically, with $a = 5$ bohr:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-worked-gap-numbers}
 \tfrac{1}{2}(\pi/a)^2 = \tfrac{1}{2}(\pi/5)^2 \approx 0.1974 \text{ Hartree}.
 \end{equation}
+{% endraw %}
 
 The two degenerate levels at the BZ boundary split into
 
@@ -1306,27 +1398,33 @@ enter the Kohn–Sham equations?* companion to §7.6. ### 7.10.1 The space group
 A **symmetry operation** of a crystal is an isometry $S$ of $\mathbb
 R^3$ such that
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-sg-def}
 S(\mathbf R + \boldsymbol{\tau}_\alpha) = S(\mathbf R) + \boldsymbol{\tau}_\beta
 \end{equation}
+{% endraw %}
 
 for every Bravais vector $\mathbf R$ and some pair $(\alpha, \beta)$
 of basis atoms. Every element $S \in \mathcal{S}$ can be written
 uniquely in **Seitz notation**
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-seitz}
 S = \{R \mid \mathbf v\}, \qquad S\mathbf r = R\mathbf r + \mathbf v,
 \end{equation}
+{% endraw %}
 
 with $R \in O(3)$ a point-group operation and $\mathbf v \in
 \mathbb R^3$ a translation. The composition rule is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-seitz-mult}
 \{R_1 \mid \mathbf v_1\} \{R_2 \mid \mathbf v_2\} = \{R_1 R_2 \mid R_1 \mathbf v_2 + \mathbf v_1\}.
 \end{equation}
+{% endraw %}
 
 If every $\mathbf v$ in \eqref{eq:ch-07-seitz} is a Bravais vector,
 the space group is **symmorphic**; otherwise $\mathbf v$ may be a
@@ -1376,6 +1474,7 @@ the maximal subgroups.
 
 The **Hermann–Mauguin** space-group symbol has the form
 
+{% raw %}
 \begin{equation}
 \underbrace{\textsf{(lattice centring)}}_{P, I, F, A, B, C, R}
 \;\;
@@ -1385,6 +1484,7 @@ The **Hermann–Mauguin** space-group symbol has the form
 \;\;
 \underbrace{\text{pos 3}}_{\text{tertiary}},
 \end{equation}
+{% endraw %}
 
 with each position occupied by a *generator* (a rotation,
 rotoinversion, screw, mirror, or glide) along a specific
@@ -1426,20 +1526,24 @@ using $R^{-T} = R$ for $R \in O(3)$. The function $e^{i (R\mathbf k)
 Bloch wave at $R\mathbf k$ with a cell-periodic envelope. We have
 shown
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-sym-k}
 \{R \mid \mathbf v\} \psi_{n\mathbf k} = e^{-i \mathbf k \cdot \mathbf v} \psi_{m, R\mathbf k}
 \end{equation}
+{% endraw %}
 
 for some band $m$ in the **star** of $R\mathbf k$ (the orbit
 $\{R \mathbf k : R \in \text{point group}\} \bmod \text{reciprocal
 lattice}$). The eigenvalues are therefore **degenerate in the
 star** of $\mathbf k$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-star-deg}
 \varepsilon_{n\mathbf k} = \varepsilon_{m, R\mathbf k} \quad \text{for all } R \text{ in the point group.}
 \end{equation}
+{% endraw %}
 
 ### 7.10.5 The little group of $\mathbf k$
 
@@ -1447,10 +1551,12 @@ The **little group** $\mathcal{G}_\mathbf k$ of $\mathbf k$ is the
 subgroup of the point group that leaves $\mathbf k$ invariant
 *modulo* a reciprocal-lattice vector:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-little-group}
 \mathcal{G}_\mathbf k = \{R \in \text{point group} : R \mathbf k = \mathbf k + \mathbf G \text{ for some } \mathbf G \in \text{reciprocal lattice}\}.
 \end{equation}
+{% endraw %}
 
 The Bloch functions at $\mathbf k$ transform under a *representation*
 of $\mathcal{G}_\mathbf k$. The **irreducible representations**
@@ -1491,6 +1597,7 @@ integral \eqref{eq:ch-07-bz-integral} can therefore be restricted to
 the **irreducible Brillouin zone** (IBZ), with each IBZ point
 weighted by $1/|\text{star of }\mathbf k|$:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-ibz}
 \frac{1}{N_1 N_2 N_3} \sum_{\mathbf k \in \text{BZ}_\text{mesh}}
@@ -1498,6 +1605,7 @@ weighted by $1/|\text{star of }\mathbf k|$:
 \sum_{\mathbf k \in \text{IBZ}_\text{mesh}} w_\mathbf k, \qquad
 \sum_{\mathbf k \in \text{IBZ}} w_\mathbf k = 1.
 \end{equation}
+{% endraw %}
 
 For silicon (point group $O_h$, order 48), a $6 \times 6 \times 6$
 MP mesh gives $6^3 = 216$ points in the full BZ. With $O_h$
@@ -1522,11 +1630,13 @@ order quadrature rule that handles the discontinuity analytically.
 
 The BZ integral we need to compute is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-tetra-goal}
 \mathcal{O} = \frac{V_\text{cell}}{(2\pi)^3} \int_\text{BZ} d\mathbf k \,
             \sum_n f(\varepsilon_{n\mathbf k}) \, o_{n\mathbf k},
 \end{equation}
+{% endraw %}
 
 with $f$ the Fermi–Dirac occupation (or its smeared cousin) and
 $o_{n\mathbf k}$ a band-resolved observable. At $T = 0$, $f =
@@ -1551,6 +1661,7 @@ k_1, \dots, \mathbf k_8$ with $\mathbf k_1$ at one corner, $\mathbf
 k_8 = \mathbf k_1 + \mathbf b_1 + \mathbf b_2 + \mathbf b_3$ at
 the diagonally opposite corner. The 6 tetrahedra are then
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-tetra-split}
 \begin{aligned}
@@ -1559,6 +1670,7 @@ T_3 &= (\mathbf k_2, \mathbf k_3, \mathbf k_4, \mathbf k_7), & T_4 &= (\mathbf k
 T_5 &= (\mathbf k_1, \mathbf k_4, \mathbf k_5, \mathbf k_8), & T_6 &= (\mathbf k_2, \mathbf k_5, \mathbf k_6, \mathbf k_7).
 \end{aligned}
 \end{equation}
+{% endraw %}
 
 The 6 tetrahedra tile the cube exactly: their union is the cube, and
 they share only faces and edges. A Monkhorst–Pack mesh with
@@ -1572,20 +1684,24 @@ k_2, \mathbf k_3, \mathbf k_4$ and band energies $\varepsilon_1,
 \varepsilon_2, \varepsilon_3, \varepsilon_4$, the band is
 approximated by the *linear* function
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-tetra-linear}
 \varepsilon(\mathbf k) \approx \varepsilon_0 + \mathbf a \cdot \mathbf k, \quad \mathbf k \in T,
 \end{equation}
+{% endraw %}
 
 with $\varepsilon_0, a_x, a_y, a_z$ fixed by the 4 conditions
 $\varepsilon(\mathbf k_i) = \varepsilon_i$. The coefficients are
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-tetra-coeffs}
 \mathbf a = (K^{+}) \boldsymbol{\varepsilon}, \quad
 \varepsilon_0 = \bar\varepsilon - \mathbf a \cdot \bar{\mathbf k},
 \quad K_{i\alpha} = k_{i,\alpha} - \bar k_\alpha,
 \end{equation}
+{% endraw %}
 
 where $K$ is the $4 \times 3$ matrix of vertex coordinates relative
 to the centre $\bar{\mathbf k} = (\mathbf k_1 + \mathbf k_2 + \mathbf
@@ -1601,12 +1717,14 @@ The key step is the analytic integration of $\theta(\mu -
 $\varepsilon$ linear and $\mu$ a constant. The result, due to
 Lehmann & Taut (1972), is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-LT}
 \int_T \theta(\mu - \varepsilon(\mathbf k)) d\mathbf k
    = \frac{V_T}{4} \sum_{i=1}^{4} \theta(\mu - \varepsilon_i) \,
      \frac{(\mu - \varepsilon_i)^3}{\prod_{j \ne i} (\varepsilon_i - \varepsilon_j)},
 \end{equation}
+{% endraw %}
 
 where $V_T$ is the volume of the tetrahedron, $\varepsilon_i$ are
 the four vertex energies (assumed distinct), and the product in the
@@ -1626,10 +1744,12 @@ If exactly one vertex, say $\mathbf k_1$ with $\varepsilon_1 < \mu$,
 lies below $\mu$ and the other three above, the region is a smaller
 tetrahedron with volume
 
+{% raw %}
 \begin{equation}
 V_\text{below} = V_T \,
    \frac{(\mu - \varepsilon_1)^3}{(\varepsilon_2 - \varepsilon_1)(\varepsilon_3 - \varepsilon_1)(\varepsilon_4 - \varepsilon_1)},
 \end{equation}
+{% endraw %}
 
 because the linear interpolation maps the vertex $\mathbf k_1$ to a
 fraction $f_i = (\mu - \varepsilon_1) / (\varepsilon_i -
@@ -1653,11 +1773,13 @@ integral over a triangle is $(\mu - \varepsilon_1)^2 / (2
 Summing \eqref{eq:ch-07-LT} over all tetrahedra and all bands, the
 BZ integral of the step function becomes
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-tetra-DOS}
 N(\mu) = \int_\text{BZ} d\mathbf k \sum_n \theta(\mu - \varepsilon_{n\mathbf k})
        \approx \sum_T \sum_n I_T(\mu; \varepsilon_{T,n,1}, \ldots, \varepsilon_{T,n,4}),
 \end{equation}
+{% endraw %}
 
 with $I_T$ the Lehmann–Taut formula. The DOS is the derivative
 $g(\varepsilon) = dN/d\varepsilon$, a sum of *piecewise-linear*
@@ -1678,6 +1800,7 @@ derivative of $\varepsilon$ at the tetrahedron's centre.
 Taylor-expand the band around the centre $\bar{\mathbf k}$ of the
 tetrahedron:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-blochl-expand}
 \varepsilon(\mathbf k) = \varepsilon(\bar{\mathbf k})
@@ -1685,15 +1808,18 @@ tetrahedron:
                        + \tfrac{1}{2} (\mathbf k - \bar{\mathbf k})^T H (\mathbf k - \bar{\mathbf k})
                        + O((\Delta k)^3),
 \end{equation}
+{% endraw %}
 
 with $H$ the Hessian. The integral of $(\mathbf k - \bar{\mathbf
 k})^T H (\mathbf k - \bar{\mathbf k})$ over $T$ is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-blochl-int}
 \int_T (\mathbf k - \bar{\mathbf k})^T H (\mathbf k - \bar{\mathbf k}) d\mathbf k
    = \frac{V_T}{20} \sum_{i=1}^{4} (\mathbf k_i - \bar{\mathbf k})^T H (\mathbf k_i - \bar{\mathbf k}),
 \end{equation}
+{% endraw %}
 
 by the standard formula for the second moment of a uniform
 distribution on a tetrahedron. Blöchl estimates $H$ from the
@@ -1703,10 +1829,12 @@ be estimated by a finite-difference formula involving the energies
 at the face centroid and the two adjacent tetrahedron centres. The
 result is a correction $\Delta N_T$ to the integrated DOS:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-blochl}
 N_\text{corrected}(\mu) = N_\text{linear}(\mu) + \sum_T \Delta N_T(\mu).
 \end{equation}
+{% endraw %}
 
 With the correction, the linearisation error becomes $O((\Delta k)^4)$
 instead of $O((\Delta k)^2)$: the same accuracy with a *coarser*
@@ -1757,10 +1885,12 @@ practice is here.
 The standard target for a well-converged solid-state DFT calculation
 is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-conv-criterion}
 |E_\text{tot}(N_\mathbf k) - E_\text{tot}(\infty)| \le 1 \text{ meV/atom},
 \end{equation}
+{% endraw %}
 
 or $\le 3.7 \times 10^{-5}$ Hartree/atom. The "per atom" matters:
 a unit cell with 100 atoms needs only $1/100$ of the absolute
@@ -1791,18 +1921,22 @@ bohr$^{-1}$.
 
 The mesh spacing along $\mathbf b_i$ for $N_i$ mesh points is
 
+{% raw %}
 \begin{equation}
 \Delta k_i = \frac{|\mathbf b_i|}{N_i}.
 \end{equation}
+{% endraw %}
 
 For an FCC direct lattice with cubic parameter $a$, the reciprocal
 lattice is BCC with $|\mathbf b_i| = (2\pi/a) \sqrt 3$ (from
 \eqref{eq:ch-07-fcc-reciprocal}), so
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-fcc-spacing}
 \Delta k_\text{FCC} = \frac{2\pi \sqrt 3}{a N}.
 \end{equation}
+{% endraw %}
 
 For a cubic cell with $a = 10$ bohr, $\Delta k = 0.109 / N$ bohr$^-1$;
 to get $\Delta k \approx 0.05$ bohr$^{-1}$ (a good target for a
@@ -1906,10 +2040,12 @@ energy. The two most important sets are:
   that gives the best single-point approximation to the BZ integral
   for a smooth integrand. For the FCC BZ, the Baldereschi point is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bald}
 \mathbf k_B = \frac{2\pi}{a}\left(\frac{3}{8}, \frac{3}{8}, \frac{3}{8}\right),
 \end{equation}
+{% endraw %}
 
 which minimises the leading cubic anisotropy of the BZ-averaged
 sum. A single-point Baldereschi calculation gives a total energy to
@@ -1961,20 +2097,24 @@ explicitly for the suggestion and for his continued interest
 The opening section defines the setting. Bloch writes the lattice
 potential as a strictly triply periodic function,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bloch1929-V}
 V(\mathbf r + \mathbf a_i) = V(\mathbf r), \qquad i = 1, 2, 3,
 \end{equation}
+{% endraw %}
 
 for three primitive vectors $\mathbf a_i$
 [Bloch, 1929, eq. (1), p. 556]. The one-electron Hamiltonian is
 $\hat H = -\tfrac{\hbar^2}{2m} \nabla^2 + V(\mathbf r)$, with the
 spin-free Schrödinger equation
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bloch1929-SE}
 \hat H \, \psi(\mathbf r) = E \, \psi(\mathbf r)
 \end{equation}
+{% endraw %}
 
 [Bloch, 1929, eq. (2), p. 556]. The generalisation to many electrons,
 with the Fermi–Dirac statistics, is introduced on the same page and
@@ -1986,17 +2126,21 @@ Bloch's proof is operator-based. He defines a translation operator
 $\hat T_{\mathbf R}$ for every Bravais vector $\mathbf R = n_1
 \mathbf a_1 + n_2 \mathbf a_2 + n_3 \mathbf a_3$ by
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bloch1929-T}
 (\hat T_{\mathbf R} \psi)(\mathbf r) = \psi(\mathbf r + \mathbf R),
 \end{equation}
+{% endraw %}
 
 [Bloch, 1929, eq. (3), p. 557]. The group property
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bloch1929-group}
 \hat T_{\mathbf R} \hat T_{\mathbf R'} = \hat T_{\mathbf R + \mathbf R'}
 \end{equation}
+{% endraw %}
 
 is immediate from \eqref{eq:ch-07-bloch1929-T}
 [Bloch, 1929, p. 557]. Bloch then notes — exactly as in our
@@ -2012,10 +2156,12 @@ The eigenfunctions of a commuting family of operators can be chosen to
 be simultaneous eigenfunctions of the group. The group is abelian, so
 the one-dimensional unitary representations are exhausted by
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bloch1929-phase}
 \hat T_{\mathbf R} \psi_\varkappa = e^{i \varkappa(\mathbf R)} \psi_\varkappa, \qquad |e^{i \varkappa(\mathbf R)}| = 1,
 \end{equation}
+{% endraw %}
 
 [Bloch, 1929, eq. (6), p. 559]. The map $\mathbf R \mapsto e^{i
 \varkappa(\mathbf R)}$ is a group homomorphism $\mathbb Z^3 \to U(1)$.
@@ -2031,10 +2177,12 @@ $\mathbf k$ in a continuous Brillouin zone.
 The proof culminates on p. 560, where Bloch writes down the form that
 bears his name,
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-bloch1929-form}
 \psi_{\mathbf k}(\mathbf r) = e^{i \mathbf k \cdot \mathbf r} \, u_{\mathbf k}(\mathbf r),
 \end{equation}
+{% endraw %}
 
 [Bloch, 1929, eq. (7), p. 560]. The function $u_{\mathbf k}$ is defined
 by the obvious identity $u_{\mathbf k}(\mathbf r) = e^{-i \mathbf k
@@ -2200,11 +2348,13 @@ a 1-D square-well periodic potential with a delta-function barrier at
 each cell boundary [Kittel, 2005, fig. 9.10, p. 178]. The model is
 solvable in closed form: the band-structure equation is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-kittel-KP}
 \frac{P}{Ka} \sin(Ka) + \cos(Ka) = \cos(ka), \qquad
 P = \frac{m V_0 a b}{\hbar^2},
 \end{equation}
+{% endraw %}
 
 [Kittel, 2005, eq. (9.20), p. 180]. Here $K$ is the wavevector
 *inside* a well, $k$ is the crystal momentum, $a$ is the well width,
@@ -2299,10 +2449,12 @@ compatible with which representations of the line are the
 Wigner, 1936, table IV, p. 66]. As an example, along the $\Delta$
 line from $\Gamma$ to $X$, the compatibility is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-07-BSW-compat}
 \Gamma_1 \to \Delta_1, \quad \Gamma_{12} \to \Delta_1 \oplus \Delta_2, \quad \Gamma_{15'} \to \Delta_1' \oplus \Delta_5, \quad \Gamma_{25'} \to \Delta_2' \oplus \Delta_5.
 \end{equation}
+{% endraw %}
 
 [Bouckaert, Smoluchowski, and Wigner, 1936, p. 66]. These relations
 are the basis of the *band connectivity* in a band-structure plot:

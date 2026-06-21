@@ -55,11 +55,13 @@ DFT.
 > ground-state density of a crystal.  Let $\mathbf k$ be a point in
 > the first Brillouin zone.  The Kohn–Sham eigenproblem on the
 > plane-wave basis of [chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }}) is
+{% raw %}
 > \begin{equation}
 > \label{eq:ch-11-ks-eig}
 > H(\mathbf k) \, \mathbf c_{n\mathbf k} \;=\; \varepsilon_{n\mathbf k} \, \mathbf c_{n\mathbf k}, \qquad
 > n = 1, 2, 3, \dots
 > \end{equation}
+{% endraw %}
 > The eigenvalues $\varepsilon_{n\mathbf k}$ are continuous functions
 > of $\mathbf k$ within each band $n$.  The set
 > $\{\varepsilon_{n\mathbf k}\}_{n,\mathbf k}$ is the **Kohn–Sham
@@ -103,11 +105,13 @@ single-particle states per unit energy per unit cell volume.  In a
 crystal it is the sum over bands of a Brillouin-zone integral of a
 Dirac delta:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-11-dos}
 g(E) \;=\; \frac{1}{V_\text{BZ}} \sum_n \int_\text{BZ} d\mathbf k \;
          \delta\Bigl(E - \varepsilon_{n\mathbf k}\Bigr) ,
 \end{equation}
+{% endraw %}
 
 where $V_\text{BZ} = (2\pi)^3 / V_\text{cell}$ is the volume of the
 first Brillouin zone.  The integral is over the irreducible
@@ -140,12 +144,14 @@ Three properties to keep in mind:
 The **Fermi surface** is the set of points in the Brillouin zone at
 which the band energy equals the Fermi energy:
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-11-fs}
 \text{FS} \;=\; \Bigl\lbrace \mathbf k \in \text{BZ} \;:\;
                 \varepsilon_{n\mathbf k} = \varepsilon_F
                 \text{ for some band } n \Bigr\rbrace.
 \end{equation}
+{% endraw %}
 
 For a metal, this is a 2-D surface in the 3-D Brillouin zone (or, in
 2-D, a 1-D curve).  For an insulator or a semiconductor, the equation
@@ -224,10 +230,12 @@ For the face-centred cubic lattice with cubic lattice constant $a$,
 the Setyawan–Curtarolo convention (which is what every modern band-
 structure database uses) is the k-path
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-11-fcc-path}
 \Gamma \;\to\; X \;\to\; W \;\to\; K \;\to\; \Gamma \;\to\; L \;\to\; U \;\to\; W \;\to\; L \;\to\; K,
 \end{equation}
+{% endraw %}
 
 sometimes abbreviated as $\Gamma$–$X$–$W$–$K$–$\Gamma$–$L$–$U$–$W$–$L$–$K$
 or as $\Gamma$–$X$–$W$–$K$–$\Gamma$–$L$–$W$–$X$ (an older, shorter
@@ -297,10 +305,12 @@ preserved.
 
 For the body-centred cubic lattice the standard path is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-11-bcc-path}
 \Gamma \;\to\; H \;\to\; N \;\to\; \Gamma \;\to\; P \;\to\; H,
 \end{equation}
+{% endraw %}
 
 with the high-symmetry points (in units of $2\pi/a$)
 
@@ -321,10 +331,12 @@ have the same length, as do $H$–$N$ and $N$–$H$, etc.
 For the hexagonal lattice (graphene, hexagonal boron nitride, hcp
 metals) the standard path is
 
+{% raw %}
 \begin{equation}
 \label{eq:ch-11-hex-path}
 \Gamma \;\to\; M \;\to\; K \;\to\; \Gamma \;\to\; A \;\to\; L \;\to\; H \;\to\; A,
 \end{equation}
+{% endraw %}
 
 where
 

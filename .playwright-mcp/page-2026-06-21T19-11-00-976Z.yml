@@ -1,0 +1,339 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapters map" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: The full DFT Notes knowledge graph. Boxes are chapters; arrows are “depends on” (read this after the arrow’s source). Boxes with a dashed border are planned but not yet written.
+      - paragraph [ref=e30]:
+        - text: This is the
+        - strong [ref=e31]: canonical index
+        - text: of every chapter that exists or will exist in this knowledge base. For a human-readable list, see the
+        - link "chapter index" [ref=e32] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - text: .
+      - figure [ref=e34]:
+        - code [ref=e35]:
+          - document [ref=e36]:
+            - generic [ref=e51]:
+              - generic "How to read these notes, the notation table, and the prerequisites for the DFT Notes series." [ref=e53] [cursor=pointer]:
+                - generic [ref=e58]:
+                  - text: 00 · Welcome
+                  - generic [ref=e59]:
+                    - text: How to read these notes,
+                    - text: notation, prerequisites
+              - generic "The postulates of quantum mechanics, the electronic Hamiltonian, and a worked particle-in-a-box derivation." [ref=e61] [cursor=pointer]:
+                - generic [ref=e66]:
+                  - text: 01 · Schrödinger equation
+                  - generic [ref=e67]:
+                    - text: Postulates, Hamiltonian,
+                    - text: particle-in-a-box
+              - generic "Why a single Slater determinant is not enough, the exponential wall, and the full-CI limit." [ref=e69] [cursor=pointer]:
+                - generic [ref=e74]:
+                  - text: 02 · The many-body problem
+                  - generic [ref=e75]:
+                    - text: Slater determinants,
+                    - text: exponential wall, full CI
+              - generic "Mean-field theory, the Fock operator, the SCF loop, and the Slater–Condon rules for matrix elements." [ref=e77] [cursor=pointer]:
+                - generic [ref=e82]:
+                  - text: 03 · Hartree–Fock
+                  - generic [ref=e83]:
+                    - text: Fock operator, SCF,
+                    - text: Slater–Condon rules
+              - generic "Hohenberg–Kohn existence theorem, the Kohn–Sham ansatz, and the practical KS SCF loop." [ref=e85] [cursor=pointer]:
+                - generic [ref=e90]:
+                  - text: 04 · Kohn–Sham DFT
+                  - generic [ref=e91]:
+                    - text: Hohenberg–Kohn, KS ansatz,
+                    - text: SCF loop
+              - 'generic "Jacob''s ladder: LDA, GGA, meta-GGA, hybrid, and range-separated functionals." [ref=e93] [cursor=pointer]':
+                - generic [ref=e98]:
+                  - text: 05 · XC functionals
+                  - generic [ref=e99]:
+                    - text: LDA → GGA → hybrid → RS,
+                    - text: Jacob's ladder
+              - generic "Gaussian-type orbitals, plane waves, real-space grids, and the Roothaan–Hall equations." [ref=e101] [cursor=pointer]:
+                - generic [ref=e106]:
+                  - text: 06 · Basis sets
+                  - generic [ref=e107]:
+                    - text: Gaussians, plane waves,
+                    - text: numerical orbitals
+              - generic "Bloch's theorem, the Brillouin zone, plane-wave cutoffs, and Monkhorst–Pack k-point sampling." [ref=e109] [cursor=pointer]:
+                - generic [ref=e114]:
+                  - text: 07 · Solids & PBC
+                  - generic [ref=e115]:
+                    - text: Brillouin zone, Bloch's theorem,
+                    - text: k-point sampling
+              - generic "Norm-conserving, ultrasoft, and PAW pseudopotentials — construction, transferability, and validation." [ref=e117] [cursor=pointer]:
+                - generic [ref=e122]:
+                  - text: 08 · Pseudopotentials
+                  - generic [ref=e123]:
+                    - text: Norm-conserving, ultrasoft,
+                    - text: PAW
+              - generic "Hellmann–Feynman theorem, BFGS and LBFGS optimisers, and convergence criteria for forces and displacements." [ref=e125] [cursor=pointer]:
+                - generic [ref=e130]:
+                  - text: 09 · Forces & geometry opt
+                  - generic [ref=e131]:
+                    - text: Hellmann–Feynman,
+                    - text: BFGS, LBFGS
+              - generic "Frozen-phonon supercells, density-functional perturbation theory, and electron–phonon coupling." [ref=e133] [cursor=pointer]:
+                - generic [ref=e138]:
+                  - text: 10 · Phonons & vibrations
+                  - generic [ref=e139]:
+                    - text: Frozen phonon, DFPT,
+                    - text: electron–phonon coupling
+              - generic "Density of states, projected DOS, band-structure plots, and Fermi-surface visualisation." [ref=e141] [cursor=pointer]:
+                - generic [ref=e146]:
+                  - text: 11 · Band structures
+                  - generic [ref=e147]:
+                    - text: DOS, projected DOS,
+                    - text: Fermi surfaces
+              - generic "Runge–Gross theorem, linear-response TDDFT, the Casida equations, and excitons." [ref=e149] [cursor=pointer]:
+                - generic [ref=e154]:
+                  - text: 12 · TDDFT
+                  - generic [ref=e155]:
+                    - text: Runge–Gross theorem,
+                    - text: linear response, excitons
+              - generic "DFT+U for strong correlation, hybrid functionals revisited, and a DMFT outlook." [ref=e157] [cursor=pointer]:
+                - generic [ref=e162]:
+                  - text: 13 · DFT+U & beyond
+                  - generic [ref=e163]:
+                    - text: Strong correlation,
+                    - text: hybrid functionals, DMFT
+              - 'generic "Quantum chemistry methods beyond DFT: MP2, CI, CCSD(T), CASSCF, NEVPT2, and the basis-set extrapolation ladder." [ref=e165] [cursor=pointer]':
+                - generic [ref=e170]:
+                  - text: 14 · Quantum chemistry beyond DFT
+                  - generic [ref=e171]:
+                    - text: MP2, CI, CC, CASSCF,
+                    - text: semiempirical, CBS
+              - generic "The Dirac equation, scalar-relativistic corrections, and spin-orbit coupling in modern DFT." [ref=e173] [cursor=pointer]:
+                - generic [ref=e178]:
+                  - text: 15 · Relativistic effects
+                  - generic [ref=e179]:
+                    - text: Dirac equation, DKH, ZORA,
+                    - text: spin-orbit coupling
+              - 'generic "Topology in band theory: Chern numbers, Z₂ invariants, topological insulators, and Weyl semimetals." [ref=e181] [cursor=pointer]':
+                - generic [ref=e186]:
+                  - text: 16 · Topological materials
+                  - generic [ref=e187]:
+                    - text: Chern numbers, Z₂ invariants,
+                    - text: Weyl/Dirac semimetals
+              - 'generic "Machine learning for DFT: interatomic potentials, equivariant networks, delta-learning, and foundation models." [ref=e189] [cursor=pointer]':
+                - generic [ref=e194]:
+                  - text: 17 · Machine learning for DFT
+                  - generic [ref=e195]:
+                    - text: Equivariant NNs, MACE,
+                    - text: delta-learning, foundation models
+        - button "Download this diagram as a PNG" [ref=e196] [cursor=pointer]:
+          - img [ref=e197]
+          - generic [ref=e200]: Download PNG
+      - heading "Edges" [level=2] [ref=e201]
+      - paragraph [ref=e202]:
+        - text: The arrows in the diagram above encode the
+        - strong [ref=e203]: prerequisite
+        - text: relation. Reading a chapter assumes the reader is comfortable with the material in every chapter that points
+        - emphasis [ref=e204]: into
+        - text: it. The table below lists every edge and the reason it exists.
+      - table [ref=e205]:
+        - rowgroup [ref=e206]:
+          - row "From To Why the dependency" [ref=e207]:
+            - columnheader "From" [ref=e208]
+            - columnheader "To" [ref=e209]
+            - columnheader "Why the dependency" [ref=e210]
+        - rowgroup [ref=e211]:
+          - row "C00 C01 The how-to-read preamble must come first." [ref=e212]:
+            - cell "C00" [ref=e213]
+            - cell "C01" [ref=e214]
+            - cell "The how-to-read preamble must come first." [ref=e215]
+          - row "C01 C02 The Schrödinger picture and the Hamiltonian are needed to set up the many-body problem." [ref=e216]:
+            - cell "C01" [ref=e217]
+            - cell "C02" [ref=e218]
+            - cell "The Schrödinger picture and the Hamiltonian are needed to set up the many-body problem." [ref=e219]
+          - row "C02 C03 The Slater-determinant language is the input to Hartree–Fock." [ref=e220]:
+            - cell "C02" [ref=e221]
+            - cell "C03" [ref=e222]
+            - cell "The Slater-determinant language is the input to Hartree–Fock." [ref=e223]
+          - row "C03 C04 Hartree–Fock is the reference point against which KS-DFT is derived." [ref=e224]:
+            - cell "C03" [ref=e225]
+            - cell "C04" [ref=e226]
+            - cell "Hartree–Fock is the reference point against which KS-DFT is derived." [ref=e227]
+          - row "C04 C05 The XC functional is the only piece KS-DFT leaves undetermined." [ref=e228]:
+            - cell "C04" [ref=e229]
+            - cell "C05" [ref=e230]
+            - cell "The XC functional is the only piece KS-DFT leaves undetermined." [ref=e231]
+          - row "C05 C06 The choice of basis set is entangled with the choice of functional." [ref=e232]:
+            - cell "C05" [ref=e233]
+            - cell "C06" [ref=e234]
+            - cell "The choice of basis set is entangled with the choice of functional." [ref=e235]
+          - row "C06 C07 Bloch sums are built from a basis; plane waves are a basis." [ref=e236]:
+            - cell "C06" [ref=e237]
+            - cell "C07" [ref=e238]
+            - cell "Bloch sums are built from a basis; plane waves are a basis." [ref=e239]
+          - row "C06 C08 Pseudopotentials are defined by projector-augmented basis operators." [ref=e240]:
+            - cell "C06" [ref=e241]
+            - cell "C08" [ref=e242]
+            - cell "Pseudopotentials are defined by projector-augmented basis operators." [ref=e243]
+          - row "C04 C09 Forces come from differentiating the KS total energy." [ref=e244]:
+            - cell "C04" [ref=e245]
+            - cell "C09" [ref=e246]
+            - cell "Forces come from differentiating the KS total energy." [ref=e247]
+          - row "C07 C10 Phonons need a periodic supercell and k-point sampling." [ref=e248]:
+            - cell "C07" [ref=e249]
+            - cell "C10" [ref=e250]
+            - cell "Phonons need a periodic supercell and k-point sampling." [ref=e251]
+          - row "C07 C11 Band structures are defined on the Brillouin zone of a periodic system." [ref=e252]:
+            - cell "C07" [ref=e253]
+            - cell "C11" [ref=e254]
+            - cell "Band structures are defined on the Brillouin zone of a periodic system." [ref=e255]
+          - row "C04 C12 TDDFT is a time-dependent extension of ground-state KS-DFT." [ref=e256]:
+            - cell "C04" [ref=e257]
+            - cell "C12" [ref=e258]
+            - cell "TDDFT is a time-dependent extension of ground-state KS-DFT." [ref=e259]
+          - row "C04 C13 DFT+U is a correction to the KS exchange–correlation." [ref=e260]:
+            - cell "C04" [ref=e261]
+            - cell "C13" [ref=e262]
+            - cell "DFT+U is a correction to the KS exchange–correlation." [ref=e263]
+          - row "C03 C14 Post-HF methods (MP2, CI, CC, CASSCF) are alternatives to KS-DFT; HF from chapter 3 is the starting point." [ref=e264]:
+            - cell "C03" [ref=e265]
+            - cell "C14" [ref=e266]
+            - cell "Post-HF methods (MP2, CI, CC, CASSCF) are alternatives to KS-DFT; HF from chapter 3 is the starting point." [ref=e267]
+          - row "C08 C15 Relativistic effects enter DFT through the pseudopotential (scalar-relativistic and fully-relativistic PPs)." [ref=e268]:
+            - cell "C08" [ref=e269]
+            - cell "C15" [ref=e270]
+            - cell "Relativistic effects enter DFT through the pseudopotential (scalar-relativistic and fully-relativistic PPs)." [ref=e271]
+          - row "C15 C16 Topological materials need spin-orbit coupling from chapter 15 (SOC opens band gaps, gives Z₂ invariants)." [ref=e272]:
+            - cell "C15" [ref=e273]
+            - cell "C16" [ref=e274]
+            - cell "Topological materials need spin-orbit coupling from chapter 15 (SOC opens band gaps, gives Z₂ invariants)." [ref=e275]
+          - row "C04 C17 ML for DFT uses KS-DFT energies, forces, and densities as the ground truth for training." [ref=e276]:
+            - cell "C04" [ref=e277]
+            - cell "C17" [ref=e278]
+            - cell "ML for DFT uses KS-DFT energies, forces, and densities as the ground truth for training." [ref=e279]
+          - row "C16 C17 ML methods are increasingly used to predict topological invariants (Chern numbers, Z₂) from band structures." [ref=e280]:
+            - cell "C16" [ref=e281]
+            - cell "C17" [ref=e282]
+            - cell "ML methods are increasingly used to predict topological invariants (Chern numbers, Z₂) from band structures." [ref=e283]
+      - heading "Tracks" [level=2] [ref=e284]
+      - paragraph [ref=e285]: After chapter 05 the chapters split into three conceptual tracks. Pick the track that matches your problem domain — you do not have to read all of them.
+      - list [ref=e286]:
+        - listitem [ref=e287]:
+          - strong [ref=e288]: Methods track
+          - text: (always relevant) — 06 basis sets, 08 pseudopotentials, 13 DFT+U & beyond, 14 quantum chemistry beyond DFT (alternative to DFT), 17 machine learning for DFT (fast surrogate).
+        - listitem [ref=e289]:
+          - strong [ref=e290]: Solids track
+          - text: (for periodic systems) — 07 PBC, 10 phonons, 11 band structures, 15 relativistic effects (heavy elements), 16 topological materials.
+        - listitem [ref=e291]:
+          - strong [ref=e292]: Dynamics track
+          - text: (for time-dependent and static-response phenomena) — 09 forces & geometry optimisation, 12 TDDFT. phenomena) — 09 forces & geometry optimisation, 12 TDDFT.
+      - heading "Conventions" [level=2] [ref=e293]
+      - list [ref=e294]:
+        - listitem [ref=e295]:
+          - text: Each chapter follows the
+          - link "template" [ref=e296] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/agents/#the-chapter-rigor-checklist
+          - text: in
+          - code [ref=e297]: agents.md
+          - text: . All derivations are step-by-step; no calculation is omitted; problem sets have hidden answers.
+        - listitem [ref=e298]:
+          - text: The Python code that runs in a chapter also lives in
+          - link "dft_notes/python_codes/" [ref=e299] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/python_codes/
+            - code [ref=e300]: dft_notes/python_codes/
+          - text: . Each chapter has its own subfolder there; scripts are numbered in the order they appear in the chapter; plots are committed alongside the script.
+        - listitem [ref=e301]:
+          - text: This map is a
+          - strong [ref=e302]: living document
+          - text: . Every time
+          - code [ref=e303]: agent:content-writer' lands a new chapter,
+          - text: agent:diagram-artist’ updates this Mermaid graph in the same commit — moving the new node from
+          - code [ref=e304]: planned
+          - text: ’ to
+          - code [ref=e305]: shipped
+          - text: ", adding the prerequisite edge, and refreshing the ‘Edges’ table. The ‘shipped’ /"
+          - code [ref=e306]: planned
+          - text: ’ split in
+          - code [ref=e307]: classDef
+          - text: ’ above is the single source of truth.
+  - contentinfo [ref=e308]:
+    - generic [ref=e309]:
+      - generic [ref=e310]:
+        - img [ref=e311]
+        - generic [ref=e315]: DFT Notes
+        - paragraph [ref=e316]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e317]:
+        - generic [ref=e318]:
+          - heading "Project" [level=3] [ref=e319]
+          - list [ref=e320]:
+            - listitem [ref=e321]:
+              - link "Chapters map" [ref=e322] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e323]:
+              - link "Python codes" [ref=e324] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e325]:
+              - link "Contributing" [ref=e326] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e327]:
+              - link "Security" [ref=e328] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e329]:
+              - link "Design spec" [ref=e330] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e331]:
+              - link "GitHub ↗" [ref=e332] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e333]:
+          - heading "Built with" [level=3] [ref=e334]
+          - list [ref=e335]:
+            - listitem [ref=e336]:
+              - link "Jekyll" [ref=e337] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e338]:
+              - link "MathJax 3" [ref=e339] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e340]:
+              - link "Mermaid" [ref=e341] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e342]:
+              - link "chenglou/pretext" [ref=e343] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e344]:
+              - link "Google Fonts" [ref=e345] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e346]:
+          - heading "Legal" [level=3] [ref=e347]
+          - list [ref=e348]:
+            - listitem [ref=e349]:
+              - link "MIT License" [ref=e350] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e351]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e353]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.
