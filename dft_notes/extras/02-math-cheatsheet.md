@@ -395,10 +395,10 @@ propagator by path integration).
 ### 5.2 Three dimensions
 
 \begin{equation}
-\tilde f(\mathbf k) \;=\; \int_{\mathbb R^3} f(\mathbf r)\, e^{-i \mathbf k \cdot \mathbf r}}\, d\mathbf r , \label{eq:ch-extra-ft3d-fwd}
+\tilde f(\mathbf k) \;=\; \int_{\mathbb R^3} f(\mathbf r)\, e^{-i \mathbf k \cdot \mathbf r} \\, d\mathbf r , \label{eq:ch-extra-ft3d-fwd}
 \end{equation}
 \begin{equation}
-f(\mathbf r) \;=\; \frac{1}{(2\pi)^3} \int_{\mathbb R^3} \tilde f(\mathbf k)\, e^{+i \mathbf k \cdot \mathbf r}}\, d\mathbf k . \label{eq:ch-extra-ft3d-inv}
+f(\mathbf r) \;=\; \frac{1}{(2\pi)^3} \int_{\mathbb R^3} \tilde f(\mathbf k)\, e^{+i \mathbf k \cdot \mathbf r} \\, d\mathbf k . \label{eq:ch-extra-ft3d-inv}
 \end{equation}
 
 For a **cell-periodic** function $u(\mathbf r)$ on a lattice
@@ -410,7 +410,7 @@ $\{\mathbf G\}$:
 u(\mathbf r) \;=\; \frac{1}{\sqrt{\Omega}} \sum_{\mathbf G} \tilde u(\mathbf G)\, e^{i \mathbf G \cdot \mathbf r} , \label{eq:ch-extra-fs-fwd}
 \end{equation}
 \begin{equation}
-\tilde u(\mathbf G) \;=\; \frac{1}{\sqrt{\Omega}} \int_\Omega u(\mathbf r)\, e^{-i \mathbf G \cdot \mathbf r}}\, d\mathbf r . \label{eq:ch-extra-fs-inv}
+\tilde u(\mathbf G) \;=\; \frac{1}{\sqrt{\Omega}} \int_\Omega u(\mathbf r)\, e^{-i \mathbf G \cdot \mathbf r} \\, d\mathbf r . \label{eq:ch-extra-fs-inv}
 \end{equation}
 
 The reciprocal-lattice vectors are defined by

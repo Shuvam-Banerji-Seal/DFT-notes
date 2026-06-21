@@ -559,18 +559,18 @@ The two standard criteria are
 
 \begin{equation}
 \label{eq:nm-opt-conv}
-\max_I \lVert \mathbf F_I \rVert < \text{F\_tol}, \qquad
-\lvert E^{(k+1)} - E^{(k)} \rvert < \text{E\_tol} .
+\max_I \lVert \mathbf F_I \rVert < \text{F-tol}, \qquad
+\lvert E^{(k+1)} - E^{(k)} \rvert < \text{E-tol} .
 \end{equation}
 
 Typical tolerances for "tight" geometry convergence are
-$\text{F\_tol} = 5 \times 10^{-4}\,E_h/a_0 \approx 0.025\,\text{eV/Å}$
-and $\text{E\_tol} = 10^{-6}\,E_h$.  A "loose" optimisation that
+$\text{F-tol} = 5 \times 10^{-4}\,E_h/a_0 \approx 0.025\,\text{eV/Å}$
+and $\text{E-tol} = 10^{-6}\,E_h$.  A "loose" optimisation that
 pre-relaxes a large system for a subsequent NEB or phonon run
-might use $\text{F\_tol} = 10^{-2}\,E_h/a_0$.  The third
+might use $\text{F-tol} = 10^{-2}\,E_h/a_0$.  The third
 criterion (displacement) is
 $\max_I \lVert \mathbf R_I^{(k+1)} - \mathbf R_I^{(k)} \rVert <
-\text{D\_tol}$ with $\text{D\_tol} \approx 10^{-3}\,a_0$.
+\text{D-tol}$ with $\text{D-tol} \approx 10^{-3}\,a_0$.
 
 ### 2.3 Steepest descent
 
