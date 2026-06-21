@@ -123,7 +123,6 @@ production calculation.
 
 $$
 \label{eq:ch-14-claim}
-\boxed{\;
 \begin{array}{|lccc|}
 \hline
 \text{Method} & \text{Cost} & \text{Error} & \text{When} \\\
@@ -1847,7 +1846,6 @@ choice.
 
 $$
 \label{eq:ch-14-zoo}
-\boxed{\;
 \begin{array}{|lccp{5.5cm|}}
 \hline
 \text{Method} & \text{Scaling} & \text{Accuracy} & \text{When} \\\
