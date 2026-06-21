@@ -21,18 +21,12 @@
     screen-reader fallback, and that assistive MathML uses the same
     deprecated attributes. So the warnings persist.
 
-    The fix below registers an `attachMathJax` callback that fires
-    after each MathJax pass and removes the <mjx-assistive-mml>
-    elements. The SVG output remains fully rendered (it's the
-    primary visual content); we just drop the redundant internal
-    MathML fallback that nobody reads in practice.
-
-    Accessibility tradeoff: the <mjx-container> elements still carry
-    their aria-label from MathJax (set during typesetting, before
-    the cleanup). Screen readers will read the visual SVG via the
-    parent aria-label. Pure assistive-MathML readers (rare in 2025)
-    will get nothing — but they would have received deprecated
-    MathML anyway, so this is a strict improvement.
+    The fix below registers a `pageReady` callback that runs BEFORE
+    MathJax scans the document, walks every <p> / <li> / <div> /
+    <blockquote> that contains a math environment, and rewrites any
+    <br /> children back to the literal `\\` text node that MathJax
+    expects. After typesetting, the assistive-mml cleanup runs once
+    to remove the deprecated MathML.
 
   Kramdown line-break repair:
     The site's kramdown config uses GFM input, which (correctly per
@@ -40,14 +34,8 @@
     HTML `<br />` line break. LaTeX also uses `\\` as a line break
     inside math (`\begin{array}...\end{array}`), and MathJax rejects
     `<br />` inside math with "Misplaced \hline" or "Extra close
-    brace" errors.
-
-    To work around this without giving up GFM (which we need for
-    GitHub-flavoured tables and code-fence handling), the pre-typeset
-    hook below walks the DOM, finds every `<p>` / `<li>` / `<div>`
-    whose text content contains a math environment (`\begin{...}` /
-    `$$...$$` / `\[...\]`), and rewrites the `<br />` elements inside
-    them back to the literal `\\` that MathJax expects. Code blocks
+    brace" errors. The repair function converts these <br /> back to
+    `\\` text nodes before MathJax scans the document. Code blocks
     (`<pre><code>`) are skipped, so legitimate `<br />` inside
     inline code is preserved.
 
@@ -66,6 +54,35 @@
     https://docs.mathjax.org/en/latest/options/input/tex.html
 -->
 <script>
+  // ------- Helper functions (defined at window scope so all MathJax
+  //          callbacks can access them) -------
+  function repairBrInMath() {
+    // Find all elements that may contain math content. Use
+    // querySelectorAll to find block-level elements (p, li, dd, dt,
+    // div, blockquote); check each for math environment markers and
+    // rewrite <br /> children back to "\\" text nodes.
+    var candidates = document.body.querySelectorAll('p, li, dd, dt, div, blockquote');
+    for (var i = 0; i < candidates.length; i++) {
+      var node = candidates[i];
+      if (node.tagName === 'PRE' || node.tagName === 'CODE') continue;
+      var text = node.textContent || '';
+      var hasMath = /\\begin\{(equation|align|gather|matrix|array|cases|aligned|gathered|multline)\b/.test(text)
+                 || /\$\$.+\$\$/s.test(text);
+      if (!hasMath) continue;
+      var brs = node.querySelectorAll('br');
+      for (var j = 0; j < brs.length; j++) {
+        var br = brs[j];
+        var newText = document.createTextNode('\\\\');
+        br.parentNode.replaceChild(newText, br);
+      }
+    }
+  }
+
+  function cleanupAssistiveMml() {
+    var els = document.querySelectorAll('mjx-assistive-mml');
+    for (var i = 0; i < els.length; i++) els[i].remove();
+  }
+
   window.MathJax = {
     tex: {
       inlineMath:    [['$', '$'], ['\\(', '\\)']],
@@ -88,50 +105,23 @@
     },
     startup: {
       pageReady: () => {
-        // ------- Pre-typeset: rewrite <br /> back to \\ inside math -------
-        // Kramdown + GFM converts "text \\\n" (LaTeX line break) into
-        // "text \<br />". MathJax sees the <br /> inside math and errors.
-        // Run BEFORE MathJax scans the document so it sees \\ not <br />.
-        const repairBrInMath = () => {
-          // Find all elements that contain a math environment. Use
-          // querySelectorAll with a substring match on the innerHTML
-          // (it's not perfect — tags may nest — but it's good enough
-          // for our case where math blocks are always inside <p>).
-          const candidates = document.body.querySelectorAll('p, li, dd, dt, div, blockquote');
-          for (const node of candidates) {
-            // Skip code blocks
-            if (node.tagName === 'PRE' || node.tagName === 'CODE') continue;
-            // Check for math content
-            const text = node.textContent || '';
-            if (!/\\begin\{(equation|align|gather|matrix|array|cases|aligned|gathered|multline)\b/.test(text)
-                && !/\$\$.+\$\$/s.test(text)) continue;
-            // Replace <br> children with text nodes carrying \\
-            const brs = Array.from(node.querySelectorAll('br'));
-            for (const br of brs) {
-              const text = document.createTextNode('\\\\');
-              br.parentNode.replaceChild(text, br);
-            }
-          }
-        };
+        // Run BEFORE MathJax scans the document so it sees \\ not <br />
         repairBrInMath();
         return true;
       },
       ready: () => {
         MathJax.startup.defaultReady();
 
-        // ------- Post-typeset: remove deprecated assistive MathML -------
-        const cleanup = () => {
-          document.querySelectorAll('mjx-assistive-mml').forEach(
-            el => el.remove()
-          );
-        };
-
         MathJax.startup.promise.then(() => {
-          cleanup();
-          // Set up observer for future re-renders
-          const observer = new MutationObserver(() => {
+          cleanupAssistiveMml();
+          // Re-run the repair on every DOM mutation (theme toggle,
+          // dynamic content, page navigation) so MathJax re-typesets
+          // with clean math input.
+          var observer = new MutationObserver(() => {
             repairBrInMath();
-            MathJax.typesetPromise().then(cleanup);
+            if (window.MathJax && window.MathJax.typesetPromise) {
+              window.MathJax.typesetPromise().then(cleanupAssistiveMml);
+            }
           });
           observer.observe(document.body, {
             childList: true,
