@@ -114,7 +114,7 @@ The SCF problem is therefore
 The *bare* iteration
 $\rho^{(n+1)} = \mathcal F}[\rho^{(n)}]$ is the **Picard
 iteration** for the fixed-point problem; it converges when the
-spectral radius $\rho(\mathcal F') < 1$.  In DFT this is
+spectral radius $\rho(\mathcal F^{\prime}) < 1$.  In DFT this is
 sometimes the case (large-gap insulators, simple metals with
 enough k-points), but it is more often *not* the case: the SCF
 map is a contraction in the *interior* of the problem but
@@ -152,22 +152,22 @@ Linearise $\mathcal F$ around the fixed point:
 
 \begin{equation}
 \label{eq:nm-scf-lin}
-\mathcal F[\rho] \approx \rho^\star + \mathcal F'(\rho^\star)\, (\rho - \rho^\star) ,
+\mathcal F[\rho] \approx \rho^\star + \mathcal F^{\prime}(\rho^\star)\, (\rho - \rho^\star) ,
 \end{equation}
 
-where $\mathcal F'(\rho^\star)$ is the Fréchet derivative of the
+where $\mathcal F^{\prime}(\rho^\star)$ is the Fréchet derivative of the
 SCF map at the fixed point.  Define the **error**
 $e^{(n)} = \rho^{(n)} - \rho^\star$.  Substituting
 \eqref{eq:nm-scf-lin} into \eqref{eq:nm-scf-linear-mix}:
 
 \begin{align}
-e^{(n+1)} &= (1 - \alpha)\, e^{(n)} + \alpha\, \mathcal F' e^{(n)} \notag \\\
-          &= \Bigl[ (1 - \alpha) \mathbf 1 + \alpha \mathcal F' \Bigr] e^{(n)} . \label{eq:nm-scf-err-rec}
+e^{(n+1)} &= (1 - \alpha)\, e^{(n)} + \alpha\, \mathcal F^{\prime} e^{(n)} \notag \\\
+          &= \Bigl[ (1 - \alpha) \mathbf 1 + \alpha \mathcal F^{\prime} \Bigr] e^{(n)} . \label{eq:nm-scf-err-rec}
 \end{align}
 
 The damped map has eigenvalues
 $\mu_\text{damp} = (1 - \alpha) + \alpha \mu$, where $\mu$ is an
-eigenvalue of $\mathcal F'$.  The iteration converges iff
+eigenvalue of $\mathcal F^{\prime}$.  The iteration converges iff
 $|\mu_\text{damp}| < 1$ for every $\mu$ in the spectrum.  This
 is a *strictly weaker* condition than $|\mu| < 1$ for the
 undamped map.
@@ -1787,7 +1787,7 @@ of iterations for the *lowest* eigenpair but Davidson converges
 
 The SCF iteration of §1 is a fixed-point iteration
 $\rho^{(n+1)} = \mathcal F[\rho^{(n)}]$.  In *insulators* the
-spectral radius of $\mathcal F'$ is small enough that linear
+spectral radius of $\mathcal F^{\prime}$ is small enough that linear
 mixing converges; in *metals* the long-wavelength ($G \to 0$)
 components of the density are *amplified* by the static
 dielectric response, and bare iteration diverges.  This

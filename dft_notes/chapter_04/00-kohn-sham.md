@@ -344,7 +344,7 @@ from the occupied orbitals.  Self-consistency means
 i.e. $\rho^\star$ is a **fixed point** of the map.  The bare iteration
 $\rho^{(n+1)} = \mathcal F[\rho^{(n)}]$ is the textbook fixed-point
 iteration; it diverges whenever the linearised map
-$\mathcal F'(\rho^\star)$ has an eigenvalue of magnitude $\ge 1$.
+$\mathcal F^{\prime}(\rho^\star)$ has an eigenvalue of magnitude $\ge 1$.
 
 ### 4.6.1 Simple (linear) mixing
 
@@ -371,18 +371,18 @@ in a localised basis; a few production codes default to
 $\alpha = 0.7$.
 
 **Why does damping help?**  Linearise $\mathcal F$ around the fixed
-point, $\mathcal F[\rho] \approx \rho^\star + \mathcal F'(\rho^\star)
+point, $\mathcal F[\rho] \approx \rho^\star + \mathcal F^{\prime}(\rho^\star)
 (\rho - \rho^\star)$, and define the *error*
 $e^{(n)} = \rho^{(n)} - \rho^\star$.  Substituting into
 \eqref{eq:ch-04-linear-mixing} gives the linearised error recursion
 
 $$
-e^{(n+1)} = (1 - \alpha)\, e^{(n)} + \alpha\, \mathcal F' e^{(n)}
-= \big[(1-\alpha) \mathbf 1 + \alpha \mathcal F'\big] e^{(n)} .
+e^{(n+1)} = (1 - \alpha)\, e^{(n)} + \alpha\, \mathcal F^{\prime} e^{(n)}
+= \big[(1-\alpha) \mathbf 1 + \alpha \mathcal F^{\prime}\big] e^{(n)} .
 $$
 
 The eigenvalues of the damped map are $\mu_\text{damp} = (1-\alpha) +
-\alpha \mu$, where $\mu$ is an eigenvalue of the bare $\mathcal F'$.
+\alpha \mu$, where $\mu$ is an eigenvalue of the bare $\mathcal F^{\prime}$.
 The damped map converges iff $|\mu_\text{damp}| < 1$, which is a
 *strictly weaker* condition than $|\mu| < 1$.  In particular, the
 real part of $\mu$ is mapped to
