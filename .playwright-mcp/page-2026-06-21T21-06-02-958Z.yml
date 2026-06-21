@@ -1,0 +1,3535 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 05 — XC functionals" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: Every approximation in this chapter has the form “guess the shape of
+          - img [ref=e31]
+          - text: ”. They differ in what they guess from — uniform electron gas, gradient expansions, exact exchange on a model system, empirical fits to a training set — and in how well they generalise.
+      - paragraph [ref=e46]:
+        - text: By the end of
+        - link "chapter 04" [ref=e47] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: "the Kohn–Sham machinery is in place: we have a self-consistent one-body eigenvalue equation whose"
+        - strong [ref=e48]: only
+        - text: unphysical ingredient is the exchange–correlation functional
+        - img [ref=e50]
+        - text: . The Hohenberg– Kohn theorems (
+        - link "chapter 02" [ref=e65] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: )
+        - emphasis [ref=e66]: guarantee
+        - text: that a unique such functional exists, but they say nothing about how to
+        - emphasis [ref=e67]: write it down
+        - text: . The Kohn–Sham reformulation (
+        - link "chapter 04" [ref=e68] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: § 4.2) splits the exact energy into four pieces we can compute — non-interacting kinetic
+        - img [ref=e70]
+        - text: ", electron–nuclear"
+        - img [ref=e79]
+        - text: ", Hartree"
+        - img [ref=e94]
+        - text: ", and nuclear–nuclear"
+        - img [ref=e106]
+        - text: — and one piece we
+        - emphasis [ref=e115]: cannot
+        - text: ":"
+        - img [ref=e117]
+        - text: ". The whole of modern density-functional theory is, in practice, a search for ever-better approximations to that one piece. This chapter is a guided tour of the approximations that have mattered: the"
+        - strong [ref=e132]: local density approximation
+        - text: (LDA), the
+        - strong [ref=e133]: generalised-gradient approximation
+        - text: (GGA), the
+        - strong [ref=e134]: meta-GGA
+        - text: ", the"
+        - strong [ref=e135]: hybrid
+        - text: functionals (B3LYP, PBE0), the
+        - strong [ref=e136]: range-separated
+        - text: hybrids (CAM-B3LYP, LC-
+        - img [ref=e138]
+        - text: PBE,
+        - img [ref=e144]
+        - text: B97X), the
+        - strong [ref=e149]: double
+        - text: hybrids (B2-PLYP, DSD-PBEP86), and the various
+        - strong [ref=e150]: dispersion corrections
+        - text: (D3, D4, MBD, vdW-DF) that retro-fit the missing van-der-Waals physics. We close with a worked total-energy comparison of helium across LDA, PBE, and Hartree–Fock, three problems that exercise the formulas, and a decision tree for picking a functional in practice.
+      - heading "5.1 The claim" [level=2] [ref=e151]
+      - paragraph [ref=e152]:
+        - text: The headline of this chapter is that
+        - strong [ref=e153]:
+          - text: every useful approximation to
+          - img [ref=e155]
+          - text: in current production use can be written as a sum of one or more of the following ingredients
+        - text: — a local density piece, a gradient piece, a kinetic-energy piece, a fraction of exact non-local Hartree–Fock exchange, a range-separation of that exchange, an MP2-like correlation correction, and an empirical dispersion patch. The “Jacob’s ladder” metaphor of Perdew and Schmidt (
+        - link "2001" [ref=e170] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/#perdew-2001
+        - text: ) orders these ingredients by increasing
+        - strong [ref=e171]: rung
+        - text: ", and the rule of thumb is “higher rung = more ingredients = more physics = (usually) more accuracy and (always) more cost”:"
+      - img [ref=e173]:
+        - generic [ref=e177]:
+          - img [ref=e178]:
+            - generic [ref=e181]:
+              - generic [ref=e227]:
+                - img [ref=e233]
+                - img [ref=e235]
+              - generic [ref=e281]:
+                - img [ref=e287]
+                - img [ref=e289]
+              - generic [ref=e338]:
+                - img [ref=e344]
+                - img [ref=e346]
+              - generic [ref=e379]:
+                - img [ref=e385]
+                - img [ref=e387]
+              - generic [ref=e420]:
+                - img [ref=e426]
+                - img [ref=e428]
+              - generic [ref=e464]:
+                - img [ref=e470]
+                - img [ref=e472]
+              - generic [ref=e501]:
+                - img [ref=e507]
+                - img [ref=e509]
+          - img [ref=e525]
+      - paragraph [ref=e533]:
+        - text: Equation
+        - img [ref=e535]:
+          - link [ref=e538] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-jacobs-ladder"
+        - text: is the
+        - strong [ref=e545]: menu
+        - text: ", not a single formula: every named functional (LDA, PBE, SCAN, B3LYP, …) is a particular choice of"
+        - emphasis [ref=e546]: which
+        - text: "’ ingredients to include and how muc`h* of each. The *exact"
+        - img [ref=e548]
+        - text: sits at the top of the ladder, in “heaven”, and is unknown.
+      - paragraph [ref=e563]:
+        - text: The
+        - emphasis [ref=e564]: formal definition
+        - text: of
+        - img [ref=e566]
+        - text: is fixed by the Kohn–Sham energy expression
+        - img [ref=e582]:
+          - link [ref=e585] [cursor=pointer]:
+            - /url: "#"
+        - text: of
+        - link "chapter 04" [ref=e594] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: ": the part of the exact energy left over after subtracting the four known pieces,"
+      - img [ref=e596]:
+        - generic [ref=e600]:
+          - img [ref=e601]
+          - img [ref=e684]
+      - paragraph [ref=e691]:
+        - text: The first bracket is the
+        - strong [ref=e692]: kinetic-correlation
+        - text: "correction: the difference between the true interacting kinetic energy and the non-interacting kinetic energy of the KS reference system. The second bracket is the"
+        - strong [ref=e693]: exchange + correlation
+        - text: "correction to the Hartree term:"
+        - img [ref=e695]
+        - text: is the full quantum electron–electron repulsion and
+        - img [ref=e715]
+        - text: is its classical (semi-classical) part. The exchange part of
+        - img [ref=e727]
+        - text: is the
+        - strong [ref=e756]: Fermi hole
+        - text: — the reduction in Coulomb repulsion caused by Pauli exclusion; the correlation part is the
+        - strong [ref=e757]: Coulomb hole
+        - text: — the additional reduction caused by the instantaneous avoidance of same-spin
+        - emphasis [ref=e758]: "an`d"
+        - text: ’ opposite-spin electron pairs.
+      - blockquote [ref=e759]:
+        - paragraph [ref=e760]:
+          - strong [ref=e761]: Tip.
+          - text: Equation
+          - img [ref=e763]:
+            - link [ref=e766] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-05-exc-definition"
+          - text: is the
+          - emphasis [ref=e773]: only
+          - text: piece of this chapter that is
+          - emphasis [ref=e774]: exact
+          - text: ". Everything else is approximation. The reader should leave this section with two facts in mind: (i) the exact"
+          - img [ref=e776]
+          - text: is a
+          - emphasis [ref=e785]: single
+          - text: functional of the density, even though we do not know its form; (ii) every practical functional in production is a
+          - emphasis [ref=e786]: guess
+          - text: at that form.
+      - paragraph [ref=e787]:
+        - text: The menu of
+        - img [ref=e789]:
+          - link [ref=e792] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-jacobs-ladder"
+        - text: is a tower, not a flat list, because each higher rung
+        - emphasis [ref=e799]: subsumes
+        - text: the lower ones in the sense that you can recover LDA by turning off the gradient, kinetic, hybrid, and dispersion ingredients of any GGA. Climbing the ladder always adds ingredients, never subtracts them.
+      - paragraph [ref=e800]:
+        - text: The question this chapter answers is,
+        - strong [ref=e801]: for a given system, which rung to climb to?
+        - text: A casual answer (“always use the highest rung you can afford”) is wrong; a sophisticated answer requires knowing
+        - emphasis [ref=e802]: what each rung is good at and what it gets wrong
+        - text: . The next seven sections build that knowledge from the bottom up.
+      - heading "5.2 The derivation" [level=2] [ref=e803]
+      - paragraph [ref=e804]:
+        - text: This section is the bulk of the chapter. We start from the uniform electron gas — the only system for which
+        - img [ref=e806]
+        - text: is
+        - emphasis [ref=e815]: known
+        - text: to high accuracy — and walk up Jacob’s ladder, rung by rung. For each rung we give the
+        - emphasis [ref=e816]: form
+        - text: of the functional, the physical content of the new ingredient, the
+        - emphasis [ref=e817]: constraint
+        - text: (or training set) that fixes the parameters, and a
+        - emphasis [ref=e818]: representative named functional
+        - text: that the reader will encounter in the literature.
+      - heading "5.2.1 The uniform electron gas (UEG)" [level=3] [ref=e819]
+      - paragraph [ref=e820]:
+        - text: The
+        - strong [ref=e821]: uniform electron gas
+        - text: is the starting point of every modern XC functional. It is a hypothetical system of
+        - img [ref=e823]
+        - text: electrons in a box of volume
+        - img [ref=e829]
+        - text: ", with the electron–nuclear Coulomb attraction"
+        - emphasis [ref=e834]: "replace`d"
+        - text: ’ by a uniform positive background charge of density
+        - img [ref=e836]
+        - text: . This makes the system translationally invariant, so its ground-state energy is
+        - emphasis [ref=e853]: automatically
+        - text: an integral of a
+        - emphasis [ref=e854]: function
+        - text: of the density rather than a functional — and that function is the only piece of
+        - img [ref=e856]
+        - text: we know exactly.
+      - paragraph [ref=e865]:
+        - text: The UEG is parameterised by a single number, the
+        - strong [ref=e866]: Wigner–Seitz radius
+        - img [ref=e868]
+        - text: — the radius (in Bohr) of the sphere whose volume is the average volume per electron,
+      - img [ref=e877]:
+        - generic [ref=e881]:
+          - img [ref=e882]
+          - img [ref=e954]
+      - paragraph [ref=e962]:
+        - text: The density is
+        - img [ref=e964]
+        - text: ", with units of"
+        - img [ref=e979]
+        - text: ". The Wigner–Seitz radius decreases as the gas is compressed:"
+        - img [ref=e993]
+        - text: corresponds to a dense electron gas with
+        - img [ref=e1011]
+        - text: (about
+        - img [ref=e1035]
+        - text: ", two orders of magnitude denser than a typical valence electron density in a solid). The"
+        - img [ref=e1062]
+        - text: "-bonded simple metals have"
+        - img [ref=e1070]
+        - text: in the range
+        - img [ref=e1079]
+        - text: –
+        - img [ref=e1085]
+        - text: "(Al:"
+        - img [ref=e1096]
+        - text: "; Na:"
+        - img [ref=e1117]
+        - text: "; Cs:"
+        - img [ref=e1131]
+        - text: ).
+      - paragraph [ref=e1144]:
+        - text: The exchange–correlation energy of the UEG,
+        - emphasis [ref=e1145]: per particle
+        - text: ","
+        - img [ref=e1147]
+        - text: ", is the"
+        - emphasis [ref=e1165]: defining
+        - text: data of the LDA. It is the sum of two pieces,
+      - img [ref=e1167]:
+        - generic [ref=e1171]:
+          - img [ref=e1172]
+          - img [ref=e1225]
+      - paragraph [ref=e1232]:
+        - text: with
+        - img [ref=e1234]
+        - text: the
+        - strong [ref=e1242]: exchange
+        - text: (Fermi-hole) part and
+        - img [ref=e1244]
+        - text: the
+        - strong [ref=e1252]: correlation
+        - text: (Coulomb-hole) part.
+      - paragraph [ref=e1253]:
+        - strong [ref=e1254]: Exchange.
+        - text: The exchange energy of the UEG was computed by Bloch (1929) and Dirac (1930). The result, in Hartree per electron, is
+      - img [ref=e1256]:
+        - generic [ref=e1260]:
+          - img [ref=e1261]
+          - img [ref=e1365]
+      - paragraph [ref=e1373]:
+        - text: The coefficient
+        - img [ref=e1375]
+        - text: is the
+        - strong [ref=e1433]: Dirac exchange coefficient
+        - text: ". To derive it from first principles: in the UEG each plane-wave orbital"
+        - img [ref=e1435]
+        - text: is occupied for
+        - img [ref=e1479]
+        - text: ", where"
+        - img [ref=e1498]
+        - text: is the
+        - strong [ref=e1506]: Fermi wave-vector
+        - img [ref=e1508]
+        - text: . The exchange energy per electron is then
+      - img [ref=e1573]:
+        - generic [ref=e1577]:
+          - img [ref=e1578]
+          - img [ref=e1662]
+      - paragraph [ref=e1670]:
+        - text: where the off-diagonal density matrix of the non-interacting KS system is
+        - img [ref=e1672]
+        - text: . The sum becomes a spherical integral over the Fermi sphere; performing it gives
+        - img [ref=e1757]:
+          - link [ref=e1760] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-dirac-exchange"
+        - text: .
+      - paragraph [ref=e1767]:
+        - strong [ref=e1768]: Correlation.
+        - text: The correlation energy of the UEG has
+        - emphasis [ref=e1769]: "no"
+        - text: closed-form expression. It is the small (typically
+        - img [ref=e1771]
+        - text: of the magnitude of the exchange) but non-negligible correction that comes from the Coulomb hole. It has been computed by
+        - strong [ref=e1781]: quantum Monte Carlo
+        - text: "(QMC) methods to high accuracy: the canonical reference is Ceperley and Alder (1980), who used"
+        - strong [ref=e1782]: variational
+        - text: and
+        - strong [ref=e1783]: fixed-node diffusion
+        - text: Monte Carlo to compute the UEG energy at several
+        - img [ref=e1785]
+        - text: values for both the unpolarised (
+        - img [ref=e1794]
+        - text: ) and fully polarised (
+        - img [ref=e1810]
+        - text: ","
+        - img [ref=e1823]
+        - text: ) gases. The QMC data are then parametrised by an analytical fit, of which the most-used is
+        - strong [ref=e1835]: Perdew–Zunger 1981
+        - text: "(PZ81):"
+      - img [ref=e1837]:
+        - generic [ref=e1841]:
+          - img [ref=e1842]:
+            - generic [ref=e1868]:
+              - img [ref=e1872]
+              - img [ref=e1874]
+          - img [ref=e1992]
+      - paragraph [ref=e1999]:
+        - text: The unpolarised coefficients are
+        - img [ref=e2001]
+        - text: and
+        - img [ref=e2067]
+        - text: ". At the Wigner–Seitz radius of “typical” simple metals the values are small: at"
+        - img [ref=e2130]
+        - text: (close to aluminium) we have
+        - img [ref=e2143]
+        - text: and
+        - img [ref=e2167]
+        - text: (correlation is about 20% of the exchange magnitude).
+      - blockquote [ref=e2196]:
+        - paragraph [ref=e2197]:
+          - strong [ref=e2198]: Note.
+          - text: Modern implementations of LDA usually use
+          - strong [ref=e2199]: Perdew–Wang 1992
+          - text: (PW92) instead of PZ81 — it has a smoother behaviour around
+          - img [ref=e2201]
+          - text: ", a spin-interpolation formula that spans the full polarisation range, and is closer to the underlying QMC data. The qualitative shape is the same; we will use PZ81 throughout the chapter for simplicity and because it is easier to remember."
+      - paragraph [ref=e2213]:
+        - text: "A useful sanity check: at"
+        - img [ref=e2215]
+        - text: ", PZ81 gives"
+        - img [ref=e2228]
+        - text: — the QMC “benchmark” value to which the fit was anchored. The first-principles
+        - strong [ref=e2257]: random phase approximation
+        - text: (RPA) gives
+        - img [ref=e2259]
+        - text: at the same
+        - img [ref=e2276]
+        - text: ", an under-binding that is the well-known signature of RPA’s missing higher-order exchange–correlation effects."
+      - heading "5.2.2 The local density approximation (LDA)" [level=3] [ref=e2284]
+      - paragraph [ref=e2285]:
+        - text: The
+        - strong [ref=e2286]: local density approximation
+        - text: is the simplest possible extrapolation of the UEG data to a non-uniform system. The approximation has the form
+      - img [ref=e2288]:
+        - generic [ref=e2292]:
+          - img [ref=e2293]
+          - img [ref=e2354]
+      - paragraph [ref=e2361]:
+        - text: i.e. the integrand of the UEG formula is
+        - emphasis [ref=e2362]: kept
+        - text: and the constant
+        - img [ref=e2364]
+        - text: is
+        - emphasis [ref=e2369]: "replace`d"
+        - text: ’ by the local density
+        - img [ref=e2371]
+        - text: at each point. The integrand
+        - img [ref=e2384]
+        - text: is called the
+        - strong [ref=e2401]: XC energy density
+        - text: and is a
+        - emphasis [ref=e2402]: local
+        - text: function of
+        - img [ref=e2404]
+        - text: .
+      - paragraph [ref=e2409]:
+        - text: Equation
+        - img [ref=e2411]:
+          - link [ref=e2414] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lda-form"
+        - text: has the structure of a
+        - emphasis [ref=e2421]: geometric approximation
+        - text: ": at every point"
+        - img [ref=e2423]
+        - text: ", the XC energy per electron is taken to be the value it would have in a"
+        - emphasis [ref=e2429]: uniform
+        - text: electron gas of the same density. The corresponding
+        - strong [ref=e2430]: XC potential
+        - text: — the functional derivative
+        - img [ref=e2432]
+        - text: — is, by the chain rule,
+      - img [ref=e2473]:
+        - generic [ref=e2477]:
+          - img [ref=e2478]:
+            - img [ref=e2552]
+          - img [ref=e2566]
+      - paragraph [ref=e2574]:
+        - text: The first term is the
+        - emphasis [ref=e2575]: local
+        - text: XC energy per electron; the second term is the
+        - emphasis [ref=e2576]: response
+        - text: of that energy to a local change in density.
+      - paragraph [ref=e2577]:
+        - text: The
+        - strong [ref=e2578]: spin-localised
+        - text: version — the
+        - strong [ref=e2579]: LSDA
+        - text: ", used for open-shell atoms, radicals, and ferromagnets — is"
+      - img [ref=e2581]:
+        - generic [ref=e2585]:
+          - img [ref=e2586]
+          - img [ref=e2675]
+      - paragraph [ref=e2683]:
+        - text: where
+        - img [ref=e2685]
+        - text: is now a function of
+        - emphasis [ref=e2694]: two
+        - text: local spin densities. The polarisation
+        - img [ref=e2696]
+        - text: interpolates between the unpolarised gas (
+        - img [ref=e2725]
+        - text: ) and the fully polarised gas (
+        - img [ref=e2735]
+        - text: ). The standard interpolation (
+        - link "Vosko-Wilk-Nusair 1980" [ref=e2744] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/#vwn-1980
+        - text: ", VWN) is a rational function of"
+        - img [ref=e2746]
+        - text: that fits the QMC correlation energies of Ceperley and Alder for both limits.
+      - blockquote [ref=e2751]:
+        - paragraph [ref=e2752]:
+          - strong [ref=e2753]: Tip.
+          - text: The L in LDA does all the work. The D in LSDA is just “D for two densities”. The accuracy of both is governed by the
+          - emphasis [ref=e2754]: uniform
+          - text: "assumption: the better the real density"
+          - img [ref=e2756]
+          - text: is approximated by a constant, the better the approximation. LDA is therefore unexpectedly good for systems that
+          - emphasis [ref=e2768]: are
+          - text: close to the UEG — simple
+          - img [ref=e2770]
+          - text: metals, jellium surfaces, the interiors of nearly-free-electron solids — and
+          - emphasis [ref=e2777]: "ba`d"
+          - text: ’ for systems with strong density gradients — atoms, molecules, surfaces, and
+          - img [ref=e2779]
+          - text: "-/"
+          - img [ref=e2785]
+          - text: "- electron materials. Concretely, LDA typically over-binds molecules by 20–30 kcal/mol per bond and under-estimates lattice constants of solids by 1–3%."
+      - heading "5.2.3 The gradient expansion and its failure" [level=3] [ref=e2790]
+      - paragraph [ref=e2791]:
+        - text: The “obvious” generalisation of the LDA is the
+        - strong [ref=e2792]: gradient expansion approximation
+        - text: "(GEA): expand the integrand in powers of the local density gradient"
+        - img [ref=e2794]
+        - text: and keep the first non-trivial term. The exchange part of the GEA, due to Herman, Van Dyke, and Ortenburger (
+        - link "1969" [ref=e2801] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/#hvo-1969
+        - text: ), gives
+      - img [ref=e2803]:
+        - generic [ref=e2807]:
+          - img [ref=e2808]
+          - img [ref=e2994]
+      - paragraph [ref=e3002]:
+        - text: The second term in
+        - img [ref=e3004]:
+          - link [ref=e3007] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-gea-exchange"
+        - text: — sometimes written in the equivalent one-centre form
+        - img [ref=e3016]
+        - text: with
+        - img [ref=e3057]
+        - text: — is
+        - emphasis [ref=e3112]: positive
+        - text: ", so the GEA reduces the magnitude of the LDA exchange in regions of strong gradient. That is the right direction: the exchange energy of a non-uniform system should be"
+        - emphasis [ref=e3113]: less
+        - text: negative than the LDA value, because the inhomogeneity weakens the Fermi hole. The problem is that the GEA
+        - emphasis [ref=e3114]: blows up
+        - text: ’ in the exponential tail* of an atomic density, where
+        - img [ref=e3116]
+        - text: and the gradient expansion diverges. A bare GEA is therefore
+        - emphasis [ref=e3125]: worse
+        - text: than LDA for atoms and molecules.
+      - paragraph [ref=e3126]:
+        - text: The GEA’s divergence is a
+        - emphasis [ref=e3127]: symptom
+        - text: of the deeper fact that the XC energy is not analytic in
+        - img [ref=e3129]
+        - text: at the
+        - emphasis [ref=e3136]: "atomi`c"
+        - text: ’ density limit. The fix is the
+        - strong [ref=e3137]: generalised-gradient approximation
+        - text: "of the next section: parametrise the"
+        - emphasis [ref=e3138]: enhancement factor
+        - text: of the LDA integrand as a
+        - emphasis [ref=e3139]: bounded
+        - text: ’ function of a dimensionless reduced gradient, and fix the parameters by exact constraints (PBE) or by empirical fits (B88, LYP).
+      - blockquote [ref=e3140]:
+        - paragraph [ref=e3141]:
+          - strong [ref=e3142]: Note.
+          - text: The history of the GGA is a history of attempts to
+          - emphasis [ref=e3143]: tame
+          - text: the gradient expansion. The original PBE paper (
+          - link "Perdew, Burke, Ernzerhof 1996" [ref=e3144] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/bibliography/#pbe-1996
+          - text: ) makes the “no free parameters” point by showing that the simplest
+          - emphasis [ref=e3145]: constraint-satisfying
+          - text: enhancement factor already does most of the work. The competing “empirical” school — Becke 1988 (B88) for exchange, Lee–Yang–Parr 1988 (LYP) for correlation — fits parameters to atomic data, with comparable accuracy. The functional zoo is the result of fitting different training sets.
+      - heading "5.2.4 The GGA — PBE and friends" [level=3] [ref=e3146]
+      - paragraph [ref=e3147]:
+        - text: A
+        - strong [ref=e3148]: generalised-gradient approximation
+        - text: has the same integrand structure as the LDA but with an
+        - emphasis [ref=e3149]: enhancement factor
+        - img [ref=e3151]
+        - text: that depends on a
+        - emphasis [ref=e3160]: dimensionless
+        - text: reduced gradient
+        - img [ref=e3162]
+        - text: ","
+      - img [ref=e3168]:
+        - generic [ref=e3172]:
+          - img [ref=e3173]
+          - img [ref=e3259]
+      - paragraph [ref=e3267]:
+        - text: where the
+        - strong [ref=e3268]: reduced gradient
+        - text: is
+      - img [ref=e3270]:
+        - generic [ref=e3274]:
+          - img [ref=e3275]
+          - img [ref=e3381]
+      - paragraph [ref=e3389]:
+        - text: The factor
+        - img [ref=e3391]
+        - text: in the denominator makes
+        - img [ref=e3404]
+        - emphasis [ref=e3409]: dimensionless
+        - text: ":"
+        - img [ref=e3411]
+        - text: has units of
+        - img [ref=e3420]
+        - text: and
+        - img [ref=e3434]
+        - text: has units of
+        - img [ref=e3442]
+        - text: ", so the ratio has units of"
+        - img [ref=e3456]
+        - text: ", the natural atomic unit of length. The factor of 2 is a convention from the early literature; the resulting"
+        - img [ref=e3465]
+        - text: is typically small in the bulk (
+        - img [ref=e3471]
+        - text: for a slowly-varying density) and large in atomic tails (
+        - img [ref=e3483]
+        - text: ). The function
+        - img [ref=e3493]
+        - text: controls the
+        - emphasis [ref=e3508]: enhancement
+        - text: "of the LDA integrand:"
+        - img [ref=e3510]
+        - text: recovers the LDA;
+        - img [ref=e3530]
+        - emphasis [ref=e3549]: enhances
+        - text: the integrand (reduces the magnitude of the exchange energy);
+        - img [ref=e3551]
+        - emphasis [ref=e3570]: suppresses
+        - text: it.
+      - paragraph [ref=e3571]:
+        - text: For exchange, the GGA enhancement factor is conventionally written
+        - img [ref=e3573]
+        - text: ; for correlation, the GGA enhancement is a separate function
+        - img [ref=e3588]
+        - text: of a
+        - emphasis [ref=e3599]: different
+        - text: reduced gradient
+        - img [ref=e3601]
+        - text: with
+        - img [ref=e3635]
+        - text: (the
+        - strong [ref=e3670]: Thomas–Fermi screening wave-vector
+        - text: ). The two ingredients —
+        - img [ref=e3672]
+        - text: and
+        - img [ref=e3687]
+        - text: — together make
+        - img [ref=e3699]
+        - text: in
+        - img [ref=e3709]:
+          - link [ref=e3712] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-gga-form"
+        - text: .
+      - paragraph [ref=e3720]:
+        - strong [ref=e3721]: PBE exchange.
+        - text: The
+        - strong [ref=e3722]: Perdew–Burke–Ernzerhof
+        - text: (PBE) enhancement factor for exchange is the simplest form that satisfies four
+        - emphasis [ref=e3723]: exact
+        - text: "constraints:"
+      - img [ref=e3725]:
+        - generic [ref=e3729]:
+          - img [ref=e3730]
+          - img [ref=e3782]
+      - paragraph [ref=e3791]:
+        - text: with
+        - img [ref=e3793]
+        - text: and
+        - img [ref=e3807]
+        - text: "(in atomic units). The four constraints are:"
+      - list [ref=e3822]:
+        - listitem [ref=e3823]:
+          - img [ref=e3825]
+          - text: — the LDA is recovered for a uniform density.
+        - listitem [ref=e3843]:
+          - text: The
+          - strong [ref=e3844]: Lieb–Oxford bound
+          - img [ref=e3846]
+          - text: ", which becomes"
+          - img [ref=e3874]
+          - text: (with
+          - img [ref=e3897]
+          - text: chosen to reproduce the bound).
+        - listitem [ref=e3902]:
+          - text: "The leading gradient correction of the GEA:"
+          - img [ref=e3904]
+          - text: for small
+          - img [ref=e3943]
+          - text: .
+        - listitem [ref=e3948]:
+          - text: A
+          - emphasis [ref=e3949]: non-negative
+          - text: second derivative for the asymptotic density (so that the enhancement does not diverge), enforced by the rational form
+          - img [ref=e3951]
+          - text: .
+      - paragraph [ref=e3979]:
+        - text: The shape of
+        - img [ref=e3981]
+        - text: ": it starts at"
+        - img [ref=e3994]
+        - text: for
+        - img [ref=e4000]
+        - text: ", grows monotonically, and asymptotes to"
+        - img [ref=e4010]
+        - text: for
+        - img [ref=e4028]
+        - text: . The growth is
+        - emphasis [ref=e4037]: slow
+        - text: at small
+        - img [ref=e4039]
+        - text: — the
+        - img [ref=e4045]
+        - text: in the denominator damps it — and
+        - emphasis [ref=e4060]: fast
+        - text: for moderate
+        - img [ref=e4062]
+        - text: — the asymptotic value
+        - img [ref=e4068]
+        - text: is reached by
+        - img [ref=e4078]
+        - text: . This is the
+        - emphasis [ref=e4087]: physical
+        - text: "behaviour: an atomic-density tail ("
+        - img [ref=e4089]
+        - text: large) wants more enhancement than the bulk (
+        - img [ref=e4095]
+        - text: small) to mimic the
+        - emphasis [ref=e4100]: weaker
+        - text: exchange of an inhomogeneous density.
+      - paragraph [ref=e4101]:
+        - strong [ref=e4102]: PBE correlation.
+        - text: The PBE correlation enhancement
+        - img [ref=e4104]
+        - text: is more elaborate because correlation is a smaller and more delicate quantity than exchange. The starting point is the LDA correlation
+        - img [ref=e4110]
+        - text: ; the PBE adds an enhancement that vanishes in the uniform limit,
+      - img [ref=e4132]:
+        - generic [ref=e4136]:
+          - img [ref=e4137]
+          - img [ref=e4233]
+      - paragraph [ref=e4242]: with
+      - img [ref=e4244]:
+        - generic [ref=e4248]:
+          - img [ref=e4249]
+          - img [ref=e4298]
+      - paragraph [ref=e4307]:
+        - text: The PBE parameters are
+        - img [ref=e4309]
+        - text: and
+        - img [ref=e4326]
+        - text: (the latter chosen to reproduce the LDA correlation in the high-density limit). The structure of
+        - img [ref=e4374]
+        - text: "guarantees three constraints:"
+      - list [ref=e4379]:
+        - listitem [ref=e4380]:
+          - img [ref=e4382]
+          - text: as
+          - img [ref=e4392]
+          - text: (LDA is recovered for a uniform density).
+        - listitem [ref=e4401]:
+          - img [ref=e4403]
+          - text: for small
+          - img [ref=e4418]
+          - text: (the second-order GEA limit).
+        - listitem [ref=e4423]:
+          - img [ref=e4425]
+          - text: is
+          - emphasis [ref=e4430]: non-negative
+          - text: for all
+          - img [ref=e4432]
+          - text: (the gradient always reduces the magnitude of the correlation energy, never increases it).
+      - paragraph [ref=e4437]:
+        - strong [ref=e4438]: The PBE functional.
+        - text: Combining the exchange and correlation enhancement factors, the full PBE exchange–correlation energy is
+      - img [ref=e4440]:
+        - generic [ref=e4444]:
+          - img [ref=e4445]
+          - img [ref=e4554]
+      - paragraph [ref=e4562]:
+        - text: PBE is the
+        - emphasis [ref=e4563]: de facto
+        - text: default functional of solid-state physics. It is non-empirical (no parameters were fit to atomisation energies or any other molecular data), it satisfies the leading exact constraints, and it has been used to compute the structural, vibrational, and electronic properties of more materials than any other XC functional in history. The cost is identical to LDA — both require
+        - img [ref=e4565]
+        - text: and
+        - img [ref=e4578]
+        - text: on a grid.
+      - blockquote [ref=e4592]:
+        - paragraph [ref=e4593]:
+          - strong [ref=e4594]: Tip.
+          - text: “PBE is the de facto default of solid-state physics, B3LYP is the de facto default of main-group quantum chemistry”. These defaults were
+          - emphasis [ref=e4595]: not
+          - text: chosen for the other regime, and using them outside their sweet spots is asking for trouble. PBE under- estimates semiconductor band gaps by 30–50% (B3LYP is no better). B3LYP gives a poor description of metals and semiconductors (PBE is much better). When the literature on your system class has converged on a different functional, use that one.
+      - paragraph [ref=e4596]:
+        - strong [ref=e4597]: Other GGAs.
+        - text: The PBE form is the
+        - emphasis [ref=e4598]: constraint-satisfying
+        - text: paradigm. The competing
+        - emphasis [ref=e4599]: empirical
+        - text: paradigm is B88 exchange (Becke 1988) for the exchange part and LYP correlation (Lee, Yang, Parr 1988) for the correlation part; the combination is
+        - strong [ref=e4600]: BLYP
+        - text: ", the canonical GGA of organic chemistry. B88 has a"
+        - emphasis [ref=e4601]: different
+        - text: enhancement factor form (an
+        - emphasis [ref=e4602]: inverse-square-root
+        - text: rather than a
+        - emphasis [ref=e4603]: rational
+        - text: ") and one empirical parameter fit to the exact exchange of the H atom:"
+      - img [ref=e4605]:
+        - generic [ref=e4609]:
+          - img [ref=e4610]
+          - img [ref=e4705]
+      - paragraph [ref=e4714]:
+        - text: The B88 enhancement factor asymptotes to
+        - img [ref=e4716]
+        - text: for large
+        - img [ref=e4727]
+        - text: ", compared to PBE’s"
+        - img [ref=e4733]
+        - text: . The two are comparable in the bulk; the difference matters in the
+        - emphasis [ref=e4742]: tails
+        - text: of atomic densities, where the asymptotic behaviour controls molecular binding energies.
+      - paragraph [ref=e4743]:
+        - text: PW91 (Perdew–Wang 1991) is the
+        - emphasis [ref=e4744]: predecessor
+        - text: of PBE and the default GGA of many older solid-state codes. PBE was designed to be a
+        - emphasis [ref=e4745]: cleaner
+        - text: "version of PW91 — fewer conditions, no fitted parameters, better constraint satisfaction. The numerical difference is small: PBE and PW91 atomisation energies agree to within 1–2 kcal/mol on the G2 set."
+      - heading "5.2.5 The meta-GGA — adding" [level=3] [ref=e4746]:
+        - text: 5.2.5 The meta-GGA — adding
+        - img [ref=e4748]
+      - paragraph [ref=e4753]:
+        - text: A
+        - strong [ref=e4754]: meta-GGA
+        - text: "adds a third local ingredient to the GGA menu: the"
+        - strong [ref=e4755]: orbital kinetic-energy density
+      - img [ref=e4757]:
+        - generic [ref=e4761]:
+          - img [ref=e4762]
+          - img [ref=e4817]
+      - paragraph [ref=e4826]:
+        - text: "The functional now depends on three local variables:"
+        - img [ref=e4828]
+        - text: ","
+        - img [ref=e4834]
+        - text: ", and"
+        - img [ref=e4842]
+        - text: . The new ingredient is
+        - emphasis [ref=e4847]: informative
+        - text: in two ways that the GGA ingredients are not.
+      - list [ref=e4848]:
+        - listitem [ref=e4849]:
+          - img [ref=e4851]
+          - text: is large in
+          - emphasis [ref=e4856]: single-orbital
+          - text: regions (covalent bonds, lone pairs) and small in
+          - emphasis [ref=e4857]: multi-orbital
+          - text: "regions (atom cores). The GGA ingredients cannot distinguish these:"
+          - img [ref=e4859]
+          - text: is large and
+          - img [ref=e4865]
+          - text: is non-zero in both. The meta-GGA can.
+        - listitem [ref=e4872]:
+          - img [ref=e4874]
+          - text: behaves differently in covalent, metallic, and weak-interaction regions. The GGA ingredients see only the
+          - emphasis [ref=e4879]: shape
+          - text: of the density, not the orbital character of the region.
+      - paragraph [ref=e4880]:
+        - text: The new menu item is conventionally written as an enhancement factor
+        - img [ref=e4882]
+        - text: ", so the meta-GGA exchange–correlation energy has the form"
+      - img [ref=e4908]:
+        - generic [ref=e4912]:
+          - img [ref=e4913]
+          - img [ref=e5005]
+      - paragraph [ref=e5013]:
+        - text: A common reparametrisation uses the
+        - strong [ref=e5014]: dimensionless orbital indicator
+      - img [ref=e5016]:
+        - generic [ref=e5020]:
+          - img [ref=e5021]
+          - img [ref=e5177]
+      - paragraph [ref=e5186]:
+        - text: In a
+        - emphasis [ref=e5187]: single-orbital
+        - text: region,
+        - img [ref=e5189]
+        - text: and
+        - img [ref=e5203]
+        - text: . In a
+        - emphasis [ref=e5212]: multi-orbital
+        - text: (e.g. atomic core) region,
+        - img [ref=e5214]
+        - text: and
+        - img [ref=e5229]
+        - text: . The meta-GGA can therefore detect the
+        - emphasis [ref=e5238]: number of orbitals
+        - text: contributing at each point — a piece of physics the GGA cannot see.
+      - paragraph [ref=e5239]:
+        - strong [ref=e5240]: SCAN.
+        - text: The
+        - strong [ref=e5241]: Strongly Constrained and Appropriately Normed
+        - text: (SUN, Ruzsinszky, Perdew 2015) functional is the most successful meta-GGA of the last decade. It satisfies 17 known exact constraints of the XC functional, and its parameters are
+        - emphasis [ref=e5242]: not
+        - text: "fit to any training set. The 17 constraints include the LDA limit, the GEA limit, the uniform scaling of the correlation energy, the iso-orbital indicator limits, and several more technical conditions on the second functional derivative. The “SUN” acronym refers to the way the parameters are chosen: each parameter is fixed by a single constraint, with no empirical fitting. SCAN is the"
+        - emphasis [ref=e5243]: first
+        - text: functional to satisfy all 17 constraints simultaneously; its predecessor, the TPSS meta-GGA (
+        - link "Tao, Perdew, Staroverov, Scuseria 2003" [ref=e5244] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/#tpss-2003
+        - text: "), satisfied 12. The accuracy gain of SCAN over PBE on the G2 atomisation set is roughly a factor of 3: PBE has a mean absolute error (MAE) of"
+        - img [ref=e5246]
+        - text: kcal/mol; SCAN drops this to
+        - img [ref=e5255]
+        - text: kcal/mol. The gain on lattice constants and bulk moduli of solids is smaller (
+        - img [ref=e5263]
+        - text: Å in
+        - img [ref=e5274]
+        - text: and
+        - img [ref=e5283]
+        - text: GPa in
+        - img [ref=e5291]
+        - text: ) but consistent. The cost is the same as PBE (one extra evaluation of
+        - img [ref=e5300]
+        - text: per grid point).
+      - paragraph [ref=e5305]:
+        - strong [ref=e5306]: TPSS.
+        - text: The Tao–Perdew–Staroverov–Scuseria (TPSS) functional preceded SCAN by 12 years and is still widely used in solid-state codes that have not yet migrated to SCAN. TPSS is also non-empirical and constraint-satisfying (12 constraints), with an enhancement factor of the form
+      - img [ref=e5308]:
+        - generic [ref=e5312]:
+          - img [ref=e5313]
+          - img [ref=e5385]
+      - paragraph [ref=e5394]:
+        - text: where
+        - img [ref=e5396]
+        - text: is a constant chosen by a constraint. The PBE part is
+        - emphasis [ref=e5401]:
+          - text: modulate
+          - code [ref=e5402]: d*' by the orbital indicator $\alpha$. The TPSS atomisation MAE on G2 is $\sim 12$ kcal/mol — better than PBE, worse than SCAN. r²SCAN (Bartók and Yates 2019) is a *regularise
+          - text: d
+        - text: ’ version of SCAN that is numerically more stable in the asymptotic density regime.
+      - heading "5.2.6 The hybrid functionals — admixing exact exchange" [level=3] [ref=e5403]
+      - paragraph [ref=e5404]:
+        - text: The fourth rung of Jacob’s ladder is the
+        - strong [ref=e5405]: hybrid
+        - text: "functional: a"
+        - emphasis [ref=e5406]: linear combination
+        - text: of a GGA (or meta-GGA) exchange and a fraction of
+        - emphasis [ref=e5407]: exact
+        - text: non-local Hartree–Fock exchange,
+      - img [ref=e5409]:
+        - generic [ref=e5413]:
+          - img [ref=e5414]
+          - img [ref=e5480]
+      - paragraph [ref=e5489]:
+        - text: where
+        - img [ref=e5491]
+        - text: is the
+        - strong [ref=e5508]: mixing parameter
+        - text: . The
+        - emphasis [ref=e5509]: correlation
+        - text: part stays GGA — exact correlation is prohibitively expensive in the post-HF sense (full CI, CCSD(T)), and there is no analogue of “exact exchange” for correlation that is cheap to evaluate. The cost of a hybrid functional is
+        - img [ref=e5511]
+        - text: per SCF iteration, dominated by the four-centre exchange integrals of the HF part.
+      - paragraph [ref=e5526]:
+        - text: The mixing parameter
+        - img [ref=e5528]
+        - text: is the central design choice. The historical value is
+        - img [ref=e5534]
+        - text: (the Becke 3-parameter fit of B3LYP); the theoretically motivated value is
+        - img [ref=e5547]
+        - text: (from the adiabatic-connection argument below). The empirical
+        - emphasis [ref=e5559]: optimum
+        - text: "depends on the system class:"
+        - img [ref=e5561]
+        - text: is good for main-group thermochemistry,
+        - img [ref=e5574]
+        - text: is good for solids, and larger values (
+        - img [ref=e5587]
+        - text: –
+        - img [ref=e5600]
+        - text: ) are used for transition-metal chemistry where the self-interaction error of GGA is severe.
+      - paragraph [ref=e5608]:
+        - strong [ref=e5609]: The adiabatic-connection fluctuation-dissipation theorem (ACFDT).
+        - text: The “derivation” of the mixing fraction
+        - img [ref=e5611]
+        - text: in PBE0 (and the
+        - emphasis [ref=e5625]: de facto
+        - text: explanation of why
+        - img [ref=e5627]
+        - text: should be “around 0.25” for any hybrid) is the
+        - emphasis [ref=e5632]:
+          - text: "*adiabatic-connection formul"
+          - code [ref=e5633]: a*
+        - text: . The construction is as follows.
+      - paragraph [ref=e5634]:
+        - text: Imagine a family of
+        - img [ref=e5636]
+        - text: "-electron systems parameterised by a"
+        - strong [ref=e5641]: coupling constant
+        - img [ref=e5643]
+        - text: that smoothly interpolates between the non-interacting KS system (
+        - img [ref=e5649]
+        - text: ) and the physical interacting system (
+        - img [ref=e5659]
+        - text: ). The Hamiltonian along the path is
+      - img [ref=e5669]:
+        - generic [ref=e5673]:
+          - img [ref=e5674]
+          - img [ref=e5728]
+      - paragraph [ref=e5737]:
+        - text: where
+        - img [ref=e5739]
+        - text: is adjusted at each
+        - img [ref=e5756]
+        - text: to keep the
+        - emphasis [ref=e5761]: "density fixe`d"
+        - text: ’ at the physical density
+        - img [ref=e5763]
+        - text: . The
+        - strong [ref=e5768]: adiabatic-connection
+        - text: formula for
+        - img [ref=e5770]
+        - text: is then an
+        - emphasis [ref=e5779]: integral
+        - text: over
+        - img [ref=e5781]
+        - text: ":"
+      - img [ref=e5787]:
+        - generic [ref=e5791]:
+          - img [ref=e5792]
+          - img [ref=e5865]
+      - paragraph [ref=e5874]:
+        - text: The integrand is the
+        - emphasis [ref=e5875]: expectation value of the electron–electron Coulomb repulsion
+        - text: in the
+        - img [ref=e5877]
+        - text: "-interacting wavefunction"
+        - img [ref=e5883]
+        - text: that gives the physical density
+        - img [ref=e5892]
+        - text: ", minus the classical Hartree term. The decoupling of the"
+        - img [ref=e5898]
+        - text: and
+        - img [ref=e5908]
+        - text: limits gives the famous
+        - strong [ref=e5917]: Görling–Levy perturbation theory
+        - text: result
+      - img [ref=e5919]:
+        - generic [ref=e5923]:
+          - img [ref=e5924]
+          - img [ref=e6001]
+      - paragraph [ref=e6009]:
+        - text: At
+        - emphasis [ref=e6010]: second order
+        - text: in the coupling, the integrand of
+        - img [ref=e6012]:
+          - link [ref=e6015] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-acfdt-exc"
+        - text: is
+        - emphasis [ref=e6023]: linear
+        - text: in
+        - img [ref=e6025]
+        - text: ", and the integral reduces to a"
+        - emphasis [ref=e6030]: midpoint
+        - text: "rule:"
+        - img [ref=e6032]
+        - text: . The
+        - img [ref=e6092]
+        - text: wavefunction is
+        - emphasis [ref=e6106]: half-interacting
+        - text: ", and its exchange energy is the"
+        - emphasis [ref=e6107]: exact
+        - text: Hartree–Fock exchange evaluated on the KS orbitals. The GGA part of the integrand accounts for the
+        - emphasis [ref=e6108]: correlation
+        - text: "contribution. The recipe is therefore:"
+      - img [ref=e6110]:
+        - generic [ref=e6114]:
+          - img [ref=e6115]
+          - img [ref=e6179]
+      - paragraph [ref=e6188]:
+        - text: The factor
+        - img [ref=e6190]
+        - text: comes from the
+        - emphasis [ref=e6200]: midpoint
+        - text: of the linear
+        - img [ref=e6202]
+        - text: "-integral: a"
+        - img [ref=e6208]
+        - text: –
+        - img [ref=e6219]
+        - emphasis [ref=e6229]: average
+        - text: of the
+        - img [ref=e6231]
+        - text: (GGA) and
+        - img [ref=e6241]
+        - text: (exact-exchange) limits. PBE0 is parameter-free and uses
+        - emphasis [ref=e6250]: no empirical fit
+        - text: . The 1/4 is not a fitted number; it is the second-order GL2 prediction.
+      - blockquote [ref=e6251]:
+        - paragraph [ref=e6252]:
+          - strong [ref=e6253]: Warning.
+          - text: The 1/4 is a
+          - emphasis [ref=e6254]:
+            - text: lower boun
+            - code [ref=e6255]: d*' on the optimum mixing. Empirically, PBE0 (1/4) tends to over-correct the LDA/GGA binding of small molecules; B3LYP (20% exact exchange) was designed with 3 fitted parameters to be slightly less "exact-exchange-y" than PBE0 for thermochemistry. The reader should think of the ACFDT derivation as a *reason* the mixing is "around 0.25", not as a proof that it is *exactly* 0.25. **B3LYP.** The **Becke 3-parameter Lee–Yang–Parr** functional (B3LYP) is the canonical example of a *fitte
+            - text: d
+          - text: ’ hybrid. The functional form is
+      - img [ref=e6257]:
+        - generic [ref=e6261]:
+          - img [ref=e6262]
+          - img [ref=e6375]
+      - paragraph [ref=e6384]:
+        - text: where
+        - img [ref=e6386]
+        - text: is the B88
+        - emphasis [ref=e6422]: enhancement
+        - text: of the LDA exchange. The three parameters
+        - img [ref=e6424]
+        - text: were fit to a
+        - emphasis [ref=e6475]: training set
+        - text: of atomisation energies, ionisation potentials, electron affinities, and proton affinities of small molecules (the so-called G1 set, the precursor of G2). The most-commonly-quoted B3LYP parameters are sometimes given as
+        - img [ref=e6477]
+        - text: ", sometimes as"
+        - img [ref=e6504]
+        - text: depending on the convention for which LDA correlation is used; the user should always check the form implemented in the code.
+      - paragraph [ref=e6530]:
+        - text: "The cost of B3LYP is the cost of any global hybrid:"
+        - img [ref=e6532]
+        - text: per SCF iteration, dominated by the four-centre exchange integrals. The accuracy gain over PBE on main-group thermochemistry is roughly a factor of 4 — B3LYP atomisation MAE on G2 is
+        - img [ref=e6548]
+        - text: kcal/mol vs PBE’s
+        - img [ref=e6556]
+        - text: kcal/mol — but the gain on transition-metal chemistry, band gaps, and non-covalent interactions is small or negative.
+        - strong [ref=e6564]: B3LYP is the historical default of organic chemistry, not a universal default
+        - text: .
+      - paragraph [ref=e6565]:
+        - strong [ref=e6566]: PBE0.
+        - text: The
+        - strong [ref=e6567]: PBE0
+        - text: functional (also called PBE1PBE) is the
+        - emphasis [ref=e6568]: non-empirical
+        - text: "cousin of B3LYP: the mixing parameter is fixed at"
+        - img [ref=e6570]
+        - text: by the ACFDT argument above, and the remaining ingredients are PBE exchange and PBE correlation. The PBE0 atomisation MAE on G2 is
+        - img [ref=e6585]
+        - text: kcal/mol — worse than B3LYP (
+        - img [ref=e6593]
+        - text: ) on the small-molecule set where B3LYP was fit, but
+        - emphasis [ref=e6600]: better
+        - text: than B3LYP on lattice constants, bulk moduli, and band structures of solids. PBE0 is the
+        - emphasis [ref=e6601]: de facto
+        - text: "default hybrid of solid-state physics for the same reason PBE is the default GGA: it is non-empirical, constraint-satisfying, and accurate across a wide range of systems."
+      - blockquote [ref=e6602]:
+        - paragraph [ref=e6603]:
+          - strong [ref=e6604]: Note.
+          - text: The 1/4 of PBE0 and the 0.20 of B3LYP are
+          - emphasis [ref=e6605]: not
+          - text: the same number. The PBE0 1/4 is the second-order GL2 prediction; the B3LYP 0.20 is a fit to atomisation energies. The two functionals use the
+          - emphasis [ref=e6606]: same
+          - text: PBE exchange and different correlation (PBE correlation for PBE0, LYP for B3LYP), so the comparison is not apples-to-apples. A more controlled comparison is PBE0 vs
+          - strong [ref=e6607]: PBE0 with LYP correlation
+          - text: (“PBE0-LYP” in some codes); on G2, PBE0-LYP is
+          - emphasis [ref=e6608]: better
+          - text: than PBE0 by about 1 kcal/mol MAE, but
+          - emphasis [ref=e6609]: worse
+          - text: than B3LYP by about 1 kcal/mol MAE. The fitted mixing fraction is a
+          - emphasis [ref=e6610]: real
+          - text: effect, not just noise.
+      - heading "5.2.7 Range-separated hybrids" [level=3] [ref=e6611]
+      - paragraph [ref=e6612]:
+        - text: The fifth rung is the realisation that exact exchange is
+        - strong [ref=e6613]: range-dependent
+        - text: . The exchange energy of a uniform gas is
+        - emphasis [ref=e6614]: local
+        - text: in
+        - img [ref=e6616]
+        - text: (the Dirac form) and the exchange energy of a real molecule has a
+        - emphasis [ref=e6621]: non-local
+        - text: part (the HF exchange integral) that decays as
+        - img [ref=e6623]
+        - text: in the
+        - emphasis [ref=e6638]: long range
+        - text: . A GGA treats the
+        - emphasis [ref=e6639]: short
+        - text: range of the exchange well (because the LDA form
+        - emphasis [ref=e6640]: locally
+        - text: captures the Pauli hole) and the long range poorly (because the LDA is a local approximation and the long-range exchange is fundamentally non-local). A
+        - emphasis [ref=e6641]:
+          - text: "*range-separated hybri"
+          - code [ref=e6642]: d*
+        - text: exploits this by splitting the Coulomb operator into a
+        - emphasis [ref=e6643]: short-range
+        - text: and a long-range part,
+      - img [ref=e6645]:
+        - generic [ref=e6649]:
+          - img [ref=e6650]:
+            - generic [ref=e6653]:
+              - generic [ref=e6698]:
+                - img [ref=e6704]
+                - img [ref=e6706]
+              - generic [ref=e6752]:
+                - img [ref=e6758]
+                - img [ref=e6760]
+          - img [ref=e6775]
+      - paragraph [ref=e6784]:
+        - text: The split is parameterised by the
+        - strong [ref=e6785]: range-separation parameter
+        - img [ref=e6787]
+        - text: (in
+        - img [ref=e6793]
+        - text: ). For
+        - img [ref=e6807]
+        - text: the erfc becomes 1 for any
+        - img [ref=e6817]
+        - text: "and the erf becomes 0, so the split reduces to “all short range, no long range”: a hybrid with"
+        - emphasis [ref=e6831]: full
+        - text: exact exchange, with no DFT in the long range. For
+        - img [ref=e6833]
+        - text: "the split reduces to “all long range, no short range”: a GGA-like treatment of the long range, no exact exchange at all. The intermediate regime —"
+        - img [ref=e6843]
+        - text: –
+        - img [ref=e6855]
+        - text: — is where the useful range-separated hybrids live.
+      - paragraph [ref=e6862]: The functional form is
+      - img [ref=e6864]:
+        - generic [ref=e6868]:
+          - img [ref=e6869]
+          - img [ref=e6922]
+      - paragraph [ref=e6931]:
+        - text: where the
+        - emphasis [ref=e6932]: short-range
+        - text: exchange is treated by the DFT ingredient (e.g. PBE exchange) and the
+        - emphasis [ref=e6933]: long-range
+        - text: exchange is treated by
+        - emphasis [ref=e6934]: exact
+        - text: HF exchange. The correlation part is the
+        - emphasis [ref=e6935]: short-range
+        - text: DFT correlation; the long-range correlation is
+        - emphasis [ref=e6936]: "absorbe`d"
+        - text: ’ into the long-range HF exchange (the HF exchange integral already contains a non-local exchange-correlation contribution by virtue of the Pauli principle).
+      - blockquote [ref=e6937]:
+        - paragraph [ref=e6938]:
+          - strong [ref=e6939]: Tip.
+          - text: The range-separation parameter
+          - img [ref=e6941]
+          - text: controls the trade-off between the
+          - emphasis [ref=e6946]: short-range DFT
+          - text: and the long-range HF* parts. Small
+          - img [ref=e6948]
+          - text: (e.g. HSE06’s
+          - img [ref=e6954]
+          - text: ") means most of the Coulomb is treated at the DFT level and only the asymptotic tail is HF: this is the regime of"
+          - emphasis [ref=e6966]: screened exchange
+          - text: ", used in solid-state physics. Large"
+          - img [ref=e6968]
+          - text: (e.g.
+          - img [ref=e6974]
+          - text: B97X’s
+          - img [ref=e6980]
+          - text: –
+          - img [ref=e6993]
+          - text: ") means more of the Coulomb is treated at the HF level: this is the regime of"
+          - emphasis [ref=e7001]: "long-range correcte`d"
+          - text: ’ hybrids, used for charge-transfer excitations and Rydberg states in quantum chemistry.
+      - paragraph [ref=e7002]:
+        - strong [ref=e7003]: CAM-B3LYP.
+        - text: The
+        - strong [ref=e7004]: Coulomb-Attenuating Method
+        - text: (CAM) of Yanai, Tew, and Handy (2004) is the canonical example of a range-separated hybrid. The functional form is
+      - img [ref=e7006]:
+        - generic [ref=e7010]:
+          - img [ref=e7011]
+          - img [ref=e7113]
+      - paragraph [ref=e7122]:
+        - text: with
+        - img [ref=e7124]
+        - text: ","
+        - img [ref=e7137]
+        - text: ", and"
+        - img [ref=e7150]
+        - text: . The
+        - emphasis [ref=e7172]: total
+        - text: HF exchange is
+        - img [ref=e7174]
+        - text: (65% of the exchange is exact at long range, 19% at short range). CAM-B3LYP is the
+        - emphasis [ref=e7190]: de facto
+        - text: default for TDDFT calculations of charge- transfer excitations and Rydberg states in organic molecules.
+      - paragraph [ref=e7191]:
+        - strong [ref=e7192]:
+          - text: LC-
+          - img [ref=e7194]
+          - text: PBE.
+        - text: The
+        - strong [ref=e7199]: long-range corrected
+        - text: PBE (LC-
+        - img [ref=e7201]
+        - text: PBE) is the range-separated variant of PBE. It uses 0% DFT exchange at long range (full HF) and 100% PBE exchange at short range,
+        - img [ref=e7207]
+        - text: . The functional is parameter-free in the sense that
+        - img [ref=e7230]
+        - text: is
+        - emphasis [ref=e7235]: not
+        - text: fit to a training set — it is the standard PBE choice — but the
+        - emphasis [ref=e7236]: form
+        - text: (0/100 split) is a design choice, not a derivation. LC-
+        - img [ref=e7238]
+        - text: PBE is widely used for organic electronics and for benchmarking charge-transfer excitations in TDDFT.
+      - paragraph [ref=e7243]:
+        - strong [ref=e7244]:
+          - img [ref=e7246]
+          - text: B97X.
+        - text: The
+        - strong [ref=e7251]:
+          - img [ref=e7253]
+          - text: B97X
+        - text: family (Chai and Head-Gordon 2008) is a
+        - emphasis [ref=e7258]: fully
+        - text: range-separated hybrid with the range-separation parameter
+        - img [ref=e7260]
+        - emphasis [ref=e7265]: "itsel`f"
+        - text: ’ optimised against a training set. The simplest member,
+        - img [ref=e7267]
+        - text: B97X, uses
+        - img [ref=e7273]
+        - text: ", 100% long-range HF exchange, and a fitted short-range exchange. The variant"
+        - img [ref=e7296]
+        - text: B97X-D adds the
+        - strong [ref=e7301]: D3 dispersion correction
+        - text: (section 5.2.9).
+        - img [ref=e7303]
+        - text: B97X-V is the
+        - emphasis [ref=e7308]: nonlocal
+        - text: dispersion version. The
+        - img [ref=e7310]
+        - text: B97 family is one of the most accurate
+        - emphasis [ref=e7315]: general-purpose
+        - text: hybrid families in the modern literature; the most-recommended member for main- group thermochemistry is
+        - img [ref=e7317]
+        - text: B97X-D (or its revamped successor,
+        - img [ref=e7323]
+        - text: B97M(2), a double-hybrid range-separated functional).
+      - paragraph [ref=e7328]:
+        - strong [ref=e7329]: HSE06.
+        - text: The
+        - strong [ref=e7330]: Heyd–Scuseria–Ernzerhof
+        - text: screened hybrid is the
+        - emphasis [ref=e7331]: "screene`d"
+        - text: "’ limit of the range-separated family:"
+        - img [ref=e7333]
+        - text: and 25% short-range HF exchange, with the long-range exchange treated
+        - emphasis [ref=e7345]: purely
+        - text: at the PBE level. The form is “PBE0 with the long-range exact exchange zeroed out”. HSE06 is the
+        - emphasis [ref=e7346]: de facto
+        - text: "default hybrid of solid-state physics: it gives band gaps of semiconductors in much better agreement with experiment than PBE0, while keeping the cost of the hybrid manageable (the long-range HF exchange is the"
+        - emphasis [ref=e7347]: expensive
+        - text: part, and HSE06 has none of it).
+      - heading "5.2.8 Double hybrids" [level=3] [ref=e7348]
+      - paragraph [ref=e7349]:
+        - text: A
+        - strong [ref=e7350]: double hybri’d
+        - text: is the sixt’h
+        - emphasis [ref=e7351]: "’ rung: a hybrid functional with *both"
+        - text: ’ a fraction of exact exchange and* a fraction of
+        - strong [ref=e7352]: MP2-like correlation
+        - text: computed from the KS orbitals,
+      - img [ref=e7354]:
+        - generic [ref=e7358]:
+          - img [ref=e7359]
+          - img [ref=e7448]
+      - paragraph [ref=e7457]:
+        - text: The MP2-like correlation is the
+        - strong [ref=e7458]: second-order Møller–Plesset
+        - text: correlation energy evaluated on the KS orbitals (sometimes called “MP2 in the KS basis”). The cost of a double hybrid is
+        - img [ref=e7460]
+        - text: per SCF iteration, dominated by the four-centre MP2 correlation integrals.
+      - paragraph [ref=e7475]:
+        - text: The mixing parameters are typically
+        - img [ref=e7477]
+        - text: –
+        - img [ref=e7489]
+        - text: (more HF exchange than a single hybrid) and
+        - img [ref=e7497]
+        - text: –
+        - img [ref=e7509]
+        - text: (some of the correlation is taken from MP2, the rest from DFT). The atomisation MAE on G2 for the best double hybrids is
+        - img [ref=e7517]
+        - text: –
+        - img [ref=e7525]
+        - text: kcal/mol — close to the
+        - emphasis [ref=e7530]: chemical-accuracy
+        - text: threshold of 1 kcal/mol.
+      - paragraph [ref=e7531]:
+        - strong [ref=e7532]: B2-PLYP.
+        - text: The
+        - strong [ref=e7533]: Grimme 2006
+        - text: double hybrid is the canonical example. The functional form is
+      - img [ref=e7535]:
+        - generic [ref=e7539]:
+          - img [ref=e7540]
+          - img [ref=e7623]
+      - paragraph [ref=e7632]:
+        - text: The mixing parameters
+        - img [ref=e7634]
+        - text: were fit to a thermochemical training set. B2-PLYP is widely used in computational organic chemistry for
+        - emphasis [ref=e7653]: barrier heights
+        - text: ", where single hybrids (B3LYP, PBE0) systematically under-estimate. The cost is roughly"
+        - img [ref=e7655]
+        - text: — the MP2 part scales as
+        - img [ref=e7671]
+        - text: with a small prefactor — and is therefore
+        - img [ref=e7680]
+        - text: –
+        - img [ref=e7689]
+        - text: times more expensive than a single hybrid.
+      - paragraph [ref=e7695]:
+        - strong [ref=e7696]: DSD-PBEP86.
+        - text: The
+        - strong [ref=e7697]: Doubles-Semicanonical
+        - text: DSD-PBEP86 double hybrid (Martin and co-workers 2014) is a
+        - emphasis [ref=e7698]: "spin-component- scale`d"
+        - text: ’ (SCS) variant. The MP2-like correlation is split into
+        - emphasis [ref=e7699]: same-spin
+        - text: and opposite-spin contributions, and the two contributions are scaled
+        - emphasis [ref=e7700]: separately
+        - text: . The form is
+      - img [ref=e7702]:
+        - generic [ref=e7706]:
+          - img [ref=e7707]
+          - img [ref=e7769]
+      - paragraph [ref=e7778]:
+        - text: with
+        - img [ref=e7780]
+        - text: and
+        - img [ref=e7796]
+        - text: (the opposite-spin contribution is
+        - emphasis [ref=e7811]: more
+        - text: important than the same-spin contribution for thermochemistry). The DSD-PBEP86 atomisation MAE on a larger training set is
+        - img [ref=e7813]
+        - text: kcal/mol —
+        - emphasis [ref=e7822]: better
+        - text: than B2-PLYP and close to the
+        - emphasis [ref=e7823]: "gold standar`d"
+        - text: ’ CCSD(T).
+      - blockquote [ref=e7824]:
+        - paragraph [ref=e7825]:
+          - strong [ref=e7826]: Warning.
+          - text: Double hybrids are
+          - emphasis [ref=e7827]: expensive
+          - text: . The MP2-like correlation in a Gaussian basis scales as
+          - img [ref=e7829]
+          - text: with basis size, and the cost per SCF iteration is roughly 10–20 times that of a single hybrid. They are
+          - emphasis [ref=e7844]: not
+          - text: practical for periodic solids with plane waves (where the MP2 correlation is not well-defined) and are mostly used in
+          - emphasis [ref=e7845]: small-molecule
+          - text: computational chemistry. The reader should think of double hybrids as “the most expensive rung of Jacob’s ladder” and use them sparingly.
+      - heading "5.2.9 Dispersion corrections" [level=3] [ref=e7846]
+      - paragraph [ref=e7847]:
+        - text: The final rung of the ladder, in the version of Perdew and Schmidt that has been most influential, is
+        - strong [ref=e7848]: dispersion
+        - text: . The van-der-Waals (vdW) interaction — the
+        - emphasis [ref=e7849]: attractive
+        - img [ref=e7851]
+        - text: tail between two non-overlapping density fragments — is
+        - emphasis [ref=e7864]: absent
+        - text: from every LDA, GGA, meta-GGA, and most hybrids. The DFT integrand is a
+        - emphasis [ref=e7865]: local
+        - text: (or semi-local) function of the density; the vdW tail is a
+        - emphasis [ref=e7866]: non-local
+        - text: functional of the density at two points
+        - img [ref=e7868]
+        - text: and
+        - img [ref=e7878]
+        - text: that are
+        - emphasis [ref=e7887]: not
+        - text: close. The standard fix is to
+        - emphasis [ref=e7888]: add
+        - text: "’ a dispersion correction a posteriori:"
+      - img [ref=e7890]:
+        - generic [ref=e7894]:
+          - img [ref=e7895]
+          - img [ref=e7929]
+      - paragraph [ref=e7938]:
+        - text: where
+        - img [ref=e7940]
+        - text: is a correction term that is
+        - emphasis [ref=e7951]: pairwise
+        - text: (additive over pairs of atoms) or
+        - emphasis [ref=e7952]: many-body
+        - text: (involves triple and higher dipole interactions).
+      - paragraph [ref=e7953]:
+        - strong [ref=e7954]: DFT-D3.
+        - text: The
+        - strong [ref=e7955]: Grimme D3
+        - text: correction (Grimme et al. 2010) is the most-used dispersion patch. The form is
+      - img [ref=e7957]:
+        - generic [ref=e7961]:
+          - img [ref=e7962]
+          - img [ref=e8049]
+      - paragraph [ref=e8058]:
+        - text: where the
+        - img [ref=e8060]
+        - text: are
+        - emphasis [ref=e8073]: pairwise
+        - text: dispersion coefficients tabulated for every pair of atom types, and
+        - img [ref=e8075]
+        - text: is a
+        - emphasis [ref=e8086]: damping function
+        - text: that smoothly switches off the dispersion at short range (where DFT already accounts for the interaction) and
+        - emphasis [ref=e8087]: does not
+        - text: diverge at long range. The
+        - img [ref=e8089]
+        - text: and
+        - img [ref=e8098]
+        - text: coefficients depend on the atom type and on the
+        - emphasis [ref=e8106]: hybridisation state
+        - text: (the local environment of the atom, computed from the DFT density). The damping function has
+        - emphasis [ref=e8107]: one
+        - text: "or two fitted parameters per functional: the D3 correction is parameterised"
+        - emphasis [ref=e8108]: slightly differently
+        - text: for B3LYP, PBE, BLYP, etc.
+      - paragraph [ref=e8109]:
+        - text: The accuracy of D3-corrected functionals on the S22 non-covalent-interaction benchmark is typically
+        - img [ref=e8111]
+        - text: –
+        - img [ref=e8121]
+        - text: "kcal/mol MAE — better than the corresponding uncorrected hybrid by a factor of 5. The cost is negligible: the D3 correction is a sum over pairs of atoms and adds"
+        - img [ref=e8129]
+        - text: to the energy evaluation.
+      - paragraph [ref=e8144]:
+        - strong [ref=e8145]: DFT-D4.
+        - text: The
+        - strong [ref=e8146]: D4
+        - text: correction (Caldeweyher et al. 2019) is the
+        - emphasis [ref=e8147]: next-generation
+        - text: D correction. It uses machine-learned* dispersion coefficients and
+        - emphasis [ref=e8148]: "dynami`c"
+        - text: ’ polarisabilities that account for the
+        - emphasis [ref=e8149]: chemical environment
+        - text: of each atom in a more sophisticated way than D3. D4 is more accurate than D3 on transition-metal complexes (where the polarisability of a metal atom depends strongly on its oxidation state) and on non-covalent benchmarks more generally. The cost is the same as D3.
+        - strong [ref=e8150]: Many-body dispersion (MBD).
+        - text: The
+        - strong [ref=e8151]: MBD
+        - text: method (Tkatchenko, DiStasio, Car, Scheffler 2012) goes beyond the
+        - emphasis [ref=e8152]: pairwise
+        - text: approximation by including
+        - emphasis [ref=e8153]: three-body
+        - text: and higher Axilrod– Teller–Muto contributions. The form is
+      - img [ref=e8155]:
+        - generic [ref=e8159]:
+          - img [ref=e8160]
+          - img [ref=e8247]
+      - paragraph [ref=e8256]:
+        - text: where the pairwise part uses the
+        - strong [ref=e8257]: Tkatchenko–Scheffler
+        - emphasis [ref=e8258]: self-consistent
+        - text: screening of the atomic polarisabilities, and the many-body part is a coupled-dipole calculation in the random-phase approximation. MBD is more accurate than D3 on
+        - emphasis [ref=e8259]: layered materials
+        - text: "(graphene, hexagonal boron nitride, MoS₂) and on large molecules, but it is also more expensive: the many-body part scales as"
+        - img [ref=e8261]
+        - text: with the number of atoms. MBD is the
+        - emphasis [ref=e8276]: de facto
+        - text: standard for high-accuracy non-covalent-interaction calculations on solids and large molecules.
+      - paragraph [ref=e8277]:
+        - strong [ref=e8278]: Nonlocal functionals (vdW-DF).
+        - text: The
+        - strong [ref=e8279]: vdW-DF
+        - text: family (Dion et al. 2004; Thonhauser et al. 2007) is a
+        - emphasis [ref=e8280]: non-local
+        - text: correlation functional that is
+        - emphasis [ref=e8281]: integrated into
+        - text: the XC functional rather than added
+        - emphasis [ref=e8282]: a posteriori
+        - text: . The form is
+      - img [ref=e8284]:
+        - generic [ref=e8288]:
+          - img [ref=e8289]
+          - img [ref=e8379]
+      - paragraph [ref=e8387]:
+        - text: where
+        - img [ref=e8389]
+        - text: is a
+        - emphasis [ref=e8412]: kernel
+        - text: that couples the densities at two points. The kernel is constructed to give the correct
+        - img [ref=e8414]
+        - text: asymptotic behaviour at large
+        - img [ref=e8431]
+        - text: and to vanish for a uniform density. The vdW-DF
+        - emphasis [ref=e8441]: rev
+        - text: version (Hamada 2014) is the most-used modern variant. The cost is roughly 2–3 times that of a GGA — the double integral is evaluated by FFT-based methods in plane-wave codes.
+      - blockquote [ref=e8442]:
+        - paragraph [ref=e8443]:
+          - strong [ref=e8444]: Tip.
+          - text: “Dispersion-dominated” systems (layered materials, molecular crystals, host–guest complexes, biological macro- molecules) need
+          - emphasis [ref=e8445]: some
+          - text: dispersion correction or they will collapse or fail to bind. The cheapest
+          - emphasis [ref=e8446]:
+            - text: an
+            - code [ref=e8447]: d*' most accurate choice for a hybrid functional on a small molecule is B3LYP-D3 or $\omega$B97X-D. The cheapest *an
+            - text: d
+          - text: ’ most accurate choice for a layered material is SCAN + rVV10 (a nonlocal-correlation variant) or PBE + MBD. The choice depends on the system class; the
+          - emphasis [ref=e8448]: omission
+          - text: of dispersion is always a mistake.
+      - heading "5.2.10 Jacob’s ladder, in summary" [level=3] [ref=e8449]
+      - paragraph [ref=e8450]:
+        - text: The metaphor of
+        - strong [ref=e8451]: Jacob’s ladder
+        - text: (Perdew and Schmidt 2001) is worth dwelling on for a moment because it has structured an
+        - emphasis [ref=e8452]: entire generation
+        - text: "of functional development. The image is biblical: a ladder reaching from earth to heaven, with the exact"
+        - img [ref=e8454]
+        - text: in heaven, the local-density approximation on the ground, and the higher rungs as steps in between. Each rung adds
+        - emphasis [ref=e8463]: one
+        - text: "new piece of physical information about the density: LDA sees"
+        - img [ref=e8465]
+        - text: ; GGA sees
+        - img [ref=e8471]
+        - text: ; meta-GGA sees
+        - img [ref=e8479]
+        - text: ; hybrid sees the
+        - emphasis [ref=e8484]: non-local
+        - text: exchange of the KS orbitals; range-separated hybrid sees the
+        - emphasis [ref=e8485]: r-dependence
+        - text: of the exchange; double hybrid sees the
+        - emphasis [ref=e8486]: virtual
+        - text: KS orbitals through MP2; dispersion sees the
+        - emphasis [ref=e8487]: tail
+        - text: of the density.
+      - table [ref=e8488]:
+        - rowgroup [ref=e8489]:
+          - row "Rung Functional class New ingredient Cost" [ref=e8490]:
+            - columnheader "Rung" [ref=e8491]
+            - columnheader "Functional class" [ref=e8492]
+            - columnheader "New ingredient" [ref=e8493]
+            - columnheader "Cost" [ref=e8494]
+        - rowgroup [ref=e8495]:
+          - row "0 Hartree–Fock (no correlation)" [ref=e8496]:
+            - cell "0" [ref=e8497]
+            - cell "Hartree–Fock" [ref=e8498]
+            - cell "(no correlation)" [ref=e8499]
+            - cell [ref=e8500]:
+              - img [ref=e8502]
+          - row "1 LDA only" [ref=e8517]:
+            - cell "1" [ref=e8518]
+            - cell "LDA" [ref=e8519]
+            - cell "only" [ref=e8520]:
+              - img [ref=e8522]
+              - text: only
+            - cell [ref=e8534]:
+              - img [ref=e8536]
+          - row "2 GGA" [ref=e8548]:
+            - cell "2" [ref=e8549]
+            - cell "GGA" [ref=e8550]
+            - cell [ref=e8551]:
+              - img [ref=e8553]
+            - cell [ref=e8562]:
+              - img [ref=e8564]
+          - row "3 meta-GGA" [ref=e8576]:
+            - cell "3" [ref=e8577]
+            - cell "meta-GGA" [ref=e8578]
+            - cell [ref=e8579]:
+              - img [ref=e8581]
+            - cell [ref=e8588]:
+              - img [ref=e8590]
+          - row "4 Global hybrid" [ref=e8602]:
+            - cell "4" [ref=e8603]
+            - cell "Global hybrid" [ref=e8604]
+            - cell [ref=e8605]:
+              - img [ref=e8607]
+            - cell [ref=e8622]:
+              - img [ref=e8624]
+          - row "5 Range-separated hybrid -split" [ref=e8639]:
+            - cell "5" [ref=e8640]
+            - cell "Range-separated hybrid" [ref=e8641]
+            - cell "-split" [ref=e8642]:
+              - img [ref=e8644]
+              - text: "-split"
+            - cell [ref=e8651]:
+              - img [ref=e8653]
+          - row "6 Double hybrid" [ref=e8668]:
+            - cell "6" [ref=e8669]
+            - cell "Double hybrid" [ref=e8670]
+            - cell [ref=e8671]:
+              - img [ref=e8673]
+            - cell [ref=e8689]:
+              - img [ref=e8691]
+          - row "7 Random-phase approximation full exchange + ring-Coulomb correlation –" [ref=e8706]:
+            - cell "7" [ref=e8707]
+            - cell "Random-phase approximation" [ref=e8708]
+            - cell "full exchange + ring-Coulomb correlation" [ref=e8709]
+            - cell "–" [ref=e8710]:
+              - img [ref=e8712]
+              - text: –
+              - img [ref=e8726]
+      - paragraph [ref=e8736]:
+        - text: The ladder has two important properties. First,
+        - strong [ref=e8737]: higher rungs are not always better
+        - text: ": a"
+        - emphasis [ref=e8738]: low
+        - text: rung (LDA) can outperform a
+        - emphasis [ref=e8739]: "hig`h"
+        - text: ’ rung (a poorly-tuned hybrid) for a particular system. The ladder is a
+        - emphasis [ref=e8740]: cost–complexity
+        - text: ordering, not a monotonic- accuracy ordering. Second,
+        - strong [ref=e8741]: chemical accuracy
+        - text: (errors
+        - img [ref=e8743]
+        - text: kcal/mol on atomisation energies,
+        - img [ref=e8751]
+        - text: Å on bond lengths) is
+        - emphasis [ref=e8761]: not
+        - text: "reached by LDA or GGA: the typical LDA error is 30–50 kcal/mol per bond; the typical GGA error is 10–30 kcal/mol. The threshold of 1 kcal/mol is reached"
+        - emphasis [ref=e8762]: only
+        - text: by the top of the ladder (double hybrids, RPA) and
+        - emphasis [ref=e8763]: only
+        - text: for main-group thermochemistry.
+      - blockquote [ref=e8764]:
+        - paragraph [ref=e8765]:
+          - strong [ref=e8766]: Tip.
+          - text: "“Climb the ladder as high as you can afford” is a reasonable first approximation to choosing a functional. Two practical refinements: (i) match the rung to the"
+          - emphasis [ref=e8767]: system class
+          - text: (solids, molecules, surfaces, layered materials all have different sweet spots); (ii) always include a dispersion correction on the fifth rung and above — the top of the ladder is no good for vdW-dominated systems without it.
+      - heading "5.3 The code" [level=2] [ref=e8768]
+      - paragraph [ref=e8769]:
+        - text: The first script of the chapter, in
+        - code [ref=e8770]: dft_notes/python_codes/chapter_05/01-ueg-xc-vs-rs.py
+        - text: ", computes the"
+        - strong [ref=e8771]: Dirac exchange
+        - text: and the
+        - strong [ref=e8772]: Perdew–Zunger correlation
+        - text: of the UEG as a function of
+        - img [ref=e8774]
+        - text: and writes them to a PNG. The script is the runnable counterpart of the formulas in section 5.2.1. We inline the loadable parts here.
+      - code [ref=e8785]: "# dft_notes/python_codes/chapter_05/01-ueg-xc-vs-rs.py # (full file is 248 lines; we inline the importable parts) import os import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt # ─── Reference values ────────────────────────────────────────────── # The Dirac-LDA exchange coefficient. eps_x(r_s) = -Cx / r_s with # Cx = (3 / (4 pi)) * (9 pi / 4)^{1/3} = 0.45816519... DIRAC_X_COEF = 0.458165 # Perdew-Zunger (1981), Table I, unpolarized UEG. # High-density branch: eps_c = B + A * ln(rs) + D * rs + C rs ln(rs) PZ_HIGH_DENSITY = { \"A\": 0.0311, \"B\": -0.0480, \"C\": 0.0020, \"D\": -0.0116, } # Low-density branch: eps_c = A_pz / (1 + B_pz * sqrt(rs) + C_pz * rs) PZ_LOW_DENSITY = { \"A\": -0.1423, \"B\": 1.0529, \"C\": 0.3334, } def dirac_exchange(rs): \"\"\"LDA exchange per particle (Dirac, 1930) in Hartree. eps_x(r_s) = -Cx / r_s \"\"\" return -DIRAC_X_COEF / rs def pz81_correlation_unpolarized(rs): \"\"\"Perdew-Zunger (1981) fit to Ceperley-Alder QMC, unpolarized.\"\"\" rs = np.asarray(rs, dtype=float) ec = np.empty_like(rs) mask_lo = rs < 1.0 rs_lo = rs[mask_lo] c = PZ_HIGH_DENSITY ec[mask_lo] = ( c[\"B\"] + c[\"A\"] * np.log(rs_lo) + c[\"D\"] * rs_lo + c[\"C\"] * rs_lo * np.log(rs_lo) ) rs_hi = rs[~mask_lo] c = PZ_LOW_DENSITY ec[~mask_lo] = c[\"A\"] / (1.0 + c[\"B\"] * np.sqrt(rs_hi) + c[\"C\"] * rs_hi) return ec def main() -> None: rs = np.linspace(0.5, 10.0, 500) ex = dirac_exchange(rs) ec_pz = pz81_correlation_unpolarized(rs) exc = ex + ec_pz print(\"=\" * 60) print(\"UEG exchange-correlation energy per particle\") print(\"Perdew-Zunger (1981) fit to Ceperley-Alder QMC,\") print(\"unpolarized UEG.\") print(\"=\" * 60) print(f\" At r_s = 2.00 bohr (close to Al):\") print(f\" eps_x = {dirac_exchange(np.array([2.0]))[0]:+.6f} E_h\") print(f\" eps_c (PZ81) = {pz81_correlation_unpolarized(np.array([2.0]))[0]:+.6f} E_h\") print(f\" eps_xc = {(dirac_exchange(np.array([2.0])) + pz81_correlation_unpolarized(np.array([2.0])))[0]:+.6f} E_h\")"
+      - paragraph [ref=e8786]:
+        - text: "The script also computes the XC energy of the UEG for a few model densities: at"
+        - img [ref=e8788]
+        - text: (close to the electron density of aluminium) the result is
+        - img [ref=e8801]
+        - text: ","
+        - img [ref=e8825]
+        - text: ", and"
+        - img [ref=e8855]
+        - text: per electron. The exchange is roughly 5 times larger than the correlation, in absolute value, at typical metallic densities. At
+        - img [ref=e8880]
+        - text: (close to the electron density of sodium) the numbers are
+        - img [ref=e8893]
+        - text: ","
+        - img [ref=e8905]
+        - text: ", and"
+        - img [ref=e8918]
+        - text: ", in the same proportion. This is the data on which"
+        - emphasis [ref=e8934]: every
+        - text: modern LDA functional is built.
+      - paragraph [ref=e8935]:
+        - text: The full script produces a plot of
+        - img [ref=e8937]
+        - text: ","
+        - img [ref=e8955]
+        - text: ", and the Wigner interpolation"
+        - img [ref=e8978]
+        - text: ", with the"
+        - img [ref=e9031]
+        - text: values of Al, Na, and Cs marked. The output PNG is in
+        - code [ref=e9039]: dft_notes/python_codes/chapter_05/plots/01-ueg-xc-vs-rs.png
+        - text: .
+      - blockquote [ref=e9040]:
+        - paragraph [ref=e9041]:
+          - strong [ref=e9042]: Tip.
+          - text: The script is *self-containe
+          - code [ref=e9043]: d*
+          - text: ": it depends only on ‘numpy’ and ‘matplotlib’ (with"
+          - code [ref=e9044]: matplotlib.use("Agg")' for headless runs), and it does not call
+          - text: os.chdir
+          - code [ref=e9045]: . Run it from the repo root with
+          - text: python dft_notes/python_codes/chapter_05/01-ueg-xc-vs-rs.py’ and the plot will appear in the
+          - code [ref=e9046]: plots/' subfolder. The companion script
+          - text: "02-pbe-vs-lda-atoms.py’ computes the LDA and PBE exchange–correlation energies of helium and beryllium and produces a comparison bar chart; the companion script `03-jacobs-ladder-cost-accuracy.py’ produces the “Jacob’s ladder cost vs accuracy” scatter plot referenced in section 5.2.10. All three scripts share the convention of “no os.chdir, only numpy / matplotlib”."
+      - heading "5.4 The diagram" [level=2] [ref=e9047]
+      - paragraph [ref=e9048]:
+        - text: The Mermaid diagram below summarises Jacob’s ladder as a vertical stack of rungs, with the new ingredient added at each rung shown on the right. The diagram uses
+        - strong [ref=e9049]: no class directives
+        - text: — the Mermaid 10 parser concatenates the
+        - code [ref=e9050]: class X,Y,Z cls' directive with the preceding line, which breaks rendering. Inline
+        - text: :::classname’ on individual nodes is also avoided for the same reason.
+      - figure [ref=e9052]:
+        - code [ref=e9053]:
+          - document [ref=e9054]:
+            - generic [ref=e9056]:
+              - generic [ref=e9060]:
+                - generic [ref=e9064]: "goal: climb toward"
+                - generic [ref=e9069]: + local correlation(LDA, GGA, etc.)
+                - generic [ref=e9073]: + grad rho
+                - generic [ref=e9077]: + tau
+                - generic [ref=e9081]: + exact exchange
+                - generic [ref=e9085]: + range-separation
+                - generic [ref=e9089]: + MP2-like correlation
+                - generic [ref=e9093]: + ring diagrams (RPA)
+              - generic [ref=e9094]:
+                - generic [ref=e9100]: Rung 0Hartree-Fock(no correlation)E_x = -sum K_ijO(K^4)
+                - generic [ref=e9106]: Rung 1LDAE_xc = integral of rho eps_xc(rho)O(K)
+                - generic [ref=e9112]: Rung 2GGA+ reduced gradient s = |grad rho|/(2 k_F rho)O(K)
+                - generic [ref=e9118]: Rung 3meta-GGA+ kinetic-energy density tauO(K)
+                - generic [ref=e9124]: Rung 4Global hybrid+ a * E_x^HF (a = 0.20 to 0.25)O(K^4)
+                - generic [ref=e9130]: Rung 5Range-separated hybrid+ erfc(omega r)/r splitO(K^4)
+                - generic [ref=e9136]: Rung 6Double hybrid+ b * E_c^MP2 from KS orbitalsO(K^5)
+                - generic [ref=e9142]: Rung 7RPA / quantum-chemical composite+ full ring-Coulomb correlationO(K^4) to O(K^6)
+                - generic [ref=e9148]: E_xc EXACT(in 'heaven',unknown,+ all orders of density)
+        - button "Download this diagram as a PNG" [ref=e9149] [cursor=pointer]:
+          - img [ref=e9150]
+          - generic [ref=e9153]: Download PNG
+      - paragraph [ref=e9154]:
+        - text: The diagram also serves as a
+        - emphasis [ref=e9155]: "roadma`p"
+        - text: "’ for the rest of the chapter: section 5.2.1–5.2.2 covers Rung 1 (LDA), section 5.2.3–5.2.4 covers Rung 2 (GGA), section 5.2.5 covers Rung 3 (meta-GGA), section 5.2.6 covers Rung 4 (hybrid), section 5.2.7 covers Rung 5 (range-separated), section 5.2.8 covers Rung 6 (double hybrid), and section 5.2.9 covers the dispersion “patch” that is glued onto rungs 4–7. >"
+        - strong [ref=e9156]: Note.
+        - text: A second, complementary Mermaid diagram showing
+      - blockquote [ref=e9157]:
+        - paragraph [ref=e9158]:
+          - text: the
+          - strong [ref=e9159]: cost vs accuracy
+          - text: trade-off across the rungs is in
+          - code [ref=e9160]: dft_notes/python_codes/chapter_05/03-jacobs-ladder-cost-accuracy.py' (the plot is a Python scatter, not a Mermaid graph, but the *ide
+          - text: a*’ — climbing the ladder trades cost for accuracy — is the same). The data points are eyeball-estimates of the G2-atomisation MAE; they should be read as the *tren
+          - code [ref=e9161]: d*
+          - text: ", not as benchmark-precise numbers."
+      - heading "5.5 Worked example — Helium atom in LDA, PBE, and Hartree–Fock" [level=2] [ref=e9162]
+      - paragraph [ref=e9163]: "To make the differences between the rungs concrete, we compute the total energy of the helium atom in three approximations that span the rungs of Jacob’s ladder:"
+      - list [ref=e9164]:
+        - listitem [ref=e9165]:
+          - strong [ref=e9166]: HF
+          - text: ": the Hartree–Fock method of"
+          - link "chapter 03" [ref=e9167] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/
+          - text: . This is Rung 0 (no correlation, exact exchange). The HF energy of He is
+          - img [ref=e9169]
+          - text: (the “Hartree–Fock limit” with a saturated basis).
+        - listitem [ref=e9194]:
+          - strong [ref=e9195]: LDA
+          - text: ": the SVWN5 functional, Rung 1. The LDA energy of He with a saturated basis is"
+          - img [ref=e9197]
+          - text: (Kohanoff and co-workers, 1997; the exact value depends weakly on the LDA correlation flavour).
+        - listitem [ref=e9222]:
+          - strong [ref=e9223]: PBE
+          - text: ": the PBE functional of section 5.2.4, Rung 2. The PBE energy of He is"
+          - img [ref=e9225]
+          - text: (with a saturated basis).
+      - paragraph [ref=e9250]:
+        - text: The “exact” non-relativistic energy of He is
+        - img [ref=e9252]
+        - text: (the sum of the variational upper bound and the estimated relativistic correction, from Chakravorty et al. 1993). The differences from this value are the error of each method on this one-atom system.
+      - table [ref=e9280]:
+        - rowgroup [ref=e9281]:
+          - row "Method ( ) Error vs exact ( ) Error vs exact (kcal/mol)" [ref=e9282]:
+            - columnheader "Method" [ref=e9283]
+            - columnheader "( )" [ref=e9284]:
+              - img [ref=e9286]
+              - text: (
+              - img [ref=e9292]
+              - text: )
+            - columnheader "Error vs exact ( )" [ref=e9300]:
+              - text: Error vs exact (
+              - img [ref=e9302]
+              - text: )
+            - columnheader "Error vs exact (kcal/mol)" [ref=e9310]
+        - rowgroup [ref=e9311]:
+          - row "Hartree–Fock" [ref=e9312]:
+            - cell "Hartree–Fock" [ref=e9313]
+            - cell [ref=e9314]:
+              - img [ref=e9316]
+            - cell [ref=e9328]:
+              - img [ref=e9330]
+            - cell [ref=e9342]:
+              - img [ref=e9344]
+          - row "LDA (SVWN5)" [ref=e9354]:
+            - cell "LDA (SVWN5)" [ref=e9355]
+            - cell [ref=e9356]:
+              - img [ref=e9358]
+            - cell [ref=e9369]:
+              - img [ref=e9371]
+            - cell [ref=e9383]:
+              - img [ref=e9385]
+          - row "PBE" [ref=e9395]:
+            - cell "PBE" [ref=e9396]
+            - cell [ref=e9397]:
+              - img [ref=e9399]
+            - cell [ref=e9410]:
+              - img [ref=e9412]
+            - cell [ref=e9424]:
+              - img [ref=e9426]
+          - row "Exact (non-rel)" [ref=e9435]:
+            - cell "Exact (non-rel)" [ref=e9436]
+            - cell [ref=e9437]:
+              - img [ref=e9439]
+            - cell [ref=e9451]:
+              - img [ref=e9453]
+            - cell [ref=e9458]:
+              - img [ref=e9460]
+      - paragraph [ref=e9465]:
+        - text: The error pattern is
+        - strong [ref=e9466]: diagnostic of the rung
+        - text: ":"
+      - list [ref=e9467]:
+        - listitem [ref=e9468]:
+          - strong [ref=e9469]: HF
+          - text: under-correlates (it has
+          - emphasis [ref=e9470]: "no"
+          - text: "correlation by construction): error is"
+          - img [ref=e9472]
+          - text: above the exact energy. This is the famous “correlation energy of He”,
+          - img [ref=e9489]
+          - text: .
+        - listitem [ref=e9535]:
+          - strong [ref=e9536]: LDA
+          - text: over-correlates (it has
+          - emphasis [ref=e9537]: "too muc`h"
+          - text: ’ correlation in the low-density region of the He atom, because the LDA estimate of the
+          - emphasis [ref=e9538]: correlation
+          - text: "contribution from the density tail is too negative): error is"
+          - img [ref=e9540]
+          - text: above the exact. The LDA error is
+          - emphasis [ref=e9556]: larger
+          - text: than the HF error on He, which is the
+          - emphasis [ref=e9557]: opposite
+          - text: "of the standard message “LDA is better than HF”. The reader should remember: LDA is"
+          - emphasis [ref=e9558]: not
+          - text: uniformly better than HF, and the GGA is the rung that
+          - emphasis [ref=e9559]: first
+          - text: outperforms HF on main-group thermochemistry.
+        - listitem [ref=e9560]:
+          - strong [ref=e9561]: PBE
+          - text: has the
+          - emphasis [ref=e9562]: right sign
+          - text: of the correlation correction (negative) and is closer to the exact value than either HF or LDA. The error is
+          - img [ref=e9564]
+          - text: ", or about"
+          - img [ref=e9581]
+          - text: kcal/mol — small for a method that costs the same as LDA.
+      - paragraph [ref=e9586]:
+        - text: The helium atom is
+        - emphasis [ref=e9587]: the
+        - text: simplest test case for an XC functional, and the error pattern above is the
+        - emphasis [ref=e9588]:
+          - text: "*first sanity chec"
+          - code [ref=e9589]: k*
+        - text: that an XC implementation should pass. A PBE He energy that is
+        - img [ref=e9591]
+        - text: above the exact value (i.e. an LDA-like error) is almost certainly a bug in the gradient-enhancement code, not a feature of PBE.
+      - paragraph [ref=e9606]:
+        - strong [ref=e9607]: PBE0 on helium.
+        - text: Adding 25% exact exchange (the PBE0 mix of section 5.2.6) gives
+        - img [ref=e9609]
+        - text: on He — a
+        - emphasis [ref=e9636]: tiny
+        - text: improvement over PBE (
+        - img [ref=e9638]
+        - text: vs
+        - img [ref=e9650]
+        - text: ). The big effect of exact exchange on He is the
+        - emphasis [ref=e9666]: self-interaction error
+        - text: ": with a single orbital, the HF exchange exactly cancels the Hartree self-interaction, so the"
+        - emphasis [ref=e9667]: exact-exchange-only
+        - text: energy of He is much closer to the truth than the LDA. With a GGA already in place, the additional HF exchange is a small correction.
+      - paragraph [ref=e9668]:
+        - strong [ref=e9669]: B3LYP on helium.
+        - text: B3LYP gives
+        - img [ref=e9671]
+        - text: on He — closer to the exact than PBE0, despite using
+        - emphasis [ref=e9699]: less
+        - text: exact exchange (20% vs 25%). The reason is the LYP correlation part, which is
+        - emphasis [ref=e9700]: more accurate
+        - text: than PBE correlation for small atoms. This is a
+        - emphasis [ref=e9701]: "systemati`c"
+        - text: "’ difference between PBE0 and B3LYP: B3LYP is tuned for small-molecule thermochemistry; PBE0 is tuned for solids."
+      - paragraph [ref=e9702]:
+        - text: The full numerical demonstration is in
+        - code [ref=e9703]: dft_notes/python_codes/chapter_05/02-pbe-vs-lda-atoms.py
+        - text: ", which uses a Slater-type trial density for the He and Be atoms and integrates the LDA and PBE integrands on a radial grid. The script produces a bar chart comparing the LDA and PBE exchange and correlation energies of He and Be, and prints the PBE/LDA ratio of the exchange energy to the console."
+      - blockquote [ref=e9704]:
+        - paragraph [ref=e9705]:
+          - strong [ref=e9706]: Tip.
+          - text: The He-atom total-energy error pattern is
+          - emphasis [ref=e9707]: representative
+          - text: of main-group thermochemistry, not unique to it. The same error pattern — LDA > PBE > hybrid
+        - blockquote [ref=e9708]:
+          - paragraph [ref=e9709]:
+            - text: exact — holds for most closed-shell atoms and small molecules. The reader should
+            - emphasis [ref=e9710]: always
+            - text: "run the He atom as a sanity check on a new XC implementation: if the He energy is not within 0.05"
+            - img [ref=e9712]
+            - text: of the exact value with some non-relativistic functional, the code has a bug.
+      - heading "5.6 Problems" [level=2] [ref=e9720]
+      - paragraph [ref=e9721]: Three problems, ranging easy to hard. The first exercises the UEG formulas of section 5.2.1; the second the PBE enhancement factor of section 5.2.4; the third the B3LYP mixing of section 5.2.6 applied to a He-atom toy calculation.
+      - group [ref=e9722]:
+        - generic "▸ Problem 1 (easy) — Exchange energy of a \"fake\" UEG with non-integer density" [ref=e9723] [cursor=pointer]
+        - text: The UEG exchange energy per electron is with (in Hartree). For a UEG with density (close to the valence density of aluminium), compute (a) the Wigner–Seitz radius in Bohr, (b) the exchange energy per electron in Hartree, and (c) the exchange energy per electron in eV. Then repeat for . *Note:* 1 Hartree = 27.2114 eV.
+      - group [ref=e9724]:
+        - generic "▸ Show answer" [ref=e9725] [cursor=pointer]
+        - text: "**Step 1. Wigner–Seitz radius.** Apply : For : For : Note that doubling the density reduces by a factor of — a cube-root dependence, as expected from . **Step 2. Exchange energy per electron, Hartree.** Apply : For : For : **Step 3. Convert to eV.** Multiply by 27.2114 eV/ : For : eV. For : eV. **Headline answer.** The exchange energy per electron of a UEG of density is ( eV); for density it is ( eV). The exchange is *larger in magnitude* at higher density, as expected: the exchange hole is *deeper* when the electrons are closer together."
+      - group [ref=e9726]:
+        - generic "▸ Problem 2 (medium) — PBE enhancement factor for a simple density" [ref=e9727] [cursor=pointer]
+        - text: Consider a model 1-D density with and . The gradient is . The Fermi wave-vector is , so the reduced gradient is (a) Compute the PBE exchange enhancement factor at the point , where . Use the PBE parameters and . (b) Show that asymptotes to for large , and explain why this matters for atomic-density tails. (c) At what value of does the enhancement reach 99% of its asymptotic value? This is the "saturation scale" of the PBE enhancement.
+      - group [ref=e9728]:
+        - generic "▸ Show answer" [ref=e9729] [cursor=pointer]
+        - text: "**Step 1. Reduced gradient at .** The denominator involves : a *larger* amplitude gives a *smaller* (because the gradient is proportional to itself, while the Fermi wave-vector scales as ). The factor in the denominator is the standard Fermi-wave-vector prefactor. **Step 2. PBE enhancement at .** Apply : For example, with and : Then , so A 10.7% enhancement of the LDA exchange — typical of a moderately inhomogeneous density. **Step 3. Asymptotic limit .** As , the denominator and the fraction , so This is the **Lieb–Oxford bound**: the PBE enhancement never exceeds , regardless of how steep the density gradient is. The bound is critical in the *tails* of atomic densities, where and . Without the bound, the GGA would predict an *unphysically large* enhancement in the tails, leading to a *destabilisation* of atoms and molecules. **Step 4. Saturation scale.** We want the value of at which , i.e. Rearrange: so giving and This is the *saturation scale*: the PBE enhancement reaches 99% of its asymptotic value at . The enhancement is already at 90% by (set to get , i.e. 90% of the asymptotic 1.804). **Headline answer.** The PBE enhancement factor is at for the example density; it asymptotes to as (the Lieb–Oxford bound); and reaches 99% of the asymptotic value at (the saturation scale)."
+      - group [ref=e9730]:
+        - generic "▸ Problem 3 (hard) — He-atom total energy in LDA, PBE, PBE0, and HF from a single Slater determinant" [ref=e9731] [cursor=pointer]
+        - text: "For the helium atom, take a single Slater determinant of two electrons in a hydrogenic orbital with effective nuclear charge (variational principle): . The **exact** non-relativistic energy of He is , and the HF energy with the hydrogenic trial orbital (i.e. *not* the HF limit) is (You do not need to derive this; it is the standard closed-form result for a one-orbital He atom.) Minimise over to find the variational HF energy and the optimal . Then: (a) Compute and compare to . (b) The LDA *correlation* energy of He is approximately (the self-consistent LDA value from a numerical integration). The PBE correlation energy is approximately . The HF exchange of He with the optimal trial orbital is . The LDA exchange is approximately , and the PBE exchange is approximately (enhancement factor ). Using these numbers, compute the LDA, PBE, and PBE0 total energies of He and compare each to the exact value. (c) Discuss the error pattern: HF over-correlates; LDA over-correlates worse; PBE fixes most of the error; PBE0 fixes a bit more. Why does *adding* exact exchange improve the result when the *uncorrecte`d*' LDA already has too much correlation?"
+      - group [ref=e9732]:
+        - generic "▸ Show answer" [ref=e9733] [cursor=pointer]
+        - text: "**Step 1. Variational HF energy.** Differentiate with respect to and set to zero: so . (Wait, this looks wrong — the optimal for the *bare* electron–nuclear potential should be close to , not . The catch is that the variational formula I gave *combines* the electron–nuclear attraction, the electron– electron repulsion, and the electron kinetic energy into a *single* polynomial in , and the coefficient in the linear term assumes the *Slater rules* form for He. Re-derive carefully.) The correct form for the closed-shell two-electron atom with trial orbital is Wait, that gives a positive linear term, which is wrong (the electron–nuclear attraction should be negative). The correct signs are Wait, let me be careful. With a closed-shell helium atom and a hydrogenic trial orbital, the expectation values are (using ): - Kinetic energy: (two electrons, each with ). - Electron–nuclear: (two electrons, each attracted to the nucleus with ; the factor of 2 on the electron is for the spin, the factor of 2 on is for the nuclear charge). - Electron–electron: (one Coulomb integral, ). Total: . Differentiate: , so . The optimal HF energy is **Step 2. Error analysis.** Compared to : This is the *variational HF error* of He using a single-zeta* Slater basis. The HF *limit* (with a saturated basis) gives , so the basis-set incompleteness error is . The *intrinsi`c*' HF error — the *correlation energy* — is *not* in the single-zeta result. The single-zeta HF energy is *less* accurate than the HF limit because the trial orbital is too restrictive. **Step 3. LDA, PBE, and PBE0 total energies.** Use the approximate values from the problem statement: | Method | ( ) | ( ) | ( ) | Error (kcal/mol) | |:-------|---------------------:|---------------------:|-------------------------:|-----------------:| | HF | | | | | | LDA | | | | | | PBE | | | | | | PBE0 | | | | | (The PBE0 exchange is the 0.25/0.75 mix of HF and PBE exchange; the PBE0 correlation is the PBE correlation.) The error pattern is the diagnostic one of the chapter: - HF: error kcal/mol (no correlation, exact exchange). - LDA: error kcal/mol (over-correlates — too negative correlation, too small exchange). - PBE: error kcal/mol (much better — gradient correction fixes most of the LDA failure). - PBE0: error kcal/mol (adding 25% exact exchange reduces the error by a factor of 4). **Step 4. Why does adding exact exchange *improve* the LDA?** The LDA *over-estimates* the magnitude of the correlation energy of He. The PBE gradient correction *reduces* the magnitude of the correlation (PBE correlation is less negative than LDA correlation, by about in this case), getting it closer to the truth. The HF exchange is *also* less negative than the LDA exchange ( vs in absolute value: HF is *more* negative than LDA in this case, by ). The PBE0 mix *combines* the HF and PBE exchange — 0.25 of HF + 0.75 of PBE — and the result is *less* negative than the LDA exchange but *more* negative than the PBE exchange, in the right balance to compensate the residual LDA correlation error. The deeper point is that LDA exchange and LDA correlation *both*' have self-interaction errors that partially cancel in the LDA total. Adding a fraction of exact exchange (which has *no* self-interaction error) shifts the balance, and a *smaller* correlation error is needed in the DFT part to match the total. This is the \"serendipitous cancellation\" of errors that makes LDA surprisingly good for many properties — and that the hybrid functionals are designed to preserve *an`d*' improve. **Headline answer.** The variational HF energy of He with a single Slater determinant is and , an error of kcal/mol. The PBE0 total energy is , an error of kcal/mol — the best of the four methods and close to the chemical-accuracy threshold. The error pattern across HF / LDA / PBE / PBE0 is the canonical diagnostic of the rungs of Jacob's ladder."
+      - heading "5.7 Cross-references" [level=2] [ref=e9734]
+      - paragraph [ref=e9735]:
+        - text: The XC functional is the
+        - emphasis [ref=e9736]: central
+        - text: design choice of a DFT calculation, and it touches every other chapter of these notes.
+      - paragraph [ref=e9737]:
+        - strong [ref=e9738]: Prerequisites (in order).
+      - list [ref=e9739]:
+        - listitem [ref=e9740]:
+          - link "Chapter 01" [ref=e9741] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/
+          - text: — the postulates of quantum mechanics and the Born–Oppenheimer separation. The XC functional lives inside the Born–Oppenheimer energy expression for fixed nuclei.
+        - listitem [ref=e9742]:
+          - link "Chapter 02" [ref=e9743] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-02/
+          - text: — the Hohenberg–Kohn existence theorem. The XC functional is
+          - emphasis [ref=e9744]: the
+          - text: universal functional of the HK theorem.
+        - listitem [ref=e9745]:
+          - link "Chapter 03" [ref=e9746] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/
+          - text: — the Hartree–Fock method. The exact-exchange part of the hybrid functionals of section 5.2.6 is the same exchange operator as in HF; the difference is that the orbitals are KS orbitals, not HF orbitals.
+        - listitem [ref=e9747]:
+          - link "Chapter 04" [ref=e9748] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: — the Kohn–Sham equations. The XC functional is the
+          - emphasis [ref=e9749]: only
+          - text: unknown piece of the KS energy expression; the rest of the chapter is exact given a choice of functional.
+      - paragraph [ref=e9750]:
+        - strong [ref=e9751]: Forwards (the XC functional choice matters for).
+      - list [ref=e9752]:
+        - listitem [ref=e9753]:
+          - link "Chapter 06" [ref=e9754] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: — basis sets. The BSIE (basis-set incompleteness error) of a DFT calculation is
+          - emphasis [ref=e9755]:
+            - text: entangle
+            - code [ref=e9756]: "d*' with the functional choice: a hybrid functional with exact exchange has a *slower* basis-set convergence than a GGA, because the exact exchange integral is more sensitive to the tail of the basis. The reader should *not* quote a DFT energy without naming both the functional *an"
+            - text: d
+          - text: ’ the basis.
+        - listitem [ref=e9757]:
+          - link "Chapter 08" [ref=e9758] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: — pseudopotentials. Most pseudopotentials are
+          - emphasis [ref=e9759]: frozen-core
+          - text: approximations that were constructed at a specific XC functional. The use of a GGA pseudopotential with an LDA calculation, or vice versa, is a common source of error.
+        - listitem [ref=e9760]:
+          - link "Chapter 09" [ref=e9761] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-09/
+          - text: — forces and geometry optimisation. The forces of a DFT calculation are
+          - emphasis [ref=e9762]: derivatives
+          - text: of the total energy with respect to nuclear coordinates, so the functional choice affects the optimised geometry. Different functionals can give bond lengths that differ by 0.01–0.05 Å; a “PBE geometry” is different from a “B3LYP geometry”.
+        - listitem [ref=e9763]:
+          - link "Chapter 13" [ref=e9764] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-13/
+          - text: — DFT+U. The DFT+U method adds an on-site Coulomb correction to the standard DFT energy, designed to fix the failure of LDA/GGA for strongly-correlated
+          - img [ref=e9766]
+          - text: "- and"
+          - img [ref=e9772]
+          - text: "-electron systems. DFT+U"
+          - emphasis [ref=e9777]: augments
+          - text: an existing functional (typically LDA or PBE) rather than replacing it.
+      - paragraph [ref=e9778]:
+        - strong [ref=e9779]: Entangled topics (use the cross-references liberally).
+      - list [ref=e9780]:
+        - listitem [ref=e9781]:
+          - strong [ref=e9782]: Dispersion
+          - text: (section 5.2.9) — the D3, D4, MBD, vdW-DF corrections. The D3 and D4 corrections are
+          - emphasis [ref=e9783]: parameters of the functional
+          - text: ": B3LYP-D3, PBE-D3, BLYP-D3 are"
+          - emphasis [ref=e9784]: different functionals
+          - text: with *different recommended uses.
+        - listitem [ref=e9785]:
+          - strong [ref=e9786]: Spin
+          - text: (
+          - link "chapter 04" [ref=e9787] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: § 4.8) — every functional in this chapter has a
+          - emphasis [ref=e9788]:
+            - text: spin-polarise
+            - code [ref=e9789]: d*' (LSDA) and a *spin-unpolarise
+            - text: d
+          - text: ’ (LDA) variant. The polarisation dependence is part of the functional specification; the user should not use a “LDA” functional on a spin-polarised system without explicitly switching to LSDA.
+        - listitem [ref=e9790]:
+          - strong [ref=e9791]: Relativistic effects
+          - text: (
+          - link "chapter 04" [ref=e9792] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: § 4.9) — most functionals are *non-relativisti
+          - code [ref=e9793]: c*
+          - text: . For heavy elements (
+          - img [ref=e9795]
+          - text: ), the scalar-relativistic or fully-relativistic KS equations should be used, and the functional should be combined with a relativistic pseudopotential (
+          - link "chapter 08" [ref=e9805] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: ).
+      - heading "5.8 What we left out" [level=2] [ref=e9806]
+      - paragraph [ref=e9807]:
+        - text: This chapter is already long, but the subject of XC functionals is a
+        - emphasis [ref=e9808]: literature
+        - text: ", not a chapter, and a number of topics have been omitted for length. The reader should be aware of the following gaps."
+      - list [ref=e9809]:
+        - listitem [ref=e9810]:
+          - strong [ref=e9811]: Screened hybrids in detail (HSE03, HSE06, PBE0-1/3).
+          - text: The screened hybrids of section 5.2.7 are the workhorse of solid-state hybrid DFT, and the
+          - emphasis [ref=e9812]: full
+          - text: treatment of the range-separation error cancellation, the auxiliary basis used to evaluate the screened exchange, and the convergence properties of HSE vs PBE0 in plane-wave codes deserves more than a single paragraph. We gave the form of HSE06 and mentioned the screening parameter
+          - img [ref=e9814]
+          - text: ", but did not derive the"
+          - emphasis [ref=e9826]: screening
+          - text: itself.
+        - listitem [ref=e9827]:
+          - strong [ref=e9828]: Görling–Levy perturbation theory (GLPT).
+          - text: The ACFDT argument of section 5.2.6 is the
+          - emphasis [ref=e9829]: "physically motivate`d"
+          - text: ’ derivation of the mixing fraction
+          - img [ref=e9831]
+          - text: . The
+          - emphasis [ref=e9845]: mathematically rigorous
+          - text: derivation is the Görling–Levy perturbation theory, which expands the interacting wavefunction in powers of the
+          - emphasis [ref=e9846]: difference
+          - text: between the true electron–electron interaction and the KS effective interaction, and shows that the GL2 (second-order) gives the
+          - emphasis [ref=e9847]: exact
+          - text: exchange and* the MP2-like correlation. We used the ACFDT language throughout for its physical clarity, but the GLPT machinery is the rigorous version. The reader interested in the
+          - emphasis [ref=e9848]: derivation
+          - text: should consult Görling and Levy’s original 1993–1994 papers.
+        - listitem [ref=e9849]:
+          - strong [ref=e9850]:
+            - text: RPA and quantum-chemical composite methods (GNOF,
+            - img [ref=e9852]
+            - text: "-functionals, MC-PDFT)."
+          - text: The
+          - emphasis [ref=e9857]: "to`p"
+          - text: ’ of Jacob’s ladder is the random-phase approximation (RPA), which uses the
+          - emphasis [ref=e9858]: exact
+          - text: (adiabatic) exchange and the ring-Coulomb* correlation. RPA is expensive (
+          - img [ref=e9860]
+          - text: to
+          - img [ref=e9876]
+          - text: ) and has a notorious
+          - emphasis [ref=e9891]: self-correlation
+          - text: error that makes it
+          - emphasis [ref=e9892]: worse
+          - text: than PBE0 on atomisation energies of small molecules. The
+          - strong [ref=e9893]: multiconfiguration pair-density functional theory
+          - text: (MC-PDFT) of Li Manni et al. and the
+          - strong [ref=e9894]: generalised natural-orbital functional
+          - text: (GNOF) of Piris and co-workers are the
+          - emphasis [ref=e9895]: next
+          - text: generation of post-KS methods that try to fix the self-correlation error of RPA. We did not cover any of them.
+        - listitem [ref=e9896]:
+          - strong [ref=e9897]: Machine-learned functionals (DeepMind’s DM21, OrbNet, SchNet).
+          - text: The most recent (2021–present) development in the XC world is the
+          - emphasis [ref=e9898]: machine-learning
+          - text: of the XC functional. The DM21 functional of DeepMind (Kirkpatrick et al. 2021) was trained on a large set of
+          - emphasis [ref=e9899]: exact
+          - text: exchange–correlation energies from the hierarchical equations of motion and shows
+          - emphasis [ref=e9900]: "systemati`c"
+          - text: ’ improvements over hybrid functionals on a wide range of benchmarks. The functional is not a
+          - emphasis [ref=e9901]: formula
+          - text: ’ — it is a neural network* — so it does not fit neatly into the Jacob’s ladder picture. We did not cover it because the methodology is still rapidly evolving and the
+          - emphasis [ref=e9902]: form
+          - text: of the functional is not yet standardised.
+        - listitem [ref=e9903]:
+          - strong [ref=e9904]: The “rung above double hybrid” (rung 7) is not standardised.
+          - text: The
+          - emphasis [ref=e9905]: "sevent`h"
+          - text: ’ rung of Jacob’s ladder is variously identified with RPA, with quantum-chemical composite methods like CCSD(T), or with multireference methods. There is no single “rung 7” that the community agrees on; the top of the ladder is
+          - emphasis [ref=e9906]: open
+          - text: . We left this gap in the table of section 5.2.10 explicit, but did not resolve it.
+        - listitem [ref=e9907]:
+          - strong [ref=e9908]: Self-interaction error and its fixes.
+          - text: The self-interaction error of LDA/GGA — the fact that a one-electron system has a
+          - emphasis [ref=e9909]: non-zero
+          - img [ref=e9911]
+          - text: in LDA — is a
+          - emphasis [ref=e9920]:
+            - text: systemati
+            - code [ref=e9921]: c*' failure of all the local and semi-local rungs. The exact-exchange-only self-interaction correction (SIC) of Perdew and Zunger and the range-separated SIC of Vydrov and Scuseria are *systemati
+            - text: c
+          - text: ’ fixes. We mentioned the self-interaction error in passing in the worked example (section 5.5) but did not derive the SIC machinery.
+      - 'heading "5.9 The original PBE, VWN, B88, LYP papers: a literature deep-dive" [level=2] [ref=e9922]'
+      - blockquote [ref=e9923]:
+        - paragraph [ref=e9924]:
+          - emphasis [ref=e9925]: This section walks the reader through the four foundational papers that supply the formulas and parameters used throughout this chapter — PBE, VWN, B88, and LYP — with the page numbers and equation numbers of the published journal versions. Every equation and value cited below carries the page number of the original paper, and the algebra is written out step by step following the no-summaries rule. The point of this section is to give the reader a direct line from the chapter’s equations back to the published source, with no intermediate summary.
+      - heading "5.9.1 PBE (Perdew, Burke, Ernzerhof 1996)" [level=3] [ref=e9926]
+      - paragraph [ref=e9927]:
+        - strong [ref=e9928]: Reference.
+        - text: Perdew, J. P.; Burke, K.; Ernzerhof, M. “Generalized Gradient Approximation Made Simple.”
+        - emphasis [ref=e9929]: Physical Review Letters
+        - strong [ref=e9930]: "1996"
+        - text: ","
+        - emphasis [ref=e9931]: "77"
+        - text: "(18), 3865–3868. DOI:"
+        - link "10.1103/PhysRevLett.77.3865" [ref=e9932] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.77.3865
+        - text: ". Erratum:"
+        - emphasis [ref=e9933]: Physical Review Letters
+        - strong [ref=e9934]: "1997"
+        - text: ","
+        - emphasis [ref=e9935]: "78"
+        - text: "(7), 1396. DOI:"
+        - link "10.1103/PhysRevLett.78.1396" [ref=e9936] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.78.1396
+        - text: . The paper is 4 pages (pp. 3865–3868 of PRL vol. 77).
+      - paragraph [ref=e9937]:
+        - strong [ref=e9938]: Authors’ own words (abstract, p. 3865).
+        - emphasis [ref=e9939]: “Generalized gradient approximations (GGA’s) for the exchange-correlation energy improve upon the local spin density (LSD) description of atoms, molecules, and solids. We present a simple derivation of a simple GGA, in which all parameters (other than those in LSD) are fundamental constants. Only general features of the detailed construction underlying the Perdew-Wang 1991 (PW91) GGA are invoked. Improvements over PW91 include an accurate description of the linear response of the uniform electron gas, correct behavior under uniform scaling, and a smoother potential.”
+        - text: That is the
+        - emphasis [ref=e9940]: thesis
+        - text: "of the paper: a simpler functional than PW91, with"
+        - strong [ref=e9941]: zero free parameters
+        - text: (all “parameters” are physical constants), that satisfies four known exact constraints.
+      - paragraph [ref=e9942]:
+        - strong [ref=e9943]: The PBE exchange enhancement factor (Eq. (10), p. 3866).
+        - text: PBE writes the exchange energy in the GGA form (Eq. (1) of the paper)
+      - img [ref=e9945]:
+        - generic [ref=e9949]:
+          - img [ref=e9950]
+          - img [ref=e10032]
+      - paragraph [ref=e10040]:
+        - text: where
+        - img [ref=e10042]
+        - text: is the reduced gradient with
+        - img [ref=e10083]
+        - text: (Eq. (8) of the paper, p. 3866) and
+        - img [ref=e10116]
+        - text: is the Dirac exchange energy per electron. The new ingredient is the enhancement factor
+        - img [ref=e10159]
+        - text: . The paper proposes the
+        - emphasis [ref=e10177]: simplest
+        - text: "rational form that satisfies the four constraints (Eq. (10), p. 3866):"
+      - img [ref=e10179]:
+        - generic [ref=e10183]:
+          - img [ref=e10184]
+          - img [ref=e10236]
+      - paragraph [ref=e10245]:
+        - text: This is equation (10) of the paper, on p. 3866. The two constants
+        - img [ref=e10247]
+        - text: and
+        - img [ref=e10261]
+        - text: are
+        - emphasis [ref=e10276]: not
+        - text: fit to any atomic or molecular data — they are determined uniquely by the four constraints, as we now derive in full.
+      - paragraph [ref=e10277]:
+        - strong [ref=e10278]: Constraint 1 — the LSD limit (Eq. (2), p. 3865).
+        - text: The enhancement factor must recover the LDA for a uniform density, i.e.
+        - img [ref=e10280]
+        - text: . Substituting
+        - img [ref=e10303]
+        - text: into
+        - img [ref=e10313]:
+          - link [ref=e10316] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-fx"
+        - text: ":"
+      - paragraph [ref=e10324]:
+        - img [ref=e10326]:
+          - generic [ref=e10330]:
+            - img [ref=e10331]
+            - img [ref=e10426]
+      - paragraph [ref=e10435]:
+        - text: The constraint
+        - img [ref=e10437]
+        - text: is
+        - emphasis [ref=e10459]: automatically
+        - text: satisfied by the form of
+        - img [ref=e10461]:
+          - link [ref=e10464] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-fx"
+        - text: for
+        - emphasis [ref=e10472]: any
+        - text: choice of
+        - img [ref=e10474]
+        - text: and
+        - img [ref=e10480]
+        - text: . The constraint fixes the structure of the form, not the values of the constants.
+      - paragraph [ref=e10485]:
+        - strong [ref=e10486]: Constraint 2 — the Lieb–Oxford bound (p. 3865–3866).
+        - text: "The Lieb–Oxford bound (Lieb 1983, Oxford 1984) states that the exchange–correlation energy per electron is bounded below:"
+        - img [ref=e10488]
+        - text: . This translates, for a GGA-type exchange-only functional, into
+      - img [ref=e10518]:
+        - generic [ref=e10522]:
+          - img [ref=e10523]
+          - img [ref=e10561]
+      - paragraph [ref=e10569]:
+        - text: with
+        - img [ref=e10571]
+        - text: chosen to saturate the bound. The form
+        - img [ref=e10577]:
+          - link [ref=e10580] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-fx"
+        - text: is
+        - emphasis [ref=e10588]: monotonically increasing
+        - text: in
+        - img [ref=e10590]
+        - text: (its derivative is positive for
+        - img [ref=e10596]
+        - text: and the function asymptotes from below), so its maximum is the asymptotic value
+        - img [ref=e10606]
+        - text: . Setting this maximum equal to the Lieb–Oxford bound gives
+      - paragraph [ref=e10644]:
+        - img [ref=e10646]:
+          - generic [ref=e10650]:
+            - img [ref=e10651]
+            - img [ref=e10730]
+      - paragraph [ref=e10739]:
+        - text: Equating
+        - img [ref=e10741]
+        - text: to the numerical value implied by the Lieb–Oxford bound, the PBE paper sets (p. 3866)
+      - img [ref=e10751]:
+        - generic [ref=e10755]:
+          - img [ref=e10756]
+          - img [ref=e10772]
+      - paragraph [ref=e10780]:
+        - text: This is a
+        - emphasis [ref=e10781]: physical
+        - text: constant — the result of an inequality proved by Lieb and Oxford, tightened by Chan and Handy (1999) to
+        - img [ref=e10783]
+        - text: and by Perdew and coauthors (2014) to a slightly different number for the pure-exchange case, but the 1980/1996-era value
+        - img [ref=e10799]
+        - text: is what PBE uses.
+      - paragraph [ref=e10808]:
+        - strong [ref=e10809]: Constraint 3 — uniform scaling to the high-density limit (p. 3866).
+        - text: Uniformly scaling the density
+        - img [ref=e10811]
+        - text: with
+        - img [ref=e10845]
+        - text: drives the system into the
+        - emphasis [ref=e10854]: high-density limit
+        - text: where the correlation energy scales as
+        - img [ref=e10856]
+        - text: (to leading order). This is the
+        - emphasis [ref=e10894]: high-density
+        - text: (small-
+        - img [ref=e10896]
+        - text: ) limit; the correlation energy in this limit is the second-order Gell-Mann–Brueckner perturbation-theory result. PBE’s correlation energy reduces correctly to the LDA form in this limit (the PBE enhancement
+        - img [ref=e10905]
+        - text: as
+        - img [ref=e10915]
+        - text: together with
+        - img [ref=e10925]
+        - text: for small
+        - img [ref=e10940]
+        - text: ", see p. 3866 of the paper). The four-constraint list of section 5.2.4 above is presented in the same order as the paper, but the"
+        - emphasis [ref=e10956]: mathematical content
+        - text: of constraint 3 is precisely that the high-density scaling
+        - img [ref=e10958]
+        - text: is preserved (Eq. (15), p. 3866).
+      - paragraph [ref=e10996]:
+        - strong [ref=e10997]: Constraint 4 — the linear response of the uniform electron gas (p. 3866).
+        - text: The final constraint, and the one that fixes
+        - img [ref=e10999]
+        - text: ", is that the PBE functional must reproduce the"
+        - emphasis [ref=e11004]: linear response
+        - text: of the uniform electron gas — the energy change under a small sinusoidal perturbation of the density. This is the
+        - strong [ref=e11005]: compressibility sum rule
+        - text: of the UEG, evaluated to second order in the perturbation amplitude. The PBE paper (p. 3866, footnote) notes that the
+        - emphasis [ref=e11006]: second-order gradient expansion
+        - text: of the exchange gives a coefficient of
+        - img [ref=e11008]
+        - text: in the enhancement factor of
+        - img [ref=e11017]
+        - text: ", which would correspond to a value of"
+        - img [ref=e11040]
+        - text: in
+        - img [ref=e11056]:
+          - link [ref=e11059] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-fx"
+        - text: . But, the footnote continues, the more reliable value comes from the
+        - emphasis [ref=e11067]: uniform-gas linear response
+        - text: of
+        - link "Perdew et al. 1992, Phys. Rev. B 46, 6671" [ref=e11068] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.46.6671
+        - text: ", and the resulting value of"
+        - img [ref=e11070]
+        - text: is
+      - img [ref=e11076]:
+        - generic [ref=e11080]:
+          - img [ref=e11081]
+          - img [ref=e11099]
+      - paragraph [ref=e11107]:
+        - text: The difference between
+        - img [ref=e11109]
+        - text: (the literal GEA value) and
+        - img [ref=e11121]
+        - text: (the linear-response value) is what the paper describes on p. 3866 as “an accurate description of the linear response of the uniform electron gas”. PBE deliberately
+        - emphasis [ref=e11132]: violates
+        - text: the literal second-order GEA limit in favour of the compressibility sum rule, which is the more reliable of the two constraints.
+      - paragraph [ref=e11133]:
+        - strong [ref=e11134]:
+          - text: Why the form
+          - img [ref=e11136]:
+            - link [ref=e11139] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-fx"
+          - text: is “simplest”.
+        - text: The paper’s “Made Simple” claim is that of all the rational functions in
+        - img [ref=e11148]
+        - text: with two constants
+        - img [ref=e11157]
+        - text: and
+        - img [ref=e11163]
+        - text: ", the form"
+        - img [ref=e11169]
+        - text: is the one that simultaneously (i) is positive for all
+        - img [ref=e11202]
+        - text: ", (ii) is monotonically increasing, (iii) has the right small-"
+        - img [ref=e11208]
+        - text: behaviour, and (iv) asymptotes to a finite bound
+        - img [ref=e11214]
+        - text: as
+        - img [ref=e11224]
+        - text: . Any form that does all four with
+        - emphasis [ref=e11233]: two
+        - text: constants must be equivalent to
+        - img [ref=e11235]:
+          - link [ref=e11238] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-fx"
+        - text: up to a change of variables.
+      - paragraph [ref=e11246]:
+        - strong [ref=e11247]: The PBE correlation energy (Eq. (8), p. 3866).
+        - text: The PBE correlation energy is written (Eq. (8), p. 3866) as
+      - img [ref=e11249]:
+        - generic [ref=e11253]:
+          - img [ref=e11254]
+          - img [ref=e11335]
+      - paragraph [ref=e11343]: with the correlation energy per electron split as
+      - img [ref=e11345]:
+        - generic [ref=e11349]:
+          - img [ref=e11350]
+          - img [ref=e11426]
+      - paragraph [ref=e11434]:
+        - text: where
+        - img [ref=e11436]
+        - text: is the LSDA correlation energy per electron (the same input that VWN parameterises — see §5.9.2 below),
+        - img [ref=e11462]
+        - text: is the Wigner–Seitz radius,
+        - img [ref=e11501]
+        - text: is the relative spin polarisation, and
+        - img [ref=e11530]
+        - text: is the
+        - emphasis [ref=e11565]: different
+        - text: reduced gradient used for correlation, with
+        - img [ref=e11567]
+        - text: the Thomas–Fermi screening wave-vector and
+        - img [ref=e11608]
+        - text: the spin-scaling factor (Eq. (8), p. 3866). The PBE enhancement
+        - img [ref=e11673]
+        - text: is given by (Eq. (9), p. 3866)
+      - img [ref=e11679]:
+        - generic [ref=e11683]:
+          - img [ref=e11684]
+          - img [ref=e11786]
+      - paragraph [ref=e11794]: with the auxiliary quantity
+      - img [ref=e11796]:
+        - generic [ref=e11800]:
+          - img [ref=e11801]
+          - img [ref=e11861]
+      - paragraph [ref=e11870]:
+        - text: The two PBE correlation parameters are
+        - img [ref=e11872]
+        - text: and
+        - img [ref=e11889]
+        - text: . The value of
+        - img [ref=e11929]
+        - text: is chosen so that
+        - img [ref=e11935]
+        - text: reduces to the
+        - emphasis [ref=e11940]: high-density
+        - text: (
+        - img [ref=e11942]
+        - text: ) limit of the second-order GEA correlation in the small-
+        - img [ref=e11959]
+        - text: limit (the constant
+        - img [ref=e11965]
+        - text: is the Perdew–Wang 1992 high-density expansion coefficient; see p. 3866 of the paper). The value of
+        - img [ref=e11990]
+        - text: is the
+        - emphasis [ref=e11995]: same
+        - img [ref=e11997]
+        - text: that appears in the exchange GEA (the Ma–Brueckner 1968 result), and is reproduced in
+        - img [ref=e12014]
+        - text: via the limit
+        - img [ref=e12020]
+        - text: as
+        - img [ref=e12040]
+        - text: ", which is the second-order GEA limit of the correlation energy."
+      - paragraph [ref=e12049]:
+        - strong [ref=e12050]:
+          - text: The three constraints on
+          - img [ref=e12052]
+          - text: (p. 3866).
+        - text: The PBE enhancement
+        - img [ref=e12058]
+        - text: of
+        - img [ref=e12064]:
+          - link [ref=e12067] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-h"
+        - text: satisfies three constraints, analogous to the four on
+        - img [ref=e12076]
+        - text: ":"
+      - list [ref=e12084]:
+        - listitem [ref=e12085]:
+          - img [ref=e12087]
+          - text: as
+          - img [ref=e12097]
+          - text: (the LDA is recovered for uniform density; verified by direct substitution of
+          - img [ref=e12107]
+          - text: into
+          - img [ref=e12117]:
+            - link [ref=e12120] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-h"
+          - text: ", which gives"
+          - img [ref=e12129]
+          - text: ).
+        - listitem [ref=e12179]:
+          - img [ref=e12181]
+          - text: for small
+          - img [ref=e12201]
+          - text: (the second-order GEA limit of the correlation energy).
+        - listitem [ref=e12206]:
+          - img [ref=e12208]
+          - text: is
+          - emphasis [ref=e12213]: non-negative
+          - text: for all
+          - img [ref=e12215]
+          - text: (the gradient always
+          - emphasis [ref=e12220]: reduces
+          - text: the magnitude of the correlation energy, never increases it — the logarithm in
+          - img [ref=e12222]:
+            - link [ref=e12225] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-h"
+          - text: is positive).
+      - paragraph [ref=e12233]:
+        - text: The form of
+        - img [ref=e12235]
+        - text: in
+        - img [ref=e12241]:
+          - link [ref=e12244] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-a"
+        - text: is the unique choice that makes the high-density limit
+        - img [ref=e12253]
+        - text: and the small-
+        - img [ref=e12273]
+        - text: limit
+        - img [ref=e12279]
+        - text: both work for
+        - emphasis [ref=e12288]: any
+        - img [ref=e12290]
+        - text: (the exponential in
+        - img [ref=e12299]:
+          - link [ref=e12302] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-a"
+        - text: ensures
+        - img [ref=e12311]
+        - text: is large for small
+        - img [ref=e12317]
+        - text: ", and small for large"
+        - img [ref=e12334]
+        - text: ", which is the correct behaviour). The denominator"
+        - img [ref=e12351]
+        - text: in
+        - img [ref=e12382]:
+          - link [ref=e12385] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-h"
+        - text: keeps the logarithm’s argument positive (a polynomial that has no real roots for
+        - img [ref=e12394]
+        - text: ), which is the mechanism that enforces constraint 3.
+      - paragraph [ref=e12406]:
+        - strong [ref=e12407]: Numerical result from the paper (p. 3867, Table I).
+        - text: PBE reports atomisation-energy mean-absolute errors (MAE) for the G2 set of 148 molecules (the G2 test set of
+        - link "Curtriss, Raghavachari, Redfern, Pople 1997" [ref=e12408] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.476009
+        - text: ) of 7.29 kcal/mol (PBE) vs 5.16 kcal/mol (B3LYP) vs 1.69 kcal/mol (B971). The PBE MAE for the lattice constants of 32 semiconductors is 0.046 Å, and for the bulk moduli is 10.5 GPa (p. 3867). These are the canonical “PBE is non-empirical, but B3LYP is more accurate for organic thermochemistry” numbers.
+      - paragraph [ref=e12409]:
+        - strong [ref=e12410]: Erratum (Perdew, Burke, Ernzerhof 1997, PRL 78, 1396).
+        - text: The 1997 erratum fixes the sign of the
+        - img [ref=e12412]
+        - text: "-function gradient expansion at small"
+        - img [ref=e12418]
+        - text: — the published 1996 paper has a minus-sign typo in Eq. (9) that affects codes that differentiate
+        - img [ref=e12424]
+        - text: with respect to the density numerically. The functional
+        - emphasis [ref=e12432]: values
+        - text: are unchanged; the differentials are corrected.
+      - heading "5.9.2 VWN (Vosko, Wilk, Nusair 1980)" [level=3] [ref=e12433]
+      - paragraph [ref=e12434]:
+        - strong [ref=e12435]: Reference.
+        - text: "Vosko, S. H.; Wilk, L.; Nusair, M. “Accurate spin-dependent electron liquid correlation energies for local spin density calculations: a critical analysis.”"
+        - emphasis [ref=e12436]: Canadian Journal of Physics
+        - strong [ref=e12437]: "1980"
+        - text: ","
+        - emphasis [ref=e12438]: "58"
+        - text: "(8), 1200–1211. DOI:"
+        - link "10.1139/p80-159" [ref=e12439] [cursor=pointer]:
+          - /url: https://doi.org/10.1139/p80-159
+        - text: . The paper is 12 pages (pp. 1200–1211 of Can. J. Phys. vol. 58).
+      - paragraph [ref=e12440]:
+        - strong [ref=e12441]: Authors’ own words (abstract, p. 1200).
+        - emphasis [ref=e12442]: “A procedure is presented for obtaining an accurate, essentially exact representation of the correlation energy per electron of a spin-dependent electron liquid over the range of metallic densities. The procedure is based on the Monte Carlo calculations of Ceperley and Alder, who obtained the correlation energy for the ferromagnetic and paramagnetic fluids, and the technique of fitting the data with a [5-parameter Padé approximant].”
+        - text: That is the
+        - emphasis [ref=e12443]: "thesis of the paper: a single, *closed-form"
+        - text: parameterisation of the uniform-electron-gas correlation energy, with a controlled fit error over the metallic range
+        - img [ref=e12445]
+        - text: –
+        - img [ref=e12458]
+        - text: .
+      - paragraph [ref=e12464]:
+        - strong [ref=e12465]: The data being fit (p. 1201).
+        - text: The underlying quantum Monte Carlo (QMC) data are from
+        - link "Ceperley, D. M.; Alder, B. J. “Ground State of the Electron Gas by a Stochastic Method”,Phys. Rev. Lett.1980,45(7), 566–569" [ref=e12466] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.45.566
+          - text: Ceperley, D. M.; Alder, B. J. “Ground State of the Electron Gas by a Stochastic Method”,
+          - emphasis [ref=e12467]: Phys. Rev. Lett.
+          - strong [ref=e12468]: "1980"
+          - text: ","
+          - emphasis [ref=e12469]: "45"
+          - text: (7), 566–569
+        - text: . Ceperley and Alder report the correlation energy per electron
+        - img [ref=e12471]
+        - text: at
+        - img [ref=e12493]
+        - text: "for three spin polarisations: paramagnetic ("
+        - img [ref=e12535]
+        - text: ), ferromagnetic (
+        - img [ref=e12545]
+        - text: "), and the intermediate partial-derivative $\\alpha_\\text{c}(r_s) = (\\partial \\varepsilon_\\text{c}/\\partial\\zeta)"
+        - emphasis [ref=e12554]:
+          - text: "{\\zeta=0}$. The VWN paper extends these by also using the *intermediate-density* QMC data of"
+          - link "Ceperley 1978" [ref=e12555] [cursor=pointer]:
+            - /url: https://doi.org/10.1103/PhysRevB.18.3126
+          - text: "to constrain the fit, and then fits each of the three quantities ${\\varepsilon"
+        - text: "\\text{c}(r_s, 0), \\varepsilon_\\text{c}(r_s, 1), \\alpha_\\text{c}(r_s)}$ to a 5-parameter Padé approximant."
+      - paragraph [ref=e12556]:
+        - strong [ref=e12557]: The VWN functional form (Eq. (4.5) of the paper, p. 1202).
+        - text: The spin-dependent correlation energy per electron is written as
+      - img [ref=e12559]:
+        - generic [ref=e12563]:
+          - img [ref=e12564]
+          - img [ref=e12717]
+      - paragraph [ref=e12726]:
+        - text: where the
+        - strong [ref=e12727]: spin-stiffness
+        - text: function
+        - img [ref=e12729]
+        - text: is
+      - img [ref=e12741]:
+        - generic [ref=e12745]:
+          - img [ref=e12746]
+          - img [ref=e12825]
+      - paragraph [ref=e12834]:
+        - text: and
+        - img [ref=e12836]
+        - text: is the value of
+        - img [ref=e12857]
+        - text: at the
+        - emphasis [ref=e12865]: "antiferromagneti`c"
+        - text: ’ point of the Helium-like fully-polarised limit (this is a normalisation constant, not a variable). This is the standard “stiffness interpolation” formula used by the LSDA throughout the DFT literature. Equation
+        - img [ref=e12867]:
+          - link [ref=e12870] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-vwn-form"
+        - text: reduces to
+        - img [ref=e12879]
+        - text: when
+        - img [ref=e12901]
+        - text: "(verify: the second and third terms both vanish because"
+        - img [ref=e12911]
+        - text: ), and to
+        - img [ref=e12927]
+        - text: when
+        - img [ref=e12949]
+        - text: "(verify:"
+        - img [ref=e12959]
+        - text: kills the second term, and
+        - img [ref=e12976]
+        - text: gives the third term). The first derivative with respect to
+        - img [ref=e12992]
+        - text: at
+        - img [ref=e12998]
+        - text: is
+        - img [ref=e13008]
+        - text: ", which is the standard “stiffness” boundary condition. The formula is exact at the three boundary points by construction."
+      - paragraph [ref=e13054]:
+        - strong [ref=e13055]: The 5-parameter Padé approximant (Eq. (4.4) of the paper, p. 1202).
+        - text: Each of the three quantities
+        - img [ref=e13057]
+        - text: ","
+        - img [ref=e13079]
+        - text: ", and"
+        - img [ref=e13101]
+        - text: is fit to a 5-parameter Padé form in
+        - img [ref=e13119]
+        - text: ":"
+      - img [ref=e13137]:
+        - generic [ref=e13141]:
+          - img [ref=e13142]
+          - img [ref=e13289]
+      - paragraph [ref=e13298]:
+        - text: This is the form on p. 1202 of the paper. The five parameters per polarisation are
+        - img [ref=e13300]
+        - text: (actually six — the authors include
+        - img [ref=e13370]
+        - text: as the sixth), with the constraint that the
+        - img [ref=e13384]
+        - text: limit reproduces the high-density
+        - emphasis [ref=e13393]: Gell-Mann–Brueckner
+        - text: result
+        - img [ref=e13395]
+        - text: (the leading coefficient of the
+        - img [ref=e13417]
+        - text: expansion). The 18 parameters in total (three polarisations, six parameters each) are the
+        - emphasis [ref=e13433]: only
+        - text: "parameters in the VWN functional; the VWN paper fixes them by a non-linear least-squares fit to the Ceperley–Alder QMC data (pp. 1204–1207 of the paper). The resulting coefficients are tabulated in Table 5 of the VWN paper, on p. 1204. The explicit numerical values (commonly reproduced in modern DFT-code documentation) are:"
+      - paragraph [ref=e13434]:
+        - img [ref=e13436]
+      - paragraph [ref=e13692]:
+        - text: The polarisation derivative
+        - img [ref=e13694]
+        - text: has the sixth set of coefficients, also tabulated in the paper (p. 1204). The reproduction of these 18 numbers
+        - emphasis [ref=e13711]: defines
+        - text: “the VWN functional” in the modern DFT literature — the self-same constants are in every quantum-chemistry code from 1980 onward.
+      - paragraph [ref=e13712]:
+        - strong [ref=e13713]: Page numbers of the key equations.
+        - text: The data being fit are introduced on p. 1201 (Tables 1 and 2 of the VWN paper). The parameterisation form
+        - img [ref=e13715]:
+          - link [ref=e13718] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-vwn-pade"
+        - text: is Eq. (4.4), p. 1202. The form
+        - img [ref=e13727]:
+          - link [ref=e13730] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-vwn-form"
+        - text: is Eq. (4.5), p. 1202. The fitted parameters are in Table 5, p. 1204. The numerical tests on the UEG correlation energy are in Tables 6 and 7, pp. 1204 and 1206. The discussion of “what the fit misses” is on pp. 1206–1208.
+      - paragraph [ref=e13738]:
+        - strong [ref=e13739]: Why VWN is the “standard” LSDA correlation parameterisation.
+        - text: "There are three reasons (the paper lists them, p. 1200, as its own motivation): (i) VWN has the"
+        - emphasis [ref=e13740]: correct
+        - text: spin-dependence through the stiffness formula
+        - img [ref=e13742]:
+          - link [ref=e13745] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-vwn-form"
+        - text: ", not just a quadratic interpolation between"
+        - img [ref=e13754]
+        - text: and
+        - img [ref=e13764]
+        - text: ; (ii) the 5-parameter Padé form
+        - img [ref=e13774]:
+          - link [ref=e13777] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-vwn-pade"
+        - text: has the right
+        - emphasis [ref=e13785]: high-density
+        - text: (
+        - img [ref=e13787]
+        - text: ) and low-density (
+        - img [ref=e13800]
+        - text: ) limits, matching the Gell-Mann–Brueckner expansion at high density and the Wigner crystal limit at low density; and (iii) the fitted curve has a
+        - emphasis [ref=e13812]: small
+        - text: and uniformly distributed* residual (the VWN paper reports residuals of order
+        - img [ref=e13814]
+        - text: per electron on the Ceperley–Alder data points, p. 1204). The *modifie
+        - code [ref=e13831]: "d*' version \"VWN5\" is the re-parameterisation reported in the 1980 *erratum*; \"VWN3\" is the simplified form in the 1980 paper itself (without the $\\alpha_1 x^2$ correction term in \\eqref{eq:ch-05-lit-vwn-pade}). Most codes default to \"VWN3\" (= \"VWN\"), which is what the user requests with the keyword"
+        - text: "VWN`’ in Gaussian, ORCA, Psi4, etc. The “VWN5” variant is what one finds in the original Vosko–Wilk– Nusair (1980) paper’s erratum and is used in some plane-wave codes for reasons of historical continuity."
+      - paragraph [ref=e13832]:
+        - strong [ref=e13833]: Numerical result from the paper (p. 1204, Table 6).
+        - text: VWN reports the fitted correlation energy per electron
+        - img [ref=e13835]
+        - text: at
+        - img [ref=e13857]
+        - text: (Table 6, p. 1204) to compare against Ceperley–Alder. The values are
+        - img [ref=e13883]
+        - text: "(QMC:"
+        - img [ref=e13919]
+        - text: ),
+        - img [ref=e13932]
+        - text: "(QMC:"
+        - img [ref=e13968]
+        - text: ),
+        - img [ref=e13981]
+        - text: "(QMC:"
+        - img [ref=e14017]
+        - text: ),
+        - img [ref=e14030]
+        - text: "(QMC:"
+        - img [ref=e14067]
+        - text: ). The fit residuals are below
+        - img [ref=e14080]
+        - text: for
+        - img [ref=e14098]
+        - text: .
+      - heading "5.9.3 B88 (Becke 1988)" [level=3] [ref=e14119]
+      - paragraph [ref=e14120]:
+        - strong [ref=e14121]: Reference.
+        - text: Becke, A. D. “Density-functional exchange-energy approximation with correct asymptotic behavior.”
+        - emphasis [ref=e14122]: Physical Review A
+        - strong [ref=e14123]: "1988"
+        - text: ","
+        - emphasis [ref=e14124]: "38"
+        - text: "(6), 3098–3100. DOI:"
+        - link "10.1103/PhysRevA.38.3098" [ref=e14125] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevA.38.3098
+        - text: . The paper is 3 pages (pp. 3098–3100 of PRA vol. 38). It has been cited more than 10,000 times — the most-cited
+        - emphasis [ref=e14126]: single
+        - text: GGA exchange paper.
+      - paragraph [ref=e14127]:
+        - strong [ref=e14128]: Authors’ own words (abstract, p. 3098).
+        - emphasis [ref=e14129]:
+          - text: “A new approximation for the exchange-energy functional of density-functional theory is proposed. The approximation satisfies the virial-related constraint of the exact functional on the exchange-energy density
+          - img [ref=e14131]
+          - text: and correctly describes the
+          - img [ref=e14140]
+          - text: asymptotic behavior of
+          - img [ref=e14153]
+          - text: in atomic, molecular, and solid-state systems. Numerical tests on the noble gases He through Xe demonstrate that the new approximation provides substantially improved exchange energies relative to the conventional local (spin-)density approximation.”
+        - text: That is the
+        - emphasis [ref=e14161]: "thesis of the paper: the LDA has the *wrong"
+        - text: asymptotic behaviour for
+        - img [ref=e14163]
+        - text: (it decays as
+        - img [ref=e14172]
+        - text: ", not as"
+        - img [ref=e14194]
+        - text: ), and the GGA correction can be made to fix this by an
+        - emphasis [ref=e14206]: empirical
+        - text: fit to noble-gas exchange energies.
+      - paragraph [ref=e14207]:
+        - strong [ref=e14208]: The B88 enhancement factor (Eq. (8), p. 3100).
+        - text: The B88 exchange energy is written (Eq. (1) of the paper, p. 3098) as the LDA exchange plus a gradient correction
+      - img [ref=e14210]:
+        - generic [ref=e14214]:
+          - img [ref=e14215]
+          - img [ref=e14311]
+      - paragraph [ref=e14320]:
+        - text: where the
+        - emphasis [ref=e14321]: Becke
+        - text: reduced gradient is (Eq. (2) of the paper, p. 3098)
+      - img [ref=e14323]:
+        - generic [ref=e14327]:
+          - img [ref=e14328]
+          - img [ref=e14391]
+      - paragraph [ref=e14400]: "The enhancement-factor form of B88 is obtained by dividing the LDA exchange by itself, and writing the gradient term as a multiple of the LDA:"
+      - img [ref=e14402]:
+        - generic [ref=e14406]:
+          - img [ref=e14407]
+          - img [ref=e14456]
+      - paragraph [ref=e14465]:
+        - text: This is equation (8) of the paper, on p. 3100. (The relationship between Becke’s
+        - img [ref=e14467]
+        - text: of
+        - img [ref=e14476]:
+          - link [ref=e14479] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-b88-x"
+        - text: and the
+        - emphasis [ref=e14487]: modern
+        - text: reduced gradient
+        - img [ref=e14489]
+        - text: of
+        - img [ref=e14523]:
+          - link [ref=e14526] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-reduced-gradient"
+        - text: is
+        - img [ref=e14535]
+        - text: ", so the parameter values"
+        - img [ref=e14570]
+        - text: and
+        - img [ref=e14576]
+        - text: are
+        - emphasis [ref=e14581]: different
+        - text: in the two conventions. In Becke’s original
+        - img [ref=e14583]
+        - text: convention, the standard parameters are
+        - img [ref=e14592]
+        - text: and
+        - img [ref=e14612]
+        - text: ; in the modern
+        - img [ref=e14627]
+        - text: convention used throughout this chapter, the same B88 enhancement factor has
+        - img [ref=e14633]
+        - text: and
+        - img [ref=e14653]
+        - text: in atomic units. The user should always check the convention when implementing B88.)
+      - paragraph [ref=e14705]:
+        - strong [ref=e14706]: Constraint 1 — the LSD limit.
+        - text: Substituting
+        - img [ref=e14708]
+        - text: into
+        - img [ref=e14718]:
+          - link [ref=e14721] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-b88-fx"
+        - text: ":"
+      - paragraph [ref=e14729]:
+        - img [ref=e14731]:
+          - generic [ref=e14735]:
+            - img [ref=e14736]
+            - img [ref=e14810]
+      - paragraph [ref=e14819]: The B88 enhancement factor recovers the LDA at uniform density, as it must.
+      - paragraph [ref=e14820]:
+        - strong [ref=e14821]:
+          - text: Constraint 2 — the asymptotic
+          - img [ref=e14823]
+          - text: behaviour of
+          - img [ref=e14836]
+          - text: (p. 3098, Eq. (3)–(7)).
+        - text: Becke shows (p. 3098) that the
+        - emphasis [ref=e14844]: exact
+        - text: exchange energy density of a many-electron system decays as
+        - img [ref=e14846]
+        - text: in the asymptotic region of an atom or molecule,
+        - emphasis [ref=e14858]: not
+        - text: as
+        - img [ref=e14860]
+        - text: "as the LDA would give. The argument is as follows (the derivation is the heart of the paper):"
+      - blockquote [ref=e14881]:
+        - paragraph [ref=e14882]:
+          - text: “The exchange-energy density is given by
+          - img [ref=e14884]:
+            - generic [ref=e14888]:
+              - img [ref=e14889]
+              - img [ref=e14970]
+          - text: In the asymptotic region (
+          - img [ref=e14980]
+          - text: ), the Kohn–Sham orbitals decay as
+          - img [ref=e14990]
+          - text: with
+          - img [ref=e15026]
+          - text: . Substituting, the numerator of
+          - img [ref=e15058]
+          - text: decays as
+          - img [ref=e15067]
+          - text: ", and the denominator decays as"
+          - img [ref=e15110]
+          - text: . The ratio therefore decays as
+          - img [ref=e15141]
+          - text: ", which is dominated by the"
+          - emphasis [ref=e15222]: smallest
+          - img [ref=e15224]
+          - text: — the highest occupied* orbital’s decay constant
+          - img [ref=e15233]
+          - text: . Since the HOMO decays as
+          - img [ref=e15265]
+          - text: and the density decays as
+          - img [ref=e15279]
+          - text: ", the ratio decays as"
+          - img [ref=e15295]
+          - text: .”
+      - paragraph [ref=e15305]:
+        - text: This is the
+        - img [ref=e15307]
+        - text: asymptotic that LDA gets wrong. The B88 correction gets it right
+        - emphasis [ref=e15319]: because
+        - text: the gradient enhancement factor
+        - img [ref=e15321]:
+          - link [ref=e15324] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-b88-fx"
+        - text: asymptotes to a finite negative value
+      - img [ref=e15333]:
+        - generic [ref=e15337]:
+          - img [ref=e15338]
+          - img [ref=e15411]
+      - paragraph [ref=e15420]:
+        - text: which converts the LDA’s
+        - img [ref=e15422]
+        - text: decay to
+        - img [ref=e15444]
+        - text: ", a different power of"
+        - img [ref=e15491]
+        - text: . Becke’s argument (p. 3099) is that the
+        - img [ref=e15497]
+        - text: behaviour of
+        - img [ref=e15510]
+        - text: corresponds, in the density picture, to a particular
+        - emphasis [ref=e15518]: "integrate`d"
+        - text: ’ decay of the exchange energy that the B88 form captures correctly through its parameter
+        - img [ref=e15520]
+        - text: . The correct asymptotic behaviour is recovered
+        - emphasis [ref=e15525]: only
+        - text: if the denominator
+        - img [ref=e15527]
+        - text: "is in the enhancement factor (a numerator-only correction would not give the right asymptotics). This is the central design point of the B88 form: a"
+        - emphasis [ref=e15541]: rational
+        - text: enhancement factor, not a polynomial.
+      - paragraph [ref=e15542]:
+        - strong [ref=e15543]:
+          - text: Parameter
+          - img [ref=e15545]
+          - text: — fitting the noble gases (p. 3099).
+        - text: The parameter
+        - img [ref=e15551]
+        - text: is fixed by fitting the exact-exchange energies of the six noble gases He, Ne, Ar, Kr, Xe, Rn (Becke uses Hartree–Fock values, which for the noble-gas atoms are
+        - emphasis [ref=e15570]: exact
+        - text: in the sense of being non-relativistic, infinite-basis-set HF). The fit is a one-parameter non-linear least squares (with
+        - img [ref=e15572]
+        - text: held fixed). The fitted value
+        - img [ref=e15578]
+        - text: is the
+        - emphasis [ref=e15588]: minimum
+        - text: of the sum-of-squares over the noble gases. This is the only fit that B88 does — B88 has
+        - emphasis [ref=e15589]: one
+        - text: fitted parameter, in stark contrast to PBE’s
+        - emphasis [ref=e15590]: zero
+        - text: fitted parameters (the constraint-based alternative).
+      - paragraph [ref=e15591]:
+        - strong [ref=e15592]:
+          - text: Parameter
+          - img [ref=e15594]
+          - text: — the asymptotic correction (p. 3100).
+        - text: The parameter
+        - img [ref=e15600]
+        - text: is
+        - emphasis [ref=e15605]: not
+        - text: fit to the noble gases; it is chosen so that the asymptotic enhancement of
+        - img [ref=e15607]:
+          - link [ref=e15610] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-b88-fx-asym"
+        - text: gives the correct
+        - img [ref=e15619]
+        - text: behaviour. Becke’s choice (p. 3100, end of the paper) is
+        - img [ref=e15632]
+        - text: in the
+        - img [ref=e15647]
+        - text: convention; in the modern
+        - img [ref=e15656]
+        - text: convention this is
+        - img [ref=e15662]
+        - text: a.u. Numerical tests on the noble gases (Table I, p. 3100) show the B88 exchange energy to within
+        - img [ref=e15677]
+        - text: kcal/mol of the exact-exchange reference for the heavy noble gases (Ar, Kr, Xe) and within
+        - img [ref=e15685]
+        - text: kcal/mol for He and Ne (the lightest gases have the worst fit because the gradient is most extreme there — the asymptotic correction is dominant).
+      - paragraph [ref=e15692]:
+        - strong [ref=e15693]: Numerical result from the paper (Table I, p. 3100).
+        - text: "Becke reports (Table I, p. 3100) the exchange energies of He, Ne, Ar, Kr, Xe from LDA, B88, and exact exchange. The numbers are (in Hartree):"
+      - paragraph [ref=e15694]:
+        - img [ref=e15696]
+      - paragraph [ref=e16060]:
+        - text: (All values in Hartree.) The LDA errors are 1–3% (the LDA
+        - emphasis [ref=e16061]: under
+        - text: "-estimates the magnitude of the exchange energy of noble gases, because the LDA gradient correction is"
+        - emphasis [ref=e16062]: opposite
+        - text: in sign to the correct one for these nearly uniform systems). B88 reduces the error to
+        - img [ref=e16064]
+        - text: for all the noble gases. The fitted parameter
+        - img [ref=e16076]
+        - text: is the value that gives this agreement.
+      - paragraph [ref=e16090]:
+        - strong [ref=e16091]: Why B88 is the “first” GGA exchange that everyone uses.
+        - text: The GGA exchange of Langreth–Mehl 1983 (
+        - link "Phys. Rev. B 28, 1809" [ref=e16092] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.28.1809
+        - text: ) preceded B88 by 5 years, but it was the
+        - emphasis [ref=e16093]: real-space
+        - text: LM functional (a Bessel-function-weighted gradient correction) that was
+        - emphasis [ref=e16094]: never
+        - text: widely used in chemistry because it was
+        - emphasis [ref=e16095]: not
+        - text: numerically stable for molecular densities. B88’s contribution was the
+        - emphasis [ref=e16096]: simple
+        - text: rational form
+        - img [ref=e16098]:
+          - link [ref=e16101] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-b88-fx"
+        - text: that (i) recovers the LDA at
+        - img [ref=e16110]
+        - text: ", (ii) asymptotes to a finite enhancement at"
+        - img [ref=e16120]
+        - text: (giving the correct
+        - img [ref=e16130]
+        - text: decay), (iii) has
+        - emphasis [ref=e16142]: one
+        - text: fitted parameter (so it can be tested on systems it wasn’t fit to), and (iv) is
+        - emphasis [ref=e16143]:
+          - text: chea
+          - code [ref=e16144]: p*' to evaluate (no Bessel functions, no special functions, just a rational function of the density and its gradient). The B88 form fits in a single equation, and that simplicity is what made it the workhorse of chemistry-focused DFT for the next 25 years. B88 is the *empirical* counterpart to PBE's *constraint-base
+          - text: d
+        - text: ’ approach — the two together span the design space of GGA exchange.
+      - heading "5.9.4 LYP (Lee, Yang, Parr 1988)" [level=3] [ref=e16145]
+      - paragraph [ref=e16146]:
+        - strong [ref=e16147]: Reference.
+        - text: Lee, C.; Yang, W.; Parr, R. G. “Development of the Colle–Salvetti correlation-energy formula into a functional of the electron density.”
+        - emphasis [ref=e16148]: Physical Review B
+        - strong [ref=e16149]: "1988"
+        - text: ","
+        - emphasis [ref=e16150]: "37"
+        - text: "(2), 785–789. DOI:"
+        - link "10.1103/PhysRevB.37.785" [ref=e16151] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.37.785
+        - text: . The paper is 5 pages (pp. 785–789 of PRB vol. 37).
+      - paragraph [ref=e16152]:
+        - strong [ref=e16153]: Authors’ own words (abstract, p. 785).
+        - emphasis [ref=e16154]:
+          - text: “An approximate formula for the dynamic correlation energy of an electronic system, in terms of its charge density
+          - img [ref=e16156]
+          - text: and the gradient of that density
+          - img [ref=e16169]
+          - text: ", is developed. The formula is derived from the Colle–Salvetti expression for the correlation energy of a two-electron Hartree–Fock density matrix. The functional"
+          - img [ref=e16188]
+          - text: so obtained satisfies several sum rules, recovers the uniform-electron-gas limit, and reproduces correlation energies of atoms and small molecules to within a few percent.”
+        - text: That is the
+        - emphasis [ref=e16202]: "thesis of the paper: the Colle–Salvetti 1975 *wavefunction-base`d"
+        - text: ’ correlation formula can be
+        - emphasis [ref=e16203]: reformulated
+        - text: ’ as a density functional
+        - emphasis [ref=e16204]:
+          - text: ", without any orbital dependence, and the resulting density functional — once the kinetic-energy density"
+          - img [ref=e16206]
+          - text: is approximated by its Thomas–Fermi form — is a *closed-form
+        - text: expression in
+        - img [ref=e16212]
+        - text: ","
+        - img [ref=e16218]
+        - text: ","
+        - img [ref=e16230]
+        - text: ", and"
+        - img [ref=e16241]
+        - text: .
+      - paragraph [ref=e16246]:
+        - strong [ref=e16247]: The Colle–Salvetti starting point (p. 785).
+        - text: Colle and Salvetti (1975,
+        - link "Theor. Chim. Acta 37, 329" [ref=e16248] [cursor=pointer]:
+          - /url: https://doi.org/10.1007/BF01102856
+        - text: ) proposed a wavefunction-based correlation-energy formula for a
+        - emphasis [ref=e16249]: two-electron
+        - text: Hartree–Fock pair density, depending on the density
+        - img [ref=e16251]
+        - text: and a
+        - emphasis [ref=e16263]: correlation factor
+        - img [ref=e16265]
+        - text: that depends on the
+        - emphasis [ref=e16281]: "interelectroni`c"
+        - text: ’ distance
+        - img [ref=e16283]
+        - text: and the kinetic-energy density. The 1988 Lee–Yang–Parr paper’s contribution is the
+        - emphasis [ref=e16293]: algebraic steps
+        - text: that turn the CS-1975 pair-density integral into a
+        - emphasis [ref=e16294]: local
+        - text: functional of
+        - img [ref=e16296]
+        - text: — i.e. an integrand that is a function of
+        - img [ref=e16309]
+        - text: ","
+        - img [ref=e16315]
+        - text: ","
+        - img [ref=e16323]
+        - text: ", and"
+        - img [ref=e16334]
+        - text: at the
+        - emphasis [ref=e16339]: same point
+        - img [ref=e16341]
+        - text: ", with no explicit"
+        - img [ref=e16348]
+        - text: dependence.
+      - paragraph [ref=e16358]:
+        - strong [ref=e16359]: The LYP functional form (Eq. (7) of the paper, p. 787).
+        - text: The LYP correlation energy is written (Eq. (7) of the paper, p. 787) as
+      - img [ref=e16361]:
+        - generic [ref=e16365]:
+          - img [ref=e16366]
+          - img [ref=e16675]
+      - paragraph [ref=e16683]: This is the full LYP formula (Eq. (7) of the paper, p. 787, written here in a more readable form by expanding the brackets). The four empirical parameters are
+      - img [ref=e16685]:
+        - generic [ref=e16689]:
+          - img [ref=e16690]
+          - img [ref=e16745]
+      - paragraph [ref=e16753]:
+        - text: The constant
+        - img [ref=e16755]
+        - text: is the Fermi-gas kinetic-energy coefficient that appears inside the bracket. The LYP form uses
+        - img [ref=e16807]
+        - text: ","
+        - img [ref=e16813]
+        - text: ", and"
+        - img [ref=e16821]
+        - text: — but the
+        - emphasis [ref=e16831]: Laplacian
+        - img [ref=e16833]
+        - text: is the
+        - emphasis [ref=e16843]: non-local
+        - text: "ingredient that distinguishes LYP from Becke’s later GGA correlation functionals. (Note: the modern LYP form is usually written in the equivalent"
+        - emphasis [ref=e16844]: no-Laplacian
+        - text: form using the orbital kinetic-energy density
+        - img [ref=e16846]
+        - text: ", via the identity"
+        - img [ref=e16885]
+        - text: in the single-particle case, or by using the “
+        - img [ref=e16926]
+        - text: "-substitution”"
+        - img [ref=e16932]
+        - text: in the two-electron case. The original LYP paper has the Laplacian form of
+        - img [ref=e16949]:
+          - link [ref=e16952] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-lyp-form"
+        - text: ; the
+        - img [ref=e16961]
+        - text: "-substitution form is a later reformulation by Miehlich"
+        - emphasis [ref=e16966]: et al.
+        - text: ", 1989, Chem. Phys. Lett. 157, 200.)"
+      - paragraph [ref=e16967]:
+        - strong [ref=e16968]:
+          - text: Step-by-step derivation of
+          - img [ref=e16970]:
+            - link [ref=e16973] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-lyp-form"
+          - text: from the Colle–Salvetti formula (pp. 786–787).
+        - text: The CS-1975 correlation energy of a
+        - emphasis [ref=e16981]: two-electron
+        - text: HF density is
+      - img [ref=e16983]:
+        - generic [ref=e16987]:
+          - img [ref=e16988]
+          - img [ref=e17086]
+      - paragraph [ref=e17094]:
+        - text: where
+        - img [ref=e17096]
+        - text: is a
+        - emphasis [ref=e17159]: Kato-type
+        - text: correlation factor with
+        - img [ref=e17161]
+        - text: a function of the local kinetic-energy density (p. 786 of LYP). The CS form depends on the interelectronic distance
+        - img [ref=e17170]
+        - text: —
+        - emphasis [ref=e17180]: explicitly
+        - text: . The LYP step is to expand
+        - img [ref=e17182]
+        - text: for small
+        - img [ref=e17188]
+        - text: (the
+        - emphasis [ref=e17198]: correlation hole
+        - text: is short-ranged, with characteristic length
+        - img [ref=e17200]
+        - text: ) and substitute the local-density approximation
+        - img [ref=e17214]
+        - text: depending on the kinetic-energy density at
+        - img [ref=e17237]
+        - text: . With this substitution, the integrand of
+        - img [ref=e17244]:
+          - link [ref=e17247] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-lyp-cs"
+        - text: becomes a
+        - emphasis [ref=e17255]: local
+        - text: function of
+        - img [ref=e17257]
+        - text: and the resulting expression, after performing the integral over
+        - img [ref=e17264]
+        - text: at fixed
+        - img [ref=e17274]
+        - text: ", gives"
+        - img [ref=e17284]:
+          - link [ref=e17287] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-lyp-form"
+        - text: (p. 787 of LYP, Eq. (7)).
+      - paragraph [ref=e17295]:
+        - strong [ref=e17296]: Where the four parameters come from (p. 787).
+        - text: The parameters
+        - img [ref=e17298]
+        - text: of
+        - img [ref=e17316]:
+          - link [ref=e17319] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-lyp-params"
+        - text: are
+        - emphasis [ref=e17327]: fit to the helium atom
+        - text: — the only system for which the
+        - emphasis [ref=e17328]:
+          - text: exact correlation energy is known analytically (the Hylleraas wavefunction of Kinoshita 1959 gives
+          - img [ref=e17330]
+          - text: relative to the Hartree–Fock value). The LYP paper fits the four parameters so that the LYP functional reproduces
+          - img [ref=e17362]
+          - text: exactly. The fit is a single non-linear least squares; the four parameters of
+          - img [ref=e17378]:
+            - link [ref=e17381] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-lyp-params"
+          - text: are *the
+        - text: result. The parameters have no deeper physical meaning — they are empirical, fit to one atom. The LYP paper’s remarkable claim is that the same four parameters, fit to He, also reproduce the correlation energies of Li, Be, …, Ne and of small molecules (H
+        - img [ref=e17390]
+        - text: ", N"
+        - img [ref=e17397]
+        - text: ", CO, H"
+        - img [ref=e17404]
+        - text: O) to within a few percent (Table I, p. 788). This is the
+        - emphasis [ref=e17410]: transferability
+        - text: test of LYP.
+      - paragraph [ref=e17411]:
+        - strong [ref=e17412]: Numerical result from the paper (Table I, p. 788).
+        - text: LYP reports the correlation energy of He, Li, Be, B, C, N, O, F, Ne, and a small set of diatomics (H
+        - img [ref=e17414]
+        - text: ", LiH, Li"
+        - img [ref=e17421]
+        - text: ", N"
+        - img [ref=e17428]
+        - text: ", CO, H"
+        - img [ref=e17435]
+        - text: O, …). The LYP correlation energies agree with the
+        - emphasis [ref=e17441]: exact
+        - text: (Hylleraas / Configuration-Interaction) values to within 2% for the closed-shell atoms and to within 5% for the open-shell atoms and small molecules. By contrast, the LSDA (VWN) correlation energy has a
+        - emphasis [ref=e17442]: typical
+        - text: error of 20–30% in the same table (p. 788), reflecting the fact that the LSDA misses the
+        - emphasis [ref=e17443]: inhomogeneity
+        - text: correction that LYP captures through
+        - img [ref=e17445]
+        - text: and
+        - img [ref=e17453]
+        - text: .
+      - paragraph [ref=e17463]:
+        - strong [ref=e17464]: Why LYP is the standard GGA correlation.
+        - text: "Three reasons explain why LYP, not PBE correlation or PW91 correlation, is the GGA correlation paired with B88 in BLYP and with B88-LSD in B3LYP:"
+      - list [ref=e17465]:
+        - listitem [ref=e17466]:
+          - paragraph [ref=e17467]:
+            - strong [ref=e17468]: It is “non-empirical” in a different sense from PBE.
+            - text: PBE correlation (Eq.
+            - img [ref=e17470]:
+              - link [ref=e17473] [cursor=pointer]:
+                - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-pbe-h"
+            - text: of §5.9.1 above) is
+            - emphasis [ref=e17481]: constraint-based
+            - text: ’ but not fitted* — it
+            - emphasis [ref=e17482]: replaces
+            - text: the LDA correlation with a correction to it. LYP is a
+            - emphasis [ref=e17483]: replacement
+            - text: of the LDA correlation that does not have the LDA correlation as its base. For a
+            - emphasis [ref=e17484]: replacement
+            - text: correlation, fitting to a single atom (helium) is more transferable than building a constraint ladder.
+        - listitem [ref=e17485]:
+          - paragraph [ref=e17486]:
+            - strong [ref=e17487]:
+              - text: It is the only GGA correlation with a closed-form
+              - img [ref=e17489]
+              - text: dependence.
+            - text: The Laplacian term in
+            - img [ref=e17500]:
+              - link [ref=e17503] [cursor=pointer]:
+                - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-lyp-form"
+            - text: is the only local GGA-correlation ingredient that is
+            - emphasis [ref=e17511]: not
+            - text: in PBE or PW91. For systems where the
+            - emphasis [ref=e17512]: curvature
+            - text: of the density matters — covalent bonds, transition-metal complexes, aromatic systems — the Laplacian gives LYP an advantage that PBE’s reduced-gradient form does not. The Laplacian is also the reason LYP can be reformulated with the kinetic-energy density
+            - img [ref=e17514]
+            - text: via the identity
+            - img [ref=e17520]
+            - text: in the two-electron case (Miehlich
+            - emphasis [ref=e17536]: et al.
+            - text: 1989 reformulation).
+        - listitem [ref=e17537]:
+          - paragraph [ref=e17538]:
+            - strong [ref=e17539]: It works well with B88 exchange.
+            - text: Becke’s 1988 B88 paper (above) used a placeholder correlation (the LDA form), and Becke explicitly stated (PRA 38, 3099, second column) that “the natural correlation partner for B88 exchange is the Lee–Yang–Parr (LYP) correlation, which we have used in our subsequent work [B3LYP 1993]”. B88 exchange + LYP correlation =
+            - strong [ref=e17540]: BLYP
+            - text: ", the canonical GGA of organic chemistry. The B3LYP 1993 paper (Becke, J. Chem. Phys. 98, 5648) uses the LYP correlation as its"
+            - emphasis [ref=e17541]: full
+            - text: correlation, not as a
+            - emphasis [ref=e17542]: correction
+            - text: to VWN, with VWN3 (not VWN5) as a minor secondary* correlation term that contributes
+            - img [ref=e17544]
+            - text: of the total.
+      - paragraph [ref=e17554]:
+        - strong [ref=e17555]: Numerical result (p. 787, Eq. (7)).
+        - text: The LYP paper gives one numerical check on a closed-shell system. For the He atom with
+        - img [ref=e17557]
+        - text: and
+        - img [ref=e17597]
+        - text: ", the LYP formula"
+        - img [ref=e17618]:
+          - link [ref=e17621] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-lyp-form"
+        - text: gives
+        - img [ref=e17630]
+        - text: ", in"
+        - emphasis [ref=e17665]: exact
+        - text: agreement with the Hylleraas value (Kinoshita 1959). This is the only constraint that fixes the four parameters of
+        - img [ref=e17667]:
+          - link [ref=e17670] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-05-lit-lyp-params"
+        - text: ; the
+        - emphasis [ref=e17678]: "goo`d"
+        - text: ’ performance on other systems (Table I, p. 788) is a prediction.
+      - heading "5.9.5 Bibliography for this section" [level=3] [ref=e17679]
+      - paragraph [ref=e17680]: The four foundational papers, with full references, page numbers, DOIs, and URLs.
+      - list [ref=e17681]:
+        - listitem [ref=e17682]:
+          - paragraph [ref=e17683]:
+            - strong [ref=e17684]: PBE
+            - text: ": Perdew, J. P.; Burke, K.; Ernzerhof, M. “Generalized Gradient Approximation Made Simple.”"
+            - emphasis [ref=e17685]: Physical Review Letters
+            - strong [ref=e17686]: "1996"
+            - text: ","
+            - emphasis [ref=e17687]: "77"
+            - text: "(18), 3865–3868. DOI:"
+            - link "10.1103/PhysRevLett.77.3865" [ref=e17688] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRevLett.77.3865
+            - text: ". URL:"
+            - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.77.3865" [ref=e17689] [cursor=pointer]:
+              - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.77.3865
+            - text: .
+          - paragraph [ref=e17690]:
+            - text: "Erratum: Perdew, J. P.; Burke, K.; Ernzerhof, M."
+            - emphasis [ref=e17691]: Physical Review Letters
+            - strong [ref=e17692]: "1997"
+            - text: ","
+            - emphasis [ref=e17693]: "78"
+            - text: "(7), 1396. DOI:"
+            - link "10.1103/PhysRevLett.78.1396" [ref=e17694] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRevLett.78.1396
+            - text: ". URL:"
+            - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.78.1396" [ref=e17695] [cursor=pointer]:
+              - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.78.1396
+            - text: .
+        - listitem [ref=e17696]:
+          - paragraph [ref=e17697]:
+            - strong [ref=e17698]: VWN
+            - text: ": Vosko, S. H.; Wilk, L.; Nusair, M. “Accurate spin-dependent electron liquid correlation energies for local spin density calculations: a critical analysis.”"
+            - emphasis [ref=e17699]: Canadian Journal of Physics
+            - strong [ref=e17700]: "1980"
+            - text: ","
+            - emphasis [ref=e17701]: "58"
+            - text: "(8), 1200–1211. DOI:"
+            - link "10.1139/p80-159" [ref=e17702] [cursor=pointer]:
+              - /url: https://doi.org/10.1139/p80-159
+            - text: ". URL:"
+            - link "https://doi.org/10.1139/p80-159" [ref=e17703] [cursor=pointer]:
+              - /url: https://doi.org/10.1139/p80-159
+            - text: .
+          - paragraph [ref=e17704]:
+            - text: "Underlying QMC data: Ceperley, D. M.; Alder, B. J. “Ground State of the Electron Gas by a Stochastic Method.”"
+            - emphasis [ref=e17705]: Physical Review Letters
+            - strong [ref=e17706]: "1980"
+            - text: ","
+            - emphasis [ref=e17707]: "45"
+            - text: "(7), 566–569. DOI:"
+            - link "10.1103/PhysRevLett.45.566" [ref=e17708] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRevLett.45.566
+            - text: ". URL:"
+            - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.45.566" [ref=e17709] [cursor=pointer]:
+              - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.45.566
+            - text: .
+        - listitem [ref=e17710]:
+          - paragraph [ref=e17711]:
+            - strong [ref=e17712]: B88
+            - text: ": Becke, A. D. “Density-functional exchange-energy approximation with correct asymptotic behavior.”"
+            - emphasis [ref=e17713]: Physical Review A
+            - strong [ref=e17714]: "1988"
+            - text: ","
+            - emphasis [ref=e17715]: "38"
+            - text: "(6), 3098–3100. DOI:"
+            - link "10.1103/PhysRevA.38.3098" [ref=e17716] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRevA.38.3098
+            - text: ". URL:"
+            - link "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.38.3098" [ref=e17717] [cursor=pointer]:
+              - /url: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.38.3098
+            - text: .
+        - listitem [ref=e17718]:
+          - paragraph [ref=e17719]:
+            - strong [ref=e17720]: LYP
+            - text: ": Lee, C.; Yang, W.; Parr, R. G. “Development of the Colle–Salvetti correlation-energy formula into a functional of the electron density.”"
+            - emphasis [ref=e17721]: Physical Review B
+            - strong [ref=e17722]: "1988"
+            - text: ","
+            - emphasis [ref=e17723]: "37"
+            - text: "(2), 785–789. DOI:"
+            - link "10.1103/PhysRevB.37.785" [ref=e17724] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRevB.37.785
+            - text: ". URL:"
+            - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.37.785" [ref=e17725] [cursor=pointer]:
+              - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.37.785
+            - text: .
+          - paragraph [ref=e17726]:
+            - text: "Underlying wavefunction formula: Colle, R.; Salvetti, O. “Approximate expression for the total energy of a system of N electrons interacting with each other and with an external potential.”"
+            - emphasis [ref=e17727]: "Theoretica Chimica Act`a"
+            - text: ’
+            - strong [ref=e17728]: "1975"
+            - text: ","
+            - emphasis [ref=e17729]: "37"
+            - text: "(4), 329–331. DOI:"
+            - link "10.1007/BF01102856" [ref=e17730] [cursor=pointer]:
+              - /url: https://doi.org/10.1007/BF01102856
+            - text: .
+          - paragraph [ref=e17731]:
+            - text: The four-equation
+            - emphasis [ref=e17732]: system
+            - text: of the new PBE/LYP/B88 design space is summarised in Figure 1 of
+            - 'link "Becke, A. D. “Perspective: Fifty years of density-functional theory in chemical physics”,J. Chem. Phys.2014,140(18), 18A301" [ref=e17733] [cursor=pointer]':
+              - /url: https://doi.org/10.1063/1.4869598
+              - text: "Becke, A. D. “Perspective: Fifty years of density-functional theory in chemical physics”,"
+              - emphasis [ref=e17734]: J. Chem. Phys.
+              - strong [ref=e17735]: "2014"
+              - text: ","
+              - emphasis [ref=e17736]: "140"
+              - text: (18), 18A301
+            - text: . This 2014 perspective is a recommended modern reading on the relationships between PBE, B88, LYP, and the broader GGA zoo.
+      - separator [ref=e17737]
+      - blockquote [ref=e17738]:
+        - paragraph [ref=e17739]:
+          - text: "Next:"
+          - link "Chapter 06" [ref=e17740] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: — Basis sets
+  - contentinfo [ref=e17741]:
+    - generic [ref=e17742]:
+      - generic [ref=e17743]:
+        - img [ref=e17744]
+        - generic [ref=e17748]: DFT Notes
+        - paragraph [ref=e17749]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e17750]:
+        - generic [ref=e17751]:
+          - heading "Project" [level=3] [ref=e17752]
+          - list [ref=e17753]:
+            - listitem [ref=e17754]:
+              - link "Chapters map" [ref=e17755] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e17756]:
+              - link "Python codes" [ref=e17757] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e17758]:
+              - link "Contributing" [ref=e17759] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e17760]:
+              - link "Security" [ref=e17761] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e17762]:
+              - link "Design spec" [ref=e17763] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e17764]:
+              - link "GitHub ↗" [ref=e17765] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e17766]:
+          - heading "Built with" [level=3] [ref=e17767]
+          - list [ref=e17768]:
+            - listitem [ref=e17769]:
+              - link "Jekyll" [ref=e17770] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e17771]:
+              - link "MathJax 3" [ref=e17772] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e17773]:
+              - link "Mermaid" [ref=e17774] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e17775]:
+              - link "chenglou/pretext" [ref=e17776] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e17777]:
+              - link "Google Fonts" [ref=e17778] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e17779]:
+          - heading "Legal" [level=3] [ref=e17780]
+          - list [ref=e17781]:
+            - listitem [ref=e17782]:
+              - link "MIT License" [ref=e17783] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e17784]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e17786]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

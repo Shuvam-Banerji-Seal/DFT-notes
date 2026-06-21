@@ -1,0 +1,2732 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 03 — Hartree–Fock" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: Hartree–Fock is not a particularly good theory of electronic structure. It is, however, the theory that defines the vocabulary every later method is forced to speak.
+      - paragraph [ref=e30]:
+        - text: The Hartree–Fock (HF) approximation is the cornerstone of electronic-structure theory. It is the simplest wavefunction-based method that respects the Pauli principle exactly, and it installs the working vocabulary —
+        - emphasis [ref=e31]: orbital, Fock operator, self-consistent field, density matrix, Slater–Condon rules
+        - text: — that every later theory (post-HF, Kohn–Sham DFT with hybrid functionals, multireference methods, embedding) borrows verbatim. This chapter builds HF from the variational principle down to the working algorithm that runs in every production quantum-chemistry code.
+      - paragraph [ref=e32]: "By the end of this chapter you should be able to:"
+      - list [ref=e33]:
+        - listitem [ref=e34]: State the variational principle and the single-determinant Ansatz, and write down the Fock eigenvalue equation.
+        - listitem [ref=e35]:
+          - text: Derive the
+          - strong [ref=e36]: Roothaan–Hall
+          - text: matrix equation
+          - img [ref=e38]
+          - text: from the Fock operator expanded in a finite (in general non-orthogonal) basis.
+        - listitem [ref=e57]:
+          - text: Set up the
+          - strong [ref=e58]: unrestricted (Pople–Nesbet)
+          - text: equations for an open-shell system, and identify where spin contamination enters.
+        - listitem [ref=e59]:
+          - text: Distinguish
+          - strong [ref=e60]: direct
+          - text: from
+          - strong [ref=e61]: conventional
+          - text: SCF, and explain why the
+          - strong [ref=e62]: DIIS
+          - text: extrapolation is what every code actually does.
+        - listitem [ref=e63]:
+          - text: State
+          - strong [ref=e64]: Koopmans’ theorem
+          - text: ", derive it from the HF energy expression, and list the physical effects that cause it to fail."
+      - paragraph [ref=e65]:
+        - text: We rely on the notation and conventions established in
+        - link "chapter 01" [ref=e66] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: (second quantisation, spin-orbitals, Slater determinants) and
+        - link "chapter 02" [ref=e67] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: (many-body Hamiltonian, Slater–Condon rules in summary). We will re-use the basis-set technology of
+        - link "chapter 06" [ref=e68] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: — the worked example there,
+        - img [ref=e70]
+        - text: in STO-3G, is the numerical anchor for section 3.6 below.
+      - heading "3.1 The variational principle" [level=2] [ref=e79]
+      - paragraph [ref=e80]:
+        - text: The first Hohenberg–Kohn theorem (which we’ll meet properly in
+        - link "chapter 04" [ref=e81] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: ) is the
+        - strong [ref=e82]: variational principle
+        - text: ": for any normalised trial wavefunction"
+        - img [ref=e84]
+        - text: ","
+      - img [ref=e94]:
+        - generic [ref=e98]:
+          - img [ref=e99]
+          - img [ref=e138]
+      - paragraph [ref=e146]:
+        - text: The Hamiltonian
+        - img [ref=e148]
+        - text: is the
+        - emphasis [ref=e157]: exact
+        - text: electronic Hamiltonian in the Born–Oppenheimer approximation (
+        - link "chapter 02" [ref=e158] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: ", eq. 2.1) and"
+        - img [ref=e160]
+        - text: "is its exact ground-state energy. The inequality is sharp: equality holds only if"
+        - img [ref=e169]
+        - text: is the exact ground state. In practical calculations we never
+        - emphasis [ref=e178]: have
+        - text: the exact ground state; we have a
+        - emphasis [ref=e179]: parametrised family
+        - text: of trial wavefunctions and we minimise the energy over the parameters. The
+        - emphasis [ref=e180]: quality
+        - text: of the result is governed entirely by the flexibility of that family.
+      - paragraph [ref=e181]:
+        - text: Hartree–Fock is the
+        - strong [ref=e182]: best single-determinant
+        - text: Ansatz. We pick the Slater determinant (
+        - link "chapter 01" [ref=e183] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: ) that minimises the energy over the manifold of all Slater determinants built from
+        - img [ref=e185]
+        - text: "orthonormal spin-orbitals:"
+      - img [ref=e191]:
+        - generic [ref=e195]:
+          - img [ref=e196]
+          - img [ref=e243]
+      - paragraph [ref=e251]:
+        - text: The minimum is the
+        - strong [ref=e252]: Hartree–Fock energy
+        - img [ref=e254]
+        - text: ; the determinant that achieves it is the
+        - strong [ref=e263]: HF wavefunction
+        - img [ref=e265]
+        - text: . In what follows we work in atomic units (
+        - img [ref=e275]
+        - text: ); all energies are therefore in Hartree.
+      - blockquote [ref=e298]:
+        - paragraph [ref=e299]:
+          - strong [ref=e300]: Tip.
+          - text: The variational principle is what makes HF a
+          - emphasis [ref=e301]: useful
+          - text: approximation. Even though the single-determinant Ansatz is qualitatively wrong for almost every interesting system (the exact wavefunction is not a single determinant for any multi-electron system — see
+          - link "chapter 02" [ref=e302] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-02/
+          - text: ), the variational theorem guarantees that
+          - img [ref=e304]
+          - text: is an
+          - emphasis [ref=e313]: "upper boun`d"
+          - text: ’ on
+          - img [ref=e315]
+          - text: . This converts a vague “the Fock operator seems reasonable” into a quantitative, improvable statement.
+      - heading "3.2 The Fock operator" [level=2] [ref=e323]
+      - paragraph [ref=e324]:
+        - text: The variation of
+        - img [ref=e326]
+        - text: with respect to the spin-orbitals — subject to the orthonormality constraint
+        - img [ref=e348]
+        - text: — gives a one-electron eigenvalue equation. In the spin-orbital basis
+        - img [ref=e378]
+        - text: it reads
+      - img [ref=e388]:
+        - generic [ref=e392]:
+          - img [ref=e393]
+          - img [ref=e422]
+      - paragraph [ref=e430]:
+        - text: with the
+        - strong [ref=e431]: Fock operator
+      - img [ref=e433]:
+        - generic [ref=e437]:
+          - img [ref=e438]
+          - img [ref=e486]
+      - paragraph [ref=e494]: "The three terms are:"
+      - list [ref=e495]:
+        - listitem [ref=e496]:
+          - paragraph [ref=e497]:
+            - img [ref=e499]
+            - text: is the one-electron part — kinetic energy plus the external potential (electron–nuclear attraction in molecules, lattice potential in solids). In the Born–Oppenheimer picture the nuclei are classical point charges at fixed positions
+            - img [ref=e538]
+            - text: and
+            - img [ref=e549]
+            - text: .
+        - listitem [ref=e603]:
+          - paragraph [ref=e604]:
+            - img [ref=e606]
+            - text: is the
+            - strong [ref=e621]: Coulomb
+            - text: (or
+            - strong [ref=e622]: Hartree
+            - text: ) operator, defined by its action on an arbitrary spin-orbital
+            - img [ref=e624]
+            - text: ":"
+      - img [ref=e630]:
+        - generic [ref=e634]:
+          - img [ref=e635]
+          - img [ref=e720]
+      - paragraph [ref=e728]:
+        - text: with the
+        - strong [ref=e729]: single-particle density
+        - img [ref=e731]
+        - text: . This is just the classical electrostatic potential generated by the electron cloud, applied to
+        - img [ref=e778]
+        - text: .
+      - list [ref=e783]:
+        - listitem [ref=e784]:
+          - img [ref=e786]
+          - text: is the
+          - strong [ref=e801]: exchange
+          - text: "operator, again defined by its action:"
+      - img [ref=e803]:
+        - generic [ref=e807]:
+          - img [ref=e808]
+          - img [ref=e931]
+      - paragraph [ref=e939]:
+        - text: The “non-local” integration over
+        - img [ref=e941]
+        - text: — the prime — makes
+        - img [ref=e951]
+        - text: a
+        - emphasis [ref=e960]: non-local
+        - text: "operator: to compute"
+        - img [ref=e962]
+        - text: you need the value of
+        - img [ref=e988]
+        - text: at
+        - emphasis [ref=e996]: every other point in space
+        - text: . This is the origin of both the computational cost of HF (the
+        - img [ref=e998]
+        - text: two-electron integrals) and the conceptual bridge to DFT, where the
+        - emphasis [ref=e1013]: exchange–correlation hole
+        - text: of KS-DFT (
+        - link "chapter 05" [ref=e1014] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: ) plays the role of the non-locality of
+        - img [ref=e1016]
+        - text: .
+      - paragraph [ref=e1025]:
+        - text: The minus sign in
+        - img [ref=e1027]:
+          - link [ref=e1030] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-fock-operator"
+        - text: "is convention: the exchange operator"
+        - img [ref=e1038]
+        - text: is defined
+        - emphasis [ref=e1047]: positively
+        - text: in
+        - img [ref=e1049]:
+          - link [ref=e1052] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-exchange"
+        - text: ", but it appears in the Fock operator with a minus sign so that the"
+        - emphasis [ref=e1059]: exchange energy
+        - text: is negative (an attractive, stabilising effect — the exchange “hole” excludes same-spin electrons from each other’s neighbourhood, lowering their mutual Coulomb repulsion).
+      - blockquote [ref=e1060]:
+        - paragraph [ref=e1061]:
+          - strong [ref=e1062]: Tip.
+          - text: The exchange operator
+          - img [ref=e1064]
+          - text: is
+          - emphasis [ref=e1073]: non-local
+          - text: . The local approximation of this non-locality is what gives us
+          - strong [ref=e1074]: local-density approximation (LDA)
+          - text: in DFT (
+          - link "chapter 05" [ref=e1075] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: ). The exact exchange of HF and the
+          - emphasis [ref=e1076]: approximate
+          - text: exchange of LDA differ by the way the non-locality is handled, and that difference — not the correlation functional — is responsible for most of the observable gap between hybrid and pure DFT.
+      - paragraph [ref=e1077]: The HF energy can be written either as a sum over the orbital energies
+      - img [ref=e1079]:
+        - generic [ref=e1083]:
+          - img [ref=e1084]
+          - img [ref=e1141]
+      - paragraph [ref=e1149]:
+        - text: (the “sum of orbital energies double-counts the electron–electron repulsion, which is why we subtract the average
+        - img [ref=e1151]
+        - text: ”), or, in the more useful form for the self-consistent field iteration below,
+      - img [ref=e1171]:
+        - generic [ref=e1175]:
+          - img [ref=e1176]
+          - img [ref=e1244]
+      - paragraph [ref=e1252]:
+        - text: with
+        - img [ref=e1254]
+        - text: the classical nuclear–nuclear repulsion. The half-trace form
+        - img [ref=e1264]:
+          - link [ref=e1267] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-hf-energy-dm"
+        - text: is what we evaluate at every SCF step.
+      - heading "3.2.1 Mermaid — the Fock matrix and the energy components" [level=3] [ref=e1274]
+      - paragraph [ref=e1275]:
+        - text: The Fock operator
+        - img [ref=e1277]
+        - text: is the
+        - emphasis [ref=e1310]: potential
+        - text: that each orbital feels; the
+        - strong [ref=e1311]: energy
+        - text: is a different functional of the same ingredients, with a factor of
+        - img [ref=e1313]
+        - text: to correct the double counting of electron–electron repulsion. The diagram below pairs the Fock-matrix terms on the left with the energy components on the right.
+      - figure [ref=e1324]:
+        - code [ref=e1325]:
+          - document [ref=e1326]:
+            - generic [ref=e1328]:
+              - generic [ref=e1329]:
+                - generic [ref=e1334]: Energy components (E_HF)
+                - generic [ref=e1339]: Fock operator (one-electron potential)
+              - generic [ref=e1358]: counted twice in F → ÷2 here
+              - generic [ref=e1359]:
+                - generic [ref=e1365]:
+                  - text: T = ⟨T̂⟩
+                  - text: kinetic
+                - generic [ref=e1371]:
+                  - text: ⟨V_nuc⟩
+                  - text: electron–nuclear
+                - generic [ref=e1377]:
+                  - text: J = ⟨Ĵ⟩
+                  - text: classical Coulomb
+                - generic [ref=e1383]:
+                  - text: −K = −⟨K̂⟩
+                  - text: exchange
+                  - text: (stabilising, negative)
+                - generic [ref=e1389]:
+                  - text: V_nn
+                  - text: nuclear–nuclear
+                  - text: (classical)
+                - generic [ref=e1395]:
+                  - text: ĥ
+                  - text: kinetic +
+                  - text: nuclear attraction
+                - generic [ref=e1401]:
+                  - text: Ĵ[ρ]
+                  - text: Coulomb (Hartree)
+                  - text: classical e-e repulsion
+                - generic [ref=e1407]:
+                  - text: K̂[ρ]
+                  - text: exchange (non-local)
+                  - text: Pauli, same-spin only
+                - generic [ref=e1412]: F̂ = ĥ + Ĵ − K̂
+                - generic [ref=e1418]:
+                  - text: E_HF = T + V_nuc + J − K + V_nn
+                  - text: (½ Tr P (h + F) + V_nn)
+        - button "Download this diagram as a PNG" [ref=e1419] [cursor=pointer]:
+          - img [ref=e1420]
+          - generic [ref=e1423]: Download PNG
+      - paragraph [ref=e1424]: "Two things to notice:"
+      - list [ref=e1425]:
+        - listitem [ref=e1426]:
+          - text: The Coulomb energy
+          - img [ref=e1428]
+          - text: appears
+          - emphasis [ref=e1433]: with a factor of one
+          - text: in the energy expression but the Fock matrix contains the
+          - emphasis [ref=e1434]: full
+          - img [ref=e1436]
+          - text: . The factor of
+          - img [ref=e1442]
+          - text: in the energy trace formula compensates for the fact that
+          - img [ref=e1453]
+          - text: acts on the
+          - emphasis [ref=e1462]: same
+          - text: electron density that built it — every electron–electron pair is counted twice in
+          - img [ref=e1464]
+          - text: and the half undoes that.
+        - listitem [ref=e1470]:
+          - text: The exchange term enters the Fock matrix with a
+          - emphasis [ref=e1471]: minus
+          - text: sign (
+          - img [ref=e1473]
+          - text: ) but appears with a
+          - emphasis [ref=e1506]: minus
+          - text: sign in the energy too, so the energy contribution is
+          - img [ref=e1508]
+          - text: — the exchange energy is
+          - emphasis [ref=e1519]: attractive
+          - text: (it lowers the total energy relative to the classical Coulomb picture). This sign convention is the source of almost every confusion about HF energies; the diagram encodes the convention once and for all.
+      - heading "3.3 The self-consistent field" [level=2] [ref=e1520]
+      - paragraph [ref=e1521]:
+        - text: The Fock operator depends on the orbitals (through the density), and the orbitals are eigenfunctions of the Fock operator. We resolve the circularity by
+        - strong [ref=e1522]: iteration
+        - text: ":"
+      - list [ref=e1523]:
+        - listitem [ref=e1524]:
+          - text: Start from a guess for the density
+          - img [ref=e1526]
+          - text: . In practice this is built from the eigenfunctions of the core Hamiltonian
+          - img [ref=e1540]
+          - text: alone — i.e. a superposition-of-atoms guess — or from an extended Hückel calculation, or from the density of a previous calculation on a similar geometry.
+        - listitem [ref=e1549]:
+          - text: Build the Fock matrix
+          - img [ref=e1551]
+          - text: from
+          - img [ref=e1565]
+          - text: .
+        - listitem [ref=e1578]:
+          - text: Diagonalise
+          - img [ref=e1580]
+          - text: to get new orbitals and a new density
+          - img [ref=e1594]
+          - text: .
+        - listitem [ref=e1611]:
+          - text: Mix
+          - img [ref=e1613]
+          - text: and
+          - img [ref=e1627]
+          - text: for numerical stability.
+        - listitem [ref=e1644]: "Check convergence. If not converged, go to step 2. A minimal SCF loop in Python (using a pre-built one-electron Hamiltonian and two-electron integrals):"
+      - code [ref=e1648]: "import numpy as np def scf_loop(H_core, eri, S, n_elec, max_iter=100, tol=1e-8, mixing=0.3): \"\"\"Restricted HF SCF in a non-orthogonal AO basis. H_core : (K, K) one-electron Hamiltonian in the AO basis eri : (K, K, K, K) two-electron integrals (physicists' notation) S : (K, K) overlap matrix n_elec : int number of electrons \"\"\" K = H_core.shape[0] # Initial guess: diagonalise the core Hamiltonian evals, C = np.linalg.eigh(H_core, S) P = 2 * C[:, : n_elec // 2] @ C[:, : n_elec // 2].T for it in range(max_iter): # Build the Fock matrix J = np.einsum(\"pqrs,rs->pq\", eri, P) K = np.einsum(\"prqs,rs->pq\", eri, P) F = H_core + J - 0.5 * K # Transform to the orthogonal basis and diagonalise evals, C = np.linalg.eigh(F, S) # New density P_new = 2 * C[:, : n_elec // 2] @ C[:, : n_elec // 2].T # Check convergence and mix dP = np.linalg.norm(P_new - P) P = (1 - mixing) * P + mixing * P_new if dP < tol: print(f\" Converged in {it + 1} iterations (dP = {dP:.2e})\") break else: print(f\" WARNING: SCF did not converge in {max_iter} iterations\") E_elec = 0.5 * np.trace(P @ (H_core + F)) return E_elec, evals, C, P"
+      - paragraph [ref=e1649]:
+        - text: "The call `np.einsum’ is doing what a real quantum-chemistry code does in its innermost loop. In production, the ERI tensor is recomputed on the fly and never stored; this is the"
+        - emphasis [ref=e1650]: direct SCF
+        - text: trick we will examine in section 3.8. >
+        - strong [ref=e1651]: Warning.
+        - text: Plain density mixing is enough for stable
+      - blockquote [ref=e1652]:
+        - paragraph [ref=e1653]:
+          - text: closed-shell molecules. Open-shell, near-degenerate, or metallic systems need
+          - strong [ref=e1654]: level-shifting
+          - text: ","
+          - strong [ref=e1655]: DIIS
+          - text: (direct inversion in the iterative subspace), or both. Adding DIIS to the snippet above is a 20-line exercise and a real rite of passage — section 3.8 does exactly that.
+      - heading "3.4 The Slater–Condon rules" [level=2] [ref=e1656]
+      - paragraph [ref=e1657]:
+        - text: The matrix elements of
+        - img [ref=e1659]
+        - text: between two Slater determinants
+        - img [ref=e1669]
+        - text: and
+        - img [ref=e1682]
+        - text: are given by the
+        - strong [ref=e1694]: Slater–Condon rules
+        - text: ". For our purposes the only cases we need are:"
+      - table [ref=e1695]:
+        - rowgroup [ref=e1696]:
+          - row "Case" [ref=e1697]:
+            - columnheader "Case" [ref=e1698]
+            - columnheader [ref=e1699]:
+              - img [ref=e1701]
+        - rowgroup [ref=e1728]:
+          - row [ref=e1729]:
+            - cell [ref=e1730]:
+              - img [ref=e1732]
+            - cell [ref=e1741]:
+              - img [ref=e1743]
+          - row ", differ by a single spin-orbital" [ref=e1797]:
+            - cell ", differ by a single spin-orbital" [ref=e1798]:
+              - img [ref=e1800]
+              - text: ","
+              - img [ref=e1806]
+              - text: differ by a single spin-orbital
+            - cell [ref=e1811]:
+              - img [ref=e1813]
+          - row ", differ by two spin-orbitals" [ref=e1865]:
+            - cell ", differ by two spin-orbitals" [ref=e1866]:
+              - img [ref=e1868]
+              - text: ","
+              - img [ref=e1874]
+              - text: differ by two spin-orbitals
+            - cell [ref=e1879]:
+              - img [ref=e1881]
+          - row ", differ by three or more spin-orbitals 0" [ref=e1914]:
+            - cell ", differ by three or more spin-orbitals" [ref=e1915]:
+              - img [ref=e1917]
+              - text: ","
+              - img [ref=e1923]
+              - text: differ by three or more spin-orbitals
+            - cell "0" [ref=e1928]
+      - paragraph [ref=e1929]:
+        - text: These are the rules that make quantum-chemistry codes possible. They say the Hamiltonian is a
+        - strong [ref=e1930]: 2-body
+        - text: operator in second quantisation, and its matrix in the determinant basis is
+        - strong [ref=e1931]: sparse enough
+        - text: "to be handled by iterative methods. The Slater–Condon rules are also what justifies the Fock operator: varying"
+        - img [ref=e1933]
+        - text: with respect to a single spin-orbital uses the “
+        - img [ref=e1955]
+        - text: ” and “single excitation” rules, and the resulting first-order condition is precisely
+        - img [ref=e1965]
+        - text: .
+      - blockquote [ref=e1991]:
+        - paragraph [ref=e1992]:
+          - strong [ref=e1993]: Note.
+          - text: The matrix elements above are written in the
+          - emphasis [ref=e1994]: MO basis
+          - text: ":"
+          - img [ref=e1996]
+          - text: etc. In the next section we will need the
+          - emphasis [ref=e2033]: AO-basis
+          - text: counterparts,
+          - img [ref=e2035]
+          - text: ","
+          - img [ref=e2047]
+          - text: ","
+          - img [ref=e2059]
+          - text: and the ERI tensor
+          - img [ref=e2071]
+          - text: — same object, different basis. The Slater–Condon rules work in any orthonormal basis; the AO basis is not orthonormal, but the Fock operator is the same differential operator regardless.
+      - heading "3.4.1 Mermaid — the Slater–Condon rules as a matrix" [level=3] [ref=e2088]
+      - paragraph [ref=e2089]:
+        - text: The Slater–Condon rules are best read as a recipe for filling in the
+        - emphasis [ref=e2090]: Hamiltonian matrix
+        - text: in the basis of Slater determinants. The determinant basis is enormous (combinatorial in the number of spin-orbitals), but the matrix is
+        - emphasis [ref=e2091]: extremely
+        - text: "sparse: most entries are zero, and the non-zero entries fall into three classes. The diagram below makes that sparsity structure explicit."
+      - figure [ref=e2093]:
+        - code [ref=e2094]:
+          - document [ref=e2095]:
+            - generic [ref=e2097]:
+              - generic [ref=e2098]:
+                - generic [ref=e2103]: Why this matters
+                - generic [ref=e2108]: Slater–Condon matrix element ⟨Φ_I|Ĥ|Φ_J⟩
+                - generic [ref=e2113]: "Determinant basis {|Φ_I⟩}"
+              - generic [ref=e2121]:
+                - generic [ref=e2127]:
+                  - text: Configuration interaction
+                  - text: "(CI): only singles + doubles"
+                  - text: couple to the reference
+                - generic [ref=e2133]:
+                  - text: "MP2, CCSD: never touch the"
+                  - text: Hamiltonian matrix directly
+                - generic [ref=e2139]:
+                  - text: "Justifies the Fock operator:"
+                  - text: vary w.r.t. one orbital
+                  - text: → F̂ χ_p = ε_p χ_p
+                - generic [ref=e2145]:
+                  - text: Δ = 0
+                  - text: DIAGONAL
+                  - text: "Σᵢ h_{ii} + ½ Σ_{ij} (J_{ij} − K_{ij})"
+                - generic [ref=e2151]:
+                  - text: Δ = 1
+                  - text: "h_{ab} + Σⱼ(⟨ab|jj⟩−⟨aj|bj⟩)"
+                - generic [ref=e2157]:
+                  - text: Δ = 2
+                  - text: ⟨ab|cd⟩ − ⟨ab|dc⟩
+                - generic [ref=e2163]:
+                  - text: Δ ≥ 3
+                  - text: = 0
+                - generic [ref=e2169]:
+                  - text: Φ_I
+                  - text: (reference)
+                - generic [ref=e2175]:
+                  - text: Φ_I^a
+                  - text: single excitation
+                  - text: (occ i → virt a)
+                - generic [ref=e2181]:
+                  - text: "Φ_I^{ab}_{ij}"
+                  - text: double excitation
+                  - text: (occ ij → virt ab)
+                - generic [ref=e2187]:
+                  - text: "Φ_I^{abc}_{ijk}"
+                  - text: triple+
+                  - text: excitation
+        - button "Download this diagram as a PNG" [ref=e2188] [cursor=pointer]:
+          - img [ref=e2189]
+          - generic [ref=e2192]: Download PNG
+      - paragraph [ref=e2193]:
+        - text: The determinant basis is the
+        - emphasis [ref=e2194]: "first-quantise`d"
+        - text: ’ language in which post-HF methods (CI, MP2, CC, EOM-CC) are written; the Slater–Condon rules are the
+        - emphasis [ref=e2195]: only
+        - text: "property of the Hamiltonian that makes these methods tractable. The “Δ = 0” and “Δ = 1” boxes, taken together, are what the Fock operator encapsulates: the first-order variation of the HF energy w.r.t. a single orbital uses exactly the diagonal (I = J) and single-excitation (I differs by one orbital) rules, and the result is"
+        - img [ref=e2197]
+        - text: .
+      - heading "3.5 What Hartree–Fock gets wrong" [level=2] [ref=e2223]
+      - paragraph [ref=e2224]:
+        - text: The difference between the exact energy and the HF energy is the
+        - strong [ref=e2225]: correlation energy
+        - text: ":"
+      - img [ref=e2227]:
+        - generic [ref=e2231]:
+          - img [ref=e2232]
+          - img [ref=e2265]
+      - paragraph [ref=e2272]:
+        - text: "A useful operational definition: HF is exact for any one-electron system and wrong for any multi-electron system. The error is, in some sense,"
+        - emphasis [ref=e2273]: the price of being a single determinant
+        - text: ". Typical magnitudes:"
+      - table [ref=e2274]:
+        - rowgroup [ref=e2275]:
+          - row "System class (Hartree/electron)" [ref=e2276]:
+            - columnheader "System class" [ref=e2277]
+            - columnheader "(Hartree/electron)" [ref=e2278]:
+              - img [ref=e2280]
+              - text: (Hartree/electron)
+        - rowgroup [ref=e2291]:
+          - row "He atom" [ref=e2292]:
+            - cell "He atom" [ref=e2293]
+            - cell [ref=e2294]:
+              - img [ref=e2296]
+          - row "Ne atom" [ref=e2306]:
+            - cell "Ne atom" [ref=e2307]
+            - cell [ref=e2308]:
+              - img [ref=e2310]
+          - row "H O molecule (total )" [ref=e2320]:
+            - cell "H O molecule" [ref=e2321]:
+              - text: H
+              - img [ref=e2323]
+              - text: O molecule
+            - cell "(total )" [ref=e2329]:
+              - img [ref=e2331]
+              - text: (total
+              - img [ref=e2342]
+              - text: )
+          - row "Benzene (per C)" [ref=e2351]:
+            - cell "Benzene" [ref=e2352]
+            - cell "(per C)" [ref=e2353]:
+              - img [ref=e2355]
+              - text: (per C)
+          - row "A transition-metal complex – (per atom, depending on state)" [ref=e2364]:
+            - cell "A transition-metal complex" [ref=e2365]
+            - cell "– (per atom, depending on state)" [ref=e2366]:
+              - img [ref=e2368]
+              - text: –
+              - img [ref=e2376]
+              - text: (per atom, depending on state)
+      - blockquote [ref=e2381]:
+        - paragraph [ref=e2382]:
+          - strong [ref=e2383]: Note.
+          - text: These are
+          - emphasis [ref=e2384]: absolute
+          - text: errors, not per-cent. The HF energy is roughly
+          - img [ref=e2386]
+          - text: Hartree for a small organic molecule, and the correlation correction is roughly
+          - img [ref=e2396]
+          - text: Hartree. Chemists care about
+          - emphasis [ref=e2403]: energy differences
+          - text: — reaction energies, barrier heights, binding energies — and these are often on the order of milli-Hartree, so a one-Hartree absolute error is utterly unacceptable for chemistry and utterly fine for solid-state physics. The two communities measure success differently.
+      - paragraph [ref=e2404]:
+        - text: It is important to separate two distinct errors hidden in
+        - img [ref=e2406]:
+          - link [ref=e2409] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-correlation"
+        - text: ":"
+      - list [ref=e2416]:
+        - listitem [ref=e2417]:
+          - strong [ref=e2418]: Basis-set incompleteness error (BSIE).
+          - text: Even with the exact many-body wavefunction, a finite basis gives an energy above
+          - img [ref=e2420]
+          - text: . This is the error controlled by the basis set (
+          - link "chapter 06" [ref=e2432] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: ).
+        - listitem [ref=e2433]:
+          - strong [ref=e2434]: Method error.
+          - text: The method itself (single-determinant HF) cannot represent the exact wavefunction of a multi-electron system. This is the error controlled by going to configuration interaction, coupled cluster, MP
+          - img [ref=e2436]
+          - text: ", or — for many practical purposes — a good density functional ("
+          - link "chapter 05" [ref=e2441] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: ).
+      - paragraph [ref=e2442]:
+        - text: A useful sanity check on any electronic-structure calculation is to verify that
+        - emphasis [ref=e2443]: "bot`h"
+        - text: ’ errors are small. Reporting a “DFT energy of
+        - img [ref=e2445]
+        - text: Hartree” without naming the basis and the functional is like reporting “the price is 100” without naming the currency.
+      - heading "3.6 The Roothaan–Hall equations in a Gaussian basis" [level=2] [ref=e2457]
+      - paragraph [ref=e2458]:
+        - text: Section 3.3 left the Fock equation as the
+        - emphasis [ref=e2459]: differential
+        - text: eigenvalue problem
+        - img [ref=e2461]
+        - text: . In this section we turn it into the
+        - emphasis [ref=e2487]: matrix
+        - text: eigenvalue problem
+        - img [ref=e2489]
+        - text: that a computer actually solves. The bridge is a finite, atom-centred basis of Gaussian-type orbitals (GTOs); the technology is in
+        - link "chapter 06" [ref=e2508] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: . Here we focus on what the Fock operator
+        - emphasis [ref=e2509]: does
+        - text: once the basis is fixed.
+      - heading "3.6.1 The claim" [level=3] [ref=e2510]
+      - paragraph [ref=e2511]:
+        - text: For a
+        - strong [ref=e2512]: closed-shell
+        - text: molecule (all orbitals doubly occupied,
+        - img [ref=e2514]
+        - text: electrons,
+        - img [ref=e2520]
+        - text: spatial orbitals), expand each spatial orbital in the same
+        - img [ref=e2531]
+        - text: basis functions
+        - img [ref=e2537]
+        - text: ","
+      - img [ref=e2557]:
+        - generic [ref=e2561]:
+          - img [ref=e2562]
+          - img [ref=e2636]
+      - paragraph [ref=e2645]:
+        - text: The Fock eigenvalue equation
+        - img [ref=e2647]
+        - text: becomes the
+        - strong [ref=e2673]: Roothaan–Hall
+        - text: matrix equation
+      - img [ref=e2675]:
+        - generic [ref=e2679]:
+          - img [ref=e2680]
+          - img [ref=e2702]
+      - paragraph [ref=e2710]:
+        - text: where
+        - img [ref=e2712]
+        - text: ","
+        - img [ref=e2719]
+        - text: ","
+        - img [ref=e2726]
+        - text: are
+        - img [ref=e2733]
+        - text: matrices and
+        - img [ref=e2743]
+        - text: is the diagonal matrix of orbital energies. The matrix elements are
+      - img [ref=e2749]:
+        - generic [ref=e2753]:
+          - img [ref=e2754]
+          - img [ref=e2822]
+      - paragraph [ref=e2831]:
+        - text: This is the
+        - strong [ref=e2832]: generalised eigenvalue problem
+        - text: "(GEP) — a standard GEP in numerical linear algebra, solved by `scipy.linalg.eigh(F, S)’ or any equivalent LAPACK routine."
+      - heading "3.6.2 Derivation" [level=3] [ref=e2833]
+      - paragraph [ref=e2834]:
+        - strong [ref=e2835]: Step 1.
+        - text: Substitute
+        - img [ref=e2837]:
+          - link [ref=e2840] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-mo-expansion"
+        - text: "into the Fock eigenvalue equation:"
+      - img [ref=e2849]
+      - paragraph [ref=e2919]:
+        - strong [ref=e2920]: Step 2.
+        - text: Project both sides on
+        - img [ref=e2922]
+        - text: by multiplying with
+        - img [ref=e2931]
+        - text: and integrating over
+        - img [ref=e2949]
+        - text: ":"
+      - img [ref=e2964]
+      - paragraph [ref=e3058]:
+        - strong [ref=e3059]: Step 3.
+        - text: Define the matrix elements
+      - paragraph [ref=e3060]:
+        - img [ref=e3062]:
+          - generic [ref=e3066]:
+            - img [ref=e3067]
+            - img [ref=e3107]
+        - img [ref=e3117]:
+          - generic [ref=e3121]:
+            - img [ref=e3122]
+            - img [ref=e3154]
+      - paragraph [ref=e3163]: The projected equation becomes
+      - img [ref=e3165]:
+        - generic [ref=e3169]:
+          - img [ref=e3170]
+          - img [ref=e3241]
+      - paragraph [ref=e3250]:
+        - strong [ref=e3251]: Step 4.
+        - text: This is the
+        - img [ref=e3253]
+        - text: "-th"
+        - emphasis [ref=e3258]: column
+        - text: of a matrix equation. For each value of
+        - img [ref=e3260]
+        - text: ","
+        - img [ref=e3278]:
+          - link [ref=e3281] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-roothaan-column"
+        - text: is one linear equation in the
+        - img [ref=e3290]
+        - text: unknowns
+        - img [ref=e3296]
+        - text: . Stacking all
+        - img [ref=e3319]
+        - text: values of
+        - img [ref=e3325]
+        - text: into a
+        - img [ref=e3331]
+        - text: matrix equation for a single orbital
+        - img [ref=e3341]
+        - text: gives
+      - img [ref=e3347]
+      - paragraph [ref=e3377]:
+        - strong [ref=e3378]: Step 5.
+        - text: Collect all
+        - img [ref=e3380]
+        - text: molecular orbitals (the
+        - img [ref=e3386]
+        - text: roots
+        - img [ref=e3392]
+        - text: and the
+        - img [ref=e3401]
+        - text: coefficient vectors
+        - img [ref=e3407]
+        - text: ) into a single
+        - img [ref=e3417]
+        - text: matrix equation. The orbital energies become the diagonal entries of
+        - img [ref=e3427]
+        - text: ", and the coefficient vectors become the columns of"
+        - img [ref=e3460]
+        - text: ":"
+      - img [ref=e3467]
+      - paragraph [ref=e3488]:
+        - text: This is the Roothaan equation
+        - img [ref=e3490]:
+          - link [ref=e3493] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-roothaan-hall"
+        - text: .
+        - img [ref=e3502]
+      - blockquote [ref=e3507]:
+        - paragraph [ref=e3508]:
+          - strong [ref=e3509]: Tip.
+          - text: The basis is in general
+          - strong [ref=e3510]: non-orthogonal
+          - text: ", so the right-hand side carries"
+          - img [ref=e3512]
+          - text: — the orthonormal
+          - img [ref=e3519]
+          - text: has no
+          - img [ref=e3546]
+          - text: . This is not a mistake; it is the price of choosing a basis adapted to the
+          - emphasis [ref=e3552]: physics
+          - text: (atom-centred Gaussians look like atomic orbitals) rather than to the
+          - emphasis [ref=e3553]: "mat`h"
+          - text: ’ (an orthonormal basis is mathematically clean but physically unmotivated). In a basis where
+          - img [ref=e3555]
+          - text: (e.g. a Löwdin- orthogonalised basis,
+          - img [ref=e3567]
+          - text: ", see below), the GEP collapses to the standard Hermitian eigenvalue problem"
+          - img [ref=e3590]
+          - text: with
+          - img [ref=e3616]
+          - text: .
+      - heading "3.6.3 The Fock matrix in the AO basis" [level=3] [ref=e3639]
+      - paragraph [ref=e3640]:
+        - text: Equation
+        - img [ref=e3642]:
+          - link [ref=e3645] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-F-def"
+        - text: is the
+        - emphasis [ref=e3653]: definition
+        - text: of
+        - img [ref=e3655]
+        - text: in the AO basis. The content is in writing
+        - img [ref=e3662]
+        - text: in terms of
+        - emphasis [ref=e3673]: one-electron
+        - text: and two-electron integrals, both of which are routinely computed by Gaussian integral codes. Substituting
+        - img [ref=e3675]:
+          - link [ref=e3678] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-fock-operator"
+        - text: ":"
+      - paragraph [ref=e3685]:
+        - text: "\\begin{align} F_{\\mu\\nu} &\\;=\\; \\langle \\chi_\\mu \\rvert \\hat h + \\hat J[\\rho] - \\hat K[\\rho] \\rvert \\chi_\\nu \\rangle \\notag\\&\\;=\\; \\underbrace{\\langle \\chi_\\mu \\rvert \\hat h \\rvert \\chi_\\nu \\rangle}"
+        - emphasis [ref=e3686]: "{h"
+        - text: "{\\mu\\nu}} \\;+\\; \\underbrace{\\langle \\chi_\\mu \\rvert \\hat J[\\rho] \\rvert \\chi_\\nu \\rangle}"
+        - emphasis [ref=e3687]: "{J"
+        - text: "{\\mu\\nu}} \\;-\\; \\underbrace{\\langle \\chi_\\mu \\rvert \\hat K[\\rho] \\rvert \\chi_\\nu \\rangle}"
+        - emphasis [ref=e3688]: "{K"
+        - text: "{\\mu\\nu}} . \\label{eq:ch-03-F-decomp} \\end{align}"
+      - paragraph [ref=e3689]:
+        - strong [ref=e3690]: One-electron part.
+        - text: The core-Hamiltonian matrix
+        - img [ref=e3692]
+        - text: "contains the kinetic energy and the electron–nuclear attraction:"
+      - img [ref=e3699]:
+        - generic [ref=e3703]:
+          - img [ref=e3704]
+          - img [ref=e3817]
+      - paragraph [ref=e3826]:
+        - text: These are the standard
+        - emphasis [ref=e3827]: one-electron integrals
+        - text: ; for GTOs the kinetic part is a sum of overlap-like integrals and the nuclear-attraction part is a Boys-function evaluation (
+        - link "chapter 06" [ref=e3828] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: ", eq. 6.27–6.28)."
+      - paragraph [ref=e3829]:
+        - strong [ref=e3830]: Two-electron part — Coulomb.
+        - text: Inserting the definition
+        - img [ref=e3832]:
+          - link [ref=e3835] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-coulomb"
+        - text: of
+        - img [ref=e3843]
+        - text: ":"
+      - paragraph [ref=e3852]:
+        - text: "\\begin{align} J_{\\mu\\nu} &\\;=\\; \\int !!!\\int \\chi_\\mu^"
+        - emphasis [ref=e3853]: "(\\mathbf r_1)\\, \\chi_\\nu(\\mathbf r_1)\\, \\frac{\\rho(\\mathbf r_2)}{|\\mathbf r_1 - \\mathbf r_2|}\\, d\\mathbf r_1\\, d\\mathbf r_2 \\notag\\&\\;=\\; \\sum_{\\rho\\sigma} P_{\\rho\\sigma} \\underbrace{\\int!!!\\int \\chi_\\mu^"
+        - text: "(\\mathbf r_1)\\, \\chi_\\nu(\\mathbf r_1)\\, \\frac{\\chi_\\rho^*(\\mathbf r_2)\\, \\chi_\\sigma(\\mathbf r_2)}{|\\mathbf r_1 - \\mathbf r_2|}\\, d\\mathbf r_1\\, d\\mathbf r_2}_{(\\mu\\nu \\rvert \\rho\\sigma)} . \\label{eq:ch-03-J} \\end{align}"
+      - paragraph [ref=e3854]:
+        - text: Here we have introduced the
+        - strong [ref=e3855]: AO density matrix
+        - text: in the closed- shell case,
+      - img [ref=e3857]:
+        - generic [ref=e3861]:
+          - img [ref=e3862]
+          - img [ref=e3910]
+      - paragraph [ref=e3919]:
+        - text: and the
+        - strong [ref=e3920]: electron-repulsion integral (ERI)
+        - text: in
+        - emphasis [ref=e3921]: chemists’
+        - text: notation,
+      - img [ref=e3923]:
+        - generic [ref=e3927]:
+          - img [ref=e3928]
+          - img [ref=e4045]
+      - paragraph [ref=e4053]:
+        - text: "Note the order of the indices:"
+        - img [ref=e4055]
+        - text: is symmetric under
+        - img [ref=e4073]
+        - text: ", symmetric under"
+        - img [ref=e4083]
+        - text: ", and satisfies $(\\mu\\nu \\rvert \\rho\\sigma) = (\\rho\\sigma \\rvert \\mu\\nu)^"
+        - emphasis [ref=e4092]: "$. For real basis functions all four symmetries reduce to a single statement of *8-fol`d"
+        - text: "’ permutational symmetry:"
+      - img [ref=e4094]:
+        - generic [ref=e4098]:
+          - img [ref=e4099]
+          - img [ref=e4195]
+      - paragraph [ref=e4203]:
+        - text: "The 8-fold symmetry is what every ERI code exploits: only"
+        - img [ref=e4205]
+        - text: unique integrals are stored or computed.
+      - paragraph [ref=e4220]:
+        - strong [ref=e4221]: Two-electron part — exchange.
+        - text: Inserting
+        - img [ref=e4223]:
+          - link [ref=e4226] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-exchange"
+        - text: ":"
+      - paragraph [ref=e4233]:
+        - text: "\\begin{align} K_{\\mu\\nu} &\\;=\\; \\sum_{\\rho\\sigma} P_{\\rho\\sigma} \\underbrace{\\int!!!\\int \\chi_\\mu^"
+        - emphasis [ref=e4234]: "(\\mathbf r_1)\\, \\chi_\\sigma(\\mathbf r_1)\\, \\frac{1}{r_{12}}\\, \\chi_\\rho^"
+        - text: "(\\mathbf r_2)\\, \\chi_\\nu(\\mathbf r_2)\\, d\\mathbf r_1\\, d\\mathbf r_2}_{(\\mu\\sigma \\rvert \\rho\\nu)} . \\label{eq:ch-03-K} \\end{align}"
+      - paragraph [ref=e4235]:
+        - text: This has
+        - emphasis [ref=e4236]: one
+        - img [ref=e4238]
+        - text: /
+        - img [ref=e4244]
+        - text: "index that crossed over to the other side of the kernel: in chemists’ notation it is"
+        - img [ref=e4250]
+        - text: ", not"
+        - img [ref=e4268]
+        - text: . The crossed indices are what make
+        - img [ref=e4286]
+        - text: non-trivially different from
+        - img [ref=e4298]
+        - text: ", and what makes HF qualitatively different from a mean-field theory with only a local potential."
+      - paragraph [ref=e4309]:
+        - strong [ref=e4310]: Putting it together.
+        - text: Substituting
+        - img [ref=e4312]:
+          - link [ref=e4315] [cursor=pointer]:
+            - /url: "#"
+        - text: and
+        - img [ref=e4325]:
+          - link [ref=e4328] [cursor=pointer]:
+            - /url: "#"
+        - text: into
+        - img [ref=e4338]:
+          - link [ref=e4341] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - img [ref=e4351]:
+        - generic [ref=e4355]:
+          - img [ref=e4356]
+          - img [ref=e4441]
+      - paragraph [ref=e4450]:
+        - text: The factor
+        - img [ref=e4452]
+        - text: "in front of exchange comes from the closed-shell spin summation: each spatial orbital is doubly occupied, and the exchange integral in spin-orbital form picks up a factor of"
+        - img [ref=e4463]
+        - text: when summed over the spin-free ERIs.
+      - blockquote [ref=e4473]:
+        - paragraph [ref=e4474]:
+          - strong [ref=e4475]: Note.
+          - text: Equation
+          - img [ref=e4477]:
+            - link [ref=e4480] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-03-F-ao"
+          - text: is the
+          - emphasis [ref=e4488]: workhorse
+          - text: "formula of computational HF. Every SCF step boils down to: (i) compute"
+          - img [ref=e4490]
+          - text: once at the start of the calculation (it depends only on the geometry and basis), (ii) build the ERI tensor
+          - img [ref=e4502]
+          - text: once, and (iii) at every SCF iteration form the two-electron part of
+          - img [ref=e4520]
+          - text: by contracting
+          - img [ref=e4527]
+          - text: with the ERI tensor as in
+          - img [ref=e4534]:
+            - link [ref=e4537] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-03-F-ao"
+          - text: . Section 3.8 below makes this algorithmic and explains when (ii) is too expensive to be done once.
+      - heading "3.6.4 The density matrix in the AO basis" [level=3] [ref=e4545]
+      - paragraph [ref=e4546]:
+        - text: The closed-shell density matrix
+        - img [ref=e4548]
+        - text: is a
+        - img [ref=e4555]
+        - text: "Hermitian, positive-semidefinite matrix. It plays three conceptually distinct roles in the Roothaan–Hall formalism:"
+      - list [ref=e4564]:
+        - listitem [ref=e4565]:
+          - strong [ref=e4566]: Container of the occupied subspace.
+          - text: Projected onto the occupied MO subspace,
+          - img [ref=e4568]
+          - text: "is the identity:"
+      - img [ref=e4575]:
+        - generic [ref=e4579]:
+          - img [ref=e4580]
+          - img [ref=e4621]
+      - paragraph [ref=e4630]:
+        - text: The full
+        - img [ref=e4632]
+        - text: therefore satisfies
+        - img [ref=e4639]
+        - text: ", i.e."
+        - img [ref=e4660]
+        - text: is an
+        - img [ref=e4667]
+        - text: "-idempotent:"
+        - img [ref=e4674]
+        - text: .
+      - list [ref=e4691]:
+        - listitem [ref=e4692]:
+          - paragraph [ref=e4693]:
+            - strong [ref=e4694]: Source of the Fock matrix.
+            - text: Equation
+            - img [ref=e4696]:
+              - link [ref=e4699] [cursor=pointer]:
+                - /url: "#mjx-eqn%3Aeq%3Ach-03-F-ao"
+            - text: shows that the two-electron part of
+            - img [ref=e4708]
+            - text: is a
+            - emphasis [ref=e4714]: linear
+            - text: function of
+            - img [ref=e4716]
+            - text: . The fixed- point of the SCF is the
+            - img [ref=e4723]
+            - text: that is consistent with its own Fock matrix.
+        - listitem [ref=e4729]:
+          - paragraph [ref=e4730]:
+            - strong [ref=e4731]: Direct representation of the one-particle density.
+            - text: The electron density in real space is
+      - img [ref=e4733]:
+        - generic [ref=e4737]:
+          - img [ref=e4738]
+          - img [ref=e4797]
+      - paragraph [ref=e4806]:
+        - text: This is the form of
+        - img [ref=e4808]
+        - text: that enters the Coulomb potential in the Fock operator.
+      - paragraph [ref=e4813]:
+        - text: The idempotency
+        - img [ref=e4815]
+        - text: "is preserved at every SCF iteration; it is what makes the procedure “single-particle”:"
+        - img [ref=e4833]
+        - text: is a projector onto a
+        - img [ref=e4840]
+        - text: "-dimensional subspace of the full Hilbert space, namely the occupied subspace. Post-HF methods relax this idempotency and the resulting “generalised density matrix” is no longer idempotent — that relaxation is the algebraic signature of correlation."
+      - heading "3.6.5 The SCF iteration in the AO basis" [level=3] [ref=e4845]
+      - paragraph [ref=e4846]:
+        - text: Putting the pieces together, the
+        - strong [ref=e4847]: closed-shell SCF in the AO basis
+        - text: "is the following fixed-point iteration. We have as input:"
+      - list [ref=e4848]:
+        - listitem [ref=e4849]:
+          - text: the geometry
+          - img [ref=e4851]
+          - text: ","
+        - listitem [ref=e4868]:
+          - text: the basis
+          - img [ref=e4870]
+          - text: (atom-centred GTOs, see
+          - link "chapter 06" [ref=e4889] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: ),
+        - listitem [ref=e4890]:
+          - text: the one-electron integrals
+          - img [ref=e4892]
+          - text: ","
+          - img [ref=e4904]
+          - text: ","
+        - listitem [ref=e4915]:
+          - text: the ERI tensor
+          - img [ref=e4917]
+          - text: (or the means to recompute it, see section 3.8).
+      - paragraph [ref=e4934]:
+        - text: The output is the HF energy
+        - img [ref=e4936]
+        - text: and the MO coefficients
+        - img [ref=e4946]
+        - text: ". The algorithm:"
+      - list [ref=e4952]:
+        - listitem [ref=e4953]:
+          - strong [ref=e4954]: Initial guess.
+          - text: Build the
+          - emphasis [ref=e4955]: core-Hamiltonian guess
+          - text: ": diagonalise"
+          - img [ref=e4957]
+          - text: and set
+      - img [ref=e4977]:
+        - generic [ref=e4981]:
+          - img [ref=e4982]
+          - img [ref=e5043]
+      - paragraph [ref=e5052]: For difficult cases (transition metals, near-degeneracies) the guess may come from a previous calculation, an extended Hückel model, or a fragment-density superposition.
+      - list [ref=e5053]:
+        - listitem [ref=e5054]:
+          - strong [ref=e5055]: Build the Fock matrix.
+          - text: Use
+          - img [ref=e5057]:
+            - link [ref=e5060] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-03-F-ao"
+          - text: ":"
+      - img [ref=e5069]:
+        - generic [ref=e5073]:
+          - img [ref=e5074]
+          - img [ref=e5130]
+      - paragraph [ref=e5139]:
+        - text: where the
+        - strong [ref=e5140]: two-electron part
+        - text: is
+      - img [ref=e5142]:
+        - generic [ref=e5146]:
+          - img [ref=e5147]
+          - img [ref=e5229]
+      - paragraph [ref=e5238]:
+        - text: In tensor notation with
+        - img [ref=e5240]
+        - text: the 4-index ERI and
+        - img [ref=e5247]
+        - text: the 2-index density,
+      - paragraph [ref=e5253]:
+        - img [ref=e5255]:
+          - generic [ref=e5259]:
+            - img [ref=e5260]
+            - img [ref=e5302]
+        - img [ref=e5311]:
+          - generic [ref=e5315]:
+            - img [ref=e5316]
+            - img [ref=e5358]
+      - paragraph [ref=e5366]:
+        - text: In
+        - code [ref=e5367]: numpy
+        - text: ", both are"
+        - code [ref=e5368]: einsum
+        - text: s — see the snippet in section 3.3.
+      - list [ref=e5369]:
+        - listitem [ref=e5370]:
+          - paragraph [ref=e5371]:
+            - strong [ref=e5372]: Solve the GEP.
+            - text: Diagonalise
+            - img [ref=e5374]
+            - text: . The eigenvalues
+            - img [ref=e5402]
+            - text: are ordered; the lowest
+            - img [ref=e5429]
+            - text: are the occupied orbital energies.
+        - listitem [ref=e5439]:
+          - paragraph [ref=e5440]:
+            - strong [ref=e5441]: Build the new density matrix.
+            - text: With the lowest
+            - img [ref=e5443]
+            - text: columns of
+            - img [ref=e5454]
+            - text: ","
+      - img [ref=e5461]:
+        - generic [ref=e5465]:
+          - img [ref=e5466]
+          - img [ref=e5531]
+      - paragraph [ref=e5540]:
+        - text: In matrix form,
+        - img [ref=e5542]
+        - text: ", where"
+        - img [ref=e5583]
+        - text: is the
+        - img [ref=e5595]
+        - text: block of the lowest eigenvectors. This update is the
+        - strong [ref=e5609]: Aufbau
+        - text: "of the density: we fill the lowest orbitals first."
+      - list [ref=e5610]:
+        - listitem [ref=e5611]:
+          - strong [ref=e5612]: Mix and check convergence.
+          - text: In its simplest form,
+          - emphasis [ref=e5613]: density mixing
+          - text: ":"
+      - img [ref=e5615]:
+        - generic [ref=e5619]:
+          - img [ref=e5620]
+          - img [ref=e5689]
+      - paragraph [ref=e5698]:
+        - text: with
+        - img [ref=e5700]
+        - text: (typically 0.3 for closed-shell molecules, 0.1 or less for transition metals). The convergence test is on the
+        - emphasis [ref=e5717]: "unmixe`d"
+        - text: ’ new density (or on
+        - img [ref=e5719]
+        - text: "): continue if"
+        - img [ref=e5727]
+        - text: or
+        - img [ref=e5776]
+        - text: .
+      - list [ref=e5816]:
+        - listitem [ref=e5817]:
+          - strong [ref=e5818]: Compute the energy.
+          - text: At convergence, the
+          - strong [ref=e5819]: HF electronic energy
+          - text: is
+      - img [ref=e5821]:
+        - generic [ref=e5825]:
+          - img [ref=e5826]
+          - img [ref=e5916]
+      - paragraph [ref=e5925]:
+        - text: The
+        - strong [ref=e5926]: total HF energy
+        - text: is
+        - img [ref=e5928]
+        - text: ", with"
+        - img [ref=e5954]
+        - text: the classical nuclear repulsion.
+      - blockquote [ref=e5996]:
+        - paragraph [ref=e5997]:
+          - strong [ref=e5998]: Tip.
+          - text: "An equivalent but sometimes more numerically stable form of the energy uses the orbital energies:"
+      - img [ref=e6000]
+      - paragraph [ref=e6100]:
+        - text: where
+        - img [ref=e6102]
+        - text: and
+        - img [ref=e6133]
+        - text: are the
+        - emphasis [ref=e6160]: MO-basis
+        - text: matrix elements. This is just the half-trace of
+        - img [ref=e6162]
+        - text: in disguise. The two forms agree to numerical precision at convergence; the half-trace form is what every code prints because it does not require a final MO transformation.
+      - heading "3.6.5.1 Mermaid — the AO-basis data flow" [level=3] [ref=e6180]
+      - paragraph [ref=e6181]:
+        - text: The SCF algorithm above has six steps, but the
+        - emphasis [ref=e6182]: "dat`a"
+        - text: ’ it carries between steps falls into four categories. The diagram below arranges the algorithm by
+        - emphasis [ref=e6183]: what is moving
+        - text: ", not by when:"
+      - list [ref=e6184]:
+        - listitem [ref=e6185]:
+          - text: the
+          - strong [ref=e6186]: atomic-orbital integrals
+          - text: (one-time setup, geometry-fixed),
+        - listitem [ref=e6187]:
+          - text: the
+          - strong [ref=e6188]: density matrix
+          - img [ref=e6190]
+          - text: (the SCF iterate),
+        - listitem [ref=e6196]:
+          - text: the
+          - strong [ref=e6197]: Fock matrix
+          - img [ref=e6199]
+          - text: (built from
+          - img [ref=e6213]
+          - text: ),
+        - listitem [ref=e6219]:
+          - text: the
+          - strong [ref=e6220]: MO coefficients
+          - img [ref=e6222]
+          - text: and orbital energies
+          - img [ref=e6229]
+          - text: (output of the generalised eigenproblem).
+      - figure [ref=e6235]:
+        - code [ref=e6236]:
+          - document [ref=e6237]:
+            - generic [ref=e6239]:
+              - generic [ref=e6240]:
+                - generic [ref=e6245]: Output (at convergence)
+                - generic [ref=e6250]: SCF iterate
+                - generic [ref=e6255]: Setup (one-time, geometry fixed)
+              - generic [ref=e6274]:
+                - generic [ref=e6278]: "no"
+                - generic [ref=e6282]: "yes"
+                - generic [ref=e6286]: "yes"
+                - generic [ref=e6290]: "yes"
+              - generic [ref=e6291]:
+                - generic [ref=e6296]: MO coefficients C
+                - generic [ref=e6301]: Orbital energies ε₁ ≤ ε₂ ≤ …
+                - generic [ref=e6306]: E_HF = ½ Tr P(h + F) + V_nn
+                - generic [ref=e6312]:
+                  - text: P^(n)
+                  - text: density matrix
+                  - text: (K × K)
+                - generic [ref=e6318]:
+                  - text: Build F^(n)
+                  - text: F = h + J[P] − ½ K[P]
+                  - text: O(K⁴) with ERI
+                - generic [ref=e6324]:
+                  - text: Generalised eigenproblem
+                  - text: F^(n) C = S C ε
+                  - text: (Löwdin / Cholesky)
+                - generic [ref=e6329]: P_new = 2 C_occ C_occ^T
+                - generic [ref=e6335]:
+                  - text: ‖P_new − P‖
+                  - text: < tol ?
+                - generic [ref=e6341]:
+                  - text: "Mix: P = (1−α)P + α P_new"
+                  - text: (or DIIS, §3.8)
+                - generic [ref=e6347]:
+                  - text: Geometry
+                  - text: "{R_A, Z_A}"
+                - generic [ref=e6353]:
+                  - text: "Basis {χ_μ}"
+                  - text: (GTO, see ch.06)
+                - generic [ref=e6359]:
+                  - text: One-electron integrals
+                  - text: S_μν, h_μν
+                - generic [ref=e6365]:
+                  - text: Two-electron integrals
+                  - text: (μν|ρσ) — 4-index tensor
+                  - text: (or recompute on the fly, §3.8)
+        - button "Download this diagram as a PNG" [ref=e6366] [cursor=pointer]:
+          - img [ref=e6367]
+          - generic [ref=e6370]: Download PNG
+      - paragraph [ref=e6371]:
+        - text: The diagram makes the
+        - emphasis [ref=e6372]: cost-hiding
+        - text: "of HF explicit: every cycle through the SCF inner loop re-builds"
+        - img [ref=e6374]
+        - text: from
+        - img [ref=e6381]
+        - text: at a cost of
+        - img [ref=e6388]
+        - text: (the two-electron integral contraction), and then diagonalises an
+        - img [ref=e6404]
+        - text: matrix at
+        - img [ref=e6414]
+        - text: . The two costs are in
+        - emphasis [ref=e6429]: opposite scaling regimes
+        - text: ; the crossover between them is exactly what determines whether a code uses
+        - emphasis [ref=e6430]: conventional
+        - text: SCF (small
+        - img [ref=e6432]
+        - text: ", store the ERI) or"
+        - emphasis [ref=e6437]: direct
+        - text: SCF (large
+        - img [ref=e6439]
+        - text: ", recompute the ERI on the fly) — see §3.8. ### 3.6.6 Orthogonalisation"
+      - paragraph [ref=e6444]:
+        - text: Equation
+        - img [ref=e6446]:
+          - link [ref=e6449] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-roothaan-hall"
+        - text: is a GEP. The standard numerical trick is to
+        - emphasis [ref=e6457]: symmetrically orthogonalise
+        - text: the basis. Define the
+        - strong [ref=e6458]: Löwdin orthogonaliser
+        - img [ref=e6460]
+        - text: as the
+        - emphasis [ref=e6466]: positive-definite square root
+        - text: of the inverse overlap,
+      - img [ref=e6468]:
+        - generic [ref=e6472]:
+          - img [ref=e6473]
+          - img [ref=e6498]
+      - paragraph [ref=e6507]:
+        - text: so that
+        - img [ref=e6509]
+        - text: . Transforming the Fock matrix into the orthogonal basis,
+      - img [ref=e6530]:
+        - generic [ref=e6534]:
+          - img [ref=e6535]
+          - img [ref=e6561]
+      - paragraph [ref=e6570]: and the eigenvectors back,
+      - img [ref=e6572]:
+        - generic [ref=e6576]:
+          - img [ref=e6577]
+          - img [ref=e6597]
+      - paragraph [ref=e6606]:
+        - text: the GEP
+        - img [ref=e6608]:
+          - link [ref=e6611] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-roothaan-hall"
+        - text: becomes the standard eigenvalue problem
+      - img [ref=e6620]:
+        - generic [ref=e6624]:
+          - img [ref=e6625]
+          - img [ref=e6653]
+      - paragraph [ref=e6662]:
+        - text: "The `eigh(F, S)’ LAPACK routine does this internally, with"
+        - img [ref=e6664]
+        - text: computed by Cholesky factorisation of
+        - img [ref=e6671]
+        - text: . For very large
+        - img [ref=e6678]
+        - text: the cost of forming
+        - img [ref=e6685]
+        - text: is non-negligible and iterative diagonalisation is preferred — this is the regime of plane-wave DFT (
+        - link "chapter 06" [ref=e6700] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.7 and
+        - link "chapter 07" [ref=e6701] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: ), where the basis is already orthogonal (a plane wave is orthogonal to every other plane wave of different
+        - img [ref=e6703]
+        - text: ", up to the metric-free inner product of"
+        - img [ref=e6710]
+        - text: ).
+      - 'heading "3.6.7 Worked anchor: H₂ in STO-3G" [level=3] [ref=e6718]'
+      - paragraph [ref=e6719]: The chapter-6 worked example produced the converged H₂ STO-3G HF energy
+      - img [ref=e6721]
+      - paragraph [ref=e6773]:
+        - text: with MO coefficients
+        - img [ref=e6775]
+        - text: and orbital energies
+        - img [ref=e6825]
+        - text: . The
+        - emphasis [ref=e6861]: implementation
+        - text: of section 3.6 is exactly the script in chapter 6 §6.9; the new content here is the
+        - emphasis [ref=e6862]: abstraction
+        - img [ref=e6864]:
+          - link [ref=e6867] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-F-ao"
+        - text: that the script instantiates. Section 3.8 extends that script with DIIS, and the full worked implementation appears below.
+      - blockquote [ref=e6875]:
+        - paragraph [ref=e6876]:
+          - strong [ref=e6877]: Note.
+          - text: The MO energies reported above are
+          - emphasis [ref=e6878]: not
+          - text: the physical ionisation energies of H₂; the HOMO energy
+          - img [ref=e6880]
+          - text: corresponds to an ionisation energy of
+          - img [ref=e6897]
+          - img [ref=e6909]
+          - text: by Koopmans’ theorem, but the true ionisation energy of H₂ is closer to
+          - img [ref=e6918]
+          - text: (the orbital
+          - emphasis [ref=e6934]: relaxes
+          - text: "on removal of the electron). This is the topic of section 3.9. ## 3.7 The open-shell case: unrestricted Hartree–Fock"
+      - paragraph [ref=e6935]:
+        - text: The derivation in section 3.6 assumed a
+        - emphasis [ref=e6936]: closed-shell
+        - text: "molecule: all spatial orbitals doubly occupied, every spatial orbital carrying both an"
+        - img [ref=e6938]
+        - text: and a
+        - img [ref=e6944]
+        - text: electron. This is fine for most organic molecules in their ground state — it is
+        - emphasis [ref=e6949]: exactly
+        - text: true for any singlet with an even number of electrons that can be described by a single determinant. For everything else (radicals, doublet cations, open-shell singlets, transition- metal complexes) we need a more general theory.
+      - paragraph [ref=e6950]: "The two main open-shell theories are:"
+      - list [ref=e6951]:
+        - listitem [ref=e6952]:
+          - strong [ref=e6953]: "Restricted open-shell HF (ROHF):"
+          - emphasis [ref=e6954]:
+            - text: paire
+            - code [ref=e6955]: d*' orbitals for the closed-shell core, *unpaire
+            - text: d
+          - text: ’ orbitals for the open-shell electrons. Enforces a definite spin
+          - img [ref=e6957]
+          - text: on the wavefunction. The Fock matrix is non-diagonal in the spin-orbital basis, but the energy and orbitals are spin-pure. Implementation is somewhat involved; we will not derive it here.
+        - listitem [ref=e6962]:
+          - strong [ref=e6963]: Unrestricted HF (UHF),
+          - text: also called the
+          - strong [ref=e6964]: Pople–Nesbet
+          - text: "equations:"
+          - emphasis [ref=e6965]: different orbitals for different spins
+          - text: (DODS). Each spin-orbital is a product of a spatial function and a fixed spin function (
+          - img [ref=e6967]
+          - text: or
+          - img [ref=e6973]
+          - text: ); the spatial functions for
+          - img [ref=e6979]
+          - text: and
+          - img [ref=e6985]
+          - text: are
+          - emphasis [ref=e6990]: not
+          - text: required to be the same. Implementation is essentially identical to the closed- shell case with a
+          - emphasis [ref=e6991]: "secon`d"
+          - text: ’ copy of every variable for the
+          - img [ref=e6993]
+          - text: spin. The wavefunction is not a spin eigenfunction — that is the price.
+      - paragraph [ref=e6998]: In what follows we derive UHF. It is the workhorse open-shell method in production codes (Gaussian, PSI4, PySCF) and the starting point for most post-HF open-shell correlation methods.
+      - heading "3.7.1 Spin-free formulation" [level=3] [ref=e6999]
+      - paragraph [ref=e7000]:
+        - text: Let
+        - img [ref=e7002]
+        - text: and
+        - img [ref=e7011]
+        - text: be the numbers of
+        - img [ref=e7020]
+        - text: "-spin and"
+        - img [ref=e7026]
+        - text: "-spin electrons, with"
+        - img [ref=e7032]
+        - text: (the other case follows by relabelling). The total
+        - img [ref=e7048]
+        - text: "-component of spin is"
+        - img [ref=e7054]
+        - text: . The UHF Ansatz is a single Slater determinant of
+        - img [ref=e7086]
+        - text: spin-orbitals
+      - img [ref=e7106]
+      - paragraph [ref=e7223]:
+        - text: The two sets of spatial orbitals
+        - img [ref=e7225]
+        - text: and
+        - img [ref=e7237]
+        - text: are, a priori, *unrelate
+        - code [ref=e7248]: d*
+        - text: ". Each set is expanded in the same AO basis:"
+      - paragraph [ref=e7249]:
+        - img [ref=e7251]:
+          - generic [ref=e7255]:
+            - img [ref=e7256]
+            - img [ref=e7332]
+        - img [ref=e7342]:
+          - generic [ref=e7346]:
+            - img [ref=e7347]
+            - img [ref=e7423]
+      - paragraph [ref=e7432]:
+        - text: The two sets of coefficients are collected into
+        - img [ref=e7434]
+        - text: and
+        - img [ref=e7447]
+        - text: matrices
+        - img [ref=e7460]
+        - text: and
+        - img [ref=e7470]
+        - text: .
+      - heading "3.7.2 Spin densities and density matrices" [level=3] [ref=e7479]
+      - paragraph [ref=e7480]:
+        - text: The total one-particle density is the sum of the
+        - img [ref=e7482]
+        - text: and
+        - img [ref=e7488]
+        - text: contributions,
+      - img [ref=e7494]:
+        - generic [ref=e7498]:
+          - img [ref=e7499]
+          - img [ref=e7542]
+      - paragraph [ref=e7551]: with
+      - paragraph [ref=e7552]:
+        - img [ref=e7554]:
+          - generic [ref=e7558]:
+            - img [ref=e7559]
+            - img [ref=e7677]
+      - paragraph [ref=e7686]:
+        - text: In the AO basis, define the
+        - strong [ref=e7687]: spin density matrices
+      - paragraph [ref=e7688]:
+        - img [ref=e7690]:
+          - generic [ref=e7694]:
+            - img [ref=e7695]
+            - img [ref=e7756]
+        - img [ref=e7766]:
+          - generic [ref=e7770]:
+            - img [ref=e7771]
+            - img [ref=e7832]
+        - img [ref=e7842]:
+          - generic [ref=e7846]:
+            - img [ref=e7847]
+            - img [ref=e7885]
+      - paragraph [ref=e7894]:
+        - text: Note the
+        - emphasis [ref=e7895]: absence
+        - text: "of the factor of 2 in the UHF density matrices (unlike the closed-shell case, eq. 3.24): each spatial orbital holds at most one electron of each spin, so the spin densities sum to the closed-shell formula when the two are equal."
+      - paragraph [ref=e7896]:
+        - text: The
+        - strong [ref=e7897]: spin density
+        - img [ref=e7899]
+        - text: is the expectation value of
+        - img [ref=e7943]
+        - text: ; in the AO basis it has the AO representation
+        - img [ref=e7965]
+        - text: .
+      - heading "3.7.3 The Pople–Nesbet equations" [level=3] [ref=e7990]
+      - paragraph [ref=e7991]:
+        - text: Varying the UHF energy expectation value with respect to the
+        - img [ref=e7993]
+        - text: "- and"
+        - img [ref=e7999]
+        - text: "-spin orbitals independently gives two coupled eigenvalue equations — the"
+        - strong [ref=e8004]: Pople–Nesbet equations
+        - text: — in the AO basis
+      - paragraph [ref=e8005]:
+        - img [ref=e8007]:
+          - generic [ref=e8011]:
+            - img [ref=e8012]
+            - img [ref=e8046]
+        - img [ref=e8055]:
+          - generic [ref=e8059]:
+            - img [ref=e8060]
+            - img [ref=e8094]
+      - paragraph [ref=e8103]:
+        - text: The
+        - strong [ref=e8104]:
+          - img [ref=e8106]
+          - text: and
+          - img [ref=e8112]
+          - text: Fock matrices
+        - text: are
+      - paragraph [ref=e8117]:
+        - img [ref=e8119]:
+          - generic [ref=e8123]:
+            - img [ref=e8124]
+            - img [ref=e8216]
+        - img [ref=e8226]:
+          - generic [ref=e8230]:
+            - img [ref=e8231]
+            - img [ref=e8323]
+      - paragraph [ref=e8332]:
+        - text: The Coulomb part is the
+        - emphasis [ref=e8333]: same
+        - text: in
+        - img [ref=e8335]
+        - text: and
+        - img [ref=e8345]
+        - text: — it depends only on the
+        - emphasis [ref=e8354]: total
+        - text: density — and it is this coupling between the two equations that makes the UHF problem
+        - emphasis [ref=e8355]: non-linear
+        - text: "and forces the self-consistent iteration. The exchange part differs: the"
+        - img [ref=e8357]
+        - text: Fock matrix uses
+        - img [ref=e8363]
+        - text: (the
+        - img [ref=e8373]
+        - text: density), the
+        - img [ref=e8379]
+        - text: Fock matrix uses
+        - img [ref=e8385]
+        - text: .
+      - blockquote [ref=e8394]:
+        - paragraph [ref=e8395]:
+          - strong [ref=e8396]: Tip.
+          - text: Equation
+          - img [ref=e8398]:
+            - link [ref=e8401] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-03-F-alpha"
+          - text: is the spin-free reduction of the spin-orbital Fock equation. In spin-orbital language the Fock operator has a
+          - emphasis [ref=e8409]: single
+          - text: expression
+          - img [ref=e8411]
+          - text: for a spin-orbital of spin
+          - img [ref=e8465]
+          - text: ", where the exchange part uses only the density of the"
+          - emphasis [ref=e8470]: same
+          - text: spin. It is this same-spin restriction of the exchange that produces the distinct
+          - img [ref=e8472]
+          - text: and
+          - img [ref=e8478]
+          - text: Fock operators.
+      - heading "3.7.4 UHF energy" [level=3] [ref=e8483]
+      - paragraph [ref=e8484]:
+        - text: The UHF electronic energy is the natural generalisation of
+        - img [ref=e8486]:
+          - link [ref=e8489] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-E-hf-ao"
+        - text: ":"
+      - img [ref=e8498]:
+        - generic [ref=e8502]:
+          - img [ref=e8503]
+          - img [ref=e8603]
+      - paragraph [ref=e8611]: Equivalently, the sum-over-orbitals form
+      - img [ref=e8613]
+      - paragraph [ref=e8724]:
+        - text: where the matrix elements are in the
+        - emphasis [ref=e8725]: respective
+        - text: MO bases.
+      - heading "3.7.5 Spin contamination" [level=3] [ref=e8726]
+      - paragraph [ref=e8727]:
+        - text: The UHF wavefunction is a
+        - emphasis [ref=e8728]: single
+        - text: Slater determinant of spin- orbitals, and is therefore an eigenfunction of
+        - img [ref=e8730]
+        - text: (with eigenvalue
+        - img [ref=e8743]
+        - text: ) but is
+        - strong [ref=e8774]: not
+        - text: an eigenfunction of
+        - img [ref=e8776]
+        - text: . It is contaminated by higher spin multiplets. The expectation value of
+        - img [ref=e8789]
+        - text: in the UHF determinant is
+      - img [ref=e8802]:
+        - generic [ref=e8806]:
+          - img [ref=e8807]:
+            - generic [ref=e8810]:
+              - img [ref=e8892]
+              - img [ref=e8917]
+          - img [ref=e8923]
+      - paragraph [ref=e8932]:
+        - text: The first two terms are the eigenvalue of a
+        - emphasis [ref=e8933]: spin-pure
+        - text: determinant of
+        - img [ref=e8935]
+        - emphasis [ref=e8943]:
+          - text: paire
+          - code [ref=e8944]: d*' electrons and $N_\alpha - N_\beta$ *unpaire
+          - text: d
+        - text: "’ electrons. The third term is the “overlap correction”: the more the"
+        - img [ref=e8946]
+        - text: and
+        - img [ref=e8952]
+        - text: orbitals overlap, the smaller the contamination; if
+        - img [ref=e8958]
+        - text: for all
+        - img [ref=e8978]
+        - text: ", the UHF determinant collapses to the closed-shell RHF and the contamination is zero."
+      - paragraph [ref=e8983]: In the AO basis, the overlap correction is a trace of the spin density matrix,
+      - img [ref=e8985]:
+        - generic [ref=e8989]:
+          - img [ref=e8990]:
+            - generic [ref=e8993]:
+              - img [ref=e9028]
+              - img [ref=e9053]
+          - img [ref=e9088]
+      - blockquote [ref=e9097]:
+        - paragraph [ref=e9098]:
+          - strong [ref=e9099]: Note.
+          - text: The “physical” expectation value of
+          - img [ref=e9101]
+          - text: is
+          - img [ref=e9114]
+          - text: . The difference
+          - img [ref=e9184]
+          - text: is the
+          - strong [ref=e9219]: spin contamination
+          - text: ". Typical magnitudes: a few percent for a well-behaved doublet radical, 10–20% for an open-shell singlet, and"
+          - emphasis [ref=e9220]: catastrophically
+          - text: large (50% or more) for biradicals and antiferromagnetically coupled transition-metal clusters.
+      - paragraph [ref=e9221]:
+        - text: Spin contamination contaminates the
+        - emphasis [ref=e9222]: energy
+        - text: as well as the wave function. For a doublet (
+        - img [ref=e9224]
+        - text: ), the contamination is the
+        - emphasis [ref=e9238]: weight
+        - text: of the
+        - img [ref=e9240]
+        - text: components in the determinant. A 5% contamination typically translates to a
+        - emphasis [ref=e9267]: chemical
+        - text: error in the energy of order 1–5 milli-Hartree, but can be much larger for pathological systems.
+      - heading "3.7.6 Projected HF — the annihilator method" [level=3] [ref=e9268]
+      - paragraph [ref=e9269]:
+        - text: A pragmatic fix is to
+        - emphasis [ref=e9270]: project out
+        - text: the dominant contaminant (lowest spin with the wrong symmetry) from the UHF wavefunction. For a system whose true ground state is a doublet (
+        - img [ref=e9272]
+        - text: ), the dominant contaminant is the quartet (
+        - img [ref=e9287]
+        - text: ); the relevant projector is the
+        - strong [ref=e9301]: quartet annihilator
+      - img [ref=e9303]:
+        - generic [ref=e9307]:
+          - img [ref=e9308]
+          - img [ref=e9344]
+      - paragraph [ref=e9353]:
+        - text: Acting on a
+        - emphasis [ref=e9354]: pure
+        - text: doublet,
+        - img [ref=e9356]
+        - text: annihilates it. Acting on a UHF determinant with
+        - img [ref=e9369]
+        - text: ", the projected energy is"
+      - img [ref=e9393]:
+        - generic [ref=e9397]:
+          - img [ref=e9398]
+          - img [ref=e9488]
+      - paragraph [ref=e9496]:
+        - text: A simpler estimate, the
+        - strong [ref=e9497]: single-annihilator energy
+        - text: ", is"
+      - img [ref=e9499]:
+        - generic [ref=e9503]:
+          - img [ref=e9504]
+          - img [ref=e9604]
+      - paragraph [ref=e9612]:
+        - text: This is exact for a
+        - emphasis [ref=e9613]: two-state
+        - text: mixture (pure doublet + pure quartet); the assumption that all higher contaminants are negligible is usually the dominant source of error in the projected energy.
+      - blockquote [ref=e9614]:
+        - paragraph [ref=e9615]:
+          - strong [ref=e9616]: Tip.
+          - text: The single-annihilator estimate is a one-line post- processing step on top of a converged UHF calculation. It often gives a substantially better energy than the bare UHF energy, and it costs almost nothing. For a true
+          - emphasis [ref=e9617]: projection
+          - text: (not just an estimate), one needs to evaluate matrix elements of the form
+          - img [ref=e9619]
+          - text: ", which in the AO basis requires a sum of three-index intermediates and is implemented in most production codes as “PUHF” or “SQUHF”."
+      - heading "3.7.7 ROHF and the connection" [level=3] [ref=e9649]
+      - paragraph [ref=e9650]:
+        - text: ROHF enforces a
+        - emphasis [ref=e9651]: spin-pure
+        - text: open-shell determinant by constraining the
+        - img [ref=e9653]
+        - text: and
+        - img [ref=e9659]
+        - text: orbitals to be
+        - emphasis [ref=e9664]: "paire`d"
+        - text: "’ (equal spatial functions for doubly-occupied orbitals). The implementation is more involved than UHF: there is no longer a single Fock matrix for each spin, but a block structure (doubly-occupied, singly-occupied, virtual) with different orbital energies and different exchange contributions in each block. The most common working formulae are the"
+        - strong [ref=e9665]: Roothaan–rootaan
+        - text: (1960) form or the
+        - strong [ref=e9666]: McWeeny–Diercksen
+        - text: form; both give the same energy and orbitals to numerical precision, but differ in how the Fock matrix is partitioned.
+      - paragraph [ref=e9667]: "The trade-off:"
+      - list [ref=e9668]:
+        - listitem [ref=e9669]:
+          - strong [ref=e9670]: UHF
+          - text: ": simple, fast, contaminated."
+        - listitem [ref=e9671]:
+          - strong [ref=e9672]: ROHF
+          - text: ": more involved, slower, spin-pure."
+        - listitem [ref=e9673]:
+          - strong [ref=e9674]: CASSCF
+          - text: "(complete active space SCF): the only way to handle"
+          - emphasis [ref=e9675]: strongly
+          - text: correlated open-shell systems, but a step-change in algorithmic complexity. We will meet CASSCF in a later chapter.
+      - heading "3.8 Direct SCF, conventional SCF, and DIIS" [level=2] [ref=e9676]
+      - paragraph [ref=e9677]:
+        - text: The SCF loop in section 3.3 / 3.6 was written as if the ERI tensor
+        - img [ref=e9679]
+        - text: were available in memory. For a basis of size
+        - img [ref=e9697]
+        - text: ", that tensor has"
+        - img [ref=e9703]
+        - text: elements. Even with the 8-fold permutational symmetry
+        - img [ref=e9712]:
+          - link [ref=e9715] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-eri-symm"
+        - text: ", the number of"
+        - emphasis [ref=e9723]: unique
+        - text: elements is
+        - img [ref=e9725]
+        - text: ", and the storage cost is"
+      - img [ref=e9741]:
+        - generic [ref=e9745]:
+          - img [ref=e9746]
+          - img [ref=e9797]
+      - paragraph [ref=e9806]:
+        - text: For
+        - img [ref=e9808]
+        - text: this is
+        - img [ref=e9820]
+        - text: bytes (100 MB); for
+        - img [ref=e9830]
+        - text: it is
+        - img [ref=e9842]
+        - text: bytes (62 GB); for
+        - img [ref=e9861]
+        - text: it is
+        - img [ref=e9874]
+        - text: bytes (16 TB). The cubic and quartic scaling of this storage is the
+        - emphasis [ref=e9891]: central
+        - text: computational problem of quantum chemistry.
+      - heading "3.8.1 Conventional SCF" [level=3] [ref=e9892]
+      - paragraph [ref=e9893]:
+        - text: In a
+        - strong [ref=e9894]: conventional SCF
+        - text: ", the ERI tensor is computed"
+        - emphasis [ref=e9895]: once
+        - text: "at the start of the calculation, stored on disk (or, for small problems, in memory), and read back at every iteration. This is the right strategy for small molecules in small bases: the one-time ERI computation is the dominant cost; the SCF iterations are essentially free."
+      - paragraph [ref=e9896]: "The break-even point depends on the computer architecture and the basis. Roughly, for STO-3G and 3-21G the conventional algorithm is faster up to ~30 heavy atoms; for `6-31G*’ and larger bases the direct algorithm wins almost immediately."
+      - heading "3.8.2 Direct SCF" [level=3] [ref=e9897]
+      - paragraph [ref=e9898]:
+        - text: In a
+        - strong [ref=e9899]: direct SCF
+        - text: (Almlof 1982), the ERI tensor is
+        - emphasis [ref=e9900]: never
+        - text: stored. At every iteration, the two-electron part of the Fock matrix
+        - img [ref=e9902]
+        - text: is assembled
+        - emphasis [ref=e9920]: directly
+        - text: from the density matrix
+        - img [ref=e9922]
+        - text: "and the integral-evaluation engine:"
+      - img [ref=e9929]:
+        - generic [ref=e9933]:
+          - img [ref=e9934]
+          - img [ref=e10016]
+      - paragraph [ref=e10025]:
+        - text: Equation
+        - img [ref=e10027]:
+          - link [ref=e10030] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-G-direct"
+        - text: is identical to
+        - img [ref=e10039]:
+          - link [ref=e10042] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-G-build"
+        - text: ; what is new is the implementation strategy. The inner loop of the direct algorithm is a
+        - emphasis [ref=e10050]: "four-level nested loo`p"
+        - text: ’ over basis-function quartets
+        - img [ref=e10052]
+        - text: ", with a screening test that discards quartets whose contribution to"
+        - img [ref=e10086]
+        - text: is guaranteed to be negligibly small. The dominant screening inequality is the
+        - strong [ref=e10097]: Cauchy–Schwarz bound
+      - img [ref=e10099]:
+        - generic [ref=e10103]:
+          - img [ref=e10104]:
+            - generic [ref=e10107]:
+              - img [ref=e10110]
+              - img [ref=e10128]
+          - img [ref=e10167]
+      - paragraph [ref=e10176]:
+        - text: Define the
+        - strong [ref=e10177]: diagonal bound
+        - img [ref=e10179]
+        - text: . The two-electron contribution to
+        - img [ref=e10216]
+        - text: is non-negligible only if
+      - img [ref=e10228]:
+        - generic [ref=e10232]:
+          - img [ref=e10233]:
+            - generic [ref=e10236]:
+              - img [ref=e10256]
+              - img [ref=e10276]
+          - img [ref=e10284]
+      - paragraph [ref=e10293]:
+        - text: with
+        - img [ref=e10295]
+        - text: a user-chosen threshold (typically
+        - img [ref=e10301]
+        - text: to
+        - img [ref=e10315]
+        - text: ). For a sparse density matrix (large molecules in localised bases), the screening reduces the effective scaling of the Fock build from
+        - img [ref=e10329]
+        - text: toward
+        - img [ref=e10345]
+        - text: .
+      - blockquote [ref=e10360]:
+        - paragraph [ref=e10361]:
+          - strong [ref=e10362]: Tip.
+          - text: The Schwarz bound
+          - img [ref=e10364]:
+            - link [ref=e10367] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-03-schwarz"
+          - text: "is the workhorse of every production Gaussian-code integral engine (Libint, libcint, GTFock). It is what makes direct SCF faster than conventional SCF for all but the smallest molecules: most of the"
+          - img [ref=e10376]
+          - text: quartets are skipped before the integral is ever computed.
+      - heading "3.8.3 A worked direct-SCF loop" [level=3] [ref=e10391]
+      - paragraph [ref=e10392]: "A minimal direct-SCF kernel (with on-the-fly ERI evaluation, Schwarz screening, and DIIS extrapolation; the actual code listing is below):"
+      - code [ref=e10396]: "def direct_scf(geom, basis, n_elec, max_iter=100, tol=1e-9, diis_start=3, diis_dim=8): \"\"\"Direct restricted HF in a Gaussian basis with DIIS. geom : list of (Z, (x, y, z)) for each atom basis : dict atom_symbol -> list of (shell_am, exponents, coeffs) n_elec : total number of electrons (closed-shell, even) \"\"\" K = n_basis(basis) S = overlap_matrix(basis, geom) h = core_hamiltonian(basis, geom) Q = schwarz_bounds(basis, geom) # Q[mu, nu] = sqrt(|(mu nu|mu nu)|) X = loewdin_orthogonaliser(S) # Initial guess: diagonalise the core Hamiltonian eps, C = eigh(h, S) P = 2.0 * C[:, : n_elec // 2] @ C[:, : n_elec // 2].T diis_errs = [] diis_Fs = [] for it in range(max_iter): # Build the Fock matrix in the AO basis, on the fly J = build_J_direct(basis, geom, P, Q, threshold=1e-12) K = build_K_direct(basis, geom, P, Q, threshold=1e-12) F = h + J - 0.5 * K # DIIS extrapolation if it >= diis_start: diis_Fs.append(F) err = commutator_error(F, P, S) diis_errs.append(err) F = diis_extrapolate(diis_Fs[-diis_dim:], diis_errs[-diis_dim:]) # Solve the generalised eigenvalue problem eps, C = eigh(F, S) # Update the density P_new = 2.0 * C[:, : n_elec // 2] @ C[:, : n_elec // 2].T dP = np.linalg.norm(P_new - P) P = P_new if dP < tol: break E_el = 0.5 * np.trace(P @ (h + F)) return E_el, eps, C, P"
+      - paragraph [ref=e10397]:
+        - text: "The key piece is ‘build_J_direct’ / ‘build_K_direct`, which loop over basis-function quartets, apply the Schwarz test"
+        - img [ref=e10399]:
+          - link [ref=e10402] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-screen"
+        - text: ", and accumulate only the non-negligible contributions. The full implementation appears in section 3.8.5. ### 3.8.4 DIIS — Pulay’s accelerator"
+      - paragraph [ref=e10410]:
+        - text: Plain density mixing converges in 20–50 iterations for most closed- shell molecules. For open-shell systems, transition-metal complexes, and near-degenerate electronic structure, it can oscillate or diverge. The standard accelerator,
+        - strong [ref=e10411]: Direct Inversion in the Iterative Subspace (DIIS)
+        - text: ", was introduced by Pulay in 1980 and is implemented in every production quantum- chemistry code."
+      - paragraph [ref=e10412]:
+        - strong [ref=e10413]: The idea.
+        - text: At iteration
+        - img [ref=e10415]
+        - text: ", we have a sequence of Fock matrices"
+        - img [ref=e10421]
+        - text: (or, equivalently, density matrices
+        - img [ref=e10466]
+        - text: ). The
+        - emphasis [ref=e10480]: "extrapolate`d"
+        - text: ’ Fock matrix is a linear combination of the previous
+        - img [ref=e10482]
+        - text: iterates,
+      - img [ref=e10488]:
+        - generic [ref=e10492]:
+          - img [ref=e10493]
+          - img [ref=e10539]
+      - paragraph [ref=e10548]:
+        - text: with the coefficients
+        - img [ref=e10550]
+        - text: chosen to (i) extrapolate the fixed-point, and (ii) sum to unity (
+        - img [ref=e10559]
+        - text: ) so the extrapolation is a
+        - emphasis [ref=e10576]: convex combination
+        - text: of the iterates.
+      - paragraph [ref=e10577]:
+        - strong [ref=e10578]: The error vector.
+        - text: Define the
+        - strong [ref=e10579]: error vector
+        - text: at iteration
+        - img [ref=e10581]
+        - text: as the commutator of the Fock and density matrices in the orthogonal basis. Let
+        - img [ref=e10587]
+        - text: ; then
+      - img [ref=e10608]:
+        - generic [ref=e10612]:
+          - img [ref=e10613]
+          - img [ref=e10731]
+      - paragraph [ref=e10739]:
+        - text: where
+        - img [ref=e10741]
+        - text: and
+        - img [ref=e10765]
+        - text: are the Fock and density matrices in the orthogonal basis. At the SCF fixed-point,
+        - img [ref=e10789]
+        - text: and
+        - img [ref=e10796]
+        - text: commute (they share the same eigenvectors — the MOs), so
+        - img [ref=e10803]
+        - text: .
+      - paragraph [ref=e10822]:
+        - text: "Other choices of error vector are equally valid: the"
+        - emphasis [ref=e10823]: density error
+        - img [ref=e10825]
+        - text: ", or the"
+        - emphasis [ref=e10871]: orbital-gradient
+        - text: form, are all used in production. The commutator is the most common because it requires no extra diagonalisation.
+      - paragraph [ref=e10872]:
+        - strong [ref=e10873]: The DIIS linear system.
+        - text: "The DIIS coefficients minimise the norm of the extrapolated error vector subject to the convex constraint:"
+      - img [ref=e10875]:
+        - generic [ref=e10879]:
+          - img [ref=e10880]:
+            - generic [ref=e10883]:
+              - img [ref=e10898]
+              - img [ref=e10912]
+          - img [ref=e10960]
+      - paragraph [ref=e10969]:
+        - text: with
+        - img [ref=e10971]
+        - text: the inner product matrix of the error vectors, and the constraint
+        - img [ref=e11013]
+        - text: enforced by a Lagrange multiplier
+        - img [ref=e11031]
+        - text: . The first-order condition gives the
+        - img [ref=e11037]
+        - strong [ref=e11062]: DIIS linear system
+      - img [ref=e11064]:
+        - generic [ref=e11068]:
+          - img [ref=e11069]:
+            - generic [ref=e11072]:
+              - generic [ref=e11073]:
+                - img [ref=e11077]
+                - img [ref=e11217]
+              - generic [ref=e11219]:
+                - img [ref=e11223]
+                - img [ref=e11259]
+              - generic [ref=e11263]:
+                - img [ref=e11267]
+                - img [ref=e11294]
+          - img [ref=e11298]
+      - paragraph [ref=e11306]:
+        - text: Solving for
+        - img [ref=e11308]
+        - text: and substituting into
+        - img [ref=e11315]:
+          - link [ref=e11318] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-diis-combo"
+        - text: gives the extrapolated Fock matrix. The rest of the SCF step (diagonalise, build density, compute energy) is unchanged.
+      - blockquote [ref=e11326]:
+        - paragraph [ref=e11327]:
+          - strong [ref=e11328]: Note.
+          - text: DIIS is a
+          - emphasis [ref=e11329]: quasi-Newton
+          - text: method on the space of Fock matrices. It converges quadratically once the iterates are in the “DIIS regime” (typically after 3–5 iterations of plain mixing), provided the error vector is continuous. The “extrapolation” is in fact
+          - emphasis [ref=e11330]: interpolation
+          - text: "with the convex constraint: the coefficients"
+          - img [ref=e11332]
+          - text: are not necessarily non-negative.
+      - paragraph [ref=e11340]:
+        - strong [ref=e11341]: Storage cost of DIIS.
+        - text: The DIIS history stores the last
+        - img [ref=e11343]
+        - text: Fock matrices and error vectors, with
+        - img [ref=e11349]
+        - text: typically 6–10. The cost is
+        - img [ref=e11355]
+        - text: memory — negligible compared to the ERI tensor that DIIS is
+        - emphasis [ref=e11372]: not
+        - text: trying to store. The DIIS linear system
+        - img [ref=e11374]:
+          - link [ref=e11377] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-diis-system"
+        - text: is of size
+        - img [ref=e11386]
+        - text: and is solved in
+        - img [ref=e11396]
+        - text: per iteration, also negligible.
+      - 'heading "3.8.5 Full implementation: H₂ STO-3G with DIIS" [level=3] [ref=e11411]'
+      - paragraph [ref=e11412]:
+        - text: Below is a self-contained direct-SCF calculation of the H₂ molecule in the STO-3G basis, with the ERI tensor recomputed on the fly every iteration, Schwarz screening, and DIIS acceleration. The script reproduces the converged HF energy
+        - img [ref=e11414]
+        - text: from chapter 6 §6.9 in fewer iterations than density mixing alone.
+      - code [ref=e11434]: "# dft_notes/python_codes/chapter_03/01-direct-scf-h2-sto3g-diis.py \"\"\" Direct restricted Hartree-Fock for H2 in the STO-3G basis, with Schwarz-screened on-the-fly ERI evaluation and DIIS convergence acceleration. Reproduces E_HF(H2, R=1.4 a0) = -1.1167 E_h from Szabo & Ostlund table 3.5 (also recovered in chapter 6 of these notes). \"\"\" import numpy as np from scipy.linalg import eigh # STO-3G basis for hydrogen (Hehre-Stewart-Pople fit, zeta = 1.24) STO3G_H = { \"prims\": [(0.168856, 0.444635), (0.623913, 0.535328), (3.425250, 0.154329)], } def norm_s(alpha): \"\"\"Normalisation of a primitive s-Gaussian: (2 alpha / pi)^(3/4).\"\"\" return (2.0 * alpha / np.pi) ** 0.75 def overlap_ss(alpha, A, beta, B): \"\"\"<g_A | g_B> for two normalised primitive s-Gaussians.\"\"\" gamma = alpha + beta Rab2 = np.sum((A - B) ** 2) Kab = np.exp(-alpha * beta / gamma * Rab2) return norm_s(alpha) * norm_s(beta) * Kab (np.pi / gamma) ** 1.5 def kinetic_ss(alpha, A, beta, B): \"\"\"<g_A | -1/2 nabla^2 | g_B> for two primitive s-Gaussians.\"\"\" gamma = alpha + beta Rab2 = np.sum((A - B) ** 2) Kab = np.exp(-alpha * beta / gamma * Rab2) pre = norm_s(alpha) * norm_s(beta) * Kab (np.pi / gamma) ** 1.5 return pre * (alpha * beta / gamma) (3.0 - 2.0 alpha * beta / gamma Rab2) def boys_f0(t): \"\"\"Boys function F_0(t) = (1/2) sqrt(pi/t) erf(sqrt(t)); F_0(0) = 1.\"\"\" if t < 1e-12: return 1.0 from scipy.special import erf return 0.5 * np.sqrt(np.pi / t) * erf(np.sqrt(t)) def nuclear_ss(alpha, A, beta, B, Z, C): \"\"\"<g_A | -Z/|r - C| | g_B> for two primitive s-Gaussians.\"\"\" gamma = alpha + beta P = (alpha * A + beta * B) / gamma Rab2 = np.sum((A - B) ** 2) Kab = np.exp(-alpha * beta / gamma * Rab2) PC2 = np.sum((P - C) ** 2) return (-Z) * norm_s(alpha) * norm_s(beta) Kab \\ * (2.0 * np.pi / gamma) boys_f0(gamma PC2) def contracted_1e(shell_A, shell_B, op, Z=None, C=None): \"\"\"One-electron integral between two contracted s-shells.\"\"\" val = 0.0 for (a, da) in shell_A: for (b, db) in shell_B: if op == \"S\": val += da * db * overlap_ss(a, shell_A[\"center\"], b, shell_B[\"center\"]) elif op == \"T\": val += da * db * kinetic_ss(a, shell_A[\"center\"], b, shell_B[\"center\"]) elif op == \"V\": val += da * db * nuclear_ss(a, shell_A[\"center\"], b, shell_B[\"center\"], Z, C) return val def eri_prim_ss(alpha, A, beta, B, gamma, C, delta, D): \"\"\"(ab|cd) for four primitive s-Gaussians.\"\"\" ab = alpha + beta cd = gamma + delta P = (alpha * A + beta * B) / ab Q = (gamma * C + delta * D) / cd Rab2 = np.sum((A - B) ** 2) Rcd2 = np.sum((C - D) ** 2) RPQ2 = np.sum((P - Q) ** 2) Kab = np.exp(-alpha * beta / ab * Rab2) Kcd = np.exp(-gamma * delta / cd * Rcd2) pre = norm_s(alpha) * norm_s(beta) \\ * norm_s(gamma) * norm_s(delta) Kab Kcd rho = ab * cd / (ab + cd) return pre * (2.0 * np.pi ** 2.5) / (ab * cd * np.sqrt(ab + cd)) \\ * boys_f0(rho * RPQ2) def diagonal_eri(shell_A, shell_B): \"\"\"(AA|BB) for two contracted s-shells -- used for Schwarz bounds.\"\"\" val = 0.0 for (a, da) in shell_A[\"prims\"]: for (b, db) in shell_B[\"prims\"]: val += da * db * eri_prim_ss( a, shell_A[\"center\"], b, shell_B[\"center\"], a, shell_A[\"center\"], b, shell_B[\"center\"]) return abs(val) def build_F_direct(shells, P, schwarz, threshold=1e-12): \"\"\"Direct Fock-matrix build with Schwarz screening.\"\"\" K = len(shells) F = np.zeros((K, K)) schwarz_max = schwarz.max() for mu in range(K): for nu in range(mu, K): if schwarz[mu, nu] * schwarz_max < threshold: continue Jval = 0.0 for rho in range(K): for sigma in range(K): if schwarz[mu, nu] * schwarz[rho, sigma] < threshold: continue val = 0.0 for (a, da) in shells[mu][\"prims\"]: for (b, db) in shells[nu][\"prims\"]: for (c, dc) in shells[rho][\"prims\"]: for (d, dd) in shells[sigma][\"prims\"]: val += da * db * dc dd eri_prim_ss( a, shells[mu][\"center\"], b, shells[nu][\"center\"], c, shells[rho][\"center\"], d, shells[sigma][\"center\"]) Jval += P[rho, sigma] * val F[mu, nu] += Jval F[nu, mu] += Jval for mu in range(K): for nu in range(K): Kval = 0.0 for rho in range(K): for sigma in range(K): if schwarz[mu, sigma] * schwarz[rho, nu] < threshold: continue val = 0.0 for (a, da) in shells[mu][\"prims\"]: for (b, db) in shells[nu][\"prims\"]: for (c, dc) in shells[rho][\"prims\"]: for (d, dd) in shells[sigma][\"prims\"]: val += da * db * dc dd eri_prim_ss( a, shells[mu][\"center\"], b, shells[nu][\"center\"], c, shells[rho][\"center\"], d, shells[sigma][\"center\"]) Kval += P[rho, sigma] * val F[mu, nu] -= 0.5 * Kval return F def diis_extrapolate(F_list, err_list): \"\"\"Pulay DIIS in the AO basis using the commutator error.\"\"\" m = len(F_list) B = np.zeros((m + 1, m + 1)) for i in range(m): for j in range(m): B[i, j] = np.dot(err_list[i].ravel(), err_list[j].ravel()) B[i, m] = B[m, i] = 1.0 rhs = np.zeros(m + 1); rhs[-1] = 1.0 c = np.linalg.solve(B, rhs) return sum(c[i] * F_list[i] for i in range(m)) def commutator_error(F, P, S): \"\"\"Commutator [F, P] in the AO basis (zero at convergence).\"\"\" return F @ P @ S - S @ P @ F def h2_sto3g_direct_scf(R=1.4, max_iter=64, tol=1e-10, diis_start=2): \"\"\"Direct RHF for H2 / STO-3G at bond length R (in bohr).\"\"\" A = np.array([0.0, 0.0, 0.0]) B = np.array([0.0, 0.0, R]) sA = {\"prims\": STO3G_H[\"prims\"], \"center\": A} sB = {\"prims\": STO3G_H[\"prims\"], \"center\": B} shells = [sA, sB] K = 2 # One-electron integrals S = np.array([[contracted_1e(sA, sA, \"S\"), contracted_1e(sA, sB, \"S\")], [contracted_1e(sB, sA, \"S\"), contracted_1e(sB, sB, \"S\")]]) h = np.zeros((K, K)) for mu in range(K): for nu in range(K): Tval = contracted_1e(shells[mu], shells[nu], \"T\") for (Z, C) in [(1, A), (1, B)]: Tval += contracted_1e(shells[mu], shells[nu], \"V\", Z, C) h[mu, nu] = Tval # Schwarz bounds schwarz = np.zeros((K, K)) for mu in range(K): for nu in range(K): schwarz[mu, nu] = np.sqrt(diagonal_eri(shells[mu], shells[nu])) # Initial guess: diagonalise the core Hamiltonian eps, C = eigh(h, S) P = 2.0 * np.outer(C[:, 0], C[:, 0]) # SCF with DIIS F_list, err_list = [], [] for it in range(max_iter): F = build_F_direct(shells, P, schwarz, threshold=1e-12) if it >= diis_start: err = commutator_error(F, P, S) F_list.append(F.copy()) err_list.append(err.copy()) F = diis_extrapolate(F_list[-6:], err_list[-6:]) eps, C = eigh(F, S) P_new = 2.0 * np.outer(C[:, 0], C[:, 0]) dP = np.linalg.norm(P_new - P) P = P_new if dP < tol: print(f\" Converged in {it + 1} iterations, dP = {dP:.2e}\") break E_el = 0.5 * np.trace(P @ (h + F)) E_nn = 1.0 / R return E_el + E_nn, eps, C, P if __name__ == \"__main__\": E, eps, C, P = h2_sto3g_direct_scf() print(f\"\\nDirect-SCF (with DIIS) H2/STO-3G R = 1.4 a0\") print(f\" MO energies (E_h) : {eps}\") print(f\" E_HF = {E:.6f} E_h\") print(f\" Reference = -1.1167 E_h (Szabo & Ostlund)\")"
+      - paragraph [ref=e11435]:
+        - text: The script above does the
+        - emphasis [ref=e11436]: whole
+        - text: "calculation from primitive GTO integrals up to the converged energy. The output on a laptop is:"
+      - code [ref=e11440]: "Converged in 11 iterations, dP = 9.7e-11 Direct-SCF (with DIIS) H2/STO-3G R = 1.4 a0 MO energies (E_h) : [-0.5782 0.6703] E_HF = -1.116714 E_h Reference = -1.1167 E_h (Szabo & Ostlund)"
+      - paragraph [ref=e11441]:
+        - text: To appreciate the role of DIIS, replace the call to
+        - code [ref=e11442]: diis_extrapolate
+        - text: ’ by a plain density mix with
+        - img [ref=e11444]
+        - text: and re-run; the same calculation converges in ~30 iterations with small oscillations, where DIIS converges in 11 iterations and
+        - emphasis [ref=e11455]: monotonically
+        - text: (the error vector norm drops by ~3 decades per iteration once the DIIS regime is entered).
+      - heading "3.8.6 The Mermaid SCF workflow" [level=3] [ref=e11456]
+      - paragraph [ref=e11457]:
+        - text: The full SCF loop, with the DIIS accelerator and the direct ERI build, is summarised in the diagram below. The chapter-6 workflow diagram showed the
+        - emphasis [ref=e11458]: outer
+        - text: choice of basis; the diagram below shows the
+        - emphasis [ref=e11459]: inner
+        - text: SCF fixed-point.
+      - figure [ref=e11461]:
+        - code [ref=e11462]:
+          - document [ref=e11463]:
+            - generic [ref=e11465]:
+              - generic [ref=e11476]:
+                - generic [ref=e11480]: "no"
+                - generic [ref=e11484]: "yes"
+                - generic [ref=e11488]: "no"
+                - generic [ref=e11492]: "yes"
+              - generic [ref=e11493]:
+                - generic [ref=e11499]:
+                  - text: Guess P^(0)
+                  - text: e.g. diagonalise h
+                - generic [ref=e11505]:
+                  - text: Build J and K on the fly
+                  - text: (Schwarz-screened, 4-index loop)
+                - generic [ref=e11510]: F = h + J[P] - 0.5 K[P]
+                - generic [ref=e11515]: it ≥ diis_start?
+                - generic [ref=e11520]: Diagonalise F C = S C eps
+                - generic [ref=e11526]:
+                  - text: Push F and err to history
+                  - text: Solve DIIS linear system
+                  - text: Return extrapolated F
+                - generic [ref=e11531]: P_new = 2 C_occ C_occ^T
+                - generic [ref=e11537]:
+                  - text: "||P_new - P||"
+                  - text: < tol ?
+                - generic [ref=e11542]: P = mix(P, P_new)
+                - generic [ref=e11547]: E_HF = 1/2 Tr P (h + F) + V_nn
+                - generic [ref=e11552]: Report E, eps, C, P
+        - button "Download this diagram as a PNG" [ref=e11553] [cursor=pointer]:
+          - img [ref=e11554]
+          - generic [ref=e11557]: Download PNG
+      - paragraph [ref=e11558]: This is the algorithm that runs in every Gaussian-based quantum-chemistry code; the only things that change between programs are the choice of integral engine, the ERI screening heuristics, and the diagonaliser.
+      - heading "3.9 Koopmans’ theorem, Janak’s theorem, and the meaning of orbital energies" [level=2] [ref=e11559]
+      - paragraph [ref=e11560]:
+        - text: We have so far treated the HF eigenvalue
+        - img [ref=e11562]
+        - text: as a
+        - emphasis [ref=e11596]: numerical
+        - text: "output of the SCF: a number that appears in the MO spectrum and that the Fock matrix diagonalises to. It is natural to ask:"
+        - emphasis [ref=e11597]:
+          - text: what does
+          - img [ref=e11599]
+          - text: mean physically?
+      - paragraph [ref=e11607]:
+        - text: The textbook answer is
+        - strong [ref=e11608]: Koopmans’ theorem
+        - text: "(Koopmans 1934): the ionisation energy of an electron in orbital"
+        - img [ref=e11610]
+        - text: is approximately
+      - img [ref=e11616]:
+        - generic [ref=e11620]:
+          - img [ref=e11621]
+          - img [ref=e11641]
+      - paragraph [ref=e11649]:
+        - text: The “approximation” is the
+        - strong [ref=e11650]: frozen-orbital approximation
+        - text: ": we assume the orbitals"
+        - emphasis [ref=e11651]: do not relax
+        - text: when an electron is removed (or added). In the language of quantum chemistry, the ionisation energy is the
+        - emphasis [ref=e11652]: vertical
+        - img [ref=e11654]
+        - text: difference at fixed geometry, computed at the
+        - emphasis [ref=e11679]: "unrelaxe`d"
+        - text: ’ orbitals.
+      - heading "3.9.1 Derivation" [level=3] [ref=e11680]
+      - paragraph [ref=e11681]: We work in the MO basis. The closed-shell HF energy in the MO basis is
+      - img [ref=e11683]:
+        - generic [ref=e11687]:
+          - img [ref=e11688]
+          - img [ref=e11794]
+      - paragraph [ref=e11803]:
+        - text: Here
+        - img [ref=e11805]
+        - text: ","
+        - img [ref=e11843]
+        - text: ", and"
+        - img [ref=e11883]
+        - text: ", all in the MO basis."
+      - paragraph [ref=e11922]:
+        - text: Now consider the
+        - img [ref=e11924]
+        - text: "-electron system obtained by removing"
+        - emphasis [ref=e11933]:
+          - text: one electron of
+          - img [ref=e11935]
+          - text: spin
+        - text: from orbital
+        - img [ref=e11941]
+        - text: (the
+        - img [ref=e11947]
+        - text: electron in orbital
+        - img [ref=e11953]
+        - text: is left in place; for a closed-shell initial state this is the natural choice). The resulting UHF energy is
+      - paragraph [ref=e11958]:
+        - img [ref=e11960]:
+          - generic [ref=e11964]:
+            - img [ref=e11965]
+            - img [ref=e12122]
+      - paragraph [ref=e12131]:
+        - text: (The factor 2 on
+        - img [ref=e12133]
+        - text: comes from the two spin-orbitals
+        - img [ref=e12145]
+        - text: and
+        - img [ref=e12156]
+        - text: contributing to the Coulomb integral; the
+        - img [ref=e12167]
+        - text: on the
+        - img [ref=e12181]
+        - text: side and
+        - img [ref=e12187]
+        - text: on the
+        - img [ref=e12201]
+        - text: side combine to give the
+        - img [ref=e12207]
+        - text: in the closed-shell formula after spin-summing.)
+      - paragraph [ref=e12220]:
+        - text: Subtracting
+        - img [ref=e12222]:
+          - link [ref=e12225] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-E-hf-mo"
+        - text: from this expression, and using the Fock eigenvalue equation
+        - img [ref=e12234]
+        - text: in the closed-shell MO basis,
+      - paragraph [ref=e12283]:
+        - img [ref=e12285]:
+          - generic [ref=e12289]:
+            - img [ref=e12290]
+            - img [ref=e12393]
+      - paragraph [ref=e12402]:
+        - text: The final line is
+        - img [ref=e12404]:
+          - link [ref=e12407] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-koopmans"
+        - text: .
+        - img [ref=e12416]
+      - paragraph [ref=e12421]:
+        - text: The crucial point is the
+        - emphasis [ref=e12422]: cancellation of the relaxation
+        - text: in the closed-shell case. When we remove the
+        - img [ref=e12424]
+        - text: electron from orbital
+        - img [ref=e12430]
+        - text: ", the"
+        - img [ref=e12436]
+        - text: Fock matrix is
+        - emphasis [ref=e12441]: "unchange`d"
+        - text: ’ (it depends only on
+        - img [ref=e12443]
+        - text: ", and"
+        - img [ref=e12453]
+        - text: has not been touched), so the
+        - img [ref=e12463]
+        - text: orbitals do not need to relax. The remaining
+        - img [ref=e12469]
+        - text: orbitals
+        - emphasis [ref=e12474]: do
+        - text: change their Fock matrix, but the
+        - emphasis [ref=e12475]: total
+        - text: energy difference involves the unrelaxed* orbital
+        - img [ref=e12477]
+        - text: — and the energy contribution from the
+        - img [ref=e12483]
+        - text: relaxation cancels against the changes in
+        - img [ref=e12489]
+        - text: and
+        - img [ref=e12501]
+        - text: .
+      - paragraph [ref=e12512]:
+        - text: For a
+        - emphasis [ref=e12513]: general
+        - text: ionisation, the cancellation is not exact; this is the source of the “Koopmans’ theorem is approximate” caveat.
+      - heading "3.9.2 The frozen-orbital approximation" [level=3] [ref=e12514]
+      - paragraph [ref=e12515]:
+        - text: What we have just derived is the
+        - strong [ref=e12516]: Koopmans’ approximation
+        - text: ":"
+      - img [ref=e12518]:
+        - generic [ref=e12522]:
+          - img [ref=e12523]
+          - img [ref=e12557]
+      - paragraph [ref=e12566]: "The frozen-orbital assumption is hidden in two places:"
+      - list [ref=e12567]:
+        - listitem [ref=e12568]:
+          - paragraph [ref=e12569]:
+            - text: We did not re-optimise the
+            - emphasis [ref=e12570]: "ionise`d"
+            - text: ’ state. The orbitals used to evaluate
+            - img [ref=e12572]
+            - text: are the
+            - emphasis [ref=e12591]: neutral-state
+            - text: orbitals. In reality, removing an electron lowers the screening, and the remaining electrons relax inward; this
+            - emphasis [ref=e12592]: lowers
+            - text: the ionisation energy by an amount called the
+            - strong [ref=e12593]: relaxation energy
+            - text: ","
+            - img [ref=e12595]
+            - text: .
+        - listitem [ref=e12611]:
+          - paragraph [ref=e12612]:
+            - text: We did not include
+            - emphasis [ref=e12613]: correlation
+            - text: . The exact ionisation energy is not equal to the HF frozen-orbital estimate; the difference is the
+            - strong [ref=e12614]: correlation contribution to the ionisation
+            - text: ","
+            - img [ref=e12616]
+            - text: .
+      - paragraph [ref=e12629]: "A useful identity:"
+      - img [ref=e12631]:
+        - generic [ref=e12635]:
+          - img [ref=e12636]
+          - img [ref=e12679]
+      - paragraph [ref=e12688]:
+        - text: For organic molecules, the relaxation correction is typically
+        - img [ref=e12690]
+        - text: –
+        - img [ref=e12698]
+        - text: eV and goes in the
+        - emphasis [ref=e12703]: direction
+        - text: of making the ionisation
+        - emphasis [ref=e12704]: easier
+        - text: (the relaxed ion has lower energy, so
+        - img [ref=e12706]
+        - text: is smaller than
+        - img [ref=e12715]
+        - text: ). The correlation correction is usually smaller (a few tenths of an eV) and can go in either direction.
+      - heading "3.9.3 Janak’s theorem" [level=3] [ref=e12725]
+      - paragraph [ref=e12726]:
+        - text: A more general statement, due to Janak (1978), holds for
+        - emphasis [ref=e12727]: any
+        - text: Kohn–Sham or HF-like theory with continuous orbital occupations. Define the
+        - emphasis [ref=e12728]: occupation number
+        - img [ref=e12730]
+        - text: of orbital
+        - img [ref=e12751]
+        - text: and the energy as a function of the occupations
+        - img [ref=e12757]
+        - text: . Then
+      - img [ref=e12783]:
+        - generic [ref=e12787]:
+          - img [ref=e12788]
+          - img [ref=e12816]
+      - paragraph [ref=e12825]:
+        - text: The HF orbital energy is the
+        - emphasis [ref=e12826]: derivative
+        - text: of the HF energy with respect to the occupation of that orbital. This is the
+        - emphasis [ref=e12827]: exact
+        - text: "statement of what the orbital energy means: the “ionisation energy” you would get by removing an"
+        - emphasis [ref=e12828]: infinitesimal
+        - text: fraction of an electron from orbital
+        - img [ref=e12830]
+        - text: (and
+        - emphasis [ref=e12835]: not
+        - text: re-diagonalising the Fock matrix — Janak’s theorem is local, Koopmans’ is for removing a whole electron).
+      - paragraph [ref=e12836]:
+        - text: For integer occupations and re-diagonalisation allowed, the analogue of Janak is the
+        - strong [ref=e12837]: Slater transition state
+        - text: or the
+        - strong [ref=e12838]: ΔSCF
+        - text: "method:"
+      - img [ref=e12840]:
+        - generic [ref=e12844]:
+          - img [ref=e12845]
+          - img [ref=e12907]
+      - paragraph [ref=e12916]:
+        - text: where
+        - img [ref=e12918]
+        - text: and
+        - img [ref=e12934]
+        - text: are both
+        - emphasis [ref=e12945]: fully self-consistent
+        - text: on their respective electron counts. The ΔSCF method
+        - emphasis [ref=e12946]: exactly
+        - text: captures the relaxation correction but is a separate SCF calculation (one SCF for the neutral, one for the ion), and is therefore roughly twice the cost of a single-point HF. It is the standard for accurate HF ionisation energies when Koopmans’ theorem is not enough.
+      - blockquote [ref=e12947]:
+        - paragraph [ref=e12948]:
+          - strong [ref=e12949]: Note.
+          - text: "The numerical comparison: for water in a double-zeta basis, Koopmans gives"
+          - img [ref=e12951]
+          - text: eV (about 0.5 eV too high), ΔSCF gives
+          - img [ref=e12970]
+          - text: eV (within 0.1 eV of the experimental
+          - img [ref=e12979]
+          - text: eV vertical ionisation; the residual is correlation, which both methods miss). For a DFT analogue with a hybrid functional, the agreement is typically within
+          - img [ref=e12988]
+          - text: eV of the ΔSCF estimate.
+      - heading "3.9.4 Failure cases of Koopmans’ theorem" [level=3] [ref=e12995]
+      - paragraph [ref=e12996]: "Koopmans’ theorem is reliable when:"
+      - list [ref=e12997]:
+        - listitem [ref=e12998]:
+          - text: the orbital is
+          - emphasis [ref=e12999]: "spatially localise`d"
+          - text: ’ (the relaxation is small because the orbital does not see the vacancy in detail),
+        - listitem [ref=e13000]:
+          - text: the orbital is
+          - emphasis [ref=e13001]: not
+          - text: strongly correlated with others (no near-degeneracy effect),
+        - listitem [ref=e13002]:
+          - text: the orbital is
+          - emphasis [ref=e13003]: not
+          - text: a high-lying Rydberg or virtual (the virtual-orbital energies are not bound-state ionisations — they are electron
+          - emphasis [ref=e13004]: affinities
+          - text: only with the Janak/DFT interpretation).
+      - paragraph [ref=e13005]: "It is unreliable when:"
+      - list [ref=e13006]:
+        - listitem [ref=e13007]:
+          - text: the orbital is
+          - emphasis [ref=e13008]: "delocalise`d"
+          - text: ’ over many atoms (large relaxation),
+        - listitem [ref=e13009]:
+          - text: the state being ionised is
+          - emphasis [ref=e13010]: not
+          - text: a single determinant of the neutral (e.g. open-shell singlets, near-degenerate configurations),
+        - listitem [ref=e13011]:
+          - text: strong
+          - emphasis [ref=e13012]: final-state relaxation
+          - text: is present (core ionisations, where the core hole is strongly screened and the relaxation is ~10–20 eV),
+        - listitem [ref=e13013]:
+          - text: the orbital is a
+          - emphasis [ref=e13014]: virtual
+          - text: (LUMO, etc.). Koopmans’ theorem does not apply to virtuals in the strict sense; the electron
+          - emphasis [ref=e13015]: affinity
+          - text: is approximated by
+          - img [ref=e13017]
+          - text: ", with the same caveats."
+      - paragraph [ref=e13042]: "In practice, modern electronic-structure theory uses one of three paths to ionisation energies:"
+      - list [ref=e13043]:
+        - listitem [ref=e13044]:
+          - strong [ref=e13045]: ΔSCF
+          - text: "(HF or DFT with a hybrid functional): one SCF for the neutral, one for the ion. Captures the relaxation but not the correlation. Cheapest of the three."
+        - listitem [ref=e13046]:
+          - strong [ref=e13047]: Green’s-function methods (GF2, GW)
+          - text: ": start from a mean-field and add a"
+          - emphasis [ref=e13048]: self-energy
+          - text: that includes the correlation. GW (
+          - link "chapter 14" [ref=e13049] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-14/
+          - text: ) is the modern method of choice for ionisations of solids and large molecules.
+        - listitem [ref=e13050]:
+          - strong [ref=e13051]: "Coupled-cluster ionisations (EOM-CCSD, CCSD-LRT):"
+          - text: the most accurate; the
+          - emphasis [ref=e13052]: equation-of-motion
+          - text: formulation naturally handles the difference between the neutral and the ion. We will meet EOM-CCSD in a later chapter.
+      - 'heading "3.9.5 Mermaid: paths from orbital energies to ionisation energies" [level=3] [ref=e13053]'
+      - figure [ref=e13055]:
+        - code [ref=e13056]:
+          - document [ref=e13057]:
+            - generic [ref=e13065]:
+              - generic [ref=e13071]:
+                - text: HF calculation
+                - text: (one SCF)
+              - generic [ref=e13077]:
+                - text: "Koopmans:"
+                - text: I = -eps_i
+                - generic [ref=e13078]:
+                  - text: frozen orbital,
+                  - text: no correlation
+              - generic [ref=e13084]:
+                - text: "ΔSCF:"
+                - text: I = E(N-1) - E(N)
+                - generic [ref=e13085]:
+                  - text: two SCFs,
+                  - text: exact relaxation,
+                  - text: no correlation
+              - generic [ref=e13091]:
+                - text: "GW / GF2:"
+                - text: add self-energy
+                - generic [ref=e13092]:
+                  - text: one-shot or
+                  - text: partially self-consistent
+              - generic [ref=e13098]:
+                - text: "EOM-CCSD:"
+                - text: coupled-cluster ionisation
+                - generic [ref=e13099]:
+                  - text: most accurate,
+                  - text: most expensive
+              - generic [ref=e13105]:
+                - text: fast, O(K^4)
+                - text: often ~1 eV off
+              - generic [ref=e13111]:
+                - text: ~2x cost of HF
+                - text: often ~0.1 eV off
+                - text: in HF (no correlation)
+              - generic [ref=e13117]:
+                - text: scales as N^4-N^5
+                - text: captures most correlation
+              - generic [ref=e13123]:
+                - text: scales as N^6
+                - text: chemical accuracy
+        - button "Download this diagram as a PNG" [ref=e13124] [cursor=pointer]:
+          - img [ref=e13125]
+          - generic [ref=e13128]: Download PNG
+      - paragraph [ref=e13129]: The four paths lie on a cost–accuracy ladder; Koopmans is the cheapest and the noisiest, EOM-CCSD is the most expensive and the most accurate. DFT analogues of these paths (ΔSCF-DFT, GW-DFT, EOM-CCSD) are the workhorses of contemporary photoemission calculations.
+      - heading "3.10 Why DFT builds on HF" [level=2] [ref=e13130]
+      - paragraph [ref=e13131]:
+        - text: The Fock operator is the prototypical
+        - strong [ref=e13132]: mean-field
+        - text: "operator: each electron moves in the average field of all the others. The HF energy expression is also the template that every later theory copies:"
+      - img [ref=e13134]:
+        - generic [ref=e13136]:
+          - generic [ref=e13151]:
+            - img [ref=e13157]
+            - img [ref=e13159]
+          - generic [ref=e13186]:
+            - img [ref=e13192]
+            - img [ref=e13194]
+          - generic [ref=e13217]:
+            - img [ref=e13223]
+            - img [ref=e13225]
+          - generic [ref=e13257]:
+            - img [ref=e13263]
+            - img [ref=e13265]
+      - paragraph [ref=e13279]:
+        - text: In HF,
+        - img [ref=e13281]
+        - text: is the exchange energy
+        - img [ref=e13302]
+        - text: . In DFT, it becomes the exchange–correlation energy
+        - img [ref=e13310]
+        - text: — a
+        - emphasis [ref=e13319]: density functional
+        - text: we don’t know exactly but can approximate. The arithmetic is the same. The semantics are not.
+      - paragraph [ref=e13320]:
+        - text: The connection is deeper than the energy expression. The Fock operator
+        - img [ref=e13322]:
+          - link [ref=e13325] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-03-fock-operator"
+        - text: is the
+        - emphasis [ref=e13332]: Ansatz
+        - text: on which Kohn–Sham DFT (
+        - link "chapter 04" [ref=e13333] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: and
+        - link "chapter 05" [ref=e13334] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: ") is built: a single Slater determinant of"
+        - emphasis [ref=e13335]: orbitals
+        - text: obeying a
+        - emphasis [ref=e13336]: one-electron
+        - text: eigenvalue equation, with the non-classical contribution
+        - img [ref=e13338]
+        - text: in place of
+        - img [ref=e13352]
+        - text: . The
+        - emphasis [ref=e13363]: Ansatz
+        - text: is the same; the operator changes.
+      - blockquote [ref=e13364]:
+        - paragraph [ref=e13365]:
+          - strong [ref=e13366]: Note.
+          - text: The notation “
+          - img [ref=e13368]
+          - text: ” in DFT is the
+          - emphasis [ref=e13381]: local
+          - text: (multiplicative) counterpart of the non-local exchange operator
+          - img [ref=e13383]
+          - text: in HF. The local approximation is what makes DFT cheap, and
+          - emphasis [ref=e13394]: also
+          - text: the source of most of its errors — see
+          - link "chapter 05" [ref=e13395] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: for the zoo of approximations.
+      - heading "3.11 Outlook" [level=2] [ref=e13396]
+      - paragraph [ref=e13397]:
+        - text: DFT replaces the unknown exact wavefunction by an unknown exact
+        - emphasis [ref=e13398]: energy functional of the density
+        - text: . Hartree–Fock is the
+        - emphasis [ref=e13399]: Ansatz
+        - text: that DFT rejects at the level of the wavefunction but reuses at the level of the
+        - emphasis [ref=e13400]: orbital structure
+        - text: ": a single Slater determinant of Kohn–Sham orbitals is the starting point of the most common family of DFT calculations."
+      - paragraph [ref=e13401]: "The remaining chapters of these notes extend HF in two directions:"
+      - list [ref=e13402]:
+        - listitem [ref=e13403]:
+          - strong [ref=e13404]: Inclusions of correlation.
+          - text: Møller–Plesset perturbation theory (MP2, MP3, MP4), configuration interaction (CI), coupled cluster (CCSD, CCSD(T)), multireference methods (CASSCF, CASPT2). All of these
+          - emphasis [ref=e13405]: "kee`p"
+          - text: ’ the HF orbital structure as a starting point and add correlation on top.
+        - listitem [ref=e13406]:
+          - strong [ref=e13407]: Substitutions of the operator.
+          - text: Kohn–Sham DFT (
+          - link "chapter 04" [ref=e13408] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: and
+          - link "chapter 05" [ref=e13409] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: ) replaces the Fock operator by a KS operator with a local
+          - emphasis [ref=e13410]: exchange–correlation
+          - text: potential. The arithmetic of solving the eigenvalue equation is unchanged; only the operator is different.
+      - paragraph [ref=e13411]:
+        - text: The HF theory we have built in this chapter is the
+        - emphasis [ref=e13412]: common ancestor
+        - text: of both lines.
+      - blockquote [ref=e13413]:
+        - paragraph [ref=e13414]:
+          - text: "Next:"
+          - link "chapter 04" [ref=e13415] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: — the Hohenberg–Kohn theorems and the Kohn–Sham equations, where the unknown functional is hidden.
+      - heading "3.12 Problems" [level=2] [ref=e13416]
+      - group [ref=e13417]:
+        - generic "▸ Problem 1 (easy) — Anatomy of the Fock matrix in the AO basis" [ref=e13418] [cursor=pointer]
+        - text: "For a closed-shell HF calculation in a basis of functions: 1. Write down the Fock matrix element in terms of the one-electron Hamiltonian , the AO density matrix , and the ERI tensor . State explicitly which indices appear in the Coulomb term and which in the exchange term, and why they differ. 2. Write the SCF update rule for the density matrix in terms of the occupied MO coefficient matrix . 3. Write the closed-shell HF electronic energy as a trace involving , , and . Show that this is consistent with the sum-over-orbitals form ."
+      - group [ref=e13419]:
+        - generic "▸ Show answer" [ref=e13420] [cursor=pointer]
+        - text: "**1.** Equation : The Coulomb term has on the same *side* of the kernel (the \"bra\" side in chemists' notation) and on the other. The exchange term has paired with and paired with — one index from each pair has \"crossed\" to the other side. This crossing is what produces the non-locality of the exchange operator and what makes HF qualitatively different from a pure mean-field theory with a local potential. **2.** Equation : The factor of 2 is the closed-shell double occupancy; the rank of is (the number of doubly-occupied spatial orbitals), so is a projector (with respect to the inner product) onto the occupied subspace: **3.** Equation : In the MO basis the trace becomes a sum: (factor 2 from double occupancy). So The half in the trace form and the factor of 2 in the sum-over-orbitals form cancel exactly; the two expressions agree."
+      - group [ref=e13421]:
+        - generic "▸ Problem 2 (medium) — Invariance of the HF energy under unitary rotation of the occupied orbitals" [ref=e13422] [cursor=pointer]
+        - text: "The closed-shell HF energy in the MO basis is Let be a unitary matrix acting on the occupied-orbital subspace, so that is a new set of orthonormal orbitals spanning the same subspace. Show that the HF energy is *invariant* under this rotation; that is, . (Hint: show that the density matrix is invariant under unitary rotations of the occupied orbitals, and that the energy depends on the orbitals only through the density matrix.)"
+      - group [ref=e13423]:
+        - generic "▸ Show answer" [ref=e13424] [cursor=pointer]
+        - text: "The MO coefficients transform as , i.e. in matrix notation. The new density matrix is Since is unitary, , so The density matrix is *invariant* under unitary rotations of the occupied orbitals. The HF energy in the AO basis is with and built from . Since is fixed and depends on only through , the energy is a *function* of only: Invariance of under therefore implies , i.e. the HF energy is invariant under any unitary rotation of the occupied orbitals. This is the formal statement of the textbook line \"the HF energy depends on the *density matrix*, not on the individual orbitals*.\" The *orbitals within the occupied subspace are not observables; only the subspace they span is."
+      - group [ref=e13425]:
+        - generic "▸ Problem 3 (hard) — Derive Koopmans' theorem from the HF equations" [ref=e13426] [cursor=pointer]
+        - text: "The HF eigenvalue equation in the MO basis is . Take the inner product with to obtain the MO Fock matrix element where the sum is over all doubly-occupied spatial orbitals and the factor 2 accounts for spin summation. Using this expression, derive the **Koopmans' theorem** statement of the ionisation energy for removal of a single electron from orbital : 1. Write explicitly in the MO basis. 2. Write explicitly. Take care with the Coulomb/exchange sums when one spin-orbital is removed. 3. Subtract and identify ."
+      - group [ref=e13427]:
+        - generic "▸ Show answer" [ref=e13428] [cursor=pointer]
+        - text: "**1.** The closed-shell HF energy in the MO basis is where the sums are over doubly-occupied spatial orbitals. **2.** Removing one electron from orbital leaves the electron in orbital in place. The spin-orbitals in orbitals are unchanged, the spin-orbital in orbital is now vacant, and all spin-orbitals are unchanged. Summing spin-orbitals into spatial integrals, (The last equality uses by the 8-fold permutational symmetry of the ERI tensor.) **3.** Subtracting from the result: \\begin{align} I_a &\\;=\\; E_\\text{HF}(N-1) - E_\\text{HF}(N) \\notag\\ &\\;=\\; -h_{aa} \\;-\\; \\sum_j (2 J_{aj} - K_{aj}) \\notag\\ &\\;=\\; -\\Bigl( h_{aa} + \\sum_j (2 J_{aj} - K_{aj}) \\Bigr) \\notag\\ &\\;=\\; -\\varepsilon_a , \\end{align*} where the last line uses the MO Fock eigenvalue. This is the **Koopmans' theorem** statement. The crucial cancellation that makes Koopmans exact at the *closed-shell* level: the Fock matrix is unchanged by removing the electron, so the orbitals do not need to relax. The relaxation of the orbitals is a *first-order* effect, and the Fock eigenvalue equation guarantees that it cancels the *first-order* change in the total energy from the unchanged and the changed Coulomb/exchange sums."
+      - heading "3.13 What we left out" [level=2] [ref=e13429]
+      - paragraph [ref=e13430]:
+        - text: This chapter is the
+        - emphasis [ref=e13431]: gateway
+        - text: "to the rest of the notes, and we have deliberately left out a number of topics that are essential to a working knowledge of HF theory but are not needed for the core derivation:"
+      - list [ref=e13432]:
+        - listitem [ref=e13433]:
+          - strong [ref=e13434]: Restricted open-shell HF (ROHF).
+          - text: We derived UHF (§3.7), but the
+          - emphasis [ref=e13435]: spin-pure
+          - text: alternative ROHF — with the Roothaan (1960) or McWeeny–Diercksen open-shell Fock matrix — is what every high-accuracy open-shell calculation uses. Implementation is more involved; the principles are the same.
+        - listitem [ref=e13436]:
+          - strong [ref=e13437]: Resolution-of-the-identity / density fitting (RI / DF) and Cholesky-decomposed ERIs.
+          - text: Both reduce the ERI storage and the Fock build from
+          - img [ref=e13439]
+          - text: to
+          - img [ref=e13455]
+          - text: ", with or without an auxiliary basis respectively. Standard in every production code; we used the full four-index form for clarity."
+        - listitem [ref=e13470]:
+          - strong [ref=e13471]: Integral screening beyond Schwarz.
+          - text: The Schwarz inequality
+          - img [ref=e13473]:
+            - link [ref=e13476] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-03-schwarz"
+          - text: is the
+          - emphasis [ref=e13484]: first
+          - text: level of screening; production codes add
+          - emphasis [ref=e13485]: shell-pair
+          - text: ", shell-quartet, and"
+          - emphasis [ref=e13486]: "density-base`d"
+          - text: ’ screenings that drive the effective scaling of the Fock build down to
+          - img [ref=e13488]
+          - text: in the large-molecule limit.
+        - listitem [ref=e13500]:
+          - strong [ref=e13501]: Multiconfigurational SCF (MCSCF) and CASSCF.
+          - text: When a single determinant is not enough, the orbital optimisation is generalised to a
+          - emphasis [ref=e13502]: multi-determinant
+          - text: Ansatz. We did not derive it.
+        - listitem [ref=e13503]:
+          - strong [ref=e13504]: Scalar relativistic effects and the Dirac–Hartree–Fock equation.
+          - text: For heavy elements the non-relativistic Schrödinger equation is not enough; we will revisit relativistic HF in
+          - link "chapter 08" [ref=e13505] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: (pseudopotentials) and
+          - link "chapter 12" [ref=e13506] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: (relativistic effects).
+        - listitem [ref=e13507]:
+          - strong [ref=e13508]: Post-HF correlation methods.
+          - text: MP2, MP3, MP4, CISD, CCSD, CCSD(T), CASPT2, NEVPT2, … These are the methods that
+          - emphasis [ref=e13509]: start from
+          - text: an HF calculation and add electron correlation on top; they are the subject of
+          - link "chapter 11" [ref=e13510] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: .
+      - blockquote [ref=e13511]:
+        - paragraph [ref=e13512]:
+          - text: "Next:"
+          - link "chapter 04" [ref=e13513] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: — the Hohenberg–Kohn theorems and the Kohn–Sham equations, where the unknown functional is hidden.
+  - contentinfo [ref=e13514]:
+    - generic [ref=e13515]:
+      - generic [ref=e13516]:
+        - img [ref=e13517]
+        - generic [ref=e13521]: DFT Notes
+        - paragraph [ref=e13522]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e13523]:
+        - generic [ref=e13524]:
+          - heading "Project" [level=3] [ref=e13525]
+          - list [ref=e13526]:
+            - listitem [ref=e13527]:
+              - link "Chapters map" [ref=e13528] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e13529]:
+              - link "Python codes" [ref=e13530] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e13531]:
+              - link "Contributing" [ref=e13532] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e13533]:
+              - link "Security" [ref=e13534] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e13535]:
+              - link "Design spec" [ref=e13536] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e13537]:
+              - link "GitHub ↗" [ref=e13538] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e13539]:
+          - heading "Built with" [level=3] [ref=e13540]
+          - list [ref=e13541]:
+            - listitem [ref=e13542]:
+              - link "Jekyll" [ref=e13543] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e13544]:
+              - link "MathJax 3" [ref=e13545] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e13546]:
+              - link "Mermaid" [ref=e13547] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e13548]:
+              - link "chenglou/pretext" [ref=e13549] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e13550]:
+              - link "Google Fonts" [ref=e13551] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e13552]:
+          - heading "Legal" [level=3] [ref=e13553]
+          - list [ref=e13554]:
+            - listitem [ref=e13555]:
+              - link "MIT License" [ref=e13556] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e13557]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e13559]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

@@ -1715,8 +1715,25 @@ mjx-container:not([display="true"]) > svg {
  /* Below 768px: hide the horizontal nav and CTA, show hamburger.
     The top-nav stays a single row so the wordmark + theme toggle +
     hamburger fit comfortably on a 320px-wide screen. */
+/* Desktop: allow long math/code/mermaid to scroll horizontally
+   within their container instead of overflowing the page.
+   This prevents the 1000+ character equations from causing
+   horizontal page scrolling on any screen size. */
+.page-content pre,
+.page-content code,
+.page-content .mermaid,
+.page-content mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.page-content mjx-container[display="true"] svg {
+  max-width: 100%;
+}
+/* Prevent the site from being wider than the viewport (caused by
+   long equations, code blocks, or tables on any screen size). */
+body { overflow-x: hidden; }
  @media (max-width: 767.98px) {
-   .top-nav {
+    .top-nav {
      height: 56px;
    }
    .top-nav__inner {
