@@ -1603,6 +1603,15 @@ mjx-container[display="false"] {
   margin: 0 !important;
 }
 
+/* MathJax's SVG output defaults to display:block, which makes
+   the SVG take up the full line width and forces the text after
+   inline math onto a new line. Override to inline-block so the
+   SVG only takes its natural width and text flows around it. */
+mjx-container[display="false"] > svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 
 /* === 11. Footer ============================================ */
 
