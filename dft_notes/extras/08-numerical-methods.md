@@ -664,13 +664,13 @@ The **inverse-Hessian form** of \eqref{eq:nm-opt-bfgs-update} is
 \begin{equation}
 \label{eq:nm-opt-bfgs-inverse}
 \mathbf H_\text{inv}^{(k+1)}
- = \Bigl( \mathbf I - \frac{\mathbf s^{(k)} {\mathbf y^{(k)}}^\text{T}}
-                          {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}} \Bigr)
-        \mathbf H_\text{inv}^{(k)}
-        \Bigl( \mathbf I - \frac{\mathbf y^{(k)} {\mathbf s^{(k)}}^\text{T}}
-                          {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}} \Bigr)
-   + \frac{\mathbf s^{(k)} {\mathbf s^{(k)}}^\text{T}}
-          {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}} .
+ = \Bigl( \mathbf I - \frac{\mathbf s^{(k)} ({\mathbf y^{(k)}})^{\text{T}}}
+                          {({\mathbf y^{(k)}})^{\text{T}} \mathbf s^{(k)}} \Bigr)
+       \mathbf H_\text{inv}^{(k)}
+       \Bigl( \mathbf I - \frac{\mathbf y^{(k)} ({\mathbf s^{(k)}})^{\text{T}}}
+                          {({\mathbf y^{(k)}})^{\text{T}} \mathbf s^{(k)}} \Bigr)
+   + \frac{\mathbf s^{(k)} ({\mathbf s^{(k)}})^{\text{T}}}
+          {({\mathbf y^{(k)}})^{\text{T}} \mathbf s^{(k)}} .
 \end{equation}
 {% endraw %}
 
@@ -1051,8 +1051,7 @@ The simplest:
 
 \begin{equation}
 \label{eq:nm-bz-gauss}
-\tilde f(\varepsilon) = \frac{1}{2} \operatorname{erfc}
-   \!\left( \frac{\varepsilon - \mu}{\sigma} \right) .
+\tilde f(\varepsilon) = \frac{1}{2} \operatorname{erfc}\left( \frac{\varepsilon - \mu}{\sigma} \right) .
 \end{equation}
 
 Gaussian smearing converges as $1/N_\mathbf k^2$ after
