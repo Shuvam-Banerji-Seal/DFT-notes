@@ -112,7 +112,7 @@ The SCF problem is therefore
 \end{equation}
 
 The *bare* iteration
-$\rho^{(n+1)} = \mathcal F}[\rho^{(n)}]$ is the **Picard
+$\rho^{(n+1)} = \mathcal F[\rho^{(n)}]$ is the **Picard
 iteration** for the fixed-point problem; it converges when the
 spectral radius $\rho(\mathcal F^{\prime}) < 1$.  In DFT this is
 sometimes the case (large-gap insulators, simple metals with
