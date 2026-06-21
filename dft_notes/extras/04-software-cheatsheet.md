@@ -737,7 +737,7 @@ $G_0W_0$ and BSE).
   studies.
 - **DFT Notes chapters:** 04, 05, 06, 07.
 - **When to use.** The right pick when you need a
-  **Gaussian basis for a crystalline soli`d*`*: reduced
+  **Gaussian basis for a crystalline solid**: reduced
   BSSE, well-defined extrapolation to the complete basis
   set, easier comparison to molecular calculations using
   the same basis family. The MP2 and CC implementations
@@ -1054,7 +1054,7 @@ production codes from sections 1–7. | Code      | License  | Language   | Best
 > cheatsheets below tell you *what to type into it*.
 > Every entry shows a **minimal** input that produces a
 > sensible result on a trivial system (a hydrogen
-> molecule or a primitive cell), an **annotate`d*`* version
+> molecule or a primitive cell), an **annotated** version
 > of the same input for a slightly harder calculation (a
 > band structure, a spin-polarised system, an MD step), a
 > short list of *what to tweak for X*, a list of common
@@ -1281,7 +1281,7 @@ column per band.
   valence configurations (e.g. $3s^23p^2$ for Si
   when $3s^23p^63d^0$ is needed for excited
   states) silently produce wrong energies.
-- **occupations = 'tetrahedron' on a coarse mes`h*`*:
+- **occupations = 'tetrahedron' on a coarse mesh**:
   the tetrahedron integrator needs at least
   $4 \times 4 \times 4$ on a primitive cell. With a
   coarser mesh, use `'fixed'` (semiconductor) or
@@ -1482,7 +1482,7 @@ custom script.
   is on the order of the difference between
   valence configurations. Always check with
   `grep TITEL POTCAR` and `head POSCAR`.
-- **POTCAR family mismatc`h*`*: the `POTCAR` must be
+- **POTCAR family mismatch**: the `POTCAR` must be
   all `PBE`, all `LDA`, all `PBE_52`, etc. Mixing
   families gives a non-variational total energy.
 - **LMAXMIX too small for d/f electrons**: VASP
@@ -1604,7 +1604,7 @@ of code.
 
 #### 10.3.3 What to tweak for X
 
-- **To switch to a real-space gri`d*`*: replace
+- **To switch to a real-space grid**: replace
   `mode=PW(300)` with `mode='fd'` (default
   $h = 0.2$ Å). The FD mode is faster for small
   systems and has no wrap-around from periodic
@@ -1630,7 +1630,7 @@ of code.
 
 #### 10.3.4 Common pitfalls
 
-- **kpts=(1, 1, 1) for a periodic soli`d*`*: this is
+- **kpts=(1, 1, 1) for a periodic solid**: this is
   right for a *molecule* in a large cell, but wrong
   for a periodic solid. The default `kpts=(1, 1, 1)`
   (Gamma only) gives a wrong band structure for a
@@ -1665,7 +1665,7 @@ of code.
 
 SIESTA is a Fortran NAO basis code
 ([§4.3](#43-siesta)). The cheatsheet below uses the
-**fd`f*`* (flexible data format) input — a
+**fdf** (flexible data format) input — a
 Fortran-NAMELIST-inspired free format. The
 pseudopotential is a separate file (`.psf` or
 `.vps`).
@@ -1715,7 +1715,7 @@ The H₂ SCF total energy is in `h2.out` after
 A band structure of bulk silicon. The key
 SIESTA-specific parameters are the **PAO basis**
 (`PAO.BasisSize`, `PAO.EnergyShift`, `SplitNorm`)
-and the **MeshCutof`f*`* (the real-space grid for the
+and the **MeshCutoff** (the real-space grid for the
 Poisson solver and the local part of the
 Hamiltonian).
 
@@ -1787,7 +1787,7 @@ SIESTA writes the bands to `SystemLabel.bands`.
   `PAO.EnergyShift` from 0.05 eV to 0.01 eV —
   increases the cutoff radius and improves basis
   completeness at the cost of more overlap.
-- **To converge the real-space mes`h*`*: increase
+- **To converge the real-space mesh**: increase
   `MeshCutoff` in Ry. The default 100–200 Ry is
   usually fine; for accurate forces, use 400 Ry or
   higher.
@@ -2010,7 +2010,7 @@ localised initial guess.
   density for covalent systems. Use `RESTART` from
   a previous run, or `SCF_GUESS HISTORY`, for
   difficult cases.
-- **Basis set / pseudopotential mismatc`h*`*: the
+- **Basis set / pseudopotential mismatch**: the
   GTH pseudopotential was generated with a
   *specifi`c*` basis set. Mixing GTH with a non-
   MOLOPT basis gives poor results. Always use the

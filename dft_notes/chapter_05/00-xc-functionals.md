@@ -33,7 +33,7 @@ theory is, in practice, a search for ever-better approximations to
 that one piece. This chapter is a guided tour of the approximations
 that have mattered: the **local density approximation** (LDA), the
 **generalised-gradient approximation** (GGA), the **meta-GGA**, the
-**hybri`d*`* functionals (B3LYP, PBE0), the **range-separate`d*`*
+**hybrid** functionals (B3LYP, PBE0), the **range-separated**
 hybrids (CAM-B3LYP, LC-$\omega$PBE, $\omega$B97X), the **double**
 hybrids (B2-PLYP, DSD-PBEP86), and the various **dispersion
 corrections** (D3, D4, MBD, vdW-DF) that retro-fit the missing
@@ -277,7 +277,7 @@ v_\text{xc}^\text{LDA}(\mathbf r) \;=\; \varepsilon_\text{xc}\Bigl(\rho(\mathbf 
 The first term is the *local* XC energy per electron; the second
 term is the *response* of that energy to a local change in density.
 
-The **spin-localise`d*`* version — the **LSDA**, used for open-shell
+The **spin-localised** version — the **LSDA**, used for open-shell
 atoms, radicals, and ferromagnets — is
 
 \begin{equation}
@@ -398,7 +398,7 @@ $k_s = (4 k_F/\pi)^{1/2}$ (the **Thomas–Fermi screening wave-vector**).
 The two ingredients — $F_\text{x}(s)$ and $H(t)$ — together make
 $F_\text{xc}$ in \eqref{eq:ch-05-gga-form}.
 
-**PBE exchange.** The **Perdew–Burke–Ernzerho`f*`* (PBE) enhancement
+**PBE exchange.** The **Perdew–Burke–Ernzerhof** (PBE) enhancement
 factor for exchange is the simplest form that satisfies four
 *exact* constraints:
 
@@ -411,7 +411,7 @@ with $\kappa = 0.804$ and $\mu = 0.21951$ (in atomic units). The
 four constraints are:
 
 1. $F_\text{x}(0) = 1$ — the LDA is recovered for a uniform density.
-2. The **Lieb–Oxford boun`d*`* $E_\text{x} \ge -1.679\,E_h \cdot N$, which
+2. The **Lieb–Oxford bound** $E_\text{x} \ge -1.679\,E_h \cdot N$, which
    becomes $F_\text{x}(s) \le 1 + \kappa$ (with $\kappa$ chosen to
    reproduce the bound).
 3. The leading gradient correction of the GEA:
@@ -565,7 +565,7 @@ $\tau \approx \tau^\text{UEG}$ and $\alpha \approx 0$. The meta-GGA
 can therefore detect the *number of orbitals* contributing at each
 point — a piece of physics the GGA cannot see.
 
-**SCAN.** The **Strongly Constrained and Appropriately Norme`d*`*
+**SCAN.** The **Strongly Constrained and Appropriately Normed**
 (SUN, Ruzsinszky, Perdew 2015) functional is the most successful
 meta-GGA of the last decade. It satisfies 17 known exact
 constraints of the XC functional, and its parameters are *not*
@@ -606,7 +606,7 @@ density regime.
 
 ### 5.2.6 The hybrid functionals — admixing exact exchange
 
-The fourth rung of Jacob's ladder is the **hybri`d*`* functional: a
+The fourth rung of Jacob's ladder is the **hybrid** functional: a
 *linear combination* of a GGA (or meta-GGA) exchange and a fraction
 of *exact* non-local Hartree–Fock exchange,
 
@@ -811,7 +811,7 @@ contribution by virtue of the Pauli principle).
 > *long-range correcte`d*` hybrids, used for charge-transfer
 > excitations and Rydberg states in quantum chemistry.
 
-**CAM-B3LYP.** The **Coulomb-Attenuating Metho`d*`* (CAM) of Yanai,
+**CAM-B3LYP.** The **Coulomb-Attenuating Method** (CAM) of Yanai,
 Tew, and Handy (2004) is the canonical example of a
 range-separated hybrid. The functional form is
 
@@ -827,7 +827,7 @@ exchange is exact at long range, 19% at short range). CAM-B3LYP
 is the *de facto* default for TDDFT calculations of charge-
 transfer excitations and Rydberg states in organic molecules.
 
-**LC-$\omega$PBE.** The **long-range correcte`d*`* PBE (LC-$\omega$PBE)
+**LC-$\omega$PBE.** The **long-range corrected** PBE (LC-$\omega$PBE)
 is the range-separated variant of PBE. It uses 0% DFT exchange at
 long range (full HF) and 100% PBE exchange at short range,
 $\omega = 0.40\,a_0^{-1}$. The functional is parameter-free in
@@ -851,7 +851,7 @@ group thermochemistry is $\omega$B97X-D (or its revamped
 successor, $\omega$B97M(2), a double-hybrid range-separated
 functional).
 
-**HSE06.** The **Heyd–Scuseria–Ernzerho`f*`* screened hybrid is the
+**HSE06.** The **Heyd–Scuseria–Ernzerhof** screened hybrid is the
 *screene`d*` limit of the range-separated family: $\omega = 0.11$ and
 25% short-range HF exchange, with the long-range exchange treated
 *purely* at the PBE level. The form is "PBE0 with the long-range
@@ -865,7 +865,7 @@ none of it).
 ### 5.2.8 Double hybrids
 
 A **double hybri`d** is the sixt`h*` rung: a hybrid functional with
-*both*` a fraction of exact exchange an`d` a fraction of
+*both*` a fraction of exact exchange and* a fraction of
 **MP2-like correlation** computed from the KS orbitals,
 
 \begin{equation}
@@ -978,7 +978,7 @@ sum over pairs of atoms and adds $\mathcal O(N^2)$ to the
 energy evaluation.
 
 **DFT-D4.** The **D4** correction (Caldeweyher et al. 2019) is
-the *next-generation* D correction. It uses machine-learne`d`
+the *next-generation* D correction. It uses machine-learned*
 dispersion coefficients and *dynami`c*` polarisabilities that
 account for the *chemical environment* of each atom in a more
 sophisticated way than D3. D4 is more accurate than D3 on
@@ -1503,7 +1503,7 @@ $$
 F_\text{x}^\text{PBE}(s \to \infty) = 1 + \kappa = 1.804 .
 $$
 
-This is the **Lieb–Oxford boun`d*`*: the PBE enhancement never
+This is the **Lieb–Oxford bound**: the PBE enhancement never
 exceeds $1.804$, regardless of how steep the density
 gradient is. The bound is critical in the *tails* of atomic
 densities, where $\rho \to 0$ and $s \to \infty$. Without
@@ -1668,7 +1668,7 @@ $$
 \Delta E_\text{HF} = E_\text{HF} - E_\text{exact} = -2.8477 - (-2.9037) = +0.0560\,E_h = +35.1\ \text{kcal/mol} .
 $$
 
-This is the *variational HF error* of He using a single-zet`a`
+This is the *variational HF error* of He using a single-zeta*
 Slater basis. The HF *limit* (with a saturated basis) gives
 $E_\text{HF}^\infty = -2.8617\,E_h$, so the basis-set
 incompleteness error is $\sim 0.014\,E_h$. The *intrinsi`c*`
@@ -1841,7 +1841,7 @@ following gaps.
   interacting wavefunction in powers of the
   *difference* between the true electron–electron interaction
   and the KS effective interaction, and shows that the
-  GL2 (second-order) gives the *exact* exchange an`d` the
+  GL2 (second-order) gives the *exact* exchange and* the
   MP2-like correlation. We used the ACFDT language throughout
   for its physical clarity, but the GLPT machinery is the
   rigorous version. The reader interested in the *derivation*
@@ -1850,7 +1850,7 @@ following gaps.
 - **RPA and quantum-chemical composite methods (GNOF,
   $\Lambda$-functionals, MC-PDFT).** The *to`p*` of Jacob's
   ladder is the random-phase approximation (RPA), which uses
-  the *exact* (adiabatic) exchange and the ring-Coulom`b`
+  the *exact* (adiabatic) exchange and the ring-Coulomb*
   correlation. RPA is expensive ($\mathcal O(K^4)$ to
   $\mathcal O(K^6)$) and has a notorious *self-correlation*
   error that makes it *worse* than PBE0 on atomisation
@@ -1869,7 +1869,7 @@ following gaps.
   hierarchical equations of motion and shows
   *systemati`c*` improvements over hybrid functionals on a
   wide range of benchmarks. The functional is not a
-  *formula*` — it is a neural networ`k` — so it does not fit
+  *formula*` — it is a neural network* — so it does not fit
   neatly into the Jacob's ladder picture. We did not cover
   it because the methodology is still rapidly evolving and
   the *form* of the functional is not yet standardised.
@@ -2331,7 +2331,7 @@ quadratic interpolation between $\zeta = 0$ and $\zeta = 1$;
 *high-density* ($r_s \to 0$) and low-density ($r_s \to \infty$)
 limits, matching the Gell-Mann–Brueckner expansion at high
 density and the Wigner crystal limit at low density; and
-(iii) the fitted curve has a *small* and uniformly distribute`d`
+(iii) the fitted curve has a *small* and uniformly distributed*
 residual (the VWN paper reports residuals of order
 $10^{-4}\,E_h$ per electron on the Ceperley–Alder data
 points, p. 1204). The *modifie`d*` version "VWN5" is the
@@ -2462,7 +2462,7 @@ region of an atom or molecule, *not* as $-C_\text{x}
 > decays as $\sum_i C_i^2 e^{-2 a_i r}$. The ratio therefore
 > decays as $\sum_i |C_i|^2 a_i^2 e^{-2 a_i r} / \sum_i
 > |C_i|^2 e^{-2 a_i r}$, which is dominated by the
-> *smallest* $a_i$ — the highest occupie`d` orbital's decay
+> *smallest* $a_i$ — the highest occupied* orbital's decay
 > constant $\alpha = \sqrt{-2 m \varepsilon_\text{HOMO}}/\hbar$.
 > Since the HOMO decays as $e^{-\alpha r}$ and the density
 > decays as $e^{-2\alpha r}$, the ratio decays as $1/r$."
@@ -2728,7 +2728,7 @@ in B3LYP:
 
 1. **It is "non-empirical" in a different sense from PBE.**
    PBE correlation (Eq. \eqref{eq:ch-05-lit-pbe-h} of §5.9.1
-   above) is *constraint-based*` but not fitte`d` — it
+   above) is *constraint-based*` but not fitted* — it
    *replaces* the LDA correlation with a correction to it.
    LYP is a *replacement* of the LDA correlation that does
    not have the LDA correlation as its base. For a

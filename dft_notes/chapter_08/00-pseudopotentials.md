@@ -512,7 +512,7 @@ atomic sites $R$ and angular-momentum channels $lm$, and
 $g_{lm}^R$ are the augmentation functions.
 
 The price of the smooth pseudo-wavefunction is that the
-Kohn–Sham eigenvalue problem becomes a **generalise`d*`*
+Kohn–Sham eigenvalue problem becomes a **generalised**
 eigenvalue problem with a non-trivial overlap matrix
 $S_{ij} = \langle \tilde\phi_i | \tilde\phi_j \rangle$ that
 differs from the identity:
@@ -788,7 +788,7 @@ $l = 0$ gives:
 V_{ps,0}(r) = E_0 + \tfrac{1}{2}\Bigl[2p'(r)/r + p'(r)^2 + p''(r)\Bigr].
 \end{equation}
 
-**At the cutof`f*`* $r = r_c$ (using the analytical
+**At the cutoff** $r = r_c$ (using the analytical
 3-parameter values $c_1 = -1.5$, $c_2 = +1$):
 
 \begin{align}
@@ -1548,7 +1548,7 @@ summarises the limits:
 | **LAPW** | All-electron linearised in energy, basis-dependent | Plane waves (no smooth partner) |
 
 PAW and USPP can be derived from each other: USPP is the
-**single-projector, linearise`d*`* version of PAW (one partial
+**single-projector, linearised** version of PAW (one partial
 wave per channel, linearisation in the occupation matrix);
 PAW is the **complete-projector, non-linear** version of
 USPP (arbitrary number of partial waves per channel, full
@@ -1594,7 +1594,7 @@ There are three ways to handle relativity in a
 pseudopotential calculation, in increasing order of
 sophistication and cost:
 
-1. **Scalar relativisti`c*`* — the spin-orbit coupling is
+1. **Scalar relativistic** — the spin-orbit coupling is
    dropped; the remaining relativistic corrections
    (mass-velocity, Darwin) are absorbed into the
    $V_{ps,l}(r)$ potential. The valence Hamiltonian
@@ -1602,7 +1602,7 @@ sophistication and cost:
    spin-polarised (collinear) DFT codes work without
    modification.
 
-2. **Spin-orbit couple`d*`* — the scalar-relativistic
+2. **Spin-orbit coupled** — the scalar-relativistic
    pseudo is augmented by a $V^{SO}(r) \mathbf{L} \cdot
    \mathbf{S}$ term in the valence Hamiltonian. The
    eigenstates are labeled by total angular momentum

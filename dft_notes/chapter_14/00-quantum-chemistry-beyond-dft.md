@@ -68,7 +68,7 @@ omissions (§ 14.12).
 The chapter assumes the working vocabulary of
 [chapter 03]({{ "/dft-notes/chapter-03/" | relative_url }})
 (HF, the Fock operator, Slater–Condon rules) and the
-**second-quantise`d*`* machinery of
+**second-quantised** machinery of
 [chapter 02]({{ "/dft-notes/chapter-02/" | relative_url }})
 (creation / annihilation operators, normal ordering,
 Wick's theorem).  The notation is the one in the
@@ -354,7 +354,7 @@ rules,
 
 In the **physicists'** notation (the bra-ket-with-two-pipes
 $\langle ij \rvert \rvert ab \rangle$), this is the
-**antisymmetrise`d*`* two-electron integral.  In **chemists'**
+**antisymmetrised** two-electron integral.  In **chemists'**
 notation (the ERI of the cheatsheet
 [§ 13.3]({{ "/dft-notes/extras/math-cheatsheet/" | relative_url }})),
 the same integral is $(ia \rvert jb) - (ib \rvert ja)$.
@@ -442,7 +442,7 @@ MP4 are all used; MP5 and beyond are *not* — the cost
 grows too fast and the convergence is too slow.
 
 **MP3.**  The third-order Møller–Plesset correction is
-the *first* correction that contains a quadrati`c` term in
+the *first* correction that contains a quadratic* term in
 the perturbation.  Using the recursion
 \eqref{eq:ch-14-rspt-recursion} at $n = 3$ and the
 Slater–Condon rules,
@@ -509,7 +509,7 @@ E(\text{A}\cdots\text{B},\, R \to \infty) \;=\; E(\text{A}) + E(\text{B}) .
 \end{equation}
 
 MP2 *is* size consistent.  The MP2 energy
-\eqref{eq:ch-14-mp2} is a *sum* over pairs of occupie`d`
+\eqref{eq:ch-14-mp2} is a *sum* over pairs of occupied*
 orbitals: for a supermolecule A$\cdots$B, the occupied
 orbitals split into those localised on A and those
 localised on B (in the limit $R \to \infty$), the
@@ -706,7 +706,7 @@ eigenvalue.  The new correction vector is orthogonalised
 against the existing subspace, the subspace is enlarged by
 one, and the diagonalisation is repeated.  Convergence is
 typically *quadrati`c*` in the residual norm once the
-*correct* eigenvalue is bracketed, and is cubi`c` in the
+*correct* eigenvalue is bracketed, and is cubic* in the
 *root* difference (the gap between the target root and the
 next one).
 
@@ -722,8 +722,8 @@ the number of iterations, which is typically $\sim 10$–$30$.
 In the **direct-CI** formalism the matrix-vector product
 is *evaluated on the fly* without ever forming $\mathbf H$
 explicitly; this is the algorithm used in production
-codes (e.g. the **Dirac-Foc`k*`* programme, the **PSI4**
-**detci** module, the **CFOUR** **ecpli`b*`*).
+codes (e.g. the **Dirac-Fock** programme, the **PSI4**
+**detci** module, the **CFOUR** **ecplib**).
 
 > **Tip.**  The Davidson algorithm is *exact* in exact
 > arithmetic — it converges to the *true* eigenvalue of
@@ -922,7 +922,7 @@ e^{\hat T_1 + \hat T_2} \lvert \Phi_0 \rangle \;=\; \lvert \Phi_0 \rangle + \hat
 
 The first three lines are the *singles*, doubles, and
 *triples* sectors of the CCSD wavefunction.  The
-*doubles* sector contains bot`h` the connected
+*doubles* sector contains both* the connected
 $\hat T_2 |\Phi_0\rangle$ and the disconnected
 $\tfrac{1}{2}\hat T_1^2 |\Phi_0\rangle$; the *triples*
 sector contains the connected triples *only* if
@@ -941,9 +941,9 @@ E_\text{CCSD} \;=\; \langle \Phi_0 \rvert e^{-\hat T}\, \hat H\, e^{\hat T} \rve
 \end{equation}
 
 For CCSD the *only* connected contractions are the
-*linear* $\hat H$ term, the quadrati`c`
+*linear* $\hat H$ term, the quadratic*
 $\tfrac{1}{2}\hat H \hat T_1^2$ term (which gives the
-*doubles* part of the energy), and the cubi`c`
+*doubles* part of the energy), and the cubic*
 $\tfrac{1}{6}\hat H \hat T_1^3$ term (which gives the
 *triples* part — but the triples amplitude is zero
 in CCSD, so this term vanishes).  The final
@@ -1005,7 +1005,7 @@ production.
 
 ### 14.4.3 The perturbative triples correction CCSD(T)
 
-The CCSD wavefunction is *missing* the connecte`d`
+The CCSD wavefunction is *missing* the connected*
 triple excitations $\hat T_3 |\Phi_0\rangle$; the
 *approximate* triples in \eqref{eq:ch-14-ccsd-expand} are
 the disconnected products $\hat T_1 \hat T_2 + \cdots$.
@@ -1094,7 +1094,7 @@ method:
 ### 14.4.4 Why CCSD is size extensive (and CISD is not)
 
 The size extensivity of CCSD follows from the *linked-
-cluster theorem*: the *connecte`d` contractions of $\hat H$
+cluster theorem*: the *connected* contractions of $\hat H$
 with $e^{\hat T}$ are *proportional to the number of
 particles* $N$, so the energy
 \eqref{eq:ch-14-ccsd-energy} is a *sum of connected
@@ -1155,7 +1155,7 @@ energy *undershoots* even further, the MP4 energy
 *finite* at every $R$ (it is bounded from below by the
 variational principle), but it is *systematically* in
 error: the (T) correction is *small* near $R_e$ and
-*large* at large $R$, and the couple`d` CCSD
+*large* at large $R$, and the coupled* CCSD
 amplitudes are *not* a small perturbation of the HF
 orbitals at large $R$.
 
@@ -1170,7 +1170,7 @@ space is the *art* of the method.
 
 ### 14.5.2 CASSCF
 
-The **complete active space self-consistent fiel`d*`*
+The **complete active space self-consistent field**
 (CASSCF) method is the multireference analogue of HF:
 a *full CI* in a chosen active space of $M$ orbitals
 and $M_\text{el}$ electrons, with the *orbitals*
@@ -1193,7 +1193,7 @@ spin-orbital basis).  The *orbital optimisation* is
 a *constraine`d*` SCF: the active orbitals are rotated
 among themselves, the inactive (doubly-occupied and
 virtual) orbitals are rotated among themselves, and
-the *cross* rotations (active–inactive) are fixe`d`
+the *cross* rotations (active–inactive) are fixed*
 by the *Brillouin* condition.
 
 The CASSCF energy is the *variational minimum* of
@@ -1226,7 +1226,7 @@ $(n_{\text{active}}, m_{\text{active}}) \sim (5$–$10, 5$–$10)$.
 The *cost* of CASSCF grows exponentially with the
 active-space size, but the *accuracy* of the method
 depends *critically* on the active space.  A
-*too-small* active space is a systemati`c` error that
+*too-small* active space is a systematic* error that
 cannot be fixed by improving the basis or the
 post-CASSCF method; a *too-large* active space is a
 *computational* error that can be fixed by a smaller
@@ -1267,7 +1267,7 @@ bound (the generalised Fock is not Hermitian), but
 is *size consistent* and size extensive at
 *infinity* of the second-order expansion; the cost
 is $\mathcal O(D_\text{active} K^4)$, *asymptotically
-the same* as MP2 for a *fixe`d` active space.
+the same* as MP2 for a *fixed* active space.
 
 The CASPT2 method has a *well-known* pathology: the
 **intruder-state problem**.  When one of the external
@@ -1318,7 +1318,7 @@ correction in the
 is the *standar`d*` for high-accuracy multireference
 calculations in 2025. ### 14.5.4 Selected CI: CIPSI, Heat-bath CI
 
-The *selected-CI* methods are a stochasti`c`
+The *selected-CI* methods are a stochastic*
 generalisation of the *deterministi`c*` FCI that
 *samples* the FCI space rather than enumerating it.
 The two leading methods are **CIPSI** (Huron, Malrieu,
@@ -1351,7 +1351,7 @@ each iteration, every external determinant is *visite`d*`
 and the *coupling*
 $\lvert \langle \Phi_I \rvert \hat H \rvert \Psi_\text{var} \rangle \rvert$
 is computed.  Determinants with a coupling above a
-*threshold*` $\epsilon$ are adde`d; the rest *discarde`d`.
+*threshold*` $\epsilon$ are adde`d; the rest *discarded*.
 $\epsilon$ is the *control parameter*: $\epsilon = 0$
 gives FCI, $\epsilon = \infty$ gives HF.  HBCI is
 *fast* (linear in the number of external determinants,
@@ -1396,7 +1396,7 @@ ones.
 
 ### 14.6.1 The Hückel → extended Hückel → PPP/SCC lineage
 
-The **Hückel metho`d*`* (Hückel, 1930–1931) is the
+The **Hückel method** (Hückel, 1930–1931) is the
 *grandfather* of the semiempirical family.  It
 treats the $\pi$ electrons of an aromatic
 hydrocarbon as a tight-binding model on the carbon
@@ -1421,7 +1421,7 @@ optimisation; the $\pi$ energy is the sum of the
 eigenvalues of the *topological* matrix of the
 carbon skeleton.  The method is *quantitatively*
 useless for any *quantitative* purpose, but it is
-*qualitatively* correct for the aromati`c`
+*qualitatively* correct for the aromatic*
 patterns of organic chemistry: the Hückel
 $4n + 2$ rule, the alternation of single and double
 bonds in polyenes, and the *frontier* orbitals of
@@ -1462,7 +1462,7 @@ expansion of the Kohn–Sham total energy.
 
 ### 14.6.2 Zero-differential overlap (ZDO) methods
 
-The **zero-differential-overla`p*`* (ZDO) approximation
+The **zero-differential-overlap** (ZDO) approximation
 is the *defining* simplification of the
 *intermediate* semiempirical methods (CNDO, INDO,
 MINDO, MNDO, AM1, PM3).  The approximation sets
@@ -1519,14 +1519,14 @@ MNDO adds *diatomi`c*` parameters, AM1 adds
 *Gaussian* corrections to the core repulsion, PM3
 re-fits the parameters to a *larger* training set,
 PM6 adds *dihedral* parameters, PM7 adds
-*dispersion* and hydrogen-bon`d` corrections).  The
+*dispersion* and hydrogen-bond* corrections).  The
 *accuracy* improves along the lineage, and the
 *cost* is constant (all of them are
 $\mathcal O(K^3)$ for the SCF step, dominated by the
 Fock-matrix diagonalisation).
 
 > **Tip.**  The semiempirical methods are *calibrated
-> to specific properties* of *specifi`c` elements.  The
+> to specific properties* of *specific* elements.  The
 > PM3 parameter set, for example, is fitted to
 > $\sim 900$ reference data points (heats of formation,
 > bond lengths, dipole moments) for $\sim 80$ elements
@@ -1553,7 +1553,7 @@ Hamiltonian is
 H_{\mu\nu}^\text{PM3} \;=\; \langle \mu \rvert \hat h_\text{core} \rvert \nu \rangle \;+\; \sum_B \sum_{\rho, \sigma \in B} P_{\rho\sigma}\, (\mu\nu \rvert \rho\sigma) ,
 \end{equation}
 
-where the *one-electron* integrals are parameterise`d`
+where the *one-electron* integrals are parameterised*
 (not evaluated), the *two-electron* integrals are
 *evaluate`d*` with the NDDO approximation, and the
 density matrix is *self-consistently* determined by
@@ -1590,7 +1590,7 @@ method, derived from *DFT* by a second-order
 expansion of the Kohn–Sham total energy in the
 *charge-density fluctuation* $\delta \rho = \rho - \rho_0$
 around a *reference* density $\rho_0$ (the
-*superposition* of atomi`c` densities).  The DFTB
+*superposition* of atomic* densities).  The DFTB
 total energy is
 
 \begin{equation}
@@ -1605,7 +1605,7 @@ occupied orbital energies, the second is a
 corrections, and the third is the *second-order*
 correction in the *charge fluctuations*.  The DFTB
 Hamiltonian matrix elements are *evaluate`d*` with a
-*minimal* basis of atomi`c` orbitals (typically
+*minimal* basis of atomic* orbitals (typically
 $sp^3$ for C, N, O; $sp$ for H), and the *on-site*
 second-derivative $\partial^2 E_\text{xc} / \partial \rho_A^2$
 is the *Hubbard $U$* of the atom, fitted to the
@@ -1710,7 +1710,7 @@ $\sim 0.1\,\text{m}E_h$.
 > $\sim 0.1$–$1\,\text{m}E_h$ because the *fit* is
 > to a *specifi`c*` functional form that may not
 > capture the *true* asymptotic behaviour.  The
-> error is *small* for triple- and quadruple-zet`a`
+> error is *small* for triple- and quadruple-zeta*
 > pairs ($\sim 0.1\,\text{m}E_h$) and *larger* for
 > *double- and triple-zet`a*` pairs
 > ($\sim 1\,\text{m}E_h$).  The *recommende`d*` pair
@@ -1813,7 +1813,7 @@ computed as the *difference* between a
 *non-relativisti`c*` CCSD(T) in the cc-pVTZ basis.
 The W1 method has a *mean unsigned error* of
 $\sim 0.2\,\text{kcal mol}^{-1}$ on G2/97, and is
-the *standard*` for benchmar`k` thermochemistry; the
+the *standard*` for benchmark* thermochemistry; the
 cost is dominated by the CCSD(T)/cc-pVQZ step
 ($\sim 10\times$ the G3 base), with a *practical*
 limit of $\sim 10$ non-hydrogen atoms.
@@ -1823,7 +1823,7 @@ limit of $\sim 10$ non-hydrogen atoms.
 > thermochemical properties.  The *accuracy* on
 > *larger* systems, on open-shell radicals, and
 > on *transition-metal* complexes is systematically
-> worse* than the G2/97 error.  The *recommende`d`
+> worse* than the G2/97 error.  The *recommended*
 > use is: (1) G3 for *routine* high-accuracy
 > thermochemistry on *small* organic molecules, (2)
 > W1 for *benchmark*` thermochemistry on very
@@ -1831,13 +1831,13 @@ limit of $\sim 10$ non-hydrogen atoms.
 > Extrapolated Ab initio Thermochemistry, [Tajti
 > *et al.*, J. Chem. Phys. **121**, 11599
 > (2004)](<https://doi.org/10.1063/1.1811608>)) for
-> *ultimate* accuracy on diatomi`c and *triatomi`c`
+> *ultimate* accuracy on diatomi`c and *triatomic*
 > molecules.
 
 ## 14.8 The post-HF zoo at a glance
 
 The full post-HF "zoo" is summarised in Table 2. The
-**metho`d*`* column is the name; the **scaling** column
+**method** column is the name; the **scaling** column
 is the asymptotic cost in the basis size $K$ for a
 *closed-shell* system; the **typical accuracy** column
 is the *mean unsigned error* on the G2/97 test set in
@@ -1881,12 +1881,12 @@ Table \eqref{eq:ch-14-claim}: the cost grows
 *polynomially* (in $K$) up to CCSDTQ, and then
 *exponentially* (in $N$) for FCI; the accuracy
 *monotonically* improves up to CCSD(T), and then
-*plateaus* (the systemati`c` errors of the basis set
+*plateaus* (the systematic* errors of the basis set
 and the *single-reference* approximation become
 *dominant*).  The practical trade-off is in
 Table \eqref{eq:ch-14-zoo}: the *best* method for
 *most* problems is not the most expensive, but the
-*cheapest* method that gives the require`d`
+*cheapest* method that gives the required*
 accuracy.  The *require`d*` accuracy is set by the
 *chemical question* being asked: $\pm 0.1\,E_h$ for
 *qualitative* questions (what is the sign of the
@@ -1897,7 +1897,7 @@ for *benchmar`k*` thermochemistry.
 The *flowchart* of method choice is the
 *single most useful* artefact of the post-HF
 landscape.  For a *closed-shell* molecule near
-equilibrium, the *default* is a hybri`d` DFT
+equilibrium, the *default* is a hybrid* DFT
 calculation, with a *double- or triple-zet`a*` basis.
 If the *accuracy* is insufficient, the *next step
 is a *post-HF* calculation: MP2 for large systems
@@ -1961,12 +1961,12 @@ are calibrated.
 > *aromati`c*` stacking interactions the MP2 error
 > is *catastrophi`c*` (the MP2 correlation energy
 > *diverges* in the complete-basis-set limit for
-> *some* $\pi$-stacked dimers).  The recommende`d`
+> *some* $\pi$-stacked dimers).  The recommended*
 > workflow is: (1) *validate* the method on a
 > *known* benchmark, (2) test the method on a
 > *small* model of the real system, (3) *use
 > the method on the *real* system with the
-> *caveat* that the systemati`c` errors of the
+> *caveat* that the systematic* errors of the
 > method are *inherite`d*` by the calculation.
 
 ## 14.9 Worked example — H₂O at MP2 and CCSD(T)
@@ -1976,7 +1976,7 @@ at the *experimental* equilibrium geometry, computed
 with the *cc-pVDZ* basis at the MP2 and CCSD(T)
 levels.  The goal is to *quantify* the convergence
 of the post-HF series, the *basis-set* error of the
-*small* cc-pVDZ basis, and the systemati`c` error of
+*small* cc-pVDZ basis, and the systematic* error of
 the MP2 and CCSD(T) methods for the H₂O atomisation
 energy.
 
@@ -2002,12 +2002,12 @@ occupied spin-orbitals, leaving $38 - 10 = 28$ virtual
 spin-orbitals.
 
 The cc-pVDZ basis is *not* a production basis for
-*high-accuracy* thermochemistry.  The systemati`c`
+*high-accuracy* thermochemistry.  The systematic*
 basis-set error is $\sim 5$–$10\,\text{m}E_h$ for
 the H₂O atomisation energy, an order of magnitude
 larger than the *intrinsi`c*` error of CCSD(T).  The
 *purpose* of using cc-pVDZ here is to demonstrate
-the *method*` in a small basis that is *fast enoug`h`
+the *method*` in a small basis that is *fast enough*
 to be *fully worked out by han`d*` in a single chapter.
 
 ### 14.9.2 The correlation energy at each level
@@ -2022,7 +2022,7 @@ energy of H₂O (which is $\sim -0.310\,E_h$ at the
 CBS limit) recovered by each method are: MP2 $\sim 66\%$,
 CCSD $\sim 71\%$, CCSD(T) $\sim 73\%$.  The *missing*
 $\sim 27\%$ in CCSD(T) is the *systemati`c*` error of
-the *basis set*, not of the metho`d — a *triple-zet`a`
+the *basis set*, not of the metho`d — a *triple-zeta*
 basis (cc-pVTZ) recovers $\sim 99.5\%$ of the
 *metho`d*` error.
 
@@ -2134,7 +2134,7 @@ $\sim 0.5\,\text{kcal mol}^{-1}$ of experiment.
 > **Tip.**  The *numerical* values in this section
 > are *representative* of typical cc-pVDZ
 > calculations on H₂O; the *exact* values depend on
-> the *specific*` cc-pVDZ basis (the standar`d`
+> the *specific*` cc-pVDZ basis (the standard*
 > Dunning basis or the *augmente`d*` aug-cc-pVDZ), the
 > *frozen-core* approximation (we used the default
 > frozen-core for O and H, which is *none* — both
@@ -2208,7 +2208,7 @@ in the body of the chapter):
     dimer split into the MOs of the *left* He atom
     and the MOs of the *right* He atom.
 
-2. The MOs of the *left* He atom are localise`d`
+2. The MOs of the *left* He atom are localised*
     on the *left* He atom; the MOs of the right
     He atom are *localised*` on the right He atom.
 
@@ -2330,7 +2330,7 @@ energy) — *typical* for a minimal basis, and
 \end{equation}
 
 The *take-home*: the Møller–Plesset series is a
-*power series*, and a truncate`d` series is not a
+*power series*, and a truncated* series is not a
 variational bound.  $\quad\blacksquare$
 
 </details>
@@ -2388,7 +2388,7 @@ and $\hat T^\text{dimer} = \hat T^A + \hat T^B$.
 
 **Step 2 — apply the linked-cluster theorem.**  By
 fact 2 (which *follows* from fact 4), the CCSD energy
-is a *sum* of connected diagrams.  In the factorise`d`
+is a *sum* of connected diagrams.  In the factorised*
 dimer reference, the connected diagrams split into
 *AA* (left-atom only) and BB (right-atom only)
 classes.  The *cross* (AB) diagrams do not exist in

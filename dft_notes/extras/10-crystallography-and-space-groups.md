@@ -41,8 +41,8 @@ here and is linked back to its source.
   angles between pairs of conventional cell edges:
   $\alpha = \angle(\mathbf b, \mathbf c)$, $\beta = \angle(\mathbf a, \mathbf c)$,
   $\gamma = \angle(\mathbf a, \mathbf b)$.
-- Lattice parameters $(a, b, c)$ and reciprocal parameters
-  $(`a*, b*`, `c`)$ are in Å and Å⁻¹ respectively; we follow
+ - Lattice parameters $(a, b, c)$ and reciprocal parameters
+   $(a^*, b^*, c^*)$ are in Å and Å⁻¹ respectively; we follow
   the crystallographic convention rather than the
   atomic-unit convention of
   [chapter 00]({{ "/dft-notes/chapter-00/" | relative_url }}) when
@@ -54,7 +54,7 @@ here and is linked back to its source.
   [chapter 07 §7.4.3]({{ "/dft-notes/chapter-07/" | relative_url }})
   and
   [chapter 11 §11.2]({{ "/dft-notes/chapter-11/" | relative_url }}).
-- Hermann–Mauguin (HM) symbols are written in **bold itali`c*`*
+- Hermann–Mauguin (HM) symbols are written in **bold italic**
   in the running text for legibility (e.g. *P 6₃/m m `c*`); Schoenflies
   symbols are written upright (e.g. $D_{6h}^4$).  The slash `/`
   in an HM symbol separates *equivalent* directions perpendicular
@@ -148,11 +148,11 @@ the **centring** of the conventional cell is taken into account.
 Centring types are:
 
 - $P$ — **primitive**: lattice points only at the corners.
-- $I$ — **body-centre`d*`*: extra lattice point at the centre
+- $I$ — **body-centred**: extra lattice point at the centre
   $(0, 0, 0) + (1/2, 1/2, 1/2)$ (in fractional cell coordinates).
-- $F$ — **face-centre`d*`*: extra lattice points at
+- $F$ — **face-centred**: extra lattice points at
   $(0, 1/2, 1/2)$, $(1/2, 0, 1/2)$, $(1/2, 1/2, 0)$.
-- $C$ (or $A$, $B$) — **base-centre`d*`*: extra lattice point on
+- $C$ (or $A$, $B$) — **base-centred**: extra lattice point on
   a single pair of opposite faces, e.g. $C$-centring on
   $(0, 1/2, 1/2)$.
 
@@ -352,12 +352,12 @@ parameter $4\pi/a$.
 
 ## 2. The 32 crystallographic point groups
 
-A **point grou`p*`* of a crystal is the set of isometries of
+A **point group** of a crystal is the set of isometries of
 $\mathbb R^3$ that leave at least one point fixed and map the
 crystal onto itself.  These isometries are the rotations,
 reflections, inversions, and improper rotations (rotoinversions)
 of §2.2 below.  The point group is the **directional** part of
-the full **space grou`p*`* (§3); the space group adds the
+the full **space group** (§3); the space group adds the
 translations.
 
 ### 2.1 The crystallographic restriction theorem
@@ -518,13 +518,13 @@ example material.
 
 ## 3. The 230 space groups
 
-A **space grou`p*`* is the full symmetry group of a crystal,
+A **space group** is the full symmetry group of a crystal,
 including both the directional symmetries of the point group
 (§2) and the translational symmetries of the Bravais lattice
 (§1).  The full group is **infinite** because translations
 $\mathbf R \in \{\text{Bravais lattice}\}$ are infinite in
 number; but the *factor* by which the group is infinite — the
-**point grou`p*`* — is finite.  Every space group can be written
+**point group** — is finite.  Every space group can be written
 as a *coset decomposition* of its point group over the
 translation subgroup, so the space group is "point group + a
 small set of generators".
@@ -574,7 +574,7 @@ chapter.
 
 ### 3.2 Symmorphic vs non-symmorphic space groups
 
-A space group is **symmorphi`c*`* if its point group is a
+A space group is **symmorphic** if its point group is a
 *subgrou`p*` of the space group in the literal sense — that is,
 if every element of the point group $\{R \mid \mathbf 0\}$ is in
 the space group.  Equivalently, a symmorphic space group is a
@@ -600,8 +600,8 @@ fractional translations can be of two kinds:
   $n$ (translation by $(a+b)/2$ or any other diagonal), and
   $d$ (translation by $(a+b)/4$ — a "diamond" glide).
 
-Of the 230 space groups, exactly **73 are symmorphi`c*`* and
-**157 are non-symmorphi`c*`*.  The symmorphic space groups are
+Of the 230 space groups, exactly **73 are symmorphic** and
+**157 are non-symmorphic**.  The symmorphic space groups are
 the ones in which every crystal axis is described by a single
 HM symbol without subscripts (screws) or letter (glides).  The
 most common symmorphic space groups in DFT are $Pm\bar 3 m$
@@ -671,7 +671,7 @@ examples.
 > and the same occupied Wyckoff positions, but different
 > *glide* planes.  In $F d \bar 3 m$ the two atoms of the basis
 > sit at $(0, 0, 0)$ and $(1/4, 1/4, 1/4)$, which is the
-> **diamon`d*`* structure.  In $F \bar 4 3 m$ the second atom is
+> **diamond** structure.  In $F \bar 4 3 m$ the second atom is
 > at $(1/4, 1/4, 1/4)$ as well, but the *`d*` glide of the
 > diamond is replaced by a pure mirror — the **zincblende**
 > structure.  If the two basis atoms are different species
@@ -749,7 +749,7 @@ lattice — the one that gives the *antifluorite* structure when
 occupied by a different species.  Si and Ge sit on 8a; in
 zincblende (GaAs) the Ga is on 8a and the As is on 8b.
 
-The **site-symmetry consistency chec`k*`* for the 8a position:
+The **site-symmetry consistency check** for the 8a position:
 multiplicity $\times$ site-symmetry order = $8 \times 24 = 192$,
 which is the order of the space group $F d \bar 3 m$ (a
 non-symmorphic group with coset representatives beyond the
@@ -954,7 +954,7 @@ VASP/QE tutorial.
 
 ### 7.1 Simple cubic (SC)
 
-The SC lattice has a **cubi`c*`* 1st BZ of side $2\pi/a$.  The
+The SC lattice has a **cubic** 1st BZ of side $2\pi/a$.  The
 high-symmetry points are $\Gamma$ (centre, $0, 0, 0$), $X$
 (face centre, $1/2, 0, 0$), $M$ (edge centre, $1/2, 1/2, 0$),
 and $R$ (corner, $1/2, 1/2, 1/2$) — all coordinates in $2\pi/a$
@@ -1263,7 +1263,7 @@ It hosts a dozen tools; the most useful for DFT work are:
 | PSEUDO | `pseudo` | Bilbao-adopted pseudopotential database |
 | NCSYM | `ncsym` | Magnetic space groups (Shubnikov groups) |
 
-The BCS also hosts the **Bilbao Crystallographic Dat`a*`* for
+The BCS also hosts the **Bilbao Crystallographic Data** for
 each space group: the full Wyckoff-position list with site
 symmetries, the maximal and minimal non-isomorphic
 subgroups, and the Brillouin-zone data.

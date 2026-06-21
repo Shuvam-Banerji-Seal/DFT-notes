@@ -1208,7 +1208,7 @@ singling out.
 
 > **Tip.** The bra-ket notation makes the adjoint operation
 > easy: $\hat A^\dagger$ is the unique operator such that
-> $\hat A^\dagger \lvert \phi \rangle$ is the **br`a*`*
+> $\hat A^\dagger \lvert \phi \rangle$ is the **bra**
 > $\langle \phi \rvert \hat A$. This is also why bras and kets
 > come paired: a bra is the adjoint of a ket, and *applying* an
 > operator to a ket is the same as *premultiplying* the
@@ -1341,7 +1341,7 @@ the theorem guarantees
    eigenbasis of $\hat A$, $|\psi\rangle = \sum_a \psi(a) |a\rangle$
    with $\psi(a) = \langle a | \psi \rangle$. It is the
    operator-level foundation of every expansion-based method in
-   chapters 3, 5, and 6. 3. A **spectral representation of the operator itsel`f*`*,
+   chapters 3, 5, and 6. 3. A **spectral representation of the operator itself**,
 
 \begin{equation}
 \hat A \;=\; \sum_{a \in \sigma_p} a\, \lvert a \rangle \langle a \rvert
@@ -1358,7 +1358,7 @@ the theorem guarantees
 > than "eigenstates exist". A self-adjoint operator on a
 > finite-dimensional Hilbert space always has a complete
 > orthonormal eigenbasis; on an infinite-dimensional one,
-> completeness has to be **prove`d*`* (it is what makes the
+> completeness has to be **proved** (it is what makes the
 > operator "self-adjoint" rather than merely "symmetric"). The
 > proof uses the spectral theorem.
 
@@ -1508,7 +1508,7 @@ of $\hat H$.
 The composition property \eqref{eq:ch-01-11-group} and the
 existence of the inverse
 $\hat U(t_0, t) = \hat U^\dagger(t, t_0)$ are what it means
-for $\hat U$ to be a **one-parameter unitary grou`p*`*. Stone's
+for $\hat U$ to be a **one-parameter unitary group**. Stone's
 theorem guarantees that every such group is of the form
 $e^{-i \hat H t}$ for some self-adjoint $\hat H$; conversely,
 every self-adjoint $\hat H$ generates a one-parameter unitary
@@ -1655,11 +1655,11 @@ w_{i \to f}^\text{(em)}
 
 (Atomic units: $\hbar = 1$, so the prefactor is $2\pi$ and
 the arguments of the delta functions drop the $\hbar$ factors.)
-Both rates are proportional to the **matrix element square`d*`*
+Both rates are proportional to the **matrix element squared**
 of the perturbation, and non-zero only when energy conservation
 is satisfied. Section 1.11.6 applies
 \eqref{eq:ch-01-11-fermi-abs} to a driven two-level system and
-derives the **Rabi formul`a*`*.
+derives the **Rabi formula**.
 
 ### 1.11.6 Worked example: a two-level system driven by a sinusoidal field
 
@@ -1732,7 +1732,7 @@ P_1(t) \;=\; \lvert \tilde c_1(t) \rvert^2
 \tag{1.11.16}
 \end{equation}
 
-This is the **Rabi formul`a*`*. Three limits are worth noting.
+This is the **Rabi formula**. Three limits are worth noting.
 **(1)** On **exact resonance** ($\Delta = 0$),
 $\Omega_R = V_0/\hbar$ and
 $P_1(t) = \sin^2(V_0 t / 2\hbar)$: the population oscillates
@@ -1887,7 +1887,7 @@ it commutes with $\hat H$.
 
    $\hat P$ is Hermitian and unitary ($\hat P^2 = \hat 1$); its
    eigenvalues are $\pm 1$ and classify states as **even**
-   ($\hat P \psi = +\psi$) or **od`d*`* ($\hat P \psi = -\psi$).
+   ($\hat P \psi = +\psi$) or **odd** ($\hat P \psi = -\psi$).
    The Coulomb Hamiltonian
    $\hat H = \hat p^2/2m + V(\mathbf r)$ commutes with $\hat P$
    iff $V(-\mathbf r) = V(\mathbf r)$, i.e. for any central
@@ -1983,7 +1983,7 @@ group (e.g. parity), this is the *parity-matching* condition
 
 i.e. an even number of the three objects must be odd. The
 **electric-dipole operator**
-$\hat{\boldsymbol\mu} = \hat{\mathbf r}$ is **od`d*`* under
+$\hat{\boldsymbol\mu} = \hat{\mathbf r}$ is **odd** under
 parity, so a dipole transition $|i\rangle \to |f\rangle$
 requires $\pi_i \cdot \pi_f = -1$, i.e. the two states must
 have **opposite parity**. In hydrogen this gives the
@@ -2155,7 +2155,7 @@ $$
 \tag{1.10.1.13.4}
 $$
 
-The Coulomb potential is **spherically symmetri`c*`*: it depends
+The Coulomb potential is **spherically symmetric**: it depends
 only on $r$, not on the angles. By a standard theorem
 (Wigner's theorem, or just a direct computation of the
 commutator), the Hamiltonian commutes with the three components
@@ -2181,7 +2181,7 @@ simultaneous eigenfunctions of $\hat L^2$ and $\hat L_z$), with
 $\hat L^2 Y_\ell^m = \ell(\ell+1) Y_\ell^m$ and
 $\hat L_z Y_\ell^m = m Y_\ell^m$. The integers
 $\ell \ge 0$ and $-\ell \le m \le \ell$ are the **azimuthal**
-and **magneti`c*`* quantum numbers. The radial part
+and **magnetic** quantum numbers. The radial part
 $R_{n\ell}(r)$ is determined by the equation we now derive.
 
 ### 1.13.3 The radial equation and the $u = rR$ substitution
@@ -2311,7 +2311,7 @@ E_n \;=\; -\frac{Z^2}{2 n^2} ,
 \tag{1.10.1.13.17}
 $$
 
-— the **Bohr formul`a*`* in atomic units. For $Z = 1$ the
+— the **Bohr formula** in atomic units. For $Z = 1$ the
 ground-state energy is
 $E_1 = -1/2\,E_h \approx -13.6\,$eV and the first excited
 level sits at $-1/8\,E_h$, an excitation of

@@ -238,7 +238,7 @@ operations):
 where $d_\text{feat}$ is the per-atom feature dimension
 (typically 64–128) and $N_\text{layer}$ is the number of
 message-passing layers (typically 2–4).  The
-**speedu`p*`* is
+**speedup** is
 
 \begin{equation}
 \label{eq:ch-17-speedup}
@@ -282,7 +282,7 @@ on the standard benchmarks are well-characterised:
   the r$^2$SCAN meta-GGA reduces this to $\sim\! 35$
   meV/atom; the $\omega$B97M-D3 range-separated
   hybrid further reduces it to $\sim\! 15$ meV/atom;
-  the *gold standard*` is the hybri`d` DFT plus a
+  the *gold standard*` is the hybrid* DFT plus a
   many-body correction (e.g. $\omega$B97M-D3 + $G_0W_0$
   on a subset), at $\sim\! 5$ meV/atom for the
   benchmark.
@@ -400,7 +400,7 @@ list of atomic descriptors is permuted in the
 same way as the list of atoms.
 
 In addition, the descriptor should be
-**smoot`h*`* (so the network generalises), and
+**smooth** (so the network generalises), and
 **differential** (so the forces can be computed
 by automatic differentiation, with both the
 *network gradient* and the descriptor gradient
@@ -614,7 +614,7 @@ the simplest and the easiest to derive.
 
 ### 17.4.1 The Behler–Parrinello neural network (BEP)
 
-The BEP is a **feed-forward neural networ`k*`* that
+The BEP is a **feed-forward neural network** that
 maps the per-atom descriptor $\mathbf d_i \in
 \mathbb R^D$ to the per-atom energy contribution
 $E_i \in \mathbb R$.  The network has the standard
@@ -834,7 +834,7 @@ irreducible representations of $\text{SO}(3)$.
 
 ### 17.5.1 Group-equivariance and E(3) symmetry
 
-The **symmetry grou`p*`* of 3-D Euclidean space is
+The **symmetry group** of 3-D Euclidean space is
 $\text{E}(3) = \text{SO}(3) \ltimes \mathbb R^3$,
 the *semi-direct product* of the rotation group
 $\text{SO}(3)$ and the translation group $\mathbb
@@ -854,7 +854,7 @@ momentum $\ell = 0, 1, 2, \ldots$  The
 $\ell = 0$ representation is a scalar (rotationally
 invariant); the $\ell = 1$ is a 3-vector; the
 $\ell = 2$ is a 5-component symmetric traceless
-tensor.  An **equivariant networ`k*`* has
+tensor.  An **equivariant network** has
 *layer-wise activations* that carry a direct
 sum of irreps \eqref{eq:ch-17-irreps}; the
 *linear* operations are $\text{SO}(3)$-equivariant
@@ -1131,7 +1131,7 @@ Materials Project.  The MP has
 $\sim\! 150\,000$ inorganic compounds with PBE
 formation energies (PBE MAE $\sim\! 150$
 meV/atom).  Train a $\Delta$-ML model on a
-*small* set of compounds with bot`h` PBE and
+*small* set of compounds with both* PBE and
 r$^2$SCAN calculations ($\sim\! 10^3$–$10^4$
 compounds), then apply the $\Delta$-ML model
 to the *full* MP.  The **standard protocol**:
@@ -1176,7 +1176,7 @@ meV/atom error can move a compound from
 the *standar`d*` reference for stability
 predictions in 2025. ### 17.6.3 $\Delta$-ML for band gaps
 
-The **band ga`p*`* is a more delicate target.  PBE
+The **band gap** is a more delicate target.  PBE
 underestimates the gap by $\sim\! 50\%$ on
 average, HSE06 by $\sim\! 10\%$, $G_0W_0$ is
 right to $\sim\! 5\%$.  The $\Delta$-ML approach
@@ -1277,8 +1277,8 @@ atomic-orbital basis, and the **OrbNet** of
 (2022)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 is a *transformer* that predicts the
 *occupied molecular orbitals* directly.  The
-*advantage* is that the predicte`d` Hamiltonian
-or wavefunction can be *used*` in a standar`d`
+*advantage* is that the predicted* Hamiltonian
+or wavefunction can be *used*` in a standard*
 post-processing pipeline (band structure,
 density of states, optical spectrum, $GW$ on
 top of the ML orbitals).  The *disadvantage* is
@@ -1300,7 +1300,7 @@ accurate* than the Kohn–Sham kinetic energy
 by a factor of $\sim\! 10$–$100$ in the
 formation energy.  The **ML-XC family** is
 the modern approach: replace the *kinetic
-energy functional* with a *machine-learne`d`
+energy functional* with a *machine-learned*
 functional (kernel machine KRR-OFDFT or
 neural network NN-OFDFT).  The MAE on the
 formation energy is $\sim\! 30$–$50$ meV/atom,
@@ -1320,7 +1320,7 @@ comparable to SCAN.
 
 The most ambitious use of ML for DFT is to
 *replace the XC functional* with an ML
-model.  The *promise* is a systemati`c`
+model.  The *promise* is a systematic*
 improvement over the human-designed Jacob's
 ladder: the ML functional can be *traine`d*`
 on a *representative* set of systems, with
@@ -1359,7 +1359,7 @@ the KS equations self-consistently.  The
 standard DFT code.  The *disadvantage* is the
 *self-consistency*: the model has to be
 *self-consistent* with the KS equations.  The
-**training dat`a*`* is a set of $\sim\! 10^3$–
+**training data** is a set of $\sim\! 10^3$–
 $10^4$ molecules or solids for which *bot`h*`
 the baseline (PBE) and the *reference* (e.g.
 CCSD(T) or $G_0W_0$) calculations are
@@ -1495,15 +1495,15 @@ training set is *sample`d*` from the model's
 
 ### 17.9.1 The active-learning loop
 
-The **active-learning loo`p*`* has four steps:
+The **active-learning loop** has four steps:
 (1) **train** the model $\mathcal M$ on the
 current training set $\mathcal D$; (2)
 **predict** the energy and forces for a
 *candidate* configuration $R$ (typically a
-*new* MD step or a sample`d` configuration);
+*new* MD step or a sampled* configuration);
 (3) **score the uncertainty** of the
 prediction (a *positive* number, large
-when uncertain); (4) **ad`d*`* the
+when uncertain); (4) **add** the
 configuration with the *largest* uncertainty
 to the training set, *re-label* it with a
 DFT calculation, and *retrain*.  The loop
@@ -1628,7 +1628,7 @@ graph TD
 The diagram shows the *control flow* of
 the MACE-OSP loop.  The MD step is the
 *inner loop*`; the retrain is the outer
-loo`p*.  The MD runs *at GPU spee`d`
+loo`p*.  The MD runs *at GPU speed*
 ($\sim\! 1$ ms per step), and the DFT
 single point runs *at CPU spee`d*`
 ($\sim\! 1$ s per step).  The *retrain*
@@ -1740,7 +1740,7 @@ the order of frequency:
     error.  Train on *periodi`c*`
     configurations.
 5. **Charge transfer.**  Train on
-    *neutral* atoms, evaluate a charge`d`
+    *neutral* atoms, evaluate a charged*
     system.  Use a *charge-equilibration*
     model (e.g. MEGNet).
 6. **Spin polarisation.**  Train on
@@ -1776,7 +1776,7 @@ the order of frequency:
 > error bars* (standard deviation over
 > 5–10 random seeds) and to *publis`h*`
 > the *trained model*, training
-> script*, and *training dat`a` — the
+> script*, and *training data* — the
 > 2024 MACE paper is exemplary.
 ## 17.11 Worked example — a MACE-MP-0 potential for water
 
@@ -2076,7 +2076,7 @@ $\text{MAE}_\text{ML} = 2.0$ meV/atom;
 the total MAE is
 $\sqrt{150^2 + 2.0^2} \approx 150.0$
 meV/atom.  The ML correction is
-*negligible* in bot`h` cases.
+*negligible* in both* cases.
 
 **Step 2.**  We need
 $(200/\sqrt{N_\text{train}})^2 \le 30^2 -
@@ -2110,7 +2110,7 @@ effort: the *expensive* DFT is
 r$^2$SCAN ($\sim\! 3\times$ PBE), the
 *chea`p*` DFT is PBE (already computed for
 all $\sim\! 150\,000$ compounds), and
-the *correction* is small enoug`h` (MAE
+the *correction* is small enough* (MAE
 $\sim\! 35$ meV/atom) to be *learnable*
 from $\sim\! 10\,000$ r$^2$SCAN
 calculations.
@@ -2202,7 +2202,7 @@ its limitations.
 
 ### 17.15.1 The Behler–Parrinello neural network (2007)
 
-The **Behler–Parrinello (BP) neural networ`k*`* was the
+The **Behler–Parrinello (BP) neural network** was the
 first *general-purpose* neural-network potential for a
 high-dimensional potential-energy surface.  The paper
 was published as a 3-page PRL letter
@@ -2288,7 +2288,7 @@ The cutoff $f_c$ is a *smoot`h*` function
 *and its gradient* are well-defined at the cutoff
 [Behler and Parrinello, 2007, p. 146401-1].
 
-The **per-atom neural networ`k*`* is a standard
+The **per-atom neural network** is a standard
 feed-forward network with two hidden layers, $\sim\! 20$
 nodes per layer, $\sigma = \tanh$ activation.  The
 *output* is the per-atom energy $E_i$.  The
@@ -2349,8 +2349,8 @@ motivation, in the authors' own words, is the
 *fixed-functional-form* problem of the empirical
 potentials: the standard interatomic potentials
 (Tersoff, Brenner, Stillinger–Weber) are *physically
-motivate`d* but *limite`d` in accuracy; the BP-NNP is
-*flexible* but hand-crafte`d` in its descriptors
+motivate`d* but *limited* in accuracy; the BP-NNP is
+*flexible* but hand-crafted* in its descriptors
 [Bartók et al., 2010, p. 136403-1].  The GAP approach
 is to use a *Gaussian process* (GP) regression on a
 *systematic*` descriptor — the bispectrum of the
@@ -2358,7 +2358,7 @@ atomic neighbourhood density, later named SOAP — and to
 *automatically* generate a potential from the data
 [Bartók et al., 2010, p. 136403-1].
 
-The **framewor`k*`* is laid out on p. 136403-1. The
+The **framework** is laid out on p. 136403-1. The
 key equation is the *Gaussian-process regression*:
 
 \begin{equation}
@@ -2515,7 +2515,7 @@ also *smoot`h*` (differentiable to all orders in the
 atomic positions) and *complete* in the sense that two
 environments with $k = 1$ are *identical* up to a
 rotation [Bartók, Kondor, and Csányi, 2013, p. 184115-2].
-The *basis* $(n, n', \ell)$ is systemati`c`: the
+The *basis* $(n, n', \ell)$ is systematic: the
 number of basis functions grows as $\mathcal O(n_\text{max}
 \cdot \ell_\text{max}^2)$, and the basis is *complete*
 as $(n_\text{max}, \ell_\text{max}) \to \infty$
@@ -2531,7 +2531,7 @@ spherical harmonics [Bartók, Kondor, and Csányi, 2013,
 p. 184115-2].  The *power spectrum* $p_{n n' \ell}^{(i)}$
 is *analogous* to the spherical-harmonic expansion of
 the electron density.  The kernel $k(R, R')$ is
-*analogous* to the electron-density overla`p` between
+*analogous* to the electron-density overlap* between
 two configurations.  The *advantage* of the analogy is
 that the *machinery* of spherical-harmonic expansions
 — the *clebsch–Gordan* coefficients, the Wigner
@@ -2582,7 +2582,7 @@ networ`k* *learn the features from the data?
 [Schütt et al., 2017, p. 2].  The SchNet answer is
 *yes*: a deep feed-forward network with
 *continuous-filter convolution* layers can learn an
-*atom-centred basis* that is adapte`d` to the prediction
+*atom-centred basis* that is adapted* to the prediction
 task [Schütt et al., 2017, p. 2].
 
 The **architecture** is laid out on pp. 2-3. Each
@@ -2662,7 +2662,7 @@ position $\mathbf r$ [Schütt et al., 2017, p. 4].  The
 isosurface of $\mu_A$ on a molecule reveals the
 *aromaticity* of the ring, the electronegativity of
 the substituents, and the *hydrogen-bon`d*` pattern — a
-*chemically meaningful* representation that emerge`d`
+*chemically meaningful* representation that emerged*
 from the training, not from the architecture
 [Schütt et al., 2017, p. 4].  This is the first *direct*
 demonstration that a deep neural network trained on
@@ -2774,7 +2774,7 @@ of 10 small organic molecules with $\sim\! 100{,}000$
 configurations each (CCSD(T) reference); (ii) the
 **3BPA** dataset of a flexible organic molecule with
 1,500 configurations (DFT reference); (iii) the
-**AcA`c*`* dataset of an acetic acid molecule with
+**AcAc** dataset of an acetic acid molecule with
 1,000 configurations [Batatia et al., 2022, p. 4].
 The MAE on the *energy* is $\sim\! 0.1$–$0.5$ meV/atom
 and the MAE on the *forces* is $\sim\! 5$–$15$ meV/Å,
@@ -2793,7 +2793,7 @@ p. 4].
 > p. 4; the benchmarks are on pp. 4-5 and in the
 > supplementary material; the closing discussion
 > (pp. 5-6) frames the MACE architecture as a
-> *bridge* between the systemati`c` ACE basis and
+> *bridge* between the systematic* ACE basis and
 > the *data-driven* deep network.
 
 ### 17.15.6 Timeline and comparison
@@ -2858,7 +2858,7 @@ two-body messages).  The **data efficiency** column is
 dominated by the *equivariance* and the body order:
 MACE is the most data-efficient because it is
 *equivariant* (no learning of the symmetry) and uses
-*4-body* messages (no need to stac`k` many layers).
+*4-body* messages (no need to stack* many layers).
 
 ### 17.15.7 What these papers don't say
 
@@ -2921,7 +2921,7 @@ omissions are:
   $\sim\! 100$–$1000$ application-specific DFT
   calculations, and run the production MD with the
   *fine-tune`d*` MLIP.  The five foundational papers
-  are *single-task*` models; the multi-tas`k` and
+  are *single-task*` models; the multi-task* and
   *transfer* paradigm is a 2023–2024 development.
 
 - **No multi-fidelity learning.**  None of the
@@ -2935,7 +2935,7 @@ omissions are:
   of the five papers can *predict* the energy of
   a *new* composition that was not in the
   training set.  The MACE-MP-0 *universal* potential
-  is the *first* model that is traine`d` on
+  is the *first* model that is trained* on
   $\sim\! 10^5$ *compositions* and is zero-shot
   generalisable to *new* compositions.  The
   *composition-aware* MLIP is a 2023–2024
@@ -2989,7 +2989,7 @@ free PDF) are:
 - Bartók et al. (2010): arXiv:0910.1019.
 - Bartók, Kondor, Csányi (2013): arXiv:1209.3140.
 - Schütt et al. (2017): arXiv:1609.08259.
-- Batatia et al. (2022): arXiv:2206.07697. The **most-cite`d*`* paper of the five is Behler &
+- Batatia et al. (2022): arXiv:2206.07697. The **most-cited** paper of the five is Behler &
 Parrinello (2007), with $\sim\! 3{,}500$ citations
 as of 2025; the **most-recent** is MACE (2022), with
 $\sim\! 1{,}000$ citations and *growing*.  The

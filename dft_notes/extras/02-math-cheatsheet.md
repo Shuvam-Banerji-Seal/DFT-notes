@@ -136,7 +136,7 @@ occupied subspace. Cross-reference: chapter 03 (§3.6.4).
 [\hat A, \hat B] \;\equiv\; \hat A \hat B - \hat B \hat A .
 \end{equation}
 
-The commutator is **bilinear**, **antisymmetri`c*`*
+The commutator is **bilinear**, **antisymmetric**
 $([\hat A, \hat B] = -[\hat B, \hat A]$), and satisfies the
 **Jacobi identity**
 
@@ -163,7 +163,7 @@ rests. Cross-reference: chapter 01 (§1.4, §1.7.5, problem 1 of §1.13).
 \{\hat A, \hat B\} \;\equiv\; \hat A \hat B + \hat B \hat A .
 \end{equation}
 
-For **fermioni`c*`* creation and annihilation operators,
+For **fermionic** creation and annihilation operators,
 $\{\hat a, \hat a^\dagger\} = 1$, $\{\hat a, \hat a\} = 0$ —
 the algebra of the **canonical anticommutation relation**
 (CAR). The fermionic CAR is what makes a Slater determinant
@@ -185,7 +185,7 @@ commutators eventually vanish (e.g. $[\hat A, \hat B]$ is a
 $c$-number, as for the position-momentum pair). For
 $\hat A = \lambda \hat X$, $\hat B = \lambda \hat Y$ with
 $[\hat X, \hat Y] = \hat Z$ independent of $\hat X, \hat Y$, the
-BCH formula gives the **Zassenhaus formul`a*`*
+BCH formula gives the **Zassenhaus formula**
 
 \begin{equation}
 \label{eq:ch-extra-zassenhaus}
@@ -211,7 +211,7 @@ e^{\hat A} \hat B e^{-\hat A} \;=\; \hat B + [\hat A, \hat B] + \tfrac{1}{2!}[\h
 \operatorname{Tr}[\hat A, \hat B] \;=\; 0 \quad \text{(trace of a commutator)} . \label{eq:ch-extra-tracecom}
 \end{equation}
 
-The first is the **Hadamard lemm`a*`* (or **Campbell identity**)
+The first is the **Hadamard lemma** (or **Campbell identity**)
 in series form. The second lets you reduce a commutator with a
 product to a sum of simpler commutators. The third is the
 **cyclicity of the trace** applied to a commutator; it is the
@@ -265,7 +265,7 @@ Kohn–Sham energy expression.
 
 The Frobenius / Hilbert–Schmidt norm is
 $\lVert \mathbf A \rVert_\text{HS}^2 = \operatorname{Tr}(\mathbf A^\dagger \mathbf A)$.
-This is the inner product used in the **DIIS metri`c*`*
+This is the inner product used in the **DIIS metric**
 $\mathbf B_{ij} = \langle R_i, R_j \rangle$ in
 chapter 04 (§4.6.2). Cross-reference: chapter 04. ### 3.4 Trace of a projector
 
@@ -401,7 +401,7 @@ propagator by path integration).
 f(\mathbf r) \;=\; \frac{1}{(2\pi)^3} \int_{\mathbb R^3} \tilde f(\mathbf k)\, e^{+i \mathbf k \cdot \mathbf r} \\, d\mathbf k . \label{eq:ch-extra-ft3d-inv}
 \end{equation}
 
-For a **cell-periodi`c*`* function $u(\mathbf r)$ on a lattice
+For a **cell-periodic** function $u(\mathbf r)$ on a lattice
 with primitive cell volume $\Omega$, the natural transform is
 the **discrete Fourier series** on the reciprocal lattice
 $\{\mathbf G\}$:
@@ -662,7 +662,7 @@ sets).
 
 ### 7.5 Bessel functions
 
-The **Bessel functions of the first kin`d*`* $J_\nu(x)$ satisfy
+The **Bessel functions of the first kind** $J_\nu(x)$ satisfy
 Bessel's equation
 
 \begin{equation}
@@ -701,14 +701,14 @@ The **Euler gamma function**
 \end{equation}
 
 extends the factorial to non-integer arguments: $\Gamma(n) =
-(n-1)!$ for positive integer $n$. The **reflection formul`a*`*
+(n-1)!$ for positive integer $n$. The **reflection formula**
 
 \begin{equation}
 \label{eq:ch-extra-gamma-reflect}
 \Gamma(z)\, \Gamma(1-z) \;=\; \frac{\pi}{\sin(\pi z)} ,
 \end{equation}
 
-and the **Legendre duplication formul`a*`*
+and the **Legendre duplication formula**
 
 \begin{equation}
 \label{eq:ch-extra-gamma-dup}
@@ -915,7 +915,7 @@ on the diagonal. Cross-reference: chapters 03, 04. ### 9.5 Determinant of a matr
 \det \mathbf A \;=\; \prod_i a_i \;=\; e^{\operatorname{Tr}\ln \mathbf A} .
 \end{equation}
 
-The last form is the **Jacobi formul`a*`* for the derivative of
+The last form is the **Jacobi formula** for the derivative of
 a determinant: $d(\ln \det \mathbf A) = \operatorname{Tr}(\mathbf A^{-1}\, d\mathbf A)$.
 The determinant of an antisymmetric matrix
 is the **square of the Pfaffian**; the determinant of a
@@ -951,7 +951,7 @@ reference: chapters 01, 03. ### 9.7 Sherman–Morrison–Woodbury identities
 (\mathbf A + \mathbf U \mathbf C \mathbf V^T)^{-1} \;=\; \mathbf A^{-1} - \mathbf A^{-1} \mathbf U (\mathbf C^{-1} + \mathbf V^T \mathbf A^{-1} \mathbf U)^{-1} \mathbf V^T \mathbf A^{-1} \quad \text{(rank-}k\text{)} . \label{eq:ch-extra-smk}
 \end{equation}
 
-The first is the **Sherman–Morrison formul`a*`*, the second the
+The first is the **Sherman–Morrison formula**, the second the
 **Woodbury identity**. The latter is the workhorse of the
 **Broyden update** in chapter 04 (§4.6.3). Cross-reference:
 chapter 04. ---
@@ -1250,7 +1250,7 @@ The range-separation parameter $\omega$ controls the split:
 $\omega \to 0$ recovers the full $1/r$ on the long-range
 side; $\omega \to \infty$ puts everything on the short-range
 side. The two pieces are treated with different functionals
-in **range-separated hybri`d*`* XC functionals (chapter 05,
+in **range-separated hybrid** XC functionals (chapter 05,
 §5.5). Cross-reference: chapter 05. ### 13.3 The Ewald sum
 
 The **lattice sum**
@@ -1325,7 +1325,7 @@ nearly-free-electron band structure).
 
 The chapters need a small set of standard integrals over and
 over: the **Gaussian** (basis-set normalisation, the Ewald
-sum, the path-integral propagator), the **Fermi–Dira`c*`* and
+sum, the path-integral propagator), the **Fermi–Dirac** and
 **Bose–Einstein** distributions (finite-temperature DFT, the
 electronic entropy of chapter 07), and the **polylogarithm**
 that ties them together.
@@ -1459,7 +1459,7 @@ k_B T_c \;=\; \frac{2\pi \hbar^2}{m} \left( \frac{N}{V\, \zeta(3/2)} \right)^{2/
 
 where $\zeta(3/2) \approx 2.612$ is the Riemann zeta function.
 This is the textbook result that anchors every discussion of
-**macroscopic quantum phenomen`a*`* in the notes. The DFT
+**macroscopic quantum phenomena** in the notes. The DFT
 chapters do not derive it, but it appears in the
 "what we left out" sections as the canonical example of a
 **broken-symmetry ground state** beyond the reach of

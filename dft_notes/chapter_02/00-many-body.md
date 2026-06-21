@@ -52,7 +52,7 @@ quantum chemistry and density-functional theory is, broadly, a
 collection of strategies for *not* doing the exact calculation while
 still getting a useful answer.  The Hartree–Fock method of
 [chapter 03]({{ site.baseurl }}/dft-notes/chapter-03/) is the
-**mean-fiel`d*`* starting point; the rest of these notes is, in
+**mean-field** starting point; the rest of these notes is, in
 various ways, an attempt to add **electron correlation** on top of it
 without paying the full exponential cost.
 
@@ -562,11 +562,11 @@ $K$.  Three concrete settings illustrate the wall:
 
 The numbers in the third and fourth rows of the table are what the
 phrase "**exponential wall**" refers to.  No known algorithm defeats
-it in general.  The **orbital-optimise`d*`* approaches of modern
+it in general.  The **orbital-optimised** approaches of modern
 quantum Monte Carlo (DMC, AFQMC, FCIQMC) and the **selected CI**
 methods (CIPSI, ASCI, Heat-bath CI) attack the wall by *sampling*
 the determinant space rather than enumerating it; the **density
-matrix renormalisation group (DMRG)** and **tensor networ`k*`* methods
+matrix renormalisation group (DMRG)** and **tensor network** methods
 attack it by *factorising* the wavefunction into a product of
 small-tensor pieces.  All of them work in regimes; none of them
 works in general.  Density-functional theory, the subject of the
@@ -701,7 +701,7 @@ the *exact* ground state.  The natural question is: how close is
 the *best* single determinant to the true ground state of an
 *interacting* system?
 
-The answer is given by the **Hartree–Foc`k*`* method of
+The answer is given by the **Hartree–Fock** method of
 [chapter 03]({{ site.baseurl }}/dft-notes/chapter-03/): the
 restricted Hartree–Fock (RHF) energy is the minimum of
 $\langle \Phi \mid \hat H_{\text{el}} \mid \Phi \rangle$ over all
@@ -910,7 +910,7 @@ extensive, while CISD is not.
 > **Note (the linked diagram theorem).**  The formal reason
 > CCSD is size extensive is the **linked diagram theorem**: when
 > the CC equations are derived in the language of many-body
-> perturbation theory, only **connecte`d*`* (linked) diagrams
+> perturbation theory, only **connected** (linked) diagrams
 > appear.  Connected diagrams scale linearly with the number of
 > particles, while disconnected diagrams scale as products of
 > subsystem contributions.  Truncated CI includes *bot`h*` linked
@@ -930,7 +930,7 @@ where we stand:
 1. **Systematically improvable wavefunctions.**  The MP / CI / CC
    hierarchy of section 2.2.8, the **selected CI** family (CIPSI,
    ASCI, Heat-bath CI), **quantum Monte Carlo** (VMC, DMC, FCIQMC,
-   AFQMC), and **tensor networ`k*`* methods (DMRG, PEPS, MERA).  Each
+   AFQMC), and **tensor network** methods (DMRG, PEPS, MERA).  Each
    has a regime where it works and a regime where it does not.
    These methods *converge* to the full-CI answer in the limit of
    their respective control parameters (perturbation order, number
@@ -959,7 +959,7 @@ The rest of these notes is almost entirely about option 2. We
 take a *short* detour through Hartree–Fock first, because the HF
 orbitals and eigenvalues are the language in which Kohn–Sham DFT is
 written, and because the Fock operator is the cleanest example of a
-**mean-fiel`d*`* theory.
+**mean-field** theory.
 
 ## 2.3 The code
 
@@ -1405,7 +1405,7 @@ E_0^{\text{tot}} \;=\; E_0^{\text{el}} + V_{NN}
    \;=\; -1.0246\,E_h .
 \end{equation}
 
-> **Tip.**  Compare to the **restricted Hartree–Foc`k*`* answer in
+> **Tip.**  Compare to the **restricted Hartree–Fock** answer in
 > [chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/),
 > §6.9: $E_{\text{HF}} = -1.1167\,E_h$.  The full-CI energy is
 > lower by
@@ -1815,7 +1815,7 @@ rest of the correlation energy.
 
 ## 2.7 Cross-references
 
-**Backwar`d*`* (what we used from earlier chapters):
+**Backward** (what we used from earlier chapters):
 
 - [Chapter 01]({{ site.baseurl }}/dft-notes/chapter-01/) —
   Postulates P1–P6 (especially P5 and P6), the time-independent
@@ -1828,7 +1828,7 @@ rest of the correlation energy.
   one- and two-electron integrals in physicists' notation) used
   throughout the present chapter.
 
-**Forwar`d*`* (where this material is used):
+**Forward** (where this material is used):
 
 - [Chapter 03]({{ site.baseurl }}/dft-notes/chapter-03/) —
   Hartree–Fock theory.  The HF method is the *single-determinant

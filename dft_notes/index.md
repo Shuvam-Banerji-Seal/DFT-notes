@@ -14,7 +14,7 @@ description: >-
 > the standard workhorse of modern quantum chemistry and
 > computational materials science.
 
-These notes are organised as a **progressive wal`k*`* through DFT.
+These notes are organised as a **progressive walk** through DFT.
 Each chapter builds on the last, but every chapter is also
 self-contained enough to be read in isolation. Math is rendered
 inline (MathJax 3, with AMS environments loaded); code samples

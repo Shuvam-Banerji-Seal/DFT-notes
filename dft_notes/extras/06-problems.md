@@ -33,12 +33,12 @@ keywords: "problems, anthology, exercises, DFT, exercises, quantum
 
 This page exists for three audiences. **First**, students who
 worked through the chapters and want to check that they can
-*re-derive* the headline results from a clean sheet. **Secon`d*`*,
+*re-derive* the headline results from a clean sheet. **Second**,
 practitioners who want a quick refresher on a specific identity
 (the Gaussian product theorem, the Methfessel–Paxton error
-scaling, the log-derivative identity). **Thir`d*`*, anyone
+scaling, the log-derivative identity). **Third**, anyone
 teaching from the notes who wants a bank of questions with
-hints. The problems are graded **easy / medium / har`d*`* by
+hints. The problems are graded **easy / medium / hard** by
 the depth of the derivation they require, not by the amount
 of arithmetic.
 
@@ -486,7 +486,7 @@ graph LR
 > with $\mu = 10/81$. PBE replaces this with an enhancement
 > factor $F_x(s) = 1 + \kappa - \kappa / (1 + \mu s^2 / \kappa)$
 > (the "PBE form") where $\kappa = 0.804$ is fixed by the
-> **Lieb–Oxford boun`d*`*. Show that $F_x(s) \to 1 + \mu s^2$
+> **Lieb–Oxford bound**. Show that $F_x(s) \to 1 + \mu s^2$
 > as $s \to 0$ (matching the GEA) and that $F_x(s) \to 1 + \kappa$
 > as $s \to \infty$ (the uniform-density limit of the
 > enhancement), and identify the physical meaning of the
@@ -879,7 +879,7 @@ graph LR
 > **steepest-descent** step with a *fixe`d*` step size
 > $\eta = 0.05\,a_0 / F$ (where $F$ is the force at
 > $R_1$) and report the new bond length $R_2$. Then
-> perform a **line-searc`h*`* step at $R_1$ and report the
+> perform a **line-search** step at $R_1$ and report the
 > optimal step. Which converges faster per force
 > evaluation? Repeat both at $R = 2.5\,a_0$ (a strongly
 > anharmonic point) and discuss.
@@ -1200,7 +1200,7 @@ graph LR
 ### 12.1 The Thomas–Reiche–Kuhn sum rule
 
 > **P12.1.1** (easy) · *§12.12, Problem 1*
-> **[statement]** The **oscillator strengt`h*`* of the
+> **[statement]** The **oscillator strength** of the
 > transition $|0\rangle \to |n\rangle$ is
 > $f_{0n} = (2 m_e \omega_{0n} / 3 \hbar) |\langle 0 |
 > \hat{\mathbf r} | n \rangle|^2$, with
@@ -1363,7 +1363,7 @@ graph LR
 > \langle \hat P^\sigma_m | \phi_{n\mathbf k} \rangle$ is the
 > occupation matrix of the localised subspace (e.g. the
 > transition-metal $d$ orbitals) and $U_\text{eff} = U - J$ is
-> the **effective on-site Coulom`b*`* (the Hubbard $U$ minus
+> the **effective on-site Coulomb** (the Hubbard $U$ minus
 > the Hund's $J$). **(a)** Identify the **double-counting**
 > term that the $+U$ correction subtracts from the LDA/GGA
 > energy. **(b)** Show that for an *integer* occupation
@@ -1429,7 +1429,7 @@ graph LR
 > **Answer:** **(a)** $\varepsilon(\mathbf k) = -2t
 > (\cos k_x + \cos k_y)$ ranges over $[-4t, 4t]$ and is
 > half-filled (one electron per site, two per unit cell, so
-> two bands); the Fermi surface is the **neste`d*`* square
+> two bands); the Fermi surface is the **nested** square
 > $|\cos k_x| + |\cos k_y| = 1$ — perfect nesting at
 > wavevector $\mathbf Q = (\pi, \pi)/a$. **(b)** in the
 > atomic limit the only low-energy process is the *virtual*
@@ -1578,7 +1578,7 @@ in the closed-shell two-electron core and the *open-shell*
 single $2s$ electron.  (Note: Li has $N = 3$ electrons,
 so the *closed-shell* Ansatz of
 [Chapter 03, §3.5]({{ "/dft-notes/chapter-03/" | relative_url }}) does not apply — you need an
-**unrestricte`d*`* HF or an **ROHF** treatment.)  Report
+**unrestricted** HF or an **ROHF** treatment.)  Report
 the Koopmans IE $-\varepsilon_{2s}$ and compare with
 the hydrogenic estimate of Part 1.
 </details>
@@ -1711,11 +1711,11 @@ The deeper point: the all-electron $1s$ orbital of Li
 has $\varepsilon_{1s} \approx -2.46\,E_h$ and oscillates
 $\sim 2$ times inside $r_c$; the *pseudo-potential* is
 *designed*` to reproduce the valence $2s$ orbital
-*outside* $r_c$ and is allowe`d` to deviate inside —
+*outside* $r_c$ and is allowed* to deviate inside —
 that deviation is the *frozen-core* approximation.
 For a Li atom in two different chemical environments
 (e.g. Li in LiH vs Li in Li₂), the $1s$ core is
-*assumed*` unchanged and the $V_{ps}$ is transferre`d`
+*assumed*` unchanged and the $V_{ps}$ is transferred*
 between them — the transferability is the key
 property of the construction.
 </details>
@@ -1740,7 +1740,7 @@ $|k| \le \pi / a$ and the *electroni`c*` band structure
 has *two* bands,
 $\varepsilon_\pm(k) = \pm 2 t |\cos(ka/2)|$.
 **(a)** Sketch $\varepsilon_\pm(k)$ for
-$k \in [-\pi/a, \pi/a]$ and identify the **band ga`p*`*
+$k \in [-\pi/a, \pi/a]$ and identify the **band gap**
 $E_\text{gap} = 4t$ at the BZ boundary $k = \pi/a$.
 **(b)** Compute the **density of states** $g(\varepsilon) =
 (1/N) \sum_{n, k} \delta(\varepsilon - \varepsilon_n(k))$
@@ -1833,7 +1833,7 @@ the LO–TO splitting does not appear.
 <details class="problem">
 <summary>Part 3 (chapter 11) — Electronic density of states and the optical gap</summary>
 
-**(a)** Compute the **optical ga`p*`* of the diatomic
+**(a)** Compute the **optical gap** of the diatomic
 chain as the minimum direct gap,
 $E_\text{gap}^\text{direct} = 4t$ (Part 1), and the
 *indirect* gap (the minimum gap over all $k$; here
@@ -2007,7 +2007,7 @@ has its extrema at $\Gamma$ ($\varepsilon = -4t$) and
 at the BZ corner $M = (\pi, \pi)/a$
 ($\varepsilon = +4t$); the band is half-filled (with
 spin degeneracy, two electrons per unit cell, one
-band), and the Fermi surface is the **neste`d*`* square
+band), and the Fermi surface is the **nested** square
 $\cos k_x + \cos k_y = 0$ — perfect nesting at
 wavevector $\mathbf Q = (\pi, \pi)/a$.
 

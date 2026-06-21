@@ -33,7 +33,7 @@ have replaced the deep nuclear potential with a smooth effective
 one. That machinery is correct, and accurate, for every element
 up to about the middle of the periodic table. It is also
 qualitatively wrong for the heavy elements — for the lanthanides,
-the actinides, the 5*d*` transition metals, the 6`p` post-
+the actinides, the 5*d*` transition metals, the 6p* post-
 transition metals, and the superheavies — and *quantitatively*
 wrong for almost everything that touches spin-orbit physics:
 Rashba-split surface states, topological-insulator band
@@ -140,12 +140,12 @@ this chapter:
    for a spin-½ particle in an external potential. Its
    non-relativistic limit is the **Pauli Hamiltonian** with
    four correction terms beyond the non-relativistic
-   Schrödinger form: the **kinetic-relativisti`c*`*
+   Schrödinger form: the **kinetic-relativistic**
    ($p^4/8m^3c^2$) and **Darwin** ($-\hbar^2 \nabla^2 v /
    4m^2c^2$) corrections together form the
-   **scalar-relativisti`c*`* (SR) part; the **spin-orbit** term
+   **scalar-relativistic** (SR) part; the **spin-orbit** term
    $\xi(r)\hat{\mathbf L}\!\cdot\!\hat{\mathbf S}$ is the
-   **fully-relativisti`c*`* part; and the **contact** (or
+   **fully-relativistic** part; and the **contact** (or
    Fermi-contact) term acts only in the presence of an
    unpaired $s$ electron. The SR part is responsible for the
    well-known **relativistic contraction** of $s$ orbitals
@@ -459,7 +459,7 @@ extracted by a **block-diagonalisation** procedure
 designed to eliminate the small component $\Phi^S$ to a
 chosen order in $1/c$. There are three equivalent
 formulations: the **Foldy–Wouthuysen** (FW) transformation
-(unitary), the **Bloch–Messia`h*`* decomposition, and the
+(unitary), the **Bloch–Messiah** decomposition, and the
 **direct elimination** of $\Phi^S$ from the coupled
 system \eqref{eq:ch-15-dirac-coupled}. We follow the FW
 route, which is the most transparent.
@@ -689,7 +689,7 @@ the same $Z^4 \alpha^2 / n^3$ scaling as the kinetic-
 relativistic term, but the Darwin term only acts on
 $\ell = 0$ (and on $p_{1/2}$ through its $\ell = 1$,
 $j = 1/2$ partial wave). The Darwin and the kinetic-
-relativistic together form the **scalar-relativisti`c*`*
+relativistic together form the **scalar-relativistic**
 (SR) correction; their ratio is roughly
 $\langle \nabla^2 v \rangle / \langle p^4 \rangle \sim 1$ for an
 $s$ electron near the nucleus.
@@ -713,7 +713,7 @@ $\ell(\ell+1) = 2$ factor halves the effect.
 **The $Z^4$ headline.** All three correction terms
 (kinetic-relativistic, Darwin, spin-orbit) scale as
 $Z^4$ relative to a non-relativistic baseline. This is
-the **$Z^4$ rule of thum`b*`* of relativistic quantum
+the **$Z^4$ rule of thumb** of relativistic quantum
 chemistry:
 
 - $Z = 1$ (H, Li, …, Ne): the corrections are
@@ -1207,7 +1207,7 @@ marginally higher than the non-relativistic calculation.
 The remaining spin-orbit correction is then added either
 *perturbatively* (the **second-variational** method of
 Koelling and Harmon 1977) or *self-consistently* (the
-**spin-orbit couple`d*`* method of §15.5.4 below).
+**spin-orbit coupled** method of §15.5.4 below).
 
 The SR approximation is the *workhorse* of modern
 relativistic DFT for medium-heavy elements. It is the
@@ -1365,7 +1365,7 @@ only the spin-independent terms of
 The SR Hamiltonian is *spin-independent*: the eigenstates
 are still 2-component Pauli spinors, but the upper and
 lower components are degenerate. The SR approximation
-captures the **kinemati`c*`* relativistic effects — the
+captures the **kinematic** relativistic effects — the
 $s$-orbital contraction, the $d$/$f$-orbital expansion,
 the modification of bond lengths and vibrational
 frequencies — at a cost only marginally higher than the
@@ -1402,7 +1402,7 @@ for the properties that depend on it (band splittings,
 magnetic anisotropy, spin-Hall conductivity).
 
 > **Reading note.** The SR approximation is a *very
-> goo`d* approximation for *atomi`c` properties
+> goo`d* approximation for *atomic* properties
 > (orbital energies, ionisation potentials, electron
 > affinities) but is *less* good for molecular
 > properties that depend on spin-orbit (bond
@@ -1464,7 +1464,7 @@ used.
 
 > **Tip.** A *roug`h*` but useful test of whether an
 > element needs spin-orbit coupling is the magnitude
-> of its 5*d*` or 6`p` spin-orbit splitting in the atomic
+> of its 5*d*` or 6p* spin-orbit splitting in the atomic
 > spectrum. If the splitting is $\gtrsim 0.1$ eV, the
 > spin-orbit correction is *qualitatively* important
 > for any property that distinguishes the two
@@ -1746,7 +1746,7 @@ The modern production approach in plane-wave DFT is
 
 The fully-relativistic PAW pseudopotential is the
 *default* in VASP, Quantum ESPRESSO (with the
-`upf` format), and ABINIT for the 5*d*` and 6`p`
+`upf` format), and ABINIT for the 5*d*` and 6p*
 elements. The standard PBE pseudopotentials in these
 libraries include SOC for the 4*`d*` row and beyond, and
 the SOC can be turned on or off by a single keyword
@@ -1984,7 +1984,7 @@ includes both a scalar part
 $v_\text{xc} = \delta E_\text{xc}/\delta n$ (the same
 as the non-relativistic XC potential) and a vector
 part $\mathbf A_\text{xc} = \delta E_\text{xc}/\delta \mathbf j_p$
-(the **XC magnetic fiel`d*`*). The XC magnetic field is
+(the **XC magnetic field**). The XC magnetic field is
 the *relativisti`c*` generalisation of the $\mathbf B_\text{xc}$
 of [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.8.4; in the non-relativistic
 limit it reduces to the familiar $B_\text{xc}$ of
@@ -2065,7 +2065,7 @@ invariant momenta). In a molecule, the Kramers
 degeneracy splits in a magnetic field (which breaks
 time-reversal) but is preserved in zero field.
 
-The Kramers pair is the **fundamental building bloc`k*`*
+The Kramers pair is the **fundamental building block**
 of all spin-orbit-coupled band theory. The Bloch
 states of a spin-orbit-coupled solid form *Kramers
 pairs* $(u_{n\mathbf k}, \hat{\mathcal T} u_{n\mathbf k})$
@@ -2231,13 +2231,13 @@ orbital and the corresponding destabilisation of the
 5*d*` orbital. The 6s orbital of gold is the
 outermost occupied orbital; its contraction moves
 electron density closer to the nucleus and *increases*
-the 6*s* binding energy. The 5`d` orbital of gold is
+the 6*s* binding energy. The 5d* orbital of gold is
 the next shell; its destabilisation *decreases* the
-5*d*`–6s gap. The result is that the 6*s and 5*`d`
+5d–6s gap. The result is that the 6*s and 5*d
 levels of gold are *closer in energy* than the
-corresponding 5*s* and 4`d` levels of silver, and the
+corresponding 5*s* and 4d* levels of silver, and the
 chemistry of gold is dominated by the *mixing* of the
-6*s* and 5`d` orbitals in the Au–Au bond.
+6*s* and 5d* orbitals in the Au–Au bond.
 
 A quantitative estimate of the Au–Au bond length
 contraction uses the *expectation value* of the
@@ -2313,7 +2313,7 @@ invariant state).
 
 The intrinsic spin Hall conductivity of a
 time-reversal-invariant metal is given by the
-**Kubo–Greenwoo`d*`* linear-response formula
+**Kubo–Greenwood** linear-response formula
 ([chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }}) §12.3 generalised
 to a spin-current operator):
 
@@ -2344,7 +2344,7 @@ the **spin Berry curvature** of the Kramers pair.
 > denominator. The intrinsic SHE is therefore a
 > *band-structure* property, not a Fermi-surface
 > property — the contribution comes from the
-> *filled*` bands (which set the occupie`d` part of
+> *filled*` bands (which set the occupied* part of
 > the sum) and from the *coupling* to the empty
 > bands. The intrinsic SHE is *large* in materials
 > with a *small* band gap near the Fermi level,
@@ -2412,7 +2412,7 @@ other being the *helical edge states*).
 > contributions from the Fermi-surface states. The
 > intrinsic SHE of Pt is therefore a *resonant*
 > effect: the spin Hall conductivity is large
-> *because* the 5`d` bands are close in energy, and
+> *because* the 5d* bands are close in energy, and
 > small changes in the lattice parameter or the
 > doping level can change the sign and the
 > magnitude of $\sigma_{xy}^s$.
@@ -2461,7 +2461,7 @@ The numerical value for Pt with the above setup is
 
 This is $\sim 1/17$ of the spin Hall conductivity
 quantum $e^2/h$, i.e. a $\mathbb Z_2$ invariant of
-$\nu = 0$ with a *non-zero* but not quantise`d`
+$\nu = 0$ with a *non-zero* but not quantised*
 spin Hall conductivity. Pt is therefore a *trivial*
 metal with a large *non-quantise`d*` intrinsic spin
 Hall conductivity — the *opposite* limit of a
@@ -2470,7 +2470,7 @@ quantised to a multiple of $e^2/h$ and a $\mathbb Z_2$
 invariant of $\nu = 1$).
 
 > **Reading note.** The intrinsic spin Hall
-> conductivity of Pt is *large* but not quantise`d`,
+> conductivity of Pt is *large* but not quantised*,
 > because Pt is a metal with a finite density of
 > states at the Fermi level. The quantised spin Hall
 > effect is a property of *insulators* with a
@@ -2858,7 +2858,7 @@ to that invariant.
   the $\mathbb Z_2$ topological classification of
   band insulators; the spin Hall conductivity of
   §15.8 is the order parameter of the *quantum spin
-  Hall insulator*; the *intrinsi`c` spin-orbit
+  Hall insulator*; the *intrinsic* spin-orbit
   coupling of §15.5 is the source of the band
   inversion in 3-D topological insulators.
 - [Chapter 17]({{ "/dft-notes/chapter-17/" | relative_url }})

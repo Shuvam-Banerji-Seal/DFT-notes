@@ -127,7 +127,7 @@ graph LR
   class OBS out
 ```
 
-The **soli`d*`* arrows are the forward map — the Schrödinger
+The **solid** arrows are the forward map — the Schrödinger
 equation determines the wave function from the potential, and
 the density is the diagonal of the one-body density matrix. The
 **dashe`d** arrow is the Runge–Gross* inverse, which says:
@@ -220,7 +220,7 @@ Three comments on \eqref{eq:ch-12-veff}:
    ground-state DFT, where $v_\text{xc}$ depends on $\rho$ at one
    point in time. Memory effects are part of the exact time-
    dependent xc potential. The vast majority of practical
-   calculations use the **adiabati`c*`* approximation
+   calculations use the **adiabatic** approximation
    $v_\text{xc}^\text{ad}[\rho](\mathbf r, t) = v_\text{xc}^\text{gs}[\rho(t)](\mathbf r)$
    — i.e. the static xc potential evaluated on the *instantaneous*
    density — which has no memory. Section 12.4 discusses this
@@ -381,7 +381,7 @@ Now define the **density functional**
        v_\text{ext}(\mathbf r, \bar t) ,
 \end{equation}
 
-where $\mathcal B_\gamma[\rho]$ is the **Levy–Lie`b*`* constrained-
+where $\mathcal B_\gamma[\rho]$ is the **Levy–Lieb** constrained-
 search functional
 
 \begin{equation}
@@ -546,7 +546,7 @@ excitonic effects that bind an electron and a hole in solids,
 and the polarisation-dependence of the xc kernel in
 time-dependent phenomena. We will see some of these failures
 in the worked example of section 12.10. The adiabatic **GGA** (adiabatic PBE, etc.) and adiabatic
-**hybri`d*`* functionals follow the same pattern, with the static
+**hybrid** functionals follow the same pattern, with the static
 functional plugged in at the instantaneous density. They do
 not introduce any new physics beyond ALDA — they only improve
 the *stati`c*` xc potential that is being evaluated adiabatically.
@@ -891,7 +891,7 @@ energies**.
 
 ### 12.6.1 Oscillator strengths
 
-The **oscillator strengt`h*`* $f_I$ of an excitation at energy
+The **oscillator strength** $f_I$ of an excitation at energy
 $\omega_I$ is the residue of $\boldsymbol\chi$ at the pole
 $\omega = \omega_I$. It measures the strength of the
 excitation's coupling to a uniform electric field (in the
@@ -932,7 +932,7 @@ $|\langle \Psi_I | \hat p_\alpha | \Psi_0 \rangle|^2$ instead.
 ## 12.7 The Casida formulation
 
 The most widely-used form of the linear-response TD-DFT
-eigenvalue problem is due to **Mark Casid`a*`* (1995, 1996). It
+eigenvalue problem is due to **Mark Casida** (1995, 1996). It
 reduces the search for the poles of $\chi$ to a single
 generalised matrix eigenvalue equation of dimension
 $N_\text{trans} = N_\text{occ}\, N_\text{virt}$, where
@@ -1279,8 +1279,8 @@ rescaling.
 ### 12.7.3 The form of the coupling matrix
 
 The kernel in \eqref{eq:ch-12-casida-K} separates into a
-**Coulom`b*`* part (the Hartree kernel $v_H$) and an
-**x`c*`* part (the kernel $f_\text{xc}$). The Coulomb part
+**Coulomb** part (the Hartree kernel $v_H$) and an
+**xc** part (the kernel $f_\text{xc}$). The Coulomb part
 drives the **de-excitation** direction in the Casida matrix
 (it appears with a $-$ sign in the full equation, but is
 absorbed in the structure of $\mathbf A$, $\mathbf B$); the
@@ -1462,7 +1462,7 @@ propagation gives broad lines but cheap runs.
 
 > **Tip.** The choice of the initial perturbation is one of
 > the few knobs in real-time TD-DFT. A common choice is a
-> **delta-function kic`k*`* in the external potential,
+> **delta-function kick** in the external potential,
 > $\delta v_\text{ext}(\mathbf r, t) = -k\, \hat z\,
 > \delta(t)$, which excites *all* dipole-allowed transitions
 > at once. An alternative is a short, finite-width pulse
@@ -1525,7 +1525,7 @@ graph TD
   class SPEC out
 ```
 
-The **inner loo`p*`* (`LOOP` → `CN` → `VEFF` → `CK`) is the
+The **inner loop** (`LOOP` → `CN` → `VEFF` → `CK`) is the
 propagator: at every time step, the Crank–Nicolson update
 rotates each orbital by the Cayley transform of $\hat H_s$,
 then a new density and effective potential are built. The
@@ -1595,7 +1595,7 @@ section.
    TD-DFT in a supercell captures the energy deposition
    rate and the time-dependent electron distribution.
 7. **Singlet fission and triplet formation.** These
-   spin-dependent phenomena require **spin-fli`p*`*
+   spin-dependent phenomena require **spin-flip**
    TD-DFT, in which the spin-restriction of the
    ground state is lifted in the linear response. The
    Casida equation is augmented with spin-flip matrix
@@ -1746,7 +1746,7 @@ $\omega_\text{exc} = \sqrt{1.0 \cdot 1.4} = \sqrt{1.4}
 
 The real-time method starts the system in the ground state
 $|\Psi(0^-)\rangle = |1\rangle$ and applies a
-**delta-function kic`k*`* in the dipole potential at
+**delta-function kick** in the dipole potential at
 $t = 0$,
 
 \begin{equation}
@@ -2323,7 +2323,7 @@ equation in a form that makes the structure of the kernel
 explicit, derive the Casida eigenvalue problem from the
 Dyson equation, derive the oscillator strength, and
 discuss the two most common practical approximations
-— the **adiabati`c*`* kernel and the **Tamm–Dancof`f*`*
+— the **adiabatic** kernel and the **Tamm–Dancoff**
 approximation.
 
 The treatment below assumes only that the reader is
@@ -2638,7 +2638,7 @@ excitation amplitudes.
 
 ### 12.9.4 The oscillator strength and the dipole sum rule
 
-The **oscillator strengt`h*`* of excitation $I$ is the
+The **oscillator strength** of excitation $I$ is the
 residue of $\boldsymbol\chi$ at the pole
 $\omega = \omega_I$. It is the quantity that is
 directly comparable to experimental absorption cross-
@@ -2704,7 +2704,7 @@ or basis-limited.
 
 The exact $f_\text{xc}(\mathbf r, \mathbf r'; \omega)$
 is frequency-dependent. The standard practical
-approximation is the **adiabati`c*`* kernel, in which the
+approximation is the **adiabatic** kernel, in which the
 frequency dependence is dropped:
 
 \begin{equation}
@@ -2722,7 +2722,7 @@ The right-hand side is evaluated on the *ground-state*
 density; the kernel becomes a static, frequency-
 independent two-point function. The Casida equation
 \eqref{eq:ch-12-09-casida} then reduces to the
-**adiabatic Casid`a*`* form, in which the coupling
+**adiabatic Casida** form, in which the coupling
 matrix $K$ is real, symmetric, and frequency-
 independent.
 
@@ -2746,7 +2746,7 @@ derivative of the LDA xc energy per particle. The
 evaluated at the ground-state density; the result is a
 *semi-local* kernel that depends on $\rho(\mathbf r)$
 and $\nabla\rho(\mathbf r)$ at the same point. The
-**adiabatic hybri`d*`* uses a hybrid static functional
+**adiabatic hybrid** uses a hybrid static functional
 (PBE0, B3LYP, …) and includes a fraction of exact
 exchange through the Fock kernel.
 
@@ -3193,7 +3193,7 @@ For a small molecule with $N_\text{trans} \sim
 10^3$–$10^4$ it can be diagonalised directly; for
 a solid with $N_\text{trans} \sim 10^6$–$10^7$
 this is impossible. The standard solution is
-**Haydock's recursive metho`d*`*.
+**Haydock's recursive method**.
 
 The Haydock method builds a *continued-fraction*
 representation of the BSE Green's function
@@ -3278,7 +3278,7 @@ relation. The **macroscopic dielectric function** is
    \frac{1}{[\varepsilon^{-1}(\mathbf q, \omega)]_{\mathbf G = 0, \mathbf G' = 0}} .
 \end{equation}
 
-The limit $\mathbf q \to 0$ is the **long-wavelengt`h*`*
+The limit $\mathbf q \to 0$ is the **long-wavelength**
 limit; the $\mathbf G = 0, \mathbf G' = 0$ matrix
 element of the inverse dielectric matrix is the
 **macroscopic average**. The local-field effects
@@ -3619,7 +3619,7 @@ analytically.
 The time step $\Delta t$ of the propagation is
 set by the **highest occupied KS eigenvalue**
 $E_\text{HOMO}$ (or, in a plane-wave basis, by
-the **kinetic-energy cutof`f*`* $E_\text{cut}$). The
+the **kinetic-energy cutoff** $E_\text{cut}$). The
 condition is
 
 \begin{equation}
@@ -3684,7 +3684,7 @@ moment. The procedure is:
    $\Phi_s(0)$ at $t = 0^-$.
 
 2. **Apply a perturbation.** Apply a
-   **delta-function kic`k*`* in the external
+   **delta-function kick** in the external
    potential at $t = 0$:
 
    \begin{equation}
@@ -3745,7 +3745,7 @@ moment. The procedure is:
 
 The peak of $\sigma(\omega)$ at the
 excitation energies gives the spectrum. The
-**delta kic`k*`* of
+**delta kick** of
 \eqref{eq:ch-12-11-kick} excites *all*
 dipole-allowed transitions at once; the
 Fourier transform separates them in
@@ -3891,7 +3891,7 @@ gap is partly compensated by the absence
 of vibrational broadening in the
 TD-DFT calculation.
 
-The **widt`h*`* of each peak is set by the
+The **width** of each peak is set by the
 Hann window: the propagation time $T = 50$
 a.u. corresponds to a spectral resolution
 of $\Delta\omega \approx 2\pi/T \approx
@@ -4281,7 +4281,7 @@ excitation energies) plus an *off-diagonal* part
 
 #### 12.14.3.3 The oscillator strength, p. 175
 
-The **oscillator strengt`h*`* of excitation $I$ is
+The **oscillator strength** of excitation $I$ is
 given in the 1995 chapter on **p. 175**, eq. (3.24)
 [Casida, 1995, eq. (3.24), p. 175]. In the 1995
 notation:
@@ -4507,8 +4507,8 @@ configurations [Marques and Gross, 2004, p. 446].
 The *exact* response function does contain double
 excitations, but the *adiabati`c*` kernel of section
 12.14.5.3 does *not* mix singles with doubles.
-Practical workarounds include the **spin-fli`p*`*
-TDDFT of Shao et al. (2003) and the **double-hybri`d*`*
+Practical workarounds include the **spin-flip**
+TDDFT of Shao et al. (2003) and the **double-hybrid**
 functionals that mix TDDFT with configuration-
 interaction doubles [Marques and Gross, 2004, p. 446].
 The 1995 Casida chapter is *explicitly* a
@@ -4528,7 +4528,7 @@ $W(\omega)$ [Marques and Gross, 2004, p. 444].
 The missing long-range tail is why ALDA TDDFT
 *fails* for charge-transfer excitations (in
 molecules) and for excitons (in solids). The *fix*
-is the **range-separated hybri`d*`* (CAM-B3LYP,
+is the **range-separated hybrid** (CAM-B3LYP,
 $\omega$B97X), which is a *hybri`d*` kernel with the
 correct long-range behaviour — a *post-2004*
 development [Marques and Gross, 2004, p. 444–446].
@@ -4567,11 +4567,11 @@ as an *outloo`k*` topic on **p. 446**
 [Marques and Gross, 2004, p. 446].
 
 > **Note.** Other topics that are *not* in the four
-> foundational papers include: the **super-flui`d*`*
+> foundational papers include: the **super-fluid**
 > response of Helium-4, the **topological** response
-> of insulators, the **strong-fiel`d*`* response of
+> of insulators, the **strong-field** response of
 > atoms in intense laser pulses, and the
-> **non-adiabati`c*`* coupling of electrons and ions
+> **non-adiabatic** coupling of electrons and ions
 > at conical intersections. Each is a *specialise`d*`
 > sub-field of TDDFT that post-dates the four
 > foundational papers.

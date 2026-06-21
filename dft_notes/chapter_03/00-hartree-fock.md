@@ -130,7 +130,7 @@ The three terms are:
   $\{\mathbf R_A\}$ and
   $\hat v_\text{ext}(\mathbf r) = -\sum_A Z_A / |\mathbf r - \mathbf R_A|$.
 
-- $\hat J[\rho]$ is the **Coulom`b*`* (or **Hartree**) operator,
+- $\hat J[\rho]$ is the **Coulomb** (or **Hartree**) operator,
   defined by its action on an arbitrary spin-orbital $\chi$:
 
   \begin{equation}
@@ -353,7 +353,7 @@ need are:
 These are the rules that make quantum-chemistry codes possible.
 They say the Hamiltonian is a **2-body** operator in second
 quantisation, and its matrix in the determinant basis is
-**sparse enoug`h*`* to be handled by iterative methods.  The
+**sparse enough** to be handled by iterative methods.  The
 Slater–Condon rules are also what justifies the Fock operator:
 varying $\langle \Phi \rvert \hat H \rvert \Phi \rangle$ with
 respect to a single spin-orbital uses the "$I = J$" and "single
@@ -1391,7 +1391,7 @@ nested loo`p*` over basis-function quartets $(\chi_\mu, \chi_\nu,
 \chi_\rho, \chi_\sigma)$, with a screening test that discards
 quartets whose contribution to $G_{\mu\nu}$ is guaranteed to be
 negligibly small.  The dominant screening inequality is the
-**Cauchy–Schwarz boun`d*`*
+**Cauchy–Schwarz bound**
 
 \begin{equation}
 \label{eq:ch-03-schwarz}
@@ -1399,7 +1399,7 @@ negligibly small.  The dominant screening inequality is the
 \;\le\; \sqrt{ (\mu\nu \rvert \mu\nu)\, (\rho\sigma \rvert \rho\sigma) } .
 \end{equation}
 
-Define the **diagonal boun`d*`* $Q_{\mu\nu} = \sqrt{|(\mu\nu \rvert
+Define the **diagonal bound** $Q_{\mu\nu} = \sqrt{|(\mu\nu \rvert
 \mu\nu)|}$.  The two-electron contribution to $G_{\mu\nu}$ is
 non-negligible only if
 
@@ -1935,7 +1935,7 @@ orbital $a$, the $\beta$ Fock matrix is *unchange`d*` (it depends
 only on $\mathbf P^\beta$, and $\mathbf P^\beta$ has not been
 touched), so the $\beta$ orbitals do not need to relax.  The
 remaining $\alpha$ orbitals *do* change their Fock matrix, but
-the *total* energy difference involves the unrelaxe`d` orbital
+the *total* energy difference involves the unrelaxed* orbital
 $a$ — and the energy contribution from the $\alpha$ relaxation
 cancels against the changes in $J_{aj}$ and $K_{aj}$.
 
@@ -2093,7 +2093,7 @@ photoemission calculations.
 
 ## 3.10 Why DFT builds on HF
 
-The Fock operator is the prototypical **mean-fiel`d*`* operator:
+The Fock operator is the prototypical **mean-field** operator:
 each electron moves in the average field of all the others.  The
 HF energy expression is also the template that every later
 theory copies:

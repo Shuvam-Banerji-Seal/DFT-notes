@@ -409,7 +409,7 @@ row atoms; H lags by one):
 | cc-pVQZ    | (5s, 4p, 3d, 2f, 1g)                                   |     55    |
 | cc-pV5Z    | (6s, 5p, 4d, 3f, 2g, 1h)                               |     91    |
 
-The **augmente`d*`* variant **aug-cc-pVXZ** prepends one diffuse
+The **augmented** variant **aug-cc-pVXZ** prepends one diffuse
 function at each angular momentum.  The empirical fact that
 \eqref{eq:ch-06-cbs-extrap} holds for this family is what
 makes the cc-pV*X*Z series the de facto path to converged
@@ -423,7 +423,7 @@ post-HF results.
 
 ## 6.7 Plane waves
 
-For a **periodi`c*`* system — a crystal, or a molecule placed in
+For a **periodic** system — a crystal, or a molecule placed in
 a sufficiently large simulation box — the Kohn–Sham orbitals
 satisfy Bloch's theorem (we will treat this carefully in
 [chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }})):
@@ -455,7 +455,7 @@ $\chi_{\mathbf G}^{\mathbf k}(\mathbf r) = \Omega^{-1/2}
 e^{i (\mathbf k + \mathbf G)\cdot \mathbf r}$ is an exact
 eigenfunction of $-\tfrac{1}{2}\nabla^2$ with eigenvalue
 $\tfrac{1}{2}|\mathbf k + \mathbf G|^2$.  Truncating the
-expansion at the **kinetic-energy cutof`f*`* $E_\text{cut}$,
+expansion at the **kinetic-energy cutoff** $E_\text{cut}$,
 
 \begin{equation}
 \label{eq:ch-06-ecut}
@@ -999,7 +999,7 @@ of what we skipped:
 ## 6.13 Numerical atomic orbitals (NAOs)
 
 The basis sets of sections 6.3–6.6 (STO-nG, Pople, Dunning) are
-all **analyti`c*`*: every function in the basis is known in closed
+all **analytic**: every function in the basis is known in closed
 form as a sum of Gaussians.  An alternative, used by **SIESTA**
 (linear-scaling DFT), **FHI-aims** (numeric all-electron), and
 the partial-wave construction of **PAW** (section 6.15), is to
@@ -1025,7 +1025,7 @@ Y_{\ell m}(\hat{\mathbf r}_a) , \qquad
 
 where $Y_{\ell m}$ is a real spherical harmonic, $r_a$ is the
 distance to atom $a$, and the radial function $R_\ell^{(a,q)}$
-is a numerical solution of a **modifie`d*`* radial Schrödinger
+is a numerical solution of a **modified** radial Schrödinger
 equation with a confining potential.  The index $q = 1, 2,
 \dots, n_\zeta$ labels the multiple-ζ split of the valence
 shell.
@@ -1085,9 +1085,9 @@ asymptotic boundary $r = R_c$ where $u_\ell(R_c) = 0$.
 
 ### 6.13.3 The logarithmic grid
 
-The radial equation is **stif`f*`* at small $r$ (where
+The radial equation is **stiff** at small $r$ (where
 $\ell(\ell+1)/2r^2$ diverges and the wavefunction oscillates
-rapidly) and **smoot`h*`* at large $r$ (where it decays
+rapidly) and **smooth** at large $r$ (where it decays
 exponentially).  A uniform grid wastes resolution in the
 asymptotic region.  The standard choice is the **logarithmic
 gri`d*`* introduced by H. J. A. M. Kormann and used in SIESTA and
@@ -1530,7 +1530,7 @@ is needed inside each sphere.  The total electron density is
 where
 
 - $\tilde \rho = \sum_n f_n \lvert \tilde \psi_n \rvert^2$ is
-  the **smoot`h*`* density, defined on the plane-wave grid,
+  the **smooth** density, defined on the plane-wave grid,
 - $\rho^a = \sum_{i,j} D_{ij}^a\, \phi_i^a (\phi_j^a)^*$ is
   the **AE augmentation** density, defined on the radial grid
   of atom $a$,

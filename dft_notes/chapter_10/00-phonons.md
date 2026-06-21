@@ -50,7 +50,7 @@ $\mathbf q$ from a single unit cell; (4) give the *acoustic sum
 rule* (§10.4) and the *LO-TO splitting (§10.5) that pin down
 $\omega_s(\mathbf q)$ at the two limits $\mathbf q \to 0$ and
 $\mathbf q = 0$ for ionic crystals; (5) connect the dispersion to
-the *phonon density of states* and the thermodynami`c` functions
+the *phonon density of states* and the thermodynamic* functions
 (§10.6); (6) sketch the *anharmoni`c*` corrections that go beyond
 the harmonic approximation (§10.7); and (7) treat the
 *electron-phonon* coupling (§10.8) that ties phonons back to
@@ -425,7 +425,7 @@ graph TD
   class OUT out
 ```
 
-The **inner loo`p*`* `LOOP` is the cost driver: it runs
+The **inner loop** `LOOP` is the cost driver: it runs
 $2 \times 3 N_\text{atom-in-supercell}$ independent SCF
 calculations. By symmetry of $\Phi$ (which is symmetric under
 $I \leftrightarrow J$, $\alpha \leftrightarrow \beta$) this can
@@ -489,7 +489,7 @@ $2n + 1$ for $n = 0$ (since $2(0) + 1 = 1$, but we want the
 energy to order $2n+1$ requires the wavefunction to order $n$",
 which for the *force-constant matrix* ($n = 0$ for the second
 derivative of the energy) means *no wavefunction perturbation at
-all* — but the *force-constant matrix itsel`f` is second-order in
+all* — but the *force-constant matrix itself* is second-order in
 the perturbation amplitude, so we need $\psi^{(1)}$ to compute it).
 Either way, the practical consequence is the same: a *single*
 linear-response calculation gives the second derivative of the
@@ -552,7 +552,7 @@ Once the self-consistent first-order density response $\rho^{(1)}$
 is known, the second derivative of the energy with respect to the
 phonon amplitude follows from the $2n + 1$ theorem applied at
 $n = 0$ for the second derivative, or by direct application of
-the **$2n + 1$ formul`a*`* for the second derivative:
+the **$2n + 1$ formula** for the second derivative:
 
 \begin{equation}
 \label{eq:ch-10-dyn-dfpt}
@@ -661,7 +661,7 @@ graph TD
   class DYN out
 ```
 
-The **inner loo`p*`* (`SOLVE` → `RHO1` → `V1` → `CK`) is a
+The **inner loop** (`SOLVE` → `RHO1` → `V1` → `CK`) is a
 *linear* iteration: each step solves a single linear system for
 $\psi_n^{(1)}$ given a fixed $V_\text{Hxc}^{(1)}$, then updates
 $V_\text{Hxc}^{(1)}$ from the new $\rho^{(1)}$. This is the
@@ -772,7 +772,7 @@ For a crystal with *two or more* atoms per primitive cell, the
 story is richer. There are *three acousti`c*` branches (which go
 to zero at $\Gamma$ as above) and *3(N-1) optical* branches
 (which have non-zero frequency at $\Gamma$). The
-*longitudinal optical* (LO) branch in an ioni`c` crystal has a
+*longitudinal optical* (LO) branch in an ionic* crystal has a
 particularly subtle behaviour: its frequency at $\mathbf q = 0$
 is *not* the same as the frequency of the transverse optical
 (TO) branch. The split is called the **LO–TO splitting**, and it
@@ -807,7 +807,7 @@ neutral crystal:
 \sum_{I}\, Z^*_{I} \;=\; 0 .
 \end{equation}
 
-In a *non-ionic*` crystal (e.g. pure silicon) $Z^_\text{Si} = 0$ by
+In a *non-ionic* crystal (e.g. pure silicon) $Z^*_\text{Si} = 0$ by
 symmetry, even though Si has 4 valence electrons. In an *ioni`c*`
 crystal like NaCl, $Z^*_\text{Na} \approx +1.1\, e$ and
 $Z^*_\text{Cl} \approx -1.1\, e$ — slightly renormalised from the
@@ -871,7 +871,7 @@ The non-analytic term is *zero* at $\mathbf q = 0$ in the sense
 that it does not depend on $|\mathbf q|$ (it depends only on the
 *direction* of $\mathbf q$); but it is non-zero for any $\mathbf
 q \neq 0$. The effect on the *longitudinal* optical mode is to
-*raise* its frequency by an amount set by $Z^$ and
+*raise* its frequency by an amount set by $Z^*$ and
 $\varepsilon_\infty$:
 
 \begin{equation}
@@ -1434,7 +1434,7 @@ temperature* $T_c$ is determined by the Eliashberg function
 $\alpha^2 F(\omega)$ through a non-linear integral equation
 ([Eliashberg (1960)](<https://doi.org/10.1007/BF01031348>)). For
 *weak to intermediate* coupling ($\lambda \lesssim 1.5$), a good
-analytical approximation is the **McMillan formul`a*`*
+analytical approximation is the **McMillan formula**
 ([McMillan (1968)](<https://doi.org/10.1103/PhysRev.167.331>)):
 
 \begin{equation}
@@ -1648,7 +1648,7 @@ K\, \sqrt{\,\Bigl(\frac{1}{M_1} + \frac{1}{M_2}\Bigr)^{\!2}
 \end{equation}
 
 The two signs give the two branches: $\omega_-(q)$ is the
-**acousti`c*`* branch (lower frequency), $\omega_+(q)$ is the
+**acoustic** branch (lower frequency), $\omega_+(q)$ is the
 **optical** branch (upper frequency).
 
 ### 10.9.4 Limiting cases
@@ -1675,7 +1675,7 @@ $$
 $$
 
 where $\mu = M_1 M_2 / (M_1 + M_2)$ is the *reduced mass*. So
-$\omega_-(q) \to v_s |q|$ with the **speed of soun`d*`*
+$\omega_-(q) \to v_s |q|$ with the **speed of sound**
 
 \begin{equation}
 \label{eq:ch-10-worked-vsound}
@@ -1917,7 +1917,7 @@ graph TD
 
 The decision node `C{Choose method}` is the one a practitioner
 spends the most time on. **DFPT** is preferred for *primitive
-cells* and for *long-wavelengt`h` properties (LO–TO splitting,
+cells* and for *long-wavelength* properties (LO–TO splitting,
 Born effective charges, the dielectric tensor). **Frozen phonon**
 is preferred for *supercells* (defects, alloys) and when DFPT
 is not available. The two routes converge to the same answer in
@@ -2229,7 +2229,7 @@ than the experimental 7.2 K. The reason is that the McMillan
 formula in the form \eqref{eq:ch-10-mcmillan} is *quantitative*
 only for $\lambda \lesssim 1.3$; for stronger coupling it
 *overestimates* $T_c$ by a factor of 2–10. The
-**Allen–Dynes修正 formul`a*`* of
+**Allen–Dynes修正 formula** of
 [Allen & Dynes (1975)](<https://doi.org/10.1103/PhysRevB.12.905>)
 extends the McMillan formula to strong coupling:
 

@@ -104,7 +104,7 @@ labelled "catch".  But the spirit of the catch — *what does this
 formula not tell you, and where does it break?* — is woven into
 *every* part of the template:
 
-- the derivation has **Ti`p*`*, **Note**, and **Warning** callouts
+- the derivation has **Tip**, **Note**, and **Warning** callouts
   that flag common pitfalls;
 - the worked example deliberately picks parameter values that
   *exercise* a known failure mode (small basis, large grid
@@ -242,7 +242,7 @@ worked-example snippets.  The conventions are spelled out in
 short version is:
 
 - **Python 3.11+** (the version pinned in `python_codes/README.md`).
-- **Imports are restricte`d*`* to `numpy`, `scipy`, and
+- **Imports are restricted** to `numpy`, `scipy`, and
   `matplotlib`.  Anything else is added to the README on a
   case-by-case basis.
 - **Headless rendering.**  Every script begins with
@@ -391,7 +391,7 @@ says so in one line, but it writes the result.
 basis"), each with its own numbered equations.  Cross-references
 to equations in *other* chapters by chapter link, cross-references
 to equations in *this* chapter by `\eqref{}`.  Inline
-**Ti`p*`*, **Note**, and **Warning** callouts flag common pitfalls
+**Tip**, **Note**, and **Warning** callouts flag common pitfalls
 and limits of the derivation.
 
 **What to take away.**  The reader should be able to redo the
@@ -462,7 +462,7 @@ companion script.
 
 ### 6. Problems
 
-Three problems per chapter, **ranging easy → har`d*`*, each
+Three problems per chapter, **ranging easy → hard**, each
 followed by a fully worked solution.  Problems use
 `<details class="problem">` for the question and
 `<details class="answer">` for the answer, so the reader can
@@ -497,7 +497,7 @@ to look if they need that material.
 
 ## Roadmap
 
-The notes are organised as a **dependency grap`h*`*, not a strictly
+The notes are organised as a **dependency graph**, not a strictly
 linear sequence.  The graph is shown in two views: a *flat*
 chapter-by-chapter view, and a *trac`k*` view that groups
 chapters by what they teach.

@@ -15,14 +15,14 @@ keywords: "band structure, density of states, Fermi surface, effective mass, Ras
 
 > Once you have solved the Kohn–Sham equations for a periodic solid,
 > you are left with a list of energies that depend on a continuous
-> variable **`k*`* in the Brillouin zone.  This chapter is about what
+> variable **k** in the Brillouin zone.  This chapter is about what
 > to do with that list.
 
 By the end of [chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }})
-we had a Kohn–Sham Hamiltonian at every crystal momentum **`k*`* in the
+we had a Kohn–Sham Hamiltonian at every crystal momentum **k** in the
 first Brillouin zone, and we could solve the eigenproblem
 $H(\mathbf k) \psi_{n\mathbf k} = \varepsilon_{n\mathbf k} \psi_{n\mathbf k}$
-to obtain a discrete set of eigenvalues at each **`k*`*.  The result is
+to obtain a discrete set of eigenvalues at each **k**.  The result is
 a set of continuous functions
 $\varepsilon_n(\mathbf k)$ — the **band structure** of the solid — and
 a discrete Fermi energy $\varepsilon_F$ chosen so that exactly $N_e$
@@ -114,7 +114,7 @@ first Brillouin zone.  The integral is over the irreducible
 Brillouin zone if symmetry is exploited; the prefactor in
 \eqref{eq:ch-11-dos} already accounts for the symmetry.  The DOS is
 the "spectroscopic" projection of the band structure: it loses all
-the **`k*`*-dependent information and keeps only the energy-resolved
+the **k**-dependent information and keeps only the energy-resolved
 density of states.
 
 Three properties to keep in mind:
@@ -192,7 +192,7 @@ properties.
 
 The full band structure is a function on a 3-D Brillouin zone.  We
 cannot plot a 4-D object.  The standard trick is to plot
-$\varepsilon_n(\mathbf k)$ along a 1-D **k-pat`h*`* that visits the
+$\varepsilon_n(\mathbf k)$ along a 1-D **k-path** that visits the
 high-symmetry points of the Brillouin zone, ordered so that no
 symmetry-equivalent point is missed.  The path should be long enough
 to cover the irreducible BZ but short enough that the plot is
@@ -355,7 +355,7 @@ the path used in section 11.9. > **Reading note.**  The labels of high-symmetry 
 
 The algorithm to plot a band structure is:
 
-1. **Choose a k-pat`h*`* as in \eqref{eq:ch-11-fcc-path} or
+1. **Choose a k-path** as in \eqref{eq:ch-11-fcc-path} or
    \eqref{eq:ch-11-bcc-path} or \eqref{eq:ch-11-hex-path}, in
    Cartesian coordinates of the BZ.
 2. **Sample $N_k$ k-points per segment** uniformly along the path.
@@ -526,7 +526,7 @@ Monkhorst–Pack mesh.  Within each tetrahedron, linearly interpolate
 the band energy.  The BZ integral of the step function
 $\theta(\varepsilon_F - \varepsilon_{n\mathbf k})$ over a single
 tetrahedron with vertex energies $\varepsilon_1, \dots, \varepsilon_4$
-is, by the **Lehmann–Taut formul`a*`*,
+is, by the **Lehmann–Taut formula**,
 
 \begin{equation}
 \label{eq:ch-11-lt}
@@ -709,7 +709,7 @@ which $\varepsilon_{n\mathbf k} = \varepsilon_F$.
 
 For a coarse mesh, the simplest approach is **linear interpolation
 of $\varepsilon$ in each mesh cell** (the same idea as tetrahedron
-integration, but with the *isosurface* rather than the integrate`d`
+integration, but with the *isosurface* rather than the integrated*
 form).  Tile the BZ with tetrahedra, linearly interpolate the band
 energy within each tetrahedron, and intersect the level set
 $\varepsilon(\mathbf k) = \varepsilon_F$ with each tetrahedron.  The
@@ -995,11 +995,11 @@ A pDOS plot has $g_{a,\ell}(E)$ on the vertical axis and $E$ on the
 horizontal.  Multiple curves are overlaid, one per (atom, angular
 momentum) pair.  The standard reading is:
 
-- A **pea`k*`* in $g_{a,\ell}(E)$ is a band of $(a, \ell)$ character
+- A **peak** in $g_{a,\ell}(E)$ is a band of $(a, \ell)$ character
   at energy $E$.
 - A **resonance** (a broad bump) is a hybridised band that has
   partial $(a, \ell)$ character over a range of energies.
-- A **band ga`p*`* is a region of $E$ with $g(E) \approx 0$ for all
+- A **band gap** is a region of $E$ with $g(E) \approx 0$ for all
   $(a, \ell)$ — the "gap" in the projected DOS is the same as the
   gap in the total DOS, but the *character of the gap edges* is
   visible: a gap between an O 2$p$ band (top of valence band) and a
@@ -1201,7 +1201,7 @@ graph TD
 
 ```
 
-The **key branc`h*`* is `INV` (the inverse-mass tensor). The three
+The **key branch** is `INV` (the inverse-mass tensor). The three
 *downstream* boxes (`DIAG`, `TRACE`, `COND`) are different
 *reductions* of the same tensor: the principal axes (eigenvectors
 of $\mathbf H$) and the principal masses (eigenvalues divided by
@@ -1214,9 +1214,9 @@ integral of the inverse mass.
 
 We now apply the machinery to four canonical materials.  Each
 illustrates a different feature of the band-structure formalism:
-silicon is the textbook **indirect-ga`p*`* semiconductor, graphene
+silicon is the textbook **indirect-gap** semiconductor, graphene
 has the textbook **linear Dirac dispersion** at the BZ corner,
-GaAs is the textbook **direct-ga`p*`* semiconductor of the III–V
+GaAs is the textbook **direct-gap** semiconductor of the III–V
 family, and MoS₂ shows the **spin–orbit splitting** of a
 transition-metal dichalcogenide.
 
@@ -1235,7 +1235,7 @@ following features:
 - **Band gap.**  The conduction-band minimum is at
   $\Delta_\text{min} \approx 0.85\,X$ (about 85 % of the way from
   $\Gamma$ to $X$); the valence-band maximum is at $\Gamma$.
-  The **indirect ga`p*`* is $E_\text{gap}^\text{ind} \approx 0.45$ eV
+  The **indirect gap** is $E_\text{gap}^\text{ind} \approx 0.45$ eV
   in LDA (the experimental value is 1.17 eV at room temperature; the
   LDA gap is the well-known ~50 % underestimate).
 - **Direct gap at $\Gamma$.**  The lowest direct gap at $\Gamma$ is
@@ -1357,7 +1357,7 @@ Molybdenum disulfide is a layered transition-metal dichalcogenide.
 The bulk crystal has the 2H polytype (space group $P 6_3 / m m c$);
 the monolayer (which is the more commonly studied form) has the
 $D_{3h}$ point group.  The band gap is **direct in the monolayer**
-($\sim 1.8$ eV in LDA) and **indirect in the bilayer and bul`k*`*
+($\sim 1.8$ eV in LDA) and **indirect in the bilayer and bulk**
 ($\sim 1.2$ eV in LDA for the bulk) — the "direct-to-indirect
 transition" as a function of layer number is one of the most
 discussed features of 2-D semiconductors.
@@ -1996,8 +1996,8 @@ is the Hessian of the band at $\mathbf k_0$.
 1. Show that the **effective mass tensor** defined by
    $1/m^*_{ij} = H_{ij} / \hbar^2$ makes the band look like a
    free-electron band with anisotropic mass: i.e. that
-   $\varepsilon_{n\mathbf k} - \varepsilon_0 = \hbar^2 |\mathbf q|^2 /
-   2 m^*$ in the *diagonal basis where $m^$ is a scalar.
+    $\varepsilon_{n\mathbf k} - \varepsilon_0 = \hbar^2 |\mathbf q|^2 /
+    2 m^*$ in the *diagonal* basis where $m^*$ is a scalar.
 2. For silicon's conduction-band minimum near $X$ (a so-called
    "$\Delta$ minimum"), the effective mass tensor in the cubic
    axes has the form

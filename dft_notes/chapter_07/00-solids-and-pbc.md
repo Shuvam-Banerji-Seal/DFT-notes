@@ -26,7 +26,7 @@ it is the *same* Schrödinger equation, but on a Hamiltonian that has
 the discrete translational symmetry of the crystal. This chapter is
 about the consequence of that symmetry: the eigenfunctions factorise
 into a plane wave and a cell-periodic piece, the energy levels become
-continuous *bands* parametrised by a crystal momentum **`k*`* that lives
+continuous *bands* parametrised by a crystal momentum **k** that lives
 in a small region of reciprocal space, and the practical calculation
 collapses from an infinite matrix to a finite matrix indexed by a
 small set of **k-points** and a small set of **plane waves**. The
@@ -605,7 +605,7 @@ Riemann sum
                  \sum_n f(\varepsilon_{n\mathbf k}) \, o_{n\mathbf k}.
 \end{equation}
 
-This is the **Monkhorst–Pac`k*`* (MP) mesh, the workhorse of
+This is the **Monkhorst–Pack** (MP) mesh, the workhorse of
 solid-state DFT.
 
 ### 7.6.2 Convergence of the MP sum
@@ -1329,7 +1329,7 @@ with $R \in O(3)$ a point-group operation and $\mathbf v \in
 \end{equation}
 
 If every $\mathbf v$ in \eqref{eq:ch-07-seitz} is a Bravais vector,
-the space group is **symmorphi`c*`*; otherwise $\mathbf v$ may be a
+the space group is **symmorphic**; otherwise $\mathbf v$ may be a
 fractional translation, giving a **screw axis** ($\mathbf v$
 parallel to the rotation axis) or a **glide plane** ($\mathbf v$ in
 the mirror plane). 73 of the 230 space groups are symmorphic; 157
@@ -1443,7 +1443,7 @@ star** of $\mathbf k$:
 
 ### 7.10.5 The little group of $\mathbf k$
 
-The **little grou`p*`* $\mathcal{G}_\mathbf k$ of $\mathbf k$ is the
+The **little group** $\mathcal{G}_\mathbf k$ of $\mathbf k$ is the
 subgroup of the point group that leaves $\mathbf k$ invariant
 *modulo* a reciprocal-lattice vector:
 
@@ -1480,7 +1480,7 @@ $\Theta^2 = +1$). With spin–orbit, $\Theta = i \sigma_y K$ is
 antiunitary and $\Theta^2 = -1$, giving the **Kramers degeneracy**
 $\varepsilon_{n\mathbf k\uparrow} = \varepsilon_{n\mathbf k\downarrow}$
 for every $\mathbf k$ — the little-group irreps of the
-**double grou`p*`* of $\mathcal{G}_\mathbf k$ are then 2-dimensional at
+**double group** of $\mathcal{G}_\mathbf k$ are then 2-dimensional at
 generic $\mathbf k$.
 
 ### 7.10.6 The irreducible Brillouin zone
@@ -1515,7 +1515,7 @@ references like Yu & Cardona, *Fundamentals of Semiconductors*.
 
 The Riemann-sum on a Monkhorst–Pack mesh of §7.6 works well for
 insulators, but the step discontinuity at the Fermi level of a metal
-makes the convergence slow. The **tetrahedron metho`d*`* is a higher-
+makes the convergence slow. The **tetrahedron method** is a higher-
 order quadrature rule that handles the discontinuity analytically.
 
 ### 7.11.1 The problem
@@ -1535,7 +1535,7 @@ $o_{n\mathbf k}$ a band-resolved observable. At $T = 0$, $f =
 mesh converges only as $1/N$ along each direction.
 
 The tetrahedron method (Lehmann & Taut 1972; refined by Blöchl 1994)
-tiles the BZ with **tetrahedr`a*`*, linearly interpolates the band
+tiles the BZ with **tetrahedra**, linearly interpolates the band
 energies within each tetrahedron, and integrates the step function
 *analytically*. The result is exact for linear bands and converges
 as $O((\Delta k)^2)$ for curved bands — and, with Blöchl's
@@ -1814,9 +1814,9 @@ For a *new* system, the algorithm is:
 
 1. **Build the structure** with the experimental lattice parameters
    and atomic positions.
-2. **Pick a starting mes`h*`*: $4 \times 4 \times 4$ MP (or larger
+2. **Pick a starting mesh**: $4 \times 4 \times 4$ MP (or larger
    for metals). Run a full SCF calculation at fixed ionic positions.
-3. **Double the mes`h*`* to $8 \times 8 \times 8$ (or refine by 2 in
+3. **Double the mesh** to $8 \times 8 \times 8$ (or refine by 2 in
    each direction). Run again. The total-energy difference
    $\Delta E = E(N) - E(2N)$ is a noisy estimator of the
    convergence error at $N$.
@@ -1882,7 +1882,7 @@ that becomes singular as $\sigma \to 0$, and SCF convergence can be
 poor for very small $\sigma$. In practice, $\sigma \approx 0.01$
 Hartree ($\approx 0.27$ eV) is a good compromise for most metals.
 
-The convergence in $\sigma$ is the **systemati`c*`* error from
+The convergence in $\sigma$ is the **systematic** error from
 replacing the true step function by a smeared occupation. The
 convergence in $N_\mathbf k$ at fixed $\sigma$ is the
 **discretisation** error. Both must be controlled.
@@ -2407,7 +2407,7 @@ in production. The chain of reasoning is:
 5. **The BZ integral** is evaluated as a sum over a Monkhorst–Pack
    mesh of $\mathbf k$ points \eqref{eq:ch-07-mp-sum} or by the
    tetrahedron method (§7.11).
-6. **The plane-wave cutof`f*`* $E_\text{cut}$ truncates the basis to
+6. **The plane-wave cutoff** $E_\text{cut}$ truncates the basis to
    a finite set, and the diagonalisation is done by standard
    linear algebra. (See §7.5.3.)
 
@@ -2596,7 +2596,7 @@ sampling. A non-exhaustive list of the topics we have *not* covered:
 
 - **Spin–orbit coupling.** The Hamiltonian
   \eqref{eq:ch-07-hamiltonian} is spin-free. For solids with heavy
-  elements (5*d*`, 6`p`, f-electron systems), the spin–orbit term
+  elements (5*d*`, 6p*, f-electron systems), the spin–orbit term
   $\hat H_\text{SO} = \tfrac{1}{2} \boldsymbol{\sigma} \cdot (\nabla V
   \times \mathbf p)$ has to be added; the Bloch factor $e^{i\mathbf k
   \cdot \mathbf r}$ becomes a 2 × 2 spinor matrix. This is essential

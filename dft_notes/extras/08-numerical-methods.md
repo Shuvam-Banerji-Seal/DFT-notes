@@ -84,7 +84,7 @@ practice.
 
 ### 1.1 The fixed-point problem
 
-Define the **SCF ma`p*`* $\mathcal F$ by
+Define the **SCF map** $\mathcal F$ by
 
 \begin{equation}
 \label{eq:nm-scf-map}
@@ -190,7 +190,7 @@ DIIS takes over.
 
 ### 1.4 Broyden's method
 
-**Broyden's metho`d*`* (Broyden, 1965) is a quasi-Newton method for
+**Broyden's method** (Broyden, 1965) is a quasi-Newton method for
 the fixed-point problem $\mathcal F[\rho] - \rho = 0$.  Define the
 residual $r^{(n)} = \mathcal F[\rho^{(n)}] - \rho^{(n)}$; the
 Newton step would be
@@ -625,7 +625,7 @@ the **second derivative of the energy with respect to nuclear
 coordinates**, the matrix of force constants that is the topic
 of [chapter 10]({{ "/dft-notes/chapter-10/" | relative_url }}) (phonons).
 In production one therefore uses a *quasi-Newton* method that
-**builds u`p*`* an approximation to $\mathbf H^{-1}$ from
+**builds up** an approximation to $\mathbf H^{-1}$ from
 successive force evaluations.
 
 ### 2.5 Quasi-Newton: BFGS
@@ -951,7 +951,7 @@ the sum converges to the integral as fast as possible.
 
 ### 3.2 Monkhorst–Pack mesh
 
-The **Monkhorst–Pack (MP) mes`h*`* (Monkhorst and Pack, 1976) is
+The **Monkhorst–Pack (MP) mesh** (Monkhorst and Pack, 1976) is
 the workhorse of modern solid-state DFT.  The mesh is a uniform
 grid of $N_1 \times N_2 \times N_3$ points in the BZ, indexed
 by $(m_1, m_2, m_3)$ with $0 \le m_i < N_i$:
@@ -982,7 +982,7 @@ production.  The fix is **smearing** (§3.4) or **tetrahedron**
 
 ### 3.3 Tetrahedron method
 
-The **tetrahedron metho`d*`* (Lehmann and Taut, 1972; refined by
+The **tetrahedron method** (Lehmann and Taut, 1972; refined by
 Blöchl, 1994) partitions the BZ into $6 N_\mathbf k$ tetrahedra
 (where $N_\mathbf k$ is the number of points in the *uniform*
 MP mesh) and replaces $g(\mathbf k)$ inside each tetrahedron by
@@ -1509,9 +1509,9 @@ the $\mathcal O(K^2)$ storage of the matrix is the binding
 constraint, and we use **iterative** diagonalisation to produce
 only the *lowest* $m$ eigenpairs, with $m \ll K$.  This section
 collects the four algorithms every iterative solver in
-production uses: the **power metho`d*`* (§5.1), **inverse
+production uses: the **power method** (§5.1), **inverse
 iteration** (§5.2), the **Lanczos** algorithm (§5.3), and
-**Davidson's metho`d*`* (§5.4).  The fifth, **LOBPCG**, is in
+**Davidson's method** (§5.4).  The fifth, **LOBPCG**, is in
 §5.5. ### 5.1 The power method
 
 The simplest iterative method.  Start with a random vector
@@ -1532,7 +1532,7 @@ sparse DFT matrix) the power method is *uselessly slow*.
 
 The power method is rarely used in production — it is included
 here because it is the *starting point* for every more
-sophisticated method.  In particular, **bloc`k*`* power methods
+sophisticated method.  In particular, **block** power methods
 ($\mathbf V \in \mathbb R^{n \times m}$) converge to the *top
 $m* eigenvectors at once, and are the basis of the **LOBPCG**
 method of §5.5. ### 5.2 Inverse iteration
@@ -1592,7 +1592,7 @@ vectors), and *preconditioning* (the topic of §5.4).
 
 ### 5.4 Davidson's method
 
-**Davidson's metho`d*`* (Davidson, 1975) is the workhorse of
+**Davidson's method** (Davidson, 1975) is the workhorse of
 quantum chemistry iterative diagonalisation.  It is to the
 Lanczos algorithm what DIIS is to linear mixing: it uses a
 **preconditioner** to *bias* the search toward the eigen-
@@ -1632,7 +1632,7 @@ The **Jacobi–Davidson** method (Sleijpen and Van der Vorst, 1996)
 generalises Davidson to non-symmetric matrices and uses a
 *correction equation* to refine the preconditioner.  The
 **preconditioned Davidson** of most production codes uses a
-**bloc`k*`* subspace ($\mathbf V \in \mathbb R^{n \times m}$)
+**block** subspace ($\mathbf V \in \mathbb R^{n \times m}$)
 and locks converged Ritz vectors to bound the cost.  The
 **dressed Davidson** of Rohwedder and Schneider uses an
 *explicit* error bound to decide when to stop.
@@ -1672,7 +1672,7 @@ real space).
 
 ### 5.6 A minimal Python implementation: Davidson's method
 
-The Python listing below implements **Davidson's metho`d*`* for
+The Python listing below implements **Davidson's method** for
 a small symmetric matrix, in 60 lines.  The example matrix is
 sparse (tridiagonal) so the cost of the matrix-vector product
 is $\mathcal O(n)$ per iteration, exactly as in a plane-wave
@@ -2057,7 +2057,7 @@ condition is $u_\ell(0) = 0$ (regularity at the origin) and
 $u_\ell(r) \to 0$ as $r \to \infty$ for bound states.
 
 To integrate \eqref{eq:nm-pp-radial} numerically we use a
-**logarithmic gri`d*`*:
+**logarithmic grid**:
 
 \begin{equation}
 \label{eq:nm-pp-loggrid}

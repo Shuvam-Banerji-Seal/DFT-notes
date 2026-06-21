@@ -135,14 +135,14 @@ After chapter 05 the chapters split into three conceptual
 tracks.  Pick the track that matches your problem domain — you
 do not have to read all of them.
 
-- **Methods trac`k*`* (always relevant) — 06 basis sets, 08
+- **Methods track** (always relevant) — 06 basis sets, 08
   pseudopotentials, 13 DFT+U & beyond, 14 quantum chemistry
   beyond DFT (alternative to DFT), 17 machine learning for DFT
   (fast surrogate).
-- **Solids trac`k*`* (for periodic systems) — 07 PBC, 10 phonons,
+- **Solids track** (for periodic systems) — 07 PBC, 10 phonons,
   11 band structures, 15 relativistic effects (heavy elements),
   16 topological materials.
-- **Dynamics trac`k*`* (for time-dependent and static-response
+- **Dynamics track** (for time-dependent and static-response
   phenomena) — 09 forces & geometry optimisation, 12 TDDFT.
   phenomena) — 09 forces & geometry optimisation, 12 TDDFT.
 

@@ -38,10 +38,10 @@ potential and the orbitals together; and a fixed-point solver
 all four in turn. The first five sections (4.1–4.5) recall the
 canonical content; the next eight (4.6–4.13) are the extensions
 that turn the textbook KS equations into a tool that can be
-*implemented*` (§4.6 mixing), differentiate`d` (§4.7 forces),
-*spin-polarised*` (§4.8), formally grounde`d` (§4.9 ACFDT, §4.10
+*implemented*` (§4.6 mixing), differentiated* (§4.7 forces),
+*spin-polarised*` (§4.8), formally grounded* (§4.9 ACFDT, §4.10
 OEP, §4.11 Görling–Levy perturbation theory), *pushed into the
-heavy-element regime* (§4.12 relativistic KS), and *summarise`d`
+heavy-element regime* (§4.12 relativistic KS), and *summarised*
 (§4.13 worked example + problems).
 
 ## 4.1 The Hohenberg–Kohn theorems
@@ -311,7 +311,7 @@ graph TD
 ```
 
 The rungs are not an absolute ordering of "better" — for a
-particular system, a *low* rung (LDA) can outperform a hig`h`
+particular system, a *low* rung (LDA) can outperform a high*
 rung (a poorly-tuned hybrid). The ladder is a
 *cost–complexity* ordering, not a monotonic-accuracy ordering;
 chapter 05 devotes itself to the practical question of "which
@@ -348,7 +348,7 @@ $\mathcal F^{\prime}(\rho^\star)$ has an eigenvalue of magnitude $\ge 1$.
 
 ### 4.6.1 Simple (linear) mixing
 
-The cheapest fix is to **dam`p*`* the iteration.  Replace
+The cheapest fix is to **damp** the iteration.  Replace
 
 $$
 \rho^{(n+1)} = \mathcal F[\rho^{(n)}]
@@ -561,7 +561,7 @@ predicted change in $R$.  The result is equivalent to a single
 **Secant** step in density space.  In modern codes Anderson is rarely
 used; DIIS has won.
 
-**Broyden's metho`d*`* (Broyden, 1965) is a quasi-Newton method for the
+**Broyden's method** (Broyden, 1965) is a quasi-Newton method for the
 fixed-point problem $\mathcal F[\rho] - \rho = 0$.  Let
 $\mathbf r^{(n)} = \mathcal F[\rho^{(n)}] - \rho^{(n)}$ be the
 residual.  We would like to solve the Newton step
@@ -570,7 +570,7 @@ $\Delta\rho = \rho^{(n+1)} - \rho^{(n)}$, but the Jacobian
 $\mathbf J = \partial(\mathcal F - \mathbf 1)/\partial\rho$ is too
 expensive to form and invert.  Broyden's idea is to maintain a
 **rank-one approximation** $G_n$ to $\mathbf J^{-1}$, updated using
-the **Sherman–Morrison formul`a*`* each iteration.
+the **Sherman–Morrison formula** each iteration.
 
 The **"good" Broyden update** is
 
@@ -815,10 +815,10 @@ $$
 \phi_i(\mathbf r) = \sum_{\mu} C_{\mu i}\, \chi_\mu(\mathbf r; \mathbf R) .
 $$
 
-In an **atom-centre`d*`* basis, the basis functions $\chi_\mu$ depend
+In an **atom-centred** basis, the basis functions $\chi_\mu$ depend
 on $\mathbf R$ (the set of nuclear positions) through their centres
 $\mathbf A_\mu = \mathbf R_{I(\mu)}$.  Differentiating the KS energy
-*with respect to* $\mathbf R_I$, holding the density fixe`d` at its
+*with respect to* $\mathbf R_I$, holding the density fixed* at its
 self-consistent value, gives \eqref{eq:ch-04-force-nucleus} *plus*
 a term from the basis-set derivative that is not present in the
 complete-basis limit:
@@ -902,9 +902,9 @@ $\langle \partial \chi_\mu/\partial \mathbf R_I | \hat H_\text{KS} - \varepsilon
 > of the main reasons plane-wave codes are the workhorse of
 > geometry optimisation and ab-initio molecular dynamics.
 >
-> In a **real-space gri`d*`* (chapter 06, section 6.8) the basis is
+> In a **real-space grid** (chapter 06, section 6.8) the basis is
 > also position-independent, and the Pulay term is zero.  In an
-> **atom-centre`d*`* basis (chapter 06, sections 6.3–6.6) the Pulay
+> **atom-centred** basis (chapter 06, sections 6.3–6.6) the Pulay
 > term is *never* zero and must be evaluated explicitly.
 
 ### 4.7.4 The stress tensor
@@ -1095,7 +1095,7 @@ Pauli matrices.  The KS Hamiltonian is now
 \end{equation}
 
 where $\mathbf B_\text{xc}(\mathbf r) = \delta E_\text{xc} / \delta
-\mathbf m(\mathbf r)$ is the **XC magnetic fiel`d*`* — a 3-vector
+\mathbf m(\mathbf r)$ is the **XC magnetic field** — a 3-vector
 whose direction at $\mathbf r$ is the local spin quantisation axis.
 The eigenstates of \eqref{eq:ch-04-nonc-collinear} are 2-component
 spinors
@@ -1172,7 +1172,7 @@ $\hat V_{ee} = \sum_{i<j} 1/|\mathbf r_i - \mathbf r_j|$ is the full
 electron–electron repulsion.  The one-body potential
 $\hat V_\text{ext}^\lambda = \sum_i v_\text{ext}^\lambda(\mathbf r_i)$
 is *adjuste`d*` at every $\lambda$ so that the ground-state density is
-**fixe`d*`* to the physical density $\rho(\mathbf r)$ for every $\lambda$:
+**fixed** to the physical density $\rho(\mathbf r)$ for every $\lambda$:
 
 \begin{equation}
 \label{eq:ch-04-9-ac-density-fixed}
@@ -1257,7 +1257,7 @@ without the $J$ and $E_\text{xc}$ pieces.  Substituting
 \eqref{eq:ch-04-9-e0-decomp} and \eqref{eq:ch-04-9-e1-decomp} into
 \eqref{eq:ch-04-9-e1-minus-e0} and cancelling the $T_s$ and
 $\int \rho v_\text{eff}$ terms (they appear on both sides of the
-KS energy identity), we obtain the **ACFDT formul`a*`* for
+KS energy identity), we obtain the **ACFDT formula** for
 $E_\text{xc}$:
 
 \begin{equation}
@@ -1303,7 +1303,7 @@ is a *property of the KS determinant alone* — it does not depend on
 $\lambda$.
 
 > **Tip.**  The integrand $\langle \Psi_\lambda | \hat V_{ee} | \Psi_\lambda \rangle$
-> is sometimes called the **interaction strength integran`d*`* (ISI) of
+> is sometimes called the **interaction strength integrand** (ISI) of
 > the ACFDT.  The ISI is what every "rung" of Jacob's ladder is
 > trying to approximate.
 
@@ -1561,7 +1561,7 @@ system, and approximately valid for *almost*-two-electron systems
 > **Note.**  RPA and MP2 are the two best-known *ab initio* correlation
 > methods.  Both are special cases of the ACFDT — RPA from the
 > weak-coupling (low-density) limit, MP2 from the high-density
-> (one-pair) limit.  The ACFDT is the **unifying framewor`k*`*.  The
+> (one-pair) limit.  The ACFDT is the **unifying framework**.  The
 > *full* ACFDT is exact; RPA and MP2 are the two simplest
 > approximations to it.
 
@@ -1575,11 +1575,11 @@ is a different *approximation* to the same integral:
   by a model that depends only on $\rho$ and its derivatives (and the
   KS kinetic-energy density $\tau$).  This is an approximation to the
   *integran`d*`.
-- **Hybri`d*`*: add a fraction of the $\lambda = 0$ value $\langle \Psi_0 | \hat V_{ee} | \Psi_0 \rangle$,
+- **Hybrid**: add a fraction of the $\lambda = 0$ value $\langle \Psi_0 | \hat V_{ee} | \Psi_0 \rangle$,
   which is the **exact exchange** $E_x^\text{exact} = \langle \Psi_0 | \hat V_{ee} | \Psi_0 \rangle - J[\rho]$
   of \eqref{eq:ch-04-9-exact-exchange}.  The fraction is the mixing
   parameter $a$.
-- **Double hybri`d*`*: also add the MP2-like second-order piece
+- **Double hybrid**: also add the MP2-like second-order piece
   \eqref{eq:ch-04-9-mp2-two-electron} of the $\lambda$-expansion.
 - **RPA**: use the uniform-gas pair density $\bar n_2$ directly, with
   the Lindhard response function in
@@ -1590,7 +1590,7 @@ is a different *approximation* to the same integral:
   calculation done with quantum-chemical methods and never appears in
   production DFT.
 
-The ACFDT is therefore the **conceptual hu`b*`* of the chapter: every
+The ACFDT is therefore the **conceptual hub** of the chapter: every
 approximation in chapter 05 is a way to *shortcut* the ACFDT integral.
 The ladder of approximations is a *ladder of approximations to the
 ISI*, not a ladder of approximations to the *energy.
@@ -2056,7 +2056,7 @@ The GL perturbation theory is the **unifying language** of the
   \eqref{eq:ch-04-9-exact-exchange}.  The hybrid is a GL perturbation
   theory in which the *integran`d*` of the ACFDT is approximated, not
   the XC energy density directly.
-- **Range-separated hybri`d*`*: separate the ACFDT integrand into a
+- **Range-separated hybrid**: separate the ACFDT integrand into a
   short-range DFT piece and a long-range exact-exchange piece.  This
   is a *decomposition* of the ACFDT, not a new GL order.
 - **Double hybri`d**: add the first-order* correlation correction to
@@ -2195,7 +2195,7 @@ expansion**).  Substituting back,
 \end{equation}
 
 The four terms are, in order: the non-relativistic Hamiltonian;
-the **kinetic relativisti`c*`* correction (which is a scalar, and
+the **kinetic relativistic** correction (which is a scalar, and
 therefore acts on both spin-up and spin-down electrons equally);
 the **Darwin** term (which smears the electron over a region of
 size the Compton wavelength $\hbar/mc$ and partially removes the
@@ -2216,7 +2216,7 @@ Writing the spin–orbit coupling more explicitly,
 \end{equation}
 
 where $\hat{\mathbf S} = (\hbar/2) \boldsymbol\sigma$ and
-$\xi(r)$ is the **spin–orbit coupling strengt`h*`*.  For a hydrogenic
+$\xi(r)$ is the **spin–orbit coupling strength**.  For a hydrogenic
 $1s$ orbital, $\xi \sim Z^4 \alpha^2$ in atomic units — the strong
 $Z$-dependence that makes the spin–orbit term negligible for H and
 dominant for Au.
@@ -2228,7 +2228,7 @@ terms of \eqref{eq:ch-04-pauli-hamiltonian} and discards the
 spin–orbit term.  This is a 1-component, spin-independent theory —
 the orbitals are still 2-component Pauli spinors, but the spin-up
 and spin-down are degenerate.  The SR approximation captures the
-**kinemati`c*`* relativistic effects (the contraction of $s$ orbitals
+**kinematic** relativistic effects (the contraction of $s$ orbitals
 and the expansion of $d$ and $f$ orbitals near the nucleus) without
 the complication of the spin degree of freedom.
 
@@ -2310,7 +2310,7 @@ to the chemical-bond energy.
 
 A common compromise is the **2-component (or scalar +
 spin–orbit) relativisti`c*`* method, in which the Dirac Hamiltonian
-is **block-diagonalise`d*`* by a unitary transformation (the
+is **block-diagonalised** by a unitary transformation (the
 **Douglas–Kroll–Hess (DKH)** transformation, or the
 **exact-2-component (X2C)** method, or the **zeroth-order regular
 approximation (ZORA)**) and only the positive-energy block is
@@ -2786,7 +2786,7 @@ is a one-electron integral, $(\mu\nu|\rho\sigma)$ the two-electron
 integral, and $V_{nn}$ the nuclear–nuclear repulsion.  The
 self-consistent solution $\mathbf C^*(\mathbf R)$ is determined by
 the KS equation
-$F_{\mu\nu}(\mathbf C^*; \mathbf R) C_{\nu i}^* = \varepsilon_i S_{\mu\nu} C_{\nu i}^$
+$F_{\mu\nu}(\mathbf C^*; \mathbf R) C_{\nu i}^* = \varepsilon_i S_{\mu\nu} C_{\nu i}^*$
 with the orthonormality constraint $C_{\mu i}^* S_{\mu\nu} C_{\nu j}^* = \delta_{ij}$.
 
 **Step 2 — total derivative.**  The chain rule gives
@@ -3233,7 +3233,7 @@ chemistry.
 
 > **Note.**  The non-degeneracy assumption is essential.
 > The generalisation to degenerate ground states is the
-> **Levy–Lieb constrained-searc`h*`* formulation
+> **Levy–Lieb constrained-search** formulation
 > ([Levy, 1979]; [Lieb, 1983]).
 
 **Theorem 2 (variational principle), HK 1964, p. B866.**  This

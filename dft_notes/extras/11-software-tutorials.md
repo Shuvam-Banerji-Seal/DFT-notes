@@ -265,7 +265,7 @@ context below.
 ### 1.4 Convergence tests
 
 VASP calculations are converged in three independent
-parameters: the **plane-wave cutof`f*`* `ENCUT`, the **k-point
+parameters: the **plane-wave cutoff** `ENCUT`, the **k-point
 mes`h*`* (`KPOINTS`), and the **electronic smearing**
 (`ISMEAR` / `SIGMA`). The first two must be converged
 *simultaneously* because the converged cutoff depends weakly
@@ -834,7 +834,7 @@ Run:
 mpirun -n 4 ph.x -in si.ph.Gamma.in > si.ph.Gamma.out
 ```
 
-**Step 3 — DFPT on a 2×2×2 q-mes`h*`* (`si.ph.qmesh.in`):
+**Step 3 — DFPT on a 2×2×2 q-mesh** (`si.ph.qmesh.in`):
 
 ```fortran
 &INPUTPH
@@ -1009,7 +1009,7 @@ ORCA is a Gaussian-basis code, so the convergence tests
 are different from the plane-wave codes above. The two
 main convergence parameters are the **basis set size**
 (`def2-SVP` → `def2-TZVP` → `def2-QZVP`) and the
-**numerical integration gri`d*`* (`GridX` where X is 1–9).
+**numerical integration grid** (`GridX` where X is 1–9).
 For most methods, the default grid is fine, but for
 geometry optimisation and properties the convergence
 should be checked.
@@ -1355,9 +1355,9 @@ geometry is in the output of the script.
 ### 4.4 Convergence tests
 
 GPAW's convergence is structured around three
-parameters: the **plane-wave cutof`f*`* (in PW mode), the
+parameters: the **plane-wave cutoff** (in PW mode), the
 **real-space grid spacing** (in FD mode), and the
-**k-point mes`h*`* (for periodic systems). The
+**k-point mesh** (for periodic systems). The
 convergence recipes:
 
 1. **Plane-wave cutoff (PW mode).** Sweep from 300 eV
@@ -1368,9 +1368,9 @@ convergence recipes:
    transition-metal oxide with the `0.9.x` PAW data, the
    converged cutoff is 400–600 eV.
 
-2. **Real-space grid spacing (FD mode).** Sweep `h`
+2. **Real-space grid spacing (FD mode).** Sweep h*
    from 0.25 Å to 0.10 Å in steps of 0.025 Å. The
-   energy converges *exponentially* in `h` (the
+   energy converges *exponentially* in h* (the
    multi-grid solver is exact in the limit of `h = 0`),
    so the convergence is much faster than for the
    plane-wave cutoff. The default `h = 0.2` Å is fine
@@ -1685,8 +1685,8 @@ pseudopotential.)
 
 CP2K's convergence is structured around three
 parameters: the **Gaussian basis set**, the
-**plane-wave cutof`f*`* (`CUTOFF` in `&MGRID`), and the
-**relative cutof`f*`* (`REL_CUTOFF` in `&MGRID`). The
+**plane-wave cutoff** (`CUTOFF` in `&MGRID`), and the
+**relative cutoff** (`REL_CUTOFF` in `&MGRID`). The
 convergence recipes:
 
 1. **Gaussian basis set.** The MOLOPT family is the

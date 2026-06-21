@@ -626,7 +626,7 @@ spheres. The total energy splits into a smooth part
 within the chosen partial-wave basis. PAW is exact in the
 all-electron limit (no frozen-core approximation) and admits
 the same smooth-wavefunction speed-ups as USPP. The 1994
-paper also introduces the **Blöchl tetrahedron metho`d*`* for
+paper also introduces the **Blöchl tetrahedron method** for
 Brillouin-zone integration, an $\mathcal O((\Delta k)^2)$
 improvement over the standard Monkhorst–Pack Riemann sum.
 PAW is the default in VASP and GPAW for high-accuracy
@@ -820,7 +820,7 @@ formalism.
 
 Andersen's LMTO method is the third foundational band-structure
 technique. The key insight is that the energy dependence of
-the muffin-tin orbitals can be **linearise`d*`* about a fixed
+the muffin-tin orbitals can be **linearised** about a fixed
 reference energy, and the resulting linear combinations form
 an efficient, near-orthogonal basis that is minimal in size
 (typically 9 orbitals per atom: one $s$, three $p$, five $d$).

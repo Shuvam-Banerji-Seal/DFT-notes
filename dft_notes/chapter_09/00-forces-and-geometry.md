@@ -110,7 +110,7 @@ centres move with the nuclei.  In a **plane-wave basis** the basis
 functions are *independent* of the nuclear coordinates, so
 $\partial\chi_\mu/\partial\mathbf R_I = 0$ and \eqref{eq:ch-09-pulay}
 collapses to zero ([§9.4](#94-forces-in-a-plane-wave-basis-complete-basis--only-the-external-potential-term-contributes)).
-In an **atom-centre`d*`* basis (Gaussians, NAOs) it is the dominant
+In an **atom-centred** basis (Gaussians, NAOs) it is the dominant
 non-trivial contribution to the force evaluation
 ([§9.5](#95-forces-in-a-gaussian-basis)).
 
@@ -1167,7 +1167,7 @@ on one side and $\mathbf y^{(k)} \mathbf y^{(k)\text{T}} / b$ on
 the other.  After careful bookkeeping (the original derivation
 in Nocedal & Wright uses a Sherman–Morrison-like identity to
 combine the rank-two terms into a single rank-one update of
-$\mathbf B^{-1}$) the result is the famous **BFGS formul`a*`*
+$\mathbf B^{-1}$) the result is the famous **BFGS formula**
 
 \begin{equation}
 \label{eq:ch-09-bfgs-derived}
@@ -1255,7 +1255,7 @@ force along the step, given the current model) and the
 along the step). The curvature condition
 $y^\text{T} s > 0$ that guarantees
 $\mathbf B^{(k+1)} \succ 0$ is the requirement that the
-denominator on the *right* is positive — i.e. that the measure`d`
+denominator on the *right* is positive — i.e. that the measured*
 curvature agrees in sign with what a positive-definite model
 should predict.
 

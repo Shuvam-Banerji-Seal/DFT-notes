@@ -97,7 +97,7 @@ $p = h/\lambda$) the kilogram.  The old "Le Grand K" prototype
 cylinder, kept at the BIPM in Sèvres, was retired on 20 May
 2019. ### 1.3 Second (time)
 
-The **secon`d*`*, symbol $\text{s}$, is the SI unit of time,
+The **second**, symbol $\text{s}$, is the SI unit of time,
 defined by fixing the cesium-133 ground-state hyperfine
 transition frequency,
 
@@ -164,7 +164,7 @@ definition is no longer primary.
 
 ### 1.7 Candela (luminous intensity)
 
-The **candel`a*`*, symbol $\text{cd}$, is the SI unit of luminous
+The **candela**, symbol $\text{cd}$, is the SI unit of luminous
 intensity, defined by fixing the luminous efficacy of
 monochromatic radiation of frequency $540 \times 10^{12}$ Hz:
 
@@ -797,7 +797,7 @@ $\sim 10^{-3}\;E_h/a_0 = 5.1 \times 10^{8}\;\text{eV/m} =
 ### 6.2 Magnetic flux density
 
 The atomic unit of magnetic flux density is $\hbar/(ea_0^2)$
-(§3.11).  The most common practical unit is the **tesl`a*`*
+(§3.11).  The most common practical unit is the **tesla**
 (1 T = 1 V·s/m² = 1 kg·s⁻²·A⁻¹):
 
 \begin{equation}
@@ -830,7 +830,7 @@ $\sim 1.85$ D, NaCl $\sim 9$ D, CO $\sim 0.12$ D.
 ### 6.4 Pressure and stress (for chapter 09 on geometry optimisation)
 
 The DFT chapters (Chapter 04 §4.7.4 on the stress tensor) use
-**GP`a*`* as the unit of pressure; the atomic-unit conversion is
+**GPa** as the unit of pressure; the atomic-unit conversion is
 $1\;\text{GPa} = 3.39894 \times 10^{-5}\,E_h\,a_0^{-3}$.  Atmospheric
 pressure is $\sim 10^{-4}$ GPa; a typical diamond-indenter
 pressure is $\sim 10$ GPa; pressures at the centre of the

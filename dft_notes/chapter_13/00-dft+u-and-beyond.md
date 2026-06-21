@@ -198,9 +198,9 @@ spectral function is qualitatively different.  The
 ground state of the atom has integer $d$-occupancy;
 removing one electron from the *occupie`d*` $d$ band
 costs an energy $\sim -(\varepsilon_d + U)$ (the
-**lower Hubbard ban`d*`*), and removing it from the
+**lower Hubbard band**), and removing it from the
 *unoccupie`d*` $d$ band costs $\sim -\varepsilon_d$
-(the **upper Hubbard ban`d*`*).  The splitting between
+(the **upper Hubbard band**).  The splitting between
 the two is the **Hubbard $U$**:
 
 \begin{equation}
@@ -443,7 +443,7 @@ E_\text{dc} \;=\; \frac{U_\text{eff}}{2} \sum_{I, \sigma} \sum_m n^\sigma_{I, mm
 \end{equation}
 
 a simple quadratic form whose specific value is
-the **around-mean-fiel`d*`* (AMF) double counting.
+the **around-mean-field** (AMF) double counting.
 An alternative is the **fully-localised limit**
 (FLL) double counting, in which the reference
 configuration is the *atomi`c*` limit (integer
@@ -633,7 +633,7 @@ fitted library.
 
 The DFT+U correction is local in real space — it
 acts on the on-site atomic orbital.  The
-**range-separated hybri`d*`* is a complementary
+**range-separated hybrid** is a complementary
 correction that acts on the *non-local* Fock
 exchange but limits it to the *short range*.  The
 canonical parameterisation is HSE06 (Heyd,
@@ -2054,7 +2054,7 @@ bands, and the *intra-ban`d*` shifts are small
 ([Hybertsen and Louie, 1986, p. 5397](#),
 Fig. 3).  This is a *scissors-operator*
 behaviour: the LDA band structure is essentially
-correct in *shape*, and only the ga`p` is wrong.
+correct in *shape*, and only the gap* is wrong.
 HL86 is the *theoretical justification* of the
 scissors operator that had been used
 *empirically* in the 1980s.  The optical
@@ -2211,10 +2211,10 @@ Figs. 2–5).  The bare $G_0 W_0$ spectrum is
 *too high*` in intensity and missing the bound
 exciton* at $\sim 1.15$ eV.  The full BSE
 spectrum:
-- has the **E1 pea`k*`* at $3.4$ eV with
+- has the **E1 peak** at $3.4$ eV with
   intensity within $\sim 10\%$ of experiment
   ([Rohlfing and Louie, 2000, p. 4933](#));
-- has the **E2 pea`k*`* at $4.3$ eV in the right
+- has the **E2 peak** at $4.3$ eV in the right
   place;
 - redistributes the oscillator strength from
   the high-energy continuum to the bound
@@ -2301,7 +2301,7 @@ a complete picture.
 - **Vertex corrections.**  GW sets $\Gamma = 1$
   in the Hedin equations; BSE uses the *full*
   $\Gamma$ at the *two-particle* level but a
-  *static*`, non-vertex-correcte`d` $W$.  The
+  *static*`, non-vertex-corrected* $W$.  The
   missing piece is the $\partial W / \partial G$
   term ([Hedin, 1965, eq. (90), p. A810](#)) —
   essential for *satellite intensities* and
@@ -2506,7 +2506,7 @@ functional), but it does not have the *right*
 one [Anisimov, Zaanen, and Andersen, 1991, § II,
 last paragraph, p. 945].  The double-counting
 correction in the Anisimov–Zaanen–Andersen
-(1991) paper is the **around-mean-fiel`d*`* form,
+(1991) paper is the **around-mean-field** form,
 
 \begin{equation}
 \label{eq:ch-13-10-aza-dc}
@@ -2720,7 +2720,7 @@ The full rotationally-invariant form
 (3), p. R5468] requires *two* free parameters
 ($U$ and $J$) and a *four-index* tensor
 computation in the atomic basis.  The Dudarev
-*et al.* (1998) paper proposed a simplifie`d`
+*et al.* (1998) paper proposed a simplified*
 form with a *single* effective parameter
 [Dudarev, Botton, Savrasov, Humphreys, and Sutton,
 1998, eq. (3), p. 1506]:
@@ -3282,7 +3282,7 @@ are the *seeds* of the next 30 years of work.
   the *local* DMFT self-energy via a
   *double-counting* correction (analogous to the
   DFT+U double-counting).  The result is a
-  *non-local*, dynami`c` self-energy that
+  *non-local*, dynamic* self-energy that
   captures the *screene`d*` exchange (the $GW$
   piece) and the *local* Hubbard physics (the
   DMFT piece).  The 1996 review
@@ -3449,7 +3449,7 @@ exist) are also given for completeness.
 > readable.  The *original* Metzner–Vollhardt
 > 1989 paper is short and readable.  The
 > *Georges–Kotliar–Krauth–Rozenberg* 1996 review
-> is *long* (113 pages) and is the standar`d`
+> is *long* (113 pages) and is the standard*
 > reference for DMFT.  The reader who wants the
 > *modern* developments should look at the Kotliar
 > *et al.* 2006 review of DFT+DMFT and the
@@ -3781,7 +3781,7 @@ The choice between DFT+U and DFT+DMFT is dictated by the
   derive the BSE+DMFT equations. See
   [Rohringer et al. 2018](https://doi.org/10.1103/RevModPhys.90.025003)
   for the modern review.
-- **The maximum-entropy metho`d*`* for analytic continuation
+- **The maximum-entropy method** for analytic continuation
   of the imaginary-time data to real-frequency spectra.
   We did not derive the MEM algorithm. See
   [Jarrell & Gubernatis 1996](https://doi.org/10.1016/0370-1573(95)00074-7)

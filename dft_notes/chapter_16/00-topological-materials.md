@@ -197,7 +197,7 @@ parameter space:
 \end{equation}
 
 Equation \eqref{eq:ch-16-berry-phase} is the **Berry phase**.
-It is *gauge-invariant* and geometri`c`: it depends only
+It is *gauge-invariant* and geometric: it depends only
 on the path $\mathcal C$, not on how fast the path is
 traversed.
 
@@ -404,7 +404,7 @@ Wannier Hamiltonian.**
 
 **Wilson-loop interpretation.** Equation
 \eqref{eq:ch-16-fu-kane-2d} has an equivalent and more
-geometric form. Define the **Wilson loo`p*`* of the
+geometric form. Define the **Wilson loop** of the
 occupied subspace along $b_2$ as a function of $k_1$:
 
 \begin{equation}
@@ -969,7 +969,7 @@ C_\text{Weyl} \;=\; \frac{1}{2\pi} \oint_{S^2} \boldsymbol \Omega(\mathbf k) \cd
 \end{equation}
 
 The sign is the **chirality** of the Weyl node: $+1$ is a
-*right-handed*` Weyl fermion, $-1$ is left-hande`d`. The
+*right-handed*` Weyl fermion, $-1$ is left-handed*. The
 chirality is a property of the *Hamiltonian*, not of the
 state, and it is conserved by smooth deformations that
 preserve the gap elsewhere.
@@ -991,7 +991,7 @@ The two "textbook" Weyl semimetals are
   with chirality alternating around each group.
 - **NbAs, NbP, TaP**: same family as TaAs.
 
-The defining experimental signature is the **Fermi ar`c*`*:
+The defining experimental signature is the **Fermi arc**:
 a surface state connecting the *projections* of two bulk
 Weyl nodes of opposite chirality on the surface BZ. The
 arc is *open* (a chord, not a loop); it merges into the
@@ -1351,7 +1351,7 @@ in the projected bulk spectrum.
 
 The surface Green's function is implemented in
 **WannierTools** (for Wannier-interpolated Hamiltonians)
-and in **Z2Pac`k*`* (for tight-binding or first-principles
+and in **Z2Pack** (for tight-binding or first-principles
 Hamiltonians in the *projector* form). Z2Pack in particular
 is a general-purpose topological-invariant calculator
 (Grubić *et al.*, Phys. Rev. B **102**, 245132 (2020))
@@ -1406,7 +1406,7 @@ The end-to-end workflow of a topological-materials
 calculation starting from a DFT band structure is summarised
 below. The diagram is the practical counterpart of the
 mathematical roadmap in §16.1 — it is the recipe a code
-like *WannierTools* or Z2Pac`k` follows.
+like *WannierTools* or Z2Pack* follows.
 
 ```mermaid
 %%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
@@ -1718,7 +1718,7 @@ The Hamiltonian is $\hat H(t) = -\gamma \mathbf B(t) \cdot
    $\mathcal A(\phi) = i \langle \psi_0 | \partial_\phi
    \psi_0 \rangle$.
 3. Compute the Berry phase $\gamma = \oint \mathcal A\, d\phi$.
-4. Show that for the *excite`d*` state $|\psi_1(\phi)\rangle$
+4. Show that for the *excited* state $|\psi_1(\phi)\rangle$
    the Berry phase is $-\gamma$.
 </details>
 
@@ -1991,7 +1991,7 @@ eigenvectors are simple, and the TR operator $\Theta = i
 basis) and complex-conjugates the coefficients, we have
 
 $$
-\Theta |u_{\Lambda_a}^-\rangle \;=\; \Theta \begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \alpha^* \\\\ \beta^* \end{pmatrix} \;=\; i \begin{pmatrix} \beta^ \\\\ -\alpha^ \end{pmatrix} .
+\Theta |u_{\Lambda_a}^-\rangle \;=\; \Theta \begin{pmatrix} \alpha \\ \beta \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \alpha^* \\ \beta^* \end{pmatrix} \;=\; i \begin{pmatrix} \beta^* \\ -\alpha^* \end{pmatrix} .
 $$
 
 At the TRIM, $\alpha, \beta$ are real, so
@@ -2713,7 +2713,7 @@ and the *bulk invariant* for each family.
 | **ARPES signature** | Edge-state band crossing the bulk gap [Hasan and Kane, 2010, pp. 3051–3053] | Single Dirac cone at $\bar\Gamma$ in the bulk gap [Hasan and Kane, 2010, pp. 3055–3057] | Surface states on some surfaces only [Fu and Kane, 2006, p. 045312-7] |
 | **Material examples** | HgTe/CdTe quantum well ($d > d_c$) [Bernevig, Hughes, and Zhang, 2006, p. 1759]; InAs/GaSb quantum wells [Hasan and Kane, 2010, p. 3052] | Bi$_2$Se$_3$, Bi$_2$Te$_3$, Sb$_2$Te$_3$ [Hasan and Kane, 2010, pp. 3055–3057] | Bi$_2$Te$_2$Se under certain growth conditions [Hasan and Kane, 2010, p. 3057] |
 | **Mechanism** | Band inversion at a 2D TRIM driven by SOC [Bernevig, Hughes, and Zhang, 2006, p. 1757] | Band inversion at a 3D TRIM driven by SOC [Hasan and Kane, 2010, pp. 3053–3055] | Stacking of 2D QSH layers [Fu and Kane, 2006, p. 045312-7] |
-| **Discovere`d*`* | 2005 (theory) [Kane and Mele, 2005, p. 146802-3]; 2007 (experiment) [Bernevig, Hughes, and Zhang, 2006, p. 1759] | 2007 (theory) [Hasan and Kane, 2010, p. 3047]; 2009 (experiment) [Hasan and Kane, 2010, p. 3055] | 2007 (theory) [Hasan and Kane, 2010, p. 3047] |
+| **Discovered** | 2005 (theory) [Kane and Mele, 2005, p. 146802-3]; 2007 (experiment) [Bernevig, Hughes, and Zhang, 2006, p. 1759] | 2007 (theory) [Hasan and Kane, 2010, p. 3047]; 2009 (experiment) [Hasan and Kane, 2010, p. 3055] | 2007 (theory) [Hasan and Kane, 2010, p. 3047] |
 
 The table makes a *structural* observation: the 2D and
 3D families are *parallel*. The 2D $\mathbb Z_2$ index
