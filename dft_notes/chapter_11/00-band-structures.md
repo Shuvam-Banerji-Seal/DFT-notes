@@ -183,7 +183,7 @@ properties.
 > as a function of its crystal momentum?"  The
 > **Janak–Sham–Kohn** theorem (we will return to this in
 > [chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }})) shows
-> that the *occupation-weighte`d*` sum of KS eigenvalues is the
+> that the *occupation-weighte`d*' sum of KS eigenvalues is the
 > derivative of the total energy with respect to particle number:
 > $dE / dN_e = \varepsilon_F$.  This is the formal sense in which
 > the band structure is "the" spectrum of the solid.
@@ -480,7 +480,7 @@ The Gaussian is positive and normalised, so the resulting $g(E)$ is
 also positive and normalised; the width $\sigma$ controls the
 tradeoff between noise (small $\sigma$) and over-smoothing (large
 $\sigma$).  The DOS converges to the true DOS as $\sigma \to 0$
-*an`d*` $N_\mathbf k \to \infty$; in practice one picks $\sigma$
+*an`d*' $N_\mathbf k \to \infty$; in practice one picks $\sigma$
 slightly larger than the natural energy resolution of the mesh
 ($\sigma \sim \Delta\varepsilon$, where $\Delta\varepsilon$ is the
 mean spacing of eigenvalues near $E$).
@@ -499,7 +499,7 @@ behaviour of the total energy at small $\sigma$:
 The $l = 0$ term is the Gaussian.  The coefficients $A_l$ are
 chosen so that the integral of $\delta_\sigma^\text{MP}$ over a
 band-pass $[-\infty, E]$ reproduces the step function to order
-$\sigma^{2N_\text{MP}$: the *systemati`c*` error in the total energy
+$\sigma^{2N_\text{MP}$: the *systemati`c*' error in the total energy
 falls as $\sigma^2$ for $N_\text{MP} = 0$ (Gaussian), $\sigma^4$
 for $N_\text{MP} = 1$, $\sigma^6$ for $N_\text{MP} = 2$, and so on.
 The MP smearing is the standard for high-throughput DFT: the total
@@ -554,7 +554,7 @@ k-points needed).
 
 The DOS of \eqref{eq:ch-11-dos} sums over *all* bands with equal
 weight.  Often we want to know how much of a particular band has
-the character of a particular *atomi`c*` orbital.  The **projected
+the character of a particular *atomi`c*' orbital.  The **projected
 DOS** (pDOS) onto an atomic orbital $\chi_\mu^{(a)}$ (atomic index
 $a$, orbital index $\mu$) is
 
@@ -632,7 +632,7 @@ by the squared expansion coefficients.
 
 ### 11.3.6 Diagram — DOS, projected DOS, and Fermi surface
 
-The DOS $g(E)$, the *projecte`d*` DOS $g_{a,\ell}(E)$ on each
+The DOS $g(E)$, the *projecte`d*' DOS $g_{a,\ell}(E)$ on each
 atomic orbital $(a, \ell)$, and the *Fermi surface* (the
 $E = \varepsilon_F$ level set of $\varepsilon_{n\mathbf k}$) are
 three different *compressions* of the same band structure
@@ -683,7 +683,7 @@ graph LR
 
 The three central compressions (`DOS`, `PDOS`, `FS`) are all
 *linear* in the band energies and eigenvectors — they do not
-require a new SCF. They differ in *what is summe`d*` over:
+require a new SCF. They differ in *what is summe`d*' over:
 the DOS sums over $\mathbf k$ and $n$ (and bins by energy), the
 PDOS adds a *weight* $|P_n^{a,\ell}|^2$ (the projection of
 band $n$ on orbital $(a,\ell)$) before binning, and the Fermi
@@ -932,7 +932,7 @@ goes around the Dirac point.
 > the honeycomb BZ) and are *not* protected by time-reversal
 > symmetry: they can be gapped by the Haldane mass term, which
 > preserves inversion but breaks time reversal.  A topological
-> surface state has an *od`d*` number of cones at a time-reversal-
+> surface state has an *od`d*' number of cones at a time-reversal-
 > invariant momentum and *cannot* be gapped without breaking
 > time-reversal symmetry.  The distinction is encoded in the
 > $\mathbb Z_2$ topological invariant, which we will not derive
@@ -1011,7 +1011,7 @@ momentum) pair.  The standard reading is:
   level — a hallmark of correlated $d$ or $f$ electron systems.
 
 > **Tip.**  When the pDOS has more than a few curves, the plot gets
-> crowded.  A common convention is to plot the curves *stacke`d*`
+> crowded.  A common convention is to plot the curves *stacke`d*'
 > (each $(a, \ell)$ contribution is offset vertically) with the
 > total DOS overlaid as a heavy line.  This keeps the character
 > information visible without losing the absolute scale.
@@ -1091,7 +1091,7 @@ $T_0 = \sum \varepsilon_i$, $T_2 = \sum k_i^2 \varepsilon_i$:
 \varepsilon_0 \;=\; \frac{S_4 T_0 - S_2 T_2}{S_0 S_4 - S_2^2} .
 \end{equation}
 
-The fit is accurate as long as the band is *paraboli`c*` to a good
+The fit is accurate as long as the band is *paraboli`c*' to a good
 approximation in the fitting window.  In a small enough window
 (typically $\pm 0.1$ eV around the extremum) the fit is good; in a
 larger window the higher-order terms in the Taylor expansion of
@@ -1124,7 +1124,7 @@ by a single component and the other two are much smaller.
 
 The parabolic fit gives the *band-edge* effective mass.  A related
 quantity is the **density-of-states effective mass** $m^*_\text{DOS}$,
-defined by the requirement that the *parabolic-ban`d*` DOS at the
+defined by the requirement that the *parabolic-ban`d*' DOS at the
 extremum matches the true DOS:
 
 \begin{equation}
@@ -1162,7 +1162,7 @@ The flow below shows the three-step procedure: pick a
 high-symmetry point where a band has an extremum; sample
 $\varepsilon_{n\mathbf k}$ on a fine $\mathbf k$-mesh around it;
 fit a quadratic form in $(k - k_0)$; read off the inverse-mass
-tensor. The diagram makes explicit that the *anisotropi`c*`
+tensor. The diagram makes explicit that the *anisotropi`c*'
 effective mass (a tensor, sec. 11.7.2) and the *DOS* effective
 mass (a scalar, sec. 11.7.3) are different reductions of the
 same curvature tensor.
@@ -1255,7 +1255,7 @@ following features:
   semiconductors: $\Delta_\text{SO} \approx 0.3$ eV in Ge, $\sim
   0.8$ eV in GaAs).
 - **Conduction band.**  The conduction-band minimum near $X$ is
-  sixfold-degenerate in the *unfolde`d*` BZ (six equivalent
+  sixfold-degenerate in the *unfolde`d*' BZ (six equivalent
   $\Delta_\text{min}$ minima along the six $\Delta$ lines); in the
   *primitive* BZ it appears as a single minimum on the $\Delta$
   line with a small effective mass along $\Delta$ and a large
@@ -1309,8 +1309,8 @@ The Dirac cone of graphene is *not* a topological-insulator surface
 state.  Graphene's cones come in *pairs* (at the two inequivalent
 $K$ and $K'$ points), and the cones can be gapped out by a
 Haldane mass term that breaks time-reversal symmetry.  A
-topological-insulator surface state has an *od`d*` number of cones
-at a time-reversal-invariant momentum and is *protecte`d*` by
+topological-insulator surface state has an *od`d*' number of cones
+at a time-reversal-invariant momentum and is *protecte`d*' by
 time-reversal symmetry.  The distinction is encoded in the
 $\mathbb Z_2$ topological invariant.
 
@@ -2031,7 +2031,7 @@ $$
 \varepsilon_{n\mathbf k} - \varepsilon_0 \;=\; \sum_i \frac{\hbar^2 q_i^2}{2 m_i} .
 $$
 
-This is the dispersion of a free particle with *anisotropi`c*` mass:
+This is the dispersion of a free particle with *anisotropi`c*' mass:
 the energy depends on $q_x, q_y, q_z$ separately, with effective
 masses $m_1, m_2, m_3$ along the three principal axes.  The
 isotropic case $m_1 = m_2 = m_3 = m^*$ gives the familiar
@@ -2325,7 +2325,7 @@ spin–orbit effects.  A non-exhaustive list of the topics we have
   $\mathbb Z_2$/$\mathbb Z$/$\mathbb Z$ classification scheme for
   gapped and gapless band structures.
 - **Anomalous Hall conductivity and the orbital magnetisation.**
-  The integral of the Berry curvature over the *occupie`d*` bands
+  The integral of the Berry curvature over the *occupie`d*' bands
   gives the **intrinsic anomalous Hall conductivity** of a
   magnetic metal; the integral of the orbital magnetic moment of
   the occupied Bloch states gives the **orbital magnetisation**.

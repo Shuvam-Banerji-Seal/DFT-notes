@@ -31,7 +31,7 @@ keywords: "machine learning, neural network potentials, Behler-
 
 The Kohn–Sham equations of [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) are exact in principle but expensive in practice.  The diagonalisation of the Kohn–Sham Hamiltonian scales as $\mathcal O(N^3)$ in the number of basis functions, which is the cubic-scaling wall that limits *ab-initio* molecular dynamics (AIMD) to a few hundred picoseconds on a few hundred atoms.  The first three chapters of these notes explained the physics and the numerics of Kohn–Sham DFT; [chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }}) explained the corrections (DFT+U, hybrids, $GW$, DMFT) that fix the systemati`c failures of the local and semi-local functionals; this chapter is about a *different kind of fix — replacing the DFT energy-and-forces calculator, for systems where the standard Kohn–Sham loop is too expensive, with a *machine-learned surrogate that is trained once on a representative set of DFT calculations and then evaluated at near-classical-MD cost for every subsequent configuration.
 
-The four ideas that make ML-for-DFT work in 2025 are: (1) **atomic descriptors** that respect the symmetries of the problem (rotation, translation, permutation of identical atoms); (2) **graph neural networks** that operate on the *neighbourhoo`d*` of every atom; (3) **equivariance** — the recognition that the network's outputs (energy, forces, stress) must transform *correctly* under the symmetry group of 3-D space, $\text{E}(3)$; and (4) **active learning** — the iterative loop that picks the *next* DFT calculation to add to the training set, without leaving the model's region of competence.  We treat all four, in the order of their appearance in a working MLIP (machine-learned interatomic potential) workflow, plus a section on $\Delta$-learning (a small, low-risk way to add ML to an existing DFT pipeline), a section on ML for the Hamiltonian and the wavefunction (a more ambitious replacement of the KS inner loop), a section on ML exchange–correlation functionals (the most ambitious replacement of them all — the functional itself), and two worked examples.
+The four ideas that make ML-for-DFT work in 2025 are: (1) **atomic descriptors** that respect the symmetries of the problem (rotation, translation, permutation of identical atoms); (2) **graph neural networks** that operate on the *neighbourhoo`d*' of every atom; (3) **equivariance** — the recognition that the network's outputs (energy, forces, stress) must transform *correctly* under the symmetry group of 3-D space, $\text{E}(3)$; and (4) **active learning** — the iterative loop that picks the *next* DFT calculation to add to the training set, without leaving the model's region of competence.  We treat all four, in the order of their appearance in a working MLIP (machine-learned interatomic potential) workflow, plus a section on $\Delta$-learning (a small, low-risk way to add ML to an existing DFT pipeline), a section on ML for the Hamiltonian and the wavefunction (a more ambitious replacement of the KS inner loop), a section on ML exchange–correlation functionals (the most ambitious replacement of them all — the functional itself), and two worked examples.
 
 > **Reading note.**  This chapter assumes
 > [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) (Kohn–Sham DFT) and
@@ -151,12 +151,12 @@ are the *cost*; the MLIP rows are the price the
 calculator pays in training time (typically 1–4 weeks on
 a single H100) for a $\sim\! 10^4\times$ inference
 speedup.  The accuracies quoted for the DFT rows are
-*systemati`c*` errors on a standard benchmark; the
+*systemati`c*' errors on a standard benchmark; the
 accuracies quoted for the MLIP rows are *transfer*
 errors from the underlying DFT (the MLIP can never be
 more accurate than the data it was trained on).  The
 last row — fairchem-UMA — is the 2024 foundation model
-of Meta FAIR-Chem, trained on a *mixe`d*` PBE/r$^2$SCAN
+of Meta FAIR-Chem, trained on a *mixe`d*' PBE/r$^2$SCAN
 dataset of $\sim\! 100$ million configurations.
 
 The reader who wants a quick summary of the *methods*
@@ -272,7 +272,7 @@ accuracy of the MLIP.  If the underlying DFT is wrong
 by 150 meV/atom, the MLIP can be no better than 150
 meV/atom on average — it can match the DFT, and it
 might even *overfit* and be slightly worse.  The
-*systemati`c*` errors of the standard XC functionals
+*systemati`c*' errors of the standard XC functionals
 on the standard benchmarks are well-characterised:
 
 - **Formation energies of solids.**  The PBE
@@ -282,7 +282,7 @@ on the standard benchmarks are well-characterised:
   the r$^2$SCAN meta-GGA reduces this to $\sim\! 35$
   meV/atom; the $\omega$B97M-D3 range-separated
   hybrid further reduces it to $\sim\! 15$ meV/atom;
-  the *gold standard*` is the hybrid* DFT plus a
+  the *gold standard*' is the hybrid* DFT plus a
   many-body correction (e.g. $\omega$B97M-D3 + $G_0W_0$
   on a subset), at $\sim\! 5$ meV/atom for the
   benchmark.
@@ -424,7 +424,7 @@ introduced in 2007 by Jörg Behler and Michele Parrinello
 in their foundational paper on neural-network potentials
 ([Behler & Parrinello, *Phys. Rev. Lett.* **98**, 146401
 (2007)]({{ "/dft-notes/extras/bibliography/" | relative_url }})).  The
-idea is to construct a *hand-crafte`d*` set of
+idea is to construct a *hand-crafte`d*' set of
 *invariant* features of the atomic neighbourhood.  The
 features come in two families: the *radial* $G_i^1$ and
 $G_i^2$ functions, which depend on the distances
@@ -449,7 +449,7 @@ eq i} e^{-\eta r_{ij}^2} \cdot f_c(r_{ij}) .
 
 > **The hand-crafted limitation.**  The BP
 > hyperparameters $(\eta, r_s, \zeta, \lambda)$ are
-> user-picked and *system-specifi`c*` (water vs. metal
+> user-picked and *system-specifi`c*' (water vs. metal
 > vs. oxide).  This limits *transferability*; the
 > ACE basis of § 17.3.4 fixes it.
 
@@ -458,7 +458,7 @@ eq i} e^{-\eta r_{ij}^2} \cdot f_c(r_{ij}) .
 The **Smooth Overlap of Atomic Positions (SOAP)**
 descriptor of Bartók, Payne, Risi and Csányi
 ([2010, *Phys. Rev. Lett.* **104**, 136403]({{ "/dft-notes/extras/bibliography/" | relative_url }}))
-takes a *systemati`c*` approach.  The starting point
+takes a *systemati`c*' approach.  The starting point
 is the **atomic density** centred on atom $i$:
 
 \begin{equation}
@@ -468,9 +468,9 @@ is the **atomic density** centred on atom $i$:
 
 a sum of Gaussians of width $\sigma$ centred on the
 neighbours of atom $i$ (with a cutoff $f_c$).  The
-density $\rho_i$ is a *smoot`h*` function of the atomic
+density $\rho_i$ is a *smoot`h*' function of the atomic
 positions; it encodes the local geometry.  The SOAP
-descriptor is the *overla`p*` of $\rho_i$ with itself,
+descriptor is the *overla`p*' of $\rho_i$ with itself,
 *integrated over all rotations*:
 
 \begin{equation}
@@ -487,7 +487,7 @@ have $k_i = 1$; two local geometries that differ in
 shape have $k_i < 1$.  The kernel is a *similarity
 measure* for atomic environments.
 
-The kernel is *expande`d*` in a basis of products of
+The kernel is *expande`d*' in a basis of products of
 spherical harmonics.  The atomic density is expanded
 in spherical harmonics centred on atom $i$:
 
@@ -518,7 +518,7 @@ The power spectrum is a *finite* set of numbers
 indexed by $(n, n', \ell)$ — typically $\sim\! 100$–
 $1000$ coefficients.  The vector
 $\mathbf p^{(i)} = (p_{n n' \ell}^{(i)})$ is the
-SOAP descriptor.  The descriptor is a *systemati`c*`
+SOAP descriptor.  The descriptor is a *systemati`c*'
 basis: the coefficients $p_{n n' \ell}^{(i)}$ for
 $\ell = 0, 1, 2, \ldots, \ell_\text{max}$ form a
 hierarchical basis, and the basis is *complete* as
@@ -543,7 +543,7 @@ $w_\alpha$ fitted by regularised least-squares
 (§ 17.3.4 also discusses the kernel-machine
 view).  The vector $\mathbf p^{(i)} = (p_{n n'
 \ell}^{(i)})$ is the **SOAP descriptor**; it is
-the *systemati`c*` basis: the coefficients
+the *systemati`c*' basis: the coefficients
 $p_{n n' \ell}^{(i)}$ for $\ell = 0, 1, 2,
 \ldots, \ell_\text{max}$ form a hierarchical
 basis, complete as $\ell_\text{max} \to \infty$.
@@ -565,7 +565,7 @@ periodic functions.  The ACE basis is:
 
 The basis functions are labelled by a *body order*
 $n$ (the number of neighbours involved) and a
-*ran`k*` $(\ell_1, \ldots, \ell_n)$ (the angular
+*ran`k*' $(\ell_1, \ldots, \ell_n)$ (the angular
 momenta of the spherical harmonics).  The radial
 functions $R^{(k)}(r)$ are a basis in distance
 (typically a polynomial in $r$ on $[0, r_c]$).  The
@@ -576,7 +576,7 @@ The total atomic energy is a *linear* combination
 of the ACE basis \eqref{eq:ch-17-ace-energy}, with
 linear coefficients $\epsilon$.  The *linear*
 structure is what makes ACE different from a neural
-network: the descriptor is *systemati`c*` and the
+network: the descriptor is *systemati`c*' and the
 model is *linear* in the coefficients; the
 non-linearity is in the *basis*, not in the model.
 
@@ -642,7 +642,7 @@ computed by the *Parrinello–Rahman* or
 *Langevin* barostat of a standard MD code.
 
 > **The 2017 moment.**  The 2017 SchNet and MPNN
-> papers introduced the *grap`h*` view and
+> papers introduced the *grap`h*' view and
 > *message passing* paradigm.  SchNet/MPNN were
 > *overtaken* by the equivariant networks of
 > 2021–2022 (NequIP, Allegro, MACE); the BEP is
@@ -650,7 +650,7 @@ computed by the *Parrinello–Rahman* or
 
 ### 17.4.2 Training data and active learning
 
-The *training data*` is the only place where the
+The *training data*' is the only place where the
 *physics* enters the MLIP.  The model is a
 function approximator; the data is the *trut`h*`.  A
 good training set must:
@@ -670,7 +670,7 @@ good training set must:
     *first few shells* of neighbours.
 2. **Sample the energy landscape** uniformly.
     A training set dominated by low-energy
-    configurations will give a *biase`d*` model
+    configurations will give a *biase`d*' model
     that fails on high-energy configurations
     (transition states, surfaces, defects).  A
     *uniform sampling* of the energy landscape
@@ -679,7 +679,7 @@ good training set must:
     energies.  A model trained on energies
     *alone* has an $\mathcal O(\sqrt{N})$
     effective sample size; a model trained on
-    energies *an`d*` forces has an $\mathcal
+    energies *an`d*' forces has an $\mathcal
     O(N)$ effective sample size, because the
     force on each atom is a *new* data point.
     The rule of thumb is that the force
@@ -715,7 +715,7 @@ exceeds a threshold.
 ### 17.4.3 The loss function
 
 The **loss function** is the *objective* that
-the training minimises.  For a *stati`c*` MLIP
+the training minimises.  For a *stati`c*' MLIP
 (no forces, no stress), the loss is the
 mean-squared error of the energies:
 
@@ -771,7 +771,7 @@ with the *lowest* validation error.
 > right balance for an MD-quality MLIP is
 > $\lambda_F / \lambda_E \sim 10$–$100$.
 > A model trained with $\lambda_F = 0$
-> (energies only) has *smoot`h*` energies
+> (energies only) has *smoot`h*' energies
 > but inaccurate forces; a model trained
 > with $\lambda_E = 0$ (forces only) has
 > *no* meaningful total energy.  MACE and
@@ -792,7 +792,7 @@ descriptor that misses some configurations is
 *size* of the training set; $\sim\! 10^4$–$10^5$
 parameters for $\sim\! 10^4$–$10^5$ configurations);
 (3) **the data's diversity** (a *narrow* training
-set is *blin`d*` to OOD configurations; the fix
+set is *blin`d*' to OOD configurations; the fix
 is *diversification* by brute force or by
 *active learning*);
 (4) **the OOD problem** — the *defining*
@@ -929,7 +929,7 @@ The **layer structure** of NequIP is:
 
 The NequIP architecture is the *de facto*
 equivariant network in 2022–2023. The
-*training dat`a*` is $\sim\! 10^3$–$10^4$
+*training dat`a*' is $\sim\! 10^3$–$10^4$
 configurations; the *training time* is
 $\sim\! 1$–$7$ days on a single H100 GPU.  The
 *inference cost* is $\sim\! 10$–$100$ ms per
@@ -945,7 +945,7 @@ is the *higher-order* generalisation of NequIP.
 The message function *includes* the
 higher-body-order terms of the ACE basis
 (§ 17.3.4): in NequIP, the messages are two-body;
-in MACE, the messages are two-body *an`d*`
+in MACE, the messages are two-body *an`d*'
 three-body (a *triple* of atoms).  The MACE
 *layer structure* is: (1) edge features as in
 NequIP; (2) two-body messages
@@ -953,7 +953,7 @@ $\mathbf m_{ij}^{(2)} = f_\text{msg}^{(2)}(
 \mathbf h_i, \mathbf c_{ij})$; (3) three-body
 messages $\mathbf m_{ijk}^{(3)} = f_\text{msg}
 ^{(3)}(\mathbf h_i, \mathbf c_{ij}, \mathbf
-c_{ik})$, *symmetrise`d*` over $j$ and $k$;
+c_{ik})$, *symmetrise`d*' over $j$ and $k$;
 (4) aggregation; (5) readout: the $\ell = 0$
 part of the *product* of the aggregated messages
 is the atomic energy.
@@ -1025,7 +1025,7 @@ vs. $\sim\! 9$ meV/atom in-domain); (2)
 covers $\sim\! 89$ elements; Tc, Pm, the heavy
 actinides are *out of support*); (3) **force
 accuracy limits the dynamics** (the universal
-MLIPs are *traine`d*` for near-equilibrium
+MLIPs are *traine`d*' for near-equilibrium
 configurations; transition states and surfaces
 under large strain have *larger* force errors);
 (4) **calibration to the application's functional**
@@ -1071,7 +1071,7 @@ E_\text{expensive}^\text{DFT}(R) \;\approx\; E_\text{cheap}^\text{DFT}(R) \;+\; 
 \end{equation}
 
 where $E_\text{cheap}^\text{DFT}(R)$ is the
-*chea`p*` DFT calculation (e.g. PBE), $\Delta
+*chea`p*' DFT calculation (e.g. PBE), $\Delta
 E_\text{ML}(R)$ is the ML correction, and
 $E_\text{expensive}^\text{DFT}(R)$ is the
 *expensive* DFT calculation (e.g. r$^2$SCAN or
@@ -1081,7 +1081,7 @@ correction is a smooth function of the local
 geometry, well-captured by a small ML model.
 
 The training set for the $\Delta$-ML model is a
-set of compounds for which *bot`h*` the cheap and
+set of compounds for which *bot`h*' the cheap and
 the expensive DFT calculations are available.
 The label is the *difference* $\Delta E =
 E_\text{expensive} - E_\text{cheap}$.  The
@@ -1173,7 +1173,7 @@ $\sim\! 30$ meV/atom, at the cost of a PBE
 calculation per compound.  A $\sim\! 50$
 meV/atom error can move a compound from
 *stable* to unstable; the $\Delta$-ML MP is
-the *standar`d*` reference for stability
+the *standar`d*' reference for stability
 predictions in 2025. ### 17.6.3 $\Delta$-ML for band gaps
 
 The **band gap** is a more delicate target.  PBE
@@ -1190,7 +1190,7 @@ PBE $\to$ HSE06 correction is *not* a smooth
 function of the local geometry; it is sensitive
 to the *dielectric screening*, which depends on
 the *non-local* electronic structure.  The 2024
-*dee`p*` $\Delta$-ML approach of
+*dee`p*' $\Delta$-ML approach of
 [Materese et al., *Nat. Commun.* **14**, 5988
 (2023)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 uses a *transformer* on the atomic structure
@@ -1206,7 +1206,7 @@ of application-specific DFT calculations.
 ## 17.7 ML for the Hamiltonian and the wavefunction
 
 The most ambitious use of ML for DFT is to
-*replace the Kohn–Sham inner loo`p*` with an ML
+*replace the Kohn–Sham inner loo`p*' with an ML
 model that predicts the *Hamiltonian* (or the
 *wavefunction*, or the density matrix)
 directly from the atomic structure.  The
@@ -1231,7 +1231,7 @@ features* are the matrix elements of the
 tight-binding Hamiltonian (the hopping
 integrals and the on-site energies) and the
 *node features* are the atomic descriptors.
-The training labels are the *DFT-calculate`d*`
+The training labels are the *DFT-calculate`d*'
 tight-binding Hamiltonians, obtained by
 Wannier-interpolating the Kohn–Sham
 Hamiltonian.  The workflow is: run DFT on
@@ -1251,7 +1251,7 @@ training distribution.  The **HamGNN**
 (Hamiltonian Graph Neural Network) of
 [Zhong et al., *Nat. Commun.* **14**, 8283
 (2023)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
-is a *physics-informe`d*` variant of DeepH
+is a *physics-informe`d*' variant of DeepH
 (constrained to satisfy the *symmetries* of
 the tight-binding Hamiltonian — Hermiticity,
 time-reversal, spatial symmetries); MAE on
@@ -1278,7 +1278,7 @@ atomic-orbital basis, and the **OrbNet** of
 is a *transformer* that predicts the
 *occupied molecular orbitals* directly.  The
 *advantage* is that the predicted* Hamiltonian
-or wavefunction can be *used*` in a standard*
+or wavefunction can be *used*' in a standard*
 post-processing pipeline (band structure,
 density of states, optical spectrum, $GW$ on
 top of the ML orbitals).  The *disadvantage* is
@@ -1322,13 +1322,13 @@ The most ambitious use of ML for DFT is to
 *replace the XC functional* with an ML
 model.  The *promise* is a systematic*
 improvement over the human-designed Jacob's
-ladder: the ML functional can be *traine`d*`
+ladder: the ML functional can be *traine`d*'
 on a *representative* set of systems, with
 a *loss function* that explicitly minimises
 the *target* error.  The challenge is the
 *generalisation* problem: a functional that
-is *traine`d*` on a finite set of systems is
-*biase`d*` towards the training set, and the
+is *traine`d*' on a finite set of systems is
+*biase`d*' towards the training set, and the
 *transferability* to new systems is
 *unreliable*.
 
@@ -1337,14 +1337,14 @@ is *traine`d*` on a finite set of systems is
 The **NeuralXC** architecture of [Dick &
 Fernandez-Serra, *Phys. Rev. B* **104**, L161112
 (2021)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
-is a *neural-network-base`d*` XC functional that
+is a *neural-network-base`d*' XC functional that
 *augments* a standard Kohn–Sham DFT calculation.
-The architecture is: (1) run a *standar`d*`
+The architecture is: (1) run a *standar`d*'
 Kohn–Sham DFT calculation with a *baseline*
 functional (e.g. PBE); (2) compute the
 *baseline* density $\rho_\text{PBE}$ and the
 *baseline* KS orbitals $\psi_i^\text{PBE}$;
-(3) use a *neural networ`k*` to predict the
+(3) use a *neural networ`k*' to predict the
 *correction* to the XC energy and potential
 from the *local* density and the local orbital
 features.  The correction is *delta-learning*:
@@ -1360,10 +1360,10 @@ standard DFT code.  The *disadvantage* is the
 *self-consistency*: the model has to be
 *self-consistent* with the KS equations.  The
 **training data** is a set of $\sim\! 10^3$–
-$10^4$ molecules or solids for which *bot`h*`
+$10^4$ molecules or solids for which *bot`h*'
 the baseline (PBE) and the *reference* (e.g.
 CCSD(T) or $G_0W_0$) calculations are
-available; the *neural network*` is a small
+available; the *neural network*' is a small
 feed-forward network ($\sim\! 10^4$
 parameters) that takes the *atomic
 descriptor* as input and outputs the
@@ -1389,10 +1389,10 @@ on the training densities, with weights
 $w_\alpha$ fitted by regularised least-squares.
 The *kernel* $k(\rho, \rho')$ is a similarity
 measure* for densities: a typical choice is
-the *overla`p*` of the two densities in a
-*smoot`h*` basis.
+the *overla`p*' of the two densities in a
+*smoot`h*' basis.
 
-The **advantage** of KRR is the *non-parametri`c*`
+The **advantage** of KRR is the *non-parametri`c*'
 form: the model *interpolates* the training
 data, and the *only* assumption is the
 *kernel* (which encodes the similarity of
@@ -1406,8 +1406,8 @@ inverted).
 
 The **DM21** functional of [DeepMind, *Science*
 **374**, 1385 (2021)]({{ "/dft-notes/extras/bibliography/" | relative_url }}) is the
-*most publicise`d*` ML functional.  The
-architecture is a *neural networ`k*` that takes
+*most publicise`d*' ML functional.  The
+architecture is a *neural networ`k*' that takes
 the *density* and the gradient of the density
 as input and outputs the *XC energy density*.
 The training set is a *large* collection of
@@ -1424,11 +1424,11 @@ limit* (the model should reproduce the *exact
 XC energy of the UEG at high density), (ii)
 the *one-electron limit* (zero self-interaction
 error), (iii) the *strong-correlation limit*
-(the *ste`p*` structure of the XC potential at
+(the *ste`p*' structure of the XC potential at
 integer electron numbers — the *DFT derivative
 discontinuity*).  The result is a functional
 that *outperforms* the standard GGA and hybrid
-functionals on a wide range of *benchmar`k*`
+functionals on a wide range of *benchmar`k*'
 calculations (reaction energies, bond lengths,
 barrier heights, non-covalent interactions).
 The *advantage* of DM21 is the systematic
@@ -1436,20 +1436,20 @@ improvement* on the standard functionals; the
 *disadvantage* is the transferability: DM21
 is trained on a *finite* set of systems and
 is *not* guaranteed to generalise to new
-systems (the *DeepMin`d*` paper documents
+systems (the *DeepMin`d*' paper documents
 *failure modes* on transition-metal and
-*strongly-correlate`d*` systems).
+*strongly-correlate`d*' systems).
 
 ### 17.8.4 The generalisation problem
 
 The *generalisation problem* is the defining
 challenge of ML functionals.  A functional
-that is *traine`d*` on a finite set of systems
-is *biase`d*` towards the training set, and the
+that is *traine`d*' on a finite set of systems
+is *biase`d*' towards the training set, and the
 *transferability* to new systems is
 *unreliable*.  The problem is worse for
 functionals than for MLIPs because the
-*training data*` is more expensive (a DFT
+*training data*' is more expensive (a DFT
 calculation per training example, vs. a
 *single DFT single point* for an MLIP) and
 the *model* is more sensitive to the
@@ -1472,10 +1472,10 @@ application-specific DFT calculations).
 > **The "in heaven" prediction.**  Jacob's
 > ladder ends "in heaven" — the exact
 > $E_\text{xc}[\rho]$ is *unknown*.  The ML
-> functionals are a *ste`p*` in the right
+> functionals are a *ste`p*' in the right
 > direction, but they are *not* the exact
 > functional.  The *promise* is that they
-> can *approac`h*` the exact functional
+> can *approac`h*' the exact functional
 > *systematically*; the threat is that
 > the exact functional is *not* in the
 > model class of the neural network.
@@ -1486,10 +1486,10 @@ The *active-learning* (AL) loop is the
 *iterative* procedure that builds the
 training set.  The loop is *essential* for
 MLIPs: without AL, the training set is
-*sampled*` from a prior (the user's
+*sampled*' from a prior (the user's
 *intuition*), and the OOD problem (§
 17.4.4) is *unavoidable*.  With AL, the
-training set is *sample`d*` from the model's
+training set is *sample`d*' from the model's
 *uncertainty*, and the OOD problem is
 *mitigate`d*`.
 
@@ -1519,7 +1519,7 @@ and the OOD problem is *mitigate`d*`.  The
 ### 17.9.2 Query-by-committee
 
 The **query-by-committee** (QBC) approach
-to AL is the *standar`d*` for MLIPs.  The
+to AL is the *standar`d*' for MLIPs.  The
 *committee* is an ensemble of $K$ models
 $\mathcal M_1, \ldots, \mathcal M_K$,
 trained on the *same* data but with
@@ -1565,7 +1565,7 @@ good default.
 The **MACE-OSP** (MACE On-the-fly Sparse
 Potential) framework of [Magdău et al.,
 *npj Comput. Mater.* **9**, 146 (2023)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
-is the *standar`d*` implementation of the
+is the *standar`d*' implementation of the
 AL loop for MLIPs in 2024. The framework:
 (1) start with a *small* initial training
 set; (2) run an *initial* MACE training; (3)
@@ -1577,7 +1577,7 @@ models); (5) if the uncertainty *exceeds* a
 threshold, *pause* the MD, run a single-
 point* DFT calculation, add to the training
 set, and *retrain* the MACE; (6) resume the
-MD with the *retraine`d*` MACE.  The loop
+MD with the *retraine`d*' MACE.  The loop
 continues until the MD trajectory *completes*
 without a *retraining* event, yielding a
 *self-consistent* MLIP that is accurate on
@@ -1597,7 +1597,7 @@ The Mermaid diagram below shows the
 MACE-OSP active-learning loop, with
 each block labelled by its *role* in
 the workflow and the *arrows*
-labelled by the *dat`a*` that flows
+labelled by the *dat`a*' that flows
 between the blocks.
 
 ```mermaid
@@ -1630,7 +1630,7 @@ the MACE-OSP loop.  The MD step is the
 *inner loop*`; the retrain is the outer
 loo`p*.  The MD runs *at GPU speed*
 ($\sim\! 1$ ms per step), and the DFT
-single point runs *at CPU spee`d*`
+single point runs *at CPU spee`d*'
 ($\sim\! 1$ s per step).  The *retrain*
 event is *expensive* ($\sim\! 1$–$7$
 days) but *rare* (typically $\sim\! 1$–$10$
@@ -1641,10 +1641,10 @@ retrains per nanosecond of MD).  The
 ## 17.10 Practical considerations
 
 This section collects the *practical* advice
-that the working calculator needs to *buil`d*`
+that the working calculator needs to *buil`d*'
 and *deploy* an MLIP.  The advice is
 *empirical*: it is what the 2024–2025
-ML-for-DFT community has *learne`d*` the hard
+ML-for-DFT community has *learne`d*' the hard
 way, distilled into a few rules of thumb.
 
 ### 17.10.1 Units and conversions
@@ -1662,7 +1662,7 @@ needs are:
 1\;E_h/a_0 \;=\; 51.4221\;\text{eV/Å}.
 \end{equation}
 
-The *standar`d*` ML-for-DFT libraries
+The *standar`d*' ML-for-DFT libraries
 (MACE, NequIP, Allegro, SchNet, fairchem)
 use *eV* and Å as the *internal units.
 The *ASE* integration layer (see the
@@ -1672,7 +1672,7 @@ units and the *target* units of the MD
 integrator.
 
 > **The silent unit bug.**  The most
-> common bug is a *silent unit mismatc`h*`
+> common bug is a *silent unit mismatc`h*'
 > (eV/Å vs. Ry/bohr vs. kJ/mol/nm).
 > A factor-of-2 error in the *forces* makes
 > the MD diverge in a few fs.  *Always*
@@ -1681,7 +1681,7 @@ integrator.
 
 ### 17.10.2 Code and frameworks
 
-The *standar`d*` 2025 ML-for-DFT stack: **MACE**
+The *standar`d*' 2025 ML-for-DFT stack: **MACE**
 ([ACEsuite/mace](<https://github.com/ACEsuit/mace>), the
 default for production), **NequIP** and **Allegro**
 ([mir-group](<https://github.com/mir-group>), equivariant),
@@ -1736,16 +1736,16 @@ the order of frequency:
     \lambda_E \sim 10$–$100$.
 4. **Periodic boundary conditions.**
     Train on *finite* clusters and the
-    *periodic*` solid has a finite-size
-    error.  Train on *periodi`c*`
+    *periodic*' solid has a finite-size
+    error.  Train on *periodi`c*'
     configurations.
 5. **Charge transfer.**  Train on
     *neutral* atoms, evaluate a charged*
     system.  Use a *charge-equilibration*
     model (e.g. MEGNet).
 6. **Spin polarisation.**  Train on
-    *non-spin-polarise`d*` and miss the
-    *ferromagneti`c*` ground state.  Use
+    *non-spin-polarise`d*' and miss the
+    *ferromagneti`c*' ground state.  Use
     *spin-aware* architectures (MACE's
     spin channels).
 7. **Reproducibility.**  Default training
@@ -1774,7 +1774,7 @@ the order of frequency:
 > *validation* error.  The fix is to
 > *report* the validation error with
 > error bars* (standard deviation over
-> 5–10 random seeds) and to *publis`h*`
+> 5–10 random seeds) and to *publis`h*'
 > the *trained model*, training
 > script*, and *training data* — the
 > 2024 MACE paper is exemplary.
@@ -1808,10 +1808,10 @@ for step in range(20000):
 
 The O–O RDF is computed by histogramming the
 pairwise O–O distances over the trajectory.
-The *expecte`d*` result is an O–O RDF with a
-*first pea`k*` at $r \approx 2.8$ Å (the
-*hydrogen-bond*` distance), a first minimum
-at $r \approx 3.5$ Å, a *second pea`k*` at
+The *expecte`d*' result is an O–O RDF with a
+*first pea`k*' at $r \approx 2.8$ Å (the
+*hydrogen-bond*' distance), a first minimum
+at $r \approx 3.5$ Å, a *second pea`k*' at
 $r \approx 4.5$ Å, and a *long-range* tail
 that *converges* to $g(r) = 1$.
 
@@ -1821,7 +1821,7 @@ The MACE-MP-0 RDF is *qualitatively correct*
 hig`h*` by $\sim\! 10\%$–$20\%$, the second peak
 is *too low*).  The fix is to *fine-tune the
 MACE-MP-0 model on a small set of
-*DFT-calculate`d*` water configurations
+*DFT-calculate`d*' water configurations
 ($\sim\! 1000$ configurations, $\sim\! 1$ day on
 a single H100).  The fine-tuned model
 reproduces the *experimental* RDF to within
@@ -1875,13 +1875,13 @@ for PBE alone and $\sim\! 35$ meV/atom for
 r$^2$SCAN alone.  The MAE scales as
 $\sim\! N_\text{train}^{-1/2}$ asymptotically;
 $\sim\! 1000$ training points are enough to
-reach the *systemati`c*` r$^2$SCAN error.
+reach the *systemati`c*' r$^2$SCAN error.
 
 > **The "transfer to the production database".**
 > The $\Delta$-ML correction is trained on a
 > small set; the application is the *full*
 > Materials Project ($\sim\! 150\,000$ compounds).
-> The total cost is *dominate`d*` by the PBE
+> The total cost is *dominate`d*' by the PBE
 > calculation ($\sim\! 1$ s per compound), and
 > the *ML* correction is a single kernel
 > evaluation ($\sim\! 1$ ms per compound).
@@ -1966,15 +1966,15 @@ self-diffusion coefficient at 300 K of
 $D \approx 2.3 \times 10^{-9}$ m$^2$/s, and
 a 0.5-fs time step is used.
 
-1. Estimate the *time per MD ste`p*` and the
-    *cost per MD ste`p*` in H100-hours.
+1. Estimate the *time per MD ste`p*' and the
+    *cost per MD ste`p*' in H100-hours.
 2. Estimate the *wall-clock time* for a
     1-ns MD trajectory on a single H100.
 3. Compare to the *cost* of a 1-ns AIMD
     trajectory on a 32-core CPU node, with
     a single DFT single point taking
     $\sim\! 1$ s.
-4. Estimate the *self-diffusion lengt`h*`
+4. Estimate the *self-diffusion lengt`h*'
     $\ell = \sqrt{6 D t}$ at the end of the
     1-ns MLIP trajectory and at the end of
     a $\sim\! 1$ ps AIMD trajectory, and
@@ -2002,19 +2002,19 @@ $2 \times 10^6 \times 1 \text{ s} = 2 \times
 10^6$ s of CPU time, or
 $\sim\! 6.5 \times 10^4$ s on a 32-core
 node ($\sim\! 18$ node-hours).  The
-*realisti`c*` AIMD for a 100-atom system on
-a 32-core node is *limite`d*` to
+*realisti`c*' AIMD for a 100-atom system on
+a 32-core node is *limite`d*' to
 $\sim\! 10$–$100$ ps.
 
 **Step 4.**  The MLIP trajectory
 $\ell_\text{MLIP} \approx 37$ Å is in the
-*hydrodynami`c*` regime (many diffusive
+*hydrodynami`c*' regime (many diffusive
 events) and is *physically* meaningful for
 *transport* properties (the diffusion
 coefficient, the viscosity, the ionic
 conductivity).  The 1-ps AIMD trajectory
 $\ell_\text{AIMD} \approx 1.2$ Å is in the
-*ballistic*` regime (less than a single
+*ballistic*' regime (less than a single
 O–H bond length) and is *useful* for
 *local* properties (RDF, vibrational
 spectrum) but *not* for transport.
@@ -2087,12 +2087,12 @@ meV/atom) is *too large*; $\Delta$-ML
 *cannot* bring the total MAE to $\le 30$
 meV/atom by *correcting PBE alone*.  The
 $\Delta$-ML approach works *only* if the
-*cheap*` DFT is closer to the
+*cheap*' DFT is closer to the
 *expensive* DFT (e.g. PBE $\to$ SCAN,
 PBE $\to$ HSE06, or SCAN $\to$ r$^2$SCAN).
 
 **Step 3.**  $\Delta$-ML is *not* worth
-the effort when (i) the *chea`p*` DFT is
+the effort when (i) the *chea`p*' DFT is
 *qualitatively* wrong for the target
 class (e.g. PBE for Mott insulators;
 $\Delta$-ML cannot *invent* the missing
@@ -2104,11 +2104,11 @@ distribution (the $\Delta$-ML fails by
 the *target* distribution.
 
 The Materials Project's r$^2$SCAN-
-$\Delta$ML database is a *goo`d*` example
+$\Delta$ML database is a *goo`d*' example
 of when $\Delta$-ML *is* worth the
 effort: the *expensive* DFT is
 r$^2$SCAN ($\sim\! 3\times$ PBE), the
-*chea`p*` DFT is PBE (already computed for
+*chea`p*' DFT is PBE (already computed for
 all $\sim\! 150\,000$ compounds), and
 the *correction* is small enough* (MAE
 $\sim\! 35$ meV/atom) to be *learnable*
@@ -2174,7 +2174,7 @@ The five papers are:
    on bulk carbon, silicon, and germanium.
 3. **Bartók, Kondor & Csányi, *Phys. Rev. B* **87**, 184115 (2013)**
    — the Smooth Overlap of Atomic Positions (SOAP)
-   descriptor, the *systemati`c*` rotation-invariant
+   descriptor, the *systemati`c*' rotation-invariant
    basis for atomic environments, and the unification
    of the previous ad-hoc descriptors under a single
    spherical-harmonic framework.
@@ -2283,7 +2283,7 @@ encode the *radial* and angular distribution of the
 neighbours of atom $i$ in a finite set of numbers that
 are *invariant* under rotation and translation of the
 local environment [Behler and Parrinello, 2007, p. 146401-1].
-The cutoff $f_c$ is a *smoot`h*` function
+The cutoff $f_c$ is a *smoot`h*' function
 (typically a cosine envelope) so that the descriptor
 *and its gradient* are well-defined at the cutoff
 [Behler and Parrinello, 2007, p. 146401-1].
@@ -2292,7 +2292,7 @@ The **per-atom neural network** is a standard
 feed-forward network with two hidden layers, $\sim\! 20$
 nodes per layer, $\sigma = \tanh$ activation.  The
 *output* is the per-atom energy $E_i$.  The
-*training data*` is a set of DFT single points on
+*training data*' is a set of DFT single points on
 representative configurations; the *loss* is the
 mean-squared error of the total energy; the *forces* are
 *not* used in the loss of the original 2007 paper (the
@@ -2320,11 +2320,11 @@ itself, at a cost that is "several orders of magnitude
 lower" than DFT [Behler and Parrinello, 2007, p. 146401-3].
 
 The **limitation** the paper *imposes* on the field
-is the *hand-crafte`d*` nature of the symmetry functions.
+is the *hand-crafte`d*' nature of the symmetry functions.
 The choice of $\eta$, $r_s$, $\zeta$, $\lambda$ is
 *system-specific*`: a good set for silicon is not a
 good set for water or for an oxide.  The 2010–2013
-descriptors (bispectrum, SOAP) are the *systemati`c*`
+descriptors (bispectrum, SOAP) are the *systemati`c*'
 response to this limitation.
 
 > **Page-level reading guide for Behler &
@@ -2353,7 +2353,7 @@ motivate`d* but *limited* in accuracy; the BP-NNP is
 *flexible* but hand-crafted* in its descriptors
 [Bartók et al., 2010, p. 136403-1].  The GAP approach
 is to use a *Gaussian process* (GP) regression on a
-*systematic*` descriptor — the bispectrum of the
+*systematic*' descriptor — the bispectrum of the
 atomic neighbourhood density, later named SOAP — and to
 *automatically* generate a potential from the data
 [Bartók et al., 2010, p. 136403-1].
@@ -2390,7 +2390,7 @@ The **descriptor** used in the 2010 paper is the
 *bispectrum* of the atomic neighbourhood density — a
 rotation-invariant expansion in 4-body correlation
 functions of the atomic positions.  The bispectrum
-will be *replace`d*` by the more general SOAP in the 2013
+will be *replace`d*' by the more general SOAP in the 2013
 paper [Bartók, Kondor, and Csányi, 2013, p. 184115-1],
 but the 2010 paper already uses the *same ide`a*`:
 expand the local atomic density in spherical harmonics
@@ -2415,17 +2415,17 @@ potentials of the day (Tersoff, Brenner, EDIP)
 [Bartók et al., 2010, p. 136403-1].
 
 The **advantage** of GAP over the BP-NNP is threefold:
-(i) the *systemati`c*` descriptor (the bispectrum, soon
+(i) the *systemati`c*' descriptor (the bispectrum, soon
 to be SOAP) replaces the hand-crafted symmetry
 functions; (ii) the *kernel* is a positive-definite
-function, which gives the model a *well-define`d*`
+function, which gives the model a *well-define`d*'
 interpolation behaviour; (iii) the *predictive
 variance* is a *free output of the GP, which the
 authors use for *uncertainty quantification* on the MD
 trajectory [Bartók et al., 2010, p. 136403-1].  The
 **disadvantage** is the *cost*: GAP inference is
 $\mathcal O(N_\text{train})$ per evaluation, which is
-*muc`h*` more expensive than a feed-forward NNP for
+*muc`h*' more expensive than a feed-forward NNP for
 $N_\text{train} \gtrsim 10^3$.  The *sparse* variants
 (SOAP-GAP, FLARE) reduce the cost by sparsifying the
 training set, but the *original* 2010 GAP is a dense
@@ -2456,8 +2456,8 @@ Ewald sum, the Faber–Christensen–Kumar repulsion, the
 atom-centred symmetry functions, the Ziegler–Biersack–
 Littmark potential, the partial radial distribution,
 the smooth overlap of atomic positions, the partial
-power spectrum), each with its own *ad-ho`c*` set of
-hyperparameters and its own *ad-ho`c*` set of invariances
+power spectrum), each with its own *ad-ho`c*' set of
+hyperparameters and its own *ad-ho`c*' set of invariances
 [Bartók, Kondor, and Csányi, 2013, p. 184115-1].  The
 SOAP paper unifies all of them under a *single*
 framework: the *expansion of the atomic neighbourhood
@@ -2511,7 +2511,7 @@ The kernel $k(R, R')$ is *exactly* invariant under
 *rotation*, translation, and *permutation of atoms
 of the same species, by construction
 [Bartók, Kondor, and Csányi, 2013, p. 184115-2].  It is
-also *smoot`h*` (differentiable to all orders in the
+also *smoot`h*' (differentiable to all orders in the
 atomic positions) and *complete* in the sense that two
 environments with $k = 1$ are *identical* up to a
 rotation [Bartók, Kondor, and Csányi, 2013, p. 184115-2].
@@ -2536,14 +2536,14 @@ two configurations.  The *advantage* of the analogy is
 that the *machinery* of spherical-harmonic expansions
 — the *clebsch–Gordan* coefficients, the Wigner
 3-j* and *6-j symbols, the selection rules* — can
-be *inherite`d*` from electronic-structure theory without
+be *inherite`d*' from electronic-structure theory without
 re-derivation [Bartók, Kondor, and Csányi, 2013,
 p. 184115-2].
 
 The **test on small silicon clusters** is on p. 184115-2
 and in the supplementary material.  The authors fit
 GAP-SOAP models to the *potential-energy surface* of
-Si$_n$ clusters ($n = 2, 3, \ldots, 10$) and to *bul`k*`
+Si$_n$ clusters ($n = 2, 3, \ldots, 10$) and to *bul`k*'
 silicon, and they compare the *convergence* of the SOAP
 descriptor to the *convergence* of the bispectrum and
 the *Behler–Parrinello* symmetry functions.  The
@@ -2551,7 +2551,7 @@ conclusion is striking: the SOAP kernel converges
 *much faster* than the BP symmetry functions with the
 number of basis functions, and the *power spectrum* of
 order $\ell_\text{max} = 4$–$6$ is enough to reach the
-*systemati`c*` DFT error [Bartók, Kondor, and Csányi,
+*systemati`c*' DFT error [Bartók, Kondor, and Csányi,
 2013, p. 184115-2].
 
 > **Page-level reading guide for Bartók, Kondor,
@@ -2563,7 +2563,7 @@ order $\ell_\text{max} = 4$–$6$ is enough to reach the
 > the section "NUMERICAL RESULTS" on p. 184115-3 and
 > the supplementary material.  The most quoted
 > sentence is on p. 184115-1: "the SOAP kernel is
-> *still closely connecte`d*` to the invariant
+> *still closely connecte`d*' to the invariant
 > descriptors" [Bartók, Kondor, and Csányi, 2013,
 > p. 184115-1] — the *unification* of the field is
 > the contribution.
@@ -2588,8 +2588,8 @@ task [Schütt et al., 2017, p. 2].
 The **architecture** is laid out on pp. 2-3. Each
 atom is represented by a feature vector
 $\mathbf x_i \in \mathbb R^B$ (the "embedding").  The
-embeddings are *initialise`d*` from the nuclear charge
-$Z_i$ and then *refined*` by $T$ interaction passes
+embeddings are *initialise`d*' from the nuclear charge
+$Z_i$ and then *refined*' by $T$ interaction passes
 [Schütt et al., 2017, p. 2].  Each interaction pass is
 
 \begin{equation}
@@ -2609,7 +2609,7 @@ parameters is *independent* of the number of atoms.
 
 The **continuous-filter convolution (CFConv)** layer is
 on p. 3. The *message* $\mathbf v_{ij}^{(t)}$ is
-*factorised*` into a radial part (a function of the
+*factorised*' into a radial part (a function of the
 distance $r_{ij}$ expanded in a basis of Gaussians) and
 an *angular* part (a tensor product of the two
 embeddings) [Schütt et al., 2017, p. 3].  The
@@ -2621,11 +2621,11 @@ factorisation has the form
 \end{equation}
 
 where $\mathbf d_{ij} \in \mathbb R^K$ is the
-*Gaussian-expande`d*` inter-atomic distance, $\circ$ is
+*Gaussian-expande`d*' inter-atomic distance, $\circ$ is
 element-wise multiplication, and $\mathbf W_f$, $\mathbf
 W_d$, $\mathbf W_c$ are *learnable* weight matrices
 [Schütt et al., 2017, p. 3].  The factorisation is the
-*low-rank*` version of a full tensor product: a full
+*low-rank*' version of a full tensor product: a full
 tensor product would have $\mathcal O(B^3)$ parameters
 per layer (intractable); the low-rank factorisation has
 $\mathcal O(BK + BK + B^2)$ parameters
@@ -2655,13 +2655,13 @@ and $<5$ ms for a 100-atom molecule [Schütt et al.,
 2017, p. 5].
 
 The **interpretability** of SchNet is a *side benefit*
-of the *graph*` view.  The authors define a local
+of the *graph*' view.  The authors define a local
 chemical potential* $\mu_A(\mathbf r)$ as the response
 of the trained network to a probe atom of type $A$ at
 position $\mathbf r$ [Schütt et al., 2017, p. 4].  The
 isosurface of $\mu_A$ on a molecule reveals the
 *aromaticity* of the ring, the electronegativity of
-the substituents, and the *hydrogen-bon`d*` pattern — a
+the substituents, and the *hydrogen-bon`d*' pattern — a
 *chemically meaningful* representation that emerged*
 from the training, not from the architecture
 [Schütt et al., 2017, p. 4].  This is the first *direct*
@@ -2688,7 +2688,7 @@ was published at NeurIPS 2022
 authors' own words, is the *layer-vs.-expressivity*
 tradeoff in equivariant MPNNs: the *invariant* SchNet
 and the *equivariant* NequIP (2022) need many
-message-passing layers (5–7) to reach the *systemati`c*`
+message-passing layers (5–7) to reach the *systemati`c*'
 DFT error, because each layer adds only *two-body*
 information [Batatia et al., 2022, p. 2].  The MACE
 answer is to *replace* the two-body messages with
@@ -2708,7 +2708,7 @@ that carries the *relative position* $\mathbf r_{ij}$
 expanded in a basis of spherical harmonics times a
 radial basis [Batatia et al., 2022, p. 3].  The
 *message* passed from the neighbours of $i$ to $i$ is
-the *symmetrise`d*` $T$-body correlation of the
+the *symmetrise`d*' $T$-body correlation of the
 edge features:
 
 \begin{equation}
@@ -2818,12 +2818,12 @@ graph LR
 
 The diagram is a *genealogy*: each paper inherits from
 the previous one and *fixes* one of its limitations.
-The Behler–Parrinello NNP has the *hand-crafte`d*`
+The Behler–Parrinello NNP has the *hand-crafte`d*'
 symmetry functions; GAP replaces them with a
-*systemati`c*` bispectrum; SOAP unifies the systematic
+*systemati`c*' bispectrum; SOAP unifies the systematic
 descriptors under a *single* spherical-harmonic
-framework; SchNet replaces the *fixe`d*` descriptor with
-a *learne`d*` deep representation; MACE adds
+framework; SchNet replaces the *fixe`d*' descriptor with
+a *learne`d*' deep representation; MACE adds
 *equivariance* and 4-body messages for *sample
 efficiency*.
 
@@ -2844,13 +2844,13 @@ state of the art because the *datasets* and the
 | Batatia et al. (MACE) | 2022 | rMD17, $\sim\!10^6$ configs | $\sim\! 0.5$ meV/at | $\sim\! 10$ meV/Å | equivariant MPNN ($\sim\!$10 ms) | very high |
 
 The **accuracy** column is dominated by the
-*systemati`c*` error of the DFT reference: the MACE MAE
+*systemati`c*' error of the DFT reference: the MACE MAE
 on rMD17 is $\sim\! 0.5$ meV/atom because the rMD17
 *reference* is CCSD(T), which itself has a
-*systemati`c*` error of $\sim\! 0.5$ meV/atom.  The
+*systemati`c*' error of $\sim\! 0.5$ meV/atom.  The
 **cost** column is dominated by the *inference* cost
 per MD step: the BP-NNP, GAP, and SOAP are *kernel*
-methods or *feed-forward*` networks with small
+methods or *feed-forward*' networks with small
 capacity; SchNet and MACE are *deeper* networks with
 *more* capacity but fewer parameters per evaluation
 (the MACE four-body message replaces four layers of
@@ -2887,21 +2887,21 @@ omissions are:
   neural-network models).**  The GAP paper *has*
   UQ for free (the GP predictive variance), but the
   BP, SchNet, and MACE papers do *not*: they are
-  *deterministic*` neural networks.  The UQ for
+  *deterministic*' neural networks.  The UQ for
   neural networks is a *post-2018* development
   (deep ensembles, MC-dropout, SWAG, last-layer
   Bayesian, Gaussian-process heads).  The 2024
-  MACE-OSP paper (§ 17.9.3) is the *standar`d*` way
+  MACE-OSP paper (§ 17.9.3) is the *standar`d*' way
   to add UQ to MACE in 2025. - **No chemistry-specific priors.**  The five
   papers are *general* methods: they can be applied
   to any atomic number, any geometry, any training
-  set.  The *chemistry-specifi`c*` priors (e.g.
-  *graph-base`d*` representations of aromaticity,
+  set.  The *chemistry-specifi`c*' priors (e.g.
+  *graph-base`d*' representations of aromaticity,
   *message-passing* in 2-D for surfaces, explicit
   treatment of long-range dispersion, *charge
   equilibration* for ionic systems) are
   *post-2019* developments.  The 2024
-  MACE-OFF paper is the *standar`d*` way to add
+  MACE-OFF paper is the *standar`d*' way to add
   *organic-chemistry* priors in 2025. - **No out-of-distribution (OOD) detection.**  None
   of the five papers has a *formal* test of OOD
   performance: the training set is assumed to be
@@ -2920,17 +2920,17 @@ omissions are:
   from a *universal* MACE-MP-0, fine-tune on
   $\sim\! 100$–$1000$ application-specific DFT
   calculations, and run the production MD with the
-  *fine-tune`d*` MLIP.  The five foundational papers
-  are *single-task*` models; the multi-task* and
+  *fine-tune`d*' MLIP.  The five foundational papers
+  are *single-task*' models; the multi-task* and
   *transfer* paradigm is a 2023–2024 development.
 
 - **No multi-fidelity learning.**  None of the
-  five papers mixes *cheap*` and expensive DFT
+  five papers mixes *cheap*' and expensive DFT
   in a *single* training set.  The multi-fidelity
   approach (train on PBE, fine-tune on r$^2$SCAN,
   $\Delta$-ML on a small set of HSE06) is a
   *post-2020* development.  The $\Delta$-ML
-  workflow of § 17.6 is the *standar`d*` way to add
+  workflow of § 17.6 is the *standar`d*' way to add
   multi-fidelity in 2025. - **No composition-based generalisation.**  None
   of the five papers can *predict* the energy of
   a *new* composition that was not in the
@@ -2945,7 +2945,7 @@ The five foundational papers are the *necessary*
 foundation; the *universal* MLIPs of 2024–2025 are the
 *sufficient* infrastructure.  The reader who wants to
 *use* a 2025 MLIP in production should use MACE-MP-0
-or MACE-OFF; the reader who wants to *understan`d*` the
+or MACE-OFF; the reader who wants to *understan`d*' the
 *why* should read the five foundational papers.
 
 ### 17.15.8 Bibliography for this section
@@ -2993,7 +2993,7 @@ free PDF) are:
 Parrinello (2007), with $\sim\! 3{,}500$ citations
 as of 2025; the **most-recent** is MACE (2022), with
 $\sim\! 1{,}000$ citations and *growing*.  The
-*combine`d*` citation count of the five papers is
+*combine`d*' citation count of the five papers is
 $\sim\! 8{,}000$, which is the *measure* of how
 *foundational* they are to the field of ML-for-DFT.
 
@@ -3005,12 +3005,12 @@ below are the most important for a complete
 picture.
 
 - **Graph neural networks in detail.**  We
-  used the *grap`h*` view of the atomic
+  used the *grap`h*' view of the atomic
   structure (§ 17.5) without deriving the
   *message-passing* paradigm in detail.
   The 2017 MPNN paper of Gilmer et al. and
   the 2017 SchNet paper of Schütt et al.
-  introduced the *graph*` and message-
+  introduced the *graph*' and message-
   passing* views; we did not derive either.
   The reader interested in the *general*
   theory of GNNs should consult the

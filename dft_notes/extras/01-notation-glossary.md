@@ -99,7 +99,7 @@ and used without comment thereafter.
 
 Position vectors, momenta, lattice vectors, and the angular
 momenta.  All vectors in this section are 3-D Euclidean
-vectors; in this section and throughout, *bol`d*` indicates a
+vectors; in this section and throughout, *bol`d*' indicates a
 vector.  Operators on them are in §3. | Symbol | LaTeX | Plain text | Description | First appearance |
 |:------|:------|:-----------|:------------|:-----------------|
 | $\mathbf r$ | `\mathbf r` | **r** | Position of an electron in $\mathbb R^3$ | Ch 00 §"Notation" |
@@ -435,7 +435,7 @@ the bra–ket, which uses upright letters in Dirac notation
 | $v_i$ | `v_i` | v_i | The $i$-th component of $\mathbf v$ | Ch 00 §"Notation" |
 | $\mathbf A^T$ | `\mathbf A^T` | **A**^T | Transpose | Ch 00 §"Notation" |
 | $\mathbf A^\dagger$ | `\mathbf A^\dagger` | **A**† | Conjugate transpose (Hermitian adjoint) | Ch 00 §"Notation"; Ch 03 §3.6.6 |
-| $\mathbf A^*$ | `\mathbf A^*` | **A*** | Element-wise complex conjugate (rarely used alone) | Ch 03 (rare) |
+| $\mathbf A^*$ | `\mathbf A^*' | **A*** | Element-wise complex conjugate (rarely used alone) | Ch 03 (rare) |
 | $\mathbf A^{-1}$ | `\mathbf A^{-1}` | **A**⁻¹ | Matrix inverse | Ch 03 §3.6.6 (Löwdin) |
 | $\mathbf A^{-1/2}$ | `\mathbf A^{-1/2}` | **A**^{-1/2} | Inverse square root (defined for positive-definite $\mathbf A$) | Ch 03 §3.6.6 |
 | $\mathbf I$ / $\mathbf 1$ | `\mathbf I`, `\mathbf 1` | **I**, **1** | Identity matrix (of the appropriate size) | Ch 00 §"Notation"; Ch 01 §1.2 (P1) |
@@ -472,7 +472,7 @@ and 11 (band structures).
 | $\mathbf q$ | `\mathbf q` | **q** | Phonon wavevector; or a generic reciprocal-space wavevector in a response function | Ch 10 (planned); Ch 11 (planned) |
 | $\Omega$ | `\Omega` | Ω | Volume of the primitive cell; also: supercell volume in BvK | Ch 00 §"Notation"; Ch 07 §7.5.1 |
 | $V_\text{cell}$ | `V_\text{cell}` | V_cell | Same as $\Omega$ (alternative notation) | Ch 07 §7.4.1 |
-| $V_\text{BZ}^*$ | V_\text{BZ}^*` | V_BZ | Volume of the reciprocal primitive cell, $(2\pi)^3 / V_\text{cell}$ | Ch 07 §7.4.1 |
+| $V_\text{BZ}^*$ | V_\text{BZ}^*' | V_BZ | Volume of the reciprocal primitive cell, $(2\pi)^3 / V_\text{cell}$ | Ch 07 §7.4.1 |
 | $\Gamma$ | `\Gamma` | Γ | Centre of the Brillouin zone, $\mathbf k = \mathbf 0$ | Ch 07 §7.4.3 |
 | $X$, $L$, $W$, $K$, $U$ | `X`, `L`, `W`, `K`, `U` | X, L, W, K, U | High-symmetry points of the FCC Brillouin zone (Setyawan–Curtarolo) | Ch 07 §7.4.3 |
 | $N_\mathbf k$ | `N_\mathbf k` | N_**k** | Number of $\mathbf k$-points in the BZ sampling mesh | Ch 07 §7.2.2 |
@@ -627,7 +627,7 @@ $$
   $\mathbf P = 2 \mathbf C_\text{occ} \mathbf C_\text{occ}^\dagger$.
 - The HF energy in the AO basis is
   $E_\text{el} = \tfrac{1}{2} \text{Tr}[\mathbf P(\mathbf h + \mathbf F)]$;
-  the *hal`f*` accounts for the double-counting correction in
+  the *hal`f*' accounts for the double-counting correction in
   $\text{Tr}[\mathbf P \mathbf F]$.
 
 ### 13.5 Occupation and spin

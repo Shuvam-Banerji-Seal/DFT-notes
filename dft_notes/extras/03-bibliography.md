@@ -590,13 +590,13 @@ generalisaton of the NC-PP framework to smoother
 pseudopotentials.
 
 Vanderbilt's insight is that the norm-conservation condition
-can be *relaxe`d*` and replaced by a generalised overlap
+can be *relaxe`d*' and replaced by a generalised overlap
 operator, at the cost of a more complex formalism. The
 "ultrasoft" pseudo-wavefunction is allowed to have a norm
 *deficit* $\Delta Q_l = Q_l^\text{ae} - Q_l^\text{ps}$ inside
 $r_c$, and the missing charge is recovered by an **augmentation
 charge** that adds an atom-centred correction to the density.
-The KS equations become a *generalise`d*` eigenvalue problem
+The KS equations become a *generalise`d*' eigenvalue problem
 $\hat H |\phi\rangle = \varepsilon \hat S |\phi\rangle$, with
 $\hat S \neq \mathbf 1$. The payoff is a factor of 2–3
 reduction in the required plane-wave cutoff for hard elements
@@ -755,7 +755,7 @@ symmetry to make the infinite-lattice problem finite.
 ### 6.1 Bloch (1929) — Bloch's theorem {#bloch-1929}
 
 **Bloch, F.** "Über die Quantenmechanik der Elektronen in
-Kristallgittern." *Zeitschrift für Physi`k*` **1929**, *52*, 555–600.
+Kristallgittern." *Zeitschrift für Physi`k*' **1929**, *52*, 555–600.
 DOI:
 [10.1007/BF01339455](<https://doi.org/10.1007/BF01339455>).
 URL: <https://link.springer.com/article/10.1007/BF01339455>.
@@ -905,7 +905,7 @@ as the source of the time-dependent Hohenberg–Kohn analogue.
 The Runge–Gross theorem is the time-dependent analogue of the
 Hohenberg–Kohn theorem: for a many-electron system evolving
 under a time-dependent external potential $v_\text{ext}(\mathbf r,
-t)$ that is *analyti`c*` in time (admits a Taylor expansion at
+t)$ that is *analyti`c*' in time (admits a Taylor expansion at
 $t_0$), the time-dependent density $\rho(\mathbf r, t)$
 determines the potential uniquely (up to a purely
 time-dependent function), and therefore determines the
@@ -1011,7 +1011,7 @@ Cited in: [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.7.3
 correction to the Hellmann–Feynman force.
 
 The Pulay force is the correction to the Hellmann–Feynman
-formula that arises in a *finite, atom-centre`d*` basis. The
+formula that arises in a *finite, atom-centre`d*' basis. The
 basis functions $\chi_\mu(\mathbf r; \mathbf R)$ depend on
 the nuclear coordinates through their centres
 $\mathbf A_\mu = \mathbf R_{I(\mu)}$, so
@@ -1294,7 +1294,7 @@ et al. above superseded this for the formalism.
 The five monographs that should sit on the shelf of anyone
 working in electronic-structure theory. They are not cited in
 the chapters directly — the chapters are self-contained — but
-they are the *next ste`p*` after these notes for a reader who
+they are the *next ste`p*' after these notes for a reader who
 wants the full mathematical apparatus, the historical context,
 or the production-code perspective.
 
@@ -1363,7 +1363,7 @@ edition: *Dover Publications*: Mineola, NY, **1996**; 480 pp.
 ISBN: 978-0-486-69186-2.
 URL: <https://store.doverpublications.com/9780486691862.html>.
 
-The standard introduction to *wavefunction-base`d*` quantum
+The standard introduction to *wavefunction-base`d*' quantum
 chemistry. Covers the postulates, the hydrogen atom, the
 Hartree–Fock method, the Roothaan–Hall equations, electron
 correlation (CI, MP, CC), and the Gaussian basis, with worked

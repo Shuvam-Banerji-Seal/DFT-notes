@@ -37,10 +37,10 @@ Hilbert space, the canonical commutation relations, the spectral
 theorem, and functions of operators such as the time-evolution
 operator $\hat U(t) = e^{-i\hat H t}$ (section 1.10) — and uses
 it to re-derive the time-evolution propagator, the stationary-state
-phase factor, and Fermi’s golden rule in operator language
+phase factor, and Fermi's golden rule in operator language
 (section 1.11). **(5)** Closes the formal foundation with a
 preview of the **symmetry and conservation-law** structure of
-quantum mechanics (section 1.12): Noether’s theorem, the
+quantum mechanics (section 1.12): Noether's theorem, the
 discrete symmetries of parity / time-reversal / particle–hole,
 and the selection rules they imply. The two exactly soluble
 many-body problems that anchor all of quantum chemistry are then
@@ -205,7 +205,7 @@ graph TD
 ```
 
 The solid arrows are "is-used-by"; the dashed arrows are
-"constrains". P1–P5 are the *kinemati`c*` postulates (they apply
+"constrains". P1–P5 are the *kinemati`c*' postulates (they apply
 to any quantum system); P6 is the *symmetry* postulate and is
 what makes *electronic-structure* theory distinct from the
 quantum mechanics of distinguishable particles.
@@ -358,7 +358,7 @@ exchange–correlation functionals.
 
 This chapter anchors every later one with five **exact** results
 that follow from the postulates alone: the operator formalism
-(commutators, spectral theorem, time-evolution operator) of section 1.10, the Dyson series and Fermi’s golden rule for time-dependent
+(commutators, spectral theorem, time-evolution operator) of section 1.10, the Dyson series and Fermi's golden rule for time-dependent
 perturbations (section 1.8), the time-dependent Schrödinger
 equation (section 1.7), the harmonic oscillator (section 1.9), and
 the hydrogen atom (section 1.13). All five are needed before we
@@ -456,7 +456,7 @@ $$
 which is postulate P5. Conversely, if the TDSE holds then
 $\mathcal L$ is *constant in time*, equal to $\langle E \rangle$
 for normalised states. The TDSE is therefore the unique
-dynamics that is consistent with **stationary action** *an`d*`
+dynamics that is consistent with **stationary action** *an`d*'
 **unitarity** (preservation of the inner product).
 
 > **Tip.** The Dirac–Frenkel action is the working horse of
@@ -1085,7 +1085,7 @@ The probabilities are Poissonian,
 $P_n = |\langle n | \alpha \rangle|^2 = e^{-|\alpha|^2} |\alpha|^{2n} / n!$,
 with mean photon number
 $\langle \hat n \rangle = |\alpha|^2$. The position-space
-wavefunction is a *displace`d*` Gaussian,
+wavefunction is a *displace`d*' Gaussian,
 
 $$
 \langle q | \alpha \rangle \;=\; \pi^{-1/4}\, \exp\!\Big[ -\tfrac{1}{2}(q - q_0)^2 + i p_0 (q - q_0/2) \Big] ,
@@ -1600,7 +1600,7 @@ is time-independent. This is the operator-level statement of
 the "stationary-state" property of section 1.11.3. > **Tip.** The energy-resolved expansion
 > \eqref{eq:ch-01-11-superposition} is a Fourier series in
 > $t$ with frequencies $\omega_{mn} = E_n - E_m$. A
-> *spectroscopi`c*` experiment measures the intensities
+> *spectroscopi`c*' experiment measures the intensities
 > $|A_{nm}|^2$ at these frequencies. The rest of these notes
 > (chapters 11, 12) is largely about how to compute these
 > matrix elements efficiently for the many-body case.
@@ -1627,7 +1627,7 @@ w_{i \to f} \;=\; \frac{2\pi}{\hbar}\,
 \tag{1.11.10}
 \end{equation}
 
-For a *monochromati`c*` perturbation
+For a *monochromati`c*' perturbation
 $\hat V(t) = \hat V\, e^{-i\omega t} + \hat V^\dagger e^{+i\omega t}$
 (a sinusoidal field, e.g. a laser), the
 conservation-of-energy delta function is replaced by
@@ -1860,7 +1860,7 @@ conservation laws that anchor the rest of these notes.
 > **Tip.** The "conservation law" in
 > \eqref{eq:ch-01-12-conserved} is an operator statement: the
 > *expectation value* $\langle \hat G \rangle$ is conserved,
-> *an`d*` every eigenstate of $\hat H$ can be chosen to be an
+> *an`d*' every eigenstate of $\hat H$ can be chosen to be an
 > eigenstate of $\hat G$. The latter is the *labelling*
 > principle used in section 1.10.3 to label atomic eigenstates
 > by $(\ell, m)$ in addition to $n$, or in chapter 2 to label
@@ -2019,7 +2019,7 @@ The selection rules and conservation laws of this section are
 largely about the *consequences* of those statements.
 
 - **[Chapter 14 — multi-reference methods]({{ "/dft-notes/chapter-14/" | relative_url }})**
-  will need to *brea`k*` (and sometimes restore) the symmetries
+  will need to *brea`k*' (and sometimes restore) the symmetries
   of $\hat H$ to capture the strong correlation that a single
   Slater determinant misses. Spontaneous symmetry breaking (a
   non-zero magnetisation in an antiferromagnet, a non-zero
@@ -2035,14 +2035,14 @@ largely about the *consequences* of those statements.
   **Chern number** of a 2-D insulator is invariant under
   continuous deformations that preserve the gap and the
   symmetry, the **$\mathbb Z_2$ invariant** of a
-  time-reversal-symmetric topological insulator is *quantise`d*`
+  time-reversal-symmetric topological insulator is *quantise`d*'
   by Kramers' theorem, and **crystalline topological
   insulators** are protected by the point-group symmetries of
   the lattice.
 
 For now, the takeaway is that every observable in the next
-fifteen chapters is either *constraine`d*` by a symmetry of
-$\hat H$ (selection rule, conservation law) or is *`a*`
+fifteen chapters is either *constraine`d*' by a symmetry of
+$\hat H$ (selection rule, conservation law) or is *`a*'
 symmetry generator (the magnetisation $\mathbf m$ is a
 generator of spin-rotation symmetry, the charge density
 $\rho$ is a generator of $U(1)$ phase symmetry, etc.).
@@ -2320,7 +2320,7 @@ $121.6\,$nm).
 
 > **Tip.** The degeneracy
 > $g_n = \sum_{\ell = 0}^{n-1} (2\ell + 1) = n^2$ is a
-> *hydrogen-specifi`c*` accident: it is broken by every correction
+> *hydrogen-specifi`c*' accident: it is broken by every correction
 > we have ignored (fine structure, Lamb shift, hyperfine, external
 > fields). It is *not* broken by electron–electron repulsion —
 > that one breaks $g_n$ down to the $g_n$ of the *highest* $\ell$
@@ -2394,7 +2394,7 @@ graph TD
 
 The left half of the diagram (Schrödinger → radial equation)
 is the *separation-of-variables* reduction; the right half
-(radial equation → R_{nℓ}) is the *asymptoti`c*` +
+(radial equation → R_{nℓ}) is the *asymptoti`c*' +
 *polynomial-truncation* argument. The quantisation box is the
 *only* place where the discrete quantum numbers $(n, \ell, m)$
 appear; the rest of the derivation is continuum analysis.
@@ -2676,7 +2676,7 @@ graph TD
   TISE --> PIB["§1.3 Particle in a box<br/>(minimal worked example)"]
   TISE --> OPS["§1.4 Operator alphabet<br/>(T, V_ext, U_ee, J, K, v_xc)"]
   TDSE --> VAR["TD variational principle<br/>(McLachlan)"]
-  TDSE --> DY["§1.8 Dyson series +<br/>Fermi’s golden rule"]
+  TDSE --> DY["§1.8 Dyson series +<br/>Fermi's golden rule"]
   TISE --> HO["§1.9 Harmonic oscillator<br/>(ladder operators)"]
   TISE --> H["§1.13 Hydrogen atom<br/>(Laguerre polynomial eigenfunctions)"]
   TISE --> OPS2["§1.10 Operator formalism<br/>(adjoint, CCR, spectral<br/>theorem, f(Â))"]
@@ -2942,7 +2942,7 @@ $$
 
 (Each integration over $x_j$ produces
 $\sqrt{\pi/(a+b)} \exp[ab(x_{j+1} - x_{j-1})^2/(a+b)]$
-— a Gaussian in the next separation, with a *renormalise`d*`
+— a Gaussian in the next separation, with a *renormalise`d*'
 coefficient. Iterating $N$ times accumulates the
 coefficients and gives (2).)
 
@@ -2998,7 +2998,7 @@ $$
 \;=\; \sqrt 2\, \operatorname{Im}\alpha .
 $$
 
-For the *square`d*` expectation values, use
+For the *square`d*' expectation values, use
 $(\hat a + \hat a^\dagger)^2 = \hat a^2 + (\hat a^\dagger)^2
 + 2 \hat a^\dagger \hat a + 1$ (using $[\hat a, \hat a^\dagger] = 1$).
 Take the expectation value in $|\alpha\rangle$:
@@ -3047,7 +3047,7 @@ $1/4$, but it is *not* constant. So coherent states are
 To see coherent states' classicality differently: a
 coherent state $|\alpha\rangle$ remains a coherent state
 $|\alpha e^{-i\omega t}\rangle$ under free evolution, and
-its *centroi`d*`
+its *centroi`d*'
 $\langle \hat x \rangle_t = \sqrt 2 \operatorname{Re}(\alpha e^{-i\omega t})$,
 $\langle \hat p\rangle_t = \sqrt 2 \operatorname{Im}(\alpha e^{-i\omega t})$
 orbits the classical ellipse $x^2 + p^2 = 2 |\alpha|^2$ in
@@ -3162,7 +3162,7 @@ related topics are out of scope here.
   Not in the Schrödinger equation; it requires QED.
 - **Identical-particle statistics for bosons.** P6 was used
   only for fermions. The treatment of bosons replaces the
-  Slater determinant by a *permanently symmetri`c*` product of
+  Slater determinant by a *permanently symmetri`c*' product of
   single-particle states and introduces Bose–Einstein
   condensation.
 - **Quantum field theory.** The TDSE is *first-quantise`d*`,

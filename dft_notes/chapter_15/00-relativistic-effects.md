@@ -33,7 +33,7 @@ have replaced the deep nuclear potential with a smooth effective
 one. That machinery is correct, and accurate, for every element
 up to about the middle of the periodic table. It is also
 qualitatively wrong for the heavy elements — for the lanthanides,
-the actinides, the 5*d*` transition metals, the 6p* post-
+the actinides, the 5*d*' transition metals, the 6p* post-
 transition metals, and the superheavies — and *quantitatively*
 wrong for almost everything that touches spin-orbit physics:
 Rashba-split surface states, topological-insulator band
@@ -703,7 +703,7 @@ on a hydrogenic orbital scales as
 \Bigl| \langle \hat H_\text{SO} \rangle \Bigr| \;\sim\; \frac{Z^4 \alpha^2}{n^3} \times \frac{1}{\ell(\ell+1)} \times E_h .
 \end{equation}
 
-The $1/(\ell(\ell+1))$ is a *kinemati`c*` angular-momentum
+The $1/(\ell(\ell+1))$ is a *kinemati`c*' angular-momentum
 factor; the leading $Z^4$ is the same as for the
 kinetic-relativistic and Darwin terms. For $\ell = 0$ the
 spin-orbit expectation value is zero (the L·S operator
@@ -758,7 +758,7 @@ state, at a surface, in an excited state) the
 cancellation breaks down, and the non-relativistic
 calculation is qualitatively wrong.
 
-> **Reading note.** The $Z^4$ rule is for *atomi`c*`
+> **Reading note.** The $Z^4$ rule is for *atomi`c*'
 > properties. *Molecular* relativistic effects are
 > smaller in absolute terms but the *fractional* change
 > can still be large. The Au–Au bond length contracts
@@ -816,7 +816,7 @@ the decoupling is
 \end{equation}
 
 where $\hat H_{--}$ is the (negative-energy) lower
-diagonal block of the *untransforme`d*` Hamiltonian, and
+diagonal block of the *untransforme`d*' Hamiltonian, and
 $\hat\Omega_\pm$ are normalisation factors that enforce
 $\hat U \hat U^\dagger = \hat 1$. The operator $\hat R$
 is the **ratio operator** that maps the large component
@@ -856,7 +856,7 @@ operator $\hat R$:
   quantum chemistry; DKH4, DKH6, … converge to the exact
   X2C limit.
 - **Zeroth-Order Regular Approximation (ZORA)** — the
-  *chea`p*` alternative. The kinetic energy is treated
+  *chea`p*' alternative. The kinetic energy is treated
   variationally with a regularised denominator that
   avoids the singularity at the nucleus; the
   approximation is exact to leading order in $1/c^2$ and
@@ -881,7 +881,7 @@ The Douglas–Kroll–Hess transformation [Douglas and
 Kroll 1974, Hess 1985, 1986] replaces the Taylor
 expansion of the ratio operator $\hat R$ with an *exact*
 square-root transformation. The starting point is the
-Dirac Hamiltonian in the *external-fiel`d*` form
+Dirac Hamiltonian in the *external-fiel`d*' form
 
 \begin{equation}
 \label{eq:ch-15-dkh-h}
@@ -964,7 +964,7 @@ transformation. The DKH2 Hamiltonian is the *exact*
 two-component Hamiltonian to second order in $1/c^2$,
 which is to say it reproduces the Pauli Hamiltonian
 \eqref{eq:ch-15-pauli-hamiltonian} to leading order in
-$Z\alpha$ but is *regularise`d*` near the nucleus where
+$Z\alpha$ but is *regularise`d*' near the nucleus where
 the Pauli expansion diverges. Higher-order DKH
 ($n$ = 3, 4, 5, …) converges rapidly to the exact
 X2C limit.
@@ -1003,7 +1003,7 @@ DFT error for the same system.
 ### 15.3.3 The Zero-Order Regular Approximation (ZORA)
 
 The ZORA Hamiltonian [Chang, Pelissier, Durand 1986;
-van Lenthe, Baerends, Snijders 1993] is the *chea`p*`
+van Lenthe, Baerends, Snijders 1993] is the *chea`p*'
 alternative to DKH and the *workhorse* of the Amsterdam
 Density Functional (ADF) code. The starting point is the
 Dirac equation in the *form of the small component*.
@@ -1046,10 +1046,10 @@ where the second term is the ZORA spin-orbit coupling
 \end{equation}
 
 The ZORA Hamiltonian is *not* a simple expansion in
-$1/c^2$. It contains the *regularise`d*` kinetic operator
+$1/c^2$. It contains the *regularise`d*' kinetic operator
 $\hat{\mathbf p}(1 + [v-E]/2mc^2)^{-1}\hat{\mathbf p} / 2m$,
-which is the *non-relativisti`c*` kinetic-energy operator
-*modifie`d*` by a position-dependent effective mass
+which is the *non-relativisti`c*' kinetic-energy operator
+*modifie`d*' by a position-dependent effective mass
 $m^*(r) = m (1 + [v(r) - E]/2mc^2)$. The effective mass
 is large where the potential is deep and negative (i.e.
 near the nucleus), which is the *physical* reason for
@@ -1083,7 +1083,7 @@ the method of choice in the ADF code.
 
 > where $\langle [v - E] \rangle$ is the expectation
 > value of $v - E$ on the orbital. The scaled ZORA is
-> exact to order $1/c^2$ *an`d*` has the correct $1/c^4$
+> exact to order $1/c^2$ *an`d*' has the correct $1/c^4$
 > behaviour in many limits. It is the recommended form
 > for production work in ADF.
 
@@ -1180,7 +1180,7 @@ nucleus).
 
 > **Reading note.** X2C is *exact* in the basis set
 > limit. The error of an X2C calculation is the
-> **basis-set error**, not the *metho`d*` error. For
+> **basis-set error**, not the *metho`d*' error. For
 > correlation-consistent basis sets (cc-pVnZ) the
 > X2C energy converges to the Dirac–Hartree–Fock /
 > Dirac–Kohn–Sham limit with the same convergence
@@ -1201,7 +1201,7 @@ spin-orbit term. The resulting Hamiltonian is
 *spin-independent*: the wavefunction remains a 2-component
 Pauli spinor, but the upper and lower components
 (spin-up and spin-down) are degenerate. The SR
-approximation captures all of the *kinemati`c*` relativistic
+approximation captures all of the *kinemati`c*' relativistic
 effects (orbital contraction and expansion) at a cost only
 marginally higher than the non-relativistic calculation.
 The remaining spin-orbit correction is then added either
@@ -1432,7 +1432,7 @@ generated by:
 The resulting pseudopotential is *channel-dependent* in
 the same way as the non-relativistic pseudopotential of
 [chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }}) §8.1, but it has the
-*relativisti`c*` orbital energies and wavefunctions baked
+*relativisti`c*' orbital energies and wavefunctions baked
 in. When this pseudopotential is used in a
 non-relativistic molecular calculation, the resulting
 valence eigenvalues and wavefunctions are *the
@@ -1462,15 +1462,15 @@ the SR approximation is *qualitatively* wrong (the
 fully-relativistic pseudopotential (§15.5.4) must be
 used.
 
-> **Tip.** A *roug`h*` but useful test of whether an
+> **Tip.** A *roug`h*' but useful test of whether an
 > element needs spin-orbit coupling is the magnitude
-> of its 5*d*` or 6p* spin-orbit splitting in the atomic
+> of its 5*d*' or 6p* spin-orbit splitting in the atomic
 > spectrum. If the splitting is $\gtrsim 0.1$ eV, the
 > spin-orbit correction is *qualitatively* important
 > for any property that distinguishes the two
-> components. The 5*`d*` splitting is $\sim 0.4$ eV for
+> components. The 5*`d*' splitting is $\sim 0.4$ eV for
 > Y, $\sim 1.0$ eV for Nb, $\sim 1.5$ eV for La, and
-> $\sim 3$ eV for Pt — every 5*`d*` element has a
+> $\sim 3$ eV for Pt — every 5*`d*' element has a
 > non-negligible spin-orbit correction, and Pt and Au
 > are spin-orbit-dominated.
 
@@ -1541,7 +1541,7 @@ the same as the non-relativistic $p$ shell.
 
 The **Hund's rules** that govern the ground-state term
 of an open-shell atom in the non-relativistic limit are
-*modifie`d*` by SOC. In the $jj$-coupling limit (heavy
+*modifie`d*' by SOC. In the $jj$-coupling limit (heavy
 elements) the rules are:
 
 1. Fill the $j = \ell + 1/2$ and $j = \ell - 1/2$ levels
@@ -1668,7 +1668,7 @@ pseudopotential of §15.4.4 and the second is the
 **on-site spin-orbit term** that acts only on the
 angular-momentum channel $\ell$. The
 $V_\text{ps,}\ell^\text{SO}(r)$ is determined by inverting
-the *fully-relativisti`c*` Dirac equation for the isolated
+the *fully-relativisti`c*' Dirac equation for the isolated
 atom (not the scalar-relativistic reduction), and
 extracting the $\hat{\mathbf L} \cdot \hat{\mathbf S}$
 component of the effective potential.
@@ -1746,9 +1746,9 @@ The modern production approach in plane-wave DFT is
 
 The fully-relativistic PAW pseudopotential is the
 *default* in VASP, Quantum ESPRESSO (with the
-`upf` format), and ABINIT for the 5*d*` and 6p*
+`upf` format), and ABINIT for the 5*d*' and 6p*
 elements. The standard PBE pseudopotentials in these
-libraries include SOC for the 4*`d*` row and beyond, and
+libraries include SOC for the 4*`d*' row and beyond, and
 the SOC can be turned on or off by a single keyword
 (`LNONCOLLINEAR = .TRUE.` in VASP,
 `noncolin = .TRUE.` in Quantum ESPRESSO).
@@ -1766,7 +1766,7 @@ pseudopotential are:
   not contain the full all-electron wavefunction near
   the nucleus; the SOC splitting is therefore
   under-estimated by $\sim 0.1$–$1\%$ for valence $p$
-  and $d$ states. This is *muc`h*` smaller than the
+  and $d$ states. This is *muc`h*' smaller than the
   pseudopotential transferability error.
 - The **MF-SOC** error: the two-electron SOC is in the
   mean-field approximation, not the full Breit–Pauli.
@@ -1797,7 +1797,7 @@ conductivity).
 
 The Kohn–Sham DFT of
 [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) is a
-*non-relativisti`c*` theory: the Hamiltonian is the
+*non-relativisti`c*' theory: the Hamiltonian is the
 non-relativistic Schrödinger Hamiltonian, the orbitals
 are scalar spatial functions, and the XC energy is a
 functional of the density alone. The relativistic
@@ -1811,7 +1811,7 @@ single-particle problem in an effective potential that
 is a functional derivative of the energy with respect
 to the basic variable — is unchanged.
 
-This section is the *ma`p*` of the relativistic DFT
+This section is the *ma`p*' of the relativistic DFT
 landscape. We will, in order: state the
 **Dirac–Kohn–Sham** equations (the 4-component
 generalisation), state the **two-component KS**
@@ -1839,7 +1839,7 @@ Hamiltonian of \eqref{eq:ch-15-dirac-hamiltonian}:
 
 where $v_\text{eff}(\mathbf r) = v_\text{ext}(\mathbf r) + v_\text{H}[n](\mathbf r) + v_\text{xc}[n](\mathbf r)$
 is the *same* KS effective potential as in the
-non-relativistic case, evaluated on the *relativisti`c*`
+non-relativistic case, evaluated on the *relativisti`c*'
 density
 
 \begin{equation}
@@ -1849,7 +1849,7 @@ n(\mathbf r) \;=\; \sum_{i\,\text{occ}} \Psi_i^\dagger(\mathbf r)\, \Psi_i(\math
 
 The DKS equations are *exact* in the sense that they
 reproduce the *positive-energy* spectrum of the
-*relativisti`c*` interacting Hamiltonian, provided the
+*relativisti`c*' interacting Hamiltonian, provided the
 exact $v_\text{xc}[n]$ is used. The Hohenberg–Kohn
 theorem of [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) has a
 relativistic generalisation: the ground-state 4-current
@@ -1866,8 +1866,8 @@ relativistic generalisation of the LSDA, GGA, or
 hybrid functional as in the non-relativistic case.
 This is the **no-pair** approximation: we ignore the
 contribution of the negative-energy (positron) states
-to the XC energy, and we use the *non-relativisti`c*`
-form of $E_\text{xc}[n]$ evaluated on the *relativisti`c*`
+to the XC energy, and we use the *non-relativisti`c*'
+form of $E_\text{xc}[n]$ evaluated on the *relativisti`c*'
 density. The no-pair approximation is exact to
 leading order in $1/c^2$ (the corrections are $O(1/c^4)$
 and are small for chemistry), and it is the standard
@@ -1882,7 +1882,7 @@ is $2 \times 2 = 4$ for the spin times $2$ for the
 small/large block). For a heavy-element system the
 basis-set size grows, and the prefactor can reach
 $\sim 32\times$ for an actinide complex. The DKS
-method is therefore used primarily in *benchmar`k*`
+method is therefore used primarily in *benchmar`k*'
 calculations on small systems, and the *practical*
 method is the two-component reduction of §15.3. ### 15.6.2 Two-component relativistic DFT
 
@@ -1928,7 +1928,7 @@ and the magnetisation is
 The 2c-KS equations are solved self-consistently in
 the same way as the non-collinear KS equations of
 [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.8.4, with the
-addition that the Hamiltonian $\hat H_+$ is *itsel`f*`
+addition that the Hamiltonian $\hat H_+$ is *itsel`f*'
 density-dependent (because the X2C transformation
 depends on the kinetic-energy matrix $T_{\mu\nu}$).
 The self-consistency loop therefore contains a
@@ -1954,7 +1954,7 @@ error of $\sim 0.1$–$1$ eV.
 The non-relativistic Hohenberg–Kohn theorem of
 [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) is a *density* theorem: the
 ground-state density uniquely determines the external
-potential (and hence all observables). The *relativisti`c*`
+potential (and hence all observables). The *relativisti`c*'
 Hohenberg–Kohn theorem is a **4-current** theorem: the
 ground-state 4-current
 $\hat j^\mu = (c\,n, c\,\mathbf j)$ uniquely determines
@@ -1985,7 +1985,7 @@ $v_\text{xc} = \delta E_\text{xc}/\delta n$ (the same
 as the non-relativistic XC potential) and a vector
 part $\mathbf A_\text{xc} = \delta E_\text{xc}/\delta \mathbf j_p$
 (the **XC magnetic field**). The XC magnetic field is
-the *relativisti`c*` generalisation of the $\mathbf B_\text{xc}$
+the *relativisti`c*' generalisation of the $\mathbf B_\text{xc}$
 of [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.8.4; in the non-relativistic
 limit it reduces to the familiar $B_\text{xc}$ of
 non-collinear spin DFT.
@@ -1996,7 +1996,7 @@ DFT. The simpler "density-only" generalisations
 extra variable) are *approximations* that ignore the
 current-dependence of the XC functional. The
 current-dependence of $E_\text{xc}$ is small for
-*atomic*` and molecular systems (the current is
+*atomic*' and molecular systems (the current is
 localised to the bond region and the current-coupling
 to the XC functional is $\sim 1$–$5\%$ of the
 spin-coupling), but it is *essential* for the
@@ -2059,7 +2059,7 @@ The Kramers degeneracy is the *only* degeneracy that
 perturbation. In a crystal, the Kramers degeneracy
 splits at the $\Gamma$ point (where the two states
 can be mixed by a $\mathbf k \cdot \mathbf p$ coupling)
-but is preserved at every *generi`c*` $\mathbf k$ point
+but is preserved at every *generi`c*' $\mathbf k$ point
 in the Brillouin zone (away from time-reversal-
 invariant momenta). In a molecule, the Kramers
 degeneracy splits in a magnetic field (which breaks
@@ -2195,7 +2195,7 @@ $\sim 3.0$ Å and a binding energy of $\sim 1.6$ eV. The
 Au–Au bond is too *long* (the missing relativistic
 contraction of the 6*s* orbital means the valence
 electrons do not feel the full nuclear attraction) and
-too *wea`k*` (the longer bond has less orbital overlap).
+too *wea`k*' (the longer bond has less orbital overlap).
 The non-relativistic calculation is qualitatively
 *wrong* — it predicts an Au–Au bond length comparable
 to the Ag–Ag bond length (which is $\sim 2.5$ Å but
@@ -2208,10 +2208,10 @@ pseudopotential (the SR terms of
 \eqref{eq:ch-15-sr-hamiltonian} but no spin-orbit
 coupling) on Au₂ gives a bond length of $\sim 2.55$ Å
 and a binding energy of $\sim 2.10$ eV. The 6*s*
-orbital is contracted by $\sim 22\%$, the 5*`d*` orbital
+orbital is contracted by $\sim 22\%$, the 5*`d*' orbital
 is expanded by $\sim 5\%$, and the Au–Au bond is
 *shorter* and stronger than the non-relativistic
-prediction. The SR calculation reproduces the *tren`d*`
+prediction. The SR calculation reproduces the *tren`d*'
 correctly but is still off by $\sim 0.08$ Å in the bond
 length and $\sim 0.20$ eV in the binding energy.
 
@@ -2228,7 +2228,7 @@ values to within $\sim 0.01$ Å and $\sim 0.05$ eV.
 The **physical mechanism** of the Au₂ relativistic
 chemistry is the relativistic contraction of the 6*s*
 orbital and the corresponding destabilisation of the
-5*d*` orbital. The 6s orbital of gold is the
+5*d*' orbital. The 6s orbital of gold is the
 outermost occupied orbital; its contraction moves
 electron density closer to the nucleus and *increases*
 the 6*s* binding energy. The 5d* orbital of gold is
@@ -2274,7 +2274,7 @@ self-consistent-field calculation of Pitzer (1975).
 >    polynomial; extract $r_e$ and $D_e$.
 
 > **Reading note.** The Au₂ example illustrates the
-> *rule of thum`b*` that the relativistic effects grow
+> *rule of thum`b*' that the relativistic effects grow
 > as $Z^4$. Silver ($Z = 47$) has a
 > $Z^4 / Z^4_\text{Au} = (47/79)^4 = 0.13$ correction
 > — much smaller than gold's, and a non-relativistic
@@ -2287,10 +2287,10 @@ self-consistent-field calculation of Pitzer (1975).
 
 The **spin Hall effect** (SHE) is the generation of a
 spin current transverse to an applied electric field in
-a non-magnetic material. The *intrinsi`c*` SHE is a
+a non-magnetic material. The *intrinsi`c*' SHE is a
 property of the band structure: the Berry curvature of
 the Bloch states in a spin-orbit-coupled metal acts as
-a *fictitious magnetic fiel`d*` in momentum space, and
+a *fictitious magnetic fiel`d*' in momentum space, and
 electrons in filled bands execute an anomalous Hall
 motion that adds up to a macroscopic spin current. The
 **spin Hall conductivity** $\sigma_{xy}^s$ is the
@@ -2338,13 +2338,13 @@ $\sum_m 2\text{Im}[\dots]/(\varepsilon_n - \varepsilon_m)^2$ is
 the **spin Berry curvature** of the Kramers pair.
 
 > **Reading note.** The sum over $m$ in
-> \eqref{eq:ch-15-shc-kubo} includes *unoccupie`d*` states
+> \eqref{eq:ch-15-shc-kubo} includes *unoccupie`d*' states
 > as well as occupied; the spin Berry curvature is a
 > sum over *all* states, weighted by the energy
 > denominator. The intrinsic SHE is therefore a
 > *band-structure* property, not a Fermi-surface
 > property — the contribution comes from the
-> *filled*` bands (which set the occupied* part of
+> *filled*' bands (which set the occupied* part of
 > the sum) and from the *coupling* to the empty
 > bands. The intrinsic SHE is *large* in materials
 > with a *small* band gap near the Fermi level,
@@ -2382,7 +2382,7 @@ hallmark signatures of a topological insulator (the
 other being the *helical edge states*).
 
 > **The Pt calculation.** Pt is a strong
-> spin-orbit-coupled metal (5*`d*` SOC splitting
+> spin-orbit-coupled metal (5*`d*' SOC splitting
 > $\sim 1.5$ eV) with a large intrinsic spin Hall
 > conductivity. The experimental value, measured by
 > spin-torque ferromagnetic resonance [Liu et al.
@@ -2394,17 +2394,17 @@ other being the *helical edge states*).
 > mesh gives
 > $\sigma_{xy}^s \approx 2200\;(\hbar/e)(\Omega\,\text{m})^{-1}$,
 > in good agreement with the experiment. The
-> *non-relativisti`c*` calculation (no SOC) gives
+> *non-relativisti`c*' calculation (no SOC) gives
 > $\sigma_{xy}^s = 0$ by symmetry, because the spin
 > current operator $\hat j_x^s$ is identically zero
 > for a non-relativistic Hamiltonian with $\hat s_x$
 > as a good quantum number. The spin Hall effect
-> is therefore a *purely relativisti`c*` effect — it
+> is therefore a *purely relativisti`c*' effect — it
 > cannot be computed without spin-orbit coupling.
 >
 > The dominant contribution to the Pt spin Hall
 > conductivity comes from the *resonant* avoided
-> crossings of the 5*`d*` bands near the Fermi level
+> crossings of the 5*`d*' bands near the Fermi level
 > (the so-called "Kane-Mele" resonances of the FCC
 > Pt Brillouin zone). The Berry curvature is
 > sharply peaked at these avoided crossings, and the
@@ -2463,7 +2463,7 @@ This is $\sim 1/17$ of the spin Hall conductivity
 quantum $e^2/h$, i.e. a $\mathbb Z_2$ invariant of
 $\nu = 0$ with a *non-zero* but not quantised*
 spin Hall conductivity. Pt is therefore a *trivial*
-metal with a large *non-quantise`d*` intrinsic spin
+metal with a large *non-quantise`d*' intrinsic spin
 Hall conductivity — the *opposite* limit of a
 topological insulator (which has $\sigma_{xy}^s$
 quantised to a multiple of $e^2/h$ and a $\mathbb Z_2$
@@ -2477,7 +2477,7 @@ invariant of $\nu = 1$).
 > non-trivial $\mathbb Z_2$ invariant — see
 > [chapter 16]({{ "/dft-notes/chapter-16/" | relative_url }}) for the
 > full discussion. The point of the Pt example is
-> that the *intrinsi`c*` spin Hall effect is a
+> that the *intrinsi`c*' spin Hall effect is a
 > measurable, first-principles property of a
 > spin-orbit-coupled metal that cannot be computed
 > without the relativistic machinery of this chapter.
@@ -2560,7 +2560,7 @@ $5d$ splitting is the most important (because the $5d$
 electrons are the *valence* electrons of Au), and in
 the chemistry of Pb, the $6p$ splitting is the most
 important. The general rule is that the spin-orbit
-splitting is largest for the *outermost occupie`d*`
+splitting is largest for the *outermost occupie`d*'
 shell of the atom.
 </details>
 
@@ -2595,8 +2595,8 @@ Morse parameter $a$ at each level and explain the trend.
 (c) The *zero-point energy* of the Morse oscillator is
 $\text{ZPE} = \tfrac{1}{2}\hbar\omega_e - (\hbar\omega_e)^2 / (4 D_e)$.
 Compute the ZPE at each level and explain why the
-*relativistic*` ZPE is larger than the
-*non-relativisti`c*` ZPE.
+*relativistic*' ZPE is larger than the
+*non-relativisti`c*' ZPE.
 
 </details>
 
@@ -2671,7 +2671,7 @@ room temperature, which is $D_0 = D_e - \text{ZPE} + k_B T$
 ($\sim 0.026$ eV at 300 K). The ZPE and thermal
 corrections together shift the experimental $D_e$ by
 $\sim 0.04$ eV, which is larger than the
-*non-relativisti`c*` correction to the Au–Au bond
+*non-relativisti`c*' correction to the Au–Au bond
 energy.
 </details>
 
@@ -2713,7 +2713,7 @@ $\sigma_{xy}^s = e^2/h$ (the $\mathbb Z_2$ topological
 invariant of §15.8).
 
 *Hint*: at every $\mathbf k$, the two spin blocks
-$\uparrow$ and $\downarrow$ are *decouple`d*` (because
+$\uparrow$ and $\downarrow$ are *decouple`d*' (because
 $\sigma_z s_z$ is diagonal in the spin basis). Each
 block is a 2-band model in the orbital basis, and the
 Chern number of each block can be computed from the
@@ -2763,7 +2763,7 @@ $\uparrow$ state at $\mathbf k$ and the $\downarrow$ state at $-\mathbf k$ are
 particular, the energies come in Kramers pairs
 $\varepsilon_\pm(\mathbf k) = \varepsilon_\pm(-\mathbf k)$.
 
-**Part (b).** The two spin blocks are *decouple`d*` and
+**Part (b).** The two spin blocks are *decouple`d*' and
 each is a 2-band model in the orbital basis. The
 $\uparrow$-spin block has Hamiltonian
 $\hat H_\uparrow(\mathbf k) = d_0 \mathbf 1 + d_z \sigma_z$,
@@ -2786,7 +2786,7 @@ $$
 
 is also *zero* for this particular model (because the
 two spin blocks have the same Berry curvature, just
-with opposite sign of $d_z$). This is the *expecte`d*`
+with opposite sign of $d_z$). This is the *expecte`d*'
 result for the Kane–Mele model on a *bipartite*
 square lattice: the spin Chern number is non-zero on
 the honeycomb lattice (the Kane–Mele model *par
@@ -2799,18 +2799,18 @@ Kane–Mele model on the square lattice is therefore
 either a Rashba spin-orbit term (which breaks
 inversion symmetry) or a second-neighbour hopping
 (which makes the lattice non-bipartite). The
-*quantise`d*` spin Hall conductivity of $e^2/h$ is
+*quantise`d*' spin Hall conductivity of $e^2/h$ is
 obtained in the **Bernevig–Hughes–Zhang (BHZ) model**
 of the HgTe quantum well, which is a Kane–Mele-type
-model on a *honeycom`b*` lattice with intrinsic SOC
+model on a *honeycom`b*' lattice with intrinsic SOC
 that opens a *non-trivial* gap. The BHZ model is the
 *prototypical* 2-D topological insulator; see
 [chapter 16]({{ "/dft-notes/chapter-16/" | relative_url }}) §16.3
 for the full discussion. The lesson is that the
-*intrinsic*` spin Hall effect is topological in
+*intrinsic*' spin Hall effect is topological in
 origin: a *clean*, time-reversal-invariant, gapped
 system has a $\mathbb Z_2$ invariant, and the spin
-Hall conductivity is *quantise`d*` in units of $e^2/h$
+Hall conductivity is *quantise`d*' in units of $e^2/h$
 to that invariant.
 </details>
 
@@ -2825,7 +2825,7 @@ to that invariant.
   (§4.9.3), and the spin-orbit-coupled KS DFT
   (§4.9.4) are all the *raw material* of the present
   chapter. The current chapter derives these results
-  *from scratc`h*` (from the relativistic energy-
+  *from scratc`h*' (from the relativistic energy-
   momentum relation) and generalises them to the
   modern two-component and four-component machinery.
 - [Chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }})
@@ -2867,11 +2867,11 @@ to that invariant.
   anisotropy* — the preferred direction of the
   magnetisation in a magnetic material, which is
   the source of the permanent magnet. The
-  *anisotropi`c*` part of the magnetic energy is
+  *anisotropi`c*' part of the magnetic energy is
   $E_\text{aniso} \sim \xi \langle \hat L \cdot \hat S \rangle$,
   and the *preference* of the magnetisation for one
   crystallographic direction over another is a
-  *relativisti`c*` effect (it would vanish in the
+  *relativisti`c*' effect (it would vanish in the
   non-relativistic limit).
 
 ## 15.11 What we left out
@@ -2885,7 +2885,7 @@ DFT, but the following topics were not covered.
   an external potential. The *true* relativistic
   theory of electrons is *quantum electrodynamics*
   (QED), in which the electromagnetic field is
-  *quantise`d*` and the vacuum fluctuates. The QED
+  *quantise`d*' and the vacuum fluctuates. The QED
   corrections to atomic energies are the **Lamb
   shift** (the $2s_{1/2}$–$2p_{1/2}$ splitting of
   hydrogen, $\sim 4.4 \times 10^{-6}$ eV) and the
@@ -2896,7 +2896,7 @@ DFT, but the following topics were not covered.
 
 - **The Breit interaction in detail.** The
   Breit–Pauli operator of \eqref{eq:ch-15-breit-pauli}
-  is the *non-relativistic*` limit of the full
+  is the *non-relativistic*' limit of the full
   two-electron relativistic interaction. The full
   two-electron interaction includes the **Breit
   interaction** (a relativistic correction to the
@@ -2915,7 +2915,7 @@ DFT, but the following topics were not covered.
   describe *positrons* (or, in the no-pair
   approximation, are projected out of the spectrum).
   In *quantum electrodynamics*, the negative-energy
-  states are *occupie`d*` (the Dirac sea), and the
+  states are *occupie`d*' (the Dirac sea), and the
   *holes* in the Dirac sea are the positrons. The
   *positron* is not a chemical object (it is unstable
   in matter), but *positron annihilation*
@@ -2934,7 +2934,7 @@ DFT, but the following topics were not covered.
   $O((Z\alpha)^4)$) but is *important* for property
   operators (hyperfine coupling, NMR chemical shift,
   contact density). The picture-change correction is
-  *standar`d*` in modern X2C codes (ORCA, NWChem) but
+  *standar`d*' in modern X2C codes (ORCA, NWChem) but
   we did not derive it.
 
 - **The Breit–Pauli two-electron spin-orbit
@@ -2942,11 +2942,11 @@ DFT, but the following topics were not covered.
   of \eqref{eq:ch-15-so-other} is the *full* two-
   electron Breit–Pauli operator, including the
   spin-other-orbit, orbit-orbit, spin-spin, and
-  contact terms. The *mean-fiel`d*` approximation of
+  contact terms. The *mean-fiel`d*' approximation of
   \eqref{eq:ch-15-soc-mf} is the practical
   implementation, but the *full* two-electron
   treatment (the Dirac–Hartree–Fock / Dirac–KS
-  with the Breit interaction) is the *benchmar`k*`
+  with the Breit interaction) is the *benchmar`k*'
   for high-accuracy calculations on small systems.
   We did not cover the Dirac–Hartree–Fock /
   Dirac–KS with Breit.

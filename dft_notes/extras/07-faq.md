@@ -126,7 +126,7 @@ real numbers per grid point — vastly more than any computer
 can store.  All measurable quantities are expectation values
 \(\langle \hat A \rangle = \langle \Psi \rvert \hat A \rvert \Psi \rangle\);
 the wavefunction evolves under the time-dependent Schrödinger
-equation.  DFT's big theoretical move is to *avoi`d*` the
+equation.  DFT's big theoretical move is to *avoi`d*' the
 wavefunction and work with the one-electron density
 \(\rho(\mathbf r)\) instead, which lives in ordinary 3-D space
 and is enormously cheaper to store and manipulate.
@@ -174,8 +174,8 @@ anything bigger, approximation is unavoidable.
 The Born–Oppenheimer (BO) approximation **decouples the
 electrons from the nuclei** by exploiting the fact that a
 proton is ~1836 times heavier than an electron, so the
-electrons move *muc`h*` faster.  The approximation treats the
-nuclei as classical, point-like, *fixe`d*` sources of an external
+electrons move *muc`h*' faster.  The approximation treats the
+nuclei as classical, point-like, *fixe`d*' sources of an external
 potential \(v_\text{ext}(\mathbf r) = -\sum_A Z_A / |\mathbf r -
 \mathbf R_A|\); the electronic Schrödinger equation is then
 solved for each nuclear geometry \(\{\mathbf R_A\}\) separately.
@@ -255,7 +255,7 @@ finite differences or DFPT); **elastic constants and moduli**;
 sites, polymorphs, reaction paths); **band structures and DOS**
 of semiconductors and metals (with caveats on the gap);
 **charge densities, dipoles, ESPs** for qualitative chemistry.
-DFT is *less goo`d*` for: **band gaps** of semiconductors and
+DFT is *less goo`d*' for: **band gaps** of semiconductors and
 insulators (typically 30–50 % too small with semilocal
 functionals, fixable with hybrids or $GW$); **weak
 interactions** (van der Waals / dispersion — needs a
@@ -457,7 +457,7 @@ practice, the SCF loop is iterated until convergence:
 
 The map \(\mathcal F\) is the **SCF map**; its fixed point is
 the self-consistent solution.  Convergence can be
-*accelerate`d*` by density mixing (Pulay, Broyden, DIIS); see
+*accelerate`d*' by density mixing (Pulay, Broyden, DIIS); see
 [Chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }})
 §4.6. "SCF" stands for "self-consistent field" — a
 historical name from the Hartree–Fock days.
@@ -601,7 +601,7 @@ as you tighten the numerical parameters.  Recipe:
    tolerance; solids: k-point mesh, then plane-wave cutoff,
    then smearing width, then SCF tolerance.
 3. **Plot the quantity vs. parameter** on a log scale; pick
-   the value at which the curve plateaus *an`d*` is still
+   the value at which the curve plateaus *an`d*' is still
    affordable.  A monotonic improvement without a plateau
    means you are not yet converged.
 4. **Add a safety margin**: take the smallest converged
@@ -748,7 +748,7 @@ there.  **Geometry optimisation** finds a *stationary point*
 iteratively following the forces until they fall below some
 tolerance (typically 10 meV/Å).  The output is a single
 geometry and its energy.  Algorithms: steepest descent,
-conjugate gradient, BFGS, L-BFGS.  *Transition-state searc`h*`
+conjugate gradient, BFGS, L-BFGS.  *Transition-state searc`h*'
 is the same idea but targets a saddle point.  **Molecular
 dynamics (MD)** propagates the nuclei *classically*
 (Newton's second law) or *quantum-mechanically*
@@ -852,7 +852,7 @@ an on-site Coulomb penalty to localised $d$ states).  **$GW$**
 band structures; expensive.  The first thing to try is HSE06
 (solids) or PBE0 (molecules).  If your gap is *zero* (metallic)
 when the material is known to be an insulator, check that you
-have a spin-polarised calculation *i`f*` the gap is
+have a spin-polarised calculation *i`f*' the gap is
 correlation-driven (NiO, MnO).
 
 **See:** [Chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.4 (hybrids), §5.5 (range-separated); [Chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }}) §11.4
@@ -910,7 +910,7 @@ the geometry is closer to a transition state; try a different
 starting point, or use a transition-state search.  **The
 unit cell is also relaxing** (cell optimisation) with the
 wrong optimiser; use the variable-cell LBFGS / BFGS, not
-steepest descent.  If the oscillation is *periodi`c*` with two
+steepest descent.  If the oscillation is *periodi`c*' with two
 geometries alternating, you are probably bouncing back and
 forth across a saddle.  Damp the step, or change the
 algorithm.
@@ -962,7 +962,7 @@ A "different result" can mean:
   the convergence threshold are normal; differences above it
   mean at least one code is wrong.
 - **Different geometry** (after "optimisation").  Most codes
-  will find the same minimum *i`f*` the convergence parameters
+  will find the same minimum *i`f*' the convergence parameters
   match; small (\(<0.001\) Å) differences are normal; larger
   ones usually mean one of the calculations did not actually
   converge.

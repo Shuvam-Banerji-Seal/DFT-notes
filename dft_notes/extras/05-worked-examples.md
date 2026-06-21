@@ -225,7 +225,7 @@ with `scipy.linalg.eigh(F, S)`.
   - **Converged HF energy: $E_\text{tot} = -1.1167\,E_h$** (Szabo & Ostlund, table 3.5).
   - SCF converges in 3 iterations from $\mathbf P = \mathbf 0$.
 
-> **Tip.**  This calculation is the *single most quote`d*`
+> **Tip.**  This calculation is the *single most quote`d*'
 > number in introductory quantum chemistry. It is also the
 > reference point for every KS calculation that follows
 > in the notes: a HF/KS-DFT result on H₂ in a minimal basis
@@ -305,7 +305,7 @@ The SCF loop is otherwise identical in shape to HF.
   DIIS.
 
 > **Tip.**  The shape of the loop in §4.4 is the
-> *proto-loo`p*` of every production DFT code.  The
+> *proto-loo`p*' of every production DFT code.  The
 > differences between codes (Gaussian vs. plane-wave, all-
 > electron vs. pseudopotential, serial vs. parallel) are
 > all hiding inside the two lines that build $\mathbf J$
@@ -1177,7 +1177,7 @@ The acoustic branch is a sound wave (linear in $q$ at
 small $q$, zero frequency at $\Gamma$). The optical
 branch sits at finite frequency at $\Gamma$ (a
 long-wavelength out-of-phase oscillation of the two
-atoms in the unit cell) and *degenerates wit`h*` the
+atoms in the unit cell) and *degenerates wit`h*' the
 acoustic branch at the BZ boundary $q = \pi/a$ in the
 *equal-mass* limit (where the chain becomes
 monatomic); with $m_1 \ne m_2$ the two branches
@@ -1431,7 +1431,7 @@ delta-kick initial condition, followed by a Fourier
 transform of the time-dependent dipole that yields the
 same Lorentzian. The agreement of the two halves is the
 sanity check that the TDDFT machinery of chapter 12
-(linear response *an`d*` real time) gives the same answer.
+(linear response *an`d*' real time) gives the same answer.
 
 ### 8.1 Two-level absorption spectrum
 

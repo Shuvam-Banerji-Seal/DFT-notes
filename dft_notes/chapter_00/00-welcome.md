@@ -74,7 +74,7 @@ Every algebraic step in every chapter appears in the chapter.  If a
 step is purely mechanical (expand, distribute, collect) it is
 labelled as such in one line, but the result is still written out.
 This is the only reliable way to be sure the math is correct, and
-it is the only reliable way for a reader to *chec`k*` the math is
+it is the only reliable way for a reader to *chec`k*' the math is
 correct.  If you ever find a derivation in these notes that skips a
 step in violation of this rule, please open an issue.
 
@@ -93,7 +93,7 @@ Chapters cross-reference each other with two distinct signals:
 
 In both cases, the link is to a *chapter*, never to a section
 within a chapter.  This is so the dependency graph stays legible
-(see *Roadma`p*` below).  If a section-level link seems essential,
+(see *Roadma`p*' below).  If a section-level link seems essential,
 that is usually a sign the chapter should be split.
 
 ### The "catch" is woven through
@@ -118,7 +118,7 @@ where the lived experience of the topic lives.
 
 DFT, at the level of these notes, draws on roughly **five
 mathematical subjects** at the undergraduate / first-year-graduate
-level.  Below, each is broken into the *specifi`c*` pieces the
+level.  Below, each is broken into the *specifi`c*' pieces the
 notes will use, with a one-sentence statement of what the reader
 should be able to do with each piece.  Nothing in the list is
 exotic; everything is taught in standard curricula and is
@@ -230,7 +230,7 @@ re-stated as it is used.
   reference point in DFT.  You should know the energy levels
   $E_n = -1/(2 n^2)\,E_h$ and the form of the 1s, 2s, 2p
   orbitals.  The 1s density is plotted by the
-  *hello worl`d*` program in the next section.
+  *hello worl`d*' program in the next section.
 
 ## Programming prerequisites
 
@@ -361,7 +361,7 @@ detail to expect*, and *what the reader should take away.
 
 The chapter opens with **the headline result** — the one equation
 the reader should remember a year from now.  It is always a
-*numbere`d*` equation (`\begin{equation} ... \label{eq:ch-NN-headline}
+*numbere`d*' equation (`\begin{equation} ... \label{eq:ch-NN-headline}
 ...\end{equation}`), and the body of the chapter cross-references it
 with `\eqref{eq:ch-NN-headline}`.  In chapter 06 the claim is the
 Roothaan–Hall equation $\mathbf F \mathbf C = \mathbf S \mathbf C
@@ -443,8 +443,8 @@ corresponds to.
 ### 5. Worked example
 
 A **fully worked numerical example** that takes the chapter's
-general result and applies it to a *specifi`c*` system with
-*specifi`c*` numbers.  Every quantity has a numerical value; every
+general result and applies it to a *specifi`c*' system with
+*specifi`c*' numbers.  Every quantity has a numerical value; every
 intermediate result is shown; the final answer is stated.  The
 example should be small enough to verify by hand (in principle)
 and large enough to exercise the typical failure modes of the
@@ -499,7 +499,7 @@ to look if they need that material.
 
 The notes are organised as a **dependency graph**, not a strictly
 linear sequence.  The graph is shown in two views: a *flat*
-chapter-by-chapter view, and a *trac`k*` view that groups
+chapter-by-chapter view, and a *trac`k*' view that groups
 chapters by what they teach.
 
 ### Chapter-by-chapter dependency graph
@@ -555,7 +555,7 @@ correlation functionals.
 ### Track view — theory, methods, applications
 
 The same chapters grouped by what they teach.  This view is
-useful when you already know which *kin`d*` of question you are
+useful when you already know which *kin`d*' of question you are
 asking ("how do I represent a periodic system?" → methods
 track; "where does the functional come from?" → theory track).
 
@@ -917,7 +917,7 @@ the matrix
    that the matrix is Hermitian and that the eigenvalues are real.
 
 You should be able to do this with pen and paper in under five
-minutes.  If you cannot, revisit the *Linear algebr`a*` bullet in
+minutes.  If you cannot, revisit the *Linear algebr`a*' bullet in
 *Mathematical prerequisites* above.
 
 </details>

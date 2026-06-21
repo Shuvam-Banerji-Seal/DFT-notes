@@ -51,7 +51,7 @@ rule* (§10.4) and the *LO-TO splitting (§10.5) that pin down
 $\omega_s(\mathbf q)$ at the two limits $\mathbf q \to 0$ and
 $\mathbf q = 0$ for ionic crystals; (5) connect the dispersion to
 the *phonon density of states* and the thermodynamic* functions
-(§10.6); (6) sketch the *anharmoni`c*` corrections that go beyond
+(§10.6); (6) sketch the *anharmoni`c*' corrections that go beyond
 the harmonic approximation (§10.7); and (7) treat the
 *electron-phonon* coupling (§10.8) that ties phonons back to
 electrons and opens the door to superconductivity.
@@ -346,7 +346,7 @@ $I\alpha \leftrightarrow J\beta$), this can be halved.
 > force-constant matrix element that connects atoms in *different*
 > supercell images when only one atom is displaced. To get the
 > *inter-cell* force constants $\Phi_{I\alpha, J\beta}(\mathbf R)$
-> for $\mathbf R \neq 0$, you must use a *supercell large enoug`h*`
+> for $\mathbf R \neq 0$, you must use a *supercell large enoug`h*'
 > to fit the longest-ranged force constant you want to resolve.
 > For insulators the force constants are usually short-ranged (a
 > few Å), but for metals the long-range Friedel oscillations in
@@ -390,7 +390,7 @@ The frozen-phonon route from a *converged ground-state calculation*
 to a *phonon dispersion* is a sequence of $O(N_\text{atom})$
 displacement-force pairs, followed by a Fourier interpolation.
 The box below summarises the pipeline; every box is one full
-*self-consistent fiel`d*` (SCF) calculation on a supercell.
+*self-consistent fiel`d*' (SCF) calculation on a supercell.
 
 ```mermaid
 %%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
@@ -454,7 +454,7 @@ self-consistent potential at every $\mathbf q$.
 
 ### 10.3.1 The $2n + 1$ theorem
 
-DFPT rests on a deep formal result. Consider a *stati`c*`
+DFPT rests on a deep formal result. Consider a *stati`c*'
 perturbation parameter $\lambda$ that couples to the system
 through some one-electron operator $\partial \hat V_\lambda /
 \partial \lambda$. The **$2n + 1$ theorem** (or "third-order
@@ -483,9 +483,9 @@ calculation at each amplitude.
 In practice the $2n + 1$ theorem is invoked differently. The
 *first* derivative of the energy (the force) is the Hellmann–
 Feynman theorem of [chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }}).
-The *secon`d*` derivative (the force-constant matrix) is
+The *secon`d*' derivative (the force-constant matrix) is
 $2n + 1$ for $n = 0$ (since $2(0) + 1 = 1$, but we want the
-*2n`d*` derivative — so the theorem is sometimes stated as: "the
+*2n`d*' derivative — so the theorem is sometimes stated as: "the
 energy to order $2n+1$ requires the wavefunction to order $n$",
 which for the *force-constant matrix* ($n = 0$ for the second
 derivative of the energy) means *no wavefunction perturbation at
@@ -597,7 +597,7 @@ the force constant is a *post-processing* of $\psi_n^{(1)}$.
 ### 10.3.4 Why DFPT scales better
 
 The frozen-phonon method requires a separate supercell
-calculation for *eac`h*` $\mathbf q$, and the supercell grows
+calculation for *eac`h*' $\mathbf q$, and the supercell grows
 without bound as one moves to fine $\mathbf q$ meshes.
 The DFPT method always works in the *primitive cell* (or
 the unit cell of the perturbation), and the cost grows only
@@ -746,7 +746,7 @@ are the three acoustic modes at $\Gamma$.
 > in a finite supercell is replaced by an interaction with the
 > periodic images. The standard fix is to *enforce* the ASR
 > *a posteriori* by replacing the Fourier transform
-> \eqref{eq:ch-10-fc-fourier} with the *ASR-projecte`d*` form
+> \eqref{eq:ch-10-fc-fourier} with the *ASR-projecte`d*' form
 > \begin{equation}
 > \label{eq:ch-10-asr-project}
 > \tilde\Phi_{I\alpha, J\beta}(\mathbf q) \;\longleftarrow\;
@@ -769,7 +769,7 @@ for $s = 1, 2, 3$ (one longitudinal, two transverse). The
 branches.
 
 For a crystal with *two or more* atoms per primitive cell, the
-story is richer. There are *three acousti`c*` branches (which go
+story is richer. There are *three acousti`c*' branches (which go
 to zero at $\Gamma$ as above) and *3(N-1) optical* branches
 (which have non-zero frequency at $\Gamma$). The
 *longitudinal optical* (LO) branch in an ionic* crystal has a
@@ -808,7 +808,7 @@ neutral crystal:
 \end{equation}
 
 In a *non-ionic* crystal (e.g. pure silicon) $Z^*_\text{Si} = 0$ by
-symmetry, even though Si has 4 valence electrons. In an *ioni`c*`
+symmetry, even though Si has 4 valence electrons. In an *ioni`c*'
 crystal like NaCl, $Z^*_\text{Na} \approx +1.1\, e$ and
 $Z^*_\text{Cl} \approx -1.1\, e$ — slightly renormalised from the
 formal ionic charges of $\pm 1$ by the partial covalent character
@@ -827,32 +827,32 @@ $\mathbf q = 0$. The classical result is the
 \frac{\varepsilon_\infty}{\varepsilon_0} ,
 \end{equation}
 
-where $\varepsilon_0$ is the *stati`c*` dielectric constant of the
+where $\varepsilon_0$ is the *stati`c*' dielectric constant of the
 crystal (measured at zero frequency) and $\varepsilon_\infty$ is
 the *high-frequency* dielectric constant (measured at frequencies
 above the phonons but below the electronic band gap). The LST
 relation says: the larger the ratio of static to high-frequency
 polarisability, the larger the LO–TO splitting.
 
-> **Note.** The LST relation holds exactly for a *cubi`c*` crystal
+> **Note.** The LST relation holds exactly for a *cubi`c*' crystal
 > with *one* optic mode of each symmetry (i.e. a 2-atom basis
 > like NaCl or GaAs). For more complex unit cells the
 > generalisation is a sum over the modes, and the LO and TO
 > frequencies at $\mathbf q = 0$ are obtained by diagonalising
-> the dynamical matrix *wit`h*` the long-range Coulomb interaction
+> the dynamical matrix *wit`h*' the long-range Coulomb interaction
 > included — see below.
 
 ### 10.5.3 The non-analytic long-range term
 
-The LO–TO splitting arises from the *macroscopic electric fiel`d*`
+The LO–TO splitting arises from the *macroscopic electric fiel`d*'
 that accompanies a longitudinal optical phonon at $\mathbf q \to 0$.
 A polar crystal is *piezoelectri`c*`: a displacement of the ions
 creates a polarisation, and the polarisation creates an electric
-field, and the electric field *acts bac`k*` on the ions. The
+field, and the electric field *acts bac`k*' on the ions. The
 electric field is singular at $\mathbf q = 0$ — it scales as
 $1/|\mathbf q|$ — and it *couples only to the longitudinal mode*
 (the transverse modes have no macroscopic polarisation in a
-cubic crystal, by symmetry). The result is a *non-analyti`c*`
+cubic crystal, by symmetry). The result is a *non-analyti`c*'
 correction to the dynamical matrix at $\mathbf q \to 0$:
 
 \begin{equation}
@@ -888,11 +888,11 @@ the LST relation \eqref{eq:ch-10-lst} in disguise.
 > **Warning.** The non-analytic term is *invisible* to a
 > *supercell* frozen-phonon calculation, because the supercell
 > is *neutral*: the macroscopic electric field of a LO phonon is
-> *screene`d*` by the periodic images of the LO mode in the
+> *screene`d*' by the periodic images of the LO mode in the
 > supercell. To get the LO–TO splitting right you must *either*
 > use DFPT (which works in the primitive cell and *does* see the
 > macroscopic field) *or* add the non-analytic term
-> \eqref{eq:ch-10-na-term} to the dynamical matrix *by han`d*`
+> \eqref{eq:ch-10-na-term} to the dynamical matrix *by han`d*'
 > after the frozen-phonon calculation. Most production codes do
 > the latter.
 
@@ -925,7 +925,7 @@ The integral of $g(\omega)$ is fixed by the branch count:
 \end{equation}
 
 The DOS is the bridge from the dispersion $\omega_s(\mathbf q)$
-to all the *thermodynami`c*` functions of the crystal in the
+to all the *thermodynami`c*' functions of the crystal in the
 harmonic approximation. The standard textbook results are
 summarised below; the derivations are exercises (problems 1 and 2).
 
@@ -1007,7 +1007,7 @@ k_B$, but the high-frequency modes are exponentially suppressed,
 so $C_V \to 0$ as $T \to 0$ in a way determined by the *low-
 frequency* behaviour of $g(\omega)$: for a 3-D solid
 $g(\omega) \propto \omega^2$, giving $C_V \propto T^3$ (the
-Debye $T^3$ law). At *hig`h*` temperature ($\beta\hbar\omega_\text{min}
+Debye $T^3$ law). At *hig`h*' temperature ($\beta\hbar\omega_\text{min}
 \ll 1$), all modes are in the classical regime and $C_V$
 saturates at the Dulong–Petit value $3 N_\text{atom} N_\text{cell} k_B$.
 
@@ -1038,7 +1038,7 @@ A few more useful identities in the harmonic approximation:
   graphite and diamond phases of carbon at low $T$.
 
 - The *thermal expansion* of a crystal is **not** contained in
-  the harmonic approximation — it requires the *anharmoni`c*`
+  the harmonic approximation — it requires the *anharmoni`c*'
   corrections of §10.7. > **Tip.** In a plane-wave code, the vibrational free energy
 > \eqref{eq:ch-10-free-energy-dos} is computed by sampling a
 > $\mathbf q$-mesh of $N_\mathbf q$ points, summing the
@@ -1047,7 +1047,7 @@ A few more useful identities in the harmonic approximation:
 > $N_\mathbf q$ is similar to the convergence of the BZ
 > integral in [chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }})
 > §7.6 — a $1/N_\mathbf q$ convergence in 3-D for the
-> *thermodynami`c*` integrals, which is slow. A converged
+> *thermodynami`c*' integrals, which is slow. A converged
 > free-energy calculation typically needs $N_\mathbf q \gtrsim
 > 10^3$ for a 2-atom primitive cell.
 
@@ -1100,7 +1100,7 @@ The cubic term $E^{(3)}$ couples three phonons. In perturbation
 theory, it gives a phonon a *self-energy* $\Sigma_s(\mathbf q,
 \omega)$ with both a *real* part (which shifts the frequency
 $\omega_s \to \omega_s + \text{Re}\,\Sigma$) and an *imaginary*
-part (which gives the mode a finite *linewidt`h*` $\Gamma_s = 2
+part (which gives the mode a finite *linewidt`h*' $\Gamma_s = 2
 \, \text{Im}\,\Sigma$). The imaginary part at second order in
 $E^{(3)}$ is
 
@@ -1122,7 +1122,7 @@ is the Bose–Einstein occupation. The delta function enforces
 already built into the matrix element by the way the
 wavevectors enter. The widths $\Gamma_s$ determine the *thermal
 conductivity* via the Boltzmann transport equation, the *Raman
-and *infrared*` linewidths, and the lifetime of a coherent
+and *infrared*' linewidths, and the lifetime of a coherent
 phonon.
 
 > **Note.** At room temperature, $\Gamma_s$ is typically 1–10
@@ -1135,7 +1135,7 @@ phonon.
 
 ### 10.7.3 Thermal expansion and the quasi-harmonic approximation
 
-Thermal expansion is a *macroscopi`c*` signature of anharmonicity.
+Thermal expansion is a *macroscopi`c*' signature of anharmonicity.
 In a strictly harmonic crystal, the equilibrium lattice
 parameter $a$ does not depend on $T$ — the free energy is
 $F = U - TS$ and both $U$ and $S$ are independent of $a$ at the
@@ -1180,7 +1180,7 @@ phonons is not accurate even for a single static $a$. For these
 materials one must go to *full* anharmonic methods: molecular
 dynamics with a machine-learning potential, *ab initio* molecular
 dynamics, or self-consistent phonon theory (in which the
-harmonic Hamiltonian is *renormalise`d*` by the cubic and quartic
+harmonic Hamiltonian is *renormalise`d*' by the cubic and quartic
 terms and solved self-consistently).
 
 ### 10.7.4 Phonon linewidths and the Allen–Heine–Cardona formalism
@@ -1233,9 +1233,9 @@ energy as a function of nuclear position. The phonons are the
 *normal modes* of this energy surface.
 
 A different — and very rich — piece of physics appears when we
-*let the electrons respon`d*` to the phonons. The displacement of a
+*let the electrons respon`d*' to the phonons. The displacement of a
 nucleus perturbs the electron-nucleus potential, which in turn
-perturbs the electron density, which in turn *feels bac`k*` on the
+perturbs the electron density, which in turn *feels bac`k*' on the
 nuclei (in a way that the force-constant matrix does not
 describe). This *electron-phonon coupling* is the origin of
 conventional superconductivity, the temperature dependence of
@@ -1276,7 +1276,7 @@ order.
 ### 10.8.2 The Fröhlich polaron
 
 For *long-wavelength longitudinal optical* (LO) phonons in an
-*ioni`c*` crystal, the macroscopic electric field of the LO phonon
+*ioni`c*' crystal, the macroscopic electric field of the LO phonon
 couples to the electron via the Fröhlich interaction
 
 \begin{equation}
@@ -1351,7 +1351,7 @@ g_{mn}^\nu(\mathbf k, \mathbf q) \;=\;
 \rvert\, \psi_{n, \mathbf k} \rangle ,
 \end{equation}
 
-where the prefactor converts the *normalise`d*` phonon amplitude
+where the prefactor converts the *normalise`d*' phonon amplitude
 to a *physical* displacement, $M_\nu$ is a mode-effective mass
 (the sum of $M_I |U_{s, I\alpha}|^2$ over the atoms in the unit
 cell, with the polarisation vector normalised to one), and the
@@ -1372,7 +1372,7 @@ phonon of mode $(\mathbf q, \nu)$.
 ### 10.8.4 The Eliashberg function $\alpha^2 F(\omega)$
 
 The **Eliashberg function** $\alpha^2 F(\omega)$ is the
-*phonon-density-of-states-weighte`d*` average of the electron-
+*phonon-density-of-states-weighte`d*' average of the electron-
 phonon matrix element, summed over the Fermi surface:
 
 \begin{equation}
@@ -1391,7 +1391,7 @@ Three pieces to recognise:
 
 1. The two Fermi-surface delta functions
    $\delta(\varepsilon_{n\mathbf k}) \delta(\varepsilon_{m, \mathbf k + \mathbf q})$
-   restrict the sum to *electroni`c*` states at the Fermi level.
+   restrict the sum to *electroni`c*' states at the Fermi level.
 2. The phonon-energy delta function
    $\delta(\omega - \omega_\nu(\mathbf q))$ restricts the phonon
    to a given frequency.
@@ -1404,7 +1404,7 @@ The Eliashberg function is the central input to the
 **Eliashberg theory of superconductivity** (see §10.8.5). It is
 also a key input to the *temperature-dependent resistivity* of a
 metal, the *carrier lifetime* in a semiconductor, and the
-*linewidt`h*` of an electronic excitation that couples to phonons.
+*linewidt`h*' of an electronic excitation that couples to phonons.
 
 > **Note.** The factor $1/g(\omega)$ in the definition
 > \eqref{eq:ch-10-eliashberg} is *controversial*. Some authors
@@ -1544,7 +1544,7 @@ $N$ unit cells, each containing two atoms of masses $M_1$ and
 $M_2$ ($M_2 > M_1$), connected by springs of force constant $K$
 between nearest neighbours. The lattice constant is $a$, so the
 two atoms within a cell are separated by $a/2$. The dispersion
-relation has two branches — *acoustic*` (lower) and optical
+relation has two branches — *acoustic*' (lower) and optical
 (upper) — with a frequency gap at the Brillouin-zone boundary.
 
 ### 10.9.1 Setting up the equations of motion
@@ -1784,7 +1784,7 @@ The horizontal axis is the phonon wavevector $q$ in units of
 $\pi/a$ (the BZ boundary is at $q a / \pi = 1$). The vertical
 axis is the frequency in THz. The two branches are
 non-degenerate everywhere except at $q = 0$ (where the acoustic
-branch touches zero) and at the $\Gamma$ point of the *acousti`c*`
+branch touches zero) and at the $\Gamma$ point of the *acousti`c*'
 zone, where the optical mode sits. The frequency gap at the BZ
 boundary is $\omega_+ - \omega_- \approx 3.7$ THz, in agreement
 with the analytical expression \eqref{eq:ch-10-worked-gap}.
@@ -1938,7 +1938,7 @@ $$
 \qquad q \in [-\pi/a, \pi/a] .
 $$
 
-Show that the *long-wavelengt`h*` limit $q \to 0$ gives the linear
+Show that the *long-wavelengt`h*' limit $q \to 0$ gives the linear
 dispersion $\omega \to v_s |q|$ and compute the speed of sound
 $v_s$ in terms of $K$, $M$, and $a$.
 </details>
@@ -2058,11 +2058,11 @@ So $\omega^2_+ = (2K/M)(1 + |\cos(qa/2)|)$ and
 $\omega^2_- = (2K/M)(1 - |\cos(qa/2)|)$. These look like *two*
 different branches, but they are not! Using the identity
 $1 - |\cos\theta| = 2 \sin^2(\theta/2 + \pi/4) \cdot \text{sign}$,
-one finds that *bot`h*` branches reduce to the same
+one finds that *bot`h*' branches reduce to the same
 monoatomic-chain dispersion $\omega(q) = 2\sqrt{K/M}\,
-|\sin(qa/2)|$ but on *halve`d*` Brillouin zones — the "diatomic"
+|\sin(qa/2)|$ but on *halve`d*' Brillouin zones — the "diatomic"
 chain with $M_1 = M_2$ has the same dispersion as the
-monoatomic chain with a *halve`d*` lattice constant $a/2$. The
+monoatomic chain with a *halve`d*' lattice constant $a/2$. The
 original $a$ is *not* the primitive lattice constant of the
 $M_1 = M_2$ chain (it is twice the primitive constant), so the
 "first" BZ is $[-\pi/a, \pi/a]$ only by accident; the true
@@ -2244,7 +2244,7 @@ that depend on $\lambda$, $\hbar\omega_\text{log}$, and the
 *shape* of $\alpha^2 F(\omega)$ (specifically, on the
 *second moment* $\langle \omega^2 \rangle^{1/2}$). For Pb with
 $\lambda = 1.55$, the correction factors are $f_1 \approx 0.7$
-and $f_2 \approx 0.95$, giving a *correcte`d*` $T_c$ of
+and $f_2 \approx 0.95$, giving a *correcte`d*' $T_c$ of
 $\sim 7$ K — in much better agreement with experiment.
 
 The lesson is that the McMillan formula is a *first-order*
@@ -2270,7 +2270,7 @@ what we skipped:
   *full* anharmonic self-energy requires a self-consistent
   summation of diagrams (the "self-consistent phonon" or
   "renormalisation-group" approaches), and the *fourth-order*
-  $E^{(4)}$ contributes both a frequency shift and a *quarti`c*`
+  $E^{(4)}$ contributes both a frequency shift and a *quarti`c*'
   broadening. We did not derive the full diagrammatic
   machinery; see [Maradudin & Fein (1962)](<https://doi.org/10.1103/PhysRev.128.2589>)
   for the original treatment.
@@ -2301,7 +2301,7 @@ what we skipped:
   for bulk, but the supercell must contain enough vacuum to
   isolate the two surfaces. We did not give the formulas.
 - **Phonon dynamics in real time.** The harmonic approximation
-  gives *static*` normal modes. To describe real-time
+  gives *static*' normal modes. To describe real-time
   phonon dynamics (e.g. coherent-phonon experiments, phonon
   Boltzmann transport in the *transient* regime) one needs
   the *time-dependent* extension of the harmonic Hamiltonian,
@@ -2312,7 +2312,7 @@ what we skipped:
   $2 \times 2$ matrix in Keldysh space. We did not derive
   it.
 - **Phonon–photon coupling (polaritons).** In an ionic
-  crystal, the *long-wavelengt`h*` TO phonons couple to
+  crystal, the *long-wavelengt`h*' TO phonons couple to
   *infrared photons* through the macroscopic electric field,
   and the resulting *polariton* modes are hybrid
   phonon–photon excitations. The polariton dispersion is a

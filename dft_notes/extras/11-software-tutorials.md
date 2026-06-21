@@ -17,7 +17,7 @@ keywords: "VASP, Quantum ESPRESSO, ORCA, GPAW, CP2K, DFT tutorial,
 # Software tutorials — DFT codes in depth
 
 > The [software cheatsheet]({{ "/dft-notes/extras/software-cheatsheet/" | relative_url }})
-> tells you *whic`h*` code to reach for. This page tells
+> tells you *whic`h*' code to reach for. This page tells
 > you *how to actually use* the five most-cited
 > production codes in electronic-structure theory: how
 > to install them, what to put in the input file, how
@@ -124,7 +124,7 @@ Web-of-Science search returns > 100,000 papers citing the
 original Kresse–Hafner / Kresse–Furthmüller series. The
 combination of a comprehensive PAW pseudopotential library
 ([chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }}) §8.12), an aggressive
-MPI / OpenMP parallelisation, a mature and *standardise`d*`
+MPI / OpenMP parallelisation, a mature and *standardise`d*'
 input file layout, and a 30-year investment in user-facing
 features (DFPT phonons, NEB, dimer method, ML force fields,
 $GW$, BSE) has made VASP the workhorse of solid-state DFT in
@@ -305,7 +305,7 @@ on the k-mesh and vice versa. The recipe:
    `smearing T*S` in `OUTCAR` is smaller than the
    convergence target. The most accurate k-point
    integration is `ISMEAR = -5` (tetrahedron with Blöchl
-   corrections), which works for insulators *an`d*` metals
+   corrections), which works for insulators *an`d*' metals
    on a sufficiently dense mesh.
 
 4. **SCF convergence.** The default `EDIFF = 1.0e-4` eV
@@ -320,7 +320,7 @@ on the k-mesh and vice versa. The recipe:
    target for vibrational frequencies (a 1 cm⁻¹ error in
    a phonon corresponds to ~ 0.1 meV in the force
    difference). `EDIFFG = 0.01` (positive number,
-   interpreted as an absolute energy change) is *muc`h*`
+   interpreted as an absolute energy change) is *muc`h*'
    looser and should not be used for production
    geometries.
 
@@ -543,7 +543,7 @@ Quantum ESPRESSO (QE) is the de facto **open-source**
 plane-wave DFT code, distributed under the GPL and
 maintained by an international consortium. It is the
 open-source counterpart to VASP for solid-state DFT and is
-the workhorse of *academi`c*` solid-state physics, with a
+the workhorse of *academi`c*' solid-state physics, with a
 particularly deep **phonon** implementation (DFPT and
 finite-difference) and a mature `G_0W_0` / BSE ecosystem
 through the `Yambo` and `West` post-processors. The name
@@ -911,7 +911,7 @@ ORCA is a C++ quantum-chemistry program distributed
 **free of charge for academic use** (commercial for
 industry) by the group of Frank Neese at the Max Planck
 Institute for Kohlenforschung. It is the workhorse of
-*inorganic and organometalli`c*` quantum chemistry, with
+*inorganic and organometalli`c*' quantum chemistry, with
 particularly strong modules for:
 - Broken-symmetry DFT for antiferromagnets
   ([chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.8.5)
@@ -1047,7 +1047,7 @@ should be checked.
 4. **RI / RIJCOSX approximation.** The "Resolution of
    the Identity" approximation (RI) and the
    "RI-J + chain-of-spheres exchange" (RIJCOSX)
-   approximation are *muc`h*` faster than the full
+   approximation are *muc`h*' faster than the full
    ERI evaluation, with an error of < 0.1 mEh for most
    properties. For hybrid DFT, use `RIJCOSX`; for pure
    GGA, use `RI`. The auxiliary basis is the
@@ -1712,7 +1712,7 @@ convergence recipes:
    Gaussian density expanded in plane waves). The
    default is 50 Ry, but for high-accuracy work,
    increase to 60–100 Ry. The energy converges
-   *muc`h*` faster in `REL_CUTOFF` than in `CUTOFF`.
+   *muc`h*' faster in `REL_CUTOFF` than in `CUTOFF`.
 
 4. **SCF convergence.** The default `EPS_SCF = 1.0E-6`
    is too loose for production. Use `1.0E-7` for
@@ -1823,8 +1823,8 @@ convergence recipes:
 ### 5.7 Worked example — NEB of H diffusion on Pt(111)
 
 The H diffusion on Pt(111) is a textbook surface
-science problem: H adsorbs on the *fc`c*` hollow site,
-diffuses to the neighbouring *hc`p*` hollow site via a
+science problem: H adsorbs on the *fc`c*' hollow site,
+diffuses to the neighbouring *hc`p*' hollow site via a
 *bridge* transition state. The activation energy is
 ~ 0.1 eV (PBE) — small enough that the diffusion is
 fast at room temperature. This example is the

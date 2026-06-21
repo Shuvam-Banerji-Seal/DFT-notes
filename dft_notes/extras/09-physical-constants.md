@@ -185,7 +185,7 @@ Convention).  Because the seven defining constants are exact,
 the *only* source of numerical uncertainty in any 2019 CODATA
 value is the *measurement* of the constant itself.  For
 example, the value of the fine-structure constant
-$\alpha \approx 1/137.036$ is *measure`d*` (it is not fixed by
+$\alpha \approx 1/137.036$ is *measure`d*' (it is not fixed by
 the SI); its relative uncertainty is $2.3 \times 10^{-10}$.  The
 2019 CODATA value is $\alpha^{-1} = 137.035\,999\,084(21)$.
 
@@ -334,7 +334,7 @@ Thomson-scattering cross-section is $\sigma_T = (8\pi/3) r_e^2$.
 \end{equation}
 
 The wavelength of a photon whose energy equals $m_e c^2$ (up
-to a factor of $2\pi$; the *unreduce`d*` Compton wavelength is
+to a factor of $2\pi$; the *unreduce`d*' Compton wavelength is
 $\lambda_C = 2\pi \bar\lambda_C \approx 2.426 \times 10^{-12}\;\text{m}$).
 
 ### 2.12 Where to find more
@@ -562,7 +562,7 @@ $\sim 0.04$ a.u. (since $1\;\text{eV} = 0.0367$ a.u.).
 ## 4. Energy conversions
 
 The energy unit of atomic units ($E_h \approx 27.2\;\text{eV}$)
-is convenient for the *electroni`c*` degrees of freedom but is
+is convenient for the *electroni`c*' degrees of freedom but is
 cumbersome for chemists (kcal/mol), spectroscopists (cm⁻¹),
 and thermal measurements (K).  All values below are derived
 from the 2019 CODATA values of $E_h$, $e$, $k_B$, $N_A$, $h$
@@ -906,7 +906,7 @@ atomic energy scale is "$\alpha^2 m_e c^2$" in character.
 \end{equation}
 
 The wavelength of a photon whose energy equals $m_e c^2$ (up
-to a factor of $2\pi$; the *unreduce`d*` Compton wavelength is
+to a factor of $2\pi$; the *unreduce`d*' Compton wavelength is
 $\lambda_C = 2\pi \bar\lambda_C \approx 2.426 \times 10^{-12}\;\text{m}$).
 The identity $\bar\lambda_C = a_0 \alpha$ is the simple
 algebraic relation between the Compton wavelength and the
@@ -961,7 +961,7 @@ The values in this page are taken from:
 
 ### 8.1 Discrepancies with earlier tables
 
-The 2019 CODATA recommended values of the *non-fixe`d*`
+The 2019 CODATA recommended values of the *non-fixe`d*'
 constants differ from the 2014 CODATA values at the level of
 the 9th–11th significant figure; for the conversions in §4
 the change is at the level of 1 part in $10^{9}$ and is
@@ -991,7 +991,7 @@ code, not the *output*.  Specifically:
 ### 8.3 Recommended reading
 
 - For a 20-page introduction to the 2019 SI redefinition:
-  Newell, D. B. & Tiesinga, E. (2019), *Metrologi`a*`
+  Newell, D. B. & Tiesinga, E. (2019), *Metrologi`a*'
   **56**, 022001.
 - For the full 2019 CODATA adjustment: Tiesinga et al.
   (2021), *Rev. Mod. Phys.* **93**, 025010 — the primary

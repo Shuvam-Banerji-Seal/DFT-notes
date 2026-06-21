@@ -85,7 +85,7 @@ gives \eqref{eq:ch-06-roothaan-hall}.
 > $\hat F \phi_i = \varepsilon_i \phi_i$ does not have.  This is
 > not a mistake; it is the price of choosing a basis adapted to
 > the *physics* (atom-centred Gaussians look like atomic
-> orbitals) rather than to the *mat`h*` (an orthonormal basis is
+> orbitals) rather than to the *mat`h*' (an orthonormal basis is
 > mathematically clean but physically unmotivated).
 
 Equation \eqref{eq:ch-06-roothaan-hall} is a generalised
@@ -301,7 +301,7 @@ For a different $\zeta$, the exponents scale as $\alpha_p \to
 of the Gaussian dimension analysis $\alpha r^2 = (\zeta r)^2
 (\alpha/\zeta^2)$.  The recommended Pople value for H *in
 molecules* is $\zeta = 1.24$, so the H STO-3G exponents
-*actually use`d*` in calculations are
+*actually use`d*' in calculations are
 $\alpha_p \cdot 1.24^2 = 1.5376\, \alpha_p$,
 
 | $p$ | $\alpha_p$ ($\zeta = 1.24$, EMSL default) | $d_p$    |
@@ -356,7 +356,7 @@ basis functions per H.  In 3-21G it is 3 primitives →
 two basis functions per H.  In 6-311G, three basis functions
 per H.
 
-**Counting basis functions.**  Add up *contracte`d*` functions
+**Counting basis functions.**  Add up *contracte`d*' functions
 across atoms.  For $\rm H_2 O$ in 6-31G:
 
 - O: $1\text{s}$ (core, 1 CGTO) + $2\text{s}$ + $2\text{s}'$ +
@@ -380,7 +380,7 @@ angular momentum than the highest occupied shell on each atom:
 These are **polarisation functions**.  Pople's notation marks
 them with a star: $6\text{-}31\text{G}^*$ adds $d$ on heavy
 atoms only; $6\text{-}31\text{G}^{**}$ adds $d$ on heavy atoms
-*an`d*` $p$ on H.  More polarisation = more flexibility = lower
+*an`d*' $p$ on H.  More polarisation = more flexibility = lower
 $E_\text{BSIE}$ — but more functions and quartic ERI count.
 
 A complementary direction is to add **diffuse** functions:
@@ -493,7 +493,7 @@ plane-wave DFT:
 1. **The basis is independent of nuclear position.**  Atom
    centres do not appear anywhere in
    \eqref{eq:ch-06-pw-expansion}.  This makes plane-wave
-   methods *unbiase`d*` — no atom is given a head start — and
+   methods *unbiase`d*' — no atom is given a head start — and
    *natural for forces* (no Pulay correction, see
    [chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }})).
 2. **The basis grows as $\Omega \cdot E_\text{cut}^{3/2}$.**
@@ -506,7 +506,7 @@ plane-wave DFT:
    $E_\text{cut}$.
 
 > **Tip.**  Densities (and the Hartree potential, and the XC
-> potential) are *quadrati`c*` in the orbitals.  A plane-wave
+> potential) are *quadrati`c*' in the orbitals.  A plane-wave
 > code therefore uses *two* grids: an "orbital" grid cut at
 > $E_\text{cut}$, and a "density" grid cut at $4 E_\text{cut}$
 > so that all products $|\phi_{n,\mathbf k}|^2$ are
@@ -970,7 +970,7 @@ of what we skipped:
   **counterpoise correction** (Boys & Bernardi 1970).  We
   ignored it.
 - **Numerical atom-centred orbitals.**  Codes like SIESTA,
-  DMol3, and FHI-aims use *numerically tabulate`d*` atomic
+  DMol3, and FHI-aims use *numerically tabulate`d*' atomic
   orbitals — a third family between Gaussians and plane waves
   — that are systematically improvable like Gaussians but
   carry no contraction-fitting error.  We did not discuss
@@ -1252,7 +1252,7 @@ in principle — the cc-pV*X*Z series is built on this premise —
 but the convergence is *angular*: the missing angular momenta
 show up as slowly-decaying multipole errors in the electron
 density.  **Wavelets and B-splines** are the basis families that
-are *bot`h*` atom-like (no periodic boundary condition required)
+are *bot`h*' atom-like (no periodic boundary condition required)
 and *systematically* improvable for the all-electron problem.
 
 ### 6.14.1 B-splines on a finite interval
@@ -1397,7 +1397,7 @@ E_\text{total}(J) \;=\; E_\text{exact} \;+\; \mathcal O(2^{-s J}) ,
 
 for $J$ wavelet levels — *exponential* convergence in the
 number of levels, and the only basis family for which this
-claim holds *wit`h*` the full all-electron Coulomb singularity
+claim holds *wit`h*' the full all-electron Coulomb singularity
 (no pseudopotential, no PAW).
 
 ### 6.14.4 The BigDFT code
@@ -1664,7 +1664,7 @@ and never updated.
 
 > **Tip.**  The **PAW datasets** distributed with VASP /
 > Quantum ESPRESSO are not just pseudopotentials — they
-> contain the partial waves *an`d*` the projectors.  Treating
+> contain the partial waves *an`d*' the projectors.  Treating
 > them as "potentials" and ignoring the reconstruction is a
 > common source of confusion.  The data file you load into a
 > PAW code is a small, atom-type-specific data set
@@ -1685,7 +1685,7 @@ but the three new sections 6.13–6.15 bring their own omissions:
   [chapter 10]({{ "/dft-notes/chapter-10/" | relative_url }}) for the
   linear-scaling toolkit.
 - **Adaptive finite elements.**  FEniCS-based DFT codes use
-  *unstructure`d*` tetrahedral meshes with adaptive refinement,
+  *unstructure`d*' tetrahedral meshes with adaptive refinement,
   a generalisation of the B-spline idea; we touched on it
   only in passing.
 - **LAPW / APW+lo.**  The linearised augmented plane wave

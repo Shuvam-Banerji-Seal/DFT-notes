@@ -29,9 +29,9 @@ function. In [chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }})
 we saw that those Bloch functions produce a band structure
 $\varepsilon_n(\mathbf k)$ that we plot, density-of-state, and
 project onto atomic orbitals. The missing chapter in that story
-is the *geometri`c*` one: a Bloch function $|u_{n\mathbf k}\rangle$
+is the *geometri`c*' one: a Bloch function $|u_{n\mathbf k}\rangle$
 is a *vector* in Hilbert space, and as we move $\mathbf k$ around
-in the Brillouin zone the vector traces out a *pat`h*` in Hilbert
+in the Brillouin zone the vector traces out a *pat`h*' in Hilbert
 space. The geometry of that path — its twist, its
 curvature, its winding number — is encoded in three
 objects we will spend most of this chapter on: the
@@ -156,7 +156,7 @@ graph TD
 ```
 
 The two columns on the right are the "through-line" of the
-chapter: the *bul`k*` topological invariant (Chern number or
+chapter: the *bul`k*' topological invariant (Chern number or
 $\mathbb Z_2$ index) determines, via the bulk–boundary
 correspondence \eqref{eq:ch-16-bulk-boundary}, the existence
 and structure of the *boundary* state (chiral for Chern
@@ -175,7 +175,7 @@ Consider a quantum system whose Hamiltonian $\hat H(\mathbf
 R)$ depends on external parameters $\mathbf R \in
 \mathcal M$, with a non-degenerate ground state
 $|n(\mathbf R)\rangle$ that varies smoothly with $\mathbf
-R$. Under an *adiabati`c*` change of $\mathbf R$, the system
+R$. Under an *adiabati`c*' change of $\mathbf R$, the system
 stays in the instantaneous ground state, acquiring only a
 dynamical phase
 
@@ -185,8 +185,8 @@ dynamical phase
 \end{equation}
 
 Berry (1984) pointed out that on top of the dynamical
-phase there is also a *geometri`c*` phase that depends only
-on the *pat`h*` $\mathcal C : [0, T] \to \mathcal M$ in
+phase there is also a *geometri`c*' phase that depends only
+on the *pat`h*' $\mathcal C : [0, T] \to \mathcal M$ in
 parameter space:
 
 \begin{equation}
@@ -275,7 +275,7 @@ anomalous velocity term
 
 The second term is the **anomalous velocity**,
 perpendicular to $\dot{\mathbf k}$ and proportional to
-$\boldsymbol \Omega_n$. It is the *microscopi`c*` origin of
+$\boldsymbol \Omega_n$. It is the *microscopi`c*' origin of
 the intrinsic anomalous Hall effect of a magnetic metal
 and the *chiral* edge current of a Chern insulator.
 
@@ -299,7 +299,7 @@ The integral of the Berry curvature over a closed 2-D surface
 in $\mathbf k$-space is, by Stokes' theorem, the Berry phase
 around the boundary of the surface. For an isolated band $n$
 and a closed 2-D Brillouin zone (e.g. a 2-D crystal), the
-relevant closed surface is the 2D BZ *itsel`f*` (a torus, $T^2$).
+relevant closed surface is the 2D BZ *itsel`f*' (a torus, $T^2$).
 Stokes' theorem on a torus gives
 
 \begin{equation}
@@ -364,7 +364,7 @@ invariant can still be non-trivial:
 \nu \;\in\; \{0, 1\}.
 \end{equation}
 
-The physical meaning of $\nu = 1$: there is an *od`d*`
+The physical meaning of $\nu = 1$: there is an *od`d*'
 number of Kramers pairs of *helical* edge (2D) or surface
 (3D) states at the boundary.
 
@@ -381,7 +381,7 @@ w_{mn}(\mathbf k) \;=\; \langle u_{m,\mathbf k} \mid \Theta \mid u_{n, -\mathbf 
 m, n \in \{1, \ldots, 2N\}.
 \end{equation}
 
-The sewing matrix is *antisymmetri`c*` at the four **time-
+The sewing matrix is *antisymmetri`c*' at the four **time-
 reversal invariant moment`a*`* (TRIM) $\Lambda_a$ in the 2D
 BZ, $\mathbf \Lambda_a = (1/2)(n_1 \mathbf b_1 + n_2
 \mathbf b_2)$ with $n_1, n_2 \in \{0, 1\}$, so its
@@ -417,9 +417,9 @@ is the non-Abelian Berry connection. The eigenvalues of
 $W(k_1)$ are $e^{i \theta_n(k_1)}$; the $\theta_n(k_1)$
 are the **Wannier charge centres (WCC)**. Plotting
 $\theta_n(k_1)$ as a function of $k_1$, a trivial
-insulator gives *close`d*` loops (each $\theta_n$ winds
+insulator gives *close`d*' loops (each $\theta_n$ winds
 from $0$ to $2\pi$); a non-trivial insulator gives a
-set of loops with an *odd*` number of them not closing:
+set of loops with an *odd*' number of them not closing:
 
 \begin{equation}
 \label{eq:ch-16-z2-wilson}
@@ -440,7 +440,7 @@ index:
 (-1)^{\nu_0} \;=\; \prod_{i=1}^{8} \frac{\sqrt{\det\Bigl[w(\Lambda_i)\Bigr]}}{\text{Pf}\Bigl[w(\Lambda_i)\Bigr]} ,
 \end{equation}
 
-and three *wea`k*` indices
+and three *wea`k*' indices
 $\nu_1, \nu_2, \nu_3 \in \{0, 1\}$ are defined by
 restricting the product to TRIM with a common value of
 $n_k$:
@@ -529,7 +529,7 @@ conductor.
 
 Thouless, Kohmoto, Nightingale, and den Nijs (1982)
 showed that the integer $\nu$ in \eqref{eq:ch-16-iqhe-sigma}
-is the sum of the Chern numbers of the *occupie`d*` Landau
+is the sum of the Chern numbers of the *occupie`d*' Landau
 levels:
 
 \begin{equation}
@@ -541,7 +541,7 @@ levels:
 
 This is the **TKNN invariant**, the first explicit
 appearance of the Chern number in an observable. The
-RHS of \eqref{eq:ch-16-tknn} is the *bul`k*` band
+RHS of \eqref{eq:ch-16-tknn} is the *bul`k*' band
 structure computed via \eqref{eq:ch-16-chern-number};
 the LHS is the *transport* measurement. The bulk–
 boundary correspondence \eqref{eq:ch-16-bulk-boundary} is
@@ -793,12 +793,12 @@ non-magnetic disorder.
 
 As derived in §16.2.4, a 3D TR-symmetric insulator has
 *four* $\mathbb Z_2$ indices: one strong $\nu_0$ and three
-*wea`k*` $\nu_1, \nu_2, \nu_3$, defined via
+*wea`k*' $\nu_1, \nu_2, \nu_3$, defined via
 \eqref{eq:ch-16-fu-kane-3d-strong} and
 \eqref{eq:ch-16-fu-kane-3d-weak}. The physical meanings:
 
 - $\nu_0 = 1$: **strong TI**. Every surface that preserves
-  TRS has an *od`d*` number of Dirac cones, robust to any TR-
+  TRS has an *od`d*' number of Dirac cones, robust to any TR-
   symmetric perturbation. Examples: Bi$_2$Se$_3$, Bi$_2$Te$_3$,
   Sb$_2$Te$_3$.
 - $\nu_0 = 0$, some $\nu_k = 1$: **weak TI**. A stack of
@@ -906,7 +906,7 @@ protected by mirror or PT symmetry).
 
 ### 16.6.1 Dirac semimetals
 
-A 3D Dirac semimetal has a *four-fol`d*` band crossing near
+A 3D Dirac semimetal has a *four-fol`d*' band crossing near
 the Fermi energy, with the low-energy Hamiltonian
 
 \begin{equation}
@@ -919,8 +919,8 @@ a 4×4 matrix in the basis of the two Kramers pairs. The
 bands; at $m = 0$ the four bands cross at $\mathbf q = 0$
 and the spectrum is the 3D massless Dirac fermion,
 $E(\mathbf q) = \pm v |\mathbf q|$ (each sign doubly
-degenerate). The Dirac node is *protecte`d*` by TRS +
-inversion + an *extr`a*` crystal rotation symmetry ($C_3$
+degenerate). The Dirac node is *protecte`d*' by TRS +
+inversion + an *extr`a*' crystal rotation symmetry ($C_3$
 along [111] in Na$_3$Bi, $C_4$ in Cd$_3$As$_2$); without
 the rotation the two two-fold representations of the
 little group at $\Gamma$ would hybridise and open a gap.
@@ -947,7 +947,7 @@ and the system becomes a Weyl semimetal.
 
 ### 16.6.2 Weyl semimetals
 
-A 3D Weyl semimetal has a *two-fol`d*` band crossing near the
+A 3D Weyl semimetal has a *two-fol`d*' band crossing near the
 Fermi energy, with the low-energy Hamiltonian
 
 \begin{equation}
@@ -969,7 +969,7 @@ C_\text{Weyl} \;=\; \frac{1}{2\pi} \oint_{S^2} \boldsymbol \Omega(\mathbf k) \cd
 \end{equation}
 
 The sign is the **chirality** of the Weyl node: $+1$ is a
-*right-handed*` Weyl fermion, $-1$ is left-handed*. The
+*right-handed*' Weyl fermion, $-1$ is left-handed*. The
 chirality is a property of the *Hamiltonian*, not of the
 state, and it is conserved by smooth deformations that
 preserve the gap elsewhere.
@@ -1040,7 +1040,7 @@ mirror-protected nodal lines around $\Gamma$).
 
 The family of semimetals covered in this section is the
 *gapless* branch of the topology zoo. The full zoo — the
-*gapped*` branch and the gapless branch, together — is
+*gapped*' branch and the gapless branch, together — is
 summarised below.
 
 ```mermaid
@@ -1081,7 +1081,7 @@ graph TD
 
 The diagram makes the relationship explicit: the
 *Chern* and QSH families are the 2D parents of the 3D
-TIs; the *Dira`c*` family is the 4-fold (TRS+inversion
+TIs; the *Dira`c*' family is the 4-fold (TRS+inversion
 preserved) parent of the *Weyl* family (TRS or inversion
 broken); the *TCI* family extends the strong TI family
 with crystal-symmetry protection; the *HOTI* family is
@@ -1135,7 +1135,7 @@ ways:
    *parallel* to $\mathbf B$, the chiral anomaly pumps
    charge from one chirality to the other. The pumped
    charge *reduces* the resistance because the back-
-   scattering between the two chiralities is *suppresse`d*`
+   scattering between the two chiralities is *suppresse`d*'
    (the populations are unequal). The result is a
    *negative* longitudinal magnetoresistance: as $B$
    increases, the longitudinal resistance *decreases*. This
@@ -1145,7 +1145,7 @@ ways:
 > effects can also produce a negative LMR. The
 > *unambiguous* signature is the planar Hall effect: in
 > an in-plane $\mathbf B$ and a perpendicular $\mathbf E$
-> the planar Hall voltage is *od`d*` under $\mathbf B \to
+> the planar Hall voltage is *od`d*' under $\mathbf B \to
 > -\mathbf B$ and has a characteristic $\sin(2\theta)$
 > dependence on the angle $\theta$ between $\mathbf E$ and
 > $\mathbf B$ (the "Burkov" prediction). This signature
@@ -1179,7 +1179,7 @@ where the integral is over the first BZ and $U_{mn}(\mathbf
 k)$ is a *unitary* matrix that mixes the $N$ bands at
 each $\mathbf k$. The Wannier functions depend on the
 choice of $U(\mathbf k)$; a trivial choice $U = \mathbb
-1$ generally does not produce *localise`d*` Wannier
+1$ generally does not produce *localise`d*' Wannier
 functions. The **maximally-localised Wannier functions
 (MLWFs)** of Marzari and Vanderbilt (1997) are obtained
 by choosing $U(\mathbf k)$ to *minimise* the total spread
@@ -1195,16 +1195,16 @@ Wannier functions. The standard tool is **Wannier90**
 (Mostofi *et al.*, Comput. Phys. Commun. **178**, 685
 (2008)). The input is the Bloch functions at a uniform
 $\mathbf k$-mesh; the output is the $U(\mathbf k)$
-matrices, the MLWF centres, and the *Wannier-interpolate`d*`
+matrices, the MLWF centres, and the *Wannier-interpolate`d*'
 Hamiltonian $H^{(\text{W})}(\mathbf k)$ on an arbitrarily
 fine $\mathbf k$-mesh. The interpolation is *linear* in
 the number of Wannier functions, much cheaper than a
 direct DFT calculation on a fine $\mathbf k$-mesh.
 
-> **Tip.** For *isolate`d*` sets of bands (e.g. the $d$
+> **Tip.** For *isolate`d*' sets of bands (e.g. the $d$
 > bands of a transition-metal oxide) the disentanglement
 > is trivial and the initial guess can be random. For an
-> *entangle`d*` manifold (e.g. the $sp$ bands of a wide-gap
+> *entangle`d*' manifold (e.g. the $sp$ bands of a wide-gap
 > insulator) one must specify a "frozen" outer window and
 > a "disentangled" inner window; the spread minimisation
 > is performed only on the inner window.
@@ -1251,9 +1251,9 @@ practical algorithm proceeds in three steps:
 
 The WCC as a function of the perpendicular momentum $k_\perp$
 is the diagnostic plot. A trivial insulator gives a set of
-*close`d*` loops (each $\theta_n$ winds from $0$ to $2\pi$ as
+*close`d*' loops (each $\theta_n$ winds from $0$ to $2\pi$ as
 $k_\perp$ traverses the BZ, *continuously*); a non-trivial
-insulator gives a set of loops with an *od`d*` number of them
+insulator gives a set of loops with an *od`d*' number of them
 *not* closing (a "jump" in the WCC of size $2\pi$ between
 $k_\perp = 0$ and $k_\perp = 2\pi$). The parity of the
 jumps is the $\mathbb Z_2$ invariant, as in
@@ -1295,7 +1295,7 @@ The procedure:
    hexagonal surface).
 4. **Project the slab bands onto the bulk band
    structure.** The surface state is the band that lies
-   *in the bulk gap*` and is localised at the surface.
+   *in the bulk gap*' and is localised at the surface.
 
 For a 3D TI, the slab calculation should show a single
 Dirac cone at $\bar\Gamma$ (for the (001) surface of
@@ -1304,7 +1304,7 @@ the strong TI phase.
 
 > **Note.** The slab is *not* periodic in the
 > perpendicular direction; the surface state is *not* a
-> Bloch state of the bulk crystal, but a *localise`d*` state
+> Bloch state of the bulk crystal, but a *localise`d*' state
 > decaying into the bulk on a length scale of $\sim 1$–$10$
 > nm. The slab is the most *direct* way to see this
 > localised state.
@@ -1345,7 +1345,7 @@ A(\mathbf k_\parallel, \omega) \;=\; -\frac{1}{\pi}\, \text{Im}\, \text{Tr}\, G_
 
 has delta-function peaks at the energies of *true* surface
 states (Tamm states localised at $z = 0$) and of the
-*projecte`d*` bulk states. The topological surface state is
+*projecte`d*' bulk states. The topological surface state is
 the delta peak that lies *inside* the bulk gap and is not
 in the projected bulk spectrum.
 
@@ -1396,7 +1396,7 @@ for a Chern insulator $C = \pm 1$ and the WCC loops are
 $k_\perp$ window.
 
 > **Note.** For a 3D Chern insulator (a "3D quantum Hall
-> state"), the Chern number is defined for *eac`h*` 2D slice
+> state"), the Chern number is defined for *eac`h*' 2D slice
 > of the BZ at fixed $k_z$; the full 3D invariant is the
 > sum over slices. The "axion insulator" has vanishing
 > total Chern number but a non-zero magnetoelectric
@@ -1467,7 +1467,7 @@ sub-field.
 
 **Examples.** A 2D *second-order* TI has corner states
 (zero-dimensional), protected by $C_n$ rotation or mirror
-symmetry; the invariant is a *quantise`d*` electric
+symmetry; the invariant is a *quantise`d*' electric
 quadrupole moment $q_{xy} = e/2$. A 3D *second-order* TI has
 1D *hinge* states (chiral modes running along the edges of
 a 3D sample). Prominent material candidates:
@@ -1588,7 +1588,7 @@ restricted to the strip. The result (for $\lambda_\text{SO} =
 in which two edge-localised bands cross the bulk gap
 between $k_x = 0$ and $k_x = \pi/a$, with one band
 traversing the gap in one direction and the other in the
-opposite direction. The crossing is *protecte`d*` by TRS:
+opposite direction. The crossing is *protecte`d*' by TRS:
 at the time-reversal-invariant momentum $k_x = 0$ the two
 edge bands are degenerate by Kramers' theorem. The bulk
 bands above and below the gap are gapped; the edge bands
@@ -1608,7 +1608,7 @@ both ribbons are *closed*`; in the non-trivial phase
 ($\lambda_v < 3\sqrt{3} \lambda_\text{SO}$), one fails to
 close, with a net jump of $2\pi$. The parity of the
 winding is the $\mathbb Z_2$ invariant
-\eqref{eq:ch-16-z2-wilson}: an *od`d*` number of non-closing
+\eqref{eq:ch-16-z2-wilson}: an *od`d*' number of non-closing
 ribbons gives $\nu = 1$.
 
 > **Tip.** The WCC plot is the most *direct* visual
@@ -1639,7 +1639,7 @@ $\{|u_{n\mathbf k}\rangle\}$ for $\sim 30$ $sp$ bands per
 **Step 2 — band inversion check.** The PBE+SOC band
 structure has a direct gap of $\sim 0.3$ eV at $\Gamma$. The
 key observation: in the *non*-SOC picture the CBM at
-$\Gamma$ is the Se $4p_z$ combination; *wit`h*` SOC the
+$\Gamma$ is the Se $4p_z$ combination; *wit`h*' SOC the
 ordering inverts and the CBM is the Bi $6p_z$. This
 *band inversion* is the origin of the topological phase.
 Without SOC, Bi$_2$Se$_3$ is a trivial insulator.
@@ -1743,7 +1743,7 @@ $$
 |\psi_0(\phi)\rangle \;=\; \begin{pmatrix} -\sin(\theta/2)\, e^{-i\phi} \\\\ \cos(\theta/2) \end{pmatrix} .
 $$
 
-This is a *normalise`d*` state with $\langle \psi_0 | \psi_0
+This is a *normalise`d*' state with $\langle \psi_0 | \psi_0
 \rangle = \sin^2(\theta/2) + \cos^2(\theta/2) = 1$. The
 *overall* phase of the eigenvector is conventional; we have
 chosen the phase so that the $|\!\uparrow\rangle$ component
@@ -1952,7 +1952,7 @@ where $d = |\mathbf d| = \sqrt{d_x^2 + d_y^2 + d_z^2}$.
 The energy of the band $\pm$ is $E_\pm = \pm d$. The
 *eigenvectors* are the standard parameterisation of a
 2-level Hamiltonian in terms of Pauli matrices. The
-*occupie`d*` band is the lower one ($E_- = -d$), with
+*occupie`d*' band is the lower one ($E_- = -d$), with
 eigenvector $|u_{\mathbf k}^-\rangle$.
 
 **2. The sewing matrix at TRIM.** At the four TRIM
@@ -2002,7 +2002,7 @@ $|u^-\rangle = (0, 1)^T$, so $\Theta |u^-\rangle = i (1,
 0)^T$. The sewing matrix element with
 $|u^+\rangle = (1, 0)^T$ is
 $\langle u^+ | \Theta | u^- \rangle = i$. The other
-element (with the *excite`d*` state, not the time-reversed
+element (with the *excite`d*' state, not the time-reversed
 partner of the ground state) is
 $\langle u^- | \Theta | u^- \rangle = 0$ (orthogonality).
 
@@ -2090,7 +2090,7 @@ is $d_c \sim 6.5$ nm: for $d < d_c$, $M > 0$ and the
 well is a trivial insulator; for $d > d_c$, $M < 0$ and
 the well is a QSH insulator. The $\mathbb Z_2$ index
 flips at $d = d_c$, and the QSH phase is realised for
-$d > d_c$. This is the *standar`d*` test of the Fu–Kane
+$d > d_c$. This is the *standar`d*' test of the Fu–Kane
 formula, and \eqref{eq:ch-16-fu-kane-2d} gives the
 correct $\mathbb Z_2$ index in each phase.
 </details>
@@ -2102,8 +2102,8 @@ DFT Notes. The forward path points to
 [Chapter 17]({{ "/dft-notes/chapter-17/" | relative_url }}),
 the machine-learning-for-DFT chapter, where some of the
 topological-invariant computations (WCC / Wilson loops)
-are now being accelerated by *machine-learne`d*` tight-
-binding models and *neural-networ`k*` topological
+are now being accelerated by *machine-learne`d*' tight-
+binding models and *neural-networ`k*' topological
 classifiers. The backward path is:
 
 - [Chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }})
@@ -2182,7 +2182,7 @@ PDF and check the algebra in context). The five papers are:
 
 The five papers are arranged in roughly historical order
 (1929, 2005, 2006, 2006, 2006, 2010). The section is
-*page-cite`d*` throughout: every claim, equation, or numerical
+*page-cite`d*' throughout: every claim, equation, or numerical
 estimate is followed by `[Author, Year, eq. (X), p. YYYY-Z]`,
 where `YYYY` is the journal page number and `Z` is the
 printed page within the article (PRL and PRB use a single
@@ -2199,10 +2199,10 @@ moves.
 **Move 1 — the definition of the QSH state.** The paper
 opens by defining the quantum spin Hall state. A
 2D TR-symmetric insulator is in the QSH phase if, at each
-edge, there is an *od`d*` number of Kramers pairs of
+edge, there is an *od`d*' number of Kramers pairs of
 counter-propagating, spin-filtered edge states [Kane and
 Mele, 2005, p. 146802-1]. This is the working definition;
-the rest of the paper derives a *bul`k*` diagnostic that
+the rest of the paper derives a *bul`k*' diagnostic that
 distinguishes this phase from the trivial insulator.
 
 The formal QSH insulator definition is given in eq. (1) of
@@ -2259,7 +2259,7 @@ polarisations, taken modulo 2 [Kane and Mele, 2005, eq.
 
 The factor of 2 converts the *continuous* 1D
 polarisation to a *discrete* $\mathbb Z_2$ quantity. A
-non-trivial $\nu = 1$ implies an *od`d*` number of
+non-trivial $\nu = 1$ implies an *od`d*' number of
 edge-state crossings of the Fermi energy between $k_y = 0$
 and $k_y = \pi$ — the *helical* edge mode of the QSH
 phase.
@@ -2278,7 +2278,7 @@ gap closes at the critical ratio $\lambda_\text{SO} =
 
 **The HgTe/CdTe prediction.** The closing paragraphs of
 the paper make the *speculative* leap that the QSH
-*shoul`d*` exist in a HgTe/CdTe quantum well, because the
+*shoul`d*' exist in a HgTe/CdTe quantum well, because the
 band inversion driven by the spin–orbit coupling of Hg
 is the same mechanism that drives the $\mathbb Z_2$
 transition in the Kane–Mele model [Kane and Mele, 2005,
@@ -2314,7 +2314,7 @@ w_{mn}(\mathbf k) \;=\; \langle u_{m,\mathbf k} | \Theta | u_{n, -\mathbf k} \ra
 \end{equation}
 
 relates the Kramers partners at $\mathbf k$ and at
-$-\mathbf k$. The sewing matrix is *antisymmetri`c*` at the
+$-\mathbf k$. The sewing matrix is *antisymmetri`c*' at the
 TRIM, $w(\Lambda_a) = -w^T(\Lambda_a)$, so its Pfaffian
 is well-defined [Fu and Kane, 2006, eq. (8), p. 045312-3]:
 
@@ -2386,7 +2386,7 @@ with $n_k \in \{0, 1\}$. The full product gives the
 }
 \end{equation}
 
-The three *wea`k*` indices are defined by restricting
+The three *wea`k*' indices are defined by restricting
 the product to TRIM with a common value of $n_k$ [Fu
 and Kane, 2006, eqs. (20)–(22), p. 045312-7]:
 
@@ -2442,7 +2442,7 @@ computationalist's toolbox.
 ### 16.13.3 The BHZ model (2006)
 
 The Bernevig–Hughes–Zhang (BHZ) paper is the *material*
-paper. The question it answers is: in *whic`h*` real
+paper. The question it answers is: in *whic`h*' real
 material is the 2D TI realised? The answer is the
 **HgTe/CdTe quantum well** at well widths $d$ above a
 critical thickness $d_c \sim 6.5$ nm.
@@ -2518,7 +2518,7 @@ predicted value were the experimental smoking gun.
 > experiments. The paper is one of the most-cited
 > condensed-matter papers of the 2000s, with over
 > 4,000 citations in the first decade. It is the
-> *textboo`k*` example of how a topological phase can be
+> *textboo`k*' example of how a topological phase can be
 > predicted, characterised, and observed in a single
 > publication.
 
@@ -2581,7 +2581,7 @@ of $\theta$, and the proposed experiments to measure
 it. The topological superconductor section introduces
 the *Majorana fermion* and the proposals for
 topological quantum computation. These sections are
-the *most cite`d*` of the review: the field expanded
+the *most cite`d*' of the review: the field expanded
 *enormously* between 2010 and 2015, and the
 topological-superconductor and Majorana literatures
 are largely built on the framework laid out in
@@ -2591,7 +2591,7 @@ sections VI and VII of the review.
 *the* reference for the modern topological-insulator
 classification. It is the source the textbooks (and
 the chapters of these notes) draw on. The reader
-who wants to *understan`d*` a 3D TI, a topological
+who wants to *understan`d*' a 3D TI, a topological
 crystalline insulator, a higher-order TI, or a
 topological superconductor should *start* with the
 Hasan–Kane review and only then move to the more
@@ -2631,7 +2631,7 @@ the spin degree of freedom [Weyl, 1929, eq. (16),
 p. 332]. The Weyl spinor $\psi$ is *two-component*
 and has a definite *chirality* (left- or
 right-handed), the eigenvalue of $\gamma^5$. The
-massless Dirac equation factorises into two *decouple`d*`
+massless Dirac equation factorises into two *decouple`d*'
 Weyl equations, one for each chirality [Weyl, 1929,
 p. 333]. A *massive* Dirac fermion mixes the two
 chiralities; a *massless* one does not.
@@ -2654,7 +2654,7 @@ Weyl's original paper [Weyl, 1929, p. 334].
 
 **The historical irony.** Weyl proposed the
 massless Dirac equation as a model of the electron,
-but the *observe`d*` electron is massive (the
+but the *observe`d*' electron is massive (the
 electron mass is $m_e c^2 = 511$ keV, and the
 neutrino — the obvious candidate for a Weyl fermion
 in 1929 — is also now known to be massive after
@@ -2708,7 +2708,7 @@ and the *bulk invariant* for each family.
 | Property | 2D TI (QSH) | 3D strong TI | 3D weak TI |
 |:---------|:------------|:-------------|:-----------|
 | **Bulk invariant** | $\mathbb Z_2$ index $\nu \in \{0, 1\}$ [Kane and Mele, 2005, eq. (1), p. 146802-1]; [Fu and Kane, 2006, eq. (8), p. 045312-3] | Strong $\mathbb Z_2$ $\nu_0 = 1$ [Fu and Kane, 2006, eq. (20), p. 045312-7] | Strong $\mathbb Z_2$ $\nu_0 = 0$, some weak $\nu_k = 1$ [Fu and Kane, 2006, eq. (21), p. 045312-7] |
-| **Protected state** | 1D helical edge mode, Kramers pair, *odd*` number [Kane and Mele, 2005, p. 146802-1] | 2D surface Dirac cone, od`d number, spin–momentum locked [Hasan and Kane, 2010, pp. 3055–3057] | 2D surface states, but only on certain surfaces; *not robust [Fu and Kane, 2006, p. 045312-7] |
+| **Protected state** | 1D helical edge mode, Kramers pair, *odd*' number [Kane and Mele, 2005, p. 146802-1] | 2D surface Dirac cone, od`d number, spin–momentum locked [Hasan and Kane, 2010, pp. 3055–3057] | 2D surface states, but only on certain surfaces; *not robust [Fu and Kane, 2006, p. 045312-7] |
 | **Transport signature** | Quantised edge conductance $G = 2 e^2/h$ [Bernevig, Hughes, and Zhang, 2006, p. 1759] | Surface-dominated transport, no back-scattering from non-magnetic disorder [Hasan and Kane, 2010, pp. 3055–3057] | Anisotropic surface transport, sensitive to disorder [Hasan and Kane, 2010, p. 3057] |
 | **ARPES signature** | Edge-state band crossing the bulk gap [Hasan and Kane, 2010, pp. 3051–3053] | Single Dirac cone at $\bar\Gamma$ in the bulk gap [Hasan and Kane, 2010, pp. 3055–3057] | Surface states on some surfaces only [Fu and Kane, 2006, p. 045312-7] |
 | **Material examples** | HgTe/CdTe quantum well ($d > d_c$) [Bernevig, Hughes, and Zhang, 2006, p. 1759]; InAs/GaSb quantum wells [Hasan and Kane, 2010, p. 3052] | Bi$_2$Se$_3$, Bi$_2$Te$_3$, Sb$_2$Te$_3$ [Hasan and Kane, 2010, pp. 3055–3057] | Bi$_2$Te$_2$Se under certain growth conditions [Hasan and Kane, 2010, p. 3057] |
@@ -2810,8 +2810,8 @@ necessary background for each.
   areas (Yao & Wang, PRL 121, 086803 (2018); Yokomizo
   & Murakami, PRL 123, 066404 (2019)). The founding
   papers do not discuss non-Hermitian systems.
-- **Floquet topology.** The papers assume a *stati`c*`
-  $H(\mathbf k)$. A *time-periodi`c*` $H(\mathbf k, t)
+- **Floquet topology.** The papers assume a *stati`c*'
+  $H(\mathbf k)$. A *time-periodi`c*' $H(\mathbf k, t)
   = H(\mathbf k, t + T)$ has a topological
   classification in the Floquet basis; the Floquet
   TI and the anomalous Floquet TI have protected
@@ -2843,7 +2843,7 @@ necessary background for each.
   *cutting edge*, of topological superconductivity.
 - **Machine-learning prediction of topological
   materials.** The prediction of new topological
-  materials has been *industrialise`d*` by
+  materials has been *industrialise`d*' by
   machine-learning approaches (the "topological
   quantum chemistry" database of Bradlyn *et al.*,
   Science 353, 6299 (2016); the
@@ -2943,8 +2943,8 @@ important for a complete picture.
   and the *non-Hermitian skin effect* (extensive
   edge-localised eigenstates) are active research areas.
   We did not cover them.
-- **Floquet topology.** The chapter assumed a *stati`c*`
-  $H(\mathbf k)$. A *time-periodi`c*` $H(\mathbf k, t + T)
+- **Floquet topology.** The chapter assumed a *stati`c*'
+  $H(\mathbf k)$. A *time-periodi`c*' $H(\mathbf k, t + T)
   = H(\mathbf k, t)$ has a topological classification in
   the Floquet basis; the Floquet TI and the anomalous
   Floquet TI have protected edge states even when *all*

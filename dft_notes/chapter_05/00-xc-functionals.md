@@ -69,7 +69,7 @@ E_\text{xc}^{\text{approx}}[\rho] \;=\; \underbrace{E_\text{xc}^{(0)}[\rho]}_{\t
 
 Equation \eqref{eq:ch-05-jacobs-ladder} is the **menu**, not a
 single formula: every named functional (LDA, PBE, SCAN, B3LYP, …)
-is a particular choice of *which*` ingredients to include and how
+is a particular choice of *which*' ingredients to include and how
 muc`h* of each. The *exact $E_\text{xc}[\rho]$ sits at the top of
 the ladder, in "heaven", and is unknown.
 
@@ -95,7 +95,7 @@ electron–electron repulsion and $J[\rho]$ is its classical
 \rangle - J[\rho]$ is the **Fermi hole** — the reduction in
 Coulomb repulsion caused by Pauli exclusion; the correlation part
 is the **Coulomb hole** — the additional reduction caused by the
-instantaneous avoidance of same-spin *an`d*` opposite-spin electron
+instantaneous avoidance of same-spin *an`d*' opposite-spin electron
 pairs.
 
 > **Tip.**  Equation \eqref{eq:ch-05-exc-definition} is the *only*
@@ -132,7 +132,7 @@ will encounter in the literature.
 The **uniform electron gas** is the starting point of every modern
 XC functional. It is a hypothetical system of $N$ electrons in a box
 of volume $V$, with the electron–nuclear Coulomb attraction
-*replace`d*` by a uniform positive background charge of density
+*replace`d*' by a uniform positive background charge of density
 $n_+ = N/V$. This makes the system translationally invariant, so
 its ground-state energy is *automatically* an integral of a
 *function* of the density rather than a functional — and that
@@ -256,7 +256,7 @@ E_\text{xc}^\text{LDA}[\rho] \;=\; \int \rho(\mathbf r)\, \varepsilon_\text{xc}\
 \end{equation}
 
 i.e. the integrand of the UEG formula is *kept* and the constant
-$n$ is *replace`d*` by the local density $\rho(\mathbf r)$ at each
+$n$ is *replace`d*' by the local density $\rho(\mathbf r)$ at each
 point. The integrand $\rho\, \varepsilon_\text{xc}(\rho)$ is called
 the **XC energy density** and is a *local* function of $\rho$.
 
@@ -301,7 +301,7 @@ correlation energies of Ceperley and Alder for both limits.
 > is approximated by a constant, the better the approximation. LDA
 > is therefore unexpectedly good for systems that *are* close to the
 > UEG — simple $sp$ metals, jellium surfaces, the interiors of
-> nearly-free-electron solids — and *ba`d*` for systems with strong
+> nearly-free-electron solids — and *ba`d*' for systems with strong
 > density gradients — atoms, molecules, surfaces, and $d$-/ $f$-
 > electron materials.  Concretely, LDA typically over-binds molecules
 > by 20–30 kcal/mol per bond and under-estimates lattice constants
@@ -333,16 +333,16 @@ $\beta_\text{x} = (7/432\pi)(6\pi^2)^{2/3} \approx 0.00278$ — is
 in regions of strong gradient. That is the right direction: the
 exchange energy of a non-uniform system should be *less* negative
 than the LDA value, because the inhomogeneity weakens the Fermi
-hole. The problem is that the GEA *blows up*` in the exponential
+hole. The problem is that the GEA *blows up*' in the exponential
 tail* of an atomic density, where $\rho \to 0$ and the gradient
 expansion diverges. A bare GEA is therefore *worse* than LDA for
 atoms and molecules.
 
 The GEA's divergence is a *symptom* of the deeper fact that the XC
-energy is not analytic in $\nabla\rho$ at the *atomi`c*` density
+energy is not analytic in $\nabla\rho$ at the *atomi`c*' density
 limit. The fix is the **generalised-gradient approximation** of the
 next section: parametrise the *enhancement factor* of the LDA
-integrand as a *bounded*` function of a dimensionless reduced
+integrand as a *bounded*' function of a dimensionless reduced
 gradient, and fix the parameters by exact constraints (PBE) or by
 empirical fits (B88, LYP).
 
@@ -598,9 +598,9 @@ F_\text{x}^\text{TPSS}(\rho, s, \alpha) \;=\; F_\text{x}^\text{PBE}(s)\,\Bigl[1 
 \end{equation}
 
 where $d$ is a constant chosen by a constraint. The PBE part is
-*modulate`d*` by the orbital indicator $\alpha$. The TPSS
+*modulate`d*' by the orbital indicator $\alpha$. The TPSS
 atomisation MAE on G2 is $\sim 12$ kcal/mol — better than PBE,
-worse than SCAN. r²SCAN (Bartók and Yates 2019) is a *regularise`d*`
+worse than SCAN. r²SCAN (Bartók and Yates 2019) is a *regularise`d*'
 version of SCAN that is numerically more stable in the asymptotic
 density regime.
 
@@ -650,7 +650,7 @@ is
 \end{equation}
 
 where $\hat V_\text{ext}^\lambda$ is adjusted at each $\lambda$ to
-keep the *density fixe`d*` at the physical density $\rho$. The
+keep the *density fixe`d*' at the physical density $\rho$. The
 **adiabatic-connection** formula for $E_\text{xc}$ is then an
 *integral* over $\lambda$:
 
@@ -692,14 +692,14 @@ $\lambda$-integral: a $1/4$–$3/4$ *average* of the $\lambda = 0$
 parameter-free and uses *no empirical fit*. The 1/4 is not a
 fitted number; it is the second-order GL2 prediction.
 
-> **Warning.**  The 1/4 is a *lower boun`d*` on the optimum
+> **Warning.**  The 1/4 is a *lower boun`d*' on the optimum
 > mixing. Empirically, PBE0 (1/4) tends to over-correct the
 > LDA/GGA binding of small molecules; B3LYP (20% exact exchange)
 > was designed with 3 fitted parameters to be slightly less
 > "exact-exchange-y" than PBE0 for thermochemistry. The reader
 > should think of the ACFDT derivation as a *reason* the mixing
 > is "around 0.25", not as a proof that it is *exactly* 0.25. **B3LYP.** The **Becke 3-parameter Lee–Yang–Parr** functional
-(B3LYP) is the canonical example of a *fitte`d*` hybrid. The
+(B3LYP) is the canonical example of a *fitte`d*' hybrid. The
 functional form is
 
 \begin{equation}
@@ -796,7 +796,7 @@ where the *short-range* exchange is treated by the DFT
 ingredient (e.g. PBE exchange) and the *long-range* exchange is
 treated by *exact* HF exchange. The correlation part is the
 *short-range* DFT correlation; the long-range correlation is
-*absorbe`d*` into the long-range HF exchange (the HF exchange
+*absorbe`d*' into the long-range HF exchange (the HF exchange
 integral already contains a non-local exchange-correlation
 contribution by virtue of the Pauli principle).
 
@@ -808,7 +808,7 @@ contribution by virtue of the Pauli principle).
 > exchange*, used in solid-state physics. Large $\omega$
 > (e.g. $\omega$B97X's $\omega = 0.25$–$0.40$) means more of
 > the Coulomb is treated at the HF level: this is the regime of
-> *long-range correcte`d*` hybrids, used for charge-transfer
+> *long-range correcte`d*' hybrids, used for charge-transfer
 > excitations and Rydberg states in quantum chemistry.
 
 **CAM-B3LYP.** The **Coulomb-Attenuating Method** (CAM) of Yanai,
@@ -839,7 +839,7 @@ excitations in TDDFT.
 
 **$\omega$B97X.** The **$\omega$B97X** family (Chai and Head-Gordon
 2008) is a *fully* range-separated hybrid with the
-range-separation parameter $\omega$ *itsel`f*` optimised against a
+range-separation parameter $\omega$ *itsel`f*' optimised against a
 training set. The simplest member, $\omega$B97X, uses
 $\omega = 0.25\,a_0^{-1}$, 100% long-range HF exchange, and a
 fitted short-range exchange. The variant $\omega$B97X-D adds the
@@ -852,7 +852,7 @@ successor, $\omega$B97M(2), a double-hybrid range-separated
 functional).
 
 **HSE06.** The **Heyd–Scuseria–Ernzerhof** screened hybrid is the
-*screene`d*` limit of the range-separated family: $\omega = 0.11$ and
+*screene`d*' limit of the range-separated family: $\omega = 0.11$ and
 25% short-range HF exchange, with the long-range exchange treated
 *purely* at the PBE level. The form is "PBE0 with the long-range
 exact exchange zeroed out". HSE06 is the *de facto* default
@@ -864,8 +864,8 @@ none of it).
 
 ### 5.2.8 Double hybrids
 
-A **double hybri`d** is the sixt`h*` rung: a hybrid functional with
-*both*` a fraction of exact exchange and* a fraction of
+A **double hybri`d** is the sixt`h*' rung: a hybrid functional with
+*both*' a fraction of exact exchange and* a fraction of
 **MP2-like correlation** computed from the KS orbitals,
 
 \begin{equation}
@@ -917,7 +917,7 @@ with $c_\text{SS} \approx 0.5$ and $c_\text{OS} \approx 1.0$ (the
 opposite-spin contribution is *more* important than the same-spin
 contribution for thermochemistry). The DSD-PBEP86 atomisation MAE
 on a larger training set is $\sim 1.5$ kcal/mol — *better* than
-B2-PLYP and close to the *gold standar`d*` CCSD(T).
+B2-PLYP and close to the *gold standar`d*' CCSD(T).
 
 > **Warning.**  Double hybrids are *expensive*. The MP2-like
 > correlation in a Gaussian basis scales as $\mathcal O(K^5)$ with
@@ -939,7 +939,7 @@ every LDA, GGA, meta-GGA, and most hybrids. The DFT integrand is
 a *local* (or semi-local) function of the density; the vdW tail
 is a *non-local* functional of the density at two points
 $\mathbf r_1$ and $\mathbf r_2$ that are *not* close. The
-standard fix is to *add*` a dispersion correction a posteriori:
+standard fix is to *add*' a dispersion correction a posteriori:
 
 \begin{equation}
 \label{eq:ch-05-dispersion-correction}
@@ -979,7 +979,7 @@ energy evaluation.
 
 **DFT-D4.** The **D4** correction (Caldeweyher et al. 2019) is
 the *next-generation* D correction. It uses machine-learned*
-dispersion coefficients and *dynami`c*` polarisabilities that
+dispersion coefficients and *dynami`c*' polarisabilities that
 account for the *chemical environment* of each atom in a more
 sophisticated way than D3. D4 is more accurate than D3 on
 transition-metal complexes (where the polarisability of a metal
@@ -1027,9 +1027,9 @@ integral is evaluated by FFT-based methods in plane-wave codes.
 > **Tip.**  "Dispersion-dominated" systems (layered materials,
 > molecular crystals, host–guest complexes, biological macro-
 > molecules) need *some* dispersion correction or they will
-> collapse or fail to bind. The cheapest *an`d*` most accurate
+> collapse or fail to bind. The cheapest *an`d*' most accurate
 > choice for a hybrid functional on a small molecule is
-> B3LYP-D3 or $\omega$B97X-D. The cheapest *an`d*` most accurate
+> B3LYP-D3 or $\omega$B97X-D. The cheapest *an`d*' most accurate
 > choice for a layered material is SCAN + rVV10 (a
 > nonlocal-correlation variant) or PBE + MBD. The choice
 > depends on the system class; the *omission* of dispersion is
@@ -1063,7 +1063,7 @@ through MP2; dispersion sees the *tail* of the density.
 
 The ladder has two important properties. First, **higher rungs
 are not always better**: a *low* rung (LDA) can outperform a
-*hig`h*` rung (a poorly-tuned hybrid) for a particular system.
+*hig`h*' rung (a poorly-tuned hybrid) for a particular system.
 The ladder is a *cost–complexity* ordering, not a monotonic-
 accuracy ordering. Second, **chemical accuracy** (errors
 $\lesssim 1$ kcal/mol on atomisation energies, $\lesssim 0.02$
@@ -1230,7 +1230,7 @@ graph TD
   R6 -->|"+ ring diagrams (RPA)"| R7
 ```
 
-The diagram also serves as a *roadma`p*` for the rest of the
+The diagram also serves as a *roadma`p*' for the rest of the
 chapter: section 5.2.1–5.2.2 covers Rung 1 (LDA), section
 5.2.3–5.2.4 covers Rung 2 (GGA), section 5.2.5 covers Rung 3
 (meta-GGA), section 5.2.6 covers Rung 4 (hybrid), section
@@ -1240,7 +1240,7 @@ dispersion "patch" that is glued onto rungs 4–7. > **Note.**  A second, comple
 > the **cost vs accuracy** trade-off across the rungs is in
 > `dft_notes/python_codes/chapter_05/03-jacobs-ladder-cost-accuracy.py`
 > (the plot is a Python scatter, not a Mermaid graph, but the
-> *ide`a*` — climbing the ladder trades cost for accuracy — is
+> *ide`a*' — climbing the ladder trades cost for accuracy — is
 > the same). The data points are eyeball-estimates of the
 > G2-atomisation MAE; they should be read as the *tren`d*`, not
 > as benchmark-precise numbers.
@@ -1282,7 +1282,7 @@ The error pattern is **diagnostic of the rung**:
   construction): error is $+0.042\,E_h$ above the exact energy.
   This is the famous "correlation energy of He",
   $E_\text{c}^\text{He} = E_\text{exact} - E_\text{HF} = -0.0420\,E_h$.
-- **LDA** over-correlates (it has *too muc`h*` correlation in
+- **LDA** over-correlates (it has *too muc`h*' correlation in
   the low-density region of the He atom, because the LDA
   estimate of the *correlation* contribution from the density
   tail is too negative): error is $+0.070\,E_h$ above the
@@ -1317,7 +1317,7 @@ correction.
 on He — closer to the exact than PBE0, despite using *less*
 exact exchange (20% vs 25%). The reason is the LYP correlation
 part, which is *more accurate* than PBE correlation for small
-atoms. This is a *systemati`c*` difference between PBE0 and
+atoms. This is a *systemati`c*' difference between PBE0 and
 B3LYP: B3LYP is tuned for small-molecule thermochemistry; PBE0
 is tuned for solids.
 
@@ -1593,7 +1593,7 @@ PBE0 total energies of He and compare each to the exact value.
 (c) Discuss the error pattern: HF over-correlates; LDA
 over-correlates worse; PBE fixes most of the error; PBE0 fixes
 a bit more. Why does *adding* exact exchange improve the
-result when the *uncorrecte`d*` LDA already has too much
+result when the *uncorrecte`d*' LDA already has too much
 correlation?
 
 </details>
@@ -1671,7 +1671,7 @@ $$
 This is the *variational HF error* of He using a single-zeta*
 Slater basis. The HF *limit* (with a saturated basis) gives
 $E_\text{HF}^\infty = -2.8617\,E_h$, so the basis-set
-incompleteness error is $\sim 0.014\,E_h$. The *intrinsi`c*`
+incompleteness error is $\sim 0.014\,E_h$. The *intrinsi`c*'
 HF error — the *correlation energy* $E_\text{c}^\text{He} =
 E_\text{exact} - E_\text{HF}^\infty = -0.0420\,E_h$ — is
 *not* in the single-zeta result. The single-zeta HF energy
@@ -1717,14 +1717,14 @@ the result is *less* negative than the LDA exchange but
 to compensate the residual LDA correlation error.
 
 The deeper point is that LDA exchange and LDA correlation
-*both*` have self-interaction errors that partially cancel
+*both*' have self-interaction errors that partially cancel
 in the LDA total. Adding a fraction of exact exchange (which
 has *no* self-interaction error) shifts the balance, and a
 *smaller* correlation error is needed in the DFT part to
 match the total. This is the "serendipitous cancellation" of
 errors that makes LDA surprisingly good for many properties
 — and that the hybrid functionals are designed to preserve
-*an`d*` improve.
+*an`d*' improve.
 
 **Headline answer.** The variational HF energy of He with a
 single Slater determinant is
@@ -1771,12 +1771,12 @@ notes.
 
 - [Chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/) —
   basis sets. The BSIE (basis-set incompleteness error) of a DFT
-  calculation is *entangle`d*` with the functional choice: a
+  calculation is *entangle`d*' with the functional choice: a
   hybrid functional with exact exchange has a *slower*
   basis-set convergence than a GGA, because the exact exchange
   integral is more sensitive to the tail of the basis. The
   reader should *not* quote a DFT energy without naming both
-  the functional *an`d*` the basis.
+  the functional *an`d*' the basis.
 - [Chapter 08]({{ site.baseurl }}/dft-notes/chapter-08/) —
   pseudopotentials. Most pseudopotentials are *frozen-core*
   approximations that were constructed at a specific XC
@@ -1803,8 +1803,8 @@ notes.
   the functional*: B3LYP-D3, PBE-D3, BLYP-D3 are *different
   functionals* with *different recommended uses.
 - **Spin** ([chapter 04]({{ site.baseurl }}/dft-notes/chapter-04/) § 4.8) —
-  every functional in this chapter has a *spin-polarise`d*`
-  (LSDA) and a *spin-unpolarise`d*` (LDA) variant. The
+  every functional in this chapter has a *spin-polarise`d*'
+  (LSDA) and a *spin-unpolarise`d*' (LDA) variant. The
   polarisation dependence is part of the functional
   specification; the user should not use a "LDA" functional
   on a spin-polarised system without explicitly switching to
@@ -1834,7 +1834,7 @@ following gaps.
   mentioned the screening parameter $\omega = 0.11$, but did
   not derive the *screening* itself.
 - **Görling–Levy perturbation theory (GLPT).** The
-  ACFDT argument of section 5.2.6 is the *physically motivate`d*`
+  ACFDT argument of section 5.2.6 is the *physically motivate`d*'
   derivation of the mixing fraction $a = 1/4$. The
   *mathematically rigorous* derivation is the
   Görling–Levy perturbation theory, which expands the
@@ -1848,7 +1848,7 @@ following gaps.
   should consult Görling and Levy's original 1993–1994
   papers.
 - **RPA and quantum-chemical composite methods (GNOF,
-  $\Lambda$-functionals, MC-PDFT).** The *to`p*` of Jacob's
+  $\Lambda$-functionals, MC-PDFT).** The *to`p*' of Jacob's
   ladder is the random-phase approximation (RPA), which uses
   the *exact* (adiabatic) exchange and the ring-Coulomb*
   correlation. RPA is expensive ($\mathcal O(K^4)$ to
@@ -1867,14 +1867,14 @@ following gaps.
   (Kirkpatrick et al. 2021) was trained on a large set of
   *exact* exchange–correlation energies from the
   hierarchical equations of motion and shows
-  *systemati`c*` improvements over hybrid functionals on a
+  *systemati`c*' improvements over hybrid functionals on a
   wide range of benchmarks. The functional is not a
-  *formula*` — it is a neural network* — so it does not fit
+  *formula*' — it is a neural network* — so it does not fit
   neatly into the Jacob's ladder picture. We did not cover
   it because the methodology is still rapidly evolving and
   the *form* of the functional is not yet standardised.
 - **The "rung above double hybrid" (rung 7) is not
-  standardised.** The *sevent`h*` rung of Jacob's ladder is
+  standardised.** The *sevent`h*' rung of Jacob's ladder is
   variously identified with RPA, with quantum-chemical
   composite methods like CCSD(T), or with multireference
   methods. There is no single "rung 7" that the community
@@ -1884,11 +1884,11 @@ following gaps.
 - **Self-interaction error and its fixes.** The
   self-interaction error of LDA/GGA — the fact that a
   one-electron system has a *non-zero* $E_\text{xc}$ in LDA
-  — is a *systemati`c*` failure of all the local and
+  — is a *systemati`c*' failure of all the local and
   semi-local rungs. The exact-exchange-only self-interaction
   correction (SIC) of Perdew and Zunger and the
   range-separated SIC of Vydrov and Scuseria are
-  *systemati`c*` fixes. We mentioned the self-interaction
+  *systemati`c*' fixes. We mentioned the self-interaction
   error in passing in the worked example (section 5.5) but
   did not derive the SIC machinery.
 
@@ -2242,7 +2242,7 @@ f(\zeta) \;=\;
 \end{equation}
 
 and $\zeta_\text{AF}^2 = 1/4$ is the value of $\zeta^2$ at the
-*antiferromagneti`c*` point of the Helium-like fully-polarised
+*antiferromagneti`c*' point of the Helium-like fully-polarised
 limit (this is a normalisation constant, not a variable).
 This is the standard "stiffness interpolation" formula used
 by the LSDA throughout the DFT literature. Equation
@@ -2334,7 +2334,7 @@ density and the Wigner crystal limit at low density; and
 (iii) the fitted curve has a *small* and uniformly distributed*
 residual (the VWN paper reports residuals of order
 $10^{-4}\,E_h$ per electron on the Ceperley–Alder data
-points, p. 1204). The *modifie`d*` version "VWN5" is the
+points, p. 1204). The *modifie`d*' version "VWN5" is the
 re-parameterisation reported in the 1980 *erratum*; "VWN3" is
 the simplified form in the 1980 paper itself (without the
 $\alpha_1 x^2$ correction term in
@@ -2485,7 +2485,7 @@ $\rho \cdot (1 - \beta/\gamma) \cdot \varepsilon_\text{x}^\text{LDA} \propto
 \rho^{2/3}$, a different power of $\rho$. Becke's argument
 (p. 3099) is that the $-1/r$ behaviour of $\varepsilon_\text{x}$
 corresponds, in the density picture, to a particular
-*integrate`d*` decay of the exchange energy that the B88 form
+*integrate`d*' decay of the exchange energy that the B88 form
 captures correctly through its parameter $\gamma$. The
 correct asymptotic behaviour is recovered *only* if the
 denominator $1 + \gamma x^2$ is in the enhancement factor (a
@@ -2562,13 +2562,13 @@ contribution was the *simple* rational form
 $s = 0$, (ii) asymptotes to a finite enhancement at
 $s = \infty$ (giving the correct $-1/r$ decay), (iii) has
 *one* fitted parameter (so it can be tested on systems it
-wasn't fit to), and (iv) is *chea`p*` to evaluate (no
+wasn't fit to), and (iv) is *chea`p*' to evaluate (no
 Bessel functions, no special functions, just a rational
 function of the density and its gradient). The B88 form
 fits in a single equation, and that simplicity is what
 made it the workhorse of chemistry-focused DFT for the next
 25 years. B88 is the *empirical* counterpart to PBE's
-*constraint-base`d*` approach — the two together span the
+*constraint-base`d*' approach — the two together span the
 design space of GGA exchange.
 
 ### 5.9.4 LYP (Lee, Yang, Parr 1988)
@@ -2591,8 +2591,8 @@ $\varepsilon_\text{c}[\rho]$ so obtained satisfies several
 sum rules, recovers the uniform-electron-gas limit, and
 reproduces correlation energies of atoms and small
 molecules to within a few percent."* That is the *thesis of
-the paper: the Colle–Salvetti 1975 *wavefunction-base`d*`
-correlation formula can be *reformulated*` as a density
+the paper: the Colle–Salvetti 1975 *wavefunction-base`d*'
+correlation formula can be *reformulated*' as a density
 functional*, without any orbital dependence, and the
 resulting density functional — once the kinetic-energy
 density $\tau$ is approximated by its Thomas–Fermi form —
@@ -2605,7 +2605,7 @@ Salvetti (1975,
 proposed a wavefunction-based correlation-energy formula
 for a *two-electron* Hartree–Fock pair density, depending
 on the density $\rho(\mathbf r)$ and a *correlation factor*
-$f(r_{12})$ that depends on the *interelectroni`c*` distance
+$f(r_{12})$ that depends on the *interelectroni`c*' distance
 $r_{12}$ and the kinetic-energy density. The 1988 Lee–Yang–Parr
 paper's contribution is the *algebraic steps* that turn
 the CS-1975 pair-density integral into a *local* functional
@@ -2728,7 +2728,7 @@ in B3LYP:
 
 1. **It is "non-empirical" in a different sense from PBE.**
    PBE correlation (Eq. \eqref{eq:ch-05-lit-pbe-h} of §5.9.1
-   above) is *constraint-based*` but not fitted* — it
+   above) is *constraint-based*' but not fitted* — it
    *replaces* the LDA correlation with a correction to it.
    LYP is a *replacement* of the LDA correlation that does
    not have the LDA correlation as its base. For a
@@ -2771,7 +2771,7 @@ $|\nabla\rho| = 2Z\rho$, the LYP formula
 $E_\text{c}^\text{LYP}(\text{He}) = -0.0420\,E_h$, in
 *exact* agreement with the Hylleraas value (Kinoshita 1959).
 This is the only constraint that fixes the four parameters
-of \eqref{eq:ch-05-lit-lyp-params}; the *goo`d*` performance
+of \eqref{eq:ch-05-lit-lyp-params}; the *goo`d*' performance
 on other systems (Table I, p. 788) is a prediction.
 
 ### 5.9.5 Bibliography for this section
@@ -2821,7 +2821,7 @@ numbers, DOIs, and URLs.
   Underlying wavefunction formula: Colle, R.; Salvetti, O.
   "Approximate expression for the total energy of a system
   of N electrons interacting with each other and with an
-  external potential." *Theoretica Chimica Act`a*` **1975**,
+  external potential." *Theoretica Chimica Act`a*' **1975**,
   *37* (4), 329–331. DOI:
   [10.1007/BF01102856](https://doi.org/10.1007/BF01102856).
 

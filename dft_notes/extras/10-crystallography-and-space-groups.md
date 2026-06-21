@@ -254,7 +254,7 @@ lattice from the direct lattice.
 
 ### 1.4 Reciprocal lattice of each Bravais lattice
 
-The reciprocal lattice of a centred direct lattice is *itsel`f*`
+The reciprocal lattice of a centred direct lattice is *itsel`f*'
 a Bravais lattice, and the pairing is its own kind of duality.
 The complete table:
 
@@ -512,7 +512,7 @@ example material.
 > number of distinct symmetry operations it contains.  For $C_n$
 > it is $n$; for $D_n$ it is $2n$; for $T$ (chiral tetrahedral)
 > it is 12; for $O$ (chiral octahedral, sometimes called the
-> *rotation grou`p*` of the cube) it is 24; for $O_h$ (full
+> *rotation grou`p*' of the cube) it is 24; for $O_h$ (full
 > octahedral) it is 48. The five cubic point groups are 12,
 > 24, 24, 24, 48 in size, which sums with the others to 32. ---
 
@@ -575,7 +575,7 @@ chapter.
 ### 3.2 Symmorphic vs non-symmorphic space groups
 
 A space group is **symmorphic** if its point group is a
-*subgrou`p*` of the space group in the literal sense — that is,
+*subgrou`p*' of the space group in the literal sense — that is,
 if every element of the point group $\{R \mid \mathbf 0\}$ is in
 the space group.  Equivalently, a symmorphic space group is a
 *direct product* of the point group and the translation
@@ -672,7 +672,7 @@ examples.
 > *glide* planes.  In $F d \bar 3 m$ the two atoms of the basis
 > sit at $(0, 0, 0)$ and $(1/4, 1/4, 1/4)$, which is the
 > **diamond** structure.  In $F \bar 4 3 m$ the second atom is
-> at $(1/4, 1/4, 1/4)$ as well, but the *`d*` glide of the
+> at $(1/4, 1/4, 1/4)$ as well, but the *`d*' glide of the
 > diamond is replaced by a pure mirror — the **zincblende**
 > structure.  If the two basis atoms are different species
 > (GaAs, ZnS, CdTe), the inversion symmetry is broken and the
@@ -1145,7 +1145,7 @@ Cu1  0.0  0.0  0.0  1.0
 
 The key fields:
 
-- `_cell_length_*` and `_cell_angle_*` — the conventional
+- `_cell_length_*` and `_cell_angle_*' — the conventional
   cell parameters $(a, b, c)$ in Å and $(\alpha, \beta, \gamma)$
   in degrees.
 - `_space_group_name_H-M_alt` — the Hermann–Mauguin symbol.
@@ -1455,7 +1455,7 @@ Schoenflies symbols depend on the *rotational* subgroup (the
 "axial" part) and use letter+number, while the HM symbols
 depend on the full point group and use number+letter+number.
 Some groups have the same Schoenflies symbol across crystal
-systems (e.g. $C_{2h}$ is the point group of *bot`h*` the
+systems (e.g. $C_{2h}$ is the point group of *bot`h*' the
 monoclinic $P 2_1/c$ and the orthorhombic $P n m a$); the HM
 symbol distinguishes them.
 
@@ -1578,7 +1578,7 @@ section (or chapter):
 - **Magnetic space groups** (Shubnikov groups, 1651 of them).
   The 230 "grey" space groups above are the paramagnetic
   groups; once time-reversal symmetry is broken, the magnetic
-  point group can be any of 32 + 32 + 58 = 122 *magneti`c*` point
+  point group can be any of 32 + 32 + 58 = 122 *magneti`c*' point
   groups, and the magnetic space groups number 1651. The BCS
   has a separate `NCSYM` tool for these.
 - **Incommensurate structures.**  Modulated structures and

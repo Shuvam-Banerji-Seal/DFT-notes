@@ -226,13 +226,13 @@ A new step is then
 \rho^{(n+1)} = \rho^{(n)} - \alpha\, G_n r^{(n)} .
 \end{equation}
 
-The "good" Broyden update is the *symmetri`c*` rank-one update
+The "good" Broyden update is the *symmetri`c*' rank-one update
 that preserves the secant condition
 $\Delta\rho_n = G_{n+1} \Delta r_n$.  A second variant
 (**"bad" Broyden**) updates $G$ so that
 $\Delta r_n = G_{n+1} \Delta\rho_n$; the two coincide at
 convergence.  In production codes Broyden is rarely the *only*
-solver; its variants appear as the *fallbac`k*` in DIIS or as
+solver; its variants appear as the *fallbac`k*' in DIIS or as
 the *refinement* step after DIIS stalls.
 
 ### 1.5 DIIS — Direct Inversion in the Iterative Subspace
@@ -602,7 +602,7 @@ E(\mathbf R + \alpha \mathbf p) \le E(\mathbf R) + c_1 \alpha\, \mathbf F \cdot 
 \end{equation}
 
 with $c_1 \sim 10^{-4}$.  In a DFT code the cost of an SCF is so
-high that one almost always uses a *fixe`d*` $\alpha$ (or a
+high that one almost always uses a *fixe`d*' $\alpha$ (or a
 *trust radius* method, §2.6) rather than a line search.
 
 ### 2.4 Newton–Raphson
@@ -700,7 +700,7 @@ the search direction.
 
 ### 2.6 Trust-radius method
 
-In all of the above, the *step lengt`h*` is a free parameter.
+In all of the above, the *step lengt`h*' is a free parameter.
 The **trust-region** idea (Powell, 1970) is to bound the step
 by a *radius* $\Delta_k$ inside which the quadratic model
 $E(\mathbf R^{(k)} + \mathbf p) \approx E(\mathbf R^{(k)})
@@ -965,7 +965,7 @@ by $(m_1, m_2, m_3)$ with $0 \le m_i < N_i$:
 (For a centred mesh, the half-grid shift is omitted; for a
 shifted mesh, a small $\mathbf k$-shift is added to break
 symmetry.)  Each $\mathbf k$ has weight $w_\mathbf k = 1 / N_\mathbf k$
-in the uniform mesh, *reduce`d*` by the symmetry operations of the
+in the uniform mesh, *reduce`d*' by the symmetry operations of the
 crystal point group to give the IBZ (irreducible BZ) weights
 $w_\mathbf k^\text{IBZ}$.  For an FCC lattice and a $8 \times
 8 \times 8$ mesh the IBZ has only 29 inequivalent $\mathbf k$'s
@@ -1329,7 +1329,7 @@ the diagonal), and the diagonal elements are the eigenvalues.
 The cost of a single iteration is $\mathcal O(n^3)$; with
 *shifts* the convergence is cubic, giving an overall cost of
 $\mathcal O(n^3)$ for a full diagonalisation.  The QR iteration
-*by itsel`f*` is not what production codes run — they use the
+*by itsel`f*' is not what production codes run — they use the
 **implicitly-shifted QR** with a *Hessenberg* pre-reduction
 that costs only $\mathcal O(n^2)$ per iteration.
 
@@ -1346,7 +1346,7 @@ the cost drops to $\mathcal O(n^2)$ per iteration.
 The standard convergence acceleration is a **Wilkinson shift**:
 at each iteration, compute the eigenvalue of the trailing
 $2 \times 2$ block closest to the bottom-right element, and
-shift the QR step by it.  The convergence becomes *cubi`c*` in
+shift the QR step by it.  The convergence becomes *cubi`c*' in
 the typical case (Francis, 1971).
 
 ### 4.3 Divide-and-conquer
@@ -1560,7 +1560,7 @@ solve is by **Conjugate Gradient** with a preconditioner (§5.6).
 ### 5.3 The Lanczos algorithm
 
 The **Lanczos algorithm** (Lanczos, 1950) is the iterative
-solver for *symmetric*` matrices.  It builds a tridiagonal
+solver for *symmetric*' matrices.  It builds a tridiagonal
 representation
 
 \begin{equation}
@@ -1789,7 +1789,7 @@ The SCF iteration of §1 is a fixed-point iteration
 $\rho^{(n+1)} = \mathcal F[\rho^{(n)}]$.  In *insulators* the
 spectral radius of $\mathcal F^{\prime}$ is small enough that linear
 mixing converges; in *metals* the long-wavelength ($G \to 0$)
-components of the density are *amplifie`d*` by the static
+components of the density are *amplifie`d*' by the static
 dielectric response, and bare iteration diverges.  This
 section is the deep dive into the **preconditioners** that fix
 the metallic case.
@@ -1820,10 +1820,10 @@ amplification factor is
 For $G \to 0$ this approaches
 $1 - \alpha + \alpha \chi_0$, which is *greater than 1* if
 $\alpha \chi_0 > \alpha$ (i.e. $\chi_0 > 1$).  In a metal
-$\chi_0$ is the *stati`c*` density-response of the non-
+$\chi_0$ is the *stati`c*' density-response of the non-
 interacting KS system, and it is large near $G = 0$ (the
 Lindhard function diverges as $1/G^2$ in 3-D).  Hence the
-amplification *blows u`p*` at small $G$ and the bare iteration
+amplification *blows u`p*' at small $G$ and the bare iteration
 **diverges**.
 
 ### 6.2 The Kerker preconditioner
@@ -1873,7 +1873,7 @@ channels.
 
 DIIS in the form of §1.5 uses a *flat* inner product
 $\langle R_i, R_j \rangle = R_i \cdot R_j$.  For metals the
-*preconditione`d*` inner product
+*preconditione`d*' inner product
 
 \begin{equation}
 \label{eq:nm-mix-pulay-prec}
@@ -1885,7 +1885,7 @@ is better: the DIIS sub-problem
 \eqref{eq:nm-scf-diis-aug} is solved in the preconditioned
 metric, and the resulting coefficients emphasise the *short-
 wavelengt`h*` components of the residual (where the SCF map is
-contractive) and down-weight the *long-wavelengt`h*` components
+contractive) and down-weight the *long-wavelengt`h*' components
 (where the Kerker preconditioner has already taken over).
 
 This is sometimes called **Pulay–Kerker mixing** in the
@@ -2032,7 +2032,7 @@ this toy problem.
 The **pseudopotential** of
 [chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }})
 replaces the all-electron potential near the nucleus by a
-*smoot`h*` pseudo-potential that reproduces the all-electron
+*smoot`h*' pseudo-potential that reproduces the all-electron
 *valence* eigenstate outside a cutoff radius $r_c$.  This
 section collects the three pieces of pseudopotential
 construction: the **radial Schrödinger equation on a logarithmic
@@ -2051,7 +2051,7 @@ equation is
    = E_\ell u_\ell(r) ,
 \end{equation}
 
-with $u_\ell(r) = r R_\ell(r)$ the *reduce`d*` radial function
+with $u_\ell(r) = r R_\ell(r)$ the *reduce`d*' radial function
 and $R_\ell(r)$ the full radial wavefunction.  The boundary
 condition is $u_\ell(0) = 0$ (regularity at the origin) and
 $u_\ell(r) \to 0$ as $r \to \infty$ for bound states.
@@ -2081,7 +2081,7 @@ u''(r) \approx \frac{u_{i+1} - 2 u_i + u_{i-1}}{h^2} ,
 
 i.e. the standard second-order finite-difference formula in
 $\log r$.  This is equivalent to a standard 3-point
-finite-difference in the *logarithmi`c*` variable $x = \log r$.
+finite-difference in the *logarithmi`c*' variable $x = \log r$.
 
 The integration is from large $r$ *inwards* (Numerov's
 method) or from $r = 0$ *outwards* (shooting).  For a
@@ -2154,7 +2154,7 @@ The KB form has two advantages over the *semi-local* form
 The **ghost-state** problem (King-Smith, Payne, Lin, 1991) is
 the main failure mode: the KB form can introduce *spurious*
 eigenstates that are absent from the semi-local form.  The fix
-is to *chec`k*` the KB projector against the semi-local
+is to *chec`k*' the KB projector against the semi-local
 pseudopotential at a few test energies and to *adjust* the
 local channel if ghost states appear.
 
@@ -2370,7 +2370,7 @@ The **acoustic sum rule** (ASR) is the constraint
 which guarantees that a uniform translation of the crystal
 produces no restoring force.  The ASR is broken in any
 supercell calculation (the finite supercell is not a real
-crystal) and must be *enforce`d*` by hand.  The standard
+crystal) and must be *enforce`d*' by hand.  The standard
 enforcement is the **acoustic-sum-rule projection** of
 Gonze et al. (1994): after computing $D(\mathbf q)$, replace
 it by
@@ -2573,7 +2573,7 @@ acoustic and optical branches as solid lines, the
 frozen-phonon reconstruction as markers.  The agreement is
 at the 0.1% level (the finite-difference step is $\epsilon = 0.01$
 in the example).  A production calculation would use a smaller
-$\epsilon$ and a finite-difference of *thir`d*` order to reduce
+$\epsilon$ and a finite-difference of *thir`d*' order to reduce
 the error.
 
 > **Cross-reference.** The full phonon machinery is in
@@ -2604,8 +2604,8 @@ first.
   §8 (Monkhorst–Pack, smearing).  The Blöchl (1994) paper is
   the canonical reference for the corrected tetrahedron method.
 - **§4 (Diagonalisation).** Trefethen & Bau,
-  *Numerical Linear Algebr`a*` (SIAM, 1997), lectures 24–28. Demmel,
-  *Applied Numerical Linear Algebr`a*` (SIAM, 1997), chapter 4.
+  *Numerical Linear Algebr`a*' (SIAM, 1997), lectures 24–28. Demmel,
+  *Applied Numerical Linear Algebr`a*' (SIAM, 1997), chapter 4.
 - **§5 (Iterative eigensolvers).** Saad,
   *Iterative Methods for Sparse Linear Systems* (SIAM, 2nd
   ed., 2003), chapter 6. The Knyazev (2001) paper is the
@@ -2624,7 +2624,7 @@ first.
   the modern "density-functional perturbation theory" formalism.
 
 > **Disclaimer.** This appendix is a *reference*, not a textbook.
-> Each section is stated as a *self-containe`d*` algorithm; the
+> Each section is stated as a *self-containe`d*' algorithm; the
 > convergence proofs and the detailed error analyses are in the
 > references above.  Cite the original papers, not this
 > appendix, in any publication that uses one of these methods.

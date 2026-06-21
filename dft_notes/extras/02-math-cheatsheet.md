@@ -551,7 +551,7 @@ delta peaks at the HF orbital energies, weighted by the
 **spectral weights** of the one-particle states. Cross-
 reference: chapters 01, 03, 04, 07. > **Tip.** The **density of states** is
 > $g(\omega) = \operatorname{Tr} \mathbf A(\omega) = \sum_i A_{ii}(\omega)$.
-> In Kohn–Sham DFT the spectral function is *approximate`d*` by
+> In Kohn–Sham DFT the spectral function is *approximate`d*' by
 > the KS density of states, which is a sum of delta peaks at the
 > KS eigenvalues — this is the *physical content* of the
 > "Kohn–Sham band structure" of chapter 07. ---
@@ -1165,7 +1165,7 @@ $\partial_t (\partial \mathcal L / \partial \dot q_i) -
 equation of the Dirac–Frenkel Lagrangian of chapter 01
 (§1.7.2) is the **time-dependent Schrödinger equation** —
 the TDSE is the *unique* dynamics consistent with
-stationary action *an`d*` unitarity.
+stationary action *an`d*' unitarity.
 
 ### 12.3 The Euler–Lagrange equation in field theory
 
