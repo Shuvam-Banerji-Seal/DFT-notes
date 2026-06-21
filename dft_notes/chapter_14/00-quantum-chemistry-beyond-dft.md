@@ -129,13 +129,13 @@ production calculation.
 \text{Method} & \text{Cost} & \text{Error} & \text{When} \\\
              &            & (\text{kcal mol}^{-1}) & \\\
 \hline
-\text{HF}                  & K^4   & 100\!-\!300  & \text{orbitals, qualitative} \\\
-\text{MP2}                 & K^5   & 5\!-\!15     & \text{large systems, dispersion} \\\
-\text{MP3}                 & K^6   & 3\!-\!8      & \text{rare; not size-extensive in open-shell} \\\
-\text{CISD}                & K^6   & 3\!-\!10     & \text{not size-extensive — see § 14.3.4} \\\
-\text{MP4 (SDQ)}           & K^6   & 2\!-\!5      & \text{composite methods G1/G2} \\\
-\text{CCSD}                & K^6   & 1\!-\!3      & \text{small to medium molecules} \\\
-\text{CCSD(T)}             & K^7   & 0.1\!-\!0.5  & \text{gold standard} \\\
+\text{HF}                  & K^4   & 100\text{-}300  & \text{orbitals, qualitative} \\\
+\text{MP2}                 & K^5   & 5\text{-}15     & \text{large systems, dispersion} \\\
+\text{MP3}                 & K^6   & 3\text{-}8      & \text{rare; not size-extensive in open-shell} \\\
+\text{CISD}                & K^6   & 3\text{-}10     & \text{not size-extensive — see § 14.3.4} \\\
+\text{MP4 (SDQ)}           & K^6   & 2\text{-}5      & \text{composite methods G1/G2} \\\
+\text{CCSD}                & K^6   & 1\text{-}3      & \text{small to medium molecules} \\\
+\text{CCSD(T)}             & K^7   & 0.1\text{-}0.5  & \text{gold standard} \\\
 \text{CCSDT}               & K^8   & < 0.1        & \text{rare; multi-reference problematic} \\\
 \text{FCI}                 & K^N   & 0            & \text{exact in a basis; benchmark only} \\\
 \hline
@@ -1852,23 +1852,23 @@ choice.
 \hline
 \text{Method} & \text{Scaling} & \text{Accuracy} & \text{When} \\\
 \hline
-\text{HF}                  & K^4   & 100\!-\!300  & \text{qualitative orbitals, geometries} \\\
-\text{MP2}                 & K^5   & 5\!-\!15     & \text{large systems, dispersion-dominated} \\\
-\text{MP3}                 & K^6   & 3\!-\!8      & \text{rare; mostly in composite methods} \\\
-\text{CISD}                & K^6   & 3\!-\!10     & \text{not size-extensive — use CCSD instead} \\\
-\text{MP4(SDTQ)}           & K^7   & 2\!-\!5      & \text{composite methods G1, G2} \\\
-\text{CCSD}                & K^6   & 1\!-\!3      & \text{small to medium molecules} \\\
-\text{CCSD(T)}             & K^7   & 0.1\!-\!0.5  & \text{gold standard; default} \\\
-\text{CCSDT}               & K^8   & 0.05\!-\!0.2 & \text{benchmark on small systems} \\\
+\text{HF}                  & K^4   & 100\text{-}300  & \text{qualitative orbitals, geometries} \\\
+\text{MP2}                 & K^5   & 5\text{-}15     & \text{large systems, dispersion-dominated} \\\
+\text{MP3}                 & K^6   & 3\text{-}8      & \text{rare; mostly in composite methods} \\\
+\text{CISD}                & K^6   & 3\text{-}10     & \text{not size-extensive — use CCSD instead} \\\
+\text{MP4(SDTQ)}           & K^7   & 2\text{-}5      & \text{composite methods G1, G2} \\\
+\text{CCSD}                & K^6   & 1\text{-}3      & \text{small to medium molecules} \\\
+\text{CCSD(T)}             & K^7   & 0.1\text{-}0.5  & \text{gold standard; default} \\\
+\text{CCSDT}               & K^8   & 0.05\text{-}0.2 & \text{benchmark on small systems} \\\
 \text{CCSDTQ}              & K^{10}& 0.01         & \text{reference only} \\\
-\text{CASSCF}              & D_\text{act}^2  & 5\!-\!20     & \text{bond breaking, diradicals, multiplets} \\\
-\text{CASPT2}              & D_\text{act} K^4 & 1\!-\!3    & \text{multireference with dynamic correlation} \\\
-\text{NEVPT2}              & D_\text{act} K^4 & 1\!-\!3    & \text{multireference, intruder-state-free} \\\
+\text{CASSCF}              & D_\text{act}^2  & 5\text{-}20     & \text{bond breaking, diradicals, multiplets} \\\
+\text{CASPT2}              & D_\text{act} K^4 & 1\text{-}3    & \text{multireference with dynamic correlation} \\\
+\text{NEVPT2}              & D_\text{act} K^4 & 1\text{-}3    & \text{multireference, intruder-state-free} \\\
 \text{Selected CI}         & D_\text{act}     & 0.1        & \text{benchmark, FCI solver} \\\
-\text{DFT (GGA)}           & K^3   & 3\!-\!10     & \text{large systems, solids} \\\
-\text{DFT (hybrid)}        & K^4   & 1\!-\!3      & \text{medium systems, thermochemistry} \\\
-\text{Semiempirical (PM7)} & K^2   & 3\!-\!10     & \text{conformational search, screening} \\\
-\text{DFTB3}               & K^3   & 3\!-\!10     & \text{molecular dynamics, millions of atoms} \\\
+\text{DFT (GGA)}           & K^3   & 3\text{-}10     & \text{large systems, solids} \\\
+\text{DFT (hybrid)}        & K^4   & 1\text{-}3      & \text{medium systems, thermochemistry} \\\
+\text{Semiempirical (PM7)} & K^2   & 3\text{-}10     & \text{conformational search, screening} \\\
+\text{DFTB3}               & K^3   & 3\text{-}10     & \text{molecular dynamics, millions of atoms} \\\
 \hline
 \end{array}
 \;}
