@@ -1866,10 +1866,9 @@ $$
 \text{DFT (GGA)}           & K^3   & 3\text{-}10     & \text{large systems, solids} \\\
 \text{DFT (hybrid)}        & K^4   & 1\text{-}3      & \text{medium systems, thermochemistry} \\\
 \text{Semiempirical (PM7)} & K^2   & 3\text{-}10     & \text{conformational search, screening} \\\
-\text{DFTB3}               & K^3   & 3\text{-}10     & \text{molecular dynamics, millions of atoms} \\\
+\text{DFTB3}               & K^3   & 3\text{-}10     & \text{molecular dynamics, millions of atoms} \\
 \hline
 \end{array}
-\;}
 $$
 
 The cost-accuracy trade-off in Table
