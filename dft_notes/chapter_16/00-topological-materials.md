@@ -1443,8 +1443,8 @@ graph TD
 ``'
 
 The two *branches* of the diagram are the bulk-only route
-(`A → B → C → D → E → J`) and the *surface* route
-(`G → N' or `H → I → N`). The first gives the *topological
+('A → B → C → D → E → J') and the *surface* route
+('G → N' or 'H → I → N`). The first gives the *topological
 invariant* of the bulk (Chern number or $\mathbb Z_2$ index)
 without ever computing a surface; the second gives the
 *direct visualisation* of the protected boundary state.
@@ -2183,8 +2183,8 @@ PDF and check the algebra in context). The five papers are:
 The five papers are arranged in roughly historical order
 (1929, 2005, 2006, 2006, 2006, 2010). The section is
 *page-cite`d*' throughout: every claim, equation, or numerical
-estimate is followed by `[Author, Year, eq. (X), p. YYYY-Z]`,
-where `YYYY' is the journal page number and `Z' is the
+estimate is followed by '[Author, Year, eq. (X), p. YYYY-Z]',
+where 'YYYY' is the journal page number and 'Z' is the
 printed page within the article (PRL and PRB use a single
 page number; Science uses the start page). The reader is
 encouraged to *open the original* and verify.

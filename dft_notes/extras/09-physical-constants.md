@@ -50,7 +50,7 @@ linked back to its source.
   to 6 significant figures, which is the precision at which
   rounding errors in DFT calculations are negligible.
 - MathJax 3 is used.  Numbered equations use
-  `\begin{equation} ... \label{eq:pc-foo} ... \end{equation}`;
+  '\begin{equation} ... \label{eq:pc-foo} ... \end{equation}';
   cross-references in this file are `\eqref{eq:pc-foo}`.
 
 ---

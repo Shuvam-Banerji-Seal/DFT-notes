@@ -44,8 +44,8 @@ following pinned dependencies:
 | Package      | Version | Why |
 |:-------------|:--------|:----|
 | `numpy'      | ≥ 1.24  | arrays, linalg, FFT        |
-| `scipy'      | ≥ 1.10  | sparse matrices, special functions, `integrate.solve_ivp' |
-| `matplotlib' | ≥ 3.7   | plots (`matplotlib.use("Agg")' for headless) |
+| 'scipy'      | ≥ 1.10  | sparse matrices, special functions, 'integrate.solve_ivp' |
+| 'matplotlib' | ≥ 3.7   | plots ('matplotlib.use("Agg")' for headless) |
 
 Nothing else.  If a chapter needs a new dependency (e.g.
 `pyscf`, `ase`, `gpaw`), it is added to this list in the same
@@ -71,7 +71,7 @@ PR as the script.
 
 | Chapter | Script | What it does |
 |:--------|:-------|:-------------|
-| 00 | [01-particle-in-box.py]({{ site.baseurl }}/dft-notes/python_codes/chapter_00/01-particle-in-box.py) | Plots the first four particle-in-a-box eigenfunctions and the corresponding probability densities.  Introduces `numpy' arrays, `linalg.eigh`, and `matplotlib`. |
+| 00 | [01-particle-in-box.py]({{ site.baseurl }}/dft-notes/python_codes/chapter_00/01-particle-in-box.py) | Plots the first four particle-in-a-box eigenfunctions and the corresponding probability densities.  Introduces 'numpy' arrays, 'linalg.eigh', and 'matplotlib`. |
 
 ## Where the code goes in the chapter
 

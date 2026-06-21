@@ -64,9 +64,9 @@ quantities, writes the corresponding PNG into the chapter's
 
 | Package      | Version | Used for |
 |:-------------|:--------|:---------|
-| `numpy'      | ≥ 1.24  | arrays, `np.trapz' for radial integration |
+| 'numpy'      | ≥ 1.24  | arrays, 'np.trapz' for radial integration |
 | `scipy'      | ≥ 1.10  | (not directly used in these scripts but available) |
-| `matplotlib' | ≥ 3.7   | plots (`matplotlib.use("Agg")' for headless runs) |
+| 'matplotlib' | ≥ 3.7   | plots ('matplotlib.use("Agg")' for headless runs) |
 
 No new dependency was introduced by chapter 05.  The conventions
 in [python_codes/index.md]({{ site.baseurl }}/dft-notes/python_codes/)

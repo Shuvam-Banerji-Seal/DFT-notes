@@ -35,7 +35,7 @@ here and is linked back to its source.
 **Conventions used in this page.**
 
 - MathJax 3 is used.  Numbered equations use
-  `\begin{equation} ... \label{eq:cryst-foo} ... \end{equation}`;
+  '\begin{equation} ... \label{eq:cryst-foo} ... \end{equation}';
   cross-references in this file are `\eqref{eq:cryst-foo}`.
 - Crystallographic angles $\alpha$, $\beta$, $\gamma$ are the
   angles between pairs of conventional cell edges:
@@ -240,7 +240,7 @@ that avoids solving a $3 \times 3$ linear system is
 The denominator $\mathbf a_1 \cdot (\mathbf a_2 \times \mathbf a_3)$ is
 six times the volume of the primitive cell (the scalar triple
 product).  Equation \eqref{eq:cryst-recip-explicit} is the
-formula used in `numpy' and `spglib' to compute the reciprocal
+formula used in 'numpy' and 'spglib' to compute the reciprocal
 lattice from the direct lattice.
 
 > **Verification of \eqref{eq:cryst-recip-explicit}.**  Take
@@ -1100,7 +1100,7 @@ $\mathbf b_1, \mathbf b_2, \mathbf b_3$.
 The four most common DFT codes — VASP, Quantum ESPRESSO,
 CASTEP, and SIESTA — accept the space group in different ways.
 VASP uses the symmetry operations in the `POSCAR`/`CONTCAR'
-itself; QE uses `space_group' in the `&SYSTEM' namelist; CASTEP
+itself; QE uses 'space_group' in the '&SYSTEM' namelist; CASTEP
 uses `.cell' keyword; SIESTA uses a separate Z-matrix file.
 The **CIF file** is the universal interchange format and the
 recommended starting point for any new crystal.
@@ -1145,7 +1145,7 @@ Cu1  0.0  0.0  0.0  1.0
 
 The key fields:
 
-- `_cell_length_*' and `_cell_angle_*' — the conventional
+- '_cell_length_*' and '_cell_angle_*' — the conventional
   cell parameters $(a, b, c)$ in Å and $(\alpha, \beta, \gamma)$
   in degrees.
 - `_space_group_name_H-M_alt' — the Hermann–Mauguin symbol.
@@ -1172,17 +1172,17 @@ the space group explicitly.  The relevant `INCAR' tags are:
 |:--|:-:|:--|
 | `ISYM' | 2 | Symmetry: 0 = off, 1 = use operations, 2 = use operations + break when $E$ stops decreasing |
 | `SYMPREC' | 1e-5 | Tolerance for symmetry detection (Å) |
-| `LWAVE' | .FALSE. | Write `WAVECAR' |
-| `LCHARG' | .FALSE. | Write `CHGCAR' |
+| 'LWAVE' | .FALSE. | Write 'WAVECAR' |
+| 'LCHARG' | .FALSE. | Write 'CHGCAR' |
 | `IBRION' | — | Optimisation algorithm |
 
 For a non-symmorphic space group with a glide plane, VASP
 detects the glide automatically; the symmetry-derived k-point
-reduction (`KPOINTS' with `Auto' mesh) respects the glide.
+reduction ('KPOINTS' with 'Auto' mesh) respects the glide.
 
-> **Tip.**  If you have a CIF file, use `pymatgen' or `ase' to
+> **Tip.**  If you have a CIF file, use 'pymatgen' or 'ase' to
 > convert it to a POSCAR:
-> `Structure.from_file("Cu.cif").to("POSCAR", "POSCAR")`.
+> 'Structure.from_file("Cu.cif").to("POSCAR", "POSCAR")'.
 
 ### 8.3 Quantum ESPRESSO
 

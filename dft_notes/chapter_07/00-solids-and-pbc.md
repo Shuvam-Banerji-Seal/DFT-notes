@@ -1864,7 +1864,7 @@ slower: $N \approx 16$ is needed for 1 meV/atom.
 For a metallic calculation, we need a *secon`d*' convergence test:
 the smearing width $\sigma$. The recipe is:
 
-1. **Converge the mes`h** $N_\mathbf k$ at a fixe`d*' $\sigma \approx
+1. **Converge the mes'h** $N_\mathbf k$ at a fixe'd*' $\sigma \approx
    0.02$ Hartree.
 2. **Sweep $\sigma$** at a *fixe`d*' $N_\mathbf k$ (large enough to
    be converged for the largest $\sigma$): e.g. $\sigma = 0.04,

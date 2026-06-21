@@ -49,7 +49,7 @@ the worked example should follow the cross-reference.
 
 > **Python conventions.** All Python samples are **minimal and
 > self-containe`d*`* — they import only `numpy`, `scipy`, and
-> `matplotlib' (with `matplotlib.use("Agg")' set first, so the
+> 'matplotlib' (with 'matplotlib.use("Agg")' set first, so the
 > code is headless).  They are *not* production code: no parallel
 > execution, no ERI back-transform, no symmetry reduction.  Their
 > job is to expose the algorithm in 50–100 lines so the reader
@@ -1360,7 +1360,7 @@ parallel, and *merges* the eigenpairs by rank-1 updates
 (Sherman–Morrison–Woodbury) in $\mathcal O(n^2)$ per merge.
 The total cost is $\mathcal O(n^{2.4})$ or better.
 
-LAPACK's `?SYEVD' and ScaLAPACK's `P?SYEVD' use the
+LAPACK's '?SYEVD' and ScaLAPACK's 'P?SYEVD' use the
 divide-and-conquer algorithm.  For a DFT calculation on a
 1000-atom system with a Gaussian basis of $K = 10{,}000$
 functions, divide-and-conquer is the *only* option that fits
@@ -1496,7 +1496,7 @@ computed by Cholesky factorisation
 or by the spectral form
 ($\mathbf S = \mathbf U \mathbf \Lambda \mathbf U^\text{T}$,
 $\mathbf X = \mathbf U \mathbf \Lambda^{-1/2} \mathbf U^\text{T}$).
-The standard production recipe is `scipy.linalg.eigh(F, S)`,
+The standard production recipe is 'scipy.linalg.eigh(F, S)',
 which forms $\mathbf X$ by Cholesky factorisation and runs
 the divide-and-conquer QR algorithm on $\mathbf F'$.
 
@@ -2221,10 +2221,10 @@ def hydrogen_pseudo_fit(r_c=1.2):
 
     def residuals(c):
         a0, a1, a2, a3, a4 = c
-        p_rc = a0 + a1 * rc*`2 + a2  rc*4 + a3 * rc`6 + a4 * rc*`8
+        p_rc = a0 + a1 * rc*'2 + a2  rc*4 + a3 * rc'6 + a4 * rc*`8
         u_tilde_rc = rc * np.exp(p_rc)
         res1 = u_tilde_rc - u_at_rc
-        p_prime_rc = 2 * rc * a1 + 4  r`c**3  a2 + 6 * rc*`5  a3 + 8 * rc*7  a4
+        p_prime_rc = 2 * rc * a1 + 4  r'c**3  a2 + 6 * rc*'5  a3 + 8 * rc*7  a4
         res2 = 2 * rc * p_prime_rc - (u_prime_at_rc / u_at_rc)  rc + 1
         mask = r < r_c
         norm_ae = np.trapz(u_ae_i[mask]**2, r[mask])

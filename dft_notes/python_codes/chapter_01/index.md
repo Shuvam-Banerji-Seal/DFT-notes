@@ -50,7 +50,7 @@ numerical results to stdout.
 
 ## Dependencies
 
-`numpy`, `scipy' (only `scipy.optimize.brentq' for the finite-well
-root find), and `matplotlib' (headless via `matplotlib.use("Agg")`).
+`numpy`, 'scipy' (only 'scipy.optimize.brentq' for the finite-well
+root find), and 'matplotlib' (headless via 'matplotlib.use("Agg")`).
 See the top-level [python_codes/]({{ site.baseurl }}/dft-notes/python_codes/)
 page for the version pins.

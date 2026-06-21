@@ -161,5 +161,5 @@ do not have to read all of them.
   `agent:diagram-artist' updates this Mermaid graph in the
   same commit — moving the new node from `planned' to
   `shipped`, adding the prerequisite edge, and refreshing the
-  `Edges' table.  The `shipped' / `planned' split in
+  'Edges' table.  The 'shipped' / `planned' split in
   `classDef' above is the single source of truth.

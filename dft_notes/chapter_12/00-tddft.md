@@ -1364,10 +1364,10 @@ graph TD
 ``'
 
 The **three vertical branches** of the diagram converge on the
-`EIG' box. `A' (top branch) provides the *diagonal* of the
+'EIG' box. 'A' (top branch) provides the *diagonal* of the
 Casida matrix — it contains the KS excitation energies
 $\omega_{ia}$ and is the part that survives the *Tamm–Dancof`f*'
-approximation (TDA, where `B' is neglected). `K' (middle
+approximation (TDA, where 'B' is neglected). 'K' (middle
 branch) is the *coupling matrix*, computed from the chosen
 xc kernel; it is the *only* branch where the kernel choice
 matters. `B' (bottom branch) is the *de-excitation* amplitude
@@ -1525,14 +1525,14 @@ graph TD
   class SPEC out
 ``'
 
-The **inner loop** (`LOOP' → `CN' → `VEFF' → `CK`) is the
+The **inner loop** ('LOOP' → 'CN' → 'VEFF' → 'CK`) is the
 propagator: at every time step, the Crank–Nicolson update
 rotates each orbital by the Cayley transform of $\hat H_s$,
 then a new density and effective potential are built. The
 cost per step is $\mathcal O(K^2)$ per orbital (the matrix
 solve) plus $\mathcal O(K^2)$ for the density build — total
 $\mathcal O(N_\text{steps} N_\text{orb} K^2)$ for the whole
-trajectory. The **post-processing** chain (`MU' → `WIN' → `FFT'
+trajectory. The **post-processing** chain ('MU' → 'WIN' → `FFT'
 → `SPEC`) takes the trajectory and extracts the absorption
 spectrum in a single Fourier transform, after windowing to
 suppress spectral leakage.

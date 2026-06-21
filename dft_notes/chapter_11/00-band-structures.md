@@ -639,7 +639,7 @@ three different *compressions* of the same band structure
 $\varepsilon_{n\mathbf k}$. They answer three different
 questions: *how many states* are at a given energy
 (`DOS`); *of which character* (`pDOS`); and where in the
-Brillouin zone* (`Fermi surface`).
+Brillouin zone* ('Fermi surface').
 
 ```mermaid
 
@@ -1035,7 +1035,7 @@ The implementation is straightforward: at each $\mathbf k$ on the
 band-structure path, compute the projection weights for every band,
 and plot a marker of size proportional to the weight.  Most
 plotting libraries can do this with a single call (e.g.
-`ax.scatter' with `s = w * scale' in matplotlib).
+'ax.scatter' with 's = w * scale' in matplotlib).
 
 ## 11.7 Effective masses
 

@@ -864,7 +864,7 @@ none of it).
 
 ### 5.2.8 Double hybrids
 
-A **double hybri`d** is the sixt`h*' rung: a hybrid functional with
+A **double hybri'd** is the sixt'h*' rung: a hybrid functional with
 *both*' a fraction of exact exchange and* a fraction of
 **MP2-like correlation** computed from the KS orbitals,
 
@@ -1184,7 +1184,7 @@ is in
 `dft_notes/python_codes/chapter_05/plots/01-ueg-xc-vs-rs.png`.
 
 > **Tip.**  The script is *self-containe`d*`: it depends only on
-> `numpy' and `matplotlib' (with `matplotlib.use("Agg")' for
+> 'numpy' and 'matplotlib' (with `matplotlib.use("Agg")' for
 > headless runs), and it does not call `os.chdir`. Run it from
 > the repo root with
 > `python dft_notes/python_codes/chapter_05/01-ueg-xc-vs-rs.py'

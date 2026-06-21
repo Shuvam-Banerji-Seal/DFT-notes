@@ -533,7 +533,7 @@ graph TD
   class OUT out
 ``'
 
-The two **left-most** branches (`HF1' and `HF2`) are the
+The two **left-most** branches ('HF1' and 'HF2`) are the
 Hellmann–Feynman contribution, computed from the SCF density and
 nuclear positions only — no basis-derivative integrals are
 required. The **right-most** branches are the Pulay contribution,
@@ -1495,7 +1495,7 @@ graph TD
   class DONE out
 ``'
 
-The **two compute boxes** (`F1' and `F2`) are the workhorses:
+The **two compute boxes** ('F1' and 'F2`) are the workhorses:
 the force evaluation is the *ioni`c*' part of the gradient, the
 stress evaluation is the *cell* part. Both depend on the
 self-consistent density from `SCF`, but they are otherwise
@@ -1700,7 +1700,7 @@ The main pieces are the integral routines (inherited from
 the gradient evaluation by central differences, the HF force
 evaluation by grid quadrature on the SCF density, and the
 steepest-descent step.  No external dependencies beyond
-`numpy`, `scipy`, and `matplotlib' (with `Agg' for headless
+`numpy`, `scipy`, and 'matplotlib' (with 'Agg' for headless
 plotting).
 
 ## 9.11 Diagram: the geometry-optimisation loop
@@ -1725,7 +1725,7 @@ graph TD
   RNEW --> E0
 ``'
 
-The top half of the diagram (from `R(0)' to `F_I`) is the
+The top half of the diagram (from 'R(0)' to 'F_I`) is the
 *single-point* force evaluation: run an SCF, compute the
 energy, compute the forces.  The bottom half is the *outer
 loo`p*`: choose a step direction, choose a step length, update

@@ -22,7 +22,7 @@ jellium.
 
 | #  | Script | Plot | What it does |
 |:---|:-------|:-----|:-------------|
-| 01 | [01-h2-lda-scf.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_04/01-h2-lda-scf.py) | [01-h2-lda-scf.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_04/plots/01-h2-lda-scf.png) | From-scratch KS-LDA SCF for H₂ in STO-3G.  Builds S, T, V_nuc, and the 2e-tensor (μν\|λσ) by hand; the F_xc matrix is evaluated numerically on a 6 a₀ box, 21 points/side, with `v_xc = (4/3)ε_x' (Dirac) + Wigner correlation.  Linear mixing (α = 0.3) until `|ΔE| < 1e-8`.  Plots the SCF convergence of E_elec. |
+| 01 | [01-h2-lda-scf.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_04/01-h2-lda-scf.py) | [01-h2-lda-scf.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_04/plots/01-h2-lda-scf.png) | From-scratch KS-LDA SCF for H₂ in STO-3G.  Builds S, T, V_nuc, and the 2e-tensor (μν\|λσ) by hand; the F_xc matrix is evaluated numerically on a 6 a₀ box, 21 points/side, with 'v_xc = (4/3)ε_x' (Dirac) + Wigner correlation.  Linear mixing (α = 0.3) until '|ΔE| < 1e-8`.  Plots the SCF convergence of E_elec. |
 | 02 | [02-h2-ks-vs-hf.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_04/02-h2-ks-vs-hf.py) | [02-h2-ks-vs-hf.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_04/plots/02-h2-ks-vs-hf.png) | Four-method bar-chart comparison at R = 1.4 a₀: RHF/STO-3G, KS-LDA/STO-3G (re-runs script 01), Full CI/STO-3G, Full CI/CBS (non-relativistic exact).  Labels each bar with its value and the gap ΔE relative to RHF. |
 | 03 | [03-jellium-slab.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_04/03-jellium-slab.py) | [03-jellium-slab.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_04/plots/03-jellium-slab.png) | 1-D jellium slab on a 20 a₀ box with N = 10 electrons in a central 10 a₀ slab (r_s = 1 a₀).  Real-space grid (200 points, h ≈ 0.10 a₀), finite-difference Laplacian, Dirichlet BCs, Poisson-solve Hartree & jellium potentials, 1-D Dirac + Wigner XC.  Linear mixing (α = 0.2).  2×2 subplot grid: density, Hartree potential, full KS potential, eigenvalues with `\|ψ₁\|²' overlaid. |
 
@@ -37,11 +37,11 @@ python dft_notes/python_codes/chapter_04/03-jellium-slab.py
 ``'
 
 Each script writes its plot to `dft_notes/python_codes/chapter_04/plots/'
-using an absolute path derived from `__file__' (no `os.chdir`).
+using an absolute path derived from '__file__' (no 'os.chdir`).
 
 ## Dependencies
 
-`numpy`, `scipy' (`eigh`, `erf`), and `matplotlib' (headless
+`numpy`, 'scipy' ('eigh', 'erf'), and 'matplotlib' (headless
 via `matplotlib.use("Agg")`).  No other packages.  See
 [python_codes/]({{ site.baseurl }}/dft-notes/python_codes/) for
 the full repository-wide conventions.

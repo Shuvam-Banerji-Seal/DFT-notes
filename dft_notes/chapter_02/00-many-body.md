@@ -1049,7 +1049,7 @@ The complete script (with the Slater–Condon rules, the
 diagonalisation, and the convergence plot) is in
 [`dft_notes/python_codes/chapter_02/01-two-electron-box.py`]({{site.baseurl }}/dft_notes/python_codes/chapter_02/01-two-electron-box.py);
 the run command from the repo root is
-`python dft_notes/python_codes/chapter_02/01-two-electron-box.py`.
+'python dft_notes/python_codes/chapter_02/01-two-electron-box.py'.
 The script produces two plots: a convergence plot of the first few
 eigenvalues vs. basis size $K$, and a density plot of the
 ground-state wavefunction $\Psi(x_1, x_2)$.  The point of the

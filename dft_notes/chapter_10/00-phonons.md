@@ -587,7 +587,7 @@ the force constant is a *post-processing* of $\psi_n^{(1)}$.
 > [Quantum ESPRESSO](<https://www.quantum-espresso.org/>),
 > [ABINIT](<https://www.abinit.org/>), and
 > [CASTEP](<https://www.castep.org/>) under the keyword
-> `phonon' / `dfpt' / `linear response`. For each $\mathbf q$ the
+> 'phonon' / 'dfpt' / 'linear response'. For each $\mathbf q$ the
 > code runs *one* Sternheimer SCF cycle (linear in the occupied
 > states) and outputs the dynamical matrix. The cost of a full
 > phonon dispersion is then $N_\mathbf q$ *linear* calculations,
@@ -661,7 +661,7 @@ graph TD
   class DYN out
 ``'
 
-The **inner loop** (`SOLVE' → `RHO1' → `V1' → `CK`) is a
+The **inner loop** ('SOLVE' → 'RHO1' → 'V1' → 'CK`) is a
 *linear* iteration: each step solves a single linear system for
 $\psi_n^{(1)}$ given a fixed $V_\text{Hxc}^{(1)}$, then updates
 $V_\text{Hxc}^{(1)}$ from the new $\rho^{(1)}$. This is the
@@ -757,7 +757,7 @@ are the three acoustic modes at $\Gamma$.
 > which subtracts the average of the $\mathbf q = 0$ column (the
 > "spurious acoustic-mode contribution") from every $\mathbf q$.
 > This is what the **frozen-phonon post-processing** of Quantum
-> ESPRESSO's `q2r' + `matdyn' does by default.
+> ESPRESSO's 'q2r' + 'matdyn' does by default.
 
 ## 10.5 LO–TO splitting at $q = 0$ in ionic crystals
 

@@ -878,7 +878,7 @@ $\mathbf X = \mathbf B^{-1/2}$:
 This is the **Roothaan–Hall** equation
 $\mathbf F \mathbf C = \mathbf S \mathbf C \boldsymbol\varepsilon$
 of chapters 03 (§3.6) and 06 (§6.1). The standard numerical
-recipe is `scipy.linalg.eigh(F, S)`, which forms
+recipe is 'scipy.linalg.eigh(F, S)', which forms
 $\mathbf X$ by Cholesky factorisation of $\mathbf S$. Cross-
 reference: chapters 03, 06. ### 9.3 Singular value decomposition (SVD)
 

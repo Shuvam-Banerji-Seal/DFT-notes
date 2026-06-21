@@ -1477,7 +1477,7 @@ def direct_scf(geom, basis, n_elec, max_iter=100, tol=1e-9,
     return E_el, eps, C, P
 ``'
 
-The key piece is `build_J_direct' / `build_K_direct`, which loop
+The key piece is 'build_J_direct' / 'build_K_direct`, which loop
 over basis-function quartets, apply the Schwarz test
 \eqref{eq:ch-03-screen}, and accumulate only the
 non-negligible contributions.  The full implementation appears

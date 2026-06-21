@@ -215,7 +215,7 @@ eliminates the Pulay force
   non-collinear DFT, DFT+U(+V), Wannier-function methods
   (Wannier90), TDDFT in the real-time (`turboTDDFT`) and
   linear-response (`turboEELS`) flavours, $G_0W_0$ and $GW$
-  via `Yambo' and `West`, phonon dispersion and
+  via 'Yambo' and 'West`, phonon dispersion and
   electron-phonon coupling (`EPW`), NMR chemical shifts
   (`QE-Knopp`), Hubbard parameters (`HP`),
   Born–Oppenheimer and Car–Parrinello MD.
@@ -299,7 +299,7 @@ eliminates the Pulay force
   exact exchange), spin-polarised DFT, DFT+U,
   linear-response DFPT for phonons, dielectric response,
   Born effective charges, IR / Raman, $G_0W_0$ (the
-  `Optics' and `SIGMA' modules are the workhorse $GW$
+  'Optics' and 'SIGMA' modules are the workhorse $GW$
   code for the open-source community), BSE, TDDFT in the
   Casida and Sternheimer flavours, electron stopping
   power, electron–phonon coupling, finite electric
@@ -448,7 +448,7 @@ $f$-electron localisation
   coupling, magnetic anisotropy energy (MAE), NMR
   contact and dipolar hyperfine fields, resonant
   inelastic X-ray scattering (NRIXS) via the *Rixs*
-  module, $G_0W_0$ via interface with `Spex' and `Yambo`.
+  module, $G_0W_0$ via interface with 'Spex' and 'Yambo`.
 - **Basis sets:** APW + LAPW + lo.
 - **DFT Notes chapters:** 04, 05, 08.
 - **When to use.** The right pick for *magnetism* and
@@ -1082,10 +1082,10 @@ questions you will ask on the third week.
 
 Quantum ESPRESSO is a Fortran 2003 plane-wave DFT code
 ([§2.1](#21-quantum-espresso)). The cheatsheet below
-covers the standard `pw.x' (ground-state) and `bands.x'
+covers the standard 'pw.x' (ground-state) and 'bands.x'
 (post-processing) executables. The input format is
 **name-list Fortran** — every section starts with
-`&NAME' and ends with `/`.
+'&NAME' and ends with '/`.
 
 #### 10.1.1 Minimal input — H₂ SCF
 
@@ -1120,9 +1120,9 @@ ATOMIC_POSITIONS angstrom
 K_POINTS gamma                    ! Gamma-only: 1 k-point
 ``'
 
-To run: `pw.x < h2.scf.in > h2.scf.out`. The total
+To run: 'pw.x < h2.scf.in > h2.scf.out'. The total
 energy (in Rydberg) is in `h2.scf.out' after
-`!    total energy`.
+'!    total energy'.
 
 #### 10.1.2 Annotated example — Si band structure
 
@@ -1167,7 +1167,7 @@ K_POINTS automatic              ! Monkhorst-Pack mesh
 ``'
 
 **Step 2 — bands** (`si.bands.in`): same as
-`si.scf.in' but with `calculation = 'bands'`, an
+'si.scf.in' but with 'calculation = 'bands'`, an
 added `nbnd`, and the k-path:
 
 ```fortran
@@ -1202,9 +1202,9 @@ K_POINTS tpiba_b               ! high-symmetry path; cartesian, 2*pi/bohr
   0.5   0.5   0.5    30         ! L
 ``'
 
-The `6' is the number of segments, the `30' is the
+The '6' is the number of segments, the '30' is the
 number of k-points per segment. Run:
-`pw.x < si.scf.in > si.scf.out && pw.x < si.bands.in > si.bands.out`.
+'pw.x < si.scf.in > si.scf.out && pw.x < si.bands.in > si.bands.out'.
 
 **Step 3 — post-processing** (`si.bands.post.in`):
 extract band energies:
@@ -1218,7 +1218,7 @@ extract band energies:
 /
 ``'
 
-Run: `bands.x < si.bands.post.in > si.bands.post.out`.
+Run: 'bands.x < si.bands.post.in > si.bands.post.out'.
 The file `si.bands.dat' has one row per k-point and one
 column per band.
 
@@ -1232,12 +1232,12 @@ column per band.
   converged values are 40–80 Ry.
 - **To converge the band gap to 0.1 eV**: increase
   `ecutwfc' (conduction bands converge more
-  slowly), tighten `conv_thr' to `1.0d-10`, and
+  slowly), tighten 'conv_thr' to '1.0d-10`, and
   verify the k-point sampling. For an accurate gap
   with semilocal functionals, switch to a hybrid
-  (`input_dft = 'HSE'`,
+  ('input_dft = 'HSE'',
   [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.5) or
-  to $G_0W_0$ via `Yambo' / `West`.
+  to $G_0W_0$ via 'Yambo' / 'West`.
 - **To converge k-point sampling**: sweep the MP
   mesh from $4 \times 4 \times 4$ to
   $16 \times 16 \times 16$ on a primitive cell, and
@@ -1248,7 +1248,7 @@ column per band.
   $16 \times 16 \times 16$ on a primitive cell, and
   pick the smallest mesh at which the total energy
   changes by less than 1 meV/atom.
-- **For metals**: set `occupations = 'smearing'`,
+- **For metals**: set 'occupations = 'smearing'',
   use `smearing = 'mp'' (Methfessel–Paxton, 2nd
   order) with `degauss = 0.02' Ry, and increase the
   k-mesh substantially. Never use `'gaussian'' for
@@ -1256,17 +1256,17 @@ column per band.
   density. For very high accuracy, use `'fd''
   (Fermi–Dirac) and extrapolate.
 - **For spin-polarised systems**: add `nspin = 2'
-  to `&SYSTEM' and set `starting_magnetization(i)'
+  to '&SYSTEM' and set 'starting_magnetization(i)'
   for each species. For non-collinear, use
-  `noncolin = .true.`.
+  'noncolin = .true.'.
 - **For geometry optimisation**: use
   `calculation = 'relax'' (ions only) or
   `'vc-relax'' (ions and cell). Set
-  `ion_dynamics = 'bfgs'' or `'damp'' (Wentzcovich
+  'ion_dynamics = 'bfgs'' or ''damp'' (Wentzcovich
 - **For geometry optimisation**: use
   `calculation = 'relax'' (ions only) or
   `'vc-relax'' (ions and cell). Set
-  `ion_dynamics = 'bfgs'' or `'damp'' (Wentzcovich
+  'ion_dynamics = 'bfgs'' or ''damp'' (Wentzcovich
   damping) for stability on tricky systems.
 
 #### 10.1.4 Common pitfalls
@@ -1365,7 +1365,7 @@ Cartesian
 $ cat $VASP_PP_PATH/potcar/Si/PBE/Si/POTCAR > POTCAR
 ``'
 
-To run: `mpirun -n 8 vasp_std`. The total energy (in eV)
+To run: 'mpirun -n 8 vasp_std'. The total energy (in eV)
 is on the last "free  energy" line of `OUTCAR`.
 
 #### 10.2.2 Annotated example — Si band structure with HSE06
@@ -1403,7 +1403,7 @@ EDIFF  = 1.0e-5         # tighter (1.0e-6) for production band gaps
 
 The HSE06 SCF starts from the PBE charge density in
 `CHGCAR' if it is present. Run:
-`mpirun -n 8 vasp_std`.
+'mpirun -n 8 vasp_std'.
 
 **Step 3 — HSE06 bands** (`INCAR.bands`): the k-path is
 specified in `KPOINTS' as a "line-mode" path:
@@ -1436,25 +1436,25 @@ NBANDS = 16              # >= number of electrons / 2
 ``'
 
 To run:
-`mpirun -n 8 vasp_std`. The band energies are in
+'mpirun -n 8 vasp_std'. The band energies are in
 `EIGENVAL`. Plot them with `p4vasp`, `sumo`, or a
 custom script.
 
 #### 10.2.3 What to tweak for X
 
 - **To converge the total energy to 1 meV/atom**:
-  sweep `ENCUT' from the POTCAR `ENMAX' (or
+  sweep 'ENCUT' from the POTCAR 'ENMAX' (or
   `ENMIN`) to $1.5 \times$ `ENMAX`, recompute, and
   pick the smallest value at which the energy
   changes by less than 1 meV/atom. The VASP default
   `ENCUT = 1.3 x max(ENMAX)' is usually safe.
 - **To converge the band gap to 0.05 eV**: increase
-  `ENCUT`, tighten `EDIFF' to `1.0e-6`, increase
+  `ENCUT`, tighten 'EDIFF' to '1.0e-6`, increase
   the k-point mesh, and add `LREAL = .FALSE.' (the
   projector operators are evaluated in reciprocal
   space) for the final run. For an accurate gap
   with semilocal functionals, switch to a hybrid
-  (`LHFCALC = .TRUE.`, `HFSCREEN = 0.2' for HSE06)
+  ('LHFCALC = .TRUE.', `HFSCREEN = 0.2' for HSE06)
   or to a $G_0W_0$ correction via `vasp_gw`.
 - **For metals**: use `ISMEAR = 1' (Methfessel–
   Paxton, 1st order) or `ISMEAR = 2' (Fermi–Dirac)
@@ -1464,7 +1464,7 @@ custom script.
   Blöchl corrections) on a dense enough mesh.
 - **For spin-polarised systems**: set `ISPIN = 2'
   and specify `MAGMOM' for every species (e.g.
-  `MAGMOM = 2*0.5' for two Fe atoms, or `2*2.0'
+  'MAGMOM = 2*0.5' for two Fe atoms, or '2*2.0'
   for a strong initial moment). For non-collinear,
   use `LNONCOLLINEAR = .TRUE.' and the 3-component
   `MAGMOM' array.
@@ -1481,7 +1481,7 @@ custom script.
   pseudopotential if the order is wrong. The error
   is on the order of the difference between
   valence configurations. Always check with
-  `grep TITEL POTCAR' and `head POSCAR`.
+  'grep TITEL POTCAR' and 'head POSCAR`.
 - **POTCAR family mismatch**: the `POTCAR' must be
   all `PBE`, all `LDA`, all `PBE_52`, etc. Mixing
   families gives a non-variational total energy.
@@ -1489,17 +1489,17 @@ custom script.
   re-mixes the charge density in real space during
   SCF with an `LMAXMIX`-dependent augmentation. For
   transition metals and rare earths, set
-  `LMAXMIX = 4' (or `6' for f-block) to avoid SCF
+  'LMAXMIX = 4' (or '6' for f-block) to avoid SCF
   convergence problems.
 - **ISMEAR = 0 for metals**: Gaussian smearing
   with the default `SIGMA = 0.05' eV gives an
   entropy contribution to the free energy that is
   *larger* than the convergence error in the band
-  energy. Always use `ISMEAR = 1' or `-5' for
+  energy. Always use 'ISMEAR = 1' or '-5' for
   metals, and check `smearing T*S -> 0' in
   `OUTCAR`.
 - **Missing `MAGMOM' for magnetic systems**: VASP
-  defaults to non-spin-polarised (`ISPIN = 1`). For
+  defaults to non-spin-polarised ('ISPIN = 1'). For
   a magnetic ground state set `ISPIN = 2' and an
   initial `MAGMOM`. Without it, the SCF converges to
   a non-magnetic state and gives a wrong energy.
@@ -1523,7 +1523,7 @@ GPAW is a Python / C PAW code with a real-space grid
 ([§4.2](#42-gpaw)). The cheatsheet below uses the ASE
 interface ([§9.1](#91-ase-atomic-simulation-environment))
 — the same script works in serial, in parallel (with
-`mpiexec gpaw python script.py`), and on a GPU (with
+'mpiexec gpaw python script.py'), and on a GPU (with
 the `gpaw.cuda' build).
 
 #### 10.3.1 Minimal script — H₂ SCF
@@ -1550,7 +1550,7 @@ energy = h2.get_potential_energy()
 print(f'H2 energy: {energy:.4f} eV')
 ``'
 
-Run: `gpaw python h2.py`. The total energy is in eV
+Run: 'gpaw python h2.py'. The total energy is in eV
 (the GPAW output is in eV by default, unlike Quantum
 ESPRESSO which uses Rydberg).
 
@@ -1592,7 +1592,7 @@ bs = calc.band_structure()
 bs.plot(filename='si.bands.png', emax=15)  # one line for the plot
 ``'
 
-The `mode='all'' write in step 2 saves *bot`h*' the
+The 'mode='all'' write in step 2 saves *bot'h*' the
 wavefunctions and the density. The `fixed_density()'
 load in step 3 re-uses the SCF density for a
 non-self-consistent NSCF run along the k-path —
@@ -1605,7 +1605,7 @@ of code.
 #### 10.3.3 What to tweak for X
 
 - **To switch to a real-space grid**: replace
-  `mode=PW(300)' with `mode='fd'' (default
+  'mode=PW(300)' with 'mode='fd'' (default
   $h = 0.2$ Å). The FD mode is faster for small
   systems and has no wrap-around from periodic
   images of a localised excitation.
@@ -1638,7 +1638,7 @@ of code.
   semiconductor. Always set `kpts' for a solid.
 - **PAW dataset version**: GPAW ships its own PAW
   library (`gpaw-setups' on PyPI). Default is the
-  `0.9.x' series; older `0.8.x' data should not be
+  '0.9.x' series; older '0.8.x' data should not be
   used for new work.
 - **LCAO basis convergence**: the `dzp' basis is
   the default; for production band gaps, check
@@ -1708,7 +1708,7 @@ DM.Tolerance         1.0d-4
 ``'
 
 The H₂ SCF total energy is in `h2.out' after
-`siesta: Total energy =`.
+'siesta: Total energy ='.
 
 #### 10.4.2 Annotated example — Si band structure
 
@@ -1756,7 +1756,7 @@ DM.NumberPulaySteps  5
 DM.Tolerance         1.0d-5
 ``'
 
-For a band structure, set `%block BandLines' *instea`d*'
+For a band structure, set '%block BandLines' *instea'd*'
 of the Monkhorst–Pack `kgrid_Monkhorst_Pack`:
 
 ```fortran
@@ -1798,8 +1798,8 @@ SIESTA writes the bands to `SystemLabel.bands`.
   temperature.
 - **For spin-polarised systems**: set
   `SpinPolarized .true.' and provide initial
-  magnetic moments (`%block DM.InitSpin`). For
-  non-collinear, use `NonCollinearSpin .true.`.
+  magnetic moments ('%block DM.InitSpin'). For
+  non-collinear, use 'NonCollinearSpin .true.'.
 - **For spin–orbit coupling**: set
   `SpinOrbitBit .true.' and use the fully-
   relativistic pseudopotential (`.vps' for some
@@ -1813,7 +1813,7 @@ SIESTA writes the bands to `SystemLabel.bands`.
   legacy default of 0.02 Ry (272 meV) is *too
   large* and gives a *too compact basis.
 - **Basis convergence is *basis* convergence, not
-  *mes`h*' convergence**: a too-small `PAO.BasisSize'
+  *mes'h*' convergence**: a too-small 'PAO.BasisSize'
   or a too-large `PAO.EnergyShift' is *not* fixed
   by `MeshCutoff`.
 - **`MeshCutoff' in Ry, not eV**: SIESTA uses Ry
@@ -1821,7 +1821,7 @@ SIESTA writes the bands to `SystemLabel.bands`.
   `eV' unit). A common mistake is to use 100 *eV*
   (about 7.35 Ry) thinking it is Ry — 100 Ry is
   1360 eV.
-- **`.vps' vs `.psf`**: `.vps' files (Siesta-specific
+- **'.vps' vs '.psf'**: '.vps' files (Siesta-specific
   generator) are usually better than the older
   `.psf' files.
 - **Forgetting XC.authors**: `XC.functional = GGA'
@@ -1843,7 +1843,7 @@ SIESTA writes the bands to `SystemLabel.bands`.
 
 CP2K is a Fortran mixed Gaussian / plane-wave (GPW)
 code ([§2.5](#25-cp2k)). The cheatsheet below covers
-the standard `cp2k.psmp' (or `cp2k.popt`) executable.
+the standard 'cp2k.psmp' (or 'cp2k.popt`) executable.
 The input format is a *structure`d*' Fortran-NAMELIST
 with explicit section keywords (`&GLOBAL`, `&SUBSYS`,
 `&DFT`, …) and matching `&END' lines. Indentation is
@@ -1890,10 +1890,10 @@ optimisation of a water molecule in a cubic box:
 ``'
 
 To run:
-`mpiexec -n 4 cp2k.psmp -i h2o.inp -o h2o.out`. The
+'mpiexec -n 4 cp2k.psmp -i h2o.inp -o h2o.out'. The
 geometry optimisation converges in ~5 steps; the total
 energy is in `h2o.out' after
-`ENERGY| Total FORCE_EVAL ( QS ) energy (a.u.)`.
+'ENERGY| Total FORCE_EVAL ( QS ) energy (a.u.)'.
 
 #### 10.5.2 Annotated example — NVT molecular dynamics of water
 
@@ -1962,7 +1962,7 @@ changes to MD.
 The `water32.xyz' is a standard XYZ with 32 waters
 (96 atoms). D3 dispersion
 ([chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.7)
-is enabled with `&VDW_POTENTIAL ... TYPE DFTD3`. The OT
+is enabled with '&VDW_POTENTIAL ... TYPE DFTD3'. The OT
 solver (`&OT`) is the recommended SCF solver for large
 systems: it is much more parallel-scalable than the
 default diagonalisation, at the cost of requiring a
@@ -1975,11 +1975,11 @@ localised initial guess.
   and pick the smallest value at which the energy
   changes by less than 1 meV/atom.
 - **To converge the SCF**: tighten `EPS_SCF'
-  from `1.0E-6' to `1.0E-7`. For a difficult
+  from '1.0E-6' to '1.0E-7`. For a difficult
   system, switch from `SCF_GUESS ATOMIC' to
   `RESTART' from a previous run.
 - **For large systems** (thousands of atoms): switch
-  the SCF solver from `DIAGONALIZATION' to `OT'
+  the SCF solver from 'DIAGONALIZATION' to 'OT'
   (orbital transformation). OT scales linearly
   with system size and is the default for
   production MD on large boxes.
@@ -1987,13 +1987,13 @@ localised initial guess.
   `&POISSON PERIODIC XYZ ... PSOLVER PERIODIC' and
   add a `&KPOINTS' section.
 - **For geometry optimisation**: set
-  `RUN_TYPE GEO_OPT' and choose an `&OPTIMIZER'
+  'RUN_TYPE GEO_OPT' and choose an '&OPTIMIZER'
   (BFGS is the default; CG, LBFGS also available).
   For variable-cell, add
-  `&CELL_OPT EXTERNAL_PRESSURE ...`.
+  '&CELL_OPT EXTERNAL_PRESSURE ...'.
 - **For AIMD**: set `RUN_TYPE MD' and add an
   `&MD' block. The default is NVE; for NVT, add a
-  thermostat (`&NOSE' / `&CSVR' / `&GLE`).
+  thermostat ('&NOSE' / '&CSVR' / `&GLE`).
 
 #### 10.5.4 Common pitfalls
 
@@ -2008,7 +2008,7 @@ localised initial guess.
   densities and is the most *robust* starting
   point, but it can be far from the converged
   density for covalent systems. Use `RESTART' from
-  a previous run, or `SCF_GUESS HISTORY`, for
+  a previous run, or 'SCF_GUESS HISTORY', for
   difficult cases.
 - **Basis set / pseudopotential mismatch**: the
   GTH pseudopotential was generated with a
@@ -2019,7 +2019,7 @@ localised initial guess.
 - **POISSON PSOLVER MT for a periodic system**:
   the Martyna–Tuckerman solver is for *isolate`d*'
   systems. For a periodic system, use
-  `PSOLVER PERIODIC' and `PERIODIC XYZ`.
+  'PSOLVER PERIODIC' and 'PERIODIC XYZ`.
 - **MD timestep too large**: the default 0.5 fs is
   safe for water with PBE. For H–H bonds or fast
   stretches, use 0.25 fs or smaller.
@@ -2039,10 +2039,10 @@ localised initial guess.
 
 FLEUR is a Fortran FP-LAPW code
 ([§3.3](#33-fleur)). The cheatsheet below covers the
-`inp' file (the main input) and the `inpgen'
+'inp' file (the main input) and the 'inpgen'
 generator. FLEUR uses a two-step workflow: `inpgen'
 reads a structure (CIF or template) and produces the
-`inp' file, then `fleur' reads the `inp' and runs.
+'inp' file, then 'fleur' reads the `inp' and runs.
 
 #### 10.6.1 Minimal input — Fe bcc, spin-polarised
 
@@ -2079,8 +2079,8 @@ EOF
 inpgen < inp.txt
 ``'
 
-The `inpgen' input is read from `inp.txt`; the
-output `inp' is written. `bmu=2.2' sets the initial
+The 'inpgen' input is read from 'inp.txt`; the
+output 'inp' is written. 'bmu=2.2' sets the initial
 magnetic moment; `lo=3s 3p' adds local orbitals for
 the 3s and 3p semicore states (necessary for an
 accurate all-electron treatment of 3$d$ transition
@@ -2092,8 +2092,8 @@ metals).
 fleur_MPI
 ``'
 
-The total energy is in `out' (or `out.xml`) after
-`Total energy              :`.
+The total energy is in 'out' (or 'out.xml`) after
+'Total energy              :'.
 
 #### 10.6.2 Annotated example — Fe bcc with spin–orbit coupling
 
@@ -2101,8 +2101,8 @@ The same system as above, but with spin–orbit
 coupling (necessary for a correct magnetic
 anisotropy energy;
 [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.9).
-Re-run `inpgen' with `kcrel=1' (full-relativistic)
-and add the magnetisation direction `cth=30, 30, 30`:
+Re-run 'inpgen' with 'kcrel=1' (full-relativistic)
+and add the magnetisation direction 'cth=30, 30, 30':
 
 ```bash
 sed -i 's/kcrel=  0/kcrel=  1/' inp.txt   # or edit by hand
@@ -2128,7 +2128,7 @@ increased to `lmax=10' for production.
 - **To converge the basis set**: increase `lmax'
   (max angular momentum of LAPW) and `lnonsph'
   (max $L$ in non-spherical potential). Default:
-  `lmax=8, lnonsph=4`; production: `lmax=10,
+  'lmax=8, lnonsph=4'; production: `lmax=10,
   lnonsph=6`.
 - **To converge k-point sampling**: increase the
   k-point mesh. FLEUR uses a uniform Monkhorst–Pack
@@ -2143,7 +2143,7 @@ increased to `lmax=10' for production.
 - **For $f$-electron systems** (rare earths,
   actinides): add local orbitals for $5s$, $5p$,
   $4f$ (or $6s$, $6p$, $5f$) semicore states, and
-  set `lmax=12, lnonsph=8`. Without them, the
+  set 'lmax=12, lnonsph=8'. Without them, the
   all-electron treatment is wrong by tens of mRy.
 - **For spin–orbit coupling**: use `kcrel=1' and
   check convergence of `lmax' and the k-mesh. The
@@ -2161,7 +2161,7 @@ increased to `lmax=10' for production.
   expansion in the interstitial, and
   `kmax = RKmax / RMT' becomes too small.
   Default `RKmax=7.0' is usually fine; production:
-  `RKmax=8.5' or `9.0`.
+  'RKmax=8.5' or '9.0`.
 - **Missing local orbitals for semicore states**:
   the $3s$ and $3p$ of Fe overlap with the 3$d$
   valence in energy. Without local orbitals, the
@@ -2175,7 +2175,7 @@ increased to `lmax=10' for production.
 - **Inconsistent kcrel between inpgen and fleur**:
   the flag must be set in `inpgen' and the input
   re-generated if changed. Running `fleur' on an
-  old `inp' with the wrong `kcrel' silently gives
+  old 'inp' with the wrong 'kcrel' silently gives
   a scalar-relativistic answer.
 
 #### 10.6.5 Cross-references

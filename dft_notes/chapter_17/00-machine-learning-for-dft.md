@@ -1691,7 +1691,7 @@ the foundation models), **MACE-OSP** (on-the-fly AL),
 **ASE** (the calculator interface, used by all of the
 above), and **MatGL** (M3GNet).  The **ASE**
 package provides the standard
-`get_potential_energy()' and `get_forces()' API
+'get_potential_energy()' and 'get_forces()' API
 that wraps every MLIP.
 
 The **MACE training script** (in Python) loads

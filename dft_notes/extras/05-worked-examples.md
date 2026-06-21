@@ -119,7 +119,7 @@ $$
 $[-L, L]$ with $L = 8$ and $N = 800$ points and a 3-point
 stencil for the second derivative. The result is a sparse
 tridiagonal matrix. The lowest six eigenpairs are found with
-`scipy.sparse.linalg.eigsh(H, k=6, which="SM")`. Eigenvectors
+'scipy.sparse.linalg.eigsh(H, k=6, which="SM")'. Eigenvectors
 are normalised to unit $L^2$ norm on the grid. The expected
 eigenvalues are $E_n = n + 1/2$ in units of $\omega$.
 
@@ -127,7 +127,7 @@ eigenvalues are $E_n = n + 1/2$ in units of $\omega$.
   [Chapter 01, §1.14.2]({{ site.baseurl }}/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences)
   (`dft_notes/python_codes/chapter_01/02-harmonic-oscillator.py`,
   in chapter markdown only; the runnable file in
-  `python_codes/chapter_01/' is forthcoming from `agent:code-runner`).
+  'python_codes/chapter_01/' is forthcoming from 'agent:code-runner`).
 - **Plot** — referenced in
   [§1.14.2 of chapter 01]({{ site.baseurl }}/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences)
   as `plots/02-harmonic-oscillator.png`.
@@ -211,14 +211,14 @@ $\mathbf F = \mathbf h + \mathbf J[\mathbf P] - \tfrac{1}{2}
 \mathbf K[\mathbf P]$ with $\mathbf P = 2 \mathbf c_1
 \mathbf c_1^\dagger$ until the density and the energy both
 stop moving. Diagonalise the Fock matrix at every iteration
-with `scipy.linalg.eigh(F, S)`.
+with 'scipy.linalg.eigh(F, S)'.
 
 - **Script** — [chapter_06/01-sto-3g-h2.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py)
 - **Plot** — [chapter_06/plots/01-sto-3g-h2.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_06/plots/01-sto-3g-h2.png)
 - **Chapter section** — [Chapter 06, §6.9 (STO-3G H₂ worked example)]({{ site.baseurl }}/dft-notes/chapter-06/#69-worked-example-sto-3g-h), the central numerical anchor of the notes.
 - **Expected output.**
-  - Overlap $\mathbf S$: `[[1.0000, 0.6593], [0.6593, 1.0000]]`.
-  - Core Hamiltonian $\mathbf h$: `[[-1.1204, -0.9584], [-0.9584, -1.1204]]`.
+  - Overlap $\mathbf S$: '[[1.0000, 0.6593], [0.6593, 1.0000]]'.
+  - Core Hamiltonian $\mathbf h$: '[[-1.1204, -0.9584], [-0.9584, -1.1204]]'.
   - Selected ERIs (chemists' notation): $(11|11) = 0.7746$, $(11|22) = 0.5697$, $(12|12) = 0.2970$, $(11|12) = 0.4441$.
   - Converged MO energies: $\varepsilon_1 = -0.5782$, $\varepsilon_2 = +0.6703\,E_h$.
   - Bonding MO coefficient: $C_{11} = C_{21} = 0.5489$; antibonding $C_{12} = -C_{22} = 1.2115$ (signs arbitrary up to a global phase).
@@ -490,7 +490,7 @@ off-diagonal $F_{12}$.
 **Step 5 — SCF loop.** From
 $\mathbf P^{(0)} = \mathbf 0$ the Fock matrix
 $\mathbf F^{(1)} = \mathbf h$ is
-diagonalised by `scipy.linalg.eigh(F, S)`, giving
+diagonalised by 'scipy.linalg.eigh(F, S)', giving
 $\varepsilon^{(1)} = \{-0.5782, +0.6703\}E_h$ and
 the MO coefficients
 $C^{(1)}_{1,1} = C^{(1)}_{2,1} = 0.5489$,
@@ -543,7 +543,7 @@ procedure minimises the energy over the MOs.
   to all six digits. The script prints the three
   intermediate SCF energies ($-1.0852, -1.1166,
   -1.1167$) and the convergence message
-  `Converged in 3 iterations, |dP| = 2.3e-12`. The
+  'Converged in 3 iterations, |dP| = 2.3e-12'. The
   plot shows the two STO-3G MOs along the bond axis:
   the bonding MO $\phi_1$ with constructive
   interference between the two centres, the
@@ -834,7 +834,7 @@ four eigenvalues as a function of $k$.
 - **Expected output.** At $k = \pm \pi/a$, the lowest two
   bands are split by the matrix element
   $2 |V(2\pi/a)| = 0.5\,E_h$. The script prints a sanity
-  check: `eps_1 = +0.08xxx E_h`, `eps_2 = +0.58xxx E_h`,
+  check: 'eps_1 = +0.08xxx E_h', 'eps_2 = +0.58xxx E_h',
   `gap ≈ +0.50 E_h' (the predicted $0.5\,E_h$ is recovered
   to better than $10^{-4}$). The first band is well
   described by the free-electron parabola

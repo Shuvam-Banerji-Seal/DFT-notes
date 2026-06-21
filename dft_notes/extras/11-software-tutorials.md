@@ -257,7 +257,7 @@ the PAW variant.)
 
 The four files above are the **minimum** needed. VASP also
 recognises a number of optional auxiliary files (`CHGCAR`,
-`WAVECAR`, `KPOINTS_OPT' for `IBRION = 6' finite-difference
+`WAVECAR`, 'KPOINTS_OPT' for 'IBRION = 6' finite-difference
 phonons, `ML_FF' for the machine-learning force field
 interface, etc.) — these are introduced in the relevant
 context below.
@@ -267,14 +267,14 @@ context below.
 VASP calculations are converged in three independent
 parameters: the **plane-wave cutoff** `ENCUT`, the **k-point
 mes`h*`* (`KPOINTS`), and the **electronic smearing**
-(`ISMEAR' / `SIGMA`). The first two must be converged
+('ISMEAR' / 'SIGMA`). The first two must be converged
 *simultaneously* because the converged cutoff depends weakly
 on the k-mesh and vice versa. The recipe:
 
 1. **ENCUT convergence.** Pick the maximum `ENMAX' from
-   the `POTCAR' (e.g. `grep ENMAX POTCAR' returns the
+   the 'POTCAR' (e.g. 'grep ENMAX POTCAR' returns the
    per-element cutoff; the maximum is the safe default).
-   VASP recommends `ENCUT = 1.3 × max(ENMAX)`. To
+   VASP recommends 'ENCUT = 1.3 × max(ENMAX)'. To
    *converge*, sweep `ENCUT' from the default to
    `1.5 × max(ENMAX)' in steps of 20 eV, compute the total
    energy at the experimental geometry, and pick the
@@ -288,7 +288,7 @@ on the k-mesh and vice versa. The recipe:
    must be dense enough that the Fermi surface is sampled
    with at least ~ 50 k-points * 0.05 eV of smearing
    width. For a semiconductor with a clean band gap, the
-   tetrahedron method (`ISMEAR = -5`) converges much
+   tetrahedron method ('ISMEAR = -5') converges much
    faster than smearing-based methods. The
    Materials-Project-style rule of thumb is **≥ 1000
    k-points per atom** in the *primitive* cell (i.e. a 2-
@@ -299,10 +299,10 @@ on the k-mesh and vice versa. The recipe:
 
 3. **Smearing.** For molecules and semiconductors with a
    band gap, use `ISMEAR = 0' (Gaussian) with
-   `SIGMA = 0.05' eV. For metals, use `ISMEAR = 1'
+   'SIGMA = 0.05' eV. For metals, use 'ISMEAR = 1'
    (Methfessel–Paxton, 1st order) with `SIGMA = 0.1 - 0.2'
    eV, and **always** check that the entropy term
-   `smearing T*S' in `OUTCAR' is smaller than the
+   'smearing T*S' in 'OUTCAR' is smaller than the
    convergence target. The most accurate k-point
    integration is `ISMEAR = -5' (tetrahedron with Blöchl
    corrections), which works for insulators *an`d*' metals
@@ -328,25 +328,25 @@ on the k-mesh and vice versa. The recipe:
 
 | Error message (or symptom)                                  | Likely cause                                          | Fix                                                                          |
 |:------------------------------------------------------------|:------------------------------------------------------|:-----------------------------------------------------------------------------|
-| `ERROR: POTCARS do not match'                              | The `POTCAR' was concatenated in the wrong order, or contains potentials from different families (PBE vs. LDA) | Rebuild `POTCAR' so the order matches `POSCAR' species; check `grep TITEL POTCAR' |
-| `WARNING: dE < EDIFF' but no convergence                    | SCF is stuck oscillating                              | Reduce `AMIX' (e.g. 0.02), increase `BMIX' (e.g. 1.5), or switch to `ALGO = All' |
-| `ZBRENT: fatal error' during geometry optimisation          | `POTCAR' has a too-shallow potential (e.g. `O_h`)    | Use a "harder" variant (e.g. `O`, `O_s`, `O_h' — `O_h' is the hardest)       |
-| `ZHEEV: eigenvalue solver failed'                          | Cell too small / atoms too close                      | Increase `vacuum' (for slabs/molecules) or relax the cell with `ISIF = 3'    |
-| `WARNING: PSMAXN for non-local part exceeded'               | Too-small `ENCUT' for a particular angular momentum   | Increase `ENCUT' to at least the `ENMAX' of the affected element             |
-| `BRMIX: charge density could not be remixed'                 | `LMAXMIX' too small for a $d$- or $f$-block element  | Set `LMAXMIX = 4' (or 6 for $f$-block)                                        |
-| `EDWAV: internal error'                                    | Parallelisation issue on highly anisotropic cells     | Reduce `NCORE' or `NPAR`, or switch to `KPAR' decomposition                   |
-| `EDDDAV: RHOSYG internal error'                            | Same — too many k-points per MPI rank                  | `KPAR = N_k' (split k-points across MPI ranks)                                |
-| `The distance between some ions is very small'              | Atoms too close in the initial `POSCAR'                | Pre-relax with a smaller cell, or randomise the initial positions            |
-| `WARNING: SUBSPACEMAX > NPROCS'                              | `NBANDS' not divisible by `NPROCS'                     | Set `NBANDS' to a multiple of `NPROCS' (or `NPAR' if used)                    |
-| `fatal error in DIIS'                                       | Non-collinear calculation with `EDIFF' too tight      | Loosen `EDIFF' for the first few steps; or initialise `MAGMOM' explicitly      |
-| `LREAL = Auto' produces non-`LREAL = FALSE' energies         | The default `LREAL = Auto' switches to real-space projectors; for high-accuracy work the result is not exactly the same | Set `LREAL = .FALSE.' for the final run (slower but reproducible)             |
-| `WARNING: vasp encountered an internal error'               | OOM; `LREAL' real-space projectors overflow memory    | Switch to `LREAL = .FALSE.' or `LREAL = OAuto`, increase `NCORE'              |
-| `IBRION = 5' (DFPT phonons) crashes on a metal               | DFPT requires a non-metallic ground state              | Use `IBRION = 6' (finite differences) or `ISMEAR = 0' with `SIGMA = 0'       |
+| 'ERROR: POTCARS do not match'                              | The 'POTCAR' was concatenated in the wrong order, or contains potentials from different families (PBE vs. LDA) | Rebuild 'POTCAR' so the order matches 'POSCAR' species; check `grep TITEL POTCAR' |
+| 'WARNING: dE < EDIFF' but no convergence                    | SCF is stuck oscillating                              | Reduce 'AMIX' (e.g. 0.02), increase 'BMIX' (e.g. 1.5), or switch to 'ALGO = All' |
+| 'ZBRENT: fatal error' during geometry optimisation          | 'POTCAR' has a too-shallow potential (e.g. `O_h`)    | Use a "harder" variant (e.g. `O`, `O_s`, 'O_h' — 'O_h' is the hardest)       |
+| 'ZHEEV: eigenvalue solver failed'                          | Cell too small / atoms too close                      | Increase 'vacuum' (for slabs/molecules) or relax the cell with `ISIF = 3'    |
+| 'WARNING: PSMAXN for non-local part exceeded'               | Too-small 'ENCUT' for a particular angular momentum   | Increase 'ENCUT' to at least the 'ENMAX' of the affected element             |
+| 'BRMIX: charge density could not be remixed'                 | 'LMAXMIX' too small for a $d$- or $f$-block element  | Set `LMAXMIX = 4' (or 6 for $f$-block)                                        |
+| 'EDWAV: internal error'                                    | Parallelisation issue on highly anisotropic cells     | Reduce 'NCORE' or `NPAR`, or switch to `KPAR' decomposition                   |
+| 'EDDDAV: RHOSYG internal error'                            | Same — too many k-points per MPI rank                  | 'KPAR = N_k' (split k-points across MPI ranks)                                |
+| 'The distance between some ions is very small'              | Atoms too close in the initial 'POSCAR'                | Pre-relax with a smaller cell, or randomise the initial positions            |
+| 'WARNING: SUBSPACEMAX > NPROCS'                              | 'NBANDS' not divisible by 'NPROCS'                     | Set 'NBANDS' to a multiple of 'NPROCS' (or 'NPAR' if used)                    |
+| 'fatal error in DIIS'                                       | Non-collinear calculation with 'EDIFF' too tight      | Loosen 'EDIFF' for the first few steps; or initialise 'MAGMOM' explicitly      |
+| 'LREAL = Auto' produces non-'LREAL = FALSE' energies         | The default 'LREAL = Auto' switches to real-space projectors; for high-accuracy work the result is not exactly the same | Set 'LREAL = .FALSE.' for the final run (slower but reproducible)             |
+| 'WARNING: vasp encountered an internal error'               | OOM; 'LREAL' real-space projectors overflow memory    | Switch to 'LREAL = .FALSE.' or 'LREAL = OAuto', increase 'NCORE'              |
+| 'IBRION = 5' (DFPT phonons) crashes on a metal               | DFPT requires a non-metallic ground state              | Use 'IBRION = 6' (finite differences) or 'ISMEAR = 0' with 'SIGMA = 0'       |
 
 ### 1.6 Advanced features
 
 - **Hybrid functionals (HSE06, PBE0, SCAN0).** Set
-  `LHFCALC = .TRUE.`, `HFSCREEN = 0.2' (HSE06, screening
+  'LHFCALC = .TRUE.', `HFSCREEN = 0.2' (HSE06, screening
   in Å⁻¹), and `AEXX = 0.25' (the exact-exchange
   mixing, default for HSE06). `ALGO = Damped' is the
   robust default; `ALGO = All' is faster when stable.
@@ -357,62 +357,62 @@ on the k-mesh and vice versa. The recipe:
   `CHGCAR`), then a hybrid NSCF with `ICHARG = 11'
   (read `CHGCAR`, do not update). See the worked
   example below.
-- **DFT+U.** Set `LDAU = .TRUE.' and `LDAUTYPE = 2'
+- **DFT+U.** Set 'LDAU = .TRUE.' and 'LDAUTYPE = 2'
   (Dudarev's rotationally-invariant formulation
   [chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }})). For
   a transition-metal oxide with the $d$ states localised,
-  set `LDAUL = 2' (the $l$ channel), `LDAUU' and
-  `LDAUJ' per species (e.g. `LDAUU = 4.0 0.0' for O-d = 4
+  set 'LDAUL = 2' (the $l$ channel), 'LDAUU' and
+  'LDAUJ' per species (e.g. 'LDAUU = 4.0 0.0' for O-d = 4
   eV, H-d = 0). For the Liechtenstein formulation
-  (`LDAUTYPE = 1`), set both `LDAUU' and `LDAUJ' per
+  ('LDAUTYPE = 1'), set both 'LDAUU' and 'LDAUJ' per
   $(l, m)$.
 - **Spin–orbit coupling (SOC).** Set
-  `LSORBIT = .TRUE.' and `LNONCOLLINEAR = .TRUE.`. The
+  'LSORBIT = .TRUE.' and 'LNONCOLLINEAR = .TRUE.`. The
   initial `MAGMOM' must be a 3-component vector (not a
   scalar). For a non-magnetic calculation with SOC, set
-  `ISPIN = 1`, `LNONCOLLINEAR = .TRUE.`, and
-  `MAGMOM = 0 0 0`. The output is non-collinear
+  'ISPIN = 1', 'LNONCOLLINEAR = .TRUE.', and
+  'MAGMOM = 0 0 0'. The output is non-collinear
   ($2 \times 2$ density matrix); `LORBIT = 11' or
   `LORBIT = 13' produces the per-orbital projection.
 - **van der Waals corrections (D3, D4, TS, MBD).** VASP
-  ships Grimme's D3 since v5.4 (`IVDW = 12`). Set
-  `IVDW = 12' for D3(BJ), `IVDW = 20' for D4, `IVDW = 2'
+  ships Grimme's D3 since v5.4 ('IVDW = 12'). Set
+  'IVDW = 12' for D3(BJ), 'IVDW = 20' for D4, `IVDW = 2'
   for Tkatchenko–Scheffler (TS), and `IVDW = 4' for the
   many-body dispersion (MBD@rsSCS). The D3 zero-damping
   is `IVDW = 11' and the Becke–Johnson damping is
-  `IVDW = 12`.
+  'IVDW = 12'.
 - **Phonons (finite differences).** `IBRION = 6' with
   `NFREE = 2' (central differences) computes a phonon
   dispersion by finite differences. Requires a converged
   equilibrium geometry (forces < 0.001 eV/Å) and a
   non-metallic ground state (or a very dense k-mesh for
   metals). The output is a `phonon' directory with the
-  force constants; use `phonopy' (`<https://phonopy.github.io/`>)
+  force constants; use 'phonopy' ('<https://phonopy.github.io/`>)
   to post-process.
-- **Phonons (DFPT).** `IBRION = 5' and `LEPSILON = .TRUE.'
+- **Phonons (DFPT).** 'IBRION = 5' and 'LEPSILON = .TRUE.'
   invokes density-functional perturbation theory
   (DFPT) for the dynamical matrix. Required for IR
   intensities (Born effective charges from `LEPSILON`),
   and much faster than finite differences on a
   non-metallic system. Output: `OUTCAR' contains the
   dynamical matrix at Γ; the full dispersion requires a
-  supercell with `PHON_NSTRUCT' and the `PHON_CALCPATH'
+  supercell with 'PHON_NSTRUCT' and the 'PHON_CALCPATH'
   block in the `INCAR`.
 - **Nudged elastic band (NEB).** `IBRION = 3' (NEB) or
-  `IBRION = 1' with `ICHAIN = 0' and `IOPT = 1' runs a
+  'IBRION = 1' with 'ICHAIN = 0' and `IOPT = 1' runs a
   NEB transition-state search. The initial and final
-  images are read from `POSCAR' and `CONTCAR`; the
+  images are read from 'POSCAR' and 'CONTCAR`; the
   intermediate images are specified in `POSCAR' with the
   `Selective dynamics' tag. The climbing-image variant
-  (`LCLIMB = .TRUE.`) gives a more accurate saddle point
+  ('LCLIMB = .TRUE.') gives a more accurate saddle point
   at the cost of a slower NEB convergence.
-- **Dimer method.** `IBRION = 3' with `ICHAIN = 0' and
+- **Dimer method.** 'IBRION = 3' with 'ICHAIN = 0' and
   `IOPT = 3' runs the dimer method for a saddle-point
   search from a single initial configuration. The output
   is a `CONTCAR' corresponding to the saddle point;
   frequency analysis (`NWRITE = 2' and a finite-difference
   follow-up) confirms a single imaginary mode.
-- **$G_0W_0$ and BSE.** Set `ALGO = GW`; requires a
+- **$G_0W_0$ and BSE.** Set 'ALGO = GW'; requires a
   converged PBE / HSE06 starting point. The standard
   workflow is (i) PBE SCF, (ii) HSE06 SCF (or PBE0),
   (iii) $G_0W_0$ on top, (iv) BSE for optical absorption.
@@ -476,7 +476,7 @@ mpirun -n 8 vasp_std
 The HSE06 SCF starts from the PBE `CHGCAR' (if present,
 which is why `LCHARG = .TRUE.' in step 1). Convergence
 typically takes 15–25 iterations; check the
-`free energy' column in `OUTCAR' for the convergence.
+'free energy' column in 'OUTCAR' for the convergence.
 
 **Step 3 — HSE06 bands** (`INCAR.bands`): same
 `POTCAR`, but a new `KPOINTS' in line mode (a k-point
@@ -546,7 +546,7 @@ open-source counterpart to VASP for solid-state DFT and is
 the workhorse of *academi`c*' solid-state physics, with a
 particularly deep **phonon** implementation (DFPT and
 finite-difference) and a mature `G_0W_0' / BSE ecosystem
-through the `Yambo' and `West' post-processors. The name
+through the 'Yambo' and 'West' post-processors. The name
 is an acronym: "opEn Source Package for Research in
 Electronic Structure, Simulation, and Optimisation".
 Unlike VASP, QE ships as a collection of independent
@@ -565,7 +565,7 @@ short.
 ### 2.2 Install
 
 QE is built with the standard GNU autotools
-(`/configure && make`). The dependencies are: a Fortran
+('/configure && make'). The dependencies are: a Fortran
 2003 compiler (gfortran ≥ 7, ifort, AMD flang, or
 nvfortran), an MPI library (openmpi, mpich, Intel MPI),
 BLAS / LAPACK / ScaLAPACK, an FFT library (FFTW3 or
@@ -649,7 +649,7 @@ mpirun -n 4 pw.x -in h2o.scf.in > h2o.scf.out
 ``'
 
 The total energy (in Rydberg!) is in `h2o.scf.out' after
-the line `!    total energy`:
+the line '!    total energy':
 
 ```bash
 $ grep "total energy" h2o.scf.out
@@ -680,7 +680,7 @@ different defaults.
 
 2. **K-point sampling.** For a metal, use a Monkhorst–Pack
    mesh with `occupations = 'smearing'' and a Methfessel–
-   Paxton smearing (`smearing = 'mp'`, `degauss = 0.02'
+   Paxton smearing ('smearing = 'mp'', `degauss = 0.02'
    Ry). For an insulator, use `occupations = 'fixed''
    with a uniform mesh, or `occupations = 'tetrahedron''
    on a sufficiently dense mesh (≥ 4×4×4 on a primitive
@@ -692,7 +692,7 @@ different defaults.
    too slowly). Use `smearing = 'mp'' (Methfessel–Paxton,
    2nd order: `degauss = 0.02' Ry) for routine work, and
    `smearing = 'fd'' (Fermi–Dirac) for very high
-   accuracy (extrapolate to `T = 0`). The
+   accuracy (extrapolate to 'T = 0'). The
    `smearing = 'tetrahedron'' integrator is the most
    accurate, but it requires a *uniform* mesh (no
    custom k-paths) and at least 4×4×4 points per
@@ -700,14 +700,14 @@ different defaults.
 
 4. **SCF convergence (`conv_thr`).** The default
    `1.0d-6' Ry is too loose for production. Use
-   `1.0d-8' for geometry optimisation, `1.0d-10' for
+   '1.0d-8' for geometry optimisation, '1.0d-10' for
    final energies, and `1.0d-12' for phonons and
    response.
 
 5. **Charge-density mixing.** The default
    `mixing_beta = 0.7' is robust. For difficult systems
    (transition-metal oxides with strong correlation),
-   reduce to `0.2' and increase `mixing_ndim = 12' (the
+   reduce to '0.2' and increase 'mixing_ndim = 12' (the
    Broyden history length). For metallic systems with
    charge sloshing, use `mixing_mode = 'local-TF''
    (Thomas–Fermi local mixer).
@@ -716,45 +716,45 @@ different defaults.
 
 | Error / symptom                                                                                | Likely cause                                                  | Fix                                                                                  |
 |:-----------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:-------------------------------------------------------------------------------------|
-| `cannot read namelist &CONTROL'                                                                | File not pure ASCII, missing slash, wrong case                | Check `&CONTROL' ... `/`; case-sensitive namelist names; no leading whitespace       |
-| `from pw_readfile : error opening pseudo file'                                                  | Wrong path in `pseudo_dir`, or filename mismatch              | Check `pseudo_dir`; `ls $pseudo_dir/H*.UPF'                                            |
-| `wrong number of electrons' / `number of electrons is wrong'                                    | `ecutwfc' too small for the chosen pseudopotential             | Increase `ecutwfc`; check the UPF file's `ecutwfc`/`ecutrho' recommended cutoffs       |
-| `the system is metallic, you must use occupations = 'smearing''                                | `occupations = 'fixed'' on a metal                            | Switch to `smearing = 'mp'' or `'fd''                                                |
-| `cannot restart from previous run: charge not found'                                            | `prefix' differs between `pw.x' and `bands.x`, or `outdir' was deleted | Keep the same `prefix' and `outdir' for the whole workflow; never delete `outdir' mid-workflow |
-| `phonon died abnormally' in `ph.x'                                                            | Too coarse k-mesh, or `conv_thr' too loose                     | Increase `K_POINTS' mesh; tighten `conv_thr' to `1.0d-12`; check `tr2_ph'             |
-| `neb.x: negative image distances, check initial configuration'                                 | Initial images too far from a smooth path; or one image has crossed another | Use `path_thr = 0.1' (initial path smoother); use `IMAGE_DISTANCE' to enforce a minimum spacing |
-| `error in routine write_rec'                                                                  | Disk full in `outdir'                                          | Clean `outdir`; use a larger scratch partition                                        |
-| `k-point parallelism with k-point symmetry not yet supported'                                  | `K_POINTS tpiba_b' (custom path) with `KPAR > 1'              | Use `KPAR = 1' for band structures, or use a uniform mesh                             |
-| `cutoff is not sufficient for the pseudopotential'                                              | `ecutwfc' < the UPF file's recommended cutoff                 | Increase `ecutwfc' to at least the recommended value; or use the SR.04 standard cutoffs |
-| `fatal error in cdiaghg: matrix not positive definite'                                         | Numerical issue with a `mixing_mode = 'local-TF'' on an insulator | Switch to `mixing_mode = 'plain'' (default)                                            |
-| `neb.x: path is not continuous, image 5 has a large distance from neighbours'                   | Insufficient NEB images; or steep initial path                 | Add more images; use `path_thr = 0.05' for a tighter initial path smoothing            |
-| `error in do_scf: too many iterations'                                                         | SCF not converging; or a bad initial guess                     | Add `starting_magnetization(i)' for each species; use `mixing_beta = 0.2`; `mixing_ndim = 12' |
-| `Hybrid: harris-functional weights too large'                                                  | Hybrid functional SCF oscillating; `TIME' or `mixing_beta' wrong | Use `mixing_beta = 0.4' and `mixing_ndim = 16' for the first hybrid run; pre-converge at PBE first |
+| 'cannot read namelist &CONTROL'                                                                | File not pure ASCII, missing slash, wrong case                | Check '&CONTROL' ... `/`; case-sensitive namelist names; no leading whitespace       |
+| 'from pw_readfile : error opening pseudo file'                                                  | Wrong path in 'pseudo_dir', or filename mismatch              | Check 'pseudo_dir'; 'ls $pseudo_dir/H*.UPF'                                            |
+| 'wrong number of electrons' / 'number of electrons is wrong'                                    | 'ecutwfc' too small for the chosen pseudopotential             | Increase 'ecutwfc'; check the UPF file's 'ecutwfc`/`ecutrho' recommended cutoffs       |
+| 'the system is metallic, you must use occupations = 'smearing''                                | 'occupations = 'fixed'' on a metal                            | Switch to 'smearing = 'mp'' or ''fd''                                                |
+| 'cannot restart from previous run: charge not found'                                            | 'prefix' differs between 'pw.x' and 'bands.x', or 'outdir' was deleted | Keep the same 'prefix' and 'outdir' for the whole workflow; never delete `outdir' mid-workflow |
+| 'phonon died abnormally' in 'ph.x'                                                            | Too coarse k-mesh, or 'conv_thr' too loose                     | Increase 'K_POINTS' mesh; tighten 'conv_thr' to '1.0d-12'; check 'tr2_ph'             |
+| 'neb.x: negative image distances, check initial configuration'                                 | Initial images too far from a smooth path; or one image has crossed another | Use 'path_thr = 0.1' (initial path smoother); use `IMAGE_DISTANCE' to enforce a minimum spacing |
+| 'error in routine write_rec'                                                                  | Disk full in 'outdir'                                          | Clean `outdir`; use a larger scratch partition                                        |
+| 'k-point parallelism with k-point symmetry not yet supported'                                  | 'K_POINTS tpiba_b' (custom path) with 'KPAR > 1'              | Use 'KPAR = 1' for band structures, or use a uniform mesh                             |
+| 'cutoff is not sufficient for the pseudopotential'                                              | 'ecutwfc' < the UPF file's recommended cutoff                 | Increase `ecutwfc' to at least the recommended value; or use the SR.04 standard cutoffs |
+| 'fatal error in cdiaghg: matrix not positive definite'                                         | Numerical issue with a 'mixing_mode = 'local-TF'' on an insulator | Switch to `mixing_mode = 'plain'' (default)                                            |
+| 'neb.x: path is not continuous, image 5 has a large distance from neighbours'                   | Insufficient NEB images; or steep initial path                 | Add more images; use 'path_thr = 0.05' for a tighter initial path smoothing            |
+| 'error in do_scf: too many iterations'                                                         | SCF not converging; or a bad initial guess                     | Add 'starting_magnetization(i)' for each species; use 'mixing_beta = 0.2'; `mixing_ndim = 12' |
+| 'Hybrid: harris-functional weights too large'                                                  | Hybrid functional SCF oscillating; 'TIME' or 'mixing_beta' wrong | Use 'mixing_beta = 0.4' and `mixing_ndim = 16' for the first hybrid run; pre-converge at PBE first |
 
 ### 2.6 Advanced features
 
 - **Hybrid functionals (HSE06, PBE0, SCAN0).** Add
-  `input_dft = 'HSE'' to `&SYSTEM' for HSE06,
-  `input_dft = 'PBE0'' for PBE0, and `input_dft = 'SCAN0''
+  'input_dft = 'HSE'' to '&SYSTEM' for HSE06,
+  'input_dft = 'PBE0'' for PBE0, and 'input_dft = 'SCAN0''
   for the SCAN0 hybrid. The exact-exchange mixing and
   screening length are controlled by `nqx1`, `nqx2`,
   `nqx3' (the FFT grid for the exact exchange) and
-  `exxdiv_treatment = 'gygi-baldereschi'`. The hybrid
+  'exxdiv_treatment = 'gygi-baldereschi''. The hybrid
   SCF is ~50× slower than the PBE SCF; use
-  `mixing_beta = 0.4' and `mixing_ndim = 16' for the
+  'mixing_beta = 0.4' and 'mixing_ndim = 16' for the
   first SCF iterations and switch to `mixing_beta = 0.7'
   once the energy is on track.
 - **DFT+U (Dudarev).** Add `lda_plus_u = .TRUE.' and
-  `Hubbard_U(i)' for each species to `&SYSTEM`. For the
+  'Hubbard_U(i)' for each species to '&SYSTEM`. For the
   Liechtenstein formulation, use
-  `Hubbard_U(i)' and `Hubbard_J(i)' per $(l, m)$.
+  'Hubbard_U(i)' and 'Hubbard_J(i)' per $(l, m)$.
   QE also supports DFT+U+V (inter-site $V$) for
-  non-collinear magnetism with `lda_plus_u_kind = 1`.
+  non-collinear magnetism with 'lda_plus_u_kind = 1'.
 - **Spin–orbit coupling.** Add `noncolin = .TRUE.' and
-  `lspinorb = .TRUE.' to `&SYSTEM`. The initial
+  'lspinorb = .TRUE.' to '&SYSTEM`. The initial
   `starting_magnetization' must be a 3-component vector
   per atom. For collinear SOC (spin quantisation along
-  one axis), use `lspinorb = .TRUE., noncolin = .FALSE.`.
+  one axis), use 'lspinorb = .TRUE., noncolin = .FALSE.'.
   The second-variational SOC (more accurate, faster
   convergence) is on by default.
 - **Van der Waals (D3, D4, TS, MBD).** QE does *not*
@@ -763,20 +763,20 @@ different defaults.
   older QE versions, use the `xtorch' interface or
   post-process the energy with a standalone D3
   implementation. Tkatchenko–Scheffler (TS) is
-  available as `dft_ts = .TRUE.`; the
+  available as 'dft_ts = .TRUE.'; the
   many-body dispersion (MBD@rsSCS) is in the
   `MBD' plugin.
-- **Phonons (DFPT).** `ph.x' with `tr2_ph = 1.0d-12' on
+- **Phonons (DFPT).** 'ph.x' with 'tr2_ph = 1.0d-12' on
   a non-metallic system. The standard workflow is
   (i) PBE SCF, (ii) `ph.x' at a 2×2×2 (or 4×4×4) q-mesh,
   (iii) `q2r.x' to Fourier-interpolate the force
   constants, (iv) `matdyn.x' to plot the dispersion.
-  For metals, use `ph.x' with `ldisp = .TRUE.' and
+  For metals, use 'ph.x' with 'ldisp = .TRUE.' and
   `nq1, nq2, nq3' to compute the full dispersion by
   finite differences (DFPT does not work for metals in
   QE).
 - **Phonons (finite differences).** `ph.x' with
-  `tr2_ph = 1.0d-12' and `ldisp = .TRUE.' on a
+  'tr2_ph = 1.0d-12' and 'ldisp = .TRUE.' on a
   supercell. Slower than DFPT but works for metals.
 - **Nudged elastic band (NEB).** `neb.x' with an
   input `neb.dat' listing the initial and final images
@@ -791,9 +791,9 @@ different defaults.
   `CI_scheme = 'dimer'' for a saddle-point search from
   a single initial configuration.
 - **$G_0W_0$ and BSE.** The QE ground state is
-  post-processed by `Yambo' (most common) or `West'
+  post-processed by 'Yambo' (most common) or 'West'
   (largest systems, stochastic). The `pw2gw.x' utility
-  converts the QE `WAVECAR' (`save/' directory) into the
+  converts the QE 'WAVECAR' ('save/' directory) into the
   format Yambo reads. The `pw4gw.x' utility does the
   same for West.
 - **Ab-initio MD (BO and CP).** `pw.x' with
@@ -1008,23 +1008,23 @@ $ grep "FINAL SINGLE POINT ENERGY" h2o_opt.out
 ORCA is a Gaussian-basis code, so the convergence tests
 are different from the plane-wave codes above. The two
 main convergence parameters are the **basis set size**
-(`def2-SVP' → `def2-TZVP' → `def2-QZVP`) and the
+('def2-SVP' → 'def2-TZVP' → `def2-QZVP`) and the
 **numerical integration grid** (`GridX' where X is 1–9).
 For most methods, the default grid is fine, but for
 geometry optimisation and properties the convergence
 should be checked.
 
 1. **Basis-set convergence.** Sweep the basis from
-   `def2-SVP' to `def2-TZVP' to `def2-QZVP' and check
+   'def2-SVP' to 'def2-TZVP' to `def2-QZVP' and check
    the convergence of the property of interest. For a
    single-point energy, `def2-TZVP' is usually within
    0.1 mEh of `def2-QZVP`; for a geometry, `def2-TZVP'
    gives bond lengths within 0.001 Å of `def2-QZVP`.
    For high-accuracy reference calculations, the
    **complete basis set (CBS)** extrapolation uses
-   `n^{-3}' for the HF energy and `n^{-5}' for the
+   'n^{-3}' for the HF energy and 'n^{-5}' for the
    correlation energy (Helgaker–Halkier), with `n = 3
-   (TZ)' and `n = 4 (QZ)`.
+   (TZ)' and 'n = 4 (QZ)'.
 
 2. **Integration grid.** The default is `Grid4' for
    geometry optimisation and `Grid5' for final
@@ -1037,7 +1037,7 @@ should be checked.
 
 3. **SCF convergence.** The default `TightSCF' flag
    gives `1.0e-8' Eh. For difficult systems (open-shell
-   TM, near-degeneracy), use `VeryTightSCF' (`1.0e-10`).
+   TM, near-degeneracy), use 'VeryTightSCF' ('1.0e-10`).
    For SCF convergence problems:
    `SlowConv`, `SOSCF`, `DIIS`, and `KDIIS' are
    available; for very difficult cases, the
@@ -1051,8 +1051,8 @@ should be checked.
    ERI evaluation, with an error of < 0.1 mEh for most
    properties. For hybrid DFT, use `RIJCOSX`; for pure
    GGA, use `RI`. The auxiliary basis is the
-   `def2/J' basis; for `def2-SVP' it is `def2/J`; for
-   `def2-TZVP' it is `def2/J`; for `def2-QZVP' it is
+   'def2/J' basis; for 'def2-SVP' it is `def2/J`; for
+   'def2-TZVP' it is 'def2/J'; for 'def2-QZVP' it is
    `def2/J`.
 
 5. **Dispersion.** For non-covalent interactions, use
@@ -1064,35 +1064,35 @@ should be checked.
 
 | Error / symptom                                                                  | Likely cause                                                       | Fix                                                                                    |
 |:---------------------------------------------------------------------------------|:-------------------------------------------------------------------|:---------------------------------------------------------------------------------------|
-| `ORCA finished with error: UNKNOWN_EXIT_SIGNAL'                                  | Out of memory                                                      | Increase `%maxcore`; or reduce the basis set; or split the calculation into segments    |
-| `SCF NOT CONVERGED after 125 iterations'                                         | Difficult SCF (TM, near-degeneracy, bad initial guess)            | Use `SlowConv`, `SOSCF`; or `KDIIS`; or specify initial `MOs' via `%scf ... GuessMO'     |
-| `RI not set up, but RI required'                                                  | Forgot the auxiliary basis for a RI / RIJCOSX calculation          | Add `! def2/J' or use `%basis ... AuxJ "def2/J" ... end'                                |
+| 'ORCA finished with error: UNKNOWN_EXIT_SIGNAL'                                  | Out of memory                                                      | Increase '%maxcore`; or reduce the basis set; or split the calculation into segments    |
+| 'SCF NOT CONVERGED after 125 iterations'                                         | Difficult SCF (TM, near-degeneracy, bad initial guess)            | Use 'SlowConv', 'SOSCF'; or 'KDIIS'; or specify initial 'MOs' via `%scf ... GuessMO'     |
+| 'RI not set up, but RI required'                                                  | Forgot the auxiliary basis for a RI / RIJCOSX calculation          | Add '! def2/J' or use `%basis ... AuxJ "def2/J" ... end'                                |
 | `BASIS SET NOT FOUND: def2-QZVPPD'                                                | The basis set file is missing; or the ORCA version is too old     | Upgrade ORCA (≥ 5.0 has the full def2 family); or check the basis set table             |
-| `Aborting: too many negative frequencies' (geometry optim)                      | Saddle point found instead of minimum; or the SCF did not converge | Use `Opt' (not `OptTS`); add `AnFreq' (numerical frequency at the converged geometry)  |
-| `TDDFT EXCITED STATE X: convergence failed'                                     | State too high in energy; or the SCF is not tight enough          | Use `TightSCF`; or use `DoLamp' for the TDDFT iterations; or reduce the number of roots |
+| 'Aborting: too many negative frequencies' (geometry optim)                      | Saddle point found instead of minimum; or the SCF did not converge | Use 'Opt' (not `OptTS`); add `AnFreq' (numerical frequency at the converged geometry)  |
+| 'TDDFT EXCITED STATE X: convergence failed'                                     | State too high in energy; or the SCF is not tight enough          | Use 'TightSCF'; or use 'DoLamp' for the TDDFT iterations; or reduce the number of roots |
 | `NEVPT2: too many active electrons'                                              | CAS active space too large                                         | Reduce the active space; or use a smaller basis                                         |
-| `CPSCF: numerical instability'                                                   | SCF grid too coarse; or a very diffuse basis                       | Use a finer grid (`Grid6`); check the basis set; or use `! NoFrozencore' if ECP is set  |
-| `OUT OF MEMORY: cannot allocate ... MB'                                          | System too large for the available RAM                            | Use `%maxcore' with a larger value; or reduce the basis; or use the RI approximation    |
-| ``The use of the `Truhlar' grid is not implemented for this method`'              | Mismatch between grid and method                                   | Use `Grid4' (default) or `Grid5`; check the documentation for the specific method        |
-| `Aborting: level shift value too large for this method'                          | Default level shift too high for a hybrid functional               | Use `%scf ... LevelShift 0.0 end' and `SlowConv`; or use the `%method ... HFX_Storage ... end' block |
-| `NEVPT2 requires the IROOT flag'                                                 | NEVPT2 needs a state-specific calculation                          | Set `! NEVPT2' with `IRoot' in the `%tddft' block; or use the `casscf' module directly  |
+| 'CPSCF: numerical instability'                                                   | SCF grid too coarse; or a very diffuse basis                       | Use a finer grid ('Grid6'); check the basis set; or use '! NoFrozencore' if ECP is set  |
+| 'OUT OF MEMORY: cannot allocate ... MB'                                          | System too large for the available RAM                            | Use '%maxcore' with a larger value; or reduce the basis; or use the RI approximation    |
+| `'The use of the 'Truhlar' grid is not implemented for this method''              | Mismatch between grid and method                                   | Use 'Grid4' (default) or `Grid5`; check the documentation for the specific method        |
+| 'Aborting: level shift value too large for this method'                          | Default level shift too high for a hybrid functional               | Use '%scf ... LevelShift 0.0 end' and `SlowConv`; or use the `%method ... HFX_Storage ... end' block |
+| 'NEVPT2 requires the IROOT flag'                                                 | NEVPT2 needs a state-specific calculation                          | Set '! NEVPT2' with 'IRoot' in the '%tddft' block; or use the `casscf' module directly  |
 
 ### 3.6 Advanced features
 
 - **Hybrid functionals.** All common hybrids are
-  available: B3LYP (`! B3LYP`), PBE0 (`! PBE0`),
-  TPSSh (`! TPSSh`), the range-separated hybrids
+  available: B3LYP ('! B3LYP'), PBE0 ('! PBE0'),
+  TPSSh ('! TPSSh'), the range-separated hybrids
   `ωB97X-D3`, `ωB97X-V`, `ωB97M-V`, `CAM-B3LYP'
-  (`! CAM-B3LYP`). For dispersion-corrected hybrid
+  ('! CAM-B3LYP'). For dispersion-corrected hybrid
   functionals, add `! D3BJ' (D3 with Becke–Johnson
-  damping), `! D4' (D4), or `! NL' (the non-local
+  damping), '! D4' (D4), or '! NL' (the non-local
   Vydrov–Van Voorhis dispersion, used in
   `ωB97X-V`).
 - **Double-hybrids.** The "double-hybrid" functionals
   (MP2 correlation on top of a hybrid exchange,
   [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.6) are
-  available: B2PLYP (`! B2PLYP`), DSD-PBEP86
-  (`! DSD-PBEP86`), ωB97X-2 (`! ωB97X-2`). These are
+  available: B2PLYP ('! B2PLYP'), DSD-PBEP86
+  ('! DSD-PBEP86'), ωB97X-2 ('! ωB97X-2'). These are
   slower than hybrids but more accurate for
   non-covalent interactions and thermochemistry.
 - **CASSCF / NEVPT2.** The complete active space SCF
@@ -1114,13 +1114,13 @@ should be checked.
 - **Spectroscopy: UV/Vis (TDDFT).** The TDDFT module
   is a standard "Casida" linear-response TDDFT
   ([chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }})). Specify
-  `! TDDFT' with `NRoots 50' (50 excited states) and
+  '! TDDFT' with 'NRoots 50' (50 excited states) and
   `MaxDim 200' (the maximum subspace size). For
-  spin-flip TDDFT (diradicals), use `! SF-TDDFT`.
+  spin-flip TDDFT (diradicals), use '! SF-TDDFT'.
 - **Spectroscopy: EPR / NMR.** ORCA computes
   hyperfine coupling (EPR) and NMR chemical shifts via
   the `EPRNMR' module. The input is
-  `! EPRNMR' with `NTrip' (triplet state for EPR) or
+  '! EPRNMR' with 'NTrip' (triplet state for EPR) or
   `NAtoms' (for NMR shielding). The output is the
   hyperfine tensor and the shielding tensor.
 - **Spectroscopy: Mössbauer.** The Mössbauer isomer
@@ -1133,16 +1133,16 @@ should be checked.
   spin-orbit mean-field integral approximation) or
   `! RI-SOMF' for the SOC treatment.
 - **Geometry optimisation + NEB.** ORCA's NEB module
-  (`! NEB-TS`) is a full climbing-image NEB for
+  ('! NEB-TS') is a full climbing-image NEB for
   transition-state search. The input is
-  `! NEB-TS' with `NImages 8' (8 images between the
+  '! NEB-TS' with 'NImages 8' (8 images between the
   initial and final states). The converged saddle
   point is in the output.
 - **Ab-initio MD.** ORCA's MD module supports
   Born–Oppenheimer MD with the same input format as
   the geometry optimisation. Use `! MD' with
-  `TimeStep 0.5 fs' and `NSteps 1000`. For a thermal
-  initial condition, use `! MDINIT 300 K`.
+  'TimeStep 0.5 fs' and 'NSteps 1000`. For a thermal
+  initial condition, use '! MDINIT 300 K'.
 
 ### 3.7 Worked example — Cr(CO)₆ CASSCF + NEVPT2
 
@@ -1235,7 +1235,7 @@ shift).
 
 For an open-shell case (e.g. a TM complex with a
 $S = 1$ ground state, like a Mn²⁺ octahedral complex),
-change `mult 1' to `mult 3' (triplet) and the active
+change 'mult 1' to 'mult 3' (triplet) and the active
 space to `(5, 5)' for the high-spin $d^5$ case.
 
 ---
@@ -1371,11 +1371,11 @@ convergence recipes:
 2. **Real-space grid spacing (FD mode).** Sweep h*
    from 0.25 Å to 0.10 Å in steps of 0.025 Å. The
    energy converges *exponentially* in h* (the
-   multi-grid solver is exact in the limit of `h = 0`),
+   multi-grid solver is exact in the limit of 'h = 0'),
    so the convergence is much faster than for the
    plane-wave cutoff. The default `h = 0.2' Å is fine
    for routine work; for high-accuracy forces
-   (`< 0.01' eV/Å), use `h = 0.15' Å or smaller.
+   ('< 0.01' eV/Å), use 'h = 0.15' Å or smaller.
 
 3. **LCAO basis (LCAO mode).** The default basis is
    `dzp' (double-zeta with polarisation). For
@@ -1393,12 +1393,12 @@ convergence recipes:
 5. **SCF convergence.** `convergence={'energy':
    1.0e-6}' (eV per electron) is the default. For
    high-accuracy, use `1.0e-8`. For response
-   properties, use `1.0e-10' and a tighter `density'
+   properties, use '1.0e-10' and a tighter 'density'
    convergence (the default `1.0e-12' is fine).
 
 6. **PAW dataset version.** GPAW ships with the
    `gpaw-setups' package (PyPI). The default is the
-   `0.9.x' series. Older `0.8.x' data should not be
+   '0.9.x' series. Older '0.8.x' data should not be
    used for new work. For *all-electron* accuracy
    benchmarks, use the `0.10.x' data.
 
@@ -1406,17 +1406,17 @@ convergence recipes:
 
 | Error / symptom                                                          | Likely cause                                                       | Fix                                                                                  |
 |:-------------------------------------------------------------------------|:-------------------------------------------------------------------|:-------------------------------------------------------------------------------------|
-| `gpaw.setup.SetupError: No setup for element X'                          | PAW dataset for element X is missing                               | Run `gpaw install-data ~/.gpaw_data`; or set the `GPAW_SETUP_PATH' environment variable |
-| `RuntimeError: Eigensolver did not converge'                            | SCF not converging; or a difficult system                          | Use `eigensolver='cg'`; or increase `maxiter`; or use `mixer={'beta': 0.05}' for slow mixing |
-| `MemoryError: cannot allocate ... MB'                                    | System too large for the available RAM                              | Switch from `PW' mode to `LCAO' mode; or use `nbands=...' to limit the number of bands |
-| `ValueError: kpts=(1, 1, 1) for a periodic system'                       | Used Gamma-only for a metallic or large-gap periodic system        | Increase `kpts' to (8, 8, 8) or denser                                                |
-| `gpaw.utilities.gpaw_error: Boundary conditions not implemented for this lattice' | Triclinic cell with `PW' mode and a non-zero `k`-point            | Use `PW' mode with `fft2d=False`; or use `FD' mode (handles all cell shapes)            |
-| `gpaw.eigensolvers.RMM_DIISError: ...'                                  | SCF stuck; `eigensolver='rmm-diis'' is unstable for the system     | Switch to `eigensolver='cg'' or `'lcao'`; or use a different initial magnetic moment  |
-| `The fixed_density() call requires mode='all' in the .gpw file'          | The `.gpw' file from the SCF was written with `mode='wavefunctions'' | Re-write the SCF with `calc.write('si.gpw', mode='all')'                              |
-| `numpy.AxisError: axis 3 is out of bounds for array of dimension 3'     | Old GPAW and new ASE version mismatch                               | Pin ASE version: `pip install ase==3.22.0'                                            |
-| `gpaw.occupations.OccupationError: ...'                                  | Fermi–Dirac smearing with `occupations=FermiDirac' and metallic    | Use `occupations={'name': 'fermi-dirac', 'width': 0.05}`; or `occupations={'name': 'methfessel-paxton', 'order': 1, 'width': 0.05}' |
-| ``PW mode does not support the requested `xc=' functional`'                | Functional not available in the pre-compiled GPAW                  | Use the `libxc' name: `xc='PBE'' is `xc='LDA_X+LDA_C_PW'`; or install GPAW from source with `libxc' enabled |
-| `gpaw.lcao.LCAO error: LCAO setup not found for element X'               | Missing PAW dataset for the LCAO mode                              | Run `gpaw install-data`; or use a different PAW version                                |
+| 'gpaw.setup.SetupError: No setup for element X'                          | PAW dataset for element X is missing                               | Run 'gpaw install-data ~/.gpaw_data'; or set the 'GPAW_SETUP_PATH' environment variable |
+| 'RuntimeError: Eigensolver did not converge'                            | SCF not converging; or a difficult system                          | Use 'eigensolver='cg''; or increase 'maxiter'; or use 'mixer={'beta': 0.05}' for slow mixing |
+| 'MemoryError: cannot allocate ... MB'                                    | System too large for the available RAM                              | Switch from 'PW' mode to 'LCAO' mode; or use 'nbands=...' to limit the number of bands |
+| 'ValueError: kpts=(1, 1, 1) for a periodic system'                       | Used Gamma-only for a metallic or large-gap periodic system        | Increase 'kpts' to (8, 8, 8) or denser                                                |
+| 'gpaw.utilities.gpaw_error: Boundary conditions not implemented for this lattice' | Triclinic cell with 'PW' mode and a non-zero `k`-point            | Use 'PW' mode with 'fft2d=False'; or use 'FD' mode (handles all cell shapes)            |
+| 'gpaw.eigensolvers.RMM_DIISError: ...'                                  | SCF stuck; 'eigensolver='rmm-diis'' is unstable for the system     | Switch to 'eigensolver='cg'' or ''lcao'`; or use a different initial magnetic moment  |
+| 'The fixed_density() call requires mode='all' in the .gpw file'          | The '.gpw' file from the SCF was written with 'mode='wavefunctions'' | Re-write the SCF with 'calc.write('si.gpw', mode='all')'                              |
+| 'numpy.AxisError: axis 3 is out of bounds for array of dimension 3'     | Old GPAW and new ASE version mismatch                               | Pin ASE version: 'pip install ase==3.22.0'                                            |
+| 'gpaw.occupations.OccupationError: ...'                                  | Fermi–Dirac smearing with 'occupations=FermiDirac' and metallic    | Use 'occupations={'name': 'fermi-dirac', 'width': 0.05}'; or `occupations={'name': 'methfessel-paxton', 'order': 1, 'width': 0.05}' |
+| `'PW mode does not support the requested 'xc=' functional''                | Functional not available in the pre-compiled GPAW                  | Use the 'libxc' name: 'xc='PBE'' is 'xc='LDA_X+LDA_C_PW''; or install GPAW from source with 'libxc' enabled |
+| 'gpaw.lcao.LCAO error: LCAO setup not found for element X'               | Missing PAW dataset for the LCAO mode                              | Run 'gpaw install-data`; or use a different PAW version                                |
 
 ### 4.6 Advanced features
 
@@ -1443,7 +1443,7 @@ convergence recipes:
 - **DFT+U.** Set `setup={'X': 'PBE+s'}' for the
   Dudarev DFT+U
   ([chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }})). The
-  `X' is the atomic number. The `U' value is
+  'X' is the atomic number. The 'U' value is
   specified in the setup dictionary.
 - **Spin–orbit coupling.** Set `soc=True' in the
   calculator (GPAW switches to non-collinear
@@ -1456,8 +1456,8 @@ convergence recipes:
   occupation in the SCF. Useful for Hubbard-corrected
   calculations of charge-transfer excitations.
 - **NEB and dimer.** The NEB module is integrated with
-  ASE: `from ase.neb import NEB`. The climbing-image
-  NEB is `climb=True' in the `NEB' constructor. The
+  ASE: 'from ase.neb import NEB'. The climbing-image
+  NEB is 'climb=True' in the 'NEB' constructor. The
   dimer method is `from ase.dimer import Dimer' and
   `DimerRun`.
 
@@ -1528,10 +1528,10 @@ spectrum[:].plot('si.td.png')
 
 The `photoabsorption' function runs a real-time TDDFT
 calculation with a delta-function electric-field kick
-at `t = 0`, propagates the Kohn–Sham orbitals, computes
+at 't = 0', propagates the Kohn–Sham orbitals, computes
 the time-dependent dipole, and Fourier-transforms to
 the optical absorption spectrum. The output
-`spectrum' is a `Spectrum' object with the absorption
+'spectrum' is a 'Spectrum' object with the absorption
 cross-section as a function of energy.
 
 ---
@@ -1570,7 +1570,7 @@ for HSE06), DFT+U, MP2, RPA, and $G_0W_0$.
 ### 5.2 Install
 
 CP2K is distributed as a single `cp2k.ssmp' (serial),
-`cp2k.psmp' (MPI / OpenMP), or `cp2k.popt' (OpenMP)
+'cp2k.psmp' (MPI / OpenMP), or 'cp2k.popt' (OpenMP)
 executable, with a toolchain script that downloads and
 compiles all the dependencies (BLAS, LAPACK, ScaLAPACK,
 FFTW3, libint, libxc, libxsmm, ...). The build takes
@@ -1685,8 +1685,8 @@ pseudopotential.)
 
 CP2K's convergence is structured around three
 parameters: the **Gaussian basis set**, the
-**plane-wave cutoff** (`CUTOFF' in `&MGRID`), and the
-**relative cutoff** (`REL_CUTOFF' in `&MGRID`). The
+**plane-wave cutoff** ('CUTOFF' in '&MGRID`), and the
+**relative cutoff** ('REL_CUTOFF' in '&MGRID`). The
 convergence recipes:
 
 1. **Gaussian basis set.** The MOLOPT family is the
@@ -1712,7 +1712,7 @@ convergence recipes:
    Gaussian density expanded in plane waves). The
    default is 50 Ry, but for high-accuracy work,
    increase to 60–100 Ry. The energy converges
-   *muc`h*' faster in `REL_CUTOFF' than in `CUTOFF`.
+   *muc'h*' faster in 'REL_CUTOFF' than in `CUTOFF`.
 
 4. **SCF convergence.** The default `EPS_SCF = 1.0E-6'
    is too loose for production. Use `1.0E-7' for
@@ -1721,12 +1721,12 @@ convergence recipes:
    systems (transition-metal oxides, mid-gap states),
    use `OT' (the orbital transformation solver) with
    `PRECONDITIONER FULL_SINGLE_INVERSE' and
-   `MINIMIZER DIIS`.
+   'MINIMIZER DIIS'.
 
 5. **OT solver for large systems.** The diagonalisation
    solver scales as `O(N³)' in the system size; the
    OT (orbital transformation) solver scales as
-   `O(N²)' to `O(N)' (with the right preconditioner).
+   'O(N²)' to 'O(N)' (with the right preconditioner).
    For systems with more than ~ 500 atoms, the OT
    solver is the only option.
 
@@ -1734,37 +1734,37 @@ convergence recipes:
    water with PBE. For H–H bonds or fast stretches,
    use 0.25 fs or smaller. For constant-temperature
    NVT, the thermostat relaxation time (the
-   `TIMECON' in the `&NOSE' block) should be ~ 10×
+   'TIMECON' in the '&NOSE' block) should be ~ 10×
    the timestep (e.g. `TIMECON 1000 fs' for a
-   `TIMESTEP 0.5 fs`).
+   'TIMESTEP 0.5 fs').
 
 ### 5.5 Common errors
 
 | Error / symptom                                                                | Likely cause                                                          | Fix                                                                                  |
 |:-------------------------------------------------------------------------------|:----------------------------------------------------------------------|:-------------------------------------------------------------------------------------|
-| `CUTOFF is too small for the chosen basis'                                     | `CUTOFF' < the basis's recommended cutoff                             | Increase `CUTOFF`; check the `data/BASIS_MOLOPT' file                                 |
-| `OT minimizer did not converge'                                                | Bad SCF initial guess; or system with a gap closing                    | Use `SCF_GUESS ATOMIC' (or `RESTART`); add `&OT ... PRECONDITIONER FULL_SINGLE_INVERSE ... end' |
-| `MGRID CUTOFF must be a multiple of ...'                                      | `CUTOFF' not a multiple of the FFT grid size                           | Set `CUTOFF' to a multiple of the recommended cutoff; or use the standard MOLOPT cutoffs  |
-| `POISSON solver MT: box too small'                                              | `&CELL ABC ...' too small for the molecule with the MT solver         | Increase the cell size; or use `PSOLVER PERIODIC' with `PERIODIC XYZ'                |
-| `KIND section: BASIS_SET ... not found'                                        | Basis set file is not in the path                                     | Check `BASIS_SET_FILE_NAME`; check that the file `BASIS_MOLOPT' is in the directory   |
-| `KIND section: POTENTIAL ... not found'                                        | Pseudopotential file is not in the path                               | Check `POTENTIAL_FILE_NAME`; check that the file `GTH_POTENTIALS' is in the directory   |
-| `MGRID: cell too small for the chosen CUTOFF'                                  | Cell too small for the plane-wave grid to be defined                    | Increase the cell; or decrease `CUTOFF'                                              |
-| `neighbour list overflow'                                                      | Cell too small for a periodic calculation                              | Increase the vacuum in the cell; or use `PSOLVER PERIODIC'                            |
-| `SCF did not converge in MAX_SCF iterations'                                   | SCF oscillating; or bad initial guess                                  | Use `OT' solver; or restart from a converged run; or use `SCF_GUESS HISTORY'          |
-| `MD: cannot read frame'                                                         | Restart file `*.restart' is corrupt or missing                         | Re-run from scratch; or use `EXT_RESTART' with a valid restart file                   |
-| `NEB: number of images does not match'                                          | Inconsistent number of images between the input and the restart        | Use `BAND_TYPE IT-NEB' with `NUMBER_OF_REPLICA N' matching the input                  |
-| `HSE06 requires CUTOFF > 500 Ry'                                                | HSE06 hybrid needs a higher plane-wave cutoff than semilocal DFT       | Increase `CUTOFF' to 600–1000 Ry                                                       |
-| `GTH pseudopotential does not match the basis set'                              | Mismatched GTH pseudopotential and MOLOPT basis                        | Use the matched pair (e.g. `DZVP-MOLOPT-GTH' with `GTH-PBE-q6`)                       |
-| `K-point sampling is not implemented for this lattice'                        | Non-orthogonal lattice with `KPOINTS'                                  | Use `KPOINTS SCHEME MONKHORST-PACK N1 N2 N3 0 0 0' only for orthorhombic cells         |
-| `OPTIMIZER BFGS: line search failed'                                            | Force convergence criterion too tight; or a difficult geometry         | Loosen `MAX_FORCE`; or switch to `CG' optimiser                                       |
+| 'CUTOFF is too small for the chosen basis'                                     | 'CUTOFF' < the basis's recommended cutoff                             | Increase `CUTOFF`; check the `data/BASIS_MOLOPT' file                                 |
+| 'OT minimizer did not converge'                                                | Bad SCF initial guess; or system with a gap closing                    | Use 'SCF_GUESS ATOMIC' (or `RESTART`); add `&OT ... PRECONDITIONER FULL_SINGLE_INVERSE ... end' |
+| 'MGRID CUTOFF must be a multiple of ...'                                      | 'CUTOFF' not a multiple of the FFT grid size                           | Set `CUTOFF' to a multiple of the recommended cutoff; or use the standard MOLOPT cutoffs  |
+| 'POISSON solver MT: box too small'                                              | '&CELL ABC ...' too small for the molecule with the MT solver         | Increase the cell size; or use 'PSOLVER PERIODIC' with 'PERIODIC XYZ'                |
+| 'KIND section: BASIS_SET ... not found'                                        | Basis set file is not in the path                                     | Check 'BASIS_SET_FILE_NAME'; check that the file 'BASIS_MOLOPT' is in the directory   |
+| 'KIND section: POTENTIAL ... not found'                                        | Pseudopotential file is not in the path                               | Check 'POTENTIAL_FILE_NAME'; check that the file 'GTH_POTENTIALS' is in the directory   |
+| 'MGRID: cell too small for the chosen CUTOFF'                                  | Cell too small for the plane-wave grid to be defined                    | Increase the cell; or decrease 'CUTOFF'                                              |
+| 'neighbour list overflow'                                                      | Cell too small for a periodic calculation                              | Increase the vacuum in the cell; or use 'PSOLVER PERIODIC'                            |
+| 'SCF did not converge in MAX_SCF iterations'                                   | SCF oscillating; or bad initial guess                                  | Use 'OT' solver; or restart from a converged run; or use `SCF_GUESS HISTORY'          |
+| 'MD: cannot read frame'                                                         | Restart file '*.restart' is corrupt or missing                         | Re-run from scratch; or use `EXT_RESTART' with a valid restart file                   |
+| 'NEB: number of images does not match'                                          | Inconsistent number of images between the input and the restart        | Use 'BAND_TYPE IT-NEB' with `NUMBER_OF_REPLICA N' matching the input                  |
+| 'HSE06 requires CUTOFF > 500 Ry'                                                | HSE06 hybrid needs a higher plane-wave cutoff than semilocal DFT       | Increase 'CUTOFF' to 600–1000 Ry                                                       |
+| 'GTH pseudopotential does not match the basis set'                              | Mismatched GTH pseudopotential and MOLOPT basis                        | Use the matched pair (e.g. 'DZVP-MOLOPT-GTH' with `GTH-PBE-q6`)                       |
+| 'K-point sampling is not implemented for this lattice'                        | Non-orthogonal lattice with 'KPOINTS'                                  | Use `KPOINTS SCHEME MONKHORST-PACK N1 N2 N3 0 0 0' only for orthorhombic cells         |
+| 'OPTIMIZER BFGS: line search failed'                                            | Force convergence criterion too tight; or a difficult geometry         | Loosen 'MAX_FORCE'; or switch to 'CG' optimiser                                       |
 
 ### 5.6 Advanced features
 
 - **OT solver (Orbital Transformation).** Switch
-  `&SCF ... &END SCF' to `&SCF ... &OT ... &END OT
+  '&SCF ... &END SCF' to '&SCF ... &OT ... &END OT
   &END SCF`. The OT solver is the recommended
   choice for systems with more than ~ 500 atoms. The
-  `MINIMIZER' can be `DIIS' (default), `CG' (conjugate
+  'MINIMIZER' can be 'DIIS' (default), `CG' (conjugate
   gradient), or `SD' (steepest descent). The
   `PRECONDITIONER' is the most important parameter:
   `FULL_SINGLE_INVERSE' is the most robust default;
@@ -1773,7 +1773,7 @@ convergence recipes:
   `&XC ... &HF ... &END HF &END XC' with
   `&HF ... FRACTION 0.25 ... &END HF' for PBE0, or
   with `&SCREENING ... &END SCREENING' for HSE06. The HSE06 calculation in CP2K uses a *truncated
-  Coulom`b*' kernel — the `&SCREENING ... &END SCREENING'
+  Coulom'b*' kernel — the '&SCREENING ... &END SCREENING'
   block specifies the screening length (0.2 Å⁻¹ for
   HSE06). The cost is ~ 50× that of semilocal DFT; the
   `CUTOFF' must be increased to 600–1000 Ry.
@@ -1785,13 +1785,13 @@ convergence recipes:
   (the `U_eff = U - J' is the effective parameter).
 - **MP2 and RPA.** Add `METHOD QUICKSTEP' with
   `&DFT ... &WF_CORRELATION ... &END WF_CORRELATION
-  &END DFT' and `METHOD MP2' (or `METHOD RPA`).
+  &END DFT' and 'METHOD MP2' (or 'METHOD RPA`).
   The MP2 calculation scales as `O(N⁵)`; the RPA scales
   as `O(N⁶)`. The output is the MP2 / RPA correlation
   energy on top of a converged PBE / PBE0 ground
   state.
 - **$G_0W_0$ and BSE.** Available via the
-  `METHOD GW' and `METHOD BSE' blocks. The GW
+  'METHOD GW' and 'METHOD BSE' blocks. The GW
   calculation is similar in scope to the `West' /
   `Yambo' implementations on top of QE / VASP.
 - **Dispersion (D3, D4, TS, MBD).** Add
@@ -1801,9 +1801,9 @@ convergence recipes:
   `POTENTIAL_TYPE NON_LOCAL' for the
   many-body dispersion (MBD@rsSCS).
 - **NEB and dimer.** The NEB module is invoked with
-  `RUN_TYPE BAND' and a `&MOTION ... &BAND ... &END
+  'RUN_TYPE BAND' and a '&MOTION ... &BAND ... &END
   BAND &END MOTION' block. The `BAND_TYPE' can be
-  `IT-NEB' (improved tangent NEB), `CI-NEB'
+  'IT-NEB' (improved tangent NEB), 'CI-NEB'
   (climbing image NEB), or `DIMER`. The output is the
   converged NEB trajectory; a frequency calculation on
   the saddle-point image confirms a single imaginary
@@ -1813,12 +1813,12 @@ convergence recipes:
   PLUMED interface for enhanced-sampling. PLUMED
   is loaded as a runtime library.
 - **Ab-initio MD (NVE, NVT, NPT).** `RUN_TYPE MD'
-  with the `&MD' block. `ENSEMBLE NVE' (default),
+  with the '&MD' block. 'ENSEMBLE NVE' (default),
   `NVT' (Nose–Hoover, CSVR, or GLE thermostat), or
   `NPT' (variable-cell MD with the Andersen or
   Martyna–Tobias–Klein barostat). The timestep is
   `TIMESTEP 0.5 fs' (default); for H–H bonds, use
-  `0.25 fs`.
+  '0.25 fs'.
 
 ### 5.7 Worked example — NEB of H diffusion on Pt(111)
 

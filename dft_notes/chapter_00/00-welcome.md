@@ -250,7 +250,7 @@ short version is:
   with no display.
 - **The `plots/' subfolder** holds the committed PNGs.  One script
   produces one figure; the figure file is named
-  `plots/<same prefix>-<same slug>.png`.
+  'plots/<same prefix>-<same slug>.png'.
 - **No `os.chdir`.**  Paths are constructed relative to the chapter
   folder using `pathlib.Path(__file__).parent`.
 
@@ -262,12 +262,12 @@ column are the place to fill the gap.
 
 | Topic | One-line expectation | Tutorial |
 |:------|:---------------------|:---------|
-| `numpy.ndarray' | Construct arrays, index them, broadcast, take `.T`, `.conj()`, `.dot()' | numpy.org/doc/stable/user/absolute_beginners.html |
+| 'numpy.ndarray' | Construct arrays, index them, broadcast, take '.T', '.conj()', '.dot()' | numpy.org/doc/stable/user/absolute_beginners.html |
 | `numpy.linalg.eigh' | Diagonalise a Hermitian matrix; sort eigenvalues | numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html |
 | `scipy.linalg.eigh(F, S)' | Solve the generalised eigenproblem $\mathbf F \mathbf C = \mathbf S \mathbf C \boldsymbol\varepsilon$ | docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.eigh.html |
-| `scipy.special' | Use `erf`, `factorial`, `sph_harm' | docs.scipy.org/doc/scipy/reference/special.html |
-| `matplotlib.pyplot' | `subplots`, `plot`, `xlabel`, `savefig' | matplotlib.org/stable/tutorials/introductory/pyplot.html |
-| `pathlib.Path' | Build paths relative to `__file__' | docs.python.org/3/library/pathlib.html |
+| 'scipy.special' | Use 'erf', 'factorial', 'sph_harm' | docs.scipy.org/doc/scipy/reference/special.html |
+| 'matplotlib.pyplot' | 'subplots', 'plot', 'xlabel', 'savefig' | matplotlib.org/stable/tutorials/introductory/pyplot.html |
+| 'pathlib.Path' | Build paths relative to '__file__' | docs.python.org/3/library/pathlib.html |
 
 ### Hello world — a chapter's smallest program
 
@@ -325,7 +325,7 @@ if __name__ == "__main__":
     main()
 ``'
 
-A reader fluent in `numpy' and `matplotlib' should be able to read
+A reader fluent in 'numpy' and 'matplotlib' should be able to read
 this script in under a minute and predict the shape of the figure
 before running it: an exponentially decaying curve, equal to
 $1/\pi \approx 0.318$ at $r = 0$ and falling to $\sim 10^{-9}$ by
@@ -345,7 +345,7 @@ $r = 10\,a_0$.
 >
 > The two-digit prefix (`01-`) preserves the order of scripts
 > within a chapter; if a future chapter-00 script gets added it
-> would be `02-…py' and its plot `02-….png`.  This ordering
+> would be '02-…py' and its plot '02-….png`.  This ordering
 > matters because chapters read top-to-bottom.
 
 ## The chapter structure template
@@ -361,7 +361,7 @@ detail to expect*, and *what the reader should take away.
 
 The chapter opens with **the headline result** — the one equation
 the reader should remember a year from now.  It is always a
-*numbere`d*' equation (`\begin{equation} ... \label{eq:ch-NN-headline}
+*numbere'd*' equation ('\begin{equation} ... \label{eq:ch-NN-headline}
 ...\end{equation}`), and the body of the chapter cross-references it
 with `\eqref{eq:ch-NN-headline}`.  In chapter 06 the claim is the
 Roothaan–Hall equation $\mathbf F \mathbf C = \mathbf S \mathbf C

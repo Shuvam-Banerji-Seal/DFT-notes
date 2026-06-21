@@ -2572,7 +2572,7 @@ if __name__ == "__main__":
 ``'
 
 Run it from the repo root with
-`python dft_notes/python_codes/chapter_04/01-diis-scf.py`.  The
+'python dft_notes/python_codes/chapter_04/01-diis-scf.py'.  The
 output PNG (committed by `agent:code-runner`) shows the energy
 and residual versus iteration for the three schemes, and the
 energy-resolved numbers print to stdout.  Typical output on a

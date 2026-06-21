@@ -991,13 +991,13 @@ A few common ones and what they usually mean:
 
 | Message (loosely) | Likely meaning |
 |:------------------|:---------------|
-| `zpotbr > 1000' (VASP), `rho is negative' | Charge sloshing; SCF diverging.  Tighten mixing, reduce \(\alpha\), try a different starting density. |
+| 'zpotbr > 1000' (VASP), 'rho is negative' | Charge sloshing; SCF diverging.  Tighten mixing, reduce \(\alpha\), try a different starting density. |
 | `BRMIX: linear search failed' (VASP) | Same as above; the Kerker-style mixer cannot find a step that lowers the energy. |
-| `subspacematrix not positive definite' (VASP) | Almost-empty bands / numerical instability in subspace diagonalisation.  Try a different `ALGO`, or add more bands. |
-| `cannot orthogonalise' (CP2K) | Linear-dependency collapse in a Gaussian basis (very diffuse functions).  Tighten the basis, or use `EPS_DEFAULT`. |
-| `SCF run did not converge' (ORCA) | As in C.9. Try `SlowConv`, `DIIS`, or change `MAXITER`. |
+| 'subspacematrix not positive definite' (VASP) | Almost-empty bands / numerical instability in subspace diagonalisation.  Try a different 'ALGO`, or add more bands. |
+| 'cannot orthogonalise' (CP2K) | Linear-dependency collapse in a Gaussian basis (very diffuse functions).  Tighten the basis, or use 'EPS_DEFAULT`. |
+| 'SCF run did not converge' (ORCA) | As in C.9. Try 'SlowConv', 'DIIS', or change 'MAXITER`. |
 | `k-point fold > max' (Quantum ESPRESSO) | Lattice vectors are too small; the BZ is over-folded.  Check the structure. |
-| `poisson solver failed' (SIESTA, GPAW) | Bad initial guess; try `DM.Init.State random' or `density_init' from a previous run. |
+| 'poisson solver failed' (SIESTA, GPAW) | Bad initial guess; try 'DM.Init.State random' or `density_init' from a previous run. |
 
 The pattern: read the *last* error, not the first;
 identify the *subsystem* (SCF, optimiser, diagonaliser);

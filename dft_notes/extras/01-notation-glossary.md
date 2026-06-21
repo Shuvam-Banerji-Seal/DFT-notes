@@ -104,7 +104,7 @@ vector.  Operators on them are in §3. | Symbol | LaTeX | Plain text | Descripti
 |:------|:------|:-----------|:------------|:-----------------|
 | $\mathbf r$ | `\mathbf r' | **r** | Position of an electron in $\mathbb R^3$ | Ch 00 §"Notation" |
 | $\mathbf r_i$ | `\mathbf r_i' | **r_i** | Position of the $i$-th electron | Ch 01 §1.1 |
-| $\mathbf R$, $\mathbf R_A$, $\mathbf R_I$ | `\mathbf R`, `\mathbf R_A`, `\mathbf R_I' | **R**, **R_A**, **R_I** | Position(s) of nucleus/nuclei; $A$ and $I$ index nuclei | Ch 00 §"Notation"; Ch 01 §1.1 |
+| $\mathbf R$, $\mathbf R_A$, $\mathbf R_I$ | '\mathbf R', '\mathbf R_A', `\mathbf R_I' | **R**, **R_A**, **R_I** | Position(s) of nucleus/nuclei; $A$ and $I$ index nuclei | Ch 00 §"Notation"; Ch 01 §1.1 |
 | $\mathbf A$, $\mathbf B$, $\mathbf C$, $\mathbf D$ | `\mathbf A' ... | **A** ... | Centres of basis functions (Gaussian primitives, GTOs) | Ch 06 §6.3 |
 | $\mathbf p$ | `\mathbf p' | **p** | Momentum vector; in atomic units $\hat{\mathbf p} = -i\nabla$ | Ch 01 §1.4 |
 | $\mathbf k$ | `\mathbf k' | **k** | Bloch wavevector / crystal momentum; lives in the first Brillouin zone | Ch 07 §7.1 |
@@ -145,7 +145,7 @@ and kets use Dirac's notation.
 | $\hat T$ | `\hat T' | T-hat | Kinetic energy; in atomic units $\hat T = -\frac{1}{2}\sum_i \nabla_i^2$ | Ch 00 §"Notation"; Ch 01 §1.4 |
 | $\hat V$ | `\hat V' | V-hat | Generic potential-energy operator | Ch 01 §1.4 |
 | $\hat V_{en}$ | `\hat V_{en}' | V_en-hat | Electron–nuclear attraction, $-\sum_{i,A} Z_A / \lvert\mathbf r_i - \mathbf R_A\rvert$ | Ch 00 §"Notation"; Ch 01 §1.1 |
-| $\hat V_{ee}$ / $\hat U_{ee}$ | `\hat V_{ee}`, `\hat U_{ee}' | V_ee-hat, U_ee-hat | Electron–electron repulsion, $\sum_{i<j} 1/r_{ij}$ | Ch 01 §1.1; Ch 01 §1.4 |
+| $\hat V_{ee}$ / $\hat U_{ee}$ | '\hat V_{ee}', `\hat U_{ee}' | V_ee-hat, U_ee-hat | Electron–electron repulsion, $\sum_{i<j} 1/r_{ij}$ | Ch 01 §1.1; Ch 01 §1.4 |
 | $\hat V_{nn}$ | `\hat V_{nn}' | V_nn-hat | Nuclear–nuclear repulsion (a $c$-number in BO) | Ch 03 §3.5 |
 | $\hat h$ | `\hat h' | h-hat | One-electron (core) Hamiltonian, $-\frac{1}{2}\nabla^2 + \hat v_\text{ext}$ | Ch 03 §3.2 |
 | $\hat F$ | `\hat F' | F-hat | Fock operator, $\hat F = \hat h + \hat J[\rho] - \hat K[\rho]$ | Ch 00 §"Notation"; Ch 03 §3.2 |
@@ -158,9 +158,9 @@ and kets use Dirac's notation.
 | $\hat v_\text{H}$ | `\hat v_\text{H}' | v_H-hat | Hartree (classical Coulomb) potential of the density | Ch 04 §4.2 |
 | $\hat{\mathbf r}$ | `\hat{\mathbf r}' | r̂ | Position operator (multiplication by $\mathbf r$ in the position representation) | Ch 01 §1.4 |
 | $\hat{\mathbf p}$ | `\hat{\mathbf p}' | p̂ | Momentum operator, $-i\nabla$ (atomic units) | Ch 01 §1.4 |
-| $\hat L^2$, $\hat L_z$ | `\hat L^2`, `\hat L_z' | L²-hat, L_z-hat | Squared and z-component of the orbital angular momentum | Ch 01 §1.10.2 |
-| $\hat S^2$, $\hat S_z$ | `\hat S^2`, `\hat S_z' | S²-hat, S_z-hat | Squared and z-component of the total spin | Ch 01 §1.2 (P3/P4); Ch 03 §3.7.5 |
-| $\hat a$, $\hat a^\dagger$ | `\hat a`, `\hat a^\dagger' | a-hat, a†-hat | Annihilation / creation operators (harmonic oscillator, second quantisation) | Ch 01 §1.9.2 |
+| $\hat L^2$, $\hat L_z$ | '\hat L^2', `\hat L_z' | L²-hat, L_z-hat | Squared and z-component of the orbital angular momentum | Ch 01 §1.10.2 |
+| $\hat S^2$, $\hat S_z$ | '\hat S^2', `\hat S_z' | S²-hat, S_z-hat | Squared and z-component of the total spin | Ch 01 §1.2 (P3/P4); Ch 03 §3.7.5 |
+| $\hat a$, $\hat a^\dagger$ | '\hat a', `\hat a^\dagger' | a-hat, a†-hat | Annihilation / creation operators (harmonic oscillator, second quantisation) | Ch 01 §1.9.2 |
 | $\hat n$ | `\hat n' | n-hat | Number operator, $\hat a^\dagger \hat a$ (QHO) | Ch 01 §1.9.2 |
 | $\hat T_{\mathbf R}$ | `\hat T_{\mathbf R}' | T_R-hat | Bravais-lattice translation operator, $(\hat T_{\mathbf R} f)(\mathbf r) = f(\mathbf r + \mathbf R)$ | Ch 07 §7.3, step 1 |
 | $\hat P_{ij}$ | `\hat P_{ij}' | P_ij-hat | Permutation operator; exchanges particles $i \leftrightarrow j$ | Ch 01 §1.4 |
@@ -269,7 +269,7 @@ treatment is left to a future chapter on post-HF methods.
 |:------|:------|:-----------|:------------|:-----------------|
 | $\lvert \Phi \rangle$ | `\lvert \Phi \rangle' | \|Φ⟩ | Slater determinant (the canonical many-body state) | Ch 02 §2.2 |
 | $\lvert \Phi_0 \rangle$ | `\lvert \Phi_0 \rangle' | \|Φ_0⟩ | Reference (HF or KS) Slater determinant | Ch 02 §2.2; Ch 03 |
-| $\lvert i \rangle$, $\lvert f \rangle$ | `\lvert i \rangle`, `\lvert f \rangle' | \|i⟩, \|f⟩ | Initial / final state (Fermi's golden rule, time-dependent perturbation theory) | Ch 01 §1.8.3 |
+| $\lvert i \rangle$, $\lvert f \rangle$ | '\lvert i \rangle', `\lvert f \rangle' | \|i⟩, \|f⟩ | Initial / final state (Fermi's golden rule, time-dependent perturbation theory) | Ch 01 §1.8.3 |
 | $\lvert n \rangle$ | `\lvert n \rangle' | \|n⟩ | $n$-th Fock state of the QHO (also: $n$-th stationary state of any Hamiltonian) | Ch 01 §1.9.2 |
 | $\lvert 0 \rangle$ | `\lvert 0 \rangle' | \|0⟩ | Vacuum; lowest-weight state of the QHO | Ch 01 §1.9.2 |
 | $\lvert \alpha \rangle$ | `\lvert \alpha \rangle' | \|α⟩ | Coherent state of the QHO, $\hat a \lvert \alpha \rangle = \alpha \lvert \alpha \rangle$ | Ch 01 §1.9.5 |
@@ -353,7 +353,7 @@ reciprocal space).
 | $P^s$ | `P^s' | P^s | Spin density matrix, $P^\alpha - P^\beta$ | Ch 03 §3.7.2 |
 | $(\mu\nu \rvert \rho\sigma)$ | `(\mu\nu \rvert \rho\sigma)' | (μν\|ρσ) | Electron-repulsion integral (ERI) in **chemists'** notation | Ch 00 §"Notation"; Ch 03 §3.6.3 |
 | $\langle \mu\nu \rvert \rvert \rho\sigma \rangle$ | `\langle \mu\nu \rvert \rvert \rho\sigma \rangle' | ⟨μν‖ρσ⟩ | ERI in **physicists'** notation, $\int\!\!\int \chi_\mu^*(\mathbf r_1) \chi_\nu(\mathbf r_1) (1/r_{12}) \chi_\rho^*(\mathbf r_2) \chi_\sigma(\mathbf r_2)\, d\mathbf r_1 d\mathbf r_2$ | Ch 03 §3.3 (comment) |
-| $\mathbf S$, $\mathbf h$, $\mathbf F$, $\mathbf P$, $\mathbf C$ | `\mathbf S`, etc. | **S**, **h**, **F**, **P**, **C** | The corresponding $K \times K$ matrices in the AO basis | Ch 03 §3.6 |
+| $\mathbf S$, $\mathbf h$, $\mathbf F$, $\mathbf P$, $\mathbf C$ | '\mathbf S', etc. | **S**, **h**, **F**, **P**, **C** | The corresponding $K \times K$ matrices in the AO basis | Ch 03 §3.6 |
 | $\mathbf G$ | `\mathbf G' | **G** | Two-electron part of the Fock matrix, $G_{\mu\nu} = J_{\mu\nu} - \tfrac{1}{2}K_{\mu\nu}$ (closed shell) | Ch 03 §3.6.5 |
 | $\mathbf X$ | `\mathbf X' | **X** | Löwdin orthogonaliser, $\mathbf S^{-1/2}$ | Ch 03 §3.6.6 |
 
@@ -396,8 +396,8 @@ shorthand notation that every chapter uses.
 | $\nabla$ | `\nabla' | ∇ (nabla) | Gradient; in Cartesian components $(\partial_x, \partial_y, \partial_z)$ | Ch 00 §"Notation"; Ch 01 §1.1 |
 | $\nabla^2$ | `\nabla^2' | ∇² | Laplacian; $\sum_i \partial_{x_i}^2$ | Ch 00 §"Notation"; Ch 01 §1.1 |
 | $\nabla_i$ | `\nabla_i' | ∇_i | Gradient with respect to the $i$-th electron's coordinates | Ch 01 §1.1 |
-| $\int d\mathbf r$ | `\int d\mathbf r' | ∫ `d*`*r** | Volume integral over all of $\mathbb R^3$ | Ch 00 §"Notation"; Ch 03 §3.2 |
-| $\int d\mathbf x$ | `\int d\mathbf x' | ∫ `d*`*x** | Volume + spin integral (sum over $\sigma$ implicit) | Ch 02 §2.2 |
+| $\int d\mathbf r$ | '\int d\mathbf r' | ∫ 'd*`*r** | Volume integral over all of $\mathbb R^3$ | Ch 00 §"Notation"; Ch 03 §3.2 |
+| $\int d\mathbf x$ | '\int d\mathbf x' | ∫ 'd*`*x** | Volume + spin integral (sum over $\sigma$ implicit) | Ch 02 §2.2 |
 | $\int d\Omega$ | `\int d\Omega' | ∫ dΩ | Angular integral over the unit sphere | Ch 01 §1.10 |
 | $\partial / \partial x$ | `\partial / \partial x' | ∂/∂x | Partial derivative | Ch 00 §"Notation"; Ch 01 §1.3 |
 | $\partial_t$ | `\partial_t' | ∂_t | Partial derivative with respect to time | Ch 00 §"Notation"; Ch 01 §1.2 (P5) |
@@ -429,8 +429,8 @@ the bra–ket, which uses upright letters in Dirac notation
 
 | Symbol | LaTeX | Plain text | Description | First appearance |
 |:------|:------|:-----------|:------------|:-----------------|
-| $\mathbf A$, $\mathbf B$ | `\mathbf A`, `\mathbf B' | **A**, **B** | Generic matrices | Ch 00 §"Notation" |
-| $\mathbf v$, $\mathbf w$ | `\mathbf v`, `\mathbf w' | **v**, **w** | Generic column vectors | Ch 00 §"Notation" |
+| $\mathbf A$, $\mathbf B$ | '\mathbf A', `\mathbf B' | **A**, **B** | Generic matrices | Ch 00 §"Notation" |
+| $\mathbf v$, $\mathbf w$ | '\mathbf v', `\mathbf w' | **v**, **w** | Generic column vectors | Ch 00 §"Notation" |
 | $A_{ij}$ | `A_{ij}' | A_ij | The $(i, j)$ matrix element | Ch 00 §"Notation" |
 | $v_i$ | `v_i' | v_i | The $i$-th component of $\mathbf v$ | Ch 00 §"Notation" |
 | $\mathbf A^T$ | `\mathbf A^T' | **A**^T | Transpose | Ch 00 §"Notation" |
@@ -438,7 +438,7 @@ the bra–ket, which uses upright letters in Dirac notation
 | $\mathbf A^*$ | `\mathbf A^*' | **A*** | Element-wise complex conjugate (rarely used alone) | Ch 03 (rare) |
 | $\mathbf A^{-1}$ | `\mathbf A^{-1}' | **A**⁻¹ | Matrix inverse | Ch 03 §3.6.6 (Löwdin) |
 | $\mathbf A^{-1/2}$ | `\mathbf A^{-1/2}' | **A**^{-1/2} | Inverse square root (defined for positive-definite $\mathbf A$) | Ch 03 §3.6.6 |
-| $\mathbf I$ / $\mathbf 1$ | `\mathbf I`, `\mathbf 1' | **I**, **1** | Identity matrix (of the appropriate size) | Ch 00 §"Notation"; Ch 01 §1.2 (P1) |
+| $\mathbf I$ / $\mathbf 1$ | '\mathbf I', `\mathbf 1' | **I**, **1** | Identity matrix (of the appropriate size) | Ch 00 §"Notation"; Ch 01 §1.2 (P1) |
 | $\mathbf 0$ | `\mathbf 0' | **0** | Zero matrix or zero vector | Ch 03 (implicit) |
 | $\text{Tr}(\mathbf A)$ | `\text{Tr}(\mathbf A)' | Tr(**A**) | Trace | Ch 03 §3.6.4 |
 | $\det(\mathbf A)$ | `\det(\mathbf A)' | det(**A**) | Determinant | Ch 00 §"Notation"; Ch 02 §2.1 |
@@ -464,8 +464,8 @@ and 11 (band structures).
 
 | Symbol | LaTeX | Plain text | Description | First appearance |
 |:------|:------|:-----------|:------------|:-----------------|
-| $\mathbf a_1, \mathbf a_2, \mathbf a_3$ | `\mathbf a_1`, `\mathbf a_2`, `\mathbf a_3' | **a_1, a_2, a_3** | Direct-lattice primitive vectors | Ch 07 §7.2.1 |
-| $\mathbf b_1, \mathbf b_2, \mathbf b_3$ | `\mathbf b_1`, `\mathbf b_2`, `\mathbf b_3' | **b_1, b_2, b_3** | Reciprocal-lattice primitive vectors, $\mathbf a_i \cdot \mathbf b_j = 2\pi\delta_{ij}$ | Ch 07 §7.4.1 |
+| $\mathbf a_1, \mathbf a_2, \mathbf a_3$ | '\mathbf a_1', '\mathbf a_2', `\mathbf a_3' | **a_1, a_2, a_3** | Direct-lattice primitive vectors | Ch 07 §7.2.1 |
+| $\mathbf b_1, \mathbf b_2, \mathbf b_3$ | '\mathbf b_1', '\mathbf b_2', `\mathbf b_3' | **b_1, b_2, b_3** | Reciprocal-lattice primitive vectors, $\mathbf a_i \cdot \mathbf b_j = 2\pi\delta_{ij}$ | Ch 07 §7.4.1 |
 | $\mathbf R = n_1 \mathbf a_1 + n_2 \mathbf a_2 + n_3 \mathbf a_3$ | `\mathbf R' | **R** | Generic Bravais-lattice vector ($n_i \in \mathbb Z$) | Ch 07 §7.1 |
 | $\mathbf G = h \mathbf b_1 + k \mathbf b_2 + l \mathbf b_3$ | `\mathbf G' | **G** | Reciprocal-lattice vector ($h, k, l \in \mathbb Z$) | Ch 07 §7.4.1 |
 | $\mathbf k$ | `\mathbf k' | **k** | Crystal momentum / Bloch wavevector; lives in the 1st BZ | Ch 07 §7.1 |

@@ -2048,7 +2048,7 @@ non-negligible and must be included
 HL86's *qualitative* finding is that the
 quasiparticle correction $\Sigma - v_\text{xc}$
 is dominated by a **constant jump at the band
-ga`p**: the conduction bands are shifted u`p*'
+ga'p**: the conduction bands are shifted u'p*'
 by $\sim 0.7$–$1.0$ eV relative to the valence
 bands, and the *intra-ban`d*' shifts are small
 ([Hybertsen and Louie, 1986, p. 5397](#),

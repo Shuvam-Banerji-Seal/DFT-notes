@@ -47,6 +47,6 @@ integrals) to stdout.
 
 ## Dependencies
 
-`numpy`, `scipy' (eigh, erf), `matplotlib' with the headless
+`numpy`, 'scipy' (eigh, erf), 'matplotlib' with the headless
 `Agg' backend.  Same pinned versions as the rest of the
 `python_codes/' tree (see [python_codes/]({{ site.baseurl }}/dft-notes/python_codes/)).

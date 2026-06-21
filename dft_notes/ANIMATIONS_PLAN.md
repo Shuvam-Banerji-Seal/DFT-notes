@@ -15,7 +15,7 @@ The chapters already use two visual aids:
 | Aid | Tool | Use today |
 |---|---|---|
 | Inline Mermaid diagrams | Mermaid 10 (vendored) | Every chapter's structure, SCF loops, Jacob's ladder |
-| Python plots | `matplotlib' (`Agg`) | All numerics, tables, convergence curves |
+| Python plots | 'matplotlib' ('Agg`) | All numerics, tables, convergence curves |
 
 Both are **static** — they show the end-state of a calculation. For
 concepts that are inherently dynamic ("watch the density oscillate and
@@ -110,7 +110,7 @@ Naming rules — same as the Python-codes convention:
 - Two-digit numeric prefix, dash, kebab-case slug, `.py' for the
   source and `.mp4' for the rendered video.
 - One script produces one video → the video is named
-  `videos/<same prefix>-<same slug>.mp4`.
+  'videos/<same prefix>-<same slug>.mp4'.
 - The poster frame is `<same prefix>-<same slug>.png' (the last
   frame of the animation, captured by Manim).
 
@@ -150,13 +150,13 @@ done
 
 The script writes the .mp4 to `videos/<class-name>/720p30/`. A small
 post-processing step (`scripts/render_animations.py`) renames to
-`videos/NN-slug.mp4' and captures a poster PNG with `ffmpeg -ss ...`.
+'videos/NN-slug.mp4' and captures a poster PNG with 'ffmpeg -ss ...`.
 
 ### CI
 
 A new GitHub Actions workflow, `.github/workflows/animations.yml`:
 
-- Trigger: push to `main' that touches `dft_notes/animations/**/*.py`,
+- Trigger: push to 'main' that touches 'dft_notes/animations/**/*.py`,
   OR manual `workflow_dispatch`.
 - Matrix over the 10 chapters (10 parallel jobs, each rendering 1
   animation at `-qm`).
@@ -293,7 +293,7 @@ invocation). The `agent:code-runner' workflow for animations is
 the same as for the Python codes:
 
 1. Write the source.
-2. Render to MP4 (`manim -qm`).
+2. Render to MP4 ('manim -qm').
 3. Capture the poster frame (`ffmpeg`).
 4. Commit source, MP4, and PNG.
 5. Embed in the chapter with the snippet from §6.
@@ -304,7 +304,7 @@ the same as for the Python codes:
 
 | Risk | Mitigation |
 |---|---|
-| Manim install is heavy (system ffmpeg + cairo + pango + dvisvgm) | Document the install in `animations/README.md`; provide a `Dockerfile' (Manim's official `manimcommunity/manim' image is already a great option) and run the local renders through that. |
+| Manim install is heavy (system ffmpeg + cairo + pango + dvisvgm) | Document the install in `animations/README.md`; provide a 'Dockerfile' (Manim's official 'manimcommunity/manim' image is already a great option) and run the local renders through that. |
 | Render times blow up — one animation takes 30 min instead of 6 | Cap the medium-quality render at 30 s of *scene time* (not wall time). If a script needs more, the script is too dense — split into two. |
 | 720p looks bad on a 1080p monitor | 720p is fine for ~30 s clips. Document the `-qh' option for the user who wants 1080p. |
 | Videos don't play on iOS Safari | Use H.264 in MP4 (we are). Add a `playsinline' attribute and a poster frame. Verify in Safari before declaring done. |
@@ -344,13 +344,13 @@ parallel and merged in larger PRs (2-3 animations per PR).
 
 - **Tier 2 (interactive JS visualisations).** The right tool for
   sliders, drag, and parameter sweeps. Not in this plan. Tracked
-  separately as `agent:visualizer' follow-up work in `agents.md`.
+  separately as 'agent:visualizer' follow-up work in 'agents.md`.
 - **Tier 3 (animated SVG / CSS).** Tiny inline accents. Will be
   added opportunistically when a chapter wants one.
 - **The `extras/10-visualizations.md' gallery page.** Deferred
   until there are enough animations to make the page worth
   navigating to.
-- **A new `agent:visualizer' role in `agents.md`.** After the
+- **A new 'agent:visualizer' role in 'agents.md`.** After the
   first batch lands, we add the role to the roster, with the
   template from §7 as the contract.
 
