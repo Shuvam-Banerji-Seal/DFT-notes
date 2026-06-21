@@ -39,30 +39,6 @@
     (`<pre><code>`) are skipped, so legitimate `<br />` inside
     inline code is preserved.
 
-  Note on mutation observers:
-    An earlier iteration of this file used a `MutationObserver` to
-    re-run the repair and re-typeset on any DOM mutation. That
-    design caused two problems:
-      1. `typesetPromise()` itself mutates the DOM (it inserts
-         <mjx-container> children), which re-fired the observer
-         in an infinite loop.
-      2. With the re-entrancy guard added to break the loop, the
-         second user interaction (e.g. a theme toggle) would
-         still queue a full re-typeset, but the timing was
-         fragile and a stale flag could deadlock MathJax.
-    The simpler design (one-shot repair + one-shot cleanup, no
-    observer) is correct because:
-      - Kramdown generates all math content server-side, so there
-        are no <br /> elements to repair after the first run.
-      - The theme toggle does not change the math source, so the
-        existing MathJax output is fine; only the colour scheme
-        changes (CSS handles that).
-      - The user has to reload to see new math content (they
-        already do that for any other new content).
-    This makes the page fast and reliable at the cost of "new math
-    injected via JS won't be auto-typeset" — which is fine because
-    nothing on the site injects math via JS.
-
   Side benefits of SVG output:
     - Crisp rendering at any zoom level
     - Identical output across browsers (no font-loading races)
@@ -78,13 +54,12 @@
     https://docs.mathjax.org/en/latest/options/input/tex.html
 -->
 <script>
-  // ------- Helper functions (one-shot, no observer) -------
+  // ------- Helper: rewrite <br> back to \\ inside math envs -------
+  // MathJax sees the raw HTML before typesetting, so if Kramdown's
+  // GFM pass converted a trailing "\\" to "<br>", MathJax will choke
+  // on the <br> inside a math environment. Run this BEFORE MathJax
+  // scans the document so it sees the original "\\" text.
   function repairBrInMath() {
-    // Walk every block-level element that may contain a math
-    // environment. If it does, rewrite <br> children back to the
-    // literal "\\" text node that MathJax expects for a LaTeX line
-    // break. Code blocks (<pre><code>) are skipped to preserve
-    // legitimate <br> inside inline code.
     var candidates = document.body.querySelectorAll('p, li, dd, dt, div, blockquote');
     for (var i = 0; i < candidates.length; i++) {
       var node = candidates[i];
@@ -102,13 +77,20 @@
     }
   }
 
+  // ------- Helper: strip deprecated assistive MathML from rendered math -------
+  // MathJax's SVG output wraps each equation in an <mjx-container>
+  // that contains a child <mjx-assistive-mml> for screen readers.
+  // That child uses the deprecated MathML attributes that cause
+  // console warnings. The visual SVG (also in the container) is
+  // unaffected by removing it.
   function cleanupAssistiveMml() {
-    // Remove the <mjx-assistive-mml> elements that MathJax SVG
-    // output injects for screen readers. They contain the
-    // deprecated MathML that produces the console warnings.
     var els = document.querySelectorAll('mjx-assistive-mml');
     for (var i = 0; i < els.length; i++) els[i].remove();
   }
+
+  // Expose for the theme toggle / re-render hooks in layout
+  window.repairBrInMath = repairBrInMath;
+  window.cleanupAssistiveMml = cleanupAssistiveMml;
 
   window.MathJax = {
     tex: {
@@ -131,21 +113,31 @@
       renderActions: { addMenu: [] }
     },
     startup: {
-      pageReady: () => {
+      pageReady: function () {
         // Run BEFORE MathJax scans the document so it sees \\ not <br />
         repairBrInMath();
         return true;
-      },
-      ready: () => {
-        MathJax.startup.defaultReady();
-        // After the initial typeset, remove the deprecated assistive
-        // MathML once. No observer — the page's math content is
-        // static (generated server-side), and any post-render DOM
-        // changes (theme toggle, mermaid) don't add new math.
-        MathJax.startup.promise.then(cleanupAssistiveMml);
       }
     }
   };
+
+  // After MathJax finishes its initial typeset, strip the
+  // deprecated assistive MathML. We do this by listening to the
+  // startup promise; that fires exactly once per page load.
+  // No MutationObserver — that was causing an infinite loop
+  // (typeset -> DOM-mutation -> observer -> typeset) and broke
+  // the page. The static math content is generated server-side,
+  // so a one-shot cleanup is sufficient.
+  document.addEventListener('DOMContentLoaded', function () {
+    var tryCleanup = function () {
+      if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+        window.MathJax.startup.promise.then(cleanupAssistiveMml);
+      } else {
+        setTimeout(tryCleanup, 100);
+      }
+    };
+    tryCleanup();
+  });
 </script>
 <script
   id="MathJax-script"
