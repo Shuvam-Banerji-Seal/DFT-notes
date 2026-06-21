@@ -891,10 +891,10 @@ every step from the new gradient information:
 \boxed{\;
 \mathbf B^{(k+1)}
 \;=\; \mathbf B^{(k)}
-   \;-\; \frac{\mathbf B^{(k)} \mathbf s^{(k)} {\mathbf s^{(k)}}^\text{T} \mathbf B^{(k)}}
-            {\mathbf s^{(k)}}^\text{T} \mathbf B^{(k)} \mathbf s^{(k)}}
-   \;+\; \frac{\mathbf y^{(k)} {\mathbf y^{(k)}}^\text{T}}
-            {\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}
+   \;-\; \frac{\mathbf B^{(k)} \mathbf s^{(k)} {\mathbf s^{(k)}}^{\text{T}} \mathbf B^{(k)}}
+            {\mathbf s^{(k)}}^{\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}
+   \;+\; \frac{\mathbf y^{(k)} {\mathbf y^{(k)}}^{\text{T}}}
+            {\mathbf y^{(k)}}^{\text{T}} \mathbf s^{(k)}
 \;}
 \end{equation}
 
@@ -916,13 +916,13 @@ inverse-Hessian form of \eqref{eq:ch-09-bfgs-update-formula} is
 \begin{equation}
 \label{eq:ch-09-bfgs-inverse-update}
 \mathbf H_\text{inv}^{(k+1)}
-\;=\; \left( \mathbf I - \frac{\mathbf s^{(k)} {\mathbf y^{(k)}}^\text{T}}
-                            {\mathbf y^{(k)}^\text{T} \mathbf s^{(k)}} \right)
+\;=\; \left( \mathbf I - \frac{\mathbf s^{(k)} {\mathbf y^{(k)}}^{\text{T}}}
+                            {\mathbf y^{(k)}^{\text{T}} \mathbf s^{(k)}} \right)
       \mathbf H_\text{inv}^{(k)}
-      \left( \mathbf I - \frac{\mathbf y^{(k)} {\mathbf s^{(k)}}^\text{T}}
-                            {\mathbf y^{(k)}^\text{T} \mathbf s^{(k)}} \right)
-   \;+\; \frac{\mathbf s^{(k)} {\mathbf s^{(k)}}^\text{T}}
-            {\mathbf y^{(k)}^\text{T} \mathbf s^{(k)}} .
+      \left( \mathbf I - \frac{\mathbf y^{(k)} {\mathbf s^{(k)}}^{\text{T}}}
+                            {\mathbf y^{(k)}^{\text{T}} \mathbf s^{(k)}} \right)
+   \;+\; \frac{\mathbf s^{(k)} {\mathbf s^{(k)}}^{\text{T}}}
+            {\mathbf y^{(k)}^{\text{T}} \mathbf s^{(k)}} .
 \end{equation}
 
 The BFGS method has the following attractive properties (proven
@@ -933,7 +933,7 @@ in [§9.7](#97-the-bfgs-update-formula-in-full)):
   without the Hessian cost),
 - **positive-definiteness preservation**: if
   $\mathbf B^{(0)} \succ 0$ and the curvature condition
-  ${\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)} > 0$ holds at every
+  ${\mathbf y^{(k)}}^{\text{T}} \mathbf s^{(k)} > 0$ holds at every
   step, then $\mathbf B^{(k+1)} \succ 0$ too,
 - **symmetric secant condition**: $\mathbf B^{(k+1)} \mathbf s^{(k)} = \mathbf y^{(k)}$,
   i.e. the new Hessian model matches the most recent
@@ -941,7 +941,7 @@ in [§9.7](#97-the-bfgs-update-formula-in-full)):
 - **no explicit Hessian** is ever needed; only forces are used.
 
 > **Note.**  The curvature condition
-> ${\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)} > 0$ is what makes
+> ${\mathbf y^{(k)}}^{\text{T}} \mathbf s^{(k)} > 0$ is what makes
 > BFGS well-defined.  In a pure minimisation it is automatic for
 > small enough $\alpha_k$ (the energy goes down, the gradient
 > rotates towards zero, and the inner product is positive).  In a
