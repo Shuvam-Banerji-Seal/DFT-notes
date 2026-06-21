@@ -50,8 +50,9 @@ linked back to its source.
   to 6 significant figures, which is the precision at which
   rounding errors in DFT calculations are negligible.
 - MathJax 3 is used.  Numbered equations use
-{% raw %}
+$$
   '\begin{equation} ... \label{eq:pc-foo} ... \end{equation}';
+$$
   cross-references in this file are `\eqref{eq:pc-foo}`.
 
 ---
@@ -71,11 +72,12 @@ this section.
 The **metre**, symbol $\text{m}$, is the SI unit of length,
 defined by fixing the speed of light in vacuum,
 
+$$
 \begin{equation}
 \label{eq:pc-metre}
 c \;\equiv\; 299\,792\,458 \;\text{m} \,\text{s}^{-1} \quad \text{(exact)} .
 \end{equation}
-{% endraw %}
+$$
 
 Historically the metre was the length of a prototype bar kept
 at Sèvres (1889), then a multiple of the wavelength of the
@@ -88,12 +90,12 @@ is $1\;\text{m} = 1.88973 \times 10^{10}\, a_0$ (§5).
 The **kilogram**, symbol $\text{kg}$, is the SI unit of mass,
 defined by fixing the Planck constant,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-kilogram}
 h \;\equiv\; 6.626\,070\,15 \times 10^{-34} \;\text{J} \,\text{s} \quad \text{(exact)} .
 \end{equation}
-{% endraw %}
+$$
 
 Combined with the definitions of the metre and the second, this
 fixes $h$ and hence (via the de Broglie relation
@@ -105,12 +107,12 @@ The **second**, symbol $\text{s}$, is the SI unit of time,
 defined by fixing the cesium-133 ground-state hyperfine
 transition frequency,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-second}
 \nu_\text{Cs} \;\equiv\; 9\,192\,631\,770 \;\text{Hz} \quad \text{(exact)} .
 \end{equation}
-{% endraw %}
+$$
 
 The second is the duration of $9\,192\,631\,770$ periods of
 the corresponding Cs-133 radiation.
@@ -120,12 +122,12 @@ the corresponding Cs-133 radiation.
 The **ampere**, symbol $\text{A}$, is the SI unit of electric
 current, defined by fixing the elementary charge,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-ampere}
 e \;\equiv\; 1.602\,176\,634 \times 10^{-19} \;\text{C} \quad \text{(exact)} .
 \end{equation}
-{% endraw %}
+$$
 
 Historically the ampere was the current which, if maintained
 in two straight parallel conductors of infinite length and
@@ -142,12 +144,12 @@ The **kelvin**, symbol $\text{K}$, is the SI unit of
 thermodynamic temperature, defined by fixing the Boltzmann
 constant,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-kelvin}
 k_B \;\equiv\; 1.380\,649 \times 10^{-23} \;\text{J} \,\text{K}^{-1} \quad \text{(exact)} .
 \end{equation}
-{% endraw %}
+$$
 
 Combined with the definitions of the kilogram, metre, and
 second this fixes $k_B$ and hence the kelvin.  The old
@@ -161,12 +163,12 @@ $1\;\text{K} \times k_B = 3.16681 \times 10^{-6}\, E_h$ (§4).
 The **mole**, symbol $\text{mol}$, is the SI unit of amount of
 substance, defined by fixing the Avogadro constant,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-mole}
 N_A \;\equiv\; 6.022\,140\,76 \times 10^{23} \;\text{mol}^{-1} \quad \text{(exact)} .
 \end{equation}
-{% endraw %}
+$$
 
 The mole is the amount of substance of a system that contains
 exactly $6.022\,140\,76 \times 10^{23}$ elementary entities
@@ -180,12 +182,12 @@ The **candela**, symbol $\text{cd}$, is the SI unit of luminous
 intensity, defined by fixing the luminous efficacy of
 monochromatic radiation of frequency $540 \times 10^{12}$ Hz:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-candela}
 K_\text{cd} \;\equiv\; 683 \;\text{lm} \,\text{W}^{-1} \quad \text{(exact)} .
 \end{equation}
-{% endraw %}
+$$
 
 The candela does not enter the DFT chapters.
 
@@ -223,24 +225,24 @@ Newell, Taylor (2021), *Rev. Mod. Phys.* **93**, 025010. ### 2.1 The five defini
 
 ### 2.2 The reduced Planck constant
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-hbar}
 \hbar \;\equiv\; \frac{h}{2\pi} \;\approx\; 1.054\,571\,817 \times 10^{-34}\;\text{J}\,\text{s} .
 \end{equation}
-{% endraw %}
+$$
 
 Exact in the new SI: $\hbar = h/(2\pi)$ with $h$ exact.  In
 atomic units $\hbar = 1$ (by definition).
 
 ### 2.3 The electron rest mass
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-me}
 m_e \;\approx\; 9.109\,383\,7015 \times 10^{-31}\;\text{kg} .
 \end{equation}
-{% endraw %}
+$$
 
 The 2019 CODATA value; the relative uncertainty is
 $3.0 \times 10^{-10}$.  In atomic units $m_e = 1$ (by
@@ -248,13 +250,13 @@ definition).
 
 ### 2.4 The fine-structure constant
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-alpha}
 \alpha \;\equiv\; \frac{e^2}{4\pi \varepsilon_0 \hbar c}
 \;\approx\; \frac{1}{137.035\,999\,084} \;\approx\; 7.297\,352\,5693 \times 10^{-3} .
 \end{equation}
-{% endraw %}
+$$
 
 Dimensionless.  Equal to $e^2/(\hbar c)$ in Gaussian units
 (setting $4\pi\varepsilon_0 = 1$).  Drives *all* of atomic
@@ -267,13 +269,13 @@ proportional to $\alpha^3$.
 
 ### 2.5 The vacuum permittivity
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-eps0}
 \varepsilon_0 \;\equiv\; \frac{1}{\mu_0 c^2}
 \;\approx\; 8.854\,187\,8128 \times 10^{-12}\;\text{F}\,\text{m}^{-1} .
 \end{equation}
-{% endraw %}
+$$
 
 In atomic units $4\pi\varepsilon_0 = 1$ (so
 $\varepsilon_0 = 1/(4\pi)$).  The Coulomb interaction between
@@ -282,13 +284,13 @@ which reduces to $1/r$ in atomic units.
 
 ### 2.6 The Rydberg constant
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-rydberg}
 R_\infty \;\equiv\; \frac{m_e e^4}{8 \varepsilon_0^2 h^3 c}
 \;\approx\; 1.097\,373\,156\,8160 \times 10^{7}\;\text{m}^{-1} .
 \end{equation}
-{% endraw %}
+$$
 
 The wavenumber of the lowest-energy (Lyman-$\alpha$) hydrogen
 1s → 2p transition is $R_\infty (1 - 1/4) = (3/4) R_\infty$.
@@ -301,13 +303,13 @@ is $R_\infty hc$.
 
 ### 2.7 The Bohr radius
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-bohr}
 a_0 \;\equiv\; \frac{4\pi \varepsilon_0 \hbar^2}{m_e e^2}
 \;\approx\; 5.291\,772\,109\,03 \times 10^{-11}\;\text{m} .
 \end{equation}
-{% endraw %}
+$$
 
 The most probable radius of the hydrogen 1s orbital.  Equal to
 $1/(\alpha m_e c)$ in Gaussian units.  In atomic units
@@ -316,27 +318,27 @@ $1\;\text{Å} = 10^{-10}\;\text{m} = 1.88973\,a_0$.
 
 ### 2.8 The Hartree energy
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-hartree}
 E_h \;\equiv\; \frac{e^2}{4\pi \varepsilon_0 a_0}
 \;\equiv\; m_e c^2 \alpha^2
 \;\approx\; 4.359\,744\,722\,2071 \times 10^{-18}\;\text{J} .
 \end{equation}
-{% endraw %}
+$$
 
 The energy unit of atomic units.  Twice the magnitude of the
 hydrogen 1s energy: $|E_\text{1s}| = E_h/2 \approx 13.6057\;\text{eV}$.
 
 ### 2.9 The Bohr magneton
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-bohr-magneton}
 \mu_B \;\equiv\; \frac{e \hbar}{2 m_e}
 \;\approx\; 9.274\,010\,0783 \times 10^{-24}\;\text{J}\,\text{T}^{-1} .
 \end{equation}
-{% endraw %}
+$$
 
 The natural unit of electron magnetic moment; the spin
 magnetic moment is $-\mu_B$ (with $g_e \approx 2.002\,319\,304\,36$).
@@ -344,13 +346,13 @@ The nuclear magneton is $\mu_N = \mu_B \times m_e/m_p$.
 
 ### 2.10 The classical electron radius
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-re}
 r_e \;\equiv\; \frac{e^2}{4\pi \varepsilon_0 m_e c^2}
 \;\approx\; 2.817\,940\,3262 \times 10^{-15}\;\text{m} .
 \end{equation}
-{% endraw %}
+$$
 
 The radius at which the electrostatic self-energy of a
 uniformly charged sphere equals $m_e c^2$.  The
@@ -358,14 +360,14 @@ Thomson-scattering cross-section is $\sigma_T = (8\pi/3) r_e^2$.
 
 ### 2.11 The reduced Compton wavelength
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-compton}
 \bar\lambda_C \;\equiv\; \frac{\hbar}{m_e c}
 \;=\; a_0 \, \alpha
 \;\approx\; 3.861\,592\,6796 \times 10^{-13}\;\text{m} .
 \end{equation}
-{% endraw %}
+$$
 
 The wavelength of a photon whose energy equals $m_e c^2$ (up
 to a factor of $2\pi$; the *unreduce`d*' Compton wavelength is
@@ -389,12 +391,12 @@ The DFT notes use **atomic units** (also called Hartree atomic
 units) throughout.  In atomic units the four fundamental
 constants
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-def}
 \hbar \;=\; m_e \;=\; e \;=\; 4\pi \varepsilon_0 \;\equiv\; 1 \quad \text{(in atomic units)} .
 \end{equation}
-{% endraw %}
+$$
 
 This choice of units turns the Schrödinger equation for a
 one-electron atom into the dimensionless equation
@@ -415,7 +417,7 @@ The combination $E_h/a_0$ is sometimes called a "natural
 unit" of force.  The atomic units below are the units in
 which the defining constants of \eqref{eq:pc-au-def} are 1. ### 3.1 The atomic unit of length — the Bohr radius
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-length}
 1\;\text{a.u. of length} \;\equiv\; a_0
@@ -423,14 +425,14 @@ which the defining constants of \eqref{eq:pc-au-def} are 1. ### 3.1 The atomic u
 \;\approx\; 0.529\,177\,\text{Å}
 \;\approx\; 0.529\,177 \times 10^{-8}\;\text{cm} .
 \end{equation}
-{% endraw %}
+$$
 
 The Bohr radius of \eqref{eq:pc-bohr}.  See §5 for the
 conversion table.
 
 ### 3.2 The atomic unit of energy — the Hartree
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-energy}
 1\;\text{a.u. of energy} \;\equiv\; E_h
@@ -439,7 +441,7 @@ conversion table.
 \;\approx\; 627.509\;\text{kcal}\,\text{mol}^{-1}
 \;\approx\; 219\,474.631\,370\,8\;\text{cm}^{-1} .
 \end{equation}
-{% endraw %}
+$$
 
 The Hartree energy of \eqref{eq:pc-hartree}.  Twice the binding
 energy of the hydrogen 1s electron.  See §4 for the full
@@ -448,7 +450,7 @@ CODATA-based ones to the precision of the constants.
 
 ### 3.3 The atomic unit of time
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-time}
 1\;\text{a.u. of time} \;\equiv\; \frac{\hbar}{E_h}
@@ -456,21 +458,21 @@ CODATA-based ones to the precision of the constants.
 \;\approx\; 2.418\,884 \times 10^{-2}\;\text{fs}
 \;\approx\; 24.188\,84\;\text{as} .
 \end{equation}
-{% endraw %}
+$$
 
 The time for an electron in the hydrogen 1s orbital to
 complete one classical orbit.  1 fs = 41.34 a.u. of time.
 
 ### 3.4 The atomic unit of force
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-force}
 1\;\text{a.u. of force} \;\equiv\; \frac{E_h}{a_0}
 \;\approx\; 8.238\,723\,498\,36 \times 10^{-8}\;\text{N}
 \;\approx\; 82.387\;\text{nN} .
 \end{equation}
-{% endraw %}
+$$
 
 The natural unit of force in chemistry.  A typical converged
 SCF force on a light atom is $\sim 10^{-3}$ a.u. of force =
@@ -478,26 +480,26 @@ $\sim 10^{-10}$ N.
 
 ### 3.5 The atomic unit of momentum
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-momentum}
 1\;\text{a.u. of momentum} \;\equiv\; \frac{\hbar}{a_0}
 \;\approx\; 1.992\,851\,914\,10 \times 10^{-24}\;\text{kg}\,\text{m}\,\text{s}^{-1} .
 \end{equation}
-{% endraw %}
+$$
 
 Appears in the **Hellmann–Feynman** force on a nucleus
 (Chapter 04 §4.7.1).
 
 ### 3.6 The atomic unit of charge
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-charge}
 1\;\text{a.u. of charge} \;\equiv\; e
 \;\approx\; 1.602\,176\,634 \times 10^{-19}\;\text{C} .
 \end{equation}
-{% endraw %}
+$$
 
 The elementary charge, exact in the new SI.  In the
 electron-repulsion integral the factor $1/r$ in atomic
@@ -505,26 +507,26 @@ units absorbs the $e^2/(4\pi\varepsilon_0) = 1$.
 
 ### 3.7 The atomic unit of mass
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-mass}
 1\;\text{a.u. of mass} \;\equiv\; m_e
 \;\approx\; 9.109\,383\,7015 \times 10^{-31}\;\text{kg} .
 \end{equation}
-{% endraw %}
+$$
 
 Nuclear masses in atomic units are $M_I / m_e$: hydrogen
 $\approx 1836.15\,m_e$, carbon-12 $\approx 21\,979.4\,m_e$.
 
 ### 3.8 The atomic unit of electric field
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-efield}
 1\;\text{a.u. of electric field} \;\equiv\; \frac{E_h}{e\,a_0}
 \;\approx\; 5.142\,206\,747\,63 \times 10^{11}\;\text{V}\,\text{m}^{-1} .
 \end{equation}
-{% endraw %}
+$$
 
 The electric field that, applied across a Bohr radius, does
 one Hartree of work on a unit charge.  The field of a proton
@@ -532,7 +534,7 @@ at the Bohr radius is exactly 1 a.u. of electric field.
 
 ### 3.9 The atomic unit of electric potential
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-potential}
 1\;\text{a.u. of electric potential} \;\equiv\; \frac{E_h}{e}
@@ -551,7 +553,7 @@ $\approx 0.5\;\text{a.u.} = 13.6057\;\text{V}$.
 \;\approx\; 8.478\,353\,6255 \times 10^{-30}\;\text{C}\,\text{m}
 \;\approx\; 2.5417\;\text{D} .
 \end{equation}
-{% endraw %}
+$$
 
 A molecule with one electron separated from a unit positive
 charge by $a_0$ has a dipole moment of 1 a.u.  See §6 for the
@@ -559,13 +561,13 @@ Debye conversion.
 
 ### 3.11 The atomic unit of magnetic flux density
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-bfield}
 1\;\text{a.u. of magnetic flux density} \;\equiv\; \frac{\hbar}{e\,a_0^2}
 \;\approx\; 2.350\,517\,567\,58 \times 10^{5}\;\text{T} .
 \end{equation}
-{% endraw %}
+$$
 
 The magnetic field that, acting on a Bohr magneton, gives
 $\mu_B B = E_h$ (one Hartree of Zeeman energy).  Typical
@@ -574,13 +576,13 @@ $4.3 \times 10^{-5}$ a.u.  See §6 for the conversion.
 
 ### 3.12 The atomic unit of frequency and angular frequency
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-au-frequency}
 1\;\text{a.u. of frequency} \;\equiv\; \frac{E_h}{\hbar}
 \;\approx\; 6.579\,683\,920\,502 \times 10^{15}\;\text{Hz} .
 \end{equation}
-{% endraw %}
+$$
 
 The inverse of the atomic unit of time.  Visible-light
 frequencies ($\sim 5 \times 10^{14}\;\text{Hz}$) are
@@ -647,36 +649,36 @@ the table, multiply the entry by the source quantity.
 
 For convenience — these are the row of §4.1 for the Hartree:
 
-{% raw %}
+$$
 \begin{equation}
 1\;E_h \;=\; 27.211\,386\,245\,988\;\text{eV} , \label{eq:pc-Eh-eV}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;E_h \;=\; 627.509\,474\,063\,1\;\text{kcal}\,\text{mol}^{-1} , \label{eq:pc-Eh-kcal}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;E_h \;=\; 219\,474.631\,363\,2\;\text{cm}^{-1} , \label{eq:pc-Eh-cm}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;E_h \;=\; 4.359\,744\,722\,2071 \times 10^{-18}\;\text{J} , \label{eq:pc-Eh-J}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;E_h \;=\; 2625.499\,639\,479\,9\;\text{kJ}\,\text{mol}^{-1} , \label{eq:pc-Eh-kJ}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;E_h \;=\; 315\,775.13\;\text{K} \times k_B . \label{eq:pc-Eh-K}
 \end{equation}
-{% endraw %}
+$$
 
 The **hydrogen 1s binding energy** $E_h/2 = 13.6057\;\text{eV}
 = 313.755\;\text{kcal/mol} = 109\,737.3\;\text{cm}^{-1}$ is
@@ -689,30 +691,30 @@ in atomic, molecular, and solid-state physics — the energy
 gained by an electron traversing a potential difference of
 one volt:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-eV-def}
 1\;\text{eV} \;\equiv\; e \times 1\;\text{V} \;=\; 1.602\,176\,634 \times 10^{-19}\;\text{J} \quad \text{(exact)} .
 \end{equation}
-{% endraw %}
+$$
 
 The conversion to atomic units:
 
-{% raw %}
+$$
 \begin{equation}
 1\;\text{eV} \;=\; 0.036\,749\,322\,175\,654\,43\;E_h , \label{eq:pc-eV-Eh}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;\text{eV} \;=\; 23.060\,547\,830\,619\,929\;\text{kcal}\,\text{mol}^{-1} , \label{eq:pc-eV-kcal}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;\text{eV} \;=\; 8065.543\,937\,321\,525\;\text{cm}^{-1} . \label{eq:pc-eV-cm}
 \end{equation}
-{% endraw %}
+$$
 
 A 1 eV excitation corresponds to a thermal energy of
 $\sim 23\;\text{kcal/mol}$, well above $k_B T$ at room
@@ -725,26 +727,26 @@ The wavenumber $\tilde\nu$ in cm⁻¹ is the *practical* unit
 for vibrational and rotational spectroscopy; the
 corresponding energy is $E = h c \tilde\nu$:
 
-{% raw %}
+$$
 \begin{equation}
 1\;\text{cm}^{-1} \;=\; 1.986\,445\,857\,1489 \times 10^{-23}\;\text{J} , \label{eq:pc-cm-J}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;\text{cm}^{-1} \;=\; 4.556\,335\,834\,8019 \times 10^{-6}\;E_h , \label{eq:pc-cm-Eh}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;\text{cm}^{-1} \;=\; 1.239\,841\,984\,3322 \times 10^{-4}\;\text{eV} , \label{eq:pc-cm-eV}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;\text{cm}^{-1} \;=\; 1.438\,776\,877\,0001\;\text{K} \times k_B . \label{eq:pc-cm-K}
 \end{equation}
-{% endraw %}
+$$
 
 The CO stretch at $\sim 2170\;\text{cm}^{-1}$ corresponds to
 $0.254\;\text{eV} = 5.85\;\text{kcal/mol}$.
@@ -771,27 +773,27 @@ distribution in [math cheatsheet §14.3]({{ "/dft-notes/extras/math-cheatsheet/"
 
 The **joule** is the SI unit of energy, with conversion
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-J-Eh}
 1\;\text{J} \;=\; 2.293\,712\,278\,3963 \times 10^{17}\;E_h .
 \end{equation}
-{% endraw %}
+$$
 
 The two relations that come up in thermochemistry are
 
-{% raw %}
+$$
 \begin{equation}
 1\;\text{kJ}\,\text{mol}^{-1} \;=\; 3.80871 \times 10^{-4}\;E_h \,\text{(molecule)}^{-1}
 \;=\; 1.03643 \times 10^{-2}\;\text{eV}\,\text{(molecule)}^{-1} , \label{eq:pc-kJmol}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;\text{kcal}\,\text{mol}^{-1} \;=\; 1.59360 \times 10^{-3}\;E_h \,\text{(molecule)}^{-1}
 \;=\; 4.33640 \times 10^{-2}\;\text{eV}\,\text{(molecule)}^{-1} . \label{eq:pc-kcalmol}
 \end{equation}
-{% endraw %}
+$$
 
 The factor $1\;\text{kcal/mol} = 4.184\;\text{kJ/mol}$ is
 exact in the post-2019 SI.  The most common energy-unit
@@ -824,31 +826,31 @@ The atomic unit of length is $a_0 \approx 0.529\,177$ Å.
 The *exact* (to 6 sig fig) conversion factor between metres
 and Bohr is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-m-bohr}
 1\;\text{m} \;=\; 1.889\,725\,988\,6 \times 10^{10}\,a_0 ,
 \end{equation}
-{% endraw %}
+$$
 
 the inverse of eq. \eqref{eq:pc-bohr}.  The corresponding
 Ångström conversion is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-A-bohr}
 1\;\text{Å} \;=\; 1.889\,725\,988\,6\,a_0 ,
 \end{equation}
-{% endraw %}
+$$
 
 and the nanometre conversion is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-nm-bohr}
 1\;\text{nm} \;=\; 18.897\,259\,886\,a_0 .
 \end{equation}
-{% endraw %}
+$$
 
 ### 5.2 Typical length scales (sanity check)
 
@@ -881,16 +883,16 @@ The atomic unit of force is $E_h/a_0$ (§3.4).  The most
 common practical unit is eV/Å, used by every solid-state code
 (VASP, Quantum ESPRESSO, CASTEP, …):
 
-{% raw %}
+$$
 \begin{equation}
 1\;\text{eV}\,\text{Å}^{-1} \;=\; 1.944\,691\,754 \times 10^{-2}\;E_h\,a_0^{-1} , \label{eq:pc-eVperA}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;E_h\,a_0^{-1} \;=\; 5.142\,206\,748 \times 10^{11}\;\text{eV}\,\text{m}^{-1} . \label{eq:pc-EhperB-eVperm}
 \end{equation}
-{% endraw %}
+$$
 
 A converged SCF force on a light atom in a molecule is
 $\sim 10^{-3}\;E_h/a_0 = 5.1 \times 10^{8}\;\text{eV/m} =
@@ -902,12 +904,12 @@ The atomic unit of magnetic flux density is $\hbar/(ea_0^2)$
 (§3.11).  The most common practical unit is the **tesla**
 (1 T = 1 V·s/m² = 1 kg·s⁻²·A⁻¹):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-T-au}
 1\;\text{T} \;=\; 4.254\,382\,446 \times 10^{-6}\;\text{a.u. of } B .
 \end{equation}
-{% endraw %}
+$$
 
 The inverse is $1\;B_\text{au} = 2.350\,517\,567 \times 10^{5}\;\text{T}$.
 A field of 1 T gives an electron-spin Zeeman splitting of
@@ -921,16 +923,16 @@ The atomic unit of dipole moment is $e a_0$ (§3.10).  The
 **Debye** is the most common practical unit
 (1 D $\equiv 3.335\,64 \times 10^{-30}\;\text{C}\,\text{m}$):
 
-{% raw %}
+$$
 \begin{equation}
 1\;\text{D} \;=\; 0.393\,430\,227\;\text{a.u. of dipole} , \label{eq:pc-D-au}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 1\;\text{a.u. of dipole} \;=\; 2.5417\,\text{D} . \label{eq:pc-au-D}
 \end{equation}
-{% endraw %}
+$$
 
 Typical molecular dipoles: HCl $\sim 1.08$ D, water
 $\sim 1.85$ D, NaCl $\sim 9$ D, CO $\sim 0.12$ D.
@@ -976,14 +978,14 @@ their own names and that the chapters quote directly.
 
 In atomic units $c$ has the numerical value $1/\alpha$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-c-au}
 c \;\xrightarrow[\text{atomic units}]{}\; \frac{1}{\alpha}
 \;\approx\; 137.035\,999\,084\;\text{a.u.}
 \;\approx\; 137\;\text{a.u.}
 \end{equation}
-{% endraw %}
+$$
 
 i.e. 137 atomic units of velocity.  The "137" is the famous
 fine-structure-constant number that appears in every
@@ -996,13 +998,13 @@ $\sqrt{4\pi\varepsilon_0}$.
 
 ### 7.2 The fine-structure constant
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-alpha-def}
 \alpha \;\equiv\; \frac{e^2}{4\pi \varepsilon_0 \hbar c}
 \;\approx\; \frac{1}{137.035\,999\,084} \;\approx\; 7.297\,352\,5693 \times 10^{-3} .
 \end{equation}
-{% endraw %}
+$$
 
 Dimensionless; equal to $e^2/(\hbar c)$ in Gaussian units.
 The Hartree energy is $m_e c^2 \alpha^2$ (§2.8), so *every*
@@ -1010,14 +1012,14 @@ atomic energy scale is "$\alpha^2 m_e c^2$" in character.
 
 ### 7.3 The electron Compton wavelength
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-compton-formula}
 \bar\lambda_C \;\equiv\; \frac{\hbar}{m_e c}
 \;=\; a_0 \, \alpha
 \;\approx\; 3.861\,592\,6796 \times 10^{-13}\;\text{m} .
 \end{equation}
-{% endraw %}
+$$
 
 The wavelength of a photon whose energy equals $m_e c^2$ (up
 to a factor of $2\pi$; the *unreduce`d*' Compton wavelength is
@@ -1028,13 +1030,13 @@ Bohr radius.
 
 ### 7.4 The classical electron radius
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-re-formula}
 r_e \;\equiv\; \frac{e^2}{4\pi \varepsilon_0 m_e c^2}
 \;\approx\; 2.817\,940\,3262 \times 10^{-15}\;\text{m} .
 \end{equation}
-{% endraw %}
+$$
 
 The radius at which the electrostatic self-energy of a
 uniformly charged sphere equals $m_e c^2$.  The
@@ -1044,13 +1046,13 @@ $r_e = \alpha^2 \approx 5.32 \times 10^{-5}\, a_0$.
 
 ### 7.5 The Bohr magneton
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:pc-muB-formula}
 \mu_B \;\equiv\; \frac{e \hbar}{2 m_e}
 \;\approx\; 9.274\,010\,0783 \times 10^{-24}\;\text{J}\,\text{T}^{-1} .
 \end{equation}
-{% endraw %}
+$$
 
 The natural unit of electron magnetic moment.  The electron
 spin moment is $-\mu_B$ (with $g_e \approx 2.002\,319\,304\,36$).

@@ -58,12 +58,12 @@ The first Hohenberg–Kohn theorem (which we'll meet properly in
 **variational principle**: for any normalised trial wavefunction
 $\tilde\Psi$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-variational}
 E_0 \;\le\; \langle \tilde\Psi \rvert \hat H \rvert \tilde\Psi \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 The Hamiltonian $\hat H$ is the *exact* electronic Hamiltonian in
 the Born–Oppenheimer approximation
@@ -82,12 +82,12 @@ the Slater determinant
 that minimises the energy over the manifold of all Slater
 determinants built from $N$ orthonormal spin-orbitals:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-hf-min}
 E_\text{HF} \;\equiv\; \min_{\{\chi_p\}} \langle \Phi \rvert \hat H \rvert \Phi \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 The minimum is the **Hartree–Fock energy** $E_\text{HF}$; the
 determinant that achieves it is the **HF wavefunction**
@@ -112,21 +112,21 @@ constraint $\langle \chi_p \rvert \chi_q \rangle = \delta_{pq}$ —
 gives a one-electron eigenvalue equation.  In the spin-orbital
 basis $\{\chi_p\}$ it reads
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-fock-eigenvalue}
 \hat F \, \chi_p \;=\; \varepsilon_p \, \chi_p ,
 \end{equation}
-{% endraw %}
+$$
 
 with the **Fock operator**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-fock-operator}
 \hat F \;=\; \hat h + \hat J[\rho] - \hat K[\rho] .
 \end{equation}
-{% endraw %}
+$$
 
 The three terms are:
 
@@ -141,14 +141,14 @@ The three terms are:
 - $\hat J[\rho]$ is the **Coulomb** (or **Hartree**) operator,
   defined by its action on an arbitrary spin-orbital $\chi$:
 
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-03-coulomb}
   \Bigl(\hat J[\rho]\, \chi\Bigr)(\mathbf x)
   \;=\;
   \int \frac{\rho(\mathbf x')}{|\mathbf r - \mathbf r'|}\, \chi(\mathbf x)\, d\mathbf x' ,
   \end{equation}
-{% endraw %}
+$$
 
   with the **single-particle density**
   $\rho(\mathbf x) = \sum_{p \in \text{occ}} |\chi_p(\mathbf x)|^2$.
@@ -158,7 +158,7 @@ The three terms are:
 - $\hat K[\rho]$ is the **exchange** operator, again defined by
   its action:
 
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-03-exchange}
   \Bigl(\hat K[\rho]\, \chi_p\Bigr)(\mathbf x)
@@ -166,7 +166,7 @@ The three terms are:
   \sum_{q \in \text{occ}} \chi_q(\mathbf x)
   \int \frac{\chi_q^*(\mathbf x')\, \chi_p(\mathbf x')}{|\mathbf r - \mathbf r'|}\, d\mathbf x' .
   \end{equation}
-{% endraw %}
+$$
 
   The "non-local" integration over $\mathbf x'$ — the prime —
   makes $\hat K$ a *non-local* operator: to compute
@@ -198,25 +198,25 @@ their mutual Coulomb repulsion).
 The HF energy can be written either as a sum over the orbital
 energies
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-hf-energy-sum}
 E_\text{HF} \;=\; \sum_{p \in \text{occ}} \varepsilon_p \;-\; \langle \Phi \rvert \hat V_{ee} \rvert \Phi \rangle ,
 \end{equation}
-{% endraw %}
+$$
 
 (the "sum of orbital energies double-counts the electron–electron
 repulsion, which is why we subtract the average $\langle \hat
 V_{ee} \rangle$"), or, in the more useful form for the
 self-consistent field iteration below,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-hf-energy-dm}
 E_\text{HF} \;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu} \Bigl( h_{\mu\nu} + F_{\mu\nu} \Bigr)
 \;+\; V_\text{nn} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $V_\text{nn}$ the classical nuclear–nuclear repulsion.  The
 half-trace form \eqref{eq:ch-03-hf-energy-dm} is what we evaluate
@@ -445,12 +445,12 @@ $\hat F \chi_p = \varepsilon_p \chi_p$.
 The difference between the exact energy and the HF energy is the
 **correlation energy**:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-correlation}
 E_\text{corr} \;\equiv\; E_\text{exact} \;-\; E_\text{HF} .
 \end{equation}
-{% endraw %}
+$$
 
 A useful operational definition: HF is exact for any one-electron
 system and wrong for any multi-electron system.  The error is, in
@@ -512,37 +512,37 @@ For a **closed-shell** molecule (all orbitals doubly occupied, $N$
 electrons, $N/2$ spatial orbitals), expand each spatial orbital in
 the same $K$ basis functions $\{\chi_\mu\}_{\mu=1}^K$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-mo-expansion}
 \phi_i(\mathbf r) \;=\; \sum_{\mu=1}^{K} C_{\mu i}\, \chi_\mu(\mathbf r) ,
 \qquad i = 1, \dots, N/2 .
 \end{equation}
-{% endraw %}
+$$
 
 The Fock eigenvalue equation
 $\hat F \phi_i = \varepsilon_i \phi_i$ becomes the
 **Roothaan–Hall** matrix equation
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-roothaan-hall}
 \mathbf F\, \mathbf C \;=\; \mathbf S\, \mathbf C\, \boldsymbol\varepsilon ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\mathbf F$, $\mathbf S$, $\mathbf C$ are $K \times K$
 matrices and $\boldsymbol\varepsilon$ is the diagonal matrix of
 orbital energies.  The matrix elements are
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-fock-overlap-ao}
 F_{\mu\nu} \;=\; \langle \chi_\mu \rvert \hat F \rvert \chi_\nu \rangle ,
 \qquad
 S_{\mu\nu} \;=\; \langle \chi_\mu \rvert \chi_\nu \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 This is the **generalised eigenvalue problem** (GEP) — a standard
 GEP in numerical linear algebra, solved by
@@ -569,27 +569,27 @@ $$
 
 **Step 3.**  Define the matrix elements
 
-{% raw %}
+$$
 \begin{equation}
 F_{\nu\mu} \;\equiv\; \langle \chi_\nu \rvert \hat F \rvert \chi_\mu \rangle ,
 \label{eq:ch-03-F-def}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 S_{\nu\mu} \;\equiv\; \langle \chi_\nu \rvert \chi_\mu \rangle .
 \label{eq:ch-03-S-def}
 \end{equation}
-{% endraw %}
+$$
 
 The projected equation becomes
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-roothaan-column}
 \sum_{\mu=1}^{K} F_{\nu\mu}\, C_{\mu i} \;=\; \varepsilon_i \sum_{\mu=1}^{K} S_{\nu\mu}\, C_{\mu i} .
 \end{equation}
-{% endraw %}
+$$
 
 **Step 4.**  This is the $i$-th *column* of a matrix equation.
 For each value of $\nu = 1, \dots, K$, \eqref{eq:ch-03-roothaan-column}
@@ -650,13 +650,13 @@ F_{\mu\nu}
 $\mathbf h$ contains the kinetic energy and the
 electron–nuclear attraction:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-h-core}
 h_{\mu\nu} \;=\; \langle \chi_\mu \rvert -\tfrac{1}{2}\nabla^2 \rvert \chi_\nu \rangle
 \;-\; \sum_{A} Z_A \int \frac{\chi_\mu^*(\mathbf r)\, \chi_\nu(\mathbf r)}{|\mathbf r - \mathbf R_A|}\, d\mathbf r .
 \end{equation}
-{% endraw %}
+$$
 
 These are the standard *one-electron integrals*; for GTOs the
 kinetic part is a sum of overlap-like integrals and the
@@ -685,17 +685,17 @@ d\mathbf r_1\, d\mathbf r_2}_{(\mu\nu \rvert \rho\sigma)} .
 Here we have introduced the **AO density matrix** in the closed-
 shell case,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-P-closed}
 P_{\rho\sigma} \;=\; 2 \sum_{i \in \text{occ}} C_{\rho i}\, C_{\sigma i}^* ,
 \end{equation}
-{% endraw %}
+$$
 
 and the **electron-repulsion integral (ERI)** in *chemists'*
 notation,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-eri-chemists}
 (\mu\nu \rvert \rho\sigma) \;=\; \int\!\!\!\int
@@ -704,7 +704,7 @@ notation,
 \chi_\rho^*(\mathbf r_2)\, \chi_\sigma(\mathbf r_2)\,
 d\mathbf r_1\, d\mathbf r_2 .
 \end{equation}
-{% endraw %}
+$$
 
 Note the order of the indices: $(\mu\nu \rvert \rho\sigma)$ is
 symmetric under $\mu \leftrightarrow \nu$, symmetric under
@@ -713,7 +713,7 @@ $(\mu\nu \rvert \rho\sigma) = (\rho\sigma \rvert \mu\nu)^*$.
 For real basis functions all four symmetries reduce to a single
 statement of *8-fol`d*' permutational symmetry:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-eri-symm}
 (\mu\nu \rvert \rho\sigma)
@@ -722,7 +722,7 @@ statement of *8-fol`d*' permutational symmetry:
 \;=\; (\rho\sigma \rvert \mu\nu)
 \;=\; \cdots \quad (8 \text{ distinct orderings}) .
 \end{equation}
-{% endraw %}
+$$
 
 The 8-fold symmetry is what every ERI code exploits: only
 $\sim K^4 / 8$ unique integrals are stored or computed.
@@ -751,13 +751,13 @@ different from a mean-field theory with only a local potential.
 **Putting it together.**  Substituting \eqref{eq:ch-03-J} and
 \eqref{eq:ch-03-K} into \eqref{eq:ch-03-F-decomp}:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-F-ao}
 F_{\mu\nu} \;=\; h_{\mu\nu} \;+\; \sum_{\rho\sigma} P_{\rho\sigma}
 \Bigl[ (\mu\nu \rvert \rho\sigma) \;-\; \tfrac{1}{2}\, (\mu\sigma \rvert \rho\nu) \Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 The factor $\tfrac{1}{2}$ in front of exchange comes from the
 closed-shell spin summation: each spatial orbital is doubly
@@ -784,12 +784,12 @@ conceptually distinct roles in the Roothaan–Hall formalism:
 1. **Container of the occupied subspace.**  Projected onto the
    occupied MO subspace, $\mathbf P$ is the identity:
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:ch-03-P-id}
    \mathbf C_\text{occ}^\dagger\, \mathbf S\, \mathbf C_\text{occ} \;=\; \mathbf I_{N/2} .
    \end{equation}
-{% endraw %}
+$$
 
    The full $\mathbf P$ therefore satisfies
    $\mathbf S \mathbf P \mathbf S = \mathbf S \mathbf P$, i.e.
@@ -805,12 +805,12 @@ conceptually distinct roles in the Roothaan–Hall formalism:
 3. **Direct representation of the one-particle density.**  The
    electron density in real space is
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:ch-03-rho-from-P}
    \rho(\mathbf r) \;=\; \sum_{\mu\nu} P_{\nu\mu}\, \chi_\mu^*(\mathbf r)\, \chi_\nu(\mathbf r) .
    \end{equation}
-{% endraw %}
+$$
 
    This is the form of $\rho$ that enters the Coulomb potential
    in the Fock operator.
@@ -842,12 +842,12 @@ $\mathbf C$.  The algorithm:
    diagonalise $\mathbf h \mathbf c = \mathbf S \mathbf c
    \varepsilon$ and set
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:ch-03-P-initial}
    P_{\mu\nu}^{(0)} \;=\; 2 \sum_{i=1}^{N/2} c_{\mu i}\, c_{\nu i}^* .
    \end{equation}
-{% endraw %}
+$$
 
    For difficult cases (transition metals, near-degeneracies) the
    guess may come from a previous calculation, an extended
@@ -855,40 +855,40 @@ $\mathbf C$.  The algorithm:
 
 2. **Build the Fock matrix.**  Use \eqref{eq:ch-03-F-ao}:
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:ch-03-F-build}
    F_{\mu\nu}^{(n)}
    \;=\; h_{\mu\nu} \;+\; G_{\mu\nu}[\mathbf P^{(n)}] ,
    \end{equation}
-{% endraw %}
+$$
 
    where the **two-electron part** is
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:ch-03-G-build}
    G_{\mu\nu}[\mathbf P]
    \;=\; \sum_{\rho\sigma} P_{\rho\sigma}
    \Bigl[ (\mu\nu \rvert \rho\sigma) \;-\; \tfrac{1}{2}\, (\mu\sigma \rvert \rho\nu) \Bigr] .
    \end{equation}
-{% endraw %}
+$$
 
    In tensor notation with $\mathbf G$ the 4-index ERI and
    $\mathbf P$ the 2-index density,
 
-{% raw %}
+$$
    \begin{equation}
 J_{\mu\nu} \;=\; \text{Tr}\Bigl[\mathbf P\, (\mu\nu \rvert \cdot\cdot) \Bigr] ,
    \label{eq:ch-03-J-tr}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 K_{\mu\nu} \;=\; \text{Tr}\Bigl[\mathbf P\, (\mu\cdot \rvert \nu\cdot) \Bigr] .
    \label{eq:ch-03-K-tr}
 \end{equation}
-{% endraw %}
+$$
 
    In `numpy`, both are `einsum`s — see the snippet in
    section 3.3.
@@ -903,12 +903,12 @@ K_{\mu\nu} \;=\; \text{Tr}\Bigl[\mathbf P\, (\mu\cdot \rvert \nu\cdot) \Bigr] .
 4. **Build the new density matrix.**  With the lowest $N/2$
    columns of $\mathbf C$,
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:ch-03-P-update}
    P_{\mu\nu}^{(n+1)} \;=\; 2 \sum_{i=1}^{N/2} C_{\mu i}\, C_{\nu i}^* .
    \end{equation}
-{% endraw %}
+$$
 
    In matrix form, $\mathbf P^{(n+1)} = 2\, \mathbf C_\text{occ}\,
    \mathbf C_\text{occ}^\dagger$, where $\mathbf C_\text{occ}$ is
@@ -919,12 +919,12 @@ K_{\mu\nu} \;=\; \text{Tr}\Bigl[\mathbf P\, (\mu\cdot \rvert \nu\cdot) \Bigr] .
 5. **Mix and check convergence.**  In its simplest form,
    *density mixing*:
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:ch-03-mix}
    \mathbf P^{(n+1)} \;\leftarrow\; (1 - \alpha)\, \mathbf P^{(n)} \;+\; \alpha\, \mathbf P^{(n+1, \text{raw})} ,
    \end{equation}
-{% endraw %}
+$$
 
    with $\alpha \in (0, 1)$ (typically 0.3 for closed-shell
    molecules, 0.1 or less for transition metals).  The
@@ -936,13 +936,13 @@ K_{\mu\nu} \;=\; \text{Tr}\Bigl[\mathbf P\, (\mu\cdot \rvert \nu\cdot) \Bigr] .
 6. **Compute the energy.**  At convergence, the **HF electronic
    energy** is
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:ch-03-E-hf-ao}
    E_\text{el} \;=\; \frac{1}{2}\, \text{Tr}\Bigl[\mathbf P\, (\mathbf h + \mathbf F)\Bigr]
    \;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu}\, (h_{\mu\nu} + F_{\mu\nu}) .
    \end{equation}
-{% endraw %}
+$$
 
    The **total HF energy** is
    $E_\text{HF} = E_\text{el} + V_\text{nn}$, with
@@ -1029,41 +1029,41 @@ numerical trick is to *symmetrically orthogonalise* the basis.
 Define the **Löwdin orthogonaliser** $\mathbf X$ as the
 *positive-definite square root* of the inverse overlap,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-X-def}
 \mathbf X \;=\; \mathbf S^{-1/2} ,
 \end{equation}
-{% endraw %}
+$$
 
 so that $\mathbf X^\dagger \mathbf S \mathbf X = \mathbf I$.
 Transforming the Fock matrix into the orthogonal basis,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-F-prime}
 \mathbf F' \;=\; \mathbf X^\dagger \mathbf F\, \mathbf X ,
 \end{equation}
-{% endraw %}
+$$
 
 and the eigenvectors back,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-C-prime}
 \mathbf C \;=\; \mathbf X \mathbf C' ,
 \end{equation}
-{% endraw %}
+$$
 
 the GEP \eqref{eq:ch-03-roothaan-hall} becomes the standard
 eigenvalue problem
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-std-eigen}
 \mathbf F'\, \mathbf C' \;=\; \mathbf C'\, \boldsymbol\varepsilon .
 \end{equation}
-{% endraw %}
+$$
 
 The `eigh(F, S)' LAPACK routine does this internally, with $\mathbf
 X$ computed by Cholesky factorisation of $\mathbf S$.  For very
@@ -1154,20 +1154,20 @@ The two sets of spatial orbitals $\{\phi_i^\alpha\}$ and
 $\{\phi_i^\beta\}$ are, a priori, *unrelate`d*`.  Each set is
 expanded in the same AO basis:
 
-{% raw %}
+$$
 \begin{equation}
 \phi_i^\alpha(\mathbf r) \;=\; \sum_{\mu=1}^{K} C_{\mu i}^\alpha\, \chi_\mu(\mathbf r) ,
 \qquad i = 1, \dots, N_\alpha ,
 \label{eq:ch-03-uhf-alpha-exp}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \phi_i^\beta(\mathbf r) \;=\; \sum_{\mu=1}^{K} C_{\mu i}^\beta\, \chi_\mu(\mathbf r) ,
 \qquad i = 1, \dots, N_\beta .
 \label{eq:ch-03-uhf-beta-exp}
 \end{equation}
-{% endraw %}
+$$
 
 The two sets of coefficients are collected into $K \times
 N_\alpha$ and $K \times N_\beta$ matrices $\mathbf C^\alpha$ and
@@ -1178,12 +1178,12 @@ $\mathbf C^\beta$.
 The total one-particle density is the sum of the $\alpha$ and
 $\beta$ contributions,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-rho-uhf}
 \rho(\mathbf r) \;=\; \rho^\alpha(\mathbf r) \;+\; \rho^\beta(\mathbf r) ,
 \end{equation}
-{% endraw %}
+$$
 
 with
 
@@ -1196,24 +1196,24 @@ with
 
 In the AO basis, define the **spin density matrices**
 
-{% raw %}
+$$
 \begin{equation}
 P_{\mu\nu}^\alpha \;=\; \sum_{i=1}^{N_\alpha} C_{\mu i}^\alpha\, (C_{\nu i}^\alpha)^* ,
 \label{eq:ch-03-P-alpha}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 P_{\mu\nu}^\beta \;=\; \sum_{i=1}^{N_\beta} C_{\mu i}^\beta\, (C_{\nu i}^\beta)^* ,
 \label{eq:ch-03-P-beta}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 P_{\mu\nu} \;=\; P_{\mu\nu}^\alpha + P_{\mu\nu}^\beta .
 \label{eq:ch-03-P-total}
 \end{equation}
-{% endraw %}
+$$
 
 Note the *absence* of the factor of 2 in the UHF density matrices
 (unlike the closed-shell case, eq. 3.24): each spatial orbital
@@ -1232,37 +1232,37 @@ $\alpha$- and $\beta$-spin orbitals independently gives two
 coupled eigenvalue equations — the **Pople–Nesbet equations** —
 in the AO basis
 
-{% raw %}
+$$
 \begin{equation}
 \mathbf F^\alpha\, \mathbf C^\alpha \;=\; \mathbf S\, \mathbf C^\alpha\, \boldsymbol\varepsilon^\alpha ,
 \label{eq:ch-03-pn-alpha}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \mathbf F^\beta\, \mathbf C^\beta \;=\; \mathbf S\, \mathbf C^\beta\, \boldsymbol\varepsilon^\beta .
 \label{eq:ch-03-pn-beta}
 \end{equation}
-{% endraw %}
+$$
 
 The **$\alpha$ and $\beta$ Fock matrices** are
 
-{% raw %}
+$$
 \begin{equation}
 F_{\mu\nu}^\alpha \;=\; h_{\mu\nu}
 \;+\; \sum_{\rho\sigma} P_{\rho\sigma}\, (\mu\nu \rvert \rho\sigma)
 \;-\; \sum_{\rho\sigma} P_{\rho\sigma}^\alpha\, (\mu\sigma \rvert \rho\nu) ,
 \label{eq:ch-03-F-alpha}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 F_{\mu\nu}^\beta \;=\; h_{\mu\nu}
 \;+\; \sum_{\rho\sigma} P_{\rho\sigma}\, (\mu\nu \rvert \rho\sigma)
 \;-\; \sum_{\rho\sigma} P_{\rho\sigma}^\beta\, (\mu\sigma \rvert \rho\nu) .
 \label{eq:ch-03-F-beta}
 \end{equation}
-{% endraw %}
+$$
 
 The Coulomb part is the *same* in $\mathbf F^\alpha$ and $\mathbf
 F^\beta$ — it depends only on the *total* density — and it is
@@ -1286,7 +1286,7 @@ matrix uses $\mathbf P^\beta$.
 The UHF electronic energy is the natural generalisation of
 \eqref{eq:ch-03-E-hf-ao}:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-E-uhf}
 E_\text{el}^\text{UHF} \;=\;
@@ -1294,7 +1294,7 @@ E_\text{el}^\text{UHF} \;=\;
 \;+\; \tfrac{1}{2}\, \text{Tr}\Bigl[\mathbf P^\beta\, \mathbf F^\beta\Bigr]
 \;+\; \tfrac{1}{2}\, \text{Tr}\Bigl[\mathbf h\, \mathbf P\Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 Equivalently, the sum-over-orbitals form
 
@@ -1315,13 +1315,13 @@ eigenfunction of $\hat S^2$.  It is contaminated by higher spin
 multiplets.  The expectation value of $\hat S^2$ in the UHF
 determinant is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-S2-uhf}
 \langle \hat S^2 \rangle_\text{UHF}
 \;=\; S_z (S_z + 1) \;+\; N_\beta \;-\; \sum_{i=1}^{N_\alpha} \sum_{j=1}^{N_\beta} \Bigl| \langle \phi_i^\alpha \rvert \phi_j^\beta \rangle \Bigr|^2 .
 \end{equation}
-{% endraw %}
+$$
 
 The first two terms are the eigenvalue of a *spin-pure*
 determinant of $N_\beta$ *paire`d*' electrons and
@@ -1334,14 +1334,14 @@ closed-shell RHF and the contamination is zero.
 In the AO basis, the overlap correction is a trace of the spin
 density matrix,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-S2-ao}
 \sum_{i=1}^{N_\alpha} \sum_{j=1}^{N_\beta}
 \Bigl| \langle \phi_i^\alpha \rvert \phi_j^\beta \rangle \Bigr|^2
 \;=\; \text{Tr}\Bigl[\mathbf P^\alpha \mathbf S \mathbf P^\beta \mathbf S\Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 > **Note.**  The "physical" expectation value of $\hat S^2$ is
 > $S(S+1) = (N_\alpha - N_\beta)/2 \cdot ((N_\alpha - N_\beta)/2 +
@@ -1368,35 +1368,35 @@ For a system whose true ground state is a doublet ($S = 1/2$),
 the dominant contaminant is the quartet ($S = 3/2$); the relevant
 projector is the **quartet annihilator**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-annihilator}
 \hat A_1 \;=\; \hat S^2 - \tfrac{15}{4} .
 \end{equation}
-{% endraw %}
+$$
 
 Acting on a *pure* doublet, $\hat A_1$ annihilates it.  Acting on
 a UHF determinant with $\langle \hat S^2 \rangle = s_2$, the
 projected energy is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-proj-E}
 E_\text{proj} \;=\; \frac{ \langle \Psi \rvert \hat A_1^\dagger \hat H \hat A_1 \rvert \Psi \rangle }
                     { \langle \Psi \rvert \hat A_1^\dagger \hat A_1 \rvert \Psi \rangle } .
 \end{equation}
-{% endraw %}
+$$
 
 A simpler estimate, the **single-annihilator energy**, is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-single-ann}
 E_\text{ann} \;\approx\; \frac{ \tfrac{3}{4}\, \langle \Psi \rvert \hat H \rvert \Psi \rangle
                               - \langle \Psi \rvert \hat H \hat S^2 \rvert \Psi \rangle }
                          { \tfrac{3}{4} - \langle \hat S^2 \rangle_\text{UHF} } .
 \end{equation}
-{% endraw %}
+$$
 
 This is exact for a *two-state* mixture (pure doublet + pure
 quartet); the assumption that all higher contaminants are
@@ -1445,12 +1445,12 @@ the 8-fold permutational symmetry
 \eqref{eq:ch-03-eri-symm}, the number of *unique* elements is
 $\sim K^4 / 8$, and the storage cost is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-eri-storage}
 \text{ERI storage} \;\approx\; \frac{K^4}{8} \times 8\,\text{bytes} \;=\; K^4\,\text{bytes} .
 \end{equation}
-{% endraw %}
+$$
 
 For $K = 100$ this is $10^8$ bytes (100 MB); for $K = 500$ it is
 $6.25 \times 10^{10}$ bytes (62 GB); for $K = 2000$ it is
@@ -1479,14 +1479,14 @@ stored.  At every iteration, the two-electron part of the Fock
 matrix $G_{\mu\nu}[\mathbf P]$ is assembled *directly* from the
 density matrix $\mathbf P$ and the integral-evaluation engine:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-G-direct}
 G_{\mu\nu}[\mathbf P]
 \;=\; \sum_{\rho\sigma} P_{\rho\sigma}
 \Bigl[ (\mu\nu \rvert \rho\sigma) \;-\; \tfrac{1}{2}\, (\mu\sigma \rvert \rho\nu) \Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 Equation \eqref{eq:ch-03-G-direct} is identical to
 \eqref{eq:ch-03-G-build}; what is new is the implementation
@@ -1497,25 +1497,25 @@ quartets whose contribution to $G_{\mu\nu}$ is guaranteed to be
 negligibly small.  The dominant screening inequality is the
 **Cauchy–Schwarz bound**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-schwarz}
 \Bigl| (\mu\nu \rvert \rho\sigma) \Bigr|
 \;\le\; \sqrt{ (\mu\nu \rvert \mu\nu)\, (\rho\sigma \rvert \rho\sigma) } .
 \end{equation}
-{% endraw %}
+$$
 
 Define the **diagonal bound** $Q_{\mu\nu} = \sqrt{|(\mu\nu \rvert
 \mu\nu)|}$.  The two-electron contribution to $G_{\mu\nu}$ is
 non-negligible only if
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-screen}
 Q_{\mu\nu} \cdot \max_\sigma \Bigl| P_{\rho\sigma} Q_{\rho\sigma} \Bigr|
 \;\ge\; \tau ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\tau$ a user-chosen threshold (typically $10^{-10}$ to
 $10^{-12}$).  For a sparse density matrix (large molecules in
@@ -1605,12 +1605,12 @@ matrices $\mathbf F^{(1)}, \mathbf F^{(2)}, \dots, \mathbf F^{(n)}$
 *extrapolate`d*' Fock matrix is a linear combination of the
 previous $m$ iterates,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-diis-combo}
 \mathbf F^\text{DIIS} \;=\; \sum_{i=1}^{m} c_i\, \mathbf F^{(i)} ,
 \end{equation}
-{% endraw %}
+$$
 
 with the coefficients $c_i$ chosen to (i) extrapolate the
 fixed-point, and (ii) sum to unity ($\sum_i c_i = 1$) so the
@@ -1620,13 +1620,13 @@ extrapolation is a *convex combination* of the iterates.
 $i$ as the commutator of the Fock and density matrices in the
 orthogonal basis.  Let $\mathbf X = \mathbf S^{1/2}$; then
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-diis-error}
 \mathbf e^{(i)} \;=\; \mathbf X^\dagger\, \Bigl[ \mathbf F^{(i)}, \mathbf P^{(i)} \Bigr]\, \mathbf X
 \;=\; \mathbf F'^{(i)}\, \mathbf P'^{(i)} \;-\; \mathbf P'^{(i)}\, \mathbf F'^{(i)} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\mathbf F' = \mathbf X^\dagger \mathbf F \mathbf X$ and
 $\mathbf P' = \mathbf X^\dagger \mathbf P \mathbf X$ are the Fock
@@ -1644,13 +1644,13 @@ diagonalisation.
 norm of the extrapolated error vector subject to the convex
 constraint:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-diis-min}
 \min_{\{c_i\}} \;\Bigl\| \mathbf e^\text{DIIS} \Bigr\|^2
 \;=\; \min_{\{c_i\}} \; \sum_{i,j} c_i c_j\, B_{ij} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $B_{ij} = \langle \mathbf e^{(i)} \rvert \mathbf e^{(j)}
 \rangle$ the inner product matrix of the error vectors, and the
@@ -1658,7 +1658,7 @@ constraint $\sum_i c_i = 1$ enforced by a Lagrange multiplier
 $\lambda$.  The first-order condition gives the
 $(m+1) \times (m+1)$ **DIIS linear system**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-diis-system}
 \begin{pmatrix} B_{11} & B_{12} & \cdots & B_{1m} & 1 \\\
@@ -1670,7 +1670,7 @@ $(m+1) \times (m+1)$ **DIIS linear system**
 \;=\;
 \begin{pmatrix} 0 \\\\ 0 \\\\ \vdots \\\\ 0 \\\\ 1 \end{pmatrix} .
 \end{equation}
-{% endraw %}
+$$
 
 Solving for $\mathbf c$ and substituting into
 \eqref{eq:ch-03-diis-combo} gives the extrapolated Fock matrix.
@@ -1984,12 +1984,12 @@ physically?*
 The textbook answer is **Koopmans' theorem** (Koopmans 1934): the
 ionisation energy of an electron in orbital $i$ is approximately
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-koopmans}
 I_i \;\approx\; -\varepsilon_i .
 \end{equation}
-{% endraw %}
+$$
 
 The "approximation" is the **frozen-orbital approximation**: we
 assume the orbitals *do not relax* when an electron is removed
@@ -2002,12 +2002,12 @@ at fixed geometry, computed at the *unrelaxe`d*' orbitals.
 We work in the MO basis.  The closed-shell HF energy in the MO
 basis is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-E-hf-mo}
 E_\text{HF} \;=\; 2 \sum_{i=1}^{N/2} h_{ii} \;+\; \sum_{i=1}^{N/2} \sum_{j=1}^{N/2} \Bigl( 2 J_{ij} - K_{ij} \Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 Here $h_{ii} = \langle \phi_i \rvert \hat h \rvert \phi_i \rangle$,
 $J_{ij} = (\phi_i \phi_i \rvert \phi_j \phi_j)$, and
@@ -2066,12 +2066,12 @@ is the source of the "Koopmans' theorem is approximate" caveat.
 
 What we have just derived is the **Koopmans' approximation**:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-koopmans-app}
 I_a^{\text{Koopmans}} \;\equiv\; -\varepsilon_a^{\text{HF}} .
 \end{equation}
-{% endraw %}
+$$
 
 The frozen-orbital assumption is hidden in two places:
 
@@ -2089,12 +2089,12 @@ The frozen-orbital assumption is hidden in two places:
 
 A useful identity:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-I-decomp}
 I_a \;=\; -\varepsilon_a \;+\; E_\text{relax} \;+\; E_\text{corr}^I .
 \end{equation}
-{% endraw %}
+$$
 
 For organic molecules, the relaxation correction is typically
 $0.5$–$2$ eV and goes in the *direction* of making the
@@ -2111,12 +2111,12 @@ occupations.  Define the *occupation number* $n_i \in [0, 1]$ of
 orbital $i$ and the energy as a function of the occupations
 $E(n_1, n_2, \dots)$.  Then
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-janak}
 \frac{\partial E}{\partial n_i} \;=\; \varepsilon_i .
 \end{equation}
-{% endraw %}
+$$
 
 The HF orbital energy is the *derivative* of the HF energy with
 respect to the occupation of that orbital.  This is the
@@ -2130,12 +2130,12 @@ For integer occupations and re-diagonalisation allowed, the
 analogue of Janak is the **Slater transition state** or the
 **ΔSCF** method:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-03-delta-scf}
 I_a^{\Delta\text{SCF}} \;\equiv\; E_\text{HF}[\Psi(N-1)] \;-\; E_\text{HF}[\Psi(N)] ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\Psi(N-1)$ and $\Psi(N)$ are both *fully self-consistent*
 on their respective electron counts.  The ΔSCF method

@@ -37,34 +37,34 @@ invented, and what numerical price each charges.
 For a closed-shell molecule, expanding each spatial orbital in
 the same $K$ basis functions $\{\chi_\mu\}$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-basis-expansion}
 \phi_i(\mathbf r) \;=\; \sum_{\mu=1}^{K} C_{\mu i}\, \chi_\mu(\mathbf r) ,
 \end{equation}
-{% endraw %}
+$$
 
 turns the Fock equation $\hat F \phi_i = \varepsilon_i \phi_i$
 into the **Roothaan–Hall** matrix equation
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-roothaan-hall}
 \mathbf F\, \mathbf C \;=\; \mathbf S\, \mathbf C\, \boldsymbol\varepsilon ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\mathbf F$, $\mathbf S$, $\mathbf C$ are $K \times K$
 matrices and $\boldsymbol\varepsilon$ is the diagonal matrix of
 orbital energies.  The matrix elements are
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-fock-overlap}
 F_{\mu\nu} \;=\; \langle \chi_\mu \rvert \hat F \rvert \chi_\nu \rangle , \qquad
 S_{\mu\nu} \;=\; \langle \chi_\mu \rvert \chi_\nu \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 **Derivation.**  Substitute \eqref{eq:ch-06-basis-expansion} into
 $\hat F \phi_i = \varepsilon_i \phi_i$,
@@ -111,25 +111,25 @@ $\{\chi_\mu\}_{\mu=1}^K \subset L^2(\mathbb R^3)$ that spans a
 $K$-dimensional subspace $\mathcal V_K$.  The variational
 principle ([chapter 03]({{ "/dft-notes/chapter-03/" | relative_url }})) says
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-variational}
 E_0^\text{basis}(K) \;\equiv\; \min_{\phi \in \mathcal V_K}\, E[\phi]
 \;\ge\; E_0^\text{exact} ,
 \end{equation}
-{% endraw %}
+$$
 
 with equality only in the limit $K \to \infty$ along a
 sequence of basis sets whose span becomes dense in
 $L^2(\mathbb R^3)$.  The gap between $E_0^\text{basis}(K)$ and
 $E_0^\text{exact}$ is the **basis-set incompleteness error**:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-bsie}
 \Delta E_\text{BSIE}(K) \;\equiv\; E_0^\text{basis}(K) \;-\; E_0^\text{CBS} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $E_0^\text{CBS}$ is the value at the **complete-basis-set
 limit** (CBS, $K \to \infty$).  For atom-centred Gaussians on
@@ -138,12 +138,12 @@ $\Delta E_\text{BSIE}$ falls roughly *exponentially* with the
 **cardinal number** $X$ of the Dunning correlation-consistent
 family (cc-pV*X*Z),
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-cbs-extrap}
 E(X) \;\approx\; E^\text{CBS} \;+\; A\, e^{-\alpha X} ,
 \end{equation}
-{% endraw %}
+$$
 
 which is the formula used to *extrapolate* to $E^\text{CBS}$
 from two or three calculations at $X = D, T, Q$.
@@ -161,7 +161,7 @@ A **primitive Cartesian Gaussian** centred at $\mathbf A$ with
 exponent $\alpha$ and angular indices $(\ell_x, \ell_y, \ell_z)$
 is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-primitive}
 g(\mathbf r;\alpha,\mathbf A,\boldsymbol\ell)
@@ -170,7 +170,7 @@ N(\alpha,\boldsymbol\ell)\,
 (x - A_x)^{\ell_x} (y - A_y)^{\ell_y} (z - A_z)^{\ell_z}\,
 e^{-\alpha |\mathbf r - \mathbf A|^2} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $N(\alpha,\boldsymbol\ell)$ chosen so that
 $\int |g|^2\, d\mathbf r = 1$.  The total angular momentum is
@@ -179,12 +179,12 @@ $\ell = \ell_x + \ell_y + \ell_z$, with $\ell = 0$ called
 
 For $\ell = 0$ the normalisation collapses to
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-norm-s}
 N(\alpha) \;=\; \left( \frac{2\alpha}{\pi} \right)^{3/4} .
 \end{equation}
-{% endraw %}
+$$
 
 **Why Gaussians and not Slater functions?**  Slater-type
 orbitals (STOs) $e^{-\zeta r}$ have the *right* short-range
@@ -195,14 +195,14 @@ one critical algebraic identity: the **Gaussian product
 theorem**.  For two s-primitives at centres $\mathbf A$ and
 $\mathbf B$ with exponents $\alpha$ and $\beta$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-gpt}
 e^{-\alpha |\mathbf r - \mathbf A|^2}\, e^{-\beta |\mathbf r - \mathbf B|^2}
 \;=\;
 K_{AB}\, e^{-(\alpha+\beta) |\mathbf r - \mathbf P|^2} ,
 \end{equation}
-{% endraw %}
+$$
 
 with the **Gaussian midpoint**
 $\mathbf P = (\alpha \mathbf A + \beta \mathbf B)/(\alpha+\beta)$
@@ -217,13 +217,13 @@ Gaussian basis and not in a Slater basis.
 **A contracted Gaussian-type orbital (CGTO)** is a fixed
 linear combination of primitives,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-contraction}
 \chi_\mu(\mathbf r) \;=\; \sum_{p=1}^{n_\mu} d_{\mu p}\,
 g(\mathbf r;\alpha_{\mu p},\mathbf A_\mu,\boldsymbol\ell_\mu) ,
 \end{equation}
-{% endraw %}
+$$
 
 where the **contraction coefficients** $d_{\mu p}$ and
 **exponents** $\alpha_{\mu p}$ are fixed at the moment of
@@ -261,7 +261,7 @@ $1/r_{12} = (2/\sqrt\pi) \int_0^\infty e^{-s^2 r_{12}^2}\, ds$
 and integrating $\mathbf r_1, \mathbf r_2$ as a Gaussian.  The
 result, in normalised form, is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-ssss}
 (AB | CD) \;=\;
@@ -270,18 +270,18 @@ K_{AB}\, K_{CD}\,
 F_0\!\left( \frac{(\alpha+\beta)(\gamma+\delta)}{\alpha+\beta+\gamma+\delta}\,
 |\mathbf P - \mathbf Q|^2 \right) ,
 \end{equation}
-{% endraw %}
+$$
 
 where the **Boys function**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-boys}
 F_0(t) \;=\; \int_0^1 e^{-t u^2}\, du
 \;=\; \frac{1}{2}\sqrt{\frac{\pi}{t}}\,\operatorname{erf}(\sqrt{t}) ,
 \qquad F_0(0) = 1 ,
 \end{equation}
-{% endraw %}
+$$
 
 handles the Coulomb singularity.  Every four-centre ERI in
 quantum chemistry is, after the Gaussian product theorem and
@@ -302,7 +302,7 @@ The historical and pedagogical default for a minimal basis is
 $e^{-\zeta r}$ by a least-squares contraction of $n$ primitive
 Gaussians,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-sto-fit}
 \sum_{p=1}^{n} d_p\, g_p(\alpha_p,\,\mathbf 0,\, \boldsymbol 0)
@@ -310,7 +310,7 @@ Gaussians,
 \frac{\zeta^{3/2}}{\sqrt\pi}\, e^{-\zeta r}
 \quad \text{(in the least-squares sense)} .
 \end{equation}
-{% endraw %}
+$$
 
 The $n = 3$ case, **`STO-3G*`*, is the canonical example.  The
 underlying $\zeta = 1.0$ fit for the 1s function (HSP 1969,
@@ -454,20 +454,20 @@ a sufficiently large simulation box — the Kohn–Sham orbitals
 satisfy Bloch's theorem (we will treat this carefully in
 [chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }})):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-bloch}
 \phi_{n,\mathbf k}(\mathbf r) \;=\; e^{i \mathbf k \cdot \mathbf r}\, u_{n,\mathbf k}(\mathbf r) ,
 \qquad u_{n,\mathbf k}(\mathbf r + \mathbf R) = u_{n,\mathbf k}(\mathbf r) ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\mathbf R$ is any lattice vector and $\mathbf k$ lies in
 the first Brillouin zone.  The cell-periodic part
 $u_{n,\mathbf k}$ has a natural Fourier expansion on the
 **reciprocal lattice** $\{\mathbf G\}$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-pw-expansion}
 \phi_{n,\mathbf k}(\mathbf r)
@@ -477,7 +477,7 @@ $u_{n,\mathbf k}$ has a natural Fourier expansion on the
 c_{n,\mathbf k,\mathbf G}\,
 e^{i (\mathbf k + \mathbf G) \cdot \mathbf r} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\Omega$ the cell volume.  This is the **plane-wave
 basis**.  Each basis function
@@ -487,12 +487,12 @@ eigenfunction of $-\tfrac{1}{2}\nabla^2$ with eigenvalue
 $\tfrac{1}{2}|\mathbf k + \mathbf G|^2$.  Truncating the
 expansion at the **kinetic-energy cutoff** $E_\text{cut}$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-ecut}
 \tfrac{1}{2}\, |\mathbf k + \mathbf G|^2 \;\le\; E_\text{cut} ,
 \end{equation}
-{% endraw %}
+$$
 
 gives a finite basis.  The largest wavevector retained is
 $G_\text{max} = \sqrt{2 E_\text{cut}}$.
@@ -513,13 +513,13 @@ $$
 
 Substituting $G_\text{max} = \sqrt{2 E_\text{cut}}$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-npw}
 N_\text{PW} \;\approx\; \frac{\Omega}{6 \pi^2}\,
 \Bigl(2 E_\text{cut}\Bigr)^{3/2} .
 \end{equation}
-{% endraw %}
+$$
 
 Two consequences of \eqref{eq:ch-06-npw} drive everything in
 plane-wave DFT:
@@ -552,12 +552,12 @@ A third style of basis avoids both atomic Gaussians and plane
 waves and instead represents the orbital by its **values on a
 uniform real-space gri`d*`* $\{\mathbf r_i\}_{i=1}^{N_g}$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-grid}
 \phi_i \;\longleftrightarrow\; \{\phi_i(\mathbf r_1), \dots, \phi_i(\mathbf r_{N_g})\} .
 \end{equation}
-{% endraw %}
+$$
 
 The kinetic operator $-\tfrac{1}{2}\nabla^2$ is then a sparse
 finite-difference matrix on the grid; the XC potential is
@@ -570,13 +570,13 @@ of spacing $h$ has a Nyquist limit
 $G_\text{Nyq} = \pi / h$, so the *implicit* kinetic cutoff of
 the grid is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-grid-cutoff}
 E_\text{cut}^\text{grid} \;=\; \tfrac{1}{2} G_\text{Nyq}^2
 \;=\; \frac{\pi^2}{2 h^2} .
 \end{equation}
-{% endraw %}
+$$
 
 A 0.2 Å grid spacing corresponds to $E_\text{cut} \approx
 67$ Ha — comparable to a heavy-element pseudopotential cutoff.
@@ -1054,14 +1054,14 @@ quadrature on the same radial grid the orbital was defined on.
 A **numerical atomic orbital** (NAO) of angular momentum
 $\ell$ and "zeta index" $q$ centred at atom $a$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-13-nao}
 \chi_{\ell m}^{(a, q)}(\mathbf r) \;=\; R_\ell^{(a, q)}(r_a)\,
 Y_{\ell m}(\hat{\mathbf r}_a) , \qquad
 \mathbf r_a \equiv \mathbf r - \mathbf R_a ,
 \end{equation}
-{% endraw %}
+$$
 
 where $Y_{\ell m}$ is a real spherical harmonic, $r_a$ is the
 distance to atom $a$, and the radial function $R_\ell^{(a,q)}$
@@ -1075,12 +1075,12 @@ shell.
 The atomic problem for the radial part of an orbital in a
 spherically symmetric effective potential $V_\text{eff}(r)$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-13-radial}
 \left[ -\frac{1}{2} \frac{d^2}{dr^2} + \frac{\ell(\ell+1)}{2 r^2} + V_\text{eff}(r) \right]\, u_\ell(r) \;=\; \varepsilon\, u_\ell(r) ,
 \end{equation}
-{% endraw %}
+$$
 
 where $u_\ell(r) = r\, R_\ell(r)$ is the radial function scaled
 by $r$ (so the volume element $r^2 dr\, d\Omega$ becomes just
@@ -1098,16 +1098,16 @@ SCF converges poorly.  The fix is to add a **confining
 potential** to $V_\text{eff}$ that vanishes in the chemically
 relevant region and rises outside it:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-13-confine}
 \tilde V_\text{eff}(r) \;=\; V_\text{eff}(r) + V_\text{conf}(r) .
 \end{equation}
-{% endraw %}
+$$
 
 A widely used form (SIESTA, FHI-aims) is a polynomial ramp,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-13-vconf}
 V_\text{conf}(r) \;=\;
@@ -1117,7 +1117,7 @@ V_0 \left( \dfrac{r - r_0}{R_c - r_0} \right)^n , & r_0 < r \le R_c , \\\\[6pt]
 \infty , & r > R_c ,
 \end{cases}
 \end{equation}
-{% endraw %}
+$$
 
 with the "inner radius" $r_0$ set to roughly the covalent
 radius of the atom (so the confining potential does not touch
@@ -1139,12 +1139,12 @@ asymptotic region.  The standard choice is the **logarithmic
 gri`d*`* introduced by H. J. A. M. Kormann and used in SIESTA and
 FHI-aims:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-13-loggrid}
 r_i \;=\; r_\text{min}\, e^{h\, i} , \qquad i = 0, 1, 2, \dots, N_r - 1 .
 \end{equation}
-{% endraw %}
+$$
 
 The grid has constant **log-spacing** $h$ — i.e. constant
 *relative* resolution.  Typical parameters:
@@ -1183,13 +1183,13 @@ Concretely, for a double-ζ valence shell ($n_\zeta = 2$):
    new solution $\tilde R_\ell(r)$.  Symmetric-orthogonalise
    against $R_\ell^{(1)}$:
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:ch-06-13-gram-schmidt}
    R_\ell^{(2)}(r) \;=\; \mathcal N \left[ \tilde R_\ell(r) - S\, R_\ell^{(1)}(r) \right] ,
    \qquad S = \int_0^{R_\text{max}} \tilde R_\ell(r)\, R_\ell^{(1)}(r)\, r^2\, dr .
    \end{equation}
-{% endraw %}
+$$
 
 3. **Higher ζ.**  Repeat the procedure with progressively looser
    $R_c$, projecting out the span of all previous ζ's.
@@ -1216,12 +1216,12 @@ The multiple-ζ trick handles the **radial** flexibility.  The
 in a Gaussian basis) is generated by an **energy-derivative**
 recipe (Blöchl 1990, generalised by Artacho et al.):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-13-pold}
 R_\ell^\text{pol}(r) \;=\; \mathcal N\, \frac{\partial R_\ell(r)}{\partial \varepsilon} .
 \end{equation}
-{% endraw %}
+$$
 
 The derivative of a bound-state radial wavefunction with
 respect to its energy is automatically orthogonal to the parent
@@ -1313,7 +1313,7 @@ A **B-spline** of order $k$ (degree $k - 1$) on a knot
 sequence $t_0 \le t_1 \le \dots \le t_{N}$ is defined by the
 Cox–de Boor recursion
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-14-bspline}
 B_{i,1}(x) \;=\;
@@ -1322,15 +1322,15 @@ B_{i,1}(x) \;=\;
 0 , & \text{otherwise} ,
 \end{cases}
 \end{equation}
-{% endraw %}
+$$
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-14-coxdeboor}
 B_{i,k}(x) \;=\; \frac{x - t_i}{t_{i+k-1} - t_i}\, B_{i,k-1}(x)
 \;+\; \frac{t_{i+k} - x}{t_{i+k} - t_{i+1}}\, B_{i+1,k-1}(x) .
 \end{equation}
-{% endraw %}
+$$
 
 For a simple uniform knot sequence $t_i = i h$, the B-splines
 are translated copies of one function $B_k(x/h)$, each
@@ -1341,12 +1341,12 @@ zero outside its $k$-interval support.
 
 The **partition of unity** property
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-14-pou}
 \sum_{i=0}^{N-k} B_{i,k}(x) \;=\; 1 \qquad \text{on the interior}
 \end{equation}
-{% endraw %}
+$$
 
 follows by induction on $k$ and makes B-splines a natural
 finite-element basis.  In 3D the tensor product $B_{i,k}(x)\,
@@ -1372,24 +1372,24 @@ B-spline idea: instead of a single grid, one uses an
 **infinite tower of grids**, doubling the resolution at each
 level.  Define a chain of closed subspaces
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-14-mra}
 \{0\} \;\subset\; \cdots \;\subset\; V_1 \;\subset\; V_2 \;\subset\; \cdots \;\subset\; L^2(\mathbb R) ,
 \end{equation}
-{% endraw %}
+$$
 
 with $V_{j+1} = V_j \oplus W_j$ — i.e. the detail space $W_j$
 is the orthogonal complement of $V_j$ in $V_{j+1}$.  Each
 $V_j$ is spanned by translations and dyadic scalings of a
 single **scaling function** $\phi$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-14-vj}
 V_j \;=\; \overline{\text{span}\big\lbrace \phi_{j,k}(x) = 2^{j/2}\, \phi(2^j x - k) : k \in \mathbb Z \big\rbrace} .
 \end{equation}
-{% endraw %}
+$$
 
 The Daubechies family D-$N$ is parametrised by the number of
 vanishing moments $N$ and constructed as the **most localised
@@ -1398,14 +1398,14 @@ the support of the D-$N$ scaling function is $2N - 1$ grid
 points wide.  The two-scale relation between $\phi$ and the
 orthonormal wavelet $\psi$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-14-twoscale}
 \phi(x) \;=\; \sqrt{2} \sum_{n} h_n\, \phi(2x - n) ,
 \qquad
 \psi(x) \;=\; \sqrt{2} \sum_{n} g_n\, \phi(2x - n) ,
 \end{equation}
-{% endraw %}
+$$
 
 where the **low-pass** filter $h_n$ and **high-pass** filter
 $g_n$ are finite sequences of $2N$ coefficients satisfying the
@@ -1453,13 +1453,13 @@ region are sparse.
 
 This is the formal claim:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-14-wavelet-conv}
 E_\text{total}(J) \;=\; E_\text{exact} \;+\; \mathcal O(2^{-s J}) ,
 \qquad s \ge 1
 \end{equation}
-{% endraw %}
+$$
 
 for $J$ wavelet levels — *exponential* convergence in the
 number of levels, and the only basis family for which this
@@ -1532,33 +1532,33 @@ $\phi_i^a$ outside the augmentation sphere of radius $r_c^a$
 and is regular at the nucleus.  The **projector** $\tilde
 p_i^a$ is the dual of $\tilde\phi_i^a$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-15-dual}
 \langle \tilde p_i^a \mid \tilde\phi_j^b \rangle \;=\; \delta_{ab}\, \delta_{ij} ,
 \end{equation}
-{% endraw %}
+$$
 
 where the integral is over the augmentation sphere of atom $a$
 only.  The PAW transformation is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-15-trafo}
 \hat{\mathcal T} \;=\; \hat 1 \;+\; \sum_a \sum_i \left( \lvert \phi_i^a \rangle - \lvert \tilde\phi_i^a \rangle \right) \langle \tilde p_i^a \rvert .
 \end{equation}
-{% endraw %}
+$$
 
 Applied to a smooth wavefunction $\lvert \tilde \psi_n \rangle$
 it produces the AE wavefunction
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-15-reconstruct}
 \lvert \psi_n \rangle \;=\; \hat{\mathcal T} \lvert \tilde \psi_n \rangle
 \;=\; \lvert \tilde \psi_n \rangle \;+\; \sum_{a,i} \left( \lvert \phi_i^a \rangle - \lvert \tilde\phi_i^a \rangle \right) \langle \tilde p_i^a \rvert \tilde \psi_n \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 The right-hand side is the **PAW reconstruction**: the smooth
 wavefunction $\tilde\psi_n$ plus a sum over atoms and
@@ -1575,13 +1575,13 @@ The whole point of the PAW construction is that the **smooth
 wavefunction** $\tilde \psi_n$ is the object that lives in the
 plane-wave basis, exactly as in section 6.7:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-15-pw}
 \tilde \psi_{n,\mathbf k}(\mathbf r) \;=\; \frac{1}{\sqrt \Omega} \sum_{\mathbf G}
 c_{n,\mathbf k,\mathbf G}\, e^{i (\mathbf k + \mathbf G) \cdot \mathbf r} .
 \end{equation}
-{% endraw %}
+$$
 
 The plane-wave cutoff $E_\text{cut}$ now has to resolve the
 **pseudo partial waves** $\tilde\phi_i^a$, *not* the AE
@@ -1596,12 +1596,12 @@ The PAW density and Kohn–Sham potential are not just evaluated
 on the plane-wave grid.  A separate **augmentation** treatment
 is needed inside each sphere.  The total electron density is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-15-density}
 \rho(\mathbf r) \;=\; \tilde \rho(\mathbf r) \;+\; \sum_a \left[ \rho^a(\mathbf r) - \tilde \rho^a(\mathbf r) \right] ,
 \end{equation}
-{% endraw %}
+$$
 
 where
 
@@ -1635,12 +1635,12 @@ density so that the multipole moments of the augmentation
 charge density $\rho^a - \tilde\rho^a$ are absorbed into the
 plane-wave Hartree solver.  The total potential becomes
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-15-potential}
 V(\mathbf r) \;=\; \tilde V(\mathbf r) \;+\; \sum_a \left[ V^a(\mathbf r) - \tilde V^a(\mathbf r) \right] ,
 \end{equation}
-{% endraw %}
+$$
 
 with $V^a$ and $\tilde V^a$ tabulated on the radial grid of
 each atom, and $\tilde V$ a plane-wave-expandable smooth
@@ -1655,14 +1655,14 @@ core orbitals (1s for first-row atoms, 1s2s2p for transition
 metals, etc.) at the values they have in the **isolated atom**.
 In this **frozen-core** approximation,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-15-frozen}
 D_{ij}^a \;=\; D_{ij}^{a,\,\text{val}} \;+\; D_{ij}^{a,\,\text{core}} ,
 \qquad
 D_{ij}^{a,\,\text{core}} \;\text{fixed at the atomic value} .
 \end{equation}
-{% endraw %}
+$$
 
 The frozen-core term is a *one-time* constant contribution to
 the augmentation density matrix of each atom; the SCF
@@ -1680,7 +1680,7 @@ not allowed to relax in the SCF.
 In PAW with a frozen core the "all-electron" reconstruction
 \eqref{eq:ch-06-15-reconstruct} becomes
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-06-15-frozen-recon}
 \lvert \psi_n \rangle
@@ -1689,7 +1689,7 @@ In PAW with a frozen core the "all-electron" reconstruction
 \;+\; \sum_{a,i \in \text{val}} \left( \lvert \phi_i^a \rangle - \lvert \tilde\phi_i^a \rangle \right) \langle \tilde p_i^a \rvert \tilde \psi_n \rangle
 \;+\; \sum_{a, i \in \text{core}} \lvert \phi_i^a \rangle \langle \tilde p_i^a \rvert \tilde \psi_0^a \rangle ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\tilde \psi_0^a$ is the smooth part of the atomic core
 wavefunction.  The core term is a constant, atom-centred

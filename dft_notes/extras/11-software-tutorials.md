@@ -1229,7 +1229,6 @@ NEVPT2 energies:
 ```
 
 The 3.42 eV transition matches the experimental
-{% raw %}${{}^1A_{1g} \to {}^1T_{1g}}${% endraw %} absorption of Cr(CO)₆ at
 ~ 3.4 eV (in toluene, with a polarisation-corrected
 shift).
 

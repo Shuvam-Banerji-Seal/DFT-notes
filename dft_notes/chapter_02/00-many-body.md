@@ -69,7 +69,7 @@ The **exact ground-state energy** of an $N$-electron molecule in the
 clamped-nuclei (Born–Oppenheimer) picture is the lowest eigenvalue of
 the **electronic Hamiltonian** in atomic units,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-hamiltonian}
 \boxed{\hat H_{\text{el}}
@@ -79,31 +79,31 @@ the **electronic Hamiltonian** in atomic units,
      +\sum_{i<j}^{N}
        \frac{1}{|\mathbf r_i - \mathbf r_j|},}
 \end{equation}
-{% endraw %}
+$$
 
 with the additional **nuclear–nuclear repulsion** added as a
 classical constant at the end,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-vnn}
 V_{NN} \;=\; \sum_{A<B}^{M}
             \frac{Z_A Z_B}{|\mathbf R_A - \mathbf R_B|}.
 \end{equation}
-{% endraw %}
+$$
 
 The corresponding **exact wavefunction** is a linear combination of
 *all* $N$-electron Slater determinants $\{\Phi_I\}$ that can be built
 from a chosen orthonormal one-electron basis of size $K$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-fci}
 \boxed{\Psi_0 \;=\; \sum_{I=1}^{N_{\text{det}}} c_I\, \Phi_I,
        \qquad
        N_{\text{det}} \;=\; \binom{K}{N_\alpha}\binom{K}{N_\beta},}
 \end{equation}
-{% endraw %}
+$$
 
 with real or complex coefficients $c_I$ and
 $N_\alpha + N_\beta = N$.  The expansion \eqref{eq:ch-02-fci} is
@@ -111,14 +111,14 @@ $N_\alpha + N_\beta = N$.  The expansion \eqref{eq:ch-02-fci} is
 basis-set limit.  Its cost is, however, the source of the
 **exponential wall**:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-exp-wall}
 N_{\text{det}}(K, N) \;=\; \binom{K}{N_\alpha}\binom{K}{N_\beta}
                          \;\sim\; \frac{K^N}{N!}
                          \qquad (K \gg N).
 \end{equation}
-{% endraw %}
+$$
 
 Equation \eqref{eq:ch-02-exp-wall} is the **headline** of the
 chapter.  Everything we will do in the rest of these notes — Hartree
@@ -156,60 +156,60 @@ The full, *non-relativisti`c*' Hamiltonian of a molecule with $M$ nuclei
 (charges $Z_A$, masses $M_A$, positions $\mathbf R_A$) and $N$ electrons
 (positions $\mathbf r_i$) is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-full-H}
 \hat H \;=\; \hat T_N + \hat T_e + \hat V_{NN} + \hat V_{en} + \hat V_{ee} .
 \end{equation}
-{% endraw %}
+$$
 
 The five terms are the **nuclear kinetic energy**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-TN}
 \hat T_N \;=\; -\sum_{A=1}^{M} \frac{1}{2 M_A} \nabla_A^2 ,
 \end{equation}
-{% endraw %}
+$$
 
 the **electronic kinetic energy**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-Te}
 \hat T_e \;=\; -\sum_{i=1}^{N} \frac{1}{2} \nabla_i^2 ,
 \end{equation}
-{% endraw %}
+$$
 
 the **nuclear–nuclear repulsion**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-VNN}
 \hat V_{NN} \;=\; \sum_{A<B}^{M}
                 \frac{Z_A Z_B}{|\mathbf R_A - \mathbf R_B|} ,
 \end{equation}
-{% endraw %}
+$$
 
 the **electron–nuclear attraction**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-Ven}
 \hat V_{en} \;=\; -\sum_{i=1}^{N}\sum_{A=1}^{M}
                   \frac{Z_A}{|\mathbf r_i - \mathbf R_A|} ,
 \end{equation}
-{% endraw %}
+$$
 
 and the **electron–electron repulsion**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-Vee}
 \hat V_{ee} \;=\; \sum_{i<j}^{N}
                 \frac{1}{|\mathbf r_i - \mathbf r_j|} .
 \end{equation}
-{% endraw %}
+$$
 
 All masses are in units of the electron mass $m_e$ and all charges
 in units of $e$; the units are **atomic units**, defined in
@@ -217,12 +217,12 @@ in units of $e$; the units are **atomic units**, defined in
 
 The full Schrödinger equation is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-full-TISE}
 \hat H\, \Psi(\mathbf r, \mathbf R) \;=\; E\, \Psi(\mathbf r, \mathbf R) ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\mathbf r = (\mathbf r_1, \dots, \mathbf r_N)$ and
 $\mathbf R = (\mathbf R_1, \dots, \mathbf R_M)$ are the full
@@ -243,14 +243,14 @@ of a thermal electron, so the nuclei behave almost classically on
 the electronic timescale.  The Born–Oppenheimer Ansatz is therefore
 to write the total wavefunction as a product
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-BO-Ansatz}
 \Psi(\mathbf r, \mathbf R) \;\approx\;
    \psi_{\text{el}}(\mathbf r; \mathbf R)\,
    \chi_{\text{nuc}}(\mathbf R) ,
 \end{equation}
-{% endraw %}
+$$
 
 where the **electronic wavefunction** $\psi_{\text{el}}(\mathbf r;
 \mathbf R)$ depends on the nuclear coordinates *parametrically* (the
@@ -263,7 +263,7 @@ $\nabla_A \psi_{\text{el}}$ term (the **non-adiabatic coupling**)
 gives two *separate* eigenvalue problems: an electronic one at each
 nuclear geometry $\mathbf R$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-electronic}
 \hat H_{\text{el}}(\mathbf R)\,
@@ -271,19 +271,19 @@ nuclear geometry $\mathbf R$,
    \varepsilon_n(\mathbf R)\,
    \psi_{\text{el},n}(\mathbf r; \mathbf R) ,
 \end{equation}
-{% endraw %}
+$$
 
 and a nuclear one in the electronic eigenvalue surface
 $\varepsilon_n(\mathbf R)$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-nuclear}
 \Bigl[\,\hat T_N + \varepsilon_n(\mathbf R) + V_{NN}(\mathbf R)\Bigr]\,
    \chi_{\text{nuc},n\nu}(\mathbf R) \;=\;
    E_{n\nu}\, \chi_{\text{nuc},n\nu}(\mathbf R) .
 \end{equation}
-{% endraw %}
+$$
 
 Equation \eqref{eq:ch-02-electronic} is the **electronic Schrödinger
 equation**, and it is what we will solve for the rest of these
@@ -298,7 +298,7 @@ The electronic Hamiltonian appearing in
 \eqref{eq:ch-02-electronic} is exactly
 \eqref{eq:ch-02-hamiltonian}:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-Hel}
 \hat H_{\text{el}}(\mathbf R) \;=\;
@@ -308,7 +308,7 @@ The electronic Hamiltonian appearing in
    \;\underbrace{+\sum_{i<j}^{N}
       \frac{1}{|\mathbf r_i - \mathbf r_j|}}_{\hat V_{ee}} .
 \end{equation}
-{% endraw %}
+$$
 
 The $V_{NN}$ of \eqref{eq:ch-02-VNN} is the same in both
 \eqref{eq:ch-02-electronic} and the total energy, but in the
@@ -338,7 +338,7 @@ A single electron has spin $s = 1/2$.  The spin state lives in
 $\mathbb C^2$; the two basis vectors are conventionally labelled
 $\alpha$ ("spin up") and $\beta$ ("spin down"),
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-spin-basis}
 \alpha(\sigma) \;=\; \begin{pmatrix} 1 \\\\ 0 \end{pmatrix},
@@ -347,13 +347,13 @@ $\alpha$ ("spin up") and $\beta$ ("spin down"),
 \qquad
 \sigma \in \{-\tfrac{1}{2}, +\tfrac{1}{2}\}.
 \end{equation}
-{% endraw %}
+$$
 
 The combined spatial $\otimes$ spin Hilbert space of one electron is
 therefore $\mathcal H_1 = L^2(\mathbb R^3) \otimes \mathbb C^2$.  A
 single-electron state is a **spin-orbital**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-spinorbital}
 \chi(\mathbf x) \;=\;
@@ -362,7 +362,7 @@ single-electron state is a **spin-orbital**
       \phi(\mathbf r)\, \beta(\sigma)  & \text{(spin down)} ,
    \end{cases}
 \end{equation}
-{% endraw %}
+$$
 
 where $\mathbf x = (\mathbf r, \sigma)$ is the **combined space-spin
 coordinate** and $\phi(\mathbf r) \in L^2(\mathbb R^3)$ is the
@@ -379,7 +379,7 @@ $\Psi(\mathbf x_1, \dots, \mathbf x_N)$ must be *totally
 antisymmetri`c*' under the exchange of any two combined coordinates
 $\mathbf x_i \leftrightarrow \mathbf x_j$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-antisymmetry}
 \Psi(\mathbf x_1, \dots, \mathbf x_i, \dots, \mathbf x_j, \dots,
@@ -387,7 +387,7 @@ $\mathbf x_i \leftrightarrow \mathbf x_j$:
    -\,\Psi(\mathbf x_1, \dots, \mathbf x_j, \dots, \mathbf x_i, \dots,
             \mathbf x_N) .
 \end{equation}
-{% endraw %}
+$$
 
 The immediate corollary is the **Pauli exclusion principle**: if
 two electrons occupy the *same* spin-orbital, i.e. $\chi_i = \chi_j$,
@@ -410,7 +410,7 @@ The simplest non-trivial antisymmetric wavefunction is a **Slater
 determinant** of $N$ orthonormal spin-orbitals
 $\{\chi_i\}_{i=1}^{N}$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-slater}
 \Phi(\mathbf x_1, \dots, \mathbf x_N) \;=\;
@@ -422,7 +422,7 @@ $\{\chi_i\}_{i=1}^{N}$,
       \chi_1(\mathbf x_N) & \chi_2(\mathbf x_N) & \cdots & \chi_N(\mathbf x_N)
    \end{vmatrix}.
 \end{equation}
-{% endraw %}
+$$
 
 The prefactor $1/\sqrt{N!}$ is the **normalisation** for orthonormal
 $\chi_i$; the determinant structure *guarantees* total
@@ -435,7 +435,7 @@ It is worth checking that \eqref{eq:ch-02-slater} is correctly
 normalised.  The square modulus, integrated over all $3N$ electronic
 coordinates and summed over all $2^N$ spin configurations, is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-norm}
 \langle \Phi \mid \Phi \rangle \;=\;
@@ -443,19 +443,19 @@ coordinates and summed over all $2^N$ spin configurations, is
    \int d\mathbf x_1 \cdots d\mathbf x_N\;
    \left| \det\Bigl[\chi_i(\mathbf x_j)\Bigr] \right|^2 .
 \end{equation}
-{% endraw %}
+$$
 
 A classic result (sometimes called the **Cauchy–Binet identity**)
 reduces this multiple integral to a product of one-electron norms:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-cauchy-binet}
 \frac{1}{N!} \int d\mathbf x_1 \cdots d\mathbf x_N\;
    \Bigl| \det[\chi_i(\mathbf x_j)] \Bigr|^2
    \;=\; \det\Bigl[ \langle \chi_i \mid \chi_j \rangle \Bigr]_{i,j=1}^{N} .
 \end{equation}
-{% endraw %}
+$$
 
 For orthonormal $\chi_i$, the overlap matrix on the right is the
 identity, and \eqref{eq:ch-02-norm} equals one.  This is the
@@ -473,25 +473,25 @@ identity, and \eqref{eq:ch-02-norm} equals one.  This is the
 
 The **one-particle density** associated with a single determinant is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-1pdm}
 \rho(\mathbf r) \;=\; \sum_{i=1}^{N}
                      \sum_{\sigma \in \{\uparrow,\downarrow\}}
                      \Bigl| \chi_i(\mathbf r, \sigma) \Bigr|^2 .
 \end{equation}
-{% endraw %}
+$$
 
 For a closed-shell determinant with $N/2$ doubly-occupied spatial
 orbitals $\{\phi_a\}_{a=1}^{N/2}$, this reduces to the
 **spin-summed density**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-rho-closed}
 \rho(\mathbf r) \;=\; 2 \sum_{a=1}^{N/2} |\phi_a(\mathbf r)|^2 .
 \end{equation}
-{% endraw %}
+$$
 
 Equations \eqref{eq:ch-02-1pdm} and \eqref{eq:ch-02-rho-closed} are
 the *only* properties of a Slater determinant that survive the
@@ -515,24 +515,24 @@ specified by choosing *whic`h*' $N$ of the $K$ spin-orbitals are
 occupied.  The number of such choices factors into the $\alpha$ and
 $\beta$ sectors,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-ndet}
 N_{\text{det}}(K, N_\alpha, N_\beta) \;=\;
    \binom{K}{N_\alpha} \binom{K}{N_\beta} .
 \end{equation}
-{% endraw %}
+$$
 
 The **full-CI wavefunction** is the most general linear combination
 of all of them:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-fci-explicit}
 \Psi_0(\mathbf x_1, \dots, \mathbf x_N) \;=\;
    \sum_{I=1}^{N_{\text{det}}} c_I\, \Phi_I(\mathbf x_1, \dots, \mathbf x_N) .
 \end{equation}
-{% endraw %}
+$$
 
 Equation \eqref{eq:ch-02-fci-explicit} is the same as
 \eqref{eq:ch-02-fci}; we are simply being explicit about the
@@ -540,7 +540,7 @@ $\binom{K}{N_\alpha}\binom{K}{N_\beta}$ basis.  The coefficients
 $\{c_I\}$ are determined by minimising the energy expectation
 value
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-var}
 E_0 \;=\; \min_{\{c_I\}}
@@ -548,7 +548,7 @@ E_0 \;=\; \min_{\{c_I\}}
                \langle \Phi_I \mid \hat H_{\text{el}} \mid \Phi_J \rangle}
               {\sum_{I} |c_I|^2} .
 \end{equation}
-{% endraw %}
+$$
 
 This is the **Rayleigh–Ritz variational principle** applied to the
 finite-dimensional subspace spanned by the determinants.  In the
@@ -562,13 +562,13 @@ basis-set incompleteness, which we treat in
 The equation for the optimal $\{c_I\}$ is the standard
 **eigenvalue problem** in the determinant basis,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-ci-eig}
 \sum_{J} \langle \Phi_I \mid \hat H_{\text{el}} \mid \Phi_J \rangle
    c_J \;=\; E\, c_I ,
 \end{equation}
-{% endraw %}
+$$
 
 i.e. $\mathbf H \mathbf c = E \mathbf c$ with
 $H_{IJ} = \langle \Phi_I \mid \hat H_{\text{el}} \mid \Phi_J
@@ -596,14 +596,14 @@ needed in the worked example.
 Equation \eqref{eq:ch-02-exp-wall} is a fact, not a conjecture.  The
 combinatorial identity
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-binom-stirling}
 \binom{K}{N} \;=\; \frac{K!}{N!\,(K-N)!}
                 \;\xrightarrow[K \gg N]{}\; \frac{K^N}{N!}
                 \;\xrightarrow[K \to \infty]{}\; e^{N \ln K - \ln N!}
 \end{equation}
-{% endraw %}
+$$
 
 shows that the determinant count grows *exponentially* in the
 number of electrons $N$, with a base that depends on the basis size
@@ -647,7 +647,7 @@ matrix elements $\langle \Phi_I \mid \hat H_{\text{el}} \mid \Phi_J
 exploiting the determinant structure of the $\Phi$'s.  The rules
 express every matrix element in terms of *one-electron integrals*
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h1}
 h_{pq} \;=\; \langle \chi_p \mid \hat h \mid \chi_q \rangle,
@@ -655,11 +655,11 @@ h_{pq} \;=\; \langle \chi_p \mid \hat h \mid \chi_q \rangle,
 \hat h \;=\; -\tfrac{1}{2}\nabla^2
             -\sum_{A=1}^{M} \frac{Z_A}{|\mathbf r - \mathbf R_A|},
 \end{equation}
-{% endraw %}
+$$
 
 and *two-electron integrals*
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-v2}
 \langle pq \mid rs \rangle \;=\;
@@ -669,7 +669,7 @@ and *two-electron integrals*
         {|\mathbf r_1 - \mathbf r_2|}\;
    d\mathbf x_1\, d\mathbf x_2 .
 \end{equation}
-{% endraw %}
+$$
 
 The notation $\langle pq \mid rs \rangle$ is **physicists'** notation
 — the bar separates the bra/ket for electron 1 from the bra/ket for
@@ -681,7 +681,7 @@ two are equal for real orbitals.)
 > spin-orbitals are real, so the distinction between physicists' and
 > chemists' notation is moot.  In the general case the conversion
 > is
-{% raw %}
+$$
 > \begin{equation}
 > \label{eq:ch-02-notation-conv}
 > \langle pq \mid rs \rangle \;=\; [pr|qs] ,
@@ -706,11 +706,11 @@ basis:
        \Bigl(\langle ij \mid ij \rangle
             -\langle ij \mid ji \rangle\Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 - **$I$ and $J$ differ by one spin-orbital** ($I$ has $a$ where
   $J$ has $b$, all others the same):
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-sc-singles}
 \langle \Phi_I \mid \hat H_{\text{el}} \mid \Phi_J \rangle
@@ -719,26 +719,26 @@ basis:
        \Bigl(\langle ai \mid bi \rangle
             -\langle ai \mid ib \rangle\Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 - **$I$ and $J$ differ by two spin-orbitals** ($I$ has $a, b$ where
   $J$ has $c, d$, all others the same):
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-sc-doubles}
 \langle \Phi_I \mid \hat H_{\text{el}} \mid \Phi_J \rangle
    \;=\; \langle ab \mid cd \rangle
         -\langle ab \mid dc \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 - **$I$ and $J$ differ by three or more spin-orbitals**:
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-sc-zero}
 \langle \Phi_I \mid \hat H_{\text{el}} \mid \Phi_J \rangle \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 The proof of these rules is in any quantum-chemistry textbook
 (Szabo & Ostlund §4.2; Helgaker–Jorgensen–Olsen §11.2).  The key
@@ -776,12 +776,12 @@ $\langle \Phi \mid \hat H_{\text{el}} \mid \Phi \rangle$ over all
 *single* Slater determinants $\Phi$ built from a chosen basis.  The
 **correlation energy** is the leftover,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-ecorr}
 E_{\text{corr}} \;\equiv\; E_0 - E_{\text{HF}} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $E_0$ is the exact non-relativistic ground-state energy (in
 the same one-electron basis) and $E_{\text{HF}}$ is the RHF energy.
@@ -861,14 +861,14 @@ to the full-CI sum.  They can be derived in three standard ways:
   zeroth-order Hamiltonian (e.g. the Fock operator), and expand
   $E$ in powers of $\hat V$.  The leading correction is the
   second-order **Møller–Plesset** energy
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-02-mp2}
   E^{(2)} \;=\; \sum_{i<j}\sum_{a<b}
       \frac{\Bigl| \langle ij \mid ab \rangle \Bigr|^2}
            {\varepsilon_i + \varepsilon_j - \varepsilon_a - \varepsilon_b} ,
   \end{equation}
-{% endraw %}
+$$
   a sum over *occupied*' spin-orbitals $i, j$ and virtual ones
   $a, b$.  The denominator is the *orbital-energy* difference of
   the four states, and the sum runs over all doubly-excited
@@ -922,12 +922,12 @@ if, for two non-interacting fragments $A$ and $B$ at infinite
 separation, the total energy equals the sum of the fragment
 energies:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-size-cons}
 E_{AB} \;=\; E_A + E_B \qquad \text{(fragments at } R \to \infty\text{)} .
 \end{equation}
-{% endraw %}
+$$
 
 The "non-interacting" caveat is essential: size consistency is
 defined for a *vanishing* coupling between the fragments.  A
@@ -938,12 +938,12 @@ non-interacting fragments at any separation is size consistent.
 extensive** if the energy scales *linearly* with the number of
 particles $N$ for a homogeneous system:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-size-ext}
 E_N \;=\; \mathcal O(N) \qquad (N \to \infty) .
 \end{equation}
-{% endraw %}
+$$
 
 This is a *stronger* property than size consistency: it requires
 the energy to be proportional to the number of particles, not just
@@ -1227,21 +1227,21 @@ axis is the $z$-axis, the two nuclei are at
 $\mathbf A = (0, 0, -R/2)$ and $\mathbf B = (0, 0, +R/2)$ with
 $R = 1.4\,a_0$, and the basis is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-basis}
 \chi_1(\mathbf r) \;=\; \chi(\mathbf r - \mathbf A),
 \qquad
 \chi_2(\mathbf r) \;=\; \chi(\mathbf r - \mathbf B) .
 \end{equation}
-{% endraw %}
+$$
 
 With $K = 2$ spatial orbitals and $N = 2$ electrons
 ($N_\alpha = N_\beta = 1$), the full-CI basis of
 \eqref{eq:ch-02-fci-explicit} has
 $\binom{2}{1} \binom{2}{1} = 4$ determinants:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-dets}
 \Phi_1 = | \chi_1 \bar\chi_1 \rangle, \quad
@@ -1249,7 +1249,7 @@ $\binom{2}{1} \binom{2}{1} = 4$ determinants:
 \Phi_3 = | \chi_2 \bar\chi_1 \rangle, \quad
 \Phi_4 = | \chi_2 \bar\chi_2 \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 (Here $\chi_i$ and $\bar\chi_i$ denote the spin-orbitals with
 $\chi_i$ in the $\alpha$ and $\beta$ spin sectors, respectively.)
@@ -1276,17 +1276,17 @@ and the bond length $R = 1.4\,a_0$, the integral tables
 }}/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py)) give the
 following values (in Hartree):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-h}
 h_{11} = h_{22} = -1.1204, \qquad h_{12} = h_{21} = -0.9584 .
 \end{equation}
-{% endraw %}
+$$
 
 (The diagonal is the same on both centres because of homonuclear
 symmetry.)
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-v}
 \begin{aligned}
@@ -1298,7 +1298,7 @@ symmetry.)
 \langle 22 \mid 22 \rangle &= 0.7746 .
 \end{aligned}
 \end{equation}
-{% endraw %}
+$$
 
 The $V_{NN} = 1/R = 1/1.4 \approx 0.7143\,E_h$ is the same in all
 configurations and is added at the end.
@@ -1321,19 +1321,19 @@ $\Phi_2 = |\chi_1 \bar\chi_2\rangle$,
 $\Phi_3 = |\chi_2 \bar\chi_1\rangle$ are open-shell singlets):
 
 - $H_{11} = H_{44}$ — diagonal of the two closed shells:
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-02-h2-h11}
   H_{11} \;=\; 2 h_{11} + \langle 11 \mid 11 \rangle
             \;=\; 2(-1.1204) + 0.7746
             \;=\; -1.4662\; E_h .
   \end{equation}
-{% endraw %}
+$$
 
 - $H_{14} = H_{41}$ — coupling of the two closed shells: they
   differ by *two* spin-orbitals, so the Slater–Condon rule
   \eqref{eq:ch-02-sc-doubles} gives
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-02-h2-h14}
   H_{14} \;=\; \langle 11 \mid 22 \rangle
@@ -1341,7 +1341,7 @@ $\Phi_3 = |\chi_2 \bar\chi_1\rangle$ are open-shell singlets):
             \;=\; 0.5697 - 0.2970
             \;=\; 0.2727\; E_h .
   \end{equation}
-{% endraw %}
+$$
   (The exchange term $\langle 12 \mid 21 \rangle$ is the
   *same number* as $\langle 12 \mid 12 \rangle$ because the
   orbitals are real.)
@@ -1349,19 +1349,19 @@ $\Phi_3 = |\chi_2 \bar\chi_1\rangle$ are open-shell singlets):
 - $H_{22} = H_{33}$ — diagonal of the open-shell singlet: two
   spin-orbitals in two different spatial orbitals, no same-spin
   exchange term, but a Coulomb repulsion:
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-02-h2-h22}
   H_{22} \;=\; h_{11} + h_{22} + \langle 11 \mid 22 \rangle
             \;=\; -1.1204 - 1.1204 + 0.5697
             \;=\; -1.6711\; E_h .
   \end{equation}
-{% endraw %}
+$$
 
 - $H_{23} = H_{32}$ — coupling of the two open-shell singlets: they
   differ by *two* spin-orbitals, so by
   \eqref{eq:ch-02-sc-doubles}:
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-02-h2-h23}
   H_{23} \;=\; \langle 12 \mid 12 \rangle
@@ -1369,7 +1369,7 @@ $\Phi_3 = |\chi_2 \bar\chi_1\rangle$ are open-shell singlets):
             \;=\; 0.2970 - 0.2970
             \;=\; 0.0\; E_h .
   \end{equation}
-{% endraw %}
+$$
   The vanishing exchange difference is *not* an accident: the
   exchange term $\langle 12 \mid 21 \rangle$ equals the Coulomb
   term $\langle 12 \mid 12 \rangle$ for real orbitals, so
@@ -1384,7 +1384,7 @@ $\Phi_3 = |\chi_2 \bar\chi_1\rangle$ are open-shell singlets):
 Putting it all together, the $\hat H_{\text{el}}$ matrix in the
 determinant basis is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-ci-matrix}
 \mathbf H_{\text{el}} \;=\;
@@ -1395,7 +1395,7 @@ determinant basis is
        0.2727  & 0       & 0       & -1.4662
    \end{pmatrix}\; E_h .
 \end{equation}
-{% endraw %}
+$$
 
 The matrix is block-diagonal: a $2 \times 2$ "closed-shell" block
 spanned by $\{\Phi_1, \Phi_4\}$, a $2 \times 2$ "open-shell" block
@@ -1415,7 +1415,7 @@ The closed-shell block $\{\Phi_1, \Phi_4\}$ is a $2 \times 2$ matrix
 with the structure of the **Hund–Mulliken** two-configuration
 problem.  The eigenvalues are the roots of
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-closed-2x2}
 \det\!\begin{pmatrix}
@@ -1424,11 +1424,11 @@ problem.  The eigenvalues are the roots of
 \end{pmatrix}
 \;=\; (H_{11} - E)^2 - H_{14}^2 \;=\; 0,
 \end{equation}
-{% endraw %}
+$$
 
 so
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-closed-evals}
 E_\pm^{(\text{closed})} \;=\; H_{11} \pm |H_{14}|
@@ -1438,30 +1438,30 @@ E_\pm^{(\text{closed})} \;=\; H_{11} \pm |H_{14}|
             -1.7389\; E_h .
    \end{cases}
 \end{equation}
-{% endraw %}
+$$
 
 The open-shell block $\{\Phi_2, \Phi_3\}$ is *diagonal* by
 \eqref{eq:ch-02-h2-h23}, so its eigenvalues are
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-open-evals}
 E^{(\text{open})} \;=\; -1.6711\; E_h
    \qquad \text{(doubly degenerate)} .
 \end{equation}
-{% endraw %}
+$$
 
 The four eigenvalues of the full-CI matrix \eqref{eq:ch-02-h2-ci-matrix}
 are therefore
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-fci-evals}
 E_1 = -1.7389\; E_h, \quad
 E_2 = E_3 = -1.6711\; E_h, \quad
 E_4 = -1.1935\; E_h .
 \end{equation}
-{% endraw %}
+$$
 
 The ground-state energy is $E_1 = -1.7389\,E_h$, the (doubly
 degenerate) first excited state is the open-shell singlet at
@@ -1476,7 +1476,7 @@ $(\Phi_1 - \Phi_4)/\sqrt 2$ (the minus sign follows from the
 positive off-diagonal $H_{14} > 0$ — the lower eigenvalue is the
 *anti-bonding* combination of the two closed-shell determinants):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-gs}
 \Psi_0 \;=\; \frac{1}{\sqrt 2}\Bigl(\Phi_1 - \Phi_4\Bigr)
@@ -1484,7 +1484,7 @@ positive off-diagonal $H_{14} > 0$ — the lower eigenvalue is the
          \Bigl(|\chi_1 \bar\chi_1\rangle
               -|\chi_2 \bar\chi_2\rangle\Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 In the spatial-orbital language, this is the **Hund–Mulliken**
 wavefunction: an equal-weight superposition of the two *closed-
@@ -1494,30 +1494,30 @@ absent.  (The open-shell singlets enter *only* as excited states.)
 The ground-state electronic energy is the lower eigenvalue of
 \eqref{eq:ch-02-h2-closed-2x2},
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-gs-energy}
 E_0^{\text{el}} \;=\; -1.7389\,E_h .
 \end{equation}
-{% endraw %}
+$$
 
 Adding the nuclear–nuclear repulsion $V_{NN} = 1/R = 0.7143\,E_h$
 gives the total energy
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-gs-total}
 E_0^{\text{tot}} \;=\; E_0^{\text{el}} + V_{NN}
    \;=\; -1.7389 + 0.7143
    \;=\; -1.0246\,E_h .
 \end{equation}
-{% endraw %}
+$$
 
 > **Tip.**  Compare to the **restricted Hartree–Fock** answer in
 > [chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/),
 > §6.9: $E_{\text{HF}} = -1.1167\,E_h$.  The full-CI energy is
 > lower by
-{% raw %}
+$$
 > \begin{equation}
 > \label{eq:ch-02-h2-corr}
 > E_{\text{corr}} \;=\; E_0 - E_{\text{HF}}
@@ -1525,7 +1525,7 @@ E_0^{\text{tot}} \;=\; E_0^{\text{el}} + V_{NN}
 >    \;=\; +0.0921\,E_h
 >    \;\approx\; 2.5\;\text{eV} .
 > \end{equation}
-{% endraw %}
+$$
 > This is the **correlation energy** of $\mathrm{H}_2$ in the
 > STO-3G basis.  It is large (about 9% of the total HF energy) by
 > the standards of post-HF benchmarks, because the minimal basis
@@ -1545,14 +1545,14 @@ The one-particle density of the ground state
 $|\chi_1|^2 + |\chi_2|^2$ to the spin-summed density, so the
 ground-state density is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-02-h2-density}
 \rho(\mathbf r) \;=\; 2 \cdot \tfrac{1}{2}\Bigl(|\chi_1(\mathbf r)|^2
                                             + |\chi_2(\mathbf r)|^2\Bigr)
    \;=\; |\chi_1(\mathbf r)|^2 + |\chi_2(\mathbf r)|^2 .
 \end{equation}
-{% endraw %}
+$$
 
 The two $\chi$'s contribute *equally* to the density.  This is
 exact for the Hund–Mulliken ground state and would *not* be exact
@@ -2005,7 +2005,7 @@ covered, and the reader should know are missing, are:
   (the third row of the transition metals and beyond), the
   inner-shell electrons are relativistic: the *Dirac–Coulom`b*'
   Hamiltonian
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-02-dirac}
   \hat H_{\text{DC}} \;=\; \sum_i \Bigl[ c\, \boldsymbol\alpha_i
@@ -2013,7 +2013,7 @@ covered, and the reader should know are missing, are:
      - \sum_{iA} \frac{Z_A}{r_{iA}}
      + \sum_{i<j} \frac{1}{r_{ij}}
   \end{equation}
-{% endraw %}
+$$
   (with $\boldsymbol\alpha$, $\beta$ the Dirac matrices) is
   needed.  The non-relativistic limit is a perturbative
   expansion in $1/c$ around \eqref{eq:ch-02-hamiltonian}; the

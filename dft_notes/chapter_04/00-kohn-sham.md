@@ -327,23 +327,23 @@ unless the iteration is damped, extrapolated, or otherwise
 We model the SCF as a **fixed-point problem**.  Define the SCF
 update as a map from the input density to the output density:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-scf-map}
 \rho_\text{out} = \mathcal F[\rho_\text{in}].
 \end{equation}
-{% endraw %}
+$$
 
 The map $\mathcal F$ does three things: it builds the KS Hamiltonian
 from $\rho_\text{in}$, diagonalises it, and reconstructs a density
 from the occupied orbitals.  Self-consistency means
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-fixed-point}
 \rho^\star = \mathcal F[\rho^\star],
 \end{equation}
-{% endraw %}
+$$
 
 i.e. $\rho^\star$ is a **fixed point** of the map.  The bare iteration
 $\rho^{(n+1)} = \mathcal F[\rho^{(n)}]$ is the textbook fixed-point
@@ -360,13 +360,13 @@ $$
 
 by
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-linear-mixing}
 \rho^{(n+1)} = (1 - \alpha)\, \rho^{(n)} + \alpha\, \mathcal F[\rho^{(n)}],
 \qquad 0 < \alpha < 1.
 \end{equation}
-{% endraw %}
+$$
 
 This is **simple (linear) mixing**: the new density is a convex
 combination of the old density and the density that the SCF map would
@@ -393,12 +393,12 @@ The damped map converges iff $|\mu_\text{damp}| < 1$, which is a
 *strictly weaker* condition than $|\mu| < 1$.  In particular, the
 real part of $\mu$ is mapped to
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-mixing-amplification}
 \Re(\mu_\text{damp}) = (1 - \alpha) + \alpha\, \Re(\mu) .
 \end{equation}
-{% endraw %}
+$$
 
 For $\alpha \in (0, 1)$ this is a convex combination of $1$ and
 $\Re(\mu)$.  If $\Re(\mu) < 1$ (the typical case for a stable
@@ -427,12 +427,12 @@ residual, and use that combination as the new iterate.
 Define the **residual** at iteration $i$ as the difference between
 output and input:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-pulay-residual}
 R_i \;\equiv\; \mathcal F[\rho^{(i)}] - \rho^{(i)} .
 \end{equation}
-{% endraw %}
+$$
 
 A fixed point of $\mathcal F$ is, by definition, a density at which
 the residual vanishes.  The strategy is therefore to predict the
@@ -444,25 +444,25 @@ that we will use to combine the last $m$ iterates and the last $m$
 residuals.  Define the extrapolated iterate and the extrapolated
 residual as the same linear combinations:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-pulay-extrapolation}
 \tilde\rho = \sum_{i=1}^{m} c_i \rho^{(i)}, \qquad
 \tilde R = \sum_{i=1}^{m} c_i R_i .
 \end{equation}
-{% endraw %}
+$$
 
 Because $\mathcal F$ is approximately linear near the fixed point,
 $\tilde R$ is approximately the residual that would be produced by
 $\tilde\rho$.  We choose $\mathbf c$ to minimise the squared norm
 $\langle \tilde R, \tilde R \rangle$ subject to the constraint
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-pulay-sum-rule}
 \sum_{i=1}^{m} c_i = 1,
 \end{equation}
-{% endraw %}
+$$
 
 which ensures that \eqref{eq:ch-04-pulay-extrapolation} reproduces a
 fixed point exactly if the iteration history is already at one.  (If
@@ -480,12 +480,12 @@ on density space:
 
 Introduce the **metric matrix** $B$ with elements
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-pulay-metric}
 B_{ij} = \langle R_i, R_j \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 The constrained minimisation is solved by a Lagrangian.  Define
 
@@ -508,7 +508,7 @@ The constraint $\sum_i c_i = 1$ is the $(m{+}1)$-th equation.  Stacking
 the $m$ equations and the constraint into a single linear system
 gives
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-pulay-coefficients}
 \begin{pmatrix}
@@ -522,11 +522,11 @@ B_{m1} & B_{m2} & \cdots & B_{mm} & 1 \\\
 =
 \begin{pmatrix} 0 \\\\ 0 \\\\ \vdots \\\\ 0 \\\\ 1 \end{pmatrix} .
 \end{equation}
-{% endraw %}
+$$
 
 In compact form, with $\mathbf 1$ the $m$-vector of ones,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-pulay-augmented}
 \begin{pmatrix} B & \mathbf 1 \\\\ \mathbf 1^T & 0 \end{pmatrix}
@@ -534,7 +534,7 @@ In compact form, with $\mathbf 1$ the $m$-vector of ones,
 =
 \begin{pmatrix} \mathbf 0 \\\\ 1 \end{pmatrix} .
 \end{equation}
-{% endraw %}
+$$
 
 The system \eqref{eq:ch-04-pulay-augmented} is $(m{+}1) \times (m{+}1)$,
 symmetric, and (provided the $R_i$ are linearly independent) non-
@@ -594,12 +594,12 @@ the **Sherman–Morrison formula** each iteration.
 
 The **"good" Broyden update** is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-broyden-good}
 G_{n+1} = G_n + \frac{\big[\Delta\rho_n - G_n \Delta \mathbf r_n\big]\, \Delta\rho_n^T}{\Delta\rho_n^T \Delta\rho_n},
 \end{equation}
-{% endraw %}
+$$
 
 where $\Delta\rho_n = \rho^{(n+1)} - \rho^{(n)}$ and
 $\Delta\mathbf r_n = \mathbf r^{(n+1)} - \mathbf r^{(n)}$.  The
@@ -627,12 +627,12 @@ perfect), and a small change in the potential produces a long-range
 ($\sim 1/r$) change in the density.  In Fourier space, the
 density-response function is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-lindhard}
 \chi(\mathbf q) = -\frac{\chi_0}{1 + k_\text{TF}^2 / q^2},
 \end{equation}
-{% endraw %}
+$$
 
 where $\chi_0$ is the bare response and $k_\text{TF}$ is the
 **Thomas–Fermi screening wavevector**.  The long-wavelength components
@@ -645,12 +645,12 @@ charge sloshing mode that simple mixing cannot damp.
 the residual before mixing.  Define the **Kerker preconditioner**
 in reciprocal space by
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-kerker-pre}
 \hat K(\mathbf G) = \frac{G^2}{G^2 + k_\text{TF}^2},
 \end{equation}
-{% endraw %}
+$$
 
 so that $\hat K(0) = 0$ and $\hat K(\infty) = 1$.  The new mixed
 density is
@@ -752,14 +752,14 @@ $$
 
 because $\Psi$ is normalised.  Therefore
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-hellmann-feynman}
 \boxed{\;
 \frac{dE}{d\lambda} = \left\langle \Psi(\lambda) \bigg| \frac{\partial \hat H}{\partial \lambda} \bigg| \Psi(\lambda) \right\rangle
 \;}
 \end{equation}
-{% endraw %}
+$$
 
 The derivative of the energy is the expectation value of the
 derivative of the Hamiltonian — *with the wavefunction held fixed at
@@ -772,12 +772,12 @@ The Born–Oppenheimer energy surface $E(\mathbf R)$ is the total
 energy of the electronic ground state at fixed nuclear positions
 $\mathbf R = \{\mathbf R_I\}$.  The force on nucleus $I$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-force-def}
 \mathbf F_I = -\frac{\partial E}{\partial \mathbf R_I} .
 \end{equation}
-{% endraw %}
+$$
 
 Apply \eqref{eq:ch-04-hellmann-feynman} with $\lambda = R_{I\alpha}$
 ($\alpha = x, y, z$).  The full molecular Hamiltonian is
@@ -814,7 +814,7 @@ $\partial v_\text{eff}/\partial \mathbf R_I$ is a known function of
 $\mathbf r$.  The Hellmann–Feynman force on nucleus $I$ in a
 **complete basis set** is therefore
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-force-nucleus}
 \boxed{\;
@@ -824,7 +824,7 @@ $\mathbf r$.  The Hellmann–Feynman force on nucleus $I$ in a
    - \sum_{J \neq I} \frac{Z_I Z_J (\mathbf R_I - \mathbf R_J)}{|\mathbf R_I - \mathbf R_J|^3} .
 \;}
 \end{equation}
-{% endraw %}
+$$
 
 This is *exactly* the classical Coulomb force on a point charge $Z_I$
 placed at $\mathbf R_I$: the first term is the attraction to the
@@ -855,7 +855,7 @@ self-consistent value, gives \eqref{eq:ch-04-force-nucleus} *plus*
 a term from the basis-set derivative that is not present in the
 complete-basis limit:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-force-pulay}
 \boxed{\;
@@ -865,7 +865,7 @@ complete-basis limit:
         \hat H_\text{KS} - \varepsilon_i \bigg| \chi_\nu \rangle .
 \;}
 \end{equation}
-{% endraw %}
+$$
 
 **Derivation.**  The total energy
 $E = T_s + V_\text{ext} + J + E_\text{xc} + V_{nn}$ is a functional
@@ -971,14 +971,14 @@ The minimal extension is the **Local Spin Density Approximation
 (LSDA)** of von Barth and Hedin (1972) and its offspring.  Replace
 the scalar density by a **2-component spin density**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-spin-density}
 \boldsymbol\rho(\mathbf r) = \begin{pmatrix} \rho_\uparrow(\mathbf r) \\\\ \rho_\downarrow(\mathbf r) \end{pmatrix}
 \quad\text{with}\quad
 \rho(\mathbf r) = \rho_\uparrow(\mathbf r) + \rho_\downarrow(\mathbf r),
 \end{equation}
-{% endraw %}
+$$
 
 and the **magnetisation density**
 
@@ -998,7 +998,7 @@ observable is then a functional of $(\rho_\uparrow, \rho_\downarrow)$.
 
 The KS spin-DFT energy is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-lsda-energy}
 E_\text{KS}[\rho_\uparrow, \rho_\downarrow]
@@ -1007,7 +1007,7 @@ E_\text{KS}[\rho_\uparrow, \rho_\downarrow]
 + J[\rho]
 + E_\text{xc}[\rho_\uparrow, \rho_\downarrow] .
 \end{equation}
-{% endraw %}
+$$
 
 $T_s$ is the non-interacting kinetic energy of two independent
 Fermi seas (one for each spin).  The Hartree $J$ depends only on
@@ -1018,13 +1018,13 @@ the total $\rho$.  The XC functional $E_\text{xc}[\rho_\uparrow,
 The **L(S)DA** approximation takes the homogeneous electron gas
 (HEG) as the reference and writes
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-lsda-xc}
 E_\text{xc}^\text{LDA}[\rho_\uparrow, \rho_\downarrow]
 = \int \rho(\mathbf r)\, \varepsilon_\text{xc}\big(\rho_\uparrow(\mathbf r), \rho_\downarrow(\mathbf r)\big)\, d\mathbf r ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\varepsilon_\text{xc}(n_\uparrow, n_\downarrow)$ is the XC
 energy *per particle* of a HEG with spin densities
@@ -1032,13 +1032,13 @@ $(n_\uparrow, n_\downarrow)$.  This is parameterised accurately in
 the Vosko–Wilk–Nusair (VWN) or Perdew–Wang (PW92) forms.  The
 corresponding XC *potential* is a 2-vector
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-vxc-spin}
 v_{\text{xc},\sigma}(\mathbf r) = \frac{\delta E_\text{xc}}{\delta \rho_\sigma(\mathbf r)},
 \qquad \sigma = \uparrow, \downarrow .
 \end{equation}
-{% endraw %}
+$$
 
 The natural **spin-polarisation coordinate** is the relative spin
 polarisation
@@ -1061,7 +1061,7 @@ codes), the spin quantisation axis is taken to be a fixed direction
 (usually $\hat z$) and the KS Hamiltonian is block-diagonal in spin
 space.  The KS equation reads
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-2x2-hamiltonian}
 \hat H_\text{KS}^\sigma
@@ -1069,7 +1069,7 @@ space.  The KS equation reads
 \qquad
 \sigma \in \{\uparrow, \downarrow\},
 \end{equation}
-{% endraw %}
+$$
 
 with the spin-dependent effective potential
 
@@ -1121,18 +1121,18 @@ $$
 
 and the **spin density matrix** (in the Pauli basis)
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-spin-density-matrix}
 \boldsymbol\rho(\mathbf r)
 = \frac{1}{2}\big[\rho(\mathbf r)\, \mathbf 1 + \boldsymbol\sigma \cdot \mathbf m(\mathbf r)\big] ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\boldsymbol\sigma = (\sigma_x, \sigma_y, \sigma_z)$ are the
 Pauli matrices.  The KS Hamiltonian is now
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-nonc-collinear}
 \hat H_\text{KS}(\mathbf r)
@@ -1140,7 +1140,7 @@ Pauli matrices.  The KS Hamiltonian is now
 + v_\text{eff}(\mathbf r)\, \mathbf 1
 + \mathbf B_\text{xc}(\mathbf r) \cdot \boldsymbol\sigma ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\mathbf B_\text{xc}(\mathbf r) = \delta E_\text{xc} / \delta
 \mathbf m(\mathbf r)$ is the **XC magnetic field** — a 3-vector
@@ -1209,13 +1209,13 @@ expression.  This section derives it from scratch.
 
 Define a one-parameter family of $N$-electron Hamiltonians
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-ac-hamiltonian}
 \hat H_\lambda = \hat T + \lambda\, \hat V_{ee} + \hat V_\text{ext}^\lambda ,
 \qquad \lambda \in [0, 1] ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\lambda$ is the **coupling constant** and
 $\hat V_{ee} = \sum_{i<j} 1/|\mathbf r_i - \mathbf r_j|$ is the full
@@ -1224,13 +1224,13 @@ $\hat V_\text{ext}^\lambda = \sum_i v_\text{ext}^\lambda(\mathbf r_i)$
 is *adjuste`d*' at every $\lambda$ so that the ground-state density is
 **fixed** to the physical density $\rho(\mathbf r)$ for every $\lambda$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-ac-density-fixed}
 \rho_\lambda(\mathbf r) \;=\; \rho(\mathbf r)
 \qquad \text{for all } \lambda \in [0, 1] .
 \end{equation}
-{% endraw %}
+$$
 
 Two limits are easy to identify.
 
@@ -1257,14 +1257,14 @@ joins $v_\text{eff}$ (at $\lambda = 0$) to $v_\text{ext}$
 derivative of the ground-state energy $E_\lambda$ with respect to
 $\lambda$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-ac-hellmann-feynman}
 \frac{dE_\lambda}{d\lambda}
 \;=\; \langle \Psi_\lambda | \hat V_{ee} | \Psi_\lambda \rangle
 \;+\; \int \rho(\mathbf r)\, \frac{\partial v_\text{ext}^\lambda(\mathbf r)}{\partial \lambda}\, d\mathbf r .
 \end{equation}
-{% endraw %}
+$$
 
 The first term is the expectation value of the electron–electron
 repulsion in the $\lambda$-system, the second is the rate of change of
@@ -1282,33 +1282,33 @@ endpoints (this is the content of the Hohenberg–Kohn theorem applied
 at each $\lambda$, combined with the fixed-density constraint).  One
 finds
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-e1-minus-e0}
 E_1 - E_0 \;=\; \int_0^1 d\lambda\, \langle \Psi_\lambda | \hat V_{ee} | \Psi_\lambda \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 The $\lambda = 0$ ground-state energy is the *non-interacting*
 KS energy at the physical density,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-e0-decomp}
 E_0 \;=\; T_s[\rho] \;+\; \int \rho(\mathbf r)\, v_\text{eff}(\mathbf r)\, d\mathbf r .
 \end{equation}
-{% endraw %}
+$$
 
 The $\lambda = 1$ ground-state energy is the *physical* energy, which
 KS theory (§4.2) writes as
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-e1-decomp}
 E_1 \;=\; T_s[\rho] + \int \rho\, v_\text{ext} \, d\mathbf r
       + J[\rho] + E_\text{xc}[\rho] .
 \end{equation}
-{% endraw %}
+$$
 
 But $E_0$ and $E_1$ are *also* the energies that a KS calculation
 would produce at the same density, so $E_0$ in
@@ -1320,7 +1320,7 @@ $\int \rho v_\text{eff}$ terms (they appear on both sides of the
 KS energy identity), we obtain the **ACFDT formula** for
 $E_\text{xc}$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-ac-exc}
 \boxed{\;
@@ -1328,7 +1328,7 @@ E_\text{xc} \;=\; \int_0^1 d\lambda\, \langle \Psi_\lambda | \hat V_{ee} | \Psi_
                 \;-\; J[\rho] .
 \;}
 \end{equation}
-{% endraw %}
+$$
 
 Equation \eqref{eq:ch-04-9-ac-exc} is the **definition** of the
 exchange–correlation energy in terms of the coupling-constant
@@ -1343,23 +1343,23 @@ energy expression.
 A useful way to read \eqref{eq:ch-04-9-ac-exc} is in two pieces.  The
 $\lambda = 0$ contribution to the integral is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-exact-exchange}
 E_x^\text{exact} \;\equiv\; \langle \Psi_0 | \hat V_{ee} | \Psi_0 \rangle - J[\rho] ,
 \end{equation}
-{% endraw %}
+$$
 
 which is the **exact exchange energy** of the KS Slater determinant
 $\Psi_0$.  The remainder,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-correlation-energy}
 E_c \;\equiv\; \int_0^1 d\lambda\, \big[ \langle \Psi_\lambda | \hat V_{ee} | \Psi_\lambda \rangle
                                         - \langle \Psi_0 | \hat V_{ee} | \Psi_0 \rangle \big] ,
 \end{equation}
-{% endraw %}
+$$
 
 is the **correlation energy** — the additional reduction in
 electron–electron repulsion caused by the $\lambda$-dependent
@@ -1378,14 +1378,14 @@ $\lambda$.
 The electron–electron repulsion has a useful representation in terms
 of the **pair density** $n_2^\lambda(\mathbf r, \mathbf r')$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-pair-density}
 n_2^\lambda(\mathbf r, \mathbf r')
 \;=\; N(N-1) \int d\mathbf r_3 \cdots d\mathbf r_N\,
     \big| \Psi_\lambda(\mathbf r, \mathbf r', \mathbf r_3, \ldots, \mathbf r_N) \big|^2 .
 \end{equation}
-{% endraw %}
+$$
 
 $n_2^\lambda(\mathbf r, \mathbf r')$ is the joint probability density
 of finding *one* electron at $\mathbf r$ and a second distinct
@@ -1393,50 +1393,50 @@ electron at $\mathbf r'$ simultaneously.  By construction it is
 symmetric in its arguments, integrates to $N(N-1)$, and satisfies the
 **trace relation**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-pair-trace}
 \int n_2^\lambda(\mathbf r, \mathbf r')\, d\mathbf r'
 \;=\; (N-1)\, \rho(\mathbf r) .
 \end{equation}
-{% endraw %}
+$$
 
 The pair-density representation of $\hat V_{ee}$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-vee-pair-density}
 \langle \Psi_\lambda | \hat V_{ee} | \Psi_\lambda \rangle
 \;=\; \frac{1}{2} \int d\mathbf r \int d\mathbf r'\,
     \frac{n_2^\lambda(\mathbf r, \mathbf r')}{|\mathbf r - \mathbf r'|} .
 \end{equation}
-{% endraw %}
+$$
 
 The factor of $1/2$ corrects for the double counting of pairs.
 
 The **coupling-constant averaged pair density** is the integral over
 $\lambda$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-averaged-pair-density}
 \bar n_2(\mathbf r, \mathbf r')
 \;\equiv\; \int_0^1 d\lambda\, n_2^\lambda(\mathbf r, \mathbf r') .
 \end{equation}
-{% endraw %}
+$$
 
 Inserting \eqref{eq:ch-04-9-vee-pair-density} into
 \eqref{eq:ch-04-9-ac-exc} gives the **pair-density form** of the
 ACFDT:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-exc-pair}
 E_\text{xc} \;=\; \frac{1}{2} \int d\mathbf r \int d\mathbf r'\,
     \frac{\bar n_2(\mathbf r, \mathbf r')}{|\mathbf r - \mathbf r'|}
     \;-\; J[\rho] .
 \end{equation}
-{% endraw %}
+$$
 
 > **Tip.**  The averaged pair density $\bar n_2$ is a property of the
 > *fully interacting* system — it cannot be computed from a single
@@ -1453,20 +1453,20 @@ $\mathbf r'$ *as if they were independent*.  The difference between the
 true (averaged) pair density and this classical reference is the
 **pair-correlation function**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-pair-correlation}
 \bar n_2(\mathbf r, \mathbf r')
 \;=\; \rho(\mathbf r)\, \rho(\mathbf r') \;+\; \bar n_\text{xc}(\mathbf r, \mathbf r') .
 \end{equation}
-{% endraw %}
+$$
 
 $\bar n_\text{xc}$ is the *change* in the joint probability caused by
 exchange and Coulomb correlation.  The **exchange–correlation hole**
 $h_\text{xc}(\mathbf r, \mathbf r')$ is this change normalised by the
 density at the reference point:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-xc-hole}
 \boxed{\;
@@ -1475,17 +1475,17 @@ h_\text{xc}(\mathbf r, \mathbf r')
 \;=\; \frac{\bar n_2(\mathbf r, \mathbf r')}{\rho(\mathbf r')} \;-\; \rho(\mathbf r) .
 \;}
 \end{equation}
-{% endraw %}
+$$
 
 The XC hole has a **sum rule**: integrating over $\mathbf r'$ at fixed
 $\mathbf r$ gives the **normalisation**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-xc-hole-sum-rule}
 \int h_\text{xc}(\mathbf r, \mathbf r')\, d\mathbf r' \;=\; -1 .
 \end{equation}
-{% endraw %}
+$$
 
 This is exact for any $\lambda$, hence for the $\lambda$-average.  The
 proof follows from the trace relation
@@ -1505,7 +1505,7 @@ electron's worth of charge.
 In terms of the hole, the XC energy \eqref{eq:ch-04-9-exc-pair}
 becomes the elegant one-liner
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-exc-hole}
 \boxed{\;
@@ -1514,7 +1514,7 @@ E_\text{xc} \;=\; \frac{1}{2} \int d\mathbf r\, \rho(\mathbf r)
       \frac{h_\text{xc}(\mathbf r, \mathbf r')}{|\mathbf r - \mathbf r'|} .
 \;}
 \end{equation}
-{% endraw %}
+$$
 
 Equation \eqref{eq:ch-04-9-exc-hole} says: the exchange–correlation
 energy is the *Coulomb interaction of the density with its own XC
@@ -1542,12 +1542,12 @@ use one of two reduced versions.
 
 The **on-top hole** is the value of the hole at $\mathbf r' = \mathbf r$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-on-top}
 h_\text{xc}^\text{top}(\mathbf r) \;\equiv\; h_\text{xc}(\mathbf r, \mathbf r) .
 \end{equation}
-{% endraw %}
+$$
 
 The on-top hole is a *scalar* field on $\mathbf r$ — a number for every
 reference point.  It is the deepest part of the hole, the *exclusion
@@ -1560,7 +1560,7 @@ low-density limit.
 The **spherically-averaged hole** averages the hole over a sphere of
 radius $s$ centred at $\mathbf r$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-spherical-avg}
 \bar h_\text{xc}(\mathbf r, s)
@@ -1568,20 +1568,20 @@ radius $s$ centred at $\mathbf r$:
     h_\text{xc}(\mathbf r, \mathbf r + \mathbf s) ,
 \qquad s = |\mathbf s| .
 \end{equation}
-{% endraw %}
+$$
 
 $\bar h_\text{xc}(\mathbf r, s)$ is the hole at distance $s$ from the
 reference electron, averaged over the angular position of the second
 electron.  The XC energy in terms of the spherically-averaged hole is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-exc-spherical}
 E_\text{xc} \;=\; 2\pi \int d\mathbf r\, \rho(\mathbf r)
       \int_0^\infty ds\, s^2\,
       \frac{\bar h_\text{xc}(\mathbf r, s)}{s} .
 \end{equation}
-{% endraw %}
+$$
 
 The factor $4\pi s^2$ is the volume element in spherical coordinates
 ($\int d\Omega' = 4\pi$ in \eqref{eq:ch-04-9-spherical-avg}).  The
@@ -1608,25 +1608,25 @@ wavefunction theory.
 electron gas** at low density (high $r_s$), the integrand is
 approximately linear in $\lambda$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-rpa-weak}
 \langle \Psi_\lambda | \hat V_{ee} | \Psi_\lambda \rangle
 \;\approx\; \langle \Psi_0 | \hat V_{ee} | \Psi_0 \rangle
            \;+\; \mathcal O(\lambda) .
 \end{equation}
-{% endraw %}
+$$
 
 The $\mathcal O(\lambda)$ piece, when integrated and subtracted from
 $J$, gives the **RPA correlation energy** (Bohm & Pines, 1953):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-rpa-uniform}
 E_c^\text{RPA} \;=\; \frac{1}{2} \int \frac{d\mathbf q}{(2\pi)^3}\,
     \big[ \ln\!\big(1 - \chi_0(q)\, v_q\big) + \chi_0(q)\, v_q \big] ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\chi_0(q)$ is the **Lindhard function** of the non-interacting
 gas and $v_q = 4\pi/q^2$ is the Fourier transform of the Coulomb
@@ -1640,7 +1640,7 @@ $\lambda$-dependent wavefunction into the formula.  At first order in
 the fluctuation potential, one recovers **Møller–Plesset perturbation
 theory** at second order (MP2):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-9-mp2-two-electron}
 E_c^\text{MP2}
@@ -1648,7 +1648,7 @@ E_c^\text{MP2}
     \frac{\big| \langle \phi_i \phi_a | \hat V_{ee} | \phi_i \phi_a \rangle \big|^2}
          {\varepsilon_a - \varepsilon_i} .
 \end{equation}
-{% endraw %}
+$$
 
 The connection between ACFDT and MP2 is *exact* for any two-electron
 system, and approximately valid for *almost*-two-electron systems
@@ -1738,19 +1738,19 @@ standard way to perform this inversion.
 In modern DFT we often want to use a functional that depends on the
 KS orbitals, not just on $\rho$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-orbital-dep}
 E_\text{xc} \;=\; E_\text{xc}\big[ \{\phi_i[\rho]\}_{i=1}^{N/2} \big] .
 \end{equation}
-{% endraw %}
+$$
 
 The dependence on the orbitals is *implicit* through the density:
 $E_\text{xc}$ is a functional of $\rho$, but its implementation uses
 the orbitals as an intermediate variable.  The "chain rule" of
 functional differentiation gives
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-vxc-chain}
 v_\text{xc}(\mathbf r) \;=\; \frac{\delta E_\text{xc}}{\delta \rho(\mathbf r)}
@@ -1759,7 +1759,7 @@ v_\text{xc}(\mathbf r) \;=\; \frac{\delta E_\text{xc}}{\delta \rho(\mathbf r)}
     \frac{\delta \phi_i(\mathbf r')}{\delta \rho(\mathbf r)}
 \;+\; \text{c.c.}
 \end{equation}
-{% endraw %}
+$$
 
 The second factor $\delta \phi_i / \delta \rho$ is a **non-local**
 object — a change in $\rho$ at one point changes *all* the orbitals
@@ -1782,14 +1782,14 @@ while using an *orbital-dependent* functional.
 The OEP method is a constrained-search problem.  Define the OEP
 functional
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-oep-functional}
 \Omega[v_\text{xc}]
 \;=\; E_\text{xc}\big[ \{\phi_i[v_\text{xc}]\} \big]
    \;-\; \int d\mathbf r\, v_\text{xc}(\mathbf r)\, \rho(\mathbf r) ,
 \end{equation}
-{% endraw %}
+$$
 
 where the orbitals $\phi_i$ are the eigenfunctions of the KS
 Hamiltonian with XC potential $v_\text{xc}$, and the density
@@ -1797,17 +1797,17 @@ $\rho = 2 \sum_i |\phi_i|^2$ is reconstructed from them.  The OEP is
 the potential $v_\text{xc}^\text{OEP}(\mathbf r)$ that minimises
 $\Omega$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-oep-stationary}
 \frac{\delta \Omega}{\delta v_\text{xc}(\mathbf r)} \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 The functional derivative, by the chain rule applied to the
 orbitals-as-functions-of-$v_\text{xc}$, is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-oep-grad}
 \frac{\delta \Omega}{\delta v_\text{xc}(\mathbf r)}
@@ -1815,22 +1815,22 @@ orbitals-as-functions-of-$v_\text{xc}$, is
    \;-\; \rho(\mathbf r)
 \;=\; 0 ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\chi_s$ is the **static KS response function**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-chi-s}
 \chi_s(\mathbf r, \mathbf r')
 \;\equiv\; \frac{\delta \rho(\mathbf r)}{\delta v_\text{eff}(\mathbf r')} ,
 \end{equation}
-{% endraw %}
+$$
 
 and $\Lambda$ is the **orbital shift** — the change in $E_\text{xc}$
 per unit change in $v_\text{xc}$, holding the orbitals fixed:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-Lambda}
 \Lambda(\mathbf r, \mathbf r')
@@ -1840,11 +1840,11 @@ per unit change in $v_\text{xc}$, holding the orbitals fixed:
     G_s(\mathbf r'', \mathbf r')
 \;+\; \text{c.c.}
 \end{equation}
-{% endraw %}
+$$
 
 $G_s$ is the KS one-body Green function.  The OEP equation is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-oep-integral}
 \boxed{\;
@@ -1852,7 +1852,7 @@ $G_s$ is the KS one-body Green function.  The OEP equation is
 \;=\; \rho(\mathbf r'') .
 \;}
 \end{equation}
-{% endraw %}
+$$
 
 Equation \eqref{eq:ch-04-10-oep-integral} is a Fredholm integral
 equation of the first kind for $v_\text{xc}(\mathbf r')$, which is
@@ -1865,13 +1865,13 @@ added to $v_\text{xc}$ leaves the orbitals and the density unchanged.
 In a finite basis $\{\chi_\mu\}$, the OEP equation becomes a matrix
 equation
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-oep-matrix}
 \sum_{\nu \mu \kappa} \Lambda_{\mu\nu}\, (\chi_s)_{\nu\kappa}
 \;=\; P_{\kappa\mu} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $P_{\kappa\mu}$ is the density matrix and $\Lambda_{\mu\nu}$ the
 orbital shift in the basis.  The solution costs $\mathcal O(K^3)$ in
@@ -1887,13 +1887,13 @@ neglects the off-diagonal (in orbital index) contributions.
 
 In the KLI approximation, $\Lambda$ is replaced by its diagonal piece
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-kli-lambda}
 \Lambda^\text{KLI}(\mathbf r, \mathbf r')
 \;=\; 2 \sum_{i=1}^{N/2} \phi_i^*(\mathbf r)\, \phi_i(\mathbf r')\, u_i(\mathbf r) ,
 \end{equation}
-{% endraw %}
+$$
 
 where $u_i(\mathbf r) = \delta E_\text{xc} / \delta \phi_i^*(\mathbf r)$
 is the orbital shift.  Substituting into
@@ -1901,7 +1901,7 @@ is the orbital shift.  Substituting into
 orbitals, the integral equation simplifies to a *closed-form*
 expression for the OEP potential:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-kli-potential}
 \boxed{\;
@@ -1911,7 +1911,7 @@ v_\text{xc}^\text{KLI}(\mathbf r)
 \;+\; \text{const} ,
 \;}
 \end{equation}
-{% endraw %}
+$$
 
 where $\bar u_i = \langle \phi_i | u_i | \phi_i \rangle$ is the
 orbital-average of the shift and the constant is fixed by the
@@ -1939,7 +1939,7 @@ production codes that need orbital-dependent XC.
 The most-used orbital-dependent functional is the **exact exchange**
 (EXX),
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-exx-functional}
 E_x^\text{exact}
@@ -1949,19 +1949,19 @@ E_x^\text{exact}
           \phi_j^*(\mathbf r') \phi_i(\mathbf r')}
          {|\mathbf r - \mathbf r'|} .
 \end{equation}
-{% endraw %}
+$$
 
 The orbital shift $u_i(\mathbf r) = \delta E_x / \delta \phi_i^*(\mathbf r)$
 is the **Fock exchange operator acting on** $\phi_i$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-10-fock-potential}
 \hat v_x^\text{Fock} \phi_i(\mathbf r)
 \;=\; - \sum_{j=1}^{N/2} \phi_j(\mathbf r) \int d\mathbf r'\,
     \frac{\phi_j^*(\mathbf r') \phi_i(\mathbf r')}{|\mathbf r - \mathbf r'|} .
 \end{equation}
-{% endraw %}
+$$
 
 The Fock operator is *non-local*: its action on $\phi_i$ at $\mathbf r$
 depends on $\phi_i$ *everywhere*.  To use EXX in a local KS
@@ -2044,12 +2044,12 @@ structure and (b) reproduces the exact KS eigenvalues order by order.
 The XC potential of section 4.2 is the *functional derivative* of the
 XC energy with respect to the density:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-11-vxc-def}
 v_\text{xc}(\mathbf r) \;=\; \frac{\delta E_\text{xc}}{\delta \rho(\mathbf r)} .
 \end{equation}
-{% endraw %}
+$$
 
 Equation \eqref{eq:ch-04-11-vxc-def} is the *formal* definition; for
 LDA/GGA the functional derivative is a local function of $\rho$ and
@@ -2069,7 +2069,7 @@ Start with a *reference* density $\rho_0(\mathbf r)$ and consider a
 small perturbation $\delta \rho(\mathbf r) = \rho(\mathbf r) - \rho_0(\mathbf r)$.
 The XC energy admits a Taylor expansion in $\delta \rho$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-11-gl-expansion}
 E_\text{xc}[\rho]
@@ -2080,7 +2080,7 @@ E_\text{xc}[\rho]
        \delta\rho(\mathbf r)\, \delta\rho(\mathbf r')
    \;+\; \cdots
 \end{equation}
-{% endraw %}
+$$
 
 The coefficients are the functional derivatives of $E_\text{xc}$
 evaluated at $\rho_0$:
@@ -2127,7 +2127,7 @@ terms are corrections.  Concretely, write the target density as
 $\rho = \rho_0 + \delta \rho$ and the *target* KS potential as
 $v_\text{xc} = v_\text{xc}[\rho]$, and expand:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-11-gl-shuffle}
 v_\text{xc}[\rho]
@@ -2136,14 +2136,14 @@ v_\text{xc}[\rho]
    \;+\; v_\text{xc}^{(2)}[\rho_0, \delta\rho]
    \;+\; \cdots ,
 \end{equation}
-{% endraw %}
+$$
 
 where $v_\text{xc}^{(0)} = v_\text{xc}[\rho_0]$ is the *target* KS
 potential at the *reference* density, and the higher-order terms are
 the *corrections* that bring the potential up to the target.  At each
 order, the *target* KS eigenvalues are reproduced exactly:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-11-ks-eigenvalues}
 \varepsilon_i
@@ -2152,7 +2152,7 @@ order, the *target* KS eigenvalues are reproduced exactly:
     + v_\text{xc}^{(0)} + \cdots
     \big| \phi_i \big\rangle .
 \end{equation}
-{% endraw %}
+$$
 
 The shuffle is a *bookkeeping* device that re-shuffles the perturbation
 series so that the *physical* KS eigenvalues are the zeroth-order
@@ -2245,7 +2245,7 @@ the KS equations.
 The relativistic wave equation for a spin-½ particle in an
 electromagnetic potential is the **Dirac equation**:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-dirac-equation}
 i \frac{\partial}{\partial t} \Psi(\mathbf r, t)
@@ -2253,11 +2253,11 @@ i \frac{\partial}{\partial t} \Psi(\mathbf r, t)
 \qquad
 \Psi \in \mathbb C^4 .
 \end{equation}
-{% endraw %}
+$$
 
 In the **standard representation** the Dirac Hamiltonian is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-dirac-hamiltonian}
 \hat H_\text{Dirac}
@@ -2266,7 +2266,7 @@ In the **standard representation** the Dirac Hamiltonian is
 + v(\mathbf r)\, \mathbf 1
 = c\, \boldsymbol\alpha \cdot \hat{\mathbf p} + \boldsymbol\beta\, mc^2 + v(\mathbf r)\, \mathbf 1 ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\hat{\mathbf p} = -i\hbar \nabla$, $c$ is the speed of
 light, $m$ the electron mass, and $v(\mathbf r)$ the external
@@ -2319,7 +2319,7 @@ equation gives $\Phi^S \approx (\boldsymbol\sigma \cdot \hat{\mathbf p}
 / 2mc)\, \Phi^L$ to leading order in $v/c$ (the **Foldy–Wouthuysen
 expansion**).  Substituting back,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-pauli-hamiltonian}
 \hat H_\text{Pauli}
@@ -2328,7 +2328,7 @@ expansion**).  Substituting back,
 \;-\; \underbrace{\frac{\hbar^2}{4 m^2 c^2} \nabla^2 v}_\text{Darwin}
 \;+\; \underbrace{\frac{\hbar}{4 m^2 c^2}\, \boldsymbol\sigma \cdot (\nabla v \times \hat{\mathbf p})}_\text{spin-orbit}.
 \end{equation}
-{% endraw %}
+$$
 
 The four terms are, in order: the non-relativistic Hamiltonian;
 the **kinetic relativistic** correction (which is a scalar, and
@@ -2344,14 +2344,14 @@ The spin–orbit term is the one that breaks spin conservation
 explicitly and produces the rich spin physics of heavy elements.
 Writing the spin–orbit coupling more explicitly,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-soc}
 \hat H_\text{SO}
 = \frac{1}{2 m^2 c^2}\, \frac{1}{r}\, \frac{dv}{dr}\, \hat{\mathbf L} \cdot \hat{\mathbf S}
 \equiv \xi(r)\, \hat{\mathbf L} \cdot \hat{\mathbf S} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\hat{\mathbf S} = (\hbar/2) \boldsymbol\sigma$ and
 $\xi(r)$ is the **spin–orbit coupling strength**.  For a hydrogenic
@@ -3094,14 +3094,14 @@ the XC energy per particle
 $\varepsilon_\text{xc}(n_\uparrow, n_\downarrow)$, and the LSDA
 approximation is the local transcription
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-lsda-derivation}
 E_\text{xc}^\text{LDA}[\rho_\uparrow, \rho_\downarrow]
 = \int \rho(\mathbf r)\,
    \varepsilon_\text{xc}\big(\rho_\uparrow(\mathbf r), \rho_\downarrow(\mathbf r)\big)\, d\mathbf r .
 \end{equation}
-{% endraw %}
+$$
 
 **The assumption** is the *locality* of the XC hole: in a HEG, the
 exchange–correlation hole around an electron is a function of the
@@ -3136,14 +3136,14 @@ with $v_{\text{xc},\sigma} = \partial(\rho \varepsilon_\text{xc}) /
 \varepsilon_\text{xc}/\partial \rho_\sigma$.  Two independent
 eigenvalue problems
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-2x2-derivation}
 \bigg[ -\frac12 \nabla^2 + v_\text{eff}^\sigma(\mathbf r) \bigg]
 \phi_i^\sigma(\mathbf r) = \varepsilon_i^\sigma \phi_i^\sigma(\mathbf r),
 \qquad \sigma = \uparrow, \downarrow,
 \end{equation}
-{% endraw %}
+$$
 
 follow; each has its own set of occupied orbitals and
 eigenvalues, and the densities are reconstructed as
@@ -3321,7 +3321,7 @@ exact.
 For a non-degenerate ground state of $N$ electrons in an
 external potential $v(\mathbf r)$ with Hamiltonian
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-hk-hamiltonian}
 \hat H = \hat T + \hat U + \hat V, \qquad
@@ -3329,18 +3329,18 @@ external potential $v(\mathbf r)$ with Hamiltonian
 \hat U = \sum_{i<j} \frac{1}{|\mathbf r_i - \mathbf r_j|}, \quad
 \hat V = \sum_i v(\mathbf r_i) ,
 \end{equation}
-{% endraw %}
+$$
 
 the external potential is a unique functional of the
 ground-state density $n_0(\mathbf r)$, up to an additive
 constant [Hohenberg and Kohn, 1964, eq. (1), p. B864]
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-hk-energy}
 E_v[n] \equiv \int v(\mathbf r) n(\mathbf r) d\mathbf r + F[n] ,
 \end{equation}
-{% endraw %}
+$$
 
 where $F[n]$ is the minimum of $\langle \Psi | \hat T + \hat U
 | \Psi \rangle$ over all $N$-electron $\Psi$ that produce
@@ -3356,22 +3356,22 @@ energies.  The non-degeneracy assumption forces $\Psi_0' \ne
 \Psi_0$.  The variational principle applied to $\hat H$ with
 trial $\Psi_0'$ gives
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-hk-variational-1}
 E_0 < \langle \Psi_0' | \hat H | \Psi_0' \rangle
 = E_0' + \int [v(\mathbf r) - v'(\mathbf r)] n_0(\mathbf r) d\mathbf r .
 \end{equation}
-{% endraw %}
+$$
 
 Swapping primed and unprimed quantities gives
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-hk-variational-2}
 E_0' < E_0 + \int [v'(\mathbf r) - v(\mathbf r)] n_0(\mathbf r) d\mathbf r .
 \end{equation}
-{% endraw %}
+$$
 
 Adding the two gives the contradiction $E_0 + E_0' < E_0' +
 E_0$ [Hohenberg and Kohn, 1964, p. B865].  The only
@@ -3390,13 +3390,13 @@ chemistry.
 is a corollary of Theorem 1. For any trial density
 $\tilde n(\mathbf r)$ that is *v-representable*,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-hk-variational}
 E_0 \le E_v[\tilde n]
 = \int \tilde v(\mathbf r) \tilde n(\mathbf r) d\mathbf r + F[\tilde n] ,
 \end{equation}
-{% endraw %}
+$$
 
 with equality iff $\tilde n = n_0$ [Hohenberg and Kohn, 1964,
 eqs. (2)–(3), p. B866].  The proof: $F[\tilde n] \ge F[n_0]$
@@ -3452,48 +3452,48 @@ non-interacting reference system with the *same* density as
 the interacting one.  The effective potential
 [Kohn and Sham, 1965, eq. (2.1), p. A1133] is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-ks-veff}
 v_\text{eff}(\mathbf r) = v(\mathbf r) + \int \frac{\rho(\mathbf r')}{|\mathbf r - \mathbf r'|} d\mathbf r' + v_\text{xc}(\mathbf r) ,
 \end{equation}
-{% endraw %}
+$$
 
 with $v_\text{xc}$ defined by the functional derivative
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-ks-vxc}
 v_\text{xc}(\mathbf r) \equiv \frac{\delta E_\text{xc}[\rho]}{\delta \rho(\mathbf r)} .
 \end{equation}
-{% endraw %}
+$$
 
 The KS Hamiltonian is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-ks-hamiltonian}
 \hat H_\text{KS} = -\tfrac{1}{2} \nabla^2 + v_\text{eff}(\mathbf r) ,
 \end{equation}
-{% endraw %}
+$$
 
 and the KS orbitals $\{\phi_i\}$ are its eigenfunctions
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-ks-orbitals}
 \hat H_\text{KS} \phi_i(\mathbf r) = \varepsilon_i \phi_i(\mathbf r) ,
 \end{equation}
-{% endraw %}
+$$
 
 with the density reconstructed as
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-ks-density}
 \rho(\mathbf r) = \sum_{i=1}^{N} |\phi_i(\mathbf r)|^2 ,
 \end{equation}
-{% endraw %}
+$$
 
 for the spinless case [Kohn and Sham, 1965, eqs. (2.2)–(2.4),
 p. A1133–A1134].  The factor of 2 for spin-paired systems is
@@ -3504,13 +3504,13 @@ spin-dependent case [Kohn and Sham, 1965, p. A1136]).
 p. A1134.**  The decomposition that makes the KS construction
 *wor`k*' is the definition of $E_\text{xc}$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-ks-exc}
 E_\text{xc}[\rho] = \langle T \rangle - T_s[\rho]
   + \langle U \rangle - U_H[\rho] ,
 \end{equation}
-{% endraw %}
+$$
 
 where $T_s$ is the kinetic energy of the non-interacting KS
 reference system, and $U_H$ is the classical Hartree
@@ -3537,12 +3537,12 @@ interacting wavefunction $\Psi$; it is *not* directly
 expressible as a simple functional of the density.  KS 1965
 *defines*
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-ks-ts}
 T_s[\rho] = \sum_{i=1}^{N} \int \phi_i^*(\mathbf r) \left( -\tfrac{1}{2} \nabla^2 \right) \phi_i(\mathbf r) d\mathbf r ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\{\phi_i\}$ are the orbitals of the non-interacting
 system that *reproduces* $\rho$ [Kohn and Sham, 1965, p. A1133,
@@ -3600,24 +3600,24 @@ $\rho_\text{xc}(\mathbf r, \mathbf r')$ is defined by the
 coupling-constant integral
 [Gunnarsson and Lundqvist, 1976]
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-xc-hole}
 \rho_\text{xc}(\mathbf r, \mathbf r')
 = \rho(\mathbf r) \int_0^1 d\lambda\, [g_\lambda(\mathbf r, \mathbf r') - 1] ,
 \end{equation}
-{% endraw %}
+$$
 
 where $g_\lambda$ is the pair-distribution function of the
 $\lambda$-scaled system.  The KS 1965 sum rule is the
 statement that
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-sum-rule}
 \int \rho_\text{xc}(\mathbf r, \mathbf r') d\mathbf r' = -1 ,
 \end{equation}
-{% endraw %}
+$$
 
 i.e. the hole contains *exactly one electron's worth of
 missing charge*.  This is sometimes called the
@@ -3668,12 +3668,12 @@ following eq. (3):
 In modern notation, the requirement is that for a
 *one-electron* density $\rho(\mathbf r) = |\phi(\mathbf r)|^2$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-04-14-sie-exact}
 E_H[\rho] + E_\text{xc}[\rho] = 0 \quad \text{(one electron)} .
 \end{equation}
-{% endraw %}
+$$
 
 Every local or semi-local approximation (LDA, GGA, meta-GGA)
 *violates* \eqref{eq:ch-04-14-sie-exact} — typically by

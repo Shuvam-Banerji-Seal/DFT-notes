@@ -73,25 +73,25 @@ electrons and opens the door to superconductivity.
 > $\omega_s(\mathbf q)$ at a given phonon wavevector $\mathbf q$ and
 > branch index $s$ are the eigenvalues of the **dynamical matrix**
 >
-{% raw %}
+$$
 > \begin{equation}
 > \label{eq:ch-10-dyn-def}
 > D_{I\alpha, J\beta}(\mathbf q) \;=\;
 > \frac{1}{\sqrt{M_I M_J}}\,
 > \tilde\Phi_{I\alpha, J\beta}(\mathbf q) ,
 > \end{equation}
-{% endraw %}
+$$
 >
 > where $\tilde\Phi$ is the Fourier transform of the real-space
 > **force-constant matrix**
 >
-{% raw %}
+$$
 > \begin{equation}
 > \label{eq:ch-10-fc-def}
 > \Phi_{I\alpha, J\beta}(\mathbf R) \;\equiv\;
 > \frac{\partial^2 E}{\partial R_{I\alpha}^{(0)} \, \partial R_{J\beta}^{(\mathbf R)}} ,
 > \end{equation}
-{% endraw %}
+$$
 >
 > $M_I$ is the mass of nucleus $I$, and $E$ is the Kohn–Sham total
 > energy in the Born–Oppenheimer approximation.
@@ -139,7 +139,7 @@ Expand the Born–Oppenheimer energy of
 order in the nuclear displacements $u_{I\alpha} = R_{I\alpha} -
 R_{I\alpha}^{(0)}$ around the equilibrium geometry:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-quadratic}
 E\Bigl[\{\mathbf R\}\Bigr] \;\approx\;
@@ -147,7 +147,7 @@ E^{(0)} \;+\; \frac{1}{2}\,
 \sum_{I, J}\; \sum_{\alpha, \beta}\;
 u_{I\alpha}\, \Phi_{I\alpha, J\beta}(\mathbf 0)\, u_{J\beta} .
 \end{equation}
-{% endraw %}
+$$
 
 (The first-order terms vanish at the equilibrium geometry; the
 definition of $\Phi$ is the second derivative, equation
@@ -168,40 +168,40 @@ $u_{I\alpha}(t) = U_{s\alpha}(q)\, e^{i(q R_I - \omega_s(q) t)}$
 supercell) and using
 $\ddot u_{I\alpha} = -\omega_s^2 u_{I\alpha}$, we get
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-eom-bloch}
 M_I\, \omega_s^2(q)\, U_{s\alpha}(q) \;=\;
 \sum_{J, \beta}\; \Phi_{I\alpha, J\beta}(\mathbf 0)\, U_{s\beta}(q) .
 \end{equation}
-{% endraw %}
+$$
 
 Define the **dynamical matrix**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-dyn-from-fc}
 D_{I\alpha, J\beta}(\mathbf q) \;\equiv\;
 \frac{1}{\sqrt{M_I M_J}}\,
 \tilde\Phi_{I\alpha, J\beta}(\mathbf q) ,
 \end{equation}
-{% endraw %}
+$$
 
 with the Fourier transform
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-fc-fourier}
 \tilde\Phi_{I\alpha, J\beta}(\mathbf q) \;\equiv\;
 \sum_{\mathbf R}\; e^{-i \mathbf q \cdot \mathbf R}\,
 \Phi_{I\alpha, J\beta}(\mathbf R) .
 \end{equation}
-{% endraw %}
+$$
 
 Equation \eqref{eq:ch-10-eom-bloch} is then the eigenvalue
 problem
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-dyn-eig}
 \boxed{
@@ -209,7 +209,7 @@ problem
 \sum_{J, \beta}\; D_{I\alpha, J\beta}(\mathbf q)\, U_{s\beta}(q) .
 }
 \end{equation}
-{% endraw %}
+$$
 
 The eigenvalues of $D(\mathbf q)$ are $\omega_s^2(\mathbf q)$, with
 $s = 1, 2, \ldots, 3 N_\text{atom}$ (three branches per atom in
@@ -233,25 +233,25 @@ For a perfect crystal under Born–von Karman boundary conditions
 force-constant matrix is invariant under simultaneous translation
 of the unit-cell labels:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-fc-trans-inv}
 \Phi_{I\alpha, J\beta}(\mathbf R, \mathbf R') \;=\;
 \Phi_{I\alpha, J\beta}(\mathbf R - \mathbf R') .
 \end{equation}
-{% endraw %}
+$$
 
 The discrete Fourier transform from the relative-cell index to the
 phonon wavevector $\mathbf q$ is then
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-dft}
 \tilde\Phi_{I\alpha, J\beta}(\mathbf q) \;=\;
 \sum_{\mathbf R}\; e^{-i \mathbf q \cdot \mathbf R}\,
 \Phi_{I\alpha, J\beta}(\mathbf R) .
 \end{equation}
-{% endraw %}
+$$
 
 (Here $\Phi_{I\alpha, J\beta}(\mathbf R)$ is the force constant
 between atom $I$ in the reference cell and atom $J$ in the cell
@@ -322,13 +322,13 @@ derivative directly. To extract the second derivative, you need
 *two* displacement patterns and a finite-difference fit, or you
 need to invert the relationship
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-force-linear}
 F_{I\alpha} \;=\; -\sum_{J, \beta}\; \Phi_{I\alpha, J\beta}\,
 u_{J\beta}
 \end{equation}
-{% endraw %}
+$$
 
 by computing $F$ for enough linearly independent displacement
 patterns $u$ that the linear system for $\Phi$ becomes determined
@@ -342,14 +342,14 @@ displace atom $I$ by $\pm \delta$ in direction $\alpha$ and *only*
 that atom), and compute the resulting forces. The off-diagonal
 element $\Phi_{I\alpha, J\beta}$ for $J \neq I$ is then
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-fd-fc}
 \Phi_{I\alpha, J\beta} \;\approx\;
 \frac{F_{I\alpha}(\delta_{J\beta}) - F_{I\alpha}(-\delta_{J\beta})}
      {2 \delta} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $F_{I\alpha}(\pm \delta_{J\beta})$ is the force on atom $I$
 in direction $\alpha$ after atom $J$ has been displaced by $\pm
@@ -386,7 +386,7 @@ supercell supports are exactly the discrete set
 $\{\mathbf q_\text{mesh}\}$ corresponding to the supercell, so the
 Fourier transform is just a sum over the supercell cells:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-frozen-dyn}
 D_{I\alpha, J\beta}(\mathbf q_\text{mesh}) \;=\;
@@ -395,7 +395,7 @@ D_{I\alpha, J\beta}(\mathbf q_\text{mesh}) \;=\;
 e^{-i \mathbf q_\text{mesh} \cdot \mathbf R}\,
 \Phi_{I\alpha, J\beta}(\mathbf R) .
 \end{equation}
-{% endraw %}
+$$
 
 Diagonalising $D(\mathbf q_\text{mesh})$ for every $\mathbf
 q_\text{mesh}$ gives the phonon frequencies at those mesh points.
@@ -487,13 +487,13 @@ states that the $2n+1$-th derivative of the total energy with
 respect to $\lambda$ can be computed from a knowledge of the wave-
 function perturbed to *only* order $n$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-2n1}
 \frac{\partial^{2n+1} E}{\partial \lambda^{2n+1}} \;=\; F\Bigl[
 \{\psi^{(0)}\}, \{\psi^{(1)}\}, \ldots, \{\psi^{(n)}\} \Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 For phonons, $\lambda$ is the *amplitude* of a nuclear
 displacement with wavevector $\mathbf q$, and the relevant
@@ -534,13 +534,13 @@ Hamiltonian is $\hat H^{(1)} = \partial \hat H / \partial \lambda$
 at $\lambda = 0$. The first-order change in the wavefunction
 $\psi_n^{(1)}$ satisfies the **Sternheimer equation**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-sternheimer}
 \Bigl(\hat H^{(0)} - \varepsilon_n^{(0)}\Bigr)\, \psi_n^{(1)}
 \;=\; -\Bigl(\hat H^{(1)} - \varepsilon_n^{(1)}\Bigr)\, \psi_n^{(0)} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\varepsilon_n^{(1)} = \langle \psi_n^{(0)} \rvert \hat H^{(1)}
 \rvert \psi_n^{(0)} \rangle$ is the first-order change in the
@@ -556,14 +556,14 @@ response $\rho^{(1)}$ couples all the $\psi_n^{(1)}$ together
 through the Hartree and exchange–correlation potentials. The
 **self-consistent** Sternheimer equation is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-sternheimer-scf}
 \Bigl(\hat H^{(0)} - \varepsilon_n^{(0)}\Bigr)\, \psi_n^{(1)}
 \;=\; -\Bigl(\hat H^{(1)} - \varepsilon_n^{(1)}\Bigr)\, \psi_n^{(0)}
 \;-\; \hat V_\text{Hxc}^{(1)}\, \psi_n^{(0)} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\hat V_\text{Hxc}^{(1)}[\rho^{(1)}]$ the linear change in the
 Hartree+XC potential induced by the linear density response
@@ -584,7 +584,7 @@ phonon amplitude follows from the $2n + 1$ theorem applied at
 $n = 0$ for the second derivative, or by direct application of
 the **$2n + 1$ formula** for the second derivative:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-dyn-dfpt}
 \frac{\partial^2 E}{\partial \lambda_I \partial \lambda_J} \;=\;
@@ -596,7 +596,7 @@ the **$2n + 1$ formula** for the second derivative:
            \rvert \psi_n^{(1)}{}_I \rangle
 \Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 (Here $\partial \hat H_I$ is the derivative of the Hamiltonian with
 respect to the displacement of atom $I$ in the chosen direction;
@@ -719,13 +719,13 @@ restoring force and the mode has zero frequency.
 Mathematically, the acoustic sum rule (ASR) is a constraint on
 the *force-constant matrix*:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-asr}
 \sum_{J}\; \Phi_{I\alpha, J\beta}(\mathbf R) \;=\; 0
 \quad \text{for every } I, \alpha, \beta, \mathbf R.
 \end{equation}
-{% endraw %}
+$$
 
 The proof uses translation invariance. Consider a uniform
 displacement $\mathbf u$ of every nucleus in the crystal. The
@@ -748,22 +748,22 @@ be the zero matrix, which is \eqref{eq:ch-10-asr}.
 
 The Fourier transform of \eqref{eq:ch-10-asr} at $\mathbf q = 0$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-asr-fourier}
 \sum_{J}\; \tilde\Phi_{I\alpha, J\beta}(\mathbf q = 0) \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 Summing \eqref{eq:ch-10-dyn-def} over $J$ (and dividing by
 $\sqrt{M_I}$) gives
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-asr-dyn}
 \sum_{J}\; \sqrt{M_J}\, D_{I\alpha, J\beta}(\mathbf 0) \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 For every $I, \alpha, \beta$, the dynamical-matrix column
 $\sum_J \sqrt{M_J}\, D_{I\alpha, J\beta}$ is zero. So the
@@ -785,7 +785,7 @@ are the three acoustic modes at $\Gamma$.
 > periodic images. The standard fix is to *enforce* the ASR
 > *a posteriori* by replacing the Fourier transform
 > \eqref{eq:ch-10-fc-fourier} with the *ASR-projecte`d*' form
-{% raw %}
+$$
 > \begin{equation}
 > \label{eq:ch-10-asr-project}
 > \tilde\Phi_{I\alpha, J\beta}(\mathbf q) \;\longleftarrow\;
@@ -793,7 +793,7 @@ are the three acoustic modes at $\Gamma$.
 > \;-\; \delta_{\mathbf q 0}\, \frac{1}{N}\,
 > \sum_{J'}\, \tilde\Phi_{I\alpha, J'\beta}(\mathbf 0) ,
 > \end{equation}
-{% endraw %}
+$$
 > which subtracts the average of the $\mathbf q = 0$ column (the
 > "spurious acoustic-mode contribution") from every $\mathbf q$.
 > This is what the **frozen-phonon post-processing** of Quantum
@@ -827,13 +827,13 @@ $\Delta \mathbf R_I$ in a *neutral* crystal (the electron density
 is allowed to relax to its new ground state), the change in the
 total *polarisation* is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-born-charge}
 \Delta \mathbf P \;=\; \frac{e}{\Omega}\,
 \sum_{I}\, Z^*_{I}\, \Delta \mathbf R_I ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\Omega$ is the unit-cell volume and $Z^*_I$ is the
 **Born effective charge tensor** of atom $I$. The factor $e/\Omega$
@@ -844,12 +844,12 @@ the Cartesian indices, so for a general non-cubic site it is
 charge summed over all atoms in the unit cell vanishes in a
 neutral crystal:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-born-sum}
 \sum_{I}\, Z^*_{I} \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 In a *non-ionic* crystal (e.g. pure silicon) $Z^*_\text{Si} = 0$ by
 symmetry, even though Si has 4 valence electrons. In an *ioni`c*'
@@ -865,13 +865,13 @@ longitudinal optical (LO) and transverse optical (TO) modes at
 $\mathbf q = 0$. The classical result is the
 **Lyddane–Sachs–Teller (LST) relation**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-lst}
 \frac{\omega_\text{LO}^2}{\omega_\text{TO}^2} \;=\;
 \frac{\varepsilon_\infty}{\varepsilon_0} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\varepsilon_0$ is the *stati`c*' dielectric constant of the
 crystal (measured at zero frequency) and $\varepsilon_\infty$ is
@@ -901,7 +901,7 @@ $1/|\mathbf q|$ — and it *couples only to the longitudinal mode*
 cubic crystal, by symmetry). The result is a *non-analyti`c*'
 correction to the dynamical matrix at $\mathbf q \to 0$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-na-term}
 D_{I\alpha, J\beta}^\text{NA}(\mathbf q) \;=\;
@@ -909,7 +909,7 @@ D_{I\alpha, J\beta}^\text{NA}(\mathbf q) \;=\;
 \frac{(\mathbf q \cdot Z^*_I)_{\alpha}\, (\mathbf q \cdot Z^*_J)_{\beta}}
      {\mathbf q \cdot \boldsymbol\varepsilon_\infty \cdot \mathbf q} .
 \end{equation}
-{% endraw %}
+$$
 
 (For a cubic crystal $\boldsymbol\varepsilon_\infty = \varepsilon_\infty
 \mathbf 1$ and \eqref{eq:ch-10-na-term} reduces to
@@ -922,7 +922,7 @@ q \neq 0$. The effect on the *longitudinal* optical mode is to
 *raise* its frequency by an amount set by $Z^*$ and
 $\varepsilon_\infty$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-loto-split}
 \omega_\text{LO}^2 - \omega_\text{TO}^2
@@ -930,7 +930,7 @@ $\varepsilon_\infty$:
 \frac{|\mathbf q \cdot Z^*|^2}
      {\mathbf q \cdot \boldsymbol\varepsilon_\infty \cdot \mathbf q} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\mu$ is the appropriate reduced mass of the mode. This is
 the LST relation \eqref{eq:ch-10-lst} in disguise.
@@ -952,14 +952,14 @@ The phonon **density of states** (DOS) is the number of phonon
 modes per unit frequency, summed over all branches and
 wavevectors:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-pdos-def}
 g(\omega) \;=\; \frac{1}{N_\mathbf q}\,
 \sum_{s, \mathbf q}\;
 \delta\!\Bigl(\omega - \omega_s(\mathbf q)\Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 In a 3-D crystal with $N_\text{atom}$ atoms per primitive cell,
 $g(\omega)$ is a sum of $3 N_\text{atom}$ branches and has $3
@@ -971,12 +971,12 @@ corresponding temperatures.
 
 The integral of $g(\omega)$ is fixed by the branch count:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-pdos-norm}
 \int_0^\infty g(\omega)\, d\omega \;=\; 3 N_\text{atom} .
 \end{equation}
-{% endraw %}
+$$
 
 The DOS is the bridge from the dispersion $\omega_s(\mathbf q)$
 to all the *thermodynami`c*' functions of the crystal in the
@@ -998,25 +998,25 @@ $$
 where $\beta = 1/(k_B T)$. The total partition function is the
 product over all modes:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-partition}
 Z_\text{ph}(T) \;=\; \prod_{s, \mathbf q}\; Z\Bigl(\omega_s(\mathbf q), T\Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 ### 10.6.2 The Helmholtz free energy
 
 The Helmholtz free energy $F(T) = -k_B T \ln Z$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-free-energy}
 F(T) \;=\; \frac{1}{2}\sum_{s, \mathbf q}\; \hbar\omega_s(\mathbf q)
 \;+\; k_B T \sum_{s, \mathbf q}\,
 \ln\!\Bigl[1 - e^{-\beta\hbar\omega_s(\mathbf q)}\Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 The first term is the **zero-point energy** (the energy of the
 phonons at $T = 0$); the second is the **thermal** contribution.
@@ -1027,7 +1027,7 @@ determines the $T$-dependence of the free energy.
 
 In terms of the DOS, equation \eqref{eq:ch-10-free-energy} becomes
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-free-energy-dos}
 F(T) \;=\; 3 N_\text{atom} N_\text{cell}
@@ -1035,13 +1035,13 @@ F(T) \;=\; 3 N_\text{atom} N_\text{cell}
 g(\omega)\,
 \Bigl[\tfrac{1}{2}\hbar\omega + k_B T \ln\Bigl(1 - e^{-\beta\hbar\omega}\Bigr)\Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 ### 10.6.3 The entropy and the specific heat
 
 The vibrational entropy follows from $S = -\partial F / \partial T$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-entropy}
 S(T) \;=\; 3 N_\text{atom} N_\text{cell}\, k_B
@@ -1050,11 +1050,11 @@ g(\omega)\,
 \Bigl[\beta\hbar\omega\, \frac{1}{e^{\beta\hbar\omega} - 1}
        - \ln\Bigl(1 - e^{-\beta\hbar\omega}\Bigr)\Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 The constant-volume specific heat $C_V = T \partial S / \partial T$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-cv}
 C_V(T) \;=\; 3 N_\text{atom} N_\text{cell}\, k_B
@@ -1062,7 +1062,7 @@ C_V(T) \;=\; 3 N_\text{atom} N_\text{cell}\, k_B
 g(\omega)\,
 \Bigl(\frac{\beta\hbar\omega/2}{\sinh(\beta\hbar\omega/2)}\Bigr)^{\!2} .
 \end{equation}
-{% endraw %}
+$$
 
 At *low* temperature ($\beta\hbar\omega_\text{max} \gg 1$), the
 low-frequency modes ($\hbar\omega \ll k_B T$) contribute the
@@ -1081,7 +1081,7 @@ A few more useful identities in the harmonic approximation:
 
 - The *mean-square thermal displacement* of atom $I$:
 
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-10-msd}
   \langle |\mathbf u_I|^2 \rangle_T \;=\;
@@ -1090,7 +1090,7 @@ A few more useful identities in the harmonic approximation:
   \frac{|U_{s, I\alpha}(\mathbf q)|^2}{\omega_s(\mathbf q)}\,
   \coth\!\Bigl(\beta\hbar\omega_s(\mathbf q)/2\Bigr) .
   \end{equation}
-{% endraw %}
+$$
 
   This determines the Debye–Waller factor
   $\exp\!\Bigl[-\tfrac{1}{2}\langle (\mathbf q\cdot \mathbf u)^2\rangle\Bigr]$
@@ -1131,16 +1131,16 @@ energy with respect to nuclear displacements.
 
 Write the energy as a Taylor expansion in displacements:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-anharm}
 E \;=\; E^{(0)} + E^{(2)} + E^{(3)} + E^{(4)} + \ldots ,
 \end{equation}
-{% endraw %}
+$$
 
 where the $n$-th order term is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-anharm-n}
 E^{(n)} \;=\; \frac{1}{n!}\,
@@ -1148,11 +1148,11 @@ E^{(n)} \;=\; \frac{1}{n!}\,
 \Phi^{(n)}_{I_1\alpha_1, \ldots, I_n\alpha_n}\,
 u_{I_1\alpha_1}\, \ldots\, u_{I_n\alpha_n} ,
 \end{equation}
-{% endraw %}
+$$
 
 with the **$n$-th-order force constant** tensor
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-nth-fc}
 \Phi^{(n)}_{I_1\alpha_1, \ldots, I_n\alpha_n}
@@ -1160,7 +1160,7 @@ with the **$n$-th-order force constant** tensor
 \frac{\partial^n E}{\partial u_{I_1\alpha_1} \cdots \partial u_{I_n\alpha_n}}
 \;\Bigg|_{\mathbf u = 0} .
 \end{equation}
-{% endraw %}
+$$
 
 The harmonic approximation is $E \approx E^{(0)} + E^{(2)}$; the
 first anharmonic correction is $E^{(3)}$ (cubic), the second is
@@ -1176,7 +1176,7 @@ part (which gives the mode a finite *linewidt`h*' $\Gamma_s = 2
 \, \text{Im}\,\Sigma$). The imaginary part at second order in
 $E^{(3)}$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-pp-width}
 \Gamma_s(\mathbf q, T) \;=\;
@@ -1187,7 +1187,7 @@ $E^{(3)}$ is
 \delta(\omega_s \pm \omega_{s_1} \pm \omega_{s_2})\,
 (n_1 + \tfrac{1}{2} \pm \tfrac{1}{2})(n_2 + \tfrac{1}{2} \mp \tfrac{1}{2}) ,
 \end{equation}
-{% endraw %}
+$$
 
 where $V^{(3)}$ is the cubic matrix element
 $\langle ss_1 s_2 | E^{(3)} | 0\rangle$ and $n_i = (e^{\beta\hbar\omega_i} - 1)^{-1}$
@@ -1224,12 +1224,12 @@ dependence of $a$ by *re-evaluating* the harmonic free energy
 equivalently, every volume $V$), and minimising with respect to
 $a$ at every $T$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-qha}
 a(T) \;=\; \mathrm{argmin}_a\; F\Bigl(a, T\Bigr) ,
 \end{equation}
-{% endraw %}
+$$
 
 where $F(a, T)$ is the harmonic free energy \eqref{eq:ch-10-free-energy-dos}
 evaluated with the phonon frequencies $\omega_s(\mathbf q; a)$
@@ -1238,13 +1238,13 @@ phonon populations in their harmonic form (no $E^{(3)}$, $E^{(4)}$
 in the energy), but lets the frequencies depend on $a$ — the
 Grüneisen parameter
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-gruneisen}
 \gamma_s(\mathbf q) \;=\; -\,\frac{\partial \ln \omega_s(\mathbf q)}
                                     {\partial \ln V} ,
 \end{equation}
-{% endraw %}
+$$
 
 encodes this dependence.
 
@@ -1278,7 +1278,7 @@ phonons, treating the electron-phonon coupling perturbatively
 (see §10.8 below). The renormalisation of the band gap at
 temperature $T$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-ahc}
 \Delta E_g(T) \;=\; \frac{1}{N_\mathbf q}\,
@@ -1286,7 +1286,7 @@ temperature $T$ is
 \frac{\partial E_g}{\partial n_{s\mathbf q}}\,
 \Bigl[\,n_{s\mathbf q}(T) + \tfrac{1}{2}\,\Bigr] ,
 \end{equation}
-{% endraw %}
+$$
 
 where $n_{s\mathbf q}$ is the Bose–Einstein occupation and
 $\partial E_g / \partial n_{s\mathbf q}$ is the rate of change of
@@ -1332,13 +1332,13 @@ dilatation or compression of the crystal. For a long-wavelength
 acoustic phonon of wavevector $\mathbf q \to 0$ and branch $s$,
 the change in $\varepsilon_{n\mathbf k}$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-def-pot}
 \delta\varepsilon_{n\mathbf k} \;=\;
 \Xi_{n, s}\; \Delta_s(\mathbf q) ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\Delta_s(\mathbf q) = i |\mathbf q| U_s$ is the dilatation
 (for a longitudinal acoustic mode) and $\Xi_{n, s}$ is the
@@ -1361,7 +1361,7 @@ For *long-wavelength longitudinal optical* (LO) phonons in an
 *ioni`c*' crystal, the macroscopic electric field of the LO phonon
 couples to the electron via the Fröhlich interaction
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-frohlich}
 \hat H_\text{ep}^\text{LO} \;=\;
@@ -1371,11 +1371,11 @@ g_\text{LO}(\mathbf q)\,
 \hat a_{\mathbf q} \;+\; \text{h.c.}
 \Bigr] ,
 \end{equation}
-{% endraw %}
+$$
 
 with the coupling constant
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-frohlich-g}
 g_\text{LO}(\mathbf q) \;=\;
@@ -1383,12 +1383,12 @@ i\,\frac{\hbar\omega_\text{LO}}{q}\,
 \sqrt{\frac{4\pi\alpha_\text{LO}}{V}}\,
 \Bigl(\frac{\hbar}{2 m \omega_\text{LO}}\Bigr)^{\!1/2} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $m$ is the electron band mass and $\alpha_\text{LO}$ is the
 dimensionless **Fröhlich coupling constant**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-frohlich-alpha}
 \alpha_\text{LO} \;=\;
@@ -1396,7 +1396,7 @@ dimensionless **Fröhlich coupling constant**
 \sqrt{\frac{m}{2\hbar\omega_\text{LO}}}\,
 \Bigl(\frac{1}{\varepsilon_\infty} - \frac{1}{\varepsilon_0}\Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 For GaAs, $\alpha_\text{LO} \approx 0.06$ (weak coupling); for
 TiO$_2$ (anatase), $\alpha_\text{LO} \approx 2$ (strong coupling).
@@ -1415,7 +1415,7 @@ the alkali halides.
 
 For a *general* electron-phonon coupling, the matrix element is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-ep-matrix}
 g_{mn}^\nu(\mathbf k, \mathbf q) \;=\;
@@ -1423,7 +1423,7 @@ g_{mn}^\nu(\mathbf k, \mathbf q) \;=\;
 \partial_{\mathbf q \nu} \hat V_{\text{KS}}
 \rvert\, \psi_{n, \mathbf k} \rangle ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\partial_{\mathbf q \nu} \hat V_{\text{KS}}$ is the
 derivative of the Kohn–Sham potential with respect to the
@@ -1432,7 +1432,7 @@ $| \psi_{n, \mathbf k} \rangle$ is the unperturbed Bloch state.
 In a plane-wave code with norm-conserving pseudopotentials, the
 matrix element is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-ep-pw}
 g_{mn}^\nu(\mathbf k, \mathbf q) \;=\;
@@ -1441,7 +1441,7 @@ g_{mn}^\nu(\mathbf k, \mathbf q) \;=\;
 \partial_{\mathbf q \nu} \hat V_\text{ext}
 \rvert\, \psi_{n, \mathbf k} \rangle ,
 \end{equation}
-{% endraw %}
+$$
 
 where the prefactor converts the *normalise`d*' phonon amplitude
 to a *physical* displacement, $M_\nu$ is a mode-effective mass
@@ -1467,7 +1467,7 @@ The **Eliashberg function** $\alpha^2 F(\omega)$ is the
 *phonon-density-of-states-weighte`d*' average of the electron-
 phonon matrix element, summed over the Fermi surface:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-eliashberg}
 \alpha^2 F(\omega) \;=\;
@@ -1479,7 +1479,7 @@ phonon matrix element, summed over the Fermi surface:
 \delta(\varepsilon_{m, \mathbf k + \mathbf q})\,
 \delta\!\Bigl(\omega - \omega_\nu(\mathbf q)\Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 Three pieces to recognise:
 
@@ -1511,13 +1511,13 @@ metal, the *carrier lifetime* in a semiconductor, and the
 > **electron-phonon coupling constant** $\lambda$ is the same in
 > both conventions:
 >
-{% raw %}
+$$
 > \begin{equation}
 > \label{eq:ch-10-lambda}
 > \lambda \;=\; 2 \int_0^\infty\! d\omega\,
 > \frac{\alpha^2 F(\omega)}{\omega} .
 > \end{equation}
-{% endraw %}
+$$
 >
 > $\lambda$ is a *measure* of the strength of the electron-phonon
 > coupling: weak coupling is $\lambda \lesssim 0.3$, intermediate
@@ -1533,18 +1533,18 @@ $\alpha^2 F(\omega)$ through a non-linear integral equation
 analytical approximation is the **McMillan formula**
 ([McMillan (1968)](<https://doi.org/10.1103/PhysRev.167.331>)):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-mcmillan}
 T_c \;=\; \frac{\hbar\omega_\text{log}}{1.2 k_B}\,
 \exp\!\Bigl[-\,\frac{1.04\,(1 + \lambda)}
                    {\lambda - \mu^* (1 + 0.62 \lambda)}\Bigr] ,
 \end{equation}
-{% endraw %}
+$$
 
 where
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-omega-log}
 \hbar\omega_\text{log} \;=\;
@@ -1552,7 +1552,7 @@ where
 \int_0^\infty\! d\omega\,
 \ln(\hbar\omega)\, \frac{\alpha^2 F(\omega)}{\omega}\Bigr]
 \end{equation}
-{% endraw %}
+$$
 
 is the **logarithmic average phonon energy** and $\mu^*$ is the
 **Coulomb pseudopotential** (a dimensionless measure of the
@@ -1661,25 +1661,25 @@ distinct). The forces are:
   in cell $n$ (to the right) and to atom 2 in cell $n - 1$ (to
   the left):
 
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-10-worked-f1}
   M_1\, \ddot u_n^{(1)} \;=\;
   K\,(v_n^{(2)} - u_n^{(1)}) \;-\; K\,(u_n^{(1)} - v_{n-1}^{(2)}) .
   \end{equation}
-{% endraw %}
+$$
 
 - The force on atom 2 in cell $n$ comes from its bonds to atom 1
   in cell $n$ (to the left) and to atom 1 in cell $n + 1$ (to
   the right):
 
-{% raw %}
+$$
   \begin{equation}
   \label{eq:ch-10-worked-f2}
   M_2\, \ddot v_n^{(2)} \;=\;
   K\,(u_n^{(1)} - v_n^{(2)}) \;-\; K\,(v_n^{(2)} - u_{n+1}^{(1)}) .
   \end{equation}
-{% endraw %}
+$$
 
 ### 10.9.2 The Bloch ansatz
 
@@ -1694,41 +1694,41 @@ $$
 so that $\ddot u = -\omega^2 u$ and similarly for $v$. The
 equations of motion become
 
-{% raw %}
+$$
 \begin{equation}
 -M_1 \omega^2 A \;=\; K B\,(1 + e^{-i q a}) \;-\; 2 K A , \label{eq:ch-10-worked-bloch1}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 -M_2 \omega^2 B \;=\; K A\,(1 + e^{+i q a}) \;-\; 2 K B . \label{eq:ch-10-worked-bloch2}
 \end{equation}
-{% endraw %}
+$$
 
 Using the identity $1 + e^{\pm i q a} = 2 e^{\pm i q a/2}
 \cos(q a / 2)$, and collecting the $A$ and $B$ terms on the left:
 
-{% raw %}
+$$
 \begin{equation}
 (2K - M_1 \omega^2)\, A \;=\; 2K \cos(q a / 2)\, B , \label{eq:ch-10-worked-bloch3}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 (2K - M_2 \omega^2)\, B \;=\; 2K \cos(q a / 2)\, A . \label{eq:ch-10-worked-bloch4}
 \end{equation}
-{% endraw %}
+$$
 
 This is a $2 \times 2$ linear eigenvalue problem in $(A, B)$. A
 non-trivial solution exists iff the determinant of the matrix
 vanishes:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-worked-det}
 (2K - M_1 \omega^2)(2K - M_2 \omega^2) - 4K^2 \cos^2(q a / 2) \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 ### 10.9.3 The dispersion relation
 
@@ -1741,18 +1741,18 @@ $$
 
 Using $1 - \cos^2(q a/2) = \sin^2(q a/2)$ and rearranging:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-worked-quad}
 M_1 M_2\, \omega^4 \;-\; 2K(M_1 + M_2)\, \omega^2 \;+\;
 4 K^2 \sin^2(q a / 2) \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 This is a quadratic in $\omega^2$. Solving by the quadratic
 formula:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-worked-dispersion}
 \boxed{
@@ -1763,7 +1763,7 @@ K\, \sqrt{\,\Bigl(\frac{1}{M_1} + \frac{1}{M_2}\Bigr)^{\!2}
         \;-\; \frac{4 \sin^2(q a / 2)}{M_1 M_2}\,}\; .
 }
 \end{equation}
-{% endraw %}
+$$
 
 The two signs give the two branches: $\omega_-(q)$ is the
 **acoustic** branch (lower frequency), $\omega_+(q)$ is the
@@ -1795,22 +1795,22 @@ $$
 where $\mu = M_1 M_2 / (M_1 + M_2)$ is the *reduced mass*. So
 $\omega_-(q) \to v_s |q|$ with the **speed of sound**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-worked-vsound}
 v_s \;=\; \frac{a}{2}\,\sqrt{\frac{K}{\mu}} .
 \end{equation}
-{% endraw %}
+$$
 
 For the optical branch at $q = 0$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-worked-optic}
 \omega_+^2(q = 0) \;=\; 2K \!\left(\frac{1}{M_1} + \frac{1}{M_2}\right)
 \;=\; \frac{2K}{\mu} .
 \end{equation}
-{% endraw %}
+$$
 
 The acoustic branch starts at 0 (and rises linearly), the
 optical branch starts at $\omega_+^2 = 2K/\mu$.
@@ -1834,13 +1834,13 @@ $$
 (assuming $M_1 < M_2$ so $1/M_1 > 1/M_2$). The gap at the BZ
 boundary is therefore
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-10-worked-gap}
 \omega_+^2(\pi/a) - \omega_-^2(\pi/a)
 \;=\; 2K \left(\frac{1}{M_1} - \frac{1}{M_2}\right) .
 \end{equation}
-{% endraw %}
+$$
 
 For $M_1 = M_2$ the gap closes, the dispersion becomes
 $\omega^2 = (2K/M) \sin^2(q a/2)$, and the chain reduces to the

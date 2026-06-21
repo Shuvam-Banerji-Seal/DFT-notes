@@ -1154,20 +1154,20 @@ A **linear operator** on the Hilbert space $\mathcal H$ is a map
 $\hat A: \mathcal H \to \mathcal H$ that preserves linear
 combinations,
 
-{% raw %}
+$$
 \begin{equation}
 \hat A \big( \alpha \lvert \psi \rangle + \beta \lvert \phi \rangle \big)
 \;=\; \alpha\, \hat A \lvert \psi \rangle + \beta\, \hat A \lvert \phi \rangle .
 \label{eq:ch-01-10-linear}
 \tag{1.10.1}
 \end{equation}
-{% endraw %}
+$$
 
 Every operator used in the rest of these notes is linear. The
 **adjoint** (or **Hermitian conjugate**) $\hat A^\dagger$ of a
 linear operator is defined by
 
-{% raw %}
+$$
 \begin{equation}
 \langle \phi \rvert \hat A \psi \rangle
 \;=\; \langle \hat A^\dagger \phi \rvert \psi \rangle
@@ -1175,7 +1175,7 @@ linear operator is defined by
 \label{eq:ch-01-10-adjoint}
 \tag{1.10.2}
 \end{equation}
-{% endraw %}
+$$
 
 The adjoint reverses the order of products,
 $(\hat A \hat B)^\dagger = \hat B^\dagger \hat A^\dagger$, and maps
@@ -1191,13 +1191,13 @@ singling out.
    exchange, …) are Hermitian.
 2. **Unitary operators** satisfy
 
-{% raw %}
+$$
 \begin{equation}
 \hat U^\dagger \hat U \;=\; \hat U \hat U^\dagger \;=\; \hat 1 .
 \label{eq:ch-01-10-unitary}
 \tag{1.10.3}
 \end{equation}
-{% endraw %}
+$$
 
    They preserve inner products
    ($\langle \hat U \psi \rvert \hat U \phi \rangle = \langle \psi \rvert \phi \rangle$)
@@ -1224,13 +1224,13 @@ singling out.
 
 The **commutator** of two operators is
 
-{% raw %}
+$$
 \begin{equation}
 [\hat A, \hat B] \;=\; \hat A \hat B - \hat B \hat A .
 \label{eq:ch-01-10-commutator}
 \tag{1.10.4}
 \end{equation}
-{% endraw %}
+$$
 
 Two operators **commute** if their commutator is zero; in that
 case they can be simultaneously diagonalised, and every
@@ -1243,14 +1243,14 @@ position and momentum cannot both be sharp.
 The commutation relations that define non-relativistic quantum
 mechanics are the **canonical commutation relations** (CCR),
 
-{% raw %}
+$$
 \begin{equation}
 [\hat x_a, \hat p_b] \;=\; i \delta_{ab} , \qquad
 [\hat x_a, \hat x_b] = [\hat p_a, \hat p_b] = 0 ,
 \label{eq:ch-01-10-ccr}
 \tag{1.10.5}
 \end{equation}
-{% endraw %}
+$$
 
 where $a, b \in \{x, y, z\}$. (We work in atomic units, so
 $\hbar = 1$ is implicit; the SI form is
@@ -1267,24 +1267,24 @@ group — is built on top of it.
 Two operator identities are used so often that we name them
 now. The **Leibniz rule** for commutators,
 
-{% raw %}
+$$
 \begin{equation}
 [\hat A, \hat B \hat C] \;=\; [\hat A, \hat B]\, \hat C + \hat B\, [\hat A, \hat C] ,
 \label{eq:ch-01-10-leibniz}
 \tag{1.10.6}
 \end{equation}
-{% endraw %}
+$$
 
 and its analogue for the **anticommutator**
 $\{\hat A, \hat B\} = \hat A \hat B + \hat B \hat A$,
 
-{% raw %}
+$$
 \begin{equation}
 [\hat A, \hat B \hat C] \;=\; \{\hat A, \hat B\}\,\hat C - \hat B\,\{\hat A, \hat C\} .
 \label{eq:ch-01-10-anticomm}
 \tag{1.10.7}
 \end{equation}
-{% endraw %}
+$$
 
 Both follow by writing the product in two orders; they are
 used constantly in the angular-momentum algebra of chapter 2
@@ -1293,14 +1293,14 @@ $\hat H = \hat p^2 / 2m + V(\hat{\mathbf r})$ (atomic units:
 $\hat H = \tfrac{1}{2}\hat p^2 + V(\hat{\mathbf r})$), the CCR
 gives
 
-{% raw %}
+$$
 \begin{equation}
 [\hat H, \hat x] \;=\; \frac{i}{m}\, \hat p , \qquad
 [\hat H, \hat{\mathbf p}] \;=\; i\, \nabla V(\hat{\mathbf r}) .
 \label{eq:ch-01-10-H-comm}
 \tag{1.10.8}
 \end{equation}
-{% endraw %}
+$$
 
 The first equation is the **Heisenberg form of Newton's second
 law** in the absence of a potential: $d\hat x / dt = \hat p / m$
@@ -1327,13 +1327,13 @@ the theorem guarantees
 1. A complete set of (possibly generalised) eigenstates
    $\{|a\rangle\}$ satisfying
 
-{% raw %}
+$$
 \begin{equation}
 \hat A \lvert a \rangle \;=\; a\, \lvert a \rangle ,
 \label{eq:ch-01-10-eigen}
 \tag{1.10.9}
 \end{equation}
-{% endraw %}
+$$
 
    where $a$ ranges over the **spectrum** $\sigma(\hat A)$ of
    $\hat A$. The spectrum is real (because $\hat A$ is
@@ -1346,14 +1346,14 @@ the theorem guarantees
 
 2. A **spectral decomposition** of the identity,
 
-{% raw %}
+$$
 \begin{equation}
 \hat 1 \;=\; \sum_{a \in \sigma_p} \lvert a \rangle \langle a \rvert
 \;+\; \int_{\sigma_c} d a\, \lvert a \rangle \langle a \rvert .
 \label{eq:ch-01-10-resolution}
 \tag{1.10.10}
 \end{equation}
-{% endraw %}
+$$
 
    (The sum runs over the point spectrum, the integral over the
    continuous spectrum.) Equation \eqref{eq:ch-01-10-resolution}
@@ -1363,14 +1363,14 @@ the theorem guarantees
    operator-level foundation of every expansion-based method in
    chapters 3, 5, and 6. 3. A **spectral representation of the operator itself**,
 
-{% raw %}
+$$
 \begin{equation}
 \hat A \;=\; \sum_{a \in \sigma_p} a\, \lvert a \rangle \langle a \rvert
 \;+\; \int_{\sigma_c} d a\, a\, \lvert a \rangle \langle a \rvert .
 \label{eq:ch-01-10-spectral}
 \tag{1.10.11}
 \end{equation}
-{% endraw %}
+$$
 
    Equations \eqref{eq:ch-01-10-resolution} and
    \eqref{eq:ch-01-10-spectral} are the same identity with one
@@ -1391,14 +1391,14 @@ The spectral decomposition makes it possible to define
 For a self-adjoint $\hat A$ with spectrum $\{a\}$ and a
 *Borel-measurable* function $f: \mathbb R \to \mathbb C$,
 
-{% raw %}
+$$
 \begin{equation}
 f(\hat A) \;=\; \sum_{a \in \sigma_p} f(a)\, \lvert a \rangle \langle a \rvert
 \;+\; \int_{\sigma_c} d a\, f(a)\, \lvert a \rangle \langle a \rvert .
 \label{eq:ch-01-10-fun-op}
 \tag{1.10.12}
 \end{equation}
-{% endraw %}
+$$
 
 The construction is unambiguous: it does not depend on the
 basis in which we choose to write the operators, only on
@@ -1417,13 +1417,13 @@ $\hat A$'s spectrum. Three applications recur in these notes.
   The **time-evolution operator** is the most important
   exponential in these notes:
 
-{% raw %}
+$$
 \begin{equation}
 \hat U(t) \;=\; e^{-i \hat H t} .
 \label{eq:ch-01-10-U}
 \tag{1.10.13}
 \end{equation}
-{% endraw %}
+$$
 
   (Atomic units: $\hbar = 1$; the SI form is
   $\hat U(t) = e^{-i \hat H t / \hbar}$.) Equation
@@ -1462,14 +1462,14 @@ formulas.
 The TDSE is postulate P5 of section 1.2, restated in atomic
 units:
 
-{% raw %}
+$$
 \begin{equation}
 i\, \frac{\partial}{\partial t}\, \lvert \psi(t) \rangle
 \;=\; \hat H\, \lvert \psi(t) \rangle .
 \label{eq:ch-01-11-tdse}
 \tag{1.11.1}
 \end{equation}
-{% endraw %}
+$$
 
 For an explicitly time-dependent Hamiltonian $\hat H(t)$ the
 same equation holds with $\hat H$ replaced by $\hat H(t)$. We
@@ -1484,19 +1484,19 @@ Equation \eqref{eq:ch-01-11-tdse} is a first-order linear ODE
 in $t$ with operator coefficients. Its general solution can be
 written as
 
-{% raw %}
+$$
 \begin{equation}
 \lvert \psi(t) \rangle \;=\; \hat U(t, t_0)\, \lvert \psi(t_0) \rangle ,
 \label{eq:ch-01-11-propagator}
 \tag{1.11.2}
 \end{equation}
-{% endraw %}
+$$
 
 where $\hat U(t, t_0)$ is the **time-evolution operator** (or
 **propagator**) from $t_0$ to $t$. Substituting back into the
 TDSE gives the equation of motion for $\hat U$,
 
-{% raw %}
+$$
 \begin{equation}
 i\, \frac{\partial}{\partial t}\, \hat U(t, t_0)
 \;=\; \hat H\, \hat U(t, t_0) , \qquad
@@ -1504,41 +1504,41 @@ i\, \frac{\partial}{\partial t}\, \hat U(t, t_0)
 \label{eq:ch-01-11-U-eom}
 \tag{1.11.3}
 \end{equation}
-{% endraw %}
+$$
 
 For time-independent $\hat H$ the equation is solved by the
 operator exponential \eqref{eq:ch-01-10-U}:
 
-{% raw %}
+$$
 \begin{equation}
 \hat U(t, t_0) \;=\; e^{-i \hat H (t - t_0)} .
 \label{eq:ch-01-11-U-explicit}
 \tag{1.11.4}
 \end{equation}
-{% endraw %}
+$$
 
 Two algebraic identities follow directly from the Hermiticity
 of $\hat H$.
 
 1. **Group property**:
-{% raw %}
+$$
    \begin{equation}
    \hat U(t_2, t_1)\, \hat U(t_1, t_0) \;=\; \hat U(t_2, t_0) .
    \label{eq:ch-01-11-group}
    \tag{1.11.5}
    \end{equation}
-{% endraw %}
+$$
    Time evolution is deterministic: knowing the state at
    $t_0$ determines it at all times, and the intermediate
    propagators compose as an ordinary one-parameter group.
 2. **Unitarity**:
-{% raw %}
+$$
    \begin{equation}
    \hat U^\dagger(t, t_0)\, \hat U(t, t_0) \;=\; \hat 1 .
    \label{eq:ch-01-11-unitary}
    \tag{1.11.6}
    \end{equation}
-{% endraw %}
+$$
    The propagator is a unitary operator; the inner product of
    two states is preserved by time evolution, and the norm of
    a single state is preserved (postulate P1 in motion).
@@ -1566,7 +1566,7 @@ $\hat H \lvert \psi_n \rangle = E_n \lvert \psi_n \rangle$, the
 propagator \eqref{eq:ch-01-11-U-explicit} acts on it by a
 global phase:
 
-{% raw %}
+$$
 \begin{equation}
 \hat U(t, 0)\, \lvert \psi_n \rangle \;=\; e^{-i E_n t}\, \lvert \psi_n \rangle
 \quad\Longrightarrow\quad
@@ -1574,7 +1574,7 @@ global phase:
 \label{eq:ch-01-11-stationary}
 \tag{1.11.7}
 \end{equation}
-{% endraw %}
+$$
 
 The probability density
 $|\psi_n(\mathbf r, t)|^2 = \langle \psi_n(t) | \psi_n(t) \rangle$
@@ -1604,13 +1604,13 @@ $|\psi(0)\rangle = \sum_n c_n \lvert \psi_n \rangle$ with
 $c_n = \langle \psi_n | \psi(0) \rangle$. Each eigenstate picks
 up its own stationary phase, so the state at time $t$ is
 
-{% raw %}
+$$
 \begin{equation}
 \lvert \psi(t) \rangle \;=\; \sum_{n} c_n\, e^{-i E_n t}\, \lvert \psi_n \rangle .
 \label{eq:ch-01-11-superposition}
 \tag{1.11.8}
 \end{equation}
-{% endraw %}
+$$
 
 This is **the most general solution of the TDSE for
 time-independent $\hat H$**: any state, evolved forward in time,
@@ -1623,7 +1623,7 @@ The time dependence of an expectation value
 $\langle \hat A \rangle$ is computed directly from
 \eqref{eq:ch-01-11-superposition}:
 
-{% raw %}
+$$
 \begin{equation}
 \langle \hat A \rangle(t)
 \;=\; \sum_{n, m} c_n^*\, c_m\, e^{i (E_n - E_m) t}\, A_{nm} ,
@@ -1632,7 +1632,7 @@ A_{nm} \;=\; \langle \psi_n \rvert \hat A \rvert \psi_m \rangle .
 \label{eq:ch-01-11-expval}
 \tag{1.11.9}
 \end{equation}
-{% endraw %}
+$$
 
 Three observations. **(1)** The *diagonal* terms
 ($n = m$) are time-independent. **(2)** The *off-diagonal*
@@ -1663,7 +1663,7 @@ an initial eigenstate $|i\rangle$ of $\hat H_0$ to a final
 eigenstate $|f\rangle$ is, in first-order time-dependent
 perturbation theory, **Fermi's golden rule**:
 
-{% raw %}
+$$
 \begin{equation}
 w_{i \to f} \;=\; \frac{2\pi}{\hbar}\,
 \lvert \langle f \rvert \hat V \rvert i \rangle \rvert^2\,
@@ -1671,7 +1671,7 @@ w_{i \to f} \;=\; \frac{2\pi}{\hbar}\,
 \label{eq:ch-01-11-fermi}
 \tag{1.11.10}
 \end{equation}
-{% endraw %}
+$$
 
 For a *monochromati`c*' perturbation
 $\hat V(t) = \hat V\, e^{-i\omega t} + \hat V^\dagger e^{+i\omega t}$
@@ -1681,7 +1681,7 @@ conservation-of-energy delta function is replaced by
 $E_f - E_i = \hbar\omega$ and stimulated emission matches
 $E_i - E_f = \hbar\omega$. The rate for absorption is
 
-{% raw %}
+$$
 \begin{equation}
 w_{i \to f}^\text{(abs)}
 \;=\; \frac{2\pi}{\hbar}\, \lvert V_{fi} \rvert^2\,
@@ -1689,11 +1689,11 @@ w_{i \to f}^\text{(abs)}
 \label{eq:ch-01-11-fermi-abs}
 \tag{1.11.11}
 \end{equation}
-{% endraw %}
+$$
 
 and for stimulated emission,
 
-{% raw %}
+$$
 \begin{equation}
 w_{i \to f}^\text{(em)}
 \;=\; \frac{2\pi}{\hbar}\, \lvert V_{if} \rvert^2\,
@@ -1701,7 +1701,7 @@ w_{i \to f}^\text{(em)}
 \label{eq:ch-01-11-fermi-em}
 \tag{1.11.12}
 \end{equation}
-{% endraw %}
+$$
 
 (Atomic units: $\hbar = 1$, so the prefactor is $2\pi$ and
 the arguments of the delta functions drop the $\hbar$ factors.)
@@ -1717,7 +1717,7 @@ The simplest non-trivial quantum dynamics that cannot be
 solved by stationary-state phase factors alone is a **two-level
 system** with Hamiltonian
 
-{% raw %}
+$$
 \begin{equation}
 \hat H(t) \;=\; \hat H_0 + \hat V(t)
 \;=\; \frac{\hbar \omega_0}{2}\, \hat \sigma_z
@@ -1725,7 +1725,7 @@ system** with Hamiltonian
 \label{eq:ch-01-11-rabi-H}
 \tag{1.11.13}
 \end{equation}
-{% endraw %}
+$$
 
 where $\hat H_0 = (\hbar\omega_0/2) \hat \sigma_z$ has
 eigenstates $|0\rangle$ (energy $-\hbar\omega_0/2$) and
@@ -1750,7 +1750,7 @@ $\tilde c_0 = c_0 e^{+i\omega t/2}$,
 $\tilde c_1 = c_1 e^{-i\omega t/2}$. The result is a system of
 two ODEs with constant coefficients,
 
-{% raw %}
+$$
 \begin{equation}
 i \frac{d}{dt} \begin{pmatrix} \tilde c_0 \\\\ \tilde c_1 \end{pmatrix}
 \;=\;
@@ -1759,20 +1759,20 @@ i \frac{d}{dt} \begin{pmatrix} \tilde c_0 \\\\ \tilde c_1 \end{pmatrix}
 \label{eq:ch-01-11-rabi-ode}
 \tag{1.11.14}
 \end{equation}
-{% endraw %}
+$$
 
 where $\Delta = \omega - \omega_0$ is the **detuning** of the
 driving field from the atomic transition. Diagonalising the
 matrix in \eqref{eq:ch-01-11-rabi-ode} gives the **generalised
 Rabi frequency**
 
-{% raw %}
+$$
 \begin{equation}
 \Omega_R \;=\; \sqrt{\left( \frac{V_0}{\hbar} \right)^{\!2} + \Delta^2} .
 \label{eq:ch-01-11-rabi-omega}
 \tag{1.11.15}
 \end{equation}
-{% endraw %}
+$$
 
 (Atomic units: $V_0$ has dimensions of energy, so $V_0 / \hbar$
 has dimensions of frequency; the formula reduces to
@@ -1780,7 +1780,7 @@ $\Omega_R = \sqrt{V_0^2 + \Delta^2}$.) For an initial
 condition $|\psi(0)\rangle = |0\rangle$ — the system starts in
 the ground state — the population of the excited state is
 
-{% raw %}
+$$
 \begin{equation}
 P_1(t) \;=\; \lvert \tilde c_1(t) \rvert^2
 \;=\; \frac{V_0^2}{\hbar^2 \Omega_R^2}\,
@@ -1788,7 +1788,7 @@ P_1(t) \;=\; \lvert \tilde c_1(t) \rvert^2
 \label{eq:ch-01-11-rabi-formula}
 \tag{1.11.16}
 \end{equation}
-{% endraw %}
+$$
 
 This is the **Rabi formula**. Three limits are worth noting.
 **(1)** On **exact resonance** ($\Delta = 0$),
@@ -1850,25 +1850,25 @@ operators $\hat U(\lambda) = e^{-i \lambda \hat G / \hbar}$
 (with $\lambda \in \mathbb R$ and $\hat G$ self-adjoint) that
 leaves $\hat H$ invariant:
 
-{% raw %}
+$$
 \begin{equation}
 [\hat H, \hat G] \;=\; 0 .
 \label{eq:ch-01-12-conserved}
 \tag{1.12.1}
 \end{equation}
-{% endraw %}
+$$
 
 The operator $\hat G$ is called the **generator** of the
 symmetry. The Heisenberg equation of motion,
 
-{% raw %}
+$$
 \begin{equation}
 \frac{d \hat G}{dt} \;=\; \frac{i}{\hbar}\, [\hat H, \hat G]
 + \frac{\partial \hat G}{\partial t} ,
 \label{eq:ch-01-12-heisenberg}
 \tag{1.12.2}
 \end{equation}
-{% endraw %}
+$$
 
 (derived in section 1.7.5) gives, for $\hat G$ with no explicit
 time dependence, $d\hat G/dt = (i/\hbar)[\hat H, \hat G]$.
@@ -1889,13 +1889,13 @@ conservation laws that anchor the rest of these notes.
    $\hat{\mathbf p} = -i \sum_i \nabla_i$, and the unitary
    family is
 
-{% raw %}
+$$
 \begin{equation}
 \hat T(\mathbf a) \;=\; e^{-i \hat{\mathbf p} \cdot \mathbf a / \hbar} .
 \label{eq:ch-01-12-translation}
 \tag{1.12.3}
 \end{equation}
-{% endraw %}
+$$
 
    For a translation-invariant $\hat H$, $[\hat H, \hat{\mathbf p}] = 0$,
    so $\hat{\mathbf p}$ is conserved: the total momentum of a
@@ -1943,13 +1943,13 @@ it commutes with $\hat H$.
 1. **Parity** $\hat P$ is the unitary operator that inverts all
    coordinates,
 
-{% raw %}
+$$
 \begin{equation}
 \hat P \lvert \mathbf r \rangle \;=\; \lvert -\mathbf r \rangle .
 \label{eq:ch-01-12-parity}
 \tag{1.12.4}
 \end{equation}
-{% endraw %}
+$$
 
    $\hat P$ is Hermitian and unitary ($\hat P^2 = \hat 1$); its
    eigenvalues are $\pm 1$ and classify states as **even**
@@ -1964,7 +1964,7 @@ it commutes with $\hat H$.
    that reverses the direction of motion. Its defining
    properties are
 
-{% raw %}
+$$
 \begin{equation}
 \hat T\, i\, \hat T^{-1} \;=\; -i , \qquad
 \hat T \hat{\mathbf p}\, \hat T^{-1} \;=\; -\hat{\mathbf p} , \qquad
@@ -1972,7 +1972,7 @@ it commutes with $\hat H$.
 \label{eq:ch-01-12-timerev}
 \tag{1.12.5}
 \end{equation}
-{% endraw %}
+$$
 
    The first equation ($\hat T$ takes the complex conjugate) is
    what makes $\hat T$ antiunitary rather than unitary. On
@@ -1989,14 +1989,14 @@ it commutes with $\hat H$.
 3. **Particle–hole conjugation** $\hat C$ is the unitary
    operator that exchanges particles and holes,
 
-{% raw %}
+$$
 \begin{equation}
 \hat C\, \hat a_i\, \hat C^{-1} \;=\; \hat a_i^\dagger , \qquad
 \hat C\, \hat a_i^\dagger\, \hat C^{-1} \;=\; \hat a_i ,
 \label{eq:ch-01-12-particle-hole}
 \tag{1.12.6}
 \end{equation}
-{% endraw %}
+$$
 
    where $\hat a_i^\dagger$, $\hat a_i$ are the fermionic
    creation and annihilation operators of chapter 2. The
@@ -2026,7 +2026,7 @@ A **selection rule** is the statement that a matrix element
 $\langle m | \hat O | n \rangle$ vanishes by symmetry. The
 general principle is
 
-{% raw %}
+$$
 \begin{equation}
 \langle m \rvert \hat O \rvert n \rangle \;\neq\; 0
 \quad\Longleftrightarrow\quad
@@ -2035,7 +2035,7 @@ general principle is
 \label{eq:ch-01-12-selection}
 \tag{1.12.7}
 \end{equation}
-{% endraw %}
+$$
 
 where $\Gamma_m$, $\Gamma_O$, $\Gamma_n$ are the
 **irreducible representations** of the symmetry group carried
@@ -2045,7 +2045,7 @@ direct product iff the *symmetry species* of the three objects
 can multiply to give the trivial species. For an Abelian
 group (e.g. parity), this is the *parity-matching* condition
 
-{% raw %}
+$$
 \begin{equation}
 \pi_m \cdot \pi_O \cdot \pi_n \;=\; +1
 \quad\Longleftrightarrow\quad
@@ -2053,7 +2053,7 @@ group (e.g. parity), this is the *parity-matching* condition
 \label{eq:ch-01-12-parity-rule}
 \tag{1.12.8}
 \end{equation}
-{% endraw %}
+$$
 
 i.e. an even number of the three objects must be odd. The
 **electric-dipole operator**
@@ -2072,7 +2072,7 @@ infinitesimal form. For the **angular-momentum selection rule**
 on the matrix element of a spherical tensor operator
 $\hat T_q^{(k)}$ (Wigner–Eckart theorem),
 
-{% raw %}
+$$
 \begin{equation}
 \langle n' \ell' m' \rvert \hat T_q^{(k)} \rvert n \ell m \rangle
 \;\neq\; 0 \quad\Longleftrightarrow\quad
@@ -2080,7 +2080,7 @@ m' = m + q \text{ and } |\ell' - \ell| \le k \le \ell + \ell' .
 \label{eq:ch-01-12-wigner-eckart}
 \tag{1.12.9}
 \end{equation}
-{% endraw %}
+$$
 
 This is the source of every selection rule in atomic and
 nuclear spectroscopy: the rank $k = 1$ dipole rule

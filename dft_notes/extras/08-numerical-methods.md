@@ -86,12 +86,12 @@ practice.
 
 Define the **SCF map** $\mathcal F$ by
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-map}
 \rho_\text{out} = \mathcal F[\rho_\text{in}]
 \end{equation}
-{% endraw %}
+$$
 
 as the two-step procedure: (i) build the Kohn–Sham potential
 $v_\text{eff}[\rho_\text{in}] = v_\text{ext} + v_\text{H}[\rho_\text{in}]
@@ -108,12 +108,12 @@ Hohenberg–Kohn theorems
 such a fixed point is the ground-state density of the system.
 The SCF problem is therefore
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-fixed-point}
 \rho^\star = \mathcal F[\rho^\star] .
 \end{equation}
-{% endraw %}
+$$
 
 The *bare* iteration
 $\rho^{(n+1)} = \mathcal F[\rho^{(n)}]$ is the **Picard
@@ -131,22 +131,22 @@ the fixes.
 
 The **Picard iteration** is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-picard}
 \rho^{(n+1)} = \mathcal F[\rho^{(n)}] .
 \end{equation}
-{% endraw %}
+$$
 
 Damping (linear mixing) replaces this with
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-linear-mix}
 \rho^{(n+1)} = (1 - \alpha)\, \rho^{(n)} + \alpha\, \mathcal F[\rho^{(n)}] ,
 \qquad 0 < \alpha < 1 .
 \end{equation}
-{% endraw %}
+$$
 
 The same formula applied to the *potential* is **potential
 mixing**; applied to the *density matrix* is **density-matrix
@@ -158,12 +158,12 @@ the three.
 
 Linearise $\mathcal F$ around the fixed point:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-lin}
 \mathcal F[\rho] \approx \rho^\star + \mathcal F^{\prime}(\rho^\star)\, (\rho - \rho^\star) ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\mathcal F^{\prime}(\rho^\star)$ is the Fréchet derivative of the
 SCF map at the fixed point.  Define the **error**
@@ -184,13 +184,13 @@ undamped map.
 
 The **amplification** of a single eigenvalue is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-amplification}
 \Re(\mu_\text{damp}) = (1 - \alpha) + \alpha\, \Re(\mu) , \qquad
 |\Im(\mu_\text{damp})| = \alpha\, |\Im(\mu)| .
 \end{equation}
-{% endraw %}
+$$
 
 For $\alpha \in (0, 1)$ the real part is a convex combination
 of $1$ and $\Re(\mu)$; if $\Re(\mu) < 1$ the real part is
@@ -207,12 +207,12 @@ the fixed-point problem $\mathcal F[\rho] - \rho = 0$.  Define the
 residual $r^{(n)} = \mathcal F[\rho^{(n)}] - \rho^{(n)}$; the
 Newton step would be
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-newton}
 \Delta\rho^{(n)} = - \mathbf J^{-1} r^{(n)} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\mathbf J = \partial(\mathcal F - \mathbf 1)/\partial\rho$.
 The Jacobian is too expensive to form and invert.  Broyden's
@@ -224,25 +224,25 @@ identity** of
 
 The **"good" Broyden update** is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-broyden}
 G_{n+1} = G_n + \frac{(\Delta\rho_n - G_n \Delta r_n)\, \Delta\rho_n^\text{T}}
                             {\Delta\rho_n^\text{T} \Delta\rho_n} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\Delta\rho_n = \rho^{(n+1)} - \rho^{(n)}$ and
 $\Delta r_n = r^{(n+1)} - r^{(n)}$.  The initial $G_0$ is
 $-\alpha \mathbf 1$ with $\alpha$ the linear-mixing parameter.
 A new step is then
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-broyden-step}
 \rho^{(n+1)} = \rho^{(n)} - \alpha\, G_n r^{(n)} .
 \end{equation}
-{% endraw %}
+$$
 
 The "good" Broyden update is the *symmetri`c*' rank-one update
 that preserves the secant condition
@@ -267,25 +267,25 @@ Let $\mathbf c = (c_1, \dots, c_m)^\text{T}$ be the coefficient
 vector.  Define the extrapolated iterate and the extrapolated
 residual as the same linear combinations:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-diis-extrap}
 \tilde\rho = \sum_{i=1}^{m} c_i \rho^{(i)} , \qquad
 \tilde R = \sum_{i=1}^{m} c_i R_i .
 \end{equation}
-{% endraw %}
+$$
 
 Because $\mathcal F$ is approximately linear near the fixed
 point, $\tilde R$ is approximately the residual that would be
 produced by $\tilde\rho$.  Choose $\mathbf c$ to minimise
 $\langle \tilde R, \tilde R \rangle$ subject to the constraint
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-diis-sum}
 \sum_{i=1}^{m} c_i = 1 .
 \end{equation}
-{% endraw %}
+$$
 
 (The constraint is what makes the extrapolation *interpolation*:
 if the iteration is already at a fixed point, the only solution
@@ -295,49 +295,49 @@ the iterates that are all at the fixed point.)
 Expand the objective using an inner product
 $\langle \cdot, \cdot \rangle$ on density space:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-diis-obj}
 \langle \tilde R, \tilde R \rangle
    = \sum_{i, j = 1}^{m} c_i c_j\, \langle R_i, R_j \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 Define the **metric matrix** $B$ with elements
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-diis-metric}
 B_{ij} = \langle R_i, R_j \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 The constrained minimisation of
 \eqref{eq:nm-scf-diis-obj} is solved by a Lagrangian.  Define
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-diis-lagr}
 \mathcal L(\mathbf c, \lambda)
    = \frac{1}{2} \mathbf c^\text{T} B \mathbf c
      - \lambda \Bigl( \sum_{i=1}^{m} c_i - 1 \Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 Differentiate with respect to $c_k$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-diis-stat}
 \frac{\partial \mathcal L}{\partial c_k}
    = \sum_{j=1}^{m} B_{kj}\, c_j - \lambda = 0 .
 \end{equation}
-{% endraw %}
+$$
 
 This gives $m$ equations; the constraint \eqref{eq:nm-scf-diis-sum}
 is the $(m + 1)$-th.  Stacking them:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-scf-diis-aug}
 \begin{pmatrix} B & \mathbf 1 \\\\ \mathbf 1^\text{T} & 0 \end{pmatrix}
@@ -345,7 +345,7 @@ is the $(m + 1)$-th.  Stacking them:
 =
 \begin{pmatrix} \mathbf 0 \\\\ 1 \end{pmatrix} .
 \end{equation}
-{% endraw %}
+$$
 
 This is the **DIIS sub-problem**.  It is an
 $(m + 1) \times (m + 1)$ symmetric linear system.  Solving it
@@ -575,12 +575,12 @@ The energy $E(\mathbf R)$ is a function of the $3 N_\text{atoms}$
 Cartesian coordinates.  The goal is to find the
 $\mathbf R^\star$ that minimises $E$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-problem}
 \mathbf R^\star = \arg\min_{\mathbf R} E(\mathbf R) .
 \end{equation}
-{% endraw %}
+$$
 
 The first-order condition is $\mathbf F(\mathbf R^\star) = \mathbf 0$
 with $\mathbf F = -\nabla E$.  The second-order condition (to
@@ -591,13 +591,13 @@ $\mathbf H(\mathbf R^\star) = \nabla \nabla E \succ 0$.
 
 The two standard criteria are
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-conv}
 \max_I \lVert \mathbf F_I \rVert < \text{F-tol}, \qquad
 \lvert E^{(k+1)} - E^{(k)} \rvert < \text{E-tol} .
 \end{equation}
-{% endraw %}
+$$
 
 Typical tolerances for "tight" geometry convergence are
 $\text{F-tol} = 5 \times 10^{-4}\,E_h/a_0 \approx 0.025\,\text{eV/Å}$
@@ -612,12 +612,12 @@ $\max_I \lVert \mathbf R_I^{(k+1)} - \mathbf R_I^{(k)} \rVert <
 
 The simplest method: walk downhill along the force.
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-sd}
 \mathbf p^{(k)} = - \mathbf F^{(k)} = +\frac{\partial E}{\partial \mathbf R}\bigg|_{\mathbf R^{(k)}} .
 \end{equation}
-{% endraw %}
+$$
 
 Steepest descent is trivial to implement and always *decreases*
 the energy for small enough step, but it converges **linearly**
@@ -634,12 +634,12 @@ $\alpha = 1/k$, which requires knowing $k$ — i.e. the Hessian.
 The **Armijo** backtracking line search is the standard
 formalisation of "small enough step":
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-armijo}
 E(\mathbf R + \alpha \mathbf p) \le E(\mathbf R) + c_1 \alpha\, \mathbf F \cdot \mathbf p ,
 \end{equation}
-{% endraw %}
+$$
 
 with $c_1 \sim 10^{-4}$.  In a DFT code the cost of an SCF is so
 high that one almost always uses a *fixe`d*' $\alpha$ (or a
@@ -650,12 +650,12 @@ high that one almost always uses a *fixe`d*' $\alpha$ (or a
 If the **Hessian** $\mathbf H^{(k)} = \partial^2 E / \partial
 \mathbf R^2$ is available, the Newton step is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-newton}
 \mathbf p^{(k)} = - \Bigl[ \mathbf H^{(k)} \Bigr]^{-1}\, \mathbf F^{(k)} .
 \end{equation}
-{% endraw %}
+$$
 
 Newton's method converges **quadratically** in the neighbourhood
 of the minimum: the number of correct digits doubles at every
@@ -678,7 +678,7 @@ year) maintains a *symmetric positive-definite* approximation
 $\mathbf B^{(k)} \approx \mathbf H^{(k)}$ and updates it from
 the new gradient information:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-bfgs-update}
 \boxed{
@@ -689,22 +689,22 @@ the new gradient information:
           {({\mathbf y^{(k)}})^{\text{T}} \mathbf s^{(k)}}
 }
 \end{equation}
-{% endraw %}
+$$
 
 with
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-bfgs-quantities}
 \mathbf s^{(k)} = \mathbf R^{(k+1)} - \mathbf R^{(k)} ,
 \qquad
 \mathbf y^{(k)} = \mathbf F^{(k+1)} - \mathbf F^{(k)} .
 \end{equation}
-{% endraw %}
+$$
 
 The **inverse-Hessian form** of \eqref{eq:nm-opt-bfgs-update} is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-bfgs-inverse}
 \mathbf H_\text{inv}^{(k+1)}
@@ -716,7 +716,7 @@ The **inverse-Hessian form** of \eqref{eq:nm-opt-bfgs-update} is
    + \frac{\mathbf s^{(k)} ({\mathbf s^{(k)}})^{\text{T}}}
           {({\mathbf y^{(k)}})^{\text{T}} \mathbf s^{(k)}} .
 \end{equation}
-{% endraw %}
+$$
 
 BFGS has the four attractive properties:
 
@@ -751,26 +751,26 @@ $E(\mathbf R^{(k)} + \mathbf p) \approx E(\mathbf R^{(k)})
 + \mathbf F \cdot \mathbf p + \tfrac{1}{2} \mathbf p^\text{T}
 \mathbf B \mathbf p$ is trusted:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-trust}
 \min_{\lVert \mathbf p \rVert \le \Delta_k}
    E(\mathbf R^{(k)}) + \mathbf F \cdot \mathbf p
    + \tfrac{1}{2} \mathbf p^\text{T} \mathbf B \mathbf p .
 \end{equation}
-{% endraw %}
+$$
 
 The constraint $\lVert \mathbf p \rVert \le \Delta_k$ is what
 makes the problem well-posed even when $\mathbf B$ is not
 positive definite.  The solution is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-trust-soln}
 \mathbf p^{(k)} = - \Bigl[ \mathbf B^{(k)} + \lambda_k \mathbf I \Bigr]^{-1}\,
                     \mathbf F^{(k)} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\lambda_k \ge 0$ is a *Lagrange multiplier* chosen so
 that $\lVert \mathbf p^{(k)} \rVert = \Delta_k$.
@@ -778,13 +778,13 @@ that $\lVert \mathbf p^{(k)} \rVert = \Delta_k$.
 The standard **step acceptance** rule updates $\Delta_k$ by
 comparing the actual energy decrease to the predicted one:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-opt-trust-ratio}
 \rho_k = \frac{E(\mathbf R^{(k)}) - E(\mathbf R^{(k)} + \mathbf p^{(k)})}
               {\text{predicted decrease}} .
 \end{equation}
-{% endraw %}
+$$
 
 If $\rho_k$ is close to $1$ the radius grows; if $\rho_k$ is
 small or negative the radius shrinks and the step is rejected.
@@ -968,13 +968,13 @@ The band energy of a solid in
 [chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }}) is
 a Brillouin-zone integral
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-integral}
 E_\text{band} = \frac{V_\text{BZ}^*}{(2\pi)^3}
                  \int_\text{BZ} g(\mathbf k)\, d\mathbf k ,
 \end{equation}
-{% endraw %}
+$$
 
 where $g(\mathbf k) = \sum_n f(\varepsilon_{n\mathbf k})
 \varepsilon_{n\mathbf k}$ is the band-resolved density of
@@ -991,14 +991,14 @@ The integral \eqref{eq:nm-bz-integral} is approximated by a
 **Riemann sum** over a discrete set $\{\mathbf k_j\}$ with
 weights $w_j$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-sum}
 E_\text{band} \approx \sum_{j=1}^{N_\mathbf k} w_j\, g(\mathbf k_j) ,
 \qquad
 \sum_{j=1}^{N_\mathbf k} w_j = 1 .
 \end{equation}
-{% endraw %}
+$$
 
 The challenge is to choose the $\{\mathbf k_j, w_j\}$ so that
 the sum converges to the integral as fast as possible.
@@ -1010,13 +1010,13 @@ the workhorse of modern solid-state DFT.  The mesh is a uniform
 grid of $N_1 \times N_2 \times N_3$ points in the BZ, indexed
 by $(m_1, m_2, m_3)$ with $0 \le m_i < N_i$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-mp}
 \mathbf k_{(m_1, m_2, m_3)}
    = \sum_{i=1}^{3} \frac{2 m_i - N_i + 1}{2 N_i}\, \mathbf b_i .
 \end{equation}
-{% endraw %}
+$$
 
 (For a centred mesh, the half-grid shift is omitted; for a
 shifted mesh, a small $\mathbf k$-shift is added to break
@@ -1052,13 +1052,13 @@ In a tetrahedron $T$ with vertices $\mathbf k_1, \mathbf k_2,
 \mathbf k_3, \mathbf k_4$ and band-resolved energies
 $\varepsilon_{ni}$, the linear interpolation is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-tetra-interp}
 \varepsilon_{n\mathbf k} \approx \varepsilon_{n\mathbf k_i}
    + \nabla \varepsilon_n \cdot (\mathbf k - \mathbf k_i) ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\nabla \varepsilon_n$ the band gradient estimated from
 the four vertex values.  The integral of a linear function of
@@ -1069,14 +1069,14 @@ The Lehmann–Taut formula for the integral of
 $\varepsilon \Theta(\varepsilon_F - \varepsilon)$ over a
 single tetrahedron is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-tetra-lt}
 \int_T \varepsilon \Theta(\varepsilon_F - \varepsilon) d\mathbf k
  = \frac{V_T}{4} \sum_{i=1}^{4} \varepsilon_i
    \cdot H(\varepsilon_F; \varepsilon_1, \dots, \varepsilon_4) ,
 \end{equation}
-{% endraw %}
+$$
 
 where $H$ is a closed-form function of the four vertex
 energies and $V_T$ is the volume of the tetrahedron.
@@ -1088,12 +1088,12 @@ $\varepsilon_i$ values.  Blöchl's 1994 correction adds a
 quadratic term to remove the linear error.  The corrected
 weights are
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-bloch-correction}
 \tilde w_i = w_i^\text{LT} + \frac{V_T}{20} \nabla^2 \varepsilon ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\nabla^2 \varepsilon$ estimated from the second
 differences of the vertex energies.  The corrected method
@@ -1111,12 +1111,12 @@ smooth approximation.  The three common choices are:
 
 The simplest:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-gauss}
 \tilde f(\varepsilon) = \frac{1}{2} \operatorname{erfc}\left( \frac{\varepsilon - \mu}{\sigma} \right) .
 \end{equation}
-{% endraw %}
+$$
 
 Gaussian smearing converges as $1/N_\mathbf k^2$ after
 $\sigma$ is converged.  The total energy has an entropy term
@@ -1129,14 +1129,14 @@ The **Methfessel–Paxton** scheme (Methfessel and Paxton, 1989)
 replaces the step function by a *Hermite polynomial expansion*
 of order $N_\text{MP}$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-mp-smear}
 \tilde f(\varepsilon) = \frac{1}{2} \operatorname{erfc}(x) -
      \frac{1}{\sqrt\pi} e^{-x^2}
      \sum_{n=1}^{N_\text{MP}} A_n H_{2n-1}(x) ,
 \end{equation}
-{% endraw %}
+$$
 
 with $x = (\varepsilon - \mu) / \sigma$ and $A_n$ chosen so
 that the scheme reproduces the Fermi–Dirac entropy to order
@@ -1150,12 +1150,12 @@ For *physical* finite-temperature calculations (e.g. molecular
 dynamics at temperature $T$) the **Fermi–Dirac smearing** is
 the right choice:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-fd}
 \tilde f(\varepsilon) = \frac{1}{e^{(\varepsilon - \mu)/k_B T} + 1} .
 \end{equation}
-{% endraw %}
+$$
 
 The convergence in $T$ is $O(T^2)$ (Sommerfeld expansion); the
 energy is the *true* finite-temperature free energy and needs
@@ -1304,21 +1304,21 @@ When smearing is used, the **total energy** computed by the
 code is not the physical $T = 0$ energy but a
 **finite-temperature free energy**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-free}
 F = E - T S ,
 \end{equation}
-{% endraw %}
+$$
 
 with the electronic entropy
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-bz-entropy}
 S = -k_B \sum_{n\mathbf k} \Bigl[ f \ln f + (1 - f) \ln(1 - f) \Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 To recover the $T = 0$ total energy one must either
 *extrapolate* $F(T) \to F(0)$ linearly in $T^2$ (Gaussian
@@ -1353,28 +1353,28 @@ and repeat until the off-diagonal norm is below tolerance.
 
 A **Jacobi rotation** in the $(p, q)$ plane is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-diag-jacobi}
 \mathbf J_{pq}(\theta) = \mathbf 1 + (\cos\theta - 1)
    ( \mathbf e_p \mathbf e_p^\text{T} + \mathbf e_q \mathbf e_q^\text{T} )
    + \sin\theta\, ( \mathbf e_p \mathbf e_q^\text{T} - \mathbf e_q \mathbf e_p^\text{T} ) .
 \end{equation}
-{% endraw %}
+$$
 
 The rotated matrix is
 $\mathbf A' = \mathbf J^\text{T} \mathbf A \mathbf J$.  The angle
 $\theta$ is chosen to zero $A'_{pq}$.  For a real symmetric
 $\mathbf A$ the choice is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-diag-jacobi-angle}
 \tan 2\theta = \frac{2 A_{pq}}{A_{qq} - A_{pp}} ,
 \qquad
 \theta \in (-\pi/4, \pi/4] .
 \end{equation}
-{% endraw %}
+$$
 
 The Jacobi algorithm is *guaranteed to converge* with a
 quadratic rate once the off-diagonal norm is small.  It is not
@@ -1388,12 +1388,12 @@ The **QR algorithm** (Francis, 1961; Kublanovskaya, 1961) is
 the workhorse of production diagonalisation routines (LAPACK's
 `?SYEVR`, numpy's `numpy.linalg.eigh`).  The basic iteration is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-diag-qr-iter}
 \mathbf A^{(k+1)} = \mathbf R^{(k)} \mathbf Q^{(k)} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\mathbf A^{(k)} = \mathbf Q^{(k)} \mathbf R^{(k)}$ is
 the QR factorisation.  The $\mathbf R \mathbf Q$ product is
@@ -1559,12 +1559,12 @@ is a factor of $\sim 15$, but the *algorithm* is unchanged.
 
 The **generalised eigenproblem** of the Roothaan–Hall equations,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-diag-roothaan}
 \mathbf F \mathbf C = \mathbf S \mathbf C \boldsymbol\varepsilon ,
 \end{equation}
-{% endraw %}
+$$
 
 is reduced to a standard eigenproblem by **Löwdin
 orthogonalisation**:
@@ -1597,13 +1597,13 @@ iteration** (§5.2), the **Lanczos** algorithm (§5.3), and
 The simplest iterative method.  Start with a random vector
 $\mathbf v^{(0)}$, normalise, and iterate
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-eig-power}
 \mathbf v^{(k+1)} = \frac{\mathbf A \mathbf v^{(k)}}
                         {\lVert \mathbf A \mathbf v^{(k)} \rVert} .
 \end{equation}
-{% endraw %}
+$$
 
 The vector $\mathbf v^{(k)}$ converges to the *eigenvector of
 largest magnitude eigenvalue*.  The convergence is geometric
@@ -1622,7 +1622,7 @@ method of §5.5. ### 5.2 Inverse iteration
 The **inverse iteration** (Wielandt, 1944) finds the eigenvector
 *closest to a target* $\sigma$ by iterating
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-eig-inverse}
 \mathbf v^{(k+1)} = \frac{(\mathbf A - \sigma \mathbf I)^{-1}
@@ -1630,7 +1630,7 @@ The **inverse iteration** (Wielandt, 1944) finds the eigenvector
                        {\lVert (\mathbf A - \sigma \mathbf I)^{-1}
                          \mathbf v^{(k)} \rVert} .
 \end{equation}
-{% endraw %}
+$$
 
 The convergence ratio is
 $\lvert (\lambda_\text{target} - \sigma) /
@@ -1647,7 +1647,7 @@ The **Lanczos algorithm** (Lanczos, 1950) is the iterative
 solver for *symmetric*' matrices.  It builds a tridiagonal
 representation
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-eig-lanczos}
 \mathbf T_m = \mathbf Q_m^\text{T} \mathbf A \mathbf Q_m ,
@@ -1659,7 +1659,7 @@ representation
          &          & \beta_{m-1} & \alpha_m
 \end{pmatrix} ,
 \end{equation}
-{% endraw %}
+$$
 
 by a three-term recurrence that costs $\mathcal O(m n)$ for an
 $n \times n$ sparse matrix (one matrix-vector product per
@@ -1687,14 +1687,14 @@ the eigenproblem in the small subspace.
 
 The **Davidson iteration** is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-eig-davidson}
 \mathbf v^{(k+1)}
   = \mathbf v^{(k)} - \mathbf T^{-1}_k\, (\mathbf A - \lambda_k)
        \mathbf v^{(k)} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\mathbf T_k = \text{diag}(\mathbf A) - \lambda_k \mathbf I$
 the *diagonal* preconditioner (the easiest one to form) and
@@ -1739,14 +1739,14 @@ with a preconditioner applied to $\mathbf R$.
 
 The LOBPCG iteration is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-eig-lobpcg}
 \mathbf X^{(k+1)} = \arg\min_{\mathbf X} \text{Tr}(\mathbf X^\text{T} \mathbf A \mathbf X)
 \quad \text{subject to} \quad
 \mathbf X^\text{T} \mathbf X = \mathbf I ,
 \end{equation}
-{% endraw %}
+$$
 
 where the minimisation is restricted to the three-term
 subspace.  The cost per iteration is the same as Davidson
@@ -1890,26 +1890,26 @@ The **error recursion** of
 \eqref{eq:nm-scf-err-rec} generalises to the *vector* case
 (long wavelength = small $G$):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-mix-err}
 \hat e^{(n+1)}(\mathbf G) = \hat M(\mathbf G)\, \hat e^{(n)}(\mathbf G) ,
 \qquad
 \hat M(\mathbf G) = 1 - \alpha \Bigl( 1 - \hat \chi(\mathbf G) \Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 For a metal the Lindhard function
 $\hat \chi(\mathbf G) = -\chi_0 / (1 + k_\text{TF}^2 / G^2)$ has
 $\hat \chi(0) = 0$ but $\hat \chi(\mathbf G) > 0$ for $G > 0$.  The
 amplification factor is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-mix-amplification}
 \hat M(\mathbf G) = 1 - \alpha + \alpha \frac{\chi_0}{1 + k_\text{TF}^2 / G^2} .
 \end{equation}
-{% endraw %}
+$$
 
 For $G \to 0$ this approaches
 $1 - \alpha + \alpha \chi_0$, which is *greater than 1* if
@@ -1926,25 +1926,25 @@ amplification *blows u`p*' at small $G$ and the bare iteration
 components of the residual before mixing.  The preconditioner
 is a *diagonal* operator in Fourier space:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-mix-kerker}
 \hat K(\mathbf G) = \frac{G^2}{G^2 + k_\text{TF}^2} .
 \end{equation}
-{% endraw %}
+$$
 
 $\hat K(0) = 0$ damps the long-wavelength residual completely;
 $\hat K(\infty) = 1$ leaves the short-wavelength residual
 untouched.  The new mixed density is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-mix-kerker-mix}
 \hat\rho^{(n+1)}(\mathbf G)
   = \hat\rho^{(n)}(\mathbf G) + \alpha\, \hat K(\mathbf G)\,
      \Bigl( \hat\rho_\text{out}^{(n)}(\mathbf G) - \hat\rho^{(n)}(\mathbf G) \Bigr) .
 \end{equation}
-{% endraw %}
+$$
 
 In real space, $\hat K$ is the **screened-Coulomb Green's
 function**:
@@ -1973,13 +1973,13 @@ DIIS in the form of §1.5 uses a *flat* inner product
 $\langle R_i, R_j \rangle = R_i \cdot R_j$.  For metals the
 *preconditione`d*' inner product
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-mix-pulay-prec}
 \langle R_i, R_j \rangle = \sum_\mathbf G \hat K(\mathbf G)
    \hat R_i(\mathbf G) \hat R_j^*(\mathbf G)
 \end{equation}
-{% endraw %}
+$$
 
 is better: the DIIS sub-problem
 \eqref{eq:nm-scf-diis-aug} is solved in the preconditioned
@@ -2145,13 +2145,13 @@ For a spherically symmetric potential $V(r)$ and a valence
 state of angular momentum $\ell$, the radial Schrödinger
 equation is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-pp-radial}
 - \frac{1}{2} u_\ell''(r) + \Bigl[ \frac{\ell(\ell+1)}{2 r^2} + V(r) \Bigr] u_\ell(r)
    = E_\ell u_\ell(r) ,
 \end{equation}
-{% endraw %}
+$$
 
 with $u_\ell(r) = r R_\ell(r)$ the *reduce`d*' radial function
 and $R_\ell(r)$ the full radial wavefunction.  The boundary
@@ -2161,12 +2161,12 @@ $u_\ell(r) \to 0$ as $r \to \infty$ for bound states.
 To integrate \eqref{eq:nm-pp-radial} numerically we use a
 **logarithmic grid**:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-pp-loggrid}
 r_i = r_0 \, e^{i h} , \qquad i = 0, 1, \dots, N - 1 ,
 \end{equation}
-{% endraw %}
+$$
 
 with $r_0$ a small inner radius (typically $10^{-6}\,a_0$),
 $h$ the grid spacing (typically $0.01$–$0.05$ bohr), and $N$
@@ -2178,12 +2178,12 @@ regions.
 
 The radial Laplacian on a logarithmic grid is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-pp-loglap}
 u''(r) \approx \frac{u_{i+1} - 2 u_i + u_{i-1}}{h^2} ,
 \end{equation}
-{% endraw %}
+$$
 
 i.e. the standard second-order finite-difference formula in
 $\log r$.  This is equivalent to a standard 3-point
@@ -2199,12 +2199,12 @@ the boundary condition at $r = \infty$ is simpler.
 The **norm-conservation** constraint (Hamann, Schlüter, Chiang,
 1979) is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-pp-norm}
 \int_0^{r_c} |\tilde\phi_\ell(r)|^2 dr = \int_0^{r_c} |\phi_\ell(r)|^2 dr ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\phi_\ell$ is the all-electron radial wavefunction and
 $\tilde\phi_\ell$ is the pseudo-wavefunction.  The constraint
@@ -2215,13 +2215,13 @@ properties for *any* chemical environment.
 
 The logarithmic derivative of the wavefunction at $r_c$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-pp-logder}
 D_\ell(E) = \frac{d}{dr} \ln \phi_\ell(r) \bigg|_{r = r_c}
           = \frac{\phi_\ell'(r_c)}{\phi_\ell(r_c)} .
 \end{equation}
-{% endraw %}
+$$
 
 For a *norm-conserving* pseudopotential, $D_\ell(E)$ agrees
 with the all-electron $D_\ell(E)$ at $E = E_\ell$ and at
@@ -2236,14 +2236,14 @@ the reference energy.
 The **Kleinman–Bylander** (KB) form (Kleinman and Bylander,
 1982) factorises the non-local pseudopotential as
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-pp-kb}
 \hat V_\text{nl} = \sum_{\ell m} \frac{\lvert \phi_\ell^\text{KB} \rangle
                                      \langle \phi_\ell^\text{KB} \rvert}
                                     {\langle \phi_\ell^\text{KB} \rvert \phi_\ell \rangle} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\phi_\ell^\text{KB}(\mathbf r) = V_\ell^\text{loc}(r) \phi_\ell(r)$
 is the *KB projector* and $\phi_\ell(r)$ is the
@@ -2279,12 +2279,12 @@ and the valence state is the $1s$ — but the algorithm is
 identical to the general case.  The Troullier–Martins
 *Ansatz* for the pseudo-wavefunction is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-pp-tm-ansatz}
 \tilde\phi(r) = r \, e^{p(r)} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $p(r)$ a polynomial in $r^2$ inside $r_c$ and matching
 $\phi(r)$ smoothly outside.
@@ -2436,28 +2436,28 @@ by *finite difference* on a supercell.  Displace atom $I$ by
 $\mathbf u_I$ in direction $\alpha$, recompute the total energy
 $E(\mathbf u)$, and fit
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-ph-frozen}
 E(\mathbf u) = E_0 + \sum_{I\alpha} F_{I\alpha} u_{I\alpha}
                + \frac{1}{2} \sum_{IJ, \alpha\beta}
                   \Phi_{IJ}^{\alpha\beta} u_{I\alpha} u_{J\beta} + \cdots
 \end{equation}
-{% endraw %}
+$$
 
 to a quadratic.  The second-derivative matrix
 $\Phi_{IJ}^{\alpha\beta}$ is the *force-constant matrix*; the
 phonon dispersion is the eigenvalue spectrum of the dynamical
 matrix
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-ph-dynmat}
 D_{IJ}^{\alpha\beta}(\mathbf q) = \frac{1}{\sqrt{M_I M_J}}
    \sum_{\mathbf R} \Phi_{IJ}^{\alpha\beta}(\mathbf R)\,
    e^{-i \mathbf q \cdot \mathbf R} .
 \end{equation}
-{% endraw %}
+$$
 
 The supercell must be large enough that the atoms in adjacent
 cells are not interacting (the force constants decay
@@ -2471,23 +2471,23 @@ $\mathbf q$; a $4 \times 4 \times 4$ is usually the minimum.
 The **dynamical matrix** is the Fourier transform of the
 real-space force constants:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-ph-dynmat-def}
 D_{IJ}^{\alpha\beta}(\mathbf q) = \frac{1}{\sqrt{M_I M_J}}
    \sum_{\mathbf R} \Phi_{IJ}^{\alpha\beta}(\mathbf R)\,
    e^{-i \mathbf q \cdot \mathbf R} .
 \end{equation}
-{% endraw %}
+$$
 
 The **acoustic sum rule** (ASR) is the constraint
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-ph-asr}
 \sum_J D_{IJ}^{\alpha\beta}(\mathbf q = 0) = 0 ,
 \end{equation}
-{% endraw %}
+$$
 
 which guarantees that a uniform translation of the crystal
 produces no restoring force.  The ASR is broken in any
@@ -2497,7 +2497,7 @@ enforcement is the **acoustic-sum-rule projection** of
 Gonze et al. (1994): after computing $D(\mathbf q)$, replace
 it by
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-ph-asr-proj}
 \tilde D_{IJ}^{\alpha\beta}(\mathbf q)
@@ -2506,7 +2506,7 @@ it by
    - D_{\text{ref}, J}^{\alpha\beta}(\mathbf q)
    + D_{\text{ref}, \text{ref}}^{\alpha\beta}(\mathbf q) ,
 \end{equation}
-{% endraw %}
+$$
 
 with "ref" a *reference atom* (typically the centre of mass).
 The projection restores the ASR at every $\mathbf q$.
@@ -2518,7 +2518,7 @@ The force-constants $\Phi_{IJ}^{\alpha\beta}(\mathbf R)$ are
 dispersion* requires them on a fine $\mathbf q$-mesh.  The
 **Fourier interpolation** of §8.2 is the natural bridge:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-ph-fourier-interp}
 \Phi_{IJ}^{\alpha\beta}(\mathbf R)
@@ -2526,7 +2526,7 @@ dispersion* requires them on a fine $\mathbf q$-mesh.  The
       D_{IJ}^{\alpha\beta}(\mathbf q)\,
       e^{+i \mathbf q \cdot \mathbf R} .
 \end{equation}
-{% endraw %}
+$$
 
 In practice the force-constants are computed on a coarse
 $\mathbf q$-mesh (or, equivalently, on a coarse supercell) and
@@ -2557,13 +2557,13 @@ wavefunctions are needed.
 
 The DFPT equation is the **Sternheimer equation**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-ph-sternheimer}
 \Bigl( \hat H_\text{KS} - \varepsilon_i \Bigr) \lvert \phi_i^{(1)} \bigr\rangle
    = - \hat P_c\, \hat H^{(1)} \lvert \phi_i \bigr\rangle ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\hat P_c = 1 - \sum_{j \in \text{occ}} \lvert \phi_j \rangle
 \langle \phi_j \rvert$ is the projector onto the *conduction*
@@ -2587,14 +2587,14 @@ textbook example: a 1-D chain of alternating masses $M_1$ and
 $M_2$ with spring constant $K$.  The analytical dispersion
 relation is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:nm-ph-chain-disp}
 \omega^2(q) = K \left( \frac{1}{M_1} + \frac{1}{M_2} \right)
                 \pm K \sqrt{\left( \frac{1}{M_1} + \frac{1}{M_2} \right)^2
                               - \frac{4 \sin^2(q a / 2)}{M_1 M_2}} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $a$ the unit-cell length.  The frozen-phonon code
 extracts the two force constants by finite difference and

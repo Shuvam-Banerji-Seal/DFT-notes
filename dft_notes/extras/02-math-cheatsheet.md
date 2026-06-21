@@ -53,7 +53,7 @@ $L^2(\mathbb R^3)$ (for the continuous Hilbert space).
 
 ### 1.1 Inner product
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-inner}
 \langle u \rvert v \rangle \;\equiv\;
@@ -62,7 +62,7 @@ $L^2(\mathbb R^3)$ (for the continuous Hilbert space).
 \displaystyle \int u^*(\mathbf r)\, v(\mathbf r)\, d\mathbf r & \text{in } L^2(\mathbb R^3).
 \end{cases}
 \end{equation}
-{% endraw %}
+$$
 
 Used to define the **Born rule**, the **Fock and overlap matrix
 elements** in the AO basis
@@ -72,12 +72,12 @@ and the **MO normalisation** $\langle \phi_i \rvert \phi_j \rangle =
 
 ### 1.2 Outer product
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-outer}
 \rvert u \rangle \langle v \rvert \;:\; \text{the rank-one operator that maps } \rvert w \rangle \mapsto \rvert u \rangle \langle v \rvert w \rangle .
 \end{equation}
-{% endraw %}
+$$
 
 Used to build the **closed-shell AO density matrix** as
 $\mathbf P = 2 \sum_i \rvert \phi_i \rangle \langle \phi_i \rvert$
@@ -87,7 +87,7 @@ $\mathbf P \mathbf S \mathbf P = \mathbf P$).
 
 ### 1.3 Completeness (resolution of the identity)
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-completeness}
 \hat{\mathbf 1} \;=\; \sum_{i=1}^{K} \rvert \chi_i \rangle \langle \chi_i \rvert
@@ -95,7 +95,7 @@ $\mathbf P \mathbf S \mathbf P = \mathbf P$).
 \hat{\mathbf 1} \;=\; \int \rvert \mathbf r \rangle \langle \mathbf r \rvert\, d\mathbf r
 \;\;(\text{position basis}).
 \end{equation}
-{% endraw %}
+$$
 
 Inserted between operators in derivations to convert
 operator equations to matrix form. The two forms above are
@@ -112,13 +112,13 @@ $\hat P^\dagger = \hat P$. The projector onto the subspace
 spanned by the $K$ vectors $\{\rvert \chi_i \rangle\}$ (in
 general non-orthogonal) is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-projector}
 \hat P \;=\; \sum_{i,j=1}^{K} \rvert \chi_i \rangle\, (\mathbf S^{-1})_{ij}\, \langle \chi_j \rvert ,
 \qquad \hat P^2 = \hat P, \quad \hat P^\dagger = \hat P .
 \end{equation}
-{% endraw %}
+$$
 
 For an orthonormal set the matrix $\mathbf S^{-1}$ reduces to
 $\mathbf 1$, giving $\hat P = \sum_i \rvert \chi_i \rangle \langle \chi_i \rvert$.
@@ -139,32 +139,32 @@ occupied subspace. Cross-reference: chapter 03 (§3.6.4).
 
 ### 2.1 The commutator and its algebra
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-commutator}
 [\hat A, \hat B] \;\equiv\; \hat A \hat B - \hat B \hat A .
 \end{equation}
-{% endraw %}
+$$
 
 The commutator is **bilinear**, **antisymmetric**
 $([\hat A, \hat B] = -[\hat B, \hat A]$), and satisfies the
 **Jacobi identity**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-jacobi}
 [\hat A, [\hat B, \hat C]] + [\hat B, [\hat C, \hat A]] + [\hat C, [\hat A, \hat B]] \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 The **canonical commutation relation** (CCR) of quantum mechanics,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-ccr}
 [\hat r_a, \hat p_b] \;=\; i\, \delta_{ab} \qquad (a, b \in \{x, y, z\}) ,
 \end{equation}
-{% endraw %}
+$$
 
 defines the algebra on which the Heisenberg uncertainty
 principle $\Delta A \Delta B \ge \tfrac{1}{2} \lvert \langle [\hat A, \hat B] \rangle \rvert$
@@ -172,12 +172,12 @@ rests. Cross-reference: chapter 01 (§1.4, §1.7.5, problem 1 of §1.13).
 
 ### 2.2 The anticommutator
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-anticommutator}
 \{\hat A, \hat B\} \;\equiv\; \hat A \hat B + \hat B \hat A .
 \end{equation}
-{% endraw %}
+$$
 
 For **fermionic** creation and annihilation operators,
 $\{\hat a, \hat a^\dagger\} = 1$, $\{\hat a, \hat a\} = 0$ —
@@ -190,13 +190,13 @@ antisymmetric. Cross-reference: chapter 01 (§1.2, postulate P6).
 The product of two exponentials of non-commuting operators
 re-exponentiates as
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-bch}
 e^{\hat A} e^{\hat B}
 \;=\; e^{\hat A + \hat B + \tfrac{1}{2}[\hat A, \hat B] + \tfrac{1}{12}[\hat A, [\hat A, \hat B]] - \tfrac{1}{12}[\hat B, [\hat A, \hat B]] + \cdots} .
 \end{equation}
-{% endraw %}
+$$
 
 The series terminates at finite order only when the nested
 commutators eventually vanish (e.g. $[\hat A, \hat B]$ is a
@@ -205,13 +205,13 @@ $\hat A = \lambda \hat X$, $\hat B = \lambda \hat Y$ with
 $[\hat X, \hat Y] = \hat Z$ independent of $\hat X, \hat Y$, the
 BCH formula gives the **Zassenhaus formula**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-zassenhaus}
 e^{\hat A + \hat B}
 \;=\; e^{\hat A}\, e^{\hat B}\, e^{-\tfrac{1}{2}[\hat A, \hat B]}\, e^{\tfrac{1}{6}(2[\hat B, [\hat A, \hat B]] + [\hat A, [\hat A, \hat B]])} \cdots ,
 \end{equation}
-{% endraw %}
+$$
 
 i.e. the product of two exponentials is the exponential of the
 sum *plus* correction factors. Used in the derivation of the
@@ -221,21 +221,21 @@ matrix** (chapter 03).
 
 ### 2.4 Useful specific identities
 
-{% raw %}
+$$
 \begin{equation}
 e^{\hat A} \hat B e^{-\hat A} \;=\; \hat B + [\hat A, \hat B] + \tfrac{1}{2!}[\hat A, [\hat A, \hat B]] + \tfrac{1}{3!}[\hat A, [\hat A, [\hat A, \hat B]]] + \cdots \quad \text{(similarity transform)} , \label{eq:ch-extra-sim}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 [\hat A \hat B, \hat C] \;=\; \hat A [\hat B, \hat C] + [\hat A, \hat C] \hat B \quad \text{(product rule)} , \label{eq:ch-extra-prodcom}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \operatorname{Tr}[\hat A, \hat B] \;=\; 0 \quad \text{(trace of a commutator)} . \label{eq:ch-extra-tracecom}
 \end{equation}
-{% endraw %}
+$$
 
 The first is the **Hadamard lemma** (or **Campbell identity**)
 in series form. The second lets you reduce a commutator with a
@@ -248,21 +248,21 @@ collapse so cleanly. Cross-reference: chapters 01, 03. ---
 
 ### 3.1 Trace identities
 
-{% raw %}
+$$
 \begin{equation}
 \operatorname{Tr}(\mathbf A \mathbf B) \;=\; \operatorname{Tr}(\mathbf B \mathbf A) , \label{eq:ch-extra-tracecyc}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \operatorname{Tr}(\mathbf A + \mathbf B) \;=\; \operatorname{Tr}\mathbf A + \operatorname{Tr}\mathbf B , \label{eq:ch-extra-tracelin}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \operatorname{Tr}(\mathbf A \mathbf B \mathbf C) \;=\; \operatorname{Tr}(\mathbf C \mathbf A \mathbf B) = \operatorname{Tr}(\mathbf B \mathbf C \mathbf A) \quad \text{(cyclic)} . \label{eq:ch-extra-tracecyc3}
 \end{equation}
-{% endraw %}
+$$
 
 The cyclic property is the engine behind every trace formula
 in DFT: $E = \operatorname{Tr}[\mathbf P \mathbf h]$ follows
@@ -276,12 +276,12 @@ If $\mathbf A$ has eigenvalues $\{a_i\}$ and eigenvectors
 $\{\rvert v_i \rangle\}$, then for any function $f$ that admits
 a Taylor series,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-tracef}
 \operatorname{Tr} f(\mathbf A) \;=\; \sum_{i=1}^{K} f(a_i) .
 \end{equation}
-{% endraw %}
+$$
 
 The same is true for $f(\hat A)$ in any finite-dimensional
 representation: $\operatorname{Tr} f(\hat A) = \sum_i f(a_i)$
@@ -292,12 +292,12 @@ Kohn–Sham energy expression.
 
 ### 3.3 Hilbert–Schmidt inner product
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-hs}
 \langle \mathbf A, \mathbf B \rangle_\text{HS} \;\equiv\; \operatorname{Tr}(\mathbf A^\dagger \mathbf B) .
 \end{equation}
-{% endraw %}
+$$
 
 The Frobenius / Hilbert–Schmidt norm is
 $\lVert \mathbf A \rVert_\text{HS}^2 = \operatorname{Tr}(\mathbf A^\dagger \mathbf A)$.
@@ -305,12 +305,12 @@ This is the inner product used in the **DIIS metric**
 $\mathbf B_{ij} = \langle R_i, R_j \rangle$ in
 chapter 04 (§4.6.2). Cross-reference: chapter 04. ### 3.4 Trace of a projector
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-traceproj}
 \operatorname{Tr} \hat P \;=\; \dim(\text{range of } \hat P) .
 \end{equation}
-{% endraw %}
+$$
 
 In a finite basis, $\operatorname{Tr} \mathbf P = N_\text{occ}$
 (counting spins separately). Used in the constraint that the
@@ -327,16 +327,16 @@ collects the identities the chapters use.
 
 ### 4.1 Bosonic creation and annihilation operators
 
-{% raw %}
+$$
 \begin{equation}
 [\hat a, \hat a^\dagger] \;=\; \hat 1 , \label{eq:ch-extra-bosonic}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 [\hat a, \hat a] \;=\; [\hat a^\dagger, \hat a^\dagger] \;=\; 0 . \label{eq:ch-extra-bosonic2}
 \end{equation}
-{% endraw %}
+$$
 
 The **number operator** $\hat n = \hat a^\dagger \hat a$ has
 eigenvalues $n = 0, 1, 2, \dots$ (any non-negative integer) and
@@ -345,16 +345,16 @@ Cross-reference: chapter 01 (§1.9, ladder operators).
 
 ### 4.2 Fermionic creation and annihilation operators
 
-{% raw %}
+$$
 \begin{equation}
 \{\hat c_p, \hat c_q^\dagger\} \;=\; \delta_{pq} , \label{eq:ch-extra-fermionic}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \{\hat c_p, \hat c_q\} \;=\; \{\hat c_p^\dagger, \hat c_q^\dagger\} \;=\; 0 . \label{eq:ch-extra-fermionic2}
 \end{equation}
-{% endraw %}
+$$
 
 The $\delta_{pq}$ is **Kronecker**, not Dirac — the
 anticommutation is only between operators in the *same* single-
@@ -367,24 +367,24 @@ state can be doubly created. Cross-reference: chapter 02 (§2.2).
 A general **field operator** is the superposition over a
 single-particle basis
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-field}
 \hat \psi(\mathbf r) \;=\; \sum_{p} \hat c_p\, \chi_p(\mathbf r) , \qquad
 \hat \psi^\dagger(\mathbf r) \;=\; \sum_{p} \hat c_p^\dagger\, \chi_p^*(\mathbf r) .
 \end{equation}
-{% endraw %}
+$$
 
 For fermions, $\hat \psi$ and $\hat \psi^\dagger$ satisfy the
 **continuum CAR**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-fieldcar}
 \{ \hat\psi(\mathbf r), \hat\psi^\dagger(\mathbf r') \} \;=\; \delta(\mathbf r - \mathbf r') , \qquad
 \{ \hat\psi(\mathbf r), \hat\psi(\mathbf r') \} \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 The one-body density is $\hat\rho(\mathbf r) = \hat\psi^\dagger(\mathbf r) \hat\psi(\mathbf r)$;
 its expectation value is the **one-particle density matrix**
@@ -393,14 +393,14 @@ of chapter 03 (§3.6.4). Cross-reference: chapters 02, 03. ### 4.4 Wick's theore
 For a product of $2n$ creation/annihilation operators,
 Wick's theorem says
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-wick}
 \hat c_1 \hat c_2 \cdots \hat c_{2n}
 \;=\; \sum_{\text{all full pairings}} (\pm) \;
     \widehat{\hat c_{i_1} \hat c_{i_2}}\, \widehat{\hat c_{i_3} \hat c_{i_4}} \cdots \widehat{\hat c_{i_{2n-1}} \hat c_{i_{2n}}} ,
 \end{equation}
-{% endraw %}
+$$
 
 where the hat denotes a **contraction** (the vacuum
 expectation value $\langle 0 \rvert \hat c_i \hat c_j \rvert 0 \rangle$,
@@ -432,16 +432,16 @@ assumed in chapter 04 (§4.6.4, the Kerker preconditioner).
 
 ### 5.1 One dimension
 
-{% raw %}
+$$
 \begin{equation}
 \tilde f(k) \;=\; \int_{-\infty}^{\infty} f(x)\, e^{-i k x}\, dx , \label{eq:ch-extra-ft1d-fwd}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 f(x) \;=\; \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde f(k)\, e^{+i k x}\, dk . \label{eq:ch-extra-ft1d-inv}
 \end{equation}
-{% endraw %}
+$$
 
 The **Parseval / Plancherel identity** is
 $\int |f(x)|^2\, dx = (1/2\pi) \int |\tilde f(k)|^2\, dk$.
@@ -450,32 +450,32 @@ propagator by path integration).
 
 ### 5.2 Three dimensions
 
-{% raw %}
+$$
 \begin{equation}
 \tilde f(\mathbf k) \;=\; \int_{\mathbb R^3} f(\mathbf r)\, e^{-i \mathbf k \cdot \mathbf r} \\, d\mathbf r , \label{eq:ch-extra-ft3d-fwd}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 f(\mathbf r) \;=\; \frac{1}{(2\pi)^3} \int_{\mathbb R^3} \tilde f(\mathbf k)\, e^{+i \mathbf k \cdot \mathbf r} \\, d\mathbf k . \label{eq:ch-extra-ft3d-inv}
 \end{equation}
-{% endraw %}
+$$
 
 For a **cell-periodic** function $u(\mathbf r)$ on a lattice
 with primitive cell volume $\Omega$, the natural transform is
 the **discrete Fourier series** on the reciprocal lattice
 $\{\mathbf G\}$:
 
-{% raw %}
+$$
 \begin{equation}
 u(\mathbf r) \;=\; \frac{1}{\sqrt{\Omega}} \sum_{\mathbf G} \tilde u(\mathbf G)\, e^{i \mathbf G \cdot \mathbf r} , \label{eq:ch-extra-fs-fwd}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \tilde u(\mathbf G) \;=\; \frac{1}{\sqrt{\Omega}} \int_\Omega u(\mathbf r)\, e^{-i \mathbf G \cdot \mathbf r} \\, d\mathbf r . \label{eq:ch-extra-fs-inv}
 \end{equation}
-{% endraw %}
+$$
 
 The reciprocal-lattice vectors are defined by
 $\mathbf a_i \cdot \mathbf b_j = 2\pi \delta_{ij}$
@@ -487,16 +487,16 @@ of chapter 07 (§7.5) and chapter 06 (§6.7) uses this convention.
 
 The two transforms every DFT code needs:
 
-{% raw %}
+$$
 \begin{equation}
 \int_{\mathbb R^3} \frac{e^{-i \mathbf k \cdot \mathbf r}}{r}\, d\mathbf r \;=\; \frac{4\pi}{k^2} , \label{eq:ch-extra-fourier-1r}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \int_{\mathbb R^3} \frac{e^{-i \mathbf k \cdot \mathbf r}}{r^2}\, d\mathbf r \;=\; \frac{\pi^2}{k} \quad \text{(distributional sense)} . \label{eq:ch-extra-fourier-1r2}
 \end{equation}
-{% endraw %}
+$$
 
 The first is the **Coulomb kernel in reciprocal space** — the
 Fourier transform of $1/r$ — and is the foundation of the
@@ -508,12 +508,12 @@ Hartree operator in reciprocal space), §13 below.
 
 The **sinc kernel**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-sinc}
 \int_{-L/2}^{L/2} e^{-i k x}\, dx \;=\; L\, \frac{\sin(kL/2)}{kL/2} \;=\; L\, \operatorname{sinc}(kL/2)
 \end{equation}
-{% endraw %}
+$$
 
 arises whenever a function is truncated to a box of length $L$.
 In 3-D it generalises to a product of three 1-D sincs. Used in
@@ -535,24 +535,24 @@ time conventions of chapter 04 (the Lindhard function in
 The **resolvent** of a Hamiltonian $\hat H$ at complex
 frequency $z$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-resolvent}
 \hat G(z) \;\equiv\; (z - \hat H)^{-1} .
 \end{equation}
-{% endraw %}
+$$
 
 For the **free-particle** Hamiltonian
 $\hat H_0 = -\tfrac{1}{2} \nabla^2$, the resolvent in
 position space is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-g0}
 G_0(\mathbf r, \mathbf r'; E) \;=\; -\frac{e^{i k \lvert \mathbf r - \mathbf r' \rvert}}{2\pi \lvert \mathbf r - \mathbf r' \rvert} ,
 \qquad k = \sqrt{2E} ,
 \end{equation}
-{% endraw %}
+$$
 
 with the $i\eta$ prescription $E \to E + i\eta$ fixing the
 boundary condition (outgoing waves for $E > 0$, decaying
@@ -568,13 +568,13 @@ For a finite-temperature **Matsubara Green function** at the
 fermionic frequencies $i\omega_n = i(2n+1)\pi / \beta$ (with
 $\beta = 1/k_B T$),
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-matsubara}
 \mathcal G(\mathbf r, \mathbf r'; i\omega_n)
 \;=\; \int_0^\beta d\tau\, e^{i\omega_n \tau}\, \Bigl\langle \hat\psi(\mathbf r, \tau)\, \hat\psi^\dagger(\mathbf r', 0) \bigr\rangle ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\hat\psi(\tau) = e^{\tau \hat H}\, \hat\psi\, e^{-\tau \hat H}$
 is the Heisenberg-picture field. The Matsubara sum is the
@@ -587,12 +587,12 @@ If the full Hamiltonian is $\hat H = \hat H_0 + \hat V$, the
 **Dyson equation** relates the full Green function $\hat G$ to
 the free one $\hat G_0$ and the **self-energy** $\hat\Sigma$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-dyson}
 \hat G(z) \;=\; \hat G_0(z) \;+\; \hat G_0(z)\, \hat\Sigma(z)\, \hat G(z) .
 \end{equation}
-{% endraw %}
+$$
 
 Iterating gives the **Born series**
 $\hat G = \hat G_0 + \hat G_0 \hat V \hat G_0 + \hat G_0 \hat V \hat G_0 \hat V \hat G_0 + \cdots$.
@@ -606,23 +606,23 @@ Green-function product).
 The **spectral function** is the discontinuity of $\hat G$
 across the real axis,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-spectral}
 \mathbf A(\omega) \;\equiv\; \frac{i}{2\pi} \Bigl[ \hat G(\omega + i\eta) - \hat G(\omega - i\eta) \Bigr] ,
 \end{equation}
-{% endraw %}
+$$
 
 and is **positive semi-definite** with unit weight
 $\int \mathbf A(\omega)\, d\omega = \hat 1$. In the
 **Lehmann representation** of a many-body Hamiltonian,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-lehmann}
 A_{ij}(\omega) \;=\; \sum_{n} \Bigl[ \langle i \rvert n \rangle \langle n \rvert j \rangle \Bigr]\, \delta(\omega - (E_n - E_0)) ,
 \end{equation}
-{% endraw %}
+$$
 
 where the sum runs over the many-body eigenstates $|n\rangle$.
 The spectral function is the bridge from the **Green-function
@@ -644,23 +644,23 @@ reference: chapters 01, 03, 04, 07. > **Tip.** The **density of states** is
 
 The **physicists' Hermite polynomials** are defined by
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-hermite}
 H_n(x) \;=\; (-1)^n e^{x^2}\, \frac{d^n}{dx^n}\, e^{-x^2} .
 \end{equation}
-{% endraw %}
+$$
 
 The first few are $H_0 = 1$, $H_1 = 2x$,
 $H_2 = 4x^2 - 2$, $H_3 = 8x^3 - 12x$, $H_4 = 16x^4 -
 48x^2 + 12$. They satisfy the orthogonality relation
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-hermite-orth}
 \int_{-\infty}^{\infty} H_m(x)\, H_n(x)\, e^{-x^2}\, dx \;=\; 2^n n!\,\sqrt{\pi}\, \delta_{mn} .
 \end{equation}
-{% endraw %}
+$$
 
 The **generating function**
 $\exp(2xt - t^2) = \sum_n H_n(x) t^n / n!$ is the link to
@@ -675,30 +675,30 @@ are Hermite polynomials).
 The **associated Laguerre polynomials** $L_n^\alpha(x)$ are
 defined by the generating function
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-laguerre-gen}
 \frac{e^{-x t/(1-t)}}{(1-t)^{\alpha+1}} \;=\; \sum_{n=0}^{\infty} L_n^\alpha(x)\, t^n ,
 \end{equation}
-{% endraw %}
+$$
 
 or, equivalently, by the differential equation
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-laguerre-eq}
 x\, \frac{d^2 L_n^\alpha}{dx^2} + (\alpha + 1 - x)\, \frac{dL_n^\alpha}{dx} + n\, L_n^\alpha(x) \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 The orthogonality relation is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-laguerre-orth}
 \int_0^\infty L_m^\alpha(x)\, L_n^\alpha(x)\, x^\alpha e^{-x}\, dx \;=\; \frac{\Gamma(n+\alpha+1)}{n!}\, \delta_{mn} .
 \end{equation}
-{% endraw %}
+$$
 
 The hydrogen radial wavefunctions of chapter 01 (§1.10) are
 $L_{n-\ell-1}^{2\ell+1}$ evaluated at $2Zr/n$. Cross-reference:
@@ -710,12 +710,12 @@ The **Legendre polynomials** $P_\ell(\cos\theta)$ are
 restrictions of the spherical harmonics to $m = 0$. They
 satisfy the **addition theorem**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-legen-add}
 P_\ell(\cos\gamma) \;=\; \frac{4\pi}{2\ell+1} \sum_{m=-\ell}^{\ell} Y_\ell^{m*}(\hat{\mathbf n}_1)\, Y_\ell^m(\hat{\mathbf n}_2) ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\gamma$ is the angle between the two unit vectors
 $\hat{\mathbf n}_1$ and $\hat{\mathbf n}_2$. This identity is
@@ -729,24 +729,24 @@ integral of chapter 01 (§1.10.7). Cross-reference: chapter 01
 The **spherical harmonics** are the simultaneous eigenfunctions
 of $\hat L^2$ and $\hat L_z$ in $L^2(S^2)$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-sph}
 \hat L^2 Y_\ell^m(\theta, \phi) \;=\; \ell(\ell+1)\, Y_\ell^m , \qquad
 \hat L_z Y_\ell^m \;=\; m\, Y_\ell^m ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\ell = 0, 1, 2, \dots$ and $-\ell \le m \le \ell$. The
 **orthonormality** is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-sph-orth}
 \int_0^{2\pi} d\phi \int_0^{\pi} \sin\theta\, d\theta\, Y_\ell^{m*}(\theta, \phi)\, Y_{\ell'}^{m'}(\theta, \phi)
 \;=\; \delta_{\ell\ell'}\, \delta_{mm'} .
 \end{equation}
-{% endraw %}
+$$
 
 The chapters use the **Condon–Shortley phase convention**
 (an explicit $(-1)^m$ for $m > 0$), and the real
@@ -763,12 +763,12 @@ sets).
 The **Bessel functions of the first kind** $J_\nu(x)$ satisfy
 Bessel's equation
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-bessel}
 x^2 \frac{d^2 J_\nu}{dx^2} + x \frac{dJ_\nu}{dx} + (x^2 - \nu^2)\, J_\nu \;=\; 0 ,
 \end{equation}
-{% endraw %}
+$$
 
 with the small- and large-$x$ asymptotics
 $J_\nu(x) \sim (x/2)^\nu / \Gamma(\nu+1)$ for $x \to 0$
@@ -779,12 +779,12 @@ parts of the free-particle spherical waves. The free-particle
 Green function of equation \eqref{eq:ch-extra-g0} admits the
 partial-wave expansion
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-g0-pw}
 G_0(\mathbf r, \mathbf r'; E) \;=\; -i k \sum_{\ell, m} j_\ell(k r_<)\, h^{(1)}_\ell(k r_>)\, Y_\ell^m(\hat{\mathbf r})\, Y_\ell^{m*}(\hat{\mathbf r}') ,
 \end{equation}
-{% endraw %}
+$$
 
 where $h^{(1)}_\ell$ is the spherical Hankel function of the
 first kind and $r_< = \min(r, r')$, $r_> = \max(r, r')$.
@@ -796,32 +796,32 @@ nearly-free-electron band structure).
 
 The **Euler gamma function**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-gamma}
 \Gamma(z) \;=\; \int_0^\infty t^{z-1} e^{-t}\, dt , \qquad
 \operatorname{Re} z > 0 ,
 \end{equation}
-{% endraw %}
+$$
 
 extends the factorial to non-integer arguments: $\Gamma(n) =
 (n-1)!$ for positive integer $n$. The **reflection formula**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-gamma-reflect}
 \Gamma(z)\, \Gamma(1-z) \;=\; \frac{\pi}{\sin(\pi z)} ,
 \end{equation}
-{% endraw %}
+$$
 
 and the **Legendre duplication formula**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-gamma-dup}
 \Gamma(z)\, \Gamma\!\left(z + \tfrac{1}{2}\right) \;=\; \frac{\sqrt{\pi}}{2^{2z-1}}\, \Gamma(2z) ,
 \end{equation}
-{% endraw %}
+$$
 
 are the identities used in evaluating the **Gaussian
 overlaps** and **Boys-function integrals** of chapter 06. The
@@ -831,14 +831,14 @@ chapters 01, 03, 06. ### 7.7 The Boys function
 
 The **Boys function**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-boys}
 F_0(t) \;=\; \int_0^1 e^{-t u^2}\, du
 \;=\; \frac{1}{2}\sqrt{\frac{\pi}{t}}\, \operatorname{erf}(\sqrt{t}) ,
 \qquad F_0(0) = 1 ,
 \end{equation}
-{% endraw %}
+$$
 
 handles the Coulomb singularity $1/r_{12}$ inside the
 primitive four-centre electron-repulsion integral of
@@ -852,13 +852,13 @@ higher-angular-momentum recursion. Cross-reference: chapter 06
 The **error function** $\operatorname{erf}(x)$ and its
 complement $\operatorname{erfc}(x) = 1 - \operatorname{erf}(x)$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-erf}
 \operatorname{erf}(x) \;=\; \frac{2}{\sqrt\pi} \int_0^x e^{-t^2}\, dt ,
 \qquad \operatorname{erfc}(x) \;=\; \frac{2}{\sqrt\pi} \int_x^\infty e^{-t^2}\, dt .
 \end{equation}
-{% endraw %}
+$$
 
 Asymptotics: $\operatorname{erf}(x) \to 1$ as $x \to \infty$ and
 $\operatorname{erfc}(x) \sim e^{-x^2}/(x\sqrt\pi)$ as
@@ -871,12 +871,12 @@ and in the **Gaussian smearing** occupation function
 
 ### 8.1 The Kronecker delta
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-kron}
 \delta_{ij} \;=\; \begin{cases} 1, & i = j, \\\\ 0, & i \ne j. \end{cases}
 \end{equation}
-{% endraw %}
+$$
 
 The **completeness** of an orthonormal basis is
 $\sum_i \lvert i \rangle \langle i \rvert = \hat 1$, which in
@@ -890,7 +890,7 @@ is the **identity tensor on $\mathbb R^n$**.
 The three-dimensional **Levi–Civita symbol** is totally
 antisymmetric in its three indices:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-levicivita}
 \epsilon_{ijk} \;=\;
@@ -900,21 +900,21 @@ antisymmetric in its three indices:
 0 & \text{otherwise}.
 \end{cases}
 \end{equation}
-{% endraw %}
+$$
 
 The two **Levi–Civita contraction identities** every DFT code
 uses are
 
-{% raw %}
+$$
 \begin{equation}
 \sum_k \epsilon_{ijk}\, \epsilon_{\ell m k} \;=\; \delta_{i\ell}\, \delta_{jm} - \delta_{im}\, \delta_{j\ell} , \label{eq:ch-extra-eps2}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \sum_j \epsilon_{ijk}\, \epsilon_{\ell j m} \;=\; \delta_{i\ell}\, \delta_{km} - \delta_{im}\, \delta_{k\ell} . \label{eq:ch-extra-eps1}
 \end{equation}
-{% endraw %}
+$$
 
 The **cross product** is
 $(\mathbf a \times \mathbf b)_i = \sum_{jk} \epsilon_{ijk}\, a_j b_k$;
@@ -930,16 +930,16 @@ For an orthogonal basis, upper and lower indices are equivalent
 and the convention reduces to summing over any repeated index.
 Examples used in the chapters:
 
-{% raw %}
+$$
 \begin{equation}
 \mathbf F \mathbf c_i \;=\; \sum_{\mu\nu} F_{\mu\nu}\, c_{\nu i} \quad \text{(matrix–vector)} , \label{eq:ch-extra-eins-mat}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 E_\text{el} \;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu}\, (h_{\mu\nu} + F_{\mu\nu}) \quad \text{(half-trace)} . \label{eq:ch-extra-eins-half}
 \end{equation}
-{% endraw %}
+$$
 
 The `numpy.einsum' call in chapter 03 (§3.3) implements these
 contractions verbatim. Cross-reference: chapters 03, 04, 06. ### 8.4 Rotation of tensors
@@ -962,12 +962,12 @@ the point group on Bloch states at $\mathbf k$).
 
 A square matrix $\mathbf A$ has the **eigendecomposition**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-eig}
 \mathbf A \mathbf v_i \;=\; a_i \mathbf v_i ,
 \end{equation}
-{% endraw %}
+$$
 
 where $a_i$ are the **eigenvalues** and $\mathbf v_i$ the
 **eigenvectors**. The **spectral theorem** says that a
@@ -975,12 +975,12 @@ where $a_i$ are the **eigenvalues** and $\mathbf v_i$ the
 **real eigenvalues** and a **complete orthonormal** set of
 eigenvectors. In matrix form,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-spec}
 \mathbf A \;=\; \mathbf U\, \boldsymbol\Lambda\, \mathbf U^\dagger ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\mathbf U$ unitary and $\boldsymbol\Lambda$ real
 diagonal. This is the **diagonalisation** that
@@ -997,13 +997,13 @@ $\mathbf B$ positive-definite Hermitian. It reduces to the
 standard eigenproblem by **Löwdin orthogonalisation**
 $\mathbf X = \mathbf B^{-1/2}$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-gep}
 \mathbf X^\dagger \mathbf A \mathbf X\, \mathbf c' \;=\; \lambda\, \mathbf c', \qquad
 \mathbf v \;=\; \mathbf X \mathbf c' .
 \end{equation}
-{% endraw %}
+$$
 
 This is the **Roothaan–Hall** equation
 $\mathbf F \mathbf C = \mathbf S \mathbf C \boldsymbol\varepsilon$
@@ -1014,12 +1014,12 @@ reference: chapters 03, 06. ### 9.3 Singular value decomposition (SVD)
 
 Every $m \times n$ matrix $\mathbf A$ admits the decomposition
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-svd}
 \mathbf A \;=\; \mathbf U\, \boldsymbol\Sigma\, \mathbf V^\dagger ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\mathbf U$ $(m \times m)$ unitary, $\mathbf V$ $(n \times n)$
 unitary, and $\boldsymbol\Sigma = \operatorname{diag}(\sigma_1, \dots, \sigma_r, 0, \dots)$
@@ -1031,12 +1031,12 @@ ERI tensor of chapter 06 (§6.12). Cross-reference: chapter 06
 
 ### 9.4 Trace of a matrix
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-tr}
 \operatorname{Tr}\mathbf A \;=\; \sum_i A_{ii} \;=\; \sum_i a_i ,
 \end{equation}
-{% endraw %}
+$$
 
 where $a_i$ are the eigenvalues of $\mathbf A$. The second
 equality is the **trace-invariance under similarity**: the
@@ -1044,12 +1044,12 @@ trace of $\mathbf A$ equals the trace of $\mathbf U^\dagger
 \mathbf A \mathbf U$, and the diagonal form has the eigenvalues
 on the diagonal. Cross-reference: chapters 03, 04. ### 9.5 Determinant of a matrix
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-det}
 \det \mathbf A \;=\; \prod_i a_i \;=\; e^{\operatorname{Tr}\ln \mathbf A} .
 \end{equation}
-{% endraw %}
+$$
 
 The last form is the **Jacobi formula** for the derivative of
 a determinant: $d(\ln \det \mathbf A) = \operatorname{Tr}(\mathbf A^{-1}\, d\mathbf A)$.
@@ -1060,23 +1060,23 @@ Slater matrix is the **Slater determinant** of chapter 02
 
 The **matrix exponential** is defined by the Taylor series
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-matexp}
 e^{\mathbf A} \;=\; \sum_{n=0}^{\infty} \frac{\mathbf A^n}{n!} ,
 \end{equation}
-{% endraw %}
+$$
 
 which converges for every square matrix. For Hermitian
 $\mathbf A = \mathbf U \boldsymbol\Lambda \mathbf U^\dagger$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-matexp-diag}
 e^{\mathbf A} \;=\; \mathbf U\, e^{\boldsymbol\Lambda}\, \mathbf U^\dagger ,
 \qquad e^{\boldsymbol\Lambda} = \operatorname{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots) .
 \end{equation}
-{% endraw %}
+$$
 
 Used in the **time-evolution operator**
 $\hat U(t) = e^{-i \hat H t}$ of chapter 01 (§1.7.1) and in
@@ -1084,16 +1084,16 @@ the **Löwdin orthogonaliser**
 $\mathbf X = \mathbf S^{-1/2}$ of chapter 03 (§3.6.6). Cross-
 reference: chapters 01, 03. ### 9.7 Sherman–Morrison–Woodbury identities
 
-{% raw %}
+$$
 \begin{equation}
 (\mathbf A + \mathbf u \mathbf v^T)^{-1} \;=\; \mathbf A^{-1} - \frac{\mathbf A^{-1} \mathbf u \mathbf v^T \mathbf A^{-1}}{1 + \mathbf v^T \mathbf A^{-1} \mathbf u} \quad \text{(rank-1)} , \label{eq:ch-extra-sm1}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 (\mathbf A + \mathbf U \mathbf C \mathbf V^T)^{-1} \;=\; \mathbf A^{-1} - \mathbf A^{-1} \mathbf U (\mathbf C^{-1} + \mathbf V^T \mathbf A^{-1} \mathbf U)^{-1} \mathbf V^T \mathbf A^{-1} \quad \text{(rank-}k\text{)} . \label{eq:ch-extra-smk}
 \end{equation}
-{% endraw %}
+$$
 
 The first is the **Sherman–Morrison formula**, the second the
 **Woodbury identity**. The latter is the workhorse of the
@@ -1108,65 +1108,65 @@ polar**, and **cylindrical**.
 
 ### 10.1 Cartesian
 
-{% raw %}
+$$
 \begin{equation}
 \nabla f \;=\; \left( \frac{\partial f}{\partial x},\, \frac{\partial f}{\partial y},\, \frac{\partial f}{\partial z} \right) , \label{eq:ch-extra-grad}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \nabla \cdot \mathbf F \;=\; \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z} , \label{eq:ch-extra-div}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \nabla \times \mathbf F \;=\; \left( \frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z},\;
                                  \frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x},\;
                                  \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} \right) , \label{eq:ch-extra-curl}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \nabla^2 f \;=\; \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} . \label{eq:ch-extra-lap-cart}
 \end{equation}
-{% endraw %}
+$$
 
 The **vector Laplacian** acts component-wise on a vector field:
 $\nabla^2 \mathbf F = (\nabla^2 F_x, \nabla^2 F_y, \nabla^2 F_z)$.
 The **Laplacian on a tensor** is the same: one component at a
 time. The **gradient of a dot product** is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-grad-dot}
 \nabla (\mathbf A \cdot \mathbf B) \;=\; (\mathbf A \cdot \nabla) \mathbf B + (\mathbf B \cdot \nabla) \mathbf A + \mathbf A \times (\nabla \times \mathbf B) + \mathbf B \times (\nabla \times \mathbf A) .
 \end{equation}
-{% endraw %}
+$$
 
 ### 10.2 Spherical polar coordinates
 
 With $r = |\mathbf r|$, $\theta$ the polar angle from $\hat z$
 and $\phi$ the azimuth,
 
-{% raw %}
+$$
 \begin{equation}
 \nabla f \;=\; \hat{\mathbf r}\, \frac{\partial f}{\partial r} + \hat{\boldsymbol\theta}\, \frac{1}{r}\, \frac{\partial f}{\partial \theta} + \hat{\boldsymbol\phi}\, \frac{1}{r \sin\theta}\, \frac{\partial f}{\partial \phi} , \label{eq:ch-extra-grad-sph}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \nabla \cdot \mathbf F \;=\; \frac{1}{r^2} \frac{\partial (r^2 F_r)}{\partial r}
                        + \frac{1}{r \sin\theta} \frac{\partial (\sin\theta\, F_\theta)}{\partial \theta}
                        + \frac{1}{r \sin\theta} \frac{\partial F_\phi}{\partial \phi} , \label{eq:ch-extra-div-sph}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \nabla^2 f \;=\; \frac{1}{r^2} \frac{\partial}{\partial r} \!\left( r^2 \frac{\partial f}{\partial r} \right)
                 + \frac{1}{r^2 \sin\theta} \frac{\partial}{\partial \theta} \!\left( \sin\theta\, \frac{\partial f}{\partial \theta} \right)
                 + \frac{1}{r^2 \sin^2\theta} \frac{\partial^2 f}{\partial \phi^2} . \label{eq:ch-extra-lap-sph}
 \end{equation}
-{% endraw %}
+$$
 
 The angular part of $\nabla^2$ is $-\hat L^2 / r^2$, so
 $\nabla^2 (R Y_\ell^m) = [r^{-2} \partial_r(r^2 \partial_r R) -
@@ -1178,18 +1178,18 @@ chapter 01 (§1.10.3). Cross-reference: chapter 01 (§1.10).
 With $\rho = \sqrt{x^2 + y^2}$, $\phi$ the azimuth, and $z$ the
 axial coordinate,
 
-{% raw %}
+$$
 \begin{equation}
 \nabla f \;=\; \hat{\boldsymbol\rho}\, \frac{\partial f}{\partial \rho} + \hat{\boldsymbol\phi}\, \frac{1}{\rho}\, \frac{\partial f}{\partial \phi} + \hat{\mathbf z}\, \frac{\partial f}{\partial z} , \label{eq:ch-extra-grad-cyl}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \nabla^2 f \;=\; \frac{1}{\rho} \frac{\partial}{\partial \rho} \!\left( \rho \frac{\partial f}{\partial \rho} \right)
                 + \frac{1}{\rho^2} \frac{\partial^2 f}{\partial \phi^2}
                 + \frac{\partial^2 f}{\partial z^2} . \label{eq:ch-extra-lap-cyl}
 \end{equation}
-{% endraw %}
+$$
 
 The cylindrical Laplacian is the natural operator for systems
 with axial symmetry: nanotubes, wires, the
@@ -1200,31 +1200,31 @@ out the band structure of a **single-wall nanotube** or a
 
 ### 10.4 Vector identities
 
-{% raw %}
+$$
 \begin{equation}
 \nabla \cdot (\nabla \times \mathbf F) \;=\; 0 , \label{eq:ch-extra-vec-id1}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \nabla \times (\nabla f) \;=\; \mathbf 0 , \label{eq:ch-extra-vec-id2}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \nabla \times (\nabla \times \mathbf F) \;=\; \nabla(\nabla \cdot \mathbf F) - \nabla^2 \mathbf F , \label{eq:ch-extra-vec-id3}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \nabla \cdot (f \mathbf F) \;=\; f\, \nabla \cdot \mathbf F + \mathbf F \cdot \nabla f , \label{eq:ch-extra-vec-id4}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \nabla \times (f \mathbf F) \;=\; f\, \nabla \times \mathbf F + \nabla f \times \mathbf F . \label{eq:ch-extra-vec-id5}
 \end{equation}
-{% endraw %}
+$$
 
 Identity \eqref{eq:ch-extra-vec-id3} is the reason the
 **Coulomb gauge** $\nabla \cdot \mathbf A = 0$ and the
@@ -1246,12 +1246,12 @@ The **functional derivative** $\delta F / \delta f(x)$ of a
 functional $F[f]$ is the function (or distribution) such that
 for every variation $\delta f(x)$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-fdef}
 \delta F \;=\; \int \frac{\delta F}{\delta f(x)}\, \delta f(x)\, dx .
 \end{equation}
-{% endraw %}
+$$
 
 The simplest case: for $F[f] = \int g(x)\, f(x)\, dx$, the
 functional derivative is $\delta F / \delta f(x) = g(x)$.
@@ -1263,12 +1263,12 @@ $\delta F / \delta f(x) = 2 f(x_0) \delta(x - x_0)$.
 If $F = G[f, h]$ depends on $f$ and $h$ (which themselves
 depend on the same underlying variables), then
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-fchain}
 \frac{\delta F}{\delta g(y)} \;=\; \int dx\, \frac{\delta F}{\delta f(x)} \frac{\delta f(x)}{\delta g(y)} + \int dx\, \frac{\delta F}{\delta h(x)} \frac{\delta h(x)}{\delta g(y)} .
 \end{equation}
-{% endraw %}
+$$
 
 Used in deriving the **chain rule for the KS potential**: the
 density depends on the orbitals, the orbitals depend on the
@@ -1280,12 +1280,12 @@ Under a functional integral, integration by parts swaps a
 derivative at no cost (boundary terms vanish under the standard
 assumptions of the variational principle):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-fibp}
 \int \frac{\delta F}{\delta f(x)} \frac{\partial f}{\partial x}\, dx \;=\; -\int f(x)\, \frac{\partial}{\partial x} \frac{\delta F}{\delta f(x)}\, dx .
 \end{equation}
-{% endraw %}
+$$
 
 The boundary term is $\left[ f\, \delta F/\delta f \right]_{-\infty}^{+\infty}$
 and vanishes if $f \to 0$ at infinity (or if the boundary
@@ -1299,12 +1299,12 @@ For the Kohn–Sham energy
 $E[\rho] = T_s[\rho] + \int \rho v_\text{ext}\, d\mathbf r + J[\rho] + E_\text{xc}[\rho]$,
 the functional derivative with respect to $\rho(\mathbf r)$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-vxc}
 \frac{\delta E}{\delta \rho(\mathbf r)} \;=\; v_\text{ext}(\mathbf r) + v_\text{H}[\rho](\mathbf r) + \frac{\delta E_\text{xc}}{\delta \rho(\mathbf r)} \;=\; v_\text{eff}(\mathbf r) .
 \end{equation}
-{% endraw %}
+$$
 
 The right-hand side is the **Kohn–Sham effective potential**.
 The functional derivative $\delta E_\text{xc}/\delta\rho$ is
@@ -1317,12 +1317,12 @@ reference: chapter 04. ---
 
 The **action** is the time-integral of a Lagrangian:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-action}
 \mathcal S[q] \;=\; \int_{t_1}^{t_2} \mathcal L(q(t), \dot q(t), t)\, dt .
 \end{equation}
-{% endraw %}
+$$
 
 The **principle of stationary action** says the physical
 trajectory $q(t)$ is an extremum of $\mathcal S[q]$ against
@@ -1338,12 +1338,12 @@ For a Lagrangian $\mathcal L(q, \dot q, t)$, the stationary-
 action condition $\delta \mathcal S = 0$ gives the **Euler–
 Lagrange equation**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-el}
 \frac{d}{dt} \frac{\partial \mathcal L}{\partial \dot q} - \frac{\partial \mathcal L}{\partial q} \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 The generalisation to several coordinates is
 $\partial_t (\partial \mathcal L / \partial \dot q_i) -
@@ -1357,12 +1357,12 @@ stationary action *an`d*' unitarity.
 
 For a Lagrangian density $\mathcal L = \mathcal L(\phi, \partial_\mu \phi)$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-el-field}
 \partial_\mu \frac{\partial \mathcal L}{\partial (\partial_\mu \phi)} - \frac{\partial \mathcal L}{\partial \phi} \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 This is the **Dirac–Frenkel variational principle** of chapter
 01 (§1.7.2) written for the wavefunction field. The
@@ -1376,12 +1376,12 @@ A constrained minimisation (e.g. orthonormality of the
 orbitals in HF/KS) introduces a **Lagrange multiplier**
 matrix $\boldsymbol\Lambda$ in the variational principle:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-constraint}
 \delta \Bigl[ E - \operatorname{Tr}(\boldsymbol\Lambda^\dagger (\mathbf C^\dagger \mathbf S \mathbf C - \mathbf 1)) \Bigr] \;=\; 0 .
 \end{equation}
-{% endraw %}
+$$
 
 Differentiating with respect to the MO coefficients $\mathbf C$
 gives the **Roothaan–Hall equation** (chapters 03 and 06),
@@ -1401,22 +1401,22 @@ identities every solid-state code needs.
 
 The Fourier transform of the Coulomb kernel is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-fourier-coulomb}
 \int_{\mathbb R^3} \frac{e^{-i \mathbf k \cdot \mathbf r}}{r}\, d\mathbf r \;=\; \frac{4\pi}{k^2} ,
 \end{equation}
-{% endraw %}
+$$
 
 with the convention of §5.2 above (no $1/(2\pi)^{3/2}$
 prefactor). Equivalently,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-poisson}
 -\nabla^2 \left( \frac{1}{\lvert \mathbf r - \mathbf r' \rvert} \right) \;=\; 4\pi\, \delta(\mathbf r - \mathbf r') ,
 \end{equation}
-{% endraw %}
+$$
 
 i.e. $1/r$ is the Green's function of the **Poisson equation**
 in three dimensions. The Fourier-space form
@@ -1434,13 +1434,13 @@ FFT per SCF iteration. Cross-reference: chapters 04 (§4.4),
 The Coulomb kernel can be split into a **short-range** and a
 **long-range** part by an error-function partition
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-range-sep}
 \frac{1}{r_{12}} \;=\; \underbrace{\frac{\operatorname{erfc}(\omega r_{12})}{r_{12}}}_\text{short range}
                      + \underbrace{\frac{\operatorname{erf}(\omega r_{12})}{r_{12}}}_\text{long range} .
 \end{equation}
-{% endraw %}
+$$
 
 The range-separation parameter $\omega$ controls the split:
 $\omega \to 0$ recovers the full $1/r$ on the long-range
@@ -1451,42 +1451,42 @@ in **range-separated hybrid** XC functionals (chapter 05,
 
 The **lattice sum**
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-lattice}
 V_\text{Mad} \;=\; \frac{1}{2} \sum_{\mathbf R \ne 0} \frac{1}{\lvert \mathbf R \rvert}
 \end{equation}
-{% endraw %}
+$$
 
 is **conditionally convergent** (depends on the order of
 summation). The **Ewald decomposition** renders it absolutely
 convergent by writing
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-ewald}
 \frac{1}{r} \;=\; \underbrace{\frac{\operatorname{erfc}(\alpha r)}{r}}_\text{short range, real space}
                 + \underbrace{\frac{\operatorname{erf}(\alpha r)}{r}}_\text{long range, reciprocal space} .
 \end{equation}
-{% endraw %}
+$$
 
 The sum then splits into three pieces:
 
-{% raw %}
+$$
 \begin{equation}
 V_\text{Mad} \;=\; \underbrace{\frac{1}{2} \sum_{\mathbf R \ne 0} \frac{\operatorname{erfc}(\alpha \lvert \mathbf R \rvert)}{\lvert \mathbf R \rvert}}_{V_\text{real}} \label{eq:ch-extra-ewald-real}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \quad + \underbrace{\frac{1}{2\Omega} \sum_{\mathbf G \ne 0} \frac{4\pi e^{-\lvert \mathbf G \rvert^2 / 4\alpha^2}}{G^2}}_{V_\text{recip}} \label{eq:ch-extra-ewald-recip}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 \quad - \underbrace{\frac{\alpha}{\sqrt\pi}}_{V_\text{self}} . \label{eq:ch-extra-ewald-self}
 \end{equation}
-{% endraw %}
+$$
 
 The real-space sum $V_\text{real}$ converges rapidly because
 $\operatorname{erfc}(\alpha r) \sim e^{-\alpha^2 r^2}$ at large
@@ -1508,12 +1508,12 @@ real-space-grid periodic code. Cross-reference: chapters 04
 The **Madelung constant** $\mathcal M$ of a Bravais lattice is
 defined by
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-madelung}
 V_\text{Mad} \;=\; -\frac{\mathcal M}{2 r_0} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $r_0$ is the nearest-neighbour distance. Examples:
 
@@ -1540,22 +1540,22 @@ that ties them together.
 
 ### 14.1 The Gaussian integral
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-gauss}
 \int_{-\infty}^{\infty} e^{-a x^2}\, dx \;=\; \sqrt{\frac{\pi}{a}} , \qquad
 \int_{-\infty}^{\infty} x^{2n}\, e^{-a x^2}\, dx \;=\; \frac{(2n-1)!!}{(2a)^n} \sqrt{\frac{\pi}{a}} .
 \end{equation}
-{% endraw %}
+$$
 
 In $d$ dimensions, with $a > 0$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-gauss-d}
 \int_{\mathbb R^d} e^{-a \mathbf x \cdot \mathbf x}\, d^d x \;=\; \left( \frac{\pi}{a} \right)^{d/2} .
 \end{equation}
-{% endraw %}
+$$
 
 The Gaussian is the **only** integral that converges in the
 *free-particle path integral* of chapter 01 (§1.11.3, problem
@@ -1565,12 +1565,12 @@ product theorem).
 
 ### 14.2 The error-function integral
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-erfint}
 \int_0^\infty e^{-a x^2}\, \operatorname{erf}(b x)\, dx \;=\; \frac{1}{2\sqrt{a}}\left[ \frac{\pi}{2} - \arctan\!\left( \frac{\sqrt{a}}{b} \right) \right] \quad (a, b > 0) .
 \end{equation}
-{% endraw %}
+$$
 
 This identity is needed when the Coulomb kernel is split by
 the range-separation of §13.2 above: the short-range
@@ -1582,31 +1582,31 @@ reference: chapter 05 (§5.5, range-separated hybrids).
 
 The **Fermi–Dirac occupation** of chapter 07 (§7.6.3) is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-fd}
 f(\varepsilon) \;=\; \frac{1}{e^{(\varepsilon - \mu)/k_B T} + 1} .
 \end{equation}
-{% endraw %}
+$$
 
 The corresponding **Fermi–Dirac integral of order $j$** is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-fdj}
 \mathcal F_j(\eta) \;=\; \frac{1}{\Gamma(j+1)} \int_0^\infty \frac{x^j}{e^{x - \eta} + 1}\, dx ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\eta = \mu / k_B T$ the **reduced chemical potential**.
 The Sommerfeld expansion at low temperature gives
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-sommerfeld}
 \mathcal F_j(\eta) \;=\; \frac{\eta^{j+1}}{(j+1) \Gamma(j+1)} \left[ 1 + \frac{\pi^2}{6}\, j(j+1)\, \eta^{-2} + \mathcal O(\eta^{-4}) \right] .
 \end{equation}
-{% endraw %}
+$$
 
 For the density of states $g(\varepsilon)$ of a metal, the
 electron number is $N = \int_0^\infty g(\varepsilon) f(\varepsilon) d\varepsilon$.
@@ -1618,35 +1618,35 @@ reference: chapter 07 (§7.6.3).
 
 The **Bose–Einstein occupation** is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-be}
 n(\varepsilon) \;=\; \frac{1}{e^{(\varepsilon - \mu)/k_B T} - 1} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $\varepsilon > \mu$ (chemical potential below the band
 edge for a stable Bose gas). The corresponding **Bose–Einstein
 integral of order $j$** is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-be-j}
 \mathcal B_j(\eta) \;=\; \frac{1}{\Gamma(j+1)} \int_0^\infty \frac{x^j}{e^{x - \eta} - 1}\, dx \;=\; \operatorname{Li}_{j+1}(e^\eta) \zeta(j+1) / \zeta(j+1) \cdots
 \end{equation}
-{% endraw %}
+$$
 
 The Bose–Einstein distribution describes **phonons** (chapter
 10, vibrations in molecules and solids) and the photon gas.
 The phonon contribution to the **free energy** of a harmonic
 crystal is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-phonon-f}
 F_\text{ph} \;=\; k_B T \sum_{\mathbf q, s} \ln\!\Bigl(1 - e^{-\hbar\omega_{\mathbf q s}/k_B T}\Bigr) ,
 \end{equation}
-{% endraw %}
+$$
 
 where the sum is over phonon branches $s$ and wavevectors
 $\mathbf q$. Cross-reference: chapter 10 (phonons), chapter 01
@@ -1657,12 +1657,12 @@ $\mathbf q$. Cross-reference: chapter 10 (phonons), chapter 01
 The **polylogarithm** $\operatorname{Li}_s(z)$ is defined by
 the series
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-polylog}
 \operatorname{Li}_s(z) \;=\; \sum_{k=1}^{\infty} \frac{z^k}{k^s} \;=\; \frac{z}{\Gamma(s)} \int_0^\infty \frac{t^{s-1}}{e^t / z - 1}\, dt ,
 \end{equation}
-{% endraw %}
+$$
 
 convergent for $|z| \le 1$ (real $s > 0$; analytic
 continuation elsewhere). The integral form is the
@@ -1680,12 +1680,12 @@ reference: chapter 07 (finite-temperature occupation numbers).
 For a three-dimensional non-interacting Bose gas of $N$
 particles in a volume $V$ with mass $m$,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-bec-tc}
 k_B T_c \;=\; \frac{2\pi \hbar^2}{m} \left( \frac{N}{V\, \zeta(3/2)} \right)^{2/3} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\zeta(3/2) \approx 2.612$ is the Riemann zeta function.
 This is the textbook result that anchors every discussion of
@@ -1698,12 +1698,12 @@ single-Slater-determinant theory. Cross-reference: chapter 01
 
 ### 14.7 The Planck (black-body) integral
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:ch-extra-planck}
 \int_0^\infty \frac{x^3}{e^x - 1}\, dx \;=\; \frac{\pi^4}{15} .
 \end{equation}
-{% endraw %}
+$$
 
 This is the **Stefan–Boltzmann constant** in disguise:
 $\sigma = (2\pi^5 k_B^4)/(15 h^3 c^2)$. It is the integral that
@@ -1714,16 +1714,16 @@ reference: chapter 01. ### 14.8 The complete elliptic integrals
 The two **complete elliptic integrals** of the first and second
 kind,
 
-{% raw %}
+$$
 \begin{equation}
 K(k) \;=\; \int_0^{\pi/2} \frac{d\theta}{\sqrt{1 - k^2 \sin^2 \theta}} , \label{eq:ch-extra-ellip-k}
 \end{equation}
-{% endraw %}
-{% raw %}
+$$
+$$
 \begin{equation}
 E(k) \;=\; \int_0^{\pi/2} \sqrt{1 - k^2 \sin^2 \theta}\, d\theta , \label{eq:ch-extra-ellip-e}
 \end{equation}
-{% endraw %}
+$$
 
 appear in the **2-D Coulomb problem** and in the **image-charge
 sums of surface science**. They are not in the main text of

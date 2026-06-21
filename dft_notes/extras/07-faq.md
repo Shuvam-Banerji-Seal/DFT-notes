@@ -96,12 +96,12 @@ an auxiliary non-interacting system whose density equals the
 true interacting density.  In Kohn–Sham DFT, the central
 equation is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:faq-ks}
 \left[-\tfrac{1}{2}\nabla^2 + v_\text{ext}(\mathbf r) + v_\text{H}[\rho](\mathbf r) + v_\text{xc}[\rho](\mathbf r)\right] \phi_i(\mathbf r) = \varepsilon_i\, \phi_i(\mathbf r) ,
 \end{equation}
-{% endraw %}
+$$
 
 a set of one-electron Schrödinger-like equations solved
 self-consistently.  DFT in the Kohn–Sham form is the workhorse
@@ -296,12 +296,12 @@ The full expression is read right-to-left:
 then inner-producted with \(\langle \phi \rvert\).  In
 position-space representation it is the integral
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:faq-brak}
 \langle \phi \rvert \hat A \rvert \psi \rangle \;\equiv\; \int \phi^*(\mathbf r)\, \Bigl(\hat A \psi(\mathbf r)\Bigr)\, d\mathbf r .
 \end{equation}
-{% endraw %}
+$$
 
 When \(\phi = \psi\) this is the **expectation value** of
 \(\hat A\) in the state \(\rvert \psi \rangle\); when
@@ -324,7 +324,7 @@ A **Slater determinant** is an antisymmetrised product of
 \(N\) orthonormal single-particle spin-orbitals
 \(\chi_i(\mathbf x)\):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:faq-slater}
 \Psi(\mathbf x_1, \dots, \mathbf x_N) \;=\; \frac{1}{\sqrt{N!}} \begin{vmatrix}
@@ -334,7 +334,7 @@ A **Slater determinant** is an antisymmetrised product of
 \chi_1(\mathbf x_N) & \chi_2(\mathbf x_N) & \cdots & \chi_N(\mathbf x_N)
 \end{vmatrix} .
 \end{equation}
-{% endraw %}
+$$
 
 The determinant form **enforces the Pauli exclusion principle
 automatically**: swapping two rows flips the sign, so \(\Psi\)
@@ -364,12 +364,12 @@ electronic coordinate (and one spin).  In Kohn–Sham DFT the
 many-body wavefunction is approximated by a Slater determinant
 of single-particle orbitals:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:faq-Psipsi}
 \Psi(\mathbf x_1, \dots, \mathbf x_N) \;\approx\; \Phi[\{\psi_i\}] \;=\; \frac{1}{\sqrt{N!}} \det\Bigl[\psi_i(\mathbf x_j)\Bigr] .
 \end{equation}
-{% endraw %}
+$$
 
 The mapping \(\Psi \to \{\psi_i\}\) is the Kohn–Sham Ansatz.
 In the Kohn–Sham equations the \(\{\psi_i(\mathbf r)\}\) are
@@ -390,12 +390,12 @@ surrounding paragraph to find out which one.
 The **one-electron density** is the integral of \(|\Psi|^2\)
 over all electron coordinates but one, summed over spins:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:faq-rho}
 \rho(\mathbf r) \;=\; N \sum_{\sigma_1, \dots, \sigma_N} \int \lvert \Psi(\mathbf r, \sigma_1, \mathbf r_2, \sigma_2, \dots, \mathbf r_N, \sigma_N) \rvert^2 d\mathbf r_2 \cdots d\mathbf r_N .
 \end{equation}
-{% endraw %}
+$$
 
 It is a non-negative, real, three-dimensional scalar field
 that integrates to the number of electrons:
@@ -423,12 +423,12 @@ A **basis set** is a finite set of known functions
 \(\{\chi_\mu(\mathbf r)\}\) used to expand the unknown
 molecular orbitals:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:faq-basis}
 \phi_i(\mathbf r) \;\approx\; \sum_{\mu=1}^{K} C_{\mu i}\, \chi_\mu(\mathbf r) .
 \end{equation}
-{% endraw %}
+$$
 
 The choice of basis set controls both the **accuracy** and
 the **cost** of the calculation.  Two main families: (i)
@@ -461,13 +461,13 @@ comes *out* of one diagonalisation equals (within tolerance)
 the density that was used to build the Hamiltonian.  In
 practice, the SCF loop is iterated until convergence:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:faq-scf}
 \rho^{(n+1)}(\mathbf r) \;=\; \mathcal F[\rho^{(n)}](\mathbf r) ,
 \qquad \rho^{(n+1)} \approx \rho^{(n)} .
 \end{equation}
-{% endraw %}
+$$
 
 The map \(\mathcal F\) is the **SCF map**; its fixed point is
 the self-consistent solution.  Convergence can be
@@ -488,12 +488,12 @@ A **functional** is a map from a *function* to a number (or
 to another function).  For example, the Kohn–Sham total
 energy is a functional of the density:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:faq-func}
 E[\rho] \;=\; T_s[\rho] + \int \rho(\mathbf r)\, v_\text{ext}(\mathbf r)\, d\mathbf r + J[\rho] + E_\text{xc}[\rho] .
 \end{equation}
-{% endraw %}
+$$
 
 Each term is itself a functional: \(T_s[\rho]\) returns a
 number given a function \(\rho\); \(J[\rho]\) returns a
@@ -728,12 +728,12 @@ structure you need $GW$ or similar.
 The **density of states (DOS)** is the number of orbitals
 per unit energy:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:faq-dos}
 g(\varepsilon) \;=\; \sum_{n\mathbf k}\, \delta(\varepsilon - \varepsilon_{n\mathbf k}) .
 \end{equation}
-{% endraw %}
+$$
 
 In a plane-wave code you compute it by: (i) running a
 **uniform k-mesh** (denser than for the ground state —

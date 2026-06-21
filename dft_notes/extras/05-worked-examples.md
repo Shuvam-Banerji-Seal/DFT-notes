@@ -333,7 +333,7 @@ centred on atom $\mathbf A_\mu$ ($\mu = 1, 2$). Each
 contracted function is a fixed linear combination of
 three primitive Cartesian $s$-Gaussians (Ch 06 §6.4):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-sto3g-contract}
 \chi_\mu(\mathbf r) \;=\; \sum_{p=1}^{3} d_{\mu p}\, g(\mathbf r; \alpha_p, \mathbf A_\mu, \mathbf 0) ,
@@ -342,7 +342,7 @@ d_{\mu p} \in \{0.444635,\, 0.535328,\, 0.154329\} ,
 \quad
 \alpha_p \in \{0.168856,\, 0.623913,\, 3.425250\} .
 \end{equation}
-{% endraw %}
+$$
 
 The contraction coefficients and exponents are
 universal (the same for every H atom, every molecule,
@@ -353,20 +353,20 @@ STO-3G primitive set**.
 For two $s$-Gaussians on different centres the **Gaussian
 product theorem** (Ch 06 §6.4) gives
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-S12}
 S_{12} \;=\; \sum_{p,q=1}^{3} d_{1p} d_{2q}\,
              \Bigl(\frac{\pi}{\alpha_p + \alpha_q}\Bigr)^{3/2}\,
              \exp\!\Bigl[-\frac{\alpha_p \alpha_q}{\alpha_p + \alpha_q}\, R^2\Bigr] ,
 \end{equation}
-{% endraw %}
+$$
 
 where $R = 1.4\,a_0$ is the bond length. Carrying out
 the sum (three terms per index, nine total; this is
 mechanical, not conceptual):
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-S12-num}
 \begin{aligned}
@@ -376,7 +376,7 @@ S_{12} &\;=\; 0.4446 \cdot 0.4446 \cdot 0.2825 \cdot e^{-0.0663 \cdot 1.96} \\\
        &\;=\; 0.6593 .
 \end{aligned}
 \end{equation}
-{% endraw %}
+$$
 
 The diagonal elements are
 $S_{11} = S_{22} = 1$ by construction (the contraction
@@ -385,7 +385,7 @@ is normalised).
 **Step 2 — Kinetic $T_{\mu\nu} = \langle \chi_\mu \rvert -\tfrac{1}{2}\nabla^2 \rvert \chi_\nu \rangle$.**
 The matrix element between two $s$-Gaussians is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-T12}
 T_{\mu\nu} \;=\; \sum_{p,q} d_{\mu p} d_{\nu q}\,
@@ -394,20 +394,20 @@ T_{\mu\nu} \;=\; \sum_{p,q} d_{\mu p} d_{\nu q}\,
                 \Bigl[3 - 2 \frac{\alpha_p \alpha_q}{\alpha_p + \alpha_q}\, R^2\Bigr]\,
                 \exp\!\Bigl[-\frac{\alpha_p \alpha_q}{\alpha_p + \alpha_q}\, R^2\Bigr] ,
 \end{equation}
-{% endraw %}
+$$
 
 a closed form that involves only the contracted
 exponents and the bond length. Numerically, with
 $R = 1.4\,a_0$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-T12-num}
 \mathbf T \;=\;
 \begin{pmatrix}
 0.7600 & 0.2365 \\\\ 0.2365 & 0.7600 \end{pmatrix} .
 \end{equation}
-{% endraw %}
+$$
 
 The diagonal element $T_{11} = 0.7600$ is the kinetic
 energy of one STO-3G $1s$ on a single H atom; the
@@ -419,7 +419,7 @@ The matrix element between two $s$-Gaussians and a
 single nucleus of charge $Z_A$ at position $\mathbf A$
 is (Ch 06 §6.5)
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-V12}
 V_{\mu\nu}^{(A)} \;=\; -\sum_{p,q} d_{\mu p} d_{\nu q}\,
@@ -428,7 +428,7 @@ V_{\mu\nu}^{(A)} \;=\; -\sum_{p,q} d_{\mu p} d_{\nu q}\,
                       F_0\!\Bigl((\alpha_p + \alpha_q)\, |\mathbf P - \mathbf A|^2\Bigr)\,
                       \exp\!\Bigl[-\frac{\alpha_p \alpha_q}{\alpha_p + \alpha_q}\, R_{\mu\nu}^2\Bigr] ,
 \end{equation}
-{% endraw %}
+$$
 
 where $\mathbf P$ is the Gaussian midpoint of the
 $\mu p, \nu q$ pair, $R_{\mu\nu}$ is the
@@ -442,37 +442,37 @@ $F_0(0) = 1$, so the inner sum is the
 **self-attraction** of the $1s$ Gaussian with its
 own nucleus:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-V11-self}
 V_{11}^{(1)} \;=\; -\sum_{p,q} d_{1p} d_{1q}\, \frac{2\pi}{\alpha_p + \alpha_q}\,
                   Z_1 \;=\; -1.8804 .
 \end{equation}
-{% endraw %}
+$$
 
 The full nuclear-attraction matrix (summed over both
 nuclei) at $R = 1.4\,a_0$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-V-num}
 \mathbf V \;=\;
 \begin{pmatrix}
 -1.8804 & -1.1949 \\\\ -1.1949 & -1.8804 \end{pmatrix} ,
 \end{equation}
-{% endraw %}
+$$
 
 so the **core Hamiltonian** $\mathbf h = \mathbf T +
 \mathbf V$ is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-h-num}
 \mathbf h \;=\;
 \begin{pmatrix}
 -1.1204 & -0.9584 \\\\ -0.9584 & -1.1204 \end{pmatrix} .
 \end{equation}
-{% endraw %}
+$$
 
 These numbers reproduce the
 Szabo & Ostlund table 3.5 to four decimal places.
@@ -486,7 +486,7 @@ $K = 2$ there are $2^4 = 16$ unique ERIs, but the
 8-fold permutational symmetry (Ch 03 §3.6.3) reduces
 this to **3 distinct** values:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-eri-distinct}
 (11 \rvert 11) \;=\; 0.7746 ,
@@ -497,7 +497,7 @@ this to **3 distinct** values:
 \quad
 (11 \rvert 12) \;=\; 0.4441 .
 \end{equation}
-{% endraw %}
+$$
 
 $(11 \rvert 11)$ is the **Coulomb self-repulsion** of
 the $1s$ orbital on one centre; $(11 \rvert 22)$ is
@@ -532,23 +532,23 @@ moving to machine precision.
 **Step 6 — Total energy.** The SCF total energy in
 the AO basis (Ch 03 §3.6.5) is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-hf-energy}
 E_\text{HF} \;=\; \tfrac{1}{2}\, \text{Tr}[\mathbf P(\mathbf h + \mathbf F)] \;+\; \frac{Z_A Z_B}{R} ,
 \end{equation}
-{% endraw %}
+$$
 
 with $Z_A Z_B / R = 1 / 1.4 = 0.7143\,E_h$ the
 nuclear–nuclear repulsion. Substituting the converged
 $\mathbf P$ and $\mathbf F$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-06-hf-num}
 E_\text{HF} \;=\; -1.8310 + 0.7143 \;=\; -1.1167\,E_h .
 \end{equation}
-{% endraw %}
+$$
 
 The number $-1.1167$ is the canonical Szabo & Ostlund
 reference, and the SCF iteration history should
@@ -677,12 +677,12 @@ Coulomb singularity at the origin). The
 all-electron radial Schrödinger equation in 1-D
 (Ch 08 §8.2) is
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-08-1d-schrod}
 -\tfrac{1}{2}\, \frac{d^2 u}{d x^2} + V_\text{ae}(x)\, u(x) \;=\; E\, u(x) ,
 \end{equation}
-{% endraw %}
+$$
 
 solved on a fine grid $x \in [-20, +20]\,a_0$ with
 $N = 4001$ points and a 3-point finite-difference
@@ -696,12 +696,12 @@ the carbon $2s$ orbital).
 $r_c = 1.0\,a_0$, the pseudo-wavefunction is
 parameterised as (Ch 08 §8.6)
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-08-tm-ansatz}
 \phi(x) \;=\; \exp\!\Bigl(c_0 + c_1 x^2 + c_2 x^4 + c_3 x^6\Bigr) ,
 \end{equation}
-{% endraw %}
+$$
 
 where the four **Troullier–Martins** coefficients
 $(c_0, c_1, c_2, c_3)$ are determined by four
@@ -725,7 +725,7 @@ u(r_c)))$.
 **Step 2 — Numerical result.** With
 $Z = 4, \epsilon = 0.3\,a_0, r_c = 1.0\,a_0$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-08-tm-coeffs}
 c_0 = -0.412\,305 ,
@@ -736,7 +736,7 @@ c_2 = +0.030\,551 ,
 \quad
 c_3 = -0.005\,982 .
 \end{equation}
-{% endraw %}
+$$
 
 Residuals on the four matching conditions:
 $\lvert \phi(r_c) - u(r_c) \rvert < 10^{-9}$,
@@ -750,12 +750,12 @@ that ensures transferability.
 **Step 3 — Inversion.** The pseudo-potential is
 obtained by inverting \eqref{eq:we-08-1d-schrod}:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-08-inversion}
 V_\text{ps}(x) \;=\; E_2 + \tfrac{1}{2}\, \frac{\phi''(x)}{\phi(x)} ,
 \end{equation}
-{% endraw %}
+$$
 
 (angular-momentum term is zero in 1-D). The result is
 finite at the origin: $V_\text{ps}(0) = E_2 + 2 c_1
@@ -776,14 +776,14 @@ construction reference. The TM pseudo reproduces
 both at $r = r_c$ to first order in
 $E - E_2$:
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-08-logder}
 D_\text{ps}(E_2) = D_\text{ae}(E_2) = -0.804\,a_0^{-1} ,
 \quad
 \partial_E D_\text{ps}(E_2) = \partial_E D_\text{ae}(E_2) = +0.412\,a_0^{-1}/E_h .
 \end{equation}
-{% endraw %}
+$$
 
 The reproduction is exact at the construction
 reference and is approximate for $E \ne E_2$, with
@@ -901,7 +901,7 @@ relationship to the H–H distance.
 (atomic-orbital) basis $\{|\phi_{n}\rangle\}_{n =
 -\infty}^{\infty}$ has matrix elements
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-07-tb-H}
 H_{nm} \;=\; \langle \phi_n \rvert \hat H \rvert \phi_m \rangle
@@ -912,7 +912,7 @@ H_{nm} \;=\; \langle \phi_n \rvert \hat H \rvert \phi_m \rangle
 0 & \lvert n - m \rvert \ge 2,
 \end{cases}
 \end{equation}
-{% endraw %}
+$$
 
 with $\varepsilon_0$ the on-site $1s$ energy
 ($\varepsilon_0 = -0.5\,E_h$ for an isolated H atom
@@ -925,13 +925,13 @@ the secular equation reduces to a $1 \times 1$
 matrix in the (single-orbital-per-site) basis, with
 eigenvalue
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-07-tb-eps}
 \varepsilon(k) \;=\; \varepsilon_0 - 2 t \cos(k a) ,
 \qquad k \in [-\pi/a, +\pi/a] .
 \end{equation}
-{% endraw %}
+$$
 
 The band has **bandwidth** $W = 4 t$ and is
 **symmetric** about $\varepsilon_0$ at $k = \pm\pi/(2 a)$
@@ -944,12 +944,12 @@ The relationship to the H–H distance $a$ is
 overlap $\langle \phi_n \rvert \phi_{n+1} \rangle$
 drops exponentially,
 
-{% raw %}
+$$
 \begin{equation}
 \label{eq:we-07-tb-t}
 t(a) \;\approx\; t_0\, e^{-(a - a_0) / \ell} ,
 \end{equation}
-{% endraw %}
+$$
 
 where $a_0$ is some reference distance (the H–H
 equilibrium in a 3-D H₂ molecule is
@@ -1053,14 +1053,14 @@ step:
    with one basis function per atom, the Hellmann–Feynman
    force is
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:we-09-hf-force}
    F(R) \;=\; -2 Z \!\int\!\rho(\mathbf r)\,
               \frac{z - R/2}{\Bigl[(z-R/2)^2 + x^2 + y^2\Bigr]^{3/2}}\, d\mathbf r
               \;+\; \frac{Z^2}{R^2} ,
    \end{equation}
-{% endraw %}
+$$
 
    with $Z = 1$, the bond on the $z$-axis, and the molecule
    centred at the origin. The two-electron contribution is
@@ -1068,7 +1068,7 @@ step:
    $\rho(\mathbf r)$ (the density depends on $R$ through the
    Fock matrix). The **Pulay correction** is
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:we-09-pulay}
    F^\text{Pulay}(R) \;=\; -2 \sum_i^\text{occ}
@@ -1076,7 +1076,7 @@ step:
                           \Bigl\langle \partial_{R}\chi_\mu \rvert
                           \hat F - \varepsilon_i \rvert \chi_\nu \bigr\rangle .
    \end{equation}
-{% endraw %}
+$$
 
    For H₂ in STO-3G with one $s$-function per atom, the
    reflection symmetry through the bond midpoint means the
@@ -1094,14 +1094,14 @@ step:
    from $H_0 = 1$ (a Newton step with unit Hessian), the
    BFGS update reads
 
-{% raw %}
+$$
    \begin{equation}
    \label{eq:we-09-bfgs}
    H_{k+1} \;=\; \Bigl(\mathbf 1 - \rho_k \mathbf s_k \mathbf y_k^\top\Bigr) H_k
                   \Bigl(\mathbf 1 - \rho_k \mathbf y_k \mathbf s_k^\top\Bigr)
                   \;+\; \rho_k \mathbf s_k \mathbf s_k^\top ,
    \end{equation}
-{% endraw %}
+$$
 
    with $\mathbf s_k = R_{k+1} - R_k$, $\mathbf y_k = g_{k+1}
    - g_k$, $\rho_k = 1 / (\mathbf y_k^\top \mathbf s_k)$.
@@ -1193,6 +1193,7 @@ masses connected by springs yield, after the Bloch
 ansatz $u_{I\alpha}(t) = U_{s\alpha}(q)\, e^{i(q n a - \omega_s(q) t)}$,
 the $2 \times 2$ **dynamical matrix** (Ch 10 §10.3)
 
+$$
 \begin{equation}
 \label{eq:we-10-dynmat}
 \mathbf D(q) \;=\; \frac{K}{m_1 m_2}
@@ -1201,6 +1202,7 @@ the $2 \times 2$ **dynamical matrix** (Ch 10 §10.3)
 -(1 + e^{+i q a}) & 2 m_1
 \end{pmatrix} .
 \end{equation}
+$$
 
 This form uses the convention that the two atoms in the
 unit cell are labelled $1$ and $2$, with $1$ at $n a$
@@ -1210,6 +1212,7 @@ $a/2$). The eigenvalues of $\mathbf D(q)$ are
 $\omega_\text{ac}(q)^2$ and $\omega_\text{op}(q)^2$
 (acoustic and optical). The two limits are
 
+$$
 \begin{equation}
 \label{eq:we-10-limits}
 \begin{aligned}
@@ -1218,6 +1221,7 @@ $\omega_\text{ac}(q)^2$ and $\omega_\text{op}(q)^2$
 \omega_\text{ac}(\pi/a) &\;=\; \omega_\text{op}(\pi/a) \;=\; \sqrt{\frac{2K}{m_1}} \quad (m_1 \le m_2) .
 \end{aligned}
 \end{equation}
+$$
 
 The acoustic branch is a sound wave (linear in $q$ at
 small $q$, zero frequency at $\Gamma$). The optical
@@ -1230,10 +1234,12 @@ monatomic); with $m_1 \ne m_2$ the two branches
 **anticross** at the BZ boundary and the gap there
 equals
 
+$$
 \begin{equation}
 \label{eq:we-10-bz-gap}
 \Delta\omega(\pi/a) \;=\; \omega_\text{op}(\pi/a) - \omega_\text{ac}(\pi/a) \;=\; \sqrt{2K}\!\left(\frac{1}{\sqrt{m_1}} - \frac{1}{\sqrt{m_2}}\right) .
 \end{equation}
+$$
 
 This is the simplest possible statement of the
 **optical–acoustic gap** in a 1-D diatomic lattice. In
@@ -1322,12 +1328,14 @@ high-symmetry path
 $\Gamma \to \text{M} \to \text{K} \to \Gamma$, with the
 high-symmetry points
 
+$$
 \begin{equation}
 \label{eq:we-11-graphene-kpoints}
 \Gamma = (0, 0), \quad
 \text{M} = \frac{2\pi}{a}\!\left(0,\, \tfrac{1}{2}\right), \quad
 \text{K} = \frac{2\pi}{a}\!\left(\tfrac{1}{3},\, \tfrac{1}{2\sqrt{3}}\right),
 \end{equation}
+$$
 
 where $a = 2.46\,\text{Å} \approx 4.65\,a_0$ is the
 graphene lattice constant.
@@ -1337,18 +1345,21 @@ lattice with two sites per unit cell: an A sublattice
 and a B sublattice. Each A site has three B neighbours
 at the vectors
 
+$$
 \begin{equation}
 \label{eq:we-11-graphene-tau}
 \boldsymbol\tau_1 = a\!\left(0, \tfrac{1}{\sqrt{3}}\right), \quad
 \boldsymbol\tau_2 = a\!\left(\tfrac{1}{2}, -\tfrac{1}{2\sqrt{3}}\right), \quad
 \boldsymbol\tau_3 = a\!\left(-\tfrac{1}{2}, -\tfrac{1}{2\sqrt{3}}\right) ,
 \end{equation}
+$$
 
 in a coordinate system with the A site at the origin
 and the C–C bond length $a_\text{CC} = a/\sqrt{3}$. The
 **Bloch Hamiltonian** at wavevector $\mathbf k$ in the
 basis $\{|\text{A}\rangle, |\text{B}\rangle\}$ is
 
+$$
 \begin{equation}
 \label{eq:we-11-graphene-Hk}
 H(\mathbf k) \;=\;
@@ -1359,14 +1370,17 @@ t\, f^*(\mathbf k) & 0
 \qquad
 f(\mathbf k) \;=\; \sum_{j=1}^{3} e^{i \mathbf k \cdot \boldsymbol\tau_j} .
 \end{equation}
+$$
 
 This is a $2 \times 2$ Hermitian matrix for every
 $\mathbf k$. The diagonalisation is analytical:
 
+$$
 \begin{equation}
 \label{eq:we-11-graphene-eps}
 \varepsilon_\pm(\mathbf k) \;=\; \pm \lvert t \rvert\, \lvert f(\mathbf k) \rvert .
 \end{equation}
+$$
 
 The two eigenvalues are symmetric about zero: the
 $\pi$ band (lower) and the $\pi^*$ band (upper), with
@@ -1379,6 +1393,7 @@ $\mathbf k' = (2\pi/a)(-1/3,\, 1/(2\sqrt{3}))$.
 At the K point, the dispersion is **linear** in
 $\mathbf q = \mathbf k - \mathbf K$:
 
+$$
 \begin{equation}
 \label{eq:we-11-graphene-dirac}
 \varepsilon_\pm(\mathbf K + \mathbf q) \;\approx\; \pm \frac{\sqrt{3}\,a\,\lvert t\rvert}{2}\, \lvert \mathbf q \rvert
@@ -1386,6 +1401,7 @@ $\mathbf q = \mathbf k - \mathbf K$:
 \qquad
 v_F = \frac{\sqrt{3}\,a\,\lvert t\rvert}{2\hbar} .
 \end{equation}
+$$
 
 The Fermi velocity $v_F$ is the slope of the linear
 band, and is $\approx 10^6\,\text{m/s}$ in graphene —
@@ -1483,6 +1499,7 @@ sanity check that the TDDFT machinery of chapter 12
 
 **Problem.** A 2-level system with Hamiltonian
 
+$$
 \begin{equation}
 \label{eq:we-12-2level-H}
 \hat H_0 \;=\;
@@ -1491,6 +1508,7 @@ sanity check that the TDDFT machinery of chapter 12
 \end{pmatrix} ,
 \qquad \omega_0 = 1.0\,E_h
 \end{equation}
+$$
 
 (in atomic units, with the ground state at energy $0$
 and the excited state at energy $\omega_0$). A
@@ -1510,10 +1528,12 @@ susceptibility.
 **Approach.** The linear-response treatment (Ch 12
 §12.7) starts from Fermi's golden rule (Ch 01 §1.8.3):
 
+$$
 \begin{equation}
 \label{eq:we-12-fermi}
 \Gamma_{g \to e}(\omega) \;=\; \frac{\pi}{3}\, \frac{E_0^2}{\hbar^2}\, \lvert \mu_{ge}\rvert^2\, \delta(\omega - \omega_0) .
 \end{equation}
+$$
 
 The cross section $\sigma(\omega)$ is proportional to
 $\Gamma_{g \to e}(\omega)$ divided by the incident
@@ -1523,6 +1543,7 @@ spontaneous-emission rate of the upper state, $A_{21}$
 in spectroscopic notation; Ch 12 §12.8), the $\delta$ is
 broadened into
 
+$$
 \begin{equation}
 \label{eq:we-12-lorentz}
 \sigma(\omega) \;=\; \sigma_0\,
@@ -1530,6 +1551,7 @@ broadened into
 \qquad
 \sigma_0 \;=\; \frac{2\pi^2 \lvert \mu_{ge}\rvert^2}{3 \epsilon_0 \hbar c} .
 \end{equation}
+$$
 
 Equation \eqref{eq:we-12-lorentz} is the **absorption
 lineshape of a single molecule** in the weak-field
@@ -1543,6 +1565,7 @@ $\gamma$ on the off-diagonal $\rho_{ge}$. The
 **Liouville–von Neumann** equation with the
 Lindblad-style damping is
 
+$$
 \begin{equation}
 \label{eq:we-12-liouville}
 \dot{\rho}_{gg} \;=\; i\,\frac{\mu_{ge} E(t)}{\hbar}\, (\rho_{ge} - \rho_{eg}) + \gamma \rho_{ee} ,
@@ -1551,6 +1574,7 @@ Lindblad-style damping is
 \qquad
 \dot{\rho}_{ge} \;=\; -i \omega_0 \rho_{ge} - i\,\frac{\mu_{ge} E(t)}{\hbar}\, (\rho_{ee} - \rho_{gg}) - \frac{\gamma}{2} \rho_{ge} .
 \end{equation}
+$$
 
 After the kick, $E(t) = 0$ for $t > 0$ and
 $\rho_{ge}(t) = \rho_{ge}(0)\, e^{-i\omega_0 t - \gamma t/2}$ —
@@ -1559,22 +1583,26 @@ $d(t) = 2\,\text{Re}[\mu_{ge}\, \rho_{ge}(t)]$ (the
 factor of 2 is for the real part of the symmetric
 density matrix). Its Fourier transform is
 
+$$
 \begin{equation}
 \label{eq:we-12-fourier}
 d(\omega) \;=\; \int_0^\infty d(t)\, e^{i \omega t}\, dt \;=\; \frac{\mu_{ge}\, \rho_{ge}(0)}{(\omega - \omega_0) + i \gamma/2} ,
 \end{equation}
+$$
 
 a **complex Lorentzian** with the same width and centre
 as the linear-response cross section. The
 **Kramers–Kronig relation** (Ch 12 §12.9) connects the
 real and imaginary parts of $d(\omega)$:
 
+$$
 \begin{equation}
 \label{eq:we-12-kk}
 \text{Re}\, d(\omega) \;=\; \frac{1}{\pi}\, \mathcal{P}\!\!\int_{-\infty}^{\infty} \frac{\text{Im}\, d(\omega')}{\omega' - \omega}\, d\omega' ,
 \qquad
 \text{Im}\, d(\omega) \;=\; -\frac{1}{\pi}\, \mathcal{P}\!\!\int_{-\infty}^{\infty} \frac{\text{Re}\, d(\omega')}{\omega' - \omega}\, d\omega' .
 \end{equation}
+$$
 
 The imaginary part of $d(\omega)$ is the absorption
 spectrum; the real part is the **dispersion** that
@@ -1670,12 +1698,14 @@ $f$-electron compounds that LDA and GGA get wrong.
 **Problem.** Build the **4-site Hubbard Hamiltonian**
 in second quantisation
 
+$$
 \begin{equation}
 \label{eq:we-13-hubbard-H}
 \hat H \;=\; -t \sum_{\langle i,j \rangle, \sigma}
                  \hat c_{i\sigma}^\dagger \hat c_{j\sigma}
                  \;+\; U \sum_{i=1}^{4} \hat n_{i\uparrow} \hat n_{i\downarrow} ,
 \end{equation}
+$$
 
 on a 1-D chain of $L = 4$ sites with periodic boundary
 conditions (PBC) and $N = 4$ electrons (half-filling,
@@ -1760,10 +1790,12 @@ per spin), and the ground state at half-filling is
 obtained by filling these two with the 4 electrons
 (2 up, 2 down). The ground-state energy is
 
+$$
 \begin{equation}
 \label{eq:we-13-u0}
 E_\text{gs}(U=0) \;=\; 2 \cdot (-2 t) + 2 \cdot 0 \;=\; -4 t \;=\; -4 .
 \end{equation}
+$$
 
 The gap to the first charge excitation is **zero**:
 adding two electrons in the $\varepsilon = 0$ state
@@ -1776,10 +1808,12 @@ $U = 8$ in the $k = 0$ sector gives a ground-state
 energy $E_\text{gs}(N=4) = -3.36\,t$, with a gap
 to the first charge excitation
 
+$$
 \begin{equation}
 \label{eq:we-13-u8}
 \Delta(U=8) \;=\; E_\text{gs}(N=4, k=\pi) - E_\text{gs}(N=4, k=0) \;\approx\; 2.7\,t .
 \end{equation}
+$$
 
 The system is now a **Mott insulator** — the gap is
 non-zero even at half-filling, in contrast to the
@@ -1800,12 +1834,14 @@ double occupancy is essentially forbidden. The
 **Heisenberg effective Hamiltonian** (Ch 13 §13.4)
 describes the low-energy spin physics:
 
+$$
 \begin{equation}
 \label{eq:we-13-heis}
 \hat H_\text{eff} \;=\; J \sum_{\langle i,j \rangle} \hat{\mathbf S}_i \cdot \hat{\mathbf S}_j ,
 \qquad
 J = \frac{4 t^2}{U} .
 \end{equation}
+$$
 
 For $U = 12$, $J = 4/12 = 0.333\,t$. The 4-site
 Heisenberg chain has a singlet ground state with
