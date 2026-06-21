@@ -1586,11 +1586,21 @@ blockquote strong:first-child {
 }
 
 /* Inline math stays inline; kramdown turns $$ ... $$ into script
-   tags that MathJax will typeset.  We give the wrapper a vertical
-   rhythm. */
-mjx-container,
+   tags that MathJax will typeset.  We give display math (block
+   equations in their own paragraph) a vertical rhythm — but
+   NOT inline math. The 24px vertical margin on every mjx-container
+   was pushing inline math onto its own line, which in turn
+   pushed the text after the math to a new line, producing
+   "random newline after math" artifacts across the site. */
 mjx-container[display="true"] {
   margin: var(--space-lg) 0 !important;
+}
+
+mjx-container[display="false"] {
+  /* Inline math: no vertical margin so it flows with surrounding
+     text. MathJax's default inline alignment (vertical-align)
+     handles the baseline shift for subscripts/superscripts. */
+  margin: 0 !important;
 }
 
 
