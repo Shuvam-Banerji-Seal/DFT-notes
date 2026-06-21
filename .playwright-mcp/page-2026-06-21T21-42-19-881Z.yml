@@ -1,0 +1,3711 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 14 — Quantum chemistry methods beyond DFT" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: Density-functional theory is the workhorse of modern electronic structure, but it is not the only theory. Sitting in the same many-body Hilbert space are
+          - emphasis [ref=e30]: "wavefunction-base`d"
+          - text: ’ methods — Møller–Plesset perturbation theory, configuration interaction, coupled cluster, multireference, and the modern semiempiricals — that are systematically improvable, that converge to the exact answer as a parameter is turned up, and that have a different set of strengths and weaknesses from any functional on Jacob’s ladder.
+      - paragraph [ref=e31]:
+        - text: By the end of
+        - link "chapter 05" [ref=e32] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: "we had the full Kohn–Sham machinery: a fictitious non-interacting reference system that reproduces the interacting density ("
+        - link "chapter 04" [ref=e33] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: ), a self-consistent loop, and a Jacob’s ladder of exchange–correlation functionals — LDA, GGA, meta-GGA, hybrid. For most of chemistry and materials science, the local and semi-local rungs of that ladder are good enough; even the hybrid rung (PBE0, B3LYP) gets the thermochemistry of organic molecules within
+        - img [ref=e35]
+        - text: . The exceptions are the
+        - emphasis [ref=e47]: systematically improvable
+        - text: problems — non-covalent interactions, thermochemistry at
+        - img [ref=e49]
+        - text: accuracy, transition-metal multiplets, bond breaking — where the
+        - emphasis [ref=e66]: wavefunction
+        - text: itself is the controlled quantity and DFT is one approximation among many.
+      - paragraph [ref=e67]:
+        - text: This chapter is the tour of the wavefunction-based methods that
+        - emphasis [ref=e68]: complement
+        - text: "DFT. We will, in order: state the"
+        - emphasis [ref=e69]: post-HF ladder
+        - text: in a single table (§ 14.1); derive the
+        - strong [ref=e70]: Møller–Plesset
+        - text: perturbation series and the canonical MP2 energy correction (§ 14.2); build the
+        - strong [ref=e71]: configuration-interaction
+        - text: hierarchy, the
+        - strong [ref=e72]: Davidson
+        - text: algorithm, and the
+        - emphasis [ref=e73]: size-extensivity error
+        - text: of truncated CI (§ 14.3); introduce the
+        - strong [ref=e74]: coupled-cluster
+        - text: exponential ansatz, the CCSD equations, and the perturbative triples correction CCSD(T) (§ 14.4); survey the
+        - strong [ref=e75]: multireference
+        - text: methods — CASSCF, CASPT2, NEVPT2, and selected CI — for the problems where a single determinant is not enough (§ 14.5); give the
+        - strong [ref=e76]: semiempirical
+        - text: ancestry from Hückel to PM7 to modern
+        - strong [ref=e77]: DFTB
+        - text: (§ 14.6); derive the
+        - strong [ref=e78]: Helgaker basis-set extrapolation
+        - text: formula and the
+        - strong [ref=e79]: G1/G2/G3/W1
+        - text: composite protocols (§ 14.7); close with a side-by-side comparison (§ 14.8), a worked example on the H₂O atomisation energy (§ 14.9), three graded problems (§ 14.10), and an honest list of omissions (§ 14.12).
+      - paragraph [ref=e80]:
+        - text: The chapter assumes the working vocabulary of
+        - link "chapter 03" [ref=e81] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: (HF, the Fock operator, Slater–Condon rules) and the
+        - strong [ref=e82]: second-quantised
+        - text: machinery of
+        - link "chapter 02" [ref=e83] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: (creation / annihilation operators, normal ordering, Wick’s theorem). The notation is the one in the
+        - link "notation glossary" [ref=e84] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+        - text: (atomic units, chemists’ ERI, ERI conventions of
+        - link "§ 13.3 of the cheatsheet" [ref=e85] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+        - text: ). The basis-set language (cc-pV
+        - emphasis [ref=e86]: X
+        - text: Z, CBS extrapolation) is from
+        - link "chapter 06" [ref=e87] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: ; the multireference language (CAS, NEVPT2) builds on
+        - link "chapter 13" [ref=e88] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-13/
+        - text: .
+      - blockquote [ref=e89]:
+        - paragraph [ref=e90]:
+          - strong [ref=e91]: Reading note.
+          - text: This chapter is
+          - emphasis [ref=e92]: optional
+          - text: for the rest of the DFT Notes series — chapters 06–13 do not use the post-HF machinery. It is, however, the natural starting point for any reader who plans to compute
+          - emphasis [ref=e93]: high-accuracy
+          - text: thermochemistry (G1–G3, W1–W2, HEAT), or any property that is
+          - emphasis [ref=e94]: not
+          - text: a ground-state total energy (excitation energies, bond-breaking, multiplets, open-shell radicals, transition-metal spin states).
+      - heading "14.1 The claim" [level=2] [ref=e95]
+      - paragraph [ref=e96]:
+        - text: The headline of this chapter is a single statement of the
+        - emphasis [ref=e97]: post-HF ladder
+        - text: — the ranking of methods by cost, by accuracy, and by the kind of problem each is good at.
+      - blockquote [ref=e98]:
+        - paragraph [ref=e99]:
+          - strong [ref=e100]: Claim.
+          - text: The wavefunction-based methods form a
+          - emphasis [ref=e101]: ladder
+          - text: in which the cost grows as a power of the basis size
+          - img [ref=e103]
+          - text: and the accuracy grows with that cost. Hartree–Fock (
+          - link "chapter 03" [ref=e108] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/
+          - text: ) is the zeroth rung (
+          - img [ref=e110]
+          - text: ); MP2 the first (
+          - img [ref=e119]
+          - text: ); MP3 the second (
+          - img [ref=e128]
+          - text: ); CISD the third (
+          - img [ref=e137]
+          - text: ); CCSD the fourth (
+          - img [ref=e146]
+          - text: ); CCSD(T) the fifth (
+          - img [ref=e155]
+          - text: ); and full CI the sixth (
+          - img [ref=e164]
+          - text: ", exponential). The energy error at chemical accuracy ("
+          - img [ref=e173]
+          - text: ) drops monotonically along the ladder — from
+          - img [ref=e195]
+          - text: at HF to
+          - img [ref=e218]
+          - text: "at CCSD(T). The price for the last factor of three is the only one that is not polynomial: full CI scales exponentially and is"
+          - emphasis [ref=e241]: never
+          - text: the right tool for production.
+      - paragraph [ref=e242]:
+        - text: The numerical content of the claim is in
+        - img [ref=e244]:
+          - link [ref=e247] [cursor=pointer]:
+            - /url: "#"
+        - text: . The
+        - strong [ref=e256]: asymptotic cost
+        - text: column is the leading-order
+        - img [ref=e258]
+        - text: "-scaling for a"
+        - emphasis [ref=e263]: closed-shell
+        - text: system with
+        - img [ref=e265]
+        - text: doubly-occupied spatial orbitals and
+        - img [ref=e271]
+        - text: basis functions; the
+        - strong [ref=e276]: typical mean-unsigned error
+        - text: column is on the
+        - strong [ref=e277]: G2/97 test set
+        - text: of 148 molecule-formation enthalpies, with the
+        - strong [ref=e278]: 6-311+G(3df,2p)
+        - text: basis; the
+        - strong [ref=e279]: recommended use
+        - text: column is the kind of problem where the method is the
+        - emphasis [ref=e280]: default
+        - text: in a production calculation.
+      - img [ref=e282]:
+        - generic [ref=e288]: Misplaced \hline
+      - paragraph [ref=e289]:
+        - text: The “cost” column in
+        - img [ref=e291]:
+          - link [ref=e294] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - emphasis [ref=e303]: asymptotic scaling
+        - text: of the most expensive step; it is what determines feasibility. The “error” column is the
+        - emphasis [ref=e304]: empirical
+        - text: mean- unsigned error on G2/97 (atomisation energies of small molecules, ionisation potentials, electron affinities, proton affinities); it is
+        - emphasis [ref=e305]: not
+        - text: a tight bound — the error on individual systems can be larger or smaller by a factor of two. The “when” column is the conventional wisdom about which method to default to in a calculation.
+      - paragraph [ref=e306]:
+        - text: Three caveats. First,
+        - emphasis [ref=e307]: none
+        - text: of these methods is uniformly better than DFT. The
+        - link "DFT+U / hybrid / GW methods of chapter 13" [ref=e308] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-13/
+        - text: are competitive with — and often cheaper than — MP2 or CCSD(T) for the materials-science problems they target. Second,
+        - emphasis [ref=e309]: all
+        - text: "of these methods are finite-basis: their convergence to the exact answer requires a"
+        - emphasis [ref=e310]: basis-set extrapolation
+        - text: (§ 14.7). The CCSD(T) error of
+        - img [ref=e312]
+        - text: is for a
+        - emphasis [ref=e335]: complete-basis-set
+        - text: calculation; in a triple-zeta basis it is closer to
+        - img [ref=e337]
+        - text: . Third,
+        - emphasis [ref=e358]: all
+        - text: of these methods have a
+        - emphasis [ref=e359]: systematic
+        - text: "’ failure mode: the single-reference assumption that underlies MP2, CCSD, and CCSD(T) breaks down for bond breaking, diradicals, and excited states of the same symmetry as the ground state — which is the topic of § 14.5. The rest of the chapter unpacks the ladder. We start with the perturbation-theory machinery that gives MP2 (§ 14.2), build the configuration-interaction hierarchy (§ 14.3) and its size-extensivity failure (§ 14.3.4), introduce the coupled-cluster exponential ansatz that fixes the failure (§ 14.4), survey the multireference methods for the problems that defeat single-reference theories (§ 14.5), and close with the semiempirical family (§ 14.6) and the basis-set extrapolation that any practical calculation must use to reach the “complete-basis-set” limit (§ 14.7)."
+      - heading "14.2 Møller–Plesset perturbation theory" [level=2] [ref=e360]
+      - paragraph [ref=e361]:
+        - text: Møller–Plesset perturbation theory is the simplest wavefunction-based correction of Hartree–Fock. The
+        - emphasis [ref=e362]: zeroth order
+        - text: is HF; the first order reproduces the HF energy exactly (the perturbation is by construction zero at first order); the
+        - emphasis [ref=e363]: second order
+        - text: — MP2 — is the first non-trivial correction, and is a
+        - img [ref=e365]
+        - text: sum over pairs of occupied and pairs of virtual orbitals. MP2 is the cheapest method that captures
+        - emphasis [ref=e380]: dynamic correlation
+        - text: — the short-range electron-electron cusp that HF misses — and is the default in many production codes for systems too large for CCSD(T).
+      - heading "14.2.1 Rayleigh–Schrödinger perturbation theory" [level=3] [ref=e381]
+      - paragraph [ref=e382]:
+        - text: The starting point is the
+        - emphasis [ref=e383]: Rayleigh–Schrödinger
+        - text: perturbation theory (RSPT) of non-degenerate quantum mechanics. Split the Hamiltonian as
+      - img [ref=e385]
+      - paragraph [ref=e422]:
+        - text: where
+        - img [ref=e424]
+        - text: has a
+        - emphasis [ref=e441]: known
+        - text: spectrum,
+        - img [ref=e443]
+        - text: is the
+        - strong [ref=e452]: perturbation
+        - text: ", and"
+        - img [ref=e454]
+        - text: is a book-keeping parameter (set to
+        - img [ref=e460]
+        - text: at the end). The energy and eigenstate are power series in
+        - img [ref=e466]
+        - text: ":"
+      - img [ref=e472]
+      - paragraph [ref=e609]:
+        - text: Substituting into
+        - img [ref=e611]
+        - text: and collecting powers of
+        - img [ref=e663]
+        - text: gives the recursion
+      - img [ref=e669]
+      - paragraph [ref=e808]:
+        - text: solved by inverting
+        - img [ref=e810]
+        - text: on the orthogonal complement of
+        - img [ref=e844]
+        - text: . The first three energy corrections, obtained by projecting onto
+        - img [ref=e862]
+        - text: ", are"
+      - paragraph [ref=e879]:
+        - img [ref=e881]
+        - img [ref=e941]
+        - img [ref=e993]
+      - paragraph [ref=e1127]:
+        - text: The sum in
+        - img [ref=e1129]:
+          - link [ref=e1132] [cursor=pointer]:
+            - /url: "#"
+        - text: is over all
+        - emphasis [ref=e1141]: other
+        - text: eigenstates of
+        - img [ref=e1143]
+        - text: ; the sign is
+        - emphasis [ref=e1160]: negative
+        - text: (denominator negative for the ground state, numerator positive). The first-order wavefunction correction is
+      - img [ref=e1162]
+      - paragraph [ref=e1274]:
+        - text: The
+        - img [ref=e1276]
+        - text: "-th order correction is a"
+        - emphasis [ref=e1281]: product
+        - text: of
+        - img [ref=e1283]
+        - text: matrix elements of
+        - img [ref=e1289]
+        - text: divided by products of energy denominators. At
+        - emphasis [ref=e1298]: "thir`d"
+        - text: ’ order the formula contains
+        - img [ref=e1300]
+        - text: contracted with
+        - img [ref=e1318]
+        - text: and so on. This is the structure of the
+        - strong [ref=e1342]: Møller–Plesset series
+        - text: in the next section.
+      - heading "14.2.2 The Møller–Plesset partition" [level=3] [ref=e1343]
+      - paragraph [ref=e1344]:
+        - text: The
+        - strong [ref=e1345]: Møller–Plesset
+        - text: choice of
+        - img [ref=e1347]
+        - text: is the
+        - strong [ref=e1364]: Fock operator
+        - img [ref=e1366]
+        - text: of
+        - link "chapter 03" [ref=e1375] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: . The perturbation is the
+        - emphasis [ref=e1376]: fluctuation potential
+        - text: — the part of the true two-electron interaction that is
+        - emphasis [ref=e1377]: not
+        - text: captured by the mean-field Fock operator. Explicitly,
+      - paragraph [ref=e1378]:
+        - img [ref=e1380]
+        - img [ref=e1408]
+      - paragraph [ref=e1461]:
+        - text: The zeroth-order eigenstates of
+        - img [ref=e1463]
+        - text: are the
+        - emphasis [ref=e1472]: Slater determinants
+        - img [ref=e1474]
+        - text: built from the HF orbitals, and the zeroth-order energies are the
+        - emphasis [ref=e1486]: sums
+        - text: of the orbital energies,
+      - img [ref=e1488]
+      - paragraph [ref=e1556]:
+        - text: For the
+        - emphasis [ref=e1557]: HF determinant
+        - img [ref=e1559]
+        - text: the occupied set is the
+        - img [ref=e1572]
+        - text: lowest spin-orbitals and the unoccupied set is the rest. The orbital energies are the eigenvalues of
+        - img [ref=e1578]
+        - text: .
+      - paragraph [ref=e1587]:
+        - text: The first-order energy correction is, by
+        - img [ref=e1589]:
+          - link [ref=e1592] [cursor=pointer]:
+            - /url: "#"
+        - text: ","
+      - img [ref=e1602]
+      - paragraph [ref=e1703]:
+        - text: Subtracting
+        - img [ref=e1705]:
+          - link [ref=e1708] [cursor=pointer]:
+            - /url: "#"
+        - text: from
+        - img [ref=e1718]:
+          - link [ref=e1721] [cursor=pointer]:
+            - /url: "#"
+        - text: gives the
+        - strong [ref=e1730]: sum of zeroth- and first- order
+        - text: energies,
+      - paragraph [ref=e1731]:
+        - img [ref=e1733]:
+          - generic [ref=e1737]:
+            - img [ref=e1738]
+            - img [ref=e1881]
+      - paragraph [ref=e1889]:
+        - text: The HF energy is
+        - emphasis [ref=e1890]: exact
+        - text: through first order in the Møller–Plesset perturbation series. This is the
+        - strong [ref=e1891]: Brillouin condition
+        - text: "at work: the HF energy is a"
+        - emphasis [ref=e1892]: stationary
+        - text: point of
+        - img [ref=e1894]
+        - text: with respect to orbital rotations, and the
+        - emphasis [ref=e1905]: first-order
+        - text: change in the energy under a rotation of an occupied orbital into a virtual (or vice versa) vanishes. The
+        - emphasis [ref=e1906]: first non-trivial
+        - text: correction is therefore
+        - emphasis [ref=e1907]: second order
+        - text: ": this is MP2."
+        - strong [ref=e1908]: Derivation of MP2.
+        - text: Substituting
+        - img [ref=e1910]:
+          - link [ref=e1913] [cursor=pointer]:
+            - /url: "#"
+        - text: with
+        - img [ref=e1923]
+        - text: and using the
+        - emphasis [ref=e1948]: intermediate normalisation
+        - img [ref=e1950]
+        - text: (so
+        - img [ref=e1972]
+        - text: has no component along
+        - img [ref=e1990]
+        - text: ) gives
+      - img [ref=e2003]
+      - paragraph [ref=e2096]:
+        - text: The matrix element
+        - img [ref=e2098]
+        - text: vanishes for
+        - emphasis [ref=e2125]: all
+        - img [ref=e2127]
+        - text: by the Brillouin condition (
+        - link "chapter 03" [ref=e2136] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: "§ 3.3):"
+        - img [ref=e2138]
+        - text: is a
+        - emphasis [ref=e2147]: one-body
+        - text: operator, so its matrix element between two determinants that differ by a single spin-orbital is
+        - emphasis [ref=e2148]: zero
+        - text: (the action of
+        - img [ref=e2150]
+        - text: on a single occupied orbital returns a
+        - emphasis [ref=e2159]: virtual
+        - text: ", by the Fock eigenvalue equation, which is then orthogonal to all the"
+        - emphasis [ref=e2160]: other
+        - text: orbitals in
+        - img [ref=e2162]
+        - text: ). The matrix element
+        - img [ref=e2175]
+        - text: vanishes for determinants that differ from
+        - img [ref=e2203]
+        - text: by more than a
+        - emphasis [ref=e2215]: double
+        - text: excitation, by the Slater–Condon rules (
+        - link "chapter 02" [ref=e2216] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: § 2.3). The
+        - emphasis [ref=e2217]: only
+        - text: determinants that contribute to
+        - img [ref=e2219]:
+          - link [ref=e2222] [cursor=pointer]:
+            - /url: "#"
+        - text: are therefore the
+        - emphasis [ref=e2231]: doubles
+        - img [ref=e2233]
+        - text: ", where two occupied spin-orbitals"
+        - img [ref=e2254]
+        - text: have been promoted to two virtual spin-orbitals
+        - img [ref=e2268]
+        - text: .
+      - paragraph [ref=e2281]:
+        - text: The matrix element of
+        - img [ref=e2283]
+        - text: between
+        - img [ref=e2293]
+        - text: and a double
+        - img [ref=e2306]
+        - text: is, by the Slater–Condon rules,
+      - img [ref=e2327]
+      - paragraph [ref=e2414]:
+        - text: In the
+        - strong [ref=e2415]: physicists’
+        - text: notation (the bra-ket-with-two-pipes
+        - img [ref=e2417]
+        - text: ), this is the
+        - strong [ref=e2436]: antisymmetrised
+        - text: two-electron integral. In
+        - strong [ref=e2437]: chemists’
+        - text: notation (the ERI of the cheatsheet
+        - link "§ 13.3" [ref=e2438] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+        - text: ), the same integral is
+        - img [ref=e2440]
+        - text: .
+      - paragraph [ref=e2473]:
+        - text: The energy denominator in
+        - img [ref=e2475]:
+          - link [ref=e2478] [cursor=pointer]:
+            - /url: "#"
+        - text: for a double excitation
+        - img [ref=e2488]
+        - text: is
+      - img [ref=e2509]
+      - paragraph [ref=e2575]:
+        - text: The denominator is
+        - emphasis [ref=e2576]: negative
+        - text: (the virtuals have higher orbital energy than the occupieds); the square of the matrix element is positive; the ratio is therefore
+        - emphasis [ref=e2577]: negative
+        - text: — MP2 is a
+        - emphasis [ref=e2578]: stabilising
+        - text: correction. Putting the pieces together, the
+        - strong [ref=e2579]: MP2 correlation energy
+        - text: is
+      - img [ref=e2581]:
+        - generic [ref=e2621]:
+          - img [ref=e2624]
+          - img [ref=e2645]
+      - paragraph [ref=e2680]:
+        - text: The sums run over
+        - emphasis [ref=e2681]: pairs
+        - text: of occupied spin-orbitals and
+        - emphasis [ref=e2682]: pairs
+        - text: of virtual spin-orbitals. For a closed-shell system with
+        - img [ref=e2684]
+        - text: doubly-occupied spatial orbitals and
+        - img [ref=e2690]
+        - text: spatial basis functions (so
+        - img [ref=e2696]
+        - text: occupied and
+        - img [ref=e2704]
+        - text: virtual spin-orbitals), the number of terms in the sum is
+        - img [ref=e2720]
+        - text: ", and each term requires"
+        - emphasis [ref=e2754]: one
+        - text: ERI. The cost of the ERI evaluation is
+        - img [ref=e2756]
+        - text: ; the number of terms is
+        - img [ref=e2772]
+        - text: at fixed
+        - img [ref=e2788]
+        - text: (and
+        - img [ref=e2794]
+        - text: at fixed ratio
+        - img [ref=e2815]
+        - text: ). The MP2 energy is therefore
+        - img [ref=e2826]
+        - text: at fixed electron count, and the MP2
+        - emphasis [ref=e2841]: gradient
+        - text: (the derivative with respect to nuclear coordinates, needed for geometry optimisation) is
+        - img [ref=e2843]
+        - text: — also fifth order in
+        - img [ref=e2861]
+        - text: ", but with a different prefactor."
+      - paragraph [ref=e2866]:
+        - strong [ref=e2867]: Worked step — the spin-free form.
+        - text: For a
+        - emphasis [ref=e2868]: closed-shell
+        - text: system, the spin-summed form of
+        - img [ref=e2870]:
+          - link [ref=e2873] [cursor=pointer]:
+            - /url: "#"
+        - text: is
+      - img [ref=e2883]
+      - paragraph [ref=e3007]:
+        - text: where
+        - img [ref=e3009]
+        - text: now run over
+        - emphasis [ref=e3018]: spatial
+        - text: occupied orbitals,
+        - img [ref=e3020]
+        - text: over
+        - emphasis [ref=e3029]: spatial
+        - text: virtual orbitals, and the factor
+        - img [ref=e3031]
+        - text: arises from the spin sum (a spin-orbital double excitation
+        - img [ref=e3037]
+        - text: in
+        - img [ref=e3079]
+        - text: plus a corresponding
+        - img [ref=e3093]
+        - text: contribution, and the two contributions combine to give the
+        - img [ref=e3107]
+        - text: factor). The energy denominator in
+        - img [ref=e3115]:
+          - link [ref=e3118] [cursor=pointer]:
+            - /url: "#"
+        - text: is
+        - img [ref=e3128]
+        - text: in
+        - emphasis [ref=e3157]: spatial
+        - text: orbital energies (the factor of
+        - img [ref=e3159]
+        - text: from spin has already been accounted for).
+      - blockquote [ref=e3164]:
+        - paragraph [ref=e3165]:
+          - strong [ref=e3166]: Tip.
+          - text: The MP2 formula
+          - img [ref=e3168]:
+            - link [ref=e3171] [cursor=pointer]:
+              - /url: "#"
+          - text: is a
+          - emphasis [ref=e3180]: sum over pairs
+          - text: . This is the source of its
+          - img [ref=e3182]
+          - text: cost and also of its
+          - emphasis [ref=e3197]: size consistency
+          - text: "(§ 14.2.4): for two non-interacting fragments A and B, the MP2 energy is the"
+          - emphasis [ref=e3198]: sum
+          - text: of the MP2 energies of the two fragments separately, because the cross terms vanish in the absence of interactions between A and B. CISD does
+          - emphasis [ref=e3199]: not
+          - text: have this property, which is the
+          - emphasis [ref=e3200]: defining
+          - text: failure mode of truncated CI (§ 14.3.4).
+      - 'heading "14.2.3 Higher orders: MP3 and MP4" [level=3] [ref=e3201]'
+      - paragraph [ref=e3202]:
+        - text: The MP2 formula
+        - img [ref=e3204]:
+          - link [ref=e3207] [cursor=pointer]:
+            - /url: "#"
+        - text: is a
+        - emphasis [ref=e3216]: second-order
+        - text: energy correction. The full Møller–Plesset series is
+        - img [ref=e3218]
+        - text: ", where"
+        - img [ref=e3272]
+        - text: is the
+        - img [ref=e3286]
+        - text: "-th order correction. The corrections are"
+        - emphasis [ref=e3291]: increasingly expensive
+        - text: and not monotonically* more accurate — the Møller–Plesset series is
+        - emphasis [ref=e3292]:
+          - text: asymptoti
+          - code [ref=e3293]: c*
+          - text: ", not convergent. For most properties the series *alternates"
+        - text: ": MP2 over-corrects, MP3 partially re-cancels, MP4 re-corrects. In practice MP2, MP3, and MP4 are all used; MP5 and beyond are"
+        - emphasis [ref=e3294]: not
+        - text: — the cost grows too fast and the convergence is too slow.
+      - paragraph [ref=e3295]:
+        - strong [ref=e3296]: MP3.
+        - text: The third-order Møller–Plesset correction is the
+        - emphasis [ref=e3297]: first
+        - text: correction that contains a quadratic* term in the perturbation. Using the recursion
+        - img [ref=e3299]:
+          - link [ref=e3302] [cursor=pointer]:
+            - /url: "#"
+        - text: at
+        - img [ref=e3312]
+        - text: and the Slater–Condon rules,
+      - img [ref=e3322]
+      - paragraph [ref=e3544]:
+        - text: The dominant cost in
+        - img [ref=e3546]:
+          - link [ref=e3549] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - emphasis [ref=e3558]: triple
+        - text: sum over determinants
+        - img [ref=e3560]
+        - text: ","
+        - img [ref=e3566]
+        - text: that are reachable from
+        - img [ref=e3572]
+        - text: by a double excitation (the only non-zero
+        - img [ref=e3585]
+        - text: matrix elements at zeroth order). The sum has
+        - img [ref=e3595]
+        - text: terms and the cost is
+        - img [ref=e3611]
+        - text: at fixed electron count. The MP3
+        - emphasis [ref=e3626]: correction
+        - text: to MP2 is small — typically a few tens of percent of the MP2 correction, in the opposite direction. The MP3 result is therefore
+        - emphasis [ref=e3627]: not
+        - text: much better than MP2 in absolute terms, and is
+        - emphasis [ref=e3628]: not
+        - text: size-consistent in the
+        - emphasis [ref=e3629]: open-shell
+        - text: case (UHF reference) — a structural failure that limits its use.
+      - paragraph [ref=e3630]:
+        - strong [ref=e3631]: MP4 and the SDTQ partition.
+        - text: The fourth-order correction is, in the standard partition,
+      - img [ref=e3633]
+      - paragraph [ref=e3701]:
+        - text: The four terms are the
+        - strong [ref=e3702]: singles
+        - text: ","
+        - strong [ref=e3703]: doubles
+        - text: ","
+        - strong [ref=e3704]: quadruples
+        - text: ", and"
+        - strong [ref=e3705]: triples
+        - text: contributions. The singles contribution
+        - img [ref=e3707]
+        - text: vanishes for an HF reference (Brillouin condition). The doubles contribution
+        - img [ref=e3723]
+        - text: cancels the
+        - emphasis [ref=e3738]: size-inconsistency
+        - text: of MP3 in the closed-shell case, restoring the property. The quadruples contribution
+        - img [ref=e3740]
+        - text: is a
+        - emphasis [ref=e3755]: product
+        - text: of two double-excitation amplitudes and is computationally similar to MP3. The
+        - strong [ref=e3756]: triples contribution
+        - img [ref=e3758]
+        - text: is the first place in the Møller–Plesset series that
+        - emphasis [ref=e3773]: triple
+        - text: excitations enter, and is the largest single term in MP4 beyond MP3.
+        - strong [ref=e3774]: Why MP2 is the most popular.
+        - text: The cost-accuracy trade-off favours MP2. MP2 is
+        - img [ref=e3776]
+        - text: and gives
+        - img [ref=e3792]
+        - text: of the correlation energy on average; MP3 is
+        - img [ref=e3803]
+        - text: and gives
+        - img [ref=e3819]
+        - text: ; MP4 is
+        - img [ref=e3830]
+        - text: and gives
+        - img [ref=e3846]
+        - text: ; CCSD(T) is
+        - img [ref=e3857]
+        - text: and gives
+        - img [ref=e3873]
+        - text: . The
+        - emphasis [ref=e3885]: last factor
+        - text: of two in accuracy (from MP4 to CCSD(T)) is what the next section is about. In production, MP2 is the
+        - emphasis [ref=e3886]: default
+        - text: for systems with
+        - img [ref=e3888]
+        - text: –
+        - img [ref=e3897]
+        - text: atoms; for smaller systems (
+        - img [ref=e3905]
+        - text: atoms) CCSD(T) is feasible; for larger systems DFT is the only option.
+      - heading "14.2.4 Size consistency" [level=3] [ref=e3913]
+      - paragraph [ref=e3914]:
+        - text: A method is
+        - strong [ref=e3915]: size consistent
+        - text: if the energy of two non-interacting fragments equals the sum of the energies of the fragments computed separately. Formally, for two fragments A and B separated by an infinite distance,
+      - img [ref=e3917]
+      - paragraph [ref=e3962]:
+        - text: MP2
+        - emphasis [ref=e3963]: is
+        - text: size consistent. The MP2 energy
+        - img [ref=e3965]:
+          - link [ref=e3968] [cursor=pointer]:
+            - /url: "#"
+        - text: is a
+        - emphasis [ref=e3977]: sum
+        - text: "over pairs of occupied* orbitals: for a supermolecule A"
+        - img [ref=e3979]
+        - text: B, the occupied orbitals split into those localised on A and those localised on B (in the limit
+        - img [ref=e3985]
+        - text: ), the
+        - emphasis [ref=e3994]: cross
+        - text: terms A–B in the pair sum vanish because the integrals
+        - img [ref=e3996]
+        - text: are exponentially small at large separation, and the energy is the
+        - emphasis [ref=e4035]: sum
+        - text: of the A-only and B-only pair sums. This is the same argument that gives the
+        - emphasis [ref=e4036]: additivity
+        - text: of the dispersion energy in the large-
+        - img [ref=e4038]
+        - text: limit, and is
+        - emphasis [ref=e4043]: exactly
+        - text: the property one wants for a non-covalent complex.
+      - paragraph [ref=e4044]:
+        - text: CISD is
+        - emphasis [ref=e4045]: not
+        - text: size consistent. The truncated-CI wavefunction is a
+        - emphasis [ref=e4046]: linear combination
+        - text: of determinants with a fixed excitation ran
+        - code [ref=e4047]: k*
+        - text: ": doubles, in the case of CISD. The doubles space of A"
+        - img [ref=e4049]
+        - text: B includes
+        - emphasis [ref=e4054]: cross excitations
+        - text: that excite one electron on A and one on B
+        - emphasis [ref=e4055]: simultaneously
+        - text: ", and the linear coefficient of these cross-doubles is"
+        - emphasis [ref=e4056]: not
+        - text: the product of the coefficients of the corresponding single-fragment doubles. The result is that the CISD energy of A
+        - img [ref=e4058]
+        - text: B at
+        - img [ref=e4064]
+        - text: is
+        - emphasis [ref=e4073]: not
+        - text: the sum of the CISD energies of A and B; the
+        - emphasis [ref=e4074]: missing
+        - text: part is the
+        - strong [ref=e4075]: size-extensivity error
+        - text: of § 14.3.4. This is the
+        - emphasis [ref=e4076]: defining
+        - text: failure of truncated CI and the reason the post-HF ladder has CISD and CCSD at the
+        - emphasis [ref=e4077]: same cost
+        - text: (both
+        - img [ref=e4079]
+        - text: ) but only CCSD is size consistent.
+      - blockquote [ref=e4094]:
+        - paragraph [ref=e4095]:
+          - strong [ref=e4096]: Tip.
+          - text: Size consistency is
+          - emphasis [ref=e4097]: one
+          - text: of the two formal properties a post-HF method should have. The other is
+          - strong [ref=e4098]: size extensivity
+          - text: ": the energy should scale"
+          - emphasis [ref=e4099]: linearly
+          - text: with the number of particles in the
+          - emphasis [ref=e4100]: uniform
+          - text: limit. Size consistency is a
+          - emphasis [ref=e4101]: non-uniform
+          - text: limit (two
+          - emphasis [ref=e4102]: separate
+          - text: fragments at
+          - img [ref=e4104]
+          - text: ); size extensivity is the
+          - emphasis [ref=e4113]: uniform
+          - text: "limit. The two are related but not identical: a method can be size consistent but not size extensive (e.g. truncated CI on a chain of non-interacting atoms). MP2, CCSD, CCSD(T), and FCI are"
+          - emphasis [ref=e4114]: "bot`h"
+          - text: ’ size consistent and size extensive. CISD is neither.
+      - heading "14.3 Configuration interaction" [level=2] [ref=e4115]
+      - paragraph [ref=e4116]:
+        - text: Configuration interaction (CI) is the
+        - emphasis [ref=e4117]: most direct
+        - text: "way to improve on Hartree–Fock: take the HF determinant as the"
+        - emphasis [ref=e4118]: reference
+        - text: ", and linearly combine it with all the determinants that can be reached by a finite number of single, double, … excitations. The"
+        - strong [ref=e4119]: full CI
+        - text: is the exact answer in the chosen one-particle basis; truncated CI (CIS, CID, CISD) is a
+        - emphasis [ref=e4120]: "systemati`c"
+        - text: ’ approximation that converges to FCI as the truncation level is raised. The
+        - emphasis [ref=e4121]: defining
+        - text: weakness of truncated CI is its lack of size extensivity (§ 14.3.4) — the property that coupled cluster recovers by replacing the linear ansatz with an
+        - emphasis [ref=e4122]: exponential
+        - text: one (§ 14.4).
+      - heading "14.3.1 Full CI" [level=3] [ref=e4123]
+      - paragraph [ref=e4124]:
+        - text: The
+        - strong [ref=e4125]: full CI
+        - text: wavefunction is the
+        - emphasis [ref=e4126]: exact
+        - text: ground state in the chosen one-particle basis,
+      - img [ref=e4128]
+      - paragraph [ref=e4166]:
+        - text: where the sum runs over
+        - emphasis [ref=e4167]: all
+        - text: Slater determinants
+        - img [ref=e4169]
+        - text: that can be built from the
+        - img [ref=e4182]
+        - text: spin-orbitals of the basis, and the coefficients
+        - img [ref=e4188]
+        - text: are determined by diagonalising the Hamiltonian in the space of
+        - emphasis [ref=e4200]: all
+        - text: determinants. The full CI energy is the lowest eigenvalue of the CI matrix
+        - img [ref=e4202]
+        - text: ", a"
+        - img [ref=e4241]
+        - text: Hermitian matrix with
+      - img [ref=e4251]
+      - paragraph [ref=e4272]:
+        - text: where
+        - img [ref=e4274]
+        - text: is the number of electrons. For a closed-shell system with
+        - img [ref=e4280]
+        - text: electrons in
+        - img [ref=e4292]
+        - text: spatial orbitals,
+        - img [ref=e4298]
+        - text: ; for
+        - img [ref=e4321]
+        - text: (a moderate basis) and
+        - img [ref=e4332]
+        - text: (a small molecule),
+        - img [ref=e4343]
+        - text: . The
+        - emphasis [ref=e4358]: "asymptoti`c"
+        - text: ’ scaling of full CI is therefore
+      - img [ref=e4360]
+      - paragraph [ref=e4406]:
+        - text: which is
+        - strong [ref=e4407]: exponential
+        - text: in the number of electrons. Full CI is
+        - emphasis [ref=e4408]: never
+        - text: feasible for production use; it is the
+        - emphasis [ref=e4409]:
+          - text: benchmar
+          - code [ref=e4410]: k*' against which every approximate method is calibrated. Every other method in this chapter is a *systemati
+          - text: c
+        - text: ’ approximation to it.
+      - heading "14.3.2 Truncated CI" [level=3] [ref=e4411]
+      - paragraph [ref=e4412]:
+        - text: Truncated CI is a
+        - emphasis [ref=e4413]: truncation
+        - text: of the full-CI expansion
+        - img [ref=e4415]:
+          - link [ref=e4418] [cursor=pointer]:
+            - /url: "#"
+        - text: to determinants of excitation rank
+        - img [ref=e4428]
+        - text: . The standard abbreviations are
+      - paragraph [ref=e4440]:
+        - img [ref=e4442]
+        - img [ref=e4504]
+        - img [ref=e4566]
+        - img [ref=e4649]
+        - img [ref=e4753]
+      - paragraph [ref=e4880]:
+        - text: where the
+        - strong [ref=e4881]: excitation operators
+        - img [ref=e4883]
+        - text: create
+        - img [ref=e4896]
+        - text: "-fold excitations out of the HF reference,"
+        - img [ref=e4902]
+        - text: . The number of
+        - emphasis [ref=e5007]: "doubly-excite`d"
+        - text: ’ determinants is
+        - img [ref=e5009]
+        - text: at fixed electron count; the
+        - emphasis [ref=e5024]: triples
+        - text: is
+        - img [ref=e5026]
+        - text: ; the quadruples is
+        - img [ref=e5042]
+        - text: . The number of
+        - emphasis [ref=e5057]: singles
+        - text: is
+        - img [ref=e5059]
+        - text: and is negligible.
+      - paragraph [ref=e5074]:
+        - text: The
+        - strong [ref=e5075]: CISD energy
+        - text: is the lowest eigenvalue of the Hamiltonian matrix in the space spanned by
+        - img [ref=e5077]
+        - text: . The matrix is
+        - emphasis [ref=e5134]: sparse
+        - text: ": only determinants that differ by"
+        - img [ref=e5136]
+        - text: orbital promotions have non-zero off-diagonal matrix elements, by the Slater–Condon rules. The
+        - emphasis [ref=e5143]: singles–doubles
+        - text: block has
+        - img [ref=e5145]
+        - text: non-zero entries; the diagonalisation cost is
+        - img [ref=e5161]
+        - text: . In production this is the bottleneck of
+        - emphasis [ref=e5176]: direct-CISD
+        - text: ", which avoids storing the full matrix and evaluates the matrix-vector product on the fly."
+      - paragraph [ref=e5177]:
+        - strong [ref=e5178]: The Brillouin condition revisited.
+        - text: The single-excitation block of the CI matrix is
+        - emphasis [ref=e5179]: "decouple`d"
+        - text: ’ from the doubles block at first order (Brillouin condition), so the singles contribute
+        - emphasis [ref=e5180]: only
+        - text: to the first-order orbital relaxation and the doubles contribute the
+        - emphasis [ref=e5181]: correlation
+        - text: energy. CIS alone gives
+        - emphasis [ref=e5182]: "no"
+        - text: correlation energy — the orbital-rotation off-diagonal vanishes at the HF solution. CIS is the
+        - emphasis [ref=e5183]: configuration-interaction analogue
+        - text: of time-dependent Hartree–Fock for the
+        - emphasis [ref=e5184]: excited states
+        - text: (§ 12 in chapter 12).
+      - blockquote [ref=e5185]:
+        - paragraph [ref=e5186]:
+          - strong [ref=e5187]: Tip.
+          - text: The singles excitations in CISD enter the
+          - emphasis [ref=e5188]: "couple`d"
+          - text: ’ singles–doubles block and shift the doubles energies by
+          - img [ref=e5190]
+          - text: per determinant. The singles contribution to the
+          - emphasis [ref=e5205]: correlation
+          - text: energy is therefore non-zero in CISD, in contrast to MP2 where the singles block is decoupled — a
+          - emphasis [ref=e5206]: subtle
+          - text: difference that can be quantitatively significant for open-shell systems.
+      - heading "14.3.3 The Davidson algorithm" [level=3] [ref=e5207]
+      - paragraph [ref=e5208]:
+        - text: The
+        - emphasis [ref=e5209]: full
+        - text: diagonalisation of the CI matrix is
+        - img [ref=e5211]
+        - text: in the
+        - emphasis [ref=e5226]: number of determinants
+        - img [ref=e5228]
+        - text: ", and is therefore"
+        - emphasis [ref=e5233]: infeasible
+        - text: for the large CI spaces of production calculations (
+        - img [ref=e5235]
+        - text: ). The standard fix is the
+        - strong [ref=e5248]: Davidson algorithm
+        - text: ", an"
+        - emphasis [ref=e5249]: iterative
+        - text: subspace eigensolver that exploits the
+        - emphasis [ref=e5250]: sparsity
+        - text: "of the CI matrix. The Davidson algorithm is to large-CI calculations what the SCF iteration is to HF: the inner loop that makes the calculation tractable."
+      - paragraph [ref=e5251]:
+        - text: The Davidson algorithm builds a
+        - emphasis [ref=e5252]: subspace
+        - img [ref=e5254]
+        - text: of trial vectors and diagonalises
+        - img [ref=e5276]
+        - text: in the subspace. The
+        - emphasis [ref=e5282]: exact
+        - text: eigenvector is approximated by a
+        - emphasis [ref=e5283]: linear combination
+        - text: of the trial vectors; the subspace is enlarged at each iteration by a
+        - emphasis [ref=e5284]: correction vector
+        - text: built from the
+        - emphasis [ref=e5285]: residual
+        - img [ref=e5287]
+        - text: . The correction is the
+        - strong [ref=e5309]: Davidson correction
+      - img [ref=e5311]
+      - paragraph [ref=e5352]:
+        - text: where
+        - img [ref=e5354]
+        - text: is the index of the
+        - emphasis [ref=e5359]: dominant
+        - text: component of the current eigenvector
+        - img [ref=e5361]
+        - text: ","
+        - img [ref=e5368]
+        - text: is the diagonal matrix element, and
+        - img [ref=e5380]
+        - text: is the current eigenvalue. The new correction vector is orthogonalised against the existing subspace, the subspace is enlarged by one, and the diagonalisation is repeated. Convergence is typically
+        - emphasis [ref=e5393]: "quadrati`c"
+        - text: ’ in the residual norm once the
+        - emphasis [ref=e5394]: correct
+        - text: eigenvalue is bracketed, and is cubic* in the
+        - emphasis [ref=e5395]: root
+        - text: difference (the gap between the target root and the next one).
+      - paragraph [ref=e5396]:
+        - text: The cost of one Davidson iteration is dominated by the matrix-vector product
+        - img [ref=e5398]
+        - text: ", which is"
+        - img [ref=e5408]
+        - text: where
+        - img [ref=e5429]
+        - text: is the
+        - emphasis [ref=e5438]: number of non-zero
+        - text: entries per row of
+        - img [ref=e5440]
+        - text: . For the doubles space of a CISD,
+        - img [ref=e5447]
+        - text: ", and the product is"
+        - img [ref=e5464]
+        - text: at fixed
+        - img [ref=e5496]
+        - text: ratio. The total cost of the Davidson algorithm is the cost of one matrix-vector product times the number of iterations, which is typically
+        - img [ref=e5510]
+        - text: –
+        - img [ref=e5519]
+        - text: . In the
+        - strong [ref=e5525]: direct-CI
+        - text: formalism the matrix-vector product is
+        - emphasis [ref=e5526]: evaluated on the fly
+        - text: without ever forming
+        - img [ref=e5528]
+        - text: explicitly; this is the algorithm used in production codes (e.g. the
+        - strong [ref=e5534]: Dirac-Fock
+        - text: programme, the
+        - strong [ref=e5535]: PSI4
+        - strong [ref=e5536]: detci
+        - text: module, the
+        - strong [ref=e5537]: CFOUR
+        - strong [ref=e5538]: ecplib
+        - text: ).
+      - blockquote [ref=e5539]:
+        - paragraph [ref=e5540]:
+          - strong [ref=e5541]: Tip.
+          - text: The Davidson algorithm is
+          - emphasis [ref=e5542]: exact
+          - text: in exact arithmetic — it converges to the
+          - emphasis [ref=e5543]: "true"
+          - text: eigenvalue of
+          - img [ref=e5545]
+          - text: as the subspace grows. The only approximation is the
+          - emphasis [ref=e5551]: preconditioner
+          - text: of
+          - img [ref=e5553]:
+            - link [ref=e5556] [cursor=pointer]:
+              - /url: "#"
+          - text: ": the diagonal approximation"
+          - img [ref=e5566]
+          - text: for the inverse of
+          - img [ref=e5590]
+          - text: . A better preconditioner (e.g. the
+          - strong [ref=e5608]: OLSEN
+          - text: correction, which includes the singles and the most important doubles) accelerates convergence but does not change the converged answer. In production the Davidson algorithm is used for
+          - emphasis [ref=e5609]: all
+          - text: "large-CI calculations: CISD, CISDT, the FCI quantum Monte Carlo of § 14.5.4, and the equation-of-motion CC of § 14.12. ### 14.3.4 The size-extensivity error"
+      - paragraph [ref=e5610]:
+        - text: The defining failure of truncated CI is its
+        - emphasis [ref=e5611]: "lac`k"
+        - text: "’ of size extensivity. We illustrate with the simplest non-trivial example: two non-interacting He atoms at infinite separation. Each He atom has 2 electrons in 2 spin-orbitals (occupied"
+        - img [ref=e5613]
+        - text: ","
+        - img [ref=e5623]
+        - text: ); the dimer has 4 electrons in 4 spin-orbitals.
+      - paragraph [ref=e5632]:
+        - text: The FCI space of one He atom has
+        - img [ref=e5634]
+        - text: "determinants: the closed-shell"
+        - img [ref=e5661]
+        - text: ", the singles"
+        - img [ref=e5681]
+        - text: and
+        - img [ref=e5722]
+        - text: ", and the double"
+        - img [ref=e5763]
+        - text: . The FCI ground state is the closed-shell determinant
+        - img [ref=e5834]
+        - text: ", with energy"
+        - img [ref=e5854]
+        - text: . The FCI space of the dimer has
+        - img [ref=e5879]
+        - text: determinants; the FCI ground state is the
+        - emphasis [ref=e5906]: product
+        - text: of the two atomic FCI states,
+        - img [ref=e5908]
+        - text: . The size-consistency relation
+        - img [ref=e5942]:
+          - link [ref=e5945] [cursor=pointer]:
+            - /url: "#"
+        - text: is
+        - emphasis [ref=e5954]: "satisfie`d"
+        - text: ’ by FCI, by construction.
+      - paragraph [ref=e5955]:
+        - text: The CISD space of He has
+        - img [ref=e5957]
+        - text: determinants, and the CISD energy
+        - emphasis [ref=e5974]: equals
+        - text: the FCI energy of He (the doubles
+        - emphasis [ref=e5975]: exhaust
+        - text: the FCI space for two-electron systems). The interesting case is the
+        - emphasis [ref=e5976]: dimer
+        - text: ": the CISD space of the dimer has"
+        - emphasis [ref=e5977]: cross-doubles
+        - text: that excite one electron on atom A and one on atom B
+        - emphasis [ref=e5978]: simultaneously
+        - text: ; these cross-doubles are not the product of atomic doubles, and their coefficients are
+        - emphasis [ref=e5979]: not
+        - text: the product of the atomic double coefficients, even at
+        - img [ref=e5981]
+        - text: . The CISD energy of the He dimer at
+        - img [ref=e5991]
+        - text: is
+      - img [ref=e6001]
+      - paragraph [ref=e6051]:
+        - text: where the
+        - strong [ref=e6052]: size-extensivity error
+        - img [ref=e6054]
+        - text: arises from the
+        - emphasis [ref=e6063]: normalisation
+        - text: of the truncated-CI wavefunction. Quantitatively,
+      - img [ref=e6065]
+      - paragraph [ref=e6128]:
+        - text: where
+        - img [ref=e6130]
+        - text: is the number of fragments,
+        - img [ref=e6136]
+        - text: the doubles amplitude, and
+        - img [ref=e6145]
+        - text: the second-order correlation energy per fragment. The error is
+        - emphasis [ref=e6163]: negative
+        - text: (CISD over-correlates at large
+        - img [ref=e6165]
+        - text: ) and grows
+        - emphasis [ref=e6170]: linearly
+        - text: with
+        - img [ref=e6172]
+        - text: . For a system of
+        - img [ref=e6178]
+        - text: non-interacting He atoms, the CISD error is
+        - emphasis [ref=e6188]:
+          - text: proportional to
+          - img [ref=e6190]
+        - text: ", and the per-atom error is"
+        - emphasis [ref=e6195]: constant
+        - text: — the energy per atom converges to a wrong value* in the thermodynamic limit. This is the
+        - emphasis [ref=e6196]: defining
+        - text: failure of truncated CI.
+      - blockquote [ref=e6197]:
+        - paragraph [ref=e6198]:
+          - strong [ref=e6199]: Tip.
+          - text: The size-extensivity error of CISD can be
+          - emphasis [ref=e6200]: approximately
+          - text: fixed by the
+          - strong [ref=e6201]: Davidson correction
+          - img [ref=e6203]
+          - text: ", defined as"
+          - img [ref=e6209]
+          - text: ", where"
+          - img [ref=e6254]
+          - text: is the coefficient of the reference determinant. The Davidson correction
+          - emphasis [ref=e6262]: renormalises
+          - text: the CISD energy to the
+          - emphasis [ref=e6263]:
+            - text: expecte
+            - code [ref=e6264]: d*' correlation energy in the small-$c_0$ limit, and is the standard *empirical* fix in the **G1 / G2 / G3** composite methods of § 14.7. It is a *patc
+            - text: h
+          - text: "`, not a substitute for the"
+          - emphasis [ref=e6265]: exact
+          - text: size extensivity of CCSD / CCSD(T).
+      - heading "14.4 Coupled cluster theory" [level=2] [ref=e6266]
+      - paragraph [ref=e6267]:
+        - text: Coupled cluster (CC) theory fixes the size-extensivity failure of truncated CI by replacing the
+        - emphasis [ref=e6268]: linear
+        - text: CI ansatz with an
+        - emphasis [ref=e6269]: exponential
+        - text: one. The CC wavefunction is
+        - img [ref=e6271]
+        - text: ", where"
+        - img [ref=e6311]
+        - text: is the
+        - strong [ref=e6357]: cluster operator
+        - text: ", a sum of"
+        - emphasis [ref=e6358]: excitation operators
+        - text: of all ranks. The exponential ansatz is the
+        - emphasis [ref=e6359]: defining
+        - text: "trick of CC theory: it makes the energy"
+        - emphasis [ref=e6360]: size extensive
+        - text: at
+        - emphasis [ref=e6361]: every
+        - text: truncation level (CCSD, CCSDT, …), at the price of solving a
+        - emphasis [ref=e6362]: non-linear
+        - text: set of amplitude equations (§ 14.4.2) instead of a linear eigenvalue problem.
+      - heading "14.4.1 The exponential ansatz" [level=3] [ref=e6363]
+      - paragraph [ref=e6364]:
+        - text: The
+        - strong [ref=e6365]: CC ansatz
+        - text: is
+      - img [ref=e6367]
+      - paragraph [ref=e6448]:
+        - text: The
+        - strong [ref=e6449]: cluster operators
+        - img [ref=e6451]
+        - text: create
+        - img [ref=e6464]
+        - text: "-fold excitations out of the reference"
+        - img [ref=e6470]
+        - text: ","
+      - paragraph [ref=e6482]:
+        - img [ref=e6484]
+        - img [ref=e6538]
+        - img [ref=e6632]
+      - paragraph [ref=e6767]:
+        - text: where the
+        - strong [ref=e6768]: cluster amplitudes
+        - img [ref=e6770]
+        - text: ","
+        - img [ref=e6781]
+        - text: ","
+        - img [ref=e6798]
+        - text: ", … are the unknowns. The"
+        - img [ref=e6819]
+        - text: prefactor in
+        - img [ref=e6835]
+        - text: is the
+        - emphasis [ref=e6847]: symmetry
+        - text: factor that compensates for over-counting in the sum over ordered indices. The exponential
+        - img [ref=e6849]
+        - text: expands as
+      - img [ref=e6863]
+      - paragraph [ref=e7034]:
+        - text: The
+        - emphasis [ref=e7035]: connected
+        - text: ’ terms are the linear
+        - img [ref=e7037]
+        - text: ; the
+        - emphasis [ref=e7059]: disconnected
+        - text: ’ terms are products
+        - img [ref=e7061]
+        - text: with
+        - img [ref=e7093]
+        - text: . The CC wavefunction
+        - emphasis [ref=e7106]: includes
+        - text: the disconnected contributions, in contrast to CISD, which includes only the
+        - emphasis [ref=e7107]: linear
+        - text: terms and misses the disconnected products. The disconnected products are the
+        - emphasis [ref=e7108]: source
+        - text: "of size extensivity: for two non-interacting fragments at"
+        - img [ref=e7110]
+        - text: ", the"
+        - emphasis [ref=e7119]: "factorise`d"
+        - text: ’ form
+        - img [ref=e7121]
+        - text: is
+        - emphasis [ref=e7221]: automatically
+        - text: a product of fragment CC wavefunctions, and the energy is the sum of the fragment energies. This is the
+        - emphasis [ref=e7222]: defining
+        - text: advantage of the exponential ansatz.
+      - paragraph [ref=e7223]:
+        - text: The CC equations follow from the
+        - emphasis [ref=e7224]: "similarity- transforme`d"
+        - text: ’ Schrödinger equation
+      - img [ref=e7226]
+      - paragraph [ref=e7281]:
+        - text: Projecting
+        - img [ref=e7283]:
+          - link [ref=e7286] [cursor=pointer]:
+            - /url: "#"
+        - text: onto the
+        - emphasis [ref=e7295]: reference
+        - img [ref=e7297]
+        - text: gives the CC energy; projecting onto the
+        - emphasis [ref=e7309]: "excite`d"
+        - text: ’ determinants gives the
+        - emphasis [ref=e7310]: amplitude equations
+        - text: . The form of
+        - img [ref=e7312]:
+          - link [ref=e7315] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - strong [ref=e7324]: BCH similarity transform
+        - text: of the Hamiltonian by
+        - img [ref=e7326]
+        - text: (
+        - link "BCH formula" [ref=e7339] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+        - text: § 2.3). The BCH series
+        - emphasis [ref=e7340]: terminates
+        - text: at
+        - img [ref=e7342]
+        - text: by the
+        - strong [ref=e7354]: connectedness theorem
+        - text: ": matrix elements of"
+        - img [ref=e7356]
+        - text: between the reference and excitations of rank
+        - img [ref=e7388]
+        - text: are
+        - emphasis [ref=e7395]: zero
+        - text: . The CC amplitude equations are a
+        - emphasis [ref=e7396]: finite
+        - text: system of polynomial equations in the amplitudes, with
+        - emphasis [ref=e7397]: "no"
+        - text: infinite series to truncate.
+      - heading "14.4.2 The CCSD equations" [level=3] [ref=e7398]
+      - paragraph [ref=e7399]:
+        - strong [ref=e7400]: CCSD
+        - text: is the truncation of the CC ansatz
+        - img [ref=e7402]:
+          - link [ref=e7405] [cursor=pointer]:
+            - /url: "#"
+        - text: to
+        - img [ref=e7415]
+        - text: . The CCSD wavefunction is
+      - img [ref=e7447]
+      - paragraph [ref=e7499]:
+        - text: The expansion
+        - img [ref=e7501]:
+          - link [ref=e7504] [cursor=pointer]:
+            - /url: "#"
+        - text: truncated to
+        - img [ref=e7514]
+        - text: gives
+      - img [ref=e7538]
+      - paragraph [ref=e7732]:
+        - text: The first three lines are the
+        - emphasis [ref=e7733]: singles
+        - text: ", doubles, and"
+        - emphasis [ref=e7734]: triples
+        - text: sectors of the CCSD wavefunction. The
+        - emphasis [ref=e7735]: doubles
+        - text: sector contains both* the connected
+        - img [ref=e7737]
+        - text: and the disconnected
+        - img [ref=e7760]
+        - text: ; the
+        - emphasis [ref=e7791]: triples
+        - text: sector contains the connected triples
+        - emphasis [ref=e7792]: only
+        - text: if
+        - img [ref=e7794]
+        - text: is included. CCSD
+        - emphasis [ref=e7806]: approximates
+        - text: the triples by the disconnected
+        - img [ref=e7808]
+        - text: terms — the
+        - emphasis [ref=e7869]: source
+        - text: of the CCSD error for properties sensitive to the
+        - emphasis [ref=e7870]: triples
+        - text: sector (bond breaking, diradicals), fixed by the (T) of § 14.4.3. The CCSD
+        - emphasis [ref=e7871]: energy
+        - text: follows from projecting
+        - img [ref=e7873]:
+          - link [ref=e7876] [cursor=pointer]:
+            - /url: "#"
+        - text: onto
+        - img [ref=e7886]
+        - text: and using the linked-cluster theorem,
+      - img [ref=e7899]
+      - paragraph [ref=e8007]:
+        - text: For CCSD the
+        - emphasis [ref=e8008]: only
+        - text: connected contractions are the
+        - emphasis [ref=e8009]: linear
+        - img [ref=e8011]
+        - text: term, the quadratic*
+        - img [ref=e8021]
+        - text: term (which gives the
+        - emphasis [ref=e8048]: doubles
+        - text: part of the energy), and the cubic*
+        - img [ref=e8050]
+        - text: term (which gives the
+        - emphasis [ref=e8077]: triples
+        - text: part — but the triples amplitude is zero in CCSD, so this term vanishes). The final
+        - emphasis [ref=e8078]: closed-shell
+        - text: form of the CCSD energy is
+      - img [ref=e8080]
+      - paragraph [ref=e8233]:
+        - text: where the
+        - img [ref=e8235]
+        - text: are the singles amplitudes and the
+        - img [ref=e8246]
+        - text: are the doubles amplitudes. The first correction is the
+        - emphasis [ref=e8262]: singles-singles
+        - text: contribution, the second is the
+        - emphasis [ref=e8263]: doubles
+        - text: contribution. The singles amplitudes
+        - img [ref=e8265]
+        - text: are non-zero in CCSD (in contrast to MP2, where they vanish at the HF reference), and they
+        - emphasis [ref=e8275]: redistribute
+        - text: the orbital-rotation contribution to the energy.
+      - paragraph [ref=e8276]:
+        - text: The CCSD
+        - emphasis [ref=e8277]: amplitude equations
+        - text: are obtained by projecting
+        - img [ref=e8279]:
+          - link [ref=e8282] [cursor=pointer]:
+            - /url: "#"
+        - text: onto the
+        - emphasis [ref=e8291]: singly
+        - text: and
+        - emphasis [ref=e8292]: doubly
+        - text: excited determinants
+        - img [ref=e8294]
+        - text: and
+        - img [ref=e8309]
+        - text: ":"
+      - paragraph [ref=e8329]:
+        - img [ref=e8331]
+        - img [ref=e8389]
+      - paragraph [ref=e8452]:
+        - text: Equations
+        - img [ref=e8454]:
+          - link [ref=e8457] [cursor=pointer]:
+            - /url: "#"
+        - text: –
+        - img [ref=e8467]:
+          - link [ref=e8470] [cursor=pointer]:
+            - /url: "#"
+        - text: are the
+        - strong [ref=e8479]: singles
+        - text: and
+        - strong [ref=e8480]: doubles amplitude equations
+        - text: ", a"
+        - emphasis [ref=e8481]:
+          - text: couple
+          - code [ref=e8482]: "d*' system of polynomial equations in $t_i^a$ and $t_{ij}^{ab}$. The *standar"
+          - text: d
+        - text: ’ solution is
+        - emphasis [ref=e8483]: iterative
+        - text: ": start with"
+        - img [ref=e8485]
+        - text: ","
+        - img [ref=e8500]
+        - text: ; alternate updating
+        - img [ref=e8521]
+        - text: at fixed
+        - img [ref=e8538]
+        - text: and
+        - img [ref=e8549]
+        - text: at fixed
+        - img [ref=e8560]
+        - text: ; repeat to convergence (
+        - img [ref=e8577]
+        - text: –
+        - img [ref=e8586]
+        - text: cycles for a well-behaved system).
+      - paragraph [ref=e8592]:
+        - text: The cost of one CCSD iteration is dominated by the
+        - emphasis [ref=e8593]: doubles
+        - text: equation, which contains six contractions of
+        - img [ref=e8595]
+        - text: with
+        - img [ref=e8605]
+        - text: and
+        - img [ref=e8618]
+        - text: . The leading term is the
+        - img [ref=e8631]
+        - text: contraction, which costs
+        - img [ref=e8647]
+        - text: per iteration; the full CCSD cost is
+        - img [ref=e8663]
+        - text: at fixed electron count, with
+        - img [ref=e8687]
+        - text: in production.
+      - blockquote [ref=e8703]:
+        - paragraph [ref=e8704]:
+          - strong [ref=e8705]: Tip.
+          - text: The standard
+          - emphasis [ref=e8706]: reference
+          - text: for CCSD is
+          - emphasis [ref=e8707]:
+            - text: restricte
+            - code [ref=e8708]: d*' (RHF) for closed-shell systems, *unrestricte
+            - text: d
+          - text: ’ (UHF) for open-shell systems, and
+          - emphasis [ref=e8709]: Brueckner
+          - text: when the singles amplitudes are set to zero by an orbital rotation that decouples them from the doubles. Brueckner is the
+          - emphasis [ref=e8710]: natural
+          - text: choice when the singles are not required by symmetry and gives slightly more accurate results than UHF-CCSD at the same cost.
+      - heading "14.4.3 The perturbative triples correction CCSD(T)" [level=3] [ref=e8711]
+      - paragraph [ref=e8712]:
+        - text: The CCSD wavefunction is
+        - emphasis [ref=e8713]: missing
+        - text: the connected* triple excitations
+        - img [ref=e8715]
+        - text: ; the
+        - emphasis [ref=e8737]: approximate
+        - text: triples in
+        - img [ref=e8739]:
+          - link [ref=e8742] [cursor=pointer]:
+            - /url: "#"
+        - text: are the disconnected products
+        - img [ref=e8752]
+        - text: . For most properties, the
+        - emphasis [ref=e8777]: "connecte`d"
+        - text: ’ triples are
+        - emphasis [ref=e8778]: small but non-negligible
+        - text: ", and they enter the energy at"
+        - emphasis [ref=e8779]: fourth order
+        - text: in the Møller–Plesset series. The standard fix is the
+        - strong [ref=e8780]: perturbative triples correction
+        - img [ref=e8782]
+        - text: ", which adds the"
+        - emphasis [ref=e8793]: leading
+        - text: connected triples
+        - emphasis [ref=e8794]: non-iteratively
+        - text: as a fifth-order Møller– Plesset correction.
+      - paragraph [ref=e8795]:
+        - text: The
+        - strong [ref=e8796]: CCSD(T) energy
+        - text: is
+      - img [ref=e8798]
+      - paragraph [ref=e8838]:
+        - text: where the
+        - strong [ref=e8839]: perturbative triples correction
+        - text: is
+      - img [ref=e8841]:
+        - generic [ref=e8887]:
+          - img [ref=e8890]
+          - img [ref=e8931]
+      - paragraph [ref=e9019]:
+        - text: The first term is the
+        - emphasis [ref=e9020]: direct
+        - text: contribution of the connected triple excitation; the second and third are the
+        - emphasis [ref=e9021]: spin-adapted
+        - text: ’ and orbital-relaxation corrections that arise from the non-zero singles and the
+        - emphasis [ref=e9022]: "quadrati`c"
+        - text: ’ doubles of the CCSD wavefunction. The full expression involves
+        - emphasis [ref=e9023]: four
+        - text: distinct contractions of
+        - img [ref=e9025]
+        - text: with the CCSD amplitudes; the standard implementation is the
+        - strong [ref=e9034]: Raghavachari–Trucks– Pople–Head-Gordon
+        - text: formula (
+        - link "J. Chem. Phys.82, 2706 (1985)" [ref=e9035] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.448266
+          - text: J. Chem. Phys.
+          - strong [ref=e9036]: "82"
+          - text: ", 2706 (1985)"
+        - text: ).
+      - paragraph [ref=e9037]:
+        - text: The
+        - emphasis [ref=e9038]: cost
+        - text: of the (T) correction is dominated by the
+        - emphasis [ref=e9039]: transformation
+        - text: of the ERI tensor from the AO basis to the MO basis, which is
+        - img [ref=e9041]
+        - text: at fixed electron count (the
+        - img [ref=e9057]
+        - text: comes from a
+        - img [ref=e9066]
+        - text: integral transformation times a
+        - img [ref=e9075]
+        - text: outer loop over the triples). For a system of
+        - img [ref=e9084]
+        - text: atoms and a
+        - emphasis [ref=e9092]: "triple-zet`a"
+        - text: ’ basis (
+        - img [ref=e9094]
+        - text: ), the (T) correction is the
+        - emphasis [ref=e9105]: bottleneck
+        - text: ’, and the parallel implementation (over the
+        - img [ref=e9107]
+        - text: occupied triples) is what makes the calculation feasible.
+      - paragraph [ref=e9120]:
+        - strong [ref=e9121]: Why CCSD(T) is the gold standard.
+        - text: Three properties make CCSD(T) the
+        - emphasis [ref=e9122]: default
+        - text: "high-accuracy method:"
+      - list [ref=e9123]:
+        - listitem [ref=e9124]:
+          - paragraph [ref=e9125]:
+            - strong [ref=e9126]: Accuracy.
+            - text: CCSD(T) recovers
+            - img [ref=e9128]
+            - text: of the correlation energy for closed-shell systems near equilibrium, with a
+            - emphasis [ref=e9140]: mean unsigned error
+            - text: of
+            - img [ref=e9142]
+            - text: –
+            - img [ref=e9152]
+            - text: on thermochemical test sets. The error is
+            - emphasis [ref=e9173]: "systemati`c"
+            - text: ’ (undercorrelation by
+            - img [ref=e9175]
+            - text: ) and can be corrected by a basis-set extrapolation (§ 14.7) or by a higher-order CC calculation (CCSDT, CCSDTQ).
+        - listitem [ref=e9186]:
+          - paragraph [ref=e9187]:
+            - strong [ref=e9188]: Cost.
+            - text: The CCSD step is
+            - img [ref=e9190]
+            - text: and the (T) step is
+            - img [ref=e9206]
+            - text: . The (T) is
+            - emphasis [ref=e9221]: more expensive
+            - text: than CCSD by a factor of
+            - img [ref=e9223]
+            - text: in the basis, but is
+            - emphasis [ref=e9230]: not
+            - text: the exponential cost of FCI. CCSD(T) is
+            - emphasis [ref=e9231]: feasible
+            - text: on a workstation for
+            - img [ref=e9233]
+            - text: atoms in a triple-zeta basis; for
+            - img [ref=e9244]
+            - text: atoms it requires a small cluster; for
+            - img [ref=e9255]
+            - text: atoms it is
+            - emphasis [ref=e9266]: infeasible
+            - text: in a triple-zeta basis.
+        - listitem [ref=e9267]:
+          - paragraph [ref=e9268]:
+            - strong [ref=e9269]: Size extensivity.
+            - text: CCSD(T) is
+            - emphasis [ref=e9270]: exactly
+            - text: "size extensive at every truncation level: the (T) correction, the singles, and the doubles all factorise for two non-interacting fragments. This is the"
+            - emphasis [ref=e9271]: defining
+            - text: advantage over CISD.
+      - blockquote [ref=e9272]:
+        - paragraph [ref=e9273]:
+          - strong [ref=e9274]: Tip.
+          - text: The “(T)” in CCSD(T) is the
+          - emphasis [ref=e9275]: non-iterative
+          - text: triples correction; a
+          - emphasis [ref=e9276]: fully iterative
+          - text: treatment is the
+          - strong [ref=e9277]: CCSDT
+          - text: method, which is
+          - img [ref=e9279]
+          - text: and gives
+          - img [ref=e9295]
+          - text: of the correlation energy. The
+          - emphasis [ref=e9307]: next
+          - text: correction beyond (T) is the perturbative quadruples CCSDT(Q) (or CCSDTQ(2)), which recovers
+          - img [ref=e9309]
+          - text: at
+          - img [ref=e9323]
+          - text: cost.
+      - heading "14.4.4 Why CCSD is size extensive (and CISD is not)" [level=3] [ref=e9340]
+      - paragraph [ref=e9341]:
+        - text: The size extensivity of CCSD follows from the
+        - emphasis [ref=e9342]: linked- cluster theorem
+        - text: ": the"
+        - emphasis [ref=e9343]: connected
+        - text: contractions of
+        - img [ref=e9345]
+        - text: with
+        - img [ref=e9355]
+        - text: are
+        - emphasis [ref=e9368]: proportional to the number of particles
+        - img [ref=e9370]
+        - text: ", so the energy"
+        - img [ref=e9376]:
+          - link [ref=e9379] [cursor=pointer]:
+            - /url: "#"
+        - text: is a
+        - emphasis [ref=e9388]: sum of connected terms
+        - text: ", each of which is"
+        - emphasis [ref=e9389]:
+          - text: extensive (scales linearly with
+          - img [ref=e9391]
+          - text: in the uniform limit). The same theorem *fails
+        - text: "for CISD: the truncated-CI energy contains both"
+        - emphasis [ref=e9396]:
+          - text: connecte
+          - code [ref=e9397]: d*' and *disconnecte
+          - text: d
+        - text: ’ contributions, and the disconnected terms scale
+        - emphasis [ref=e9398]: sub-linearly
+        - text: in
+        - img [ref=e9400]
+        - text: (the normalisation of the wavefunction suppresses the extensive part). This is the
+        - emphasis [ref=e9405]: defining
+        - text: reason CCSD/CCSD(T) is the default high-accuracy method in quantum chemistry, rather than CIS/D/CISD.
+      - blockquote [ref=e9406]:
+        - paragraph [ref=e9407]:
+          - strong [ref=e9408]: Tip.
+          - text: A
+          - emphasis [ref=e9409]: "proo`f"
+          - text: ’ of the linked-cluster theorem is in
+          - link "Bartlett’s review" [ref=e9410] [cursor=pointer]:
+            - /url: https://doi.org/10.1063/1.469546
+          - text: (
+          - emphasis [ref=e9411]: J. Chem. Phys.
+          - strong [ref=e9412]: "93"
+          - text: ", 1697 (1990)) or in"
+          - link "Shavitt and Bartlett,Many-Body Methods in Chemistry and Physics" [ref=e9413] [cursor=pointer]:
+            - /url: https://www.cambridge.org/9780521818322
+            - text: Shavitt and Bartlett,
+            - emphasis [ref=e9414]: Many-Body Methods in Chemistry and Physics
+          - text: (Cambridge, 2009).
+      - heading "14.5 Multireference methods" [level=2] [ref=e9415]
+      - paragraph [ref=e9416]:
+        - text: The
+        - emphasis [ref=e9417]: single-reference
+        - text: assumption — that the exact wavefunction is a
+        - emphasis [ref=e9418]: small perturbation
+        - text: of a single Slater determinant
+        - img [ref=e9420]
+        - text: — is the foundation of MP2, CISD, CCSD, and CCSD(T). The assumption is
+        - emphasis [ref=e9432]:
+          - text: goo
+          - code [ref=e9433]: d*' near the equilibrium geometry of a closed-shell molecule; it is *ba
+          - text: d
+        - text: ’ for bond breaking, diradicals, excited states of the same symmetry as the ground state, and the transition-metal multiplets that motivate chapter 13. The multireference methods of this section are designed for these cases.
+      - heading "14.5.1 The problem with single-reference methods" [level=3] [ref=e9434]
+      - paragraph [ref=e9435]:
+        - text: The
+        - emphasis [ref=e9436]: qualitative
+        - text: failure of single-reference methods arises when the HF determinant is not the dominant configuration in the FCI expansion. The
+        - emphasis [ref=e9437]: canonical
+        - text: "example is the symmetric stretching of H₂: at the equilibrium bond length ("
+        - img [ref=e9439]
+        - text: ), the FCI wavefunction is dominated by the closed-shell determinant
+        - img [ref=e9452]
+        - text: with a small admixture of the ionic
+        - img [ref=e9474]
+        - text: and
+        - img [ref=e9496]
+        - text: configurations; at large
+        - img [ref=e9518]
+        - text: ", the FCI wavefunction becomes an"
+        - emphasis [ref=e9523]: equal-weight superposition
+        - text: of the covalent
+        - img [ref=e9525]
+        - text: and the ionic configurations, and
+        - emphasis [ref=e9546]: no single determinant
+        - text: is dominant. The MP2 / CCSD(T) methods
+        - emphasis [ref=e9547]: fail
+        - text: at large
+        - img [ref=e9549]
+        - text: because they
+        - emphasis [ref=e9554]: "expand aroun`d"
+        - text: ’ the single-determinant reference, and the expansion is not convergent when the reference is not a good starting point.
+      - paragraph [ref=e9555]:
+        - text: The
+        - emphasis [ref=e9556]: quantitative
+        - text: signature of the failure is a
+        - emphasis [ref=e9557]: divergent
+        - text: perturbation series. At large
+        - img [ref=e9559]
+        - text: in H₂, the MP2 energy
+        - emphasis [ref=e9564]: overshoots
+        - text: the FCI energy, the MP3 energy
+        - emphasis [ref=e9565]: undershoots
+        - text: even further, the MP4 energy
+        - emphasis [ref=e9566]: overshoots
+        - text: again, and so on — the series is
+        - emphasis [ref=e9567]:
+          - text: asymptoti
+          - code [ref=e9568]: c*
+          - text: ", not convergent. The CCSD(T) energy is *finite"
+        - text: at every
+        - img [ref=e9570]
+        - text: (it is bounded from below by the variational principle), but it is
+        - emphasis [ref=e9575]: systematically
+        - text: "in error: the (T) correction is"
+        - emphasis [ref=e9576]: small
+        - text: near
+        - img [ref=e9578]
+        - text: and
+        - emphasis [ref=e9586]: large
+        - text: at large
+        - img [ref=e9588]
+        - text: ", and the coupled* CCSD amplitudes are"
+        - emphasis [ref=e9593]: not
+        - text: a small perturbation of the HF orbitals at large
+        - img [ref=e9595]
+        - text: .
+      - paragraph [ref=e9600]:
+        - text: The multireference methods of this section are designed to
+        - emphasis [ref=e9601]: use
+        - text: the active space of the molecule — the
+        - emphasis [ref=e9602]: frontier
+        - text: orbitals whose occupations change as the geometry is varied — as a
+        - emphasis [ref=e9603]: full-CI subspace
+        - text: ", and to treat the"
+        - emphasis [ref=e9604]: remaining
+        - text: (inactive) orbitals at a lower level. The active space is the
+        - emphasis [ref=e9605]: heart
+        - text: of the multireference treatment, and the choice of the active space is the
+        - emphasis [ref=e9606]: art
+        - text: of the method.
+      - heading "14.5.2 CASSCF" [level=3] [ref=e9607]
+      - paragraph [ref=e9608]:
+        - text: The
+        - strong [ref=e9609]: complete active space self-consistent field
+        - text: "(CASSCF) method is the multireference analogue of HF: a"
+        - emphasis [ref=e9610]: full CI
+        - text: in a chosen active space of
+        - img [ref=e9612]
+        - text: orbitals and
+        - img [ref=e9618]
+        - text: electrons, with the
+        - emphasis [ref=e9627]: orbitals
+        - text: themselves optimised self-consistently. The CASSCF wavefunction is
+      - img [ref=e9629]
+      - paragraph [ref=e9676]:
+        - text: where the sum is over
+        - emphasis [ref=e9677]: all
+        - text: determinants in the
+        - strong [ref=e9678]: complete active space
+        - text: — all possible distributions of the
+        - img [ref=e9680]
+        - text: active electrons among the
+        - img [ref=e9690]
+        - text: active orbitals. The dimension is
+        - img [ref=e9696]
+        - text: for a
+        - emphasis [ref=e9727]:
+          - text: spin-adapte
+          - code [ref=e9728]: "d*' calculation (or $\\binom{M}{N_\\alpha} \\binom{M}{N_\\beta}$ for a spin-orbital basis). The *orbital optimisation* is a *constraine"
+          - text: d
+        - text: "’ SCF: the active orbitals are rotated among themselves, the inactive (doubly-occupied and virtual) orbitals are rotated among themselves, and the"
+        - emphasis [ref=e9729]: cross
+        - text: rotations (active–inactive) are fixed* by the
+        - emphasis [ref=e9730]: Brillouin
+        - text: condition.
+      - paragraph [ref=e9731]:
+        - text: The CASSCF energy is the
+        - emphasis [ref=e9732]: variational minimum
+        - text: of the expectation value of
+        - img [ref=e9734]
+        - text: over the active-space full-CI wavefunction, optimised over the orbital rotations. The cost is dominated by the
+        - emphasis [ref=e9743]: active-space FCI
+        - text: ","
+        - img [ref=e9745]
+        - text: ", plus the"
+        - emphasis [ref=e9760]: orbital-gradient
+        - text: computation
+        - img [ref=e9762]
+        - text: . The
+        - emphasis [ref=e9787]: practical
+        - text: limit on the active space is
+        - img [ref=e9789]
+        - text: (a few million determinants); beyond that, the
+        - emphasis [ref=e9810]:
+          - text: deterministi
+          - code [ref=e9811]: c*' FCI is infeasible, and *stochasti
+          - text: c
+        - text: ’ methods (FCI-QMC, selected CI) are required.
+      - paragraph [ref=e9812]:
+        - strong [ref=e9813]: Choice of the active space.
+        - text: The
+        - emphasis [ref=e9814]: art
+        - text: of CASSCF is the choice of the active space. The general rule is to include the
+        - emphasis [ref=e9815]: frontier
+        - text: orbitals — the HOMO, LUMO, and the orbitals that
+        - emphasis [ref=e9816]: become
+        - text: "HOMO/LUMO as the geometry is varied. Examples:"
+        - strong [ref=e9817]:
+          - text: H₂ at large
+          - img [ref=e9819]
+        - text: uses
+        - img [ref=e9825]
+        - text: with 2 electrons (the
+        - emphasis [ref=e9844]: minimum
+        - text: to describe the bond breaking);
+        - strong [ref=e9845]: benzene
+        - text: uses the six
+        - img [ref=e9847]
+        - text: orbitals with 6 electrons (the
+        - emphasis [ref=e9852]: minimum
+        - text: to describe the aromaticity and the
+        - emphasis [ref=e9853]: first
+        - text: excitation);
+        - strong [ref=e9854]: transition-metal complexes
+        - text: use the
+        - img [ref=e9856]
+        - text: ","
+        - img [ref=e9872]
+        - text: ", and"
+        - img [ref=e9880]
+        - text: orbitals of the metal, typically
+        - img [ref=e9888]
+        - text: –
+        - img [ref=e9926]
+        - text: –
+        - img [ref=e9937]
+        - text: .
+      - paragraph [ref=e9945]:
+        - text: The
+        - emphasis [ref=e9946]: cost
+        - text: of CASSCF grows exponentially with the active-space size, but the
+        - emphasis [ref=e9947]: accuracy
+        - text: of the method depends
+        - emphasis [ref=e9948]: critically
+        - text: on the active space. A
+        - emphasis [ref=e9949]: too-small
+        - text: active space is a systematic* error that cannot be fixed by improving the basis or the post-CASSCF method; a
+        - emphasis [ref=e9950]: too-large
+        - text: active space is a
+        - emphasis [ref=e9951]: computational
+        - text: error that can be fixed by a smaller basis or a cheaper post-CASSCF method. The
+        - emphasis [ref=e9952]: "gold standar`d"
+        - text: in 2025 is the
+        - emphasis [ref=e9953]: adaptive active space, in which the active space is *grown
+        - text: automatically as the calculation proceeds (e.g. the
+        - strong [ref=e9954]: AutoCAS
+        - text: protocol of the
+        - link "Stein, Reiher group" [ref=e9955] [cursor=pointer]:
+          - /url: https://doi.org/10.1021/acs.jctc.9b00385
+        - text: ).
+      - 'heading "14.5.3 Perturbative corrections: CASPT2 and NEVPT2" [level=3] [ref=e9956]'
+      - paragraph [ref=e9957]:
+        - text: The CASSCF wavefunction captures the
+        - emphasis [ref=e9958]:
+          - text: stati
+          - code [ref=e9959]: c*' correlation — the *qualitative* multi-reference physics of the active space — but *misses* the *dynami
+          - text: c
+        - text: ’ correlation outside the active space. The standard fix is a
+        - emphasis [ref=e9960]: second-order perturbative
+        - text: correction, with the two leading methods being
+        - strong [ref=e9961]: CASPT2
+        - text: (Andersson, Malmqvist, Roos,
+        - emphasis [ref=e9962]: J. Chem. Phys.
+        - strong [ref=e9963]: "96"
+        - text: ", 1218 (1992)) and"
+        - strong [ref=e9964]: NEVPT2
+        - text: (Angeli, Cimiraglia, Evangelisti, Leininger, Malrieu,
+        - emphasis [ref=e9965]: J. Chem. Phys.
+        - strong [ref=e9966]: "114"
+        - text: ", 10252 (2001))."
+      - paragraph [ref=e9967]:
+        - strong [ref=e9968]: CASPT2
+        - text: "partitions $\\hat H = \\hat H^{(0)}"
+        - emphasis [ref=e9969]:
+          - text: "\\text{CAS} + \\hat V"
+          - img [ref=e9971]
+          - text: "\\hat H^{(0)}"
+        - text: "\\text{CAS}$ the"
+        - emphasis [ref=e9982]: "generalised Foc`k"
+        - text: ’ operator built from the CASSCF density. The CASPT2 energy is
+      - img [ref=e9984]
+      - paragraph [ref=e10080]:
+        - text: where the sum is over all determinants
+        - emphasis [ref=e10081]: outside
+        - text: the CAS. The CASPT2 energy is
+        - emphasis [ref=e10082]: not
+        - text: a strict upper bound (the generalised Fock is not Hermitian), but is
+        - emphasis [ref=e10083]: size consistent
+        - text: and size extensive at
+        - emphasis [ref=e10084]: infinity
+        - text: of the second-order expansion; the cost is
+        - img [ref=e10086]
+        - text: ","
+        - emphasis [ref=e10111]: asymptotically the same
+        - text: as MP2 for a
+        - emphasis [ref=e10112]: fixed
+        - text: active space.
+      - paragraph [ref=e10113]:
+        - text: The CASPT2 method has a
+        - emphasis [ref=e10114]: well-known
+        - text: "pathology: the"
+        - strong [ref=e10115]: intruder-state problem
+        - text: . When one of the external determinants has an
+        - emphasis [ref=e10116]: energy close
+        - text: to the CASSCF ground state, the denominator in
+        - img [ref=e10118]:
+          - link [ref=e10121] [cursor=pointer]:
+            - /url: "#"
+        - emphasis [ref=e10130]: vanishes
+        - text: and the perturbation theory
+        - emphasis [ref=e10131]: diverges
+        - text: . The standard fix is the
+        - strong [ref=e10132]: level shift
+        - text: (Rozansky & Davidson,
+        - emphasis [ref=e10133]: Int. J. Quantum Chem.
+        - strong [ref=e10134]: "28"
+        - text: ", 1041 (1985)), a real shift"
+        - img [ref=e10136]
+        - text: added to all denominators, which is
+        - emphasis [ref=e10141]: "remove`d"
+        - text: ’ at the end of the calculation by extrapolation. The intruder-state problem is the
+        - emphasis [ref=e10142]: defining
+        - text: weakness of CASPT2 and the motivation for NEVPT2.
+        - strong [ref=e10143]: NEVPT2
+        - text: (the
+        - strong [ref=e10144]: N-electron valence perturbation theory
+        - text: ) fixes the intruder-state problem by a
+        - emphasis [ref=e10145]: different
+        - text: choice of
+        - img [ref=e10147]
+        - text: ", a bivariance of the"
+        - strong [ref=e10164]: Dyall
+        - text: Hamiltonian (Dyall,
+        - emphasis [ref=e10165]: J. Chem. Phys.
+        - strong [ref=e10166]: "102"
+        - text: ", 4909 (1995)):"
+      - img [ref=e10168]
+      - paragraph [ref=e10290]:
+        - text: where the sum is over determinants generated by a single- or double-excitation from a CAS determinant into the external space. The NEVPT2 denominators are
+        - emphasis [ref=e10291]: differences of orbital energies
+        - text: (not differences of CAS eigenvalues), and are therefore
+        - emphasis [ref=e10292]: strictly bounded away from zero
+        - text: (the orbital energy gap of the
+        - emphasis [ref=e10293]: inactive
+        - text: orbitals is finite). The intruder-state problem is *solve
+        - code [ref=e10294]: d*
+        - text: ; the cost is the same as CASPT2. The
+        - strong [ref=e10295]: NEVPT2 energy
+        - text: is
+      - img [ref=e10297]:
+        - generic [ref=e10334]:
+          - img [ref=e10337]
+          - img [ref=e10368]
+      - paragraph [ref=e10410]:
+        - text: where the sum is over the
+        - emphasis [ref=e10411]: external
+        - text: determinants and the denominator is the
+        - emphasis [ref=e10412]: Dyall
+        - text: gap. The NEVPT2 energy is
+        - emphasis [ref=e10413]: size consistent
+        - text: ", size extensive, and"
+        - emphasis [ref=e10414]:
+          - text: bounde
+          - code [ref=e10415]: d*' in the presence of intruder states. It is the *default* multireference perturbative correction in the [ORCA](<https://orcaforum.kofo.mpg.de/>) and [Molcas](<https://www.molcas.org/>) programmes, and is the *standar
+          - text: d
+        - text: "’ for high-accuracy multireference calculations in 2025. ### 14.5.4 Selected CI: CIPSI, Heat-bath CI"
+      - paragraph [ref=e10416]:
+        - text: The
+        - emphasis [ref=e10417]: selected-CI
+        - text: methods are a stochastic* generalisation of the
+        - emphasis [ref=e10418]: "deterministi`c"
+        - text: ’ FCI that
+        - emphasis [ref=e10419]: samples
+        - text: the FCI space rather than enumerating it. The two leading methods are
+        - strong [ref=e10420]: CIPSI
+        - text: (Huron, Malrieu, Rancurel,
+        - emphasis [ref=e10421]: J. Chem. Phys.
+        - strong [ref=e10422]: "58"
+        - text: ", 5745 (1973)) and"
+        - strong [ref=e10423]: Heat-bath CI
+        - text: (HBCI, Holmes, Tubman, Umrigar,
+        - emphasis [ref=e10424]: J. Chem. Phys.
+        - strong [ref=e10425]: "147"
+        - text: ", 164111 (2017)). Both build a"
+        - emphasis [ref=e10426]: variational
+        - text: wavefunction by iteratively adding the most important determinants from the full FCI space, and use
+        - emphasis [ref=e10427]: second-order perturbation theory
+        - text: to estimate the
+        - emphasis [ref=e10428]: missing
+        - text: correlation energy.
+      - paragraph [ref=e10429]:
+        - strong [ref=e10430]: CIPSI
+        - text: "starts from a small reference wavefunction (e.g. the HF determinant) and at each iteration:"
+      - list [ref=e10431]:
+        - listitem [ref=e10432]:
+          - table [ref=e10433]:
+            - rowgroup [ref=e10434]:
+              - row "Compute for everyexternaldeterminant $ \\Phi_I\\rangle$." [ref=e10435]:
+                - cell "Compute for everyexternaldeterminant $" [ref=e10436]:
+                  - text: Compute
+                  - img [ref=e10438]
+                  - text: for every
+                  - emphasis [ref=e10502]: external
+                  - text: determinant $
+                - cell "\\Phi_I\\rangle$." [ref=e10503]
+        - listitem [ref=e10504]:
+          - table [ref=e10505]:
+            - rowgroup [ref=e10506]:
+              - 'row "Add the determinants with the largest $ c_I^{(1)} 10^3 10^5$) to the variational space." [ref=e10507]':
+                - cell "Add the determinants with the largest $" [ref=e10508]
+                - 'cell "c_I^{(1)}" [ref=e10509]'
+                - cell "10^3 10^5$) to the variational space." [ref=e10510]:
+                  - img [ref=e10512]
+                  - text: 10^3
+                  - img [ref=e10534]
+                  - text: 10^5$) to the variational space.
+        - listitem [ref=e10540]:
+          - text: Diagonalise
+          - img [ref=e10542]
+          - text: in the enlarged space.
+        - listitem [ref=e10551]:
+          - text: Repeat until the perturbative missing energy drops below the target threshold (
+          - img [ref=e10553]
+          - text: –
+          - img [ref=e10566]
+          - text: ).
+      - paragraph [ref=e10583]:
+        - text: The CIPSI wavefunction
+        - emphasis [ref=e10584]: converges
+        - text: to FCI as the threshold is tightened. The
+        - emphasis [ref=e10585]: cost
+        - text: is dominated by the
+        - emphasis [ref=e10586]: perturbative
+        - text: step, which is linear in the number of external determinants and
+        - emphasis [ref=e10587]:
+          - text: quadrati
+          - code [ref=e10588]: c*' in the size of the variational space. CIPSI is the *standar
+          - text: d
+        - text: ’ FCI solver for systems with up to
+        - img [ref=e10590]
+        - text: electrons in
+        - img [ref=e10599]
+        - text: orbitals.
+      - paragraph [ref=e10607]:
+        - strong [ref=e10608]: Heat-bath CI
+        - text: is a
+        - emphasis [ref=e10609]: modern
+        - text: "variant of CIPSI: at each iteration, every external determinant is"
+        - emphasis [ref=e10610]:
+          - text: visite
+          - code [ref=e10611]: "d*' and the *coupling* $\\lvert \\langle \\Phi_I \\rvert \\hat H \\rvert \\Psi_\\text{var} \\rangle \\rvert$ is computed. Determinants with a coupling above a *threshold*' $\\epsilon$ are adde"
+          - text: d; the rest *discarded
+        - text: .
+        - img [ref=e10613]
+        - text: is the
+        - emphasis [ref=e10618]: control parameter
+        - text: ":"
+        - img [ref=e10620]
+        - text: gives FCI,
+        - img [ref=e10630]
+        - text: gives HF. HBCI is
+        - emphasis [ref=e10639]: fast
+        - text: (linear in the number of external determinants, with a small constant) and
+        - emphasis [ref=e10640]: parallelises without inter-process communication
+        - text: — each worker thread iterates its own subset of external determinants and the resulting
+        - img [ref=e10642]
+        - text: amplitudes are reduced at the end of each macro-iteration (a single MPI_Allreduce on the coefficient vector of size
+        - img [ref=e10651]
+        - text: ). For
+        - img [ref=e10663]
+        - text: ", the HBCI perturbative correction is"
+        - emphasis [ref=e10684]: "converge`d"
+        - text: ’ to within a few
+        - img [ref=e10686]
+        - text: of FCI.
+      - paragraph [ref=e10696]:
+        - text: The
+        - emphasis [ref=e10697]: largest
+        - text: HBCI calculation to date (2024) has
+        - img [ref=e10699]
+        - text: determinants in the variational space and
+        - img [ref=e10713]
+        - text: in the perturbative space —
+        - emphasis [ref=e10726]: orders of magnitude
+        - text: beyond the deterministic FCI limit. HBCI visits
+        - img [ref=e10728]
+        - text: determinants per second per CPU core (versus
+        - img [ref=e10742]
+        - text: –
+        - img [ref=e10754]
+        - text: for CIPSI), making it
+        - img [ref=e10764]
+        - text: –
+        - img [ref=e10776]
+        - text: times faster for the same variational space. HBCI is the
+        - emphasis [ref=e10785]: default
+        - text: in the
+        - link "Arrow" [ref=e10786] [cursor=pointer]:
+          - /url: https://github.com/QChemSoftware
+        - text: and
+        - link "Dice" [ref=e10787] [cursor=pointer]:
+          - /url: https://github.com/susmithachan/Dice
+        - text: programmes.
+      - heading "14.6 Semiempirical methods" [level=2] [ref=e10788]
+      - paragraph [ref=e10789]:
+        - text: The
+        - emphasis [ref=e10790]: semiempirical
+        - text: methods are a family of approximate quantum-chemistry methods that
+        - emphasis [ref=e10791]: replace
+        - text: the expensive two-electron integrals with
+        - emphasis [ref=e10792]: empirical parameters
+        - text: fitted to experiment or to high-accuracy calculations. The semiempirical family is
+        - emphasis [ref=e10793]: older
+        - text: than DFT (the
+        - emphasis [ref=e10794]: Hückel
+        - text: method is from 1930), and is the only quantum-chemistry approach that is
+        - emphasis [ref=e10795]:
+          - text: fast enoug
+          - code [ref=e10796]: h*' for *millions* of atoms (molecular dynamics of proteins, molecular electronics, combinatorial chemistry). The *modern* semiempirical methods — PM3, PM6, PM7, DFTB — are *not* the Hückel method of the 1930s; they are *systematically improvable* approximations to the full electronic problem that retain the *spee
+          - text: d
+        - text: ’ of the historical methods and the
+        - emphasis [ref=e10797]: accuracy
+        - text: of the modern ones.
+      - heading "14.6.1 The Hückel → extended Hückel → PPP/SCC lineage" [level=3] [ref=e10798]
+      - paragraph [ref=e10799]:
+        - text: The
+        - strong [ref=e10800]: Hückel method
+        - text: (Hückel, 1930–1931) is the
+        - emphasis [ref=e10801]: grandfather
+        - text: of the semiempirical family. It treats the
+        - img [ref=e10803]
+        - text: electrons of an aromatic hydrocarbon as a tight-binding model on the carbon
+        - img [ref=e10809]
+        - text: orbitals, with a
+        - emphasis [ref=e10819]: single
+        - text: resonance integral
+        - img [ref=e10821]
+        - text: for every nearest-neighbour coupling and a
+        - emphasis [ref=e10826]: single
+        - text: on-site energy
+        - img [ref=e10828]
+        - text: for every carbon. The Hückel Hamiltonian is
+      - img [ref=e10834]:
+        - generic [ref=e10836]:
+          - generic [ref=e10842]: ü
+          - generic [ref=e10855]:
+            - img [ref=e10859]
+            - img [ref=e10861]
+      - paragraph [ref=e10925]:
+        - text: The Hückel method has
+        - emphasis [ref=e10926]: "no"
+        - text: overlap matrix, no two-electron integrals, and
+        - emphasis [ref=e10927]: "no"
+        - text: geometry optimisation; the
+        - img [ref=e10929]
+        - text: energy is the sum of the eigenvalues of the
+        - emphasis [ref=e10934]: topological
+        - text: matrix of the carbon skeleton. The method is
+        - emphasis [ref=e10935]: quantitatively
+        - text: useless for any
+        - emphasis [ref=e10936]: quantitative
+        - text: purpose, but it is
+        - emphasis [ref=e10937]: qualitatively
+        - text: "correct for the aromatic* patterns of organic chemistry: the Hückel"
+        - img [ref=e10939]
+        - text: rule, the alternation of single and double bonds in polyenes, and the
+        - emphasis [ref=e10950]: frontier
+        - text: orbitals of conjugated systems. It is still taught in every undergraduate organic-chemistry course.
+      - paragraph [ref=e10951]:
+        - text: The
+        - strong [ref=e10952]: extended Hückel
+        - text: method (Hoffmann, 1963) is a
+        - emphasis [ref=e10953]: generalisation
+        - text: to all valence orbitals, not just the
+        - img [ref=e10955]
+        - text: electrons. The Hamiltonian matrix elements are
+        - emphasis [ref=e10960]:
+          - text: parameterise
+          - code [ref=e10961]: d*' in terms of *Slater-type orbital* overlaps, and the diagonal elements are set to the *valence-state ionisation potentials* of the atomic orbitals. The extended Hückel method has *no* self-consistency and no iterative SCF; it is a *one-shot* diagonalisation of a *parameterise
+          - text: d
+        - text: ’ Hamiltonian. It is
+        - emphasis [ref=e10962]: qualitatively
+        - text: correct for band structures of solids, molecular orbital diagrams, and Walsh diagrams.
+      - paragraph [ref=e10963]:
+        - text: The
+        - strong [ref=e10964]: Pariser–Parr–Pople
+        - text: (PPP) method (Pariser & Parr, 1953; Pople, 1953) is the
+        - emphasis [ref=e10965]: first
+        - text: semiempirical method to include the
+        - emphasis [ref=e10966]: electron– electron repulsion
+        - text: ", in a"
+        - emphasis [ref=e10967]:
+          - text: zero-differential- overla
+          - code [ref=e10968]: "p*' (ZDO) approximation. The PPP method treats the $\\pi$ electrons of an aromatic hydrocarbon with a *two-centre* Coulomb integral $\\gamma_{AB}$ that is *parameterise"
+          - text: d
+        - text: ’ as a function of the distance
+        - img [ref=e10970]
+        - text: . The PPP method is
+        - emphasis [ref=e10981]: quantitatively
+        - text: "useful for the excitation spectr`a"
+        - emphasis [ref=e10982]: ’ of aromatic hydrocarbons, and is the *ancestor
+        - text: of the modern ZDO methods of § 14.6.2. The
+        - strong [ref=e10983]: self-consistent charge
+        - text: (SCC) extension of Hückel (SCC-DFTB, § 14.6.4) is the
+        - emphasis [ref=e10984]: modern
+        - text: revival of the Hückel idea, with
+        - emphasis [ref=e10985]: self-consistent
+        - text: charge redistribution and a
+        - emphasis [ref=e10986]: second-order
+        - text: expansion of the Kohn–Sham total energy.
+      - heading "14.6.2 Zero-differential overlap (ZDO) methods" [level=3] [ref=e10987]
+      - paragraph [ref=e10988]:
+        - text: The
+        - strong [ref=e10989]: zero-differential-overlap
+        - text: (ZDO) approximation is the
+        - emphasis [ref=e10990]: defining
+        - text: simplification of the
+        - emphasis [ref=e10991]: intermediate
+        - text: semiempirical methods (CNDO, INDO, MINDO, MNDO, AM1, PM3). The approximation sets
+      - img [ref=e10993]
+      - paragraph [ref=e11036]:
+        - text: i.e.
+        - emphasis [ref=e11037]: products
+        - text: of different basis functions are
+        - emphasis [ref=e11038]:
+          - text: neglecte
+          - code [ref=e11039]: d*' in the two-electron integral evaluation. The ZDO approximation is *drasti
+          - text: c
+        - code [ref=e11040]: ": it removes *all* three- and four-centre two-electron integrals, and replaces the remaining integrals with *parameterise"
+        - text: d
+        - emphasis [ref=e11041]: ’ values that depend only on the *atom types
+        - text: (not the orbital types) of the four centres.
+      - paragraph [ref=e11042]:
+        - text: The
+        - strong [ref=e11043]: NDDO
+        - text: (neglect of diatomic differential overlap) approximation is the
+        - emphasis [ref=e11044]: "least drasti`c"
+        - text: "’ ZDO method: it keeps"
+        - emphasis [ref=e11045]: all
+        - text: two-centre integrals of the form
+        - img [ref=e11047]
+        - text: with
+        - img [ref=e11077]
+        - text: on atom
+        - img [ref=e11087]
+        - text: and
+        - img [ref=e11093]
+        - text: on atom
+        - img [ref=e11103]
+        - text: ", and sets to zero all"
+        - emphasis [ref=e11108]: three- and four-centre
+        - text: integrals. NDDO is the
+        - emphasis [ref=e11109]: basis
+        - text: of the modern PM3, PM6, PM7 methods.
+      - paragraph [ref=e11110]:
+        - text: The
+        - strong [ref=e11111]: INDO
+        - text: (intermediate neglect of differential overlap) approximation is
+        - emphasis [ref=e11112]:
+          - text: more drasti
+          - code [ref=e11113]: c*
+          - text: ": it keeps only the *one-centre"
+        - text: exchange integrals
+        - img [ref=e11115]
+        - text: and sets
+        - emphasis [ref=e11144]: all
+        - text: two-centre integrals to
+        - emphasis [ref=e11145]: "parameterise`d"
+        - text: ’ values. INDO is the
+        - emphasis [ref=e11146]: basis
+        - text: of the MINDO/3 method.
+      - paragraph [ref=e11147]:
+        - text: The
+        - strong [ref=e11148]: CNDO
+        - text: (complete neglect of differential overlap) approximation is the
+        - emphasis [ref=e11149]: most drastic
+        - text: "`: it sets all two-electron integrals to a"
+        - emphasis [ref=e11150]: single
+        - text: parameterised value that depends only on the atom types. CNDO is
+        - emphasis [ref=e11151]: qualitative
+        - text: only.
+      - paragraph [ref=e11152]:
+        - text: The
+        - emphasis [ref=e11153]: family tree
+        - text: is
+      - img [ref=e11155]:
+        - generic [ref=e11157]:
+          - generic [ref=e11160]: ü
+          - generic [ref=e11177]: ü
+      - paragraph [ref=e11243]:
+        - text: The methods in
+        - img [ref=e11245]:
+          - link [ref=e11248] [cursor=pointer]:
+            - /url: "#"
+        - text: are in
+        - emphasis [ref=e11257]: increasing
+        - text: "order of sophistication: each method adds"
+        - emphasis [ref=e11258]: more
+        - text: integrals to the kept set,
+        - emphasis [ref=e11259]: more parameters to the *fitted
+        - text: ’ set, and more physics to the
+        - emphasis [ref=e11260]: Hamiltonian
+        - text: (MINDO adds core–core repulsion, MNDO adds
+        - emphasis [ref=e11261]: "diatomi`c"
+        - text: ’ parameters, AM1 adds
+        - emphasis [ref=e11262]: Gaussian
+        - text: corrections to the core repulsion, PM3 re-fits the parameters to a
+        - emphasis [ref=e11263]: larger
+        - text: training set, PM6 adds
+        - emphasis [ref=e11264]: dihedral
+        - text: parameters, PM7 adds
+        - emphasis [ref=e11265]: dispersion
+        - text: and hydrogen-bond* corrections). The
+        - emphasis [ref=e11266]: accuracy
+        - text: improves along the lineage, and the
+        - emphasis [ref=e11267]: cost
+        - text: is constant (all of them are
+        - img [ref=e11269]
+        - text: for the SCF step, dominated by the Fock-matrix diagonalisation).
+      - blockquote [ref=e11284]:
+        - paragraph [ref=e11285]:
+          - strong [ref=e11286]: Tip.
+          - text: The semiempirical methods are
+          - emphasis [ref=e11287]: calibrated to specific properties
+          - text: of
+          - emphasis [ref=e11288]: specific
+          - text: elements. The PM3 parameter set, for example, is fitted to
+          - img [ref=e11290]
+          - text: reference data points (heats of formation, bond lengths, dipole moments) for
+          - img [ref=e11300]
+          - text: elements of the periodic table. PM6 adds parameters for the
+          - emphasis [ref=e11308]: transition metals
+          - text: ; PM7 adds parameters for the
+          - emphasis [ref=e11309]: lanthanides
+          - text: and a dispersion correction (DFT-D3). The
+          - emphasis [ref=e11310]: accuracy
+          - text: of the method depends
+          - emphasis [ref=e11311]: critically
+          - text: on whether the system of interest is in the
+          - emphasis [ref=e11312]: training set
+          - text: ; for systems outside the training set, the error is
+          - emphasis [ref=e11313]: systematically
+          - text: larger. PM7 is the
+          - emphasis [ref=e11314]: last
+          - text: in the lineage; no further “PM8” is planned.
+      - 'heading "14.6.3 Modern semiempiricals: PM3, PM6, PM7" [level=3] [ref=e11315]'
+      - paragraph [ref=e11316]:
+        - text: The
+        - strong [ref=e11317]: PM3
+        - text: (Stewart, 1989) is the
+        - emphasis [ref=e11318]: first
+        - text: of the
+        - emphasis [ref=e11319]: modern
+        - text: semiempirical methods. PM3 is an NDDO method with
+        - emphasis [ref=e11320]: "re-optimise`d"
+        - text: ’ parameters fitted to
+        - img [ref=e11322]
+        - text: reference data points. The PM3 Hamiltonian is
+      - img [ref=e11332]
+      - paragraph [ref=e11418]:
+        - text: where the
+        - emphasis [ref=e11419]: one-electron
+        - text: integrals are parameterised* (not evaluated), the
+        - emphasis [ref=e11420]: two-electron
+        - text: integrals are
+        - emphasis [ref=e11421]: "evaluate`d"
+        - text: ’ with the NDDO approximation, and the density matrix is
+        - emphasis [ref=e11422]: self-consistently
+        - text: determined by the SCF iteration. The PM3
+        - emphasis [ref=e11423]: self-consistency
+        - text: is the
+        - emphasis [ref=e11424]: defining
+        - text: improvement over the non-SCF Hückel and extended-Hückel methods; the PM3 is the
+        - emphasis [ref=e11425]: first
+        - text: semiempirical method that is
+        - emphasis [ref=e11426]: qualitatively
+        - text: correct for
+        - emphasis [ref=e11427]: charge redistribution
+        - text: in polar molecules.
+      - paragraph [ref=e11428]:
+        - strong [ref=e11429]: PM6
+        - text: (Stewart, 2007) adds
+        - emphasis [ref=e11430]: dihedral
+        - text: and
+        - emphasis [ref=e11431]: transition-metal
+        - text: parameters to PM3 and re-fits all parameters to
+        - img [ref=e11433]
+        - text: reference data points.
+        - strong [ref=e11444]: PM7
+        - text: (Stewart, 2013) adds
+        - emphasis [ref=e11445]: dispersion
+        - text: (DFT-D3) and
+        - emphasis [ref=e11446]:
+          - text: hydrogen-bon
+          - code [ref=e11447]: "d*' corrections and re-fits to $\\sim 10^5$ reference data points. PM7 is the *most accurate* semiempirical method in 2025, with a *mean unsigned error* of $\\sim 3$–$5\\,\\text{kcal mol}^{-1}$ for *organi"
+          - text: c
+        - text: ’ thermochemistry and
+        - img [ref=e11449]
+        - text: –
+        - img [ref=e11457]
+        - text: for
+        - emphasis [ref=e11477]: transition-metal
+        - text: thermochemistry.
+      - blockquote [ref=e11478]:
+        - paragraph [ref=e11479]:
+          - strong [ref=e11480]: Tip.
+          - text: The semiempirical methods are
+          - emphasis [ref=e11481]: fast
+          - text: (
+          - img [ref=e11483]
+          - text: –
+          - img [ref=e11495]
+          - text: times faster than DFT for systems of
+          - img [ref=e11505]
+          - text: atoms), but
+          - emphasis [ref=e11514]: not
+          - text: a
+          - emphasis [ref=e11515]: substitute
+          - text: for DFT or CCSD(T). Use them for (1)
+          - emphasis [ref=e11516]: conformational searches
+          - text: and molecular dynamics* on
+          - img [ref=e11518]
+          - text: –
+          - img [ref=e11530]
+          - text: atoms, (2)
+          - emphasis [ref=e11539]: qualitative
+          - text: reaction mechanisms, and (3)
+          - emphasis [ref=e11540]: pre-screening
+          - text: of large chemical libraries.
+      - heading "14.6.4 DFTB (Density-Functional Tight-Binding)" [level=3] [ref=e11541]
+      - paragraph [ref=e11542]:
+        - text: The
+        - strong [ref=e11543]: DFTB
+        - text: method is the
+        - emphasis [ref=e11544]: modern
+        - text: semiempirical method, derived from
+        - emphasis [ref=e11545]: DFT
+        - text: by a second-order expansion of the Kohn–Sham total energy in the
+        - emphasis [ref=e11546]: charge-density fluctuation
+        - img [ref=e11548]
+        - text: around a
+        - emphasis [ref=e11566]: reference
+        - text: density
+        - img [ref=e11568]
+        - text: (the
+        - emphasis [ref=e11576]: superposition
+        - text: of atomic* densities). The DFTB total energy is
+      - img [ref=e11578]
+      - paragraph [ref=e11720]:
+        - text: where the first term is the
+        - emphasis [ref=e11721]: tight-binding
+        - text: sum of occupied orbital energies, the second is a
+        - emphasis [ref=e11722]: short-range
+        - text: repulsive potential for the
+        - emphasis [ref=e11723]: core–core
+        - text: repulsion and double-counting corrections, and the third is the
+        - emphasis [ref=e11724]: second-order
+        - text: correction in the
+        - emphasis [ref=e11725]: charge fluctuations
+        - text: . The DFTB Hamiltonian matrix elements are
+        - emphasis [ref=e11726]:
+          - text: evaluate
+          - code [ref=e11727]: "d*' with a *minimal* basis of atomic* orbitals (typically $sp^3$ for C, N, O; $sp$ for H), and the *on-site* second-derivative $\\partial^2 E_\\text{xc} / \\partial \\rho_A^2$ is the *Hubbard $U$* of the atom, fitted to the *atomi"
+          - text: c
+        - text: ’ self-consistent response.
+      - paragraph [ref=e11728]:
+        - text: The DFTB method has
+        - emphasis [ref=e11729]: three
+        - text: "“flavours”:"
+        - strong [ref=e11730]: DFTB1
+        - text: (non-SCC, comparable to extended Hückel),
+        - strong [ref=e11731]: DFTB2
+        - text: (SCC, comparable to GGA-DFT for geometries), and
+        - strong [ref=e11732]: DFTB3
+        - text: (third-order expansion, comparable to hybrid DFT for geometries). All three have cost
+        - img [ref=e11734]
+        - text: ; the differences are
+        - emphasis [ref=e11749]: accuracy
+        - text: ", not spee"
+        - code [ref=e11750]: "d. DFTB is the *fastest of the *modern* semiempirical methods, with millions of atoms accessible on a single workstation, but has *three* systematic limitations: a minimal basis (no polarisation / diffuse functions), a *single* Hubbard $U$ per atom (no environmental response), and a *fitte"
+        - text: d*’ repulsive potential (no transferability to chemistry outside the training set).
+      - paragraph [ref=e11751]:
+        - text: The DFTB method is the
+        - emphasis [ref=e11752]: workhorse
+        - text: "of large-scale quantum-mechanical simulations in 2025: molecular dynamics of proteins (millions of atoms, nanosecond timescales), molecular electronics, and"
+        - emphasis [ref=e11753]: high-throughput
+        - text: materials discovery (
+        - link "NOMAD" [ref=e11754] [cursor=pointer]:
+          - /url: https://nomad-lab.eu/
+        - text: and
+        - link "MaterialsProject" [ref=e11755] [cursor=pointer]:
+          - /url: https://materialsproject.org/
+        - text: use DFTB for the
+        - emphasis [ref=e11756]: initial
+        - text: screening of candidates). The
+        - emphasis [ref=e11757]: standard
+        - text: "’ workflow is: (1) DFTB for the initial screening of"
+        - img [ref=e11759]
+        - text: –
+        - img [ref=e11771]
+        - text: candidates, (2) DFT (GGA or hybrid) for the
+        - emphasis [ref=e11780]: re-ranking
+        - text: of the top
+        - img [ref=e11782]
+        - text: –
+        - img [ref=e11794]
+        - text: candidates, (3) CCSD(T) or a composite method (G1–G3, W1–W2) for the
+        - emphasis [ref=e11803]: final
+        - text: ranking. The
+        - emphasis [ref=e11804]: computational
+        - text: cost is dominated by the
+        - emphasis [ref=e11805]: first
+        - text: step (DFTB); the accuracy by the
+        - emphasis [ref=e11806]: "thir`d"
+        - text: ’ (CCSD(T)).
+      - blockquote [ref=e11807]:
+        - paragraph [ref=e11808]:
+          - strong [ref=e11809]: Tip.
+          - text: The DFTB method is
+          - emphasis [ref=e11810]: not
+          - text: a substitute for DFT; it is a
+          - emphasis [ref=e11811]: complement
+          - text: . Use DFTB for
+          - emphasis [ref=e11812]: qualitative
+          - text: questions on large systems; use DFT for
+          - emphasis [ref=e11813]: quantitative
+          - text: questions on small systems; use CCSD(T) for
+          - emphasis [ref=e11814]: quantitative
+          - text: questions on
+          - emphasis [ref=e11815]: very small
+          - text: systems. The boundary between the three is set by the
+          - emphasis [ref=e11816]: accuracy
+          - text: required by the
+          - emphasis [ref=e11817]: chemical question
+          - text: being asked.
+      - heading "14.7 Basis set extrapolation" [level=2] [ref=e11818]
+      - paragraph [ref=e11819]:
+        - text: Every post-HF method is a
+        - emphasis [ref=e11820]: finite-basis
+        - text: approximation. The
+        - emphasis [ref=e11821]: convergence
+        - text: to the complete-basis-set (CBS) limit is
+        - emphasis [ref=e11822]: slow
+        - text: ": the MP2 correlation energy converges as"
+        - img [ref=e11824]
+        - text: for the Dunning cc-pV
+        - emphasis [ref=e11835]: X
+        - text: Z basis (
+        - link "chapter 06" [ref=e11836] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: § 6.2), and the
+        - emphasis [ref=e11837]: coupled-cluster
+        - text: correlation energy converges even more slowly. The standard fix is the
+        - strong [ref=e11838]: basis-set extrapolation
+        - text: ": a"
+        - emphasis [ref=e11839]: functional form
+        - text: for the basis-set error, fitted to calculations at two or three values of
+        - img [ref=e11841]
+        - text: . The most widely used form is the
+        - strong [ref=e11846]: "Helgaker formul`a"
+        - text: ", which gives the complete-basis-set* limit to"
+        - img [ref=e11848]
+        - text: for a triple- and quadruple-zeta pair.
+      - heading "14.7.1 The Helgaker formula" [level=3] [ref=e11864]
+      - paragraph [ref=e11865]:
+        - text: The
+        - strong [ref=e11866]: Helgaker
+        - text: two-point extrapolation formula (Helgaker, Klopper, Koch, Noga,
+        - emphasis [ref=e11867]: J. Chem. Phys.
+        - strong [ref=e11868]: "106"
+        - text: ", 9639 (1997)) is"
+      - paragraph [ref=e11869]:
+        - img [ref=e11871]
+        - img [ref=e11913]
+      - paragraph [ref=e11966]:
+        - text: The
+        - strong [ref=e11967]: "Hartree–Foc`k"
+        - text: energy converges exponentially* with the cardinal number
+        - img [ref=e11969]
+        - text: ; the leading correction is
+        - img [ref=e11975]
+        - text: for the Dunning basis. The
+        - strong [ref=e11988]: correlation
+        - text: energy converges
+        - emphasis [ref=e11989]: asymptotically
+        - text: as
+        - img [ref=e11991]
+        - text: ; the offset
+        - img [ref=e12011]
+        - text: reflects the
+        - emphasis [ref=e12020]: fact
+        - text: that cc-pVDZ (
+        - img [ref=e12022]
+        - text: ) is missing the
+        - emphasis [ref=e12031]: correlating
+        - text: functions of cc-pVTZ. The two expressions are
+        - emphasis [ref=e12032]: fit simultaneously
+        - text: to two calculations at
+        - img [ref=e12034]
+        - text: and
+        - img [ref=e12043]
+        - text: (typically
+        - img [ref=e12052]
+        - text: and
+        - img [ref=e12065]
+        - text: for triple- and quadruple-zeta), giving the CBS limit
+        - img [ref=e12078]
+        - text: .
+      - paragraph [ref=e12114]:
+        - text: The Helgaker formula is
+        - emphasis [ref=e12115]:
+          - text: justifie
+          - code [ref=e12116]: "d*' by the *asymptotic*' behaviour of the two-electron integrals in a Gaussian basis: the *missing* contribution in a finite basis is a *smoot"
+          - text: h
+        - text: ’ function of the basis set size, with the leading term scaling as
+        - img [ref=e12118]
+        - text: . The CBS limit is
+        - emphasis [ref=e12129]: recoverable
+        - text: from two or three finite-basis calculations, to a precision of
+        - img [ref=e12131]
+        - text: .
+      - blockquote [ref=e12147]:
+        - paragraph [ref=e12148]:
+          - strong [ref=e12149]: Note.
+          - text: The Helgaker formula is
+          - emphasis [ref=e12150]: not
+          - text: a
+          - emphasis [ref=e12151]: variational
+          - text: bound — the extrapolated CBS energy can be
+          - emphasis [ref=e12152]: below
+          - text: the true energy by
+          - img [ref=e12154]
+          - text: –
+          - img [ref=e12164]
+          - text: because the
+          - emphasis [ref=e12176]: fit
+          - text: is to a
+          - emphasis [ref=e12177]:
+            - text: specifi
+            - code [ref=e12178]: "c*' functional form that may not capture the *true* asymptotic behaviour. The error is *small* for triple- and quadruple-zeta* pairs ($\\sim 0.1\\,\\text{m}E_h$) and *larger* for *double- and triple-zet"
+            - text: a
+          - text: ’ pairs (
+          - img [ref=e12180]
+          - text: ). The
+          - emphasis [ref=e12194]: "recommende`d"
+          - text: ’ pair in production is
+          - img [ref=e12196]
+          - text: (cc-pVTZ + cc-pVQZ), with an error bar of
+          - img [ref=e12210]
+          - text: for closed-shell systems.
+      - heading "14.7.2 Two-point vs three-point extrapolation" [level=3] [ref=e12226]
+      - paragraph [ref=e12227]:
+        - text: The
+        - strong [ref=e12228]: two-point
+        - text: Helgaker extrapolation fits two calculations at
+        - img [ref=e12230]
+        - text: and
+        - img [ref=e12239]
+        - text: (typically 3 and 4) to the two
+        - emphasis [ref=e12247]: unknowns
+        - img [ref=e12249]
+        - text: and the single prefactor (
+        - img [ref=e12260]
+        - text: for HF,
+        - img [ref=e12266]
+        - text: for correlation). The two-point extrapolation is
+        - emphasis [ref=e12271]: exact
+        - text: if the functional form
+        - img [ref=e12273]:
+          - link [ref=e12276] [cursor=pointer]:
+            - /url: "#"
+        - text: –
+        - img [ref=e12286]:
+          - link [ref=e12289] [cursor=pointer]:
+            - /url: "#"
+        - text: is
+        - emphasis [ref=e12298]: correct
+        - text: ; the residual error is dominated by the
+        - emphasis [ref=e12299]: higher-order
+        - text: terms in the
+        - img [ref=e12301]
+        - text: expansion,
+        - emphasis [ref=e12312]: small
+        - text: for
+        - img [ref=e12314]
+        - text: .
+      - paragraph [ref=e12323]:
+        - text: The
+        - strong [ref=e12324]: three-point
+        - text: extrapolation uses three calculations at
+        - img [ref=e12326]
+        - text: ","
+        - img [ref=e12335]
+        - text: ","
+        - img [ref=e12344]
+        - text: (typically 2, 3, 4) to fit
+        - emphasis [ref=e12352]: three
+        - text: "unknowns:"
+        - img [ref=e12354]
+        - text: and
+        - emphasis [ref=e12364]: two
+        - text: prefactors. The three-point extrapolation is
+        - emphasis [ref=e12365]: more robust
+        - text: than the two-point, with the
+        - emphasis [ref=e12366]: residual
+        - text: error dominated by the next term in the expansion. The standard three-point form is the
+        - strong [ref=e12367]: Schwenke
+        - text: extrapolation (Schwenke,
+        - emphasis [ref=e12368]: J. Chem. Phys.
+        - strong [ref=e12369]: "122"
+        - text: ", 014107 (2005)), which uses"
+        - emphasis [ref=e12370]: two
+        - text: powers of
+        - img [ref=e12372]
+        - text: to fit the two unknowns at each order. The Schwenke extrapolation is
+        - emphasis [ref=e12385]: exact
+        - text: for the second-order Møller–Plesset perturbation theory.
+      - blockquote [ref=e12386]:
+        - paragraph [ref=e12387]:
+          - strong [ref=e12388]: Tip.
+          - text: The
+          - emphasis [ref=e12389]:
+            - text: standar
+            - code [ref=e12390]: "d*' recommendation is $X = 3, 4$ (cc-pVTZ + cc-pVQZ) for *production* high-accuracy calculations: the *cost* of cc-pVQZ is $\\sim 4$–$5\\times$ the cost of cc-pVTZ, but the *accuracy* of the extrapolation is *significantly* better than the $X = 2, 3$ pair (cc-pVDZ is *qualitatively* deficient for many properties). For *benchmar"
+            - text: k
+          - text: ’ calculations on
+          - emphasis [ref=e12391]: small
+          - text: systems, the
+          - img [ref=e12393]
+          - text: pair (cc-pVQZ
+        - list [ref=e12406]:
+          - listitem [ref=e12407]:
+            - text: cc-pV5Z) is the *gold standar
+            - code [ref=e12408]: d*
+            - text: .
+      - 'heading "14.7.3 Composite methods: G1, G2, G3, W1" [level=3] [ref=e12409]'
+      - paragraph [ref=e12410]:
+        - text: The
+        - strong [ref=e12411]: composite methods
+        - text: are
+        - emphasis [ref=e12412]: high-accuracy
+        - text: methods that
+        - emphasis [ref=e12413]: combine
+        - text: a basis-set extrapolation with a
+        - emphasis [ref=e12414]: perturbation
+        - text: expansion in the correlation treatment* to
+        - emphasis [ref=e12415]: approximate the CCSD(T)/CBS energy at a *fraction
+        - text: of the cost of the *full calculation. The two leading families are the
+        - strong [ref=e12416]: G1/G2/G3
+        - text: methods (Gaussian-n, Pople and co-workers) and the
+        - strong [ref=e12417]: W1/W2
+        - text: methods (Weizmann-n, Martin and co-workers).
+      - paragraph [ref=e12418]:
+        - strong [ref=e12419]: G3
+        - text: (Curtiss, Raghavachari, Redfern, Rassolov, Pople,
+        - emphasis [ref=e12420]: J. Chem. Phys.
+        - strong [ref=e12421]: "109"
+        - text: ", 7764 (1998)) approximates the"
+        - strong [ref=e12422]: QCISD(T)/CBS
+        - text: energy as
+      - img [ref=e12424]
+      - paragraph [ref=e12568]:
+        - text: The first term is the
+        - emphasis [ref=e12569]: base
+        - text: MP4 calculation in the
+        - emphasis [ref=e12570]: small
+        - text: 6-31G(d) basis; the second is the
+        - emphasis [ref=e12571]: basis-set extrapolation
+        - text: of the MP2 energy; the third is the
+        - emphasis [ref=e12572]: difference
+        - text: between MP4 and CCSD(T) in the smaller basis; the fourth is the
+        - emphasis [ref=e12573]: empirical
+        - text: higher-order correction fitted to the
+        - strong [ref=e12574]: G2/97
+        - text: test set; the fifth is the
+        - emphasis [ref=e12575]: spin–orbit
+        - text: and zero-point correction. The G3 method has a
+        - emphasis [ref=e12576]: mean unsigned error
+        - text: of
+        - img [ref=e12578]
+        - text: on G2/97, and is the
+        - emphasis [ref=e12599]: standard
+        - text: ’ for high-accuracy thermochemistry in 2025. The cost is dominated by the MP4/6-31G(d) step (
+        - img [ref=e12601]
+        - text: ); the
+        - emphasis [ref=e12616]: practical
+        - text: limit is
+        - img [ref=e12618]
+        - text: non-hydrogen atoms.
+      - paragraph [ref=e12626]:
+        - strong [ref=e12627]: W1
+        - text: (Martin, Par, Taylor,
+        - emphasis [ref=e12628]: J. Chem. Phys.
+        - strong [ref=e12629]: "107"
+        - text: ", 9476 (1997)) is the"
+        - emphasis [ref=e12630]: high-accuracy
+        - text: alternative to G3, with
+        - emphasis [ref=e12631]: tighter
+        - text: convergence parameters and a
+        - emphasis [ref=e12632]: smaller
+        - text: "empirical correction:"
+      - img [ref=e12634]
+      - paragraph [ref=e12757]:
+        - text: The first term is the
+        - emphasis [ref=e12758]: CCSD(T) basis-set extrapolation
+        - text: using cc-pVTZ and cc-pVQZ, with the Helgaker formula. The second is the
+        - emphasis [ref=e12759]: inner-shell
+        - text: correlation correction, computed as the
+        - emphasis [ref=e12760]: difference
+        - text: between an
+        - emphasis [ref=e12761]: all-electron
+        - text: CCSD(T) and a
+        - emphasis [ref=e12762]: frozen-core
+        - text: CCSD(T) in the cc-pCVDZ basis. The third is the
+        - emphasis [ref=e12763]:
+          - text: scalar relativisti
+          - code [ref=e12764]: c*' correction, computed as the *difference* between a *relativisti
+          - text: c
+        - text: ’ (Douglas–Kroll–Hess) and a
+        - emphasis [ref=e12765]: "non-relativisti`c"
+        - text: ’ CCSD(T) in the cc-pVTZ basis. The W1 method has a
+        - emphasis [ref=e12766]: mean unsigned error
+        - text: of
+        - img [ref=e12768]
+        - text: on G2/97, and is the
+        - emphasis [ref=e12791]: standard
+        - text: ’ for benchmark* thermochemistry; the cost is dominated by the CCSD(T)/cc-pVQZ step (
+        - img [ref=e12793]
+        - text: the G3 base), with a
+        - emphasis [ref=e12803]: practical
+        - text: limit of
+        - img [ref=e12805]
+        - text: non-hydrogen atoms.
+      - blockquote [ref=e12813]:
+        - paragraph [ref=e12814]:
+          - strong [ref=e12815]: Tip.
+          - text: The composite methods are
+          - emphasis [ref=e12816]:
+            - text: calibrate
+            - code [ref=e12817]: "d*' to the G2/97 test set of 148 small-molecule thermochemical properties. The *accuracy* on *larger* systems, on open-shell radicals, and on *transition-metal* complexes is systematically worse* than the G2/97 error. The *recommended* use is: (1) G3 for *routine* high-accuracy thermochemistry on *small* organic molecules, (2) W1 for *benchmark*' thermochemistry on very small* molecules, (3) HEAT (High-Accuracy Extrapolated Ab initio Thermochemistry, [Tajti *et al.*, J. Chem. Phys. **121**, 11599 (2004)](<https://doi.org/10.1063/1.1811608>)) for *ultimate* accuracy on diatomi"
+            - text: c and *triatomic
+          - text: molecules.
+      - heading "14.8 The post-HF zoo at a glance" [level=2] [ref=e12818]
+      - paragraph [ref=e12819]:
+        - text: The full post-HF “zoo” is summarised in Table 2. The
+        - strong [ref=e12820]: method
+        - text: column is the name; the
+        - strong [ref=e12821]: scaling
+        - text: column is the asymptotic cost in the basis size
+        - img [ref=e12823]
+        - text: for a
+        - emphasis [ref=e12828]: closed-shell
+        - text: system; the
+        - strong [ref=e12829]: typical accuracy
+        - text: column is the
+        - emphasis [ref=e12830]: mean unsigned error
+        - text: on the G2/97 test set in
+        - img [ref=e12832]
+        - text: ; the
+        - strong [ref=e12849]: when to use
+        - text: column is the kind of problem where the method is the
+        - emphasis [ref=e12850]: default
+        - text: choice.
+      - img [ref=e12852]:
+        - generic [ref=e12858]: Misplaced \hline
+      - paragraph [ref=e12859]:
+        - text: The cost-accuracy trade-off in Table
+        - img [ref=e12861]:
+          - link [ref=e12864] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - emphasis [ref=e12873]: engineer’s
+        - text: view of quantum chemistry. The
+        - emphasis [ref=e12874]: formal
+        - text: trade-off is in Table
+        - img [ref=e12876]:
+          - link [ref=e12879] [cursor=pointer]:
+            - /url: "#"
+        - text: ": the cost grows"
+        - emphasis [ref=e12888]: polynomially
+        - text: (in
+        - img [ref=e12890]
+        - text: ) up to CCSDTQ, and then
+        - emphasis [ref=e12895]: exponentially
+        - text: (in
+        - img [ref=e12897]
+        - text: ) for FCI; the accuracy
+        - emphasis [ref=e12902]: monotonically
+        - text: improves up to CCSD(T), and then
+        - emphasis [ref=e12903]: plateaus
+        - text: (the systematic* errors of the basis set and the
+        - emphasis [ref=e12904]: single-reference
+        - text: approximation become
+        - emphasis [ref=e12905]: dominant
+        - text: ). The practical trade-off is in Table
+        - img [ref=e12907]:
+          - link [ref=e12910] [cursor=pointer]:
+            - /url: "#"
+        - text: ": the"
+        - emphasis [ref=e12919]: best
+        - text: method for
+        - emphasis [ref=e12920]: most
+        - text: problems is not the most expensive, but the
+        - emphasis [ref=e12921]: cheapest
+        - text: method that gives the required* accuracy. The
+        - emphasis [ref=e12922]:
+          - text: require
+          - code [ref=e12923]: "d*' accuracy is set by the *chemical question* being asked: $\\pm 0.1\\,E_h$ for *qualitative* questions (what is the sign of the reaction energy?), $\\pm 1\\,\\text{kcal mol}^{-1}$ for *routine* thermochemistry, $\\pm 0.1\\,\\text{kcal mol}^{-1}$ for *benchmar"
+          - text: k
+        - text: ’ thermochemistry.
+      - paragraph [ref=e12924]:
+        - text: The
+        - emphasis [ref=e12925]: flowchart
+        - text: of method choice is the
+        - emphasis [ref=e12926]: single most useful
+        - text: artefact of the post-HF landscape. For a
+        - emphasis [ref=e12927]: closed-shell
+        - text: molecule near equilibrium, the
+        - emphasis [ref=e12928]: default
+        - text: is a hybrid* DFT calculation, with a
+        - emphasis [ref=e12929]:
+          - text: double- or triple-zet
+          - code [ref=e12930]: "a*' basis. If the *accuracy* is insufficient, the *next step is a *post-HF* calculation: MP2 for large systems ($\\gtrsim 50$ atoms), CCSD(T) for *medium* systems ($\\lesssim 30$ atoms), W1 or HEAT for *small* *systems* ($\\lesssim 10$ atoms). For a bond breaking* or *diradical or open-shell* problem, the *default* is a multireference method: CASSCF for the *qualitative* picture, NEVPT2 for the quantitative picture, FCI (via selected CI) for the *benchmar"
+          - text: k
+        - text: "`."
+      - figure [ref=e12932]:
+        - code [ref=e12933]:
+          - document [ref=e12934]:
+            - generic [ref=e12936]:
+              - generic [ref=e12946]:
+                - generic [ref=e12950]: add 2nd-order corr
+                - generic [ref=e12954]: 3rd order
+                - generic [ref=e12958]: linear CI singles+doubles
+                - generic [ref=e12962]: exp(T)|HF>
+                - generic [ref=e12966]: add triples
+                - generic [ref=e12970]: + perturbative T
+                - generic [ref=e12974]: + iterative T
+                - generic [ref=e12978]: + perturbative Q
+                - generic [ref=e12982]: all excitations
+                - generic [ref=e12986]: used in G1/G2/G3
+              - generic [ref=e12987]:
+                - generic [ref=e12993]:
+                  - text: HF
+                  - text: K^4
+                - generic [ref=e12999]:
+                  - text: MP2
+                  - text: K^5, singles+doubles
+                - generic [ref=e13005]:
+                  - text: MP3
+                  - text: K^6, triples part
+                - generic [ref=e13011]:
+                  - text: CISD
+                  - text: K^6, size-extensive?
+                - generic [ref=e13017]:
+                  - text: CCSD
+                  - text: K^6, size-extensive
+                - generic [ref=e13023]:
+                  - text: CCSD(T)
+                  - text: K^7, gold standard
+                - generic [ref=e13029]:
+                  - text: CCSDT
+                  - text: K^8, iterative T
+                - generic [ref=e13035]:
+                  - text: CCSDTQ
+                  - text: K^10, reference
+                - generic [ref=e13041]:
+                  - text: FCI
+                  - text: K^N, exact
+        - button "Download this diagram as a PNG" [ref=e13042] [cursor=pointer]:
+          - img [ref=e13043]
+          - generic [ref=e13046]: Download PNG
+      - paragraph [ref=e13047]:
+        - text: The Mermaid diagram shows the
+        - emphasis [ref=e13048]: post-HF ladder
+        - text: . The
+        - emphasis [ref=e13049]: vertical
+        - text: axis is cost, the
+        - emphasis [ref=e13050]: horizontal axis is *accuracy
+        - text: ; the arrows show the addition of a piece of physics that brings the method closer to FCI. MP2
+        - emphasis [ref=e13051]: adds
+        - text: the second-order correlation to HF; CISD
+        - emphasis [ref=e13052]: adds
+        - text: the linear singles and doubles to HF; CCSD
+        - emphasis [ref=e13053]: adds
+        - text: the exponential singles and doubles (with the disconnected products); CCSD(T)
+        - emphasis [ref=e13054]: adds
+        - text: the
+        - emphasis [ref=e13055]: perturbative
+        - text: triples to CCSD; CCSDT adds the
+        - emphasis [ref=e13056]: iterative
+        - text: triples; CCSDTQ adds the
+        - emphasis [ref=e13057]: perturbative quadruples; FCI is the *limit
+        - text: . The MP2, CISD, CCSD, and CCSD(T) lines are
+        - emphasis [ref=e13058]: horizontal
+        - text: in the diagram because the
+        - emphasis [ref=e13059]: cost
+        - text: is approximately the same; the
+        - emphasis [ref=e13060]: accuracy
+        - text: improves monotonically along the horizontal axis. The FCI box is
+        - emphasis [ref=e13061]:
+          - text: dashe
+          - code [ref=e13062]: d*' in the diagram to emphasise that it is *not* a production method — it is the *benchmar
+          - text: k
+        - text: ’ against which all the other methods are calibrated.
+      - blockquote [ref=e13063]:
+        - paragraph [ref=e13064]:
+          - strong [ref=e13065]: Tip.
+          - text: The
+          - emphasis [ref=e13066]: single most important
+          - text: rule of method choice is the
+          - strong [ref=e13067]: “no method is best” rule
+          - text: . Every method in Table
+          - img [ref=e13069]:
+            - link [ref=e13072] [cursor=pointer]:
+              - /url: "#"
+          - text: is
+          - emphasis [ref=e13081]: best
+          - text: for some problem and
+          - emphasis [ref=e13082]: worst for *others
+          - text: . The MP2 error on the G2/97 test set is
+          - img [ref=e13084]
+          - text: –
+          - img [ref=e13092]
+          - text: ", but on"
+          - emphasis [ref=e13112]:
+            - text: aromati
+            - code [ref=e13113]: c*' stacking interactions the MP2 error is *catastrophi
+            - text: c
+          - text: ’ (the MP2 correlation energy
+          - emphasis [ref=e13114]: diverges
+          - text: in the complete-basis-set limit for
+          - emphasis [ref=e13115]: some
+          - img [ref=e13117]
+          - text: "-stacked dimers). The recommended* workflow is: (1)"
+          - emphasis [ref=e13122]: validate
+          - text: the method on a
+          - emphasis [ref=e13123]: known
+          - text: benchmark, (2) test the method on a
+          - emphasis [ref=e13124]: small
+          - text: model of the real system, (3)
+          - emphasis [ref=e13125]: use the method on the *real
+          - text: system with the
+          - emphasis [ref=e13126]: caveat
+          - text: that the systematic* errors of the method are
+          - emphasis [ref=e13127]: "inherite`d"
+          - text: ’ by the calculation.
+      - heading "14.9 Worked example — H₂O at MP2 and CCSD(T)" [level=2] [ref=e13128]
+      - paragraph [ref=e13129]:
+        - text: The worked example of this chapter is the H₂O molecule at the
+        - emphasis [ref=e13130]: experimental
+        - text: equilibrium geometry, computed with the
+        - emphasis [ref=e13131]: cc-pVDZ
+        - text: basis at the MP2 and CCSD(T) levels. The goal is to
+        - emphasis [ref=e13132]: quantify
+        - text: the convergence of the post-HF series, the
+        - emphasis [ref=e13133]: basis-set
+        - text: error of the
+        - emphasis [ref=e13134]: small
+        - text: cc-pVDZ basis, and the systematic* error of the MP2 and CCSD(T) methods for the H₂O atomisation energy.
+      - heading "14.9.1 The geometry and the basis" [level=3] [ref=e13135]
+      - paragraph [ref=e13136]:
+        - text: The H₂O molecule is the
+        - emphasis [ref=e13137]: prototypical
+        - text: small molecule for quantum-chemistry benchmarks. The
+        - emphasis [ref=e13138]: experimental
+        - text: equilibrium geometry is
+        - img [ref=e13140]:
+          - generic [ref=e13159]: Å
+        - text: and
+        - img [ref=e13161]
+        - text: . In
+        - emphasis [ref=e13183]: atomic units
+        - text: ","
+        - img [ref=e13185]
+        - text: and
+        - img [ref=e13209]
+        - text: .
+      - paragraph [ref=e13232]:
+        - text: The
+        - strong [ref=e13233]: cc-pVDZ
+        - text: basis is the
+        - emphasis [ref=e13234]: smallest
+        - text: of the Dunning correlation-consistent family (
+        - link "chapter 06" [ref=e13235] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: § 6.5). For O, the cc-pVDZ basis has
+        - img [ref=e13237]
+        - text: "contracted functions: 9 basis functions. For H, the basis has"
+        - img [ref=e13257]
+        - text: ": 5 basis functions per H. The H₂O molecule has 1 O and 2 H, for a total of"
+        - img [ref=e13273]
+        - text: basis functions, or
+        - img [ref=e13292]
+        - text: spin-orbitals. The
+        - emphasis [ref=e13302]: "occupie`d"
+        - text: ’ orbitals are 5 (the O 1s, 2s, 2p, and the bonding combinations) × 2 spin-orbitals each = 10 occupied spin-orbitals, leaving
+        - img [ref=e13304]
+        - text: virtual spin-orbitals.
+      - paragraph [ref=e13320]:
+        - text: The cc-pVDZ basis is
+        - emphasis [ref=e13321]: not
+        - text: a production basis for
+        - emphasis [ref=e13322]: high-accuracy
+        - text: thermochemistry. The systematic* basis-set error is
+        - img [ref=e13324]
+        - text: –
+        - img [ref=e13332]
+        - text: for the H₂O atomisation energy, an order of magnitude larger than the
+        - emphasis [ref=e13345]:
+          - text: intrinsi
+          - code [ref=e13346]: c*' error of CCSD(T). The *purpose* of using cc-pVDZ here is to demonstrate the *method*' in a small basis that is *fast enough* to be *fully worked out by han
+          - text: d
+        - text: ’ in a single chapter.
+      - heading "14.9.2 The correlation energy at each level" [level=3] [ref=e13347]
+      - paragraph [ref=e13348]:
+        - text: The
+        - emphasis [ref=e13349]: correlation
+        - text: contribution of each method, in the cc-pVDZ basis, is summarised in Table 1. The HF energy is, by definition, the
+        - emphasis [ref=e13350]:
+          - text: uncorrelate
+          - code [ref=e13351]: "d*' starting point; the *correlation* energy is the difference between the *post-HF* total energy and the HF total energy. The fractions of the *exact* correlation energy of H₂O (which is $\\sim -0.310\\,E_h$ at the CBS limit) recovered by each method are: MP2 $\\sim 66\\%$, CCSD $\\sim 71\\%$, CCSD(T) $\\sim 73\\%$. The *missing* $\\sim 27\\%$ in CCSD(T) is the *systemati"
+          - text: c
+        - text: ’ error of the
+        - emphasis [ref=e13352]: basis set
+        - text: ", not of the metho"
+        - code [ref=e13353]: d — a *triple-zeta* basis (cc-pVTZ) recovers $\sim 99.5\%$ of the *metho
+        - text: d*’ error.
+      - paragraph [ref=e13354]:
+        - strong [ref=e13355]:
+          - text: Table 1. H₂O correlation energy at each level of post-HF theory, cc-pVDZ basis.
+          - img [ref=e13357]
+          - text: is the
+          - emphasis [ref=e13368]: correlation
+          - text: energy (post-HF minus HF); the
+          - emphasis [ref=e13369]: "Recovere`d"
+          - text: ’ column is the fraction of the CBS correlation energy (
+          - img [ref=e13371]
+          - text: ).
+      - table [ref=e13389]:
+        - rowgroup [ref=e13390]:
+          - row "Method / Recovered" [ref=e13391]:
+            - columnheader "Method" [ref=e13392]
+            - columnheader / [ref=e13393]:
+              - img [ref=e13395]
+              - text: /
+              - img [ref=e13407]
+            - columnheader "Recovered" [ref=e13415]
+        - rowgroup [ref=e13416]:
+          - row "MP2" [ref=e13417]:
+            - cell "MP2" [ref=e13418]
+            - cell [ref=e13419]:
+              - img [ref=e13421]
+            - cell [ref=e13436]:
+              - img [ref=e13438]
+          - row "CCSD" [ref=e13446]:
+            - cell "CCSD" [ref=e13447]
+            - cell [ref=e13448]:
+              - img [ref=e13450]
+            - cell [ref=e13465]:
+              - img [ref=e13467]
+          - row "CCSD(T)" [ref=e13475]:
+            - cell "CCSD(T)" [ref=e13476]
+            - cell [ref=e13477]:
+              - img [ref=e13479]
+            - cell [ref=e13494]:
+              - img [ref=e13496]
+      - img [ref=e13505]
+      - paragraph [ref=e13544]:
+        - text: is the
+        - emphasis [ref=e13545]:
+          - text: uncorrelate
+          - code [ref=e13546]: d*' reference. The *atomisation* energy of H₂O is almost entirely correlation energy (the kinetic and electrostatic contributions to the atomisation energy are *cancelle
+          - text: d
+        - text: ’ by the HF exchange), which is the reason the
+        - emphasis [ref=e13547]: qualitative
+        - text: HF picture of bond breaking is
+        - emphasis [ref=e13548]: right
+        - text: but the
+        - emphasis [ref=e13549]: quantitative
+        - text: atomisation energy is catastrophically wrong.
+      - heading "14.9.3 The H₂O atomisation energy" [level=3] [ref=e13550]
+      - paragraph [ref=e13551]: The H₂O atomisation energy is
+      - img [ref=e13553]
+      - paragraph [ref=e13611]:
+        - text: The
+        - emphasis [ref=e13612]: "atomi`c"
+        - text: ’ reference energies (in the same cc-pVDZ basis) are
+      - paragraph [ref=e13613]:
+        - img [ref=e13615]
+        - img [ref=e13653]
+        - img [ref=e13690]
+      - paragraph [ref=e13732]: The HF atomisation energy is therefore
+      - paragraph [ref=e13733]:
+        - img [ref=e13735]:
+          - generic [ref=e13739]:
+            - img [ref=e13740]
+            - img [ref=e13862]
+      - paragraph [ref=e13870]:
+        - text: The HF atomisation energy is
+        - emphasis [ref=e13871]: much smaller
+        - text: than the
+        - emphasis [ref=e13872]: experimental
+        - img [ref=e13874]
+        - text: (the
+        - emphasis [ref=e13904]: experimental
+        - img [ref=e13906]
+        - text: ; ZPE
+        - img [ref=e13937]
+        - text: ). The HF error is
+        - img [ref=e13962]
+        - text: —
+        - emphasis [ref=e13984]: catastrophic
+        - text: ’ by chemical standards. HF misses the
+        - emphasis [ref=e13985]: correlation
+        - text: energy of both the atom (which is
+        - emphasis [ref=e13986]: large
+        - text: for the open-shell O atom) and the
+        - emphasis [ref=e13987]: molecule
+        - text: (which is small for the closed-shell H₂O), and the
+        - emphasis [ref=e13988]: difference
+        - text: — the atomisation energy’s correlation contribution — is
+        - emphasis [ref=e13989]: huge
+        - text: .
+      - paragraph [ref=e13990]: The MP2 atomisation energy is
+      - paragraph [ref=e13991]:
+        - img [ref=e13993]:
+          - generic [ref=e13997]:
+            - img [ref=e13998]
+            - img [ref=e14123]
+      - paragraph [ref=e14131]:
+        - text: This is
+        - emphasis [ref=e14132]: too large
+        - text: by chemical standards. The
+        - img [ref=e14134]
+        - text: is the
+        - emphasis [ref=e14164]: correlation
+        - text: contribution to the atomisation energy, but it
+        - emphasis [ref=e14165]: over-shoots
+        - text: the true correlation contribution of
+        - img [ref=e14167]
+        - text: by
+        - img [ref=e14184]
+        - text: . The MP2 correlation energy of the O atom is
+        - emphasis [ref=e14194]: "over-estimate`d"
+        - text: ’ in the cc-pVDZ basis (the basis is
+        - emphasis [ref=e14195]: too small
+        - text: to describe the core–valence correlation), and the
+        - emphasis [ref=e14196]: difference
+        - text: between the atomic and molecular MP2 energies is
+        - emphasis [ref=e14197]: artificially
+        - text: large.
+      - paragraph [ref=e14198]: The CCSD(T) atomisation energy is
+      - paragraph [ref=e14199]:
+        - img [ref=e14201]:
+          - generic [ref=e14205]:
+            - img [ref=e14206]
+            - img [ref=e14339]
+      - paragraph [ref=e14347]:
+        - text: The CCSD(T) atomisation energy is
+        - emphasis [ref=e14348]: also
+        - text: too large (by
+        - img [ref=e14350]
+        - text: ), for the
+        - emphasis [ref=e14372]: same
+        - text: "reason: cc-pVDZ is"
+        - emphasis [ref=e14373]: too small
+        - text: for a quantitative atomisation energy. In cc-pVTZ the CCSD(T) atomisation energy is
+        - img [ref=e14375]
+        - text: (within
+        - img [ref=e14399]
+        - text: of experiment), and the
+        - emphasis [ref=e14420]: basis-set
+        - text: extrapolation to the CBS limit (§ 14.7) brings it to within
+        - img [ref=e14422]
+        - text: of experiment.
+      - blockquote [ref=e14445]:
+        - paragraph [ref=e14446]:
+          - strong [ref=e14447]: Tip.
+          - text: The
+          - emphasis [ref=e14448]: numerical
+          - text: values in this section are
+          - emphasis [ref=e14449]: representative
+          - text: of typical cc-pVDZ calculations on H₂O; the
+          - emphasis [ref=e14450]: exact
+          - text: values depend on the
+          - emphasis [ref=e14451]: specific
+          - text: ’ cc-pVDZ basis (the standard* Dunning basis or the
+          - emphasis [ref=e14452]:
+            - text: augmente
+            - code [ref=e14453]: "d*' aug-cc-pVDZ), the *frozen-core* approximation (we used the default frozen-core for O and H, which is *none* — both cores are correlated), and the *SCF convergence criterion*. The *qualitative conclusion is *robust*: cc-pVDZ is too small for *quantitative atomisation energies, the HF error is *catastrophi"
+            - text: c
+          - code [ref=e14454]: ", the MP2 and CCSD(T) errors are *dominated by the basis-set incompleteness*, and the *convergence to the experimental value requires a *triple-zet"
+          - text: a
+          - emphasis [ref=e14455]: ’ basis or a *basis-set extrapolation
+          - text: .
+      - heading "14.9.4 What the numbers mean" [level=3] [ref=e14456]
+      - paragraph [ref=e14457]:
+        - text: The numbers in this section are a
+        - emphasis [ref=e14458]: worked example
+        - text: of the
+        - emphasis [ref=e14459]: systematic
+        - text: ’ errors of the small cc-pVDZ basis. The
+        - emphasis [ref=e14460]: take-home
+        - text: "lessons are:"
+      - list [ref=e14461]:
+        - listitem [ref=e14462]:
+          - paragraph [ref=e14463]:
+            - strong [ref=e14464]: The HF error is large
+            - text: (
+            - img [ref=e14466]
+            - text: of the experimental atomisation energy). HF is
+            - emphasis [ref=e14476]: not
+            - text: a
+            - emphasis [ref=e14477]: quantitative
+            - text: method for thermochemistry — the
+            - emphasis [ref=e14478]: correlation
+            - text: contribution to the atomisation energy is
+            - emphasis [ref=e14479]: larger
+            - text: than the HF atomisation energy itself.
+        - listitem [ref=e14480]:
+          - paragraph [ref=e14481]:
+            - strong [ref=e14482]: The basis-set error dominates the method error at cc-pVDZ.
+            - text: The MP2 and CCSD(T)
+            - emphasis [ref=e14483]: over-correlate
+            - text: the O atom in cc-pVDZ, and the
+            - emphasis [ref=e14484]: error
+            - text: in the
+            - emphasis [ref=e14485]: difference
+            - text: (the atomisation energy) is
+            - emphasis [ref=e14486]: systematically
+            - text: too large. In cc-pVTZ, the MP2 / CCSD(T) atomisation energy is
+            - emphasis [ref=e14487]: within
+            - img [ref=e14489]
+            - text: of experiment, and the
+            - emphasis [ref=e14510]: basis-set extrapolation
+            - text: to the CBS limit brings it to
+            - img [ref=e14512]
+            - text: .
+        - listitem [ref=e14535]:
+          - paragraph [ref=e14536]:
+            - strong [ref=e14537]: The (T) correction is small for H₂O.
+            - text: The perturbative triples contribute only
+            - img [ref=e14539]
+            - text: to the correlation energy — a
+            - img [ref=e14556]
+            - text: correction to the CCSD value. The (T) is
+            - emphasis [ref=e14565]: small
+            - text: for closed-shell molecules near equilibrium; it is
+            - emphasis [ref=e14566]: larger
+            - text: for bond breaking,
+            - emphasis [ref=e14567]: open-shell
+            - text: systems, and diradicals.
+        - listitem [ref=e14568]:
+          - paragraph [ref=e14569]:
+            - strong [ref=e14570]:
+              - text: The H₂O atomisation energy is
+              - emphasis [ref=e14571]: "dominate`d"
+              - text: ’ by the
+              - emphasis [ref=e14572]: electron–correlation
+              - text: energy.
+            - text: The HF contribution to the atomisation energy is
+            - emphasis [ref=e14573]: almost zero
+            - text: ; the
+            - emphasis [ref=e14574]: correlation energy contributes *almost all
+            - text: of the atomisation energy. This is a
+            - emphasis [ref=e14575]: general
+            - text: "property of closed-shell molecules: the HF energy is"
+            - emphasis [ref=e14576]: qualitatively
+            - text: correct for the
+            - emphasis [ref=e14577]: electron density
+            - text: but quantitatively wrong for the
+            - emphasis [ref=e14578]: energy
+            - text: .
+      - heading "14.10 Problems" [level=2] [ref=e14579]
+      - group [ref=e14580]:
+        - generic "▸ Problem 1 (easy) — Size consistency of MP2" [ref=e14581] [cursor=pointer]
+        - text: "The **MP2 correlation energy** of a system of two non-interacting He atoms (in the limit ) is the *sum* of the MP2 correlation energies of the two He atoms computed separately. Show this *algebraically* by working through the MP2 formula for the dimer and identifying the cross-terms that vanish in the limit . You may use the following *facts* (which are derived in the body of the chapter): 1. In the limit , the MOs of the dimer split into the MOs of the *left* He atom and the MOs of the *right* He atom. 2. The MOs of the *left* He atom are localised* on the *left* He atom; the MOs of the right He atom are *localised*' on the right He atom. 3. The two-electron integrals between *left* and right orbitals are *exponentially small* in the separation (they vanish in the limit ). 4. The energy denominators in the MP2 sum are *the same* in the dimer and in the two separate atoms (the orbital energies do not change with ). Verify that the cross-terms in the MP2 sum (those with and or vice versa) vanish in the limit , and write the final expression for in terms of the atomic MP2 correlation energies."
+      - group [ref=e14582]:
+        - generic "▸ Show answer" [ref=e14583] [cursor=pointer]
+        - text: "**Step 1 — split the orbital spaces.** In the limit, the occupied spin-orbitals of the dimer split into the *left*-atom and right-atom sets; the same split holds for the virtuals. **Step 2 — classify the MP2 sum.** The pairs in split into **AA**, **BB**, and **AB** classes. The same for the virtual pairs. **Step 3 — evaluate the cross-terms.** Each **AB** occupied pair combines with any virtual pair to give a *cross* integral that is *exponentially small* in (fact 3). All **AB** contributions vanish. **Step 4 — sum the survivors.** The remaining **AA**-**AA** and **BB**-**BB** pieces are the *left*- and right-atom MP2 sums; the energy denominators are unchanged (fact 4), so the dimer MP2 correlation energy is The analogous argument for CISD *fails* — the truncated-CI normalisation introduces *disconnecte`d*' terms that grow with the number of fragments (§ 14.3.4)."
+      - group [ref=e14584]:
+        - generic "▸ Problem 2 (medium) — The MP2 energy of H₂ in a minimal basis" [ref=e14585] [cursor=pointer]
+        - text: Consider the H₂ molecule at the equilibrium bond length in the *minimal* STO-3G basis. The basis has one function on each hydrogen, contracted from 3 Gaussians. The HF energy in this basis is , the HF orbital energies are (occupied) and (virtual), and the only non-zero antisymmetrised two-electron integral is . Compute the MP2 correlation energy using (sum over the *one* pair of occupied orbitals and the *one* pair of virtual orbitals ), and add it to the HF energy to get the MP2 total energy. Compare to the *exact* (full-CI) energy of H₂ in the STO-3G basis, .
+      - group [ref=e14586]:
+        - generic "▸ Show answer" [ref=e14587] [cursor=pointer]
+        - text: "**Step 1 — identify the unique pair.** In the minimal STO-3G basis of H₂, the only occupied spin-orbital is the bonding (with both and electrons) and the only virtual is the antibonding . The sum in has *one* term: the double excitation . **Step 2 — evaluate the integral and denominator.** The antisymmetrised integral is ; the energy denominator is . **Step 3 — assemble the MP2 energy.** **Step 4 — compare to FCI.** The MP2 total energy is *below* the FCI energy : MP2 is *not* a variational bound on FCI. The MP2 error in the correlation energy is ( of the correlation energy) — *typical* for a minimal basis, and *systemati`c*' (overcorrelation). The *take-home*: the Møller–Plesset series is a *power series*, and a truncated* series is not a variational bound."
+      - group [ref=e14588]:
+        - generic "▸ Problem 3 (hard) — Show that the CCSD energy is size extensive" [ref=e14589] [cursor=pointer]
+        - text: "Show that the CCSD energy is *size extensive*: for two non-interacting fragments A and B (in the limit ), the CCSD energy of A B is the *sum* of the CCSD energies of A and B computed separately. Use the linked-cluster theorem of § 14.4.4 and the factorisation of the exponential ansatz in the limit . You may use the following *facts* (which are derived in the body of the chapter): 1. In the limit , the CCSD wavefunction factorises: . 2. The CCSD energy is the *sum* of connected diagrams: . 3. The *connecte`d*' diagrams in the CCSD energy are *proportional* to the number of particles in the uniform limit. 4. The **linked-cluster theorem** of CC theory says that *all* matrix elements of are *sums* of connected diagrams; there are *no* disconnected contributions to the *matrix elements*. Working from these facts, show that ."
+      - group [ref=e14590]:
+        - generic "▸ Show answer" [ref=e14591] [cursor=pointer]
+        - text: "**Step 1 — apply the factorisation.** By fact 1, in the limit the CCSD wavefunction of the dimer factorises into a *product* of the fragment CCSD wavefunctions: and . **Step 2 — apply the linked-cluster theorem.** By fact 2 (which *follows* from fact 4), the CCSD energy is a *sum* of connected diagrams. In the factorised* dimer reference, the connected diagrams split into *AA* (left-atom only) and BB (right-atom only) classes. The *cross* (AB) diagrams do not exist in the limit because the cross two-electron integrals vanish exponentially in (the *same* argument as in Problem 1 for MP2). So the sum splits into a *left-atom* sum plus a *right-atom sum. **Step 3 — identify the fragment energies.** The *left-atom* sum is, by definition, the CCSD energy of the *left* atom; the right-atom sum is the *right*-atom energy. Therefore This is the *defining* advantage of the exponential ansatz of CC theory over the linear CI ansatz: the *normalisation* of the truncated-CI wavefunction introduces *disconnecte`d*' contributions that grow with the number of fragments (§ 14.3.4), while the CC ansatz *factorises* by the BCH similarity transform and the linked-cluster theorem ensures that *only* *connecte`d*' contributions survive. The same argument extends to CCSDT, CCSDTQ, …, and to the (T) correction of CCSD(T)."
+      - heading "14.11 Cross-references" [level=2] [ref=e14592]
+      - paragraph [ref=e14593]:
+        - text: The post-HF machinery of this chapter is
+        - emphasis [ref=e14594]: built on
+        - text: the second-quantised notation, the Slater–Condon rules, and the Fock operator of
+        - link "chapter 03" [ref=e14595] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: (Hartree–Fock). The MP2 derivation uses the
+        - emphasis [ref=e14596]: commutator
+        - text: and the BCH formula of the
+        - link "math cheatsheet" [ref=e14597] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+        - text: § 2.3; the
+        - emphasis [ref=e14598]: Wick’s theorem
+        - text: of the cheatsheet § 4.4 is the
+        - emphasis [ref=e14599]: engine
+        - text: of every diagram in the post-HF series. The basis-set extrapolation of § 14.7 builds on the cc-pV
+        - emphasis [ref=e14600]: X
+        - text: Z family of
+        - link "chapter 06" [ref=e14601] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: § 6.5 and the basis-set-incompleteness error of
+        - link "chapter 06" [ref=e14602] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: § 6.2. The multireference methods of § 14.5 build on the
+        - emphasis [ref=e14603]: Hubbard-model
+        - text: language of
+        - link "chapter 13" [ref=e14604] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-13/
+        - text: § 13.2.2 and the
+        - emphasis [ref=e14605]: static correlation
+        - text: / dynamic correlation split of
+        - link "chapter 13" [ref=e14606] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-13/
+        - text: § 13.1. The Kohn–Sham references of § 14.6 (DFTB) build on the
+        - emphasis [ref=e14607]: Kohn–Sham
+        - text: equations of
+        - link "chapter 04" [ref=e14608] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: and the
+        - emphasis [ref=e14609]: XC functionals
+        - text: of
+        - link "chapter 05" [ref=e14610] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: .
+      - paragraph [ref=e14611]:
+        - text: The
+        - emphasis [ref=e14612]: downstream
+        - text: uses of this chapter are in
+        - emphasis [ref=e14613]: high-accuracy
+        - text: thermochemistry (G1–G3, W1–W2, HEAT),
+        - emphasis [ref=e14614]: multireference
+        - text: problems (bond breaking, diradicals, transition-metal multiplets), and the
+        - emphasis [ref=e14615]: high-throughput
+        - text: screening of materials. The forward
+        - emphasis [ref=e14616]: pointer
+        - text: is to
+        - link "chapter 15" [ref=e14617] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-15/
+        - text: ", where we will cover the"
+        - emphasis [ref=e14618]: "relativisti`c"
+        - text: ’ effects that become important for the heavy elements of the periodic table — the next step in the systematic ladder of wavefunction-based methods.
+      - heading "14.12 What we left out" [level=2] [ref=e14619]
+      - paragraph [ref=e14620]:
+        - text: The chapter scratched the surface of a
+        - emphasis [ref=e14621]: large
+        - text: field. The five omissions below are the most important for a
+        - emphasis [ref=e14622]: complete
+        - text: picture of the post-HF landscape.
+      - list [ref=e14623]:
+        - listitem [ref=e14624]:
+          - paragraph [ref=e14625]:
+            - strong [ref=e14626]: Explicitly correlated (F12) methods.
+            - text: The
+            - emphasis [ref=e14627]: conventional
+            - text: MP2, CCSD, and CCSD(T) methods have a
+            - emphasis [ref=e14628]: slow
+            - text: basis-set convergence because the electron–electron cusp is
+            - emphasis [ref=e14629]: not
+            - text: described by the finite Gaussian basis. The
+            - strong [ref=e14630]: F12
+            - text: methods (Hättig, Klopper, Tew, Valeev,
+            - emphasis [ref=e14631]: Chem. Rev.
+            - strong [ref=e14632]: "112"
+            - text: ", 4 (2012)) add a"
+            - emphasis [ref=e14633]: geminal
+            - text: correlation factor
+            - img [ref=e14635]
+            - text: that
+            - emphasis [ref=e14651]: explicitly
+            - text: describes the cusp, and achieve
+            - emphasis [ref=e14652]: cc-pVDZ-F12
+            - text: accuracy comparable to
+            - emphasis [ref=e14653]: cc-pVQZ
+            - text: at a much lower cost. F12 is the
+            - emphasis [ref=e14654]: production
+            - text: standard in modern high-accuracy quantum chemistry. We did not derive the F12 ansatz, the F12-specific integrals, or the F12-CASPT2 generalisation of § 14.5.3. -
+            - strong [ref=e14655]: Quantum Monte Carlo (QMC) and full-CI QMC.
+            - text: The
+            - strong [ref=e14656]: VMC
+            - text: (variational) and
+            - strong [ref=e14657]: DMC
+            - text: (diffusion) Monte Carlo methods (Anderson,
+            - emphasis [ref=e14658]: J. Chem. Phys.
+            - strong [ref=e14659]: "63"
+            - text: ", 1499 (1975); Ceperley & Alder,"
+            - emphasis [ref=e14660]: Phys. Rev. Lett.
+            - strong [ref=e14661]: "45"
+            - text: ", 566 (1980)) solve the"
+            - emphasis [ref=e14662]:
+              - text: electroni
+              - code [ref=e14663]: c*' Schrödinger equation by *stochasti
+              - text: c
+            - text: ’ sampling of the wavefunction. QMC is
+            - emphasis [ref=e14664]: exact
+            - text: in principle (within the
+            - emphasis [ref=e14665]: fixed-node
+            - text: approximation) and scales polynomially, making it
+            - emphasis [ref=e14666]: competitive
+            - text: with CCSD(T) for
+            - emphasis [ref=e14667]:
+              - text: medium-size
+              - code [ref=e14668]: d*' systems. The **Full-CI QMC** algorithm of Booth, Thom, Alavi (*J. Chem. Phys.* **131**, 054106 (2009)) is the *only* method that has *solved*' the square H₂O molecule in a *hexuple-zet
+              - text: a
+            - text: ’ basis. We did not discuss QMC.
+        - listitem [ref=e14669]:
+          - paragraph [ref=e14670]:
+            - strong [ref=e14671]: Equation-of-motion CC (EOM-CC) and multireference CC (MRCC).
+            - text: The
+            - strong [ref=e14672]: EOM-CCSD
+            - text: method (Stanton & Bartlett,
+            - emphasis [ref=e14673]: J. Chem. Phys.
+            - strong [ref=e14674]: "98"
+            - text: ", 7029 (1993)) extends CCSD to"
+            - emphasis [ref=e14675]: excited
+            - text: ’, ionised, and
+            - emphasis [ref=e14676]:
+              - text: electron- attache
+              - code [ref=e14677]: d*' states by acting on the CCSD wavefunction with a *linear* operator $\hat R$ and diagonalising the *similarity-transforme
+              - text: d
+            - text: ’ Hamiltonian
+            - img [ref=e14679]
+            - text: in the
+            - emphasis [ref=e14718]: single-excitation
+            - text: space. The
+            - strong [ref=e14719]: multireference CC
+            - text: methods (Hanrath,
+            - emphasis [ref=e14720]: Theor. Chem. Acc.
+            - strong [ref=e14721]: "123"
+            - text: ", 245 (2009)) are the"
+            - emphasis [ref=e14722]: open
+            - text: "problem in modern quantum chemistry: how to combine the"
+            - emphasis [ref=e14723]: size extensivity
+            - text: of the exponential ansatz with the
+            - emphasis [ref=e14724]: qualitative correctness
+            - text: of a multireference reference. We did not derive the EOM equations or the MRCC formalism.
+        - listitem [ref=e14725]:
+          - paragraph [ref=e14726]:
+            - strong [ref=e14727]: Spin–orbit coupling and relativistic post-HF methods.
+            - text: The
+            - emphasis [ref=e14728]: scalar
+            - text: relativistic effects (Darwin, mass–velocity) and the
+            - emphasis [ref=e14729]: spin–orbit
+            - text: coupling are
+            - emphasis [ref=e14730]: essential
+            - text: for the heavy elements of the periodic table (
+            - img [ref=e14732]
+            - text: ). The four-component Dirac–Hartree–Fock, four-component MP2, and four-component CCSD(T) methods are the
+            - emphasis [ref=e14742]: production
+            - text: tools for heavy-element quantum chemistry. We did not discuss them; they are the subject of
+            - link "chapter 15" [ref=e14743] [cursor=pointer]:
+              - /url: /DFT-notes/dft-notes/chapter-15/
+            - text: (the
+            - emphasis [ref=e14744]: next
+            - text: chapter).
+        - listitem [ref=e14745]:
+          - paragraph [ref=e14746]:
+            - strong [ref=e14747]: Periodic post-HF methods (periodic MP2, periodic CCSD(T)).
+            - text: The
+            - emphasis [ref=e14748]: "periodi`c"
+            - text: ’ versions of MP2, CCSD, and CCSD(T) extend the post-HF ladder to
+            - emphasis [ref=e14749]: infinite
+            - text: periodic systems (solids, surfaces). The
+            - emphasis [ref=e14750]: cost
+            - text: is dominated by the
+            - img [ref=e14752]
+            - text: "-point sampling, and the"
+            - emphasis [ref=e14757]: practical
+            - text: limit in 2025 is
+            - emphasis [ref=e14758]: small-unit-cell
+            - text: systems (
+            - img [ref=e14760]
+            - text: atoms). The
+            - link "PI boyset al." [ref=e14768] [cursor=pointer]:
+              - /url: https://doi.org/10.1063/5.0013845
+              - text: PI boys
+              - emphasis [ref=e14769]: et al.
+            - text: and
+            - link "Grüneiset al." [ref=e14770] [cursor=pointer]:
+              - /url: https://doi.org/10.1063/5.0040469
+              - text: Grüneis
+              - emphasis [ref=e14771]: et al.
+            - text: programmes are the production tools. We did not discuss periodic post-HF methods.
+      - blockquote [ref=e14772]:
+        - paragraph [ref=e14773]:
+          - text: "Next:"
+          - link "Chapter 15" [ref=e14774] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-15/
+          - text: — Relativistic effects and spin–orbit coupling.
+  - contentinfo [ref=e14775]:
+    - generic [ref=e14776]:
+      - generic [ref=e14777]:
+        - img [ref=e14778]
+        - generic [ref=e14782]: DFT Notes
+        - paragraph [ref=e14783]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e14784]:
+        - generic [ref=e14785]:
+          - heading "Project" [level=3] [ref=e14786]
+          - list [ref=e14787]:
+            - listitem [ref=e14788]:
+              - link "Chapters map" [ref=e14789] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e14790]:
+              - link "Python codes" [ref=e14791] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e14792]:
+              - link "Contributing" [ref=e14793] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e14794]:
+              - link "Security" [ref=e14795] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e14796]:
+              - link "Design spec" [ref=e14797] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e14798]:
+              - link "GitHub ↗" [ref=e14799] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e14800]:
+          - heading "Built with" [level=3] [ref=e14801]
+          - list [ref=e14802]:
+            - listitem [ref=e14803]:
+              - link "Jekyll" [ref=e14804] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e14805]:
+              - link "MathJax 3" [ref=e14806] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e14807]:
+              - link "Mermaid" [ref=e14808] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e14809]:
+              - link "chenglou/pretext" [ref=e14810] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e14811]:
+              - link "Google Fonts" [ref=e14812] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e14813]:
+          - heading "Legal" [level=3] [ref=e14814]
+          - list [ref=e14815]:
+            - listitem [ref=e14816]:
+              - link "MIT License" [ref=e14817] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e14818]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e14820]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

@@ -1845,7 +1845,7 @@ choice.
 
 $$
 \label{eq:ch-14-zoo}
-\begin{array}{|lccp{5.5cm|}}
+\begin{array}{|lccc|}}
 \hline
 \text{Method} & \text{Scaling} & \text{Accuracy} & \text{When} \\\
 \hline
