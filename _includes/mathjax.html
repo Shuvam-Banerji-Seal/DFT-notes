@@ -83,6 +83,23 @@
     for (var i = 0; i < els.length; i++) els[i].remove();
   }
 
+  // ------- De-bounce the MutationObserver to prevent feedback loops.
+  //          typesetPromise itself mutates the DOM (adding
+  //          mjx-container children) which would re-fire the observer
+  //          in an infinite loop. The guard flag breaks the cycle.
+  var typesetInProgress = false;
+  function safeTypeset() {
+    if (typesetInProgress) return;
+    if (!window.MathJax || !window.MathJax.typesetPromise) return;
+    typesetInProgress = true;
+    window.MathJax.typesetPromise().then(function () {
+      typesetInProgress = false;
+      cleanupAssistiveMml();
+    }).catch(function () {
+      typesetInProgress = false;
+    });
+  }
+
   window.MathJax = {
     tex: {
       inlineMath:    [['$', '$'], ['\\(', '\\)']],
@@ -112,16 +129,15 @@
       ready: () => {
         MathJax.startup.defaultReady();
 
-        MathJax.startup.promise.then(() => {
+        MathJax.startup.promise.then(function () {
           cleanupAssistiveMml();
-          // Re-run the repair on every DOM mutation (theme toggle,
-          // dynamic content, page navigation) so MathJax re-typesets
-          // with clean math input.
-          var observer = new MutationObserver(() => {
+          // Single observer: re-run the repair on every DOM mutation
+          // (theme toggle, dynamic content, page navigation). The
+          // safeTypeset helper uses a re-entrancy guard to break the
+          // typeset → DOM-mutation → observer → typeset feedback loop.
+          var observer = new MutationObserver(function () {
             repairBrInMath();
-            if (window.MathJax && window.MathJax.typesetPromise) {
-              window.MathJax.typesetPromise().then(cleanupAssistiveMml);
-            }
+            safeTypeset();
           });
           observer.observe(document.body, {
             childList: true,
