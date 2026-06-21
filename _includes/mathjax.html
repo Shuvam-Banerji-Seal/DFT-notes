@@ -77,14 +77,25 @@
   // is the residue of the original "\\".)
   //
   // MathJax doesn't know about <br> tags. We need the line break
-  // to appear as "\\" in the TeX stream. Two cases:
+  // to appear as "\\" in the TeX stream. Three cases, by what
+  // immediately precedes the <br> in the DOM:
   //
-  //  1. The text before the <br> already ends in "\\" (i.e. the
-  //     source markdown used "\\\\" and kramdown kept it). Just
-  //     remove the <br>; the line break is already there.
-  //  2. The text before the <br> ends in "\" (i.e. kramdown
-  //     stripped one backslash). Replace the <br> with "\\" to
-  //     make up the missing escape.
+  //  1. Text ends in "\\" (double backslash): the original "\\"
+  //     was kept by kramdown, the <br /> is just an additional
+  //     line break. Just remove the <br />; the line break is
+  //     already there as "\\".
+  //
+  //  2. Text ends in "\" (single backslash): kramdown stripped
+  //     one of the backslashes. Remove the <br /> and the
+  //     preceding "\" so we're left with nothing (the line break
+  //     was already emitted as "\\" in the markdown but lost
+  //     one backslash in transit - so we add it back by
+  //     concatenating the next row to the current row).
+  //     Actually simpler: replace the <br /> with "\\" so we
+  //     get a "\\" line break in the TeX stream.
+  //
+  //  3. Text ends in something else: the <br /> isn't part of a
+  //     line-break sequence. Remove it.
   function repairBrInMath() {
     var candidates = document.body.querySelectorAll('p, li, dd, dt, div, blockquote');
     for (var i = 0; i < candidates.length; i++) {
@@ -103,13 +114,39 @@
           if (prev.nodeType === 3) prevText = prev.textContent || '';
           else if (prev.nodeType === 1) prevText = prev.textContent || '';
         }
-        if (/\\\\\s*$/.test(prevText)) {
-          // Case 1: "\\\\" is already there; just remove the <br>
-          br.parentNode.removeChild(br);
+        if (/\\\s*$/.test(prevText)) {
+          // Case 1: text ends in "\\" or "\". The line break is
+          // already in the TeX (the "\\" or "\"), so just remove
+          // the <br />. If the text ends in just "\", the
+          // resulting TeX has "\\" (line break) which is what
+          // we want.
+          //
+          // Actually we need to be careful: if the text ends in
+          // a single "\", that's an escape character, not a line
+          // break. We need to add the missing backslash.
+          if (/\\\\\s*$/.test(prevText)) {
+            // Already has "\\" line break, just remove the <br>
+            br.parentNode.removeChild(br);
+          } else if (/\\\s*$/.test(prevText)) {
+            // Text ends in single "\". The original "\\" became
+            // just "\" (kramdown stripped one backslash), and
+            // the <br /> is the kramdown line break. Replace
+            // the "\<br />" sequence with "\\" (one line break).
+            // That means: change the preceding text node's
+            // last "\" + the <br /> to "\\".
+            //
+            // We do this by setting the previous text node's
+            // content to (its content minus the trailing "\")
+            // and inserting a "\\" text node in place of the br.
+            if (prev.nodeType === 3) {
+              prev.textContent = prev.textContent.replace(/\\\s*$/, '');
+            }
+            var newText = document.createTextNode('\\\\');
+            br.parentNode.replaceChild(newText, br);
+          }
         } else {
-          // Case 2: missing one backslash; replace <br> with "\\"
-          var newText = document.createTextNode('\\\\');
-          br.parentNode.replaceChild(newText, br);
+          // Case 3: not a line break context, just remove
+          br.parentNode.removeChild(br);
         }
       }
     }
