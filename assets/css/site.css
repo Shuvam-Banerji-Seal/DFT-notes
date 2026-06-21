@@ -1606,9 +1606,11 @@ mjx-container[display="false"] {
 /* MathJax's SVG output defaults to display:block, which makes
    the SVG take up the full line width and forces the text after
    inline math onto a new line. Override to inline-block so the
-   SVG only takes its natural width and text flows around it. */
+   SVG only takes its natural width and text flows around it.
+   !important is needed because MathJax's default stylesheet
+   sets display:block on these SVGs with the same specificity. */
 mjx-container[display="false"] > svg {
-  display: inline-block;
+  display: inline-block !important;
   vertical-align: middle;
 }
 
