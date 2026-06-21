@@ -1585,31 +1585,21 @@ blockquote strong:first-child {
   text-transform: none;
 }
 
-/* Inline math stays inline; kramdown turns $$ ... $$ into script
-   tags that MathJax will typeset.  We give display math (block
-   equations in their own paragraph) a vertical rhythm — but
-   NOT inline math. The 24px vertical margin on every mjx-container
-   was pushing inline math onto its own line, which in turn
-   pushed the text after the math to a new line, producing
-   "random newline after math" artifacts across the site. */
+/* Display math: mjx-container has display="true" attribute.
+   Give it vertical rhythm (margin) for visual separation. */
 mjx-container[display="true"] {
   margin: var(--space-lg) 0 !important;
 }
 
-mjx-container[display="false"] {
-  /* Inline math: no vertical margin so it flows with surrounding
-     text. MathJax's default inline alignment (vertical-align)
-     handles the baseline shift for subscripts/superscripts. */
+/* Inline math: mjx-container has NO display attribute (or it's
+   not "true"). Override the generic img/svg/video rule which
+   sets display:block (making the SVG take the full line width
+   and pushing the text after the math onto a new line). */
+mjx-container:not([display="true"]) {
   margin: 0 !important;
 }
 
-/* MathJax's SVG output defaults to display:block, which makes
-   the SVG take up the full line width and forces the text after
-   inline math onto a new line. Override to inline-block so the
-   SVG only takes its natural width and text flows around it.
-   !important is needed because MathJax's default stylesheet
-   sets display:block on these SVGs with the same specificity. */
-mjx-container[display="false"] > svg {
+mjx-container:not([display="true"]) > svg {
   display: inline-block !important;
   vertical-align: middle;
 }
