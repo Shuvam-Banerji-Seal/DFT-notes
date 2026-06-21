@@ -1647,8 +1647,8 @@ constraint:
 $$
 \begin{equation}
 \label{eq:ch-03-diis-min}
-\min_{\{c_i\}} \;\Bigl\| \mathbf e^\text{DIIS} \Bigr\|^2
-\;=\; \min_{\{c_i\}} \; \sum_{i,j} c_i c_j\, B_{ij} ,
+\min_{\\{ c_i \\}} \;\Bigl\| \mathbf e^\text{DIIS} \Bigr\|^2
+\;=\; \min_{\\{ c_i \\}} \; \sum_{i,j} c_i c_j\, B_{ij} ,
 \end{equation}
 $$
 

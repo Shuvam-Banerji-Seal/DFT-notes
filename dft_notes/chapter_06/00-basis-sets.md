@@ -1375,7 +1375,7 @@ level.  Define a chain of closed subspaces
 $$
 \begin{equation}
 \label{eq:ch-06-14-mra}
-\{0\} \;\subset\; \cdots \;\subset\; V_1 \;\subset\; V_2 \;\subset\; \cdots \;\subset\; L^2(\mathbb R) ,
+\\{ 0 \\} \;\subset\; \cdots \;\subset\; V_1 \;\subset\; V_2 \;\subset\; \cdots \;\subset\; L^2(\mathbb R) ,
 \end{equation}
 $$
 

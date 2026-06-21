@@ -537,13 +537,13 @@ $$
 Equation \eqref{eq:ch-02-fci-explicit} is the same as
 \eqref{eq:ch-02-fci}; we are simply being explicit about the
 $\binom{K}{N_\alpha}\binom{K}{N_\beta}$ basis.  The coefficients
-$\{c_I\}$ are determined by minimising the energy expectation
+$\\{ c_I \\}$ are determined by minimising the energy expectation
 value
 
 $$
 \begin{equation}
 \label{eq:ch-02-var}
-E_0 \;=\; \min_{\{c_I\}}
+E_0 \;=\; \min_{\\{ c_I \\}}
          \frac{\sum_{I,J} c_I^*\, c_J\,
                \langle \Phi_I \mid \hat H_{\text{el}} \mid \Phi_J \rangle}
               {\sum_{I} |c_I|^2} .
@@ -559,7 +559,7 @@ in the same limit.  Equation \eqref{eq:ch-02-fci-explicit} is exact
 basis-set incompleteness, which we treat in
 [chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/).
 
-The equation for the optimal $\{c_I\}$ is the standard
+The equation for the optimal $\\{ c_I \\}$ is the standard
 **eigenvalue problem** in the determinant basis,
 
 $$

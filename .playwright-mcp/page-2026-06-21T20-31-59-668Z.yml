@@ -1,0 +1,2771 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Problems anthology" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: Forty problems, pulled from chapters 01 to 13, sorted by topic and difficulty, plus three cross-chapter problem sets that force the reader to
+          - emphasis [ref=e30]: integrate
+          - text: material across multiple chapters. Every per-chapter entry is
+          - emphasis [ref=e31]:
+            - text: self-containe
+            - code [ref=e32]: d*
+            - text: ": a problem statement, a difficulty rating, a cross-reference to the chapter section where the result is developed, a one-or-two-sentence hint on the approach, and a one-sentence answer that gives the final result without redoing the derivation. The three cross-chapter sets (A, B, C) are *multi-part"
+          - text: "problems in the long `"
+        - group [ref=e33]: "’ form: each part is a self-contained problem, and the parts are threaded together by a single physical or methodological thread."
+        - paragraph
+      - paragraph [ref=e34]:
+        - text: This page exists for three audiences.
+        - strong [ref=e35]: First
+        - text: ", students who worked through the chapters and want to check that they can"
+        - emphasis [ref=e36]: re-derive
+        - text: the headline results from a clean sheet.
+        - strong [ref=e37]: Second
+        - text: ", practitioners who want a quick refresher on a specific identity (the Gaussian product theorem, the Methfessel–Paxton error scaling, the log-derivative identity)."
+        - strong [ref=e38]: Third
+        - text: ", anyone teaching from the notes who wants a bank of questions with hints. The problems are graded"
+        - strong [ref=e39]: easy / medium / hard
+        - text: by the depth of the derivation they require, not by the amount of arithmetic.
+      - blockquote [ref=e40]:
+        - paragraph [ref=e41]:
+          - strong [ref=e42]: Conventions.
+          - text: All energies are in Hartree, all lengths in Bohr (
+          - img [ref=e44]
+          - text: ), unless the problem says otherwise. The fine- structure constant is
+          - img [ref=e53]
+          - text: . The speed of light in atomic units is
+          - img [ref=e74]
+          - text: . Hydrogen-like eigenfunctions and energies are those of
+          - link "Chapter 01, §1.13" [ref=e89] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/#113-the-hydrogen-atom
+          - text: . Notation follows the chapters — see the “Notation” callout in Chapter 01 for the conventions.
+      - heading "How to read the entries" [level=2] [ref=e90]
+      - paragraph [ref=e91]: "Each problem is a single block with five fields. An example:"
+      - blockquote [ref=e92]:
+        - paragraph [ref=e93]:
+          - strong [ref=e94]: Example P3.2.1
+          - text: (medium) ·
+          - emphasis [ref=e95]: §3.12, Problem 2
+          - strong [ref=e96]: "[statement]"
+          - text: The closed-shell HF energy depends on the density matrix
+          - img [ref=e98]
+          - text: ", not on the individual occupied orbitals. Show that any unitary rotation of the occupied orbitals leaves"
+          - img [ref=e127]
+          - text: unchanged.
+          - strong [ref=e136]: "Hint:"
+          - text: compute
+          - img [ref=e138]
+          - text: and use
+          - img [ref=e178]
+          - text: .
+          - strong [ref=e195]: "Answer:"
+          - img [ref=e197]
+          - text: because
+          - img [ref=e223]
+          - text: is unitary, and
+          - img [ref=e230]
+          - text: depends on the orbitals only through
+          - img [ref=e240]
+          - text: ", so"
+          - img [ref=e247]
+          - text: .
+      - paragraph [ref=e268]: "The five fields are always in the same order. The format is deliberately compact: a single screen of a reader, no scrolling within an entry. The longer worked solutions live in the referenced chapter section."
+      - figure [ref=e270]:
+        - code [ref=e271]:
+          - document [ref=e272]:
+            - generic [ref=e276]:
+              - generic [ref=e282]: Reading order
+              - generic [ref=e283]:
+                - generic [ref=e289]:
+                  - text: Hint
+                  - text: (approach)
+                - generic [ref=e295]:
+                  - text: Problem
+                  - text: statement
+                - generic [ref=e301]:
+                  - text: Cross-reference
+                  - text: (chapter section)
+                - generic [ref=e307]:
+                  - text: Answer
+                  - text: (final result only)
+                - generic [ref=e313]:
+                  - text: Re-derive
+                  - text: in the chapter
+        - button "Download this diagram as a PNG" [ref=e314] [cursor=pointer]:
+          - img [ref=e315]
+          - generic [ref=e318]: Download PNG
+      - separator [ref=e319]
+      - heading "1. Quantum mechanics basics" [level=2] [ref=e320]
+      - blockquote [ref=e321]:
+        - paragraph [ref=e322]:
+          - text: "Source:"
+          - link "Chapter 01" [ref=e323] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/
+          - text: — §1.13 (Problems).
+      - heading "1.1 The free-particle propagator as a path integral" [level=3] [ref=e324]
+      - blockquote [ref=e325]:
+        - paragraph [ref=e326]:
+          - strong [ref=e327]: P1.1.1
+          - text: (hard) ·
+          - emphasis [ref=e328]: §1.13, Problem 3
+          - strong [ref=e329]: "[statement]"
+          - text: For a free 1-D particle of mass
+          - img [ref=e331]
+          - text: ", the"
+          - strong [ref=e336]: Feynman propagator
+          - text: is
+          - img [ref=e338]
+          - text: with
+          - img [ref=e426]
+          - text: . Insert
+          - img [ref=e454]
+          - text: complete sets of position eigenstates
+          - img [ref=e464]
+          - text: between
+          - img [ref=e504]
+          - text: infinitesimal time slices of width
+          - img [ref=e510]
+          - text: ", substitute the short-time propagator"
+          - img [ref=e541]
+          - text: ", and take the continuum limit. Identify the result with Feynman’s path integral"
+          - img [ref=e652]
+          - text: where
+          - img [ref=e692]
+          - text: .
+          - strong [ref=e723]: "Hint:"
+          - text: the discretised integral is an iterated Fresnel integral. Completing the square at each step is the
+          - emphasis [ref=e724]: exact
+          - text: evaluation, because the action is quadratic.
+          - strong [ref=e725]: "Answer:"
+          - img [ref=e727]
+          - text: with
+          - img [ref=e832]
+          - text: ", and the continuum limit is the path integral"
+          - img [ref=e852]
+          - text: over all paths from
+          - img [ref=e888]
+          - text: to
+          - img [ref=e908]
+          - text: weighted by the classical action.
+      - heading "1.2 Coherent states minimise the uncertainty product" [level=3] [ref=e927]
+      - blockquote [ref=e928]:
+        - paragraph [ref=e929]:
+          - strong [ref=e930]: P1.2.1
+          - text: (hard) ·
+          - emphasis [ref=e931]: §1.13, Problem 4
+          - strong [ref=e932]: "[statement]"
+          - text: A coherent state
+          - img [ref=e934]
+          - text: satisfies
+          - img [ref=e944]
+          - text: with
+          - img [ref=e972]
+          - text: . Using
+          - img [ref=e983]
+          - text: and
+          - img [ref=e1026]
+          - text: ", compute"
+          - img [ref=e1071]
+          - text: and
+          - img [ref=e1086]
+          - text: in
+          - img [ref=e1101]
+          - text: and hence the product
+          - img [ref=e1111]
+          - text: . Show explicitly that the inequality is saturated only for the QHO ground state, and reconcile this with the
+          - emphasis [ref=e1122]: classicality
+          - text: of coherent states by computing the centroid trajectory
+          - img [ref=e1124]
+          - text: .
+          - strong [ref=e1155]: "Hint:"
+          - text: expand $(\hat a + \hat a^\dagger)^2 = \hat a^2 + (\hat a^\dagger)^2
+        - list [ref=e1156]:
+          - listitem [ref=e1157]:
+            - text: 2 \hat a^\dagger \hat a + 1
+            - img [ref=e1159]
+            - text: \hat a^\dagger \hat a |\alpha\rangle = (\alpha^* \alpha - \alpha^* \alpha
+          - listitem [ref=e1174]:
+            - text: "|\\alpha|^2) |\\alpha\\rangle"
+            - img [ref=e1176]
+            - text: \hat a \hat a^\dagger |\alpha\rangle = (\alpha^* \alpha + 1) |\alpha\rangle
+            - img [ref=e1227]
+            - text: "[\\hat a, \\hat a^\\dagger] = 1$."
+            - strong [ref=e1236]: "Answer:"
+            - img [ref=e1238]
+            - text: ","
+            - img [ref=e1276]
+            - text: ", so"
+            - img [ref=e1314]
+            - text: only at
+            - img [ref=e1335]
+            - text: ; the centroid orbits the classical ellipse
+            - img [ref=e1345]
+            - text: .
+      - heading "1.3 The hydrogen spontaneous-emission rate" [level=3] [ref=e1394]:
+        - text: 1.3 The hydrogen
+        - img [ref=e1396]
+        - text: spontaneous-emission rate
+      - blockquote [ref=e1409]:
+        - paragraph [ref=e1410]:
+          - strong [ref=e1411]: P1.3.1
+          - text: (hard) ·
+          - emphasis [ref=e1412]: §1.13, Problem 5
+          - strong [ref=e1413]: "[statement]"
+          - text: Apply Fermi’s golden rule to the hydrogen
+          - img [ref=e1415]
+          - text: electric-dipole transition. The dipole matrix element is
+          - img [ref=e1429]
+          - text: ", the photon density of states in vacuum is"
+          - img [ref=e1462]
+          - text: (SI), and the spontaneous-emission prefactor is
+          - img [ref=e1494]
+          - text: (Gaussian-cgs atomic units). Compute the radial integral
+          - img [ref=e1521]
+          - text: ", the angular sum over the three"
+          - img [ref=e1578]
+          - text: sublevels, and the final rate. Compare with the experimental value
+          - img [ref=e1586]
+          - text: .
+          - strong [ref=e1615]: "Hint:"
+          - text: the angular factor is
+          - img [ref=e1617]
+          - text: (three identical
+          - img [ref=e1674]
+          - text: contributions), and the radial integral is a Gamma function with
+          - img [ref=e1690]
+          - text: .
+          - strong [ref=e1751]: "Answer:"
+          - img [ref=e1753]
+          - text: ", in agreement with experiment to the precision of the non-relativistic hydrogen eigenfunctions."
+      - separator [ref=e1824]
+      - heading "2. Many-body methods" [level=2] [ref=e1825]
+      - blockquote [ref=e1826]:
+        - paragraph [ref=e1827]:
+          - text: "Source:"
+          - link "Chapter 02" [ref=e1828] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-02/
+          - text: — §2.3 (the hierarchy of wavefunction methods). Chapter 02 does not currently have its own problem set, so the three problems below are composed from the topics named in the chapter.
+      - heading "2.1 CISD is not size-consistent — the H₂ dimer" [level=3] [ref=e1829]
+      - blockquote [ref=e1830]:
+        - paragraph [ref=e1831]:
+          - strong [ref=e1832]: P2.1.1
+          - text: (medium) ·
+          - emphasis [ref=e1833]: §2.3
+          - strong [ref=e1834]: "[statement]"
+          - text: Consider two H₂ molecules separated by a large distance
+          - img [ref=e1836]
+          - text: ", computed at the CISD level in a minimal basis. Each monomer has two electrons and four spin-orbitals; the FCI space for the dimer is the product of the two monomer FCI spaces, of dimension"
+          - img [ref=e1846]
+          - text: . CISD, however, restricts the dimer wavefunction to
+          - emphasis [ref=e1869]: singles and doubles relative to the product HF determinant
+          - text: ", of which there are far fewer than 36."
+        - paragraph [ref=e1870]:
+          - strong [ref=e1871]: (a)
+          - text: Count the singles and doubles on each monomer and on the combined dimer.
+          - strong [ref=e1872]: (b)
+          - text: Show that the
+          - emphasis [ref=e1873]: dimer
+          - text: CISD energy is
+          - emphasis [ref=e1874]: not
+          - text: the sum of the two monomer CISD energies in the
+          - img [ref=e1876]
+          - text: limit, even though the FCI energy is. The non-additivity is the
+          - strong [ref=e1885]: size-consistency error
+          - text: .
+          - strong [ref=e1886]: "Hint:"
+          - text: write the CISD Ansatz for the dimer and the product of two CISD Ansätze for the monomers; the
+          - emphasis [ref=e1887]: "quadruply-excite`d"
+          - text: ’ configurations (one double on each monomer) appear in the
+          - emphasis [ref=e1888]: product
+          - text: Ansatz but not in the dimer CISD Ansatz.
+          - strong [ref=e1889]: "Answer:"
+          - text: the dimer CISD has
+          - img [ref=e1891]
+          - text: doubles but the product Ansatz has
+          - img [ref=e1900]
+          - text: configurations; the missing
+          - img [ref=e1926]
+          - text: quadruples give a per-monomer error of order
+          - img [ref=e1945]
+          - text: that does not scale to zero as
+          - img [ref=e1966]
+          - text: grows.
+      - heading "2.2 Derive the MP2 energy formula" [level=3] [ref=e1971]
+      - blockquote [ref=e1972]:
+        - paragraph [ref=e1973]:
+          - strong [ref=e1974]: P2.2.1
+          - text: (hard) ·
+          - emphasis [ref=e1975]: §2.3
+          - strong [ref=e1976]: "[statement]"
+          - text: In Møller–Plesset perturbation theory, the zeroth-order Hamiltonian is the HF Fock operator
+          - img [ref=e1978]
+          - text: ", with eigenstates given by the HF orbitals and eigenvalues"
+          - img [ref=e1988]
+          - text: . The perturbation is
+          - img [ref=e1997]
+          - text: ", with matrix elements"
+          - img [ref=e2023]
+          - text: connecting the HF reference
+          - img [ref=e2053]
+          - text: to an excited Slater determinant
+          - img [ref=e2066]
+          - text: (the Slater–Condon rules give a non-zero contribution only for double excitations
+          - img [ref=e2079]
+          - text: ). Apply second-order Rayleigh– Schrödinger perturbation theory to obtain the
+          - strong [ref=e2100]: MP2 correlation energy
+          - text: "$E_\\text{MP2} = \\sum_{i<j}^\\text{occ} \\sum_{a<b}^\\text{virt} | \\langle ij || ab \\rangle |^2 / (\\varepsilon_i + \\varepsilon_j"
+        - list [ref=e2101]:
+          - listitem [ref=e2102]:
+            - text: \varepsilon_a - \varepsilon_b)$.
+            - strong [ref=e2103]: "Hint:"
+            - text: the second-order energy is
+            - img [ref=e2105]
+            - text: . Use the Slater–Condon rules to evaluate
+            - img [ref=e2185]
+            - text: in terms of the antisymmetrised ERI
+            - img [ref=e2223]
+            - text: .
+            - strong [ref=e2244]: "Answer:"
+            - text: "$E_\\text{MP2} = \\tfrac{1}{4} \\sum_{ijab} |\\langle ij || ab \\rangle|^2 / (\\varepsilon_i + \\varepsilon_j"
+          - listitem [ref=e2245]:
+            - text: \varepsilon_a - \varepsilon_b)
+            - img [ref=e2247]
+            - text: "\\tfrac{1}{4}"
+            - img [ref=e2281]
+            - text: 1/(2!)^2
+            - img [ref=e2295]
+            - text: (i, j) \leftrightarrow (a, b)$ relabelling.
+      - heading "2.3 CCSD amplitude equations are size-consistent" [level=3] [ref=e2328]
+      - blockquote [ref=e2329]:
+        - paragraph [ref=e2330]:
+          - strong [ref=e2331]: P2.3.1
+          - text: (hard) ·
+          - emphasis [ref=e2332]: §2.3
+          - strong [ref=e2333]: "[statement]"
+          - text: The coupled-cluster Ansatz is
+          - img [ref=e2335]
+          - text: with
+          - img [ref=e2368]
+          - text: and
+          - img [ref=e2404]
+          - text: . The CCSD amplitude equations are
+          - img [ref=e2494]
+          - text: . Show that for two non-interacting fragments A and B at infinite separation, the CCSD amplitude equations
+          - emphasis [ref=e2551]: factor
+          - text: ": $t_i^a = t_i^{a,\\text{A}} + t_i^{a,\\text{B}"
+          - img [ref=e2553]
+          - text: "E_\\text{CCSD}^\\text{AB} = E_\\text{CCSD}^\\text{A} + E_\\text{CCSD}^\\text{B}$."
+          - strong [ref=e2634]: "Hint:"
+          - text: "use the Campbell–Baker–Hausdorff theorem $e^{-\\hat T} \\hat H e^{\\hat T} = \\hat H + [\\hat H, \\hat T]"
+        - list [ref=e2635]:
+          - listitem [ref=e2636]:
+            - text: "\\tfrac{1}{2!} [[\\hat H, \\hat T], \\hat T] + \\dots"
+            - img [ref=e2638]
+            - text: "\\hat T^\\text{A}"
+            - img [ref=e2670]
+            - text: "\\hat T^\\text{B}$ commute (they act on disjoint orbital sets)."
+            - strong [ref=e2679]: "Answer:"
+            - text: the CCSD amplitude equations factor monomer-by-monomer because
+            - img [ref=e2681]
+            - text: is a polynomial in
+            - img [ref=e2713]
+            - text: and the
+            - emphasis [ref=e2722]: "normal-ordere`d"
+            - text: ’ Hamiltonian
+            - img [ref=e2724]
+            - text: "has no one-body terms connecting A and B; therefore $E_\\text{CCSD}^\\text{AB} = E_\\text{CCSD}^\\text{A}"
+          - listitem [ref=e2736]: "E_\\text{CCSD}^\\text{B}$ exactly."
+      - separator [ref=e2737]
+      - heading "3. Hartree–Fock" [level=2] [ref=e2738]
+      - blockquote [ref=e2739]:
+        - paragraph [ref=e2740]:
+          - text: "Source:"
+          - link "Chapter 03" [ref=e2741] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/
+          - text: — §3.12 (Problems).
+      - heading "3.1 The Roothaan equations" [level=3] [ref=e2742]
+      - blockquote [ref=e2743]:
+        - paragraph [ref=e2744]:
+          - strong [ref=e2745]: P3.1.1
+          - text: (medium) ·
+          - emphasis [ref=e2746]: §3.5, §3.12
+          - strong [ref=e2747]: "[statement]"
+          - text: Starting from the Fock eigenvalue equation
+          - img [ref=e2749]
+          - text: and the expansion
+          - img [ref=e2776]
+          - text: of each MO in a fixed basis of
+          - img [ref=e2805]
+          - text: AOs
+          - img [ref=e2811]
+          - text: ", derive the"
+          - strong [ref=e2820]: Roothaan–Hall equations
+          - img [ref=e2822]
+          - text: ", with"
+          - img [ref=e2842]
+          - text: the Fock matrix in the AO basis and
+          - img [ref=e2849]
+          - text: the overlap matrix
+          - img [ref=e2856]
+          - text: . Identify the origin of the
+          - emphasis [ref=e2886]:
+            - text: generalise
+            - code [ref=e2887]: "d*' eigenvalue problem (the $\\mathbf S$ on the right) and explain why the canonical MOs are *not* orthogonal in the AO sense ($\\mathbf C^\\dagger \\mathbf S \\mathbf C = \\mathbf 1$, not $\\mathbf C^\\dagger \\mathbf C = \\mathbf 1$). **Hint:** left-multiply $\\hat F \\sum_\\nu C_{\\nu i} \\chi_\\nu = \\varepsilon_i \\sum_\\nu C_{\\nu i} \\chi_\\nu$ by $\\langle \\chi_\\mu |$, project, and recognise the AO Fock matrix $F_{\\mu\\nu} = \\langle \\chi_\\mu | \\hat F | \\chi_\\nu \\rangle$. **Answer:** $F_{\\mu\\nu} = h_{\\mu\\nu} + \\sum_{\\rho\\sigma} P_{\\rho\\sigma} [(\\mu\\nu | \\rho\\sigma) - \\tfrac{1}{2}(\\mu\\sigma | \\rho\\nu)]$ and the equations are *generalise"
+            - text: d
+          - text: ’ because the AOs are non-orthogonal; the orthonormality condition on the MOs reads
+          - img [ref=e2889]
+          - text: .
+      - heading "3.2 The HF energy is invariant to a unitary rotation of the occupied orbitals" [level=3] [ref=e2909]
+      - blockquote [ref=e2910]:
+        - paragraph [ref=e2911]:
+          - strong [ref=e2912]: P3.2.1
+          - text: (medium) ·
+          - emphasis [ref=e2913]: §3.12, Problem 2
+          - strong [ref=e2914]: "[statement]"
+          - text: Show that the closed-shell HF energy
+          - img [ref=e2916]
+          - text: is invariant under a unitary rotation
+          - img [ref=e2977]
+          - text: of the occupied orbitals. State the key intermediate result that makes the invariance transparent.
+          - strong [ref=e3009]: "Hint:"
+          - text: the only thing the HF energy depends on is the density matrix; show that the density matrix is invariant.
+          - strong [ref=e3010]: "Answer:"
+          - text: the density matrix
+          - img [ref=e3012]
+          - text: "is invariant because $\\tilde{\\mathbf C}"
+          - emphasis [ref=e3050]: "\\text{occ} = \\mathbf C"
+          - text: "\\text{occ} \\mathbf U"
+          - img [ref=e3052]
+          - text: "\\tilde{\\mathbf P} = 2 \\mathbf C_\\text{occ} \\mathbf U \\mathbf U^\\dagger \\mathbf C_\\text{occ}^\\dagger = \\mathbf P"
+          - img [ref=e3070]
+          - text: \mathbf U \mathbf U^\dagger = \mathbf 1
+          - img [ref=e3086]
+          - text: \mathbf P$ only.
+      - heading "3.3 Derive Koopmans’ theorem from the HF equations" [level=3] [ref=e3147]
+      - blockquote [ref=e3148]:
+        - paragraph [ref=e3149]:
+          - strong [ref=e3150]: P3.3.1
+          - text: (hard) ·
+          - emphasis [ref=e3151]: §3.12, Problem 3
+          - strong [ref=e3152]: "[statement]"
+          - text: Take the inner product of the MO Fock equation
+          - img [ref=e3154]
+          - text: with
+          - img [ref=e3181]
+          - text: to obtain
+          - img [ref=e3190]
+          - text: . Use this to show that the closed-shell HF ionisation energy
+          - img [ref=e3247]
+          - text: for the removal of one
+          - img [ref=e3288]
+          - text: electron from orbital
+          - img [ref=e3294]
+          - text: is
+          - img [ref=e3300]
+          - text: (
+          - strong [ref=e3317]: Koopmans’ theorem
+          - text: ). Pay attention to which sums change between
+          - img [ref=e3319]
+          - text: and
+          - img [ref=e3325]
+          - text: electrons and which do not.
+          - strong [ref=e3334]: "Hint:"
+          - text: in the
+          - img [ref=e3336]
+          - text: calculation, the
+          - img [ref=e3346]
+          - text: Fock matrix is unchanged because the removed electron is
+          - img [ref=e3352]
+          - text: ; the
+          - img [ref=e3358]
+          - text: sums lose orbital
+          - img [ref=e3364]
+          - text: but keep the rest.
+          - strong [ref=e3369]: "Answer:"
+          - text: "$E_\\text{HF}(N-1) - E_\\text{HF}(N) = -h_{aa}"
+        - list [ref=e3370]:
+          - listitem [ref=e3371]:
+            - text: "\\sum_j (2 J_{aj} - K_{aj}) = -\\varepsilon_a$ — the cancellation is exact in the"
+            - emphasis [ref=e3372]: frozen-orbital
+            - text: limit and is the formal statement of Koopmans’ theorem.
+      - separator [ref=e3373]
+      - heading "4. DFT" [level=2] [ref=e3374]
+      - blockquote [ref=e3375]:
+        - paragraph [ref=e3376]:
+          - text: "Source:"
+          - link "Chapter 04" [ref=e3377] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: — §4.10.2 (Problems).
+      - heading "4.1 The DIIS algorithm" [level=3] [ref=e3378]
+      - blockquote [ref=e3379]:
+        - paragraph [ref=e3380]:
+          - strong [ref=e3381]: P4.1.1
+          - text: (medium) ·
+          - emphasis [ref=e3382]: §4.6, §4.10.2, Problem 2
+          - strong [ref=e3383]: "[statement]"
+          - text: DIIS (Direct Inversion in the Iterative Subspace) extrapolates the next SCF iterate as
+          - img [ref=e3385]
+          - text: from the last
+          - img [ref=e3412]
+          - text: Fock matrices
+          - img [ref=e3418]
+          - text: and the corresponding error vectors
+          - img [ref=e3438]
+          - text: ", with coefficients constrained by"
+          - img [ref=e3475]
+          - text: to minimise the squared error norm
+          - img [ref=e3493]
+          - text: . Starting from the constrained minimisation
+          - img [ref=e3531]
+          - text: subject to
+          - img [ref=e3562]
+          - text: with
+          - img [ref=e3579]
+          - text: ", derive the augmented linear system"
+          - img [ref=e3609]
+          - text: . Show that the Lagrange multiplier
+          - img [ref=e3667]
+          - text: is the squared norm of the extrapolated residual.
+          - strong [ref=e3692]: "Hint:"
+          - text: form the Lagrangian
+          - img [ref=e3694]
+          - text: and set its derivative to zero.
+          - strong [ref=e3752]: "Answer:"
+          - text: stationarity gives
+          - img [ref=e3754]
+          - text: ; stacking with the constraint
+          - img [ref=e3770]
+          - text: yields the
+          - img [ref=e3787]
+          - text: augmented system; the matrix is invertible iff the residuals are linearly independent, and
+          - img [ref=e3797]
+          - text: .
+      - heading "4.2 The Hellmann–Feynman force" [level=3] [ref=e3844]
+      - blockquote [ref=e3845]:
+        - paragraph [ref=e3846]:
+          - strong [ref=e3847]: P4.2.1
+          - text: (hard) ·
+          - emphasis [ref=e3848]: §4.10.2, Problem 3
+          - strong [ref=e3849]: "[statement]"
+          - text: The Kohn–Sham energy in a finite basis is
+          - img [ref=e3851]
+          - text: ", and the SCF solution is $\\mathbf C^"
+          - emphasis [ref=e3933]:
+            - text: (\mathbf R)
+            - img [ref=e3935]
+            - text: \mathbf F(\mathbf C^
+          - text: ) \mathbf C^* = \mathbf S \mathbf C^ \boldsymbol\varepsilon
+          - img [ref=e3959]
+          - text: "\\mathbf C^{"
+          - emphasis [ref=e3970]: "T} \\mathbf S \\mathbf C^"
+          - text: = \mathbf 1
+          - img [ref=e3972]
+          - text: E
+          - img [ref=e4004]
+          - text: \mathbf R_I
+          - img [ref=e4034]
+          - text: dE / d\mathbf R_I = \partial E / \partial \mathbf R_I
+        - list [ref=e4071]:
+          - listitem [ref=e4072]:
+            - text: "\\sum_{\\mu i} (\\partial E / \\partial C_{\\mu i}) (\\partial C_{\\mu i}^* / \\partial \\mathbf R_I)"
+            - img [ref=e4074]
+            - text: \mathbf F_I = - \partial E / \partial \mathbf R_I$. In a
+            - emphasis [ref=e4262]: finite
+            - text: basis, the basis-derivative piece (the
+            - strong [ref=e4263]: Pulay force
+            - text: ) survives and has the form
+            - img [ref=e4265]
+            - text: .
+            - strong [ref=e4372]: "Hint:"
+            - text: the orbital-response term is constrained by the orthonormality condition; multiplying the KS equation by
+            - img [ref=e4374]
+            - text: and using the orthonormality makes it proportional to
+            - img [ref=e4387]
+            - text: ", which cancels the same derivative in the explicit term."
+            - strong [ref=e4406]: "Answer:"
+            - text: the orbital-response term is
+            - img [ref=e4408]
+            - text: (a constraint-induced change in the kinetic-energy-like piece) and cancels the explicit
+            - img [ref=e4445]
+            - text: term in
+            - img [ref=e4470]
+            - text: ", so the force is given by the explicit-derivative terms alone — and in a finite basis these are supplemented by the Pulay term."
+      - heading "4.3 The spin-DFT energy functional" [level=3] [ref=e4488]
+      - blockquote [ref=e4489]:
+        - paragraph [ref=e4490]:
+          - strong [ref=e4491]: P4.3.1
+          - text: (hard) ·
+          - emphasis [ref=e4492]: §4.10.2, Problem 4
+          - strong [ref=e4493]: "[statement]"
+          - text: The von Barth–Hedin extension of the Hohenberg–Kohn theorem to a static external magnetic field
+          - img [ref=e4495]
+          - text: couples to the electron spin via the Zeeman term. The two external fields
+          - img [ref=e4509]
+          - text: are jointly determined by the two spin densities
+          - img [ref=e4523]
+          - text: ", and every observable is a functional of the pair. Derive the"
+          - strong [ref=e4542]: LSDA energy functional
+          - img [ref=e4544]
+          - text: from the variational principle, and show that the Euler–Lagrange equations give the
+          - img [ref=e4629]
+          - text: Kohn–Sham equations
+          - img [ref=e4639]
+          - text: "with $\\hat H_\\text{eff}^\\sigma = -\\tfrac{1}{2}\\nabla^2 + v(\\mathbf r)"
+        - list [ref=e4678]:
+          - listitem [ref=e4679]:
+            - text: "v_\\text{H}[\\rho] + v_{\\text{xc},\\sigma}$."
+            - strong [ref=e4680]: "Hint:"
+            - text: "define the universal functional $F_\\text{HK}[\\rho_\\uparrow, \\rho_\\downarrow] = \\langle \\hat T \\rangle"
+          - listitem [ref=e4681]:
+            - text: "\\langle \\hat U_{ee} \\rangle"
+            - img [ref=e4683]
+            - text: "E_\\text{xc} = (F_\\text{HK} - T_s) - J$."
+            - strong [ref=e4826]: "Answer:"
+            - text: the spin-DFT energy is $E[\rho_\uparrow, \rho_\downarrow] = T_s[\rho_\uparrow, \rho_\downarrow]
+          - listitem [ref=e4827]: "J[\\rho] + E_\\text{xc}[\\rho_\\uparrow, \\rho_\\downarrow] + \\int v \\rho"
+          - listitem [ref=e4828]:
+            - text: \mu_B \int B m
+            - img [ref=e4830]
+            - text: "E_\\text{xc}$ from the"
+            - emphasis [ref=e4867]: homogeneous
+            - text: electron gas, and functional differentiation yields
+            - img [ref=e4869]
+            - text: .
+      - separator [ref=e4909]
+      - heading "5. XC functionals" [level=2] [ref=e4910]
+      - blockquote [ref=e4911]:
+        - paragraph [ref=e4912]:
+          - text: "Source:"
+          - link "Chapter 05" [ref=e4913] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: — §5.1–5.2 (the uniform electron gas and the GGA). Chapter 05 is a survey chapter without its own problem set, so the three problems below are composed from the topics named in the chapter.
+      - heading "5.1 The LDA exchange energy density" [level=3] [ref=e4914]
+      - blockquote [ref=e4915]:
+        - paragraph [ref=e4916]:
+          - strong [ref=e4917]: P5.1.1
+          - text: (medium) ·
+          - emphasis [ref=e4918]: §5.1
+          - strong [ref=e4919]: "[statement]"
+          - text: The exchange energy of the homogeneous electron gas (HEG) of density
+          - img [ref=e4921]
+          - text: can be evaluated in closed form by summing the Pauli exclusion repulsion over pairs of plane-wave orbitals. Show that the
+          - strong [ref=e4926]: exchange energy per electron
+          - text: of the HEG is
+          - img [ref=e4928]
+          - text: ", where"
+          - img [ref=e4962]
+          - text: is the Fermi wavevector. Hence derive the LDA exchange functional
+          - img [ref=e4995]
+          - text: .
+          - strong [ref=e5069]: "Hint:"
+          - text: use the Slater sum
+          - img [ref=e5071]
+          - text: and convert the sum to an integral over the Fermi sphere. The Fourier-space Coulomb integral
+          - img [ref=e5152]
+          - text: is the key.
+          - strong [ref=e5221]: "Answer:"
+          - img [ref=e5223]
+          - text: with
+          - img [ref=e5267]
+          - text: ", and the exchange energy per electron is"
+          - img [ref=e5307]
+          - text: .
+      - heading "5.2 The PBE enhancement factor from the gradient expansion" [level=3] [ref=e5358]:
+        - text: 5.2 The PBE enhancement factor
+        - img [ref=e5360]
+        - text: from the gradient expansion
+      - blockquote [ref=e5374]:
+        - paragraph [ref=e5375]:
+          - strong [ref=e5376]: P5.2.1
+          - text: (hard) ·
+          - emphasis [ref=e5377]: §5.2
+          - strong [ref=e5378]: "[statement]"
+          - text: The PBE GGA exchange functional is
+          - img [ref=e5380]
+          - text: ", where"
+          - img [ref=e5436]
+          - text: is the
+          - strong [ref=e5469]: reduced gradient
+          - text: . The second-order
+          - strong [ref=e5470]: gradient expansion
+          - text: (GEA) of the exchange energy is
+          - img [ref=e5472]
+          - text: with
+          - img [ref=e5518]
+          - text: . PBE replaces this with an enhancement factor
+          - img [ref=e5535]
+          - text: (the “PBE form”) where
+          - img [ref=e5585]
+          - text: is fixed by the
+          - strong [ref=e5598]: Lieb–Oxford bound
+          - text: . Show that
+          - img [ref=e5600]
+          - text: as
+          - img [ref=e5628]
+          - text: (matching the GEA) and that
+          - img [ref=e5638]
+          - text: as
+          - img [ref=e5661]
+          - text: (the uniform-density limit of the enhancement), and identify the physical meaning of the Lieb–Oxford bound in the derivation of
+          - img [ref=e5671]
+          - text: .
+          - strong [ref=e5676]: "Hint:"
+          - text: expand $1 / (1 + \mu s^2 / \kappa) = 1 - \mu s^2 / \kappa
+        - list [ref=e5677]:
+          - listitem [ref=e5678]:
+            - text: O(s^4)
+            - img [ref=e5680]
+            - text: s
+            - img [ref=e5698]
+            - text: \to 0
+            - img [ref=e5708]
+            - text: s$.
+            - strong [ref=e5725]: "Answer:"
+            - img [ref=e5727]
+            - text: has the GEA limit
+            - img [ref=e5777]
+            - text: for
+            - img [ref=e5805]
+            - text: and the bound
+            - img [ref=e5815]
+            - text: for
+            - img [ref=e5838]
+            - text: ;
+            - img [ref=e5848]
+            - text: is the value at which the enhancement saturates, and the bound
+            - img [ref=e5854]
+            - text: (Lieb–Oxford) determines its value.
+      - heading "5.3 The adiabatic connection and the exact-exchange limit" [level=3] [ref=e5892]
+      - blockquote [ref=e5893]:
+        - paragraph [ref=e5894]:
+          - strong [ref=e5895]: P5.3.1
+          - text: (hard) ·
+          - emphasis [ref=e5896]: §5.2, §5.4
+          - strong [ref=e5897]: "[statement]"
+          - text: The
+          - strong [ref=e5898]: adiabatic connection
+          - text: couples the non-interacting Kohn–Sham system (
+          - img [ref=e5900]
+          - text: ) to the physical interacting system (
+          - img [ref=e5910]
+          - text: ) via a coupling constant
+          - img [ref=e5920]
+          - text: in front of the electron–electron repulsion. The XC energy is
+          - img [ref=e5926]
+          - text: ", where"
+          - img [ref=e5988]
+          - text: . Show that the
+          - emphasis [ref=e6061]:
+            - text: coupling-constant average
+            - code [ref=e6062]: "d*' exchange energy is the exact HF exchange: $\\int_0^1 E_x[\\Psi_\\lambda]\\, d\\lambda = E_x^\\text{exact}$, and use this to interpret why *hybri"
+            - text: d
+          - text: ’ functionals
+          - img [ref=e6064]
+          - text: with
+          - img [ref=e6128]
+          - text: outperform their GGA parent at finite
+          - img [ref=e6150]
+          - text: .
+          - strong [ref=e6155]: "Hint:"
+          - text: the exchange energy is
+          - emphasis [ref=e6156]: independent
+          - text: of
+          - img [ref=e6158]
+          - text: "in the Görling–Levy perturbation-theory sense: the"
+          - img [ref=e6164]
+          - text: "-dependence of"
+          - img [ref=e6170]
+          - text: contributes
+          - emphasis [ref=e6178]: only
+          - text: to the correlation piece, not to the exchange.
+          - strong [ref=e6179]: "Answer:"
+          - text: the
+          - img [ref=e6181]
+          - text: "-integration of"
+          - img [ref=e6187]
+          - text: is
+          - emphasis [ref=e6204]: trivially
+          - img [ref=e6206]
+          - text: because the exchange energy is a one-electron property of the KS orbitals and the
+          - emphasis [ref=e6220]: pair density
+          - text: at
+          - img [ref=e6222]
+          - text: already gives the exact exchange; the remainder of the integrand is correlation, so
+          - img [ref=e6232]
+          - text: with
+          - img [ref=e6262]
+          - text: .
+      - separator [ref=e6313]
+      - heading "6. Basis sets" [level=2] [ref=e6314]
+      - blockquote [ref=e6315]:
+        - paragraph [ref=e6316]:
+          - text: "Source:"
+          - link "Chapter 06" [ref=e6317] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: — §6.11 (Problems).
+      - heading "6.1 Counting basis functions for H₂O" [level=3] [ref=e6318]
+      - blockquote [ref=e6319]:
+        - paragraph [ref=e6320]:
+          - strong [ref=e6321]: P6.1.1
+          - text: (easy) ·
+          - emphasis [ref=e6322]: §6.11, Problem 1
+          - strong [ref=e6323]: "[statement]"
+          - text: Water (H₂O) has one O and two H atoms. Count the number of contracted basis functions
+          - img [ref=e6325]
+          - text: that the basis sets
+          - strong [ref=e6330]:
+            - code [ref=e6331]: STO-3G*
+            - emphasis [ref=e6332]:
+              - text: ", **"
+              - code [ref=e6333]: 6-31G*
+            - text: ", **"
+            - code [ref=e6334]: 6-31G*
+          - text: ", and"
+          - strong [ref=e6335]: cc-pVDZ
+          - text: give for water, using the spherical-harmonic convention for
+          - img [ref=e6337]
+          - text: "-functions (5 per shell, not 6)."
+          - strong [ref=e6342]: "Hint:"
+          - text: count the per-atom contributions and use
+          - img [ref=e6344]
+          - text: .
+          - strong [ref=e6365]: "Answer:"
+          - text: STO-3G →
+          - img [ref=e6367]
+          - text: ", 6-31G →"
+          - img [ref=e6377]
+          - text: ", `6-31G*’ →"
+          - img [ref=e6388]
+          - text: ", cc-pVDZ →"
+          - img [ref=e6399]
+          - text: — and cc-pVTZ, cc-pVQZ, cc-pV5Z grow to 58, 115, 201, with the ERI count scaling as
+          - img [ref=e6410]
+          - text: .
+      - heading "6.2 The Gaussian product theorem" [level=3] [ref=e6418]
+      - blockquote [ref=e6419]:
+        - paragraph [ref=e6420]:
+          - strong [ref=e6421]: P6.2.1
+          - text: (medium) ·
+          - emphasis [ref=e6422]: §6.11, Problem 2
+          - strong [ref=e6423]: "[statement]"
+          - text: Prove by direct algebra that for any two centres
+          - img [ref=e6425]
+          - text: and positive exponents
+          - img [ref=e6445]
+          - text: ","
+          - img [ref=e6455]
+          - text: with
+          - img [ref=e6580]
+          - text: . Work in one dimension; the three-dimensional result follows from the factorisation of
+          - img [ref=e6618]
+          - text: .
+          - strong [ref=e6636]: "Hint:"
+          - text: complete the square in
+          - img [ref=e6638]
+          - text: and use
+          - img [ref=e6644]
+          - text: .
+          - strong [ref=e6678]: "Answer:"
+          - text: expanding the exponent gives
+          - img [ref=e6680]
+          - text: which completes to
+          - img [ref=e6743]
+          - text: ", exponentiating to the claimed identity."
+      - heading "6.3 Plane-wave count and Hamiltonian cost" [level=3] [ref=e6801]
+      - blockquote [ref=e6802]:
+        - paragraph [ref=e6803]:
+          - strong [ref=e6804]: P6.3.1
+          - text: (hard) ·
+          - emphasis [ref=e6805]: §6.11, Problem 3
+          - strong [ref=e6806]: "[statement]"
+          - text: A cubic simulation cell of side
+          - img [ref=e6808]:
+            - generic [ref=e6819]: Å
+          - text: (i.e.
+          - img [ref=e6821]
+          - text: ","
+          - img [ref=e6841]
+          - text: ) contains an isolated water molecule. Compute the number of plane waves
+          - img [ref=e6868]
+          - text: at the
+          - img [ref=e6918]
+          - text: point for kinetic-energy cutoffs
+          - img [ref=e6924]
+          - text: ", the corresponding full-diagonalisation cost ratios ("
+          - img [ref=e6956]
+          - text: ), and explain qualitatively why a pseudopotential reduces
+          - img [ref=e6970]
+          - text: from
+          - img [ref=e6981]
+          - text: (all-electron) to
+          - img [ref=e6996]
+          - text: –
+          - img [ref=e7005]
+          - text: .
+          - strong [ref=e7016]: "Hint:"
+          - text: the basis grows as
+          - img [ref=e7018]
+          - text: and the diagonalisation eats another
+          - img [ref=e7037]
+          - text: ", so doubling the cutoff costs a factor of"
+          - img [ref=e7056]
+          - text: .
+          - strong [ref=e7074]: "Answer:"
+          - img [ref=e7076]
+          - text: for
+          - img [ref=e7128]
+          - text: respectively, with diagonalisation cost ratios
+          - img [ref=e7160]
+          - text: ; a pseudopotential replaces the sharply-peaked all-electron
+          - img [ref=e7179]
+          - text: core by a smooth function, so the wavefunction’s Fourier spectrum dies off above
+          - img [ref=e7187]
+          - text: –
+          - img [ref=e7203]
+          - text: .
+      - separator [ref=e7218]
+      - heading "7. Solids & PBC" [level=2] [ref=e7219]
+      - blockquote [ref=e7220]:
+        - paragraph [ref=e7221]:
+          - text: "Source:"
+          - link "Chapter 07" [ref=e7222] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: — §7.9 (Problems).
+      - heading "7.1 Band gap of a cosine potential" [level=3] [ref=e7223]
+      - blockquote [ref=e7224]:
+        - paragraph [ref=e7225]:
+          - strong [ref=e7226]: P7.1.1
+          - text: (easy) ·
+          - emphasis [ref=e7227]: §7.9, Problem 1
+          - strong [ref=e7228]: "[statement]"
+          - text: A 1-D lattice has lattice constant
+          - img [ref=e7230]
+          - text: and a periodic potential
+          - img [ref=e7236]
+          - text: with
+          - img [ref=e7274]
+          - text: .
+          - strong [ref=e7295]: (a)
+          - text: Write down the non-zero Fourier coefficients
+          - img [ref=e7297]
+          - text: of the potential.
+          - strong [ref=e7314]: (b)
+          - text: Construct the
+          - img [ref=e7316]
+          - text: plane-wave Hamiltonian at the BZ boundary
+          - img [ref=e7326]
+          - text: in the basis
+          - img [ref=e7341]
+          - text: .
+          - strong [ref=e7382]: (c)
+          - text: Diagonalise the matrix and write down the band gap
+          - img [ref=e7384]
+          - text: as a function of
+          - img [ref=e7395]
+          - text: .
+          - strong [ref=e7403]: "Hint:"
+          - text: the two free-electron states at
+          - img [ref=e7405]
+          - text: are degenerate; the potential couples them with matrix element
+          - img [ref=e7420]
+          - text: .
+          - strong [ref=e7433]: "Answer:"
+          - img [ref=e7435]
+          - text: ", the"
+          - img [ref=e7487]
+          - text: Hamiltonian has eigenvalues
+          - img [ref=e7497]
+          - text: ", and the band gap is"
+          - img [ref=e7534]
+          - text: .
+      - heading "7.2 k-point density and BZ volume" [level=3] [ref=e7568]
+      - blockquote [ref=e7569]:
+        - paragraph [ref=e7570]:
+          - strong [ref=e7571]: P7.2.1
+          - text: (medium) ·
+          - emphasis [ref=e7572]: §7.9, Problem 2
+          - strong [ref=e7573]: "[statement]"
+          - text: A solid has a cubic direct lattice with conventional lattice constant
+          - img [ref=e7575]
+          - text: ", and Born–von Kármán boundary conditions are imposed on a supercell of"
+          - img [ref=e7581]
+          - text: "primitive cells. Show that:"
+          - strong [ref=e7594]: (1)
+          - text: the number of allowed k-points in the first BZ is exactly
+          - img [ref=e7596]
+          - text: ;
+          - strong [ref=e7604]: (2)
+          - text: the k-point density per unit volume of the BZ is
+          - img [ref=e7606]
+          - text: ;
+          - strong [ref=e7631]: (3)
+          - text: the sum
+          - img [ref=e7633]
+          - text: is a Riemann sum for the BZ integral
+          - img [ref=e7663]
+          - text: .
+          - strong [ref=e7709]: "Hint:"
+          - text: the allowed k-points are a uniform mesh with
+          - img [ref=e7711]
+          - text: points along each primitive direction; convert the sum to an integral using the mesh cell volume
+          - img [ref=e7717]
+          - text: .
+          - strong [ref=e7757]: "Answer:"
+          - text: the BvK conditions give
+          - img [ref=e7759]
+          - text: for
+          - img [ref=e7790]
+          - text: ", hence"
+          - img [ref=e7819]
+          - text: k-points; the BZ volume is
+          - img [ref=e7828]
+          - text: ", so the k-point density is"
+          - img [ref=e7854]
+          - text: ", and the"
+          - img [ref=e7880]
+          - text: prefactor in the sum exactly matches the BZ volume element in the integral.
+      - heading "7.3 Methfessel–Paxton smearing and the Fermi level" [level=3] [ref=e7893]
+      - blockquote [ref=e7894]:
+        - paragraph [ref=e7895]:
+          - strong [ref=e7896]: P7.3.1
+          - text: (hard) ·
+          - emphasis [ref=e7897]: §7.9, Problem 3
+          - strong [ref=e7898]: "[statement]"
+          - text: In a metallic calculation, the Methfessel–Paxton (MP) smearing scheme replaces the discontinuous Fermi–Dirac step at
+          - img [ref=e7900]
+          - text: by a smooth function of width
+          - img [ref=e7910]
+          - text: "in energy. The occupations are $f_{n\\mathbf k} = \\tfrac{1}{2} \\operatorname{erfc}[(\\varepsilon_{n\\mathbf k}"
+        - list [ref=e7915]:
+          - listitem [ref=e7916]:
+            - text: "\\mu) / \\sigma] + \\sum_l A_l H_{2l-1}[(\\varepsilon_{n\\mathbf k} - \\mu) / \\sigma] e^{-(\\varepsilon_{n\\mathbf k} - \\mu)^2 / \\sigma^2}"
+            - img [ref=e7918]
+            - text: H_n
+            - img [ref=e7932]
+            - text: A_l$ fixed coefficients. Show that
+            - strong [ref=e8004]: (1)
+            - text: the occupations sum to
+            - img [ref=e8006]
+            - text: for any
+            - img [ref=e8015]
+            - text: ", by the orthogonality of the odd Hermite polynomials to the constant function with Gaussian weight;"
+            - strong [ref=e8020]: (2)
+            - text: the electronic entropy contribution is
+            - img [ref=e8022]
+            - text: with
+            - img [ref=e8082]
+            - text: for
+            - img [ref=e8132]
+            - text: (Gaussian smearing);
+            - strong [ref=e8145]: (3)
+            - text: the
+            - img [ref=e8147]
+            - text: extrapolation of
+            - img [ref=e8157]
+            - text: converges more rapidly than the unsmeared sum, with the leading correction
+            - img [ref=e8191]
+            - text: for
+            - img [ref=e8202]
+            - text: and
+            - img [ref=e8216]
+            - text: for
+            - img [ref=e8227]
+            - text: .
+            - strong [ref=e8240]: "Hint:"
+            - text: the odd Hermite polynomials are orthogonal to the constant function with the Gaussian weight
+            - img [ref=e8242]
+            - text: .
+            - strong [ref=e8284]: "Answer:"
+            - text: the constraint is satisfied by construction (the Hermite corrections average to zero on the real line); Gaussian smearing gives a
+            - img [ref=e8286]
+            - text: correction
+            - img [ref=e8300]
+            - text: per state; the
+            - img [ref=e8335]
+            - text: extrapolation is
+            - img [ref=e8345]
+            - text: for
+            - img [ref=e8356]
+            - text: and
+            - img [ref=e8370]
+            - text: for
+            - img [ref=e8381]
+            - text: — a practical strategy is to run several
+            - img [ref=e8395]
+            - text: values, plot
+            - img [ref=e8401]
+            - text: vs.
+            - img [ref=e8413]
+            - text: (or
+            - img [ref=e8422]
+            - text: ), and extrapolate linearly to
+            - img [ref=e8431]
+            - text: .
+      - separator [ref=e8440]
+      - heading "8. Pseudopotentials" [level=2] [ref=e8441]
+      - blockquote [ref=e8442]:
+        - paragraph [ref=e8443]:
+          - text: "Source:"
+          - link "Chapter 08" [ref=e8444] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: — §8.10 (Problems).
+      - heading "8.1 The pseudo-potential at the origin" [level=3] [ref=e8445]
+      - blockquote [ref=e8446]:
+        - paragraph [ref=e8447]:
+          - strong [ref=e8448]: P8.1.1
+          - text: (easy) ·
+          - emphasis [ref=e8449]: §8.10, Problem 1
+          - strong [ref=e8450]: "[statement]"
+          - text: For the hydrogen
+          - img [ref=e8452]
+          - text: pseudo constructed in §8.8 with
+          - img [ref=e8460]
+          - text: and the
+          - strong [ref=e8479]: Troullier–Martins (TM)
+          - text: ansatz
+          - img [ref=e8481]
+          - text: ", use the inversion formula"
+          - img [ref=e8549]
+          - text: with
+          - img [ref=e8640]
+          - text: ", to show that"
+          - img [ref=e8695]
+          - text: is finite. Compute its value using the analytical 3-parameter TM coefficients
+          - img [ref=e8717]
+          - text: and confirm it is on the order of
+          - img [ref=e8734]
+          - text: . Then argue why the plane-wave cutoff required to expand a pseudo-wavefunction is much smaller than that required to expand the all-electron wavefunction.
+          - strong [ref=e8746]: "Hint:"
+          - text: the only potentially singular term is
+          - img [ref=e8748]
+          - text: ", which is"
+          - emphasis [ref=e8807]: finite
+          - text: at
+          - img [ref=e8809]
+          - text: (no
+          - img [ref=e8819]
+          - text: divergence).
+          - strong [ref=e8829]: "Answer:"
+          - img [ref=e8831]
+          - text: ", finite because the polynomial form of"
+          - img [ref=e8896]
+          - text: makes
+          - img [ref=e8908]
+          - text: finite at the origin; the pseudo well has depth
+          - img [ref=e8928]
+          - text: (requiring
+          - img [ref=e8941]
+          - text: ) whereas the all-electron Coulomb well diverges as
+          - img [ref=e8962]
+          - text: ", so no finite cutoff can represent it."
+      - heading "8.2 Verify norm conservation numerically" [level=3] [ref=e8972]
+      - blockquote [ref=e8973]:
+        - paragraph [ref=e8974]:
+          - strong [ref=e8975]: P8.2.1
+          - text: (medium) ·
+          - emphasis [ref=e8976]: §8.10, Problem 2
+          - strong [ref=e8977]: "[statement]"
+          - text: For the hydrogen
+          - img [ref=e8979]
+          - text: pseudo of §8.8, evaluate the two integrals
+          - img [ref=e8987]
+          - text: and
+          - img [ref=e9031]
+          - text: (the all-electron integral has the closed form
+          - img [ref=e9075]
+          - text: ), and confirm that they agree to numerical precision when the 4-parameter TM form is used. Then repeat the calculation for the
+          - emphasis [ref=e9136]: 3-parameter
+          - text: TM form (set
+          - img [ref=e9138]
+          - text: and re-solve the remaining conditions); quantify the norm-conservation error
+          - img [ref=e9151]
+          - text: and interpret the trade-off between the number of free parameters and the transferability of the resulting pseudo-potential.
+          - strong [ref=e9182]: "Hint:"
+          - text: the 4-parameter form was constructed with norm conservation as an explicit constraint; the 3-parameter form matches the all-electron value, first, and second derivatives at
+          - img [ref=e9184]
+          - text: but does
+          - emphasis [ref=e9192]: not
+          - text: enforce norm conservation.
+          - strong [ref=e9193]: "Answer:"
+          - text: the 4-parameter form gives
+          - img [ref=e9195]
+          - text: to machine precision (matches
+          - img [ref=e9218]
+          - text: at
+          - img [ref=e9232]
+          - text: ); the 3-parameter form gives
+          - img [ref=e9247]
+          - text: and
+          - img [ref=e9270]
+          - text: (about
+          - img [ref=e9289]
+          - text: relative error), with the error scaling as
+          - img [ref=e9297]
+          - text: — a price worth paying only when the higher-order transferability is not needed.
+      - heading "8.3 The log-derivative identity" [level=3] [ref=e9324]
+      - blockquote [ref=e9325]:
+        - paragraph [ref=e9326]:
+          - strong [ref=e9327]: P8.3.1
+          - text: (hard) ·
+          - emphasis [ref=e9328]: §8.10, Problem 3
+          - strong [ref=e9329]: "[statement]"
+          - text: Re-derive the
+          - strong [ref=e9330]: log-derivative identity
+          - text: $\partial D_l / \partial E |
+          - emphasis [ref=e9331]:
+            - text: "{r_c} = -2 \\int_0^{r_c} u_l^2 dr / u_l(r_c)^2"
+            - img [ref=e9333]:
+              - generic [ref=e9371]: ö
+            - text: "-\\tfrac{1}{2} u_l’’ + U_l u_l = E u_l"
+            - img [ref=e9401]
+            - text: U_l = l(l+1) / (2r^2) + V(r)
+            - img [ref=e9413]
+            - text: \dot u_l = \partial u_l / \partial E
+            - img [ref=e9475]
+            - text: u_l
+            - img [ref=e9501]
+            - text: "0"
+            - img [ref=e9557]
+            - text: r_c
+            - img [ref=e9565]
+            - text: u_l(0) = \dot u_l(0) = 0
+            - img [ref=e9619]
+            - text: r = r_c
+            - img [ref=e9731]
+            - text: u_l(r_c)^2
+            - img [ref=e9757]
+            - text: D_l(E, r_c) = u_l’(r_c) / u_l(r_c)
+            - img [ref=e9873]
+            - text: \int_0^\infty u_l^2 dr = 1
+            - img [ref=e9957]
+            - text: "\\int_0^{r_c} \\dot u_l u_l dr$ can be dropped."
+            - strong [ref=e10028]: "Hint:"
+            - text: the integration-by-parts trick converts the volume integral to boundary terms at
+            - img [ref=e10030]
+            - text: and
+            - img [ref=e10036]
+            - text: ;
+            - img [ref=e10045]
+            - text: kills the lower-limit contribution.
+            - strong [ref=e10063]: "Answer:"
+            - text: multiplying the
+            - img [ref=e10065]
+            - text: equation by
+            - img [ref=e10078]
+            - text: and subtracting the
+            - img [ref=e10087]
+            - text: equation multiplied by
+            - img [ref=e10096]
+            - text: gives
+            - img [ref=e10109]
+            - text: ; integrating by parts and using the boundary conditions yields
+            - img [ref=e10171]
+            - text: ", and dividing by"
+            - img [ref=e10271]
+            - text: gives the log-derivative identity $\partial D_l / \partial E |
+          - text: "{r_c} = -2 \\int_0^{r_c} u_l^2 dr / u_l(r_c)^2$."
+      - separator [ref=e10291]
+      - heading "9. Forces & geometry optimisation" [level=2] [ref=e10292]
+      - blockquote [ref=e10293]:
+        - paragraph [ref=e10294]:
+          - text: "Source:"
+          - link "Chapter 09" [ref=e10295] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-09/
+          - text: — §9.12 (Problems). Chapter 09 uses the Hellmann–Feynman force of
+          - link "Chapter 04, §4.7" [ref=e10296] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: as its starting point and then derives the
+          - strong [ref=e10297]: Pulay correction
+          - text: "needed for finite Gaussian bases. Geometry-optimisation algorithms are in §9.6–9.9. ### 9.1 The Pulay force vanishes in a plane-wave basis"
+      - blockquote [ref=e10298]:
+        - paragraph [ref=e10299]:
+          - strong [ref=e10300]: P9.1.1
+          - text: (easy) ·
+          - emphasis [ref=e10301]: §9.12, Problem 1
+          - strong [ref=e10302]: "[statement]"
+          - text: In a plane-wave basis the basis functions
+          - img [ref=e10304]
+          - text: do
+          - emphasis [ref=e10350]: not
+          - text: depend on the nuclear coordinates
+          - img [ref=e10352]
+          - text: ", so"
+          - img [ref=e10363]
+          - text: .
+          - strong [ref=e10390]: (a)
+          - text: Show that the
+          - strong [ref=e10391]: Pulay correction
+          - text: "$\\mathbf F_I^\\text{Pulay} = -2 \\sum_i^\\text{occ} \\sum_{\\mu \\in I} \\sum_\\nu C_{\\mu i} C_{\\nu i} \\langle \\partial \\chi_\\mu / \\partial \\mathbf R_I | \\hat H_\\text{KS}"
+        - list [ref=e10392]:
+          - listitem [ref=e10393]:
+            - text: \varepsilon_i | \chi_\nu \rangle$ vanishes identically in a plane-wave basis.
+            - strong [ref=e10394]: (b)
+            - text: The external-potential term
+            - img [ref=e10396]
+            - text: survives; in a plane-wave code it is evaluated in Fourier space via
+            - img [ref=e10473]
+            - text: .
+            - strong [ref=e10511]: (c)
+            - text: Confirm that the xc contribution
+            - img [ref=e10513]
+            - text: is non-zero in general and discuss why the GGA enhancement factor makes it non-trivial.
+            - strong [ref=e10571]: "Hint:"
+            - text: part (a) is one line once you notice the basis- function derivative vanishes; parts (b) and (c) are about the
+            - emphasis [ref=e10572]: remaining
+            - text: terms in the force after Pulay is gone.
+            - strong [ref=e10573]: "Answer:"
+            - strong [ref=e10574]: (a)
+            - img [ref=e10576]
+            - text: kills the integrand term by term, so
+            - img [ref=e10604]
+            - text: .
+            - strong [ref=e10623]: (b)
+            - text: the Hartree force becomes
+            - img [ref=e10625]
+            - text: with
+            - img [ref=e10676]
+            - text: in Fourier space.
+            - strong [ref=e10714]: (c)
+            - text: "the xc force is non-zero because $v_\\text{xc}"
+            - link "\\rho" [ref=e10715] [cursor=pointer]:
+              - /url: \mathbf r
+            - text: $ depends on the density at
+            - emphasis [ref=e10716]: all
+            - text: points, and in a GGA the gradient
+            - img [ref=e10718]
+            - text: also moves, so
+            - img [ref=e10726]
+            - text: is non-trivial — the dominant
+            - emphasis [ref=e10738]: new
+            - text: term that the PBE functional adds to LDA.
+      - heading "9.2 The BFGS update preserves the quasi-Newton condition" [level=3] [ref=e10739]
+      - blockquote [ref=e10740]:
+        - paragraph [ref=e10741]:
+          - strong [ref=e10742]: P9.2.1
+          - text: (medium) ·
+          - emphasis [ref=e10743]: §9.12, Problem 2
+          - strong [ref=e10744]: "[statement]"
+          - text: The BFGS update to the inverse Hessian approximation
+          - img [ref=e10746]
+          - text: is
+          - img [ref=e10752]
+          - text: with
+          - img [ref=e10810]
+          - text: ", where"
+          - img [ref=e10834]
+          - text: is the step and
+          - img [ref=e10851]
+          - text: is the gradient difference.
+          - strong [ref=e10883]: (a)
+          - text: Show that
+          - img [ref=e10885]
+          - text: (the
+          - strong [ref=e10899]: quasi-Newton condition
+          - text: ) and that
+          - img [ref=e10901]
+          - text: is symmetric.
+          - strong [ref=e10909]: (b)
+          - text: Use the Sherman–Morrison–Woodbury identity to confirm that this update is the rank-2 modification that, among all symmetric rank-2 updates satisfying the quasi-Newton condition, minimises the weighted Frobenius distance
+          - img [ref=e10911]
+          - text: with the weight chosen so that
+          - img [ref=e10977]
+          - text: .
+          - strong [ref=e10991]: "Hint:"
+          - text: expand
+          - img [ref=e10993]
+          - text: using $H y = (1 - \rho y^\top s) H y
+        - list [ref=e11003]:
+          - listitem [ref=e11004]:
+            - text: \rho s
+            - img [ref=e11006]
+            - text: (I - \rho y s^\top)^\top = I - \rho s y^\top$.
+            - strong [ref=e11125]: "Answer:"
+            - strong [ref=e11126]: (a)
+            - text: expanding, $H’ y = H y - \rho y y^\top H y - \rho H y y^\top s
+          - listitem [ref=e11127]:
+            - text: \rho^2 (y^\top s) y y^\top H y + \rho s = s
+            - img [ref=e11129]
+            - text: y^\top s = 1/\rho
+            - img [ref=e11153]
+            - text: (H’)^\top = H’
+            - img [ref=e11209]
+            - text: s s^\top$ is symmetric.
+            - strong [ref=e11308]: (b)
+            - text: the BFGS update is the
+            - emphasis [ref=e11309]: unique
+            - text: rank-2 update that satisfies the quasi-Newton condition
+            - emphasis [ref=e11310]: "an`d"
+            - text: ’ minimises the weighted distance to the previous inverse Hessian — see
+            - link "Chapter 09, §9.7" [ref=e11311] [cursor=pointer]:
+              - /url: /DFT-notes/dft-notes/chapter-09/#97-the-bfgs-update-formula-in-full
+            - text: for the Lagrange-multiplier derivation.
+      - heading "9.3 One steepest-descent step on H₂/STO-3G" [level=3] [ref=e11312]
+      - blockquote [ref=e11313]:
+        - paragraph [ref=e11314]:
+          - strong [ref=e11315]: P9.3.1
+          - text: (hard) ·
+          - emphasis [ref=e11316]: §9.12, Problem 3
+          - strong [ref=e11317]: "[statement]"
+          - text: The H₂/STO-3G energy curve produced by
+          - link "chapter_03/01-h2-sto3g-scf.py" [ref=e11318] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_03/01-h2-sto3g-scf.py
+            - code [ref=e11319]: chapter_03/01-h2-sto3g-scf.py
+          - text: near the equilibrium bond length
+          - img [ref=e11321]
+          - text: is well approximated by the
+          - strong [ref=e11341]: Morse potential
+          - img [ref=e11343]
+          - text: with
+          - img [ref=e11401]
+          - text: and
+          - img [ref=e11423]
+          - text: . Starting from
+          - img [ref=e11446]
+          - text: ", perform one"
+          - strong [ref=e11465]: steepest-descent
+          - text: step with a
+          - emphasis [ref=e11466]:
+            - text: fixe
+            - code [ref=e11467]: "d*' step size $\\eta = 0.05\\,a_0 / F$ (where $F$ is the force at $R_1$) and report the new bond length $R_2$. Then perform a **line-search** step at $R_1$ and report the optimal step. Which converges faster per force evaluation? Repeat both at $R = 2.5\\,a_0$ (a strongly anharmonic point) and discuss. **Hint:** the force is $F(R) = -dE/dR = -2 a D_e e^{-a(R - R_0)} (1 - e^{-a(R - R_0)})$; the line search solves $\\min_\\eta E(R_1 - \\eta F(R_1))$ by setting $dE/d\\eta = 0$, i.e. $F(R_1 - \\eta F(R_1)) = F(R_1) / [1 - \\eta F'(R_1)]$. **Answer:** at $R_1 = 1.5\\,a_0$, $u = e^{-a(R_1 - R_0)} = e^{-0.155} \\approx 0.857$, $F(R_1) = -2(1.03)(0.134)(0.857)(1 - 0.857) \\approx -0.0327\\,E_h / a_0$ (a *restoring* force towards smaller $R$), so the fixed-step move is $R_2 = R_1 - \\eta F(R_1) = 1.5 - 0.05 = 1.45\\,a_0$ — a $0.05\\,a_0$ move towards the minimum. The line-search step $\\eta^* = F / (dF/dR) = F / (2a^2 D_e u (2u - 1))$ gives $\\eta^* \\approx 0.115\\,a_0 / F$, so $R_2 \\approx 1.385\\,a_0$ — much closer to $R_0$. The line search wins by $\\sim 5\\times$ in *distance to minimum* per force evaluation. At $R = 2.5\\,a_0$ the Morse $E$ is no longer quadratic, so both methods slow down. The take-away: **always use a line searc"
+            - text: h
+          - text: "`* when the energy surface is far from harmonic."
+      - separator [ref=e11468]
+      - heading "10. Phonons & vibrations" [level=2] [ref=e11469]
+      - blockquote [ref=e11470]:
+        - paragraph [ref=e11471]:
+          - text: "Source:"
+          - link "Chapter 10" [ref=e11472] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/
+          - text: — §10.11 (Problems). Chapter 10 uses the dynamical matrix of
+          - link "Chapter 09" [ref=e11473] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-09/
+          - text: (the Hessian of
+          - img [ref=e11475]
+          - text: ) and the BZ machinery of
+          - link "Chapter 07" [ref=e11491] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: .
+      - heading "10.1 Optical vs acoustic branches in a 1-D diatomic chain" [level=3] [ref=e11492]
+      - blockquote [ref=e11493]:
+        - paragraph [ref=e11494]:
+          - strong [ref=e11495]: P10.1.1
+          - text: (easy) ·
+          - emphasis [ref=e11496]: §10.11, Problem 1
+          - strong [ref=e11497]: "[statement]"
+          - text: A 1-D infinite chain has alternating masses
+          - img [ref=e11499]
+          - text: and
+          - img [ref=e11505]
+          - text: with
+          - img [ref=e11511]
+          - text: and a single spring constant
+          - img [ref=e11521]
+          - text: between nearest neighbours. The primitive cell has length
+          - img [ref=e11527]
+          - text: and contains one
+          - img [ref=e11533]
+          - text: and one
+          - img [ref=e11539]
+          - text: ". The phonon dispersion has two branches $\\omega_\\pm^2(q) = K(1/M + 1/m) \\pm K \\sqrt{(1/M + 1/m)^2"
+        - list [ref=e11544]:
+          - listitem [ref=e11545]:
+            - text: "4 \\sin^2(qa/2) / (Mm)}$."
+            - strong [ref=e11546]: (a)
+            - text: Verify that
+            - img [ref=e11548]
+            - text: (the acoustic mode) and
+            - img [ref=e11567]
+            - text: (the optical mode).
+            - strong [ref=e11612]: (b)
+            - text: At the BZ boundary
+            - img [ref=e11614]
+            - text: ", show that"
+            - img [ref=e11629]
+            - text: and
+            - img [ref=e11665]
+            - text: .
+            - strong [ref=e11700]: (c)
+            - text: For NaCl take
+            - img [ref=e11702]
+            - text: and
+            - img [ref=e11728]
+            - text: ; estimate the ratio
+            - img [ref=e11754]
+            - text: at
+            - img [ref=e11771]
+            - text: in the 1-D model.
+            - strong [ref=e11785]: "Hint:"
+            - text: plug
+            - img [ref=e11787]
+            - text: and
+            - img [ref=e11797]
+            - text: into the dispersion and use
+            - img [ref=e11812]
+            - text: ","
+            - img [ref=e11830]
+            - text: .
+            - strong [ref=e11852]: "Answer:"
+            - strong [ref=e11853]: (a)
+            - text: at
+            - img [ref=e11855]
+            - text: ","
+            - img [ref=e11865]
+            - text: and
+            - img [ref=e11890]
+            - text: ; the upper sign gives
+            - img [ref=e11959]
+            - text: ", hence"
+            - img [ref=e12002]
+            - text: .
+            - strong [ref=e12047]: (b)
+            - text: at
+            - img [ref=e12049]
+            - text: ","
+            - img [ref=e12064]
+            - text: ", so $\\omega_-^2(\\pi/a) = K(1/M + 1/m) - K \\sqrt{(1/M + 1/m)^2"
+          - listitem [ref=e12091]:
+            - text: "4/(Mm)} = K(1/M + 1/m) - K(1/M - 1/m) = 2K/M"
+            - img [ref=e12093]
+            - text: M > m
+            - img [ref=e12105]
+            - text: \omega_+^2(\pi/a) = 2K/m$.
+            - strong [ref=e12118]: (c)
+            - text: the ratio is
+            - img [ref=e12120]
+            - text: ", in good agreement with the 1-D model. The script"
+            - link "chapter_10/01-diatomic-chain.py" [ref=e12164] [cursor=pointer]:
+              - /url: /DFT-notes/dft_notes/python_codes/chapter_10/01-diatomic-chain.py
+              - code [ref=e12165]: chapter_10/01-diatomic-chain.py
+            - text: produces the full dispersion and the zone-boundary frequencies.
+      - heading "10.2 The acoustic sum rule from translational invariance" [level=3] [ref=e12166]
+      - blockquote [ref=e12167]:
+        - paragraph [ref=e12168]:
+          - strong [ref=e12169]: P10.2.1
+          - text: (medium) ·
+          - emphasis [ref=e12170]: §10.11, Problem 2
+          - strong [ref=e12171]: "[statement]"
+          - text: The dynamical matrix
+          - img [ref=e12173]
+          - text: with
+          - img [ref=e12249]
+          - text: must obey the
+          - strong [ref=e12323]: acoustic sum rule (ASR)
+          - text: ":"
+          - img [ref=e12325]
+          - text: for every
+          - img [ref=e12373]
+          - text: and Cartesian direction
+          - img [ref=e12379]
+          - text: .
+          - strong [ref=e12384]: (a)
+          - text: Show that the ASR is equivalent to the statement that a uniform translation of the entire crystal costs no energy.
+          - strong [ref=e12385]: (b)
+          - text: Argue why the ASR is satisfied
+          - emphasis [ref=e12386]: automatically
+          - text: if the interatomic force constants are computed in a
+          - emphasis [ref=e12387]: finite
+          - text: supercell with PBC and no external field, and why it is
+          - emphasis [ref=e12388]: "violate`d"
+          - text: ’ if the supercell has a net dipole (e.g. a slab geometry).
+          - strong [ref=e12389]: (c)
+          - text: For the diatomic chain of §10.1, verify the ASR by writing out the
+          - img [ref=e12391]
+          - text: dynamical matrix at
+          - img [ref=e12401]
+          - text: explicitly.
+          - strong [ref=e12411]: "Hint:"
+          - text: a uniform translation
+          - img [ref=e12413]
+          - text: for all
+          - img [ref=e12434]
+          - text: induces a force
+          - img [ref=e12440]
+          - text: ", and translational invariance requires"
+          - img [ref=e12483]
+          - text: .
+          - strong [ref=e12498]: "Answer:"
+          - strong [ref=e12499]: (a)
+          - text: under a uniform translation
+          - img [ref=e12501]
+          - text: for all
+          - img [ref=e12522]
+          - text: ", the force on atom"
+          - img [ref=e12528]
+          - text: in direction
+          - img [ref=e12534]
+          - text: is
+          - img [ref=e12540]
+          - text: ", and translational invariance requires"
+          - img [ref=e12581]
+          - text: for all
+          - img [ref=e12597]
+          - text: — exactly the ASR.
+          - strong [ref=e12606]: (b)
+          - text: the ASR follows from the conservation of total momentum in a neutral, dipole-free supercell; in a slab geometry the
+          - emphasis [ref=e12607]: surface
+          - text: atoms have different force constants, so a uniform translation induces a
+          - emphasis [ref=e12608]: non-zero
+          - text: restoring force.
+          - strong [ref=e12609]: (c)
+          - text: the
+          - img [ref=e12611]
+          - text: dynamical matrix at
+          - img [ref=e12621]
+          - text: is
+          - img [ref=e12631]
+          - text: ; the row sums weighted by
+          - img [ref=e12711]
+          - text: vanish, so the ASR is satisfied.
+      - heading "10.3 The Fröhlich polaron coupling constant" [level=3] [ref=e12724]
+      - blockquote [ref=e12725]:
+        - paragraph [ref=e12726]:
+          - strong [ref=e12727]: P10.3.1
+          - text: (hard) ·
+          - emphasis [ref=e12728]: §10.11, Problem 3
+          - strong [ref=e12729]: "[statement]"
+          - text: The Fröhlich Hamiltonian for an electron coupled to the longitudinal-optical (LO) phonons of a polar crystal is
+          - img [ref=e12731]
+          - text: with the dimensionless
+          - strong [ref=e12857]: Fröhlich coupling constant
+          - img [ref=e12859]
+          - text: (in Gaussian-cgs atomic units).
+          - strong [ref=e12933]: (a)
+          - text: Show that
+          - img [ref=e12935]
+          - text: is dimensionless.
+          - strong [ref=e12940]: (b)
+          - text: For GaAs with
+          - img [ref=e12942]
+          - text: ","
+          - img [ref=e12964]
+          - text: ","
+          - img [ref=e12987]
+          - text: ","
+          - img [ref=e13003]
+          - text: ", compute"
+          - img [ref=e13019]
+          - text: .
+          - strong [ref=e13024]: (c)
+          - text: State the criterion
+          - img [ref=e13026]
+          - text: for the formation of a
+          - emphasis [ref=e13035]: small polaron
+          - text: (the electron self-traps in a lattice distortion) and discuss whether GaAs satisfies it.
+          - strong [ref=e13036]: "Hint:"
+          - text: convert everything to atomic units; in atomic units
+          - img [ref=e13038]
+          - text: and
+          - img [ref=e13051]
+          - text: ", so the formula simplifies to"
+          - img [ref=e13068]
+          - text: .
+          - strong [ref=e13135]: "Answer:"
+          - strong [ref=e13136]: (a)
+          - img [ref=e13138]
+          - text: in Gaussian-cgs has units of energy × length, so
+          - img [ref=e13147]
+          - text: has units of length; combined with
+          - img [ref=e13169]
+          - text: (units
+          - img [ref=e13196]
+          - text: ), the product is dimensionless.
+          - strong [ref=e13211]: (b)
+          - text: in atomic units
+          - img [ref=e13213]
+          - text: ","
+          - img [ref=e13230]
+          - text: ", and"
+          - img [ref=e13279]
+          - text: ", so"
+          - img [ref=e13338]
+          - text: .
+          - strong [ref=e13443]: (c)
+          - text: the small-polaron criterion is
+          - img [ref=e13445]
+          - text: in the strong-coupling limit, where the self-trapping energy overcomes the kinetic energy; GaAs has
+          - img [ref=e13455]
+          - text: ", well below threshold, so the"
+          - strong [ref=e13468]: large (Fröhlich) polaron
+          - text: is the correct picture — the electron is
+          - emphasis [ref=e13469]: "dresse`d"
+          - text: ’ by a phonon cloud but remains mobile. This is why GaAs is a good semiconductor (high mobility) despite the strong electron–phonon coupling.
+      - separator [ref=e13470]
+      - heading "11. Band structures" [level=2] [ref=e13471]
+      - blockquote [ref=e13472]:
+        - paragraph [ref=e13473]:
+          - text: "Source:"
+          - link "Chapter 11" [ref=e13474] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: — §11.11 (Problems). Chapter 11 uses the plane-wave machinery of
+          - link "Chapter 06" [ref=e13475] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: and the Bloch / Brillouin-zone machinery of
+          - link "Chapter 07" [ref=e13476] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: .
+      - heading "11.1 Effective mass from band curvature" [level=3] [ref=e13477]
+      - blockquote [ref=e13478]:
+        - paragraph [ref=e13479]:
+          - strong [ref=e13480]: P11.1.1
+          - text: (easy) ·
+          - emphasis [ref=e13481]: §11.11, Problem 1
+          - strong [ref=e13482]: "[statement]"
+          - text: The Kohn–Sham band
+          - img [ref=e13484]
+          - text: near a non-degenerate band minimum at
+          - img [ref=e13500]
+          - text: "is approximated by the Taylor expansion $\\varepsilon_n(\\mathbf k) = \\varepsilon_n(\\mathbf k_0) + \\tfrac{1}{2} \\sum_{\\alpha\\beta} (\\partial^2 \\varepsilon_n / \\partial k_\\alpha \\partial k_\\beta)|"
+          - emphasis [ref=e13509]: "{\\mathbf k_0} (k - k_0)"
+          - text: \alpha (k - k_0)
+          - emphasis [ref=e13510]:
+            - text: \beta + \dots$.
+            - strong [ref=e13511]: (a)
+            - text: Define the
+            - strong [ref=e13512]: effective-mass tensor
+            - text: $(m^*)
+          - text: "{\\alpha\\beta} = \\hbar^2 / (\\partial^2 \\varepsilon_n / \\partial k_\\alpha \\partial k_\\beta)|"
+          - emphasis [ref=e13513]:
+            - text: "{\\mathbf k_0}"
+            - img [ref=e13515]
+            - text: \Gamma
+            - img [ref=e13613]
+            - text: \propto \mathbf 1
+            - img [ref=e13755]
+            - text: m^* = \hbar^2 / (\partial^2 \varepsilon_n / \partial k^2) |
+          - text: "{\\Gamma}$."
+          - strong [ref=e13764]: (b)
+          - text: For GaAs with a direct gap at
+          - img [ref=e13766]
+          - text: and $\partial^2 \varepsilon_c / \partial k^2|
+          - emphasis [ref=e13771]:
+            - text: "{\\Gamma} = 11.3\\,E_h \\cdot a_0^2"
+            - img [ref=e13773]
+            - text: m^*_e \approx 0.088\,m_e
+            - img [ref=e13799]
+            - text: 0.067\,m_e$, the difference from spin–orbit coupling and non-parabolicity).
+            - strong [ref=e13828]: (c)
+            - text: Explain why the effective mass can be
+            - strong [ref=e13829]: negative
+            - text: at a band maximum and how the
+            - strong [ref=e13830]: hole
+            - text: picture resolves the sign.
+            - strong [ref=e13831]: "Hint:"
+            - text: for an isotropic minimum the band is spherically symmetric around
+            - img [ref=e13833]
+            - text: ", so the Hessian is"
+            - img [ref=e13843]
+            - text: .
+            - strong [ref=e13851]: "Answer:"
+            - strong [ref=e13852]: (a)
+            - text: the Taylor expansion of an isotropic band has only one second-derivative coefficient, and the band
+            - img [ref=e13854]
+            - text: is parabolic, so
+            - img [ref=e13895]
+            - text: ", hence"
+            - img [ref=e13931]
+            - text: .
+            - strong [ref=e13970]: (b)
+            - text: in atomic units
+            - img [ref=e13972]
+            - text: ","
+            - img [ref=e13982]
+            - text: ", so"
+            - img [ref=e13995]
+            - text: — close to the experimental
+            - img [ref=e14024]
+            - text: (the discrepancy is the spin–orbit splitting of the
+            - img [ref=e14039]
+            - text: valence band, which the parabolic model ignores).
+            - strong [ref=e14047]: (c)
+            - text: at a band maximum the second derivative is *negative*, so
+            - img [ref=e14049]
+            - text: ; the hole picture re-interprets the *missing* electron in an otherwise filled band as a *positive* charge with effective mass $m^*_h = -m^*
+          - text: "{e,\\text{top of VB}}$."
+      - heading "11.2 Tight-binding band structure of graphene" [level=3] [ref=e14061]
+      - blockquote [ref=e14062]:
+        - paragraph [ref=e14063]:
+          - strong [ref=e14064]: P11.2.1
+          - text: (medium) ·
+          - emphasis [ref=e14065]: §11.11, Problem 2
+          - strong [ref=e14066]: "[statement]"
+          - text: The
+          - img [ref=e14068]
+          - text: "-band tight-binding Hamiltonian of graphene (with the two-atom unit cell"
+          - img [ref=e14074]
+          - text: and three nearest-neighbour vectors
+          - img [ref=e14085]
+          - text: ) is
+          - img [ref=e14108]
+          - text: with
+          - img [ref=e14158]
+          - text: and
+          - img [ref=e14206]
+          - text: .
+          - strong [ref=e14221]: (a)
+          - text: Show that $|f(\mathbf k)|^2 = t^2 [3 + 2 \cos(\mathbf k \cdot \mathbf a_1)
+        - list [ref=e14222]:
+          - listitem [ref=e14223]:
+            - text: 2 \cos(\mathbf k \cdot \mathbf a_2) + 2 \cos(\mathbf k \cdot (\mathbf a_1 - \mathbf a_2))]
+            - img [ref=e14225]
+            - text: \mathbf a_1, \mathbf a_2$ are the lattice vectors.
+            - strong [ref=e14240]: (b)
+            - text: Show that
+            - img [ref=e14242]
+            - text: at the
+            - strong [ref=e14263]: Dirac points
+            - img [ref=e14265]
+            - text: and
+            - img [ref=e14293]
+            - text: ", and linearise"
+            - img [ref=e14338]
+            - text: around
+            - img [ref=e14351]
+            - text: to show that
+            - img [ref=e14358]
+            - text: with
+            - img [ref=e14410]
+            - text: the
+            - strong [ref=e14433]: Fermi velocity
+            - text: .
+            - strong [ref=e14434]: (c)
+            - text: The script
+            - link "chapter_11/01-graphene-bands.py" [ref=e14435] [cursor=pointer]:
+              - /url: /DFT-notes/dft_notes/python_codes/chapter_11/01-graphene-bands.py
+              - code [ref=e14436]: chapter_11/01-graphene-bands.py
+            - text: computes the band structure along the path
+            - img [ref=e14438]
+            - text: . Run it and confirm that the band gap at
+            - img [ref=e14456]
+            - text: is zero to machine precision and that the velocity at
+            - img [ref=e14462]
+            - text: matches the analytical
+            - img [ref=e14468]
+            - text: .
+            - strong [ref=e14503]: "Hint:"
+            - text: write
+            - img [ref=e14505]
+            - text: and use
+            - img [ref=e14579]
+            - text: etc.
+            - strong [ref=e14602]: "Answer:"
+            - strong [ref=e14603]: (a)
+            - img [ref=e14605]
+            - text: ", and the three differences are"
+            - img [ref=e14682]
+            - text: ","
+            - img [ref=e14694]
+            - text: ","
+            - img [ref=e14712]
+            - text: ", giving the result."
+            - strong [ref=e14723]: (b)
+            - text: at
+            - img [ref=e14725]
+            - text: all three phases are multiples of
+            - img [ref=e14732]
+            - text: and
+            - img [ref=e14740]
+            - text: ; linearising the off-diagonal around
+            - img [ref=e14757]
+            - text: gives
+            - img [ref=e14764]
+            - text: with
+            - img [ref=e14820]
+            - text: .
+            - strong [ref=e14843]: (c)
+            - text: the numerical band plot shows two bands touching at the Brillouin-zone corners
+            - img [ref=e14845]
+            - text: and
+            - img [ref=e14851]
+            - text: with a linear dispersion; the slope
+            - img [ref=e14860]
+            - text: at
+            - img [ref=e14875]
+            - text: is
+            - img [ref=e14881]
+            - text: and matches the analytical value.
+      - heading "11.3 The Rashba spin–orbit splitting and the spin texture" [level=3] [ref=e14891]
+      - blockquote [ref=e14892]:
+        - paragraph [ref=e14893]:
+          - strong [ref=e14894]: P11.3.1
+          - text: (hard) ·
+          - emphasis [ref=e14895]: §11.11, Problem 3
+          - strong [ref=e14896]: "[statement]"
+          - text: The Rashba Hamiltonian for a 2-D electron gas with structural inversion asymmetry is
+          - img [ref=e14898]
+          - text: ", where"
+          - img [ref=e14956]
+          - text: is the Rashba coefficient (energy × length) and
+          - img [ref=e14965]
+          - text: is the Pauli matrix vector.
+          - strong [ref=e14970]: (a)
+          - text: Diagonalise
+          - img [ref=e14972]
+          - text: in the spinor basis to obtain the two spin-split bands
+          - img [ref=e14982]
+          - text: .
+          - strong [ref=e15027]: (b)
+          - text: Find the
+          - strong [ref=e15028]: spin texture
+          - text: of the lower band, i.e. the expectation value
+          - img [ref=e15030]
+          - text: as a function of
+          - img [ref=e15040]
+          - text: .
+          - strong [ref=e15046]: (c)
+          - text: Discuss why the Rashba splitting is at the heart of
+          - strong [ref=e15047]: topological insulator
+          - text: "phenomenology: in Bi₂Se₃ the bulk band gap is"
+          - img [ref=e15049]
+          - text: and the surface state has a single Dirac cone with spin-momentum locking.
+          - strong [ref=e15061]: "Hint:"
+          - text: write
+          - img [ref=e15063]
+          - text: as a
+          - img [ref=e15073]
+          - text: matrix in the
+          - img [ref=e15083]
+          - text: basis with
+          - img [ref=e15103]
+          - text: .
+          - strong [ref=e15137]: "Answer:"
+          - strong [ref=e15138]: (a)
+          - text: the matrix is
+          - img [ref=e15140]
+          - text: with eigenvalues
+          - img [ref=e15246]
+          - text: ; the splitting at the Fermi surface is
+          - img [ref=e15279]
+          - text: .
+          - strong [ref=e15308]: (b)
+          - text: the eigenvectors are spinors with
+          - img [ref=e15310]
+          - text: and
+          - img [ref=e15327]
+          - text: tangent to the Fermi surface — a
+          - strong [ref=e15339]: helical
+          - text: texture.
+          - strong [ref=e15340]: (c)
+          - text: in 3-D topological insulators like Bi₂Se₃ the surface Hamiltonian is
+          - img [ref=e15342]
+          - text: (no kinetic term) and the spin-momentum locking forbids back-scattering — the source of the dissipationless edge transport. The 2-D Rashba Hamiltonian is the
+          - emphasis [ref=e15377]: 2-D analogue
+          - text: of this 3-D surface state.
+      - separator [ref=e15378]
+      - heading "12. Time-Dependent DFT" [level=2] [ref=e15379]
+      - blockquote [ref=e15380]:
+        - paragraph [ref=e15381]:
+          - text: "Source:"
+          - link "Chapter 12" [ref=e15382] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: — §12.12 (Problems). Chapter 12 uses the ground-state Kohn–Sham machinery of
+          - link "Chapter 04" [ref=e15383] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: and the response-function language of
+          - link "Chapter 09" [ref=e15384] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-09/
+          - text: .
+      - heading "12.1 The Thomas–Reiche–Kuhn sum rule" [level=3] [ref=e15385]
+      - blockquote [ref=e15386]:
+        - paragraph [ref=e15387]:
+          - strong [ref=e15388]: P12.1.1
+          - text: (easy) ·
+          - emphasis [ref=e15389]: §12.12, Problem 1
+          - strong [ref=e15390]: "[statement]"
+          - text: The
+          - strong [ref=e15391]: oscillator strength
+          - text: of the transition
+          - img [ref=e15393]
+          - text: is
+          - img [ref=e15412]
+          - text: ", with"
+          - img [ref=e15481]
+          - text: and the factor 3 the sum over Cartesian components.
+          - strong [ref=e15515]: (a)
+          - text: Show, using
+          - img [ref=e15517]
+          - text: and the resolution of the identity
+          - img [ref=e15563]
+          - text: ", that the"
+          - strong [ref=e15592]: Thomas–Reiche–Kuhn (TRK) sum rule
+          - img [ref=e15594]
+          - text: holds for an
+          - img [ref=e15618]
+          - text: "-electron system."
+          - strong [ref=e15626]: (b)
+          - text: Use the sum rule to estimate the typical oscillator strength of the first UV absorption in benzene (
+          - img [ref=e15628]
+          - text: ", first excited state at"
+          - img [ref=e15642]
+          - text: ).
+          - strong [ref=e15656]: (c)
+          - text: Discuss what happens to the sum rule in the
+          - strong [ref=e15657]: Tamm–Dancoff approximation (TDA)
+          - text: and the
+          - strong [ref=e15658]: adiabatic LDA
+          - text: — is it preserved exactly, or only approximately?
+          - strong [ref=e15659]: "Hint:"
+          - text: sandwich the commutator between
+          - img [ref=e15661]
+          - text: and
+          - img [ref=e15671]
+          - text: and insert the resolution of the identity; use the
+          - strong [ref=e15680]: virial theorem
+          - img [ref=e15682]
+          - text: for the Coulomb ground state.
+          - strong [ref=e15697]: "Answer:"
+          - strong [ref=e15698]: (a)
+          - img [ref=e15700]
+          - text: ; for a non-relativistic Hamiltonian the virial theorem gives
+          - img [ref=e15835]
+          - text: ", so"
+          - img [ref=e15851]
+          - text: .
+          - strong [ref=e15899]: (b)
+          - text: with 42 electrons and ~10–20 dipole-allowed transitions in the first UV band, the average
+          - img [ref=e15901]
+          - text: –
+          - img [ref=e15913]
+          - text: per state.
+          - strong [ref=e15920]: (c)
+          - text: the TDA and the adiabatic LDA
+          - emphasis [ref=e15921]:
+            - text: bot
+            - code [ref=e15922]: h*' preserve the TRK sum rule *exactly* (effective one-body Hamiltonians); the failure of the TRK sum rule is a signature of *non-adiabati
+            - text: c
+          - text: ’ xc kernels (e.g. Bethe–Salpeter).
+      - heading "12.2 Absorption cross-section of a two-level system" [level=3] [ref=e15923]
+      - blockquote [ref=e15924]:
+        - paragraph [ref=e15925]:
+          - strong [ref=e15926]: P12.2.1
+          - text: (medium) ·
+          - emphasis [ref=e15927]: §12.12, Problem 2
+          - strong [ref=e15928]: "[statement]"
+          - text: For a two-level system with ground state
+          - img [ref=e15930]
+          - text: and excited state
+          - img [ref=e15940]
+          - text: separated by energy
+          - img [ref=e15950]
+          - text: and transition dipole
+          - img [ref=e15961]
+          - text: ", the linear-response TDDFT treatment of"
+          - link "Chapter 12, §12.10" [ref=e15972] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: (worked example) gives the absorption cross-section
+          - img [ref=e15974]
+          - text: in the long-wavelength limit (atomic units,
+          - img [ref=e16036]
+          - text: ).
+          - strong [ref=e16045]: (a)
+          - text: Show that this is consistent with the textbook
+          - strong [ref=e16046]:
+            - text: Einstein
+            - img [ref=e16048]
+            - text: coefficient
+          - img [ref=e16054]
+          - text: .
+          - strong [ref=e16106]: (b)
+          - text: Add a phenomenological linewidth
+          - img [ref=e16108]
+          - text: (a Lorentz broadening) and integrate
+          - img [ref=e16114]
+          - text: over
+          - img [ref=e16126]
+          - text: to get the
+          - strong [ref=e16131]:
+            - text: dipole strengt
+            - code [ref=e16132]: h*
+            - text: "*"
+            - img [ref=e16134]
+            - text: . Show that
+            - img [ref=e16156]
+            - text: . **(c)
+          - text: For a typical dye molecule with
+          - img [ref=e16195]
+          - text: and
+          - img [ref=e16229]
+          - text: ", estimate the peak"
+          - img [ref=e16247]
+          - text: (in cm²) at the absorption maximum.
+          - strong [ref=e16252]: "Hint:"
+          - text: the Einstein
+          - img [ref=e16254]
+          - text: coefficient and the absorption cross-section are related by
+          - img [ref=e16260]
+          - text: for a two-level system.
+          - strong [ref=e16298]: "Answer:"
+          - strong [ref=e16299]: (a)
+          - text: the integrated cross-section is
+          - img [ref=e16301]
+          - text: ", and the relation to the spontaneous emission rate is"
+          - img [ref=e16357]
+          - text: — both expressions agree when
+          - img [ref=e16393]
+          - text: .
+          - strong [ref=e16445]: (b)
+          - text: with a Lorentz broadening,
+          - img [ref=e16447]
+          - text: and
+          - img [ref=e16552]
+          - text: .
+          - strong [ref=e16601]: (c)
+          - text: for
+          - img [ref=e16603]
+          - text: a.u.,
+          - img [ref=e16628]
+          - text: ","
+          - img [ref=e16651]
+          - text: ","
+          - img [ref=e16671]
+          - text: — consistent with typical dye-molecule absorption cross-sections. The script
+          - link "chapter_12/01-two-level-absorption.py" [ref=e16707] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_12/01-two-level-absorption.py
+            - code [ref=e16708]: chapter_12/01-two-level-absorption.py
+          - text: produces the full absorption profile.
+      - heading "12.3 The Casida matrix for a 2-orbital, 2-electron system" [level=3] [ref=e16709]
+      - blockquote [ref=e16710]:
+        - paragraph [ref=e16711]:
+          - strong [ref=e16712]: P12.3.1
+          - text: (hard) ·
+          - emphasis [ref=e16713]: §12.12, Problem 3
+          - strong [ref=e16714]: "[statement]"
+          - text: The Casida eigenvalue problem for linear-response TD-DFT in a basis of
+          - img [ref=e16716]
+          - text: occupied and
+          - img [ref=e16727]
+          - text: virtual KS orbitals is
+          - img [ref=e16739]
+          - text: ", with"
+          - img [ref=e16827]
+          - text: and
+          - img [ref=e16895]
+          - text: .
+          - strong [ref=e16928]: (a)
+          - text: For a 2-electron system in a minimal basis, show that the Casida matrix is
+          - img [ref=e16930]
+          - text: "and reduce it to the singlet/triplet decomposition $\\Omega_\\text{singlet} = \\sqrt{(\\varepsilon_2 - \\varepsilon_1)^2"
+        - list [ref=e16939]:
+          - listitem [ref=e16940]:
+            - text: "4 (\\varepsilon_+ - \\varepsilon_-) (2 J - K)}"
+            - img [ref=e16942]
+            - text: "\\Omega_\\text{triplet} = \\varepsilon_2 - \\varepsilon_1$."
+            - strong [ref=e16951]: (b)
+            - text: Compute the numerical values for H₂ at
+            - img [ref=e16953]
+            - text: in the STO-3G basis using the chapter 03 SCF solution (
+            - link "chapter_03/01-h2-sto3g-scf.py" [ref=e16969] [cursor=pointer]:
+              - /url: /DFT-notes/dft_notes/python_codes/chapter_03/01-h2-sto3g-scf.py
+              - code [ref=e16970]: chapter_03/01-h2-sto3g-scf.py
+            - text: ) and an LDA xc kernel.
+            - strong [ref=e16971]: (c)
+            - text: Discuss why the singlet is
+            - emphasis [ref=e16972]: lower
+            - text: in energy than the triplet in TD-DFT but the same in CIS (the Tamm–Dancoff approximation).
+            - strong [ref=e16973]: "Hint:"
+            - text: the spin structure of
+            - img [ref=e16975]
+            - text: depends on whether the excitation is singlet or triplet; for the triplet, the
+            - emphasis [ref=e16980]: exchange
+            - text: part of
+            - img [ref=e16982]
+            - text: is twice the singlet exchange.
+            - strong [ref=e16987]: "Answer:"
+            - strong [ref=e16988]: (a)
+            - text: the
+            - img [ref=e16990]
+            - text: Casida matrix in the
+            - emphasis [ref=e16999]: singlet
+            - text: channel is
+            - img [ref=e17001]
+            - text: with
+            - img [ref=e17023]
+            - text: and
+            - img [ref=e17077]
+            - text: ", and in the"
+            - emphasis [ref=e17112]: triplet
+            - text: channel
+            - img [ref=e17114]
+            - text: ","
+            - img [ref=e17134]
+            - text: (the spin flip kills the exchange). The eigenvalues
+            - img [ref=e17144]
+            - text: give the stated expressions.
+            - strong [ref=e17157]: (b)
+            - text: in STO-3G H₂,
+            - img [ref=e17159]
+            - text: and the LDA-kernel contribution
+            - img [ref=e17188]
+            - text: ", so"
+            - img [ref=e17232]
+            - text: and
+            - img [ref=e17260]
+            - text: — a
+            - emphasis [ref=e17287]: redshift
+            - text: of the singlet by
+            - img [ref=e17289]
+            - text: ", comparable to the experimental HOMO–LUMO gap in H₂."
+            - strong [ref=e17303]: (c)
+            - text: in CIS (TDA) the triplet–singlet splitting comes only from the
+            - emphasis [ref=e17304]: exchange
+            - text: integrals, not from the xc kernel, so the singlet–triplet gap is
+            - emphasis [ref=e17305]: underestimated
+            - text: ’; full TD-DFT captures the dynamical correlation via the xc kernel, which lowers the singlet more than the triplet.
+      - separator [ref=e17306]
+      - heading "13. DFT+U & beyond" [level=2] [ref=e17307]
+      - blockquote [ref=e17308]:
+        - paragraph [ref=e17309]:
+          - text: "Source:"
+          - link "Chapter 13" [ref=e17310] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-13/
+          - text: — §13.6 (Problems). Chapter 13 uses the ground-state Kohn–Sham machinery of
+          - link "Chapter 04" [ref=e17311] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: and the failure-of-LDA discussion of
+          - link "Chapter 05" [ref=e17312] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: (Jacob’s ladder of xc functionals).
+      - heading "13.1 The DFT+U double-counting correction" [level=3] [ref=e17313]
+      - blockquote [ref=e17314]:
+        - paragraph [ref=e17315]:
+          - strong [ref=e17316]: P13.1.1
+          - text: (easy) ·
+          - emphasis [ref=e17317]: §13.6, Problem 1
+          - strong [ref=e17318]: "[statement]"
+          - text: "The DFT+U energy functional is $E_\\text{DFT+U}[\\rho, {n^\\sigma_{mm’}}] = E_\\text{DFT}[\\rho]"
+        - list [ref=e17319]:
+          - listitem [ref=e17320]:
+            - text: "\\tfrac{1}{2} \\sum_\\sigma \\sum_{{m}} U_\\text{eff} (\\text{Tr}\\, \\mathbf n^\\sigma - \\text{Tr}\\, (\\mathbf n^\\sigma \\mathbf n^\\sigma))"
+            - img [ref=e17322]
+            - text: "n^\\sigma_{mm’} = \\sum_{n\\mathbf k} f_{n\\mathbf k} \\langle \\phi_{n\\mathbf k} | \\hat P^\\sigma_{m’} \\rangle \\langle \\hat P^\\sigma_m | \\phi_{n\\mathbf k} \\rangle"
+            - img [ref=e17338]
+            - text: d
+            - img [ref=e17476]
+            - text: "U_\\text{eff} = U - J$ is the"
+            - strong [ref=e17503]: effective on-site Coulomb
+            - text: (the Hubbard
+            - img [ref=e17505]
+            - text: minus the Hund’s
+            - img [ref=e17511]
+            - text: ).
+            - strong [ref=e17516]: (a)
+            - text: Identify the
+            - strong [ref=e17517]: double-counting
+            - text: term that the
+            - img [ref=e17519]
+            - text: correction subtracts from the LDA/GGA energy.
+            - strong [ref=e17526]: (b)
+            - text: Show that for an
+            - emphasis [ref=e17527]: integer
+            - text: occupation (e.g.
+            - img [ref=e17529]
+            - text: or
+            - img [ref=e17538]
+            - text: ),
+            - img [ref=e17547]
+            - text: and the
+            - img [ref=e17576]
+            - text: correction vanishes.
+            - strong [ref=e17583]: (c)
+            - text: Argue why the correction is
+            - emphasis [ref=e17584]: finite
+            - text: and
+            - emphasis [ref=e17585]: positive
+            - text: only for fractional occupations, i.e. for metallic or near-metal-like states.
+            - strong [ref=e17586]: "Hint:"
+            - text: the double-counting is the part of
+            - img [ref=e17588]
+            - text: that already includes (approximately) the on-site Coulomb repulsion — the LDA counts the on-site
+            - img [ref=e17599]
+            - text: –
+            - img [ref=e17605]
+            - text: interaction via the
+            - emphasis [ref=e17610]: average
+            - text: density, which is wrong for a strongly localised subspace.
+            - strong [ref=e17611]: "Answer:"
+            - strong [ref=e17612]: (a)
+            - text: the double-counting is the LDA/GGA estimate of the on-site
+            - img [ref=e17614]
+            - text: –
+            - img [ref=e17620]
+            - text: Coulomb energy, which is approximately
+            - img [ref=e17626]
+            - text: with
+            - img [ref=e17670]
+            - text: and
+            - img [ref=e17687]
+            - text: the
+            - emphasis [ref=e17697]: average
+            - text: on-site repulsion already included in LDA (the LDA cannot tell a
+            - emphasis [ref=e17698]:
+              - text: localise
+              - code [ref=e17699]: d*' $d$ electron from a *delocalise
+              - text: d
+            - text: ’ one).
+            - strong [ref=e17700]: (b)
+            - text: for
+            - img [ref=e17702]
+            - text: integer,
+            - img [ref=e17715]
+            - text: and
+            - img [ref=e17729]
+            - text: (a
+            - img [ref=e17750]
+            - text: projector on the occupied orbital), so the correction is zero — the LDA already gives the right answer for an empty/full shell.
+            - strong [ref=e17759]: (c)
+            - text: the
+            - img [ref=e17761]
+            - text: correction is designed to
+            - emphasis [ref=e17768]: penalise
+            - text: fractional occupations, which is precisely what the LDA fails to do for a localised subspace; the penalty is
+            - img [ref=e17770]
+            - text: with equality only at integer
+            - img [ref=e17815]
+            - text: .
+      - heading "13.2 The Mott insulator vs the band insulator" [level=3] [ref=e17823]
+      - blockquote [ref=e17824]:
+        - paragraph [ref=e17825]:
+          - strong [ref=e17826]: P13.2.1
+          - text: (medium) ·
+          - emphasis [ref=e17827]: §13.6, Problem 2
+          - strong [ref=e17828]: "[statement]"
+          - text: The single-band Hubbard model on a bipartite lattice (e.g. a 2-D square lattice with nearest-neighbour hopping
+          - img [ref=e17830]
+          - text: ) is
+          - img [ref=e17836]
+          - text: .
+          - strong [ref=e17937]: (a)
+          - text: At half-filling and
+          - img [ref=e17939]
+          - text: ", the band structure is"
+          - img [ref=e17949]
+          - text: and the system is a
+          - emphasis [ref=e17993]: metal
+          - text: (a 2-D metal with a Van Hove singularity at the Fermi level).
+          - strong [ref=e17994]: (b)
+          - text: At half-filling and
+          - img [ref=e17996]
+          - text: (the
+          - emphasis [ref=e18005]: atomic limit
+          - text: ), the system is a
+          - strong [ref=e18006]: Mott insulator
+          - text: ": every site is singly occupied, the charge fluctuation is suppressed, and the effective spin Hamiltonian is the Heisenberg antiferromagnet"
+          - img [ref=e18008]
+          - text: with
+          - img [ref=e18061]
+          - text: .
+          - strong [ref=e18080]: (c)
+          - text: At what value of
+          - img [ref=e18082]
+          - text: does the
+          - strong [ref=e18095]: Mott transition
+          - text: "occur in 2-D? (Mean-field:"
+          - img [ref=e18097]
+          - text: "; DMFT in infinite dimensions:"
+          - img [ref=e18115]
+          - text: "; quantum Monte Carlo at zero temperature:"
+          - img [ref=e18133]
+          - text: .)
+          - strong [ref=e18152]: (d)
+          - text: Discuss why LDA
+          - emphasis [ref=e18153]: fails
+          - text: "to predict the Mott insulating state: it sees a metal, because it has no mechanism to"
+          - emphasis [ref=e18154]: localise
+          - text: electrons in a half-filled band.
+          - strong [ref=e18155]: "Hint:"
+          - text: the Mott transition is the point at which the quasiparticle weight
+          - img [ref=e18157]
+          - text: at the Fermi level vanishes.
+          - strong [ref=e18162]: "Answer:"
+          - strong [ref=e18163]: (a)
+          - img [ref=e18165]
+          - text: ranges over
+          - img [ref=e18210]
+          - text: and is half-filled (one electron per site, two per unit cell, so two bands); the Fermi surface is the
+          - strong [ref=e18229]: nested
+          - text: square
+          - img [ref=e18231]
+          - text: — perfect nesting at wavevector
+          - img [ref=e18270]
+          - text: .
+          - strong [ref=e18293]: (b)
+          - text: in the atomic limit the only low-energy process is the
+          - emphasis [ref=e18294]: virtual
+          - text: hopping of an electron from site
+          - img [ref=e18296]
+          - text: to site
+          - img [ref=e18302]
+          - text: and back, which gives a
+          - emphasis [ref=e18307]: spin exchange
+          - img [ref=e18309]
+          - text: (second-order perturbation theory in
+          - img [ref=e18329]
+          - text: ).
+          - strong [ref=e18339]: (c)
+          - text: the Mott transition is at
+          - img [ref=e18341]
+          - text: in 2-D (QMC, zero temperature); for
+          - img [ref=e18358]
+          - text: the system is a metal, for
+          - img [ref=e18371]
+          - text: it is an antiferromagnetic insulator.
+          - strong [ref=e18383]: (d)
+          - text: the LDA is built on the
+          - emphasis [ref=e18384]:
+            - text: delocalise
+            - code [ref=e18385]: d*' KS orbitals of a non-interacting reference and has no way to suppress the charge fluctuation that the Mott insulator requires; the gap in LDA comes from *band splitting* (Slater antiferromagnet), not from on-site repulsion. The 3*
+            - text: d
+          - text: ’ transition-metal oxides (MnO, FeO, CoO, NiO) are the textbook examples of this failure.
+      - heading "13.3 The Liechtenstein rotationally invariant DFT+U" [level=3] [ref=e18386]
+      - blockquote [ref=e18387]:
+        - paragraph [ref=e18388]:
+          - strong [ref=e18389]: P13.3.1
+          - text: (hard) ·
+          - emphasis [ref=e18390]: §13.6, Problem 3
+          - strong [ref=e18391]: "[statement]"
+          - text: The Liechtenstein formulation of DFT+U is rotationally invariant in the localised subspace. The energy correction is
+          - img [ref=e18393]
+          - text: with the
+          - strong [ref=e18496]: screened Coulomb tensor
+          - img [ref=e18498]
+          - text: decomposed into the Slater integrals
+          - img [ref=e18564]
+          - text: .
+          - strong [ref=e18590]: (a)
+          - text: For a
+          - img [ref=e18592]
+          - text: "-electron subspace ("
+          - img [ref=e18598]
+          - text: ), relate the Slater integrals to the
+          - strong [ref=e18607]:
+            - text: Hubbard
+            - img [ref=e18609]
+          - text: and
+          - strong [ref=e18614]:
+            - text: Hund’s
+            - img [ref=e18616]
+          - text: ":"
+          - img [ref=e18622]
+          - text: and
+          - img [ref=e18635]
+          - text: .
+          - strong [ref=e18664]: (b)
+          - text: Show that the
+          - strong [ref=e18665]: occupation matrix
+          - img [ref=e18667]
+          - text: in the
+          - img [ref=e18677]
+          - text: basis is
+          - emphasis [ref=e18682]: idempotent
+          - text: (eigenvalues 0 or 1) in the atomic limit and has
+          - emphasis [ref=e18683]: fractional
+          - text: eigenvalues in the itinerant limit, and that the DFT+U correction
+          - img [ref=e18685]
+          - text: is minimised when
+          - img [ref=e18749]
+          - text: is fully polarised.
+          - strong [ref=e18758]: (c)
+          - text: Discuss why this
+          - emphasis [ref=e18759]: over-favours
+          - text: ferromagnetism in transition-metal oxides and how the
+          - strong [ref=e18760]: around-mean-field (AMF)
+          - text: double-counting corrects the bias.
+          - strong [ref=e18761]: "Hint:"
+          - text: the Slater integrals are the
+          - emphasis [ref=e18762]: radial
+          - text: averages
+          - img [ref=e18764]
+          - text: of the Coulomb interaction weighted by the
+          - img [ref=e18780]
+          - text: "-orbital density."
+          - strong [ref=e18785]: "Answer:"
+          - strong [ref=e18786]: (a)
+          - text: the Slater–Condon parameters for a
+          - img [ref=e18788]
+          - text: shell relate to
+          - img [ref=e18794]
+          - text: and
+          - img [ref=e18800]
+          - text: via
+          - img [ref=e18806]
+          - text: and
+          - img [ref=e18819]
+          - text: (the numerical factor 1/14 comes from the Gaunt coefficients of the
+          - img [ref=e18849]
+          - text: orbitals).
+          - strong [ref=e18854]: (b)
+          - text: in the atomic limit
+          - img [ref=e18856]
+          - text: is a 0/1 projector (eigenvalues 0 or 1), so
+          - img [ref=e18866]
+          - text: (the
+          - img [ref=e18901]
+          - text: correction vanishes); in the itinerant limit the eigenvalues are fractional, the bracket is
+          - emphasis [ref=e18906]: negative
+          - text: ", and the correction is"
+          - emphasis [ref=e18907]: positive
+          - text: — the system pays an energy price for being in between.
+          - strong [ref=e18908]: (c)
+          - text: the
+          - strong [ref=e18909]: around-mean-field (AMF)
+          - text: double-counting shifts the energy so that the
+          - img [ref=e18911]
+          - text: correction is
+          - emphasis [ref=e18918]: zero
+          - text: in the
+          - emphasis [ref=e18919]: uniform
+          - text: (mean-field) limit and grows only as the system becomes
+          - emphasis [ref=e18920]: less
+          - text: uniform — this removes the bias towards full spin polarisation. In practice the
+          - strong [ref=e18921]: Dudarev
+          - text: formulation with a single
+          - img [ref=e18923]
+          - text: is the most common.
+      - separator [ref=e18933]
+      - heading "Cross-chapter problem set A — From Schrödinger to pseudopotentials (chapters 01, 03, 04, 08)" [level=2] [ref=e18934]
+      - paragraph [ref=e18935]:
+        - text: "This multi-part problem walks the reader through the chain of approximations that turns the all-electron Schrödinger equation of a many-electron atom into a smooth valence-only pseudopotential. The chain is: H atom (analytical) → Hartree–Fock (many-electron, all-electron) → Kohn–Sham DFT (many-electron, all-electron, with approximate xc) → pseudopotential (valence-only, smooth). The system is"
+        - strong [ref=e18936]: lithium
+        - text: (
+        - img [ref=e18938]
+        - text: ","
+        - img [ref=e18948]
+        - text: ), the prototypical
+        - emphasis [ref=e18965]: one-valence-electron
+        - text: atom for which the pseudopotential approximation is exact in the limit of a frozen
+        - img [ref=e18967]
+        - text: core.
+      - group [ref=e18974]:
+        - generic "▸ Part 1 (chapter 01) — The hydrogenic 2s orbital" [ref=e18975] [cursor=pointer]
+        - text: "Treat the valence electron of Li as a *hydrogeni`c*' orbital in an effective nuclear charge (the core screens two of the three nuclear protons). Write down the radial wavefunction and the energy . Estimate by the **Slater rules** and compare with the all-electron Kohn–Sham value . Why is the node of the hydrogenic (at ) \"deep inside\" the core region, and what does this imply for the plane-wave cutoff?"
+      - group [ref=e18976]:
+        - generic "▸ Show answer" [ref=e18977] [cursor=pointer]
+        - text: "The Slater rules assign (the two electrons screen with weight 0.85 each), so and . The all-electron Kohn–Sham value is (the core is *not* fully screening), and the experimental IE is — the *opposite* trend: the Slater rules were derived for *neutral* atoms and miss the relaxation of the core in the ionised state. The Kohn–Sham eigenvalue is a *better* estimate of the neutral-atom orbital energy but *overestimates* the IE by (the SCF correction). The hydrogenic wavefunction at is in atomic units; it has one radial node at , deep inside the core region ( – is typical for Li). This nodefulness is exactly what a pseudopotential construction in chapter 08 will *remove*: a smooth pseudo-orbital with no radial node inside is the entire point of the construction."
+      - group [ref=e18978]:
+        - generic "▸ Part 2 (chapter 03) — Hartree–Fock on Li in a STO-3G basis" [ref=e18979] [cursor=pointer]
+        - text: "Set up a Hartree–Fock calculation for Li in a STO-3G basis (one basis function per occupied orbital: a and a on the Li atom). Write the Fock matrix in the AO basis, , and the density matrix in the closed-shell two-electron core and the *open-shell* single electron. (Note: Li has electrons, so the *closed-shell* Ansatz of [Chapter 03, §3.5](/DFT-notes/dft-notes/chapter-03/) does not apply — you need an **unrestricted** HF or an **ROHF** treatment.) Report the Koopmans IE and compare with the hydrogenic estimate of Part 1."
+      - group [ref=e18980]:
+        - generic "▸ Show answer" [ref=e18981] [cursor=pointer]
+        - text: "The Li atom in a minimal basis has two basis functions and three electrons: the closed-shell pair and one unpaired electron. The standard approach is **unrestricted Hartree–Fock (UHF)**: separate and orbitals, and similarly for , with and . The Fock matrix for spin is (the exchange term has a *spin-dependent* density matrix). For Li in STO-3G, the standard UHF result is (the Koopmans IE is , very close to the experimental IE of ), and (deeper, in the core). The unrestricted calculation gives a that is *not* exactly (the doublet value) — the spin contamination is typically for Li/STO-3G, an contamination that is *typical* for open-shell atoms in small bases."
+      - group [ref=e18982]:
+        - generic "▸ Part 3 (chapter 04) — Replace HF exchange with LDA" [ref=e18983] [cursor=pointer]
+        - text: "Re-run the Li calculation of Part 2 with the HF *exchange* replaced by the **LDA exchange** functional of [Chapter 05, §5.1](/DFT-notes/dft-notes/chapter-05/). This is a *Kohn–Sham DFT* calculation in a minimal basis (KS-LDA/STO-3G). Report the new and compare with the UHF value. Discuss the *systemati`c*' difference: in atoms, KS-LDA *overbinds* the HOMO and underbinds the LUMO, but the *Koopmans* IE (which is , not the SCF value) is typically in *better* agreement with experiment for HF than for LDA, *reverse`d*' when the SCF correction is applied."
+      - group [ref=e18984]:
+        - generic "▸ Show answer" [ref=e18985] [cursor=pointer]
+        - text: "The KS-LDA total energy is , and the KS eigenvalues are *not* the HF orbital energies — the *exchange* part of the Fock operator is replaced by the *local* xc potential , and the *correlation* part is added. For Li/STO-3G, the KS-LDA HOMO is at (a *deeper* eigenvalue than HF, by ); the Koopmans IE is *too large* by . This is the **DFT Koopmans failure**: the KS eigenvalue is *not* the ionisation energy in DFT, only in exact KS-DFT (the \"Janak theorem\" generalisation). The SCF correction — recomputing self-consistently at and — gives a value much closer to experiment: typically – for KS-LDA, compared to (UHF Koopmans) and (experimental). The *Koopmans* IE in HF is better than the Koopmans IE in LDA, but the SCF IE in LDA is *better* than the SCF IE in HF — the opposite conclusion, illustrating that HF and DFT are *different* theories, not just different functionals."
+      - group [ref=e18986]:
+        - generic "▸ Part 4 (chapter 08) — Build a Li pseudopotential from the all-electron LDA orbital" [ref=e18987] [cursor=pointer]
+        - text: "Take the all-electron KS-LDA orbital of Li from Part 3 and construct a Troullier–Martins (TM) pseudopotential with cutoff radius following the recipe of [Chapter 08, §8.4 and §8.8](/DFT-notes/dft-notes/chapter-08/). Use the script [`chapter_08/01-hydrogen-pseudopotential.py`](/DFT-notes/dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py) as a template (it does the same construction for H; change the all-electron input to the Li KS-LDA orbital). Verify that the pseudo-wavefunction matches the all-electron for to machine precision, that is nodeless in , and that the **norm-conservation condition** holds. Then **invert** the radial equation to obtain and discuss why the pseudo-potential is much *shallower* than the all-electron potential inside and why this matters for the plane-wave cutoff."
+      - group [ref=e18988]:
+        - generic "▸ Show answer" [ref=e18989] [cursor=pointer]
+        - text: "For Li/ with , the resulting is a smooth, finite function inside with a depth of (compared to the all-electron Coulomb which diverges as ); outside it is set equal to the all-electron . The pseudo-wavefunction is nodeless in (the TM form *forces* this through the polynomial ansatz), and the norm-conservation holds to relative error. The plane-wave cutoff required to expand is – (compared to for the all-electron with its radial node at ) — a saving that makes plane-wave DFT on Li feasible. The deeper point: the all-electron orbital of Li has and oscillates times inside ; the *pseudo-potential* is *designed*' to reproduce the valence orbital *outside* and is allowed* to deviate inside — that deviation is the *frozen-core* approximation. For a Li atom in two different chemical environments (e.g. Li in LiH vs Li in Li₂), the core is *assumed*' unchanged and the is transferred* between them — the transferability is the key property of the construction."
+      - separator [ref=e18990]
+      - heading "Cross-chapter problem set B — From phonons to TDDFT (chapters 07, 10, 11, 12)" [level=2] [ref=e18991]
+      - paragraph [ref=e18992]:
+        - text: This problem set takes a
+        - emphasis [ref=e18993]: single
+        - text: "physical system (a 1-D periodic diatomic chain — the prototype of an ionic crystal) and walks it through four chapters: from"
+        - emphasis [ref=e18994]: electronic
+        - text: ’ band structure (ch 07) through phonons (ch 10) through
+        - emphasis [ref=e18995]: band-structure
+        - text: analysis and DOS visualisation (ch 11) to its
+        - emphasis [ref=e18996]: optical
+        - text: absorption spectrum (ch 12).
+      - group [ref=e18997]:
+        - generic "▸ Part 1 (chapter 07) — Electronic band structure of the diatomic chain" [ref=e18998] [cursor=pointer]
+        - text: "The chain has a two-atom unit cell, so the BZ is and the *electroni`c*' band structure has *two* bands, . **(a)** Sketch for and identify the **band gap** at the BZ boundary . **(b)** Compute the **density of states** for the two bands by the change of variable on . **(c)** Show that the **joint density of states** (the *optical* DOS that governs direct transitions) is , with a **van Hove singularity** at ."
+      - group [ref=e18999]:
+        - generic "▸ Show answer" [ref=e19000] [cursor=pointer]
+        - text: "The two-band dispersion is the textbook result of a two-site, one-orbital tight-binding chain: the eigenvalues of the Bloch Hamiltonian are , with a maximum of at the Brillouin-zone centre and a gap of at the boundary . The valence band is fully filled (two electrons per unit cell, one orbital per atom) and the conduction band is empty: the chain is an *insulator* (Peierls-type). The DOS of a single band is for , with a **van Hove singularity** at the band edges. The *joint* DOS for direct transitions is for , with a van Hove singularity at (the BZ boundary). This is the 1-D analogue of the 3-D absorption edge — the optical absorption *onsets* at the band gap and has a divergent joint DOS just above it."
+      - group [ref=e19001]:
+        - generic "▸ Part 2 (chapter 10) — Phonon dispersion of the diatomic chain" [ref=e19002] [cursor=pointer]
+        - text: In the same geometry, the *phonon* dispersion has two branches . **(a)** Verify the **acoustic sum rule** and the **optical** branch . **(b)** For and , (a chain modelling HCl), compute the optical phonon frequency at in meV. **(c)** Discuss the **LO–TO splitting** in 3-D ionic crystals (NaCl, GaAs) and why it does *not* appear in the 1-D chain (the 1-D chain has no long-range Coulomb interaction to break the degeneracy at ).
+      - group [ref=e19003]:
+        - generic "▸ Show answer" [ref=e19004] [cursor=pointer]
+        - text: "The acoustic sum rule is satisfied by the factor: at , . The optical branch at is ; for HCl-like parameters, and — about ten times larger than typical acoustic phonons in real solids, because the 1-D spring constant is *muc`h*' stiffer than a real interatomic spring. The LO–TO splitting is a *3-D* effect: in an ionic crystal the long-range Coulomb interaction between the *effective* charges of the ions adds a term to the dynamical matrix, which is *finite* at for the optical mode (the acoustic modes are protected by the ASR). In 1-D, the analogous term is *absent* — the 1-D Coulomb interaction is short-range in the lattice sums — so the LO–TO splitting does not appear."
+      - group [ref=e19005]:
+        - generic "▸ Part 3 (chapter 11) — Electronic density of states and the optical gap" [ref=e19006] [cursor=pointer]
+        - text: "**(a)** Compute the **optical gap** of the diatomic chain as the minimum direct gap, (Part 1), and the *indirect* gap (the minimum gap over all ; here it equals the direct gap because the band extrema are at the same ). **(b)** Use the joint DOS of Part 1 to write down the **absorption coefficient** in the independent- particle approximation (without excitonic effects). **(c)** The actual optical gap of the chain is *reduce`d*' from by the **exciton binding energy** : the optical absorption onsets at , not at . Estimate for a 1-D Wannier exciton in the *effective- mass* approximation: with the reduced effective mass of the electron- hole pair and the dielectric constant of the chain. (This is the *lin`k*' to chapter 12.)"
+      - group [ref=e19007]:
+        - generic "▸ Show answer" [ref=e19008] [cursor=pointer]
+        - text: "The minimum direct gap is at , achieved by the transition (valence band maximum) to (conduction band minimum) at the *same* — so the gap is direct. In a real 3-D semiconductor, the gap can be *indirect* (e.g. silicon), which requires a phonon to conserve crystal momentum and gives a *weaker* absorption edge. The absorption coefficient is in the dipole approximation (Fermi's golden rule summed over ); the joint DOS has the van Hove singularity at , so has a *pea`k*' just above the gap (the square-root edge of a 1-D DOS) and decays as above the gap. The exciton binding energy in 1-D is *muc`h*' larger than in 3-D: the 1-D hydrogen-like problem has (the binding is stronger because the electron and hole are confined to 1-D), and for a typical reduced mass and dielectric constant , – — a significant fraction of the gap, especially in *organi`c*' semiconductors."
+      - group [ref=e19009]:
+        - generic "▸ Part 4 (chapter 12) — Linear-response TDDFT absorption" [ref=e19010] [cursor=pointer]
+        - text: "The independent-particle absorption of Part 3 *misses* the excitonic *redshift* (and the enhancement of the absorption below the gap). The chapter 12 linear-response TDDFT framework recovers it. **(a)** Set up the Casida eigenvalue problem for the 2-band chain in the *electron-hole* basis (one occupied orbital , one virtual ), with the *direct* Coulomb coupling and the *exchange* coupling . **(b)** Show that the **singlet** excitation energy is and the **triplet** is (no exchange screening in the triplet). **(c)** In 1-D, the Coulomb integrals are *larger* than in 3-D (the electron-hole overlap is larger), so the singlet is *more strongly redshifte`d*' and the singlet-triplet splitting is *larger*. Discuss the **Bethe–Salpeter** correction to the xc kernel that is required to reproduce the experimental absorption spectrum quantitatively."
+      - group [ref=e19011]:
+        - generic "▸ Show answer" [ref=e19012] [cursor=pointer]
+        - text: "The Casida matrix for a 2-orbital, 2-electron system is the matrix derived in [Chapter 12, §12.7](/DFT-notes/dft-notes/chapter-12/), with the singlet block and the triplet block (a matrix — the spin flip kills the exchange). The singlet eigenvalue is — a *redshift* of magnitude (the **exciton binding energy** in this minimal basis). The 1-D Coulomb integrals are larger than their 3-D counterparts (the confinement enhances the overlap), so the exciton binding energy is larger. In real 1-D materials (carbon nanotubes, conjugated polymers) the binding energy can be – — comparable to the band gap itself. The **adiabatic LDA** (ALDA) *underestimates* the binding energy; the **Bethe–Salpeter equation** (BSE) is the *non-adiabati`c*' correction that gives quantitative agreement with experiment."
+      - separator [ref=e19013]
+      - heading "Cross-chapter problem set C — The Mott insulator (chapters 04, 05, 13)" [level=2] [ref=e19014]
+      - paragraph [ref=e19015]:
+        - text: This problem set takes the
+        - strong [ref=e19016]: Mott insulator
+        - text: as a unifying thread and shows how the
+        - emphasis [ref=e19017]: failure
+        - text: of one method (LDA) to describe it leads to a
+        - emphasis [ref=e19018]: correction
+        - text: (DFT+U). The prototype is the 2-band Hubbard model on a 2-D square lattice at half-filling, with one electron per site. In the non-interacting limit (
+        - img [ref=e19020]
+        - text: ) it is a
+        - emphasis [ref=e19029]: metal
+        - text: ; in the strongly- interacting limit (
+        - img [ref=e19031]
+        - text: ) it is a
+        - strong [ref=e19040]: Mott insulator
+        - text: with antiferromagnetic order. LDA predicts the metal,
+        - emphasis [ref=e19041]: not
+        - text: the insulator; DFT+U with a suitable
+        - img [ref=e19043]
+        - text: recovers the gap.
+      - group [ref=e19048]:
+        - generic "▸ Part 1 (chapter 04) — The KS-LDA band structure" [ref=e19049] [cursor=pointer]
+        - text: "Take a 2-band Hubbard model on a 2-D square lattice, , at half-filling (one electron per site, two per unit cell if there is a 2-atom basis, or one per unit cell if there is a 1-atom basis with spin degeneracy). **(a)** Solve the *non-interacting* limit : the band structure is on a 1-atom unit cell, half-filled (one electron per site, but spin-degenerate, so two electrons per cell and *one* band). Identify the **Fermi surface** (the square ) and the **Fermi energy** . **(b)** Now treat the *same* problem in KS-DFT with the LDA xc functional. The LDA self-consistent solution is *exactly* the non-interacting solution (because the homogeneous electron gas that LDA is fit to is *itsel`f*' non-interacting in the KS sense); LDA predicts a *metal*. **(c)** Discuss why this is *wrong* for the real material: in the limit the on-site repulsion forbids double occupancy and the ground state is an *antiferromagnetic insulator* (a **Mott insulator**), not a metal."
+      - group [ref=e19050]:
+        - generic "▸ Show answer" [ref=e19051] [cursor=pointer]
+        - text: "The non-interacting band has its extrema at ( ) and at the BZ corner ( ); the band is half-filled (with spin degeneracy, two electrons per unit cell, one band), and the Fermi surface is the **nested** square — perfect nesting at wavevector . LDA applied to this model gives the same answer: a metal with a nested Fermi surface. This is *wrong* for the interacting case at large , where the ground state is a Mott insulator with antiferromagnetic order at wavevector . The reason LDA fails: the LDA xc functional is fit to the *homogeneous* electron gas, which is a metal for any density; it has no mechanism to *localise* electrons in a half-filled band. The Mott transition is a *correlation-driven* insulator-to- metal transition that LDA simply *cannot* describe. In real materials, this failure is visible in the 3*`d*' transition-metal oxides (MnO, CoO, NiO, the parent compounds of the high- cuprates): LDA predicts *metalli`c*' ground states for materials that are *experimentally* antiferromagnetic insulators with gaps of – . The LDA gaps are listed in the table of [Chapter 13, §13.2.1](/DFT-notes/dft-notes/chapter-13/) for MnO, FeO, CoO, NiO — the systematic underestimation by a factor of is the *signature* of the missing Mott physics."
+      - group [ref=e19052]:
+        - generic "▸ Part 2 (chapter 05) — Why the GGA does not save us" [ref=e19053] [cursor=pointer]
+        - text: "Repeat the calculation of Part 1 with the **PBE GGA** functional of [Chapter 05, §5.2](/DFT-notes/dft-notes/chapter-05/). **(a)** Show that the GGA correction to LDA is *small* for the homogeneous electron gas (the PBE enhancement factor is unity for , i.e. for a uniform density). **(b)** Argue why the GGA, like the LDA, has *no* mechanism to describe a Mott transition: the GGA is a *local* (or semi-local) correction to LDA, and the Mott physics is *non- local* (it depends on the *fluctuation of the density, not just its value and gradient). **(c)** Discuss the *hybri`d*' functionals (PBE0, HSE) of [Chapter 05, §5.4](/DFT-notes/dft-notes/chapter-05/) and their *temporary* success on Mott insulators: the *exact-exchange* part of the hybrid is a *non-local* operator and partially captures the on-site repulsion, so PBE0 opens a gap in MnO and NiO — but with an *ad ho`c*' mixing parameter , not from first principles."
+      - group [ref=e19054]:
+        - generic "▸ Show answer" [ref=e19055] [cursor=pointer]
+        - text: "The PBE GGA enhancement factor satisfies — at zero reduced gradient, the GGA reduces to LDA. The *correction* is in the *gradient* of the density; for the homogeneous gas the gradient is zero, so the correction vanishes. The Mott insulator has a *non-zero* density gradient (the -orbital density is highly peaked on the transition-metal site), but the GGA correction is a *local* functional of the gradient and cannot describe the *non-local* physics of the on-site repulsion. The *hybri`d*' functionals (PBE0, HSE) replace a fraction of the GGA exchange with *exact* (non- local) HF exchange, which *does* contain the on- site – Coulomb repulsion in the form of the Fock exchange integral. For NiO, PBE0 ( ) opens a gap of , in reasonable agreement with experiment ( ), while LDA gives a *metal*. But the amount of exact exchange is an *empirical* parameter: is the PBE0 choice, but a *range-separate`d*' hybrid like HSE06 (with at short range and 0 at long range) gives similar results. The *fundamental* problem — that the hybrid is a *mixture* of DFT and HF, not a single self-consistent theory — is what the DFT+U correction of Part 3 addresses in a different way."
+      - group [ref=e19056]:
+        - generic "▸ Part 3 (chapter 13) — DFT+U opens the gap" [ref=e19057] [cursor=pointer]
+        - text: "Apply the **DFT+U** correction of [Chapter 13](/DFT-notes/dft-notes/chapter-13/) to the 2-band Hubbard model of Part 1, treating the on-site occupation matrix of the localised orbital as a *dynamical* variable. **(a)** For the half-filled antiferromagnetic state (one electron per site, alternating spin), the occupation matrix in the spin-up channel is the *identity* on one sublattice and *zero* on the other. Show that on both sublattices, so the DFT+U correction *vanishes* in the half-filled AF state. **(b)** The *non-trivial* DFT+U effect appears when the *spin-u`p*' occupation on one sublattice is *less* than 1 (e.g. due to hybridisation with the other sublattice): then and the correction is *positive* — an energy penalty for the partial occupation. This penalty *stabilises* the half- filled AF state over the fractional-occupation metallic state. **(c)** At what value of does the gap open? Discuss the *choice* of : too small (say ) and the gap does not open, the system stays metallic; too large ( ) and the gap is grossly overestimated; the *physical* value is – for the 3*`d*' transition-metal oxides."
+      - group [ref=e19058]:
+        - generic "▸ Show answer" [ref=e19059] [cursor=pointer]
+        - text: "In a *self-consistent* DFT+U calculation, the system *chooses* the state that minimises : the AF state has that is *higher* than (LDA prefers the ferromagnetic metal) but (the penalty is paid by the FM state). For large enough, and the AF state wins. The critical is the value at which the two energies are equal: for the 2-band Hubbard model on a square lattice, – in mean-field theory, in line with the QMC estimate of from §13.2. The *practical* issue is the **choice of **: there is no unique, first-principles value (the *constrained LDA* calculation of §13 gives a that depends on the screening length and the choice of the localised subspace). In practice one *fits* to reproduce an experimental gap or a structural property. The **DFT+DMFT** extension of DFT+U addresses this by *dynamically* computing the screening and the local Green's function, but the cost is much higher."
+      - separator [ref=e19060]
+      - heading "How to use this anthology" [level=2] [ref=e19061]
+      - paragraph [ref=e19062]: Four suggestions, in increasing order of effort.
+      - list [ref=e19063]:
+        - listitem [ref=e19064]:
+          - strong [ref=e19065]: Spot check.
+          - text: After finishing a chapter, read the corresponding section of the anthology and check that you can re-derive the answer from the hint in a single sitting. If not, the chapter section is worth a re-read.
+        - listitem [ref=e19066]:
+          - strong [ref=e19067]: Cross-link.
+          - text: Many problems in
+          - emphasis [ref=e19068]: different
+          - text: chapters are connected. The free-particle propagator (§1.1) underlies the path-integral formulation of
+          - emphasis [ref=e19069]: every
+          - text: correlated method (§2); the SCF fixed point (§4.1, §4.2) is the same mathematical object as the HF fixed point (§3.2); the Gaussian product theorem (§6.2) is the workhorse behind every Gaussian-based ERI (§3, §4, §6); the tight-binding band structure of graphene (§11.2) is the 1-D analogue of the 3-D Rashba spin-orbit coupling of §11.3. If you can place each problem on a single mental map, you understand the
+          - emphasis [ref=e19070]: structure
+          - text: of the notes, not just the
+          - emphasis [ref=e19071]: content
+          - text: .
+        - listitem [ref=e19072]:
+          - strong [ref=e19073]: Teach.
+          - text: Pick a problem, write a one-page solution, and present it. The act of
+          - emphasis [ref=e19074]: explaining
+          - text: a derivation is the fastest way to find the gap in your own understanding.
+        - listitem [ref=e19075]:
+          - strong [ref=e19076]: Integrate.
+          - text: The three
+          - strong [ref=e19077]: cross-chapter
+          - text: problem sets (A, B, C) test your ability to
+          - emphasis [ref=e19078]: combine
+          - text: methods from multiple chapters. Pick one and try to identify the
+          - emphasis [ref=e19079]: "threa`d"
+          - text: "’ that connects the parts: in A, the thread is the"
+          - emphasis [ref=e19080]: pseudopotential construction
+          - text: (H → HF → KS-DFT → pseudopotential); in B, the thread is the
+          - emphasis [ref=e19081]: single physical system
+          - text: (the 1-D diatomic chain) seen from four different angles (electronic, phononic, band-structure, optical); in C, the thread is the
+          - emphasis [ref=e19082]: failure
+          - text: of LDA on a Mott insulator and the
+          - emphasis [ref=e19083]: correction
+          - text: by DFT+U. Working through a cross-chapter set end-to-end is the closest you will get to a
+          - emphasis [ref=e19084]: research-style
+          - text: calculation in this notes set.
+      - blockquote [ref=e19085]:
+        - paragraph [ref=e19086]:
+          - text: Back to the
+          - link "chapter index" [ref=e19087] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/
+          - text: — or revisit a specific chapter from the
+          - link "chapters map" [ref=e19088] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapters-map/
+          - text: .
+  - contentinfo [ref=e19089]:
+    - generic [ref=e19090]:
+      - generic [ref=e19091]:
+        - img [ref=e19092]
+        - generic [ref=e19096]: DFT Notes
+        - paragraph [ref=e19097]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e19098]:
+        - generic [ref=e19099]:
+          - heading "Project" [level=3] [ref=e19100]
+          - list [ref=e19101]:
+            - listitem [ref=e19102]:
+              - link "Chapters map" [ref=e19103] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e19104]:
+              - link "Python codes" [ref=e19105] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e19106]:
+              - link "Contributing" [ref=e19107] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e19108]:
+              - link "Security" [ref=e19109] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e19110]:
+              - link "Design spec" [ref=e19111] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e19112]:
+              - link "GitHub ↗" [ref=e19113] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e19114]:
+          - heading "Built with" [level=3] [ref=e19115]
+          - list [ref=e19116]:
+            - listitem [ref=e19117]:
+              - link "Jekyll" [ref=e19118] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e19119]:
+              - link "MathJax 3" [ref=e19120] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e19121]:
+              - link "Mermaid" [ref=e19122] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e19123]:
+              - link "chenglou/pretext" [ref=e19124] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e19125]:
+              - link "Google Fonts" [ref=e19126] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e19127]:
+          - heading "Legal" [level=3] [ref=e19128]
+          - list [ref=e19129]:
+            - listitem [ref=e19130]:
+              - link "MIT License" [ref=e19131] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e19132]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e19134]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

@@ -272,7 +272,7 @@ inside the trace. Cross-reference: chapters 03 (§3.2, §3.6.5),
 
 ### 3.2 Trace of a function of a matrix
 
-If $\mathbf A$ has eigenvalues $\{a_i\}$ and eigenvectors
+If $\mathbf A$ has eigenvalues $\\{ a_i \\}$ and eigenvectors
 $\{\rvert v_i \rangle\}$, then for any function $f$ that admits
 a Taylor series,
 

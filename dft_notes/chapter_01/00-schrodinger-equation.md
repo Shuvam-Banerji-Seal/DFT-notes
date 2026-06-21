@@ -1388,7 +1388,7 @@ $$
 
 The spectral decomposition makes it possible to define
 **functions of operators** in a representation-independent way.
-For a self-adjoint $\hat A$ with spectrum $\{a\}$ and a
+For a self-adjoint $\hat A$ with spectrum $\\{ a \\}$ and a
 *Borel-measurable* function $f: \mathbb R \to \mathbb C$,
 
 $$

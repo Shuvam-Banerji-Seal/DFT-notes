@@ -1739,8 +1739,8 @@ The hopping matrix elements are
 $t_{i, i+1} = t$ for nearest neighbours
 (modulo PBC: $t_{4, 1} = t$), zero otherwise. The
 on-site repulsion is diagonal in the Fock basis:
-$\langle \{n\} \rvert U \sum_i \hat n_{i\uparrow}
-\hat n_{i\downarrow} \rvert \{n\} \rangle = U
+$\langle \\{ n \\} \rvert U \sum_i \hat n_{i\uparrow}
+\hat n_{i\downarrow} \rvert \\{ n \\} \rangle = U
 \sum_i n_{i\uparrow} n_{i\downarrow}$. The
 algorithm:
 
@@ -1753,8 +1753,8 @@ algorithm:
    $\hat T: i \to i + 1 \pmod 4$, pick a
    representative per orbit, and form the
    symmetrised Bloch states
-   $|\{n\}, k\rangle = \tfrac{1}{\sqrt{4}}
-   \sum_{r=0}^{3} e^{i k r a} \hat T^r |\{n\}\rangle$.
+   $|\\{ n \\}, k\rangle = \tfrac{1}{\sqrt{4}}
+   \sum_{r=0}^{3} e^{i k r a} \hat T^r |\\{ n \\}\rangle$.
 3. **Build the Hamiltonian in the Bloch basis.**
    The hopping term is *off-diagonal* in Fock space
    (it flips a single occupancy) and the interaction

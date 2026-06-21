@@ -1355,7 +1355,7 @@ graph LR
 > **P13.1.1** (easy) · *§13.6, Problem 1*
 > **[statement]** The DFT+U energy functional is
 > $E_\text{DFT+U}[\rho, \{n^\sigma_{mm'}\}] = E_\text{DFT}[\rho]
-> + \tfrac{1}{2} \sum_\sigma \sum_{\{m\}} U_\text{eff}
+> + \tfrac{1}{2} \sum_\sigma \sum_{\\{ m \\}} U_\text{eff}
 > (\text{Tr}\, \mathbf n^\sigma - \text{Tr}\, (\mathbf n^\sigma
 > \mathbf n^\sigma))$,
 > where $n^\sigma_{mm'} = \sum_{n\mathbf k} f_{n\mathbf k}

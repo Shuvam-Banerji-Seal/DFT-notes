@@ -620,7 +620,7 @@ $$
 where the sum runs over *all* Slater determinants
 $|\Phi_I\rangle$ that can be built from the $K$
 spin-orbitals of the basis, and the coefficients
-$\{c_I\}$ are determined by diagonalising the
+$\\{ c_I \\}$ are determined by diagonalising the
 Hamiltonian in the space of *all* determinants.  The
 full CI energy is the lowest eigenvalue of the CI
 matrix $\mathbf H_{IJ} = \langle \Phi_I \rvert \hat H \rvert \Phi_J \rangle$,

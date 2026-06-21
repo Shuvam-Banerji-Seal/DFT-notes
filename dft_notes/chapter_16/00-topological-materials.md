@@ -69,7 +69,7 @@ The claim of the chapter, boxed, is the **bulk–boundary
 correspondence** in its sharpest form.
 
 > **Claim.** A gapped band structure is characterised by
-> integer topological invariants $\{C_n\}$ (Chern numbers)
+> integer topological invariants $\\{ C_n \\}$ (Chern numbers)
 > and, when TR-symmetric, a set of $\mathbb Z_2$ indices
 > $\{\nu\}$. These integers are *robust* — they cannot
 > change under any continuous deformation of the
@@ -359,7 +359,7 @@ Hall state** (a Chern insulator without Landau levels).
 > band, not on the basis within it. This is the form used in
 > practical codes (Z2Pack, see §16.7.4).
 
-For an insulator with several occupied bands $\{n\}$ (the
+For an insulator with several occupied bands $\\{ n \\}$ (the
 cumulative Chern number is what enters the Hall conductivity),
 we generalise to a multi-band projector
 $P(\mathbf k) = \sum_{n \in \text{occ}} |u_{n\mathbf k}\rangle
@@ -942,7 +942,7 @@ indicators* of Po *et al. and Song et al.* (2017–2018),
 which extend the $\mathbb Z_2$ machinery of Fu–Kane to
 arbitrary space-group symmetries. A TCI can have
 *multiple* Dirac cones on the surface (SnTe has four, one
-on each $\{111\}$ face and on the (001) face) and
+on each $\\{ 111 \\}$ face and on the (001) face) and
 higher-degeneracy surface states (four-, six-, eight-fold)
 at high-symmetry points.
 

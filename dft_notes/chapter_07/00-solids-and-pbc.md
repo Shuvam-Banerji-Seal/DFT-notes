@@ -1564,7 +1564,7 @@ of $\mathcal{G}_\mathbf k$. The **irreducible representations**
 and the *dimension* of an irrep gives the degeneracy of the band.
 
 For a generic $\mathbf k$ deep inside the BZ, $\mathcal{G}_\mathbf k$
-is the trivial group $\{E\}$ and bands are singly degenerate. At
+is the trivial group $\\{ E \\}$ and bands are singly degenerate. At
 high-symmetry points and lines, $\mathcal{G}_\mathbf k$ is larger
 and bands can be multiply degenerate. For silicon (point group
 $O_h$, order 48):

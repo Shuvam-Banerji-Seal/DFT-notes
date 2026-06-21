@@ -420,7 +420,7 @@ is
 $$
 \begin{equation}
 \label{eq:ch-13-liechtenstein}
-E_\text{Hubbard}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \Bigl\lbrace
+E_\text{Hubbard}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\\{ m \\}} \Bigl\lbrace
 U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''}
 \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m''})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace ,
 \end{equation}
@@ -2579,7 +2579,7 @@ p. 944]:
 $$
 \begin{equation}
 \label{eq:ch-13-10-aza-hubbard}
-E_\text{Hub} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \Bigl\lbrace U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace ,
+E_\text{Hub} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\\{ m \\}} \Bigl\lbrace U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace ,
 \end{equation}
 $$
 
@@ -2722,7 +2722,7 @@ $$
 \begin{equation}
 \label{eq:ch-13-10-liechtenstein}
 \boxed{
-E_\text{Hub}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\{m\}} \Bigl\lbrace U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace .
+E_\text{Hub}^\text{LA} \;=\; \frac{1}{2} \sum_{I, \sigma} \sum_{\\{ m \\}} \Bigl\lbrace U_{m m' m'' m'''}\, n^\sigma_{I, m m'''}\, n^{-\sigma}_{I, m' m''} \;+\; (U_{m m' m'' m'''} - U_{m m' m''' m'})\, n^\sigma_{I, m m''}\, n^\sigma_{I, m' m'''} \Bigr\rbrace .
 }
 \end{equation}
 $$
@@ -3632,7 +3632,7 @@ $$
 \label{eq:ch-13-10-hubbard}
 \hat H \;=\; \underbrace{\sum_{ij\sigma} t_{ij}^{ab}\, \hat c_{ia\sigma}^\dagger \hat c_{jb\sigma}
                \;-\; \sum_{i\sigma} \varepsilon_i\, \hat n_{i\sigma}}_{\hat H_\text{DFT}}
-   \;+\; \underbrace{\frac{1}{2} \sum_{\{m\}} U_{m_1 m_2 m_3 m_4}\,
+   \;+\; \underbrace{\frac{1}{2} \sum_{\\{ m \\}} U_{m_1 m_2 m_3 m_4}\,
                \hat c_{m_1\sigma}^\dagger \hat c_{m_2\sigma'}^\dagger
                \hat c_{m_3\sigma'} \hat c_{m_4\sigma}}_{\hat H_U} ,
 \end{equation}
@@ -3642,7 +3642,7 @@ where $t_{ij}^{ab} = \langle \chi_{Ra}^m | \hat H_\text{DFT} | \chi_{Rb}^n \rang
 is the *projecte`d*' hopping matrix, $\varepsilon_i$ is the
 double-counting-corrected energy level, $U_{m_1 m_2 m_3 m_4}$ is
 the (rotationally-invariant) four-index Coulomb tensor
-(Lichtenstein 1995, Eq. (3); see §13.9.2 above), and $\{m\}$
+(Lichtenstein 1995, Eq. (3); see §13.9.2 above), and $\\{ m \\}$
 is a shorthand for the correlated orbital indices.
 
 **Step 4 — DMFT self-consistency.** Compute the local

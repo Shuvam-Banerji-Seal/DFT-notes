@@ -83,7 +83,7 @@ and the spin-Hall conductivity of platinum.
 The headline result is the following.
 
 > **Claim 15.1 (Relativistic DFT).** For an $N$-electron
-> system with nuclear charges $\{Z_A\}$ and total
+> system with nuclear charges $\\{ Z_A \\}$ and total
 > $N = \sum_A Z_A - Q$ (where $Q$ is the total ionic charge),
 > the ground-state energy and density are obtained by
 > minimising the **Dirac–Kohn–Sham** energy functional
