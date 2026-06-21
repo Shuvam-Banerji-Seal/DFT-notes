@@ -562,7 +562,7 @@ the **$2n + 1$ formula** for the second derivative:
 \langle \psi_n^{(0)} \rvert \partial^2 \hat H_I / \partial \lambda_I \partial \lambda_J
            \rvert \psi_n^{(0)} \rangle
 \;+\; 2\, \text{Re}\, \langle \psi_n^{(0)} \rvert \partial \hat H_J / \partial \lambda_J
-           \rvert \psi_n^{(1)}_I \rangle
+           \rvert \psi_n^{(1)}{}_I \rangle
 \Bigr] .
 \end{equation}
 

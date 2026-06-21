@@ -66,6 +66,17 @@
   // GFM pass converted a trailing "\\" to "<br>", MathJax will choke
   // on the <br> inside a math environment. Run this BEFORE MathJax
   // scans the document so it sees the original "\\" text.
+  //
+  // Kramdown often emits BOTH the original "\\" AND the "<br />"
+  // it inserted (e.g. inside a $$...$$ block, where the
+  // Markdown line-break rule is "ends with two spaces OR \\"
+  // and Kramdown produces both). In that case, replacing the
+  // <br> with another "\\" gives us "\\\\" (two line breaks)
+  // which then breaks any "\\hline" or "\\end" that follows.
+  //
+  // Fix: if the text immediately before the <br> already ends
+  // with "\\", just remove the <br> entirely. Otherwise
+  // replace it with a "\\" text node.
   function repairBrInMath() {
     var candidates = document.body.querySelectorAll('p, li, dd, dt, div, blockquote');
     for (var i = 0; i < candidates.length; i++) {
@@ -78,8 +89,21 @@
       var brs = node.querySelectorAll('br');
       for (var j = 0; j < brs.length; j++) {
         var br = brs[j];
-        var newText = document.createTextNode('\\\\');
-        br.parentNode.replaceChild(newText, br);
+        // Inspect the previous sibling text to decide
+        var prev = br.previousSibling;
+        var prevText = '';
+        if (prev) {
+          if (prev.nodeType === 3) prevText = prev.textContent || '';
+          else if (prev.nodeType === 1) prevText = prev.textContent || '';
+        }
+        if (/\\\s*$/.test(prevText)) {
+          // The "\\" is already there from the source markdown.
+          // Removing the <br> leaves a clean "\\" line break.
+          br.parentNode.removeChild(br);
+        } else {
+          var newText = document.createTextNode('\\\\');
+          br.parentNode.replaceChild(newText, br);
+        }
       }
     }
   }
