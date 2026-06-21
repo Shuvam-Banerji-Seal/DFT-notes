@@ -1064,18 +1064,18 @@ step:
 4. **Convergence.** Stop when
    $\lvert F(R_k) \rvert < 10^{-6}\,E_h/a_0$.
 
-```mermaid
+ ```mermaid
 graph TD
     A[Start: R_0 = 1.8 a_0] --> B[Build S, T, V, ERI at R_k]
     B --> C[Run Roothaan SCF]
-    C --> D[Read E(R_k), P(R_k)]
+    C --> D["Read E(R_k), P(R_k)"]
     D --> E[Compute F(R_k) via Hellmann-Feynman]
     E --> F{Converged?}
     F -- No --> G[BFGS update: H_k -> H_{k+1}]
     G --> H[Step: R_{k+1} = R_k - H_k g_k]
     H --> B
     F -- Yes --> I[Report R_eq, E_eq, F_final]
-```
+ ```
 
 - **Script** — [chapter_09/01-h2-bond-relaxation.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py)
 - **Plot** — [chapter_09/plots/01-h2-bond-relaxation.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_09/plots/01-h2-bond-relaxation.png)
