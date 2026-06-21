@@ -423,14 +423,14 @@ graph TD
   class FFT scf
   class DIAG scf
   class OUT out
-```
+``'
 
-The **inner loop** `LOOP` is the cost driver: it runs
+The **inner loop** `LOOP' is the cost driver: it runs
 $2 \times 3 N_\text{atom-in-supercell}$ independent SCF
 calculations. By symmetry of $\Phi$ (which is symmetric under
 $I \leftrightarrow J$, $\alpha \leftrightarrow \beta$) this can
-be halved. The **outer box** `FFT` is the cheap step (a single
-discrete Fourier transform), and `DIAG` is one matrix
+be halved. The **outer box** `FFT' is the cheap step (a single
+discrete Fourier transform), and `DIAG' is one matrix
 diagonalisation per $\mathbf q$. The set of $\mathbf q$ values
 reachable is the *commensurate* set determined by the
 supercell — to resolve a finer $\mathbf q$-mesh one must use a
@@ -587,7 +587,7 @@ the force constant is a *post-processing* of $\psi_n^{(1)}$.
 > [Quantum ESPRESSO](<https://www.quantum-espresso.org/>),
 > [ABINIT](<https://www.abinit.org/>), and
 > [CASTEP](<https://www.castep.org/>) under the keyword
-> `phonon` / `dfpt` / `linear response`. For each $\mathbf q$ the
+> `phonon' / `dfpt' / `linear response`. For each $\mathbf q$ the
 > code runs *one* Sternheimer SCF cycle (linear in the occupied
 > states) and outputs the dynamical matrix. The cost of a full
 > phonon dispersion is then $N_\mathbf q$ *linear* calculations,
@@ -659,17 +659,17 @@ graph TD
   class DONE out
   class FC out
   class DYN out
-```
+``'
 
-The **inner loop** (`SOLVE` → `RHO1` → `V1` → `CK`) is a
+The **inner loop** (`SOLVE' → `RHO1' → `V1' → `CK`) is a
 *linear* iteration: each step solves a single linear system for
 $\psi_n^{(1)}$ given a fixed $V_\text{Hxc}^{(1)}$, then updates
 $V_\text{Hxc}^{(1)}$ from the new $\rho^{(1)}$. This is the
 *same* structure as a non-linear ground-state SCF, but the
 equation being solved is **linear in $\psi_n^{(1)}$**, so the
 convergence is much faster (typically 5–10 iterations to
-$10^{-10}$ in the density residual). Once `DONE` is reached,
-the **single** `FC` step applies the $2n+1$ formula to *all*
+$10^{-10}$ in the density residual). Once `DONE' is reached,
+the **single** `FC' step applies the $2n+1$ formula to *all*
 force-constant matrix elements $\Phi_{I\alpha, J\beta}$ at the
 chosen $\mathbf q$ from the *same* $\psi_n^{(1)}$.
 
@@ -757,7 +757,7 @@ are the three acoustic modes at $\Gamma$.
 > which subtracts the average of the $\mathbf q = 0$ column (the
 > "spurious acoustic-mode contribution") from every $\mathbf q$.
 > This is what the **frozen-phonon post-processing** of Quantum
-> ESPRESSO's `q2r` + `matdyn` does by default.
+> ESPRESSO's `q2r' + `matdyn' does by default.
 
 ## 10.5 LO–TO splitting at $q = 0$ in ionic crystals
 
@@ -1521,14 +1521,14 @@ graph TD
   class OML mid
   class ELB mid
   class TC out
-```
+``'
 
 The three *upstream* inputs (`PH`, `EP`, `FS`) come from three
 different first-principles calculations: the phonon dispersion
 (chapter 10 itself), the electron–phonon matrix elements (also
 chapter 10, by DFPT), and the Fermi surface (chapter 11). They
 combine into the **Eliashberg function** `ALF`, which is the
-spectral density of the coupling. From `ALF` one can either
+spectral density of the coupling. From `ALF' one can either
 *directly* solve the non-linear Eliashberg equations (`ELB`), or
 *approximately* evaluate the McMillan formula (`MMC`) — the two
 paths converge in the weak-coupling limit $\lambda \lesssim 1.5$.
@@ -1849,7 +1849,7 @@ os.makedirs(plots_dir, exist_ok=True)
 out = os.path.join(plots_dir, "01-diatomic-chain.png")
 fig.savefig(out, dpi=150, bbox_inches="tight")
 print(f"Wrote {out}")
-```
+``'
 
 > **Note.** The numerical values can be cross-checked with the
 > analytical expressions of §10.9.4. At $q = 0$ the script
@@ -1913,9 +1913,9 @@ graph TD
   class M output
   class O output
   class Q output
-```
+``'
 
-The decision node `C{Choose method}` is the one a practitioner
+The decision node `C{Choose method}' is the one a practitioner
 spends the most time on. **DFPT** is preferred for *primitive
 cells* and for *long-wavelength* properties (LO–TO splitting,
 Born effective charges, the dielectric tensor). **Frozen phonon**
@@ -2156,7 +2156,7 @@ $\lambda \propto N(\varepsilon_F) \langle I^2 \rangle / (M
 \langle \omega^2 \rangle)$ holds.
 
 **Part 2.** The Eliashberg equation for the *superconducting
-ga`p*` $\Delta_n$ at the Matsubara frequency $i\omega_n$ is
+ga`p*' $\Delta_n$ at the Matsubara frequency $i\omega_n$ is
 
 $$
 \Delta_n \;=\; \pi T \sum_{m} \Bigl[\lambda(n - m) - \mu^* \Bigr]\,

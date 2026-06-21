@@ -41,7 +41,7 @@ code, follow the cross-references.
 
 ## How to read this page
 
-Every question is wrapped in a `<details>` block.  Click the
+Every question is wrapped in a `<details>' block.  Click the
 question to reveal the answer; click again to hide it.  Use the
 table of contents below to jump to a section.  If your question
 is **not** here, try the
@@ -50,7 +50,7 @@ the [math cheatsheet]({{ "/dft-notes/extras/math-cheatsheet/" | relative_url }})
 the [software cheatsheet]({{ "/dft-notes/extras/software-cheatsheet/" | relative_url }}),
 the [worked examples]({{ "/dft-notes/extras/worked-examples/" | relative_url }}),
 or the [problems anthology]({{ "/dft-notes/extras/problems/" | relative_url }}).
-File an issue against `agent:docs-keeper` (see
+File an issue against `agent:docs-keeper' (see
 [`agents.md`]({{ "/dft-notes/agents/" | relative_url }}) for the
 contract) if it is still not there.
 
@@ -778,7 +778,7 @@ fixes:
 |:--------|:-------------|:----|
 | Energy oscillates | Charge sloshing | Add more density mixing; switch to DIIS or Broyden |
 | Energy diverges | Too-aggressive mixing | Reduce mixing parameter (0.1–0.3) |
-| Stuck above the converged energy | Bad initial guess | Smaller basis first, then restart; try `lumos` initial guess |
+| Stuck above the converged energy | Bad initial guess | Smaller basis first, then restart; try `lumos' initial guess |
 | Converges to different energies for different starts | Multiple SCF solutions (rare) | Different starting density; increase mixing |
 | Converges, but forces are huge | Spin / occupation problem | Try spin-polarised; check occupations; try SMEARING |
 
@@ -898,7 +898,7 @@ insulator, the curve should be smooth and converge
 An oscillating optimisation is a *sign* that the algorithm
 is fighting the curvature of the potential energy surface.
 The most common causes: **The step size is too large** — try
-reducing the maximum step (in ASE: `fmax=0.05` eV/Å instead
+reducing the maximum step (in ASE: `fmax=0.05' eV/Å instead
 of `fmax=0.5`).  **You are using steepest descent** —
 notoriously bad at handling anisotropic curvature; switch to
 **LBFGS** (default in ASE, VASP, Quantum ESPRESSO, CP2K).
@@ -991,13 +991,13 @@ A few common ones and what they usually mean:
 
 | Message (loosely) | Likely meaning |
 |:------------------|:---------------|
-| `zpotbr > 1000` (VASP), `rho is negative` | Charge sloshing; SCF diverging.  Tighten mixing, reduce \(\alpha\), try a different starting density. |
-| `BRMIX: linear search failed` (VASP) | Same as above; the Kerker-style mixer cannot find a step that lowers the energy. |
-| `subspacematrix not positive definite` (VASP) | Almost-empty bands / numerical instability in subspace diagonalisation.  Try a different `ALGO`, or add more bands. |
-| `cannot orthogonalise` (CP2K) | Linear-dependency collapse in a Gaussian basis (very diffuse functions).  Tighten the basis, or use `EPS_DEFAULT`. |
-| `SCF run did not converge` (ORCA) | As in C.9. Try `SlowConv`, `DIIS`, or change `MAXITER`. |
-| `k-point fold > max` (Quantum ESPRESSO) | Lattice vectors are too small; the BZ is over-folded.  Check the structure. |
-| `poisson solver failed` (SIESTA, GPAW) | Bad initial guess; try `DM.Init.State random` or `density_init` from a previous run. |
+| `zpotbr > 1000' (VASP), `rho is negative' | Charge sloshing; SCF diverging.  Tighten mixing, reduce \(\alpha\), try a different starting density. |
+| `BRMIX: linear search failed' (VASP) | Same as above; the Kerker-style mixer cannot find a step that lowers the energy. |
+| `subspacematrix not positive definite' (VASP) | Almost-empty bands / numerical instability in subspace diagonalisation.  Try a different `ALGO`, or add more bands. |
+| `cannot orthogonalise' (CP2K) | Linear-dependency collapse in a Gaussian basis (very diffuse functions).  Tighten the basis, or use `EPS_DEFAULT`. |
+| `SCF run did not converge' (ORCA) | As in C.9. Try `SlowConv`, `DIIS`, or change `MAXITER`. |
+| `k-point fold > max' (Quantum ESPRESSO) | Lattice vectors are too small; the BZ is over-folded.  Check the structure. |
+| `poisson solver failed' (SIESTA, GPAW) | Bad initial guess; try `DM.Init.State random' or `density_init' from a previous run. |
 
 The pattern: read the *last* error, not the first;
 identify the *subsystem* (SCF, optimiser, diagonaliser);
@@ -1193,7 +1193,7 @@ the [Math cheatsheet]({{ "/dft-notes/extras/math-cheatsheet/" | relative_url }})
 the [Software cheatsheet]({{ "/dft-notes/extras/software-cheatsheet/" | relative_url }}),
 the [Worked examples]({{ "/dft-notes/extras/worked-examples/" | relative_url }}),
 or the [Problems anthology]({{ "/dft-notes/extras/problems/" | relative_url }}).
-This page is maintained by `agent:docs-keeper` and is open to
+This page is maintained by `agent:docs-keeper' and is open to
 additions.
 
 ---

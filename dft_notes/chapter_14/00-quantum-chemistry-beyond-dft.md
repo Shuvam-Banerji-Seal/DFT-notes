@@ -880,7 +880,7 @@ fragment energies.  This is the *defining*
 advantage of the exponential ansatz.
 
 The CC equations follow from the *similarity-
-transforme`d*` Schrödinger equation
+transforme`d*' Schrödinger equation
 
 \begin{equation}
 \label{eq:ch-14-cc-sim}
@@ -1446,13 +1446,13 @@ The **Pariser–Parr–Pople** (PPP) method (Pariser &
 Parr, 1953; Pople, 1953) is the *first*
 semiempirical method to include the *electron–
 electron repulsion*, in a *zero-differential-
-overla`p*` (ZDO) approximation.  The PPP method
+overla`p*' (ZDO) approximation.  The PPP method
 treats the $\pi$ electrons of an aromatic
 hydrocarbon with a *two-centre* Coulomb integral
 $\gamma_{AB}$ that is *parameterise`d*' as a function
 of the distance $R_{AB}$.  The PPP method is
 *quantitatively* useful for the excitation
-spectr`a*` of aromatic hydrocarbons, and is the
+spectr`a*' of aromatic hydrocarbons, and is the
 *ancestor* of the modern ZDO methods of § 14.6.2.
 The **self-consistent charge** (SCC) extension of
 Hückel (SCC-DFTB, § 14.6.4) is the *modern*
@@ -1931,7 +1931,7 @@ graph LR
   CCSDT -->|"+ perturbative Q"| CCSDTQ
   CCSDTQ -->|"all excitations"| FCI
   MP2 -.->|"used in G1/G2/G3"| CCSDFULL
-```
+``'
 
 The Mermaid diagram shows the *post-HF ladder*.  The
 *vertical* axis is cost, the *horizontal axis is
@@ -2494,7 +2494,7 @@ The five omissions below are the most important for a
   CC (MRCC).**  The **EOM-CCSD** method (Stanton &
   Bartlett, *J. Chem. Phys.* **98**, 7029 (1993))
   extends CCSD to *excited*`, ionised, and *electron-
-  attache`d*` states by acting on the CCSD wavefunction
+  attache`d*' states by acting on the CCSD wavefunction
   with a *linear* operator $\hat R$ and diagonalising
   the *similarity-transforme`d*' Hamiltonian
   $\bar{H} = e^{-\hat T} \hat H e^{\hat T}$ in the

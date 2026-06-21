@@ -104,7 +104,7 @@ graph LR
   RHO -.->|"Theorem 1:<br/>bijection (HK)"| V
   RHO -->|"Theorem 2:<br/>E[ρ̃] ≥ E₀"| E
   PSI --> E
-```
+``'
 
 The horizontal axis (top) is the *forward Schrödinger problem*:
 $V_\text{ext} \to \Psi_0 \to \rho_0$. That is what we have known
@@ -187,7 +187,7 @@ graph TD
 
   OUT --> MIN["E₀ = min_ρ E_KS[ρ]<br/>(variational principle)"]
   MIN --> SCF["Self-consistent loop<br/>(§4.4 / §4.6)"]
-```
+``'
 
 The diagram makes the **"DFT is exact"** claim of §4.3
 operational: every term *except* $E_\text{xc}$ is exactly
@@ -256,7 +256,7 @@ def ks_scf(H_core, eri, S, n_elec, v_xc, max_iter=100, tol=1e-7, mixing=0.3):
 
     E = 0.5 * np.trace(P @ (H_core + F))
     return E, evals, C, P
-```
+``'
 
 The structure is the same as HF; the only thing that changes is the
 $\hat K$ term being replaced by a local (in the DFT case) or
@@ -308,7 +308,7 @@ graph TD
   R2 -->|"mix in exact E_x^HF<br/><small>O(K⁴)</small>"| R3
   R3 -->|"range-separation<br/><small>O(K⁴)</small>"| R4
   R4 -->|"add MP2-like E_c<br/><small>O(K⁵)</small>"| R5
-```
+``'
 
 The rungs are not an absolute ordering of "better" — for a
 particular system, a *low* rung (LDA) can outperform a high*
@@ -319,7 +319,7 @@ rung for which system".
 
 ## 4.6 Mixing schemes for SCF convergence
 
-Section 4.4 wrote the SCF as a single `for` loop.  In practice, that
+Section 4.4 wrote the SCF as a single `for' loop.  In practice, that
 loop diverges or oscillates for everything but the smallest systems
 unless the iteration is damped, extrapolated, or otherwise
 *stabilise`d*`.  This section is about that stabilisation.
@@ -662,7 +662,7 @@ hundreds of iterations and may require additional techniques (level
 shifting, occupation smearing, DFT+U initialisation) that are out
 of scope for this chapter.
 
-The companion script `dft_notes/python_codes/chapter_04/01-diis-scf.py`
+The companion script `dft_notes/python_codes/chapter_04/01-diis-scf.py'
 (section 4.10.1) implements linear mixing, DIIS, and Broyden on a
 2×2 toy model problem and plots the convergence.  The point of the
 toy is to expose the qualitative behaviour — linear mixing converges
@@ -687,7 +687,7 @@ graph LR
   D --> RHO
   BR --> RHO
   L --> RHO
-```
+``'
 
 ## 4.7 The force theorem (Hellmann–Feynman)
 
@@ -1613,7 +1613,7 @@ graph LR
   HUB --> HYB["Hybrid: ISI → a·E_x^HF<br/>+ (1−a)·E_x^DFT"]
   HUB --> DH["Double hybrid:<br/>+ b·E_c^MP2"]
   HUB --> RPA["RPA: ISI → ring-diagram<br/>sum, exact for HEG"]
-```
+``'
 
 The diagram shows the central claim: **all the named approximations
 in chapter 05 are different ways to evaluate the same integral**.  The
@@ -2094,7 +2094,7 @@ graph TD
   JACOB --> RPA["RPA: ring-diagram sum"]
 
   RPA --> CH5["[Chapter 05]<br/>working formulas<br/>for every rung"]
-```
+``'
 
 The diagram summarises the chapter: the three formal frameworks
 (ACFDT, OEP, GL perturbation theory) are *three views of the same
@@ -2364,7 +2364,7 @@ graph TB
   REL --> USED
   USED --> CH5["[Chapter 05]<br/>XC functionals:<br/>LDA, GGA, hybrids,<br/>range-separated, RPA"]
   FORMAL --> CH5
-```
+``'
 
 The full SCF + force + spin + relativistic pipeline, when
 implemented in a production code, delivers the energy, the
@@ -2376,7 +2376,7 @@ well-chosen (chapter 06).
 ### 4.13.1 Worked example — DIIS convergence on a 2×2 model
 
 The companion script
-`dft_notes/python_codes/chapter_04/01-diis-scf.py` implements a
+`dft_notes/python_codes/chapter_04/01-diis-scf.py' implements a
 minimal KS-SCF on a 2×2 toy Hamiltonian and compares three
 acceleration schemes: linear mixing, DIIS, and Broyden.  The
 model is
@@ -2569,7 +2569,7 @@ if __name__ == "__main__":
         {"linear": h_lin, "DIIS (m=6)": h_diis, "Broyden": h_broy},
         out,
     )
-```
+``'
 
 Run it from the repo root with
 `python dft_notes/python_codes/chapter_04/01-diis-scf.py`.  The
@@ -2585,7 +2585,7 @@ Running SCF: DIIS (m_max=6) ...
   converged in 11 iters, E = -1.143592327200
 Running SCF: Broyden (good) ...
   converged in 17 iters, E = -1.143592327200
-```
+``'
 
 The qualitative picture is what the theory predicts: linear
 mixing converges geometrically, Broyden sits in between, and
@@ -2899,7 +2899,7 @@ potential $v_\text{ext}(\mathbf r)$ is a unique functional of the
 ground-state density $\rho(\mathbf r)$, for systems with a *fixe`d*'
 number of electrons $N$ and *no* magnetic field.  Von Barth and
 Hedin (1972) extended the theorem to include a *static external
-magnetic fiel`d*` $\mathbf B(\mathbf r) = B(\mathbf r) \hat z$ that
+magnetic fiel`d*' $\mathbf B(\mathbf r) = B(\mathbf r) \hat z$ that
 couples to the electron spin via the Zeeman term
 $- \boldsymbol\mu \cdot \mathbf B$ (where $\boldsymbol\mu = -g_s
 \mu_B \mathbf S/\hbar$).  In this case the Hamiltonian carries a
@@ -3668,7 +3668,7 @@ graph LR
   HK1 --> HK2 --> HK3 --> HK4 --> HK5 --> HK6 --> HK7 --> HK8
   KS1 --> KS2 --> KS3 --> KS4 --> KS5 --> KS6 --> KS7 --> KS8 --> KS9 --> KS10 --> KS11
   HK4 -. "parent paper<br/>of KS 1965" .-> KS1
-```
+``'
 
 > **Mermaid note.**  Every node is a section of one of the
 > two papers, with the page numbers on which it starts.

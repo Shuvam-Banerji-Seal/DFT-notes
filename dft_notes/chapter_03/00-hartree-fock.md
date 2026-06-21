@@ -97,7 +97,7 @@ $\Psi_\text{HF}$.  In what follows we work in atomic units
 > multi-electron system — see
 > [chapter 02]({{ "/dft-notes/chapter-02/" | relative_url }})), the
 > variational theorem guarantees that $E_\text{HF}$ is an *upper
-> boun`d*` on $E_0$.  This converts a vague "the Fock operator
+> boun`d*' on $E_0$.  This converts a vague "the Fock operator
 > seems reasonable" into a quantitative, improvable statement.
 
 ## 3.2 The Fock operator
@@ -248,7 +248,7 @@ graph LR
   VNUC --> E
   VNN --> E
   J -. "counted twice in F → ÷2 here" .-> E
-```
+``'
 
 Two things to notice:
 
@@ -324,9 +324,9 @@ def scf_loop(H_core, eri, S, n_elec, max_iter=100, tol=1e-8, mixing=0.3):
 
     E_elec = 0.5 * np.trace(P @ (H_core + F))
     return E_elec, evals, C, P
-```
+``'
 
-The call `np.einsum` is doing what a real quantum-chemistry code
+The call `np.einsum' is doing what a real quantum-chemistry code
 does in its innermost loop.  In production, the ERI tensor is
 recomputed on the fly and never stored; this is the *direct SCF*
 trick we will examine in section 3.8. > **Warning.**  Plain density mixing is enough for stable
@@ -412,7 +412,7 @@ graph LR
   D3 --> U1
   D2 --> U2
   D3 --> U2
-```
+``'
 
 The determinant basis is the *first-quantise`d*' language in which
 post-HF methods (CI, MP2, CC, EOM-CC) are written; the
@@ -522,7 +522,7 @@ S_{\mu\nu} \;=\; \langle \chi_\mu \rvert \chi_\nu \rangle .
 
 This is the **generalised eigenvalue problem** (GEP) — a standard
 GEP in numerical linear algebra, solved by
-`scipy.linalg.eigh(F, S)` or any equivalent LAPACK routine.
+`scipy.linalg.eigh(F, S)' or any equivalent LAPACK routine.
 
 ### 3.6.2 Derivation
 
@@ -952,7 +952,7 @@ graph TD
   CHK -- "yes" --> COUT
   CHK -- "yes" --> EPS
   CHK -- "yes" --> EOUT
-```
+``'
 
 The diagram makes the *cost-hiding* of HF explicit: every cycle
 through the SCF inner loop re-builds $\mathbf F$ from $\mathbf P$
@@ -997,7 +997,7 @@ eigenvalue problem
 \mathbf F'\, \mathbf C' \;=\; \mathbf C'\, \boldsymbol\varepsilon .
 \end{equation}
 
-The `eigh(F, S)` LAPACK routine does this internally, with $\mathbf
+The `eigh(F, S)' LAPACK routine does this internally, with $\mathbf
 X$ computed by Cholesky factorisation of $\mathbf S$.  For very
 large $\mathbf S$ the cost of forming $\mathbf S^{1/2}$ is
 non-negligible and iterative diagonalisation is preferred — this
@@ -1367,7 +1367,7 @@ are essentially free.
 
 The break-even point depends on the computer architecture and
 the basis.  Roughly, for STO-3G and 3-21G the conventional
-algorithm is faster up to ~30 heavy atoms; for `6-31G*` and larger
+algorithm is faster up to ~30 heavy atoms; for `6-31G*' and larger
 bases the direct algorithm wins almost immediately.
 
 ### 3.8.2 Direct SCF
@@ -1387,7 +1387,7 @@ G_{\mu\nu}[\mathbf P]
 Equation \eqref{eq:ch-03-G-direct} is identical to
 \eqref{eq:ch-03-G-build}; what is new is the implementation
 strategy.  The inner loop of the direct algorithm is a *four-level
-nested loo`p*` over basis-function quartets $(\chi_\mu, \chi_\nu,
+nested loo`p*' over basis-function quartets $(\chi_\mu, \chi_\nu,
 \chi_\rho, \chi_\sigma)$, with a screening test that discards
 quartets whose contribution to $G_{\mu\nu}$ is guaranteed to be
 negligibly small.  The dominant screening inequality is the
@@ -1475,9 +1475,9 @@ def direct_scf(geom, basis, n_elec, max_iter=100, tol=1e-9,
 
     E_el = 0.5 * np.trace(P @ (h + F))
     return E_el, eps, C, P
-```
+``'
 
-The key piece is `build_J_direct` / `build_K_direct`, which loop
+The key piece is `build_J_direct' / `build_K_direct`, which loop
 over basis-function quartets, apply the Schwarz test
 \eqref{eq:ch-03-screen}, and accumulate only the
 non-negligible contributions.  The full implementation appears
@@ -1805,7 +1805,7 @@ if __name__ == "__main__":
     print(f"  MO energies (E_h) : {eps}")
     print(f"  E_HF              = {E:.6f}  E_h")
     print(f"  Reference         = -1.1167 E_h (Szabo & Ostlund)")
-```
+``'
 
 The script above does the *whole* calculation from primitive
 GTO integrals up to the converged energy.  The output on a
@@ -1818,10 +1818,10 @@ Direct-SCF (with DIIS) H2/STO-3G  R = 1.4 a0
   MO energies (E_h) : [-0.5782  0.6703]
   E_HF              = -1.116714  E_h
   Reference         = -1.1167 E_h (Szabo & Ostlund)
-```
+``'
 
 To appreciate the role of DIIS, replace the call to
-`diis_extrapolate` by a plain density mix with $\alpha = 0.3$ and
+`diis_extrapolate' by a plain density mix with $\alpha = 0.3$ and
 re-run; the same calculation converges in ~30 iterations with
 small oscillations, where DIIS converges in 11 iterations and
 *monotonically* (the error vector norm drops by ~3 decades per
@@ -1849,7 +1849,7 @@ graph TD
   CONV -- "no" --> MIX["P = mix(P, P_new)"] --> ITER
   CONV -- "yes" --> E["E_HF = 1/2 Tr P (h + F) + V_nn"]
   E --> OUT["Report E, eps, C, P"]
-```
+``'
 
 This is the algorithm that runs in every Gaussian-based
 quantum-chemistry code; the only things that change between
@@ -2083,7 +2083,7 @@ graph LR
   DELTA --> NOTE2["~2x cost of HF<br/>often ~0.1 eV off<br/>in HF (no correlation)"]
   GW --> NOTE3["scales as N^4-N^5<br/>captures most correlation"]
   CC --> NOTE4["scales as N^6<br/>chemical accuracy"]
-```
+``'
 
 The four paths lie on a cost–accuracy ladder; Koopmans is the
 cheapest and the noisiest, EOM-CCSD is the most expensive and

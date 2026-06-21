@@ -39,7 +39,7 @@ chapter that *uses* the algorithm in anger; the reader who wants
 the worked example should follow the cross-reference.
 
 > **Notation for the labels.** Every numbered equation in this
-> file uses the prefix `eq:nm-…` (numerical methods).  When the
+> file uses the prefix `eq:nm-…' (numerical methods).  When the
 > chapter on Kohn–Sham DFT
 > ([chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }})
 > §4.6) states the same DIIS formula, the label there is
@@ -49,7 +49,7 @@ the worked example should follow the cross-reference.
 
 > **Python conventions.** All Python samples are **minimal and
 > self-containe`d*`* — they import only `numpy`, `scipy`, and
-> `matplotlib` (with `matplotlib.use("Agg")` set first, so the
+> `matplotlib' (with `matplotlib.use("Agg")' set first, so the
 > code is headless).  They are *not* production code: no parallel
 > execution, no ERI back-transform, no symmetry reduction.  Their
 > job is to expose the algorithm in 50–100 lines so the reader
@@ -490,16 +490,16 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+``'
 
 The output of the script (a typical run) is a PNG file
-`nm-01-scf-diis-toy.png` with the convergence plot, plus the
+`nm-01-scf-diis-toy.png' with the convergence plot, plus the
 following console output:
 
-```
+``'
 linear:  62 iters, final |R| = 9.84e-10
 DIIS:    11 iters, final |R| = 6.21e-10
-```
+``'
 
 DIIS converges in **11 iterations** vs the **62 iterations** of
 linear mixing at the same mixing parameter.  Once the iteration
@@ -512,7 +512,7 @@ the chapters discuss: every iteration roughly squares the residual.
 > [chapter 03]({{ "/dft-notes/chapter-03/" | relative_url }}) §3.6.7
 > and in [chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) §6.4.
 > The Python source above lives in
-> `dft_notes/python_codes/chapter_04/nm-01-scf-diis-toy.py` and
+> `dft_notes/python_codes/chapter_04/nm-01-scf-diis-toy.py' and
 > the plot it produces is `plots/nm-01-scf-diis-toy.png`.
 
 ### 1.8 What can go wrong (and how to fix it)
@@ -872,14 +872,14 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+``'
 
 The output:
 
-```
+``'
 SD:    3152 iters, f = 9.971e-09
 BFGS:  24 iters, f = 8.418e-16
-```
+``'
 
 BFGS converges in **24 iterations** to machine precision; steepest
 descent needs **3152**.  The factor of $\sim 130\times$ is
@@ -892,7 +892,7 @@ problems.
 > "force" there is the *Hellmann–Feynman force* of
 > [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.7,
 > not the gradient of a toy function.  The Python file
-> `dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py`
+> `dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py'
 > shows the production version with the STO-3G basis, the
 > Roothaan–Hall SCF, and the LBFGS optimiser.
 
@@ -1210,13 +1210,13 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+``'
 
 For the $4 \times 4 \times 4$ mesh the script reports
 
-```
+``'
 4x4x4 MP mesh: 64 points total, 8 in IBZ
-```
+``'
 
 — a factor of 8 reduction, which is the orbit size of the
 generic k-point in $O_h$.
@@ -1227,7 +1227,7 @@ generic k-point in $O_h$.
 > plots in
 > [chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }}) §7.7
 > use the tetrahedron method.  The Python file
-> `dft_notes/python_codes/chapter_07/03-monkhorst-pack-convergence.py`
+> `dft_notes/python_codes/chapter_07/03-monkhorst-pack-convergence.py'
 > is the production version with the convergence test.
 
 ### 3.7 Smearing and the free energy
@@ -1360,7 +1360,7 @@ parallel, and *merges* the eigenpairs by rank-1 updates
 (Sherman–Morrison–Woodbury) in $\mathcal O(n^2)$ per merge.
 The total cost is $\mathcal O(n^{2.4})$ or better.
 
-LAPACK's `?SYEVD` and ScaLAPACK's `P?SYEVD` use the
+LAPACK's `?SYEVD' and ScaLAPACK's `P?SYEVD' use the
 divide-and-conquer algorithm.  For a DFT calculation on a
 1000-atom system with a Gaussian basis of $K = 10{,}000$
 functions, divide-and-conquer is the *only* option that fits
@@ -1454,15 +1454,15 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+``'
 
 The output of the script:
 
-```
+``'
 QR eigenvalues : [2.341 4.117 5.829 8.713]
 eigvalsh ref   : [2.341 4.117 5.829 8.713]
 max |diff|     : 5.7e-13
-```
+``'
 
 The basic QR iteration converges in $\sim 80$ iterations for a
 $4 \times 4$ matrix.  Production LAPACK with Wilkinson shift
@@ -1473,9 +1473,9 @@ is a factor of $\sim 15$, but the *algorithm* is unchanged.
 > in [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.2
 > (KS equation) and [chapter 03]({{ "/dft-notes/chapter-03/" | relative_url }})
 > §3.6.6 (Löwdin orthogonalisation).  The Python file
-> `dft_notes/python_codes/chapter_06/01-sto-3g-h2.py` is the
+> `dft_notes/python_codes/chapter_06/01-sto-3g-h2.py' is the
 > production version with a real ERI back-end and the SciPy
-> `eigh` solver.
+> `eigh' solver.
 
 ### 4.6 Generalised eigenvalue problems
 
@@ -1583,7 +1583,7 @@ values converge geometrically, with the ratio given by the
 distance to the next eigenvalue outside the interval.
 
 The Lanczos algorithm is the *core* of every iterative
-diagonaliser in production (LAPACK's `?SYEVR` for sparse
+diagonaliser in production (LAPACK's `?SYEVR' for sparse
 matrices, ARPACK, SLEPc, PRIMME, the diagonaliser in
 VASP, Quantum ESPRESSO, and ABINIT).  The variants differ
 in how they treat *reorthogonalisation* (essential for
@@ -1757,15 +1757,15 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+``'
 
 The output:
 
-```
+``'
 Davidson eigs:  [0.00097  0.00387  0.00872  0.01550]
 eigvalsh ref:  [0.00097  0.00387  0.00872  0.01550]
 max |diff|:    4.1e-11
-```
+``'
 
 Davidson converges in $\sim 25$ iterations on the 1-D Laplacian
 to 10-digit precision.  Lanczos would need a similar number
@@ -1778,7 +1778,7 @@ of iterations for the *lowest* eigenpair but Davidson converges
 > diagonalisation to be embedded in the SCF loop) and in
 > [chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }}) §6.7
 > (the plane-wave basis that *forces* iterative methods).
-> The Python file `dft_notes/python_codes/chapter_07/01-free-electron-bands.py`
+> The Python file `dft_notes/python_codes/chapter_07/01-free-electron-bands.py'
 > is the production version with a real plane-wave Hamiltonian.
 
 ---
@@ -1884,7 +1884,7 @@ $\langle R_i, R_j \rangle = R_i \cdot R_j$.  For metals the
 is better: the DIIS sub-problem
 \eqref{eq:nm-scf-diis-aug} is solved in the preconditioned
 metric, and the resulting coefficients emphasise the *short-
-wavelengt`h*` components of the residual (where the SCF map is
+wavelengt`h*' components of the residual (where the SCF map is
 contractive) and down-weight the *long-wavelengt`h*' components
 (where the Kerker preconditioner has already taken over).
 
@@ -2005,14 +2005,14 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+``'
 
 The output is a convergence plot and the following console:
 
-```
+``'
 linear:  71 iters, |R| = 9.46e-10
 Pulay:   13 iters, |R| = 4.18e-10
-```
+``'
 
 Pulay's DIIS converges in **13 iterations** vs the **71
 iterations** of linear mixing — a factor of 5x speedup on
@@ -2281,7 +2281,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+``'
 
 The output is a two-panel plot: the all-electron and pseudo
 wavefunctions on the left, the all-electron and pseudo
@@ -2295,7 +2295,7 @@ origin).
 > (pseudopotentials).  The Troullier–Martins construction is in
 > §8.4; the Kleinman–Bylander factorisation in §8.5; the
 > ghost-state problem in §8.6. The Python file
-> `dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py`
+> `dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py'
 > is the production version with the full p(r) polynomial
 > fit and the norm-conservation constraint.
 
@@ -2566,7 +2566,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+``'
 
 The output is a two-band dispersion plot: the analytical
 acoustic and optical branches as solid lines, the
@@ -2580,7 +2580,7 @@ the error.
 > [chapter 10]({{ "/dft-notes/chapter-10/" | relative_url }})
 > (phonons, frozen-phonon supercells, DFPT, $2n+1$ theorem).
 > The Python file
-> `dft_notes/python_codes/chapter_10/01-diatomic-chain.py` is the
+> `dft_notes/python_codes/chapter_10/01-diatomic-chain.py' is the
 > production version with a more realistic model (long-range
 > interactions, Born–von Kármán boundary conditions).
 

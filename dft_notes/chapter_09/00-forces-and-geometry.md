@@ -115,7 +115,7 @@ non-trivial contribution to the force evaluation
 ([§9.5](#95-forces-in-a-gaussian-basis)).
 
 The Pulay correction is the reason every Gaussian code has a
-`forces` subroutine that is comparable in cost to the SCF
+`forces' subroutine that is comparable in cost to the SCF
 itself; it is also the reason every plane-wave code is roughly
 "forces included for free".  Once the forces are in hand, the rest
 of the chapter is the question *what to do with them*:
@@ -531,9 +531,9 @@ graph TD
   class FP pulay
   class FTOT out
   class OUT out
-```
+``'
 
-The two **left-most** branches (`HF1` and `HF2`) are the
+The two **left-most** branches (`HF1' and `HF2`) are the
 Hellmann–Feynman contribution, computed from the SCF density and
 nuclear positions only — no basis-derivative integrals are
 required. The **right-most** branches are the Pulay contribution,
@@ -1240,7 +1240,7 @@ graph LR
   class SUB step
   class OUT out
   class NEXT out
-```
+``'
 
 The *left* side of the diagram is what the optimiser measures at
 the end of step $k$: where the geometry went
@@ -1493,9 +1493,9 @@ graph TD
   class XNEW step
   class CK out
   class DONE out
-```
+``'
 
-The **two compute boxes** (`F1` and `F2`) are the workhorses:
+The **two compute boxes** (`F1' and `F2`) are the workhorses:
 the force evaluation is the *ioni`c*' part of the gradient, the
 stress evaluation is the *cell* part. Both depend on the
 self-consistent density from `SCF`, but they are otherwise
@@ -1558,7 +1558,7 @@ output, in the script's own format, is:
      1.40           -1.116714
      1.60           -1.100458
      2.00           -1.038121
-```
+``'
 
 The minimum of the table is at $R = 1.40 a_0$ (in fact the
 STO-3G minimum is at $R^\star \approx 1.346 a_0$, see the dense
@@ -1616,7 +1616,7 @@ is:
      1.40            0.000                +0.000              -0.000              +0.000
      1.60           +0.053                -0.055              +0.054              +0.053
      2.00           +0.085                -0.085              +0.085              +0.085
-```
+``'
 
 The columns $F_A^\text{HF}$ and $F_B^\text{HF}$ are nearly
 equal in magnitude and *opposite* in sign (Newton's third law is
@@ -1659,7 +1659,7 @@ steps to $R^\star = 1.346 a_0$:
         8     1.8160        -1.113000        +0.003
         9     1.8150        -1.114000       -0.001
        10     1.8152        -1.114002       -0.000
-```
+``'
 
 Each step the bond shortens by a small fraction of an Ångström
 and the energy drops by a few mHa.  After ten steps the
@@ -1700,7 +1700,7 @@ The main pieces are the integral routines (inherited from
 the gradient evaluation by central differences, the HF force
 evaluation by grid quadrature on the SCF density, and the
 steepest-descent step.  No external dependencies beyond
-`numpy`, `scipy`, and `matplotlib` (with `Agg` for headless
+`numpy`, `scipy`, and `matplotlib' (with `Agg' for headless
 plotting).
 
 ## 9.11 Diagram: the geometry-optimisation loop
@@ -1723,9 +1723,9 @@ graph TD
   LS --> RNEW["R(k+1) = R(k) +<br/>alpha_k p(k)"]
   TR --> RNEW
   RNEW --> E0
-```
+``'
 
-The top half of the diagram (from `R(0)` to `F_I`) is the
+The top half of the diagram (from `R(0)' to `F_I`) is the
 *single-point* force evaluation: run an SCF, compute the
 energy, compute the forces.  The bottom half is the *outer
 loo`p*`: choose a step direction, choose a step length, update

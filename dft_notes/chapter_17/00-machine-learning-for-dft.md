@@ -329,7 +329,7 @@ level accuracy with classical-MD cost.  The
 3. **High-throughput screening.**  The Materials
     Project — $\sim\! 150\,000$ inorganic crystals,
     each with a PBE calculation — is the *training
-    dat`a*` for the MACE-MP-0 universal potential.  The
+    dat`a*' for the MACE-MP-0 universal potential.  The
     *use* of the trained potential is the inverse
     problem: given a new composition, predict the
     energy without a DFT calculation.
@@ -886,7 +886,7 @@ Potential) of Batzner et al. ([2022, *Nat.
 Commun.* **13**, 2453]({{ "/dft-notes/extras/bibliography/" | relative_url }})) is the
 first equivariant message-passing network for
 MLIPs.  The architecture is a *graph neural
-networ`k*` in which each atom is a node, each
+networ`k*' in which each atom is a node, each
 pair of neighbouring atoms is an edge, and the
 node features are equivariant irreps of
 $\text{SO}(3)$.  The *message* passed from atom
@@ -1194,7 +1194,7 @@ the *non-local* electronic structure.  The 2024
 [Materese et al., *Nat. Commun.* **14**, 5988
 (2023)]({{ "/dft-notes/extras/bibliography/" | relative_url }})
 uses a *transformer* on the atomic structure
-grap`h*` and reaches MAE $\sim\! 0.15$ eV for
+grap`h*' and reaches MAE $\sim\! 0.15$ eV for
 HSE06 gaps on the Materials Project.  The
 *transferability* of $\Delta$-ML models to a
 new compound depends on the *distance* to the
@@ -1623,7 +1623,7 @@ graph TD
   ADD --> RET
   RET --> MD
   Q -->|"trajectory done"| DONE
-```
+``'
 
 The diagram shows the *control flow* of
 the MACE-OSP loop.  The MD step is the
@@ -1691,15 +1691,15 @@ the foundation models), **MACE-OSP** (on-the-fly AL),
 **ASE** (the calculator interface, used by all of the
 above), and **MatGL** (M3GNet).  The **ASE**
 package provides the standard
-`get_potential_energy()` and `get_forces()` API
+`get_potential_energy()' and `get_forces()' API
 that wraps every MLIP.
 
 The **MACE training script** (in Python) loads
-the training data (an `xyz`/`extxyz` file with
+the training data (an `xyz`/`extxyz' file with
 DFT energies, forces, and stresses), constructs
 the MACE model, trains with Adam and the
 energy+force loss of \eqref{eq:ch-17-loss-full},
-saves the model, and logs to `wandb` or
+saves the model, and logs to `wandb' or
 `tensorboard`.  The **inference script** is a
 *single-line* ASE call:
 
@@ -1712,7 +1712,7 @@ calc = MACECalculator(model_path='my_mace.model', device='cuda')
 atoms.calc = calc
 energy = atoms.get_potential_energy()
 forces = atoms.get_forces()
-```
+``'
 
 The *cost* of inference is $\sim\! 10$–$100$ ms
 per configuration on a single H100. ### 17.10.3 Common pitfalls
@@ -1804,7 +1804,7 @@ dyn = Langevin(atoms, timestep=0.5*units.fs,
                temperature_K=300, friction=0.01/units.fs)
 for step in range(20000):
     dyn.run(1)
-```
+``'
 
 The O–O RDF is computed by histogramming the
 pairwise O–O distances over the trajectory.
@@ -1818,7 +1818,7 @@ that *converges* to $g(r) = 1$.
 The MACE-MP-0 RDF is *qualitatively correct*
 (the peaks are at the right positions) but
 *quantitatively* off (the first peak is too
-hig`h*` by $\sim\! 10\%$–$20\%$, the second peak
+hig`h*' by $\sim\! 10\%$–$20\%$, the second peak
 is *too low*).  The fix is to *fine-tune the
 MACE-MP-0 model on a small set of
 *DFT-calculate`d*' water configurations
@@ -1832,7 +1832,7 @@ $\sim\! 5\%$.
 > trained on the SPICE dataset
 > ($\omega$B97M-D3 reference) that reproduces the
 > experimental RDF of water to within $\sim\! 2\%$
-> *zero-shot*; the model is `MACE-OFF23` in the
+> *zero-shot*; the model is `MACE-OFF23' in the
 > MACE package.
 
 ## 17.12 Worked example — a $\Delta$-ML formation-energy correction
@@ -1867,7 +1867,7 @@ krr.fit(X_tr, y_tr)
 # Predict and evaluate
 y_pred = krr.predict(X_te)
 mae_deltaml = mean_absolute_error(y_te, y_pred)
-```
+``'
 
 The expected MAE on the *test* set is
 $\sim\! 25$ meV/atom, vs. $\sim\! 150$ meV/atom
@@ -2374,7 +2374,7 @@ on the descriptor space, and the weights $w_\alpha$ are
 the *solution* of a regularised linear system
 [Bartók et al., 2010, p. 136403-1].  The GP framework
 gives *three* things for free: (i) the best linear
-unbiase`d*` prediction given the data; (ii) the
+unbiase`d*' prediction given the data; (ii) the
 *predictive variance* (a measure of model uncertainty);
 (iii) the *automatic regularisation* (the marginal
 likelihood can be maximised over the kernel
@@ -2752,7 +2752,7 @@ readout — is *exactly* invariant under rotations
 The **4-body interactions** are on p. 4. The
 *key observation* of the MACE paper is that the body
 order* $T$ of the message determines the *effective
-receptive fiel`d*` of a single message-passing layer: a
+receptive fiel`d*' of a single message-passing layer: a
 $T = 4$ message includes *all* 4-body correlations of
 the edge features within the local environment
 [Batatia et al., 2022, p. 4].  The *ACE theorem* says
@@ -2814,7 +2814,7 @@ graph LR
   B2 -->|"systematic<br/>descriptor"| B3
   B3 -->|"learned<br/>descriptors"| B4
   B4 -->|"equivariant<br/>+ 4-body"| B5
-```
+``'
 
 The diagram is a *genealogy*: each paper inherits from
 the previous one and *fixes* one of its limitations.

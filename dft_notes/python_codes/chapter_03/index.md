@@ -11,7 +11,7 @@ description: >-
 # Chapter 03 — Python codes
 
 Three scripts that together implement Hartree–Fock from scratch, in only
-`numpy` + `scipy.special.erf` + `scipy.linalg.eigh`.  No quantum-chemistry
+`numpy' + `scipy.special.erf' + `scipy.linalg.eigh`.  No quantum-chemistry
 package is imported — every integral is built from the Boys $F_0$ function
 and the Gaussian product formulas of Szabo & Ostlund Appendix A.  The
 first script is the source of truth for the $E_\mathrm{HF} = -1.1167\,E_h$
@@ -40,13 +40,13 @@ done
 python dft_notes/python_codes/chapter_03/01-h2-sto3g-scf.py
 python dft_notes/python_codes/chapter_03/02-h2-dissociation.py
 python dft_notes/python_codes/chapter_03/03-scf-mixing-demo.py
-```
+``'
 
 Each script writes its PNG to `dft_notes/python_codes/chapter_03/plots/`.
 
 ## Dependencies
 
-`numpy`, `scipy` (`linalg.eigh`, `special.erf`), `matplotlib` (with
-`matplotlib.use("Agg")` for headless runs).  Nothing else.  See
+`numpy`, `scipy' (`linalg.eigh`, `special.erf`), `matplotlib' (with
+`matplotlib.use("Agg")' for headless runs).  Nothing else.  See
 [python_codes/]({{ site.baseurl }}/dft-notes/python_codes/) for the
 repo-wide pinned versions.

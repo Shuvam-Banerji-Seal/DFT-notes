@@ -327,7 +327,7 @@ The HSE06 functional is the standard range-separated hybrid for
 solid-state DFT. It splits the Coulomb interaction into a
 short-range part treated at the PBE level and a long-range part
 treated with 25% exact exchange, using the complementary error
-function `erfc(ω r)` as the partition (with
+function `erfc(ω r)' as the partition (with
 $\omega = 0.11$ bohr$^{-1}$ — the inverse screening length).
 The screening makes the exact-exchange integral short-ranged (so
 it can be evaluated in a plane-wave basis with a modest

@@ -99,7 +99,7 @@ graph TD
   click C15 "javascript:void(0)" "The Dirac equation, scalar-relativistic corrections, and spin-orbit coupling in modern DFT."
   click C16 "javascript:void(0)" "Topology in band theory: Chern numbers, Z₂ invariants, topological insulators, and Weyl semimetals."
   click C17 "javascript:void(0)" "Machine learning for DFT: interatomic potentials, equivariant networks, delta-learning, and foundation models."
-```
+``'
 
 ## Edges
 
@@ -157,9 +157,9 @@ do not have to read all of them.
   numbered in the order they appear in the chapter; plots are
   committed alongside the script.
 - This map is a **living document**.  Every time
-  `agent:content-writer` lands a new chapter,
-  `agent:diagram-artist` updates this Mermaid graph in the
-  same commit — moving the new node from `planned` to
+  `agent:content-writer' lands a new chapter,
+  `agent:diagram-artist' updates this Mermaid graph in the
+  same commit — moving the new node from `planned' to
   `shipped`, adding the prerequisite edge, and refreshing the
-  `Edges` table.  The `shipped` / `planned` split in
-  `classDef` above is the single source of truth.
+  `Edges' table.  The `shipped' / `planned' split in
+  `classDef' above is the single source of truth.

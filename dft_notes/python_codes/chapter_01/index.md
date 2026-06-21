@@ -42,15 +42,15 @@ python dft_notes/python_codes/chapter_01/01-particle-in-box.py
 for f in dft_notes/python_codes/chapter_01/0?-*.py; do
     python "$f"
 done
-```
+``'
 
 Each script writes its PNG into
-`dft_notes/python_codes/chapter_01/plots/` and prints the key
+`dft_notes/python_codes/chapter_01/plots/' and prints the key
 numerical results to stdout.
 
 ## Dependencies
 
-`numpy`, `scipy` (only `scipy.optimize.brentq` for the finite-well
-root find), and `matplotlib` (headless via `matplotlib.use("Agg")`).
+`numpy`, `scipy' (only `scipy.optimize.brentq' for the finite-well
+root find), and `matplotlib' (headless via `matplotlib.use("Agg")`).
 See the top-level [python_codes/]({{ site.baseurl }}/dft-notes/python_codes/)
 page for the version pins.

@@ -26,7 +26,7 @@ keywords: "problems, anthology, exercises, DFT, exercises, quantum
 > one-or-two-sentence hint on the approach, and a one-sentence
 > answer that gives the final result without redoing the
 > derivation. The three cross-chapter sets (A, B, C) are
-> *multi-part* problems in the long `<details>` form: each
+> *multi-part* problems in the long `<details>' form: each
 > part is a self-contained problem, and the parts are
 > threaded together by a single physical or methodological
 > thread.
@@ -81,7 +81,7 @@ graph LR
     C --> A["Answer<br/>(final result only)"]
     A --> R["Re-derive<br/>in the chapter"]
   end
-```
+``'
 
 ---
 
@@ -549,7 +549,7 @@ graph LR
 > **Hint:** count the per-atom contributions and use
 > $K = 2 K_H + K_O$.
 > **Answer:** STO-3G → $K = 7$, 6-31G → $K = 13$,
-> `6-31G*` → $K = 18$, cc-pVDZ → $K = 24$ — and cc-pVTZ,
+> `6-31G*' → $K = 18$, cc-pVDZ → $K = 24$ — and cc-pVTZ,
 > cc-pVQZ, cc-pV5Z grow to 58, 115, 201, with the ERI
 > count scaling as $K^4$.
 

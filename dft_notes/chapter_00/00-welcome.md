@@ -83,11 +83,11 @@ step in violation of this rule, please open an issue.
 Chapters cross-reference each other with two distinct signals:
 
 - A plain Markdown link
-  `[Chapter 01]({{ "/dft-notes/chapter-01/" | relative_url }})` —
+  `[Chapter 01]({{ "/dft-notes/chapter-01/" | relative_url }})' —
   used for *prerequisite* material that the reader is expected to
   have already read.
 - A forward link
-  `[chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }})` —
+  `[chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }})' —
   used to flag material that *will be developed later* but is
   needed in the current chapter for context.
 
@@ -246,9 +246,9 @@ short version is:
   `matplotlib`.  Anything else is added to the README on a
   case-by-case basis.
 - **Headless rendering.**  Every script begins with
-  `matplotlib.use("Agg")` so that the script runs on a server
+  `matplotlib.use("Agg")' so that the script runs on a server
   with no display.
-- **The `plots/` subfolder** holds the committed PNGs.  One script
+- **The `plots/' subfolder** holds the committed PNGs.  One script
   produces one figure; the figure file is named
   `plots/<same prefix>-<same slug>.png`.
 - **No `os.chdir`.**  Paths are constructed relative to the chapter
@@ -262,12 +262,12 @@ column are the place to fill the gap.
 
 | Topic | One-line expectation | Tutorial |
 |:------|:---------------------|:---------|
-| `numpy.ndarray` | Construct arrays, index them, broadcast, take `.T`, `.conj()`, `.dot()` | numpy.org/doc/stable/user/absolute_beginners.html |
-| `numpy.linalg.eigh` | Diagonalise a Hermitian matrix; sort eigenvalues | numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html |
-| `scipy.linalg.eigh(F, S)` | Solve the generalised eigenproblem $\mathbf F \mathbf C = \mathbf S \mathbf C \boldsymbol\varepsilon$ | docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.eigh.html |
-| `scipy.special` | Use `erf`, `factorial`, `sph_harm` | docs.scipy.org/doc/scipy/reference/special.html |
-| `matplotlib.pyplot` | `subplots`, `plot`, `xlabel`, `savefig` | matplotlib.org/stable/tutorials/introductory/pyplot.html |
-| `pathlib.Path` | Build paths relative to `__file__` | docs.python.org/3/library/pathlib.html |
+| `numpy.ndarray' | Construct arrays, index them, broadcast, take `.T`, `.conj()`, `.dot()' | numpy.org/doc/stable/user/absolute_beginners.html |
+| `numpy.linalg.eigh' | Diagonalise a Hermitian matrix; sort eigenvalues | numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html |
+| `scipy.linalg.eigh(F, S)' | Solve the generalised eigenproblem $\mathbf F \mathbf C = \mathbf S \mathbf C \boldsymbol\varepsilon$ | docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.eigh.html |
+| `scipy.special' | Use `erf`, `factorial`, `sph_harm' | docs.scipy.org/doc/scipy/reference/special.html |
+| `matplotlib.pyplot' | `subplots`, `plot`, `xlabel`, `savefig' | matplotlib.org/stable/tutorials/introductory/pyplot.html |
+| `pathlib.Path' | Build paths relative to `__file__' | docs.python.org/3/library/pathlib.html |
 
 ### Hello world — a chapter's smallest program
 
@@ -323,15 +323,15 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+``'
 
-A reader fluent in `numpy` and `matplotlib` should be able to read
+A reader fluent in `numpy' and `matplotlib' should be able to read
 this script in under a minute and predict the shape of the figure
 before running it: an exponentially decaying curve, equal to
 $1/\pi \approx 0.318$ at $r = 0$ and falling to $\sim 10^{-9}$ by
 $r = 10\,a_0$.
 
-> **Tip.**  The full directory layout (what `chapter_00/` looks
+> **Tip.**  The full directory layout (what `chapter_00/' looks
 > like after this script has been run) is:
 >
 > ```text
@@ -341,11 +341,11 @@ $r = 10\,a_0$.
 >     ├── 01-hydrogen-1s.py
 >     └── plots/
 >         └── 01-hydrogen-1s.png
-> ```
+> ``'
 >
 > The two-digit prefix (`01-`) preserves the order of scripts
 > within a chapter; if a future chapter-00 script gets added it
-> would be `02-…py` and its plot `02-….png`.  This ordering
+> would be `02-…py' and its plot `02-….png`.  This ordering
 > matters because chapters read top-to-bottom.
 
 ## The chapter structure template
@@ -407,11 +407,11 @@ hoc; it is copied from a file in
 `dft_notes/python_codes/chapter_NN/`, with the chapter-relative
 path of the original file in the comment header.  The convention
 is two-digit prefix, dash, kebab-case slug, `.py`.  The
-companion script is run by `agent:code-runner` to produce the
+companion script is run by `agent:code-runner' to produce the
 PNG; the PNG is committed under `plots/`.
 
 **What to expect.**  A real Python program, ~10–50 lines, that
-imports only `numpy`, `scipy`, and `matplotlib` (with
+imports only `numpy`, `scipy`, and `matplotlib' (with
 `matplotlib.use("Agg")`).  No display is required.  The snippet
 is self-contained: copy it into a file, run it, get a PNG.
 
@@ -430,7 +430,7 @@ JavaScript to appear.  The diagram is *not* a substitute for
 prose; it is a visual index into the chapter.
 
 **What to expect.**  One to three Mermaid blocks, each with a
-`%%{init: ...}%%` directive for layout hints.  A short
+`%%{init: ...}%%' directive for layout hints.  A short
 caption explaining what the diagram is and what the reader
 should take from it.  Cross-references back to the prose
 sections the diagram summarises.
@@ -451,7 +451,7 @@ and large enough to exercise the typical failure modes of the
 method.
 
 **What to expect.**  The full numerical trace, often as a
-`text` code block.  A reference back to the code snippet
+`text' code block.  A reference back to the code snippet
 (section 3) that produced the plot.  The plot itself, included
 as a Markdown image tag pointing to
 `dft_notes/python_codes/chapter_NN/plots/NN-slug.png`.
@@ -464,8 +464,8 @@ companion script.
 
 Three problems per chapter, **ranging easy → hard**, each
 followed by a fully worked solution.  Problems use
-`<details class="problem">` for the question and
-`<details class="answer">` for the answer, so the reader can
+`<details class="problem">' for the question and
+`<details class="answer">' for the answer, so the reader can
 think first and reveal later.  Easy problems test recall of the
 chapter's claim.  Medium problems test application of the
 derivation to a new but related system.  Hard problems test
@@ -537,7 +537,7 @@ graph TD
   C09 --> C10
 
   style C00 fill:#fff3d6,stroke:#ff8c00,stroke-width:4px,color:#000
-```
+``'
 
 The graph has one source (chapter 00) and a "fan-in" structure
 in the middle: chapters 03 and 04 both depend on chapter 02 and
@@ -586,7 +586,7 @@ graph LR
 
   T5 --> M1
   M4 --> A1
-```
+``'
 
 The track view makes the same information as the dependency
 graph, but arranges it so that you can see the *kinds* of
@@ -617,7 +617,7 @@ equation:
 
 That is **the claim** of chapter 06: *the Fock eigenvalue problem
 in a finite basis is a generalised matrix eigenproblem*.  The
-label `eq:ch-06-roothaan-hall` in the actual chapter file is
+label `eq:ch-06-roothaan-hall' in the actual chapter file is
 what allows the rest of the chapter (and other chapters) to
 refer to this equation.
 
@@ -987,14 +987,14 @@ comments) that:
 1. Constructs the $2 \times 2$ matrix $\mathbf A$ from
    [Problem 3](#problem-3-medium--hand-diagonalise-a-2x2-matrix) as
    a `numpy.ndarray`.
-2. Calls `numpy.linalg.eigh` to compute its eigenvalues and
+2. Calls `numpy.linalg.eigh' to compute its eigenvalues and
    eigenvectors.
 3. Prints the eigenvalues, the eigenvector matrix $\mathbf U$, and
    verifies that $\mathbf U^\dagger \mathbf A \mathbf U$ is diagonal
    and that $\mathbf U^\dagger \mathbf U = \mathbf 1$ to within
    `1e-12`.
 
-You may use the `hello world` script in *Programming prerequisites*
+You may use the `hello world' script in *Programming prerequisites*
 as a model for the file layout.  You do not need to produce a plot.
 
 </details>
@@ -1017,7 +1017,7 @@ print("U^dag U - I =", U.conj().T @ U - np.eye(2))
 
 assert np.allclose(Adiag, np.diag(evals))
 assert np.allclose(U.conj().T @ U, np.eye(2))
-```
+``'
 
 The output is
 
@@ -1027,7 +1027,7 @@ U^dag A U = [[1. 0.]
              [0. 3.]]
 U^dag U - I = [[0. 0.]
                [0. 0.]]
-```
+``'
 
 which confirms the hand calculation of Problem 3 and the
 spectral theorem itself: a real symmetric matrix is
@@ -1111,7 +1111,7 @@ molecule.
 ```mermaid
 graph TD
   C00[Ch 00] --> C01[Ch 01] --> C02[Ch 02] --> C04[Ch 04] --> C05[Ch 05] --> C06[Ch 06]
-```
+``'
 
 a *linear* chain, which is why the notes are written so that
 the chapters can be read linearly even though the

@@ -99,10 +99,10 @@ labels each curve with its eigenvalue.
 > cross-references the script as
 > `dft_notes/python_codes/chapter_01/01-particle-in-box.py`,
 > but the canonical, runnable file currently lives in
-> `chapter_00/` (where it was written first, as the
+> `chapter_00/' (where it was written first, as the
 > ["hello world"]({{ site.baseurl }}/dft-notes/chapter-00/#hello-world--a-chapters-smallest-program)
 > for the entire site). The path above is the one that
-> *runs*; the chapter path will be moved into `chapter_01/` in
+> *runs*; the chapter path will be moved into `chapter_01/' in
 > a follow-up commit by `agent:code-runner`.
 
 ### 1.2 Harmonic oscillator
@@ -127,7 +127,7 @@ eigenvalues are $E_n = n + 1/2$ in units of $\omega$.
   [Chapter 01, §1.14.2]({{ site.baseurl }}/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences)
   (`dft_notes/python_codes/chapter_01/02-harmonic-oscillator.py`,
   in chapter markdown only; the runnable file in
-  `python_codes/chapter_01/` is forthcoming from `agent:code-runner`).
+  `python_codes/chapter_01/' is forthcoming from `agent:code-runner`).
 - **Plot** — referenced in
   [§1.14.2 of chapter 01]({{ site.baseurl }}/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences)
   as `plots/02-harmonic-oscillator.png`.
@@ -166,7 +166,7 @@ linear $r$ grid from $0.05$ to $30\,a_0$.
   [Chapter 01, §1.14.3]({{ site.baseurl }}/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences)
   (referenced path:
   `dft_notes/python_codes/chapter_01/03-hydrogen-radial.py`;
-  runnable file in `python_codes/chapter_01/` is forthcoming).
+  runnable file in `python_codes/chapter_01/' is forthcoming).
 - **Plot** — referenced in
   [§1.14.3 of chapter 01]({{ site.baseurl }}/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences)
   as `plots/03-hydrogen-radial.png`.
@@ -257,12 +257,12 @@ extrapolated error.
   [Chapter 03, §3.8.5]({{ site.baseurl }}/dft-notes/chapter-03/#38-direct-scf-conventional-scf-and-diis)
   (referenced path:
   `dft_notes/python_codes/chapter_03/01-direct-scf-h2-sto3g-diis.py`;
-  runnable file in `python_codes/chapter_03/` is forthcoming).
+  runnable file in `python_codes/chapter_03/' is forthcoming).
 - **Plot** — this example has no plot; it is a pure number
   (the SCF convergence trace is printed to stdout).
 - **Chapter section** — [Chapter 03, §3.8 (Direct SCF, conventional SCF, and DIIS)]({{ site.baseurl }}/dft-notes/chapter-03/#38-direct-scf-conventional-scf-and-diis); §3.8.5 has the full source.
 - **Expected output.** From the chapter's reference run:
-  - `Converged in 11 iterations, dP = 9.7e-11`
+  - `Converged in 11 iterations, dP = 9.7e-11'
   - MO energies: $\varepsilon_1 = -0.5782$, $\varepsilon_2 = +0.6703\,E_h$
   - $E_\text{HF} = -1.116714\,E_h$ (matches Szabo & Ostlund to all six digits).
   - With DIIS replaced by simple density mixing ($\alpha = 0.3$), the same calculation needs ~30 iterations and shows visible oscillations; DIIS converges monotonically and drops the error norm by ~3 decades per iteration once the DIIS regime is entered.
@@ -284,11 +284,11 @@ the simplest possible version, as a constant times $S_{\mu\nu}$).
 The SCF loop is otherwise identical in shape to HF.
 
 - **Script** — the canonical "shape of the loop" is given
-  as the inlined `ks_scf` function in
+  as the inlined `ks_scf' function in
   [Chapter 04, §4.4 (The KS self-consistent loop)]({{ site.baseurl }}/dft-notes/chapter-04/#44-the-ks-self-consistent-loop).
   (Referenced path:
   `dft_notes/python_codes/chapter_04/01-ks-scf.py`; the
-  runnable file in `python_codes/chapter_04/` is forthcoming
+  runnable file in `python_codes/chapter_04/' is forthcoming
   from `agent:code-runner`.)
 - **Plot** — none (the canonical example prints the
   converged KS energy, MO energies, and total energy).
@@ -595,7 +595,7 @@ $$
 inside $r_c$. Enforce (1) value, (2) first derivative, (3)
 second derivative, and (4) integrated norm at $r_c$. (1)
 fixes $c_0$; (2)–(4) form a 3×3 nonlinear system in
-$(c_1, c_2, c_3)$, solved with `scipy.optimize.fsolve` from
+$(c_1, c_2, c_3)$, solved with `scipy.optimize.fsolve' from
 an initial guess derived from the linear ansatz. The
 pseudo-potential inside $r_c$ is then obtained by inversion
 of the radial equation; outside $r_c$ it equals the
@@ -690,7 +690,7 @@ Conditions (1)–(3) reduce the system to a **3 × 3
 nonlinear problem** in $(c_1, c_2, c_3)$ (condition
 (1) fixes $c_0 = \ln u(r_c) - c_1 r_c^2 - c_2 r_c^4 -
 c_3 r_c^6$). The system is solved with
-`scipy.optimize.fsolve` from the linear-ansatz
+`scipy.optimize.fsolve' from the linear-ansatz
 initial guess $c_1^\text{init} = \ln(u'(r_c) / (2 r_c
 u(r_c)))$.
 
@@ -791,7 +791,7 @@ the error growing linearly in $\lvert E - E_2 \rvert$
 > all-electron atom, and the careful
 > scalar-relativistic correction that the
 > 1-D model omits. The same code structure
-> generalises with `r → r` and the addition of
+> generalises with `r → r' and the addition of
 > the $\ell(\ell+1)/(2r^2)$ centrifugal term.
 
 ---
@@ -825,7 +825,7 @@ $$
 with $V_\text{per}$ nonzero only for
 $\lvert m' - m\rvert = 1$, where it equals
 $V_0/2 = -1/4$ Hartree. Diagonalise at each of the 100
-$k$-points with `numpy.linalg.eigvalsh` and plot the lowest
+$k$-points with `numpy.linalg.eigvalsh' and plot the lowest
 four eigenvalues as a function of $k$.
 
 - **Script** — [chapter_07/01-free-electron-bands.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_07/01-free-electron-bands.py)
@@ -835,7 +835,7 @@ four eigenvalues as a function of $k$.
   bands are split by the matrix element
   $2 |V(2\pi/a)| = 0.5\,E_h$. The script prints a sanity
   check: `eps_1 = +0.08xxx E_h`, `eps_2 = +0.58xxx E_h`,
-  `gap ≈ +0.50 E_h` (the predicted $0.5\,E_h$ is recovered
+  `gap ≈ +0.50 E_h' (the predicted $0.5\,E_h$ is recovered
   to better than $10^{-4}$). The first band is well
   described by the free-electron parabola
   $\tfrac{1}{2}(k - 2\pi/a)^2$ (band-folded into the first
@@ -933,7 +933,7 @@ graph LR
     style H3 fill:#ccf
     style H4 fill:#fcf
     style H5 fill:#ffc
-```
+``'
 
 - **Script** — [chapter_07/02-h-chain-tight-binding.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_07/02-h-chain-tight-binding.py)
 - **Plot** — [chapter_07/plots/02-h-chain-tight-binding.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_07/plots/02-h-chain-tight-binding.png)
@@ -1075,7 +1075,7 @@ graph TD
     G --> H[Step: R_{k+1} = R_k - H_k g_k]
     H --> B
     F -- Yes --> I[Report R_eq, E_eq, F_final]
- ```
+ ``'
 
 - **Script** — [chapter_09/01-h2-bond-relaxation.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py)
 - **Plot** — [chapter_09/plots/01-h2-bond-relaxation.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_09/plots/01-h2-bond-relaxation.png)
@@ -1207,7 +1207,7 @@ graph LR
     style B fill:#9ff
     style C fill:#f9f
     style D fill:#9ff
-```
+``'
 
 - **Script** — [chapter_10/01-diatomic-chain.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/01-diatomic-chain.py)
 - **Plot** — [chapter_10/plots/01-diatomic-chain.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/plots/01-diatomic-chain.png)
@@ -1358,7 +1358,7 @@ graph TD
     E --> F[Eigenvalues: +/- |t| |f|]
     F --> G[Plot pi and pi* bands]
     G --> H[Verify Dirac crossing at K: |f(K)| = 0]
-```
+``'
 
 - **Script** — [chapter_11/01-graphene-bands.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/01-graphene-bands.py)
 - **Plot** — [chapter_11/plots/01-graphene-bands.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/plots/01-graphene-bands.png)
@@ -1545,7 +1545,7 @@ graph TD
     G --> H{They agree?}
     H -- Yes --> I[Report FWHM = gamma, Kramers-Kronig consistency]
     H -- No --> J[Debug: damping, time step, FFT window]
-```
+``'
 
 - **Script** — [chapter_12/01-two-level-absorption.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_12/01-two-level-absorption.py)
 - **Plot** — [chapter_12/plots/01-two-level-absorption.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_12/plots/01-two-level-absorption.png)
@@ -1685,8 +1685,8 @@ algorithm:
    term is *diagonal*. The matrix is real, symmetric,
    sparse, with dimensions ranging from 1 (for
    $k = 0, S = 2$) to 12 (for the largest sector).
-4. **Diagonalise.** Use `scipy.linalg.eigh` (dense)
-   or `scipy.sparse.linalg.eigsh` (sparse) to obtain
+4. **Diagonalise.** Use `scipy.linalg.eigh' (dense)
+   or `scipy.sparse.linalg.eigsh' (sparse) to obtain
    the lowest few eigenvalues of each $(k, S)$ sector
    and identify the absolute ground state.
 
@@ -1701,7 +1701,7 @@ graph TD
     F --> G[Identify ground state: k=0, S=0]
     G --> H[Compute gap: E_gs N+2 + E_gs N-2 - 2 E_gs N]
     H --> I[Plot gap vs U: Mott transition visible]
-```
+``'
 
 **Step-by-step at $U = 0$.** At $U = 0$ the Hubbard
 Hamiltonian reduces to a free tight-binding model

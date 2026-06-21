@@ -861,7 +861,7 @@ The two degenerate levels at the BZ boundary split into
 
 with a gap of $0.5000$ Hartree between them. These numbers are
 checked numerically by the script (see the output of the script's
-`if __name__ == "__main__":` block).
+`if __name__ == "__main__":' block).
 
 > **Tip.** Compare the gap $E_\text{gap} = 0.5$ Hartree to the
 > free-electron kinetic energy at the boundary, $\tfrac{1}{2}(\pi/a)^2
@@ -965,7 +965,7 @@ os.makedirs(plots_dir, exist_ok=True)
 out = os.path.join(plots_dir, "01-free-electron-bands.png")
 fig.savefig(out, dpi=150, bbox_inches="tight")
 print(f"Wrote {out}")
-```
+``'
 
 > **Note.** The matrix is built and diagonalised in a single
 > Python loop over the 100 k-points. The wall-clock time is well
@@ -1008,9 +1008,9 @@ graph TD
   K -- No --> G
   K -- Yes --> L
   L --> M
-```
+``'
 
-The decision node `K{SCF converged?}` is the inner loop of every
+The decision node `K{SCF converged?}' is the inner loop of every
 DFT calculation; the surrounding boxes are the *solid-state-specifi`c*'
 machinery (BvK supercell, k-point mesh, plane-wave basis, band
 plotting) that the present chapter introduces.
@@ -2359,7 +2359,7 @@ graph LR
   Lambda -.compat.-> L
   Sigma -.compat.-> K
 
-```
+``'
 
 The boxes are the high-symmetry points; the solid arrows are the
 high-symmetry lines (each labelled by its name: $\Delta$, $\Lambda$,

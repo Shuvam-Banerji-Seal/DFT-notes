@@ -904,7 +904,7 @@ than a single hybrid.
 
 **DSD-PBEP86.** The **Doubles-Semicanonical** DSD-PBEP86
 double hybrid (Martin and co-workers 2014) is a *spin-component-
-scale`d*` (SCS) variant. The MP2-like correlation is split into
+scale`d*' (SCS) variant. The MP2-like correlation is split into
 *same-spin* and opposite-spin contributions, and the two
 contributions are scaled *separately*. The form is
 
@@ -1160,7 +1160,7 @@ def main() -> None:
     print(f"    eps_x         = {dirac_exchange(np.array([2.0]))[0]:+.6f} E_h")
     print(f"    eps_c (PZ81)  = {pz81_correlation_unpolarized(np.array([2.0]))[0]:+.6f} E_h")
     print(f"    eps_xc        = {(dirac_exchange(np.array([2.0])) + pz81_correlation_unpolarized(np.array([2.0])))[0]:+.6f} E_h")
-```
+``'
 
 The script also computes the XC energy of the UEG for a few
 model densities: at $r_s = 2$ (close to the electron density of
@@ -1184,16 +1184,16 @@ is in
 `dft_notes/python_codes/chapter_05/plots/01-ueg-xc-vs-rs.png`.
 
 > **Tip.**  The script is *self-containe`d*`: it depends only on
-> `numpy` and `matplotlib` (with `matplotlib.use("Agg")` for
+> `numpy' and `matplotlib' (with `matplotlib.use("Agg")' for
 > headless runs), and it does not call `os.chdir`. Run it from
 > the repo root with
-> `python dft_notes/python_codes/chapter_05/01-ueg-xc-vs-rs.py`
-> and the plot will appear in the `plots/` subfolder. The
+> `python dft_notes/python_codes/chapter_05/01-ueg-xc-vs-rs.py'
+> and the plot will appear in the `plots/' subfolder. The
 > companion script
-> `02-pbe-vs-lda-atoms.py` computes the LDA and PBE
+> `02-pbe-vs-lda-atoms.py' computes the LDA and PBE
 > exchange–correlation energies of helium and beryllium and
 > produces a comparison bar chart; the companion script
-> `03-jacobs-ladder-cost-accuracy.py` produces the
+> `03-jacobs-ladder-cost-accuracy.py' produces the
 > "Jacob's ladder cost vs accuracy" scatter plot referenced in
 > section 5.2.10. All three scripts share the convention of
 > "no os.chdir, only numpy / matplotlib".
@@ -1204,8 +1204,8 @@ The Mermaid diagram below summarises Jacob's ladder as a
 vertical stack of rungs, with the new ingredient added at each
 rung shown on the right. The diagram uses **no class
 directives** — the Mermaid 10 parser concatenates the
-`class X,Y,Z cls` directive with the preceding line, which
-breaks rendering. Inline `:::classname` on individual nodes is
+`class X,Y,Z cls' directive with the preceding line, which
+breaks rendering. Inline `:::classname' on individual nodes is
 also avoided for the same reason.
 
 ```mermaid
@@ -1228,7 +1228,7 @@ graph TD
   R4 -->|"+ range-separation"| R5
   R5 -->|"+ MP2-like correlation"| R6
   R6 -->|"+ ring diagrams (RPA)"| R7
-```
+``'
 
 The diagram also serves as a *roadma`p*' for the rest of the
 chapter: section 5.2.1–5.2.2 covers Rung 1 (LDA), section
@@ -1238,7 +1238,7 @@ chapter: section 5.2.1–5.2.2 covers Rung 1 (LDA), section
 Rung 6 (double hybrid), and section 5.2.9 covers the
 dispersion "patch" that is glued onto rungs 4–7. > **Note.**  A second, complementary Mermaid diagram showing
 > the **cost vs accuracy** trade-off across the rungs is in
-> `dft_notes/python_codes/chapter_05/03-jacobs-ladder-cost-accuracy.py`
+> `dft_notes/python_codes/chapter_05/03-jacobs-ladder-cost-accuracy.py'
 > (the plot is a Python scatter, not a Mermaid graph, but the
 > *ide`a*' — climbing the ladder trades cost for accuracy — is
 > the same). The data points are eyeball-estimates of the
@@ -2340,7 +2340,7 @@ the simplified form in the 1980 paper itself (without the
 $\alpha_1 x^2$ correction term in
 \eqref{eq:ch-05-lit-vwn-pade}). Most codes default to
 "VWN3" (= "VWN"), which is what the user requests with
-the keyword `VWN` in Gaussian, ORCA, Psi4, etc. The
+the keyword `VWN' in Gaussian, ORCA, Psi4, etc. The
 "VWN5" variant is what one finds in the original Vosko–Wilk–
 Nusair (1980) paper's erratum and is used in some plane-wave
 codes for reasons of historical continuity.

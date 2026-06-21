@@ -802,7 +802,7 @@ The all-electron value is $V_{ae}(r_c) = -1/r_c = -2.0$,
 so the pseudo-potential is *exactly* continuous at $r_c$
 for the 3-parameter form. The 4-parameter TM form has
 $V_{ps,0}(r_c^-) \approx -1.93\,E_h$ (to within the
-`fsolve` solver's numerical tolerance), differing from
+`fsolve' solver's numerical tolerance), differing from
 $-2.0$ by $\sim 0.07\,E_h$ because condition (3) is now
 satisfied *jointly* with the norm condition rather than
 exactly.
@@ -895,7 +895,7 @@ graph TD
   class K output
   class M output
   class N output
-```
+``'
 
 The four right-most nodes (in coral) are the deliverables of the
 construction; everything upstream is the same recipe as in
@@ -1019,7 +1019,7 @@ This is computed by quadrature in the script. The TM
 4-parameter form was constructed with the norm
 conservation as an explicit constraint, so the result is
 $Q_0^{ps} \approx 0.0803$ to machine precision. (The
-`fsolve` solver iterates until the residual
+`fsolve' solver iterates until the residual
 $|Q_0^{ps} - Q_0^{ae}|$ is below $10^{-12}$.)
 
 **3-parameter form.** With $c_3 = 0$, the linear
@@ -2610,7 +2610,7 @@ linearisation [Kresse and Joubert, 1999, eqs. (4)–(5),
 p. 1761]. The result is that *the total energy
 functional of Vanderbilt's ultrasoft construction is
 a special case of the PAW energy functional with the
-non-linear terms droppe`d*`
+non-linear terms droppe`d*'
 [Kresse and Joubert, 1999, p. 1761]. The
 linearisation is exact in the limit of small
 augmentation charge (small $\Delta Q_l$), and
@@ -2827,13 +2827,13 @@ graph TD
   style X1 fill:#cc785c,stroke:#1c1f17,color:#ffffff
   style X2 fill:#d6dcc8,stroke:#3a4031,color:#1c1f17
   style X3 fill:#eef0e6,stroke:#3a4031,color:#1c1f17
-```
+``'
 
 The diagram encodes the central message of the
 1999 Kresse–Joubert paper: the three methods are
 *limits of a single formalism*, and the choice
 between them is a choice about *which terms in the
-energy expression to kee`p*` [Kresse and Joubert,
+energy expression to kee`p*' [Kresse and Joubert,
 1999, p. 1761]. The "expensive" path through full
 PAW gives the best accuracy; the "cheap" path
 through NC-PP gives the lowest cost; the

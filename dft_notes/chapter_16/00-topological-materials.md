@@ -153,7 +153,7 @@ graph TD
   C167 --> C169
   C167 --> C1610
   C162 --> C1611
-```
+``'
 
 The two columns on the right are the "through-line" of the
 chapter: the *bul`k*' topological invariant (Chern number or
@@ -888,8 +888,8 @@ at high-symmetry points.
 > structures consistent with a given space-group symmetry,
 > including TCIs, Dirac, Weyl, nodal-line, and multi-fold
 > semimetals. Tools: the Bilbao Crystallographic Server's
-> `TOPOLOGICAL QUANTUM CHEMISTRY` and the
-> `CheckTopologicalMat` Python package.
+> `TOPOLOGICAL QUANTUM CHEMISTRY' and the
+> `CheckTopologicalMat' Python package.
 
 ## 16.6 Topological semimetals
 
@@ -1077,7 +1077,7 @@ graph TD
   HOTI --> HOTI2
   HOTI --> HOTI3
   QSH --> STRONG
-```
+``'
 
 The diagram makes the relationship explicit: the
 *Chern* and QSH families are the 2D parents of the 3D
@@ -1264,7 +1264,7 @@ al.*, *Comput. Phys. Commun. **224**, 405 (2018)), which
 takes the Wannier90 output and computes the Wilson loop,
 the WCC, and (for a 3D insulator) the surface state
 spectrum in a slab geometry. The standard input is a
-`wt.in` file specifying the Wannier90 data, the
+`wt.in' file specifying the Wannier90 data, the
 $\mathbf k$-path for the Wilson loop, and the slab geometry
 for the surface states.
 
@@ -1440,11 +1440,11 @@ graph TD
   E --> M
   M --> K
   I --> N
-```
+``'
 
 The two *branches* of the diagram are the bulk-only route
 (`A → B → C → D → E → J`) and the *surface* route
-(`G → N` or `H → I → N`). The first gives the *topological
+(`G → N' or `H → I → N`). The first gives the *topological
 invariant* of the bulk (Chern number or $\mathbb Z_2$ index)
 without ever computing a surface; the second gives the
 *direct visualisation* of the protected boundary state.
@@ -2184,7 +2184,7 @@ The five papers are arranged in roughly historical order
 (1929, 2005, 2006, 2006, 2006, 2010). The section is
 *page-cite`d*' throughout: every claim, equation, or numerical
 estimate is followed by `[Author, Year, eq. (X), p. YYYY-Z]`,
-where `YYYY` is the journal page number and `Z` is the
+where `YYYY' is the journal page number and `Z' is the
 printed page within the article (PRL and PRB use a single
 page number; Science uses the start page). The reader is
 encouraged to *open the original* and verify.
@@ -2368,8 +2368,8 @@ $\pm 1$, and the sign is $(-1)^\nu$. This is the
 fastest $\mathbb Z_2$ calculation in practice: just
 read off the parities at the four TRIM from a
 parity-eigenvalue calculation. It is the working
-formula of the VASP `Z2PACK` interface and of the
-`vasp2trace` tool of the VASP group.
+formula of the VASP `Z2PACK' interface and of the
+`vasp2trace' tool of the VASP group.
 
 **The 3D extension to strong and weak TIs.** Section IV
 of the Fu–Kane paper extends the formula to 3D
@@ -2768,7 +2768,7 @@ graph TD
   STRONG --> TSC
   HK2010 --> MOD
   WSM --> MOD
-```
+``'
 
 The mermaid diagram is the *genealogy* of the
 topological-insulator field. The founding papers (Weyl

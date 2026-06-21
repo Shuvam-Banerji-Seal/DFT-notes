@@ -24,7 +24,7 @@ keywords: "math cheatsheet, identities, Dirac notation, commutator, BCH,
 > A single-page reference for the math that recurs across the DFT
 > Notes. Every identity is stated in the **conventions used in the
 > chapters** (atomic units, Dirac bra-ket, real spherical harmonics,
-> the Pople `N-M₁M₂G` basis-set notation, etc.). Each entry is
+> the Pople `N-M₁M₂G' basis-set notation, etc.). Each entry is
 > cross-referenced to the chapter that uses it, so the reader can
 > jump straight to the worked derivation.
 
@@ -817,7 +817,7 @@ Examples used in the chapters:
 E_\text{el} \;=\; \frac{1}{2} \sum_{\mu\nu} P_{\nu\mu}\, (h_{\mu\nu} + F_{\mu\nu}) \quad \text{(half-trace)} . \label{eq:ch-extra-eins-half}
 \end{equation}
 
-The `numpy.einsum` call in chapter 03 (§3.3) implements these
+The `numpy.einsum' call in chapter 03 (§3.3) implements these
 contractions verbatim. Cross-reference: chapters 03, 04, 06. ### 8.4 Rotation of tensors
 
 Under an orthogonal transformation $R$ with $R^T R = \mathbf 1$
@@ -856,7 +856,7 @@ eigenvectors. In matrix form,
 
 with $\mathbf U$ unitary and $\boldsymbol\Lambda$ real
 diagonal. This is the **diagonalisation** that
-`numpy.linalg.eigh` performs. The Hermitian eigenvalue problem
+`numpy.linalg.eigh' performs. The Hermitian eigenvalue problem
 is the workhorse of DFT — every Fock-matrix diagonalisation
 (HF, KS) is a Hermitian eigenproblem. Cross-reference:
 chapters 03 (§3.6.2), 04, 06 (§6.1).

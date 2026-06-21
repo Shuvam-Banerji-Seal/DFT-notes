@@ -1092,7 +1092,7 @@ the method of choice in the ADF code.
 The X2C method [Heully, Lindroth, Lindgren, Lundin,
 Mårtensson-Pendrill, Salomonson, Ynnerman 2003; Jensen
 2005; Ilias, Saue 2007; Liu, Peng 2009] is the *modern
-standar`d*` for relativistic calculations and the default
+standar`d*' for relativistic calculations and the default
 in ORCA, NWChem, ReSpect, DIRAC, and most other
 production codes. The strategy is to *solve* the
 decoupling problem \eqref{eq:ch-15-fw-x} for $\hat R$
@@ -1746,12 +1746,12 @@ The modern production approach in plane-wave DFT is
 
 The fully-relativistic PAW pseudopotential is the
 *default* in VASP, Quantum ESPRESSO (with the
-`upf` format), and ABINIT for the 5*d*' and 6p*
+`upf' format), and ABINIT for the 5*d*' and 6p*
 elements. The standard PBE pseudopotentials in these
 libraries include SOC for the 4*`d*' row and beyond, and
 the SOC can be turned on or off by a single keyword
-(`LNONCOLLINEAR = .TRUE.` in VASP,
-`noncolin = .TRUE.` in Quantum ESPRESSO).
+(`LNONCOLLINEAR = .TRUE.' in VASP,
+`noncolin = .TRUE.' in Quantum ESPRESSO).
 
 The errors of the fully-relativistic PAW
 pseudopotential are:
@@ -2129,7 +2129,7 @@ graph LR
   ZORA -->|basis-set truncation| SR
   X2C -->|PP approximation| FR
   DKS -->|current-dependent XC| SCDFT
-```
+``'
 
 > **Reading the diagram.** The *columns* (left to
 > right) are the increasing levels of relativistic
@@ -2150,7 +2150,7 @@ stateDiagram-v2
   K2 --> K2: magnetic field<br/>Zeeman splitting
   K1 --> [*]: ionisation /<br/>quasiparticle decay
   K2 --> [*]: ionisation /<br/>quasiparticle decay
-```
+``'
 
 > **Reading the diagram.** The two Kramers states
 > $|\Psi_1\rangle$ and $|\Psi_2\rangle$ are related
@@ -2264,9 +2264,9 @@ self-consistent-field calculation of Pitzer (1975).
 > 3. Sample the BZ at the $\Gamma$ point only.
 > 4. Set the XC functional to PBE
 >    ([chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.2).
-> 5. Set `LNONCOLLINEAR = .TRUE.` and
->    `LSORBIT = .TRUE.` for the SOC calculation; leave
->    `LSORBIT = .FALSE.` for the SR calculation.
+> 5. Set `LNONCOLLINEAR = .TRUE.' and
+>    `LSORBIT = .TRUE.' for the SOC calculation; leave
+>    `LSORBIT = .FALSE.' for the SR calculation.
 > 6. Set the plane-wave cutoff to $500$ eV (the
 >    $5p$ semicore states require a higher cutoff).
 > 7. Scan the Au–Au distance from $2.0$ Å to

@@ -39,14 +39,14 @@ python dft_notes/python_codes/chapter_02/03-h2-full-ci-toy.py
 for f in dft_notes/python_codes/chapter_02/0?-*.py; do
     python "$f"
 done
-```
+``'
 
-Each script writes its PNG to `dft_notes/python_codes/chapter_02/plots/`
+Each script writes its PNG to `dft_notes/python_codes/chapter_02/plots/'
 and prints the key numerical results (energies, coefficients, MO
 integrals) to stdout.
 
 ## Dependencies
 
-`numpy`, `scipy` (eigh, erf), `matplotlib` with the headless
-`Agg` backend.  Same pinned versions as the rest of the
-`python_codes/` tree (see [python_codes/]({{ site.baseurl }}/dft-notes/python_codes/)).
+`numpy`, `scipy' (eigh, erf), `matplotlib' with the headless
+`Agg' backend.  Same pinned versions as the rest of the
+`python_codes/' tree (see [python_codes/]({{ site.baseurl }}/dft-notes/python_codes/)).

@@ -342,7 +342,7 @@ This is what every quantum-chemistry code means when it talks about
 **Postulate [P6]({{ site.baseurl }}/dft-notes/chapter-01/), in
 mathematics.**  The $N$-electron wavefunction
 $\Psi(\mathbf x_1, \dots, \mathbf x_N)$ must be *totally
-antisymmetri`c*` under the exchange of any two combined coordinates
+antisymmetri`c*' under the exchange of any two combined coordinates
 $\mathbf x_i \leftrightarrow \mathbf x_j$:
 
 \begin{equation}
@@ -1043,7 +1043,7 @@ def two_electron_integrals(K, L, x, dx, lam, sig):
     chiV = chi @ V                       # (K, N_GRID, N_GRID) -> einsum
     return np.einsum("px,qx,rx,sx,pqrs->pqrs", chi, chi, chi, chi, V)
     # actually do it step by step to keep the storage small
-```
+``'
 
 The complete script (with the Slater–Condon rules, the
 diagonalisation, and the convergence plot) is in
@@ -1102,7 +1102,7 @@ graph TD
   class C0 output
   class RHO output
   class NEXT next
-```
+``'
 
 The "**explosion**" node (coloured coral, in the centre of the
 diagram) is the *only* place where the method becomes intractable:
@@ -1467,7 +1467,7 @@ calculation is the *size* of the basis and the number of
 electrons.
 
 The size is what gets us into trouble.  A minimal-basis full CI on
-benzene in a `6-31G*` basis has $K = 36$ spatial orbitals and $N =
+benzene in a `6-31G*' basis has $K = 36$ spatial orbitals and $N =
 30$ electrons, so
 $N_{\text{det}} = \binom{36}{15}^2 \approx 1.6 \times 10^{16}$.
 A full CI on water in cc-pVTZ has $K = 58$ spatial orbitals and
@@ -1719,7 +1719,7 @@ The restricted Hartree–Fock ground-state energy in the same basis
 is $E_{\text{HF}} = -1.1167\,E_h$
 ([chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/),
 §6.9).  Carry out the following calculation, step by step, *by
-han`d*` (with a calculator — no computer):
+han`d*' (with a calculator — no computer):
 
 1. Compute the correlation energy
    $E_{\text{corr}} = E_0 - E_{\text{HF}}$.
