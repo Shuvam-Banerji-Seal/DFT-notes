@@ -40,7 +40,7 @@ done
 python dft_notes/python_codes/chapter_03/01-h2-sto3g-scf.py
 python dft_notes/python_codes/chapter_03/02-h2-dissociation.py
 python dft_notes/python_codes/chapter_03/03-scf-mixing-demo.py
-``'
+```
 
 Each script writes its PNG to `dft_notes/python_codes/chapter_03/plots/`.
 

@@ -17,6 +17,6 @@ Run from the repo root:
 
 ```bash
 python dft_notes/python_codes/chapter_07/01-free-electron-bands.py
-``'
+```
 
 See [python_codes/]({{ site.baseurl }}/dft-notes/python_codes/) for the conventions and dependencies.

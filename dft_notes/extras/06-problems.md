@@ -81,7 +81,7 @@ graph LR
     C --> A["Answer<br/>(final result only)"]
     A --> R["Re-derive<br/>in the chapter"]
   end
-``'
+```
 
 ---
 
@@ -1337,7 +1337,7 @@ graph LR
 > **(c)** in CIS (TDA) the triplet–singlet splitting
 > comes only from the *exchange* integrals, not from
 > the xc kernel, so the singlet–triplet gap is
-> *underestimated*`; full TD-DFT captures the dynamical
+> *underestimated*'; full TD-DFT captures the dynamical
 > correlation via the xc kernel, which lowers the
 > singlet more than the triplet.
 

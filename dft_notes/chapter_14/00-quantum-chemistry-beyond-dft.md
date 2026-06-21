@@ -1049,7 +1049,7 @@ electron count (the $K^7$ comes from a $K^5$ integral
 transformation times a $K^2$ outer loop over the
 triples).  For a system of $\sim 20$ atoms and a
 *triple-zet`a*' basis ($K \sim 500$), the (T)
-correction is the *bottleneck*`, and the parallel
+correction is the *bottleneck*', and the parallel
 implementation (over the $i, j, k$ occupied triples)
 is what makes the calculation feasible.
 
@@ -1931,7 +1931,7 @@ graph LR
   CCSDT -->|"+ perturbative Q"| CCSDTQ
   CCSDTQ -->|"all excitations"| FCI
   MP2 -.->|"used in G1/G2/G3"| CCSDFULL
-``'
+```
 
 The Mermaid diagram shows the *post-HF ladder*.  The
 *vertical* axis is cost, the *horizontal axis is
@@ -2493,7 +2493,7 @@ The five omissions below are the most important for a
 - **Equation-of-motion CC (EOM-CC) and multireference
   CC (MRCC).**  The **EOM-CCSD** method (Stanton &
   Bartlett, *J. Chem. Phys.* **98**, 7029 (1993))
-  extends CCSD to *excited*`, ionised, and *electron-
+  extends CCSD to *excited*', ionised, and *electron-
   attache`d*' states by acting on the CCSD wavefunction
   with a *linear* operator $\hat R$ and diagonalising
   the *similarity-transforme`d*' Hamiltonian

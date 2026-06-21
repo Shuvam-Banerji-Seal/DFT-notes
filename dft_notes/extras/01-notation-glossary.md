@@ -46,8 +46,8 @@ For each symbol we give:
 - the **first appearance** in the notes (chapter and section),
   so a reader can trace the symbol back to its definition.
 
-The chapters are numbered `00`–`13`.  Chapters `00`–`08' are
-shipped; chapters `09`–`13' are listed in
+The chapters are numbered `00`–`13`.  Chapters `00`–`08`' are
+shipped; chapters `09`–`13`' are listed in
 [chapters-map.md]({{ "/dft-notes/chapters-map/" | relative_url }})
 as planned.  Symbols that are introduced in a planned chapter
 are flagged *(planned: ch-NN)*.
@@ -63,24 +63,24 @@ throughout.
 | Symbol | LaTeX | Plain text | Description | First appearance |
 |:------|:------|:-----------|:------------|:-----------------|
 | $\hbar$ | `\hbar' | h-bar | Reduced Planck constant ($h / 2\pi$); set to 1 in atomic units | Ch 00 §"Notation"; Ch 01 §1.1 |
-| $m_e$ | `m_e' | m_e | Electron mass; set to 1 in atomic units | Ch 00 §"Notation" |
-| $e$ | `e' | e | Elementary charge (magnitude); set to 1 in atomic units | Ch 00 §"Notation" |
+| $m_e$ | `m_e`' | m_e | Electron mass; set to 1 in atomic units | Ch 00 §"Notation" |
+| $e$ | `e`' | e | Elementary charge (magnitude); set to 1 in atomic units | Ch 00 §"Notation" |
 | $4\pi\varepsilon_0$ | `4\pi\varepsilon_0' | 4 pi epsilon_0 | Vacuum permittivity; set to 1 in atomic units | Ch 01 §1.1 (implicit) |
-| $c$ | `c' | c | Speed of light in vacuum; ≈ 137.036 a.u. | Ch 01 §1.10.7 |
-| $a_0$ | `a_0' | a_0 | Bohr radius (≈ 0.529177 Å); unit of length in atomic units | Ch 00 §"Notation" |
-| $E_h$ | `E_h' | E_h | Hartree energy (≈ 27.2114 eV); unit of energy in atomic units | Ch 00 §"Notation" |
-| $k_B$ | `k_B' | k_B | Boltzmann constant; set to 1 in atomic units | Ch 07 §7.6.3 (smearing) |
+| $c$ | `c`' | c | Speed of light in vacuum; ≈ 137.036 a.u. | Ch 01 §1.10.7 |
+| $a_0$ | `a_0`' | a_0 | Bohr radius (≈ 0.529177 Å); unit of length in atomic units | Ch 00 §"Notation" |
+| $E_h$ | `E_h`' | E_h | Hartree energy (≈ 27.2114 eV); unit of energy in atomic units | Ch 00 §"Notation" |
+| $k_B$ | `k_B`' | k_B | Boltzmann constant; set to 1 in atomic units | Ch 07 §7.6.3 (smearing) |
 | $\alpha$ | `\alpha' | alpha | Fine-structure constant $e^2/(\hbar c) \approx 1/137$ | Ch 01 §1.10.7 |
-| $Z$ | `Z' | Z | Generic nuclear charge; $Z_I$ is the charge of nucleus $I$ | Ch 01 §1.1 |
-| $Z_A$, $Z_I$ | `Z_A`, `Z_I' | Z_A, Z_I | Nuclear charge of atom/nucleus $A$ or $I$ | Ch 00 §"Notation"; Ch 01 §1.1 |
-| $N$ | `N' | N | Number of electrons (always positive) | Ch 00 §"Notation"; Ch 01 §1.1 |
-| $M$ | `M' | M | Number of nuclei (in a molecule) | Ch 01 §1.1 |
-| $n$ | `n' | n | Principal quantum number (hydrogen, §1.10), or a generic band/state index (solids, ch 07) | Ch 01 §1.10 |
+| $Z$ | `Z`' | Z | Generic nuclear charge; $Z_I$ is the charge of nucleus $I$ | Ch 01 §1.1 |
+| $Z_A$, $Z_I$ | `Z_A`, `Z_I`' | Z_A, Z_I | Nuclear charge of atom/nucleus $A$ or $I$ | Ch 00 §"Notation"; Ch 01 §1.1 |
+| $N$ | `N`' | N | Number of electrons (always positive) | Ch 00 §"Notation"; Ch 01 §1.1 |
+| $M$ | `M`' | M | Number of nuclei (in a molecule) | Ch 01 §1.1 |
+| $n$ | `n`' | n | Principal quantum number (hydrogen, §1.10), or a generic band/state index (solids, ch 07) | Ch 01 §1.10 |
 | $\ell$ | `\ell' | ell | Azimuthal (orbital angular momentum) quantum number; $\ell \ge 0$ | Ch 01 §1.10.2 |
-| $m$ | `m' | m | Magnetic quantum number; $-\ell \le m \le \ell$ | Ch 01 §1.10.2 |
+| $m$ | `m`' | m | Magnetic quantum number; $-\ell \le m \le \ell$ | Ch 01 §1.10.2 |
 | $\omega$ | `\omega' | omega | Angular frequency (QHO, phonons, time-dependent perturbation) | Ch 01 §1.9; Ch 01 §1.8 |
-| $T$ | `T' | T | Absolute temperature (smearing) or kinetic energy | Ch 07 §7.6.3 |
-| $g_n$ | `g_n' | g_n | Degeneracy of the hydrogen shell $n$ ($= n^2$ in the non-relativistic case) | Ch 01 §1.10.5 |
+| $T$ | `T`' | T | Absolute temperature (smearing) or kinetic energy | Ch 07 §7.6.3 |
+| $g_n$ | `g_n`' | g_n | Degeneracy of the hydrogen shell $n$ ($= n^2$ in the non-relativistic case) | Ch 01 §1.10.5 |
 | $\delta_n$ | `\delta_n' | delta_n | Quantum defect (Dirac hydrogenic spectrum) | Ch 04 §4.9.1 |
 | $\eta$ | `\eta' | eta | Infinitesimal switching rate (adiabatic switching, $0^+$) | Ch 01 §1.8.1 |
 | $\mu$ | `\mu' | mu | Reduced mass; in atomic units the electron mass | Ch 01 §1.10.1 |
@@ -222,7 +222,7 @@ chapters 04 and 05 (and downstream).
 |:------|:------|:-----------|:------------|:-----------------|
 | $\varepsilon_\text{xc}(\rho)$ | `\varepsilon_\text{xc}(\rho)' | ε_xc(ρ) | XC energy per particle of the uniform electron gas at density $\rho$ | Ch 05 §5.1 |
 | $\varepsilon_\text{xc}(r_s)$ | `\varepsilon_\text{xc}(r_s)' | ε_xc(r_s) | Same, expressed in terms of the Wigner–Seitz radius $r_s$ | Ch 05 §5.1 |
-| $r_s$ | `r_s' | r_s | Wigner–Seitz radius, $r_s = (3/4\pi n)^{1/3}$ | Ch 05 §5.1 |
+| $r_s$ | `r_s`' | r_s | Wigner–Seitz radius, $r_s = (3/4\pi n)^{1/3}$ | Ch 05 §5.1 |
 | $k_\text{TF}$ | `k_\text{TF}' | k_TF | Thomas–Fermi screening wavevector | Ch 04 §4.6.4 |
 | $\zeta(\mathbf r)$ | `\zeta(\mathbf r)' | ζ(**r**) | Relative spin polarisation, $(\rho_\uparrow - \rho_\downarrow)/\rho$ | Ch 04 §4.8.2 |
 
@@ -276,10 +276,10 @@ treatment is left to a future chapter on post-HF methods.
 | $\hat T_1$ | `\hat T_1' | T_1-hat | Singles excitation operator (cluster / CI) | (planned: post-HF) |
 | $\hat T_2$ | `\hat T_2' | T_2-hat | Doubles excitation operator | (planned: post-HF) |
 | $\hat T = \hat T_1 + \hat T_2 + \cdots$ | `\hat T' | T-hat | Cluster operator (CC); exponential Ansatz $\lvert \Psi \rangle = e^{\hat T} \lvert \Phi_0 \rangle$ | (planned: post-HF) |
-| $E_0$ | `E_0' | E_0 | Exact non-relativistic ground-state energy (in the given basis / Hamiltonian) | Ch 01 §1.1 |
+| $E_0$ | `E_0`' | E_0 | Exact non-relativistic ground-state energy (in the given basis / Hamiltonian) | Ch 01 §1.1 |
 | $E_\text{exact}$ | `E_\text{exact}' | E_exact | Same as $E_0$; used when emphasising the *exact* value | Ch 03 §3.5 |
 | $E_\text{CBS}$ | `E_\text{CBS}' | E_CBS | Complete-basis-set limit energy | Ch 06 §6.2 |
-| $E_n$ | `E_n' | E_n | Energy of the $n$-th stationary state; principal-quantum-number label in hydrogen | Ch 01 §1.1; Ch 01 §1.10 |
+| $E_n$ | `E_n`' | E_n | Energy of the $n$-th stationary state; principal-quantum-number label in hydrogen | Ch 01 §1.1; Ch 01 §1.10 |
 | $\varepsilon_i$ | `\varepsilon_i' | ε_i | Single-particle (orbital) energy; eigenvalue of $\hat F$ or $\hat H_\text{KS}$ | Ch 00 §"Notation"; Ch 03 §3.2 |
 | $\varepsilon_{n\mathbf k}$ | `\varepsilon_{n\mathbf k}' | ε_{n**k**} | Band energy: orbital energy indexed by band $n$ and wavevector $\mathbf k$ | Ch 07 §7.5.2 |
 | $\varepsilon_F$ | `\varepsilon_F' | ε_F | Fermi energy | Ch 07 §7.6.2 |
@@ -298,7 +298,7 @@ reciprocal space).
 | Symbol | LaTeX | Plain text | Description | First appearance |
 |:------|:------|:-----------|:------------|:-----------------|
 | $\chi_\mu(\mathbf r)$ | `\chi_\mu(\mathbf r)' | χ_μ(**r**) | The $\mu$-th AO basis function, $\mu = 1, \dots, K$ | Ch 00 §"Notation"; Ch 03 §3.6 |
-| $K$ | `K' | K | Number of contracted basis functions in the AO basis | Ch 03 §3.6 |
+| $K$ | `K`' | K | Number of contracted basis functions in the AO basis | Ch 03 §3.6 |
 | $n_\mu$ | `n_\mu' | n_μ | Number of primitive Gaussians in contraction $\mu$ | Ch 06 §6.3 |
 | $d_{\mu p}$ | `d_{\mu p}' | d_μp | Contraction coefficient; $p$ indexes the primitives within $\mu$ | Ch 06 §6.3 |
 | $g(\mathbf r; \alpha, \mathbf A, \boldsymbol\ell)$ | `g(\mathbf r; \alpha, \mathbf A, \boldsymbol\ell)' | g(**r**; α, **A**, ℓ) | Primitive Cartesian Gaussian with exponent $\alpha$, centre $\mathbf A$, angular index $\boldsymbol\ell$ | Ch 06 §6.3 |
@@ -319,9 +319,9 @@ reciprocal space).
 | $\alpha, \beta$ | `\alpha`, `\beta' | alpha, beta | Spin labels ($\alpha = \uparrow$, $\beta = \downarrow$); also used for Cartesian-Gaussian angular indices — context disambiguates | Ch 01 §1.2 (P6); Ch 02 §2.2; Ch 06 §6.3 |
 | $\sigma$ | `\sigma' | sigma | Spin label in collinear spin DFT; also index in $(\mu\nu \rvert \rho\sigma)$ | Ch 03 §3.4; Ch 04 §4.8 |
 | $\sigma$ (Pauli) | `\boldsymbol\sigma' | **sigma** | Vector of Pauli matrices; the bold distinguishes it from the spin label | Ch 04 §4.8.4 |
-| $n$ | `n' | n | Number of doubly-occupied spatial orbitals in a closed-shell calculation, $N/2$ | Ch 03 §3.3 |
+| $n$ | `n`' | n | Number of doubly-occupied spatial orbitals in a closed-shell calculation, $N/2$ | Ch 03 §3.3 |
 | $N_\alpha$, $N_\beta$ | `N_\alpha`, `N_\beta' | N_α, N_β | Number of $\alpha$-spin / $\beta$-spin electrons (UHF) | Ch 03 §3.7.1 |
-| $S_z$ | `S_z' | S_z | $z$-component of the total spin, $(N_\alpha - N_\beta)/2$ | Ch 03 §3.7.1 |
+| $S_z$ | `S_z`' | S_z | $z$-component of the total spin, $(N_\alpha - N_\beta)/2$ | Ch 03 §3.7.1 |
 | $\mathbf C$ | `\mathbf C' | **C** | Matrix of MO coefficients, $C_{\mu i}$ | Ch 00 §"Notation"; Ch 03 §3.6 |
 | $\boldsymbol\varepsilon$ | `\boldsymbol\varepsilon' | **ε** | Diagonal matrix of orbital energies | Ch 00 §"Notation"; Ch 03 §3.6 |
 | $\mathbf n$ | `\mathbf n' | **n** | Diagonal matrix of MO occupation numbers (general spin, fractional occupations) | Ch 03 §3.6 (problem 2) |
@@ -336,7 +336,7 @@ reciprocal space).
 | $N_\text{PW}$ | `N_\text{PW}' | N_PW | Number of plane waves retained | Ch 00 §"Notation"; Ch 06 §6.7 |
 | $c_{n\mathbf k}(\mathbf G)$ | `c_{n\mathbf k}(\mathbf G)' | c_{n**k**}(**G**) | Plane-wave coefficient of the Bloch orbital | Ch 06 §6.7 |
 | $E_\text{cut}^\text{grid}$ | `E_\text{cut}^\text{grid}' | E_cut^grid | Implicit kinetic cutoff of a real-space grid | Ch 06 §6.8 |
-| $h$ | `h' | h | Real-space grid spacing (or: Planck's constant, in non-atomic-unit contexts) | Ch 06 §6.8 |
+| $h$ | `h`' | h | Real-space grid spacing (or: Planck's constant, in non-atomic-unit contexts) | Ch 06 §6.8 |
 | $G_\text{Nyq}$ | `G_\text{Nyq}' | G_Nyq | Nyquist frequency of a real-space grid, $\pi/h$ | Ch 06 §6.8 |
 
 ### AO-basis matrices
@@ -432,7 +432,7 @@ the bra–ket, which uses upright letters in Dirac notation
 | $\mathbf A$, $\mathbf B$ | '\mathbf A', `\mathbf B' | **A**, **B** | Generic matrices | Ch 00 §"Notation" |
 | $\mathbf v$, $\mathbf w$ | '\mathbf v', `\mathbf w' | **v**, **w** | Generic column vectors | Ch 00 §"Notation" |
 | $A_{ij}$ | `A_{ij}' | A_ij | The $(i, j)$ matrix element | Ch 00 §"Notation" |
-| $v_i$ | `v_i' | v_i | The $i$-th component of $\mathbf v$ | Ch 00 §"Notation" |
+| $v_i$ | `v_i`' | v_i | The $i$-th component of $\mathbf v$ | Ch 00 §"Notation" |
 | $\mathbf A^T$ | `\mathbf A^T' | **A**^T | Transpose | Ch 00 §"Notation" |
 | $\mathbf A^\dagger$ | `\mathbf A^\dagger' | **A**† | Conjugate transpose (Hermitian adjoint) | Ch 00 §"Notation"; Ch 03 §3.6.6 |
 | $\mathbf A^*$ | `\mathbf A^*' | **A*** | Element-wise complex conjugate (rarely used alone) | Ch 03 (rare) |
@@ -474,17 +474,17 @@ and 11 (band structures).
 | $V_\text{cell}$ | `V_\text{cell}' | V_cell | Same as $\Omega$ (alternative notation) | Ch 07 §7.4.1 |
 | $V_\text{BZ}^*$ | V_\text{BZ}^*' | V_BZ | Volume of the reciprocal primitive cell, $(2\pi)^3 / V_\text{cell}$ | Ch 07 §7.4.1 |
 | $\Gamma$ | `\Gamma' | Γ | Centre of the Brillouin zone, $\mathbf k = \mathbf 0$ | Ch 07 §7.4.3 |
-| $X$, $L$, $W$, $K$, $U$ | `X`, `L`, `W`, `K`, `U' | X, L, W, K, U | High-symmetry points of the FCC Brillouin zone (Setyawan–Curtarolo) | Ch 07 §7.4.3 |
+| $X$, $L$, $W$, $K$, $U$ | `X`, `L`, `W`, `K`, `U`' | X, L, W, K, U | High-symmetry points of the FCC Brillouin zone (Setyawan–Curtarolo) | Ch 07 §7.4.3 |
 | $N_\mathbf k$ | `N_\mathbf k' | N_**k** | Number of $\mathbf k$-points in the BZ sampling mesh | Ch 07 §7.2.2 |
 | $w_\mathbf k$ | `w_\mathbf k' | w_**k** | Weight of $\mathbf k$-point in the BZ sum | Ch 07 §7.2.2 |
-| $N_1, N_2, N_3$ | `N_1`, `N_2`, `N_3' | N_1, N_2, N_3 | BvK supercell dimensions; also Monkhorst–Pack mesh sizes | Ch 07 §7.2.1 |
-| $m_i$ | `m_i' | m_i | Monkhorst–Pack mesh index along direction $i$ | Ch 07 §7.6.1 |
-| $a$ | `a' | a | Cubic lattice parameter (when applicable) | Ch 07 §7.4.3 |
+| $N_1, N_2, N_3$ | `N_1`, `N_2`, `N_3`' | N_1, N_2, N_3 | BvK supercell dimensions; also Monkhorst–Pack mesh sizes | Ch 07 §7.2.1 |
+| $m_i$ | `m_i`' | m_i | Monkhorst–Pack mesh index along direction $i$ | Ch 07 §7.6.1 |
+| $a$ | `a`' | a | Cubic lattice parameter (when applicable) | Ch 07 §7.4.3 |
 | $V_{ps,l}(r)$ | `V_{ps,l}(r)' | V_ps,l(r) | Channel-dependent pseudopotential | Ch 08 §8.1 |
-| $r_c$ | `r_c' | r_c | Pseudopotential cutoff radius | Ch 08 §8.1 |
+| $r_c$ | `r_c`' | r_c | Pseudopotential cutoff radius | Ch 08 §8.1 |
 | $\phi_l(r)$ | `\phi_l(r)' | φ_l(r) | Pseudo-wavefunction in channel $l$ | Ch 08 §8.1 |
 | $u_l(r)$ | `u_l(r)' | u_l(r) | All-electron radial wavefunction in channel $l$ | Ch 08 §8.1 |
-| $E_l$ | `E_l' | E_l | Valence eigenvalue used to construct the pseudo | Ch 08 §8.1 |
+| $E_l$ | `E_l`' | E_l | Valence eigenvalue used to construct the pseudo | Ch 08 §8.1 |
 | $D_l(E)$ | `D_l(E)' | D_l(E) | Logarithmic derivative of the radial wavefunction at $r_c$ | Ch 08 §8.3 |
 | $Z_\text{core}$ | `Z_\text{core}' | Z_core | Number of core electrons removed by the pseudopotential | Ch 08 §8.2 |
 
@@ -511,7 +511,7 @@ prefigure it.
 | $\mathbf q$ | `\mathbf q' | **q** | Phonon wavevector (lives in the 1st BZ) | (planned: ch 10) |
 | $D_{ij}(\mathbf R)$ | `D_{ij}(\mathbf R)' | D_ij(**R**) | Force-constant matrix between atoms in cell $\mathbf 0$ and cell $\mathbf R$ | (planned: ch 10) |
 | $D_{ij}(\mathbf q)$ | `D_{ij}(\mathbf q)' | D_ij(**q**) | Dynamical matrix: Fourier transform of $D_{ij}(\mathbf R)$ | (planned: ch 10) |
-| $M_I$ | `M_I' | M_I | Mass of nucleus $I$ (in units of $m_e$) | (planned: ch 10) |
+| $M_I$ | `M_I`' | M_I | Mass of nucleus $I$ (in units of $m_e$) | (planned: ch 10) |
 | $F_{\mu\nu}^\text{ph}$ | `F_{\mu\nu}^\text{ph}' | F_μν^ph | Phonon force-constant supermatrix (mass-weighted) | (planned: ch 10) |
 | $e_{I\alpha,\nu}(\mathbf q)$ | `e_{I\alpha,\nu}(\mathbf q)' | e_{Iα,ν}(**q**) | Phonon polarisation vector: displacement of atom $I$ in direction $\alpha$ for branch $\nu$ | (planned: ch 10) |
 | $\epsilon_{\alpha\beta}$ | `\epsilon_{\alpha\beta}' | ε_αβ | Strain tensor; or symmetrised strain in elasticity | Ch 04 §4.7.4 |

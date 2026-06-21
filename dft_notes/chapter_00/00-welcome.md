@@ -323,7 +323,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-``'
+```
 
 A reader fluent in 'numpy' and 'matplotlib' should be able to read
 this script in under a minute and predict the shape of the figure
@@ -411,7 +411,7 @@ companion script is run by `agent:code-runner' to produce the
 PNG; the PNG is committed under `plots/`.
 
 **What to expect.**  A real Python program, ~10–50 lines, that
-imports only `numpy`, `scipy`, and `matplotlib' (with
+imports only `numpy`, `scipy`, and `matplotlib`' (with
 `matplotlib.use("Agg")`).  No display is required.  The snippet
 is self-contained: copy it into a file, run it, get a PNG.
 
@@ -451,7 +451,7 @@ and large enough to exercise the typical failure modes of the
 method.
 
 **What to expect.**  The full numerical trace, often as a
-`text' code block.  A reference back to the code snippet
+`text`' code block.  A reference back to the code snippet
 (section 3) that produced the plot.  The plot itself, included
 as a Markdown image tag pointing to
 `dft_notes/python_codes/chapter_NN/plots/NN-slug.png`.
@@ -537,7 +537,7 @@ graph TD
   C09 --> C10
 
   style C00 fill:#fff3d6,stroke:#ff8c00,stroke-width:4px,color:#000
-``'
+```
 
 The graph has one source (chapter 00) and a "fan-in" structure
 in the middle: chapters 03 and 04 both depend on chapter 02 and
@@ -586,7 +586,7 @@ graph LR
 
   T5 --> M1
   M4 --> A1
-``'
+```
 
 The track view makes the same information as the dependency
 graph, but arranges it so that you can see the *kinds* of
@@ -1017,7 +1017,7 @@ print("U^dag U - I =", U.conj().T @ U - np.eye(2))
 
 assert np.allclose(Adiag, np.diag(evals))
 assert np.allclose(U.conj().T @ U, np.eye(2))
-``'
+```
 
 The output is
 
@@ -1027,7 +1027,7 @@ U^dag A U = [[1. 0.]
              [0. 3.]]
 U^dag U - I = [[0. 0.]
                [0. 0.]]
-``'
+```
 
 which confirms the hand calculation of Problem 3 and the
 spectral theorem itself: a real symmetric matrix is
@@ -1111,7 +1111,7 @@ molecule.
 ```mermaid
 graph TD
   C00[Ch 00] --> C01[Ch 01] --> C02[Ch 02] --> C04[Ch 04] --> C05[Ch 05] --> C06[Ch 06]
-``'
+```
 
 a *linear* chain, which is why the notes are written so that
 the chapters can be read linearly even though the

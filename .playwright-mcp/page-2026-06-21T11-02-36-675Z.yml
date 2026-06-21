@@ -1,0 +1,2907 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Worked examples anthology" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: One page that pulls together the
+          - strong [ref=e30]: most important worked examples
+          - text: from the DFT Notes, organised by topic rather than by chapter. Every entry links to (i) the runnable Python in
+          - link "dft_notes/python_codes/" [ref=e31] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/
+            - code [ref=e32]: dft_notes/python_codes/
+          - text: ", (ii) the committed plot in"
+          - code [ref=e33]: plots/
+          - text: ", (iii) the chapter section that does the derivation, and (iv) the expected numerical output. The anthology is the natural starting point for a reader who already knows the theory and wants to see numbers."
+      - paragraph [ref=e34]:
+        - text: This page is the
+        - strong [ref=e35]: executables index
+        - text: of the notes. The chapters derive; this page
+        - emphasis [ref=e36]: runs
+        - text: . If you have a one-hour commute and want to know which script does what, this is the place.
+      - heading "How to read this page" [level=2] [ref=e37]
+      - paragraph [ref=e38]: "Each section is a self-contained worked example. The shape of each entry is the same:"
+      - list [ref=e39]:
+        - listitem [ref=e40]:
+          - strong [ref=e41]: Problem statement
+          - text: — what system and what calculation.
+        - listitem [ref=e42]:
+          - strong [ref=e43]: Approach
+          - text: — one paragraph on the method.
+        - listitem [ref=e44]:
+          - strong [ref=e45]: Script
+          - text: — link to the runnable Python.
+        - listitem [ref=e46]:
+          - strong [ref=e47]: Plot
+          - text: — link to the committed PNG.
+        - listitem [ref=e48]:
+          - strong [ref=e49]: Expected output
+          - text: — the key numbers you should see when you run the script.
+        - listitem [ref=e50]:
+          - strong [ref=e51]: Chapter section
+          - text: — the cross-reference into the prose.
+      - blockquote [ref=e52]:
+        - paragraph [ref=e53]:
+          - strong [ref=e54]: Status of the chapter scripts.
+          - text: Chapters 00–08 are
+          - emphasis [ref=e55]: shipped
+          - code [ref=e56]: ; chapters 09–13 are planned* (see [
+          - text: chapters-map.md
+          - code [ref=e57]: "](/DFT-notes/dft-notes/chapters-map/)). Where a script exists in"
+          - text: "python_codes/`, the entry below links to it directly. Where the example exists only as inlined chapter code (or is from a planned chapter), the entry points to the chapter section that"
+          - emphasis [ref=e58]: contains
+          - text: the worked example, and says so explicitly.
+      - separator [ref=e59]
+      - heading "1. Quantum mechanics basics" [level=2] [ref=e60]
+      - paragraph [ref=e61]: "The three textbook problems every DFT student must have seen at least once: a particle in a 1-D box, the harmonic oscillator, and the hydrogen atom. The first is the simplest discretised differential equation; the second introduces ladder operators and Hermite polynomials; the third is the only Coulomb problem with a closed-form solution and the anchor of every atomic orbital used in chemistry."
+      - heading "1.1 Particle in a box" [level=3] [ref=e62]
+      - paragraph [ref=e63]:
+        - strong [ref=e64]: Problem.
+        - text: A single electron in a 1-D box of length
+        - img [ref=e66]
+        - text: with infinite walls at
+        - img [ref=e81]
+        - text: and
+        - img [ref=e91]
+        - text: . Compute the first four eigenfunctions and eigenvalues
+        - img [ref=e101]
+        - text: .
+      - paragraph [ref=e122]:
+        - strong [ref=e123]: Approach.
+        - text: "Solve the time-independent Schrödinger equation analytically:"
+      - img [ref=e125]
+      - paragraph [ref=e204]:
+        - text: The script samples the closed-form solution on a fine grid, plots
+        - img [ref=e206]
+        - text: and
+        - img [ref=e215]
+        - text: for
+        - img [ref=e231]
+        - text: ", and labels each curve with its eigenvalue."
+      - list [ref=e252]:
+        - listitem [ref=e253]:
+          - strong [ref=e254]: Script
+          - text: —
+          - link "chapter_00/01-particle-in-box.py" [ref=e255] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_00/01-particle-in-box.py
+        - listitem [ref=e256]:
+          - strong [ref=e257]: Plot
+          - text: —
+          - link "chapter_00/plots/01-particle-in-box.png" [ref=e258] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_00/plots/01-particle-in-box.png
+        - listitem [ref=e259]:
+          - strong [ref=e260]: Chapter section
+          - text: —
+          - link "Chapter 01, §1.3 (Particle in a box)" [ref=e261] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/#13-a-minimal-example-the-particle-in-a-box
+          - text: ; also discussed in
+          - link "Chapter 00, *Hello world*" [ref=e262] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-00/
+            - text: Chapter 00, *Hello worl
+            - code [ref=e263]: d*
+          - text: (the 1s-density version of the same idea).
+        - listitem [ref=e264]:
+          - strong [ref=e265]: Expected output.
+          - text: "Eigenvalues in atomic units:"
+          - img [ref=e267]
+          - text: ","
+          - img [ref=e285]
+          - text: ","
+          - img [ref=e304]
+          - text: ","
+          - img [ref=e323]
+          - text: (in
+          - img [ref=e342]
+          - text: ). The first plot panel shows the four sine-shaped wavefunctions with the expected node count (1s = no node, 2s = one node, etc.); the second panel shows the corresponding probability densities. The total runtime is under a second on a laptop.
+      - blockquote [ref=e350]:
+        - paragraph [ref=e351]:
+          - strong [ref=e352]: Note on the chapter reference.
+          - text: The chapter markdown cross-references the script as
+          - code [ref=e353]: dft_notes/python_codes/chapter_01/01-particle-in-box.py
+          - text: ", but the canonical, runnable file currently lives in"
+          - code [ref=e354]: chapter_00/
+          - text: (where it was written first, as the
+          - link "“hello world”" [ref=e355] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-00/#hello-world--a-chapters-smallest-program
+          - text: for the entire site). The path above is the one that
+          - emphasis [ref=e356]: runs
+          - text: ; the chapter path will be moved into
+          - code [ref=e357]: chapter_01/
+          - text: in a follow-up commit by
+          - code [ref=e358]: agent:code-runner
+          - text: .
+      - heading "1.2 Harmonic oscillator" [level=3] [ref=e359]
+      - paragraph [ref=e360]:
+        - strong [ref=e361]: Problem.
+        - text: The 1-D quantum harmonic oscillator with unit mass and
+        - img [ref=e363]
+        - text: (atomic units). Find the lowest six eigenpairs of
+      - img [ref=e373]
+      - paragraph [ref=e416]:
+        - strong [ref=e417]: Approach.
+        - text: Discretise the Hamiltonian on the interval
+        - img [ref=e419]
+        - text: with
+        - img [ref=e435]
+        - text: and
+        - img [ref=e445]
+        - text: points and a 3-point stencil for the second derivative. The result is a sparse tridiagonal matrix. The lowest six eigenpairs are found with
+        - code [ref=e456]: scipy.sparse.linalg.eigsh(H, k=6, which="SM")
+        - text: . Eigenvectors are normalised to unit
+        - img [ref=e458]
+        - text: norm on the grid. The expected eigenvalues are
+        - img [ref=e467]
+        - text: in units of
+        - img [ref=e489]
+        - text: .
+      - list [ref=e494]:
+        - listitem [ref=e495]:
+          - strong [ref=e496]: Script
+          - text: — the code is inlined in
+          - link "Chapter 01, §1.14.2" [ref=e497] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences
+          - text: (
+          - code [ref=e498]: dft_notes/python_codes/chapter_01/02-harmonic-oscillator.py
+          - text: ", in chapter markdown only; the runnable file in"
+          - code [ref=e499]: python_codes/chapter_01/
+          - text: is forthcoming from
+          - code [ref=e500]: agent:code-runner
+          - text: ).
+        - listitem [ref=e501]:
+          - strong [ref=e502]: Plot
+          - text: — referenced in
+          - link "§1.14.2 of chapter 01" [ref=e503] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences
+          - text: as
+          - code [ref=e504]: plots/02-harmonic-oscillator.png
+          - text: .
+        - listitem [ref=e505]:
+          - strong [ref=e506]: Chapter section
+          - text: —
+          - link "Chapter 01, §1.9 (Ladder operators and the QHO spectrum)" [ref=e507] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/#19-the-harmonic-oscillator
+          - text: ; §1.11.2 (numerical solution).
+        - listitem [ref=e508]:
+          - strong [ref=e509]: Expected output.
+          - text: Eigenvalues (in units of
+          - img [ref=e511]
+          - text: "):"
+          - img [ref=e517]
+          - text: ","
+          - img [ref=e537]
+          - text: ","
+          - img [ref=e557]
+          - text: ","
+          - img [ref=e577]
+          - text: ","
+          - img [ref=e597]
+          - text: ","
+          - img [ref=e617]
+          - text: ", each accurate to better than"
+          - img [ref=e637]
+          - text: for the default
+          - img [ref=e652]
+          - text: ","
+          - img [ref=e662]
+          - text: . The figure shows the four lowest eigenfunctions superposed on the potential
+          - img [ref=e674]
+          - text: ", each centred on the corresponding classical turning point"
+          - img [ref=e698]
+          - text: .
+      - heading "1.3 Hydrogen radial wavefunctions" [level=3] [ref=e719]
+      - paragraph [ref=e720]:
+        - strong [ref=e721]: Problem.
+        - text: Plot the first six radial hydrogen eigenfunctions
+        - img [ref=e723]
+        - text: for
+        - img [ref=e741]
+        - text: and
+        - img [ref=e759]
+        - text: ", on a linear radial grid."
+      - paragraph [ref=e776]:
+        - strong [ref=e777]: Approach.
+        - text: Use the closed-form hydrogen radial wavefunctions
+      - img [ref=e779]
+      - paragraph [ref=e939]:
+        - text: with
+        - img [ref=e941]
+        - text: . The associated Laguerre polynomials
+        - img [ref=e951]
+        - text: are evaluated with
+        - code [ref=e977]: scipy.special.genlaguerre
+        - text: . The plot shows six curves on a linear
+        - img [ref=e979]
+        - text: grid from
+        - img [ref=e985]
+        - text: to
+        - img [ref=e994]
+        - text: .
+      - list [ref=e1005]:
+        - listitem [ref=e1006]:
+          - strong [ref=e1007]: Script
+          - text: — the code is inlined in
+          - link "Chapter 01, §1.14.3" [ref=e1008] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences
+          - text: "(referenced path:"
+          - code [ref=e1009]: dft_notes/python_codes/chapter_01/03-hydrogen-radial.py
+          - text: ; runnable file in
+          - code [ref=e1010]: python_codes/chapter_01/
+          - text: is forthcoming).
+        - listitem [ref=e1011]:
+          - strong [ref=e1012]: Plot
+          - text: — referenced in
+          - link "§1.14.3 of chapter 01" [ref=e1013] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/#1142-harmonic-oscillator-via-finite-differences
+          - text: as
+          - code [ref=e1014]: plots/03-hydrogen-radial.png
+          - text: .
+        - listitem [ref=e1015]:
+          - strong [ref=e1016]: Chapter section
+          - text: —
+          - link "Chapter 01, §1.13 (Hydrogen atom; the Bohr formula and the explicit eigenfunctions)" [ref=e1017] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/#113-the-hydrogen-atom
+          - text: .
+        - listitem [ref=e1018]:
+          - strong [ref=e1019]: Expected output.
+          - text: "Six curves with the expected node counts: 1s (nodeless, peaked at the origin), 2s (one radial node at"
+          - img [ref=e1021]
+          - text: ), 2p (one peak, no radial node,
+          - img [ref=e1036]
+          - text: at the origin), 3s (two radial nodes), 3p (one radial node), 3d (no radial nodes,
+          - img [ref=e1044]
+          - text: at the origin). The energies shown in the legend are the Bohr levels
+          - img [ref=e1055]
+          - text: ":"
+          - img [ref=e1089]
+          - text: ","
+          - img [ref=e1109]
+          - text: ","
+          - img [ref=e1129]
+          - text: .
+      - separator [ref=e1153]
+      - heading "2. Mean-field methods" [level=2] [ref=e1154]
+      - paragraph [ref=e1155]: "Three “first-principles” calculations on a system with two electrons and two nuclei: a textbook HF in a Gaussian basis, a direct-SCF HF with DIIS acceleration, and the equivalent Kohn–Sham loop with a local exchange–correlation functional. All three reduce to iterating a single matrix eigenproblem until self-consistency."
+      - heading "2.1 H₂ in STO-3G, closed-shell Hartree–Fock" [level=3] [ref=e1156]
+      - paragraph [ref=e1157]:
+        - strong [ref=e1158]: Problem.
+        - text: Hartree–Fock on H₂ at
+        - img [ref=e1160]
+        - text: in the minimal STO-3G basis (one contracted
+        - img [ref=e1177]
+        - text: "-function per hydrogen). Compute the converged total energy, the two MO energies, the MO coefficients, and plot the two MOs along the bond axis."
+      - paragraph [ref=e1182]:
+        - strong [ref=e1183]: Approach.
+        - text: Build the overlap
+        - img [ref=e1185]
+        - text: ", the kinetic matrix"
+        - img [ref=e1192]
+        - text: ", the nuclear-attraction matrix"
+        - img [ref=e1199]
+        - text: ", the core Hamiltonian"
+        - img [ref=e1206]
+        - text: ", and the four-index ERI tensor"
+        - img [ref=e1223]
+        - text: by contracting the Hehre–Stewart–Pople STO-3G primitives for hydrogen (
+        - img [ref=e1241]
+        - text: with
+        - img [ref=e1280]
+        - text: ). Iterate
+        - img [ref=e1319]
+        - text: with
+        - img [ref=e1362]
+        - text: until the density and the energy both stop moving. Diagonalise the Fock matrix at every iteration with
+        - code [ref=e1386]: scipy.linalg.eigh(F, S)
+        - text: .
+      - list [ref=e1387]:
+        - listitem [ref=e1388]:
+          - strong [ref=e1389]: Script
+          - text: —
+          - link "chapter_06/01-sto-3g-h2.py" [ref=e1390] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py
+        - listitem [ref=e1391]:
+          - strong [ref=e1392]: Plot
+          - text: —
+          - link "chapter_06/plots/01-sto-3g-h2.png" [ref=e1393] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_06/plots/01-sto-3g-h2.png
+        - listitem [ref=e1394]:
+          - strong [ref=e1395]: Chapter section
+          - text: —
+          - link "Chapter 06, §6.9 (STO-3G H₂ worked example)" [ref=e1396] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/#69-worked-example-sto-3g-h
+          - text: ", the central numerical anchor of the notes."
+        - listitem [ref=e1397]:
+          - strong [ref=e1398]: Expected output.
+          - list [ref=e1399]:
+            - listitem [ref=e1400]:
+              - text: Overlap
+              - img [ref=e1402]
+              - text: ":"
+              - code [ref=e1408]: "[[1.0000, 0.6593], [0.6593, 1.0000]]"
+              - text: .
+            - listitem [ref=e1409]:
+              - text: Core Hamiltonian
+              - img [ref=e1411]
+              - text: ":"
+              - code [ref=e1417]: "[[-1.1204, -0.9584], [-0.9584, -1.1204]]"
+              - text: .
+            - listitem [ref=e1418]:
+              - table [ref=e1419]:
+                - rowgroup [ref=e1420]:
+                  - 'row "Selected ERIs (chemists’ notation): $(11 11) = 0.7746 (11 22) = 0.5697 (12 12) = 0.2970 (11 12) = 0.4441$." [ref=e1421]':
+                    - 'cell "Selected ERIs (chemists’ notation): $(11" [ref=e1422]'
+                    - cell "11) = 0.7746 (11" [ref=e1423]:
+                      - text: 11) = 0.7746
+                      - img [ref=e1425]
+                      - text: (11
+                    - cell "22) = 0.5697 (12" [ref=e1430]:
+                      - text: 22) = 0.5697
+                      - img [ref=e1432]
+                      - text: (12
+                    - cell "12) = 0.2970 (11" [ref=e1437]:
+                      - text: 12) = 0.2970
+                      - img [ref=e1439]
+                      - text: (11
+                    - cell "12) = 0.4441$." [ref=e1444]
+            - listitem [ref=e1445]:
+              - text: "Converged MO energies:"
+              - img [ref=e1447]
+              - text: ","
+              - img [ref=e1467]
+              - text: .
+            - listitem [ref=e1491]:
+              - text: "Bonding MO coefficient:"
+              - img [ref=e1493]
+              - text: ; antibonding
+              - img [ref=e1522]
+              - text: (signs arbitrary up to a global phase).
+            - listitem [ref=e1552]:
+              - strong [ref=e1553]:
+                - text: "Converged HF energy:"
+                - img [ref=e1555]
+              - text: (Szabo & Ostlund, table 3.5).
+            - listitem [ref=e1581]:
+              - text: SCF converges in 3 iterations from
+              - img [ref=e1583]
+              - text: .
+      - blockquote [ref=e1594]:
+        - paragraph [ref=e1595]:
+          - strong [ref=e1596]: Tip.
+          - text: This calculation is the
+          - emphasis [ref=e1597]: "single most quote`d"
+          - text: "’ number in introductory quantum chemistry. It is also the reference point for every KS calculation that follows in the notes: a HF/KS-DFT result on H₂ in a minimal basis is not “DFT vs. experiment” but “DFT vs. this number”."
+      - heading "2.2 Direct SCF for H₂ with DIIS" [level=3] [ref=e1598]
+      - paragraph [ref=e1599]:
+        - strong [ref=e1600]: Problem.
+        - text: Same as §2.1 (H₂ STO-3G,
+        - img [ref=e1602]
+        - text: "), but with two algorithmic upgrades: (i) the ERI tensor is"
+        - emphasis [ref=e1618]: recomputed
+        - text: on the fly every iteration rather than stored (
+        - emphasis [ref=e1619]: direct SCF
+        - text: ), and (ii) the Fock matrix is extrapolated using Pulay’s DIIS (direct inversion in the iterative subspace) accelerator.
+      - paragraph [ref=e1620]:
+        - strong [ref=e1621]: Approach.
+        - text: The ERI tensor
+        - img [ref=e1623]
+        - text: has
+        - img [ref=e1641]
+        - text: entries for the
+        - img [ref=e1655]
+        - text: problem and is rebuilt every iteration from the primitive Gaussians using the Schwarz inequality as a screen (though for
+        - img [ref=e1665]
+        - text: every integral is computed). DIIS keeps a history of the last
+        - img [ref=e1675]
+        - text: Fock matrices and their commutator error vectors
+        - img [ref=e1685]
+        - text: ", then extrapolates the next Fock matrix as a linear combination"
+        - img [ref=e1754]
+        - text: with the
+        - img [ref=e1784]
+        - text: chosen to minimise the norm of the extrapolated error.
+      - list [ref=e1792]:
+        - listitem [ref=e1793]:
+          - strong [ref=e1794]: Script
+          - text: — the code is inlined in
+          - link "Chapter 03, §3.8.5" [ref=e1795] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/#38-direct-scf-conventional-scf-and-diis
+          - text: "(referenced path:"
+          - code [ref=e1796]: dft_notes/python_codes/chapter_03/01-direct-scf-h2-sto3g-diis.py
+          - text: ; runnable file in
+          - code [ref=e1797]: python_codes/chapter_03/
+          - text: is forthcoming).
+        - listitem [ref=e1798]:
+          - strong [ref=e1799]: Plot
+          - text: — this example has no plot; it is a pure number (the SCF convergence trace is printed to stdout).
+        - listitem [ref=e1800]:
+          - strong [ref=e1801]: Chapter section
+          - text: —
+          - link "Chapter 03, §3.8 (Direct SCF, conventional SCF, and DIIS)" [ref=e1802] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/#38-direct-scf-conventional-scf-and-diis
+          - text: ; §3.8.5 has the full source.
+        - listitem [ref=e1803]:
+          - strong [ref=e1804]: Expected output.
+          - text: "From the chapter’s reference run:"
+          - list [ref=e1805]:
+            - listitem [ref=e1806]:
+              - code [ref=e1807]: Converged in 11 iterations, dP = 9.7e-11
+            - listitem [ref=e1808]:
+              - text: "MO energies:"
+              - img [ref=e1810]
+              - text: ","
+              - img [ref=e1830]
+            - listitem [ref=e1854]:
+              - img [ref=e1856]
+              - text: (matches Szabo & Ostlund to all six digits).
+            - listitem [ref=e1883]:
+              - text: With DIIS replaced by simple density mixing (
+              - img [ref=e1885]
+              - text: ), the same calculation needs ~30 iterations and shows visible oscillations; DIIS converges monotonically and drops the error norm by ~3 decades per iteration once the DIIS regime is entered.
+      - heading "2.3 Kohn–Sham SCF loop" [level=3] [ref=e1896]
+      - paragraph [ref=e1897]:
+        - strong [ref=e1898]: Problem.
+        - text: "The Kohn–Sham analogue of §2.1: a closed-shell KS calculation on H₂ in a Gaussian basis, with a"
+        - emphasis [ref=e1899]: local
+        - text: (LDA-style) exchange–correlation functional contributing a matrix
+        - img [ref=e1901]
+        - text: to the Fock matrix.
+      - paragraph [ref=e1911]:
+        - strong [ref=e1912]: Approach.
+        - text: Replace the non-local exchange operator of HF by a local potential
+        - img [ref=e1914]
+        - text: . The matrix element
+        - img [ref=e1959]
+        - text: is computed on a real-space grid (or, in the simplest possible version, as a constant times
+        - img [ref=e1991]
+        - text: ). The SCF loop is otherwise identical in shape to HF.
+      - list [ref=e2002]:
+        - listitem [ref=e2003]:
+          - strong [ref=e2004]: Script
+          - text: — the canonical “shape of the loop” is given as the inlined
+          - code [ref=e2005]: ks_scf
+          - text: function in
+          - link "Chapter 04, §4.4 (The KS self-consistent loop)" [ref=e2006] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/#44-the-ks-self-consistent-loop
+          - text: ". (Referenced path:"
+          - code [ref=e2007]: dft_notes/python_codes/chapter_04/01-ks-scf.py
+          - text: ; the runnable file in
+          - code [ref=e2008]: python_codes/chapter_04/
+          - text: is forthcoming from
+          - code [ref=e2009]: agent:code-runner
+          - text: .)
+        - listitem [ref=e2010]:
+          - strong [ref=e2011]: Plot
+          - text: — none (the canonical example prints the converged KS energy, MO energies, and total energy).
+        - listitem [ref=e2012]:
+          - strong [ref=e2013]: Chapter section
+          - text: —
+          - link "Chapter 04, §4.4 (KS SCF loop)" [ref=e2014] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/#44-the-ks-self-consistent-loop
+          - text: ; §4.6 (mixing and DIIS for KS); §4.10 (the full implementation).
+        - listitem [ref=e2015]:
+          - strong [ref=e2016]: Expected output.
+          - text: With the LDA functional and the STO-3G basis, the KS calculation on H₂ at
+          - img [ref=e2018]
+          - text: reproduces the HF energy
+          - img [ref=e2035]
+          - text: to within the basis-set error (because LDA exchange is a poorer approximation than HF exchange on one electron, where they coincide exactly). With a hybrid functional (B3LYP), the result shifts to roughly
+          - img [ref=e2053]
+          - text: ", in agreement with high-level calculations and experiment. SCF convergence in 5–10 iterations with DIIS."
+      - blockquote [ref=e2068]:
+        - paragraph [ref=e2069]:
+          - strong [ref=e2070]: Tip.
+          - text: The shape of the loop in §4.4 is the
+          - emphasis [ref=e2071]: "proto-loo`p"
+          - text: ’ of every production DFT code. The differences between codes (Gaussian vs. plane-wave, all- electron vs. pseudopotential, serial vs. parallel) are all hiding inside the two lines that build
+          - img [ref=e2073]
+          - text: and
+          - img [ref=e2080]
+          - text: .
+      - 'heading "2.4 H₂ in STO-3G: full Szabo & Ostlund Table 3.5 walk-through" [level=3] [ref=e2090]'
+      - paragraph [ref=e2091]:
+        - strong [ref=e2092]: Problem.
+        - text: Build, by hand, every integral of the closed-shell STO-3G H₂ calculation at
+        - img [ref=e2094]
+        - text: in the order in which Szabo & Ostlund present them in their textbook Table 3.5 (Modern Quantum Chemistry, §3.3). Construct
+        - img [ref=e2111]
+        - text: ", the Fock matrix"
+        - img [ref=e2153]
+        - text: ", the density matrix"
+        - img [ref=e2160]
+        - text: ", the MO coefficients"
+        - img [ref=e2167]
+        - text: ", the MO energies"
+        - img [ref=e2174]
+        - text: ", and the total energy"
+        - img [ref=e2180]
+        - text: . Verify that the SCF converges to
+        - img [ref=e2190]
+        - text: in 3 iterations from
+        - img [ref=e2215]
+        - text: .
+      - paragraph [ref=e2226]:
+        - strong [ref=e2227]: Approach.
+        - text: The STO-3G basis for hydrogen is one contracted
+        - img [ref=e2229]
+        - text: "-function"
+        - img [ref=e2235]
+        - text: per atom centred on atom
+        - img [ref=e2251]
+        - text: (
+        - img [ref=e2261]
+        - text: ). Each contracted function is a fixed linear combination of three primitive Cartesian
+        - img [ref=e2275]
+        - text: "-Gaussians (Ch 06 §6.4):"
+      - paragraph [ref=e2280]:
+        - img [ref=e2282]:
+          - generic [ref=e2286]:
+            - img [ref=e2287]
+            - img [ref=e2442]
+      - paragraph [ref=e2450]:
+        - text: The contraction coefficients and exponents are universal (the same for every H atom, every molecule, and every geometry) and are the
+        - strong [ref=e2451]: Hehre–Stewart–Pople STO-3G primitive set
+        - text: .
+      - paragraph [ref=e2452]:
+        - strong [ref=e2453]:
+          - text: Step 1 — Overlap
+          - img [ref=e2455]
+          - text: .
+        - text: For two
+        - img [ref=e2484]
+        - text: "-Gaussians on different centres the"
+        - strong [ref=e2489]: Gaussian product theorem
+        - text: (Ch 06 §6.4) gives
+      - paragraph [ref=e2490]:
+        - img [ref=e2492]:
+          - generic [ref=e2496]:
+            - img [ref=e2497]
+            - img [ref=e2622]
+      - paragraph [ref=e2630]:
+        - text: where
+        - img [ref=e2632]
+        - text: "is the bond length. Carrying out the sum (three terms per index, nine total; this is mechanical, not conceptual):"
+      - paragraph [ref=e2648]:
+        - img [ref=e2650]:
+          - generic [ref=e2654]:
+            - img [ref=e2655]
+            - img [ref=e2806]
+      - paragraph [ref=e2813]:
+        - text: The diagonal elements are
+        - img [ref=e2815]
+        - text: by construction (the contraction is normalised).
+      - paragraph [ref=e2838]:
+        - strong [ref=e2839]:
+          - text: Step 2 — Kinetic
+          - img [ref=e2841]
+          - text: .
+        - text: The matrix element between two
+        - img [ref=e2887]
+        - text: "-Gaussians is"
+      - paragraph [ref=e2892]:
+        - img [ref=e2894]:
+          - generic [ref=e2898]:
+            - img [ref=e2899]
+            - img [ref=e3087]
+      - paragraph [ref=e3095]:
+        - text: a closed form that involves only the contracted exponents and the bond length. Numerically, with
+        - img [ref=e3097]
+        - text: ":"
+      - paragraph [ref=e3113]:
+        - img [ref=e3115]:
+          - generic [ref=e3119]:
+            - img [ref=e3120]
+            - img [ref=e3171]
+      - paragraph [ref=e3178]:
+        - text: The diagonal element
+        - img [ref=e3180]
+        - text: is the kinetic energy of one STO-3G
+        - img [ref=e3200]
+        - text: on a single H atom; the off-diagonal
+        - img [ref=e3208]
+        - text: is the kinetic coupling across the bond.
+      - paragraph [ref=e3227]:
+        - strong [ref=e3228]:
+          - text: Step 3 — Nuclear attraction
+          - img [ref=e3230]
+          - text: (summed over nuclei).
+        - text: The matrix element between two
+        - img [ref=e3277]
+        - text: "-Gaussians and a single nucleus of charge"
+        - img [ref=e3283]
+        - text: at position
+        - img [ref=e3292]
+        - text: is (Ch 06 §6.5)
+      - paragraph [ref=e3298]:
+        - img [ref=e3300]:
+          - generic [ref=e3304]:
+            - img [ref=e3305]
+            - img [ref=e3477]
+      - paragraph [ref=e3485]:
+        - text: where
+        - img [ref=e3487]
+        - text: is the Gaussian midpoint of the
+        - img [ref=e3494]
+        - text: pair,
+        - img [ref=e3508]
+        - text: is the
+        - img [ref=e3520]
+        - text: "-"
+        - img [ref=e3526]
+        - text: distance, and
+        - img [ref=e3532]
+        - text: is the
+        - strong [ref=e3540]: Boys function
+        - img [ref=e3542]
+        - text: (Ch 06 §6.3). For
+        - img [ref=e3593]
+        - text: and
+        - img [ref=e3607]
+        - text: (the H at the same centre as the Gaussian), the
+        - img [ref=e3617]
+        - text: and
+        - img [ref=e3637]
+        - text: ", so the inner sum is the"
+        - strong [ref=e3655]: self-attraction
+        - text: of the
+        - img [ref=e3657]
+        - text: "Gaussian with its own nucleus:"
+      - paragraph [ref=e3664]:
+        - img [ref=e3666]:
+          - generic [ref=e3670]:
+            - img [ref=e3671]
+            - img [ref=e3757]
+      - paragraph [ref=e3765]:
+        - text: The full nuclear-attraction matrix (summed over both nuclei) at
+        - img [ref=e3767]
+        - text: is
+      - paragraph [ref=e3783]:
+        - img [ref=e3785]:
+          - generic [ref=e3789]:
+            - img [ref=e3790]
+            - img [ref=e3849]
+      - paragraph [ref=e3856]:
+        - text: so the
+        - strong [ref=e3857]: core Hamiltonian
+        - img [ref=e3859]
+        - text: is
+      - paragraph [ref=e3875]:
+        - img [ref=e3877]:
+          - generic [ref=e3881]:
+            - img [ref=e3882]
+            - img [ref=e3941]
+      - paragraph [ref=e3948]: These numbers reproduce the Szabo & Ostlund table 3.5 to four decimal places.
+      - paragraph [ref=e3949]:
+        - strong [ref=e3950]:
+          - text: Step 4 — Two-electron integrals
+          - img [ref=e3952]
+          - text: .
+        - text: The four-centre integral over four
+        - img [ref=e3970]
+        - text: "-Gaussians (Ch 06 §6.6) is a sum of primitive 4-centre integrals, each of which is built from products of the Gaussian product theorem and a final Boys function. For"
+        - img [ref=e3976]
+        - text: there are
+        - img [ref=e3986]
+        - text: unique ERIs, but the 8-fold permutational symmetry (Ch 03 §3.6.3) reduces this to
+        - strong [ref=e3999]: 3 distinct
+        - text: "values:"
+      - paragraph [ref=e4000]:
+        - img [ref=e4002]:
+          - generic [ref=e4006]:
+            - img [ref=e4007]
+            - img [ref=e4103]
+      - paragraph [ref=e4111]:
+        - img [ref=e4113]
+        - text: is the
+        - strong [ref=e4128]: Coulomb self-repulsion
+        - text: of the
+        - img [ref=e4130]
+        - text: orbital on one centre;
+        - img [ref=e4138]
+        - text: is the Coulomb repulsion between the two centres;
+        - img [ref=e4154]
+        - text: is the
+        - strong [ref=e4169]: exchange
+        - text: integral that distinguishes HF from Hartree;
+        - img [ref=e4171]
+        - text: is a mixed Coulomb-exchange term that enters the off-diagonal
+        - img [ref=e4187]
+        - text: .
+      - paragraph [ref=e4197]:
+        - strong [ref=e4198]: Step 5 — SCF loop.
+        - text: From
+        - img [ref=e4200]
+        - text: the Fock matrix
+        - img [ref=e4220]
+        - text: is diagonalised by
+        - code [ref=e4239]: scipy.linalg.eigh(F, S)
+        - text: ", giving"
+        - img [ref=e4241]
+        - text: "and the MO coefficients $C^{(1)}"
+        - emphasis [ref=e4282]: "{1,1} = C^{(1)}"
+        - text: "{2,1} = 0.5489"
+        - img [ref=e4284]
+        - text: "C^{(1)}"
+        - emphasis [ref=e4289]: "{1,2} = -C^{(1)}"
+        - text: "{2,2} = 1.2115"
+        - img [ref=e4291]
+        - text: "\\mathbf P^{(1)} = 2 C^{(1)}"
+        - emphasis [ref=e4394]: "\\text{occ} {C^{(1)}"
+        - text: "\\text{occ}}^\\dagger"
+        - img [ref=e4396]
+        - text: "P^{(1)}"
+        - emphasis [ref=e4413]: "{11} = P^{(1)}"
+        - text: "{22} = 0.6025"
+        - img [ref=e4415]
+        - text: "P^{(1)}"
+        - emphasis [ref=e4424]: "{12} = P^{(1)}"
+        - text: "{21} = 0.4523$."
+      - paragraph [ref=e4425]:
+        - text: The second iteration rebuilds the Fock matrix with the new density,
+        - img [ref=e4427]
+        - text: ", re-diagonalises, and updates the density. After 3 iterations the density and the energy both stop moving to machine precision."
+      - paragraph [ref=e4493]:
+        - strong [ref=e4494]: Step 6 — Total energy.
+        - text: The SCF total energy in the AO basis (Ch 03 §3.6.5) is
+      - paragraph [ref=e4495]:
+        - img [ref=e4497]:
+          - generic [ref=e4501]:
+            - img [ref=e4502]
+            - img [ref=e4562]
+      - paragraph [ref=e4571]:
+        - text: with
+        - img [ref=e4573]
+        - text: the nuclear–nuclear repulsion. Substituting the converged
+        - img [ref=e4617]
+        - text: and
+        - img [ref=e4624]
+        - text: ":"
+      - paragraph [ref=e4630]:
+        - img [ref=e4632]:
+          - generic [ref=e4636]:
+            - img [ref=e4637]
+            - img [ref=e4685]
+      - paragraph [ref=e4693]:
+        - text: The number
+        - img [ref=e4695]
+        - text: is the canonical Szabo & Ostlund reference, and the SCF iteration history should converge to it monotonically from
+        - img [ref=e4708]
+        - text: ","
+        - img [ref=e4733]
+        - text: ","
+        - img [ref=e4758]
+        - text: . The SCF energy is
+        - strong [ref=e4782]: lower
+        - text: than the single-determinant energy in the initial basis (
+        - img [ref=e4784]
+        - text: ) because the SCF procedure minimises the energy over the MOs.
+      - list [ref=e4796]:
+        - listitem [ref=e4797]:
+          - strong [ref=e4798]: Script
+          - text: —
+          - link "chapter_06/01-sto-3g-h2-szabo.py" [ref=e4799] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_06/01-sto-3g-h2-szabo.py
+        - listitem [ref=e4800]:
+          - strong [ref=e4801]: Plot
+          - text: —
+          - link "chapter_06/plots/01-sto-3g-h2-szabo.png" [ref=e4802] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_06/plots/01-sto-3g-h2-szabo.png
+        - listitem [ref=e4803]:
+          - strong [ref=e4804]: Chapter section
+          - text: —
+          - 'link "Chapter 06, §6.9 (Worked example: STO-3G H₂)" [ref=e4805] [cursor=pointer]':
+            - /url: /DFT-notes/dft-notes/chapter-06/#69-worked-example-sto-3g-h
+          - text: ; §6.4 (STO-nG contraction); §6.5 (kinetic and nuclear-attraction integrals); §6.6 (two-electron integrals).
+        - listitem [ref=e4806]:
+          - strong [ref=e4807]: Expected output.
+          - text: Every intermediate number matches Szabo & Ostlund table 3.5 to four decimal places, and the final HF energy is
+          - img [ref=e4809]
+          - text: to all six digits. The script prints the three intermediate SCF energies (
+          - img [ref=e4827]
+          - text: ) and the convergence message
+          - code [ref=e4861]: Converged in 3 iterations, |dP| = 2.3e-12
+          - text: ". The plot shows the two STO-3G MOs along the bond axis: the bonding MO"
+          - img [ref=e4863]
+          - text: with constructive interference between the two centres, the antibonding
+          - img [ref=e4872]
+          - text: with a node at the bond midpoint.
+      - blockquote [ref=e4880]:
+        - paragraph [ref=e4881]:
+          - strong [ref=e4882]: Tip.
+          - text: The 0.6593 overlap integral
+          - img [ref=e4884]
+          - text: is the reason STO-3G is called a
+          - emphasis [ref=e4894]: minimal
+          - text: "basis: with one function per H atom, the basis-set incompleteness error is enormous by modern standards. The exact CBS-limit HF energy of H₂ at"
+          - img [ref=e4896]
+          - text: is
+          - img [ref=e4913]
+          - text: ", so the STO-3G answer is"
+          - img [ref=e4930]
+          - text: eV too high. A cc-pVTZ basis brings the error down to
+          - img [ref=e4952]
+          - text: and the explicitly-correlated F12-cc-pVTZ basis to
+          - img [ref=e4967]
+          - text: — the complete-basis extrapolation that the chapter §6.10 demonstrates.
+      - separator [ref=e4986]
+      - heading "3. Pseudopotentials" [level=2] [ref=e4987]
+      - paragraph [ref=e4988]:
+        - text: The pseudopotential approximation replaces the strongly oscillating all-electron wavefunction of an atom near the nucleus by a smooth nodeless pseudo-wavefunction that matches the all-electron one outside a chosen cutoff radius
+        - img [ref=e4990]
+        - text: . This is the worked construction of a Troullier– Martins (TM) norm-conserving pseudopotential for the hydrogen 1s state.
+      - heading "3.1 Hydrogen Troullier–Martins pseudopotential" [level=3] [ref=e4998]
+      - paragraph [ref=e4999]:
+        - strong [ref=e5000]: Problem.
+        - text: Construct a norm-conserving pseudopotential for hydrogen (
+        - img [ref=e5002]
+        - text: ","
+        - img [ref=e5012]
+        - text: ) with cutoff
+        - img [ref=e5022]
+        - text: ", in the Troullier–Martins parameterisation. Verify the four matching conditions at"
+        - img [ref=e5042]
+        - text: (value, first derivative, second derivative, and integrated norm) and plot the pseudo-wavefunction and pseudo-potential on top of the all-electron reference.
+      - paragraph [ref=e5050]:
+        - strong [ref=e5051]: Approach.
+        - text: Invert the radial Schrödinger equation with the ansatz
+      - img [ref=e5053]
+      - paragraph [ref=e5119]:
+        - text: inside
+        - img [ref=e5121]
+        - text: . Enforce (1) value, (2) first derivative, (3) second derivative, and (4) integrated norm at
+        - img [ref=e5130]
+        - text: . (1) fixes
+        - img [ref=e5139]
+        - text: ; (2)–(4) form a 3×3 nonlinear system in
+        - img [ref=e5148]
+        - text: ", solved with"
+        - code [ref=e5174]: scipy.optimize.fsolve
+        - text: from an initial guess derived from the linear ansatz. The pseudo-potential inside
+        - img [ref=e5176]
+        - text: is then obtained by inversion of the radial equation; outside
+        - img [ref=e5185]
+        - text: it equals the all-electron
+        - img [ref=e5194]
+        - text: tail.
+      - list [ref=e5206]:
+        - listitem [ref=e5207]:
+          - strong [ref=e5208]: Script
+          - text: —
+          - link "chapter_08/01-hydrogen-pseudopotential.py" [ref=e5209] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py
+        - listitem [ref=e5210]:
+          - strong [ref=e5211]: Plot
+          - text: —
+          - link "chapter_08/plots/01-hydrogen-pseudopotential.png" [ref=e5212] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_08/plots/01-hydrogen-pseudopotential.png
+        - listitem [ref=e5213]:
+          - strong [ref=e5214]: Chapter section
+          - text: —
+          - 'link "Chapter 08, §8.8 (Worked example: hydrogen 1s, , )" [ref=e5215] [cursor=pointer]':
+            - /url: /DFT-notes/dft-notes/chapter-08/#88-worked-example--hydrogen-1s-l--0-r_c--05a_0
+            - text: "Chapter 08, §8.8 (Worked example: hydrogen 1s,"
+            - img [ref=e5217]
+            - text: ","
+            - img [ref=e5227]
+            - text: )
+          - text: .
+        - listitem [ref=e5246]:
+          - strong [ref=e5247]: Expected output.
+          - text: Coefficients (atomic units, with
+          - img [ref=e5249]
+          - text: "):"
+          - img [ref=e5264]
+          - text: ","
+          - img [ref=e5287]
+          - text: ","
+          - img [ref=e5310]
+          - text: ","
+          - img [ref=e5333]
+          - text: (the exact values depend on the residual tolerance of
+          - code [ref=e5355]: fsolve
+          - text: ; the script reports them to 6 d.p.). Matching at
+          - img [ref=e5357]
+          - text: ": all-electron"
+          - img [ref=e5366]
+          - text: ", pseudo"
+          - img [ref=e5396]
+          - text: (matches to 6 d.p.),
+          - img [ref=e5420]
+          - text: (closed form), pseudo
+          - img [ref=e5441]
+          - text: (quadrature). Pseudo-potential is finite at the origin (
+          - img [ref=e5462]
+          - text: ) and continuous at
+          - img [ref=e5509]
+          - text: (matches
+          - img [ref=e5518]
+          - text: to machine precision). The script prints a residual
+          - img [ref=e5547]
+          - text: on the three matching conditions.
+      - blockquote [ref=e5574]:
+        - paragraph [ref=e5575]:
+          - strong [ref=e5576]: Tip.
+          - text: The pseudo-potential is
+          - emphasis [ref=e5577]: finite
+          - text: at the origin (
+          - img [ref=e5579]
+          - text: ), in contrast to the all-electron
+          - img [ref=e5609]
+          - text: "that diverges. This is the whole point: the pseudo-potential is smooth enough to expand in a small plane-wave basis, while the all-electron one would need 30 oscillations for a heavy atom’s"
+          - img [ref=e5622]
+          - text: .
+      - heading "3.2 Norm-conserving pseudopotential for a 1-D model “carbon”" [level=3] [ref=e5629]
+      - paragraph [ref=e5630]:
+        - strong [ref=e5631]: Problem.
+        - text: A 1-D Schrödinger equation with a
+        - strong [ref=e5632]: Coulomb-like
+        - text: attractive potential that mimics a carbon atom in a chemically-relevant valence channel. Solve the all-electron 1-D Schrödinger equation for the
+        - img [ref=e5634]
+        - text: “valence” state, then construct a
+        - strong [ref=e5643]: Troullier–Martins
+        - text: norm-conserving pseudopotential with cutoff
+        - img [ref=e5645]
+        - text: that reproduces the all-electron wavefunction outside
+        - img [ref=e5665]
+        - text: . Verify the
+        - strong [ref=e5673]: norm-conservation condition
+        - text: ","
+        - img [ref=e5675]
+        - text: ", to better than"
+        - img [ref=e5721]
+        - text: absolute error, and demonstrate that the resulting pseudo-potential is
+        - strong [ref=e5733]: finite at the origin
+        - text: (in contrast to the divergent all-electron
+        - img [ref=e5735]
+        - text: tail).
+      - paragraph [ref=e5747]:
+        - strong [ref=e5748]: Approach.
+        - text: In 1-D, the all-electron potential is taken to be the
+        - strong [ref=e5749]: soft-Coulomb
+        - text: form
+        - img [ref=e5751]
+        - text: with
+        - img [ref=e5793]
+        - text: (mimicking carbon’s effective nuclear charge for a valence electron) and
+        - img [ref=e5803]
+        - text: (the smoothing parameter that removes the 1-D Coulomb singularity at the origin). The all-electron radial Schrödinger equation in 1-D (Ch 08 §8.2) is
+      - paragraph [ref=e5819]:
+        - img [ref=e5821]:
+          - generic [ref=e5825]:
+            - img [ref=e5826]
+            - img [ref=e5893]
+      - paragraph [ref=e5902]:
+        - text: solved on a fine grid
+        - img [ref=e5904]
+        - text: with
+        - img [ref=e5933]
+        - text: points and a 3-point finite-difference stencil for the second derivative. The valence eigenvalue is
+        - img [ref=e5946]
+        - text: (the
+        - img [ref=e5969]
+        - text: state, nodeless in the 1-D Coulomb ground state but with one node in the radial 3-D problem — the analogy here is the carbon
+        - img [ref=e5979]
+        - text: orbital).
+      - paragraph [ref=e5986]:
+        - strong [ref=e5987]: Step 1 — Troullier–Martins ansatz.
+        - text: Inside
+        - img [ref=e5989]
+        - text: ", the pseudo-wavefunction is parameterised as (Ch 08 §8.6)"
+      - paragraph [ref=e6008]:
+        - img [ref=e6010]:
+          - generic [ref=e6014]:
+            - img [ref=e6015]
+            - img [ref=e6084]
+      - paragraph [ref=e6092]:
+        - text: where the four
+        - strong [ref=e6093]: Troullier–Martins
+        - text: coefficients
+        - img [ref=e6095]
+        - text: are determined by four matching conditions at
+        - img [ref=e6129]
+        - text: ":"
+      - list [ref=e6141]:
+        - listitem [ref=e6142]:
+          - strong [ref=e6143]: Value
+          - text: ":"
+          - img [ref=e6145]
+          - text: .
+        - listitem [ref=e6172]:
+          - strong [ref=e6173]: First derivative
+          - text: ":"
+          - img [ref=e6175]
+          - text: .
+        - listitem [ref=e6208]:
+          - strong [ref=e6209]: Second derivative
+          - text: ":"
+          - img [ref=e6211]
+          - text: .
+        - listitem [ref=e6248]:
+          - strong [ref=e6249]: Norm conservation
+          - text: ":"
+          - img [ref=e6251]
+          - text: .
+      - paragraph [ref=e6296]:
+        - text: Conditions (1)–(3) reduce the system to a
+        - strong [ref=e6297]: 3 × 3 nonlinear problem
+        - text: in
+        - img [ref=e6299]
+        - text: (condition (1) fixes
+        - img [ref=e6326]
+        - text: ). The system is solved with
+        - code [ref=e6392]: scipy.optimize.fsolve
+        - text: from the linear-ansatz initial guess
+        - img [ref=e6394]
+        - text: .
+      - paragraph [ref=e6455]:
+        - strong [ref=e6456]: Step 2 — Numerical result.
+        - text: With
+        - img [ref=e6458]
+        - text: ":"
+      - paragraph [ref=e6500]:
+        - img [ref=e6502]:
+          - generic [ref=e6506]:
+            - img [ref=e6507]
+            - img [ref=e6595]
+      - paragraph [ref=e6603]:
+        - text: "Residuals on the four matching conditions:"
+        - img [ref=e6605]
+        - text: ","
+        - img [ref=e6648]
+        - text: ","
+        - img [ref=e6697]
+        - text: ","
+        - img [ref=e6750]
+        - text: . The last is the
+        - strong [ref=e6800]: norm-conservation condition
+        - text: of Ch 08 §8.3, the non-trivial condition that ensures transferability.
+      - paragraph [ref=e6801]:
+        - strong [ref=e6802]: Step 3 — Inversion.
+        - text: The pseudo-potential is obtained by inverting
+        - img [ref=e6804]:
+          - link [ref=e6807] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Awe-08-1d-schrod"
+        - text: ":"
+      - paragraph [ref=e6815]:
+        - img [ref=e6817]:
+          - generic [ref=e6821]:
+            - img [ref=e6822]
+            - img [ref=e6881]
+      - paragraph [ref=e6890]:
+        - text: "(angular-momentum term is zero in 1-D). The result is finite at the origin:"
+        - img [ref=e6892]
+        - text: ", in contrast to the all-electron"
+        - img [ref=e6939]
+        - text: that diverges as
+        - img [ref=e6981]
+        - text: ". This is the practical benefit of the pseudopotential approximation: the all-electron potential is replaced by a smooth, finite one that can be expanded in a small number of plane waves."
+      - paragraph [ref=e6990]:
+        - strong [ref=e6991]: Step 4 — Logarithmic-derivative test.
+        - text: A production pseudopotential is judged by how well it reproduces the all-electron
+        - strong [ref=e6992]: logarithmic derivative
+        - img [ref=e6994]
+        - text: and its energy derivative
+        - img [ref=e7044]
+        - text: at the construction reference. The TM pseudo reproduces both at
+        - img [ref=e7062]
+        - text: to first order in
+        - img [ref=e7075]
+        - text: ":"
+      - paragraph [ref=e7087]:
+        - img [ref=e7089]:
+          - generic [ref=e7093]:
+            - img [ref=e7094]
+            - img [ref=e7224]
+      - paragraph [ref=e7233]:
+        - text: The reproduction is exact at the construction reference and is approximate for
+        - img [ref=e7235]
+        - text: ", with the error growing linearly in"
+        - img [ref=e7248]
+        - text: (Hamann’s theorem, Ch 08 §8.3).
+      - list [ref=e7264]:
+        - listitem [ref=e7265]:
+          - strong [ref=e7266]: Script
+          - text: —
+          - link "chapter_08/02-1d-carbon-pseudopotential.py" [ref=e7267] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_08/02-1d-carbon-pseudopotential.py
+        - listitem [ref=e7268]:
+          - strong [ref=e7269]: Plot
+          - text: —
+          - link "chapter_08/plots/02-1d-carbon-pseudopotential.png" [ref=e7270] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_08/plots/02-1d-carbon-pseudopotential.png
+        - listitem [ref=e7271]:
+          - strong [ref=e7272]: Chapter section
+          - text: —
+          - link "Chapter 08, §8.6 (Troullier–Martins parameterisation)" [ref=e7273] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/#86-ultrasoft-pseudopotentials-vanderbilt
+          - text: ; §8.3 (norm conservation); §8.8 (the H 1s worked example).
+        - listitem [ref=e7274]:
+          - strong [ref=e7275]: Expected output.
+          - text: Coefficients
+          - img [ref=e7277]
+          - text: matching
+          - img [ref=e7307]:
+            - link [ref=e7310] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Awe-08-tm-coeffs"
+          - text: to 6 d.p. Residuals on the four matching conditions all below
+          - img [ref=e7319]
+          - text: . Pseudo-potential
+          - img [ref=e7332]
+          - text: (finite), and the all-electron
+          - img [ref=e7363]
+          - text: "(large and negative). Plot: top panel shows the all-electron"
+          - img [ref=e7394]
+          - text: and pseudo
+          - img [ref=e7406]
+          - text: overlapping perfectly for
+          - img [ref=e7418]
+          - text: ", with the pseudo smoothly interpolating through the origin; middle panel shows the all-electron and pseudo-potentials, with the pseudo’s finite value at"
+          - img [ref=e7446]
+          - text: clearly visible; bottom panel shows the integrated charge
+          - img [ref=e7456]
+          - text: (all-electron, solid) and
+          - img [ref=e7486]
+          - text: (pseudo, dashed), matching for
+          - img [ref=e7520]
+          - text: to 6 d.p. — the visual proof of norm conservation.
+      - blockquote [ref=e7532]:
+        - paragraph [ref=e7533]:
+          - strong [ref=e7534]: Tip.
+          - text: The 1-D model in this example is
+          - emphasis [ref=e7535]: not
+          - text: a real carbon pseudopotential — it is a 1-D pedagogical model that exposes the entire TM construction pipeline in a few dozen lines of code. A real carbon pseudopotential (e.g. the Troullier–Martins
+          - img [ref=e7537]
+          - text: channel with
+          - img [ref=e7545]
+          - text: from the PseudoDojo library) requires the full 3-D radial Schrödinger solver, the Hartree + exchange–correlation potential of the all-electron atom, and the careful scalar-relativistic correction that the 1-D model omits. The same code structure generalises with
+          - code [ref=e7564]: r → r
+          - text: and the addition of the
+          - img [ref=e7566]
+          - text: centrifugal term.
+      - separator [ref=e7595]
+      - heading "4. Solids" [level=2] [ref=e7596]
+      - paragraph [ref=e7597]:
+        - text: "The simplest band-structure calculation: a one-dimensional periodic lattice with a weak periodic potential, treated in a plane-wave basis at the"
+        - img [ref=e7599]
+        - text: "-point and along the Brillouin zone. This is the nearly-free-electron model that is the conceptual ancestor of every modern solid-state code."
+      - heading "4.1 1-D nearly-free-electron band structure" [level=3] [ref=e7604]
+      - paragraph [ref=e7605]:
+        - strong [ref=e7606]: Problem.
+        - text: Band structure of a 1-D periodic lattice with lattice constant
+        - img [ref=e7608]
+        - text: and cosine potential
+        - img [ref=e7623]
+        - text: . Compute and plot the lowest four bands as a function of
+        - img [ref=e7665]
+        - text: across the first Brillouin zone
+        - img [ref=e7671]
+        - text: ", using 21 plane waves ("
+        - img [ref=e7699]
+        - text: ) and 100 k-points.
+      - paragraph [ref=e7722]:
+        - strong [ref=e7723]: Approach.
+        - text: The plane-wave basis is
+        - img [ref=e7725]
+        - text: for
+        - img [ref=e7750]
+        - text: . The
+        - img [ref=e7774]
+        - text: Hamiltonian at each
+        - img [ref=e7786]
+        - text: is
+      - img [ref=e7792]
+      - paragraph [ref=e7899]:
+        - text: with
+        - img [ref=e7901]
+        - text: nonzero only for
+        - img [ref=e7912]
+        - text: ", where it equals"
+        - img [ref=e7933]
+        - text: Hartree. Diagonalise at each of the 100
+        - img [ref=e7958]
+        - text: "-points with"
+        - code [ref=e7963]: numpy.linalg.eigvalsh
+        - text: and plot the lowest four eigenvalues as a function of
+        - img [ref=e7965]
+        - text: .
+      - list [ref=e7970]:
+        - listitem [ref=e7971]:
+          - strong [ref=e7972]: Script
+          - text: —
+          - link "chapter_07/01-free-electron-bands.py" [ref=e7973] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_07/01-free-electron-bands.py
+        - listitem [ref=e7974]:
+          - strong [ref=e7975]: Plot
+          - text: —
+          - link "chapter_07/plots/01-free-electron-bands.png" [ref=e7976] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_07/plots/01-free-electron-bands.png
+        - listitem [ref=e7977]:
+          - strong [ref=e7978]: Chapter section
+          - text: —
+          - 'link "Chapter 07, §7.7 (Worked example: 1-D periodic lattice)" [ref=e7979] [cursor=pointer]':
+            - /url: /DFT-notes/dft-notes/chapter-07/#77-worked-example--band-structure-of-a-1-d-periodic-lattice
+          - text: .
+        - listitem [ref=e7980]:
+          - strong [ref=e7981]: Expected output.
+          - text: At
+          - img [ref=e7983]
+          - text: ", the lowest two bands are split by the matrix element"
+          - img [ref=e8000]
+          - text: ". The script prints a sanity check:"
+          - code [ref=e8037]: eps_1 = +0.08xxx E_h
+          - text: ","
+          - code [ref=e8038]: eps_2 = +0.58xxx E_h
+          - text: ","
+          - code [ref=e8039]: gap ≈ +0.50 E_h
+          - text: (the predicted
+          - img [ref=e8041]
+          - text: is recovered to better than
+          - img [ref=e8054]
+          - text: ). The first band is well described by the free-electron parabola
+          - img [ref=e8067]
+          - text: (band-folded into the first BZ); the second band is well described by
+          - img [ref=e8098]
+          - text: at small
+          - img [ref=e8114]
+          - text: and crosses into
+          - img [ref=e8120]
+          - text: near the BZ boundary.
+      - blockquote [ref=e8150]:
+        - paragraph [ref=e8151]:
+          - strong [ref=e8152]: Tip.
+          - text: The 0.5-Hartree gap at the BZ boundary is
+          - emphasis [ref=e8153]: exactly
+          - text: what the textbook nearly-free-electron formula
+          - img [ref=e8155]
+          - text: predicts for a cosine potential of amplitude
+          - img [ref=e8183]
+          - text: Hartree. The script prints the comparison; if the printed gap differs from 0.5 by more than
+          - img [ref=e8203]
+          - text: ", the plane-wave basis is too small to converge the splitting."
+      - 'heading "4.2 1-D infinite hydrogen chain: tight-binding band structure" [level=3] [ref=e8215]'
+      - paragraph [ref=e8216]:
+        - strong [ref=e8217]: Problem.
+        - text: A 1-D infinite periodic chain of hydrogen atoms with one
+        - img [ref=e8219]
+        - text: orbital per site and
+        - strong [ref=e8226]: lattice constant
+        - img [ref=e8228]
+        - text: (the H–H distance). Construct the
+        - strong [ref=e8233]: tight-binding Bloch Hamiltonian
+        - text: in the Hückel (one-orbital-per-site) approximation, diagonalise it at each
+        - img [ref=e8235]
+        - text: in the first Brillouin zone
+        - img [ref=e8242]
+        - text: ", plot the single band"
+        - img [ref=e8268]
+        - text: ", and discuss the relationship to the H–H distance."
+      - paragraph [ref=e8279]:
+        - strong [ref=e8280]: Approach.
+        - text: The Hückel Hamiltonian in the Wannier (atomic-orbital) basis
+        - img [ref=e8282]
+        - text: has matrix elements
+      - paragraph [ref=e8309]:
+        - img [ref=e8311]:
+          - generic [ref=e8315]:
+            - img [ref=e8316]:
+              - generic [ref=e8357]:
+                - img [ref=e8361]
+                - img [ref=e8363]
+            - img [ref=e8426]
+      - paragraph [ref=e8434]:
+        - text: with
+        - img [ref=e8436]
+        - text: the on-site
+        - img [ref=e8445]
+        - text: energy (
+        - img [ref=e8453]
+        - text: for an isolated H atom in the 1-D model; here we set
+        - img [ref=e8475]
+        - text: as the energy zero and the band dispersion is purely the hopping
+        - img [ref=e8488]
+        - text: ) and
+        - img [ref=e8496]
+        - text: the
+        - strong [ref=e8505]: nearest- neighbour hopping
+        - text: integral. With the Bloch ansatz
+        - img [ref=e8507]
+        - text: ", the secular equation reduces to a"
+        - img [ref=e8549]
+        - text: matrix in the (single-orbital-per-site) basis, with eigenvalue
+      - paragraph [ref=e8558]:
+        - img [ref=e8560]:
+          - generic [ref=e8564]:
+            - img [ref=e8565]
+            - img [ref=e8634]
+      - paragraph [ref=e8642]:
+        - text: The band has
+        - strong [ref=e8643]: bandwidth
+        - img [ref=e8645]
+        - text: and is
+        - strong [ref=e8656]: symmetric
+        - text: about
+        - img [ref=e8658]
+        - text: at
+        - img [ref=e8667]
+        - text: (where
+        - img [ref=e8690]
+        - text: ). The dispersion is a pure cosine in the Hückel limit — the
+        - strong [ref=e8709]: tight-binding limit
+        - text: of a 1-D solid.
+      - paragraph [ref=e8710]:
+        - text: The relationship to the H–H distance
+        - img [ref=e8712]
+        - text: is
+        - strong [ref=e8717]: exponential
+        - text: ": as"
+        - img [ref=e8719]
+        - text: increases, the wavefunction overlap
+        - img [ref=e8725]
+        - text: drops exponentially,
+      - paragraph [ref=e8749]:
+        - img [ref=e8751]:
+          - generic [ref=e8755]:
+            - img [ref=e8756]
+            - img [ref=e8801]
+      - paragraph [ref=e8810]:
+        - text: where
+        - img [ref=e8812]
+        - text: is some reference distance (the H–H equilibrium in a 3-D H₂ molecule is
+        - img [ref=e8821]:
+          - generic [ref=e8841]: Å
+        - text: ) and
+        - img [ref=e8843]
+        - text: is the
+        - strong [ref=e8857]: localisation length
+        - text: of the
+        - img [ref=e8859]
+        - text: orbital. At
+        - img [ref=e8867]
+        - text: ", the overlap is roughly"
+        - img [ref=e8882]
+        - text: of the
+        - img [ref=e8903]
+        - text: value, and
+        - img [ref=e8918]
+        - text: is correspondingly reduced. At
+        - img [ref=e8924]
+        - text: ","
+        - img [ref=e8939]
+        - text: is below 1 % of the
+        - img [ref=e8945]
+        - text: value and the band is essentially flat — the
+        - strong [ref=e8953]: atomic limit
+        - text: .
+      - code [ref=e8955]:
+        - document [ref=e8956]:
+          - generic [ref=e8958]:
+            - generic [ref=e8959]:
+              - generic [ref=e8963]: t
+              - generic [ref=e8967]: t
+              - generic [ref=e8971]: t
+              - generic [ref=e8975]: t
+            - generic [ref=e8976]:
+              - generic [ref=e8981]: H 1
+              - generic [ref=e8986]: H 2
+              - generic [ref=e8991]: H 3
+              - generic [ref=e8996]: H 4
+              - generic [ref=e9001]: ...
+      - list [ref=e9002]:
+        - listitem [ref=e9003]:
+          - strong [ref=e9004]: Script
+          - text: —
+          - link "chapter_07/02-h-chain-tight-binding.py" [ref=e9005] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_07/02-h-chain-tight-binding.py
+        - listitem [ref=e9006]:
+          - strong [ref=e9007]: Plot
+          - text: —
+          - link "chapter_07/plots/02-h-chain-tight-binding.png" [ref=e9008] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_07/plots/02-h-chain-tight-binding.png
+        - listitem [ref=e9009]:
+          - strong [ref=e9010]: Chapter section
+          - text: —
+          - link "Chapter 07, §7.6 (Tight binding vs. nearly-free electron)" [ref=e9011] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: §11.4 (graphene, the 2-D tight-binding extension).
+        - listitem [ref=e9012]:
+          - strong [ref=e9013]: Expected output.
+          - text: With
+          - img [ref=e9015]
+          - text: (twice the H–H equilibrium distance, in the “stretched H chain” regime),
+          - img [ref=e9030]
+          - text: (a typical H–H hopping at this distance; the
+          - img [ref=e9047]
+          - text: hopping in 3-D H₂ is
+          - img [ref=e9062]
+          - text: "):"
+          - list [ref=e9076]:
+            - listitem [ref=e9077]:
+              - strong [ref=e9078]: Band dispersion
+              - text: ":"
+              - img [ref=e9080]
+              - text: ", single band of width"
+              - img [ref=e9112]
+              - text: .
+            - listitem [ref=e9134]:
+              - strong [ref=e9135]: Band minimum
+              - text: ":"
+              - img [ref=e9137]
+              - text: (the bonding states, where the Bloch phase aligns with the hopping sign).
+            - listitem [ref=e9176]:
+              - strong [ref=e9177]: Band maximum
+              - text: ":"
+              - img [ref=e9179]
+              - text: (the antibonding states, where adjacent sites are out of phase).
+            - listitem [ref=e9211]:
+              - strong [ref=e9212]: Density of states
+              - text: ": $g(E) = 1 / (\\pi \\sqrt{4 t^2"
+              - list [ref=e9213]:
+                - listitem [ref=e9214]:
+                  - text: "E^2})"
+                  - img [ref=e9216]
+                  - text: E = \pm 2 t$); the script prints and plots this explicitly.
+            - listitem [ref=e9293]:
+              - strong [ref=e9294]:
+                - text: Effective mass at
+                - img [ref=e9296]
+              - text: ":"
+              - img [ref=e9306]
+              - text: (in atomic units), giving
+              - img [ref=e9358]
+              - text: for
+              - img [ref=e9379]
+              - text: ","
+              - img [ref=e9394]
+              - text: (the effective mass is
+              - emphasis [ref=e9410]: lighter
+              - text: than the bare electron mass for these parameters — the band is “inverted”).
+      - blockquote [ref=e9411]:
+        - paragraph [ref=e9412]:
+          - strong [ref=e9413]: Tip.
+          - text: The Hückel H chain is the
+          - strong [ref=e9414]: 1-D tight-binding limit
+          - text: "of a real H chain in 3-D. A 3-D H chain in the bcc structure (the predicted ground state of atomic hydrogen at high pressure) has a richer band structure: a"
+          - img [ref=e9416]
+          - text: "-derived band that crosses the Fermi level and produces a"
+          - strong [ref=e9423]: metallic
+          - text: state at low enough lattice constant. Ashcroft’s prediction of “metallic hydrogen” (1968) — possibly a room-temperature superconductor at sufficient pressure — is the high-pressure version of the model solved here. The 1-D pedagogical calculation is the same Hamiltonian, modulo the dimensionality of the
+          - img [ref=e9425]
+          - text: "-sum."
+      - separator [ref=e9430]
+      - heading "5. Geometry optimisation" [level=2] [ref=e9431]
+      - paragraph [ref=e9432]: "The chapter-09 worked example: relax the H₂ bond length from a stretched geometry to equilibrium with the analytic Hellmann–Feynman force, BFGS step, and line search, on top of the STO-3G HF solution of §2.1. The example exercises the full chain “energy + force → step → update → converged geometry” that every production code runs as a black box."
+      - heading "5.1 H₂ bond relaxation with the analytic HF gradient" [level=3] [ref=e9433]
+      - paragraph [ref=e9434]:
+        - strong [ref=e9435]: Problem.
+        - text: Starting from the stretched geometry
+        - img [ref=e9437]
+        - text: (well above equilibrium), use the analytic Hartree–Fock gradient to relax the H₂ bond length to equilibrium. Plot the energy curve
+        - img [ref=e9454]
+        - text: ", the magnitude of the force, the BFGS step history, and verify that the converged bond length is"
+        - img [ref=e9466]
+        - text: with
+        - img [ref=e9488]
+        - text: (the Szabo & Ostlund table 3.5 reference, matching §2.1 to all six digits).
+      - paragraph [ref=e9513]:
+        - strong [ref=e9514]: Approach.
+        - text: The H₂ energy
+        - img [ref=e9516]
+        - text: in the STO-3G basis is parametric in
+        - img [ref=e9528]
+        - text: "through the one- and two-electron integrals of §2.1 (overlap, kinetic, nuclear attraction, ERIs). At each step:"
+      - list [ref=e9533]:
+        - listitem [ref=e9534]:
+          - strong [ref=e9535]: Solve HF.
+          - text: Build the four matrices
+          - img [ref=e9537]
+          - text: from the displaced STO-3G primitives, run the Roothaan SCF (§2.1) to convergence, and read off
+          - img [ref=e9594]
+          - text: .
+        - listitem [ref=e9626]:
+          - paragraph [ref=e9627]:
+            - strong [ref=e9628]: Compute the analytic force.
+            - text: For a homonuclear diatomic with one basis function per atom, the Hellmann–Feynman force is
+          - paragraph [ref=e9629]:
+            - img [ref=e9631]:
+              - generic [ref=e9635]:
+                - img [ref=e9636]
+                - img [ref=e9754]
+          - paragraph [ref=e9763]:
+            - text: with
+            - img [ref=e9765]
+            - text: ", the bond on the"
+            - img [ref=e9775]
+            - text: "-axis, and the molecule centred at the origin. The two-electron contribution is"
+            - emphasis [ref=e9780]: not
+            - text: "a separate term: it enters implicitly through"
+            - img [ref=e9782]
+            - text: (the density depends on
+            - img [ref=e9795]
+            - text: through the Fock matrix). The
+            - strong [ref=e9800]: Pulay correction
+            - text: is
+          - paragraph [ref=e9801]:
+            - img [ref=e9803]:
+              - generic [ref=e9807]:
+                - img [ref=e9808]
+                - img [ref=e9909]
+          - paragraph [ref=e9918]:
+            - text: For H₂ in STO-3G with one
+            - img [ref=e9920]
+            - text: "-function per atom, the reflection symmetry through the bond midpoint means the Pulay term is"
+            - strong [ref=e9925]:
+              - text: identically zero at every
+              - img [ref=e9927]
+            - text: — the primitive
+            - img [ref=e9933]
+            - text: "-Gaussians depend on"
+            - img [ref=e9939]
+            - text: only through
+            - img [ref=e9945]
+            - text: and $\lvert\mathbf r
+          - list [ref=e9963]:
+            - listitem [ref=e9964]:
+              - text: \mathbf R_B\rvert
+              - img [ref=e9966]
+              - text: \partial_R \chi_\mu
+              - img [ref=e10022]
+              - text: \hat F - \varepsilon_i
+              - img [ref=e10080]
+              - text: p
+              - img [ref=e10174]
+              - text: d$ functions or diffuse primitives, the Pulay correction is non-zero and must be included; see Ch 09 §9.5.)
+        - listitem [ref=e10179]:
+          - paragraph [ref=e10180]:
+            - strong [ref=e10181]: BFGS update.
+            - text: Approximate the inverse Hessian
+            - img [ref=e10183]
+            - text: . Starting from
+            - img [ref=e10221]
+            - text: (a Newton step with unit Hessian), the BFGS update reads
+          - paragraph [ref=e10233]:
+            - img [ref=e10235]:
+              - generic [ref=e10239]:
+                - img [ref=e10240]
+                - img [ref=e10344]
+          - paragraph [ref=e10352]:
+            - text: with
+            - img [ref=e10354]
+            - text: ", $\\mathbf y_k = g_{k+1}"
+          - list [ref=e10382]:
+            - listitem [ref=e10383]:
+              - text: g_k
+              - img [ref=e10385]
+              - text: \rho_k = 1 / (\mathbf y_k^\top \mathbf s_k)
+              - img [ref=e10391]
+              - text: "R_{k+1} = R_k - H_k\\, g_k"
+              - img [ref=e10415]
+              - text: g_k = F(R_k)$.
+        - listitem [ref=e10430]:
+          - strong [ref=e10431]: Convergence.
+          - text: Stop when
+          - img [ref=e10433]
+          - text: .
+      - code [ref=e10476]:
+        - document [ref=e10478]:
+          - generic [ref=e10479]:
+            - generic [ref=e10486]: Syntax error in text
+            - generic [ref=e10487]: mermaid version 10.9.1
+      - list [ref=e10488]:
+        - listitem [ref=e10489]:
+          - strong [ref=e10490]: Script
+          - text: —
+          - link "chapter_09/01-h2-bond-relaxation.py" [ref=e10491] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py
+        - listitem [ref=e10492]:
+          - strong [ref=e10493]: Plot
+          - text: —
+          - link "chapter_09/plots/01-h2-bond-relaxation.png" [ref=e10494] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_09/plots/01-h2-bond-relaxation.png
+        - listitem [ref=e10495]:
+          - strong [ref=e10496]: Chapter section
+          - text: —
+          - link "Chapter 09, §9.6 (Geometry optimisation)" [ref=e10497] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-09/#96-geometry-optimisation
+          - text: ; §9.5 (forces in a Gaussian basis); §9.7 (BFGS).
+        - listitem [ref=e10498]:
+          - strong [ref=e10499]: Expected output.
+          - text: Starting from
+          - img [ref=e10501]
+          - text: with the BFGS Hessian initialised to
+          - img [ref=e10521]
+          - text: ":"
+          - list [ref=e10535]:
+            - listitem [ref=e10536]:
+              - strong [ref=e10537]: Iteration 1
+              - text: ":"
+              - img [ref=e10539]
+              - text: (one Newton step with
+              - img [ref=e10560]
+              - text: lands essentially at the minimum, because the curvature is
+              - img [ref=e10573]
+              - text: in atomic units),
+              - img [ref=e10585]
+              - text: .
+            - listitem [ref=e10615]:
+              - strong [ref=e10616]: Iteration 2
+              - text: ":"
+              - img [ref=e10618]
+              - text: (below the
+              - img [ref=e10665]
+              - text: threshold; the calculation has converged in
+              - strong [ref=e10677]: two
+              - text: iterations).
+            - listitem [ref=e10678]:
+              - strong [ref=e10679]: Converged geometry
+              - text: ":"
+              - img [ref=e10681]
+              - text: ","
+              - img [ref=e10703]
+              - text: ","
+              - img [ref=e10729]
+              - text: (numerical noise from quadrature in the force integral).
+            - listitem [ref=e10774]:
+              - strong [ref=e10775]: Energy curve
+              - text: (sampled at
+              - img [ref=e10777]
+              - text: "):"
+              - img [ref=e10837]
+              - text: ranges from
+              - img [ref=e10843]
+              - text: at
+              - img [ref=e10859]
+              - text: to
+              - img [ref=e10871]
+              - text: at
+              - img [ref=e10887]
+              - text: ", with minimum"
+              - img [ref=e10899]
+              - text: at
+              - img [ref=e10917]
+              - text: . The dissociation limit
+              - img [ref=e10930]
+              - text: is recovered to within
+              - img [ref=e10968]
+              - text: at
+              - img [ref=e10982]
+              - text: .
+            - listitem [ref=e10993]:
+              - strong [ref=e10994]: Force constant
+              - text: ": finite difference"
+              - img [ref=e10996]
+              - text: ", giving a vibrational frequency"
+              - img [ref=e11080]
+              - text: (the well-known H₂ stretch).
+      - blockquote [ref=e11129]:
+        - paragraph [ref=e11130]:
+          - strong [ref=e11131]: Tip.
+          - text: The H₂/STO-3G system converges in two iterations only because the
+          - emphasis [ref=e11132]: initial
+          - text: Hessian guess
+          - img [ref=e11134]
+          - text: is close to the true curvature. A more interesting test is to start from
+          - img [ref=e11147]
+          - text: (a hundred-fold underestimate); the same calculation then needs ~6 iterations, with the Hessian being progressively refined. The BFGS update formula
+          - img [ref=e11163]:
+            - link [ref=e11166] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Awe-09-bfgs"
+          - text: is positive-definite by construction if
+          - img [ref=e11175]
+          - text: (the
+          - strong [ref=e11196]: curvature condition
+          - text: ), which the algorithm enforces by skipping any step that violates it.
+      - separator [ref=e11197]
+      - heading "6. Phonons" [level=2] [ref=e11198]
+      - paragraph [ref=e11199]:
+        - text: "The chapter-10 worked example: build the"
+        - img [ref=e11201]
+        - text: dynamical matrix of a 1-D diatomic chain at each wavevector
+        - img [ref=e11211]
+        - text: in the first Brillouin zone, diagonalise it, and read off the acoustic and optical branches
+        - img [ref=e11217]
+        - text: ","
+        - img [ref=e11233]
+        - text: . The example is the
+        - strong [ref=e11248]: textbook entry point
+        - text: "to phonons: every production phonon calculation (Quantum ESPRESSO"
+        - code [ref=e11249]: PHonon
+        - text: ", ABINIT"
+        - code [ref=e11250]: DFPT
+        - text: ", Phonopy, …) reduces to “diagonalise"
+        - img [ref=e11252]
+        - text: ” once the force constants are in hand.
+      - heading "6.1 1-D diatomic-chain dispersion" [level=3] [ref=e11264]
+      - paragraph [ref=e11265]:
+        - strong [ref=e11266]: Problem.
+        - text: A 1-D infinite chain of alternating masses
+        - img [ref=e11268]
+        - text: and
+        - img [ref=e11277]
+        - text: (
+        - img [ref=e11286]
+        - text: ","
+        - img [ref=e11299]
+        - text: in units of the proton mass,
+        - img [ref=e11312]
+        - text: ) with lattice constant
+        - img [ref=e11321]
+        - text: and spring constant
+        - img [ref=e11336]
+        - text: between nearest neighbours. Compute the phonon dispersion
+        - img [ref=e11361]
+        - text: in the first Brillouin zone
+        - img [ref=e11373]
+        - text: ", plot the two branches, and verify the limits"
+        - img [ref=e11399]
+        - text: and the optical gap at
+        - img [ref=e11419]
+        - text: .
+      - paragraph [ref=e11428]:
+        - strong [ref=e11429]: Approach.
+        - text: The classical equations of motion of two masses connected by springs yield, after the Bloch ansatz
+        - img [ref=e11431]
+        - text: ", the"
+        - img [ref=e11496]
+        - strong [ref=e11505]: dynamical matrix
+        - text: (Ch 10 §10.3)
+      - paragraph [ref=e11506]:
+        - img [ref=e11508]:
+          - generic [ref=e11512]:
+            - img [ref=e11513]
+            - img [ref=e11615]
+      - paragraph [ref=e11623]:
+        - text: This form uses the convention that the two atoms in the unit cell are labelled
+        - img [ref=e11625]
+        - text: and
+        - img [ref=e11631]
+        - text: ", with"
+        - img [ref=e11637]
+        - text: at
+        - img [ref=e11643]
+        - text: and
+        - img [ref=e11651]
+        - text: at
+        - img [ref=e11657]
+        - text: (so the
+        - emphasis [ref=e11677]: lattice constant
+        - text: of the chain is
+        - img [ref=e11679]
+        - text: but the nearest-neighbour distance is
+        - img [ref=e11685]
+        - text: ). The eigenvalues of
+        - img [ref=e11696]
+        - text: are
+        - img [ref=e11709]
+        - text: and
+        - img [ref=e11728]
+        - text: (acoustic and optical). The two limits are
+      - paragraph [ref=e11746]:
+        - img [ref=e11748]:
+          - generic [ref=e11752]:
+            - img [ref=e11753]
+            - img [ref=e12044]
+      - paragraph [ref=e12052]:
+        - text: The acoustic branch is a sound wave (linear in
+        - img [ref=e12054]
+        - text: at small
+        - img [ref=e12060]
+        - text: ", zero frequency at"
+        - img [ref=e12066]
+        - text: ). The optical branch sits at finite frequency at
+        - img [ref=e12072]
+        - text: (a long-wavelength out-of-phase oscillation of the two atoms in the unit cell) and
+        - emphasis [ref=e12077]: "degenerates wit`h"
+        - text: ’ the acoustic branch at the BZ boundary
+        - img [ref=e12079]
+        - text: in the
+        - emphasis [ref=e12093]: equal-mass
+        - text: limit (where the chain becomes monatomic); with
+        - img [ref=e12095]
+        - text: the two branches
+        - strong [ref=e12110]: anticross
+        - text: at the BZ boundary and the gap there equals
+      - paragraph [ref=e12111]:
+        - img [ref=e12113]:
+          - generic [ref=e12117]:
+            - img [ref=e12118]
+            - img [ref=e12225]
+      - paragraph [ref=e12234]:
+        - text: This is the simplest possible statement of the
+        - strong [ref=e12235]: optical–acoustic gap
+        - text: "in a 1-D diatomic lattice. In a 3-D diatomic crystal (NaCl, ZnS, …) the picture generalises: there are 3 acoustic branches and"
+        - img [ref=e12237]
+        - text: optical branches per unit cell of
+        - img [ref=e12253]
+        - text: atoms, and the optical frequencies at
+        - img [ref=e12259]
+        - text: are the
+        - strong [ref=e12264]: infrared- active TO modes
+        - text: that couple to light (Ch 10 §10.5).
+      - code [ref=e12266]:
+        - document [ref=e12267]:
+          - generic [ref=e12269]:
+            - generic [ref=e12270]:
+              - generic [ref=e12274]: K
+              - generic [ref=e12278]: K
+              - generic [ref=e12282]: K
+              - generic [ref=e12286]: K
+            - generic [ref=e12287]:
+              - generic [ref=e12292]: m_1 at n*a
+              - generic [ref=e12297]: m_2 at n*a + a/2
+              - generic [ref=e12302]: m_1 at n*a + a
+              - generic [ref=e12307]: m_2 at n*a + 3a/2
+              - generic [ref=e12312]: ...
+      - list [ref=e12313]:
+        - listitem [ref=e12314]:
+          - strong [ref=e12315]: Script
+          - text: —
+          - link "chapter_10/01-diatomic-chain.py" [ref=e12316] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_10/01-diatomic-chain.py
+        - listitem [ref=e12317]:
+          - strong [ref=e12318]: Plot
+          - text: —
+          - link "chapter_10/plots/01-diatomic-chain.png" [ref=e12319] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_10/plots/01-diatomic-chain.png
+        - listitem [ref=e12320]:
+          - strong [ref=e12321]: Chapter section
+          - text: —
+          - link "Chapter 10, §10.3 (The 1-D diatomic chain)" [ref=e12322] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/#103-density-functional-perturbation-theory-dfpt
+          - text: ; §10.1 (the dynamical matrix).
+        - listitem [ref=e12323]:
+          - strong [ref=e12324]: Expected output.
+          - text: With
+          - img [ref=e12326]
+          - text: ","
+          - img [ref=e12344]
+          - text: ","
+          - img [ref=e12362]
+          - text: ","
+          - img [ref=e12387]
+          - text: ":"
+          - list [ref=e12401]:
+            - listitem [ref=e12402]:
+              - strong [ref=e12403]: Acoustic branch
+              - text: ":"
+              - img [ref=e12405]
+              - text: ","
+              - img [ref=e12425]
+              - text: (matches the analytic limit
+              - img [ref=e12464]
+              - text: to 4 d.p.).
+            - listitem [ref=e12493]:
+              - strong [ref=e12494]: Optical branch
+              - text: ":"
+              - img [ref=e12496]
+              - text: (matches the analytic
+              - img [ref=e12535]
+              - text: to 4 d.p.),
+              - img [ref=e12588]
+              - text: (matches
+              - img [ref=e12632]
+              - text: ).
+            - listitem [ref=e12666]:
+              - strong [ref=e12667]:
+                - text: Gap at
+                - img [ref=e12669]
+              - text: ":"
+              - img [ref=e12675]
+              - text: .
+            - listitem [ref=e12697]:
+              - strong [ref=e12698]: Anticrossing at the BZ boundary
+              - text: ":"
+              - img [ref=e12700]
+              - text: .
+            - listitem [ref=e12750]:
+              - strong [ref=e12751]:
+                - text: Group velocity at
+                - img [ref=e12753]
+              - text: "(slope of acoustic branch):"
+              - img [ref=e12763]
+              - text: ", recovering the long- wavelength sound speed of the chain."
+            - listitem [ref=e12823]:
+              - strong [ref=e12824]: Plot
+              - text: ": two branches on the"
+              - img [ref=e12826]
+              - text: –
+              - img [ref=e12832]
+              - text: plane; the acoustic branch is symmetric about
+              - img [ref=e12838]
+              - text: and zero at
+              - img [ref=e12848]
+              - text: ", the optical branch has its minimum at"
+              - img [ref=e12854]
+              - text: and its maximum at
+              - img [ref=e12864]
+              - text: (with the anticrossing visible as the two branches bending away from each other near
+              - img [ref=e12879]
+              - text: ).
+      - blockquote [ref=e12893]:
+        - paragraph [ref=e12894]:
+          - strong [ref=e12895]: Tip.
+          - text: The two branches look almost degenerate at the BZ boundary when
+          - img [ref=e12897]
+          - text: — the anticrossing is
+          - emphasis [ref=e12912]: very narrow
+          - text: . Setting
+          - img [ref=e12914]
+          - text: collapses the gap to zero and the dispersion becomes the textbook monatomic chain
+          - img [ref=e12934]
+          - text: ", with the band folded into the smaller BZ. This is a useful sanity check: the script should print"
+          - img [ref=e12983]
+          - text: to machine precision when
+          - img [ref=e13006]
+          - text: .
+      - separator [ref=e13021]
+      - heading "7. Band structures" [level=2] [ref=e13022]
+      - paragraph [ref=e13023]:
+        - text: "The chapter-11 worked example: build the"
+        - img [ref=e13025]
+        - text: tight-binding Bloch Hamiltonian of graphene at each
+        - img [ref=e13035]
+        - text: in the Brillouin zone, diagonalise it, plot the
+        - img [ref=e13042]
+        - text: and
+        - img [ref=e13048]
+        - text: bands along the
+        - img [ref=e13057]
+        - text: –K–M–
+        - img [ref=e13063]
+        - text: path, and verify the linear
+        - strong [ref=e13068]: Dirac crossing
+        - text: at the K point. The example is the entry point to the band- structure machinery of every solid-state code.
+      - heading "7.1 Graphene tight-binding bands" [level=3] [ref=e13069]
+      - paragraph [ref=e13070]:
+        - strong [ref=e13071]: Problem.
+        - text: Graphene’s
+        - img [ref=e13073]
+        - text: "-band tight-binding band structure in the honeycomb lattice, with one"
+        - img [ref=e13079]
+        - text: orbital per carbon and nearest-neighbour hopping
+        - img [ref=e13088]
+        - text: (the “graphene tight-binding” parameter; the actual DFT value is
+        - img [ref=e13121]
+        - text: eV depending on the functional). Plot the
+        - img [ref=e13137]
+        - text: and
+        - img [ref=e13143]
+        - text: bands along the high-symmetry path
+        - img [ref=e13152]
+        - text: ", with the high-symmetry points"
+      - paragraph [ref=e13169]:
+        - img [ref=e13171]:
+          - generic [ref=e13175]:
+            - img [ref=e13176]
+            - img [ref=e13275]
+      - paragraph [ref=e13284]:
+        - text: where
+        - img [ref=e13286]:
+          - generic [ref=e13299]: Å
+        - text: is the graphene lattice constant.
+      - paragraph [ref=e13312]:
+        - strong [ref=e13313]: Approach.
+        - text: The honeycomb lattice is a
+        - strong [ref=e13314]: bipartite
+        - text: "lattice with two sites per unit cell: an A sublattice and a B sublattice. Each A site has three B neighbours at the vectors"
+      - paragraph [ref=e13315]:
+        - img [ref=e13317]:
+          - generic [ref=e13321]:
+            - img [ref=e13322]
+            - img [ref=e13450]
+      - paragraph [ref=e13458]:
+        - text: in a coordinate system with the A site at the origin and the C–C bond length
+        - img [ref=e13460]
+        - text: . The
+        - strong [ref=e13483]: Bloch Hamiltonian
+        - text: at wavevector
+        - img [ref=e13485]
+        - text: in the basis
+        - img [ref=e13492]
+        - text: is
+      - paragraph [ref=e13511]:
+        - img [ref=e13513]:
+          - generic [ref=e13517]:
+            - img [ref=e13518]
+            - img [ref=e13618]
+      - paragraph [ref=e13627]:
+        - text: This is a
+        - img [ref=e13629]
+        - text: Hermitian matrix for every
+        - img [ref=e13639]
+        - text: ". The diagonalisation is analytical:"
+      - paragraph [ref=e13645]:
+        - img [ref=e13647]:
+          - generic [ref=e13651]:
+            - img [ref=e13652]
+            - img [ref=e13693]
+      - paragraph [ref=e13701]:
+        - text: "The two eigenvalues are symmetric about zero: the"
+        - img [ref=e13703]
+        - text: band (lower) and the $\pi^
+        - emphasis [ref=e13708]: $ band (upper), with the band gap zero *everywhere
+        - img [ref=e13710]
+        - text: satisfies
+        - img [ref=e13717]
+        - text: — i.e. at the
+        - strong [ref=e13733]: K and K’ points
+        - text: of the Brillouin zone. The K-point coordinates are given in
+        - img [ref=e13735]:
+          - link [ref=e13738] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Awe-11-graphene-kpoints"
+        - text: ; K’ is at
+        - img [ref=e13747]
+        - text: .
+      - paragraph [ref=e13804]:
+        - text: At the K point, the dispersion is
+        - strong [ref=e13805]: linear
+        - text: in
+        - img [ref=e13807]
+        - text: ":"
+      - paragraph [ref=e13823]:
+        - img [ref=e13825]:
+          - generic [ref=e13829]:
+            - img [ref=e13830]
+            - img [ref=e13934]
+      - paragraph [ref=e13943]:
+        - text: The Fermi velocity
+        - img [ref=e13945]
+        - text: is the slope of the linear band, and is
+        - img [ref=e13954]
+        - text: in graphene — 1/300 of the speed of light. The
+        - strong [ref=e13969]: massless Dirac fermion
+        - text: description of graphene’s low-energy excitations is the reason for the anomalous integer quantum Hall effect, Klein tunnelling, and many of graphene’s other transport properties.
+      - code [ref=e13971]:
+        - document [ref=e13973]:
+          - generic [ref=e13974]:
+            - generic [ref=e13981]: Syntax error in text
+            - generic [ref=e13982]: mermaid version 10.9.1
+      - list [ref=e13983]:
+        - listitem [ref=e13984]:
+          - strong [ref=e13985]: Script
+          - text: —
+          - link "chapter_11/01-graphene-bands.py" [ref=e13986] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_11/01-graphene-bands.py
+        - listitem [ref=e13987]:
+          - strong [ref=e13988]: Plot
+          - text: —
+          - link "chapter_11/plots/01-graphene-bands.png" [ref=e13989] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_11/plots/01-graphene-bands.png
+        - listitem [ref=e13990]:
+          - strong [ref=e13991]: Chapter section
+          - text: —
+          - link "Chapter 11, §11.4 (Graphene tight-binding bands)" [ref=e13992] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/#1114-the-band-structure-as-a-function
+          - text: ; §11.3 (k-paths, FCC, hexagonal).
+        - listitem [ref=e13993]:
+          - strong [ref=e13994]: Expected output.
+          - text: With
+          - img [ref=e13996]
+          - text: ","
+          - img [ref=e14014]
+          - text: ", k-path"
+          - img [ref=e14036]
+          - text: sampled on 200 points (with the
+          - img [ref=e14054]
+          - text: and
+          - img [ref=e14064]
+          - text: segments of equal length and
+          - img [ref=e14074]
+          - text: "twice that length, so the path is uniformly parametrised):"
+          - list [ref=e14083]:
+            - listitem [ref=e14084]:
+              - strong [ref=e14085]: Bandwidth
+              - text: ":"
+              - img [ref=e14087]
+              - text: eV. The
+              - img [ref=e14123]
+              - text: band minimum is at
+              - img [ref=e14129]
+              - text: with
+              - img [ref=e14135]
+              - text: ", the maximum is at K with"
+              - img [ref=e14162]
+              - text: .
+            - listitem [ref=e14180]:
+              - strong [ref=e14181]: Gap at the Dirac point
+              - text: ":"
+              - img [ref=e14183]
+              - text: to machine precision (the script should print
+              - img [ref=e14199]
+              - text: ).
+            - listitem [ref=e14226]:
+              - strong [ref=e14227]: Fermi velocity
+              - text: ":"
+              - img [ref=e14229]
+              - text: in atomic units, or
+              - img [ref=e14283]
+              - text: after unit conversion (with
+              - img [ref=e14328]:
+                - generic [ref=e14345]: Å
+              - text: ","
+              - img [ref=e14347]
+              - text: ", the factor"
+              - img [ref=e14395]
+              - text: converts to SI; the precise
+              - img [ref=e14412]
+              - text: is recovered once the correct
+              - img [ref=e14433]
+              - text: values are plugged in).
+            - listitem [ref=e14442]:
+              - strong [ref=e14443]: Plot
+              - text: ": two bands symmetric about zero. The"
+              - img [ref=e14445]
+              - text: band has its maximum at the K point (where it touches the
+              - img [ref=e14451]
+              - text: band) and a deep minimum at
+              - img [ref=e14460]
+              - text: . The K’ point (not on the
+              - img [ref=e14466]
+              - text: –M–K–
+              - img [ref=e14472]
+              - text: path) carries the other Dirac cone. The Brillouin-zone
+              - strong [ref=e14477]: edges
+              - text: of the BZ show the
+              - strong [ref=e14478]: M-point dispersion
+              - img [ref=e14480]
+              - text: ", the well-known saddle-point energy that gives the"
+              - strong [ref=e14501]: van Hove singularity
+              - text: in the graphene density of states.
+      - blockquote [ref=e14502]:
+        - paragraph [ref=e14503]:
+          - strong [ref=e14504]: Tip.
+          - text: The graphene tight-binding Hamiltonian
+          - img [ref=e14506]:
+            - link [ref=e14509] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Awe-11-graphene-Hk"
+          - text: is identical in shape to the
+          - strong [ref=e14517]: 2-D massive Dirac Hamiltonian
+          - text: ": a"
+          - img [ref=e14519]
+          - text: matrix with a single off-diagonal coupling and a diagonal mass term. Adding a sublattice- staggered on-site energy
+          - img [ref=e14529]
+          - text: to the diagonal,
+          - img [ref=e14537]
+          - text: ", opens a gap of"
+          - img [ref=e14587]
+          - text: at the K point and turns graphene into a 2-D insulator — the
+          - strong [ref=e14594]: BHZ model
+          - text: of the quantum spin Hall effect. This is the connection the chapter’s §11.5.2 makes between graphene and topological insulators.
+      - separator [ref=e14595]
+      - heading "8. Excited states" [level=2] [ref=e14596]
+      - paragraph [ref=e14597]:
+        - text: "The chapter-12 worked example: a 2-level system with ground state"
+        - img [ref=e14599]
+        - text: and excited state
+        - img [ref=e14609]
+        - text: separated by transition energy
+        - img [ref=e14619]
+        - text: ", kicked by a short optical pulse. The example has two halves: (i) the"
+        - strong [ref=e14629]: linear-response absorption spectrum
+        - text: as a Lorentzian at
+        - img [ref=e14631]
+        - text: with width
+        - img [ref=e14640]
+        - text: (the spontaneous-emission rate of the upper state), and (ii)
+        - strong [ref=e14645]: real-time propagation
+        - text: of the density matrix with a delta-kick initial condition, followed by a Fourier transform of the time-dependent dipole that yields the same Lorentzian. The agreement of the two halves is the sanity check that the TDDFT machinery of chapter 12 (linear response
+        - emphasis [ref=e14646]: "an`d"
+        - text: ’ real time) gives the same answer.
+      - heading "8.1 Two-level absorption spectrum" [level=3] [ref=e14647]
+      - paragraph [ref=e14648]:
+        - strong [ref=e14649]: Problem.
+        - text: A 2-level system with Hamiltonian
+      - paragraph [ref=e14650]:
+        - img [ref=e14652]:
+          - generic [ref=e14656]:
+            - img [ref=e14657]
+            - img [ref=e14713]
+      - paragraph [ref=e14721]:
+        - text: (in atomic units, with the ground state at energy
+        - img [ref=e14723]
+        - text: and the excited state at energy
+        - img [ref=e14729]
+        - text: ). A time-dependent electric field
+        - img [ref=e14738]
+        - text: couples to the dipole moment
+        - img [ref=e14775]
+        - text: with matrix element
+        - img [ref=e14795]
+        - text: . Compute (a) the
+        - strong [ref=e14826]: linear-response absorption spectrum
+        - img [ref=e14828]
+        - text: (a Lorentzian at
+        - img [ref=e14840]
+        - text: with width
+        - img [ref=e14849]
+        - text: ), and (b) the
+        - strong [ref=e14854]:
+          - text: time-dependent dipole
+          - img [ref=e14856]
+        - text: after a delta-kick perturbation at
+        - img [ref=e14868]
+        - text: ", and verify that the Fourier transform of"
+        - img [ref=e14878]
+        - text: is the same Lorentzian. Discuss the
+        - strong [ref=e14889]: Kramers–Kronig relation
+        - text: between the real and imaginary parts of the susceptibility.
+      - paragraph [ref=e14890]:
+        - strong [ref=e14891]: Approach.
+        - text: "The linear-response treatment (Ch 12 §12.7) starts from Fermi’s golden rule (Ch 01 §1.8.3):"
+      - paragraph [ref=e14892]:
+        - img [ref=e14894]:
+          - generic [ref=e14898]:
+            - img [ref=e14899]
+            - img [ref=e14973]
+      - paragraph [ref=e14982]:
+        - text: The cross section
+        - img [ref=e14984]
+        - text: is proportional to
+        - img [ref=e14996]
+        - text: divided by the incident flux
+        - img [ref=e15016]
+        - text: . For a
+        - strong [ref=e15040]: Lorentzian lineshape
+        - text: of width
+        - img [ref=e15042]
+        - text: (the spontaneous-emission rate of the upper state,
+        - img [ref=e15048]
+        - text: in spectroscopic notation; Ch 12 §12.8), the
+        - img [ref=e15059]
+        - text: is broadened into
+      - paragraph [ref=e15064]:
+        - img [ref=e15066]:
+          - generic [ref=e15070]:
+            - img [ref=e15071]
+            - img [ref=e15188]
+      - paragraph [ref=e15197]:
+        - text: Equation
+        - img [ref=e15199]:
+          - link [ref=e15202] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Awe-12-lorentz"
+        - text: is the
+        - strong [ref=e15210]: absorption lineshape of a single molecule
+        - text: in the weak-field (linear-response) limit. The FWHM is exactly
+        - img [ref=e15212]
+        - text: .
+      - paragraph [ref=e15217]:
+        - text: For the
+        - strong [ref=e15218]: real-time
+        - text: half, propagate the
+        - img [ref=e15220]
+        - text: density matrix
+        - img [ref=e15230]
+        - text: from
+        - img [ref=e15242]
+        - text: under a delta-kick perturbation
+        - img [ref=e15252]
+        - text: ", with damping"
+        - img [ref=e15305]
+        - text: on the off-diagonal
+        - img [ref=e15311]
+        - text: . The
+        - strong [ref=e15322]: Liouville–von Neumann
+        - text: equation with the Lindblad-style damping is
+      - paragraph [ref=e15323]:
+        - text: "\\begin{equation} \\label{eq:we-12-liouville} \\dot{\\rho}"
+        - emphasis [ref=e15324]: "{gg} \\;=\\; i\\,\\frac{\\mu"
+        - text: "{ge} E(t)}{\\hbar}\\, (\\rho_{ge} - \\rho_{eg}) + \\gamma \\rho_{ee} , \\qquad \\dot{\\rho}"
+        - emphasis [ref=e15325]: "{ee} \\;=\\; -i\\,\\frac{\\mu"
+        - text: "{ge} E(t)}{\\hbar}\\, (\\rho_{ge} - \\rho_{eg}) - \\gamma \\rho_{ee} , \\qquad \\dot{\\rho}"
+        - emphasis [ref=e15326]: "{ge} \\;=\\; -i \\omega_0 \\rho"
+        - text: "{ge} - i\\,\\frac{\\mu_{ge} E(t)}{\\hbar}\\, (\\rho_{ee} - \\rho_{gg}) - \\frac{\\gamma}{2} \\rho_{ge} . \\end{equation}"
+      - paragraph [ref=e15327]:
+        - text: After the kick,
+        - img [ref=e15329]
+        - text: for
+        - img [ref=e15345]
+        - text: and
+        - img [ref=e15355]
+        - text: — a damped oscillation. The dipole is
+        - img [ref=e15415]
+        - text: (the factor of 2 is for the real part of the symmetric density matrix). Its Fourier transform is
+      - paragraph [ref=e15459]:
+        - img [ref=e15461]:
+          - generic [ref=e15465]:
+            - img [ref=e15466]
+            - img [ref=e15563]
+      - paragraph [ref=e15572]:
+        - text: a
+        - strong [ref=e15573]: complex Lorentzian
+        - text: with the same width and centre as the linear-response cross section. The
+        - strong [ref=e15574]: Kramers–Kronig relation
+        - text: (Ch 12 §12.9) connects the real and imaginary parts of
+        - img [ref=e15576]
+        - text: ":"
+      - paragraph [ref=e15587]:
+        - img [ref=e15589]:
+          - generic [ref=e15593]:
+            - img [ref=e15594]
+            - img [ref=e15746]
+      - paragraph [ref=e15755]:
+        - text: The imaginary part of
+        - img [ref=e15757]
+        - text: is the absorption spectrum; the real part is the
+        - strong [ref=e15768]: dispersion
+        - text: that controls the refractive index.
+      - code [ref=e15770]:
+        - document [ref=e15772]:
+          - generic [ref=e15773]:
+            - generic [ref=e15780]: Syntax error in text
+            - generic [ref=e15781]: mermaid version 10.9.1
+      - list [ref=e15782]:
+        - listitem [ref=e15783]:
+          - strong [ref=e15784]: Script
+          - text: —
+          - link "chapter_12/01-two-level-absorption.py" [ref=e15785] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_12/01-two-level-absorption.py
+        - listitem [ref=e15786]:
+          - strong [ref=e15787]: Plot
+          - text: —
+          - link "chapter_12/plots/01-two-level-absorption.png" [ref=e15788] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_12/plots/01-two-level-absorption.png
+        - listitem [ref=e15789]:
+          - strong [ref=e15790]: Chapter section
+          - text: —
+          - 'link "Chapter 12, §12.13 (Worked example: a two-level system)" [ref=e15791] [cursor=pointer]':
+            - /url: /DFT-notes/dft-notes/chapter-12/#1213-worked-example-a-two-level-system
+          - text: ; §12.7 (Casida); §12.8 (oscillator strengths); §12.9 (Kramers–Kronig).
+        - listitem [ref=e15792]:
+          - strong [ref=e15793]: Expected output.
+          - text: With
+          - img [ref=e15795]
+          - text: ","
+          - img [ref=e15815]
+          - text: ","
+          - img [ref=e15833]
+          - text: (a typical dipole moment for a small organic molecule),
+          - img [ref=e15858]
+          - text: ":"
+          - list [ref=e15891]:
+            - listitem [ref=e15892]:
+              - strong [ref=e15893]: Linear-response cross section
+              - text: ": Lorentzian centred at"
+              - img [ref=e15895]
+              - text: with FWHM
+              - img [ref=e15907]
+              - text: . Peak value
+              - img [ref=e15920]
+              - text: ; integrated strength
+              - img [ref=e15942]
+              - text: .
+            - listitem [ref=e16015]:
+              - strong [ref=e16016]: Real-time dipole
+              - text: ":"
+              - img [ref=e16018]
+              - text: ; the envelope decays as
+              - img [ref=e16086]
+              - text: ", the oscillation period is"
+              - img [ref=e16105]
+              - text: a.u.
+            - listitem [ref=e16127]:
+              - strong [ref=e16128]: Fourier transform
+              - text: ": a complex Lorentzian"
+              - img [ref=e16130]
+              - text: with FWHM
+              - img [ref=e16149]
+              - text: to better than
+              - img [ref=e16155]
+              - text: relative error. The imaginary part of
+              - img [ref=e16168]
+              - text: peaks at
+              - img [ref=e16180]
+              - text: with the predicted height; the real part
+              - emphasis [ref=e16188]: disperses
+              - text: through zero at
+              - img [ref=e16190]
+              - text: with the antisymmetric lineshape predicted by
+              - img [ref=e16199]:
+                - link [ref=e16202] [cursor=pointer]:
+                  - /url: "#mjx-eqn%3Aeq%3Awe-12-kk"
+              - text: .
+            - listitem [ref=e16210]:
+              - strong [ref=e16211]: Kramers–Kronig check
+              - text: ": the script computes the Hilbert transform of the imaginary part of"
+              - img [ref=e16213]
+              - text: and confirms it equals the real part to better than
+              - img [ref=e16225]
+              - text: relative error across the full frequency range.
+            - listitem [ref=e16237]:
+              - strong [ref=e16238]: Plot
+              - text: ": three panels — (top) the energy levels with the dipole-allowed transition arrow; (middle) the real-time dipole"
+              - img [ref=e16240]
+              - text: showing the damped oscillation; (bottom) the absorption spectrum
+              - img [ref=e16252]
+              - text: (linear-response) and
+              - img [ref=e16264]
+              - text: (real-time) overlaid, plus the real part of
+              - img [ref=e16279]
+              - text: (the dispersion).
+      - blockquote [ref=e16290]:
+        - paragraph [ref=e16291]:
+          - strong [ref=e16292]: Tip.
+          - text: The two-level system is the conceptual ancestor of the
+          - strong [ref=e16293]: Casida linear-response TDDFT
+          - text: "equations (Ch 12 §12.7): in TDDFT the"
+          - emphasis [ref=e16294]: ground state
+          - text: is a Slater determinant, the
+          - emphasis [ref=e16295]: excited states
+          - text: are the resonant solutions of the density–density response function, and the
+          - emphasis [ref=e16296]: oscillator strengths
+          - text: are the residues of the polarisation propagator at its poles. The two-level example above is the
+          - img [ref=e16298]
+          - text: case of a general
+          - img [ref=e16308]
+          - text: "-orbital Casida calculation — i.e. one occupied and one unoccupied orbital — and the matrix diagonalisation step of Casida’s"
+          - img [ref=e16314]
+          - text: eigenvalue problem collapses to a
+          - img [ref=e16324]
+          - text: eigenproblem that gives the
+          - img [ref=e16334]
+          - text: of
+          - img [ref=e16343]:
+            - link [ref=e16346] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Awe-12-2level-H"
+          - text: directly.
+      - separator [ref=e16354]
+      - 'heading "9. Beyond Kohn–Sham: the Hubbard model and DFT+U" [level=2] [ref=e16355]'
+      - paragraph [ref=e16356]:
+        - text: "The chapter-13 worked example: the"
+        - strong [ref=e16357]: 4-site Hubbard chain
+        - text: at half-filling, diagonalised exactly. The example exhibits the
+        - strong [ref=e16358]: Mott metal–insulator transition
+        - text: ": as the on-site repulsion"
+        - img [ref=e16360]
+        - text: increases from
+        - img [ref=e16366]
+        - text: to
+        - img [ref=e16372]
+        - text: ", the single-particle gap opens from"
+        - img [ref=e16378]
+        - text: to a finite value, with the gap roughly equal to
+        - img [ref=e16384]
+        - text: in the strong-coupling limit (the on-site repulsion minus the bandwidth). The 4-site chain is the smallest non-trivial system in which the Hubbard physics is visible — every production
+        - strong [ref=e16395]: DFT+U
+        - text: code (VASP, Quantum ESPRESSO, CASTEP, …) targets this regime on the realistic
+        - img [ref=e16397]
+        - text: "- and"
+        - img [ref=e16403]
+        - text: "-electron compounds that LDA and GGA get wrong."
+      - 'heading "9.1 4-site Hubbard chain at half-filling: exact diagonalisation" [level=3] [ref=e16408]'
+      - paragraph [ref=e16409]:
+        - strong [ref=e16410]: Problem.
+        - text: Build the
+        - strong [ref=e16411]: 4-site Hubbard Hamiltonian
+        - text: in second quantisation
+      - paragraph [ref=e16412]:
+        - img [ref=e16414]:
+          - generic [ref=e16418]:
+            - img [ref=e16419]
+            - img [ref=e16522]
+      - paragraph [ref=e16531]:
+        - text: on a 1-D chain of
+        - img [ref=e16533]
+        - text: sites with periodic boundary conditions (PBC) and
+        - img [ref=e16543]
+        - text: electrons (half-filling,
+        - img [ref=e16553]
+        - text: ). The hopping
+        - img [ref=e16573]
+        - text: sets the unit of energy. Diagonalise the Hamiltonian
+        - strong [ref=e16582]: exactly
+        - text: for
+        - img [ref=e16584]
+        - text: in the
+        - img [ref=e16607]
+        - text: "- dimensional Hilbert space spanned by the"
+        - img [ref=e16622]
+        - text: Fock states (4 sites
+        - img [ref=e16641]
+        - text: 2 spins
+        - img [ref=e16647]
+        - text: 2 occupancies
+        - img [ref=e16653]
+        - text: single-particle states,
+        - img [ref=e16662]
+        - text: total states; symmetry reduction to fixed
+        - img [ref=e16682]
+        - text: brings this down to
+        - img [ref=e16702]
+        - text: –
+        - img [ref=e16714]
+        - text: states for the 4-site chain). Plot the
+        - strong [ref=e16723]: single-particle gap
+        - img [ref=e16725]
+        - text: as a function of
+        - img [ref=e16789]
+        - text: and discuss the Mott transition.
+      - paragraph [ref=e16794]:
+        - strong [ref=e16795]: Approach.
+        - text: The Hubbard Hamiltonian in second quantisation (Ch 13 §13.1) acts on a Fock space of dimension
+        - img [ref=e16797]
+        - text: . For the 4-site chain at half-filling,
+        - img [ref=e16831]
+        - text: ", the dimension is"
+        - img [ref=e16851]
+        - text: . With translation symmetry (
+        - img [ref=e16875]
+        - text: allowed momenta under PBC) the Hilbert space splits into four sectors; the ground state lives in the
+        - img [ref=e16913]
+        - text: sector with total spin
+        - img [ref=e16923]
+        - text: .
+      - paragraph [ref=e16932]:
+        - text: The hopping matrix elements are
+        - img [ref=e16934]
+        - text: "for nearest neighbours (modulo PBC:"
+        - img [ref=e16956]
+        - text: "), zero otherwise. The on-site repulsion is diagonal in the Fock basis:"
+        - img [ref=e16974]
+        - text: ". The algorithm:"
+      - list [ref=e17047]:
+        - listitem [ref=e17048]:
+          - strong [ref=e17049]: Enumerate the basis.
+          - text: Loop over all bit representations
+          - img [ref=e17051]
+          - text: of the 4 sites × 2 spins, and select the ones with exactly 2 spin-up and 2 spin-down electrons.
+        - listitem [ref=e17069]:
+          - strong [ref=e17070]: Apply translation symmetry.
+          - text: Identify orbits under the 4-site translation
+          - img [ref=e17072]
+          - text: ", pick a representative per orbit, and form the symmetrised Bloch states"
+          - img [ref=e17104]
+          - text: .
+        - listitem [ref=e17174]:
+          - strong [ref=e17175]: Build the Hamiltonian in the Bloch basis.
+          - text: The hopping term is
+          - emphasis [ref=e17176]: off-diagonal
+          - text: in Fock space (it flips a single occupancy) and the interaction term is
+          - emphasis [ref=e17177]: diagonal
+          - text: . The matrix is real, symmetric, sparse, with dimensions ranging from 1 (for
+          - img [ref=e17179]
+          - text: ) to 12 (for the largest sector).
+        - listitem [ref=e17196]:
+          - strong [ref=e17197]: Diagonalise.
+          - text: Use
+          - code [ref=e17198]: scipy.linalg.eigh
+          - text: (dense) or
+          - code [ref=e17199]: scipy.sparse.linalg.eigsh
+          - text: (sparse) to obtain the lowest few eigenvalues of each
+          - img [ref=e17201]
+          - text: sector and identify the absolute ground state.
+      - code [ref=e17215]:
+        - document [ref=e17217]:
+          - generic [ref=e17218]:
+            - generic [ref=e17225]: Syntax error in text
+            - generic [ref=e17226]: mermaid version 10.9.1
+      - paragraph [ref=e17227]:
+        - strong [ref=e17228]:
+          - text: Step-by-step at
+          - img [ref=e17230]
+          - text: .
+        - text: At
+        - img [ref=e17240]
+        - text: the Hubbard Hamiltonian reduces to a free tight-binding model with dispersion
+        - img [ref=e17250]
+        - text: (the §4.2 dispersion). The 4-site chain with PBC has 4 allowed
+        - img [ref=e17282]
+        - text: values; the two lowest (
+        - img [ref=e17288]
+        - text: and
+        - img [ref=e17316]
+        - text: ) are doubly degenerate (one per spin), and the ground state at half-filling is obtained by filling these two with the 4 electrons (2 up, 2 down). The ground-state energy is
+      - paragraph [ref=e17344]:
+        - img [ref=e17346]:
+          - generic [ref=e17350]:
+            - img [ref=e17351]
+            - img [ref=e17411]
+      - paragraph [ref=e17420]:
+        - text: The gap to the first charge excitation is
+        - strong [ref=e17421]: zero
+        - text: ": adding two electrons in the"
+        - img [ref=e17423]
+        - text: state costs
+        - img [ref=e17433]
+        - text: energy in the non-interacting limit. This is the
+        - strong [ref=e17438]: metallic
+        - text: regime of the Hubbard model.
+      - paragraph [ref=e17439]:
+        - strong [ref=e17440]:
+          - text: Step-by-step at
+          - img [ref=e17442]
+          - text: (moderate coupling).
+        - text: Diagonalising the 36-dimensional
+        - img [ref=e17452]
+        - text: for
+        - img [ref=e17462]
+        - text: in the
+        - img [ref=e17472]
+        - text: sector gives a ground-state energy
+        - img [ref=e17482]
+        - text: ", with a gap to the first charge excitation"
+      - paragraph [ref=e17512]:
+        - img [ref=e17514]:
+          - generic [ref=e17518]:
+            - img [ref=e17519]
+            - img [ref=e17597]
+      - paragraph [ref=e17606]:
+        - text: The system is now a
+        - strong [ref=e17607]: Mott insulator
+        - text: — the gap is non-zero even at half-filling, in contrast to the non-interacting result. The Mott gap grows with
+        - img [ref=e17609]
+        - text: ", and for"
+        - img [ref=e17615]
+        - text: approaches the
+        - strong [ref=e17624]: atomic-limit
+        - text: value
+        - img [ref=e17626]
+        - text: (the energy to add an electron to a doubly-occupied site, minus the band-broadening of the lower Hubbard band).
+      - paragraph [ref=e17653]:
+        - strong [ref=e17654]:
+          - text: Step-by-step at
+          - img [ref=e17656]
+          - text: (strong coupling).
+        - text: The Hubbard chain at
+        - img [ref=e17667]
+        - text: has
+        - img [ref=e17683]
+        - text: and
+        - img [ref=e17714]
+        - text: ", very close to the atomic-limit value"
+        - img [ref=e17739]
+        - text: — the chain has reached the
+        - strong [ref=e17756]: strong-coupling regime
+        - text: where double occupancy is essentially forbidden. The
+        - strong [ref=e17757]: Heisenberg effective Hamiltonian
+        - text: "(Ch 13 §13.4) describes the low-energy spin physics:"
+      - paragraph [ref=e17758]:
+        - img [ref=e17760]:
+          - generic [ref=e17764]:
+            - img [ref=e17765]
+            - img [ref=e17840]
+      - paragraph [ref=e17849]:
+        - text: For
+        - img [ref=e17851]
+        - text: ","
+        - img [ref=e17862]
+        - text: . The 4-site Heisenberg chain has a singlet ground state with energy
+        - img [ref=e17888]
+        - text: ", in good agreement with the Hubbard-model ground state projected onto the no-double-occupancy subspace (the"
+        - strong [ref=e17922]: Gutzwiller approximation
+        - text: ", Ch 13 §13.5)."
+      - list [ref=e17923]:
+        - listitem [ref=e17924]:
+          - strong [ref=e17925]: Script
+          - text: —
+          - link "chapter_13/01-hubbard-4site.py" [ref=e17926] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_13/01-hubbard-4site.py
+        - listitem [ref=e17927]:
+          - strong [ref=e17928]: Plot
+          - text: —
+          - link "chapter_13/plots/01-hubbard-4site.png" [ref=e17929] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_13/plots/01-hubbard-4site.png
+        - listitem [ref=e17930]:
+          - strong [ref=e17931]: Chapter section
+          - text: —
+          - link "Chapter 13, §13.1 (The Hubbard model)" [ref=e17932] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-13/#1322-the-hubbard-model
+          - text: ; §13.3 (exact diagonalisation); §13.4 (Mott transition); §13.5 (DFT+U).
+        - listitem [ref=e17933]:
+          - strong [ref=e17934]: Expected output.
+          - text: A plot of the
+          - emphasis [ref=e17935]:
+            - text: "*single- particle ga"
+            - code [ref=e17936]: p*
+          - img [ref=e17938]
+          - text: as a function of
+          - img [ref=e17986]
+          - text: "at half-filling:"
+          - list [ref=e17996]:
+            - listitem [ref=e17997]:
+              - img [ref=e17999]
+              - text: ":"
+              - img [ref=e18014]
+              - text: (the chain is metallic).
+            - listitem [ref=e18023]:
+              - img [ref=e18025]
+              - text: ":"
+              - img [ref=e18040]
+              - text: (incipient Mott insulator; the gap opens roughly linearly in
+              - img [ref=e18054]
+              - text: at small
+              - img [ref=e18060]
+              - text: ).
+            - listitem [ref=e18065]:
+              - img [ref=e18067]
+              - text: ":"
+              - img [ref=e18082]
+              - text: (clear Mott insulator).
+            - listitem [ref=e18095]:
+              - img [ref=e18097]
+              - text: ":"
+              - img [ref=e18113]
+              - text: (strong coupling; approaching the atomic limit).
+            - listitem [ref=e18126]:
+              - text: In the limit
+              - img [ref=e18128]
+              - text: ","
+              - img [ref=e18143]
+              - text: (the upper Hubbard band separated from the lower Hubbard band by
+              - img [ref=e18159]
+              - text: minus the band-broadening
+              - img [ref=e18165]
+              - text: ). The script also prints the
+              - strong [ref=e18172]: double occupancy
+              - img [ref=e18174]
+              - text: as a function of
+              - img [ref=e18206]
+              - text: — it falls from
+              - img [ref=e18212]
+              - text: at
+              - img [ref=e18221]
+              - text: (the uncorrelated value) to
+              - img [ref=e18231]
+              - text: at
+              - img [ref=e18242]
+              - text: (close to the strong-coupling limit
+              - img [ref=e18253]
+              - text: "). The plot shows two panels: (top) the gap"
+              - img [ref=e18275]
+              - text: with the atomic limit
+              - img [ref=e18287]
+              - text: overlaid as a dashed line; (bottom) the double occupancy
+              - img [ref=e18303]
+              - text: with the strong-coupling
+              - img [ref=e18327]
+              - text: decay.
+      - blockquote [ref=e18342]:
+        - paragraph [ref=e18343]:
+          - strong [ref=e18344]: Tip.
+          - text: The 4-site Hubbard chain is the
+          - strong [ref=e18345]: smallest non-trivial system
+          - text: in which the Mott physics is visible. The 2-site chain has a special symmetry (every state is either a singlet or a triplet, and the singlet–triplet splitting is just
+          - img [ref=e18347]
+          - text: ); the 3-site chain has a degenerate ground state at
+          - img [ref=e18353]
+          - text: that makes the gap definition ambiguous. The 4-site chain is the smallest chain that reproduces all the qualitative features of the
+          - strong [ref=e18362]: thermodynamic-limit Hubbard model
+          - text: ": a metallic ground state at"
+          - img [ref=e18364]
+          - text: ", a Mott gap opening at finite"
+          - img [ref=e18374]
+          - text: ", a single-particle gap scaling as"
+          - img [ref=e18380]
+          - text: at strong coupling, and a Heisenberg-model effective Hamiltonian with
+          - img [ref=e18392]
+          - text: for the spin physics. The script also computes the
+          - strong [ref=e18411]: spin gap
+          - img [ref=e18413]
+          - text: ", which is zero for the 1-D Heisenberg chain (the Bethe-ansatz ground state is a gapless spin liquid) but non-zero in higher dimensions — the 4-site chain is too small to see the spin gap close, but the calculation is a useful sanity check on the symmetrisation."
+      - separator [ref=e18463]
+      - heading "What’s next" [level=2] [ref=e18464]
+      - list [ref=e18465]:
+        - listitem [ref=e18466]:
+          - text: The
+          - link "Python codes" [ref=e18467] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/
+          - text: index has a chapter-by-chapter list of every script in the repository, with the plots in
+          - code [ref=e18468]: plots/
+          - text: .
+        - listitem [ref=e18469]:
+          - text: The
+          - link "chapters map" [ref=e18470] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapters-map/
+          - text: is the live dependency graph of every chapter, shipped or planned.
+        - listitem [ref=e18471]:
+          - link "Chapter 00" [ref=e18472] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-00/
+          - text: has the
+          - emphasis [ref=e18473]: Notation
+          - text: table that this anthology assumes throughout.
+      - blockquote [ref=e18474]:
+        - paragraph [ref=e18475]:
+          - strong [ref=e18476]: Disclaimer.
+          - text: These notes are a personal study aid. They are correct to the best of the author’s knowledge, but they are
+          - emphasis [ref=e18477]: not
+          - text: a substitute for a textbook. Cite primary sources, not these notes.
+  - contentinfo [ref=e18478]:
+    - generic [ref=e18479]:
+      - generic [ref=e18480]:
+        - img [ref=e18481]
+        - generic [ref=e18485]: DFT Notes
+        - paragraph [ref=e18486]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e18487]:
+        - generic [ref=e18488]:
+          - heading "Project" [level=3] [ref=e18489]
+          - list [ref=e18490]:
+            - listitem [ref=e18491]:
+              - link "Chapters map" [ref=e18492] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e18493]:
+              - link "Python codes" [ref=e18494] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e18495]:
+              - link "Contributing" [ref=e18496] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e18497]:
+              - link "Security" [ref=e18498] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e18499]:
+              - link "Design spec" [ref=e18500] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e18501]:
+              - link "GitHub ↗" [ref=e18502] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e18503]:
+          - heading "Built with" [level=3] [ref=e18504]
+          - list [ref=e18505]:
+            - listitem [ref=e18506]:
+              - link "Jekyll" [ref=e18507] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e18508]:
+              - link "MathJax 3" [ref=e18509] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e18510]:
+              - link "Mermaid" [ref=e18511] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e18512]:
+              - link "chenglou/pretext" [ref=e18513] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e18514]:
+              - link "Google Fonts" [ref=e18515] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e18516]:
+          - heading "Legal" [level=3] [ref=e18517]
+          - list [ref=e18518]:
+            - listitem [ref=e18519]:
+              - link "MIT License" [ref=e18520] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e18521]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e18523]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

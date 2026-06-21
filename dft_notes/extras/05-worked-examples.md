@@ -45,7 +45,7 @@ each entry is the same:
 6. **Chapter section** — the cross-reference into the prose.
 
 > **Status of the chapter scripts.**  Chapters 00–08 are
-> *shipped*`; chapters 09–13 are planned* (see
+> *shipped*'; chapters 09–13 are planned* (see
 > [`chapters-map.md`]({{ site.baseurl }}/dft-notes/chapters-map/)).
 > Where a script exists in `python_codes/`, the entry below
 > links to it directly. Where the example exists only as inlined
@@ -284,7 +284,7 @@ the simplest possible version, as a constant times $S_{\mu\nu}$).
 The SCF loop is otherwise identical in shape to HF.
 
 - **Script** — the canonical "shape of the loop" is given
-  as the inlined `ks_scf' function in
+  as the inlined `ks_scf`' function in
   [Chapter 04, §4.4 (The KS self-consistent loop)]({{ site.baseurl }}/dft-notes/chapter-04/#44-the-ks-self-consistent-loop).
   (Referenced path:
   `dft_notes/python_codes/chapter_04/01-ks-scf.py`; the
@@ -933,7 +933,7 @@ graph LR
     style H3 fill:#ccf
     style H4 fill:#fcf
     style H5 fill:#ffc
-``'
+```
 
 - **Script** — [chapter_07/02-h-chain-tight-binding.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_07/02-h-chain-tight-binding.py)
 - **Plot** — [chapter_07/plots/02-h-chain-tight-binding.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_07/plots/02-h-chain-tight-binding.png)
@@ -1207,7 +1207,7 @@ graph LR
     style B fill:#9ff
     style C fill:#f9f
     style D fill:#9ff
-``'
+```
 
 - **Script** — [chapter_10/01-diatomic-chain.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/01-diatomic-chain.py)
 - **Plot** — [chapter_10/plots/01-diatomic-chain.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/plots/01-diatomic-chain.png)
@@ -1358,7 +1358,7 @@ graph TD
     E --> F[Eigenvalues: +/- |t| |f|]
     F --> G[Plot pi and pi* bands]
     G --> H[Verify Dirac crossing at K: |f(K)| = 0]
-``'
+```
 
 - **Script** — [chapter_11/01-graphene-bands.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/01-graphene-bands.py)
 - **Plot** — [chapter_11/plots/01-graphene-bands.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/plots/01-graphene-bands.png)
@@ -1545,7 +1545,7 @@ graph TD
     G --> H{They agree?}
     H -- Yes --> I[Report FWHM = gamma, Kramers-Kronig consistency]
     H -- No --> J[Debug: damping, time step, FFT window]
-``'
+```
 
 - **Script** — [chapter_12/01-two-level-absorption.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_12/01-two-level-absorption.py)
 - **Plot** — [chapter_12/plots/01-two-level-absorption.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_12/plots/01-two-level-absorption.png)
@@ -1701,7 +1701,7 @@ graph TD
     F --> G[Identify ground state: k=0, S=0]
     G --> H[Compute gap: E_gs N+2 + E_gs N-2 - 2 E_gs N]
     H --> I[Plot gap vs U: Mott transition visible]
-``'
+```
 
 **Step-by-step at $U = 0$.** At $U = 0$ the Hubbard
 Hamiltonian reduces to a free tight-binding model

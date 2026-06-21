@@ -42,7 +42,7 @@ python dft_notes/python_codes/chapter_01/01-particle-in-box.py
 for f in dft_notes/python_codes/chapter_01/0?-*.py; do
     python "$f"
 done
-``'
+```
 
 Each script writes its PNG into
 `dft_notes/python_codes/chapter_01/plots/' and prints the key

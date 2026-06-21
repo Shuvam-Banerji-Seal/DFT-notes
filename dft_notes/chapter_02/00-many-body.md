@@ -1043,7 +1043,7 @@ def two_electron_integrals(K, L, x, dx, lam, sig):
     chiV = chi @ V                       # (K, N_GRID, N_GRID) -> einsum
     return np.einsum("px,qx,rx,sx,pqrs->pqrs", chi, chi, chi, chi, V)
     # actually do it step by step to keep the storage small
-``'
+```
 
 The complete script (with the Slater–Condon rules, the
 diagonalisation, and the convergence plot) is in
@@ -1102,7 +1102,7 @@ graph TD
   class C0 output
   class RHO output
   class NEXT next
-``'
+```
 
 The "**explosion**" node (coloured coral, in the centre of the
 diagram) is the *only* place where the method becomes intractable:

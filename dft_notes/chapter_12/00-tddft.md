@@ -125,7 +125,7 @@ graph LR
   class PSI mid
   class RHO mid
   class OBS out
-``'
+```
 
 The **solid** arrows are the forward map — the Schrödinger
 equation determines the wave function from the potential, and
@@ -1361,7 +1361,7 @@ graph TD
   class FOSC step
   class OMEGA out
   class SPEC out
-``'
+```
 
 The **three vertical branches** of the diagram converge on the
 'EIG' box. 'A' (top branch) provides the *diagonal* of the
@@ -1370,10 +1370,10 @@ $\omega_{ia}$ and is the part that survives the *Tamm–Dancof`f*'
 approximation (TDA, where 'B' is neglected). 'K' (middle
 branch) is the *coupling matrix*, computed from the chosen
 xc kernel; it is the *only* branch where the kernel choice
-matters. `B' (bottom branch) is the *de-excitation* amplitude
-coupling; it is the same matrix as `K' but appears in the
+matters. `B`' (bottom branch) is the *de-excitation* amplitude
+coupling; it is the same matrix as `K`' but appears in the
 off-diagonal block of the Casida equation. The single matrix
-diagonalisation in `EIG' produces *all* excitation energies and
+diagonalisation in `EIG`' produces *all* excitation energies and
 amplitudes at once; the spectrum is then constructed by
 assigning each $\omega_I$ an oscillator strength $f_I$ from the
 corresponding eigenvector $(\mathbf X_I, \mathbf Y_I)$.
@@ -1523,7 +1523,7 @@ graph TD
   class WIN out
   class FFT out
   class SPEC out
-``'
+```
 
 The **inner loop** ('LOOP' → 'CN' → 'VEFF' → 'CK`) is the
 propagator: at every time step, the Crank–Nicolson update
@@ -1532,7 +1532,7 @@ then a new density and effective potential are built. The
 cost per step is $\mathcal O(K^2)$ per orbital (the matrix
 solve) plus $\mathcal O(K^2)$ for the density build — total
 $\mathcal O(N_\text{steps} N_\text{orb} K^2)$ for the whole
-trajectory. The **post-processing** chain ('MU' → 'WIN' → `FFT'
+trajectory. The **post-processing** chain ('MU' → 'WIN' → `FFT`'
 → `SPEC`) takes the trajectory and extracts the absorption
 spectrum in a single Fourier transform, after windowing to
 suppress spectral leakage.
@@ -1733,7 +1733,7 @@ def casida_2level(omega_12, K):
     Y = np.sign(B) * np.sqrt(0.5 * (1.0 - A / omega_exc))
     f_osc = (2.0 / 3.0) * omega_exc * d12**2 * (X + Y)**2
     return omega_exc, f_osc
-``'
+```
 
 For $\omega_{12} = 1.0\,E_h$ and $K = 0$, the Casida
 excitation energy is exactly $1.0\,E_h$ (as it must be —
@@ -1803,7 +1803,7 @@ def propagate_2level(omega_12, d12, kick, t_max, n_steps, eta):
         c_t = np.array([c[0], c[1] * phase], dtype=complex)
         mu[n] = 2.0 * np.real(d12 * np.conj(c_t[0])  c_t[1])
     return t, mu
-``'
+```
 
 The factor of 2 in `mu[n] = 2 * Re(d_12 c_1* c_2)' is the
 two-electron factor for a closed-shell, doubly-occupied
@@ -1830,7 +1830,7 @@ $\eta = 0.05\,E_h$, $k = 0.01$, $T = 200\,E_h^{-1}$ gives:
   Propagation T = 200 E_h^{-1},  n_steps = 16384
   Peak of |mu(omega)| at omega = 1.182 E_h  (vs. predicted 1.1832)
   Width (FWHM) = 0.10 E_h (= 2 eta, as expected)
-``'
+```
 
 The peak of the Fourier transform of $\mu(t)$ is at
 $\omega = 1.183\,E_h$, within $0.001\,E_h$ of the Casida
@@ -1901,7 +1901,7 @@ graph TD
   SPECTRUM --> COMPARE{"Compare"}
   SPECTRUM2 --> COMPARE
   COMPARE --> DONE["ω_I, f_I"]
-``'
+```
 
 The two arms of the diagram (Casida on the left,
 real-time on the right) are *equivalent* in the linear-
@@ -2850,7 +2850,7 @@ graph LR
   classDef inp fill:#eef0e6,stroke:#3a4031,color:#1c1f17;
   classDef out fill:#cc785c,stroke:#1c1f17,color:#ffffff;
   classDef step fill:#d6dcc8,stroke:#3a4031,color:#1c1f17;
-``'
+```
 
 The **input** is the Kohn–Sham response $\chi_s$ of
 \eqref{eq:ch-12-09-chi-s-lehmann}, whose poles sit at
@@ -4476,7 +4476,7 @@ flowchart LR
   D -. cites .-> CITE2[Ref. World Sci. 1995, p. 155]
   E -. cites .-> CITE3[Ref. PRL 76, 1212]
   F -. cites .-> CITE4[Ref. Annu. Rev. 55, 427]
-``'
+```
 
 The **left-to-right** flow is the *time* axis. The
 *first three* boxes (RG theorem, TD KS equations,

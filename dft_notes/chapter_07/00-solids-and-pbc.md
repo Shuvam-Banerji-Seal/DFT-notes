@@ -965,7 +965,7 @@ os.makedirs(plots_dir, exist_ok=True)
 out = os.path.join(plots_dir, "01-free-electron-bands.png")
 fig.savefig(out, dpi=150, bbox_inches="tight")
 print(f"Wrote {out}")
-``'
+```
 
 > **Note.** The matrix is built and diagonalised in a single
 > Python loop over the 100 k-points. The wall-clock time is well
@@ -1008,7 +1008,7 @@ graph TD
   K -- No --> G
   K -- Yes --> L
   L --> M
-``'
+```
 
 The decision node `K{SCF converged?}' is the inner loop of every
 DFT calculation; the surrounding boxes are the *solid-state-specifi`c*'
@@ -2359,7 +2359,7 @@ graph LR
   Lambda -.compat.-> L
   Sigma -.compat.-> K
 
-``'
+```
 
 The boxes are the high-symmetry points; the solid arrows are the
 high-symmetry lines (each labelled by its name: $\Delta$, $\Lambda$,
@@ -2596,7 +2596,7 @@ sampling. A non-exhaustive list of the topics we have *not* covered:
 
 - **Spin–orbit coupling.** The Hamiltonian
   \eqref{eq:ch-07-hamiltonian} is spin-free. For solids with heavy
-  elements (5*d*`, 6p*, f-electron systems), the spin–orbit term
+  elements (5*d*', 6p*, f-electron systems), the spin–orbit term
   $\hat H_\text{SO} = \tfrac{1}{2} \boldsymbol{\sigma} \cdot (\nabla V
   \times \mathbf p)$ has to be added; the Bloch factor $e^{i\mathbf k
   \cdot \mathbf r}$ becomes a 2 × 2 spinor matrix. This is essential

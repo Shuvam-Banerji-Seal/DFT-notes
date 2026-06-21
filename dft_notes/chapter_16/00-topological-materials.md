@@ -84,7 +84,7 @@ correspondence** in its sharpest form.
 \boxed{
 \sigma_{xy} = \frac{e^2}{h} \sum_{n\,:\,\text{occupied}} C_n ,
 \qquad
-\text{edge states} = \text{``hologram'' of the bulk Chern number}.
+\text{edge states} = \text{``hologram`'' of the bulk Chern number}.
 }
 \end{equation}
 
@@ -153,7 +153,7 @@ graph TD
   C167 --> C169
   C167 --> C1610
   C162 --> C1611
-``'
+```
 
 The two columns on the right are the "through-line" of the
 chapter: the *bul`k*' topological invariant (Chern number or
@@ -889,7 +889,7 @@ at high-symmetry points.
 > including TCIs, Dirac, Weyl, nodal-line, and multi-fold
 > semimetals. Tools: the Bilbao Crystallographic Server's
 > `TOPOLOGICAL QUANTUM CHEMISTRY' and the
-> `CheckTopologicalMat' Python package.
+> `CheckTopologicalMat`' Python package.
 
 ## 16.6 Topological semimetals
 
@@ -1077,7 +1077,7 @@ graph TD
   HOTI --> HOTI2
   HOTI --> HOTI3
   QSH --> STRONG
-``'
+```
 
 The diagram makes the relationship explicit: the
 *Chern* and QSH families are the 2D parents of the 3D
@@ -1440,7 +1440,7 @@ graph TD
   E --> M
   M --> K
   I --> N
-``'
+```
 
 The two *branches* of the diagram are the bulk-only route
 ('A → B → C → D → E → J') and the *surface* route
@@ -1604,7 +1604,7 @@ diagonalise; record the WCC $\theta_n(k_y)$.
 The result (for the same parameters as Step 4) is a plot
 of two WCC "ribbons" as a function of $k_y$. In the
 *trivial* phase ($\lambda_v > 3\sqrt{3} \lambda_\text{SO}$),
-both ribbons are *closed*`; in the non-trivial phase
+both ribbons are *closed*'; in the non-trivial phase
 ($\lambda_v < 3\sqrt{3} \lambda_\text{SO}$), one fails to
 close, with a net jump of $2\pi$. The parity of the
 winding is the $\mathbb Z_2$ invariant
@@ -2368,8 +2368,8 @@ $\pm 1$, and the sign is $(-1)^\nu$. This is the
 fastest $\mathbb Z_2$ calculation in practice: just
 read off the parities at the four TRIM from a
 parity-eigenvalue calculation. It is the working
-formula of the VASP `Z2PACK' interface and of the
-`vasp2trace' tool of the VASP group.
+formula of the VASP `Z2PACK`' interface and of the
+`vasp2trace`' tool of the VASP group.
 
 **The 3D extension to strong and weak TIs.** Section IV
 of the Fu–Kane paper extends the formula to 3D
@@ -2768,7 +2768,7 @@ graph TD
   STRONG --> TSC
   HK2010 --> MOD
   WSM --> MOD
-``'
+```
 
 The mermaid diagram is the *genealogy* of the
 topological-insulator field. The founding papers (Weyl

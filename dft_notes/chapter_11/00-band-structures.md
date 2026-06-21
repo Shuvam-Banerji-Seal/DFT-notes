@@ -428,7 +428,7 @@ def kpath(points, n_per_segment=60):
         dlist.extend(dlist[-1] + np.cumsum(d).tolist())
     return np.vstack(klist), np.array(dlist)
 
-``'
+```
 
 The first k-point is `kpts[0]`, the last is `kpts[-1]`, and the
 length along the path is `dist[-1]`.  We use this helper in the
@@ -679,7 +679,7 @@ graph LR
   class FSD out
   class BANDD out
 
-``'
+```
 
 The three central compressions (`DOS`, `PDOS`, `FS`) are all
 *linear* in the band energies and eigenvectors — they do not
@@ -688,7 +688,7 @@ the DOS sums over $\mathbf k$ and $n$ (and bins by energy), the
 PDOS adds a *weight* $|P_n^{a,\ell}|^2$ (the projection of
 band $n$ on orbital $(a,\ell)$) before binning, and the Fermi
 surface picks the *single* energy slice
-$\varepsilon = \varepsilon_F$. The `BAND' box on the right is
+$\varepsilon = \varepsilon_F$. The `BAND`' box on the right is
 the band-structure *plot* of §11.2 — the same data as the DOS
 but on a 1-D k-path instead of summed over the BZ.
 
@@ -722,7 +722,7 @@ The output of this procedure is a list of **triangles** in
 $\mathbf k$-space that approximates the Fermi surface to
 $O((\Delta k)^2)$ in linear interpolation, or $O((\Delta k)^4)$
 with Blöchl's correction.  Visualising a list of triangles is the
-job of a 3-D rendering library (e.g. `mplot3d' in matplotlib, or
+job of a 3-D rendering library (e.g. `mplot3d`' in matplotlib, or
 ParaView, or `mayavi`).
 
 > **Tip.**  The 2-D version (1-D Fermi "curve") is much easier: plot
@@ -1199,9 +1199,9 @@ graph TD
   class OUT2 out
   class OUT3 out
 
-``'
+```
 
-The **key branch** is `INV' (the inverse-mass tensor). The three
+The **key branch** is `INV`' (the inverse-mass tensor). The three
 *downstream* boxes (`DIAG`, `TRACE`, `COND`) are different
 *reductions* of the same tensor: the principal axes (eigenvectors
 of $\mathbf H$) and the principal masses (eigenvalues divided by
@@ -1426,7 +1426,7 @@ graph TD
   class CONE step
   class OUT out
 
-``'
+```
 
 The **two-atom basis** (`L1`) is the structural origin of the
 Dirac cone: a single atom per cell would give a scalar band and
@@ -1786,9 +1786,9 @@ out = os.path.join(plots_dir, "01-graphene-bands.png")
 fig.savefig(out, dpi=150, bbox_inches="tight")
 print(f"Wrote {out}")
 
-``'
+```
 
-The script uses the function `kpath' of section 11.2.6, computes
+The script uses the function `kpath`' of section 11.2.6, computes
 $f(\mathbf k)$ on the sampled k-points, and plots
 $\varepsilon_\pm = \pm |f|$ along $\Gamma$–$M$–$K$–$\Gamma$.  The
 output is the figure below.
@@ -1869,7 +1869,7 @@ graph LR
   class G post
   class H post
 
-``'
+```
 
 The central column is the SCF: a converged density and effective
 potential on a uniform MP mesh.  The four post-processing outputs

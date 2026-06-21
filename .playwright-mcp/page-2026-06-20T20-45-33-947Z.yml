@@ -1,0 +1,1314 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 02 — The many-body problem" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: "The exact electronic Schrödinger equation is solvable in closed form for $\\mathrm{H}_2^+$ and tractable to extreme precision for $\\mathrm{H}_2$. For every other molecule in the periodic table, we are forced to"
+          - emphasis [ref=e30]: approximate
+          - text: . This chapter is about what the approximations are approximating — and about why, even with unlimited computer time, we could not write down the exact wavefunction for a thirty-atom molecule.
+      - paragraph [ref=e31]:
+        - text: By the end of
+        - link "chapter 01" [ref=e32] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: we had written down the
+        - strong [ref=e33]: time-independent electronic Schrödinger equation
+        - text: "in atomic units, $\\hat H_{\\text{el}}\\,\\Psi = E\\,\\Psi$, with the Hamiltonian"
+      - text: "\\[\\hat H_{\\text{el}} \\;=\\; -\\frac{1}{2}\\sum_{i=1}^{N} \\nabla_i^2 -\\sum_{i=1}^{N}\\sum_{A=1}^{M} \\frac{Z_A}{|\\mathbf r_i - \\mathbf R_A|} +\\sum_{i<j}^{N} \\frac{1}{|\\mathbf r_i - \\mathbf r_j|}\\]"
+      - paragraph [ref=e34]:
+        - text: operating on a wavefunction $\Psi(\mathbf x_1, \dots, \mathbf x_N)$ that depends on $3N$ continuous electronic coordinates (and, in principle, $2^N$ spin components). We also wrote down postulate
+        - link "P6" [ref=e35] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: — identical fermions must be represented by a totally antisymmetric wavefunction — and used it to forbid two electrons from occupying the same one-electron state. Everything in the present chapter is a consequence of those two pieces of machinery. The central claim is that the
+        - emphasis [ref=e36]: exact
+        - text: ground-state wavefunction of an interacting electronic system is a
+        - strong [ref=e37]: linear combination of Slater determinants
+        - text: ", and that the number of such determinants grows"
+        - strong [ref=e38]: exponentially
+        - text: with system size, so that the exact wavefunction is not a thing we can write down, store, or even sample in any but the smallest molecules. The rest of quantum chemistry and density-functional theory is, broadly, a collection of strategies for
+        - emphasis [ref=e39]: not
+        - text: doing the exact calculation while still getting a useful answer. The Hartree–Fock method of
+        - link "chapter 03" [ref=e40] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: is the
+        - strong [ref=e41]: mean-field
+        - text: starting point; the rest of these notes is, in various ways, an attempt to add
+        - strong [ref=e42]: electron correlation
+        - text: on top of it without paying the full exponential cost.
+      - blockquote [ref=e43]:
+        - paragraph [ref=e44]:
+          - strong [ref=e45]: Reading note.
+          - text: This chapter assumes the postulates and the electronic Hamiltonian of
+          - link "chapter 01" [ref=e46] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/
+          - text: . It introduces two new pieces of notation —
+          - emphasis [ref=e47]: spin-orbitals
+          - text: and
+          - emphasis [ref=e48]: Slater determinants
+          - text: — and one new piece of vocabulary — the
+          - emphasis [ref=e49]: correlation energy
+          - text: . All three are defined the first time they appear, and the section-level cross-references are repeated where they help.
+      - heading "2.1 The claim" [level=2] [ref=e50]
+      - paragraph [ref=e51]:
+        - text: The
+        - strong [ref=e52]: exact ground-state energy
+        - text: of an $N$-electron molecule in the clamped-nuclei (Born–Oppenheimer) picture is the lowest eigenvalue of the
+        - strong [ref=e53]: electronic Hamiltonian
+        - text: in atomic units,
+      - paragraph [ref=e54]: "\\begin{equation} \\label{eq:ch-02-hamiltonian} \\boxed{\\hat H_{\\text{el}} = -\\frac{1}{2}\\sum_{i=1}^{N} \\nabla_i^2 -\\sum_{i=1}^{N}\\sum_{A=1}^{M} \\frac{Z_A}{|\\mathbf r_i - \\mathbf R_A|} +\\sum_{i<j}^{N} \\frac{1}{|\\mathbf r_i - \\mathbf r_j|},} \\end{equation}"
+      - paragraph [ref=e55]:
+        - text: with the additional
+        - strong [ref=e56]: nuclear–nuclear repulsion
+        - text: added as a classical constant at the end,
+      - paragraph [ref=e57]: "\\begin{equation} \\label{eq:ch-02-vnn} V_{NN} \\;=\\; \\sum_{A<B}^{M} \\frac{Z_A Z_B}{|\\mathbf R_A - \\mathbf R_B|}. \\end{equation}"
+      - paragraph [ref=e58]:
+        - text: The corresponding
+        - strong [ref=e59]: exact wavefunction
+        - text: is a linear combination of
+        - emphasis [ref=e60]: all
+        - text: "$N$-electron Slater determinants ${\\Phi_I}$ that can be built from a chosen orthonormal one-electron basis of size $K$:"
+      - paragraph [ref=e61]: "\\begin{equation} \\label{eq:ch-02-fci} \\boxed{\\Psi_0 \\;=\\; \\sum_{I=1}^{N_{\\text{det}}} c_I\\, \\Phi_I, \\qquad N_{\\text{det}} \\;=\\; \\binom{K}{N_\\alpha}\\binom{K}{N_\\beta},} \\end{equation}"
+      - paragraph [ref=e62]:
+        - text: "with real or complex coefficients $c_I$ and $N_\\alpha + N_\\beta = N$. The expansion \\eqref{eq:ch-02-fci} is"
+        - strong [ref=e63]: full configuration interaction
+        - text: (full CI), and it is exact in the basis-set limit. Its cost is, however, the source of the
+        - strong [ref=e64]: exponential wall
+        - text: ":"
+      - paragraph [ref=e65]: "\\begin{equation} \\label{eq:ch-02-exp-wall} N_{\\text{det}}(K, N) \\;=\\; \\binom{K}{N_\\alpha}\\binom{K}{N_\\beta} \\;\\sim\\; \\frac{K^N}{N!} \\qquad (K \\gg N). \\end{equation}"
+      - paragraph [ref=e66]:
+        - text: "Equation \\eqref{eq:ch-02-exp-wall} is the"
+        - strong [ref=e67]: headline
+        - text: of the chapter. Everything we will do in the rest of these notes — Hartree
+        - link "chapter 03" [ref=e68] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: ", Kohn–Sham"
+        - link "chapter 04" [ref=e69] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: ","
+        - link "chapter 05" [ref=e70] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: ", basis sets"
+        - link "chapter 06" [ref=e71] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: ", solids"
+        - link "chapter 07" [ref=e72] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: ", pseudopotentials"
+        - link "chapter 08" [ref=e73] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: — is a strategy for
+        - emphasis [ref=e74]: not
+        - text: "doing the full sum \\eqref{eq:ch-02-fci} while still computing something useful."
+      - blockquote [ref=e75]:
+        - paragraph [ref=e76]:
+          - strong [ref=e77]: Tip.
+          - text: "The notation $\\binom{K}{N_\\alpha}\\binom{K}{N_\\beta}$ in \\eqref{eq:ch-02-fci} is not a typo. The electrons come in two spin flavours, $\\alpha$ (spin up) and $\\beta$ (spin down), and the determinant basis factors into the product of an $\\alpha$-string (choose $N_\\alpha$ orbitals out of $K$) and a $\\beta$-string (choose $N_\\beta$ orbitals out of $K$). This is the"
+          - strong [ref=e78]: Slater determinant basis
+          - text: ; section 2.2.4 below writes it out explicitly.
+      - heading "2.2 The derivation" [level=2] [ref=e79]
+      - paragraph [ref=e80]:
+        - text: "The headline \\eqref{eq:ch-02-fci} is the"
+        - emphasis [ref=e81]: result
+        - text: of a chain of arguments that we now derive step by step. Each subsection is self-contained and ends with a clear statement of what the preceding steps have given us.
+      - heading "2.2.1 Born–Oppenheimer separation" [level=3] [ref=e82]
+      - paragraph [ref=e83]:
+        - text: The full,
+        - emphasis [ref=e84]: non-relativistic
+        - text: Hamiltonian of a molecule with $M$ nuclei (charges $Z_A$, masses $M_A$, positions $\mathbf R_A$) and $N$ electrons (positions $\mathbf r_i$) is
+      - paragraph [ref=e85]: "\\begin{equation} \\label{eq:ch-02-full-H} \\hat H \\;=\\; \\hat T_N + \\hat T_e + \\hat V_{NN} + \\hat V_{en} + \\hat V_{ee} . \\end{equation}"
+      - paragraph [ref=e86]:
+        - text: The five terms are the
+        - strong [ref=e87]: nuclear kinetic energy
+      - paragraph [ref=e88]: "\\begin{equation} \\label{eq:ch-02-TN} \\hat T_N \\;=\\; -\\sum_{A=1}^{M} \\frac{1}{2 M_A} \\nabla_A^2 , \\end{equation}"
+      - paragraph [ref=e89]:
+        - text: the
+        - strong [ref=e90]: electronic kinetic energy
+      - paragraph [ref=e91]: "\\begin{equation} \\label{eq:ch-02-Te} \\hat T_e \\;=\\; -\\sum_{i=1}^{N} \\frac{1}{2} \\nabla_i^2 , \\end{equation}"
+      - paragraph [ref=e92]:
+        - text: the
+        - strong [ref=e93]: nuclear–nuclear repulsion
+      - paragraph [ref=e94]: "\\begin{equation} \\label{eq:ch-02-VNN} \\hat V_{NN} \\;=\\; \\sum_{A<B}^{M} \\frac{Z_A Z_B}{|\\mathbf R_A - \\mathbf R_B|} , \\end{equation}"
+      - paragraph [ref=e95]:
+        - text: the
+        - strong [ref=e96]: electron–nuclear attraction
+      - paragraph [ref=e97]: "\\begin{equation} \\label{eq:ch-02-Ven} \\hat V_{en} \\;=\\; -\\sum_{i=1}^{N}\\sum_{A=1}^{M} \\frac{Z_A}{|\\mathbf r_i - \\mathbf R_A|} , \\end{equation}"
+      - paragraph [ref=e98]:
+        - text: and the
+        - strong [ref=e99]: electron–electron repulsion
+      - paragraph [ref=e100]: "\\begin{equation} \\label{eq:ch-02-Vee} \\hat V_{ee} \\;=\\; \\sum_{i<j}^{N} \\frac{1}{|\\mathbf r_i - \\mathbf r_j|} . \\end{equation}"
+      - paragraph [ref=e101]:
+        - text: All masses are in units of the electron mass $m_e$ and all charges in units of $e$; the units are
+        - strong [ref=e102]: atomic units
+        - text: ", defined in"
+        - link "chapter 01" [ref=e103] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: .
+      - paragraph [ref=e104]: The full Schrödinger equation is
+      - paragraph [ref=e105]: "\\begin{equation} \\label{eq:ch-02-full-TISE} \\hat H\\, \\Psi(\\mathbf r, \\mathbf R) \\;=\\; E\\, \\Psi(\\mathbf r, \\mathbf R) , \\end{equation}"
+      - paragraph [ref=e106]:
+        - text: where $\mathbf r = (\mathbf r_1, \dots, \mathbf r_N)$ and $\mathbf R = (\mathbf R_1, \dots, \mathbf R_M)$ are the full electronic and nuclear coordinate tuples. The wavefunction $\Psi(\mathbf r, \mathbf R)$ has $3(N+M)$ continuous arguments, and its
+        - emphasis [ref=e107]: exact
+        - text: solution is a hard problem even for the smallest molecule, $\mathrm H_2$. The Born–Oppenheimer approximation is the one move that makes the problem tractable.
+      - paragraph [ref=e108]:
+        - strong [ref=e109]: Argument.
+        - text: "The nuclear mass is $M_A \\gtrsim 1836\\,m_e$ (hydrogen) or larger (every other element). The ratio $m_e/M_A$ is therefore small: $m_e/M_{\\text H} \\approx 5.4 \\times 10^{-4}$, $m_e/M_{\\text C} \\approx 4.6 \\times 10^{-5}$, and so on. In the language of classical mechanics, the electrons move much faster than the nuclei; in the language of quantum mechanics, the de Broglie wavelength of a thermal nucleus is much shorter than that of a thermal electron, so the nuclei behave almost classically on the electronic timescale. The Born–Oppenheimer Ansatz is therefore to write the total wavefunction as a product"
+      - paragraph [ref=e110]: "\\begin{equation} \\label{eq:ch-02-BO-Ansatz} \\Psi(\\mathbf r, \\mathbf R) \\;\\approx\\; \\psi_{\\text{el}}(\\mathbf r; \\mathbf R)\\, \\chi_{\\text{nuc}}(\\mathbf R) , \\end{equation}"
+      - paragraph [ref=e111]:
+        - text: where the
+        - strong [ref=e112]: electronic wavefunction
+        - text: "$\\psi_{\\text{el}}(\\mathbf r; \\mathbf R)$ depends on the nuclear coordinates"
+        - emphasis [ref=e113]: parametrically
+        - text: (the semicolon indicates that the $\mathbf R$ are held fixed, not integrated over) and the
+        - strong [ref=e114]: nuclear wavefunction
+        - text: "$\\chi_{\\text{nuc}}(\\mathbf R)$ depends only on the nuclear coordinates. Substituting \\eqref{eq:ch-02-BO-Ansatz} into \\eqref{eq:ch-02-full-TISE} and neglecting the small $\\nabla_A \\psi_{\\text{el}}$ term (the"
+        - strong [ref=e115]: non-adiabatic coupling
+        - text: ) gives two
+        - emphasis [ref=e116]: separate
+        - text: "eigenvalue problems: an electronic one at each nuclear geometry $\\mathbf R$,"
+      - paragraph [ref=e117]: "\\begin{equation} \\label{eq:ch-02-electronic} \\hat H_{\\text{el}}(\\mathbf R)\\, \\psi_{\\text{el},n}(\\mathbf r; \\mathbf R) \\;=\\; \\varepsilon_n(\\mathbf R)\\, \\psi_{\\text{el},n}(\\mathbf r; \\mathbf R) , \\end{equation}"
+      - paragraph [ref=e118]: and a nuclear one in the electronic eigenvalue surface $\varepsilon_n(\mathbf R)$,
+      - paragraph [ref=e119]: "\\begin{equation} \\label{eq:ch-02-nuclear} \\Bigl[\\,\\hat T_N + \\varepsilon_n(\\mathbf R) + V_{NN}(\\mathbf R)\\Bigr]\\, \\chi_{\\text{nuc},n\\nu}(\\mathbf R) \\;=\\; E_{n\\nu}\\, \\chi_{\\text{nuc},n\\nu}(\\mathbf R) . \\end{equation}"
+      - paragraph [ref=e120]:
+        - text: "Equation \\eqref{eq:ch-02-electronic} is the"
+        - strong [ref=e121]: electronic Schrödinger equation
+        - text: ", and it is what we will solve for the rest of these notes. Equation \\eqref{eq:ch-02-nuclear} is the"
+        - strong [ref=e122]: nuclear Schrödinger equation
+        - text: ; it is the equation of motion on the
+        - strong [ref=e123]: Born–Oppenheimer potential-energy surface
+        - text: $\varepsilon_n(\mathbf R)$, and is the starting point of vibrational spectroscopy (
+        - link "chapter 10" [ref=e124] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-10/
+        - text: ) and of reaction-rate theory.
+      - paragraph [ref=e125]: "The electronic Hamiltonian appearing in \\eqref{eq:ch-02-electronic} is exactly \\eqref{eq:ch-02-hamiltonian}:"
+      - paragraph [ref=e126]:
+        - text: "\\begin{equation} \\label{eq:ch-02-Hel} \\hat H_{\\text{el}}(\\mathbf R) \\;=\\; \\underbrace{-\\frac{1}{2}\\sum_{i=1}^{N} \\nabla_i^2}"
+        - emphasis [ref=e127]: "{\\hat T_e} \\;\\underbrace{-\\sum"
+        - text: "{i=1}^{N}\\sum_{A=1}^{M} \\frac{Z_A}{|\\mathbf r_i - \\mathbf R_A|}}"
+        - emphasis [ref=e128]: "{\\hat V"
+        - text: "{en}} \\;\\underbrace{+\\sum_{i<j}^{N} \\frac{1}{|\\mathbf r_i - \\mathbf r_j|}}"
+        - emphasis [ref=e129]: "{\\hat V"
+        - text: "{ee}} . \\end{equation}"
+      - paragraph [ref=e130]:
+        - text: "The $V_{NN}$ of \\eqref{eq:ch-02-VNN} is the same in both \\eqref{eq:ch-02-electronic} and the total energy, but in the"
+        - emphasis [ref=e131]: electronic
+        - text: problem it is a
+        - emphasis [ref=e132]: constant
+        - text: (the $\mathbf R$ are parameters, not operators) and is added at the end.
+      - blockquote [ref=e133]:
+        - paragraph [ref=e134]:
+          - strong [ref=e135]: Note (non-adiabatic coupling).
+          - text: "We dropped the $\\nabla_A \\psi_{\\text{el}}$ term that arises when the product \\eqref{eq:ch-02-BO-Ansatz} is differentiated with respect to $\\mathbf R_A$. This term is the source of"
+          - strong [ref=e136]: non-adiabatic transitions
+          - text: between electronic states, and the Born–Oppenheimer approximation is
+          - emphasis [ref=e137]: exact
+          - text: only in the limit $M_A \to \infty$ (or, equivalently, $m_e/M_A \to 0$). In light molecules, in Jahn–Teller systems, at conical intersections, and whenever two electronic surfaces come close in energy, the non-adiabatic term is non-negligible and the Born–Oppenheimer picture breaks down. We will not need it for the ground-state molecules of these notes, but it is the conceptual reason
+          - strong [ref=e138]: Born–Oppenheimer molecular dynamics
+          - text: (the standard ab-initio MD) is a slightly different beast from
+          - strong [ref=e139]: non-adiabatic molecular dynamics
+          - text: "(which carries surface-hopping or Ehrenfest corrections for the $\\nabla_A \\psi_{\\text{el}}$ term)."
+      - heading "2.2.2 Spin and the Pauli principle" [level=3] [ref=e140]
+      - paragraph [ref=e141]: A single electron has spin $s = 1/2$. The spin state lives in $\mathbb C^2$; the two basis vectors are conventionally labelled $\alpha$ (“spin up”) and $\beta$ (“spin down”),
+      - paragraph [ref=e142]: "\\begin{equation} \\label{eq:ch-02-spin-basis} \\alpha(\\sigma) \\;=\\; \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}, \\qquad \\beta(\\sigma) \\;=\\; \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}, \\qquad \\sigma \\in {-\\tfrac{1}{2}, +\\tfrac{1}{2}}. \\end{equation}"
+      - paragraph [ref=e143]:
+        - text: The combined spatial $\otimes$ spin Hilbert space of one electron is therefore $\mathcal H_1 = L^2(\mathbb R^3) \otimes \mathbb C^2$. A single-electron state is a
+        - strong [ref=e144]: spin-orbital
+      - paragraph [ref=e145]: "\\begin{equation} \\label{eq:ch-02-spinorbital} \\chi(\\mathbf x) \\;=\\; \\begin{cases} \\phi(\\mathbf r)\\, \\alpha(\\sigma) & \\text{(spin up)}, \\\\[4pt] \\phi(\\mathbf r)\\, \\beta(\\sigma) & \\text{(spin down)} , \\end{cases} \\end{equation}"
+      - paragraph [ref=e146]:
+        - text: where $\mathbf x = (\mathbf r, \sigma)$ is the
+        - strong [ref=e147]: combined space-spin coordinate
+        - text: and $\phi(\mathbf r) \in L^2(\mathbb R^3)$ is the
+        - strong [ref=e148]: spatial orbital
+        - text: . For a closed-shell atom or molecule with $N_\alpha = N_\beta = N/2$, we can pair up two spin-orbitals with the same spatial part $\phi(\mathbf r)$ — one $\alpha$, one $\beta$ — and call the pair a “spatial orbital” (sloppy but standard usage). This is what every quantum-chemistry code means when it talks about “$N/2$ doubly-occupied spatial orbitals”.
+      - paragraph [ref=e149]:
+        - strong [ref=e150]:
+          - text: Postulate
+          - link "P6" [ref=e151] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/
+          - text: ", in mathematics."
+        - text: The $N$-electron wavefunction $\Psi(\mathbf x_1, \dots, \mathbf x_N)$ must be
+        - emphasis [ref=e152]: totally antisymmetric
+        - text: "under the exchange of any two combined coordinates $\\mathbf x_i \\leftrightarrow \\mathbf x_j$:"
+      - paragraph [ref=e153]: "\\begin{equation} \\label{eq:ch-02-antisymmetry} \\Psi(\\mathbf x_1, \\dots, \\mathbf x_i, \\dots, \\mathbf x_j, \\dots, \\mathbf x_N) \\;=\\; -\\,\\Psi(\\mathbf x_1, \\dots, \\mathbf x_j, \\dots, \\mathbf x_i, \\dots, \\mathbf x_N) . \\end{equation}"
+      - paragraph [ref=e154]:
+        - text: The immediate corollary is the
+        - strong [ref=e155]: Pauli exclusion principle
+        - text: ": if two electrons occupy the"
+        - emphasis [ref=e156]: same
+        - text: spin-orbital, i.e. $\chi_i = \chi_j$, then the exchange gives $\Psi = -\Psi$, forcing $\Psi = 0$. Two electrons with the
+        - emphasis [ref=e157]: same spin
+        - text: ($\alpha\alpha$ or $\beta\beta$) cannot occupy the
+        - emphasis [ref=e158]: same spatial orbital
+        - text: ; two electrons with
+        - emphasis [ref=e159]: opposite
+        - text: spins (one $\alpha$, one $\beta$) can. This is the origin of the Aufbau principle, of the Hund’s-rule multiplicity of free atoms, and of the column structure of the periodic table.
+      - blockquote [ref=e160]:
+        - paragraph [ref=e161]:
+          - strong [ref=e162]: Tip.
+          - text: Antisymmetry is a
+          - emphasis [ref=e163]: fermionic
+          - text: property. Photons and $\,^4$He atoms are bosons and have
+          - emphasis [ref=e164]: symmetric
+          - text: wavefunctions; they can pile into the same state with no Pauli penalty. This is why a laser can be packed arbitrarily full of photons, while a metal can have at most two electrons per spatial orbital.
+      - heading "2.2.3 The Slater determinant" [level=3] [ref=e165]
+      - paragraph [ref=e166]:
+        - text: The simplest non-trivial antisymmetric wavefunction is a
+        - strong [ref=e167]: Slater determinant
+        - text: "of $N$ orthonormal spin-orbitals ${\\chi_i}_{i=1}^{N}$,"
+      - paragraph [ref=e168]: "\\begin{equation} \\label{eq:ch-02-slater} \\Phi(\\mathbf x_1, \\dots, \\mathbf x_N) \\;=\\; \\frac{1}{\\sqrt{N!}} \\begin{vmatrix} \\chi_1(\\mathbf x_1) & \\chi_2(\\mathbf x_1) & \\cdots & \\chi_N(\\mathbf x_1) \\\\\\ \\chi_1(\\mathbf x_2) & \\chi_2(\\mathbf x_2) & \\cdots & \\chi_N(\\mathbf x_2) \\\\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\\\ \\chi_1(\\mathbf x_N) & \\chi_2(\\mathbf x_N) & \\cdots & \\chi_N(\\mathbf x_N) \\end{vmatrix}. \\end{equation}"
+      - paragraph [ref=e169]:
+        - text: "The prefactor $1/\\sqrt{N!}$ is the"
+        - strong [ref=e170]: normalisation
+        - text: for orthonormal $\chi_i$; the determinant structure
+        - emphasis [ref=e171]: guarantees
+        - text: total antisymmetry — exchanging two columns of a determinant multiplies it by $-1$, and exchanging two
+        - emphasis [ref=e172]: rows
+        - text: of a matrix is the same as exchanging two columns of its transpose, so exchanging two electronic coordinates multiplies the determinant by $-1$.
+      - paragraph [ref=e173]: "It is worth checking that \\eqref{eq:ch-02-slater} is correctly normalised. The square modulus, integrated over all $3N$ electronic coordinates and summed over all $2^N$ spin configurations, is"
+      - paragraph [ref=e174]: "\\begin{equation} \\label{eq:ch-02-norm} \\langle \\Phi \\mid \\Phi \\rangle \\;=\\; \\frac{1}{N!} \\int d\\mathbf x_1 \\cdots d\\mathbf x_N\\; \\left| \\det\\Bigl[\\chi_i(\\mathbf x_j)\\Bigr] \\right|^2 . \\end{equation}"
+      - paragraph [ref=e175]:
+        - text: A classic result (sometimes called the
+        - strong [ref=e176]: Cauchy–Binet identity
+        - text: ") reduces this multiple integral to a product of one-electron norms:"
+      - paragraph [ref=e177]: "\\begin{equation} \\label{eq:ch-02-cauchy-binet} \\frac{1}{N!} \\int d\\mathbf x_1 \\cdots d\\mathbf x_N\\; \\Bigl| \\det[\\chi_i(\\mathbf x_j)] \\Bigr|^2 \\;=\\; \\det\\Bigl[ \\langle \\chi_i \\mid \\chi_j \\rangle \\Bigr]_{i,j=1}^{N} . \\end{equation}"
+      - paragraph [ref=e178]:
+        - text: "For orthonormal $\\chi_i$, the overlap matrix on the right is the identity, and \\eqref{eq:ch-02-norm} equals one. This is the"
+        - emphasis [ref=e179]: reason
+        - text: "the prefactor is $1/\\sqrt{N!}$ and not, say, $1/N!$."
+      - blockquote [ref=e180]:
+        - paragraph [ref=e181]:
+          - strong [ref=e182]: Tip.
+          - text: "The Slater determinant \\eqref{eq:ch-02-slater} is the “determinantal state” of second quantisation. In the occupation-number representation it is the $|\\chi_1, \\chi_2, \\dots, \\chi_N\\rangle$ state — the one in which the first $N$ spin-orbitals are"
+          - emphasis [ref=e183]: occupied
+          - text: and the rest are
+          - emphasis [ref=e184]: empty
+          - text: . Most of modern quantum chemistry is built on top of second quantisation (see Helgaker, Jorgensen, Olsen,
+          - emphasis [ref=e185]: Molecular Electronic-Structure Theory
+          - text: ", §11), but for these notes the first-quantised determinant \\eqref{eq:ch-02-slater} is enough."
+      - paragraph [ref=e186]:
+        - text: The
+        - strong [ref=e187]: one-particle density
+        - text: associated with a single determinant is
+      - paragraph [ref=e188]: "\\begin{equation} \\label{eq:ch-02-1pdm} \\rho(\\mathbf r) \\;=\\; \\sum_{i=1}^{N} \\sum_{\\sigma \\in {\\uparrow,\\downarrow}} \\Bigl| \\chi_i(\\mathbf r, \\sigma) \\Bigr|^2 . \\end{equation}"
+      - paragraph [ref=e189]:
+        - text: "For a closed-shell determinant with $N/2$ doubly-occupied spatial orbitals ${\\phi_a}_{a=1}^{N/2}$, this reduces to the"
+        - strong [ref=e190]: spin-summed density
+      - paragraph [ref=e191]: "\\begin{equation} \\label{eq:ch-02-rho-closed} \\rho(\\mathbf r) \\;=\\; 2 \\sum_{a=1}^{N/2} |\\phi_a(\\mathbf r)|^2 . \\end{equation}"
+      - paragraph [ref=e192]:
+        - text: "Equations \\eqref{eq:ch-02-1pdm} and \\eqref{eq:ch-02-rho-closed} are the"
+        - emphasis [ref=e193]: only
+        - text: properties of a Slater determinant that survive the single-determinant approximation and are exact for the
+        - emphasis [ref=e194]: non-interacting
+        - text: (mean-field) problem. They are also the ingredients of
+        - strong [ref=e195]: density-functional theory
+        - text: — see
+        - link "chapter 04" [ref=e196] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: .
+      - 'heading "2.2.4 Many Slater determinants: the FCI wavefunction" [level=3] [ref=e197]'
+      - paragraph [ref=e198]:
+        - text: A single Slater determinant is the
+        - emphasis [ref=e199]: exact
+        - text: ground state of a
+        - strong [ref=e200]: non-interacting
+        - text: "system of $N$ fermions in $N$ spin-orbitals — that is, a system in which the electron–electron repulsion $\\hat V_{ee}$ is absent. For an"
+        - emphasis [ref=e201]: interacting
+        - text: system, the ground state is not in general a single determinant. The standard move is to allow a
+        - emphasis [ref=e202]: linear combination
+        - text: of determinants.
+      - paragraph [ref=e203]:
+        - text: "Choose a finite orthonormal basis of $K$ spin-orbitals ${\\chi_p}_{p=1}^{K}$. An $N$-electron Slater determinant is specified by choosing"
+        - emphasis [ref=e204]: which
+        - text: $N$ of the $K$ spin-orbitals are occupied. The number of such choices factors into the $\alpha$ and $\beta$ sectors,
+      - paragraph [ref=e205]: "\\begin{equation} \\label{eq:ch-02-ndet} N_{\\text{det}}(K, N_\\alpha, N_\\beta) \\;=\\; \\binom{K}{N_\\alpha} \\binom{K}{N_\\beta} . \\end{equation}"
+      - paragraph [ref=e206]:
+        - text: The
+        - strong [ref=e207]: full-CI wavefunction
+        - text: "is the most general linear combination of all of them:"
+      - paragraph [ref=e208]: "\\begin{equation} \\label{eq:ch-02-fci-explicit} \\Psi_0(\\mathbf x_1, \\dots, \\mathbf x_N) \\;=\\; \\sum_{I=1}^{N_{\\text{det}}} c_I\\, \\Phi_I(\\mathbf x_1, \\dots, \\mathbf x_N) . \\end{equation}"
+      - paragraph [ref=e209]: "Equation \\eqref{eq:ch-02-fci-explicit} is the same as \\eqref{eq:ch-02-fci}; we are simply being explicit about the $\\binom{K}{N_\\alpha}\\binom{K}{N_\\beta}$ basis. The coefficients ${c_I}$ are determined by minimising the energy expectation value"
+      - paragraph [ref=e210]: "\\begin{equation} \\label{eq:ch-02-var} E_0 \\;=\\; \\min_{{c_I}} \\frac{\\sum_{I,J} c_I^*\\, c_J\\, \\langle \\Phi_I \\mid \\hat H_{\\text{el}} \\mid \\Phi_J \\rangle} {\\sum_{I} |c_I|^2} . \\end{equation}"
+      - paragraph [ref=e211]:
+        - text: This is the
+        - strong [ref=e212]: Rayleigh–Ritz variational principle
+        - text: "applied to the finite-dimensional subspace spanned by the determinants. In the $K \\to \\infty$ limit the span becomes dense in the full electronic Hilbert space, and $E_0$ converges to the exact ground-state energy in the same limit. Equation \\eqref{eq:ch-02-fci-explicit} is exact"
+        - emphasis [ref=e213]: in the basis-set limit
+        - text: ; the only remaining error is the basis-set incompleteness, which we treat in
+        - link "chapter 06" [ref=e214] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: .
+      - paragraph [ref=e215]:
+        - text: "The equation for the optimal ${c_I}$ is the standard"
+        - strong [ref=e216]: eigenvalue problem
+        - text: in the determinant basis,
+      - paragraph [ref=e217]: "\\begin{equation} \\label{eq:ch-02-ci-eig} \\sum_{J} \\langle \\Phi_I \\mid \\hat H_{\\text{el}} \\mid \\Phi_J \\rangle c_J \\;=\\; E\\, c_I , \\end{equation}"
+      - paragraph [ref=e218]:
+        - text: "i.e. $\\mathbf H \\mathbf c = E \\mathbf c$ with $H_{IJ} = \\langle \\Phi_I \\mid \\hat H_{\\text{el}} \\mid \\Phi_J \\rangle$. The matrix elements of $\\hat H_{\\text{el}}$ between two $N$-electron Slater determinants are given by the"
+        - strong [ref=e219]: Slater–Condon rules
+        - text: ; the section 2.2.6 below writes them out for the cases needed in the worked example.
+      - blockquote [ref=e220]:
+        - paragraph [ref=e221]:
+          - strong [ref=e222]: Note.
+          - text: "Equation \\eqref{eq:ch-02-ci-eig} is a"
+          - emphasis [ref=e223]: general
+          - text: eigenvalue problem in a finite,
+          - emphasis [ref=e224]: exponentially-large
+          - text: "basis. The size of $\\mathbf H$ is $N_{\\text{det}} \\times N_{\\text{det}}$ and grows as $\\binom{K}{N_\\alpha}\\binom{K}{N_\\beta}$ — equation \\eqref{eq:ch-02-exp-wall}. Even for $K = 30$ spatial orbitals and $N = 10$ electrons ($N_\\alpha = N_\\beta = 5$), the dimension is $\\binom{30}{5}^2 = 142{,}506$, a $200\\,\\text{kB}$ Hamiltonian matrix whose lowest eigenvalue is exact for the model. For $K = 50$ and $N = 20$, the dimension is $\\binom{50}{10}^2 \\approx 1.0 \\times 10^{14}$, which is a matrix of $8 \\times 10^{19}$ complex entries — about $160$ petabytes at 16 bytes per entry. Storing the matrix, never mind diagonalising it, is out of reach."
+      - heading "2.2.5 The exponential wall" [level=3] [ref=e225]
+      - paragraph [ref=e226]: "Equation \\eqref{eq:ch-02-exp-wall} is a fact, not a conjecture. The combinatorial identity"
+      - paragraph [ref=e227]: "\\begin{equation} \\label{eq:ch-02-binom-stirling} \\binom{K}{N} \\;=\\; \\frac{K!}{N!\\,(K-N)!} \\;\\xrightarrow[K \\gg N]{}\\; \\frac{K^N}{N!} \\;\\xrightarrow[K \\to \\infty]{}\\; e^{N \\ln K - \\ln N!} \\end{equation}"
+      - paragraph [ref=e228]:
+        - text: shows that the determinant count grows
+        - emphasis [ref=e229]: exponentially
+        - text: "in the number of electrons $N$, with a base that depends on the basis size $K$. Three concrete settings illustrate the wall:"
+      - table [ref=e230]:
+        - rowgroup [ref=e231]:
+          - 'row "System $K$ $N$ $N_{\\text{det}}$ Notes" [ref=e232]':
+            - columnheader "System" [ref=e233]
+            - columnheader "$K$" [ref=e234]
+            - columnheader "$N$" [ref=e235]
+            - 'columnheader "$N_{\\text{det}}$" [ref=e236]'
+            - columnheader "Notes" [ref=e237]
+        - rowgroup [ref=e238]:
+          - 'row "$\\mathrm H_2$ / STO-3G 2 2 $\\binom{2}{1}^2 = 4$ Closed-shell, full CI is 4 dets" [ref=e239]':
+            - cell "$\\mathrm H_2$ / STO-3G" [ref=e240]
+            - cell "2" [ref=e241]
+            - cell "2" [ref=e242]
+            - 'cell "$\\binom{2}{1}^2 = 4$" [ref=e243]'
+            - cell "Closed-shell, full CI is 4 dets" [ref=e244]
+          - 'row "$\\mathrm H_2$ O / 6-31G 13 10 $\\binom{13}{5}^2 = 128{,}497$ Full CI is feasible, ~minute" [ref=e245]':
+            - cell "$\\mathrm H_2$ O / 6-31G" [ref=e246]
+            - cell "13" [ref=e247]
+            - cell "10" [ref=e248]
+            - 'cell "$\\binom{13}{5}^2 = 128{,}497$" [ref=e249]'
+            - cell "Full CI is feasible, ~minute" [ref=e250]
+          - 'row "Benzene / 6-31G* 36 30 $\\binom{36}{15}^2 \\approx 1.6 \\times 10^{16}$ Not feasible — petabytes" [ref=e251]':
+            - cell "Benzene / 6-31G*" [ref=e252]
+            - cell "36" [ref=e253]
+            - cell "30" [ref=e254]
+            - 'cell "$\\binom{36}{15}^2 \\approx 1.6 \\times 10^{16}$" [ref=e255]'
+            - cell "Not feasible — petabytes" [ref=e256]:
+              - text: Not feasible —
+              - emphasis [ref=e257]: petabytes
+          - 'row "Benzene / cc-pVDZ 114 30 $\\binom{114}{15}^2 \\approx 2.5 \\times 10^{26}$ Out of reach of any conceivable computer" [ref=e258]':
+            - cell "Benzene / cc-pVDZ" [ref=e259]
+            - cell "114" [ref=e260]
+            - cell "30" [ref=e261]
+            - 'cell "$\\binom{114}{15}^2 \\approx 2.5 \\times 10^{26}$" [ref=e262]'
+            - cell "Out of reach of any conceivable computer" [ref=e263]
+      - paragraph [ref=e264]:
+        - text: The numbers in the third and fourth rows of the table are what the phrase “
+        - strong [ref=e265]: exponential wall
+        - text: ” refers to. No known algorithm defeats it in general. The
+        - strong [ref=e266]: orbital-optimised
+        - text: approaches of modern quantum Monte Carlo (DMC, AFQMC, FCIQMC) and the
+        - strong [ref=e267]: selected CI
+        - text: methods (CIPSI, ASCI, Heat-bath CI) attack the wall by
+        - emphasis [ref=e268]: sampling
+        - text: the determinant space rather than enumerating it; the
+        - strong [ref=e269]: density matrix renormalisation group (DMRG)
+        - text: and
+        - strong [ref=e270]: tensor network
+        - text: methods attack it by
+        - emphasis [ref=e271]: factorising
+        - text: the wavefunction into a product of small-tensor pieces. All of them work in regimes; none of them works in general. Density-functional theory, the subject of the rest of these notes,
+        - emphasis [ref=e272]: reformulates
+        - text: the problem so that the exponential wall never appears — at the cost of introducing an unknown
+        - strong [ref=e273]: exchange–correlation functional
+        - text: .
+      - blockquote [ref=e274]:
+        - paragraph [ref=e275]:
+          - strong [ref=e276]: Tip.
+          - text: The phrase “exponential wall” was coined by W. Kohn in his 1996 Nobel lecture, in the specific context of
+          - emphasis [ref=e277]: wavefunction
+          - text: "methods. DFT is the work-around: the basic variables of the theory — the one-electron density $\\rho(\\mathbf r)$ — live in a three-dimensional space that is independent of $N$. The price is that the exchange–correlation functional is unknown and has to be approximated."
+      - heading "2.2.6 The Slater–Condon rules" [level=3] [ref=e278]
+      - paragraph [ref=e279]:
+        - text: "To turn the eigenvalue problem \\eqref{eq:ch-02-ci-eig} into a"
+        - emphasis [ref=e280]: computable
+        - text: "recipe, we need a closed-form expression for the matrix elements $\\langle \\Phi_I \\mid \\hat H_{\\text{el}} \\mid \\Phi_J \\rangle$. The"
+        - strong [ref=e281]: Slater–Condon rules
+        - text: give exactly that, by exploiting the determinant structure of the $\Phi$’s. The rules express every matrix element in terms of
+        - emphasis [ref=e282]: one-electron integrals
+      - paragraph [ref=e283]: "\\begin{equation} \\label{eq:ch-02-h1} h_{pq} \\;=\\; \\langle \\chi_p \\mid \\hat h \\mid \\chi_q \\rangle, \\qquad \\hat h \\;=\\; -\\tfrac{1}{2}\\nabla^2 -\\sum_{A=1}^{M} \\frac{Z_A}{|\\mathbf r - \\mathbf R_A|}, \\end{equation}"
+      - paragraph [ref=e284]:
+        - text: and
+        - emphasis [ref=e285]: two-electron integrals
+      - paragraph [ref=e286]:
+        - text: "\\begin{equation} \\label{eq:ch-02-v2} \\langle pq \\mid rs \\rangle \\;=\\; \\int!!\\int \\frac{\\chi_p^"
+        - emphasis [ref=e287]: (\mathbf x_1)\, \chi_q(\mathbf x_1)\, \chi_r^
+        - text: "(\\mathbf x_2)\\, \\chi_s(\\mathbf x_2)} {|\\mathbf r_1 - \\mathbf r_2|}\\; d\\mathbf x_1\\, d\\mathbf x_2 . \\end{equation}"
+      - paragraph [ref=e288]:
+        - text: The notation $\langle pq \mid rs \rangle$ is
+        - strong [ref=e289]: physicists’
+        - text: notation — the bar separates the bra/ket for electron 1 from the bra/ket for electron 2. (The equivalent
+        - strong [ref=e290]: chemists’
+        - text: notation is $[pq|rs]$; they differ by a complex conjugation of the second pair, and the two are equal for real orbitals.)
+      - blockquote [ref=e291]:
+        - paragraph [ref=e292]:
+          - strong [ref=e293]: Note (real orbitals).
+          - text: "In most of these notes the spin-orbitals are real, so the distinction between physicists’ and chemists’ notation is moot. In the general case the conversion is \\begin{equation} \\label{eq:ch-02-notation-conv} \\langle pq \\mid rs \\rangle \\;=\\; [pr|qs] , \\end{equation> where the"
+          - emphasis [ref=e294]: chemist
+          - text: "integral is $[pr|qs] = \\int!!\\int \\chi_p(\\mathbf r_1)\\chi_r(\\mathbf r_2)\\, \\chi_q(\\mathbf r_1)\\chi_s(\\mathbf r_2)/r_{12}\\, d\\mathbf r_1 d\\mathbf r_2$."
+      - paragraph [ref=e295]: "The Slater–Condon rules state that the matrix element of $\\hat H_{\\text{el}}$ between two determinants is a sum of one- and two-electron contributions, with the structure determined by how the two determinants differ in their occupation of the spin-orbital basis:"
+      - list [ref=e296]:
+        - listitem [ref=e297]:
+          - paragraph [ref=e298]:
+            - strong [ref=e299]: $I = J$
+            - text: "(diagonal): \\begin{equation} \\label{eq:ch-02-sc-diag} \\langle \\Phi_I \\mid \\hat H_{\\text{el}} \\mid \\Phi_I \\rangle \\;=\\; \\sum_{i \\in I} h_{ii} +\\tfrac{1}{2}\\sum_{i, j \\in I} \\Bigl(\\langle ij \\mid ij \\rangle -\\langle ij \\mid ji \\rangle\\Bigr) . \\end{equation}"
+        - listitem [ref=e300]:
+          - paragraph [ref=e301]:
+            - strong [ref=e302]: $I$ and $J$ differ by one spin-orbital
+            - text: "($I$ has $a$ where $J$ has $b$, all others the same): \\begin{equation} \\label{eq:ch-02-sc-singles} \\langle \\Phi_I \\mid \\hat H_{\\text{el}} \\mid \\Phi_J \\rangle \\;=\\; h_{ab} +\\sum_{i \\in I} \\Bigl(\\langle ai \\mid bi \\rangle -\\langle ai \\mid ib \\rangle\\Bigr) . \\end{equation}"
+        - listitem [ref=e303]:
+          - paragraph [ref=e304]:
+            - strong [ref=e305]: $I$ and $J$ differ by two spin-orbitals
+            - text: "($I$ has $a, b$ where $J$ has $c, d$, all others the same): \\begin{equation} \\label{eq:ch-02-sc-doubles} \\langle \\Phi_I \\mid \\hat H_{\\text{el}} \\mid \\Phi_J \\rangle \\;=\\; \\langle ab \\mid cd \\rangle -\\langle ab \\mid dc \\rangle . \\end{equation}"
+        - listitem [ref=e306]:
+          - paragraph [ref=e307]:
+            - strong [ref=e308]: $I$ and $J$ differ by three or more spin-orbitals
+            - text: ": \\begin{equation} \\label{eq:ch-02-sc-zero} \\langle \\Phi_I \\mid \\hat H_{\\text{el}} \\mid \\Phi_J \\rangle \\;=\\; 0 . \\end{equation}"
+      - paragraph [ref=e309]:
+        - text: The proof of these rules is in any quantum-chemistry textbook (Szabo & Ostlund §4.2; Helgaker–Jorgensen–Olsen §11.2). The key fact is that the antisymmetrised matrix element between two $N$-electron determinants factors into a sum of $N$-electron cofactors, and most of those cofactors vanish unless the occupation patterns of $I$ and $J$ differ in at most two places. The
+        - strong [ref=e310]: Coulomb integral
+        - text: $\langle ij \mid ij \rangle$ is the classical repulsion of two charge densities $|\chi_i|^2$ and $|\chi_j|^2$; the
+        - strong [ref=e311]: exchange integral
+        - text: $\langle ij \mid ji \rangle$ is a
+        - emphasis [ref=e312]: purely quantum
+        - text: effect with no classical analogue, and vanishes identically for $i, j$ of opposite spin (the exchange integral is a property of
+        - emphasis [ref=e313]: identical
+        - text: fermions only).
+      - blockquote [ref=e314]:
+        - paragraph [ref=e315]:
+          - strong [ref=e316]: Tip.
+          - text: "The “1/2” in the diagonal \\eqref{eq:ch-02-sc-diag} is the price of double-counting: the sum over ordered pairs $(i, j)$ with $i, j \\in I$ counts each unordered pair ${i, j}$ twice. It is the same combinatorial factor as the $N(N-1)/2$ in the definition of the variance of a uniform distribution on $N$ points."
+      - 'heading "2.2.7 Why a single determinant is not enough: the correlation energy" [level=3] [ref=e317]'
+      - paragraph [ref=e318]:
+        - text: A single Slater determinant is a natural variational Ansatz — it satisfies Pauli automatically, it is a “determinantal state” of second quantisation, and for
+        - emphasis [ref=e319]: non-interacting
+        - text: fermions it gives the
+        - emphasis [ref=e320]: exact
+        - text: "ground state. The natural question is: how close is the"
+        - emphasis [ref=e321]: best
+        - text: single determinant to the
+        - emphasis [ref=e322]: "true"
+        - text: ground state of an
+        - emphasis [ref=e323]: interacting
+        - text: system?
+      - paragraph [ref=e324]:
+        - text: The answer is given by the
+        - strong [ref=e325]: Hartree–Fock
+        - text: method of
+        - link "chapter 03" [ref=e326] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: ": the restricted Hartree–Fock (RHF) energy is the minimum of $\\langle \\Phi \\mid \\hat H_{\\text{el}} \\mid \\Phi \\rangle$ over all"
+        - emphasis [ref=e327]: single
+        - text: Slater determinants $\Phi$ built from a chosen basis. The
+        - strong [ref=e328]: correlation energy
+        - text: is the leftover,
+      - paragraph [ref=e329]: "\\begin{equation} \\label{eq:ch-02-ecorr} E_{\\text{corr}} \\;\\equiv\\; E_0 - E_{\\text{HF}} , \\end{equation}"
+      - paragraph [ref=e330]: "where $E_0$ is the exact non-relativistic ground-state energy (in the same one-electron basis) and $E_{\\text{HF}}$ is the RHF energy. By construction $E_{\\text{corr}} \\le 0$ — the exact wavefunction is always at least as low in energy as the best single determinant, because the determinant is one of the determinants in the FCI expansion \\eqref{eq:ch-02-fci-explicit} and the variational principle guarantees that adding more determinants can only lower the energy."
+      - paragraph [ref=e331]: "Equation \\eqref{eq:ch-02-ecorr} hides two effects, and it is worthwhile to disentangle them."
+      - list [ref=e332]:
+        - listitem [ref=e333]:
+          - strong [ref=e334]: Fermi correlation (exchange).
+          - text: The Pauli exclusion principle already prevents same-spin electrons from being at the same point. A single Slater determinant
+          - emphasis [ref=e335]: captures
+          - text: "this exactly: the $i = j$ term of the exchange sum $-\\langle ij \\mid ji \\rangle$ in \\eqref{eq:ch-02-sc-diag} is non-zero, and the corresponding energy is the"
+          - strong [ref=e336]: exchange energy
+          - text: $E_x$ of Hartree–Fock theory. Exchange is
+          - emphasis [ref=e337]: not
+          - text: "a correlation effect in the sense of \\eqref{eq:ch-02-ecorr}; it is included in $E_{\\text{HF}}$."
+        - listitem [ref=e338]:
+          - strong [ref=e339]: Coulomb correlation.
+          - text: The leftover is the
+          - emphasis [ref=e340]: truly
+          - text: quantum effect that the exact wavefunction has
+          - emphasis [ref=e341]: more
+          - text: "structure than a single determinant: opposite-spin electrons"
+          - emphasis [ref=e342]: also
+          - text: "avoid each other, even though Pauli does not require them to. The energy difference $E_c = E_{\\text{corr}} - E_x$ is sometimes called the"
+          - strong [ref=e343]: true correlation energy
+          - text: ", and it is the"
+          - emphasis [ref=e344]: only
+          - text: piece of correlation that a Hartree–Fock calculation misses.
+      - paragraph [ref=e345]:
+        - text: For atoms and small molecules near equilibrium, the
+        - emphasis [ref=e346]: magnitude
+        - text: "of $E_{\\text{corr}}$ is small compared to the total energy: for water in a triple-zeta basis, $E_{\\text{HF}} \\approx -76.0\\,E_h$ and $E_{\\text{corr}} \\approx -0.3\\,E_h$, i.e. about 0.4% of the total. But $E_{\\text{corr}}$ is the"
+        - emphasis [ref=e347]: only
+        - text: "quantity that distinguishes different molecules’ bond energies reliably. A calculation that gets $E_{\\text{HF}}$ to within 0.1% but misses the correlation energy entirely will"
+        - emphasis [ref=e348]: not
+        - text: "predict reaction energies to within chemical accuracy ($\\sim 1\\,\\text{kcal/mol} \\approx 1.6 \\times 10^{-3}\\,E_h$). This is the"
+        - emphasis [ref=e349]: practical
+        - text: motivation for the hierarchy of post-Hartree–Fock methods below.
+      - blockquote [ref=e350]:
+        - paragraph [ref=e351]:
+          - strong [ref=e352]: Note (the Coulson–Fischer point).
+          - text: For molecular geometries
+          - emphasis [ref=e353]: far
+          - text: from equilibrium — stretched bonds, near-dissociation limits, transition states for radical reactions — a single determinant can become
+          - emphasis [ref=e354]: qualitatively
+          - text: wrong, not just slightly wrong. The Coulson–Fischer point is the geometry at which the restricted Hartree–Fock solution spontaneously breaks spin symmetry and becomes unstable to a different (lower) determinant. Beyond this point, RHF is
+          - emphasis [ref=e355]: qualitatively
+          - text: "wrong: it predicts fractional bond orders, spurious ionic contributions, and the wrong dissociation limit. This is the regime of"
+          - strong [ref=e356]: strong (or static) correlation
+          - text: ", and it is the regime in which the determinant basis of \\eqref{eq:ch-02-fci-explicit} is needed at near-degenerate weights."
+      - heading "2.2.8 The hierarchy of post-HF methods" [level=3] [ref=e357]
+      - paragraph [ref=e358]:
+        - text: "Once we accept that a single determinant is approximate, the next question is: how do we add correlation back in"
+        - emphasis [ref=e359]: systematically
+        - text: "? The standard answer is a"
+        - emphasis [ref=e360]: hierarchy
+        - text: "of methods, each with a known accuracy and a known cost. The methods are introduced in roughly increasing order of accuracy (and cost):"
+      - table [ref=e361]:
+        - rowgroup [ref=e362]:
+          - row "Method Ansatz Cost (leading) Typical error (kcal/mol)" [ref=e363]:
+            - columnheader "Method" [ref=e364]
+            - columnheader "Ansatz" [ref=e365]
+            - columnheader "Cost (leading)" [ref=e366]
+            - columnheader "Typical error (kcal/mol)" [ref=e367]
+        - rowgroup [ref=e368]:
+          - row "HF Single determinant $\\mathcal O(K^2 N)$ 1 – 10 (relative)" [ref=e369]:
+            - cell "HF" [ref=e370]
+            - cell "Single determinant" [ref=e371]
+            - cell "$\\mathcal O(K^2 N)$" [ref=e372]
+            - cell "1 – 10 (relative)" [ref=e373]
+          - row "MP2 2nd-order Møller–Plesset perturbation theory $\\mathcal O(K^4)$ 0.5 – 2" [ref=e374]:
+            - cell "MP2" [ref=e375]
+            - cell "2nd-order Møller–Plesset perturbation theory" [ref=e376]
+            - cell "$\\mathcal O(K^4)$" [ref=e377]
+            - cell "0.5 – 2" [ref=e378]
+          - row "CISD Singles + doubles CI $\\mathcal O(K^6)$ 0.5 – 2" [ref=e379]:
+            - cell "CISD" [ref=e380]
+            - cell "Singles + doubles CI" [ref=e381]
+            - cell "$\\mathcal O(K^6)$" [ref=e382]
+            - cell "0.5 – 2" [ref=e383]
+          - row "CCSD Coupled-cluster singles + doubles $\\mathcal O(K^6)$ 0.2 – 1" [ref=e384]:
+            - cell "CCSD" [ref=e385]
+            - cell "Coupled-cluster singles + doubles" [ref=e386]
+            - cell "$\\mathcal O(K^6)$" [ref=e387]
+            - cell "0.2 – 1" [ref=e388]
+          - row "CCSD(T) CCSD + perturbative triples $\\mathcal O(K^7)$ 0.1 – 0.5" [ref=e389]:
+            - cell "CCSD(T)" [ref=e390]
+            - cell "CCSD + perturbative triples" [ref=e391]
+            - cell "$\\mathcal O(K^7)$" [ref=e392]
+            - cell "0.1 – 0.5" [ref=e393]
+          - row "Full CI Exact (in the basis) $\\mathcal O(K^N)$ 0 (in basis)" [ref=e394]:
+            - cell "Full CI" [ref=e395]
+            - cell "Exact (in the basis)" [ref=e396]
+            - cell "$\\mathcal O(K^N)$" [ref=e397]
+            - cell "0 (in basis)" [ref=e398]
+      - paragraph [ref=e399]: "All of the methods below “Full CI” are systematic approximations to the full-CI sum. They can be derived in three standard ways:"
+      - list [ref=e400]:
+        - listitem [ref=e401]:
+          - paragraph [ref=e402]:
+            - strong [ref=e403]: Perturbation theory
+            - text: (MP2, MP3, MP4, …). Write $\hat H = \hat H_0 + \hat V$ with $\hat H_0$ a single-determinant zeroth-order Hamiltonian (e.g. the Fock operator), and expand $E$ in powers of $\hat V$. The leading correction is the second-order
+            - strong [ref=e404]: Møller–Plesset
+            - text: "energy \\begin{equation} \\label{eq:ch-02-mp2} E^{(2)} \\;=\\; \\sum_{i<j}\\sum_{a<b} \\frac{\\Bigl| \\langle ij \\mid ab \\rangle \\Bigr|^2} {\\varepsilon_i + \\varepsilon_j - \\varepsilon_a - \\varepsilon_b} , \\end{equation} a sum over"
+            - emphasis [ref=e405]: occupied
+            - text: spin-orbitals $i, j$ and
+            - emphasis [ref=e406]: virtual
+            - text: ones $a, b$. The denominator is the
+            - emphasis [ref=e407]: orbital-energy
+            - text: difference of the four states, and the sum runs over all doubly-excited determinants. MP2 is the cheapest
+            - emphasis [ref=e408]: correlated
+            - text: method.
+        - listitem [ref=e409]:
+          - paragraph [ref=e410]:
+            - strong [ref=e411]: Configuration interaction
+            - text: "(CISD, CISDT, CISDTQ, …, FCI). Truncate the FCI expansion \\eqref{eq:ch-02-fci-explicit} to determinants that differ from the reference by at most $n$ excitations. CISD includes singles and doubles, CISDT adds triples, etc. The Hamiltonian matrix in the truncated basis is"
+            - emphasis [ref=e412]: much
+            - text: smaller than the full-CI matrix, but the truncation breaks
+            - strong [ref=e413]: size consistency
+            - text: (see §2.2.9 below).
+        - listitem [ref=e414]:
+          - paragraph [ref=e415]:
+            - strong [ref=e416]: Coupled-cluster theory
+            - text: "(CCS, CCSD, CCSDT, CCSDTQ, …). Write the exact wavefunction as $\\Psi = e^{\\hat T}\\,\\Phi_0$, with $\\hat T = \\hat T_1 + \\hat T_2 + \\cdots + \\hat T_N$ a sum of"
+            - emphasis [ref=e417]: excitation operators
+            - text: "that promote electrons from occupied to virtual orbitals. The exponential Ansatz $e^{\\hat T} = 1 + \\hat T + \\tfrac{1}{2}\\hat T^2 + \\cdots$ automatically includes products of excitations (a “double” is generated by $\\hat T_2$, a “quadruple” by $\\hat T_2^2/2$, and so on), and the"
+            - emphasis [ref=e418]: connected
+            - text: form of the resulting equations preserves size consistency. The CCSD equations are $\mathcal O(K^6)$ and the perturbative triples correction CCSD(T) brings the cost to $\mathcal O(K^7)$.
+      - blockquote [ref=e419]:
+        - paragraph [ref=e420]:
+          - strong [ref=e421]: Tip.
+          - text: “Cost (leading)” in the table is the
+          - emphasis [ref=e422]: leading-order
+          - text: "polynomial scaling with the basis-set size $K$. All of the methods have a steep prefactor (especially CCSD(T) and full CI), and the scaling is what makes them intractable in practice. A useful rule of thumb: CCSD(T) on a 20-atom organic molecule with a triple-zeta basis is feasible (a few days on a workstation); CCSD(T) on a 100-atom protein is not (it would take longer than the age of the universe). Full CI on more than about 12 electrons in a double-zeta basis is not (it would take longer than 9 million years, as the worked example in section 2.5 makes concrete)."
+      - heading "2.2.9 Size consistency and size extensivity" [level=3] [ref=e423]
+      - paragraph [ref=e424]:
+        - text: "The full-CI wavefunction \\eqref{eq:ch-02-fci-explicit} is exact in the basis-set limit,"
+        - emphasis [ref=e425]: and
+        - text: "it has a property that no truncated method preserves without further consideration: the energy of a"
+        - emphasis [ref=e426]: super-molecule
+        - text: made of two non-interacting fragments is the sum of the energies of the fragments. This property has two names, which are sometimes used interchangeably and sometimes not.
+      - paragraph [ref=e427]:
+        - strong [ref=e428]: Size consistency
+        - text: (Pople, 1973). A method is
+        - strong [ref=e429]: size consistent
+        - text: "if, for two non-interacting fragments $A$ and $B$ at infinite separation, the total energy equals the sum of the fragment energies:"
+      - paragraph [ref=e430]: "\\begin{equation} \\label{eq:ch-02-size-cons} E_{AB} \\;=\\; E_A + E_B \\qquad \\text{(fragments at } R \\to \\infty\\text{)} . \\end{equation}"
+      - paragraph [ref=e431]:
+        - text: "The “non-interacting” caveat is essential: size consistency is defined for a"
+        - emphasis [ref=e432]: vanishing
+        - text: "coupling between the fragments. A method that satisfies \\eqref{eq:ch-02-size-cons} for any two non-interacting fragments at any separation is size consistent."
+      - paragraph [ref=e433]:
+        - strong [ref=e434]: Size extensivity
+        - text: (Bartlett, 1981). A method is
+        - strong [ref=e435]: size extensive
+        - text: if the energy scales
+        - emphasis [ref=e436]: linearly
+        - text: "with the number of particles $N$ for a homogeneous system:"
+      - paragraph [ref=e437]: "\\begin{equation} \\label{eq:ch-02-size-ext} E_N \\;=\\; \\mathcal O(N) \\qquad (N \\to \\infty) . \\end{equation}"
+      - paragraph [ref=e438]:
+        - text: This is a
+        - emphasis [ref=e439]: stronger
+        - text: "property than size consistency: it requires the energy to be proportional to the number of particles, not just additive at infinite separation. For a uniform electron gas, the HF energy per electron approaches a constant, the MP2 energy per electron approaches a constant, and the CCSD(T) energy per electron approaches a constant — so all of these methods are size extensive. CISD, on the other hand, gives an energy that grows"
+        - emphasis [ref=e440]: less
+        - text: than linearly with $N$, because the truncated CI misses the
+        - emphasis [ref=e441]: disconnected
+        - text: contributions to the energy (the products of excitations on different fragments) and the missing piece grows with $N$.
+      - paragraph [ref=e442]:
+        - text: The distinction between the two properties is most easily seen in a
+        - emphasis [ref=e443]: dimer
+        - text: "calculation. Take two non-interacting copies of $\\mathrm{H_2O}$ at infinite separation, and compare the size- consistent prediction of the energy to the size-inconsistent one:"
+      - table [ref=e444]:
+        - rowgroup [ref=e445]:
+          - 'row "Method $E_A$ (per $\\mathrm{H_2O}$) $E_{AB}$ (two $\\mathrm{H_2O}$) Size-consistent? Size-extensive?" [ref=e446]':
+            - columnheader "Method" [ref=e447]
+            - 'columnheader "$E_A$ (per $\\mathrm{H_2O}$)" [ref=e448]'
+            - 'columnheader "$E_{AB}$ (two $\\mathrm{H_2O}$)" [ref=e449]'
+            - columnheader "Size-consistent?" [ref=e450]
+            - columnheader "Size-extensive?" [ref=e451]
+        - rowgroup [ref=e452]:
+          - row "HF $-76.0\\,E_h$ $-152.0\\,E_h$ yes yes" [ref=e453]:
+            - cell "HF" [ref=e454]
+            - cell "$-76.0\\,E_h$" [ref=e455]
+            - cell "$-152.0\\,E_h$" [ref=e456]
+            - cell "yes" [ref=e457]
+            - cell "yes" [ref=e458]
+          - row "MP2 $-76.3\\,E_h$ $-152.6\\,E_h$ yes yes" [ref=e459]:
+            - cell "MP2" [ref=e460]
+            - cell "$-76.3\\,E_h$" [ref=e461]
+            - cell "$-152.6\\,E_h$" [ref=e462]
+            - cell "yes" [ref=e463]
+            - cell "yes" [ref=e464]
+          - row "CISD $-76.3\\,E_h$ $-152.4\\,E_h$ no ($\\Delta = 0.2\\,E_h$) no" [ref=e465]:
+            - cell "CISD" [ref=e466]
+            - cell "$-76.3\\,E_h$" [ref=e467]
+            - cell "$-152.4\\,E_h$" [ref=e468]
+            - cell "no ($\\Delta = 0.2\\,E_h$)" [ref=e469]:
+              - strong [ref=e470]: "no"
+              - text: ($\Delta = 0.2\,E_h$)
+            - cell "no" [ref=e471]:
+              - strong [ref=e472]: "no"
+          - row "CCSD $-76.3\\,E_h$ $-152.6\\,E_h$ yes yes" [ref=e473]:
+            - cell "CCSD" [ref=e474]
+            - cell "$-76.3\\,E_h$" [ref=e475]
+            - cell "$-152.6\\,E_h$" [ref=e476]
+            - cell "yes" [ref=e477]
+            - cell "yes" [ref=e478]
+          - row "CCSD(T) $-76.32\\,E_h$ $-152.64\\,E_h$ yes yes" [ref=e479]:
+            - cell "CCSD(T)" [ref=e480]
+            - cell "$-76.32\\,E_h$" [ref=e481]
+            - cell "$-152.64\\,E_h$" [ref=e482]
+            - cell "yes" [ref=e483]
+            - cell "yes" [ref=e484]
+          - row "Full CI $-76.32\\,E_h$ $-152.64\\,E_h$ yes (by construction) yes (by construction)" [ref=e485]:
+            - cell "Full CI" [ref=e486]
+            - cell "$-76.32\\,E_h$" [ref=e487]
+            - cell "$-152.64\\,E_h$" [ref=e488]
+            - cell "yes (by construction)" [ref=e489]
+            - cell "yes (by construction)" [ref=e490]
+      - paragraph [ref=e491]:
+        - text: The numbers in the table are
+        - emphasis [ref=e492]: illustrative
+        - text: (rounded, not from a real calculation), but the qualitative pattern is correct. CISD gives the same energy per fragment as CCSD, but it
+        - emphasis [ref=e493]: underestimates
+        - text: "the energy of the dimer: it misses $\\sim 0.2\\,E_h$ of correlation energy, which is exactly the"
+        - emphasis [ref=e494]: disconnected
+        - text: contribution of excitations on the two fragments acting in concert. The same $0.2\,E_h$ is
+        - emphasis [ref=e495]: also
+        - text: "the difference between “size consistent” and “size inconsistent” for two $\\mathrm{H_2O}$ fragments. This is the practical reason CCSD has replaced CISD in essentially every production code: it has the same asymptotic cost and is size extensive, while CISD is not."
+      - blockquote [ref=e496]:
+        - paragraph [ref=e497]:
+          - strong [ref=e498]: Note (the linked diagram theorem).
+          - text: The formal reason CCSD is size extensive is the
+          - strong [ref=e499]: linked diagram theorem
+          - text: ": when the CC equations are derived in the language of many-body perturbation theory, only"
+          - strong [ref=e500]: connected
+          - text: (linked) diagrams appear. Connected diagrams scale linearly with the number of particles, while disconnected diagrams scale as products of subsystem contributions. Truncated CI includes
+          - emphasis [ref=e501]: both
+          - text: "linked and unlinked diagrams; the unlinked pieces do not vanish in general, and they make the truncated CI miss the size-extensive part of the energy. The exponential Ansatz $e^{\\hat T}$ of coupled-cluster theory is the"
+          - emphasis [ref=e502]: only
+          - text: non-trivial combination of excitations that automatically drops the unlinked diagrams, which is why the linked-diagram theorem makes CC methods size extensive and CI methods not.
+      - heading "2.2.10 The road ahead" [level=3] [ref=e503]
+      - paragraph [ref=e504]: "Three avenues of escape from the exponential wall are visible from where we stand:"
+      - list [ref=e505]:
+        - listitem [ref=e506]:
+          - strong [ref=e507]: Systematically improvable wavefunctions.
+          - text: The MP / CI / CC hierarchy of section 2.2.8, the
+          - strong [ref=e508]: selected CI
+          - text: family (CIPSI, ASCI, Heat-bath CI),
+          - strong [ref=e509]: quantum Monte Carlo
+          - text: (VMC, DMC, FCIQMC, AFQMC), and
+          - strong [ref=e510]: tensor network
+          - text: methods (DMRG, PEPS, MERA). Each has a regime where it works and a regime where it does not. These methods
+          - emphasis [ref=e511]: converge
+          - text: to the full-CI answer in the limit of their respective control parameters (perturbation order, number of selected determinants, walker population, bond dimension), and the convergence is the proof that the method is doing
+          - emphasis [ref=e512]: exactly
+          - text: the calculation it claims to.
+        - listitem [ref=e513]:
+          - strong [ref=e514]: Density-functional reformulation.
+          - text: "Throw out the wavefunction, reformulate the problem in terms of the one-electron density $\\rho(\\mathbf r)$ of \\eqref{eq:ch-02-1pdm}, and accept that the"
+          - emphasis [ref=e515]: exchange–correlation functional
+          - text: is unknown. The basic variables of the theory now live in $\mathbb R^3$, which is independent of $N$. This is the path that Kohn–Sham DFT takes, and it is the subject of
+          - link "chapter 04" [ref=e516] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: and
+          - link "chapter 05" [ref=e517] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: .
+        - listitem [ref=e518]:
+          - strong [ref=e519]: Avoid the problem entirely.
+          - text: Pick a system that is
+          - emphasis [ref=e520]: not
+          - text: strongly correlated, pick a property that is
+          - emphasis [ref=e521]: not
+          - text: a small energy difference, and use a method that is known to be accurate for the regime. Tight-binding, semi-empirical methods, force fields, and machine-learning potentials are all of this kind; they work because they avoid the exponentially-hard problem rather than solving it.
+      - paragraph [ref=e522]:
+        - text: The rest of these notes is almost entirely about option 2. We take a
+        - emphasis [ref=e523]: short
+        - text: detour through Hartree–Fock first, because the HF orbitals and eigenvalues are the language in which Kohn–Sham DFT is written, and because the Fock operator is the cleanest example of a
+        - strong [ref=e524]: mean-field
+        - text: theory.
+      - heading "2.3 The code" [level=2] [ref=e525]
+      - paragraph [ref=e526]:
+        - text: The “many-body” character of the problem is hard to
+        - emphasis [ref=e527]: see
+        - text: in a production code — the production code just diagonalises a huge matrix — but it is
+        - emphasis [ref=e528]: easy
+        - text: to
+        - emphasis [ref=e529]: make
+        - text: visible in a toy problem. We build a one-dimensional model of two electrons in a box of length $L = 4$ bohr, with a soft short-range repulsion between them, and solve the model in a tiny basis by hand. The script
+        - link "dft_notes/python_codes/chapter_02/01-two-electron-box.py" [ref=e530] [cursor=pointer]:
+          - /url: /DFT-notes/dft_notes/python_codes/chapter_02/01-two-electron-box.py
+          - code [ref=e531]: dft_notes/python_codes/chapter_02/01-two-electron-box.py
+        - text: does exactly this.
+      - code [ref=e535]: "# dft_notes/python_codes/chapter_02/01-two-electron-box.py \"\"\" Two electrons in a 1-D box with a soft short-range repulsion. A toy many-body problem solved by direct full CI in a sine basis. - One-electron basis: the first K sin(n pi x / L) functions on [0, L] with the particle-in-a-box Hamiltonian h_1. - Two-electron interaction: a soft Gaussian repulsion V(x1, x2) = lambda * exp(-(x1 - x2)^2 / sigma^2) with lambda = 1.0 Hartree, sigma = 0.5 bohr. - N_alpha = N_beta = 1, so N_det = K^2 (spin-adapted CI: K_orb singlet and triplet combinations). - Build the Slater-Condon matrix elements, diagonalise, plot the first few eigenvalues vs. K to show convergence. This is the smallest problem that has *all* the ingredients of a real many-body calculation: a one-electron basis, a two-electron integrals tensor, the Slater-Condon rules, and an exponential growth of the determinant count. \"\"\" import os import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt # --- Parameters --------------------------------------------------------- L = 4.0 # box length, bohr N_e = 2 # total electrons N_alpha = 1 N_beta = 1 LAMBDA = 1.0 # repulsion strength, Hartree SIGMA = 0.5 # repulsion range, bohr N_GRID = 400 # spatial grid for integrals # --- One-electron grid -------------------------------------------------- x = np.linspace(0.0, L, N_GRID) dx = x[1] - x[0] # --- One-electron basis: sine functions --------------------------------- def sin_basis(K, L, x): \"\"\"Return the K lowest sin(n pi x / L) functions on a grid.\"\"\" n = np.arange(1, K + 1)[:, None] return np.sqrt(2.0 / L) * np.sin(n * np.pi * x / L) # --- One-electron Hamiltonian matrix ----------------------------------- def one_electron_hamiltonian(K, L, x, dx): \"\"\"<chi_p | -1/2 d^2/dx^2 | chi_q> on a sine basis.\"\"\" chi = sin_basis(K, L, x) # (K, N_GRID) lap = (np.roll(chi, -1, axis=1) - 2.0 * chi + np.roll(chi, 1, axis=1)) / dx**2 lap[:, 0] = 0.0 lap[:, -1] = 0.0 return -0.5 * chi @ lap.T * dx # (K, K) # --- Two-electron integrals <pq|rs> ------------------------------------- def two_electron_integrals(K, L, x, dx, lam, sig): \"\"\" Return the four-index tensor <pq|rs> in physicists' notation, using a soft Gaussian repulsion V(x1, x2) = lam * exp(-(x1 - x2)^2 / sig^2). \"\"\" chi = sin_basis(K, L, x) # (K, N_GRID) g = np.exp(-(x[:, None] - x[None, :])**2 / sig**2) # (N_GRID, N_GRID) # (pq|rs) = sum_{x1 x2} chi_p(x1) chi_q(x1) V(x1,x2) chi_r(x2) chi_s(x2) dx1 dx2 V = lam * g * dx * dx chiV = chi @ V # (K, N_GRID, N_GRID) -> einsum return np.einsum(\"px,qx,rx,sx,pqrs->pqrs\", chi, chi, chi, chi, V) # actually do it step by step to keep the storage small"
+      - paragraph [ref=e536]:
+        - text: The complete script (with the Slater–Condon rules, the diagonalisation, and the convergence plot) is in
+        - link "dft_notes/python_codes/chapter_02/01-two-electron-box.py" [ref=e537] [cursor=pointer]:
+          - /url: /DFT-notes/dft_notes/python_codes/chapter_02/01-two-electron-box.py
+          - code [ref=e538]: dft_notes/python_codes/chapter_02/01-two-electron-box.py
+        - text: ; the run command from the repo root is
+        - code [ref=e539]: python dft_notes/python_codes/chapter_02/01-two-electron-box.py
+        - text: ". The script produces two plots: a convergence plot of the first few eigenvalues vs. basis size $K$, and a density plot of the ground-state wavefunction $\\Psi(x_1, x_2)$. The point of the exercise is"
+        - emphasis [ref=e540]: not
+        - text: the physics (the model is a toy) but the
+        - emphasis [ref=e541]: code structure
+        - text: ": the same eight lines of Slater–Condon rules are what every quantum-chemistry package uses internally, with $K$ replaced by 100+ and $N$ replaced by 10+."
+      - blockquote [ref=e542]:
+        - paragraph [ref=e543]:
+          - strong [ref=e544]: Note (storage).
+          - text: "The full four-index tensor $\\langle pq \\mid rs \\rangle$ has $K^4$ entries. For $K = 30$, that is $30^4 = 810{,}000$ floats ($\\sim 6$ MB). For $K = 100$, it is $10^8$ floats ($\\sim 800$ MB). For $K = 300$, it is $8.1 \\times 10^9$ floats ($\\sim 64$ GB) — already past the memory of a workstation. This is the practical reason"
+          - emphasis [ref=e545]: every
+          - text: production code uses
+          - strong [ref=e546]: density fitting
+          - text: (a.k.a.
+          - strong [ref=e547]: resolution of the identity
+          - text: ) to compress the ERI tensor from $\mathcal O(K^4)$ to $\mathcal O(K^3)$. We will not pursue this further.
+      - heading "2.4 The diagram" [level=2] [ref=e548]
+      - paragraph [ref=e549]:
+        - text: The flow of information in a full-CI calculation is a useful
+        - emphasis [ref=e550]: structural
+        - text: picture. The diagram below is the one to internalise before reading any code.
+      - figure [ref=e552]:
+        - code [ref=e553]:
+          - document [ref=e554]:
+            - generic [ref=e556]:
+              - generic [ref=e565]: N_det = C(K,N_a) * C(K,N_b)\\(exponential in N)
+              - generic [ref=e566]:
+                - generic [ref=e572]: "Molecular geometry\\\\{R_A, Z_A}"
+                - generic [ref=e578]: One-electron\\integrals h_pq\\+ two-electron ERI\\tensor <pq|rs>
+                - generic [ref=e584]:
+                  - text: Build the determinant basis\\
+                  - generic [ref=e585]: choose N_alpha of K\\+ N_beta of K
+                - generic [ref=e591]: Compute the CI matrix\\H_IJ = <Phi_I|H|Phi_J>\\via Slater-Condon rules
+                - generic [ref=e597]: Diagonalise H\\np.linalg.eigh
+                - generic [ref=e603]: Lowest eigenvalue\\E_0 = exact (in basis)
+                - generic [ref=e609]: Lowest eigenvector\\c_I = full-CI coefficients
+                - generic [ref=e615]: One-particle density\\rho(r) = sum_I c_I^2 ...\\(eq. 2.13)
+                - generic [ref=e621]: Chapter 04:\\Kohn-Sham DFT\\avoids the determinant basis
+        - button "Download this diagram as a PNG" [ref=e622] [cursor=pointer]:
+          - img [ref=e623]
+          - generic [ref=e626]: Download PNG
+      - paragraph [ref=e627]:
+        - text: The “
+        - strong [ref=e628]: explosion
+        - text: ” node (coloured coral, in the centre of the diagram) is the
+        - emphasis [ref=e629]: only
+        - text: "place where the method becomes intractable: the determinant basis grows exponentially with the number of electrons, and the diagonalisation cost is the cube of that. Every approximation in the post-HF hierarchy is a strategy for"
+        - emphasis [ref=e630]: replacing or reducing
+        - text: "this node:"
+      - list [ref=e631]:
+        - listitem [ref=e632]:
+          - strong [ref=e633]: HF
+          - text: drops the explosion entirely. The CI basis is the single reference determinant; the cost is $\mathcal O(K^2 N)$.
+        - listitem [ref=e634]:
+          - strong [ref=e635]: MP2
+          - text: keeps the explosion conceptually but expands around it perturbatively. Only the
+          - emphasis [ref=e636]: double
+          - text: excitations enter, and the cost is $\mathcal O(K^4)$.
+        - listitem [ref=e637]:
+          - strong [ref=e638]: CISD
+          - text: keeps the explosion, but truncates the determinant basis to at most doubles. Cost is $\mathcal O(K^6)$ for the diagonalisation.
+        - listitem [ref=e639]:
+          - strong [ref=e640]: CCSD
+          - text: "keeps the explosion, but writes the wavefunction as $e^{\\hat T}\\Phi_0$ and truncates the exponential to singles and doubles. Cost is $\\mathcal O(K^6)$ and the result is size extensive."
+        - listitem [ref=e641]:
+          - strong [ref=e642]: CCSD(T)
+          - text: adds a perturbative triples correction to CCSD. Cost is $\mathcal O(K^7)$.
+        - listitem [ref=e643]:
+          - strong [ref=e644]: Full CI
+          - text: keeps the explosion in full. Cost is $\mathcal O(K^N)$.
+      - paragraph [ref=e645]:
+        - text: The replacement of the explosion node is what the rest of these notes is about. In
+        - strong [ref=e646]: Kohn–Sham DFT
+        - text: (
+        - link "chapter 04" [ref=e647] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: ") the explosion is removed entirely: the wavefunction is gone, and only the density $\\rho(\\mathbf r)$ remains."
+      - heading "2.5 Worked example — full CI on the 2-electron STO-3G H₂ molecule" [level=2] [ref=e648]
+      - paragraph [ref=e649]:
+        - text: We now make the machinery of §2.2 concrete on the
+        - emphasis [ref=e650]: smallest
+        - text: "non-trivial molecule, $\\mathrm{H}_2$, in a"
+        - emphasis [ref=e651]: minimal
+        - text: basis. The worked example reproduces the Szabo–Ostlund benchmark (Szabo & Ostlund,
+        - emphasis [ref=e652]: Modern Quantum Chemistry
+        - text: ", §4.2) for the minimal-basis full-CI calculation of $\\mathrm{H}_2$ at the equilibrium bond length."
+      - heading "2.5.1 The system" [level=3] [ref=e653]
+      - paragraph [ref=e654]:
+        - text: "Take $\\mathrm{H}_2$ with one STO-3G contracted $s$-function on each hydrogen (the same set used in"
+        - link "chapter 06" [ref=e655] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: ). The bond axis is the $z$-axis, the two nuclei are at $\mathbf A = (0, 0, -R/2)$ and $\mathbf B = (0, 0, +R/2)$ with $R = 1.4\,a_0$, and the basis is
+      - paragraph [ref=e656]: "\\begin{equation} \\label{eq:ch-02-h2-basis} \\chi_1(\\mathbf r) \\;=\\; \\chi(\\mathbf r - \\mathbf A), \\qquad \\chi_2(\\mathbf r) \\;=\\; \\chi(\\mathbf r - \\mathbf B) . \\end{equation}"
+      - paragraph [ref=e657]: "With $K = 2$ spatial orbitals and $N = 2$ electrons ($N_\\alpha = N_\\beta = 1$), the full-CI basis of \\eqref{eq:ch-02-fci-explicit} has $\\binom{2}{1} \\binom{2}{1} = 4$ determinants:"
+      - paragraph [ref=e658]: "\\begin{equation} \\label{eq:ch-02-h2-dets} \\Phi_1 = | \\chi_1 \\bar\\chi_1 \\rangle, \\quad \\Phi_2 = | \\chi_1 \\bar\\chi_2 \\rangle, \\quad \\Phi_3 = | \\chi_2 \\bar\\chi_1 \\rangle, \\quad \\Phi_4 = | \\chi_2 \\bar\\chi_2 \\rangle . \\end{equation}"
+      - paragraph [ref=e659]: (Here $\chi_i$ and $\bar\chi_i$ denote the spin-orbitals with $\chi_i$ in the $\alpha$ and $\beta$ spin sectors, respectively.)
+      - paragraph [ref=e660]: "The Hamiltonian matrix in this basis is a $4 \\times 4$ Hermitian matrix. By spin symmetry ($\\hat S_z$ commutes with $\\hat H_{\\text{el}}$) the matrix is block-diagonal: the two $M_S = 0$ determinants $\\Phi_2$ and $\\Phi_3$ are decoupled from the two $M_S = \\pm 1$ determinants $\\Phi_1$ and $\\Phi_4$, and the $M_S = \\pm 1$ block is the $2 \\times 2$ “triplet” problem (the open-shell singlet and the triplet, in the language of spin-coupling)."
+      - heading "2.5.2 The integrals" [level=3] [ref=e661]
+      - paragraph [ref=e662]:
+        - text: "We need the four one-electron integrals ${h_{11}, h_{12}, h_{22}}$ and the six distinct two-electron integrals ${\\langle 11 \\mid 11 \\rangle, \\langle 11 \\mid 12 \\rangle, \\langle 11 \\mid 22 \\rangle, \\langle 12 \\mid 12 \\rangle, \\langle 12 \\mid 22 \\rangle, \\langle 22 \\mid 22 \\rangle}$. With the STO-3G contraction of"
+        - link "chapter 06" [ref=e663] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: and the bond length $R = 1.4\,a_0$, the integral tables (Szabo & Ostlund, Table 4.1; reproduced by
+        - link "dft_notes/python_codes/chapter_06/01-sto-3g-h2.py" [ref=e664] [cursor=pointer]:
+          - /url: /DFT-notes/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py
+          - code [ref=e665]: dft_notes/python_codes/chapter_06/01-sto-3g-h2.py
+        - text: ") give the following values (in Hartree):"
+      - paragraph [ref=e666]: "\\begin{equation} \\label{eq:ch-02-h2-h} h_{11} = h_{22} = -1.1204, \\qquad h_{12} = h_{21} = -0.9584 . \\end{equation}"
+      - paragraph [ref=e667]: (The diagonal is the same on both centres because of homonuclear symmetry.)
+      - paragraph [ref=e668]: "\\begin{equation} \\label{eq:ch-02-h2-v} \\begin{aligned} \\langle 11 \\mid 11 \\rangle &= 0.7746, & \\langle 11 \\mid 22 \\rangle &= 0.5697, \\\\\\ \\langle 12 \\mid 12 \\rangle &= 0.2970, & \\langle 11 \\mid 12 \\rangle &= 0.4441, \\\\\\ \\langle 12 \\mid 22 \\rangle &= 0.4441, & \\langle 22 \\mid 22 \\rangle &= 0.7746 . \\end{aligned} \\end{equation}"
+      - paragraph [ref=e669]: "The $V_{NN} = 1/R = 1/1.4 \\approx 0.7143\\,E_h$ is the same in all configurations and is added at the end."
+      - blockquote [ref=e670]:
+        - paragraph [ref=e671]:
+          - strong [ref=e672]: Note (units and accuracy).
+          - text: "The numbers in \\eqref{eq:ch-02-h2-h} and \\eqref{eq:ch-02-h2-v} are given to four decimal places. The integrals in"
+          - link "dft_notes/python_codes/chapter_06/01-sto-3g-h2.py" [ref=e673] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py
+            - code [ref=e674]: dft_notes/python_codes/chapter_06/01-sto-3g-h2.py
+          - text: are computed to ten decimal places; the truncation here is for readability. The four-decimal figures reproduce the Szabo– Ostlund
+          - emphasis [ref=e675]: Modern Quantum Chemistry
+          - text: "Table 4.1. ### 2.5.3 The 4 × 4 CI matrix"
+      - paragraph [ref=e676]: "The Slater–Condon rules of §2.2.6 give the matrix elements. We list the matrix elements of $\\hat H_{\\text{el}}$ between the four determinants of \\eqref{eq:ch-02-h2-dets}; the $V_{NN}$ contribution is added at the end. By symmetry (the determinants are $\\Phi_1 = |\\chi_1 \\bar\\chi_1\\rangle$, $\\Phi_4 = |\\chi_2 \\bar\\chi_2\\rangle$ are closed-shell, and $\\Phi_2 = |\\chi_1 \\bar\\chi_2\\rangle$, $\\Phi_3 = |\\chi_2 \\bar\\chi_1\\rangle$ are open-shell singlets):"
+      - list [ref=e677]:
+        - listitem [ref=e678]:
+          - paragraph [ref=e679]: "$H_{11} = H_{44}$ — diagonal of the two closed shells: \\begin{equation} \\label{eq:ch-02-h2-h11} H_{11} \\;=\\; 2 h_{11} + \\langle 11 \\mid 11 \\rangle \\;=\\; 2(-1.1204) + 0.7746 \\;=\\; -1.4662\\; E_h . \\end{equation}"
+        - listitem [ref=e680]:
+          - paragraph [ref=e681]:
+            - text: "$H_{14} = H_{41}$ — coupling of the two closed shells: they differ by"
+            - emphasis [ref=e682]: two
+            - text: "spin-orbitals, so the Slater–Condon rule \\eqref{eq:ch-02-sc-doubles} gives \\begin{equation} \\label{eq:ch-02-h2-h14} H_{14} \\;=\\; \\langle 11 \\mid 22 \\rangle - \\langle 12 \\mid 21 \\rangle \\;=\\; 0.5697 - 0.2970 \\;=\\; 0.2727\\; E_h . \\end{equation} (The exchange term $\\langle 12 \\mid 21 \\rangle$ is the"
+            - emphasis [ref=e683]: same number
+            - text: as $\langle 12 \mid 12 \rangle$ because the orbitals are real.)
+        - listitem [ref=e684]:
+          - paragraph [ref=e685]: "$H_{22} = H_{33}$ — diagonal of the open-shell singlet: two spin-orbitals in two different spatial orbitals, no same-spin exchange term, but a Coulomb repulsion: \\begin{equation} \\label{eq:ch-02-h2-h22} H_{22} \\;=\\; h_{11} + h_{22} + \\langle 11 \\mid 22 \\rangle \\;=\\; -1.1204 - 1.1204 + 0.5697 \\;=\\; -1.6711\\; E_h . \\end{equation}"
+        - listitem [ref=e686]:
+          - paragraph [ref=e687]:
+            - text: "$H_{23} = H_{32}$ — coupling of the two open-shell singlets: they differ by"
+            - emphasis [ref=e688]: two
+            - text: "spin-orbitals, so by \\eqref{eq:ch-02-sc-doubles}: \\begin{equation} \\label{eq:ch-02-h2-h23} H_{23} \\;=\\; \\langle 12 \\mid 12 \\rangle - \\langle 12 \\mid 21 \\rangle \\;=\\; 0.2970 - 0.2970 \\;=\\; 0.0\\; E_h . \\end{equation} The vanishing exchange difference is"
+            - emphasis [ref=e689]: not
+            - text: "an accident: the exchange term $\\langle 12 \\mid 21 \\rangle$ equals the Coulomb term $\\langle 12 \\mid 12 \\rangle$ for real orbitals, so $H_{23} = 0$ exactly for any"
+            - emphasis [ref=e690]: homogeneous
+            - text: 2-electron problem in a real basis. This is a special property of two electrons in two spatial orbitals.
+        - listitem [ref=e691]:
+          - paragraph [ref=e692]:
+            - text: "$H_{12} = H_{13} = H_{24} = H_{34} = 0$ — these matrix elements couple determinants with"
+            - emphasis [ref=e693]: different
+            - text: $M_S$ and vanish by $\hat S_z$ conservation.
+      - paragraph [ref=e694]: "Putting it all together, the $\\hat H_{\\text{el}}$ matrix in the determinant basis is"
+      - paragraph [ref=e695]: "\\begin{equation} \\label{eq:ch-02-h2-ci-matrix} \\mathbf H_{\\text{el}} \\;=\\; \\begin{pmatrix} -1.4662 & 0 & 0 & 0.2727 \\\\\\ 0 & -1.6711 & 0 & 0 \\\\\\ 0 & 0 & -1.6711 & 0 \\\\\\ 0.2727 & 0 & 0 & -1.4662 \\end{pmatrix}\\; E_h . \\end{equation}"
+      - paragraph [ref=e696]:
+        - text: "The matrix is block-diagonal: a $2 \\times 2$ “closed-shell” block spanned by ${\\Phi_1, \\Phi_4}$, a $2 \\times 2$ “open-shell” block spanned by ${\\Phi_2, \\Phi_3}$, and zero coupling between them. (The zero coupling of $\\Phi_2$ and $\\Phi_3$ to the closed shells follows from $\\hat S_z$ conservation: $\\Phi_1$ and $\\Phi_4$ have $M_S = 0$ but they are"
+        - emphasis [ref=e697]: closed-shell
+        - text: "singlets, not open-shell singlets, so the off-diagonal elements of $\\hat H_{\\text{el}}$ that connect them to $\\Phi_2$ or $\\Phi_3$ vanish — the “spin-flip” term in the Slater–Condon rules requires two single excitations in opposite directions, and a single excitation in one direction is not a singlet-to-singlet operator in this basis.)"
+      - heading "2.5.4 The four eigenvalues" [level=3] [ref=e698]
+      - paragraph [ref=e699]:
+        - text: "The closed-shell block ${\\Phi_1, \\Phi_4}$ is a $2 \\times 2$ matrix with the structure of the"
+        - strong [ref=e700]: Hund–Mulliken
+        - text: two-configuration problem. The eigenvalues are the roots of
+      - paragraph [ref=e701]: "\\begin{equation} \\label{eq:ch-02-h2-closed-2x2} \\det!\\begin{pmatrix} H_{11} - E & H_{14} \\\\\\ H_{41} & H_{44} - E \\end{pmatrix} \\;=\\; (H_{11} - E)^2 - H_{14}^2 \\;=\\; 0, \\end{equation}"
+      - paragraph [ref=e702]: so
+      - paragraph [ref=e703]: "\\begin{equation} \\label{eq:ch-02-h2-closed-evals} E_\\pm^{(\\text{closed})} \\;=\\; H_{11} \\pm |H_{14}| \\;=\\; -1.4662 \\pm 0.2727 \\;=\\; \\begin{cases} -1.1935\\; E_h, \\\\\\ -1.7389\\; E_h . \\end{cases} \\end{equation}"
+      - paragraph [ref=e704]:
+        - text: "The open-shell block ${\\Phi_2, \\Phi_3}$ is"
+        - emphasis [ref=e705]: diagonal
+        - text: "by \\eqref{eq:ch-02-h2-h23}, so its eigenvalues are"
+      - paragraph [ref=e706]: "\\begin{equation} \\label{eq:ch-02-h2-open-evals} E^{(\\text{open})} \\;=\\; -1.6711\\; E_h \\qquad \\text{(doubly degenerate)} . \\end{equation}"
+      - paragraph [ref=e707]: "The four eigenvalues of the full-CI matrix \\eqref{eq:ch-02-h2-ci-matrix} are therefore"
+      - paragraph [ref=e708]: "\\begin{equation} \\label{eq:ch-02-h2-fci-evals} E_1 = -1.7389\\; E_h, \\quad E_2 = E_3 = -1.6711\\; E_h, \\quad E_4 = -1.1935\\; E_h . \\end{equation}"
+      - paragraph [ref=e709]: "The ground-state energy is $E_1 = -1.7389\\,E_h$, the (doubly degenerate) first excited state is the open-shell singlet at $E_{2,3} = -1.6711\\,E_h$, and the closed-shell antibonding combination is at $E_4 = -1.1935\\,E_h$."
+      - heading "2.5.5 The ground state and its energy" [level=3] [ref=e710]
+      - paragraph [ref=e711]:
+        - text: "The ground state is the lower eigenvalue of the closed-shell block. The corresponding eigenvector is $(\\Phi_1 - \\Phi_4)/\\sqrt 2$ (the minus sign follows from the positive off-diagonal $H_{14} > 0$ — the lower eigenvalue is the"
+        - emphasis [ref=e712]: anti-bonding
+        - text: "combination of the two closed-shell determinants):"
+      - paragraph [ref=e713]: "\\begin{equation} \\label{eq:ch-02-h2-gs} \\Psi_0 \\;=\\; \\frac{1}{\\sqrt 2}\\Bigl(\\Phi_1 - \\Phi_4\\Bigr) \\;=\\; \\frac{1}{\\sqrt 2} \\Bigl(|\\chi_1 \\bar\\chi_1\\rangle -|\\chi_2 \\bar\\chi_2\\rangle\\Bigr) . \\end{equation}"
+      - paragraph [ref=e714]:
+        - text: In the spatial-orbital language, this is the
+        - strong [ref=e715]: Hund–Mulliken
+        - text: "wavefunction: an equal-weight superposition of the two"
+        - emphasis [ref=e716]: closed- shell
+        - text: configurations, with the two open-shell singlets completely absent. (The open-shell singlets enter
+        - emphasis [ref=e717]: only
+        - text: as excited states.)
+      - paragraph [ref=e718]: "The ground-state electronic energy is the lower eigenvalue of \\eqref{eq:ch-02-h2-closed-2x2},"
+      - paragraph [ref=e719]: "\\begin{equation} \\label{eq:ch-02-h2-gs-energy} E_0^{\\text{el}} \\;=\\; -1.7389\\,E_h . \\end{equation}"
+      - paragraph [ref=e720]: "Adding the nuclear–nuclear repulsion $V_{NN} = 1/R = 0.7143\\,E_h$ gives the total energy"
+      - paragraph [ref=e721]: "\\begin{equation} \\label{eq:ch-02-h2-gs-total} E_0^{\\text{tot}} \\;=\\; E_0^{\\text{el}} + V_{NN} \\;=\\; -1.7389 + 0.7143 \\;=\\; -1.0246\\,E_h . \\end{equation}"
+      - blockquote [ref=e722]:
+        - paragraph [ref=e723]:
+          - strong [ref=e724]: Tip.
+          - text: Compare to the
+          - strong [ref=e725]: restricted Hartree–Fock
+          - text: answer in
+          - link "chapter 06" [ref=e726] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: ", §6.9: $E_{\\text{HF}} = -1.1167\\,E_h$. The full-CI energy is lower by \\begin{equation} \\label{eq:ch-02-h2-corr} E_{\\text{corr}} \\;=\\; E_0 - E_{\\text{HF}} \\;=\\; -1.0246 - (-1.1167) \\;=\\; +0.0921\\,E_h \\;\\approx\\; 2.5\\;\\text{eV} . \\end{equation} This is the"
+          - strong [ref=e727]: correlation energy
+          - text: "of $\\mathrm{H}_2$ in the STO-3G basis. It is large (about 9% of the total HF energy) by the standards of post-HF benchmarks, because the minimal basis is far from the basis-set limit: the “missing” correlation is dominated by the inability of two STO-3G functions to represent the cusp of the wavefunction at the electron–electron coincidence. In a triple-zeta basis with correlating polarisation functions, the STO-3G correlation energy is recovered, and the"
+          - emphasis [ref=e728]: remaining
+          - text: correlation is the small ~0.3 eV that standard post-HF methods target.
+      - heading "2.5.6 The 1-particle density" [level=3] [ref=e729]
+      - paragraph [ref=e730]: "The one-particle density of the ground state \\eqref{eq:ch-02-h2-gs} follows from \\eqref{eq:ch-02-1pdm}. Each of the two determinants contributes $|\\chi_1|^2 + |\\chi_2|^2$ to the spin-summed density, so the ground-state density is"
+      - paragraph [ref=e731]: "\\begin{equation} \\label{eq:ch-02-h2-density} \\rho(\\mathbf r) \\;=\\; 2 \\cdot \\tfrac{1}{2}\\Bigl(|\\chi_1(\\mathbf r)|^2 + |\\chi_2(\\mathbf r)|^2\\Bigr) \\;=\\; |\\chi_1(\\mathbf r)|^2 + |\\chi_2(\\mathbf r)|^2 . \\end{equation}"
+      - paragraph [ref=e732]:
+        - text: The two $\chi$’s contribute
+        - emphasis [ref=e733]: equally
+        - text: to the density. This is exact for the Hund–Mulliken ground state and would
+        - emphasis [ref=e734]: not
+        - text: be exact for a general 2-determinant ground state — the relative weights of the two determinants enter the density through their squares.
+      - paragraph [ref=e735]:
+        - text: "The physical interpretation is straightforward: in the ground state, electron 1 is equally likely to be on nucleus A as on nucleus B, and electron 2 follows suit. The probability of finding"
+        - emphasis [ref=e736]: either
+        - text: electron at $\mathbf r$ is the sum $|\chi_1|^2 + |\chi_2|^2$, normalised to $N = 2$.
+      - heading "2.5.7 What this tells us" [level=3] [ref=e737]
+      - paragraph [ref=e738]:
+        - text: "The full-CI calculation on $\\mathrm{H}_2$ in a minimal basis is small enough to do by hand in a few minutes, and it contains"
+        - emphasis [ref=e739]: every
+        - text: "ingredient of a real many-body calculation: a one-electron basis, a two-electron integrals tensor, the Slater–Condon rules, a 4 × 4 Hamiltonian matrix in the determinant basis, a numerical diagonalisation, and an interpretation of the resulting eigenvector in terms of a physically meaningful wavefunction. The"
+        - emphasis [ref=e740]: only
+        - text: difference between this calculation and a real production calculation is the
+        - emphasis [ref=e741]: size
+        - text: of the basis and the
+        - emphasis [ref=e742]: number
+        - text: of electrons.
+      - paragraph [ref=e743]: "The size is what gets us into trouble. A minimal-basis full CI on benzene in a 6-31G* basis has $K = 36$ spatial orbitals and $N = 30$ electrons, so $N_{\\text{det}} = \\binom{36}{15}^2 \\approx 1.6 \\times 10^{16}$. A full CI on water in cc-pVTZ has $K = 58$ spatial orbitals and $N = 10$ electrons, so $N_{\\text{det}} = \\binom{58}{5}^2 \\approx 4.2 \\times 10^{10}$. The first calculation is hopeless; the second is at the edge of feasibility (a $4.2 \\times 10^{10}$ complex Hamiltonian is $\\sim 7$ PB at 16 bytes per entry, and its diagonalisation would take more than the age of the universe on a laptop). Every practical method is a strategy for not having to build this matrix."
+      - heading "2.6 Problems" [level=2] [ref=e744]
+      - group [ref=e745]:
+        - generic "▸ Problem 1 (easy) — Antisymmetry of the Slater determinant for He" [ref=e746] [cursor=pointer]
+        - text: "Write down the two-electron Slater determinant for the helium atom in a minimal basis, with both electrons in the same spatial $1s$ orbital $\\phi_{1s}(\\mathbf r)$ and opposite spins (one $\\alpha$, one $\\beta$). Show explicitly that the wavefunction is antisymmetric under exchange of the two combined coordinates $(\\mathbf r_1, \\sigma_1) \\leftrightarrow (\\mathbf r_2, \\sigma_2)$, and that it vanishes when the two electrons have the same spin and the same spatial orbital. Then compute the spin-summed one-particle density $\\rho(\\mathbf r)$ of this state, and show that it is normalised to $N = 2$."
+      - group [ref=e747]:
+        - generic "▸ Show answer" [ref=e748] [cursor=pointer]
+        - text: "The Slater determinant for the He atom's ground state is $$ \\Phi_{\\text{He}}(\\mathbf x_1, \\mathbf x_2) \\;=\\; \\frac{1}{\\sqrt 2} \\begin{vmatrix} \\phi_{1s}(\\mathbf r_1)\\,\\alpha(\\sigma_1) & \\phi_{1s}(\\mathbf r_1)\\,\\beta(\\sigma_1) \\\\\\ \\phi_{1s}(\\mathbf r_2)\\,\\alpha(\\sigma_2) & \\phi_{1s}(\\mathbf r_2)\\,\\beta(\\sigma_2) \\end{vmatrix}. $$ Expanding the determinant, $$ \\Phi_{\\text{He}}(\\mathbf x_1, \\mathbf x_2) \\;=\\; \\frac{1}{\\sqrt 2}\\, \\phi_{1s}(\\mathbf r_1)\\phi_{1s}(\\mathbf r_2) \\Bigl[\\alpha(\\sigma_1)\\beta(\\sigma_2) -\\beta(\\sigma_1)\\alpha(\\sigma_2)\\Bigr] . $$ **Antisymmetry.** Exchange $\\mathbf x_1 \\leftrightarrow \\mathbf x_2$. The spatial part $\\phi_{1s}(\\mathbf r_1)\\phi_{1s}(\\mathbf r_2)$ is symmetric in the exchange (the two factors are identical), and the spin part $\\alpha(1)\\beta(2) - \\beta(1)\\alpha(2)$ is antisymmetric (it is the spin singlet, which flips sign under exchange of the *spin* labels). The product is therefore antisymmetric in $(\\mathbf r, \\sigma) \\leftrightarrow (\\mathbf r', \\sigma')$, which is the content of postulate P6. **Vanishing for same spin and same orbital.** Suppose both electrons are $\\alpha$ and both in $\\phi_{1s}$: $$ \\Psi(\\mathbf x_1, \\mathbf x_2) \\;=\\; \\frac{1}{\\sqrt 2} \\begin{vmatrix} \\phi_{1s}(\\mathbf r_1)\\alpha(\\sigma_1) & \\phi_{1s}(\\mathbf r_1)\\alpha(\\sigma_1) \\\\\\ \\phi_{1s}(\\mathbf r_2)\\alpha(\\sigma_2) & \\phi_{1s}(\\mathbf r_2)\\alpha(\\sigma_2) \\end{vmatrix} \\;=\\; 0 , $$ because the two columns are *identical* and the determinant of a matrix with two equal columns is zero. This is the Pauli exclusion principle: two electrons with the same spin cannot occupy the same spatial orbital. **Spin-summed density.** From \\eqref{eq:ch-02-rho-closed} (or directly from the wavefunction above, summing $|\\Phi_{\\text{He}}|^2$ over $\\sigma_1, \\sigma_2 \\in \\{\\uparrow, \\downarrow\\}$): $$ \\rho(\\mathbf r) \\;=\\; 2\\,|\\phi_{1s}(\\mathbf r)|^2 . $$ The factor 2 is the *spin* factor: both the $\\alpha$ and the $\\beta$ sectors contribute the same $|\\phi_{1s}|^2$. Normalisation: $$ \\int \\rho(\\mathbf r)\\, d\\mathbf r \\;=\\; 2 \\int |\\phi_{1s}(\\mathbf r)|^2\\, d\\mathbf r \\;=\\; 2 \\cdot 1 \\;=\\; N \\;=\\; 2 . $$ The last equality uses the normalisation $\\int |\\phi_{1s}|^2\\, d\\mathbf r = 1$ of the spatial orbital."
+      - group [ref=e749]:
+        - generic "▸ Problem 2 (medium) — Slater–Condon rules for a 2-electron system" [ref=e750] [cursor=pointer]
+        - text: "For a 2-electron system with one-electron integrals $\\{h_{ii}\\}$ and two-electron integrals $\\{\\langle ii \\mid ii \\rangle, \\langle ii \\mid jj \\rangle, \\langle ij \\mid ij \\rangle\\}$ (no other distinct integrals, by the symmetry of real orbitals in 2 electrons), show by direct evaluation of the 2 × 2 Slater determinants that the Slater–Condon rules \\eqref{eq:ch-02-sc-diag} and \\eqref{eq:ch-02-sc-singles} give exactly the matrix elements of the 2 × 2 CI problem. Concretely, take the basis $\\{\\Phi_1, \\Phi_2\\} = \\{|1\\bar 1\\rangle, |2\\bar 2\\rangle\\}$ for a closed-shell 2-electron system with $K = 2$ spatial orbitals. Show that (a) the diagonal element $\\langle \\Phi_1 \\mid \\hat H_{\\text{el}} \\mid \\Phi_1 \\rangle = 2 h_{11} + \\langle 11 \\mid 11 \\rangle$; (b) the off-diagonal element $\\langle \\Phi_1 \\mid \\hat H_{\\text{el}} \\mid \\Phi_2 \\rangle = \\langle 11 \\mid 22 \\rangle - \\langle 12 \\mid 21 \\rangle$."
+      - group [ref=e751]:
+        - generic "▸ Show answer" [ref=e752] [cursor=pointer]
+        - text: "**Part (a).** The wavefunction $\\Phi_1 = |1 \\bar 1\\rangle = \\phi_1(\\mathbf r_1)\\alpha(\\sigma_1) \\phi_1(\\mathbf r_2)\\beta(\\sigma_2)$, normalised. Apply $\\hat H_{\\text{el}}$ to $\\Phi_1$, written as a sum of one- and two-electron operators: $$ \\hat H_{\\text{el}} \\Phi_1 \\;=\\; (\\hat h_1 + \\hat h_2 + \\hat v_{12})\\,\\Phi_1 \\;=\\; \\hat h_1 \\Phi_1 + \\hat h_2 \\Phi_1 + \\hat v_{12} \\Phi_1 . $$ Project onto $\\Phi_1$ and integrate: - **$\\hat h_1$:** $\\langle \\Phi_1 \\mid \\hat h_1 \\mid \\Phi_1 \\rangle = h_{11}$ by the spin orthogonality $\\langle \\alpha \\mid \\alpha \\rangle = 1$, $\\langle \\beta \\mid \\alpha \\rangle = 0$. The electron-1 factor is $\\phi_1(\\mathbf r_1)\\alpha(\\sigma_1)$ on both sides, so the spin integral is 1, and the spatial integral is $h_{11}$. - **$\\hat h_2$:** $\\langle \\Phi_1 \\mid \\hat h_2 \\mid \\Phi_1 \\rangle = h_{11}$ by the same argument with electron 2. - **$\\hat v_{12}$:** $\\langle \\Phi_1 \\mid \\hat v_{12} \\mid \\Phi_1 \\rangle$ involves the two-electron operator $1/|\\mathbf r_1 - \\mathbf r_2|$. The spin factors are still $\\langle \\alpha \\mid \\alpha \\rangle \\langle \\beta \\mid \\beta \\rangle = 1$, and the spatial integral is exactly $\\langle 11 \\mid 11 \\rangle$ as defined in \\eqref{eq:ch-02-v2}. Adding, $$ \\langle \\Phi_1 \\mid \\hat H_{\\text{el}} \\mid \\Phi_1 \\rangle \\;=\\; 2 h_{11} + \\langle 11 \\mid 11 \\rangle . $$ This is the Slater–Condon rule \\eqref{eq:ch-02-sc-diag} for the 2-electron case, with the exchange term $-\\langle 11 \\mid 11 \\rangle$ cancelling against the 1/2 in front of the double sum (because the only pair is $i = j = 1$, so the 1/2 is irrelevant for a single-pair diagonal). **Part (b).** The two determinants differ by *two* spin-orbitals ($\\Phi_1$ has $\\{1\\alpha, 1\\beta\\}$, $\\Phi_2$ has $\\{2\\alpha, 2\\beta\\}$), so the only non-zero contribution to $\\langle \\Phi_1 \\mid \\hat H_{\\text{el}} \\mid \\Phi_2 \\rangle$ comes from the two-electron operator — the one-electron operator $\\hat h_1$ would need $\\langle 1 \\mid \\hat h \\mid 2 \\rangle$ in the spatial sector, but the spin part of $\\Phi_1$ is $\\alpha(1)\\beta(2)$ and that of $\\Phi_2$ is $\\alpha(1)\\beta(2)$ too, so the spin integral is still 1, but the spatial integral is $h_{12}$, *not* the 1-electron integral $h_{11}$. However, the antisymmetrisation in the determinant gives a *plus* sign for $\\Phi_1$ and a *minus* sign for $\\Phi_2$ in the same-row interchange, so the two terms cancel exactly. This is a 2-electron version of the fact that the matrix element of a 1-electron operator between two determinants that differ in two spin-orbitals vanishes. The two-electron piece: $$ \\langle \\Phi_1 \\mid \\hat v_{12} \\mid \\Phi_2 \\rangle \\;=\\; \\int d\\mathbf x_1 d\\mathbf x_2\\; \\phi_1(\\mathbf r_1)\\alpha(\\sigma_1)\\phi_1(\\mathbf r_2)\\beta(\\sigma_2) \\cdot \\frac{1}{r_{12}} \\cdot \\phi_2(\\mathbf r_1)\\alpha(\\sigma_1)\\phi_2(\\mathbf r_2)\\beta(\\sigma_2) . $$ Spin part: $\\langle \\alpha \\mid \\alpha \\rangle \\langle \\beta \\mid \\beta \\rangle = 1$. Spatial part: the Slater–Condon rule \\eqref{eq:ch-02-sc-doubles} for two-electron systems gives $$ \\int d\\mathbf r_1 d\\mathbf r_2\\; \\phi_1(\\mathbf r_1)\\phi_1(\\mathbf r_2)\\, \\frac{1}{r_{12}}\\, \\phi_2(\\mathbf r_1)\\phi_2(\\mathbf r_2) \\;=\\; \\langle 11 \\mid 22 \\rangle . $$ However, the *antisymmetrised* matrix element picks up an *exchange* correction because the determinant structure reverses the sign of the two rows in a way that is sensitive to the identity of the orbitals. Concretely, expanding the determinants and projecting, $$ \\langle \\Phi_1 \\mid \\hat v_{12} \\mid \\Phi_2 \\rangle \\;=\\; \\langle 11 \\mid 22 \\rangle - \\langle 12 \\mid 21 \\rangle . $$ For real orbitals, $\\langle 12 \\mid 21 \\rangle = \\langle 12 \\mid 12 \\rangle$, so the result is the *exchange-corrected* Coulomb integral $$ \\boxed{H_{12} \\;=\\; \\langle 11 \\mid 22 \\rangle - \\langle 12 \\mid 12 \\rangle .} $$ For a 2-electron 2-orbital problem with real orbitals, the exchange term is the only correction to the bare Coulomb integral. This is the result we used in \\eqref{eq:ch-02-h2-h14}."
+      - group [ref=e753]:
+        - generic "▸ Problem 3 (hard) — Correlation energy of H₂ in a minimal basis" [ref=e754] [cursor=pointer]
+        - text: "The full-CI ground-state energy of $\\mathrm{H}_2$ in a STO-3G minimal basis at $R = 1.4\\,a_0$ is $E_0 = -1.0246\\,E_h$ (equation \\eqref{eq:ch-02-h2-gs-total}). The restricted Hartree–Fock ground-state energy in the same basis is $E_{\\text{HF}} = -1.1167\\,E_h$ ([chapter 06](/DFT-notes/dft-notes/chapter-06/), §6.9). Carry out the following calculation, step by step, *by hand* (with a calculator — no computer): 1. Compute the correlation energy $E_{\\text{corr}} = E_0 - E_{\\text{HF}}$. 2. Express $E_{\\text{corr}}$ in **eV** and in **kcal/mol** (using $1\\,E_h = 27.2114\\,\\text{eV} = 627.509\\,\\text{kcal/mol}$). 3. The **Hund–Mulliken** wavefunction of \\eqref{eq:ch-02-h2-gs} is $\\Psi_{\\text{HM}} = (\\Phi_1 - \\Phi_4)/\\sqrt 2$, where $\\Phi_1 = |1\\bar 1\\rangle$ and $\\Phi_4 = |2\\bar 2\\rangle$. Show that the *energy expectation value* of $\\hat H_{\\text{el}}$ in this state is the lower eigenvalue $E_- = H_{11} - |H_{14}|$ of the closed-shell block. Explain in one sentence why this is the case. 4. Compare the Hund–Mulliken energy to the full-CI energy $-1.0246\\,E_h$. Are they equal? If not, identify which determinant is missing from the Hund–Mulliken Ansatz, and argue *qualitatively* whether the missing determinant would raise or lower the energy if it were added."
+      - group [ref=e755]:
+        - generic "▸ Show answer" [ref=e756] [cursor=pointer]
+        - text: "**Part 1.** From \\eqref{eq:ch-02-ecorr}, $$ E_{\\text{corr}} \\;=\\; E_0 - E_{\\text{HF}} \\;=\\; -1.0246 - (-1.1167) \\;=\\; +0.0921\\,E_h . $$ **Part 2.** Using the conversions, $$ \\begin{aligned} E_{\\text{corr}} \\;=\\; 0.0921 \\times 27.2114\\;\\text{eV} \\;\\approx\\; 2.506\\;\\text{eV}, \\\\ E_{\\text{corr}} \\;=\\; 0.0921 \\times 627.509\\;\\text{kcal/mol} \\;\\approx\\; 57.80\\;\\text{kcal/mol}. \\end{aligned} $$ For a *minimal basis* on $\\mathrm H_2$, this is a *huge* correlation energy — about 9% of the total HF energy. The reason is the basis: a STO-3G basis cannot represent the electron–electron cusp in the wavefunction, so the missing correlation is dominated by this basis-set artefact, not by physical dynamical correlation. In a triple-zeta basis with correlating polarisation functions, the *physical* correlation energy is ~0.3 eV, more than an order of magnitude smaller. **Part 3.** The state $\\Psi_{\\text{HM}} = (\\Phi_1 - \\Phi_4)/\\sqrt 2$ is the *lowest eigenvector* of the $2 \\times 2$ closed-shell block of \\eqref{eq:ch-02-h2-ci-matrix}, by construction. The energy expectation value of $\\hat H_{\\text{el}}$ in this state is the lower eigenvalue of the $2 \\times 2$ block, which is $H_{11} - |H_{14}| = -1.4662 - 0.2727 = -1.7389\\,E_h$. Adding $V_{NN} = 0.7143\\,E_h$ gives the total energy $-1.0246\\,E_h$, *exactly* equal to the full-CI ground-state energy of \\eqref{eq:ch-02-h2-gs-total}. The reason is that the open-shell singlets $\\Phi_2$ and $\\Phi_3$ are *uncoupled* from the closed shells by symmetry (their $H_{12}$ and $H_{34}$ matrix elements vanish), so the full-CI ground state is in fact a superposition of *just* the two closed-shell determinants. In a *bigger* basis, the coupling to the open-shell singlets would be non-zero and the Hund–Mulliken Ansatz would be an approximation to the full-CI ground state. **Part 4.** The Hund–Mulliken energy is *exactly* equal to the full-CI energy in this calculation — they are the *same* number. The reason is the symmetry of the 2-electron 2-orbital problem: the open-shell singlets are *uncoupled* from the closed shells, and the ground state is the *only* state in the $M_S = 0$ block that has the right symmetry. In a bigger basis, the Hund–Mulliken Ansatz would *underestimate* the correlation energy, because it would miss the contribution of the open-shell singlets (and of higher excitations). The sign of the missing contribution is *lowering*: any additional determinant that is *coupled* to the ground state and has a non-zero matrix element to it will lower the energy by the variational principle. **Bottom line.** The 2-electron 2-orbital problem in a real basis is *exactly* solvable by the Hund–Mulliken Ansatz. This is a special case. In a real basis with $K > 2$ spatial orbitals, the Hund–Mulliken Ansatz is a *2-configuration* CI, and it is *not* exact; the missing configurations (especially the open-shell singlets and the doubles into the virtual space) account for the rest of the correlation energy."
+      - heading "2.7 Cross-references" [level=2] [ref=e757]
+      - paragraph [ref=e758]:
+        - strong [ref=e759]: Backward
+        - text: "(what we used from earlier chapters):"
+      - list [ref=e760]:
+        - listitem [ref=e761]:
+          - link "Chapter 01" [ref=e762] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/
+          - text: — Postulates P1–P6 (especially P5 and P6), the time-independent Schrödinger equation, the electronic Hamiltonian in atomic units, the hydrogen atom as the only exactly-soluble Coulomb problem. Every operator in this chapter was first defined in chapter 01.
+        - listitem [ref=e763]:
+          - link "Chapter 00" [ref=e764] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-00/
+          - text: — the notation conventions (atomic units, Dirac bracket notation, one- and two-electron integrals in physicists’ notation) used throughout the present chapter.
+      - paragraph [ref=e765]:
+        - strong [ref=e766]: Forward
+        - text: "(where this material is used):"
+      - list [ref=e767]:
+        - listitem [ref=e768]:
+          - link "Chapter 03" [ref=e769] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/
+          - text: — Hartree–Fock theory. The HF method is the
+          - emphasis [ref=e770]: single-determinant approximation
+          - text: of §2.2.3, and the HF energy is the
+          - emphasis [ref=e771]: reference
+          - text: for the correlation energy of §2.2.7. The Slater–Condon rules of §2.2.6 are used to derive the Fock matrix.
+        - listitem [ref=e772]:
+          - link "Chapter 04" [ref=e773] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: — Kohn–Sham DFT. The
+          - emphasis [ref=e774]: only
+          - text: "output of a Kohn–Sham calculation that needs the wavefunction machinery of this chapter is the one-particle density of \\eqref{eq:ch-02-1pdm}; everything else is reformulated in terms of the density."
+        - listitem [ref=e775]:
+          - link "Chapter 05" [ref=e776] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: — Exchange–correlation functionals. The
+          - emphasis [ref=e777]: exchange–correlation energy
+          - text: of DFT is, by construction, the
+          - emphasis [ref=e778]: correlation energy
+          - text: of §2.2.7 plus the
+          - emphasis [ref=e779]: exchange energy
+          - text: (the piece of HF that depends on the Slater–Condon rules). XC functionals are approximations to this quantity.
+        - listitem [ref=e780]:
+          - link "Chapter 06" [ref=e781] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: "— Basis sets. The full-CI matrix \\eqref{eq:ch-02-ci-eig} is"
+          - emphasis [ref=e782]: defined
+          - text: in a finite one-electron basis of size $K$; the basis-set convergence of full CI (and the basis-set incompleteness error of any post-HF method) is the subject of chapter 06.
+        - listitem [ref=e783]:
+          - link "Chapter 08" [ref=e784] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: — Pseudopotentials. For heavy elements the core electrons are not explicitly correlated; they are absorbed into a smooth effective potential. This
+          - emphasis [ref=e785]: reduces
+          - text: $N$ and therefore
+          - emphasis [ref=e786]: softens
+          - text: the exponential wall, but does not remove it.
+        - listitem [ref=e787]:
+          - link "Chapter 09" [ref=e788] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-09/
+          - text: — Forces and geometry optimisation. The forces are the derivatives of the total energy with respect to the nuclear coordinates $\mathbf R_A$. In a wavefunction method the derivative of the Slater–Condon rules is needed; in DFT it reduces to the derivative of the XC functional.
+      - paragraph [ref=e789]:
+        - strong [ref=e790]: External references
+        - text: "(for the reader who wants to go deeper):"
+      - list [ref=e791]:
+        - listitem [ref=e792]:
+          - text: A. Szabo and N. S. Ostlund,
+          - emphasis [ref=e793]: "Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory"
+          - text: ", §3–4. The source of the Slater–Condon rules derivation and the STO-3G $\\mathrm{H}_2$ benchmark."
+        - listitem [ref=e794]:
+          - text: T. Helgaker, P. Jorgensen, J. Olsen,
+          - emphasis [ref=e795]: Molecular Electronic- Structure Theory
+          - text: ", §11. The modern treatment in the language of second quantisation."
+        - listitem [ref=e796]:
+          - text: R. J. Bartlett, “Coupled-cluster theory in quantum chemistry”,
+          - emphasis [ref=e797]: Rev. Mod. Phys.
+          - strong [ref=e798]: "79"
+          - text: ", 291 (2007). The standard review of coupled-cluster theory and its size-extensive properties."
+        - listitem [ref=e799]:
+          - text: "W. Kohn, “Nobel Lecture: Electronic structure of matter — wave functions and density functionals”,"
+          - emphasis [ref=e800]: Rev. Mod. Phys.
+          - strong [ref=e801]: "71"
+          - text: ", 1253 (1999). The “exponential wall” quote and the DFT perspective."
+      - heading "2.8 What we left out" [level=2] [ref=e802]
+      - paragraph [ref=e803]:
+        - text: This chapter is the
+        - emphasis [ref=e804]: setup
+        - text: for everything else; it is necessarily a summary of an enormous literature. The topics we have
+        - emphasis [ref=e805]: not
+        - text: "covered, and the reader should know are missing, are:"
+      - list [ref=e806]:
+        - listitem [ref=e807]:
+          - strong [ref=e808]: Relativistic effects.
+          - text: "The Hamiltonian \\eqref{eq:ch-02-hamiltonian} is the"
+          - emphasis [ref=e809]: non-relativistic
+          - text: "Schrödinger Hamiltonian. For elements with $Z \\gtrsim 30$ (the third row of the transition metals and beyond), the inner-shell electrons are relativistic: the"
+          - emphasis [ref=e810]: Dirac–Coulomb
+          - text: "Hamiltonian \\begin{equation} \\label{eq:ch-02-dirac} \\hat H_{\\text{DC}} \\;=\\; \\sum_i \\Bigl[ c\\, \\boldsymbol\\alpha_i \\cdot \\mathbf p_i + c^2 \\beta_i \\Bigr]"
+          - list [ref=e811]:
+            - listitem [ref=e812]: "\\sum_{iA} \\frac{Z_A}{r_{iA}}"
+            - listitem [ref=e813]:
+              - text: "\\sum_{i<j} \\frac{1}{r_{ij}} \\end{equation} (with $\\boldsymbol\\alpha$, $\\beta$ the Dirac matrices) is needed. The non-relativistic limit is a perturbative expansion in $1/c$ around \\eqref{eq:ch-02-hamiltonian}; the leading relativistic correction is the"
+              - strong [ref=e814]: spin–orbit coupling
+              - text: "$\\hat H_{\\text{SO}} = \\tfrac{1}{2}\\boldsymbol\\sigma \\cdot (\\nabla V \\times \\mathbf p)$, which lifts the degeneracy of spin–orbit doublets and is essential for heavy-element chemistry. We will return to this in"
+              - link "chapter 08" [ref=e815] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-08/
+              - text: in the pseudopotential context.
+        - listitem [ref=e816]:
+          - strong [ref=e817]: Quantum Monte Carlo as an alternative to CI.
+          - text: The determinant-based methods of §2.2.8 are not the only route to the exact wavefunction.
+          - strong [ref=e818]: Variational Monte Carlo (VMC)
+          - text: ","
+          - strong [ref=e819]: diffusion Monte Carlo (DMC)
+          - text: ", and"
+          - strong [ref=e820]: auxiliary-field QMC (AFQMC)
+          - text: represent the wavefunction as a
+          - emphasis [ref=e821]: sampled
+          - text: ensemble of 3-$N$-dimensional configurations and accumulate the energy expectation value by Metropolis-style sampling. The cost is
+          - emphasis [ref=e822]: polynomial
+          - text: in $N$ (typically $\mathcal O(N^3)$ per sample) but with a steep prefactor, and the methods are stochastic — the energy is known only to a statistical error bar.
+          - strong [ref=e823]: Full-CI QMC (FCIQMC)
+          - text: "and its initiator variant combine the two ideas: they sample the determinant space stochastically and converge to the full-CI answer with a walker count that grows roughly polynomially with system size, although the exact scaling is a subject of active research."
+        - listitem [ref=e824]:
+          - strong [ref=e825]: The transcorrelated method.
+          - text: An alternative to the Jastrow factor of QMC is to
+          - emphasis [ref=e826]: absorb
+          - text: a correlation factor into the Hamiltonian, transforming a hard problem into a
+          - emphasis [ref=e827]: non-Hermitian
+          - text: but easier one. The
+          - strong [ref=e828]: transcorrelated method
+          - text: "of Boys and Handy (1969) writes $\\Psi = e^{-\\hat\\tau}\\Phi$ with $\\hat\\tau$ a correlation operator, and the transformed Hamiltonian $e^{\\hat\\tau}\\hat H e^{-\\hat\\tau}$ has a substantially weaker correlation problem. The method has had a recent revival in the “transcorrelated QMC” and “transcorrelated coupled-cluster” literature."
+        - listitem [ref=e829]:
+          - strong [ref=e830]: Multi-reference methods (CASSCF, NEVPT2, CASPT2, MRCI).
+          - text: The single-reference methods of §2.2.8 break down at the Coulson–Fischer point, where the Hartree–Fock determinant becomes qualitatively wrong. The standard fix is a
+          - emphasis [ref=e831]: multi-reference
+          - text: Ansatz, in which the wavefunction is a
+          - emphasis [ref=e832]: complete active space
+          - text: (CAS) CI inside a chosen subset of “active” orbitals, with the rest of the orbitals either doubly-occupied or empty. CASSCF, NEVPT2, and CASPT2 are the standard multi-reference methods, and they are the tools of choice for transition-metal chemistry, bond breaking, and excited states. We have not covered them.
+        - listitem [ref=e833]:
+          - strong [ref=e834]: The density matrix renormalisation group (DMRG).
+          - text: For quasi-1-D systems (conjugated polymers, chains of transition-metal atoms), DMRG provides a polynomial-cost route to the full-CI wavefunction, with a bond-dimension parameter that controls the accuracy. The method generalises to higher dimensions through
+          - strong [ref=e835]: tensor network states
+          - text: (PEPS, MERA), but the cost grows exponentially with the dimension of the network.
+        - listitem [ref=e836]:
+          - strong [ref=e837]: Symmetry adaptation.
+          - text: "The determinant basis of \\eqref{eq:ch-02-ndet} does not transform as a basis for the spatial symmetries of the molecule (point group, time-reversal, particle-hole). The"
+          - strong [ref=e838]: symmetry-adapted CI
+          - text: and
+          - strong [ref=e839]: GUGA
+          - text: (graphical unitary group approach) methods exploit these symmetries to block-diagonalise the CI matrix, with a corresponding reduction in the computational cost and a clearer labelling of the states by their symmetry. We have ignored symmetries for clarity.
+        - listitem [ref=e840]:
+          - strong [ref=e841]: Explicitly correlated methods (F12, R12).
+          - text: The slow basis-set convergence of the correlation energy is
+          - emphasis [ref=e842]: fundamentally
+          - text: "due to the inability of a one-electron basis to represent the electron–electron cusp $(1 + r_{12}/2)$ in the wavefunction. The"
+          - strong [ref=e843]: R12 / F12
+          - text: "methods add an explicit dependence on the inter-electronic coordinate $r_{12}$ to the wavefunction Ansatz, recovering the cusp"
+          - emphasis [ref=e844]: exactly
+          - text: and accelerating basis-set convergence by an order of magnitude. These methods are state-of-the-art for high-accuracy wavefunction calculations; we have not covered them.
+        - listitem [ref=e845]:
+          - strong [ref=e846]: The full quantum-chemistry pipeline.
+          - text: We have described full CI as a
+          - emphasis [ref=e847]: bare
+          - text: "matrix diagonalisation. Production codes add a great deal of machinery on top:"
+          - strong [ref=e848]: direct CI
+          - text: (build the matrix elements on the fly instead of storing the full ERI tensor),
+          - strong [ref=e849]: Davidson diagonalisation
+          - text: (iterative subspace method for the lowest few eigenvalues, avoiding the full diagonalisation),
+          - strong [ref=e850]: integral screening
+          - text: (skip two-electron integrals below a threshold), and
+          - strong [ref=e851]: Cholesky decomposition of the ERI tensor
+          - text: (compress the ERI tensor by a factor of ~10× without loss of accuracy). We have not discussed any of these.
+      - blockquote [ref=e852]:
+        - paragraph [ref=e853]:
+          - text: "Next:"
+          - link "Chapter 03" [ref=e854] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/
+          - text: "— Hartree–Fock: the"
+          - emphasis [ref=e855]: mean-field
+          - text: approximation to the many-body problem, the Fock operator, the self-consistent field loop, and the
+          - emphasis [ref=e856]: only
+          - text: wavefunction method the rest of these notes assumes the reader already knows.
+  - contentinfo [ref=e857]:
+    - generic [ref=e858]:
+      - generic [ref=e859]:
+        - img [ref=e860]
+        - generic [ref=e864]: DFT Notes
+        - paragraph [ref=e865]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e866]:
+        - generic [ref=e867]:
+          - heading "Project" [level=3] [ref=e868]
+          - list [ref=e869]:
+            - listitem [ref=e870]:
+              - link "Chapters map" [ref=e871] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e872]:
+              - link "Python codes" [ref=e873] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e874]:
+              - link "Contributing" [ref=e875] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e876]:
+              - link "Security" [ref=e877] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e878]:
+              - link "Design spec" [ref=e879] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e880]:
+              - link "GitHub ↗" [ref=e881] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e882]:
+          - heading "Built with" [level=3] [ref=e883]
+          - list [ref=e884]:
+            - listitem [ref=e885]:
+              - link "Jekyll" [ref=e886] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e887]:
+              - link "MathJax 3" [ref=e888] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e889]:
+              - link "Mermaid" [ref=e890] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e891]:
+              - link "chenglou/pretext" [ref=e892] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e893]:
+              - link "Google Fonts" [ref=e894] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e895]:
+          - heading "Legal" [level=3] [ref=e896]
+          - list [ref=e897]:
+            - listitem [ref=e898]:
+              - link "MIT License" [ref=e899] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e900]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e902]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

@@ -1623,7 +1623,7 @@ graph TD
   ADD --> RET
   RET --> MD
   Q -->|"trajectory done"| DONE
-``'
+```
 
 The diagram shows the *control flow* of
 the MACE-OSP loop.  The MD step is the
@@ -1695,11 +1695,11 @@ package provides the standard
 that wraps every MLIP.
 
 The **MACE training script** (in Python) loads
-the training data (an `xyz`/`extxyz' file with
+the training data (an `xyz`/`extxyz`' file with
 DFT energies, forces, and stresses), constructs
 the MACE model, trains with Adam and the
 energy+force loss of \eqref{eq:ch-17-loss-full},
-saves the model, and logs to `wandb' or
+saves the model, and logs to `wandb`' or
 `tensorboard`.  The **inference script** is a
 *single-line* ASE call:
 
@@ -1712,7 +1712,7 @@ calc = MACECalculator(model_path='my_mace.model', device='cuda')
 atoms.calc = calc
 energy = atoms.get_potential_energy()
 forces = atoms.get_forces()
-``'
+```
 
 The *cost* of inference is $\sim\! 10$–$100$ ms
 per configuration on a single H100. ### 17.10.3 Common pitfalls
@@ -1804,7 +1804,7 @@ dyn = Langevin(atoms, timestep=0.5*units.fs,
                temperature_K=300, friction=0.01/units.fs)
 for step in range(20000):
     dyn.run(1)
-``'
+```
 
 The O–O RDF is computed by histogramming the
 pairwise O–O distances over the trajectory.
@@ -1867,7 +1867,7 @@ krr.fit(X_tr, y_tr)
 # Predict and evaluate
 y_pred = krr.predict(X_te)
 mae_deltaml = mean_absolute_error(y_te, y_pred)
-``'
+```
 
 The expected MAE on the *test* set is
 $\sim\! 25$ meV/atom, vs. $\sim\! 150$ meV/atom
@@ -2814,7 +2814,7 @@ graph LR
   B2 -->|"systematic<br/>descriptor"| B3
   B3 -->|"learned<br/>descriptors"| B4
   B4 -->|"equivariant<br/>+ 4-body"| B5
-``'
+```
 
 The diagram is a *genealogy*: each paper inherits from
 the previous one and *fixes* one of its limitations.

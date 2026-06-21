@@ -248,7 +248,7 @@ graph LR
   VNUC --> E
   VNN --> E
   J -. "counted twice in F → ÷2 here" .-> E
-``'
+```
 
 Two things to notice:
 
@@ -324,7 +324,7 @@ def scf_loop(H_core, eri, S, n_elec, max_iter=100, tol=1e-8, mixing=0.3):
 
     E_elec = 0.5 * np.trace(P @ (H_core + F))
     return E_elec, evals, C, P
-``'
+```
 
 The call `np.einsum' is doing what a real quantum-chemistry code
 does in its innermost loop.  In production, the ERI tensor is
@@ -412,7 +412,7 @@ graph LR
   D3 --> U1
   D2 --> U2
   D3 --> U2
-``'
+```
 
 The determinant basis is the *first-quantise`d*' language in which
 post-HF methods (CI, MP2, CC, EOM-CC) are written; the
@@ -952,7 +952,7 @@ graph TD
   CHK -- "yes" --> COUT
   CHK -- "yes" --> EPS
   CHK -- "yes" --> EOUT
-``'
+```
 
 The diagram makes the *cost-hiding* of HF explicit: every cycle
 through the SCF inner loop re-builds $\mathbf F$ from $\mathbf P$
@@ -1475,7 +1475,7 @@ def direct_scf(geom, basis, n_elec, max_iter=100, tol=1e-9,
 
     E_el = 0.5 * np.trace(P @ (h + F))
     return E_el, eps, C, P
-``'
+```
 
 The key piece is 'build_J_direct' / 'build_K_direct`, which loop
 over basis-function quartets, apply the Schwarz test
@@ -1805,7 +1805,7 @@ if __name__ == "__main__":
     print(f"  MO energies (E_h) : {eps}")
     print(f"  E_HF              = {E:.6f}  E_h")
     print(f"  Reference         = -1.1167 E_h (Szabo & Ostlund)")
-``'
+```
 
 The script above does the *whole* calculation from primitive
 GTO integrals up to the converged energy.  The output on a
@@ -1818,10 +1818,10 @@ Direct-SCF (with DIIS) H2/STO-3G  R = 1.4 a0
   MO energies (E_h) : [-0.5782  0.6703]
   E_HF              = -1.116714  E_h
   Reference         = -1.1167 E_h (Szabo & Ostlund)
-``'
+```
 
 To appreciate the role of DIIS, replace the call to
-`diis_extrapolate' by a plain density mix with $\alpha = 0.3$ and
+`diis_extrapolate`' by a plain density mix with $\alpha = 0.3$ and
 re-run; the same calculation converges in ~30 iterations with
 small oscillations, where DIIS converges in 11 iterations and
 *monotonically* (the error vector norm drops by ~3 decades per
@@ -1849,7 +1849,7 @@ graph TD
   CONV -- "no" --> MIX["P = mix(P, P_new)"] --> ITER
   CONV -- "yes" --> E["E_HF = 1/2 Tr P (h + F) + V_nn"]
   E --> OUT["Report E, eps, C, P"]
-``'
+```
 
 This is the algorithm that runs in every Gaussian-based
 quantum-chemistry code; the only things that change between
@@ -2083,7 +2083,7 @@ graph LR
   DELTA --> NOTE2["~2x cost of HF<br/>often ~0.1 eV off<br/>in HF (no correlation)"]
   GW --> NOTE3["scales as N^4-N^5<br/>captures most correlation"]
   CC --> NOTE4["scales as N^6<br/>chemical accuracy"]
-``'
+```
 
 The four paths lie on a cost–accuracy ladder; Koopmans is the
 cheapest and the noisiest, EOM-CCSD is the most expensive and

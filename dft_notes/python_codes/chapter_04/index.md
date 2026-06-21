@@ -34,7 +34,7 @@ From the repo root:
 python dft_notes/python_codes/chapter_04/01-h2-lda-scf.py
 python dft_notes/python_codes/chapter_04/02-h2-ks-vs-hf.py
 python dft_notes/python_codes/chapter_04/03-jellium-slab.py
-``'
+```
 
 Each script writes its plot to `dft_notes/python_codes/chapter_04/plots/'
 using an absolute path derived from '__file__' (no 'os.chdir`).

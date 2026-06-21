@@ -22,7 +22,7 @@ concepts that are inherently dynamic ("watch the density oscillate and
 converge", "watch ψ factorise into a plane wave and a cell-periodic
 piece") the right tool is a short animated clip.
 
-**Manim Community Edition** (the `manim' PyPI package) is the standard
+**Manim Community Edition** (the `manim`' PyPI package) is the standard
 for this in 2025. It produces MP4 / GIF / WebM from Python scripts
 using a small, well-designed scene-graph API, and it is the same
 engine behind 3Blue1Brown's videos. We will use the Community Edition,
@@ -49,7 +49,7 @@ Three tiers, with Tier 1 being this plan's deliverable.
 
 | Tier | Tool | What goes here | When |
 |---|---|---|---|
-| **1. Manim MP4 clips** | `manim' Community Edition | The big concepts: particle in a box, H-atom orbitals, SCF iteration, Bloch factorisation, KS mapping, pseudopotential construction, DFT+U, … | **Now** |
+| **1. Manim MP4 clips** | `manim`' Community Edition | The big concepts: particle in a box, H-atom orbitals, SCF iteration, Bloch factorisation, KS mapping, pseudopotential construction, DFT+U, … | **Now** |
 | **2. Interactive JS** | p5.js or three.js | Concepts that benefit from a slider or a drag handle: "vary L and watch E₁ change", "rotate a 3-D orbital" | After Tier 1 ships |
 | **3. Animated SVG** | inline `<animate>`, CSS keyframes | Tiny inline accents: a rotating 3-vector, a pulsating marker, an auto-drawing equation | Ad-hoc, opportunistic |
 
@@ -84,7 +84,7 @@ Each one is a **20-40 second clip** at 720p, 30 fps.
 
 Mirrors the existing `python_codes/' convention exactly.
 
-``'
+```
 dft_notes/
 ├── animations/                       ← new top-level folder
 │   ├── README.md                     (how to render locally + in CI)
@@ -103,7 +103,7 @@ dft_notes/
 │   │   └── videos/…
 │   └── …
 └── (everything else unchanged)
-``'
+```
 
 Naming rules — same as the Python-codes convention:
 
@@ -146,7 +146,7 @@ manim -qm dft_notes/animations/chapter_01/01-particle-in-box.py ParticleInBox
 for s in dft_notes/animations/chapter_*/0*.py; do
   manim -qm --disable_caching "$s" "${s%.py}"
 done
-``'
+```
 
 The script writes the .mp4 to `videos/<class-name>/720p30/`. A small
 post-processing step (`scripts/render_animations.py`) renames to
@@ -203,7 +203,7 @@ Each chapter that has an animation gets a short section:
     and their probability densities. Rendered with <a href="…">Manim</a>;
     source script in <a href="…">chapter 1's animation folder</a>.</figcaption>
 </figure>
-``'
+```
 
 CSS (in `assets/css/site.css`, new section) handles the figure,
 caption, and a poster-frame hover. `preload="metadata"' keeps the
@@ -218,7 +218,7 @@ anti-pattern; autoplay muted is OK for decorative loops but **DFT
 animations are explanatory, not decorative** — the reader needs
 to see the whole thing at their own pace.
 
-So: no `autoplay' attribute. The reader clicks play.
+So: no `autoplay`' attribute. The reader clicks play.
 
 ### Caching & bandwidth
 
@@ -285,7 +285,7 @@ class ParticleInBox(Scene):
     def construct(self):
         # ... 30-40 lines of Manim code
         pass
-``'
+```
 
 The docstring follows the existing `python_codes/' convention
 (file header, scene graph, where-it-lives rationale, how-to-run
@@ -307,7 +307,7 @@ the same as for the Python codes:
 | Manim install is heavy (system ffmpeg + cairo + pango + dvisvgm) | Document the install in `animations/README.md`; provide a 'Dockerfile' (Manim's official 'manimcommunity/manim' image is already a great option) and run the local renders through that. |
 | Render times blow up — one animation takes 30 min instead of 6 | Cap the medium-quality render at 30 s of *scene time* (not wall time). If a script needs more, the script is too dense — split into two. |
 | 720p looks bad on a 1080p monitor | 720p is fine for ~30 s clips. Document the `-qh' option for the user who wants 1080p. |
-| Videos don't play on iOS Safari | Use H.264 in MP4 (we are). Add a `playsinline' attribute and a poster frame. Verify in Safari before declaring done. |
+| Videos don't play on iOS Safari | Use H.264 in MP4 (we are). Add a `playsinline`' attribute and a poster frame. Verify in Safari before declaring done. |
 | Mermaid and Manim both render large files, slowing page load | Mermaid runs client-side (fast, cached after first paint). Manim is a video tag with `preload="metadata"' (browser fetches ~1 KB until the reader clicks play). |
 | Total size explodes past 1 GB | 75 MB video budget + 24 MB of source/scripts is comfortable. A safety net: a CI step that fails the build if `du -sh dft_notes/animations/' exceeds 200 MB. |
 | Animation source is updated but the rendered MP4 is stale | CI re-renders on every push that touches the `.py' file, and the rendered MP4 is committed. The reviewer sees both the source diff and the (committed) MP4 diff. |

@@ -32,7 +32,7 @@ From the repo root:
 python dft_notes/python_codes/chapter_05/01-ueg-xc-vs-rs.py
 python dft_notes/python_codes/chapter_05/02-pbe-vs-lda-atoms.py
 python dft_notes/python_codes/chapter_05/03-jacobs-ladder-cost-accuracy.py
-``'
+```
 
 Each script is self-contained: it computes the relevant
 quantities, writes the corresponding PNG into the chapter's
@@ -65,7 +65,7 @@ quantities, writes the corresponding PNG into the chapter's
 | Package      | Version | Used for |
 |:-------------|:--------|:---------|
 | 'numpy'      | ≥ 1.24  | arrays, 'np.trapz' for radial integration |
-| `scipy'      | ≥ 1.10  | (not directly used in these scripts but available) |
+| `scipy`'      | ≥ 1.10  | (not directly used in these scripts but available) |
 | 'matplotlib' | ≥ 3.7   | plots ('matplotlib.use("Agg")' for headless runs) |
 
 No new dependency was introduced by chapter 05.  The conventions

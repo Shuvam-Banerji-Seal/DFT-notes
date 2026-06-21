@@ -1,0 +1,302 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "DFT Notes" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: A reader-first knowledge base on Density Functional Theory — the standard workhorse of modern quantum chemistry and computational materials science.
+      - paragraph [ref=e30]:
+        - text: These notes are organised as a
+        - strong [ref=e31]: progressive walk
+        - text: through DFT. Each chapter builds on the last, but every chapter is also self-contained enough to be read in isolation. Math is rendered inline (MathJax 3, with AMS environments loaded); code samples are Python unless otherwise noted; tables and figures are inline rather than appendix-pinned.
+      - heading "Chapters" [level=2] [ref=e32]
+      - table [ref=e33]:
+        - rowgroup [ref=e34]:
+          - row "# Chapter Topic" [ref=e35]:
+            - columnheader "#" [ref=e36]
+            - columnheader "Chapter" [ref=e37]
+            - columnheader "Topic" [ref=e38]
+        - rowgroup [ref=e39]:
+          - row "0 Welcome How to read these notes, notation, and prerequisites" [ref=e40]:
+            - cell "0" [ref=e41]
+            - cell "Welcome" [ref=e42]:
+              - link "Welcome" [ref=e43] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-00/
+            - cell "How to read these notes, notation, and prerequisites" [ref=e44]
+          - row "1 Schrödinger equation The postulates, the Hamiltonian, and what means" [ref=e45]:
+            - cell "1" [ref=e46]
+            - cell "Schrödinger equation" [ref=e47]:
+              - link "Schrödinger equation" [ref=e48] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-01/
+            - cell "The postulates, the Hamiltonian, and what means" [ref=e49]:
+              - text: The postulates, the Hamiltonian, and what
+              - img [ref=e51]
+              - text: means
+          - row "2 The many-body problem Why a single Slater determinant isn’t enough, and why" [ref=e56]:
+            - cell "2" [ref=e57]
+            - cell "The many-body problem" [ref=e58]:
+              - link "The many-body problem" [ref=e59] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-02/
+            - cell "Why a single Slater determinant isn’t enough, and why" [ref=e60]
+          - row "3 Hartree–Fock Mean-field theory, the Fock operator, and the SCF loop" [ref=e61]:
+            - cell "3" [ref=e62]
+            - cell "Hartree–Fock" [ref=e63]:
+              - link "Hartree–Fock" [ref=e64] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-03/
+            - cell "Mean-field theory, the Fock operator, and the SCF loop" [ref=e65]
+          - row "4 Kohn–Sham DFT Hohenberg–Kohn existence + Kohn–Sham practical map" [ref=e66]:
+            - cell "4" [ref=e67]
+            - cell "Kohn–Sham DFT" [ref=e68]:
+              - link "Kohn–Sham DFT" [ref=e69] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-04/
+            - cell "Hohenberg–Kohn existence + Kohn–Sham practical map" [ref=e70]
+          - 'row "5 XC functionals Jacob’s ladder: LDA, GGA, hybrids, range-separated" [ref=e71]':
+            - cell "5" [ref=e72]
+            - cell "XC functionals" [ref=e73]:
+              - link "XC functionals" [ref=e74] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-05/
+            - 'cell "Jacob’s ladder: LDA, GGA, hybrids, range-separated" [ref=e75]'
+          - row "6 Basis sets Gaussians, plane waves, real-space grids, Roothaan–Hall" [ref=e76]:
+            - cell "6" [ref=e77]
+            - cell "Basis sets" [ref=e78]:
+              - link "Basis sets" [ref=e79] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-06/
+            - cell "Gaussians, plane waves, real-space grids, Roothaan–Hall" [ref=e80]
+          - row "7 Solids & PBC Bloch’s theorem, Brillouin zone, plane-wave cutoff, k-grids" [ref=e81]:
+            - cell "7" [ref=e82]
+            - cell "Solids & PBC" [ref=e83]:
+              - link "Solids & PBC" [ref=e84] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-07/
+            - cell "Bloch’s theorem, Brillouin zone, plane-wave cutoff, k-grids" [ref=e85]
+          - row "8 Pseudopotentials Norm-conserving, ultrasoft, PAW, transferability" [ref=e86]:
+            - cell "8" [ref=e87]
+            - cell "Pseudopotentials" [ref=e88]:
+              - link "Pseudopotentials" [ref=e89] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-08/
+            - cell "Norm-conserving, ultrasoft, PAW, transferability" [ref=e90]
+          - row "9 Forces & geometry opt Hellmann–Feynman, Pulay, BFGS, LBFGS, stress tensor" [ref=e91]:
+            - cell "9" [ref=e92]
+            - cell "Forces & geometry opt" [ref=e93]:
+              - link "Forces & geometry opt" [ref=e94] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-09/
+            - cell "Hellmann–Feynman, Pulay, BFGS, LBFGS, stress tensor" [ref=e95]
+          - row "10 Phonons & vibrations Frozen-phonon, DFPT, LO-TO, Eliashberg, superconductivity" [ref=e96]:
+            - cell "10" [ref=e97]
+            - cell "Phonons & vibrations" [ref=e98]:
+              - link "Phonons & vibrations" [ref=e99] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-10/
+            - cell "Frozen-phonon, DFPT, LO-TO, Eliashberg, superconductivity" [ref=e100]
+          - row "11 Band structures DOS, Fermi surface, effective mass, graphene Dirac cone" [ref=e101]:
+            - cell "11" [ref=e102]
+            - cell "Band structures" [ref=e103]:
+              - link "Band structures" [ref=e104] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-11/
+            - cell "DOS, Fermi surface, effective mass, graphene Dirac cone" [ref=e105]
+          - row "12 Time-dependent DFT Runge–Gross, Casida, real-time TDDFT, UV/vis spectra" [ref=e106]:
+            - cell "12" [ref=e107]
+            - cell "Time-dependent DFT" [ref=e108]:
+              - link "Time-dependent DFT" [ref=e109] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-12/
+            - cell "Runge–Gross, Casida, real-time TDDFT, UV/vis spectra" [ref=e110]
+          - row "13 DFT+U & beyond Strong correlation, DFT+U, hybrid functionals, DMFT" [ref=e111]:
+            - cell "13" [ref=e112]
+            - cell "DFT+U & beyond" [ref=e113]:
+              - link "DFT+U & beyond" [ref=e114] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-13/
+            - cell "Strong correlation, DFT+U, hybrid functionals, DMFT" [ref=e115]
+          - row "14 Quantum chemistry beyond DFT MP2, CI, CCSD(T), CASSCF, NEVPT2, semiempirical, CBS" [ref=e116]:
+            - cell "14" [ref=e117]
+            - cell "Quantum chemistry beyond DFT" [ref=e118]:
+              - link "Quantum chemistry beyond DFT" [ref=e119] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-14/
+            - cell "MP2, CI, CCSD(T), CASSCF, NEVPT2, semiempirical, CBS" [ref=e120]
+          - row "15 Relativistic effects Dirac equation, DKH, ZORA, X2C, spin-orbit coupling" [ref=e121]:
+            - cell "15" [ref=e122]
+            - cell "Relativistic effects" [ref=e123]:
+              - link "Relativistic effects" [ref=e124] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-15/
+            - cell "Dirac equation, DKH, ZORA, X2C, spin-orbit coupling" [ref=e125]
+          - row "16 Topological materials Chern numbers, Z₂ invariants, Weyl/Dirac semimetals, HOTIs" [ref=e126]:
+            - cell "16" [ref=e127]
+            - cell "Topological materials" [ref=e128]:
+              - link "Topological materials" [ref=e129] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-16/
+            - cell "Chern numbers, Z₂ invariants, Weyl/Dirac semimetals, HOTIs" [ref=e130]
+          - row "17 Machine learning for DFT Behler-Parrinello, MACE, NequIP, delta-learning, foundation models" [ref=e131]:
+            - cell "17" [ref=e132]
+            - cell "Machine learning for DFT" [ref=e133]:
+              - link "Machine learning for DFT" [ref=e134] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapter-17/
+            - cell "Behler-Parrinello, MACE, NequIP, delta-learning, foundation models" [ref=e135]
+      - blockquote [ref=e136]:
+        - paragraph [ref=e137]:
+          - strong [ref=e138]: "Status:"
+          - text: these are
+          - emphasis [ref=e139]: sample
+          - text: notes — real prose, real math, real code, but not yet encyclopaedic. They exist to exercise every rendering feature of the future e-reader (see
+          - link "design.md" [ref=e140] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/design/
+            - code [ref=e141]: design.md
+          - text: at the root of the repo).
+      - heading "Where to go next" [level=2] [ref=e142]
+      - list [ref=e143]:
+        - listitem [ref=e144]:
+          - text: The
+          - link "chapters map" [ref=e145] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapters-map/
+          - text: is a live Mermaid graph of every chapter that exists or will exist — past, present, and planned. It shows the natural reading order and the three tracks (Methods / Solids / Dynamics) you can branch into after chapter 05.
+        - listitem [ref=e146]:
+          - text: The
+          - link "Python codes" [ref=e147] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/python_codes/
+          - text: folder has the runnable version of every code sample that appears in a chapter, plus the generated plots.
+      - heading "Reading order" [level=2] [ref=e148]
+      - paragraph [ref=e149]: "If you’re new to DFT, read top-to-bottom. If you’re returning to brush up on a specific topic, each chapter is internally cross-referenced and the section headers follow the same template:"
+      - list [ref=e150]:
+        - listitem [ref=e151]:
+          - strong [ref=e152]: The claim
+          - text: — the result or definition, stated precisely.
+        - listitem [ref=e153]:
+          - strong [ref=e154]: The proof (or derivation)
+          - text: — short, with the load-bearing steps called out.
+        - listitem [ref=e155]:
+          - strong [ref=e156]: The code
+          - text: — a minimal implementation that produces the result.
+        - listitem [ref=e157]:
+          - strong [ref=e158]: The catch
+          - text: — what the formula
+          - emphasis [ref=e159]: doesn’t
+          - text: tell you, and the regime where it breaks.
+      - heading "Notation" [level=2] [ref=e160]
+      - paragraph [ref=e161]:
+        - text: A short, opinionated list — see
+        - link "chapter 00" [ref=e162] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+        - text: for the full table.
+      - table [ref=e163]:
+        - rowgroup [ref=e164]:
+          - row "Symbol Meaning" [ref=e165]:
+            - columnheader "Symbol" [ref=e166]
+            - columnheader "Meaning" [ref=e167]
+        - rowgroup [ref=e168]:
+          - row "Many-body wavefunction" [ref=e169]:
+            - cell [ref=e170]:
+              - img [ref=e172]
+            - cell "Many-body wavefunction" [ref=e177]
+          - row "One-particle density" [ref=e178]:
+            - cell [ref=e179]:
+              - img [ref=e181]
+            - cell "One-particle density" [ref=e186]:
+              - text: One-particle density
+              - img [ref=e188]
+          - row "Electronic Hamiltonian" [ref=e229]:
+            - cell [ref=e230]:
+              - img [ref=e232]
+            - cell "Electronic Hamiltonian" [ref=e241]
+          - row "Exchange–correlation energy" [ref=e242]:
+            - cell [ref=e243]:
+              - img [ref=e245]
+            - cell "Exchange–correlation energy" [ref=e254]
+          - row "Exchange–correlation potential" [ref=e255]:
+            - cell [ref=e256]:
+              - img [ref=e258]
+            - cell "Exchange–correlation potential" [ref=e274]
+          - row "Kohn–Sham orbital" [ref=e275]:
+            - cell [ref=e276]:
+              - img [ref=e278]
+            - cell "Kohn–Sham orbital" [ref=e286]
+          - row "Kohn–Sham eigenvalue" [ref=e287]:
+            - cell [ref=e288]:
+              - img [ref=e290]
+            - cell "Kohn–Sham eigenvalue" [ref=e298]
+          - row ", , KS kinetic, Hartree, external operators" [ref=e299]:
+            - cell ", ," [ref=e300]:
+              - img [ref=e302]
+              - text: ","
+              - img [ref=e315]
+              - text: ","
+              - img [ref=e325]
+            - cell "KS kinetic, Hartree, external operators" [ref=e339]
+  - contentinfo [ref=e340]:
+    - generic [ref=e341]:
+      - generic [ref=e342]:
+        - img [ref=e343]
+        - generic [ref=e347]: DFT Notes
+        - paragraph [ref=e348]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e349]:
+        - generic [ref=e350]:
+          - heading "Project" [level=3] [ref=e351]
+          - list [ref=e352]:
+            - listitem [ref=e353]:
+              - link "Chapters map" [ref=e354] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e355]:
+              - link "Python codes" [ref=e356] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e357]:
+              - link "Contributing" [ref=e358] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e359]:
+              - link "Security" [ref=e360] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e361]:
+              - link "Design spec" [ref=e362] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e363]:
+              - link "GitHub ↗" [ref=e364] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e365]:
+          - heading "Built with" [level=3] [ref=e366]
+          - list [ref=e367]:
+            - listitem [ref=e368]:
+              - link "Jekyll" [ref=e369] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e370]:
+              - link "MathJax 3" [ref=e371] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e372]:
+              - link "Mermaid" [ref=e373] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e374]:
+              - link "chenglou/pretext" [ref=e375] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e376]:
+              - link "Google Fonts" [ref=e377] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e378]:
+          - heading "Legal" [level=3] [ref=e379]
+          - list [ref=e380]:
+            - listitem [ref=e381]:
+              - link "MIT License" [ref=e382] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e383]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e385]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

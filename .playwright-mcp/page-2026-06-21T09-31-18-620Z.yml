@@ -1,0 +1,1785 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Bibliography" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: Every paper and textbook that shaped the derivations in chapters 01–08. Each entry gives the full reference (authors, year, title, journal), the chapter and section that cites it, and a 1–2 sentence summary of the contribution. Use this as a
+          - emphasis [ref=e30]: reading list
+          - text: "alongside the chapters: a foundational paper is usually more carefully argued than its textbook summary, and reading the original is the best way to understand"
+          - emphasis [ref=e31]: why
+          - text: a particular approximation is built the way it is.
+      - paragraph [ref=e32]: "The bibliography is organised by topic:"
+      - list [ref=e33]:
+        - listitem [ref=e34]:
+          - link "Foundational DFT papers" [ref=e35] [cursor=pointer]:
+            - /url: "#1-foundational-dft-papers"
+        - listitem [ref=e36]:
+          - link "XC functionals" [ref=e37] [cursor=pointer]:
+            - /url: "#2-xc-functionals"
+        - listitem [ref=e38]:
+          - link "Many-body methods" [ref=e39] [cursor=pointer]:
+            - /url: "#3-many-body-methods"
+        - listitem [ref=e40]:
+          - link "Pseudopotentials" [ref=e41] [cursor=pointer]:
+            - /url: "#4-pseudopotentials"
+        - listitem [ref=e42]:
+          - link "Basis sets" [ref=e43] [cursor=pointer]:
+            - /url: "#5-basis-sets"
+        - listitem [ref=e44]:
+          - link "Plane waves and solids" [ref=e45] [cursor=pointer]:
+            - /url: "#6-plane-waves-and-solids"
+        - listitem [ref=e46]:
+          - link "Time-dependent DFT" [ref=e47] [cursor=pointer]:
+            - /url: "#7-time-dependent-dft"
+        - listitem [ref=e48]:
+          - link "Forces and geometry" [ref=e49] [cursor=pointer]:
+            - /url: "#8-forces-and-geometry"
+        - listitem [ref=e50]:
+          - link "Phonons" [ref=e51] [cursor=pointer]:
+            - /url: "#9-phonons"
+        - listitem [ref=e52]:
+          - link "Standard textbooks" [ref=e53] [cursor=pointer]:
+            - /url: "#10-standard-textbooks"
+      - paragraph [ref=e54]:
+        - text: Where a paper is cited in more than one chapter, the
+        - emphasis [ref=e55]: primary
+        - text: reference is the chapter where the result is first introduced.
+      - separator [ref=e56]
+      - heading "1. Foundational DFT papers" [level=2] [ref=e57]
+      - paragraph [ref=e58]: The seven papers below are the theoretical foundation of Kohn–Sham DFT. Every chapter of these notes (except chapter 01) cites at least one of them.
+      - heading "1.1 Hohenberg & Kohn (1964) — Inhomogeneous electron gas" [level=3] [ref=e59]
+      - paragraph [ref=e60]:
+        - strong [ref=e61]: Hohenberg, P.; Kohn, W.
+        - text: “Inhomogeneous Electron Gas.”
+        - emphasis [ref=e62]: Physical Review
+        - strong [ref=e63]: "1964"
+        - text: ","
+        - emphasis [ref=e64]: "136"
+        - text: "(3B), B864–B871. DOI:"
+        - link "10.1103/PhysRev.136.B864" [ref=e65] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRev.136.B864
+        - text: ". URL:"
+        - link "https://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864" [ref=e66] [cursor=pointer]:
+          - /url: https://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864
+        - text: .
+      - paragraph [ref=e67]:
+        - text: "Cited in:"
+        - link "chapter 04" [ref=e68] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.1; also
+        - link "chapter 02" [ref=e69] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: and
+        - link "chapter 03" [ref=e70] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: in their historical-context paragraphs.
+      - paragraph [ref=e71]:
+        - text: "Two theorems: (i) the ground-state density of a non-relativistic system of interacting electrons in an external potential determines that potential uniquely (up to a constant), so every ground-state observable is a functional of the density alone; and (ii) the density-functional energy is minimised by the ground-state density. The 1964 paper proves"
+        - emphasis [ref=e72]: existence
+        - text: of the density functional, but does not give a practical algorithm — that is what Kohn–Sham 1965 adds.
+      - heading "1.2 Kohn & Sham (1965) — Self-consistent equations" [level=3] [ref=e73]
+      - paragraph [ref=e74]:
+        - strong [ref=e75]: Kohn, W.; Sham, L. J.
+        - text: “Self-Consistent Equations Including Exchange and Correlation Effects.”
+        - emphasis [ref=e76]: Physical Review
+        - strong [ref=e77]: "1965"
+        - text: ","
+        - emphasis [ref=e78]: "140"
+        - text: "(4A), A1133–A1138. DOI:"
+        - link "10.1103/PhysRev.140.A1133" [ref=e79] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRev.140.A1133
+        - text: ". URL:"
+        - link "https://journals.aps.org/pr/abstract/10.1103/PhysRev.140.A1133" [ref=e80] [cursor=pointer]:
+          - /url: https://journals.aps.org/pr/abstract/10.1103/PhysRev.140.A1133
+        - text: .
+      - paragraph [ref=e81]:
+        - text: "Cited in:"
+        - link "chapter 04" [ref=e82] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.2–4.4 (“The Kohn–Sham ansatz”, “Why the reformulation is exact”, “The KS self-consistent loop”).
+      - paragraph [ref=e83]:
+        - text: The paper that makes DFT computable. Introduces the fictitious non-interacting reference system whose density equals the interacting density, and writes down the one-electron eigenvalue equation — the Kohn–Sham equations — that determines the orbitals self-consistently with the effective potential. All of the error in a KS calculation is now confined to a single unknown functional,
+        - img [ref=e85]
+        - text: . The 1965 paper also introduces the L(S)DA, the local approximation to
+        - img [ref=e101]
+        - text: using the homogeneous electron gas as the local reference.
+      - heading "1.3 Sham & Kohn (1966) — Uniform electron gas" [level=3] [ref=e110]
+      - paragraph [ref=e111]:
+        - strong [ref=e112]: Sham, L. J.; Kohn, W.
+        - text: “One-Particle Properties of an Inhomogeneous Interacting Electron Gas.”
+        - emphasis [ref=e113]: Physical Review
+        - strong [ref=e114]: "1966"
+        - text: ","
+        - emphasis [ref=e115]: "145"
+        - text: "(2), 561–567. DOI:"
+        - link "10.1103/PhysRev.145.561" [ref=e116] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRev.145.561
+        - text: ". URL:"
+        - link "https://journals.aps.org/pr/abstract/10.1103/PhysRev.145.561" [ref=e117] [cursor=pointer]:
+          - /url: https://journals.aps.org/pr/abstract/10.1103/PhysRev.145.561
+        - text: .
+      - paragraph [ref=e118]:
+        - text: "Cited in:"
+        - link "chapter 04" [ref=e119] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.3 as the source of the “uniform electron gas” reference for the LDA.
+      - paragraph [ref=e120]: The companion paper to Kohn–Sham 1965. Establishes the connection between the KS one-particle eigenvalues and the occupation-number derivative of the total energy — the foundation of Koopmans-type analyses in DFT (later extended by Janak 1978). The paper also works out the L(S)DA for the spin-unpolarised case and demonstrates that the local approximation is well defined for the XC energy, the XC potential, and the quasiparticle spectrum alike.
+      - heading "1.4 Perdew & Zunger (1981) — Self-interaction correction" [level=3] [ref=e121]
+      - paragraph [ref=e122]:
+        - strong [ref=e123]: Perdew, J. P.; Zunger, A.
+        - text: “Self-interaction correction to density-functional approximations for many-electron systems.”
+        - emphasis [ref=e124]: Physical Review B
+        - strong [ref=e125]: "1981"
+        - text: ","
+        - emphasis [ref=e126]: "23"
+        - text: "(10), 5048–5079. DOI:"
+        - link "10.1103/PhysRevB.23.5048" [ref=e127] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.23.5048
+        - text: ". URL:"
+        - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.23.5048" [ref=e128] [cursor=pointer]:
+          - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.23.5048
+        - text: .
+      - paragraph [ref=e129]:
+        - text: "Cited in:"
+        - link "chapter 05" [ref=e130] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.1–5.2 as the modern parameterisation of the LDA in terms of the Ceperley–Alder Monte Carlo data.
+      - paragraph [ref=e131]:
+        - text: "The first systematic treatment of the self-interaction error (SIE) that is present in every LDA/GGA functional: the Coulomb energy of the density with itself is not cancelled by the corresponding exchange–correlation piece. The Perdew–Zunger SIC subtracts the SIE on an orbital-by-orbital basis and produces significantly improved atomisation energies and ionisation potentials. The paper is also the standard source for the LDA parameterisation in terms of"
+        - img [ref=e133]
+        - text: using the Ceperley–Alder (1980) quantum Monte Carlo data.
+      - heading "1.5 Perdew & Wang (1992) — LDA parameterisation" [level=3] [ref=e141]
+      - paragraph [ref=e142]:
+        - strong [ref=e143]: Perdew, J. P.; Wang, Y.
+        - text: “Accurate and simple analytic representation of the electron-gas correlation energy.”
+        - emphasis [ref=e144]: Physical Review B
+        - strong [ref=e145]: "1992"
+        - text: ","
+        - emphasis [ref=e146]: "45"
+        - text: "(23), 13244–13249. DOI:"
+        - link "10.1103/PhysRevB.45.13244" [ref=e147] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.45.13244
+        - text: ". URL:"
+        - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.45.13244" [ref=e148] [cursor=pointer]:
+          - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.45.13244
+        - text: .
+      - paragraph [ref=e149]:
+        - text: "Cited in:"
+        - link "chapter 04" [ref=e150] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.8.2 (“The spin-DFT energy functional”) and
+        - link "chapter 05" [ref=e151] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.1, as the standard “PW92” parameterisation of the LSDA XC energy.
+      - paragraph [ref=e152]:
+        - text: A high-accuracy closed-form fit to the Ceperley–Alder quantum-Monte-Carlo data for the homogeneous electron gas across the metallic density range (
+        - img [ref=e154]
+        - text: ). Combined with the Perdew–Zunger (1981) exchange, this defines the “LDA” used in essentially every production DFT code from 1992 onward. The PW92 fit reproduces the QMC data to better than 1 mHartree/electron.
+      - heading "1.6 Perdew, Burke & Ernzerhof (1996) — PBE" [level=3] [ref=e171]
+      - paragraph [ref=e172]:
+        - strong [ref=e173]: Perdew, J. P.; Burke, K.; Ernzerhof, M.
+        - text: “Generalized Gradient Approximation Made Simple.”
+        - emphasis [ref=e174]: Physical Review Letters
+        - strong [ref=e175]: "1996"
+        - text: ","
+        - emphasis [ref=e176]: "77"
+        - text: "(18), 3865–3868. DOI:"
+        - link "10.1103/PhysRevLett.77.3865" [ref=e177] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.77.3865
+        - text: ". URL:"
+        - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.77.3865" [ref=e178] [cursor=pointer]:
+          - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.77.3865
+        - text: .
+      - paragraph [ref=e179]:
+        - text: "Erratum:"
+        - emphasis [ref=e180]: Physical Review Letters
+        - strong [ref=e181]: "1997"
+        - text: ","
+        - emphasis [ref=e182]: "78"
+        - text: "(7), 1396. DOI:"
+        - link "10.1103/PhysRevLett.78.1396" [ref=e183] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.78.1396
+        - text: ". URL:"
+        - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.78.1396" [ref=e184] [cursor=pointer]:
+          - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.78.1396
+        - text: .
+      - paragraph [ref=e185]:
+        - text: "Cited in:"
+        - link "chapter 05" [ref=e186] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.2 (“GGA — adding the gradient”), as the canonical non-empirical GGA; also
+        - link "chapter 05" [ref=e187] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: "§5.9.1 (“The PBE paper: a literature deep-dive”)."
+      - paragraph [ref=e188]:
+        - text: The PBE functional replaces the earlier ad-hoc PW91 form with a
+        - emphasis [ref=e189]: constraint-satisfying
+        - text: "GGA: the enhancement factor over LDA exchange and correlation is constructed to obey all the known exact conditions on"
+        - img [ref=e191]
+        - text: that the authors could enumerate — the LDA limit, the uniform scaling to the high-density limit, the Lieb–Oxford bound, the gradient expansion at small
+        - img [ref=e213]
+        - text: ", and several more. PBE has"
+        - emphasis [ref=e224]: no fitted parameters
+        - text: and is the most-cited functional in the solid-state literature. The 1997 erratum fixes the sign of one of the constraints.
+      - heading "1.7 Sun, Ruzsinszky & Perdew (2015) — SCAN" [level=3] [ref=e225]
+      - paragraph [ref=e226]:
+        - strong [ref=e227]: Sun, J.; Ruzsinszky, A.; Perdew, J. P.
+        - text: “Strongly Constrained and Appropriately Normed Semilocal Density Functional.”
+        - emphasis [ref=e228]: Physical Review Letters
+        - strong [ref=e229]: "2015"
+        - text: ","
+        - emphasis [ref=e230]: "115"
+        - text: "(3), 036402. DOI:"
+        - link "10.1103/PhysRevLett.115.036402" [ref=e231] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.115.036402
+        - text: ". URL:"
+        - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.115.036402" [ref=e232] [cursor=pointer]:
+          - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.115.036402
+        - text: .
+      - paragraph [ref=e233]:
+        - text: "Cited in:"
+        - link "chapter 05" [ref=e234] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.3 (“Meta-GGA — adding the kinetic-energy density”), as the canonical non-empirical meta-GGA.
+      - paragraph [ref=e235]:
+        - text: SCAN is the highest-rung
+        - emphasis [ref=e236]: parameter-free
+        - text: functional in common use. It is built by satisfying 17 known exact constraints on the XC functional of the meta-GGA form
+        - img [ref=e238]
+        - text: (where
+        - img [ref=e264]
+        - text: is the positive-definite orbital kinetic-energy density), and is “appropriately normed” by reproducing the exact XC energy of the hydrogen atom. Significantly better than PBE for diversely-bonded systems — surfaces, 2-D materials, ions in solution, transition-metal complexes — at the same meta-GGA cost (
+        - img [ref=e270]
+        - text: per SCF iteration). The 2021 r²SCAN regularisation restores numerical stability.
+      - separator [ref=e282]
+      - heading "2. XC functionals" [level=2] [ref=e283]
+      - paragraph [ref=e284]: The XC zoo — from the local-density approximation through hybrids and range-separated hybrids. Each functional below adds one more ingredient to the local-density picture.
+      - heading "2.1 Vosko, Wilk & Nusair (1980) — VWN" [level=3] [ref=e285]
+      - paragraph [ref=e286]:
+        - strong [ref=e287]: Vosko, S. H.; Wilk, L.; Nusair, M.
+        - text: "“Accurate spin-dependent electron liquid correlation energies for local spin density calculations: a critical analysis.”"
+        - emphasis [ref=e288]: Canadian Journal of Physics
+        - strong [ref=e289]: "1980"
+        - text: ","
+        - emphasis [ref=e290]: "58"
+        - text: "(8), 1200–1211. DOI:"
+        - link "10.1139/p80-159" [ref=e291] [cursor=pointer]:
+          - /url: https://doi.org/10.1139/p80-159
+        - text: ". URL:"
+        - link "https://doi.org/10.1139/p80-159" [ref=e292] [cursor=pointer]:
+          - /url: https://doi.org/10.1139/p80-159
+        - text: .
+      - paragraph [ref=e293]:
+        - text: "Cited in:"
+        - link "chapter 04" [ref=e294] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.8.2 and
+        - link "chapter 05" [ref=e295] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.4 (as a component of B3LYP); also
+        - link "chapter 05" [ref=e296] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: "§5.9.2 (“The VWN paper: a literature deep-dive”)."
+      - paragraph [ref=e297]: The standard closed-form parameterisation of the LSDA correlation energy, derived from the Ceperley–Alder (1980) quantum Monte Carlo data. The “VWN” functional (re-parameterised “VWN5” in the 1980 erratum, and a simplified “VWN3” form) is the most-cited LSDA correlation parameterisation in chemistry-focused DFT codes. It enters many composite functionals (notably B3LYP) as a component.
+      - heading "2.2 Becke (1988) — B88 exchange" [level=3] [ref=e298]
+      - paragraph [ref=e299]:
+        - strong [ref=e300]: Becke, A. D.
+        - text: “Density-functional exchange-energy approximation with correct asymptotic behavior.”
+        - emphasis [ref=e301]: Physical Review A
+        - strong [ref=e302]: "1988"
+        - text: ","
+        - emphasis [ref=e303]: "38"
+        - text: "(6), 3098–3100. DOI:"
+        - link "10.1103/PhysRevA.38.3098" [ref=e304] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevA.38.3098
+        - text: ". URL:"
+        - link "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.38.3098" [ref=e305] [cursor=pointer]:
+          - /url: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.38.3098
+        - text: .
+      - paragraph [ref=e306]:
+        - text: "Cited in:"
+        - link "chapter 05" [ref=e307] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.2 and §5.4 (as the exchange component of BLYP and B3LYP); also
+        - link "chapter 05" [ref=e308] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: "§5.9.3 (“The B88 paper: a literature deep-dive”)."
+      - paragraph [ref=e309]:
+        - text: The B88 exchange functional was the first GGA exchange to fix the LDA’s spurious self-interaction by adding a gradient correction that recovers the correct
+        - img [ref=e311]
+        - text: asymptotic behaviour of the exchange energy density. Fitted to the exchange energies of six noble-gas atoms, B88 is the empirical counterpart to the constraint-based PBE. It is the most widely used GGA exchange in chemistry-focused DFT (B88-PW91, B88-LYP, B88-P86, B3LYP).
+      - heading "2.3 Lee, Yang & Parr (1988) — LYP correlation" [level=3] [ref=e323]
+      - paragraph [ref=e324]:
+        - strong [ref=e325]: Lee, C.; Yang, W.; Parr, R. G.
+        - text: “Development of the Colle–Salvetti correlation-energy formula into a functional of the electron density.”
+        - emphasis [ref=e326]: Physical Review B
+        - strong [ref=e327]: "1988"
+        - text: ","
+        - emphasis [ref=e328]: "37"
+        - text: "(2), 785–789. DOI:"
+        - link "10.1103/PhysRevB.37.785" [ref=e329] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.37.785
+        - text: ". URL:"
+        - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.37.785" [ref=e330] [cursor=pointer]:
+          - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.37.785
+        - text: .
+      - paragraph [ref=e331]:
+        - text: "Cited in:"
+        - link "chapter 05" [ref=e332] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.4 (as the correlation component of BLYP and B3LYP); also
+        - link "chapter 05" [ref=e333] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: "§5.9.4 (“The LYP paper: a literature deep-dive”)."
+      - paragraph [ref=e334]:
+        - text: The LYP correlation functional is derived from the Colle–Salvetti (1975) expression for the correlation energy of a two-electron Hartree–Fock pair density, reformulated as a functional of the density and its Laplacian. It is purely empirical (four parameters fit to the helium atom) and has no LDA component — it is used as a
+        - emphasis [ref=e335]: replacement
+        - text: for the LSDA correlation, not a correction. Combined with B88 exchange it gives the famous “BLYP” functional, the default GGA in pre-B3LYP computational chemistry.
+      - heading "2.4 Becke (1993) — B3LYP hybrid" [level=3] [ref=e336]
+      - paragraph [ref=e337]:
+        - strong [ref=e338]: Becke, A. D.
+        - text: “Density-functional thermochemistry. III. The role of exact exchange.”
+        - emphasis [ref=e339]: The Journal of Chemical Physics
+        - strong [ref=e340]: "1993"
+        - text: ","
+        - emphasis [ref=e341]: "98"
+        - text: "(7), 5648–5652. DOI:"
+        - link "10.1063/1.464913" [ref=e342] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.464913
+        - text: ". URL:"
+        - link "https://doi.org/10.1063/1.464913" [ref=e343] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.464913
+        - text: .
+      - paragraph [ref=e344]:
+        - text: "Cited in:"
+        - link "chapter 05" [ref=e345] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.4 (“Hybrids — adding a fraction of exact exchange”).
+      - paragraph [ref=e346]: The B3LYP functional is the most-cited density functional in all of computational chemistry. It mixes 20% of exact (non-local) Hartree–Fock exchange with 80% B88 GGA exchange, combined with 81% LYP correlation and 19% VWN (LSDA) correlation, with three parameters fit to a training set of 56 atomisation energies, 42 ionisation potentials, 8 proton affinities, and 10 total atomic energies. B3LYP is the default of essentially every quantum-chemistry code from 1993 onward and remains the workhorse of organic thermochemistry.
+      - heading "2.5 Heyd, Scuseria & Ernzerhof (2003) — HSE" [level=3] [ref=e347]
+      - paragraph [ref=e348]:
+        - strong [ref=e349]: Heyd, J.; Scuseria, G. E.; Ernzerhof, M.
+        - text: “Hybrid functionals based on a screened Coulomb potential.”
+        - emphasis [ref=e350]: The Journal of Chemical Physics
+        - strong [ref=e351]: "2003"
+        - text: ","
+        - emphasis [ref=e352]: "118"
+        - text: "(18), 8207–8215. DOI:"
+        - link "10.1063/1.1564060" [ref=e353] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.1564060
+        - text: ". URL:"
+        - link "https://doi.org/10.1063/1.1564060" [ref=e354] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.1564060
+        - text: .
+      - paragraph [ref=e355]:
+        - text: "Erratum:"
+        - emphasis [ref=e356]: The Journal of Chemical Physics
+        - strong [ref=e357]: "2006"
+        - text: ","
+        - emphasis [ref=e358]: "124"
+        - text: (21),
+      - list [ref=e359]:
+        - listitem [ref=e360]:
+          - text: "DOI:"
+          - link "10.1063/1.219906" [ref=e361] [cursor=pointer]:
+            - /url: https://doi.org/10.1063/1.219906
+          - text: ". URL:"
+          - link "https://doi.org/10.1063/1.219906" [ref=e362] [cursor=pointer]:
+            - /url: https://doi.org/10.1063/1.219906
+          - text: .
+      - paragraph [ref=e363]:
+        - text: "Cited in:"
+        - link "chapter 05" [ref=e364] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.5 (“Range-separated hybrids”).
+      - paragraph [ref=e365]:
+        - text: The HSE06 functional is the standard range-separated hybrid for solid-state DFT. It splits the Coulomb interaction into a short-range part treated at the PBE level and a long-range part treated with 25% exact exchange, using the complementary error function
+        - code [ref=e366]: erfc(ω r)
+        - text: as the partition (with
+        - img [ref=e368]
+        - text: bohr
+        - img [ref=e381]
+        - text: — the inverse screening length). The screening makes the exact-exchange integral short-ranged (so it can be evaluated in a plane-wave basis with a modest real-space cutoff). HSE06 is the default functional in many solid-state codes (VASP, FHI-aims, Quantum ESPRESSO) for production runs.
+      - separator [ref=e390]
+      - heading "2.6 Tao, Perdew, Staroverov & Scuseria (2003) — TPSS meta-GGA" [level=3] [ref=e391]
+      - paragraph [ref=e392]:
+        - strong [ref=e393]: Tao, J.; Perdew, J. P.; Staroverov, V. N.; Scuseria, G. E.
+        - text: "“Climbing the Density-Functional Ladder: Nonempirical Meta–Generalized Gradient Approximation Designed for Molecules and Solids.”"
+        - emphasis [ref=e394]: Physical Review Letters
+        - strong [ref=e395]: "2003"
+        - text: ","
+        - emphasis [ref=e396]: "91"
+        - text: (14),
+      - list [ref=e397]:
+        - listitem [ref=e398]:
+          - text: "DOI:"
+          - link "10.1103/PhysRevLett.91.146401" [ref=e399] [cursor=pointer]:
+            - /url: https://doi.org/10.1103/PhysRevLett.91.146401
+          - text: ". URL:"
+          - link "https://link.aps.org/doi/10.1103/PhysRevLett.91.146401" [ref=e400] [cursor=pointer]:
+            - /url: https://link.aps.org/doi/10.1103/PhysRevLett.91.146401
+          - text: .
+      - paragraph [ref=e401]:
+        - text: "Cited in:"
+        - link "chapter 05" [ref=e402] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.4 (“Meta-GGAs”) and §5.5 (“The Jacob’s ladder metaphor”).
+      - paragraph [ref=e403]:
+        - text: The first
+        - emphasis [ref=e404]: meta-GGA
+        - text: ": a functional that depends not only on"
+        - img [ref=e406]
+        - text: and
+        - img [ref=e421]
+        - text: but also on the kinetic-energy density
+        - img [ref=e444]
+        - text: . TPSS satisfies 12 of the 17 known exact constraints on the XC functional; SCAN (§1.7 above) satisfies all 17. The TPSS exchange enhancement factor is a rational function of
+        - img [ref=e521]
+        - text: designed to recover the fourth-order gradient expansion at small
+        - img [ref=e589]
+        - text: and the uniform scaling at large
+        - img [ref=e595]
+        - text: .
+      - heading "2.7 Perdew & Schmidt (2001) — Jacob’s ladder of XC functionals" [level=3] [ref=e600]
+      - paragraph [ref=e601]:
+        - strong [ref=e602]: Perdew, J. P.; Schmidt, K.
+        - text: “Jacob’s ladder of density functional approximations for the exchange-correlation energy.” In
+        - emphasis [ref=e603]: Density Functional Theory and Its Applications to Materials
+        - text: ", edited by V. E. Van Doren, C. P. Alsenoy, P. Geerlings (American Institute of Physics, Melville NY, 2001). DOI: [10.1063/1.1396675]"
+        - link "https://doi.org/10.1063/1.1396675" [ref=e604] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.1396675
+        - text: "). URL:"
+        - link "https://pubs.aip.org/aip/acp/article-abstract/577/1/1/822036" [ref=e605] [cursor=pointer]:
+          - /url: https://pubs.aip.org/aip/acp/article-abstract/577/1/1/822036
+        - text: .
+      - paragraph [ref=e606]:
+        - text: "Cited in:"
+        - link "chapter 05" [ref=e607] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.1 (“The rungs of Jacob’s ladder”).
+      - paragraph [ref=e608]:
+        - text: "The paper that introduced the “Jacob’s ladder” metaphor: each successive rung of the DFT ladder (LDA, GGA, meta-GGA, hybrid, double-hybrid, …) adds a new ingredient to the exchange– correlation functional and improves the accuracy on standard benchmarks. The hierarchy has"
+        - emphasis [ref=e609]: no top rung
+        - text: ; the exact XC functional is the “last rung” but is unknown in closed form. The metaphor is useful pedagogically because each rung can be motivated as a
+        - emphasis [ref=e610]: correction
+        - text: to the rung below.
+      - heading "2.8 Herman, Van Dyke & Ortenburger (1969) — Gradient expansion of exchange" [level=3] [ref=e611]
+      - paragraph [ref=e612]:
+        - strong [ref=e613]: Herman, F.; Van Dyke, J. P.; Ortenburger, I. B.
+        - text: “Improved Statistical Exchange Approximation for Inhomogeneous Many-Electron Systems.”
+        - emphasis [ref=e614]: Physical Review Letters
+        - strong [ref=e615]: "1969"
+        - text: ","
+        - emphasis [ref=e616]: "22"
+        - text: "(16), 807–811. DOI:"
+        - link "10.1103/PhysRevLett.22.807" [ref=e617] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.22.807
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevLett.22.807" [ref=e618] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevLett.22.807
+        - text: .
+      - paragraph [ref=e619]:
+        - text: "Cited in:"
+        - link "chapter 05" [ref=e620] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: §5.2 (“The gradient expansion of the GEA”) and §5.3 (“Becke’s correction to LDA”).
+      - paragraph [ref=e621]:
+        - text: The original derivation of the
+        - emphasis [ref=e622]: gradient expansion of exchange
+        - text: (GEA) for the slowly-varying electron gas. The GEA is the first non-trivial correction to LDA, including the leading
+        - img [ref=e624]
+        - text: term. The GEA is
+        - emphasis [ref=e646]: not
+        - text: a usable functional (it is negative for many atoms and has no lower bound) but it is the mathematical starting point for the GGA family. The Becke 1988 paper (B88, §2.2) was the first to
+        - emphasis [ref=e647]: tame
+        - text: the gradient expansion by adding an empirical correction designed to give the correct
+        - img [ref=e649]
+        - text: asymptotic behaviour of exchange.
+      - separator [ref=e661]
+      - heading "3. Many-body methods" [level=2] [ref=e662]
+      - paragraph [ref=e663]: The hierarchy of wavefunction-based methods that DFT replaces for problems where it is too expensive. The benchmarks and calibration points for every DFT functional are computed with these methods.
+      - heading "3.1 Møller & Plesset (1934) — MP perturbation theory" [level=3] [ref=e664]
+      - paragraph [ref=e665]:
+        - strong [ref=e666]: Møller, C.; Plesset, M. S.
+        - text: “Note on an Approximation Treatment for Many-Electron Systems.”
+        - emphasis [ref=e667]: Physical Review
+        - strong [ref=e668]: "1934"
+        - text: ","
+        - emphasis [ref=e669]: "46"
+        - text: "(7), 618–622. DOI:"
+        - link "10.1103/PhysRev.46.618" [ref=e670] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRev.46.618
+        - text: ". URL:"
+        - link "https://journals.aps.org/pr/abstract/10.1103/PhysRev.46.618" [ref=e671] [cursor=pointer]:
+          - /url: https://journals.aps.org/pr/abstract/10.1103/PhysRev.46.618
+        - text: .
+      - paragraph [ref=e672]:
+        - text: "Cited in:"
+        - link "chapter 02" [ref=e673] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: §2.3 (“The hierarchy of wavefunction methods”).
+      - paragraph [ref=e674]:
+        - text: The paper that introduced Rayleigh–Schrödinger perturbation theory using the sum of Fock operators as the zero-order Hamiltonian. The first non-vanishing correction — second order in the fluctuation potential — is “MP2” and remains the cheapest correlated method that improves systematically on Hartree–Fock. Scales as
+        - img [ref=e676]
+        - text: (now
+        - img [ref=e692]
+        - text: with density fitting) and recovers roughly 80% of the correlation energy of a closed-shell organic molecule near equilibrium. The 1934 paper contains the full perturbative formalism; the modern MP2 implementation is in every quantum-chemistry code.
+      - heading "3.2 Čížek (1966) — Coupled cluster" [level=3] [ref=e707]
+      - paragraph [ref=e708]:
+        - strong [ref=e709]: Čížek, J.
+        - text: “On the Correlation Problem in Atomic and Molecular Systems. Calculation of Wavefunction Components in Ursell-Type Expansion Using Quantum-Field Theoretical Methods.”
+        - emphasis [ref=e710]: The Journal of Chemical Physics
+        - strong [ref=e711]: "1966"
+        - text: ","
+        - emphasis [ref=e712]: "45"
+        - text: "(11), 4256–4266. DOI:"
+        - link "10.1063/1.1727484" [ref=e713] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.1727484
+        - text: ". URL:"
+        - link "https://doi.org/10.1063/1.1727484" [ref=e714] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.1727484
+        - text: .
+      - paragraph [ref=e715]:
+        - text: "Cited in:"
+        - link "chapter 02" [ref=e716] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: §2.3 and §2.4 as the origin of the coupled-cluster series.
+      - paragraph [ref=e717]:
+        - text: Introduces the coupled-cluster (CC) Ansatz
+        - img [ref=e719]
+        - text: with the cluster operator
+        - img [ref=e751]
+        - text: (single, double, … excitations) into quantum chemistry. The CC wave Ansatz is
+        - emphasis [ref=e786]: not
+        - text: variational (in its original form) but is size-extensive by construction — a property that makes it dramatically more accurate than CI for systems beyond a few electrons. Čížek’s paper is the foundation of the modern hierarchy CCSD, CCSD(T), CCSDT, … The connection to nuclear physics and to the linked-cluster theorem of Brueckner is explained in the original.
+      - heading "3.3 Purvis & Bartlett (1982) — CCSD" [level=3] [ref=e787]
+      - paragraph [ref=e788]:
+        - strong [ref=e789]: Purvis, G. D., III; Bartlett, R. J.
+        - text: "“A full coupled-cluster singles and doubles model: the inclusion of disconnected triples.”"
+        - emphasis [ref=e790]: The Journal of Chemical Physics
+        - strong [ref=e791]: "1982"
+        - text: ","
+        - emphasis [ref=e792]: "76"
+        - text: "(4), 1910–1918. DOI:"
+        - link "10.1063/1.443164" [ref=e793] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.443164
+        - text: ". URL:"
+        - link "https://doi.org/10.1063/1.443164" [ref=e794] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.443164
+        - text: .
+      - paragraph [ref=e795]:
+        - text: "Cited in:"
+        - link "chapter 02" [ref=e796] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: §2.3 and §2.4 as the canonical CCSD implementation.
+      - paragraph [ref=e797]:
+        - text: The first efficient implementation of the coupled-cluster singles-and-doubles (CCSD) equations for a general molecular system. CCSD truncates the cluster operator at
+        - img [ref=e799]
+        - text: and solves the corresponding amplitude equations iteratively; the resulting energy is correct through fourth order in Møller–Plesset perturbation theory by construction. The paper introduces the diagrammatic and computational machinery that every modern CCSD code uses. CCSD scales as
+        - img [ref=e812]
+        - text: and is the workhorse of small-molecule correlated quantum chemistry.
+      - heading "3.4 Raghavachari, Trucks, Pople & Head-Gordon (1989) — CCSD(T)" [level=3] [ref=e827]
+      - paragraph [ref=e828]:
+        - strong [ref=e829]: Raghavachari, K.; Trucks, G. W.; Pople, J. A.; Head-Gordon, M.
+        - text: “A fifth-order perturbation comparison of electron correlation theories.”
+        - emphasis [ref=e830]: Chemical Physics Letters
+        - strong [ref=e831]: "1989"
+        - text: ","
+        - emphasis [ref=e832]: "157"
+        - text: "(6), 479–483. DOI:"
+        - link "10.1016/0009-2614(89)87395-6" [ref=e833] [cursor=pointer]:
+          - /url: https://doi.org/10.1016/0009-2614(89
+        - text: "87395-6). URL:"
+        - link "https://doi.org/10.1016/0009-2614(89)87395-6" [ref=e834] [cursor=pointer]:
+          - /url: https://doi.org/10.1016/0009-2614(89)87395-6
+        - text: .
+      - paragraph [ref=e835]:
+        - text: "Cited in:"
+        - link "chapter 02" [ref=e836] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: §2.3 and §2.4 (“The ‘gold standard’ and its limits”).
+      - paragraph [ref=e837]:
+        - text: The paper that introduced the now-ubiquitous CCSD(T) “gold standard” of quantum chemistry. CCSD(T) is CCSD plus a perturbative estimate of the connected-triples contribution, evaluated using the CCSD amplitudes. The non-iterative
+        - img [ref=e839]
+        - text: triples step adds a small, mostly-cancelling correction to the CCSD energy that restores chemical accuracy (1 kcal/mol) for the vast majority of closed-shell main-group systems near equilibrium. The paper is a
+        - emphasis [ref=e854]: comparison
+        - text: of five correlation methods at fifth-order perturbation theory and demonstrates that CCSD(T) systematically out-performs the others at a manageable cost. The “(T)” notation (with parentheses to distinguish from the full CCSDT-1 iterative triples) has become universal.
+      - separator [ref=e855]
+      - heading "4. Pseudopotentials" [level=2] [ref=e856]
+      - paragraph [ref=e857]: The construction, the norm-conservation condition, the ultrasoft extension, and the PAW reformulation. Every plane-wave DFT calculation uses one of the four flavours in this section.
+      - heading "4.1 Hamann, Schlüter & Chiang (1979) — Norm-conserving pseudopotentials" [level=3] [ref=e858]
+      - paragraph [ref=e859]:
+        - strong [ref=e860]: Hamann, D. R.; Schlüter, M.; Chiang, C.
+        - text: “Norm-Conserving Pseudopotentials.”
+        - emphasis [ref=e861]: Physical Review Letters
+        - strong [ref=e862]: "1979"
+        - text: ","
+        - emphasis [ref=e863]: "43"
+        - text: "(20), 1494–1497. DOI:"
+        - link "10.1103/PhysRevLett.43.1494" [ref=e864] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.43.1494
+        - text: ". URL:"
+        - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.43.1494" [ref=e865] [cursor=pointer]:
+          - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.43.1494
+        - text: .
+      - paragraph [ref=e866]:
+        - text: "Cited in:"
+        - link "chapter 08" [ref=e867] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: §8.3 (“The norm-conservation condition”) as the foundational paper of the field, and §8.4 as the formal source of the “transferability” property.
+      - paragraph [ref=e868]:
+        - text: "The paper that defined the modern norm-conserving pseudopotential (NC-PP). The construction enforces three properties: the pseudo-wavefunction matches the all-electron one in value, first derivative, and logarithmic derivative outside a cutoff radius"
+        - img [ref=e870]
+        - text: ; inside
+        - img [ref=e879]
+        - text: the pseudo is nodeless; and the
+        - strong [ref=e887]: norm-conservation
+        - text: condition
+        - img [ref=e889]
+        - text: holds. The proof that the third condition is what makes the pseudo
+        - emphasis [ref=e952]: transferable
+        - text: — i.e. gives the same energy eigenvalue in any chemical environment — is the heart of the paper. NC-PPs are the workhorse of high-accuracy plane-wave DFT and the starting point of every later pseudopotential family.
+      - heading "4.2 Troullier & Martins (1991) — Efficient construction" [level=3] [ref=e953]
+      - paragraph [ref=e954]:
+        - strong [ref=e955]: Troullier, N.; Martins, J. L.
+        - text: “Efficient pseudopotentials for plane-wave calculations.”
+        - emphasis [ref=e956]: Physical Review B
+        - strong [ref=e957]: "1991"
+        - text: ","
+        - emphasis [ref=e958]: "43"
+        - text: "(3), 1993–2006. DOI:"
+        - link "10.1103/PhysRevB.43.1993" [ref=e959] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.43.1993
+        - text: ". URL:"
+        - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.43.1993" [ref=e960] [cursor=pointer]:
+          - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.43.1993
+        - text: .
+      - paragraph [ref=e961]:
+        - text: "Cited in:"
+        - link "chapter 08" [ref=e962] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: §8.4 (“Construction — Troullier-Martins and BHS”) as the preferred modern construction recipe.
+      - paragraph [ref=e963]:
+        - text: The Troullier–Martins (TM) construction is the standard high-accuracy, smooth-pseudo recipe. It parameterises the pseudo-wavefunction inside
+        - img [ref=e965]
+        - text: as
+        - img [ref=e974]
+        - text: with
+        - img [ref=e1036]
+        - text: or 6 polynomial coefficients, and uses six matching conditions (value, first and second derivative at
+        - img [ref=e1046]
+        - text: ", plus a “kinetic-energy-conservation” condition matching the second moment of the charge density in the core) to determine them. The resulting pseudo is"
+        - emphasis [ref=e1054]: smoother
+        - text: than the Hamann–Schlüter–Chiang (1979) form at the same accuracy, and therefore requires a smaller plane-wave cutoff — typically
+        - img [ref=e1056]
+        - text: –
+        - img [ref=e1072]
+        - text: Ry for first-row atoms.
+      - heading "4.3 Vanderbilt (1990) — Ultrasoft pseudopotentials" [level=3] [ref=e1078]
+      - paragraph [ref=e1079]:
+        - strong [ref=e1080]: Vanderbilt, D.
+        - text: “Soft self-consistent pseudopotentials in a generalized eigenvalue formalism.”
+        - emphasis [ref=e1081]: Physical Review B
+        - strong [ref=e1082]: "1990"
+        - text: ","
+        - emphasis [ref=e1083]: "41"
+        - text: "(11), 7892–7895. DOI:"
+        - link "10.1103/PhysRevB.41.7892" [ref=e1084] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.41.7892
+        - text: ". URL:"
+        - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.41.7892" [ref=e1085] [cursor=pointer]:
+          - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.41.7892
+        - text: .
+      - paragraph [ref=e1086]:
+        - text: "Cited in:"
+        - link "chapter 08" [ref=e1087] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: §8.6 (“Ultrasoft pseudopotentials (Vanderbilt)”) as the generalisaton of the NC-PP framework to smoother pseudopotentials.
+      - paragraph [ref=e1088]:
+        - text: Vanderbilt’s insight is that the norm-conservation condition can be
+        - emphasis [ref=e1089]: relaxed
+        - text: and replaced by a generalised overlap operator, at the cost of a more complex formalism. The “ultrasoft” pseudo-wavefunction is allowed to have a norm
+        - emphasis [ref=e1090]: deficit
+        - img [ref=e1092]
+        - text: inside
+        - img [ref=e1123]
+        - text: ", and the missing charge is recovered by an"
+        - strong [ref=e1131]: augmentation charge
+        - text: that adds an atom-centred correction to the density. The KS equations become a
+        - emphasis [ref=e1132]: generalised
+        - text: eigenvalue problem
+        - img [ref=e1134]
+        - text: ", with"
+        - img [ref=e1168]
+        - text: . The payoff is a factor of 2–3 reduction in the required plane-wave cutoff for hard elements (3
+        - img [ref=e1183]
+        - text: transition metals, 4
+        - img [ref=e1189]
+        - text: rare earths, O, N) at the same accuracy. USPPs are the default in VASP, Quantum ESPRESSO, and CASTEP.
+      - heading "4.4 Blöchl (1994) — PAW" [level=3] [ref=e1194]
+      - paragraph [ref=e1195]:
+        - strong [ref=e1196]: Blöchl, P. E.
+        - text: “Projector augmented-wave method.”
+        - emphasis [ref=e1197]: Physical Review B
+        - strong [ref=e1198]: "1994"
+        - text: ","
+        - emphasis [ref=e1199]: "50"
+        - text: "(24), 17953–17979. DOI:"
+        - link "10.1103/PhysRevB.50.17953" [ref=e1200] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.50.17953
+        - text: ". URL:"
+        - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.50.17953" [ref=e1201] [cursor=pointer]:
+          - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.50.17953
+        - text: .
+      - paragraph [ref=e1202]:
+        - text: "Cited in:"
+        - link "chapter 04" [ref=e1203] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.10.3 and
+        - link "chapter 08" [ref=e1204] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: §8.7 (“The PAW method (Blöchl)”); also the source of the Blöchl tetrahedron integration in
+        - link "chapter 07" [ref=e1205] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: §7.11. The PAW method is the most accurate of the plane-wave valence-only approaches. It writes the all-electron wavefunction as a
+        - emphasis [ref=e1206]: linear transformation
+        - text: of a smooth pseudo-wavefunction, with the difference carried by
+        - strong [ref=e1207]: augmentation functions
+        - text: localised inside atom-centred spheres. The total energy splits into a smooth part (computed on the plane-wave grid) and an on-site correction (computed in real space around each atom) that is exact within the chosen partial-wave basis. PAW is exact in the all-electron limit (no frozen-core approximation) and admits the same smooth-wavefunction speed-ups as USPP. The 1994 paper also introduces the
+        - strong [ref=e1208]: Blöchl tetrahedron method
+        - text: for Brillouin-zone integration, an
+        - img [ref=e1210]
+        - text: improvement over the standard Monkhorst–Pack Riemann sum. PAW is the default in VASP and GPAW for high-accuracy calculations on transition-metal and rare-earth systems.
+      - separator [ref=e1231]
+      - heading "5. Basis sets" [level=2] [ref=e1232]
+      - paragraph [ref=e1233]: "The technology that turns the KS eigenvalue equation into a finite matrix. Three families of basis are used in practice: atom-centred Gaussians (chemistry), plane waves (solid-state), and numerical atomic orbitals (linear scaling)."
+      - heading "5.1 Boys (1950) — Gaussian basis functions" [level=3] [ref=e1234]
+      - paragraph [ref=e1235]:
+        - strong [ref=e1236]: Boys, S. F.
+        - text: “Electronic wave functions. I. A general method of calculation for the stationary states of any molecular system.”
+        - emphasis [ref=e1237]: Proceedings of the Royal Society of London. Series A, Mathematical and Physical Sciences
+        - strong [ref=e1238]: "1950"
+        - text: ","
+        - emphasis [ref=e1239]: "200"
+        - text: "(1063), 542–554. DOI:"
+        - link "10.1098/rspa.1950.0036" [ref=e1240] [cursor=pointer]:
+          - /url: https://doi.org/10.1098/rspa.1950.0036
+        - text: ". URL:"
+        - link "https://royalsocietypublishing.org/doi/10.1098/rspa.1950.0036" [ref=e1241] [cursor=pointer]:
+          - /url: https://royalsocietypublishing.org/doi/10.1098/rspa.1950.0036
+        - text: .
+      - paragraph [ref=e1242]:
+        - text: "Cited in:"
+        - link "chapter 06" [ref=e1243] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.3 (“Gaussian-type orbitals (GTOs)”) as the origin of the Gaussian basis in quantum chemistry.
+      - paragraph [ref=e1244]:
+        - text: The paper that introduced the use of Gaussian-type functions
+        - img [ref=e1246]
+        - text: (rather than Slater-type
+        - img [ref=e1263]
+        - text: ") as basis functions for molecular electronic-structure calculations. The motivation is purely computational: the"
+        - strong [ref=e1276]: Gaussian product theorem
+        - text: (the product of two Gaussians at different centres is a single Gaussian at a third centre) reduces the four-centre two-electron integrals of Hartree–Fock to closed-form expressions involving the
+        - strong [ref=e1277]: Boys function
+        - img [ref=e1279]
+        - text: . The paper is short by modern standards but is the founding document of the entire Gaussian-based quantum-chemistry industry. Every production quantum-chemistry code (Gaussian, PSI4, PySCF, ORCA, NWChem, …) uses a Gaussian basis.
+      - heading "5.2 Hehre, Stewart & Pople (1969) — STO-nG minimal basis" [level=3] [ref=e1293]
+      - paragraph [ref=e1294]:
+        - strong [ref=e1295]: Hehre, W. J.; Stewart, R. F.; Pople, J. A.
+        - text: “Self-Consistent Molecular-Orbital Methods. I. Use of Gaussian Expansions of Slater-Type Atomic Orbitals.”
+        - emphasis [ref=e1296]: The Journal of Chemical Physics
+        - strong [ref=e1297]: "1969"
+        - text: ","
+        - emphasis [ref=e1298]: "51"
+        - text: "(6), 2657–2664. DOI:"
+        - link "10.1063/1.1672397" [ref=e1299] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.1672397
+        - text: ". URL:"
+        - link "https://doi.org/10.1063/1.1672397" [ref=e1300] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.1672397
+        - text: .
+      - paragraph [ref=e1301]:
+        - text: "Cited in:"
+        - link "chapter 06" [ref=e1302] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.4 (“STO-nG — the minimal basis”) as the source of the STO-3G basis.
+      - paragraph [ref=e1303]:
+        - text: The Hehre–Stewart–Pople (HSP) paper fits each Slater-type orbital
+        - img [ref=e1305]
+        - text: of the minimal basis (1
+        - img [ref=e1319]
+        - text: ", 2"
+        - img [ref=e1325]
+        - text: ", 2"
+        - img [ref=e1331]
+        - text: ", …) as a least-squares contraction of"
+        - img [ref=e1337]
+        - text: primitive Gaussians. The case
+        - img [ref=e1343]
+        - text: "— STO-3G — became the canonical “minimal basis” of computational chemistry: a single contracted"
+        - img [ref=e1353]
+        - text: function for H, a contracted
+        - img [ref=e1359]
+        - text: and three contracted
+        - img [ref=e1365]
+        - text: "functions for first-row atoms, etc. The HSP tables are the universal starting point of every quantum chemistry education. (Modern use: STO-3G is too small for production work but is the workhorse of pedagogical examples and large-scale screening.)"
+      - heading "5.3 Krishnan, Binkley, Seeger & Pople (1980) — 6-31G split-valence" [level=3] [ref=e1370]
+      - paragraph [ref=e1371]:
+        - strong [ref=e1372]: Krishnan, R.; Binkley, J. S.; Seeger, R.; Pople, J. A.
+        - text: “Self-consistent molecular orbital methods. XX. A basis set for correlated wave functions.”
+        - emphasis [ref=e1373]: The Journal of Chemical Physics
+        - strong [ref=e1374]: "1980"
+        - text: ","
+        - emphasis [ref=e1375]: "72"
+        - text: "(1), 650–654. DOI:"
+        - link "10.1063/1.438980" [ref=e1376] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.438980
+        - text: ". URL:"
+        - link "https://doi.org/10.1063/1.438980" [ref=e1377] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.438980
+        - text: .
+      - paragraph [ref=e1378]:
+        - text: "Cited in:"
+        - link "chapter 06" [ref=e1379] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: "§6.5 (“Split-valence: 3-21G, 6-31G, 6-311G”) as the source of the 6-31G basis."
+      - paragraph [ref=e1380]:
+        - text: The 6-31G basis is the canonical “double-zeta valence” basis of computational chemistry. The core orbital of each atom is described by a single contracted function of 6 primitives; the valence shell is
+        - emphasis [ref=e1381]: split
+        - text: into an “inner” contracted function of 3 primitives and an “outer” single-primitive function, giving the basis set its name. The 6-31G split allows the SCF to readjust the
+        - emphasis [ref=e1382]: size
+        - text: of the valence orbitals molecule by molecule — the inner function is roughly atomic, the outer function is roughly the chemical-bond radius. Combined with polarisation and diffuse functions (6-31G*, 6-31+G*), the Pople split-valence family dominated computational chemistry from 1980 until the Dunning correlation-consistent bases displaced it in the 1990s.
+      - heading "5.4 Dunning (1989) — cc-pVXZ correlation-consistent bases" [level=3] [ref=e1383]
+      - paragraph [ref=e1384]:
+        - strong [ref=e1385]: Dunning, T. H., Jr.
+        - text: “Gaussian basis sets for use in correlated molecular calculations. I. The atoms boron through neon and hydrogen.”
+        - emphasis [ref=e1386]: The Journal of Chemical Physics
+        - strong [ref=e1387]: "1989"
+        - text: ","
+        - emphasis [ref=e1388]: "90"
+        - text: "(2), 1007–1023. DOI:"
+        - link "10.1063/1.456153" [ref=e1389] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.456153
+        - text: ". URL:"
+        - link "https://doi.org/10.1063/1.456153" [ref=e1390] [cursor=pointer]:
+          - /url: https://doi.org/10.1063/1.456153
+        - text: .
+      - paragraph [ref=e1391]:
+        - text: "Cited in:"
+        - link "chapter 06" [ref=e1392] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.6 (“Polarisation, diffuse, and the cc-pVXZ family”) as the source of the cc-pVXZ family.
+      - paragraph [ref=e1393]:
+        - text: Dunning’s correlation-consistent (cc-pVXZ) basis family is the standard path to basis-set convergence in modern quantum chemistry. Each “rung” — D (double), T (triple), Q (quadruple), 5, 6, … — adds the functions of higher angular momentum that are needed to recover the next decade of electron-correlation energy. The “correlation consistent” name refers to the property that the missing correlation energy falls off as a geometric series in the cardinal number
+        - img [ref=e1395]
+        - text: ", which makes the two- or three-point extrapolation"
+        - img [ref=e1401]
+        - text: well-conditioned. Dunning’s 1989 paper is the foundation of every modern basis-set convergence study.
+      - separator [ref=e1434]
+      - heading "6. Plane waves and solids" [level=2] [ref=e1435]
+      - paragraph [ref=e1436]: The periodic-symmetry machinery — Bloch’s theorem, k-point sampling, and the methods that take advantage of translational symmetry to make the infinite-lattice problem finite.
+      - heading "6.1 Bloch (1929) — Bloch’s theorem" [level=3] [ref=e1437]
+      - paragraph [ref=e1438]:
+        - strong [ref=e1439]: Bloch, F.
+        - text: “Über die Quantenmechanik der Elektronen in Kristallgittern.”
+        - emphasis [ref=e1440]: Zeitschrift für Physik
+        - strong [ref=e1441]: "1929"
+        - text: ","
+        - emphasis [ref=e1442]: "52"
+        - text: ", 555–600. DOI:"
+        - link "10.1007/BF01339455" [ref=e1443] [cursor=pointer]:
+          - /url: https://doi.org/10.1007/BF01339455
+        - text: ". URL:"
+        - link "https://link.springer.com/article/10.1007/BF01339455" [ref=e1444] [cursor=pointer]:
+          - /url: https://link.springer.com/article/10.1007/BF01339455
+        - text: .
+      - paragraph [ref=e1445]:
+        - text: "Cited in:"
+        - link "chapter 06" [ref=e1446] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.7 (“Plane waves”) and
+        - link "chapter 07" [ref=e1447] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: §7.1, §7.3 (“Derivation of Bloch’s theorem”) as the central theorem of solid-state physics.
+      - paragraph [ref=e1448]:
+        - text: "Bloch’s 1929 paper proves the theorem that bears his name: every eigenstate of a Hamiltonian with discrete translational symmetry can be written as a plane wave"
+        - img [ref=e1450]
+        - text: multiplied by a cell-periodic function
+        - img [ref=e1468]
+        - text: . This single fact is the foundation of the entire band theory of solids — the discrete translational symmetry of the lattice reduces the differential eigenvalue problem on an infinite lattice to a discrete set of differential eigenvalue problems indexed by the crystal momentum
+        - img [ref=e1488]
+        - text: in the first Brillouin zone. Bloch’s original paper is in German; the result appears in every solid-state textbook under “Bloch’s theorem” with the standard proof via commutativity of
+        - img [ref=e1495]
+        - text: and the translation operator.
+      - heading "6.2 Kohn & Rostoker (1954) — KKR method" [level=3] [ref=e1504]
+      - paragraph [ref=e1505]:
+        - strong [ref=e1506]: Kohn, W.; Rostoker, N.
+        - text: “Solution of the Schrödinger Equation in Periodic Lattices with an Application to Metallic Lithium.”
+        - emphasis [ref=e1507]: Physical Review
+        - strong [ref=e1508]: "1954"
+        - text: ","
+        - emphasis [ref=e1509]: "94"
+        - text: "(5), 1111–1120. DOI:"
+        - link "10.1103/PhysRev.94.1111" [ref=e1510] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRev.94.1111
+        - text: ". URL:"
+        - link "https://journals.aps.org/pr/abstract/10.1103/PhysRev.94.1111" [ref=e1511] [cursor=pointer]:
+          - /url: https://journals.aps.org/pr/abstract/10.1103/PhysRev.94.1111
+        - text: .
+      - paragraph [ref=e1512]:
+        - text: "Cited in:"
+        - link "chapter 07" [ref=e1513] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: §7.13 as a historical predecessor of the modern multiple-scattering approaches to the band-structure problem.
+      - paragraph [ref=e1514]:
+        - text: The KKR (Korringa–Kohn–Rostoker) method is one of the three foundational band-structure techniques (along with the augmented-plane-wave APW method of Slater and the orthogonalised-plane-wave OPW method of Herring). KKR expands the wavefunction in each muffin-tin sphere as a sum of spherical harmonics times radial solutions, and matches to free-space plane waves in the interstitial region. The resulting secular equation is in terms of
+        - strong [ref=e1515]: structure constants
+        - text: that depend only on the lattice geometry, and is the natural starting point for multiple-scattering theory and for the Coherent Potential Approximation (CPA) of disordered alloys. The 1954 paper is the source of the formal KKR equations and of the muffin-tin approximation still used in many all-electron codes (WIEN2k, Elk, SPR-KKR).
+      - heading "6.3 Andersen (1975) — LMTO method" [level=3] [ref=e1516]
+      - paragraph [ref=e1517]:
+        - strong [ref=e1518]: Andersen, O. K.
+        - text: “Linear methods in band theory.”
+        - emphasis [ref=e1519]: Physical Review B
+        - strong [ref=e1520]: "1975"
+        - text: ","
+        - emphasis [ref=e1521]: "12"
+        - text: "(8), 3060–3083. DOI:"
+        - link "10.1103/PhysRevB.12.3060" [ref=e1522] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.12.3060
+        - text: ". URL:"
+        - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.12.3060" [ref=e1523] [cursor=pointer]:
+          - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.12.3060
+        - text: .
+      - paragraph [ref=e1524]:
+        - text: "Cited in:"
+        - link "chapter 07" [ref=e1525] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: §7.13 as the source of the linear-muffin-tin-orbital (LMTO) formalism.
+      - paragraph [ref=e1526]:
+        - text: Andersen’s LMTO method is the third foundational band-structure technique. The key insight is that the energy dependence of the muffin-tin orbitals can be
+        - strong [ref=e1527]: linearised
+        - text: "about a fixed reference energy, and the resulting linear combinations form an efficient, near-orthogonal basis that is minimal in size (typically 9 orbitals per atom: one"
+        - img [ref=e1529]
+        - text: ", three"
+        - img [ref=e1535]
+        - text: ", five"
+        - img [ref=e1541]
+        - text: ). The LMTO-ASA (atomic-sphere approximation) method is the workhorse of historical electronic-structure calculations on transition metals and their compounds. Andersen’s paper introduces the linearisation, the “screening” of the structure constants, and the connection to the KKR formalism. Modern descendants — the full-potential LMTO (FP-LMTO) and the NMTO (order-
+        - img [ref=e1547]
+        - text: MTO) methods — remain in use.
+      - heading "6.4 Monkhorst & Pack (1976) — k-point sampling" [level=3] [ref=e1552]
+      - paragraph [ref=e1553]:
+        - strong [ref=e1554]: Monkhorst, H. J.; Pack, J. D.
+        - text: “Special points for Brillouin-zone integrations.”
+        - emphasis [ref=e1555]: Physical Review B
+        - strong [ref=e1556]: "1976"
+        - text: ","
+        - emphasis [ref=e1557]: "13"
+        - text: "(12), 5188–5192. DOI:"
+        - link "10.1103/PhysRevB.13.5188" [ref=e1558] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.13.5188
+        - text: ". URL:"
+        - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.13.5188" [ref=e1559] [cursor=pointer]:
+          - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.13.5188
+        - text: .
+      - paragraph [ref=e1560]:
+        - text: "Cited in:"
+        - link "chapter 07" [ref=e1561] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: §7.6 (“k-point sampling”) as the source of the standard uniform-mesh sampling of the Brillouin zone.
+      - paragraph [ref=e1562]:
+        - text: The Monkhorst–Pack (MP) mesh is the workhorse of solid-state DFT. The paper constructs a uniform
+        - img [ref=e1564]
+        - text: mesh in the Brillouin zone by the simple rule
+        - img [ref=e1587]
+        - text: with
+        - img [ref=e1669]
+        - text: ", and shows that this mesh samples the BZ uniformly with a convergence rate of"
+        - img [ref=e1701]
+        - text: in 1-D and
+        - img [ref=e1722]
+        - text: in 3-D for smooth integrands. The MP mesh is the default of every production plane-wave code; together with the
+        - img [ref=e1749]
+        - text: "-centred variant and the tetrahedron integration of"
+        - link "Blöchl (1994)" [ref=e1754] [cursor=pointer]:
+          - /url: "#44-blöchl-1994--paw"
+        - text: it provides the practical infrastructure for converging the BZ integral to arbitrary precision.
+      - heading "6.5 Blöchl, Jepsen & Andersen (1994) — Improved tetrahedron integration" [level=3] [ref=e1755]
+      - paragraph [ref=e1756]:
+        - strong [ref=e1757]: Blöchl, P. E.; Jepsen, O.; Andersen, O. K.
+        - text: “Improved tetrahedron method for Brillouin-zone integration.”
+        - emphasis [ref=e1758]: Physical Review B
+        - strong [ref=e1759]: "1994"
+        - text: ","
+        - emphasis [ref=e1760]: "49"
+        - text: "(23), 16223–16233. DOI:"
+        - link "10.1103/PhysRevB.49.16223" [ref=e1761] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.49.16223
+        - text: ". URL:"
+        - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.49.16223" [ref=e1762] [cursor=pointer]:
+          - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.49.16223
+        - text: .
+      - paragraph [ref=e1763]:
+        - text: "Cited in:"
+        - link "chapter 07" [ref=e1764] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: §7.11 (“The tetrahedron method for Brillouin-zone integration”) as the source of the modern linearisation correction.
+      - paragraph [ref=e1765]:
+        - text: The “Blöchl correction” to the standard Lehmann–Taut (1972) tetrahedron method uses the energies of the four neighbouring tetrahedra to estimate the second derivative of the band energy within each tetrahedron, and subtracts the leading
+        - img [ref=e1767]
+        - text: linearisation error analytically. The result is an
+        - img [ref=e1789]
+        - text: integration scheme — a factor of
+        - img [ref=e1811]
+        - text: coarser mesh in each direction for the same accuracy, with no adjustable smearing parameter. The corrected tetrahedron method is the recommended BZ integrator for production-quality total energies, densities of states, and Fermi-surface-resolved properties (transport, de Haas–van Alphen).
+      - separator [ref=e1825]
+      - heading "7. Time-dependent DFT" [level=2] [ref=e1826]
+      - paragraph [ref=e1827]: The TDDFT machinery that extends ground-state KS DFT to excited states and to the linear-response regime.
+      - heading "7.1 Runge & Gross (1984) — The RG theorem" [level=3] [ref=e1828]
+      - paragraph [ref=e1829]:
+        - strong [ref=e1830]: Runge, E.; Gross, E. K. U.
+        - text: “Density-Functional Theory for Time-Dependent Systems.”
+        - emphasis [ref=e1831]: Physical Review Letters
+        - strong [ref=e1832]: "1984"
+        - text: ","
+        - emphasis [ref=e1833]: "52"
+        - text: "(12), 997–1000. DOI:"
+        - link "10.1103/PhysRevLett.52.997" [ref=e1834] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.52.997
+        - text: ". URL:"
+        - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.52.997" [ref=e1835] [cursor=pointer]:
+          - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.52.997
+        - text: .
+      - paragraph [ref=e1836]:
+        - text: "Cited in:"
+        - link "chapter 12" [ref=e1837] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-12/
+        - text: (planned) and
+        - link "chapter 04" [ref=e1838] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.10.3 as the source of the time-dependent Hohenberg–Kohn analogue.
+      - paragraph [ref=e1839]:
+        - text: "The Runge–Gross theorem is the time-dependent analogue of the Hohenberg–Kohn theorem: for a many-electron system evolving under a time-dependent external potential"
+        - img [ref=e1841]
+        - text: that is
+        - emphasis [ref=e1862]: analytic
+        - text: in time (admits a Taylor expansion at
+        - img [ref=e1864]
+        - text: ), the time-dependent density
+        - img [ref=e1873]
+        - text: determines the potential uniquely (up to a purely time-dependent function), and therefore determines the time-dependent wavefunction. The proof uses the fact that the
+        - emphasis [ref=e1889]: current density
+        - img [ref=e1891]
+        - text: is uniquely determined by
+        - img [ref=e1908]
+        - text: via the continuity equation, and that the
+        - emphasis [ref=e1924]: action
+        - text: functional
+        - img [ref=e1926]
+        - text: "of the system has a unique stationary point. The RG theorem is the foundation of TDDFT: every observable that depends on the time-evolving state is, in principle, a functional of"
+        - img [ref=e1938]
+        - text: .
+      - heading "7.2 Casida (1995) — Linear response formulation" [level=3] [ref=e1954]
+      - paragraph [ref=e1955]:
+        - strong [ref=e1956]: Casida, M. E.
+        - text: “Time-dependent density functional response theory for molecules.” In
+        - emphasis [ref=e1957]: Recent Advances in Density Functional Methods
+        - text: ", Part I;"
+        - strong [ref=e1958]: Chong, D. P., Ed.
+        - text: "; World Scientific: Singapore,"
+        - strong [ref=e1959]: "1995"
+        - text: "; pp 155–192. ISBN: 978-981-02-2442-1. URL:"
+        - link "https://www.worldscientific.com/worldscibooks/10.1142/2945" [ref=e1960] [cursor=pointer]:
+          - /url: https://www.worldscientific.com/worldscibooks/10.1142/2945
+        - text: .
+      - paragraph [ref=e1961]:
+        - text: "Cited in:"
+        - link "chapter 12" [ref=e1962] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-12/
+        - text: (planned) and indirectly through the Casida equations in
+        - link "chapter 04" [ref=e1963] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.10.3. Casida’s formulation is the standard linear-response TDDFT used in every quantum-chemistry code. The frequency-dependent polarisability
+        - img [ref=e1965]
+        - text: "is written as the solution of a non-Hermitian eigenvalue problem in the space of particle-hole excitations:"
+        - img [ref=e1977]
+        - text: ", where the matrix"
+        - img [ref=e2004]
+        - text: depends on the KS orbitals, the KS eigenvalues, and the XC kernel
+        - img [ref=e2010]
+        - text: . The eigenvalues
+        - img [ref=e2076]
+        - text: are the
+        - emphasis [ref=e2084]: excitation energies
+        - text: of the system; the eigenvectors
+        - img [ref=e2086]
+        - text: give the oscillator strengths. Casida’s formulation is the basis of every production TDDFT absorption spectrum and is what code names like “TDA” (Tamm–Dancoff approximation) refer to when approximating the full Casida matrix by its positive-energy block.
+      - separator [ref=e2095]
+      - heading "8. Forces and geometry" [level=2] [ref=e2096]
+      - paragraph [ref=e2097]: The theorems and algorithms that turn a converged SCF into a force on the nuclei, the input to every geometry optimisation and molecular-dynamics run.
+      - heading "8.1 Hellmann (1937) — The Hellmann–Feynman theorem" [level=3] [ref=e2098]
+      - paragraph [ref=e2099]:
+        - strong [ref=e2100]: Hellmann, H.
+        - emphasis [ref=e2101]: Einführung in die Quantenchemie
+        - text: ;
+        - strong [ref=e2102]: Franz Deuticke
+        - text: ": Leipzig,"
+        - strong [ref=e2103]: "1937"
+        - text: ; p 285. (No ISBN — pre-ISBN era.)
+      - paragraph [ref=e2104]:
+        - text: "Cited in:"
+        - link "chapter 04" [ref=e2105] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.7.1 as the source of the force-formula
+        - img [ref=e2107]
+        - text: .
+      - paragraph [ref=e2152]:
+        - text: The Hellmann–Feynman theorem (also attributed to Feynman 1939, who re-derived it independently) states that the derivative of the energy of an eigenstate with respect to any parameter
+        - img [ref=e2154]
+        - text: "in the Hamiltonian is equal to the expectation value of the derivative of the Hamiltonian, with the eigenstate held fixed. The proof is the two-line argument that the wavefunction-derivative terms cancel by normalisation. The theorem is the foundation of every analytic force evaluation: the force on a nucleus in a molecule is the expectation value of the Coulomb force between the nucleus and the electron density, evaluated at fixed geometry. In a"
+        - emphasis [ref=e2159]: complete
+        - text: basis, this is the entire force; in a finite basis, the Pulay correction (next entry) is required.
+      - heading "8.2 Feynman (1939) — The Feynman theorem" [level=3] [ref=e2160]
+      - paragraph [ref=e2161]:
+        - strong [ref=e2162]: Feynman, R. P.
+        - text: “Forces in Molecules.”
+        - emphasis [ref=e2163]: Physical Review
+        - strong [ref=e2164]: "1939"
+        - text: ","
+        - emphasis [ref=e2165]: "56"
+        - text: "(4), 340–343. DOI:"
+        - link "10.1103/PhysRev.56.340" [ref=e2166] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRev.56.340
+        - text: ". URL:"
+        - link "https://journals.aps.org/pr/abstract/10.1103/PhysRev.56.340" [ref=e2167] [cursor=pointer]:
+          - /url: https://journals.aps.org/pr/abstract/10.1103/PhysRev.56.340
+        - text: .
+      - paragraph [ref=e2168]:
+        - text: "Cited in:"
+        - link "chapter 04" [ref=e2169] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.7 as the second independent derivation of the Hellmann–Feynman theorem; also the source of the modern “force-on-a-nucleus = electron-density attraction + nuclear-nuclear repulsion” formula.
+      - paragraph [ref=e2170]:
+        - text: "Feynman’s 1939 paper re-derives the Hellmann–Feynman theorem and applies it to the molecular problem: the force on a nucleus in a clamped-nuclei calculation is"
+        - emphasis [ref=e2171]: exactly
+        - text: the classical Coulomb force on a point charge embedded in the electron density. The paper also introduces the concept of the “force” as a derivative of the energy with respect to a parameter, separate from the concept of momentum, and uses the example of a diatomic molecule to demonstrate that the nuclear motion is adiabatic to leading order. Every modern force theorem in quantum chemistry traces back to this paper.
+      - heading "8.3 Pulay (1969) — Forces in a Gaussian basis" [level=3] [ref=e2172]
+      - paragraph [ref=e2173]:
+        - strong [ref=e2174]: Pulay, P.
+        - text: “Ab initio calculation of the force constant in molecules.”
+        - emphasis [ref=e2175]: Molecular Physics
+        - strong [ref=e2176]: "1969"
+        - text: ","
+        - emphasis [ref=e2177]: "17"
+        - text: "(2), 197–204. DOI:"
+        - link "10.1080/00268976900101341" [ref=e2178] [cursor=pointer]:
+          - /url: https://doi.org/10.1080/00268976900101341
+        - text: ". URL:"
+        - link "https://doi.org/10.1080/00268976900101341" [ref=e2179] [cursor=pointer]:
+          - /url: https://doi.org/10.1080/00268976900101341
+        - text: .
+      - paragraph [ref=e2180]:
+        - text: "Cited in:"
+        - link "chapter 04" [ref=e2181] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.7.3 (“The Pulay correction”) as the source of the basis-set correction to the Hellmann–Feynman force.
+      - paragraph [ref=e2182]:
+        - text: The Pulay force is the correction to the Hellmann–Feynman formula that arises in a
+        - emphasis [ref=e2183]: finite, atom-centred
+        - text: basis. The basis functions
+        - img [ref=e2185]
+        - text: depend on the nuclear coordinates through their centres
+        - img [ref=e2206]
+        - text: ", so"
+        - img [ref=e2231]
+        - text: . Pulay showed in 1969 that the resulting correction to the Hellmann–Feynman force — the
+        - strong [ref=e2256]: Pulay force
+        - text: — is non-vanishing and is given by
+        - img [ref=e2258]
+        - text: . The term vanishes in a complete basis (and trivially in a plane-wave basis, where the basis is independent of
+        - img [ref=e2370]
+        - text: ), but is essential in every Gaussian, numerical-atomic-orbital, and finite-element code. The 1969 paper is the foundation of analytic-gradient Hartree–Fock and DFT.
+      - heading "8.4 Pulay (1980) — Improved force formula and DIIS" [level=3] [ref=e2376]
+      - paragraph [ref=e2377]:
+        - strong [ref=e2378]: Pulay, P.
+        - text: “Convergence acceleration of iterative sequences. The case of SCF iteration.”
+        - emphasis [ref=e2379]: Chemical Physics Letters
+        - strong [ref=e2380]: "1980"
+        - text: ","
+        - emphasis [ref=e2381]: "73"
+        - text: "(2), 393–398. DOI:"
+        - link "10.1016/0009-2614(80)80396-4" [ref=e2382] [cursor=pointer]:
+          - /url: https://doi.org/10.1016/0009-2614(80
+        - text: "80396-4). URL:"
+        - link "https://doi.org/10.1016/0009-2614(80)80396-4" [ref=e2383] [cursor=pointer]:
+          - /url: https://doi.org/10.1016/0009-2614(80)80396-4
+        - text: .
+      - paragraph [ref=e2384]:
+        - text: "Cited in:"
+        - link "chapter 03" [ref=e2385] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: §3.8.4 (“DIIS — Pulay’s accelerator”) as the source of the Direct Inversion in the Iterative Subspace (DIIS) convergence accelerator.
+      - paragraph [ref=e2386]:
+        - text: "The DIIS paper is the most-cited quantum-chemistry paper of the 1980s. Pulay showed that the SCF fixed-point iteration could be accelerated by extrapolating from the history of recent Fock (or density) matrices: the optimal linear combination of the last"
+        - img [ref=e2388]
+        - text: iterates — chosen to minimise the squared norm of the extrapolated residual, subject to the sum-to-one constraint — produces a quasi-Newton step on the space of Fock matrices. DIIS converges in a handful of iterations where plain density mixing oscillates or diverges, and is the default convergence accelerator of every production quantum-chemistry code (Gaussian, PSI4, PySCF, ORCA, NWChem, …) and most plane-wave codes (VASP, Quantum ESPRESSO). The 1980 paper is also the source of the “commutator error” metric
+        - img [ref=e2394]
+        - text: used as the DIIS residual in most implementations.
+      - separator [ref=e2414]
+      - heading "9. Phonons" [level=2] [ref=e2415]
+      - paragraph [ref=e2416]: The two references that bridge the static DFT energy to the dynamical properties of crystals — phonons, dielectric response, electron–phonon coupling.
+      - heading "9.1 Born & Huang (1954) — Dynamical theory of crystal lattices" [level=3] [ref=e2417]
+      - paragraph [ref=e2418]:
+        - strong [ref=e2419]: Born, M.; Huang, K.
+        - emphasis [ref=e2420]: Dynamical Theory of Crystal Lattices
+        - text: ;
+        - strong [ref=e2421]: Oxford University Press (Clarendon Press)
+        - text: ": Oxford,"
+        - strong [ref=e2422]: "1954"
+        - text: "; xvi + 420 pp. (No ISBN — pre-ISBN era. Reprinted 1988.) URL:"
+        - link "https://global.oup.com/academic/product/dynamical-theory-of-crystal-lattices-9780198512420" [ref=e2423] [cursor=pointer]:
+          - /url: https://global.oup.com/academic/product/dynamical-theory-of-crystal-lattices-9780198512420
+        - text: .
+      - paragraph [ref=e2424]:
+        - text: "Cited in:"
+        - link "chapter 10" [ref=e2425] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-10/
+        - text: (planned) as the source of the harmonic approximation, the dynamical matrix, and the formalism of lattice vibrations in insulators.
+      - paragraph [ref=e2426]:
+        - text: Born and Huang’s
+        - emphasis [ref=e2427]: Dynamical Theory of Crystal Lattices
+        - text: is the standard reference for the theory of phonons in insulating crystals. The book covers the harmonic approximation, the dynamical matrix, the relation between the long-wavelength acoustic modes and the elastic constants, the macroscopic electric field and the LO–TO splitting, the Lyddane–Sachs–Teller relation, the theory of the dielectric function in the infrared, and the extension to anharmonic effects. Every later phonon reference (Maradudin, Ashcroft & Mermin, Yu & Cardona) traces its formalism to Born & Huang. The book also introduces the
+        - strong [ref=e2428]: adiabatic (Born–Oppenheimer) approximation
+        - text: "in the modern form that the DFT notes use in chapter 01. ### 9.2 Giannozzi, de Gironcoli, Pavone & Baroni (1991) — DFPT, Quantum ESPRESSO"
+      - paragraph [ref=e2429]:
+        - strong [ref=e2430]: Giannozzi, P.; de Gironcoli, S.; Pavone, P.; Baroni, S.
+        - text: “Ab initio calculation of phonon dispersions in semiconductors.”
+        - emphasis [ref=e2431]: Physical Review B
+        - strong [ref=e2432]: "1991"
+        - text: ","
+        - emphasis [ref=e2433]: "43"
+        - text: "(9), 7231–7242. DOI:"
+        - link "10.1103/PhysRevB.43.7231" [ref=e2434] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.43.7231
+        - text: ". URL:"
+        - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.43.7231" [ref=e2435] [cursor=pointer]:
+          - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.43.7231
+        - text: .
+      - paragraph [ref=e2436]:
+        - text: "Cited in:"
+        - link "chapter 10" [ref=e2437] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-10/
+        - text: (planned) as the source of density-functional perturbation theory (DFPT) for lattice dynamics.
+      - paragraph [ref=e2438]:
+        - text: Giannozzi, de Gironcoli, Pavone, and Baroni introduced density-functional perturbation theory (DFPT) as a
+        - emphasis [ref=e2439]: linear-response
+        - text: method for the lattice dynamics of periodic solids. Rather than computing the phonon dispersion by finite differences of the total energy (the “frozen-phonon” method, which requires a supercell of size proportional to the phonon wavelength), DFPT computes the
+        - emphasis [ref=e2440]: derivative
+        - text: of the KS orbitals with respect to a periodic perturbation
+        - img [ref=e2442]
+        - text: directly using
+        - strong [ref=e2468]: Sternheimer’s equation
+        - img [ref=e2470]
+        - text: . The result is a phonon dispersion that is exact at linear order and costs
+        - emphasis [ref=e2538]: only
+        - text: a small multiple of a single ground-state SCF. The 1991 paper is the foundation of the open-source
+        - strong [ref=e2539]: Quantum ESPRESSO
+        - text: distribution (also by Giannozzi, de Gironcoli, Pavone, and Baroni) and of every modern plane-wave phonon calculation. DFPT also gives the dielectric constant, Born effective charges, the non-linear optical susceptibility, and the electron–phonon coupling matrix elements — all from the same linear-response machinery.
+      - separator [ref=e2540]
+      - heading "11. Modern DFT+DMFT (the LDA+DMFT formalism and solvers)" [level=2] [ref=e2541]
+      - paragraph [ref=e2542]:
+        - text: The papers that built the
+        - emphasis [ref=e2543]: machinery
+        - text: used in production LDA+DMFT codes. Cited in
+        - link "chapter 13" [ref=e2544] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-13/
+        - text: §13.10.
+      - heading "11.1 Kotliar, Savrasov, Haule, Oudovenko, Parcollet & Marianetti (2006) — the standard review" [level=3] [ref=e2545]
+      - paragraph [ref=e2546]:
+        - strong [ref=e2547]: Kotliar, G.; Savrasov, S. Y.; Haule, K.; Oudovenko, V. S.; Parcollet, O.; Marianetti, C.
+        - emphasis [ref=e2548]: "Electronic structure calculations with dynamical mean-field theory: A review of the LDA+DMFT approach"
+        - text: .
+        - strong [ref=e2549]: Reviews of Modern Physics
+        - strong [ref=e2550]: "2006"
+        - text: ","
+        - emphasis [ref=e2551]: "78"
+        - text: "(3), 865–951. DOI:"
+        - link "10.1103/RevModPhys.78.865" [ref=e2552] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/RevModPhys.78.865
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/RevModPhys.78.865" [ref=e2553] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/RevModPhys.78.865
+        - text: .
+      - paragraph [ref=e2554]:
+        - text: The 87-page review that defined the modern LDA+DMFT formalism. Covers the Wannier projection, the Hubbard Hamiltonian, the double-counting correction, the Hirsch–Fye solver, and the applications to
+        - img [ref=e2556]
+        - text: "-Mn,"
+        - img [ref=e2562]
+        - text: "-Mn,"
+        - img [ref=e2568]
+        - text: "-Pu, and the 3"
+        - img [ref=e2574]
+        - text: ferromagnets. Equation numbers in chapter 13 §13.10.1 refer to this review.
+      - heading "11.2 Haule (2007) — the CT-HYB solver" [level=3] [ref=e2579]
+      - paragraph [ref=e2580]:
+        - strong [ref=e2581]: Haule, K.
+        - emphasis [ref=e2582]: Quantum Monte Carlo Impurity Solver for Cluster DMFT and Electronic Structure Calculations in Adjustable Base
+        - text: .
+        - strong [ref=e2583]: Physical Review B
+        - strong [ref=e2584]: "2007"
+        - text: ","
+        - emphasis [ref=e2585]: "75"
+        - text: "(15), 155113. DOI:"
+        - link "10.1103/PhysRevB.75.155113" [ref=e2586] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.75.155113
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevB.75.155113" [ref=e2587] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevB.75.155113
+        - text: .
+      - paragraph [ref=e2588]:
+        - text: The continuous-time quantum Monte Carlo impurity solver that is the workhorse of modern LDA+DMFT. Replaces the older Hirsch–Fye auxiliary-field QMC and gives a continuous-time, no-
+        - img [ref=e2590]
+        - text: algorithm. The partition function is expanded in powers of the bath hybridisation
+        - img [ref=e2598]
+        - text: .
+      - heading "11.3 Werner, Comanac, de’ Medici, Troyer & Millis (2006) — the original CT-HYB" [level=3] [ref=e2603]
+      - paragraph [ref=e2604]:
+        - strong [ref=e2605]: Werner, P.; Comanac, A.; de’ Medici, L.; Troyer, M.; Millis, A. J.
+        - emphasis [ref=e2606]: Continuous-Time Solver for Quantum Impurity Models
+        - text: .
+        - strong [ref=e2607]: Physical Review Letters
+        - strong [ref=e2608]: "2006"
+        - text: ","
+        - emphasis [ref=e2609]: "97"
+        - text: "(7), 076405. DOI:"
+        - link "10.1103/PhysRevLett.97.076405" [ref=e2610] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.97.076405
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevLett.97.076405" [ref=e2611] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevLett.97.076405
+        - text: .
+      - paragraph [ref=e2612]: The first CT-HYB paper, published simultaneously with Haule
+      - list [ref=e2613]:
+        - listitem [ref=e2614]: Slightly less general than the Haule framework but introduces the key idea of the stochastic series expansion in the bath hybridisation.
+      - heading "11.4 Haule, Yee & Kim (2010) — the full-potential LDA+DMFT and the force formula" [level=3] [ref=e2615]
+      - paragraph [ref=e2616]:
+        - strong [ref=e2617]: Haule, K.; Yee, C.-H.; Kim, K.
+        - emphasis [ref=e2618]:
+          - text: "Dynamical mean-field theory within the full-potential methods: Electronic structure of CeIrIn"
+          - img [ref=e2620]
+          - text: ", CeCoIn"
+          - img [ref=e2627]
+          - text: ", and CeRhIn"
+          - img [ref=e2634]
+        - text: .
+        - strong [ref=e2640]: Physical Review B
+        - strong [ref=e2641]: "2010"
+        - text: ","
+        - emphasis [ref=e2642]: "81"
+        - text: "(19), 195107. DOI:"
+        - link "10.1103/PhysRevB.81.195107" [ref=e2643] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.81.195107
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevB.81.195107" [ref=e2644] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevB.81.195107
+        - text: .
+      - paragraph [ref=e2645]: The first full-potential LDA+DMFT implementation (no approximations to the potential shape). Derives the DFT+DMFT force formula (Eq. 12 of this paper, cited in chapter 13 §13.10.1) which is required for geometry optimisation and molecular dynamics.
+      - heading "11.5 Haule & Birol (2015) — the stationary free-energy functional" [level=3] [ref=e2646]
+      - paragraph [ref=e2647]:
+        - strong [ref=e2648]: Haule, K.; Birol, T.
+        - emphasis [ref=e2649]: Free Energy from Stationary Implementation of the DFT+DMFT
+        - text: .
+        - strong [ref=e2650]: Physical Review Letters
+        - strong [ref=e2651]: "2015"
+        - text: ","
+        - emphasis [ref=e2652]: "115"
+        - text: "(25), 256402. DOI:"
+        - link "10.1103/PhysRevLett.115.256402" [ref=e2653] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.115.256402
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevLett.115.256402" [ref=e2654] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevLett.115.256402
+        - text: .
+      - paragraph [ref=e2655]:
+        - text: "The stationary free-energy functional (Eq. 1 of this paper) that makes the DFT+DMFT forces well-defined. Solves a long-standing problem in the formalism: the “naïve” energy"
+        - img [ref=e2657]
+        - text: is not stationary with respect to the self-energy, so the Hellmann–Feynman theorem does not apply.
+      - heading "11.6 Rubtsov, Savkin & Lichtenstein (2005) — the weak-coupling CT-INT solver" [level=3] [ref=e2672]
+      - paragraph [ref=e2673]:
+        - strong [ref=e2674]: Rubtsov, A. N.; Savkin, V. V.; Lichtenstein, A. I.
+        - emphasis [ref=e2675]: Continuous-time quantum Monte Carlo method for fermions
+        - text: .
+        - strong [ref=e2676]: Physical Review B
+        - strong [ref=e2677]: "2005"
+        - text: ","
+        - emphasis [ref=e2678]: "72"
+        - text: "(3), 035122. DOI:"
+        - link "10.1103/PhysRevB.72.035122" [ref=e2679] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.72.035122
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevB.72.035122" [ref=e2680] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevB.72.035122
+        - text: .
+      - paragraph [ref=e2681]:
+        - text: "The weak-coupling CT-INT solver. Complementary to CT-HYB: works well at small"
+        - img [ref=e2683]
+        - text: and poorly at large
+        - img [ref=e2689]
+        - text: .
+      - heading "11.7 Lichtenstein & Katsnelson (1998) — the original LDA+DMFT" [level=3] [ref=e2694]
+      - paragraph [ref=e2695]:
+        - strong [ref=e2696]: Lichtenstein, A. I.; Katsnelson, M. I.
+        - emphasis [ref=e2697]: "Ab initio calculations of the electronic structure of strongly correlated systems: LDA+U+DMFT"
+        - text: .
+        - strong [ref=e2698]: Physical Review B
+        - strong [ref=e2699]: "1998"
+        - text: ","
+        - emphasis [ref=e2700]: "57"
+        - text: "(12), 6884–6895. DOI:"
+        - link "10.1103/PhysRevB.57.6884" [ref=e2701] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.57.6884
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevB.57.6884" [ref=e2702] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevB.57.6884
+        - text: .
+      - paragraph [ref=e2703]: The original “LDA+U+DMFT” paper that combined the Liechtenstein 1995 DFT+U with the Metzner–Vollhardt DMFT self-consistency. Introduces the Wannier projection and the double-counting correction.
+      - heading "11.8 Czyzyk & Sawatzky (1994) — the around-mean-field double counting" [level=3] [ref=e2704]
+      - paragraph [ref=e2705]:
+        - strong [ref=e2706]: Czyzyk, M. T.; Sawatzky, G. A.
+        - emphasis [ref=e2707]:
+          - text: "Local-density functional and on-site correlations: The electronic structure of La"
+          - img [ref=e2709]
+          - text: CuO
+          - img [ref=e2716]
+          - text: and LaCuO
+          - img [ref=e2723]
+        - text: .
+        - strong [ref=e2729]: Physical Review B
+        - strong [ref=e2730]: "1994"
+        - text: ","
+        - emphasis [ref=e2731]: "49"
+        - text: "(20), 14211–14228. DOI:"
+        - link "10.1103/PhysRevB.49.14211" [ref=e2732] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.49.14211
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevB.49.14211" [ref=e2733] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevB.49.14211
+        - text: .
+      - paragraph [ref=e2734]: The around-mean-field (AMF) double-counting formula (Eq. 17 of this paper, cited in chapter 13 §13.10.1). The alternative to the FLL double-counting, preferred for metallic systems.
+      - heading "11.9 Yin, Haule & Kotliar (2011) — Hund’s metals" [level=3] [ref=e2735]
+      - paragraph [ref=e2736]:
+        - strong [ref=e2737]: Yin, Z. P.; Haule, K.; Kotliar, G.
+        - emphasis [ref=e2738]: Kinetic frustration and the nature of the magnetic and paramagnetic states in iron pnictides and iron chalcogenides
+        - text: .
+        - strong [ref=e2739]: Nature Materials
+        - strong [ref=e2740]: "2011"
+        - text: ","
+        - emphasis [ref=e2741]: "10"
+        - text: ", 932–935. DOI:"
+        - link "10.1038/nmat3120" [ref=e2742] [cursor=pointer]:
+          - /url: https://doi.org/10.1038/nmat3120
+        - text: ". URL:"
+        - link "https://www.nature.com/articles/nmat3120" [ref=e2743] [cursor=pointer]:
+          - /url: https://www.nature.com/articles/nmat3120
+        - text: .
+      - paragraph [ref=e2744]:
+        - text: The “Hund’s metal” classification of the iron pnictides from DFT+DMFT. The correlations in these materials are driven by the Hund’s-rule coupling
+        - img [ref=e2746]
+        - text: ", not by the Hubbard"
+        - img [ref=e2755]
+        - text: .
+      - heading "11.10 Hirsch & Fye (1986) — the older auxiliary-field solver" [level=3] [ref=e2760]
+      - paragraph [ref=e2761]:
+        - strong [ref=e2762]: Hirsch, J. E.; Fye, R. M.
+        - emphasis [ref=e2763]: Monte Carlo Method for Magnetic Impurities in Metals
+        - text: .
+        - strong [ref=e2764]: Physical Review Letters
+        - strong [ref=e2765]: "1986"
+        - text: ","
+        - emphasis [ref=e2766]: "56"
+        - text: "(23), 2521–2524. DOI:"
+        - link "10.1103/PhysRevLett.56.2521" [ref=e2767] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.56.2521
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevLett.56.2521" [ref=e2768] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevLett.56.2521
+        - text: .
+      - paragraph [ref=e2769]: The Hirsch–Fye auxiliary-field QMC impurity solver. The old workhorse, now superseded by CT-HYB.
+      - heading "11.11 Marzari & Vanderbilt (1997) — maximally-localised Wannier functions" [level=3] [ref=e2770]
+      - paragraph [ref=e2771]:
+        - strong [ref=e2772]: Marzari, N.; Vanderbilt, D.
+        - emphasis [ref=e2773]: Maximally localized generalized Wannier functions for composite energy bands
+        - text: .
+        - strong [ref=e2774]: Physical Review B
+        - strong [ref=e2775]: "1997"
+        - text: ","
+        - emphasis [ref=e2776]: "56"
+        - text: "(20), 12847–12865. DOI:"
+        - link "10.1103/PhysRevB.56.12847" [ref=e2777] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevB.56.12847
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevB.56.12847" [ref=e2778] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevB.56.12847
+        - text: .
+      - paragraph [ref=e2779]: The maximally-localised Wannier function construction used in Step 2 of the LDA+DMFT loop.
+      - heading "11.12 Biermann, Aryasetiawan & Georges (2003) — the first GW+DMFT" [level=3] [ref=e2780]
+      - paragraph [ref=e2781]:
+        - strong [ref=e2782]: Biermann, S.; Aryasetiawan, F.; Georges, A.
+        - emphasis [ref=e2783]:
+          - text: First-principles calculation of the electronic structure of the strongly correlated system
+          - img [ref=e2785]
+          - text: "-MnS"
+        - text: .
+        - strong [ref=e2790]: Physical Review Letters
+        - strong [ref=e2791]: "2003"
+        - text: ","
+        - emphasis [ref=e2792]: "90"
+        - text: "(8), 086402. DOI:"
+        - link "10.1103/PhysRevLett.90.086402" [ref=e2793] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.90.086402
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevLett.90.086402" [ref=e2794] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevLett.90.086402
+        - text: .
+      - paragraph [ref=e2795]: The first GW+DMFT calculation. Captures both the non-local screening (from GW) and the local strong correlations (from DMFT).
+      - heading "11.13 Rohringer et al. (2018) — diagrammatic extensions of DMFT" [level=3] [ref=e2796]
+      - paragraph [ref=e2797]:
+        - strong [ref=e2798]: Rohringer, G.; Hafermann, H.; Toschi, A.; Katanin, A. A.; Antipov, A. E.; Buser, M. I.; Tomczak, J. M.; Thunström, P.; Held, K.; Lombardo, L.; Valli, R.; Toschi, A.; Held, K.
+        - emphasis [ref=e2799]: Diagrammatic routes to non-local correlations beyond dynamical mean field theory
+        - text: .
+        - strong [ref=e2800]: Reviews of Modern Physics
+        - strong [ref=e2801]: "2018"
+        - text: ","
+        - emphasis [ref=e2802]: "90"
+        - text: "(2), 025003. DOI:"
+        - link "10.1103/RevModPhys.90.025003" [ref=e2803] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/RevModPhys.90.025003
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/RevModPhys.90.025003" [ref=e2804] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/RevModPhys.90.025003
+        - text: .
+      - paragraph [ref=e2805]: The modern review of diagrammatic extensions of DMFT (DCA, CDMFT, dual fermion, etc.). Cited in chapter 13 §13.10.5.
+      - heading "11.14 Freericks, Turkowski & Zlatić (2006) — non-equilibrium DMFT" [level=3] [ref=e2806]
+      - paragraph [ref=e2807]:
+        - strong [ref=e2808]: Freericks, J. K.; Turkowski, V. M.; Zlatić, V.
+        - emphasis [ref=e2809]: Nonequilibrium dynamical mean-field theory
+        - text: .
+        - strong [ref=e2810]: Physical Review Letters
+        - strong [ref=e2811]: "2006"
+        - text: ","
+        - emphasis [ref=e2812]: "97"
+        - text: "(26), 266408. DOI:"
+        - link "10.1103/PhysRevLett.97.266408" [ref=e2813] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRevLett.97.266408
+        - text: ". URL:"
+        - link "https://link.aps.org/doi/10.1103/PhysRevLett.97.266408" [ref=e2814] [cursor=pointer]:
+          - /url: https://link.aps.org/doi/10.1103/PhysRevLett.97.266408
+        - text: .
+      - paragraph [ref=e2815]: The Keldysh-DMFT formalism for non-equilibrium. Cited in chapter 13 §13.10.5.
+      - heading "11.15 Held (2000) — the LDA+DMFT energy formula" [level=3] [ref=e2816]
+      - paragraph [ref=e2817]:
+        - strong [ref=e2818]: Held, K.; Nekrasov, I. A.; Keller, G.; Eyert, V.; Oudovenko, V. S.; Kunes, J.; McMahan, A. K.; Scalettar, R. T.; Albers, R. C.; Anisimov, V. I.; Lichtenstein, A. I.
+        - emphasis [ref=e2819]:
+          - text: Mott transition in paramagnetic V
+          - img [ref=e2821]
+          - text: O
+          - img [ref=e2828]
+          - text: within LDA+DMFT
+        - text: .
+        - strong [ref=e2834]: "2000"
+        - text: ", lecture notes and the standard reference for the LDA+DMFT total energy formula. URL:"
+        - link "https://arxiv.org/abs/cond-mat/0112078" [ref=e2835] [cursor=pointer]:
+          - /url: https://arxiv.org/abs/cond-mat/0112078
+        - text: .
+      - paragraph [ref=e2836]:
+        - text: The Mott transition in V
+        - img [ref=e2838]
+        - text: O
+        - img [ref=e2845]
+        - text: as the textbook example of the LDA+DMFT methodology. The 2006 RMP review by Kotliar et al. above superseded this for the formalism.
+      - separator [ref=e2851]
+      - heading "10. Standard textbooks" [level=2] [ref=e2852]
+      - paragraph [ref=e2853]:
+        - text: The five monographs that should sit on the shelf of anyone working in electronic-structure theory. They are not cited in the chapters directly — the chapters are self-contained — but they are the
+        - emphasis [ref=e2854]: next step
+        - text: after these notes for a reader who wants the full mathematical apparatus, the historical context, or the production-code perspective.
+      - heading "10.1 Parr & Yang (1989) — Density-Functional Theory of Atoms and Molecules" [level=3] [ref=e2855]
+      - paragraph [ref=e2856]:
+        - strong [ref=e2857]: Parr, R. G.; Yang, W.
+        - emphasis [ref=e2858]: Density-Functional Theory of Atoms and Molecules
+        - text: ;
+        - strong [ref=e2859]: Oxford University Press
+        - text: ": New York,"
+        - strong [ref=e2860]: "1989"
+        - text: "; ix + 333 pp. ISBN: 978-0-19-509276-9 (paperback) / 0-19-504279-4 (hardcover). URL:"
+        - link "https://global.oup.com/academic/product/density-functional-theory-of-atoms-and-molecules-9780195092769" [ref=e2861] [cursor=pointer]:
+          - /url: https://global.oup.com/academic/product/density-functional-theory-of-atoms-and-molecules-9780195092769
+        - text: .
+      - paragraph [ref=e2862]:
+        - text: A monograph written from the chemistry perspective. Covers the Hohenberg–Kohn theorem, the Kohn–Sham equations, the L(S)DA, the connection to chemical concepts (chemical potential, hardness, Fukui functions, electronegativity equalisation), and the early GGAs. The book is the
+        - emphasis [ref=e2863]: bridge
+        - text: between the physics of the KS equations and the language of conceptual DFT that chemists use. It assumes only an undergraduate background in quantum mechanics and is the most accessible entry in this section.
+      - heading "10.2 Martin (2004) — Electronic Structure" [level=3] [ref=e2864]
+      - paragraph [ref=e2865]:
+        - strong [ref=e2866]: Martin, R. M.
+        - emphasis [ref=e2867]: "Electronic Structure: Basic Theory and Practical Methods"
+        - text: ;
+        - strong [ref=e2868]: Cambridge University Press
+        - text: ": Cambridge, UK,"
+        - strong [ref=e2869]: "2004"
+        - text: "; xxi + 640 pp. ISBN: 978-0-521-78285-6 (paperback) / 0-521-78285-6 (hardcover). URL:"
+        - link "https://www.cambridge.org/9780521782856" [ref=e2870] [cursor=pointer]:
+          - /url: https://www.cambridge.org/9780521782856
+        - text: .
+      - paragraph [ref=e2871]:
+        - text: The single most comprehensive textbook on the electronic-structure problem at the graduate level. Covers tight binding, the nearly-free-electron model, density functional theory (Hohenberg–Kohn, KS, LDA, GGA, hybrids, TDDFT), pseudopotentials, the plane-wave method, the full-potential LAPW method, forces and stress, phonons (frozen phonon and DFPT), electron–phonon coupling, the GW approximation, and the Bethe–Salpeter equation. The mathematical apparatus is given in full, the connections to production codes are made explicit, and the worked examples and problem sets are uniformly excellent.
+        - strong [ref=e2872]: The book to own if you can own only one.
+      - heading "10.3 Dreizler & Gross (1990) — Density Functional Theory" [level=3] [ref=e2873]
+      - paragraph [ref=e2874]:
+        - strong [ref=e2875]: Dreizler, R. M.; Gross, E. K. U.
+        - emphasis [ref=e2876]: "Density Functional Theory: An Approach to the Quantum Many-Body Problem"
+        - text: ;
+        - strong [ref=e2877]: Springer-Verlag
+        - text: ": Berlin,"
+        - strong [ref=e2878]: "1990"
+        - text: "; xii + 302 pp. ISBN: 978-3-540-51991-7 / 3-540-51991-1. URL:"
+        - link "https://link.springer.com/book/10.1007/978-3-642-86105-5" [ref=e2879] [cursor=pointer]:
+          - /url: https://link.springer.com/book/10.1007/978-3-642-86105-5
+        - text: .
+      - paragraph [ref=e2880]: The first comprehensive DFT textbook, written from the many-body physics perspective. Covers the Hohenberg–Kohn theorem and its extensions (spin DFT, current DFT, time dependent), the Kohn–Sham equations, the L(S)DA and its limitations, the early GGAs, and the time-dependent formalism (Runge–Gross, linear response, the Casida equations). More mathematical than Parr–Yang, more physics-oriented than Martin; the standard reference on the formal side of DFT.
+      - heading "10.4 Szabo & Ostlund (1989) — Modern Quantum Chemistry" [level=3] [ref=e2881]
+      - paragraph [ref=e2882]:
+        - strong [ref=e2883]: Szabo, A.; Ostlund, N. S.
+        - emphasis [ref=e2884]: "Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory"
+        - text: ;
+        - strong [ref=e2885]: McGraw-Hill
+        - text: ": New York,"
+        - strong [ref=e2886]: "1989"
+        - text: "; xv + 466 pp. ISBN: 0-07-062739-8 (1st ed.). Revised Dover edition:"
+        - emphasis [ref=e2887]: Dover Publications
+        - text: ": Mineola, NY,"
+        - strong [ref=e2888]: "1996"
+        - text: "; 480 pp. ISBN: 978-0-486-69186-2. URL:"
+        - link "https://store.doverpublications.com/9780486691862.html" [ref=e2889] [cursor=pointer]:
+          - /url: https://store.doverpublications.com/9780486691862.html
+        - text: .
+      - paragraph [ref=e2890]:
+        - text: The standard introduction to
+        - emphasis [ref=e2891]: wavefunction-based
+        - text: quantum chemistry. Covers the postulates, the hydrogen atom, the Hartree–Fock method, the Roothaan–Hall equations, electron correlation (CI, MP, CC), and the Gaussian basis, with worked numerical examples (the H
+        - img [ref=e2893]
+        - text: STO-3G calculation that is the anchor of
+        - link "chapter 06" [ref=e2899] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.9 is table 3.5 of Szabo & Ostlund). The book assumes an undergraduate physical-chemistry background and is the
+        - emphasis [ref=e2900]: only
+        - text: quantum-chemistry text that consistently derives each equation step-by-step before quoting it. Out of print from McGraw-Hill but freely available from the Dover edition.
+      - heading "10.5 Helgaker, Jorgensen & Olsen (2000) — Molecular Electronic-Structure Theory" [level=3] [ref=e2901]
+      - paragraph [ref=e2902]:
+        - strong [ref=e2903]: Helgaker, T.; Jørgensen, P.; Olsen, J.
+        - emphasis [ref=e2904]: Molecular Electronic-Structure Theory
+        - text: ;
+        - strong [ref=e2905]: John Wiley & Sons
+        - text: ": Chichester, UK,"
+        - strong [ref=e2906]: "2000"
+        - text: "; xiv + 908 pp. ISBN: 978-0-471-96755-3 / 0-471-96755-6. URL:"
+        - link "https://www.wiley.com/en-us/Molecular+Electronic+Structure+Theory-p-9780471967553" [ref=e2907] [cursor=pointer]:
+          - /url: https://www.wiley.com/en-us/Molecular+Electronic+Structure+Theory-p-9780471967553
+        - text: .
+      - paragraph [ref=e2908]:
+        - text: The encyclopedic reference for wavefunction-based quantum chemistry. Covers the Hartree–Fock method, Møller–Plesset perturbation theory, configuration interaction, coupled-cluster theory (CCSD, CCSDT, CCSD(T)), multiconfigurational SCF (CASSCF), and the geometry optimisation and response-theory machinery, at a level of detail suitable for
+        - emphasis [ref=e2909]: implementing
+        - text: the methods from scratch. The book is the standard reference for the mathematical structure of the methods, the algorithmic details, and the benchmark calculations. Every quantum chemist who writes production code keeps a copy of Helgaker–Jørgensen–Olsen within arm’s reach.
+      - separator [ref=e2910]
+      - blockquote [ref=e2911]:
+        - paragraph [ref=e2912]:
+          - text: Back to the
+          - link "chapter index" [ref=e2913] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/
+          - text: .
+  - contentinfo [ref=e2914]:
+    - generic [ref=e2915]:
+      - generic [ref=e2916]:
+        - img [ref=e2917]
+        - generic [ref=e2921]: DFT Notes
+        - paragraph [ref=e2922]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e2923]:
+        - generic [ref=e2924]:
+          - heading "Project" [level=3] [ref=e2925]
+          - list [ref=e2926]:
+            - listitem [ref=e2927]:
+              - link "Chapters map" [ref=e2928] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e2929]:
+              - link "Python codes" [ref=e2930] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e2931]:
+              - link "Contributing" [ref=e2932] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e2933]:
+              - link "Security" [ref=e2934] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e2935]:
+              - link "Design spec" [ref=e2936] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e2937]:
+              - link "GitHub ↗" [ref=e2938] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e2939]:
+          - heading "Built with" [level=3] [ref=e2940]
+          - list [ref=e2941]:
+            - listitem [ref=e2942]:
+              - link "Jekyll" [ref=e2943] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e2944]:
+              - link "MathJax 3" [ref=e2945] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e2946]:
+              - link "Mermaid" [ref=e2947] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e2948]:
+              - link "chenglou/pretext" [ref=e2949] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e2950]:
+              - link "Google Fonts" [ref=e2951] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e2952]:
+          - heading "Legal" [level=3] [ref=e2953]
+          - list [ref=e2954]:
+            - listitem [ref=e2955]:
+              - link "MIT License" [ref=e2956] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e2957]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e2959]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

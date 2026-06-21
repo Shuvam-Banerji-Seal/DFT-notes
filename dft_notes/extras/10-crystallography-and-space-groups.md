@@ -86,7 +86,7 @@ translation tables (Pearson, HM/Schoenflies).
 | 6 | Reciprocal lattice and Brillouin zones | "What is the first BZ of an FCC crystal?" |
 | 7 | High-symmetry k-paths | "What k-path should I use for BCC iron?" |
 | 8 | Working with space groups in DFT codes | "How do I tell VASP the space group?" |
-| 9 | Pearson symbol cheat sheet | "What does the suffix of `tI' mean?" |
+| 9 | Pearson symbol cheat sheet | "What does the suffix of `tI`' mean?" |
 | 10 | Hermann–Mauguin and Schoenflies side-by-side | "What is $O_h$ in Hermann–Mauguin?" |
 
 ---
@@ -539,7 +539,7 @@ classification is tabulated in the
 2016), and the equivalent Schoenflies notation in vol. E
 (2002).  Modern web resources are the
 [Bilbao Crystallographic Server](<https://www.cryst.ehu.es/>)
-(BCS) and the `spglib' library.
+(BCS) and the `spglib`' library.
 
 ### 3.1 The Seitz notation
 
@@ -630,7 +630,7 @@ A short cut for the practitioner:
   includes the Wyckoff positions (§4), the maximal subgroups,
   and the generators.
 
-> **Tip.**  The Python library `spglib' (H. T. Stokes, D. M.
+> **Tip.**  The Python library `spglib`' (H. T. Stokes, D. M.
 > Hatch, Brigham Young University; python wrapper
 > `pyspglib`) is the standard tool for symmetry analysis.  It
 > takes a crystal structure (cell + atomic positions) and
@@ -794,7 +794,7 @@ Pearson symbol.
 > *hexagonal axes* (three times larger hexagonal cell, 1
 > lattice point per hexagonal cell).  Both descriptions refer
 > to the same lattice.  The hexagonal setting is what
-> `spglib' and most DFT codes use; the rhombohedral setting is
+> `spglib`' and most DFT codes use; the rhombohedral setting is
 > what older textbooks use.
 
 ---
@@ -838,7 +838,7 @@ The construction of the 1st BZ in 3-D is straightforward:
 5. The high-symmetry points are those vertices that are
    invariant under the largest subgroup of the point group.
 
-In practice, this algorithm is implemented in `spglib' and
+In practice, this algorithm is implemented in `spglib`' and
 `seekpath`.  For the 7 lattice types, the resulting polyhedra
 are well-known and tabulated below.
 
@@ -1071,7 +1071,7 @@ $a/c$.
 
 ### 7.6 Code output for the FCC k-path
 
-`pymatgen' (the standard Python materials science library) will
+`pymatgen`' (the standard Python materials science library) will
 print the Setyawan–Curtarolo k-path for an FCC material as:
 
 ```python
@@ -1085,9 +1085,9 @@ print(path)
 # {'Gamma': [0, 0, 0], 'X': [0.5, 0, 0.5], 'L': [0.5, 0.5, 0.5], ...}
 print(kpath.kpath["path"])
 # [['Gamma', 'X', 'W', 'K', 'Gamma', 'L', 'U', 'W', 'L', 'K']]
-``'
+```
 
-The `HighSymmKpath' class is the canonical way to get a
+The `HighSymmKpath`' class is the canonical way to get a
 Setyawan–Curtarolo k-path for any crystal structure.  The path
 returned is the modern (long) convention, and the k-point
 coordinates are *fractional* in the reciprocal basis
@@ -1099,7 +1099,7 @@ $\mathbf b_1, \mathbf b_2, \mathbf b_3$.
 
 The four most common DFT codes — VASP, Quantum ESPRESSO,
 CASTEP, and SIESTA — accept the space group in different ways.
-VASP uses the symmetry operations in the `POSCAR`/`CONTCAR'
+VASP uses the symmetry operations in the `POSCAR`/`CONTCAR`'
 itself; QE uses 'space_group' in the '&SYSTEM' namelist; CASTEP
 uses `.cell' keyword; SIESTA uses a separate Z-matrix file.
 The **CIF file** is the universal interchange format and the
@@ -1141,7 +1141,7 @@ _atom_site_fract_y
 _atom_site_fract_z
 _atom_site_occupancy
 Cu1  0.0  0.0  0.0  1.0
-``'
+```
 
 The key fields:
 
@@ -1149,9 +1149,9 @@ The key fields:
   cell parameters $(a, b, c)$ in Å and $(\alpha, \beta, \gamma)$
   in degrees.
 - `_space_group_name_H-M_alt' — the Hermann–Mauguin symbol.
-- `_space_group_IT_number' — the IUC space-group number
+- `_space_group_IT_number`' — the IUC space-group number
   (1–230).
-- `_space_group_symop_operation_xyz' — the 48 (or however
+- `_space_group_symop_operation_xyz`' — the 48 (or however
   many) symmetry operations in `(x, y, z)' shorthand.  The
   first operation is always the identity; the others are the
   coset representatives.
@@ -1166,15 +1166,15 @@ Union of Crystallography) and documented in
 
 VASP reads the structure from `POSCAR`.  Symmetry is detected
 from the atomic positions; the user does not need to specify
-the space group explicitly.  The relevant `INCAR' tags are:
+the space group explicitly.  The relevant `INCAR`' tags are:
 
 | Tag | Default | Meaning |
 |:--|:-:|:--|
-| `ISYM' | 2 | Symmetry: 0 = off, 1 = use operations, 2 = use operations + break when $E$ stops decreasing |
-| `SYMPREC' | 1e-5 | Tolerance for symmetry detection (Å) |
+| `ISYM`' | 2 | Symmetry: 0 = off, 1 = use operations, 2 = use operations + break when $E$ stops decreasing |
+| `SYMPREC`' | 1e-5 | Tolerance for symmetry detection (Å) |
 | 'LWAVE' | .FALSE. | Write 'WAVECAR' |
 | 'LCHARG' | .FALSE. | Write 'CHGCAR' |
-| `IBRION' | — | Optimisation algorithm |
+| `IBRION`' | — | Optimisation algorithm |
 
 For a non-symmorphic space group with a glide plane, VASP
 detects the glide automatically; the symmetry-derived k-point
@@ -1196,10 +1196,10 @@ QE uses the `&SYSTEM' namelist in the input file:
   ntyp = 1
   space_group = 225          ! Fm-3m
 /
-``'
+```
 
-The `ibrav' codes are QE-internal shortcuts for the 14 Bravais
-lattices.  When `space_group' is given, QE uses the symmetry
+The `ibrav`' codes are QE-internal shortcuts for the 14 Bravais
+lattices.  When `space_group`' is given, QE uses the symmetry
 operations from the *International Tables* for k-point
 reduction and Hamiltonian symmetrisation.  This is more
 reliable than letting QE *guess* the symmetry from the atomic
@@ -1220,10 +1220,10 @@ CASTEP uses a `.cell' file:
 %ENDBLOCK POSITIONS_FRAC
 SYMMETRY_GENERATE
 SNAP_TO_SYMMETRY
-``'
+```
 
-The `SYMMETRY_GENERATE' keyword asks CASTEP to find the space
-group from the structure; `SNAP_TO_SYMMETRY' rounds the atomic
+The `SYMMETRY_GENERATE`' keyword asks CASTEP to find the space
+group from the structure; `SNAP_TO_SYMMETRY`' rounds the atomic
 positions to the nearest high-symmetry site.
 
 ### 8.5 SIESTA
@@ -1240,7 +1240,7 @@ LatticeConstant  1.0  Ang
 %block AtomicCoordinatesAndAtomicSpecies
    0.0  0.0  0.0  1
 %endblock AtomicCoordinatesAndAtomicSpecies
-``'
+```
 
 SIESTA does not have explicit space-group support; symmetry is
 detected by the `SIESTA`-internal module or by an external tool
@@ -1255,13 +1255,13 @@ It hosts a dozen tools; the most useful for DFT work are:
 
 | Tool | URL | Use |
 |:--|:--|:--|
-| GENPOS | `genpos' | Generate the general-position list of a space group |
-| WYCKPOS | `wpos' | List Wyckoff positions with coordinates |
-| SUBGROUPGRAPH | `subgroupgraph' | Find maximal subgroups (Bärnighausen tree) |
-| HKLCOND | `hklcond' | Check reflection conditions for a space group |
-| IDENTIFY | `ident' | Identify a space group from a list of symmetry operations |
-| PSEUDO | `pseudo' | Bilbao-adopted pseudopotential database |
-| NCSYM | `ncsym' | Magnetic space groups (Shubnikov groups) |
+| GENPOS | `genpos`' | Generate the general-position list of a space group |
+| WYCKPOS | `wpos`' | List Wyckoff positions with coordinates |
+| SUBGROUPGRAPH | `subgroupgraph`' | Find maximal subgroups (Bärnighausen tree) |
+| HKLCOND | `hklcond`' | Check reflection conditions for a space group |
+| IDENTIFY | `ident`' | Identify a space group from a list of symmetry operations |
+| PSEUDO | `pseudo`' | Bilbao-adopted pseudopotential database |
+| NCSYM | `ncsym`' | Magnetic space groups (Shubnikov groups) |
 
 The BCS also hosts the **Bilbao Crystallographic Data** for
 each space group: the full Wyckoff-position list with site
@@ -1273,7 +1273,7 @@ subgroups, and the Brillouin-zone data.
 $\alpha$-quartz is a low-temperature polymorph of SiO₂ with
 space group $P 3_1 2 1$ (No. 152, Schoenflies $D_3^4$) and
 three formula units per unit cell.  Here is how to build it
-from a CIF file and a `pymatgen' script that emits a VASP
+from a CIF file and a `pymatgen`' script that emits a VASP
 `POSCAR`.
 
 **Step 1. The CIF file.**
@@ -1304,9 +1304,9 @@ O3   0.7328  0.1461  0.4521
 O4   0.5867  0.8539  0.2146
 O5   0.1461  0.7328  0.8813
 O6   0.8539  0.5867  0.7854
-``'
+```
 
-**Step 2. The `pymatgen' script that converts to POSCAR.**
+**Step 2. The `pymatgen`' script that converts to POSCAR.**
 
 ```python
 from pymatgen.core import Structure
@@ -1318,7 +1318,7 @@ print("Space group:", spg.get_space_group_symbol())   # -> "P 31 21"
 print("Number:     ", spg.get_space_group_number())   # -> 152
 s_sym = spg.get_symmetrized_structure()
 s_sym.to(fmt="poscar", filename="POSCAR")
-``'
+```
 
 **Step 3. The VASP input files.**
 
@@ -1332,7 +1332,7 @@ ISIF   = 3
 ISYM   = 2
 NSW    = 30
 EDIFFG = -0.02
-``'
+```
 
 ```text
 # KPOINTS (Auto mesh, 6x6x6 for a hexagonal cell)
@@ -1341,7 +1341,7 @@ Auto
 Gamma
 6 6 6
 0 0 0
-``'
+```
 
 The key `ISYM = 2' lets VASP detect the $P 3_1 2 1$ symmetry
 from the POSCAR and use it for k-point reduction and
@@ -1369,16 +1369,16 @@ literature to identify a structure type.
 
 ### 9.1 Structure
 
-A Pearson symbol has the form `XY' where:
+A Pearson symbol has the form `XY`' where:
 
-- `X' is a **lowercase** letter denoting the crystal system
+- `X`' is a **lowercase** letter denoting the crystal system
   (see §1.1).
-- `Y' is an **uppercase** letter denoting the centring
+- `Y`' is an **uppercase** letter denoting the centring
   (see §1.2).
 
 The two letters together identify the Bravais lattice.
 Combined with the number of atoms per cell, a Pearson symbol
-becomes a structure-type identifier: e.g. `cF8' is the
+becomes a structure-type identifier: e.g. `cF8`' is the
 diamond structure (FCC, 8 atoms per conventional cell).
 
 ### 9.2 The 23 Pearson symbols
@@ -1411,25 +1411,25 @@ character, the number of atoms in the conventional cell:
 | Graphite (hex.) | 4 | $hP4$ |
 
 Note that diamond, rocksalt, and zincblende all have the
-*same* extended Pearson symbol `cF8' (8 atoms per conventional
+*same* extended Pearson symbol `cF8`' (8 atoms per conventional
 FCC cell) — what distinguishes them is the space group
 ($Fd\bar 3 m$, $Fm\bar 3 m$, $F\bar 4 3m$ respectively) and
 the species on each Wyckoff position.
 
 ### 9.4 Worked example: identifying a material from its Pearson symbol
 
-> A material in the ICSD has Pearson symbol `oF8' and is
+> A material in the ICSD has Pearson symbol `oF8`' and is
 > reported to be an intercalation compound.  What crystal
 > system, Bravais lattice, and conventional cell does it have?
 
-`oF8' is the structure of $\beta$-NaFeO₂ — a layered
+`oF8`' is the structure of $\beta$-NaFeO₂ — a layered
 intercalation compound used as a positive electrode in
 Na-ion batteries.  The breakdown:
 
-- `o' = orthorhombic ($a \ne b \ne c$, $\alpha = \beta =
+- `o`' = orthorhombic ($a \ne b \ne c$, $\alpha = \beta =
   \gamma = 90°$).
-- `F' = face-centred (4 lattice points per conventional cell).
-- `8' = 8 atoms per conventional cell, so 8/4 = 2 atoms per
+- `F`' = face-centred (4 lattice points per conventional cell).
+- `8`' = 8 atoms per conventional cell, so 8/4 = 2 atoms per
   primitive cell.
 
 The full structural description is in space group
@@ -1561,7 +1561,7 @@ of the icosahedron, the buckyball C₆₀, and quasicrystals).
 
 > **Mapping rule of thumb.**  To convert Schoenflies $\to$ HM:
 > - $C_n \to n$ (with horizontal bar if there is inversion,
->   letter `m' for horizontal mirror).
+>   letter `m`' for horizontal mirror).
 > - $D_n \to n 2 2$ (in cubic) or $n m m$ (with mirrors).
 > - $T \to 23$ (cubic, chiral); $T_d \to \bar 4 3m$ (cubic, with mirrors);
 >   $O \to 432$; $O_h \to m \bar 3 m$.
@@ -1580,7 +1580,7 @@ section (or chapter):
   groups; once time-reversal symmetry is broken, the magnetic
   point group can be any of 32 + 32 + 58 = 122 *magneti`c*' point
   groups, and the magnetic space groups number 1651. The BCS
-  has a separate `NCSYM' tool for these.
+  has a separate `NCSYM`' tool for these.
 - **Incommensurate structures.**  Modulated structures and
   quasicrystals have no 3-D Bravais lattice; the symmetry is
   described in $(3 + d)$-D superspace.
@@ -1640,14 +1640,14 @@ need.  Everything else is on the BCS.
 - The
   [Bilbao Crystallographic Server](<https://www.cryst.ehu.es/>),
   M. I. Aroyo et al.  The de-facto web reference.
-- The `spglib' library, H. T. Stokes and D. M. Hatch
+- The `spglib`' library, H. T. Stokes and D. M. Hatch
   (Brigham Young University).  Python wrapper `pyspglib`.
   The standard tool for symmetry analysis from a CIF or
   POSCAR.
-- The `pymatgen' library, S. P. Ong et al. (Materials
+- The `pymatgen`' library, S. P. Ong et al. (Materials
   Project).  The standard Python materials-science library;
   uses Setyawan–Curtarolo k-paths as defaults.
-- The `ase' library (Atomic Simulation Environment), A. H.
+- The `ase`' library (Atomic Simulation Environment), A. H.
   Larsen et al.  An alternative to `pymatgen`; similar
   capabilities for reading CIF and computing k-paths.
 - D. Shechtman, I. Blech, D. Gratias, and J. W. Cahn,

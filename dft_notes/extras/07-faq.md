@@ -778,7 +778,7 @@ fixes:
 |:--------|:-------------|:----|
 | Energy oscillates | Charge sloshing | Add more density mixing; switch to DIIS or Broyden |
 | Energy diverges | Too-aggressive mixing | Reduce mixing parameter (0.1–0.3) |
-| Stuck above the converged energy | Bad initial guess | Smaller basis first, then restart; try `lumos' initial guess |
+| Stuck above the converged energy | Bad initial guess | Smaller basis first, then restart; try `lumos`' initial guess |
 | Converges to different energies for different starts | Multiple SCF solutions (rare) | Different starting density; increase mixing |
 | Converges, but forces are huge | Spin / occupation problem | Try spin-polarised; check occupations; try SMEARING |
 
@@ -997,7 +997,7 @@ A few common ones and what they usually mean:
 | 'cannot orthogonalise' (CP2K) | Linear-dependency collapse in a Gaussian basis (very diffuse functions).  Tighten the basis, or use 'EPS_DEFAULT`. |
 | 'SCF run did not converge' (ORCA) | As in C.9. Try 'SlowConv', 'DIIS', or change 'MAXITER`. |
 | `k-point fold > max' (Quantum ESPRESSO) | Lattice vectors are too small; the BZ is over-folded.  Check the structure. |
-| 'poisson solver failed' (SIESTA, GPAW) | Bad initial guess; try 'DM.Init.State random' or `density_init' from a previous run. |
+| 'poisson solver failed' (SIESTA, GPAW) | Bad initial guess; try 'DM.Init.State random' or `density_init`' from a previous run. |
 
 The pattern: read the *last* error, not the first;
 identify the *subsystem* (SCF, optimiser, diagonaliser);

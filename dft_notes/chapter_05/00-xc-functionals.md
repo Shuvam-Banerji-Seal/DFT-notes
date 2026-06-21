@@ -1160,7 +1160,7 @@ def main() -> None:
     print(f"    eps_x         = {dirac_exchange(np.array([2.0]))[0]:+.6f} E_h")
     print(f"    eps_c (PZ81)  = {pz81_correlation_unpolarized(np.array([2.0]))[0]:+.6f} E_h")
     print(f"    eps_xc        = {(dirac_exchange(np.array([2.0])) + pz81_correlation_unpolarized(np.array([2.0])))[0]:+.6f} E_h")
-``'
+```
 
 The script also computes the XC energy of the UEG for a few
 model densities: at $r_s = 2$ (close to the electron density of
@@ -1228,7 +1228,7 @@ graph TD
   R4 -->|"+ range-separation"| R5
   R5 -->|"+ MP2-like correlation"| R6
   R6 -->|"+ ring diagrams (RPA)"| R7
-``'
+```
 
 The diagram also serves as a *roadma`p*' for the rest of the
 chapter: section 5.2.1–5.2.2 covers Rung 1 (LDA), section
@@ -2340,7 +2340,7 @@ the simplified form in the 1980 paper itself (without the
 $\alpha_1 x^2$ correction term in
 \eqref{eq:ch-05-lit-vwn-pade}). Most codes default to
 "VWN3" (= "VWN"), which is what the user requests with
-the keyword `VWN' in Gaussian, ORCA, Psi4, etc. The
+the keyword `VWN`' in Gaussian, ORCA, Psi4, etc. The
 "VWN5" variant is what one finds in the original Vosko–Wilk–
 Nusair (1980) paper's erratum and is used in some plane-wave
 codes for reasons of historical continuity.

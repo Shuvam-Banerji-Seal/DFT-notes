@@ -1,0 +1,319 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]: This XML file does not appear to have any style information associated with it. The document tree is shown below.
+  - generic [ref=e4]:
+    - generic [ref=e7]:
+      - text: <urlset
+      - generic [ref=e8]: xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      - generic [ref=e9]: xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      - generic [ref=e10]: xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+      - text: ">"
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - generic [ref=e15]: <url>
+        - generic [ref=e17]:
+          - generic [ref=e18]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-11/
+          - generic [ref=e19]: </loc>
+        - generic [ref=e21]: </url>
+      - generic [ref=e22]:
+        - generic [ref=e25]: <url>
+        - generic [ref=e27]:
+          - generic [ref=e28]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-06/
+          - generic [ref=e29]: </loc>
+        - generic [ref=e31]: </url>
+      - generic [ref=e32]:
+        - generic [ref=e35]: <url>
+        - generic [ref=e37]:
+          - generic [ref=e38]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-13/
+          - generic [ref=e39]: </loc>
+        - generic [ref=e41]: </url>
+      - generic [ref=e42]:
+        - generic [ref=e45]: <url>
+        - generic [ref=e47]:
+          - generic [ref=e48]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-09/
+          - generic [ref=e49]: </loc>
+        - generic [ref=e51]: </url>
+      - generic [ref=e52]:
+        - generic [ref=e55]: <url>
+        - generic [ref=e57]:
+          - generic [ref=e58]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-03/
+          - generic [ref=e59]: </loc>
+        - generic [ref=e61]: </url>
+      - generic [ref=e62]:
+        - generic [ref=e65]: <url>
+        - generic [ref=e67]:
+          - generic [ref=e68]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-04/
+          - generic [ref=e69]: </loc>
+        - generic [ref=e71]: </url>
+      - generic [ref=e72]:
+        - generic [ref=e75]: <url>
+        - generic [ref=e77]:
+          - generic [ref=e78]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-17/
+          - generic [ref=e79]: </loc>
+        - generic [ref=e81]: </url>
+      - generic [ref=e82]:
+        - generic [ref=e85]: <url>
+        - generic [ref=e87]:
+          - generic [ref=e88]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-02/
+          - generic [ref=e89]: </loc>
+        - generic [ref=e91]: </url>
+      - generic [ref=e92]:
+        - generic [ref=e95]: <url>
+        - generic [ref=e97]:
+          - generic [ref=e98]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-10/
+          - generic [ref=e99]: </loc>
+        - generic [ref=e101]: </url>
+      - generic [ref=e102]:
+        - generic [ref=e105]: <url>
+        - generic [ref=e107]:
+          - generic [ref=e108]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-08/
+          - generic [ref=e109]: </loc>
+        - generic [ref=e111]: </url>
+      - generic [ref=e112]:
+        - generic [ref=e115]: <url>
+        - generic [ref=e117]:
+          - generic [ref=e118]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-14/
+          - generic [ref=e119]: </loc>
+        - generic [ref=e121]: </url>
+      - generic [ref=e122]:
+        - generic [ref=e125]: <url>
+        - generic [ref=e127]:
+          - generic [ref=e128]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-15/
+          - generic [ref=e129]: </loc>
+        - generic [ref=e131]: </url>
+      - generic [ref=e132]:
+        - generic [ref=e135]: <url>
+        - generic [ref=e137]:
+          - generic [ref=e138]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-01/
+          - generic [ref=e139]: </loc>
+        - generic [ref=e141]: </url>
+      - generic [ref=e142]:
+        - generic [ref=e145]: <url>
+        - generic [ref=e147]:
+          - generic [ref=e148]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-07/
+          - generic [ref=e149]: </loc>
+        - generic [ref=e151]: </url>
+      - generic [ref=e152]:
+        - generic [ref=e155]: <url>
+        - generic [ref=e157]:
+          - generic [ref=e158]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-12/
+          - generic [ref=e159]: </loc>
+        - generic [ref=e161]: </url>
+      - generic [ref=e162]:
+        - generic [ref=e165]: <url>
+        - generic [ref=e167]:
+          - generic [ref=e168]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-16/
+          - generic [ref=e169]: </loc>
+        - generic [ref=e171]: </url>
+      - generic [ref=e172]:
+        - generic [ref=e175]: <url>
+        - generic [ref=e177]:
+          - generic [ref=e178]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-00/
+          - generic [ref=e179]: </loc>
+        - generic [ref=e181]: </url>
+      - generic [ref=e182]:
+        - generic [ref=e185]: <url>
+        - generic [ref=e187]:
+          - generic [ref=e188]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapter-05/
+          - generic [ref=e189]: </loc>
+        - generic [ref=e191]: </url>
+      - generic [ref=e192]:
+        - generic [ref=e195]: <url>
+        - generic [ref=e197]:
+          - generic [ref=e198]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/notation-glossary/
+          - generic [ref=e199]: </loc>
+        - generic [ref=e201]: </url>
+      - generic [ref=e202]:
+        - generic [ref=e205]: <url>
+        - generic [ref=e207]:
+          - generic [ref=e208]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/math-cheatsheet/
+          - generic [ref=e209]: </loc>
+        - generic [ref=e211]: </url>
+      - generic [ref=e212]:
+        - generic [ref=e215]: <url>
+        - generic [ref=e217]:
+          - generic [ref=e218]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/bibliography/
+          - generic [ref=e219]: </loc>
+        - generic [ref=e221]: </url>
+      - generic [ref=e222]:
+        - generic [ref=e225]: <url>
+        - generic [ref=e227]:
+          - generic [ref=e228]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/software-cheatsheet/
+          - generic [ref=e229]: </loc>
+        - generic [ref=e231]: </url>
+      - generic [ref=e232]:
+        - generic [ref=e235]: <url>
+        - generic [ref=e237]:
+          - generic [ref=e238]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/worked-examples/
+          - generic [ref=e239]: </loc>
+        - generic [ref=e241]: </url>
+      - generic [ref=e242]:
+        - generic [ref=e245]: <url>
+        - generic [ref=e247]:
+          - generic [ref=e248]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/problems/
+          - generic [ref=e249]: </loc>
+        - generic [ref=e251]: </url>
+      - generic [ref=e252]:
+        - generic [ref=e255]: <url>
+        - generic [ref=e257]:
+          - generic [ref=e258]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/faq/
+          - generic [ref=e259]: </loc>
+        - generic [ref=e261]: </url>
+      - generic [ref=e262]:
+        - generic [ref=e265]: <url>
+        - generic [ref=e267]:
+          - generic [ref=e268]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/numerical-methods/
+          - generic [ref=e269]: </loc>
+        - generic [ref=e271]: </url>
+      - generic [ref=e272]:
+        - generic [ref=e275]: <url>
+        - generic [ref=e277]:
+          - generic [ref=e278]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/physical-constants/
+          - generic [ref=e279]: </loc>
+        - generic [ref=e281]: </url>
+      - generic [ref=e282]:
+        - generic [ref=e285]: <url>
+        - generic [ref=e287]:
+          - generic [ref=e288]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/crystallography/
+          - generic [ref=e289]: </loc>
+        - generic [ref=e291]: </url>
+      - generic [ref=e292]:
+        - generic [ref=e295]: <url>
+        - generic [ref=e297]:
+          - generic [ref=e298]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/extras/software-tutorials/
+          - generic [ref=e299]: </loc>
+        - generic [ref=e301]: </url>
+      - generic [ref=e302]:
+        - generic [ref=e305]: <url>
+        - generic [ref=e307]:
+          - generic [ref=e308]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/agents/
+          - generic [ref=e309]: </loc>
+        - generic [ref=e311]: </url>
+      - generic [ref=e312]:
+        - generic [ref=e315]: <url>
+        - generic [ref=e317]:
+          - generic [ref=e318]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/chapters-map/
+          - generic [ref=e319]: </loc>
+        - generic [ref=e321]: </url>
+      - generic [ref=e322]:
+        - generic [ref=e325]: <url>
+        - generic [ref=e327]:
+          - generic [ref=e328]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/design/
+          - generic [ref=e329]: </loc>
+        - generic [ref=e331]: </url>
+      - generic [ref=e332]:
+        - generic [ref=e335]: <url>
+        - generic [ref=e337]:
+          - generic [ref=e338]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/python_codes/chapter-04/
+          - generic [ref=e339]: </loc>
+        - generic [ref=e341]: </url>
+      - generic [ref=e342]:
+        - generic [ref=e345]: <url>
+        - generic [ref=e347]:
+          - generic [ref=e348]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/python_codes/chapter-07/
+          - generic [ref=e349]: </loc>
+        - generic [ref=e351]: </url>
+      - generic [ref=e352]:
+        - generic [ref=e355]: <url>
+        - generic [ref=e357]:
+          - generic [ref=e358]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/python_codes/chapter-01/
+          - generic [ref=e359]: </loc>
+        - generic [ref=e361]: </url>
+      - generic [ref=e362]:
+        - generic [ref=e365]: <url>
+        - generic [ref=e367]:
+          - generic [ref=e368]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/python_codes/chapter-05/
+          - generic [ref=e369]: </loc>
+        - generic [ref=e371]: </url>
+      - generic [ref=e372]:
+        - generic [ref=e375]: <url>
+        - generic [ref=e377]:
+          - generic [ref=e378]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/python_codes/chapter-02/
+          - generic [ref=e379]: </loc>
+        - generic [ref=e381]: </url>
+      - generic [ref=e382]:
+        - generic [ref=e385]: <url>
+        - generic [ref=e387]:
+          - generic [ref=e388]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/python_codes/chapter-00/
+          - generic [ref=e389]: </loc>
+        - generic [ref=e391]: </url>
+      - generic [ref=e392]:
+        - generic [ref=e395]: <url>
+        - generic [ref=e397]:
+          - generic [ref=e398]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/python_codes/chapter-08/
+          - generic [ref=e399]: </loc>
+        - generic [ref=e401]: </url>
+      - generic [ref=e402]:
+        - generic [ref=e405]: <url>
+        - generic [ref=e407]:
+          - generic [ref=e408]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/python_codes/chapter-06/
+          - generic [ref=e409]: </loc>
+        - generic [ref=e411]: </url>
+      - generic [ref=e412]:
+        - generic [ref=e415]: <url>
+        - generic [ref=e417]:
+          - generic [ref=e418]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/python_codes/chapter-03/
+          - generic [ref=e419]: </loc>
+        - generic [ref=e421]: </url>
+      - generic [ref=e422]:
+        - generic [ref=e425]: <url>
+        - generic [ref=e427]:
+          - generic [ref=e428]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/python_codes/
+          - generic [ref=e429]: </loc>
+        - generic [ref=e431]: </url>
+      - generic [ref=e432]:
+        - generic [ref=e435]: <url>
+        - generic [ref=e437]:
+          - generic [ref=e438]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/dft-notes/
+          - generic [ref=e439]: </loc>
+        - generic [ref=e441]: </url>
+      - generic [ref=e442]:
+        - generic [ref=e445]: <url>
+        - generic [ref=e447]:
+          - generic [ref=e448]: <loc>
+          - text: https://shuvam-banerji-seal.github.io/DFT-notes/
+          - generic [ref=e449]: </loc>
+        - generic [ref=e451]: </url>
+    - generic [ref=e453]: </urlset>

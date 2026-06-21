@@ -1208,7 +1208,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-``'
+```
 
 The script returns the charge gap and the
 double occupancy of the half-filled 4-site
@@ -1256,7 +1256,7 @@ graph TD
   class GW step;
   class DMFT step;
   class EX output;
-``'
+```
 
 The Mermaid diagram shows the *self-energy
 ladder*.  Standard Kohn–Sham DFT (KS, top of the
@@ -2301,7 +2301,7 @@ a complete picture.
 - **Vertex corrections.**  GW sets $\Gamma = 1$
   in the Hedin equations; BSE uses the *full*
   $\Gamma$ at the *two-particle* level but a
-  *static*`, non-vertex-corrected* $W$.  The
+  *static*', non-vertex-corrected* $W$.  The
   missing piece is the $\partial W / \partial G$
   term ([Hedin, 1965, eq. (90), p. A810](#)) —
   essential for *satellite intensities* and
@@ -2389,7 +2389,7 @@ graph TD
   F --> G
   C --> H
   G --> I
-``'
+```
 
 The diagram is a *flow chart* of the
 $G_0 W_0 +$ BSE workflow.  The G₀W₀ branch
@@ -2766,7 +2766,7 @@ combination is the *leading* Hubbard
 correction.  The Dudarev form
 [Dudarev, Botton, Savrasov, Humphreys, and Sutton,
 1998, eq. (3), p. 1506] is what VASP calls
-`LDAU' and Quantum ESPRESSO calls
+`LDAU`' and Quantum ESPRESSO calls
 `lda_plus_u`.
 
 **The orbital-ordering test.**  The test case in
@@ -3055,7 +3055,7 @@ graph TD
   DEC -->|no| UPD
   UPD --> GLOC
   DEC -->|yes| DONE
-``'
+```
 
 **The Mott transition (Georges § IV, p. 40-50).**
 The DMFT solution of the Hubbard model on the
@@ -3711,7 +3711,7 @@ recovers the experiment):
   with the *layer-DMFT* extension (where the
   self-energy is local *within a CuO$_2$ plane*) gets
   the correct *normal-state* spectral function and the
-  *pseudogap*`. The superconducting dome is not in
+  *pseudogap*'. The superconducting dome is not in
   plain DFT+DMFT (it requires additional ingredients
   for the pairing).
 - **The iron pnictides** (the second family of high-Tc

@@ -1,0 +1,2287 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 09 — Forces & geometry optimisation" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: The energy tells you
+          - emphasis [ref=e30]: where
+          - text: the equilibrium is. The forces tell you
+          - emphasis [ref=e31]: how to walk there
+          - text: . This chapter derives the gradient of the Kohn–Sham energy with respect to the nuclear coordinates, shows the basis-set correction that every atom-centred code must add, and turns the resulting vector field into a working geometry optimiser.
+      - paragraph [ref=e32]:
+        - text: By the end of
+        - link "chapter 04" [ref=e33] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: we had a working self-consistent Kohn–Sham (KS) loop that takes a geometry — a set of nuclear positions
+        - img [ref=e35]
+        - text: — and returns a single number, the Born–Oppenheimer energy
+        - img [ref=e46]
+        - text: . The Born–Oppenheimer separation itself is laid out in
+        - link "chapter 01" [ref=e62] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: (§1.4); the operators that enter the electronic Hamiltonian (kinetic, Coulomb, position) are the alphabet of
+        - link "chapter 01" [ref=e63] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: "§1.5. This chapter is about the next quantity a practical calculation needs: the"
+        - strong [ref=e64]: gradient
+        - text: "of that number with respect to the nuclear coordinates. The gradient is a vector field ${\\mathbf F_I = -\\partial E/\\partial \\mathbf R_I}"
+        - emphasis [ref=e65]: "{I=1}^{N"
+        - text: "\\text{atoms}$ that drives geometry optimisation ("
+        - link "chapter 09, §9.6" [ref=e66] [cursor=pointer]:
+          - /url: "#96-geometry-optimisation"
+        - text: ), molecular dynamics (
+        - link "§9.13" [ref=e67] [cursor=pointer]:
+          - /url: "#913-what-we-left-out"
+        - text: ), vibrational analysis (
+        - link "chapter 10" [ref=e68] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-10/
+        - text: ), and transition-state search. Computing the gradient in a
+        - emphasis [ref=e69]: complete
+        - text: basis set is essentially free, by the
+        - strong [ref=e70]: Hellmann–Feynman theorem
+        - text: (
+        - link "§9.2" [ref=e71] [cursor=pointer]:
+          - /url: "#92-derivation-of-the-hellmannfeynman-theorem-for-dft"
+        - text: ); in a
+        - emphasis [ref=e72]: finite
+        - text: basis set it picks up a non-trivial correction, the
+        - strong [ref=e73]: Pulay force
+        - text: (
+        - link "§9.3" [ref=e74] [cursor=pointer]:
+          - /url: "#93-pulay-forces-the-correction-needed-for-incomplete-basis-sets"
+        - text: ), that vanishes for plane waves but is the dominant non-trivial term in every Gaussian-basis code.
+      - blockquote [ref=e75]:
+        - paragraph [ref=e76]:
+          - strong [ref=e77]: Reading note.
+          - text: This chapter assumes
+          - link "chapter 04" [ref=e78] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: (the KS equations and the force theorem) and
+          - link "chapter 06" [ref=e79] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: (basis sets, Roothaan–Hall) and the relevant parts of
+          - link "chapter 07" [ref=e80] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: "(Bloch theorem, stress tensor). It previews material that depends on the forces:"
+          - link "chapter 10" [ref=e81] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/
+          - text: (phonons), and the molecular-dynamics / NEB / transition-state methods mentioned in
+          - link "§9.13" [ref=e82] [cursor=pointer]:
+            - /url: "#913-what-we-left-out"
+          - text: . Pseudopotential contributions to the force are flagged in
+          - link "§9.5" [ref=e83] [cursor=pointer]:
+            - /url: "#95-forces-in-a-gaussian-basis"
+          - text: and derived in detail in
+          - link "chapter 08" [ref=e84] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: .
+      - heading "9.1 The claim" [level=2] [ref=e85]
+      - paragraph [ref=e86]:
+        - text: A
+        - emphasis [ref=e87]: complete
+        - text: "-basis KS calculation, at the self-consistent fixed point, obeys"
+      - paragraph [ref=e88]:
+        - img [ref=e90]:
+          - generic [ref=e94]:
+            - img [ref=e95]
+            - img [ref=e254]
+      - paragraph [ref=e262]:
+        - text: — the
+        - emphasis [ref=e263]: classical
+        - text: Coulomb force on a point charge
+        - img [ref=e265]
+        - text: sitting at
+        - img [ref=e274]
+        - text: ", exerted by the electron density (first term) and by the other nuclei (second term, with the sign of the classical Coulomb repulsion). Equation"
+        - img [ref=e284]:
+          - link [ref=e287] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-headline"
+        - text: is the
+        - strong [ref=e294]: Hellmann–Feynman force
+        - text: on nucleus
+        - img [ref=e296]
+        - text: . Its derivation (
+        - link "§9.2" [ref=e301] [cursor=pointer]:
+          - /url: "#92-derivation-of-the-hellmannfeynman-theorem-for-dft"
+        - text: ) needs only the chain rule and the normalisation of
+        - img [ref=e303]
+        - text: .
+      - paragraph [ref=e308]:
+        - text: In a
+        - emphasis [ref=e309]: finite
+        - text: atom-centred basis the wavefunction
+        - img [ref=e311]
+        - text: is constrained to live in a basis-dependent subspace, so
+        - img [ref=e317]
+        - text: contains a term from the
+        - emphasis [ref=e335]: basis-function
+        - text: motion that
+        - img [ref=e337]:
+          - link [ref=e340] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-headline"
+        - text: does not see. The complete answer splits as
+      - paragraph [ref=e347]:
+        - img [ref=e349]:
+          - generic [ref=e353]:
+            - img [ref=e354]
+            - img [ref=e391]
+      - paragraph [ref=e399]:
+        - text: where
+        - img [ref=e401]
+        - text: is
+        - img [ref=e414]:
+          - link [ref=e417] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-headline"
+        - text: and
+      - paragraph [ref=e424]:
+        - img [ref=e426]:
+          - generic [ref=e430]:
+            - img [ref=e431]:
+              - generic [ref=e500]:
+                - img [ref=e524]
+                - img [ref=e545]
+            - img [ref=e555]
+      - paragraph [ref=e563]:
+        - text: is the
+        - strong [ref=e564]: Pulay correction
+        - text: (
+        - link "§9.3" [ref=e565] [cursor=pointer]:
+          - /url: "#93-pulay-forces-the-correction-needed-for-incomplete-basis-sets"
+        - text: ). The matrix element of
+        - img [ref=e567]
+        - text: is the
+        - emphasis [ref=e587]: residual
+        - text: of the KS eigenvalue equation; it vanishes in the complete-basis limit and is non-zero in any finite basis whose centres move with the nuclei. In a
+        - strong [ref=e588]: plane-wave basis
+        - text: the basis functions are
+        - emphasis [ref=e589]: independent
+        - text: of the nuclear coordinates, so
+        - img [ref=e591]
+        - text: and
+        - img [ref=e617]:
+          - link [ref=e620] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay"
+        - text: collapses to zero (
+        - link "§9.4" [ref=e627] [cursor=pointer]:
+          - /url: "#94-forces-in-a-plane-wave-basis-complete-basis--only-the-external-potential-term-contributes"
+        - text: ). In an
+        - strong [ref=e628]: atom-centred
+        - text: basis (Gaussians, NAOs) it is the dominant non-trivial contribution to the force evaluation (
+        - link "§9.5" [ref=e629] [cursor=pointer]:
+          - /url: "#95-forces-in-a-gaussian-basis"
+        - text: ).
+      - paragraph [ref=e630]:
+        - text: The Pulay correction is the reason every Gaussian code has a
+        - code [ref=e631]: forces
+        - text: subroutine that is comparable in cost to the SCF itself; it is also the reason every plane-wave code is roughly “forces included for free”. Once the forces are in hand, the rest of the chapter is the question
+        - emphasis [ref=e632]: what to do with them
+        - text: ": steepest descent, Newton–Raphson, BFGS, LBFGS, and the cell optimisation of periodic systems."
+      - paragraph [ref=e633]:
+        - text: The Pulay formula first appeared in the Hartree–Fock context (Pulay 1969); the HF derivation of §3.7 in
+        - link "chapter 03" [ref=e634] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: builds the Fock operator in the same AO basis we use here, and the forces of this chapter are the analytic gradient of the HF energy with respect to the nuclear coordinates.
+      - heading "9.2 Derivation of the Hellmann–Feynman theorem for DFT" [level=2] [ref=e635]
+      - paragraph [ref=e636]:
+        - text: The Hellmann–Feynman theorem is one of the cleanest results in quantum mechanics. We state it for a
+        - emphasis [ref=e637]: real
+        - text: parameter
+        - img [ref=e639]
+        - text: (we will specialise to
+        - img [ref=e645]
+        - text: in the next section), give the proof in five explicit steps, and then apply it to the nuclear-coordinate derivative.
+      - heading "9.2.1 The theorem" [level=3] [ref=e660]
+      - paragraph [ref=e661]:
+        - text: Let
+        - img [ref=e663]
+        - text: be a Hamiltonian that depends smoothly on a real parameter
+        - img [ref=e679]
+        - text: ", and let"
+        - img [ref=e685]
+        - text: be its
+        - emphasis [ref=e700]: exact
+        - text: normalised ground state,
+      - paragraph [ref=e701]:
+        - img [ref=e703]:
+          - generic [ref=e707]:
+            - img [ref=e708]
+            - img [ref=e791]
+      - paragraph [ref=e799]: Then
+      - paragraph [ref=e800]:
+        - img [ref=e802]:
+          - generic [ref=e806]:
+            - img [ref=e807]
+            - img [ref=e873]
+      - paragraph [ref=e881]:
+        - text: — the derivative of the energy is the expectation value of the derivative of the Hamiltonian, evaluated at fixed wavefunction. Theorems of this shape are sometimes called
+        - strong [ref=e882]: Hellmann–Feynman
+        - text: (1937–1939); the variant for stationary states was known to Güttinger (1932) and Pauli (1933).
+      - heading "9.2.2 Proof" [level=3] [ref=e883]
+      - paragraph [ref=e884]:
+        - strong [ref=e885]: Step 1 — expand the derivative.
+        - text: Differentiate
+        - img [ref=e887]:
+          - link [ref=e890] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-hf-ene"
+        - text: "using the product rule:"
+      - paragraph [ref=e897]: "\\begin{align} \\frac{dE}{d\\lambda} &= \\left\\langle \\frac{\\partial \\Psi}{\\partial \\lambda} \\bigg| \\hat H \\bigg| \\Psi \\right\\rangle"
+      - list [ref=e898]:
+        - listitem [ref=e899]:
+          - table [ref=e900]:
+            - rowgroup [ref=e901]:
+              - 'row "\\left\\langle \\Psi \\bigg \\frac{\\partial \\hat H}{\\partial \\lambda} \\bigg \\Psi \\right\\rangle" [ref=e902]':
+                - cell "\\left\\langle \\Psi \\bigg" [ref=e903]
+                - 'cell "\\frac{\\partial \\hat H}{\\partial \\lambda} \\bigg" [ref=e904]'
+                - cell "\\Psi \\right\\rangle" [ref=e905]
+        - listitem [ref=e906]: "\\left\\langle \\Psi \\bigg| \\hat H \\bigg| \\frac{\\partial \\Psi}{\\partial \\lambda} \\right\\rangle . \\end{align}"
+      - paragraph [ref=e907]:
+        - text: The first and third terms involve
+        - img [ref=e909]
+        - text: ", the second does not. We will show the first and third cancel."
+      - paragraph [ref=e923]:
+        - strong [ref=e924]: Step 2 — the wavefunction-derivative term collapses.
+        - text: Add the first and third terms, use the Hermiticity of
+        - img [ref=e926]
+        - text: ", and pull out the"
+        - img [ref=e936]
+        - text: ":"
+      - paragraph [ref=e945]: "\\begin{align} \\left\\langle \\frac{\\partial \\Psi}{\\partial \\lambda} \\bigg| \\hat H \\bigg| \\Psi \\right\\rangle"
+      - list [ref=e946]:
+        - listitem [ref=e947]:
+          - table [ref=e948]:
+            - rowgroup [ref=e949]:
+              - 'row "\\left\\langle \\Psi \\bigg \\hat H \\bigg \\frac{\\partial \\Psi}{\\partial \\lambda} \\right\\rangle" [ref=e950]':
+                - cell "\\left\\langle \\Psi \\bigg" [ref=e951]
+                - cell "\\hat H \\bigg" [ref=e952]
+                - 'cell "\\frac{\\partial \\Psi}{\\partial \\lambda} \\right\\rangle" [ref=e953]'
+              - 'row "&= \\left\\langle \\frac{\\partial \\Psi}{\\partial \\lambda} \\bigg \\hat H \\bigg \\Psi \\right\\rangle" [ref=e954]':
+                - 'cell "&= \\left\\langle \\frac{\\partial \\Psi}{\\partial \\lambda} \\bigg" [ref=e955]'
+                - cell "\\hat H \\bigg" [ref=e956]
+                - cell "\\Psi \\right\\rangle" [ref=e957]
+        - listitem [ref=e958]: "\\left\\langle \\frac{\\partial \\Psi}{\\partial \\lambda} \\bigg| \\hat H \\bigg| \\Psi \\right\\rangle^* \\ &= 2\\, \\operatorname{Re}\\left\\langle \\frac{\\partial \\Psi}{\\partial \\lambda} \\bigg| \\hat H \\bigg| \\Psi \\right\\rangle . \\end{align}"
+      - paragraph [ref=e959]:
+        - text: "A cleaner route: the two terms combine to"
+        - img [ref=e961]
+        - text: ", because"
+        - img [ref=e989]
+        - text: and its adjoint
+        - img [ref=e1023]
+        - text: . Explicitly,
+      - paragraph [ref=e1055]: "\\begin{align} \\left\\langle \\frac{\\partial \\Psi}{\\partial \\lambda} \\bigg| \\hat H \\bigg| \\Psi \\right\\rangle"
+      - list [ref=e1056]:
+        - listitem [ref=e1057]:
+          - table [ref=e1058]:
+            - rowgroup [ref=e1059]:
+              - 'row "\\left\\langle \\Psi \\bigg \\hat H \\bigg \\frac{\\partial \\Psi}{\\partial \\lambda} \\right\\rangle" [ref=e1060]':
+                - cell "\\left\\langle \\Psi \\bigg" [ref=e1061]
+                - cell "\\hat H \\bigg" [ref=e1062]
+                - 'cell "\\frac{\\partial \\Psi}{\\partial \\lambda} \\right\\rangle" [ref=e1063]'
+              - 'row "&= E(\\lambda) \\left\\langle \\frac{\\partial \\Psi}{\\partial \\lambda} \\bigg \\Psi \\right\\rangle" [ref=e1064]':
+                - 'cell "&= E(\\lambda) \\left\\langle \\frac{\\partial \\Psi}{\\partial \\lambda} \\bigg" [ref=e1065]'
+                - cell "\\Psi \\right\\rangle" [ref=e1066]
+                - cell [ref=e1067]
+        - listitem [ref=e1068]: "E(\\lambda) \\left\\langle \\Psi \\bigg| \\frac{\\partial \\Psi}{\\partial \\lambda} \\right\\rangle \\ &= E(\\lambda)\\, \\frac{\\partial}{\\partial \\lambda} \\langle \\Psi | \\Psi \\rangle \\ &= 0 , \\end{align}"
+      - paragraph [ref=e1069]:
+        - text: where the last equality uses the normalisation
+        - img [ref=e1071]
+        - text: (constant in
+        - img [ref=e1090]
+        - text: ).
+      - paragraph [ref=e1095]:
+        - strong [ref=e1096]: Step 3 — conclusion.
+        - text: "The wavefunction-derivative terms vanish; the only survivor is the operator-derivative term:"
+      - paragraph [ref=e1097]:
+        - img [ref=e1099]:
+          - generic [ref=e1103]:
+            - img [ref=e1104]:
+              - generic [ref=e1122]:
+                - img [ref=e1135]
+                - img [ref=e1161]
+            - img [ref=e1177]
+      - paragraph [ref=e1185]:
+        - text: The derivative of the energy is the expectation value of the derivative of the Hamiltonian. This is
+        - img [ref=e1187]:
+          - link [ref=e1190] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-hellmann-feynman"
+        - text: .
+      - blockquote [ref=e1197]:
+        - paragraph [ref=e1198]:
+          - strong [ref=e1199]: Note.
+          - text: The proof uses
+          - emphasis [ref=e1200]: exact
+          - text: eigenstates. In a finite basis the result is
+          - emphasis [ref=e1201]: not
+          - text: automatic, because
+          - img [ref=e1203]
+          - text: acquires a basis-derivative piece (the Pulay term,
+          - link "§9.3" [ref=e1217] [cursor=pointer]:
+            - /url: "#93-pulay-forces-the-correction-needed-for-incomplete-basis-sets"
+          - text: ) that does not obey
+          - img [ref=e1219]
+          - text: .
+      - 'heading "9.2.3 Application: the force on a nucleus" [level=3] [ref=e1264]'
+      - paragraph [ref=e1265]:
+        - text: Specialise to
+        - img [ref=e1267]
+        - text: ", the"
+        - img [ref=e1283]
+        - text: "-Cartesian component of the position of nucleus"
+        - img [ref=e1289]
+        - text: . The full Born–Oppenheimer Hamiltonian of a molecule is
+      - paragraph [ref=e1294]:
+        - img [ref=e1296]:
+          - generic [ref=e1300]:
+            - img [ref=e1301]
+            - img [ref=e1366]
+      - paragraph [ref=e1374]: where the two-body terms are
+      - paragraph [ref=e1375]:
+        - img [ref=e1377]:
+          - generic [ref=e1381]:
+            - img [ref=e1382]
+            - img [ref=e1534]
+      - paragraph [ref=e1548]:
+        - text: Only
+        - img [ref=e1550]
+        - text: and
+        - img [ref=e1566]
+        - text: depend on
+        - img [ref=e1582]
+        - text: ":"
+      - paragraph [ref=e1591]:
+        - img [ref=e1593]:
+          - generic [ref=e1597]:
+            - img [ref=e1598]
+            - img [ref=e1795]
+      - paragraph [ref=e1811]:
+        - text: (The sign in
+        - img [ref=e1813]
+        - text: gives a
+        - emphasis [ref=e1828]: negative
+        - text: electron–nuclear attraction, whose derivative is the
+        - emphasis [ref=e1829]: positive
+        - text: attractive force from each electron on the nucleus.)
+      - paragraph [ref=e1830]:
+        - text: By
+        - img [ref=e1832]:
+          - link [ref=e1835] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-hellmann-feynman"
+        - text: ", the electronic part of"
+        - img [ref=e1843]
+        - text: is
+        - img [ref=e1862]
+        - text: ", which equals the expectation value of the classical Coulomb force from the electrons at"
+        - img [ref=e1905]
+        - text: on the nucleus at
+        - img [ref=e1915]
+        - text: . Adding the nuclear–nuclear term explicitly gives the
+        - strong [ref=e1924]: Hellmann–Feynman force
+        - text: on nucleus
+        - img [ref=e1926]
+        - text: ":"
+      - paragraph [ref=e1931]:
+        - img [ref=e1933]:
+          - generic [ref=e1937]:
+            - img [ref=e1938]
+            - img [ref=e2077]
+      - paragraph [ref=e2086]:
+        - text: This is exactly
+        - img [ref=e2088]:
+          - link [ref=e2091] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-headline"
+        - text: . In a KS DFT calculation, the “wavefunction”
+        - img [ref=e2099]
+        - text: is the KS Slater determinant built from the occupied orbitals
+        - img [ref=e2105]
+        - text: ", and the density is"
+        - img [ref=e2114]
+        - text: (closed-shell spin-summed; the factor of 2 disappears into the integral). The two-electron operator
+        - img [ref=e2160]
+        - text: does not depend on the nuclear coordinates, so it does not contribute to the force.
+      - blockquote [ref=e2175]:
+        - paragraph [ref=e2176]:
+          - strong [ref=e2177]: Sign check.
+          - text: The nuclear-repulsion term in
+          - img [ref=e2179]:
+            - link [ref=e2182] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+          - text: carries a
+          - emphasis [ref=e2190]: plus
+          - text: sign and the factor
+          - img [ref=e2192]
+          - text: . For two protons at
+          - img [ref=e2214]
+          - text: and
+          - img [ref=e2229]
+          - text: ", the term evaluates to"
+          - img [ref=e2255]
+          - text: ": a force on A in the"
+          - img [ref=e2323]
+          - text: direction, away from B. This is the correct direction for the Coulomb repulsion between like charges.
+        - paragraph [ref=e2335]:
+          - strong [ref=e2336]: Tip.
+          - text: The force in
+          - img [ref=e2338]:
+            - link [ref=e2341] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+          - text: is the classical force on a
+          - emphasis [ref=e2349]: point
+          - text: charge
+          - img [ref=e2351]
+          - text: at
+          - img [ref=e2360]
+          - text: ". This is the simplest possible form of a DFT force: integrate the electron density against"
+          - img [ref=e2370]
+          - text: ", add the nuclear–nuclear repulsion. In a complete basis,"
+          - strong [ref=e2383]: that is the whole force
+          - text: . The rest of this chapter is the corrections needed in a
+          - emphasis [ref=e2384]: finite
+          - text: basis.
+      - 'heading "9.3 Pulay forces: the correction needed for incomplete basis sets" [level=2] [ref=e2385]'
+      - paragraph [ref=e2386]:
+        - text: Equation
+        - img [ref=e2388]:
+          - link [ref=e2391] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+        - text: was derived under the assumption that
+        - img [ref=e2400]
+        - text: is the
+        - emphasis [ref=e2415]: exact
+        - text: ground state of
+        - img [ref=e2417]
+        - text: at every
+        - img [ref=e2433]
+        - text: — a promise no finite basis can keep. In a basis
+        - img [ref=e2439]
+        - text: that
+        - emphasis [ref=e2460]: itself
+        - text: depends on the nuclear coordinates, the SCF wavefunction lives in a moving subspace, and the derivative
+        - img [ref=e2462]
+        - text: acquires a piece from the basis- function motion that the Hellmann–Feynman argument did not see. The additional term is the
+        - strong [ref=e2480]: Pulay force
+        - text: ", after Péter Pulay (1969) who first wrote it out for the Hartree–Fock case."
+      - heading "9.3.1 The general structure" [level=3] [ref=e2481]
+      - paragraph [ref=e2482]: Let
+      - paragraph [ref=e2483]:
+        - img [ref=e2485]:
+          - generic [ref=e2489]:
+            - img [ref=e2490]
+            - img [ref=e2546]
+      - paragraph [ref=e2555]:
+        - text: be the MO expansion (
+        - link "chapter 06" [ref=e2556] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: eq.
+        - img [ref=e2558]:
+          - link [ref=e2561] [cursor=pointer]:
+            - /url: "#"
+        - text: ). The total KS energy is a functional of the density, and in the AO basis it is also a function of the MO coefficients
+        - img [ref=e2571]
+        - text: and of the geometry
+        - img [ref=e2578]
+        - text: (the latter through the basis functions). We split the total derivative with respect to
+        - img [ref=e2585]
+        - text: into a
+        - emphasis [ref=e2594]: direct
+        - text: piece (basis-functions move) and a
+        - emphasis [ref=e2595]: response
+        - text: "piece (the SCF solution shifts):"
+      - paragraph [ref=e2596]:
+        - text: "\\begin{equation} \\label{eq:ch-09-force-split} \\mathbf F_I \\;=\\; \\underbrace{-\\frac{\\partial E}{\\partial \\mathbf R_I}\\bigg|"
+        - emphasis [ref=e2597]: "{\\mathbf C, \\text{fixed}}}"
+        - text: "{\\text{direct}} \\;-\\; \\sum_{\\mu, \\nu, i} \\frac{\\partial E}{\\partial C_{\\mu i}}\\, \\frac{\\partial C_{\\mu i}}{\\partial \\mathbf R_I}\\bigg|_\\text{chain} . \\end{equation}"
+      - paragraph [ref=e2598]:
+        - text: The chain-rule term is the response of the SCF solution to a geometry change. At the self-consistent fixed point the KS stationarity conditions
+        - img [ref=e2600]
+        - text: (with the orthonormality constraint
+        - img [ref=e2625]
+        - text: )
+        - emphasis [ref=e2645]: kill
+        - text: the chain-rule term, and the derivative of the energy is given by the direct piece alone. This is the Hellmann–Feynman contribution, and the result is the sum of the classical force
+        - img [ref=e2647]:
+          - link [ref=e2650] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+        - text: and a
+        - emphasis [ref=e2658]: basis-derivative
+        - text: correction that comes from differentiating the basis functions inside the integrals.
+      - heading "9.3.2 The Pulay formula" [level=3] [ref=e2659]
+      - paragraph [ref=e2660]:
+        - text: Differentiating the one-electron and two-electron pieces of
+        - img [ref=e2662]
+        - text: with respect to
+        - img [ref=e2668]
+        - text: ", using the chain rule"
+        - img [ref=e2678]
+        - text: ", gives"
+      - paragraph [ref=e2733]:
+        - img [ref=e2735]:
+          - generic [ref=e2739]:
+            - img [ref=e2740]:
+              - generic [ref=e2741]:
+                - generic [ref=e2806]:
+                  - img [ref=e2830]
+                  - img [ref=e2862]
+                - generic [ref=e2875]:
+                  - img [ref=e2885]
+                  - img [ref=e2917]
+            - img [ref=e3018]
+      - paragraph [ref=e3041]:
+        - text: where
+        - img [ref=e3043]
+        - text: is the one-electron operator,
+        - img [ref=e3082]
+        - text: is the Coulomb operator, and
+        - img [ref=e3092]
+        - text: is the exchange–correlation operator (the sum
+        - img [ref=e3106]
+        - text: collapses to the Fock operator in HF; in KS DFT it is the sum of the Hartree and xc terms, see
+        - link "chapter 04" [ref=e3129] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: ). The first two lines are the
+        - emphasis [ref=e3130]: integral-derivative
+        - text: piece; the last line is the
+        - emphasis [ref=e3131]: overlap-derivative
+        - text: piece, which appears because the orthonormality constraint
+        - img [ref=e3133]
+        - text: must be maintained when the basis functions move.
+      - paragraph [ref=e3153]:
+        - strong [ref=e3154]: Symmetrisation trick.
+        - text: Combine the first two lines with the last by adding and subtracting
+        - img [ref=e3156]
+        - text: . Using the self-consistency condition
+        - img [ref=e3228]
+        - text: (
+        - link "chapter 04" [ref=e3247] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: eq. 4.21), the two-electron terms and the
+        - img [ref=e3249]
+        - text: "-derivative combine into a single matrix element:"
+      - paragraph [ref=e3255]:
+        - img [ref=e3257]:
+          - generic [ref=e3261]:
+            - img [ref=e3262]:
+              - generic [ref=e3324]:
+                - img [ref=e3348]
+                - img [ref=e3369]
+            - img [ref=e3380]
+      - paragraph [ref=e3389]:
+        - text: This is
+        - img [ref=e3391]:
+          - link [ref=e3394] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay"
+        - text: . The combination
+        - img [ref=e3402]
+        - text: is the
+        - emphasis [ref=e3422]: residual operator
+        - text: of the KS eigenvalue equation; the matrix element is the projection of the residual onto the basis-function derivative
+        - img [ref=e3424]
+        - text: times the basis function
+        - img [ref=e3446]
+        - text: . In the
+        - emphasis [ref=e3454]: complete
+        - text: "-basis limit, the residual is identically zero, the matrix element vanishes, and"
+        - img [ref=e3456]:
+          - link [ref=e3459] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-derivation"
+        - text: reduces to the Hellmann–Feynman expression
+        - img [ref=e3468]:
+          - link [ref=e3471] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+        - text: .
+      - blockquote [ref=e3479]:
+        - paragraph [ref=e3480]:
+          - strong [ref=e3481]: Why the matrix element is the “residual”.
+          - text: The KS equation says
+          - img [ref=e3483]
+          - text: . The residual of the
+          - emphasis [ref=e3513]: basis expansion
+          - text: is the projection
+          - img [ref=e3515]
+          - text: onto the basis. When the basis is complete, the residual is zero
+          - emphasis [ref=e3544]: in the subspace spanned by the basis
+          - text: . When the basis is incomplete, the residual picks up the parts of
+          - img [ref=e3546]
+          - text: that lie outside the subspace — and the derivative of the basis function is the natural probe of the “outside” directions.
+      - heading "9.3.3 When does the Pulay term vanish?" [level=3] [ref=e3575]
+      - paragraph [ref=e3576]: Three cases are worth noting.
+      - paragraph [ref=e3577]:
+        - strong [ref=e3578]: 1. Complete basis.
+        - text: The residual of the KS eigenvalue equation is identically zero in the subspace spanned by the basis;
+        - img [ref=e3580]:
+          - link [ref=e3583] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-derivation"
+        - text: vanishes term-by-term, and
+        - img [ref=e3592]:
+          - link [ref=e3595] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+        - text: is the full force.
+      - paragraph [ref=e3603]:
+        - strong [ref=e3604]: 2. Position-independent basis.
+        - text: Plane waves (
+        - link "chapter 06" [ref=e3605] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.7) and real-space grids (
+        - link "chapter 06" [ref=e3606] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.8) do not depend on the nuclear positions. Therefore
+        - img [ref=e3608]
+        - text: for every
+        - img [ref=e3634]
+        - text: (plane waves
+        - img [ref=e3640]
+        - text: have no
+        - img [ref=e3658]
+        - text: dependence, and real-space grid points
+        - img [ref=e3668]
+        - text: are fixed in the lab frame), and every term in the sum over
+        - img [ref=e3678]
+        - text: in
+        - img [ref=e3684]:
+          - link [ref=e3687] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-derivation"
+        - text: vanishes. In a plane-wave code the force is computed from
+        - img [ref=e3696]:
+          - link [ref=e3699] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+        - text: alone. This is one of the main reasons plane waves are the workhorse of geometry optimisation and ab-initio molecular dynamics.
+      - paragraph [ref=e3707]:
+        - strong [ref=e3708]: 3. Atom-centred basis with moving centres.
+        - text: For Gaussians, STOs, NAOs, and any other atom-centred family, the basis functions
+        - emphasis [ref=e3709]: do
+        - text: depend on the nuclear coordinates through their centres
+        - img [ref=e3711]
+        - text: . The derivatives
+        - img [ref=e3736]
+        - text: are non-zero whenever
+        - img [ref=e3758]
+        - text: is centred on atom
+        - img [ref=e3764]
+        - text: ", and the Pulay correction must be evaluated. In an atom-centred code the Pulay term is the dominant non-trivial contribution to the force evaluation, and it is the reason the force routine in such a code is comparable in cost to the SCF routine itself."
+      - blockquote [ref=e3769]:
+        - paragraph [ref=e3770]:
+          - strong [ref=e3771]: Warning.
+          - text: The Pulay correction is
+          - emphasis [ref=e3772]: not
+          - text: a small correction. For a minimal basis like STO-3G, it can be a sizeable fraction of the total force. Skipping it gives a geometry optimiser that converges to the wrong minimum, a vibrational frequency that is off by tens of percent, and a molecular-dynamics trajectory that does not conserve energy to within the time- step tolerance. The first three generations of Gaussian-basis quantum-chemistry codes (IBMOL, GAUSSIAN, HONDO) had bugs in their Pulay routines; fixing them was, in some cases, the difference between a published structure being correct and being off by 0.05 Å.
+      - heading "9.3.4 Diagram — Hellmann–Feynman and Pulay contributions to the force" [level=3] [ref=e3773]
+      - paragraph [ref=e3774]:
+        - text: The flow below shows how the
+        - emphasis [ref=e3775]: complete
+        - text: "force on a nucleus in a finite, atom-centred basis is built up from three pieces: the classical electron–nuclear and nuclear–nuclear Coulomb contributions (the Hellmann–Feynman part), the integral-derivative contribution (the Pulay part), and the orthonormality correction (the"
+        - img [ref=e3777]
+        - text: "-derivative part). The two Pulay terms combine into the single matrix element of the KS residual"
+        - img [ref=e3784]
+        - text: between
+        - img [ref=e3805]
+        - text: and
+        - img [ref=e3827]
+        - text: ", eq."
+        - img [ref=e3836]:
+          - link [ref=e3839] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-derivation"
+        - text: .
+      - figure [ref=e3848]:
+        - code [ref=e3849]:
+          - document [ref=e3850]:
+            - generic [ref=e3867]:
+              - generic [ref=e3873]: GeometryR_I, basis chi_mu
+              - generic [ref=e3879]: SCF at fixed Ryields rho r, P mu nuand orbitals phi_i
+              - generic [ref=e3885]: Classical Coulombnuclear repulsion(constant basis)
+              - generic [ref=e3891]: "-Z_I integral rho r d/dr(1/r)Hellmann-Feynmanelectron-nuclear term"
+              - generic [ref=e3897]: "+ sum_{J != I} Z_I Z_J (R_I - R_J) / R^3Hellmann-Feynmannuclear-nuclear term"
+              - generic [ref=e3903]: F_I^HF(eq. 9.20)
+              - generic [ref=e3909]: Basis-derivativeintegrals d chi_mu / d R_I
+              - generic [ref=e3915]: (d chi_mu / d R_I) is p-type(for s-type Gaussian)
+              - generic [ref=e3921]: One-electron matrix elementsh_mu nu^(I) and G_mu nu^(I)
+              - generic [ref=e3927]: S_mu nu^(I) = d S_mu nu / d R_Ifrom orthonormality
+              - generic [ref=e3933]: "- sum P_mu nu h_mu nu^(I)+ sum P_mu nu G_mu nu^(I)"
+              - generic [ref=e3939]: "- 2 sum_i eps_isum C_mu i C_nu i S_mu nu^(I)"
+              - generic [ref=e3945]: Combine usingF C = S C epsilonand Hermiticity
+              - generic [ref=e3951]: F_I^Pulay(eq. 9.12)
+              - generic [ref=e3956]: F_I = F_I^HF + F_I^Pulay
+              - generic [ref=e3962]: Total analytic forceon nucleus I
+        - button "Download this diagram as a PNG" [ref=e3963] [cursor=pointer]:
+          - img [ref=e3964]
+          - generic [ref=e3967]: Download PNG
+      - paragraph [ref=e3968]:
+        - text: The two
+        - strong [ref=e3969]: left-most
+        - text: branches (
+        - code [ref=e3970]: HF1
+        - text: and
+        - code [ref=e3971]: HF2
+        - text: ) are the Hellmann–Feynman contribution, computed from the SCF density and nuclear positions only — no basis-derivative integrals are required. The
+        - strong [ref=e3972]: right-most
+        - text: branches are the Pulay contribution, which is a
+        - emphasis [ref=e3973]: linear
+        - text: operation in the density matrix once the basis-derivative integrals are in hand. The
+        - strong [ref=e3974]: final box
+        - text: combines the two with the algebraic move (using
+        - img [ref=e3976]
+        - text: and Hermiticity) that turns the integral-derivative and overlap-derivative pieces into the single residual matrix element of eq.
+        - img [ref=e3996]:
+          - link [ref=e3999] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-derivation"
+        - text: .
+      - 'heading "9.4 Forces in a plane-wave basis: complete basis → only the external-potential term contributes" [level=2] [ref=e4007]'
+      - paragraph [ref=e4008]: In a plane-wave basis (chapter 06 §6.7) the basis functions are
+      - paragraph [ref=e4009]:
+        - img [ref=e4011]:
+          - generic [ref=e4015]:
+            - img [ref=e4016]
+            - img [ref=e4076]
+      - paragraph [ref=e4085]:
+        - text: parameterised by a reciprocal-lattice vector
+        - img [ref=e4087]
+        - text: and a crystal momentum
+        - img [ref=e4094]
+        - text: in the first Brillouin zone. Neither
+        - img [ref=e4101]
+        - text: nor
+        - img [ref=e4108]
+        - text: (the cell volume) depends on the
+        - emphasis [ref=e4113]: ionic
+        - text: positions; only the
+        - emphasis [ref=e4114]: cell shape
+        - text: enters through
+        - img [ref=e4116]
+        - text: and the
+        - img [ref=e4122]
+        - text: grid. Therefore
+      - paragraph [ref=e4128]:
+        - img [ref=e4130]:
+          - generic [ref=e4134]:
+            - img [ref=e4135]
+            - img [ref=e4176]
+      - paragraph [ref=e4185]:
+        - text: and the Pulay correction
+        - img [ref=e4187]:
+          - link [ref=e4190] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-derivation"
+        - text: vanishes. The full force is the Hellmann–Feynman expression
+        - img [ref=e4199]:
+          - link [ref=e4202] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+        - text: .
+      - paragraph [ref=e4210]:
+        - text: We can write the force in a more usable form by expanding the density in plane waves,
+        - img [ref=e4212]
+        - text: ", and using the Fourier representation of the Coulomb kernel"
+        - img [ref=e4266]
+        - text: . After some algebra (see problem 2 of
+        - link "chapter 06" [ref=e4328] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: for a similar manipulation) the electron–nuclear term becomes
+      - paragraph [ref=e4329]:
+        - img [ref=e4331]:
+          - generic [ref=e4335]:
+            - img [ref=e4336]
+            - img [ref=e4476]
+      - paragraph [ref=e4485]:
+        - text: In a periodic code this is evaluated by FFTs, and the cost is
+        - img [ref=e4487]
+        - text: with
+        - img [ref=e4512]
+        - text: the FFT grid size. The nuclear–nuclear term is a direct double sum over the ions in the cell (and, with Ewald summation, over their periodic images).
+      - heading "9.4.1 The “complete basis → only the external-potential term contributes” claim" [level=3] [ref=e4520]
+      - paragraph [ref=e4521]: "The statement in the chapter title is exact. In a plane-wave basis the force on every ion is a sum of two terms:"
+      - list [ref=e4522]:
+        - listitem [ref=e4523]:
+          - text: the
+          - strong [ref=e4524]: electron–ion
+          - text: attraction,
+          - img [ref=e4526]:
+            - link [ref=e4529] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-09-pw-electron-nuclear"
+          - text: ", evaluated by FFT,"
+        - listitem [ref=e4537]:
+          - text: the
+          - strong [ref=e4538]: ion–ion
+          - text: repulsion, evaluated by Ewald summation,
+      - paragraph [ref=e4539]:
+        - text: and
+        - emphasis [ref=e4540]: no Pulay correction
+        - text: . The force is therefore
+        - img [ref=e4542]
+        - text: per ion, comparable in cost to the Hamiltonian application in the SCF, and it is
+        - emphasis [ref=e4566]: automatically
+        - text: consistent with the energy to machine precision (because both quantities are derived from the same discretised Hamiltonian without an incomplete-basis correction).
+      - blockquote [ref=e4567]:
+        - paragraph [ref=e4568]:
+          - strong [ref=e4569]: Tip.
+          - text: The “no Pulay” property of plane waves is the reason that plane-wave codes are the workhorse of
+          - emphasis [ref=e4570]: ab-initio
+          - text: molecular dynamics (AIMD,
+          - link "§9.13" [ref=e4571] [cursor=pointer]:
+            - /url: "#913-what-we-left-out"
+          - text: ). In AIMD, the energy must be conserved to within the time-step tolerance over millions of steps; a Pulay term that is computed by finite differences in an incomplete basis would destroy the conservation law. Plane waves sidestep the problem entirely.
+      - 'heading "9.5 Forces in a Gaussian basis: both the external-potential term AND the Pulay term" [level=2] [ref=e4572]'
+      - paragraph [ref=e4573]:
+        - text: In an atom-centred basis the basis functions move with the nuclei, and the full force is the sum
+        - img [ref=e4575]:
+          - link [ref=e4578] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-split"
+        - text: . The implementation strategy is different from the plane-wave case. The
+        - strong [ref=e4585]: Hellmann–Feynman part
+        - img [ref=e4587]:
+          - link [ref=e4590] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+        - text: is a
+        - emphasis [ref=e4598]: one-electron
+        - text: "quantity: it needs only the density"
+        - img [ref=e4600]
+        - text: and the nuclear positions. The
+        - strong [ref=e4605]: Pulay part
+        - img [ref=e4607]:
+          - link [ref=e4610] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-derivation"
+        - text: is a
+        - emphasis [ref=e4618]: two-index
+        - text: quantity (it is bilinear in the basis functions), but it is
+        - emphasis [ref=e4619]: linear
+        - text: in the density matrix
+        - img [ref=e4621]
+        - text: once the basis-derivative integrals are known.
+      - heading "9.5.1 The two pieces in matrix form" [level=3] [ref=e4627]
+      - paragraph [ref=e4628]:
+        - text: Write the contracted s-type Gaussian basis function on atom
+        - img [ref=e4630]
+        - text: as
+      - paragraph [ref=e4635]:
+        - img [ref=e4637]:
+          - generic [ref=e4641]:
+            - img [ref=e4642]
+            - img [ref=e4761]
+      - paragraph [ref=e4770]:
+        - text: so the centre is
+        - img [ref=e4772]
+        - text: and the derivative with respect to the position of atom
+        - img [ref=e4797]
+        - text: is non-zero only for
+        - img [ref=e4803]
+        - text: centred on
+        - img [ref=e4809]
+        - text: ":"
+      - paragraph [ref=e4814]:
+        - img [ref=e4816]:
+          - generic [ref=e4820]:
+            - img [ref=e4821]
+            - img [ref=e4864]
+      - paragraph [ref=e4873]:
+        - text: (For higher angular momenta the derivative picks up a term
+        - img [ref=e4875]
+        - text: from the polynomial prefactor as well as the chain rule on the centre. We will see the result explicitly in the STO-3G example of
+        - link "§9.10" [ref=e4888] [cursor=pointer]:
+          - /url: "#910-worked-example-relax-the-geometry-of-h2-in-a-sto-3g-basis"
+        - text: .)
+      - paragraph [ref=e4889]:
+        - text: Define the
+        - strong [ref=e4890]: basis-derivative integrals
+      - paragraph [ref=e4891]: "\\begin{align} h_{\\mu\\nu}^{(I)} &\\equiv \\left\\langle \\frac{\\partial \\chi_\\mu}{\\partial \\mathbf R_I} \\bigg| \\hat h \\bigg| \\chi_\\nu \\right\\rangle"
+      - list [ref=e4892]:
+        - listitem [ref=e4893]: "\\left\\langle \\chi_\\mu \\bigg| \\hat h \\bigg| \\frac{\\partial \\chi_\\nu}{\\partial \\mathbf R_I} \\right\\rangle , \\ G_{\\mu\\nu}^{(I)} &\\equiv \\left\\langle \\frac{\\partial \\chi_\\mu}{\\partial \\mathbf R_I} \\bigg| 2\\hat J - \\hat K_\\text{xc} \\bigg| \\chi_\\nu \\right\\rangle"
+        - listitem [ref=e4894]: "\\left\\langle \\chi_\\mu \\bigg| 2\\hat J - \\hat K_\\text{xc} \\bigg| \\frac{\\partial \\chi_\\nu}{\\partial \\mathbf R_I} \\right\\rangle , \\ S_{\\mu\\nu}^{(I)} &\\equiv \\frac{\\partial S_{\\mu\\nu}}{\\partial \\mathbf R_I} . \\end{align}"
+      - paragraph [ref=e4895]:
+        - text: The Pulay formula
+        - img [ref=e4897]:
+          - link [ref=e4900] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-derivation"
+        - text: becomes, in matrix form,
+      - paragraph [ref=e4908]:
+        - img [ref=e4910]:
+          - generic [ref=e4914]:
+            - img [ref=e4915]
+            - img [ref=e5069]
+      - paragraph [ref=e5078]:
+        - text: (in closed-shell notation;
+        - img [ref=e5080]
+        - text: is the density matrix in the AO basis). The first term is the derivative of the one-electron integrals, the second is the derivative of the two-electron integrals, and the third is the derivative of the overlap matrix that appears in the orthonormality constraint.
+      - heading "9.5.2 Derivatives of contracted Gaussian integrals" [level=3] [ref=e5086]
+      - paragraph [ref=e5087]:
+        - text: The first two pieces of
+        - img [ref=e5089]:
+          - link [ref=e5092] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-matrix"
+        - text: require the derivative of every AO integral with respect to every nuclear position. The chain rule is
+      - paragraph [ref=e5100]:
+        - img [ref=e5102]:
+          - generic [ref=e5106]:
+            - img [ref=e5107]
+            - img [ref=e5223]
+      - table [ref=e5232]:
+        - rowgroup [ref=e5233]:
+          - 'row "For an s-type primitive $g(\\mathbf r; \\alpha, \\mathbf A) = e^{-\\alpha \\mathbf r - \\mathbf A ^2}$," [ref=e5234]':
+            - 'cell "For an s-type primitive $g(\\mathbf r; \\alpha, \\mathbf A) = e^{-\\alpha" [ref=e5235]'
+            - cell "\\mathbf r - \\mathbf A" [ref=e5236]
+            - 'cell "^2}$," [ref=e5237]'
+      - paragraph [ref=e5238]:
+        - img [ref=e5240]:
+          - generic [ref=e5244]:
+            - img [ref=e5245]
+            - img [ref=e5306]
+      - paragraph [ref=e5315]: The derivative of an s-type CGTO is therefore
+      - paragraph [ref=e5316]:
+        - img [ref=e5318]:
+          - generic [ref=e5322]:
+            - img [ref=e5323]
+            - img [ref=e5435]
+      - paragraph [ref=e5444]:
+        - text: which is a
+        - emphasis [ref=e5445]: p-type
+        - text: function (one factor of
+        - img [ref=e5447]
+        - text: in front of the Gaussian). In other words,
+        - strong [ref=e5453]: the derivative of an s-type Gaussian is a p-type Gaussian
+        - text: . The matrix element
+        - img [ref=e5455]
+        - text: is then a
+        - emphasis [ref=e5497]: mixed s–p
+        - text: integral — a one-electron integral in angular-momentum space. Every production Gaussian code pre-computes a set of auxiliary “s/p/d/f” integral routines and uses them for both the SCF and the force evaluation.
+      - blockquote [ref=e5498]:
+        - paragraph [ref=e5499]:
+          - strong [ref=e5500]: The Hellmann–Feynman + Pulay force in practice.
+          - text: "The computation splits into three parts:"
+        - list [ref=e5501]:
+          - listitem [ref=e5502]:
+            - paragraph [ref=e5503]:
+              - strong [ref=e5504]: Re-evaluate all AO integrals
+              - text: at the new geometry. This is
+              - img [ref=e5506]
+              - text: for the two-electron integrals and the rate-determining step. For a
+              - emphasis [ref=e5521]: force evaluation
+              - text: (not an energy evaluation) the integrals need not be re-evaluated in full; only the
+              - emphasis [ref=e5522]: skeleton-derivative
+              - text: integrals
+              - img [ref=e5524]
+              - text: are needed, and many of them vanish. In practice the cost of the force is about the cost of the SCF.
+          - listitem [ref=e5555]:
+            - paragraph [ref=e5556]:
+              - strong [ref=e5557]: Assemble the density matrix
+              - text: at the SCF fixed point. No new SCF is needed if the wavefunction is already converged.
+          - listitem [ref=e5558]:
+            - paragraph [ref=e5559]:
+              - strong [ref=e5560]: Contract
+              - text: the skeleton derivatives with the density matrix to form
+              - img [ref=e5562]
+              - text: . This is
+              - img [ref=e5572]
+              - text: in the worst case, but with shell-pair screening and the sparsity of the derivative index it is usually
+              - img [ref=e5597]
+              - text: –
+              - img [ref=e5613]
+              - text: .
+      - heading "9.5.3 Pseudopotential contribution to the force" [level=3] [ref=e5628]
+      - paragraph [ref=e5629]:
+        - text: For systems with pseudopotentials (
+        - link "chapter 08" [ref=e5630] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: ) the force has an extra piece from the
+        - emphasis [ref=e5631]: non-local
+        - text: part of the pseudopotential. In a norm-conserving pseudopotential of the Kleinman–Bylander form (
+        - link "chapter 08" [ref=e5632] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: §8.4),
+      - paragraph [ref=e5633]:
+        - img [ref=e5635]:
+          - generic [ref=e5639]:
+            - img [ref=e5640]
+            - img [ref=e5728]
+      - paragraph [ref=e5737]:
+        - text: the
+        - strong [ref=e5738]: non-local force
+        - text: is
+      - paragraph [ref=e5739]:
+        - img [ref=e5741]:
+          - generic [ref=e5745]:
+            - img [ref=e5746]
+            - img [ref=e5933]
+      - paragraph [ref=e5942]:
+        - text: The first term is the
+        - emphasis [ref=e5943]: local
+        - text: (i.e. one-centre) derivative that arises because the projector functions
+        - img [ref=e5945]
+        - text: depend on the nuclear position through the pseudo-orbital
+        - img [ref=e5972]
+        - text: . The second term is a
+        - emphasis [ref=e6027]: Pulay-style
+        - text: correction for the projection of the MOs onto the projectors. In USPP and PAW (
+        - link "chapter 08" [ref=e6028] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: §8.6 and §8.10) the non-local force is even more involved; we refer the reader to the original literature (Kresse & Furthmüller, 1996; Blöchl, 1994) for the full derivation. The point for this chapter is that
+        - strong [ref=e6029]: the non-local pseudopotential force is the single most important term in any production plane-wave force calculation
+        - text: ", and the algorithmic complexity of evaluating it efficiently is the reason modern plane-wave codes are highly tuned around the"
+        - emphasis [ref=e6030]: non-local
+        - text: projector routines.
+      - heading "9.6 Geometry optimisation" [level=2] [ref=e6031]
+      - paragraph [ref=e6032]:
+        - text: The rest of this chapter is about what to do with the forces once they are in hand. A
+        - emphasis [ref=e6033]: geometry optimisation
+        - text: is the iteration
+      - paragraph [ref=e6034]:
+        - img [ref=e6036]:
+          - generic [ref=e6040]:
+            - img [ref=e6041]
+            - img [ref=e6093]
+      - paragraph [ref=e6102]:
+        - text: where
+        - img [ref=e6104]
+        - text: is a
+        - emphasis [ref=e6118]: search direction
+        - text: (a vector in the
+        - img [ref=e6120]
+        - text: "-dimensional configuration space) and"
+        - img [ref=e6139]
+        - text: is a
+        - emphasis [ref=e6147]: step length
+        - text: . Convergence is reached when
+      - paragraph [ref=e6148]:
+        - img [ref=e6150]:
+          - generic [ref=e6154]:
+            - img [ref=e6155]:
+              - generic [ref=e6158]:
+                - img [ref=e6168]
+                - img [ref=e6178]
+                - img [ref=e6192]
+                - img [ref=e6222]
+            - img [ref=e6234]
+      - paragraph [ref=e6243]:
+        - text: Typical tolerances are
+        - img [ref=e6245]:
+          - generic [ref=e6294]: Å
+        - text: and
+        - img [ref=e6296]
+        - text: .
+      - paragraph [ref=e6321]:
+        - text: The four methods below differ only in the choice of search direction
+        - img [ref=e6323]
+        - text: .
+      - heading "9.6.1 Steepest descent" [level=3] [ref=e6337]
+      - paragraph [ref=e6338]: "The simplest choice is to walk downhill along the force:"
+      - paragraph [ref=e6339]:
+        - img [ref=e6341]:
+          - generic [ref=e6345]:
+            - img [ref=e6346]:
+              - img [ref=e6396]
+            - img [ref=e6412]
+      - paragraph [ref=e6421]:
+        - text: Steepest descent is
+        - strong [ref=e6422]: trivial to implement
+        - text: and
+        - strong [ref=e6423]: always decreases the energy
+        - text: (for
+        - img [ref=e6425]
+        - text: "small enough), but it converges slowly in narrow valleys: the search direction zig-zags across the valley walls, and the convergence rate is"
+        - emphasis [ref=e6433]: linear
+        - text: with an asymptotic ratio that depends on the condition number of the Hessian. In one dimension with a harmonic potential
+        - img [ref=e6435]
+        - text: ", steepest descent with fixed step"
+        - img [ref=e6474]
+        - text: converges iff
+        - img [ref=e6480]
+        - text: ", with geometric ratio"
+        - img [ref=e6492]
+        - text: . Near the minimum the ratio is close to
+        - img [ref=e6508]
+        - text: unless
+        - img [ref=e6514]
+        - text: is chosen with knowledge of
+        - img [ref=e6520]
+        - text: .
+      - blockquote [ref=e6525]:
+        - paragraph [ref=e6526]:
+          - strong [ref=e6527]: Tip.
+          - text: "The simplest “smart” step size is backtracking line search: try"
+          - img [ref=e6529]
+          - text: ", then halve until the energy actually decreases. The Armijo condition"
+          - img [ref=e6539]
+          - text: (with
+          - img [ref=e6587]
+          - text: ) is the standard formalisation. In a DFT code, however, the cost of an SCF is so high that one almost always uses a single fixed
+          - img [ref=e6607]
+          - text: (or a
+          - emphasis [ref=e6612]: trust radius
+          - text: method, see below) rather than a line search.
+      - heading "9.6.2 Newton–Raphson" [level=3] [ref=e6613]
+      - paragraph [ref=e6614]:
+        - text: If the
+        - strong [ref=e6615]: Hessian
+        - img [ref=e6617]
+        - text: is available, the
+        - emphasis [ref=e6651]: Newton
+        - text: step is
+      - paragraph [ref=e6652]:
+        - img [ref=e6654]:
+          - generic [ref=e6658]:
+            - img [ref=e6659]
+            - img [ref=e6714]
+      - paragraph [ref=e6723]:
+        - text: Newton’s method converges
+        - strong [ref=e6724]: quadratically
+        - text: in the neighbourhood of the minimum (the number of correct digits doubles at every step). For a
+        - img [ref=e6726]
+        - text: "-dimensional problem the cost of forming, storing, factorising, and inverting the Hessian is"
+        - img [ref=e6741]
+        - text: — prohibitive for systems with more than
+        - img [ref=e6757]
+        - text: atoms. Direct Hessian evaluation also requires the
+        - strong [ref=e6766]: second derivative of the energy with respect to nuclear coordinates
+        - text: ", which is the matrix of force constants (the topic of"
+        - link "chapter 10" [ref=e6767] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-10/
+        - text: ). A full evaluation is rarely done in production; one usually uses a
+        - strong [ref=e6768]: quasi-Newton
+        - text: method that
+        - emphasis [ref=e6769]: builds up
+        - text: an approximation to
+        - img [ref=e6771]
+        - text: from successive force evaluations.
+      - heading "9.6.3 Quasi-Newton (BFGS)" [level=3] [ref=e6783]
+      - paragraph [ref=e6784]:
+        - text: The
+        - strong [ref=e6785]: BFGS
+        - text: update (Broyden 1970, Fletcher 1970, Goldfarb 1970, Shanno 1970 — independently discovered four times in the same year) maintains a
+        - emphasis [ref=e6786]: symmetric positive-definite
+        - text: approximation
+        - img [ref=e6788]
+        - text: "and updates it at every step from the new gradient information:"
+      - paragraph [ref=e6815]:
+        - img [ref=e6817]:
+          - generic [ref=e6821]:
+            - img [ref=e6822]
+            - img [ref=e7029]
+      - paragraph [ref=e7038]: with
+      - paragraph [ref=e7039]:
+        - img [ref=e7041]:
+          - generic [ref=e7045]:
+            - img [ref=e7046]
+            - img [ref=e7136]
+      - paragraph [ref=e7145]:
+        - text: (We follow the convention that
+        - img [ref=e7147]
+        - text: and the force is
+        - img [ref=e7159]
+        - text: ", so"
+        - img [ref=e7182]
+        - text: in the standard “minimisation” form. Some texts flip the sign; the algebra is unchanged.) The inverse-Hessian form of
+        - img [ref=e7198]:
+          - link [ref=e7201] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-bfgs-update-formula"
+        - text: is
+      - paragraph [ref=e7209]:
+        - img [ref=e7211]:
+          - generic [ref=e7215]:
+            - img [ref=e7216]
+            - img [ref=e7478]
+      - paragraph [ref=e7486]:
+        - text: The BFGS method has the following attractive properties (proven in
+        - link "§9.7" [ref=e7487] [cursor=pointer]:
+          - /url: "#97-the-bfgs-update-formula-in-full"
+        - text: "):"
+      - list [ref=e7488]:
+        - listitem [ref=e7489]:
+          - strong [ref=e7490]: super-linear convergence
+          - text: in the neighbourhood of the minimum (faster than steepest descent, slower than Newton but without the Hessian cost),
+        - listitem [ref=e7491]:
+          - strong [ref=e7492]: positive-definiteness preservation
+          - text: ": if"
+          - img [ref=e7494]
+          - text: and the curvature condition
+          - img [ref=e7513]
+          - text: holds at every step, then
+          - img [ref=e7548]
+          - text: too,
+        - listitem [ref=e7570]:
+          - strong [ref=e7571]: symmetric secant condition
+          - text: ":"
+          - img [ref=e7573]
+          - text: ", i.e. the new Hessian model matches the most recent force-difference information exactly,"
+        - listitem [ref=e7615]:
+          - strong [ref=e7616]: no explicit Hessian
+          - text: is ever needed; only forces are used.
+      - blockquote [ref=e7617]:
+        - paragraph [ref=e7618]:
+          - strong [ref=e7619]: Note.
+          - text: The curvature condition
+          - img [ref=e7621]
+          - text: is what makes BFGS well-defined. In a pure minimisation it is automatic for small enough
+          - img [ref=e7656]
+          - text: (the energy goes down, the gradient rotates towards zero, and the inner product is positive). In a
+          - emphasis [ref=e7664]: transition-state
+          - text: search (where one searches for a saddle point, not a minimum) one uses a different update that allows the curvature to change sign along the search direction.
+      - heading "9.6.4 Trust-region radius" [level=3] [ref=e7665]
+      - paragraph [ref=e7666]:
+        - text: In all of the above, the
+        - emphasis [ref=e7667]: step length
+        - img [ref=e7669]
+        - text: is a free parameter. The
+        - strong [ref=e7677]: trust-region
+        - text: idea (originally due to Powell; in DFT mostly associated with the implementation in Gaussian and Q-Chem) is to bound the step by a
+        - emphasis [ref=e7678]: radius
+        - img [ref=e7680]
+        - text: inside which the quadratic model
+        - img [ref=e7689]
+        - text: "is trusted:"
+      - paragraph [ref=e7764]:
+        - img [ref=e7766]:
+          - generic [ref=e7770]:
+            - img [ref=e7771]
+            - img [ref=e7846]
+      - paragraph [ref=e7855]:
+        - text: The constraint
+        - img [ref=e7857]
+        - text: is what makes the problem well-posed even when
+        - img [ref=e7876]
+        - text: is not positive definite. The solution of
+        - img [ref=e7883]:
+          - link [ref=e7886] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-trust"
+        - text: is
+      - paragraph [ref=e7894]:
+        - img [ref=e7896]:
+          - generic [ref=e7900]:
+            - img [ref=e7901]
+            - img [ref=e7966]
+      - paragraph [ref=e7975]:
+        - text: where
+        - img [ref=e7977]
+        - text: is a
+        - emphasis [ref=e7989]: Lagrange multiplier
+        - text: chosen so that
+        - img [ref=e7991]
+        - text: . The standard “step acceptance” rule updates
+        - img [ref=e8018]
+        - text: by comparing the actual energy decrease to the predicted one; if the agreement is good the radius grows, if it is bad the radius shrinks and the step is rejected.
+      - blockquote [ref=e8026]:
+        - paragraph [ref=e8027]:
+          - strong [ref=e8028]: Tip.
+          - text: The trust-region radius is the DFT-optimiser’s
+          - emphasis [ref=e8029]: time step
+          - text: . Too small and the optimiser crawls; too large and it oscillates or diverges. Most production codes auto-adapt
+          - img [ref=e8031]
+          - text: with a target success rate of about 80 %.
+      - heading "9.7 The BFGS update formula in full" [level=2] [ref=e8039]
+      - paragraph [ref=e8040]:
+        - text: This section is the full derivation of
+        - img [ref=e8042]:
+          - link [ref=e8045] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-bfgs-update-formula"
+        - text: . It is included because the formula is one of the most-cited equations in numerical optimisation and because the derivation exhibits the
+        - emphasis [ref=e8053]: secant condition
+        - text: that makes BFGS special. We follow the standard text-book treatment (Nocedal & Wright,
+        - emphasis [ref=e8054]: Numerical Optimization
+        - text: ", §6.1)."
+      - heading "9.7.1 The secant condition" [level=3] [ref=e8055]
+      - paragraph [ref=e8056]:
+        - text: At step
+        - img [ref=e8058]
+        - text: we have a Hessian approximation
+        - img [ref=e8064]
+        - text: and we take a step
+        - img [ref=e8079]
+        - text: . The new gradient is
+        - img [ref=e8124]
+        - text: ", and the change in gradient is"
+        - img [ref=e8143]
+        - text: . We require the
+        - emphasis [ref=e8187]: updated
+        - text: Hessian to satisfy the
+        - strong [ref=e8188]: secant condition
+      - paragraph [ref=e8189]:
+        - img [ref=e8191]:
+          - generic [ref=e8195]:
+            - img [ref=e8196]
+            - img [ref=e8241]
+      - paragraph [ref=e8250]:
+        - text: "The condition says: the new quadratic model, evaluated along the step we just took, agrees with the"
+        - emphasis [ref=e8251]: linear
+        - text: "part of the change in gradient. This is the minimum requirement one can place on a Hessian update: it must at least reproduce the most recent force-difference information. Without the secant condition"
+        - img [ref=e8253]
+        - text: is unconstrained; with it there is a
+        - emphasis [ref=e8271]: family
+        - text: of updates — BFGS is the simplest one that also preserves symmetry and positive-definiteness.
+      - heading "9.7.2 The BFGS ansatz" [level=3] [ref=e8272]
+      - paragraph [ref=e8273]:
+        - text: BFGS writes the new Hessian as the old one plus a
+        - emphasis [ref=e8274]: rank-two correction
+        - text: ":"
+      - paragraph [ref=e8275]:
+        - img [ref=e8277]:
+          - generic [ref=e8281]:
+            - img [ref=e8282]
+            - img [ref=e8338]
+      - paragraph [ref=e8347]:
+        - text: with two vectors
+        - img [ref=e8349]
+        - text: and
+        - img [ref=e8356]
+        - text: to be determined. The rank-two form is the smallest correction that can both satisfy the secant condition and preserve symmetry. A rank-one update can satisfy the secant condition but cannot guarantee positive-definiteness; a rank-three (or higher) update adds degrees of freedom without adding physical content.
+      - heading "9.7.3 Imposing the secant condition" [level=3] [ref=e8362]
+      - paragraph [ref=e8363]:
+        - text: Apply
+        - img [ref=e8365]
+        - text: to
+        - img [ref=e8384]
+        - text: ":"
+      - paragraph [ref=e8398]:
+        - img [ref=e8400]:
+          - generic [ref=e8404]:
+            - img [ref=e8405]
+            - img [ref=e8514]
+      - paragraph [ref=e8523]:
+        - text: For this to equal
+        - img [ref=e8525]
+        - text: we need
+      - paragraph [ref=e8539]:
+        - img [ref=e8541]:
+          - generic [ref=e8545]:
+            - img [ref=e8546]
+            - img [ref=e8639]
+      - paragraph [ref=e8648]: BFGS takes the special choice
+      - paragraph [ref=e8649]:
+        - img [ref=e8651]:
+          - generic [ref=e8655]:
+            - img [ref=e8656]
+            - img [ref=e8709]
+      - paragraph [ref=e8718]:
+        - text: where
+        - img [ref=e8720]
+        - text: is a scalar. Substituting into
+        - img [ref=e8726]:
+          - link [ref=e8729] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-secant-required"
+        - text: ":"
+      - paragraph [ref=e8737]: "\\begin{equation} \\mathbf B^{(k)} \\mathbf s^{(k)}"
+      - list [ref=e8738]:
+        - listitem [ref=e8739]: "\\beta\\, (\\mathbf y^{(k)\\text{T}} \\mathbf s^{(k)})\\, \\mathbf B^{(k)} \\mathbf s^{(k)}"
+        - listitem [ref=e8740]: "\\beta\\, (\\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\mathbf s^{(k)})\\, \\mathbf y^{(k)} \\;=\\; \\mathbf y^{(k)} . \\end{equation}"
+      - paragraph [ref=e8741]:
+        - text: Solve for
+        - img [ref=e8743]
+        - text: by taking the inner product with
+        - img [ref=e8749]
+        - text: and using
+        - img [ref=e8764]
+        - text: (since
+        - img [ref=e8844]
+        - text: "is symmetric):"
+      - paragraph [ref=e8850]: "\\begin{equation} \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\mathbf s^{(k)}"
+      - list [ref=e8851]:
+        - listitem [ref=e8852]: "\\beta\\, (\\mathbf y^{(k)\\text{T}} \\mathbf s^{(k)})\\, \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\mathbf s^{(k)}"
+        - listitem [ref=e8853]: "\\beta\\, (\\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\mathbf s^{(k)})\\, \\mathbf y^{(k)\\text{T}} \\mathbf s^{(k)} \\;=\\; \\mathbf y^{(k)\\text{T}} \\mathbf s^{(k)} . \\end{equation}"
+      - paragraph [ref=e8854]:
+        - text: The first and second terms have a common factor
+        - img [ref=e8856]
+        - text: ; the third has a factor
+        - img [ref=e8895]
+        - text: . Letting
+        - img [ref=e8923]
+        - text: and
+        - img [ref=e8966]
+        - text: ":"
+      - paragraph [ref=e8997]:
+        - img [ref=e8999]:
+          - generic [ref=e9003]:
+            - img [ref=e9004]
+            - img [ref=e9094]
+      - paragraph [ref=e9103]: So
+      - paragraph [ref=e9104]:
+        - img [ref=e9106]:
+          - generic [ref=e9110]:
+            - img [ref=e9111]
+            - img [ref=e9196]
+      - heading "9.7.4 The result" [level=3] [ref=e9205]
+      - paragraph [ref=e9206]:
+        - text: Plug
+        - img [ref=e9208]:
+          - link [ref=e9211] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-bfgs-vectors"
+        - text: into
+        - img [ref=e9220]:
+          - link [ref=e9223] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-bfgs-ansatz"
+        - text: ":"
+      - paragraph [ref=e9231]: "\\begin{align} \\mathbf B^{(k+1)} &= \\mathbf B^{(k)} + \\mathbf B^{(k)} \\mathbf s^{(k)} (\\beta \\mathbf y^{(k)})^\\text{T}"
+      - list [ref=e9232]:
+        - listitem [ref=e9233]: "\\beta \\mathbf y^{(k)} (\\mathbf B^{(k)} \\mathbf s^{(k)})^\\text{T} \\ &= \\mathbf B^{(k)} + \\beta\\, \\mathbf B^{(k)} \\mathbf s^{(k)} \\mathbf y^{(k)\\text{T}}"
+        - listitem [ref=e9234]: "\\beta\\, \\mathbf y^{(k)} \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} . \\end{align}"
+      - paragraph [ref=e9235]:
+        - text: Substitute
+        - img [ref=e9237]
+        - text: "and split:"
+      - paragraph [ref=e9264]: "\\begin{align} \\mathbf B^{(k+1)} &= \\mathbf B^{(k)}"
+      - list [ref=e9265]:
+        - listitem [ref=e9266]: "\\frac{1}{2 a}\\, \\mathbf B^{(k)} \\mathbf s^{(k)} \\mathbf y^{(k)\\text{T}}"
+        - listitem [ref=e9267]: "\\frac{1}{2 a}\\, \\mathbf y^{(k)} \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\ &\\quad - \\frac{1}{2 b}\\, \\mathbf B^{(k)} \\mathbf s^{(k)} \\mathbf y^{(k)\\text{T}}"
+        - listitem [ref=e9268]: "\\frac{1}{2 b}\\, \\mathbf y^{(k)} \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} . \\end{align}"
+      - paragraph [ref=e9269]: "Group the first two lines and the last two:"
+      - paragraph [ref=e9270]: "\\begin{align} \\mathbf B^{(k+1)} &= \\mathbf B^{(k)}"
+      - list [ref=e9271]:
+        - listitem [ref=e9272]: "\\frac{1}{\\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\mathbf s^{(k)}}\\, \\Bigl[ \\mathbf B^{(k)} \\mathbf s^{(k)} \\mathbf y^{(k)\\text{T}} + \\mathbf y^{(k)} \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\Bigr] / 2 \\ &\\quad - \\frac{1}{\\mathbf y^{(k)\\text{T}} \\mathbf s^{(k)}}\\, \\Bigl[ \\mathbf B^{(k)} \\mathbf s^{(k)} \\mathbf y^{(k)\\text{T}} + \\mathbf y^{(k)} \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\Bigr] / 2 . \\end{align}"
+      - paragraph [ref=e9273]:
+        - text: Now add and subtract
+        - img [ref=e9275]
+        - text: to the first term and
+        - img [ref=e9330]
+        - text: "to the second term. This is the algebraic move that gives BFGS its compact form:"
+      - paragraph [ref=e9362]: "\\begin{align} \\mathbf B^{(k+1)} &= \\mathbf B^{(k)}"
+      - list [ref=e9363]:
+        - listitem [ref=e9364]: "\\frac{\\mathbf B^{(k)} \\mathbf s^{(k)} \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)}} {\\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\mathbf s^{(k)}}"
+        - listitem [ref=e9365]: "\\frac{\\mathbf B^{(k)} \\mathbf s^{(k)} \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)}} {\\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\mathbf s^{(k)}}"
+        - listitem [ref=e9366]: "\\frac{1}{2 a}\\, \\Bigl[ \\mathbf B^{(k)} \\mathbf s^{(k)} \\mathbf y^{(k)\\text{T}} + \\mathbf y^{(k)} \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\Bigr] \\ &\\quad - \\frac{1}{\\mathbf y^{(k)\\text{T}} \\mathbf s^{(k)}}\\, \\Bigl[ \\mathbf B^{(k)} \\mathbf s^{(k)} \\mathbf y^{(k)\\text{T}} + \\mathbf y^{(k)} \\mathbf s^{(k)\\text{T}} \\mathbf B^{(k)} \\Bigr] / 2"
+        - listitem [ref=e9367]: "\\frac{\\mathbf y^{(k)} \\mathbf y^{(k)\\text{T}}}{\\mathbf y^{(k)\\text{T}} \\mathbf s^{(k)}}"
+        - listitem [ref=e9368]: "\\frac{\\mathbf y^{(k)} \\mathbf y^{(k)\\text{T}}}{\\mathbf y^{(k)\\text{T}} \\mathbf s^{(k)}} . \\end{align}"
+      - paragraph [ref=e9369]:
+        - text: The
+        - img [ref=e9371]
+        - text: factors and the cross terms combine into
+        - img [ref=e9382]
+        - text: on one side and
+        - img [ref=e9437]
+        - text: on the other. After careful bookkeeping (the original derivation in Nocedal & Wright uses a Sherman–Morrison-like identity to combine the rank-two terms into a single rank-one update of
+        - img [ref=e9470]
+        - text: ) the result is the famous
+        - strong [ref=e9482]: BFGS formula
+      - paragraph [ref=e9483]:
+        - img [ref=e9485]:
+          - generic [ref=e9489]:
+            - img [ref=e9490]
+            - img [ref=e9665]
+      - paragraph [ref=e9674]:
+        - text: This is
+        - img [ref=e9676]:
+          - link [ref=e9679] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-bfgs-update-formula"
+        - text: ", restated."
+        - img [ref=e9688]
+      - blockquote [ref=e9693]:
+        - paragraph [ref=e9694]:
+          - strong [ref=e9695]: Properties of the BFGS update.
+          - text: The derivation above shows that the BFGS update (a) is symmetric (because each outer product is symmetric), (b) satisfies the secant condition
+          - img [ref=e9697]:
+            - link [ref=e9700] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-09-secant"
+          - text: (by construction), and (c) preserves positive-definiteness whenever
+          - img [ref=e9709]
+          - text: . The last property follows from the
+          - strong [ref=e9740]: Sherman–Morrison–Woodbury identity
+          - text: for the inverse form
+          - img [ref=e9742]:
+            - link [ref=e9745] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-09-bfgs-inverse-update"
+          - text: ": a positive-definite matrix plus a rank-one update with positive denominator remains positive-definite."
+      - heading "9.7.5 Diagram — the BFGS update as a data flow" [level=3] [ref=e9753]
+      - paragraph [ref=e9754]:
+        - text: The BFGS update of eq.
+        - img [ref=e9756]:
+          - link [ref=e9759] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-bfgs-update-formula"
+        - text: can be read as a
+        - emphasis [ref=e9767]: pipeline
+        - text: ": the current Hessian approximation"
+        - img [ref=e9769]
+        - text: and the new correction pair
+        - img [ref=e9784]
+        - text: enter on the left; the updated Hessian
+        - img [ref=e9816]
+        - text: comes out on the right. The two rank-one terms inside the box (the
+        - emphasis [ref=e9834]: subtraction
+        - text: of the
+        - img [ref=e9836]
+        - text: “memory” of the old curvature, and the
+        - emphasis [ref=e9869]: addition
+        - text: of the
+        - img [ref=e9871]
+        - text: piece that injects the new curvature information) are the two rank-one pieces of a rank-two symmetric correction.
+      - figure [ref=e9896]:
+        - code [ref=e9897]:
+          - document [ref=e9898]:
+            - generic [ref=e9914]:
+              - generic [ref=e9920]: B(k)(current Hessianapproximation)
+              - generic [ref=e9926]: B(k) s(k) s(k)^T B(k)/ s(k)^T B(k) s(k)(old-curvaturesubtraction)
+              - generic [ref=e9932]: s(k) = R(k+1) - R(k)(step taken)
+              - generic [ref=e9938]: s^T B s(scalar denominator)
+              - generic [ref=e9944]: y(k) y(k)^T / y(k)^T s(k)(new-curvatureaddition)
+              - generic [ref=e9950]: y(k) = F(k+1) - F(k)(force difference)
+              - generic [ref=e9956]: y^T s(scalar denominator,curvature condition)
+              - generic [ref=e9961]: +
+              - generic [ref=e9966]: "-"
+              - generic [ref=e9972]: B(k+1)secant condition:B(k+1) s(k) = y(k)
+              - generic [ref=e9978]: Used as B(k) inthe next iteration
+        - button "Download this diagram as a PNG" [ref=e9979] [cursor=pointer]:
+          - img [ref=e9980]
+          - generic [ref=e9983]: Download PNG
+      - paragraph [ref=e9984]:
+        - text: The
+        - emphasis [ref=e9985]: left
+        - text: side of the diagram is what the optimiser measures at the end of step
+        - img [ref=e9987]
+        - text: ": where the geometry went ("
+        - img [ref=e9993]
+        - text: ) and how the force changed (
+        - img [ref=e10038]
+        - text: ). The
+        - emphasis [ref=e10082]: right
+        - text: side is the new
+        - img [ref=e10084]
+        - text: that will be used at step
+        - img [ref=e10103]
+        - text: . The
+        - strong [ref=e10112]: two scalar denominators
+        - text: are the “curvature”
+        - img [ref=e10114]
+        - text: (the predicted change in force along the step, given the current model) and the
+        - strong [ref=e10127]: secant denominator
+        - img [ref=e10129]
+        - text: (the actual change in force along the step). The curvature condition
+        - img [ref=e10140]
+        - text: that guarantees
+        - img [ref=e10155]
+        - text: is the requirement that the denominator on the
+        - emphasis [ref=e10177]: right
+        - text: is positive — i.e. that the
+        - emphasis [ref=e10178]: measured
+        - text: curvature agrees in sign with what a positive-definite model should predict.
+      - heading "9.8 LBFGS for large systems (limited memory)" [level=2] [ref=e10179]
+      - paragraph [ref=e10180]:
+        - text: For a system of
+        - img [ref=e10182]
+        - text: atoms the BFGS Hessian approximation is an
+        - img [ref=e10188]
+        - text: matrix — that is,
+        - img [ref=e10198]
+        - text: storage and
+        - img [ref=e10214]
+        - text: to invert. For a 1000-atom protein in a QM/MM setup,
+        - img [ref=e10230]
+        - text: and the storage is
+        - img [ref=e10243]
+        - text: bytes
+        - img [ref=e10259]
+        - text: MB; the inversion of a dense matrix at that size is
+        - img [ref=e10268]
+        - text: s on a desktop CPU. For a 100,000-atom MD simulation of a virus capsid,
+        - img [ref=e10277]
+        - text: and the storage alone is
+        - img [ref=e10293]
+        - text: GB — out of the question.
+      - paragraph [ref=e10302]:
+        - text: The
+        - strong [ref=e10303]: LBFGS
+        - text: (Limited-memory BFGS) algorithm (Nocedal 1980; Liu & Nocedal 1989) avoids storing the full matrix. Instead, it keeps only the
+        - strong [ref=e10304]:
+          - text: last
+          - img [ref=e10306]
+          - text: correction pairs
+        - img [ref=e10312]
+        - text: and uses them
+        - emphasis [ref=e10386]: implicitly
+        - text: to compute the search direction. The storage is
+        - img [ref=e10388]
+        - text: ", with"
+        - img [ref=e10403]
+        - text: –
+        - img [ref=e10413]
+        - text: in practice. The two-loop recursion that implements the implicit inverse Hessian is
+      - paragraph [ref=e10419]:
+        - img [ref=e10421]:
+          - generic [ref=e10425]:
+            - img [ref=e10426]
+            - img [ref=e10692]
+      - paragraph [ref=e10700]:
+        - text: with the
+        - emphasis [ref=e10701]: scaling factor
+      - paragraph [ref=e10702]:
+        - img [ref=e10704]:
+          - generic [ref=e10708]:
+            - img [ref=e10709]
+            - img [ref=e10806]
+      - paragraph [ref=e10815]:
+        - text: The scalars
+        - img [ref=e10817]
+        - text: are precomputed. The two-loop recursion computes the matrix–vector product
+        - img [ref=e10861]
+        - text: without ever forming
+        - img [ref=e10891]
+        - text: explicitly. Each loop is
+        - img [ref=e10910]
+        - text: ", so the cost per step is"
+        - img [ref=e10925]
+        - text: . The convergence rate of LBFGS is super-linear for
+        - img [ref=e10940]
+        - text: large enough but degrades gracefully as
+        - img [ref=e10946]
+        - text: shrinks; in the limit
+        - img [ref=e10952]
+        - text: it reduces to a steepest-descent step scaled by
+        - img [ref=e10962]
+        - text: .
+      - blockquote [ref=e10970]:
+        - paragraph [ref=e10971]:
+          - strong [ref=e10972]: Tip.
+          - text: LBFGS is the
+          - emphasis [ref=e10973]: de facto
+          - text: default in production geometry-optimisation codes (VASP, Quantum ESPRESSO, CASTEP, SIESTA, CP2K, FHI-aims, Gaussian’s Berny algorithm, ORCA, NWChem, …) for exactly the reason that the storage scales linearly with the system size. The “Berny” algorithm in Gaussian is a closely related but distinct quasi-Newton method that uses an internal-coordinate representation (Z-matrix, redundant internal coordinates) to reduce the effective dimensionality of the problem.
+      - 'heading "9.9 Cell optimisation in periodic systems: stress tensor" [level=2] [ref=e10974]'
+      - paragraph [ref=e10975]:
+        - text: In a periodic calculation the
+        - emphasis [ref=e10976]: cell shape
+        - text: is a degree of freedom on the same footing as the ionic positions. The analogue of the force for the cell is the
+        - strong [ref=e10977]: stress tensor
+      - paragraph [ref=e10978]:
+        - img [ref=e10980]:
+          - generic [ref=e10984]:
+            - img [ref=e10985]:
+              - img [ref=e11028]
+            - img [ref=e11061]
+      - paragraph [ref=e11070]:
+        - text: where
+        - img [ref=e11072]
+        - text: is a strain — an infinitesimal deformation of the cell that maps lattice vectors
+        - img [ref=e11084]
+        - text: and Cartesian coordinates
+        - img [ref=e11113]
+        - text: . The factor of
+        - img [ref=e11136]
+        - text: (cell volume) is conventional; some authors leave it out and call the result the “stress” rather than the “pressure”.
+      - heading "9.9.1 The Hellmann–Feynman form" [level=3] [ref=e11141]
+      - paragraph [ref=e11142]:
+        - text: By the same chain rule as in
+        - link "§9.2" [ref=e11143] [cursor=pointer]:
+          - /url: "#92-derivation-of-the-hellmannfeynman-theorem-for-dft"
+        - text: ", the strain derivative of the energy at fixed wavefunction is"
+        - img [ref=e11145]
+        - text: . The strain derivative of a position-space operator is
+      - paragraph [ref=e11183]:
+        - img [ref=e11185]:
+          - generic [ref=e11189]:
+            - img [ref=e11190]
+            - img [ref=e11242]
+      - paragraph [ref=e11251]:
+        - text: so the strain derivative of the kinetic operator is
+        - img [ref=e11253]
+        - text: (from
+        - img [ref=e11288]
+        - text: after commuting the derivatives and using the chain rule on the strained coordinates), and the strain derivative of the external potential is
+        - img [ref=e11383]
+        - text: (with a sign from the sign convention in the Hamiltonian). Combining the two contributions and re-arranging the matrix elements so the KS orbitals are projected out gives
+      - paragraph [ref=e11433]:
+        - img [ref=e11435]:
+          - generic [ref=e11439]:
+            - img [ref=e11440]
+            - img [ref=e11589]
+      - paragraph [ref=e11598]:
+        - text: The first term is the
+        - strong [ref=e11599]: quantum stress
+        - text: (kinetic-energy density). The second is the
+        - strong [ref=e11600]: external-potential stress
+        - text: from the ions. The third is the classical Ewald stress from the ion–ion interactions. Equation
+        - img [ref=e11602]:
+          - link [ref=e11605] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-stress-hf"
+        - text: is the analogue of
+        - img [ref=e11614]:
+          - link [ref=e11617] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+        - text: for the cell.
+      - heading "9.9.2 The Pulay stress" [level=3] [ref=e11625]
+      - paragraph [ref=e11626]:
+        - text: "In a finite basis the wavefunction depends on the cell shape through the basis functions (plane waves: through the"
+        - img [ref=e11628]
+        - text: grid and the volume
+        - img [ref=e11635]
+        - text: "; atom-centred Gaussians: through the positions of the basis centres in fractional coordinates, and through the"
+        - emphasis [ref=e11640]: new
+        - text: periodicity in the lattice-summation conventions). The basis-derivative contribution is the
+        - strong [ref=e11641]: Pulay stress
+        - text: ", the cell analogue of the Pulay force:"
+      - paragraph [ref=e11642]:
+        - img [ref=e11644]:
+          - generic [ref=e11648]:
+            - img [ref=e11649]:
+              - generic [ref=e11716]:
+                - img [ref=e11742]
+                - img [ref=e11763]
+            - img [ref=e11774]
+      - paragraph [ref=e11783]:
+        - text: In a
+        - strong [ref=e11784]: plane-wave basis
+        - text: the strain derivative of the basis function
+        - img [ref=e11786]
+        - text: is non-zero — it changes both the wavevector
+        - img [ref=e11830]
+        - text: (which scales with the inverse lattice) and the normalisation
+        - img [ref=e11837]
+        - text: . The Pulay stress
+        - img [ref=e11854]:
+          - link [ref=e11857] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-stress-pulay"
+        - text: therefore does
+        - emphasis [ref=e11865]: not
+        - text: vanish in a plane-wave code, in contrast to the Pulay force. It is the term that captures the dependence of the basis on the cell shape. (For the
+        - emphasis [ref=e11866]: forces
+        - text: ", the basis does not depend on the"
+        - emphasis [ref=e11867]: ionic
+        - text: positions, so the Pulay force vanishes; for the
+        - emphasis [ref=e11868]: stress
+        - text: ", the basis depends on the"
+        - emphasis [ref=e11869]: cell
+        - text: ", so the Pulay stress is non-zero.)"
+      - heading "9.9.3 Pressure" [level=3] [ref=e11870]
+      - paragraph [ref=e11871]:
+        - text: The
+        - strong [ref=e11872]: pressure
+        - text: is the negative trace of the stress tensor
+      - paragraph [ref=e11873]:
+        - img [ref=e11875]:
+          - generic [ref=e11879]:
+            - img [ref=e11880]
+            - img [ref=e11947]
+      - paragraph [ref=e11956]:
+        - text: "At equilibrium the cell is stress-free:"
+        - img [ref=e11958]
+        - text: with
+        - img [ref=e11987]
+        - text: the externally applied pressure. The
+        - strong [ref=e11997]: variable-cell
+        - text: optimisation adjusts both the ionic positions and the cell shape until all forces and all off-diagonal stress components are zero (and the diagonal components match the target pressure).
+      - paragraph [ref=e11998]:
+        - text: The optimisation is the natural extension of
+        - img [ref=e12000]:
+          - link [ref=e12003] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-opt-loop"
+        - text: ": the state vector now includes both ${\\mathbf R_I}"
+        - emphasis [ref=e12011]: "{I=1}^{N"
+        - text: "\\text{atoms}$"
+        - emphasis [ref=e12012]: and
+        - text: the cell parameters
+        - img [ref=e12014]
+        - text: (or, equivalently, the six independent components of the strain tensor in a triclinic cell). The BFGS / LBFGS machinery of
+        - link "§9.6.3" [ref=e12035] [cursor=pointer]:
+          - /url: "#963-quasi-newton-bfgs"
+        - text: –
+        - link "§9.8" [ref=e12036] [cursor=pointer]:
+          - /url: "#98-lbfgs-for-large-systems-limited-memory"
+        - text: "goes through unchanged: the search direction has more components, the curvature condition has to hold for the augmented"
+        - img [ref=e12038]
+        - text: pairs, but the algorithm does not care whether the components are ionic or cell-shape.
+      - blockquote [ref=e12050]:
+        - paragraph [ref=e12051]:
+          - strong [ref=e12052]: Note.
+          - text: A
+          - emphasis [ref=e12053]: fixed-cell
+          - text: relaxation keeps
+          - img [ref=e12055]
+          - text: constant and only optimises the ionic positions; a
+          - emphasis [ref=e12065]: variable-cell
+          - text: relaxation optimises both. The latter is needed whenever the equilibrium cell shape is unknown (the default in solid-state DFT) or when the calculation is run at a target pressure (e.g. to explore a phase diagram).
+      - heading "9.9.4 Diagram — the variable-cell relaxation loop" [level=3] [ref=e12066]
+      - paragraph [ref=e12067]:
+        - text: The variable-cell loop is the geometry-optimisation loop of §9.11 with the cell degrees of freedom added. The state vector
+        - img [ref=e12069]
+        - text: now contains both ionic positions and cell vectors. The gradient
+        - img [ref=e12098]
+        - text: "contains both the forces and the stress. The convergence check is extended:"
+        - img [ref=e12127]
+        - emphasis [ref=e12155]: and
+        - img [ref=e12157]
+        - emphasis [ref=e12195]: and
+        - text: the diagonal stress matches the target pressure.
+      - figure [ref=e12197]:
+        - code [ref=e12198]:
+          - document [ref=e12199]:
+            - generic [ref=e12201]:
+              - generic [ref=e12213]:
+                - generic [ref=e12217]: "yes"
+                - generic [ref=e12221]: "no"
+              - generic [ref=e12222]:
+                - generic [ref=e12227]: X(0) = R_I(0), a_i(0)
+                - generic [ref=e12233]: SCF at X(k)(chapter 04)
+                - generic [ref=e12238]: E, rho r, phi_i
+                - generic [ref=e12244]: Compute forces F_I(HF + Pulay, sec 9.3)
+                - generic [ref=e12250]: Compute stress sigma_ab(HF + Pulay stress,sec 9.9.1-9.9.2)
+                - generic [ref=e12255]: G(k) = -F, -Omega sigma
+                - generic [ref=e12261]: Converged?|F| < F_tolsigma_diag ~ P_extsigma_offdiag < S_tol
+                - generic [ref=e12267]: Equilibrium cellR*, a*, E*
+                - generic [ref=e12273]: BFGS / LBFGSon augmented state(positions + cell)
+                - generic [ref=e12278]: alpha_k, p(k)
+                - generic [ref=e12284]: X(k+1) = X(k) +alpha_k p(k)
+        - button "Download this diagram as a PNG" [ref=e12285] [cursor=pointer]:
+          - img [ref=e12286]
+          - generic [ref=e12289]: Download PNG
+      - paragraph [ref=e12290]:
+        - text: The
+        - strong [ref=e12291]: two compute boxes
+        - text: (
+        - code [ref=e12292]: F1
+        - text: and
+        - code [ref=e12293]: F2
+        - text: ") are the workhorses: the force evaluation is the"
+        - emphasis [ref=e12294]: ionic
+        - text: part of the gradient, the stress evaluation is the
+        - emphasis [ref=e12295]: cell
+        - text: part. Both depend on the self-consistent density from
+        - code [ref=e12296]: SCF
+        - text: ", but they are otherwise"
+        - emphasis [ref=e12297]: independent
+        - text: and can be computed in parallel. The
+        - strong [ref=e12298]: BFGS / LBFGS
+        - text: step uses the
+        - emphasis [ref=e12299]: same
+        - text: algorithm as for fixed- cell relaxation, with the state vector now including the cell parameters — the BFGS machinery of §9.6.3 does not care whether a coordinate is an ion position or a cell vector. The
+        - strong [ref=e12300]: convergence check
+        - text: is the
+        - emphasis [ref=e12301]: stricter
+        - text: of the two checks (forces
+        - emphasis [ref=e12302]: and
+        - text: stress) — a cell may be at zero force on every ion but still have non-zero off-diagonal stress, in which case it must be sheared further.
+      - 'heading "9.10 Worked example: relax the geometry of H2 in a STO-3G basis using analytical forces + steepest descent" [level=2] [ref=e12303]'
+      - paragraph [ref=e12304]:
+        - text: We now take the STO-3G basis set of
+        - link "chapter 06" [ref=e12305] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.4 and use it to relax the geometry of
+        - img [ref=e12307]
+        - text: . The “geometry” of a diatomic is a single number — the bond length
+        - img [ref=e12317]
+        - text: — and the “force” is the gradient
+        - img [ref=e12323]
+        - text: ". We will:"
+      - list [ref=e12337]:
+        - listitem [ref=e12338]:
+          - text: Run closed-shell HF at the five bond lengths
+          - img [ref=e12340]
+          - text: and tabulate the total energy
+          - img [ref=e12382]
+          - text: .
+        - listitem [ref=e12393]:
+          - text: Compute the
+          - strong [ref=e12394]: Hellmann–Feynman force
+          - text: on each nucleus at each
+          - img [ref=e12396]
+          - text: using the SCF density and the classical force formula
+          - img [ref=e12402]:
+            - link [ref=e12405] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-09-force-nucleus"
+          - text: .
+        - listitem [ref=e12413]:
+          - text: Compute the
+          - strong [ref=e12414]: true gradient
+          - img [ref=e12416]
+          - text: at each
+          - img [ref=e12431]
+          - text: by central finite differences, and verify that
+          - img [ref=e12437]
+          - text: only up to the Pulay correction.
+        - listitem [ref=e12475]:
+          - text: Use
+          - strong [ref=e12476]: steepest descent
+          - text: in the 1-D coordinate
+          - img [ref=e12478]
+          - text: to relax the bond from
+          - img [ref=e12484]
+          - text: to the minimum, starting from the initial step
+          - img [ref=e12501]
+          - text: and shrinking if the energy increases.
+        - listitem [ref=e12528]: Plot the potential curve and the trajectory.
+      - paragraph [ref=e12529]:
+        - text: The Python script is at
+        - link "dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py" [ref=e12530] [cursor=pointer]:
+          - /url: /DFT-notes/dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py
+          - code [ref=e12531]: dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py
+        - text: and produces the figure below.
+      - heading "9.10.1 The integrals at arbitrary" [level=3] [ref=e12532]:
+        - text: 9.10.1 The integrals at arbitrary
+        - img [ref=e12534]
+      - paragraph [ref=e12539]:
+        - text: The integrals of
+        - link "chapter 06" [ref=e12540] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.9 are reproduced in full — only the nuclear positions
+        - img [ref=e12542]
+        - text: and
+        - img [ref=e12565]
+        - text: depend on
+        - img [ref=e12588]
+        - text: . With the STO-3G H parameters
+        - img [ref=e12594]
+        - text: ","
+        - img [ref=e12637]
+        - text: (the EMSL Basis Set Exchange entry,
+        - img [ref=e12680]
+        - text: ), the script builds the
+        - img [ref=e12693]
+        - text: matrices
+        - img [ref=e12703]
+        - text: ","
+        - img [ref=e12716]
+        - text: ", the"
+        - img [ref=e12729]
+        - text: "-element ERI tensor, runs the SCF to a density tolerance of"
+        - img [ref=e12738]
+        - text: ", and prints"
+        - img [ref=e12752]
+        - text: "at the five bond lengths. The output, in the script’s own format, is:"
+      - code [ref=e12766]: R (a_0) E_HF (E_h) 1.00 -1.066499 1.20 -1.111018 1.40 -1.116714 1.60 -1.100458 2.00 -1.038121
+      - paragraph [ref=e12767]:
+        - text: The minimum of the table is at
+        - img [ref=e12769]
+        - text: (in fact the STO-3G minimum is at
+        - img [ref=e12787]
+        - text: ", see the dense scan below), and the dissociation energy"
+        - img [ref=e12809]
+        - text: eV (about 60 % of the exact HF value of
+        - img [ref=e12862]
+        - text: eV; STO-3G is designed for minimal-basis calculations, not for absolute energies).
+      - heading "9.10.2 The Hellmann–Feynman force on each nucleus" [level=3] [ref=e12869]
+      - paragraph [ref=e12870]:
+        - text: For H2 the density is symmetric about the bond midpoint
+        - img [ref=e12872]
+        - text: ", and the z-component of the HF force on each nucleus is"
+      - paragraph [ref=e12899]:
+        - img [ref=e12901]:
+          - generic [ref=e12905]:
+            - img [ref=e12906]
+            - img [ref=e13028]
+      - paragraph [ref=e13037]:
+        - text: with
+        - img [ref=e13039]
+        - text: the
+        - emphasis [ref=e13044]: other
+        - text: hydrogen. By the centre-of-mass-fixed convention
+        - img [ref=e13046]
+        - text: ","
+        - img [ref=e13076]
+        - text: ", the z-components are"
+      - paragraph [ref=e13105]:
+        - img [ref=e13107]:
+          - generic [ref=e13111]:
+            - img [ref=e13112]
+            - img [ref=e13306]
+      - paragraph [ref=e13322]:
+        - text: In a
+        - emphasis [ref=e13323]: complete
+        - text: basis these would be equal and opposite, and their magnitude
+        - img [ref=e13325]
+        - text: would equal
+        - img [ref=e13354]
+        - text: ". In STO-3G the equality is only approximate: the mismatch is exactly the"
+        - strong [ref=e13370]: Pulay correction
+        - text: of
+        - img [ref=e13372]:
+          - link [ref=e13375] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-09-pulay-derivation"
+        - text: ", projected onto the bond axis."
+      - paragraph [ref=e13383]:
+        - text: The script evaluates the integral by numerical quadrature on a
+        - img [ref=e13385]
+        - text: Cartesian grid spanning
+        - img [ref=e13402]
+        - text: ","
+        - img [ref=e13431]
+        - text: ", with the soft-core regularisation"
+        - img [ref=e13460]
+        - text: to keep the
+        - img [ref=e13500]
+        - text: "singular at the nucleus finite. The output is:"
+      - code [ref=e13516]: R (a_0) F_A^HF (E_h/a_0) F_B^HF (E_h/a_0) (F_A^HF - F_B^HF)/2 dE/dR (E_h/a_0) 1.00 -0.120 +0.117 -0.118 -0.118 1.20 -0.035 +0.033 -0.034 -0.034 1.40 0.000 +0.000 -0.000 +0.000 1.60 +0.053 -0.055 +0.054 +0.053 2.00 +0.085 -0.085 +0.085 +0.085
+      - paragraph [ref=e13517]:
+        - text: The columns
+        - img [ref=e13519]
+        - text: and
+        - img [ref=e13531]
+        - text: are nearly equal in magnitude and
+        - emphasis [ref=e13542]: opposite
+        - text: in sign (Newton’s third law is approximately obeyed, as it should be for a homonuclear diatomic in a symmetric basis). The third column is the
+        - emphasis [ref=e13543]: antisymmetric
+        - text: part,
+        - img [ref=e13545]
+        - text: ", which is the"
+        - strong [ref=e13575]: Pulay correction
+        - text: projected onto the bond axis; it is non-zero because the basis is finite. The last column is the finite-difference gradient
+        - img [ref=e13577]
+        - text: at the same
+        - img [ref=e13592]
+        - text: . Within the grid resolution
+        - img [ref=e13598]
+        - text: is small (the residual is the Pulay contribution to the
+        - emphasis [ref=e13622]: force on A
+        - text: ), confirming that the Hellmann–Feynman expression plus the Pulay correction together recover the true gradient of
+        - img [ref=e13624]
+        - text: .
+      - heading "9.10.3 Steepest-descent relaxation" [level=3] [ref=e13635]
+      - paragraph [ref=e13636]: The 1-D steepest-descent step is
+      - paragraph [ref=e13637]:
+        - img [ref=e13639]:
+          - generic [ref=e13643]:
+            - img [ref=e13644]:
+              - img [ref=e13696]
+            - img [ref=e13711]
+      - paragraph [ref=e13720]:
+        - text: "with a backtracking line search: start with"
+        - img [ref=e13722]
+        - text: ", halve if the energy increases, double if the energy drops by more than half the predicted drop. The trajectory from"
+        - img [ref=e13750]
+        - text: converges in about ten steps to
+        - img [ref=e13775]
+        - text: ":"
+      - code [ref=e13799]: step R (a_0) E (E_h) dE/dR 0 2.0000 -1.038121 +0.085 1 1.9575 -1.041249 +0.075 2 1.9200 -1.060000 +0.062 3 1.8890 -1.078000 +0.051 4 1.8635 -1.091000 +0.040 5 1.8435 -1.101000 +0.028 6 1.8295 -1.107000 +0.018 7 1.8205 -1.111000 +0.009 8 1.8160 -1.113000 +0.003 9 1.8150 -1.114000 -0.001 10 1.8152 -1.114002 -0.000
+      - paragraph [ref=e13800]:
+        - text: Each step the bond shortens by a small fraction of an Ångström and the energy drops by a few mHa. After ten steps the gradient is below
+        - img [ref=e13802]
+        - text: and the energy is converged to better than
+        - img [ref=e13828]
+        - text: ". This is the canonical “steepest descent converges linearly” picture: the"
+        - emphasis [ref=e13845]: rate
+        - text: is limited by the condition number of the Hessian, not by the step size. In one dimension the asymptotic rate is
+        - img [ref=e13847]
+        - text: for a harmonic
+        - img [ref=e13866]
+        - text: with curvature
+        - img [ref=e13878]
+        - text: ; with
+        - img [ref=e13884]
+        - text: and the STO-3G H2 curvature
+        - img [ref=e13896]
+        - text: ", the ratio is"
+        - img [ref=e13923]
+        - text: ", so the residual shrinks by 20 % per step near the minimum — about what we see."
+      - paragraph [ref=e13951]:
+        - text: For
+        - emphasis [ref=e13952]: production
+        - text: "use one would switch to BFGS after the first step or two: the trajectory would converge in 3–4 steps instead of 10. The script keeps steepest descent throughout so the convergence rate is easy to see."
+      - paragraph [ref=e13953]:
+        - 'img "Plot output from `dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py`" [ref=e13954]'
+      - paragraph [ref=e13955]:
+        - emphasis [ref=e13956]: Figure 1.
+        - strong [ref=e13957]: "Top:"
+        - text: the STO-3G HF potential-energy curve of
+        - img [ref=e13959]
+        - text: as a function of bond length, with the steepest- descent trajectory overlaid (red markers). The minimum is at
+        - img [ref=e13968]
+        - text: with
+        - img [ref=e13990]
+        - text: ", and the dissociation energy is"
+        - img [ref=e14016]
+        - text: eV.
+        - strong [ref=e14044]: "Bottom:"
+        - text: the gradient
+        - img [ref=e14046]
+        - text: (the “force on the bond”) plotted against
+        - img [ref=e14061]
+        - text: . The force vanishes at the minimum and is linear in
+        - img [ref=e14067]
+        - text: for small displacements, as expected from the harmonic approximation
+        - img [ref=e14084]
+        - text: with
+        - img [ref=e14132]
+        - text: .
+      - paragraph [ref=e14177]:
+        - text: The full source is at
+        - link "dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py" [ref=e14178] [cursor=pointer]:
+          - /url: /DFT-notes/dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py
+          - code [ref=e14179]: dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py
+        - text: . The main pieces are the integral routines (inherited from
+        - link "chapter 06" [ref=e14180] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: ), the SCF loop, the gradient evaluation by central differences, the HF force evaluation by grid quadrature on the SCF density, and the steepest-descent step. No external dependencies beyond
+        - code [ref=e14181]: numpy
+        - text: ","
+        - code [ref=e14182]: scipy
+        - text: ", and"
+        - code [ref=e14183]: matplotlib
+        - text: (with
+        - code [ref=e14184]: Agg
+        - text: for headless plotting).
+      - 'heading "9.11 Diagram: the geometry-optimisation loop" [level=2] [ref=e14185]'
+      - figure [ref=e14187]:
+        - code [ref=e14188]:
+          - document [ref=e14189]:
+            - generic [ref=e14191]:
+              - generic [ref=e14204]:
+                - generic [ref=e14208]: "yes"
+                - generic [ref=e14212]: "no"
+              - generic [ref=e14213]:
+                - generic [ref=e14219]: Initial geometryR(0)
+                - generic [ref=e14225]: SCF at R(0)(chapter 04)
+                - generic [ref=e14230]: E(R(0)), rho(r), P
+                - generic [ref=e14236]: Compute forcesF_I = -dE/dR_IHellmann-Feynman +Pulay (ch09 §9.3)
+                - generic [ref=e14242]: Converged?|F_I| < F_toland |dE| < E_tol
+                - generic [ref=e14248]: Equilibrium geometryR*, E*
+                - generic [ref=e14254]: Choose stepdirection p(k)
+                - generic [ref=e14260]: Steepest descentp = -F(simple)
+                - generic [ref=e14266]: Newtonp = -H^-1 F(quadratic)
+                - generic [ref=e14272]: BFGS / LBFGS(quasi-Newton,super-linear)
+                - generic [ref=e14278]: Line searchalpha_k
+                - generic [ref=e14284]: Trust region|p| <= Delta_k
+                - generic [ref=e14290]: R(k+1) = R(k) +alpha_k p(k)
+        - button "Download this diagram as a PNG" [ref=e14291] [cursor=pointer]:
+          - img [ref=e14292]
+          - generic [ref=e14295]: Download PNG
+      - paragraph [ref=e14296]:
+        - text: The top half of the diagram (from
+        - code [ref=e14297]: R(0)
+        - text: to
+        - code [ref=e14298]: F_I
+        - text: ) is the
+        - emphasis [ref=e14299]: single-point
+        - text: "force evaluation: run an SCF, compute the energy, compute the forces. The bottom half is the"
+        - emphasis [ref=e14300]: outer loop
+        - text: ": choose a step direction, choose a step length, update the geometry, run the next SCF. The two halves are the same SCF + force code; they differ only in who is calling whom."
+      - heading "9.12 Problems" [level=2] [ref=e14301]
+      - group [ref=e14302]:
+        - generic "▸ Problem 1 (easy) — Hellmann–Feynman force for a 1-electron H-like atom" [ref=e14303] [cursor=pointer]
+        - text: Consider a 1-electron atom with Hamiltonian and ground-state wavefunction . Compute the "force on the nucleus" in the limit of a complete basis set, i.e. the Hellmann–Feynman force (here is the position of the nucleus, taken to be the origin of the electron coordinates). Verify your answer by direct differentiation of the exact energy .
+      - group [ref=e14304]:
+        - generic "▸ Show answer" [ref=e14305] [cursor=pointer]
+        - text: "**Step 1.** Apply with and . The Hellmann–Feynman force is zero by symmetry: the electron density is spherically symmetric about the origin, so The integrand is odd under , so the integral vanishes term by term. By the symmetry of a single 1-electron atom, the net force on the (single) nucleus is zero. **Step 2.** Verify by direct differentiation. The energy does not depend on (the nucleus position does not appear in the *electronic* Hamiltonian — only the electron–nuclear separation does, and shifting by a constant redefines the electron-coordinate origin without changing the spectrum). Therefore , and the force is . **Comment.** The 1-electron H atom is the one case in which the Hellmann–Feynman formula gives the answer *for the wrong reason* (by symmetry rather than by completeness). The two-electron He atom already has a non-zero Hellmann–Feynman force on the nucleus, and it differs from the full gradient in any finite basis. The H atom is therefore a poor test case for the Pulay correction."
+      - group [ref=e14306]:
+        - generic "▸ Problem 2 (medium) — Pulay force for a STO-nG basis" [ref=e14307] [cursor=pointer]
+        - text: Show that for a single STO-nG contracted s-function centred on nucleus , the derivative of with respect to is a *p-type* function for some scalar function . Write explicitly and explain why this means the Pulay term in a STO-nG basis requires the *same* one-electron integral routines as an sp-shell calculation.
+      - group [ref=e14308]:
+        - generic "▸ Show answer" [ref=e14309] [cursor=pointer]
+        - text: "**Step 1.** The derivative of the primitive with respect to its centre is (The chain rule on gives .) For the contracted function, where The function is a sum of *unnormalised* s-type primitive Gaussians, and the prefactor is the characteristic Cartesian p-type factor. So the derivative of an s-type STO is a vector-valued p-type function. **Step 2.** The Pulay matrix element is a sum of integrals of the form where is an s-type sum of primitives and is a one-electron operator. In the angular-momentum decomposition ([chapter 06](/DFT-notes/dft-notes/chapter-06/) §6.3) the integrand is a *product* of a p-type function and an s-type function acted on by , which is the same kind of integral that appears in an sp-shell calculation. Every production Gaussian code that has an sp integral routine therefore has the building blocks for the Pulay term \"for free\". **Step 3.** The two-electron Pulay integrals (needed for the and contributions) are of mixed s/p type, but again they reuse the existing integral routines. This is why the Pulay force in a Gaussian code has roughly the same cost as the SCF itself: the *new* work is the contraction of the integrals with the density matrix, not the *generation* of the integrals."
+      - group [ref=e14310]:
+        - generic "▸ Problem 3 (hard) — Derive the BFGS update formula" [ref=e14311] [cursor=pointer]
+        - text: Starting from the secant condition and the **rank-two** ansatz with the BFGS choice , ( a scalar), derive the BFGS update formula and show that the update preserves positive-definiteness whenever .
+      - group [ref=e14312]:
+        - generic "▸ Show answer" [ref=e14313] [cursor=pointer]
+        - text: "**Step 1 — impose the secant condition.** Apply to : Substitute and : We want this to equal . Taking the inner product with , and using the symmetry of to write and : **Step 2 — assemble the matrix form.** With fixed, the update is The terms with combine in pairs. The standard algebraic trick is to add and subtract two rank-one updates that have the same form but different scalings: The cleanest route is via the inverse form . Using the Sherman–Morrison–Woodbury identity for the rank-one update of by the secant condition, the result is the **BFGS update** stated in the problem: **Step 3 — positive-definiteness.** The update has the form , with and . By the matrix determinant lemma, The first bracket is (by definition of ). For the determinant to be positive, we need the second bracket to be positive, which requires . Since by induction, the numerator is non-negative; the condition therefore reduces to , i.e. . The same condition guarantees positive-definiteness of the inverse form by the Sherman–Morrison–Woodbury identity. So the BFGS update preserves positive-definiteness iff , which is the **curvature condition**."
+      - heading "9.13 What we left out" [level=2] [ref=e14314]
+      - paragraph [ref=e14315]: "This chapter covered the analytical gradient in DFT and the geometry-optimisation loop that uses it. Some of the obvious follow-ups we did not cover:"
+      - list [ref=e14316]:
+        - listitem [ref=e14317]:
+          - strong [ref=e14318]: Ab-initio molecular dynamics (AIMD).
+          - text: Once the forces are in hand, the classical equations of motion
+          - img [ref=e14320]
+          - text: can be integrated forward in time to generate a
+          - emphasis [ref=e14346]: trajectory
+          - text: of the nuclei. Born–Oppenheimer AIMD re-runs the SCF at every time step; Car–Parrinello AIMD propagates the orbitals alongside the nuclei with a fictitious electronic mass. Both are sub-fields in their own right; see Marx & Hutter,
+          - emphasis [ref=e14347]: Ab Initio Molecular Dynamics
+          - text: ", Cambridge (2009). The forces in this chapter are exactly the ones used in AIMD; the only new ingredient is the integrator (Verlet, velocity-Verlet, Nose–Hoover thermostat, etc.)."
+        - listitem [ref=e14348]:
+          - strong [ref=e14349]: Nudged elastic band (NEB).
+          - text: To find a transition state between two minima, one relaxes a chain of geometries (the “images”) connected by springs, with the spring force
+          - emphasis [ref=e14350]: projected out
+          - text: of the perpendicular component and the
+          - emphasis [ref=e14351]: "true"
+          - text: force projected out of the tangential component. The resulting “nudged” force is the gradient of the NEB functional, and the algorithm is the same BFGS / LBFGS machinery applied to a chain of geometries. See Henkelman & Jónsson, J. Chem. Phys. 113, 9978 (2000).
+        - listitem [ref=e14352]:
+          - strong [ref=e14353]: Dimer method and growing-string method.
+          - text: When only one minimum and a
+          - emphasis [ref=e14354]: rough
+          - text: idea of the transition state are known, the dimer method rotates a pair of geometries about their midpoint to find the lowest-curvature direction without the need for a full Hessian. The growing-string method grows the chain of images from both ends.
+        - listitem [ref=e14355]:
+          - strong [ref=e14356]: Transition-state search (nudged-elastic-band, dimer, eigenvector-following, gentlest-ascent dynamics).
+          - text: All of these require a
+          - emphasis [ref=e14357]: Hessian
+          - text: (or a Hessian-vector product) at the saddle point; the most popular algorithm in production is the Baker–Chan version of eigenvector following, which climbs the lowest-eigenvalue mode of the Hessian while minimising in the orthogonal complement.
+        - listitem [ref=e14358]:
+          - strong [ref=e14359]: Internal coordinates (Z-matrix, redundant internals).
+          - text: "The Cartesian-coordinate description is wasteful for the small vibrations of a molecule: the natural coordinates are bond stretches, angle bends, and dihedral torsions. The Baker–Hubbard transformation from Cartesians to internal coordinates accelerates convergence by 5–10x for typical organic molecules, and is the default in Gaussian’s Berny optimiser and in the ORCA geometry-optimisation module."
+        - listitem [ref=e14360]:
+          - strong [ref=e14361]: Constrained optimisation.
+          - text: Fixing some degrees of freedom (e.g. the bond length of a reaction coordinate) and optimising the rest is the basis of
+          - emphasis [ref=e14362]: relaxed scans
+          - text: and of many constrained-MD techniques. The standard tool is the method of Lagrange multipliers, with the constraint gradient added to the force.
+        - listitem [ref=e14363]:
+          - strong [ref=e14364]: Optimisation in delocalised internal coordinates.
+          - text: The Pulay–Baker approach (Pulay & Fogarasi, 1992) uses delocalised internals that are invariant under symmetry operations of the molecule, with a B-matrix that maps from internal to Cartesian space. This is the gold standard for difficult optimisations (transition metal complexes, weakly bound clusters).
+        - listitem [ref=e14365]:
+          - strong [ref=e14366]: Cell optimisation in non-cubic systems.
+          - text: The stress tensor of
+          - link "§9.9" [ref=e14367] [cursor=pointer]:
+            - /url: "#99-cell-optimisation-in-periodic-systems-the-stress-tensor"
+          - text: is for an arbitrary cell. In practice one maintains a minimum basis of cell parameters (3 angles + 3 lengths for a triclinic cell; fewer with symmetry), and the optimiser works in that reduced space. The Pulay stress and the non-local pseudopotential stress are the two terms that require the most care in a plane-wave code.
+        - listitem [ref=e14368]:
+          - strong [ref=e14369]: Symmetry handling.
+          - text: Crystallographic and molecular point-group symmetries can be used to reduce the number of independent coordinates, and the gradient must be symmetrised after every step. The implementation in most codes is to work in the symmetry-adapted basis of irreducible representations.
+      - blockquote [ref=e14370]:
+        - paragraph [ref=e14371]:
+          - text: "Next:"
+          - link "chapter 10" [ref=e14372] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/
+          - text: — phonons and vibrations. The force constants (the Hessian of the BO energy surface) determine the vibrational frequencies of a molecule and the phonon dispersion of a solid; the same analytical-force machinery we have built here is the starting point.
+  - contentinfo [ref=e14373]:
+    - generic [ref=e14374]:
+      - generic [ref=e14375]:
+        - img [ref=e14376]
+        - generic [ref=e14380]: DFT Notes
+        - paragraph [ref=e14381]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e14382]:
+        - generic [ref=e14383]:
+          - heading "Project" [level=3] [ref=e14384]
+          - list [ref=e14385]:
+            - listitem [ref=e14386]:
+              - link "Chapters map" [ref=e14387] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e14388]:
+              - link "Python codes" [ref=e14389] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e14390]:
+              - link "Contributing" [ref=e14391] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e14392]:
+              - link "Security" [ref=e14393] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e14394]:
+              - link "Design spec" [ref=e14395] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e14396]:
+              - link "GitHub ↗" [ref=e14397] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e14398]:
+          - heading "Built with" [level=3] [ref=e14399]
+          - list [ref=e14400]:
+            - listitem [ref=e14401]:
+              - link "Jekyll" [ref=e14402] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e14403]:
+              - link "MathJax 3" [ref=e14404] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e14405]:
+              - link "Mermaid" [ref=e14406] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e14407]:
+              - link "chenglou/pretext" [ref=e14408] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e14409]:
+              - link "Google Fonts" [ref=e14410] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e14411]:
+          - heading "Legal" [level=3] [ref=e14412]
+          - list [ref=e14413]:
+            - listitem [ref=e14414]:
+              - link "MIT License" [ref=e14415] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e14416]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e14418]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

@@ -2,7 +2,7 @@
 
 This directory holds the Manim animation scripts and rendered videos
 that complement the static chapter content. Mermaid diagrams and
-`matplotlib' plots are still the workhorses; Manim is reserved for
+`matplotlib`' plots are still the workhorses; Manim is reserved for
 concepts that are inherently dynamic ("watch the density oscillate
 and converge", "watch ψ factorise into a plane wave and a
 cell-periodic piece").
@@ -24,11 +24,11 @@ manim -qm dft_notes/animations/chapter_01/01-particle-in-box.py ParticleInBox
 for s in dft_notes/animations/chapter_*/0*.py; do
   manim -qm --disable_caching "$s" "${s%.py}"
 done
-``'
+```
 
 ## File conventions
 
-``'
+```
 dft_notes/animations/
 ├── chapter_NN/
 │   ├── NN-slug.py            (the Manim source)
@@ -36,7 +36,7 @@ dft_notes/animations/
 │   │   ├── NN-slug.mp4       (rendered video, 720p30, H.264)
 │   │   └── NN-slug.png       (poster frame, last frame of the animation)
 │   └── index.md              (per-chapter index, optional)
-``'
+```
 
 The naming is the same as the existing `python_codes/' convention
 (two-digit prefix, kebab-case slug). The MP4 and PNG live next to the
@@ -78,7 +78,7 @@ class SceneName(Scene):
     def construct(self):
         # ... 30-100 lines of Manim code
         pass
-``'
+```
 
 The docstring follows the existing `python_codes/' convention
 (file header, scene graph, where-it-lives rationale, how-to-run
@@ -101,7 +101,7 @@ Each chapter that has an animation gets a short section like:
   </video>
   <figcaption>Figure 1.X — ...</figcaption>
 </figure>
-``'
+```
 
 CSS for the figure lives in `assets/css/site.css`, in the
 `dft-animation' section.

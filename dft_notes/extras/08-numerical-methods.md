@@ -490,16 +490,16 @@ def main():
 
 if __name__ == "__main__":
     main()
-``'
+```
 
 The output of the script (a typical run) is a PNG file
 `nm-01-scf-diis-toy.png' with the convergence plot, plus the
 following console output:
 
-``'
+```
 linear:  62 iters, final |R| = 9.84e-10
 DIIS:    11 iters, final |R| = 6.21e-10
-``'
+```
 
 DIIS converges in **11 iterations** vs the **62 iterations** of
 linear mixing at the same mixing parameter.  Once the iteration
@@ -872,14 +872,14 @@ def main():
 
 if __name__ == "__main__":
     main()
-``'
+```
 
 The output:
 
-``'
+```
 SD:    3152 iters, f = 9.971e-09
 BFGS:  24 iters, f = 8.418e-16
-``'
+```
 
 BFGS converges in **24 iterations** to machine precision; steepest
 descent needs **3152**.  The factor of $\sim 130\times$ is
@@ -1210,13 +1210,13 @@ def main():
 
 if __name__ == "__main__":
     main()
-``'
+```
 
 For the $4 \times 4 \times 4$ mesh the script reports
 
-``'
+```
 4x4x4 MP mesh: 64 points total, 8 in IBZ
-``'
+```
 
 — a factor of 8 reduction, which is the orbit size of the
 generic k-point in $O_h$.
@@ -1454,15 +1454,15 @@ def main():
 
 if __name__ == "__main__":
     main()
-``'
+```
 
 The output of the script:
 
-``'
+```
 QR eigenvalues : [2.341 4.117 5.829 8.713]
 eigvalsh ref   : [2.341 4.117 5.829 8.713]
 max |diff|     : 5.7e-13
-``'
+```
 
 The basic QR iteration converges in $\sim 80$ iterations for a
 $4 \times 4$ matrix.  Production LAPACK with Wilkinson shift
@@ -1475,7 +1475,7 @@ is a factor of $\sim 15$, but the *algorithm* is unchanged.
 > §3.6.6 (Löwdin orthogonalisation).  The Python file
 > `dft_notes/python_codes/chapter_06/01-sto-3g-h2.py' is the
 > production version with a real ERI back-end and the SciPy
-> `eigh' solver.
+> `eigh`' solver.
 
 ### 4.6 Generalised eigenvalue problems
 
@@ -1757,15 +1757,15 @@ def main():
 
 if __name__ == "__main__":
     main()
-``'
+```
 
 The output:
 
-``'
+```
 Davidson eigs:  [0.00097  0.00387  0.00872  0.01550]
 eigvalsh ref:  [0.00097  0.00387  0.00872  0.01550]
 max |diff|:    4.1e-11
-``'
+```
 
 Davidson converges in $\sim 25$ iterations on the 1-D Laplacian
 to 10-digit precision.  Lanczos would need a similar number
@@ -2005,14 +2005,14 @@ def main():
 
 if __name__ == "__main__":
     main()
-``'
+```
 
 The output is a convergence plot and the following console:
 
-``'
+```
 linear:  71 iters, |R| = 9.46e-10
 Pulay:   13 iters, |R| = 4.18e-10
-``'
+```
 
 Pulay's DIIS converges in **13 iterations** vs the **71
 iterations** of linear mixing — a factor of 5x speedup on
@@ -2281,7 +2281,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-``'
+```
 
 The output is a two-panel plot: the all-electron and pseudo
 wavefunctions on the left, the all-electron and pseudo
@@ -2566,7 +2566,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-``'
+```
 
 The output is a two-band dispersion plot: the analytical
 acoustic and optical branches as solid lines, the

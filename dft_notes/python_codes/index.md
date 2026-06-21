@@ -36,14 +36,14 @@ python dft_notes/python_codes/chapter_00/01-particle-in-box.py
 for f in dft_notes/python_codes/chapter_00/NN-*.py; do
     python "$f"
 done
-``'
+```
 
 The scripts are tested against **Python 3.11+** with the
 following pinned dependencies:
 
 | Package      | Version | Why |
 |:-------------|:--------|:----|
-| `numpy'      | ≥ 1.24  | arrays, linalg, FFT        |
+| `numpy`'      | ≥ 1.24  | arrays, linalg, FFT        |
 | 'scipy'      | ≥ 1.10  | sparse matrices, special functions, 'integrate.solve_ivp' |
 | 'matplotlib' | ≥ 3.7   | plots ('matplotlib.use("Agg")' for headless) |
 

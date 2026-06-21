@@ -607,7 +607,7 @@ Selected ERIs (chemists' notation [ij|kl]):
   [11|22] = (AA|BB) = 0.569677
   [12|12] = (AB|AB) = 0.297029
   [11|12] = (AA|AB) = 0.444109
-``'
+```
 
 The numbers reproduce Szabo & Ostlund, *Modern Quantum
 Chemistry*, Table 3.5, to four significant figures.  Note that
@@ -668,7 +668,7 @@ SCF converged in 3 iterations (dE = 0.00e+00, dP = 0.00e+00)
   E_nuc-nuc (1/R)   = +0.714286 E_h
   E_total HF        = -1.116714 E_h
   (Szabo & Ostlund table 3.5 quote -1.1167  E_h)
-``'
+```
 
 (The signs of both eigenvectors are arbitrary — eigenvectors
 are defined up to an overall phase — so the bonding MO appears
@@ -718,7 +718,7 @@ for it in range(64):
     if abs(E_elec - E_prev) < 1e-10:
         break
     P, E_prev = P_new, E_elec
-``'
+```
 
 ![Plot output from `dft_notes/python_codes/chapter_06/01-sto-3g-h2.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_06/plots/01-sto-3g-h2.png)
 
@@ -749,7 +749,7 @@ graph LR
   OUT --> CHK{"Converged with<br/>basis?"}
   CHK -->|"no"| B
   CHK -->|"yes"| DONE["Report E, ρ, forces"]
-``'
+```
 
 The decision in the top-left box is the one a practitioner
 spends most of their time on.  Atom-centred Gaussians dominate
@@ -1232,7 +1232,7 @@ graph LR
   ORTH --> P["Polarisation:<br/>∂R/∂ε"]
   P --> BASIS["NAO basis<br/>{χ_ℓm^(a,q)}"]
   BASIS --> SCF["SCF with O(N)<br/>or O(N^3) solver"]
-``'
+```
 
 The Roothaan–Hall machinery of
 \eqref{eq:ch-06-roothaan-hall} is unchanged: the matrix
@@ -1422,7 +1422,7 @@ graph LR
   F --> KS["Kohn-Sham<br/>sparse matrix"]
   POIS --> KS
   KS --> E["Total energy,<br/>forces"]
-``'
+```
 
 The Mermaid diagram shows the structure: the wavelet basis
 provides both grids simultaneously from the same
@@ -1623,7 +1623,7 @@ graph LR
   T -->|"plane-wave basis<br/>(E_cut)"| PW["FFT diagonalisation<br/>on the BZ grid"]
   PW --> RECON["PAW reconstruction<br/>|ψ⟩ = |ψ̃⟩ + (|φ⟩ - |φ̃⟩)⟨p̃|ψ̃⟩"]
   RECON --> OUT["AE ψ, ρ, E"]
-``'
+```
 
 The Mermaid diagram shows the data flow.  The **smooth
 problem** is what the plane-wave code actually solves; the AE

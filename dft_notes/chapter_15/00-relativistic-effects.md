@@ -1746,7 +1746,7 @@ The modern production approach in plane-wave DFT is
 
 The fully-relativistic PAW pseudopotential is the
 *default* in VASP, Quantum ESPRESSO (with the
-`upf' format), and ABINIT for the 5*d*' and 6p*
+`upf`' format), and ABINIT for the 5*d*' and 6p*
 elements. The standard PBE pseudopotentials in these
 libraries include SOC for the 4*`d*' row and beyond, and
 the SOC can be turned on or off by a single keyword
@@ -2129,7 +2129,7 @@ graph LR
   ZORA -->|basis-set truncation| SR
   X2C -->|PP approximation| FR
   DKS -->|current-dependent XC| SCDFT
-``'
+```
 
 > **Reading the diagram.** The *columns* (left to
 > right) are the increasing levels of relativistic
@@ -2150,7 +2150,7 @@ stateDiagram-v2
   K2 --> K2: magnetic field<br/>Zeeman splitting
   K1 --> [*]: ionisation /<br/>quasiparticle decay
   K2 --> [*]: ionisation /<br/>quasiparticle decay
-``'
+```
 
 > **Reading the diagram.** The two Kramers states
 > $|\Psi_1\rangle$ and $|\Psi_2\rangle$ are related
