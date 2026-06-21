@@ -73,7 +73,7 @@ template:
    steps called out.
 3. **The code** — a minimal implementation that produces the
    result.
-4. **The catc`h*`* — what the formula *doesn't* tell you, and the
+4. **The catc`h** — what the formula doesn't* tell you, and the
    regime where it breaks.
 
 ## Notation

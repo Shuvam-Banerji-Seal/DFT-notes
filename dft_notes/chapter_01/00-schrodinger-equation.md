@@ -241,7 +241,7 @@ def particle_in_a_box(L=1.0, N=400):
     diag_main  = np.full(N,  2.0)
     diag_off   = np.full(N - 1, -1.0)
     H          = (np.diag(diag_main) + np.diag(diag_off, +1)
-                                  + np.diag(diag_off, -1)) / (2 * `h*`*2)
+                                  + np.diag(diag_off, -1)) / (2 * h*`2)
     evals, evecs = np.linalg.eigh(H)
     # Sort by absolute value; skip the trivial infinite-wall mode
     order       = np.argsort(evals)
@@ -515,7 +515,7 @@ The left-hand side is $i\, \partial_t \rho$. Define the
 **probability current**
 
 $$
-\mathbf j(\mathbf r, t) \;=\; \frac{1}{2i} \big[ \psi^* \nabla \psi - \psi \nabla \psi^* \big] \;=\; \operatorname{Im}\big( \psi^* \nabla \psi \big) .
+\mathbf j(\mathbf r, t) \;=\; \frac{1}{2i} \big[ \psi^* \nabla \psi - \psi \nabla \psi^* \big] \;=\; \operatorname{Im}\big( \psi^ \nabla \psi \big) .
 \tag{1.7.7}
 $$
 
@@ -2372,7 +2372,7 @@ The hydrogen derivation above is a long chain of reductions:
 3-D two-body → 1-D radial × angular, $rR$ substitution, asymptotic
 analysis, polynomial truncation. The diagram below summarises the
 chain; each box is a step in §1.13.1–§1.13.6, and each arrow
-labels the *new variable* or *new operator* introduced at that step.
+labels the *new variable* or new operator introduced at that step.
 
 ```mermaid
 graph TD
@@ -2605,8 +2605,8 @@ def qho_eigensystem(L=8.0, N=800, n_eig=6):
     h = 2.0 * L / (N + 1)
     x = np.linspace(-L + h, L - h, N)
     # Kinetic: 3-point stencil; potential: diagonal.
-    main = (1.0 / `h*`*2) * np.full(N, 2.0) + 0.5 * x**2
-    off  = -(1.0 / `h*`*2) * np.full(N - 1, 1.0)
+    main = (1.0 / `h**2)  np.full(N, 2.0) + 0.5 * x**2
+    off  = -(1.0 / `h**2)  np.full(N - 1, 1.0)
     H = diags([off, main, off], [-1, 0, 1])
     evals, evecs = eigsh(H, k=n_eig, which="SM")
     # Normalise the eigenvectors to unit L2 norm on the grid.
@@ -3039,7 +3039,7 @@ all coherent states. Let me re-check the algebra.
 
 Actually the calculation is correct: $(\Delta x)^2 (\Delta p)^2 \ge 1/4$
 holds for *all* $\alpha$, with equality only at $\alpha = 0$.
-The point is that the *product* is *bounded below* by
+The point is that the *product* is bounded below by
 $1/4$, but it is *not* constant. So coherent states are
 *not* minimum-uncertainty states in general; they
 *saturate* the inequality in the special case $\alpha = 0$.

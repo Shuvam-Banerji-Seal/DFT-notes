@@ -130,8 +130,8 @@ graph LR
 The **soli`d*`* arrows are the forward map — the Schrödinger
 equation determines the wave function from the potential, and
 the density is the diagonal of the one-body density matrix. The
-**dashe`d*`* arrow is the *Runge–Gross* inverse, which says:
-given the *density* $\rho(\mathbf r, t)$ and the *initial state*
+**dashe`d** arrow is the Runge–Gross* inverse, which says:
+given the *density* $\rho(\mathbf r, t)$ and the initial state
 $|\Psi_0\rangle$, the potential $v_\text{ext}(\mathbf r, t)$ is
 *uniquely* determined (up to a purely time-dependent function
 $c(t)$). This is the time-dependent analogue of the
@@ -336,7 +336,7 @@ where $\bar t$ parameterises the contour. The integrand on the
 upper branch is the same as in \eqref{eq:ch-12-action}; on the
 lower branch $\partial_{\bar t} = -\partial_t$, so the sign of
 the kinetic term flips. The result is that the action
-\eqref{eq:ch-12-keldysh-action} is *real* and *stationary* at
+\eqref{eq:ch-12-keldysh-action} is *real* and stationary at
 the physical forward–backward trajectory. The vanishing of
 $\delta \mathcal A_\gamma = 0$ for variations with fixed
 endpoints at $t_0$ is again equivalent to the time-dependent
@@ -919,7 +919,7 @@ f_I \;=\; \frac{2\, m\, \omega_I}{3\hbar}\,
 with $\Psi_0$ the ground state, $\Psi_I$ the excited state, and
 $\hat r_\alpha$ the dipole operator in the $\alpha$ direction.
 The factor 2 in front is the standard convention in the
-*lengt`h*` gauge; the *velocity* gauge uses
+*length*` gauge; the velocity gauge uses
 $|\langle \Psi_I | \hat p_\alpha | \Psi_0 \rangle|^2$ instead.
 
 > **Tip.** The oscillator strength is dimensionless. The
@@ -1005,7 +1005,7 @@ Write it as
           + Y_{ia}\, \xi_{ia}(\mathbf r) \Bigr] ,
 \end{equation}
 
-where $X_{ia}$ and $Y_{ia}$ are the *resonant* and *anti-resonant*
+where $X_{ia}$ and $Y_{ia}$ are the *resonant* and anti-resonant
 amplitudes of the $ia$ transition in the eigenstate $I$.
 Both are real in the spin-summed, time-reversal-symmetric
 case. The factor 2 is again the spin sum.
@@ -1725,9 +1725,9 @@ def casida_2level(omega_12, K):
     """
     A = omega_12 + K
     B = K
-    omega_exc = np.sqrt(A * A - B * B)  # = sqrt(w12*(w12+2K))
+    omega_exc = np.sqrt(A * A - B * B)  # = sqrt(w12(w12+2K))
     # Oscillator strength in the dipole-length gauge is
-    # 2/3 * omega_exc * d^2 * (X + Y)^2  with (X, Y) the
+    # 2/3 * omega_exc * d^2  (X + Y)^2  with (X, Y) the
     # Casida eigenvectors of the positive eigenvalue.
     X = np.sqrt(0.5 * (1.0 + A / omega_exc))
     Y = np.sign(B) * np.sqrt(0.5 * (1.0 - A / omega_exc))
@@ -1792,16 +1792,16 @@ def propagate_2level(omega_12, d12, kick, t_max, n_steps, eta):
     # Initial state: ground state |1>.
     c = np.array([1.0 + 0.0j, 0.0 + 0.0j], dtype=complex)
     # Apply the delta-kick at t=0:  rotate by exp(-i k d).
-    c = np.cos(kick * d12) * c - 1j * np.sin(kick * d12) \
+    c = np.cos(kick * d12) * c - 1j  np.sin(kick  d12) \
         * np.array([0.0, 1.0], dtype=complex)
     # Time-evolution matrix in the |1>, |2> basis:
     # H = diag(0, omega_12).  After kick, the state is a
     # superposition; the |1> and |2> amplitudes get an
     # oscillation at omega_12. mu = np.zeros_like(t)
     for n, tn in enumerate(t):
-        phase = np.exp(-1j * omega_12 * tn) * np.exp(-eta * tn)
+        phase = np.exp(-1j * omega_12 * tn)  np.exp(-eta  tn)
         c_t = np.array([c[0], c[1] * phase], dtype=complex)
-        mu[n] = 2.0 * np.real(d12 * np.conj(c_t[0]) * c_t[1])
+        mu[n] = 2.0 * np.real(d12 * np.conj(c_t[0])  c_t[1])
     return t, mu
 ```
 
@@ -2554,7 +2554,7 @@ Section 12.7.1:
    \eqref{eq:ch-12-casida-K}.
 2. **Insert the BSE kernel $K^\text{BSE}$ in place of
    $K^\text{TDDFT} = 2 K$.** In the BSE, the kernel is
-   the *bare Coulom`b*` plus the *electron–hole exchange* minus
+   the *bare Coulomb*` plus the electron–hole exchange minus
    the *electron–hole direct* (see the $f_\text{Hxc}$ of
    section 12.4.3 for the formal definition); we omit the
    factor of 2 because the BSE is a *two-particle* response
@@ -2668,7 +2668,7 @@ $I$-th Casida eigenvalue, in the symmetric sum.
 > **Tip.** The factor
 > $\sqrt{\omega_{ia}/\omega_I}$ in
 > \eqref{eq:ch-12-09-fI} is the difference between the
-> *length-gauge* and *velocity-gauge* formulations of
+> *length-gauge* and velocity-gauge formulations of
 > the Casida oscillator strength. In a complete basis
 > and with the exact kernel the two gauges give the
 > same answer; in a finite basis they differ by an
@@ -2803,7 +2803,7 @@ amplitudes*; there is no de-excitation direction.
 
 The TDA is a **decent** approximation for *high-energy*
 excitations (X-ray, core-level) where the resonant
-channel dominates. It is *less* accurate for *low-
+channel dominates. It is *less* accurate for low-
 energy* excitations of organic molecules, where the
 de-excitation block shifts the singlet–triplet gap
 and the position of charge-transfer states by a few
@@ -2815,7 +2815,7 @@ by $\sim 0.2$–$0.5$ eV.
 > **Tamm–Dancoff approximation of nuclear physics**,
 > which drops the backward-propagating holes in a
 > many-body Green's function. The TD-DFT TDA is a
-> particular decoupling of the *resonant* and *anti-
+> particular decoupling of the *resonant* and anti-
 > resonant* parts of the Casida equation, named after
 > Tamm (1945) and Dancoff (1950) in the context of
 > nuclear physics but used here in a different setting.
@@ -2871,7 +2871,7 @@ $(\mathbf X_I, \mathbf Y_I)$.
 
 The Casida equation of section 12.9 is the workhorse
 of TD-DFT for *molecular* excitation spectra. For the
-*optical* spectra of *solids* — semiconductors,
+*optical* spectra of solids — semiconductors,
 insulators, wide-gap materials — a different
 formalism is required. The reason is the **exciton**:
 a bound electron–hole pair with a binding energy of
@@ -3003,7 +3003,7 @@ K(5, 6; 7, 8) \;=\;
 
 where $W$ is the *statically screene`d*` Coulomb
 interaction of the GW approximation. The
-*exchange* kernel $K^x = -v$ (in the *bare* limit)
+*exchange* kernel $K^x = -v$ (in the bare limit)
 or $K^x = -W$ (in the *screene`d*` limit) gives the
 local-field effects; the *direct* kernel
 $K^d = +W$ gives the attractive electron–hole
@@ -3089,7 +3089,7 @@ clear physical meanings:
    with the *hole* in $i$ (and the electron in
    $b$ with the hole in $j$). The minus sign
    binds the singlet; in the triplet channel this
-   term has the *opposite* sign and *raises* the
+   term has the *opposite* sign and raises the
    triplet.
 
 4. The **xc kernel term**
@@ -3397,7 +3397,7 @@ equations in the form that is actually solved
 numerically, we discuss the two *gauges* (length
 and velocity), we survey the *time-propagation
 algorithms* in current use, we set the *time
-ste`p*`, we show how the *absorption spectrum* is
+ste`p*, we show how the *absorption spectrum is
 extracted from a real-time propagation, we
 introduce the *Ehrenfest* extension for coupled
 electron–ion dynamics, and we close with a
@@ -3969,7 +3969,7 @@ of $A$ as a tool.
 #### 12.14.1.2 The current-density relation and the theorem statement, p. 997–998
 
 The next step of the proof relates the
-*time-derivatives of the density* to the *current
+*time-derivatives of the density* to the current
 density* via the **continuity equation** [Runge
 and Gross, 1984, p. 997–998]. Runge and Gross
 define the **paramagnetic current density** and
@@ -4427,7 +4427,7 @@ Gross, 2004, p. 444–446]. The presentation is
 explicit form of the adiabatic kernel for the LDA,
 the GGA, and the hybrid functionals, with a
 discussion of the *failure modes* of each. The
-*exact* $f_\text{xc}$ is *not* the adiabatic
+*exact* $f_\text{xc}$ is not the adiabatic
 kernel; the difference is the **memory** of the
 xc response, which is non-zero for the exact
 functional and zero for the adiabatic
@@ -4438,7 +4438,7 @@ The 2004 review also discusses the
 **p. 445** [Marques and Gross, 2004, p. 445], and
 the **exact-exchange (EXX) kernel** on **p. 446**
 [Marques and Gross, 2004, p. 446]. The EXX kernel
-*over-binds* excitons in solids and *under-binds*
+*over-binds* excitons in solids and under-binds
 charge-transfer excitations in molecules. The
 Vignale–Rasolt kernel is the proper TDDFT
 description of the *current* response, which
@@ -4457,7 +4457,7 @@ standard reference.
 > p. 444–446].
 
 The flow from the *Runge–Gross theorem* (1984) to
-the *Casida equations* (1995) to the *excitation
+the *Casida equations* (1995) to the excitation
 spectrum* of a real molecule is the backbone of
 *every* linear-response TDDFT calculation. The
 diagram below shows the pipeline as a *timeline*:
@@ -4481,10 +4481,10 @@ flowchart LR
 The **left-to-right** flow is the *time* axis. The
 *first three* boxes (RG theorem, TD KS equations,
 Mearns–Kohn response) are the *foundation*; the
-*Casid`a*` box is the *practical realisation*; the
-*PGG* box is the *first* rigorous result that
+*Casida*` box is the practical realisation; the
+*PGG* box is the first rigorous result that
 connects TDDFT to KS orbital energies; the
-*Marques–Gross* box is the *modern review*. The
+*Marques–Gross* box is the modern review. The
 *output* is the absorption spectrum.
 
 ### 12.14.6 What these papers don't say
@@ -4504,7 +4504,7 @@ describe *double* excitations $|i, j \to a, b\rangle$
 in the *standar`d*` form, because the single-excitation
 basis does not contain the double-excitation
 configurations [Marques and Gross, 2004, p. 446].
-The *exact* response function *does* contain double
+The *exact* response function does contain double
 excitations, but the *adiabati`c*` kernel of section
 12.14.5.3 does *not* mix singles with doubles.
 Practical workarounds include the **spin-fli`p*`*
@@ -4537,7 +4537,7 @@ development [Marques and Gross, 2004, p. 444–446].
 
 The Runge–Gross theorem is for *scalar* external
 potentials $v_\text{ext}(\mathbf r, t)$. It does
-*not* cover *vector* potentials $\mathbf A(\mathbf r,
+*not* cover vector potentials $\mathbf A(\mathbf r,
 t)$ — i.e. magnetic fields. The extension to
 **current-density functional theory** (CDFT) is by
 Vignale and Rasolt (1988), and is *not* in the 1984
@@ -4553,9 +4553,9 @@ codes do *not* include the magnetic-field response
 
 The **dispersion interaction** (the long-range
 $-C_6/r^6$ tail of the inter-molecular van der
-Waals force) is *not* captured by the *local* or
+Waals force) is *not* captured by the local or
 *semi-local* xc functionals of standard TDDFT. The
-*exact* $f_\text{xc}$ *does* contain the
+*exact* $f_\text{xc}$ does contain the
 dispersion force as a *non-local* effect, but the
 ALDA does not. The *fix* is the **vdW-DF**
 functional of Dion et al. (2004) or the

@@ -167,7 +167,7 @@ built from analytical electron-repulsion integrals
   broadest method coverage in the commercial QC
   ecosystem, with a 50-year track record.
 - **Basis sets:** GTOs. STO-nG, 3-21G, 6-31G family,
-  6-311G family, cc-pV*X*Z, aug-cc-pV*X*Z, LanL2DZ, SDD,
+  6-311G family, cc-pV*X*Z, aug-cc-pVXZ, LanL2DZ, SDD,
   ANO.
 - **DFT Notes chapters:** 03, 04, 05, 06.
 - **When to use.** The right pick for *publication-
@@ -767,7 +767,7 @@ $G_0W_0$ and BSE).
   is pre-tabulated for the entire periodic table.
 - **DFT Notes chapters:** 04, 05, 06 §6.13, 08.
 - **When to use.** The right pick when you need
-  *all-electron* accuracy on a *molecular* (or cluster)
+  *all-electron* accuracy on a molecular (or cluster)
   system without the cost of a full LAPW treatment. The
   tier-4 basis is the most accurate practical all-electron
   basis in the molecular regime; the GW and RPA
@@ -900,7 +900,7 @@ properties, optical absorption).
 - **License:** BSD. **Language:** C++ / Python.
   **Repo:** <https://www.paraview.org/>
 - **Reads:** VTK, NetCDF, Exodus II, raw arrays, custom
-  readers; VASP data via *ParaView Catalyst* and *PVGeo*
+  readers; VASP data via *ParaView Catalyst* and PVGeo
   plug-ins.
 - **When to use.** The right pick for *general 3-D
   scientific visualisation at scale*: finite-element
@@ -1001,7 +1001,7 @@ production codes from sections 1–7. | Code      | License  | Language   | Best
   **Repo:** <https://github.com/materialsproject/fireworks>
 - **Capabilities:** Lightweight workflow management with
   MongoDB-backed job tracking. Each calculation is a
-  *firewor`k*`, workflows are *fireworks + links*. The
+  *firework*`, workflows are fireworks + links. The
   central `lpad` command-line interface manages the
   queue. Pluggable queue interfaces (SLURM, PBS, SGE,
   LSF). Provenance tracking through the *launchpa`d*` —
@@ -1057,7 +1057,7 @@ production codes from sections 1–7. | Code      | License  | Language   | Best
 > molecule or a primitive cell), an **annotate`d*`* version
 > of the same input for a slightly harder calculation (a
 > band structure, a spin-polarised system, an MD step), a
-> short list of *what to tweak for X*, a list of *common
+> short list of *what to tweak for X*, a list of common
 > pitfalls*, and a cross-reference to the chapter where
 > the underlying theory is derived.
 
@@ -1811,7 +1811,7 @@ SIESTA writes the bands to `SystemLabel.bands`.
   SIESTA converts to the internal unit. The
   default (no unit) is `Ry`; 0.05 eV is good. The
   legacy default of 0.02 Ry (272 meV) is *too
-  large* and gives a *too compact* basis.
+  large* and gives a *too compact basis.
 - **Basis convergence is *basis* convergence, not
   *mes`h*` convergence**: a too-small `PAO.BasisSize`
   or a too-large `PAO.EnergyShift` is *not* fixed

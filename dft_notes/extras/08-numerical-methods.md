@@ -799,7 +799,7 @@ def rosenbrock(x):
 
 def rosenbrock_grad(x):
     """The analytic gradient of rosenbrock(x)."""
-    dfdx = -2 * (1 - x[0]) - 400 * x[0] * (x[1] - x[0]**2)
+    dfdx = -2 * (1 - x[0]) - 400 * x[0]  (x[1] - x[0]**2)
     dfdy = 200 * (x[1] - x[0]**2)
     return np.array([dfdx, dfdy])
 
@@ -837,7 +837,7 @@ def bfgs(f, grad, x0, B0=None, max_iter=100, tol=1e-8,
             break
         p = -np.linalg.solve(B, g)
         alpha = 1.0
-        while f(x + alpha * p) > f(x) + armijo_c1 * alpha * np.dot(g, p):
+        while f(x + alpha * p) > f(x) + armijo_c1 * alpha  np.dot(g, p):
             alpha *= armijo_rho
             if alpha < 1e-12:
                 break
@@ -1560,7 +1560,7 @@ solve is by **Conjugate Gradient** with a preconditioner (§5.6).
 ### 5.3 The Lanczos algorithm
 
 The **Lanczos algorithm** (Lanczos, 1950) is the iterative
-solver for *symmetri`c*` matrices.  It builds a *tridiagonal*
+solver for *symmetric*` matrices.  It builds a tridiagonal
 representation
 
 \begin{equation}
@@ -1952,8 +1952,8 @@ def toy_scf_map(P):
     """
     P = np.asarray(P)
     out = np.zeros_like(P)
-    out[0] = 0.6 + 0.2 * np.tanh(2.0 * (P[0] - 0.5)) + 0.1 * P[1]
-    out[1] = 0.5 + 0.2 * np.tanh(2.0 * (P[1] - 0.4)) + 0.1 * P[0]
+    out[0] = 0.6 + 0.2 * np.tanh(2.0 * (P[0] - 0.5)) + 0.1  P[1]
+    out[1] = 0.5 + 0.2 * np.tanh(2.0 * (P[1] - 0.4)) + 0.1  P[0]
     return out
 
 def linear_mixing(F, P0, alpha=0.3, max_iter=80, tol=1e-9):
@@ -2221,11 +2221,11 @@ def hydrogen_pseudo_fit(r_c=1.2):
 
     def residuals(c):
         a0, a1, a2, a3, a4 = c
-        p_rc = a0 + a1 * r`c*`*2 + a2 * r`c*`*4 + a3 * r`c*`*6 + a4 * r`c*`*8
+        p_rc = a0 + a1 * rc*`2 + a2  rc*4 + a3 * rc`6 + a4 * rc*`8
         u_tilde_rc = rc * np.exp(p_rc)
         res1 = u_tilde_rc - u_at_rc
-        p_prime_rc = 2 * rc * a1 + 4 * r`c*`*3 * a2 + 6 * r`c*`*5 * a3 + 8 * r`c*`*7 * a4
-        res2 = 2 * rc * p_prime_rc - (u_prime_at_rc / u_at_rc) * rc + 1
+        p_prime_rc = 2 * rc * a1 + 4  r`c**3  a2 + 6 * rc*`5  a3 + 8 * rc*7  a4
+        res2 = 2 * rc * p_prime_rc - (u_prime_at_rc / u_at_rc)  rc + 1
         mask = r < r_c
         norm_ae = np.trapz(u_ae_i[mask]**2, r[mask])
         u_tilde = np.where(mask, r * np.exp(a0 + a1 * r**2 + a2 * r**4 + a3 * r**6 + a4 * r**8), u_ae_i)
@@ -2390,7 +2390,7 @@ The projection restores the ASR at every $\mathbf q$.
 ### 8.3 Fourier interpolation
 
 The force-constants $\Phi_{IJ}^{\alpha\beta}(\mathbf R)$ are
-*real-space* objects defined on the supercell.  A *phonon
+*real-space* objects defined on the supercell.  A phonon
 dispersion* requires them on a fine $\mathbf q$-mesh.  The
 **Fourier interpolation** of §8.2 is the natural bridge:
 
@@ -2494,7 +2494,7 @@ def energy_of_displacement(M1, M2, K, a, u1, u2):
     """
     # each cell contributes 0.5 * K * (u_{i+1} - u_i)^2 to the energy
     # with u_{i+1} = u_{i-1} = 0 (all other cells at rest)
-    # so the energy is 0.5 * K * (u1 - 0)^2 + 0.5 * K * (0 - u2)^2
+    # so the energy is 0.5 * K * (u1 - 0)^2 + 0.5  K  (0 - u2)^2
     # = 0.5 * K * (u1^2 + u2^2) (the central cell is special)
     return 0.5 * K * (u1**2 + u2**2)
 
@@ -2538,7 +2538,7 @@ def frozen_phonon_dispersion(M1, M2, K, a, nq=200):
         D = np.zeros((2, 2))
         for I in range(2):
             for J in range(2):
-                phase = 1.0 if I == J else np.exp(-1j * q * a * (J - I))
+                phase = 1.0 if I == J else np.exp(-1j * q * a  (J - I))
                 D[I, J] = Phi[I, J] / np.sqrt(M1 if I == 0 else M2) / np.sqrt(M1 if J == 0 else M2) * phase
         D = (D + D.conj().T) / 2  # symmetrise
         e = np.linalg.eigvalsh(D)

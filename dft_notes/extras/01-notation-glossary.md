@@ -472,7 +472,7 @@ and 11 (band structures).
 | $\mathbf q$ | `\mathbf q` | **q** | Phonon wavevector; or a generic reciprocal-space wavevector in a response function | Ch 10 (planned); Ch 11 (planned) |
 | $\Omega$ | `\Omega` | Ω | Volume of the primitive cell; also: supercell volume in BvK | Ch 00 §"Notation"; Ch 07 §7.5.1 |
 | $V_\text{cell}$ | `V_\text{cell}` | V_cell | Same as $\Omega$ (alternative notation) | Ch 07 §7.4.1 |
-| $V_\text{BZ}^*$ | `V_\text{BZ}^*` | V_BZ* | Volume of the reciprocal primitive cell, $(2\pi)^3 / V_\text{cell}$ | Ch 07 §7.4.1 |
+| $V_\text{BZ}^*$ | V_\text{BZ}^*` | V_BZ | Volume of the reciprocal primitive cell, $(2\pi)^3 / V_\text{cell}$ | Ch 07 §7.4.1 |
 | $\Gamma$ | `\Gamma` | Γ | Centre of the Brillouin zone, $\mathbf k = \mathbf 0$ | Ch 07 §7.4.3 |
 | $X$, $L$, $W$, $K$, $U$ | `X`, `L`, `W`, `K`, `U` | X, L, W, K, U | High-symmetry points of the FCC Brillouin zone (Setyawan–Curtarolo) | Ch 07 §7.4.3 |
 | $N_\mathbf k$ | `N_\mathbf k` | N_**`k*`* | Number of $\mathbf k$-points in the BZ sampling mesh | Ch 07 §7.2.2 |
@@ -621,7 +621,7 @@ $$
 
 - $\mathbf F \mathbf C = \mathbf S \mathbf C \boldsymbol\varepsilon$
   is the Roothaan–Hall GEP, with the Fock matrix on the
-  *left*.  The MO coefficients are the *columns* of
+  *left*.  The MO coefficients are the columns of
   $\mathbf C$.
 - The density matrix in a closed-shell calculation is
   $\mathbf P = 2 \mathbf C_\text{occ} \mathbf C_\text{occ}^\dagger$.

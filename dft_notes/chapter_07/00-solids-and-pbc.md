@@ -72,7 +72,7 @@ index $n$.
 
 > **Tip.** The phase factor $e^{i\mathbf k \cdot \mathbf r}$ is
 > sometimes called the *Bloch factor*, and $u_{n\mathbf k}$ the
-> *Bloch function* or *periodic part of the Bloch wave*.
+> *Bloch function* or periodic part of the Bloch wave.
 
 ## 7.2 From finite cluster to infinite solid
 
@@ -1455,7 +1455,7 @@ subgroup of the point group that leaves $\mathbf k$ invariant
 The Bloch functions at $\mathbf k$ transform under a *representation*
 of $\mathcal{G}_\mathbf k$. The **irreducible representations**
 (irreps) of $\mathcal{G}_\mathbf k$ label the bands at $\mathbf k$,
-and the *dimension* of an irrep gives the *degeneracy* of the band.
+and the *dimension* of an irrep gives the degeneracy of the band.
 
 For a generic $\mathbf k$ deep inside the BZ, $\mathcal{G}_\mathbf k$
 is the trivial group $\{E\}$ and bands are singly degenerate. At
@@ -1640,7 +1640,7 @@ each $i = 2, 3, 4$; the volume scales as $f_2 f_3 f_4 = (\mu -
 The general formula \eqref{eq:ch-07-LT} sums the 4 such single-vertex
 contributions, with the Heaviside function $\theta(\mu -
 \varepsilon_i)$ ensuring each is non-zero only when $\varepsilon_i
-< \mu$. The case of *two* vertices below $\mu$ gives a *truncated
+< \mu$. The case of *two* vertices below $\mu$ gives a truncated
 tetrahedron* (smaller tetrahedron + prism); the symmetric form of
 \eqref{eq:ch-07-LT} correctly accounts for this case by adding the
 two single-vertex contributions and subtracting the overlap. The
@@ -1728,7 +1728,7 @@ and their neighbours.
 | Robustness for non-spherical Fermi surfaces | Excellent | Fair |
 
 **Bottom line.** The tetrahedron method is *more accurate* and
-*parameter-free*, but *more complex* to implement. For a high-
+*parameter-free*, but more complex to implement. For a high-
 throughput calculation (thousands of materials), the extra cost is
 paid back many times by the elimination of the $\sigma$-extrapolation
 step.
@@ -1864,7 +1864,7 @@ slower: $N \approx 16$ is needed for 1 meV/atom.
 For a metallic calculation, we need a *secon`d*` convergence test:
 the smearing width $\sigma$. The recipe is:
 
-1. **Converge the mes`h*`* $N_\mathbf k$ at a *fixe`d*` $\sigma \approx
+1. **Converge the mes`h** $N_\mathbf k$ at a fixe`d*` $\sigma \approx
    0.02$ Hartree.
 2. **Sweep $\sigma$** at a *fixe`d*` $N_\mathbf k$ (large enough to
    be converged for the largest $\sigma$): e.g. $\sigma = 0.04,
@@ -1950,7 +1950,7 @@ can verify the claim against the primary literature.
 ### 7.13.1 The original Bloch theorem (1929)
 
 The paper is Felix Bloch's *Über die Quantenmechanik der Elektronen
-in Kristallgittern*, *Z. Physi`k*` **52**, 555–600 (1929); DOI:
+in Kristallgittern*, *Z. Physik **52**, 555–600 (1929); DOI:
 [10.1007/BF01339455](<https://doi.org/10.1007/BF01339455>)
 [Bloch, 1929, p. 555]. The work was Bloch's doctoral dissertation at
 Leipzig under Werner Heisenberg; the acknowledgements thank Heisenberg
@@ -2024,7 +2024,7 @@ Bloch parametrisises it as $e^{i \varkappa(\mathbf R)} = e^{i \mathbf k
 [Bloch, 1929, p. 559]. He does not call $\mathbf k$ the *crystal
 momentum* — that is later language (1930s) — but writes it as a
 "Phasenfaktor" (phase factor). The eigenfunction label is therefore
-*not* a single integer $n$ (as in a finite system) but a *vector*
+*not* a single integer $n$ (as in a finite system) but a vector
 $\mathbf k$ in a continuous Brillouin zone.
 
 **§4 The plane-wave-modulated form (pp. 560–570).**
@@ -2162,7 +2162,7 @@ abstract argument and the latter to the practical calculation.
 Charles Kittel's *Introduction to Solid State Physics* (8th ed.,
 Wiley, 2005; ISBN 978-0471415268) is the standard undergraduate
 reference. The relevant chapters are chapter 7 (*Free-Electron
-Fermi Gas*, pp. 137–166) and chapter 9 (*Energy Bands*, pp. 171–194)
+Fermi Gas*, pp. 137–166) and chapter 9 (*Energy Bands, pp. 171–194)
 [Kittel, 2005, p. 137, p. 171]. The Bloch-theorem statement is in
 chapter 9, p. 173. **Chapter 7 — the free-electron foundation (pp. 137–166).**
 Before turning to the Bloch theorem, Kittel spends a full chapter on
@@ -2238,7 +2238,7 @@ of the Bloch states, we need the *little groups* of the
 high-symmetry points of the first Brillouin zone. This classification
 was first carried out by Léon Bouckaert, Raymond Smoluchowski, and
 Eugene Wigner in their 1936 paper *Theory of Brillouin Zones and
-Symmetry Properties of Wave Functions in Crystals*, *Phys. Rev.*
+Symmetry Properties of Wave Functions in Crystals*, *Phys. Rev.
 **50**, 58–67 (1936); DOI:
 [10.1103/PhysRev.50.58](<https://doi.org/10.1103/PhysRev.50.58>)
 [Bouckaert, Smoluchowski, and Wigner, 1936, p. 58].
@@ -2596,7 +2596,7 @@ sampling. A non-exhaustive list of the topics we have *not* covered:
 
 - **Spin–orbit coupling.** The Hamiltonian
   \eqref{eq:ch-07-hamiltonian} is spin-free. For solids with heavy
-  elements (5*`d*`, 6*`p*`, f-electron systems), the spin–orbit term
+  elements (5*d*`, 6`p`, f-electron systems), the spin–orbit term
   $\hat H_\text{SO} = \tfrac{1}{2} \boldsymbol{\sigma} \cdot (\nabla V
   \times \mathbf p)$ has to be added; the Bloch factor $e^{i\mathbf k
   \cdot \mathbf r}$ becomes a 2 × 2 spinor matrix. This is essential

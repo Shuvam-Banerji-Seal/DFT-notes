@@ -69,8 +69,8 @@ E_\text{xc}^{\text{approx}}[\rho] \;=\; \underbrace{E_\text{xc}^{(0)}[\rho]}_{\t
 
 Equation \eqref{eq:ch-05-jacobs-ladder} is the **menu**, not a
 single formula: every named functional (LDA, PBE, SCAN, B3LYP, …)
-is a particular choice of *whic`h*` ingredients to include and *how
-muc`h*` of each. The *exact* $E_\text{xc}[\rho]$ sits at the top of
+is a particular choice of *which*` ingredients to include and how
+muc`h* of each. The *exact $E_\text{xc}[\rho]$ sits at the top of
 the ladder, in "heaven", and is unknown.
 
 The *formal definition* of $E_\text{xc}[\rho]$ is fixed by the
@@ -122,7 +122,7 @@ sections build that knowledge from the bottom up.
 This section is the bulk of the chapter. We start from the uniform
 electron gas — the only system for which $E_\text{xc}$ is *known* to
 high accuracy — and walk up Jacob's ladder, rung by rung. For each
-rung we give the *form* of the functional, the *physical content* of
+rung we give the *form* of the functional, the physical content of
 the new ingredient, the *constraint* (or training set) that fixes the
 parameters, and a *representative named functional* that the reader
 will encounter in the literature.
@@ -135,7 +135,7 @@ of volume $V$, with the electron–nuclear Coulomb attraction
 *replace`d*` by a uniform positive background charge of density
 $n_+ = N/V$. This makes the system translationally invariant, so
 its ground-state energy is *automatically* an integral of a
-*function* of the density rather than a *functional* — and that
+*function* of the density rather than a functional — and that
 function is the only piece of $E_\text{xc}$ we know exactly.
 
 The UEG is parameterised by a single number, the **Wigner–Seitz
@@ -263,7 +263,7 @@ the **XC energy density** and is a *local* function of $\rho$.
 Equation \eqref{eq:ch-05-lda-form} has the structure of a
 *geometric approximation*: at every point $\mathbf r$, the XC
 energy per electron is taken to be the value it would have in a
-*uniform* electron gas of the *same* density. The corresponding
+*uniform* electron gas of the same density. The corresponding
 **XC potential** — the functional derivative
 $v_\text{xc}(\mathbf r) = \delta E_\text{xc}/\delta\rho(\mathbf r)$ —
 is, by the chain rule,
@@ -329,11 +329,11 @@ The second term in \eqref{eq:ch-05-gea-exchange} — sometimes written
 in the equivalent one-centre form
 $\beta_\text{x} \int (\nabla\rho)^2 / \rho^{4/3} d\mathbf r$ with
 $\beta_\text{x} = (7/432\pi)(6\pi^2)^{2/3} \approx 0.00278$ — is
-*positive*, so the GEA *reduces* the magnitude of the LDA exchange
+*positive*, so the GEA reduces the magnitude of the LDA exchange
 in regions of strong gradient. That is the right direction: the
 exchange energy of a non-uniform system should be *less* negative
 than the LDA value, because the inhomogeneity weakens the Fermi
-hole. The problem is that the GEA *blows u`p*` in the *exponential
+hole. The problem is that the GEA *blows up*` in the exponential
 tail* of an atomic density, where $\rho \to 0$ and the gradient
 expansion diverges. A bare GEA is therefore *worse* than LDA for
 atoms and molecules.
@@ -342,7 +342,7 @@ The GEA's divergence is a *symptom* of the deeper fact that the XC
 energy is not analytic in $\nabla\rho$ at the *atomi`c*` density
 limit. The fix is the **generalised-gradient approximation** of the
 next section: parametrise the *enhancement factor* of the LDA
-integrand as a *bounde`d*` function of a *dimensionless* reduced
+integrand as a *bounded*` function of a dimensionless reduced
 gradient, and fix the parameters by exact constraints (PBE) or by
 empirical fits (B88, LYP).
 
@@ -456,7 +456,7 @@ limit). The structure of $H$ guarantees three constraints:
 
 1. $H \to 0$ as $t \to 0$ (LDA is recovered for a uniform density).
 2. $H \to \beta t^2$ for small $t$ (the second-order GEA limit).
-3. $H$ is *non-negative* for all $t$ (the gradient always *reduces*
+3. $H$ is *non-negative* for all $t$ (the gradient always reduces
    the magnitude of the correlation energy, never increases it).
 
 **The PBE functional.**  Combining the exchange and correlation
@@ -534,7 +534,7 @@ two ways that the GGA ingredients are not.
    and $\nabla\rho$ is non-zero in both. The meta-GGA can.
 2. $\tau$ behaves differently in covalent, metallic, and
    weak-interaction regions. The GGA ingredients see only the
-   *shape* of the density, not the *orbital character* of the
+   *shape* of the density, not the orbital character of the
    region.
 
 The new menu item is conventionally written as an enhancement
@@ -689,7 +689,7 @@ E_\text{xc}^\text{PBE0} \;=\; \frac{1}{4}\, E_\text{x}^\text{exact} \;+\; \frac{
 The factor $1/4$ comes from the *midpoint* of the linear
 $\lambda$-integral: a $1/4$–$3/4$ *average* of the $\lambda = 0$
 (GGA) and $\lambda = 1$ (exact-exchange) limits. PBE0 is
-parameter-free and uses *no empirical fit*. The 1/4 is *not* a
+parameter-free and uses *no empirical fit*. The 1/4 is not a
 fitted number; it is the second-order GL2 prediction.
 
 > **Warning.**  The 1/4 is a *lower boun`d*` on the optimum
@@ -747,7 +747,7 @@ across a wide range of systems.
 > **Note.**  The 1/4 of PBE0 and the 0.20 of B3LYP are *not* the
 > same number. The PBE0 1/4 is the second-order GL2 prediction;
 > the B3LYP 0.20 is a fit to atomisation energies. The two
-> functionals use the *same* PBE exchange and *different*
+> functionals use the *same* PBE exchange and different
 > correlation (PBE correlation for PBE0, LYP for B3LYP), so the
 > comparison is not apples-to-apples. A more controlled
 > comparison is PBE0 vs **PBE0 with LYP correlation** ("PBE0-LYP"
@@ -764,11 +764,11 @@ The fifth rung is the realisation that exact exchange is
 real molecule has a *non-local* part (the HF exchange integral)
 that decays as $1/r_{12}$ in the *long range*. A GGA treats the
 *short* range of the exchange well (because the LDA form
-*locally* captures the Pauli hole) and the *long* range poorly
+*locally* captures the Pauli hole) and the long range poorly
 (because the LDA is a local approximation and the long-range
 exchange is fundamentally non-local). A **range-separated
 hybri`d*`* exploits this by splitting the Coulomb operator into a
-*short-range* and a *long-range* part,
+*short-range* and a long-range part,
 
 \begin{equation}
 \label{eq:ch-05-rs-split}
@@ -801,7 +801,7 @@ integral already contains a non-local exchange-correlation
 contribution by virtue of the Pauli principle).
 
 > **Tip.**  The range-separation parameter $\omega$ controls the
-> trade-off between the *short-range DFT* and the *long-range
+> trade-off between the *short-range DFT* and the long-range
 > HF* parts. Small $\omega$ (e.g. HSE06's $\omega = 0.11$) means
 > most of the Coulomb is treated at the DFT level and only the
 > asymptotic tail is HF: this is the regime of *screened
@@ -864,8 +864,8 @@ none of it).
 
 ### 5.2.8 Double hybrids
 
-A **double hybri`d*`* is the *sixt`h*` rung: a hybrid functional with
-*bot`h*` a fraction of exact exchange *an`d*` a fraction of
+A **double hybri`d** is the sixt`h*` rung: a hybrid functional with
+*both*` a fraction of exact exchange an`d` a fraction of
 **MP2-like correlation** computed from the KS orbitals,
 
 \begin{equation}
@@ -905,7 +905,7 @@ than a single hybrid.
 **DSD-PBEP86.** The **Doubles-Semicanonical** DSD-PBEP86
 double hybrid (Martin and co-workers 2014) is a *spin-component-
 scale`d*` (SCS) variant. The MP2-like correlation is split into
-*same-spin* and *opposite-spin* contributions, and the two
+*same-spin* and opposite-spin contributions, and the two
 contributions are scaled *separately*. The form is
 
 \begin{equation}
@@ -937,9 +937,9 @@ van-der-Waals (vdW) interaction — the *attractive* $1/r^6$ tail
 between two non-overlapping density fragments — is *absent* from
 every LDA, GGA, meta-GGA, and most hybrids. The DFT integrand is
 a *local* (or semi-local) function of the density; the vdW tail
-is a *non-local* functional of the density at *two* points
+is a *non-local* functional of the density at two points
 $\mathbf r_1$ and $\mathbf r_2$ that are *not* close. The
-standard fix is to *ad`d*` a dispersion correction *a posteriori*:
+standard fix is to *add*` a dispersion correction a posteriori:
 
 \begin{equation}
 \label{eq:ch-05-dispersion-correction}
@@ -966,7 +966,7 @@ short range (where DFT already accounts for the interaction) and
 *does not* diverge at long range. The $C_6$ and $C_8$
 coefficients depend on the atom type and on the *hybridisation
 state* (the local environment of the atom, computed from the
-DFT density). The damping function has *one* or *two* fitted
+DFT density). The damping function has *one* or two fitted
 parameters per functional: the D3 correction is parameterised
 *slightly differently* for B3LYP, PBE, BLYP, etc.
 
@@ -978,7 +978,7 @@ sum over pairs of atoms and adds $\mathcal O(N^2)$ to the
 energy evaluation.
 
 **DFT-D4.** The **D4** correction (Caldeweyher et al. 2019) is
-the *next-generation* D correction. It uses *machine-learne`d*`
+the *next-generation* D correction. It uses machine-learne`d`
 dispersion coefficients and *dynami`c*` polarisabilities that
 account for the *chemical environment* of each atom in a more
 sophisticated way than D3. D4 is more accurate than D3 on
@@ -987,7 +987,7 @@ atom depends strongly on its oxidation state) and on
 non-covalent benchmarks more generally. The cost is the same as
 D3. **Many-body dispersion (MBD).** The **MBD** method (Tkatchenko,
 DiStasio, Car, Scheffler 2012) goes beyond the *pairwise*
-approximation by including *three-body* and *higher* Axilrod–
+approximation by including *three-body* and higher Axilrod–
 Teller–Muto contributions. The form is
 
 \begin{equation}
@@ -1107,7 +1107,7 @@ import matplotlib.pyplot as plt
 DIRAC_X_COEF = 0.458165
 
 # Perdew-Zunger (1981), Table I, unpolarized UEG.
-# High-density branch: eps_c = B + A * ln(rs) + D * rs + C * rs * ln(rs)
+# High-density branch: eps_c = B + A * ln(rs) + D * rs + C  rs  ln(rs)
 PZ_HIGH_DENSITY = {
     "A": 0.0311,
     "B": -0.0480,
@@ -1592,7 +1592,7 @@ PBE0 total energies of He and compare each to the exact value.
 
 (c) Discuss the error pattern: HF over-correlates; LDA
 over-correlates worse; PBE fixes most of the error; PBE0 fixes
-a bit more. Why does *adding* exact exchange *improve* the
+a bit more. Why does *adding* exact exchange improve the
 result when the *uncorrecte`d*` LDA already has too much
 correlation?
 
@@ -1668,7 +1668,7 @@ $$
 \Delta E_\text{HF} = E_\text{HF} - E_\text{exact} = -2.8477 - (-2.9037) = +0.0560\,E_h = +35.1\ \text{kcal/mol} .
 $$
 
-This is the *variational HF error* of He using a *single-zet`a*`
+This is the *variational HF error* of He using a single-zet`a`
 Slater basis. The HF *limit* (with a saturated basis) gives
 $E_\text{HF}^\infty = -2.8617\,E_h$, so the basis-set
 incompleteness error is $\sim 0.014\,E_h$. The *intrinsi`c*`
@@ -1717,7 +1717,7 @@ the result is *less* negative than the LDA exchange but
 to compensate the residual LDA correlation error.
 
 The deeper point is that LDA exchange and LDA correlation
-*bot`h*` have self-interaction errors that *partially cancel*
+*both*` have self-interaction errors that partially cancel
 in the LDA total. Adding a fraction of exact exchange (which
 has *no* self-interaction error) shifts the balance, and a
 *smaller* correlation error is needed in the DFT part to
@@ -1801,7 +1801,7 @@ notes.
 - **Dispersion** (section 5.2.9) — the D3, D4, MBD, vdW-DF
   corrections. The D3 and D4 corrections are *parameters of
   the functional*: B3LYP-D3, PBE-D3, BLYP-D3 are *different
-  functionals* with *different* recommended uses.
+  functionals* with *different recommended uses.
 - **Spin** ([chapter 04]({{ site.baseurl }}/dft-notes/chapter-04/) § 4.8) —
   every functional in this chapter has a *spin-polarise`d*`
   (LSDA) and a *spin-unpolarise`d*` (LDA) variant. The
@@ -1841,7 +1841,7 @@ following gaps.
   interacting wavefunction in powers of the
   *difference* between the true electron–electron interaction
   and the KS effective interaction, and shows that the
-  GL2 (second-order) gives the *exact* exchange *an`d*` the
+  GL2 (second-order) gives the *exact* exchange an`d` the
   MP2-like correlation. We used the ACFDT language throughout
   for its physical clarity, but the GLPT machinery is the
   rigorous version. The reader interested in the *derivation*
@@ -1850,7 +1850,7 @@ following gaps.
 - **RPA and quantum-chemical composite methods (GNOF,
   $\Lambda$-functionals, MC-PDFT).** The *to`p*` of Jacob's
   ladder is the random-phase approximation (RPA), which uses
-  the *exact* (adiabatic) exchange and the *ring-Coulom`b*`
+  the *exact* (adiabatic) exchange and the ring-Coulom`b`
   correlation. RPA is expensive ($\mathcal O(K^4)$ to
   $\mathcal O(K^6)$) and has a notorious *self-correlation*
   error that makes it *worse* than PBE0 on atomisation
@@ -1869,7 +1869,7 @@ following gaps.
   hierarchical equations of motion and shows
   *systemati`c*` improvements over hybrid functionals on a
   wide range of benchmarks. The functional is not a
-  *formul`a*` — it is a *neural networ`k*` — so it does not fit
+  *formula*` — it is a neural networ`k` — so it does not fit
   neatly into the Jacob's ladder picture. We did not cover
   it because the methodology is still rapidly evolving and
   the *form* of the functional is not yet standardised.
@@ -2198,7 +2198,7 @@ densities. The procedure is based on the Monte Carlo
 calculations of Ceperley and Alder, who obtained the
 correlation energy for the ferromagnetic and paramagnetic
 fluids, and the technique of fitting the data with a
-[5-parameter Padé approximant]."* That is the *thesis* of the
+[5-parameter Padé approximant]."* That is the *thesis of the
 paper: a single, *closed-form* parameterisation of the
 uniform-electron-gas correlation energy, with a controlled
 fit error over the metallic range $r_s = 1$–$10$.
@@ -2328,10 +2328,10 @@ through the stiffness formula
 quadratic interpolation between $\zeta = 0$ and $\zeta = 1$;
 (ii) the 5-parameter Padé form
 \eqref{eq:ch-05-lit-vwn-pade} has the right
-*high-density* ($r_s \to 0$) and *low-density* ($r_s \to \infty$)
+*high-density* ($r_s \to 0$) and low-density ($r_s \to \infty$)
 limits, matching the Gell-Mann–Brueckner expansion at high
 density and the Wigner crystal limit at low density; and
-(iii) the fitted curve has a *small* and *uniformly distribute`d*`
+(iii) the fitted curve has a *small* and uniformly distribute`d`
 residual (the VWN paper reports residuals of order
 $10^{-4}\,E_h$ per electron on the Ceperley–Alder data
 points, p. 1204). The *modifie`d*` version "VWN5" is the
@@ -2375,7 +2375,7 @@ $\varepsilon_\text{x}$ in atomic, molecular, and solid-state
 systems. Numerical tests on the noble gases He through Xe
 demonstrate that the new approximation provides substantially
 improved exchange energies relative to the conventional local
-(spin-)density approximation."* That is the *thesis* of the
+(spin-)density approximation."* That is the *thesis of the
 paper: the LDA has the *wrong* asymptotic behaviour for
 $\varepsilon_\text{x}$ (it decays as $-C_\text{x} \rho^{1/3}$,
 not as $-1/r$), and the GGA correction can be made to fix
@@ -2462,7 +2462,7 @@ region of an atom or molecule, *not* as $-C_\text{x}
 > decays as $\sum_i C_i^2 e^{-2 a_i r}$. The ratio therefore
 > decays as $\sum_i |C_i|^2 a_i^2 e^{-2 a_i r} / \sum_i
 > |C_i|^2 e^{-2 a_i r}$, which is dominated by the
-> *smallest* $a_i$ — the *highest occupie`d*` orbital's decay
+> *smallest* $a_i$ — the highest occupie`d` orbital's decay
 > constant $\alpha = \sqrt{-2 m \varepsilon_\text{HOMO}}/\hbar$.
 > Since the HOMO decays as $e^{-\alpha r}$ and the density
 > decays as $e^{-2\alpha r}$, the ratio decays as $1/r$."
@@ -2590,9 +2590,9 @@ Hartree–Fock density matrix. The functional
 $\varepsilon_\text{c}[\rho]$ so obtained satisfies several
 sum rules, recovers the uniform-electron-gas limit, and
 reproduces correlation energies of atoms and small
-molecules to within a few percent."* That is the *thesis* of
+molecules to within a few percent."* That is the *thesis of
 the paper: the Colle–Salvetti 1975 *wavefunction-base`d*`
-correlation formula can be *reformulate`d*` as a *density
+correlation formula can be *reformulated*` as a density
 functional*, without any orbital dependence, and the
 resulting density functional — once the kinetic-energy
 density $\tau$ is approximated by its Thomas–Fermi form —
@@ -2693,7 +2693,7 @@ the integral over $\mathbf r_2$ at fixed $\mathbf r_1$, gives
 **Where the four parameters come from (p. 787).** The
 parameters $a, b, c, d$ of
 \eqref{eq:ch-05-lit-lyp-params} are *fit to the helium
-atom* — the only system for which the *exact* correlation
+atom* — the only system for which the *exact correlation
 energy is known analytically (the Hylleraas wavefunction of
 Kinoshita 1959 gives $E_\text{c}(\text{He}) = -0.0420\,E_h$
 relative to the Hartree–Fock value). The LYP paper fits the
@@ -2728,8 +2728,8 @@ in B3LYP:
 
 1. **It is "non-empirical" in a different sense from PBE.**
    PBE correlation (Eq. \eqref{eq:ch-05-lit-pbe-h} of §5.9.1
-   above) is *constraint-base`d*` but not *fitte`d*` — it
-   *replaces* the LDA correlation with a *correction* to it.
+   above) is *constraint-based*` but not fitte`d` — it
+   *replaces* the LDA correlation with a correction to it.
    LYP is a *replacement* of the LDA correlation that does
    not have the LDA correlation as its base. For a
    *replacement* correlation, fitting to a single atom
@@ -2759,7 +2759,7 @@ in B3LYP:
    GGA of organic chemistry. The B3LYP 1993 paper
    (Becke, J. Chem. Phys. 98, 5648) uses the LYP
    correlation as its *full* correlation, not as a
-   *correction* to VWN, with VWN3 (not VWN5) as a *minor
+   *correction* to VWN, with VWN3 (not VWN5) as a minor
    secondary* correlation term that contributes $\sim 20\%$
    of the total.
 

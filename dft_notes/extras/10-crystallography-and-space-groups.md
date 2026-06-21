@@ -42,7 +42,7 @@ here and is linked back to its source.
   $\alpha = \angle(\mathbf b, \mathbf c)$, $\beta = \angle(\mathbf a, \mathbf c)$,
   $\gamma = \angle(\mathbf a, \mathbf b)$.
 - Lattice parameters $(a, b, c)$ and reciprocal parameters
-  $(`a*`, `b*`, `c*`)$ are in Å and Å⁻¹ respectively; we follow
+  $(`a*, b*`, `c`)$ are in Å and Å⁻¹ respectively; we follow
   the crystallographic convention rather than the
   atomic-unit convention of
   [chapter 00]({{ "/dft-notes/chapter-00/" | relative_url }}) when
@@ -124,7 +124,7 @@ pairs of edges (definitions in the conventions box above).
 | Hexagonal | $a = b \ne c$; $\alpha = \beta = 90°$, $\gamma = 120°$ | $6/mmm$ | 24 |
 | Cubic | $a = b = c$; $\alpha = \beta = \gamma = 90°$ | $m\bar 3 m$ | 48 |
 
-The **holohedral point grou`p*`* (or *holohedry*) is the
+The **holohedral point grou`p** (or holohedry*) is the
 full point group that maps the conventional cell onto itself.
 It is the highest-symmetry point group of the crystal system;
 every other point group in the same system is a subgroup of the
@@ -1386,7 +1386,7 @@ diamond structure (FCC, 8 atoms per conventional cell).
 There are **23** Pearson symbols in common use.  The reason
 there are 23 and not 14 (the number of Bravais lattices) is
 that some authors extend the convention to include the lattice
-*centring* of the reciprocal lattice or the lattice *system*
+*centring* of the reciprocal lattice or the lattice system
 in a non-standard way.  The 14 standard Pearson symbols are in
 the table below; the 9 extras ($aS$, $mI$, $oA$, $oB$, $oC$,
 $tS$, $hS$, $cS$, and one more historical variant) are

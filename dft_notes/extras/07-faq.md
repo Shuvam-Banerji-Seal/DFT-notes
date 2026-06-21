@@ -470,7 +470,7 @@ historical name from the Hartree–Fock days.
 <details>
 <summary><strong>B.7 — What is a "functional"?</strong></summary>
 
-A **functional** is a map from a *function* to a *number* (or
+A **functional** is a map from a *function* to a number (or
 to another function).  For example, the Kohn–Sham total
 energy is a functional of the density:
 
@@ -518,7 +518,7 @@ minimiser is the exact ground-state density.
 The HK theorem is an *existence proo`f*`; it does not give a
 recipe for the functional \(F_\text{HK}[\rho]\).  The Kohn–
 Sham construction is the practical realisation: it replaces
-the *unknown* functional \(F_\text{HK}\) by an *exactly known*
+the *unknown* functional \(F_\text{HK}\) by an exactly known
 non-interacting kinetic energy \(T_s\) plus a small
 correction \(E_\text{xc}[\rho]\) that absorbs everything
 unknown.
@@ -926,7 +926,7 @@ algorithm.
 "Noisy" forces — values that fluctuate by ~50 meV/Å or
 more between iterations, or that don't monotonically
 decrease in magnitude — have a few common culprits: **The SCF
-is not converge`d*`* — forces are *gradients of the energy*;
+is not converge`d** — forces are gradients of the energy*;
 if the energy has \(10^{-4}\) eV noise, the forces have
 \(10^{-2}\) eV/Å noise.  Tighten the SCF convergence.
 **The k-mesh is too coarse** — especially in metals, an
@@ -969,7 +969,7 @@ A "different result" can mean:
 - **Different gap / different orbital ordering**.  Often a
   real physical difference — symmetry breaking, spin
   polarisation, metallic vs. insulating.  *Check the
-  occupations* and the *spin state* in both codes.
+  occupations* and the *spin state in both codes.
 
 A pragmatic check: run the same system in two codes with
 *identical* inputs and confirm that the energies agree to
@@ -1118,7 +1118,7 @@ replaces the strong nuclear Coulomb potential and the
 frozen core by a *smooth effective potential* that
 reproduces the valence wavefunction outside a cutoff radius
 \(r_c\).  Inside \(r_c\) the pseudo-wavefunction is
-*nodeless* (no core radial nodes) and is *not* the
+*nodeless* (no core radial nodes) and is not the
 all-electron wavefunction; information about the core
 electrons is lost.  A **PAW (projector augmented wave)
 potential** is a *transformation* (Blöchl, 1994) that maps
@@ -1158,7 +1158,7 @@ e1327. **Gaussian** — Frisch et al., *Gaussian 16 Revision
 C.01*, Gaussian Inc., 2016. **CASTEP** — Clark et al. (2005)
 *Z. Kristallogr.* **220**, 567. **PySCF** — Sun et al.
 (2018) *J. Chem. Phys.* **153**, 024109. Always cite the *version* (e.g. "VASP 6.3.0"), the
-*functional* (e.g. "PBE-D3"), the *pseudopotential library*
+*functional* (e.g. "PBE-D3"), the pseudopotential library
 (e.g. "PAW_PBE from the VASP library"), and the *convergence
 parameters* in the methods section.  This is the most common
 source of irreproducibility in published DFT.

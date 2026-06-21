@@ -332,7 +332,7 @@ functional of the density, and in the AO basis it is also a
 function of the MO coefficients $\mathbf C$ and of the geometry
 $\mathbf R$ (the latter through the basis functions).  We split
 the total derivative with respect to $\mathbf R_I$ into a
-*direct* piece (basis-functions move) and a *response* piece (the
+*direct* piece (basis-functions move) and a response piece (the
 SCF solution shifts):
 
 \begin{equation}
@@ -1255,7 +1255,7 @@ force along the step, given the current model) and the
 along the step). The curvature condition
 $y^\text{T} s > 0$ that guarantees
 $\mathbf B^{(k+1)} \succ 0$ is the requirement that the
-denominator on the *right* is positive — i.e. that the *measure`d*`
+denominator on the *right* is positive — i.e. that the measure`d`
 curvature agrees in sign with what a positive-definite model
 should predict.
 
@@ -1411,7 +1411,7 @@ therefore does *not* vanish in a plane-wave code, in contrast
 to the Pulay force.  It is the term that captures the dependence
 of the basis on the cell shape.  (For the *forces*, the basis
 does not depend on the *ioni`c*` positions, so the Pulay force
-vanishes; for the *stress*, the basis depends on the *cell*,
+vanishes; for the *stress*, the basis depends on the cell,
 so the Pulay stress is non-zero.)
 
 ### 9.9.3 Pressure
@@ -1473,7 +1473,7 @@ graph TD
   F1 --> G["G(k) = -F, -Omega sigma"]
   F2 --> G
   G --> CK{"Converged?<br/>|F| < F_tol<br/>sigma_diag ~ P_ext<br/>sigma_offdiag < S_tol"}
-  CK -->|yes| DONE["Equilibrium cell<br/>R*, `a*`, E*"]
+  CK -->|yes| DONE["Equilibrium cell<br/>R*, a*`, E"]
   CK -->|no| BFGS["BFGS / LBFGS<br/>on augmented state<br/>(positions + cell)"]
   BFGS --> STEP["alpha_k, p(k)"]
   STEP --> XNEW["X(k+1) = X(k) +<br/>alpha_k p(k)"]
@@ -1504,7 +1504,7 @@ self-consistent density from `SCF`, but they are otherwise
 cell relaxation, with the state vector now including the cell
 parameters — the BFGS machinery of §9.6.3 does not care whether
 a coordinate is an ion position or a cell vector. The
-**convergence chec`k*`* is the *stricter* of the two checks
+**convergence chec`k** is the stricter* of the two checks
 (forces *an`d*` stress) — a cell may be at zero force on every
 ion but still have non-zero off-diagonal stress, in which case
 it must be sheared further.
@@ -2004,7 +2004,7 @@ follow-ups we did not cover:
 - **Nudged elastic band (NEB).**  To find a transition state
   between two minima, one relaxes a chain of geometries (the
   "images") connected by springs, with the spring force
-  *projected out* of the perpendicular component and the *true*
+  *projected out* of the perpendicular component and the true
   force projected out of the tangential component.  The
   resulting "nudged" force is the gradient of the NEB
   functional, and the algorithm is the same BFGS / LBFGS

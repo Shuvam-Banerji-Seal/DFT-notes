@@ -47,10 +47,10 @@ electronic band structure $\varepsilon_n(\mathbf k)$ of
 number of *supercell* force calculations; (3) explain the
 *linear-response* method (**DFPT**, §10.3) that gives $\Phi$ for any
 $\mathbf q$ from a single unit cell; (4) give the *acoustic sum
-rule* (§10.4) and the *LO-TO splitting* (§10.5) that pin down
+rule* (§10.4) and the *LO-TO splitting (§10.5) that pin down
 $\omega_s(\mathbf q)$ at the two limits $\mathbf q \to 0$ and
 $\mathbf q = 0$ for ionic crystals; (5) connect the dispersion to
-the *phonon density of states* and the *thermodynami`c*` functions
+the *phonon density of states* and the thermodynami`c` functions
 (§10.6); (6) sketch the *anharmoni`c*` corrections that go beyond
 the harmonic approximation (§10.7); and (7) treat the
 *electron-phonon* coupling (§10.8) that ties phonons back to
@@ -301,7 +301,7 @@ $\mathbf q$ in the primitive cell.
 A single force calculation tells you the *force* on each atom
 induced by a particular displacement pattern, not the second
 derivative directly. To extract the second derivative, you need
-*two* displacement patterns and a *finite-difference* fit, or you
+*two* displacement patterns and a finite-difference fit, or you
 need to invert the relationship
 
 \begin{equation}
@@ -448,7 +448,7 @@ sizes — easily $O(100)$ SCF cycles in total. The
 **density-functional perturbation theory** (DFPT) approach of
 [Baroni, Giannozzi, Testa (1987)](<https://doi.org/10.1103/PhysRevLett.58.1861>)
 and [Gonze (1995)](<https://doi.org/10.1103/PhysRevB.52.1096>) gets
-the *same* force-constant matrix from a *single* unit-cell
+the *same* force-constant matrix from a single unit-cell
 calculation by solving a *linear-response* problem for the
 self-consistent potential at every $\mathbf q$.
 
@@ -489,7 +489,7 @@ $2n + 1$ for $n = 0$ (since $2(0) + 1 = 1$, but we want the
 energy to order $2n+1$ requires the wavefunction to order $n$",
 which for the *force-constant matrix* ($n = 0$ for the second
 derivative of the energy) means *no wavefunction perturbation at
-all* — but the *force-constant matrix itsel`f*` is second-order in
+all* — but the *force-constant matrix itsel`f` is second-order in
 the perturbation amplitude, so we need $\psi^{(1)}$ to compute it).
 Either way, the practical consequence is the same: a *single*
 linear-response calculation gives the second derivative of the
@@ -523,7 +523,7 @@ the standard fix is to project out the $\psi_n^{(0)}$ component
 and solve in the *orthogonal complement* of the unperturbed
 eigenstate. This is a *linear* equation in $\psi_n^{(1)}$, not a
 self-consistent one — but the Hamiltonian $\hat H^{(0)}$ depends
-on the *density* $\rho$, so the *self-consistent* density
+on the *density* $\rho$, so the self-consistent density
 response $\rho^{(1)}$ couples all the $\psi_n^{(1)}$ together
 through the Hartree and exchange–correlation potentials. The
 **self-consistent** Sternheimer equation is
@@ -741,7 +741,7 @@ are the three acoustic modes at $\Gamma$.
 > rule is *not* exactly satisfied because the supercell is not
 > exactly translationally invariant (the Born–von Karman boundary
 > conditions break the continuous translation group down to a
-> *discrete* one). The largest *spurious* contribution to the ASR
+> *discrete* one). The largest spurious contribution to the ASR
 > comes from the *long-range* part of the force constants, which
 > in a finite supercell is replaced by an interaction with the
 > periodic images. The standard fix is to *enforce* the ASR
@@ -772,9 +772,9 @@ For a crystal with *two or more* atoms per primitive cell, the
 story is richer. There are *three acousti`c*` branches (which go
 to zero at $\Gamma$ as above) and *3(N-1) optical* branches
 (which have non-zero frequency at $\Gamma$). The
-*longitudinal optical* (LO) branch in an *ioni`c*` crystal has a
+*longitudinal optical* (LO) branch in an ioni`c` crystal has a
 particularly subtle behaviour: its frequency at $\mathbf q = 0$
-is *not* the same as the frequency of the *transverse optical*
+is *not* the same as the frequency of the transverse optical
 (TO) branch. The split is called the **LO–TO splitting**, and it
 is a macroscopic electrostatic effect that the *interatomic
 force constants* alone do not capture. The bridge between the
@@ -798,7 +798,7 @@ where $\Omega$ is the unit-cell volume and $Z^*_I$ is the
 converts the sum (a dipole moment per unit cell) into a
 polarisation. The Born effective charge is a *rank-2 tensor* in
 the Cartesian indices, so for a general non-cubic site it is
-*not* a scalar. By the acoustic sum rule, the *net* effective
+*not* a scalar. By the acoustic sum rule, the net effective
 charge summed over all atoms in the unit cell vanishes in a
 neutral crystal:
 
@@ -807,7 +807,7 @@ neutral crystal:
 \sum_{I}\, Z^*_{I} \;=\; 0 .
 \end{equation}
 
-In a *non-ioni`c*` crystal (e.g. pure silicon) $Z^*_\text{Si} = 0$ by
+In a *non-ionic*` crystal (e.g. pure silicon) $Z^_\text{Si} = 0$ by
 symmetry, even though Si has 4 valence electrons. In an *ioni`c*`
 crystal like NaCl, $Z^*_\text{Na} \approx +1.1\, e$ and
 $Z^*_\text{Cl} \approx -1.1\, e$ — slightly renormalised from the
@@ -869,9 +869,9 @@ $(\mathbf q \cdot Z^*_I)_\alpha (\mathbf q \cdot Z^*_J)_\beta / |\mathbf q|^2$.)
 
 The non-analytic term is *zero* at $\mathbf q = 0$ in the sense
 that it does not depend on $|\mathbf q|$ (it depends only on the
-*direction* of $\mathbf q$); but it is non-zero for *any* $\mathbf
+*direction* of $\mathbf q$); but it is non-zero for any $\mathbf
 q \neq 0$. The effect on the *longitudinal* optical mode is to
-*raise* its frequency by an amount set by $Z^*$ and
+*raise* its frequency by an amount set by $Z^$ and
 $\varepsilon_\infty$:
 
 \begin{equation}
@@ -1056,7 +1056,7 @@ A few more useful identities in the harmonic approximation:
 The harmonic approximation is a quadratic expansion of the energy
 in the nuclear displacements. It is exact in the limit of small
 displacements at $T = 0$, but it is *not* exact at finite
-temperature, and it is *not* exact for the *thermal expansion*
+temperature, and it is *not* exact for the thermal expansion
 even at $T \to 0$. The missing physics is the **anharmonic
 corrections** — the third, fourth, and higher derivatives of the
 energy with respect to nuclear displacements.
@@ -1118,11 +1118,11 @@ $E^{(3)}$ is
 where $V^{(3)}$ is the cubic matrix element
 $\langle ss_1 s_2 | E^{(3)} | 0\rangle$ and $n_i = (e^{\beta\hbar\omega_i} - 1)^{-1}$
 is the Bose–Einstein occupation. The delta function enforces
-*energy conservation*; the conservation of *crystal momentum* is
+*energy conservation*; the conservation of crystal momentum is
 already built into the matrix element by the way the
 wavevectors enter. The widths $\Gamma_s$ determine the *thermal
-conductivity* via the Boltzmann transport equation, the *Raman*
-and *infrare`d*` linewidths, and the *lifetime* of a coherent
+conductivity* via the Boltzmann transport equation, the *Raman
+and *infrared*` linewidths, and the lifetime of a coherent
 phonon.
 
 > **Note.** At room temperature, $\Gamma_s$ is typically 1–10
@@ -1187,15 +1187,15 @@ terms and solved self-consistently).
 
 A different kind of "anharmonicity" is the *temperature
 dependence of the electronic band structure* — the band gap
-*shrinks* as $T$ increases. This is a *zero-phonon* effect of
-anharmonicity on the *electrons* (mediated by the *zero-point
+*shrinks* as $T$ increases. This is a zero-phonon effect of
+anharmonicity on the *electrons* (mediated by the zero-point
 motion* of the phonons), and it is captured by the
 **Allen–Heine–Cardona (AHC) formalism** of
 [Allen & Heine (1976)](<https://doi.org/10.1088/0022-3719/9/12/013>) and
 [Allen & Cardona (1981)](<https://doi.org/10.1103/PhysRevB.23.1499>).
 
 The AHC formalism computes the *self-energy* of an electronic
-state due to the *zero-point* and *thermal* motion of the
+state due to the *zero-point* and thermal motion of the
 phonons, treating the electron-phonon coupling perturbatively
 (see §10.8 below). The renormalisation of the band gap at
 temperature $T$ is
@@ -1263,7 +1263,7 @@ where $\Delta_s(\mathbf q) = i |\mathbf q| U_s$ is the dilatation
 **deformation potential constant** (units of energy). The
 deformation potential is the band-structure analogue of the
 electron-phonon matrix element of the next subsection; it is
-*diagonal* in the electronic index and *q-independent* to leading
+*diagonal* in the electronic index and q-independent to leading
 order.
 
 > **Tip.** The deformation potential of silicon is about
@@ -1352,7 +1352,7 @@ g_{mn}^\nu(\mathbf k, \mathbf q) \;=\;
 \end{equation}
 
 where the prefactor converts the *normalise`d*` phonon amplitude
-to a *physical* displacement, $M_\nu$ is a *mode-effective mass*
+to a *physical* displacement, $M_\nu$ is a mode-effective mass
 (the sum of $M_I |U_{s, I\alpha}|^2$ over the atoms in the unit
 cell, with the polarisation vector normalised to one), and the
 matrix element involves the *external* (pseudo-) potential
@@ -1480,7 +1480,7 @@ McMillan regime.
 
 ### 10.8.6 Diagram — from electron–phonon coupling to McMillan $T_c$
 
-The full chain from *first principles* to a *superconducting
+The full chain from *first principles* to a superconducting
 $T_c$* runs through the Eliashberg function
 $\alpha^2 F(\omega)$ and a non-linear integral equation (the
 Eliashberg equation), which the McMillan formula approximates
@@ -1532,7 +1532,7 @@ spectral density of the coupling. From `ALF` one can either
 *directly* solve the non-linear Eliashberg equations (`ELB`), or
 *approximately* evaluate the McMillan formula (`MMC`) — the two
 paths converge in the weak-coupling limit $\lambda \lesssim 1.5$.
-The Coulomb pseudopotential $\mu^*$ is the *only* free parameter
+The Coulomb pseudopotential $\mu^*$ is the *only free parameter
 in the chain; it is a phenomenological correction for the
 screened Coulomb repulsion that the phonon-mediated pairing has
 to overcome.
@@ -1544,7 +1544,7 @@ $N$ unit cells, each containing two atoms of masses $M_1$ and
 $M_2$ ($M_2 > M_1$), connected by springs of force constant $K$
 between nearest neighbours. The lattice constant is $a$, so the
 two atoms within a cell are separated by $a/2$. The dispersion
-relation has two branches — *acousti`c*` (lower) and *optical*
+relation has two branches — *acoustic*` (lower) and optical
 (upper) — with a frequency gap at the Brillouin-zone boundary.
 
 ### 10.9.1 Setting up the equations of motion
@@ -1917,7 +1917,7 @@ graph TD
 
 The decision node `C{Choose method}` is the one a practitioner
 spends the most time on. **DFPT** is preferred for *primitive
-cells* and for *long-wavelengt`h*` properties (LO–TO splitting,
+cells* and for *long-wavelengt`h` properties (LO–TO splitting,
 Born effective charges, the dielectric tensor). **Frozen phonon**
 is preferred for *supercells* (defects, alloys) and when DFPT
 is not available. The two routes converge to the same answer in
@@ -2171,7 +2171,7 @@ $$
 \frac{\omega\, \alpha^2 F(\omega)}{\omega^2 + (2\pi T \ell)^2} .
 $$
 
-The Coulomb pseudopotential $\mu^*$ appears as the *constant*
+The Coulomb pseudopotential $\mu^*$ appears as the *constant
 piece of the kernel that subtracts the *high-frequency*
 Coulomb repulsion (which is treated as instantaneous in the
 Eliashberg formalism). Its physical content is: the bare
@@ -2267,7 +2267,7 @@ what we skipped:
 - **Phonon linewidths and anharmonic self-energies in detail.**
   Equation \eqref{eq:ch-10-pp-width} is the *second-order*
   expression for the linewidth from cubic anharmonicity. The
-  *full* anharmonic self-energy requires a *self-consistent*
+  *full* anharmonic self-energy requires a self-consistent
   summation of diagrams (the "self-consistent phonon" or
   "renormalisation-group" approaches), and the *fourth-order*
   $E^{(4)}$ contributes both a frequency shift and a *quarti`c*`
@@ -2301,11 +2301,11 @@ what we skipped:
   for bulk, but the supercell must contain enough vacuum to
   isolate the two surfaces. We did not give the formulas.
 - **Phonon dynamics in real time.** The harmonic approximation
-  gives *stati`c*` normal modes. To describe *real-time*
+  gives *static*` normal modes. To describe real-time
   phonon dynamics (e.g. coherent-phonon experiments, phonon
   Boltzmann transport in the *transient* regime) one needs
   the *time-dependent* extension of the harmonic Hamiltonian,
-  the *phonon Boltzmann transport equation*, or *ab initio*
+  the *phonon Boltzmann transport equation*, or ab initio
   molecular dynamics. The state of the art is the
   *non-equilibrium* Green's function (NEGF) treatment of
   phonons, which generalises the phonon self-energy to a

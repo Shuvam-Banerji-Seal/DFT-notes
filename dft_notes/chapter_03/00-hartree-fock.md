@@ -71,7 +71,7 @@ inequality is sharp: equality holds only if $\tilde\Psi$ is the
 exact ground state.  In practical calculations we never *have* the
 exact ground state; we have a *parametrised family* of trial
 wavefunctions and we minimise the energy over the parameters.  The
-*quality* of the result is governed entirely by the *flexibility*
+*quality* of the result is governed entirely by the flexibility
 of that family.
 
 Hartree–Fock is the **best single-determinant** Ansatz.  We pick
@@ -602,7 +602,7 @@ This is the Roothaan equation
 
 Equation \eqref{eq:ch-03-F-def} is the *definition* of $\mathbf F$
 in the AO basis.  The content is in writing $F_{\mu\nu}$ in terms
-of *one-electron* and *two-electron* integrals, both of which are
+of *one-electron* and two-electron integrals, both of which are
 routinely computed by Gaussian integral codes.  Substituting
 \eqref{eq:ch-03-fock-operator}:
 
@@ -703,7 +703,7 @@ d\mathbf r_1\, d\mathbf r_2}_{(\mu\sigma \rvert \rho\nu)} .
 \label{eq:ch-03-K}
 \end{align}
 
-This has *one* $\mu$/$\nu$ index that crossed over to the *other*
+This has *one* $\mu$/$\nu$ index that crossed over to the other
 side of the kernel: in chemists' notation it is
 $(\mu\sigma \rvert \rho\nu)$, not $(\mu\nu \rvert \rho\sigma)$.
 The crossed indices are what make $K_{\mu\nu}$ non-trivially
@@ -909,7 +909,7 @@ MO transformation.
 
 The SCF algorithm above has six steps, but the *dat`a*` it carries
 between steps falls into four categories. The diagram below
-arranges the algorithm by *what is moving*, not by *when*:
+arranges the algorithm by *what is moving*, not by when:
 
 - the **atomic-orbital integrals** (one-time setup, geometry-fixed),
 - the **density matrix** $\mathbf P$ (the SCF iterate),
@@ -1022,7 +1022,7 @@ with MO coefficients
 $\mathbf C = \begin{smallmatrix} -0.5489 & -1.2115 \\ -0.5489 & +1.2115 \end{smallmatrix}$
 and orbital energies
 $\boldsymbol\varepsilon = (-0.5782,\, +0.6703)\,E_h$.  The
-*implementation* of section 3.6 is *exactly* the script in
+*implementation* of section 3.6 is exactly the script in
 chapter 6 §6.9; the new content here is the *abstraction*
 \eqref{eq:ch-03-F-ao} that the script instantiates.  Section 3.8
 extends that script with DIIS, and the full worked implementation
@@ -1614,15 +1614,15 @@ def overlap_ss(alpha, A, beta, B):
     gamma = alpha + beta
     Rab2 = np.sum((A - B) ** 2)
     Kab  = np.exp(-alpha * beta / gamma * Rab2)
-    return norm_s(alpha) * norm_s(beta) * Kab * (np.pi / gamma) ** 1.5
+    return norm_s(alpha) * norm_s(beta) * Kab  (np.pi / gamma) ** 1.5
 
 def kinetic_ss(alpha, A, beta, B):
     """<g_A | -1/2 nabla^2 | g_B> for two primitive s-Gaussians."""
     gamma = alpha + beta
     Rab2 = np.sum((A - B) ** 2)
     Kab  = np.exp(-alpha * beta / gamma * Rab2)
-    pre  = norm_s(alpha) * norm_s(beta) * Kab * (np.pi / gamma) ** 1.5
-    return pre * (alpha * beta / gamma) * (3.0 - 2.0 * alpha * beta / gamma * Rab2)
+    pre  = norm_s(alpha) * norm_s(beta) * Kab  (np.pi / gamma) ** 1.5
+    return pre * (alpha * beta / gamma)  (3.0 - 2.0  alpha * beta / gamma  Rab2)
 
 def boys_f0(t):
     """Boys function F_0(t) = (1/2) sqrt(pi/t) erf(sqrt(t)); F_0(0) = 1."""
@@ -1638,8 +1638,8 @@ def nuclear_ss(alpha, A, beta, B, Z, C):
     Rab2 = np.sum((A - B) ** 2)
     Kab  = np.exp(-alpha * beta / gamma * Rab2)
     PC2  = np.sum((P - C) ** 2)
-    return (-Z) * norm_s(alpha) * norm_s(beta) * Kab \
-                * (2.0 * np.pi / gamma) * boys_f0(gamma * PC2)
+    return (-Z) * norm_s(alpha) * norm_s(beta)  Kab \
+                * (2.0 * np.pi / gamma)  boys_f0(gamma  PC2)
 
 def contracted_1e(shell_A, shell_B, op, Z=None, C=None):
     """One-electron integral between two contracted s-shells."""
@@ -1669,7 +1669,7 @@ def eri_prim_ss(alpha, A, beta, B, gamma, C, delta, D):
     Kab  = np.exp(-alpha * beta / ab * Rab2)
     Kcd  = np.exp(-gamma * delta / cd * Rcd2)
     pre  = norm_s(alpha) * norm_s(beta) \
-         * norm_s(gamma) * norm_s(delta) * Kab * Kcd
+         * norm_s(gamma) * norm_s(delta)  Kab  Kcd
     rho  = ab * cd / (ab + cd)
     return pre * (2.0 * np.pi ** 2.5) / (ab * cd * np.sqrt(ab + cd)) \
                 * boys_f0(rho * RPQ2)
@@ -1703,7 +1703,7 @@ def build_F_direct(shells, P, schwarz, threshold=1e-12):
                         for (b, db) in shells[nu]["prims"]:
                             for (c, dc) in shells[rho]["prims"]:
                                 for (d, dd) in shells[sigma]["prims"]:
-                                    val += da * db * dc * dd * eri_prim_ss(
+                                    val += da * db * dc  dd  eri_prim_ss(
                                         a, shells[mu]["center"],
                                         b, shells[nu]["center"],
                                         c, shells[rho]["center"],
@@ -1723,7 +1723,7 @@ def build_F_direct(shells, P, schwarz, threshold=1e-12):
                         for (b, db) in shells[nu]["prims"]:
                             for (c, dc) in shells[rho]["prims"]:
                                 for (d, dd) in shells[sigma]["prims"]:
-                                    val += da * db * dc * dd * eri_prim_ss(
+                                    val += da * db * dc  dd  eri_prim_ss(
                                         a, shells[mu]["center"],
                                         b, shells[nu]["center"],
                                         c, shells[rho]["center"],
@@ -1935,11 +1935,11 @@ orbital $a$, the $\beta$ Fock matrix is *unchange`d*` (it depends
 only on $\mathbf P^\beta$, and $\mathbf P^\beta$ has not been
 touched), so the $\beta$ orbitals do not need to relax.  The
 remaining $\alpha$ orbitals *do* change their Fock matrix, but
-the *total* energy difference involves the *unrelaxe`d*` orbital
+the *total* energy difference involves the unrelaxe`d` orbital
 $a$ — and the energy contribution from the $\alpha$ relaxation
 cancels against the changes in $J_{aj}$ and $K_{aj}$.
 
-For a *general* ionisation, the cancellation is *not* exact; this
+For a *general* ionisation, the cancellation is not exact; this
 is the source of the "Koopmans' theorem is approximate" caveat.
 
 ### 3.9.2 The frozen-orbital approximation
@@ -2011,7 +2011,7 @@ I_a^{\Delta\text{SCF}} \;\equiv\; E_\text{HF}[\Psi(N-1)] \;-\; E_\text{HF}[\Psi(
 
 where $\Psi(N-1)$ and $\Psi(N)$ are both *fully self-consistent*
 on their respective electron counts.  The ΔSCF method
-*exactly* captures the relaxation correction but is a *separate*
+*exactly* captures the relaxation correction but is a separate
 SCF calculation (one SCF for the neutral, one for the ion), and
 is therefore roughly twice the cost of a single-point HF.  It
 is the standard for accurate HF ionisation energies when
@@ -2116,9 +2116,9 @@ Kohn–Sham DFT
 ([chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) and
 [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }})) is
 built: a single Slater determinant of *orbitals* obeying a
-*one-electron* eigenvalue equation, with the *non-classical*
+*one-electron* eigenvalue equation, with the non-classical
 contribution $\hat v_\text{xc}$ in place of $-\hat K$.  The
-*Ansatz* is the same; the *operator* changes.
+*Ansatz* is the same; the operator changes.
 
 > **Note.**  The notation "$\hat v_\text{xc}$" in DFT is the
 > *local* (multiplicative) counterpart of the non-local
@@ -2312,8 +2312,8 @@ is invariant under any unitary rotation of the occupied
 orbitals.  $\quad\blacksquare$
 
 This is the formal statement of the textbook line "the HF energy
-depends on the *density matrix*, not on the *individual
-orbitals*."  The *orbitals* within the occupied subspace are
+depends on the *density matrix*, not on the individual
+orbitals*."  The *orbitals within the occupied subspace are
 not observables; only the subspace they span is.
 
 </details>
@@ -2422,7 +2422,7 @@ core derivation:
   for clarity.
 - **Integral screening beyond Schwarz.**  The Schwarz inequality
   \eqref{eq:ch-03-schwarz} is the *first* level of screening;
-  production codes add *shell-pair*, *shell-quartet*, and
+  production codes add *shell-pair*, shell-quartet, and
   *density-base`d*` screenings that drive the effective scaling
   of the Fock build down to $\mathcal O(K)$ in the
   large-molecule limit.

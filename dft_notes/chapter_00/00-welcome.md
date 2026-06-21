@@ -23,7 +23,7 @@ making and why they might be wrong.
 Chapter 00 is the **only meta chapter** in the collection.  Every
 later chapter (01, 02, …) is about DFT; this one is about the
 *document you are reading*.  If you are in a hurry to get to
-equations, you can read the *Notation* and *What is not in scope*
+equations, you can read the *Notation* and What is not in scope
 sections and skip straight to
 [chapter 01]({{ "/dft-notes/chapter-01/" | relative_url }}).  If you
 are reading the notes for the first time and want to know what you
@@ -303,7 +303,7 @@ from pathlib import Path
 
 def hydrogen_1s_density(r, Z=1):
     """Electron density of the hydrogen 1s orbital, |psi_1s(r)|^2."""
-    return (Z ** 3 / np.pi) * np.exp(-2.0 * Z * r)
+    return (Z ** 3 / np.pi) * np.exp(-2.0 * Z  r)
 
 def main():
     r = np.linspace(0.0, 20.0, 400)
@@ -354,8 +354,8 @@ Every content chapter (chapters 01 and later) is built from the
 **same seven-part template**.  The template is enforced by
 [`agent:qa-reviewer`]({{ "/dft-notes/agents/#the-chapter-rigor-checklist" | relative_url }})
 and is reproduced verbatim from `agents.md`.  Below, each part is
-described in plain language: *what it is for*, *what level of
-detail to expect*, and *what the reader should take away*.
+described in plain language: *what it is for*, what level of
+detail to expect*, and *what the reader should take away.
 
 ### 1. The claim
 
@@ -371,7 +371,7 @@ derivation; everything in the chapter is in service of it.
 
 **What to expect.**  One to four numbered equations, stated
 without proof, followed by a one-paragraph statement of *what it
-means* and *why it matters*.  No algebra here.
+means* and *why it matters.  No algebra here.
 
 **What to take away.**  The reader should be able to write down
 the claim from memory after closing the chapter.

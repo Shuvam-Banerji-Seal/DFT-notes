@@ -33,7 +33,7 @@ have replaced the deep nuclear potential with a smooth effective
 one. That machinery is correct, and accurate, for every element
 up to about the middle of the periodic table. It is also
 qualitatively wrong for the heavy elements — for the lanthanides,
-the actinides, the 5*`d*` transition metals, the 6*`p*` post-
+the actinides, the 5*d*` transition metals, the 6`p` post-
 transition metals, and the superheavies — and *quantitatively*
 wrong for almost everything that touches spin-orbit physics:
 Rashba-split surface states, topological-insulator band
@@ -1279,7 +1279,7 @@ $1s$ binding energy, which is small in fractional terms
 but large in absolute terms.
 
 The MV term is the **dominant** SR effect for
-*core* orbitals and the *only* SR effect for *free*
+*core* orbitals and the only SR effect for *free
 electrons (where the Darwin term vanishes because
 $\nabla^2 v = 0$ and the spin-orbit term vanishes because
 $\hat{\mathbf L}$ is not defined for a plane wave). The
@@ -1402,9 +1402,9 @@ for the properties that depend on it (band splittings,
 magnetic anisotropy, spin-Hall conductivity).
 
 > **Reading note.** The SR approximation is a *very
-> goo`d*` approximation for *atomi`c*` properties
+> goo`d* approximation for *atomi`c` properties
 > (orbital energies, ionisation potentials, electron
-> affinities) but is *less* good for *molecular*
+> affinities) but is *less* good for molecular
 > properties that depend on spin-orbit (bond
 > dissociation energies of halogen-containing molecules,
 > phosphorescence rates, intersystem crossing rates,
@@ -1464,7 +1464,7 @@ used.
 
 > **Tip.** A *roug`h*` but useful test of whether an
 > element needs spin-orbit coupling is the magnitude
-> of its 5*`d*` or 6*`p*` spin-orbit splitting in the atomic
+> of its 5*d*` or 6`p` spin-orbit splitting in the atomic
 > spectrum. If the splitting is $\gtrsim 0.1$ eV, the
 > spin-orbit correction is *qualitatively* important
 > for any property that distinguishes the two
@@ -1556,7 +1556,7 @@ The $jj$-coupling limit is *not* reached in chemical
 practice (most heavy elements are still in the
 $LS$-coupling regime for the *valence* shell, even when
 the core is $jj$-coupled). The $jj$-coupling limit
-*is* reached for the *innermost* shells of the heaviest
+*is* reached for the innermost shells of the heaviest
 elements, and it is the natural language for the
 $f$-electron systems of the actinides and the
 superheavies.
@@ -1746,7 +1746,7 @@ The modern production approach in plane-wave DFT is
 
 The fully-relativistic PAW pseudopotential is the
 *default* in VASP, Quantum ESPRESSO (with the
-`upf` format), and ABINIT for the 5*`d*` and 6*`p*`
+`upf` format), and ABINIT for the 5*d*` and 6`p`
 elements. The standard PBE pseudopotentials in these
 libraries include SOC for the 4*`d*` row and beyond, and
 the SOC can be turned on or off by a single keyword
@@ -1996,7 +1996,7 @@ DFT. The simpler "density-only" generalisations
 extra variable) are *approximations* that ignore the
 current-dependence of the XC functional. The
 current-dependence of $E_\text{xc}$ is small for
-*atomi`c*` and *molecular* systems (the current is
+*atomic*` and molecular systems (the current is
 localised to the bond region and the current-coupling
 to the XC functional is $\sim 1$–$5\%$ of the
 spin-coupling), but it is *essential* for the
@@ -2035,7 +2035,7 @@ where $\hat K$ is complex conjugation. The action on a
 
 \begin{equation}
 \label{eq:ch-15-tr-action}
-\hat{\mathcal T} \begin{pmatrix} \phi_\uparrow(\mathbf r) \\\\ \phi_\downarrow(\mathbf r) \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \phi_\uparrow^*(\mathbf r) \\\\ \phi_\downarrow^*(\mathbf r) \end{pmatrix} \;=\; \begin{pmatrix} -\phi_\downarrow^*(\mathbf r) \\\\ \phi_\uparrow^*(\mathbf r) \end{pmatrix} .
+\hat{\mathcal T} \begin{pmatrix} \phi_\uparrow(\mathbf r) \\\\ \phi_\downarrow(\mathbf r) \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \phi_\uparrow^*(\mathbf r) \\\\ \phi_\downarrow^*(\mathbf r) \end{pmatrix} \;=\; \begin{pmatrix} -\phi_\downarrow^(\mathbf r) \\\\ \phi_\uparrow^(\mathbf r) \end{pmatrix} .
 \end{equation}
 
 The time-reversal operator squares to $-1$ for a
@@ -2210,7 +2210,7 @@ coupling) on Au₂ gives a bond length of $\sim 2.55$ Å
 and a binding energy of $\sim 2.10$ eV. The 6*s*
 orbital is contracted by $\sim 22\%$, the 5*`d*` orbital
 is expanded by $\sim 5\%$, and the Au–Au bond is
-*shorter* and *stronger* than the non-relativistic
+*shorter* and stronger than the non-relativistic
 prediction. The SR calculation reproduces the *tren`d*`
 correctly but is still off by $\sim 0.08$ Å in the bond
 length and $\sim 0.20$ eV in the binding energy.
@@ -2228,16 +2228,16 @@ values to within $\sim 0.01$ Å and $\sim 0.05$ eV.
 The **physical mechanism** of the Au₂ relativistic
 chemistry is the relativistic contraction of the 6*s*
 orbital and the corresponding destabilisation of the
-5*`d*` orbital. The 6*s* orbital of gold is the
+5*d*` orbital. The 6s orbital of gold is the
 outermost occupied orbital; its contraction moves
 electron density closer to the nucleus and *increases*
-the 6*s* binding energy. The 5*`d*` orbital of gold is
+the 6*s* binding energy. The 5`d` orbital of gold is
 the next shell; its destabilisation *decreases* the
-5*`d*`–6*s* gap. The result is that the 6*s* and 5*`d*`
+5*d*`–6s gap. The result is that the 6*s and 5*`d`
 levels of gold are *closer in energy* than the
-corresponding 5*s* and 4*`d*` levels of silver, and the
+corresponding 5*s* and 4`d` levels of silver, and the
 chemistry of gold is dominated by the *mixing* of the
-6*s* and 5*`d*` orbitals in the Au–Au bond.
+6*s* and 5`d` orbitals in the Au–Au bond.
 
 A quantitative estimate of the Au–Au bond length
 contraction uses the *expectation value* of the
@@ -2342,9 +2342,9 @@ the **spin Berry curvature** of the Kramers pair.
 > as well as occupied; the spin Berry curvature is a
 > sum over *all* states, weighted by the energy
 > denominator. The intrinsic SHE is therefore a
-> *band-structure* property, not a *Fermi-surface*
+> *band-structure* property, not a Fermi-surface
 > property — the contribution comes from the
-> *fille`d*` bands (which set the *occupie`d*` part of
+> *filled*` bands (which set the occupie`d` part of
 > the sum) and from the *coupling* to the empty
 > bands. The intrinsic SHE is *large* in materials
 > with a *small* band gap near the Fermi level,
@@ -2412,7 +2412,7 @@ other being the *helical edge states*).
 > contributions from the Fermi-surface states. The
 > intrinsic SHE of Pt is therefore a *resonant*
 > effect: the spin Hall conductivity is large
-> *because* the 5*`d*` bands are close in energy, and
+> *because* the 5`d` bands are close in energy, and
 > small changes in the lattice parameter or the
 > doping level can change the sign and the
 > magnitude of $\sigma_{xy}^s$.
@@ -2437,7 +2437,7 @@ k-point sampling (much denser than the SCF mesh) for
 convergence. The standard approach is to interpolate
 the Bloch Hamiltonian onto a fine mesh using
 **maximally-localised Wannier functions** (the
-*Wannier90* / *Wannierier* code; see
+*Wannier90* / Wannierier code; see
 [chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }}) §11.7 for the band
 projection step). The Wannier-interpolated Hamiltonian
 is a *real-space tight-binding* model with the same
@@ -2461,7 +2461,7 @@ The numerical value for Pt with the above setup is
 
 This is $\sim 1/17$ of the spin Hall conductivity
 quantum $e^2/h$, i.e. a $\mathbb Z_2$ invariant of
-$\nu = 0$ with a *non-zero* but not *quantise`d*`
+$\nu = 0$ with a *non-zero* but not quantise`d`
 spin Hall conductivity. Pt is therefore a *trivial*
 metal with a large *non-quantise`d*` intrinsic spin
 Hall conductivity — the *opposite* limit of a
@@ -2470,7 +2470,7 @@ quantised to a multiple of $e^2/h$ and a $\mathbb Z_2$
 invariant of $\nu = 1$).
 
 > **Reading note.** The intrinsic spin Hall
-> conductivity of Pt is *large* but *not quantise`d*`,
+> conductivity of Pt is *large* but not quantise`d`,
 > because Pt is a metal with a finite density of
 > states at the Fermi level. The quantised spin Hall
 > effect is a property of *insulators* with a
@@ -2595,7 +2595,7 @@ Morse parameter $a$ at each level and explain the trend.
 (c) The *zero-point energy* of the Morse oscillator is
 $\text{ZPE} = \tfrac{1}{2}\hbar\omega_e - (\hbar\omega_e)^2 / (4 D_e)$.
 Compute the ZPE at each level and explain why the
-*relativisti`c*` ZPE is *larger* than the
+*relativistic*` ZPE is larger than the
 *non-relativisti`c*` ZPE.
 
 </details>
@@ -2629,7 +2629,7 @@ Equivalently, $a \approx 1.11$ Å⁻¹.
 The trend is that $a$ *increases* as we go from
 non-relativistic to SR to fully-relativistic. The
 physical reason is that the relativistic bond is
-*shorter* and *stiffer* than the non-relativistic
+*shorter* and stiffer than the non-relativistic
 bond; the *stiffness* (the second derivative of $V$
 at the minimum, $V''(r_e) = 2 a^2 D_e$) is therefore
 larger. The relativistic $s$-orbital contraction
@@ -2807,7 +2807,7 @@ that opens a *non-trivial* gap. The BHZ model is the
 *prototypical* 2-D topological insulator; see
 [chapter 16]({{ "/dft-notes/chapter-16/" | relative_url }}) §16.3
 for the full discussion. The lesson is that the
-*intrinsi`c*` spin Hall effect is *topological* in
+*intrinsic*` spin Hall effect is topological in
 origin: a *clean*, time-reversal-invariant, gapped
 system has a $\mathbb Z_2$ invariant, and the spin
 Hall conductivity is *quantise`d*` in units of $e^2/h$
@@ -2830,7 +2830,7 @@ to that invariant.
   modern two-component and four-component machinery.
 - [Chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }})
   on pseudopotentials is the bridge from the atomic
-  Dirac equation to a *molecular* or *solid-state*
+  Dirac equation to a *molecular* or solid-state
   calculation. The scalar-relativistic
   pseudopotential of §15.4.4 is the practical
   implementation of the SR approximation in plane-
@@ -2858,7 +2858,7 @@ to that invariant.
   the $\mathbb Z_2$ topological classification of
   band insulators; the spin Hall conductivity of
   §15.8 is the order parameter of the *quantum spin
-  Hall insulator*; the *intrinsi`c*` spin-orbit
+  Hall insulator*; the *intrinsi`c` spin-orbit
   coupling of §15.5 is the source of the band
   inversion in 3-D topological insulators.
 - [Chapter 17]({{ "/dft-notes/chapter-17/" | relative_url }})
@@ -2876,7 +2876,7 @@ to that invariant.
 
 ## 15.11 What we left out
 
-The chapter is *complete* for the *qualitative* and
+The chapter is *complete* for the qualitative and
 *quantitative* description of relativistic effects in
 DFT, but the following topics were not covered.
 
@@ -2896,7 +2896,7 @@ DFT, but the following topics were not covered.
 
 - **The Breit interaction in detail.** The
   Breit–Pauli operator of \eqref{eq:ch-15-breit-pauli}
-  is the *non-relativisti`c*` limit of the *full*
+  is the *non-relativistic*` limit of the full
   two-electron relativistic interaction. The full
   two-electron interaction includes the **Breit
   interaction** (a relativistic correction to the
@@ -2912,7 +2912,7 @@ DFT, but the following topics were not covered.
 
 - **The negative-energy (positron) states.** The Dirac
   equation has *negative-energy* solutions that
-  describe *positrons* (or, in the *no-pair*
+  describe *positrons* (or, in the no-pair
   approximation, are projected out of the spectrum).
   In *quantum electrodynamics*, the negative-energy
   states are *occupie`d*` (the Dirac sea), and the

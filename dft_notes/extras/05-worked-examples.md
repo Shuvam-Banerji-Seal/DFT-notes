@@ -45,7 +45,7 @@ each entry is the same:
 6. **Chapter section** — the cross-reference into the prose.
 
 > **Status of the chapter scripts.**  Chapters 00–08 are
-> *shippe`d*`; chapters 09–13 are *planne`d*` (see
+> *shipped*`; chapters 09–13 are planne`d` (see
 > [`chapters-map.md`]({{ site.baseurl }}/dft-notes/chapters-map/)).
 > Where a script exists in `python_codes/`, the entry below
 > links to it directly. Where the example exists only as inlined
@@ -235,8 +235,8 @@ with `scipy.linalg.eigh(F, S)`.
 
 **Problem.** Same as §2.1 (H₂ STO-3G, $R = 1.4\,a_0$),
 but with two algorithmic upgrades: (i) the ERI tensor is
-*recompute`d*` on the fly every iteration rather than stored
-(*direct SCF*), and (ii) the Fock matrix is *extrapolate`d*`
+*recomputed* on the fly every iteration rather than stored
+(*direct SCF*), and (ii) the Fock matrix is extrapolated
 using Pulay's DIIS (direct inversion in the iterative
 subspace) accelerator.
 
@@ -1354,7 +1354,7 @@ graph TD
     A[Build unit cell: 2 atoms A, B] --> B[Define tau_1, tau_2, tau_3]
     B --> C[Define k-path: Gamma, M, K, Gamma]
     C --> D[At each k, compute f(k) = sum exp(i k . tau_j)]
-    D --> E[H(k) = [[0, t*f],[t*`f*`, 0]]]
+    D --> E[H(k) = [[0, t*f],[t*`f`, 0]]]
     E --> F[Eigenvalues: +/- |t| |f|]
     F --> G[Plot pi and pi* bands]
     G --> H[Verify Dirac crossing at K: |f(K)| = 0]

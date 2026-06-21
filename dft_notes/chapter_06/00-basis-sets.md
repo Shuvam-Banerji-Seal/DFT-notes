@@ -324,7 +324,7 @@ worked example in section 6.9 uses this set verbatim.
 
 ## 6.5 Split-valence: 3-21G, 6-31G, 6-311G
 
-The minimal basis treats the *core* and the *valence* the same
+The minimal basis treats the *core* and the valence the same
 way — one contracted function per shell.  Chemistry happens in
 the valence, so a small improvement is to leave the core
 contracted (it barely changes between molecules) and **split
@@ -412,7 +412,7 @@ row atoms; H lags by one):
 The **augmente`d*`* variant **aug-cc-pVXZ** prepends one diffuse
 function at each angular momentum.  The empirical fact that
 \eqref{eq:ch-06-cbs-extrap} holds for this family is what
-makes the cc-pV*X*Z series the *de facto* path to converged
+makes the cc-pV*X*Z series the de facto path to converged
 post-HF results.
 
 > **Note.**  $X = D, T, Q, 5, 6$ corresponds to "double, triple,
@@ -701,7 +701,7 @@ def contracted_eri(aA, dA, aB, dB, aC, dC, aD, dD,
                 for dl, gl in zip(aD, dD):
                     Q = (ck * RC + dl * RD) / (ck + dl)
                     rPQ2 = float(np.sum((P - Q) ** 2))
-                    eri += (di * ej * fk * gl
+                    eri += (di * ej * fk  gl
                             * norm_s(ai) * norm_s(bj)
                             * norm_s(ck) * norm_s(dl)
                             * prim_eri(ai, bj, ck, dl,

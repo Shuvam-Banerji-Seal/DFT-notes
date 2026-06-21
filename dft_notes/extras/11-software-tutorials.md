@@ -1938,7 +1938,7 @@ calculator will need them.
 
 ## What this page is *not*
 
-This page is a *tutorial* and a *how-to*. It is **not**:
+This page is a *tutorial* and a how-to. It is **not**:
 
 - A replacement for the official manual of any of these
   five codes. The VASP manual is at

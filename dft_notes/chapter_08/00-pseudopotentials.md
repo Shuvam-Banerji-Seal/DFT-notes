@@ -323,7 +323,7 @@ The older **Bachelet–Hamann–Schlüter (BHS, 1982)** ansatz uses
 the same exponential-in-$r^2$ form but fits the polynomial
 coefficients to a *pre-define`d*` pseudo-potential shape, rather
 than constructing the pseudo-potential by inversion. BHS is
-therefore an *analytic-fit* method; TM is an *inversion* method.
+therefore an *analytic-fit* method; TM is an inversion method.
 We will use the TM approach in the worked example because the
 inversion step makes the construction more transparent.
 
@@ -2313,7 +2313,7 @@ charges $Q_{lm}^R$ [Vanderbilt, 1990, eq. (5), p. 7893].
 The form is the same as the standard orthogonal-basis
 generalised eigenvalue problem familiar from linear
 algebra; the novelty is that the non-orthogonality is
-*deliberate* and *physical*, encoding the fact that the
+*deliberate* and physical, encoding the fact that the
 smooth pseudo-orbitals are missing the core-orthogonality
 contribution that the all-electron orbitals have
 [Vanderbilt, 1990, eq. (5), p. 7893]. Vanderbilt's
@@ -2638,7 +2638,7 @@ and $E_{xc}[\tilde\rho + \hat\rho]$ around
 $\tilde\rho$, which gives the standard
 ultrasoft-form expressions [Kresse and Joubert, 1999,
 p. 1761]. The paper then derives the *Hamiltonian*,
-the *forces*, and the *stress tensor* for the full
+the *forces*, and the stress tensor for the full
 PAW functional, all in closed form, and shows that
 they reduce to the ultrasoft expressions in the
 linearised limit [Kresse and Joubert, 1999,
@@ -2785,9 +2785,9 @@ the entries drawn from the four original papers.
 | **Modern use (2024)** | High-accuracy molecular DFT (e.g. ONCV) | Quantum ESPRESSO, CASTEP, ABINIT | VASP, GPAW, Quantum ESPRESSO, ABINIT, CASTEP |
 
 The table makes a hierarchy explicit: NC-PP is the
-*cheapest* and *least accurate*, US-PP is the
-*cheaper* and *more accurate* for soft elements, and
-PAW is the *most expensive* and *most accurate* for
+*cheapest* and least accurate, US-PP is the
+*cheaper* and more accurate for soft elements, and
+PAW is the *most expensive* and most accurate for
 *all* elements. The three are not competitors for
 the same niche: NC-PP is the right tool for a
 *small, soft-element* molecule where every

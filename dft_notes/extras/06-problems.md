@@ -191,13 +191,13 @@ graph LR
 >
 > **(a)** Count the singles and doubles on each monomer and on
 > the combined dimer. **(b)** Show that the *dimer* CISD
-> energy is *not* the sum of the two *monomer* CISD energies
+> energy is *not* the sum of the two monomer CISD energies
 > in the $R \to \infty$ limit, even though the FCI energy
 > is. The non-additivity is the **size-consistency error**.
 > **Hint:** write the CISD Ansatz for the dimer and the
 > product of two CISD Ansätze for the monomers; the
 > *quadruply-excite`d*` configurations (one double on each
-> monomer) appear in the *product* Ansatz but *not* in the
+> monomer) appear in the *product* Ansatz but not in the
 > dimer CISD Ansatz.
 > **Answer:** the dimer CISD has $N^2$ doubles but the
 > product Ansatz has $N^2 + \binom{N}{2}^2$ configurations;
@@ -379,7 +379,7 @@ graph LR
 > $E(\mathbf C, \mathbf R) = 2 \sum_i^\text{occ} C_{\mu i} C_{\nu i}
 > h_{\mu\nu}(\mathbf R) + \dots + V_{nn}(\mathbf R)$, and the
 > SCF solution is $\mathbf C^*(\mathbf R)$ satisfying
-> $\mathbf F(\mathbf C^*) \mathbf C^* = \mathbf S \mathbf C^*
+> $\mathbf F(\mathbf C^*) \mathbf C^* = \mathbf S \mathbf C^
 > \boldsymbol\varepsilon$ with $\mathbf C^{*T} \mathbf S
 > \mathbf C^* = \mathbf 1$. Differentiate $E$ with respect
 > to $\mathbf R_I$ using the chain rule
@@ -1337,7 +1337,7 @@ graph LR
 > **(c)** in CIS (TDA) the triplet–singlet splitting
 > comes only from the *exchange* integrals, not from
 > the xc kernel, so the singlet–triplet gap is
-> *underestimate`d*`; full TD-DFT captures the *dynamical*
+> *underestimated*`; full TD-DFT captures the dynamical
 > correlation via the xc kernel, which lowers the
 > singlet more than the triplet.
 
@@ -1370,7 +1370,7 @@ graph LR
 > (e.g. $d^1$ or $d^9$), $\text{Tr}\, \mathbf n - \text{Tr}\,
 > (\mathbf n^2) = 0$ and the $+U$ correction vanishes.
 > **(c)** Argue why the correction is *finite* and
-> *positive* only for *fractional* occupations, i.e. for
+> *positive* only for fractional occupations, i.e. for
 > metallic or near-metal-like states.
 > **Hint:** the double-counting is the part of $E_\text{DFT}$
 > that already includes (approximately) the on-site Coulomb
@@ -1547,7 +1547,7 @@ screening), and the experimental IE is $0.198\,E_h$ —
 the *opposite* trend: the Slater rules were derived for
 *neutral* atoms and miss the relaxation of the core in
 the ionised state. The Kohn–Sham eigenvalue is a
-*better* estimate of the *neutral-atom* orbital energy
+*better* estimate of the neutral-atom orbital energy
 but *overestimates* the IE by $\sim 0.01\,E_h$ (the
 $\Delta$SCF correction).
 
@@ -1558,7 +1558,7 @@ node at $r = 2 a_0 / Z_\text{eff} \approx 1.21\,a_0$,
 deep inside the core region ($r_c \sim 1$–$2\,a_0$ is
 typical for Li).  This nodefulness is exactly what a
 pseudopotential construction in chapter 08 will
-*remove*: a smooth pseudo-orbital with *no* radial
+*remove*: a smooth pseudo-orbital with no radial
 node inside $r_c$ is the entire point of the
 construction.
 </details>
@@ -1626,7 +1626,7 @@ This is a *Kohn–Sham DFT* calculation in a minimal
 basis (KS-LDA/STO-3G).  Report the new
 $\varepsilon_{2s}$ and compare with the UHF value.
 Discuss the *systemati`c*` difference: in atoms, KS-LDA
-*overbinds* the HOMO and *underbinds* the LUMO, but
+*overbinds* the HOMO and underbinds the LUMO, but
 the *Koopmans* IE (which is $-\varepsilon_\text{HOMO}$,
 not the $\Delta$SCF value) is typically in *better*
 agreement with experiment for HF than for LDA,
@@ -1657,7 +1657,7 @@ self-consistently at $N = 3$ and $N = 2$ — gives a
 value much closer to experiment: typically
 $0.200$–$0.205\,E_h$ for KS-LDA, compared to
 $0.196\,E_h$ (UHF Koopmans) and $0.198\,E_h$
-(experimental).  The *Koopmans* IE in HF is *better*
+(experimental).  The *Koopmans* IE in HF is better
 than the Koopmans IE in LDA, but the $\Delta$SCF IE in
 LDA is *better* than the $\Delta$SCF IE in HF — the
 opposite conclusion, illustrating that HF and DFT are
@@ -1710,12 +1710,12 @@ saving that makes plane-wave DFT on Li feasible.
 The deeper point: the all-electron $1s$ orbital of Li
 has $\varepsilon_{1s} \approx -2.46\,E_h$ and oscillates
 $\sim 2$ times inside $r_c$; the *pseudo-potential* is
-*designe`d*` to reproduce the *valence* $2s$ orbital
-*outside* $r_c$ and is *allowe`d*` to deviate inside —
+*designed*` to reproduce the valence $2s$ orbital
+*outside* $r_c$ and is allowe`d` to deviate inside —
 that deviation is the *frozen-core* approximation.
 For a Li atom in two different chemical environments
 (e.g. Li in LiH vs Li in Li₂), the $1s$ core is
-*assume`d*` unchanged and the $V_{ps}$ is *transferre`d*`
+*assumed*` unchanged and the $V_{ps}$ is transferre`d`
 between them — the transferability is the key
 property of the construction.
 </details>
@@ -1727,7 +1727,7 @@ property of the construction.
 This problem set takes a *single* physical system (a
 1-D periodic diatomic chain — the prototype of an ionic
 crystal) and walks it through four chapters: from
-*electroni`c*` band structure (ch 07) through *phonons*
+*electronic*` band structure (ch 07) through phonons
 (ch 10) through *band-structure* analysis and DOS
 visualisation (ch 11) to its *optical* absorption
 spectrum (ch 12).
@@ -1863,7 +1863,7 @@ The minimum direct gap is $4t$ at $k = \pi/a$,
 achieved by the transition
 $\varepsilon_-(\pi/a) = -2t$ (valence band maximum)
 to $\varepsilon_+(\pi/a) = +2t$ (conduction band
-minimum) at the *same* $k$ — so the gap is *direct*.
+minimum) at the *same* $k$ — so the gap is direct.
 In a real 3-D semiconductor, the gap can be *indirect*
 (e.g. silicon), which requires a phonon to conserve
 crystal momentum and gives a *weaker* absorption
@@ -1894,7 +1894,7 @@ $\varepsilon \sim 5$, $E_b \sim 0.1$–$0.5\,\text{eV}$
 <summary>Part 4 (chapter 12) — Linear-response TDDFT absorption</summary>
 
 The independent-particle absorption of Part 3 *misses*
-the excitonic *redshift* $E_b$ (and the *enhancement*
+the excitonic *redshift* $E_b$ (and the enhancement
 of the absorption below the gap).  The chapter 12
 linear-response TDDFT framework recovers it.
 **(a)** Set up the Casida eigenvalue problem for the
@@ -2017,7 +2017,7 @@ for the interacting case at large $U$, where the
 ground state is a Mott insulator with
 antiferromagnetic order at wavevector $\mathbf Q$.
 The reason LDA fails: the LDA xc functional is fit
-to the *homogeneous* electron gas, which is a *metal*
+to the *homogeneous* electron gas, which is a metal
 for any density; it has no mechanism to *localise*
 electrons in a half-filled band.  The Mott
 transition is a *correlation-driven* insulator-to-
@@ -2050,7 +2050,7 @@ for a uniform density). **(b)** Argue why the GGA,
 like the LDA, has *no* mechanism to describe a Mott
 transition: the GGA is a *local* (or semi-local)
 correction to LDA, and the Mott physics is *non-
-local* (it depends on the *fluctuation* of the
+local* (it depends on the *fluctuation of the
 density, not just its value and gradient). **(c)**
 Discuss the *hybri`d*` functionals (PBE0, HSE) of
 [Chapter 05, §5.4]({{ "/dft-notes/chapter-05/" | relative_url }}) and their *temporary* success on
@@ -2073,7 +2073,7 @@ the gradient is zero, so the correction vanishes.
 The Mott insulator has a *non-zero* density gradient
 (the $d$-orbital density is highly peaked on the
 transition-metal site), but the GGA correction is a
-*local* functional of the *gradient* and cannot
+*local* functional of the gradient and cannot
 describe the *non-local* physics of the on-site
 repulsion.
 
@@ -2084,7 +2084,7 @@ site $d$–$d$ Coulomb repulsion in the form of the
 Fock exchange integral.  For NiO, PBE0 ($a = 0.25$)
 opens a gap of $\sim 4\,\text{eV}$, in reasonable
 agreement with experiment ($4.3\,\text{eV}$), while
-LDA gives a *metal*.  But the *amount* of exact
+LDA gives a *metal*.  But the amount of exact
 exchange is an *empirical* parameter: $a = 0.25$ is
 the PBE0 choice, but a *range-separate`d*` hybrid like
 HSE06 (with $a = 0.25$ at short range and 0 at long
@@ -2116,7 +2116,7 @@ sublattice is *less* than 1 (e.g. due to
 hybridisation with the other sublattice): then
 $\text{Tr}\, \mathbf n^\uparrow - \text{Tr}\,
 (\mathbf n^\uparrow)^2 < 0$ and the $+U$ correction
-is *positive* — an *energy penalty* for the partial
+is *positive* — an energy penalty for the partial
 occupation.  This penalty *stabilises* the half-
 filled AF state over the fractional-occupation
 metallic state. **(c)** At what value of $U / t$

@@ -38,10 +38,10 @@ potential and the orbitals together; and a fixed-point solver
 all four in turn. The first five sections (4.1–4.5) recall the
 canonical content; the next eight (4.6–4.13) are the extensions
 that turn the textbook KS equations into a tool that can be
-*implemente`d*` (§4.6 mixing), *differentiate`d*` (§4.7 forces),
-*spin-polarise`d*` (§4.8), *formally grounde`d*` (§4.9 ACFDT, §4.10
+*implemented*` (§4.6 mixing), differentiate`d` (§4.7 forces),
+*spin-polarised*` (§4.8), formally grounde`d` (§4.9 ACFDT, §4.10
 OEP, §4.11 Görling–Levy perturbation theory), *pushed into the
-heavy-element regime* (§4.12 relativistic KS), and *summarise`d*`
+heavy-element regime* (§4.12 relativistic KS), and *summarise`d`
 (§4.13 worked example + problems).
 
 ## 4.1 The Hohenberg–Kohn theorems
@@ -212,7 +212,7 @@ is *entirely* in the approximation to $E_\text{xc}[\rho]$.
 
 > **Warning.** It is tempting to read "DFT" as a mean-field theory like
 > Hartree–Fock. It is not. The KS equations are *exact* in the sense
-> that the *form* of the energy expression is exact; the *value* of
+> that the *form* of the energy expression is exact; the value of
 > $E_\text{xc}$ is approximate. Calling DFT a "mean-field theory" is
 > the most common conceptual error in introductory DFT.
 
@@ -311,7 +311,7 @@ graph TD
 ```
 
 The rungs are not an absolute ordering of "better" — for a
-particular system, a *low* rung (LDA) can outperform a *hig`h*`
+particular system, a *low* rung (LDA) can outperform a hig`h`
 rung (a poorly-tuned hybrid). The ladder is a
 *cost–complexity* ordering, not a monotonic-accuracy ordering;
 chapter 05 devotes itself to the practical question of "which
@@ -818,7 +818,7 @@ $$
 In an **atom-centre`d*`* basis, the basis functions $\chi_\mu$ depend
 on $\mathbf R$ (the set of nuclear positions) through their centres
 $\mathbf A_\mu = \mathbf R_{I(\mu)}$.  Differentiating the KS energy
-*with respect to* $\mathbf R_I$, *holding the density fixe`d*` at its
+*with respect to* $\mathbf R_I$, holding the density fixe`d` at its
 self-consistent value, gives \eqref{eq:ch-04-force-nucleus} *plus*
 a term from the basis-set derivative that is not present in the
 complete-basis limit:
@@ -1250,7 +1250,7 @@ E_1 \;=\; T_s[\rho] + \int \rho\, v_\text{ext} \, d\mathbf r
       + J[\rho] + E_\text{xc}[\rho] .
 \end{equation}
 
-But $E_0$ and $E_1$ are *also* the energies that a *KS* calculation
+But $E_0$ and $E_1$ are *also* the energies that a KS calculation
 would produce at the same density, so $E_0$ in
 \eqref{eq:ch-04-9-e0-decomp} is just the same as the KS total energy
 without the $J$ and $E_\text{xc}$ pieces.  Substituting
@@ -1320,7 +1320,7 @@ n_2^\lambda(\mathbf r, \mathbf r')
 \end{equation}
 
 $n_2^\lambda(\mathbf r, \mathbf r')$ is the joint probability density
-of finding *one* electron at $\mathbf r$ and a *second distinct*
+of finding *one* electron at $\mathbf r$ and a second distinct
 electron at $\mathbf r'$ simultaneously.  By construction it is
 symmetric in its arguments, integrates to $N(N-1)$, and satisfies the
 **trace relation**
@@ -1439,7 +1439,7 @@ $\mathbf r'$.  The factor of $1/2$ is a self-interaction correction
 for the density–hole interaction (the density appears in the integral,
 not just the hole).
 
-> **Warning.**  The XC hole $h_\text{xc}$ is *not* the *pair density*
+> **Warning.**  The XC hole $h_\text{xc}$ is *not* the pair density
 > $\bar n_2$.  It is the *change* in the pair density relative to the
 > classical reference.  This is the most common confusion in
 > introductory treatments: $h_\text{xc}$ can be *negative* in some
@@ -1593,7 +1593,7 @@ is a different *approximation* to the same integral:
 The ACFDT is therefore the **conceptual hu`b*`* of the chapter: every
 approximation in chapter 05 is a way to *shortcut* the ACFDT integral.
 The ladder of approximations is a *ladder of approximations to the
-ISI*, not a ladder of approximations to the *energy*.
+ISI*, not a ladder of approximations to the *energy.
 
 ```mermaid
 graph LR
@@ -1842,13 +1842,13 @@ is the **Fock exchange operator acting on** $\phi_i$,
 \end{equation}
 
 The Fock operator is *non-local*: its action on $\phi_i$ at $\mathbf r$
-depends on $\phi_i$ *everywhere*.  To use EXX in a *local* KS
+depends on $\phi_i$ *everywhere*.  To use EXX in a local KS
 potential, we must run the OEP procedure.
 
 In the **EXX-OEP** method, $u_i = \hat v_x^\text{Fock} \phi_i$ is
 inserted into \eqref{eq:ch-04-10-kli-potential} (or the full OEP
 integral) and the resulting $v_\text{xc}^\text{OEP}(\mathbf r)$ is the
-*local* potential that *reproduces* the exact exchange energy.  The
+*local* potential that reproduces the exact exchange energy.  The
 result is a KS calculation with:
 
 - The exact Fock exchange energy of the Slater determinant.
@@ -1895,7 +1895,7 @@ Three reasons the OEP is worth knowing.
    potential that the OEP produces is the *only* correct KS potential
    for that functional.
 3. **The cost-quality frontier.**  OEP-based methods are typically
-   *cheaper* than hybrid functionals (KLI in particular) and *more
+   *cheaper* than hybrid functionals (KLI in particular) and more
    accurate* than LDA/GGA for properties that depend on the orbital
    energies.  They occupy a useful middle ground in the cost-accuracy
    landscape.
@@ -1913,7 +1913,7 @@ non-locality is *eliminate`d*` by an integral transformation.
 The third formal pillar of modern DFT is the **Görling–Levy (GL)
 perturbation theory** (Görling & Levy, 1993, 1994, 1995).  It is a
 systematic expansion of the XC energy in powers of the deviation of
-the *density* from a reference density, and it is the *only*
+the *density* from a reference density, and it is the only
 perturbation theory that *simultaneously* (a) preserves the KS
 structure and (b) reproduces the exact KS eigenvalues order by order.
 
@@ -1989,14 +1989,14 @@ the order that gives the best balance of accuracy and cost.
 
 The naive expansion \eqref{eq:ch-04-11-gl-expansion} has a problem.
 The first-order term $v_\text{xc}^{(1)}[\rho_0]$ is the XC potential
-of the *reference* system, not of the *target* system.  The orbital
+of the *reference* system, not of the target system.  The orbital
 energies of the *target* KS Hamiltonian, computed with
 $v_\text{xc}^{(1)}[\rho_0]$, do not in general match the orbital
 energies of the *target* system.
 
 Görling and Levy's key insight is a **shuffle**: the perturbation
 series is reorganised order by order so that the *zeroth-order*
-Hamiltonian is the *target* KS Hamiltonian, and the *higher-order*
+Hamiltonian is the *target* KS Hamiltonian, and the higher-order
 terms are corrections.  Concretely, write the target density as
 $\rho = \rho_0 + \delta \rho$ and the *target* KS potential as
 $v_\text{xc} = v_\text{xc}[\rho]$, and expand:
@@ -2025,10 +2025,10 @@ order, the *target* KS eigenvalues are reproduced exactly:
 \end{equation}
 
 The shuffle is a *bookkeeping* device that re-shuffles the perturbation
-series so that the *physical* KS eigenvalues are the *zeroth-order*
+series so that the *physical* KS eigenvalues are the zeroth-order
 quantities.  The corrections $v_\text{xc}^{(n)}$ for $n \ge 1$ are
 *auxiliary* — they do not change the eigenvalues, only the
-*wavefunctions* and the *total energy*.
+*wavefunctions* and the total energy.
 
 The practical consequence: in a GL perturbation theory, the **KS
 eigenvalues are exact at every order**, by construction.  This is the
@@ -2049,9 +2049,9 @@ The GL perturbation theory is the **unifying language** of the
   local density *an`d*` its gradient.
 - **Meta-GGA**: add the *second-order* term in $\nabla \rho$ and the
   *zeroth-order* term in the KS kinetic-energy density $\tau$.  The
-  meta-GGA is the *thir`d*` rung because it includes the *one*
+  meta-GGA is the *third*` rung because it includes the one
   non-local piece of information that the LDA + GGA cannot reach.
-- **Hybri`d*`*: add the *full* $\lambda = 0$ value of the ISI of the
+- **Hybri`d**: add the full* $\lambda = 0$ value of the ISI of the
   ACFDT (§4.9) — i.e. the exact exchange of
   \eqref{eq:ch-04-9-exact-exchange}.  The hybrid is a GL perturbation
   theory in which the *integran`d*` of the ACFDT is approximated, not
@@ -2059,7 +2059,7 @@ The GL perturbation theory is the **unifying language** of the
 - **Range-separated hybri`d*`*: separate the ACFDT integrand into a
   short-range DFT piece and a long-range exact-exchange piece.  This
   is a *decomposition* of the ACFDT, not a new GL order.
-- **Double hybri`d*`*: add the *first-order* correlation correction to
+- **Double hybri`d**: add the first-order* correlation correction to
   the GL series.  The MP2-like term \eqref{eq:ch-04-9-mp2-two-electron}
   is the *first* correction to the $\lambda = 0$ ACFDT integrand.
 - **RPA**: sum the *infinite* GL series for the correlation part, in
@@ -2786,7 +2786,7 @@ is a one-electron integral, $(\mu\nu|\rho\sigma)$ the two-electron
 integral, and $V_{nn}$ the nuclear–nuclear repulsion.  The
 self-consistent solution $\mathbf C^*(\mathbf R)$ is determined by
 the KS equation
-$F_{\mu\nu}(\mathbf C^*; \mathbf R) C_{\nu i}^* = \varepsilon_i S_{\mu\nu} C_{\nu i}^*$
+$F_{\mu\nu}(\mathbf C^*; \mathbf R) C_{\nu i}^* = \varepsilon_i S_{\mu\nu} C_{\nu i}^$
 with the orthonormality constraint $C_{\mu i}^* S_{\mu\nu} C_{\nu j}^* = \delta_{ij}$.
 
 **Step 2 — total derivative.**  The chain rule gives
@@ -3016,7 +3016,7 @@ spin-down asymmetry* in the external potential.  In its absence
 the two spin channels are *equivalent* (subject to the symmetry
 of the system); a non-zero $B$ breaks the symmetry and produces
 a non-zero $m = \rho_\uparrow - \rho_\downarrow$.  Note that the
-magnetic field is the *external* field; the *internal* field
+magnetic field is the *external* field; the internal field
 $\mathbf B_\text{xc} = -\delta E_\text{xc}/\delta \mathbf m$ is
 a separate object that exists even in the absence of an
 external field and is responsible for spontaneous
@@ -3146,7 +3146,7 @@ foundational papers directly.  Every inline citation carries
 the original page number.  The two papers in question are
 
 - **HK 1964** — Hohenberg, P.; Kohn, W. *Inhomogeneous
-  Electron Gas.* *Phys. Rev.* **1964**, *136*, B864–B871.
+  Electron Gas.* *Phys. Rev. **1964**, *136*, B864–B871.
 - **KS 1965** — Kohn, W.; Sham, L. J. *Self-Consistent
   Equations Including Exchange and Correlation Effects.*
   *Phys. Rev.* **1965**, *140*, A1133–A1138. Both papers are short (eight and six pages respectively) and
@@ -3166,7 +3166,7 @@ p. B864].  Three points about this sentence:
 2. The minimum of the functional is the *ground-state energy*
    for the *given* $v$ — the variational principle (Theorem 2).
 3. The *existence* of the functional is announced, not its
-   *construction*.  HK 1964 does not say *what* $F[n]$ is.
+   *construction*.  HK 1964 does not say what $F[n]$ is.
 
 The introduction (p. B864) frames the paper as a
 generalisation of Thomas–Fermi theory, citing
@@ -3613,7 +3613,7 @@ omissions:
 > **Note.**  Every item on this list corresponds to at least
 > one Nobel-prize-winning or Nobel-prize-nominated extension
 > of the original HK/KS formulation.  The two original
-> papers are the *trun`k*`; the extensions are the *branches*.
+> papers are the *trunk*`; the extensions are the branches.
 
 ### 4.14.6 Bibliography for this section
 

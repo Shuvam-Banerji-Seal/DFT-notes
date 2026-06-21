@@ -272,7 +272,7 @@ Multiplied by $hc$, the ionisation energy of hydrogen is
 $E_\text{ion} = h c R_\infty \approx 13.6057\;\text{eV} = (1/2) E_h$
 (since the Bohr-model 1s energy is $-R_\infty hc = -E_h/2$;
 see [Chapter 01 §1.10]({{ "/dft-notes/chapter-01/" | relative_url }})).
-The Rydberg *frequency* is $R_\infty c$; the Rydberg *energy*
+The Rydberg *frequency* is $R_\infty c$; the Rydberg energy
 is $R_\infty hc$.
 
 ### 2.7 The Bohr radius

@@ -638,7 +638,7 @@ $E = \varepsilon_F$ level set of $\varepsilon_{n\mathbf k}$) are
 three different *compressions* of the same band structure
 $\varepsilon_{n\mathbf k}$. They answer three different
 questions: *how many states* are at a given energy
-(`DOS`); *of which character* (`pDOS`); *and where in the
+(`DOS`); *of which character* (`pDOS`); and where in the
 Brillouin zone* (`Fermi surface`).
 
 ```mermaid
@@ -709,7 +709,7 @@ which $\varepsilon_{n\mathbf k} = \varepsilon_F$.
 
 For a coarse mesh, the simplest approach is **linear interpolation
 of $\varepsilon$ in each mesh cell** (the same idea as tetrahedron
-integration, but with the *isosurface* rather than the *integrate`d*`
+integration, but with the *isosurface* rather than the integrate`d`
 form).  Tile the BZ with tetrahedra, linearly interpolate the band
 energy within each tetrahedron, and intersect the level set
 $\varepsilon(\mathbf k) = \varepsilon_F$ with each tetrahedron.  The
@@ -1112,7 +1112,7 @@ quadratic fit is
 
 with $H$ the Hessian of the band at $\mathbf k_0$, a $3 \times 3$
 symmetric matrix.  The effective mass tensor is
-$m^*_{ij} = \hbar^2 / H_{ij}$, and the *principal effective masses*
+$m^*_{ij} = \hbar^2 / H_{ij}$, and the *principal effective masses
 are the eigenvalues of $m^*$.  The principal axes are the
 eigenvectors of $H$ (or equivalently of $m^*$).
 
@@ -1176,7 +1176,7 @@ graph TD
   SAMP --> FIT["Fit quadratic form<br/>eps_n(k) ~ eps_n(k0)<br/>+ (1/2) (k-k0)^T H (k-k0)"]
   FIT --> HESS["Hessian matrix<br/>H_ab = d^2 eps / dk_a dk_b"]
   HESS --> INV["Inverse-mass tensor<br/>(m*)^-1_ab = H_ab / hbar^2<br/>(rank 2, symmetric 3x3)"]
-  INV --> DIAG["Diagonalise<br/>-> principal masses<br/>m*_1, m*_2, m*_3"]
+  INV --> DIAG["Diagonalise<br/>-> principal masses<br/>m*_1, m*_2, m_3"]
   INV --> TRACE["Trace -> DOS mass<br/>m*_DOS = (det m*)^(1/3)<br/>(3-D); geometric mean<br/>in 2-D / 1-D"]
   INV --> COND["Conductivity mass<br/>(weighted average over<br/>Fermi surface)"]
   DIAG --> OUT1["Anisotropic effective mass<br/>(sec. 11.7.2)"]
@@ -1464,7 +1464,7 @@ direct lattice are
 where $a \approx 2.46\,\text{Å} \approx 4.65\,a_0$ is the
 lattice constant (the side of the rhombus; the nearest-neighbour
 C–C distance is $a/\sqrt 3 \approx 1.42$ Å).  The basis atoms
-within the cell are the *A* sublattice at the origin and the *B*
+within the cell are the *A* sublattice at the origin and the B
 sublattice at
 
 \begin{equation}
@@ -1754,8 +1754,8 @@ kxa = kpts[:, 0] * A
 kya = kpts[:, 1] * A
 
 # --- Tight-binding bands -----------------------------------------------
-f = T * (1.0 + np.exp(1j * 2*np.pi * (kxa + kya/np.sqrt(3.0))) +
-              np.exp(1j * 2*np.pi * kxa))
+f = T * (1.0 + np.exp(1j * 2np.pi  (kxa + kya/np.sqrt(3.0))) +
+              np.exp(1j * 2*np.pi  kxa))
 eps_p   =  np.abs(f)
 eps_p_s = -np.abs(f)
 
@@ -1997,7 +1997,7 @@ is the Hessian of the band at $\mathbf k_0$.
    $1/m^*_{ij} = H_{ij} / \hbar^2$ makes the band look like a
    free-electron band with anisotropic mass: i.e. that
    $\varepsilon_{n\mathbf k} - \varepsilon_0 = \hbar^2 |\mathbf q|^2 /
-   2 m^*$ in the *diagonal* basis where $m^*$ is a scalar.
+   2 m^*$ in the *diagonal basis where $m^$ is a scalar.
 2. For silicon's conduction-band minimum near $X$ (a so-called
    "$\Delta$ minimum"), the effective mass tensor in the cubic
    axes has the form
@@ -2294,7 +2294,7 @@ spin–orbit effects.  A non-exhaustive list of the topics we have
   on the unit cell at $\mathbf R$) and form the natural basis for
   tight-binding models, chemical-bonding analysis, and linear-
   scaling DFT.  The Wannier functions of a set of isolated bands
-  are *not* unique: a $U(N)$ *gauge freedom* allows any unitary
+  are *not* unique: a $U(N)$ gauge freedom allows any unitary
   rotation among the $N$ bands.  Maximally-localised Wannier
   functions (MLWFs) are obtained by choosing the gauge that
   minimises the spread $\sum_n (\langle w_{n\mathbf 0} | r^2 | w_{n

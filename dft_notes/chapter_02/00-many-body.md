@@ -58,7 +58,7 @@ without paying the full exponential cost.
 
 > **Reading note.** This chapter assumes the postulates and the
 > electronic Hamiltonian of [chapter 01]({{ site.baseurl}}/dft-notes/chapter-01/).  It introduces two new pieces of
-> notation — *spin-orbitals* and *Slater determinants* — and one new
+> notation — *spin-orbitals* and Slater determinants — and one new
 > piece of vocabulary — the *correlation energy*.  All three are
 > defined the first time they appear, and the section-level
 > cross-references are repeated where they help.
@@ -282,7 +282,7 @@ The electronic Hamiltonian appearing in
 
 The $V_{NN}$ of \eqref{eq:ch-02-VNN} is the same in both
 \eqref{eq:ch-02-electronic} and the total energy, but in the
-*electroni`c*` problem it is a *constant* (the $\mathbf R$ are
+*electronic*` problem it is a constant (the $\mathbf R$ are
 parameters, not operators) and is added at the end.
 
 > **Note (non-adiabatic coupling).**  We dropped the
@@ -557,7 +557,7 @@ $K$.  Three concrete settings illustrate the wall:
 |:-------|:---:|:---:|:-----------------|:------|
 | $\mathrm H_2$ / STO-3G | 2 | 2 | $\binom{2}{1}^2 = 4$ | Closed-shell, full CI is 4 dets |
 | $\mathrm H_2$ O / 6-31G | 13 | 10 | $\binom{13}{5}^2 = 128{,}497$ | Full CI is feasible, ~minute |
-| Benzene / `6-31G*` | 36 | 30 | $\binom{36}{15}^2 \approx 1.6 \times 10^{16}$ | Not feasible — *petabytes* |
+| Benzene / `6-31G* | 36 | 30 | $\binom{36}{15}^2 \approx 1.6 \times 10^{16}$ | Not feasible — *petabytes |
 | Benzene / cc-pVDZ | 114 | 30 | $\binom{114}{15}^2 \approx 2.5 \times 10^{26}$ | Out of reach of any conceivable computer |
 
 The numbers in the third and fourth rows of the table are what the
@@ -698,7 +698,7 @@ A single Slater determinant is a natural variational Ansatz — it
 satisfies Pauli automatically, it is a "determinantal state" of
 second quantisation, and for *non-interacting* fermions it gives
 the *exact* ground state.  The natural question is: how close is
-the *best* single determinant to the *true* ground state of an
+the *best* single determinant to the true ground state of an
 *interacting* system?
 
 The answer is given by the **Hartree–Foc`k*`* method of
@@ -797,7 +797,7 @@ to the full-CI sum.  They can be derived in three standard ways:
       \frac{\Bigl| \langle ij \mid ab \rangle \Bigr|^2}
            {\varepsilon_i + \varepsilon_j - \varepsilon_a - \varepsilon_b} ,
   \end{equation}
-  a sum over *occupie`d*` spin-orbitals $i, j$ and *virtual* ones
+  a sum over *occupied*` spin-orbitals $i, j$ and virtual ones
   $a, b$.  The denominator is the *orbital-energy* difference of
   the four states, and the sum runs over all doubly-excited
   determinants.  MP2 is the cheapest *correlate`d*` method.
@@ -965,7 +965,7 @@ written, and because the Fock operator is the cleanest example of a
 
 The "many-body" character of the problem is hard to *see* in a
 production code — the production code just diagonalises a huge
-matrix — but it is *easy* to *make* visible in a toy problem.  We
+matrix — but it is *easy* to make visible in a toy problem.  We
 build a one-dimensional model of two electrons in a box of length
 $L = 4$ bohr, with a soft short-range repulsion between them, and
 solve the model in a tiny basis by hand.  The script
@@ -1016,7 +1016,7 @@ dx = x[1] - x[0]
 def sin_basis(K, L, x):
     """Return the K lowest sin(n pi x / L) functions on a grid."""
     n = np.arange(1, K + 1)[:, None]
-    return np.sqrt(2.0 / L) * np.sin(n * np.pi * x / L)
+    return np.sqrt(2.0 / L) * np.sin(n * np.pi  x / L)
 
 # --- One-electron Hamiltonian matrix -----------------------------------
 def one_electron_hamiltonian(K, L, x, dx):
@@ -1039,7 +1039,7 @@ def two_electron_integrals(K, L, x, dx, lam, sig):
     chi = sin_basis(K, L, x)            # (K, N_GRID)
     g   = np.exp(-(x[:, None] - x[None, :])**2 / sig**2)  # (N_GRID, N_GRID)
     # (pq|rs) = sum_{x1 x2} chi_p(x1) chi_q(x1) V(x1,x2) chi_r(x2) chi_s(x2) dx1 dx2
-    V    = lam * g * dx * dx
+    V    = lam * g * dx  dx
     chiV = chi @ V                       # (K, N_GRID, N_GRID) -> einsum
     return np.einsum("px,qx,rx,sx,pqrs->pqrs", chi, chi, chi, chi, V)
     # actually do it step by step to keep the storage small
@@ -1053,7 +1053,7 @@ the run command from the repo root is
 The script produces two plots: a convergence plot of the first few
 eigenvalues vs. basis size $K$, and a density plot of the
 ground-state wavefunction $\Psi(x_1, x_2)$.  The point of the
-exercise is *not* the physics (the model is a toy) but the *code
+exercise is *not* the physics (the model is a toy) but the code
 structure*: the same eight lines of Slater–Condon rules are what
 every quantum-chemistry package uses internally, with $K$ replaced
 by 100+ and $N$ replaced by 10+.
@@ -1463,7 +1463,7 @@ basis, a two-electron integrals tensor, the Slater–Condon rules, a
 diagonalisation, and an interpretation of the resulting
 eigenvector in terms of a physically meaningful wavefunction.  The
 *only* difference between this calculation and a real production
-calculation is the *size* of the basis and the *number* of
+calculation is the *size* of the basis and the number of
 electrons.
 
 The size is what gets us into trouble.  A minimal-basis full CI on
@@ -1653,7 +1653,7 @@ $\alpha(1)\beta(2)$ and that of $\Phi_2$ is
 $\alpha(1)\beta(2)$ too, so the spin integral is still 1, but the
 spatial integral is $h_{12}$, *not* the 1-electron integral
 $h_{11}$.  However, the antisymmetrisation in the determinant
-gives a *plus* sign for $\Phi_1$ and a *minus* sign for $\Phi_2$ in
+gives a *plus* sign for $\Phi_1$ and a minus sign for $\Phi_2$ in
 the same-row interchange, so the two terms cancel exactly.  This
 is a 2-electron version of the fact that the matrix element of a
 1-electron operator between two determinants that differ in two
@@ -1763,7 +1763,7 @@ E_{\text{corr}} \;=\; 0.0921 \times 627.509\;\text{kcal/mol}
 \end{aligned}
 $$
 
-For a *minimal basis* on $\mathrm H_2$, this is a *huge*
+For a *minimal basis* on $\mathrm H_2$, this is a huge
 correlation energy — about 9% of the total HF energy.  The reason
 is the basis: a STO-3G basis cannot represent the
 electron–electron cusp in the wavefunction, so the missing
@@ -1832,7 +1832,7 @@ rest of the correlation energy.
 
 - [Chapter 03]({{ site.baseurl }}/dft-notes/chapter-03/) —
   Hartree–Fock theory.  The HF method is the *single-determinant
-  approximation* of §2.2.3, and the HF energy is the *reference*
+  approximation* of §2.2.3, and the HF energy is the *reference
   for the correlation energy of §2.2.7. The Slater–Condon rules
   of §2.2.6 are used to derive the Fock matrix.
 - [Chapter 04]({{ site.baseurl }}/dft-notes/chapter-04/) —
@@ -1843,7 +1843,7 @@ rest of the correlation energy.
 - [Chapter 05]({{ site.baseurl }}/dft-notes/chapter-05/) —
   Exchange–correlation functionals.  The
   *exchange–correlation energy* of DFT is, by construction, the
-  *correlation energy* of §2.2.7 plus the *exchange energy* (the
+  *correlation energy* of §2.2.7 plus the exchange energy (the
   piece of HF that depends on the Slater–Condon rules).  XC
   functionals are approximations to this quantity.
 - [Chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/) —

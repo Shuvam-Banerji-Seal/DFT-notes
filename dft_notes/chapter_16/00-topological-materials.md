@@ -88,7 +88,7 @@ correspondence** in its sharpest form.
 }
 \end{equation}
 
-The first equation is the **TKNN formul`a*`* (Thouless, Kohmoto, Nightingale, den Nijs, 1982): the off-diagonal Hall conductivity of an insulator is the *sum of the Chern numbers* of its occupied bands, in units of $e^2/h$. The second is the
+The first equation is the **TKNN formul`a** (Thouless, Kohmoto, Nightingale, den Nijs, 1982): the off-diagonal Hall conductivity of an insulator is the sum of the Chern numbers* of its occupied bands, in units of $e^2/h$. The second is the
 *bulk–boundary correspondence* (Halperin, 1982): a non-zero
 bulk Chern number is *not* consistent with a gapped, periodic
 boundary condition in real space, and the inconsistency is
@@ -197,7 +197,7 @@ parameter space:
 \end{equation}
 
 Equation \eqref{eq:ch-16-berry-phase} is the **Berry phase**.
-It is *gauge-invariant* and *geometri`c*`: it depends only
+It is *gauge-invariant* and geometri`c`: it depends only
 on the path $\mathcal C$, not on how fast the path is
 traversed.
 
@@ -419,7 +419,7 @@ are the **Wannier charge centres (WCC)**. Plotting
 $\theta_n(k_1)$ as a function of $k_1$, a trivial
 insulator gives *close`d*` loops (each $\theta_n$ winds
 from $0$ to $2\pi$); a non-trivial insulator gives a
-set of loops with an *od`d*` number of them *not* closing:
+set of loops with an *odd*` number of them not closing:
 
 \begin{equation}
 \label{eq:ch-16-z2-wilson}
@@ -784,7 +784,7 @@ The WCC method is the standard *numerical* route
 The 3D extension of the QSH state was predicted by Fu, Kane,
 and Mele (2007) and by Moore and Balents (2007). The first
 concrete material realisation was Bi$_2$Se$_3$ (Zhang *et
-al.*, *Nature Physics* **5**, 438 (2009)). The 3D TI has a
+al.*, *Nature Physics **5**, 438 (2009)). The 3D TI has a
 single, *robust* Dirac cone on every surface, with
 spin–momentum locking that prevents back-scattering by
 non-magnetic disorder.
@@ -792,7 +792,7 @@ non-magnetic disorder.
 ### 16.5.1 Strong and weak TIs
 
 As derived in §16.2.4, a 3D TR-symmetric insulator has
-*four* $\mathbb Z_2$ indices: one *strong* $\nu_0$ and three
+*four* $\mathbb Z_2$ indices: one strong $\nu_0$ and three
 *wea`k*` $\nu_1, \nu_2, \nu_3$, defined via
 \eqref{eq:ch-16-fu-kane-3d-strong} and
 \eqref{eq:ch-16-fu-kane-3d-weak}. The physical meanings:
@@ -803,7 +803,7 @@ As derived in §16.2.4, a 3D TR-symmetric insulator has
   Sb$_2$Te$_3$.
 - $\nu_0 = 0$, some $\nu_k = 1$: **weak TI**. A stack of
   2D QSH layers; surface states exist only on surfaces
-  *not* parallel to the stacking direction, and are *not*
+  *not* parallel to the stacking direction, and are not
   robust to disorder that breaks the layer structure.
   Example: Bi$_2$Te$_2$Se under certain growth conditions.
 - $\nu_0 = 0$ and all $\nu_k = 0$: **trivial insulator**.
@@ -823,7 +823,7 @@ Se $4p$ states at $\Gamma$, driven by the atomic SOC of
 the heavy Bi ($Z_\text{Bi} = 83$).
 
 The minimal four-band effective Hamiltonian at $\Gamma$ is
-(Zhang *et al.*, *Nature Physics* **5**, 438 (2009))
+(Zhang *et al.*, Nature Physics **5**, 438 (2009))
 
 \begin{equation}
 \label{eq:ch-16-bi2se3-hamiltonian}
@@ -870,11 +870,11 @@ spin–orbit coupling, and the *mirror* symmetry of the
 (110) plane protects the surface states on the (001)
 surface. SnTe was the first material predicted to be a TCI
 (Fu, *Phys. Rev. Lett.* **106**, 106802 (2011)) and the
-first one observed in ARPES (Tanaka *et al.*, *Nature
+first one observed in ARPES (Tanaka *et al.*, Nature
 Physics* **8**, 800 (2012)).
 
 The classification of TCIs uses the *symmetry-based
-indicators* of Po *et al.* and Song *et al.* (2017–2018),
+indicators* of Po *et al. and Song et al.* (2017–2018),
 which extend the $\mathbb Z_2$ machinery of Fu–Kane to
 arbitrary space-group symmetries. A TCI can have
 *multiple* Dirac cones on the surface (SnTe has four, one
@@ -883,7 +883,7 @@ higher-degeneracy surface states (four-, six-, eight-fold)
 at high-symmetry points.
 
 > **Tip.** The modern "topological quantum chemistry"
-> framework (Bradlyn *et al.*, *Science* **353**, 6299
+> framework (Bradlyn *et al.*, Science **353**, 6299
 > (2016)) gives a complete classification of all band
 > structures consistent with a given space-group symmetry,
 > including TCIs, Dirac, Weyl, nodal-line, and multi-fold
@@ -927,12 +927,12 @@ little group at $\Gamma$ would hybridise and open a gap.
 
 Two materials realise the Dirac semimetal phase:
 
-- **Na$_3$Bi** (Wang *et al.*, *Phys. Rev. B* **85**, 195320
-  (2012); Liu *et al.*, *Science* **343**, 864 (2014)):
+- **Na$_3$Bi** (Wang *et al.*, Phys. Rev. B **85**, 195320
+  (2012); Liu *et al.*, Science **343**, 864 (2014)):
   $C_3$-protected Dirac node on the $\Gamma$–$A$ line of
   the hexagonal BZ, $\sim 0.3$ eV above the Fermi energy.
-- **Cd$_3$As$_2$** (Wang *et al.*, *Phys. Rev. B* **88**,
-  125427 (2013); Liu *et al.*, *Nature Materials* **13**,
+- **Cd$_3$As$_2$** (Wang *et al.*, Phys. Rev. B **88**,
+  125427 (2013); Liu *et al.*, Nature Materials **13**,
   677 (2014)): $C_4$-protected Dirac node on the
   $\Gamma$–$Z$ line of the tetragonal BZ, $\sim 0.2$ eV
   above the Fermi energy, protected by the $C_4$ symmetry
@@ -969,7 +969,7 @@ C_\text{Weyl} \;=\; \frac{1}{2\pi} \oint_{S^2} \boldsymbol \Omega(\mathbf k) \cd
 \end{equation}
 
 The sign is the **chirality** of the Weyl node: $+1$ is a
-*right-hande`d*` Weyl fermion, $-1$ is *left-hande`d*`. The
+*right-handed*` Weyl fermion, $-1$ is left-hande`d`. The
 chirality is a property of the *Hamiltonian*, not of the
 state, and it is conserved by smooth deformations that
 preserve the gap elsewhere.
@@ -984,8 +984,8 @@ with equal numbers of left- and right-handed chiralities**.
 
 The two "textbook" Weyl semimetals are
 
-- **TaAs** (Weng *et al.*, *Phys. Rev. X* **5**, 011029
-  (2015); Xu *et al.*, *Science* **349**, 613 (2015)):
+- **TaAs** (Weng *et al.*, Phys. Rev. X **5**, 011029
+  (2015); Xu *et al.*, Science **349**, 613 (2015)):
   inversion-broken, TRS-preserved. 24 Weyl nodes split into
   two groups of 8 above and 8 below the $k_z = 0$ plane,
   with chirality alternating around each group.
@@ -999,7 +999,7 @@ bulk Weyl cone at each end.
 
 ### 16.6.3 Nodal-line semimetals
 
-A *nodal-line semimetal* has a *line* (1D) of two-fold band
+A *nodal-line semimetal* has a line (1D) of two-fold band
 crossings in the BZ, rather than an isolated point. The
 low-energy Hamiltonian near a point on the line is the 2D
 massless Dirac Hamiltonian in the plane perpendicular to
@@ -1019,7 +1019,7 @@ two bands are degenerate and their dispersion is *flat*
 (if the Hamiltonian has no $k_z$ dependence on the line)
 or *linear* (if it does).
 
-Nodal lines are protected by *mirror* symmetry, *PT*
+Nodal lines are protected by *mirror* symmetry, PT
 symmetry (the product of parity and TR), or — in non-
 centrosymmetric, non-magnetic crystals — by an
 *antiunitary* symmetry that squares to $+1$ (e.g. the
@@ -1040,7 +1040,7 @@ mirror-protected nodal lines around $\Gamma$).
 
 The family of semimetals covered in this section is the
 *gapless* branch of the topology zoo. The full zoo — the
-*gappe`d*` branch and the *gapless* branch, together — is
+*gapped*` branch and the gapless branch, together — is
 summarised below.
 
 ```mermaid
@@ -1080,10 +1080,10 @@ graph TD
 ```
 
 The diagram makes the relationship explicit: the
-*Chern* and *QSH* families are the 2D parents of the 3D
+*Chern* and QSH families are the 2D parents of the 3D
 TIs; the *Dira`c*` family is the 4-fold (TRS+inversion
 preserved) parent of the *Weyl* family (TRS or inversion
-broken); the *TCI* family extends the *strong TI* family
+broken); the *TCI* family extends the strong TI family
 with crystal-symmetry protection; the *HOTI* family is
 the "next-order" extension of the standard TI. Each
 branch has its own invariant — Chern number, $\mathbb
@@ -1129,7 +1129,7 @@ ways:
 
    This is the "**chiral magnetic effect**" (CME), predicted
    in 1983 in high-energy physics and observed in Weyl
-   semimetals in 2015 by Li *et al.* and Xiong *et al.*
+   semimetals in 2015 by Li *et al.* and Xiong et al.
 2. **The negative longitudinal magnetoresistance
    (LMR).** When an electric field $\mathbf E$ is applied
    *parallel* to $\mathbf B$, the chiral anomaly pumps
@@ -1143,7 +1143,7 @@ ways:
    TaAs, observed in 2015. > **Note.** The negative LMR is *not* a unique signature of
 > the chiral anomaly — current jetting and other classical
 > effects can also produce a negative LMR. The
-> *unambiguous* signature is the *planar* Hall effect: in
+> *unambiguous* signature is the planar Hall effect: in
 > an in-plane $\mathbf B$ and a perpendicular $\mathbf E$
 > the planar Hall voltage is *od`d*` under $\mathbf B \to
 > -\mathbf B$ and has a characteristic $\sin(2\theta)$
@@ -1192,7 +1192,7 @@ by choosing $U(\mathbf k)$ to *minimise* the total spread
 The minimisation is a non-linear problem in $U(\mathbf
 k)$, solved by successive unitary rotations on pairs of
 Wannier functions. The standard tool is **Wannier90**
-(Mostofi *et al.*, *Comput. Phys. Commun.* **178**, 685
+(Mostofi *et al.*, Comput. Phys. Commun. **178**, 685
 (2008)). The input is the Bloch functions at a uniform
 $\mathbf k$-mesh; the output is the $U(\mathbf k)$
 matrices, the MLWF centres, and the *Wannier-interpolate`d*`
@@ -1260,7 +1260,7 @@ jumps is the $\mathbb Z_2$ invariant, as in
 \eqref{eq:ch-16-z2-wilson}.
 
 The algorithm is implemented in **WannierTools** (Wu *et
-al.*, *Comput. Phys. Commun.* **224**, 405 (2018)), which
+al.*, *Comput. Phys. Commun. **224**, 405 (2018)), which
 takes the Wannier90 output and computes the Wilson loop,
 the WCC, and (for a 3D insulator) the surface state
 spectrum in a slab geometry. The standard input is a
@@ -1278,7 +1278,7 @@ cells) with vacuum on either side. The slab has a 2D BZ
 (the projection of the 3D BZ onto the surface plane) and
 the band structure is a set of $\varepsilon_n(\mathbf
 k_\parallel)$. The topological surface state, if it exists,
-appears as a *gap-crossing* band that lives *inside* the
+appears as a *gap-crossing* band that lives inside the
 bulk gap.
 
 The slab calculation can be done directly with a DFT code
@@ -1295,7 +1295,7 @@ The procedure:
    hexagonal surface).
 4. **Project the slab bands onto the bulk band
    structure.** The surface state is the band that lies
-   *in the bulk ga`p*` and is *localised at the surface*.
+   *in the bulk gap*` and is localised at the surface.
 
 For a 3D TI, the slab calculation should show a single
 Dirac cone at $\bar\Gamma$ (for the (001) surface of
@@ -1346,7 +1346,7 @@ A(\mathbf k_\parallel, \omega) \;=\; -\frac{1}{\pi}\, \text{Im}\, \text{Tr}\, G_
 has delta-function peaks at the energies of *true* surface
 states (Tamm states localised at $z = 0$) and of the
 *projecte`d*` bulk states. The topological surface state is
-the delta peak that lies *inside* the bulk gap and is *not*
+the delta peak that lies *inside* the bulk gap and is not
 in the projected bulk spectrum.
 
 The surface Green's function is implemented in
@@ -1354,7 +1354,7 @@ The surface Green's function is implemented in
 and in **Z2Pac`k*`* (for tight-binding or first-principles
 Hamiltonians in the *projector* form). Z2Pack in particular
 is a general-purpose topological-invariant calculator
-(Grubić *et al.*, *Phys. Rev. B* **102**, 245132 (2020))
+(Grubić *et al.*, Phys. Rev. B **102**, 245132 (2020))
 that computes the Chern number, the $\mathbb Z_2$ index,
 and the surface spectrum of any gapped (or nodal) band
 structure, with a clean Python interface.
@@ -1381,7 +1381,7 @@ Yu *et al.*, 2011).
 
 The setup is identical to the $\mathbb Z_2$ case: a
 discretised 1-D loop in the BZ, an overlap matrix, and a
-Wilson loop matrix $W$. The *Chern number* is the *winding
+Wilson loop matrix $W$. The *Chern number* is the winding
 number* of the WCC as $k_\perp$ traverses the BZ:
 
 \begin{equation}
@@ -1406,7 +1406,7 @@ The end-to-end workflow of a topological-materials
 calculation starting from a DFT band structure is summarised
 below. The diagram is the practical counterpart of the
 mathematical roadmap in §16.1 — it is the recipe a code
-like *WannierTools* or *Z2Pac`k*` follows.
+like *WannierTools* or Z2Pac`k` follows.
 
 ```mermaid
 %%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
@@ -1442,7 +1442,7 @@ graph TD
   I --> N
 ```
 
-The two *branches* of the diagram are the *bulk-only* route
+The two *branches* of the diagram are the bulk-only route
 (`A → B → C → D → E → J`) and the *surface* route
 (`G → N` or `H → I → N`). The first gives the *topological
 invariant* of the bulk (Chern number or $\mathbb Z_2$ index)
@@ -1465,7 +1465,7 @@ HOTI models (Benalcazar, Bernevig, Hughes, 2017) and the
 first realisation (Bi$_4$Br$_4$ in 2018) launched the
 sub-field.
 
-**Examples.** A 2D *second-order* TI has *corner* states
+**Examples.** A 2D *second-order* TI has corner states
 (zero-dimensional), protected by $C_n$ rotation or mirror
 symmetry; the invariant is a *quantise`d*` electric
 quadrupole moment $q_{xy} = e/2$. A 3D *second-order* TI has
@@ -1485,14 +1485,14 @@ Wannier centres, computed from the Wannier centres in the
 same way as the Chern number from the WCC.
 
 > **Note.** HOTIs are a *young* sub-field. The first
-> complete classification is by Song *et al.* (*Nature
+> complete classification is by Song *et al.* (Nature
 > Communications* **9**, 3530 (2018)) and Khalaf *et al.*
 > (*Annual Review of Condensed Matter Physics* **12**, 325
 > (2021)). The connection to the more established
 > *topological crystalline insulator* classification of
 > §16.5.3 is a topic of active research.
-> *et al.* (*Nature Communications* **9**, 3530 (2018)) and
-> Khalaf *et al.* (*Annual Review of Condensed Matter
+> *et al.* (Nature Communications **9**, 3530 (2018)) and
+> Khalaf *et al.* (Annual Review of Condensed Matter
 > Physics* **12**, 325 (2021)). The connection to the more
 > established *topological crystalline insulator*
 > classification of §16.5.3 is a topic of active
@@ -1592,7 +1592,7 @@ opposite direction. The crossing is *protecte`d*` by TRS:
 at the time-reversal-invariant momentum $k_x = 0$ the two
 edge bands are degenerate by Kramers' theorem. The bulk
 bands above and below the gap are gapped; the edge bands
-form a *single* Kramers pair of *helical* edge modes.
+form a *single* Kramers pair of helical edge modes.
 
 **Step 5 — the $\mathbb Z_2$ invariant from the Wilson
 loop.** Discretise the 1-D loop of fixed $k_y$ in $k_x$ into
@@ -1604,7 +1604,7 @@ diagonalise; record the WCC $\theta_n(k_y)$.
 The result (for the same parameters as Step 4) is a plot
 of two WCC "ribbons" as a function of $k_y$. In the
 *trivial* phase ($\lambda_v > 3\sqrt{3} \lambda_\text{SO}$),
-both ribbons are *close`d*`; in the *non-trivial* phase
+both ribbons are *closed*`; in the non-trivial phase
 ($\lambda_v < 3\sqrt{3} \lambda_\text{SO}$), one fails to
 close, with a net jump of $2\pi$. The parity of the
 winding is the $\mathbb Z_2$ invariant
@@ -1613,7 +1613,7 @@ ribbons gives $\nu = 1$.
 
 > **Tip.** The WCC plot is the most *direct* visual
 > diagnostic of the $\mathbb Z_2$ invariant. The standard
-> reference plot is Figure 2 of Yu *et al.*, *Science*
+> reference plot is Figure 2 of Yu *et al.*, Science
 > **329**, 61 (2010), for the Bi$_2$Se$_3$ family.
 
 ## 16.10 Worked example — Bi$_2$Se$_3$ band structure and surface Dirac cone
@@ -1692,7 +1692,7 @@ spin texture is Rashba-like with a helical winding.
 
 > **Tip.** The Bi$_2$Se$_3$ surface Dirac cone was the
 > first *clean* experimental observation of a 3D TI
-> surface state (Xia *et al.*, *Nature Physics* **5**, 398
+> surface state (Xia *et al.*, Nature Physics **5**, 398
 > (2009)). The same Dirac cone is in Bi$_2$Te$_3$ and
 > Sb$_2$Te$_3$; the *alloy* Bi$_2$Te$_{2}$Se has the same
 > surface state but a *larger* bulk gap (alloy disorder
@@ -1991,7 +1991,7 @@ eigenvectors are simple, and the TR operator $\Theta = i
 basis) and complex-conjugates the coefficients, we have
 
 $$
-\Theta |u_{\Lambda_a}^-\rangle \;=\; \Theta \begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \alpha^* \\\\ \beta^* \end{pmatrix} \;=\; i \begin{pmatrix} \beta^* \\\\ -\alpha^* \end{pmatrix} .
+\Theta |u_{\Lambda_a}^-\rangle \;=\; \Theta \begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \alpha^* \\\\ \beta^* \end{pmatrix} \;=\; i \begin{pmatrix} \beta^ \\\\ -\alpha^ \end{pmatrix} .
 $$
 
 At the TRIM, $\alpha, \beta$ are real, so
@@ -2168,7 +2168,7 @@ PDF and check the algebra in context). The five papers are:
 3. **Bernevig, B. A.; Hughes, T. L.; Zhang, S.-C.**
    "Quantum Spin Hall Effect and Topological Phase
    Transition in HgTe Quantum Wells." *Science* **2006**,
-   *314*, 1757–1761 — the first *real-material* prediction
+   *314*, 1757–1761 — the first real-material prediction
    of a 2D TI [Bernevig, Hughes, and Zhang, 2006].
 4. **Hasan, M. Z.; Kane, C. L.** "Colloquium: Topological
    Insulators." *Rev. Mod. Phys.* **2010**, *82*, 3045–3067
@@ -2363,7 +2363,7 @@ eq. (15), p. 045312-4]:
 
 Equation \eqref{eq:ch-16-fk-inversion} is the
 **parity criterion**: the product of the parities of
-*all* the occupied bands at *all four* 2D TRIM gives
+*all* the occupied bands at all four 2D TRIM gives
 $\pm 1$, and the sign is $(-1)^\nu$. This is the
 fastest $\mathbb Z_2$ calculation in practice: just
 read off the parities at the four TRIM from a
@@ -2503,7 +2503,7 @@ e^2 / h$ in an H-bar geometry, measured by the
 non-local voltage in a six-terminal Hall bar
 [Bernevig, Hughes, and Zhang, 2006, p. 1759]. The
 prediction was confirmed experimentally by König *et
-al.* in *Science* **318**, 766 (2007), the *first*
+al.* in *Science **318**, 766 (2007), the *first*
 direct observation of a 2D TI in a real material. The
 critical thickness $d_c \sim 6.5$ nm and the
 quantisation of the non-local resistance at the
@@ -2664,19 +2664,19 @@ realisation in nature for 80 years. The
 *condensed-matter* Weyl equation — the low-energy
 Hamiltonian of a 3D Weyl semimetal — was the *first*
 physical realisation, and it came in 2015 with the
-discovery of TaAs [Weng *et al.*, *Phys. Rev. X*
-**5**, 011029 (2015); Xu *et al.*, *Science* **349**,
+discovery of TaAs [Weng *et al.*, Phys. Rev. X
+**5**, 011029 (2015); Xu *et al.*, Science **349**,
 613 (2015)].
 
 **Weyl and topology.** Weyl's paper contains the
-*first* recognition that the *chirality* of a
+*first* recognition that the chirality of a
 massless spin-1/2 particle is a *topological*
 invariant: it cannot change without the mass
 becoming non-zero, which closes the energy gap at
 $\mathbf q = 0$. The same observation is the
 *topological protection* of a Weyl node in a Weyl
 semimetal: the node is the boundary between the
-*positive-energy* and *negative-energy* bands, and
+*positive-energy* and negative-energy bands, and
 it can only be removed by *pairing* it with another
 Weyl node of opposite chirality. The Nielsen–
 Ninomiya theorem of 1981 is the modern lattice
@@ -2702,13 +2702,13 @@ version of Weyl's 1929 observation.
 The five papers above define the 2D and 3D TI families.
 A useful summary is the side-by-side comparison below.
 The table collects the *protected edge / surface state*,
-the *experimental signature*, the *material examples*,
+the *experimental signature*, the material examples,
 and the *bulk invariant* for each family.
 
 | Property | 2D TI (QSH) | 3D strong TI | 3D weak TI |
 |:---------|:------------|:-------------|:-----------|
 | **Bulk invariant** | $\mathbb Z_2$ index $\nu \in \{0, 1\}$ [Kane and Mele, 2005, eq. (1), p. 146802-1]; [Fu and Kane, 2006, eq. (8), p. 045312-3] | Strong $\mathbb Z_2$ $\nu_0 = 1$ [Fu and Kane, 2006, eq. (20), p. 045312-7] | Strong $\mathbb Z_2$ $\nu_0 = 0$, some weak $\nu_k = 1$ [Fu and Kane, 2006, eq. (21), p. 045312-7] |
-| **Protected state** | 1D helical edge mode, Kramers pair, *od`d*` number [Kane and Mele, 2005, p. 146802-1] | 2D surface Dirac cone, *od`d*` number, spin–momentum locked [Hasan and Kane, 2010, pp. 3055–3057] | 2D surface states, but only on certain surfaces; *not* robust [Fu and Kane, 2006, p. 045312-7] |
+| **Protected state** | 1D helical edge mode, Kramers pair, *odd*` number [Kane and Mele, 2005, p. 146802-1] | 2D surface Dirac cone, od`d number, spin–momentum locked [Hasan and Kane, 2010, pp. 3055–3057] | 2D surface states, but only on certain surfaces; *not robust [Fu and Kane, 2006, p. 045312-7] |
 | **Transport signature** | Quantised edge conductance $G = 2 e^2/h$ [Bernevig, Hughes, and Zhang, 2006, p. 1759] | Surface-dominated transport, no back-scattering from non-magnetic disorder [Hasan and Kane, 2010, pp. 3055–3057] | Anisotropic surface transport, sensitive to disorder [Hasan and Kane, 2010, p. 3057] |
 | **ARPES signature** | Edge-state band crossing the bulk gap [Hasan and Kane, 2010, pp. 3051–3053] | Single Dirac cone at $\bar\Gamma$ in the bulk gap [Hasan and Kane, 2010, pp. 3055–3057] | Surface states on some surfaces only [Fu and Kane, 2006, p. 045312-7] |
 | **Material examples** | HgTe/CdTe quantum well ($d > d_c$) [Bernevig, Hughes, and Zhang, 2006, p. 1759]; InAs/GaSb quantum wells [Hasan and Kane, 2010, p. 3052] | Bi$_2$Se$_3$, Bi$_2$Te$_3$, Sb$_2$Te$_3$ [Hasan and Kane, 2010, pp. 3055–3057] | Bi$_2$Te$_2$Se under certain growth conditions [Hasan and Kane, 2010, p. 3057] |
@@ -2823,8 +2823,8 @@ necessary background for each.
   quantum chemistry.** The Fu–Kane parity criterion
   [Fu and Kane, 2006, eq. (15), p. 045312-4] works
   for crystals with inversion symmetry. For
-  *general* space groups, the *symmetry-based
-  indicator* classification of Po *et al.* (2017)
+  *general* space groups, the symmetry-based
+  indicator* classification of Po *et al. (2017)
   and Song *et al.* (2018) extends the Fu–Kane
   machinery to arbitrary space-group symmetries. The
   founding papers do not discuss SBI.
@@ -2836,7 +2836,7 @@ necessary background for each.
   the field has expanded enormously since 2010
   (the prediction and observation of Majorana zero
   modes in semiconductor–superconductor nanowires,
-  Fu & Kane 2008; Lutchyn *et al.* 2010; Mourik *et
+  Fu & Kane 2008; Lutchyn *et al.* 2010; Mourik et
   al.* 2012; the 2D topological superconductivity
   in magic-angle twisted bilayer graphene, 2020s).
   The founding papers are the *backgroun`d*`, not the
@@ -2961,7 +2961,7 @@ important for a complete picture.
 - **The full symmetry-based-indicator (SBI) machinery.**
   The Fu–Kane formula is a *special case* of the more
   general SBI classification of Po *et al.* and Song
-  *et al.* (2017–2018), which classifies *all* band
+  *et al.* (2017–2018), which classifies all band
   structures consistent with a given space-group symmetry
   in terms of irreducible representations at the
   high-symmetry BZ points, and gives a complete list of
@@ -2969,7 +2969,7 @@ important for a complete picture.
   protected by that symmetry group. We did not cover
   the SBI machinery.
 - **Topological superconductors.** The chapter focused
-  on *insulators* and *semimetals*. A parallel story is
+  on *insulators* and semimetals. A parallel story is
   the *topological superconductors*: the 1D Kitaev
   chain, the 2D $p + ip$ superconductor, the 3D He-3 B
   phase. The topological invariant of a superconductor

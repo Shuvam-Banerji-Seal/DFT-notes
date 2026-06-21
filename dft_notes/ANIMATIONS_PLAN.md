@@ -305,7 +305,7 @@ the same as for the Python codes:
 | Risk | Mitigation |
 |---|---|
 | Manim install is heavy (system ffmpeg + cairo + pango + dvisvgm) | Document the install in `animations/README.md`; provide a `Dockerfile` (Manim's official `manimcommunity/manim` image is already a great option) and run the local renders through that. |
-| Render times blow up — one animation takes 30 min instead of 6 | Cap the medium-quality render at 30 s of *scene time* (not wall time). If a script needs more, *the script is too dense* — split into two. |
+| Render times blow up — one animation takes 30 min instead of 6 | Cap the medium-quality render at 30 s of *scene time* (not wall time). If a script needs more, the script is too dense — split into two. |
 | 720p looks bad on a 1080p monitor | 720p is fine for ~30 s clips. Document the `-qh` option for the user who wants 1080p. |
 | Videos don't play on iOS Safari | Use H.264 in MP4 (we are). Add a `playsinline` attribute and a poster frame. Verify in Safari before declaring done. |
 | Mermaid and Manim both render large files, slowing page load | Mermaid runs client-side (fast, cached after first paint). Manim is a video tag with `preload="metadata"` (browser fetches ~1 KB until the reader clicks play). |
