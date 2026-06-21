@@ -948,8 +948,8 @@ academic groups. The build supports MPI parallelism
 # Download from the ORCA forum (login required)
 wget <https://orcaforum.kofo.mpg.de/forum/.../orca_5_0_4_linux_x86-64.tar.xz>
 tar -xf orca_5_0_4_linux_x86-64.tar.xz
-export PATH=/opt/orca_5_0_4_linux_x86-64:$PATH
-export LD_LIBRARY_PATH=/opt/orca_5_0_4_linux_x86-64:$LD_LIBRARY_PATH
+ export PATH=/opt/orca_5_0_4_linux_x86-64:\$PATH
+ export LD_LIBRARY_PATH=/opt/orca_5_0_4_linux_x86-64:\$LD_LIBRARY_PATH
 
 # Verify
 orca --version
