@@ -1712,29 +1712,50 @@ mjx-container:not([display="true"]) > svg {
   }
 }
 
-/* Below 768px: hide the horizontal nav and CTA, show hamburger.
-   The top-nav stays a single row so the wordmark + theme toggle +
-   hamburger fit comfortably on a 320px-wide screen. */
-@media (max-width: 767.98px) {
-  .top-nav {
-    height: 56px;
-  }
-  .top-nav__inner {
-    gap: var(--space-sm);
-    padding: 0 var(--space-md);
-  }
-  .top-nav__menu { display: none; }
-  .top-nav__link--text { display: none; }
-  .top-nav__cta { display: none; }
-  .top-nav__hamburger { display: inline-flex; }
-  .top-nav__brand {
-    font-size: 1.0625rem;
-  }
-  .theme-switcher {
-    width: 36px;
-    height: 36px;
-  }
-}
+ /* Below 768px: hide the horizontal nav and CTA, show hamburger.
+    The top-nav stays a single row so the wordmark + theme toggle +
+    hamburger fit comfortably on a 320px-wide screen. */
+ @media (max-width: 767.98px) {
+   .top-nav {
+     height: 56px;
+   }
+   .top-nav__inner {
+     gap: var(--space-sm);
+     padding: 0 var(--space-md);
+   }
+   .top-nav__menu { display: none; }
+   .top-nav__link--text { display: none; }
+   .top-nav__cta { display: none; }
+   .top-nav__hamburger { display: inline-flex; }
+   .top-nav__brand {
+     font-size: 1.0625rem;
+   }
+   .theme-switcher {
+     width: 36px;
+     height: 36px;
+   }
+   /* Mobile: allow long math/code/mermaid to scroll horizontally
+      within their container instead of overflowing the page.
+      This prevents the 1000+ character equations from causing
+      horizontal page scrolling on small screens. */
+   pre, code, .mermaid, mjx-container {
+     max-width: 100%;
+     overflow-x: auto;
+   }
+   mjx-container[display="true"] svg {
+     max-width: 100%;
+   }
+   /* Prevent the site from being wider than the viewport on
+      small screens (caused by long equations, code blocks, or
+      wide tables). */
+   body {
+     overflow-x: hidden;
+   }
+   main, article, section {
+     max-width: 100vw;
+     overflow-x: hidden;
+   }
+ }
 
 /* Desktop: 1024px and up — full nav, full grids, 3-up features. */
 @media (min-width: 1024px) {
