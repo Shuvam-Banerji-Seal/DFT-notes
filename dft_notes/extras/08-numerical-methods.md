@@ -1067,8 +1067,8 @@ of order $N_\text{MP}$:
 
 \begin{equation}
 \label{eq:nm-bz-mp-smear}
-\tilde f(\varepsilon) = \frac{1}{2} \operatorname{erfc}(x)
-   - \frac{1}{\sqrt\pi} e^{-x^2}
+\tilde f(\varepsilon) = \frac{1}{2} \operatorname{erfc}(x) -
+     \frac{1}{\sqrt\pi} e^{-x^2}
      \sum_{n=1}^{N_\text{MP}} A_n H_{2n-1}(x) ,
 \end{equation}
 
