@@ -163,6 +163,53 @@
     for (var i = 0; i < els.length; i++) els[i].remove();
   }
 
+  // ------- Helper: collapse soft line breaks in text nodes -------
+  // Kramdown's GFM mode preserves source newlines as literal "\n"
+  // characters in text nodes (rather than adding <br />). In normal
+  // flow with `white-space: normal`, these collapse to spaces —
+  // EXCEPT when the "\n" appears at the start of a text node that
+  // immediately follows a replaced inline element (like the SVG
+  // inside an mjx-container). In that case the "\n" can trigger
+  // a visible line break in some renderers, producing awkward
+  // "random newline after math" artifacts across the site.
+  //
+  // Fix: walk every text node in the document, skip the ones
+  // inside <pre>, <code>, <script>, <style> (which legitimately
+  // preserve formatting), and collapse any run of whitespace
+  // (including "\n") to a single space. This normalises the
+  // kramdown output to match what a browser would produce from
+  // single-spaced HTML.
+  function normalizeTextWhitespace() {
+    var skipTags = { PRE: 1, CODE: 1, SCRIPT: 1, STYLE: 1, NOSCRIPT: 1 };
+    var walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: function (node) {
+          var p = node.parentNode;
+          while (p && p !== document.body) {
+            if (skipTags[p.tagName]) return NodeFilter.FILTER_REJECT;
+            p = p.parentNode;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+    var node;
+    var fixed = 0;
+    while ((node = walker.nextNode())) {
+      var before = node.nodeValue;
+      // Collapse any run of whitespace (including newlines) to a
+      // single space. Trim leading/trailing whitespace.
+      var after = before.replace(/\s+/g, ' ').replace(/^ | $/g, '');
+      if (after !== before) {
+        node.nodeValue = after;
+        fixed++;
+      }
+    }
+    return fixed;
+  }
+
   window.MathJax = {
     tex: {
       inlineMath:    [['$', '$'], ['\\(', '\\)']],
@@ -194,7 +241,14 @@
       // assistive MathML.
       pageReady: function () {
         repairBrInMath();
-        return MathJax.startup.defaultPageReady().then(cleanupAssistiveMml);
+        normalizeTextWhitespace();
+        return MathJax.startup.defaultPageReady().then(function () {
+          cleanupAssistiveMml();
+          // Run again after typeset — MathJax may have added new
+          // text nodes (assistive-mml placeholders, equation
+          // numbers) that also need normalising.
+          normalizeTextWhitespace();
+        });
       },
       ready: function () {
         MathJax.startup.defaultReady();
