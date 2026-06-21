@@ -17,7 +17,7 @@ keywords: "VASP, Quantum ESPRESSO, ORCA, GPAW, CP2K, DFT tutorial,
 # Software tutorials — DFT codes in depth
 
 > The [software cheatsheet]({{ "/dft-notes/extras/software-cheatsheet/" | relative_url }})
-> tells you *which* code to reach for. This page tells
+> tells you *whic`h*` code to reach for. This page tells
 > you *how to actually use* the five most-cited
 > production codes in electronic-structure theory: how
 > to install them, what to put in the input file, how
@@ -124,7 +124,7 @@ Web-of-Science search returns > 100,000 papers citing the
 original Kresse–Hafner / Kresse–Furthmüller series. The
 combination of a comprehensive PAW pseudopotential library
 ([chapter 08]({{ "/dft-notes/chapter-08/" | relative_url }}) §8.12), an aggressive
-MPI / OpenMP parallelisation, a mature and *standardised*
+MPI / OpenMP parallelisation, a mature and *standardise`d*`
 input file layout, and a 30-year investment in user-facing
 features (DFPT phonons, NEB, dimer method, ML force fields,
 $GW$, BSE) has made VASP the workhorse of solid-state DFT in
@@ -265,8 +265,8 @@ context below.
 ### 1.4 Convergence tests
 
 VASP calculations are converged in three independent
-parameters: the **plane-wave cutoff** `ENCUT`, the **k-point
-mesh** (`KPOINTS`), and the **electronic smearing**
+parameters: the **plane-wave cutof`f*`* `ENCUT`, the **k-point
+mes`h*`* (`KPOINTS`), and the **electronic smearing**
 (`ISMEAR` / `SIGMA`). The first two must be converged
 *simultaneously* because the converged cutoff depends weakly
 on the k-mesh and vice versa. The recipe:
@@ -305,7 +305,7 @@ on the k-mesh and vice versa. The recipe:
    `smearing T*S` in `OUTCAR` is smaller than the
    convergence target. The most accurate k-point
    integration is `ISMEAR = -5` (tetrahedron with Blöchl
-   corrections), which works for insulators *and* metals
+   corrections), which works for insulators *an`d*` metals
    on a sufficiently dense mesh.
 
 4. **SCF convergence.** The default `EDIFF = 1.0e-4` eV
@@ -320,7 +320,7 @@ on the k-mesh and vice versa. The recipe:
    target for vibrational frequencies (a 1 cm⁻¹ error in
    a phonon corresponds to ~ 0.1 meV in the force
    difference). `EDIFFG = 0.01` (positive number,
-   interpreted as an absolute energy change) is *much*
+   interpreted as an absolute energy change) is *muc`h*`
    looser and should not be used for production
    geometries.
 
@@ -543,7 +543,7 @@ Quantum ESPRESSO (QE) is the de facto **open-source**
 plane-wave DFT code, distributed under the GPL and
 maintained by an international consortium. It is the
 open-source counterpart to VASP for solid-state DFT and is
-the workhorse of *academic* solid-state physics, with a
+the workhorse of *academi`c*` solid-state physics, with a
 particularly deep **phonon** implementation (DFPT and
 finite-difference) and a mature `G_0W_0` / BSE ecosystem
 through the `Yambo` and `West` post-processors. The name
@@ -834,7 +834,7 @@ Run:
 mpirun -n 4 ph.x -in si.ph.Gamma.in > si.ph.Gamma.out
 ```
 
-**Step 3 — DFPT on a 2×2×2 q-mesh** (`si.ph.qmesh.in`):
+**Step 3 — DFPT on a 2×2×2 q-mes`h*`* (`si.ph.qmesh.in`):
 
 ```fortran
 &INPUTPH
@@ -911,7 +911,7 @@ ORCA is a C++ quantum-chemistry program distributed
 **free of charge for academic use** (commercial for
 industry) by the group of Frank Neese at the Max Planck
 Institute for Kohlenforschung. It is the workhorse of
-*inorganic and organometallic* quantum chemistry, with
+*inorganic and organometalli`c*` quantum chemistry, with
 particularly strong modules for:
 - Broken-symmetry DFT for antiferromagnets
   ([chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.8.5)
@@ -1009,7 +1009,7 @@ ORCA is a Gaussian-basis code, so the convergence tests
 are different from the plane-wave codes above. The two
 main convergence parameters are the **basis set size**
 (`def2-SVP` → `def2-TZVP` → `def2-QZVP`) and the
-**numerical integration grid** (`GridX` where X is 1–9).
+**numerical integration gri`d*`* (`GridX` where X is 1–9).
 For most methods, the default grid is fine, but for
 geometry optimisation and properties the convergence
 should be checked.
@@ -1047,7 +1047,7 @@ should be checked.
 4. **RI / RIJCOSX approximation.** The "Resolution of
    the Identity" approximation (RI) and the
    "RI-J + chain-of-spheres exchange" (RIJCOSX)
-   approximation are *much* faster than the full
+   approximation are *muc`h*` faster than the full
    ERI evaluation, with an error of < 0.1 mEh for most
    properties. For hybrid DFT, use `RIJCOSX`; for pure
    GGA, use `RI`. The auxiliary basis is the
@@ -1263,7 +1263,7 @@ modes of operation:
   linearly in system size.
 
 The defining feature of GPAW is the **Python front
-end**: the entire calculator is accessible from a
+en`d*`*: the entire calculator is accessible from a
 Python script, and the standard interface is the
 **ASE** ([Atomic Simulation Environment]({{ "/dft-notes/extras/software-cheatsheet/" | relative_url }}) §9.1).
 This makes GPAW the natural choice when the rest of
@@ -1355,9 +1355,9 @@ geometry is in the output of the script.
 ### 4.4 Convergence tests
 
 GPAW's convergence is structured around three
-parameters: the **plane-wave cutoff** (in PW mode), the
+parameters: the **plane-wave cutof`f*`* (in PW mode), the
 **real-space grid spacing** (in FD mode), and the
-**k-point mesh** (for periodic systems). The
+**k-point mes`h*`* (for periodic systems). The
 convergence recipes:
 
 1. **Plane-wave cutoff (PW mode).** Sweep from 300 eV
@@ -1685,8 +1685,8 @@ pseudopotential.)
 
 CP2K's convergence is structured around three
 parameters: the **Gaussian basis set**, the
-**plane-wave cutoff** (`CUTOFF` in `&MGRID`), and the
-**relative cutoff** (`REL_CUTOFF` in `&MGRID`). The
+**plane-wave cutof`f*`* (`CUTOFF` in `&MGRID`), and the
+**relative cutof`f*`* (`REL_CUTOFF` in `&MGRID`). The
 convergence recipes:
 
 1. **Gaussian basis set.** The MOLOPT family is the
@@ -1712,7 +1712,7 @@ convergence recipes:
    Gaussian density expanded in plane waves). The
    default is 50 Ry, but for high-accuracy work,
    increase to 60–100 Ry. The energy converges
-   *much* faster in `REL_CUTOFF` than in `CUTOFF`.
+   *muc`h*` faster in `REL_CUTOFF` than in `CUTOFF`.
 
 4. **SCF convergence.** The default `EPS_SCF = 1.0E-6`
    is too loose for production. Use `1.0E-7` for
@@ -1773,7 +1773,7 @@ convergence recipes:
   `&XC ... &HF ... &END HF &END XC` with
   `&HF ... FRACTION 0.25 ... &END HF` for PBE0, or
   with `&SCREENING ... &END SCREENING` for HSE06. The HSE06 calculation in CP2K uses a *truncated
-  Coulomb* kernel — the `&SCREENING ... &END SCREENING`
+  Coulom`b*` kernel — the `&SCREENING ... &END SCREENING`
   block specifies the screening length (0.2 Å⁻¹ for
   HSE06). The cost is ~ 50× that of semilocal DFT; the
   `CUTOFF` must be increased to 600–1000 Ry.
@@ -1823,8 +1823,8 @@ convergence recipes:
 ### 5.7 Worked example — NEB of H diffusion on Pt(111)
 
 The H diffusion on Pt(111) is a textbook surface
-science problem: H adsorbs on the *fcc* hollow site,
-diffuses to the neighbouring *hcp* hollow site via a
+science problem: H adsorbs on the *fc`c*` hollow site,
+diffuses to the neighbouring *hc`p*` hollow site via a
 *bridge* transition state. The activation energy is
 ~ 0.1 eV (PBE) — small enough that the diffusion is
 fast at room temperature. This example is the

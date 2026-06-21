@@ -14,7 +14,7 @@ description: >-
 > the standard workhorse of modern quantum chemistry and
 > computational materials science.
 
-These notes are organised as a **progressive walk** through DFT.
+These notes are organised as a **progressive wal`k*`* through DFT.
 Each chapter builds on the last, but every chapter is also
 self-contained enough to be read in isolation. Math is rendered
 inline (MathJax 3, with AMS environments loaded); code samples
@@ -73,7 +73,7 @@ template:
    steps called out.
 3. **The code** — a minimal implementation that produces the
    result.
-4. **The catch** — what the formula *doesn't* tell you, and the
+4. **The catc`h*`* — what the formula *doesn't* tell you, and the
    regime where it breaks.
 
 ## Notation

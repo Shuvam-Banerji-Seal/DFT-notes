@@ -17,7 +17,7 @@ The chapters already use two visual aids:
 | Inline Mermaid diagrams | Mermaid 10 (vendored) | Every chapter's structure, SCF loops, Jacob's ladder |
 | Python plots | `matplotlib` (`Agg`) | All numerics, tables, convergence curves |
 
-Both are **static** — they show the end-state of a calculation. For
+Both are **stati`c*`* — they show the end-state of a calculation. For
 concepts that are inherently dynamic ("watch the density oscillate and
 converge", "watch ψ factorise into a plane wave and a cell-periodic
 piece") the right tool is a short animated clip.
@@ -76,7 +76,7 @@ they should be produced, fastest-to-easiest first.
 | 9 | `09-phonon-chain` | ch10 | Atoms in a 1-D chain | A row of masses on springs; the optical and acoustic modes animate as eigenmodes |
 | 10 | `10-dft-u` | ch13 | LDA fails, LDA+U fixes it | A 3-orbital Hubbard model: with U=0 the gap is 0; with U>0 the gap opens; the projected DOS splits into lower/upper Hubbard bands |
 
-Each one is a **20-40 second clip** at 720p, 30 fps.
+Each one is a **20-40 second cli`p*`* at 720p, 30 fps.
 
 ---
 
@@ -164,7 +164,7 @@ A new GitHub Actions workflow, `.github/workflows/animations.yml`:
 - Upload rendered .mp4 and poster .png as artifacts.
 - Commit them back with `git-auto-commit` (or open a PR if the
   user has a bot account) — *or* open a follow-up PR. The
-  recommended default is **PR not push** so the human reviews the
+  recommended default is **PR not pus`h*`* so the human reviews the
   diff.
 
 Total CI time budget: ~6 min per animation × 10 animations in

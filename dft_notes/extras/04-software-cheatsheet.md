@@ -35,7 +35,7 @@ recommendation.
 > vs. surface) and its *physics* (ground-state DFT vs. TDDFT
 > vs. high-accuracy wavefunction vs. excited-state $GW$/BSE).
 > The chapter cross-references in each profile are the most
-> useful pointers: chapter numbers tell you *which*
+> useful pointers: chapter numbers tell you *whic`h*`
 > theoretical machinery the code is exposing to you.
 
 ---
@@ -129,7 +129,7 @@ built from analytical electron-repulsion integrals
   sets.
 - **DFT Notes chapters:** 03, 04, 05, 06.
 - **When to use.** The de facto standard in *inorganic and
-  organometallic* quantum chemistry. **DLPNO-CCSD(T)**
+  organometalli`c*` quantum chemistry. **DLPNO-CCSD(T)**
   makes canonical-accuracy coupled cluster tractable on
   100–200-atom systems; the broken-symmetry DFT framework
   is the workhorse for antiferromagnetic TM clusters
@@ -171,7 +171,7 @@ built from analytical electron-repulsion integrals
   ANO.
 - **DFT Notes chapters:** 03, 04, 05, 06.
 - **When to use.** The right pick for *publication-
-  benchmark* organic-chemistry calculations where maximum
+  benchmar`k*` organic-chemistry calculations where maximum
   compatibility with the historical record is wanted
   (chapter 05 §5.4 explains why B3LYP is the lingua
   franca). GaussView is unmatched for setting up geometry
@@ -225,7 +225,7 @@ eliminates the Pulay force
   library.
 - **DFT Notes chapters:** 04, 05, 06 §6.7, 07, 08.
 - **When to use.** The de facto open-source plane-wave DFT
-  code. The right pick for any *academic* solid-state DFT
+  code. The right pick for any *academi`c*` solid-state DFT
   project that wants to read, modify, and publish the
   source. The phonons module is the most-used open-source
   phonon code. The hybrid / GW / TDDFT stack is
@@ -284,7 +284,7 @@ eliminates the Pulay force
   ultrasoft pseudopotentials. PAW is not native; the
   on-the-fly-generated "C9" library is well-tested.
 - **DFT Notes chapters:** 04, 05, 06, 07, 08.
-- **When to use.** A strong pick for *UK academic*
+- **When to use.** A strong pick for *UK academi`c*`
   solid-state work where the licence is free; outside the
   UK, Quantum ESPRESSO is the standard open-source
   alternative. The NMR chemical-shift and EELS modules
@@ -634,7 +634,7 @@ to high accuracy: MP2, MP3, CCSD, CCSD(T), FCI, EOM-CC,
 explicitly correlated (F12) methods, multireference
 methods. The hierarchy is described in
 [chapter 02]({{ "/dft-notes/chapter-02/" | relative_url }}) §2.3;
-DFT is the *cheap* alternative, but for small molecules
+DFT is the *chea`p*` alternative, but for small molecules
 where accuracy is paramount, CCSD(T) in a quadruple-zeta
 basis is the gold standard
 ([chapter 02]({{ "/dft-notes/chapter-02/" | relative_url }}) §2.4).
@@ -692,7 +692,7 @@ codes are aimed at small-to-medium molecules.
 - **When to use.** The right pick for *high-accuracy
   wavefunction* methods where the open-source path is
   mandatory. The analytic second-derivatives for CCSD(T)
-  are state-of-the-art and enable *anharmonic*
+  are state-of-the-art and enable *anharmoni`c*`
   vibrational spectroscopy at the CCSD(T) level. The
   EOM-CCSD suite is mature. CFOUR is slower than MRCC
   for single-point energies above CCSD(T), but is the
@@ -737,7 +737,7 @@ $G_0W_0$ and BSE).
   studies.
 - **DFT Notes chapters:** 04, 05, 06, 07.
 - **When to use.** The right pick when you need a
-  **Gaussian basis for a crystalline solid**: reduced
+  **Gaussian basis for a crystalline soli`d*`*: reduced
   BSSE, well-defined extrapolation to the complete basis
   set, easier comparison to molecular calculations using
   the same basis family. The MP2 and CC implementations
@@ -933,7 +933,7 @@ A workflow manager accepts a high-level specification
 then the GW correction") and turns it into a sequence of
 job submissions, with dependency tracking, error
 recovery, and provenance. Workflow managers are not
-electronic-structure codes; they sit *on top of* the
+electronic-structure codes; they sit *on top o`f*` the
 production codes from sections 1–7. | Code      | License  | Language   | Best at                                          |
 |:----------|:---------|:-----------|:-------------------------------------------------|
 | ASE       | LGPL     | Python     | Lightweight scripting, structure handling, IO    |
@@ -1001,10 +1001,10 @@ production codes from sections 1–7. | Code      | License  | Language   | Best
   **Repo:** <https://github.com/materialsproject/fireworks>
 - **Capabilities:** Lightweight workflow management with
   MongoDB-backed job tracking. Each calculation is a
-  *firework*, workflows are *fireworks + links*. The
+  *firewor`k*`, workflows are *fireworks + links*. The
   central `lpad` command-line interface manages the
   queue. Pluggable queue interfaces (SLURM, PBS, SGE,
-  LSF). Provenance tracking through the *launchpad* —
+  LSF). Provenance tracking through the *launchpa`d*` —
   not as deep as AiiDA's, but lighter.
 - **DFT Notes chapters:** all of them.
 - **When to use.** The right default for *a research
@@ -1054,7 +1054,7 @@ production codes from sections 1–7. | Code      | License  | Language   | Best
 > cheatsheets below tell you *what to type into it*.
 > Every entry shows a **minimal** input that produces a
 > sensible result on a trivial system (a hydrogen
-> molecule or a primitive cell), an **annotated** version
+> molecule or a primitive cell), an **annotate`d*`* version
 > of the same input for a slightly harder calculation (a
 > band structure, a spin-polarised system, an MD step), a
 > short list of *what to tweak for X*, a list of *common
@@ -1281,7 +1281,7 @@ column per band.
   valence configurations (e.g. $3s^23p^2$ for Si
   when $3s^23p^63d^0$ is needed for excited
   states) silently produce wrong energies.
-- **occupations = 'tetrahedron' on a coarse mesh**:
+- **occupations = 'tetrahedron' on a coarse mes`h*`*:
   the tetrahedron integrator needs at least
   $4 \times 4 \times 4$ on a primitive cell. With a
   coarser mesh, use `'fixed'` (semiconductor) or
@@ -1482,7 +1482,7 @@ custom script.
   is on the order of the difference between
   valence configurations. Always check with
   `grep TITEL POTCAR` and `head POSCAR`.
-- **POTCAR family mismatch**: the `POTCAR` must be
+- **POTCAR family mismatc`h*`*: the `POTCAR` must be
   all `PBE`, all `LDA`, all `PBE_52`, etc. Mixing
   families gives a non-variational total energy.
 - **LMAXMIX too small for d/f electrons**: VASP
@@ -1592,7 +1592,7 @@ bs = calc.band_structure()
 bs.plot(filename='si.bands.png', emax=15)  # one line for the plot
 ```
 
-The `mode='all'` write in step 2 saves *both* the
+The `mode='all'` write in step 2 saves *bot`h*` the
 wavefunctions and the density. The `fixed_density()`
 load in step 3 re-uses the SCF density for a
 non-self-consistent NSCF run along the k-path —
@@ -1604,7 +1604,7 @@ of code.
 
 #### 10.3.3 What to tweak for X
 
-- **To switch to a real-space grid**: replace
+- **To switch to a real-space gri`d*`*: replace
   `mode=PW(300)` with `mode='fd'` (default
   $h = 0.2$ Å). The FD mode is faster for small
   systems and has no wrap-around from periodic
@@ -1630,7 +1630,7 @@ of code.
 
 #### 10.3.4 Common pitfalls
 
-- **kpts=(1, 1, 1) for a periodic solid**: this is
+- **kpts=(1, 1, 1) for a periodic soli`d*`*: this is
   right for a *molecule* in a large cell, but wrong
   for a periodic solid. The default `kpts=(1, 1, 1)`
   (Gamma only) gives a wrong band structure for a
@@ -1649,7 +1649,7 @@ of code.
   forces use $h = 0.15$ Å or smaller. Convergence
   is exponential in $h$ (multi-grid).
 - **fixed_density() requires mode='all'**: needs
-  both density *and* wavefunctions from the SCF.
+  both density *an`d*` wavefunctions from the SCF.
   If you write `mode='wavefunctions'` instead, the
   band-structure run fails.
 
@@ -1665,7 +1665,7 @@ of code.
 
 SIESTA is a Fortran NAO basis code
 ([§4.3](#43-siesta)). The cheatsheet below uses the
-**fdf** (flexible data format) input — a
+**fd`f*`* (flexible data format) input — a
 Fortran-NAMELIST-inspired free format. The
 pseudopotential is a separate file (`.psf` or
 `.vps`).
@@ -1715,7 +1715,7 @@ The H₂ SCF total energy is in `h2.out` after
 A band structure of bulk silicon. The key
 SIESTA-specific parameters are the **PAO basis**
 (`PAO.BasisSize`, `PAO.EnergyShift`, `SplitNorm`)
-and the **MeshCutoff** (the real-space grid for the
+and the **MeshCutof`f*`* (the real-space grid for the
 Poisson solver and the local part of the
 Hamiltonian).
 
@@ -1756,7 +1756,7 @@ DM.NumberPulaySteps  5
 DM.Tolerance         1.0d-5
 ```
 
-For a band structure, set `%block BandLines` *instead*
+For a band structure, set `%block BandLines` *instea`d*`
 of the Monkhorst–Pack `kgrid_Monkhorst_Pack`:
 
 ```fortran
@@ -1787,7 +1787,7 @@ SIESTA writes the bands to `SystemLabel.bands`.
   `PAO.EnergyShift` from 0.05 eV to 0.01 eV —
   increases the cutoff radius and improves basis
   completeness at the cost of more overlap.
-- **To converge the real-space mesh**: increase
+- **To converge the real-space mes`h*`*: increase
   `MeshCutoff` in Ry. The default 100–200 Ry is
   usually fine; for accurate forces, use 400 Ry or
   higher.
@@ -1813,7 +1813,7 @@ SIESTA writes the bands to `SystemLabel.bands`.
   legacy default of 0.02 Ry (272 meV) is *too
   large* and gives a *too compact* basis.
 - **Basis convergence is *basis* convergence, not
-  *mesh* convergence**: a too-small `PAO.BasisSize`
+  *mes`h*` convergence**: a too-small `PAO.BasisSize`
   or a too-large `PAO.EnergyShift` is *not* fixed
   by `MeshCutoff`.
 - **`MeshCutoff` in Ry, not eV**: SIESTA uses Ry
@@ -1844,7 +1844,7 @@ SIESTA writes the bands to `SystemLabel.bands`.
 CP2K is a Fortran mixed Gaussian / plane-wave (GPW)
 code ([§2.5](#25-cp2k)). The cheatsheet below covers
 the standard `cp2k.psmp` (or `cp2k.popt`) executable.
-The input format is a *structured* Fortran-NAMELIST
+The input format is a *structure`d*` Fortran-NAMELIST
 with explicit section keywords (`&GLOBAL`, `&SUBSYS`,
 `&DFT`, …) and matching `&END` lines. Indentation is
 optional but is the standard convention.
@@ -2010,14 +2010,14 @@ localised initial guess.
   density for covalent systems. Use `RESTART` from
   a previous run, or `SCF_GUESS HISTORY`, for
   difficult cases.
-- **Basis set / pseudopotential mismatch**: the
+- **Basis set / pseudopotential mismatc`h*`*: the
   GTH pseudopotential was generated with a
-  *specific* basis set. Mixing GTH with a non-
+  *specifi`c*` basis set. Mixing GTH with a non-
   MOLOPT basis gives poor results. Always use the
   matched pair (e.g. `DZVP-MOLOPT-GTH` with
   `GTH-PBE-q6`).
 - **POISSON PSOLVER MT for a periodic system**:
-  the Martyna–Tuckerman solver is for *isolated*
+  the Martyna–Tuckerman solver is for *isolate`d*`
   systems. For a periodic system, use
   `PSOLVER PERIODIC` and `PERIODIC XYZ`.
 - **MD timestep too large**: the default 0.5 fs is

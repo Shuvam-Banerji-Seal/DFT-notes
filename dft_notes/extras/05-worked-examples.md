@@ -37,7 +37,7 @@ Each section is a self-contained worked example. The shape of
 each entry is the same:
 
 1. **Problem statement** — what system and what calculation.
-2. **Approach** — one paragraph on the method.
+2. **Approac`h*`* — one paragraph on the method.
 3. **Script** — link to the runnable Python.
 4. **Plot** — link to the committed PNG.
 5. **Expected output** — the key numbers you should see when
@@ -45,7 +45,7 @@ each entry is the same:
 6. **Chapter section** — the cross-reference into the prose.
 
 > **Status of the chapter scripts.**  Chapters 00–08 are
-> *shipped*; chapters 09–13 are *planned* (see
+> *shippe`d*`; chapters 09–13 are *planne`d*` (see
 > [`chapters-map.md`]({{ site.baseurl }}/dft-notes/chapters-map/)).
 > Where a script exists in `python_codes/`, the entry below
 > links to it directly. Where the example exists only as inlined
@@ -87,7 +87,7 @@ labels each curve with its eigenvalue.
 
 - **Script** — [chapter_00/01-particle-in-box.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_00/01-particle-in-box.py)
 - **Plot** — [chapter_00/plots/01-particle-in-box.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_00/plots/01-particle-in-box.png)
-- **Chapter section** — [Chapter 01, §1.3 (Particle in a box)]({{ site.baseurl }}/dft-notes/chapter-01/#13-a-minimal-example-the-particle-in-a-box); also discussed in [Chapter 00, *Hello world*]({{ site.baseurl }}/dft-notes/chapter-00/) (the 1s-density version of the same idea).
+- **Chapter section** — [Chapter 01, §1.3 (Particle in a box)]({{ site.baseurl }}/dft-notes/chapter-01/#13-a-minimal-example-the-particle-in-a-box); also discussed in [Chapter 00, *Hello worl`d*`]({{ site.baseurl }}/dft-notes/chapter-00/) (the 1s-density version of the same idea).
 - **Expected output.** Eigenvalues in atomic units:
   $E_1 = 4.9348$, $E_2 = 19.7392$, $E_3 = 44.4132$, $E_4 = 78.9568$ (in $E_h$).
   The first plot panel shows the four sine-shaped wavefunctions
@@ -225,7 +225,7 @@ with `scipy.linalg.eigh(F, S)`.
   - **Converged HF energy: $E_\text{tot} = -1.1167\,E_h$** (Szabo & Ostlund, table 3.5).
   - SCF converges in 3 iterations from $\mathbf P = \mathbf 0$.
 
-> **Tip.**  This calculation is the *single most quoted*
+> **Tip.**  This calculation is the *single most quote`d*`
 > number in introductory quantum chemistry. It is also the
 > reference point for every KS calculation that follows
 > in the notes: a HF/KS-DFT result on H₂ in a minimal basis
@@ -235,8 +235,8 @@ with `scipy.linalg.eigh(F, S)`.
 
 **Problem.** Same as §2.1 (H₂ STO-3G, $R = 1.4\,a_0$),
 but with two algorithmic upgrades: (i) the ERI tensor is
-*recomputed* on the fly every iteration rather than stored
-(*direct SCF*), and (ii) the Fock matrix is *extrapolated*
+*recompute`d*` on the fly every iteration rather than stored
+(*direct SCF*), and (ii) the Fock matrix is *extrapolate`d*`
 using Pulay's DIIS (direct inversion in the iterative
 subspace) accelerator.
 
@@ -305,7 +305,7 @@ The SCF loop is otherwise identical in shape to HF.
   DIIS.
 
 > **Tip.**  The shape of the loop in §4.4 is the
-> *proto-loop* of every production DFT code.  The
+> *proto-loo`p*` of every production DFT code.  The
 > differences between codes (Gaussian vs. plane-wave, all-
 > electron vs. pseudopotential, serial vs. parallel) are
 > all hiding inside the two lines that build $\mathbf J$
@@ -644,7 +644,7 @@ origin** (in contrast to the divergent all-electron
 $-Z/r$ tail).
 
 **Approach.** In 1-D, the all-electron potential is
-taken to be the **soft-Coulomb** form
+taken to be the **soft-Coulom`b*`* form
 $V_\text{ae}(x) = -Z / \sqrt{x^2 + \epsilon^2}$ with
 $Z = 4$ (mimicking carbon's effective nuclear charge
 for a valence electron) and $\epsilon = 0.3\,a_0$
@@ -895,8 +895,8 @@ eigenvalue
 \qquad k \in [-\pi/a, +\pi/a] .
 \end{equation}
 
-The band has **bandwidth** $W = 4 t$ and is
-**symmetric** about $\varepsilon_0$ at $k = \pm\pi/(2 a)$
+The band has **bandwidt`h*`* $W = 4 t$ and is
+**symmetri`c*`* about $\varepsilon_0$ at $k = \pm\pi/(2 a)$
 (where $\cos(ka) = 0$). The dispersion is a pure
 cosine in the Hückel limit — the **tight-binding
 limit** of a 1-D solid.
@@ -914,7 +914,7 @@ t(a) \;\approx\; t_0\, e^{-(a - a_0) / \ell} ,
 where $a_0$ is some reference distance (the H–H
 equilibrium in a 3-D H₂ molecule is
 $1.4\,a_0 \approx 0.74\,\text{Å}$) and
-$\ell \approx 1\,a_0$ is the **localisation length**
+$\ell \approx 1\,a_0$ is the **localisation lengt`h*`*
 of the $1s$ orbital. At $a = 2\,a_0$, the overlap
 is roughly $e^{-0.6} \approx 0.55$ of the
 $a_0 = 1.4$ value, and $t$ is correspondingly
@@ -969,7 +969,7 @@ graph LR
 > ground state of atomic hydrogen at high pressure)
 > has a richer band structure: a $1s$-derived band
 > that crosses the Fermi level and produces a
-> **metallic** state at low enough lattice constant.
+> **metalli`c*`* state at low enough lattice constant.
 > Ashcroft's prediction of "metallic hydrogen" (1968)
 > — possibly a room-temperature superconductor at
 > sufficient pressure — is the high-pressure version
@@ -1177,7 +1177,7 @@ The acoustic branch is a sound wave (linear in $q$ at
 small $q$, zero frequency at $\Gamma$). The optical
 branch sits at finite frequency at $\Gamma$ (a
 long-wavelength out-of-phase oscillation of the two
-atoms in the unit cell) and *degenerates with* the
+atoms in the unit cell) and *degenerates wit`h*` the
 acoustic branch at the BZ boundary $q = \pi/a$ in the
 *equal-mass* limit (where the chain becomes
 monatomic); with $m_1 \ne m_2$ the two branches
@@ -1190,7 +1190,7 @@ equals
 \end{equation}
 
 This is the simplest possible statement of the
-**optical–acoustic gap** in a 1-D diatomic lattice. In
+**optical–acoustic ga`p*`* in a 1-D diatomic lattice. In
 a 3-D diatomic crystal (NaCl, ZnS, …) the picture
 generalises: there are 3 acoustic branches and $3(N-1)$
 optical branches per unit cell of $N$ atoms, and the
@@ -1215,11 +1215,11 @@ graph LR
 - **Expected output.** With
   $m_1 = 1\,m_\text{p}$, $m_2 = 3\,m_\text{p}$, $K = 1\,E_h/a_0^2$,
   $a = 2\,a_0$:
-  - **Acoustic branch**: $\omega_\text{ac}(0) = 0$,
+  - **Acoustic branc`h*`*: $\omega_\text{ac}(0) = 0$,
     $\omega_\text{ac}(\pi/a) = \sqrt{2} \approx
     1.4142$ (matches the analytic limit
     $\sqrt{2K/m_1} = \sqrt{2}$ to 4 d.p.).
-  - **Optical branch**: $\omega_\text{op}(0) = \sqrt{8/3}
+  - **Optical branc`h*`*: $\omega_\text{op}(0) = \sqrt{8/3}
     \approx 1.6330$ (matches the analytic
     $\sqrt{2K(1/m_1 + 1/m_2)} = \sqrt{8/3}$ to 4 d.p.),
     $\omega_\text{op}(\pi/a) = \sqrt{2/3} \approx
@@ -1354,7 +1354,7 @@ graph TD
     A[Build unit cell: 2 atoms A, B] --> B[Define tau_1, tau_2, tau_3]
     B --> C[Define k-path: Gamma, M, K, Gamma]
     C --> D[At each k, compute f(k) = sum exp(i k . tau_j)]
-    D --> E[H(k) = [[0, t*f],[t*f*, 0]]]
+    D --> E[H(k) = [[0, t*f],[t*`f*`, 0]]]
     E --> F[Eigenvalues: +/- |t| |f|]
     F --> G[Plot pi and pi* bands]
     G --> H[Verify Dirac crossing at K: |f(K)| = 0]
@@ -1370,7 +1370,7 @@ graph TD
   $\text{M} \to \text{K}$ segments of equal length and
   $\text{K} \to \Gamma$ twice that length, so the path
   is uniformly parametrised):
-  - **Bandwidth**: $W = 3\lvert t\rvert \approx
+  - **Bandwidt`h*`*: $W = 3\lvert t\rvert \approx
     0.298\,E_h \approx 8.10\,$eV. The $\pi$ band minimum
     is at $\Gamma$ with
     $\varepsilon_-(\Gamma) = -3\lvert t\rvert$, the
@@ -1431,7 +1431,7 @@ delta-kick initial condition, followed by a Fourier
 transform of the time-dependent dipole that yields the
 same Lorentzian. The agreement of the two halves is the
 sanity check that the TDDFT machinery of chapter 12
-(linear response *and* real time) gives the same answer.
+(linear response *an`d*` real time) gives the same answer.
 
 ### 8.1 Two-level absorption spectrum
 
@@ -1573,7 +1573,7 @@ graph TD
     *disperses* through zero at $\omega_0$ with the
     antisymmetric lineshape predicted by
     \eqref{eq:we-12-kk}.
-  - **Kramers–Kronig check**: the script computes the
+  - **Kramers–Kronig chec`k*`*: the script computes the
     Hilbert transform of the imaginary part of
     $d(\omega)$ and confirms it equals the real part
     to better than $10^{-3}$ relative error across the
@@ -1643,7 +1643,7 @@ single-particle states, $2^{16} = 65{,}536$ total
 states; symmetry reduction to fixed
 $N_\uparrow, N_\downarrow, k$ brings this down to
 $\sim 10^2$–$10^3$ states for the 4-site chain).
-Plot the **single-particle gap**
+Plot the **single-particle ga`p*`*
 $\Delta(U) = E_\text{gs}(N+2) + E_\text{gs}(N-2) - 2
 E_\text{gs}(N)$ as a function of $U$ and discuss the
 Mott transition.
@@ -1722,7 +1722,7 @@ E_\text{gs}(U=0) \;=\; 2 \cdot (-2 t) + 2 \cdot 0 \;=\; -4 t \;=\; -4 .
 The gap to the first charge excitation is **zero**:
 adding two electrons in the $\varepsilon = 0$ state
 costs $0$ energy in the non-interacting limit. This
-is the **metallic** regime of the Hubbard model.
+is the **metalli`c*`* regime of the Hubbard model.
 
 **Step-by-step at $U = 8$ (moderate coupling).**
 Diagonalising the 36-dimensional $\hat H$ for
@@ -1773,7 +1773,7 @@ subspace (the **Gutzwiller approximation**, Ch 13
 - **Plot** — [chapter_13/plots/01-hubbard-4site.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_13/plots/01-hubbard-4site.png)
 - **Chapter section** — [Chapter 13, §13.1 (The Hubbard model)]({{ site.baseurl }}/dft-notes/chapter-13/#1322-the-hubbard-model); §13.3 (exact diagonalisation); §13.4 (Mott transition); §13.5 (DFT+U).
 - **Expected output.** A plot of the **single-
-  particle gap** $\Delta(U) = E_\text{gs}(k = \pi) -
+  particle ga`p*`* $\Delta(U) = E_\text{gs}(k = \pi) -
   E_\text{gs}(k = 0)$ as a function of $U/t$ at
   half-filling:
   - $U/t = 0$: $\Delta = 0$ (the chain is metallic).
@@ -1816,7 +1816,7 @@ subspace (the **Gutzwiller approximation**, Ch 13
 > $U - 4t$ at strong coupling, and a
 > Heisenberg-model effective Hamiltonian with
 > $J = 4 t^2 / U$ for the spin physics. The script
-> also computes the **spin gap** $\Delta_S(U) =
+> also computes the **spin ga`p*`* $\Delta_S(U) =
 > E_\text{gs}(S=1) - E_\text{gs}(S=0)$, which is
 > zero for the 1-D Heisenberg chain (the
 > Bethe-ansatz ground state is a gapless spin

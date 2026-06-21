@@ -39,7 +39,7 @@ top of the chapter and is *not* repeated in this glossary.
 
 For each symbol we give:
 
-- the **LaTeX command** (copy-pasteable),
+- the **LaTeX comman`d*`* (copy-pasteable),
 - the **plain text** form (for editing or for notes in
   environments that don't render LaTeX),
 - a one-line **description**,
@@ -99,15 +99,15 @@ and used without comment thereafter.
 
 Position vectors, momenta, lattice vectors, and the angular
 momenta.  All vectors in this section are 3-D Euclidean
-vectors; in this section and throughout, *bold* indicates a
+vectors; in this section and throughout, *bol`d*` indicates a
 vector.  Operators on them are in §3. | Symbol | LaTeX | Plain text | Description | First appearance |
 |:------|:------|:-----------|:------------|:-----------------|
 | $\mathbf r$ | `\mathbf r` | **r** | Position of an electron in $\mathbb R^3$ | Ch 00 §"Notation" |
 | $\mathbf r_i$ | `\mathbf r_i` | **r_i** | Position of the $i$-th electron | Ch 01 §1.1 |
 | $\mathbf R$, $\mathbf R_A$, $\mathbf R_I$ | `\mathbf R`, `\mathbf R_A`, `\mathbf R_I` | **R**, **R_A**, **R_I** | Position(s) of nucleus/nuclei; $A$ and $I$ index nuclei | Ch 00 §"Notation"; Ch 01 §1.1 |
 | $\mathbf A$, $\mathbf B$, $\mathbf C$, $\mathbf D$ | `\mathbf A` ... | **A** ... | Centres of basis functions (Gaussian primitives, GTOs) | Ch 06 §6.3 |
-| $\mathbf p$ | `\mathbf p` | **p** | Momentum vector; in atomic units $\hat{\mathbf p} = -i\nabla$ | Ch 01 §1.4 |
-| $\mathbf k$ | `\mathbf k` | **k** | Bloch wavevector / crystal momentum; lives in the first Brillouin zone | Ch 07 §7.1 |
+| $\mathbf p$ | `\mathbf p` | **`p*`* | Momentum vector; in atomic units $\hat{\mathbf p} = -i\nabla$ | Ch 01 §1.4 |
+| $\mathbf k$ | `\mathbf k` | **`k*`* | Bloch wavevector / crystal momentum; lives in the first Brillouin zone | Ch 07 §7.1 |
 | $\mathbf q$ | `\mathbf q` | **q** | Phonon wavevector; or a generic reciprocal-space vector in a response function | Ch 10 (planned); Ch 11 (planned) |
 | $\mathbf G$ | `\mathbf G` | **G** | Reciprocal-lattice vector | Ch 07 §7.4.1 |
 | $\mathbf a_1, \mathbf a_2, \mathbf a a_3$ | `\mathbf a_1, \mathbf a_2, \mathbf a_3` | **a_1, a_2, a_3** | Direct (Bravais) lattice primitive vectors | Ch 07 §7.2.1 |
@@ -115,8 +115,8 @@ vector.  Operators on them are in §3. | Symbol | LaTeX | Plain text | Descripti
 | $\mathbf R$ | `\mathbf R` | **R** | Bravais-lattice vector; integer combination of the $\mathbf a_i$ | Ch 07 §7.1 |
 | $\mathbf L$ | `\mathbf L` | **L** | Orbital angular momentum vector, $\mathbf L = \mathbf r \times \mathbf p$ | Ch 01 §1.10.2 |
 | $\mathbf S$ | `\mathbf S` | **S** | Spin angular momentum vector, $\mathbf S = (\hbar/2)\boldsymbol\sigma$ | Ch 01 §1.4 (in $\hat L \cdot \hat S$); Ch 04 §4.9.2 |
-| $\boldsymbol\sigma$ | `\boldsymbol\sigma` | **sigma** | Vector of Pauli matrices $(\sigma_x, \sigma_y, \sigma_z)$ | Ch 04 §4.8.4 |
-| $\boldsymbol\alpha$, $\boldsymbol\beta$ | `\boldsymbol\alpha`, `\boldsymbol\beta` | **alpha**, **beta** | Dirac matrices (4×4) in the standard representation | Ch 04 §4.9.1 |
+| $\boldsymbol\sigma$ | `\boldsymbol\sigma` | **sigm`a*`* | Vector of Pauli matrices $(\sigma_x, \sigma_y, \sigma_z)$ | Ch 04 §4.8.4 |
+| $\boldsymbol\alpha$, $\boldsymbol\beta$ | `\boldsymbol\alpha`, `\boldsymbol\beta` | **alph`a*`*, **bet`a*`* | Dirac matrices (4×4) in the standard representation | Ch 04 §4.9.1 |
 | $\boldsymbol\rho$ | `\boldsymbol\rho` | **rho** | Relative electron–nuclear coordinate in the hydrogen atom ($\mathbf r - \mathbf R$) | Ch 01 §1.10.1 |
 | $\hat{\mathbf r}$ | `\hat{\mathbf r}` | **r̂** | Unit vector $\mathbf r / r$ | Ch 01 §1.10 |
 | $\hat{\mathbf n}$ | `\hat{\mathbf n}` | **n̂** | Generic unit vector (e.g. surface normal, polarisation) | Ch 04 §4.8 (implicit) |
@@ -178,8 +178,8 @@ and kets use Dirac's notation.
 |:------|:------|:-----------|:------------|:-----------------|
 | $\psi(\mathbf r)$ | `\psi(\mathbf r)` | ψ(**r**) | Generic one-electron wavefunction (molecular or atomic) | Ch 01 §1.1 |
 | $\phi_i(\mathbf r)$ | `\phi_i(\mathbf r)` | φ_i(**r**) | $i$-th molecular orbital (Hartree–Fock or Kohn–Sham spatial orbital) | Ch 00 §"Notation"; Ch 03 §3.2 |
-| $\phi_{n\mathbf k}(\mathbf r)$ | `\phi_{n\mathbf k}(\mathbf r)` | φ_{n**k**}(**r**) | Bloch orbital; band index $n$, wavevector $\mathbf k$ | Ch 06 §6.7; Ch 07 §7.1 |
-| $u_{n\mathbf k}(\mathbf r)$ | `u_{n\mathbf k}(\mathbf r)` | u_{n**k**}(**r**) | Cell-periodic part of the Bloch orbital | Ch 06 §6.7; Ch 07 §7.1 |
+| $\phi_{n\mathbf k}(\mathbf r)$ | `\phi_{n\mathbf k}(\mathbf r)` | φ_{n**`k*`*}(**r**) | Bloch orbital; band index $n$, wavevector $\mathbf k$ | Ch 06 §6.7; Ch 07 §7.1 |
+| $u_{n\mathbf k}(\mathbf r)$ | `u_{n\mathbf k}(\mathbf r)` | u_{n**`k*`*}(**r**) | Cell-periodic part of the Bloch orbital | Ch 06 §6.7; Ch 07 §7.1 |
 | $\chi_p(\mathbf x)$ | `\chi_p(\mathbf x)` | χ_p(**x**) | Generic spin-orbital; $\mathbf x = (\mathbf r, \sigma)$ | Ch 02 §2.2 |
 | $\chi_\mu(\mathbf r)$ | `\chi_\mu(\mathbf r)` | χ_μ(**r**) | A single AO (atomic-orbital) basis function | Ch 00 §"Notation"; Ch 03 §3.6 |
 | $\Psi$ | `\Psi` | Ψ (capital) | Many-body wavefunction; $\Psi(\mathbf x_1, \dots, \mathbf x_N)$ | Ch 01 §1.1 |
@@ -281,7 +281,7 @@ treatment is left to a future chapter on post-HF methods.
 | $E_\text{CBS}$ | `E_\text{CBS}` | E_CBS | Complete-basis-set limit energy | Ch 06 §6.2 |
 | $E_n$ | `E_n` | E_n | Energy of the $n$-th stationary state; principal-quantum-number label in hydrogen | Ch 01 §1.1; Ch 01 §1.10 |
 | $\varepsilon_i$ | `\varepsilon_i` | ε_i | Single-particle (orbital) energy; eigenvalue of $\hat F$ or $\hat H_\text{KS}$ | Ch 00 §"Notation"; Ch 03 §3.2 |
-| $\varepsilon_{n\mathbf k}$ | `\varepsilon_{n\mathbf k}` | ε_{n**k**} | Band energy: orbital energy indexed by band $n$ and wavevector $\mathbf k$ | Ch 07 §7.5.2 |
+| $\varepsilon_{n\mathbf k}$ | `\varepsilon_{n\mathbf k}` | ε_{n**`k*`*} | Band energy: orbital energy indexed by band $n$ and wavevector $\mathbf k$ | Ch 07 §7.5.2 |
 | $\varepsilon_F$ | `\varepsilon_F` | ε_F | Fermi energy | Ch 07 §7.6.2 |
 | $\omega_{fi}$ | `\omega_{fi}` | ω_fi | Transition frequency $E_f - E_i$ | Ch 01 §1.8.3 |
 
@@ -318,7 +318,7 @@ reciprocal space).
 | $p, q, r, s$ | `p, q, r, s` | p, q, r, s | General MO indices (occupied or virtual) | Ch 00 §"Notation"; Ch 02 §2.2 |
 | $\alpha, \beta$ | `\alpha`, `\beta` | alpha, beta | Spin labels ($\alpha = \uparrow$, $\beta = \downarrow$); also used for Cartesian-Gaussian angular indices — context disambiguates | Ch 01 §1.2 (P6); Ch 02 §2.2; Ch 06 §6.3 |
 | $\sigma$ | `\sigma` | sigma | Spin label in collinear spin DFT; also index in $(\mu\nu \rvert \rho\sigma)$ | Ch 03 §3.4; Ch 04 §4.8 |
-| $\sigma$ (Pauli) | `\boldsymbol\sigma` | **sigma** | Vector of Pauli matrices; the bold distinguishes it from the spin label | Ch 04 §4.8.4 |
+| $\sigma$ (Pauli) | `\boldsymbol\sigma` | **sigm`a*`* | Vector of Pauli matrices; the bold distinguishes it from the spin label | Ch 04 §4.8.4 |
 | $n$ | `n` | n | Number of doubly-occupied spatial orbitals in a closed-shell calculation, $N/2$ | Ch 03 §3.3 |
 | $N_\alpha$, $N_\beta$ | `N_\alpha`, `N_\beta` | N_α, N_β | Number of $\alpha$-spin / $\beta$-spin electrons (UHF) | Ch 03 §3.7.1 |
 | $S_z$ | `S_z` | S_z | $z$-component of the total spin, $(N_\alpha - N_\beta)/2$ | Ch 03 §3.7.1 |
@@ -330,11 +330,11 @@ reciprocal space).
 
 | Symbol | LaTeX | Plain text | Description | First appearance |
 |:------|:------|:-----------|:------------|:-----------------|
-| $\chi_{\mathbf G}^{\mathbf k}(\mathbf r) = \Omega^{-1/2} e^{i(\mathbf k + \mathbf G)\cdot\mathbf r}$ | `\chi_{\mathbf G}^{\mathbf k}(\mathbf r)` | χ_**G**^**k**(**r**) | Plane-wave basis function | Ch 06 §6.7 |
+| $\chi_{\mathbf G}^{\mathbf k}(\mathbf r) = \Omega^{-1/2} e^{i(\mathbf k + \mathbf G)\cdot\mathbf r}$ | `\chi_{\mathbf G}^{\mathbf k}(\mathbf r)` | χ_**G**^**`k*`*(**r**) | Plane-wave basis function | Ch 06 §6.7 |
 | $E_\text{cut}$ | `E_\text{cut}` | E_cut | Kinetic-energy cutoff for the plane-wave basis | Ch 00 §"Notation"; Ch 06 §6.7 |
 | $G_\text{max}$ | `G_\text{max}` | G_max | Largest retained $\lvert \mathbf k + \mathbf G \rvert$ | Ch 00 §"Notation"; Ch 06 §6.7 |
 | $N_\text{PW}$ | `N_\text{PW}` | N_PW | Number of plane waves retained | Ch 00 §"Notation"; Ch 06 §6.7 |
-| $c_{n\mathbf k}(\mathbf G)$ | `c_{n\mathbf k}(\mathbf G)` | c_{n**k**}(**G**) | Plane-wave coefficient of the Bloch orbital | Ch 06 §6.7 |
+| $c_{n\mathbf k}(\mathbf G)$ | `c_{n\mathbf k}(\mathbf G)` | c_{n**`k*`*}(**G**) | Plane-wave coefficient of the Bloch orbital | Ch 06 §6.7 |
 | $E_\text{cut}^\text{grid}$ | `E_\text{cut}^\text{grid}` | E_cut^grid | Implicit kinetic cutoff of a real-space grid | Ch 06 §6.8 |
 | $h$ | `h` | h | Real-space grid spacing (or: Planck's constant, in non-atomic-unit contexts) | Ch 06 §6.8 |
 | $G_\text{Nyq}$ | `G_\text{Nyq}` | G_Nyq | Nyquist frequency of a real-space grid, $\pi/h$ | Ch 06 §6.8 |
@@ -353,7 +353,7 @@ reciprocal space).
 | $P^s$ | `P^s` | P^s | Spin density matrix, $P^\alpha - P^\beta$ | Ch 03 §3.7.2 |
 | $(\mu\nu \rvert \rho\sigma)$ | `(\mu\nu \rvert \rho\sigma)` | (μν\|ρσ) | Electron-repulsion integral (ERI) in **chemists'** notation | Ch 00 §"Notation"; Ch 03 §3.6.3 |
 | $\langle \mu\nu \rvert \rvert \rho\sigma \rangle$ | `\langle \mu\nu \rvert \rvert \rho\sigma \rangle` | ⟨μν‖ρσ⟩ | ERI in **physicists'** notation, $\int\!\!\int \chi_\mu^*(\mathbf r_1) \chi_\nu(\mathbf r_1) (1/r_{12}) \chi_\rho^*(\mathbf r_2) \chi_\sigma(\mathbf r_2)\, d\mathbf r_1 d\mathbf r_2$ | Ch 03 §3.3 (comment) |
-| $\mathbf S$, $\mathbf h$, $\mathbf F$, $\mathbf P$, $\mathbf C$ | `\mathbf S`, etc. | **S**, **h**, **F**, **P**, **C** | The corresponding $K \times K$ matrices in the AO basis | Ch 03 §3.6 |
+| $\mathbf S$, $\mathbf h$, $\mathbf F$, $\mathbf P$, $\mathbf C$ | `\mathbf S`, etc. | **S**, **`h*`*, **F**, **P**, **C** | The corresponding $K \times K$ matrices in the AO basis | Ch 03 §3.6 |
 | $\mathbf G$ | `\mathbf G` | **G** | Two-electron part of the Fock matrix, $G_{\mu\nu} = J_{\mu\nu} - \tfrac{1}{2}K_{\mu\nu}$ (closed shell) | Ch 03 §3.6.5 |
 | $\mathbf X$ | `\mathbf X` | **X** | Löwdin orthogonaliser, $\mathbf S^{-1/2}$ | Ch 03 §3.6.6 |
 
@@ -396,8 +396,8 @@ shorthand notation that every chapter uses.
 | $\nabla$ | `\nabla` | ∇ (nabla) | Gradient; in Cartesian components $(\partial_x, \partial_y, \partial_z)$ | Ch 00 §"Notation"; Ch 01 §1.1 |
 | $\nabla^2$ | `\nabla^2` | ∇² | Laplacian; $\sum_i \partial_{x_i}^2$ | Ch 00 §"Notation"; Ch 01 §1.1 |
 | $\nabla_i$ | `\nabla_i` | ∇_i | Gradient with respect to the $i$-th electron's coordinates | Ch 01 §1.1 |
-| $\int d\mathbf r$ | `\int d\mathbf r` | ∫ d**r** | Volume integral over all of $\mathbb R^3$ | Ch 00 §"Notation"; Ch 03 §3.2 |
-| $\int d\mathbf x$ | `\int d\mathbf x` | ∫ d**x** | Volume + spin integral (sum over $\sigma$ implicit) | Ch 02 §2.2 |
+| $\int d\mathbf r$ | `\int d\mathbf r` | ∫ `d*`*r** | Volume integral over all of $\mathbb R^3$ | Ch 00 §"Notation"; Ch 03 §3.2 |
+| $\int d\mathbf x$ | `\int d\mathbf x` | ∫ `d*`*x** | Volume + spin integral (sum over $\sigma$ implicit) | Ch 02 §2.2 |
 | $\int d\Omega$ | `\int d\Omega` | ∫ dΩ | Angular integral over the unit sphere | Ch 01 §1.10 |
 | $\partial / \partial x$ | `\partial / \partial x` | ∂/∂x | Partial derivative | Ch 00 §"Notation"; Ch 01 §1.3 |
 | $\partial_t$ | `\partial_t` | ∂_t | Partial derivative with respect to time | Ch 00 §"Notation"; Ch 01 §1.2 (P5) |
@@ -468,15 +468,15 @@ and 11 (band structures).
 | $\mathbf b_1, \mathbf b_2, \mathbf b_3$ | `\mathbf b_1`, `\mathbf b_2`, `\mathbf b_3` | **b_1, b_2, b_3** | Reciprocal-lattice primitive vectors, $\mathbf a_i \cdot \mathbf b_j = 2\pi\delta_{ij}$ | Ch 07 §7.4.1 |
 | $\mathbf R = n_1 \mathbf a_1 + n_2 \mathbf a_2 + n_3 \mathbf a_3$ | `\mathbf R` | **R** | Generic Bravais-lattice vector ($n_i \in \mathbb Z$) | Ch 07 §7.1 |
 | $\mathbf G = h \mathbf b_1 + k \mathbf b_2 + l \mathbf b_3$ | `\mathbf G` | **G** | Reciprocal-lattice vector ($h, k, l \in \mathbb Z$) | Ch 07 §7.4.1 |
-| $\mathbf k$ | `\mathbf k` | **k** | Crystal momentum / Bloch wavevector; lives in the 1st BZ | Ch 07 §7.1 |
+| $\mathbf k$ | `\mathbf k` | **`k*`* | Crystal momentum / Bloch wavevector; lives in the 1st BZ | Ch 07 §7.1 |
 | $\mathbf q$ | `\mathbf q` | **q** | Phonon wavevector; or a generic reciprocal-space wavevector in a response function | Ch 10 (planned); Ch 11 (planned) |
 | $\Omega$ | `\Omega` | Ω | Volume of the primitive cell; also: supercell volume in BvK | Ch 00 §"Notation"; Ch 07 §7.5.1 |
 | $V_\text{cell}$ | `V_\text{cell}` | V_cell | Same as $\Omega$ (alternative notation) | Ch 07 §7.4.1 |
 | $V_\text{BZ}^*$ | `V_\text{BZ}^*` | V_BZ* | Volume of the reciprocal primitive cell, $(2\pi)^3 / V_\text{cell}$ | Ch 07 §7.4.1 |
 | $\Gamma$ | `\Gamma` | Γ | Centre of the Brillouin zone, $\mathbf k = \mathbf 0$ | Ch 07 §7.4.3 |
 | $X$, $L$, $W$, $K$, $U$ | `X`, `L`, `W`, `K`, `U` | X, L, W, K, U | High-symmetry points of the FCC Brillouin zone (Setyawan–Curtarolo) | Ch 07 §7.4.3 |
-| $N_\mathbf k$ | `N_\mathbf k` | N_**k** | Number of $\mathbf k$-points in the BZ sampling mesh | Ch 07 §7.2.2 |
-| $w_\mathbf k$ | `w_\mathbf k` | w_**k** | Weight of $\mathbf k$-point in the BZ sum | Ch 07 §7.2.2 |
+| $N_\mathbf k$ | `N_\mathbf k` | N_**`k*`* | Number of $\mathbf k$-points in the BZ sampling mesh | Ch 07 §7.2.2 |
+| $w_\mathbf k$ | `w_\mathbf k` | w_**`k*`* | Weight of $\mathbf k$-point in the BZ sum | Ch 07 §7.2.2 |
 | $N_1, N_2, N_3$ | `N_1`, `N_2`, `N_3` | N_1, N_2, N_3 | BvK supercell dimensions; also Monkhorst–Pack mesh sizes | Ch 07 §7.2.1 |
 | $m_i$ | `m_i` | m_i | Monkhorst–Pack mesh index along direction $i$ | Ch 07 §7.6.1 |
 | $a$ | `a` | a | Cubic lattice parameter (when applicable) | Ch 07 §7.4.3 |
@@ -528,8 +528,8 @@ beyond).
 
 | Symbol | LaTeX | Plain text | Description | First appearance |
 |:------|:------|:-----------|:------------|:-----------------|
-| $\boldsymbol\alpha$ | `\boldsymbol\alpha` | **alpha** | Dirac matrix (vector of three 4×4 matrices) | Ch 04 §4.9.1 |
-| $\boldsymbol\beta$ | `\boldsymbol\beta` | **beta** | Dirac matrix (single 4×4 matrix) | Ch 04 §4.9.1 |
+| $\boldsymbol\alpha$ | `\boldsymbol\alpha` | **alph`a*`* | Dirac matrix (vector of three 4×4 matrices) | Ch 04 §4.9.1 |
+| $\boldsymbol\beta$ | `\boldsymbol\beta` | **bet`a*`* | Dirac matrix (single 4×4 matrix) | Ch 04 §4.9.1 |
 | $\gamma^5 = \gamma_5$ | `\gamma^5`, `\gamma_5` | γ⁵, γ_5 | Chirality matrix, $i \gamma^0 \gamma^1 \gamma^2 \gamma^3$ in the Dirac representation | Ch 04 §4.9 (referenced) |
 | $\sigma^{\mu\nu} = \tfrac{i}{2}[\gamma^\mu, \gamma^\nu]$ | `\sigma^{\mu\nu}` | σ^{μν} | Generator of Lorentz transformations on Dirac spinors; appears in the spin–orbit coupling | Ch 04 §4.9.2 (implicit) |
 | $\hat H_\text{Dirac}$ | `\hat H_\text{Dirac}` | H_Dirac-hat | Dirac Hamiltonian, $c\,\boldsymbol\alpha \cdot \hat{\mathbf p} + \boldsymbol\beta mc^2 + v(\mathbf r)$ | Ch 04 §4.9.1 |
@@ -627,7 +627,7 @@ $$
   $\mathbf P = 2 \mathbf C_\text{occ} \mathbf C_\text{occ}^\dagger$.
 - The HF energy in the AO basis is
   $E_\text{el} = \tfrac{1}{2} \text{Tr}[\mathbf P(\mathbf h + \mathbf F)]$;
-  the *half* accounts for the double-counting correction in
+  the *hal`f*` accounts for the double-counting correction in
   $\text{Tr}[\mathbf P \mathbf F]$.
 
 ### 13.5 Occupation and spin

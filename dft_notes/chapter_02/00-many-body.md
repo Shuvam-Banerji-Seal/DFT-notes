@@ -52,7 +52,7 @@ quantum chemistry and density-functional theory is, broadly, a
 collection of strategies for *not* doing the exact calculation while
 still getting a useful answer.  The Hartree–Fock method of
 [chapter 03]({{ site.baseurl }}/dft-notes/chapter-03/) is the
-**mean-field** starting point; the rest of these notes is, in
+**mean-fiel`d*`* starting point; the rest of these notes is, in
 various ways, an attempt to add **electron correlation** on top of it
 without paying the full exponential cost.
 
@@ -144,7 +144,7 @@ preceding steps have given us.
 
 ### 2.2.1 Born–Oppenheimer separation
 
-The full, *non-relativistic* Hamiltonian of a molecule with $M$ nuclei
+The full, *non-relativisti`c*` Hamiltonian of a molecule with $M$ nuclei
 (charges $Z_A$, masses $M_A$, positions $\mathbf R_A$) and $N$ electrons
 (positions $\mathbf r_i$) is
 
@@ -282,7 +282,7 @@ The electronic Hamiltonian appearing in
 
 The $V_{NN}$ of \eqref{eq:ch-02-VNN} is the same in both
 \eqref{eq:ch-02-electronic} and the total energy, but in the
-*electronic* problem it is a *constant* (the $\mathbf R$ are
+*electroni`c*` problem it is a *constant* (the $\mathbf R$ are
 parameters, not operators) and is added at the end.
 
 > **Note (non-adiabatic coupling).**  We dropped the
@@ -342,7 +342,7 @@ This is what every quantum-chemistry code means when it talks about
 **Postulate [P6]({{ site.baseurl }}/dft-notes/chapter-01/), in
 mathematics.**  The $N$-electron wavefunction
 $\Psi(\mathbf x_1, \dots, \mathbf x_N)$ must be *totally
-antisymmetric* under the exchange of any two combined coordinates
+antisymmetri`c*` under the exchange of any two combined coordinates
 $\mathbf x_i \leftrightarrow \mathbf x_j$:
 
 \begin{equation}
@@ -362,8 +362,8 @@ cannot occupy the *same spatial orbital*; two electrons with
 origin of the Aufbau principle, of the Hund's-rule multiplicity of
 free atoms, and of the column structure of the periodic table.
 
-> **Tip.**  Antisymmetry is a *fermionic* property.  Photons and
-> $\,^4$He atoms are bosons and have *symmetric* wavefunctions;
+> **Tip.**  Antisymmetry is a *fermioni`c*` property.  Photons and
+> $\,^4$He atoms are bosons and have *symmetri`c*` wavefunctions;
 > they can pile into the same state with no Pauli penalty.  This is
 > why a laser can be packed arbitrarily full of photons, while a
 > metal can have at most two electrons per spatial orbital.
@@ -423,7 +423,7 @@ identity, and \eqref{eq:ch-02-norm} equals one.  This is the
 > "determinantal state" of second quantisation.  In the
 > occupation-number representation it is the
 > $|\chi_1, \chi_2, \dots, \chi_N\rangle$ state — the one in which
-> the first $N$ spin-orbitals are *occupied* and the rest are
+> the first $N$ spin-orbitals are *occupie`d*` and the rest are
 > *empty*.  Most of modern quantum chemistry is built on top of
 > second quantisation (see Helgaker, Jorgensen, Olsen, *Molecular
 > Electronic-Structure Theory*, §11), but for these notes the
@@ -465,7 +465,7 @@ move is to allow a *linear combination* of determinants.
 
 Choose a finite orthonormal basis of $K$ spin-orbitals
 $\{\chi_p\}_{p=1}^{K}$.  An $N$-electron Slater determinant is
-specified by choosing *which* $N$ of the $K$ spin-orbitals are
+specified by choosing *whic`h*` $N$ of the $K$ spin-orbitals are
 occupied.  The number of such choices factors into the $\alpha$ and
 $\beta$ sectors,
 
@@ -557,16 +557,16 @@ $K$.  Three concrete settings illustrate the wall:
 |:-------|:---:|:---:|:-----------------|:------|
 | $\mathrm H_2$ / STO-3G | 2 | 2 | $\binom{2}{1}^2 = 4$ | Closed-shell, full CI is 4 dets |
 | $\mathrm H_2$ O / 6-31G | 13 | 10 | $\binom{13}{5}^2 = 128{,}497$ | Full CI is feasible, ~minute |
-| Benzene / 6-31G\* | 36 | 30 | $\binom{36}{15}^2 \approx 1.6 \times 10^{16}$ | Not feasible — *petabytes* |
+| Benzene / `6-31G*` | 36 | 30 | $\binom{36}{15}^2 \approx 1.6 \times 10^{16}$ | Not feasible — *petabytes* |
 | Benzene / cc-pVDZ | 114 | 30 | $\binom{114}{15}^2 \approx 2.5 \times 10^{26}$ | Out of reach of any conceivable computer |
 
 The numbers in the third and fourth rows of the table are what the
 phrase "**exponential wall**" refers to.  No known algorithm defeats
-it in general.  The **orbital-optimised** approaches of modern
+it in general.  The **orbital-optimise`d*`* approaches of modern
 quantum Monte Carlo (DMC, AFQMC, FCIQMC) and the **selected CI**
 methods (CIPSI, ASCI, Heat-bath CI) attack the wall by *sampling*
 the determinant space rather than enumerating it; the **density
-matrix renormalisation group (DMRG)** and **tensor network** methods
+matrix renormalisation group (DMRG)** and **tensor networ`k*`* methods
 attack it by *factorising* the wavefunction into a product of
 small-tensor pieces.  All of them work in regimes; none of them
 works in general.  Density-functional theory, the subject of the
@@ -701,7 +701,7 @@ the *exact* ground state.  The natural question is: how close is
 the *best* single determinant to the *true* ground state of an
 *interacting* system?
 
-The answer is given by the **Hartree–Fock** method of
+The answer is given by the **Hartree–Foc`k*`* method of
 [chapter 03]({{ site.baseurl }}/dft-notes/chapter-03/): the
 restricted Hartree–Fock (RHF) energy is the minimum of
 $\langle \Phi \mid \hat H_{\text{el}} \mid \Phi \rangle$ over all
@@ -797,17 +797,17 @@ to the full-CI sum.  They can be derived in three standard ways:
       \frac{\Bigl| \langle ij \mid ab \rangle \Bigr|^2}
            {\varepsilon_i + \varepsilon_j - \varepsilon_a - \varepsilon_b} ,
   \end{equation}
-  a sum over *occupied* spin-orbitals $i, j$ and *virtual* ones
+  a sum over *occupie`d*` spin-orbitals $i, j$ and *virtual* ones
   $a, b$.  The denominator is the *orbital-energy* difference of
   the four states, and the sum runs over all doubly-excited
-  determinants.  MP2 is the cheapest *correlated* method.
+  determinants.  MP2 is the cheapest *correlate`d*` method.
 
 - **Configuration interaction** (CISD, CISDT, CISDTQ, ..., FCI).
   Truncate the FCI expansion \eqref{eq:ch-02-fci-explicit} to
   determinants that differ from the reference by at most $n$
   excitations.  CISD includes singles and doubles, CISDT adds
   triples, etc.  The Hamiltonian matrix in the truncated basis
-  is *much* smaller than the full-CI matrix, but the truncation
+  is *muc`h*` smaller than the full-CI matrix, but the truncation
   breaks **size consistency** (see §2.2.9 below).
 
 - **Coupled-cluster theory** (CCS, CCSD, CCSDT, CCSDTQ, ...).
@@ -819,7 +819,7 @@ to the full-CI sum.  They can be derived in three standard ways:
   $e^{\hat T} = 1 + \hat T + \tfrac{1}{2}\hat T^2 + \cdots$
   automatically includes products of excitations (a "double" is
   generated by $\hat T_2$, a "quadruple" by $\hat T_2^2/2$, and
-  so on), and the *connected* form of the resulting equations
+  so on), and the *connecte`d*` form of the resulting equations
   preserves size consistency.  The CCSD equations are
   $\mathcal O(K^6)$ and the perturbative triples correction
   CCSD(T) brings the cost to $\mathcal O(K^7)$.
@@ -839,7 +839,7 @@ to the full-CI sum.  They can be derived in three standard ways:
 ### 2.2.9 Size consistency and size extensivity
 
 The full-CI wavefunction \eqref{eq:ch-02-fci-explicit} is exact in
-the basis-set limit, *and* it has a property that no truncated
+the basis-set limit, *an`d*` it has a property that no truncated
 method preserves without further consideration: the energy of a
 *super-molecule* made of two non-interacting fragments is the sum
 of the energies of the fragments.  This property has two names,
@@ -877,7 +877,7 @@ electron approaches a constant, and the CCSD(T) energy per electron
 approaches a constant — so all of these methods are size
 extensive.  CISD, on the other hand, gives an energy that grows
 *less* than linearly with $N$, because the truncated CI misses the
-*disconnected* contributions to the energy (the products of
+*disconnecte`d*` contributions to the energy (the products of
 excitations on different fragments) and the missing piece grows
 with $N$.
 
@@ -899,7 +899,7 @@ The numbers in the table are *illustrative* (rounded, not from a
 real calculation), but the qualitative pattern is correct.  CISD
 gives the same energy per fragment as CCSD, but it *underestimates*
 the energy of the dimer: it misses $\sim 0.2\,E_h$ of correlation
-energy, which is exactly the *disconnected* contribution of
+energy, which is exactly the *disconnecte`d*` contribution of
 excitations on the two fragments acting in concert.  The same
 $0.2\,E_h$ is *also* the difference between "size consistent" and
 "size inconsistent" for two $\mathrm{H_2O}$ fragments.  This is the
@@ -910,10 +910,10 @@ extensive, while CISD is not.
 > **Note (the linked diagram theorem).**  The formal reason
 > CCSD is size extensive is the **linked diagram theorem**: when
 > the CC equations are derived in the language of many-body
-> perturbation theory, only **connected** (linked) diagrams
+> perturbation theory, only **connecte`d*`* (linked) diagrams
 > appear.  Connected diagrams scale linearly with the number of
 > particles, while disconnected diagrams scale as products of
-> subsystem contributions.  Truncated CI includes *both* linked
+> subsystem contributions.  Truncated CI includes *bot`h*` linked
 > and unlinked diagrams; the unlinked pieces do not vanish in
 > general, and they make the truncated CI miss the
 > size-extensive part of the energy.  The exponential Ansatz
@@ -930,7 +930,7 @@ where we stand:
 1. **Systematically improvable wavefunctions.**  The MP / CI / CC
    hierarchy of section 2.2.8, the **selected CI** family (CIPSI,
    ASCI, Heat-bath CI), **quantum Monte Carlo** (VMC, DMC, FCIQMC,
-   AFQMC), and **tensor network** methods (DMRG, PEPS, MERA).  Each
+   AFQMC), and **tensor networ`k*`* methods (DMRG, PEPS, MERA).  Each
    has a regime where it works and a regime where it does not.
    These methods *converge* to the full-CI answer in the limit of
    their respective control parameters (perturbation order, number
@@ -959,7 +959,7 @@ The rest of these notes is almost entirely about option 2. We
 take a *short* detour through Hartree–Fock first, because the HF
 orbitals and eigenvalues are the language in which Kohn–Sham DFT is
 written, and because the Fock operator is the cleanest example of a
-**mean-field** theory.
+**mean-fiel`d*`* theory.
 
 ## 2.3 The code
 
@@ -1405,7 +1405,7 @@ E_0^{\text{tot}} \;=\; E_0^{\text{el}} + V_{NN}
    \;=\; -1.0246\,E_h .
 \end{equation}
 
-> **Tip.**  Compare to the **restricted Hartree–Fock** answer in
+> **Tip.**  Compare to the **restricted Hartree–Foc`k*`* answer in
 > [chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/),
 > §6.9: $E_{\text{HF}} = -1.1167\,E_h$.  The full-CI energy is
 > lower by
@@ -1467,7 +1467,7 @@ calculation is the *size* of the basis and the *number* of
 electrons.
 
 The size is what gets us into trouble.  A minimal-basis full CI on
-benzene in a 6-31G\* basis has $K = 36$ spatial orbitals and $N =
+benzene in a `6-31G*` basis has $K = 36$ spatial orbitals and $N =
 30$ electrons, so
 $N_{\text{det}} = \binom{36}{15}^2 \approx 1.6 \times 10^{16}$.
 A full CI on water in cc-pVTZ has $K = 58$ spatial orbitals and
@@ -1682,7 +1682,7 @@ $$
    \;=\; \langle 11 \mid 22 \rangle .
 $$
 
-However, the *antisymmetrised* matrix element picks up an
+However, the *antisymmetrise`d*` matrix element picks up an
 *exchange* correction because the determinant structure reverses
 the sign of the two rows in a way that is sensitive to the
 identity of the orbitals.  Concretely, expanding the
@@ -1695,7 +1695,7 @@ $$
 $$
 
 For real orbitals, $\langle 12 \mid 21 \rangle = \langle 12 \mid 12
-\rangle$, so the result is the *exchange-corrected* Coulomb
+\rangle$, so the result is the *exchange-correcte`d*` Coulomb
 integral
 
 $$
@@ -1719,7 +1719,7 @@ The restricted Hartree–Fock ground-state energy in the same basis
 is $E_{\text{HF}} = -1.1167\,E_h$
 ([chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/),
 §6.9).  Carry out the following calculation, step by step, *by
-hand* (with a calculator — no computer):
+han`d*` (with a calculator — no computer):
 
 1. Compute the correlation energy
    $E_{\text{corr}} = E_0 - E_{\text{HF}}$.
@@ -1782,7 +1782,7 @@ $H_{11} - |H_{14}| = -1.4662 - 0.2727 = -1.7389\,E_h$.
 Adding $V_{NN} = 0.7143\,E_h$ gives the total energy
 $-1.0246\,E_h$, *exactly* equal to the full-CI ground-state
 energy of \eqref{eq:ch-02-h2-gs-total}.  The reason is that the
-open-shell singlets $\Phi_2$ and $\Phi_3$ are *uncoupled* from
+open-shell singlets $\Phi_2$ and $\Phi_3$ are *uncouple`d*` from
 the closed shells by symmetry (their $H_{12}$ and $H_{34}$ matrix
 elements vanish), so the full-CI ground state is in fact a
 superposition of *just* the two closed-shell determinants.  In a
@@ -1793,14 +1793,14 @@ to the full-CI ground state.
 **Part 4.**  The Hund–Mulliken energy is *exactly* equal to the
 full-CI energy in this calculation — they are the *same* number.
 The reason is the symmetry of the 2-electron 2-orbital problem:
-the open-shell singlets are *uncoupled* from the closed shells,
+the open-shell singlets are *uncouple`d*` from the closed shells,
 and the ground state is the *only* state in the $M_S = 0$ block
 that has the right symmetry.  In a bigger basis, the
 Hund–Mulliken Ansatz would *underestimate* the correlation
 energy, because it would miss the contribution of the open-shell
 singlets (and of higher excitations).  The sign of the missing
 contribution is *lowering*: any additional determinant that is
-*coupled* to the ground state and has a non-zero matrix element
+*couple`d*` to the ground state and has a non-zero matrix element
 to it will lower the energy by the variational principle.
 
 **Bottom line.**  The 2-electron 2-orbital problem in a real
@@ -1815,7 +1815,7 @@ rest of the correlation energy.
 
 ## 2.7 Cross-references
 
-**Backward** (what we used from earlier chapters):
+**Backwar`d*`* (what we used from earlier chapters):
 
 - [Chapter 01]({{ site.baseurl }}/dft-notes/chapter-01/) —
   Postulates P1–P6 (especially P5 and P6), the time-independent
@@ -1828,7 +1828,7 @@ rest of the correlation energy.
   one- and two-electron integrals in physicists' notation) used
   throughout the present chapter.
 
-**Forward** (where this material is used):
+**Forwar`d*`* (where this material is used):
 
 - [Chapter 03]({{ site.baseurl }}/dft-notes/chapter-03/) —
   Hartree–Fock theory.  The HF method is the *single-determinant
@@ -1848,7 +1848,7 @@ rest of the correlation energy.
   functionals are approximations to this quantity.
 - [Chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/) —
   Basis sets.  The full-CI matrix \eqref{eq:ch-02-ci-eig} is
-  *defined* in a finite one-electron basis of size $K$; the
+  *define`d*` in a finite one-electron basis of size $K$; the
   basis-set convergence of full CI (and the basis-set
   incompleteness error of any post-HF method) is the subject of
   chapter 06.
@@ -1883,15 +1883,15 @@ rest of the correlation energy.
 
 ## 2.8 What we left out
 
-This chapter is the *setup* for everything else; it is necessarily
+This chapter is the *setu`p*` for everything else; it is necessarily
 a summary of an enormous literature.  The topics we have *not*
 covered, and the reader should know are missing, are:
 
 - **Relativistic effects.**  The Hamiltonian
-  \eqref{eq:ch-02-hamiltonian} is the *non-relativistic*
+  \eqref{eq:ch-02-hamiltonian} is the *non-relativisti`c*`
   Schrödinger Hamiltonian.  For elements with $Z \gtrsim 30$
   (the third row of the transition metals and beyond), the
-  inner-shell electrons are relativistic: the *Dirac–Coulomb*
+  inner-shell electrons are relativistic: the *Dirac–Coulom`b*`
   Hamiltonian
   \begin{equation}
   \label{eq:ch-02-dirac}
@@ -1914,7 +1914,7 @@ covered, and the reader should know are missing, are:
   determinant-based methods of §2.2.8 are not the only route to
   the exact wavefunction.  **Variational Monte Carlo (VMC)**,
   **diffusion Monte Carlo (DMC)**, and **auxiliary-field QMC
-  (AFQMC)** represent the wavefunction as a *sampled* ensemble
+  (AFQMC)** represent the wavefunction as a *sample`d*` ensemble
   of 3-$N$-dimensional configurations and accumulate the
   energy expectation value by Metropolis-style sampling.  The
   cost is *polynomial* in $N$ (typically $\mathcal O(N^3)$
@@ -1927,10 +1927,10 @@ covered, and the reader should know are missing, are:
   system size, although the exact scaling is a subject of
   active research.
 - **The transcorrelated method.**  An alternative to the
-  Jastrow factor of QMC is to *absorb* a correlation factor
+  Jastrow factor of QMC is to *absor`b*` a correlation factor
   into the Hamiltonian, transforming a hard problem into a
   *non-Hermitian* but easier one.  The **transcorrelated
-  method** of Boys and Handy (1969) writes
+  metho`d*`* of Boys and Handy (1969) writes
   $\Psi = e^{-\hat\tau}\Phi$ with $\hat\tau$ a correlation
   operator, and the transformed Hamiltonian
   $e^{\hat\tau}\hat H e^{-\hat\tau}$ has a substantially
@@ -1992,7 +1992,7 @@ covered, and the reader should know are missing, are:
   We have not discussed any of these.
 
 > Next: [Chapter 03]({{ site.baseurl }}/dft-notes/chapter-03/)
-> — Hartree–Fock: the *mean-field* approximation to the
+> — Hartree–Fock: the *mean-fiel`d*` approximation to the
 > many-body problem, the Fock operator, the self-consistent
 > field loop, and the *only* wavefunction method the rest of
 > these notes assumes the reader already knows.

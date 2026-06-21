@@ -126,7 +126,7 @@ real numbers per grid point — vastly more than any computer
 can store.  All measurable quantities are expectation values
 \(\langle \hat A \rangle = \langle \Psi \rvert \hat A \rvert \Psi \rangle\);
 the wavefunction evolves under the time-dependent Schrödinger
-equation.  DFT's big theoretical move is to *avoid* the
+equation.  DFT's big theoretical move is to *avoi`d*` the
 wavefunction and work with the one-electron density
 \(\rho(\mathbf r)\) instead, which lives in ordinary 3-D space
 and is enormously cheaper to store and manipulate.
@@ -174,8 +174,8 @@ anything bigger, approximation is unavoidable.
 The Born–Oppenheimer (BO) approximation **decouples the
 electrons from the nuclei** by exploiting the fact that a
 proton is ~1836 times heavier than an electron, so the
-electrons move *much* faster.  The approximation treats the
-nuclei as classical, point-like, *fixed* sources of an external
+electrons move *muc`h*` faster.  The approximation treats the
+nuclei as classical, point-like, *fixe`d*` sources of an external
 potential \(v_\text{ext}(\mathbf r) = -\sum_A Z_A / |\mathbf r -
 \mathbf R_A|\); the electronic Schrödinger equation is then
 solved for each nuclear geometry \(\{\mathbf R_A\}\) separately.
@@ -255,7 +255,7 @@ finite differences or DFPT); **elastic constants and moduli**;
 sites, polymorphs, reaction paths); **band structures and DOS**
 of semiconductors and metals (with caveats on the gap);
 **charge densities, dipoles, ESPs** for qualitative chemistry.
-DFT is *less good* for: **band gaps** of semiconductors and
+DFT is *less goo`d*` for: **band gaps** of semiconductors and
 insulators (typically 30–50 % too small with semilocal
 functionals, fixable with hybrids or $GW$); **weak
 interactions** (van der Waals / dispersion — needs a
@@ -455,9 +455,9 @@ practice, the SCF loop is iterated until convergence:
 \qquad \rho^{(n+1)} \approx \rho^{(n)} .
 \end{equation}
 
-The map \(\mathcal F\) is the **SCF map**; its fixed point is
+The map \(\mathcal F\) is the **SCF ma`p*`*; its fixed point is
 the self-consistent solution.  Convergence can be
-*accelerated* by density mixing (Pulay, Broyden, DIIS); see
+*accelerate`d*` by density mixing (Pulay, Broyden, DIIS); see
 [Chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }})
 §4.6. "SCF" stands for "self-consistent field" — a
 historical name from the Hartree–Fock days.
@@ -515,7 +515,7 @@ obtained by minimising the energy functional
 d\mathbf r\) over all \(v\)-representable densities; the
 minimiser is the exact ground-state density.
 
-The HK theorem is an *existence proof*; it does not give a
+The HK theorem is an *existence proo`f*`; it does not give a
 recipe for the functional \(F_\text{HK}[\rho]\).  The Kohn–
 Sham construction is the practical realisation: it replaces
 the *unknown* functional \(F_\text{HK}\) by an *exactly known*
@@ -551,7 +551,7 @@ A short, opinionated guide:
 | **M06-2X** | Main-group thermochemistry, non-covalent interactions | Transition metals |
 
 The default for a *new project* is PBE for solids, PBE0 or
-B3LYP for molecules.  Always **report the functional you used**
+B3LYP for molecules.  Always **report the functional you use`d*`*
 — and report the convergence parameters (cutoff, mesh,
 tolerance) in the same sentence.
 
@@ -575,10 +575,10 @@ CASTEP, ABINIT): the only knob is the **kinetic-energy
 cutoff \(E_\text{cut}\)**.  Converge the total energy to
 your target tolerance (typically 1 meV/atom) and the stress
 to ~0.1 kbar.  **Pseudopotential** files have a *recommended
-minimum cutoff*; use that as a starting point and converge
+minimum cutof`f*`; use that as a starting point and converge
 *upwards*.  For structures that need empty / high-energy
 states (DOS, band structure), also converge the **augmentation
-cutoff** (PAW) and the **number of bands**.
+cutof`f*`* (PAW) and the **number of bands**.
 
 Always **check for basis-set superposition error (BSSE)** in
 weakly-bound complexes — counterpoise correction.
@@ -601,7 +601,7 @@ as you tighten the numerical parameters.  Recipe:
    tolerance; solids: k-point mesh, then plane-wave cutoff,
    then smearing width, then SCF tolerance.
 3. **Plot the quantity vs. parameter** on a log scale; pick
-   the value at which the curve plateaus *and* is still
+   the value at which the curve plateaus *an`d*` is still
    affordable.  A monotonic improvement without a plateau
    means you are not yet converged.
 4. **Add a safety margin**: take the smallest converged
@@ -622,7 +622,7 @@ quantity is not converged at the same point).
 <details>
 <summary><strong>C.4 — What does "k-point sampling" mean, and when do I need it?</strong></summary>
 
-For a **periodic** system (crystal, surface, polymer), Bloch's
+For a **periodi`c*`* system (crystal, surface, polymer), Bloch's
 theorem forces the orbitals to be labelled by a crystal
 momentum \(\mathbf k\) in the first Brillouin zone.  The
 Kohn–Sham equations need to be solved at *every* \(\mathbf k\)
@@ -690,7 +690,7 @@ path in the Brillouin zone (e.g. \(\Gamma \to X \to W \to K
    finite smearing (Gaussian, Methfessel–Paxton, Fermi–Dirac).
 2. **Restart from the converged charge density**; switch off
    the smearing (or use a tiny cold-smearing width).
-3. **Sample the BZ along the high-symmetry path**, not on a
+3. **Sample the BZ along the high-symmetry pat`h*`*, not on a
    uniform mesh.  Use ~50–200 k-points along the path.
 4. **Plot \(\varepsilon_{n\mathbf k}\) vs. the path
    coordinate**; align the Fermi energy to zero (set
@@ -718,7 +718,7 @@ g(\varepsilon) \;=\; \sum_{n\mathbf k}\, \delta(\varepsilon - \varepsilon_{n\mat
 \end{equation}
 
 In a plane-wave code you compute it by: (i) running a
-**uniform k-mesh** (denser than for the ground state —
+**uniform k-mes`h*`* (denser than for the ground state —
 \(20 \times 20 \times 20\) or more for metals); (ii)
 collecting all the eigenvalues \(\{\varepsilon_{n\mathbf
 k}\}\); (iii) **smearing the delta peaks** (Gaussian,
@@ -748,7 +748,7 @@ there.  **Geometry optimisation** finds a *stationary point*
 iteratively following the forces until they fall below some
 tolerance (typically 10 meV/Å).  The output is a single
 geometry and its energy.  Algorithms: steepest descent,
-conjugate gradient, BFGS, L-BFGS.  *Transition-state search*
+conjugate gradient, BFGS, L-BFGS.  *Transition-state searc`h*`
 is the same idea but targets a saddle point.  **Molecular
 dynamics (MD)** propagates the nuclei *classically*
 (Newton's second law) or *quantum-mechanically*
@@ -768,7 +768,7 @@ the second for *finite-temperature properties and dynamics*.
 <details>
 <summary><strong>C.9 — What does "SCF" mean and why does it sometimes not converge?</strong></summary>
 
-"SCF" stands for **self-consistent field** — the iterative
+"SCF" stands for **self-consistent fiel`d*`* — the iterative
 loop that solves the Kohn–Sham (or Hartree–Fock) equations
 self-consistently (see B.6).  A non-converging SCF is one of
 the most common practical headaches.  Possible causes and
@@ -852,7 +852,7 @@ an on-site Coulomb penalty to localised $d$ states).  **$GW$**
 band structures; expensive.  The first thing to try is HSE06
 (solids) or PBE0 (molecules).  If your gap is *zero* (metallic)
 when the material is known to be an insulator, check that you
-have a spin-polarised calculation *if* the gap is
+have a spin-polarised calculation *i`f*` the gap is
 correlation-driven (NiO, MnO).
 
 **See:** [Chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.4 (hybrids), §5.5 (range-separated); [Chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }}) §11.4
@@ -869,7 +869,7 @@ Two common reasons.
 states times occupation) is *discontinuous* at \(E_F\); a
 finite k-mesh undersamples the Fermi surface, and the
 integrated quantities oscillate with mesh density.  Two
-fixes: (a) **denser k-mesh** — a \(20 \times 20 \times 20\)
+fixes: (a) **denser k-mes`h*`* — a \(20 \times 20 \times 20\)
 mesh is a starting point for unit-cell metals; (b)
 **smearing** with a finite electronic temperature, which
 smooths the integrand.
@@ -902,7 +902,7 @@ reducing the maximum step (in ASE: `fmax=0.05` eV/Å instead
 of `fmax=0.5`).  **You are using steepest descent** —
 notoriously bad at handling anisotropic curvature; switch to
 **LBFGS** (default in ASE, VASP, Quantum ESPRESSO, CP2K).
-**The forces are not converged** — a force of 0.1 eV/Å is not
+**The forces are not converge`d*`* — a force of 0.1 eV/Å is not
 accurate enough for tight geometry optimisation; converge
 the SCF to \(10^{-6}\) eV (not \(10^{-4}\)).  **You are
 near a saddle point** — the algorithm wants a minimum, but
@@ -910,7 +910,7 @@ the geometry is closer to a transition state; try a different
 starting point, or use a transition-state search.  **The
 unit cell is also relaxing** (cell optimisation) with the
 wrong optimiser; use the variable-cell LBFGS / BFGS, not
-steepest descent.  If the oscillation is *periodic* with two
+steepest descent.  If the oscillation is *periodi`c*` with two
 geometries alternating, you are probably bouncing back and
 forth across a saddle.  Damp the step, or change the
 algorithm.
@@ -926,7 +926,7 @@ algorithm.
 "Noisy" forces — values that fluctuate by ~50 meV/Å or
 more between iterations, or that don't monotonically
 decrease in magnitude — have a few common culprits: **The SCF
-is not converged** — forces are *gradients of the energy*;
+is not converge`d*`* — forces are *gradients of the energy*;
 if the energy has \(10^{-4}\) eV noise, the forces have
 \(10^{-2}\) eV/Å noise.  Tighten the SCF convergence.
 **The k-mesh is too coarse** — especially in metals, an
@@ -962,7 +962,7 @@ A "different result" can mean:
   the convergence threshold are normal; differences above it
   mean at least one code is wrong.
 - **Different geometry** (after "optimisation").  Most codes
-  will find the same minimum *if* the convergence parameters
+  will find the same minimum *i`f*` the convergence parameters
   match; small (\(<0.001\) Å) differences are normal; larger
   ones usually mean one of the calculations did not actually
   converge.
@@ -1062,7 +1062,7 @@ non-licence-holders.  Typical licence categories:
 **Academic licence** — paid annually, available to
 universities and non-profit research institutes.
 **Commercial licence** — paid, for industry.  **Some
-national consortia** have site licences that cover every
+national consorti`a*`* have site licences that cover every
 researcher at a participating institution — check with your
 local HPC centre.
 
@@ -1182,7 +1182,7 @@ This page deliberately does not cover:
   and the code's manual.
 - **The full list of DFT codes** — the Software cheatsheet has
   nine categories; we mention six of them here.
-- **Beyond-DFT methods in depth** ($GW$, BSE, DMFT, …) — see
+- **Beyond-DFT methods in dept`h*`* ($GW$, BSE, DMFT, …) — see
   [Chapter 12]({{ "/dft-notes/chapter-12/" | relative_url }}) (TDDFT)
   and [Chapter 13]({{ "/dft-notes/chapter-13/" | relative_url }})
   (planned; beyond-DFT).

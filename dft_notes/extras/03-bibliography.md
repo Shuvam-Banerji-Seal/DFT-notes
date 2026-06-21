@@ -590,13 +590,13 @@ generalisaton of the NC-PP framework to smoother
 pseudopotentials.
 
 Vanderbilt's insight is that the norm-conservation condition
-can be *relaxed* and replaced by a generalised overlap
+can be *relaxe`d*` and replaced by a generalised overlap
 operator, at the cost of a more complex formalism. The
 "ultrasoft" pseudo-wavefunction is allowed to have a norm
 *deficit* $\Delta Q_l = Q_l^\text{ae} - Q_l^\text{ps}$ inside
 $r_c$, and the missing charge is recovered by an **augmentation
 charge** that adds an atom-centred correction to the density.
-The KS equations become a *generalised* eigenvalue problem
+The KS equations become a *generalise`d*` eigenvalue problem
 $\hat H |\phi\rangle = \varepsilon \hat S |\phi\rangle$, with
 $\hat S \neq \mathbf 1$. The payoff is a factor of 2–3
 reduction in the required plane-wave cutoff for hard elements
@@ -626,7 +626,7 @@ spheres. The total energy splits into a smooth part
 within the chosen partial-wave basis. PAW is exact in the
 all-electron limit (no frozen-core approximation) and admits
 the same smooth-wavefunction speed-ups as USPP. The 1994
-paper also introduces the **Blöchl tetrahedron method** for
+paper also introduces the **Blöchl tetrahedron metho`d*`* for
 Brillouin-zone integration, an $\mathcal O((\Delta k)^2)$
 improvement over the standard Monkhorst–Pack Riemann sum.
 PAW is the default in VASP and GPAW for high-accuracy
@@ -713,7 +713,7 @@ giving the basis set its name. The 6-31G split allows the
 SCF to readjust the *size* of the valence orbitals molecule
 by molecule — the inner function is roughly atomic, the
 outer function is roughly the chemical-bond radius. Combined
-with polarisation and diffuse functions (6-31G\*, 6-31+G\*),
+with polarisation and diffuse functions (`6-31G*`, `6-31+G*`),
 the Pople split-valence family dominated computational
 chemistry from 1980 until the Dunning correlation-consistent
 bases displaced it in the 1990s.
@@ -755,7 +755,7 @@ symmetry to make the infinite-lattice problem finite.
 ### 6.1 Bloch (1929) — Bloch's theorem {#bloch-1929}
 
 **Bloch, F.** "Über die Quantenmechanik der Elektronen in
-Kristallgittern." *Zeitschrift für Physik* **1929**, *52*, 555–600.
+Kristallgittern." *Zeitschrift für Physi`k*` **1929**, *52*, 555–600.
 DOI:
 [10.1007/BF01339455](<https://doi.org/10.1007/BF01339455>).
 URL: <https://link.springer.com/article/10.1007/BF01339455>.
@@ -820,7 +820,7 @@ formalism.
 
 Andersen's LMTO method is the third foundational band-structure
 technique. The key insight is that the energy dependence of
-the muffin-tin orbitals can be **linearised** about a fixed
+the muffin-tin orbitals can be **linearise`d*`* about a fixed
 reference energy, and the resulting linear combinations form
 an efficient, near-orthogonal basis that is minimal in size
 (typically 9 orbitals per atom: one $s$, three $p$, five $d$).
@@ -905,7 +905,7 @@ as the source of the time-dependent Hohenberg–Kohn analogue.
 The Runge–Gross theorem is the time-dependent analogue of the
 Hohenberg–Kohn theorem: for a many-electron system evolving
 under a time-dependent external potential $v_\text{ext}(\mathbf r,
-t)$ that is *analytic* in time (admits a Taylor expansion at
+t)$ that is *analyti`c*` in time (admits a Taylor expansion at
 $t_0$), the time-dependent density $\rho(\mathbf r, t)$
 determines the potential uniquely (up to a purely
 time-dependent function), and therefore determines the
@@ -1011,7 +1011,7 @@ Cited in: [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.7.3
 correction to the Hellmann–Feynman force.
 
 The Pulay force is the correction to the Hellmann–Feynman
-formula that arises in a *finite, atom-centred* basis. The
+formula that arises in a *finite, atom-centre`d*` basis. The
 basis functions $\chi_\mu(\mathbf r; \mathbf R)$ depend on
 the nuclear coordinates through their centres
 $\mathbf A_\mu = \mathbf R_{I(\mu)}$, so
@@ -1136,7 +1136,7 @@ LDA+DMFT codes. Cited in [chapter 13]({{ "/dft-notes/chapter-13/" | relative_url
 
 ### 11.1 Kotliar, Savrasov, Haule, Oudovenko, Parcollet & Marianetti (2006) — the standard review {#kotliar-2006}
 
-**Kotliar, G.; Savrasov, S. Y.; Haule, K.; Oudovenko, V. S.; Parcollet, O.; Marianetti, C.** *Electronic structure calculations with dynamical mean-field theory: A review of the LDA+DMFT approach*. **Reviews of Modern Physics** **2006**, *78* (3), 865–951.
+**Kotliar, G.; Savrasov, S. Y.; Haule, K.; Oudovenko, V. S.; Parcollet, O.; Marianetti, C.** *Electronic structure calculations with dynamical mean-field theory: A review of the LDA+DMFT approac`h*`. **Reviews of Modern Physics** **2006**, *78* (3), 865–951.
 DOI: [10.1103/RevModPhys.78.865](https://doi.org/10.1103/RevModPhys.78.865).
 URL: <https://link.aps.org/doi/10.1103/RevModPhys.78.865>.
 
@@ -1294,7 +1294,7 @@ et al. above superseded this for the formalism.
 The five monographs that should sit on the shelf of anyone
 working in electronic-structure theory. They are not cited in
 the chapters directly — the chapters are self-contained — but
-they are the *next step* after these notes for a reader who
+they are the *next ste`p*` after these notes for a reader who
 wants the full mathematical apparatus, the historical context,
 or the production-code perspective.
 
@@ -1363,7 +1363,7 @@ edition: *Dover Publications*: Mineola, NY, **1996**; 480 pp.
 ISBN: 978-0-486-69186-2.
 URL: <https://store.doverpublications.com/9780486691862.html>.
 
-The standard introduction to *wavefunction-based* quantum
+The standard introduction to *wavefunction-base`d*` quantum
 chemistry. Covers the postulates, the hydrogen atom, the
 Hartree–Fock method, the Roothaan–Hall equations, electron
 correlation (CI, MP, CC), and the Gaussian basis, with worked

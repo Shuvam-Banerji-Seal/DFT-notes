@@ -58,7 +58,7 @@ quantities, writes the corresponding PNG into the chapter's
 - **Script 03 (Jacob's ladder):** the cost and MAE numbers
   are eyeball estimates for the G2 atomisation benchmark
   on a G2-sized organic molecule.  They are meant to
-  illustrate the *trend*, not to be benchmark-precise.
+  illustrate the *tren`d*`, not to be benchmark-precise.
 
 ## Dependencies
 

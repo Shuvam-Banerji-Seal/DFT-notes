@@ -85,7 +85,7 @@ gives \eqref{eq:ch-06-roothaan-hall}.
 > $\hat F \phi_i = \varepsilon_i \phi_i$ does not have.  This is
 > not a mistake; it is the price of choosing a basis adapted to
 > the *physics* (atom-centred Gaussians look like atomic
-> orbitals) rather than to the *math* (an orthonormal basis is
+> orbitals) rather than to the *mat`h*` (an orthonormal basis is
 > mathematically clean but physically unmotivated).
 
 Equation \eqref{eq:ch-06-roothaan-hall} is a generalised
@@ -286,7 +286,7 @@ Gaussians,
 \quad \text{(in the least-squares sense)} .
 \end{equation}
 
-The $n = 3$ case, **STO-3G**, is the canonical example.  The
+The $n = 3$ case, **`STO-3G*`*, is the canonical example.  The
 underlying $\zeta = 1.0$ fit for the 1s function (HSP 1969,
 Table II) is
 
@@ -301,7 +301,7 @@ For a different $\zeta$, the exponents scale as $\alpha_p \to
 of the Gaussian dimension analysis $\alpha r^2 = (\zeta r)^2
 (\alpha/\zeta^2)$.  The recommended Pople value for H *in
 molecules* is $\zeta = 1.24$, so the H STO-3G exponents
-*actually used* in calculations are
+*actually use`d*` in calculations are
 $\alpha_p \cdot 1.24^2 = 1.5376\, \alpha_p$,
 
 | $p$ | $\alpha_p$ ($\zeta = 1.24$, EMSL default) | $d_p$    |
@@ -356,7 +356,7 @@ basis functions per H.  In 3-21G it is 3 primitives →
 two basis functions per H.  In 6-311G, three basis functions
 per H.
 
-**Counting basis functions.**  Add up *contracted* functions
+**Counting basis functions.**  Add up *contracte`d*` functions
 across atoms.  For $\rm H_2 O$ in 6-31G:
 
 - O: $1\text{s}$ (core, 1 CGTO) + $2\text{s}$ + $2\text{s}'$ +
@@ -380,7 +380,7 @@ angular momentum than the highest occupied shell on each atom:
 These are **polarisation functions**.  Pople's notation marks
 them with a star: $6\text{-}31\text{G}^*$ adds $d$ on heavy
 atoms only; $6\text{-}31\text{G}^{**}$ adds $d$ on heavy atoms
-*and* $p$ on H.  More polarisation = more flexibility = lower
+*an`d*` $p$ on H.  More polarisation = more flexibility = lower
 $E_\text{BSIE}$ — but more functions and quartic ERI count.
 
 A complementary direction is to add **diffuse** functions:
@@ -409,7 +409,7 @@ row atoms; H lags by one):
 | cc-pVQZ    | (5s, 4p, 3d, 2f, 1g)                                   |     55    |
 | cc-pV5Z    | (6s, 5p, 4d, 3f, 2g, 1h)                               |     91    |
 
-The **augmented** variant **aug-cc-pVXZ** prepends one diffuse
+The **augmente`d*`* variant **aug-cc-pVXZ** prepends one diffuse
 function at each angular momentum.  The empirical fact that
 \eqref{eq:ch-06-cbs-extrap} holds for this family is what
 makes the cc-pV*X*Z series the *de facto* path to converged
@@ -423,7 +423,7 @@ post-HF results.
 
 ## 6.7 Plane waves
 
-For a **periodic** system — a crystal, or a molecule placed in
+For a **periodi`c*`* system — a crystal, or a molecule placed in
 a sufficiently large simulation box — the Kohn–Sham orbitals
 satisfy Bloch's theorem (we will treat this carefully in
 [chapter 07]({{ "/dft-notes/chapter-07/" | relative_url }})):
@@ -455,7 +455,7 @@ $\chi_{\mathbf G}^{\mathbf k}(\mathbf r) = \Omega^{-1/2}
 e^{i (\mathbf k + \mathbf G)\cdot \mathbf r}$ is an exact
 eigenfunction of $-\tfrac{1}{2}\nabla^2$ with eigenvalue
 $\tfrac{1}{2}|\mathbf k + \mathbf G|^2$.  Truncating the
-expansion at the **kinetic-energy cutoff** $E_\text{cut}$,
+expansion at the **kinetic-energy cutof`f*`* $E_\text{cut}$,
 
 \begin{equation}
 \label{eq:ch-06-ecut}
@@ -493,7 +493,7 @@ plane-wave DFT:
 1. **The basis is independent of nuclear position.**  Atom
    centres do not appear anywhere in
    \eqref{eq:ch-06-pw-expansion}.  This makes plane-wave
-   methods *unbiased* — no atom is given a head start — and
+   methods *unbiase`d*` — no atom is given a head start — and
    *natural for forces* (no Pulay correction, see
    [chapter 09]({{ "/dft-notes/chapter-09/" | relative_url }})).
 2. **The basis grows as $\Omega \cdot E_\text{cut}^{3/2}$.**
@@ -506,7 +506,7 @@ plane-wave DFT:
    $E_\text{cut}$.
 
 > **Tip.**  Densities (and the Hartree potential, and the XC
-> potential) are *quadratic* in the orbitals.  A plane-wave
+> potential) are *quadrati`c*` in the orbitals.  A plane-wave
 > code therefore uses *two* grids: an "orbital" grid cut at
 > $E_\text{cut}$, and a "density" grid cut at $4 E_\text{cut}$
 > so that all products $|\phi_{n,\mathbf k}|^2$ are
@@ -516,7 +516,7 @@ plane-wave DFT:
 
 A third style of basis avoids both atomic Gaussians and plane
 waves and instead represents the orbital by its **values on a
-uniform real-space grid** $\{\mathbf r_i\}_{i=1}^{N_g}$:
+uniform real-space gri`d*`* $\{\mathbf r_i\}_{i=1}^{N_g}$:
 
 \begin{equation}
 \label{eq:ch-06-grid}
@@ -766,8 +766,8 @@ self-consistent loop and, in the basis-set limit, give the
 <summary>Problem 1 (easy) — Counting basis functions for water</summary>
 
 Water (H$_2$O) has one O and two H atoms.  Count the number of
-contracted basis functions $K$ that the basis sets **STO-3G**,
-**6-31G**, **6-31G\***, and **cc-pVDZ** give for water.  Use
+contracted basis functions $K$ that the basis sets **`STO-3G*`*,
+**`6-31G*`*, **`6-31G*`**, and **cc-pVDZ** give for water.  Use
 the per-atom compositions stated in sections 6.4–6.6 and the
 spherical-harmonic convention for $d$-functions (5 per shell,
 not 6).
@@ -783,7 +783,7 @@ Per-atom contributions:
 |:---------|:-------------|:-------------|:------------------|
 | STO-3G   | $1s$ → 1     | $1s, 2s, 2p_{x,y,z}$ → 5    | $1 \cdot 2 + 5 = 7$    |
 | 6-31G    | $1s, 1s'$ → 2 | $1s, 2s, 2s', 2p, 2p'$ → 9 | $2 \cdot 2 + 9 = 13$   |
-| 6-31G\*  | same as 6-31G | + $3d$ (5 spherical) → 14   | $2 \cdot 2 + 14 = 18$ |
+| `6-31G*`  | same as 6-31G | + $3d$ (5 spherical) → 14   | $2 \cdot 2 + 14 = 18$ |
 | cc-pVDZ  | $(2s, 1p)$ → 5 | $(3s, 2p, 1d)$ → $3 + 6 + 5 = 14$ | $5 \cdot 2 + 14 = 24$ |
 
 (For cc-pVDZ the $1p$ on H is one shell of three Cartesian
@@ -791,7 +791,7 @@ $p$-functions, i.e. five basis functions per H: two $s$ and
 three $p$.)
 
 The headline numbers: STO-3G gives $K = 7$, 6-31G gives
-$K = 13$, 6-31G\* gives $K = 18$, cc-pVDZ gives
+$K = 13$, `6-31G*` gives $K = 18$, cc-pVDZ gives
 $\boxed{K = 24}$ — and cc-pVTZ, cc-pVQZ, cc-pV5Z grow to 58,
 115, 201 respectively.  The ERI count scales as $K^4$, so each
 step up the ladder is a factor of 5–10 more expensive.
@@ -970,7 +970,7 @@ of what we skipped:
   **counterpoise correction** (Boys & Bernardi 1970).  We
   ignored it.
 - **Numerical atom-centred orbitals.**  Codes like SIESTA,
-  DMol3, and FHI-aims use *numerically tabulated* atomic
+  DMol3, and FHI-aims use *numerically tabulate`d*` atomic
   orbitals — a third family between Gaussians and plane waves
   — that are systematically improvable like Gaussians but
   carry no contraction-fitting error.  We did not discuss
@@ -999,7 +999,7 @@ of what we skipped:
 ## 6.13 Numerical atomic orbitals (NAOs)
 
 The basis sets of sections 6.3–6.6 (STO-nG, Pople, Dunning) are
-all **analytic**: every function in the basis is known in closed
+all **analyti`c*`*: every function in the basis is known in closed
 form as a sum of Gaussians.  An alternative, used by **SIESTA**
 (linear-scaling DFT), **FHI-aims** (numeric all-electron), and
 the partial-wave construction of **PAW** (section 6.15), is to
@@ -1025,7 +1025,7 @@ Y_{\ell m}(\hat{\mathbf r}_a) , \qquad
 
 where $Y_{\ell m}$ is a real spherical harmonic, $r_a$ is the
 distance to atom $a$, and the radial function $R_\ell^{(a,q)}$
-is a numerical solution of a **modified** radial Schrödinger
+is a numerical solution of a **modifie`d*`* radial Schrödinger
 equation with a confining potential.  The index $q = 1, 2,
 \dots, n_\zeta$ labels the multiple-ζ split of the valence
 shell.
@@ -1085,12 +1085,12 @@ asymptotic boundary $r = R_c$ where $u_\ell(R_c) = 0$.
 
 ### 6.13.3 The logarithmic grid
 
-The radial equation is **stiff** at small $r$ (where
+The radial equation is **stif`f*`* at small $r$ (where
 $\ell(\ell+1)/2r^2$ diverges and the wavefunction oscillates
-rapidly) and **smooth** at large $r$ (where it decays
+rapidly) and **smoot`h*`* at large $r$ (where it decays
 exponentially).  A uniform grid wastes resolution in the
 asymptotic region.  The standard choice is the **logarithmic
-grid** introduced by H. J. A. M. Kormann and used in SIESTA and
+gri`d*`* introduced by H. J. A. M. Kormann and used in SIESTA and
 FHI-aims:
 
 \begin{equation}
@@ -1252,7 +1252,7 @@ in principle — the cc-pV*X*Z series is built on this premise —
 but the convergence is *angular*: the missing angular momenta
 show up as slowly-decaying multipole errors in the electron
 density.  **Wavelets and B-splines** are the basis families that
-are *both* atom-like (no periodic boundary condition required)
+are *bot`h*` atom-like (no periodic boundary condition required)
 and *systematically* improvable for the all-electron problem.
 
 ### 6.14.1 B-splines on a finite interval
@@ -1397,7 +1397,7 @@ E_\text{total}(J) \;=\; E_\text{exact} \;+\; \mathcal O(2^{-s J}) ,
 
 for $J$ wavelet levels — *exponential* convergence in the
 number of levels, and the only basis family for which this
-claim holds *with* the full all-electron Coulomb singularity
+claim holds *wit`h*` the full all-electron Coulomb singularity
 (no pseudopotential, no PAW).
 
 ### 6.14.4 The BigDFT code
@@ -1530,7 +1530,7 @@ is needed inside each sphere.  The total electron density is
 where
 
 - $\tilde \rho = \sum_n f_n \lvert \tilde \psi_n \rvert^2$ is
-  the **smooth** density, defined on the plane-wave grid,
+  the **smoot`h*`* density, defined on the plane-wave grid,
 - $\rho^a = \sum_{i,j} D_{ij}^a\, \phi_i^a (\phi_j^a)^*$ is
   the **AE augmentation** density, defined on the radial grid
   of atom $a$,
@@ -1664,7 +1664,7 @@ and never updated.
 
 > **Tip.**  The **PAW datasets** distributed with VASP /
 > Quantum ESPRESSO are not just pseudopotentials — they
-> contain the partial waves *and* the projectors.  Treating
+> contain the partial waves *an`d*` the projectors.  Treating
 > them as "potentials" and ignoring the reconstruction is a
 > common source of confusion.  The data file you load into a
 > PAW code is a small, atom-type-specific data set
@@ -1685,7 +1685,7 @@ but the three new sections 6.13–6.15 bring their own omissions:
   [chapter 10]({{ "/dft-notes/chapter-10/" | relative_url }}) for the
   linear-scaling toolkit.
 - **Adaptive finite elements.**  FEniCS-based DFT codes use
-  *unstructured* tetrahedral meshes with adaptive refinement,
+  *unstructure`d*` tetrahedral meshes with adaptive refinement,
   a generalisation of the B-spline idea; we touched on it
   only in passing.
 - **LAPW / APW+lo.**  The linearised augmented plane wave
