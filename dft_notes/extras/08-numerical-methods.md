@@ -641,10 +641,10 @@ the new gradient information:
 \label{eq:nm-opt-bfgs-update}
 \boxed{
 \mathbf B^{(k+1)} = \mathbf B^{(k)}
-   - \frac{\mathbf B^{(k)} \mathbf s^{(k)} {\mathbf s^{(k)}}^\text{T} \mathbf B^{(k)}}
-          {{\mathbf s^{(k)}}^\text{T} \mathbf B^{(k)} \mathbf s^{(k)}}
-   + \frac{\mathbf y^{(k)} {\mathbf y^{(k)}}^\text{T}}
-          {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}}
+   - \frac{\mathbf B^{(k)} \mathbf s^{(k)} ({\mathbf s^{(k)}})^{\text{T}} \mathbf B^{(k)}}
+          {({\mathbf s^{(k)}})^{\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}
+   + \frac{\mathbf y^{(k)} ({\mathbf y^{(k)}})^{\text{T}}}
+          {({\mathbf y^{(k)}})^{\text{T}} \mathbf s^{(k)}}
 }
 \end{equation}
 {% endraw %}
