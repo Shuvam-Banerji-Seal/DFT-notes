@@ -1843,7 +1843,7 @@ choice.
 
 $$
 \label{eq:ch-14-zoo}
-\begin{array}{|lccc|}}
+\begin{array}{|lccc|}
 \hline
 \text{Method} & \text{Scaling} & \text{Accuracy} & \text{When} \\\
 \text{HF}                  & K^4   & 100\text{-}300  & \text{qualitative orbitals, geometries} \\\
