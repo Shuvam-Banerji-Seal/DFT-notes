@@ -1,0 +1,3702 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 15 — Relativistic effects and spin-orbit coupling" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: A single relativistic correction — the spin-orbit term
+          - img [ref=e31]
+          - text: — is the difference between a DFT calculation that gets the chemistry of gold right and one that gets it catastrophically wrong.
+      - paragraph [ref=e58]:
+        - text: You have spent twelve chapters building a non-relativistic machinery. The Hamiltonian has been
+        - img [ref=e60]
+        - text: ", the eigenfunctions have been scalar spatial orbitals"
+        - img [ref=e115]
+        - text: (or two-component spinors in the collinear spin case of
+        - link "chapter 04" [ref=e130] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.8), and the pseudopotentials of
+        - link "chapter 08" [ref=e131] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: have replaced the deep nuclear potential with a smooth effective one. That machinery is correct, and accurate, for every element up to about the middle of the periodic table. It is also qualitatively wrong for the heavy elements — for the lanthanides, the actinides, the 5
+        - emphasis [ref=e132]: d
+        - text: ’ transition metals, the 6p* post- transition metals, and the superheavies — and
+        - emphasis [ref=e133]: quantitatively
+        - text: "wrong for almost everything that touches spin-orbit physics: Rashba-split surface states, topological-insulator band inversions, the spin Hall effect, magnetic anisotropy, zero- field splitting in molecular magnets, the colour of gold, the relativistic contraction of the 6"
+        - emphasis [ref=e134]: s
+        - text: "orbital, the liquid metallicity of mercury. All of these have a single physical origin: the"
+        - strong [ref=e135]: Dirac equation
+        - text: is the correct wave equation for an electron in an electromagnetic field, and the non-relativistic Schrödinger equation is its
+        - img [ref=e137]
+        - text: limit. This chapter is the bridge from the non-relativistic machinery you have built to the relativistic machinery that every production DFT code uses for heavy elements. We will derive the Dirac equation from the relativistic energy-momentum relation, extract the non-relativistic limit as a
+        - strong [ref=e151]: Pauli Hamiltonian
+        - text: with the famous four correction terms (kinetic-relativistic, Darwin, spin-orbit, contact), introduce the three standard two-component reductions (
+        - strong [ref=e152]: DKH
+        - text: ","
+        - strong [ref=e153]: ZORA
+        - text: ","
+        - strong [ref=e154]: X2C
+        - text: ), explain why
+        - strong [ref=e155]: scalar-relativistic pseudopotentials
+        - text: work and how
+        - strong [ref=e156]: fully-relativistic pseudopotentials
+        - text: carry spin-orbit coupling, set up the
+        - strong [ref=e157]: Dirac–Kohn–Sham
+        - text: and
+        - strong [ref=e158]: two-component Kohn–Sham
+        - text: "equations, and close with two worked examples that show the magnitude of the effect in practice: the Au"
+        - img [ref=e160]
+        - text: dimer (scalar relativistic alone gives a 3.0 Å bond; with spin-orbit the bond contracts to 2.47 Å, exactly the experimental value) and the spin-Hall conductivity of platinum.
+      - blockquote [ref=e166]:
+        - paragraph [ref=e167]:
+          - strong [ref=e168]: Reading note.
+          - text: This chapter assumes
+          - link "chapter 04" [ref=e169] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.9 (the basic Dirac equation and the Pauli expansion) and
+          - link "chapter 08" [ref=e170] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: (pseudopotentials, in particular PAW) as background, and it uses the time-dependent language of
+          - link "chapter 12" [ref=e171] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: when we get to linear-response and the spin-Hall effect. Forward dependencies are
+          - link "chapter 16" [ref=e172] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-16/
+          - text: on topological materials (where the
+          - img [ref=e174]
+          - text: vs
+          - img [ref=e189]
+          - text: Kramers pair from §15.5.1 is the central object) and
+          - link "chapter 17" [ref=e203] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-17/
+          - text: on magnetic materials (where the spin-orbit anisotropy
+          - img [ref=e205]
+          - text: of §15.5.1 is the source of the magnetocrystalline anisotropy).
+      - heading "15.1 The claim" [level=2] [ref=e234]
+      - paragraph [ref=e235]: The headline result is the following.
+      - blockquote [ref=e236]:
+        - paragraph [ref=e237]:
+          - strong [ref=e238]: Claim 15.1 (Relativistic DFT).
+          - text: For an
+          - img [ref=e240]
+          - text: "-electron system with nuclear charges"
+          - img [ref=e246]
+          - text: and total
+          - img [ref=e259]
+          - text: (where
+          - img [ref=e281]
+          - text: is the total ionic charge), the ground-state energy and density are obtained by minimising the
+          - strong [ref=e286]: Dirac–Kohn–Sham
+          - text: energy functional
+        - img [ref=e288]:
+          - generic [ref=e292]:
+            - img [ref=e293]
+            - img [ref=e399]
+        - paragraph [ref=e406]: subject to a four-component (or, after a unitary decoupling, a two-component) single-particle constraint
+        - img [ref=e408]:
+          - generic [ref=e412]:
+            - img [ref=e413]
+            - img [ref=e528]
+        - paragraph [ref=e536]:
+          - text: where
+          - img [ref=e538]
+          - text: is the electron density,
+          - img [ref=e551]
+          - text: is the
+          - strong [ref=e564]: paramagnetic current density
+          - text: ","
+          - img [ref=e566]
+          - text: is the KS effective potential of
+          - link "chapter 04" [ref=e576] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: ","
+          - img [ref=e578]
+          - text: is the spin-orbit coupling operator
+        - img [ref=e592]:
+          - generic [ref=e596]:
+            - img [ref=e597]
+            - img [ref=e692]
+        - paragraph [ref=e700]:
+          - text: and
+          - img [ref=e702]
+          - text: is a four-component spinor. The non-relativistic limit
+          - img [ref=e726]
+          - text: recovers the standard Kohn–Sham equations of chapter 04. The
+          - emphasis [ref=e735]: practical
+          - text: implementation of
+          - img [ref=e737]:
+            - link [ref=e740] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-15-dks-equations"
+          - text: "is a two-component Hamiltonian obtained by one of three standard block-diagonalisation schemes: Douglas–Kroll–Hess ("
+          - strong [ref=e747]: DKH
+          - text: ), Zeroth-Order Regular Approximation (
+          - strong [ref=e748]: ZORA
+          - text: ), or Exact Two-Component (
+          - strong [ref=e749]: X2C
+          - text: ).
+      - paragraph [ref=e750]:
+        - text: The reader should be able to
+        - emphasis [ref=e751]: say
+        - text: "three things after reading this chapter:"
+      - list [ref=e752]:
+        - listitem [ref=e753]:
+          - strong [ref=e754]: Why.
+          - text: Relativistic effects grow as powers of
+          - img [ref=e756]
+          - text: (the product of nuclear charge and the fine-structure constant). For hydrogen (
+          - img [ref=e764]
+          - text: ) the spin-orbit splitting of the
+          - img [ref=e774]
+          - text: level is
+          - img [ref=e782]
+          - text: eV — invisible in chemistry. For gold (
+          - img [ref=e801]
+          - text: ) the
+          - img [ref=e812]
+          - text: spin-orbit splitting is
+          - img [ref=e820]
+          - text: eV — comparable to a chemical bond. For oganesson (
+          - img [ref=e830]
+          - text: ) the
+          - img [ref=e842]
+          - text: and
+          - img [ref=e859]
+          - text: levels split by
+          - img [ref=e876]
+          - text: eV, larger than any chemical bond. The non-relativistic Schrödinger equation misses all of this.
+        - listitem [ref=e884]:
+          - strong [ref=e885]: What.
+          - text: The Dirac equation is the correct wave equation for a spin-½ particle in an external potential. Its non-relativistic limit is the
+          - strong [ref=e886]: Pauli Hamiltonian
+          - text: "with four correction terms beyond the non-relativistic Schrödinger form: the"
+          - strong [ref=e887]: kinetic-relativistic
+          - text: (
+          - img [ref=e889]
+          - text: ) and
+          - strong [ref=e912]: Darwin
+          - text: (
+          - img [ref=e914]
+          - text: ) corrections together form the
+          - strong [ref=e946]: scalar-relativistic
+          - text: (SR) part; the
+          - strong [ref=e947]: spin-orbit
+          - text: term
+          - img [ref=e949]
+          - text: is the
+          - strong [ref=e980]: fully-relativistic
+          - text: part; and the
+          - strong [ref=e981]: contact
+          - text: (or Fermi-contact) term acts only in the presence of an unpaired
+          - img [ref=e983]
+          - text: electron. The SR part is responsible for the well-known
+          - strong [ref=e988]: relativistic contraction
+          - text: of
+          - img [ref=e990]
+          - text: orbitals and
+          - strong [ref=e995]: expansion
+          - text: of
+          - img [ref=e997]
+          - text: and
+          - img [ref=e1003]
+          - text: orbitals near the nucleus; the spin-orbit part is responsible for the band-inversion in topological insulators, the Rashba and Dresselhaus splittings at surfaces, the magnetocrystalline anisotropy, and the spin-Hall effect.
+        - listitem [ref=e1008]:
+          - strong [ref=e1009]: How.
+          - text: "The Dirac equation has a four-component structure: a “large” 2-spinor"
+          - img [ref=e1011]
+          - text: (the relativistic generalisation of the non-relativistic Pauli spinor) and a “small” 2-spinor
+          - img [ref=e1020]
+          - text: of relative order
+          - img [ref=e1029]
+          - text: . In a chemically-bound atom or molecule
+          - img [ref=e1040]
+          - text: ", and the small component can be eliminated by a unitary block-diagonalisation. The three practical schemes are"
+          - strong [ref=e1060]: DKH
+          - text: ","
+          - strong [ref=e1061]: ZORA
+          - text: ", and"
+          - strong [ref=e1062]: X2C
+          - text: . The first two are approximate (DKH can be taken to successively higher order, ZORA is exact to zeroth order in
+          - img [ref=e1064]
+          - text: but numerically stable near the nucleus); the third (
+          - strong [ref=e1074]: X2C
+          - text: ) is
+          - emphasis [ref=e1075]: exact
+          - text: to all orders in
+          - img [ref=e1077]
+          - text: for the positive-energy block and is the modern default in production codes (Orca, NWChem, ReSpect, recent Gaussian, DIRAC).
+      - paragraph [ref=e1087]:
+        - text: The “What” of the chapter is summarised in
+        - img [ref=e1089]:
+          - link [ref=e1092] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-15-dks-functional"
+        - text: –
+        - img [ref=e1100]:
+          - link [ref=e1103] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-15-soc-claim"
+        - text: . The “Why” is the
+        - img [ref=e1111]
+        - text: "-scaling argument of §15.2.4. The “How” is the body of §15.3 (two-component methods) and §15.5 (pseudopotential implementation)."
+      - heading "15.2 The derivation" [level=2] [ref=e1116]
+      - paragraph [ref=e1117]:
+        - text: This section derives the Dirac equation from the relativistic energy-momentum relation, solves it exactly for the hydrogenic atom, and extracts the non-relativistic limit as a
+        - strong [ref=e1118]: Pauli Hamiltonian
+        - text: with the four famous correction terms.
+      - heading "15.2.1 From Schrödinger to Dirac" [level=3] [ref=e1119]
+      - paragraph [ref=e1120]:
+        - text: The non-relativistic Schrödinger equation
+        - img [ref=e1122]
+        - text: with
+        - img [ref=e1140]
+        - text: is the quantum-mechanical transcription of the classical non-relativistic energy-momentum relation
+        - img [ref=e1180]
+        - text: . Special relativity replaces this with the
+        - strong [ref=e1203]: relativistic energy-momentum relation
+      - img [ref=e1205]
+      - paragraph [ref=e1239]:
+        - text: where
+        - img [ref=e1241]
+        - text: is the speed of light and
+        - img [ref=e1247]
+        - text: the rest mass of the particle. To make a wave equation out of
+        - img [ref=e1253]:
+          - link [ref=e1256] [cursor=pointer]:
+            - /url: "#"
+        - text: ", Dirac applied the standard quantisation rule"
+        - img [ref=e1266]
+        - text: ","
+        - img [ref=e1283]
+        - text: ":"
+      - img [ref=e1300]
+      - paragraph [ref=e1365]:
+        - text: Equation
+        - img [ref=e1367]:
+          - link [ref=e1370] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - strong [ref=e1379]: Klein–Gordon equation
+        - text: and is correct for a
+        - emphasis [ref=e1380]: spinless
+        - text: relativistic particle. It is second-order in time, which forces the wavefunction
+        - img [ref=e1382]
+        - text: to have
+        - emphasis [ref=e1387]: two components
+        - text: (positive- and negative-energy), and probability is
+        - emphasis [ref=e1388]: not
+        - text: conserved (the time-derivative of
+        - img [ref=e1390]
+        - text: contains a divergence term that integrates to a surface integral that does not, in general, vanish).
+      - paragraph [ref=e1400]:
+        - text: Dirac’s insight was to
+        - emphasis [ref=e1401]: factor
+        - text: the energy-momentum relation into a
+        - emphasis [ref=e1402]: product
+        - text: of two first-order operators. A first-order equation in time automatically has a positive-definite conserved probability density
+        - img [ref=e1404]
+        - text: and admits a clean probabilistic interpretation. The factorisation is
+      - img [ref=e1415]
+      - paragraph [ref=e1444]:
+        - text: where
+        - img [ref=e1446]
+        - text: and
+        - img [ref=e1477]
+        - text: are
+        - emphasis [ref=e1482]: matrices
+        - text: (not c-numbers), to be determined by the requirement that
+        - img [ref=e1484]:
+          - link [ref=e1487] [cursor=pointer]:
+            - /url: "#"
+        - text: squared reproduces
+        - img [ref=e1497]:
+          - link [ref=e1500] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - img [ref=e1510]
+      - paragraph [ref=e1673]:
+        - text: For this to equal
+        - img [ref=e1675]
+        - text: for
+        - emphasis [ref=e1700]: every
+        - img [ref=e1702]
+        - text: ", the matrices"
+        - img [ref=e1709]
+        - text: and
+        - img [ref=e1718]
+        - text: must satisfy
+      - img [ref=e1724]
+      - paragraph [ref=e1803]:
+        - text: The smallest matrices that satisfy
+        - img [ref=e1805]:
+          - link [ref=e1808] [cursor=pointer]:
+            - /url: "#"
+        - text: are
+        - img [ref=e1818]
+        - text: ", and the standard choice (the"
+        - strong [ref=e1827]: Dirac representation
+        - text: or
+        - strong [ref=e1828]: standard representation
+        - text: ) is
+      - img [ref=e1830]:
+        - generic [ref=e1832]:
+          - generic [ref=e1837]:
+            - img [ref=e1841]
+            - img [ref=e1863]
+          - generic [ref=e1871]:
+            - img [ref=e1875]
+            - img [ref=e1907]
+      - paragraph [ref=e1911]:
+        - text: where
+        - img [ref=e1913]
+        - text: is the
+        - img [ref=e1944]
+        - text: Pauli-matrix vector and
+        - img [ref=e1954]
+        - text: is the
+        - img [ref=e1964]
+        - text: identity. With the quantisation
+        - img [ref=e1974]
+        - text: ","
+        - img [ref=e1991]
+        - text: ", and adding the external scalar potential"
+        - img [ref=e2008]
+        - text: ","
+      - img [ref=e2021]
+      - paragraph [ref=e2117]:
+        - text: where
+        - img [ref=e2119]
+        - text: is a four-component spinor. This is the
+        - strong [ref=e2143]: Dirac equation
+        - text: .
+      - blockquote [ref=e2144]:
+        - paragraph [ref=e2145]:
+          - strong [ref=e2146]: Reading note.
+          - text: In the time-independent case
+          - img [ref=e2148]
+          - text: ", the eigenenergies come in pairs: a positive-energy solution at"
+          - img [ref=e2193]
+          - text: and a negative-energy solution at
+          - img [ref=e2208]
+          - text: . The negative-energy solutions are the Dirac “sea” of positrons in the original 1930 interpretation; in DFT we project onto the positive-energy subspace and discard the rest. The binding energy is
+          - img [ref=e2223]
+          - text: .
+      - paragraph [ref=e2247]:
+        - text: The four components of
+        - img [ref=e2249]
+        - text: "have a clear physical interpretation. Group the 4-spinor into two 2-spinors (“upper” and “lower”):"
+      - img [ref=e2255]:
+        - generic [ref=e2269]:
+          - img [ref=e2273]
+          - img [ref=e2307]
+      - paragraph [ref=e2333]:
+        - img [ref=e2335]
+        - text: is the
+        - strong [ref=e2343]: large component
+        - text: — it becomes the non-relativistic Pauli spinor in the limit
+        - img [ref=e2345]
+        - text: — and
+        - img [ref=e2355]
+        - text: is the
+        - strong [ref=e2363]: small component
+        - text: — it scales as
+        - img [ref=e2365]
+        - text: and vanishes in the non-relativistic limit. The reason for the names is that, for bound states,
+        - img [ref=e2385]
+        - text: ", so the"
+        - emphasis [ref=e2446]: small
+        - text: component carries a fraction
+        - img [ref=e2448]
+        - text: of the total probability. The two are coupled by the
+        - img [ref=e2466]
+        - text: matrices, which in the
+        - img [ref=e2472]
+        - text: block structure are off-diagonal. Writing out
+        - img [ref=e2482]:
+          - link [ref=e2485] [cursor=pointer]:
+            - /url: "#"
+        - text: in the
+        - img [ref=e2495]
+        - text: block form gives the coupled system
+      - img [ref=e2515]
+      - paragraph [ref=e2610]:
+        - text: These are the equations of motion of a
+        - emphasis [ref=e2611]: single
+        - text: electron in a fixed external potential. The electron–electron interaction is added as an additional potential
+        - img [ref=e2613]
+        - text: in the DFT or Hartree–Fock way (see
+        - link "chapter 04" [ref=e2629] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: for the non-relativistic DFT construction; the relativistic DFT version is in §15.6 below).
+      - heading "15.2.2 The hydrogen-like Dirac atom" [level=3] [ref=e2630]
+      - paragraph [ref=e2631]:
+        - text: For a one-electron atom with nuclear charge
+        - img [ref=e2633]
+        - text: the external potential is
+        - img [ref=e2639]
+        - text: in atomic units. The Dirac equation is exactly solvable because the resulting Dirac Hamiltonian commutes with
+        - img [ref=e2692]
+        - text: (the total angular momentum operator), with
+        - img [ref=e2721]
+        - text: ", and with the parity operator"
+        - img [ref=e2734]
+        - text: . The conserved quantum numbers are
+        - img [ref=e2744]
+        - text: (principal,
+        - img [ref=e2750]
+        - text: ),
+        - img [ref=e2772]
+        - text: (total angular momentum,
+        - img [ref=e2778]
+        - text: ), and
+        - img [ref=e2815]
+        - text: (orbital,
+        - img [ref=e2821]
+        - text: ).
+      - paragraph [ref=e2839]: The bound-state eigenvalues are
+      - img [ref=e2841]
+      - paragraph [ref=e2915]:
+        - text: where
+        - img [ref=e2917]
+        - text: is the
+        - strong [ref=e2955]: fine-structure constant
+        - text: and
+        - img [ref=e2957]
+        - text: is the
+        - strong [ref=e2970]: quantum defect
+        - text: of the level
+        - img [ref=e2972]
+        - text: ":"
+      - img [ref=e2986]
+      - paragraph [ref=e3053]:
+        - text: Expanding
+        - img [ref=e3055]:
+          - link [ref=e3058] [cursor=pointer]:
+            - /url: "#"
+        - text: –
+        - img [ref=e3068]:
+          - link [ref=e3071] [cursor=pointer]:
+            - /url: "#"
+        - text: to first order in
+        - img [ref=e3081]
+        - text: gives the binding energy
+        - img [ref=e3096]
+        - text: in the Pauli form
+      - img [ref=e3131]
+      - paragraph [ref=e3243]:
+        - text: where the leading
+        - img [ref=e3245]
+        - text: is the non-relativistic result, and the
+        - img [ref=e3270]
+        - text: correction is the
+        - strong [ref=e3284]: fine-structure
+        - text: (kinetic-relativistic + Darwin + spin-orbit). The second term depends on
+        - img [ref=e3286]
+        - text: (not on
+        - img [ref=e3292]
+        - text: alone), which is the physical reason the non-relativistic degeneracy between
+        - img [ref=e3298]
+        - text: and
+        - img [ref=e3317]
+        - text: (i.e. between
+        - img [ref=e3336]
+        - text: and
+        - img [ref=e3346]
+        - text: for the
+        - img [ref=e3356]
+        - text: level of hydrogen) is lifted.
+      - paragraph [ref=e3370]:
+        - text: The two most chemically important consequences of
+        - img [ref=e3372]:
+          - link [ref=e3375] [cursor=pointer]:
+            - /url: "#"
+        - text: are the
+        - strong [ref=e3384]: spin-orbit splitting
+        - text: of a level with a given
+        - img [ref=e3386]
+        - text: and
+        - img [ref=e3392]
+        - text: and the
+        - strong [ref=e3401]: relativistic contraction
+        - text: of the
+        - img [ref=e3403]
+        - text: orbitals.
+      - paragraph [ref=e3408]:
+        - text: The spin-orbit splitting between the
+        - img [ref=e3410]
+        - text: and
+        - img [ref=e3429]
+        - text: levels (for
+        - img [ref=e3448]
+        - text: ) is
+      - img [ref=e3458]
+      - paragraph [ref=e3582]:
+        - text: where
+        - img [ref=e3584]
+        - text: is the non-relativistic binding energy. For the hydrogen
+        - img [ref=e3619]
+        - text: level (
+        - img [ref=e3627]
+        - text: ","
+        - img [ref=e3637]
+        - text: ","
+        - img [ref=e3647]
+        - text: ),
+      - img [ref=e3657]
+      - paragraph [ref=e3755]:
+        - text: i.e. a
+        - img [ref=e3757]
+        - text: micro-electron-volt splitting — invisible in chemistry. For the gold
+        - img [ref=e3764]
+        - text: level (
+        - img [ref=e3772]
+        - text: ","
+        - img [ref=e3783]
+        - text: ","
+        - img [ref=e3793]
+        - text: ), the actual
+        - img [ref=e3803]
+        - text: splitting is
+        - img [ref=e3835]
+        - text: eV, the right order of magnitude and comparable to a chemical bond. The
+        - strong [ref=e3844]:
+          - img [ref=e3846]
+          - text: scaling
+        - text: "is therefore the headline: the absolute splitting scales as"
+      - img [ref=e3855]
+      - paragraph [ref=e3921]:
+        - text: Doubling the nuclear charge increases the spin-orbit splitting by a factor of
+        - img [ref=e3923]
+        - text: .
+      - paragraph [ref=e3929]:
+        - text: The second physical consequence of
+        - img [ref=e3931]:
+          - link [ref=e3934] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - strong [ref=e3943]: relativistic contraction
+        - text: of the
+        - img [ref=e3945]
+        - text: orbitals. The
+        - img [ref=e3951]
+        - text: radial wavefunction of hydrogen has the non-relativistic radius
+        - img [ref=e3959]
+        - text: . The Dirac radial wavefunction for the same quantum numbers, averaged over the upper component, has a smaller mean radius. To leading order in
+        - img [ref=e3989]
+        - text: ","
+      - img [ref=e4004]
+      - paragraph [ref=e4068]:
+        - text: For hydrogen this is a
+        - img [ref=e4070]
+        - text: effect; for gold,
+        - img [ref=e4087]
+        - text: ", a"
+        - img [ref=e4134]
+        - text: contraction. The
+        - img [ref=e4143]
+        - text: electrons of gold therefore sit closer to the nucleus than a non-relativistic calculation would predict, and the chemistry of gold (its high electronegativity, its preference for the +1 and +3 oxidation states, the colour of the metal) is a
+        - emphasis [ref=e4150]: direct
+        - text: consequence of this contraction.
+      - blockquote [ref=e4151]:
+        - paragraph [ref=e4152]:
+          - strong [ref=e4153]:
+            - text: Why
+            - img [ref=e4155]
+            - text: contractions and
+            - img [ref=e4161]
+            - text: /
+            - img [ref=e4167]
+            - text: expansions.
+          - text: The kinetic-relativistic correction
+          - img [ref=e4173]
+          - text: makes the electron
+          - emphasis [ref=e4198]: heavier
+          - text: near the nucleus, where
+          - img [ref=e4200]
+          - text: is large. An
+          - img [ref=e4220]
+          - text: electron has a finite amplitude at the nucleus and oscillates rapidly there; a
+          - img [ref=e4226]
+          - text: or
+          - img [ref=e4232]
+          - text: electron has a
+          - emphasis [ref=e4237]: node
+          - text: at the nucleus (
+          - img [ref=e4239]
+          - text: for
+          - img [ref=e4255]
+          - text: ) and feels a smaller kinetic-relativistic correction. The “extra” attraction felt by the
+          - img [ref=e4265]
+          - text: orbital at the nucleus (and the associated
+          - emphasis [ref=e4270]: orthogonality
+          - text: repulsion felt by the
+          - img [ref=e4272]
+          - text: and
+          - img [ref=e4278]
+          - text: orbitals, which are pushed
+          - emphasis [ref=e4283]: out
+          - text: ) is the
+          - strong [ref=e4284]: relativistic self-consistent-field effect
+          - text: of Pitzer (1975). The net effect on the periodic table is the “inert pair effect” (6
+          - img [ref=e4286]
+          - text: reluctance to ionise in heavy post-transition metals), the gold-vs-silver colour difference, and the high density of mercury.
+      - 'heading "15.2.3 The non-relativistic limit: the Pauli Hamiltonian" [level=3] [ref=e4294]'
+      - paragraph [ref=e4295]:
+        - text: The non-relativistic limit of the Dirac equation is extracted by a
+        - strong [ref=e4296]: block-diagonalisation
+        - text: procedure designed to eliminate the small component
+        - img [ref=e4298]
+        - text: to a chosen order in
+        - img [ref=e4307]
+        - text: ". There are three equivalent formulations: the"
+        - strong [ref=e4317]: Foldy–Wouthuysen
+        - text: (FW) transformation (unitary), the
+        - strong [ref=e4318]: Bloch–Messiah
+        - text: decomposition, and the
+        - strong [ref=e4319]: direct elimination
+        - text: of
+        - img [ref=e4321]
+        - text: from the coupled system
+        - img [ref=e4330]:
+          - link [ref=e4333] [cursor=pointer]:
+            - /url: "#"
+        - text: . We follow the FW route, which is the most transparent.
+      - paragraph [ref=e4342]:
+        - strong [ref=e4343]: Step 1 — separate the rest mass.
+        - text: Define the energy relative to the rest energy,
+        - img [ref=e4345]
+        - text: ", and rewrite the Hamiltonian of"
+        - img [ref=e4364]:
+          - link [ref=e4367] [cursor=pointer]:
+            - /url: "#"
+        - text: in the
+        - img [ref=e4377]
+        - text: block form. In the standard representation,
+      - img [ref=e4387]:
+        - generic [ref=e4414]:
+          - img [ref=e4418]
+          - img [ref=e4485]
+      - paragraph [ref=e4489]:
+        - text: The off-diagonal blocks couple
+        - img [ref=e4491]
+        - text: to
+        - img [ref=e4500]
+        - text: and are the source of all relativistic effects. The diagonal blocks are
+        - img [ref=e4509]
+        - text: (large) and
+        - img [ref=e4522]
+        - text: (small, deeply negative).
+      - paragraph [ref=e4545]:
+        - strong [ref=e4546]: Step 2 — apply the Foldy–Wouthuysen transformation.
+        - text: The idea is to find a unitary transformation
+        - img [ref=e4548]
+        - text: that block-diagonalises the Hamiltonian order by order in
+        - img [ref=e4562]
+        - text: . The standard choice (to second order) is
+      - img [ref=e4573]
+      - paragraph [ref=e4673]:
+        - text: where
+        - img [ref=e4675]
+        - text: is the
+        - img [ref=e4703]
+        - text: spin matrix. To leading order in
+        - img [ref=e4713]
+        - text: ","
+        - img [ref=e4724]
+        - text: is small (it is
+        - img [ref=e4734]
+        - text: ), and the transformed Hamiltonian is
+      - img [ref=e4751]
+      - paragraph [ref=e4903]:
+        - text: Substituting
+        - img [ref=e4905]:
+          - link [ref=e4908] [cursor=pointer]:
+            - /url: "#"
+        - text: and
+        - img [ref=e4918]:
+          - link [ref=e4921] [cursor=pointer]:
+            - /url: "#"
+        - text: and using the Clifford algebra
+        - img [ref=e4931]:
+          - link [ref=e4934] [cursor=pointer]:
+            - /url: "#"
+        - text: of the Dirac matrices, the block-diagonal part of
+        - img [ref=e4944]:
+          - link [ref=e4947] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - strong [ref=e4956]: Pauli Hamiltonian
+      - img [ref=e4958]:
+        - generic [ref=e4960]:
+          - generic [ref=e5008]:
+            - img [ref=e5014]
+            - img [ref=e5016]
+          - generic [ref=e5071]:
+            - img [ref=e5077]
+            - img [ref=e5079]
+          - generic [ref=e5136]:
+            - img [ref=e5142]
+            - img [ref=e5144]
+          - generic [ref=e5211]:
+            - img [ref=e5217]
+            - img [ref=e5219]
+      - paragraph [ref=e5235]:
+        - text: where we have used the operator identity
+        - img [ref=e5237]
+        - text: and the definition
+        - img [ref=e5301]
+        - text: .
+      - paragraph [ref=e5326]:
+        - text: The first term in
+        - img [ref=e5328]:
+          - link [ref=e5331] [cursor=pointer]:
+            - /url: "#"
+        - text: is the non-relativistic Schrödinger Hamiltonian (
+        - link "chapter 01" [ref=e5340] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: ). The remaining three corrections are the content of the Pauli limit.
+      - paragraph [ref=e5341]:
+        - strong [ref=e5342]: "The kinetic-relativistic (mass-velocity) term:"
+      - img [ref=e5344]
+      - paragraph [ref=e5388]:
+        - text: This is the Taylor expansion of the relativistic kinetic energy
+        - img [ref=e5390]
+        - text: to leading order in
+        - img [ref=e5479]
+        - text: . It is a
+        - strong [ref=e5498]: scalar
+        - text: correction (it does not depend on spin) and therefore shifts
+        - emphasis [ref=e5499]: all
+        - text: orbitals to deeper binding energies. It is the dominant scalar-relativistic effect for inner shells and the reason
+        - img [ref=e5501]
+        - text: orbitals (which have large
+        - img [ref=e5507]
+        - text: because of the cusp at the nucleus) are contracted in heavy atoms.
+      - paragraph [ref=e5519]:
+        - strong [ref=e5520]: "The Darwin term:"
+      - img [ref=e5522]
+      - paragraph [ref=e5574]: The Darwin term can be rewritten in two useful forms. First, integration by parts gives
+      - img [ref=e5576]
+      - paragraph [ref=e5651]:
+        - text: which is positive-definite and therefore
+        - emphasis [ref=e5652]: repulsive
+        - text: (it stabilises the energy, not destabilises it). Second, substituting the Coulomb potential
+        - img [ref=e5654]
+        - text: gives
+        - img [ref=e5671]
+        - text: ", so the Darwin term is"
+      - img [ref=e5699]
+      - paragraph [ref=e5757]:
+        - text: The Darwin correction therefore acts
+        - emphasis [ref=e5758]: only
+        - text: on wavefunctions with a finite amplitude at the nucleus — i.e. on
+        - img [ref=e5760]
+        - text: orbitals and on
+        - img [ref=e5766]
+        - text: orbitals. It originates from the
+        - strong [ref=e5780]: Zitterbewegung
+        - text: "(trembling motion) of a relativistic electron: the electron does not sit at a point but fluctuates over a region of size the reduced Compton wavelength"
+        - img [ref=e5782]
+        - text: fm, smearing out the singular Coulomb potential into a smoothed effective potential. The Darwin term vanishes for
+        - img [ref=e5817]
+        - text: in the non-relativistic limit because
+        - img [ref=e5827]
+        - text: for
+        - img [ref=e5844]
+        - text: .
+      - paragraph [ref=e5853]:
+        - strong [ref=e5854]: "The spin-orbit term:"
+      - img [ref=e5856]
+      - paragraph [ref=e5950]:
+        - text: The operator
+        - img [ref=e5952]
+        - text: has eigenvalues
+        - img [ref=e5972]
+        - text: in the
+        - img [ref=e6027]
+        - text: basis. For an
+        - img [ref=e6044]
+        - text: electron (
+        - img [ref=e6050]
+        - text: ","
+        - img [ref=e6060]
+        - text: ) the eigenvalue is
+        - img [ref=e6075]
+        - text: ", so the spin-orbit term is identically zero for"
+        - img [ref=e6081]
+        - text: orbitals in this single-electron form. For a
+        - img [ref=e6087]
+        - text: electron (
+        - img [ref=e6102]
+        - text: ","
+        - img [ref=e6112]
+        - text: ) the eigenvalue is
+        - img [ref=e6127]
+        - text: ", and for a"
+        - img [ref=e6135]
+        - text: electron (
+        - img [ref=e6150]
+        - text: ) it is
+        - img [ref=e6165]
+        - text: . The spin-orbit splitting of a
+        - img [ref=e6178]
+        - text: shell is
+      - img [ref=e6184]
+      - paragraph [ref=e6292]:
+        - text: which is positive (the
+        - img [ref=e6294]
+        - text: level is
+        - emphasis [ref=e6312]: higher
+        - text: in energy than the
+        - img [ref=e6314]
+        - text: level for an attractive Coulomb potential, because
+        - img [ref=e6333]
+        - text: and the L·S eigenvalue is larger for the
+        - img [ref=e6352]
+        - text: level). For a
+        - img [ref=e6371]
+        - text: shell the splitting is
+        - img [ref=e6377]
+        - text: .
+      - paragraph [ref=e6396]:
+        - text: The
+        - strong [ref=e6397]: origin
+        - text: of the spin-orbit term is the magnetic field felt by the electron in its own rest frame. In the electron’s rest frame the nucleus orbits around it with velocity
+        - img [ref=e6399]
+        - text: ", generating a magnetic field"
+        - img [ref=e6408]
+        - text: in the lab frame, which is the
+        - img [ref=e6487]
+        - text: form of
+        - img [ref=e6507]:
+          - link [ref=e6510] [cursor=pointer]:
+            - /url: "#"
+        - text: . (The factor
+        - img [ref=e6520]
+        - text: rather than
+        - img [ref=e6542]
+        - text: is the Thomas precession, a relativistic kinematic correction.)
+      - blockquote [ref=e6561]:
+        - paragraph [ref=e6562]:
+          - strong [ref=e6563]:
+            - text: "Worked example: the hydrogen"
+            - img [ref=e6565]
+            - text: fine structure.
+          - text: The
+          - img [ref=e6573]
+          - text: level of hydrogen has
+          - img [ref=e6581]
+          - text: and
+          - img [ref=e6616]
+          - text: (from the standard hydrogenic integral), giving
+          - img [ref=e6661]
+          - text: . The spin-orbit splitting is then
+          - img [ref=e6703]
+          - text: eV, in agreement with the experimental
+          - img [ref=e6775]
+          - text: splitting (after subtracting the Lamb shift).
+      - paragraph [ref=e6806]:
+        - strong [ref=e6807]: The contact (Fermi-contact) term.
+        - text: For an unpaired
+        - img [ref=e6809]
+        - text: electron there is an additional spin-dependent correction — the
+        - strong [ref=e6814]: Fermi-contact hyperfine interaction
+        - text: — that arises from the non-zero probability of finding the electron at the nucleus. In the Breit–Pauli operator (§15.5.2) the contact term is
+      - img [ref=e6816]
+      - paragraph [ref=e6901]:
+        - text: and is the source of the hyperfine splitting of atomic
+        - img [ref=e6903]
+        - text: levels (the
+        - img [ref=e6909]
+        - text: cm line of hydrogen, the Mössbauer isomer shift).
+      - heading "15.2.4 The Z-scaling" [level=3] [ref=e6915]
+      - paragraph [ref=e6916]:
+        - text: The magnitude of every relativistic correction in
+        - img [ref=e6918]:
+          - link [ref=e6921] [cursor=pointer]:
+            - /url: "#"
+        - text: scales as a positive power of
+        - img [ref=e6931]
+        - text: . We collect the scaling laws here because they are the
+        - emphasis [ref=e6938]: first
+        - text: thing a DFT practitioner should check when deciding whether a system needs relativistic corrections.
+      - paragraph [ref=e6939]:
+        - strong [ref=e6940]: Scaling of the kinetic-relativistic term.
+        - text: The expectation value
+        - img [ref=e6942]
+        - text: on a hydrogenic wavefunction scales as
+        - img [ref=e6970]
+        - text: in atomic units (from
+        - img [ref=e6999]
+        - text: and
+        - img [ref=e7027]
+        - text: ). In absolute terms the energy correction is
+      - img [ref=e7055]:
+        - generic [ref=e7057]:
+          - img [ref=e7060]
+          - img [ref=e7078]
+      - paragraph [ref=e7147]:
+        - text: For the
+        - img [ref=e7149]
+        - text: electron of hydrogen (
+        - img [ref=e7157]
+        - text: ","
+        - img [ref=e7167]
+        - text: ) this is
+        - img [ref=e7177]
+        - text: eV; for the
+        - img [ref=e7196]
+        - text: electron of gold (
+        - img [ref=e7204]
+        - text: ","
+        - img [ref=e7215]
+        - text: ) the same scaling gives
+        - img [ref=e7225]
+        - text: eV, a non-negligible fraction of the
+        - img [ref=e7235]
+        - text: keV total
+        - img [ref=e7244]
+        - text: binding energy.
+      - paragraph [ref=e7251]:
+        - strong [ref=e7252]: Scaling of the Darwin term.
+        - text: The Darwin expectation value on a hydrogenic
+        - img [ref=e7254]
+        - text: orbital,
+        - img [ref=e7260]
+        - text: ", is"
+      - img [ref=e7301]:
+        - generic [ref=e7303]:
+          - img [ref=e7306]
+          - img [ref=e7323]
+      - paragraph [ref=e7354]:
+        - text: the same
+        - img [ref=e7356]
+        - text: scaling as the kinetic- relativistic term, but the Darwin term only acts on
+        - img [ref=e7378]
+        - text: (and on
+        - img [ref=e7388]
+        - text: through its
+        - img [ref=e7403]
+        - text: ","
+        - img [ref=e7413]
+        - text: partial wave). The Darwin and the kinetic- relativistic together form the
+        - strong [ref=e7427]: scalar-relativistic
+        - text: (SR) correction; their ratio is roughly
+        - img [ref=e7429]
+        - text: for an
+        - img [ref=e7460]
+        - text: electron near the nucleus.
+      - paragraph [ref=e7465]:
+        - strong [ref=e7466]: Scaling of the spin-orbit term.
+        - text: The expectation value
+        - img [ref=e7468]
+        - text: on a hydrogenic orbital scales as
+      - img [ref=e7525]:
+        - generic [ref=e7527]:
+          - img [ref=e7530]
+          - img [ref=e7548]
+      - paragraph [ref=e7598]:
+        - text: The
+        - img [ref=e7600]
+        - text: is a
+        - emphasis [ref=e7624]: "kinemati`c"
+        - text: ’ angular-momentum factor; the leading
+        - img [ref=e7626]
+        - text: is the same as for the kinetic-relativistic and Darwin terms. For
+        - img [ref=e7635]
+        - text: the spin-orbit expectation value is zero (the L·S operator gives zero for
+        - img [ref=e7645]
+        - text: ), and for
+        - img [ref=e7655]
+        - text: the
+        - img [ref=e7665]
+        - text: factor halves the effect.
+      - paragraph [ref=e7684]:
+        - strong [ref=e7685]:
+          - text: The
+          - img [ref=e7687]
+          - text: headline.
+        - text: All three correction terms (kinetic-relativistic, Darwin, spin-orbit) scale as
+        - img [ref=e7696]
+        - text: relative to a non-relativistic baseline. This is the
+        - strong [ref=e7704]:
+          - img [ref=e7706]
+          - text: rule of thumb
+        - text: "of relativistic quantum chemistry:"
+      - list [ref=e7714]:
+        - listitem [ref=e7715]:
+          - img [ref=e7717]
+          - text: "(H, Li, …, Ne): the corrections are"
+          - img [ref=e7727]
+          - text: eV and are negligible for chemistry.
+        - listitem [ref=e7741]:
+          - img [ref=e7743]
+          - text: "(Ne, …, Ar): the corrections are"
+          - img [ref=e7754]
+          - text: eV — small but not zero; the spin-orbit splitting of the
+          - img [ref=e7769]
+          - text: shell of Cl is
+          - img [ref=e7777]
+          - text: eV and is visible in atomic spectroscopy.
+        - listitem [ref=e7786]:
+          - img [ref=e7788]
+          - text: "(Zn, …, Kr): the corrections are"
+          - img [ref=e7799]
+          - text: eV; the
+          - img [ref=e7807]
+          - text: spin-orbit splitting of Br is
+          - img [ref=e7815]
+          - text: eV and the
+          - img [ref=e7825]
+          - text: spin-orbit splitting of Kr is
+          - img [ref=e7833]
+          - text: eV. Scalar relativistic corrections are now mandatory for accurate energetics.
+        - listitem [ref=e7840]:
+          - img [ref=e7842]
+          - text: "(Sn, …, Xe): the corrections are"
+          - img [ref=e7853]
+          - text: eV; the
+          - img [ref=e7862]
+          - text: spin-orbit splitting of Xe is
+          - img [ref=e7870]
+          - text: eV and the
+          - img [ref=e7880]
+          - text: spin-orbit splitting of Sn is
+          - img [ref=e7888]
+          - text: eV. The colour of tin iodide (SnI
+          - img [ref=e7896]
+          - text: ) and the chemistry of iodine are spin-orbit-dominated.
+        - listitem [ref=e7902]:
+          - img [ref=e7904]
+          - text: "(Hg, …, Rn): the corrections are"
+          - img [ref=e7915]
+          - text: eV; the
+          - img [ref=e7925]
+          - text: spin-orbit splitting of Pb is
+          - img [ref=e7933]
+          - text: eV and the
+          - img [ref=e7943]
+          - text: spin-orbit splitting of Hg is
+          - img [ref=e7951]
+          - text: eV. The chemistry of mercury (the only metal liquid at room temperature), the inert pair effect in lead, and the gold-vs-silver colour difference are all relativistic effects.
+        - listitem [ref=e7958]:
+          - img [ref=e7960]
+          - text: ": the corrections are"
+          - img [ref=e7972]
+          - text: keV; the
+          - img [ref=e7980]
+          - text: spin-orbit splitting in element 118 is
+          - img [ref=e7988]
+          - text: eV, larger than any chemical bond.
+      - paragraph [ref=e7996]:
+        - text: The
+        - img [ref=e7998]
+        - text: rule of thumb is the
+        - emphasis [ref=e8006]: first
+        - text: numerical sanity check of any relativistic calculation. If a non-relativistic calculation on a heavy-element system gets the chemistry “approximately right”, it is almost always because the
+        - emphasis [ref=e8007]: errors
+        - text: of omitting the scalar relativistic effects (over-large bond lengths, under- contracted
+        - img [ref=e8009]
+        - text: orbitals) and the
+        - emphasis [ref=e8014]: errors
+        - text: of omitting spin-orbit (over-delocalised
+        - img [ref=e8016]
+        - text: and
+        - img [ref=e8022]
+        - text: bands, wrong spin state ordering) accidentally cancel. Once the system is perturbed away from the equilibrium geometry (under strain, under pressure, in a different oxidation state, at a surface, in an excited state) the cancellation breaks down, and the non-relativistic calculation is qualitatively wrong.
+      - blockquote [ref=e8027]:
+        - paragraph [ref=e8028]:
+          - strong [ref=e8029]: Reading note.
+          - text: The
+          - img [ref=e8031]
+          - text: rule is for
+          - emphasis [ref=e8039]: "atomi`c"
+          - text: ’ properties.
+          - emphasis [ref=e8040]: Molecular
+          - text: relativistic effects are smaller in absolute terms but the
+          - emphasis [ref=e8041]: fractional
+          - text: change can still be large. The Au–Au bond length contracts by
+          - img [ref=e8043]
+          - text: (from 3.0 Å to 2.47 Å) when scalar relativistic effects are added, and by an additional
+          - img [ref=e8054]
+          - text: "when spin-orbit is included — see §15.7. ## 15.3 Two-component methods"
+      - paragraph [ref=e8063]:
+        - text: The Dirac equation is a four-component equation, but only the large component has a clean non-relativistic limit and carries most of the probability (
+        - img [ref=e8065]
+        - text: for a bound state). The two-component methods of this section are unitary transformations that
+        - emphasis [ref=e8088]: exactly
+        - text: (X2C) or
+        - emphasis [ref=e8089]: approximately
+        - text: (DKH, ZORA) eliminate the small component and produce an effective
+        - strong [ref=e8090]: two-component Hamiltonian
+        - text: for
+        - img [ref=e8092]
+        - text: alone. The transformed Hamiltonian acts on 2-component Pauli spinors and is the working object of every modern relativistic DFT code.
+      - heading "15.3.1 The block-diagonalisation problem" [level=3] [ref=e8100]
+      - paragraph [ref=e8101]:
+        - text: Let
+        - img [ref=e8103]
+        - text: denote the Dirac Hamiltonian of
+        - img [ref=e8116]:
+          - link [ref=e8119] [cursor=pointer]:
+            - /url: "#"
+        - text: written in the
+        - img [ref=e8129]
+        - text: block form. We want a unitary transformation
+        - img [ref=e8139]
+        - text: that brings
+        - img [ref=e8149]
+        - text: "to block-diagonal form:"
+      - img [ref=e8162]:
+        - generic [ref=e8203]:
+          - img [ref=e8207]
+          - img [ref=e8241]
+      - paragraph [ref=e8245]:
+        - text: where
+        - img [ref=e8247]
+        - text: acts on the (transformed) large component and
+        - img [ref=e8260]
+        - text: on the (transformed) small component. The spectrum of
+        - img [ref=e8273]
+        - text: is the
+        - strong [ref=e8285]: positive-energy
+        - text: part of the Dirac spectrum, and the spectrum of
+        - img [ref=e8287]
+        - text: is the
+        - strong [ref=e8299]: negative-energy
+        - text: part. The decoupling is
+        - strong [ref=e8300]: exact
+        - text: if and only if
+        - img [ref=e8302]
+        - text: has no zero eigenvalues (no continuum crossings), which is the case for bound-state DFT.
+      - paragraph [ref=e8314]:
+        - text: Writing
+        - img [ref=e8316]
+        - text: in the
+        - img [ref=e8326]
+        - text: block form
+        - img [ref=e8336]
+        - text: ", the unitarity"
+        - img [ref=e8406]
+        - text: and the block-diagonality of
+        - img [ref=e8433]
+        - text: are constraints that determine
+        - img [ref=e8447]
+        - text: and
+        - img [ref=e8463]
+        - text: uniquely in terms of the off-diagonal part of
+        - img [ref=e8479]
+        - text: . For the Dirac Hamiltonian with off-diagonal block
+        - img [ref=e8492]
+        - text: ", the decoupling is"
+      - img [ref=e8517]:
+        - generic [ref=e8528]:
+          - img [ref=e8532]
+          - img [ref=e8594]
+      - paragraph [ref=e8647]:
+        - text: where
+        - img [ref=e8649]
+        - text: is the (negative-energy) lower diagonal block of the
+        - emphasis [ref=e8663]: "untransforme`d"
+        - text: ’ Hamiltonian, and
+        - img [ref=e8665]
+        - text: are normalisation factors that enforce
+        - img [ref=e8678]
+        - text: . The operator
+        - img [ref=e8705]
+        - text: is the
+        - strong [ref=e8714]: ratio operator
+        - text: that maps the large component to the small one in the original Dirac equation. In the non-relativistic limit
+        - img [ref=e8716]
+        - text: and
+        - img [ref=e8758]
+        - text: — a small quantity of order
+        - img [ref=e8829]
+        - text: ", as expected."
+      - paragraph [ref=e8839]: The transformed upper block is
+      - img [ref=e8841]
+      - paragraph [ref=e8963]:
+        - text: where
+        - img [ref=e8965]
+        - text: is the upper diagonal block of
+        - img [ref=e8992]:
+          - link [ref=e8995] [cursor=pointer]:
+            - /url: "#"
+        - text: . The first two terms are the non-relativistic Hamiltonian and the kinetic-relativistic correction; the third is the spin-orbit term. The three standard two-component methods differ in how they approximate the ratio operator
+        - img [ref=e9005]
+        - text: ":"
+      - list [ref=e9014]:
+        - listitem [ref=e9015]:
+          - strong [ref=e9016]: Foldy–Wouthuysen (FW)
+          - text: — the original Dirac (1928) construction.
+          - img [ref=e9018]
+          - text: is expanded as a Taylor series in
+          - img [ref=e9028]
+          - text: ", and the expansion is truncated at a chosen order. FW to order"
+          - img [ref=e9042]
+          - text: is called “FW
+          - img [ref=e9063]
+          - text: ”. This is the method that gives the Pauli Hamiltonian of
+          - img [ref=e9069]:
+            - link [ref=e9072] [cursor=pointer]:
+              - /url: "#"
+          - text: at
+          - img [ref=e9082]
+          - text: .
+        - listitem [ref=e9091]:
+          - strong [ref=e9092]: Douglas–Kroll–Hess (DKH)
+          - text: — the modern industrial-strength generalisation of FW.
+          - img [ref=e9094]
+          - text: is
+          - emphasis [ref=e9103]: not
+          - text: Taylor-expanded; instead, the unitary transformation is built from a sequence of
+          - emphasis [ref=e9104]: exact
+          - text: square roots of operators. DKH at second order (
+          - strong [ref=e9105]: DKH2
+          - text: ) is the workhorse of modern relativistic quantum chemistry; DKH4, DKH6, … converge to the exact X2C limit.
+        - listitem [ref=e9106]:
+          - strong [ref=e9107]: Zeroth-Order Regular Approximation (ZORA)
+          - text: — the
+          - emphasis [ref=e9108]: "chea`p"
+          - text: ’ alternative. The kinetic energy is treated variationally with a regularised denominator that avoids the singularity at the nucleus; the approximation is exact to leading order in
+          - img [ref=e9110]
+          - text: and
+          - emphasis [ref=e9123]: numerically stable
+          - text: where the Pauli expansion is not (i.e. for very heavy elements where the wavefunction has a substantial small component).
+        - listitem [ref=e9124]:
+          - strong [ref=e9125]: Exact Two-Component (X2C)
+          - text: — the modern standard.
+          - img [ref=e9127]
+          - text: is computed
+          - emphasis [ref=e9136]: exactly
+          - text: (to numerical precision) from a matrix representation of the Hamiltonian, and the resulting two-component Hamiltonian is
+          - emphasis [ref=e9137]: exact
+          - text: to all orders in
+          - img [ref=e9139]
+          - text: for the positive-energy block. X2C is the default in modern Orca, NWChem, ReSpect, and most recent production codes.
+      - paragraph [ref=e9149]: The next three subsections treat DKH, ZORA, and X2C in turn.
+      - heading "15.3.2 The Douglas–Kroll–Hess (DKH) transformation" [level=3] [ref=e9150]
+      - paragraph [ref=e9151]:
+        - text: The Douglas–Kroll–Hess transformation [Douglas and Kroll 1974, Hess 1985, 1986] replaces the Taylor expansion of the ratio operator
+        - img [ref=e9153]
+        - text: with an
+        - emphasis [ref=e9162]: exact
+        - text: square-root transformation. The starting point is the Dirac Hamiltonian in the
+        - emphasis [ref=e9163]: "external-fiel`d"
+        - text: ’ form
+      - img [ref=e9165]
+      - paragraph [ref=e9242]:
+        - text: where
+        - img [ref=e9244]
+        - text: is the (diagonal, even) “electric” block and
+        - img [ref=e9251]
+        - text: is the (off-diagonal, odd) “odd” block. The DKH strategy applies a sequence of
+        - emphasis [ref=e9257]: unitary
+        - text: transformations
+        - img [ref=e9259]
+        - text: such that the off-diagonal block of the transformed Hamiltonian vanishes to successively higher order in
+        - img [ref=e9287]
+        - text: .
+      - paragraph [ref=e9300]:
+        - strong [ref=e9301]: "First step: the free-particle FW transformation."
+        - text: The free-particle FW operator is
+      - img [ref=e9303]
+      - paragraph [ref=e9413]:
+        - img [ref=e9415]
+        - text: is
+        - emphasis [ref=e9427]: independent
+        - text: of the external potential and block-diagonalises the
+        - emphasis [ref=e9428]: free
+        - text: Dirac Hamiltonian. The diagonal blocks of the transformed Hamiltonian are
+      - img [ref=e9430]
+      - paragraph [ref=e9527]:
+        - text: The transformed Hamiltonian is block-diagonal
+        - emphasis [ref=e9528]: in the free-particle sense
+        - text: ; the external potential is in the diagonal block but the off-diagonal block of the transformed Hamiltonian is not identically zero. The remaining off-diagonal block is
+      - img [ref=e9530]
+      - paragraph [ref=e9641]:
+        - text: where
+        - img [ref=e9643]
+        - text: is the transformed
+        - img [ref=e9654]
+        - text: matrix in the new basis. The magnitude of
+        - img [ref=e9660]
+        - text: is
+        - img [ref=e9682]
+        - text: for the bound-state wavefunctions and is
+        - emphasis [ref=e9698]: kinetic-energy- only
+        - text: ", so it can be treated perturbatively."
+      - paragraph [ref=e9699]:
+        - strong [ref=e9700]: "Second step: the Douglas–Kroll transformation."
+        - text: The second unitary operator
+        - img [ref=e9702]
+        - text: is chosen to eliminate
+        - img [ref=e9715]
+        - text: to second order in
+        - img [ref=e9737]
+        - text: . The explicit form is
+      - img [ref=e9748]:
+        - generic [ref=e9750]:
+          - img [ref=e9825]
+          - img [ref=e9895]
+      - paragraph [ref=e9900]:
+        - text: where
+        - img [ref=e9902]
+        - text: is the off-diagonal block of the transformed Hamiltonian measured in units of the energy gap
+        - img [ref=e9912]
+        - text: . Substituting and truncating at second order in
+        - img [ref=e9925]
+        - text: gives the
+        - strong [ref=e9934]: DKH2 Hamiltonian
+        - text: "for the positive-energy block:"
+      - img [ref=e9936]
+      - paragraph [ref=e10036]:
+        - text: where
+        - img [ref=e10038]
+        - text: is the first-order anti-Hermitian generator of the transformation. The DKH2 Hamiltonian is the
+        - emphasis [ref=e10092]: exact
+        - text: two-component Hamiltonian to second order in
+        - img [ref=e10094]
+        - text: ", which is to say it reproduces the Pauli Hamiltonian"
+        - img [ref=e10108]:
+          - link [ref=e10111] [cursor=pointer]:
+            - /url: "#"
+        - text: to leading order in
+        - img [ref=e10121]
+        - text: but is
+        - emphasis [ref=e10128]: "regularise`d"
+        - text: ’ near the nucleus where the Pauli expansion diverges. Higher-order DKH (
+        - img [ref=e10130]
+        - text: = 3, 4, 5, …) converges rapidly to the exact X2C limit.
+      - paragraph [ref=e10135]:
+        - text: The practical implementation of DKH2 in a basis-set code is the
+        - strong [ref=e10136]: MOLGRAV
+        - text: /
+        - strong [ref=e10137]: Barysz–Sadlej–Snijders
+        - text: "algorithm:"
+      - list [ref=e10138]:
+        - listitem [ref=e10139]:
+          - text: Compute the matrix representation
+          - img [ref=e10141]
+          - text: in the chosen basis. The Dirac matrix has an upper
+          - img [ref=e10151]
+          - text: diagonal block
+          - img [ref=e10161]
+          - text: (
+          - img [ref=e10179]
+          - text: = basis size), a lower
+          - img [ref=e10185]
+          - text: diagonal block
+          - img [ref=e10195]
+          - text: ", and off-diagonal blocks"
+          - img [ref=e10226]
+          - text: .
+        - listitem [ref=e10249]:
+          - text: Compute
+          - img [ref=e10251]
+          - text: .
+        - listitem [ref=e10284]:
+          - text: Build the
+          - strong [ref=e10285]: DKH transformation matrix
+          - img [ref=e10287]
+          - text: from
+          - img [ref=e10299]
+          - text: via
+          - img [ref=e10306]:
+            - link [ref=e10309] [cursor=pointer]:
+              - /url: "#"
+          - text: .
+        - listitem [ref=e10318]:
+          - text: "Transform the Dirac Hamiltonian:"
+          - img [ref=e10320]
+          - text: .
+        - listitem [ref=e10371]:
+          - text: The two-component Hamiltonian in the
+          - img [ref=e10373]
+          - text: "-dimensional basis is the upper block"
+          - img [ref=e10379]
+          - text: ", a"
+          - img [ref=e10389]
+          - text: matrix in spinor space.
+      - paragraph [ref=e10398]:
+        - text: DKH2 is the
+        - emphasis [ref=e10399]: de facto
+        - text: standard for relativistic calculations in quantum chemistry. It is implemented in DIRAC, ORCA, Turbomole, NWChem, Gaussian (with the “relativistic Hamiltonian” option), and most other modern molecular codes. The errors of DKH2 are
+        - img [ref=e10401]
+        - text: in the energy, which is to say
+        - img [ref=e10422]
+        - text: eV for hydrogen and
+        - img [ref=e10437]
+        - text: eV for gold — well below the DFT error for the same system.
+      - heading "15.3.3 The Zero-Order Regular Approximation (ZORA)" [level=3] [ref=e10447]
+      - paragraph [ref=e10448]:
+        - text: The ZORA Hamiltonian [Chang, Pelissier, Durand 1986; van Lenthe, Baerends, Snijders 1993] is the
+        - emphasis [ref=e10449]: "chea`p"
+        - text: ’ alternative to DKH and the
+        - emphasis [ref=e10450]: workhorse
+        - text: of the Amsterdam Density Functional (ADF) code. The starting point is the Dirac equation in the
+        - emphasis [ref=e10451]: form of the small component
+        - text: . Eliminating the large component from
+        - img [ref=e10453]:
+          - link [ref=e10456] [cursor=pointer]:
+            - /url: "#"
+        - text: (rather than the small from the large as DKH does) gives an equation for
+        - img [ref=e10466]
+        - text: that, in the limit
+        - img [ref=e10475]
+        - text: ", is"
+      - img [ref=e10505]
+      - paragraph [ref=e10548]:
+        - text: This is the
+        - emphasis [ref=e10549]: naive
+        - text: non-relativistic reduction, and it gives the Pauli Hamiltonian
+        - img [ref=e10551]:
+          - link [ref=e10554] [cursor=pointer]:
+            - /url: "#"
+        - text: to leading order. It is also
+        - emphasis [ref=e10563]: pathological
+        - text: near the nucleus, where
+        - img [ref=e10565]
+        - text: can be small (specifically, near
+        - img [ref=e10584]
+        - text: the potential
+        - img [ref=e10594]
+        - text: for a Coulomb potential, and the denominator
+        - img [ref=e10606]
+        - text: can be small or even vanish). The resulting
+        - img [ref=e10625]
+        - text: diverges at the origin and the kinetic-energy expectation value
+        - img [ref=e10634]
+        - text: is catastrophically wrong.
+      - paragraph [ref=e10653]:
+        - text: The ZORA
+        - emphasis [ref=e10654]: fix
+        - text: is to keep
+        - img [ref=e10656]
+        - text: in the denominator of the kinetic-energy operator, which
+        - emphasis [ref=e10665]: regularises
+        - text: the divergence. The ZORA Hamiltonian is
+      - img [ref=e10667]
+      - paragraph [ref=e10776]: where the second term is the ZORA spin-orbit coupling
+      - img [ref=e10778]
+      - paragraph [ref=e10869]:
+        - text: The ZORA Hamiltonian is
+        - emphasis [ref=e10870]: not
+        - text: a simple expansion in
+        - img [ref=e10872]
+        - text: . It contains the
+        - emphasis [ref=e10885]:
+          - text: regularise
+          - code [ref=e10886]: "d*' kinetic operator $\\hat{\\mathbf p}(1 + [v-E]/2mc^2)^{-1}\\hat{\\mathbf p} / 2m$, which is the *non-relativisti"
+          - text: c
+        - text: ’ kinetic-energy operator
+        - emphasis [ref=e10887]: "modifie`d"
+        - text: ’ by a position-dependent effective mass $m^
+        - emphasis [ref=e10888]: (r) = m (1 + [v(r) - E]/2mc^2)$. The effective mass is large where the potential is deep and negative (i.e. near the nucleus), which is the *physical
+        - text: reason for the relativistic contraction of
+        - img [ref=e10890]
+        - text: orbitals. ZORA captures this contraction correctly and is
+        - emphasis [ref=e10895]: numerically stable
+        - text: at the nucleus.
+      - paragraph [ref=e10896]:
+        - text: The ZORA approximation is exact to leading order in
+        - img [ref=e10898]
+        - text: (it gives the Pauli kinetic-relativistic correction to leading order), but it is
+        - emphasis [ref=e10911]: not
+        - text: an order-by-order expansion. ZORA is sometimes called a “regularised” Pauli approximation. The errors of ZORA are larger than DKH2 by a factor of
+        - img [ref=e10913]
+        - text: –
+        - img [ref=e10921]
+        - text: for 4
+        - img [ref=e10927]
+        - text: and 5
+        - img [ref=e10933]
+        - text: elements, but ZORA is computationally
+        - emphasis [ref=e10938]: cheaper
+        - text: (it requires no matrix square roots) and is the method of choice in the ADF code.
+      - blockquote [ref=e10939]:
+        - paragraph [ref=e10940]:
+          - strong [ref=e10941]: Reading note.
+          - text: The ZORA Hamiltonian is
+          - emphasis [ref=e10942]: not
+          - text: a strict Taylor expansion in
+          - img [ref=e10944]
+          - text: . The replacement
+          - img [ref=e10958]
+          - text: in the denominator is a
+          - emphasis [ref=e11007]: regularisation
+          - text: that changes the analytical structure of the operator. ZORA is sometimes called the
+          - strong [ref=e11008]: scaled ZORA
+          - text: when a
+          - emphasis [ref=e11009]: scaling
+          - text: correction is added to recover the missing second-order Pauli terms. The scaled ZORA is
+      - img [ref=e11011]
+      - blockquote [ref=e11162]:
+        - paragraph [ref=e11163]:
+          - text: where
+          - img [ref=e11165]
+          - text: is the expectation value of
+          - img [ref=e11183]
+          - text: on the orbital. The scaled ZORA is exact to order
+          - img [ref=e11193]
+          - emphasis [ref=e11206]: "an`d"
+          - text: ’ has the correct
+          - img [ref=e11208]
+          - text: behaviour in many limits. It is the recommended form for production work in ADF.
+      - heading "15.3.4 The Exact Two-Component (X2C) method" [level=3] [ref=e11221]
+      - paragraph [ref=e11222]:
+        - text: The X2C method [Heully, Lindroth, Lindgren, Lundin, Mårtensson-Pendrill, Salomonson, Ynnerman 2003; Jensen 2005; Ilias, Saue 2007; Liu, Peng 2009] is the
+        - emphasis [ref=e11223]: "modern standar`d"
+        - text: ’ for relativistic calculations and the default in ORCA, NWChem, ReSpect, DIRAC, and most other production codes. The strategy is to
+        - emphasis [ref=e11224]: solve
+        - text: the decoupling problem
+        - img [ref=e11226]:
+          - link [ref=e11229] [cursor=pointer]:
+            - /url: "#"
+        - text: for
+        - img [ref=e11239]
+        - emphasis [ref=e11248]: numerically
+        - text: rather than expand it in
+        - img [ref=e11250]
+        - text: . The resulting two-component Hamiltonian is
+        - emphasis [ref=e11263]: exact
+        - text: to all orders in
+        - img [ref=e11265]
+        - text: for the positive-energy block, subject only to the basis-set truncation error.
+      - paragraph [ref=e11275]: The X2C algorithm in a basis-set code is the following.
+      - paragraph [ref=e11276]:
+        - strong [ref=e11277]: Step 1 — form the Dirac matrix in the basis.
+        - text: The Dirac Hamiltonian in a spinor basis
+        - img [ref=e11279]
+        - text: is
+      - img [ref=e11289]:
+        - generic [ref=e11300]:
+          - img [ref=e11304]
+          - img [ref=e11346]
+      - paragraph [ref=e11393]:
+        - text: where
+        - img [ref=e11395]
+        - text: is the
+        - img [ref=e11402]
+        - text: potential matrix and
+        - img [ref=e11412]
+        - text: the
+        - img [ref=e11419]
+        - text: kinetic matrix in spinor space.
+      - paragraph [ref=e11428]:
+        - strong [ref=e11429]: Step 2 — diagonalise the Dirac matrix in the free-particle limit.
+        - text: The
+        - strong [ref=e11430]: X2C decoupling matrix
+        - text: is the
+        - img [ref=e11432]
+        - text: unitary that diagonalises
+        - img [ref=e11446]
+        - text: "in the positive-energy subspace:"
+      - img [ref=e11456]:
+        - generic [ref=e11458]:
+          - generic [ref=e11465]:
+            - img [ref=e11469]
+            - img [ref=e11491]
+          - generic [ref=e11495]:
+            - img [ref=e11499]
+            - img [ref=e11521]
+      - paragraph [ref=e11530]:
+        - text: where
+        - img [ref=e11532]
+        - text: are the upper
+        - img [ref=e11542]
+        - text: spinor coefficients of the
+        - img [ref=e11548]
+        - text: positive-energy eigenvectors and
+        - img [ref=e11554]
+        - text: the lower
+        - img [ref=e11564]
+        - text: . The X2C transformation matrix is
+      - img [ref=e11570]:
+        - generic [ref=e11583]:
+          - img [ref=e11587]
+          - img [ref=e11625]
+      - paragraph [ref=e11629]: "and the X2C Hamiltonian is the upper block of the transformed Dirac matrix:"
+      - img [ref=e11631]
+      - paragraph [ref=e11673]:
+        - text: The diagonal
+        - img [ref=e11675]
+        - text: are the
+        - emphasis [ref=e11683]: exact
+        - text: positive-energy eigenvalues of the Dirac equation in the basis, and the upper block
+        - img [ref=e11685]
+        - text: is the
+        - emphasis [ref=e11696]: exact
+        - text: effective two-component Hamiltonian acting on the large component.
+      - paragraph [ref=e11697]:
+        - strong [ref=e11698]: Step 3 — restore the picture-change error.
+        - text: The naive X2C step
+        - img [ref=e11700]:
+          - link [ref=e11703] [cursor=pointer]:
+            - /url: "#"
+        - text: gives the eigenvalues correctly but the
+        - emphasis [ref=e11712]: wavefunctions
+        - text: have a “picture-change error” — they are eigenvectors of the transformed Hamiltonian, not of the original Dirac Hamiltonian in the original basis. The picture-change correction adds a
+        - img [ref=e11714]
+        - text: matrix to the transformed Hamiltonian that restores the matrix elements of
+        - emphasis [ref=e11720]: any
+        - text: operator
+        - img [ref=e11722]
+        - text: to their original value. The corrected X2C Hamiltonian is
+      - img [ref=e11732]
+      - paragraph [ref=e11818]:
+        - text: The picture-change correction is small for energy-related operators (it is
+        - img [ref=e11820]
+        - text: for the energy) and larger for property operators (it is
+        - img [ref=e11841]
+        - text: for the hyperfine coupling, the NMR chemical shift, the contact density at the nucleus).
+      - blockquote [ref=e11861]:
+        - paragraph [ref=e11862]:
+          - strong [ref=e11863]: Reading note.
+          - text: X2C is
+          - emphasis [ref=e11864]: exact
+          - text: in the basis set limit. The error of an X2C calculation is the
+          - strong [ref=e11865]: basis-set error
+          - text: ", not the"
+          - emphasis [ref=e11866]: "metho`d"
+          - text: ’ error. For correlation-consistent basis sets (cc-pVnZ) the X2C energy converges to the Dirac–Hartree–Fock / Dirac–Kohn–Sham limit with the same convergence rate as a non-relativistic calculation with the same basis — typically
+          - img [ref=e11868]
+          - text: for
+          - img [ref=e11892]
+          - text: basis functions. For valence-only basis sets with relativistic pseudopotentials (§15.5.4 below) the X2C error is the
+          - emphasis [ref=e11897]: pseudopotential
+          - text: error, which is typically
+          - img [ref=e11899]
+          - text: –
+          - img [ref=e11910]
+          - text: eV for transition metals and
+          - img [ref=e11918]
+          - text: –
+          - img [ref=e11928]
+          - text: eV for the actinides.
+      - heading "15.4 Scalar relativistic effects" [level=2] [ref=e11933]
+      - paragraph [ref=e11934]:
+        - text: The
+        - strong [ref=e11935]: scalar relativistic (SR)
+        - text: approximation keeps the kinetic-relativistic and Darwin terms of
+        - img [ref=e11937]:
+          - link [ref=e11940] [cursor=pointer]:
+            - /url: "#"
+        - text: and discards the spin-orbit term. The resulting Hamiltonian is
+        - emphasis [ref=e11949]: spin-independent
+        - text: ": the wavefunction remains a 2-component Pauli spinor, but the upper and lower components (spin-up and spin-down) are degenerate. The SR approximation captures all of the"
+        - emphasis [ref=e11950]: "kinemati`c"
+        - text: ’ relativistic effects (orbital contraction and expansion) at a cost only marginally higher than the non-relativistic calculation. The remaining spin-orbit correction is then added either
+        - emphasis [ref=e11951]: perturbatively
+        - text: (the
+        - strong [ref=e11952]: second-variational
+        - text: method of Koelling and Harmon 1977) or
+        - emphasis [ref=e11953]: self-consistently
+        - text: (the
+        - strong [ref=e11954]: spin-orbit coupled
+        - text: method of §15.5.4 below).
+      - paragraph [ref=e11955]:
+        - text: The SR approximation is the
+        - emphasis [ref=e11956]: workhorse
+        - text: of modern relativistic DFT for medium-heavy elements. It is the default in the pseudopotential libraries (Quantum ESPRESSO, VASP, CASTEP, ABINIT) and in the all-electron FP-LAPW codes (WIEN2k, Elk, FLEUR) for elements up to the lanthanides. For the actinides and the superheavies the spin-orbit correction is added explicitly, either as a second-variational correction on top of the SR ground state or as a fully self-consistent X2C calculation. This section derives the SR approximation, identifies the two corrections (mass-velocity and Darwin), and explains why scalar-relativistic pseudopotentials are
+        - emphasis [ref=e11957]: transferable
+        - text: between chemical environments.
+      - heading "15.4.1 The mass-velocity term" [level=3] [ref=e11958]
+      - paragraph [ref=e11959]:
+        - text: The
+        - strong [ref=e11960]: mass-velocity (MV) term
+        - text: is the kinetic-relativistic correction of
+        - img [ref=e11962]:
+          - link [ref=e11965] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - img [ref=e11975]
+      - paragraph [ref=e12019]:
+        - text: The MV correction is a
+        - emphasis [ref=e12020]: negative
+        - text: definite operator (for any wavefunction,
+        - img [ref=e12022]
+        - text: so the expectation value is negative) and therefore
+        - emphasis [ref=e12038]: stabilises
+        - text: "every orbital. The energy shift is largest for the most tightly-bound orbitals:"
+        - img [ref=e12040]
+        - text: on a
+        - img [ref=e12053]
+        - text: hydrogenic orbital is
+        - img [ref=e12061]
+        - text: ", on a"
+        - img [ref=e12072]
+        - text: orbital
+        - img [ref=e12080]
+        - text: ", on a"
+        - img [ref=e12097]
+        - text: orbital
+        - img [ref=e12105]
+        - text: as well. The MV correction is a
+        - emphasis [ref=e12121]: scalar
+        - text: — it does not depend on
+        - img [ref=e12123]
+        - text: or
+        - img [ref=e12129]
+        - text: — but its expectation value is
+        - emphasis [ref=e12134]: not
+        - img [ref=e12136]
+        - text: "-independent because"
+        - img [ref=e12142]
+        - text: depends on
+        - img [ref=e12155]
+        - text: through the radial wavefunction.
+      - paragraph [ref=e12160]: "The MV term can be written as a perturbation of the kinetic-energy operator:"
+      - img [ref=e12162]
+      - paragraph [ref=e12247]:
+        - text: To first order in
+        - img [ref=e12249]
+        - text: ", the MV shift of an orbital with non-relativistic kinetic energy"
+        - img [ref=e12263]
+        - text: is
+      - img [ref=e12287]
+      - paragraph [ref=e12321]:
+        - text: For a
+        - img [ref=e12323]
+        - text: hydrogenic orbital,
+        - img [ref=e12331]
+        - text: (atomic units), so
+      - img [ref=e12349]
+      - paragraph [ref=e12420]:
+        - text: For hydrogen (
+        - img [ref=e12422]
+        - text: ) this is
+        - img [ref=e12432]
+        - text: eV; for gold (
+        - img [ref=e12447]
+        - text: ) the same scaling gives
+        - img [ref=e12458]
+        - text: eV on the
+        - img [ref=e12468]
+        - text: orbital — a
+        - img [ref=e12476]
+        - text: correction to the
+        - img [ref=e12488]
+        - text: binding energy, which is small in fractional terms but large in absolute terms.
+      - paragraph [ref=e12495]:
+        - text: The MV term is the
+        - strong [ref=e12496]: dominant
+        - text: SR effect for
+        - emphasis [ref=e12497]: core
+        - text: orbitals and the only SR effect for
+        - emphasis [ref=e12498]:
+          - text: free electrons (where the Darwin term vanishes because
+          - img [ref=e12500]
+          - text: and the spin-orbit term vanishes because
+          - img [ref=e12515]
+          - text: is not defined for a plane wave). The MV term is the relativistic correction that *every
+        - text: solid-state code implements, and it is the
+        - emphasis [ref=e12525]: only
+        - text: relativistic correction in the
+        - strong [ref=e12526]: free-electron
+        - text: model of conduction in simple metals.
+      - heading "15.4.2 The Darwin term" [level=3] [ref=e12527]
+      - paragraph [ref=e12528]:
+        - text: The
+        - strong [ref=e12529]: Darwin term
+        - text: is the second correction of
+        - img [ref=e12531]:
+          - link [ref=e12534] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - img [ref=e12544]
+      - paragraph [ref=e12596]:
+        - text: The Darwin term is
+        - strong [ref=e12597]: non-zero only for wavefunctions with a finite amplitude at the nucleus
+        - text: ", i.e. for"
+        - img [ref=e12599]
+        - text: orbitals and for
+        - img [ref=e12605]
+        - text: partial waves. For
+        - img [ref=e12620]
+        - text: wavefunctions vanish at the origin in the non-relativistic limit, and the Darwin expectation value is identically zero. (In the fully-relativistic Dirac calculation the
+        - img [ref=e12630]
+        - text: wavefunction has a
+        - emphasis [ref=e12644]: small
+        - text: component with a finite amplitude at the origin, and the Darwin expectation value is correspondingly small but non-zero.)
+      - paragraph [ref=e12645]:
+        - text: For a Coulomb potential
+        - img [ref=e12647]
+        - text: the Laplacian is
+        - img [ref=e12664]
+        - text: ", so"
+      - img [ref=e12692]
+      - paragraph [ref=e12750]:
+        - text: The Darwin expectation value on a hydrogenic
+        - img [ref=e12752]
+        - text: orbital is
+      - img [ref=e12760]
+      - paragraph [ref=e12910]:
+        - text: For hydrogen (
+        - img [ref=e12912]
+        - text: ","
+        - img [ref=e12922]
+        - text: ) the Darwin shift of the
+        - img [ref=e12932]
+        - text: orbital is
+        - img [ref=e12940]
+        - text: eV (the same order of magnitude as the MV shift), but
+        - emphasis [ref=e12958]: opposite in sign
+        - text: . The MV shift is
+        - img [ref=e12960]
+        - text: on the
+        - img [ref=e12992]
+        - text: orbital (from
+        - img [ref=e13000]
+        - text: on a
+        - img [ref=e13022]
+        - text: hydrogenic orbital, in atomic units), and the Darwin shift is
+        - img [ref=e13030]
+        - text: ; the sum is
+        - img [ref=e13059]
+        - text: on the
+        - img [ref=e13093]
+        - text: orbital. (The factor-of-two discrepancy with the perturbation-theory formula
+        - img [ref=e13101]:
+          - link [ref=e13104] [cursor=pointer]:
+            - /url: "#"
+        - text: is a standard hydrogen-atom result; the
+        - img [ref=e13114]
+        - text: orbital has
+        - img [ref=e13122]
+        - text: in atomic units, giving a MV shift of
+        - img [ref=e13154]
+        - text: .)
+      - paragraph [ref=e13202]:
+        - text: The Darwin term is
+        - emphasis [ref=e13203]: responsible
+        - text: for the famous
+        - strong [ref=e13204]: self-energy regularisation
+        - text: of a point charge. A truly point-like electron would have a divergent self-energy because the Coulomb self-interaction
+        - img [ref=e13206]
+        - text: diverges at
+        - img [ref=e13221]
+        - text: . The Darwin term subtracts a finite piece of this self-energy, the piece associated with the electron’s Zitterbewegung over a region of size the reduced Compton wavelength. The remaining (infinite) piece is the
+        - emphasis [ref=e13230]: classical
+        - text: self-energy, which is removed by mass renormalisation.
+      - heading "15.4.3 The “scalar relativistic” approximation" [level=3] [ref=e13231]
+      - paragraph [ref=e13232]:
+        - text: The
+        - strong [ref=e13233]: scalar relativistic (SR) approximation
+        - text: keeps only the spin-independent terms of
+        - img [ref=e13235]:
+          - link [ref=e13238] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - img [ref=e13248]
+      - paragraph [ref=e13356]:
+        - text: The SR Hamiltonian is
+        - emphasis [ref=e13357]: spin-independent
+        - text: ": the eigenstates are still 2-component Pauli spinors, but the upper and lower components are degenerate. The SR approximation captures the"
+        - strong [ref=e13358]: kinematic
+        - text: relativistic effects — the
+        - img [ref=e13360]
+        - text: "-orbital contraction, the"
+        - img [ref=e13366]
+        - text: /
+        - img [ref=e13372]
+        - text: "-orbital expansion, the modification of bond lengths and vibrational frequencies — at a cost only marginally higher than the non-relativistic calculation."
+      - paragraph [ref=e13377]: The energy shift of the SR approximation (relative to the non-relativistic Schrödinger) is
+      - img [ref=e13379]
+      - paragraph [ref=e13492]:
+        - text: The second form comes from integrating the Darwin term by parts (the surface term vanishes at infinity) and is useful for showing that the Darwin expectation value is
+        - emphasis [ref=e13493]: positive
+        - text: (it is the integrated squared gradient, a positive-definite quantity). The first form is more useful for the order-of-magnitude estimates. Both contributions scale as
+        - img [ref=e13495]
+        - text: in atomic units.
+      - paragraph [ref=e13508]:
+        - text: The SR approximation is the
+        - strong [ref=e13509]: default
+        - text: in production DFT for elements lighter than the lanthanides. It is the “no-spin-orbit” option in the pseudopotential generators of the standard solid-state codes. For medium-heavy elements (the 4
+        - img [ref=e13511]
+        - text: and 5
+        - img [ref=e13517]
+        - text: transition metals, the 6
+        - img [ref=e13523]
+        - text: post-transition metals) the SR approximation gives bond lengths and vibrational frequencies within
+        - img [ref=e13529]
+        - text: –
+        - img [ref=e13537]
+        - text: of experiment, while the non-relativistic calculation can be off by
+        - img [ref=e13545]
+        - text: –
+        - img [ref=e13553]
+        - text: . The spin-orbit correction is then added as a post-SR perturbation (the
+        - strong [ref=e13561]: second-variational
+        - text: method) for the properties that depend on it (band splittings, magnetic anisotropy, spin-Hall conductivity).
+      - blockquote [ref=e13562]:
+        - paragraph [ref=e13563]:
+          - strong [ref=e13564]: Reading note.
+          - text: The SR approximation is a
+          - emphasis [ref=e13565]: "very goo`d"
+          - text: approximation for
+          - emphasis [ref=e13566]: atomic
+          - text: properties (orbital energies, ionisation potentials, electron affinities) but is
+          - emphasis [ref=e13567]: less
+          - text: good for molecular properties that depend on spin-orbit (bond dissociation energies of halogen-containing molecules, phosphorescence rates, intersystem crossing rates, spin-forbidden reaction barriers). For these properties the spin-orbit term is
+          - emphasis [ref=e13568]: not
+          - text: a small perturbation and must be included self-consistently.
+      - heading "15.4.4 Why scalar-relativistic pseudopotentials work" [level=3] [ref=e13569]
+      - paragraph [ref=e13570]:
+        - text: The connection to
+        - link "chapter 08" [ref=e13571] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: "is direct. A scalar-relativistic pseudopotential is generated by:"
+      - list [ref=e13572]:
+        - listitem [ref=e13573]:
+          - text: Solving the Dirac equation for the
+          - emphasis [ref=e13574]: isolated atom
+          - text: with the chosen core and valence configuration.
+        - listitem [ref=e13575]:
+          - text: Extracting the
+          - strong [ref=e13576]: large component
+          - img [ref=e13578]
+          - text: of the valence orbitals.
+        - listitem [ref=e13586]:
+          - text: Inverting the radial Dirac equation for
+          - img [ref=e13588]
+          - text: to get a channel-dependent effective potential
+          - img [ref=e13597]
+          - text: — the
+          - strong [ref=e13618]: scalar-relativistic pseudopotential
+          - text: .
+        - listitem [ref=e13619]: Discarding the small component (it is implicit in the inversion).
+      - paragraph [ref=e13620]:
+        - text: The resulting pseudopotential is
+        - emphasis [ref=e13621]: channel-dependent
+        - text: in the same way as the non-relativistic pseudopotential of
+        - link "chapter 08" [ref=e13622] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: §8.1, but it has the
+        - emphasis [ref=e13623]: "relativisti`c"
+        - text: ’ orbital energies and wavefunctions baked in. When this pseudopotential is used in a non-relativistic molecular calculation, the resulting valence eigenvalues and wavefunctions are
+        - emphasis [ref=e13624]: the scalar-relativistic ones
+        - text: of the corresponding all- electron atom (to the accuracy of the inversion).
+      - paragraph [ref=e13625]:
+        - text: "The transferability of the SR pseudopotential is the same as the transferability of a non-relativistic pseudopotential: the norm-conservation condition of"
+        - link "chapter 08" [ref=e13626] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: §8.1 (and its generalisations to ultrasoft and PAW) guarantees that the pseudopotential reproduces the all-electron scattering properties of the atom outside the cutoff radius
+        - img [ref=e13628]
+        - text: . The additional SR ingredient is that the
+        - emphasis [ref=e13636]: reference
+        - text: atom is solved with the Dirac equation and
+        - emphasis [ref=e13637]: projected onto the large component
+        - text: . The resulting
+        - img [ref=e13639]
+        - text: is
+        - emphasis [ref=e13663]: spin-independent
+        - text: and
+        - emphasis [ref=e13664]: channel-dependent
+        - text: ", exactly the same form as the non-relativistic pseudopotential."
+      - paragraph [ref=e13665]:
+        - text: The SR pseudopotential is the
+        - strong [ref=e13666]: default
+        - text: in the Quantum ESPRESSO / VASP / CASTEP / ABINIT pseudopotential libraries for elements lighter than the actinides. For the actinides the spin-orbit effect is large enough that the SR approximation is
+        - emphasis [ref=e13667]: qualitatively
+        - text: wrong (the 5
+        - img [ref=e13669]
+        - text: and 6
+        - img [ref=e13675]
+        - text: levels are reordered by spin-orbit), and a fully-relativistic pseudopotential (§15.5.4) must be used.
+      - blockquote [ref=e13680]:
+        - paragraph [ref=e13681]:
+          - strong [ref=e13682]: Tip.
+          - text: A
+          - emphasis [ref=e13683]:
+            - text: roug
+            - code [ref=e13684]: h*' but useful test of whether an element needs spin-orbit coupling is the magnitude of its 5*d*' or 6p* spin-orbit splitting in the atomic spectrum. If the splitting is $\gtrsim 0.1$ eV, the spin-orbit correction is *qualitatively* important for any property that distinguishes the two components. The 5*
+            - text: d
+          - text: ’ splitting is
+          - img [ref=e13686]
+          - text: eV for Y,
+          - img [ref=e13696]
+          - text: eV for Nb,
+          - img [ref=e13706]
+          - text: eV for La, and
+          - img [ref=e13716]
+          - text: eV for Pt — every 5
+          - emphasis [ref=e13723]: "`d"
+          - text: ’ element has a non-negligible spin-orbit correction, and Pt and Au are spin-orbit-dominated.
+      - heading "15.5 Spin-orbit coupling" [level=2] [ref=e13724]
+      - paragraph [ref=e13725]:
+        - text: The
+        - strong [ref=e13726]: spin-orbit coupling (SOC)
+        - text: term
+        - img [ref=e13728]
+        - text: of
+        - img [ref=e13756]:
+          - link [ref=e13759] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - emphasis [ref=e13768]: only
+        - text: term in the Pauli Hamiltonian that depends on the electron spin. It is the source of the band inversion in topological insulators, the Rashba and Dresselhaus splittings at surfaces, the magnetocrystalline anisotropy, the zero-field splitting in molecular magnets, the intersystem-crossing rates in photochemistry, the spin-Hall effect, and the existence of the permanent magnet. This section derives the atomic
+        - img [ref=e13770]
+        - text: structure, generalises it to molecules and solids, and introduces the practical implementation in modern pseudopotential codes.
+      - heading "15.5.1 The atomic coupling" [level=3] [ref=e13787]:
+        - text: 15.5.1 The atomic
+        - img [ref=e13789]
+        - text: coupling
+      - paragraph [ref=e13806]:
+        - text: For a
+        - emphasis [ref=e13807]: single
+        - text: electron in a spherically-symmetric potential, the SOC operator
+        - img [ref=e13809]
+        - text: is diagonal in the
+        - img [ref=e13837]
+        - text: basis (the coupled basis of orbital and spin angular momenta), and the eigenvalues are
+      - img [ref=e13858]:
+        - generic [ref=e13973]:
+          - img [ref=e13977]
+          - img [ref=e13979]
+      - paragraph [ref=e14060]:
+        - text: The SOC splitting of an
+        - img [ref=e14062]
+        - text: shell is therefore
+      - img [ref=e14072]
+      - paragraph [ref=e14190]:
+        - text: For an attractive Coulomb potential
+        - img [ref=e14192]
+        - text: (since
+        - img [ref=e14206]
+        - text: for an attractive
+        - img [ref=e14225]
+        - text: ), so the
+        - img [ref=e14242]
+        - text: level is
+        - emphasis [ref=e14260]: higher
+        - text: in energy than the
+        - img [ref=e14262]
+        - text: level. This is the
+        - strong [ref=e14280]: normal
+        - text: ordering of atomic levels (the one given by Hund’s first rule for the
+        - emphasis [ref=e14281]: spin
+        - text: part, generalised to
+        - img [ref=e14283]
+        - text: ).
+      - paragraph [ref=e14288]: "The atomic spectrum is therefore reorganised by SOC:"
+      - list [ref=e14289]:
+        - listitem [ref=e14290]:
+          - img [ref=e14292]
+          - text: orbitals (
+          - img [ref=e14298]
+          - text: ","
+          - img [ref=e14308]
+          - text: "): a single level, no SOC splitting."
+        - listitem [ref=e14322]:
+          - img [ref=e14324]
+          - text: orbitals (
+          - img [ref=e14330]
+          - text: "): a"
+          - img [ref=e14340]
+          - text: doublet (
+          - img [ref=e14355]
+          - text: ", two-fold degenerate in"
+          - img [ref=e14370]
+          - text: ) and a
+          - img [ref=e14379]
+          - text: quartet (
+          - img [ref=e14394]
+          - text: ", four-fold degenerate in"
+          - img [ref=e14409]
+          - text: ); the
+          - img [ref=e14418]
+          - text: is
+          - emphasis [ref=e14432]: higher
+          - text: by
+          - img [ref=e14434]
+          - text: .
+        - listitem [ref=e14453]:
+          - img [ref=e14455]
+          - text: orbitals (
+          - img [ref=e14461]
+          - text: "): a"
+          - img [ref=e14471]
+          - text: quartet (
+          - img [ref=e14486]
+          - text: ) and a
+          - img [ref=e14501]
+          - text: sextet (
+          - img [ref=e14516]
+          - text: ); the
+          - img [ref=e14531]
+          - text: is
+          - emphasis [ref=e14545]: higher
+          - text: by
+          - img [ref=e14547]
+          - text: .
+        - listitem [ref=e14566]:
+          - img [ref=e14568]
+          - text: orbitals (
+          - img [ref=e14574]
+          - text: "): a"
+          - img [ref=e14584]
+          - text: sextet (
+          - img [ref=e14599]
+          - text: ) and a
+          - img [ref=e14614]
+          - text: octet (
+          - img [ref=e14629]
+          - text: ); the
+          - img [ref=e14644]
+          - text: is
+          - emphasis [ref=e14658]: higher
+          - text: by
+          - img [ref=e14660]
+          - text: .
+      - paragraph [ref=e14679]:
+        - text: The
+        - emphasis [ref=e14680]: counting
+        - text: "of the degeneracies adds up correctly:"
+        - img [ref=e14682]
+        - text: has
+        - img [ref=e14697]
+        - text: states,
+        - img [ref=e14703]
+        - text: has
+        - img [ref=e14718]
+        - text: ", total"
+        - img [ref=e14724]
+        - text: — the same as the non-relativistic
+        - img [ref=e14730]
+        - text: shell.
+      - paragraph [ref=e14735]:
+        - text: The
+        - strong [ref=e14736]: Hund’s rules
+        - text: that govern the ground-state term of an open-shell atom in the non-relativistic limit are
+        - emphasis [ref=e14737]: "modifie`d"
+        - text: ’ by SOC. In the
+        - img [ref=e14739]
+        - text: "-coupling limit (heavy elements) the rules are:"
+      - list [ref=e14746]:
+        - listitem [ref=e14747]:
+          - text: Fill the
+          - img [ref=e14749]
+          - text: and
+          - img [ref=e14768]
+          - text: levels separately, starting with the
+          - emphasis [ref=e14786]: lower
+          - text: one.
+        - listitem [ref=e14787]:
+          - text: The
+          - img [ref=e14789]
+          - text: level has
+          - img [ref=e14808]
+          - text: states; the
+          - img [ref=e14838]
+          - text: level has
+          - img [ref=e14857]
+          - text: states. For
+          - img [ref=e14865]
+          - text: the
+          - emphasis [ref=e14874]: total
+          - text: degeneracy is
+          - img [ref=e14876]
+          - text: ", the same as the non-relativistic shell."
+      - paragraph [ref=e14903]:
+        - text: The
+        - img [ref=e14905]
+        - text: "-coupling limit is"
+        - emphasis [ref=e14912]: not
+        - text: reached in chemical practice (most heavy elements are still in the
+        - img [ref=e14914]
+        - text: "-coupling regime for the"
+        - emphasis [ref=e14921]: valence
+        - text: shell, even when the core is
+        - img [ref=e14923]
+        - text: "-coupled). The"
+        - img [ref=e14931]
+        - text: "-coupling limit"
+        - emphasis [ref=e14938]: is
+        - text: reached for the innermost shells of the heaviest elements, and it is the natural language for the
+        - img [ref=e14940]
+        - text: "-electron systems of the actinides and the superheavies."
+      - blockquote [ref=e14945]:
+        - paragraph [ref=e14946]:
+          - strong [ref=e14947]: The periodic table, relativistic version.
+          - text: The 6
+          - img [ref=e14949]
+          - text: orbital of gold is contracted and stabilised (relativistic contraction); the 5
+          - img [ref=e14955]
+          - text: orbital is destabilised (relativistic expansion); the result is that the 5
+          - img [ref=e14961]
+          - text: and 6
+          - img [ref=e14967]
+          - text: levels of gold are
+          - emphasis [ref=e14972]: closer in energy
+          - text: than the 4
+          - img [ref=e14974]
+          - text: and 5
+          - img [ref=e14980]
+          - text: levels of silver. The Au–Au bond is therefore stronger than the Ag–Ag bond, and the 5
+          - img [ref=e14986]
+          - text: interband transition of gold falls in the visible (2.4 eV), giving gold its characteristic colour. Silver’s analogous 4
+          - img [ref=e14998]
+          - text: transition is in the ultraviolet (4.0 eV), so silver is colourless.
+      - heading "15.5.2 The molecular Breit–Pauli operator" [level=3] [ref=e15009]
+      - paragraph [ref=e15010]:
+        - text: The single-electron Pauli SOC operator
+        - img [ref=e15012]:
+          - link [ref=e15015] [cursor=pointer]:
+            - /url: "#"
+        - text: generalises to a many- electron system as the
+        - strong [ref=e15024]: Breit–Pauli operator
+        - text: . The Breit–Pauli Hamiltonian is the non-relativistic limit of the
+        - emphasis [ref=e15025]: full
+        - text: (electron + photon) QED Hamiltonian to order
+        - img [ref=e15027]
+        - text: ". It contains:"
+      - list [ref=e15040]:
+        - listitem [ref=e15041]:
+          - text: The single-electron kinetic-relativistic, Darwin, and spin-orbit terms of
+          - img [ref=e15043]:
+            - link [ref=e15046] [cursor=pointer]:
+              - /url: "#"
+          - text: for each electron.
+        - listitem [ref=e15055]:
+          - text: The
+          - strong [ref=e15056]: two-electron Breit–Pauli operators
+          - text: ": the spin-other-orbit coupling, the spin-spin coupling, the orbit-orbit coupling, and the Darwin (contact) term."
+      - paragraph [ref=e15057]: The two-electron Breit–Pauli Hamiltonian is
+      - img [ref=e15059]
+      - paragraph [ref=e15226]:
+        - text: where the explicit form contains
+        - img [ref=e15228]
+        - text: distinct operators. The two-electron SOC is the
+        - strong [ref=e15236]: spin-other- orbit
+        - text: "term:"
+      - img [ref=e15238]
+      - paragraph [ref=e15402]:
+        - text: "where $\\hat{\\mathbf L}"
+        - emphasis [ref=e15403]: "{ij} = \\hat{\\mathbf r}"
+        - text: "{ij} \\times \\hat{\\mathbf p}_i"
+        - img [ref=e15405]
+        - text: i
+        - img [ref=e15469]
+        - text: j$. The spin-other-orbit term is
+        - emphasis [ref=e15498]: opposite in sign
+        - text: to the one-electron spin-orbit term (because the magnetic field felt by electron
+        - img [ref=e15500]
+        - text: from electron
+        - img [ref=e15506]
+        - text: has the opposite sign from the magnetic field felt by electron
+        - img [ref=e15512]
+        - text: from the nucleus) and is
+        - emphasis [ref=e15517]: comparable in magnitude
+        - text: to the one-electron term for the valence electrons of a heavy atom (it is
+        - img [ref=e15519]
+        - text: –
+        - img [ref=e15528]
+        - text: of the one-electron SOC in atoms and
+        - img [ref=e15537]
+        - text: in molecules where the valence electron density overlaps with the core).
+      - paragraph [ref=e15548]:
+        - text: The full Breit–Pauli operator is
+        - emphasis [ref=e15549]: expensive
+        - text: to evaluate in a many-electron calculation — it is a two-electron operator with up to 6 spin components. In practice, the two-electron SOC is
+        - strong [ref=e15550]: approximated by a mean-field (MF) one-electron operator
+        - text: ":"
+      - img [ref=e15552]
+      - paragraph [ref=e15725]:
+        - text: The MF-SOC operator is a one-electron operator (it depends only on the coordinates of electron
+        - img [ref=e15727]
+        - text: ", with the other electrons averaged over the occupied orbitals) and is"
+        - emphasis [ref=e15732]: self-consistent
+        - text: (the
+        - img [ref=e15734]
+        - text: are the
+        - emphasis [ref=e15742]: spinor
+        - text: orbitals of the calculation, not the non-relativistic orbitals). The MF-SOC is exact to first order in
+        - img [ref=e15744]
+        - text: for the
+        - emphasis [ref=e15757]: total
+        - text: spin-orbit contribution; the higher-order corrections are
+        - img [ref=e15759]
+        - text: and are negligible for chemistry.
+      - paragraph [ref=e15778]:
+        - text: The MF-SOC is the default in modern relativistic DFT codes (ORCA, NWChem, ReSpect, Gaussian with relativistic option, Turbomole). It is the basis of the
+        - strong [ref=e15779]: two-component self-consistent field (2c-SCF)
+        - text: method that we use in §15.7 below. The MF-SOC is an approximation to the full Dirac–Hartree–Fock limit (DIRAC, BERTHA) with an error of
+        - img [ref=e15781]
+        - text: –
+        - img [ref=e15789]
+        - text: on spin-orbit splittings for valence states.
+      - heading "15.5.3 On-site SOC in pseudopotentials" [level=3] [ref=e15796]
+      - paragraph [ref=e15797]:
+        - text: The connection to
+        - link "chapter 08" [ref=e15798] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: reappears at the spin-orbit level. A
+        - strong [ref=e15799]: fully- relativistic pseudopotential
+        - text: is a
+        - img [ref=e15801]
+        - text: matrix in spin space at every
+        - img [ref=e15811]
+        - text: ":"
+      - img [ref=e15818]:
+        - generic [ref=e15820]:
+          - img [ref=e15870]
+          - img [ref=e15956]
+      - paragraph [ref=e15960]:
+        - text: where the first term is the scalar-relativistic pseudopotential of §15.4.4 and the second is the
+        - strong [ref=e15961]: on-site spin-orbit term
+        - text: that acts only on the angular-momentum channel
+        - img [ref=e15963]
+        - text: . The
+        - img [ref=e15969]
+        - text: is determined by inverting the
+        - emphasis [ref=e15991]: "fully-relativisti`c"
+        - text: ’ Dirac equation for the isolated atom (not the scalar-relativistic reduction), and extracting the
+        - img [ref=e15993]
+        - text: component of the effective potential.
+      - paragraph [ref=e16012]:
+        - text: The on-site SOC is a
+        - emphasis [ref=e16013]: local
+        - text: operator (in the angular sense — it is a function of
+        - img [ref=e16015]
+        - text: alone) and a
+        - emphasis [ref=e16020]: one- electron
+        - text: operator (it depends on the coordinates of one electron at a time). It is therefore
+        - emphasis [ref=e16021]: easy
+        - text: "to include in a plane-wave DFT code: the SOC term adds a"
+        - img [ref=e16023]
+        - text: matrix in spin space to the Hamiltonian, and the resulting Hamiltonian is solved self- consistently as a 2-component spinor Hamiltonian.
+      - paragraph [ref=e16032]:
+        - text: The on-site SOC is
+        - emphasis [ref=e16033]: the
+        - text: practical implementation of spin-orbit coupling in modern plane-wave DFT. The PAW formalism of
+        - link "chapter 08" [ref=e16034] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: "§8.12 naturally accommodates the on-site SOC by including the SOC in the augmentation sphere:"
+      - img [ref=e16036]
+      - paragraph [ref=e16163]:
+        - text: where the augmentation functions
+        - img [ref=e16165]
+        - text: are now
+        - emphasis [ref=e16179]: spinor
+        - text: partial waves (2-component, with
+        - img [ref=e16181]
+        - text: ) and the projectors
+        - img [ref=e16200]
+        - text: are correspondingly 2-component. The PAW reconstruction of the all-electron wavefunction in the augmentation sphere therefore includes the SOC
+        - emphasis [ref=e16214]: exactly
+        - text: (to the accuracy of the partial-wave expansion).
+      - blockquote [ref=e16215]:
+        - paragraph [ref=e16216]:
+          - strong [ref=e16217]: Why the SOC is “on-site”.
+          - text: The on-site SOC
+          - img [ref=e16219]
+          - text: is a
+          - emphasis [ref=e16246]: one-centre
+          - text: operator in the PAW formalism — it acts on the augmentation sphere of one atom at a time. This is
+          - emphasis [ref=e16247]: not
+          - text: a restriction; the all-electron SOC is also a sum of one-centre operators (the Breit–Pauli two-electron terms are
+          - emphasis [ref=e16248]: also
+          - text: in this sense one-centre in the MF approximation). The off-site, two-centre Breit–Pauli terms are smaller (they are
+          - img [ref=e16250]
+          - text: of the one-centre MF-SOC for valence states) and are usually omitted in production PAW calculations.
+      - heading "15.5.4 Fully-relativistic PPs and the modern production approach" [level=3] [ref=e16260]
+      - paragraph [ref=e16261]:
+        - text: The modern production approach in plane-wave DFT is
+        - strong [ref=e16262]: PAW with on-site SOC
+        - text: ":"
+      - list [ref=e16263]:
+        - listitem [ref=e16264]:
+          - text: The all-electron atom is solved with the Dirac equation, including the full spin-orbit splitting of each shell. The eigenstates are 4-component spinors indexed by
+          - img [ref=e16266]
+          - text: and
+          - img [ref=e16272]
+          - text: .
+        - listitem [ref=e16280]:
+          - text: For each angular-momentum channel
+          - img [ref=e16282]
+          - text: ", the all-electron spinor partial wave"
+          - img [ref=e16288]
+          - text: is computed and used as the
+          - strong [ref=e16305]: augmentation function
+          - text: in the PAW reconstruction.
+        - listitem [ref=e16306]:
+          - text: The
+          - strong [ref=e16307]: pseudopotential
+          - text: is generated by inverting the radial Dirac equation for each
+          - img [ref=e16309]
+          - text: ", and the resulting"
+          - img [ref=e16315]
+          - text: is stored as a table indexed by
+          - img [ref=e16336]
+          - text: .
+        - listitem [ref=e16349]:
+          - text: The PAW projector
+          - img [ref=e16351]
+          - text: is also spinor-indexed (it is a 2-component object in the Pauli basis).
+        - listitem [ref=e16367]:
+          - text: The KS Hamiltonian is a
+          - img [ref=e16369]
+          - text: matrix in spinor space at every
+          - img [ref=e16383]
+          - text: (the
+          - img [ref=e16390]
+          - text: is the basis-set dimension of the
+          - emphasis [ref=e16395]: spatial
+          - text: orbitals; the 2 is the spin), and the eigenvalues are doublets related by time-reversal symmetry (§15.6.4).
+        - listitem [ref=e16396]:
+          - text: The XC potential is the
+          - emphasis [ref=e16397]: same
+          - text: collinear LSDA or GGA as in the non-relativistic case, evaluated on
+          - img [ref=e16399]
+          - text: (in the non-magnetic case, on
+          - img [ref=e16410]
+          - text: ). The non-collinear XC of
+          - link "chapter 04" [ref=e16415] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.8.4 is used when the magnetisation is non-collinear.
+      - paragraph [ref=e16416]:
+        - text: The fully-relativistic PAW pseudopotential is the
+        - emphasis [ref=e16417]: default
+        - text: in VASP, Quantum ESPRESSO (with the
+        - code [ref=e16418]: upf
+        - text: ’ format), and ABINIT for the 5
+        - emphasis [ref=e16419]: d
+        - text: ’ and 6p* elements. The standard PBE pseudopotentials in these libraries include SOC for the 4*
+        - code [ref=e16420]: d*' row and beyond, and the SOC can be turned on or off by a single keyword (
+        - text: "LNONCOLLINEAR = .TRUE.’ in VASP, `noncolin = .TRUE.’ in Quantum ESPRESSO)."
+      - paragraph [ref=e16421]: "The errors of the fully-relativistic PAW pseudopotential are:"
+      - list [ref=e16422]:
+        - listitem [ref=e16423]:
+          - text: The
+          - strong [ref=e16424]: partial-wave basis
+          - text: "error: the augmentation sphere contains a finite number of partial waves (typically"
+          - img [ref=e16426]
+          - text: ); the missing high-
+          - img [ref=e16448]
+          - text: channels are absorbed into the smooth part of the wavefunction. The error is
+          - img [ref=e16454]
+          - text: –
+          - img [ref=e16462]
+          - text: meV per orbital for valence states.
+        - listitem [ref=e16468]:
+          - text: The
+          - strong [ref=e16469]: PAW reconstruction
+          - text: "error: the PAW sphere does not contain the full all-electron wavefunction near the nucleus; the SOC splitting is therefore under-estimated by"
+          - img [ref=e16471]
+          - text: –
+          - img [ref=e16481]
+          - text: for valence
+          - img [ref=e16489]
+          - text: and
+          - img [ref=e16495]
+          - text: states. This is
+          - emphasis [ref=e16500]: "muc`h"
+          - text: ’ smaller than the pseudopotential transferability error.
+        - listitem [ref=e16501]:
+          - text: The
+          - strong [ref=e16502]: MF-SOC
+          - text: "error: the two-electron SOC is in the mean-field approximation, not the full Breit–Pauli. The error is"
+          - img [ref=e16504]
+          - text: –
+          - img [ref=e16512]
+          - text: on spin-orbit splittings for valence states.
+      - paragraph [ref=e16519]:
+        - text: The combined error of a modern fully-relativistic PAW calculation on a 5
+        - img [ref=e16521]
+        - text: transition-metal complex is
+        - img [ref=e16527]
+        - text: –
+        - img [ref=e16536]
+        - text: meV on spin-orbit splittings — small enough for the calculation to be
+        - emphasis [ref=e16542]: quantitatively
+        - text: predictive of spin-orbit-dominated properties (magnetic anisotropy, zero-field splitting, band splittings at the Fermi level, spin-Hall conductivity).
+      - blockquote [ref=e16543]:
+        - paragraph [ref=e16544]:
+          - strong [ref=e16545]: Reading note.
+          - text: The fully-relativistic PAW is
+          - emphasis [ref=e16546]: the
+          - text: method of choice for spin-orbit-coupled plane-wave DFT. The alternatives — explicit
+          - img [ref=e16548]
+          - text: "-dependent potentials, second-variational methods, all-electron LAPW — are either less accurate (the second-variational method on top of an SR calculation misses the"
+          - emphasis [ref=e16553]: self-consistent
+          - text: effect of SOC on the orbitals) or more expensive (FP-LAPW with explicit SOC is the
+          - emphasis [ref=e16554]: reference
+          - text: calculation but is
+          - img [ref=e16556]
+          - text: –
+          - img [ref=e16565]
+          - text: more expensive than PAW).
+      - heading "15.6 Relativistic DFT" [level=2] [ref=e16574]
+      - paragraph [ref=e16575]:
+        - text: The Kohn–Sham DFT of
+        - link "chapter 04" [ref=e16576] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: is a
+        - emphasis [ref=e16577]: "non-relativisti`c"
+        - text: "’ theory: the Hamiltonian is the non-relativistic Schrödinger Hamiltonian, the orbitals are scalar spatial functions, and the XC energy is a functional of the density alone. The relativistic generalisations of this chapter (four-component Dirac–Kohn–Sham, two-component X2C-KS, spin-current DFT) modify the orbital structure (4-component or 2-component spinors) and the XC functional (density and current, or density and magnetisation), but the"
+        - emphasis [ref=e16578]: logical structure
+        - text: of KS DFT — a self-consistent single-particle problem in an effective potential that is a functional derivative of the energy with respect to the basic variable — is unchanged.
+      - paragraph [ref=e16579]:
+        - text: This section is the
+        - emphasis [ref=e16580]: "ma`p"
+        - text: "’ of the relativistic DFT landscape. We will, in order: state the"
+        - strong [ref=e16581]: Dirac–Kohn–Sham
+        - text: equations (the 4-component generalisation), state the
+        - strong [ref=e16582]: two-component KS
+        - text: equations (the practical 2c version), introduce the
+        - strong [ref=e16583]: spin-current DFT
+        - text: that is the proper DFT for SOC, and finish with the
+        - strong [ref=e16584]: time-reversal symmetry
+        - text: and
+        - strong [ref=e16585]: Kramers degeneracy
+        - text: that is the central symmetry of all spin-orbit-coupled systems.
+      - heading "15.6.1 Four-component Dirac–Kohn–Sham" [level=3] [ref=e16586]
+      - paragraph [ref=e16587]:
+        - text: The
+        - strong [ref=e16588]: Dirac–Kohn–Sham (DKS)
+        - text: equations are obtained by replacing the non-relativistic Kohn–Sham Hamiltonian
+        - img [ref=e16590]
+        - text: of
+        - link "chapter 04" [ref=e16634] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: with the Dirac Hamiltonian of
+        - img [ref=e16636]:
+          - link [ref=e16639] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - img [ref=e16649]
+      - paragraph [ref=e16757]:
+        - text: "where $v_\\text{eff}(\\mathbf r) = v_\\text{ext}(\\mathbf r) + v_\\text{H}"
+        - link "n" [ref=e16758] [cursor=pointer]:
+          - /url: \mathbf r
+        - text: "+ v_\\text{xc}"
+        - link "n" [ref=e16759] [cursor=pointer]:
+          - /url: \mathbf r
+        - text: $ is the
+        - emphasis [ref=e16760]: same
+        - text: KS effective potential as in the non-relativistic case, evaluated on the
+        - emphasis [ref=e16761]: "relativisti`c"
+        - text: ’ density
+      - img [ref=e16763]
+      - paragraph [ref=e16881]:
+        - text: The DKS equations are
+        - emphasis [ref=e16882]: exact
+        - text: in the sense that they reproduce the
+        - emphasis [ref=e16883]: positive-energy
+        - text: spectrum of the
+        - emphasis [ref=e16884]: "relativisti`c"
+        - text: ’ interacting Hamiltonian, provided the exact
+        - img [ref=e16886]
+        - text: is used. The Hohenberg–Kohn theorem of
+        - link "chapter 04" [ref=e16901] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: "has a relativistic generalisation: the ground-state 4-current"
+        - img [ref=e16903]
+        - text: "uniquely determines the external 4-potential, and the 4-current determines all observables of the system. The DKS ansatz is therefore well-defined: the"
+        - emphasis [ref=e16932]: positive-energy
+        - text: 4-current of the auxiliary 4-spinor system reproduces the interacting 4-current, and the energy is a functional of the 4-current.
+      - paragraph [ref=e16933]:
+        - text: The XC energy in DKS is taken to be the
+        - emphasis [ref=e16934]: same
+        - text: relativistic generalisation of the LSDA, GGA, or hybrid functional as in the non-relativistic case. This is the
+        - strong [ref=e16935]: no-pair
+        - text: "approximation: we ignore the contribution of the negative-energy (positron) states to the XC energy, and we use the"
+        - emphasis [ref=e16936]:
+          - text: non-relativisti
+          - code [ref=e16937]: "c*' form of $E_\\text{xc}[n]$ evaluated on the *relativisti"
+          - text: c
+        - text: ’ density. The no-pair approximation is exact to leading order in
+        - img [ref=e16939]
+        - text: (the corrections are
+        - img [ref=e16953]
+        - text: and are small for chemistry), and it is the standard in all four-component DKS codes (DIRAC, ReSpect, BERTHA, four-component Turbomole).
+      - paragraph [ref=e16972]:
+        - text: The DKS equations are
+        - emphasis [ref=e16973]: expensive
+        - text: ": a four-component calculation on an"
+        - img [ref=e16975]
+        - text: "-electron system with a"
+        - img [ref=e16981]
+        - text: "-basis set is"
+        - img [ref=e16987]
+        - text: more expensive than the corresponding non-relativistic calculation (the factor is
+        - img [ref=e16997]
+        - text: for the spin times
+        - img [ref=e17011]
+        - text: for the small/large block). For a heavy-element system the basis-set size grows, and the prefactor can reach
+        - img [ref=e17017]
+        - text: for an actinide complex. The DKS method is therefore used primarily in
+        - emphasis [ref=e17027]: "benchmar`k"
+        - text: ’ calculations on small systems, and the
+        - emphasis [ref=e17028]: practical
+        - text: "method is the two-component reduction of §15.3. ### 15.6.2 Two-component relativistic DFT"
+      - paragraph [ref=e17029]:
+        - text: The
+        - strong [ref=e17030]: two-component (2c) Kohn–Sham
+        - text: equations are obtained by applying one of the transformations of §15.3 (DKH, ZORA, or X2C) to the DKS Hamiltonian and projecting onto the positive-energy block. The result is a 2-component Hamiltonian
+      - img [ref=e17032]
+      - paragraph [ref=e17093]:
+        - text: where
+        - img [ref=e17095]
+        - text: is the 2-component relativistic Hamiltonian (DKH2, ZORA, or X2C),
+        - img [ref=e17108]
+        - text: is the Hartree potential, and
+        - img [ref=e17117]
+        - text: is the non-collinear XC potential of
+        - link "chapter 04" [ref=e17126] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: "§4.8.4. The 2c-KS equations are a 2-component generalisation of the non-collinear KS equations of chapter 04:"
+      - img [ref=e17128]:
+        - generic [ref=e17130]:
+          - generic [ref=e17144]:
+            - img [ref=e17148]
+            - img [ref=e17192]
+          - generic [ref=e17201]:
+            - img [ref=e17205]
+            - img [ref=e17249]
+      - paragraph [ref=e17253]:
+        - text: where the
+        - img [ref=e17255]
+        - text: are 2-component Pauli spinors. The density is
+      - img [ref=e17276]
+      - paragraph [ref=e17362]: and the magnetisation is
+      - img [ref=e17364]:
+        - generic [ref=e17442]:
+          - img [ref=e17446]
+          - img [ref=e17490]
+      - paragraph [ref=e17494]:
+        - text: The 2c-KS equations are solved self-consistently in the same way as the non-collinear KS equations of
+        - link "chapter 04" [ref=e17495] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.8.4, with the addition that the Hamiltonian
+        - img [ref=e17497]
+        - text: is
+        - emphasis [ref=e17509]: "itsel`f"
+        - text: ’ density-dependent (because the X2C transformation depends on the kinetic-energy matrix
+        - img [ref=e17511]
+        - text: "). The self-consistency loop therefore contains a “X2C step” between the density update and the next Hamiltonian diagonalisation: the X2C matrix"
+        - img [ref=e17523]
+        - text: is recomputed at every SCF iteration, and the 2c-KS Hamiltonian is updated accordingly.
+      - paragraph [ref=e17534]:
+        - text: The 2c-KS method is the
+        - strong [ref=e17535]: default
+        - text: in production relativistic DFT for medium-heavy elements. It is implemented in ORCA, NWChem, ReSpect, Gaussian (with the relativistic option), Turbomole, and (in the PAW formulation) VASP, Quantum ESPRESSO, and ABINIT. The errors of 2c-KS relative to the full 4c-DKS are
+        - img [ref=e17537]
+        - text: in the energy and
+        - img [ref=e17558]
+        - text: in properties — typically
+        - img [ref=e17579]
+        - text: –
+        - img [ref=e17590]
+        - text: eV in the total energy of a 5
+        - img [ref=e17598]
+        - text: complex, well below the DFT error of
+        - img [ref=e17604]
+        - text: –
+        - img [ref=e17614]
+        - text: eV.
+      - 'heading "15.6.3 Spin-current DFT: the proper DFT for SOC" [level=3] [ref=e17619]'
+      - paragraph [ref=e17620]:
+        - text: The non-relativistic Hohenberg–Kohn theorem of
+        - link "chapter 04" [ref=e17621] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: is a
+        - emphasis [ref=e17622]: density
+        - text: "theorem: the ground-state density uniquely determines the external potential (and hence all observables). The"
+        - emphasis [ref=e17623]: "relativisti`c"
+        - text: ’ Hohenberg–Kohn theorem is a
+        - strong [ref=e17624]: 4-current
+        - text: "theorem: the ground-state 4-current"
+        - img [ref=e17626]
+        - text: uniquely determines the external 4-potential
+        - img [ref=e17656]
+        - text: . In a system with spin-orbit coupling the external potential couples to the
+        - emphasis [ref=e17686]: orbital
+        - text: current
+        - img [ref=e17688]
+        - text: as well as to the density, so the
+        - emphasis [ref=e17694]: basic variable
+        - text: of relativistic DFT is the
+        - strong [ref=e17695]: 4-current
+        - text: ", not the density alone."
+      - paragraph [ref=e17696]:
+        - text: In practice, the spin-orbit-coupled system is described by a
+        - strong [ref=e17697]: spin-current DFT
+        - text: in which the basic variables are the density
+        - img [ref=e17699]
+        - text: ", the paramagnetic current"
+        - img [ref=e17712]
+        - text: ", and the magnetisation"
+        - img [ref=e17729]
+        - text: (or, equivalently, the spin current
+        - img [ref=e17743]
+        - text: "). The XC energy is a functional of all three:"
+      - img [ref=e17753]
+      - paragraph [ref=e17840]:
+        - text: The functional derivative of
+        - img [ref=e17842]
+        - text: with respect to the 4-current gives the XC 4-potential, which includes both a scalar part
+        - img [ref=e17852]
+        - text: (the same as the non-relativistic XC potential) and a vector part
+        - img [ref=e17879]
+        - text: (the
+        - strong [ref=e17910]: XC magnetic field
+        - text: ). The XC magnetic field is the
+        - emphasis [ref=e17911]: "relativisti`c"
+        - text: ’ generalisation of the
+        - img [ref=e17913]
+        - text: of
+        - link "chapter 04" [ref=e17923] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.8.4; in the non-relativistic limit it reduces to the familiar
+        - img [ref=e17925]
+        - text: of non-collinear spin DFT.
+      - paragraph [ref=e17934]:
+        - text: The spin-current DFT is the
+        - emphasis [ref=e17935]: only
+        - text: fully-relativistic DFT. The simpler “density-only” generalisations (2c-KS with the non-collinear
+        - img [ref=e17937]
+        - text: as the only extra variable) are
+        - emphasis [ref=e17943]: approximations
+        - text: that ignore the current-dependence of the XC functional. The current-dependence of
+        - img [ref=e17945]
+        - text: is small for
+        - emphasis [ref=e17954]: atomic
+        - text: ’ and molecular systems (the current is localised to the bond region and the current-coupling to the XC functional is
+        - img [ref=e17956]
+        - text: –
+        - img [ref=e17964]
+        - text: of the spin-coupling), but it is
+        - emphasis [ref=e17971]: essential
+        - text: for the description of the
+        - strong [ref=e17972]: spin-Hall effect
+        - text: and the
+        - strong [ref=e17973]: inverse spin-Hall effect
+        - text: ", where the response of the XC functional to a spin current is the central object."
+      - blockquote [ref=e17974]:
+        - paragraph [ref=e17975]:
+          - strong [ref=e17976]: Reading note.
+          - text: The spin-current DFT is the
+          - emphasis [ref=e17977]: proper
+          - text: relativistic DFT, but the simpler 2c-KS with the non-collinear
+          - img [ref=e17979]
+          - text: is the
+          - emphasis [ref=e17985]: practical
+          - text: DFT. The difference is the
+          - strong [ref=e17986]: current-dependent XC kernel
+          - text: (the Vignale–Rasolt kernel of TDDFT,
+          - link "chapter 12" [ref=e17987] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: §12.4), which is only needed for time-dependent or transport properties. For static ground-state properties (bond lengths, vibrational frequencies, magnetic anisotropies, band structures) the simpler 2c-KS is adequate.
+      - heading "15.6.4 Time-reversal symmetry and Kramers degeneracy" [level=3] [ref=e17988]
+      - paragraph [ref=e17989]:
+        - text: Time-reversal symmetry is the
+        - strong [ref=e17990]: central symmetry
+        - text: of all spin-orbit-coupled systems. The
+        - strong [ref=e17991]: time-reversal operator
+        - img [ref=e17993]
+        - text: is antiunitary (
+        - img [ref=e18004]
+        - text: ) and, in the Pauli basis, takes the form
+      - img [ref=e18036]
+      - paragraph [ref=e18063]:
+        - text: where
+        - img [ref=e18065]
+        - text: is complex conjugation. The action on a 2-component spinor is
+      - img [ref=e18075]:
+        - generic [ref=e18077]:
+          - generic [ref=e18085]:
+            - img [ref=e18089]
+            - img [ref=e18123]
+          - generic [ref=e18134]:
+            - img [ref=e18138]
+            - img [ref=e18176]
+          - generic [ref=e18180]:
+            - img [ref=e18184]
+            - img [ref=e18220]
+      - paragraph [ref=e18224]:
+        - text: The time-reversal operator squares to
+        - img [ref=e18226]
+        - text: for a spin-½ particle,
+        - img [ref=e18234]
+        - text: ", and the eigenvalues of"
+        - img [ref=e18254]
+        - text: are
+        - emphasis [ref=e18264]: not
+        - img [ref=e18266]
+        - text: (because
+        - img [ref=e18274]
+        - text: is antiunitary); instead, the
+        - emphasis [ref=e18284]: consequences
+        - text: of
+        - img [ref=e18286]
+        - text: for the spectrum are encoded in the
+        - strong [ref=e18296]: Kramers theorem
+        - text: ": every eigenstate of a time-reversal-invariant Hamiltonian is at least"
+        - strong [ref=e18297]: two-fold degenerate
+        - text: . The two degenerate states are called a
+        - strong [ref=e18298]: Kramers pair
+        - text: and are related by
+      - img [ref=e18300]
+      - paragraph [ref=e18340]:
+        - text: The Kramers degeneracy is the
+        - emphasis [ref=e18341]: only
+        - text: degeneracy that
+        - emphasis [ref=e18342]: cannot
+        - text: be lifted by a time-reversal-invariant perturbation. In a crystal, the Kramers degeneracy splits at the
+        - img [ref=e18344]
+        - text: point (where the two states can be mixed by a
+        - img [ref=e18350]
+        - text: coupling) but is preserved at every
+        - emphasis [ref=e18361]: "generi`c"
+        - text: ’
+        - img [ref=e18363]
+        - text: point in the Brillouin zone (away from time-reversal- invariant momenta). In a molecule, the Kramers degeneracy splits in a magnetic field (which breaks time-reversal) but is preserved in zero field.
+      - paragraph [ref=e18369]:
+        - text: The Kramers pair is the
+        - strong [ref=e18370]: fundamental building block
+        - text: of all spin-orbit-coupled band theory. The Bloch states of a spin-orbit-coupled solid form
+        - emphasis [ref=e18371]: Kramers pairs
+        - img [ref=e18373]
+        - text: at every
+        - img [ref=e18408]
+        - text: . The
+        - strong [ref=e18414]: Chern number
+        - text: of a filled Kramers pair, integrated over the Brillouin zone, is the
+        - strong [ref=e18415]:
+          - img [ref=e18417]
+          - text: invariant
+        - text: that distinguishes a topological insulator from a trivial insulator — see
+        - link "chapter 16" [ref=e18426] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-16/
+        - text: §16.3. The
+        - strong [ref=e18427]: spin-Hall conductivity
+        - text: of §15.8 below is a sum of
+        - emphasis [ref=e18428]: Berry-phase contributions
+        - text: from every Kramers pair, weighted by the Fermi occupation.
+      - blockquote [ref=e18429]:
+        - paragraph [ref=e18430]:
+          - strong [ref=e18431]: Reading note.
+          - text: The Kramers degeneracy is the
+          - emphasis [ref=e18432]: only
+          - text: degeneracy of a time-reversal-invariant spin-orbit system. The non-relativistic “spin-up / spin-down” degeneracy is
+          - emphasis [ref=e18433]: not
+          - text: present in a spin-orbit-coupled system (the spin is
+          - emphasis [ref=e18434]: not
+          - text: a good quantum number, only the
+          - emphasis [ref=e18435]: total
+          - text: angular momentum
+          - img [ref=e18437]
+          - text: is). The Kramers pair is the relativistic replacement for the non-relativistic spin-up / spin-down pair. In a collinear non-relativistic magnet (where time-reversal is
+          - emphasis [ref=e18442]: broken
+          - text: by the magnetisation), the spin-up / spin-down pair is the fundamental building block. In a non-magnetic spin-orbit- coupled system, the Kramers pair is.
+      - heading "15.6.5 Chapter diagrams" [level=3] [ref=e18443]
+      - paragraph [ref=e18444]:
+        - text: The chapter’s two structural diagrams are below. The first is a flowchart of the
+        - strong [ref=e18445]: relativistic methods hierarchy
+        - text: — the path from the Schrödinger equation to the four practical relativistic DFT methods used in production. The second is a state diagram of the
+        - strong [ref=e18446]: Kramers pair
+        - text: — the fundamental excitation of a spin-orbit-coupled system.
+      - figure [ref=e18448]:
+        - code [ref=e18449]:
+          - document [ref=e18450]:
+            - generic [ref=e18452]:
+              - generic [ref=e18464]:
+                - generic [ref=e18468]: relativistic limit
+                - generic [ref=e18472]: exact limit
+                - generic [ref=e18476]: Foldy–Wouthuysen
+                - generic [ref=e18480]: DKH transformation
+                - generic [ref=e18484]: regular approx
+                - generic [ref=e18488]: exact decoupling
+                - generic [ref=e18492]: KS substitution
+                - generic [ref=e18496]: project positive-energy
+                - generic [ref=e18500]: basis-set truncation
+                - generic [ref=e18504]: basis-set truncation
+                - generic [ref=e18508]: PP approximation
+                - generic [ref=e18512]: current-dependent XC
+              - generic [ref=e18513]:
+                - generic [ref=e18519]: Schrödingerequation(non-relativistic)
+                - generic [ref=e18525]: Dirac equation(4-component,exact)
+                - generic [ref=e18531]: Pauli Hamiltonian(2-component,O(1/c²) expansion)
+                - generic [ref=e18537]: DKH2(2-component,O(1/c⁴))
+                - generic [ref=e18543]: ZORA(2-component,regularised)
+                - generic [ref=e18549]: X2C(2-component,exact)
+                - generic [ref=e18555]: Scalar-relativistic(SR) PP
+                - generic [ref=e18561]: Fully-relativistic(FR) PP / PAW
+                - generic [ref=e18566]: 4c Dirac–Kohn–Sham
+                - generic [ref=e18572]: Spin-currentDFT (4-current)
+        - button "Download this diagram as a PNG" [ref=e18573] [cursor=pointer]:
+          - img [ref=e18574]
+          - generic [ref=e18577]: Download PNG
+      - blockquote [ref=e18578]:
+        - paragraph [ref=e18579]:
+          - strong [ref=e18580]: Reading the diagram.
+          - text: The
+          - emphasis [ref=e18581]: columns
+          - text: "(left to right) are the increasing levels of relativistic fidelity: non-relativistic (left) → Pauli → X2C → 4c DKS → spin-current DFT (right). The “exact” answer (the 4c Dirac equation) is at the top right; the practical production answer is the FR PAW at the bottom right."
+      - paragraph [ref=e18582]: "The Kramers-pair state diagram:"
+      - figure [ref=e18584]:
+        - code [ref=e18585]:
+          - document [ref=e18586]:
+            - generic [ref=e18588]:
+              - generic [ref=e18596]:
+                - generic [ref=e18602]: Kramers state 1(j, m_j)
+                - generic [ref=e18608]: time-reversal𝒯Ψ₁ = Ψ₂
+                - generic [ref=e18614]: time-reversal𝒯Ψ₂ = -Ψ₁
+                - generic [ref=e18620]: magnetic fieldZeeman splitting
+                - generic [ref=e18626]: magnetic fieldZeeman splitting
+                - generic [ref=e18632]: ionisation /quasiparticle decay
+                - generic [ref=e18638]: ionisation /quasiparticle decay
+              - generic [ref=e18639]:
+                - generic [ref=e18646]: K1
+                - generic [ref=e18651]: K2
+        - button "Download this diagram as a PNG" [ref=e18655] [cursor=pointer]:
+          - img [ref=e18656]
+          - generic [ref=e18659]: Download PNG
+      - blockquote [ref=e18660]:
+        - paragraph [ref=e18661]:
+          - strong [ref=e18662]: Reading the diagram.
+          - text: The two Kramers states
+          - img [ref=e18664]
+          - text: and
+          - img [ref=e18677]
+          - text: are related by the antiunitary time-reversal operator
+          - img [ref=e18690]
+          - text: . In the absence of a magnetic field, the two states are
+          - emphasis [ref=e18700]: degenerate
+          - text: (the Kramers degeneracy of §15.6.4). A magnetic field breaks time-reversal symmetry and splits the Kramers pair by the
+          - strong [ref=e18701]: Zeeman energy
+          - img [ref=e18703]
+          - text: . The Kramers pair is the fundamental excitation of a spin-orbit-coupled system — see
+          - link "chapter 16" [ref=e18724] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-16/
+          - text: §16.3 for the topological classification.
+      - 'heading "15.7 Worked example: the Au₂ dimer" [level=2] [ref=e18725]'
+      - paragraph [ref=e18726]:
+        - text: The Au₂ dimer is the canonical textbook example of a relativistic effect in chemistry. The non-relativistic calculation gets the bond length wrong by
+        - img [ref=e18728]
+        - text: Å (
+        - img [ref=e18738]
+        - text: ) and the binding energy wrong by
+        - img [ref=e18749]
+        - text: eV (
+        - img [ref=e18759]
+        - text: ). The scalar-relativistic calculation alone gets the bond length within
+        - img [ref=e18770]
+        - text: Å, and the fully-relativistic calculation (with spin-orbit) reproduces the experimental bond length to within
+        - img [ref=e18780]
+        - text: Å. This example walks through the calculation at all three levels and shows the breakdown of the relativistic correction.
+      - paragraph [ref=e18790]:
+        - strong [ref=e18791]: Experimental reference.
+        - text: The Au–Au bond length in Au₂, measured by gas-phase electronic spectroscopy [Huber and Herzberg 1979], is
+        - img [ref=e18793]
+        - text: Å. The binding energy, measured by photoionisation of the Au₂⁻ anion [Handschuh et al. 1995], is
+        - img [ref=e18810]
+        - text: eV. The vibrational frequency is
+        - img [ref=e18833]
+        - text: cm⁻¹.
+      - paragraph [ref=e18847]:
+        - strong [ref=e18848]: Level 0 — non-relativistic calculation.
+        - text: A non-relativistic scalar-relativistic calculation (no relativistic effects, Schrödinger equation, large-core pseudopotential) on Au₂ gives a bond length of
+        - img [ref=e18850]
+        - text: Å and a binding energy of
+        - img [ref=e18860]
+        - text: eV. The Au–Au bond is too
+        - emphasis [ref=e18869]: long
+        - text: (the missing relativistic contraction of the 6
+        - emphasis [ref=e18870]: s
+        - text: orbital means the valence electrons do not feel the full nuclear attraction) and too
+        - emphasis [ref=e18871]: "wea`k"
+        - text: ’ (the longer bond has less orbital overlap). The non-relativistic calculation is qualitatively
+        - emphasis [ref=e18872]: wrong
+        - text: — it predicts an Au–Au bond length comparable to the Ag–Ag bond length (which is
+        - img [ref=e18874]
+        - text: Å but is, paradoxically,
+        - emphasis [ref=e18883]: shorter
+        - text: than the non-relativistic Au–Au prediction).
+      - paragraph [ref=e18884]:
+        - strong [ref=e18885]: Level 1 — scalar-relativistic calculation.
+        - text: A calculation with the scalar-relativistic pseudopotential (the SR terms of
+        - img [ref=e18887]:
+          - link [ref=e18890] [cursor=pointer]:
+            - /url: "#"
+        - text: but no spin-orbit coupling) on Au₂ gives a bond length of
+        - img [ref=e18900]
+        - text: Å and a binding energy of
+        - img [ref=e18911]
+        - text: eV. The 6
+        - emphasis [ref=e18921]: s
+        - text: orbital is contracted by
+        - img [ref=e18923]
+        - text: ", the 5"
+        - emphasis [ref=e18933]:
+          - code [ref=e18934]: d*' orbital is expanded by $\sim 5\%$, and the Au–Au bond is *shorter* and stronger than the non-relativistic prediction. The SR calculation reproduces the *tren
+          - text: d
+        - text: ’ correctly but is still off by
+        - img [ref=e18936]
+        - text: Å in the bond length and
+        - img [ref=e18947]
+        - text: eV in the binding energy.
+      - paragraph [ref=e18957]:
+        - strong [ref=e18958]: Level 2 — fully-relativistic calculation with spin-orbit.
+        - text: A calculation with the fully-relativistic PAW pseudopotential (SR + SOC, the 2c-X2C method of §15.3.4) on Au₂ gives a bond length of
+        - img [ref=e18960]
+        - text: Å and a binding energy of
+        - img [ref=e18969]
+        - text: eV. The spin-orbit correction
+        - emphasis [ref=e18977]: contracts
+        - text: the bond by an additional
+        - img [ref=e18979]
+        - text: Å and
+        - emphasis [ref=e18989]: strengthens
+        - text: the bond by an additional
+        - img [ref=e18991]
+        - text: eV. The 2c-X2C calculation reproduces the experimental values to within
+        - img [ref=e19002]
+        - text: Å and
+        - img [ref=e19013]
+        - text: eV.
+      - paragraph [ref=e19023]:
+        - text: The
+        - strong [ref=e19024]: physical mechanism
+        - text: of the Au₂ relativistic chemistry is the relativistic contraction of the 6
+        - emphasis [ref=e19025]: s
+        - text: orbital and the corresponding destabilisation of the 5
+        - emphasis [ref=e19026]: d
+        - text: ’ orbital. The 6s orbital of gold is the outermost occupied orbital; its contraction moves electron density closer to the nucleus and
+        - emphasis [ref=e19027]: increases
+        - text: the 6
+        - emphasis [ref=e19028]: s
+        - text: binding energy. The 5d* orbital of gold is the next shell; its destabilisation
+        - emphasis [ref=e19029]: decreases
+        - text: the 5d–6s gap. The result is that the 6
+        - emphasis [ref=e19030]: s and 5
+        - text: d levels of gold are
+        - emphasis [ref=e19031]: closer in energy
+        - text: than the corresponding 5
+        - emphasis [ref=e19032]: s
+        - text: and 4d* levels of silver, and the chemistry of gold is dominated by the
+        - emphasis [ref=e19033]: mixing
+        - text: of the 6
+        - emphasis [ref=e19034]: s
+        - text: and 5d* orbitals in the Au–Au bond.
+      - paragraph [ref=e19035]:
+        - text: A quantitative estimate of the Au–Au bond length contraction uses the
+        - emphasis [ref=e19036]: expectation value
+        - text: of the relativistic mass-velocity term on the 6
+        - emphasis [ref=e19037]: s
+        - text: orbital. The non-relativistic 6
+        - emphasis [ref=e19038]: s
+        - text: orbital of gold has
+        - img [ref=e19040]
+        - text: a.u. (from the non-relativistic Dirac equation for the Au atom, projected onto the large component). The fully- relativistic 6
+        - emphasis [ref=e19064]: s
+        - text: orbital has
+        - img [ref=e19066]
+        - text: a.u. (from the same calculation, now including the kinetic- relativistic and Darwin corrections). The ratio
+        - img [ref=e19092]
+        - text: is a
+        - img [ref=e19137]
+        - text: contraction, in good agreement with the more elaborate self-consistent-field calculation of Pitzer (1975).
+      - blockquote [ref=e19145]:
+        - paragraph [ref=e19146]:
+          - strong [ref=e19147]: Numerical recipe.
+          - text: "The Au₂ calculation is:"
+        - list [ref=e19148]:
+          - listitem [ref=e19149]:
+            - text: Generate a PAW pseudopotential for Au with the
+            - img [ref=e19151]
+            - text: valence configuration (the PBE PAW in VASP includes spin-orbit and the
+            - img [ref=e19171]
+            - text: ","
+            - img [ref=e19179]
+            - text: semicore states).
+          - listitem [ref=e19186]:
+            - text: Place two Au atoms in a cubic box of side
+            - img [ref=e19188]
+            - text: Å.
+          - listitem [ref=e19194]:
+            - text: Sample the BZ at the
+            - img [ref=e19196]
+            - text: point only.
+          - listitem [ref=e19201]:
+            - text: Set the XC functional to PBE (
+            - link "chapter 05" [ref=e19202] [cursor=pointer]:
+              - /url: /DFT-notes/dft-notes/chapter-05/
+            - text: §5.2).
+          - listitem [ref=e19203]:
+            - text: Set
+            - code [ref=e19204]: LNONCOLLINEAR = .TRUE.' and
+            - text: "LSORBIT = .TRUE.’ for the SOC calculation; leave `LSORBIT = .FALSE.’ for the SR calculation."
+          - listitem [ref=e19205]:
+            - text: Set the plane-wave cutoff to
+            - img [ref=e19207]
+            - text: eV (the
+            - img [ref=e19215]
+            - text: semicore states require a higher cutoff).
+          - listitem [ref=e19222]:
+            - text: Scan the Au–Au distance from
+            - img [ref=e19224]
+            - text: Å to
+            - img [ref=e19232]
+            - text: Å in steps of
+            - img [ref=e19240]
+            - text: Å; fit a Morse or polynomial; extract
+            - img [ref=e19248]
+            - text: and
+            - img [ref=e19257]
+            - text: .
+      - blockquote [ref=e19265]:
+        - paragraph [ref=e19266]:
+          - strong [ref=e19267]: Reading note.
+          - text: The Au₂ example illustrates the
+          - emphasis [ref=e19268]: "rule of thum`b"
+          - text: ’ that the relativistic effects grow as
+          - img [ref=e19270]
+          - text: . Silver (
+          - img [ref=e19279]
+          - text: ) has a
+          - img [ref=e19290]
+          - text: correction — much smaller than gold’s, and a non-relativistic calculation on Ag₂ gives a bond length within
+          - img [ref=e19335]
+          - text: Å of experiment. Copper (
+          - img [ref=e19345]
+          - text: ) is fully non-relativistic; the Cu–Cu bond is reproduced without any relativistic correction.
+      - 'heading "15.8 Worked example: the spin Hall conductivity of Pt" [level=2] [ref=e19355]'
+      - paragraph [ref=e19356]:
+        - text: The
+        - strong [ref=e19357]: spin Hall effect
+        - text: (SHE) is the generation of a spin current transverse to an applied electric field in a non-magnetic material. The
+        - emphasis [ref=e19358]:
+          - text: intrinsi
+          - code [ref=e19359]: "c*' SHE is a property of the band structure: the Berry curvature of the Bloch states in a spin-orbit-coupled metal acts as a *fictitious magnetic fiel"
+          - text: d
+        - text: ’ in momentum space, and electrons in filled bands execute an anomalous Hall motion that adds up to a macroscopic spin current. The
+        - strong [ref=e19360]: spin Hall conductivity
+        - img [ref=e19362]
+        - text: "is the material parameter that quantifies the effect:"
+      - img [ref=e19376]
+      - paragraph [ref=e19406]:
+        - text: where
+        - img [ref=e19408]
+        - text: is the
+        - img [ref=e19419]
+        - text: "-th component of the spin current (a"
+        - emphasis [ref=e19424]: pseudovector
+        - text: with units of
+        - img [ref=e19426]
+        - text: ) and
+        - img [ref=e19454]
+        - text: the
+        - img [ref=e19463]
+        - text: "-th component of the applied electric field. The spin Hall conductivity is a"
+        - strong [ref=e19468]: rank-2 pseudotensor
+        - text: ; for a cubic material (such as Pt) it reduces to a single scalar
+        - img [ref=e19470]
+        - text: (with the diagonal
+        - img [ref=e19484]
+        - text: by symmetry in the time-reversal- invariant state).
+      - paragraph [ref=e19501]:
+        - text: The intrinsic spin Hall conductivity of a time-reversal-invariant metal is given by the
+        - strong [ref=e19502]: Kubo–Greenwood
+        - text: linear-response formula (
+        - link "chapter 12" [ref=e19503] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-12/
+        - text: "§12.3 generalised to a spin-current operator):"
+      - img [ref=e19505]
+      - paragraph [ref=e19692]:
+        - text: where
+        - img [ref=e19694]
+        - text: is the Fermi occupation,
+        - img [ref=e19700]
+        - text: the velocity operator, and
+        - img [ref=e19713]
+        - text: the spin-current operator
+      - img [ref=e19728]
+      - paragraph [ref=e19776]:
+        - text: with
+        - img [ref=e19778]
+        - text: the spin operator. The sum is over all
+        - emphasis [ref=e19808]: Kramers pairs
+        - img [ref=e19810]
+        - text: at each
+        - img [ref=e19824]
+        - text: ", and the Berry-curvature sum"
+        - img [ref=e19831]
+        - text: is the
+        - strong [ref=e19872]: spin Berry curvature
+        - text: of the Kramers pair.
+      - blockquote [ref=e19873]:
+        - paragraph [ref=e19874]:
+          - strong [ref=e19875]: Reading note.
+          - text: The sum over
+          - img [ref=e19877]
+          - text: in
+          - img [ref=e19883]:
+            - link [ref=e19886] [cursor=pointer]:
+              - /url: "#"
+          - text: includes
+          - emphasis [ref=e19895]: "unoccupie`d"
+          - text: ’ states as well as occupied; the spin Berry curvature is a sum over
+          - emphasis [ref=e19896]: all
+          - text: states, weighted by the energy denominator. The intrinsic SHE is therefore a
+          - emphasis [ref=e19897]: band-structure
+          - text: property, not a Fermi-surface property — the contribution comes from the
+          - emphasis [ref=e19898]: filled
+          - text: ’ bands (which set the occupied* part of the sum) and from the
+          - emphasis [ref=e19899]: coupling
+          - text: to the empty bands. The intrinsic SHE is
+          - emphasis [ref=e19900]: large
+          - text: in materials with a
+          - emphasis [ref=e19901]: small
+          - text: band gap near the Fermi level, because the energy denominator in
+          - img [ref=e19903]:
+            - link [ref=e19906] [cursor=pointer]:
+              - /url: "#"
+          - text: is small.
+      - paragraph [ref=e19915]:
+        - text: For a
+        - strong [ref=e19916]: topological insulator
+        - text: the intrinsic spin Hall conductivity is quantised. The formula is
+      - img [ref=e19918]
+      - paragraph [ref=e19950]:
+        - text: where
+        - img [ref=e19952]
+        - text: is the
+        - strong [ref=e19958]: Chern number
+        - text: of the occupied Kramers pair. The factor of
+        - img [ref=e19960]
+        - text: (compared to the charge Hall conductivity
+        - img [ref=e19971]
+        - text: ) is because the spin current carries
+        - img [ref=e20002]
+        - text: per electron. For a
+        - emphasis [ref=e20012]: time-reversal-invariant
+        - text: topological insulator, the Chern number vanishes by symmetry, but the
+        - strong [ref=e20013]:
+          - img [ref=e20015]
+          - text: invariant
+        - img [ref=e20025]
+        - text: takes its place, and the spin Hall conductivity is quantised to
+      - img [ref=e20031]
+      - paragraph [ref=e20081]:
+        - text: in units of the spin Hall conductivity quantum
+        - img [ref=e20083]
+        - text: . This is the connection to
+        - link "chapter 16" [ref=e20137] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-16/
+        - text: §16.3 — the quantised spin Hall conductivity is one of the two hallmark signatures of a topological insulator (the other being the
+        - emphasis [ref=e20138]: helical edge states
+        - text: ).
+      - blockquote [ref=e20139]:
+        - paragraph [ref=e20140]:
+          - strong [ref=e20141]: The Pt calculation.
+          - text: Pt is a strong spin-orbit-coupled metal (5
+          - emphasis [ref=e20142]:
+            - code [ref=e20143]: "d*' SOC splitting $\\sim 1.5$ eV) with a large intrinsic spin Hall conductivity. The experimental value, measured by spin-torque ferromagnetic resonance [Liu et al. 2011, *Science* **336**, 555], is $\\sigma_{xy}^s \\approx 2400 \\;(\\hbar/e)(\\Omega\\,\\text{m})^{-1}$ at room temperature. A first-principles calculation with the 2c-X2C method of §15.3.4, the PBE XC functional, and a $30 \\times 30 \\times 30$ k-point mesh gives $\\sigma_{xy}^s \\approx 2200\\;(\\hbar/e)(\\Omega\\,\\text{m})^{-1}$, in good agreement with the experiment. The *non-relativisti"
+            - text: c
+          - text: ’ calculation (no SOC) gives
+          - img [ref=e20145]
+          - text: by symmetry, because the spin current operator
+          - img [ref=e20163]
+          - text: is identically zero for a non-relativistic Hamiltonian with
+          - img [ref=e20178]
+          - text: as a good quantum number. The spin Hall effect is therefore a
+          - emphasis [ref=e20190]: "purely relativisti`c"
+          - text: ’ effect — it cannot be computed without spin-orbit coupling.
+        - paragraph [ref=e20191]:
+          - text: The dominant contribution to the Pt spin Hall conductivity comes from the
+          - emphasis [ref=e20192]: resonant
+          - text: avoided crossings of the 5
+          - emphasis [ref=e20193]: "`d"
+          - text: ’ bands near the Fermi level (the so-called “Kane-Mele” resonances of the FCC Pt Brillouin zone). The Berry curvature is sharply peaked at these avoided crossings, and the sum
+          - img [ref=e20195]:
+            - link [ref=e20198] [cursor=pointer]:
+              - /url: "#"
+          - text: is dominated by the contributions from the Fermi-surface states. The intrinsic SHE of Pt is therefore a
+          - emphasis [ref=e20207]: resonant
+          - text: "effect: the spin Hall conductivity is large"
+          - emphasis [ref=e20208]: because
+          - text: the 5d* bands are close in energy, and small changes in the lattice parameter or the doping level can change the sign and the magnitude of
+          - img [ref=e20210]
+          - text: .
+      - paragraph [ref=e20223]:
+        - text: A worked numerical evaluation of the Kubo formula
+        - img [ref=e20225]:
+          - link [ref=e20228] [cursor=pointer]:
+            - /url: "#"
+        - text: for Pt is the following.
+      - paragraph [ref=e20237]:
+        - strong [ref=e20238]: Step 1 — self-consistent 2c-X2C calculation.
+        - text: Compute the self-consistent ground state of Pt with the 2c-X2C method (§15.6.2), a plane-wave basis set with cutoff
+        - img [ref=e20240]
+        - text: eV, a
+        - img [ref=e20248]
+        - text: Monkhorst–Pack mesh for the SCF, and the PBE XC functional. The result is a set of Bloch spinor orbitals
+        - img [ref=e20265]
+        - text: and eigenvalues
+        - img [ref=e20285]
+        - text: for every band
+        - img [ref=e20298]
+        - text: and every
+        - img [ref=e20304]
+        - text: point.
+      - paragraph [ref=e20310]:
+        - strong [ref=e20311]: Step 2 — Wannier interpolation.
+        - text: The Kubo formula
+        - img [ref=e20313]:
+          - link [ref=e20316] [cursor=pointer]:
+            - /url: "#"
+        - text: requires a
+        - emphasis [ref=e20325]: dense
+        - text: k-point sampling (much denser than the SCF mesh) for convergence. The standard approach is to interpolate the Bloch Hamiltonian onto a fine mesh using
+        - strong [ref=e20326]: maximally-localised Wannier functions
+        - text: (the
+        - emphasis [ref=e20327]: Wannier90
+        - text: / Wannierier code; see
+        - link "chapter 11" [ref=e20328] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-11/
+        - text: §11.7 for the band projection step). The Wannier-interpolated Hamiltonian is a
+        - emphasis [ref=e20329]: real-space tight-binding
+        - text: model with the same spectrum as the original DFT calculation, and the Berry curvature can be evaluated analytically from the Wannier centres.
+      - paragraph [ref=e20330]:
+        - strong [ref=e20331]: Step 3 — evaluate the Kubo formula.
+        - text: Compute the spin Berry curvature at every
+        - img [ref=e20333]
+        - text: point on a
+        - img [ref=e20340]
+        - text: mesh, sum over the occupied Kramers pairs, and divide by the BZ volume. The result is the spin Hall conductivity in units of
+        - img [ref=e20360]
+        - text: .
+      - paragraph [ref=e20388]: The numerical value for Pt with the above setup is
+      - img [ref=e20390]
+      - paragraph [ref=e20480]:
+        - text: This is
+        - img [ref=e20482]
+        - text: of the spin Hall conductivity quantum
+        - img [ref=e20496]
+        - text: ", i.e. a"
+        - img [ref=e20510]
+        - text: invariant of
+        - img [ref=e20520]
+        - text: with a
+        - emphasis [ref=e20529]: non-zero
+        - text: but not quantised* spin Hall conductivity. Pt is therefore a
+        - emphasis [ref=e20530]: trivial
+        - text: metal with a large
+        - emphasis [ref=e20531]: "non-quantise`d"
+        - text: ’ intrinsic spin Hall conductivity — the
+        - emphasis [ref=e20532]: opposite
+        - text: limit of a topological insulator (which has
+        - img [ref=e20534]
+        - text: quantised to a multiple of
+        - img [ref=e20548]
+        - text: and a
+        - img [ref=e20562]
+        - text: invariant of
+        - img [ref=e20572]
+        - text: ).
+      - blockquote [ref=e20581]:
+        - paragraph [ref=e20582]:
+          - strong [ref=e20583]: Reading note.
+          - text: The intrinsic spin Hall conductivity of Pt is
+          - emphasis [ref=e20584]: large
+          - text: but not quantised
+          - emphasis [ref=e20585]: ", because Pt is a metal with a finite density of states at the Fermi level. The quantised spin Hall effect is a property of *insulators"
+          - text: with a non-trivial
+          - img [ref=e20587]
+          - text: invariant — see
+          - link "chapter 16" [ref=e20596] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-16/
+          - text: for the full discussion. The point of the Pt example is that the
+          - emphasis [ref=e20597]: "intrinsi`c"
+          - text: ’ spin Hall effect is a measurable, first-principles property of a spin-orbit-coupled metal that cannot be computed without the relativistic machinery of this chapter.
+      - heading "15.9 Problems" [level=2] [ref=e20598]
+      - paragraph [ref=e20599]:
+        - text: Three problems, in order of increasing difficulty. The first is a pencil-and-paper exercise on the
+        - img [ref=e20601]
+        - text: scaling of the Pauli corrections. The second is a numerical calculation of the Au₂ potential-energy curve with a toy model. The third is a full spin-Hall conductivity calculation on a model tight-binding lattice.
+      - group [ref=e20606]:
+        - generic "▸ Problem 1 (easy) — the rule of thumb" [ref=e20607] [cursor=pointer]:
+          - text: ▸ Problem 1 (easy) — the
+          - img [ref=e20609]
+          - text: rule of thumb
+        - text: The spin-orbit correction to a hydrogenic orbital scales as (a) Compute for the level of hydrogen ( , ), the level of copper ( , ), the level of silver ( , ), the level of gold ( , ), the level of lead ( , ), and the level of oganesson ( , ). Express your answer in eV. (b) Which of these is comparable to a chemical bond energy ( – eV)? (c) The spin-orbit splitting of an shell has a factor in addition to the scaling. How does this modify the answer for a shell (e.g. the shell of Au) versus a shell (e.g. the shell of Pb)? Which is more important in the chemistry of Au, the or the splitting?
+      - group [ref=e20617]:
+        - generic "▸ Show answer" [ref=e20618] [cursor=pointer]
+        - text: "**Part (a).** Substituting the values: | Element | | | (eV) | |:--------|:----|:----|:--------------------------| | H | 1 | 2 | | | Cu | 29 | 3 | | | Ag | 47 | 4 | | | Au | 79 | 5 | | | Pb | 82 | 6 | | | Og | 118 | 7 | | The formula gives . Hydrogen's splitting is invisible in chemistry; gold's is comparable to a chemical bond; oganesson's is larger than any chemical bond. **Part (b).** Gold and lead (and any element with ) have a spin-orbit splitting comparable to a chemical bond. The chemistry of these elements *cannot* be described by non-relativistic quantum chemistry. **Part (c).** The factor gives (p shell) a factor of and (d shell) a factor of . So a -shell splitting is *smaller* than a -shell splitting for the same and . But the shell of Au is at lower than the shell, and the formula gives eV for the and eV for the (with the corrected and ). The splitting of Pb is therefore *larger* than the splitting of Au. In the chemistry of Au, the splitting is the most important (because the electrons are the *valence* electrons of Au), and in the chemistry of Pb, the splitting is the most important. The general rule is that the spin-orbit splitting is largest for the *outermost occupie`d*' shell of the atom."
+      - group [ref=e20619]:
+        - generic "▸ Problem 2 (medium) — a toy Au₂ Morse curve" [ref=e20620] [cursor=pointer]
+        - text: "The Au–Au bond can be modelled as a Morse oscillator with the binding energy, the equilibrium bond length, and the curvature parameter. The vibrational frequency is , where is the reduced mass (in atomic units, ). (a) Using the *experimental* values Å, eV, cm⁻¹, compute the Morse parameter . (b) The non-relativistic Au₂ calculation gives Å, eV, cm⁻¹. The scalar-relativistic calculation gives Å, eV, cm⁻¹. The fully-relativistic calculation gives the experimental values. Compute the Morse parameter at each level and explain the trend. (c) The *zero-point energy* of the Morse oscillator is . Compute the ZPE at each level and explain why the *relativistic*' ZPE is larger than the *non-relativisti`c*' ZPE."
+      - group [ref=e20621]:
+        - generic "▸ Show answer" [ref=e20622] [cursor=pointer]
+        - text: "**Part (a).** From the experimental data: Convert to atomic units: cm⁻¹ , eV , . So Equivalently, Å⁻¹. **Part (b).** The Morse parameter at each level is: | Level | (Å) | (eV) | (cm⁻¹) | (Å⁻¹) | |:------|:----------|:-----------|:------------------|:----------| | Non-rel | 3.00 | 1.60 | 130 | 0.92 | | SR | 2.55 | 2.10 | 175 | 1.04 | | Full | 2.47 | 2.30 | 191 | 1.11 | The trend is that *increases* as we go from non-relativistic to SR to fully-relativistic. The physical reason is that the relativistic bond is *shorter* and stiffer than the non-relativistic bond; the *stiffness* (the second derivative of at the minimum, ) is therefore larger. The relativistic -orbital contraction moves the electron density closer to the nuclei, and the bond has more electron density to resist displacement. **Part (c).** The ZPE is At each level: | Level | (eV) | ZPE (eV) | |:------|:----------------------|:---------| | Non-rel | 0.0161 | 0.0080 | | SR | 0.0217 | 0.0108 | | Full | 0.0237 | 0.0118 | The relativistic ZPE is *larger* than the non-relativistic ZPE because is larger (stiffer bond). The ZPE correction is *important* for the *binding energy*: the ZPE-corrected binding energy is | Level | (eV) | ZPE (eV) | (eV) | |:------|:-----------|:---------|:-----------| | Non-rel | 1.60 | 0.0080 | 1.59 | | SR | 2.10 | 0.0108 | 2.09 | | Full | 2.30 | 0.0118 | 2.29 | The ZPE correction is of in all three cases — small, but not zero. The ZPE correction must be included when comparing the calculated to the experimental *enthalpy* of dissociation at room temperature, which is ( eV at 300 K). The ZPE and thermal corrections together shift the experimental by eV, which is larger than the *non-relativisti`c*' correction to the Au–Au bond energy."
+      - group [ref=e20623]:
+        - generic "▸ Problem 3 (hard) — a 2-band Kane–Mele model on a square lattice" [ref=e20624] [cursor=pointer]
+        - text: "Consider the **Kane–Mele model** on a 2-D square lattice with two orbitals per site ( and ) and intrinsic spin-orbit coupling . The Bloch Hamiltonian is where is the Pauli matrix in the orbital basis, is the Pauli matrix in the spin basis, and is the nearest-neighbour hopping. This is a **time-reversal-invariant** model with a non-trivial invariant for . (a) Diagonalise at every in the Brillouin zone. Show that the eigenvalues come in Kramers pairs at every . (b) Compute the **Chern number** of the *lower* Kramers pair (i.e. the sum of the Berry curvature of the lower band over the BZ, divided by ). Show that the Chern number is *zero* by time-reversal symmetry, but that the *spin Chern number* (the same sum weighted by the spin expectation value ) is *non-zero*. (c) Compute the **spin Hall conductivity** of this model at zero temperature using the Kubo formula of §15.8. Express your answer in units of and verify that it is quantised to (the topological invariant of §15.8). *Hint*: at every , the two spin blocks and are *decouple`d*' (because is diagonal in the spin basis). Each block is a 2-band model in the orbital basis, and the Chern number of each block can be computed from the **dressed Chern number** formula where and is the vector of coefficients of the Pauli matrices in the 2-band Hamiltonian ."
+      - group [ref=e20625]:
+        - generic "▸ Show answer" [ref=e20626] [cursor=pointer]
+        - text: "**Part (a).** The Hamiltonian , with and . The eigenvalues are The eigenstates are direct products of the orbital eigenstates of and the spin eigenstates of . The -spin block (with ) has Hamiltonian , with eigenstates at energy and at energy . The -spin block (with ) is the same with . The time-reversal operator maps the state at to the state at (because under time-reversal and flips the spin). Since (the Hamiltonian is time-reversal invariant), the state at and the state at are *degenerate*: the **Kramers pair** of §15.6.4. In particular, the energies come in Kramers pairs . **Part (b).** The two spin blocks are *decouple`d*' and each is a 2-band model in the orbital basis. The -spin block has Hamiltonian , which is *purely diagonal* in the basis (there is no or component). The Chern number of a purely diagonal 2-band model is *identically zero* — the dressed Chern number formula reduces to a total derivative of a function of alone, and the integral over the BZ vanishes because the function is single-valued. So and . The *total* Chern number is , as required by time-reversal symmetry. The *spin* Chern number, is also *zero* for this particular model (because the two spin blocks have the same Berry curvature, just with opposite sign of ). This is the *expecte`d*' result for the Kane–Mele model on a *bipartite* square lattice: the spin Chern number is non-zero on the honeycomb lattice (the Kane–Mele model *par excellence*) but is zero on the square lattice. **Part (c).** The spin Hall conductivity of the Kane–Mele model on the square lattice is therefore *zero* in the simple form of the model. To get a *non-zero* spin Hall conductivity, we need to add either a Rashba spin-orbit term (which breaks inversion symmetry) or a second-neighbour hopping (which makes the lattice non-bipartite). The *quantise`d*' spin Hall conductivity of is obtained in the **Bernevig–Hughes–Zhang (BHZ) model** of the HgTe quantum well, which is a Kane–Mele-type model on a *honeycom`b*' lattice with intrinsic SOC that opens a *non-trivial* gap. The BHZ model is the *prototypical* 2-D topological insulator; see [chapter 16](/DFT-notes/dft-notes/chapter-16/) §16.3 for the full discussion. The lesson is that the *intrinsic*' spin Hall effect is topological in origin: a *clean*, time-reversal-invariant, gapped system has a invariant, and the spin Hall conductivity is *quantise`d*' in units of to that invariant."
+      - heading "15.10 Cross-references" [level=2] [ref=e20627]
+      - paragraph [ref=e20628]:
+        - strong [ref=e20629]: Backward (prerequisite) chapters.
+      - list [ref=e20630]:
+        - listitem [ref=e20631]:
+          - link "Chapter 04" [ref=e20632] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: "§4.9 is the immediate prerequisite: the non-relativistic limit of the Dirac equation and the Pauli expansion (§4.9.2), the scalar-relativistic approximation (§4.9.3), and the spin-orbit-coupled KS DFT (§4.9.4) are all the"
+          - emphasis [ref=e20633]: raw material
+          - text: of the present chapter. The current chapter derives these results
+          - emphasis [ref=e20634]: "from scratc`h"
+          - text: ’ (from the relativistic energy- momentum relation) and generalises them to the modern two-component and four-component machinery.
+        - listitem [ref=e20635]:
+          - link "Chapter 08" [ref=e20636] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: on pseudopotentials is the bridge from the atomic Dirac equation to a
+          - emphasis [ref=e20637]: molecular
+          - text: or solid-state calculation. The scalar-relativistic pseudopotential of §15.4.4 is the practical implementation of the SR approximation in plane- wave DFT; the fully-relativistic PAW of §15.5.4 is the practical implementation of the SOC.
+        - listitem [ref=e20638]:
+          - link "Chapter 07" [ref=e20639] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: on periodic boundary conditions is the bridge to
+          - emphasis [ref=e20640]: solid-state
+          - text: relativistic DFT. The Bloch states of a spin-orbit-coupled solid are
+          - emphasis [ref=e20641]: 2-component spinors
+          - text: at every
+          - img [ref=e20643]
+          - text: point, and the Kramers pair of §15.6.4 is the fundamental excitation of the band structure.
+        - listitem [ref=e20649]:
+          - paragraph [ref=e20650]:
+            - link "Chapter 12" [ref=e20651] [cursor=pointer]:
+              - /url: /DFT-notes/dft-notes/chapter-12/
+            - text: on TDDFT is the bridge to the
+            - emphasis [ref=e20652]: time-dependent
+            - text: relativistic DFT. The spin-current DFT of §15.6.3 is the relativistic generalisation of the Runge–Gross theorem; the spin Hall conductivity of §15.8 is a
+            - emphasis [ref=e20653]: linear-response
+            - text: property that uses the Kubo formula of
+            - link "chapter 12" [ref=e20654] [cursor=pointer]:
+              - /url: /DFT-notes/dft-notes/chapter-12/
+            - text: §12.3.
+            - strong [ref=e20655]: Forward (downstream) chapters.
+        - listitem [ref=e20656]:
+          - link "Chapter 16" [ref=e20657] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-16/
+          - text: on topological materials is the immediate downstream user of the present chapter. The Kramers pair of §15.6.4 is the central object of the
+          - img [ref=e20659]
+          - text: topological classification of band insulators; the spin Hall conductivity of §15.8 is the order parameter of the
+          - emphasis [ref=e20668]: quantum spin Hall insulator
+          - text: ; the
+          - emphasis [ref=e20669]: intrinsic
+          - text: spin-orbit coupling of §15.5 is the source of the band inversion in 3-D topological insulators.
+        - listitem [ref=e20670]:
+          - link "Chapter 17" [ref=e20671] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-17/
+          - text: on magnetic materials uses the spin-orbit coupling of §15.5 to derive the
+          - emphasis [ref=e20672]: magnetocrystalline anisotropy
+          - text: — the preferred direction of the magnetisation in a magnetic material, which is the source of the permanent magnet. The
+          - emphasis [ref=e20673]:
+            - text: anisotropi
+            - code [ref=e20674]: "c*' part of the magnetic energy is $E_\\text{aniso} \\sim \\xi \\langle \\hat L \\cdot \\hat S \\rangle$, and the *preference* of the magnetisation for one crystallographic direction over another is a *relativisti"
+            - text: c
+          - text: ’ effect (it would vanish in the non-relativistic limit).
+      - heading "15.11 What we left out" [level=2] [ref=e20675]
+      - paragraph [ref=e20676]:
+        - text: The chapter is
+        - emphasis [ref=e20677]: complete
+        - text: for the qualitative and
+        - emphasis [ref=e20678]: quantitative
+        - text: description of relativistic effects in DFT, but the following topics were not covered.
+      - list [ref=e20679]:
+        - listitem [ref=e20680]:
+          - paragraph [ref=e20681]:
+            - strong [ref=e20682]: Quantum electrodynamics (QED) corrections.
+            - text: The Dirac equation is a
+            - emphasis [ref=e20683]: single-particle
+            - text: equation in an external potential. The
+            - emphasis [ref=e20684]: "true"
+            - text: relativistic theory of electrons is
+            - emphasis [ref=e20685]: quantum electrodynamics
+            - text: (QED), in which the electromagnetic field is
+            - emphasis [ref=e20686]: "quantise`d"
+            - text: ’ and the vacuum fluctuates. The QED corrections to atomic energies are the
+            - strong [ref=e20687]: Lamb shift
+            - text: (the
+            - img [ref=e20689]
+            - text: –
+            - img [ref=e20706]
+            - text: splitting of hydrogen,
+            - img [ref=e20723]
+            - text: eV) and the
+            - strong [ref=e20743]: anomalous magnetic moment
+            - text: of the electron (
+            - img [ref=e20745]
+            - text: Schwinger correction). These are
+            - img [ref=e20758]
+            - text: –
+            - img [ref=e20773]
+            - text: eV and are negligible for chemistry. We did not cover QED.
+        - listitem [ref=e20785]:
+          - paragraph [ref=e20786]:
+            - strong [ref=e20787]: The Breit interaction in detail.
+            - text: The Breit–Pauli operator of
+            - img [ref=e20789]:
+              - link [ref=e20792] [cursor=pointer]:
+                - /url: "#"
+            - text: is the
+            - emphasis [ref=e20801]: non-relativistic
+            - text: ’ limit of the full two-electron relativistic interaction. The full two-electron interaction includes the
+            - strong [ref=e20802]: Breit interaction
+            - text: (a relativistic correction to the Coulomb repulsion that includes magnetic and retardation effects) and the
+            - strong [ref=e20803]: vacuum polarisation
+            - text: (the screening of the electron– electron interaction by the virtual
+            - img [ref=e20805]
+            - text: pairs of the QED vacuum). The Breit correction is
+            - img [ref=e20819]
+            - text: eV per electron pair and is important for
+            - emphasis [ref=e20833]: precision
+            - text: spectroscopy of few-electron systems. We did not cover the Breit interaction or the vacuum polarisation.
+        - listitem [ref=e20834]:
+          - paragraph [ref=e20835]:
+            - strong [ref=e20836]: The negative-energy (positron) states.
+            - text: The Dirac equation has
+            - emphasis [ref=e20837]: negative-energy
+            - text: solutions that describe
+            - emphasis [ref=e20838]: positrons
+            - text: (or, in the no-pair approximation, are projected out of the spectrum). In
+            - emphasis [ref=e20839]: quantum electrodynamics
+            - text: ", the negative-energy states are"
+            - emphasis [ref=e20840]: "occupie`d"
+            - text: ’ (the Dirac sea), and the
+            - emphasis [ref=e20841]: holes
+            - text: in the Dirac sea are the positrons. The
+            - emphasis [ref=e20842]: positron
+            - text: is not a chemical object (it is unstable in matter), but
+            - emphasis [ref=e20843]: positron annihilation
+            - text: spectroscopy is a probe of the electron momentum density in solids. We did not cover positron physics.
+        - listitem [ref=e20844]:
+          - paragraph [ref=e20845]:
+            - strong [ref=e20846]: The exact two-component (X2C) Hamiltonian with picture-change correction.
+            - text: The X2C Hamiltonian of
+            - img [ref=e20848]:
+              - link [ref=e20851] [cursor=pointer]:
+                - /url: "#"
+            - text: is the
+            - emphasis [ref=e20860]: exact
+            - text: positive- energy block of the Dirac Hamiltonian in the chosen basis, but the
+            - emphasis [ref=e20861]: matrix elements of operators
+            - text: in the X2C basis have a
+            - emphasis [ref=e20862]: picture-change error
+            - text: of
+            - img [ref=e20864]
+            - text: . The picture-change correction is
+            - emphasis [ref=e20884]: small
+            - text: for energy-related operators (it is
+            - img [ref=e20886]
+            - text: ) but is
+            - emphasis [ref=e20906]: important
+            - text: for property operators (hyperfine coupling, NMR chemical shift, contact density). The picture-change correction is
+            - emphasis [ref=e20907]: "standar`d"
+            - text: ’ in modern X2C codes (ORCA, NWChem) but we did not derive it.
+        - listitem [ref=e20908]:
+          - paragraph [ref=e20909]:
+            - strong [ref=e20910]: The Breit–Pauli two-electron spin-orbit operator.
+            - text: The two-electron spin-orbit operator of
+            - img [ref=e20912]:
+              - link [ref=e20915] [cursor=pointer]:
+                - /url: "#"
+            - text: is the
+            - emphasis [ref=e20924]: full
+            - text: two- electron Breit–Pauli operator, including the spin-other-orbit, orbit-orbit, spin-spin, and contact terms. The
+            - emphasis [ref=e20925]:
+              - text: mean-fiel
+              - code [ref=e20926]: "d*' approximation of \\eqref{eq:ch-15-soc-mf} is the practical implementation, but the *full* two-electron treatment (the Dirac–Hartree–Fock / Dirac–KS with the Breit interaction) is the *benchmar"
+              - text: k
+            - text: ’ for high-accuracy calculations on small systems. We did not cover the Dirac–Hartree–Fock / Dirac–KS with Breit.
+      - blockquote [ref=e20927]:
+        - paragraph [ref=e20928]:
+          - text: "Next:"
+          - link "Chapter 16" [ref=e20929] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-16/
+          - text: — Topological materials and topology in band theory
+  - contentinfo [ref=e20930]:
+    - generic [ref=e20931]:
+      - generic [ref=e20932]:
+        - img [ref=e20933]
+        - generic [ref=e20937]: DFT Notes
+        - paragraph [ref=e20938]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e20939]:
+        - generic [ref=e20940]:
+          - heading "Project" [level=3] [ref=e20941]
+          - list [ref=e20942]:
+            - listitem [ref=e20943]:
+              - link "Chapters map" [ref=e20944] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e20945]:
+              - link "Python codes" [ref=e20946] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e20947]:
+              - link "Contributing" [ref=e20948] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e20949]:
+              - link "Security" [ref=e20950] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e20951]:
+              - link "Design spec" [ref=e20952] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e20953]:
+              - link "GitHub ↗" [ref=e20954] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e20955]:
+          - heading "Built with" [level=3] [ref=e20956]
+          - list [ref=e20957]:
+            - listitem [ref=e20958]:
+              - link "Jekyll" [ref=e20959] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e20960]:
+              - link "MathJax 3" [ref=e20961] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e20962]:
+              - link "Mermaid" [ref=e20963] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e20964]:
+              - link "chenglou/pretext" [ref=e20965] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e20966]:
+              - link "Google Fonts" [ref=e20967] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e20968]:
+          - heading "Legal" [level=3] [ref=e20969]
+          - list [ref=e20970]:
+            - listitem [ref=e20971]:
+              - link "MIT License" [ref=e20972] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e20973]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e20975]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

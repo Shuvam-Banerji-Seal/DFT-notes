@@ -1,0 +1,3741 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 16 — Topological materials and topology in band theory" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: The band structure of a crystal can carry an integer that no continuous deformation can change — and that integer controls whether a current flows around the edge of an otherwise insulating sample.
+      - paragraph [ref=e30]:
+        - text: In
+        - link "chapter 07" [ref=e31] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: we saw that a perfect crystal’s Hamiltonian commutes with every lattice translation, and the eigenfunctions therefore factorise into a plane wave and a cell-periodic piece, the Bloch function. In
+        - link "chapter 11" [ref=e32] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-11/
+        - text: we saw that those Bloch functions produce a band structure
+        - img [ref=e34]
+        - text: that we plot, density-of-state, and project onto atomic orbitals. The missing chapter in that story is the
+        - emphasis [ref=e49]:
+          - text: geometri
+          - code [ref=e50]: "c*' one: a Bloch function $|u_{n\\mathbf k}\\rangle$ is a *vector* in Hilbert space, and as we move $\\mathbf k$ around in the Brillouin zone the vector traces out a *pat"
+          - text: h
+        - text: "’ in Hilbert space. The geometry of that path — its twist, its curvature, its winding number — is encoded in three objects we will spend most of this chapter on: the"
+        - strong [ref=e51]: Berry phase
+        - text: ", the"
+        - strong [ref=e52]: Berry curvature
+        - text: ", and the"
+        - strong [ref=e53]: Chern number
+        - text: they integrate to. The Chern number is an
+        - emphasis [ref=e54]: integer
+        - text: "that classifies an isolated band; it cannot change without the band gap closing. And it is not a mathematical curiosity: it is the bulk topological invariant that determines the quantised Hall conductivity of"
+        - link "chapter 15" [ref=e55] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-15/
+        - text: ’s two-dimensional electron gas, the protected edge currents of the quantum Hall effect, the helical surface states of the 3D topological insulators, and the open Fermi arcs of the Weyl semimetals. The bulk–boundary correspondence — “non-trivial bulk topology forces gapless boundary states” — is the through-line of the entire chapter.
+      - blockquote [ref=e56]:
+        - paragraph [ref=e57]:
+          - strong [ref=e58]: Reading note.
+          - text: This chapter assumes
+          - link "chapter 07" [ref=e59] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: (Bloch’s theorem, the Brillouin zone, reciprocal lattice),
+          - link "chapter 11" [ref=e60] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: (Kohn–Sham band structure), and the relativistic background of
+          - link "chapter 15" [ref=e61] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-15/
+          - text: (spin–orbit coupling and the spin Hall effect) — every non-trivial 2D and 3D TI in a real material relies on SOC to invert the band ordering. No time-dependent perturbation theory is needed; the linear-response machinery of
+          - link "chapter 12" [ref=e62] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: is touched on only in the worked example.
+      - heading "16.1 The claim" [level=2] [ref=e63]
+      - paragraph [ref=e64]:
+        - text: The claim of the chapter, boxed, is the
+        - strong [ref=e65]: bulk–boundary correspondence
+        - text: in its sharpest form.
+      - blockquote [ref=e66]:
+        - paragraph [ref=e67]:
+          - strong [ref=e68]: Claim.
+          - text: A gapped band structure is characterised by integer topological invariants
+          - img [ref=e70]
+          - text: (Chern numbers) and, when TR-symmetric, a set of
+          - img [ref=e83]
+          - text: indices
+          - img [ref=e93]
+          - text: . These integers are
+          - emphasis [ref=e99]: robust
+          - text: — they cannot change under any continuous deformation of the Hamiltonian that keeps the gap open — and
+          - emphasis [ref=e100]: observable
+          - text: ": they fix the quantised Hall conductivity, the existence of protected edge / surface states, the parity of the surface Dirac cone, and the helicity of the chiral edge modes. The bulk–boundary correspondence states"
+      - img [ref=e102]
+      - paragraph [ref=e203]:
+        - text: The first equation is the
+        - strong [ref=e204]: "TKNN formul`a"
+        - text: "(Thouless, Kohmoto, Nightingale, den Nijs, 1982): the off-diagonal Hall conductivity of an insulator is the sum of the Chern numbers* of its occupied bands, in units of"
+        - img [ref=e206]
+        - text: . The second is the
+        - emphasis [ref=e219]: bulk–boundary correspondence
+        - text: "(Halperin, 1982): a non-zero bulk Chern number is"
+        - emphasis [ref=e220]: not
+        - text: consistent with a gapped, periodic boundary condition in real space, and the inconsistency is resolved by the appearance of
+        - emphasis [ref=e221]: chiral
+        - text: edge states at the boundary between a non-trivial insulator and the vacuum (or between a non-trivial and a trivial insulator). The generalisation to time-reversal-symmetric systems replaces the Chern number by the
+        - img [ref=e223]
+        - text: index
+        - img [ref=e233]
+        - text: and the chiral edge state by a
+        - strong [ref=e247]: Kramers pair
+        - text: of counter- propagating
+        - strong [ref=e248]: helical
+        - text: edge states.
+      - paragraph [ref=e249]:
+        - text: Equation
+        - img [ref=e251]:
+          - link [ref=e254] [cursor=pointer]:
+            - /url: "#"
+        - text: "is the headline. Every section of the chapter builds toward it. The plan: in §16.2 we introduce the mathematical machinery (Berry phase, Berry connection and curvature, Chern number,"
+        - img [ref=e264]
+        - text: index); in §16.3 we apply it to the integer quantum Hall effect (IQHE); in §16.4 to the quantum spin Hall (QSH) effect and 2D topological insulators; in §16.5 to 3D topological insulators and topological crystalline insulators; in §16.6 to the gapless cousins — Dirac, Weyl, and nodal-line semimetals; in §16.7 to the
+        - emphasis [ref=e273]: practical
+        - text: computation of topological invariants from a DFT band structure; in §16.8 to the modern extension to higher-order topological insulators (HOTIs). We close with two worked examples (§16.9, the Kane–Mele model on the honeycomb lattice; §16.10, the Bi
+        - img [ref=e275]
+        - text: Se
+        - img [ref=e282]
+        - text: surface Dirac cone from DFT+SOC), three graded problems (§16.11), a list of cross-references (§16.12), and an honest catalogue of what we left out (§16.13).
+      - paragraph [ref=e288]: "The roadmap in one diagram:"
+      - figure [ref=e290]:
+        - code [ref=e291]:
+          - document [ref=e292]:
+            - generic [ref=e308]:
+              - generic [ref=e314]: Chapter 16 — Topologyin band theory
+              - generic [ref=e320]: §16.2 Mathematicalmachinery(Berry, Chern, Z2)
+              - generic [ref=e326]: §16.3 Integer QHE(Chern = 1)
+              - generic [ref=e332]: §16.4 Quantum spin Hall(2D Z2 TIs)
+              - generic [ref=e338]: §16.5 3D topologicalinsulators (Bi2Se3, TCIs)
+              - generic [ref=e344]: §16.6 Dirac / Weylnodal-line semimetals
+              - generic [ref=e350]: §16.7 Computing topologyfrom DFT (Wannier, WCC)
+              - generic [ref=e356]: §16.8 Higher-order TIs(HOTIs)
+              - generic [ref=e362]: §16.9 Worked:Kane-Mele
+              - generic [ref=e368]: §16.10 Worked:Bi2Se3 + SOC
+              - generic [ref=e373]: §16.11 Problems
+              - generic [ref=e379]: "Bulk topologicalinvariant: Chern or Z2"
+              - generic [ref=e385]: Boundary state:chiral or helical
+              - generic [ref=e391]: Bulk-boundarycorrespondence
+        - button "Download this diagram as a PNG" [ref=e392] [cursor=pointer]:
+          - img [ref=e393]
+          - generic [ref=e396]: Download PNG
+      - paragraph [ref=e397]:
+        - text: "The two columns on the right are the “through-line” of the chapter: the"
+        - emphasis [ref=e398]: "bul`k"
+        - text: ’ topological invariant (Chern number or
+        - img [ref=e400]
+        - text: index) determines, via the bulk–boundary correspondence
+        - img [ref=e410]:
+          - link [ref=e413] [cursor=pointer]:
+            - /url: "#"
+        - text: ", the existence and structure of the"
+        - emphasis [ref=e422]: boundary
+        - text: state (chiral for Chern insulators, helical for
+        - img [ref=e424]
+        - text: TIs). Every section of the chapter builds toward this connection.
+      - heading "16.2 The mathematical machinery" [level=2] [ref=e433]
+      - paragraph [ref=e434]:
+        - text: The whole subject rests on four objects, defined and connected below. We use atomic units (
+        - img [ref=e436]
+        - text: ) throughout, and work at zero temperature.
+      - heading "16.2.1 The Berry phase" [level=3] [ref=e449]
+      - paragraph [ref=e450]:
+        - text: Consider a quantum system whose Hamiltonian
+        - img [ref=e452]
+        - text: depends on external parameters
+        - img [ref=e469]
+        - text: ", with a non-degenerate ground state"
+        - img [ref=e481]
+        - text: that varies smoothly with
+        - img [ref=e498]
+        - text: . Under an
+        - emphasis [ref=e504]: "adiabati`c"
+        - text: ’ change of
+        - img [ref=e506]
+        - text: ", the system stays in the instantaneous ground state, acquiring only a dynamical phase"
+      - img [ref=e513]
+      - paragraph [ref=e564]:
+        - text: Berry (1984) pointed out that on top of the dynamical phase there is also a
+        - emphasis [ref=e565]:
+          - text: geometri
+          - code [ref=e566]: c*' phase that depends only on the *pat
+          - text: h
+        - text: ’
+        - img [ref=e568]
+        - text: "in parameter space:"
+      - img [ref=e592]
+      - paragraph [ref=e664]:
+        - text: Equation
+        - img [ref=e666]:
+          - link [ref=e669] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - strong [ref=e678]: Berry phase
+        - text: . It is
+        - emphasis [ref=e679]: gauge-invariant
+        - text: "and geometric: it depends only on the path"
+        - img [ref=e681]
+        - text: ", not on how fast the path is traversed."
+      - paragraph [ref=e687]:
+        - text: For our application, the parameter space is the Brillouin zone,
+        - img [ref=e689]
+        - text: ", and the ground state at each"
+        - img [ref=e701]
+        - text: is the cell-periodic Bloch function
+        - img [ref=e708]
+        - text: of
+        - link "chapter 07" [ref=e724] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: . The Berry phase of band
+        - img [ref=e726]
+        - text: along a 1-D closed loop
+        - img [ref=e732]
+        - text: in the BZ is
+      - img [ref=e739]
+      - blockquote [ref=e805]:
+        - paragraph [ref=e806]:
+          - strong [ref=e807]: Note.
+          - text: The Berry phase is defined modulo
+          - img [ref=e809]
+          - text: . The convention we use throughout the chapter reports it in the principal range
+          - img [ref=e817]
+          - text: . Because it is gauge-invariant and only defined modulo
+          - img [ref=e833]
+          - text: ", the"
+          - emphasis [ref=e840]: parity
+          - text: of
+          - img [ref=e842]
+          - text: "is the gauge-invariant content of a 1-D Berry phase: this is the"
+          - img [ref=e858]
+          - text: "invariant of §16.2.4. ### 16.2.2 The Berry connection and curvature"
+      - paragraph [ref=e867]:
+        - text: Define the
+        - strong [ref=e868]: Berry connection
+        - text: (also called the “Berry vector potential”) of band
+        - img [ref=e870]
+        - text: as the 1-form
+      - img [ref=e876]
+      - paragraph [ref=e935]:
+        - text: The Berry connection is
+        - emphasis [ref=e936]: gauge-dependent
+        - text: ": under a"
+        - img [ref=e938]
+        - text: "-dependent phase rotation"
+        - img [ref=e945]
+        - text: it shifts as
+        - img [ref=e993]
+        - text: ", exactly like the electromagnetic vector potential under a gauge transformation. The Berry phase"
+        - img [ref=e1022]:
+          - link [ref=e1025] [cursor=pointer]:
+            - /url: "#"
+        - text: is the integral of the Berry connection along a closed loop and is gauge-invariant because the gradient integrates to zero on a closed loop.
+      - paragraph [ref=e1034]:
+        - text: The
+        - strong [ref=e1035]: Berry curvature
+        - text: is the exterior derivative of the Berry connection,
+      - img [ref=e1037]
+      - paragraph [ref=e1084]:
+        - text: The Berry curvature is a
+        - emphasis [ref=e1085]: gauge-invariant
+        - text: pseudo-vector in
+        - img [ref=e1087]
+        - text: "-space. In components,"
+      - img [ref=e1094]
+      - paragraph [ref=e1183]:
+        - text: Unlike the connection, the curvature is a
+        - emphasis [ref=e1184]: physical
+        - text: "(gauge-invariant) object: it enters the semi-classical equations of motion of a wave packet in band"
+        - img [ref=e1186]
+        - text: as an anomalous velocity term
+      - img [ref=e1192]
+      - paragraph [ref=e1309]:
+        - text: The second term is the
+        - strong [ref=e1310]: anomalous velocity
+        - text: ", perpendicular to"
+        - img [ref=e1312]
+        - text: and proportional to
+        - img [ref=e1323]
+        - text: . It is the
+        - emphasis [ref=e1331]: "microscopi`c"
+        - text: ’ origin of the intrinsic anomalous Hall effect of a magnetic metal and the
+        - emphasis [ref=e1332]: chiral
+        - text: edge current of a Chern insulator.
+      - paragraph [ref=e1333]: "For an isolated non-degenerate band, the curvature can also be written explicitly in terms of the other bands:"
+      - img [ref=e1335]
+      - paragraph [ref=e1498]:
+        - text: Equation
+        - img [ref=e1500]:
+          - link [ref=e1503] [cursor=pointer]:
+            - /url: "#"
+        - text: is sometimes called the “sum-over-states” form of the Berry curvature. The denominator is the square of the *band ga
+        - code [ref=e1512]: p*
+        - text: ; the curvature is large where the gap is small, which is the reason topological transitions are tied to gap closings.
+      - heading "16.2.3 The Chern number" [level=3] [ref=e1513]
+      - paragraph [ref=e1514]:
+        - text: The integral of the Berry curvature over a closed 2-D surface in
+        - img [ref=e1516]
+        - text: "-space is, by Stokes’ theorem, the Berry phase around the boundary of the surface. For an isolated band"
+        - img [ref=e1523]
+        - text: and a closed 2-D Brillouin zone (e.g. a 2-D crystal), the relevant closed surface is the 2D BZ
+        - emphasis [ref=e1528]: "itsel`f"
+        - text: ’ (a torus,
+        - img [ref=e1530]
+        - text: ). Stokes’ theorem on a torus gives
+      - img [ref=e1539]
+      - paragraph [ref=e1619]:
+        - text: The “modulo
+        - img [ref=e1621]
+        - text: ” is the only place the topology of the torus enters. The integral of the curvature is an integer multiple of
+        - img [ref=e1629]
+        - text: ", and the integer is the"
+        - strong [ref=e1636]: Chern number
+        - text: "of the band:"
+      - img [ref=e1638]
+      - paragraph [ref=e1738]:
+        - text: The two expressions in
+        - img [ref=e1740]:
+          - link [ref=e1743] [cursor=pointer]:
+            - /url: "#"
+        - text: are equal as integers (Stokes on a torus); the second is sometimes called the “non-Abelian” form when there are degeneracies. The Chern number is the parent of all the topological invariants we will meet. It is the topological invariant of the
+        - strong [ref=e1752]: integer quantum Hall state
+        - text: (§16.3) and of the
+        - strong [ref=e1753]: quantum anomalous Hall state
+        - text: (a Chern insulator without Landau levels).
+      - blockquote [ref=e1754]:
+        - paragraph [ref=e1755]:
+          - strong [ref=e1756]: Tip.
+          - text: The Chern number can also be written as a winding number. Define the “projector”
+          - img [ref=e1758]
+          - text: onto band
+          - img [ref=e1803]
+          - text: ", and the BZ Berry connection as"
+          - img [ref=e1809]
+          - text: . Then
+          - img [ref=e1838]
+          - text: ", a 2-form that depends only on the"
+          - emphasis [ref=e1879]: subspace
+          - text: spanned by the band, not on the basis within it. This is the form used in practical codes (Z2Pack, see §16.7.4).
+      - paragraph [ref=e1880]:
+        - text: For an insulator with several occupied bands
+        - img [ref=e1882]
+        - text: (the cumulative Chern number is what enters the Hall conductivity), we generalise to a multi-band projector
+        - img [ref=e1892]
+        - text: and define
+      - img [ref=e1946]
+      - paragraph [ref=e1997]:
+        - text: Equation
+        - img [ref=e1999]:
+          - link [ref=e2002] [cursor=pointer]:
+            - /url: "#"
+        - text: is invariant under continuous unitary rotations
+        - emphasis [ref=e2011]: within
+        - text: the occupied subspace — the same
+        - img [ref=e2013]
+        - text: "freedom that appears in the Wannier construction of §16.7.1. ### 16.2.4 Time-reversal symmetry and the"
+        - img [ref=e2025]
+        - text: invariant
+      - paragraph [ref=e2034]:
+        - text: In a system with time-reversal symmetry (TRS), the Chern number is forced to zero (the Berry curvature is odd under TRS,
+        - img [ref=e2036]
+        - text: ", so its BZ integral vanishes), but a"
+        - emphasis [ref=e2069]: weaker
+        - text: "invariant can still be non-trivial:"
+      - img [ref=e2071]
+      - paragraph [ref=e2090]:
+        - text: The physical meaning of
+        - img [ref=e2092]
+        - text: ": there is an"
+        - emphasis [ref=e2101]: "od`d"
+        - text: ’ number of Kramers pairs of
+        - emphasis [ref=e2102]: helical
+        - text: edge (2D) or surface (3D) states at the boundary.
+      - paragraph [ref=e2103]:
+        - strong [ref=e2104]: Fu–Kane formula for 2D.
+        - text: For a 2D TR-symmetric insulator with
+        - img [ref=e2106]
+        - text: occupied Kramers pairs, the
+        - img [ref=e2112]
+        - text: index can be computed from the
+        - emphasis [ref=e2121]: sewing matrix
+        - img [ref=e2123]
+        - text: that relates the Kramers partners at
+        - img [ref=e2136]
+        - text: and at
+        - img [ref=e2143]
+        - text: ":"
+      - img [ref=e2152]
+      - paragraph [ref=e2234]:
+        - text: The sewing matrix is
+        - emphasis [ref=e2235]:
+          - text: antisymmetri
+          - code [ref=e2236]: c*' at the four **time- reversal invariant moment
+          - text: a
+        - text: "`* (TRIM)"
+        - img [ref=e2238]
+        - text: in the 2D BZ,
+        - img [ref=e2247]
+        - text: with
+        - img [ref=e2298]
+        - text: ", so its Pfaffian is well-defined at those four points. The Fu–Kane formula is"
+      - img [ref=e2323]
+      - paragraph [ref=e2409]:
+        - text: Each factor in the product is
+        - img [ref=e2411]
+        - text: (the ratio of the square root of a determinant to a Pfaffian of an antisymmetric matrix is always
+        - img [ref=e2419]
+        - text: ); the product of the four factors is the
+        - img [ref=e2427]
+        - text: invariant.
+        - strong [ref=e2436]:
+          - text: This is the working tool for computing
+          - img [ref=e2438]
+          - text: from a DFT Wannier Hamiltonian.
+      - paragraph [ref=e2443]:
+        - strong [ref=e2444]: Wilson-loop interpretation.
+        - text: Equation
+        - img [ref=e2446]:
+          - link [ref=e2449] [cursor=pointer]:
+            - /url: "#"
+        - text: has an equivalent and more geometric form. Define the
+        - strong [ref=e2458]: Wilson loop
+        - text: of the occupied subspace along
+        - img [ref=e2460]
+        - text: as a function of
+        - img [ref=e2469]
+        - text: ":"
+      - img [ref=e2478]
+      - paragraph [ref=e2554]:
+        - text: where
+        - img [ref=e2556]
+        - text: is path-ordering and
+        - img [ref=e2563]
+        - text: is the non-Abelian Berry connection. The eigenvalues of
+        - img [ref=e2577]
+        - text: are
+        - img [ref=e2592]
+        - text: ; the
+        - img [ref=e2616]
+        - text: are the
+        - strong [ref=e2633]: Wannier charge centres (WCC)
+        - text: . Plotting
+        - img [ref=e2635]
+        - text: as a function of
+        - img [ref=e2653]
+        - text: ", a trivial insulator gives"
+        - emphasis [ref=e2661]: "close`d"
+        - text: ’ loops (each
+        - img [ref=e2663]
+        - text: winds from
+        - img [ref=e2672]
+        - text: to
+        - img [ref=e2678]
+        - text: ); a non-trivial insulator gives a set of loops with an
+        - emphasis [ref=e2685]: odd
+        - text: "’ number of them not closing:"
+      - img [ref=e2687]
+      - paragraph [ref=e2753]:
+        - text: Equation
+        - img [ref=e2755]:
+          - link [ref=e2758] [cursor=pointer]:
+            - /url: "#"
+        - text: is the practical
+        - img [ref=e2768]
+        - text: "test: count the WCC windings and take the parity. We demonstrate this in §16.7.2 and §16.9."
+        - strong [ref=e2777]: Fu–Kane formula for 3D.
+        - text: A 3D TR-symmetric insulator has
+        - emphasis [ref=e2778]: eight
+        - text: TRIM,
+        - img [ref=e2780]
+        - text: with
+        - img [ref=e2843]
+        - text: . The sewing-matrix product over all eight gives the
+        - emphasis [ref=e2874]: strong
+        - text: "index:"
+      - img [ref=e2876]
+      - paragraph [ref=e2960]:
+        - text: and three
+        - emphasis [ref=e2961]: "wea`k"
+        - text: ’ indices
+        - img [ref=e2963]
+        - text: are defined by restricting the product to TRIM with a common value of
+        - img [ref=e2995]
+        - text: ":"
+      - img [ref=e3004]
+      - paragraph [ref=e3108]:
+        - text: A 3D TI with
+        - img [ref=e3110]
+        - text: is a
+        - strong [ref=e3122]: strong TI
+        - text: and has a single
+        - emphasis [ref=e3123]: robust
+        - text: Dirac cone on every surface; a 3D TI with
+        - img [ref=e3125]
+        - text: but some
+        - img [ref=e3138]
+        - text: is a
+        - strong [ref=e3150]: weak TI
+        - text: ", equivalent to a stack of 2D QSH layers, and its surface states are"
+        - emphasis [ref=e3151]: not
+        - text: robust to disorder that breaks the layer structure. Bi
+        - img [ref=e3153]
+        - text: Se
+        - img [ref=e3160]
+        - text: (§16.5.2) is a strong TI with
+        - img [ref=e3167]
+        - text: ","
+        - img [ref=e3180]
+        - text: .
+      - blockquote [ref=e3206]:
+        - paragraph [ref=e3207]:
+          - strong [ref=e3208]: Tip.
+          - text: The
+          - img [ref=e3210]
+          - text: invariants are the unique
+          - emphasis [ref=e3219]: robust
+          - text: topological classification of a TR-symmetric gapped band structure. Other classifications (topological crystalline insulators, §16.5.3) require
+          - emphasis [ref=e3220]: additional
+          - text: crystal symmetries.
+      - heading "16.3 The integer quantum Hall effect" [level=2] [ref=e3221]
+      - paragraph [ref=e3222]:
+        - text: The IQHE is the
+        - emphasis [ref=e3223]: original
+        - text: topological phenomenon in condensed-matter physics, and the simplest setting in which the Chern number appears as a measurable integer.
+      - heading "16.3.1 The setup" [level=3] [ref=e3224]
+      - paragraph [ref=e3225]:
+        - text: Consider a 2D electron gas (2DEG) — the
+        - img [ref=e3227]
+        - text: "-plane of a semiconductor heterostructure such as a GaAs/AlGaAs interface — in a perpendicular magnetic field"
+        - img [ref=e3235]
+        - text: . The single-particle Hamiltonian is
+      - img [ref=e3253]
+      - paragraph [ref=e3314]:
+        - text: in the Landau gauge. The eigenstates are the
+        - strong [ref=e3315]: Landau levels
+      - img [ref=e3317]
+      - paragraph [ref=e3370]: each with a macroscopic degeneracy per unit area
+      - img [ref=e3372]
+      - paragraph [ref=e3391]: (the number of flux quanta per unit area). The filling factor is
+      - img [ref=e3393]
+      - paragraph [ref=e3431]:
+        - text: where
+        - img [ref=e3433]
+        - text: is the 2D electron density.
+        - strong [ref=e3441]:
+          - text: The Hall conductivity at integer
+          - img [ref=e3443]
+          - text: is the quantised value
+      - img [ref=e3449]
+      - paragraph [ref=e3499]:
+        - text: This is the
+        - strong [ref=e3500]: integer quantum Hall effect
+        - text: (von Klitzing, 1980; Nobel Prize 1985). The longitudinal resistance
+        - img [ref=e3502]
+        - text: vanishes at the same time; the system is a
+        - emphasis [ref=e3513]: perfect
+        - text: Hall conductor.
+      - heading "16.3.2 The TKNN invariant" [level=3] [ref=e3514]
+      - paragraph [ref=e3515]:
+        - text: Thouless, Kohmoto, Nightingale, and den Nijs (1982) showed that the integer
+        - img [ref=e3517]
+        - text: in
+        - img [ref=e3523]:
+          - link [ref=e3526] [cursor=pointer]:
+            - /url: "#"
+        - text: is the sum of the Chern numbers of the
+        - emphasis [ref=e3535]: "occupie`d"
+        - text: "’ Landau levels:"
+      - img [ref=e3537]
+      - paragraph [ref=e3589]:
+        - text: This is the
+        - strong [ref=e3590]: TKNN invariant
+        - text: ", the first explicit appearance of the Chern number in an observable. The RHS of"
+        - img [ref=e3592]:
+          - link [ref=e3595] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - emphasis [ref=e3604]: "bul`k"
+        - text: ’ band structure computed via
+        - img [ref=e3606]:
+          - link [ref=e3609] [cursor=pointer]:
+            - /url: "#"
+        - text: ; the LHS is the
+        - emphasis [ref=e3618]: transport
+        - text: measurement. The bulk– boundary correspondence
+        - img [ref=e3620]:
+          - link [ref=e3623] [cursor=pointer]:
+            - /url: "#"
+        - text: "is the reason the bulk Chern number fixes the transport coefficient: at the edge of the sample the Landau level bends up to higher energy (to match the vacuum), and the Fermi energy crosses the"
+        - emphasis [ref=e3632]: bent
+        - text: level an integer number of times, giving the chiral edge states that carry the quantised current.
+      - paragraph [ref=e3633]:
+        - strong [ref=e3634]: Why is the IQHE topological?
+        - text: Two ways to see it. (i)
+        - emphasis [ref=e3635]: "Robustness to disorder:"
+        - text: a smooth, local perturbation to
+        - img [ref=e3637]
+        - text: cannot change
+        - img [ref=e3647]
+        - text: without closing the band gap; the disorder potential in a real 2DEG is far too weak to close the Landau gap of
+        - img [ref=e3656]
+        - text: K, so the quantisation survives to ppm precision. (ii)
+        - emphasis [ref=e3664]: "The topological origin of the edge states:"
+        - text: the chiral edge mode is a topologically- protected, uni-directional channel at the boundary; back- scattering is forbidden because there is no counter- propagating edge state to back-scatter
+        - emphasis [ref=e3665]: into
+        - text: . The result is dissipationless transport.
+      - heading "16.3.3 The Hofstadter butterfly" [level=3] [ref=e3666]
+      - paragraph [ref=e3667]:
+        - text: A different manifestation of the topology of a 2D crystal in a magnetic field is the
+        - strong [ref=e3668]: Hofstadter butterfly
+        - text: "(Hofstadter, 1976): the energy spectrum of a tight-binding electron on a 2D lattice in a uniform magnetic field, as a function of the flux"
+        - img [ref=e3670]
+        - text: per unit cell (in units of the flux quantum
+        - img [ref=e3676]
+        - text: ). The spectrum is a
+        - emphasis [ref=e3693]: fractal
+        - text: ": a self-similar pattern of sub-bands and gaps that recursively splits as the flux per unit cell is increased."
+      - paragraph [ref=e3694]:
+        - text: The spectrum is the solution of the
+        - strong [ref=e3695]: Harper equation
+      - img [ref=e3697]
+      - paragraph [ref=e3779]:
+        - text: where
+        - img [ref=e3781]
+        - text: . The bands and gaps are labelled by a pair of integers
+        - img [ref=e3799]
+        - text: via the
+        - strong [ref=e3812]: Diophantine equation
+      - img [ref=e3814]
+      - paragraph [ref=e3831]:
+        - text: where
+        - img [ref=e3833]
+        - text: is the number of sub-bands below the gap and
+        - img [ref=e3839]
+        - text: are topological integers.
+        - img [ref=e3853]
+        - text: is the
+        - strong [ref=e3858]: Chern number
+        - text: of the sub-band just below the gap, and
+        - img [ref=e3860]
+        - text: is related to the Hall conductivity in the gap. The Diophantine equation is the
+        - emphasis [ref=e3865]: gap-labelling theorem
+        - text: ": every gap in the Hofstadter spectrum is labelled by an integer pair"
+        - img [ref=e3867]
+        - text: that satisfies
+        - img [ref=e3881]:
+          - link [ref=e3884] [cursor=pointer]:
+            - /url: "#"
+        - text: for some integer
+        - img [ref=e3894]
+        - text: .
+      - blockquote [ref=e3899]:
+        - paragraph [ref=e3900]:
+          - strong [ref=e3901]: Tip.
+          - text: The Hofstadter butterfly is realised in moiré superlattices of bilayer graphene (h-BN-encapsulated, twisted at the magic angle) and in optical lattices of cold atoms. The Chern numbers of the sub-bands in twisted-bilayer graphene at certain flux values are the origin of the
+          - emphasis [ref=e3902]: fractional
+          - text: "Chern insulator states observed in 2023. ## 16.4 The quantum spin Hall effect and 2D topological insulators"
+      - paragraph [ref=e3903]:
+        - text: "In 2005, Kane and Mele showed that a 2D time-reversal- symmetric insulator can be non-trivial in a way the IQHE is not. The quantum spin Hall (QSH) effect is the TR-symmetric analogue of the QAH: a bulk insulator with"
+        - emphasis [ref=e3904]: helical
+        - text: edge states protected by TRS. The 2007 work of Bernevig, Hughes, and Zhang (BHZ) predicted the first realistic material platform — the HgTe/CdTe quantum well — and the experimental confirmation by König
+        - emphasis [ref=e3905]: et al.
+        - text: in 2007 launched the field of 2D and 3D TIs.
+      - heading "16.4.1 The Kane–Mele model" [level=3] [ref=e3906]
+      - paragraph [ref=e3907]:
+        - text: The Kane–Mele model is the spin–orbit extension of the honeycomb-lattice tight-binding model of graphene (see
+        - link "chapter 11" [ref=e3908] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-11/
+        - text: "’s worked example). The model has four terms:"
+      - img [ref=e3910]
+      - paragraph [ref=e3974]: "The four terms in detail:"
+      - paragraph [ref=e3975]:
+        - text: "\\begin{align} \\label{eq:ch-16-kane-mele-terms} \\hat H_0 &= -t \\sum_{\\langle i j \\rangle, \\sigma} c^\\dagger_{i\\sigma} c_{j\\sigma} ,\\[4pt] \\hat H_\\text{SO} &= i \\lambda_\\text{SO} \\sum_{\\langle\\langle i j \\rangle\\rangle, \\sigma} \\nu_{ij}\\, c^\\dagger_{i\\sigma} \\sigma^z_{\\sigma\\sigma’}\\, c_{j\\sigma’} ,\\[4pt] \\hat H_R &= i \\lambda_R \\sum_{\\langle i j \\rangle, \\sigma\\sigma’} c^\\dagger_{i\\sigma} \\Bigl( \\mathbf s_{\\sigma\\sigma’} \\times \\mathbf d_{ij} \\Bigr)"
+        - emphasis [ref=e3976]: z\, c
+        - text: "{j\\sigma’} ,\\[4pt] \\hat H_\\text{staggered} &= \\lambda_v \\sum_{i, \\sigma} \\nu_i\\, c^\\dagger_{i\\sigma} c_{i\\sigma} . \\end{align}"
+      - paragraph [ref=e3977]:
+        - text: In
+        - img [ref=e3979]:
+          - link [ref=e3982] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - list [ref=e3991]:
+        - listitem [ref=e3992]:
+          - img [ref=e3994]
+          - text: ": standard nearest-neighbour hopping of the honeycomb lattice (chapter 11)."
+        - listitem [ref=e4006]:
+          - img [ref=e4008]
+          - text: ":"
+          - strong [ref=e4021]: intrinsic spin–orbit coupling
+          - text: ;
+          - img [ref=e4023]
+          - text: are next-nearest- neighbour sites on the
+          - emphasis [ref=e4038]: same
+          - text: sublattice,
+          - img [ref=e4040]
+          - text: is the Pauli matrix on the real spin,
+          - img [ref=e4049]
+          - text: is a Hermiticity sign. This term opens a
+          - emphasis [ref=e4066]: topological
+          - text: gap in the graphene Dirac cone.
+        - listitem [ref=e4067]:
+          - img [ref=e4069]
+          - text: ":"
+          - strong [ref=e4081]: Rashba spin–orbit coupling
+          - text: from a substrate-induced broken mirror symmetry;
+          - img [ref=e4083]
+          - text: is the spin Pauli vector and
+          - img [ref=e4090]
+          - text: is the in- plane vector from
+          - img [ref=e4103]
+          - text: to
+          - img [ref=e4109]
+          - text: . This term competes with
+          - img [ref=e4115]
+          - text: and drives a topological phase transition.
+        - listitem [ref=e4128]:
+          - img [ref=e4130]
+          - text: ": a sublattice (A vs. B) staggered potential"
+          - img [ref=e4151]
+          - text: that breaks inversion symmetry and competes with
+          - img [ref=e4162]
+          - text: .
+      - paragraph [ref=e4175]:
+        - text: The Kane–Mele model is the
+        - strong [ref=e4176]: paradigm
+        - text: of a 2D Z$
+        - emphasis [ref=e4177]:
+          - text: "2"
+          - img [ref=e4179]
+          - text: \lambda_R = 0
+          - img [ref=e4245]
+          - text: \lambda_v = 0
+          - img [ref=e4255]
+          - text: \pm \Phi
+          - img [ref=e4483]
+          - text: C
+        - text: \uparrow = +1
+        - img [ref=e4583]
+        - text: C_\downarrow = -1$. The total Chern number vanishes (TRS is preserved), but the
+        - strong [ref=e4588]: spin Chern number
+        - img [ref=e4590]
+        - text: is non-zero — one of several equivalent characterisations of the
+        - img [ref=e4626]
+        - text: index in TR-symmetric systems.
+      - paragraph [ref=e4635]:
+        - strong [ref=e4636]: Topological phase diagram.
+        - text: The
+        - img [ref=e4638]
+        - text: –
+        - img [ref=e4648]
+        - text: "plane has three phases:"
+      - table [ref=e4656]:
+        - rowgroup [ref=e4657]:
+          - row "Phase vs. Surface state" [ref=e4658]:
+            - columnheader "Phase" [ref=e4659]
+            - columnheader "vs." [ref=e4660]:
+              - img [ref=e4662]
+              - text: vs.
+              - img [ref=e4672]
+            - columnheader [ref=e4680]:
+              - img [ref=e4682]
+            - columnheader "Surface state" [ref=e4687]
+        - rowgroup [ref=e4688]:
+          - row "Quantum spin Hall Helical edge modes" [ref=e4689]:
+            - cell "Quantum spin Hall" [ref=e4690]
+            - cell [ref=e4691]:
+              - img [ref=e4693]
+            - cell [ref=e4718]:
+              - img [ref=e4720]
+            - cell "Helical edge modes" [ref=e4725]
+          - row "Band insulator None" [ref=e4726]:
+            - cell "Band insulator" [ref=e4727]
+            - cell [ref=e4728]:
+              - img [ref=e4730]
+            - cell [ref=e4755]:
+              - img [ref=e4757]
+            - cell "None" [ref=e4762]
+          - row "Gapless — Dirac point closes" [ref=e4763]:
+            - cell "Gapless" [ref=e4764]
+            - cell [ref=e4765]:
+              - img [ref=e4767]
+            - cell "—" [ref=e4792]
+            - cell "Dirac point closes" [ref=e4793]
+      - paragraph [ref=e4794]:
+        - text: The bulk gap at
+        - img [ref=e4796]
+        - text: is
+        - img [ref=e4809]
+        - text: ; the gap closes at the critical ratio
+        - img [ref=e4832]
+        - text: .
+      - heading "16.4.2 The Bernevig–Hughes–Zhang (BHZ) model" [level=3] [ref=e4857]
+      - paragraph [ref=e4858]:
+        - text: The BHZ model (Bernevig, Hughes, Zhang, 2006) is a four- band effective Hamiltonian for the HgTe/CdTe quantum well. The two relevant orbitals are the
+        - img [ref=e4860]
+        - text: "-like"
+        - img [ref=e4866]
+        - text: and the
+        - img [ref=e4875]
+        - text: "-like"
+        - img [ref=e4881]
+        - text: "(heavy-hole), with spin degeneracy giving a four-band model:"
+      - img [ref=e4890]:
+        - generic [ref=e4904]:
+          - img [ref=e4908]
+          - img [ref=e4947]
+      - paragraph [ref=e4978]:
+        - text: with
+        - img [ref=e4980]
+        - text: acting in the orbital subspace
+        - img [ref=e4993]
+        - text: and
+        - img [ref=e5027]
+        - text: the time-reversed partner (so
+        - img [ref=e5045]
+        - text: is TR-symmetric), and
+      - paragraph [ref=e5057]:
+        - img [ref=e5059]:
+          - generic [ref=e5063]:
+            - img [ref=e5064]
+            - img [ref=e5153]
+      - paragraph [ref=e5167]:
+        - text: The
+        - emphasis [ref=e5168]: topology
+        - text: of the BHZ model is controlled by the mass parameter
+        - img [ref=e5170]
+        - text: . Inverting the sign of
+        - img [ref=e5176]
+        - text: (relative to
+        - img [ref=e5182]
+        - text: ) drives a
+        - emphasis [ref=e5191]: band inversion
+        - text: at
+        - img [ref=e5193]
+        - text: — the
+        - img [ref=e5199]
+        - text: band moves above the
+        - img [ref=e5208]
+        - text: band — and the gap closes at
+        - img [ref=e5217]
+        - text: . For
+        - img [ref=e5227]
+        - text: the model is a
+        - emphasis [ref=e5241]: quantum spin Hall insulator
+        - text: with
+        - img [ref=e5243]
+        - text: .
+      - paragraph [ref=e5252]:
+        - text: The BHZ model is the
+        - emphasis [ref=e5253]: first
+        - text: 2D TI predicted and observed in a real material. König
+        - emphasis [ref=e5254]: et al.
+        - text: (Science
+        - strong [ref=e5255]: "318"
+        - text: ", 766 (2007)) measured the quantised conductance"
+        - img [ref=e5257]
+        - text: in a HgTe/(Hg,Cd)Te quantum well of critical thickness
+        - img [ref=e5277]
+        - text: "nm: for"
+        - img [ref=e5292]
+        - text: the well is a trivial insulator; for
+        - img [ref=e5305]
+        - text: it is a QSH insulator. The transport signature is the non-local voltage in an H-bar geometry, quantised at
+        - img [ref=e5318]
+        - text: in the QSH phase.
+      - blockquote [ref=e5333]:
+        - paragraph [ref=e5334]:
+          - strong [ref=e5335]: Note.
+          - text: The factor of 2 is the
+          - emphasis [ref=e5336]: spin
+          - text: "degeneracy: one"
+          - emphasis [ref=e5337]: helical
+          - text: edge mode (a Kramers pair of counter-propagating electrons with opposite spin) contributes
+          - img [ref=e5339]
+          - text: per spin, total
+          - img [ref=e5353]
+          - text: .
+      - heading "16.4.3 The invariant from time-reversal polarisation" [level=3] [ref=e5368]:
+        - text: 16.4.3 The
+        - img [ref=e5370]
+        - text: invariant from time-reversal polarisation
+      - paragraph [ref=e5379]:
+        - text: A more physically transparent derivation of the 2D
+        - img [ref=e5381]
+        - text: invariant, due to Fu and Kane (2006), uses the
+        - strong [ref=e5390]: time-reversal polarisation
+        - img [ref=e5392]
+        - text: at the four TRIM. For a 1D TR-symmetric insulator the
+        - emphasis [ref=e5398]: polarisation
+        - img [ref=e5400]
+        - text: is only defined modulo
+        - img [ref=e5406]
+        - text: ; the time-reversed polarisation is
+        - img [ref=e5417]
+        - text: . The
+        - emphasis [ref=e5424]: change
+        - text: in polarisation
+        - img [ref=e5426]
+        - text: across a TR-symmetric deformation satisfies
+      - img [ref=e5434]
+      - paragraph [ref=e5467]:
+        - text: The two possibilities are the two values of the
+        - img [ref=e5469]
+        - text: index of a 1D TR-symmetric insulator.
+      - paragraph [ref=e5478]:
+        - text: "Extending to 2D: take the two 1D systems obtained by slicing the 2D BZ at"
+        - img [ref=e5480]
+        - text: and
+        - img [ref=e5493]
+        - text: . They have 1D polarisations
+        - img [ref=e5506]
+        - text: and
+        - img [ref=e5518]
+        - text: . The
+        - img [ref=e5530]
+        - text: index of the 2D insulator is
+      - img [ref=e5540]
+      - paragraph [ref=e5593]:
+        - text: The factor of 2 converts the
+        - emphasis [ref=e5594]: continuous
+        - text: 1D polarisation to a
+        - img [ref=e5596]
+        - text: invariant. A non-trivial
+        - img [ref=e5606]
+        - text: implies an odd number of edge-state crossings of the Fermi energy between
+        - img [ref=e5616]
+        - text: and
+        - img [ref=e5629]
+        - text: — the helical edge mode.
+      - paragraph [ref=e5641]:
+        - text: The Wilson-loop formulation
+        - img [ref=e5643]:
+          - link [ref=e5646] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - emphasis [ref=e5655]: continuous
+        - text: "version of this: the Wannier charge centres"
+        - img [ref=e5657]
+        - text: are the 1D polarisation of the slice at fixed
+        - img [ref=e5675]
+        - text: ", and the parity of their winding is the"
+        - img [ref=e5684]
+        - text: invariant. The WCC method is the standard
+        - emphasis [ref=e5693]: numerical
+        - text: route (WannierTools, Z2Pack, see §16.7.2).
+      - heading "16.5 3D topological insulators" [level=2] [ref=e5694]
+      - paragraph [ref=e5695]:
+        - text: The 3D extension of the QSH state was predicted by Fu, Kane, and Mele (2007) and by Moore and Balents (2007). The first concrete material realisation was Bi
+        - img [ref=e5697]
+        - text: Se
+        - img [ref=e5704]
+        - text: (Zhang
+        - emphasis [ref=e5710]: et al.
+        - text: ","
+        - emphasis [ref=e5711]:
+          - text: Nature Physics
+          - strong [ref=e5712]: "5"
+          - text: ", 438 (2009)). The 3D TI has a single, *robust"
+        - text: Dirac cone on every surface, with spin–momentum locking that prevents back-scattering by non-magnetic disorder.
+      - heading "16.5.1 Strong and weak TIs" [level=3] [ref=e5713]
+      - paragraph [ref=e5714]:
+        - text: As derived in §16.2.4, a 3D TR-symmetric insulator has
+        - emphasis [ref=e5715]: four
+        - img [ref=e5717]
+        - text: "indices: one strong"
+        - img [ref=e5727]
+        - text: and three
+        - emphasis [ref=e5735]: "wea`k"
+        - text: ’
+        - img [ref=e5737]
+        - text: ", defined via"
+        - img [ref=e5760]:
+          - link [ref=e5763] [cursor=pointer]:
+            - /url: "#"
+        - text: and
+        - img [ref=e5773]:
+          - link [ref=e5776] [cursor=pointer]:
+            - /url: "#"
+        - text: ". The physical meanings:"
+      - list [ref=e5785]:
+        - listitem [ref=e5786]:
+          - img [ref=e5788]
+          - text: ":"
+          - strong [ref=e5800]: strong TI
+          - text: . Every surface that preserves TRS has an
+          - emphasis [ref=e5801]: "od`d"
+          - text: "’ number of Dirac cones, robust to any TR- symmetric perturbation. Examples: Bi"
+          - img [ref=e5803]
+          - text: Se
+          - img [ref=e5810]
+          - text: ", Bi"
+          - img [ref=e5817]
+          - text: Te
+          - img [ref=e5824]
+          - text: ", Sb"
+          - img [ref=e5831]
+          - text: Te
+          - img [ref=e5838]
+          - text: .
+        - listitem [ref=e5844]:
+          - img [ref=e5846]
+          - text: ", some"
+          - img [ref=e5859]
+          - text: ":"
+          - strong [ref=e5871]: weak TI
+          - text: . A stack of 2D QSH layers; surface states exist only on surfaces
+          - emphasis [ref=e5872]: not
+          - text: "parallel to the stacking direction, and are not robust to disorder that breaks the layer structure. Example: Bi"
+          - img [ref=e5874]
+          - text: Te
+          - img [ref=e5881]
+          - text: Se under certain growth conditions.
+        - listitem [ref=e5887]:
+          - img [ref=e5889]
+          - text: and all
+          - img [ref=e5902]
+          - text: ":"
+          - strong [ref=e5914]: trivial insulator
+          - text: . No protected surface states.
+      - paragraph [ref=e5915]:
+        - text: The strong TI is a genuinely
+        - emphasis [ref=e5916]: 3D
+        - text: topological phase. The weak TI is, in some sense, a “1D stack” of 2D TIs.
+      - heading "16.5.2 The Bi Se family" [level=3] [ref=e5917]:
+        - text: 16.5.2 The Bi
+        - img [ref=e5919]
+        - text: Se
+        - img [ref=e5926]
+        - text: family
+      - paragraph [ref=e5932]:
+        - text: Bi$
+        - emphasis [ref=e5933]:
+          - text: "2"
+          - img [ref=e5935]
+          - text: _3
+          - img [ref=e5943]
+          - text: D
+        - text: "{3d}^5"
+        - img [ref=e6089]
+        - text: R\bar 3 m
+        - img [ref=e6095]
+        - text: c$ and held together by van der Waals forces. The
+        - emphasis [ref=e6210]: band inversion
+        - text: is between the Bi
+        - img [ref=e6212]
+        - text: and Se
+        - img [ref=e6220]
+        - text: states at
+        - img [ref=e6228]
+        - text: ", driven by the atomic SOC of the heavy Bi ("
+        - img [ref=e6234]
+        - text: ).
+      - paragraph [ref=e6248]:
+        - text: The minimal four-band effective Hamiltonian at
+        - img [ref=e6250]
+        - text: is (Zhang
+        - emphasis [ref=e6255]: et al.
+        - text: ", Nature Physics"
+        - strong [ref=e6256]: "5"
+        - text: ", 438 (2009))"
+      - img [ref=e6258]:
+        - generic [ref=e6260]:
+          - generic [ref=e6292]: 𝟙
+          - generic [ref=e6298]:
+            - img [ref=e6302]
+            - img [ref=e6460]
+      - paragraph [ref=e6464]:
+        - text: with
+        - img [ref=e6466]
+        - text: ","
+        - img [ref=e6527]
+        - text: ", and"
+        - img [ref=e6588]
+        - text: . The basis is the four Kramers pairs of the Bi / Se
+        - img [ref=e6613]
+        - text: combinations. The sign of
+        - img [ref=e6622]
+        - text: "controls the topology:"
+        - img [ref=e6639]
+        - text: gives a strong TI (Bi
+        - img [ref=e6660]
+        - text: Se
+        - img [ref=e6667]
+        - text: );
+        - img [ref=e6674]
+        - text: gives a trivial insulator (Sb
+        - img [ref=e6695]
+        - text: Se
+        - img [ref=e6702]
+        - text: ).
+      - paragraph [ref=e6708]:
+        - text: The Bi
+        - img [ref=e6710]
+        - text: Se
+        - img [ref=e6717]
+        - text: surface hosts a
+        - strong [ref=e6723]: single Dirac cone
+        - text: at
+        - img [ref=e6725]
+        - text: ", with"
+        - img [ref=e6735]
+        - text: and
+        - img [ref=e6765]
+        - text: m/s. The surface state exhibits
+        - strong [ref=e6785]: spin–momentum locking
+        - text: ","
+        - img [ref=e6787]
+        - text: ": an electron with momentum"
+        - img [ref=e6812]
+        - text: cannot back-scatter to
+        - img [ref=e6819]
+        - text: because the spin would have to flip and a non-magnetic impurity cannot flip it. The result is a long mean-free path, the basis of proposed low-dissipation “topological” electronics.
+      - blockquote [ref=e6827]:
+        - paragraph [ref=e6828]:
+          - strong [ref=e6829]: Note.
+          - text: The
+          - emphasis [ref=e6830]: existence
+          - text: of the surface state is topologically protected; its
+          - emphasis [ref=e6831]: energy
+          - text: (relative to the bulk gap) is not. If the Fermi energy is in the bulk conduction band (as in naturally
+          - img [ref=e6833]
+          - text: "-type Bi"
+          - img [ref=e6839]
+          - text: Se
+          - img [ref=e6846]
+          - text: due to Se vacancies), the surface Dirac cone is “buried” under the bulk conduction. Doping the bulk to push
+          - img [ref=e6853]
+          - text: into the gap is the experimental challenge.
+      - heading "16.5.3 Topological crystalline insulators (TCIs)" [level=3] [ref=e6861]
+      - paragraph [ref=e6862]:
+        - text: A
+        - emphasis [ref=e6863]: topological crystalline insulator
+        - text: is an insulator whose gapless surface states are protected by a
+        - emphasis [ref=e6864]: crystal symmetry
+        - text: (a mirror, a rotation, a glide, or a screw) rather than by TRS. The defining example is
+        - strong [ref=e6865]: SnTe
+        - text: (and the alloy Pb$
+        - emphasis [ref=e6866]:
+          - text: "{1-x}"
+          - img [ref=e6868]
+          - text: _x
+          - img [ref=e6876]
+        - text: "{1-x}"
+        - img [ref=e6890]
+        - text: _x
+        - img [ref=e6898]
+        - text: L$ points of the BZ are inverted by the spin–orbit coupling, and the
+        - emphasis [ref=e7051]: mirror
+        - text: symmetry of the (110) plane protects the surface states on the (001) surface. SnTe was the first material predicted to be a TCI (Fu,
+        - emphasis [ref=e7052]: Phys. Rev. Lett.
+        - strong [ref=e7053]: "106"
+        - text: ", 106802 (2011)) and the first one observed in ARPES (Tanaka"
+        - emphasis [ref=e7054]: et al.
+        - text: ", Nature Physics*"
+        - strong [ref=e7055]: "8"
+        - text: ", 800 (2012))."
+      - paragraph [ref=e7056]:
+        - text: The classification of TCIs uses the
+        - emphasis [ref=e7057]: symmetry-based indicators
+        - text: of Po
+        - emphasis [ref=e7058]: et al. and Song et al.
+        - text: (2017–2018), which extend the
+        - img [ref=e7060]
+        - text: machinery of Fu–Kane to arbitrary space-group symmetries. A TCI can have
+        - emphasis [ref=e7069]: multiple
+        - text: Dirac cones on the surface (SnTe has four, one on each
+        - img [ref=e7071]
+        - text: face and on the (001) face) and higher-degeneracy surface states (four-, six-, eight-fold) at high-symmetry points.
+      - blockquote [ref=e7082]:
+        - paragraph [ref=e7083]:
+          - strong [ref=e7084]: Tip.
+          - text: The modern “topological quantum chemistry” framework (Bradlyn
+          - emphasis [ref=e7085]: et al.
+          - text: ", Science"
+          - strong [ref=e7086]: "353"
+          - text: ", 6299 (2016)) gives a complete classification of all band structures consistent with a given space-group symmetry, including TCIs, Dirac, Weyl, nodal-line, and multi-fold semimetals. Tools: the Bilbao Crystallographic Server’s"
+          - code [ref=e7087]: TOPOLOGICAL QUANTUM CHEMISTRY' and the
+          - text: "CheckTopologicalMat`’ Python package."
+      - heading "16.6 Topological semimetals" [level=2] [ref=e7088]
+      - paragraph [ref=e7089]:
+        - text: The topological materials we have considered so far are
+        - emphasis [ref=e7090]: insulators
+        - text: ": they have a bulk gap. There is a parallel family of"
+        - strong [ref=e7091]: topological semimetals
+        - text: whose protection requires the
+        - emphasis [ref=e7092]: touching
+        - text: of two (or more) bulk bands at discrete points or along lines in the BZ. The three main families are the
+        - strong [ref=e7093]: Dirac semimetals
+        - text: (four-fold crossings, TRS and inversion preserved), the
+        - strong [ref=e7094]: Weyl semimetals
+        - text: (two-fold crossings, TRS or inversion broken), and the
+        - strong [ref=e7095]: nodal-line semimetals
+        - text: (lines of two-fold crossings protected by mirror or PT symmetry).
+      - heading "16.6.1 Dirac semimetals" [level=3] [ref=e7096]
+      - paragraph [ref=e7097]:
+        - text: A 3D Dirac semimetal has a
+        - emphasis [ref=e7098]: "four-fol`d"
+        - text: ’ band crossing near the Fermi energy, with the low-energy Hamiltonian
+      - img [ref=e7100]:
+        - generic [ref=e7121]:
+          - img [ref=e7125]
+          - img [ref=e7161]
+      - paragraph [ref=e7165]:
+        - text: a 4×4 matrix in the basis of the two Kramers pairs. The
+        - emphasis [ref=e7166]: mass
+        - text: parameter
+        - img [ref=e7168]
+        - text: measures the separation of the four bands; at
+        - img [ref=e7174]
+        - text: the four bands cross at
+        - img [ref=e7184]
+        - text: and the spectrum is the 3D massless Dirac fermion,
+        - img [ref=e7195]
+        - text: (each sign doubly degenerate). The Dirac node is
+        - emphasis [ref=e7221]:
+          - text: protecte
+          - code [ref=e7222]: d*' by TRS + inversion + an *extr
+          - text: a
+        - text: ’ crystal rotation symmetry (
+        - img [ref=e7224]
+        - text: along [111] in Na
+        - img [ref=e7233]
+        - text: Bi,
+        - img [ref=e7240]
+        - text: in Cd
+        - img [ref=e7249]
+        - text: As
+        - img [ref=e7256]
+        - text: ); without the rotation the two two-fold representations of the little group at
+        - img [ref=e7263]
+        - text: would hybridise and open a gap.
+      - paragraph [ref=e7268]: "Two materials realise the Dirac semimetal phase:"
+      - list [ref=e7269]:
+        - listitem [ref=e7270]:
+          - strong [ref=e7271]:
+            - text: Na
+            - img [ref=e7273]
+            - text: Bi
+          - text: (Wang
+          - emphasis [ref=e7279]: et al.
+          - text: ", Phys. Rev. B"
+          - strong [ref=e7280]: "85"
+          - text: ", 195320 (2012); Liu"
+          - emphasis [ref=e7281]: et al.
+          - text: ", Science"
+          - strong [ref=e7282]: "343"
+          - text: ", 864 (2014)):"
+          - img [ref=e7284]
+          - text: "-protected Dirac node on the"
+          - img [ref=e7293]
+          - text: –
+          - img [ref=e7299]
+          - text: line of the hexagonal BZ,
+          - img [ref=e7305]
+          - text: eV above the Fermi energy.
+        - listitem [ref=e7314]:
+          - strong [ref=e7315]:
+            - text: Cd
+            - img [ref=e7317]
+            - text: As
+            - img [ref=e7324]
+          - text: (Wang
+          - emphasis [ref=e7330]: et al.
+          - text: ", Phys. Rev. B"
+          - strong [ref=e7331]: "88"
+          - text: ", 125427 (2013); Liu"
+          - emphasis [ref=e7332]: et al.
+          - text: ", Nature Materials"
+          - strong [ref=e7333]: "13"
+          - text: ", 677 (2014)):"
+          - img [ref=e7335]
+          - text: "-protected Dirac node on the"
+          - img [ref=e7344]
+          - text: –
+          - img [ref=e7350]
+          - text: line of the tetragonal BZ,
+          - img [ref=e7356]
+          - text: eV above the Fermi energy, protected by the
+          - img [ref=e7366]
+          - text: symmetry of the I4
+          - img [ref=e7375]
+          - text: /acd space group.
+      - paragraph [ref=e7381]:
+        - text: The Dirac node is a
+        - emphasis [ref=e7382]: doubly-degenerate
+        - text: "Weyl node: a superposition of two Weyl nodes of opposite chirality, sitting on top of each other in momentum space. Breaking the crystal symmetry (or breaking either TRS or inversion) splits the Dirac node into a pair of Weyl nodes, and the system becomes a Weyl semimetal."
+      - heading "16.6.2 Weyl semimetals" [level=3] [ref=e7383]
+      - paragraph [ref=e7384]:
+        - text: A 3D Weyl semimetal has a
+        - emphasis [ref=e7385]: "two-fol`d"
+        - text: ’ band crossing near the Fermi energy, with the low-energy Hamiltonian
+      - img [ref=e7387]
+      - paragraph [ref=e7418]:
+        - text: a 2×2 matrix in the basis of a single (spinless) Weyl fermion. The spectrum is
+        - img [ref=e7420]
+        - text: ", a"
+        - emphasis [ref=e7446]: three-dimensional
+        - text: massless Dirac fermion with a
+        - emphasis [ref=e7447]: single
+        - text: chirality. The Weyl node is
+        - emphasis [ref=e7448]:
+          - text: "*topologically protecte"
+          - code [ref=e7449]: d*
+        - text: ": the small sphere of"
+        - img [ref=e7451]
+        - text: "-space around the node is a 2-sphere, and the Chern number of that sphere is non-zero,"
+      - img [ref=e7458]
+      - paragraph [ref=e7513]:
+        - text: The sign is the
+        - strong [ref=e7514]: chirality
+        - text: "of the Weyl node:"
+        - img [ref=e7516]
+        - text: is a
+        - emphasis [ref=e7523]: right-handed
+        - text: ’ Weyl fermion,
+        - img [ref=e7525]
+        - text: is left-handed
+        - emphasis [ref=e7532]: . The chirality is a property of the *Hamiltonian
+        - text: ", not of the state, and it is conserved by smooth deformations that preserve the gap elsewhere."
+      - paragraph [ref=e7533]:
+        - strong [ref=e7534]: Nielsen–Ninomiya theorem
+        - text: "(the “no-go” theorem for Weyl fermions in a BZ): the"
+        - emphasis [ref=e7535]: sum
+        - text: of the chiralities of all Weyl nodes in the Brillouin zone is zero. Weyl nodes come in pairs of opposite chirality related by the
+        - emphasis [ref=e7536]: remaining
+        - text: "symmetry when TRS or inversion is broken. The net rule:"
+        - strong [ref=e7537]: the BZ always contains an even number of Weyl nodes, with equal numbers of left- and right-handed chiralities
+        - text: .
+      - paragraph [ref=e7538]: The two “textbook” Weyl semimetals are
+      - list [ref=e7539]:
+        - listitem [ref=e7540]:
+          - strong [ref=e7541]: TaAs
+          - text: (Weng
+          - emphasis [ref=e7542]: et al.
+          - text: ", Phys. Rev. X"
+          - strong [ref=e7543]: "5"
+          - text: ", 011029 (2015); Xu"
+          - emphasis [ref=e7544]: et al.
+          - text: ", Science"
+          - strong [ref=e7545]: "349"
+          - text: ", 613 (2015)): inversion-broken, TRS-preserved. 24 Weyl nodes split into two groups of 8 above and 8 below the"
+          - img [ref=e7547]
+          - text: plane, with chirality alternating around each group.
+        - listitem [ref=e7559]:
+          - strong [ref=e7560]: NbAs, NbP, TaP
+          - text: ": same family as TaAs."
+      - paragraph [ref=e7561]:
+        - text: The defining experimental signature is the
+        - strong [ref=e7562]: Fermi arc
+        - text: ": a surface state connecting the"
+        - emphasis [ref=e7563]: projections
+        - text: of two bulk Weyl nodes of opposite chirality on the surface BZ. The arc is
+        - emphasis [ref=e7564]: open
+        - text: (a chord, not a loop); it merges into the bulk Weyl cone at each end.
+      - heading "16.6.3 Nodal-line semimetals" [level=3] [ref=e7565]
+      - paragraph [ref=e7566]:
+        - text: A
+        - emphasis [ref=e7567]: nodal-line semimetal
+        - text: "has a line (1D) of two-fold band crossings in the BZ, rather than an isolated point. The low-energy Hamiltonian near a point on the line is the 2D massless Dirac Hamiltonian in the plane perpendicular to the line:"
+      - img [ref=e7569]
+      - paragraph [ref=e7616]:
+        - text: where
+        - img [ref=e7618]
+        - text: is the displacement from the line,
+        - img [ref=e7625]
+        - text: are the components perpendicular to the line, and
+        - img [ref=e7641]
+        - text: are Pauli matrices in the two-band subspace. The dispersion is
+        - img [ref=e7657]
+        - text: in the perpendicular plane; along the line the two bands are degenerate and their dispersion is
+        - emphasis [ref=e7692]: flat
+        - text: (if the Hamiltonian has no
+        - img [ref=e7694]
+        - text: dependence on the line) or
+        - emphasis [ref=e7702]: linear
+        - text: (if it does).
+      - paragraph [ref=e7703]:
+        - text: Nodal lines are protected by
+        - emphasis [ref=e7704]: mirror
+        - text: symmetry, PT symmetry (the product of parity and TR), or — in non- centrosymmetric, non-magnetic crystals — by an
+        - emphasis [ref=e7705]: antiunitary
+        - text: symmetry that squares to
+        - img [ref=e7707]
+        - text: (e.g. the product of mirror and TR). When the protecting symmetry is broken (e.g. by spin–orbit coupling that breaks mirror symmetry), the nodal line gaps out into a pair of Weyl nodes, and the system becomes a Weyl semimetal. This is the
+        - emphasis [ref=e7714]: symmetry-breaking
+        - text: pathway between nodal-line and Weyl phases.
+      - paragraph [ref=e7715]:
+        - text: Material realisations of nodal-line semimetals include
+        - strong [ref=e7716]: ZrSiS
+        - text: (nodal line protected by the non-symmorphic symmetry of the body-centred tetragonal lattice, lying close to the Fermi energy),
+        - strong [ref=e7717]:
+          - text: PbTaSe
+          - img [ref=e7719]
+        - text: (an asymmetric, TR-symmetric mirror-protected nodal line), and the
+        - strong [ref=e7725]:
+          - text: antiperovskite Cu
+          - img [ref=e7727]
+          - text: PdN
+        - text: family (TR-symmetric mirror-protected nodal lines around
+        - img [ref=e7734]
+        - text: ).
+      - paragraph [ref=e7739]:
+        - text: The family of semimetals covered in this section is the
+        - emphasis [ref=e7740]: gapless
+        - text: branch of the topology zoo. The full zoo — the
+        - emphasis [ref=e7741]: gapped
+        - text: ’ branch and the gapless branch, together — is summarised below.
+      - figure [ref=e7743]:
+        - code [ref=e7744]:
+          - document [ref=e7745]:
+            - generic [ref=e7762]:
+              - generic [ref=e7768]: Topologicalmaterials
+              - generic [ref=e7774]: Gapped(insulators)
+              - generic [ref=e7780]: Gapless(semimetals)
+              - generic [ref=e7786]: Chern insulators(sigma_xy = C e^2/h)
+              - generic [ref=e7792]: Quantum anomalousHall (QAH)
+              - generic [ref=e7798]: Quantum spin Hall(Kane-Mele, BHZ)
+              - generic [ref=e7804]: Weyl semimetal(2-fold)
+              - generic [ref=e7810]: Dirac semimetal(4-fold)
+              - generic [ref=e7816]: Topological crystallineinsulators (SnTe)
+              - generic [ref=e7822]: Strong 3D TI(Bi2Se3)
+              - generic [ref=e7828]: Weak 3D TI(stacked 2D)
+              - generic [ref=e7834]: Nodal-linesemimetal
+              - generic [ref=e7840]: Higher-order TI(Bi4Br4)
+              - generic [ref=e7846]: HOTI 2D(corner states)
+              - generic [ref=e7852]: HOTI 3D(hinge states)
+        - button "Download this diagram as a PNG" [ref=e7853] [cursor=pointer]:
+          - img [ref=e7854]
+          - generic [ref=e7857]: Download PNG
+      - paragraph [ref=e7858]:
+        - text: "The diagram makes the relationship explicit: the"
+        - emphasis [ref=e7859]: Chern
+        - text: and QSH families are the 2D parents of the 3D TIs; the
+        - emphasis [ref=e7860]: "Dira`c"
+        - text: ’ family is the 4-fold (TRS+inversion preserved) parent of the
+        - emphasis [ref=e7861]: Weyl
+        - text: family (TRS or inversion broken); the
+        - emphasis [ref=e7862]: TCI
+        - text: family extends the strong TI family with crystal-symmetry protection; the
+        - emphasis [ref=e7863]: HOTI
+        - text: family is the “next-order” extension of the standard TI. Each branch has its own invariant — Chern number,
+        - img [ref=e7865]
+        - text: index, mirror Chern number, line-winding number, multipole moment — and each invariant has its own computational recipe in WannierTools / Z2Pack / BANDREP.
+      - heading "16.6.4 The chiral anomaly and the negative magnetoresistance" [level=3] [ref=e7874]
+      - paragraph [ref=e7875]:
+        - text: The
+        - strong [ref=e7876]: chiral anomaly
+        - text: is a defining property of massless Weyl fermions in 3D. The chiral current
+        - img [ref=e7878]
+        - text: is
+        - emphasis [ref=e7908]: classically
+        - text: conserved, but
+        - emphasis [ref=e7909]: quantum-mechanically
+        - text: "the conservation fails in the presence of electromagnetic fields:"
+      - img [ref=e7911]
+      - paragraph [ref=e8015]:
+        - text: The right-hand side is non-zero when
+        - img [ref=e8017]
+        - text: ": parallel fields pump right-handed Weyl fermions from the left-handed node to the right-handed one (or vice versa) at a rate"
+        - img [ref=e8029]
+        - text: . The
+        - emphasis [ref=e8042]: separate
+        - text: chiral charge is not conserved, but the total electric charge is.
+      - paragraph [ref=e8043]: "In a Weyl semimetal, the chiral anomaly is observed in two ways:"
+      - list [ref=e8044]:
+        - listitem [ref=e8045]:
+          - strong [ref=e8046]: The chiral magnetic effect.
+          - text: A magnetic field
+          - img [ref=e8048]
+          - text: along, say, the
+          - img [ref=e8055]
+          - text: direction creates a population imbalance between the two chiralities. The resulting
+          - emphasis [ref=e8060]: chiral chemical potential
+          - img [ref=e8062]
+          - text: drives a
+          - emphasis [ref=e8070]: current
+          - text: along
+          - img [ref=e8072]
+          - text: ","
+      - img [ref=e8079]
+      - paragraph [ref=e8118]:
+        - text: This is the “
+        - strong [ref=e8119]: chiral magnetic effect
+        - text: ” (CME), predicted in 1983 in high-energy physics and observed in Weyl semimetals in 2015 by Li
+        - emphasis [ref=e8120]: et al.
+        - text: and Xiong et al.
+      - list [ref=e8121]:
+        - listitem [ref=e8122]:
+          - strong [ref=e8123]: The negative longitudinal magnetoresistance (LMR).
+          - text: When an electric field
+          - img [ref=e8125]
+          - text: is applied
+          - emphasis [ref=e8131]: parallel
+          - text: to
+          - img [ref=e8133]
+          - text: ", the chiral anomaly pumps charge from one chirality to the other. The pumped charge"
+          - emphasis [ref=e8139]: reduces
+          - text: the resistance because the back- scattering between the two chiralities is
+          - emphasis [ref=e8140]: "suppresse`d"
+          - text: ’ (the populations are unequal). The result is a
+          - emphasis [ref=e8141]: negative
+          - text: "longitudinal magnetoresistance: as"
+          - img [ref=e8143]
+          - text: increases, the longitudinal resistance
+          - emphasis [ref=e8148]: decreases
+          - text: . This was the first experimental signature of Weyl fermions in TaAs, observed in 2015. >
+          - strong [ref=e8149]: Note.
+          - text: The negative LMR is
+          - emphasis [ref=e8150]: not
+          - text: a unique signature of
+          - blockquote [ref=e8151]:
+            - paragraph [ref=e8152]:
+              - text: the chiral anomaly — current jetting and other classical effects can also produce a negative LMR. The
+              - emphasis [ref=e8153]: unambiguous
+              - text: "signature is the planar Hall effect: in an in-plane"
+              - img [ref=e8155]
+              - text: and a perpendicular
+              - img [ref=e8162]
+              - text: the planar Hall voltage is
+              - emphasis [ref=e8168]: "od`d"
+              - text: ’ under
+              - img [ref=e8170]
+              - text: and has a characteristic
+              - img [ref=e8184]
+              - text: dependence on the angle
+              - img [ref=e8200]
+              - text: between
+              - img [ref=e8206]
+              - text: and
+              - img [ref=e8213]
+              - text: (the “Burkov” prediction). This signature has no classical analogue.
+      - heading "16.7 Computing topology from DFT" [level=2] [ref=e8219]
+      - paragraph [ref=e8220]:
+        - text: The previous sections were
+        - emphasis [ref=e8221]: theory
+        - text: — Berry phase, Chern numbers,
+        - img [ref=e8223]
+        - text: "indices. The natural question is: how do we"
+        - emphasis [ref=e8232]: compute
+        - text: these from a DFT band structure? The DFT gives us a Kohn–Sham Hamiltonian
+        - img [ref=e8234]
+        - text: on a discrete
+        - img [ref=e8247]
+        - text: "-mesh; we want a Chern number or a"
+        - img [ref=e8254]
+        - text: index. The answer is a sequence of three steps, each a piece of standard, well-tested software.
+      - heading "16.7.1 Wannier functions from Bloch functions" [level=3] [ref=e8263]
+      - paragraph [ref=e8264]:
+        - text: The DFT output is a set of Bloch functions
+        - img [ref=e8266]
+        - text: for
+        - img [ref=e8283]
+        - text: bands on a discrete
+        - img [ref=e8289]
+        - text: "-mesh, delocalised in real space. A more convenient basis is the set of"
+        - strong [ref=e8295]: Wannier functions
+        - text: ", localised in real space. For a set of"
+        - img [ref=e8297]
+        - text: isolated bands, the Wannier functions are
+      - img [ref=e8303]
+      - paragraph [ref=e8411]:
+        - text: where the integral is over the first BZ and
+        - img [ref=e8413]
+        - text: is a
+        - emphasis [ref=e8431]: unitary
+        - text: matrix that mixes the
+        - img [ref=e8433]
+        - text: bands at each
+        - img [ref=e8439]
+        - text: . The Wannier functions depend on the choice of
+        - img [ref=e8446]
+        - text: ; a trivial choice
+        - img [ref=e8459]:
+          - generic [ref=e8468]: 𝟙
+        - text: generally does not produce
+        - emphasis [ref=e8469]: "localise`d"
+        - text: ’ Wannier functions. The
+        - strong [ref=e8470]: maximally-localised Wannier functions (MLWFs)
+        - text: of Marzari and Vanderbilt (1997) are obtained by choosing
+        - img [ref=e8472]
+        - text: to
+        - emphasis [ref=e8484]: minimise
+        - text: the total spread
+      - img [ref=e8486]
+      - paragraph [ref=e8582]:
+        - text: The minimisation is a non-linear problem in
+        - img [ref=e8584]
+        - text: ", solved by successive unitary rotations on pairs of Wannier functions. The standard tool is"
+        - strong [ref=e8596]: Wannier90
+        - text: (Mostofi
+        - emphasis [ref=e8597]: et al.
+        - text: ", Comput. Phys. Commun."
+        - strong [ref=e8598]: "178"
+        - text: ", 685 (2008)). The input is the Bloch functions at a uniform"
+        - img [ref=e8600]
+        - text: "-mesh; the output is the"
+        - img [ref=e8607]
+        - text: matrices, the MLWF centres, and the
+        - emphasis [ref=e8619]: "Wannier-interpolate`d"
+        - text: ’ Hamiltonian
+        - img [ref=e8621]
+        - text: on an arbitrarily fine
+        - img [ref=e8642]
+        - text: "-mesh. The interpolation is"
+        - emphasis [ref=e8648]: linear
+        - text: in the number of Wannier functions, much cheaper than a direct DFT calculation on a fine
+        - img [ref=e8650]
+        - text: "-mesh."
+      - blockquote [ref=e8656]:
+        - paragraph [ref=e8657]:
+          - strong [ref=e8658]: Tip.
+          - text: For
+          - emphasis [ref=e8659]:
+            - text: isolate
+            - code [ref=e8660]: d*' sets of bands (e.g. the $d$ bands of a transition-metal oxide) the disentanglement is trivial and the initial guess can be random. For an *entangle
+            - text: d
+          - text: ’ manifold (e.g. the
+          - img [ref=e8662]
+          - text: bands of a wide-gap insulator) one must specify a “frozen” outer window and a “disentangled” inner window; the spread minimisation is performed only on the inner window.
+      - heading "16.7.2 Wilson loops and the Wannier charge centres" [level=3] [ref=e8669]
+      - paragraph [ref=e8670]:
+        - text: Given the Wannier-interpolated Hamiltonian
+        - img [ref=e8672]
+        - text: on a fine
+        - img [ref=e8693]
+        - text: "-mesh, we can compute the"
+        - emphasis [ref=e8699]:
+          - text: "*Wilson loo"
+          - code [ref=e8700]: p*
+        - text: "along a non-contractible loop of the BZ torus. The practical algorithm proceeds in three steps:"
+      - list [ref=e8701]:
+        - listitem [ref=e8702]:
+          - strong [ref=e8703]: Discretise the loop.
+          - text: Pick a closed 1-D loop
+          - img [ref=e8705]
+          - text: in the BZ (for a 2D insulator, a line of fixed
+          - img [ref=e8712]
+          - text: that wraps the BZ in the
+          - img [ref=e8721]
+          - text: direction). Discretise the loop into
+          - img [ref=e8730]
+          - text: points
+          - img [ref=e8736]
+          - text: with equal spacing
+          - img [ref=e8758]
+          - text: along the loop.
+        - listitem [ref=e8776]:
+          - strong [ref=e8777]: Compute overlap matrices.
+          - text: For each pair of adjacent
+          - img [ref=e8779]
+          - text: "-points, compute the"
+          - img [ref=e8786]
+          - text: "overlap matrix of the cell-periodic Bloch functions:"
+      - img [ref=e8796]
+      - paragraph [ref=e8881]:
+        - text: In the Wannier basis, the overlap is computed from
+        - img [ref=e8883]
+        - text: ": diagonalise"
+        - img [ref=e8904]
+        - text: to get
+        - img [ref=e8925]
+        - text: ", then form the overlap."
+      - list [ref=e8943]:
+        - listitem [ref=e8944]:
+          - strong [ref=e8945]: Form the Wilson loop.
+          - text: "Multiply the overlap matrices along the loop:"
+      - img [ref=e8947]
+      - paragraph [ref=e9020]:
+        - text: The eigenvalues of
+        - img [ref=e9022]
+        - text: are
+        - img [ref=e9035]
+        - text: ", where the"
+        - img [ref=e9057]
+        - text: are the
+        - strong [ref=e9072]: Wannier charge centres (WCC)
+        - text: of the loop
+        - img [ref=e9074]
+        - text: .
+      - paragraph [ref=e9080]:
+        - text: The WCC as a function of the perpendicular momentum
+        - img [ref=e9082]
+        - text: is the diagnostic plot. A trivial insulator gives a set of
+        - emphasis [ref=e9090]:
+          - text: close
+          - code [ref=e9091]: d*' loops (each $\theta_n$ winds from $0$ to $2\pi$ as $k_\perp$ traverses the BZ, *continuously*); a non-trivial insulator gives a set of loops with an *od
+          - text: d
+        - text: ’ number of them
+        - emphasis [ref=e9092]: not
+        - text: closing (a “jump” in the WCC of size
+        - img [ref=e9094]
+        - text: between
+        - img [ref=e9102]
+        - text: and
+        - img [ref=e9115]
+        - text: ). The parity of the jumps is the
+        - img [ref=e9130]
+        - text: invariant, as in
+        - img [ref=e9140]:
+          - link [ref=e9143] [cursor=pointer]:
+            - /url: "#"
+        - text: .
+      - paragraph [ref=e9152]:
+        - text: The algorithm is implemented in
+        - strong [ref=e9153]: WannierTools
+        - text: (Wu
+        - emphasis [ref=e9154]: et al.
+        - text: ", *Comput. Phys. Commun."
+        - strong [ref=e9155]: "224"
+        - text: ", 405 (2018)), which takes the Wannier90 output and computes the Wilson loop, the WCC, and (for a 3D insulator) the surface state spectrum in a slab geometry. The standard input is a `wt.in’ file specifying the Wannier90 data, the"
+        - img [ref=e9157]
+        - text: "-path for the Wilson loop, and the slab geometry for the surface states."
+      - heading "16.7.3 Surface state calculations in slab geometry" [level=3] [ref=e9163]
+      - paragraph [ref=e9164]:
+        - text: The most
+        - emphasis [ref=e9165]: intuitive
+        - text: way to confirm that a DFT band structure is topologically non-trivial is to
+        - emphasis [ref=e9166]: plot the surface state
+        - text: . The calculation is done in a
+        - emphasis [ref=e9167]: slab geometry
+        - text: ": a finite-thickness slab (typically 20–100 unit cells) with vacuum on either side. The slab has a 2D BZ (the projection of the 3D BZ onto the surface plane) and the band structure is a set of"
+        - img [ref=e9169]
+        - text: . The topological surface state, if it exists, appears as a
+        - emphasis [ref=e9187]: gap-crossing
+        - text: band that lives inside the bulk gap.
+      - paragraph [ref=e9188]: "The slab calculation can be done directly with a DFT code that supports non-periodic boundary conditions in one direction (VASP, Quantum ESPRESSO, SIESTA, FLEUR, WIEN2k). The procedure:"
+      - list [ref=e9189]:
+        - listitem [ref=e9190]:
+          - text: Construct a supercell with
+          - img [ref=e9192]
+          - text: unit cells of the bulk and
+          - img [ref=e9198]
+          - text: Å of vacuum on each side; periodic in the surface plane, finite perpendicular.
+        - listitem [ref=e9206]: Standard SCF calculation to converge the density.
+        - listitem [ref=e9207]:
+          - text: Non-SCF calculation along a 1D
+          - img [ref=e9209]
+          - text: path (e.g.
+          - img [ref=e9218]
+          - text: –
+          - img [ref=e9228]
+          - text: –
+          - img [ref=e9238]
+          - text: –
+          - img [ref=e9248]
+          - text: for a hexagonal surface).
+        - listitem [ref=e9257]:
+          - strong [ref=e9258]: Project the slab bands onto the bulk band structure.
+          - text: The surface state is the band that lies
+          - emphasis [ref=e9259]: in the bulk gap
+          - text: ’ and is localised at the surface.
+      - paragraph [ref=e9260]:
+        - text: For a 3D TI, the slab calculation should show a single Dirac cone at
+        - img [ref=e9262]
+        - text: (for the (001) surface of Bi
+        - img [ref=e9272]
+        - text: Se
+        - img [ref=e9279]
+        - text: ) crossing the bulk gap — the
+        - emphasis [ref=e9285]: signature
+        - text: of the strong TI phase.
+      - blockquote [ref=e9286]:
+        - paragraph [ref=e9287]:
+          - strong [ref=e9288]: Note.
+          - text: The slab is
+          - emphasis [ref=e9289]: not
+          - text: periodic in the perpendicular direction; the surface state is
+          - emphasis [ref=e9290]: not
+          - text: a Bloch state of the bulk crystal, but a
+          - emphasis [ref=e9291]: "localise`d"
+          - text: ’ state decaying into the bulk on a length scale of
+          - img [ref=e9293]
+          - text: –
+          - img [ref=e9301]
+          - text: nm. The slab is the most
+          - emphasis [ref=e9307]: direct
+          - text: way to see this localised state.
+      - heading "16.7.4 The surface Green’s function method" [level=3] [ref=e9308]
+      - paragraph [ref=e9309]:
+        - text: "The slab calculation is intuitive but expensive: a 40-cell slab has 40× the atoms of a single bulk cell. The"
+        - strong [ref=e9310]: surface Green’s function
+        - text: method computes the
+        - emphasis [ref=e9311]: same
+        - text: surface spectrum at a cost comparable to a single bulk calculation.
+      - paragraph [ref=e9312]:
+        - text: The setup is a semi-infinite crystal occupying the half- space
+        - img [ref=e9314]
+        - text: with surface at
+        - img [ref=e9324]
+        - text: . The surface Green’s function is
+      - img [ref=e9334]
+      - paragraph [ref=e9415]:
+        - text: where
+        - img [ref=e9417]
+        - text: is the surface unit-cell Hamiltonian and
+        - img [ref=e9429]
+        - text: is the
+        - strong [ref=e9434]: self-energy
+        - text: "of the semi-infinite bulk:"
+      - img [ref=e9436]
+      - paragraph [ref=e9507]:
+        - text: with
+        - img [ref=e9509]
+        - text: the surface-to-bulk coupling. The surface spectral function
+      - img [ref=e9515]
+      - paragraph [ref=e9581]:
+        - text: has delta-function peaks at the energies of
+        - emphasis [ref=e9582]: "true"
+        - text: surface states (Tamm states localised at
+        - img [ref=e9584]
+        - text: ) and of the
+        - emphasis [ref=e9593]: "projecte`d"
+        - text: ’ bulk states. The topological surface state is the delta peak that lies
+        - emphasis [ref=e9594]: inside
+        - text: the bulk gap and is not in the projected bulk spectrum.
+      - paragraph [ref=e9595]:
+        - text: The surface Green’s function is implemented in
+        - strong [ref=e9596]: WannierTools
+        - text: (for Wannier-interpolated Hamiltonians) and in
+        - strong [ref=e9597]: Z2Pack
+        - text: (for tight-binding or first-principles Hamiltonians in the
+        - emphasis [ref=e9598]: projector
+        - text: form). Z2Pack in particular is a general-purpose topological-invariant calculator (Grubić
+        - emphasis [ref=e9599]: et al.
+        - text: ", Phys. Rev. B"
+        - strong [ref=e9600]: "102"
+        - text: ", 245132 (2020)) that computes the Chern number, the"
+        - img [ref=e9602]
+        - text: index, and the surface spectrum of any gapped (or nodal) band structure, with a clean Python interface.
+      - blockquote [ref=e9611]:
+        - paragraph [ref=e9612]:
+          - strong [ref=e9613]: Tip.
+          - text: "The relation between the slab calculation and the surface Green’s function is the same as the relation between the finite-cluster calculation and the Dyson equation: the slab is a"
+          - emphasis [ref=e9614]: real-space
+          - text: finite region; the surface Green’s function is the
+          - emphasis [ref=e9615]: self-energy
+          - text: "-dressed surface layer. The two should agree in the limit of an infinitely thick slab, but the surface Green’s function is much cheaper to compute and does not suffer from finite-size effects (the “finite-thickness” splitting of the two surfaces of a slab)."
+      - heading "16.7.5 Hybrid Wannier centres for Chern numbers" [level=3] [ref=e9616]
+      - paragraph [ref=e9617]:
+        - text: The WCC method of §16.7.2 computes the
+        - img [ref=e9619]
+        - text: invariant. For a
+        - strong [ref=e9628]: Chern number
+        - text: (a 2D insulator with broken TRS), the analogous construction is the
+        - strong [ref=e9629]: hybrid Wannier centre
+        - text: plot (Marzari & Vanderbilt, 1997; further developed in the modern “Wilson-loop” picture by Yu
+        - emphasis [ref=e9630]: et al.
+        - text: ", 2011)."
+      - paragraph [ref=e9631]:
+        - text: The setup is identical to the
+        - img [ref=e9633]
+        - text: "case: a discretised 1-D loop in the BZ, an overlap matrix, and a Wilson loop matrix"
+        - img [ref=e9643]
+        - text: . The
+        - emphasis [ref=e9648]: Chern number
+        - text: is the winding number* of the WCC as
+        - img [ref=e9650]
+        - text: "traverses the BZ:"
+      - img [ref=e9659]
+      - paragraph [ref=e9796]:
+        - text: The total winding number is the Chern number. For a trivial insulator
+        - img [ref=e9798]
+        - text: and the WCC loops are
+        - emphasis [ref=e9807]:
+          - text: close
+          - code [ref=e9808]: d*
+          - text: ; for a Chern insulator
+          - img [ref=e9810]
+          - text: and the WCC loops are *open
+        - text: with a net winding of
+        - img [ref=e9822]
+        - text: across the
+        - img [ref=e9832]
+        - text: window.
+      - blockquote [ref=e9840]:
+        - paragraph [ref=e9841]:
+          - strong [ref=e9842]: Note.
+          - text: For a 3D Chern insulator (a “3D quantum Hall state”), the Chern number is defined for
+          - emphasis [ref=e9843]: "eac`h"
+          - text: ’ 2D slice of the BZ at fixed
+          - img [ref=e9845]
+          - text: ; the full 3D invariant is the sum over slices. The “axion insulator” has vanishing total Chern number but a non-zero magnetoelectric polarisability
+          - img [ref=e9854]
+          - text: .
+      - paragraph [ref=e9863]:
+        - text: The end-to-end workflow of a topological-materials calculation starting from a DFT band structure is summarised below. The diagram is the practical counterpart of the mathematical roadmap in §16.1 — it is the recipe a code like
+        - emphasis [ref=e9864]: WannierTools
+        - text: or Z2Pack* follows.
+      - figure [ref=e9866]:
+        - code [ref=e9867]:
+          - document [ref=e9868]:
+            - generic [ref=e9883]:
+              - generic [ref=e9889]: Bulk DFT+SOC(PBE / SCAN / HSE06)
+              - generic [ref=e9895]: "Bloch functions|u_{n,k}> on k-mesh"
+              - generic [ref=e9901]: Wannier90:maximally-localised WFs
+              - generic [ref=e9907]: Wannier-interpolatedHamiltonian H^W(k)
+              - generic [ref=e9913]: Wilson loop(Wannier charge centres)
+              - generic [ref=e9919]: Z2 invariant nu(Fu-Kane or WCC plot)
+              - generic [ref=e9925]: Slab calculation(DFT, 20-100 cells)
+              - generic [ref=e9931]: Surface Green's function(WannierTools / Z2Pack)
+              - generic [ref=e9937]: Surface spectral functionA(k_par, omega)
+              - generic [ref=e9943]: Topologicalinvariant
+              - generic [ref=e9949]: Chern number C(for Chern insulators)
+              - generic [ref=e9955]: Strong + weak Z2(for 3D TIs)
+              - generic [ref=e9961]: Hybrid WCC(winding number)
+              - generic [ref=e9967]: Plot surfaceDirac cone
+        - button "Download this diagram as a PNG" [ref=e9968] [cursor=pointer]:
+          - img [ref=e9969]
+          - generic [ref=e9972]: Download PNG
+      - paragraph [ref=e9973]:
+        - text: The two
+        - emphasis [ref=e9974]: branches
+        - text: of the diagram are the bulk-only route (‘A → B → C → D → E → J’) and the
+        - emphasis [ref=e9975]: surface
+        - text: "route (‘G → N’ or ‘H → I → N`). The first gives the"
+        - emphasis [ref=e9976]: topological invariant
+        - text: of the bulk (Chern number or
+        - img [ref=e9978]
+        - text: index) without ever computing a surface; the second gives the
+        - emphasis [ref=e9987]: direct visualisation
+        - text: of the protected boundary state. The bulk invariant is cheaper and
+        - emphasis [ref=e9988]: robust
+        - text: to surface imperfections; the surface calculation is more intuitive and is the direct comparison with ARPES.
+      - heading "16.8 Higher-order topological insulators (HOTIs)" [level=2] [ref=e9989]
+      - paragraph [ref=e9990]:
+        - text: "The bulk–boundary correspondence of §16.1 is a “first-order” correspondence: a"
+        - img [ref=e9992]
+        - text: "-dimensional insulator with non-trivial bulk topology has a"
+        - img [ref=e9998]
+        - text: "-dimensional gapless boundary state. A"
+        - emphasis [ref=e10011]: higher-order
+        - text: "topological insulator (HOTI) breaks this rule: a"
+        - img [ref=e10013]
+        - text: "-dimensional HOTI of order"
+        - img [ref=e10019]
+        - text: has a
+        - emphasis [ref=e10024]: gapless
+        - img [ref=e10026]
+        - text: "-dimensional boundary, with all higher-dimensional boundaries *gappe"
+        - code [ref=e10039]: d*
+        - text: . The first explicit HOTI models (Benalcazar, Bernevig, Hughes, 2017) and the first realisation (Bi
+        - img [ref=e10041]
+        - text: Br
+        - img [ref=e10048]
+        - text: in 2018) launched the sub-field.
+      - paragraph [ref=e10054]:
+        - strong [ref=e10055]: Examples.
+        - text: A 2D
+        - emphasis [ref=e10056]: second-order
+        - text: TI has corner states (zero-dimensional), protected by
+        - img [ref=e10058]
+        - text: rotation or mirror symmetry; the invariant is a
+        - emphasis [ref=e10066]: "quantise`d"
+        - text: ’ electric quadrupole moment
+        - img [ref=e10068]
+        - text: . A 3D
+        - emphasis [ref=e10088]: second-order
+        - text: TI has 1D
+        - emphasis [ref=e10089]: hinge
+        - text: "states (chiral modes running along the edges of a 3D sample). Prominent material candidates:"
+      - list [ref=e10090]:
+        - listitem [ref=e10091]:
+          - strong [ref=e10092]:
+            - text: Bi
+            - img [ref=e10094]
+            - text: Br
+            - img [ref=e10101]
+          - text: (
+          - img [ref=e10108]
+          - text: phase,
+          - img [ref=e10114]
+          - text: "): a 3D HOTI with hinge states observed in STM."
+        - listitem [ref=e10133]:
+          - strong [ref=e10134]: Bi
+          - text: (elemental,
+          - img [ref=e10136]
+          - text: "): a predicted 2D HOTI on the (111) surface, with corner states at the intersection of three (111) facets."
+        - listitem [ref=e10149]:
+          - strong [ref=e10150]:
+            - text: EuIn
+            - img [ref=e10152]
+            - text: As
+            - img [ref=e10159]
+          - text: "(antiferromagnetic): a predicted magnetic 3D HOTI with axion electrodynamics."
+      - paragraph [ref=e10165]: The HOTI invariant is the “multipole moment” of the bulk Wannier centres, computed from the Wannier centres in the same way as the Chern number from the WCC.
+      - blockquote [ref=e10166]:
+        - paragraph [ref=e10167]:
+          - strong [ref=e10168]: Note.
+          - text: HOTIs are a
+          - emphasis [ref=e10169]: young
+          - text: sub-field. The first complete classification is by Song
+          - emphasis [ref=e10170]: et al.
+          - text: (Nature Communications*
+          - strong [ref=e10171]: "9"
+          - text: ", 3530 (2018)) and Khalaf"
+          - emphasis [ref=e10172]: et al.
+          - text: (
+          - emphasis [ref=e10173]: Annual Review of Condensed Matter Physics
+          - strong [ref=e10174]: "12"
+          - text: ", 325 (2021)). The connection to the more established"
+          - emphasis [ref=e10175]: topological crystalline insulator
+          - text: classification of §16.5.3 is a topic of active research.
+          - emphasis [ref=e10176]: et al.
+          - text: (Nature Communications
+          - strong [ref=e10177]: "9"
+          - text: ", 3530 (2018)) and Khalaf"
+          - emphasis [ref=e10178]: et al.
+          - text: (Annual Review of Condensed Matter Physics*
+          - strong [ref=e10179]: "12"
+          - text: ", 325 (2021)). The connection to the more established"
+          - emphasis [ref=e10180]: topological crystalline insulator
+          - text: classification of §16.5.3 is a topic of active research.
+      - heading "16.9 Worked example — the Kane–Mele model on a honeycomb lattice" [level=2] [ref=e10181]
+      - paragraph [ref=e10182]:
+        - text: We now work through the Kane–Mele model of §16.4.1. The system is the honeycomb lattice of two sublattices (A and B), with the four terms of
+        - img [ref=e10184]:
+          - link [ref=e10187] [cursor=pointer]:
+            - /url: "#"
+        - text: . The aim is to compute the band structure, the bulk gap, the edge states in a nanoribbon, and the
+        - img [ref=e10197]
+        - text: invariant via the Wilson loop / WCC method.
+      - paragraph [ref=e10206]:
+        - strong [ref=e10207]:
+          - text: Step 1 — the Hamiltonian in
+          - img [ref=e10209]
+          - text: "-space."
+        - text: In the absence of Rashba and staggered potential (
+        - img [ref=e10216]
+        - text: ","
+        - img [ref=e10229]
+        - text: ), the Kane–Mele Hamiltonian
+        - img [ref=e10242]:
+          - link [ref=e10245] [cursor=pointer]:
+            - /url: "#"
+        - text: is block-diagonal in spin. The spin-up block, in the basis
+        - img [ref=e10255]
+        - text: ", is"
+      - img [ref=e10283]:
+        - generic [ref=e10300]:
+          - img [ref=e10304]
+          - img [ref=e10373]
+      - paragraph [ref=e10377]: where
+      - img [ref=e10379]
+      - paragraph [ref=e10433]: is the honeycomb structure factor and
+      - img [ref=e10435]
+      - paragraph [ref=e10493]:
+        - text: is the Haldane-like spin–orbit term with the three next-nearest-neighbour vectors
+        - img [ref=e10495]
+        - text: . The spin-down block is
+        - img [ref=e10505]
+        - text: ", the time-reversed partner."
+      - paragraph [ref=e10538]:
+        - strong [ref=e10539]: Step 2 — diagonalisation and the bulk gap.
+        - text: The eigenvalues of
+        - img [ref=e10541]
+        - text: are
+      - img [ref=e10557]
+      - paragraph [ref=e10627]:
+        - text: At the Dirac points
+        - img [ref=e10629]
+        - text: and
+        - img [ref=e10635]
+        - text: ","
+        - img [ref=e10644]
+        - text: ", so the eigenvalues reduce to"
+        - img [ref=e10661]
+        - text: . For
+        - img [ref=e10683]
+        - text: and the conventional sign convention,
+      - img [ref=e10697]
+      - paragraph [ref=e10749]:
+        - text: This is the bulk gap at the Dirac points. The system is a band insulator for any
+        - img [ref=e10751]
+        - text: .
+      - paragraph [ref=e10764]:
+        - strong [ref=e10765]: Step 3 — the topology.
+        - text: In the limit
+        - img [ref=e10767]
+        - text: and
+        - img [ref=e10780]
+        - text: ", the spin-up block is the Haldane model with flux"
+        - img [ref=e10793]
+        - text: on the honeycomb plaquette and the spin-down block is the Haldane model with flux
+        - img [ref=e10801]
+        - text: . The Haldane model has Chern number
+        - img [ref=e10809]
+        - text: for
+        - img [ref=e10817]
+        - text: and
+        - img [ref=e10835]
+        - text: for
+        - img [ref=e10843]
+        - text: . Therefore the spin-resolved Chern numbers are
+        - img [ref=e10863]
+        - text: and
+        - img [ref=e10878]
+        - text: . The total Chern number vanishes (TRS is preserved), but the
+        - strong [ref=e10892]: spin Chern number
+      - img [ref=e10894]
+      - paragraph [ref=e10925]:
+        - text: is non-zero. The system is a quantum spin Hall insulator with
+        - img [ref=e10927]
+        - text: index
+        - img [ref=e10937]
+        - text: .
+      - paragraph [ref=e10946]:
+        - strong [ref=e10947]: Step 4 — the edge states in a nanoribbon.
+        - text: To see the helical edge states explicitly, compute the band structure of a
+        - emphasis [ref=e10948]: zigzag
+        - text: "nanoribbon: a honeycomb strip of width"
+        - img [ref=e10950]
+        - text: unit cells, infinite along the
+        - img [ref=e10956]
+        - text: "-direction, finite in the"
+        - img [ref=e10962]
+        - text: "-direction. The Hamiltonian is the Kane–Mele model restricted to the strip. The result (for"
+        - img [ref=e10968]
+        - text: and a width of 40 unit cells) is a band structure in which two edge-localised bands cross the bulk gap between
+        - img [ref=e10987]
+        - text: and
+        - img [ref=e11000]
+        - text: ", with one band traversing the gap in one direction and the other in the opposite direction. The crossing is"
+        - emphasis [ref=e11017]: "protecte`d"
+        - text: "’ by TRS: at the time-reversal-invariant momentum"
+        - img [ref=e11019]
+        - text: the two edge bands are degenerate by Kramers’ theorem. The bulk bands above and below the gap are gapped; the edge bands form a
+        - emphasis [ref=e11031]: single
+        - text: Kramers pair of helical edge modes.
+      - paragraph [ref=e11032]:
+        - strong [ref=e11033]:
+          - text: Step 5 — the
+          - img [ref=e11035]
+          - text: invariant from the Wilson loop.
+        - text: Discretise the 1-D loop of fixed
+        - img [ref=e11045]
+        - text: in
+        - img [ref=e11054]
+        - text: into
+        - img [ref=e11063]
+        - text: points; compute the overlap matrix of
+        - img [ref=e11075]:
+          - link [ref=e11078] [cursor=pointer]:
+            - /url: "#"
+        - text: at each point; multiply to form the Wilson loop matrix of
+        - img [ref=e11088]:
+          - link [ref=e11091] [cursor=pointer]:
+            - /url: "#"
+        - text: ; diagonalise; record the WCC
+        - img [ref=e11101]
+        - text: .
+      - paragraph [ref=e11118]:
+        - text: The result (for the same parameters as Step 4) is a plot of two WCC “ribbons” as a function of
+        - img [ref=e11120]
+        - text: . In the
+        - emphasis [ref=e11128]: trivial
+        - text: phase (
+        - img [ref=e11130]
+        - text: ), both ribbons are
+        - emphasis [ref=e11155]: closed
+        - text: ’; in the non-trivial phase (
+        - img [ref=e11157]
+        - text: ), one fails to close, with a net jump of
+        - img [ref=e11183]
+        - text: . The parity of the winding is the
+        - img [ref=e11191]
+        - text: invariant
+        - img [ref=e11201]:
+          - link [ref=e11204] [cursor=pointer]:
+            - /url: "#"
+        - text: ": an"
+        - emphasis [ref=e11213]: "od`d"
+        - text: ’ number of non-closing ribbons gives
+        - img [ref=e11215]
+        - text: .
+      - blockquote [ref=e11224]:
+        - paragraph [ref=e11225]:
+          - strong [ref=e11226]: Tip.
+          - text: The WCC plot is the most
+          - emphasis [ref=e11227]: direct
+          - text: visual diagnostic of the
+          - img [ref=e11229]
+          - text: invariant. The standard reference plot is Figure 2 of Yu
+          - emphasis [ref=e11238]: et al.
+          - text: ", Science"
+          - strong [ref=e11239]: "329"
+          - text: ", 61 (2010), for the Bi"
+          - img [ref=e11241]
+          - text: Se
+          - img [ref=e11248]
+          - text: family.
+      - heading "16.10 Worked example — Bi Se band structure and surface Dirac cone" [level=2] [ref=e11254]:
+        - text: 16.10 Worked example — Bi
+        - img [ref=e11256]
+        - text: Se
+        - img [ref=e11263]
+        - text: band structure and surface Dirac cone
+      - paragraph [ref=e11269]:
+        - text: The second worked example is the canonical 3D TI Bi
+        - img [ref=e11271]
+        - text: Se
+        - img [ref=e11278]
+        - text: . The aim is to take a “real” DFT calculation, perform the Wannier construction, and observe the topological surface Dirac cone.
+      - paragraph [ref=e11284]:
+        - strong [ref=e11285]: Step 1 — bulk DFT calculation.
+        - text: Standard DFT of bulk Bi$
+        - emphasis [ref=e11286]:
+          - text: "2"
+          - img [ref=e11288]
+          - text: _3
+          - img [ref=e11296]
+          - text: a = 4.14
+          - img [ref=e11384]:
+            - generic [ref=e11388]: Å
+          - text: c = 28.6
+          - img [ref=e11392]:
+            - generic [ref=e11396]: Å
+          - text: R\bar 3 m
+          - img [ref=e11420]
+          - text: _2
+          - img [ref=e11440]
+          - text: _3
+          - img [ref=e11448]
+          - text: 5d
+          - img [ref=e11634]
+          - text: 6p
+          - img [ref=e11644]
+          - text: \sim 400
+          - img [ref=e11748]
+          - text: 9 \times 9 \times 9
+          - img [ref=e11801]
+          - text: "{|u"
+        - text: "{n\\mathbf k}\\rangle}"
+        - img [ref=e12051]
+        - text: \sim 30
+        - img [ref=e12061]
+        - text: sp$ bands per 5-atom cell.
+      - paragraph [ref=e12062]:
+        - strong [ref=e12063]: Step 2 — band inversion check.
+        - text: The PBE+SOC band structure has a direct gap of
+        - img [ref=e12065]
+        - text: eV at
+        - img [ref=e12075]
+        - text: ". The key observation: in the"
+        - emphasis [ref=e12080]: non
+        - text: "-SOC picture the CBM at"
+        - img [ref=e12082]
+        - text: is the Se
+        - img [ref=e12088]
+        - text: combination;
+        - emphasis [ref=e12098]: "wit`h"
+        - text: ’ SOC the ordering inverts and the CBM is the Bi
+        - img [ref=e12100]
+        - text: . This
+        - emphasis [ref=e12110]: band inversion
+        - text: is the origin of the topological phase. Without SOC, Bi
+        - img [ref=e12112]
+        - text: Se
+        - img [ref=e12119]
+        - text: is a trivial insulator.
+      - paragraph [ref=e12125]:
+        - strong [ref=e12126]: Step 3 — Wannier construction.
+        - text: Construct a set of MLWFs with Wannier90 from the 30
+        - img [ref=e12128]
+        - text: bands. The initial guess is the atomic
+        - img [ref=e12136]
+        - text: "-orbital positions; the output is the"
+        - img [ref=e12142]
+        - text: matrices, the spread
+        - img [ref=e12155]
+        - text: ", and the Wannier-interpolated"
+        - img [ref=e12161]
+        - text: on a finer
+        - img [ref=e12182]
+        - text: "-mesh."
+      - paragraph [ref=e12188]:
+        - strong [ref=e12189]:
+          - text: Step 4 — bulk
+          - img [ref=e12191]
+          - text: invariant.
+        - text: Compute the sewing matrix
+        - img [ref=e12201]
+        - text: of
+        - img [ref=e12214]:
+          - link [ref=e12217] [cursor=pointer]:
+            - /url: "#"
+        - text: at the eight 3D TRIM, the Pfaffian and determinant at each, and apply
+        - img [ref=e12227]:
+          - link [ref=e12230] [cursor=pointer]:
+            - /url: "#"
+        - text: . The standard DFT result (the
+        - img [ref=e12240]
+        - text: signs depend on the gauge of the Bloch functions, but the
+        - emphasis [ref=e12248]: product
+        - text: is gauge-invariant) is
+        - img [ref=e12250]
+        - text: and
+        - img [ref=e12263]
+        - text: ": Bi"
+        - img [ref=e12306]
+        - text: Se
+        - img [ref=e12313]
+        - text: is a
+        - emphasis [ref=e12319]: strong
+        - text: TI. In practice the product is computed
+        - emphasis [ref=e12320]: numerically
+        - text: with WannierTools, which handles the gauge carefully.
+      - paragraph [ref=e12321]:
+        - strong [ref=e12322]: Step 5 — surface Dirac cone.
+        - text: "The surface state is computed in one of two ways:"
+      - list [ref=e12323]:
+        - listitem [ref=e12324]:
+          - strong [ref=e12325]: Direct slab calculation.
+          - text: A slab of
+          - img [ref=e12327]
+          - text: quintuple layers with
+          - img [ref=e12335]
+          - text: Å of vacuum on each side, standard DFT+SOC, band structure along
+          - img [ref=e12344]
+          - text: –
+          - img [ref=e12354]
+          - text: –
+          - img [ref=e12364]
+          - text: –
+          - img [ref=e12374]
+          - text: ". Result: a single Dirac cone at"
+          - img [ref=e12384]
+          - text: ","
+          - emphasis [ref=e12393]: inside
+          - text: the bulk gap, with linear dispersion. The Dirac point sits
+          - img [ref=e12395]
+          - text: –
+          - img [ref=e12406]
+          - text: eV below the bulk CBM in a clean sample; the Fermi energy in real Bi
+          - img [ref=e12414]
+          - text: Se
+          - img [ref=e12421]
+          - text: is pinned by Se vacancies
+          - img [ref=e12428]
+          - text: eV
+          - emphasis [ref=e12437]: above
+          - text: the bulk CBM.
+        - listitem [ref=e12438]:
+          - strong [ref=e12439]: Surface Green’s function with WannierTools.
+          - text: Take
+          - img [ref=e12441]
+          - text: from Step 3, form the surface Green’s function
+          - img [ref=e12462]:
+            - link [ref=e12465] [cursor=pointer]:
+              - /url: "#"
+          - text: ", plot"
+          - img [ref=e12475]:
+            - link [ref=e12478] [cursor=pointer]:
+              - /url: "#"
+          - text: . The result is the same single Dirac cone, at
+          - img [ref=e12488]
+          - text: lower cost than the slab.
+      - paragraph [ref=e12498]:
+        - text: The Dirac cone has the
+        - emphasis [ref=e12499]: spin–momentum locking
+        - text: "of a topological surface state: a circular Fermi surface around"
+        - img [ref=e12501]
+        - text: with
+        - img [ref=e12511]
+        - text: (spin in the surface plane, perpendicular to the momentum). This is the
+        - emphasis [ref=e12535]: experimental
+        - text: signature, measurable by spin-resolved ARPES. It is
+        - emphasis [ref=e12536]: not
+        - text: present in a trivial surface state, where the spin texture is Rashba-like with a helical winding.
+      - blockquote [ref=e12537]:
+        - paragraph [ref=e12538]:
+          - strong [ref=e12539]: Tip.
+          - text: The Bi$
+          - emphasis [ref=e12540]:
+            - text: "2"
+            - img [ref=e12542]
+            - text: _3$ surface Dirac cone was the first *clean* experimental observation of a 3D TI surface state (Xia *et al.*, Nature Physics
+            - strong [ref=e12549]: "5"
+            - text: ", 398 (2009)). The same Dirac cone is in Bi"
+            - img [ref=e12551]
+            - text: Te
+            - img [ref=e12558]
+            - text: and Sb
+            - img [ref=e12565]
+            - text: Te
+            - img [ref=e12572]
+            - text: ; the *alloy* Bi
+            - img [ref=e12579]
+            - text: Te$
+          - text: "{2}$Se has the same surface state but a"
+          - emphasis [ref=e12585]: larger
+          - text: bulk gap (alloy disorder pushes the bulk bands apart), making it a better platform for transport experiments.
+      - heading "16.11 Problems" [level=2] [ref=e12586]
+      - group [ref=e12587]:
+        - generic "▸ Problem 1 (easy) — Berry phase of a spin-1/2 in a slowly rotating magnetic field" [ref=e12588] [cursor=pointer]
+        - text: A spin-1/2 particle is placed in a magnetic field with fixed and slowly increasing from to . The Hamiltonian is . 1. Write the instantaneous ground state in the basis of eigenstates. 2. Compute the Berry connection . 3. Compute the Berry phase . 4. Show that for the *excited* state the Berry phase is .
+      - group [ref=e12589]:
+        - generic "▸ Show answer" [ref=e12590] [cursor=pointer]
+        - text: "**Setup.** The instantaneous Hamiltonian is with the unit vector along . The eigenstates are the spin states quantised along : the ground state is spin *anti-parallel* to (energy ); the excited state is spin *parallel* (energy ). **1. Ground-state wavefunction.** Using the standard parameterisation of a spin-1/2 state on a cone, the ground-state eigenvector along is This is a *normalise`d*' state with . The *overall* phase of the eigenvector is conventional; we have chosen the phase so that the component is real and the component carries the azimuthal phase . **2. Berry connection.** Differentiate with respect to : Form the inner product with : The Berry connection is The connection is *constant* in (because the eigenvector depends on only through the *overall* phase of the component, which does not contribute to the connection after the inner product with the component cancels). **3. Berry phase.** Integrate around the closed loop: This is the well-known result: the Berry phase of a spin-1/2 adiabatically rotated around a cone of half-angle is , equal to half the solid angle subtended by the cone. For (rotation in the equatorial plane), . For (no rotation) or (rotation around the spin direction), . **4. Excited state.** The excited state in the same phase convention is . The same calculation gives and . The two Berry phases do *not* sum to zero in general (the field breaks TR symmetry), confirming that \"Berry phase\" is a property of the *eigenstate*, not of the *Hamiltonian*. **Geometric interpretation.** where is the solid angle subtended by the cone: Berry's \"half-solid-angle\" theorem for a spin-1/2."
+      - group [ref=e12591]:
+        - generic "▸ Problem 2 (medium) — Chern number of a massive Dirac Hamiltonian in 2D" [ref=e12592] [cursor=pointer]
+        - text: Consider a 2D massive Dirac Hamiltonian where are Pauli matrices acting in a two-dimensional subspace, is the velocity, and is the mass. 1. Compute the Berry curvature of the lower band as a function of , , and . 2. Compute the Chern number of the lower band by integrating over the 2D -plane (not just the BZ — for the moment, take the model as defined on ). 3. Show that the Chern number jumps by as passes through . 4. Discuss the topological distinction between and .
+      - group [ref=e12593]:
+        - generic "▸ Show answer" [ref=e12594] [cursor=pointer]
+        - text: "**1. Berry curvature.** Use the \"sum-over-states\" form . For a 2×2 Hamiltonian the only other band is , and the formula reduces to The partial derivatives are and . The non-trivial matrix element is so the curvature is The Berry curvature of the upper band is the negative of this: , as required by the sum rule for a 2×2 Hamiltonian. **2. Chern number of the lower band.** Integrate the Berry curvature over the 2D -plane. The integral is rotationally symmetric, so we use polar coordinates , : The factor of from the integral cancels the in the Chern number formula. Substitute , , so : For , . For , . **3. The Chern number is *not* an integer.** Something is wrong! The Chern number must be an integer, but our calculation gives . The reason is that is *not* defined on a compact momentum space: the integration region is . For a continuum model on , the \"Chern number\" is the **parity anomaly** of a 2D Dirac fermion (a half-integer). To get an integer, we need a *compact* integration region, i.e. a BZ (a torus ). **4. Resolution: compactify the model to a sphere .** The spectrum on the sphere is *discrete* (angular momentum ) and the Chern number is an integer: for , for , and the gap closes at . The change of by across is the *topological phase transition*. In a *lattice* model (e.g. the Haldane model on the honeycomb) the compactness is automatic and the Chern number is always an integer; the gap-closing happens at the Dirac point. The two lessons: (i) the Chern number is a *topological* invariant, changing only at a gap closing; (ii) it is an *integer* only when the model lives on a *compact* momentum space."
+      - group [ref=e12595]:
+        - generic "▸ Problem 3 (hard) — invariant of the BHZ model via the Fu–Kane formula" [ref=e12596] [cursor=pointer]:
+          - text: ▸ Problem 3 (hard) —
+          - img [ref=e12598]
+          - text: invariant of the BHZ model via the Fu–Kane formula
+        - text: The BHZ model of is with and , , . The TR operator squares to and acts on the orbital and spin indices as in each block. 1. Find the eigenvectors of the block. 2. Construct the **sewing matrix** at the four 2D TRIM with . 3. Compute the Pfaffian and the determinant at each TRIM. 4. Apply the Fu–Kane formula to obtain . Show that the index changes when passes through .
+      - group [ref=e12607]:
+        - generic "▸ Show answer" [ref=e12608] [cursor=pointer]
+        - text: "**1. Eigenvectors of .** At each , the block has two eigenvectors where . The energy of the band is . The *eigenvectors* are the standard parameterisation of a 2-level Hamiltonian in terms of Pauli matrices. The *occupie`d*' band is the lower one ( ), with eigenvector . **2. The sewing matrix at TRIM.** At the four TRIM with , the vector has So at the TRIM, and the eigenvectors simplify. For the case (i.e. and we are at a TRIM with , so ): For (the other TRIM, with or ): The sewing matrix at a TRIM is . Since at a TRIM the eigenvectors are simple, and the TR operator acts on the spin / orbital indices (in the BHZ basis) and complex-conjugates the coefficients, we have At the TRIM, are real, so . For the TRIM with ( ): , so . The sewing matrix element with is . The other element (with the *excite`d*' state, not the time-reversed partner of the ground state) is (orthogonality). For the TRIM with ( or ): , so . The sewing matrix element with is . The other element is again . So the sewing matrix at each TRIM is a matrix (because there is only *one* occupied Kramers pair, the \" \" band; the full sewing matrix for the multi-band case would be , but for the BHZ model the four-band model is block-diagonal, and each block is one Kramers pair): **3. Pfaffian and determinant.** For a matrix, the Pfaffian is the matrix element itself: . The determinant is also . So . The ratio is For : ratio is . For : ratio is . The *phase* of the ratio is what matters; the product of the four ratios is The product of the four values depends on the *number* of TRIM with vs. . The four TRIM are | TRIM | | | Sign of | |:-----|:------------:|:-----:|:--------------:| | | | | | | | | | | | | | | | | | | | | For (the \"trivial\" phase), all four are positive: for all four, and the product is . So (trivial). For (the \"non-trivial\" phase), the signs are (three positive, one negative at ): the product of the four phases is . The *square* of the product is , so , (non-trivial). For (another \"trivial\" phase), the signs are : the product is . So again . The BHZ model is *non-trivial* ( ) for and *trivial* ( ) outside this range. The \"occupied band\" must be chosen consistently with the *valence* bands of the HgTe/CdTe quantum well, which inverts the band ordering at the critical thickness. **4. The transition at .** As decreases from to , the index changes *twice*: once at (the lower transition) and once at (the upper transition). The bulk gap closes at each transition (at the point for , and at the point for ). Each is a *topological* phase transition: the gap closes and re-opens, and the index flips. In the HgTe/CdTe quantum well, is controlled by the *thickness* of the HgTe layer. The critical thickness is nm: for , and the well is a trivial insulator; for , and the well is a QSH insulator. The index flips at , and the QSH phase is realised for . This is the *standar`d*' test of the Fu–Kane formula, and gives the correct index in each phase."
+      - heading "16.12 Cross-references" [level=2] [ref=e12609]
+      - paragraph [ref=e12610]:
+        - text: This chapter sits at the end of the
+        - emphasis [ref=e12611]: solids
+        - text: track of the DFT Notes. The forward path points to
+        - link "Chapter 17" [ref=e12612] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-17/
+        - text: ", the machine-learning-for-DFT chapter, where some of the topological-invariant computations (WCC / Wilson loops) are now being accelerated by"
+        - emphasis [ref=e12613]:
+          - text: machine-learne
+          - code [ref=e12614]: d*' tight- binding models and *neural-networ
+          - text: k
+        - text: "’ topological classifiers. The backward path is:"
+      - list [ref=e12615]:
+        - listitem [ref=e12616]:
+          - link "Chapter 07" [ref=e12617] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: for the Bloch factorisation, the reciprocal lattice, the Brillouin zone, and the
+          - img [ref=e12619]
+          - text: "-mesh."
+        - listitem [ref=e12625]:
+          - link "Chapter 11" [ref=e12626] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: for the band-structure language and the graphene tight-binding example that we extended to the Kane–Mele model.
+        - listitem [ref=e12627]:
+          - link "Chapter 15" [ref=e12628] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-15/
+          - text: for the spin–orbit coupling that drives the band inversion in the BHZ model, Bi
+          - img [ref=e12630]
+          - text: Se
+          - img [ref=e12637]
+          - text: ", and the 3D TI family."
+        - listitem [ref=e12643]:
+          - link "Chapter 06" [ref=e12644] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: and
+          - link "Chapter 08" [ref=e12645] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: for the basis-set / PAW machinery used in first- principles Wannier construction in heavy-element materials (Bi
+          - img [ref=e12647]
+          - text: Se
+          - img [ref=e12654]
+          - text: uses a PAW potential with Bi
+          - img [ref=e12661]
+          - text: in the valence).
+      - paragraph [ref=e12668]:
+        - text: The connection to the
+        - emphasis [ref=e12669]: dynamics
+        - text: track is through
+        - link "Chapter 12" [ref=e12670] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-12/
+        - text: ", TDDFT: the"
+        - emphasis [ref=e12671]: linear-response
+        - text: machinery is the starting point for the
+        - emphasis [ref=e12672]: Berry-curvature sum-over-states
+        - text: formula
+        - img [ref=e12674]:
+          - link [ref=e12677] [cursor=pointer]:
+            - /url: "#"
+        - text: and the Kubo- Greenwood formula for the Hall conductivity. The TDDFT machinery is not required for this chapter, but the parallel structure is worth noting.
+      - paragraph [ref=e12686]:
+        - text: The connection to the
+        - emphasis [ref=e12687]: many-body
+        - text: track is through
+        - link "Chapter 13" [ref=e12688] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-13/
+        - text: (DFT+U and beyond). The first-principles prediction of topological invariants is
+        - emphasis [ref=e12689]: sensitive
+        - text: "to the XC functional: the band gap of a strongly-correlated insulator (e.g. SmB"
+        - img [ref=e12691]
+        - text: ) is severely underestimated in LDA / GGA, and the band ordering — and hence the topological classification — can be wrong. Scanning the topology with different functionals (LDA, PBE, HSE06, DFT+U,
+        - img [ref=e12698]
+        - text: ) is a standard diagnostic.
+      - 'heading "16.13 The original topological insulator papers: a literature deep-dive" [level=2] [ref=e12711]'
+      - paragraph [ref=e12712]:
+        - text: The previous sections introduced the
+        - emphasis [ref=e12713]: theory
+        - text: of topological insulators — Berry phase, Chern number,
+        - img [ref=e12715]
+        - text: index, the bulk–boundary correspondence — using the modern textbook language. The purpose of this section is to
+        - emphasis [ref=e12724]: return to the sources
+        - text: ": the five papers that defined the field, in their original notation, with citations to the"
+        - emphasis [ref=e12725]: page
+        - text: "of the original publication (each entry below has the page on which the load-bearing equation is derived, so the reader can pull the PDF and check the algebra in context). The five papers are:"
+      - list [ref=e12726]:
+        - listitem [ref=e12727]:
+          - strong [ref=e12728]: Kane, C. L.; Mele, E. J.
+          - text: “Z
+          - img [ref=e12730]
+          - text: Topological Order and the Quantum Spin Hall Effect.”
+          - emphasis [ref=e12736]: Phys. Rev. Lett.
+          - strong [ref=e12737]: "2005"
+          - text: ","
+          - emphasis [ref=e12738]: "95"
+          - text: ", 146802 — the original definition of the"
+          - img [ref=e12740]
+          - text: invariant for a 2D TR-symmetric insulator [Kane and Mele, 2005].
+        - listitem [ref=e12749]:
+          - strong [ref=e12750]: Fu, L.; Kane, C. L.
+          - text: “Time Reversal Polarization and the Z
+          - img [ref=e12752]
+          - text: Invariant.”
+          - emphasis [ref=e12758]: Phys. Rev. B
+          - strong [ref=e12759]: "2006"
+          - text: ","
+          - emphasis [ref=e12760]: "74"
+          - text: ", 045312 — the practical Pfaffian formula for the invariant, and the extension to 3D [Fu and Kane, 2006]."
+        - listitem [ref=e12761]:
+          - strong [ref=e12762]: Bernevig, B. A.; Hughes, T. L.; Zhang, S.-C.
+          - text: “Quantum Spin Hall Effect and Topological Phase Transition in HgTe Quantum Wells.”
+          - emphasis [ref=e12763]: Science
+          - strong [ref=e12764]: "2006"
+          - text: ","
+          - emphasis [ref=e12765]: "314"
+          - text: ", 1757–1761 — the first real-material prediction of a 2D TI [Bernevig, Hughes, and Zhang, 2006]."
+        - listitem [ref=e12766]:
+          - strong [ref=e12767]: Hasan, M. Z.; Kane, C. L.
+          - text: "“Colloquium: Topological Insulators.”"
+          - emphasis [ref=e12768]: Rev. Mod. Phys.
+          - strong [ref=e12769]: "2010"
+          - text: ","
+          - emphasis [ref=e12770]: "82"
+          - text: ", 3045–3067 — the canonical modern review of the entire field [Hasan and Kane, 2010]."
+        - listitem [ref=e12771]:
+          - strong [ref=e12772]: Weyl, H.
+          - text: “Elektron und Gravitation. I.”
+          - emphasis [ref=e12773]: Z. Phys.
+          - strong [ref=e12774]: "1929"
+          - text: ","
+          - emphasis [ref=e12775]: "56"
+          - text: ", 330–352 — the original derivation of the massless Dirac equation that now describes the low-energy quasiparticles of a Weyl semimetal [Weyl, 1929]."
+      - paragraph [ref=e12776]:
+        - text: The five papers are arranged in roughly historical order (1929, 2005, 2006, 2006, 2006, 2010). The section is
+        - emphasis [ref=e12777]: "page-cite`d"
+        - text: "’ throughout: every claim, equation, or numerical estimate is followed by ‘[Author, Year, eq. (X), p. YYYY-Z]’, where ‘YYYY’ is the journal page number and ‘Z’ is the printed page within the article (PRL and PRB use a single page number; Science uses the start page). The reader is encouraged to"
+        - emphasis [ref=e12778]: open the original
+        - text: and verify.
+      - heading "16.13.1 The Z invariant in 2D (Kane-Mele 2005)" [level=3] [ref=e12779]:
+        - text: 16.13.1 The Z
+        - img [ref=e12781]
+        - text: invariant in 2D (Kane-Mele 2005)
+      - paragraph [ref=e12787]:
+        - text: The Kane–Mele 2005 paper is the
+        - emphasis [ref=e12788]: founding document
+        - text: of the 2D topological insulator field. The paper is four pages long and is densely argued. The argument proceeds in three moves.
+      - paragraph [ref=e12789]:
+        - strong [ref=e12790]: Move 1 — the definition of the QSH state.
+        - text: The paper opens by defining the quantum spin Hall state. A 2D TR-symmetric insulator is in the QSH phase if, at each edge, there is an
+        - emphasis [ref=e12791]:
+          - text: od
+          - code [ref=e12792]: d*' number of Kramers pairs of counter-propagating, spin-filtered edge states [Kane and Mele, 2005, p. 146802-1]. This is the working definition; the rest of the paper derives a *bul
+          - text: k
+        - text: ’ diagnostic that distinguishes this phase from the trivial insulator.
+      - paragraph [ref=e12793]:
+        - text: "The formal QSH insulator definition is given in eq. (1) of the paper [Kane and Mele, 2005, eq. (1), p. 146802-1]: a many-body state of"
+        - img [ref=e12795]
+        - text: electrons is in the QSH phase if the
+        - emphasis [ref=e12800]: many-body
+        - text: expectation value of the TR operator
+        - img [ref=e12802]
+        - text: has eigenvalue
+        - img [ref=e12808]
+        - text: on the degenerate ground state. In symbols,
+        - img [ref=e12816]
+        - text: . The two signs distinguish the
+        - emphasis [ref=e12845]: trivial
+        - text: (eigenvalue
+        - img [ref=e12847]
+        - text: ) and the
+        - emphasis [ref=e12854]: non-trivial
+        - text: (eigenvalue
+        - img [ref=e12856]
+        - text: ) insulators. This is the
+        - emphasis [ref=e12863]: many-body
+        - img [ref=e12865]
+        - text: index; the rest of the paper shows how to compute it from the
+        - emphasis [ref=e12874]: single-particle
+        - text: band structure.
+      - paragraph [ref=e12875]:
+        - strong [ref=e12876]: Move 2 — the time-reversal polarisation.
+        - text: The key insight is that the bulk
+        - img [ref=e12878]
+        - text: index can be written as a
+        - emphasis [ref=e12887]: time-reversal
+        - text: polarisation. For a 1D TR-symmetric insulator, the electric polarisation
+        - img [ref=e12889]
+        - text: is only defined modulo
+        - img [ref=e12895]
+        - text: (modulo the
+        - emphasis [ref=e12900]: lattice
+        - text: polarisation quantum
+        - img [ref=e12902]
+        - text: ). With TR, however, the
+        - emphasis [ref=e12917]: change
+        - text: in
+        - img [ref=e12919]
+        - text: across a TR-symmetric boundary satisfies
+        - img [ref=e12925]
+        - text: ", so"
+        - img [ref=e12941]
+        - text: is quantised at
+        - img [ref=e12949]
+        - text: or
+        - img [ref=e12955]
+        - text: — a
+        - img [ref=e12966]
+        - text: quantity. This is the
+        - strong [ref=e12975]: time-reversal polarisation
+        - text: "[Kane and Mele, 2005, eq. (3), p. 146802-2]:"
+      - img [ref=e12977]
+      - paragraph [ref=e13037]:
+        - text: Equation
+        - img [ref=e13039]:
+          - link [ref=e13042] [cursor=pointer]:
+            - /url: "#"
+        - text: is the one-dimensional
+        - img [ref=e13052]
+        - text: invariant. The factor of 2 in the denominator is the
+        - emphasis [ref=e13061]: Kramers
+        - text: "degeneracy: the two time- reversed partners at a TRIM carry opposite electric polarisation, so their sum can change only in units of"
+        - img [ref=e13063]
+        - text: .
+      - paragraph [ref=e13073]:
+        - strong [ref=e13074]: Move 3 — the 2D extension and the bulk diagnostic.
+        - text: To get the 2D
+        - img [ref=e13076]
+        - text: index, Kane and Mele take
+        - emphasis [ref=e13085]: two
+        - text: "1D slices of the 2D BZ: at"
+        - img [ref=e13087]
+        - text: and at
+        - img [ref=e13100]
+        - text: . Each slice is a 1D TR-symmetric insulator with its own time-reversal polarisation. The 2D
+        - img [ref=e13113]
+        - text: index is the
+        - emphasis [ref=e13122]: difference
+        - text: "of these two polarisations, taken modulo 2 [Kane and Mele, 2005, eq. (4), p. 146802-2]:"
+      - img [ref=e13124]
+      - paragraph [ref=e13194]:
+        - text: The factor of 2 converts the
+        - emphasis [ref=e13195]: continuous
+        - text: 1D polarisation to a
+        - emphasis [ref=e13196]: discrete
+        - img [ref=e13198]
+        - text: quantity. A non-trivial
+        - img [ref=e13208]
+        - text: implies an
+        - emphasis [ref=e13217]: "od`d"
+        - text: ’ number of edge-state crossings of the Fermi energy between
+        - img [ref=e13219]
+        - text: and
+        - img [ref=e13232]
+        - text: — the
+        - emphasis [ref=e13244]: helical
+        - text: edge mode of the QSH phase.
+      - paragraph [ref=e13245]:
+        - strong [ref=e13246]: The graphene example.
+        - text: The paper then establishes the
+        - img [ref=e13248]
+        - text: order of the QSH phase in the Kane–Mele model on the honeycomb lattice, by computing the polarisation of the two 1D slices at
+        - img [ref=e13258]
+        - text: and
+        - img [ref=e13271]
+        - text: from the spin–orbit-coupled band structure [Kane and Mele, 2005, eqs. (5)–(7), p. 146802-2]. The result is
+        - img [ref=e13284]
+        - text: for the QSH phase and
+        - img [ref=e13294]
+        - text: for the trivial insulator. The phase transition between the two is at the gap closing of the Kane–Mele model — the bulk gap closes at the critical ratio
+        - img [ref=e13304]
+        - text: (§16.4.1, eq.
+        - img [ref=e13330]:
+          - link [ref=e13333] [cursor=pointer]:
+            - /url: "#"
+        - text: ).
+      - paragraph [ref=e13342]:
+        - strong [ref=e13343]: The HgTe/CdTe prediction.
+        - text: The closing paragraphs of the paper make the
+        - emphasis [ref=e13344]: speculative
+        - text: leap that the QSH
+        - emphasis [ref=e13345]: "shoul`d"
+        - text: ’ exist in a HgTe/CdTe quantum well, because the band inversion driven by the spin–orbit coupling of Hg is the same mechanism that drives the
+        - img [ref=e13347]
+        - text: transition in the Kane–Mele model [Kane and Mele, 2005, p. 146802-3]. This is the
+        - emphasis [ref=e13356]: one-sentence prediction
+        - text: that Bernevig, Hughes, and Zhang picked up in 2006 and turned into the BHZ model and the first experimental observation in 2007. >
+        - strong [ref=e13357]: Note.
+        - text: The Kane–Mele 2005 paper is short (4 pages)
+      - blockquote [ref=e13358]:
+        - paragraph [ref=e13359]:
+          - text: and has no figures beyond the band-structure cartoons. The argument is dense; the reader is expected to be familiar with the Berry phase and the quantum Hall effect. The paper does
+          - emphasis [ref=e13360]: not
+          - text: compute the
+          - img [ref=e13362]
+          - text: index from the Pfaffian (this is the 2006 Fu–Kane contribution) and does
+          - emphasis [ref=e13371]: not
+          - text: predict a specific material realisation (this is the 2006 BHZ contribution). It is the
+          - emphasis [ref=e13372]: abstract
+          - text: existence proof of a
+          - img [ref=e13374]
+          - text: "-classified 2D TR-symmetric insulator."
+      - heading "16.13.2 The Fu–Kane formula (2006)" [level=3] [ref=e13383]
+      - paragraph [ref=e13384]:
+        - text: The 2006 Fu–Kane paper is the
+        - emphasis [ref=e13385]: operational
+        - text: "companion to Kane–Mele 2005. The question it answers is: given a DFT band structure on a discrete"
+        - img [ref=e13387]
+        - text: "-mesh, how do we"
+        - emphasis [ref=e13393]: compute
+        - text: the
+        - img [ref=e13395]
+        - text: index? The answer is a formula involving the Pfaffian of the
+        - emphasis [ref=e13404]: sewing matrix
+        - text: at the time-reversal invariant momenta.
+      - paragraph [ref=e13405]:
+        - strong [ref=e13406]: The sewing matrix.
+        - text: For a TR-symmetric insulator with
+        - img [ref=e13408]
+        - text: occupied Kramers pairs, the
+        - emphasis [ref=e13415]: sewing matrix
+      - img [ref=e13417]
+      - paragraph [ref=e13497]:
+        - text: relates the Kramers partners at
+        - img [ref=e13499]
+        - text: and at
+        - img [ref=e13506]
+        - text: . The sewing matrix is
+        - emphasis [ref=e13514]: "antisymmetri`c"
+        - text: ’ at the TRIM,
+        - img [ref=e13516]
+        - text: ", so its Pfaffian is well-defined [Fu and Kane, 2006, eq. (8), p. 045312-3]:"
+      - img [ref=e13549]
+      - paragraph [ref=e13623]:
+        - text: Equation
+        - img [ref=e13625]:
+          - link [ref=e13628] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - emphasis [ref=e13637]:
+          - text: "*Fu–Kane formul"
+          - code [ref=e13638]: a*
+        - text: for the 2D
+        - img [ref=e13640]
+        - text: invariant. Each factor in the product is
+        - img [ref=e13650]
+        - text: ", and the product of the four is the invariant. The formula is the"
+        - emphasis [ref=e13657]: workhorse
+        - text: of every numerical
+        - img [ref=e13659]
+        - text: "calculation: it requires the sewing matrix at only four points in the BZ, so it can be evaluated from a"
+        - emphasis [ref=e13668]: finite
+        - img [ref=e13670]
+        - text: "-mesh."
+      - paragraph [ref=e13676]:
+        - strong [ref=e13677]: Why the Pfaffian?
+        - text: The Pfaffian of an antisymmetric matrix
+        - img [ref=e13679]
+        - text: is the “square root” of its determinant,
+        - img [ref=e13685]
+        - text: . For a
+        - img [ref=e13709]
+        - text: matrix
+        - img [ref=e13719]
+        - text: ","
+        - img [ref=e13747]
+        - text: . The ratio
+        - img [ref=e13764]
+        - text: is
+        - img [ref=e13791]
+        - text: because the two quantities have the same magnitude. The ratio is the
+        - emphasis [ref=e13798]: sign
+        - text: of the Pfaffian relative to the standard orientation of the matrix; it is the
+        - emphasis [ref=e13799]: gauge-invariant
+        - text: content of the sewing matrix at the TRIM. The product over the four TRIM gives the
+        - img [ref=e13801]
+        - text: invariant [Fu and Kane, 2006, eqs. (9)–(12), p. 045312-3].
+      - paragraph [ref=e13810]:
+        - strong [ref=e13811]: The inversion-symmetric shortcut.
+        - text: When the crystal has inversion symmetry, the
+        - img [ref=e13813]
+        - text: index can be read off the
+        - emphasis [ref=e13822]: parities
+        - text: of the occupied bands at the TRIM. Each of the
+        - img [ref=e13824]
+        - text: occupied Kramers pairs of bands has a definite parity
+        - img [ref=e13832]
+        - text: "at each TRIM. The Fu–Kane formula simplifies to [Fu and Kane, 2006, eq. (15), p. 045312-4]:"
+      - img [ref=e13850]
+      - paragraph [ref=e13917]:
+        - text: Equation
+        - img [ref=e13919]:
+          - link [ref=e13922] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - strong [ref=e13931]: parity criterion
+        - text: ": the product of the parities of"
+        - emphasis [ref=e13932]: all
+        - text: the occupied bands at all four 2D TRIM gives
+        - img [ref=e13934]
+        - text: ", and the sign is"
+        - img [ref=e13942]
+        - text: . This is the fastest
+        - img [ref=e13957]
+        - text: "calculation in practice: just read off the parities at the four TRIM from a parity-eigenvalue calculation. It is the working formula of the VASP"
+        - code [ref=e13966]: Z2PACK
+        - text: ’ interface and of the
+        - code [ref=e13967]: vasp2trace
+        - text: ’ tool of the VASP group.
+      - paragraph [ref=e13968]:
+        - strong [ref=e13969]: The 3D extension to strong and weak TIs.
+        - text: Section IV of the Fu–Kane paper extends the formula to 3D [Fu and Kane, 2006, p. 045312-7]. A 3D TR-symmetric insulator has
+        - emphasis [ref=e13970]: eight
+        - text: TRIM,
+        - img [ref=e13972]
+        - text: with
+        - img [ref=e14035]
+        - text: . The full product gives the
+        - emphasis [ref=e14052]: strong
+        - text: index
+        - img [ref=e14054]
+        - text: ":"
+      - img [ref=e14063]
+      - paragraph [ref=e14141]:
+        - text: The three
+        - emphasis [ref=e14142]: "wea`k"
+        - text: ’ indices are defined by restricting the product to TRIM with a common value of
+        - img [ref=e14144]
+        - text: "[Fu and Kane, 2006, eqs. (20)–(22), p. 045312-7]:"
+      - img [ref=e14153]
+      - paragraph [ref=e14251]:
+        - text: A 3D TI with
+        - img [ref=e14253]
+        - text: is a
+        - strong [ref=e14265]: strong TI
+        - text: and has a single Dirac cone on every surface, robust to any TR-symmetric perturbation. A 3D TI with
+        - img [ref=e14267]
+        - text: but some
+        - img [ref=e14280]
+        - text: is a
+        - strong [ref=e14292]: weak TI
+        - text: and is equivalent to a stack of 2D QSH layers. The weak indices are
+        - emphasis [ref=e14293]: not
+        - text: robust to disorder that breaks the layer structure, but they are topological invariants of the
+        - emphasis [ref=e14294]: clean
+        - text: crystal.
+      - paragraph [ref=e14295]:
+        - strong [ref=e14296]: The inversion-symmetric 3D case.
+        - text: When the crystal has inversion symmetry, the 3D extension of the parity criterion
+        - img [ref=e14298]:
+          - link [ref=e14301] [cursor=pointer]:
+            - /url: "#"
+        - text: "reads [Fu and Kane, 2006, eq. (16), p. 045312-5]:"
+      - img [ref=e14311]
+      - paragraph [ref=e14382]:
+        - text: Equation
+        - img [ref=e14384]:
+          - link [ref=e14387] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - strong [ref=e14396]: Fu–Kane parity criterion
+        - text: in 3D. It is the standard formula used to compute the
+        - img [ref=e14398]
+        - text: indices of real materials (Bi
+        - img [ref=e14408]
+        - text: Se
+        - img [ref=e14415]
+        - text: ", Bi"
+        - img [ref=e14422]
+        - text: Te
+        - img [ref=e14429]
+        - text: ", Sb"
+        - img [ref=e14436]
+        - text: Te
+        - img [ref=e14443]
+        - text: ") from a single DFT calculation: read off the parities of the"
+        - img [ref=e14450]
+        - text: occupied bands at the eight 3D TRIM, form the product, take the sign. The sign is
+        - img [ref=e14458]
+        - text: "[Fu and Kane, 2006, p. 045312-5]. This is the “parity fingerprint” of a 3D TI; it is the single most useful formula in the topological-insulator computationalist’s toolbox."
+      - blockquote [ref=e14476]:
+        - paragraph [ref=e14477]:
+          - strong [ref=e14478]: Note.
+          - text: The Fu–Kane paper is the
+          - emphasis [ref=e14479]: operational
+          - text: paper of the
+          - img [ref=e14481]
+          - text: field. The Pfaffian formula
+          - img [ref=e14491]:
+            - link [ref=e14494] [cursor=pointer]:
+              - /url: "#"
+          - text: is what the codes compute; the parity criterion
+          - img [ref=e14504]:
+            - link [ref=e14507] [cursor=pointer]:
+              - /url: "#"
+          - text: is what the DFT practitioner uses. The Kane–Mele 2005 paper is the
+          - emphasis [ref=e14516]: conceptual
+          - text: paper; the Fu–Kane 2006 paper is the
+          - emphasis [ref=e14517]: computational
+          - text: paper.
+      - heading "16.13.3 The BHZ model (2006)" [level=3] [ref=e14518]
+      - paragraph [ref=e14519]:
+        - text: The Bernevig–Hughes–Zhang (BHZ) paper is the
+        - emphasis [ref=e14520]: material
+        - text: "paper. The question it answers is: in"
+        - emphasis [ref=e14521]: "whic`h"
+        - text: ’ real material is the 2D TI realised? The answer is the
+        - strong [ref=e14522]: HgTe/CdTe quantum well
+        - text: at well widths
+        - img [ref=e14524]
+        - text: above a critical thickness
+        - img [ref=e14530]
+        - text: nm.
+      - paragraph [ref=e14544]:
+        - strong [ref=e14545]: The model.
+        - text: The BHZ model is a 4-band effective Hamiltonian for the E1 and H1 subbands of a HgTe/CdTe quantum well at the
+        - img [ref=e14547]
+        - text: point of the 2D BZ. The four basis states are the
+        - img [ref=e14553]
+        - text: and
+        - img [ref=e14576]
+        - text: combinations of the bulk
+        - img [ref=e14599]
+        - text: and
+        - img [ref=e14608]
+        - text: states. The Hamiltonian in this basis, to lowest order in
+        - img [ref=e14617]
+        - text: ", is [Bernevig, Hughes, and Zhang, 2006, eq. (1), p. 1757]:"
+      - img [ref=e14624]:
+        - generic [ref=e14657]:
+          - img [ref=e14661]
+          - img [ref=e14700]
+      - paragraph [ref=e14732]:
+        - text: with
+        - img [ref=e14734]
+        - text: ","
+        - img [ref=e14783]
+        - text: ", and"
+        - img [ref=e14820]
+        - text: "[Bernevig, Hughes, and Zhang, 2006, eq. (3), p. 1757]. The four free parameters"
+        - img [ref=e14861]
+        - text: ","
+        - img [ref=e14867]
+        - text: ","
+        - img [ref=e14873]
+        - text: ","
+        - img [ref=e14879]
+        - text: depend on the quantum-well geometry and material composition;
+        - img [ref=e14885]
+        - text: is the
+        - emphasis [ref=e14890]: mass
+        - text: parameter controlling the topology.
+      - paragraph [ref=e14891]:
+        - strong [ref=e14892]: The topological phase transition.
+        - text: The crucial observation is that
+        - img [ref=e14894]
+        - text: changes sign as the HgTe layer thickness
+        - img [ref=e14900]
+        - text: crosses the critical value
+        - img [ref=e14906]
+        - text: Å. For
+        - img [ref=e14920]
+        - text: ", the"
+        - img [ref=e14933]
+        - text: (
+        - img [ref=e14942]
+        - text: "-like, E1) band lies"
+        - emphasis [ref=e14947]: above
+        - text: the
+        - img [ref=e14949]
+        - text: (
+        - img [ref=e14958]
+        - text: "-like, H1) band in the well — the “normal” regime,"
+        - img [ref=e14964]
+        - text: — and the well is a
+        - emphasis [ref=e14973]: trivial
+        - text: insulator. For
+        - img [ref=e14975]
+        - text: ", the order inverts — the “inverted” regime,"
+        - img [ref=e14988]
+        - text: — and the well is a
+        - strong [ref=e14997]: quantum spin Hall insulator
+        - text: with a single pair of helical edge states [Bernevig, Hughes, and Zhang, 2006, p. 1758]. The transition is the
+        - emphasis [ref=e14998]: band inversion
+        - text: at
+        - img [ref=e15000]
+        - text: ", the same mechanism that underlies the Kane–Mele"
+        - img [ref=e15006]
+        - text: transition and the 3D TI band inversion in Bi
+        - img [ref=e15016]
+        - text: Se
+        - img [ref=e15023]
+        - text: (§16.5.2).
+      - paragraph [ref=e15029]:
+        - text: The 2D dispersion of the BHZ model at
+        - img [ref=e15031]
+        - text: ","
+        - img [ref=e15044]
+        - text: ", and"
+        - img [ref=e15057]
+        - text: is shown in Figure 2 of the BHZ paper [Bernevig, Hughes, and Zhang, 2006, fig. 2, p. 1758]. The three panels show the evolution of the “meron” structure of the
+        - img [ref=e15070]
+        - text: "vector field: at"
+        - img [ref=e15084]
+        - text: the
+        - img [ref=e15097]
+        - text: field is a
+        - emphasis [ref=e15103]: skyrmion
+        - text: on one half of the BZ, and as
+        - img [ref=e15105]
+        - text: crosses
+        - img [ref=e15111]
+        - text: the meron number changes by 1 — the
+        - emphasis [ref=e15119]: topological
+        - text: origin of the QSH transition.
+      - paragraph [ref=e15120]:
+        - strong [ref=e15121]: The experimental prediction.
+        - text: The closing sections of the BHZ paper predict the
+        - emphasis [ref=e15122]: transport signature
+        - text: "of the QSH state: a quantised edge conductance of"
+        - img [ref=e15124]
+        - text: in an H-bar geometry, measured by the non-local voltage in a six-terminal Hall bar [Bernevig, Hughes, and Zhang, 2006, p. 1759]. The prediction was confirmed experimentally by König
+        - emphasis [ref=e15143]: et al.
+        - text: in
+        - emphasis [ref=e15144]:
+          - text: Science
+          - strong [ref=e15145]: "318"
+          - text: ", 766 (2007), the *first"
+        - text: direct observation of a 2D TI in a real material. The critical thickness
+        - img [ref=e15147]
+        - text: nm and the quantisation of the non-local resistance at the predicted value were the experimental smoking gun.
+      - blockquote [ref=e15161]:
+        - paragraph [ref=e15162]:
+          - strong [ref=e15163]: Note.
+          - text: The BHZ paper is a
+          - emphasis [ref=e15164]: short
+          - text: "5-page letter (Science format). The density of physical content is extremely high: the model, the topological invariant, the meron picture, the phase transition, the material-specific parameters, the experimental detection scheme, and the connection to ongoing experiments. The paper is one of the most-cited condensed-matter papers of the 2000s, with over 4,000 citations in the first decade. It is the"
+          - emphasis [ref=e15165]: "textboo`k"
+          - text: ’ example of how a topological phase can be predicted, characterised, and observed in a single publication.
+      - heading "16.13.4 The Hasan–Kane review (2010)" [level=3] [ref=e15166]
+      - paragraph [ref=e15167]:
+        - text: The 2010
+        - emphasis [ref=e15168]: Reviews of Modern Physics
+        - text: colloquium by Hasan and Kane is the
+        - emphasis [ref=e15169]: modern
+        - text: synthesis of the field. The paper is 23 pages long, with 183 references, and covers the
+        - emphasis [ref=e15170]: entire
+        - text: "topological-insulator landscape as of 2010: 2D TIs, 3D TIs, topological superconductors, Majorana fermions, and the topological magnetoelectric effect."
+      - paragraph [ref=e15171]:
+        - strong [ref=e15172]: The structure of the paper.
+        - text: The paper is divided into seven sections. The first three are the
+        - emphasis [ref=e15173]: theoretical
+        - text: "foundation: (I) Introduction and overview, (II) Topological insulators in 2D (the QSH effect), (III) Topological insulators in 3D. The next two are the"
+        - emphasis [ref=e15174]: experimental
+        - text: "surveys: (IV) Experimental results for 2D TIs (HgTe/CdTe quantum wells), (V) Experimental results for 3D TIs (Bi$"
+        - emphasis [ref=e15175]:
+          - text: "2"
+          - img [ref=e15177]
+          - text: _3
+          - img [ref=e15185]
+          - text: _2
+          - img [ref=e15195]
+          - text: _3
+          - img [ref=e15203]
+          - text: _2
+          - img [ref=e15213]
+          - text: _3
+          - img [ref=e15221]
+        - text: "{1-x}"
+        - img [ref=e15231]
+        - text: _x$). The final two are the
+        - emphasis [ref=e15238]: extensions
+        - text: "to more exotic phases: (VI) Topological superconductors and Majorana fermions, (VII) Topological magnetoelectric effect and axion electrodynamics [Hasan and Kane, 2010, p. 3047]."
+      - paragraph [ref=e15239]:
+        - strong [ref=e15240]: The 2D TI section.
+        - text: Section II.A of the review re-derives the
+        - img [ref=e15242]
+        - text: invariant from the Berry phase, the Pfaffian, and the time-reversal polarisation. The treatment is self-contained and includes the original Kane–Mele 2005 derivation, the Fu–Kane 2006 Pfaffian formula, and the inversion-symmetric parity criterion [Hasan and Kane, 2010, pp. 3049–3051]. Section II.B reviews the QSH effect in HgTe/CdTe quantum wells, the BHZ model, and the experimental observations. Section II.C discusses the
+        - emphasis [ref=e15251]: helical
+        - text: edge states and their protection by TRS [Hasan and Kane, 2010, pp. 3051–3053].
+      - paragraph [ref=e15252]:
+        - strong [ref=e15253]: The 3D TI section.
+        - text: Section III.A introduces the strong and weak 3D TIs and the 3D
+        - img [ref=e15255]
+        - text: invariants. Section III.B reviews the Fu–Kane parity criterion and the time-reversal polarisation [Hasan and Kane, 2010, pp. 3053–3055]. Section III.C covers the Bi
+        - img [ref=e15265]
+        - text: Se
+        - img [ref=e15272]
+        - text: family, the band inversion at
+        - img [ref=e15279]
+        - text: ", and the surface Dirac cone. The surface states of the strong 3D TI are discussed in detail: the spin–momentum locking, the absence of back-scattering from non-magnetic disorder, and the ARPES observations [Hasan and Kane, 2010, pp. 3055–3057]."
+      - paragraph [ref=e15284]:
+        - strong [ref=e15285]: The extensions.
+        - text: The review’s later sections cover the
+        - emphasis [ref=e15286]: topological magnetoelectric effect
+        - text: — the
+        - img [ref=e15288]
+        - text: term in the electromagnetic response of a 3D TI, the symmetry arguments for the quantisation of
+        - img [ref=e15298]
+        - text: ", and the proposed experiments to measure it. The topological superconductor section introduces the"
+        - emphasis [ref=e15303]: Majorana fermion
+        - text: and the proposals for topological quantum computation. These sections are the
+        - emphasis [ref=e15304]: "most cite`d"
+        - text: "’ of the review: the field expanded"
+        - emphasis [ref=e15305]: enormously
+        - text: between 2010 and 2015, and the topological-superconductor and Majorana literatures are largely built on the framework laid out in sections VI and VII of the review.
+      - paragraph [ref=e15306]:
+        - strong [ref=e15307]: Why read the original review?
+        - text: The review is
+        - emphasis [ref=e15308]: the
+        - text: reference for the modern topological-insulator classification. It is the source the textbooks (and the chapters of these notes) draw on. The reader who wants to
+        - emphasis [ref=e15309]: "understan`d"
+        - text: ’ a 3D TI, a topological crystalline insulator, a higher-order TI, or a topological superconductor should
+        - emphasis [ref=e15310]: start
+        - text: with the Hasan–Kane review and only then move to the more recent literature.
+      - blockquote [ref=e15311]:
+        - paragraph [ref=e15312]:
+          - strong [ref=e15313]: Note.
+          - text: The 2010 review is the
+          - emphasis [ref=e15314]: last
+          - text: paper to cover the entire field in a single document. Since 2010 the field has fragmented into many sub-literatures (3D TIs, TCIs, HOTIs, Weyl semimetals, topological superconductors, etc.) and no single review covers all of them. The 2010 review is therefore the
+          - emphasis [ref=e15315]: most efficient
+          - text: starting point for a reader entering the field today.
+      - heading "16.13.5 The original Weyl equation (1929)" [level=3] [ref=e15316]
+      - paragraph [ref=e15317]:
+        - text: The 1929 paper by Hermann Weyl is the
+        - emphasis [ref=e15318]: historical
+        - text: foundation of the subject. The paper is in German and is written in the dense, philosophical style of the early quantum-mechanics era. The paper’s contribution is the
+        - strong [ref=e15319]: Weyl equation
+        - text: — the relativistic wave equation for a
+        - emphasis [ref=e15320]: massless
+        - text: spin-1/2 particle — and the observation that the
+        - emphasis [ref=e15321]: massless
+        - text: Dirac equation factorises into two
+        - emphasis [ref=e15322]: chiral
+        - text: components [Weyl, 1929, p. 332].
+      - paragraph [ref=e15323]:
+        - strong [ref=e15324]: The massless Dirac equation.
+        - text: The Weyl equation is the limit
+        - img [ref=e15326]
+        - text: "of the Dirac equation:"
+      - img [ref=e15336]
+      - paragraph [ref=e15365]:
+        - text: where
+        - img [ref=e15367]
+        - text: are the Pauli matrices on the spin degree of freedom [Weyl, 1929, eq. (16), p. 332]. The Weyl spinor
+        - img [ref=e15373]
+        - text: is
+        - emphasis [ref=e15378]: two-component
+        - text: and has a definite
+        - emphasis [ref=e15379]: chirality
+        - text: (left- or right-handed), the eigenvalue of
+        - img [ref=e15381]
+        - text: . The massless Dirac equation factorises into two
+        - emphasis [ref=e15389]: "decouple`d"
+        - text: ’ Weyl equations, one for each chirality [Weyl, 1929, p. 333]. A
+        - emphasis [ref=e15390]: massive
+        - text: Dirac fermion mixes the two chiralities; a
+        - emphasis [ref=e15391]: massless
+        - text: one does not.
+      - paragraph [ref=e15392]:
+        - strong [ref=e15393]: Why the Weyl equation matters for topological materials.
+        - text: Eighty years after Weyl’s paper, the
+        - emphasis [ref=e15394]: same equation
+        - text: turned out to describe the low-energy quasiparticles of a 3D Weyl semimetal (§16.6.2). The Hamiltonian of a single Weyl node is
+        - img [ref=e15396]
+        - text: ", exactly the Weyl equation"
+        - img [ref=e15420]:
+          - link [ref=e15423] [cursor=pointer]:
+            - /url: "#"
+        - text: with the speed of light
+        - img [ref=e15433]
+        - text: replaced by the band velocity
+        - img [ref=e15439]
+        - text: "[Weyl, 1929, p. 332, applied to TaAs and the Weyl semimetals of §16.6.2]. The"
+        - emphasis [ref=e15444]: chirality
+        - text: of a Weyl node is the
+        - emphasis [ref=e15445]: chiral charge
+        - text: of a Weyl fermion; the
+        - emphasis [ref=e15446]: Nielsen–Ninomiya theorem
+        - text: (the sum of chiralities in the BZ is zero) is the modern re-statement of the
+        - emphasis [ref=e15447]: gauge anomaly cancellation
+        - text: in Weyl’s original paper [Weyl, 1929, p. 334].
+      - paragraph [ref=e15448]:
+        - strong [ref=e15449]: The historical irony.
+        - text: Weyl proposed the massless Dirac equation as a model of the electron, but the
+        - emphasis [ref=e15450]: "observe`d"
+        - text: ’ electron is massive (the electron mass is
+        - img [ref=e15452]
+        - text: keV, and the neutrino — the obvious candidate for a Weyl fermion in 1929 — is also now known to be massive after the neutrino-oscillation experiments of 1998–2002). The Weyl equation therefore had
+        - emphasis [ref=e15471]: "no"
+        - text: known realisation in nature for 80 years. The
+        - emphasis [ref=e15472]: condensed-matter
+        - text: Weyl equation — the low-energy Hamiltonian of a 3D Weyl semimetal — was the
+        - emphasis [ref=e15473]: first
+        - text: physical realisation, and it came in 2015 with the discovery of TaAs [Weng
+        - emphasis [ref=e15474]: et al.
+        - text: ", Phys. Rev. X"
+        - strong [ref=e15475]: "5"
+        - text: ", 011029 (2015); Xu"
+        - emphasis [ref=e15476]: et al.
+        - text: ", Science"
+        - strong [ref=e15477]: "349"
+        - text: ", 613 (2015)]."
+      - paragraph [ref=e15478]:
+        - strong [ref=e15479]: Weyl and topology.
+        - text: Weyl’s paper contains the
+        - emphasis [ref=e15480]: first
+        - text: recognition that the chirality of a massless spin-1/2 particle is a
+        - emphasis [ref=e15481]: topological
+        - text: "invariant: it cannot change without the mass becoming non-zero, which closes the energy gap at"
+        - img [ref=e15483]
+        - text: . The same observation is the
+        - emphasis [ref=e15493]: topological protection
+        - text: "of a Weyl node in a Weyl semimetal: the node is the boundary between the"
+        - emphasis [ref=e15494]: positive-energy
+        - text: and negative-energy bands, and it can only be removed by
+        - emphasis [ref=e15495]: pairing
+        - text: it with another Weyl node of opposite chirality. The Nielsen– Ninomiya theorem of 1981 is the modern lattice version of Weyl’s 1929 observation.
+      - blockquote [ref=e15496]:
+        - paragraph [ref=e15497]:
+          - strong [ref=e15498]: Note.
+          - text: The 1929 Weyl paper is the
+          - emphasis [ref=e15499]: most
+          - text: historically important paper in this section. The
+          - emphasis [ref=e15500]: modern
+          - text: topological-insulator field did not exist in 1929; the paper was about fundamental physics, not about band theory. The connection to band theory is a
+          - emphasis [ref=e15501]: retroactive
+          - text: interpretation, made possible by the discovery of Weyl semimetals in
+        - list [ref=e15502]:
+          - listitem [ref=e15503]:
+            - text: Reading the 1929 paper today, with the benefit of 90 years of hindsight, is one of the most
+            - emphasis [ref=e15504]: illuminating
+            - text: "exercises in modern condensed-matter physics: it shows that the mathematics of Weyl fermions was already in place"
+            - emphasis [ref=e15505]: decades
+            - text: before the physics of the topological insulator was discovered.
+      - 'heading "16.13.6 Comparison: 2D vs 3D topological insulators" [level=3] [ref=e15506]'
+      - paragraph [ref=e15507]:
+        - text: The five papers above define the 2D and 3D TI families. A useful summary is the side-by-side comparison below. The table collects the
+        - emphasis [ref=e15508]: protected edge / surface state
+        - text: ", the"
+        - emphasis [ref=e15509]: experimental signature
+        - text: ", the material examples, and the"
+        - emphasis [ref=e15510]: bulk invariant
+        - text: for each family.
+      - table [ref=e15511]:
+        - rowgroup [ref=e15512]:
+          - row "Property 2D TI (QSH) 3D strong TI 3D weak TI" [ref=e15513]:
+            - columnheader "Property" [ref=e15514]
+            - columnheader "2D TI (QSH)" [ref=e15515]
+            - columnheader "3D strong TI" [ref=e15516]
+            - columnheader "3D weak TI" [ref=e15517]
+        - rowgroup [ref=e15518]:
+          - row "Bulk invariant index [Kane and Mele, 2005, eq. (1), p. 146802-1]; [Fu and Kane, 2006, eq. (8), p. 045312-3] Strong [Fu and Kane, 2006, eq. (20), p. 045312-7] Strong , some weak [Fu and Kane, 2006, eq. (21), p. 045312-7]" [ref=e15519]:
+            - cell "Bulk invariant" [ref=e15520]:
+              - strong [ref=e15521]: Bulk invariant
+            - cell "index [Kane and Mele, 2005, eq. (1), p. 146802-1]; [Fu and Kane, 2006, eq. (8), p. 045312-3]" [ref=e15522]:
+              - img [ref=e15524]
+              - text: index
+              - img [ref=e15534]
+              - text: "[Kane and Mele, 2005, eq. (1), p. 146802-1]; [Fu and Kane, 2006, eq. (8), p. 045312-3]"
+            - cell "Strong [Fu and Kane, 2006, eq. (20), p. 045312-7]" [ref=e15548]:
+              - text: Strong
+              - img [ref=e15550]
+              - img [ref=e15560]
+              - text: "[Fu and Kane, 2006, eq. (20), p. 045312-7]"
+            - cell "Strong , some weak [Fu and Kane, 2006, eq. (21), p. 045312-7]" [ref=e15572]:
+              - text: Strong
+              - img [ref=e15574]
+              - img [ref=e15584]
+              - text: ", some weak"
+              - img [ref=e15597]
+              - text: "[Fu and Kane, 2006, eq. (21), p. 045312-7]"
+          - 'row "Protected state 1D helical edge mode, Kramers pair,odd’ number [Kane and Mele, 2005, p. 146802-1] 2D surface Dirac cone, od`d number, spin–momentum locked [Hasan and Kane, 2010, pp. 3055–3057] 2D surface states, but only on certain surfaces; *not robust [Fu and Kane, 2006, p. 045312-7]" [ref=e15609]':
+            - cell "Protected state" [ref=e15610]:
+              - strong [ref=e15611]: Protected state
+            - cell "1D helical edge mode, Kramers pair,odd’ number [Kane and Mele, 2005, p. 146802-1]" [ref=e15612]:
+              - text: 1D helical edge mode, Kramers pair,
+              - emphasis [ref=e15613]: odd
+              - text: ’ number [Kane and Mele, 2005, p. 146802-1]
+            - 'cell "2D surface Dirac cone, od`d number, spin–momentum locked [Hasan and Kane, 2010, pp. 3055–3057]" [ref=e15614]'
+            - cell "2D surface states, but only on certain surfaces; *not robust [Fu and Kane, 2006, p. 045312-7]" [ref=e15615]
+          - row "Transport signature Quantised edge conductance [Bernevig, Hughes, and Zhang, 2006, p. 1759] Surface-dominated transport, no back-scattering from non-magnetic disorder [Hasan and Kane, 2010, pp. 3055–3057] Anisotropic surface transport, sensitive to disorder [Hasan and Kane, 2010, p. 3057]" [ref=e15616]:
+            - cell "Transport signature" [ref=e15617]:
+              - strong [ref=e15618]: Transport signature
+            - cell "Quantised edge conductance [Bernevig, Hughes, and Zhang, 2006, p. 1759]" [ref=e15619]:
+              - text: Quantised edge conductance
+              - img [ref=e15621]
+              - text: "[Bernevig, Hughes, and Zhang, 2006, p. 1759]"
+            - cell "Surface-dominated transport, no back-scattering from non-magnetic disorder [Hasan and Kane, 2010, pp. 3055–3057]" [ref=e15640]
+            - cell "Anisotropic surface transport, sensitive to disorder [Hasan and Kane, 2010, p. 3057]" [ref=e15641]
+          - row "ARPES signature Edge-state band crossing the bulk gap [Hasan and Kane, 2010, pp. 3051–3053] Single Dirac cone at in the bulk gap [Hasan and Kane, 2010, pp. 3055–3057] Surface states on some surfaces only [Fu and Kane, 2006, p. 045312-7]" [ref=e15642]:
+            - cell "ARPES signature" [ref=e15643]:
+              - strong [ref=e15644]: ARPES signature
+            - cell "Edge-state band crossing the bulk gap [Hasan and Kane, 2010, pp. 3051–3053]" [ref=e15645]
+            - cell "Single Dirac cone at in the bulk gap [Hasan and Kane, 2010, pp. 3055–3057]" [ref=e15646]:
+              - text: Single Dirac cone at
+              - img [ref=e15648]
+              - text: in the bulk gap [Hasan and Kane, 2010, pp. 3055–3057]
+            - cell "Surface states on some surfaces only [Fu and Kane, 2006, p. 045312-7]" [ref=e15657]
+          - row "Material examples HgTe/CdTe quantum well ( ) [Bernevig, Hughes, and Zhang, 2006, p. 1759]; InAs/GaSb quantum wells [Hasan and Kane, 2010, p. 3052] Bi Se , Bi Te , Sb Te [Hasan and Kane, 2010, pp. 3055–3057] Bi Te Se under certain growth conditions [Hasan and Kane, 2010, p. 3057]" [ref=e15658]:
+            - cell "Material examples" [ref=e15659]:
+              - strong [ref=e15660]: Material examples
+            - cell "HgTe/CdTe quantum well ( ) [Bernevig, Hughes, and Zhang, 2006, p. 1759]; InAs/GaSb quantum wells [Hasan and Kane, 2010, p. 3052]" [ref=e15661]:
+              - text: HgTe/CdTe quantum well (
+              - img [ref=e15663]
+              - text: ) [Bernevig, Hughes, and Zhang, 2006, p. 1759]; InAs/GaSb quantum wells [Hasan and Kane, 2010, p. 3052]
+            - cell "Bi Se , Bi Te , Sb Te [Hasan and Kane, 2010, pp. 3055–3057]" [ref=e15675]:
+              - text: Bi
+              - img [ref=e15677]
+              - text: Se
+              - img [ref=e15684]
+              - text: ", Bi"
+              - img [ref=e15691]
+              - text: Te
+              - img [ref=e15698]
+              - text: ", Sb"
+              - img [ref=e15705]
+              - text: Te
+              - img [ref=e15712]
+              - text: "[Hasan and Kane, 2010, pp. 3055–3057]"
+            - cell "Bi Te Se under certain growth conditions [Hasan and Kane, 2010, p. 3057]" [ref=e15718]:
+              - text: Bi
+              - img [ref=e15720]
+              - text: Te
+              - img [ref=e15727]
+              - text: Se under certain growth conditions [Hasan and Kane, 2010, p. 3057]
+          - row "Mechanism Band inversion at a 2D TRIM driven by SOC [Bernevig, Hughes, and Zhang, 2006, p. 1757] Band inversion at a 3D TRIM driven by SOC [Hasan and Kane, 2010, pp. 3053–3055] Stacking of 2D QSH layers [Fu and Kane, 2006, p. 045312-7]" [ref=e15733]:
+            - cell "Mechanism" [ref=e15734]:
+              - strong [ref=e15735]: Mechanism
+            - cell "Band inversion at a 2D TRIM driven by SOC [Bernevig, Hughes, and Zhang, 2006, p. 1757]" [ref=e15736]
+            - cell "Band inversion at a 3D TRIM driven by SOC [Hasan and Kane, 2010, pp. 3053–3055]" [ref=e15737]
+            - cell "Stacking of 2D QSH layers [Fu and Kane, 2006, p. 045312-7]" [ref=e15738]
+          - row "Discovered 2005 (theory) [Kane and Mele, 2005, p. 146802-3]; 2007 (experiment) [Bernevig, Hughes, and Zhang, 2006, p. 1759] 2007 (theory) [Hasan and Kane, 2010, p. 3047]; 2009 (experiment) [Hasan and Kane, 2010, p. 3055] 2007 (theory) [Hasan and Kane, 2010, p. 3047]" [ref=e15739]:
+            - cell "Discovered" [ref=e15740]:
+              - strong [ref=e15741]: Discovered
+            - cell "2005 (theory) [Kane and Mele, 2005, p. 146802-3]; 2007 (experiment) [Bernevig, Hughes, and Zhang, 2006, p. 1759]" [ref=e15742]
+            - cell "2007 (theory) [Hasan and Kane, 2010, p. 3047]; 2009 (experiment) [Hasan and Kane, 2010, p. 3055]" [ref=e15743]
+            - cell "2007 (theory) [Hasan and Kane, 2010, p. 3047]" [ref=e15744]
+      - paragraph [ref=e15745]:
+        - text: The table makes a
+        - emphasis [ref=e15746]: structural
+        - text: "observation: the 2D and 3D families are"
+        - emphasis [ref=e15747]: parallel
+        - text: . The 2D
+        - img [ref=e15749]
+        - text: index
+        - img [ref=e15759]
+        - text: is the
+        - emphasis [ref=e15764]: precursor
+        - text: of the 3D strong index
+        - img [ref=e15766]
+        - text: "[Fu and Kane, 2006, p. 045312-7]. The HgTe/CdTe prediction in 2D [Bernevig, Hughes, and Zhang, 2006, p. 1757] is the"
+        - emphasis [ref=e15774]: precursor
+        - text: of the Bi
+        - img [ref=e15776]
+        - text: Se
+        - img [ref=e15783]
+        - text: prediction in 3D [Hasan and Kane, 2010, pp. 3055–3057]. The Pfaffian formula of Fu–Kane 2006 [Fu and Kane, 2006, eq. (13), p. 045312-4] is the
+        - emphasis [ref=e15789]: common
+        - text: computational tool.
+      - paragraph [ref=e15790]: A more detailed comparison of 2D and 3D TIs in the context of the Hasan–Kane review is given in Figures 4 and 5 of [Hasan and Kane, 2010, pp. 3052–3054]; the text below those figures discusses the bulk-boundary correspondence in each case.
+      - paragraph [ref=e15791]:
+        - text: The conceptual
+        - emphasis [ref=e15792]: flow
+        - text: "of the field is therefore:"
+      - figure [ref=e15794]:
+        - code [ref=e15795]:
+          - document [ref=e15796]:
+            - generic [ref=e15819]:
+              - generic [ref=e15825]: Weyl (1929)Weyl equation(Z. Phys. 56, 330)
+              - generic [ref=e15831]: Kane & Mele (2005)Z2 invariant(PRL 95, 146802)
+              - generic [ref=e15837]: Fu & Kane (2006)Pfaffian formula(PRB 74, 045312)
+              - generic [ref=e15843]: Bernevig-Hughes-Zhang (2006)HgTe/CdTe quantum well(Science 314, 1757)
+              - generic [ref=e15849]: Hasan & Kane (2010)Colloquium review(RMP 82, 3045)
+              - generic [ref=e15855]: 2D TI (QSH)HgTe/CdTe, InAs/GaSb
+              - generic [ref=e15861]: 3D strong TIBi2Se3, Bi2Te3
+              - generic [ref=e15867]: 3D weak TI(stacked QSH)
+              - generic [ref=e15873]: Weyl semimetalTaAs, NbP
+              - generic [ref=e15879]: Topological crystallineinsulators (SnTe)
+              - generic [ref=e15885]: Higher-order TIs(HOTIs)
+              - generic [ref=e15891]: Topologicalsuperconductors
+              - generic [ref=e15897]: Modern extensions(non-Hermitian, Floquet, fractons)
+        - button "Download this diagram as a PNG" [ref=e15898] [cursor=pointer]:
+          - img [ref=e15899]
+          - generic [ref=e15902]: Download PNG
+      - paragraph [ref=e15903]:
+        - text: The mermaid diagram is the
+        - emphasis [ref=e15904]: genealogy
+        - text: of the topological-insulator field. The founding papers (Weyl 1929; Kane–Mele 2005; Fu–Kane 2006; BHZ 2006) lead to the canonical review (Hasan–Kane 2010), which then branches into the modern sub-fields. The reader who understands the five founding papers understands the
+        - emphasis [ref=e15905]: root system
+        - text: of every modern extension.
+      - heading "16.13.7 What these papers don’t say" [level=3] [ref=e15906]
+      - paragraph [ref=e15907]:
+        - text: The five founding papers defined the field as of 2010, but the
+        - emphasis [ref=e15908]: modern
+        - text: field has expanded in directions the founding papers did not anticipate. The most important omissions are listed below. Each omission is now a
+        - emphasis [ref=e15909]: major
+        - text: sub-field; the founding papers are the necessary background for each.
+      - list [ref=e15910]:
+        - listitem [ref=e15911]:
+          - strong [ref=e15912]: Higher-order topological insulators (HOTIs).
+          - text: The Kane–Mele 2005 [Kane and Mele, 2005, p. 146802-1] and Fu–Kane 2006 [Fu and Kane, 2006, eq. (13), p. 045312-4] papers define
+          - emphasis [ref=e15913]: first-order
+          - text: "TIs: a"
+          - img [ref=e15915]
+          - text: "- dimensional TI has a"
+          - img [ref=e15921]
+          - text: "-dimensional gapless boundary. A"
+          - strong [ref=e15934]: higher-order TI
+          - text: (HOTI) of order
+          - img [ref=e15936]
+          - text: has a
+          - img [ref=e15942]
+          - text: "-dimensional gapless boundary. The first HOTI models are Benalcazar, Bernevig, Hughes (2017); the first material realisation (Bi"
+          - img [ref=e15956]
+          - text: Br
+          - img [ref=e15963]
+          - text: ) is 2018. The
+          - img [ref=e15970]
+          - text: index of Fu–Kane is
+          - emphasis [ref=e15979]: insufficient
+          - text: to characterise a HOTI; the new invariant is the
+          - emphasis [ref=e15980]: quantised electric multipole moment
+          - text: of the bulk. The founding papers do not discuss HOTIs at all.
+        - listitem [ref=e15981]:
+          - strong [ref=e15982]: Non-Hermitian topology.
+          - text: The five papers assume a
+          - emphasis [ref=e15983]: Hermitian
+          - img [ref=e15985]
+          - text: . Open quantum systems have non-Hermitian Hamiltonians with complex eigenvalues. The non-Hermitian Chern number, the non-Hermitian
+          - img [ref=e15998]
+          - text: index, and the
+          - emphasis [ref=e16007]: non-Hermitian skin effect
+          - text: are active research areas (Yao & Wang, PRL 121, 086803 (2018); Yokomizo & Murakami, PRL 123, 066404 (2019)). The founding papers do not discuss non-Hermitian systems.
+        - listitem [ref=e16008]:
+          - strong [ref=e16009]: Floquet topology.
+          - text: The papers assume a
+          - emphasis [ref=e16010]:
+            - text: stati
+            - code [ref=e16011]: c*' $H(\mathbf k)$. A *time-periodi
+            - text: c
+          - text: ’
+          - img [ref=e16013]
+          - text: has a topological classification in the Floquet basis; the Floquet TI and the anomalous Floquet TI have protected edge states even when
+          - emphasis [ref=e16048]: all
+          - text: the bulk Floquet bands are gapped. The “Thouless pump” is the 1D analogue. The founding papers do not discuss Floquet topology.
+        - listitem [ref=e16049]:
+          - strong [ref=e16050]: Symmetry-based indicators (SBI) and topological quantum chemistry.
+          - text: The Fu–Kane parity criterion [Fu and Kane, 2006, eq. (15), p. 045312-4] works for crystals with inversion symmetry. For
+          - emphasis [ref=e16051]: general
+          - text: space groups, the symmetry-based indicator* classification of Po
+          - emphasis [ref=e16052]: et al. (2017) and Song *et al.
+          - text: (2018) extends the Fu–Kane machinery to arbitrary space-group symmetries. The founding papers do not discuss SBI.
+        - listitem [ref=e16053]:
+          - strong [ref=e16054]: Topological superconductors.
+          - text: The 2010 Hasan–Kane review [Hasan and Kane, 2010, sec. VI, pp. 3061–3065]
+          - emphasis [ref=e16055]: does
+          - text: discuss topological superconductors (the 1D Kitaev chain, the 2D $p
+          - list [ref=e16056]:
+            - listitem [ref=e16057]:
+              - text: ip$ superconductor, the 3D He-3 B phase), but the field has expanded enormously since 2010 (the prediction and observation of Majorana zero modes in semiconductor–superconductor nanowires, Fu & Kane 2008; Lutchyn
+              - emphasis [ref=e16058]: et al.
+              - text: 2010; Mourik et al.* 2012; the 2D topological superconductivity in magic-angle twisted bilayer graphene, 2020s). The founding papers are the
+              - emphasis [ref=e16059]:
+                - text: backgroun
+                - code [ref=e16060]: d*
+                - text: ", not the *cutting edge"
+              - text: ", of topological superconductivity."
+        - listitem [ref=e16061]:
+          - strong [ref=e16062]: Machine-learning prediction of topological materials.
+          - text: The prediction of new topological materials has been
+          - emphasis [ref=e16063]: "industrialise`d"
+          - text: ’ by machine-learning approaches (the “topological quantum chemistry” database of Bradlyn
+          - emphasis [ref=e16064]: et al.
+          - text: ", Science 353, 6299 (2016); the"
+          - emphasis [ref=e16065]: Classification of Topological Quantum Chemistry
+          - text: web tool of the Bilbao Crystallographic Server). These tools rely on the Fu–Kane parity criterion [Fu and Kane, 2006, eq. (15), p. 045312-4] and the Hasan–Kane classification [Hasan and Kane, 2010, p. 3047], but they apply them to
+          - emphasis [ref=e16066]: millions
+          - text: of materials in the ICSD. The founding papers anticipate none of this.
+      - blockquote [ref=e16067]:
+        - paragraph [ref=e16068]:
+          - strong [ref=e16069]: Note.
+          - text: The five founding papers are the
+          - emphasis [ref=e16070]: necessary
+          - text: background for every modern topological-materials calculation. A reader who wants to
+          - emphasis [ref=e16071]: do
+          - text: topological-materials DFT in 2026 must understand the Kane–Mele 2005 definition of the
+          - img [ref=e16073]
+          - text: invariant [Kane and Mele, 2005, p. 146802-1], the Fu–Kane 2006 Pfaffian formula [Fu and Kane, 2006, eq. (13), p. 045312-4], the BHZ 2006 model and the HgTe/CdTe prediction [Bernevig, Hughes, and Zhang, 2006, p. 1757], the Hasan–Kane 2010 review [Hasan and Kane, 2010, p. 3045], and — historically — the Weyl 1929 paper [Weyl, 1929, p. 330]. The modern extensions (HOTIs, non-Hermitian, Floquet, SBI, topological superconductors, ML) build on this foundation.
+      - heading "16.13.8 Bibliography for this section" [level=3] [ref=e16082]
+      - paragraph [ref=e16083]: "The five founding papers, with full bibliographic details, DOIs, and URLs:"
+      - list [ref=e16084]:
+        - listitem [ref=e16085]:
+          - strong [ref=e16086]: Kane, C. L.; Mele, E. J.
+          - text: “Z
+          - img [ref=e16088]
+          - text: Topological Order and the Quantum Spin Hall Effect.”
+          - emphasis [ref=e16094]: Phys. Rev. Lett.
+          - strong [ref=e16095]: "2005"
+          - text: ","
+          - emphasis [ref=e16096]: "95"
+          - text: ", 146802. DOI:"
+          - link "10.1103/PhysRevLett.95.146802" [ref=e16097] [cursor=pointer]:
+            - /url: https://doi.org/10.1103/PhysRevLett.95.146802
+          - text: ". URL:"
+          - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.95.146802" [ref=e16098] [cursor=pointer]:
+            - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.95.146802
+          - text: ". arXiv:"
+          - link "cond-mat/0506581" [ref=e16099] [cursor=pointer]:
+            - /url: https://arxiv.org/abs/cond-mat/0506581
+          - text: .
+        - listitem [ref=e16100]:
+          - strong [ref=e16101]: Fu, L.; Kane, C. L.
+          - text: “Time Reversal Polarization and the Z
+          - img [ref=e16103]
+          - text: Invariant.”
+          - emphasis [ref=e16109]: Phys. Rev. B
+          - strong [ref=e16110]: "2006"
+          - text: ","
+          - emphasis [ref=e16111]: "74"
+          - text: ", 045312. DOI:"
+          - link "10.1103/PhysRevB.74.045312" [ref=e16112] [cursor=pointer]:
+            - /url: https://doi.org/10.1103/PhysRevB.74.045312
+          - text: ". URL:"
+          - link "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.74.045312" [ref=e16113] [cursor=pointer]:
+            - /url: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.74.045312
+          - text: .
+        - listitem [ref=e16114]:
+          - strong [ref=e16115]: Bernevig, B. A.; Hughes, T. L.; Zhang, S.-C.
+          - text: “Quantum Spin Hall Effect and Topological Phase Transition in HgTe Quantum Wells.”
+          - emphasis [ref=e16116]: Science
+          - strong [ref=e16117]: "2006"
+          - text: ","
+          - emphasis [ref=e16118]: "314"
+          - text: ", 1757–1761. DOI:"
+          - link "10.1126/science.1133734" [ref=e16119] [cursor=pointer]:
+            - /url: https://doi.org/10.1126/science.1133734
+          - text: ". URL:"
+          - link "https://www.science.org/doi/10.1126/science.1133734" [ref=e16120] [cursor=pointer]:
+            - /url: https://www.science.org/doi/10.1126/science.1133734
+          - text: .
+        - listitem [ref=e16121]:
+          - strong [ref=e16122]: Hasan, M. Z.; Kane, C. L.
+          - text: "“Colloquium: Topological Insulators.”"
+          - emphasis [ref=e16123]: Rev. Mod. Phys.
+          - strong [ref=e16124]: "2010"
+          - text: ","
+          - emphasis [ref=e16125]: "82"
+          - text: ", 3045–3067. DOI:"
+          - link "10.1103/RevModPhys.82.3045" [ref=e16126] [cursor=pointer]:
+            - /url: https://doi.org/10.1103/RevModPhys.82.3045
+          - text: ". URL:"
+          - link "https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.82.3045" [ref=e16127] [cursor=pointer]:
+            - /url: https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.82.3045
+          - text: .
+        - listitem [ref=e16128]:
+          - strong [ref=e16129]: Weyl, H.
+          - text: “Elektron und Gravitation. I.”
+          - emphasis [ref=e16130]: Z. Phys.
+          - strong [ref=e16131]: "1929"
+          - text: ","
+          - emphasis [ref=e16132]: "56"
+          - text: ", 330–352. DOI:"
+          - link "10.1007/BF01339504" [ref=e16133] [cursor=pointer]:
+            - /url: https://doi.org/10.1007/BF01339504
+          - text: ". URL:"
+          - link "https://link.springer.com/article/10.1007/BF01339504" [ref=e16134] [cursor=pointer]:
+            - /url: https://link.springer.com/article/10.1007/BF01339504
+          - text: .
+      - paragraph [ref=e16135]:
+        - text: A few further references that the reader may find useful for
+        - emphasis [ref=e16136]: context
+        - text: ":"
+      - list [ref=e16137]:
+        - listitem [ref=e16138]:
+          - strong [ref=e16139]: Berry, M. V.
+          - text: “Quantal Phase Factors Accompanying Adiabatic Changes.”
+          - emphasis [ref=e16140]: Proc. R. Soc. Lond. A
+          - strong [ref=e16141]: "1984"
+          - text: ","
+          - emphasis [ref=e16142]: "392"
+          - text: ", 45–57. The original Berry phase paper, the foundation of §16.2.1."
+        - listitem [ref=e16143]:
+          - strong [ref=e16144]: Thouless, D. J.; Kohmoto, M.; Nightingale, M. P.; den Nijs, M.
+          - text: “Quantized Hall Conductance in a Two-Dimensional Periodic Potential.”
+          - emphasis [ref=e16145]: Phys. Rev. Lett.
+          - strong [ref=e16146]: "1982"
+          - text: ","
+          - emphasis [ref=e16147]: "49"
+          - text: ", 405. The TKNN formula, the foundation of §16.3.2."
+        - listitem [ref=e16148]:
+          - strong [ref=e16149]: König, M.; Wiedmann, S.; Brüne, C.; Roth, A.; Buhmann, H.; Molenkamp, L. W.; Qi, X.-L.; Zhang, S.-C.
+          - text: “Quantum Spin Hall Insulator State in HgTe Quantum Wells.”
+          - emphasis [ref=e16150]: Science
+          - strong [ref=e16151]: "2007"
+          - text: ","
+          - emphasis [ref=e16152]: "318"
+          - text: ", 766–770. The"
+          - emphasis [ref=e16153]: first
+          - text: experimental observation of a 2D TI, the experimental confirmation of the BHZ prediction.
+      - heading "16.14 What we left out" [level=2] [ref=e16154]
+      - paragraph [ref=e16155]: This chapter scratched the surface of a deep and rapidly evolving subject. The omissions below are the most important for a complete picture.
+      - list [ref=e16156]:
+        - listitem [ref=e16157]:
+          - strong [ref=e16158]: Non-Hermitian topology.
+          - text: The whole chapter assumed a
+          - emphasis [ref=e16159]: Hermitian
+          - img [ref=e16161]
+          - text: . Open quantum systems have
+          - emphasis [ref=e16173]: non-Hermitian
+          - text: Hamiltonians with complex eigenvalues (decay or pumping). The non-Hermitian Chern number, the non-Hermitian
+          - img [ref=e16175]
+          - text: index, and the
+          - emphasis [ref=e16184]: non-Hermitian skin effect
+          - text: (extensive edge-localised eigenstates) are active research areas. We did not cover them.
+        - listitem [ref=e16185]:
+          - strong [ref=e16186]: Floquet topology.
+          - text: The chapter assumed a
+          - emphasis [ref=e16187]:
+            - text: stati
+            - code [ref=e16188]: c*' $H(\mathbf k)$. A *time-periodi
+            - text: c
+          - text: ’
+          - img [ref=e16190]
+          - text: has a topological classification in the Floquet basis; the Floquet TI and the anomalous Floquet TI have protected edge states even when
+          - emphasis [ref=e16225]: all
+          - text: the bulk Floquet bands are gapped. The “Thouless pump” is the 1D analogue. We did not cover Floquet topology.
+        - listitem [ref=e16226]:
+          - strong [ref=e16227]: Fracton phases.
+          - text: The 3D topological phases we covered (TIs, Dirac / Weyl semimetals) are
+          - emphasis [ref=e16228]: particle-like
+          - text: ": their topological excitations (the surface Dirac cone, the Fermi arc) move freely in space."
+          - strong [ref=e16229]: Fracton phases
+          - text: have excitations that are
+          - emphasis [ref=e16230]: immobile
+          - text: (fractons) or move only along sub-dimensional manifolds (lineons, planons). We did not cover them.
+        - listitem [ref=e16231]:
+          - strong [ref=e16232]: The full symmetry-based-indicator (SBI) machinery.
+          - text: The Fu–Kane formula is a
+          - emphasis [ref=e16233]: special case
+          - text: of the more general SBI classification of Po
+          - emphasis [ref=e16234]: et al.
+          - text: and Song
+          - emphasis [ref=e16235]: et al.
+          - text: (2017–2018), which classifies all band structures consistent with a given space-group symmetry in terms of irreducible representations at the high-symmetry BZ points, and gives a complete list of all possible topological phases (TCIs, HOTIs, etc.) protected by that symmetry group. We did not cover the SBI machinery.
+        - listitem [ref=e16236]:
+          - strong [ref=e16237]: Topological superconductors.
+          - text: The chapter focused on
+          - emphasis [ref=e16238]: insulators
+          - text: and semimetals. A parallel story is the
+          - emphasis [ref=e16239]: topological superconductors
+          - text: ": the 1D Kitaev chain, the 2D"
+          - img [ref=e16241]
+          - text: superconductor, the 3D He-3 B phase. The topological invariant of a superconductor is the
+          - emphasis [ref=e16252]: Majorana number
+          - text: ", the number of Majorana zero modes at the end of a 1D chain or in the vortex core of a 2D"
+          - img [ref=e16254]
+          - text: superconductor. We did not cover topological superconductors.
+      - blockquote [ref=e16265]:
+        - paragraph [ref=e16266]:
+          - text: "Next:"
+          - link "Chapter 17" [ref=e16267] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-17/
+          - text: — Machine learning for DFT
+  - contentinfo [ref=e16268]:
+    - generic [ref=e16269]:
+      - generic [ref=e16270]:
+        - img [ref=e16271]
+        - generic [ref=e16275]: DFT Notes
+        - paragraph [ref=e16276]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e16277]:
+        - generic [ref=e16278]:
+          - heading "Project" [level=3] [ref=e16279]
+          - list [ref=e16280]:
+            - listitem [ref=e16281]:
+              - link "Chapters map" [ref=e16282] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e16283]:
+              - link "Python codes" [ref=e16284] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e16285]:
+              - link "Contributing" [ref=e16286] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e16287]:
+              - link "Security" [ref=e16288] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e16289]:
+              - link "Design spec" [ref=e16290] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e16291]:
+              - link "GitHub ↗" [ref=e16292] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e16293]:
+          - heading "Built with" [level=3] [ref=e16294]
+          - list [ref=e16295]:
+            - listitem [ref=e16296]:
+              - link "Jekyll" [ref=e16297] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e16298]:
+              - link "MathJax 3" [ref=e16299] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e16300]:
+              - link "Mermaid" [ref=e16301] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e16302]:
+              - link "chenglou/pretext" [ref=e16303] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e16304]:
+              - link "Google Fonts" [ref=e16305] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e16306]:
+          - heading "Legal" [level=3] [ref=e16307]
+          - list [ref=e16308]:
+            - listitem [ref=e16309]:
+              - link "MIT License" [ref=e16310] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e16311]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e16313]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

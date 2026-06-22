@@ -1,0 +1,1633 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Mathematical identities cheatsheet" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: A single-page reference for the math that recurs across the DFT Notes. Every identity is stated in the
+          - strong [ref=e30]: conventions used in the chapters
+          - text: "(atomic units, Dirac bra-ket, real spherical harmonics, the Pople `N-M₁M₂G’ basis-set notation, etc.). Each entry is cross-referenced to the chapter that uses it, so the reader can jump straight to the worked derivation."
+      - paragraph [ref=e31]:
+        - text: The cheatsheet is
+        - strong [ref=e32]: not
+        - text: "a substitute for the chapters themselves. It is a lookup table: when a derivation uses an identity you have forgotten, the cheatsheet tells you what the identity"
+        - emphasis [ref=e33]: is
+        - text: and where to find the step-by-step use of it. For proofs, see the linked chapter.
+      - blockquote [ref=e34]:
+        - paragraph [ref=e35]:
+          - strong [ref=e36]: Notation.
+          - text: All formulas are in
+          - strong [ref=e37]: atomic units
+          - text: (
+          - img [ref=e39]
+          - text: ) unless otherwise stated. Lengths are in Bohr (
+          - img [ref=e79]
+          - text: ), energies in Hartree (
+          - img [ref=e88]
+          - text: ), and the charge of the electron is
+          - img [ref=e97]
+          - text: . The notation table in
+          - link "chapter 00" [ref=e104] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-00/
+          - text: is the source of truth; this page only collects the math.
+      - separator [ref=e105]
+      - heading "1. Dirac notation" [level=2] [ref=e106]
+      - paragraph [ref=e107]:
+        - text: The chapters use the Dirac bra-ket notation of
+        - link "chapter 01" [ref=e108] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: for every inner product and every matrix element. The same notation works in
+        - img [ref=e110]
+        - text: (for finite-basis calculations) and in
+        - img [ref=e120]
+        - text: (for the continuous Hilbert space).
+      - heading "1.1 Inner product" [level=3] [ref=e138]
+      - img [ref=e140]:
+        - generic [ref=e156]:
+          - img [ref=e160]
+          - img [ref=e162]
+      - paragraph [ref=e257]:
+        - text: Used to define the
+        - strong [ref=e258]: Born rule
+        - text: ", the"
+        - strong [ref=e259]: Fock and overlap matrix elements
+        - text: in the AO basis
+        - img [ref=e261]
+        - text: ", and the"
+        - strong [ref=e298]: MO normalisation
+        - img [ref=e300]
+        - text: ". Cross-reference: chapters 01 (§1.2), 03 (§3.2, §3.6)."
+      - heading "1.2 Outer product" [level=3] [ref=e329]
+      - img [ref=e331]
+      - paragraph [ref=e402]:
+        - text: Used to build the
+        - strong [ref=e403]: closed-shell AO density matrix
+        - text: as
+        - img [ref=e405]
+        - text: and the
+        - strong [ref=e438]: projector onto the occupied subspace
+        - text: "in a finite basis. Cross-reference: chapter 03 (§3.6.4, the idempotency"
+        - img [ref=e440]
+        - text: ).
+      - heading "1.3 Completeness (resolution of the identity)" [level=3] [ref=e457]
+      - img [ref=e459]
+      - paragraph [ref=e572]:
+        - text: Inserted between operators in derivations to convert operator equations to matrix form. The two forms above are
+        - strong [ref=e573]: equivalent
+        - text: when
+        - img [ref=e575]
+        - text: is a complete orthonormal set; for a
+        - emphasis [ref=e584]: non-orthogonal
+        - text: basis the form
+        - img [ref=e586]
+        - text: requires the
+        - strong [ref=e623]: dual vectors
+        - img [ref=e625]
+        - text: ". Cross-reference: chapters 01 (§1.8.3, transition amplitudes), 06 (§6.1, Roothaan–Hall)."
+      - heading "1.4 Projection operators" [level=3] [ref=e637]
+      - paragraph [ref=e638]:
+        - text: A
+        - strong [ref=e639]: projector
+        - img [ref=e641]
+        - text: satisfies
+        - img [ref=e651]
+        - text: and
+        - img [ref=e672]
+        - text: . The projector onto the subspace spanned by the
+        - img [ref=e693]
+        - text: vectors
+        - img [ref=e699]
+        - text: (in general non-orthogonal) is
+      - img [ref=e713]
+      - paragraph [ref=e818]:
+        - text: For an orthonormal set the matrix
+        - img [ref=e820]
+        - text: reduces to
+        - img [ref=e833]
+        - text: ", giving"
+        - img [ref=e840]
+        - text: . The idempotency of
+        - img [ref=e875]
+        - text: in the AO basis (
+        - img [ref=e882]
+        - text: ") is exactly the statement that the density matrix is a projector onto the occupied subspace. Cross-reference: chapter 03 (§3.6.4)."
+      - blockquote [ref=e899]:
+        - paragraph [ref=e900]:
+          - strong [ref=e901]: Tip.
+          - text: The Hermitian conjugate of
+          - img [ref=e903]
+          - text: is
+          - img [ref=e919]
+          - text: . The trace of an outer product is
+          - img [ref=e935]
+          - text: . Both facts are used in the half-trace form of the HF energy,
+          - img [ref=e972]
+          - text: .
+      - separator [ref=e1014]
+      - heading "2. Operator identities" [level=2] [ref=e1015]
+      - heading "2.1 The commutator and its algebra" [level=3] [ref=e1016]
+      - img [ref=e1018]
+      - paragraph [ref=e1069]:
+        - text: The commutator is
+        - strong [ref=e1070]: bilinear
+        - text: ","
+        - strong [ref=e1071]: antisymmetric
+        - img [ref=e1073]
+        - text: ), and satisfies the
+        - strong [ref=e1118]: Jacobi identity
+      - img [ref=e1120]
+      - paragraph [ref=e1223]:
+        - text: The
+        - strong [ref=e1224]: canonical commutation relation
+        - text: (CCR) of quantum mechanics,
+      - img [ref=e1226]
+      - paragraph [ref=e1293]:
+        - text: defines the algebra on which the Heisenberg uncertainty principle
+        - img [ref=e1295]
+        - text: "rests. Cross-reference: chapter 01 (§1.4, §1.7.5, problem 1 of §1.13)."
+      - heading "2.2 The anticommutator" [level=3] [ref=e1341]
+      - img [ref=e1343]
+      - paragraph [ref=e1394]:
+        - text: For
+        - strong [ref=e1395]: fermionic
+        - text: creation and annihilation operators,
+        - img [ref=e1397]
+        - text: ","
+        - img [ref=e1423]
+        - text: — the algebra of the
+        - strong [ref=e1445]: canonical anticommutation relation
+        - text: "(CAR). The fermionic CAR is what makes a Slater determinant antisymmetric. Cross-reference: chapter 01 (§1.2, postulate P6)."
+      - heading "2.3 Baker–Campbell–Hausdorff (BCH)" [level=3] [ref=e1446]
+      - paragraph [ref=e1447]: The product of two exponentials of non-commuting operators re-exponentiates as
+      - img [ref=e1449]
+      - paragraph [ref=e1605]:
+        - text: The series terminates at finite order only when the nested commutators eventually vanish (e.g.
+        - img [ref=e1607]
+        - text: is a
+        - img [ref=e1629]
+        - text: "-number, as for the position-momentum pair). For"
+        - img [ref=e1635]
+        - text: ","
+        - img [ref=e1655]
+        - text: with
+        - img [ref=e1675]
+        - text: independent of
+        - img [ref=e1705]
+        - text: ", the BCH formula gives the"
+        - strong [ref=e1722]: Zassenhaus formula
+      - img [ref=e1724]
+      - paragraph [ref=e1881]:
+        - text: i.e. the product of two exponentials is the exponential of the sum
+        - emphasis [ref=e1882]: plus
+        - text: correction factors. Used in the derivation of the
+        - strong [ref=e1883]: time-evolution operator in the interaction picture
+        - text: (chapter 01, §1.8) and in the
+        - strong [ref=e1884]: factorisation of the Fock matrix
+        - text: (chapter 03).
+      - heading "2.4 Useful specific identities" [level=3] [ref=e1885]
+      - paragraph [ref=e1886]:
+        - img [ref=e1888]
+        - img [ref=e2072]
+        - img [ref=e2168]
+      - paragraph [ref=e2219]:
+        - text: The first is the
+        - strong [ref=e2220]: Hadamard lemma
+        - text: (or
+        - strong [ref=e2221]: Campbell identity
+        - text: ) in series form. The second lets you reduce a commutator with a product to a sum of simpler commutators. The third is the
+        - strong [ref=e2222]: cyclicity of the trace
+        - text: "applied to a commutator; it is the reason the Fock-operator trace formulas of chapter 03 (§3.2) collapse so cleanly. Cross-reference: chapters 01, 03. —"
+      - heading "3. Hilbert-space identities" [level=2] [ref=e2223]
+      - heading "3.1 Trace identities" [level=3] [ref=e2224]
+      - paragraph [ref=e2225]:
+        - img [ref=e2227]
+        - img [ref=e2261]
+        - img [ref=e2298]
+      - paragraph [ref=e2364]:
+        - text: "The cyclic property is the engine behind every trace formula in DFT:"
+        - img [ref=e2366]
+        - text: follows because
+        - img [ref=e2387]
+        - text: and
+        - img [ref=e2394]
+        - text: "can be cyclically permuted inside the trace. Cross-reference: chapters 03 (§3.2, §3.6.5), 04 (§4.4)."
+      - heading "3.2 Trace of a function of a matrix" [level=3] [ref=e2400]
+      - paragraph [ref=e2401]:
+        - text: If
+        - img [ref=e2403]
+        - text: has eigenvalues
+        - img [ref=e2410]
+        - text: and eigenvectors
+        - img [ref=e2423]
+        - text: ", then for any function"
+        - img [ref=e2437]
+        - text: that admits a Taylor series,
+      - img [ref=e2443]
+      - paragraph [ref=e2486]:
+        - text: The same is true for
+        - img [ref=e2488]
+        - text: "in any finite-dimensional representation:"
+        - img [ref=e2504]
+        - text: where the sum is over the spectrum of
+        - img [ref=e2541]
+        - text: . Used in the proof that the sum of orbital energies equals the trace of the Fock matrix, and in deriving the
+        - strong [ref=e2550]: Janak theorem
+        - text: from the Kohn–Sham energy expression.
+      - heading "3.3 Hilbert–Schmidt inner product" [level=3] [ref=e2551]
+      - img [ref=e2553]
+      - paragraph [ref=e2592]:
+        - text: The Frobenius / Hilbert–Schmidt norm is
+        - img [ref=e2594]
+        - text: . This is the inner product used in the
+        - strong [ref=e2628]: DIIS metric
+        - img [ref=e2630]
+        - text: "in chapter 04 (§4.6.2). Cross-reference: chapter 04. ### 3.4 Trace of a projector"
+      - img [ref=e2661]
+      - paragraph [ref=e2699]:
+        - text: In a finite basis,
+        - img [ref=e2701]
+        - text: (counting spins separately). Used in the constraint that the density matrix integrates to the number of electrons.
+      - separator [ref=e2719]
+      - heading "4. Second quantisation" [level=2] [ref=e2720]
+      - paragraph [ref=e2721]:
+        - text: Second quantisation replaces the antisymmetrised Slater determinants of chapter 02 (§2.2) by
+        - strong [ref=e2722]: creation and annihilation operators
+        - text: acting on a Fock space. This section collects the identities the chapters use.
+      - heading "4.1 Bosonic creation and annihilation operators" [level=3] [ref=e2723]
+      - paragraph [ref=e2724]:
+        - img [ref=e2726]
+        - img [ref=e2761]
+      - paragraph [ref=e2814]:
+        - text: The
+        - strong [ref=e2815]: number operator
+        - img [ref=e2817]
+        - text: has eigenvalues
+        - img [ref=e2844]
+        - text: (any non-negative integer) and spectrum
+        - img [ref=e2866]
+        - text: "for the harmonic oscillator. Cross-reference: chapter 01 (§1.9, ladder operators)."
+      - heading "4.2 Fermionic creation and annihilation operators" [level=3] [ref=e2893]
+      - paragraph [ref=e2894]:
+        - img [ref=e2896]
+        - img [ref=e2938]
+      - paragraph [ref=e3001]:
+        - text: The
+        - img [ref=e3003]
+        - text: is
+        - strong [ref=e3014]: Kronecker
+        - text: ", not Dirac — the anticommutation is only between operators in the"
+        - emphasis [ref=e3015]: same
+        - text: single- particle basis. The CAR is what enforces the
+        - strong [ref=e3016]: Pauli exclusion principle
+        - text: ":"
+        - img [ref=e3018]
+        - text: "means no state can be doubly created. Cross-reference: chapter 02 (§2.2)."
+      - heading "4.3 Field operators" [level=3] [ref=e3047]
+      - paragraph [ref=e3048]:
+        - text: A general
+        - strong [ref=e3049]: field operator
+        - text: is the superposition over a single-particle basis
+      - img [ref=e3051]
+      - paragraph [ref=e3149]:
+        - text: For fermions,
+        - img [ref=e3151]
+        - text: and
+        - img [ref=e3161]
+        - text: satisfy the
+        - strong [ref=e3173]: continuum CAR
+      - img [ref=e3175]
+      - paragraph [ref=e3278]:
+        - text: The one-body density is
+        - img [ref=e3280]
+        - text: ; its expectation value is the
+        - strong [ref=e3327]: one-particle density matrix
+        - text: "of chapter 03 (§3.6.4). Cross-reference: chapters 02, 03. ### 4.4 Wick’s theorem (statement)"
+      - paragraph [ref=e3328]:
+        - text: For a product of
+        - img [ref=e3330]
+        - text: creation/annihilation operators, Wick’s theorem says
+      - img [ref=e3338]
+      - paragraph [ref=e3508]:
+        - text: where the hat denotes a
+        - strong [ref=e3509]: contraction
+        - text: (the vacuum expectation value
+        - img [ref=e3511]
+        - text: ", or its generalisation to a non-vacuum reference) and the"
+        - img [ref=e3545]
+        - text: sign is the parity of the permutation needed to bring the paired operators next to each other. The generalisation to
+        - strong [ref=e3554]: normal ordering with respect to a non-vacuum reference
+        - text: "is the workhorse of every many-body perturbation theory (MP2, CCSD, …). Cross-reference: chapter 02 (§2.3, the hierarchy of post-HF methods)."
+      - blockquote [ref=e3555]:
+        - paragraph [ref=e3556]:
+          - strong [ref=e3557]: Tip.
+          - text: "The simplest non-trivial case is the product of two operators, $\\hat c_1 \\hat c_2 = :!\\hat c_1 \\hat c_2!:"
+        - list [ref=e3558]:
+          - listitem [ref=e3559]:
+            - text: "\\widehat{\\hat c_1 \\hat c_2}"
+            - img [ref=e3561]
+            - text: ":\\cdots:"
+            - img [ref=e3577]
+            - text: c
+            - img [ref=e3721]
+            - text: \hat c_1^\dagger \hat c_2 \hat c_3^\dagger \hat c_4$ is the
+            - strong [ref=e3807]: Slater–Condon rules
+            - text: of chapter 03 (§3.4).
+      - separator [ref=e3808]
+      - heading "5. Fourier transforms in 1, 2, 3 dimensions" [level=2] [ref=e3809]
+      - paragraph [ref=e3810]:
+        - text: The chapters use the
+        - strong [ref=e3811]: physics convention
+        - text: for the Fourier transform (no
+        - img [ref=e3813]
+        - text: prefactor in the forward transform, the inverse carries the prefactor). This is the convention of chapter 07 (§7.5) and the convention implicitly assumed in chapter 04 (§4.6.4, the Kerker preconditioner).
+      - heading "5.1 One dimension" [level=3] [ref=e3838]
+      - paragraph [ref=e3839]:
+        - img [ref=e3841]
+        - img [ref=e3896]
+      - paragraph [ref=e3959]:
+        - text: The
+        - strong [ref=e3960]: Parseval / Plancherel identity
+        - text: is
+        - img [ref=e3962]
+        - text: ". Cross-reference: chapter 01 (§1.11.3, the free-particle propagator by path integration)."
+      - heading "5.2 Three dimensions" [level=3] [ref=e4030]
+      - paragraph [ref=e4031]:
+        - img [ref=e4033]
+        - img [ref=e4096]
+      - paragraph [ref=e4174]:
+        - text: For a
+        - strong [ref=e4175]: cell-periodic
+        - text: function
+        - img [ref=e4177]
+        - text: on a lattice with primitive cell volume
+        - img [ref=e4190]
+        - text: ", the natural transform is the"
+        - strong [ref=e4195]: discrete Fourier series
+        - text: on the reciprocal lattice
+        - img [ref=e4197]
+        - text: ":"
+      - paragraph [ref=e4204]:
+        - img [ref=e4206]
+        - img [ref=e4268]
+      - paragraph [ref=e4336]:
+        - text: The reciprocal-lattice vectors are defined by
+        - img [ref=e4338]
+        - text: (chapter 07, §7.4.1). The plane-wave basis function
+        - img [ref=e4370]
+        - text: of chapter 07 (§7.5) and chapter 06 (§6.7) uses this convention.
+      - heading "5.3 The Fourier transform of and" [level=3] [ref=e4409]:
+        - text: 5.3 The Fourier transform of
+        - img [ref=e4411]
+        - text: and
+        - img [ref=e4422]
+      - paragraph [ref=e4435]: "The two transforms every DFT code needs:"
+      - paragraph [ref=e4436]:
+        - img [ref=e4438]
+        - img [ref=e4493]
+      - paragraph [ref=e4569]:
+        - text: The first is the
+        - strong [ref=e4570]: Coulomb kernel in reciprocal space
+        - text: — the Fourier transform of
+        - img [ref=e4572]
+        - text: "— and is the foundation of the Ewald-summed Coulomb interaction in periodic codes (chapter 07). Cross-reference: chapter 04 (§4.4, the Hartree operator in reciprocal space), §13 below."
+      - heading "5.4 Useful transforms on a finite interval" [level=3] [ref=e4582]
+      - paragraph [ref=e4583]:
+        - text: The
+        - strong [ref=e4584]: sinc kernel
+      - img [ref=e4586]
+      - paragraph [ref=e4682]:
+        - text: arises whenever a function is truncated to a box of length
+        - img [ref=e4684]
+        - text: . In 3-D it generalises to a product of three 1-D sincs. Used in the
+        - strong [ref=e4689]: planar-averaging
+        - text: and
+        - strong [ref=e4690]: slab-coupling
+        - text: corrections of chapter 07. —
+      - heading "6. Green’s functions" [level=2] [ref=e4691]
+      - paragraph [ref=e4692]:
+        - text: Green’s functions are the second-quantised, frequency-dependent generalisation of the resolvent
+        - img [ref=e4694]
+        - text: . Every
+        - strong [ref=e4717]: spectral property
+        - text: of a Hamiltonian — density of states, spectral function, optical conductivity — is a Green’s function in disguise. The chapters use the imaginary-frequency / real- time conventions of chapter 04 (the Lindhard function in §4.6.4) and chapter 07 (the smearing Fermi function in §7.6.3).
+      - heading "6.1 The resolvent and the free-particle Green’s function" [level=3] [ref=e4718]
+      - paragraph [ref=e4719]:
+        - text: The
+        - strong [ref=e4720]: resolvent
+        - text: of a Hamiltonian
+        - img [ref=e4722]
+        - text: at complex frequency
+        - img [ref=e4732]
+        - text: is
+      - img [ref=e4738]
+      - paragraph [ref=e4777]:
+        - text: For the
+        - strong [ref=e4778]: free-particle
+        - text: Hamiltonian
+        - img [ref=e4780]
+        - text: ", the resolvent in position space is"
+      - img [ref=e4809]
+      - paragraph [ref=e4902]:
+        - text: with the
+        - img [ref=e4904]
+        - text: prescription
+        - img [ref=e4912]
+        - text: fixing the boundary condition (outgoing waves for
+        - img [ref=e4928]
+        - text: ", decaying exponential for"
+        - img [ref=e4938]
+        - text: ). Used in the
+        - strong [ref=e4947]: Born series
+        - text: for scattering, the
+        - strong [ref=e4948]: Lippmann–Schwinger equation
+        - text: ", and the"
+        - strong [ref=e4949]: GW self-energy
+        - text: "of many-body perturbation theory. Cross- reference: chapters 01 (§1.8, the time-domain Dyson series), 03 (the Fock-operator resolvent)."
+      - heading "6.2 The Matsubara / imaginary-frequency form" [level=3] [ref=e4950]
+      - paragraph [ref=e4951]:
+        - text: For a finite-temperature
+        - strong [ref=e4952]: Matsubara Green function
+        - text: at the fermionic frequencies
+        - img [ref=e4954]
+        - text: (with
+        - img [ref=e4988]
+        - text: ),
+      - img [ref=e5008]
+      - paragraph [ref=e5112]:
+        - text: where
+        - img [ref=e5114]
+        - text: is the Heisenberg-picture field. The Matsubara sum is the
+        - strong [ref=e5163]: finite-temperature
+        - text: version of the contour-ordered Green function.
+      - heading "6.3 The Dyson equation" [level=3] [ref=e5164]
+      - paragraph [ref=e5165]:
+        - text: If the full Hamiltonian is
+        - img [ref=e5167]
+        - text: ", the"
+        - strong [ref=e5195]: Dyson equation
+        - text: relates the full Green function
+        - img [ref=e5197]
+        - text: to the free one
+        - img [ref=e5207]
+        - text: and the
+        - strong [ref=e5219]: self-energy
+        - img [ref=e5221]
+        - text: ":"
+      - img [ref=e5231]
+      - paragraph [ref=e5306]:
+        - text: Iterating gives the
+        - strong [ref=e5307]: Born series
+        - img [ref=e5309]
+        - text: . In the time domain, the Dyson equation is the
+        - strong [ref=e5400]: Dyson series
+        - text: "of chapter 01 (§1.8.2). Cross-reference: chapter 01 (§1.8), chapter 04 (§4.6.4, the Lindhard response function as a Green-function product)."
+      - heading "6.4 The spectral function" [level=3] [ref=e5401]
+      - paragraph [ref=e5402]:
+        - text: The
+        - strong [ref=e5403]: spectral function
+        - text: is the discontinuity of
+        - img [ref=e5405]
+        - text: across the real axis,
+      - img [ref=e5415]
+      - paragraph [ref=e5484]:
+        - text: and is
+        - strong [ref=e5485]: positive semi-definite
+        - text: with unit weight
+        - img [ref=e5487]
+        - text: . In the
+        - strong [ref=e5513]: Lehmann representation
+        - text: of a many-body Hamiltonian,
+      - img [ref=e5515]
+      - paragraph [ref=e5594]:
+        - text: where the sum runs over the many-body eigenstates
+        - img [ref=e5596]
+        - text: . The spectral function is the bridge from the
+        - strong [ref=e5605]: Green-function language
+        - text: of many-body theory to the
+        - strong [ref=e5606]: band-structure language
+        - text: "of chapter 07: at the Hartree–Fock level ("
+        - img [ref=e5608]
+        - text: ),
+        - img [ref=e5630]
+        - text: is a sum of delta peaks at the HF orbital energies, weighted by the
+        - strong [ref=e5641]: spectral weights
+        - text: "of the one-particle states. Cross- reference: chapters 01, 03, 04, 07. >"
+        - strong [ref=e5642]: Tip.
+        - text: The
+        - strong [ref=e5643]: density of states
+        - text: is
+      - blockquote [ref=e5644]:
+        - paragraph [ref=e5645]:
+          - img [ref=e5647]
+          - text: . In Kohn–Sham DFT the spectral function is
+          - emphasis [ref=e5693]: "approximate`d"
+          - text: ’ by the KS density of states, which is a sum of delta peaks at the KS eigenvalues — this is the
+          - emphasis [ref=e5694]: physical content
+          - text: of the “Kohn–Sham band structure” of chapter 07. —
+      - heading "7. Special functions" [level=2] [ref=e5695]
+      - heading "7.1 Hermite polynomials" [level=3] [ref=e5696]
+      - paragraph [ref=e5697]:
+        - text: The
+        - strong [ref=e5698]: physicists’ Hermite polynomials
+        - text: are defined by
+      - img [ref=e5700]
+      - paragraph [ref=e5764]:
+        - text: The first few are
+        - img [ref=e5766]
+        - text: ","
+        - img [ref=e5779]
+        - text: ","
+        - img [ref=e5794]
+        - text: ","
+        - img [ref=e5816]
+        - text: ","
+        - img [ref=e5841]
+        - text: . They satisfy the orthogonality relation
+      - img [ref=e5875]
+      - paragraph [ref=e5954]:
+        - text: The
+        - strong [ref=e5955]: generating function
+        - img [ref=e5957]
+        - text: is the link to the
+        - strong [ref=e6011]: Glauber coherent states
+        - text: "of chapter 01 (§1.9.5). Cross- reference: chapter 01 (§1.9.4), chapter 06 (§6.13.5, the NAO polarisation-orbital recipe uses energy derivatives of bound- state radial functions, which in the harmonic-oscillator basis are Hermite polynomials)."
+      - heading "7.2 Laguerre polynomials" [level=3] [ref=e6012]
+      - paragraph [ref=e6013]:
+        - text: The
+        - strong [ref=e6014]: associated Laguerre polynomials
+        - img [ref=e6016]
+        - text: are defined by the generating function
+      - img [ref=e6033]
+      - paragraph [ref=e6115]: or, equivalently, by the differential equation
+      - img [ref=e6117]
+      - paragraph [ref=e6201]: The orthogonality relation is
+      - img [ref=e6203]
+      - paragraph [ref=e6292]:
+        - text: The hydrogen radial wavefunctions of chapter 01 (§1.10) are
+        - img [ref=e6294]
+        - text: evaluated at
+        - img [ref=e6321]
+        - text: ". Cross-reference: chapter 01 (§1.10.5), chapter 06 (the radial STO primitives)."
+      - heading "7.3 Legendre polynomials" [level=3] [ref=e6335]
+      - paragraph [ref=e6336]:
+        - text: The
+        - strong [ref=e6337]: Legendre polynomials
+        - img [ref=e6339]
+        - text: are restrictions of the spherical harmonics to
+        - img [ref=e6358]
+        - text: . They satisfy the
+        - strong [ref=e6367]: addition theorem
+      - img [ref=e6369]
+      - paragraph [ref=e6467]:
+        - text: where
+        - img [ref=e6469]
+        - text: is the angle between the two unit vectors
+        - img [ref=e6475]
+        - text: and
+        - img [ref=e6489]
+        - text: . This identity is the workhorse of the
+        - strong [ref=e6502]: molecular multipole expansion
+        - text: and of the
+        - strong [ref=e6503]: angular-momentum coupling
+        - text: "that underlies the Gaunt integral of chapter 01 (§1.10.7). Cross-reference: chapter 01 (§1.10.7)."
+      - heading "7.4 Spherical harmonics" [level=3] [ref=e6504]
+      - paragraph [ref=e6505]:
+        - text: The
+        - strong [ref=e6506]: spherical harmonics
+        - text: are the simultaneous eigenfunctions of
+        - img [ref=e6508]
+        - text: and
+        - img [ref=e6521]
+        - text: in
+        - img [ref=e6534]
+        - text: ":"
+      - img [ref=e6552]
+      - paragraph [ref=e6633]:
+        - text: with
+        - img [ref=e6635]
+        - text: and
+        - img [ref=e6657]
+        - text: . The
+        - strong [ref=e6672]: orthonormality
+        - text: is
+      - img [ref=e6674]
+      - paragraph [ref=e6780]:
+        - text: The chapters use the
+        - strong [ref=e6781]: Condon–Shortley phase convention
+        - text: (an explicit
+        - img [ref=e6783]
+        - text: for
+        - img [ref=e6798]
+        - text: ), and the real spherical harmonics for cubic harmonics. The parity
+        - img [ref=e6808]
+        - text: is what gives the
+        - strong [ref=e6862]: selection rule
+        - img [ref=e6864]
+        - text: "for electric-dipole transitions (chapter 01, §1.10.8). Cross-reference: chapters 01 (§1.10.2, §1.10.7), 03 (the Gaunt integral), 06 (real spherical harmonics in NAO basis sets)."
+      - heading "7.5 Bessel functions" [level=3] [ref=e6877]
+      - paragraph [ref=e6878]:
+        - text: The
+        - strong [ref=e6879]: Bessel functions of the first kind
+        - img [ref=e6881]
+        - text: satisfy Bessel’s equation
+      - img [ref=e6896]
+      - paragraph [ref=e6973]:
+        - text: with the small- and large-
+        - img [ref=e6975]
+        - text: asymptotics
+        - img [ref=e6981]
+        - text: for
+        - img [ref=e7027]
+        - text: and
+        - img [ref=e7037]
+        - text: for
+        - img [ref=e7102]
+        - text: . The
+        - strong [ref=e7111]: spherical Bessel functions
+        - img [ref=e7113]
+        - text: are the radial parts of the free-particle spherical waves. The free-particle Green function of equation
+        - img [ref=e7169]:
+          - link [ref=e7172] [cursor=pointer]:
+            - /url: "#"
+        - text: admits the partial-wave expansion
+      - img [ref=e7182]
+      - paragraph [ref=e7310]:
+        - text: "where $h^{(1)}"
+        - emphasis [ref=e7311]:
+          - text: \ell
+          - img [ref=e7313]
+          - text: r
+        - text: < = \min(r, r’)
+        - img [ref=e7407]
+        - text: "r_> = \\max(r, r’)$. Cross-reference: chapter 01 (§1.11.3, free-particle path integral), chapter 07 (Bessel-function solution of the nearly-free-electron band structure)."
+      - heading "7.6 The gamma function" [level=3] [ref=e7412]
+      - paragraph [ref=e7413]:
+        - text: The
+        - strong [ref=e7414]: Euler gamma function
+      - img [ref=e7416]
+      - paragraph [ref=e7471]:
+        - text: "extends the factorial to non-integer arguments:"
+        - img [ref=e7473]
+        - text: for positive integer
+        - img [ref=e7499]
+        - text: . The
+        - strong [ref=e7504]: reflection formula
+      - img [ref=e7506]
+      - paragraph [ref=e7550]:
+        - text: and the
+        - strong [ref=e7551]: Legendre duplication formula
+      - img [ref=e7553]
+      - paragraph [ref=e7617]:
+        - text: are the identities used in evaluating the
+        - strong [ref=e7618]: Gaussian overlaps
+        - text: and
+        - strong [ref=e7619]: Boys-function integrals
+        - text: of chapter 06. The
+        - strong [ref=e7620]: Bohr radius
+        - text: and
+        - strong [ref=e7621]: Hartree energy
+        - text: of atomic units are
+        - img [ref=e7623]
+        - text: "-function normalisations in disguise. Cross-reference: chapters 01, 03, 06. ### 7.7 The Boys function"
+      - paragraph [ref=e7628]:
+        - text: The
+        - strong [ref=e7629]: Boys function
+      - img [ref=e7631]
+      - paragraph [ref=e7724]:
+        - text: handles the Coulomb singularity
+        - img [ref=e7726]
+        - text: inside the primitive four-centre electron-repulsion integral of chapter 06 (§6.3). The general
+        - img [ref=e7742]
+        - text: "appears in the higher-angular-momentum recursion. Cross-reference: chapter 06 (§6.3), chapter 03 (§3.6.3)."
+      - heading "7.8 The error function" [level=3] [ref=e7790]
+      - paragraph [ref=e7791]:
+        - text: The
+        - strong [ref=e7792]: error function
+        - img [ref=e7794]
+        - text: and its complement
+        - img [ref=e7808]
+        - text: ":"
+      - img [ref=e7839]
+      - paragraph [ref=e7937]:
+        - text: "Asymptotics:"
+        - img [ref=e7939]
+        - text: as
+        - img [ref=e7957]
+        - text: and
+        - img [ref=e7967]
+        - text: as
+        - img [ref=e8011]
+        - text: . Used in the
+        - strong [ref=e8020]: Boys function
+        - text: above, in the
+        - strong [ref=e8021]: range-separation of the Coulomb kernel
+        - text: (chapter 05, §5.5), and in the
+        - strong [ref=e8022]: Gaussian smearing
+        - text: "occupation function (chapter 07, §7.6.3). Cross-reference: chapters 03, 05, 06, 07. —"
+      - heading "8. Tensor identities" [level=2] [ref=e8023]
+      - heading "8.1 The Kronecker delta" [level=3] [ref=e8024]
+      - img [ref=e8026]:
+        - generic [ref=e8040]:
+          - img [ref=e8044]
+          - img [ref=e8046]
+      - paragraph [ref=e8079]:
+        - text: The
+        - strong [ref=e8080]: completeness
+        - text: of an orthonormal basis is
+        - img [ref=e8082]
+        - text: ", which in index notation is"
+        - img [ref=e8111]
+        - text: and in tensor notation is
+        - img [ref=e8140]
+        - text: . The Kronecker
+        - img [ref=e8166]
+        - text: is the
+        - strong [ref=e8171]:
+          - text: identity tensor on
+          - img [ref=e8173]
+        - text: .
+      - heading "8.2 The Levi–Civita symbol" [level=3] [ref=e8182]
+      - paragraph [ref=e8183]:
+        - text: The three-dimensional
+        - strong [ref=e8184]: Levi–Civita symbol
+        - text: "is totally antisymmetric in its three indices:"
+      - img [ref=e8186]:
+        - generic [ref=e8202]:
+          - img [ref=e8206]
+          - img [ref=e8208]
+      - paragraph [ref=e8309]:
+        - text: The two
+        - strong [ref=e8310]: Levi–Civita contraction identities
+        - text: every DFT code uses are
+      - paragraph [ref=e8311]:
+        - img [ref=e8313]
+        - img [ref=e8380]
+      - paragraph [ref=e8446]:
+        - text: The
+        - strong [ref=e8447]: cross product
+        - text: is $(\mathbf a \times \mathbf b)
+        - emphasis [ref=e8448]: i = \sum
+        - text: "{jk} \\epsilon_{ijk}\\, a_j b_k$; the"
+        - strong [ref=e8449]: scalar triple product
+        - text: is
+        - img [ref=e8451]
+        - text: . The
+        - strong [ref=e8508]: angular momentum
+        - img [ref=e8510]
+        - text: is the prototype.
+      - heading "8.3 Einstein summation convention" [level=3] [ref=e8538]
+      - paragraph [ref=e8539]: "Repeated upper and lower indices are summed over their range. For an orthogonal basis, upper and lower indices are equivalent and the convention reduces to summing over any repeated index. Examples used in the chapters:"
+      - paragraph [ref=e8540]:
+        - img [ref=e8542]
+        - img [ref=e8599]
+      - paragraph [ref=e8669]: "The `numpy.einsum’ call in chapter 03 (§3.3) implements these contractions verbatim. Cross-reference: chapters 03, 04, 06. ### 8.4 Rotation of tensors"
+      - paragraph [ref=e8670]:
+        - text: Under an orthogonal transformation
+        - img [ref=e8672]
+        - text: with
+        - img [ref=e8678]
+        - text: and
+        - img [ref=e8694]
+        - text: (proper rotation), a rank-2 tensor transforms as $A’
+        - emphasis [ref=e8709]: "{ij} = \\sum"
+        - text: "{k\\ell} R_{ik}\\, R_{j\\ell}\\, A_{k\\ell}$. For a"
+        - strong [ref=e8710]: vector
+        - text: (
+        - img [ref=e8712]
+        - text: ) and a
+        - strong [ref=e8728]: scalar
+        - text: (
+        - img [ref=e8730]
+        - text: invariant), the pattern is the same. The
+        - strong [ref=e8744]: Wigner D-matrix
+        - img [ref=e8746]
+        - text: is the
+        - img [ref=e8771]
+        - text: "-dimensional representation of"
+        - img [ref=e8777]
+        - text: on the
+        - img [ref=e8783]
+        - text: "basis. Cross-reference: chapter 07 (the action of the point group on Bloch states at"
+        - img [ref=e8794]
+        - text: ).
+      - separator [ref=e8800]
+      - heading "9. Linear algebra" [level=2] [ref=e8801]
+      - heading "9.1 Eigenvalues, eigenvectors, spectral theorem" [level=3] [ref=e8802]
+      - paragraph [ref=e8803]:
+        - text: A square matrix
+        - img [ref=e8805]
+        - text: has the
+        - strong [ref=e8811]: eigendecomposition
+      - img [ref=e8813]
+      - paragraph [ref=e8840]:
+        - text: where
+        - img [ref=e8842]
+        - text: are the
+        - strong [ref=e8850]: eigenvalues
+        - text: and
+        - img [ref=e8852]
+        - text: the
+        - strong [ref=e8861]: eigenvectors
+        - text: . The
+        - strong [ref=e8862]: spectral theorem
+        - text: says that a
+        - strong [ref=e8863]: Hermitian
+        - text: matrix (
+        - img [ref=e8865]
+        - text: ) has
+        - strong [ref=e8879]: real eigenvalues
+        - text: and a
+        - strong [ref=e8880]: complete orthonormal
+        - text: set of eigenvectors. In matrix form,
+      - img [ref=e8882]
+      - paragraph [ref=e8903]:
+        - text: with
+        - img [ref=e8905]
+        - text: unitary and
+        - img [ref=e8912]
+        - text: real diagonal. This is the
+        - strong [ref=e8917]: diagonalisation
+        - text: "that `numpy.linalg.eigh’ performs. The Hermitian eigenvalue problem is the workhorse of DFT — every Fock-matrix diagonalisation (HF, KS) is a Hermitian eigenproblem. Cross-reference: chapters 03 (§3.6.2), 04, 06 (§6.1)."
+      - heading "9.2 Generalised eigenvalue problem" [level=3] [ref=e8918]
+      - paragraph [ref=e8919]:
+        - text: A
+        - strong [ref=e8920]: generalised eigenproblem
+        - text: is
+        - img [ref=e8922]
+        - text: with
+        - img [ref=e8942]
+        - text: positive-definite Hermitian. It reduces to the standard eigenproblem by
+        - strong [ref=e8948]: Löwdin orthogonalisation
+        - img [ref=e8950]
+        - text: ":"
+      - img [ref=e8973]
+      - paragraph [ref=e9022]:
+        - text: This is the
+        - strong [ref=e9023]: Roothaan–Hall
+        - text: equation
+        - img [ref=e9025]
+        - text: of chapters 03 (§3.6) and 06 (§6.1). The standard numerical recipe is ‘scipy.linalg.eigh(F, S)’, which forms
+        - img [ref=e9045]
+        - text: by Cholesky factorisation of
+        - img [ref=e9052]
+        - text: ". Cross- reference: chapters 03, 06. ### 9.3 Singular value decomposition (SVD)"
+      - paragraph [ref=e9058]:
+        - text: Every
+        - img [ref=e9060]
+        - text: matrix
+        - img [ref=e9070]
+        - text: admits the decomposition
+      - img [ref=e9077]
+      - paragraph [ref=e9098]:
+        - text: with
+        - img [ref=e9100]
+        - img [ref=e9107]
+        - text: unitary,
+        - img [ref=e9121]
+        - img [ref=e9128]
+        - text: unitary, and
+        - img [ref=e9142]
+        - text: with
+        - img [ref=e9183]
+        - text: the
+        - strong [ref=e9213]: singular values
+        - text: . The SVD is the basis of the
+        - strong [ref=e9214]: density- fitting / resolution-of-the-identity
+        - text: "approximation to the ERI tensor of chapter 06 (§6.12). Cross-reference: chapter 06 (§6.12, the resolution-of-the-identity approximation)."
+      - heading "9.4 Trace of a matrix" [level=3] [ref=e9215]
+      - img [ref=e9217]
+      - paragraph [ref=e9255]:
+        - text: where
+        - img [ref=e9257]
+        - text: are the eigenvalues of
+        - img [ref=e9266]
+        - text: . The second equality is the
+        - strong [ref=e9272]: trace-invariance under similarity
+        - text: ": the trace of"
+        - img [ref=e9274]
+        - text: equals the trace of
+        - img [ref=e9281]
+        - text: ", and the diagonal form has the eigenvalues on the diagonal. Cross-reference: chapters 03, 04. ### 9.5 Determinant of a matrix"
+      - img [ref=e9297]
+      - paragraph [ref=e9336]:
+        - text: The last form is the
+        - strong [ref=e9337]: Jacobi formula
+        - text: "for the derivative of a determinant:"
+        - img [ref=e9339]
+        - text: . The determinant of an antisymmetric matrix is the
+        - strong [ref=e9381]: square of the Pfaffian
+        - text: ; the determinant of a Slater matrix is the
+        - strong [ref=e9382]: Slater determinant
+        - text: "of chapter 02 (§2.2). Cross-reference: chapter 02. ### 9.6 Matrix exponential"
+      - paragraph [ref=e9383]:
+        - text: The
+        - strong [ref=e9384]: matrix exponential
+        - text: is defined by the Taylor series
+      - img [ref=e9386]
+      - paragraph [ref=e9426]:
+        - text: which converges for every square matrix. For Hermitian
+        - img [ref=e9428]
+        - text: ","
+      - img [ref=e9448]
+      - paragraph [ref=e9520]:
+        - text: Used in the
+        - strong [ref=e9521]: time-evolution operator
+        - img [ref=e9523]
+        - text: of chapter 01 (§1.7.1) and in the
+        - strong [ref=e9556]: Löwdin orthogonaliser
+        - img [ref=e9558]
+        - text: "of chapter 03 (§3.6.6). Cross- reference: chapters 01, 03. ### 9.7 Sherman–Morrison–Woodbury identities"
+      - paragraph [ref=e9580]:
+        - img [ref=e9582]
+        - img [ref=e9687]
+      - paragraph [ref=e9809]:
+        - text: The first is the
+        - strong [ref=e9810]: Sherman–Morrison formula
+        - text: ", the second the"
+        - strong [ref=e9811]: Woodbury identity
+        - text: . The latter is the workhorse of the
+        - strong [ref=e9812]: Broyden update
+        - text: "in chapter 04 (§4.6.3). Cross-reference: chapter 04. —"
+      - heading "10. Differential operators" [level=2] [ref=e9813]
+      - paragraph [ref=e9814]:
+        - text: The chapters use the standard
+        - img [ref=e9816]
+        - text: "operators of vector calculus in three coordinate systems:"
+        - strong [ref=e9821]: Cartesian
+        - text: ","
+        - strong [ref=e9822]: spherical polar
+        - text: ", and"
+        - strong [ref=e9823]: cylindrical
+        - text: .
+      - heading "10.1 Cartesian" [level=3] [ref=e9824]
+      - paragraph [ref=e9825]:
+        - img [ref=e9827]
+        - img [ref=e9884]
+        - img [ref=e9948]
+        - img [ref=e10068]
+      - paragraph [ref=e10140]:
+        - text: The
+        - strong [ref=e10141]: vector Laplacian
+        - text: "acts component-wise on a vector field:"
+        - img [ref=e10143]
+        - text: . The
+        - strong [ref=e10194]: Laplacian on a tensor
+        - text: "is the same: one component at a time. The"
+        - strong [ref=e10195]: gradient of a dot product
+        - text: is
+      - img [ref=e10197]
+      - heading "10.2 Spherical polar coordinates" [level=3] [ref=e10284]
+      - paragraph [ref=e10285]:
+        - text: With
+        - img [ref=e10287]
+        - text: ","
+        - img [ref=e10303]
+        - text: the polar angle from
+        - img [ref=e10309]
+        - text: and
+        - img [ref=e10319]
+        - text: the azimuth,
+      - paragraph [ref=e10324]:
+        - img [ref=e10326]
+        - img [ref=e10416]
+        - img [ref=e10534]
+      - paragraph [ref=e10677]:
+        - text: The angular part of
+        - img [ref=e10679]
+        - text: is
+        - img [ref=e10688]
+        - text: ", so"
+        - img [ref=e10711]
+        - text: — the
+        - strong [ref=e10798]: radial equation
+        - text: "of chapter 01 (§1.10.3). Cross-reference: chapter 01 (§1.10)."
+      - heading "10.3 Cylindrical coordinates" [level=3] [ref=e10799]
+      - paragraph [ref=e10800]:
+        - text: With
+        - img [ref=e10802]
+        - text: ","
+        - img [ref=e10827]
+        - text: the azimuth, and
+        - img [ref=e10833]
+        - text: the axial coordinate,
+      - paragraph [ref=e10838]:
+        - img [ref=e10840]
+        - img [ref=e10917]
+      - paragraph [ref=e11014]:
+        - text: "The cylindrical Laplacian is the natural operator for systems with axial symmetry: nanotubes, wires, the"
+        - strong [ref=e11015]: near-degeneracy
+        - text: of the
+        - img [ref=e11017]
+        - text: orbitals in transition-metal complexes. Used in chapter 07 when working out the band structure of a
+        - strong [ref=e11032]: single-wall nanotube
+        - text: or a
+        - strong [ref=e11033]: 2-D electron gas
+        - text: confined to a wire.
+      - heading "10.4 Vector identities" [level=3] [ref=e11034]
+      - paragraph [ref=e11035]:
+        - img [ref=e11037]
+        - img [ref=e11062]
+        - img [ref=e11085]
+        - img [ref=e11131]
+        - img [ref=e11172]
+      - paragraph [ref=e11212]:
+        - text: Identity
+        - img [ref=e11214]:
+          - link [ref=e11217] [cursor=pointer]:
+            - /url: "#"
+        - text: is the reason the
+        - strong [ref=e11226]: Coulomb gauge
+        - img [ref=e11228]
+        - text: and the
+        - strong [ref=e11242]: continuity equation
+        - text: "of chapter 01 (§1.7.4) have the structure they do. Cross-reference: chapter 01. —"
+      - heading "11. Functional derivatives" [level=2] [ref=e11243]
+      - paragraph [ref=e11244]:
+        - text: The chapters use the functional derivative to derive the
+        - strong [ref=e11245]: Kohn–Sham potential
+        - img [ref=e11247]
+        - text: (chapter 04, §4.2) and the
+        - strong [ref=e11277]: forces on the nuclei
+        - text: via the Hellmann–Feynman theorem (chapter 04, §4.7.1). This section collects the working rules.
+      - heading "11.1 Definition" [level=3] [ref=e11278]
+      - paragraph [ref=e11279]:
+        - text: The
+        - strong [ref=e11280]: functional derivative
+        - img [ref=e11282]
+        - text: of a functional
+        - img [ref=e11303]
+        - text: is the function (or distribution) such that for every variation
+        - img [ref=e11315]
+        - text: ","
+      - img [ref=e11329]
+      - paragraph [ref=e11374]:
+        - text: "The simplest case: for"
+        - img [ref=e11376]
+        - text: ", the functional derivative is"
+        - img [ref=e11412]
+        - text: . For
+        - img [ref=e11443]
+        - text: ", the derivative is"
+        - img [ref=e11471]
+        - text: .
+      - heading "11.2 Chain rule" [level=3] [ref=e11521]
+      - paragraph [ref=e11522]:
+        - text: If
+        - img [ref=e11524]
+        - text: depends on
+        - img [ref=e11544]
+        - text: and
+        - img [ref=e11550]
+        - text: (which themselves depend on the same underlying variables), then
+      - img [ref=e11556]
+      - paragraph [ref=e11679]:
+        - text: Used in deriving the
+        - strong [ref=e11680]: chain rule for the KS potential
+        - text: ": the density depends on the orbitals, the orbitals depend on the potential, and the potential depends on the density."
+      - heading "11.3 Integration by parts" [level=3] [ref=e11681]
+      - paragraph [ref=e11682]: "Under a functional integral, integration by parts swaps a derivative at no cost (boundary terms vanish under the standard assumptions of the variational principle):"
+      - img [ref=e11684]
+      - paragraph [ref=e11770]:
+        - text: The boundary term is
+        - img [ref=e11772]
+        - text: and vanishes if
+        - img [ref=e11805]
+        - text: at infinity (or if the boundary variations are restricted to vanish). Used in the derivation of the
+        - strong [ref=e11814]: Euler–Lagrange equation
+        - text: in §12 below and in the
+        - strong [ref=e11815]: Pulay-force
+        - text: integration by parts of chapter 04 (§4.7.3).
+      - heading "11.4 Functional derivative of a density-functional" [level=3] [ref=e11816]
+      - paragraph [ref=e11817]:
+        - text: For the Kohn–Sham energy
+        - img [ref=e11819]
+        - text: ", the functional derivative with respect to"
+        - img [ref=e11886]
+        - text: is
+      - img [ref=e11899]
+      - paragraph [ref=e12000]:
+        - text: The right-hand side is the
+        - strong [ref=e12001]: Kohn–Sham effective potential
+        - text: . The functional derivative
+        - img [ref=e12003]
+        - text: is the
+        - strong [ref=e12021]: XC potential
+        - text: "of chapter 04 (§4.2, §4.5). Cross- reference: chapter 04. —"
+      - heading "12. Variational calculus" [level=2] [ref=e12022]
+      - heading "12.1 The action" [level=3] [ref=e12023]
+      - paragraph [ref=e12024]:
+        - text: The
+        - strong [ref=e12025]: action
+        - text: "is the time-integral of a Lagrangian:"
+      - img [ref=e12027]
+      - paragraph [ref=e12095]:
+        - text: The
+        - strong [ref=e12096]: principle of stationary action
+        - text: says the physical trajectory
+        - img [ref=e12098]
+        - text: is an extremum of
+        - img [ref=e12110]
+        - text: against variations
+        - img [ref=e12123]
+        - text: that vanish at the endpoints. The Lagrangian of the
+        - strong [ref=e12136]: TDSE derivation
+        - text: of chapter 01 (§1.7.2) is the
+        - strong [ref=e12137]: Dirac–Frenkel (McLachlan) Lagrangian
+        - img [ref=e12139]
+        - text: ", which is a"
+        - emphasis [ref=e12174]: functional
+        - text: of the time-dependent state.
+      - heading "12.2 The Euler–Lagrange equation" [level=3] [ref=e12175]
+      - paragraph [ref=e12176]:
+        - text: For a Lagrangian
+        - img [ref=e12178]
+        - text: ", the stationary- action condition"
+        - img [ref=e12203]
+        - text: gives the
+        - strong [ref=e12215]: Euler– Lagrange equation
+      - img [ref=e12217]
+      - paragraph [ref=e12267]:
+        - text: The generalisation to several coordinates is
+        - img [ref=e12269]
+        - text: . The Euler–Lagrange equation of the Dirac–Frenkel Lagrangian of chapter 01 (§1.7.2) is the
+        - strong [ref=e12321]: time-dependent Schrödinger equation
+        - text: — the TDSE is the
+        - emphasis [ref=e12322]: unique
+        - text: dynamics consistent with stationary action
+        - emphasis [ref=e12323]: "an`d"
+        - text: ’ unitarity.
+      - heading "12.3 The Euler–Lagrange equation in field theory" [level=3] [ref=e12324]
+      - paragraph [ref=e12325]:
+        - text: For a Lagrangian density
+        - img [ref=e12327]
+        - text: ","
+      - img [ref=e12354]
+      - paragraph [ref=e12405]:
+        - text: This is the
+        - strong [ref=e12406]: Dirac–Frenkel variational principle
+        - text: of chapter 01 (§1.7.2) written for the wavefunction field. The
+        - strong [ref=e12407]: time-dependent KS equations
+        - text: of chapter 04 are recovered by restricting
+        - img [ref=e12409]
+        - text: to a single Slater determinant and varying over the orbital rotations.
+      - heading "12.4 Constrained variation" [level=3] [ref=e12424]
+      - paragraph [ref=e12425]:
+        - text: A constrained minimisation (e.g. orthonormality of the orbitals in HF/KS) introduces a
+        - strong [ref=e12426]: Lagrange multiplier
+        - text: matrix
+        - img [ref=e12428]
+        - text: "in the variational principle:"
+      - img [ref=e12434]
+      - paragraph [ref=e12488]:
+        - text: Differentiating with respect to the MO coefficients
+        - img [ref=e12490]
+        - text: gives the
+        - strong [ref=e12496]: Roothaan–Hall equation
+        - text: (chapters 03 and 06), with
+        - img [ref=e12498]
+        - text: identified as the diagonal orbital energy matrix
+        - img [ref=e12504]
+        - text: ". Cross-reference: chapters 03, 06. —"
+      - heading "13. The Coulomb kernel and the Ewald sum" [level=2] [ref=e12509]:
+        - text: 13. The Coulomb kernel
+        - img [ref=e12511]
+        - text: and the Ewald sum
+      - paragraph [ref=e12535]:
+        - text: The Coulomb kernel is the single most important special function in DFT. Its Fourier transform, its decomposition into short- and long-range parts, and the Ewald sum that renders the lattice sum of
+        - img [ref=e12537]
+        - text: convergent are the three identities every solid-state code needs.
+      - heading "13.1 Fourier transform" [level=3] [ref=e12547]
+      - paragraph [ref=e12548]: The Fourier transform of the Coulomb kernel is
+      - img [ref=e12550]
+      - paragraph [ref=e12604]:
+        - text: with the convention of §5.2 above (no
+        - img [ref=e12606]
+        - text: prefactor). Equivalently,
+      - img [ref=e12632]
+      - paragraph [ref=e12692]:
+        - text: i.e.
+        - img [ref=e12694]
+        - text: is the Green’s function of the
+        - strong [ref=e12704]: Poisson equation
+        - text: in three dimensions. The Fourier-space form
+        - img [ref=e12706]
+        - text: is what makes the Hartree operator
+        - strong [ref=e12740]: diagonal in reciprocal space
+        - text: — a
+        - img [ref=e12742]
+        - text: "-space Hartree potential is just"
+        - img [ref=e12748]
+        - text: ", and the"
+        - strong [ref=e12790]: plane-wave Hartree-energy evaluation
+        - text: of chapter 07 (§7.5) is therefore an
+        - img [ref=e12792]
+        - text: "FFT per SCF iteration. Cross-reference: chapters 04 (§4.4), 07 (§7.5)."
+      - heading "13.2 Range separation" [level=3] [ref=e12818]
+      - paragraph [ref=e12819]:
+        - text: The Coulomb kernel can be split into a
+        - strong [ref=e12820]: short-range
+        - text: and a
+        - strong [ref=e12821]: long-range
+        - text: part by an error-function partition
+      - img [ref=e12823]:
+        - generic [ref=e12825]:
+          - generic [ref=e12870]:
+            - img [ref=e12876]
+            - img [ref=e12878]
+          - generic [ref=e12923]:
+            - img [ref=e12929]
+            - img [ref=e12931]
+      - paragraph [ref=e12945]:
+        - text: The range-separation parameter
+        - img [ref=e12947]
+        - text: "controls the split:"
+        - img [ref=e12953]
+        - text: recovers the full
+        - img [ref=e12963]
+        - text: on the long-range side;
+        - img [ref=e12974]
+        - text: puts everything on the short-range side. The two pieces are treated with different functionals in
+        - strong [ref=e12983]: range-separated hybrid
+        - text: "XC functionals (chapter 05, §5.5). Cross-reference: chapter 05. ### 13.3 The Ewald sum"
+      - paragraph [ref=e12984]:
+        - text: The
+        - strong [ref=e12985]: lattice sum
+      - img [ref=e12987]
+      - paragraph [ref=e13028]:
+        - text: is
+        - strong [ref=e13029]: conditionally convergent
+        - text: (depends on the order of summation). The
+        - strong [ref=e13030]: Ewald decomposition
+        - text: renders it absolutely convergent by writing
+      - img [ref=e13032]:
+        - generic [ref=e13034]:
+          - generic [ref=e13064]:
+            - img [ref=e13070]
+            - img [ref=e13072]
+          - generic [ref=e13117]:
+            - img [ref=e13123]
+            - img [ref=e13125]
+      - paragraph [ref=e13155]: "The sum then splits into three pieces:"
+      - paragraph [ref=e13156]:
+        - img [ref=e13158]:
+          - generic [ref=e13220]:
+            - img [ref=e13226]
+            - img [ref=e13228]
+        - img [ref=e13240]:
+          - generic [ref=e13307]:
+            - img [ref=e13313]
+            - img [ref=e13315]
+        - img [ref=e13328]:
+          - generic [ref=e13347]:
+            - img [ref=e13353]
+            - img [ref=e13355]
+      - paragraph [ref=e13368]:
+        - text: The real-space sum
+        - img [ref=e13370]
+        - text: converges rapidly because
+        - img [ref=e13382]
+        - text: at large
+        - img [ref=e13417]
+        - text: . The reciprocal-space sum
+        - img [ref=e13423]
+        - text: converges rapidly because
+        - img [ref=e13436]
+        - text: kills large
+        - img [ref=e13461]
+        - text: . The self-term
+        - img [ref=e13467]
+        - text: subtracts the spurious interaction of each ion with its own image, introduced when the long-range part is summed in reciprocal space. The parameter
+        - img [ref=e13479]
+        - text: trades real-space and reciprocal-space convergence; the optimal choice is
+        - img [ref=e13485]
+        - text: .
+      - paragraph [ref=e13511]:
+        - text: The Ewald sum is the
+        - strong [ref=e13512]: Madelung constant
+        - text: of the lattice (for point ions in a compensating background), generalised to finite-size ions and to the
+        - strong [ref=e13513]: electron–ion
+        - text: "interaction in periodic DFT. It is the heart of every plane-wave and real-space-grid periodic code. Cross-reference: chapters 04 (the Hartree potential in a periodic cell), 07. ### 13.4 The Madelung constant"
+      - paragraph [ref=e13514]:
+        - text: The
+        - strong [ref=e13515]: Madelung constant
+        - img [ref=e13517]
+        - text: of a Bravais lattice is defined by
+      - img [ref=e13524]
+      - paragraph [ref=e13553]:
+        - text: where
+        - img [ref=e13555]
+        - text: "is the nearest-neighbour distance. Examples:"
+      - table [ref=e13563]:
+        - rowgroup [ref=e13564]:
+          - row "Lattice" [ref=e13565]:
+            - columnheader "Lattice" [ref=e13566]
+            - columnheader [ref=e13567]:
+              - img [ref=e13569]
+        - rowgroup [ref=e13575]:
+          - row "NaCl (rocksalt) 1.74756…" [ref=e13576]:
+            - cell "NaCl (rocksalt)" [ref=e13577]
+            - cell "1.74756…" [ref=e13578]
+          - row "CsCl (bcc) 1.76267…" [ref=e13579]:
+            - cell "CsCl (bcc)" [ref=e13580]
+            - cell "1.76267…" [ref=e13581]
+          - row "ZnS (zincblende) 1.63806…" [ref=e13582]:
+            - cell "ZnS (zincblende)" [ref=e13583]
+            - cell "1.63806…" [ref=e13584]
+      - paragraph [ref=e13585]: "The Ewald sum with the appropriate geometry gives these numbers. Cross-reference: chapter 07 (§7.7, the nearly-free-electron band structure)."
+      - separator [ref=e13586]
+      - heading "14. Common integrals" [level=2] [ref=e13587]
+      - paragraph [ref=e13588]:
+        - text: "The chapters need a small set of standard integrals over and over: the"
+        - strong [ref=e13589]: Gaussian
+        - text: (basis-set normalisation, the Ewald sum, the path-integral propagator), the
+        - strong [ref=e13590]: Fermi–Dirac
+        - text: and
+        - strong [ref=e13591]: Bose–Einstein
+        - text: distributions (finite-temperature DFT, the electronic entropy of chapter 07), and the
+        - strong [ref=e13592]: polylogarithm
+        - text: that ties them together.
+      - heading "14.1 The Gaussian integral" [level=3] [ref=e13593]
+      - img [ref=e13595]
+      - paragraph [ref=e13723]:
+        - text: In
+        - img [ref=e13725]
+        - text: dimensions, with
+        - img [ref=e13731]
+        - text: ","
+      - img [ref=e13741]
+      - paragraph [ref=e13801]:
+        - text: The Gaussian is the
+        - strong [ref=e13802]: only
+        - text: integral that converges in the
+        - emphasis [ref=e13803]: free-particle path integral
+        - text: of chapter 01 (§1.11.3, problem 3 of §1.13). It is also the workhorse of the
+        - strong [ref=e13804]: overlap and kinetic-energy integrals of chapter 06
+        - text: (§6.3, the Gaussian product theorem).
+      - heading "14.2 The error-function integral" [level=3] [ref=e13805]
+      - img [ref=e13807]
+      - paragraph [ref=e13914]:
+        - text: "This identity is needed when the Coulomb kernel is split by the range-separation of §13.2 above: the short-range contribution to the Hartree energy is a"
+        - emphasis [ref=e13915]: quadrature
+        - text: "over Gaussian primitives weighted by an error function. Cross- reference: chapter 05 (§5.5, range-separated hybrids)."
+      - heading "14.3 The Fermi–Dirac integral" [level=3] [ref=e13916]
+      - paragraph [ref=e13917]:
+        - text: The
+        - strong [ref=e13918]: Fermi–Dirac occupation
+        - text: of chapter 07 (§7.6.3) is
+      - img [ref=e13920]
+      - paragraph [ref=e13968]:
+        - text: The corresponding
+        - strong [ref=e13969]:
+          - text: Fermi–Dirac integral of order
+          - img [ref=e13971]
+        - text: is
+      - img [ref=e13977]
+      - paragraph [ref=e14046]:
+        - text: with
+        - img [ref=e14048]
+        - text: the
+        - strong [ref=e14067]: reduced chemical potential
+        - text: . The Sommerfeld expansion at low temperature gives
+      - img [ref=e14069]
+      - paragraph [ref=e14178]:
+        - text: For the density of states
+        - img [ref=e14180]
+        - text: of a metal, the electron number is
+        - img [ref=e14192]
+        - text: . The Sommerfeld expansion is the bridge from the low-
+        - img [ref=e14227]
+        - text: behaviour to the
+        - img [ref=e14233]
+        - text: "band structure of chapter 07. Cross- reference: chapter 07 (§7.6.3)."
+      - heading "14.4 The Bose–Einstein integral" [level=3] [ref=e14242]
+      - paragraph [ref=e14243]:
+        - text: The
+        - strong [ref=e14244]: Bose–Einstein occupation
+        - text: is
+      - img [ref=e14246]
+      - paragraph [ref=e14294]:
+        - text: with
+        - img [ref=e14296]
+        - text: (chemical potential below the band edge for a stable Bose gas). The corresponding
+        - strong [ref=e14305]:
+          - text: Bose–Einstein integral of order
+          - img [ref=e14307]
+        - text: is
+      - img [ref=e14313]
+      - paragraph [ref=e14431]:
+        - text: The Bose–Einstein distribution describes
+        - strong [ref=e14432]: phonons
+        - text: (chapter 10, vibrations in molecules and solids) and the photon gas. The phonon contribution to the
+        - strong [ref=e14433]: free energy
+        - text: of a harmonic crystal is
+      - img [ref=e14435]
+      - paragraph [ref=e14506]:
+        - text: where the sum is over phonon branches
+        - img [ref=e14508]
+        - text: and wavevectors
+        - img [ref=e14514]
+        - text: ". Cross-reference: chapter 10 (phonons), chapter 01 (§1.2, P6 for bosons)."
+      - heading "14.5 The polylogarithm" [level=3] [ref=e14520]
+      - paragraph [ref=e14521]:
+        - text: The
+        - strong [ref=e14522]: polylogarithm
+        - img [ref=e14524]
+        - text: is defined by the series
+      - img [ref=e14540]
+      - paragraph [ref=e14637]:
+        - text: convergent for
+        - img [ref=e14639]
+        - text: (real
+        - img [ref=e14654]
+        - text: ; analytic continuation elsewhere). The integral form is the
+        - strong [ref=e14663]: Bose–Einstein integral
+        - text: "of the previous section. Special values: $\\operatorname{Li}"
+        - emphasis [ref=e14664]:
+          - text: 1(z) = -\ln(1 - z)
+          - img [ref=e14666]
+          - text: "\\operatorname{Li}_2(1) = \\pi^2/6"
+          - img [ref=e14672]
+          - text: "\\operatorname{Li}_3(1) = \\zeta(3) \\approx 1.20206"
+          - img [ref=e14678]
+          - text: "\\operatorname{Li}_s(1) = \\zeta(s)$ (the"
+          - strong [ref=e14683]: Riemann zeta function
+          - text: ). The
+          - strong [ref=e14684]: Fermi–Dirac integral
+          - text: "is $\\mathcal F_j(\\eta) = -\\operatorname{Li}"
+        - text: "{j+1}(-e^\\eta)$. Cross- reference: chapter 07 (finite-temperature occupation numbers)."
+      - heading "14.6 The Bose–Einstein condensation temperature" [level=3] [ref=e14685]
+      - paragraph [ref=e14686]:
+        - text: For a three-dimensional non-interacting Bose gas of
+        - img [ref=e14688]
+        - text: particles in a volume
+        - img [ref=e14694]
+        - text: with mass
+        - img [ref=e14700]
+        - text: ","
+      - img [ref=e14706]
+      - paragraph [ref=e14771]:
+        - text: where
+        - img [ref=e14773]
+        - text: is the Riemann zeta function. This is the textbook result that anchors every discussion of
+        - strong [ref=e14797]: macroscopic quantum phenomena
+        - text: in the notes. The DFT chapters do not derive it, but it appears in the “what we left out” sections as the canonical example of a
+        - strong [ref=e14798]: broken-symmetry ground state
+        - text: "beyond the reach of single-Slater-determinant theory. Cross-reference: chapter 01 (§1.14, identical-particle statistics for bosons)."
+      - heading "14.7 The Planck (black-body) integral" [level=3] [ref=e14799]
+      - img [ref=e14801]
+      - paragraph [ref=e14846]:
+        - text: This is the
+        - strong [ref=e14847]: Stefan–Boltzmann constant
+        - text: "in disguise:"
+        - img [ref=e14849]
+        - text: . It is the integral that sets the scale of the
+        - strong [ref=e14894]: zero-point radiation
+        - text: that gives the
+        - strong [ref=e14895]: Lamb shift
+        - text: "of chapter 01 (§1.14, “what we left out”). Cross- reference: chapter 01. ### 14.8 The complete elliptic integrals"
+      - paragraph [ref=e14896]:
+        - text: The two
+        - strong [ref=e14897]: complete elliptic integrals
+        - text: of the first and second kind,
+      - paragraph [ref=e14898]:
+        - img [ref=e14900]
+        - img [ref=e14959]
+      - paragraph [ref=e15014]:
+        - text: appear in the
+        - strong [ref=e15015]: 2-D Coulomb problem
+        - text: and in the
+        - strong [ref=e15016]: image-charge sums of surface science
+        - text: . They are not in the main text of the DFT Notes but are the right tool when the geometry of a problem is planar (a graphene sheet, a 2-D electron gas, a slab in a surface calculation). The values at
+        - img [ref=e15018]
+        - text: are
+        - img [ref=e15028]
+        - text: (logarithmic divergence) and
+        - img [ref=e15044]
+        - text: .
+      - separator [ref=e15059]
+      - heading "Where to look for what you forgot" [level=2] [ref=e15060]
+      - list [ref=e15061]:
+        - listitem [ref=e15062]:
+          - strong [ref=e15063]: NIST Digital Library of Mathematical Functions
+          - text: (
+          - link "dlmf.nist.gov" [ref=e15064] [cursor=pointer]:
+            - /url: https://dlmf.nist.gov
+          - text: ) — the standard reference for everything in §7 and §14.
+        - listitem [ref=e15065]:
+          - strong [ref=e15066]: Abramowitz & Stegun
+          - text: (the older print companion to the DLMF) — same content, harder to search.
+        - listitem [ref=e15067]:
+          - strong [ref=e15068]: Arfken, Weber, Harris
+          - text: —
+          - emphasis [ref=e15069]: Mathematical Methods for Physicists
+          - text: ", the standard graduate-level textbook. Covers §5, §7, §8, §9, §10."
+        - listitem [ref=e15070]:
+          - strong [ref=e15071]: Sakurai
+          - text: —
+          - emphasis [ref=e15072]: Modern Quantum Mechanics
+          - text: ", for everything in §1, §2, §4, and the angular-momentum material in §7.4."
+        - listitem [ref=e15073]:
+          - strong [ref=e15074]: Helgaker, Jorgensen, Olsen
+          - text: —
+          - emphasis [ref=e15075]: Molecular Electronic- Structure Theory
+          - text: ", for the matrix-algebra identities of §9 in the context of quantum chemistry."
+        - listitem [ref=e15076]:
+          - strong [ref=e15077]: Martin
+          - text: —
+          - emphasis [ref=e15078]: "Electronic Structure: Basic Theory and Practical Methods"
+          - text: ", for the DFT-specific identities in §3, §6, §11, §12, §13. >"
+          - strong [ref=e15079]: Disclaimer.
+          - text: This cheatsheet is a
+          - emphasis [ref=e15080]: reference
+          - text: ", not a"
+          - blockquote [ref=e15081]:
+            - paragraph [ref=e15082]: textbook. Every identity is stated without proof; the proof is in the linked chapter (and ultimately in the references above). Cite the chapter, not the cheatsheet, in any publication that uses one of these results.
+            - paragraph [ref=e15083]:
+              - strong [ref=e15084]: Cross-reference index.
+              - text: "Dirac notation: ch. 01. Operator algebra: ch. 01. Hilbert-space traces: ch. 03, 04. Second quantisation: ch. 01, 02. Fourier transforms: ch. 01, 07. Green’s functions: ch. 01, 04. Special functions: ch. 01 (Hermite, Laguerre, spherical harmonics), ch. 06 (Boys, erfc), ch. 07 (Bessel). Tensors: ch. 01 (Levi-Civita in the angular momentum). Linear algebra: ch. 03, 06. Differential operators: ch. 01 (spherical Laplacian, the gradient in"
+              - img [ref=e15086]
+              - text: "), ch. 04 (the gradient correction of GGA functionals), ch. 07 (the strain derivative of the stress tensor). Functional derivatives: ch. 04 (the KS potential), ch. 09 (forces). Variational calculus: ch. 01 (the TDSE), ch. 03, 04 (the HF/KS eigenvalue equations). Coulomb kernel: ch. 04, 07. Common integrals: ch. 07 (Fermi–Dirac and Bose–Einstein)."
+  - contentinfo [ref=e15100]:
+    - generic [ref=e15101]:
+      - generic [ref=e15102]:
+        - img [ref=e15103]
+        - generic [ref=e15107]: DFT Notes
+        - paragraph [ref=e15108]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e15109]:
+        - generic [ref=e15110]:
+          - heading "Project" [level=3] [ref=e15111]
+          - list [ref=e15112]:
+            - listitem [ref=e15113]:
+              - link "Chapters map" [ref=e15114] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e15115]:
+              - link "Python codes" [ref=e15116] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e15117]:
+              - link "Contributing" [ref=e15118] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e15119]:
+              - link "Security" [ref=e15120] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e15121]:
+              - link "Design spec" [ref=e15122] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e15123]:
+              - link "GitHub ↗" [ref=e15124] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e15125]:
+          - heading "Built with" [level=3] [ref=e15126]
+          - list [ref=e15127]:
+            - listitem [ref=e15128]:
+              - link "Jekyll" [ref=e15129] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e15130]:
+              - link "MathJax 3" [ref=e15131] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e15132]:
+              - link "Mermaid" [ref=e15133] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e15134]:
+              - link "chenglou/pretext" [ref=e15135] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e15136]:
+              - link "Google Fonts" [ref=e15137] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e15138]:
+          - heading "Legal" [level=3] [ref=e15139]
+          - list [ref=e15140]:
+            - listitem [ref=e15141]:
+              - link "MIT License" [ref=e15142] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e15143]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e15145]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

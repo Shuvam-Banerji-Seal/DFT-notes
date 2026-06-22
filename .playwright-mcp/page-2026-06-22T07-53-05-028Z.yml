@@ -1,0 +1,2469 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Notation glossary" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: The single source of truth for
+          - emphasis [ref=e30]: what every symbol means
+          - text: in these notes. If a chapter uses a symbol that is not listed here, it is a chapter-specific quantity; the chapter defines it at first use and the editor (you) should add it to this file in the same pull request.
+      - paragraph [ref=e31]:
+        - text: This file is intentionally long (≈ 900 lines). It is a
+        - emphasis [ref=e32]: reference
+        - text: ", not a chapter — open it, look up the symbol, close it, return to the chapter. The 13 sections correspond to the 13 categories of symbols the DFT notes use, and the conventions summary at the end pins down the cross-chapter defaults."
+      - paragraph [ref=e33]:
+        - text: The notation in this file is consistent with the rest of the notes — in particular, with the
+        - emphasis [ref=e34]: Notation
+        - text: section of
+        - link "Chapter 00" [ref=e35] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+        - text: and with the
+        - emphasis [ref=e36]: Notation
+        - text: callouts at the top of every later chapter. When a chapter deviates (e.g. SI units for a spectroscopic result, natural units
+        - img [ref=e38]
+        - text: for a relativistic digression), the deviation is announced at the top of the chapter and is
+        - emphasis [ref=e51]: not
+        - text: repeated in this glossary.
+      - paragraph [ref=e52]: "For each symbol we give:"
+      - list [ref=e53]:
+        - listitem [ref=e54]:
+          - text: the
+          - strong [ref=e55]: LaTeX command
+          - text: (copy-pasteable),
+        - listitem [ref=e56]:
+          - text: the
+          - strong [ref=e57]: plain text
+          - text: form (for editing or for notes in environments that don’t render LaTeX),
+        - listitem [ref=e58]:
+          - text: a one-line
+          - strong [ref=e59]: description
+          - text: ","
+        - listitem [ref=e60]:
+          - text: the
+          - strong [ref=e61]: first appearance
+          - text: in the notes (chapter and section), so a reader can trace the symbol back to its definition.
+      - paragraph [ref=e62]:
+        - text: The chapters are numbered
+        - code [ref=e63]: "00"
+        - text: –
+        - code [ref=e64]: "13"
+        - text: . Chapters
+        - code [ref=e65]: "00"
+        - text: –
+        - code [ref=e66]: "08"
+        - text: ’ are shipped; chapters
+        - code [ref=e67]: "09"
+        - text: –
+        - code [ref=e68]: "13"
+        - text: ’ are listed in
+        - link "chapters-map.md" [ref=e69] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - text: as planned. Symbols that are introduced in a planned chapter are flagged
+        - emphasis [ref=e70]: "(planned: ch-NN)"
+        - text: .
+      - separator [ref=e71]
+      - heading "1. Scalars and constants" [level=2] [ref=e72]
+      - paragraph [ref=e73]: The fundamental constants of nature, the derived atomic units of length and energy, and the dimensionless numbers used throughout.
+      - paragraph [ref=e74]:
+        - text: "| Symbol | LaTeX | Plain text | Description | First appearance | |:——|:——|:———–|:————|:—————–| |"
+        - img [ref=e76]
+        - text: "|"
+        - code [ref=e81]: \hbar' | h-bar | Reduced Planck constant ($h / 2\pi$); set to 1 in atomic units | Ch 00 §"Notation"; Ch 01 §1.1 | | $m_e$ |
+        - text: m_e
+        - code [ref=e82]: "' | m_e | Electron mass; set to 1 in atomic units | Ch 00 §\"Notation\" | | $e$ |"
+        - text: e
+        - code [ref=e83]: "' | e | Elementary charge (magnitude); set to 1 in atomic units | Ch 00 §\"Notation\" | | $4\\pi\\varepsilon_0$ |"
+        - text: 4\pi\varepsilon_0’ | 4 pi epsilon_0 | Vacuum permittivity; set to 1 in atomic units | Ch 01 §1.1 (implicit) | |
+        - img [ref=e85]
+        - text: "|"
+        - code [ref=e90]: c
+        - text: ’ | c | Speed of light in vacuum; ≈ 137.036 a.u. | Ch 01 §1.10.7 | |
+        - img [ref=e92]
+        - text: "|"
+        - code [ref=e100]: a_0
+        - text: ’ | a_0 | Bohr radius (≈ 0.529177 Å); unit of length in atomic units | Ch 00 §”Notation” | |
+        - img [ref=e102]
+        - text: "|"
+        - code [ref=e110]: E_h
+        - text: ’ | E_h | Hartree energy (≈ 27.2114 eV); unit of energy in atomic units | Ch 00 §”Notation” | |
+        - img [ref=e112]
+        - text: "|"
+        - code [ref=e120]: k_B
+        - text: ’ | k_B | Boltzmann constant; set to 1 in atomic units | Ch 07 §7.6.3 (smearing) | |
+        - img [ref=e122]
+        - text: "|"
+        - code [ref=e127]: \alpha' | alpha | Fine-structure constant $e^2/(\hbar c) \approx 1/137$ | Ch 01 §1.10.7 | | $Z$ |
+        - text: Z
+        - code [ref=e128]: "' | Z | Generic nuclear charge; $Z_I$ is the charge of nucleus $I$ | Ch 01 §1.1 | | $Z_A$, $Z_I$ |"
+        - text: Z_A
+        - code [ref=e129]: ","
+        - text: Z_I
+        - code [ref=e130]: "' | Z_A, Z_I | Nuclear charge of atom/nucleus $A$ or $I$ | Ch 00 §\"Notation\"; Ch 01 §1.1 | | $N$ |"
+        - text: "N"
+        - code [ref=e131]: "' | N | Number of electrons (always positive) | Ch 00 §\"Notation\"; Ch 01 §1.1 | | $M$ |"
+        - text: M
+        - code [ref=e132]: "' | M | Number of nuclei (in a molecule) | Ch 01 §1.1 | | $n$ |"
+        - text: "n"
+        - code [ref=e133]: "' | n | Principal quantum number (hydrogen, §1.10), or a generic band/state index (solids, ch 07) | Ch 01 §1.10 | | $\\ell$ |"
+        - text: \ell’ | ell | Azimuthal (orbital angular momentum) quantum number;
+        - img [ref=e135]
+        - text: "| Ch 01 §1.10.2 | |"
+        - img [ref=e145]
+        - text: "|"
+        - code [ref=e150]: m
+        - text: ’ | m | Magnetic quantum number;
+        - img [ref=e152]
+        - text: "| Ch 01 §1.10.2 | |"
+        - img [ref=e168]
+        - text: "|"
+        - code [ref=e173]: \omega' | omega | Angular frequency (QHO, phonons, time-dependent perturbation) | Ch 01 §1.9; Ch 01 §1.8 | | $T$ |
+        - text: T
+        - code [ref=e174]: "' | T | Absolute temperature (smearing) or kinetic energy | Ch 07 §7.6.3 | | $g_n$ |"
+        - text: g_n
+        - code [ref=e175]: "' | g_n | Degeneracy of the hydrogen shell $n$ ($= n^2$ in the non-relativistic case) | Ch 01 §1.10.5 | | $\\delta_n$ |"
+        - text: \delta_n’ | delta_n | Quantum defect (Dirac hydrogenic spectrum) | Ch 04 §4.9.1 | |
+        - img [ref=e177]
+        - text: "|"
+        - code [ref=e182]: \eta' | eta | Infinitesimal switching rate (adiabatic switching, $0^+$) | Ch 01 §1.8.1 | | $\mu$ |
+        - text: \mu’ | mu | Reduced mass; in atomic units the electron mass | Ch 01 §1.10.1 |
+      - paragraph [ref=e183]:
+        - strong [ref=e184]: Conventions at a glance.
+        - text: Atomic units (
+        - img [ref=e186]
+        - text: ) are used in every chapter; see §13 below. Lengths in Bohr, energies in Hartree. Conversion factors (
+        - img [ref=e218]
+        - text: eV,
+        - img [ref=e239]
+        - text: Å) are stated once in
+        - link "Chapter 01 §1.1" [ref=e260] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: and used without comment thereafter.
+      - separator [ref=e261]
+      - heading "2. Vectors and tensors" [level=2] [ref=e262]
+      - paragraph [ref=e263]:
+        - text: Position vectors, momenta, lattice vectors, and the angular momenta. All vectors in this section are 3-D Euclidean vectors; in this section and throughout, *bol
+        - code [ref=e264]: d*' indicates a vector. Operators on them are in §3. | Symbol | LaTeX | Plain text | Description | First appearance | |:------|:------|:-----------|:------------|:-----------------| | $\mathbf r$ |
+        - text: \mathbf r’ |
+        - strong [ref=e265]: r
+        - text: "| Position of an electron in"
+        - img [ref=e267]
+        - text: "| Ch 00 §”Notation” | |"
+        - img [ref=e277]
+        - text: "|"
+        - code [ref=e286]: \mathbf r_i' | **r_i** | Position of the $i$-th electron | Ch 01 §1.1 | | $\mathbf R$, $\mathbf R_A$, $\mathbf R_I$ | '\mathbf R', '\mathbf R_A',
+        - text: \mathbf R_I’ |
+        - strong [ref=e287]: R
+        - text: ","
+        - strong [ref=e288]: R_A
+        - text: ","
+        - strong [ref=e289]: R_I
+        - text: "| Position(s) of nucleus/nuclei;"
+        - img [ref=e291]
+        - text: and
+        - img [ref=e297]
+        - text: index nuclei | Ch 00 §”Notation”; Ch 01 §1.1 | |
+        - img [ref=e303]
+        - text: ","
+        - img [ref=e310]
+        - text: ","
+        - img [ref=e317]
+        - text: ","
+        - img [ref=e324]
+        - text: "|"
+        - code [ref=e330]: \mathbf A' ... | **A** ... | Centres of basis functions (Gaussian primitives, GTOs) | Ch 06 §6.3 | | $\mathbf p$ |
+        - text: \mathbf p’ |
+        - strong [ref=e331]: p
+        - text: "| Momentum vector; in atomic units"
+        - img [ref=e333]
+        - text: "| Ch 01 §1.4 | |"
+        - img [ref=e352]
+        - text: "|"
+        - code [ref=e358]: \mathbf k' | **k** | Bloch wavevector / crystal momentum; lives in the first Brillouin zone | Ch 07 §7.1 | | $\mathbf q$ |
+        - text: \mathbf q’ |
+        - strong [ref=e359]: q
+        - text: "| Phonon wavevector; or a generic reciprocal-space vector in a response function | Ch 10 (planned); Ch 11 (planned) | |"
+        - img [ref=e361]
+        - text: "|"
+        - code [ref=e367]: \mathbf G' | **G** | Reciprocal-lattice vector | Ch 07 §7.4.1 | | $\mathbf a_1, \mathbf a_2, \mathbf a a_3$ |
+        - text: \mathbf a_1, \mathbf a_2, \mathbf a_3’ |
+        - strong [ref=e368]: a_1, a_2, a_3
+        - text: "| Direct (Bravais) lattice primitive vectors | Ch 07 §7.2.1 | |"
+        - img [ref=e370]
+        - text: "|"
+        - code [ref=e395]: "\\mathbf b_1, \\mathbf b_2, \\mathbf b_3' | **b_1, b_2, b_3** | Reciprocal-lattice primitive vectors, $\\mathbf a_i \\cdot \\mathbf b_j = 2\\pi\\delta_{ij}$ | Ch 07 §7.4.1 | | $\\mathbf R$ |"
+        - text: \mathbf R’ |
+        - strong [ref=e396]: R
+        - text: "| Bravais-lattice vector; integer combination of the"
+        - img [ref=e398]
+        - text: "| Ch 07 §7.1 | |"
+        - img [ref=e408]
+        - text: "|"
+        - code [ref=e414]: \mathbf L' | **L** | Orbital angular momentum vector, $\mathbf L = \mathbf r \times \mathbf p$ | Ch 01 §1.10.2 | | $\mathbf S$ |
+        - text: \mathbf S’ |
+        - strong [ref=e415]: S
+        - text: "| Spin angular momentum vector,"
+        - img [ref=e417]
+        - text: "| Ch 01 §1.4 (in"
+        - img [ref=e439]
+        - text: ); Ch 04 §4.9.2 | |
+        - img [ref=e457]
+        - text: "|"
+        - code [ref=e462]: \boldsymbol\sigma' | **sigma** | Vector of Pauli matrices $(\sigma_x, \sigma_y, \sigma_z)$ | Ch 04 §4.8.4 | | $\boldsymbol\alpha$, $\boldsymbol\beta$ |
+        - text: \boldsymbol\alpha
+        - code [ref=e463]: ","
+        - text: \boldsymbol\beta’ |
+        - strong [ref=e464]: alpha
+        - text: ","
+        - strong [ref=e465]: beta
+        - text: "| Dirac matrices (4×4) in the standard representation | Ch 04 §4.9.1 | |"
+        - img [ref=e467]
+        - text: "|"
+        - code [ref=e472]: "\\boldsymbol\\rho' | **rho** | Relative electron–nuclear coordinate in the hydrogen atom ($\\mathbf r - \\mathbf R$) | Ch 01 §1.10.1 | | $\\hat{\\mathbf r}$ |"
+        - text: "\\hat{\\mathbf r}’ |"
+        - strong [ref=e473]: r̂
+        - text: "| Unit vector"
+        - img [ref=e475]
+        - text: "| Ch 01 §1.10 | |"
+        - img [ref=e487]
+        - text: "|"
+        - code [ref=e497]: "\\hat{\\mathbf n}' | **n̂** | Generic unit vector (e.g. surface normal, polarisation) | Ch 04 §4.8 (implicit) | | $\\mathbf m$ |"
+        - text: \mathbf m’ |
+        - strong [ref=e498]: m
+        - text: "| Magnetisation density vector"
+        - img [ref=e500]
+        - text: in non-collinear spin DFT | Ch 04 §4.8.4 | |
+        - img [ref=e527]
+        - text: "|"
+        - code [ref=e533]: "\\mathbf B' | **B** | External magnetic field (sometimes $\\mathbf B_\\text{xc}$, the XC magnetic field) | Ch 04 §4.8.4 | | $\\mathbf F_I$ |"
+        - text: \mathbf F_I’ |
+        - strong [ref=e534]: F_I
+        - text: "| Force on nucleus"
+        - img [ref=e536]
+        - text: "| Ch 04 §4.7.2 | |"
+        - img [ref=e542]
+        - text: (Pauli),
+        - img [ref=e548]
+        - text: "| (see above) | — | Tensor / matrix symbols — see §4 (operators), §5 (DFT objects), and §9 (linear algebra) | Ch 04 §4.8.4 |"
+      - blockquote [ref=e553]:
+        - paragraph [ref=e554]:
+          - strong [ref=e555]: Tip.
+          - text: When a vector symbol also has an operator counterpart (e.g.
+          - img [ref=e557]
+          - text: and
+          - img [ref=e564]
+          - text: are the same in position representation), the hat distinguishes the operator; the bare symbol is the eigenvalue, the corresponding classical variable, or the
+          - img [ref=e575]
+          - text: "-number coordinate."
+      - separator [ref=e580]
+      - heading "3. Operators and quantum-mechanical objects" [level=2] [ref=e581]
+      - paragraph [ref=e582]: Hamiltonians, one-body operators, many-body operators, and the states they act on. Operators are written with hats; bras and kets use Dirac’s notation.
+      - table [ref=e583]:
+        - rowgroup [ref=e584]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e585]:
+            - columnheader "Symbol" [ref=e586]
+            - columnheader "LaTeX" [ref=e587]
+            - columnheader "Plain text" [ref=e588]
+            - columnheader "Description" [ref=e589]
+            - columnheader "First appearance" [ref=e590]
+        - rowgroup [ref=e591]:
+          - 'row "`\\hat H’ H-hat Hamiltonian (total); in chapters 01–05 typically the electronic Hamiltonian in the Born–Oppenheimer approximation Ch 00 §”Notation”; Ch 01 §1.1" [ref=e592]':
+            - cell [ref=e593]:
+              - img [ref=e595]
+            - 'cell "`\\hat H’" [ref=e604]'
+            - cell "H-hat" [ref=e605]
+            - cell "Hamiltonian (total); in chapters 01–05 typically the electronic Hamiltonian in the Born–Oppenheimer approximation" [ref=e606]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.1" [ref=e607]
+          - 'row "`\\hat T’ T-hat Kinetic energy; in atomic units Ch 00 §”Notation”; Ch 01 §1.4" [ref=e608]':
+            - cell [ref=e609]:
+              - img [ref=e611]
+            - 'cell "`\\hat T’" [ref=e620]'
+            - cell "T-hat" [ref=e621]
+            - cell "Kinetic energy; in atomic units" [ref=e622]:
+              - text: Kinetic energy; in atomic units
+              - img [ref=e624]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.4" [ref=e655]
+          - 'row "`\\hat V’ V-hat Generic potential-energy operator Ch 01 §1.4" [ref=e656]':
+            - cell [ref=e657]:
+              - img [ref=e659]
+            - 'cell "`\\hat V’" [ref=e668]'
+            - cell "V-hat" [ref=e669]
+            - cell "Generic potential-energy operator" [ref=e670]
+            - cell "Ch 01 §1.4" [ref=e671]
+          - 'row "`\\hat V_{en}’ V_en-hat Electron–nuclear attraction, Ch 00 §”Notation”; Ch 01 §1.1" [ref=e672]':
+            - cell [ref=e673]:
+              - img [ref=e675]
+            - 'cell "`\\hat V_{en}’" [ref=e690]'
+            - cell "V_en-hat" [ref=e691]
+            - cell "Electron–nuclear attraction," [ref=e692]:
+              - text: Electron–nuclear attraction,
+              - img [ref=e694]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.1" [ref=e735]
+          - 'row "/ ‘\\hat V_{ee}’, `\\hat U_{ee}’ V_ee-hat, U_ee-hat Electron–electron repulsion, Ch 01 §1.1; Ch 01 §1.4" [ref=e736]':
+            - cell / [ref=e737]:
+              - img [ref=e739]
+              - text: /
+              - img [ref=e755]
+            - 'cell "‘\\hat V_{ee}’, `\\hat U_{ee}’" [ref=e770]'
+            - cell "V_ee-hat, U_ee-hat" [ref=e771]
+            - cell "Electron–electron repulsion," [ref=e772]:
+              - text: Electron–electron repulsion,
+              - img [ref=e774]
+            - cell "Ch 01 §1.1; Ch 01 §1.4" [ref=e800]
+          - 'row "`\\hat V_{nn}’ V_nn-hat Nuclear–nuclear repulsion (a -number in BO) Ch 03 §3.5" [ref=e801]':
+            - cell [ref=e802]:
+              - img [ref=e804]
+            - 'cell "`\\hat V_{nn}’" [ref=e819]'
+            - cell "V_nn-hat" [ref=e820]
+            - cell "Nuclear–nuclear repulsion (a -number in BO)" [ref=e821]:
+              - text: Nuclear–nuclear repulsion (a
+              - img [ref=e823]
+              - text: "-number in BO)"
+            - cell "Ch 03 §3.5" [ref=e828]
+          - 'row "`\\hat h’ h-hat One-electron (core) Hamiltonian, Ch 03 §3.2" [ref=e829]':
+            - cell [ref=e830]:
+              - img [ref=e832]
+            - 'cell "`\\hat h’" [ref=e841]'
+            - cell "h-hat" [ref=e842]
+            - cell "One-electron (core) Hamiltonian," [ref=e843]:
+              - text: One-electron (core) Hamiltonian,
+              - img [ref=e845]
+            - cell "Ch 03 §3.2" [ref=e874]
+          - 'row "`\\hat F’ F-hat Fock operator, Ch 00 §”Notation”; Ch 03 §3.2" [ref=e875]':
+            - cell [ref=e876]:
+              - img [ref=e878]
+            - 'cell "`\\hat F’" [ref=e887]'
+            - cell "F-hat" [ref=e888]
+            - cell "Fock operator," [ref=e889]:
+              - text: Fock operator,
+              - img [ref=e891]
+            - cell "Ch 00 §”Notation”; Ch 03 §3.2" [ref=e936]
+          - 'row "`\\hat J[\\rho]’ J-hat Coulomb (Hartree) operator; non-local; classical electrostatic potential of Ch 00 §”Notation”; Ch 03 §3.2" [ref=e937]':
+            - cell [ref=e938]:
+              - img [ref=e940]
+            - 'cell "`\\hat J[\\rho]’" [ref=e955]'
+            - cell "J-hat" [ref=e956]
+            - cell "Coulomb (Hartree) operator; non-local; classical electrostatic potential of" [ref=e957]:
+              - text: Coulomb (Hartree) operator; non-local; classical electrostatic potential of
+              - img [ref=e959]
+            - cell "Ch 00 §”Notation”; Ch 03 §3.2" [ref=e964]
+          - 'row "`\\hat K[\\rho]’ K-hat Exchange operator; non-local, non-Hermitian; subtracts it Ch 00 §”Notation”; Ch 03 §3.2" [ref=e965]':
+            - cell [ref=e966]:
+              - img [ref=e968]
+            - 'cell "`\\hat K[\\rho]’" [ref=e983]'
+            - cell "K-hat" [ref=e984]
+            - cell "Exchange operator; non-local, non-Hermitian; subtracts it" [ref=e985]:
+              - text: Exchange operator; non-local, non-Hermitian;
+              - img [ref=e987]
+              - text: subtracts it
+            - cell "Ch 00 §”Notation”; Ch 03 §3.2" [ref=e996]
+          - 'row "`\\hat H_\\text{KS}’ H_KS-hat Kohn–Sham Hamiltonian, Ch 00 §”Notation”; Ch 04 §4.2" [ref=e997]':
+            - cell [ref=e998]:
+              - img [ref=e1000]
+            - 'cell "`\\hat H_\\text{KS}’" [ref=e1013]'
+            - cell "H_KS-hat" [ref=e1014]
+            - cell "Kohn–Sham Hamiltonian," [ref=e1015]:
+              - text: Kohn–Sham Hamiltonian,
+              - img [ref=e1017]
+            - cell "Ch 00 §”Notation”; Ch 04 §4.2" [ref=e1042]
+          - 'row "`\\hat v_\\text{xc}’ v_xc-hat Exchange–correlation potential; functional derivative of Ch 00 §”Notation”; Ch 01 §1.4" [ref=e1043]':
+            - cell [ref=e1044]:
+              - img [ref=e1046]
+            - 'cell "`\\hat v_\\text{xc}’" [ref=e1059]'
+            - cell "v_xc-hat" [ref=e1060]
+            - cell "Exchange–correlation potential; functional derivative of" [ref=e1061]:
+              - text: Exchange–correlation potential; functional derivative of
+              - img [ref=e1063]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.4" [ref=e1072]
+          - 'row "`\\hat v_\\text{ext}’ v_ext-hat External one-electron potential (electron–nuclear attraction in a molecule) Ch 01 §1.4" [ref=e1073]':
+            - cell [ref=e1074]:
+              - img [ref=e1076]
+            - 'cell "`\\hat v_\\text{ext}’" [ref=e1090]'
+            - cell "v_ext-hat" [ref=e1091]
+            - cell "External one-electron potential (electron–nuclear attraction in a molecule)" [ref=e1092]
+            - cell "Ch 01 §1.4" [ref=e1093]
+          - 'row "`\\hat v_\\text{eff}’ v_eff-hat Kohn–Sham effective potential, Ch 04 §4.2" [ref=e1094]':
+            - cell [ref=e1095]:
+              - img [ref=e1097]
+            - 'cell "`\\hat v_\\text{eff}’" [ref=e1111]'
+            - cell "v_eff-hat" [ref=e1112]
+            - cell "Kohn–Sham effective potential," [ref=e1113]:
+              - text: Kohn–Sham effective potential,
+              - img [ref=e1115]
+            - cell "Ch 04 §4.2" [ref=e1140]
+          - 'row "`\\hat v_\\text{H}’ v_H-hat Hartree (classical Coulomb) potential of the density Ch 04 §4.2" [ref=e1141]':
+            - cell [ref=e1142]:
+              - img [ref=e1144]
+            - 'cell "`\\hat v_\\text{H}’" [ref=e1156]'
+            - cell "v_H-hat" [ref=e1157]
+            - cell "Hartree (classical Coulomb) potential of the density" [ref=e1158]
+            - cell "Ch 04 §4.2" [ref=e1159]
+          - 'row "`\\hat{\\mathbf r}’ r̂ Position operator (multiplication by in the position representation) Ch 01 §1.4" [ref=e1160]':
+            - cell [ref=e1161]:
+              - img [ref=e1163]
+            - 'cell "`\\hat{\\mathbf r}’" [ref=e1173]'
+            - cell "r̂" [ref=e1174]
+            - cell "Position operator (multiplication by in the position representation)" [ref=e1175]:
+              - text: Position operator (multiplication by
+              - img [ref=e1177]
+              - text: in the position representation)
+            - cell "Ch 01 §1.4" [ref=e1183]
+          - 'row "`\\hat{\\mathbf p}’ p̂ Momentum operator, (atomic units) Ch 01 §1.4" [ref=e1184]':
+            - cell [ref=e1185]:
+              - img [ref=e1187]
+            - 'cell "`\\hat{\\mathbf p}’" [ref=e1197]'
+            - cell "p̂" [ref=e1198]
+            - cell "Momentum operator, (atomic units)" [ref=e1199]:
+              - text: Momentum operator,
+              - img [ref=e1201]
+              - text: (atomic units)
+            - cell "Ch 01 §1.4" [ref=e1210]
+          - 'row ", ‘\\hat L^2’, `\\hat L_z’ L²-hat, L_z-hat Squared and z-component of the orbital angular momentum Ch 01 §1.10.2" [ref=e1211]':
+            - cell "," [ref=e1212]:
+              - img [ref=e1214]
+              - text: ","
+              - img [ref=e1227]
+            - 'cell "‘\\hat L^2’, `\\hat L_z’" [ref=e1239]'
+            - cell "L²-hat, L_z-hat" [ref=e1240]
+            - cell "Squared and z-component of the orbital angular momentum" [ref=e1241]
+            - cell "Ch 01 §1.10.2" [ref=e1242]
+          - 'row ", ‘\\hat S^2’, `\\hat S_z’ S²-hat, S_z-hat Squared and z-component of the total spin Ch 01 §1.2 (P3/P4); Ch 03 §3.7.5" [ref=e1243]':
+            - cell "," [ref=e1244]:
+              - img [ref=e1246]
+              - text: ","
+              - img [ref=e1259]
+            - 'cell "‘\\hat S^2’, `\\hat S_z’" [ref=e1271]'
+            - cell "S²-hat, S_z-hat" [ref=e1272]
+            - cell "Squared and z-component of the total spin" [ref=e1273]
+            - cell "Ch 01 §1.2 (P3/P4); Ch 03 §3.7.5" [ref=e1274]
+          - 'row ", ‘\\hat a’, `\\hat a^\\dagger’ a-hat, a†-hat Annihilation / creation operators (harmonic oscillator, second quantisation) Ch 01 §1.9.2" [ref=e1275]':
+            - cell "," [ref=e1276]:
+              - img [ref=e1278]
+              - text: ","
+              - img [ref=e1288]
+            - 'cell "‘\\hat a’, `\\hat a^\\dagger’" [ref=e1300]'
+            - cell "a-hat, a†-hat" [ref=e1301]
+            - cell "Annihilation / creation operators (harmonic oscillator, second quantisation)" [ref=e1302]
+            - cell "Ch 01 §1.9.2" [ref=e1303]
+          - 'row "`\\hat n’ n-hat Number operator, (QHO) Ch 01 §1.9.2" [ref=e1304]':
+            - cell [ref=e1305]:
+              - img [ref=e1307]
+            - 'cell "`\\hat n’" [ref=e1316]'
+            - cell "n-hat" [ref=e1317]
+            - cell "Number operator, (QHO)" [ref=e1318]:
+              - text: Number operator,
+              - img [ref=e1320]
+              - text: (QHO)
+            - cell "Ch 01 §1.9.2" [ref=e1338]
+          - 'row "`\\hat T_{\\mathbf R}’ T_R-hat Bravais-lattice translation operator, Ch 07 §7.3, step 1" [ref=e1339]':
+            - cell [ref=e1340]:
+              - img [ref=e1342]
+            - 'cell "`\\hat T_{\\mathbf R}’" [ref=e1356]'
+            - cell "T_R-hat" [ref=e1357]
+            - cell "Bravais-lattice translation operator," [ref=e1358]:
+              - text: Bravais-lattice translation operator,
+              - img [ref=e1360]
+            - cell "Ch 07 §7.3, step 1" [ref=e1403]
+          - 'row "`\\hat P_{ij}’ P_ij-hat Permutation operator; exchanges particles Ch 01 §1.4" [ref=e1404]':
+            - cell [ref=e1405]:
+              - img [ref=e1407]
+            - 'cell "`\\hat P_{ij}’" [ref=e1422]'
+            - cell "P_ij-hat" [ref=e1423]
+            - cell "Permutation operator; exchanges particles" [ref=e1424]:
+              - text: Permutation operator; exchanges particles
+              - img [ref=e1426]
+            - cell "Ch 01 §1.4" [ref=e1435]
+          - 'row "`\\hat A_1’ A_1-hat Quartet annihilator, Ch 03 §3.7.6" [ref=e1436]':
+            - cell [ref=e1437]:
+              - img [ref=e1439]
+            - 'cell "`\\hat A_1’" [ref=e1451]'
+            - cell "A_1-hat" [ref=e1452]
+            - cell "Quartet annihilator," [ref=e1453]:
+              - text: Quartet annihilator,
+              - img [ref=e1455]
+            - cell "Ch 03 §3.7.6" [ref=e1477]
+          - 'row "`\\hat U(t)’ U(t)-hat Time-evolution operator, Ch 01 §1.7.1" [ref=e1478]':
+            - cell [ref=e1479]:
+              - img [ref=e1481]
+            - 'cell "`\\hat U(t)’" [ref=e1496]'
+            - cell "U(t)-hat" [ref=e1497]
+            - cell "Time-evolution operator," [ref=e1498]:
+              - text: Time-evolution operator,
+              - img [ref=e1500]
+            - cell "Ch 01 §1.7.1" [ref=e1523]
+          - 'row "`\\hat U_I(t, t_0)’ U_I(t,t0)-hat Interaction-picture evolution operator (Dyson series) Ch 01 §1.8.1" [ref=e1524]':
+            - cell [ref=e1525]:
+              - img [ref=e1527]
+            - 'cell "`\\hat U_I(t, t_0)’" [ref=e1552]'
+            - cell "U_I(t,t0)-hat" [ref=e1553]
+            - cell "Interaction-picture evolution operator (Dyson series)" [ref=e1554]
+            - cell "Ch 01 §1.8.1" [ref=e1555]
+          - 'row "`\\hat V_I(t)’ V_I(t)-hat Interaction-picture perturbation operator Ch 01 §1.8.1" [ref=e1556]':
+            - cell [ref=e1557]:
+              - img [ref=e1559]
+            - 'cell "`\\hat V_I(t)’" [ref=e1577]'
+            - cell "V_I(t)-hat" [ref=e1578]
+            - cell "Interaction-picture perturbation operator" [ref=e1579]
+            - cell "Ch 01 §1.8.1" [ref=e1580]
+          - 'row "`\\hat S’ S-hat Generic action functional, or scattering matrix (context-dependent) Ch 01 §1.7.2" [ref=e1581]':
+            - cell [ref=e1582]:
+              - img [ref=e1584]
+            - 'cell "`\\hat S’" [ref=e1593]'
+            - cell "S-hat" [ref=e1594]
+            - cell "Generic action functional, or scattering matrix (context-dependent)" [ref=e1595]
+            - cell "Ch 01 §1.7.2" [ref=e1596]
+          - 'row "`\\mathcal L’ L (script) Lagrangian (TDVP, Ch 01 §1.7.2) or Liouvillian (open systems, planned) Ch 01 §1.7.2" [ref=e1597]':
+            - cell [ref=e1598]:
+              - img [ref=e1600]
+            - 'cell "`\\mathcal L’" [ref=e1606]'
+            - cell "L (script)" [ref=e1607]
+            - cell "Lagrangian (TDVP, Ch 01 §1.7.2) or Liouvillian (open systems, planned)" [ref=e1608]
+            - cell "Ch 01 §1.7.2" [ref=e1609]
+          - 'row "`\\hat{\\mathcal F}’ F (script) SCF map from input density to output density (Ch 04 §4.6) Ch 04 §4.6" [ref=e1610]':
+            - cell [ref=e1611]:
+              - img [ref=e1613]
+            - 'cell "`\\hat{\\mathcal F}’" [ref=e1623]'
+            - cell "F (script)" [ref=e1624]
+            - cell "SCF map from input density to output density (Ch 04 §4.6)" [ref=e1625]
+            - cell "Ch 04 §4.6" [ref=e1626]
+      - heading "States (kets, bras, wavefunctions)" [level=3] [ref=e1627]
+      - table [ref=e1628]:
+        - rowgroup [ref=e1629]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e1630]:
+            - columnheader "Symbol" [ref=e1631]
+            - columnheader "LaTeX" [ref=e1632]
+            - columnheader "Plain text" [ref=e1633]
+            - columnheader "Description" [ref=e1634]
+            - columnheader "First appearance" [ref=e1635]
+        - rowgroup [ref=e1636]:
+          - 'row "`\\psi(\\mathbf r)’ ψ(r) Generic one-electron wavefunction (molecular or atomic) Ch 01 §1.1" [ref=e1637]':
+            - cell [ref=e1638]:
+              - img [ref=e1640]
+            - 'cell "`\\psi(\\mathbf r)’" [ref=e1652]'
+            - cell "ψ(r)" [ref=e1653]:
+              - text: ψ(
+              - strong [ref=e1654]: r
+              - text: )
+            - cell "Generic one-electron wavefunction (molecular or atomic)" [ref=e1655]
+            - cell "Ch 01 §1.1" [ref=e1656]
+          - 'row "`\\phi_i(\\mathbf r)’ φ_i(r) -th molecular orbital (Hartree–Fock or Kohn–Sham spatial orbital) Ch 00 §”Notation”; Ch 03 §3.2" [ref=e1657]':
+            - cell [ref=e1658]:
+              - img [ref=e1660]
+            - 'cell "`\\phi_i(\\mathbf r)’" [ref=e1675]'
+            - cell "φ_i(r)" [ref=e1676]:
+              - text: φ_i(
+              - strong [ref=e1677]: r
+              - text: )
+            - cell "-th molecular orbital (Hartree–Fock or Kohn–Sham spatial orbital)" [ref=e1678]:
+              - img [ref=e1680]
+              - text: "-th molecular orbital (Hartree–Fock or Kohn–Sham spatial orbital)"
+            - cell "Ch 00 §”Notation”; Ch 03 §3.2" [ref=e1685]
+          - 'row "`\\phi_{n\\mathbf k}(\\mathbf r)’ φ_{nk}(r) Bloch orbital; band index , wavevector Ch 06 §6.7; Ch 07 §7.1" [ref=e1686]':
+            - cell [ref=e1687]:
+              - img [ref=e1689]
+            - 'cell "`\\phi_{n\\mathbf k}(\\mathbf r)’" [ref=e1708]'
+            - 'cell "φ_{nk}(r)" [ref=e1709]':
+              - text: "φ_{n"
+              - strong [ref=e1710]: k
+              - text: "}("
+              - strong [ref=e1711]: r
+              - text: )
+            - cell "Bloch orbital; band index , wavevector" [ref=e1712]:
+              - text: Bloch orbital; band index
+              - img [ref=e1714]
+              - text: ", wavevector"
+              - img [ref=e1720]
+            - cell "Ch 06 §6.7; Ch 07 §7.1" [ref=e1726]
+          - 'row "`u_{n\\mathbf k}(\\mathbf r)’ u_{nk}(r) Cell-periodic part of the Bloch orbital Ch 06 §6.7; Ch 07 §7.1" [ref=e1727]':
+            - cell [ref=e1728]:
+              - img [ref=e1730]
+            - 'cell "`u_{n\\mathbf k}(\\mathbf r)’" [ref=e1749]'
+            - 'cell "u_{nk}(r)" [ref=e1750]':
+              - text: "u_{n"
+              - strong [ref=e1751]: k
+              - text: "}("
+              - strong [ref=e1752]: r
+              - text: )
+            - cell "Cell-periodic part of the Bloch orbital" [ref=e1753]
+            - cell "Ch 06 §6.7; Ch 07 §7.1" [ref=e1754]
+          - 'row "`\\chi_p(\\mathbf x)’ χ_p(x) Generic spin-orbital; Ch 02 §2.2" [ref=e1755]':
+            - cell [ref=e1756]:
+              - img [ref=e1758]
+            - 'cell "`\\chi_p(\\mathbf x)’" [ref=e1773]'
+            - cell "χ_p(x)" [ref=e1774]:
+              - text: χ_p(
+              - strong [ref=e1775]: x
+              - text: )
+            - cell "Generic spin-orbital;" [ref=e1776]:
+              - text: Generic spin-orbital;
+              - img [ref=e1778]
+            - cell "Ch 02 §2.2" [ref=e1797]
+          - 'row "`\\chi_\\mu(\\mathbf r)’ χ_μ(r) A single AO (atomic-orbital) basis function Ch 00 §”Notation”; Ch 03 §3.6" [ref=e1798]':
+            - cell [ref=e1799]:
+              - img [ref=e1801]
+            - 'cell "`\\chi_\\mu(\\mathbf r)’" [ref=e1816]'
+            - cell "χ_μ(r)" [ref=e1817]:
+              - text: χ_μ(
+              - strong [ref=e1818]: r
+              - text: )
+            - cell "A single AO (atomic-orbital) basis function" [ref=e1819]
+            - cell "Ch 00 §”Notation”; Ch 03 §3.6" [ref=e1820]
+          - 'row "`\\Psi’ Ψ (capital) Many-body wavefunction; Ch 01 §1.1" [ref=e1821]':
+            - cell [ref=e1822]:
+              - img [ref=e1824]
+            - 'cell "`\\Psi’" [ref=e1829]'
+            - cell "Ψ (capital)" [ref=e1830]
+            - cell "Many-body wavefunction;" [ref=e1831]:
+              - text: Many-body wavefunction;
+              - img [ref=e1833]
+            - cell "Ch 01 §1.1" [ref=e1860]
+          - 'row "`\\Phi’ Φ (capital) Slater determinant; sometimes for the HF / KS reference Ch 02 §2.2; Ch 03 §3.1" [ref=e1861]':
+            - cell [ref=e1862]:
+              - img [ref=e1864]
+            - 'cell "`\\Phi’" [ref=e1869]'
+            - cell "Φ (capital)" [ref=e1870]
+            - cell "Slater determinant; sometimes for the HF / KS reference" [ref=e1871]:
+              - text: Slater determinant; sometimes
+              - img [ref=e1873]
+              - text: for the HF / KS reference
+            - cell "Ch 02 §2.2; Ch 03 §3.1" [ref=e1881]
+          - 'row ", \\Phi_I, `\\Phi_J’ Φ_I, Φ_J Generic Slater determinants in a CI expansion Ch 02 §2.2; Ch 03 §3.4" [ref=e1882]':
+            - cell "," [ref=e1883]:
+              - img [ref=e1885]
+              - text: ","
+              - img [ref=e1894]
+            - 'cell "\\Phi_I, `\\Phi_J’" [ref=e1902]':
+              - code [ref=e1903]: \Phi_I
+              - text: ", `\\Phi_J’"
+            - cell "Φ_I, Φ_J" [ref=e1904]
+            - cell "Generic Slater determinants in a CI expansion" [ref=e1905]
+            - cell "Ch 02 §2.2; Ch 03 §3.4" [ref=e1906]
+          - 'row "`\\rho(\\mathbf r)’ ρ(r) One-electron ground-state density (3-D scalar field) Ch 00 §”Notation”; Ch 01 §1.6" [ref=e1907]':
+            - cell [ref=e1908]:
+              - img [ref=e1910]
+            - 'cell "`\\rho(\\mathbf r)’" [ref=e1922]'
+            - cell "ρ(r)" [ref=e1923]:
+              - text: ρ(
+              - strong [ref=e1924]: r
+              - text: )
+            - cell "One-electron ground-state density (3-D scalar field)" [ref=e1925]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.6" [ref=e1926]
+          - 'row "`\\rho(\\mathbf x)’ ρ(x) One-electron density in spin-position space Ch 02 §2.2" [ref=e1927]':
+            - cell [ref=e1928]:
+              - img [ref=e1930]
+            - 'cell "`\\rho(\\mathbf x)’" [ref=e1942]'
+            - cell "ρ(x)" [ref=e1943]:
+              - text: ρ(
+              - strong [ref=e1944]: x
+              - text: )
+            - cell "One-electron density in spin-position space" [ref=e1945]
+            - cell "Ch 02 §2.2" [ref=e1946]
+          - 'row ", \\rho^\\alpha, `\\rho^\\beta’ ρ^α, ρ^β Spin-up / spin-down densities (collinear spin DFT) Ch 04 §4.8.1" [ref=e1947]':
+            - cell "," [ref=e1948]:
+              - img [ref=e1950]
+              - text: ","
+              - img [ref=e1959]
+            - 'cell "\\rho^\\alpha, `\\rho^\\beta’" [ref=e1967]':
+              - code [ref=e1968]: \rho^\alpha
+              - text: ", `\\rho^\\beta’"
+            - cell "ρ^α, ρ^β" [ref=e1969]
+            - cell "Spin-up / spin-down densities (collinear spin DFT)" [ref=e1970]
+            - cell "Ch 04 §4.8.1" [ref=e1971]
+          - 'row "`\\rho(\\mathbf r, \\mathbf r’)’ ρ(r,r’) One-particle density matrix (1-RDM) Ch 03 §3.5 (refs); Ch 05 (refs)" [ref=e1972]':
+            - cell [ref=e1973]:
+              - img [ref=e1975]
+            - 'cell "`\\rho(\\mathbf r, \\mathbf r’)’" [ref=e1995]'
+            - cell "ρ(r,r’)" [ref=e1996]:
+              - text: ρ(
+              - strong [ref=e1997]: r
+              - text: ","
+              - strong [ref=e1998]: r
+              - text: ’)
+            - cell "One-particle density matrix (1-RDM)" [ref=e1999]
+            - cell "Ch 03 §3.5 (refs); Ch 05 (refs)" [ref=e2000]
+          - 'row "`\\lvert \\phi \\rangle’ |φ⟩ Ket; element of the Hilbert space Ch 00 §”Notation”" [ref=e2001]':
+            - cell [ref=e2002]:
+              - img [ref=e2004]
+            - 'cell "`\\lvert \\phi \\rangle’" [ref=e2013]'
+            - cell "|φ⟩" [ref=e2014]
+            - cell "Ket; element of the Hilbert space" [ref=e2015]:
+              - text: Ket; element of the Hilbert space
+              - img [ref=e2017]
+            - cell "Ch 00 §”Notation”" [ref=e2023]
+          - 'row "`\\langle \\phi \\rvert’ ⟨φ| Bra; dual vector Ch 00 §”Notation”" [ref=e2024]':
+            - cell [ref=e2025]:
+              - img [ref=e2027]
+            - 'cell "`\\langle \\phi \\rvert’" [ref=e2036]'
+            - cell "⟨φ|" [ref=e2037]
+            - cell "Bra; dual vector" [ref=e2038]
+            - cell "Ch 00 §”Notation”" [ref=e2039]
+          - 'row "`\\langle \\phi \\rvert \\psi \\rangle’ ⟨φ|ψ⟩ Inner product Ch 00 §”Notation”" [ref=e2040]':
+            - cell [ref=e2041]:
+              - img [ref=e2043]
+            - 'cell "`\\langle \\phi \\rvert \\psi \\rangle’" [ref=e2056]'
+            - cell "⟨φ|ψ⟩" [ref=e2057]
+            - cell "Inner product" [ref=e2058]
+            - cell "Ch 00 §”Notation”" [ref=e2059]
+      - separator [ref=e2060]
+      - heading "4. Density-functional objects" [level=2] [ref=e2061]
+      - paragraph [ref=e2062]: The energy functionals, potentials, kernels, and other quantities that are specific to Kohn–Sham DFT and appear in chapters 04 and 05 (and downstream).
+      - heading "Energy functionals" [level=3] [ref=e2063]
+      - table [ref=e2064]:
+        - rowgroup [ref=e2065]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e2066]:
+            - columnheader "Symbol" [ref=e2067]
+            - columnheader "LaTeX" [ref=e2068]
+            - columnheader "Plain text" [ref=e2069]
+            - columnheader "Description" [ref=e2070]
+            - columnheader "First appearance" [ref=e2071]
+        - rowgroup [ref=e2072]:
+          - 'row "`E[\\rho]’ E[ρ] Kohn–Sham total-energy functional of the density Ch 00 §”Notation”; Ch 04 §4.1" [ref=e2073]':
+            - cell [ref=e2074]:
+              - img [ref=e2076]
+            - 'cell "`E[\\rho]’" [ref=e2087]'
+            - cell "E[ρ]" [ref=e2088]
+            - cell "Kohn–Sham total-energy functional of the density" [ref=e2089]
+            - cell "Ch 00 §”Notation”; Ch 04 §4.1" [ref=e2090]
+          - 'row "`F_\\text{HK}[\\rho]’ F_HK[ρ] Hohenberg–Kohn universal functional, Ch 04 §4.1" [ref=e2091]':
+            - cell [ref=e2092]:
+              - img [ref=e2094]
+            - 'cell "`F_\\text{HK}[\\rho]’" [ref=e2109]'
+            - cell "F_HK[ρ]" [ref=e2110]
+            - cell "Hohenberg–Kohn universal functional," [ref=e2111]:
+              - text: Hohenberg–Kohn universal functional,
+              - img [ref=e2113]
+            - cell "Ch 04 §4.1" [ref=e2128]
+          - 'row "`T_s[\\rho]’ T_s[ρ] Non-interacting (Kohn–Sham) kinetic-energy functional Ch 04 §4.2" [ref=e2129]':
+            - cell [ref=e2130]:
+              - img [ref=e2132]
+            - 'cell "`T_s[\\rho]’" [ref=e2146]'
+            - cell "T_s[ρ]" [ref=e2147]
+            - cell "Non-interacting (Kohn–Sham) kinetic-energy functional" [ref=e2148]
+            - cell "Ch 04 §4.2" [ref=e2149]
+          - 'row "`E_\\text{xc}[\\rho]’ E_xc[ρ] Exchange–correlation energy functional Ch 00 §”Notation”; Ch 04 §4.2" [ref=e2150]':
+            - cell [ref=e2151]:
+              - img [ref=e2153]
+            - 'cell "`E_\\text{xc}[\\rho]’" [ref=e2168]'
+            - cell "E_xc[ρ]" [ref=e2169]
+            - cell "Exchange–correlation energy functional" [ref=e2170]
+            - cell "Ch 00 §”Notation”; Ch 04 §4.2" [ref=e2171]
+          - 'row "`E_x[\\rho]’ E_x[ρ] Exchange-only energy functional (HF exchange when is the HF density) Ch 03 §3.5; Ch 05 §5.4" [ref=e2172]':
+            - cell [ref=e2173]:
+              - img [ref=e2175]
+            - 'cell "`E_x[\\rho]’" [ref=e2189]'
+            - cell "E_x[ρ]" [ref=e2190]
+            - cell "Exchange-only energy functional (HF exchange when is the HF density)" [ref=e2191]:
+              - text: Exchange-only energy functional (HF exchange when
+              - img [ref=e2193]
+              - text: is the HF density)
+            - cell "Ch 03 §3.5; Ch 05 §5.4" [ref=e2198]
+          - 'row "`E_c[\\rho]’ E_c[ρ] Correlation energy functional, Ch 05 §5.4" [ref=e2199]':
+            - cell [ref=e2200]:
+              - img [ref=e2202]
+            - 'cell "`E_c[\\rho]’" [ref=e2216]'
+            - cell "E_c[ρ]" [ref=e2217]
+            - cell "Correlation energy functional," [ref=e2218]:
+              - text: Correlation energy functional,
+              - img [ref=e2220]
+            - cell "Ch 05 §5.4" [ref=e2236]
+          - 'row "`J[\\rho]’ J[ρ] Hartree (classical Coulomb) energy, Ch 04 §4.2" [ref=e2237]':
+            - cell [ref=e2238]:
+              - img [ref=e2240]
+            - 'cell "`J[\\rho]’" [ref=e2251]'
+            - cell "J[ρ]" [ref=e2252]
+            - cell "Hartree (classical Coulomb) energy," [ref=e2253]:
+              - text: Hartree (classical Coulomb) energy,
+              - img [ref=e2255]
+            - cell "Ch 04 §4.2" [ref=e2280]
+          - 'row "`E_\\text{HK}’ E_HK Hohenberg–Kohn total energy (alternative notation for ) Ch 04 §4.1" [ref=e2281]':
+            - cell [ref=e2282]:
+              - img [ref=e2284]
+            - 'cell "`E_\\text{HK}’" [ref=e2293]'
+            - cell "E_HK" [ref=e2294]
+            - cell "Hohenberg–Kohn total energy (alternative notation for )" [ref=e2295]:
+              - text: Hohenberg–Kohn total energy (alternative notation for
+              - img [ref=e2297]
+              - text: )
+            - cell "Ch 04 §4.1" [ref=e2308]
+          - 'row "`E_\\text{HF}’ E_HF Hartree–Fock total energy (variational minimum) Ch 03 §3.1" [ref=e2309]':
+            - cell [ref=e2310]:
+              - img [ref=e2312]
+            - 'cell "`E_\\text{HF}’" [ref=e2321]'
+            - cell "E_HF" [ref=e2322]
+            - cell "Hartree–Fock total energy (variational minimum)" [ref=e2323]
+            - cell "Ch 03 §3.1" [ref=e2324]
+          - 'row "`E_\\text{corr}’ E_corr Correlation energy, Ch 03 §3.5" [ref=e2325]':
+            - cell [ref=e2326]:
+              - img [ref=e2328]
+            - 'cell "`E_\\text{corr}’" [ref=e2339]'
+            - cell "E_corr" [ref=e2340]
+            - cell "Correlation energy," [ref=e2341]:
+              - text: Correlation energy,
+              - img [ref=e2343]
+            - cell "Ch 03 §3.5" [ref=e2363]
+      - heading "Energies per particle / per unit volume" [level=3] [ref=e2364]
+      - table [ref=e2365]:
+        - rowgroup [ref=e2366]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e2367]:
+            - columnheader "Symbol" [ref=e2368]
+            - columnheader "LaTeX" [ref=e2369]
+            - columnheader "Plain text" [ref=e2370]
+            - columnheader "Description" [ref=e2371]
+            - columnheader "First appearance" [ref=e2372]
+        - rowgroup [ref=e2373]:
+          - 'row "`\\varepsilon_\\text{xc}(\\rho)’ ε_xc(ρ) XC energy per particle of the uniform electron gas at density Ch 05 §5.1" [ref=e2374]':
+            - cell [ref=e2375]:
+              - img [ref=e2377]
+            - 'cell "`\\varepsilon_\\text{xc}(\\rho)’" [ref=e2392]'
+            - cell "ε_xc(ρ)" [ref=e2393]
+            - cell "XC energy per particle of the uniform electron gas at density" [ref=e2394]:
+              - text: XC energy per particle of the uniform electron gas at density
+              - img [ref=e2396]
+            - cell "Ch 05 §5.1" [ref=e2401]
+          - 'row "`\\varepsilon_\\text{xc}(r_s)’ ε_xc(r_s) Same, expressed in terms of the Wigner–Seitz radius Ch 05 §5.1" [ref=e2402]':
+            - cell [ref=e2403]:
+              - img [ref=e2405]
+            - 'cell "`\\varepsilon_\\text{xc}(r_s)’" [ref=e2423]'
+            - cell "ε_xc(r_s)" [ref=e2424]
+            - cell "Same, expressed in terms of the Wigner–Seitz radius" [ref=e2425]:
+              - text: Same, expressed in terms of the Wigner–Seitz radius
+              - img [ref=e2427]
+            - cell "Ch 05 §5.1" [ref=e2435]
+          - row "r_s’ r_s Wigner–Seitz radius, Ch 05 §5.1" [ref=e2436]:
+            - cell [ref=e2437]:
+              - img [ref=e2439]
+            - cell "r_s’" [ref=e2447]:
+              - code [ref=e2448]: r_s
+              - text: ’
+            - cell "r_s" [ref=e2449]
+            - cell "Wigner–Seitz radius," [ref=e2450]:
+              - text: Wigner–Seitz radius,
+              - img [ref=e2452]
+            - cell "Ch 05 §5.1" [ref=e2486]
+          - 'row "`k_\\text{TF}’ k_TF Thomas–Fermi screening wavevector Ch 04 §4.6.4" [ref=e2487]':
+            - cell [ref=e2488]:
+              - img [ref=e2490]
+            - 'cell "`k_\\text{TF}’" [ref=e2499]'
+            - cell "k_TF" [ref=e2500]
+            - cell "Thomas–Fermi screening wavevector" [ref=e2501]
+            - cell "Ch 04 §4.6.4" [ref=e2502]
+          - 'row "`\\zeta(\\mathbf r)’ ζ(r) Relative spin polarisation, Ch 04 §4.8.2" [ref=e2503]':
+            - cell [ref=e2504]:
+              - img [ref=e2506]
+            - 'cell "`\\zeta(\\mathbf r)’" [ref=e2518]'
+            - cell "ζ(r)" [ref=e2519]:
+              - text: ζ(
+              - strong [ref=e2520]: r
+              - text: )
+            - cell "Relative spin polarisation," [ref=e2521]:
+              - text: Relative spin polarisation,
+              - img [ref=e2523]
+            - cell "Ch 04 §4.8.2" [ref=e2547]
+      - heading "Potentials and kernels" [level=3] [ref=e2548]
+      - table [ref=e2549]:
+        - rowgroup [ref=e2550]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e2551]:
+            - columnheader "Symbol" [ref=e2552]
+            - columnheader "LaTeX" [ref=e2553]
+            - columnheader "Plain text" [ref=e2554]
+            - columnheader "Description" [ref=e2555]
+            - columnheader "First appearance" [ref=e2556]
+        - rowgroup [ref=e2557]:
+          - 'row "`v_\\text{xc}(\\mathbf r)’ v_xc(r) XC potential; Ch 00 §”Notation”; Ch 04 §4.2" [ref=e2558]':
+            - cell [ref=e2559]:
+              - img [ref=e2561]
+            - 'cell "`v_\\text{xc}(\\mathbf r)’" [ref=e2577]'
+            - cell "v_xc(r)" [ref=e2578]:
+              - text: v_xc(
+              - strong [ref=e2579]: r
+              - text: )
+            - cell "XC potential;" [ref=e2580]:
+              - text: XC potential;
+              - img [ref=e2582]
+            - cell "Ch 00 §”Notation”; Ch 04 §4.2" [ref=e2608]
+          - 'row "`v_{\\text{xc},\\sigma}(\\mathbf r)’ v_xc,σ(r) Spin-dependent XC potential (collinear spin DFT) Ch 04 §4.8.2" [ref=e2609]':
+            - cell [ref=e2610]:
+              - img [ref=e2612]
+            - 'cell "`v_{\\text{xc},\\sigma}(\\mathbf r)’" [ref=e2633]'
+            - cell "v_xc,σ(r)" [ref=e2634]:
+              - text: v_xc,σ(
+              - strong [ref=e2635]: r
+              - text: )
+            - cell "Spin-dependent XC potential (collinear spin DFT)" [ref=e2636]
+            - cell "Ch 04 §4.8.2" [ref=e2637]
+          - 'row "$v_\\text{H}\\rho$ `v_\\text{H}\\rho’ v_Hρ Hartree potential of the density Ch 04 §4.2" [ref=e2638]':
+            - 'cell "$v_\\text{H}\\rho$" [ref=e2639]':
+              - text: "$v_\\text{H}"
+              - link "\\rho" [ref=e2640] [cursor=pointer]:
+                - /url: \mathbf r
+              - text: $
+            - 'cell "`v_\\text{H}\\rho’" [ref=e2641]':
+              - text: "`v_\\text{H}"
+              - link "\\rho" [ref=e2642] [cursor=pointer]:
+                - /url: \mathbf r
+              - text: ’
+            - cell "v_Hρ" [ref=e2643]:
+              - text: v_H
+              - link "ρ" [ref=e2644] [cursor=pointer]:
+                - /url: "**r**"
+            - cell "Hartree potential of the density" [ref=e2645]
+            - cell "Ch 04 §4.2" [ref=e2646]
+          - 'row "`f_\\text{xc}(\\mathbf r, \\mathbf r’)’ f_xc(r,r’) XC kernel, Ch 12 (planned)" [ref=e2647]':
+            - cell [ref=e2648]:
+              - img [ref=e2650]
+            - 'cell "`f_\\text{xc}(\\mathbf r, \\mathbf r’)’" [ref=e2674]'
+            - cell "f_xc(r,r’)" [ref=e2675]:
+              - text: f_xc(
+              - strong [ref=e2676]: r
+              - text: ","
+              - strong [ref=e2677]: r
+              - text: ’)
+            - cell "XC kernel," [ref=e2678]:
+              - text: XC kernel,
+              - img [ref=e2680]
+            - cell "Ch 12 (planned)" [ref=e2722]
+          - 'row "`\\chi(\\mathbf r, \\mathbf r’; \\omega)’ χ(r,r’; ω) Density–density response function (TDDFT) Ch 11 (planned); Ch 12 (planned)" [ref=e2723]':
+            - cell [ref=e2724]:
+              - img [ref=e2726]
+            - 'cell "`\\chi(\\mathbf r, \\mathbf r’; \\omega)’" [ref=e2750]'
+            - cell "χ(r,r’; ω)" [ref=e2751]:
+              - text: χ(
+              - strong [ref=e2752]: r
+              - text: ","
+              - strong [ref=e2753]: r
+              - text: ’; ω)
+            - cell "Density–density response function (TDDFT)" [ref=e2754]
+            - cell "Ch 11 (planned); Ch 12 (planned)" [ref=e2755]
+          - 'row "`\\chi_0’ χ_0 Bare (non-interacting) response function, or a scalar density of states Ch 04 §4.6.4" [ref=e2756]':
+            - cell [ref=e2757]:
+              - img [ref=e2759]
+            - 'cell "`\\chi_0’" [ref=e2767]'
+            - cell "χ_0" [ref=e2768]
+            - cell "Bare (non-interacting) response function, or a scalar density of states" [ref=e2769]
+            - cell "Ch 04 §4.6.4" [ref=e2770]
+          - 'row "`\\epsilon(\\mathbf q)’ ε(q) Dielectric function (response theory) Ch 04 §4.6.4" [ref=e2771]':
+            - cell [ref=e2772]:
+              - img [ref=e2774]
+            - 'cell "`\\epsilon(\\mathbf q)’" [ref=e2786]'
+            - cell "ε(q)" [ref=e2787]:
+              - text: ε(
+              - strong [ref=e2788]: q
+              - text: )
+            - cell "Dielectric function (response theory)" [ref=e2789]
+            - cell "Ch 04 §4.6.4" [ref=e2790]
+      - heading "Ladder and Jacob’s-ladder abbreviations" [level=3] [ref=e2791]
+      - table [ref=e2792]:
+        - rowgroup [ref=e2793]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e2794]:
+            - columnheader "Symbol" [ref=e2795]
+            - columnheader "LaTeX" [ref=e2796]
+            - columnheader "Plain text" [ref=e2797]
+            - columnheader "Description" [ref=e2798]
+            - columnheader "First appearance" [ref=e2799]
+        - rowgroup [ref=e2800]:
+          - 'row "LDA `\\text{LDA}’ LDA Local Density Approximation (uniform-gas XC) Ch 04 §4.5; Ch 05 §5.1" [ref=e2801]':
+            - cell "LDA" [ref=e2802]
+            - 'cell "`\\text{LDA}’" [ref=e2803]'
+            - cell "LDA" [ref=e2804]
+            - cell "Local Density Approximation (uniform-gas XC)" [ref=e2805]
+            - cell "Ch 04 §4.5; Ch 05 §5.1" [ref=e2806]
+          - 'row "LSDA `\\text{LSDA}’ LSDA Local Spin-Density Approximation (spin-polarised LDA) Ch 04 §4.8.1" [ref=e2807]':
+            - cell "LSDA" [ref=e2808]
+            - 'cell "`\\text{LSDA}’" [ref=e2809]'
+            - cell "LSDA" [ref=e2810]
+            - cell "Local Spin-Density Approximation (spin-polarised LDA)" [ref=e2811]
+            - cell "Ch 04 §4.8.1" [ref=e2812]
+          - 'row "GGA `\\text{GGA}’ GGA Generalised Gradient Approximation (ρ and ∇ρ) Ch 04 §4.5; Ch 05 §5.2" [ref=e2813]':
+            - cell "GGA" [ref=e2814]
+            - 'cell "`\\text{GGA}’" [ref=e2815]'
+            - cell "GGA" [ref=e2816]
+            - cell "Generalised Gradient Approximation (ρ and ∇ρ)" [ref=e2817]
+            - cell "Ch 04 §4.5; Ch 05 §5.2" [ref=e2818]
+          - 'row "meta-GGA `\\text{meta-GGA}’ meta-GGA Adds the orbital kinetic-energy density τ Ch 04 §4.5; Ch 05 §5.3" [ref=e2819]':
+            - cell "meta-GGA" [ref=e2820]
+            - 'cell "`\\text{meta-GGA}’" [ref=e2821]'
+            - cell "meta-GGA" [ref=e2822]
+            - cell "Adds the orbital kinetic-energy density τ" [ref=e2823]
+            - cell "Ch 04 §4.5; Ch 05 §5.3" [ref=e2824]
+          - 'row "SCAN `\\text{SCAN}’ SCAN Strongly Constrained and Appropriately Normed (Sun, Ruzsinszky, Perdew 2015) Ch 05 §5.3" [ref=e2825]':
+            - cell "SCAN" [ref=e2826]
+            - 'cell "`\\text{SCAN}’" [ref=e2827]'
+            - cell "SCAN" [ref=e2828]
+            - cell "Strongly Constrained and Appropriately Normed (Sun, Ruzsinszky, Perdew 2015)" [ref=e2829]
+            - cell "Ch 05 §5.3" [ref=e2830]
+          - 'row "PBE `\\text{PBE}’ PBE Perdew–Burke–Ernzerhof GGA (1996) Ch 05 §5.2" [ref=e2831]':
+            - cell "PBE" [ref=e2832]
+            - 'cell "`\\text{PBE}’" [ref=e2833]'
+            - cell "PBE" [ref=e2834]
+            - cell "Perdew–Burke–Ernzerhof GGA (1996)" [ref=e2835]
+            - cell "Ch 05 §5.2" [ref=e2836]
+          - 'row "B3LYP `\\text{B3LYP}’ B3LYP Becke-3-parameter hybrid with LYP correlation Ch 05 §5.4" [ref=e2837]':
+            - cell "B3LYP" [ref=e2838]
+            - 'cell "`\\text{B3LYP}’" [ref=e2839]'
+            - cell "B3LYP" [ref=e2840]
+            - cell "Becke-3-parameter hybrid with LYP correlation" [ref=e2841]
+            - cell "Ch 05 §5.4" [ref=e2842]
+          - 'row "B88 `\\text{B88}’ B88 Becke 1988 exchange GGA Ch 05 §5.2" [ref=e2843]':
+            - cell "B88" [ref=e2844]
+            - 'cell "`\\text{B88}’" [ref=e2845]'
+            - cell "B88" [ref=e2846]
+            - cell "Becke 1988 exchange GGA" [ref=e2847]
+            - cell "Ch 05 §5.2" [ref=e2848]
+          - 'row "LYP `\\text{LYP}’ LYP Lee–Yang–Parr correlation GGA Ch 05 §5.2" [ref=e2849]':
+            - cell "LYP" [ref=e2850]
+            - 'cell "`\\text{LYP}’" [ref=e2851]'
+            - cell "LYP" [ref=e2852]
+            - cell "Lee–Yang–Parr correlation GGA" [ref=e2853]
+            - cell "Ch 05 §5.2" [ref=e2854]
+          - 'row "PBE0 `\\text{PBE0}’ PBE0 “PBE with no parameters” — 25 % HF exchange + 75 % PBE exchange Ch 05 §5.6" [ref=e2855]':
+            - cell "PBE0" [ref=e2856]
+            - 'cell "`\\text{PBE0}’" [ref=e2857]'
+            - cell "PBE0" [ref=e2858]
+            - cell "“PBE with no parameters” — 25 % HF exchange + 75 % PBE exchange" [ref=e2859]
+            - cell "Ch 05 §5.6" [ref=e2860]
+          - 'row "HSE06 `\\text{HSE06}’ HSE06 Heyd–Scuseria–Ernzerhof screened hybrid (ω = 0.11 bohr⁻¹) Ch 05 §5.5" [ref=e2861]':
+            - cell "HSE06" [ref=e2862]
+            - 'cell "`\\text{HSE06}’" [ref=e2863]'
+            - cell "HSE06" [ref=e2864]
+            - cell "Heyd–Scuseria–Ernzerhof screened hybrid (ω = 0.11 bohr⁻¹)" [ref=e2865]
+            - cell "Ch 05 §5.5" [ref=e2866]
+          - 'row "RS `\\text{RS}’ RS Range-separated (hybrid) Ch 05 §5.5" [ref=e2867]':
+            - cell "RS" [ref=e2868]
+            - 'cell "`\\text{RS}’" [ref=e2869]'
+            - cell "RS" [ref=e2870]
+            - cell "Range-separated (hybrid)" [ref=e2871]
+            - cell "Ch 05 §5.5" [ref=e2872]
+          - 'row "`\\omega’ omega Range-separation parameter (bohr⁻¹) Ch 05 §5.5" [ref=e2873]':
+            - cell [ref=e2874]:
+              - img [ref=e2876]
+            - 'cell "`\\omega’" [ref=e2881]'
+            - cell "omega" [ref=e2882]
+            - cell "Range-separation parameter (bohr⁻¹)" [ref=e2883]
+            - cell "Ch 05 §5.5" [ref=e2884]
+      - separator [ref=e2885]
+      - heading "5. Many-body objects" [level=2] [ref=e2886]
+      - paragraph [ref=e2887]: The second-quantised machinery, Slater determinants, and the many-body operators that act on Fock space. Some of this appears only in passing (chapters 02, 03, 04); the deeper treatment is left to a future chapter on post-HF methods.
+      - paragraph [ref=e2888]:
+        - text: "| Symbol | LaTeX | Plain text | Description | First appearance | |:——|:——|:———–|:————|:—————–| |"
+        - img [ref=e2890]
+        - text: "|"
+        - code [ref=e2899]: \lvert \Phi \rangle' | \|Φ⟩ | Slater determinant (the canonical many-body state) | Ch 02 §2.2 | | $\lvert \Phi_0 \rangle$ |
+        - text: \lvert \Phi_0 \rangle’ | |Φ_0⟩ | Reference (HF or KS) Slater determinant | Ch 02 §2.2; Ch 03 | |
+        - img [ref=e2901]
+        - text: ","
+        - img [ref=e2911]
+        - text: "| ‘\\lvert i \\rangle’,"
+        - code [ref=e2920]: \lvert f \rangle' | \|i⟩, \|f⟩ | Initial / final state (Fermi's golden rule, time-dependent perturbation theory) | Ch 01 §1.8.3 | | $\lvert n \rangle$ |
+        - text: \lvert n \rangle’ | |n⟩ |
+        - img [ref=e2922]
+        - text: "-th Fock state of the QHO (also:"
+        - img [ref=e2928]
+        - text: "-th stationary state of any Hamiltonian) | Ch 01 §1.9.2 | |"
+        - img [ref=e2934]
+        - text: "|"
+        - code [ref=e2943]: \lvert 0 \rangle' | \|0⟩ | Vacuum; lowest-weight state of the QHO | Ch 01 §1.9.2 | | $\lvert \alpha \rangle$ |
+        - text: \lvert \alpha \rangle’ | |α⟩ | Coherent state of the QHO,
+        - img [ref=e2945]
+        - text: "| Ch 01 §1.9.5 | |"
+        - img [ref=e2971]
+        - text: "|"
+        - code [ref=e2983]: "\\hat T_1' | T_1-hat | Singles excitation operator (cluster / CI) | (planned: post-HF) | | $\\hat T_2$ |"
+        - text: "\\hat T_2’ | T_2-hat | Doubles excitation operator | (planned: post-HF) | |"
+        - img [ref=e2985]
+        - text: "|"
+        - code [ref=e3020]: "\\hat T' | T-hat | Cluster operator (CC); exponential Ansatz $\\lvert \\Psi \\rangle = e^{\\hat T} \\lvert \\Phi_0 \\rangle$ | (planned: post-HF) | | $E_0$ |"
+        - text: E_0
+        - code [ref=e3021]: "' | E_0 | Exact non-relativistic ground-state energy (in the given basis / Hamiltonian) | Ch 01 §1.1 | | $E_\\text{exact}$ |"
+        - text: "E_\\text{exact}’ | E_exact | Same as"
+        - img [ref=e3023]
+        - text: ; used when emphasising the
+        - emphasis [ref=e3031]: exact
+        - text: value | Ch 03 §3.5 | |
+        - img [ref=e3033]
+        - text: "|"
+        - code [ref=e3043]: "E_\\text{CBS}' | E_CBS | Complete-basis-set limit energy | Ch 06 §6.2 | | $E_n$ |"
+        - text: E_n
+        - code [ref=e3044]: "' | E_n | Energy of the $n$-th stationary state; principal-quantum-number label in hydrogen | Ch 01 §1.1; Ch 01 §1.10 | | $\\varepsilon_i$ |"
+        - text: \varepsilon_i’ | ε_i | Single-particle (orbital) energy; eigenvalue of
+        - img [ref=e3046]
+        - text: or
+        - img [ref=e3056]
+        - text: "| Ch 00 §”Notation”; Ch 03 §3.2 | |"
+        - img [ref=e3070]
+        - text: "|"
+        - code [ref=e3082]: "\\varepsilon_{n\\mathbf k}' | ε_{n**k**} | Band energy: orbital energy indexed by band $n$ and wavevector $\\mathbf k$ | Ch 07 §7.5.2 | | $\\varepsilon_F$ |"
+        - text: \varepsilon_F’ | ε_F | Fermi energy | Ch 07 §7.6.2 | |
+        - img [ref=e3084]
+        - text: "| `\\omega_{fi}’ | ω_fi | Transition frequency"
+        - img [ref=e3096]
+        - text: "| Ch 01 §1.8.3 |"
+      - separator [ref=e3111]
+      - heading "6. Basis set notation" [level=2] [ref=e3112]
+      - paragraph [ref=e3113]: The index conventions used in chapters 03 (Hartree–Fock), 04 (Kohn–Sham), 06 (basis sets), and 07 (plane waves in reciprocal space).
+      - heading "Atomic-orbital (AO) basis" [level=3] [ref=e3114]
+      - paragraph [ref=e3115]:
+        - text: "| Symbol | LaTeX | Plain text | Description | First appearance | |:——|:——|:———–|:————|:—————–| |"
+        - img [ref=e3117]
+        - text: "|"
+        - code [ref=e3132]: \chi_\mu(\mathbf r)' | χ_μ(**r**) | The $\mu$-th AO basis function, $\mu = 1, \dots, K$ | Ch 00 §"Notation"; Ch 03 §3.6 | | $K$ |
+        - text: K
+        - code [ref=e3133]: "' | K | Number of contracted basis functions in the AO basis | Ch 03 §3.6 | | $n_\\mu$ |"
+        - text: n_\mu’ | n_μ | Number of primitive Gaussians in contraction
+        - img [ref=e3135]
+        - text: "| Ch 06 §6.3 | |"
+        - img [ref=e3141]
+        - text: "|"
+        - code [ref=e3152]: "d_{\\mu p}' | d_μp | Contraction coefficient; $p$ indexes the primitives within $\\mu$ | Ch 06 §6.3 | | $g(\\mathbf r; \\alpha, \\mathbf A, \\boldsymbol\\ell)$ |"
+        - text: g(\mathbf r; \alpha, \mathbf A, \boldsymbol\ell)’ | g(
+        - strong [ref=e3153]: r
+        - text: ; α,
+        - strong [ref=e3154]: A
+        - text: ", ℓ) | Primitive Cartesian Gaussian with exponent"
+        - img [ref=e3156]
+        - text: ", centre"
+        - img [ref=e3162]
+        - text: ", angular index"
+        - img [ref=e3169]
+        - text: "| Ch 06 §6.3 | |"
+        - img [ref=e3175]
+        - text: "|"
+        - code [ref=e3180]: \alpha' | alpha | Gaussian exponent (a.u.⁻²); primitive-shell parameter | Ch 06 §6.3 | | $\zeta$ |
+        - text: \zeta’ | zeta | Slater exponent (in STO-nG);
+        - img [ref=e3182]
+        - text: "| Ch 06 §6.4 | |"
+        - img [ref=e3210]
+        - text: "|"
+        - code [ref=e3219]: \mathbf A_\mu' | **A**_μ | Centre of basis function $\chi_\mu$ (atom coordinate) | Ch 04 §4.7.3; Ch 06 §6.3 | | $\boldsymbol\ell = (\ell_x, \ell_y, \ell_z)$ |
+        - text: \boldsymbol\ell’ | ℓ | Angular-momentum vector for a Cartesian Gaussian | Ch 06 §6.3 |
+      - heading "Molecular-orbital (MO) basis" [level=3] [ref=e3220]
+      - paragraph [ref=e3221]:
+        - text: "| Symbol | LaTeX | Plain text | Description | First appearance | |:——|:——|:———–|:————|:—————–| |"
+        - img [ref=e3223]
+        - text: "|"
+        - code [ref=e3238]: "\\phi_i(\\mathbf r)' | φ_i(**r**) | The $i$-th MO | Ch 00 §\"Notation\"; Ch 03 §3.6 | | $C_{\\mu i}$ |"
+        - text: "C_{\\mu i}’ | C_μi | MO coefficient: the"
+        - img [ref=e3240]
+        - text: "-th basis-function contribution to the"
+        - img [ref=e3246]
+        - text: "-th MO | Ch 00 §”Notation”; Ch 03 §3.6 | |"
+        - img [ref=e3252]
+        - text: "|"
+        - code [ref=e3269]: i, j, k, l' | i, j, k, l | Occupied-orbital indices | Ch 00 §"Notation"; Ch 03 §3.6 | | $a, b$ |
+        - text: a, b’ | a, b | Virtual (unoccupied) orbital indices | Ch 03 §3.4 (in
+        - img [ref=e3271]
+        - text: ) | |
+        - img [ref=e3293]
+        - text: "|"
+        - code [ref=e3310]: p, q, r, s' | p, q, r, s | General MO indices (occupied or virtual) | Ch 00 §"Notation"; Ch 02 §2.2 | | $\alpha, \beta$ |
+        - text: \alpha
+        - code [ref=e3311]: ","
+        - text: \beta’ | alpha, beta | Spin labels (
+        - img [ref=e3313]
+        - text: ","
+        - img [ref=e3324]
+        - text: ); also used for Cartesian-Gaussian angular indices — context disambiguates | Ch 01 §1.2 (P6); Ch 02 §2.2; Ch 06 §6.3 | |
+        - img [ref=e3335]
+        - text: "|"
+        - code [ref=e3340]: \sigma' | sigma | Spin label in collinear spin DFT; also index in $(\mu\nu \rvert \rho\sigma)$ | Ch 03 §3.4; Ch 04 §4.8 | | $\sigma$ (Pauli) |
+        - text: \boldsymbol\sigma’ |
+        - strong [ref=e3341]: sigma
+        - text: "| Vector of Pauli matrices; the bold distinguishes it from the spin label | Ch 04 §4.8.4 | |"
+        - img [ref=e3343]
+        - text: "|"
+        - code [ref=e3348]: "n"
+        - text: ’ | n | Number of doubly-occupied spatial orbitals in a closed-shell calculation,
+        - img [ref=e3350]
+        - text: "| Ch 03 §3.3 | |"
+        - img [ref=e3361]
+        - text: ","
+        - img [ref=e3370]
+        - text: "|"
+        - code [ref=e3378]: N_\alpha
+        - text: ","
+        - code [ref=e3379]: N_\beta' | N_α, N_β | Number of $\alpha$-spin / $\beta$-spin electrons (UHF) | Ch 03 §3.7.1 | | $S_z$ |
+        - text: S_z
+        - code [ref=e3380]: "' | S_z | $z$-component of the total spin, $(N_\\alpha - N_\\beta)/2$ | Ch 03 §3.7.1 | | $\\mathbf C$ |"
+        - text: \mathbf C’ |
+        - strong [ref=e3381]: C
+        - text: "| Matrix of MO coefficients,"
+        - img [ref=e3383]
+        - text: "| Ch 00 §”Notation”; Ch 03 §3.6 | |"
+        - img [ref=e3395]
+        - text: "|"
+        - code [ref=e3400]: \boldsymbol\varepsilon' | **ε** | Diagonal matrix of orbital energies | Ch 00 §"Notation"; Ch 03 §3.6 | | $\mathbf n$ |
+        - text: \mathbf n’ |
+        - strong [ref=e3401]: "n"
+        - text: "| Diagonal matrix of MO occupation numbers (general spin, fractional occupations) | Ch 03 §3.6 (problem 2) |"
+      - heading "Plane-wave basis" [level=3] [ref=e3402]
+      - table [ref=e3403]:
+        - rowgroup [ref=e3404]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e3405]:
+            - columnheader "Symbol" [ref=e3406]
+            - columnheader "LaTeX" [ref=e3407]
+            - columnheader "Plain text" [ref=e3408]
+            - columnheader "Description" [ref=e3409]
+            - columnheader "First appearance" [ref=e3410]
+        - rowgroup [ref=e3411]:
+          - 'row "`\\chi_{\\mathbf G}^{\\mathbf k}(\\mathbf r)’ χ_G^k(r) Plane-wave basis function Ch 06 §6.7" [ref=e3412]':
+            - cell [ref=e3413]:
+              - img [ref=e3415]
+            - 'cell "`\\chi_{\\mathbf G}^{\\mathbf k}(\\mathbf r)’" [ref=e3474]'
+            - cell "χ_G^k(r)" [ref=e3475]:
+              - text: χ_
+              - strong [ref=e3476]: G
+              - text: ^
+              - strong [ref=e3477]: k
+              - text: (
+              - strong [ref=e3478]: r
+              - text: )
+            - cell "Plane-wave basis function" [ref=e3479]
+            - cell "Ch 06 §6.7" [ref=e3480]
+          - 'row "`E_\\text{cut}’ E_cut Kinetic-energy cutoff for the plane-wave basis Ch 00 §”Notation”; Ch 06 §6.7" [ref=e3481]':
+            - cell [ref=e3482]:
+              - img [ref=e3484]
+            - 'cell "`E_\\text{cut}’" [ref=e3494]'
+            - cell "E_cut" [ref=e3495]
+            - cell "Kinetic-energy cutoff for the plane-wave basis" [ref=e3496]
+            - cell "Ch 00 §”Notation”; Ch 06 §6.7" [ref=e3497]
+          - 'row "`G_\\text{max}’ G_max Largest retained Ch 00 §”Notation”; Ch 06 §6.7" [ref=e3498]':
+            - cell [ref=e3499]:
+              - img [ref=e3501]
+            - 'cell "`G_\\text{max}’" [ref=e3511]'
+            - cell "G_max" [ref=e3512]
+            - cell "Largest retained" [ref=e3513]:
+              - text: Largest retained
+              - img [ref=e3515]
+            - cell "Ch 00 §”Notation”; Ch 06 §6.7" [ref=e3530]
+          - 'row "`N_\\text{PW}’ N_PW Number of plane waves retained Ch 00 §”Notation”; Ch 06 §6.7" [ref=e3531]':
+            - cell [ref=e3532]:
+              - img [ref=e3534]
+            - 'cell "`N_\\text{PW}’" [ref=e3543]'
+            - cell "N_PW" [ref=e3544]
+            - cell "Number of plane waves retained" [ref=e3545]
+            - cell "Ch 00 §”Notation”; Ch 06 §6.7" [ref=e3546]
+          - 'row "`c_{n\\mathbf k}(\\mathbf G)’ c_{nk}(G) Plane-wave coefficient of the Bloch orbital Ch 06 §6.7" [ref=e3547]':
+            - cell [ref=e3548]:
+              - img [ref=e3550]
+            - 'cell "`c_{n\\mathbf k}(\\mathbf G)’" [ref=e3569]'
+            - 'cell "c_{nk}(G)" [ref=e3570]':
+              - text: "c_{n"
+              - strong [ref=e3571]: k
+              - text: "}("
+              - strong [ref=e3572]: G
+              - text: )
+            - cell "Plane-wave coefficient of the Bloch orbital" [ref=e3573]
+            - cell "Ch 06 §6.7" [ref=e3574]
+          - 'row "`E_\\text{cut}^\\text{grid}’ E_cut^grid Implicit kinetic cutoff of a real-space grid Ch 06 §6.8" [ref=e3575]':
+            - cell [ref=e3576]:
+              - img [ref=e3578]
+            - 'cell "`E_\\text{cut}^\\text{grid}’" [ref=e3593]'
+            - cell "E_cut^grid" [ref=e3594]
+            - cell "Implicit kinetic cutoff of a real-space grid" [ref=e3595]
+            - cell "Ch 06 §6.8" [ref=e3596]
+          - 'row "h’ h Real-space grid spacing (or: Planck’s constant, in non-atomic-unit contexts) Ch 06 §6.8" [ref=e3597]':
+            - cell [ref=e3598]:
+              - img [ref=e3600]
+            - cell "h’" [ref=e3605]:
+              - code [ref=e3606]: h
+              - text: ’
+            - cell "h" [ref=e3607]
+            - 'cell "Real-space grid spacing (or: Planck’s constant, in non-atomic-unit contexts)" [ref=e3608]'
+            - cell "Ch 06 §6.8" [ref=e3609]
+          - 'row "`G_\\text{Nyq}’ G_Nyq Nyquist frequency of a real-space grid, Ch 06 §6.8" [ref=e3610]':
+            - cell [ref=e3611]:
+              - img [ref=e3613]
+            - 'cell "`G_\\text{Nyq}’" [ref=e3623]'
+            - cell "G_Nyq" [ref=e3624]
+            - cell "Nyquist frequency of a real-space grid," [ref=e3625]:
+              - text: Nyquist frequency of a real-space grid,
+              - img [ref=e3627]
+            - cell "Ch 06 §6.8" [ref=e3637]
+      - heading "AO-basis matrices" [level=3] [ref=e3638]
+      - table [ref=e3639]:
+        - rowgroup [ref=e3640]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e3641]:
+            - columnheader "Symbol" [ref=e3642]
+            - columnheader "LaTeX" [ref=e3643]
+            - columnheader "Plain text" [ref=e3644]
+            - columnheader "Description" [ref=e3645]
+            - columnheader "First appearance" [ref=e3646]
+        - rowgroup [ref=e3647]:
+          - 'row "`S_{\\mu\\nu}’ S_μν Overlap matrix element, Ch 00 §”Notation”; Ch 03 §3.6" [ref=e3648]':
+            - cell [ref=e3649]:
+              - img [ref=e3651]
+            - 'cell "`S_{\\mu\\nu}’" [ref=e3662]'
+            - cell "S_μν" [ref=e3663]
+            - cell "Overlap matrix element," [ref=e3664]:
+              - text: Overlap matrix element,
+              - img [ref=e3666]
+            - cell "Ch 00 §”Notation”; Ch 03 §3.6" [ref=e3685]
+          - 'row "`h_{\\mu\\nu}’ h_μν Core-Hamiltonian matrix element, Ch 03 §3.6.3" [ref=e3686]':
+            - cell [ref=e3687]:
+              - img [ref=e3689]
+            - 'cell "`h_{\\mu\\nu}’" [ref=e3700]'
+            - cell "h_μν" [ref=e3701]
+            - cell "Core-Hamiltonian matrix element," [ref=e3702]:
+              - text: Core-Hamiltonian matrix element,
+              - img [ref=e3704]
+            - cell "Ch 03 §3.6.3" [ref=e3731]
+          - 'row "`F_{\\mu\\nu}’ F_μν Fock matrix element, Ch 00 §”Notation”; Ch 03 §3.6" [ref=e3732]':
+            - cell [ref=e3733]:
+              - img [ref=e3735]
+            - 'cell "`F_{\\mu\\nu}’" [ref=e3746]'
+            - cell "F_μν" [ref=e3747]
+            - cell "Fock matrix element," [ref=e3748]:
+              - text: Fock matrix element,
+              - img [ref=e3750]
+            - cell "Ch 00 §”Notation”; Ch 03 §3.6" [ref=e3777]
+          - 'row "`J_{\\mu\\nu}’ J_μν Coulomb matrix element, Ch 03 §3.6.3" [ref=e3778]':
+            - cell [ref=e3779]:
+              - img [ref=e3781]
+            - 'cell "`J_{\\mu\\nu}’" [ref=e3792]'
+            - cell "J_μν" [ref=e3793]
+            - cell "Coulomb matrix element," [ref=e3794]:
+              - text: Coulomb matrix element,
+              - img [ref=e3796]
+            - cell "Ch 03 §3.6.3" [ref=e3823]
+          - 'row "`K_{\\mu\\nu}’ K_μν Exchange matrix element, Ch 03 §3.6.3" [ref=e3824]':
+            - cell [ref=e3825]:
+              - img [ref=e3827]
+            - 'cell "`K_{\\mu\\nu}’" [ref=e3838]'
+            - cell "K_μν" [ref=e3839]
+            - cell "Exchange matrix element," [ref=e3840]:
+              - text: Exchange matrix element,
+              - img [ref=e3842]
+            - cell "Ch 03 §3.6.3" [ref=e3869]
+          - 'row "`P_{\\mu\\nu}’ P_μν Density-matrix element, (closed shell) Ch 00 §”Notation”; Ch 03 §3.6.4" [ref=e3870]':
+            - cell [ref=e3871]:
+              - img [ref=e3873]
+            - 'cell "`P_{\\mu\\nu}’" [ref=e3884]'
+            - cell "P_μν" [ref=e3885]
+            - cell "Density-matrix element, (closed shell)" [ref=e3886]:
+              - text: Density-matrix element,
+              - img [ref=e3888]
+              - text: (closed shell)
+            - cell "Ch 00 §”Notation”; Ch 03 §3.6.4" [ref=e3916]
+          - 'row ", P^\\alpha, `P^\\beta’ P^α, P^β Spin-up / spin-down density matrices (UHF) Ch 03 §3.7.2" [ref=e3917]':
+            - cell "," [ref=e3918]:
+              - img [ref=e3920]
+              - text: ","
+              - img [ref=e3929]
+            - 'cell "P^\\alpha, `P^\\beta’" [ref=e3937]':
+              - code [ref=e3938]: P^\alpha
+              - text: ", `P^\\beta’"
+            - cell "P^α, P^β" [ref=e3939]
+            - cell "Spin-up / spin-down density matrices (UHF)" [ref=e3940]
+            - cell "Ch 03 §3.7.2" [ref=e3941]
+          - 'row "`P^s’ P^s Spin density matrix, Ch 03 §3.7.2" [ref=e3942]':
+            - cell [ref=e3943]:
+              - img [ref=e3945]
+            - 'cell "`P^s’" [ref=e3953]'
+            - cell "P^s" [ref=e3954]
+            - cell "Spin density matrix," [ref=e3955]:
+              - text: Spin density matrix,
+              - img [ref=e3957]
+            - cell "Ch 03 §3.7.2" [ref=e3972]
+          - 'row "`(\\mu\\nu \\rvert \\rho\\sigma)’ (μν|ρσ) Electron-repulsion integral (ERI) inchemists’notation Ch 00 §”Notation”; Ch 03 §3.6.3" [ref=e3973]':
+            - cell [ref=e3974]:
+              - img [ref=e3976]
+            - 'cell "`(\\mu\\nu \\rvert \\rho\\sigma)’" [ref=e3993]'
+            - cell "(μν|ρσ)" [ref=e3994]
+            - cell "Electron-repulsion integral (ERI) inchemists’notation" [ref=e3995]:
+              - text: Electron-repulsion integral (ERI) in
+              - strong [ref=e3996]: chemists’
+              - text: notation
+            - cell "Ch 00 §”Notation”; Ch 03 §3.6.3" [ref=e3997]
+          - 'row "`\\langle \\mu\\nu \\rvert \\rvert \\rho\\sigma \\rangle’ ⟨μν‖ρσ⟩ ERI inphysicists’notation, $\\int!!\\int \\chi_\\mu^(\\mathbf r_1) \\chi_\\nu(\\mathbf r_1) (1/r_{12}) \\chi_\\rho^(\\mathbf r_2) \\chi_\\sigma(\\mathbf r_2)\\, d\\mathbf r_1 d\\mathbf r_2$ Ch 03 §3.3 (comment)" [ref=e3998]':
+            - cell [ref=e3999]:
+              - img [ref=e4001]
+            - 'cell "`\\langle \\mu\\nu \\rvert \\rvert \\rho\\sigma \\rangle’" [ref=e4020]'
+            - cell "⟨μν‖ρσ⟩" [ref=e4021]
+            - 'cell "ERI inphysicists’notation, $\\int!!\\int \\chi_\\mu^(\\mathbf r_1) \\chi_\\nu(\\mathbf r_1) (1/r_{12}) \\chi_\\rho^(\\mathbf r_2) \\chi_\\sigma(\\mathbf r_2)\\, d\\mathbf r_1 d\\mathbf r_2$" [ref=e4022]':
+              - text: ERI in
+              - strong [ref=e4023]: physicists’
+              - text: notation, $\int!!\int \chi_\mu^
+              - emphasis [ref=e4024]: "(\\mathbf r_1) \\chi_\\nu(\\mathbf r_1) (1/r_{12}) \\chi_\\rho^"
+              - text: (\mathbf r_2) \chi_\sigma(\mathbf r_2)\, d\mathbf r_1 d\mathbf r_2$
+            - cell "Ch 03 §3.3 (comment)" [ref=e4025]
+          - row ", , , , ‘\\mathbf S’, etc. S,h,F,P,C The corresponding matrices in the AO basis Ch 03 §3.6" [ref=e4026]:
+            - cell ", , , ," [ref=e4027]:
+              - img [ref=e4029]
+              - text: ","
+              - img [ref=e4036]
+              - text: ","
+              - img [ref=e4043]
+              - text: ","
+              - img [ref=e4050]
+              - text: ","
+              - img [ref=e4057]
+            - cell "‘\\mathbf S’, etc." [ref=e4063]
+            - cell "S,h,F,P,C" [ref=e4064]:
+              - strong [ref=e4065]: S
+              - text: ","
+              - strong [ref=e4066]: h
+              - text: ","
+              - strong [ref=e4067]: F
+              - text: ","
+              - strong [ref=e4068]: P
+              - text: ","
+              - strong [ref=e4069]: C
+            - cell "The corresponding matrices in the AO basis" [ref=e4070]:
+              - text: The corresponding
+              - img [ref=e4072]
+              - text: matrices in the AO basis
+            - cell "Ch 03 §3.6" [ref=e4081]
+          - 'row "`\\mathbf G’ G Two-electron part of the Fock matrix, (closed shell) Ch 03 §3.6.5" [ref=e4082]':
+            - cell [ref=e4083]:
+              - img [ref=e4085]
+            - 'cell "`\\mathbf G’" [ref=e4091]'
+            - cell "G" [ref=e4092]:
+              - strong [ref=e4093]: G
+            - cell "Two-electron part of the Fock matrix, (closed shell)" [ref=e4094]:
+              - text: Two-electron part of the Fock matrix,
+              - img [ref=e4096]
+              - text: (closed shell)
+            - cell "Ch 03 §3.6.5" [ref=e4134]
+          - 'row "`\\mathbf X’ X Löwdin orthogonaliser, Ch 03 §3.6.6" [ref=e4135]':
+            - cell [ref=e4136]:
+              - img [ref=e4138]
+            - 'cell "`\\mathbf X’" [ref=e4144]'
+            - cell "X" [ref=e4145]:
+              - strong [ref=e4146]: X
+            - cell "Löwdin orthogonaliser," [ref=e4147]:
+              - text: Löwdin orthogonaliser,
+              - img [ref=e4149]
+            - cell "Ch 03 §3.6.6" [ref=e4166]
+      - separator [ref=e4167]
+      - heading "7. Special functions" [level=2] [ref=e4168]
+      - paragraph [ref=e4169]: The named functions and symbols that recur in derivations.
+      - table [ref=e4170]:
+        - rowgroup [ref=e4171]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e4172]:
+            - columnheader "Symbol" [ref=e4173]
+            - columnheader "LaTeX" [ref=e4174]
+            - columnheader "Plain text" [ref=e4175]
+            - columnheader "Description" [ref=e4176]
+            - columnheader "First appearance" [ref=e4177]
+        - rowgroup [ref=e4178]:
+          - 'row "`Y_\\ell^m(\\theta, \\phi)’ Y_ℓ^m(θ, φ) Spherical harmonic; simultaneous eigenfunction of and Ch 00 §”Notation”; Ch 01 §1.10.2" [ref=e4179]':
+            - cell [ref=e4180]:
+              - img [ref=e4182]
+            - 'cell "`Y_\\ell^m(\\theta, \\phi)’" [ref=e4202]'
+            - cell "Y_ℓ^m(θ, φ)" [ref=e4203]
+            - cell "Spherical harmonic; simultaneous eigenfunction of and" [ref=e4204]:
+              - text: Spherical harmonic; simultaneous eigenfunction of
+              - img [ref=e4206]
+              - text: and
+              - img [ref=e4219]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.10.2" [ref=e4231]
+          - 'row "`H_n(x)’ H_n(x) Physicists’ Hermite polynomial Ch 00 §”Notation”; Ch 01 §1.9.4" [ref=e4232]':
+            - cell [ref=e4233]:
+              - img [ref=e4235]
+            - 'cell "`H_n(x)’" [ref=e4249]'
+            - cell "H_n(x)" [ref=e4250]
+            - cell "Physicists’ Hermite polynomial" [ref=e4251]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.9.4" [ref=e4252]
+          - 'row "`L_n(x)’ L_n(x) Laguerre polynomial Ch 00 §”Notation”; Ch 06 (in STO radial functions)" [ref=e4253]':
+            - cell [ref=e4254]:
+              - img [ref=e4256]
+            - 'cell "`L_n(x)’" [ref=e4270]'
+            - cell "L_n(x)" [ref=e4271]
+            - cell "Laguerre polynomial" [ref=e4272]
+            - cell "Ch 00 §”Notation”; Ch 06 (in STO radial functions)" [ref=e4273]
+          - 'row "`L_n^k(x)’ L_n^k(x) Associated (generalised) Laguerre polynomial Ch 01 §1.10.5" [ref=e4274]':
+            - cell [ref=e4275]:
+              - img [ref=e4277]
+            - 'cell "`L_n^k(x)’" [ref=e4293]'
+            - cell "L_n^k(x)" [ref=e4294]
+            - cell "Associated (generalised) Laguerre polynomial" [ref=e4295]
+            - cell "Ch 01 §1.10.5" [ref=e4296]
+          - 'row "`P_\\ell^m(\\cos\\theta)’ P_ℓ^m(cos θ) Associated Legendre function Ch 01 §1.10 (implicit)" [ref=e4297]':
+            - cell [ref=e4298]:
+              - img [ref=e4300]
+            - 'cell "`P_\\ell^m(\\cos\\theta)’" [ref=e4320]'
+            - cell "P_ℓ^m(cos θ)" [ref=e4321]
+            - cell "Associated Legendre function" [ref=e4322]
+            - cell "Ch 01 §1.10 (implicit)" [ref=e4323]
+          - 'row "`\\delta_{ij}’ δ_ij Kronecker delta: 1 if , 0 otherwise Ch 00 §”Notation”; Ch 01 §1.2" [ref=e4324]':
+            - cell [ref=e4325]:
+              - img [ref=e4327]
+            - 'cell "`\\delta_{ij}’" [ref=e4338]'
+            - cell "δ_ij" [ref=e4339]
+            - 'cell "Kronecker delta: 1 if , 0 otherwise" [ref=e4340]':
+              - text: "Kronecker delta: 1 if"
+              - img [ref=e4342]
+              - text: ", 0 otherwise"
+            - cell "Ch 00 §”Notation”; Ch 01 §1.2" [ref=e4351]
+          - 'row "`\\delta(\\mathbf r)’ δ(r) Dirac delta in 3-D Ch 01 §1.8.4 (implicit)" [ref=e4352]':
+            - cell [ref=e4353]:
+              - img [ref=e4355]
+            - 'cell "`\\delta(\\mathbf r)’" [ref=e4367]'
+            - cell "δ(r)" [ref=e4368]:
+              - text: δ(
+              - strong [ref=e4369]: r
+              - text: )
+            - cell "Dirac delta in 3-D" [ref=e4370]
+            - cell "Ch 01 §1.8.4 (implicit)" [ref=e4371]
+          - 'row "`\\delta(x)’ δ(x) Dirac delta in 1-D Ch 01 §1.8.4" [ref=e4372]':
+            - cell [ref=e4373]:
+              - img [ref=e4375]
+            - 'cell "`\\delta(x)’" [ref=e4386]'
+            - cell "δ(x)" [ref=e4387]
+            - cell "Dirac delta in 1-D" [ref=e4388]
+            - cell "Ch 01 §1.8.4" [ref=e4389]
+          - 'row "`\\delta_t(\\omega)’ δ_t(ω) “Nascent” delta, Ch 01 §1.8.4" [ref=e4390]':
+            - cell [ref=e4391]:
+              - img [ref=e4393]
+            - 'cell "`\\delta_t(\\omega)’" [ref=e4407]'
+            - cell "δ_t(ω)" [ref=e4408]
+            - cell "“Nascent” delta," [ref=e4409]:
+              - text: “Nascent” delta,
+              - img [ref=e4411]
+            - cell "Ch 01 §1.8.4" [ref=e4437]
+          - 'row "`\\varepsilon_{ijk}’ ε_ijk Levi-Civita symbol (3-D totally antisymmetric tensor) Ch 01 §1.4 (cross product)" [ref=e4438]':
+            - cell [ref=e4439]:
+              - img [ref=e4441]
+            - 'cell "`\\varepsilon_{ijk}’" [ref=e4454]'
+            - cell "ε_ijk" [ref=e4455]
+            - cell "Levi-Civita symbol (3-D totally antisymmetric tensor)" [ref=e4456]
+            - cell "Ch 01 §1.4 (cross product)" [ref=e4457]
+          - 'row "`\\operatorname{erf}(x)’ erf(x) Error function, Ch 00 §”Notation”; Ch 05 §5.5" [ref=e4458]':
+            - cell [ref=e4459]:
+              - img [ref=e4461]
+            - 'cell "`\\operatorname{erf}(x)’" [ref=e4474]'
+            - cell "erf(x)" [ref=e4475]
+            - cell "Error function," [ref=e4476]:
+              - text: Error function,
+              - img [ref=e4478]
+            - cell "Ch 00 §”Notation”; Ch 05 §5.5" [ref=e4514]
+          - 'row "`\\operatorname{erfc}(x)’ erfc(x) Complementary error function, Ch 05 §5.5" [ref=e4515]':
+            - cell [ref=e4516]:
+              - img [ref=e4518]
+            - 'cell "`\\operatorname{erfc}(x)’" [ref=e4532]'
+            - cell "erfc(x)" [ref=e4533]
+            - cell "Complementary error function," [ref=e4534]:
+              - text: Complementary error function,
+              - img [ref=e4536]
+            - cell "Ch 05 §5.5" [ref=e4553]
+          - 'row "`F_0(t)’ F_0(t) Boys function, Ch 00 §”Notation”; Ch 06 §6.3" [ref=e4554]':
+            - cell [ref=e4555]:
+              - img [ref=e4557]
+            - 'cell "`F_0(t)’" [ref=e4571]'
+            - cell "F_0(t)" [ref=e4572]
+            - cell "Boys function," [ref=e4573]:
+              - text: Boys function,
+              - img [ref=e4575]
+            - cell "Ch 00 §”Notation”; Ch 06 §6.3" [ref=e4638]
+          - 'row "`F_n(t)’ F_n(t) Higher-order Boys function (Ch 06 footnote) Ch 06 §6.3" [ref=e4639]':
+            - cell [ref=e4640]:
+              - img [ref=e4642]
+            - 'cell "`F_n(t)’" [ref=e4656]'
+            - cell "F_n(t)" [ref=e4657]
+            - cell "Higher-order Boys function (Ch 06 footnote)" [ref=e4658]
+            - cell "Ch 06 §6.3" [ref=e4659]
+          - 'row "`\\Gamma(z)’ Γ(z) Gamma function (factorial: ) Ch 01 §1.9 (implicit)" [ref=e4660]':
+            - cell [ref=e4661]:
+              - img [ref=e4663]
+            - 'cell "`\\Gamma(z)’" [ref=e4674]'
+            - cell "Γ(z)" [ref=e4675]
+            - 'cell "Gamma function (factorial: )" [ref=e4676]':
+              - text: "Gamma function (factorial:"
+              - img [ref=e4678]
+              - text: )
+            - cell "Ch 01 §1.9 (implicit)" [ref=e4699]
+          - 'row "`\\Theta(x)’ Θ(x) Heaviside step function (Fermi–Dirac smearing, ) Ch 07 §7.6.3 (implicit)" [ref=e4700]':
+            - cell [ref=e4701]:
+              - img [ref=e4703]
+            - 'cell "`\\Theta(x)’" [ref=e4714]'
+            - cell "Θ(x)" [ref=e4715]
+            - cell "Heaviside step function (Fermi–Dirac smearing, )" [ref=e4716]:
+              - text: Heaviside step function (Fermi–Dirac smearing,
+              - img [ref=e4718]
+              - text: )
+            - cell "Ch 07 §7.6.3 (implicit)" [ref=e4727]
+          - 'row "`\\mathcal F[f]’ F[f] Functional (variational) derivative; also the Fourier transform (context-dependent) Ch 04 §4.6" [ref=e4728]':
+            - cell [ref=e4729]:
+              - img [ref=e4731]
+            - 'cell "`\\mathcal F[f]’" [ref=e4743]'
+            - cell "F[f]" [ref=e4744]
+            - cell "Functional (variational) derivative; also the Fourier transform (context-dependent)" [ref=e4745]
+            - cell "Ch 04 §4.6" [ref=e4746]
+          - 'row "`\\delta f / \\delta \\rho’ δf/δρ Functional derivative of with respect to Ch 04 §4.2" [ref=e4747]':
+            - cell [ref=e4748]:
+              - img [ref=e4750]
+            - 'cell "`\\delta f / \\delta \\rho’" [ref=e4764]'
+            - cell "δf/δρ" [ref=e4765]
+            - cell "Functional derivative of with respect to" [ref=e4766]:
+              - text: Functional derivative of
+              - img [ref=e4768]
+              - text: with respect to
+              - img [ref=e4774]
+            - cell "Ch 04 §4.2" [ref=e4779]
+      - separator [ref=e4780]
+      - heading "8. Common operator shorthands" [level=2] [ref=e4781]
+      - paragraph [ref=e4782]: The differential operators, inner products, commutators, and shorthand notation that every chapter uses.
+      - table [ref=e4783]:
+        - rowgroup [ref=e4784]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e4785]:
+            - columnheader "Symbol" [ref=e4786]
+            - columnheader "LaTeX" [ref=e4787]
+            - columnheader "Plain text" [ref=e4788]
+            - columnheader "Description" [ref=e4789]
+            - columnheader "First appearance" [ref=e4790]
+        - rowgroup [ref=e4791]:
+          - 'row "`\\nabla’ ∇ (nabla) Gradient; in Cartesian components Ch 00 §”Notation”; Ch 01 §1.1" [ref=e4792]':
+            - cell [ref=e4793]:
+              - img [ref=e4795]
+            - 'cell "`\\nabla’" [ref=e4800]'
+            - cell "∇ (nabla)" [ref=e4801]
+            - cell "Gradient; in Cartesian components" [ref=e4802]:
+              - text: Gradient; in Cartesian components
+              - img [ref=e4804]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.1" [ref=e4830]
+          - 'row "`\\nabla^2’ ∇² Laplacian; Ch 00 §”Notation”; Ch 01 §1.1" [ref=e4831]':
+            - cell [ref=e4832]:
+              - img [ref=e4834]
+            - 'cell "`\\nabla^2’" [ref=e4842]'
+            - cell "∇²" [ref=e4843]
+            - cell "Laplacian;" [ref=e4844]:
+              - text: Laplacian;
+              - img [ref=e4846]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.1" [ref=e4865]
+          - 'row "`\\nabla_i’ ∇_i Gradient with respect to the -th electron’s coordinates Ch 01 §1.1" [ref=e4866]':
+            - cell [ref=e4867]:
+              - img [ref=e4869]
+            - 'cell "`\\nabla_i’" [ref=e4877]'
+            - cell "∇_i" [ref=e4878]
+            - cell "Gradient with respect to the -th electron’s coordinates" [ref=e4879]:
+              - text: Gradient with respect to the
+              - img [ref=e4881]
+              - text: "-th electron’s coordinates"
+            - cell "Ch 01 §1.1" [ref=e4886]
+          - 'row "‘\\int d\\mathbf r’ ∫ ‘d`r** Volume integral over all of Ch 00 §”Notation”; Ch 03 §3.2" [ref=e4887]':
+            - cell [ref=e4888]:
+              - img [ref=e4890]
+            - cell "‘\\int d\\mathbf r’" [ref=e4900]
+            - 'cell "∫ ‘d`r**" [ref=e4901]':
+              - text: ∫ ‘d
+              - emphasis [ref=e4902]: "`"
+              - text: r**
+            - cell "Volume integral over all of" [ref=e4903]:
+              - text: Volume integral over all of
+              - img [ref=e4905]
+            - cell "Ch 00 §”Notation”; Ch 03 §3.2" [ref=e4914]
+          - 'row "‘\\int d\\mathbf x’ ∫ ‘d`x** Volume + spin integral (sum over implicit) Ch 02 §2.2" [ref=e4915]':
+            - cell [ref=e4916]:
+              - img [ref=e4918]
+            - cell "‘\\int d\\mathbf x’" [ref=e4928]
+            - 'cell "∫ ‘d`x**" [ref=e4929]':
+              - text: ∫ ‘d
+              - emphasis [ref=e4930]: "`"
+              - text: x**
+            - cell "Volume + spin integral (sum over implicit)" [ref=e4931]:
+              - text: Volume + spin integral (sum over
+              - img [ref=e4933]
+              - text: implicit)
+            - cell "Ch 02 §2.2" [ref=e4938]
+          - 'row "`\\int d\\Omega’ ∫ dΩ Angular integral over the unit sphere Ch 01 §1.10" [ref=e4939]':
+            - cell [ref=e4940]:
+              - img [ref=e4942]
+            - 'cell "`\\int d\\Omega’" [ref=e4951]'
+            - cell "∫ dΩ" [ref=e4952]
+            - cell "Angular integral over the unit sphere" [ref=e4953]
+            - cell "Ch 01 §1.10" [ref=e4954]
+          - 'row "`\\partial / \\partial x’ ∂/∂x Partial derivative Ch 00 §”Notation”; Ch 01 §1.3" [ref=e4955]':
+            - cell [ref=e4956]:
+              - img [ref=e4958]
+            - 'cell "`\\partial / \\partial x’" [ref=e4970]'
+            - cell "∂/∂x" [ref=e4971]
+            - cell "Partial derivative" [ref=e4972]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.3" [ref=e4973]
+          - 'row "`\\partial_t’ ∂_t Partial derivative with respect to time Ch 00 §”Notation”; Ch 01 §1.2 (P5)" [ref=e4974]':
+            - cell [ref=e4975]:
+              - img [ref=e4977]
+            - 'cell "`\\partial_t’" [ref=e4985]'
+            - cell "∂_t" [ref=e4986]
+            - cell "Partial derivative with respect to time" [ref=e4987]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.2 (P5)" [ref=e4988]
+          - 'row "`\\partial_\\lambda’ ∂_λ Partial derivative with respect to a parameter (Hellmann–Feynman) Ch 04 §4.7.1" [ref=e4989]':
+            - cell [ref=e4990]:
+              - img [ref=e4992]
+            - 'cell "`\\partial_\\lambda’" [ref=e5000]'
+            - cell "∂_λ" [ref=e5001]
+            - cell "Partial derivative with respect to a parameter (Hellmann–Feynman)" [ref=e5002]:
+              - text: Partial derivative with respect to a parameter
+              - img [ref=e5004]
+              - text: (Hellmann–Feynman)
+            - cell "Ch 04 §4.7.1" [ref=e5009]
+          - 'row "`\\nabla \\cdot \\mathbf j’ ∇ ·j Divergence of the probability current Ch 01 §1.7.4" [ref=e5010]':
+            - cell [ref=e5011]:
+              - img [ref=e5013]
+            - 'cell "`\\nabla \\cdot \\mathbf j’" [ref=e5023]'
+            - cell "∇ ·j" [ref=e5024]:
+              - text: ∇ ·
+              - strong [ref=e5025]: j
+            - cell "Divergence of the probability current" [ref=e5026]
+            - cell "Ch 01 §1.7.4" [ref=e5027]
+          - 'row "`\\langle \\psi \\rvert \\phi \\rangle’ ⟨ψ|φ⟩ Bra–ket inner product Ch 00 §”Notation”; Ch 01 §1.2" [ref=e5028]':
+            - cell [ref=e5029]:
+              - img [ref=e5031]
+            - 'cell "`\\langle \\psi \\rvert \\phi \\rangle’" [ref=e5044]'
+            - cell "⟨ψ|φ⟩" [ref=e5045]
+            - cell "Bra–ket inner product" [ref=e5046]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.2" [ref=e5047]
+          - 'row "`\\langle \\hat A \\rangle’ ⟨A-hat⟩ Expectation value Ch 00 §”Notation”; Ch 01 §1.2 (P4)" [ref=e5048]':
+            - cell [ref=e5049]:
+              - img [ref=e5051]
+            - 'cell "`\\langle \\hat A \\rangle’" [ref=e5064]'
+            - cell "⟨A-hat⟩" [ref=e5065]
+            - cell "Expectation value" [ref=e5066]:
+              - text: Expectation value
+              - img [ref=e5068]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.2 (P4)" [ref=e5089]
+          - 'row "`[\\hat A, \\hat B]’ [A, B] Commutator, Ch 01 §1.4; Ch 01 §1.7.5" [ref=e5090]':
+            - cell [ref=e5091]:
+              - img [ref=e5093]
+            - 'cell "`[\\hat A, \\hat B]’" [ref=e5114]'
+            - cell "[A, B]" [ref=e5115]
+            - cell "Commutator," [ref=e5116]:
+              - text: Commutator,
+              - img [ref=e5118]
+            - cell "Ch 01 §1.4; Ch 01 §1.7.5" [ref=e5147]
+          - 'row "`{\\hat A, \\hat B}’ {A, B} Anticommutator, Ch 01 (rare)" [ref=e5148]':
+            - cell [ref=e5149]:
+              - img [ref=e5151]
+            - 'cell "`{\\hat A, \\hat B}’" [ref=e5169]'
+            - 'cell "{A, B}" [ref=e5170]'
+            - cell "Anticommutator," [ref=e5171]:
+              - text: Anticommutator,
+              - img [ref=e5173]
+            - cell "Ch 01 (rare)" [ref=e5202]
+          - 'row "`[\\hat A, \\hat B]_\\pm’ [A, B]_± Commutator (upper) or anticommutator (lower sign) Ch 01 (rare)" [ref=e5203]':
+            - cell [ref=e5204]:
+              - img [ref=e5206]
+            - 'cell "`[\\hat A, \\hat B]_\\pm’" [ref=e5230]'
+            - cell "[A, B]_±" [ref=e5231]
+            - cell "Commutator (upper) or anticommutator (lower sign)" [ref=e5232]
+            - cell "Ch 01 (rare)" [ref=e5233]
+          - 'row "`\\hat A^\\dagger’ A† Hermitian conjugate (adjoint) Ch 00 §”Notation”; Ch 01 §1.2 (P2)" [ref=e5234]':
+            - cell [ref=e5235]:
+              - img [ref=e5237]
+            - 'cell "`\\hat A^\\dagger’" [ref=e5249]'
+            - cell "A†" [ref=e5250]
+            - cell "Hermitian conjugate (adjoint)" [ref=e5251]
+            - cell "Ch 00 §”Notation”; Ch 01 §1.2 (P2)" [ref=e5252]
+          - 'row "`\\text{c.c.}’ c.c. Complex conjugate Ch 03 §3.6 (implicit)" [ref=e5253]':
+            - cell [ref=e5254]:
+              - img [ref=e5256]
+            - 'cell "`\\text{c.c.}’" [ref=e5264]'
+            - cell "c.c." [ref=e5265]
+            - cell "Complex conjugate" [ref=e5266]
+            - cell "Ch 03 §3.6 (implicit)" [ref=e5267]
+          - 'row "`\\text{H.c.}’ H.c. Hermitian conjugate (in informal contexts) Ch 03 (rare)" [ref=e5268]':
+            - cell [ref=e5269]:
+              - img [ref=e5271]
+            - 'cell "`\\text{H.c.}’" [ref=e5279]'
+            - cell "H.c." [ref=e5280]
+            - cell "Hermitian conjugate (in informal contexts)" [ref=e5281]
+            - cell "Ch 03 (rare)" [ref=e5282]
+          - 'row "`\\text{Tr}’ Tr Trace (of a matrix) Ch 03 §3.6.4" [ref=e5283]':
+            - cell [ref=e5284]:
+              - img [ref=e5286]
+            - 'cell "`\\text{Tr}’" [ref=e5292]'
+            - cell "Tr" [ref=e5293]
+            - cell "Trace (of a matrix)" [ref=e5294]
+            - cell "Ch 03 §3.6.4" [ref=e5295]
+          - 'row "`\\det’ det Determinant (of a matrix) Ch 02 §2.2" [ref=e5296]':
+            - cell [ref=e5297]:
+              - img [ref=e5299]
+            - 'cell "`\\det’" [ref=e5306]'
+            - cell "det" [ref=e5307]
+            - cell "Determinant (of a matrix)" [ref=e5308]
+            - cell "Ch 02 §2.2" [ref=e5309]
+          - 'row "`\\text{diag}(\\dots)’ diag(…) Diagonal matrix with the given diagonal entries Ch 03 §3.6.5" [ref=e5310]':
+            - cell [ref=e5311]:
+              - img [ref=e5313]
+            - 'cell "`\\text{diag}(\\dots)’" [ref=e5327]'
+            - cell "diag(…)" [ref=e5328]
+            - cell "Diagonal matrix with the given diagonal entries" [ref=e5329]
+            - cell "Ch 03 §3.6.5" [ref=e5330]
+          - 'row "`\\lVert \\mathbf v \\rVert’ |v| Vector 2-norm Ch 03 §3.3" [ref=e5331]':
+            - cell [ref=e5332]:
+              - img [ref=e5334]
+            - 'cell "`\\lVert \\mathbf v \\rVert’" [ref=e5344]'
+            - cell "|v|" [ref=e5345]:
+              - text: "|"
+              - strong [ref=e5346]: v
+              - text: "|"
+            - cell "Vector 2-norm" [ref=e5347]
+            - cell "Ch 03 §3.3" [ref=e5348]
+          - 'row "`\\lVert f \\rVert’ |f| Function norm, Ch 01 §1.2" [ref=e5349]':
+            - cell [ref=e5350]:
+              - img [ref=e5352]
+            - 'cell "`\\lVert f \\rVert’" [ref=e5361]'
+            - cell "|f|" [ref=e5362]
+            - cell "Function norm," [ref=e5363]:
+              - text: Function
+              - img [ref=e5365]
+              - text: norm,
+              - img [ref=e5374]
+            - cell "Ch 01 §1.2" [ref=e5392]
+      - separator [ref=e5393]
+      - heading "9. Linear-algebra notation" [level=2] [ref=e5394]
+      - paragraph [ref=e5395]:
+        - text: The conventions used in every chapter that touches a matrix or a vector. Vectors are lowercase bold (
+        - img [ref=e5397]
+        - text: ); matrices are uppercase bold (
+        - img [ref=e5404]
+        - text: ). The exception is the bra–ket, which uses upright letters in Dirac notation (see §3).
+      - paragraph [ref=e5410]:
+        - text: "| Symbol | LaTeX | Plain text | Description | First appearance | |:——|:——|:———–|:————|:—————–| |"
+        - img [ref=e5412]
+        - text: ","
+        - img [ref=e5419]
+        - text: "| ‘\\mathbf A’,"
+        - code [ref=e5425]: \mathbf B' | **A**, **B** | Generic matrices | Ch 00 §"Notation" | | $\mathbf v$, $\mathbf w$ | '\mathbf v',
+        - text: \mathbf w’ |
+        - strong [ref=e5426]: v
+        - text: ","
+        - strong [ref=e5427]: w
+        - text: "| Generic column vectors | Ch 00 §”Notation” | |"
+        - img [ref=e5429]
+        - text: "|"
+        - code [ref=e5440]: "A_{ij}' | A_ij | The $(i, j)$ matrix element | Ch 00 §\"Notation\" | | $v_i$ |"
+        - text: v_i
+        - code [ref=e5441]: "' | v_i | The $i$-th component of $\\mathbf v$ | Ch 00 §\"Notation\" | | $\\mathbf A^T$ |"
+        - text: \mathbf A^T’ |
+        - strong [ref=e5442]: A
+        - text: ^T | Transpose | Ch 00 §”Notation” | |
+        - img [ref=e5444]
+        - text: "|"
+        - code [ref=e5453]: \mathbf A^\dagger' | **A**† | Conjugate transpose (Hermitian adjoint) | Ch 00 §"Notation"; Ch 03 §3.6.6 | | $\mathbf A^*$ |
+        - text: \mathbf A^
+        - emphasis [ref=e5454]:
+          - text: ’ |
+          - strong [ref=e5455]: A
+        - text: "| Element-wise complex conjugate (rarely used alone) | Ch 03 (rare) | |"
+        - img [ref=e5457]
+        - text: "|"
+        - code [ref=e5469]: "\\mathbf A^{-1}' | **A**⁻¹ | Matrix inverse | Ch 03 §3.6.6 (Löwdin) | | $\\mathbf A^{-1/2}$ |"
+        - text: "\\mathbf A^{-1/2}’ |"
+        - strong [ref=e5470]: A
+        - text: "^{-1/2} | Inverse square root (defined for positive-definite"
+        - img [ref=e5472]
+        - text: ) | Ch 03 §3.6.6 | |
+        - img [ref=e5479]
+        - text: /
+        - img [ref=e5486]
+        - text: "| ‘\\mathbf I’,"
+        - code [ref=e5492]: \mathbf 1' | **I**, **1** | Identity matrix (of the appropriate size) | Ch 00 §"Notation"; Ch 01 §1.2 (P1) | | $\mathbf 0$ |
+        - text: \mathbf 0’ |
+        - strong [ref=e5493]: "0"
+        - text: "| Zero matrix or zero vector | Ch 03 (implicit) | |"
+        - img [ref=e5495]
+        - text: "|"
+        - code [ref=e5508]: "\\text{Tr}(\\mathbf A)' | Tr(**A**) | Trace | Ch 03 §3.6.4 | | $\\det(\\mathbf A)$ |"
+        - text: \det(\mathbf A)’ | det(
+        - strong [ref=e5509]: A
+        - text: ) | Determinant | Ch 00 §”Notation”; Ch 02 §2.1 | |
+        - img [ref=e5511]
+        - text: "|"
+        - code [ref=e5522]: \mathbf A \otimes \mathbf B' | **A** ⊗ **B** | Tensor (Kronecker) product | Ch 02 §2.1 (implicit) | | $\langle \mathbf u, \mathbf v \rangle$ |
+        - text: \langle \mathbf u, \mathbf v \rangle’ | ⟨
+        - strong [ref=e5523]: u
+        - text: ","
+        - strong [ref=e5524]: v
+        - text: ⟩ | Euclidean inner product,
+        - img [ref=e5526]
+        - text: "| Ch 00 §”Notation” | |"
+        - img [ref=e5547]
+        - text: "|"
+        - code [ref=e5558]: "\\mathbf u \\cdot \\mathbf v' | **u** · **v** | Euclidean inner product (real vectors) | Ch 00 §\"Notation\" | | $\\text{einsum}$ |"
+        - text: "\\text{einsum}’ | einsum | NumPy’s Einstein summation convention (programming shorthand) | Ch 03 §3.3 | |"
+        - img [ref=e5560]
+        - text: "|"
+        - code [ref=e5565]: \boldsymbol\Lambda' | **Λ** | Diagonal matrix of eigenvalues | Ch 00 §"Notation" (linear-algebra bullet) | | $\mathbf U$ |
+        - text: \mathbf U’ |
+        - strong [ref=e5566]: U
+        - text: "| Unitary matrix (e.g."
+        - img [ref=e5568]
+        - text: ) | Ch 00 §”Notation” (linear-algebra bullet) | |
+        - img [ref=e5588]
+        - text: "|"
+        - code [ref=e5603]: \sigma(\hat H)' | σ(H-hat) | Spectrum of $\hat H$ | Ch 01 §1.1 | | $\rho(\mathbf A)$ |
+        - text: \rho(\mathbf A)’ | ρ(
+        - strong [ref=e5604]: A
+        - text: ) | Spectral radius of
+        - img [ref=e5606]
+        - text: "| Ch 04 §4.6.2 | |"
+        - img [ref=e5613]
+        - text: "|"
+        - code [ref=e5623]: \lVert \mathbf A \rVert' | \|**A**\| | Matrix norm (operator, Frobenius, etc.; usually clear from context) | Ch 03 §3.3 | | $O(\cdot)$ |
+        - text: O(\cdot)’ | O(·) | Big-O notation (asymptotic scaling) | Ch 03 §3.8 | |
+        - img [ref=e5625]
+        - text: "| `o(\\cdot)’ | o(·) | Little-o notation | Ch 01 §1.8 |"
+      - separator [ref=e5636]
+      - heading "10. Crystallographic notation" [level=2] [ref=e5637]
+      - paragraph [ref=e5638]: The notation that enters with chapter 07 (solids & PBC) and is reused in chapters 08 (pseudopotentials), 10 (phonons), and 11 (band structures).
+      - paragraph [ref=e5639]:
+        - text: "| Symbol | LaTeX | Plain text | Description | First appearance | |:——|:——|:———–|:————|:—————–| |"
+        - img [ref=e5641]
+        - text: "| ‘\\mathbf a_1’, ‘\\mathbf a_2’,"
+        - code [ref=e5666]: \mathbf a_3' | **a_1, a_2, a_3** | Direct-lattice primitive vectors | Ch 07 §7.2.1 | | $\mathbf b_1, \mathbf b_2, \mathbf b_3$ | '\mathbf b_1', '\mathbf b_2',
+        - text: \mathbf b_3’ |
+        - strong [ref=e5667]: b_1, b_2, b_3
+        - text: "| Reciprocal-lattice primitive vectors,"
+        - img [ref=e5669]
+        - text: "| Ch 07 §7.4.1 | |"
+        - img [ref=e5701]
+        - text: "|"
+        - code [ref=e5746]: \mathbf R' | **R** | Generic Bravais-lattice vector ($n_i \in \mathbb Z$) | Ch 07 §7.1 | | $\mathbf G = h \mathbf b_1 + k \mathbf b_2 + l \mathbf b_3$ |
+        - text: \mathbf G’ |
+        - strong [ref=e5747]: G
+        - text: "| Reciprocal-lattice vector ("
+        - img [ref=e5749]
+        - text: ) | Ch 07 §7.4.1 | |
+        - img [ref=e5768]
+        - text: "|"
+        - code [ref=e5774]: \mathbf k' | **k** | Crystal momentum / Bloch wavevector; lives in the 1st BZ | Ch 07 §7.1 | | $\mathbf q$ |
+        - text: \mathbf q’ |
+        - strong [ref=e5775]: q
+        - text: "| Phonon wavevector; or a generic reciprocal-space wavevector in a response function | Ch 10 (planned); Ch 11 (planned) | |"
+        - img [ref=e5777]
+        - text: "|"
+        - code [ref=e5782]: "\\Omega' | Ω | Volume of the primitive cell; also: supercell volume in BvK | Ch 00 §\"Notation\"; Ch 07 §7.5.1 | | $V_\\text{cell}$ |"
+        - text: "V_\\text{cell}’ | V_cell | Same as"
+        - img [ref=e5784]
+        - text: "(alternative notation) | Ch 07 §7.4.1 | | $V_\\text{BZ}^"
+        - emphasis [ref=e5789]: "$ | V_\\text{BZ}^"
+        - text: ’ | V_BZ | Volume of the reciprocal primitive cell,
+        - img [ref=e5791]
+        - text: "| Ch 07 §7.4.1 | |"
+        - img [ref=e5817]
+        - text: "|"
+        - code [ref=e5822]: \Gamma' | Γ | Centre of the Brillouin zone, $\mathbf k = \mathbf 0$ | Ch 07 §7.4.3 | | $X$, $L$, $W$, $K$, $U$ |
+        - text: X
+        - code [ref=e5823]: ","
+        - text: L
+        - code [ref=e5824]: ","
+        - text: W
+        - code [ref=e5825]: ","
+        - text: K
+        - code [ref=e5826]: ","
+        - text: U
+        - code [ref=e5827]: "' | X, L, W, K, U | High-symmetry points of the FCC Brillouin zone (Setyawan–Curtarolo) | Ch 07 §7.4.3 | | $N_\\mathbf k$ |"
+        - text: N_\mathbf k’ | N_
+        - strong [ref=e5828]: k
+        - text: "| Number of"
+        - img [ref=e5830]
+        - text: "-points in the BZ sampling mesh | Ch 07 §7.2.2 | |"
+        - img [ref=e5837]
+        - text: "|"
+        - code [ref=e5846]: w_\mathbf k' | w_**k** | Weight of $\mathbf k$-point in the BZ sum | Ch 07 §7.2.2 | | $N_1, N_2, N_3$ |
+        - text: N_1
+        - code [ref=e5847]: ","
+        - text: N_2
+        - code [ref=e5848]: ","
+        - text: N_3
+        - code [ref=e5849]: "' | N_1, N_2, N_3 | BvK supercell dimensions; also Monkhorst–Pack mesh sizes | Ch 07 §7.2.1 | | $m_i$ |"
+        - text: m_i
+        - code [ref=e5850]: "' | m_i | Monkhorst–Pack mesh index along direction $i$ | Ch 07 §7.6.1 | | $a$ |"
+        - text: a
+        - code [ref=e5851]: "' | a | Cubic lattice parameter (when applicable) | Ch 07 §7.4.3 | | $V_{ps,l}(r)$ |"
+        - text: "V_{ps,l}(r)’ | V_ps,l(r) | Channel-dependent pseudopotential | Ch 08 §8.1 | |"
+        - img [ref=e5853]
+        - text: "|"
+        - code [ref=e5861]: r_c
+        - text: ’ | r_c | Pseudopotential cutoff radius | Ch 08 §8.1 | |
+        - img [ref=e5863]
+        - text: "|"
+        - code [ref=e5877]: \phi_l(r)' | φ_l(r) | Pseudo-wavefunction in channel $l$ | Ch 08 §8.1 | | $u_l(r)$ |
+        - text: u_l(r)’ | u_l(r) | All-electron radial wavefunction in channel
+        - img [ref=e5879]
+        - text: "| Ch 08 §8.1 | |"
+        - img [ref=e5885]
+        - text: "|"
+        - code [ref=e5893]: E_l
+        - text: ’ | E_l | Valence eigenvalue used to construct the pseudo | Ch 08 §8.1 | |
+        - img [ref=e5895]
+        - text: "|"
+        - code [ref=e5909]: "D_l(E)' | D_l(E) | Logarithmic derivative of the radial wavefunction at $r_c$ | Ch 08 §8.3 | | $Z_\\text{core}$ |"
+        - text: "Z_\\text{core}’ | Z_core | Number of core electrons removed by the pseudopotential | Ch 08 §8.2 |"
+      - blockquote [ref=e5910]:
+        - paragraph [ref=e5911]:
+          - strong [ref=e5912]: Warning.
+          - text: The labels
+          - img [ref=e5914]
+          - text: and
+          - img [ref=e5920]
+          - text: "are reused across chapters:"
+          - img [ref=e5926]
+          - text: is the
+          - emphasis [ref=e5931]: basis size
+          - text: in chapters 03 and 06, the
+          - emphasis [ref=e5932]: Bloch wavevector
+          - img [ref=e5934]
+          - text: in chapter 07, and a
+          - emphasis [ref=e5940]: high-symmetry point
+          - text: in chapter 07 (the FCC band-structure path).
+          - img [ref=e5942]
+          - text: is the
+          - emphasis [ref=e5947]: angular-momentum quantum number
+          - text: in chapter 01 and a
+          - emphasis [ref=e5948]: high-symmetry point
+          - text: in chapter 07. The context always disambiguates.
+      - separator [ref=e5949]
+      - heading "11. Phonon notation" [level=2] [ref=e5950]
+      - paragraph [ref=e5951]: The symbols that appear in chapter 10 (phonons & vibrations, planned) and the sections of chapters 04 and 09 that prefigure it.
+      - paragraph [ref=e5952]:
+        - text: "| Symbol | LaTeX | Plain text | Description | First appearance | |:——|:——|:———–|:————|:—————–| |"
+        - img [ref=e5954]
+        - text: "|"
+        - code [ref=e5959]: "\\omega' | omega | Phonon angular frequency | (planned: ch 10) | | $\\omega_\\nu(\\mathbf q)$ |"
+        - text: \omega_\nu(\mathbf q)’ | ω_ν(
+        - strong [ref=e5960]: q
+        - text: ) | Frequency of branch
+        - img [ref=e5962]
+        - text: at wavevector
+        - img [ref=e5968]
+        - text: "| (planned: ch 10) | |"
+        - img [ref=e5975]
+        - text: "|"
+        - code [ref=e5981]: "\\mathbf q' | **q** | Phonon wavevector (lives in the 1st BZ) | (planned: ch 10) | | $D_{ij}(\\mathbf R)$ |"
+        - text: "D_{ij}(\\mathbf R)’ | D_ij("
+        - strong [ref=e5982]: R
+        - text: ) | Force-constant matrix between atoms in cell
+        - img [ref=e5984]
+        - text: and cell
+        - img [ref=e5991]
+        - text: "| (planned: ch 10) | |"
+        - img [ref=e5998]
+        - text: "|"
+        - code [ref=e6016]: "D_{ij}(\\mathbf q)' | D_ij(**q**) | Dynamical matrix: Fourier transform of $D_{ij}(\\mathbf R)$ | (planned: ch 10) | | $M_I$ |"
+        - text: M_I
+        - code [ref=e6017]: "' | M_I | Mass of nucleus $I$ (in units of $m_e$) | (planned: ch 10) | | $F_{\\mu\\nu}^\\text{ph}$ |"
+        - text: "F_{\\mu\\nu}^\\text{ph}’ | F_μν^ph | Phonon force-constant supermatrix (mass-weighted) | (planned: ch 10) | |"
+        - img [ref=e6019]
+        - text: "|"
+        - code [ref=e6041]: "e_{I\\alpha,\\nu}(\\mathbf q)' | e_{Iα,ν}(**q**) | Phonon polarisation vector: displacement of atom $I$ in direction $\\alpha$ for branch $\\nu$ | (planned: ch 10) | | $\\epsilon_{\\alpha\\beta}$ |"
+        - text: "\\epsilon_{\\alpha\\beta}’ | ε_αβ | Strain tensor; or symmetrised strain in elasticity | Ch 04 §4.7.4 | |"
+        - img [ref=e6043]
+        - text: "| `\\sigma_{\\alpha\\beta}’ | σ_αβ | Stress tensor | Ch 04 §4.7.4 |"
+      - separator [ref=e6054]
+      - heading "12. Relativistic notation" [level=2] [ref=e6055]
+      - paragraph [ref=e6056]: The symbols that enter with chapter 04 §4.9 (relativistic KS DFT) and that are flagged for the planned chapters 12 (TDDFT, where spin–orbit is sometimes needed) and 13 (DFT+U & beyond).
+      - table [ref=e6057]:
+        - rowgroup [ref=e6058]:
+          - row "Symbol LaTeX Plain text Description First appearance" [ref=e6059]:
+            - columnheader "Symbol" [ref=e6060]
+            - columnheader "LaTeX" [ref=e6061]
+            - columnheader "Plain text" [ref=e6062]
+            - columnheader "Description" [ref=e6063]
+            - columnheader "First appearance" [ref=e6064]
+        - rowgroup [ref=e6065]:
+          - 'row "`\\boldsymbol\\alpha’ alpha Dirac matrix (vector of three 4×4 matrices) Ch 04 §4.9.1" [ref=e6066]':
+            - cell [ref=e6067]:
+              - img [ref=e6069]
+            - 'cell "`\\boldsymbol\\alpha’" [ref=e6074]'
+            - cell "alpha" [ref=e6075]:
+              - strong [ref=e6076]: alpha
+            - cell "Dirac matrix (vector of three 4×4 matrices)" [ref=e6077]
+            - cell "Ch 04 §4.9.1" [ref=e6078]
+          - 'row "`\\boldsymbol\\beta’ beta Dirac matrix (single 4×4 matrix) Ch 04 §4.9.1" [ref=e6079]':
+            - cell [ref=e6080]:
+              - img [ref=e6082]
+            - 'cell "`\\boldsymbol\\beta’" [ref=e6087]'
+            - cell "beta" [ref=e6088]:
+              - strong [ref=e6089]: beta
+            - cell "Dirac matrix (single 4×4 matrix)" [ref=e6090]
+            - cell "Ch 04 §4.9.1" [ref=e6091]
+          - 'row "\\gamma^5, `\\gamma_5’ γ⁵, γ_5 Chirality matrix, in the Dirac representation Ch 04 §4.9 (referenced)" [ref=e6092]':
+            - cell [ref=e6093]:
+              - img [ref=e6095]
+            - 'cell "\\gamma^5, `\\gamma_5’" [ref=e6110]':
+              - code [ref=e6111]: \gamma^5
+              - text: ", `\\gamma_5’"
+            - cell "γ⁵, γ_5" [ref=e6112]
+            - cell "Chirality matrix, in the Dirac representation" [ref=e6113]:
+              - text: Chirality matrix,
+              - img [ref=e6115]
+              - text: in the Dirac representation
+            - cell "Ch 04 §4.9 (referenced)" [ref=e6140]
+          - 'row "`\\sigma^{\\mu\\nu}’ σ^{μν} Generator of Lorentz transformations on Dirac spinors; appears in the spin–orbit coupling Ch 04 §4.9.2 (implicit)" [ref=e6141]':
+            - cell [ref=e6142]:
+              - img [ref=e6144]
+            - 'cell "`\\sigma^{\\mu\\nu}’" [ref=e6180]'
+            - 'cell "σ^{μν}" [ref=e6181]'
+            - cell "Generator of Lorentz transformations on Dirac spinors; appears in the spin–orbit coupling" [ref=e6182]
+            - cell "Ch 04 §4.9.2 (implicit)" [ref=e6183]
+          - 'row "`\\hat H_\\text{Dirac}’ H_Dirac-hat Dirac Hamiltonian, Ch 04 §4.9.1" [ref=e6184]':
+            - cell [ref=e6185]:
+              - img [ref=e6187]
+            - 'cell "`\\hat H_\\text{Dirac}’" [ref=e6203]'
+            - cell "H_Dirac-hat" [ref=e6204]
+            - cell "Dirac Hamiltonian," [ref=e6205]:
+              - text: Dirac Hamiltonian,
+              - img [ref=e6207]
+            - cell "Ch 04 §4.9.1" [ref=e6245]
+          - 'row ", \\Phi^L, `\\Phi^S’ Φ^L, Φ^S “Large” and “small” 2-component spinors of the Dirac 4-spinor Ch 04 §4.9.2" [ref=e6246]':
+            - cell "," [ref=e6247]:
+              - img [ref=e6249]
+              - text: ","
+              - img [ref=e6258]
+            - 'cell "\\Phi^L, `\\Phi^S’" [ref=e6266]':
+              - code [ref=e6267]: \Phi^L
+              - text: ", `\\Phi^S’"
+            - cell "Φ^L, Φ^S" [ref=e6268]
+            - cell "“Large” and “small” 2-component spinors of the Dirac 4-spinor" [ref=e6269]
+            - cell "Ch 04 §4.9.2" [ref=e6270]
+          - 'row "`\\xi(r)’ ξ(r) Spin–orbit coupling strength; Ch 04 §4.9.2" [ref=e6271]':
+            - cell [ref=e6272]:
+              - img [ref=e6274]
+            - 'cell "`\\xi(r)’" [ref=e6285]'
+            - cell "ξ(r)" [ref=e6286]
+            - cell "Spin–orbit coupling strength;" [ref=e6287]:
+              - text: Spin–orbit coupling strength;
+              - img [ref=e6289]
+            - cell "Ch 04 §4.9.2" [ref=e6340]
+          - 'row "`\\hat H_\\text{SO}’ H_SO-hat Spin–orbit coupling operator, Ch 04 §4.9.2" [ref=e6341]':
+            - cell [ref=e6342]:
+              - img [ref=e6344]
+            - 'cell "`\\hat H_\\text{SO}’" [ref=e6357]'
+            - cell "H_SO-hat" [ref=e6358]
+            - cell "Spin–orbit coupling operator," [ref=e6359]:
+              - text: Spin–orbit coupling operator,
+              - img [ref=e6361]
+            - cell "Ch 04 §4.9.2" [ref=e6388]
+          - 'row "`\\hat H_\\text{Pauli}’ H_Pauli-hat Pauli (non-relativistic limit) Hamiltonian, Ch 04 §4.9.2" [ref=e6389]':
+            - cell [ref=e6390]:
+              - img [ref=e6392]
+            - 'cell "`\\hat H_\\text{Pauli}’" [ref=e6408]'
+            - cell "H_Pauli-hat" [ref=e6409]
+            - cell "Pauli (non-relativistic limit) Hamiltonian," [ref=e6410]:
+              - text: Pauli (non-relativistic limit) Hamiltonian,
+              - img [ref=e6412]
+            - cell "Ch 04 §4.9.2" [ref=e6454]
+          - 'row "`\\Delta_\\text{x}’ Δ_x Exchange splitting (spin-up vs spin-down band shift) Ch 04 §4.8.3" [ref=e6455]':
+            - cell [ref=e6456]:
+              - img [ref=e6458]
+            - 'cell "`\\Delta_\\text{x}’" [ref=e6466]'
+            - cell "Δ_x" [ref=e6467]
+            - cell "Exchange splitting (spin-up vs spin-down band shift)" [ref=e6468]
+            - cell "Ch 04 §4.8.3" [ref=e6469]
+          - 'row "`\\Delta E_\\text{BSIE}’ ΔE_BSIE Basis-set incompleteness error (alias ) Ch 06 §6.2" [ref=e6470]':
+            - cell [ref=e6471]:
+              - img [ref=e6473]
+            - 'cell "`\\Delta E_\\text{BSIE}’" [ref=e6486]'
+            - cell "ΔE_BSIE" [ref=e6487]
+            - cell "Basis-set incompleteness error (alias )" [ref=e6488]:
+              - text: Basis-set incompleteness error (alias
+              - img [ref=e6490]
+              - text: )
+            - cell "Ch 06 §6.2" [ref=e6509]
+          - 'row "`\\mathbf B_\\text{xc}(\\mathbf r)’ B_xc(r) XC magnetic field in non-collinear spin DFT, Ch 04 §4.8.4" [ref=e6510]':
+            - cell [ref=e6511]:
+              - img [ref=e6513]
+            - 'cell "`\\mathbf B_\\text{xc}(\\mathbf r)’" [ref=e6530]'
+            - cell "B_xc(r)" [ref=e6531]:
+              - strong [ref=e6532]: B
+              - text: _xc(
+              - strong [ref=e6533]: r
+              - text: )
+            - cell "XC magnetic field in non-collinear spin DFT," [ref=e6534]:
+              - text: XC magnetic field in non-collinear spin DFT,
+              - img [ref=e6536]
+            - cell "Ch 04 §4.8.4" [ref=e6555]
+          - 'row "(relativistic) `\\zeta’ zeta Speed ratio (in the Pauli expansion); often written Ch 04 §4.9.2" [ref=e6556]':
+            - cell "(relativistic)" [ref=e6557]:
+              - img [ref=e6559]
+              - text: (relativistic)
+            - 'cell "`\\zeta’" [ref=e6564]'
+            - cell "zeta" [ref=e6565]
+            - cell "Speed ratio (in the Pauli expansion); often written" [ref=e6566]:
+              - text: Speed ratio
+              - img [ref=e6568]
+              - text: (in the Pauli expansion); often written
+              - img [ref=e6579]
+            - cell "Ch 04 §4.9.2" [ref=e6589]
+      - blockquote [ref=e6590]:
+        - paragraph [ref=e6591]:
+          - strong [ref=e6592]: Note.
+          - text: The spin label
+          - img [ref=e6594]
+          - text: used in collinear spin DFT (chapter 04 §4.8) and the Pauli-matrix vector
+          - img [ref=e6600]
+          - text: (chapter 04 §4.8.4 onward) are deliberately the same Greek letter; the boldface
+          - img [ref=e6606]
+          - text: identifies the
+          - emphasis [ref=e6611]: matrix
+          - text: unambiguously. In inline text the bare
+          - img [ref=e6613]
+          - text: is the spin label.
+      - separator [ref=e6618]
+      - heading "13. Conventions summary" [level=2] [ref=e6619]
+      - paragraph [ref=e6620]:
+        - text: The cross-chapter defaults that hold unless a chapter explicitly overrides them. When a chapter
+        - emphasis [ref=e6621]: does
+        - text: override (e.g. SI units for a spectroscopy result, atomic units for the hydrogen 1s example), the override is announced at the top of the chapter.
+      - heading "13.1 Atomic units" [level=3] [ref=e6622]
+      - paragraph [ref=e6623]:
+        - strong [ref=e6624]: "Default throughout the notes: atomic units."
+        - img [ref=e6626]
+        - text: . Lengths in Bohr (
+        - img [ref=e6658]
+        - text: Å); energies in Hartree (
+        - img [ref=e6678]
+        - text: eV); charges in units of
+        - img [ref=e6697]
+        - text: ; masses in units of
+        - img [ref=e6703]
+        - text: . Times are in
+        - img [ref=e6712]
+        - text: s. The kinetic-energy operator for a single electron is
+        - img [ref=e6747]
+        - text: (not
+        - img [ref=e6765]
+        - text: ); the Coulomb interaction between two charges is
+        - img [ref=e6788]
+        - text: (not
+        - img [ref=e6799]
+        - text: ).
+      - heading "13.2 Sign convention for the Fourier transform" [level=3] [ref=e6821]
+      - paragraph [ref=e6822]:
+        - strong [ref=e6823]: "Default convention:"
+      - img [ref=e6825]
+      - paragraph [ref=e6957]:
+        - text: "The plane wave basis in chapter 06 / 07 follows the same convention:"
+        - img [ref=e6959]
+        - text: . The opposite sign convention is used in some engineering texts; check when reading a citation.
+      - heading "13.3 Definition of the ERI" [level=3] [ref=e7019]
+      - paragraph [ref=e7020]:
+        - text: The notes use the
+        - strong [ref=e7021]: chemists’ notation
+        - text: "for the electron-repulsion integral (ERI):"
+      - img [ref=e7023]
+      - paragraph [ref=e7151]:
+        - text: The bar separates the bra pair
+        - img [ref=e7153]
+        - text: from the ket pair
+        - img [ref=e7165]
+        - text: . The
+        - strong [ref=e7176]: physicists’ notation
+        - img [ref=e7178]
+        - text: differs only by
+        - img [ref=e7198]
+        - text: ordering (the physicists’ integral is
+        - img [ref=e7228]
+        - text: "in chemists’ notation). The 8-fold permutational symmetry (Ch 03 §3.6.3) holds for both notations with real basis functions:"
+      - img [ref=e7246]
+      - heading "13.4 Matrix sign and order" [level=3] [ref=e7315]
+      - list [ref=e7316]:
+        - listitem [ref=e7317]:
+          - img [ref=e7319]
+          - text: is the Roothaan–Hall GEP, with the Fock matrix on the
+          - emphasis [ref=e7338]: left
+          - text: . The MO coefficients are the columns of
+          - img [ref=e7340]
+          - text: .
+        - listitem [ref=e7346]:
+          - text: The density matrix in a closed-shell calculation is
+          - img [ref=e7348]
+          - text: .
+        - listitem [ref=e7376]:
+          - text: The HF energy in the AO basis is
+          - img [ref=e7378]
+          - text: ; the
+          - emphasis [ref=e7418]: "hal`f"
+          - text: ’ accounts for the double-counting correction in
+          - img [ref=e7420]
+          - text: .
+      - heading "13.5 Occupation and spin" [level=3] [ref=e7436]
+      - list [ref=e7437]:
+        - listitem [ref=e7438]:
+          - strong [ref=e7439]: "Restricted (closed-shell):"
+          - text: all spatial orbitals doubly occupied,
+          - img [ref=e7441]
+          - text: even,
+          - img [ref=e7447]
+          - text: spatial orbitals.
+          - img [ref=e7458]
+          - text: .
+        - listitem [ref=e7512]:
+          - strong [ref=e7513]: "Unrestricted (UHF):"
+          - img [ref=e7515]
+          - text: and
+          - img [ref=e7521]
+          - text: spatial orbitals are
+          - emphasis [ref=e7526]: different
+          - text: ; occupations
+          - img [ref=e7528]
+          - text: .
+          - img [ref=e7544]
+          - text: .
+        - listitem [ref=e7575]:
+          - strong [ref=e7576]: "Restricted open-shell (ROHF):"
+          - text: open-shell electrons are unpaired, but the wavefunction is a spin eigenfunction. See Ch 03 §3.7.7 for the trade-off vs UHF.
+      - heading "13.6 Phonon and band index conventions" [level=3] [ref=e7577]
+      - list [ref=e7578]:
+        - listitem [ref=e7579]:
+          - strong [ref=e7580]: "Bands:"
+          - img [ref=e7582]
+          - text: is the band index,
+          - img [ref=e7588]
+          - text: the wavevector. In equation labels,
+          - img [ref=e7595]
+          - text: .
+        - listitem [ref=e7607]:
+          - strong [ref=e7608]: "Phonons:"
+          - img [ref=e7610]
+          - text: is the branch index,
+          - img [ref=e7616]
+          - text: the wavevector. In equation labels,
+          - img [ref=e7623]
+          - text: .
+        - listitem [ref=e7638]:
+          - strong [ref=e7639]: Conventions differ by community
+          - text: (e.g. solid-state physics uses
+          - img [ref=e7641]
+          - text: for electrons,
+          - img [ref=e7648]
+          - text: for phonons; some optics texts swap them). The DFT Notes follow the solid-state convention.
+      - heading "13.7 Where to look for deviations" [level=3] [ref=e7654]
+      - table [ref=e7655]:
+        - rowgroup [ref=e7656]:
+          - row "Chapter Override" [ref=e7657]:
+            - columnheader "Chapter" [ref=e7658]
+            - columnheader "Override" [ref=e7659]
+        - rowgroup [ref=e7660]:
+          - row "Ch 01 §1.10.7 SI factors pulled in for the hydrogen 2p→1s spontaneous emission rate ( , )." [ref=e7661]:
+            - cell "Ch 01 §1.10.7" [ref=e7662]
+            - cell "SI factors pulled in for the hydrogen 2p→1s spontaneous emission rate ( , )." [ref=e7663]:
+              - text: SI factors pulled in for the hydrogen 2p→1s spontaneous emission rate (
+              - img [ref=e7665]
+              - text: ","
+              - img [ref=e7671]
+              - text: ).
+          - row "Ch 01 §1.8.3 Conventional TDPT prefactor in SI; set to 1 in atomic units." [ref=e7676]:
+            - cell "Ch 01 §1.8.3" [ref=e7677]
+            - cell "Conventional TDPT prefactor in SI; set to 1 in atomic units." [ref=e7678]:
+              - text: Conventional TDPT prefactor
+              - img [ref=e7680]
+              - text: in SI; set to 1 in atomic units.
+          - row "Ch 04 §4.9.1 Dirac equation written with and explicit, then Pauli limit recovers atomic units." [ref=e7690]:
+            - cell "Ch 04 §4.9.1" [ref=e7691]
+            - cell "Dirac equation written with and explicit, then Pauli limit recovers atomic units." [ref=e7692]:
+              - text: Dirac equation written with
+              - img [ref=e7694]
+              - text: and
+              - img [ref=e7700]
+              - text: explicit, then Pauli limit recovers atomic units.
+          - row "Ch 05 §5.4 B3LYP coefficients drawn from the original 1994 paper; theformis a linear combination of five components, not an atomic-units statement." [ref=e7705]:
+            - cell "Ch 05 §5.4" [ref=e7706]
+            - cell "B3LYP coefficients drawn from the original 1994 paper; theformis a linear combination of five components, not an atomic-units statement." [ref=e7707]:
+              - text: B3LYP coefficients drawn from the original 1994 paper; the
+              - emphasis [ref=e7708]: form
+              - text: is a linear combination of five components, not an atomic-units statement.
+          - row "Ch 07 §7.6.3 Fermi–Dirac smearing introduced with explicit; in atomic units ." [ref=e7709]:
+            - cell "Ch 07 §7.6.3" [ref=e7710]
+            - cell "Fermi–Dirac smearing introduced with explicit; in atomic units ." [ref=e7711]:
+              - text: Fermi–Dirac smearing introduced with
+              - img [ref=e7713]
+              - text: explicit; in atomic units
+              - img [ref=e7722]
+              - text: .
+      - paragraph [ref=e7734]:
+        - text: If a chapter introduces a symbol
+        - emphasis [ref=e7735]: not
+        - text: in this glossary, the chapter’s
+        - emphasis [ref=e7736]: first use
+        - text: is the canonical definition, and a one-line PR that adds the symbol to this file is the right follow-up.
+      - separator [ref=e7737]
+      - blockquote [ref=e7738]:
+        - paragraph [ref=e7739]:
+          - strong [ref=e7740]: Cross-references.
+          - link "Chapter 00 §”Notation”" [ref=e7741] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-00/
+          - text: is the in-chapter version of this glossary. This file is the cross-chapter, cross-volume single source of truth. When in doubt, the more recent of the two definitions wins; the QA reviewer is responsible for catching any drift.
+  - contentinfo [ref=e7742]:
+    - generic [ref=e7743]:
+      - generic [ref=e7744]:
+        - img [ref=e7745]
+        - generic [ref=e7749]: DFT Notes
+        - paragraph [ref=e7750]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e7751]:
+        - generic [ref=e7752]:
+          - heading "Project" [level=3] [ref=e7753]
+          - list [ref=e7754]:
+            - listitem [ref=e7755]:
+              - link "Chapters map" [ref=e7756] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e7757]:
+              - link "Python codes" [ref=e7758] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e7759]:
+              - link "Contributing" [ref=e7760] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e7761]:
+              - link "Security" [ref=e7762] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e7763]:
+              - link "Design spec" [ref=e7764] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e7765]:
+              - link "GitHub ↗" [ref=e7766] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e7767]:
+          - heading "Built with" [level=3] [ref=e7768]
+          - list [ref=e7769]:
+            - listitem [ref=e7770]:
+              - link "Jekyll" [ref=e7771] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e7772]:
+              - link "MathJax 3" [ref=e7773] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e7774]:
+              - link "Mermaid" [ref=e7775] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e7776]:
+              - link "chenglou/pretext" [ref=e7777] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e7778]:
+              - link "Google Fonts" [ref=e7779] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e7780]:
+          - heading "Legal" [level=3] [ref=e7781]
+          - list [ref=e7782]:
+            - listitem [ref=e7783]:
+              - link "MIT License" [ref=e7784] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e7785]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e7787]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.
