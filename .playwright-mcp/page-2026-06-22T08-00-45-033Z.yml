@@ -1,0 +1,4360 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Crystallography and space groups" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: The “I need to figure out which space group my crystal is, what the conventional cell looks like, and how to specify it in a DFT code” reference. Open it, look up the symbol, close it, return to the calculation.
+      - paragraph [ref=e30]:
+        - text: This page is the
+        - strong [ref=e31]: crystallographic analogue
+        - text: of the
+        - link "notation glossary" [ref=e32] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+        - text: and the
+        - link "math cheatsheet" [ref=e33] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+        - text: . It collects, in one place, every crystallographic symbol, table, and convention the chapters of DFT Notes refer to in passing. Whenever a chapter writes “
+        - img [ref=e35]
+        - text: ” or “
+        - img [ref=e51]
+        - text: ” or “the 8a Wyckoff position of
+        - img [ref=e71]
+        - text: ”, the meaning lives here and is linked back to its source.
+      - paragraph [ref=e86]:
+        - strong [ref=e87]: Conventions used in this page.
+      - list [ref=e88]:
+        - listitem [ref=e89]:
+          - text: MathJax 3 is used. Numbered equations use
+          - img [ref=e91]
+          - text: cross-references in this file are
+          - code [ref=e123]: "\\eqref{eq:cryst-foo}"
+          - text: .
+        - listitem [ref=e124]:
+          - text: Crystallographic angles
+          - img [ref=e126]
+          - text: ","
+          - img [ref=e132]
+          - text: ","
+          - img [ref=e138]
+          - text: "are the angles between pairs of conventional cell edges:"
+          - img [ref=e144]
+          - text: ","
+          - img [ref=e166]
+          - text: ","
+          - img [ref=e188]
+          - text: .
+        - listitem [ref=e209]:
+          - text: Lattice parameters
+          - img [ref=e211]
+          - text: and reciprocal parameters $(a^
+          - emphasis [ref=e228]: ", b^"
+          - text: ", c^*)$ are in Å and Å⁻¹ respectively; we follow the crystallographic convention rather than the atomic-unit convention of"
+          - link "chapter 00" [ref=e229] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-00/
+          - text: when quoting experimental values. Atomic-unit values are stated explicitly when needed.
+        - listitem [ref=e230]:
+          - text: High-symmetry k-points use the
+          - strong [ref=e231]: Setyawan–Curtarolo
+          - text: convention adopted by the Materials Project, AFLOW, and most modern DFT codes. This is the same convention as
+          - link "chapter 07 §7.4.3" [ref=e232] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: and
+          - link "chapter 11 §11.2" [ref=e233] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: .
+        - listitem [ref=e234]:
+          - text: Hermann–Mauguin (HM) symbols are written in
+          - strong [ref=e235]: bold italic
+          - text: in the running text for legibility (e.g.
+          - emphasis [ref=e236]:
+            - text: P 6₃/m m
+            - code [ref=e237]: c*
+            - text: ); Schoenflies symbols are written upright (e.g.
+            - img [ref=e239]
+            - text: "). The slash `/’ in an HM symbol separates *equivalent"
+          - text: directions perpendicular and parallel to the principal axis.
+      - paragraph [ref=e252]:
+        - strong [ref=e253]: Cross-references.
+        - text: This page assumes the reader is familiar with the reciprocal lattice (chapter 07 §7.4), the Bloch theorem (chapter 07 §7.1), and the band-structure plotting workflow (chapter 11 §11.2). The 32 point groups and 230 space groups are introduced in
+        - link "chapter 07 §7.10" [ref=e254] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: in their DFT context; this page is the
+        - emphasis [ref=e255]: reference
+        - text: companion.
+      - paragraph [ref=e256]: "The page is organised in ten sections. Sections 1–5 are the “what is it?” reference: lattices, point groups, space groups, Wyckoff positions, Pearson symbols. Sections 6–7 are the “where is it in reciprocal space?” reference: Brillouin zones and k-paths. Section 8 is the “how do I use it?” practical guide for VASP, Quantum ESPRESSO, CASTEP, SIESTA, and the Bilbao Crystallographic Server. Sections 9–10 are the side-by-side translation tables (Pearson, HM/Schoenflies)."
+      - table [ref=e257]:
+        - rowgroup [ref=e258]:
+          - row "§ Topic Reader’s question" [ref=e259]:
+            - columnheader "§" [ref=e260]
+            - columnheader "Topic" [ref=e261]
+            - columnheader "Reader’s question" [ref=e262]
+        - rowgroup [ref=e263]:
+          - row "1 Direct and reciprocal lattices “What are the 7 systems and 14 Bravais lattices?”" [ref=e264]:
+            - cell "1" [ref=e265]
+            - cell "Direct and reciprocal lattices" [ref=e266]
+            - cell "“What are the 7 systems and 14 Bravais lattices?”" [ref=e267]
+          - row "2 The 32 point groups “Which point group is this crystal?”" [ref=e268]:
+            - cell "2" [ref=e269]
+            - cell "The 32 point groups" [ref=e270]
+            - cell "“Which point group is this crystal?”" [ref=e271]
+          - row "3 The 230 space groups “What’s the space group number of *P 6₃/m mc*?”" [ref=e272]:
+            - cell "3" [ref=e273]
+            - cell "The 230 space groups" [ref=e274]
+            - cell "“What’s the space group number of *P 6₃/m mc*?”" [ref=e275]:
+              - text: “What’s the space group number of *P 6₃/m m
+              - code [ref=e276]: c*
+              - text: "?”"
+          - row "4 Wyckoff positions “Which sites in the unit cell are symmetry-equivalent?”" [ref=e277]:
+            - cell "4" [ref=e278]
+            - cell "Wyckoff positions" [ref=e279]
+            - cell "“Which sites in the unit cell are symmetry-equivalent?”" [ref=e280]
+          - row "5 Bravais lattice parameter table “What’s the Pearson symbol of a base-centred monoclinic cell?”" [ref=e281]:
+            - cell "5" [ref=e282]
+            - cell "Bravais lattice parameter table" [ref=e283]
+            - cell "“What’s the Pearson symbol of a base-centred monoclinic cell?”" [ref=e284]
+          - row "6 Reciprocal lattice and Brillouin zones “What is the first BZ of an FCC crystal?”" [ref=e285]:
+            - cell "6" [ref=e286]
+            - cell "Reciprocal lattice and Brillouin zones" [ref=e287]
+            - cell "“What is the first BZ of an FCC crystal?”" [ref=e288]
+          - row "7 High-symmetry k-paths “What k-path should I use for BCC iron?”" [ref=e289]:
+            - cell "7" [ref=e290]
+            - cell "High-symmetry k-paths" [ref=e291]
+            - cell "“What k-path should I use for BCC iron?”" [ref=e292]
+          - row "8 Working with space groups in DFT codes “How do I tell VASP the space group?”" [ref=e293]:
+            - cell "8" [ref=e294]
+            - cell "Working with space groups in DFT codes" [ref=e295]
+            - cell "“How do I tell VASP the space group?”" [ref=e296]
+          - row "9 Pearson symbol cheat sheet “What does the suffix oftI’ mean?”" [ref=e297]:
+            - cell "9" [ref=e298]
+            - cell "Pearson symbol cheat sheet" [ref=e299]
+            - cell "“What does the suffix oftI’ mean?”" [ref=e300]:
+              - text: “What does the suffix of
+              - code [ref=e301]: tI
+              - text: ’ mean?”
+          - row "10 Hermann–Mauguin and Schoenflies side-by-side “What is in Hermann–Mauguin?”" [ref=e302]:
+            - cell "10" [ref=e303]
+            - cell "Hermann–Mauguin and Schoenflies side-by-side" [ref=e304]
+            - cell "“What is in Hermann–Mauguin?”" [ref=e305]:
+              - text: “What is
+              - img [ref=e307]
+              - text: in Hermann–Mauguin?”
+      - separator [ref=e315]
+      - heading "1. Direct and reciprocal lattices" [level=2] [ref=e316]
+      - paragraph [ref=e317]:
+        - text: A
+        - strong [ref=e318]: Bravais lattice
+        - text: is the infinite, discrete set of points
+        - img [ref=e320]
+        - text: in
+        - img [ref=e379]
+        - text: that a real crystal’s translations form. The
+        - strong [ref=e388]: primitive vectors
+        - img [ref=e390]
+        - text: are the three linearly-independent shortest vectors that generate the lattice. The
+        - strong [ref=e415]: conventional cell
+        - text: is a (typically larger) cubic-, orthorhombic-, or hexagonal-shaped cell that exposes the lattice’s symmetry; it is the cell of choice for reporting lattice parameters and atomic positions, while the primitive cell is the cell of choice for band-structure and density-of-states calculations.
+      - heading "1.1 The 7 crystal systems" [level=3] [ref=e416]
+      - paragraph [ref=e417]:
+        - text: The
+        - strong [ref=e418]: 7 crystal systems
+        - text: classify lattices by the metric properties of the conventional cell. Each system has its own set of constraints on the six cell parameters
+        - img [ref=e420]
+        - text: ", where"
+        - img [ref=e450]
+        - text: are the edge lengths and
+        - img [ref=e464]
+        - text: are the angles between pairs of edges (definitions in the conventions box above).
+      - table [ref=e477]:
+        - rowgroup [ref=e478]:
+          - row "Crystal system Cell constraints Holohedral point group (HM) Order" [ref=e479]:
+            - columnheader "Crystal system" [ref=e480]
+            - columnheader "Cell constraints" [ref=e481]
+            - columnheader "Holohedral point group (HM)" [ref=e482]
+            - columnheader "Order" [ref=e483]
+        - rowgroup [ref=e484]:
+          - row "Triclinic ; 2" [ref=e485]:
+            - cell "Triclinic" [ref=e486]
+            - cell ";" [ref=e487]:
+              - img [ref=e489]
+              - text: ;
+              - img [ref=e503]
+            - cell [ref=e524]:
+              - img [ref=e526]
+            - cell "2" [ref=e535]
+          - row "Monoclinic ; , 4" [ref=e536]:
+            - cell "Monoclinic" [ref=e537]
+            - cell "; ," [ref=e538]:
+              - img [ref=e540]
+              - text: ;
+              - img [ref=e554]
+              - text: ","
+              - img [ref=e572]
+            - cell [ref=e585]:
+              - img [ref=e587]
+            - cell "4" [ref=e597]
+          - row "Orthorhombic ; 8" [ref=e598]:
+            - cell "Orthorhombic" [ref=e599]
+            - cell ";" [ref=e600]:
+              - img [ref=e602]
+              - text: ;
+              - img [ref=e616]
+            - cell [ref=e637]:
+              - img [ref=e639]
+            - cell "8" [ref=e648]
+          - row "Tetragonal ; 16" [ref=e649]:
+            - cell "Tetragonal" [ref=e650]
+            - cell ";" [ref=e651]:
+              - img [ref=e653]
+              - text: ;
+              - img [ref=e667]
+            - cell [ref=e688]:
+              - img [ref=e690]
+            - cell "16" [ref=e704]
+          - row "Trigonal (rhombohedral axes) ; 12" [ref=e705]:
+            - cell "Trigonal (rhombohedral axes)" [ref=e706]
+            - cell ";" [ref=e707]:
+              - img [ref=e709]
+              - text: ;
+              - img [ref=e723]
+            - cell [ref=e744]:
+              - img [ref=e746]
+            - cell "12" [ref=e757]
+          - row "Hexagonal ; , 24" [ref=e758]:
+            - cell "Hexagonal" [ref=e759]
+            - cell "; ," [ref=e760]:
+              - img [ref=e762]
+              - text: ;
+              - img [ref=e776]
+              - text: ","
+              - img [ref=e794]
+            - cell [ref=e808]:
+              - img [ref=e810]
+            - cell "24" [ref=e824]
+          - row "Cubic ; 48" [ref=e825]:
+            - cell "Cubic" [ref=e826]
+            - cell ";" [ref=e827]:
+              - img [ref=e829]
+              - text: ;
+              - img [ref=e843]
+            - cell [ref=e864]:
+              - img [ref=e866]
+            - cell "48" [ref=e879]
+      - paragraph [ref=e880]:
+        - text: The
+        - strong [ref=e881]: "holohedral point grou`p"
+        - text: (or holohedry*) is the full point group that maps the conventional cell onto itself. It is the highest-symmetry point group of the crystal system; every other point group in the same system is a subgroup of the holohedry. The order column is the number of operations in the group. See §2 below for the full 32-point-group classification.
+      - blockquote [ref=e882]:
+        - paragraph [ref=e883]:
+          - strong [ref=e884]: Trigonal vs hexagonal.
+          - text: Some authors use the term “rhombohedral” for the trigonal system. The lattice can be described with either rhombohedral axes (
+          - img [ref=e886]
+          - text: ","
+          - img [ref=e900]
+          - text: ) or hexagonal axes (three times larger conventional cell with
+          - img [ref=e914]
+          - text: ","
+          - img [ref=e928]
+          - text: ). Both descriptions are valid; the hexagonal setting is more common in modern DFT codes (VASP, Quantum ESPRESSO) because the BZ is a regular hexagonal prism, easier to navigate.
+      - heading "1.2 The 14 Bravais lattices" [level=3] [ref=e942]
+      - paragraph [ref=e943]:
+        - text: The 7 crystal systems admit 14 distinct Bravais lattices when the
+        - strong [ref=e944]: centring
+        - text: "of the conventional cell is taken into account. Centring types are:"
+      - list [ref=e945]:
+        - listitem [ref=e946]:
+          - img [ref=e948]
+          - text: —
+          - strong [ref=e953]: primitive
+          - text: ": lattice points only at the corners."
+        - listitem [ref=e954]:
+          - img [ref=e956]
+          - text: —
+          - strong [ref=e961]: body-centred
+          - text: ": extra lattice point at the centre"
+          - img [ref=e963]
+          - text: (in fractional cell coordinates).
+        - listitem [ref=e1011]:
+          - img [ref=e1013]
+          - text: —
+          - strong [ref=e1018]: face-centred
+          - text: ": extra lattice points at"
+          - img [ref=e1020]
+          - text: ","
+          - img [ref=e1048]
+          - text: ","
+          - img [ref=e1076]
+          - text: .
+        - listitem [ref=e1103]:
+          - img [ref=e1105]
+          - text: (or
+          - img [ref=e1111]
+          - text: ","
+          - img [ref=e1117]
+          - text: ) —
+          - strong [ref=e1122]: base-centred
+          - text: ": extra lattice point on a single pair of opposite faces, e.g."
+          - img [ref=e1124]
+          - text: "-centring on"
+          - img [ref=e1130]
+          - text: .
+      - table [ref=e1157]:
+        - rowgroup [ref=e1158]:
+          - row "Crystal system Bravais lattices Centring variants Lattice points per conventional cell" [ref=e1159]:
+            - columnheader "Crystal system" [ref=e1160]
+            - columnheader "Bravais lattices" [ref=e1161]
+            - columnheader "Centring variants" [ref=e1162]
+            - columnheader "Lattice points per conventional cell" [ref=e1163]
+        - rowgroup [ref=e1164]:
+          - row "Triclinic 1" [ref=e1165]:
+            - cell "Triclinic" [ref=e1166]
+            - cell [ref=e1167]:
+              - img [ref=e1169]
+            - cell [ref=e1176]:
+              - img [ref=e1178]
+            - cell "1" [ref=e1183]
+          - row "Monoclinic , , (called in Pearson) 1, 2" [ref=e1184]:
+            - cell "Monoclinic" [ref=e1185]
+            - cell "," [ref=e1186]:
+              - img [ref=e1188]
+              - text: ","
+              - img [ref=e1196]
+            - cell ", (called in Pearson)" [ref=e1203]:
+              - img [ref=e1205]
+              - text: ","
+              - img [ref=e1211]
+              - text: (called
+              - img [ref=e1217]
+              - text: in Pearson)
+            - cell "1, 2" [ref=e1222]
+          - row "Orthorhombic , , , , , , 1, 2, 2, 4" [ref=e1223]:
+            - cell "Orthorhombic" [ref=e1224]
+            - cell ", , ," [ref=e1225]:
+              - img [ref=e1227]
+              - text: ","
+              - img [ref=e1235]
+              - text: ","
+              - img [ref=e1243]
+              - text: ","
+              - img [ref=e1251]
+            - cell ", , ," [ref=e1258]:
+              - img [ref=e1260]
+              - text: ","
+              - img [ref=e1266]
+              - text: ","
+              - img [ref=e1272]
+              - text: ","
+              - img [ref=e1278]
+            - cell "1, 2, 2, 4" [ref=e1283]
+          - row "Tetragonal , , 1, 2" [ref=e1284]:
+            - cell "Tetragonal" [ref=e1285]
+            - cell "," [ref=e1286]:
+              - img [ref=e1288]
+              - text: ","
+              - img [ref=e1296]
+            - cell "," [ref=e1303]:
+              - img [ref=e1305]
+              - text: ","
+              - img [ref=e1311]
+            - cell "1, 2" [ref=e1316]
+          - row "Trigonal (hex. axes), (rhomb. axes) (hex), (rhomb) 1, 3 (rhomb cell)" [ref=e1317]:
+            - cell "Trigonal" [ref=e1318]
+            - cell "(hex. axes), (rhomb. axes)" [ref=e1319]:
+              - img [ref=e1321]
+              - text: (hex. axes),
+              - img [ref=e1329]
+              - text: (rhomb. axes)
+            - cell "(hex), (rhomb)" [ref=e1336]:
+              - img [ref=e1338]
+              - text: (hex),
+              - img [ref=e1344]
+              - text: (rhomb)
+            - cell "1, 3 (rhomb cell)" [ref=e1349]
+          - row "Hexagonal 1" [ref=e1350]:
+            - cell "Hexagonal" [ref=e1351]
+            - cell [ref=e1352]:
+              - img [ref=e1354]
+            - cell [ref=e1361]:
+              - img [ref=e1363]
+            - cell "1" [ref=e1368]
+          - row "Cubic , , , , 1, 2, 4" [ref=e1369]:
+            - cell "Cubic" [ref=e1370]
+            - cell ", ," [ref=e1371]:
+              - img [ref=e1373]
+              - text: ","
+              - img [ref=e1381]
+              - text: ","
+              - img [ref=e1389]
+            - cell ", ," [ref=e1396]:
+              - img [ref=e1398]
+              - text: ","
+              - img [ref=e1404]
+              - text: ","
+              - img [ref=e1410]
+            - cell "1, 2, 4" [ref=e1415]
+      - paragraph [ref=e1416]:
+        - text: The labels in the second column are the
+        - strong [ref=e1417]: Pearson symbols
+        - text: . The lowercase letter is the crystal system (
+        - img [ref=e1419]
+        - text: = anorthic = triclinic,
+        - img [ref=e1425]
+        - text: = monoclinic,
+        - img [ref=e1431]
+        - text: = orthorhombic,
+        - img [ref=e1437]
+        - text: = tetragonal,
+        - img [ref=e1443]
+        - text: = hexagonal or trigonal,
+        - img [ref=e1449]
+        - text: = cubic); the uppercase letter is the centring. See §9 for the full Pearson cheat sheet.
+      - paragraph [ref=e1454]:
+        - text: The 14 Bravais lattices are sometimes called the 14
+        - emphasis [ref=e1455]: Bravais types
+        - text: ": a primitive cubic lattice and a primitive hexagonal lattice are the only “primitive” Bravais lattices in their systems, and adding centring to a primitive lattice either generates a new lattice type (e.g. body-centred cubic"
+        - img [ref=e1457]
+        - text: primitive cubic) or, in some cases, is equivalent to a smaller primitive cell of another centring. E.g. base-centred orthorhombic (
+        - img [ref=e1463]
+        - text: or
+        - img [ref=e1471]
+        - text: ) is
+        - emphasis [ref=e1478]: not
+        - text: equivalent to primitive orthorhombic; the extra centring point gives a different topology.
+      - heading "1.3 Reciprocal lattice" [level=3] [ref=e1479]
+      - paragraph [ref=e1480]:
+        - text: For every Bravais lattice with primitive vectors
+        - img [ref=e1482]
+        - text: there is a dual Bravais lattice, the
+        - strong [ref=e1507]: reciprocal lattice
+        - text: ", with primitive vectors"
+        - img [ref=e1509]
+        - text: defined by
+      - img [ref=e1535]
+      - paragraph [ref=e1592]:
+        - text: This is the definition adopted by the solid-state community (Kittel, Ashcroft & Mermin, the DFT notes themselves). The crystallographic community sometimes uses
+        - img [ref=e1594]
+        - text: (no
+        - img [ref=e1622]
+        - text: ); when in doubt, check the convention of the code or paper you are reading. In the DFT notes the
+        - img [ref=e1630]
+        - text: convention is universal (see
+        - link "notation glossary §10" [ref=e1637] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+        - text: and
+        - link "chapter 07 §7.4.1" [ref=e1638] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: ). Every reciprocal-lattice vector is an integer combination
+      - img [ref=e1640]
+      - paragraph [ref=e1695]:
+        - text: and the
+        - strong [ref=e1696]: volume of the reciprocal primitive cell
+        - text: is
+      - img [ref=e1698]
+      - paragraph [ref=e1763]:
+        - text: where
+        - img [ref=e1765]
+        - text: is the direct-lattice primitive-cell volume. Equation
+        - img [ref=e1805]:
+          - link [ref=e1808] [cursor=pointer]:
+            - /url: "#"
+        - text: is the reason the BZ volume scales as
+        - img [ref=e1818]
+        - text: ": a larger direct-space cell gives a denser reciprocal space with a smaller BZ."
+      - paragraph [ref=e1834]:
+        - text: An explicit construction of the reciprocal primitive vectors that avoids solving a
+        - img [ref=e1836]
+        - text: linear system is
+      - img [ref=e1846]
+      - paragraph [ref=e2023]:
+        - text: The denominator
+        - img [ref=e2025]
+        - text: is six times the volume of the primitive cell (the scalar triple product). Equation
+        - img [ref=e2055]:
+          - link [ref=e2058] [cursor=pointer]:
+            - /url: "#"
+        - text: is the formula used in ‘numpy’ and ‘spglib’ to compute the reciprocal lattice from the direct lattice.
+      - blockquote [ref=e2067]:
+        - paragraph [ref=e2068]:
+          - strong [ref=e2069]:
+            - text: Verification of
+            - img [ref=e2071]:
+              - link [ref=e2074] [cursor=pointer]:
+                - /url: "#"
+            - text: .
+          - text: Take
+          - img [ref=e2084]
+          - text: "as the test:"
+          - img [ref=e2102]
+          - text: ", so"
+          - img [ref=e2165]
+          - text: . The other two
+          - img [ref=e2189]
+          - text: are
+          - img [ref=e2207]
+          - text: and
+          - img [ref=e2241]
+          - text: (a vector dotted into a cross product that contains itself is zero). Thus
+          - img [ref=e2275]
+          - text: as required.
+      - heading "1.4 Reciprocal lattice of each Bravais lattice" [level=3] [ref=e2306]
+      - paragraph [ref=e2307]:
+        - text: The reciprocal lattice of a centred direct lattice is
+        - emphasis [ref=e2308]: "itsel`f"
+        - text: "’ a Bravais lattice, and the pairing is its own kind of duality. The complete table:"
+      - table [ref=e2309]:
+        - rowgroup [ref=e2310]:
+          - row "Direct Bravais Centring Reciprocal Bravais Centring Verdict" [ref=e2311]:
+            - columnheader "Direct Bravais" [ref=e2312]
+            - columnheader "Centring" [ref=e2313]
+            - columnheader "Reciprocal Bravais" [ref=e2314]
+            - columnheader "Centring" [ref=e2315]
+            - columnheader "Verdict" [ref=e2316]
+        - rowgroup [ref=e2317]:
+          - row "Triclinic ( ) Triclinic ( ) Self-dual" [ref=e2318]:
+            - cell "Triclinic ( )" [ref=e2319]:
+              - text: Triclinic
+              - img [ref=e2321]
+              - text: (
+              - img [ref=e2327]
+              - text: )
+            - cell [ref=e2334]:
+              - img [ref=e2336]
+            - cell "Triclinic ( )" [ref=e2341]:
+              - text: Triclinic
+              - img [ref=e2343]
+              - text: (
+              - img [ref=e2349]
+              - text: )
+            - cell [ref=e2356]:
+              - img [ref=e2358]
+            - cell "Self-dual" [ref=e2363]
+          - row "Monoclinic ( ) Monoclinic ( , $b*$ unique) Self-dual" [ref=e2364]:
+            - cell "Monoclinic ( )" [ref=e2365]:
+              - text: Monoclinic
+              - img [ref=e2367]
+              - text: (
+              - img [ref=e2373]
+              - text: )
+            - cell [ref=e2380]:
+              - img [ref=e2382]
+            - cell "Monoclinic ( , $b*$ unique)" [ref=e2387]:
+              - text: Monoclinic
+              - img [ref=e2389]
+              - text: (
+              - img [ref=e2395]
+              - text: ", $"
+              - code [ref=e2402]: b*
+              - text: $ unique)
+            - cell [ref=e2403]:
+              - img [ref=e2405]
+            - cell "Self-dual" [ref=e2410]
+          - row "Monoclinic ( , -centred) Monoclinic ( ) primitive" [ref=e2411]:
+            - cell "Monoclinic ( , -centred)" [ref=e2412]:
+              - text: Monoclinic
+              - img [ref=e2414]
+              - text: (
+              - img [ref=e2420]
+              - text: ","
+              - img [ref=e2428]
+              - text: "-centred)"
+            - cell [ref=e2433]:
+              - img [ref=e2435]
+            - cell "Monoclinic ( )" [ref=e2440]:
+              - text: Monoclinic
+              - img [ref=e2442]
+              - text: (
+              - img [ref=e2448]
+              - text: )
+            - cell [ref=e2455]:
+              - img [ref=e2457]
+            - cell "primitive" [ref=e2462]:
+              - img [ref=e2464]
+              - text: primitive
+          - row "Orthorhombic ( ) Orthorhombic ( ) Self-dual" [ref=e2469]:
+            - cell "Orthorhombic ( )" [ref=e2470]:
+              - text: Orthorhombic
+              - img [ref=e2472]
+              - text: (
+              - img [ref=e2478]
+              - text: )
+            - cell [ref=e2485]:
+              - img [ref=e2487]
+            - cell "Orthorhombic ( )" [ref=e2492]:
+              - text: Orthorhombic
+              - img [ref=e2494]
+              - text: (
+              - img [ref=e2500]
+              - text: )
+            - cell [ref=e2507]:
+              - img [ref=e2509]
+            - cell "Self-dual" [ref=e2514]
+          - row "Orthorhombic ( ) Orthorhombic ( in monoclinic) primitive" [ref=e2515]:
+            - cell "Orthorhombic ( )" [ref=e2516]:
+              - text: Orthorhombic
+              - img [ref=e2518]
+              - text: (
+              - img [ref=e2524]
+              - text: )
+            - cell [ref=e2531]:
+              - img [ref=e2533]
+            - cell "Orthorhombic ( in monoclinic)" [ref=e2538]:
+              - text: Orthorhombic
+              - img [ref=e2540]
+              - text: (
+              - img [ref=e2546]
+              - text: in monoclinic)
+            - cell [ref=e2553]:
+              - img [ref=e2555]
+            - cell "primitive" [ref=e2560]:
+              - img [ref=e2562]
+              - text: primitive
+          - row "Orthorhombic ( ) Orthorhombic ( )" [ref=e2567]:
+            - cell "Orthorhombic ( )" [ref=e2568]:
+              - text: Orthorhombic
+              - img [ref=e2570]
+              - text: (
+              - img [ref=e2576]
+              - text: )
+            - cell [ref=e2583]:
+              - img [ref=e2585]
+            - cell "Orthorhombic ( )" [ref=e2590]:
+              - text: Orthorhombic
+              - img [ref=e2592]
+              - text: (
+              - img [ref=e2598]
+              - text: )
+            - cell [ref=e2605]:
+              - img [ref=e2607]
+            - cell [ref=e2612]:
+              - img [ref=e2614]
+          - row "Orthorhombic ( ) Orthorhombic ( )" [ref=e2619]:
+            - cell "Orthorhombic ( )" [ref=e2620]:
+              - text: Orthorhombic
+              - img [ref=e2622]
+              - text: (
+              - img [ref=e2628]
+              - text: )
+            - cell [ref=e2635]:
+              - img [ref=e2637]
+            - cell "Orthorhombic ( )" [ref=e2642]:
+              - text: Orthorhombic
+              - img [ref=e2644]
+              - text: (
+              - img [ref=e2650]
+              - text: )
+            - cell [ref=e2657]:
+              - img [ref=e2659]
+            - cell [ref=e2664]:
+              - img [ref=e2666]
+          - row "Tetragonal ( ) Tetragonal ( ) Self-dual" [ref=e2671]:
+            - cell "Tetragonal ( )" [ref=e2672]:
+              - text: Tetragonal
+              - img [ref=e2674]
+              - text: (
+              - img [ref=e2680]
+              - text: )
+            - cell [ref=e2687]:
+              - img [ref=e2689]
+            - cell "Tetragonal ( )" [ref=e2694]:
+              - text: Tetragonal
+              - img [ref=e2696]
+              - text: (
+              - img [ref=e2702]
+              - text: )
+            - cell [ref=e2709]:
+              - img [ref=e2711]
+            - cell "Self-dual" [ref=e2716]
+          - row "Tetragonal ( ) Tetragonal ( ) Self-dual" [ref=e2717]:
+            - cell "Tetragonal ( )" [ref=e2718]:
+              - text: Tetragonal
+              - img [ref=e2720]
+              - text: (
+              - img [ref=e2726]
+              - text: )
+            - cell [ref=e2733]:
+              - img [ref=e2735]
+            - cell "Tetragonal ( )" [ref=e2740]:
+              - text: Tetragonal
+              - img [ref=e2742]
+              - text: (
+              - img [ref=e2748]
+              - text: )
+            - cell [ref=e2755]:
+              - img [ref=e2757]
+            - cell "Self-dual" [ref=e2762]
+          - row "Hexagonal ( ) Hexagonal ( ) Self-dual" [ref=e2763]:
+            - cell "Hexagonal ( )" [ref=e2764]:
+              - text: Hexagonal
+              - img [ref=e2766]
+              - text: (
+              - img [ref=e2772]
+              - text: )
+            - cell [ref=e2779]:
+              - img [ref=e2781]
+            - cell "Hexagonal ( )" [ref=e2786]:
+              - text: Hexagonal
+              - img [ref=e2788]
+              - text: (
+              - img [ref=e2794]
+              - text: )
+            - cell [ref=e2801]:
+              - img [ref=e2803]
+            - cell "Self-dual" [ref=e2808]
+          - row "Rhombohedral ( ) Rhombohedral ( ) Self-dual" [ref=e2809]:
+            - cell "Rhombohedral ( )" [ref=e2810]:
+              - text: Rhombohedral
+              - img [ref=e2812]
+              - text: (
+              - img [ref=e2818]
+              - text: )
+            - cell [ref=e2825]:
+              - img [ref=e2827]
+            - cell "Rhombohedral ( )" [ref=e2832]:
+              - text: Rhombohedral
+              - img [ref=e2834]
+              - text: (
+              - img [ref=e2840]
+              - text: )
+            - cell [ref=e2847]:
+              - img [ref=e2849]
+            - cell "Self-dual" [ref=e2854]
+          - row "Cubic ( ) Cubic ( ) Self-dual" [ref=e2855]:
+            - cell "Cubic ( )" [ref=e2856]:
+              - text: Cubic
+              - img [ref=e2858]
+              - text: (
+              - img [ref=e2864]
+              - text: )
+            - cell [ref=e2871]:
+              - img [ref=e2873]
+            - cell "Cubic ( )" [ref=e2878]:
+              - text: Cubic
+              - img [ref=e2880]
+              - text: (
+              - img [ref=e2886]
+              - text: )
+            - cell [ref=e2893]:
+              - img [ref=e2895]
+            - cell "Self-dual" [ref=e2900]
+          - row "Cubic ( ) Cubic ( )" [ref=e2901]:
+            - cell "Cubic ( )" [ref=e2902]:
+              - text: Cubic
+              - img [ref=e2904]
+              - text: (
+              - img [ref=e2910]
+              - text: )
+            - cell [ref=e2917]:
+              - img [ref=e2919]
+            - cell "Cubic ( )" [ref=e2924]:
+              - text: Cubic
+              - img [ref=e2926]
+              - text: (
+              - img [ref=e2932]
+              - text: )
+            - cell [ref=e2939]:
+              - img [ref=e2941]
+            - cell [ref=e2946]:
+              - img [ref=e2948]
+          - row "Cubic ( ) Cubic ( )" [ref=e2953]:
+            - cell "Cubic ( )" [ref=e2954]:
+              - text: Cubic
+              - img [ref=e2956]
+              - text: (
+              - img [ref=e2962]
+              - text: )
+            - cell [ref=e2969]:
+              - img [ref=e2971]
+            - cell "Cubic ( )" [ref=e2976]:
+              - text: Cubic
+              - img [ref=e2978]
+              - text: (
+              - img [ref=e2984]
+              - text: )
+            - cell [ref=e2991]:
+              - img [ref=e2993]
+            - cell [ref=e2998]:
+              - img [ref=e3000]
+      - paragraph [ref=e3005]:
+        - text: The two most important dualities for solid-state DFT are
+        - strong [ref=e3006]:
+          - text: FCC
+          - img [ref=e3008]
+          - text: BCC
+        - text: and
+        - emphasis [ref=e3013]:
+          - text: "*body-centred orthorhombic"
+          - img [ref=e3015]
+          - text: face-centred orthorhombi
+          - code [ref=e3020]: c*
+        - text: .
+      - 'heading "1.5 Worked example: FCC direct BCC reciprocal" [level=3] [ref=e3021]':
+        - text: "1.5 Worked example: FCC direct"
+        - img [ref=e3023]
+        - text: BCC reciprocal
+      - blockquote [ref=e3028]:
+        - paragraph [ref=e3029]:
+          - text: The reciprocal lattice of a face-centred cubic direct lattice is a body-centred cubic reciprocal lattice (and vice versa). This is a famous result that the DFT notes use in
+          - link "chapter 07 §7.4.3" [ref=e3030] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: .
+      - paragraph [ref=e3031]:
+        - text: The conventional FCC lattice with cubic parameter
+        - img [ref=e3033]
+        - text: has primitive vectors
+      - img [ref=e3039]
+      - paragraph [ref=e3132]: The scalar triple product is
+      - paragraph [ref=e3133]:
+        - img [ref=e3135]:
+          - generic [ref=e3139]:
+            - img [ref=e3140]:
+              - generic [ref=e3186]:
+                - img [ref=e3190]
+                - img [ref=e3226]
+            - img [ref=e3268]
+      - paragraph [ref=e3276]:
+        - text: so the primitive cell volume is
+        - img [ref=e3278]
+        - text: — exactly
+        - img [ref=e3314]
+        - text: of the conventional cubic cell volume, as expected for an FCC lattice (4 lattice points per conventional cell).
+      - paragraph [ref=e3324]:
+        - text: Apply
+        - img [ref=e3326]:
+          - link [ref=e3329] [cursor=pointer]:
+            - /url: "#"
+        - text: . The cross product
+        - img [ref=e3339]
+        - text: (expand by hand or use
+        - code [ref=e3388]: numpy.cross
+        - text: ), and dividing by
+        - img [ref=e3390]
+        - text: gives
+      - img [ref=e3432]
+      - paragraph [ref=e3470]: "Cyclic permutation gives the full set:"
+      - img [ref=e3472]
+      - paragraph [ref=e3580]:
+        - text: The shortest reciprocal-lattice vectors are
+        - img [ref=e3582]
+        - text: — 8 in total — and the
+        - strong [ref=e3620]: conventional cubic cell
+        - text: of the reciprocal lattice has parameter
+      - img [ref=e3622]
+      - paragraph [ref=e3643]:
+        - text: with body-centring translations
+        - img [ref=e3645]
+        - text: etc. The reciprocal lattice is therefore
+        - strong [ref=e3675]: BCC
+        - text: with conventional parameter
+        - img [ref=e3677]
+        - text: .
+      - blockquote [ref=e3689]:
+        - paragraph [ref=e3690]:
+          - strong [ref=e3691]: Sanity check.
+          - text: "The reciprocal of the reciprocal is the original: applying"
+          - img [ref=e3693]:
+            - link [ref=e3696] [cursor=pointer]:
+              - /url: "#"
+          - text: to the BCC lattice with parameter
+          - img [ref=e3706]
+          - text: recovers an FCC lattice with parameter
+          - img [ref=e3719]
+          - text: .
+      - separator [ref=e3724]
+      - heading "2. The 32 crystallographic point groups" [level=2] [ref=e3725]
+      - paragraph [ref=e3726]:
+        - text: A
+        - strong [ref=e3727]: point group
+        - text: of a crystal is the set of isometries of
+        - img [ref=e3729]
+        - text: that leave at least one point fixed and map the crystal onto itself. These isometries are the rotations, reflections, inversions, and improper rotations (rotoinversions) of §2.2 below. The point group is the
+        - strong [ref=e3738]: directional
+        - text: part of the full
+        - strong [ref=e3739]: space group
+        - text: (§3); the space group adds the translations.
+      - heading "2.1 The crystallographic restriction theorem" [level=3] [ref=e3740]
+      - paragraph [ref=e3741]:
+        - text: The only rotation orders
+        - img [ref=e3743]
+        - text: for which an
+        - img [ref=e3749]
+        - text: "-fold rotation axis can be a symmetry of a 3-D Bravais lattice are"
+      - img [ref=e3755]
+      - paragraph [ref=e3786]:
+        - text: A 5-fold axis, an 8-fold axis, or a 7-fold axis is
+        - emphasis [ref=e3787]: not
+        - text: a Bravais-lattice symmetry. (5-fold symmetries do appear in
+        - strong [ref=e3788]: quasicrystals
+        - text: — the Shechtman 1982 discovery, Nobel 2011 — but those are not periodic in 3-D and are not the topic of this page.)
+      - paragraph [ref=e3789]:
+        - text: The proof is a quick number-theoretic argument. Take a primitive cell with primitive vectors
+        - img [ref=e3791]
+        - text: and
+        - img [ref=e3798]
+        - text: in the plane perpendicular to the
+        - img [ref=e3805]
+        - text: "-fold axis. Rotate"
+        - img [ref=e3811]
+        - text: by
+        - img [ref=e3818]
+        - text: to get
+        - img [ref=e3831]
+        - text: . By symmetry,
+        - img [ref=e3841]
+        - text: must be a lattice vector, hence an integer combination of
+        - img [ref=e3856]
+        - text: and
+        - img [ref=e3863]
+        - text: . In matrix form,
+      - img [ref=e3870]:
+        - generic [ref=e3872]:
+          - generic [ref=e3873]:
+            - img [ref=e3877]
+            - img [ref=e3901]
+          - generic [ref=e3905]:
+            - img [ref=e3909]
+            - img [ref=e3991]
+          - generic [ref=e3993]:
+            - img [ref=e3997]
+            - img [ref=e4017]
+          - generic [ref=e4021]:
+            - img [ref=e4025]
+            - img [ref=e4045]
+          - generic [ref=e4047]:
+            - img [ref=e4051]
+            - img [ref=e4071]
+      - paragraph [ref=e4073]:
+        - text: with
+        - img [ref=e4075]
+        - text: integers (this is a property of the rotation matrix with determinant 1 and integer entries). Taking the trace of both sides,
+        - img [ref=e4093]
+        - text: must be an integer. The values of
+        - img [ref=e4124]
+        - text: are tabulated below.
+      - table [ref=e4146]:
+        - rowgroup [ref=e4147]:
+          - row "Integer?" [ref=e4148]:
+            - columnheader [ref=e4149]:
+              - img [ref=e4151]
+            - columnheader [ref=e4156]:
+              - img [ref=e4158]
+            - columnheader "Integer?" [ref=e4180]
+        - rowgroup [ref=e4181]:
+          - row "1 2 Yes" [ref=e4182]:
+            - cell "1" [ref=e4183]
+            - cell "2" [ref=e4184]
+            - cell "Yes" [ref=e4185]
+          - row "2 −2 Yes" [ref=e4186]:
+            - cell "2" [ref=e4187]
+            - cell "−2" [ref=e4188]
+            - cell "Yes" [ref=e4189]
+          - row "3 1 Yes" [ref=e4190]:
+            - cell "3" [ref=e4191]
+            - cell "1" [ref=e4192]
+            - cell "Yes" [ref=e4193]
+          - row "4 0 Yes" [ref=e4194]:
+            - cell "4" [ref=e4195]
+            - cell "0" [ref=e4196]
+            - cell "Yes" [ref=e4197]
+          - row "5 No" [ref=e4198]:
+            - cell "5" [ref=e4199]
+            - cell [ref=e4200]:
+              - img [ref=e4202]
+            - cell "No" [ref=e4225]:
+              - strong [ref=e4226]: "No"
+          - row "6 1 Yes" [ref=e4227]:
+            - cell "6" [ref=e4228]
+            - cell "1" [ref=e4229]
+            - cell "Yes" [ref=e4230]
+      - paragraph [ref=e4231]:
+        - text: Only
+        - img [ref=e4233]
+        - text: pass. This is the
+        - strong [ref=e4258]: crystallographic restriction theorem
+        - text: .
+      - heading "2.2 The symmetry elements" [level=3] [ref=e4259]
+      - paragraph [ref=e4260]:
+        - text: The five “generators” of the point groups are the operations that, combined with the cyclic group of order
+        - img [ref=e4262]
+        - text: ", give every crystallographic point group:"
+      - table [ref=e4267]:
+        - rowgroup [ref=e4268]:
+          - row "Symbol Operation Order Description" [ref=e4269]:
+            - columnheader "Symbol" [ref=e4270]
+            - columnheader "Operation" [ref=e4271]
+            - columnheader "Order" [ref=e4272]
+            - columnheader "Description" [ref=e4273]
+        - rowgroup [ref=e4274]:
+          - row "Identity 1 Does nothing" [ref=e4275]:
+            - cell [ref=e4276]:
+              - img [ref=e4278]
+            - cell "Identity" [ref=e4283]
+            - cell "1" [ref=e4284]
+            - cell "Does nothing" [ref=e4285]
+          - row "Proper rotation by Rotation about an axis;" [ref=e4286]:
+            - cell [ref=e4287]:
+              - img [ref=e4289]
+            - cell "Proper rotation by" [ref=e4297]:
+              - text: Proper rotation by
+              - img [ref=e4299]
+            - cell [ref=e4311]:
+              - img [ref=e4313]
+            - cell "Rotation about an axis;" [ref=e4318]:
+              - text: Rotation about an axis;
+              - img [ref=e4320]
+          - row "Mirror reflection 2 Reflection in a plane; sometimes written" [ref=e4346]:
+            - cell [ref=e4347]:
+              - img [ref=e4349]
+            - cell "Mirror reflection" [ref=e4354]
+            - cell "2" [ref=e4355]
+            - cell "Reflection in a plane; sometimes written" [ref=e4356]:
+              - text: Reflection in a plane; sometimes written
+              - img [ref=e4358]
+          - row "Inversion 2 Maps ; written in HM" [ref=e4363]:
+            - cell [ref=e4364]:
+              - img [ref=e4366]
+            - cell "Inversion" [ref=e4371]
+            - cell "2" [ref=e4372]
+            - cell "Maps ; written in HM" [ref=e4373]:
+              - text: Maps
+              - img [ref=e4375]
+              - text: ; written
+              - img [ref=e4389]
+              - text: in HM
+          - row "Improper rotation (rotoinversion) Rotation followed by inversion; ," [ref=e4398]:
+            - cell [ref=e4399]:
+              - img [ref=e4401]
+            - cell "Improper rotation (rotoinversion)" [ref=e4409]
+            - cell [ref=e4410]:
+              - img [ref=e4412]
+            - cell "Rotation followed by inversion; ," [ref=e4417]:
+              - text: Rotation followed by inversion;
+              - img [ref=e4419]
+              - text: ","
+              - img [ref=e4432]
+          - row ", Special improper rotations 4, 6 is a 4-fold rotoinversion; a 6-fold rotoinversion" [ref=e4444]:
+            - cell "," [ref=e4445]:
+              - img [ref=e4447]
+              - text: ","
+              - img [ref=e4456]
+            - cell "Special improper rotations" [ref=e4464]
+            - cell "4, 6" [ref=e4465]
+            - cell "is a 4-fold rotoinversion; a 6-fold rotoinversion" [ref=e4466]:
+              - img [ref=e4468]
+              - text: is a 4-fold rotoinversion;
+              - img [ref=e4477]
+              - text: a 6-fold rotoinversion
+      - paragraph [ref=e4485]:
+        - text: The combination of these generators, with the restriction
+        - img [ref=e4487]
+        - text: of
+        - img [ref=e4514]:
+          - link [ref=e4517] [cursor=pointer]:
+            - /url: "#"
+        - text: ", gives exactly 32 distinct point groups — a counting result first established by Hessel (1830), Gadolin (1867), and Schoenflies (1891)."
+      - heading "2.3 Schoenflies vs Hermann–Mauguin notation" [level=3] [ref=e4526]
+      - paragraph [ref=e4527]:
+        - text: Two notations coexist in the literature.
+        - strong [ref=e4528]: Schoenflies
+        - text: notation is the older one (1891), used by chemists, spectroscopists, and molecular physicists.
+        - strong [ref=e4529]: Hermann–Mauguin
+        - text: (HM) notation is the international crystallographic standard and is what every space-group database, the
+        - emphasis [ref=e4530]: International Tables for Crystallography
+        - text: ", the Bilbao Crystallographic Server, and every modern DFT code use."
+      - table [ref=e4531]:
+        - rowgroup [ref=e4532]:
+          - row "Feature Schoenflies Hermann–Mauguin" [ref=e4533]:
+            - columnheader "Feature" [ref=e4534]
+            - columnheader "Schoenflies" [ref=e4535]
+            - columnheader "Hermann–Mauguin" [ref=e4536]
+        - rowgroup [ref=e4537]:
+          - row "Rotation" [ref=e4538]:
+            - cell "Rotation" [ref=e4539]:
+              - text: Rotation
+              - img [ref=e4541]
+            - cell [ref=e4549]:
+              - img [ref=e4551]
+            - cell [ref=e4580]:
+              - img [ref=e4582]
+          - row "Mirror" [ref=e4599]:
+            - cell "Mirror" [ref=e4600]:
+              - text: Mirror
+              - img [ref=e4602]
+            - cell [ref=e4607]:
+              - img [ref=e4609]
+            - cell [ref=e4631]:
+              - img [ref=e4633]
+          - row "Inversion" [ref=e4638]:
+            - cell "Inversion" [ref=e4639]:
+              - text: Inversion
+              - img [ref=e4641]
+            - cell [ref=e4646]:
+              - img [ref=e4648]
+            - cell [ref=e4653]:
+              - img [ref=e4655]
+          - row "-fold rotoinversion" [ref=e4664]:
+            - cell "-fold rotoinversion" [ref=e4665]:
+              - img [ref=e4667]
+              - text: "-fold rotoinversion"
+              - img [ref=e4673]
+            - cell [ref=e4681]:
+              - img [ref=e4683]
+            - cell [ref=e4698]:
+              - img [ref=e4700]
+          - row "-fold rotation + perpendicular or depending on mirrors" [ref=e4717]:
+            - cell "-fold rotation + perpendicular" [ref=e4718]:
+              - img [ref=e4720]
+              - text: "-fold rotation + perpendicular"
+              - img [ref=e4726]
+            - cell [ref=e4734]:
+              - img [ref=e4736]
+            - cell "or depending on mirrors" [ref=e4744]:
+              - img [ref=e4746]
+              - text: or
+              - img [ref=e4754]
+              - text: depending on mirrors
+          - row "Order count (cubic ) 48 48" [ref=e4763]:
+            - cell "Order count (cubic )" [ref=e4764]:
+              - text: Order count (cubic
+              - img [ref=e4766]
+              - text: )
+            - cell "48" [ref=e4774]
+            - cell "48" [ref=e4775]
+          - row "Default use Spectroscopy, point-group theory Crystallography, DFT" [ref=e4776]:
+            - cell "Default use" [ref=e4777]
+            - cell "Spectroscopy, point-group theory" [ref=e4778]
+            - cell "Crystallography, DFT" [ref=e4779]
+      - paragraph [ref=e4780]: "A side-by-side table of all 32 point groups is in §10. ### 2.4 The 32 point groups grouped by crystal system"
+      - table [ref=e4781]:
+        - rowgroup [ref=e4782]:
+          - row "Crystal system Point groups (HM) Point groups (Schoenflies) Count" [ref=e4783]:
+            - columnheader "Crystal system" [ref=e4784]
+            - columnheader "Point groups (HM)" [ref=e4785]
+            - columnheader "Point groups (Schoenflies)" [ref=e4786]
+            - columnheader "Count" [ref=e4787]
+        - rowgroup [ref=e4788]:
+          - row "Triclinic , , 2" [ref=e4789]:
+            - cell "Triclinic" [ref=e4790]
+            - cell "," [ref=e4791]:
+              - img [ref=e4793]
+              - text: ","
+              - img [ref=e4803]
+            - cell "," [ref=e4808]:
+              - img [ref=e4810]
+              - text: ","
+              - img [ref=e4819]
+            - cell "2" [ref=e4827]
+          - row "Monoclinic , , , , 3" [ref=e4828]:
+            - cell "Monoclinic" [ref=e4829]
+            - cell ", ," [ref=e4830]:
+              - img [ref=e4832]
+              - text: ","
+              - img [ref=e4838]
+              - text: ","
+              - img [ref=e4844]
+            - cell ", ," [ref=e4854]:
+              - img [ref=e4856]
+              - text: ","
+              - img [ref=e4865]
+              - text: ","
+              - img [ref=e4874]
+            - cell "3" [ref=e4885]
+          - row "Orthorhombic , , , , 3" [ref=e4886]:
+            - cell "Orthorhombic" [ref=e4887]
+            - cell ", ," [ref=e4888]:
+              - img [ref=e4890]
+              - text: ","
+              - img [ref=e4898]
+              - text: ","
+              - img [ref=e4908]
+            - cell ", ," [ref=e4917]:
+              - img [ref=e4919]
+              - text: ","
+              - img [ref=e4928]
+              - text: ","
+              - img [ref=e4940]
+            - cell "3" [ref=e4951]
+          - row "Tetragonal , , , , , , 7" [ref=e4952]:
+            - cell "Tetragonal" [ref=e4953]
+            - cell ", , , , , ," [ref=e4954]:
+              - img [ref=e4956]
+              - text: ","
+              - img [ref=e4962]
+              - text: ","
+              - img [ref=e4972]
+              - text: ","
+              - img [ref=e4983]
+              - text: ","
+              - img [ref=e4991]
+              - text: ","
+              - img [ref=e5001]
+              - text: ","
+              - img [ref=e5015]
+            - cell [ref=e5029]:
+              - img [ref=e5031]
+            - cell "7" [ref=e5093]
+          - row "Trigonal , , , , 5" [ref=e5094]:
+            - cell "Trigonal" [ref=e5095]
+            - cell ", , , ," [ref=e5096]:
+              - img [ref=e5098]
+              - text: ","
+              - img [ref=e5104]
+              - text: ","
+              - img [ref=e5114]
+              - text: ","
+              - img [ref=e5121]
+              - text: ","
+              - img [ref=e5129]
+            - cell [ref=e5140]:
+              - img [ref=e5142]
+            - cell "5" [ref=e5187]
+          - row "Hexagonal , , , , , , 7" [ref=e5188]:
+            - cell "Hexagonal" [ref=e5189]
+            - cell ", , , , , ," [ref=e5190]:
+              - img [ref=e5192]
+              - text: ","
+              - img [ref=e5198]
+              - text: ","
+              - img [ref=e5208]
+              - text: ","
+              - img [ref=e5219]
+              - text: ","
+              - img [ref=e5227]
+              - text: ","
+              - img [ref=e5237]
+              - text: ","
+              - img [ref=e5251]
+            - cell [ref=e5265]:
+              - img [ref=e5267]
+            - cell "7" [ref=e5332]
+          - row "Cubic , , , , 5" [ref=e5333]:
+            - cell "Cubic" [ref=e5334]
+            - cell ", , , ," [ref=e5335]:
+              - img [ref=e5337]
+              - text: ","
+              - img [ref=e5344]
+              - text: ","
+              - img [ref=e5356]
+              - text: ","
+              - img [ref=e5364]
+              - text: ","
+              - img [ref=e5378]
+            - cell [ref=e5391]:
+              - img [ref=e5393]
+            - cell "5" [ref=e5423]
+          - row "Total 32" [ref=e5424]:
+            - cell "Total" [ref=e5425]:
+              - strong [ref=e5426]: Total
+            - cell [ref=e5427]
+            - cell [ref=e5428]
+            - cell "32" [ref=e5429]:
+              - strong [ref=e5430]: "32"
+      - paragraph [ref=e5431]:
+        - text: "Sum check:"
+        - img [ref=e5433]
+        - text: . ✓
+      - 'heading "2.5 Reference table: the 32 point groups with examples" [level=3] [ref=e5467]'
+      - paragraph [ref=e5468]: Each row gives the HM symbol, the Schoenflies symbol, the order of the group, the generating symmetry elements, and a typical example material.
+      - table [ref=e5469]:
+        - rowgroup [ref=e5470]:
+          - row "# HM Schoenflies Order Generators Example material" [ref=e5471]:
+            - columnheader "#" [ref=e5472]
+            - columnheader "HM" [ref=e5473]
+            - columnheader "Schoenflies" [ref=e5474]
+            - columnheader "Order" [ref=e5475]
+            - columnheader "Generators" [ref=e5476]
+            - columnheader "Example material" [ref=e5477]
+        - rowgroup [ref=e5478]:
+          - row "1 1 CaCO₃-Pm (hypothetical)" [ref=e5479]:
+            - cell "1" [ref=e5480]
+            - cell [ref=e5481]:
+              - img [ref=e5483]
+            - cell [ref=e5488]:
+              - img [ref=e5490]
+            - cell "1" [ref=e5498]
+            - cell [ref=e5499]:
+              - img [ref=e5501]
+            - cell "CaCO₃-Pm (hypothetical)" [ref=e5506]
+          - row "2 2 CuSO₄·5H₂O (triclinic)" [ref=e5507]:
+            - cell "2" [ref=e5508]
+            - cell [ref=e5509]:
+              - img [ref=e5511]
+            - cell [ref=e5520]:
+              - img [ref=e5522]
+            - cell "2" [ref=e5530]
+            - cell [ref=e5531]:
+              - img [ref=e5533]
+            - cell "CuSO₄·5H₂O (triclinic)" [ref=e5542]
+          - row "3 2 Sucrose" [ref=e5543]:
+            - cell "3" [ref=e5544]
+            - cell [ref=e5545]:
+              - img [ref=e5547]
+            - cell [ref=e5552]:
+              - img [ref=e5554]
+            - cell "2" [ref=e5562]
+            - cell [ref=e5563]:
+              - img [ref=e5565]
+            - cell "Sucrose" [ref=e5577]
+          - row "4 2 HCl (incommensurate)" [ref=e5578]:
+            - cell "4" [ref=e5579]
+            - cell [ref=e5580]:
+              - img [ref=e5582]
+            - cell [ref=e5587]:
+              - img [ref=e5589]
+            - cell "2" [ref=e5597]
+            - cell [ref=e5598]:
+              - img [ref=e5600]
+            - cell "HCl (incommensurate)" [ref=e5609]
+          - row "5 4 Gypsum, CaSO₄·2H₂O" [ref=e5610]:
+            - cell "5" [ref=e5611]
+            - cell [ref=e5612]:
+              - img [ref=e5614]
+            - cell [ref=e5624]:
+              - img [ref=e5626]
+            - cell "4" [ref=e5637]
+            - cell [ref=e5638]:
+              - img [ref=e5640]
+            - cell "Gypsum, CaSO₄·2H₂O" [ref=e5663]
+          - row "6 4 Cholesterol" [ref=e5664]:
+            - cell "6" [ref=e5665]
+            - cell [ref=e5666]:
+              - img [ref=e5668]
+            - cell [ref=e5675]:
+              - img [ref=e5677]
+            - cell "4" [ref=e5685]
+            - cell [ref=e5686]:
+              - img [ref=e5688]
+            - cell "Cholesterol" [ref=e5702]
+          - row "7 4 H₂O (molecular)" [ref=e5703]:
+            - cell "7" [ref=e5704]
+            - cell [ref=e5705]:
+              - img [ref=e5707]
+            - cell [ref=e5716]:
+              - img [ref=e5718]
+            - cell "4" [ref=e5729]
+            - cell [ref=e5730]:
+              - img [ref=e5732]
+            - cell "H₂O (molecular)" [ref=e5753]
+          - row "8 8 α-Sulfur" [ref=e5754]:
+            - cell "8" [ref=e5755]
+            - cell [ref=e5756]:
+              - img [ref=e5758]
+            - cell [ref=e5767]:
+              - img [ref=e5769]
+            - cell "8" [ref=e5780]
+            - cell [ref=e5781]:
+              - img [ref=e5783]
+            - cell "α-Sulfur" [ref=e5807]
+          - row "9 4 C₃H₇I (iodopropane)" [ref=e5808]:
+            - cell "9" [ref=e5809]
+            - cell [ref=e5810]:
+              - img [ref=e5812]
+            - cell [ref=e5817]:
+              - img [ref=e5819]
+            - cell "4" [ref=e5827]
+            - cell [ref=e5828]:
+              - img [ref=e5830]
+            - cell "C₃H₇I (iodopropane)" [ref=e5851]
+          - row "10 4 CaWO₄-Pm (low-T)" [ref=e5852]:
+            - cell "10" [ref=e5853]
+            - cell [ref=e5854]:
+              - img [ref=e5856]
+            - cell [ref=e5865]:
+              - img [ref=e5867]
+            - cell "4" [ref=e5875]
+            - cell [ref=e5876]:
+              - img [ref=e5878]
+            - cell "CaWO₄-Pm (low-T)" [ref=e5899]
+          - row "11 4 Scheelite, CaWO₄" [ref=e5900]:
+            - cell "11" [ref=e5901]
+            - cell [ref=e5902]:
+              - img [ref=e5904]
+            - cell [ref=e5914]:
+              - img [ref=e5916]
+            - cell "4" [ref=e5927]
+            - cell [ref=e5928]:
+              - img [ref=e5930]
+            - cell "Scheelite, CaWO₄" [ref=e5969]
+          - row "12 8 NiSO₄·6H₂O" [ref=e5970]:
+            - cell "12" [ref=e5971]
+            - cell [ref=e5972]:
+              - img [ref=e5974]
+            - cell [ref=e5981]:
+              - img [ref=e5983]
+            - cell "8" [ref=e5991]
+            - cell [ref=e5992]:
+              - img [ref=e5994]
+            - cell "NiSO₄·6H₂O" [ref=e6026]
+          - row "13 8 BaTiO₃ (tetragonal, HT)" [ref=e6027]:
+            - cell "13" [ref=e6028]
+            - cell [ref=e6029]:
+              - img [ref=e6031]
+            - cell [ref=e6040]:
+              - img [ref=e6042]
+            - cell "8" [ref=e6053]
+            - cell [ref=e6054]:
+              - img [ref=e6056]
+            - cell "BaTiO₃ (tetragonal, HT)" [ref=e6086]
+          - row "14 8 Chalcopyrite, CuFeS₂" [ref=e6087]:
+            - cell "14" [ref=e6088]
+            - cell [ref=e6089]:
+              - img [ref=e6091]
+            - cell [ref=e6104]:
+              - img [ref=e6106]
+            - cell "8" [ref=e6117]
+            - cell [ref=e6118]:
+              - img [ref=e6120]
+            - cell "Chalcopyrite, CuFeS₂" [ref=e6161]
+          - row "15 16 TiO₂ (rutile)" [ref=e6162]:
+            - cell "15" [ref=e6163]
+            - cell [ref=e6164]:
+              - img [ref=e6166]
+            - cell [ref=e6180]:
+              - img [ref=e6182]
+            - cell "16" [ref=e6193]
+            - cell [ref=e6194]:
+              - img [ref=e6196]
+            - cell "TiO₂ (rutile)" [ref=e6266]
+          - row "16 3 Quartz-P3 (low-T)" [ref=e6267]:
+            - cell "16" [ref=e6268]
+            - cell [ref=e6269]:
+              - img [ref=e6271]
+            - cell [ref=e6276]:
+              - img [ref=e6278]
+            - cell "3" [ref=e6286]
+            - cell [ref=e6287]:
+              - img [ref=e6289]
+            - cell "Quartz-P3 (low-T)" [ref=e6303]
+          - row "17 6 Dolomite" [ref=e6304]:
+            - cell "17" [ref=e6305]
+            - cell [ref=e6306]:
+              - img [ref=e6308]
+            - cell [ref=e6317]:
+              - img [ref=e6319]
+            - cell "6" [ref=e6330]
+            - cell [ref=e6331]:
+              - img [ref=e6333]
+            - cell "Dolomite" [ref=e6360]
+          - row "18 6 α-Quartz-P3₁21" [ref=e6361]:
+            - cell "18" [ref=e6362]
+            - cell [ref=e6363]:
+              - img [ref=e6365]
+            - cell [ref=e6371]:
+              - img [ref=e6373]
+            - cell "6" [ref=e6381]
+            - cell [ref=e6382]:
+              - img [ref=e6384]
+            - cell "α-Quartz-P3₁21" [ref=e6407]
+          - row "19 6 Tourmaline" [ref=e6408]:
+            - cell "19" [ref=e6409]
+            - cell [ref=e6410]:
+              - img [ref=e6412]
+            - cell [ref=e6419]:
+              - img [ref=e6421]
+            - cell "6" [ref=e6432]
+            - cell [ref=e6433]:
+              - img [ref=e6435]
+            - cell "Tourmaline" [ref=e6458]
+          - row "20 12 Calcite, CaCO₃" [ref=e6459]:
+            - cell "20" [ref=e6460]
+            - cell [ref=e6461]:
+              - img [ref=e6463]
+            - cell [ref=e6474]:
+              - img [ref=e6476]
+            - cell "12" [ref=e6487]
+            - cell [ref=e6488]:
+              - img [ref=e6490]
+            - cell "Calcite, CaCO₃" [ref=e6535]
+          - row "21 6 —" [ref=e6536]:
+            - cell "21" [ref=e6537]
+            - cell [ref=e6538]:
+              - img [ref=e6540]
+            - cell [ref=e6545]:
+              - img [ref=e6547]
+            - cell "6" [ref=e6555]
+            - cell [ref=e6556]:
+              - img [ref=e6558]
+            - cell "—" [ref=e6588]
+          - row "22 6 —" [ref=e6589]:
+            - cell "22" [ref=e6590]
+            - cell [ref=e6591]:
+              - img [ref=e6593]
+            - cell [ref=e6602]:
+              - img [ref=e6604]
+            - cell "6" [ref=e6615]
+            - cell [ref=e6616]:
+              - img [ref=e6618]
+            - cell "—" [ref=e6648]
+          - row "23 6 Apatite (low-T)" [ref=e6649]:
+            - cell "23" [ref=e6650]
+            - cell [ref=e6651]:
+              - img [ref=e6653]
+            - cell [ref=e6663]:
+              - img [ref=e6665]
+            - cell "6" [ref=e6676]
+            - cell [ref=e6677]:
+              - img [ref=e6679]
+            - cell "Apatite (low-T)" [ref=e6738]
+          - row "24 12 —" [ref=e6739]:
+            - cell "24" [ref=e6740]
+            - cell [ref=e6741]:
+              - img [ref=e6743]
+            - cell [ref=e6750]:
+              - img [ref=e6752]
+            - cell "12" [ref=e6760]
+            - cell [ref=e6761]:
+              - img [ref=e6763]
+            - cell "—" [ref=e6804]
+          - row "25 12 ZnO (wurtzite)" [ref=e6805]:
+            - cell "25" [ref=e6806]
+            - cell [ref=e6807]:
+              - img [ref=e6809]
+            - cell [ref=e6818]:
+              - img [ref=e6820]
+            - cell "12" [ref=e6831]
+            - cell [ref=e6832]:
+              - img [ref=e6834]
+            - cell "ZnO (wurtzite)" [ref=e6873]
+          - row "26 12 Graphite, BN" [ref=e6874]:
+            - cell "26" [ref=e6875]
+            - cell [ref=e6876]:
+              - img [ref=e6878]
+            - cell [ref=e6891]:
+              - img [ref=e6893]
+            - cell "12" [ref=e6904]
+            - cell [ref=e6905]:
+              - img [ref=e6907]
+            - cell "Graphite, BN" [ref=e6955]
+          - row "27 24 hcp Mg, h-BN, graphite" [ref=e6956]:
+            - cell "27" [ref=e6957]
+            - cell [ref=e6958]:
+              - img [ref=e6960]
+            - cell [ref=e6974]:
+              - img [ref=e6976]
+            - cell "24" [ref=e6987]
+            - cell [ref=e6988]:
+              - img [ref=e6990]
+            - cell "hcp Mg, h-BN, graphite" [ref=e7078]
+          - row "28 12 —" [ref=e7079]:
+            - cell "28" [ref=e7080]
+            - cell [ref=e7081]:
+              - img [ref=e7083]
+            - cell [ref=e7089]:
+              - img [ref=e7091]
+            - cell "12" [ref=e7096]
+            - cell [ref=e7097]:
+              - img [ref=e7099]
+            - cell "—" [ref=e7122]
+          - row "29 24 Pyrite, FeS₂" [ref=e7123]:
+            - cell "29" [ref=e7124]
+            - cell [ref=e7125]:
+              - img [ref=e7127]
+            - cell [ref=e7138]:
+              - img [ref=e7140]
+            - cell "24" [ref=e7148]
+            - cell [ref=e7149]:
+              - img [ref=e7151]
+            - cell "Pyrite, FeS₂" [ref=e7196]
+          - row "30 24 β-Mn (A13)" [ref=e7197]:
+            - cell "30" [ref=e7198]
+            - cell [ref=e7199]:
+              - img [ref=e7201]
+            - cell [ref=e7208]:
+              - img [ref=e7210]
+            - cell "24" [ref=e7215]
+            - cell [ref=e7216]:
+              - img [ref=e7218]
+            - cell "β-Mn (A13)" [ref=e7261]
+          - row "31 24 Sphalerite, ZnS" [ref=e7262]:
+            - cell "31" [ref=e7263]
+            - cell [ref=e7264]:
+              - img [ref=e7266]
+            - cell [ref=e7279]:
+              - img [ref=e7281]
+            - cell "24" [ref=e7289]
+            - cell [ref=e7290]:
+              - img [ref=e7292]
+            - cell "Sphalerite, ZnS" [ref=e7333]
+          - row "32 48 Rocksalt NaCl, Cu, Si" [ref=e7334]:
+            - cell "32" [ref=e7335]
+            - cell [ref=e7336]:
+              - img [ref=e7338]
+            - cell [ref=e7351]:
+              - img [ref=e7353]
+            - cell "48" [ref=e7361]
+            - cell [ref=e7362]:
+              - img [ref=e7364]
+            - cell "Rocksalt NaCl, Cu, Si" [ref=e7447]
+      - blockquote [ref=e7448]:
+        - paragraph [ref=e7449]:
+          - strong [ref=e7450]: Order counting.
+          - text: The order of a point group is the number of distinct symmetry operations it contains. For
+          - img [ref=e7452]
+          - text: it is
+          - img [ref=e7461]
+          - text: ; for
+          - img [ref=e7467]
+          - text: it is
+          - img [ref=e7476]
+          - text: ; for
+          - img [ref=e7484]
+          - text: (chiral tetrahedral) it is 12; for
+          - img [ref=e7490]
+          - text: (chiral octahedral, sometimes called the
+          - emphasis [ref=e7495]: "rotation grou`p"
+          - text: ’ of the cube) it is 24; for
+          - img [ref=e7497]
+          - text: (full octahedral) it is 48. The five cubic point groups are 12, 24, 24, 24, 48 in size, which sums with the others to 32. —
+      - heading "3. The 230 space groups" [level=2] [ref=e7505]
+      - paragraph [ref=e7506]:
+        - text: A
+        - strong [ref=e7507]: space group
+        - text: is the full symmetry group of a crystal, including both the directional symmetries of the point group (§2) and the translational symmetries of the Bravais lattice (§1). The full group is
+        - strong [ref=e7508]: infinite
+        - text: because translations
+        - img [ref=e7510]
+        - text: are infinite in number; but the
+        - emphasis [ref=e7534]: factor
+        - text: by which the group is infinite — the
+        - strong [ref=e7535]: point group
+        - text: — is finite. Every space group can be written as a
+        - emphasis [ref=e7536]: coset decomposition
+        - text: of its point group over the translation subgroup, so the space group is “point group + a small set of generators”.
+      - paragraph [ref=e7537]:
+        - text: "The enumeration of 3-D space groups is one of the great counting theorems of 19th-century mathematics: there are"
+        - strong [ref=e7538]: exactly 230 distinct space groups
+        - text: in three dimensions, a result proved independently by Schoenflies (1891), Fedorov (1891), and Barlow (1894). The classification is tabulated in the
+        - emphasis [ref=e7539]: International Tables for Crystallography
+        - text: ", vol. A (6th ed., 2016), and the equivalent Schoenflies notation in vol. E (2002). Modern web resources are the"
+        - link "Bilbao Crystallographic Server" [ref=e7540] [cursor=pointer]:
+          - /url: https://www.cryst.ehu.es/
+        - text: (BCS) and the
+        - code [ref=e7541]: spglib
+        - text: ’ library.
+      - heading "3.1 The Seitz notation" [level=3] [ref=e7542]
+      - paragraph [ref=e7543]:
+        - text: Every element
+        - img [ref=e7545]
+        - text: of a space group can be written in
+        - strong [ref=e7550]: Seitz notation
+      - img [ref=e7552]
+      - paragraph [ref=e7591]:
+        - text: with
+        - img [ref=e7593]
+        - text: a point-group operation (rotation, reflection, inversion, rotoinversion, or a product thereof) and
+        - img [ref=e7609]
+        - text: a translation. The composition rule is
+      - img [ref=e7624]
+      - paragraph [ref=e7700]:
+        - text: The translation subgroup is
+        - img [ref=e7702]
+        - text: for
+        - img [ref=e7715]
+        - text: ", and the point group is the set of"
+        - img [ref=e7739]
+        - text: operations in the group.
+      - paragraph [ref=e7750]:
+        - text: In the DFT notes the Seitz notation is introduced in
+        - link "chapter 07 §7.10.1" [ref=e7751] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: . Equations
+        - img [ref=e7753]:
+          - link [ref=e7756] [cursor=pointer]:
+            - /url: "#"
+        - text: and
+        - img [ref=e7766]:
+          - link [ref=e7769] [cursor=pointer]:
+            - /url: "#"
+        - text: above are identical to equations (7.139) and (7.140) of that chapter.
+      - heading "3.2 Symmorphic vs non-symmorphic space groups" [level=3] [ref=e7778]
+      - paragraph [ref=e7779]:
+        - text: A space group is
+        - strong [ref=e7780]: symmorphic
+        - text: if its point group is a
+        - emphasis [ref=e7781]: "subgrou`p"
+        - text: ’ of the space group in the literal sense — that is, if every element of the point group
+        - img [ref=e7783]
+        - text: is in the space group. Equivalently, a symmorphic space group is a
+        - emphasis [ref=e7794]: direct product
+        - text: of the point group and the translation subgroup.
+      - paragraph [ref=e7795]:
+        - text: In a non-symmorphic space group, on the other hand, some “point-group” operations are accompanied by a
+        - emphasis [ref=e7796]: fractional
+        - text: translation
+        - img [ref=e7798]
+        - text: "that is not a Bravais vector. These fractional translations can be of two kinds:"
+      - list [ref=e7804]:
+        - listitem [ref=e7805]:
+          - paragraph [ref=e7806]:
+            - strong [ref=e7807]: "Screw axis:"
+            - img [ref=e7809]
+            - text: is parallel to the rotation axis; the operation is a rotation + translation. The notation
+            - img [ref=e7816]
+            - text: denotes an
+            - img [ref=e7825]
+            - text: "-fold rotation accompanied by a"
+            - img [ref=e7831]
+            - text: translation along the axis (in units of the cell parameter along the axis). E.g.
+            - img [ref=e7842]
+            - text: is a 2-fold rotation with translation by
+            - img [ref=e7851]
+            - text: ;
+            - img [ref=e7862]
+            - text: is a 4-fold rotation with translation by
+            - img [ref=e7871]
+            - text: .
+        - listitem [ref=e7881]:
+          - paragraph [ref=e7882]:
+            - strong [ref=e7883]: "Glide plane:"
+            - img [ref=e7885]
+            - text: lies in the mirror plane; the operation is a reflection + translation. Glides are denoted
+            - img [ref=e7892]
+            - text: (translation by
+            - img [ref=e7898]
+            - text: ),
+            - img [ref=e7909]
+            - text: (by
+            - img [ref=e7915]
+            - text: ),
+            - img [ref=e7926]
+            - text: (by
+            - img [ref=e7932]
+            - text: ),
+            - img [ref=e7943]
+            - text: (translation by
+            - img [ref=e7949]
+            - text: or any other diagonal), and
+            - img [ref=e7968]
+            - text: (translation by
+            - img [ref=e7974]
+            - text: — a “diamond” glide).
+      - paragraph [ref=e7992]:
+        - text: Of the 230 space groups, exactly
+        - strong [ref=e7993]: 73 are symmorphic
+        - text: and
+        - strong [ref=e7994]: 157 are non-symmorphic
+        - text: . The symmorphic space groups are the ones in which every crystal axis is described by a single HM symbol without subscripts (screws) or letter (glides). The most common symmorphic space groups in DFT are
+        - img [ref=e7996]
+        - text: (No. 221),
+        - img [ref=e8012]
+        - text: (No. 225),
+        - img [ref=e8028]
+        - text: (No. 191), and
+        - img [ref=e8045]
+        - text: (No. 123).
+      - heading "3.3 Looking up a space group from its number" [level=3] [ref=e8061]
+      - paragraph [ref=e8062]:
+        - text: The
+        - emphasis [ref=e8063]: International Tables for Crystallography
+        - text: ", vol. A, tabulates the 230 space groups in order from No. 1 to No. 230. The numbering is unique and universal; “space group No. 227” is"
+        - img [ref=e8065]
+        - text: (the diamond structure) in every reference. The first 73 are symmorphic; numbers 74–230 are non-symmorphic.
+      - paragraph [ref=e8080]: "A short cut for the practitioner:"
+      - list [ref=e8081]:
+        - listitem [ref=e8082]: The number, the HM symbol, and the Schoenflies symbol are three equivalent labels for the same space group. All three are accepted by modern DFT codes.
+        - listitem [ref=e8083]:
+          - text: The HM symbol has the structure
+          - img [ref=e8085]
+          - text: where each
+          - emphasis [ref=e8127]: position
+          - text: is a generator (rotation, screw, mirror, glide, or rotoinversion) along a specific crystallographic direction.
+        - listitem [ref=e8128]:
+          - text: The full entry in the
+          - emphasis [ref=e8129]: International Tables
+          - text: (or on the BCS) includes the Wyckoff positions (§4), the maximal subgroups, and the generators.
+      - blockquote [ref=e8130]:
+        - paragraph [ref=e8131]:
+          - strong [ref=e8132]: Tip.
+          - text: The Python library
+          - code [ref=e8133]: spglib
+          - text: ’ (H. T. Stokes, D. M. Hatch, Brigham Young University; python wrapper
+          - code [ref=e8134]: pyspglib
+          - text: ) is the standard tool for symmetry analysis. It takes a crystal structure (cell + atomic positions) and returns the space group number, the HM symbol, the Schoenflies symbol, the equivalent Wyckoff positions, and a symmetrised cell.
+      - heading "3.4 The most common space groups for DFT calculations" [level=3] [ref=e8135]
+      - paragraph [ref=e8136]: The 230 space groups are not used equally. DFT calculations in 2025 overwhelmingly use the following dozen-or-so, with silicon, copper, α-quartz, and graphite as the canonical examples.
+      - table [ref=e8137]:
+        - rowgroup [ref=e8138]:
+          - row "# HM (full) Schoenflies Point group Bravais lattice Example compound" [ref=e8139]:
+            - columnheader "#" [ref=e8140]
+            - columnheader "HM (full)" [ref=e8141]
+            - columnheader "Schoenflies" [ref=e8142]
+            - columnheader "Point group" [ref=e8143]
+            - columnheader "Bravais lattice" [ref=e8144]
+            - columnheader "Example compound" [ref=e8145]
+        - rowgroup [ref=e8146]:
+          - row "1 Generic disordered structure" [ref=e8147]:
+            - cell "1" [ref=e8148]
+            - cell [ref=e8149]:
+              - img [ref=e8151]
+            - cell [ref=e8158]:
+              - img [ref=e8160]
+            - cell [ref=e8170]:
+              - img [ref=e8172]
+            - cell [ref=e8180]:
+              - img [ref=e8182]
+            - cell "Generic disordered structure" [ref=e8189]
+          - row "2 CuSO₄·5H₂O" [ref=e8190]:
+            - cell "2" [ref=e8191]
+            - cell [ref=e8192]:
+              - img [ref=e8194]
+            - cell [ref=e8205]:
+              - img [ref=e8207]
+            - cell [ref=e8217]:
+              - img [ref=e8219]
+            - cell [ref=e8227]:
+              - img [ref=e8229]
+            - cell "CuSO₄·5H₂O" [ref=e8236]
+          - row "14 Most molecular crystals" [ref=e8237]:
+            - cell "14" [ref=e8238]
+            - cell [ref=e8239]:
+              - img [ref=e8241]
+            - cell [ref=e8256]:
+              - img [ref=e8258]
+            - cell [ref=e8271]:
+              - img [ref=e8273]
+            - cell [ref=e8284]:
+              - img [ref=e8286]
+            - cell "Most molecular crystals" [ref=e8293]
+          - row "15 Graphite intercalation compounds" [ref=e8294]:
+            - cell "15" [ref=e8295]
+            - cell [ref=e8296]:
+              - img [ref=e8298]
+            - cell [ref=e8310]:
+              - img [ref=e8312]
+            - cell [ref=e8325]:
+              - img [ref=e8327]
+            - cell [ref=e8338]:
+              - img [ref=e8340]
+            - cell "Graphite intercalation compounds" [ref=e8347]
+          - row "62 Olivine, LiFePO₄; perovskite orthorhombic" [ref=e8348]:
+            - cell "62" [ref=e8349]
+            - cell [ref=e8350]:
+              - img [ref=e8352]
+            - cell [ref=e8363]:
+              - img [ref=e8365]
+            - cell [ref=e8380]:
+              - img [ref=e8382]
+            - cell [ref=e8393]:
+              - img [ref=e8395]
+            - cell "Olivine, LiFePO₄; perovskite orthorhombic" [ref=e8402]
+          - row "63 LiCoO₂ (delithiated); TiB₂" [ref=e8403]:
+            - cell "63" [ref=e8404]
+            - cell [ref=e8405]:
+              - img [ref=e8407]
+            - cell [ref=e8418]:
+              - img [ref=e8420]
+            - cell [ref=e8435]:
+              - img [ref=e8437]
+            - cell [ref=e8448]:
+              - img [ref=e8450]
+            - cell "LiCoO₂ (delithiated); TiB₂" [ref=e8457]
+          - row "123 La₂₋ₓSrₓCuO₄ (tetragonal)" [ref=e8458]:
+            - cell "123" [ref=e8459]
+            - cell [ref=e8460]:
+              - img [ref=e8462]
+            - cell [ref=e8478]:
+              - img [ref=e8480]
+            - cell [ref=e8494]:
+              - img [ref=e8496]
+            - cell [ref=e8507]:
+              - img [ref=e8509]
+            - cell "La₂₋ₓSrₓCuO₄ (tetragonal)" [ref=e8516]
+          - row "139 BaFe₂As₂; cuprate parent La₂CuO₄" [ref=e8517]:
+            - cell "139" [ref=e8518]
+            - cell [ref=e8519]:
+              - img [ref=e8521]
+            - cell [ref=e8537]:
+              - img [ref=e8539]
+            - cell [ref=e8554]:
+              - img [ref=e8556]
+            - cell [ref=e8567]:
+              - img [ref=e8569]
+            - cell "BaFe₂As₂; cuprate parent La₂CuO₄" [ref=e8576]
+          - row "186 w-ZnO, w-CdS, AlN (2H polytype)" [ref=e8577]:
+            - cell "186" [ref=e8578]
+            - cell [ref=e8579]:
+              - img [ref=e8581]
+            - cell [ref=e8595]:
+              - img [ref=e8597]
+            - cell [ref=e8610]:
+              - img [ref=e8612]
+            - cell [ref=e8623]:
+              - img [ref=e8625]
+            - cell "w-ZnO, w-CdS, AlN (2H polytype)" [ref=e8632]
+          - row "194 hcp Mg, h-BN, graphite, 2H-MoS₂" [ref=e8633]:
+            - cell "194" [ref=e8634]
+            - cell [ref=e8635]:
+              - img [ref=e8637]
+            - cell [ref=e8656]:
+              - img [ref=e8658]
+            - cell [ref=e8671]:
+              - img [ref=e8673]
+            - cell [ref=e8684]:
+              - img [ref=e8686]
+            - cell "hcp Mg, h-BN, graphite, 2H-MoS₂" [ref=e8693]
+          - row "164 CdI₂ (1T polytype)" [ref=e8694]:
+            - cell "164" [ref=e8695]
+            - cell [ref=e8696]:
+              - img [ref=e8698]
+            - cell [ref=e8713]:
+              - img [ref=e8715]
+            - cell [ref=e8729]:
+              - img [ref=e8731]
+            - cell [ref=e8742]:
+              - img [ref=e8744]
+            - cell "CdI₂ (1T polytype)" [ref=e8751]
+          - row "166 Bi, Sb, α-NaFeO₂" [ref=e8752]:
+            - cell "166" [ref=e8753]
+            - cell [ref=e8754]:
+              - img [ref=e8756]
+            - cell [ref=e8769]:
+              - img [ref=e8771]
+            - cell [ref=e8785]:
+              - img [ref=e8787]
+            - cell [ref=e8798]:
+              - img [ref=e8800]
+            - cell "Bi, Sb, α-NaFeO₂" [ref=e8807]
+          - row "221 CsCl, simple cubic perovskite" [ref=e8808]:
+            - cell "221" [ref=e8809]
+            - cell [ref=e8810]:
+              - img [ref=e8812]
+            - cell [ref=e8827]:
+              - img [ref=e8829]
+            - cell [ref=e8839]:
+              - img [ref=e8841]
+            - cell [ref=e8849]:
+              - img [ref=e8851]
+            - cell "CsCl, simple cubic perovskite" [ref=e8858]
+          - row "225 Cu, Al, Ni, NaCl, γ-Fe" [ref=e8859]:
+            - cell "225" [ref=e8860]
+            - cell [ref=e8861]:
+              - img [ref=e8863]
+            - cell [ref=e8878]:
+              - img [ref=e8880]
+            - cell [ref=e8890]:
+              - img [ref=e8892]
+            - cell [ref=e8900]:
+              - img [ref=e8902]
+            - cell "Cu, Al, Ni, NaCl, γ-Fe" [ref=e8909]
+          - row "229 α-Fe, W, Mo, Cr" [ref=e8910]:
+            - cell "229" [ref=e8911]
+            - cell [ref=e8912]:
+              - img [ref=e8914]
+            - cell [ref=e8929]:
+              - img [ref=e8931]
+            - cell [ref=e8941]:
+              - img [ref=e8943]
+            - cell [ref=e8951]:
+              - img [ref=e8953]
+            - cell "α-Fe, W, Mo, Cr" [ref=e8960]
+          - row "227 Si, Ge, diamond, GaAs (zincblende)" [ref=e8961]:
+            - cell "227" [ref=e8962]
+            - cell [ref=e8963]:
+              - img [ref=e8965]
+            - cell [ref=e8980]:
+              - img [ref=e8982]
+            - cell [ref=e8992]:
+              - img [ref=e8994]
+            - cell [ref=e9002]:
+              - img [ref=e9004]
+            - cell "Si, Ge, diamond, GaAs (zincblende)" [ref=e9011]
+          - row "216 Sphalerite ZnS, GaAs (zincblende)" [ref=e9012]:
+            - cell "216" [ref=e9013]
+            - cell [ref=e9014]:
+              - img [ref=e9016]
+            - cell [ref=e9031]:
+              - img [ref=e9033]
+            - cell [ref=e9043]:
+              - img [ref=e9045]
+            - cell [ref=e9053]:
+              - img [ref=e9055]
+            - cell "Sphalerite ZnS, GaAs (zincblende)" [ref=e9062]
+          - row "224 Perovskite (cubic), SrTiO₃" [ref=e9063]:
+            - cell "224" [ref=e9064]
+            - cell [ref=e9065]:
+              - img [ref=e9067]
+            - cell [ref=e9082]:
+              - img [ref=e9084]
+            - cell [ref=e9094]:
+              - img [ref=e9096]
+            - cell [ref=e9104]:
+              - img [ref=e9106]
+            - cell "Perovskite (cubic), SrTiO₃" [ref=e9113]
+      - blockquote [ref=e9114]:
+        - paragraph [ref=e9115]:
+          - strong [ref=e9116]: Zincblende vs diamond.
+          - img [ref=e9118]
+          - text: (No. 216) and
+          - img [ref=e9134]
+          - text: (No. 227) have the same FCC Bravais lattice and the same occupied Wyckoff positions, but different
+          - emphasis [ref=e9149]: glide
+          - text: planes. In
+          - img [ref=e9151]
+          - text: the two atoms of the basis sit at
+          - img [ref=e9167]
+          - text: and
+          - img [ref=e9185]
+          - text: ", which is the"
+          - strong [ref=e9217]: diamond
+          - text: structure. In
+          - img [ref=e9219]
+          - text: the second atom is at
+          - img [ref=e9235]
+          - text: as well, but the
+          - emphasis [ref=e9267]: "`d"
+          - text: ’ glide of the diamond is replaced by a pure mirror — the
+          - strong [ref=e9268]: zincblende
+          - text: structure. If the two basis atoms are different species (GaAs, ZnS, CdTe), the inversion symmetry is broken and the group is zincblende. If they are the same (Si, Ge, C), the group is diamond.
+      - blockquote [ref=e9269]:
+        - paragraph [ref=e9270]:
+          - strong [ref=e9271]: HM and Schoenflies — the canonical mappings for DFT.
+          - text: "Five space groups do most of the work:"
+          - img [ref=e9273]
+          - text: =
+          - img [ref=e9289]
+          - text: for FCC metals and NaCl;
+          - img [ref=e9300]
+          - text: =
+          - img [ref=e9316]
+          - text: for BCC metals;
+          - img [ref=e9327]
+          - text: =
+          - img [ref=e9343]
+          - text: for diamond/zincblende; $P 6
+          - emphasis [ref=e9353]:
+            - text: 3/m m c
+            - img [ref=e9355]
+            - text: D
+          - text: "{6h}^4"
+          - img [ref=e9361]
+          - text: P 2
+          - emphasis [ref=e9400]:
+            - text: 1/c
+            - img [ref=e9402]
+            - text: C
+          - text: "{2h}^5$ for molecular crystals. The five together cover 80 % of the materials in the ICSD."
+      - separator [ref=e9407]
+      - heading "4. Wyckoff positions" [level=2] [ref=e9408]
+      - paragraph [ref=e9409]:
+        - text: A
+        - strong [ref=e9410]: Wyckoff position
+        - text: of a space group is the set of symmetry-equivalent sites in the unit cell. Each space group has a finite number of Wyckoff positions; the position with the
+        - strong [ref=e9411]: highest site symmetry
+        - text: and
+        - strong [ref=e9412]: lowest multiplicity
+        - text: is the
+        - strong [ref=e9413]: most special
+        - text: and is conventionally labelled with the
+        - strong [ref=e9414]: lowest letter
+        - text: (
+        - img [ref=e9416]
+        - text: ).
+      - heading "4.1 Multiplicity, letter, and site symmetry" [level=3] [ref=e9421]
+      - paragraph [ref=e9422]: "Three numbers describe a Wyckoff position:"
+      - list [ref=e9423]:
+        - listitem [ref=e9424]:
+          - paragraph [ref=e9425]:
+            - strong [ref=e9426]: Multiplicity
+            - img [ref=e9428]
+            - text: — the number of symmetry-equivalent sites per
+            - strong [ref=e9433]: conventional
+            - text: unit cell. For a primitive cell
+            - img [ref=e9435]
+            - text: counts the sites in the primitive cell; for a centred cell it is multiplied by the centring factor (1 for
+            - img [ref=e9441]
+            - text: ", 2 for"
+            - img [ref=e9447]
+            - text: ", 4 for"
+            - img [ref=e9453]
+            - text: ).
+        - listitem [ref=e9458]:
+          - paragraph [ref=e9459]:
+            - strong [ref=e9460]: Wyckoff letter
+            - text: — a single Latin letter starting from
+            - img [ref=e9462]
+            - text: for the most special position, then
+            - img [ref=e9468]
+            - text: . Positions with the same letter have the same site symmetry. Letters run out after
+            - img [ref=e9486]
+            - text: (or before, depending on the group); the IUC uses subscripts after that point.
+        - listitem [ref=e9491]:
+          - paragraph [ref=e9492]:
+            - strong [ref=e9493]: Site symmetry
+            - text: — the subgroup of the point group that leaves the site invariant. E.g. in
+            - img [ref=e9495]
+            - text: the 1a Wyckoff position has site symmetry
+            - img [ref=e9511]
+            - text: (the full cubic point group), the 3c position has site symmetry
+            - img [ref=e9525]
+            - text: ", the 6e position has site symmetry"
+            - img [ref=e9542]
+            - text: ", and so on."
+      - paragraph [ref=e9553]:
+        - text: The general rule is
+        - strong [ref=e9554]:
+          - text: multiplicity
+          - img [ref=e9556]
+          - text: site-symmetry order = space-group order
+        - text: . E.g. in
+        - img [ref=e9562]
+        - text: (order 48), the 1a site has full cubic symmetry (order 48) and multiplicity
+        - img [ref=e9578]
+        - text: ; the 3c site has site-symmetry order 16 (
+        - img [ref=e9595]
+        - text: ) and multiplicity
+        - img [ref=e9612]
+        - text: .
+      - 'heading "4.2 Worked example: the diamond structure in" [level=3] [ref=e9628]':
+        - text: "4.2 Worked example: the diamond structure in"
+        - img [ref=e9630]
+      - paragraph [ref=e9645]:
+        - text: The diamond structure (Si, Ge, C) has space group
+        - img [ref=e9647]
+        - text: "(No. 227). The conventional cell has 8 atoms; the Wyckoff positions are:"
+      - table [ref=e9662]:
+        - rowgroup [ref=e9663]:
+          - row "Letter Multiplicity Site symmetry Coordinates" [ref=e9664]:
+            - columnheader "Letter" [ref=e9665]
+            - columnheader "Multiplicity" [ref=e9666]
+            - columnheader "Site symmetry" [ref=e9667]
+            - columnheader "Coordinates" [ref=e9668]
+        - rowgroup [ref=e9669]:
+          - row "8a 8 ( , order 24)" [ref=e9670]:
+            - cell "8a" [ref=e9671]
+            - cell "8" [ref=e9672]
+            - cell "( , order 24)" [ref=e9673]:
+              - img [ref=e9675]
+              - text: (
+              - img [ref=e9689]
+              - text: ", order 24)"
+            - cell [ref=e9697]:
+              - img [ref=e9699]
+          - row "8b 8 ( , order 24)" [ref=e9753]:
+            - cell "8b" [ref=e9754]
+            - cell "8" [ref=e9755]
+            - cell "( , order 24)" [ref=e9756]:
+              - img [ref=e9758]
+              - text: (
+              - img [ref=e9772]
+              - text: ", order 24)"
+            - cell [ref=e9780]:
+              - img [ref=e9782]
+          - row "16c 16 ( ) All with free, plus FCC" [ref=e9851]:
+            - cell "16c" [ref=e9852]
+            - cell "16" [ref=e9853]
+            - cell "( )" [ref=e9854]:
+              - img [ref=e9856]
+              - text: (
+              - img [ref=e9868]
+              - text: )
+            - cell "All with free, plus FCC" [ref=e9879]:
+              - text: All
+              - img [ref=e9881]
+              - text: with
+              - img [ref=e9899]
+              - text: free, plus FCC
+          - row "16d 16 ( ) All -like, plus FCC" [ref=e9904]:
+            - cell "16d" [ref=e9905]
+            - cell "16" [ref=e9906]
+            - cell "( )" [ref=e9907]:
+              - img [ref=e9909]
+              - text: (
+              - img [ref=e9921]
+              - text: )
+            - cell "All -like, plus FCC" [ref=e9932]:
+              - text: All
+              - img [ref=e9934]
+              - text: "-like, plus FCC"
+          - row "32e 32 ( ) ," [ref=e9966]:
+            - cell "32e" [ref=e9967]
+            - cell "32" [ref=e9968]
+            - cell "( )" [ref=e9969]:
+              - img [ref=e9971]
+              - text: (
+              - img [ref=e9979]
+              - text: )
+            - cell "," [ref=e9990]:
+              - img [ref=e9992]
+              - text: ","
+              - img [ref=e10010]
+          - row "48f 48 ( )" [ref=e10019]:
+            - cell "48f" [ref=e10020]
+            - cell "48" [ref=e10021]
+            - cell "( )" [ref=e10022]:
+              - img [ref=e10024]
+              - text: (
+              - img [ref=e10035]
+              - text: )
+            - cell [ref=e10046]:
+              - img [ref=e10048]
+      - paragraph [ref=e10075]:
+        - text: The 8a position places the two atoms of the basis at
+        - img [ref=e10077]
+        - text: and
+        - img [ref=e10095]
+        - text: plus the FCC translations. The 8b position is the
+        - strong [ref=e10127]: other
+        - text: tetrahedral site of the FCC lattice — the one that gives the
+        - emphasis [ref=e10128]: antifluorite
+        - text: structure when occupied by a different species. Si and Ge sit on 8a; in zincblende (GaAs) the Ga is on 8a and the As is on 8b.
+      - paragraph [ref=e10129]:
+        - text: The
+        - strong [ref=e10130]: site-symmetry consistency check
+        - text: "for the 8a position: multiplicity"
+        - img [ref=e10132]
+        - text: site-symmetry order =
+        - img [ref=e10138]
+        - text: ", which is the order of the space group"
+        - img [ref=e10155]
+        - text: (a non-symmorphic group with coset representatives beyond the point group). The check passes. ✓
+      - blockquote [ref=e10170]:
+        - paragraph [ref=e10171]:
+          - strong [ref=e10172]: Reading the BCS / ITC entry.
+          - text: On the Bilbao Crystallographic Server, the Wyckoff positions of
+          - img [ref=e10174]
+          - text: are listed under “Wyckoff positions” with three columns (multiplicity, letter, site symmetry) and a fourth column of representative coordinates. The 8a position has 2 representative lines —
+          - img [ref=e10190]
+          - text: and
+          - img [ref=e10208]
+          - text: — the FCC translations being implicit.
+      - separator [ref=e10240]
+      - heading "5. Bravais lattice parameter tables" [level=2] [ref=e10241]
+      - paragraph [ref=e10242]: The full 14-Bravais-lattice table with conventional cell parameters, number of lattice points per conventional cell, and Pearson symbol.
+      - table [ref=e10243]:
+        - rowgroup [ref=e10244]:
+          - row "# Bravais lattice Pearson symbol Crystal system Conventional cell Lattice points per conv. cell" [ref=e10245]:
+            - columnheader "#" [ref=e10246]
+            - columnheader "Bravais lattice" [ref=e10247]
+            - columnheader "Pearson symbol" [ref=e10248]
+            - columnheader "Crystal system" [ref=e10249]
+            - columnheader "Conventional cell" [ref=e10250]
+            - columnheader "Lattice points per conv. cell" [ref=e10251]
+        - rowgroup [ref=e10252]:
+          - row "1 Triclinic Triclinic , 1" [ref=e10253]:
+            - cell "1" [ref=e10254]
+            - cell "Triclinic" [ref=e10255]:
+              - text: Triclinic
+              - img [ref=e10257]
+            - cell [ref=e10262]:
+              - img [ref=e10264]
+            - cell "Triclinic" [ref=e10271]
+            - cell "," [ref=e10272]:
+              - img [ref=e10274]
+              - text: ","
+              - img [ref=e10288]
+            - cell "1" [ref=e10309]
+          - row "2 Monoclinic Monoclinic , , 1" [ref=e10310]:
+            - cell "2" [ref=e10311]
+            - cell "Monoclinic" [ref=e10312]:
+              - text: Monoclinic
+              - img [ref=e10314]
+            - cell [ref=e10319]:
+              - img [ref=e10321]
+            - cell "Monoclinic" [ref=e10328]
+            - cell ", ," [ref=e10329]:
+              - img [ref=e10331]
+              - text: ","
+              - img [ref=e10345]
+              - text: ","
+              - img [ref=e10363]
+            - cell "1" [ref=e10376]
+          - row "3 Monoclinic (or in Pearson) Monoclinic , , 2" [ref=e10377]:
+            - cell "3" [ref=e10378]
+            - cell "Monoclinic (or in Pearson)" [ref=e10379]:
+              - text: Monoclinic
+              - img [ref=e10381]
+              - text: (or
+              - img [ref=e10387]
+              - text: in Pearson)
+            - cell [ref=e10392]:
+              - img [ref=e10394]
+            - cell "Monoclinic" [ref=e10401]
+            - cell ", ," [ref=e10402]:
+              - img [ref=e10404]
+              - text: ","
+              - img [ref=e10418]
+              - text: ","
+              - img [ref=e10436]
+            - cell "2" [ref=e10449]
+          - row "4 Orthorhombic Orthorhombic , 1" [ref=e10450]:
+            - cell "4" [ref=e10451]
+            - cell "Orthorhombic" [ref=e10452]:
+              - text: Orthorhombic
+              - img [ref=e10454]
+            - cell [ref=e10459]:
+              - img [ref=e10461]
+            - cell "Orthorhombic" [ref=e10468]
+            - cell "," [ref=e10469]:
+              - img [ref=e10471]
+              - text: ","
+              - img [ref=e10485]
+            - cell "1" [ref=e10506]
+          - row "5 Orthorhombic (base-centred) Orthorhombic , 2" [ref=e10507]:
+            - cell "5" [ref=e10508]
+            - cell "Orthorhombic (base-centred)" [ref=e10509]:
+              - text: Orthorhombic
+              - img [ref=e10511]
+              - text: (base-centred)
+            - cell [ref=e10516]:
+              - img [ref=e10518]
+            - cell "Orthorhombic" [ref=e10525]
+            - cell "," [ref=e10526]:
+              - img [ref=e10528]
+              - text: ","
+              - img [ref=e10542]
+            - cell "2" [ref=e10563]
+          - row "6 Orthorhombic (body-centred) Orthorhombic , 2" [ref=e10564]:
+            - cell "6" [ref=e10565]
+            - cell "Orthorhombic (body-centred)" [ref=e10566]:
+              - text: Orthorhombic
+              - img [ref=e10568]
+              - text: (body-centred)
+            - cell [ref=e10573]:
+              - img [ref=e10575]
+            - cell "Orthorhombic" [ref=e10582]
+            - cell "," [ref=e10583]:
+              - img [ref=e10585]
+              - text: ","
+              - img [ref=e10599]
+            - cell "2" [ref=e10620]
+          - row "7 Orthorhombic (face-centred) Orthorhombic , 4" [ref=e10621]:
+            - cell "7" [ref=e10622]
+            - cell "Orthorhombic (face-centred)" [ref=e10623]:
+              - text: Orthorhombic
+              - img [ref=e10625]
+              - text: (face-centred)
+            - cell [ref=e10630]:
+              - img [ref=e10632]
+            - cell "Orthorhombic" [ref=e10639]
+            - cell "," [ref=e10640]:
+              - img [ref=e10642]
+              - text: ","
+              - img [ref=e10656]
+            - cell "4" [ref=e10677]
+          - row "8 Tetragonal Tetragonal , 1" [ref=e10678]:
+            - cell "8" [ref=e10679]
+            - cell "Tetragonal" [ref=e10680]:
+              - text: Tetragonal
+              - img [ref=e10682]
+            - cell [ref=e10687]:
+              - img [ref=e10689]
+            - cell "Tetragonal" [ref=e10696]
+            - cell "," [ref=e10697]:
+              - img [ref=e10699]
+              - text: ","
+              - img [ref=e10713]
+            - cell "1" [ref=e10734]
+          - row "9 Tetragonal Tetragonal , 2" [ref=e10735]:
+            - cell "9" [ref=e10736]
+            - cell "Tetragonal" [ref=e10737]:
+              - text: Tetragonal
+              - img [ref=e10739]
+            - cell [ref=e10744]:
+              - img [ref=e10746]
+            - cell "Tetragonal" [ref=e10753]
+            - cell "," [ref=e10754]:
+              - img [ref=e10756]
+              - text: ","
+              - img [ref=e10770]
+            - cell "2" [ref=e10791]
+          - row "10 Hexagonal Hexagonal , , 1" [ref=e10792]:
+            - cell "10" [ref=e10793]
+            - cell "Hexagonal" [ref=e10794]:
+              - text: Hexagonal
+              - img [ref=e10796]
+            - cell [ref=e10801]:
+              - img [ref=e10803]
+            - cell "Hexagonal" [ref=e10810]
+            - cell ", ," [ref=e10811]:
+              - img [ref=e10813]
+              - text: ","
+              - img [ref=e10827]
+              - text: ","
+              - img [ref=e10845]
+            - cell "1" [ref=e10859]
+          - row "11 Rhombohedral Trigonal , (rhomb. axes) 3 (per rhomb cell)" [ref=e10860]:
+            - cell "11" [ref=e10861]
+            - cell "Rhombohedral" [ref=e10862]:
+              - text: Rhombohedral
+              - img [ref=e10864]
+            - cell [ref=e10869]:
+              - img [ref=e10871]
+            - cell "Trigonal" [ref=e10878]
+            - cell ", (rhomb. axes)" [ref=e10879]:
+              - img [ref=e10881]
+              - text: ","
+              - img [ref=e10895]
+              - text: (rhomb. axes)
+            - cell "3 (per rhomb cell)" [ref=e10916]
+          - row "12 Cubic Cubic , 1" [ref=e10917]:
+            - cell "12" [ref=e10918]
+            - cell "Cubic" [ref=e10919]:
+              - text: Cubic
+              - img [ref=e10921]
+            - cell [ref=e10926]:
+              - img [ref=e10928]
+            - cell "Cubic" [ref=e10935]
+            - cell "," [ref=e10936]:
+              - img [ref=e10938]
+              - text: ","
+              - img [ref=e10952]
+            - cell "1" [ref=e10973]
+          - row "13 Cubic (body-centred, BCC) Cubic , 2" [ref=e10974]:
+            - cell "13" [ref=e10975]
+            - cell "Cubic (body-centred, BCC)" [ref=e10976]:
+              - text: Cubic
+              - img [ref=e10978]
+              - text: (body-centred, BCC)
+            - cell [ref=e10983]:
+              - img [ref=e10985]
+            - cell "Cubic" [ref=e10992]
+            - cell "," [ref=e10993]:
+              - img [ref=e10995]
+              - text: ","
+              - img [ref=e11009]
+            - cell "2" [ref=e11030]
+          - row "14 Cubic (face-centred, FCC) Cubic , 4" [ref=e11031]:
+            - cell "14" [ref=e11032]
+            - cell "Cubic (face-centred, FCC)" [ref=e11033]:
+              - text: Cubic
+              - img [ref=e11035]
+              - text: (face-centred, FCC)
+            - cell [ref=e11040]:
+              - img [ref=e11042]
+            - cell "Cubic" [ref=e11049]
+            - cell "," [ref=e11050]:
+              - img [ref=e11052]
+              - text: ","
+              - img [ref=e11066]
+            - cell "4" [ref=e11087]
+      - blockquote [ref=e11088]:
+        - paragraph [ref=e11089]:
+          - strong [ref=e11090]: Trigonal vs hexagonal rhombohedral setting.
+          - text: The rhombohedral lattice can be described with
+          - emphasis [ref=e11091]: rhombohedral axes
+          - text: (one rhombohedral cell, 3 lattice points) or with
+          - emphasis [ref=e11092]: hexagonal axes
+          - text: (three times larger hexagonal cell, 1 lattice point per hexagonal cell). Both descriptions refer to the same lattice. The hexagonal setting is what
+          - code [ref=e11093]: spglib
+          - text: ’ and most DFT codes use; the rhombohedral setting is what older textbooks use.
+      - separator [ref=e11094]
+      - heading "6. Reciprocal lattice and Brillouin zones" [level=2] [ref=e11095]
+      - paragraph [ref=e11096]:
+        - text: The
+        - strong [ref=e11097]: first Brillouin zone
+        - text: (1st BZ) is the
+        - strong [ref=e11098]: Wigner–Seitz cell of the reciprocal lattice
+        - text: "— the set of points in reciprocal space that are closer to the origin than to any other reciprocal-lattice point. Equation (7.16) of chapter 07 gives the formal definition:"
+      - img [ref=e11100]
+      - paragraph [ref=e11189]:
+        - text: The boundary of the 1st BZ is built from the perpendicular bisector planes of the
+        - strong [ref=e11190]: shortest
+        - text: reciprocal-lattice vectors
+        - img [ref=e11192]
+        - text: . The
+        - strong [ref=e11198]: higher-order
+        - text: "BZs are the 2nd, 3rd, … shells: the 2nd BZ is the set of points closer to"
+        - emphasis [ref=e11199]: one
+        - text: non-origin reciprocal lattice point than to any other, and so on.
+      - heading "6.1 Construction algorithm" [level=3] [ref=e11200]
+      - paragraph [ref=e11201]: "The construction of the 1st BZ in 3-D is straightforward:"
+      - list [ref=e11202]:
+        - listitem [ref=e11203]:
+          - text: Generate the list of all
+          - img [ref=e11205]
+          - text: vectors with
+          - img [ref=e11212]
+          - text: less than some cutoff (typically
+          - img [ref=e11223]
+          - text: for the first few shells).
+        - listitem [ref=e11241]:
+          - text: For each
+          - img [ref=e11243]
+          - text: ", compute the perpendicular bisector plane:"
+          - img [ref=e11250]
+          - text: .
+        - listitem [ref=e11287]:
+          - text: The 1st BZ is the intersection of all half-spaces
+          - img [ref=e11289]
+          - text: .
+        - listitem [ref=e11326]: Find the vertices of the polyhedron by intersecting triples of bisector planes; classify them by the number of bisecting planes they lie on (4 = vertex where 4 planes meet, etc.).
+        - listitem [ref=e11327]: The high-symmetry points are those vertices that are invariant under the largest subgroup of the point group.
+      - paragraph [ref=e11328]:
+        - text: In practice, this algorithm is implemented in
+        - code [ref=e11329]: spglib
+        - text: ’ and
+        - code [ref=e11330]: seekpath
+        - text: . For the 7 lattice types, the resulting polyhedra are well-known and tabulated below.
+      - heading "6.2 BZ for the simple cubic (SC) lattice" [level=3] [ref=e11331]
+      - paragraph [ref=e11332]:
+        - text: The SC direct lattice has reciprocal lattice
+        - img [ref=e11334]
+        - text: . The shortest
+        - img [ref=e11369]
+        - text: are
+        - img [ref=e11376]
+        - text: ", so the 1st BZ is a"
+        - strong [ref=e11404]: cube
+        - text: of side
+        - img [ref=e11406]
+        - text: ", centred at the origin. The high-symmetry points are:"
+      - table [ref=e11418]:
+        - rowgroup [ref=e11419]:
+          - row "Label Cartesian (in ) Description" [ref=e11420]:
+            - columnheader "Label" [ref=e11421]
+            - columnheader "Cartesian (in )" [ref=e11422]:
+              - text: Cartesian (in
+              - img [ref=e11424]
+              - text: )
+            - columnheader "Description" [ref=e11436]
+        - rowgroup [ref=e11437]:
+          - row "Centre of the BZ" [ref=e11438]:
+            - cell [ref=e11439]:
+              - img [ref=e11441]
+            - cell [ref=e11446]:
+              - img [ref=e11448]
+            - cell "Centre of the BZ" [ref=e11465]
+          - row "Centre of a square face" [ref=e11466]:
+            - cell [ref=e11467]:
+              - img [ref=e11469]
+            - cell [ref=e11474]:
+              - img [ref=e11476]
+            - cell "Centre of a square face" [ref=e11498]
+          - row "Centre of an edge" [ref=e11499]:
+            - cell [ref=e11500]:
+              - img [ref=e11502]
+            - cell [ref=e11507]:
+              - img [ref=e11509]
+            - cell "Centre of an edge" [ref=e11536]
+          - row "Corner of the cube" [ref=e11537]:
+            - cell [ref=e11538]:
+              - img [ref=e11540]
+            - cell [ref=e11545]:
+              - img [ref=e11547]
+            - cell "Corner of the cube" [ref=e11579]
+      - paragraph [ref=e11580]:
+        - text: The standard k-path is
+        - img [ref=e11582]
+        - text: (see §7).
+      - heading "6.3 BZ for the BCC lattice" [level=3] [ref=e11616]
+      - paragraph [ref=e11617]:
+        - text: The BCC direct lattice has reciprocal FCC lattice (§1.5 above). The shortest
+        - img [ref=e11619]
+        - text: vectors are
+        - img [ref=e11626]
+        - text: — 8 in total. The 1st BZ is a
+        - strong [ref=e11658]: truncated octahedron
+        - text: "(a regular octahedron with the six vertices cut off), with 14 faces:"
+      - list [ref=e11659]:
+        - listitem [ref=e11660]:
+          - text: 6 square faces centred at
+          - img [ref=e11662]
+          - text: and permutations (perpendicular bisectors of
+          - img [ref=e11695]
+          - text: ", etc.)"
+        - listitem [ref=e11727]:
+          - text: 8 hexagonal faces centred at
+          - img [ref=e11729]
+          - text: and permutations.
+      - paragraph [ref=e11759]: "The high-symmetry points are:"
+      - table [ref=e11760]:
+        - rowgroup [ref=e11761]:
+          - row "Label Cartesian (in ) Multiplicity Description" [ref=e11762]:
+            - columnheader "Label" [ref=e11763]
+            - columnheader "Cartesian (in )" [ref=e11764]:
+              - text: Cartesian (in
+              - img [ref=e11766]
+              - text: )
+            - columnheader "Multiplicity" [ref=e11778]
+            - columnheader "Description" [ref=e11779]
+        - rowgroup [ref=e11780]:
+          - row "1 Centre of the BZ" [ref=e11781]:
+            - cell [ref=e11782]:
+              - img [ref=e11784]
+            - cell [ref=e11789]:
+              - img [ref=e11791]
+            - cell "1" [ref=e11808]
+            - cell "Centre of the BZ" [ref=e11809]
+          - 'row "6 Vertex: 2 hexagons + 1 square meet" [ref=e11810]':
+            - cell [ref=e11811]:
+              - img [ref=e11813]
+            - cell [ref=e11818]:
+              - img [ref=e11820]
+            - cell "6" [ref=e11837]
+            - 'cell "Vertex: 2 hexagons + 1 square meet" [ref=e11838]'
+          - row "12 Centre of a square face" [ref=e11839]:
+            - cell [ref=e11840]:
+              - img [ref=e11842]
+            - cell [ref=e11847]:
+              - img [ref=e11849]
+            - cell "12" [ref=e11876]
+            - cell "Centre of a square face" [ref=e11877]
+          - row "8 Centre of a hexagonal face" [ref=e11878]:
+            - cell [ref=e11879]:
+              - img [ref=e11881]
+            - cell [ref=e11886]:
+              - img [ref=e11888]
+            - cell "8" [ref=e11920]
+            - cell "Centre of a hexagonal face" [ref=e11921]
+      - paragraph [ref=e11922]:
+        - text: The standard k-path is
+        - img [ref=e11924]
+        - text: (see §7).
+      - heading "6.4 BZ for the FCC lattice" [level=3] [ref=e11949]
+      - paragraph [ref=e11950]:
+        - text: The FCC direct lattice has reciprocal BCC lattice (§1.5). The shortest
+        - img [ref=e11952]
+        - text: are
+        - img [ref=e11959]
+        - text: etc., so the 1st BZ is also a truncated octahedron — but the
+        - emphasis [ref=e11991]: labels
+        - text: of the high-symmetry points differ from the BCC case. See
+        - link "chapter 07 §7.4.3" [ref=e11992] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: "for the full table:"
+      - table [ref=e11993]:
+        - rowgroup [ref=e11994]:
+          - row "Label Cartesian (in ) Multiplicity Description" [ref=e11995]:
+            - columnheader "Label" [ref=e11996]
+            - columnheader "Cartesian (in )" [ref=e11997]:
+              - text: Cartesian (in
+              - img [ref=e11999]
+              - text: )
+            - columnheader "Multiplicity" [ref=e12011]
+            - columnheader "Description" [ref=e12012]
+        - rowgroup [ref=e12013]:
+          - row "1 Centre of the BZ" [ref=e12014]:
+            - cell [ref=e12015]:
+              - img [ref=e12017]
+            - cell [ref=e12022]:
+              - img [ref=e12024]
+            - cell "1" [ref=e12041]
+            - cell "Centre of the BZ" [ref=e12042]
+          - row "6 Centre of a square face" [ref=e12043]:
+            - cell [ref=e12044]:
+              - img [ref=e12046]
+            - cell [ref=e12051]:
+              - img [ref=e12053]
+            - cell "6" [ref=e12070]
+            - cell "Centre of a square face" [ref=e12071]
+          - row "8 Centre of a hexagonal face" [ref=e12072]:
+            - cell [ref=e12073]:
+              - img [ref=e12075]
+            - cell [ref=e12080]:
+              - img [ref=e12082]
+            - cell "8" [ref=e12114]
+            - cell "Centre of a hexagonal face" [ref=e12115]
+          - 'row "24 Vertex: 2 hexagons + 1 square meet" [ref=e12116]':
+            - cell [ref=e12117]:
+              - img [ref=e12119]
+            - cell [ref=e12124]:
+              - img [ref=e12126]
+            - cell "24" [ref=e12148]
+            - 'cell "Vertex: 2 hexagons + 1 square meet" [ref=e12149]'
+          - row "24 Midpoint of a hex–hex edge" [ref=e12150]:
+            - cell [ref=e12151]:
+              - img [ref=e12153]
+            - cell [ref=e12158]:
+              - img [ref=e12160]
+            - cell "24" [ref=e12187]
+            - cell "Midpoint of a hex–hex edge" [ref=e12188]
+          - row "24 Midpoint of an – edge" [ref=e12189]:
+            - cell [ref=e12190]:
+              - img [ref=e12192]
+            - cell [ref=e12197]:
+              - img [ref=e12199]
+            - cell "24" [ref=e12231]
+            - cell "Midpoint of an – edge" [ref=e12232]:
+              - text: Midpoint of an
+              - img [ref=e12234]
+              - text: –
+              - img [ref=e12240]
+              - text: edge
+      - paragraph [ref=e12245]:
+        - text: The standard k-path is
+        - img [ref=e12247]
+        - text: (see §7).
+      - heading "6.5 BZ for the hexagonal lattice" [level=3] [ref=e12288]
+      - paragraph [ref=e12289]:
+        - text: The hexagonal lattice with
+        - img [ref=e12291]
+        - text: ","
+        - img [ref=e12305]
+        - text: has the reciprocal hexagonal lattice in the basal plane. The primitive reciprocal vectors are
+      - img [ref=e12320]
+      - paragraph [ref=e12444]:
+        - text: The 1st BZ is a
+        - strong [ref=e12445]: regular hexagonal prism
+        - text: with hexagonal faces at
+        - img [ref=e12447]
+        - text: "and rectangular side faces. The high-symmetry points:"
+      - table [ref=e12466]:
+        - rowgroup [ref=e12467]:
+          - row "Label Cartesian Description" [ref=e12468]:
+            - columnheader "Label" [ref=e12469]
+            - columnheader "Cartesian" [ref=e12470]
+            - columnheader "Description" [ref=e12471]
+        - rowgroup [ref=e12472]:
+          - row "Centre of the BZ" [ref=e12473]:
+            - cell [ref=e12474]:
+              - img [ref=e12476]
+            - cell [ref=e12481]:
+              - img [ref=e12483]
+            - cell "Centre of the BZ" [ref=e12500]
+          - row "in Centre of a hexagonal face" [ref=e12501]:
+            - cell [ref=e12502]:
+              - img [ref=e12504]
+            - cell "in" [ref=e12509]:
+              - img [ref=e12511]
+              - text: in
+              - img [ref=e12550]
+            - cell "Centre of a hexagonal face" [ref=e12588]
+          - row "Hex–hex edge midpoint; the Dirac point of graphene" [ref=e12589]:
+            - cell [ref=e12590]:
+              - img [ref=e12592]
+            - cell [ref=e12597]:
+              - img [ref=e12599]
+            - cell "Hex–hex edge midpoint; the Dirac point of graphene" [ref=e12697]
+          - row "Top of the BZ" [ref=e12698]:
+            - cell [ref=e12699]:
+              - img [ref=e12701]
+            - cell [ref=e12706]:
+              - img [ref=e12708]
+            - cell "Top of the BZ" [ref=e12751]
+          - row "Centre of a side face" [ref=e12752]:
+            - cell [ref=e12753]:
+              - img [ref=e12755]
+            - cell [ref=e12760]:
+              - img [ref=e12762]
+            - cell "Centre of a side face" [ref=e12815]
+          - row "Edge midpoint on the top face" [ref=e12816]:
+            - cell [ref=e12817]:
+              - img [ref=e12819]
+            - cell [ref=e12824]:
+              - img [ref=e12826]
+            - cell "Edge midpoint on the top face" [ref=e12897]
+      - blockquote [ref=e12898]:
+        - paragraph [ref=e12899]:
+          - strong [ref=e12900]:
+            - text: Why
+            - img [ref=e12902]
+            - text: is special in graphene.
+          - text: The point
+          - img [ref=e12908]
+          - text: is a
+          - emphasis [ref=e12913]: corner
+          - text: of the hexagonal BZ (not a centre) and is the point where the two inequivalent Dirac cones of graphene sit. See
+          - link "chapter 11 §11.9" [ref=e12914] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: for the tight-binding model that produces the linear dispersion at
+          - img [ref=e12916]
+          - text: .
+      - separator [ref=e12921]
+      - heading "7. High-symmetry k-paths for common lattices" [level=2] [ref=e12922]
+      - paragraph [ref=e12923]:
+        - text: The 1-D k-path used to plot a band structure is a
+        - emphasis [ref=e12924]: chain of straight segments
+        - text: joining the high-symmetry points. The path must visit every symmetry-inequivalent point in the IBZ at least once; longer paths are more complete but harder to read. The four “canonical” paths below are the ones used by the Materials Project, AFLOW, the BoltzTraP code, and every modern VASP/QE tutorial.
+      - heading "7.1 Simple cubic (SC)" [level=3] [ref=e12925]
+      - paragraph [ref=e12926]:
+        - text: The SC lattice has a
+        - strong [ref=e12927]: cubic
+        - text: 1st BZ of side
+        - img [ref=e12929]
+        - text: . The high-symmetry points are
+        - img [ref=e12942]
+        - text: (centre,
+        - img [ref=e12948]
+        - text: ),
+        - img [ref=e12962]
+        - text: (face centre,
+        - img [ref=e12968]
+        - text: ),
+        - img [ref=e12987]
+        - text: (edge centre,
+        - img [ref=e12993]
+        - text: ), and
+        - img [ref=e13017]
+        - text: (corner,
+        - img [ref=e13023]
+        - text: ) — all coordinates in
+        - img [ref=e13052]
+        - text: units. The standard k-path visits the four points in the order
+        - img [ref=e13065]
+        - text: plus the closing segment
+        - img [ref=e13091]
+        - text: on the back face. The shorthand is
+      - img [ref=e13101]
+      - paragraph [ref=e13136]:
+        - text: The SC lattice is rarely encountered in real materials (CsCl is the most common example, and it is
+        - emphasis [ref=e13137]: BCC
+        - text: in the reciprocal lattice); the SC path is shown in many textbooks as a pedagogic introduction because the BZ is a cube and the path is self-evident.
+      - heading "7.2 Body-centred cubic (BCC)" [level=3] [ref=e13138]
+      - paragraph [ref=e13139]:
+        - text: "The standard BCC path covers the 4 high-symmetry points of the BCC BZ. The high-symmetry points and the segment sequence are given in the table below. Note the symmetry:"
+        - img [ref=e13141]
+        - text: has the same length as
+        - img [ref=e13151]
+        - text: ", and"
+        - img [ref=e13165]
+        - text: is the shortest of the five segments.
+      - table [ref=e13174]:
+        - rowgroup [ref=e13175]:
+          - row "Segment From To Cartesian (in ) Length (in )" [ref=e13176]:
+            - columnheader "Segment" [ref=e13177]
+            - columnheader "From To" [ref=e13178]:
+              - text: From
+              - img [ref=e13180]
+              - text: To
+            - columnheader "Cartesian (in )" [ref=e13185]:
+              - text: Cartesian (in
+              - img [ref=e13187]
+              - text: )
+            - columnheader "Length (in )" [ref=e13199]:
+              - text: Length (in
+              - img [ref=e13201]
+              - text: )
+        - rowgroup [ref=e13213]:
+          - row "1 1.000" [ref=e13214]:
+            - cell "1" [ref=e13215]
+            - cell [ref=e13216]:
+              - img [ref=e13218]
+            - cell [ref=e13227]:
+              - img [ref=e13229]
+            - cell "1.000" [ref=e13262]
+          - row "2" [ref=e13263]:
+            - cell "2" [ref=e13264]
+            - cell [ref=e13265]:
+              - img [ref=e13267]
+            - cell [ref=e13276]:
+              - img [ref=e13278]
+            - cell [ref=e13321]:
+              - img [ref=e13323]
+          - row "3" [ref=e13346]:
+            - cell "3" [ref=e13347]
+            - cell [ref=e13348]:
+              - img [ref=e13350]
+            - cell [ref=e13359]:
+              - img [ref=e13361]
+            - cell [ref=e13404]:
+              - img [ref=e13406]
+          - row "4" [ref=e13429]:
+            - cell "4" [ref=e13430]
+            - cell [ref=e13431]:
+              - img [ref=e13433]
+            - cell [ref=e13442]:
+              - img [ref=e13444]
+            - cell [ref=e13492]:
+              - img [ref=e13494]
+          - row "5" [ref=e13517]:
+            - cell "5" [ref=e13518]
+            - cell [ref=e13519]:
+              - img [ref=e13521]
+            - cell [ref=e13530]:
+              - img [ref=e13532]
+            - cell [ref=e13580]:
+              - img [ref=e13582]
+      - paragraph [ref=e13606]:
+        - text: The path in shorthand is
+        - img [ref=e13608]
+        - text: ". Total length:"
+        - img [ref=e13643]
+        - text: in units of
+        - img [ref=e13654]
+        - text: . BCC metals (alkali metals, α-Fe, W, Mo, Cr) are usually plotted along this path.
+      - heading "7.3 Face-centred cubic (FCC)" [level=3] [ref=e13666]
+      - paragraph [ref=e13667]:
+        - text: The standard FCC path (Setyawan–Curtarolo) has 10 segments and 6 high-symmetry points. The shorter, older convention is
+        - img [ref=e13669]
+        - text: (7 segments); the modern, longer convention is
+        - img [ref=e13703]
+        - text: (9 segments after the closing loop). We follow the modern convention here, as it is what VASP, Quantum ESPRESSO, and the Materials Project use.
+      - table [ref=e13744]:
+        - rowgroup [ref=e13745]:
+          - row "Segment From To Cartesian (in ) Length (in )" [ref=e13746]:
+            - columnheader "Segment" [ref=e13747]
+            - columnheader "From To" [ref=e13748]:
+              - text: From
+              - img [ref=e13750]
+              - text: To
+            - columnheader "Cartesian (in )" [ref=e13755]:
+              - text: Cartesian (in
+              - img [ref=e13757]
+              - text: )
+            - columnheader "Length (in )" [ref=e13769]:
+              - text: Length (in
+              - img [ref=e13771]
+              - text: )
+        - rowgroup [ref=e13783]:
+          - row "1 1.000" [ref=e13784]:
+            - cell "1" [ref=e13785]
+            - cell [ref=e13786]:
+              - img [ref=e13788]
+            - cell [ref=e13797]:
+              - img [ref=e13799]
+            - cell "1.000" [ref=e13832]
+          - row "2 0.500" [ref=e13833]:
+            - cell "2" [ref=e13834]
+            - cell [ref=e13835]:
+              - img [ref=e13837]
+            - cell [ref=e13846]:
+              - img [ref=e13848]
+            - cell "0.500" [ref=e13886]
+          - row "3" [ref=e13887]:
+            - cell "3" [ref=e13888]
+            - cell [ref=e13889]:
+              - img [ref=e13891]
+            - cell [ref=e13900]:
+              - img [ref=e13902]
+            - cell [ref=e13950]:
+              - img [ref=e13952]
+          - row "4" [ref=e13975]:
+            - cell "4" [ref=e13976]
+            - cell [ref=e13977]:
+              - img [ref=e13979]
+            - cell [ref=e13988]:
+              - img [ref=e13990]
+            - cell [ref=e14033]:
+              - img [ref=e14035]
+          - row "5" [ref=e14060]:
+            - cell "5" [ref=e14061]
+            - cell [ref=e14062]:
+              - img [ref=e14064]
+            - cell [ref=e14073]:
+              - img [ref=e14075]
+            - cell [ref=e14123]:
+              - img [ref=e14125]
+          - row "6" [ref=e14148]:
+            - cell "6" [ref=e14149]
+            - cell [ref=e14150]:
+              - img [ref=e14152]
+            - cell [ref=e14161]:
+              - img [ref=e14163]
+            - cell [ref=e14226]:
+              - img [ref=e14228]
+          - row "7" [ref=e14290]:
+            - cell "7" [ref=e14291]
+            - cell [ref=e14292]:
+              - img [ref=e14294]
+            - cell [ref=e14303]:
+              - img [ref=e14305]
+            - cell [ref=e14358]:
+              - img [ref=e14360]
+          - row "8" [ref=e14422]:
+            - cell "8" [ref=e14423]
+            - cell [ref=e14424]:
+              - img [ref=e14426]
+            - cell [ref=e14435]:
+              - img [ref=e14437]
+            - cell [ref=e14490]:
+              - img [ref=e14492]
+          - row "9" [ref=e14515]:
+            - cell "9" [ref=e14516]
+            - cell [ref=e14517]:
+              - img [ref=e14519]
+            - cell [ref=e14528]:
+              - img [ref=e14530]
+            - cell [ref=e14588]:
+              - img [ref=e14590]
+      - paragraph [ref=e14652]:
+        - text: "Total path length:"
+        - img [ref=e14654]
+        - text: in units of
+        - img [ref=e14665]
+        - text: .
+      - blockquote [ref=e14677]:
+        - paragraph [ref=e14678]:
+          - strong [ref=e14679]:
+            - text: Warning — the
+            - img [ref=e14681]
+            - text: point.
+          - text: The Setyawan–Curtarolo convention places
+          - img [ref=e14687]
+          - text: at
+          - img [ref=e14693]
+          - text: . Older textbooks (Kittel, Ashcroft & Mermin) place
+          - img [ref=e14726]
+          - text: at
+          - img [ref=e14732]
+          - text: ", which is a"
+          - emphasis [ref=e14764]: different
+          - text: point — the midpoint of a hex–square edge. When comparing band-structure plots from different references, always check which convention is used. See
+          - link "chapter 11 §11.2.2" [ref=e14765] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: for the explicit warning.
+      - heading "7.4 Hexagonal (HEX)" [level=3] [ref=e14766]
+      - paragraph [ref=e14767]:
+        - text: The standard hexagonal path visits the 6 high-symmetry points of §6.5 in two halves. The first half (
+        - img [ref=e14769]
+        - text: ) lives in the basal plane
+        - img [ref=e14787]
+        - text: and is the path used for 2-D materials such as graphene. The second half (
+        - img [ref=e14800]
+        - text: ) samples the
+        - img [ref=e14822]
+        - text: dispersion. Three closing segments (
+        - img [ref=e14831]
+        - text: ","
+        - img [ref=e14841]
+        - text: ) connect the top of the BZ back to the basal plane. The shorthand is
+      - img [ref=e14851]
+      - paragraph [ref=e14902]:
+        - text: "For 2-D materials, drop the second half: the path reduces to"
+        - img [ref=e14904]
+        - text: ", the canonical graphene path of"
+        - link "chapter 11 §11.9" [ref=e14921] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-11/
+        - text: .
+      - blockquote [ref=e14922]:
+        - paragraph [ref=e14923]:
+          - strong [ref=e14924]: The K point is doubly counted.
+          - text: In the path above, the segment
+          - img [ref=e14926]
+          - text: is on the basal plane and the segment
+          - img [ref=e14936]
+          - text: is between the basal plane and the top face. The point
+          - img [ref=e14946]
+          - text: therefore appears
+          - emphasis [ref=e14951]: twice
+          - text: in the path. This is correct — the basal-plane
+          - img [ref=e14953]
+          - text: and the top-face
+          - img [ref=e14959]
+          - text: are
+          - emphasis [ref=e14964]: different
+          - text: points in the 3-D BZ, even though they share the
+          - img [ref=e14966]
+          - text: "-component when projected to the basal plane."
+      - heading "7.5 Summary of the four canonical k-paths" [level=3] [ref=e14974]
+      - table [ref=e14975]:
+        - rowgroup [ref=e14976]:
+          - row "Lattice Path (Setyawan–Curtarolo) Points Segments" [ref=e14977]:
+            - columnheader "Lattice" [ref=e14978]
+            - columnheader "Path (Setyawan–Curtarolo)" [ref=e14979]
+            - columnheader "Points" [ref=e14980]
+            - columnheader "Segments" [ref=e14981]
+        - rowgroup [ref=e14982]:
+          - row "SC 4 6" [ref=e14983]:
+            - cell "SC" [ref=e14984]
+            - cell [ref=e14985]:
+              - img [ref=e14987]
+            - cell "4" [ref=e15020]
+            - cell "6" [ref=e15021]
+          - row "BCC 4 6" [ref=e15022]:
+            - cell "BCC" [ref=e15023]
+            - cell [ref=e15024]:
+              - img [ref=e15026]
+            - cell "4" [ref=e15059]
+            - cell "6" [ref=e15060]
+          - row "FCC 6 9" [ref=e15061]:
+            - cell "FCC" [ref=e15062]
+            - cell [ref=e15063]:
+              - img [ref=e15065]
+            - cell "6" [ref=e15106]
+            - cell "9" [ref=e15107]
+          - row "HEX 6 9" [ref=e15108]:
+            - cell "HEX" [ref=e15109]
+            - cell [ref=e15110]:
+              - img [ref=e15112]
+            - cell "6" [ref=e15161]
+            - cell "9" [ref=e15162]
+      - paragraph [ref=e15163]:
+        - text: For the hexagonal path the exact total length depends on the
+        - img [ref=e15165]
+        - text: ratio; the segments in the
+        - img [ref=e15176]
+        - text: direction scale with
+        - img [ref=e15185]
+        - text: .
+      - heading "7.6 Code output for the FCC k-path" [level=3] [ref=e15195]
+      - paragraph [ref=e15196]:
+        - code [ref=e15197]: pymatgen
+        - text: "’ (the standard Python materials science library) will print the Setyawan–Curtarolo k-path for an FCC material as:"
+      - code [ref=e15201]: "from pymatgen.core import Structure from pymatgen.symmetry.bandstructure import HighSymmKpath s = Structure.from_file(\"POSCAR\") kpath = HighSymmKpath(s) path = kpath.kpath[\"kpoints\"] # dict: label -> coord (fractional) print(path) # {'Gamma': [0, 0, 0], 'X': [0.5, 0, 0.5], 'L': [0.5, 0.5, 0.5], ...} print(kpath.kpath[\"path\"]) # [['Gamma', 'X', 'W', 'K', 'Gamma', 'L', 'U', 'W', 'L', 'K']]"
+      - paragraph [ref=e15202]:
+        - text: The
+        - code [ref=e15203]: HighSymmKpath
+        - text: ’ class is the canonical way to get a Setyawan–Curtarolo k-path for any crystal structure. The path returned is the modern (long) convention, and the k-point coordinates are
+        - emphasis [ref=e15204]: fractional
+        - text: in the reciprocal basis
+        - img [ref=e15206]
+        - text: .
+      - separator [ref=e15231]
+      - heading "8. Working with space groups in DFT codes" [level=2] [ref=e15232]
+      - paragraph [ref=e15233]:
+        - text: The four most common DFT codes — VASP, Quantum ESPRESSO, CASTEP, and SIESTA — accept the space group in different ways. VASP uses the symmetry operations in the
+        - code [ref=e15234]: POSCAR
+        - text: /
+        - code [ref=e15235]: CONTCAR
+        - text: "’ itself; QE uses ‘space_group’ in the ‘&SYSTEM’ namelist; CASTEP uses `.cell’ keyword; SIESTA uses a separate Z-matrix file. The"
+        - strong [ref=e15236]: CIF file
+        - text: is the universal interchange format and the recommended starting point for any new crystal.
+      - heading "8.1 The CIF (Crystallographic Information File) format" [level=3] [ref=e15237]
+      - paragraph [ref=e15238]:
+        - text: A
+        - strong [ref=e15239]: CIF
+        - text: "file is a plain-text file with a fixed structure: data are organised in"
+        - code [ref=e15240]: data_block
+        - text: "s, with each datum a `key value’ pair (text or numeric). The standard fields for a crystal structure are:"
+      - code [ref=e15242]: data_Cu _chemical_name_common "Copper" _chemical_formula_structural "Cu" _cell_length_a 3.6149 _cell_length_b 3.6149 _cell_length_c 3.6149 _cell_angle_alpha 90 _cell_angle_beta 90 _cell_angle_gamma 90 _cell_volume 47.246 _space_group_name_H-M_alt "F m -3 m" _space_group_IT_number 225 loop_ _space_group_symop_operation_xyz 'x, y, z' '-x, -y, z' '-x, y, -z' 'x, -y, -z' 'z, x, y' '-z, -x, y' ... (48 operations in total for Fm-3m) loop_ _atom_site_label _atom_site_fract_x _atom_site_fract_y _atom_site_fract_z _atom_site_occupancy Cu1 0.0 0.0 0.0 1.0
+      - paragraph [ref=e15243]: "The key fields:"
+      - list [ref=e15244]:
+        - listitem [ref=e15245]:
+          - text: ‘
+          - emphasis [ref=e15246]: cell_length
+          - emphasis [ref=e15247]: ’ and ‘_cell_angle_
+          - text: ’ — the conventional cell parameters
+          - img [ref=e15249]
+          - text: in Å and
+          - img [ref=e15267]
+          - text: in degrees.
+        - listitem [ref=e15284]: "`_space_group_name_H-M_alt’ — the Hermann–Mauguin symbol."
+        - listitem [ref=e15285]:
+          - code [ref=e15286]: _space_group_IT_number
+          - text: ’ — the IUC space-group number (1–230).
+        - listitem [ref=e15287]:
+          - code [ref=e15288]: _space_group_symop_operation_xyz
+          - text: "’ — the 48 (or however many) symmetry operations in `(x, y, z)’ shorthand. The first operation is always the identity; the others are the coset representatives."
+        - listitem [ref=e15289]:
+          - text: "`"
+          - emphasis [ref=e15290]: atom_site
+          - text: "*’ — the atomic positions in fractional coordinates of the conventional cell."
+      - paragraph [ref=e15291]:
+        - text: The CIF standard is maintained by the IUCr (International Union of Crystallography) and documented in
+        - emphasis [ref=e15292]: International Tables for Crystallography
+        - text: vol. G.
+      - heading "8.2 VASP" [level=3] [ref=e15293]
+      - paragraph [ref=e15294]:
+        - text: VASP reads the structure from
+        - code [ref=e15295]: POSCAR
+        - text: . Symmetry is detected from the atomic positions; the user does not need to specify the space group explicitly. The relevant
+        - code [ref=e15296]: INCAR
+        - text: "’ tags are:"
+      - table [ref=e15297]:
+        - rowgroup [ref=e15298]:
+          - row "Tag Default Meaning" [ref=e15299]:
+            - columnheader "Tag" [ref=e15300]
+            - columnheader "Default" [ref=e15301]
+            - columnheader "Meaning" [ref=e15302]
+        - rowgroup [ref=e15303]:
+          - 'row "ISYM’ 2 Symmetry: 0 = off, 1 = use operations, 2 = use operations + break when stops decreasing" [ref=e15304]':
+            - cell "ISYM’" [ref=e15305]:
+              - code [ref=e15306]: ISYM
+              - text: ’
+            - cell "2" [ref=e15307]
+            - 'cell "Symmetry: 0 = off, 1 = use operations, 2 = use operations + break when stops decreasing" [ref=e15308]':
+              - text: "Symmetry: 0 = off, 1 = use operations, 2 = use operations + break when"
+              - img [ref=e15310]
+              - text: stops decreasing
+          - row "SYMPREC’ 1e-5 Tolerance for symmetry detection (Å)" [ref=e15315]:
+            - cell "SYMPREC’" [ref=e15316]:
+              - code [ref=e15317]: SYMPREC
+              - text: ’
+            - cell "1e-5" [ref=e15318]
+            - cell "Tolerance for symmetry detection (Å)" [ref=e15319]
+          - row "‘LWAVE’ .FALSE. Write ‘WAVECAR’" [ref=e15320]:
+            - cell "‘LWAVE’" [ref=e15321]
+            - cell ".FALSE." [ref=e15322]
+            - cell "Write ‘WAVECAR’" [ref=e15323]
+          - row "‘LCHARG’ .FALSE. Write ‘CHGCAR’" [ref=e15324]:
+            - cell "‘LCHARG’" [ref=e15325]
+            - cell ".FALSE." [ref=e15326]
+            - cell "Write ‘CHGCAR’" [ref=e15327]
+          - row "IBRION’ — Optimisation algorithm" [ref=e15328]:
+            - cell "IBRION’" [ref=e15329]:
+              - code [ref=e15330]: IBRION
+              - text: ’
+            - cell "—" [ref=e15331]
+            - cell "Optimisation algorithm" [ref=e15332]
+      - paragraph [ref=e15333]: For a non-symmorphic space group with a glide plane, VASP detects the glide automatically; the symmetry-derived k-point reduction (‘KPOINTS’ with ‘Auto’ mesh) respects the glide.
+      - blockquote [ref=e15334]:
+        - paragraph [ref=e15335]:
+          - strong [ref=e15336]: Tip.
+          - text: "If you have a CIF file, use ‘pymatgen’ or ‘ase’ to convert it to a POSCAR: ‘Structure.from_file(“Cu.cif”).to(“POSCAR”, “POSCAR”)’."
+      - heading "8.3 Quantum ESPRESSO" [level=3] [ref=e15337]
+      - paragraph [ref=e15338]: "QE uses the `&SYSTEM’ namelist in the input file:"
+      - code [ref=e15342]: "&SYSTEM ibrav = 2 ! FCC celldm(1) = 7.65 ! a in Bohr (= 4.05 Å / 0.529) nat = 1 ntyp = 1 space_group = 225 ! Fm-3m /"
+      - paragraph [ref=e15343]:
+        - text: The
+        - code [ref=e15344]: ibrav
+        - text: ’ codes are QE-internal shortcuts for the 14 Bravais lattices. When
+        - code [ref=e15345]: space_group
+        - text: ’ is given, QE uses the symmetry operations from the
+        - emphasis [ref=e15346]: International Tables
+        - text: for k-point reduction and Hamiltonian symmetrisation. This is more reliable than letting QE
+        - emphasis [ref=e15347]: guess
+        - text: the symmetry from the atomic positions.
+      - heading "8.4 CASTEP" [level=3] [ref=e15348]
+      - paragraph [ref=e15349]: "CASTEP uses a `.cell’ file:"
+      - code [ref=e15353]: "%BLOCK LATTICE_CART 3.6149 0.0 0.0 0.0 3.6149 0.0 0.0 0.0 3.6149 %ENDBLOCK LATTICE_CART %BLOCK POSITIONS_FRAC Cu 0.0 0.0 0.0 %ENDBLOCK POSITIONS_FRAC SYMMETRY_GENERATE SNAP_TO_SYMMETRY"
+      - paragraph [ref=e15354]:
+        - text: The
+        - code [ref=e15355]: SYMMETRY_GENERATE
+        - text: ’ keyword asks CASTEP to find the space group from the structure;
+        - code [ref=e15356]: SNAP_TO_SYMMETRY
+        - text: ’ rounds the atomic positions to the nearest high-symmetry site.
+      - heading "8.5 SIESTA" [level=3] [ref=e15357]
+      - paragraph [ref=e15358]: "SIESTA reads the structure from a `.fdf’ file:"
+      - code [ref=e15362]: LatticeConstant 1.0 Ang %block LatticeVectors 3.6149 0.0 0.0 0.0 3.6149 0.0 0.0 0.0 3.6149 %endblock LatticeVectors %block AtomicCoordinatesAndAtomicSpecies 0.0 0.0 0.0 1 %endblock AtomicCoordinatesAndAtomicSpecies
+      - paragraph [ref=e15363]:
+        - text: SIESTA does not have explicit space-group support; symmetry is detected by the
+        - code [ref=e15364]: SIESTA
+        - text: "-internal module or by an external tool such as"
+        - code [ref=e15365]: spglib
+        - text: .
+      - heading "8.6 The Bilbao Crystallographic Server (BCS)" [level=3] [ref=e15366]
+      - paragraph [ref=e15367]:
+        - text: The
+        - link "Bilbao Crystallographic Server" [ref=e15368] [cursor=pointer]:
+          - /url: https://www.cryst.ehu.es/
+        - text: "(BCS) is the de-facto web reference for space-group analysis. It hosts a dozen tools; the most useful for DFT work are:"
+      - table [ref=e15369]:
+        - rowgroup [ref=e15370]:
+          - row "Tool URL Use" [ref=e15371]:
+            - columnheader "Tool" [ref=e15372]
+            - columnheader "URL" [ref=e15373]
+            - columnheader "Use" [ref=e15374]
+        - rowgroup [ref=e15375]:
+          - row "GENPOS genpos’ Generate the general-position list of a space group" [ref=e15376]:
+            - cell "GENPOS" [ref=e15377]
+            - cell "genpos’" [ref=e15378]:
+              - code [ref=e15379]: genpos
+              - text: ’
+            - cell "Generate the general-position list of a space group" [ref=e15380]
+          - row "WYCKPOS wpos’ List Wyckoff positions with coordinates" [ref=e15381]:
+            - cell "WYCKPOS" [ref=e15382]
+            - cell "wpos’" [ref=e15383]:
+              - code [ref=e15384]: wpos
+              - text: ’
+            - cell "List Wyckoff positions with coordinates" [ref=e15385]
+          - row "SUBGROUPGRAPH subgroupgraph’ Find maximal subgroups (Bärnighausen tree)" [ref=e15386]:
+            - cell "SUBGROUPGRAPH" [ref=e15387]
+            - cell "subgroupgraph’" [ref=e15388]:
+              - code [ref=e15389]: subgroupgraph
+              - text: ’
+            - cell "Find maximal subgroups (Bärnighausen tree)" [ref=e15390]
+          - row "HKLCOND hklcond’ Check reflection conditions for a space group" [ref=e15391]:
+            - cell "HKLCOND" [ref=e15392]
+            - cell "hklcond’" [ref=e15393]:
+              - code [ref=e15394]: hklcond
+              - text: ’
+            - cell "Check reflection conditions for a space group" [ref=e15395]
+          - row "IDENTIFY ident’ Identify a space group from a list of symmetry operations" [ref=e15396]:
+            - cell "IDENTIFY" [ref=e15397]
+            - cell "ident’" [ref=e15398]:
+              - code [ref=e15399]: ident
+              - text: ’
+            - cell "Identify a space group from a list of symmetry operations" [ref=e15400]
+          - row "PSEUDO pseudo’ Bilbao-adopted pseudopotential database" [ref=e15401]:
+            - cell "PSEUDO" [ref=e15402]
+            - cell "pseudo’" [ref=e15403]:
+              - code [ref=e15404]: pseudo
+              - text: ’
+            - cell "Bilbao-adopted pseudopotential database" [ref=e15405]
+          - row "NCSYM ncsym’ Magnetic space groups (Shubnikov groups)" [ref=e15406]:
+            - cell "NCSYM" [ref=e15407]
+            - cell "ncsym’" [ref=e15408]:
+              - code [ref=e15409]: ncsym
+              - text: ’
+            - cell "Magnetic space groups (Shubnikov groups)" [ref=e15410]
+      - paragraph [ref=e15411]:
+        - text: The BCS also hosts the
+        - strong [ref=e15412]: Bilbao Crystallographic Data
+        - text: "for each space group: the full Wyckoff-position list with site symmetries, the maximal and minimal non-isomorphic subgroups, and the Brillouin-zone data."
+      - 'heading "8.7 Worked example: building -quartz (SiO₂) from scratch" [level=3] [ref=e15413]':
+        - text: "8.7 Worked example: building"
+        - img [ref=e15415]
+        - text: "-quartz (SiO₂) from scratch"
+      - paragraph [ref=e15420]:
+        - img [ref=e15422]
+        - text: "-quartz is a low-temperature polymorph of SiO₂ with space group"
+        - img [ref=e15428]
+        - text: (No. 152, Schoenflies
+        - img [ref=e15443]
+        - text: ) and three formula units per unit cell. Here is how to build it from a CIF file and a
+        - code [ref=e15453]: pymatgen
+        - text: ’ script that emits a VASP
+        - code [ref=e15454]: POSCAR
+        - text: .
+      - paragraph [ref=e15455]:
+        - strong [ref=e15456]: Step 1. The CIF file.
+      - code [ref=e15458]: data_alpha_quartz _chemical_name_common "alpha-quartz" _chemical_formula_structural "SiO2" _cell_length_a 4.9134 _cell_length_b 4.9134 _cell_length_c 5.4052 _cell_angle_alpha 90 _cell_angle_beta 90 _cell_angle_gamma 120 _space_group_name_H-M_alt "P 31 21" _space_group_IT_number 152 loop_ _atom_site_label _atom_site_fract_x _atom_site_fract_y _atom_site_fract_z Si1 0.4697 0.0000 0.0000 Si2 0.0000 0.4697 0.6667 Si3 0.5303 0.5303 0.3333 O1 0.4133 0.2672 0.1187 O2 0.2672 0.4133 0.5479 O3 0.7328 0.1461 0.4521 O4 0.5867 0.8539 0.2146 O5 0.1461 0.7328 0.8813 O6 0.8539 0.5867 0.7854
+      - paragraph [ref=e15459]:
+        - strong [ref=e15460]:
+          - text: Step 2. The
+          - code [ref=e15461]: pymatgen
+          - text: ’ script that converts to POSCAR.
+      - code [ref=e15465]: "from pymatgen.core import Structure from pymatgen.symmetry.analyzer import SpacegroupAnalyzer s = Structure.from_file(\"alpha_quartz.cif\") spg = SpacegroupAnalyzer(s, symprec=1e-3) print(\"Space group:\", spg.get_space_group_symbol()) # -> \"P 31 21\" print(\"Number: \", spg.get_space_group_number()) # -> 152 s_sym = spg.get_symmetrized_structure() s_sym.to(fmt=\"poscar\", filename=\"POSCAR\")"
+      - paragraph [ref=e15466]:
+        - strong [ref=e15467]: Step 3. The VASP input files.
+      - code [ref=e15471]: "# INCAR (geometry optimisation) SYSTEM = alpha-quartz ENCUT = 520 EDIFF = 1e-5 IBRION = 2 ISIF = 3 ISYM = 2 NSW = 30 EDIFFG = -0.02"
+      - code [ref=e15475]: "# KPOINTS (Auto mesh, 6x6x6 for a hexagonal cell) Auto 0 Gamma 6 6 6 0 0 0"
+      - paragraph [ref=e15476]:
+        - text: "The key `ISYM = 2’ lets VASP detect the"
+        - img [ref=e15478]
+        - text: symmetry from the POSCAR and use it for k-point reduction and Hamiltonian symmetrisation. The point group of
+        - img [ref=e15493]
+        - text: is
+        - img [ref=e15508]
+        - text: (order 6), so the speedup from symmetry is modest (
+        - img [ref=e15517]
+        - text: ) but the band-structure plot along the hexagonal k-path (§7.4) is well-defined.
+      - blockquote [ref=e15526]:
+        - paragraph [ref=e15527]:
+          - strong [ref=e15528]: Reading note.
+          - text: The point group of
+          - img [ref=e15530]
+          - text: "-quartz is"
+          - img [ref=e15536]
+          - text: ","
+          - emphasis [ref=e15544]: not
+          - text: the more symmetric
+          - img [ref=e15546]
+          - text: of
+          - img [ref=e15558]
+          - text: "-quartz (the high-temperature polymorph, space group"
+          - img [ref=e15564]
+          - text: ", No. 154). The two structures differ in their screw sense:"
+          - img [ref=e15578]
+          - text: has a right-handed screw,
+          - img [ref=e15592]
+          - text: a left-handed screw. Enantiomorphic pairs of this kind are common in chiral minerals.
+      - separator [ref=e15605]
+      - heading "9. The Pearson symbol cheat sheet" [level=2] [ref=e15606]
+      - paragraph [ref=e15607]:
+        - text: The
+        - strong [ref=e15608]: Pearson symbol
+        - text: is a two-character code for a Bravais lattice. It is used in crystallographic databases (CRYSTMET, ICSD, Pearson’s Handbook) and in the materials science literature to identify a structure type.
+      - heading "9.1 Structure" [level=3] [ref=e15609]
+      - paragraph [ref=e15610]:
+        - text: A Pearson symbol has the form
+        - code [ref=e15611]: XY
+        - text: "’ where:"
+      - list [ref=e15612]:
+        - listitem [ref=e15613]:
+          - code [ref=e15614]: X
+          - text: ’ is a
+          - strong [ref=e15615]: lowercase
+          - text: letter denoting the crystal system (see §1.1).
+        - listitem [ref=e15616]:
+          - code [ref=e15617]: "Y"
+          - text: ’ is an
+          - strong [ref=e15618]: uppercase
+          - text: letter denoting the centring (see §1.2).
+      - paragraph [ref=e15619]:
+        - text: "The two letters together identify the Bravais lattice. Combined with the number of atoms per cell, a Pearson symbol becomes a structure-type identifier: e.g."
+        - code [ref=e15620]: cF8
+        - text: ’ is the diamond structure (FCC, 8 atoms per conventional cell).
+      - heading "9.2 The 23 Pearson symbols" [level=3] [ref=e15621]
+      - paragraph [ref=e15622]:
+        - text: There are
+        - strong [ref=e15623]: "23"
+        - text: Pearson symbols in common use. The reason there are 23 and not 14 (the number of Bravais lattices) is that some authors extend the convention to include the lattice
+        - emphasis [ref=e15624]: centring
+        - text: of the reciprocal lattice or the lattice system in a non-standard way. The 14 standard Pearson symbols are in the table below; the 9 extras (
+        - img [ref=e15626]
+        - text: ","
+        - img [ref=e15634]
+        - text: ","
+        - img [ref=e15642]
+        - text: ","
+        - img [ref=e15650]
+        - text: ","
+        - img [ref=e15658]
+        - text: ","
+        - img [ref=e15666]
+        - text: ","
+        - img [ref=e15674]
+        - text: ","
+        - img [ref=e15682]
+        - text: ", and one more historical variant) are alternate names for one of the 14 and are encountered only in older references."
+      - heading "9.3 The “atoms per cell” extension" [level=3] [ref=e15689]
+      - paragraph [ref=e15690]: "The Pearson symbol is sometimes extended with a third character, the number of atoms in the conventional cell:"
+      - table [ref=e15691]:
+        - rowgroup [ref=e15692]:
+          - row "Structure Atoms per cell Extended Pearson" [ref=e15693]:
+            - columnheader "Structure" [ref=e15694]
+            - columnheader "Atoms per cell" [ref=e15695]
+            - columnheader "Extended Pearson" [ref=e15696]
+        - rowgroup [ref=e15697]:
+          - row "Diamond (Si, Ge, C) 8" [ref=e15698]:
+            - cell "Diamond (Si, Ge, C)" [ref=e15699]
+            - cell "8" [ref=e15700]
+            - cell [ref=e15701]:
+              - img [ref=e15703]
+          - row "FCC Cu, Al 4" [ref=e15712]:
+            - cell "FCC Cu, Al" [ref=e15713]
+            - cell "4" [ref=e15714]
+            - cell [ref=e15715]:
+              - img [ref=e15717]
+          - row "BCC Fe, W, Na 2" [ref=e15726]:
+            - cell "BCC Fe, W, Na" [ref=e15727]
+            - cell "2" [ref=e15728]
+            - cell [ref=e15729]:
+              - img [ref=e15731]
+          - row "HCP Mg, Ti 2" [ref=e15740]:
+            - cell "HCP Mg, Ti" [ref=e15741]
+            - cell "2" [ref=e15742]
+            - cell [ref=e15743]:
+              - img [ref=e15745]
+          - row "Rocksalt NaCl 8" [ref=e15754]:
+            - cell "Rocksalt NaCl" [ref=e15755]
+            - cell "8" [ref=e15756]
+            - cell [ref=e15757]:
+              - img [ref=e15759]
+          - row "CsCl 2" [ref=e15768]:
+            - cell "CsCl" [ref=e15769]
+            - cell "2" [ref=e15770]
+            - cell [ref=e15771]:
+              - img [ref=e15773]
+          - row "Zincblende ZnS 8" [ref=e15782]:
+            - cell "Zincblende ZnS" [ref=e15783]
+            - cell "8" [ref=e15784]
+            - cell [ref=e15785]:
+              - img [ref=e15787]
+          - row "Perovskite CaTiO₃ 5" [ref=e15796]:
+            - cell "Perovskite CaTiO₃" [ref=e15797]
+            - cell "5" [ref=e15798]
+            - cell [ref=e15799]:
+              - img [ref=e15801]
+          - row "Graphite (hex.) 4" [ref=e15810]:
+            - cell "Graphite (hex.)" [ref=e15811]
+            - cell "4" [ref=e15812]
+            - cell [ref=e15813]:
+              - img [ref=e15815]
+      - paragraph [ref=e15824]:
+        - text: Note that diamond, rocksalt, and zincblende all have the
+        - emphasis [ref=e15825]: same
+        - text: extended Pearson symbol
+        - code [ref=e15826]: cF8
+        - text: ’ (8 atoms per conventional FCC cell) — what distinguishes them is the space group (
+        - img [ref=e15828]
+        - text: ","
+        - img [ref=e15844]
+        - text: ","
+        - img [ref=e15860]
+        - text: respectively) and the species on each Wyckoff position.
+      - 'heading "9.4 Worked example: identifying a material from its Pearson symbol" [level=3] [ref=e15875]'
+      - blockquote [ref=e15876]:
+        - paragraph [ref=e15877]:
+          - text: A material in the ICSD has Pearson symbol
+          - code [ref=e15878]: oF8
+          - text: ’ and is reported to be an intercalation compound. What crystal system, Bravais lattice, and conventional cell does it have?
+      - paragraph [ref=e15879]:
+        - code [ref=e15880]: oF8
+        - text: ’ is the structure of
+        - img [ref=e15882]
+        - text: "-NaFeO₂ — a layered intercalation compound used as a positive electrode in Na-ion batteries. The breakdown:"
+      - list [ref=e15887]:
+        - listitem [ref=e15888]:
+          - code [ref=e15889]: o
+          - text: ’ = orthorhombic (
+          - img [ref=e15891]
+          - text: ","
+          - img [ref=e15905]
+          - text: ).
+        - listitem [ref=e15926]:
+          - code [ref=e15927]: F
+          - text: ’ = face-centred (4 lattice points per conventional cell).
+        - listitem [ref=e15928]:
+          - code [ref=e15929]: "8"
+          - text: ’ = 8 atoms per conventional cell, so 8/4 = 2 atoms per primitive cell.
+      - paragraph [ref=e15930]:
+        - text: The full structural description is in space group
+        - img [ref=e15932]
+        - text: (No. 33) or
+        - img [ref=e15947]
+        - text: (No. 62) — depending on the specific chemistry. The ICSD entry will list the space group explicitly; the Pearson symbol alone is a
+        - emphasis [ref=e15958]: family
+        - text: identifier, not a
+        - emphasis [ref=e15959]: structure
+        - text: identifier.
+      - blockquote [ref=e15960]:
+        - paragraph [ref=e15961]:
+          - strong [ref=e15962]: Pearson symbol as a structure-type identifier.
+          - text: The 1-to-1 mapping is
+          - emphasis [ref=e15963]: not
+          - text: a structure-type identifier. Two materials can share a Pearson symbol but have different space groups (e.g.
+          - img [ref=e15965]
+          - text: for diamond, rocksalt, and zincblende). Use the Pearson symbol as a quick filter; use the full space group + Wyckoff positions for a complete structure description.
+      - separator [ref=e15974]
+      - heading "10. Hermann–Mauguin and Schoenflies side-by-side" [level=2] [ref=e15975]
+      - paragraph [ref=e15976]:
+        - text: The two notations are not in 1-to-1 correspondence. The Schoenflies symbols depend on the
+        - emphasis [ref=e15977]: rotational
+        - text: subgroup (the “axial” part) and use letter+number, while the HM symbols depend on the full point group and use number+letter+number. Some groups have the same Schoenflies symbol across crystal systems (e.g.
+        - img [ref=e15979]
+        - text: is the point group of
+        - emphasis [ref=e15990]: "bot`h"
+        - text: ’ the monoclinic
+        - img [ref=e15992]
+        - text: and the orthorhombic
+        - img [ref=e16008]
+        - text: ); the HM symbol distinguishes them.
+      - heading "10.1 Why both exist" [level=3] [ref=e16019]
+      - paragraph [ref=e16020]:
+        - strong [ref=e16021]: Schoenflies
+        - text: "is preferred in:"
+      - list [ref=e16022]:
+        - listitem [ref=e16023]: Spectroscopy (IR, Raman, polarisation selection rules).
+        - listitem [ref=e16024]: Molecular quantum chemistry (point group of a single molecule).
+        - listitem [ref=e16025]:
+          - text: "Group theory of finite groups (the Schoenflies notation emphasises the abstract group structure:"
+          - img [ref=e16027]
+          - text: cyclic,
+          - img [ref=e16036]
+          - text: dihedral,
+          - img [ref=e16045]
+          - text: tetrahedral,
+          - img [ref=e16051]
+          - text: octahedral,
+          - img [ref=e16057]
+          - text: icosahedral).
+      - paragraph [ref=e16062]:
+        - strong [ref=e16063]: Hermann–Mauguin
+        - text: "is preferred in:"
+      - list [ref=e16064]:
+        - listitem [ref=e16065]:
+          - text: Crystallography (the
+          - emphasis [ref=e16066]: International Tables
+          - text: ", every database, the BCS)."
+        - listitem [ref=e16067]: Solid-state physics and DFT (every modern code).
+        - listitem [ref=e16068]: Materials science (the Pearson Handbook uses HM).
+      - paragraph [ref=e16069]: When in doubt, use HM. When reading a spectroscopy paper, you will encounter Schoenflies.
+      - heading "10.2 Complete mapping table (32 point groups)" [level=3] [ref=e16070]
+      - paragraph [ref=e16071]:
+        - text: This is the side-by-side reference. The 32 point groups are listed in crystal-system order (Triclinic
+        - img [ref=e16073]
+        - text: Cubic) so that related groups are adjacent.
+      - table [ref=e16078]:
+        - rowgroup [ref=e16079]:
+          - row "# HM (full) Schoenflies Order Crystal system Common space group example" [ref=e16080]:
+            - columnheader "#" [ref=e16081]
+            - columnheader "HM (full)" [ref=e16082]
+            - columnheader "Schoenflies" [ref=e16083]
+            - columnheader "Order" [ref=e16084]
+            - columnheader "Crystal system" [ref=e16085]
+            - columnheader "Common space group example" [ref=e16086]
+        - rowgroup [ref=e16087]:
+          - row "1 1 Triclinic (No. 1)" [ref=e16088]:
+            - cell "1" [ref=e16089]
+            - cell [ref=e16090]:
+              - img [ref=e16092]
+            - cell [ref=e16097]:
+              - img [ref=e16099]
+            - cell "1" [ref=e16107]
+            - cell "Triclinic" [ref=e16108]
+            - cell "(No. 1)" [ref=e16109]:
+              - img [ref=e16111]
+              - text: (No. 1)
+          - row "2 (= ) 2 Triclinic (No. 2)" [ref=e16118]:
+            - cell "2" [ref=e16119]
+            - cell [ref=e16120]:
+              - img [ref=e16122]
+            - cell "(= )" [ref=e16131]:
+              - img [ref=e16133]
+              - text: (=
+              - img [ref=e16142]
+              - text: )
+            - cell "2" [ref=e16150]
+            - cell "Triclinic" [ref=e16151]
+            - cell "(No. 2)" [ref=e16152]:
+              - img [ref=e16154]
+              - text: (No. 2)
+          - row "3 2 Monoclinic (No. 3)" [ref=e16165]:
+            - cell "3" [ref=e16166]
+            - cell [ref=e16167]:
+              - img [ref=e16169]
+            - cell [ref=e16174]:
+              - img [ref=e16176]
+            - cell "2" [ref=e16184]
+            - cell "Monoclinic" [ref=e16185]
+            - cell "(No. 3)" [ref=e16186]:
+              - img [ref=e16188]
+              - text: (No. 3)
+          - row "4 (= ) 2 Monoclinic (No. 6)" [ref=e16195]:
+            - cell "4" [ref=e16196]
+            - cell [ref=e16197]:
+              - img [ref=e16199]
+            - cell "(= )" [ref=e16204]:
+              - img [ref=e16206]
+              - text: (=
+              - img [ref=e16215]
+              - text: )
+            - cell "2" [ref=e16226]
+            - cell "Monoclinic" [ref=e16227]
+            - cell "(No. 6)" [ref=e16228]:
+              - img [ref=e16230]
+              - text: (No. 6)
+          - row "5 4 Monoclinic (No. 10)" [ref=e16237]:
+            - cell "5" [ref=e16238]
+            - cell [ref=e16239]:
+              - img [ref=e16241]
+            - cell [ref=e16251]:
+              - img [ref=e16253]
+            - cell "4" [ref=e16264]
+            - cell "Monoclinic" [ref=e16265]
+            - cell "(No. 10)" [ref=e16266]:
+              - img [ref=e16268]
+              - text: (No. 10)
+          - row "6 (= ) 4 Orthorhombic (No. 16)" [ref=e16280]:
+            - cell "6" [ref=e16281]
+            - cell [ref=e16282]:
+              - img [ref=e16284]
+            - cell "(= )" [ref=e16291]:
+              - img [ref=e16293]
+              - text: (=
+              - img [ref=e16302]
+              - text: )
+            - cell "4" [ref=e16307]
+            - cell "Orthorhombic" [ref=e16308]
+            - cell "(No. 16)" [ref=e16309]:
+              - img [ref=e16311]
+              - text: (No. 16)
+          - row "7 4 Orthorhombic (No. 25)" [ref=e16320]:
+            - cell "7" [ref=e16321]
+            - cell [ref=e16322]:
+              - img [ref=e16324]
+            - cell [ref=e16333]:
+              - img [ref=e16335]
+            - cell "4" [ref=e16346]
+            - cell "Orthorhombic" [ref=e16347]
+            - cell "(No. 25)" [ref=e16348]:
+              - img [ref=e16350]
+              - text: (No. 25)
+          - row "8 (= ) 8 Orthorhombic (No. 47)" [ref=e16361]:
+            - cell "8" [ref=e16362]
+            - cell [ref=e16363]:
+              - img [ref=e16365]
+            - cell "(= )" [ref=e16374]:
+              - img [ref=e16376]
+              - text: (=
+              - img [ref=e16388]
+              - text: )
+            - cell "8" [ref=e16396]
+            - cell "Orthorhombic" [ref=e16397]
+            - cell "(No. 47)" [ref=e16398]:
+              - img [ref=e16400]
+              - text: (No. 47)
+          - row "9 4 Tetragonal (No. 75)" [ref=e16411]:
+            - cell "9" [ref=e16412]
+            - cell [ref=e16413]:
+              - img [ref=e16415]
+            - cell [ref=e16420]:
+              - img [ref=e16422]
+            - cell "4" [ref=e16430]
+            - cell "Tetragonal" [ref=e16431]
+            - cell "(No. 75)" [ref=e16432]:
+              - img [ref=e16434]
+              - text: (No. 75)
+          - row "10 4 Tetragonal (No. 81)" [ref=e16441]:
+            - cell "10" [ref=e16442]
+            - cell [ref=e16443]:
+              - img [ref=e16445]
+            - cell [ref=e16454]:
+              - img [ref=e16456]
+            - cell "4" [ref=e16464]
+            - cell "Tetragonal" [ref=e16465]
+            - cell "(No. 81)" [ref=e16466]:
+              - img [ref=e16468]
+              - text: (No. 81)
+          - row "11 4 Tetragonal (No. 83)" [ref=e16479]:
+            - cell "11" [ref=e16480]
+            - cell [ref=e16481]:
+              - img [ref=e16483]
+            - cell [ref=e16493]:
+              - img [ref=e16495]
+            - cell "4" [ref=e16506]
+            - cell "Tetragonal" [ref=e16507]
+            - cell "(No. 83)" [ref=e16508]:
+              - img [ref=e16510]
+              - text: (No. 83)
+          - row "12 8 Tetragonal (No. 89)" [ref=e16522]:
+            - cell "12" [ref=e16523]
+            - cell [ref=e16524]:
+              - img [ref=e16526]
+            - cell [ref=e16533]:
+              - img [ref=e16535]
+            - cell "8" [ref=e16543]
+            - cell "Tetragonal" [ref=e16544]
+            - cell "(No. 89)" [ref=e16545]:
+              - img [ref=e16547]
+              - text: (No. 89)
+          - row "13 8 Tetragonal (No. 99)" [ref=e16556]:
+            - cell "13" [ref=e16557]
+            - cell [ref=e16558]:
+              - img [ref=e16560]
+            - cell [ref=e16569]:
+              - img [ref=e16571]
+            - cell "8" [ref=e16582]
+            - cell "Tetragonal" [ref=e16583]
+            - cell "(No. 99)" [ref=e16584]:
+              - img [ref=e16586]
+              - text: (No. 99)
+          - row "14 (= ) 8 Tetragonal (No. 111)" [ref=e16597]:
+            - cell "14" [ref=e16598]
+            - cell [ref=e16599]:
+              - img [ref=e16601]
+            - cell "(= )" [ref=e16614]:
+              - img [ref=e16616]
+              - text: (=
+              - img [ref=e16628]
+              - text: )
+            - cell "8" [ref=e16636]
+            - cell "Tetragonal" [ref=e16637]
+            - cell "(No. 111)" [ref=e16638]:
+              - img [ref=e16640]
+              - text: (No. 111)
+          - row "15 16 Tetragonal (No. 123)" [ref=e16655]:
+            - cell "15" [ref=e16656]
+            - cell [ref=e16657]:
+              - img [ref=e16659]
+            - cell [ref=e16673]:
+              - img [ref=e16675]
+            - cell "16" [ref=e16686]
+            - cell "Tetragonal" [ref=e16687]
+            - cell "(No. 123)" [ref=e16688]:
+              - img [ref=e16690]
+              - text: (No. 123)
+          - row "16 3 Trigonal (No. 143)" [ref=e16706]:
+            - cell "16" [ref=e16707]
+            - cell [ref=e16708]:
+              - img [ref=e16710]
+            - cell [ref=e16715]:
+              - img [ref=e16717]
+            - cell "3" [ref=e16725]
+            - cell "Trigonal" [ref=e16726]
+            - cell "(No. 143)" [ref=e16727]:
+              - img [ref=e16729]
+              - text: (No. 143)
+          - row "17 (= ) 6 Trigonal (No. 147)" [ref=e16736]:
+            - cell "17" [ref=e16737]
+            - cell [ref=e16738]:
+              - img [ref=e16740]
+            - cell "(= )" [ref=e16749]:
+              - img [ref=e16751]
+              - text: (=
+              - img [ref=e16763]
+              - text: )
+            - cell "6" [ref=e16771]
+            - cell "Trigonal" [ref=e16772]
+            - cell "(No. 147)" [ref=e16773]:
+              - img [ref=e16775]
+              - text: (No. 147)
+          - row "18 6 Trigonal (No. 149)" [ref=e16786]:
+            - cell "18" [ref=e16787]
+            - cell [ref=e16788]:
+              - img [ref=e16790]
+            - cell [ref=e16796]:
+              - img [ref=e16798]
+            - cell "6" [ref=e16806]
+            - cell "Trigonal" [ref=e16807]
+            - cell "(No. 149)" [ref=e16808]:
+              - img [ref=e16810]
+              - text: (No. 149)
+          - row "19 6 Trigonal (No. 156)" [ref=e16821]:
+            - cell "19" [ref=e16822]
+            - cell [ref=e16823]:
+              - img [ref=e16825]
+            - cell [ref=e16832]:
+              - img [ref=e16834]
+            - cell "6" [ref=e16845]
+            - cell "Trigonal" [ref=e16846]
+            - cell "(No. 156)" [ref=e16847]:
+              - img [ref=e16849]
+              - text: (No. 156)
+          - row "20 12 Trigonal (No. 164)" [ref=e16860]:
+            - cell "20" [ref=e16861]
+            - cell [ref=e16862]:
+              - img [ref=e16864]
+            - cell [ref=e16875]:
+              - img [ref=e16877]
+            - cell "12" [ref=e16888]
+            - cell "Trigonal" [ref=e16889]
+            - cell "(No. 164)" [ref=e16890]:
+              - img [ref=e16892]
+              - text: (No. 164)
+          - row "21 6 Hexagonal (No. 168)" [ref=e16907]:
+            - cell "21" [ref=e16908]
+            - cell [ref=e16909]:
+              - img [ref=e16911]
+            - cell [ref=e16916]:
+              - img [ref=e16918]
+            - cell "6" [ref=e16926]
+            - cell "Hexagonal" [ref=e16927]
+            - cell "(No. 168)" [ref=e16928]:
+              - img [ref=e16930]
+              - text: (No. 168)
+          - row "22 6 Hexagonal (No. 174)" [ref=e16937]:
+            - cell "22" [ref=e16938]
+            - cell [ref=e16939]:
+              - img [ref=e16941]
+            - cell [ref=e16950]:
+              - img [ref=e16952]
+            - cell "6" [ref=e16963]
+            - cell "Hexagonal" [ref=e16964]
+            - cell "(No. 174)" [ref=e16965]:
+              - img [ref=e16967]
+              - text: (No. 174)
+          - row "23 6 Hexagonal (No. 175)" [ref=e16978]:
+            - cell "23" [ref=e16979]
+            - cell [ref=e16980]:
+              - img [ref=e16982]
+            - cell [ref=e16992]:
+              - img [ref=e16994]
+            - cell "6" [ref=e17005]
+            - cell "Hexagonal" [ref=e17006]
+            - cell "(No. 175)" [ref=e17007]:
+              - img [ref=e17009]
+              - text: (No. 175)
+          - row "24 12 Hexagonal (No. 177)" [ref=e17021]:
+            - cell "24" [ref=e17022]
+            - cell [ref=e17023]:
+              - img [ref=e17025]
+            - cell [ref=e17032]:
+              - img [ref=e17034]
+            - cell "12" [ref=e17042]
+            - cell "Hexagonal" [ref=e17043]
+            - cell "(No. 177)" [ref=e17044]:
+              - img [ref=e17046]
+              - text: (No. 177)
+          - row "25 12 Hexagonal (No. 183)" [ref=e17057]:
+            - cell "25" [ref=e17058]
+            - cell [ref=e17059]:
+              - img [ref=e17061]
+            - cell [ref=e17070]:
+              - img [ref=e17072]
+            - cell "12" [ref=e17083]
+            - cell "Hexagonal" [ref=e17084]
+            - cell "(No. 183)" [ref=e17085]:
+              - img [ref=e17087]
+              - text: (No. 183)
+          - row "26 12 Hexagonal (No. 187)" [ref=e17098]:
+            - cell "26" [ref=e17099]
+            - cell [ref=e17100]:
+              - img [ref=e17102]
+            - cell [ref=e17115]:
+              - img [ref=e17117]
+            - cell "12" [ref=e17128]
+            - cell "Hexagonal" [ref=e17129]
+            - cell "(No. 187)" [ref=e17130]:
+              - img [ref=e17132]
+              - text: (No. 187)
+          - row "27 24 Hexagonal (No. 191)" [ref=e17147]:
+            - cell "27" [ref=e17148]
+            - cell [ref=e17149]:
+              - img [ref=e17151]
+            - cell [ref=e17165]:
+              - img [ref=e17167]
+            - cell "24" [ref=e17178]
+            - cell "Hexagonal" [ref=e17179]
+            - cell "(No. 191)" [ref=e17180]:
+              - img [ref=e17182]
+              - text: (No. 191)
+          - row "28 12 Cubic (No. 195)" [ref=e17198]:
+            - cell "28" [ref=e17199]
+            - cell [ref=e17200]:
+              - img [ref=e17202]
+            - cell [ref=e17208]:
+              - img [ref=e17210]
+            - cell "12" [ref=e17215]
+            - cell "Cubic" [ref=e17216]
+            - cell "(No. 195)" [ref=e17217]:
+              - img [ref=e17219]
+              - text: (No. 195)
+          - row "29 24 Cubic (No. 200)" [ref=e17227]:
+            - cell "29" [ref=e17228]
+            - cell [ref=e17229]:
+              - img [ref=e17231]
+            - cell [ref=e17242]:
+              - img [ref=e17244]
+            - cell "24" [ref=e17252]
+            - cell "Cubic" [ref=e17253]
+            - cell "(No. 200)" [ref=e17254]:
+              - img [ref=e17256]
+              - text: (No. 200)
+          - row "30 24 Cubic (No. 207)" [ref=e17269]:
+            - cell "30" [ref=e17270]
+            - cell [ref=e17271]:
+              - img [ref=e17273]
+            - cell [ref=e17280]:
+              - img [ref=e17282]
+            - cell "24" [ref=e17287]
+            - cell "Cubic" [ref=e17288]
+            - cell "(No. 207)" [ref=e17289]:
+              - img [ref=e17291]
+              - text: (No. 207)
+          - row "31 24 Cubic (No. 215)" [ref=e17300]:
+            - cell "31" [ref=e17301]
+            - cell [ref=e17302]:
+              - img [ref=e17304]
+            - cell [ref=e17317]:
+              - img [ref=e17319]
+            - cell "24" [ref=e17327]
+            - cell "Cubic" [ref=e17328]
+            - cell "(No. 215)" [ref=e17329]:
+              - img [ref=e17331]
+              - text: (No. 215)
+          - row "32 48 Cubic (No. 221)" [ref=e17346]:
+            - cell "32" [ref=e17347]
+            - cell [ref=e17348]:
+              - img [ref=e17350]
+            - cell [ref=e17363]:
+              - img [ref=e17365]
+            - cell "48" [ref=e17373]
+            - cell "Cubic" [ref=e17374]
+            - cell "(No. 221)" [ref=e17375]:
+              - img [ref=e17377]
+              - text: (No. 221)
+      - blockquote [ref=e17392]:
+        - paragraph [ref=e17393]:
+          - strong [ref=e17394]: Sum check.
+          - text: "Adding up the orders in the third column counts the total number of operations:"
+          - img [ref=e17396]
+          - text: . This is the sum of
+          - emphasis [ref=e17542]: distinct
+          - text: operations across the 32 point groups; the
+          - emphasis [ref=e17543]: average
+          - text: is
+          - img [ref=e17545]
+          - text: . The 5 cubic point groups alone contribute $12 + 24 + 24 + 24
+        - list [ref=e17564]:
+          - listitem [ref=e17565]: 48 = 132$ of those 298 operations.
+      - heading "10.3 The Schoenflies , , , , prefixes" [level=3] [ref=e17566]:
+        - text: 10.3 The Schoenflies
+        - img [ref=e17568]
+        - text: ","
+        - img [ref=e17574]
+        - text: ","
+        - img [ref=e17580]
+        - text: ","
+        - img [ref=e17586]
+        - text: ","
+        - img [ref=e17592]
+        - text: prefixes
+      - paragraph [ref=e17597]: "A short glossary for the Schoenflies letters:"
+      - table [ref=e17598]:
+        - rowgroup [ref=e17599]:
+          - row "Letter Meaning Examples" [ref=e17600]:
+            - columnheader "Letter" [ref=e17601]
+            - columnheader "Meaning" [ref=e17602]
+            - columnheader "Examples" [ref=e17603]
+        - rowgroup [ref=e17604]:
+          - row "Cyclic group of order generated by a rotation" [ref=e17605]:
+            - cell [ref=e17606]:
+              - img [ref=e17608]
+            - cell "Cyclic group of order generated by a rotation" [ref=e17616]:
+              - text: Cyclic group of order
+              - img [ref=e17618]
+              - text: generated by a
+              - img [ref=e17624]
+              - text: rotation
+            - cell [ref=e17632]:
+              - img [ref=e17634]
+          - row "+ horizontal mirror" [ref=e17663]:
+            - cell [ref=e17664]:
+              - img [ref=e17666]
+            - cell "+ horizontal mirror" [ref=e17677]:
+              - img [ref=e17679]
+              - text: + horizontal mirror
+              - img [ref=e17688]
+            - cell [ref=e17696]:
+              - img [ref=e17698]
+          - row "+ vertical mirrors" [ref=e17729]:
+            - cell [ref=e17730]:
+              - img [ref=e17732]
+            - cell "+ vertical mirrors" [ref=e17743]:
+              - img [ref=e17745]
+              - text: +
+              - img [ref=e17754]
+              - text: vertical mirrors
+            - cell [ref=e17759]:
+              - img [ref=e17761]
+          - row "One mirror only ( ) —" [ref=e17802]:
+            - cell [ref=e17803]:
+              - img [ref=e17805]
+            - cell "One mirror only ( )" [ref=e17813]:
+              - text: One mirror only (
+              - img [ref=e17815]
+              - text: )
+            - cell "—" [ref=e17826]
+          - row "Inversion only ( ) —" [ref=e17827]:
+            - cell [ref=e17828]:
+              - img [ref=e17830]
+            - cell "Inversion only ( )" [ref=e17838]:
+              - text: Inversion only (
+              - img [ref=e17840]
+              - text: )
+            - cell "—" [ref=e17848]
+          - row "+ perpendicular rotations" [ref=e17849]:
+            - cell [ref=e17850]:
+              - img [ref=e17852]
+            - cell "+ perpendicular rotations" [ref=e17860]:
+              - img [ref=e17862]
+              - text: +
+              - img [ref=e17871]
+              - text: perpendicular
+              - img [ref=e17877]
+              - text: rotations
+            - cell [ref=e17885]:
+              - img [ref=e17887]
+          - row "+ horizontal mirror" [ref=e17916]:
+            - cell [ref=e17917]:
+              - img [ref=e17919]
+            - cell "+ horizontal mirror" [ref=e17930]:
+              - img [ref=e17932]
+              - text: + horizontal mirror
+            - cell [ref=e17940]:
+              - img [ref=e17942]
+          - row "+ diagonal mirrors" [ref=e17983]:
+            - cell [ref=e17984]:
+              - img [ref=e17986]
+            - cell "+ diagonal mirrors" [ref=e17997]:
+              - img [ref=e17999]
+              - text: + diagonal mirrors
+            - cell [ref=e18007]:
+              - img [ref=e18009]
+          - row "Improper rotation of order (= ), (= )" [ref=e18030]:
+            - cell [ref=e18031]:
+              - img [ref=e18033]
+            - cell "Improper rotation of order" [ref=e18041]:
+              - text: Improper rotation of order
+              - img [ref=e18043]
+            - cell "(= ), (= )" [ref=e18048]:
+              - img [ref=e18050]
+              - text: (=
+              - img [ref=e18066]
+              - text: ),
+              - img [ref=e18078]
+              - text: (=
+              - img [ref=e18087]
+              - text: )
+          - 'row "Chiral tetrahedral (12 operations: , , )" [ref=e18095]':
+            - cell [ref=e18096]:
+              - img [ref=e18098]
+            - 'cell "Chiral tetrahedral (12 operations: , , )" [ref=e18103]':
+              - text: "Chiral tetrahedral (12 operations:"
+              - img [ref=e18105]
+              - text: ","
+              - img [ref=e18111]
+              - text: ","
+              - img [ref=e18122]
+              - text: )
+            - cell [ref=e18132]:
+              - img [ref=e18134]
+          - row "+ inversion (24 operations)" [ref=e18139]:
+            - cell [ref=e18140]:
+              - img [ref=e18142]
+            - cell "+ inversion (24 operations)" [ref=e18150]:
+              - img [ref=e18152]
+              - text: + inversion (24 operations)
+            - cell [ref=e18157]:
+              - img [ref=e18159]
+          - 'row "Full tetrahedral (24 operations: + , )" [ref=e18167]':
+            - cell [ref=e18168]:
+              - img [ref=e18170]
+            - 'cell "Full tetrahedral (24 operations: + , )" [ref=e18178]':
+              - text: "Full tetrahedral (24 operations:"
+              - img [ref=e18180]
+              - text: +
+              - img [ref=e18186]
+              - text: ","
+              - img [ref=e18197]
+              - text: )
+            - cell [ref=e18207]:
+              - img [ref=e18209]
+          - 'row "Chiral octahedral (24 operations: , , , , )" [ref=e18217]':
+            - cell [ref=e18218]:
+              - img [ref=e18220]
+            - 'cell "Chiral octahedral (24 operations: , , , , )" [ref=e18225]':
+              - text: "Chiral octahedral (24 operations:"
+              - img [ref=e18227]
+              - text: ","
+              - img [ref=e18233]
+              - text: ","
+              - img [ref=e18244]
+              - text: ","
+              - img [ref=e18255]
+              - text: ","
+              - img [ref=e18266]
+              - text: )
+            - cell [ref=e18278]:
+              - img [ref=e18280]
+          - 'row "Full octahedral (48 operations: + , , , , )" [ref=e18285]':
+            - cell [ref=e18286]:
+              - img [ref=e18288]
+            - 'cell "Full octahedral (48 operations: + , , , , )" [ref=e18296]':
+              - text: "Full octahedral (48 operations:"
+              - img [ref=e18298]
+              - text: +
+              - img [ref=e18304]
+              - text: ","
+              - img [ref=e18310]
+              - text: ","
+              - img [ref=e18321]
+              - text: ","
+              - img [ref=e18332]
+              - text: ","
+              - img [ref=e18343]
+              - text: )
+            - cell [ref=e18353]:
+              - img [ref=e18355]
+      - paragraph [ref=e18363]:
+        - text: The 7 infinite families
+        - img [ref=e18365]
+        - text: and the 5 cubic groups
+        - img [ref=e18421]
+        - text: together generate the 32 crystallographic point groups when the cyclic orders are restricted to
+        - img [ref=e18452]
+        - text: and the cubic groups are restricted to
+        - img [ref=e18479]
+        - text: and
+        - img [ref=e18485]
+        - text: (the icosahedral group
+        - img [ref=e18491]
+        - text: of order 120 is
+        - emphasis [ref=e18496]: not
+        - text: a 3-D Bravais-lattice symmetry; it is the symmetry of the icosahedron, the buckyball C₆₀, and quasicrystals).
+      - blockquote [ref=e18497]:
+        - paragraph [ref=e18498]:
+          - strong [ref=e18499]: Mapping rule of thumb.
+          - text: To convert Schoenflies
+          - img [ref=e18501]
+          - text: "HM:"
+        - list [ref=e18506]:
+          - listitem [ref=e18507]:
+            - img [ref=e18509]
+            - text: (with horizontal bar if there is inversion, letter
+            - code [ref=e18521]: m
+            - text: ’ for horizontal mirror).
+          - listitem [ref=e18522]:
+            - img [ref=e18524]
+            - text: (in cubic) or
+            - img [ref=e18541]
+            - text: (with mirrors).
+          - listitem [ref=e18550]:
+            - img [ref=e18552]
+            - text: (cubic, chiral);
+            - img [ref=e18563]
+            - text: (cubic, with mirrors);
+            - img [ref=e18584]
+            - text: ;
+            - img [ref=e18596]
+            - text: . When in doubt, look it up in §10.2 above.
+      - separator [ref=e18616]
+      - heading "11. What we left out" [level=2] [ref=e18617]
+      - paragraph [ref=e18618]:
+        - text: This page is a
+        - emphasis [ref=e18619]: reference
+        - text: ", not a derivation. The topics below are"
+        - emphasis [ref=e18620]: not
+        - text: "covered here and would each deserve their own section (or chapter):"
+      - list [ref=e18621]:
+        - listitem [ref=e18622]:
+          - strong [ref=e18623]: Magnetic space groups
+          - text: (Shubnikov groups, 1651 of them). The 230 “grey” space groups above are the paramagnetic groups; once time-reversal symmetry is broken, the magnetic point group can be any of 32 + 32 + 58 = 122 *magneti
+          - code [ref=e18624]: c*' point groups, and the magnetic space groups number 1651. The BCS has a separate
+          - text: "NCSYM`’ tool for these."
+        - listitem [ref=e18625]:
+          - strong [ref=e18626]: Incommensurate structures.
+          - text: Modulated structures and quasicrystals have no 3-D Bravais lattice; the symmetry is described in
+          - img [ref=e18628]
+          - text: "-D superspace."
+        - listitem [ref=e18641]:
+          - strong [ref=e18642]: Quasicrystals.
+          - text: The 5-fold and icosahedral symmetries of quasicrystals are
+          - emphasis [ref=e18643]: local
+          - text: (i.e. on the diffraction pattern) but the structure is aperiodic.
+        - listitem [ref=e18644]:
+          - strong [ref=e18645]: Subperiodic groups
+          - text: (layer groups, rod groups, frieze groups). These are the symmetry groups of 2-D and 1-D submanifolds of 3-D space; they are useful for surfaces and polymers.
+        - listitem [ref=e18646]:
+          - strong [ref=e18647]: Higher-dimensional crystallography.
+          - text: The 230 space groups are the 3-D case;
+          - img [ref=e18649]
+          - text: "-D generalisations exist and are tabulated for"
+          - img [ref=e18655]
+          - text: and
+          - img [ref=e18665]
+          - text: (relevant for quasicrystal structure solution).
+        - listitem [ref=e18674]:
+          - strong [ref=e18675]: Relativistic crystallography.
+          - text: Magnetic groups and spin-space groups are the relativistic generalisations; the spin-space groups number 11994 in 3-D (Litvin 2013).
+        - listitem [ref=e18676]:
+          - strong [ref=e18677]: Group theory of space groups.
+          - text: The 230 space groups are abstractly a small set of isomorphism classes (73 symmorphic
+          - list [ref=e18678]:
+            - listitem [ref=e18679]:
+              - text: 157 non-symmorphic), and their irreps at the high-symmetry k-points are tabulated in
+              - emphasis [ref=e18680]: International Tables
+              - text: vol. B.
+      - paragraph [ref=e18681]:
+        - text: For the DFT context, the
+        - strong [ref=e18682]: 230 space groups
+        - text: and their
+        - strong [ref=e18683]: k- point conventions
+        - text: (Setyawan–Curtarolo) are the only ones you need. Everything else is on the BCS.
+      - separator [ref=e18684]
+      - heading "12. References and further reading" [level=2] [ref=e18685]
+      - list [ref=e18686]:
+        - listitem [ref=e18687]:
+          - strong [ref=e18688]: International Tables for Crystallography
+          - text: ", vol. A (Space-group symmetry), 6th ed., ed. M. I. Aroyo (Wiley, 2016). The canonical reference. Every library with a crystallography section has it."
+        - listitem [ref=e18689]:
+          - text: M. I. Aroyo, ed.,
+          - strong [ref=e18690]: International Tables for Crystallography
+          - text: vol. E (Subperiodic groups), 2nd ed. (Wiley, 2020). Layer, rod, and frieze groups.
+        - listitem [ref=e18691]:
+          - text: C. Kittel,
+          - strong [ref=e18692]: Introduction to Solid State Physics
+          - text: ", 9th ed. (Wiley, 2021), chapters 1–2. The classic textbook. Uses the"
+          - img [ref=e18694]
+          - text: convention for the reciprocal lattice (§1.3).
+        - listitem [ref=e18701]:
+          - text: N. W. Ashcroft and N. D. Mermin,
+          - strong [ref=e18702]: Solid State Physics
+          - text: (Holt, Rinehart, Winston, 1976), chapters 4–7. More thorough than Kittel on reciprocal space.
+        - listitem [ref=e18703]:
+          - text: M. S. Dresselhaus, G. Dresselhaus, and A. Jorio,
+          - strong [ref=e18704]: "Group Theory: Application to the Physics of Condensed Matter"
+          - text: (Springer, 2008). The standard reference for space-group applications in solid-state physics.
+        - listitem [ref=e18705]:
+          - text: "W. Setyawan and S. Curtarolo, “High-throughput electronic band structure calculations: Challenges and tools”,"
+          - emphasis [ref=e18706]: Computational Materials Science
+          - strong [ref=e18707]: "49"
+          - text: ", 299 (2010). The paper that defined the canonical k-paths of §7."
+          - emphasis [ref=e18708]: Every
+          - text: modern band-structure database uses these conventions.
+        - listitem [ref=e18709]:
+          - text: G. K. H. Madsen and D. J. Singh, “BoltzTraP. A code for calculating band-structure dependent quantities”,
+          - emphasis [ref=e18710]: Computer Physics Communications
+          - strong [ref=e18711]: "175"
+          - text: ", 67 (2006). The BoltzTraP code uses the Setyawan–Curtarolo conventions."
+        - listitem [ref=e18712]:
+          - text: The
+          - link "Bilbao Crystallographic Server" [ref=e18713] [cursor=pointer]:
+            - /url: https://www.cryst.ehu.es/
+          - text: ", M. I. Aroyo et al. The de-facto web reference."
+        - listitem [ref=e18714]:
+          - text: The
+          - code [ref=e18715]: spglib
+          - text: ’ library, H. T. Stokes and D. M. Hatch (Brigham Young University). Python wrapper
+          - code [ref=e18716]: pyspglib
+          - text: . The standard tool for symmetry analysis from a CIF or POSCAR.
+        - listitem [ref=e18717]:
+          - text: The
+          - code [ref=e18718]: pymatgen
+          - text: ’ library, S. P. Ong et al. (Materials Project). The standard Python materials-science library; uses Setyawan–Curtarolo k-paths as defaults.
+        - listitem [ref=e18719]:
+          - text: The
+          - code [ref=e18720]: ase
+          - text: ’ library (Atomic Simulation Environment), A. H. Larsen et al. An alternative to
+          - code [ref=e18721]: pymatgen
+          - text: ; similar capabilities for reading CIF and computing k-paths.
+        - listitem [ref=e18722]:
+          - text: D. Shechtman, I. Blech, D. Gratias, and J. W. Cahn, “Metallic phase with long-range orientational order and no translational symmetry”,
+          - emphasis [ref=e18723]: Physical Review Letters
+          - strong [ref=e18724]: "53"
+          - text: ", 1951 (1984). The original quasicrystal paper (5-fold symmetry in a metallic solid)."
+      - blockquote [ref=e18725]:
+        - paragraph [ref=e18726]:
+          - strong [ref=e18727]: Up next in DFT Notes.
+          - text: This page is the static crystallography reference. For the
+          - emphasis [ref=e18728]: practical
+          - text: workflow of building a structure from a CIF and computing a band structure, see
+          - link "chapter 11" [ref=e18729] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: §11.5 (the k-path algorithm) and the
+          - link "software cheatsheet" [ref=e18730] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/software-cheatsheet/
+          - text: entries for
+          - code [ref=e18731]: pymatgen
+          - text: ","
+          - code [ref=e18732]: spglib
+          - text: ","
+          - code [ref=e18733]: ASE
+          - text: ", and"
+          - code [ref=e18734]: BoltzTraP
+          - text: .
+  - contentinfo [ref=e18735]:
+    - generic [ref=e18736]:
+      - generic [ref=e18737]:
+        - img [ref=e18738]
+        - generic [ref=e18742]: DFT Notes
+        - paragraph [ref=e18743]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e18744]:
+        - generic [ref=e18745]:
+          - heading "Project" [level=3] [ref=e18746]
+          - list [ref=e18747]:
+            - listitem [ref=e18748]:
+              - link "Chapters map" [ref=e18749] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e18750]:
+              - link "Python codes" [ref=e18751] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e18752]:
+              - link "Contributing" [ref=e18753] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e18754]:
+              - link "Security" [ref=e18755] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e18756]:
+              - link "Design spec" [ref=e18757] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e18758]:
+              - link "GitHub ↗" [ref=e18759] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e18760]:
+          - heading "Built with" [level=3] [ref=e18761]
+          - list [ref=e18762]:
+            - listitem [ref=e18763]:
+              - link "Jekyll" [ref=e18764] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e18765]:
+              - link "MathJax 3" [ref=e18766] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e18767]:
+              - link "Mermaid" [ref=e18768] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e18769]:
+              - link "chenglou/pretext" [ref=e18770] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e18771]:
+              - link "Google Fonts" [ref=e18772] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e18773]:
+          - heading "Legal" [level=3] [ref=e18774]
+          - list [ref=e18775]:
+            - listitem [ref=e18776]:
+              - link "MIT License" [ref=e18777] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e18778]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e18780]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

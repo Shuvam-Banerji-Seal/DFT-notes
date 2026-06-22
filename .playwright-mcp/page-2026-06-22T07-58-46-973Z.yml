@@ -1,0 +1,437 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "FAQ — DFT Notes" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: A working FAQ for readers who have just opened these notes and want a
+          - emphasis [ref=e30]: short
+          - text: "answer before they commit to a chapter. Every entry is self-contained: one question, one answer, and a list of cross-references. Click a question to reveal the answer; click again to hide it."
+      - paragraph [ref=e31]:
+        - text: This page is
+        - emphasis [ref=e32]: not
+        - text: a substitute for the chapters. It is a
+        - strong [ref=e33]: look-up table
+        - text: for the questions a new reader actually asks — in lectures, in group meetings, in the first week of a project. The answers are deliberately concise (50–200 words) and opinionated; for the derivations, the proofs, and the working code, follow the cross-references.
+      - blockquote [ref=e34]:
+        - paragraph [ref=e35]:
+          - strong [ref=e36]: Conventions.
+          - text: Atomic units (
+          - img [ref=e38]
+          - text: ) are used throughout, matching the
+          - link "notation glossary" [ref=e69] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+          - text: and the
+          - link "math cheatsheet" [ref=e70] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+          - text: . Lengths are in Bohr (
+          - img [ref=e72]:
+            - generic [ref=e92]: Å
+          - text: ); energies in Hartree (
+          - img [ref=e94]
+          - text: ).
+      - heading "How to read this page" [level=2] [ref=e115]
+      - paragraph [ref=e116]:
+        - text: Every question is wrapped in a
+        - code [ref=e117]: <details>' block. Click the question to reveal the answer; click again to hide it. Use the table of contents below to jump to a section. If your question is **not** here, try the [notation glossary](/DFT-notes/dft-notes/extras/notation-glossary/), the [math cheatsheet](/DFT-notes/dft-notes/extras/math-cheatsheet/), the [software cheatsheet](/DFT-notes/dft-notes/extras/software-cheatsheet/), the [worked examples](/DFT-notes/dft-notes/extras/worked-examples/), or the [problems anthology](/DFT-notes/dft-notes/extras/problems/). File an issue against
+        - text: agent:docs-keeper’ (see
+        - link "agents.md" [ref=e118] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/agents/
+          - code [ref=e119]: agents.md
+        - text: for the contract) if it is still not there.
+      - heading "Table of contents" [level=2] [ref=e120]
+      - list [ref=e121]:
+        - listitem [ref=e122]:
+          - strong [ref=e123]: A. Foundations
+          - text: — what DFT is, what a wavefunction is, why the Schrödinger equation is hard, the Born–Oppenheimer approximation, and the “ab initio” / “first-principles” distinction.
+        - listitem [ref=e124]:
+          - strong [ref=e125]: B. Mathematics
+          - text: — Dirac notation, Slater determinants, the density, basis sets, “self-consistent”, functionals, and the Hohenberg–Kohn theorem.
+        - listitem [ref=e126]:
+          - strong [ref=e127]: C. Practical
+          - text: — how to choose an XC functional and a basis set, how to converge a calculation, k-points, pseudopotentials, band structures, DOS, geometry optimisation vs. MD, and smearing.
+        - listitem [ref=e128]:
+          - strong [ref=e129]: D. Common pitfalls
+          - text: — band-gap underestimation, k-point non-convergence, oscillating optimisations, noisy forces, and inter-code disagreement.
+        - listitem [ref=e130]:
+          - strong [ref=e131]: E. Software
+          - text: — which code, the VASP licence, free compute resources, and PAW vs. pseudopotential.
+      - separator [ref=e132]
+      - heading "A. Foundations" [level=2] [ref=e133]
+      - paragraph [ref=e134]: The “what is this all about” questions. Read these first if you have never taken a quantum-mechanics course.
+      - heading "A.1 — What is DFT, in one paragraph?" [level=3] [ref=e135]
+      - group [ref=e136]:
+        - generic "A.1 — What is DFT, in one paragraph?" [ref=e137]:
+          - strong [ref=e138]: A.1 — What is DFT, in one paragraph?
+        - text: Density Functional Theory is a *reformulation* of quantum mechanics that uses the one-electron density — a real, positive, three-dimensional scalar field — as the fundamental variable, instead of the many-body wavefunction . The Hohenberg–Kohn theorem (1964) proves that the ground-state energy of a many-electron system is a *unique functional* of ; the Kohn–Sham construction (1965) turns that existence proof into a *practical algorithm* by introducing an auxiliary non-interacting system whose density equals the true interacting density. In Kohn–Sham DFT, the central equation is a set of one-electron Schrödinger-like equations solved self-consistently. DFT in the Kohn–Sham form is the workhorse of modern computational chemistry and materials science because it offers a favourable cost–accuracy trade-off for systems with tens to thousands of electrons. **See:** [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.1–4.2; [Chapter 00](/DFT-notes/dft-notes/chapter-00/) — "What is DFT in 200 words"
+      - heading "A.2 — What is a “wavefunction” and why do we need it?" [level=3] [ref=e139]
+      - group [ref=e140]:
+        - generic "A.2 — What is a \"wavefunction\" and why do we need it?" [ref=e141]:
+          - strong [ref=e142]: A.2 — What is a "wavefunction" and why do we need it?
+        - text: "The wavefunction is the object in quantum mechanics that *encodes everything knowable about a many-electron system*. By the Born rule, gives the joint probability density for finding electron 1 at , electron 2 at , and so on. The wavefunction lives in a -dimensional configuration space (one per electron); for that is 300 real numbers per grid point — vastly more than any computer can store. All measurable quantities are expectation values ; the wavefunction evolves under the time-dependent Schrödinger equation. DFT's big theoretical move is to *avoi`d*' the wavefunction and work with the one-electron density instead, which lives in ordinary 3-D space and is enormously cheaper to store and manipulate. **See:** [Chapter 01](/DFT-notes/dft-notes/chapter-01/) §1.1–1.2; [Notation glossary](/DFT-notes/dft-notes/extras/notation-glossary/) §3"
+      - heading "A.3 — Why is the Schrödinger equation so hard to solve for atoms and molecules?" [level=3] [ref=e143]
+      - group [ref=e144]:
+        - generic "A.3 — Why is the Schrödinger equation so hard to solve for atoms and molecules?" [ref=e145]:
+          - strong [ref=e146]: A.3 — Why is the Schrödinger equation so hard to solve for atoms and molecules?
+        - text: "The time-independent Schrödinger equation for electrons and nuclei is a *linear eigenvalue problem* in a -dimensional space. Three things make it hard: 1. **Dimensionality.** The wavefunction is a function of coordinates; storing it on a grid is infeasible past electrons. 2. **The electron–electron repulsion** is *non-separable*: you cannot write the wavefunction as a product of one-electron factors without losing essential correlation physics. This is the \"many-body problem\" of [Chapter 02](/DFT-notes/dft-notes/chapter-02/). 3. **The exchange–correlation physics is non-local** in subtle ways. The exact functional of DFT is unknown; the approximate functionals (LDA, GGA, hybrid, …) of [Chapter 05](/DFT-notes/dft-notes/chapter-05/) are the workarounds, and they are not always accurate. For one electron and one proton (the hydrogen atom) the equation *is* separable and has a closed-form solution; for anything bigger, approximation is unavoidable. **See:** [Chapter 01](/DFT-notes/dft-notes/chapter-01/) §1.1, §1.10; [Chapter 02](/DFT-notes/dft-notes/chapter-02/) §2.1"
+      - heading "A.4 — What is the Born–Oppenheimer approximation?" [level=3] [ref=e147]
+      - group [ref=e148]:
+        - generic "A.4 — What is the Born–Oppenheimer approximation?" [ref=e149]:
+          - strong [ref=e150]: A.4 — What is the Born–Oppenheimer approximation?
+        - text: "The Born–Oppenheimer (BO) approximation **decouples the electrons from the nuclei** by exploiting the fact that a proton is ~1836 times heavier than an electron, so the electrons move *muc`h*' faster. The approximation treats the nuclei as classical, point-like, *fixe`d*' sources of an external potential ; the electronic Schrödinger equation is then solved for each nuclear geometry separately. The electronic energy becomes the *potential energy surface* on which the nuclei move; the nuclear Schrödinger equation (or, classically, Newton's second law) is solved on that surface. The approximation is *very* good for ground-state properties: the residual electron–nuclear coupling is small, and corrections can be added perturbatively if needed. It is *less* good when two potential-energy surfaces come close together (conical intersections, Jahn–Teller systems, some excited states), where the non-adiabatic coupling becomes large. **See:** [Chapter 01](/DFT-notes/dft-notes/chapter-01/) §1.1 (footnote on BO); [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.7"
+      - heading "A.5 — What’s the difference between “ab initio” and “first-principles”?" [level=3] [ref=e151]
+      - group [ref=e152]:
+        - generic "A.5 — What's the difference between \"ab initio\" and \"first-principles\"?" [ref=e153]:
+          - strong [ref=e154]: A.5 — What's the difference between "ab initio" and "first-principles"?
+        - text: "In practice, **the two terms mean the same thing** in the context of electronic-structure theory: a calculation that takes only the atomic numbers and positions as input — no empirical parameters, no fitted data, no adjustable parameters. \"Ab initio\" is the older term, popular in quantum chemistry; \"first-principles\" is the term preferred in condensed-matter physics and materials science. DFT, Hartree–Fock, coupled cluster, quantum Monte Carlo, and are all \"ab initio\" / \"first-principles\" methods; tight-binding and force-field methods are *not*. DFT in particular is sometimes called \"first-principles DFT\" to emphasise that the *only* empirical input is the choice of XC functional — and even that is a controlled, systematically improvable approximation, not a fitted parameter. When you see the phrase \"from first principles\" in a paper, the author is telling you that no experimental data was used beyond the atomic numbers. **See:** [Chapter 00](/DFT-notes/dft-notes/chapter-00/) — \"What is in scope\"; [Chapter 05](/DFT-notes/dft-notes/chapter-05/) §5.0"
+      - heading "A.6 — Why is DFT called a “theory” if we still need to pick a functional?" [level=3] [ref=e155]
+      - group [ref=e156]:
+        - generic "A.6 — Why is DFT called a \"theory\" if we still need to pick a functional?" [ref=e157]:
+          - strong [ref=e158]: A.6 — Why is DFT called a "theory" if we still need to pick a functional?
+        - text: "Strictly speaking, the *theory* is exact: the Hohenberg–Kohn theorem and the Kohn–Sham construction together prove that, for any external potential, there exists a universal functional whose minimum gives the exact ground-state energy and density. The *approximation* is entirely in the choice of , the exchange–correlation part of that functional. DFT in this sense is \"exact in principle but approximate in practice\" — the same status as the Schrödinger equation, which is also exact in principle but never solved exactly for more than two particles. The systematic improvement of is the subject of \"Jacob's ladder\" of [Chapter 05](/DFT-notes/dft-notes/chapter-05/): each rung (LDA → GGA → meta-GGA → hybrid → double hybrid) adds more ingredients and brings you systematically closer to the exact functional, at a systematically higher cost. **See:** [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.1, §4.2; [Chapter 05](/DFT-notes/dft-notes/chapter-05/) §5.0"
+      - heading "A.7 — What kinds of problems can DFT solve (and which can’t it)?" [level=3] [ref=e159]
+      - group [ref=e160]:
+        - generic "A.7 — What kinds of problems can DFT solve (and which can't it)?" [ref=e161]:
+          - strong [ref=e162]: A.7 — What kinds of problems can DFT solve (and which can't it)?
+        - text: "DFT (Kohn–Sham) is good for: **ground-state geometries** of molecules, solids, surfaces; **vibrational frequencies** (from finite differences or DFPT); **elastic constants and moduli**; **relative energies** of similar configurations (adsorption sites, polymorphs, reaction paths); **band structures and DOS** of semiconductors and metals (with caveats on the gap); **charge densities, dipoles, ESPs** for qualitative chemistry. DFT is *less goo`d*' for: **band gaps** of semiconductors and insulators (typically 30–50 % too small with semilocal functionals, fixable with hybrids or ); **weak interactions** (van der Waals / dispersion — needs a correction); **strongly correlated electrons** (Mott insulators, multi-centre transition-metal complexes — often needs DFT+U or embedding); **excited states** (needs TDDFT or beyond); **reaction barriers** (often ±3–5 kcal/mol; CCSD(T) is the gold standard); **thermochemistry of large molecules** (needs a hybrid or double-hybrid for chemical accuracy). **See:** [Chapter 05](/DFT-notes/dft-notes/chapter-05/) §5.7; [Chapter 11](/DFT-notes/dft-notes/chapter-11/); [Chapter 12](/DFT-notes/dft-notes/chapter-12/)"
+      - separator [ref=e163]
+      - heading "B. Mathematics" [level=2] [ref=e164]
+      - paragraph [ref=e165]:
+        - text: The “what does this symbol mean” questions. Open
+        - link "Chapter 01" [ref=e166] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: in parallel if you are reading for the first time; these answers are the short form of the chapter’s notation.
+      - heading "B.1 — What does (\\langle \\phi \\rvert \\hat A \\rvert \\psi \\rangle) mean?" [level=3] [ref=e167]
+      - group [ref=e168]:
+        - generic "B.1 — What does mean?" [ref=e169]:
+          - strong [ref=e170]:
+            - text: B.1 — What does
+            - img [ref=e172]
+            - text: mean?
+        - text: "It is the **matrix element of the operator between two states and ** in Dirac's bra–ket notation. The ket is a vector in the Hilbert space; the bra is the dual vector (linear functional) of ; the operator sits in between and acts on . The full expression is read right-to-left: produces a new state, which is then inner-producted with . In position-space representation it is the integral When this is the **expectation value** of in the state ; when it is the **inner product** . Every Fock-matrix element in [Chapter 03](/DFT-notes/dft-notes/chapter-03/) is an instance of this notation. **See:** [Chapter 01](/DFT-notes/dft-notes/chapter-01/) §1.2; [Math cheatsheet](/DFT-notes/dft-notes/extras/math-cheatsheet/) §1"
+      - heading "B.2 — What is a Slater determinant, and why do we use it?" [level=3] [ref=e193]
+      - group [ref=e194]:
+        - generic "B.2 — What is a Slater determinant, and why do we use it?" [ref=e195]:
+          - strong [ref=e196]: B.2 — What is a Slater determinant, and why do we use it?
+        - text: "A **Slater determinant** is an antisymmetrised product of orthonormal single-particle spin-orbitals : The determinant form **enforces the Pauli exclusion principle automatically**: swapping two rows flips the sign, so changes sign under particle exchange, which is what \"fermions are antisymmetric\" means. It also gives a clean route to the *exact* exchange that the Hartree–Fock method builds on. In Kohn–Sham DFT we use a Slater determinant **even though the true wavefunction is not a single determinant**, because the determinant is just the Ansatz for the auxiliary non-interacting system that reproduces the interacting density. The determinant form makes the kinetic energy and the Hartree energy tractable. **See:** [Chapter 02](/DFT-notes/dft-notes/chapter-02/) §2.2; [Chapter 03](/DFT-notes/dft-notes/chapter-03/) §3.1; [Math cheatsheet](/DFT-notes/dft-notes/extras/math-cheatsheet/) §4"
+      - heading "B.3 — What’s the difference between (\\Psi) and (\\psi)?" [level=3] [ref=e197]
+      - group [ref=e198]:
+        - generic "B.3 — What's the difference between and ?" [ref=e199]:
+          - strong [ref=e200]:
+            - text: B.3 — What's the difference between
+            - img [ref=e202]
+            - text: and
+            - img [ref=e208]
+            - text: "?"
+        - text: "Capital is the **many-body wavefunction**: a function of electronic coordinates (and spin labels). Lower-case is a **single-particle orbital**: a function of *one* electronic coordinate (and one spin). In Kohn–Sham DFT the many-body wavefunction is approximated by a Slater determinant of single-particle orbitals: The mapping is the Kohn–Sham Ansatz. In the Kohn–Sham equations the are the eigenvectors (orbitals) and the are the eigenvalues (orbital energies). When a chapter uses the bare symbol with no index, it usually means \"some specific orbital in some specific context\" — read the surrounding paragraph to find out which one. **See:** [Notation glossary](/DFT-notes/dft-notes/extras/notation-glossary/) §3; [Chapter 01](/DFT-notes/dft-notes/chapter-01/) §1.1"
+      - heading "B.4 — What is the density (\\rho(\\mathbf r)) and how is it related to the wavefunction?" [level=3] [ref=e213]
+      - group [ref=e214]:
+        - generic "B.4 — What is the density and how is it related to the wavefunction?" [ref=e215]:
+          - strong [ref=e216]:
+            - text: B.4 — What is the density
+            - img [ref=e218]
+            - text: and how is it related to the wavefunction?
+        - text: "The **one-electron density** is the integral of over all electron coordinates but one, summed over spins: It is a non-negative, real, three-dimensional scalar field that integrates to the number of electrons: . Its physical content is the *marginal* probability density for finding *any* electron at ; the prefactor comes from summing over the equivalent choices of \"which electron is at \". In a Slater-determinant Ansatz the density simplifies to (closed shell: double that with a factor of 2). The Hohenberg–Kohn theorem guarantees that contains *exactly* the same information as for the ground state — they are in one-to-one correspondence. **See:** [Chapter 01](/DFT-notes/dft-notes/chapter-01/) §1.6; [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.1"
+      - heading "B.5 — What’s a basis set?" [level=3] [ref=e230]
+      - group [ref=e231]:
+        - generic "B.5 — What's a basis set?" [ref=e232]:
+          - strong [ref=e233]: B.5 — What's a basis set?
+        - text: "A **basis set** is a finite set of known functions used to expand the unknown molecular orbitals: The choice of basis set controls both the **accuracy** and the **cost** of the calculation. Two main families: (i) **localised atomic-orbital bases** (Gaussians, Slater-type orbitals, numerical atomic orbitals) — used for molecules; (ii) **delocalised plane-wave bases** — used for periodic solids. A *complete* basis is infinite; in practice the expansion is truncated at some , and the basis-set incompleteness error is the dominant source of error in many production calculations. The plane-wave basis is *systematically improvable* (one knob: the cutoff energy ); the Gaussian basis is *not* (one has to climb the Pople or Dunning ladder). **See:** [Chapter 06](/DFT-notes/dft-notes/chapter-06/) §6.1–6.8; [Notation glossary](/DFT-notes/dft-notes/extras/notation-glossary/) §6"
+      - heading "B.6 — What does “self-consistent” mean?" [level=3] [ref=e234]
+      - group [ref=e235]:
+        - generic "B.6 — What does \"self-consistent\" mean?" [ref=e236]:
+          - strong [ref=e237]: B.6 — What does "self-consistent" mean?
+        - text: "The Kohn–Sham potential depends on the density, and the density is built from the Kohn–Sham orbitals, which are the eigenvectors of the Kohn–Sham Hamiltonian. So the problem has a **circular dependency**: density potential Hamiltonian orbitals density. A calculation is **self-consistent** when the density that comes *out* of one diagonalisation equals (within tolerance) the density that was used to build the Hamiltonian. In practice, the SCF loop is iterated until convergence: The map is the **SCF map**; its fixed point is the self-consistent solution. Convergence can be *accelerate`d*' by density mixing (Pulay, Broyden, DIIS); see [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.6. \"SCF\" stands for \"self-consistent field\" — a historical name from the Hartree–Fock days. **See:** [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.6; [Chapter 03](/DFT-notes/dft-notes/chapter-03/) §3.6"
+      - heading "B.7 — What is a “functional”?" [level=3] [ref=e238]
+      - group [ref=e239]:
+        - generic "B.7 — What is a \"functional\"?" [ref=e240]:
+          - strong [ref=e241]: B.7 — What is a "functional"?
+        - text: "A **functional** is a map from a *function* to a number (or to another function). For example, the Kohn–Sham total energy is a functional of the density: Each term is itself a functional: returns a number given a function ; returns a number; returns a number. The fundamental derivative of a functional is the **functional derivative** , defined implicitly by ; the Kohn–Sham effective potential is exactly . A \"functional\" is *not* the same as a \"function\": a function takes numbers, a functional takes functions. **See:** [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.2; [Math cheatsheet](/DFT-notes/dft-notes/extras/math-cheatsheet/) §11"
+      - heading "B.8 — What is the Hohenberg–Kohn theorem actually saying?" [level=3] [ref=e242]
+      - group [ref=e243]:
+        - generic "B.8 — What is the Hohenberg–Kohn theorem actually saying?" [ref=e244]:
+          - strong [ref=e245]: B.8 — What is the Hohenberg–Kohn theorem actually saying?
+        - text: "The Hohenberg–Kohn (HK) theorem, in two parts: **(1) Existence.** The ground-state density of a many-electron system in an external potential *uniquely determines* that potential (up to an additive constant). Consequently, determines the full Hamiltonian, the full wavefunction, and the ground-state energy. The map is invertible. **(2) Variational principle.** The ground-state energy is obtained by minimising the energy functional over all -representable densities; the minimiser is the exact ground-state density. The HK theorem is an *existence proo`f*`; it does not give a recipe for the functional . The Kohn– Sham construction is the practical realisation: it replaces the *unknown* functional by an exactly known non-interacting kinetic energy plus a small correction that absorbs everything unknown. **See:** [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.1; [Chapter 00](/DFT-notes/dft-notes/chapter-00/) — \"What is DFT in 200 words\""
+      - separator [ref=e246]
+      - heading "C. Practical" [level=2] [ref=e247]
+      - paragraph [ref=e248]: The “how do I actually run a calculation” questions. This is the section to read before you start a project.
+      - heading "C.1 — How do I choose an XC functional?" [level=3] [ref=e249]
+      - group [ref=e250]:
+        - generic "C.1 — How do I choose an XC functional?" [ref=e251]:
+          - strong [ref=e252]: C.1 — How do I choose an XC functional?
+        - text: "A short, opinionated guide: | Functional | Use it for | Don't use it for | |:-----------|:-----------|:-----------------| | **LDA** | Quick sanity check; metals; pedagogical baselines | Quantitative chemistry (gaps, thermochemistry) | | **PBE** (GGA) | Mainstream solids, geometries, phonons | Band gaps; thermochemistry of molecules | | **PBEsol** | Lattice parameters of solids | Molecules | | **SCAN** (meta-GGA) | Improved geometries, formation energies | Needs dispersion (use SCAN+rVV10) | | **PBE0 / HSE06** (hybrid) | Band gaps, defect levels, semiconductors | Very large supercells; Mott insulators | | **B3LYP** (hybrid) | Mainstream molecular thermochemistry | Solids (use a periodic code) | | **M06-2X** | Main-group thermochemistry, non-covalent interactions | Transition metals | The default for a *new project* is PBE for solids, PBE0 or B3LYP for molecules. Always **report the functional you used** — and report the convergence parameters (cutoff, mesh, tolerance) in the same sentence. **See:** [Chapter 05](/DFT-notes/dft-notes/chapter-05/) §5.0–5.6; [Software cheatsheet](/DFT-notes/dft-notes/extras/software-cheatsheet/)"
+      - heading "C.2 — How do I choose a basis set?" [level=3] [ref=e253]
+      - group [ref=e254]:
+        - generic "C.2 — How do I choose a basis set?" [ref=e255]:
+          - strong [ref=e256]: C.2 — How do I choose a basis set?
+        - text: "For **molecules** (Gaussian codes — PySCF, Psi4, ORCA, Q-Chem, Gaussian): start with **def2-SVP** for screening; for publication, climb to **def2-TZVP** or **def2-QZVP**; for non-covalent interactions, add a **-D3** dispersion correction to a triple-zeta; for very high accuracy, use **aug-cc-pVTZ** (Dunning) with CBS extrapolation. For **solids** (plane-wave codes — VASP, Quantum ESPRESSO, CASTEP, ABINIT): the only knob is the **kinetic-energy cutoff **. Converge the total energy to your target tolerance (typically 1 meV/atom) and the stress to ~0.1 kbar. **Pseudopotential** files have a *recommended minimum cutof`f*`; use that as a starting point and converge *upwards*. For structures that need empty / high-energy states (DOS, band structure), also converge the **augmentation cutof`f*`* (PAW) and the **number of bands**. Always **check for basis-set superposition error (BSSE)** in weakly-bound complexes — counterpoise correction. **See:** [Chapter 06](/DFT-notes/dft-notes/chapter-06/) §6.9 (GTOs), §6.10–6.11 (plane waves); [Notation glossary](/DFT-notes/dft-notes/extras/notation-glossary/) §6"
+      - heading "C.3 — How do I converge a calculation?" [level=3] [ref=e257]
+      - group [ref=e258]:
+        - generic "C.3 — How do I converge a calculation?" [ref=e259]:
+          - strong [ref=e260]: C.3 — How do I converge a calculation?
+        - text: "Convergence means the *quantity you care about* stops changing as you tighten the numerical parameters. Recipe: 1. **Pick a target tolerance.** E.g. total energy to 0.1 meV/atom, forces to 10 meV/Å, stress to 0.1 kbar. 2. **Vary one parameter at a time**, in this order: molecules: basis set, then integration grid, then SCF tolerance; solids: k-point mesh, then plane-wave cutoff, then smearing width, then SCF tolerance. 3. **Plot the quantity vs. parameter** on a log scale; pick the value at which the curve plateaus *an`d*' is still affordable. A monotonic improvement without a plateau means you are not yet converged. 4. **Add a safety margin**: take the smallest converged value, multiply the cutoff by 1.2–1.5×, verify the quantity doesn't move. The most common mistake is to converge the *total energy* and not the *property of interest*. A calculation can be converged to 1 μHartree in energy and still be 50 meV/Å off on the forces (because the *gradient* of the unconverged quantity is not converged at the same point). **See:** [Chapter 07](/DFT-notes/dft-notes/chapter-07/) §7.6; [Chapter 06](/DFT-notes/dft-notes/chapter-06/) §6.11; [Worked examples](/DFT-notes/dft-notes/extras/worked-examples/)"
+      - heading "C.4 — What does “k-point sampling” mean, and when do I need it?" [level=3] [ref=e261]
+      - group [ref=e262]:
+        - generic "C.4 — What does \"k-point sampling\" mean, and when do I need it?" [ref=e263]:
+          - strong [ref=e264]: C.4 — What does "k-point sampling" mean, and when do I need it?
+        - text: For a **periodic** system (crystal, surface, polymer), Bloch's theorem forces the orbitals to be labelled by a crystal momentum in the first Brillouin zone. The Kohn–Sham equations need to be solved at *every* — but there are infinitely many, so we sample the BZ on a discrete mesh (Monkhorst–Pack, -centred). A finer mesh better-sampled BZ integrals (Fermi surface, DOS) and a more converged total energy. **Rules of thumb:** - **Metals** need *many* k-points (the integrand is discontinuous at the Fermi surface); start with or denser. - **Semiconductors / insulators** need *fewer* k-points (the integrand is smooth in the gap); is often enough. - **Molecules / clusters** in a box need *only* the point; the box is a finite system. - **Band structures** are *not* a uniform BZ integration; they are a path through high-symmetry points. Always converge the **k-point density** (k-points per reciprocal Ångström) rather than the *number* of k-points, since the latter depends on the cell size. **See:** [Chapter 07](/DFT-notes/dft-notes/chapter-07/) §7.6, §7.7; [Chapter 11](/DFT-notes/dft-notes/chapter-11/)
+      - heading "C.5 — What’s a pseudopotential and why do I need one?" [level=3] [ref=e265]
+      - group [ref=e266]:
+        - generic "C.5 — What's a pseudopotential and why do I need one?" [ref=e267]:
+          - strong [ref=e268]: C.5 — What's a pseudopotential and why do I need one?
+        - text: "A **pseudopotential** replaces the strong nuclear Coulomb potential and the tightly-bound core electrons by a weaker, effective potential that reproduces the *valence* wavefunction outside a cutoff radius . The reasons to use one are practical: the valence wavefunction is smooth (no radial nodes from the core), so it can be expanded in a *small* plane-wave basis; relativistic effects (mass–velocity, Darwin, spin–orbit) can be folded into the pseudopotential; the frozen-core approximation is excellent for most ground-state properties (the core does not change much between atoms, molecules, and solids). The three main flavours: **norm-conserving** (Hamann, Troullier–Martins), **ultrasoft** (Vanderbilt), and **PAW** (Blöchl). PAW is technically not a pseudopotential — it is a *transformation* that recovers the all-electron wavefunction inside — but it is used the same way. Pseudopotentials are *not* transferable by magic; always test convergence and check for ghost states. **See:** [Chapter 08](/DFT-notes/dft-notes/chapter-08/) §8.1–8.7; [Software cheatsheet](/DFT-notes/dft-notes/extras/software-cheatsheet/)"
+      - heading "C.6 — How do I compute a band structure?" [level=3] [ref=e269]
+      - group [ref=e270]:
+        - generic "C.6 — How do I compute a band structure?" [ref=e271]:
+          - strong [ref=e272]: C.6 — How do I compute a band structure?
+        - text: "A **band structure** is the orbital energy plotted along a high-symmetry path in the Brillouin zone (e.g. for FCC). Recipe: 1. **Converge the ground state** at a uniform k-mesh with a finite smearing (Gaussian, Methfessel–Paxton, Fermi–Dirac). 2. **Restart from the converged charge density**; switch off the smearing (or use a tiny cold-smearing width). 3. **Sample the BZ along the high-symmetry path**, not on a uniform mesh. Use ~50–200 k-points along the path. 4. **Plot vs. the path coordinate**; align the Fermi energy to zero (set from the uniform-mesh run). Caveats: Kohn–Sham band structures are *not* the quasiparticle band structure; the gap is wrong, and the band widths and dispersions can be off. For a quantitatively correct band structure you need or similar. **See:** [Chapter 07](/DFT-notes/dft-notes/chapter-07/) §7.7–7.8; [Chapter 11](/DFT-notes/dft-notes/chapter-11/) §11.2; [Worked examples](/DFT-notes/dft-notes/extras/worked-examples/)"
+      - heading "C.7 — How do I compute a density of states?" [level=3] [ref=e273]
+      - group [ref=e274]:
+        - generic "C.7 — How do I compute a density of states?" [ref=e275]:
+          - strong [ref=e276]: C.7 — How do I compute a density of states?
+        - text: "The **density of states (DOS)** is the number of orbitals per unit energy: In a plane-wave code you compute it by: (i) running a **uniform k-mesh** (denser than for the ground state — or more for metals); (ii) collecting all the eigenvalues ; (iii) **smearing the delta peaks** (Gaussian, Lorentzian) so the histogram is smooth, with a smearing width comparable to the *energy resolution* you want (typically 0.1–0.3 eV); (iv) **plotting** vs. , aligning to zero. The \"projected DOS\" or \"PDOS\" weights each band by the contribution of a chosen atom or orbital (handy for assigning spectral features to specific chemical species). The DOS is the right convolution partner for comparing to photoemission or STM spectroscopy; the band structure is the right partner for direct / indirect gap assignments. **See:** [Chapter 11](/DFT-notes/dft-notes/chapter-11/) §11.3; [Chapter 07](/DFT-notes/dft-notes/chapter-07/) §7.8"
+      - heading "C.8 — What’s the difference between geometry optimisation and molecular dynamics?" [level=3] [ref=e277]
+      - group [ref=e278]:
+        - generic "C.8 — What's the difference between geometry optimisation and molecular dynamics?" [ref=e279]:
+          - strong [ref=e280]: C.8 — What's the difference between geometry optimisation and molecular dynamics?
+        - text: "Both move the nuclei on the *Born–Oppenheimer* potential energy surface; they differ in what they do once they get there. **Geometry optimisation** finds a *stationary point* — usually the *minimum* (an equilibrium geometry) — by iteratively following the forces until they fall below some tolerance (typically 10 meV/Å). The output is a single geometry and its energy. Algorithms: steepest descent, conjugate gradient, BFGS, L-BFGS. *Transition-state searc`h*' is the same idea but targets a saddle point. **Molecular dynamics (MD)** propagates the nuclei *classically* (Newton's second law) or *quantum-mechanically* (path-integral, ring-polymer) under the same BO surface, with a finite temperature. The output is a *trajectory* — a sequence of geometries over time, from which you can compute thermodynamic averages, diffusion constants, vibrational spectra, free energies. Algorithms: Verlet, Nose–Hoover, Langevin. Use the first for *geometries and energies*; use the second for *finite-temperature properties and dynamics*. **See:** [Chapter 09](/DFT-notes/dft-notes/chapter-09/) §9.2 (geometry optimisation), §9.4 (MD)"
+      - heading "C.9 — What does “SCF” mean and why does it sometimes not converge?" [level=3] [ref=e281]
+      - group [ref=e282]:
+        - generic "C.9 — What does \"SCF\" mean and why does it sometimes not converge?" [ref=e283]:
+          - strong [ref=e284]: C.9 — What does "SCF" mean and why does it sometimes not converge?
+        - text: "\"SCF\" stands for **self-consistent field** — the iterative loop that solves the Kohn–Sham (or Hartree–Fock) equations self-consistently (see B.6). A non-converging SCF is one of the most common practical headaches. Possible causes and fixes: | Symptom | Likely cause | Fix | |:--------|:-------------|:----| | Energy oscillates | Charge sloshing | Add more density mixing; switch to DIIS or Broyden | | Energy diverges | Too-aggressive mixing | Reduce mixing parameter (0.1–0.3) | | Stuck above the converged energy | Bad initial guess | Smaller basis first, then restart; try `lumos`' initial guess | | Converges to different energies for different starts | Multiple SCF solutions (rare) | Different starting density; increase mixing | | Converges, but forces are huge | Spin / occupation problem | Try spin-polarised; check occupations; try SMEARING | Most codes have a built-in \"SCF\" panel that lets you change the mixing parameter, the mixing history length, the diagonalisation algorithm, and the convergence tolerance. A non-converging SCF is *usually* a sign that the system is in a physically unusual state — open-shell, metallic, near-degenerate, broken-symmetry. Diagnose, don't just turn knobs. **See:** [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.6; [Chapter 03](/DFT-notes/dft-notes/chapter-03/) §3.11"
+      - heading "C.10 — What is smearing and when do I need it?" [level=3] [ref=e285]
+      - group [ref=e286]:
+        - generic "C.10 — What is smearing and when do I need it?" [ref=e287]:
+          - strong [ref=e288]: C.10 — What is smearing and when do I need it?
+        - text: "**Smearing** is a numerical trick that replaces the zero-temperature step function in the Fermi–Dirac occupation with a smooth function (Gaussian, Methfessel–Paxton, Fermi–Dirac with a finite , cold smearing). It is *necessary* for **metals**: the zero-temperature occupation discontinuity at makes the energy a non-smooth function of the Kohn–Sham potential, and the SCF loop struggles. Smearing also helps with **fractional occupations** in near-degenerate cases (HOMO–LUMO near zero, transition states). The price is that the energy you get is the *free energy*, not the ground-state energy, and the occupations are no longer 0 or 1. A pragmatic recipe: run with smearing (e.g. –0.1 eV) and **tight SCF**; **re-converge the final result without smearing** (or with a very small width), starting from the smeared density. For a *production* calculation of a metal, the converged zero-smearing energy is the right number to report. For an insulator or a molecule, you usually do not need any smearing at all. **See:** [Chapter 07](/DFT-notes/dft-notes/chapter-07/) §7.6.3; [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.6.5"
+      - separator [ref=e289]
+      - heading "D. Common pitfalls" [level=2] [ref=e290]
+      - paragraph [ref=e291]: The “I ran the calculation and got a weird result” questions. Read this section when (not if) something goes wrong.
+      - heading "D.1 — My band gap is too small — what’s wrong?" [level=3] [ref=e292]
+      - group [ref=e293]:
+        - generic "D.1 — My band gap is too small — what's wrong?" [ref=e294]:
+          - strong [ref=e295]: D.1 — My band gap is too small — what's wrong?
+        - text: "LDA and GGA functionals **systematically underestimate band gaps** of semiconductors and insulators by 30–50 % — this is not a bug, it is a *known feature* of semilocal approximations. The Kohn–Sham gap is *not* the fundamental gap (which is , the ionisation potential minus the electron affinity); the difference is the **derivative discontinuity** of , which is missing from semilocal functionals. Options to fix: **hybrid functionals** (PBE0, HSE06) add 25 % (or screened) exact exchange; HSE06 gaps are typically within 5–10 % of experiment for sp semiconductors. **Range-separated hybrids** (HSE06, B97X) for solids and molecules respectively. **DFT+U** for transition-metal oxides (adds an on-site Coulomb penalty to localised states). ** ** (many-body perturbation theory) for quantitative gaps and band structures; expensive. The first thing to try is HSE06 (solids) or PBE0 (molecules). If your gap is *zero* (metallic) when the material is known to be an insulator, check that you have a spin-polarised calculation *i`f*' the gap is correlation-driven (NiO, MnO). **See:** [Chapter 05](/DFT-notes/dft-notes/chapter-05/) §5.4 (hybrids), §5.5 (range-separated); [Chapter 11](/DFT-notes/dft-notes/chapter-11/) §11.4"
+      - heading "D.2 — My energy is not converged as I add more k-points — why?" [level=3] [ref=e296]
+      - group [ref=e297]:
+        - generic "D.2 — My energy is not converged as I add more k-points — why?" [ref=e298]:
+          - strong [ref=e299]: D.2 — My energy is not converged as I add more k-points — why?
+        - text: "Two common reasons. **1. You are computing a metal.** The integrand (density of states times occupation) is *discontinuous* at ; a finite k-mesh undersamples the Fermi surface, and the integrated quantities oscillate with mesh density. Two fixes: (a) **denser k-mesh** — a mesh is a starting point for unit-cell metals; (b) **smearing** with a finite electronic temperature, which smooths the integrand. **2. Your smearing width is too small** (or zero). A small smearing means the discontinuity is barely smoothed and you need a *very* fine k-mesh to converge. Use a larger smearing for the *convergence* run, then a tight-smearing final run. A diagnostic: plot total energy vs. k-mesh density on a log scale. For a metal, the curve should oscillate with *decreasing* amplitude as you refine the mesh; the envelope should follow a decay. For an insulator, the curve should be smooth and converge *exponentially* fast in . **See:** [Chapter 07](/DFT-notes/dft-notes/chapter-07/) §7.6; [Chapter 11](/DFT-notes/dft-notes/chapter-11/) §11.3"
+      - heading "D.3 — My geometry optimisation oscillates — what to do?" [level=3] [ref=e300]
+      - group [ref=e301]:
+        - generic "D.3 — My geometry optimisation oscillates — what to do?" [ref=e302]:
+          - strong [ref=e303]: D.3 — My geometry optimisation oscillates — what to do?
+        - text: "An oscillating optimisation is a *sign* that the algorithm is fighting the curvature of the potential energy surface. The most common causes: **The step size is too large** — try reducing the maximum step (in ASE: `fmax=0.05' eV/Å instead of `fmax=0.5`). **You are using steepest descent** — notoriously bad at handling anisotropic curvature; switch to **LBFGS** (default in ASE, VASP, Quantum ESPRESSO, CP2K). **The forces are not converged** — a force of 0.1 eV/Å is not accurate enough for tight geometry optimisation; converge the SCF to eV (not ). **You are near a saddle point** — the algorithm wants a minimum, but the geometry is closer to a transition state; try a different starting point, or use a transition-state search. **The unit cell is also relaxing** (cell optimisation) with the wrong optimiser; use the variable-cell LBFGS / BFGS, not steepest descent. If the oscillation is *periodi`c*' with two geometries alternating, you are probably bouncing back and forth across a saddle. Damp the step, or change the algorithm. **See:** [Chapter 09](/DFT-notes/dft-notes/chapter-09/) §9.3, §9.5; [Worked examples](/DFT-notes/dft-notes/extras/worked-examples/)"
+      - heading "D.4 — My forces are noisy — what gives?" [level=3] [ref=e304]
+      - group [ref=e305]:
+        - generic "D.4 — My forces are noisy — what gives?" [ref=e306]:
+          - strong [ref=e307]: D.4 — My forces are noisy — what gives?
+        - text: "\"Noisy\" forces — values that fluctuate by ~50 meV/Å or more between iterations, or that don't monotonically decrease in magnitude — have a few common culprits: **The SCF is not converge`d** — forces are gradients of the energy*; if the energy has eV noise, the forces have eV/Å noise. Tighten the SCF convergence. **The k-mesh is too coarse** — especially in metals, an insufficiently-converged BZ integral makes the energy a noisy function of the nuclear positions. **The smearing is too small** — forces with cold smearing are notoriously noisier than with Fermi–Dirac; switch smearing scheme if you are chasing micro-eV/Å accuracy. **The basis set is too small** — plane-wave: increase ; Gaussian: climb the basis-set ladder. **Symmetry breaking** — the structure is close to a high-symmetry point; tiny numerical errors pick a random lower-symmetry direction and the forces wiggle around it. A practical rule: if your forces are noisy at the 0.1 eV/Å level, do not trust the geometry. Re-converge *everything* and try again. **See:** [Chapter 09](/DFT-notes/dft-notes/chapter-09/) §9.1; [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.7"
+      - heading "D.5 — I get different results from different codes — why?" [level=3] [ref=e308]
+      - group [ref=e309]:
+        - generic "D.5 — I get different results from different codes — why?" [ref=e310]:
+          - strong [ref=e311]: D.5 — I get different results from different codes — why?
+        - text: "A \"different result\" can mean: - **Different total energy** (most common). This is *usually* a basis-set / cutoff / convergence issue, not a code bug. Make sure the inputs are *truly* the same: same functional, same basis (or converged basis), same k-mesh (or converged mesh), same smearing scheme, same SCF tolerance, same number of bands, same integration grid. Differences below the convergence threshold are normal; differences above it mean at least one code is wrong. - **Different geometry** (after \"optimisation\"). Most codes will find the same minimum *i`f*' the convergence parameters match; small ( Å) differences are normal; larger ones usually mean one of the calculations did not actually converge. - **Different gap / different orbital ordering**. Often a real physical difference — symmetry breaking, spin polarisation, metallic vs. insulating. *Check the occupations* and the *spin state in both codes. A pragmatic check: run the same system in two codes with *identical* inputs and confirm that the energies agree to better than 1 meV/atom. If they don't, one is wrong; *do not* average them. Cross-validation between codes is a *powerful* convergence test, because bugs that survive in one code rarely survive in two. **See:** [Software cheatsheet](/DFT-notes/dft-notes/extras/software-cheatsheet/); [Chapter 03](/DFT-notes/dft-notes/chapter-03/) §3.11"
+      - heading "D.6 — My calculation crashed with a cryptic error — what does it mean?" [level=3] [ref=e312]
+      - group [ref=e313]:
+        - generic "D.6 — My calculation crashed with a cryptic error — what does it mean?" [ref=e314]:
+          - strong [ref=e315]: D.6 — My calculation crashed with a cryptic error — what does it mean?
+        - text: "Cryptic error messages are a *symptom*, not a diagnosis. A few common ones and what they usually mean: | Message (loosely) | Likely meaning | |:------------------|:---------------| | 'zpotbr > 1000' (VASP), 'rho is negative' | Charge sloshing; SCF diverging. Tighten mixing, reduce , try a different starting density. | | `BRMIX: linear search failed' (VASP) | Same as above; the Kerker-style mixer cannot find a step that lowers the energy. | | 'subspacematrix not positive definite' (VASP) | Almost-empty bands / numerical instability in subspace diagonalisation. Try a different 'ALGO`, or add more bands. | | 'cannot orthogonalise' (CP2K) | Linear-dependency collapse in a Gaussian basis (very diffuse functions). Tighten the basis, or use 'EPS_DEFAULT`. | | 'SCF run did not converge' (ORCA) | As in C.9. Try 'SlowConv', 'DIIS', or change 'MAXITER`. | | `k-point fold > max' (Quantum ESPRESSO) | Lattice vectors are too small; the BZ is over-folded. Check the structure. | | 'poisson solver failed' (SIESTA, GPAW) | Bad initial guess; try 'DM.Init.State random' or `density_init`' from a previous run. | The pattern: read the *last* error, not the first; identify the *subsystem* (SCF, optimiser, diagonaliser); fix the *root cause*; do not just increase `MAXITER`. **See:** [Chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.6; [Software cheatsheet](/DFT-notes/dft-notes/extras/software-cheatsheet/)"
+      - separator [ref=e316]
+      - heading "E. Software" [level=2] [ref=e317]
+      - paragraph [ref=e318]:
+        - text: The “which code, and on which machine” questions. See the
+        - link "Software cheatsheet" [ref=e319] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/software-cheatsheet/
+        - text: for the full per-code profiles.
+      - heading "E.1 — Which DFT code should I use?" [level=3] [ref=e320]
+      - group [ref=e321]:
+        - generic "E.1 — Which DFT code should I use?" [ref=e322]:
+          - strong [ref=e323]: E.1 — Which DFT code should I use?
+        - text: "Match the code to the **boundary condition** and the **physics**: - **Molecules / clusters, ground-state DFT** — PySCF (open source, friendly), Psi4 (open source, production), ORCA (free for academics, strong on TM chemistry), Q-Chem (commercial, high-throughput), Gaussian (commercial, broad coverage). - **Periodic solids, plane-wave PAW** — VASP (commercial — see E.2), Quantum ESPRESSO (open source), CASTEP (commercial academic), ABINIT (open source). - **All-electron, full potential** — WIEN2k, Elk, FLEUR, FHI-aims, exciting. Needed for properties that depend on the core electrons (hyperfine, Mössbauer, -electron systems). - **Large systems (thousands of atoms)** — CP2K (Gaussian + plane wave), SIESTA (linear-scaling, real-space), GPAW (real-space grid, Python), BigDFT (wavelets). - **High-accuracy wavefunction (CCSD(T), FCI)** — MRCC, CFOUR, Psi4, PySCF. - **Workflow / automation** — ASE (Python front end), AiiDA (provenance + HPC), atomate, Fireworks. The [Software cheatsheet](/DFT-notes/dft-notes/extras/software-cheatsheet/) has full per-code profiles (licence, language, methods, when to use, when not to). **See:** [Software cheatsheet](/DFT-notes/dft-notes/extras/software-cheatsheet/) — all sections"
+      - heading "E.2 — Is VASP free?" [level=3] [ref=e324]
+      - group [ref=e325]:
+        - generic "E.2 — Is VASP free?" [ref=e326]:
+          - strong [ref=e327]: E.2 — Is VASP free?
+        - text: "**No.** VASP (Vienna Ab-initio Simulation Package) is **commercial software**, distributed under a paid licence by the VASP Software GmbH (University of Vienna). It is *not* open source; the source code is not available to non-licence-holders. Typical licence categories: **Academic licence** — paid annually, available to universities and non-profit research institutes. **Commercial licence** — paid, for industry. **Some national consorti`a*`* have site licences that cover every researcher at a participating institution — check with your local HPC centre. Open-source alternatives that cover the same physics: **Quantum ESPRESSO** (plane-wave PAW, very mature), **CASTEP** (commercial-academic), **ABINIT** (open source), **CP2K** (open source, GPW), **SIESTA** (open source, linear-scaling). Most of the methods VASP implements (PAW, hybrid functionals, DFPT, via WEST) are also implemented in Quantum ESPRESSO and ABINIT. **See:** [Software cheatsheet](/DFT-notes/dft-notes/extras/software-cheatsheet/) — \"Plane-wave / PAW codes\"; [Chapter 08](/DFT-notes/dft-notes/chapter-08/) §8.7"
+      - heading "E.3 — Where can I run DFT calculations for free?" [level=3] [ref=e328]
+      - group [ref=e329]:
+        - generic "E.3 — Where can I run DFT calculations for free?" [ref=e330]:
+          - strong [ref=e331]: E.3 — Where can I run DFT calculations for free?
+        - text: "Three kinds of free resource: **Free, open-source codes** that you install and run on your own machine or your institution's cluster: PySCF, Psi4, Quantum ESPRESSO, SIESTA, CP2K, GPAW, ABINIT, BigDFT, FHI-aims (academic). The code itself is free; the *compute* is whatever you can afford. **Free web interfaces** to commercial codes: some companies (Schrödinger, Q-Chem) offer a small number of free web-submitted jobs per month; useful for *exploration* but not for production. **Free national HPC allocations**: in many countries the national supercomputing centre has an open allocation track (e.g. XSEDE/ACCESS in the US, ARCHER in the UK, Jean-Zay in France, MareNostrum in Spain, JURECA in Germany). The compute is free; the *proposal* and the *queue* are the cost. **Free test allocations on cloud platforms** (AWS, GCP, Azure, Oracle Cloud) — typically 500 of free credit when you first sign up, enough for a few mid-sized DFT calculations. The catch: the \"free\" usually applies to the *code* or to the *allocation*, not to both. A VASP run on a free allocation is still not free; an open-source code on a paid cloud is also not free. **See:** [Software cheatsheet](/DFT-notes/dft-notes/extras/software-cheatsheet/) — \"Licence\" column"
+      - heading "E.4 — What’s a “PAW potential” vs a “pseudopotential”?" [level=3] [ref=e332]
+      - group [ref=e333]:
+        - generic "E.4 — What's a \"PAW potential\" vs a \"pseudopotential\"?" [ref=e334]:
+          - strong [ref=e335]: E.4 — What's a "PAW potential" vs a "pseudopotential"?
+        - text: A **pseudopotential** (norm-conserving or ultrasoft) replaces the strong nuclear Coulomb potential and the frozen core by a *smooth effective potential* that reproduces the valence wavefunction outside a cutoff radius . Inside the pseudo-wavefunction is *nodeless* (no core radial nodes) and is not the all-electron wavefunction; information about the core electrons is lost. A **PAW (projector augmented wave) potential** is a *transformation* (Blöchl, 1994) that maps the smooth pseudo-wavefunction back to the *true* all-electron wavefunction inside via a linear augmentation. In practice the user provides a *PAW dataset* (atom-centred partial waves, projectors, augmentation charges); the code applies the transformation. PAW retains the efficiency of ultrasoft pseudopotentials (small basis) while recovering the all-electron accuracy inside the augmentation sphere. In modern plane-wave codes (VASP, Quantum ESPRESSO, ABINIT, CASTEP) "PAW" is the default; "pseudopotential" in the old norm-conserving sense is the legacy option. The terms are often used interchangeably in casual conversation, but they are not the same thing. **See:** [Chapter 08](/DFT-notes/dft-notes/chapter-08/) §8.7 (PAW), §8.5 (ultrasoft), §8.3 (norm-conserving)
+      - heading "E.5 — How do I cite a DFT code in a paper?" [level=3] [ref=e336]
+      - group [ref=e337]:
+        - generic "E.5 — How do I cite a DFT code in a paper?" [ref=e338]:
+          - strong [ref=e339]: E.5 — How do I cite a DFT code in a paper?
+        - text: Every code has a *canonical citation* — usually a **methods paper** that you cite in addition to the code website. **VASP** — Kresse & Furthmüller (1996) *Comput. Mater. Sci.* **6**, 15; Kresse & Joubert (1999) *Phys. Rev. B* **59**, 1758 (for PAW). **Quantum ESPRESSO** — Giannozzi et al. (2009) *J. Phys. Condens. Matter* **21**, 395502; Giannozzi et al. (2017) *J. Phys. Condens. Matter* **29**, 465901. **CP2K** — Hutter et al. (2014) *WIREs Comput. Mol. Sci.* **4**, 15. **SIESTA** — Soler et al. (2002) *J. Phys. Condens. Matter* **14**, 2745. **ORCA** — Neese (2012) *WIREs Comput. Mol. Sci.* **2**, 73; Neese (2018) *WIREs Comput. Mol. Sci.* **8**, e1327. **Gaussian** — Frisch et al., *Gaussian 16 Revision C.01*, Gaussian Inc., 2016. **CASTEP** — Clark et al. (2005) *Z. Kristallogr.* **220**, 567. **PySCF** — Sun et al. (2018) *J. Chem. Phys.* **153**, 024109. Always cite the *version* (e.g. "VASP 6.3.0"), the *functional* (e.g. "PBE-D3"), the pseudopotential library (e.g. "PAW_PBE from the VASP library"), and the *convergence parameters* in the methods section. This is the most common source of irreproducibility in published DFT. **See:** [Software cheatsheet](/DFT-notes/dft-notes/extras/software-cheatsheet/) — "References" in each code profile; [Bibliography](/DFT-notes/dft-notes/extras/bibliography/)
+      - separator [ref=e340]
+      - heading "What this FAQ is not" [level=2] [ref=e341]
+      - paragraph [ref=e342]: "This page deliberately does not cover:"
+      - list [ref=e343]:
+        - listitem [ref=e344]:
+          - strong [ref=e345]: Derivation of the Hohenberg–Kohn theorem
+          - text: — see
+          - link "Chapter 04" [ref=e346] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.1.
+        - listitem [ref=e347]:
+          - strong [ref=e348]: Detailed XC functional derivations
+          - text: — see
+          - link "Chapter 05" [ref=e349] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: for LDA, GGA, meta-GGA, hybrid, range-separated, double-hybrid.
+        - listitem [ref=e350]:
+          - strong [ref=e351]: Implementation details of any specific code
+          - text: — see the
+          - link "Software cheatsheet" [ref=e352] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/software-cheatsheet/
+          - text: and the code’s manual.
+        - listitem [ref=e353]:
+          - strong [ref=e354]: The full list of DFT codes
+          - text: — the Software cheatsheet has nine categories; we mention six of them here.
+        - listitem [ref=e355]:
+          - strong [ref=e356]: Beyond-DFT methods in depth
+          - text: (
+          - img [ref=e358]
+          - text: ", BSE, DMFT, …) — see"
+          - link "Chapter 12" [ref=e365] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: (TDDFT) and
+          - link "Chapter 13" [ref=e366] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-13/
+          - text: (planned; beyond-DFT).
+      - paragraph [ref=e367]:
+        - text: If your question is not answered here, try the
+        - link "Notation glossary" [ref=e368] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+        - text: ", the"
+        - link "Math cheatsheet" [ref=e369] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+        - text: ", the"
+        - link "Software cheatsheet" [ref=e370] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/software-cheatsheet/
+        - text: ", the"
+        - link "Worked examples" [ref=e371] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/worked-examples/
+        - text: ", or the"
+        - link "Problems anthology" [ref=e372] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/problems/
+        - text: ". This page is maintained by `agent:docs-keeper’ and is open to additions."
+      - separator [ref=e373]
+      - blockquote [ref=e374]:
+        - paragraph [ref=e375]:
+          - text: Back to the
+          - link "chapter index" [ref=e376] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/
+          - text: or jump to the
+          - link "chapters map" [ref=e377] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapters-map/
+          - text: ". Related reference pages: the"
+          - link "Notation glossary" [ref=e378] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+          - text: ","
+          - link "Math cheatsheet" [ref=e379] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+          - text: ","
+          - link "Bibliography" [ref=e380] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/bibliography/
+          - text: ","
+          - link "Software cheatsheet" [ref=e381] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/software-cheatsheet/
+          - text: ","
+          - link "Worked examples" [ref=e382] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/worked-examples/
+          - text: ", and"
+          - link "Problems anthology" [ref=e383] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/problems/
+          - text: .
+  - contentinfo [ref=e384]:
+    - generic [ref=e385]:
+      - generic [ref=e386]:
+        - img [ref=e387]
+        - generic [ref=e391]: DFT Notes
+        - paragraph [ref=e392]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e393]:
+        - generic [ref=e394]:
+          - heading "Project" [level=3] [ref=e395]
+          - list [ref=e396]:
+            - listitem [ref=e397]:
+              - link "Chapters map" [ref=e398] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e399]:
+              - link "Python codes" [ref=e400] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e401]:
+              - link "Contributing" [ref=e402] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e403]:
+              - link "Security" [ref=e404] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e405]:
+              - link "Design spec" [ref=e406] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e407]:
+              - link "GitHub ↗" [ref=e408] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e409]:
+          - heading "Built with" [level=3] [ref=e410]
+          - list [ref=e411]:
+            - listitem [ref=e412]:
+              - link "Jekyll" [ref=e413] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e414]:
+              - link "MathJax 3" [ref=e415] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e416]:
+              - link "Mermaid" [ref=e417] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e418]:
+              - link "chenglou/pretext" [ref=e419] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e420]:
+              - link "Google Fonts" [ref=e421] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e422]:
+          - heading "Legal" [level=3] [ref=e423]
+          - list [ref=e424]:
+            - listitem [ref=e425]:
+              - link "MIT License" [ref=e426] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e427]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e429]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

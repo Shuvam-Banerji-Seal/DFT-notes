@@ -1,0 +1,1525 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - heading "Design Specification" [level=1] [ref=e26]
+    - blockquote [ref=e27]:
+      - paragraph [ref=e28]:
+        - strong [ref=e29]: "Stack:"
+        - text: Jekyll + MathJax 3 · Mermaid diagrams · Theme switcher (light + dark) · Pastel poppy-green / warm dark · Mobile-first · EB Garamond + Inter + JetBrains Mono
+    - separator [ref=e30]
+    - blockquote [ref=e31]:
+      - paragraph [ref=e32]:
+        - strong [ref=e33]: Iteration history
+        - text: — this document is the single source of truth and is updated as the site evolves. Older iterations stay below for reference.
+      - list [ref=e34]:
+        - listitem [ref=e35]:
+          - strong [ref=e36]: v1 (2026-06-14)
+          - text: — Claude/Anthropic design (cream + coral + dark navy, slab-serif display, humanist sans body). Single light theme, minima theme overridden. See git history.
+        - listitem [ref=e37]:
+          - strong [ref=e38]: v2 (this version)
+          - text: "— reading-friendly rebuild:"
+          - list [ref=e39]:
+            - listitem [ref=e40]:
+              - text: Palette shifted to
+              - strong [ref=e41]: pastel poppy green
+              - text: (light) and
+              - strong [ref=e42]: warm dark
+              - text: (dark) for long-session comfort. Coral retained as the brand accent.
+            - listitem [ref=e43]:
+              - strong [ref=e44]: Theme switcher
+              - text: with persistent preference (localStorage), no flash of wrong theme.
+            - listitem [ref=e45]:
+              - strong [ref=e46]: Wider reading column
+              - text: on large screens (max-width grows from 760px on mobile to 1100px on wide screens).
+            - listitem [ref=e47]:
+              - strong [ref=e48]: Marginalia rail
+              - text: for figure captions, side notes, and figure-with-caption blocks.
+            - listitem [ref=e49]:
+              - strong [ref=e50]: Mermaid diagrams
+              - text: supported via
+              - code [ref=e51]: "```mermaid"
+              - text: code fences, theme-aware.
+            - listitem [ref=e52]:
+              - strong [ref=e53]: Chapters map
+              - text: (
+              - code [ref=e54]: dft_notes/chapters-map.md
+              - text: ) — a live Mermaid graph of the whole knowledge base with hover details.
+            - listitem [ref=e55]:
+              - strong [ref=e56]: Python codes folder
+              - text: (
+              - code [ref=e57]: dft_notes/python_codes/
+              - text: ) — per-chapter subfolders with the same code that runs inside the chapters, plus generated plots.
+            - listitem [ref=e58]:
+              - strong [ref=e59]: Hidden answers
+              - text: via
+              - code [ref=e60]: <details><summary>
+              - text: for thought-provoking problems.
+            - listitem [ref=e61]:
+              - strong [ref=e62]: agents.md
+              - text: — the agent handbook documenting how everything is built and the parallel-research pattern.
+            - listitem [ref=e63]:
+              - strong [ref=e64]: Footer
+              - text: shrunk to four short link columns (Project / Built with / Legal / Contribute) — the chapter list lives in the
+              - strong [ref=e65]: chapters map
+              - text: and the nav, not the footer.
+    - separator [ref=e66]
+    - code [ref=e70]: "version: alpha name: Claude-design-analysis description: A warm-canvas editorial interface for Anthropic's Claude product. The system anchors on a tinted cream canvas with serif display headlines, warm coral CTAs, and dark navy product surfaces (code editor mockups, model showcase cards). Brand voltage comes from the cream/coral pairing — deliberately warm and humanist where most AI brands use cool blue + slate. Type voice runs a slab-serif display (\"Copernicus\" / Tiempos Headline) for h1/h2 and a humanist sans for body. The signature Anthropic black-radial-spike mark anchors the wordmark. colors: primary: \"#cc785c\" primary-active: \"#a9583e\" primary-disabled: \"#e6dfd8\" ink: \"#141413\" body: \"#3d3d3a\" body-strong: \"#252523\" muted: \"#6c6a64\" muted-soft: \"#8e8b82\" hairline: \"#e6dfd8\" hairline-soft: \"#ebe6df\" canvas: \"#faf9f5\" surface-soft: \"#f5f0e8\" surface-card: \"#efe9de\" surface-cream-strong: \"#e8e0d2\" surface-dark: \"#181715\" surface-dark-elevated: \"#252320\" surface-dark-soft: \"#1f1e1b\" on-primary: \"#ffffff\" on-dark: \"#faf9f5\" on-dark-soft: \"#a09d96\" accent-teal: \"#5db8a6\" accent-amber: \"#e8a55a\" success: \"#5db872\" warning: \"#d4a017\" error: \"#c64545\" typography: display-xl: fontFamily: \"Copernicus, Tiempos Headline, serif\" fontSize: 64px fontWeight: 400 lineHeight: 1.05 letterSpacing: -1.5px display-lg: fontFamily: \"Copernicus, Tiempos Headline, serif\" fontSize: 48px fontWeight: 400 lineHeight: 1.1 letterSpacing: -1px display-md: fontFamily: \"Copernicus, Tiempos Headline, serif\" fontSize: 36px fontWeight: 400 lineHeight: 1.15 letterSpacing: -0.5px display-sm: fontFamily: \"Copernicus, Tiempos Headline, serif\" fontSize: 28px fontWeight: 400 lineHeight: 1.2 letterSpacing: -0.3px title-lg: fontFamily: \"StyreneB, Inter, sans-serif\" fontSize: 22px fontWeight: 500 lineHeight: 1.3 letterSpacing: 0 title-md: fontFamily: \"StyreneB, Inter, sans-serif\" fontSize: 18px fontWeight: 500 lineHeight: 1.4 letterSpacing: 0 title-sm: fontFamily: \"StyreneB, Inter, sans-serif\" fontSize: 16px fontWeight: 500 lineHeight: 1.4 letterSpacing: 0 body-md: fontFamily: \"StyreneB, Inter, sans-serif\" fontSize: 16px fontWeight: 400 lineHeight: 1.55 letterSpacing: 0 body-sm: fontFamily: \"StyreneB, Inter, sans-serif\" fontSize: 14px fontWeight: 400 lineHeight: 1.55 letterSpacing: 0 caption: fontFamily: \"StyreneB, Inter, sans-serif\" fontSize: 13px fontWeight: 500 lineHeight: 1.4 letterSpacing: 0 caption-uppercase: fontFamily: \"StyreneB, Inter, sans-serif\" fontSize: 12px fontWeight: 500 lineHeight: 1.4 letterSpacing: 1.5px code: fontFamily: \"JetBrains Mono, ui-monospace, monospace\" fontSize: 14px fontWeight: 400 lineHeight: 1.6 letterSpacing: 0 button: fontFamily: \"StyreneB, Inter, sans-serif\" fontSize: 14px fontWeight: 500 lineHeight: 1 letterSpacing: 0 nav-link: fontFamily: \"StyreneB, Inter, sans-serif\" fontSize: 14px fontWeight: 500 lineHeight: 1.4 letterSpacing: 0 rounded: xs: 4px sm: 6px md: 8px lg: 12px xl: 16px pill: 9999px full: 9999px spacing: xxs: 4px xs: 8px sm: 12px md: 16px lg: 24px xl: 32px xxl: 48px section: 96px components: button-primary: backgroundColor: \"{colors.primary}\" textColor: \"{colors.on-primary}\" typography: \"{typography.button}\" rounded: \"{rounded.md}\" padding: 12px 20px height: 40px button-primary-active: backgroundColor: \"{colors.primary-active}\" textColor: \"{colors.on-primary}\" rounded: \"{rounded.md}\" button-primary-disabled: backgroundColor: \"{colors.primary-disabled}\" textColor: \"{colors.muted}\" rounded: \"{rounded.md}\" button-secondary: backgroundColor: \"{colors.canvas}\" textColor: \"{colors.ink}\" typography: \"{typography.button}\" rounded: \"{rounded.md}\" padding: 12px 20px height: 40px button-secondary-on-dark: backgroundColor: \"{colors.surface-dark-elevated}\" textColor: \"{colors.on-dark}\" typography: \"{typography.button}\" rounded: \"{rounded.md}\" padding: 12px 20px button-text-link: backgroundColor: transparent textColor: \"{colors.ink}\" typography: \"{typography.button}\" button-icon-circular: backgroundColor: \"{colors.canvas}\" textColor: \"{colors.ink}\" rounded: \"{rounded.full}\" size: 36px text-link: backgroundColor: transparent textColor: \"{colors.primary}\" typography: \"{typography.body-md}\" top-nav: backgroundColor: \"{colors.canvas}\" textColor: \"{colors.ink}\" typography: \"{typography.nav-link}\" height: 64px hero-band: backgroundColor: \"{colors.canvas}\" textColor: \"{colors.ink}\" typography: \"{typography.display-xl}\" padding: 96px hero-illustration-card: backgroundColor: \"{colors.canvas}\" textColor: \"{colors.ink}\" rounded: \"{rounded.xl}\" feature-card: backgroundColor: \"{colors.surface-card}\" textColor: \"{colors.ink}\" typography: \"{typography.title-md}\" rounded: \"{rounded.lg}\" padding: 32px product-mockup-card-dark: backgroundColor: \"{colors.surface-dark}\" textColor: \"{colors.on-dark}\" typography: \"{typography.title-md}\" rounded: \"{rounded.lg}\" padding: 32px code-window-card: backgroundColor: \"{colors.surface-dark}\" textColor: \"{colors.on-dark}\" typography: \"{typography.code}\" rounded: \"{rounded.lg}\" padding: 24px model-comparison-card: backgroundColor: \"{colors.canvas}\" textColor: \"{colors.ink}\" typography: \"{typography.title-md}\" rounded: \"{rounded.lg}\" padding: 32px pricing-tier-card: backgroundColor: \"{colors.canvas}\" textColor: \"{colors.ink}\" typography: \"{typography.title-lg}\" rounded: \"{rounded.lg}\" padding: 32px pricing-tier-card-featured: backgroundColor: \"{colors.surface-dark}\" textColor: \"{colors.on-dark}\" typography: \"{typography.title-lg}\" rounded: \"{rounded.lg}\" padding: 32px callout-card-coral: backgroundColor: \"{colors.primary}\" textColor: \"{colors.on-primary}\" typography: \"{typography.title-md}\" rounded: \"{rounded.lg}\" padding: 32px connector-tile: backgroundColor: \"{colors.canvas}\" textColor: \"{colors.ink}\" typography: \"{typography.title-sm}\" rounded: \"{rounded.lg}\" padding: 20px text-input: backgroundColor: \"{colors.canvas}\" textColor: \"{colors.ink}\" typography: \"{typography.body-md}\" rounded: \"{rounded.md}\" padding: 10px 14px height: 40px text-input-focused: backgroundColor: \"{colors.canvas}\" textColor: \"{colors.ink}\" rounded: \"{rounded.md}\" cookie-consent-card: backgroundColor: \"{colors.surface-dark}\" textColor: \"{colors.on-dark}\" typography: \"{typography.body-sm}\" rounded: \"{rounded.lg}\" padding: 24px category-tab: backgroundColor: transparent textColor: \"{colors.muted}\" typography: \"{typography.nav-link}\" padding: 8px 14px rounded: \"{rounded.md}\" category-tab-active: backgroundColor: \"{colors.surface-card}\" textColor: \"{colors.ink}\" typography: \"{typography.nav-link}\" rounded: \"{rounded.md}\" badge-pill: backgroundColor: \"{colors.surface-card}\" textColor: \"{colors.ink}\" typography: \"{typography.caption}\" rounded: \"{rounded.pill}\" padding: 4px 12px badge-coral: backgroundColor: \"{colors.primary}\" textColor: \"{colors.on-primary}\" typography: \"{typography.caption-uppercase}\" rounded: \"{rounded.pill}\" padding: 4px 12px cta-band-coral: backgroundColor: \"{colors.primary}\" textColor: \"{colors.on-primary}\" typography: \"{typography.display-sm}\" rounded: \"{rounded.lg}\" padding: 64px cta-band-dark: backgroundColor: \"{colors.surface-dark}\" textColor: \"{colors.on-dark}\" typography: \"{typography.display-sm}\" rounded: \"{rounded.lg}\" padding: 64px footer: backgroundColor: \"{colors.surface-dark}\" textColor: \"{colors.on-dark-soft}\" typography: \"{typography.body-sm}\" padding: 64px"
+    - separator [ref=e71]
+    - heading "Overview" [level=2] [ref=e72]
+    - paragraph [ref=e73]:
+      - text: Claude.com is the warmest, most editorial interface in the AI-product category. The base atmosphere is a
+      - strong [ref=e74]: tinted cream canvas
+      - text: (
+      - code [ref=e75]: "{colors.canvas}"
+      - text: "— #faf9f5) — distinctly warm, deliberately not the cool gray-white that every other AI brand uses. Headlines run a"
+      - strong [ref=e76]: slab-serif display
+      - text: (“Copernicus” / Tiempos Headline) at weight 400 with negative letter-spacing, paired with
+      - strong [ref=e77]: StyreneB / Inter
+      - text: body sans. The combination feels like a literary publication, not a SaaS marketing page.
+    - paragraph [ref=e78]:
+      - text: Brand voltage comes from the
+      - strong [ref=e79]: cream + coral pairing
+      - text: — coral (
+      - code [ref=e80]: "{colors.primary}"
+      - text: "— #cc785c) is the signature Anthropic accent, used on every primary CTA, on the brand wordmark, and on full-bleed callout cards. The coral is warm, slightly muted, never cyan/blue — a deliberate counter-positioning against OpenAI’s cool slate, Google’s saturated blue, and Microsoft’s corporate cyan."
+    - paragraph [ref=e81]: "The system has three surface modes that alternate page-by-page:"
+    - list [ref=e82]:
+      - listitem [ref=e83]:
+        - strong [ref=e84]: Cream canvas
+        - text: (
+        - code [ref=e85]: "{colors.canvas}"
+        - text: ) — default body floor
+      - listitem [ref=e86]:
+        - strong [ref=e87]: Light cream cards
+        - text: (
+        - code [ref=e88]: "{colors.surface-card}"
+        - text: ) — feature card backgrounds
+      - listitem [ref=e89]:
+        - strong [ref=e90]: Dark navy product surfaces
+        - text: (
+        - code [ref=e91]: "{colors.surface-dark}"
+        - text: ) — code editor mockups, model showcase cards, pre-footer CTAs, footer itself
+    - paragraph [ref=e92]: The dark surfaces are where Claude shows its product chrome — code blocks, terminal output, model comparison tables, agentic-flow diagrams. The cream-to-dark contrast is the page’s pacing rhythm.
+    - paragraph [ref=e93]:
+      - strong [ref=e94]: "Key Characteristics:"
+    - list [ref=e95]:
+      - listitem [ref=e96]:
+        - text: Warm cream canvas (
+        - code [ref=e97]: "{colors.canvas}"
+        - text: "— #faf9f5) with dark warm-ink text ("
+        - code [ref=e98]: "{colors.ink}"
+        - text: "— #141413). The brand’s defining color choice."
+      - listitem [ref=e99]:
+        - text: Coral primary CTA (
+        - code [ref=e100]: "{colors.primary}"
+        - text: "— #cc785c). Used scarcely on individual buttons, generously on full-bleed coral callout cards."
+      - listitem [ref=e101]: Slab-serif display headlines via Copernicus / Tiempos Headline at weight 400 with negative letter-spacing. Pairs with humanist sans body for a literary editorial voice.
+      - listitem [ref=e102]:
+        - text: Dark navy product mockup cards (
+        - code [ref=e103]: "{colors.surface-dark}"
+        - text: "— #181715) carrying code blocks, terminal panels, model comparison data — the brand shows the product chrome at scale rather than abstract marketing illustrations."
+      - listitem [ref=e104]:
+        - text: Light cream feature cards (
+        - code [ref=e105]: "{colors.surface-card}"
+        - text: "— #efe9de) — slightly darker than canvas, used for content-driven feature explanations."
+      - listitem [ref=e106]: Anthropic radial-spike mark — a small black asterisk-like glyph (4-spoke radial) — appears as the brand wordmark prefix and as a content marker.
+      - listitem [ref=e107]:
+        - text: "Border radius is hierarchical:"
+        - code [ref=e108]: "{rounded.md}"
+        - text: (8px) for buttons + inputs,
+        - code [ref=e109]: "{rounded.lg}"
+        - text: (12px) for content + product cards,
+        - code [ref=e110]: "{rounded.xl}"
+        - text: (16px) for the hero illustration container,
+        - code [ref=e111]: "{rounded.pill}"
+        - text: for badges.
+      - listitem [ref=e112]:
+        - text: Section rhythm
+        - code [ref=e113]: "{spacing.section}"
+        - text: (96px) — modern-SaaS standard. Internal card padding stays generous at
+        - code [ref=e114]: "{spacing.xl}"
+        - text: (32px).
+    - heading "Note on Font Substitutes (we use on this site)" [level=3] [ref=e115]
+    - paragraph [ref=e116]: "Copernicus and StyreneB are licensed Anthropic typefaces and not available as public web fonts. On this site we substitute with the closest open-source matches that preserve the editorial voice:"
+    - table [ref=e117]:
+      - rowgroup [ref=e118]:
+        - row "Role Spec (licensed) We use Why" [ref=e119]:
+          - columnheader "Role" [ref=e120]
+          - columnheader "Spec (licensed)" [ref=e121]
+          - columnheader "We use" [ref=e122]
+          - columnheader "Why" [ref=e123]
+      - rowgroup [ref=e124]:
+        - row "Display Copernicus / Tiempos Headline EB Garamond(400, 500) The closest open-source editorial serif; refined, period-correct feel; loads from Google Fonts" [ref=e125]:
+          - cell "Display" [ref=e126]
+          - cell "Copernicus / Tiempos Headline" [ref=e127]
+          - cell "EB Garamond(400, 500)" [ref=e128]:
+            - strong [ref=e129]: EB Garamond
+            - text: (400, 500)
+          - cell "The closest open-source editorial serif; refined, period-correct feel; loads from Google Fonts" [ref=e130]
+        - row "Body StyreneB Inter(400, 500, 600) Humanist sans designed for screen reading; identical proportions to StyreneB at body sizes" [ref=e131]:
+          - cell "Body" [ref=e132]
+          - cell "StyreneB" [ref=e133]
+          - cell "Inter(400, 500, 600)" [ref=e134]:
+            - strong [ref=e135]: Inter
+            - text: (400, 500, 600)
+          - cell "Humanist sans designed for screen reading; identical proportions to StyreneB at body sizes" [ref=e136]
+        - row "Code JetBrains Mono JetBrains Mono(400) Already the spec’s monospace; available on Google Fonts" [ref=e137]:
+          - cell "Code" [ref=e138]
+          - cell "JetBrains Mono" [ref=e139]
+          - cell "JetBrains Mono(400)" [ref=e140]:
+            - strong [ref=e141]: JetBrains Mono
+            - text: (400)
+          - cell "Already the spec’s monospace; available on Google Fonts" [ref=e142]
+    - paragraph [ref=e143]:
+      - text: For the display font, the spec recommends
+      - strong [ref=e144]: Cormorant Garamond
+      - text: at weight 500 with
+      - code [ref=e145]: "-0.02em"
+      - text: letter-spacing as the primary substitute; we use EB Garamond because it has a slightly wider x-height that reads better at small sizes, but the visual character is the same family. If you’d prefer Cormorant, swap the
+      - code [ref=e146]: "--font-display"
+      - text: CSS variable in
+      - code [ref=e147]: assets/css/site.css
+      - text: to
+      - code [ref=e148]: "\"Cormorant Garamond\", ..."
+      - text: and update the Google Fonts link in
+      - code [ref=e149]: _includes/head.html
+      - text: .
+    - heading "Colors" [level=2] [ref=e150]
+    - heading "Brand & Accent" [level=3] [ref=e151]
+    - list [ref=e152]:
+      - listitem [ref=e153]:
+        - strong [ref=e154]: Coral / Primary
+        - text: (
+        - code [ref=e155]: "{colors.primary}"
+        - text: "— #cc785c): The signature Anthropic warm coral. Used on every primary CTA background, on full-bleed coral callout cards, on the brand wordmark accent. The most-recognized Anthropic color outside of the spike-mark logo."
+      - listitem [ref=e156]:
+        - strong [ref=e157]: Coral Active
+        - text: (
+        - code [ref=e158]: "{colors.primary-active}"
+        - text: "— #a9583e): The press / hover-darker variant."
+      - listitem [ref=e159]:
+        - strong [ref=e160]: Coral Disabled
+        - text: (
+        - code [ref=e161]: "{colors.primary-disabled}"
+        - text: "— #e6dfd8): A desaturated cream-tinted disabled state."
+      - listitem [ref=e162]:
+        - strong [ref=e163]: Accent Teal
+        - text: (
+        - code [ref=e164]: "{colors.accent-teal}"
+        - text: "— #5db8a6): Used sparingly on secondary product surfaces (terminal status indicators, “active connection” dots in connectors page)."
+      - listitem [ref=e165]:
+        - strong [ref=e166]: Accent Amber
+        - text: (
+        - code [ref=e167]: "{colors.accent-amber}"
+        - text: "— #e8a55a): A small companion warm-tone used on category badges and inline highlights."
+    - heading "Surface" [level=3] [ref=e168]
+    - list [ref=e169]:
+      - listitem [ref=e170]:
+        - strong [ref=e171]: Canvas
+        - text: (
+        - code [ref=e172]: "{colors.canvas}"
+        - text: "— #faf9f5): The default page floor. Tinted cream — warm, deliberately not pure white."
+      - listitem [ref=e173]:
+        - strong [ref=e174]: Surface Soft
+        - text: (
+        - code [ref=e175]: "{colors.surface-soft}"
+        - text: "— #f5f0e8): Section dividers, very-soft band backgrounds."
+      - listitem [ref=e176]:
+        - strong [ref=e177]: Surface Card
+        - text: (
+        - code [ref=e178]: "{colors.surface-card}"
+        - text: "— #efe9de): Feature cards, content cards. One step darker than canvas."
+      - listitem [ref=e179]:
+        - strong [ref=e180]: Surface Cream Strong
+        - text: (
+        - code [ref=e181]: "{colors.surface-cream-strong}"
+        - text: "— #e8e0d2): A strongest-cream variant used on selected category tabs and emphasized section bands."
+      - listitem [ref=e182]:
+        - strong [ref=e183]: Surface Dark
+        - text: (
+        - code [ref=e184]: "{colors.surface-dark}"
+        - text: "— #181715): Code editor mockups, model showcase cards, footer. The dominant dark surface."
+      - listitem [ref=e185]:
+        - strong [ref=e186]: Surface Dark Elevated
+        - text: (
+        - code [ref=e187]: "{colors.surface-dark-elevated}"
+        - text: "— #252320): Elevated cards inside dark bands (settings panels in mockups)."
+      - listitem [ref=e188]:
+        - strong [ref=e189]: Surface Dark Soft
+        - text: (
+        - code [ref=e190]: "{colors.surface-dark-soft}"
+        - text: "— #1f1e1b): Slightly lighter dark, used for code block backgrounds inside larger dark cards."
+      - listitem [ref=e191]:
+        - strong [ref=e192]: Hairline
+        - text: (
+        - code [ref=e193]: "{colors.hairline}"
+        - text: "— #e6dfd8): The 1px border tone on cream surfaces. Same hex as"
+        - code [ref=e194]: "{colors.primary-disabled}"
+        - text: — borders feel like one elevation step rather than ink lines.
+      - listitem [ref=e195]:
+        - strong [ref=e196]: Hairline Soft
+        - text: (
+        - code [ref=e197]: "{colors.hairline-soft}"
+        - text: "— #ebe6df): Barely-visible divider used inside the same band."
+    - heading "Text" [level=3] [ref=e198]
+    - list [ref=e199]:
+      - listitem [ref=e200]:
+        - strong [ref=e201]: Ink
+        - text: (
+        - code [ref=e202]: "{colors.ink}"
+        - text: "— #141413): All headlines and primary text. Warm dark, slightly off-pure-black."
+      - listitem [ref=e203]:
+        - strong [ref=e204]: Body Strong
+        - text: (
+        - code [ref=e205]: "{colors.body-strong}"
+        - text: "— #252523): Emphasized paragraphs, lead text."
+      - listitem [ref=e206]:
+        - strong [ref=e207]: Body
+        - text: (
+        - code [ref=e208]: "{colors.body}"
+        - text: "— #3d3d3a): Default running-text color."
+      - listitem [ref=e209]:
+        - strong [ref=e210]: Muted
+        - text: (
+        - code [ref=e211]: "{colors.muted}"
+        - text: "— #6c6a64): Sub-headings, breadcrumbs, footer-adjacent secondary text."
+      - listitem [ref=e212]:
+        - strong [ref=e213]: Muted Soft
+        - text: (
+        - code [ref=e214]: "{colors.muted-soft}"
+        - text: "— #8e8b82): Captions, fine-print, copyright lines."
+      - listitem [ref=e215]:
+        - strong [ref=e216]: On Primary
+        - text: (
+        - code [ref=e217]: "{colors.on-primary}"
+        - text: "— #ffffff): Text on coral buttons."
+      - listitem [ref=e218]:
+        - strong [ref=e219]: On Dark
+        - text: (
+        - code [ref=e220]: "{colors.on-dark}"
+        - text: "— #faf9f5): Cream-tinted white used on dark surfaces (echoes the canvas tone)."
+      - listitem [ref=e221]:
+        - strong [ref=e222]: On Dark Soft
+        - text: (
+        - code [ref=e223]: "{colors.on-dark-soft}"
+        - text: "— #a09d96): Footer body text, secondary labels in dark mockups."
+    - heading "Semantic" [level=3] [ref=e224]
+    - list [ref=e225]:
+      - listitem [ref=e226]:
+        - strong [ref=e227]: Success
+        - text: (
+        - code [ref=e228]: "{colors.success}"
+        - text: "— #5db872): Green status dots, “available” indicators."
+      - listitem [ref=e229]:
+        - strong [ref=e230]: Warning
+        - text: (
+        - code [ref=e231]: "{colors.warning}"
+        - text: "— #d4a017): Warning callouts (rare on marketing surfaces)."
+      - listitem [ref=e232]:
+        - strong [ref=e233]: Error
+        - text: (
+        - code [ref=e234]: "{colors.error}"
+        - text: "— #c64545): Validation errors."
+    - heading "Typography" [level=2] [ref=e235]
+    - heading "Font Family" [level=3] [ref=e236]
+    - paragraph [ref=e237]:
+      - text: The system runs
+      - strong [ref=e238]: Copernicus
+      - text: (or
+      - strong [ref=e239]: Tiempos Headline
+      - text: as substitute) as the slab-serif display face for headlines, and
+      - strong [ref=e240]: StyreneB
+      - text: (or
+      - strong [ref=e241]: Inter
+      - text: as substitute) as the humanist sans for body, navigation, and UI labels.
+      - strong [ref=e242]: JetBrains Mono
+      - text: handles code blocks. The fallback stack walks
+      - code [ref=e243]: Tiempos Headline, Garamond, "Times New Roman", serif
+      - text: for display and
+      - code [ref=e244]: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif
+      - text: for body.
+    - paragraph [ref=e245]: "The display/body split is editorial:"
+    - list [ref=e246]:
+      - listitem [ref=e247]: Copernicus serif (weight 400, negative tracking) → h1, h2, h3, hero display
+      - listitem [ref=e248]: StyreneB sans (weight 400-500) → body, navigation, buttons, captions, labels
+      - listitem [ref=e249]: JetBrains Mono → all code blocks and terminal text
+    - heading "Hierarchy" [level=3] [ref=e250]
+    - table [ref=e251]:
+      - rowgroup [ref=e252]:
+        - row "Token Size Weight Line Height Letter Spacing Use" [ref=e253]:
+          - columnheader "Token" [ref=e254]
+          - columnheader "Size" [ref=e255]
+          - columnheader "Weight" [ref=e256]
+          - columnheader "Line Height" [ref=e257]
+          - columnheader "Letter Spacing" [ref=e258]
+          - columnheader "Use" [ref=e259]
+      - rowgroup [ref=e260]:
+        - 'row "{typography.display-xl} 64px 400 1.05 -1.5px Homepage h1 (“Meet your thinking partner”) — Copernicus serif" [ref=e261]':
+          - 'cell "{typography.display-xl}" [ref=e262]':
+            - code [ref=e263]: "{typography.display-xl}"
+          - cell "64px" [ref=e264]
+          - cell "400" [ref=e265]
+          - cell "1.05" [ref=e266]
+          - cell "-1.5px" [ref=e267]
+          - cell "Homepage h1 (“Meet your thinking partner”) — Copernicus serif" [ref=e268]
+        - 'row "{typography.display-lg} 48px 400 1.1 -1px Section heads — Copernicus" [ref=e269]':
+          - 'cell "{typography.display-lg}" [ref=e270]':
+            - code [ref=e271]: "{typography.display-lg}"
+          - cell "48px" [ref=e272]
+          - cell "400" [ref=e273]
+          - cell "1.1" [ref=e274]
+          - cell "-1px" [ref=e275]
+          - cell "Section heads — Copernicus" [ref=e276]
+        - 'row "{typography.display-md} 36px 400 1.15 -0.5px Sub-section heads, model names — Copernicus" [ref=e277]':
+          - 'cell "{typography.display-md}" [ref=e278]':
+            - code [ref=e279]: "{typography.display-md}"
+          - cell "36px" [ref=e280]
+          - cell "400" [ref=e281]
+          - cell "1.15" [ref=e282]
+          - cell "-0.5px" [ref=e283]
+          - cell "Sub-section heads, model names — Copernicus" [ref=e284]
+        - 'row "{typography.display-sm} 28px 400 1.2 -0.3px Pricing tier names, callout headlines — Copernicus" [ref=e285]':
+          - 'cell "{typography.display-sm}" [ref=e286]':
+            - code [ref=e287]: "{typography.display-sm}"
+          - cell "28px" [ref=e288]
+          - cell "400" [ref=e289]
+          - cell "1.2" [ref=e290]
+          - cell "-0.3px" [ref=e291]
+          - cell "Pricing tier names, callout headlines — Copernicus" [ref=e292]
+        - 'row "{typography.title-lg} 22px 500 1.3 0 Pricing plan size labels — StyreneB" [ref=e293]':
+          - 'cell "{typography.title-lg}" [ref=e294]':
+            - code [ref=e295]: "{typography.title-lg}"
+          - cell "22px" [ref=e296]
+          - cell "500" [ref=e297]
+          - cell "1.3" [ref=e298]
+          - cell "0" [ref=e299]
+          - cell "Pricing plan size labels — StyreneB" [ref=e300]
+        - 'row "{typography.title-md} 18px 500 1.4 0 Feature card titles, intro paragraphs" [ref=e301]':
+          - 'cell "{typography.title-md}" [ref=e302]':
+            - code [ref=e303]: "{typography.title-md}"
+          - cell "18px" [ref=e304]
+          - cell "500" [ref=e305]
+          - cell "1.4" [ref=e306]
+          - cell "0" [ref=e307]
+          - cell "Feature card titles, intro paragraphs" [ref=e308]
+        - 'row "{typography.title-sm} 16px 500 1.4 0 Connector tile titles, list labels" [ref=e309]':
+          - 'cell "{typography.title-sm}" [ref=e310]':
+            - code [ref=e311]: "{typography.title-sm}"
+          - cell "16px" [ref=e312]
+          - cell "500" [ref=e313]
+          - cell "1.4" [ref=e314]
+          - cell "0" [ref=e315]
+          - cell "Connector tile titles, list labels" [ref=e316]
+        - 'row "{typography.body-md} 16px 400 1.55 0 Default running-text — StyreneB" [ref=e317]':
+          - 'cell "{typography.body-md}" [ref=e318]':
+            - code [ref=e319]: "{typography.body-md}"
+          - cell "16px" [ref=e320]
+          - cell "400" [ref=e321]
+          - cell "1.55" [ref=e322]
+          - cell "0" [ref=e323]
+          - cell "Default running-text — StyreneB" [ref=e324]
+        - 'row "{typography.body-sm} 14px 400 1.55 0 Footer body, fine-print" [ref=e325]':
+          - 'cell "{typography.body-sm}" [ref=e326]':
+            - code [ref=e327]: "{typography.body-sm}"
+          - cell "14px" [ref=e328]
+          - cell "400" [ref=e329]
+          - cell "1.55" [ref=e330]
+          - cell "0" [ref=e331]
+          - cell "Footer body, fine-print" [ref=e332]
+        - 'row "{typography.caption} 13px 500 1.4 0 Badge labels, captions" [ref=e333]':
+          - 'cell "{typography.caption}" [ref=e334]':
+            - code [ref=e335]: "{typography.caption}"
+          - cell "13px" [ref=e336]
+          - cell "500" [ref=e337]
+          - cell "1.4" [ref=e338]
+          - cell "0" [ref=e339]
+          - cell "Badge labels, captions" [ref=e340]
+        - 'row "{typography.caption-uppercase} 12px 500 1.4 1.5px Category tags, “NEW” badges" [ref=e341]':
+          - 'cell "{typography.caption-uppercase}" [ref=e342]':
+            - code [ref=e343]: "{typography.caption-uppercase}"
+          - cell "12px" [ref=e344]
+          - cell "500" [ref=e345]
+          - cell "1.4" [ref=e346]
+          - cell "1.5px" [ref=e347]
+          - cell "Category tags, “NEW” badges" [ref=e348]
+        - 'row "{typography.code} 14px 400 1.6 0 Code blocks — JetBrains Mono" [ref=e349]':
+          - 'cell "{typography.code}" [ref=e350]':
+            - code [ref=e351]: "{typography.code}"
+          - cell "14px" [ref=e352]
+          - cell "400" [ref=e353]
+          - cell "1.6" [ref=e354]
+          - cell "0" [ref=e355]
+          - cell "Code blocks — JetBrains Mono" [ref=e356]
+        - 'row "{typography.button} 14px 500 1.0 0 Standard button labels" [ref=e357]':
+          - 'cell "{typography.button}" [ref=e358]':
+            - code [ref=e359]: "{typography.button}"
+          - cell "14px" [ref=e360]
+          - cell "500" [ref=e361]
+          - cell "1.0" [ref=e362]
+          - cell "0" [ref=e363]
+          - cell "Standard button labels" [ref=e364]
+        - 'row "{typography.nav-link} 14px 500 1.4 0 Top-nav menu items" [ref=e365]':
+          - 'cell "{typography.nav-link}" [ref=e366]':
+            - code [ref=e367]: "{typography.nav-link}"
+          - cell "14px" [ref=e368]
+          - cell "500" [ref=e369]
+          - cell "1.4" [ref=e370]
+          - cell "0" [ref=e371]
+          - cell "Top-nav menu items" [ref=e372]
+    - heading "Principles" [level=3] [ref=e373]
+    - paragraph [ref=e374]: Display sizes use weight 400 (regular), never bold. Negative letter-spacing (-0.3 to -1.5px) is essential — Copernicus without it reads as off-brand. The serif character is what gives Anthropic its literary, considered voice; switching to a sans-serif display would make Claude feel like every other AI tool.
+    - paragraph [ref=e375]: Body type stays at weight 400 for paragraphs, weight 500 for labels and emphasized phrases. The sans body is humanist (StyreneB) — never geometric. Inter is an acceptable substitute because of its similar humanist proportions; Helvetica or Arial would be too neutral and break the warm-editorial feel.
+    - heading "Layout" [level=2] [ref=e376]
+    - heading "Spacing System" [level=3] [ref=e377]
+    - list [ref=e378]:
+      - listitem [ref=e379]:
+        - strong [ref=e380]: "Base unit:"
+        - text: 4px.
+      - listitem [ref=e381]:
+        - strong [ref=e382]: "Tokens:"
+        - code [ref=e383]: "{spacing.xxs}"
+        - text: 4px ·
+        - code [ref=e384]: "{spacing.xs}"
+        - text: 8px ·
+        - code [ref=e385]: "{spacing.sm}"
+        - text: 12px ·
+        - code [ref=e386]: "{spacing.md}"
+        - text: 16px ·
+        - code [ref=e387]: "{spacing.lg}"
+        - text: 24px ·
+        - code [ref=e388]: "{spacing.xl}"
+        - text: 32px ·
+        - code [ref=e389]: "{spacing.xl}"
+        - text: 32px ·
+        - code [ref=e390]: "{spacing.xxl}"
+        - text: 48px ·
+        - code [ref=e391]: "{spacing.section}"
+        - text: 96px.
+      - listitem [ref=e392]:
+        - strong [ref=e393]: "Section padding:"
+        - code [ref=e394]: "{spacing.section}"
+        - text: (96px) — modern-SaaS rhythm.
+      - listitem [ref=e395]:
+        - strong [ref=e396]: "Card internal padding:"
+        - code [ref=e397]: "{spacing.xl}"
+        - text: (32px) for feature cards, pricing tier cards, model comparison cards;
+        - code [ref=e398]: "{spacing.lg}"
+        - text: (24px) for code-window cards and connector tiles.
+      - listitem [ref=e399]:
+        - strong [ref=e400]: "Callout / CTA bands:"
+        - code [ref=e401]: "{spacing.xxl}"
+        - text: (48px) inside coral callout cards; 64px inside the larger dark CTA band.
+    - heading "Grid & Container" [level=3] [ref=e402]
+    - list [ref=e403]:
+      - listitem [ref=e404]:
+        - strong [ref=e405]: "Max content width:"
+        - text: ~1200px centered.
+      - listitem [ref=e406]:
+        - strong [ref=e407]: "Editorial body:"
+        - text: Single 12-column grid; hero often uses 6/6 split (h1 left, illustration right).
+      - listitem [ref=e408]:
+        - strong [ref=e409]: "Feature card grids:"
+        - text: 3-up at desktop, 2-up at tablet, 1-up at mobile.
+      - listitem [ref=e410]:
+        - strong [ref=e411]: "Connector tile grids:"
+        - text: 4-up or 6-up at desktop, 2-up at tablet, 1-up at mobile.
+      - listitem [ref=e412]:
+        - strong [ref=e413]: "Pricing grid:"
+        - text: 3-up at desktop (Free / Pro / Team / Enterprise often), 1-up at mobile.
+    - heading "Whitespace Philosophy" [level=3] [ref=e414]
+    - paragraph [ref=e415]: The cream canvas + serif display + generous internal padding create an editorial pacing — Claude reads like a long-form magazine column rather than a marketing template. Whitespace between bands stays uniform at 96px; whitespace inside cards is generous (32px), letting type breathe.
+    - heading "Elevation & Depth" [level=2] [ref=e416]
+    - table [ref=e417]:
+      - rowgroup [ref=e418]:
+        - row "Level Treatment Use" [ref=e419]:
+          - columnheader "Level" [ref=e420]
+          - columnheader "Treatment" [ref=e421]
+          - columnheader "Use" [ref=e422]
+      - rowgroup [ref=e423]:
+        - row "Flat No shadow, no border Body sections, top nav, hero bands" [ref=e424]:
+          - cell "Flat" [ref=e425]
+          - cell "No shadow, no border" [ref=e426]
+          - cell "Body sections, top nav, hero bands" [ref=e427]
+        - 'row "Soft hairline 1px{colors.hairline}border Inputs, sub-nav, occasionally on cards" [ref=e428]':
+          - cell "Soft hairline" [ref=e429]
+          - 'cell "1px{colors.hairline}border" [ref=e430]':
+            - text: 1px
+            - code [ref=e431]: "{colors.hairline}"
+            - text: border
+          - cell "Inputs, sub-nav, occasionally on cards" [ref=e432]
+        - 'row "Cream card {colors.surface-card}background — no shadow Feature cards, content cards" [ref=e433]':
+          - cell "Cream card" [ref=e434]
+          - 'cell "{colors.surface-card}background — no shadow" [ref=e435]':
+            - code [ref=e436]: "{colors.surface-card}"
+            - text: background — no shadow
+          - cell "Feature cards, content cards" [ref=e437]
+        - 'row "Dark surface card {colors.surface-dark}background — no shadow Code editor mockups, model showcase cards" [ref=e438]':
+          - cell "Dark surface card" [ref=e439]
+          - 'cell "{colors.surface-dark}background — no shadow" [ref=e440]':
+            - code [ref=e441]: "{colors.surface-dark}"
+            - text: background — no shadow
+          - cell "Code editor mockups, model showcase cards" [ref=e442]
+        - row "Subtle drop shadow Faint shadow at low alpha Hover-elevated states (the system uses0 1px 3px rgba(20,20,19,0.08)rarely)" [ref=e443]:
+          - cell "Subtle drop shadow" [ref=e444]
+          - cell "Faint shadow at low alpha" [ref=e445]
+          - cell "Hover-elevated states (the system uses0 1px 3px rgba(20,20,19,0.08)rarely)" [ref=e446]:
+            - text: Hover-elevated states (the system uses
+            - code [ref=e447]: 0 1px 3px rgba(20,20,19,0.08)
+            - text: rarely)
+    - paragraph [ref=e448]:
+      - text: The elevation philosophy is
+      - strong [ref=e449]: color-block first, shadow rare
+      - text: . Most depth comes from the cream-vs-dark surface contrast. Shadows are minimal. The dark surface mockups have their own internal product chrome (code editor scrollbars, line numbers, syntax highlighting) which adds detail without needing external shadows.
+    - heading "Decorative Depth" [level=3] [ref=e450]
+    - list [ref=e451]:
+      - listitem [ref=e452]: The Anthropic spike-mark glyph (4-spoke radial asterisk) appears as a small black mark in the brand wordmark and inline as a content marker.
+      - listitem [ref=e453]:
+        - text: "Code editor mockups carry their own internal depth: syntax- highlighted text in muted blues / oranges / grays, line numbers in"
+        - code [ref=e454]: "{colors.muted-soft}"
+        - text: ", status bars at the bottom in"
+        - code [ref=e455]: "{colors.surface-dark-elevated}"
+        - text: .
+      - listitem [ref=e456]: Some hero illustrations use simple line-art with coral and dark- navy strokes on cream — minimal, hand-drawn-feeling, never photorealistic.
+    - heading "Shapes" [level=2] [ref=e457]
+    - heading "Border Radius Scale" [level=3] [ref=e458]
+    - table [ref=e459]:
+      - rowgroup [ref=e460]:
+        - row "Token Value Use" [ref=e461]:
+          - columnheader "Token" [ref=e462]
+          - columnheader "Value" [ref=e463]
+          - columnheader "Use" [ref=e464]
+      - rowgroup [ref=e465]:
+        - 'row "{rounded.xs} 4px Reserved for badge accents and tiny dropdowns" [ref=e466]':
+          - 'cell "{rounded.xs}" [ref=e467]':
+            - code [ref=e468]: "{rounded.xs}"
+          - cell "4px" [ref=e469]
+          - cell "Reserved for badge accents and tiny dropdowns" [ref=e470]
+        - 'row "{rounded.sm} 6px Small inline buttons, dropdown items" [ref=e471]':
+          - 'cell "{rounded.sm}" [ref=e472]':
+            - code [ref=e473]: "{rounded.sm}"
+          - cell "6px" [ref=e474]
+          - cell "Small inline buttons, dropdown items" [ref=e475]
+        - 'row "{rounded.md} 8px Standard CTA buttons, text inputs, category tabs" [ref=e476]':
+          - 'cell "{rounded.md}" [ref=e477]':
+            - code [ref=e478]: "{rounded.md}"
+          - cell "8px" [ref=e479]
+          - cell "Standard CTA buttons, text inputs, category tabs" [ref=e480]
+        - 'row "{rounded.lg} 12px Content cards (feature, pricing, code-window, model-comparison)" [ref=e481]':
+          - 'cell "{rounded.lg}" [ref=e482]':
+            - code [ref=e483]: "{rounded.lg}"
+          - cell "12px" [ref=e484]
+          - cell "Content cards (feature, pricing, code-window, model-comparison)" [ref=e485]
+        - 'row "{rounded.xl} 16px Hero illustration container, the larger marquee components" [ref=e486]':
+          - 'cell "{rounded.xl}" [ref=e487]':
+            - code [ref=e488]: "{rounded.xl}"
+          - cell "16px" [ref=e489]
+          - cell "Hero illustration container, the larger marquee components" [ref=e490]
+        - 'row "{rounded.pill} 9999px Badge pills, “NEW” tags" [ref=e491]':
+          - 'cell "{rounded.pill}" [ref=e492]':
+            - code [ref=e493]: "{rounded.pill}"
+          - cell "9999px" [ref=e494]
+          - cell "Badge pills, “NEW” tags" [ref=e495]
+        - 'row "{rounded.full} 9999px / 50% Avatar substitutes, icon buttons" [ref=e496]':
+          - 'cell "{rounded.full}" [ref=e497]':
+            - code [ref=e498]: "{rounded.full}"
+          - cell "9999px / 50%" [ref=e499]
+          - cell "Avatar substitutes, icon buttons" [ref=e500]
+    - heading "Photography & Illustrations" [level=3] [ref=e501]
+    - paragraph [ref=e502]: "Claude’s hero rarely uses photography. Instead it uses:"
+    - list [ref=e503]:
+      - listitem [ref=e504]: Simple line-art illustrations with coral + dark-navy strokes on the cream canvas
+      - listitem [ref=e505]: Code editor mockups (the dominant “hero” treatment on developer-focused pages)
+      - listitem [ref=e506]: Terminal output mockups with monospace text on dark
+      - listitem [ref=e507]: Model comparison cards (Opus / Sonnet / Haiku) with abstract geometric thumbnails
+    - paragraph [ref=e508]: When photography is used (rare — mostly testimonials), avatars crop to perfect circles at 40px diameter.
+    - heading "Components" [level=2] [ref=e509]
+    - heading "Top Navigation" [level=3] [ref=e510]
+    - paragraph [ref=e511]:
+      - strong [ref=e512]:
+        - code [ref=e513]: top-nav
+      - text: — Cream nav bar pinned to the top of every page. 64px tall,
+      - code [ref=e514]: "{colors.canvas}"
+      - text: background. Carries the Anthropic spike-mark + “Claude” wordmark at left, primary horizontal menu (Product, Solutions, Use Cases, Pricing, Research, Company) center-left, right-side cluster with “Sign in” text-link, “Try Claude”
+      - code [ref=e515]: "{component.button-primary}"
+      - text: (coral). Menu items in
+      - code [ref=e516]: "{typography.nav-link}"
+      - text: (StyreneB 14px / 500).
+    - heading "Buttons" [level=3] [ref=e517]
+    - paragraph [ref=e518]:
+      - strong [ref=e519]:
+        - code [ref=e520]: button-primary
+      - text: — The signature coral CTA. Background
+      - code [ref=e521]: "{colors.primary}"
+      - text: (#cc785c), text
+      - code [ref=e522]: "{colors.on-primary}"
+      - text: (white), type
+      - code [ref=e523]: "{typography.button}"
+      - text: (StyreneB 14px / 500), padding 12px × 20px, height 40px, rounded
+      - code [ref=e524]: "{rounded.md}"
+      - text: (8px). Active state
+      - code [ref=e525]: button-primary-active
+      - text: darkens to
+      - code [ref=e526]: "{colors.primary-active}"
+      - text: (#a9583e).
+    - paragraph [ref=e527]:
+      - strong [ref=e528]:
+        - code [ref=e529]: button-secondary
+      - text: — Cream button with hairline outline. Background
+      - code [ref=e530]: "{colors.canvas}"
+      - text: ", text"
+      - code [ref=e531]: "{colors.ink}"
+      - text: ", 1px hairline border, same padding + height + radius as primary."
+    - paragraph [ref=e532]:
+      - strong [ref=e533]:
+        - code [ref=e534]: button-secondary-on-dark
+      - text: — Used over
+      - code [ref=e535]: "{colors.surface-dark}"
+      - text: cards. Background
+      - code [ref=e536]: "{colors.surface-dark-elevated}"
+      - text: (#252320), text
+      - code [ref=e537]: "{colors.on-dark}"
+      - text: . Stays dark — the system never inverts to a light secondary on dark surfaces.
+    - paragraph [ref=e538]:
+      - strong [ref=e539]:
+        - code [ref=e540]: button-text-link
+      - text: — Inline text button, no background. Used for “Sign in” in the top nav and inline CTA links.
+    - paragraph [ref=e541]:
+      - strong [ref=e542]:
+        - code [ref=e543]: button-icon-circular
+      - text: — 36px circular icon button. Background
+      - code [ref=e544]: "{colors.canvas}"
+      - text: ", hairline border, ink-color icon. Used for carousel arrows, share, “view more”."
+    - paragraph [ref=e545]:
+      - strong [ref=e546]:
+        - code [ref=e547]: text-link
+      - text: — Inline body links in
+      - code [ref=e548]: "{colors.primary}"
+      - text: (the coral). Underlined on press; the coral inline link is one of the system’s most distinctive small details.
+    - heading "Cards & Containers" [level=3] [ref=e549]
+    - paragraph [ref=e550]:
+      - strong [ref=e551]:
+        - code [ref=e552]: hero-band
+      - text: "— Cream-canvas hero with a 6-6 grid: h1 + sub- headline + button row on the left, hero illustration card or product mockup card on the right. Vertical padding"
+      - code [ref=e553]: "{spacing.section}"
+      - text: (96px).
+    - paragraph [ref=e554]:
+      - strong [ref=e555]:
+        - code [ref=e556]: hero-illustration-card
+      - text: — A larger card holding the hero’s right-side artifact — sometimes a coral-stroke line illustration on cream background, sometimes a dark code editor mockup. Background
+      - code [ref=e557]: "{colors.canvas}"
+      - text: or
+      - code [ref=e558]: "{colors.surface-dark}"
+      - text: depending on context, rounded
+      - code [ref=e559]: "{rounded.xl}"
+      - text: (16px).
+    - paragraph [ref=e560]:
+      - strong [ref=e561]:
+        - code [ref=e562]: feature-card
+      - text: — Used in 3-up feature grids. Background
+      - code [ref=e563]: "{colors.surface-card}"
+      - text: (#efe9de — slightly darker cream), rounded
+      - code [ref=e564]: "{rounded.lg}"
+      - text: (12px), internal padding
+      - code [ref=e565]: "{spacing.xl}"
+      - text: (32px). Carries a small icon at top, an
+      - code [ref=e566]: "{typography.title-md}"
+      - text: headline, and a body description in
+      - code [ref=e567]: "{typography.body-md}"
+      - text: .
+    - paragraph [ref=e568]:
+      - strong [ref=e569]:
+        - code [ref=e570]: product-mockup-card-dark
+      - text: — Dark navy card showing actual Claude product chrome (chat interface, code editor, agent controls). Background
+      - code [ref=e571]: "{colors.surface-dark}"
+      - text: ", rounded"
+      - code [ref=e572]: "{rounded.lg}"
+      - text: ", internal padding"
+      - code [ref=e573]: "{spacing.xl}"
+      - text: (32px). Carries text labels in
+      - code [ref=e574]: "{colors.on-dark}"
+      - text: and product UI fragments below.
+    - paragraph [ref=e575]:
+      - strong [ref=e576]:
+        - code [ref=e577]: code-window-card
+      - text: — A specialized dark card showing a code editor with line numbers, syntax-highlighted code in
+      - code [ref=e578]: "{typography.code}"
+      - text: (JetBrains Mono), and sometimes a “Run” button or terminal output panel below. Background
+      - code [ref=e579]: "{colors.surface-dark}"
+      - text: with
+      - code [ref=e580]: "{colors.surface-dark-soft}"
+      - text: for the inner code block, rounded
+      - code [ref=e581]: "{rounded.lg}"
+      - text: ", padding"
+      - code [ref=e582]: "{spacing.lg}"
+      - text: (24px). The signature visual element of Claude Code product pages.
+    - paragraph [ref=e583]:
+      - strong [ref=e584]:
+        - code [ref=e585]: model-comparison-card
+      - text: — Used on the homepage’s “Which problem are you up against?” section comparing Opus / Sonnet / Haiku. Background
+      - code [ref=e586]: "{colors.canvas}"
+      - text: with hairline border, rounded
+      - code [ref=e587]: "{rounded.lg}"
+      - text: ", internal padding"
+      - code [ref=e588]: "{spacing.xl}"
+      - text: (32px). Carries the model name, a short capability blurb, and a
+      - code [ref=e589]: "{component.text-link}"
+      - text: to learn more.
+    - paragraph [ref=e590]:
+      - strong [ref=e591]:
+        - code [ref=e592]: pricing-tier-card
+      - text: — Standard tier card. Background
+      - code [ref=e593]: "{colors.canvas}"
+      - text: with hairline border, rounded
+      - code [ref=e594]: "{rounded.lg}"
+      - text: ", padding"
+      - code [ref=e595]: "{spacing.xl}"
+      - text: (32px). Carries the plan name in
+      - code [ref=e596]: "{typography.title-lg}"
+      - text: (StyreneB), price in
+      - code [ref=e597]: "{typography.display-sm}"
+      - text: (Copernicus serif!), feature checklist in
+      - code [ref=e598]: "{typography.body-md}"
+      - text: ", and a"
+      - code [ref=e599]: "{component.button-primary}"
+      - text: at the bottom.
+    - paragraph [ref=e600]:
+      - strong [ref=e601]:
+        - code [ref=e602]: pricing-tier-card-featured
+      - text: — The featured tier (typically “Pro” or “Team”). Background flips to
+      - code [ref=e603]: "{colors.surface-dark}"
+      - text: ", text inverts to"
+      - code [ref=e604]: "{colors.on-dark}"
+      - text: . The dark surface IS the featured-tier signal.
+    - paragraph [ref=e605]:
+      - strong [ref=e606]:
+        - code [ref=e607]: callout-card-coral
+      - text: — A full-bleed coral card carrying a major call-to-action. Background
+      - code [ref=e608]: "{colors.primary}"
+      - text: (#cc785c), text
+      - code [ref=e609]: "{colors.on-primary}"
+      - text: (white), rounded
+      - code [ref=e610]: "{rounded.lg}"
+      - text: ", padding"
+      - code [ref=e611]: "{spacing.xxl}"
+      - text: (48px). The coral surface IS the voltage; the CTA inside uses an inverted button style (cream/canvas button on coral).
+    - paragraph [ref=e612]:
+      - strong [ref=e613]:
+        - code [ref=e614]: connector-tile
+      - text: — Used on the connectors page’s integration grid. Background
+      - code [ref=e615]: "{colors.canvas}"
+      - text: with hairline border, rounded
+      - code [ref=e616]: "{rounded.lg}"
+      - text: ", padding 20px. Each tile carries a logo at top, a"
+      - code [ref=e617]: "{typography.title-sm}"
+      - text: connector name, and a short description.
+    - heading "Inputs & Forms" [level=3] [ref=e618]
+    - paragraph [ref=e619]:
+      - strong [ref=e620]:
+        - code [ref=e621]: text-input
+      - text: — Standard text input. Background
+      - code [ref=e622]: "{colors.canvas}"
+      - text: ", text"
+      - code [ref=e623]: "{colors.ink}"
+      - text: ", type"
+      - code [ref=e624]: "{typography.body-md}"
+      - text: ", rounded"
+      - code [ref=e625]: "{rounded.md}"
+      - text: (8px), padding 10px × 14px, height 40px. 1px hairline border in
+      - code [ref=e626]: "{colors.hairline}"
+      - text: .
+    - paragraph [ref=e627]:
+      - strong [ref=e628]:
+        - code [ref=e629]: text-input-focused
+      - text: — Focus state. Border thickens or shifts to
+      - code [ref=e630]: "{colors.primary}"
+      - text: (coral) for emphasis. Carries a 3px coral-at-15%-alpha outer ring.
+    - paragraph [ref=e631]:
+      - strong [ref=e632]:
+        - code [ref=e633]: cookie-consent-card
+      - text: — Bottom-right floating dark cookie banner. Background
+      - code [ref=e634]: "{colors.surface-dark}"
+      - text: ", text"
+      - code [ref=e635]: "{colors.on-dark}"
+      - text: ", rounded"
+      - code [ref=e636]: "{rounded.lg}"
+      - text: ", padding"
+      - code [ref=e637]: "{spacing.lg}"
+      - text: (24px). One of the few places dark surface appears at small scale on cream pages.
+    - heading "Tags / Badges" [level=3] [ref=e638]
+    - paragraph [ref=e639]:
+      - strong [ref=e640]:
+        - code [ref=e641]: badge-pill
+      - text: — Small pill label used for category tags. Background
+      - code [ref=e642]: "{colors.surface-card}"
+      - text: ", text"
+      - code [ref=e643]: "{colors.ink}"
+      - text: ", type"
+      - code [ref=e644]: "{typography.caption}"
+      - text: (13px / 500), rounded
+      - code [ref=e645]: "{rounded.pill}"
+      - text: ", padding 4px × 12px."
+    - paragraph [ref=e646]:
+      - strong [ref=e647]:
+        - code [ref=e648]: badge-coral
+      - text: — Coral-fill badge for “NEW”, “BETA”, featured highlights. Background
+      - code [ref=e649]: "{colors.primary}"
+      - text: ", text"
+      - code [ref=e650]: "{colors.on-primary}"
+      - text: ", type"
+      - code [ref=e651]: "{typography.caption-uppercase}"
+      - text: (12px / 500 / 1.5px tracking), rounded
+      - code [ref=e652]: "{rounded.pill}"
+      - text: ", padding 4px × 12px."
+    - heading "Tab / Filter" [level=3] [ref=e653]
+    - paragraph [ref=e654]:
+      - strong [ref=e655]:
+        - code [ref=e656]: category-tab
+      - text: +
+      - strong [ref=e657]:
+        - code [ref=e658]: category-tab-active
+      - text: "— Used in sub-nav rows on solutions / connectors pages. Inactive: transparent background,"
+      - code [ref=e659]: "{colors.muted}"
+      - text: "text. Active:"
+      - code [ref=e660]: "{colors.surface-card}"
+      - text: background,
+      - code [ref=e661]: "{colors.ink}"
+      - text: text. Padding 8px × 14px, rounded
+      - code [ref=e662]: "{rounded.md}"
+      - text: .
+    - heading "CTA / Footer" [level=3] [ref=e663]
+    - paragraph [ref=e664]:
+      - strong [ref=e665]:
+        - code [ref=e666]: cta-band-coral
+      - text: — A pre-footer “Try Claude” CTA card. Full- width coral fill, white type, rounded
+      - code [ref=e667]: "{rounded.lg}"
+      - text: ", padding 64px. Carries an h2 in"
+      - code [ref=e668]: "{typography.display-sm}"
+      - text: (still serif!), a sub- line, and a cream-button CTA.
+    - paragraph [ref=e669]:
+      - strong [ref=e670]:
+        - code [ref=e671]: cta-band-dark
+      - text: — Alternative pre-footer band on developer- focused pages. Background
+      - code [ref=e672]: "{colors.surface-dark}"
+      - text: ", text"
+      - code [ref=e673]: "{colors.on-dark}"
+      - text: ", rounded"
+      - code [ref=e674]: "{rounded.lg}"
+      - text: ", padding 64px. Often pairs with a code-window card."
+    - paragraph [ref=e675]:
+      - strong [ref=e676]:
+        - code [ref=e677]: footer
+      - text: — Dark navy footer that closes every page. Background
+      - code [ref=e678]: "{colors.surface-dark}"
+      - text: (#181715), text
+      - code [ref=e679]: "{colors.on-dark-soft}"
+      - text: . 4-column link list at desktop covering Product / Company / Resources / Legal. Vertical padding 64px. The Anthropic spike-mark + “Anthropic” wordmark sits at the top in
+      - code [ref=e680]: "{colors.on-dark}"
+      - text: . The footer never inverts.
+    - heading "Do’s and Don’ts" [level=2] [ref=e681]
+    - heading "Do" [level=3] [ref=e682]
+    - list [ref=e683]:
+      - listitem [ref=e684]: Anchor every page on the cream canvas. Pure white reads as “any other AI tool”; the warm tint is the brand differentiator.
+      - listitem [ref=e685]: Use Copernicus serif for every display headline. Pair with StyreneB sans body. Negative letter-spacing on display sizes is non-negotiable.
+      - listitem [ref=e686]:
+        - text: Reserve
+        - code [ref=e687]: "{colors.primary}"
+        - text: (coral) for primary CTAs and full-bleed
+        - code [ref=e688]: "{component.callout-card-coral}"
+        - text: moments. Don’t paint accent moments coral elsewhere.
+      - listitem [ref=e689]:
+        - text: Use
+        - code [ref=e690]: "{component.product-mockup-card-dark}"
+        - text: and
+        - code [ref=e691]: "{component.code-window-card}"
+        - text: to show actual Claude product chrome. Don’t paint marketing illustrations of code when you can show real code.
+      - listitem [ref=e692]:
+        - text: Pair
+        - code [ref=e693]: "{component.feature-card}"
+        - text: (cream) with
+        - code [ref=e694]: "{component.product-mockup-card-dark}"
+        - text: (navy) in alternating bands. The cream-to-dark rhythm is the brand’s pacing mechanism.
+      - listitem [ref=e695]: Use the Anthropic spike-mark glyph as the brand wordmark prefix. Never invert the mark to white-on-dark within the wordmark itself.
+      - listitem [ref=e696]:
+        - text: Apply
+        - code [ref=e697]: "{spacing.section}"
+        - text: (96px) between major bands.
+    - heading "Don’t" [level=3] [ref=e698]
+    - list [ref=e699]:
+      - listitem [ref=e700]: Don’t use cool grays or pure white for canvas. Cream is the brand.
+      - listitem [ref=e701]: Don’t bold serif display weight. Copernicus at 700 reads as bombastic; the system stays at 400.
+      - listitem [ref=e702]: Don’t use cool blue or saturated cyan as a brand accent. The coral is the brand voltage.
+      - listitem [ref=e703]: Don’t put coral everywhere. The coral is scarce on individual elements and generous only on full-bleed coral callout cards.
+      - listitem [ref=e704]: Don’t use Inter for display headlines. The serif character is the brand voice.
+      - listitem [ref=e705]: "Don’t repeat the same surface mode in two consecutive bands. The pacing alternates: cream → cream-card → dark-mockup → cream → coral-callout → dark-footer."
+      - listitem [ref=e706]: Don’t add hover state styling beyond what the system already encodes — primary darkens on press; nothing else changes.
+    - heading "Responsive Behavior" [level=2] [ref=e707]
+    - heading "Breakpoints" [level=3] [ref=e708]
+    - table [ref=e709]:
+      - rowgroup [ref=e710]:
+        - row "Name Width Key Changes" [ref=e711]:
+          - columnheader "Name" [ref=e712]
+          - columnheader "Width" [ref=e713]
+          - columnheader "Key Changes" [ref=e714]
+      - rowgroup [ref=e715]:
+        - row "Mobile < 768px Hamburger nav; hero h1 64→32px; hero-illustration-card stacks below content; feature grids 1-up; connector tiles 2-up; pricing 1-up; footer 4 cols → 1" [ref=e716]:
+          - cell "Mobile" [ref=e717]
+          - cell "< 768px" [ref=e718]
+          - cell "Hamburger nav; hero h1 64→32px; hero-illustration-card stacks below content; feature grids 1-up; connector tiles 2-up; pricing 1-up; footer 4 cols → 1" [ref=e719]
+        - row "Tablet 768–1024px Top nav stays horizontal but tightens; feature cards 2-up; connector tiles 3-up; pricing 2-up" [ref=e720]:
+          - cell "Tablet" [ref=e721]
+          - cell "768–1024px" [ref=e722]
+          - cell "Top nav stays horizontal but tightens; feature cards 2-up; connector tiles 3-up; pricing 2-up" [ref=e723]
+        - row "Desktop 1024–1440px Full top-nav with all menu items; 3-up feature cards; 4-up or 6-up connector tiles; 3-up pricing tiers" [ref=e724]:
+          - cell "Desktop" [ref=e725]
+          - cell "1024–1440px" [ref=e726]
+          - cell "Full top-nav with all menu items; 3-up feature cards; 4-up or 6-up connector tiles; 3-up pricing tiers" [ref=e727]
+        - row "Wide > 1440px Same as desktop with more outer breathing room; max content width caps at 1200px" [ref=e728]:
+          - cell "Wide" [ref=e729]
+          - cell "> 1440px" [ref=e730]
+          - cell "Same as desktop with more outer breathing room; max content width caps at 1200px" [ref=e731]
+    - heading "Touch Targets" [level=3] [ref=e732]
+    - list [ref=e733]:
+      - listitem [ref=e734]:
+        - code [ref=e735]: "{component.button-primary}"
+        - text: at minimum 40 × 40px.
+      - listitem [ref=e736]:
+        - code [ref=e737]: "{component.button-icon-circular}"
+        - text: at exactly 36 × 36 — slightly under WCAG 44 but visually centered.
+      - listitem [ref=e738]:
+        - code [ref=e739]: "{component.text-input}"
+        - text: height is 40px.
+      - listitem [ref=e740]:
+        - text: Connector tile entire card area is tappable; effective tap area
+        - blockquote [ref=e741]:
+          - blockquote [ref=e742]:
+            - paragraph [ref=e743]: 44px.
+    - heading "Collapsing Strategy" [level=3] [ref=e744]
+    - list [ref=e745]:
+      - listitem [ref=e746]: Top nav collapses to hamburger at < 768px; menu opens as a full-screen cream sheet.
+      - listitem [ref=e747]: Hero band’s 6-6 grid collapses to single-column on mobile — h1 + sub-head + buttons first, then the illustration / mockup card below.
+      - listitem [ref=e748]: Feature grids reduce columns rather than scaling cards down.
+      - listitem [ref=e749]: Pricing tier cards collapse 4 → 2 → 1; featured-tier dark surface stays visually distinct at every breakpoint.
+      - listitem [ref=e750]: Code-window cards retain code legibility at every breakpoint by allowing horizontal scroll within the card rather than wrapping code lines.
+    - heading "Image Behavior" [level=3] [ref=e751]
+    - list [ref=e752]:
+      - listitem [ref=e753]: Code blocks inside dark mockups stay at fixed font-size; horizontal scroll on mobile rather than wrapping.
+      - listitem [ref=e754]: Hero illustrations scale proportionally; line-art strokes thin slightly on mobile.
+      - listitem [ref=e755]: Avatar photos in testimonials crop to circles at every breakpoint.
+    - heading "Iteration Guide" [level=2] [ref=e756]
+    - list [ref=e757]:
+      - listitem [ref=e758]:
+        - text: Focus on ONE component at a time. Reference its YAML key (
+        - code [ref=e759]: "{component.feature-card}"
+        - text: ","
+        - code [ref=e760]: "{component.code-window-card}"
+        - text: ).
+      - listitem [ref=e761]:
+        - text: Variants of an existing component (
+        - code [ref=e762]: "-active"
+        - text: ","
+        - code [ref=e763]: "-disabled"
+        - text: ","
+        - code [ref=e764]: "-focused"
+        - text: ) live as separate entries in
+        - code [ref=e765]: "components:"
+        - text: .
+      - listitem [ref=e766]:
+        - text: Use
+        - code [ref=e767]: "{token.refs}"
+        - text: everywhere — never inline hex.
+      - listitem [ref=e768]: Never document hover. Default and Active/Pressed states only.
+      - listitem [ref=e769]: Display headlines stay Copernicus serif 400 with negative tracking. Body stays StyreneB / Inter 400. The split is unbreakable.
+      - listitem [ref=e770]: Cream + coral + dark navy is the trinity. Don’t introduce a fourth surface tone (no purple cards, no green sections).
+      - listitem [ref=e771]: "When in doubt about emphasis: bigger Copernicus serif before bolder weight."
+    - heading "Known Gaps" [level=2] [ref=e772]
+    - list [ref=e773]:
+      - listitem [ref=e774]: Copernicus and StyreneB are licensed Anthropic typefaces and not available as public web fonts. Substitutes (Tiempos Headline / Cormorant Garamond / EB Garamond for serif; Inter / Söhne for sans) are documented in the typography section.
+      - listitem [ref=e775]: The Anthropic radial-spike-mark is a brand glyph rendered as inline SVG; it’s not formalized as a system token here. Treat it as a logo asset.
+      - listitem [ref=e776]: Animation and transition timings (chat message reveal, code block typewriter effect on the homepage, agentic-flow diagram animations) are not in scope.
+      - listitem [ref=e777]:
+        - text: Form validation states beyond
+        - code [ref=e778]: "{component.text-input-focused}"
+        - text: are not extracted — error / success states would need a sign-up or feedback flow to confirm.
+      - listitem [ref=e779]: The actual Claude product surface (claude.ai chat interface) shares some tokens with the marketing site but adds many product- specific components (chat bubbles, message tools, file upload chips, conversation history sidebar) that are out of scope for this marketing-surface document.
+      - listitem [ref=e780]: The “agent” / “computer use” demo cards on certain pages display animated Claude controlling a browser — the static screenshot doesn’t fully capture the animation chrome.
+    - heading "Implementation Status (DFT Notes site)" [level=2] [ref=e781]
+    - paragraph [ref=e782]: "What this site has built from this spec:"
+    - list [ref=e783]:
+      - listitem [ref=e784]:
+        - checkbox [checked] [disabled] [ref=e785]
+        - text: Color tokens →
+        - code [ref=e786]: "--color-*"
+        - text: CSS variables in
+        - code [ref=e787]: assets/css/site.css
+      - listitem [ref=e788]:
+        - checkbox [checked] [disabled] [ref=e789]
+        - text: Typography scale →
+        - code [ref=e790]: "--font-display"
+        - text: ","
+        - code [ref=e791]: "--font-body"
+        - text: ","
+        - code [ref=e792]: "--font-mono"
+        - text: ", type-scale CSS variables"
+      - listitem [ref=e793]:
+        - checkbox [checked] [disabled] [ref=e794]
+        - code [ref=e795]: top-nav
+        - text: component with mobile hamburger
+      - listitem [ref=e796]:
+        - checkbox [checked] [disabled] [ref=e797]
+        - code [ref=e798]: button-primary
+        - text: (coral),
+        - code [ref=e799]: button-secondary
+        - text: (cream + hairline),
+        - code [ref=e800]: button-text-link
+      - listitem [ref=e801]:
+        - checkbox [checked] [disabled] [ref=e802]
+        - code [ref=e803]: hero-band
+        - text: with 6-6 grid that collapses on mobile
+      - listitem [ref=e804]:
+        - checkbox [checked] [disabled] [ref=e805]
+        - code [ref=e806]: code-window-card
+        - text: for code samples
+      - listitem [ref=e807]:
+        - checkbox [checked] [disabled] [ref=e808]
+        - code [ref=e809]: feature-card
+        - text: for content cards
+      - listitem [ref=e810]:
+        - checkbox [checked] [disabled] [ref=e811]
+        - code [ref=e812]: callout-card-coral
+        - text: (used for pre-footer CTA)
+      - listitem [ref=e813]:
+        - checkbox [checked] [disabled] [ref=e814]
+        - code [ref=e815]: badge-pill
+        - text: ","
+        - code [ref=e816]: badge-coral
+      - listitem [ref=e817]:
+        - checkbox [checked] [disabled] [ref=e818]
+        - code [ref=e819]: footer
+        - text: (dark navy, 4-col → 1-col on mobile)
+      - listitem [ref=e820]:
+        - checkbox [checked] [disabled] [ref=e821]
+        - text: Mobile hamburger menu (vanilla JS, no framework)
+      - listitem [ref=e822]:
+        - checkbox [checked] [disabled] [ref=e823]
+        - text: Skip-to-content link for a11y
+      - listitem [ref=e824]:
+        - checkbox [checked] [disabled] [ref=e825]
+        - strong [ref=e826]: v2
+        - text: — Theme switcher (light + dark) with persistent localStorage
+      - listitem [ref=e827]:
+        - checkbox [checked] [disabled] [ref=e828]
+        - strong [ref=e829]: v2
+        - text: — Pastel poppy-green light palette, warm-dark dark palette
+      - listitem [ref=e830]:
+        - checkbox [checked] [disabled] [ref=e831]
+        - strong [ref=e832]: v2
+        - text: — Wider reading column on large screens (760px → 960px → 1100px)
+      - listitem [ref=e833]:
+        - checkbox [checked] [disabled] [ref=e834]
+        - strong [ref=e835]: v2
+        - text: — Marginalia rail for figures and side notes
+      - listitem [ref=e836]:
+        - checkbox [checked] [disabled] [ref=e837]
+        - strong [ref=e838]: v2
+        - text: — Mermaid diagrams (
+        - code [ref=e839]
+        - text: "``mermaid ` fences) with theme-aware palette"
+      - listitem [ref=e840]:
+        - checkbox [checked] [disabled] [ref=e841]
+        - strong [ref=e842]: v2
+        - text: —
+        - code [ref=e843]: dft_notes/chapters-map.md
+        - text: — a live Mermaid graph of every chapter
+      - listitem [ref=e844]:
+        - checkbox [checked] [disabled] [ref=e845]
+        - strong [ref=e846]: v2
+        - text: —
+        - code [ref=e847]: dft_notes/python_codes/
+        - text: — per-chapter subfolders with runnable Python + generated plots
+      - listitem [ref=e848]:
+        - checkbox [checked] [disabled] [ref=e849]
+        - strong [ref=e850]: v2
+        - text: — Hidden answers via
+        - code [ref=e851]: <details><summary>
+        - text: for problem sets
+      - listitem [ref=e852]:
+        - checkbox [checked] [disabled] [ref=e853]
+        - strong [ref=e854]: v2
+        - text: —
+        - code [ref=e855]: agents.md
+        - text: — the agent handbook
+      - listitem [ref=e856]:
+        - checkbox [checked] [disabled] [ref=e857]
+        - strong [ref=e858]: v2
+        - text: "— Footer cleaned up: no chapter list, just four short link columns"
+    - paragraph [ref=e859]: "What this site has not yet built (out of scope right now):"
+    - list [ref=e860]:
+      - listitem [ref=e861]:
+        - checkbox [disabled] [ref=e862]
+        - text: Pricing tier cards (we don’t have a pricing surface)
+      - listitem [ref=e863]:
+        - checkbox [disabled] [ref=e864]
+        - text: Cookie consent banner (no third-party tracking)
+      - listitem [ref=e865]:
+        - checkbox [disabled] [ref=e866]
+        - code [ref=e867]: cta-band-coral
+        - text: (we use
+        - code [ref=e868]: callout-card-coral
+        - text: instead — equivalent component, different name)
+      - listitem [ref=e869]:
+        - checkbox [disabled] [ref=e870]
+        - text: Connector tile grid (no integrations page yet)
+      - listitem [ref=e871]:
+        - checkbox [disabled] [ref=e872]
+        - code [ref=e873]: "@chenglou/pretext"
+        - text: e-reader (see
+        - code [ref=e874]: design.md
+        - text: v3 in git history — future work, not the current Jekyll site)
+      - listitem [ref=e875]:
+        - checkbox [disabled] [ref=e876]
+        - text: Animated transitions (motion-reduced by default per
+        - code [ref=e877]: prefers-reduced-motion
+        - text: )
+    - heading "Palette (v2)" [level=2] [ref=e878]
+    - paragraph [ref=e879]:
+      - text: The v1 cream + coral palette worked for a marketing surface, but the user pointed out that for
+      - emphasis [ref=e880]: reading
+      - text: "long sessions the cream was too close to white. v2 picks a softer pastel:"
+    - table [ref=e881]:
+      - rowgroup [ref=e882]:
+        - row "Token Light (v2) Dark (v2) Notes" [ref=e883]:
+          - columnheader "Token" [ref=e884]
+          - columnheader "Light (v2)" [ref=e885]
+          - columnheader "Dark (v2)" [ref=e886]
+          - columnheader "Notes" [ref=e887]
+      - rowgroup [ref=e888]:
+        - 'row "--color-canvas #eef0e6 #1a1814 Pastel poppy-green vs warm dark" [ref=e889]':
+          - cell "--color-canvas" [ref=e890]:
+            - code [ref=e891]: "--color-canvas"
+          - cell "#eef0e6" [ref=e892]:
+            - code [ref=e893]: "#eef0e6"
+          - cell "#1a1814" [ref=e894]:
+            - code [ref=e895]: "#1a1814"
+          - cell "Pastel poppy-green vs warm dark" [ref=e896]
+        - 'row "--color-surface-soft #e3e6d8 #252220 One step darker than canvas" [ref=e897]':
+          - cell "--color-surface-soft" [ref=e898]:
+            - code [ref=e899]: "--color-surface-soft"
+          - cell "#e3e6d8" [ref=e900]:
+            - code [ref=e901]: "#e3e6d8"
+          - cell "#252220" [ref=e902]:
+            - code [ref=e903]: "#252220"
+          - cell "One step darker than canvas" [ref=e904]
+        - 'row "--color-surface-card #d6dcc8 #2e2a24 Feature cards, callouts in light" [ref=e905]':
+          - cell "--color-surface-card" [ref=e906]:
+            - code [ref=e907]: "--color-surface-card"
+          - cell "#d6dcc8" [ref=e908]:
+            - code [ref=e909]: "#d6dcc8"
+          - cell "#2e2a24" [ref=e910]:
+            - code [ref=e911]: "#2e2a24"
+          - cell "Feature cards, callouts in light" [ref=e912]
+        - 'row "--color-hairline #cdd3bd #3a342a 1px borders on the canvas" [ref=e913]':
+          - cell "--color-hairline" [ref=e914]:
+            - code [ref=e915]: "--color-hairline"
+          - cell "#cdd3bd" [ref=e916]:
+            - code [ref=e917]: "#cdd3bd"
+          - cell "#3a342a" [ref=e918]:
+            - code [ref=e919]: "#3a342a"
+          - cell "1px borders on the canvas" [ref=e920]
+        - 'row "--color-ink #1c1f17 #f0ebde Headlines, body emphasis" [ref=e921]':
+          - cell "--color-ink" [ref=e922]:
+            - code [ref=e923]: "--color-ink"
+          - cell "#1c1f17" [ref=e924]:
+            - code [ref=e925]: "#1c1f17"
+          - cell "#f0ebde" [ref=e926]:
+            - code [ref=e927]: "#f0ebde"
+          - cell "Headlines, body emphasis" [ref=e928]
+        - 'row "--color-body #3a4031 #c4bca8 Default running text" [ref=e929]':
+          - cell "--color-body" [ref=e930]:
+            - code [ref=e931]: "--color-body"
+          - cell "#3a4031" [ref=e932]:
+            - code [ref=e933]: "#3a4031"
+          - cell "#c4bca8" [ref=e934]:
+            - code [ref=e935]: "#c4bca8"
+          - cell "Default running text" [ref=e936]
+        - 'row "--color-muted #6b7060 #8a8270 Secondary text" [ref=e937]':
+          - cell "--color-muted" [ref=e938]:
+            - code [ref=e939]: "--color-muted"
+          - cell "#6b7060" [ref=e940]:
+            - code [ref=e941]: "#6b7060"
+          - cell "#8a8270" [ref=e942]:
+            - code [ref=e943]: "#8a8270"
+          - cell "Secondary text" [ref=e944]
+        - 'row "--color-primary #cc785c #cc785c Coral — unchanged in v2" [ref=e945]':
+          - cell "--color-primary" [ref=e946]:
+            - code [ref=e947]: "--color-primary"
+          - cell "#cc785c" [ref=e948]:
+            - code [ref=e949]: "#cc785c"
+          - cell "#cc785c" [ref=e950]:
+            - code [ref=e951]: "#cc785c"
+          - cell "Coral — unchanged in v2" [ref=e952]:
+            - strong [ref=e953]: Coral — unchanged in v2
+        - 'row "--color-primary-active #a9583e #a9583e Hover/active coral" [ref=e954]':
+          - cell "--color-primary-active" [ref=e955]:
+            - code [ref=e956]: "--color-primary-active"
+          - cell "#a9583e" [ref=e957]:
+            - code [ref=e958]: "#a9583e"
+          - cell "#a9583e" [ref=e959]:
+            - code [ref=e960]: "#a9583e"
+          - cell "Hover/active coral" [ref=e961]
+        - 'row "--color-on-primary #ffffff #ffffff Text on coral" [ref=e962]':
+          - cell "--color-on-primary" [ref=e963]:
+            - code [ref=e964]: "--color-on-primary"
+          - cell "#ffffff" [ref=e965]:
+            - code [ref=e966]: "#ffffff"
+          - cell "#ffffff" [ref=e967]:
+            - code [ref=e968]: "#ffffff"
+          - cell "Text on coral" [ref=e969]
+        - 'row "--color-on-dark — #f0ebde Cream-tinted text on dark surfaces" [ref=e970]':
+          - cell "--color-on-dark" [ref=e971]:
+            - code [ref=e972]: "--color-on-dark"
+          - cell "—" [ref=e973]
+          - cell "#f0ebde" [ref=e974]:
+            - code [ref=e975]: "#f0ebde"
+          - cell "Cream-tinted text on dark surfaces" [ref=e976]
+        - 'row "--color-on-dark-soft — #a09d96 Secondary text on dark" [ref=e977]':
+          - cell "--color-on-dark-soft" [ref=e978]:
+            - code [ref=e979]: "--color-on-dark-soft"
+          - cell "—" [ref=e980]
+          - cell "#a09d96" [ref=e981]:
+            - code [ref=e982]: "#a09d96"
+          - cell "Secondary text on dark" [ref=e983]
+    - paragraph [ref=e984]:
+      - text: The cream + dark-navy product surfaces (
+      - code [ref=e985]: "--color-surface-dark"
+      - text: etc.) are
+      - strong [ref=e986]: kept unchanged
+      - text: for code-window cards, model comparisons, and the footer — they work on both themes.
+    - heading "Reading column (v2)" [level=2] [ref=e987]
+    - paragraph [ref=e988]:
+      - text: The v1 chapter column was
+      - code [ref=e989]: "max-width: 760px"
+      - text: "everywhere. On a 1920px screen that left ~580px of dead space on each side. v2 grows progressively:"
+    - table [ref=e990]:
+      - rowgroup [ref=e991]:
+        - row "Breakpoint .page-contentmax-width" [ref=e992]:
+          - columnheader "Breakpoint" [ref=e993]
+          - columnheader ".page-contentmax-width" [ref=e994]:
+            - code [ref=e995]: .page-content
+            - text: max-width
+      - rowgroup [ref=e996]:
+        - row "< 768px 100%(with 24px padding)" [ref=e997]:
+          - cell "< 768px" [ref=e998]:
+            - code [ref=e999]: < 768px
+          - cell "100%(with 24px padding)" [ref=e1000]:
+            - code [ref=e1001]: 100%
+            - text: (with 24px padding)
+        - row "768 – 1024px 760px(mobile-friendly)" [ref=e1002]:
+          - cell "768 – 1024px" [ref=e1003]:
+            - code [ref=e1004]: 768 – 1024px
+          - cell "760px(mobile-friendly)" [ref=e1005]:
+            - code [ref=e1006]: 760px
+            - text: (mobile-friendly)
+        - row "1024 – 1440px 960px(slightly wider)" [ref=e1007]:
+          - cell "1024 – 1440px" [ref=e1008]:
+            - code [ref=e1009]: 1024 – 1440px
+          - cell "960px(slightly wider)" [ref=e1010]:
+            - code [ref=e1011]: 960px
+            - text: (slightly wider)
+        - row "≥ 1440px 1100px(wide-screen reading)" [ref=e1012]:
+          - cell "≥ 1440px" [ref=e1013]:
+            - code [ref=e1014]: ≥ 1440px
+          - cell "1100px(wide-screen reading)" [ref=e1015]:
+            - code [ref=e1016]: 1100px
+            - text: (wide-screen reading)
+    - paragraph [ref=e1017]: "Inside the wider column, authors can use:"
+    - list [ref=e1018]:
+      - listitem [ref=e1019]:
+        - code [ref=e1020]: <aside class="marginalia">
+        - text: for right-rail figure captions or side notes
+      - listitem [ref=e1021]:
+        - code [ref=e1022]: <figure class="figure-wide">
+        - text: for full-width images
+      - listitem [ref=e1023]:
+        - code [ref=e1024]: <table class="table-scroll">
+        - text: for wide tables with horizontal scroll
+    - heading "Theme switcher (v2)" [level=2] [ref=e1025]
+    - paragraph [ref=e1026]:
+      - text: The user wants to read for long sessions. v2 adds a
+      - strong [ref=e1027]: light / dark
+      - text: "toggle:"
+    - list [ref=e1028]:
+      - listitem [ref=e1029]: The toggle is a small icon button in the top nav, between the GitHub text-link and the “Read the notes” CTA.
+      - listitem [ref=e1030]:
+        - text: Preference is persisted in
+        - code [ref=e1031]: localStorage
+        - text: under the key
+        - code [ref=e1032]: dft-notes:theme
+        - text: with values
+        - code [ref=e1033]: light
+        - text: "|"
+        - code [ref=e1034]: dark
+        - text: .
+      - listitem [ref=e1035]:
+        - text: A tiny inline script in
+        - code [ref=e1036]: <head>
+        - text: reads the stored value (or the OS
+        - code [ref=e1037]: prefers-color-scheme
+        - text: ) and sets
+        - code [ref=e1038]: data-theme="dark"
+        - text: "on"
+        - code [ref=e1039]: <html>
+        - strong [ref=e1040]: before
+        - text: the CSS loads — this prevents a flash of the wrong theme on first paint.
+      - listitem [ref=e1041]:
+        - text: CSS variables are organized so
+        - code [ref=e1042]: :root
+        - text: holds the light palette and
+        - code [ref=e1043]: "[data-theme=\"dark\"]"
+        - text: overrides the same names with the dark palette. All component styles are written against the variable names, so the switch is automatic.
+    - heading "Mermaid (v2)" [level=2] [ref=e1044]
+    - paragraph [ref=e1045]:
+      - text: Authors can drop a Mermaid diagram into any chapter with a fenced code block whose language is
+      - code [ref=e1046]: mermaid
+      - text: ":"
+    - code [ref=e1050]: "```mermaid graph TD A[Schrödinger] --> B[Hartree-Fock] B --> C[Kohn-Sham] ```"
+    - paragraph [ref=e1051]:
+      - text: The Mermaid library is loaded from
+      - code [ref=e1052]: https://cdn.jsdelivr.net/npm/mermaid@10
+      - text: and initialized with
+      - code [ref=e1053]: "startOnLoad: true"
+      - text: . The init script picks the theme palette from
+      - code [ref=e1054]: "[data-theme]"
+      - text: so diagrams match the page.
+    - paragraph [ref=e1055]:
+      - code [ref=e1056]: dft_notes/chapters-map.md
+      - text: is the canonical example — a live Mermaid graph of every chapter, with the planned future chapters dimmed and labelled
+      - code [ref=e1057]: (planned)
+      - text: .
+    - heading "Python codes (v2)" [level=2] [ref=e1058]
+    - paragraph [ref=e1059]:
+      - text: Code that runs in a chapter lives
+      - strong [ref=e1060]: twice
+      - text: ":"
+    - list [ref=e1061]:
+      - listitem [ref=e1062]:
+        - strong [ref=e1063]: Inline in the chapter
+        - text: (as a fenced code block) for reading.
+      - listitem [ref=e1064]:
+        - strong [ref=e1065]:
+          - text: In
+          - code [ref=e1066]: dft_notes/python_codes/chapter_NN/NN-slug.py
+        - text: as a runnable file.
+    - paragraph [ref=e1067]: "The folder structure is:"
+    - code [ref=e1071]: dft_notes/python_codes/ ├── README.md ← how to run, how to add a new script ├── chapter_00/ │ ├── 01-particle-in-box.py │ ├── plots/ │ │ └── particle-in-box.png ← generated, committed │ └── ... ├── chapter_01/ │ └── ...
+    - paragraph [ref=e1072]:
+      - text: Scripts that produce plots commit the PNG alongside the script. The README documents the
+      - code [ref=e1073]: python
+      - text: version, the required packages (numpy, matplotlib, scipy), and the convention for naming.
+    - heading "Hidden answers (v2)" [level=2] [ref=e1074]
+    - paragraph [ref=e1075]:
+      - text: Problem sets use HTML
+      - code [ref=e1076]: <details>
+      - text: "for the answer:"
+    - code [ref=e1080]: "<details class=\"problem\"> <summary>Show hint</summary> Start from $E = mc^2$ and the definition of momentum. </details> <details class=\"answer\"> <summary>Show answer</summary> Derivation: ...step by step... </details>"
+    - paragraph [ref=e1081]:
+      - text: CSS styles
+      - code [ref=e1082]: <details>
+      - text: "with the design system: a soft-card background, coral summary text, a thin left border, smooth open/close animation."
+    - heading "Repository structure (v2)" [level=2] [ref=e1083]
+    - paragraph [ref=e1084]: "The full tree, with purpose of each path:"
+    - code [ref=e1088]: "DFT-notes/ ├── .github/ │ ├── CODEOWNERS │ ├── dependabot.yml │ ├── ISSUE_TEMPLATE/bug_report.md │ ├── pull_request_template.md │ └── workflows/ │ ├── jekyll.yml ← build + deploy to Pages │ └── markdown-lint.yml ← markdownlint-cli2 (v0.40) │ ├── _includes/ ← Liquid partials │ ├── head.html ← meta + fonts + CSS + SEO + MathJax + Mermaid │ ├── nav.html ← top nav, mobile menu, theme switcher │ ├── footer.html ← dark navy footer (no chapter list) │ ├── spike-mark.html ← reusable 4-spoke radial SVG │ └── mathjax.html ← MathJax 3 config │ ├── _layouts/ ← Jekyll layouts │ ├── default.html ← wrapper: skip + nav + main + footer + nav.js + theme init │ └── page.html ← .page-content div for reading column │ ├── assets/ │ ├── css/site.css ← The design system (variables + components) │ └── js/ │ ├── nav.js ← mobile menu toggle │ ├── theme.js ← theme switcher (persist + toggle) │ └── mermaid-init.js ← mermaid.initialize() with theme-aware palette │ ├── design.md ← THIS FILE (excluded from served site) ├── agents.md ← The agent handbook (excluded from served site) │ ├── dft_notes/ ← The actual content │ ├── index.md ← chapter index │ ├── chapters-map.md ← Mermaid graph of all chapters │ ├── chapter_00/00-welcome.md │ ├── chapter_NN/00-topic.md │ ├── python_codes/ │ │ ├── README.md │ │ ├── chapter_00/ │ │ │ ├── 01-particle-in-box.py │ │ │ ├── plots/particle-in-box.png │ │ │ └── ... │ │ └── chapter_NN/ │ └── ... │ ├── _config.yml ← Jekyll config ├── Gemfile ← jekyll 3.10 + minima + kramdown-parser-gfm ├── 404.md ├── index.md ← hero-band home page ├── CONTRIBUTING.md ├── SECURITY.md ├── LICENSE ├── README.md ← repo overview + this structure └── .markdownlint-cli2.jsonc ← linter config (MD013, MD033, MD025, MD040, MD024, MD026, MD049, MD060 disabled by design)"
+    - paragraph [ref=e1089]:
+      - text: This is the structure that
+      - strong [ref=e1090]: must not drift
+      - text: . Adding a new chapter goes in
+      - code [ref=e1091]: dft_notes/chapter_NN/
+      - text: . Adding a new Python script goes in
+      - code [ref=e1092]: dft_notes/python_codes/chapter_NN/
+      - text: . Adding a new component class goes in
+      - code [ref=e1093]: assets/css/site.css
+      - text: . Adding a new page-level layout goes in
+      - code [ref=e1094]: _layouts/
+      - text: . No new top-level directories without updating this file.
+  - contentinfo [ref=e1095]:
+    - generic [ref=e1096]:
+      - generic [ref=e1097]:
+        - img [ref=e1098]
+        - generic [ref=e1102]: DFT Notes
+        - paragraph [ref=e1103]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e1104]:
+        - generic [ref=e1105]:
+          - heading "Project" [level=3] [ref=e1106]
+          - list [ref=e1107]:
+            - listitem [ref=e1108]:
+              - link "Chapters map" [ref=e1109] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e1110]:
+              - link "Python codes" [ref=e1111] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e1112]:
+              - link "Contributing" [ref=e1113] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e1114]:
+              - link "Security" [ref=e1115] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e1116]:
+              - link "Design spec" [ref=e1117] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e1118]:
+              - link "GitHub ↗" [ref=e1119] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e1120]:
+          - heading "Built with" [level=3] [ref=e1121]
+          - list [ref=e1122]:
+            - listitem [ref=e1123]:
+              - link "Jekyll" [ref=e1124] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e1125]:
+              - link "MathJax 3" [ref=e1126] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e1127]:
+              - link "Mermaid" [ref=e1128] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e1129]:
+              - link "chenglou/pretext" [ref=e1130] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e1131]:
+              - link "Google Fonts" [ref=e1132] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e1133]:
+          - heading "Legal" [level=3] [ref=e1134]
+          - list [ref=e1135]:
+            - listitem [ref=e1136]:
+              - link "MIT License" [ref=e1137] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e1138]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e1140]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

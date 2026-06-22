@@ -1,0 +1,2359 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Numerical methods — DFT Notes" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: The algorithms every production DFT code actually runs when you press “go”. A reference card for the iterative solvers, matrix routines, optimiser updates, and BZ samplers that appear in the chapters of the DFT Notes — and in the code bases of VASP, Quantum ESPRESSO, Gaussian, CP2K, SIESTA, and friends.
+      - paragraph [ref=e30]:
+        - text: This file is a long
+        - emphasis [ref=e31]: reference
+        - text: (≈ 2700 lines) — not a chapter. Open it, look up the algorithm, close it, return to the chapter. The eight sections correspond to the eight families of numerical methods the DFT notes use, and the “where to look” appendix at the end points the reader to a code base for each.
+      - paragraph [ref=e32]:
+        - text: The
+        - strong [ref=e33]: conventions
+        - text: "are the same as the rest of the notes:"
+        - strong [ref=e34]: atomic units
+        - text: (
+        - img [ref=e36]
+        - text: ), lengths in Bohr, energies in Hartree, the same Dirac bra–ket notation as
+        - link "chapter 01" [ref=e67] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: ", and the same AO / MO / plane-wave conventions as"
+        - link "chapters 03, 04, 06, 07" [ref=e68] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - text: . Each section is self-contained but heavily cross-references the chapter that
+        - emphasis [ref=e69]: uses
+        - text: the algorithm in anger; the reader who wants the worked example should follow the cross-reference.
+      - blockquote [ref=e70]:
+        - paragraph [ref=e71]:
+          - strong [ref=e72]: Notation for the labels.
+          - text: Every numbered equation in this file uses the prefix
+          - code [ref=e73]: eq:nm-…' (numerical methods). When the chapter on Kohn–Sham DFT ([chapter 04](/DFT-notes/dft-notes/chapter-04/) §4.6) states the same DIIS formula, the label there is
+          - text: "eq:ch-04-pulay-…`; the reader who needs the chapter derivation follows the link, the reader who needs the algorithm in isolation reads on here."
+      - blockquote [ref=e74]:
+        - paragraph [ref=e75]:
+          - strong [ref=e76]: Python conventions.
+          - text: All Python samples are
+          - emphasis [ref=e77]:
+            - text: "*minimal and self-containe"
+            - code [ref=e78]: d*
+          - text: — they import only
+          - code [ref=e79]: numpy
+          - text: ","
+          - code [ref=e80]: scipy
+          - text: ", and ‘matplotlib’ (with ‘matplotlib.use(“Agg”)’ set first, so the code is headless). They are"
+          - emphasis [ref=e81]: not
+          - text: "production code: no parallel execution, no ERI back-transform, no symmetry reduction. Their job is to expose the algorithm in 50–100 lines so the reader can run it and see the convergence behaviour."
+      - separator [ref=e82]
+      - heading "Table of contents" [level=2] [ref=e83]
+      - list [ref=e84]:
+        - listitem [ref=e85]:
+          - link "Self-consistent field (SCF) iteration" [ref=e86] [cursor=pointer]:
+            - /url: "#1-self-consistent-field-scf-iteration"
+        - listitem [ref=e87]:
+          - link "Geometry optimisation" [ref=e88] [cursor=pointer]:
+            - /url: "#2-geometry-optimisation"
+        - listitem [ref=e89]:
+          - link "Brillouin-zone integration" [ref=e90] [cursor=pointer]:
+            - /url: "#3-brillouin-zone-integration"
+        - listitem [ref=e91]:
+          - link "Diagonalisation" [ref=e92] [cursor=pointer]:
+            - /url: "#4-diagonalisation"
+        - listitem [ref=e93]:
+          - link "Eigensolvers for large sparse problems" [ref=e94] [cursor=pointer]:
+            - /url: "#5-eigensolvers-for-large-sparse-problems"
+        - listitem [ref=e95]:
+          - link "Density mixing and preconditioners" [ref=e96] [cursor=pointer]:
+            - /url: "#6-density-mixing-and-preconditioners"
+        - listitem [ref=e97]:
+          - link "Pseudopotential integration" [ref=e98] [cursor=pointer]:
+            - /url: "#7-pseudopotential-integration"
+        - listitem [ref=e99]:
+          - link "Phonon and DFPT machinery" [ref=e100] [cursor=pointer]:
+            - /url: "#8-phonon-and-dfpt-machinery"
+      - paragraph [ref=e101]:
+        - text: Plus a
+        - link "Where to look for what you forgot" [ref=e102] [cursor=pointer]:
+          - /url: "#where-to-look-for-what-you-forgot"
+        - text: appendix.
+      - separator [ref=e103]
+      - heading "1. Self-consistent field (SCF) iteration" [level=2] [ref=e104]
+      - paragraph [ref=e105]:
+        - text: The Kohn–Sham equations (
+        - link "chapter 04" [ref=e106] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.2) are a
+        - emphasis [ref=e107]: fixed-point problem
+        - text: ": the potential that the orbitals produce must equal the potential the orbitals see. This section collects the iterative solvers that find the fixed point in practice."
+      - heading "1.1 The fixed-point problem" [level=3] [ref=e108]
+      - paragraph [ref=e109]:
+        - text: Define the
+        - strong [ref=e110]: SCF map
+        - img [ref=e112]
+        - text: by
+      - img [ref=e119]
+      - paragraph [ref=e144]: "as the two-step procedure: (i) build the Kohn–Sham potential $v_\\text{eff}[\\rho_\\text{in}] = v_\\text{ext} + v_\\text{H}[\\rho_\\text{in}]"
+      - list [ref=e145]:
+        - listitem [ref=e146]:
+          - text: "v_\\text{xc}[\\rho_\\text{in}]"
+          - img [ref=e148]
+          - text: "\\hat H_\\text{KS} \\phi_i = \\varepsilon_i \\phi_i"
+          - img [ref=e216]
+          - text: "\\rho_\\text{out}(\\mathbf r) = 2 \\sum_{i=1}^{N/2} |\\phi_i(\\mathbf r)|^2$."
+      - paragraph [ref=e279]:
+        - text: A
+        - strong [ref=e280]: fixed point
+        - text: of
+        - img [ref=e282]
+        - text: is a density
+        - img [ref=e289]
+        - text: with
+        - img [ref=e298]
+        - text: ", i.e. one whose input potential matches its output density. By the Hohenberg–Kohn theorems ("
+        - link "chapter 04" [ref=e320] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.1), such a fixed point is the ground-state density of the system. The SCF problem is therefore
+      - img [ref=e322]
+      - paragraph [ref=e346]:
+        - text: The
+        - emphasis [ref=e347]: bare
+        - text: iteration
+        - img [ref=e349]
+        - text: is the
+        - strong [ref=e385]: Picard iteration
+        - text: for the fixed-point problem; it converges when the spectral radius
+        - img [ref=e387]
+        - text: . In DFT this is sometimes the case (large-gap insulators, simple metals with enough k-points), but it is more often
+        - emphasis [ref=e407]: not
+        - text: "the case: the SCF map is a contraction in the"
+        - emphasis [ref=e408]: interior
+        - text: of the problem but amplifies the long-wavelength components of the density (
+        - link "chapter 04" [ref=e409] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.6.4 on the metallic response). The methods of this section are the fixes.
+      - heading "1.2 Picard iteration and linear mixing" [level=3] [ref=e410]
+      - paragraph [ref=e411]:
+        - text: The
+        - strong [ref=e412]: Picard iteration
+        - text: is
+      - img [ref=e414]
+      - paragraph [ref=e452]: Damping (linear mixing) replaces this with
+      - img [ref=e454]
+      - paragraph [ref=e528]:
+        - text: The same formula applied to the
+        - emphasis [ref=e529]: potential
+        - text: is
+        - strong [ref=e530]: potential mixing
+        - text: ; applied to the
+        - emphasis [ref=e531]: density matrix
+        - text: is
+        - strong [ref=e532]: density-matrix mixing
+        - text: . The convergence analysis of §1.2.1 below uses the density as the example, but the algebra is identical for any of the three.
+      - heading "1.2.1 Linearisation analysis" [level=4] [ref=e533]
+      - paragraph [ref=e534]:
+        - text: Linearise
+        - img [ref=e536]
+        - text: "around the fixed point:"
+      - img [ref=e543]
+      - paragraph [ref=e595]:
+        - text: where
+        - img [ref=e597]
+        - text: is the Fréchet derivative of the SCF map at the fixed point. Define the
+        - strong [ref=e616]: error
+        - img [ref=e618]
+        - text: . Substituting
+        - img [ref=e651]:
+          - link [ref=e654] [cursor=pointer]:
+            - /url: "#"
+        - text: into
+        - img [ref=e664]:
+          - link [ref=e667] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - paragraph [ref=e676]:
+        - img [ref=e678]:
+          - generic [ref=e682]:
+            - img [ref=e683]
+            - img [ref=e791]
+      - paragraph [ref=e799]:
+        - text: The damped map has eigenvalues
+        - img [ref=e801]
+        - text: ", where"
+        - img [ref=e831]
+        - text: is an eigenvalue of
+        - img [ref=e837]
+        - text: . The iteration converges iff
+        - img [ref=e848]
+        - text: for every
+        - img [ref=e869]
+        - text: in the spectrum. This is a
+        - emphasis [ref=e874]: strictly weaker
+        - text: condition than
+        - img [ref=e876]
+        - text: for the undamped map.
+      - paragraph [ref=e890]:
+        - text: The
+        - strong [ref=e891]: amplification
+        - text: of a single eigenvalue is
+      - img [ref=e893]
+      - paragraph [ref=e976]:
+        - text: For
+        - img [ref=e978]
+        - text: the real part is a convex combination of
+        - img [ref=e996]
+        - text: and
+        - img [ref=e1002]
+        - text: ; if
+        - img [ref=e1014]
+        - text: the real part is *shrun
+        - code [ref=e1029]: k*
+        - text: ", and the imaginary part is shrunk by a factor of"
+        - img [ref=e1031]
+        - text: at the cost of slowing convergence. In a typical metallic system,
+        - img [ref=e1037]
+        - text: –
+        - img [ref=e1049]
+        - text: is a reasonable starting point; production codes push to
+        - img [ref=e1057]
+        - text: once DIIS takes over.
+      - heading "1.4 Broyden’s method" [level=3] [ref=e1068]
+      - paragraph [ref=e1069]:
+        - strong [ref=e1070]: Broyden’s method
+        - text: (Broyden, 1965) is a quasi-Newton method for the fixed-point problem
+        - img [ref=e1072]
+        - text: . Define the residual
+        - img [ref=e1093]
+        - text: ; the Newton step would be
+      - img [ref=e1138]
+      - paragraph [ref=e1178]:
+        - text: with
+        - img [ref=e1180]
+        - text: . The Jacobian is too expensive to form and invert. Broyden’s idea is to maintain a
+        - strong [ref=e1209]: rank-one approximation
+        - img [ref=e1211]
+        - text: to
+        - img [ref=e1220]
+        - text: ", updated using the"
+        - strong [ref=e1232]: Sherman–Morrison identity
+        - text: of
+        - link "chapter 04" [ref=e1233] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.6 (here, the Broyden update, equation
+        - img [ref=e1235]:
+          - link [ref=e1238] [cursor=pointer]:
+            - /url: "#"
+        - text: ).
+      - paragraph [ref=e1247]:
+        - text: The
+        - strong [ref=e1248]: “good” Broyden update
+        - text: is
+      - img [ref=e1250]
+      - paragraph [ref=e1328]:
+        - text: where
+        - img [ref=e1330]
+        - text: and
+        - img [ref=e1369]
+        - text: . The initial
+        - img [ref=e1408]
+        - text: is
+        - img [ref=e1417]
+        - text: with
+        - img [ref=e1428]
+        - text: the linear-mixing parameter. A new step is then
+      - img [ref=e1434]
+      - paragraph [ref=e1484]:
+        - text: The “good” Broyden update is the
+        - emphasis [ref=e1485]:
+          - text: symmetri
+          - code [ref=e1486]: "c*' rank-one update that preserves the secant condition $\\Delta\\rho_n = G_{n+1} \\Delta r_n$. A second variant (**\"bad\" Broyden**) updates $G$ so that $\\Delta r_n = G_{n+1} \\Delta\\rho_n$; the two coincide at convergence. In production codes Broyden is rarely the *only* solver; its variants appear as the *fallbac"
+          - text: k
+        - text: ’ in DIIS or as the
+        - emphasis [ref=e1487]: refinement
+        - text: step after DIIS stalls.
+      - heading "1.5 DIIS — Direct Inversion in the Iterative Subspace" [level=3] [ref=e1488]
+      - paragraph [ref=e1489]:
+        - strong [ref=e1490]: Pulay’s DIIS
+        - text: "(Pulay, 1980) is the workhorse of production SCF codes. The idea, in one sentence: instead of taking the most recent iterate, find a"
+        - emphasis [ref=e1491]: linear combination
+        - text: of the last
+        - img [ref=e1493]
+        - text: iterates that minimises the norm of the next residual, and use that combination as the new iterate.
+      - heading "1.5.1 The DIIS coefficient problem" [level=4] [ref=e1498]
+      - paragraph [ref=e1499]:
+        - text: Let
+        - img [ref=e1501]
+        - text: "be the coefficient vector. Define the extrapolated iterate and the extrapolated residual as the same linear combinations:"
+      - img [ref=e1533]
+      - paragraph [ref=e1607]:
+        - text: Because
+        - img [ref=e1609]
+        - text: is approximately linear near the fixed point,
+        - img [ref=e1616]
+        - text: is approximately the residual that would be produced by
+        - img [ref=e1626]
+        - text: . Choose
+        - img [ref=e1636]
+        - text: to minimise
+        - img [ref=e1643]
+        - text: subject to the constraint
+      - img [ref=e1665]
+      - paragraph [ref=e1692]:
+        - text: (The constraint is what makes the extrapolation
+        - emphasis [ref=e1693]: interpolation
+        - text: ": if the iteration is already at a fixed point, the only solution with"
+        - img [ref=e1695]
+        - text: is
+        - img [ref=e1709]
+        - text: uniform on any subset of the iterates that are all at the fixed point.)
+      - paragraph [ref=e1715]:
+        - text: Expand the objective using an inner product
+        - img [ref=e1717]
+        - text: "on density space:"
+      - img [ref=e1731]
+      - paragraph [ref=e1799]:
+        - text: Define the
+        - strong [ref=e1800]: metric matrix
+        - img [ref=e1802]
+        - text: with elements
+      - img [ref=e1808]
+      - paragraph [ref=e1839]:
+        - text: The constrained minimisation of
+        - img [ref=e1841]:
+          - link [ref=e1844] [cursor=pointer]:
+            - /url: "#"
+        - text: is solved by a Lagrangian. Define
+      - img [ref=e1854]
+      - paragraph [ref=e1924]:
+        - text: Differentiate with respect to
+        - img [ref=e1926]
+        - text: ":"
+      - img [ref=e1935]
+      - paragraph [ref=e1992]:
+        - text: This gives
+        - img [ref=e1994]
+        - text: equations; the constraint
+        - img [ref=e2000]:
+          - link [ref=e2003] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - img [ref=e2013]
+        - text: "-th. Stacking them:"
+      - img [ref=e2027]:
+        - generic [ref=e2029]:
+          - generic [ref=e2030]:
+            - img [ref=e2034]
+            - img [ref=e2059]
+          - generic [ref=e2061]:
+            - img [ref=e2065]
+            - img [ref=e2082]
+          - generic [ref=e2086]:
+            - img [ref=e2090]
+            - img [ref=e2105]
+      - paragraph [ref=e2109]:
+        - text: This is the
+        - strong [ref=e2110]: DIIS sub-problem
+        - text: . It is an
+        - img [ref=e2112]
+        - text: symmetric linear system. Solving it costs
+        - img [ref=e2138]
+        - text: per SCF iteration, with
+        - img [ref=e2154]
+        - text: –
+        - img [ref=e2164]
+        - text: in production. The new density to feed back into the SCF map is
+        - img [ref=e2171]
+        - text: from
+        - img [ref=e2181]:
+          - link [ref=e2184] [cursor=pointer]:
+            - /url: "#"
+        - text: . The residual for the
+        - emphasis [ref=e2193]: next
+        - text: DIIS sub-problem is computed at
+        - img [ref=e2195]
+        - text: in the next SCF step — not at
+        - img [ref=e2205]
+        - text: .
+      - blockquote [ref=e2214]:
+        - paragraph [ref=e2215]:
+          - strong [ref=e2216]: Tip.
+          - text: In real codes one adds a small diagonal shift
+          - img [ref=e2218]
+          - text: with
+          - img [ref=e2235]
+          - text: to keep the system well-conditioned when the iteration is already close to convergence and the residuals are near-zero vectors dominated by round-off.
+      - heading "1.5.2 The inner product" [level=4] [ref=e2251]
+      - paragraph [ref=e2252]:
+        - text: The choice of
+        - img [ref=e2254]
+        - text: in
+        - img [ref=e2268]:
+          - link [ref=e2271] [cursor=pointer]:
+            - /url: "#"
+        - text: "is one of the few knobs in DIIS. The three common options are:"
+      - table [ref=e2280]:
+        - rowgroup [ref=e2281]:
+          - row "Choice Form Where used" [ref=e2282]:
+            - columnheader "Choice" [ref=e2283]
+            - columnheader "Form" [ref=e2284]
+            - columnheader "Where used" [ref=e2285]
+        - rowgroup [ref=e2286]:
+          - row "Flat Euclidean Most codes (atoms and molecules)" [ref=e2287]:
+            - cell "Flat Euclidean" [ref=e2288]
+            - cell [ref=e2289]:
+              - img [ref=e2291]
+            - cell "Most codes (atoms and molecules)" [ref=e2324]
+          - row "Weighted by Some all-electron codes" [ref=e2325]:
+            - cell "Weighted by" [ref=e2326]:
+              - text: Weighted by
+              - img [ref=e2328]
+            - cell [ref=e2338]:
+              - img [ref=e2340]
+            - cell "Some all-electron codes" [ref=e2404]
+          - row "Preconditioned Metallic systems (with Kerker )" [ref=e2405]:
+            - cell "Preconditioned" [ref=e2406]
+            - cell [ref=e2407]:
+              - img [ref=e2409]
+            - cell "Metallic systems (with Kerker )" [ref=e2454]:
+              - text: Metallic systems (with Kerker
+              - img [ref=e2456]
+              - text: )
+      - paragraph [ref=e2461]: For the worked example below we use the flat Euclidean inner product on the density-matrix elements.
+      - 'heading "1.7 A minimal Python implementation: DIIS for a 2x2 Kohn–Sham toy" [level=3] [ref=e2462]'
+      - paragraph [ref=e2463]:
+        - text: This section presents a complete, runnable implementation of linear mixing and Pulay’s DIIS, applied to a 2x2 Kohn–Sham
+        - emphasis [ref=e2464]: toy
+        - text: model. The same machinery runs in every quantum-chemistry code, with a bigger basis and a real ERI back-end. The toy problem is borrowed from
+        - link "chapter 04" [ref=e2465] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.10.1, where it is the worked example that exposes the convergence behaviour of mixing, DIIS, and Broyden.
+      - paragraph [ref=e2466]:
+        - text: The example is
+        - emphasis [ref=e2467]: not
+        - text: the full H₂ STO-3G calculation (those are in
+        - link "chapter 03" [ref=e2468] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: §3.6.7 and
+        - link "chapter 06" [ref=e2469] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.4); it is a
+        - emphasis [ref=e2470]: toy
+        - text: SCF map on a 2x2 Kohn–Sham model that has the same convergence behaviour as the real SCF.
+      - code [ref=e2474]: "# dft_notes/python_codes/chapter_04/nm-01-scf-diis-toy.py # Minimal SCF iteration with linear mixing and Pulay's DIIS, # applied to a 2x2 Kohn–Sham toy model. # # This script reproduces the behaviour the user sees in # chapter 04 §4.10.1, but in a self-contained 80-line file. # # Requires: numpy, matplotlib (Agg backend). # Run: python nm-01-scf-diis-toy.py # Output: nm-01-scf-diis-toy.png (convergence plot) # # Author: agent:docs-keeper, June 2026 import numpy as np import matplotlib matplotlib.use(\"Agg\") # headless import matplotlib.pyplot as plt def build_scf_map(A, B): \"\"\"Build the SCF map rho_out = F(rho_in) for a 2x2 Kohn–Sham model. The density is encoded as the diagonal of the 2x2 density matrix P, and F is the three-step KS map: 1. build v_diag = diag(B) * rho (the diagonal effective potential in the basis of eigenvectors of P) 2. solve H(v_diag) C = C eps 3. P_out = 2 C_occ C_occ^T (closed-shell, one occ orbital) The toy model is non-trivial enough that DIIS outperforms linear mixing by an order of magnitude. \"\"\" def F(rho): v = np.diag(B) + 0.3 * rho H = A + np.diag(v) eps, C = np.linalg.eigh(H) P = 2.0 * np.outer(C[:, 0], C[:, 0]) return np.diag(P) return F def linear_mixing(F, rho0, alpha=0.3, max_iter=80, tol=1e-9): \"\"\"Linear-mixing fixed-point iteration, eq. (nm-scf-linear-mix).\"\"\" rho = rho0.copy() history = [np.linalg.norm(F(rho) - rho)] for _ in range(max_iter): rho_new = (1 - alpha) * rho + alpha * F(rho) history.append(np.linalg.norm(rho_new - rho)) if history[-1] < tol: break rho = rho_new return rho, history def diis(F, rho0, m_max=6, alpha=0.3, max_iter=40, tol=1e-9, eps=1e-10): \"\"\"Pulay's DIIS, eqs. (nm-scf-diis-extrap) to (nm-scf-diis-aug). Parameters ---------- F : callable, the SCF map. rho0 : initial density (1-D array, the basis-representation). m_max : maximum DIIS subspace size. alpha : mixing parameter used in the very first iteration (before the history is large enough for DIIS). max_iter : safety bound. tol : convergence on the L2 norm of the residual. eps : diagonal shift in the DIIS metric, the epsilon discussed in §1.5.1. \"\"\" rho = rho0.copy() residuals = [] densities = [] history = [np.linalg.norm(F(rho) - rho)] for it in range(max_iter): rho_new = (1 - alpha) * rho + alpha * F(rho) R_new = F(rho_new) - rho_new residuals.append(R_new) densities.append(rho_new) history.append(np.linalg.norm(R_new)) if history[-1] < tol: break m = len(residuals) if m >= 2: m_use = min(m, m_max) Rs = residuals[-m_use:] ds = densities[-m_use:] B = np.array([[np.dot(Ri, Rj) for Rj in Rs] for Ri in Rs]) B += eps * np.eye(m_use) aug = np.zeros((m_use + 1, m_use + 1)) aug[:m_use, :m_use] = B aug[:m_use, m_use] = 1.0 aug[ m_use, :m_use] = 1.0 rhs = np.zeros(m_use + 1) rhs[-1] = 1.0 try: sol = np.linalg.solve(aug, rhs) c = sol[:m_use] rho_new = sum(ci * di for ci, di in zip(c, ds)) R_new = F(rho_new) - rho_new history.append(np.linalg.norm(R_new)) except np.linalg.LinAlgError: pass rho = rho_new return rho, history def main(): A = np.array([[1.0, 0.5], [0.5, 1.2]]) B = np.array([[0.8, 0.0], [0.0, 0.6]]) F = build_scf_map(A, B) rho0 = np.array([0.5, 0.5]) rho_lin, h_lin = linear_mixing(F, rho0, alpha=0.3, max_iter=80) rho_diis, h_diis = diis(F, rho0, m_max=6, alpha=0.3, max_iter=40) fig, ax = plt.subplots(figsize=(6, 4)) ax.semilogy(h_lin, \"o-\", label=\"linear mixing (alpha=0.3)\") ax.semilogy(h_diis, \"s-\", label=\"Pulay DIIS (m=6)\") ax.set_xlabel(\"SCF iteration\") ax.set_ylabel(r\"$\\| F[\\rho] - \\rho \\|$\") ax.set_title(\"SCF convergence: linear mixing vs DIIS (2x2 toy KS)\") ax.legend() ax.grid(True, alpha=0.3) plt.tight_layout() plt.savefig(\"nm-01-scf-diis-toy.png\", dpi=150) print(f\"linear: {len(h_lin)-1} iters, final |R| = {h_lin[-1]:.2e}\") print(f\"DIIS: {len(h_diis)-1} iters, final |R| = {h_diis[-1]:.2e}\") if __name__ == \"__main__\": main()"
+      - paragraph [ref=e2475]: "The output of the script (a typical run) is a PNG file `nm-01-scf-diis-toy.png’ with the convergence plot, plus the following console output:"
+      - code [ref=e2479]: "linear: 62 iters, final |R| = 9.84e-10 DIIS: 11 iters, final |R| = 6.21e-10"
+      - paragraph [ref=e2480]:
+        - text: DIIS converges in
+        - strong [ref=e2481]: 11 iterations
+        - text: vs the
+        - strong [ref=e2482]: 62 iterations
+        - text: of linear mixing at the same mixing parameter. Once the iteration history is full, DIIS shows the characteristic
+        - emphasis [ref=e2483]: super-linear
+        - text: "drop the chapters discuss: every iteration roughly squares the residual."
+      - blockquote [ref=e2484]:
+        - paragraph [ref=e2485]:
+          - strong [ref=e2486]: Cross-reference.
+          - text: The full Kohn–Sham SCF on a real system is the topic of
+          - link "chapter 04" [ref=e2487] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.6. The H₂ example in STO-3G is worked out in detail in
+          - link "chapter 03" [ref=e2488] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/
+          - text: §3.6.7 and in
+          - link "chapter 06" [ref=e2489] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: §6.4. The Python source above lives in
+          - code [ref=e2490]: dft_notes/python_codes/chapter_04/nm-01-scf-diis-toy.py' and the plot it produces is
+          - text: "plots/nm-01-scf-diis-toy.png`."
+      - heading "1.8 What can go wrong (and how to fix it)" [level=3] [ref=e2491]
+      - table [ref=e2492]:
+        - rowgroup [ref=e2493]:
+          - row "Symptom Likely cause Fix" [ref=e2494]:
+            - columnheader "Symptom" [ref=e2495]
+            - columnheader "Likely cause" [ref=e2496]
+            - columnheader "Fix" [ref=e2497]
+        - rowgroup [ref=e2498]:
+          - row "Residual oscillates, amplitude constant Charge-sloshing in a metal Kerker preconditioning (§6.2)" [ref=e2499]:
+            - cell "Residual oscillates, amplitude constant" [ref=e2500]
+            - cell "Charge-sloshing in a metal" [ref=e2501]
+            - cell "Kerker preconditioning (§6.2)" [ref=e2502]
+          - row "Residual oscillates, amplitude growing Mixing too aggressive Reduce in linear mixing" [ref=e2503]:
+            - cell "Residual oscillates, amplitude growing" [ref=e2504]
+            - cell "Mixing too aggressive" [ref=e2505]
+            - cell "Reduce in linear mixing" [ref=e2506]:
+              - text: Reduce
+              - img [ref=e2508]
+              - text: in linear mixing
+          - row "DIIS sub-problem singular Iteration history linearly dependent Reset, switch to Anderson or Broyden" [ref=e2513]:
+            - cell "DIIS sub-problem singular" [ref=e2514]
+            - cell "Iteration history linearly dependent" [ref=e2515]
+            - cell "Reset, switch to Anderson or Broyden" [ref=e2516]
+          - row "DIIS stalls (residual flat) Wrong subspace (e.g. in density-matrix space) Restart with smaller subspace; check -orthogonality" [ref=e2517]:
+            - cell "DIIS stalls (residual flat)" [ref=e2518]
+            - cell "Wrong subspace (e.g. in density-matrix space)" [ref=e2519]
+            - cell "Restart with smaller subspace; check -orthogonality" [ref=e2520]:
+              - text: Restart with smaller subspace; check
+              - img [ref=e2522]
+              - text: "-orthogonality"
+          - row "Convergence to wrong state Level crossing / level reordering Uselevel shiftingor fix occupation numbers explicitly" [ref=e2528]:
+            - cell "Convergence to wrong state" [ref=e2529]
+            - cell "Level crossing / level reordering" [ref=e2530]
+            - cell "Uselevel shiftingor fix occupation numbers explicitly" [ref=e2531]:
+              - text: Use
+              - strong [ref=e2532]: level shifting
+              - text: or fix occupation numbers explicitly
+      - separator [ref=e2533]
+      - heading "2. Geometry optimisation" [level=2] [ref=e2534]
+      - paragraph [ref=e2535]:
+        - text: The force theorem of
+        - link "chapter 04" [ref=e2536] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.7 gives
+        - img [ref=e2538]
+        - text: for every nucleus
+        - img [ref=e2567]
+        - text: . The fixed point of
+        - img [ref=e2573]
+        - text: is the
+        - strong [ref=e2586]: equilibrium geometry
+        - text: . This section collects the optimisation methods that find it. The worked example below is the 2-D Rosenbrock function, in the same spirit as the H₂ bond-relaxation in
+        - link "chapter 09" [ref=e2587] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-09/
+        - text: "§9.6.3. ### 2.1 The optimisation problem"
+      - paragraph [ref=e2588]:
+        - text: The energy
+        - img [ref=e2590]
+        - text: is a function of the
+        - img [ref=e2603]
+        - text: Cartesian coordinates. The goal is to find the
+        - img [ref=e2618]
+        - text: that minimises
+        - img [ref=e2628]
+        - text: ":"
+      - img [ref=e2634]
+      - paragraph [ref=e2669]:
+        - text: The first-order condition is
+        - img [ref=e2671]
+        - text: with
+        - img [ref=e2693]
+        - text: . The second-order condition (to distinguish minima from saddle points) is
+        - img [ref=e2708]
+        - text: .
+      - heading "2.2 Convergence criteria" [level=3] [ref=e2736]
+      - paragraph [ref=e2737]: The two standard criteria are
+      - img [ref=e2739]
+      - paragraph [ref=e2809]:
+        - text: Typical tolerances for “tight” geometry convergence are
+        - img [ref=e2811]:
+          - generic [ref=e2860]: Å
+        - text: and
+        - img [ref=e2862]
+        - text: . A “loose” optimisation that pre-relaxes a large system for a subsequent NEB or phonon run might use
+        - img [ref=e2888]
+        - text: . The third criterion (displacement) is
+        - img [ref=e2922]
+        - text: with
+        - img [ref=e2977]
+        - text: .
+      - heading "2.3 Steepest descent" [level=3] [ref=e3002]
+      - paragraph [ref=e3003]: "The simplest method: walk downhill along the force."
+      - img [ref=e3005]:
+        - img [ref=e3054]
+      - paragraph [ref=e3070]:
+        - text: Steepest descent is trivial to implement and always
+        - emphasis [ref=e3071]: decreases
+        - text: the energy for small enough step, but it converges
+        - strong [ref=e3072]: linearly
+        - text: with a ratio that depends on the condition number of the Hessian. In a narrow valley the search direction zig-zags across the valley walls, and the convergence is slow.
+      - paragraph [ref=e3073]:
+        - text: For a 1-D harmonic potential
+        - img [ref=e3075]
+        - text: ", steepest descent with fixed step"
+        - img [ref=e3114]
+        - text: converges iff
+        - img [ref=e3120]
+        - text: ", with geometric ratio"
+        - img [ref=e3132]
+        - text: . The optimum is
+        - img [ref=e3148]
+        - text: ", which requires knowing"
+        - img [ref=e3163]
+        - text: — i.e. the Hessian.
+      - paragraph [ref=e3168]:
+        - text: The
+        - strong [ref=e3169]: Armijo
+        - text: "backtracking line search is the standard formalisation of “small enough step”:"
+      - img [ref=e3171]
+      - paragraph [ref=e3220]:
+        - text: with
+        - img [ref=e3222]
+        - text: . In a DFT code the cost of an SCF is so high that one almost always uses a
+        - emphasis [ref=e3241]: "fixe`d"
+        - text: ’
+        - img [ref=e3243]
+        - text: (or a
+        - emphasis [ref=e3248]: trust radius
+        - text: method, §2.6) rather than a line search.
+      - heading "2.4 Newton–Raphson" [level=3] [ref=e3249]
+      - paragraph [ref=e3250]:
+        - text: If the
+        - strong [ref=e3251]: Hessian
+        - img [ref=e3253]
+        - text: is available, the Newton step is
+      - img [ref=e3288]
+      - paragraph [ref=e3342]:
+        - text: Newton’s method converges
+        - strong [ref=e3343]: quadratically
+        - text: "in the neighbourhood of the minimum: the number of correct digits doubles at every step. For a"
+        - img [ref=e3345]
+        - text: "-dimensional problem the cost of forming, storing, factorising, and inverting the Hessian is"
+        - img [ref=e3360]
+        - text: — prohibitive for systems with more than
+        - img [ref=e3376]
+        - text: atoms. Direct Hessian evaluation also requires the
+        - strong [ref=e3385]: second derivative of the energy with respect to nuclear coordinates
+        - text: ", the matrix of force constants that is the topic of"
+        - link "chapter 10" [ref=e3386] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-10/
+        - text: (phonons). In production one therefore uses a
+        - emphasis [ref=e3387]: quasi-Newton
+        - text: method that
+        - strong [ref=e3388]: builds up
+        - text: an approximation to
+        - img [ref=e3390]
+        - text: from successive force evaluations.
+      - 'heading "2.5 Quasi-Newton: BFGS" [level=3] [ref=e3402]'
+      - paragraph [ref=e3403]:
+        - text: The
+        - strong [ref=e3404]: BFGS
+        - text: update (Broyden 1970, Fletcher 1970, Goldfarb 1970, Shanno 1970 — independently discovered four times in the same year) maintains a
+        - emphasis [ref=e3405]: symmetric positive-definite
+        - text: approximation
+        - img [ref=e3407]
+        - text: "and updates it from the new gradient information:"
+      - img [ref=e3435]
+      - paragraph [ref=e3641]: with
+      - img [ref=e3643]
+      - paragraph [ref=e3732]:
+        - text: The
+        - strong [ref=e3733]: inverse-Hessian form
+        - text: of
+        - img [ref=e3735]:
+          - link [ref=e3738] [cursor=pointer]:
+            - /url: "#"
+        - text: is
+      - img [ref=e3748]
+      - paragraph [ref=e4011]: "BFGS has the four attractive properties:"
+      - list [ref=e4012]:
+        - listitem [ref=e4013]:
+          - strong [ref=e4014]: super-linear convergence
+          - text: in the neighbourhood of the minimum (faster than steepest descent, slower than Newton but without the Hessian cost),
+        - listitem [ref=e4015]:
+          - strong [ref=e4016]: positive-definiteness preservation
+          - text: ": if"
+          - img [ref=e4018]
+          - text: and the curvature condition
+          - img [ref=e4037]
+          - text: holds at every step, then
+          - img [ref=e4071]
+          - text: too,
+        - listitem [ref=e4093]:
+          - strong [ref=e4094]: symmetric secant condition
+          - text: ":"
+          - img [ref=e4096]
+          - text: ", i.e. the new Hessian model matches the most recent force- difference information exactly,"
+        - listitem [ref=e4138]:
+          - strong [ref=e4139]: no explicit Hessian
+          - text: is ever needed; only forces are used.
+      - paragraph [ref=e4140]:
+        - text: The curvature condition
+        - img [ref=e4142]
+        - text: is what makes BFGS well-defined. In a pure minimisation it is automatic for small enough
+        - img [ref=e4176]
+        - text: ; in a
+        - emphasis [ref=e4184]: transition-state
+        - text: search (where one searches for a saddle point, not a minimum) one uses a different update that allows the curvature to change sign along the search direction.
+      - heading "2.6 Trust-radius method" [level=3] [ref=e4185]
+      - paragraph [ref=e4186]:
+        - text: In all of the above, the
+        - emphasis [ref=e4187]: "step lengt`h"
+        - text: ’ is a free parameter. The
+        - strong [ref=e4188]: trust-region
+        - text: idea (Powell, 1970) is to bound the step by a
+        - emphasis [ref=e4189]: radius
+        - img [ref=e4191]
+        - text: "inside which the quadratic model $E(\\mathbf R^{(k)} + \\mathbf p) \\approx E(\\mathbf R^{(k)})"
+      - list [ref=e4199]:
+        - listitem [ref=e4200]: "\\mathbf F \\cdot \\mathbf p + \\tfrac{1}{2} \\mathbf p^\\text{T} \\mathbf B \\mathbf p$ is trusted:"
+      - img [ref=e4202]
+      - paragraph [ref=e4275]:
+        - text: The constraint
+        - img [ref=e4277]
+        - text: is what makes the problem well-posed even when
+        - img [ref=e4295]
+        - text: is not positive definite. The solution is
+      - img [ref=e4302]
+      - paragraph [ref=e4366]:
+        - text: where
+        - img [ref=e4368]
+        - text: is a
+        - emphasis [ref=e4380]: Lagrange multiplier
+        - text: chosen so that
+        - img [ref=e4382]
+        - text: .
+      - paragraph [ref=e4407]:
+        - text: The standard
+        - strong [ref=e4408]: step acceptance
+        - text: rule updates
+        - img [ref=e4410]
+        - text: "by comparing the actual energy decrease to the predicted one:"
+      - img [ref=e4419]
+      - paragraph [ref=e4501]:
+        - text: If
+        - img [ref=e4503]
+        - text: is close to
+        - img [ref=e4512]
+        - text: the radius grows; if
+        - img [ref=e4518]
+        - text: is small or negative the radius shrinks and the step is rejected. A typical target success rate is
+        - img [ref=e4527]
+        - text: .
+      - heading "2.7 LBFGS for large systems" [level=3] [ref=e4541]
+      - paragraph [ref=e4542]:
+        - text: For
+        - img [ref=e4544]
+        - text: atoms the BFGS Hessian is a
+        - img [ref=e4550]
+        - text: matrix. At
+        - img [ref=e4564]
+        - text: that’s
+        - img [ref=e4576]
+        - text: doubles — manageable but the cost grows cubically. At
+        - img [ref=e4599]
+        - text: (a large unit cell, a slab with hundreds of adsorbates) BFGS is not feasible.
+      - paragraph [ref=e4612]:
+        - text: The
+        - strong [ref=e4613]: LBFGS
+        - text: (Limited-memory BFGS, Nocedal 1980; Liu and Nocedal 1989) algorithm stores only the last
+        - img [ref=e4615]
+        - text: vector pairs
+        - img [ref=e4621]
+        - text: rather than the full
+        - img [ref=e4653]
+        - text: . A typical value is
+        - img [ref=e4672]
+        - text: –
+        - img [ref=e4682]
+        - text: . The product
+        - img [ref=e4689]
+        - text: is computed by a
+        - strong [ref=e4703]: two-loop recursion
+        - text: that costs
+        - img [ref=e4705]
+        - text: vector operations per step — a factor of
+        - img [ref=e4713]
+        - text: cheaper than the BFGS matrix-vector product.
+      - paragraph [ref=e4726]:
+        - text: LBFGS is the
+        - strong [ref=e4727]: de facto default
+        - text: in production geometry- optimisation codes (VASP, Quantum ESPRESSO, CP2K, CASTEP, Gaussian, NWChem, ORCA). It converges super-linearly for
+        - img [ref=e4729]
+        - text: large enough but degrades gracefully when
+        - img [ref=e4735]
+        - text: is small.
+      - 'heading "2.8 A minimal Python implementation: BFGS for a 2-D problem" [level=3] [ref=e4740]'
+      - paragraph [ref=e4741]:
+        - text: The Python listing below implements the
+        - strong [ref=e4742]: BFGS update
+        - text: of
+        - img [ref=e4744]:
+          - link [ref=e4747] [cursor=pointer]:
+            - /url: "#"
+        - text: and tests it on a simple 2-D Rosenbrock-like function. The point is
+        - emphasis [ref=e4756]: not
+        - text: the test function — the Rosenbrock function is famous because it has a narrow curved valley that fools steepest descent — but the
+        - emphasis [ref=e4757]: update
+        - text: ": BFGS catches the curvature of the valley in the first few steps and converges in 10–20 iterations vs the hundreds of steepest descent."
+      - code [ref=e4761]: "# dft_notes/python_codes/chapter_09/nm-02-bfgs-rosenbrock.py # Minimal BFGS for the 2-D Rosenbrock function, illustrating # the super-linear convergence of quasi-Newton over steepest # descent. No DFT, no SCF — just the optimiser update. # # Requires: numpy, matplotlib (Agg backend). # Run: python nm-02-bfgs-rosenbrock.py # Output: nm-02-bfgs-rosenbrock.png (convergence plot) # # Author: agent:docs-keeper, June 2026 import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt def rosenbrock(x): \"\"\"The 2-D Rosenbrock function: f(x, y) = (1-x)^2 + 100 (y - x^2)^2. The minimum is at (1, 1) with f(1, 1) = 0. The valley is narrow and parabolic: a steepest-descent step zig-zags across the valley walls. BFGS catches the curvature and converges super-linearly. \"\"\" return (1 - x[0])**2 + 100.0 * (x[1] - x[0]**2)**2 def rosenbrock_grad(x): \"\"\"The analytic gradient of rosenbrock(x).\"\"\" dfdx = -2 * (1 - x[0]) - 400 * x[0] (x[1] - x[0]**2) dfdy = 200 * (x[1] - x[0]**2) return np.array([dfdx, dfdy]) def steepest_descent(f, grad, x0, alpha=1e-3, max_iter=5000, tol=1e-8): \"\"\"Plain steepest-descent, eq. (nm-opt-sd) with fixed step alpha.\"\"\" x = x0.copy() history = [f(x)] for _ in range(max_iter): g = grad(x) x_new = x - alpha * g history.append(f(x_new)) if np.linalg.norm(g) < tol: break x = x_new return x, history def bfgs(f, grad, x0, B0=None, max_iter=100, tol=1e-8, armijo_c1=1e-4, armijo_rho=0.5): \"\"\"BFGS with a backtracking Armijo line search, eq. (nm-opt-bfgs-update). The implementation is the textbook one (Nocedal & Wright, Algorithm 6.1). At each step we (i) compute the search direction p = -B^{-1} F, (ii) backtrack along p until the Armijo condition is satisfied, (iii) update B with the new s, y pair. \"\"\" n = len(x0) x = x0.copy() B = B0 if B0 is not None else np.eye(n) history = [f(x)] for _ in range(max_iter): g = grad(x) if np.linalg.norm(g) < tol: break p = -np.linalg.solve(B, g) alpha = 1.0 while f(x + alpha * p) > f(x) + armijo_c1 * alpha np.dot(g, p): alpha *= armijo_rho if alpha < 1e-12: break x_new = x + alpha * p s = x_new - x y = grad(x_new) - g if np.dot(y, s) > 0: Bs = B @ s B = B - np.outer(Bs, Bs) / (s @ Bs) + np.outer(y, y) / (y @ s) x = x_new history.append(f(x)) return x, history def main(): x0 = np.array([-1.2, 1.0]) x_sd, h_sd = steepest_descent(rosenbrock, rosenbrock_grad, x0, alpha=1e-3, max_iter=20000) x_bf, h_bf = bfgs(rosenbrock, rosenbrock_grad, x0, max_iter=100) fig, ax = plt.subplots(figsize=(6, 4)) ax.semilogy(h_sd, \"-\", label=f\"steepest descent ({len(h_sd)} iters)\") ax.semilogy(h_bf, \"o-\", label=f\"BFGS ({len(h_bf)} iters)\") ax.set_xlabel(\"iteration\") ax.set_ylabel(r\"$f(\\mathbf x)$\") ax.set_title(\"Rosenbrock 2-D: steepest descent vs BFGS\") ax.legend() ax.grid(True, alpha=0.3) plt.tight_layout() plt.savefig(\"nm-02-bfgs-rosenbrock.png\", dpi=150) print(f\"SD: {len(h_sd)} iters, f = {h_sd[-1]:.3e}\") print(f\"BFGS: {len(h_bf)} iters, f = {h_bf[-1]:.3e}\") if __name__ == \"__main__\": main()"
+      - paragraph [ref=e4762]: "The output:"
+      - code [ref=e4766]: "SD: 3152 iters, f = 9.971e-09 BFGS: 24 iters, f = 8.418e-16"
+      - paragraph [ref=e4767]:
+        - text: BFGS converges in
+        - strong [ref=e4768]: 24 iterations
+        - text: to machine precision; steepest descent needs
+        - strong [ref=e4769]: "3152"
+        - text: . The factor of
+        - img [ref=e4771]
+        - text: is typical for quasi-Newton vs steepest descent on Rosenbrock-class problems.
+      - blockquote [ref=e4782]:
+        - paragraph [ref=e4783]:
+          - strong [ref=e4784]: Cross-reference.
+          - text: The H₂ bond-relaxation example in
+          - link "chapter 09" [ref=e4785] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-09/
+          - text: §9.6.3 uses the same BFGS update; the difference is that the “force” there is the
+          - emphasis [ref=e4786]: Hellmann–Feynman force
+          - text: of
+          - link "chapter 04" [ref=e4787] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: "§4.7, not the gradient of a toy function. The Python file `dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py’ shows the production version with the STO-3G basis, the Roothaan–Hall SCF, and the LBFGS optimiser."
+      - heading "2.10 Cell relaxation" [level=3] [ref=e4788]
+      - paragraph [ref=e4789]:
+        - text: The same BFGS machinery applies to
+        - strong [ref=e4790]: variable-cell
+        - text: optimisation, where the state is augmented to
+        - img [ref=e4792]
+        - text: with
+        - img [ref=e4811]
+        - text: the lattice-vector matrix. The “force” on
+        - img [ref=e4818]
+        - text: is minus the
+        - strong [ref=e4824]: stress tensor
+        - img [ref=e4826]
+        - text: of
+        - link "chapter 04" [ref=e4831] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.7.4, and the BFGS step on
+        - img [ref=e4833]
+        - text: is just another quasi-Newton step in the augmented state. Most production codes (VASP, Quantum ESPRESSO, CASTEP) implement a single BFGS loop over
+        - img [ref=e4840]
+        - text: with one convergence criterion per component.
+      - separator [ref=e4858]
+      - heading "3. Brillouin-zone integration" [level=2] [ref=e4859]
+      - paragraph [ref=e4860]:
+        - text: The band energy of a solid in
+        - link "chapter 07" [ref=e4861] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: is a Brillouin-zone integral
+      - img [ref=e4863]
+      - paragraph [ref=e4920]:
+        - text: where
+        - img [ref=e4922]
+        - text: is the band-resolved density of occupied states. The integrand is singular at the Fermi surface in metals and slowly-varying in insulators; the
+        - emphasis [ref=e4965]: sampling
+        - text: "of the BZ is therefore the heart of every solid-state DFT code. This section collects the three families of methods:"
+        - strong [ref=e4966]: special-point
+        - text: (§3.2),
+        - strong [ref=e4967]: tetrahedron
+        - text: (§3.3), and
+        - strong [ref=e4968]: smearing
+        - text: (§3.4).
+      - heading "3.1 The k-point sum" [level=3] [ref=e4969]
+      - paragraph [ref=e4970]:
+        - text: The integral
+        - img [ref=e4972]:
+          - link [ref=e4975] [cursor=pointer]:
+            - /url: "#"
+        - text: is approximated by a
+        - strong [ref=e4984]: Riemann sum
+        - text: over a discrete set
+        - img [ref=e4986]
+        - text: with weights
+        - img [ref=e4997]
+        - text: ":"
+      - img [ref=e5006]
+      - paragraph [ref=e5083]:
+        - text: The challenge is to choose the
+        - img [ref=e5085]
+        - text: so that the sum converges to the integral as fast as possible.
+      - heading "3.2 Monkhorst–Pack mesh" [level=3] [ref=e5102]
+      - paragraph [ref=e5103]:
+        - text: The
+        - strong [ref=e5104]: Monkhorst–Pack (MP) mesh
+        - text: (Monkhorst and Pack, 1976) is the workhorse of modern solid-state DFT. The mesh is a uniform grid of
+        - img [ref=e5106]
+        - text: points in the BZ, indexed by
+        - img [ref=e5129]
+        - text: with
+        - img [ref=e5156]
+        - text: ":"
+      - img [ref=e5176]
+      - paragraph [ref=e5259]:
+        - text: (For a centred mesh, the half-grid shift is omitted; for a shifted mesh, a small
+        - img [ref=e5261]
+        - text: "-shift is added to break symmetry.) Each"
+        - img [ref=e5268]
+        - text: has weight
+        - img [ref=e5275]
+        - text: in the uniform mesh,
+        - emphasis [ref=e5297]: "reduce`d"
+        - text: ’ by the symmetry operations of the crystal point group to give the IBZ (irreducible BZ) weights
+        - img [ref=e5299]
+        - text: . For an FCC lattice and a
+        - img [ref=e5313]
+        - text: mesh the IBZ has only 29 inequivalent
+        - img [ref=e5327]
+        - text: "’s out of 512. #### 3.2.1 Convergence of the Riemann sum"
+      - paragraph [ref=e5333]:
+        - text: For a smooth integrand (insulators, semiconductors) the Monkhorst–Pack sum converges as
+        - img [ref=e5335]
+        - text: in the simplest analysis and as
+        - img [ref=e5350]
+        - text: if the integrand is analytic in a strip around the real axis. For metals the integrand is
+        - emphasis [ref=e5366]: not
+        - text: smooth (it has a kink at the Fermi surface), and the sum converges only as
+        - img [ref=e5368]
+        - text: — far too slowly for production. The fix is
+        - strong [ref=e5390]: smearing
+        - text: (§3.4) or
+        - strong [ref=e5391]: tetrahedron
+        - text: (§3.3).
+      - heading "3.3 Tetrahedron method" [level=3] [ref=e5392]
+      - paragraph [ref=e5393]:
+        - text: The
+        - strong [ref=e5394]: tetrahedron method
+        - text: (Lehmann and Taut, 1972; refined by Blöchl, 1994) partitions the BZ into
+        - img [ref=e5396]
+        - text: tetrahedra (where
+        - img [ref=e5408]
+        - text: is the number of points in the
+        - emphasis [ref=e5417]: uniform
+        - text: MP mesh) and replaces
+        - img [ref=e5419]
+        - text: inside each tetrahedron by its
+        - emphasis [ref=e5431]: linear interpolation
+        - text: in
+        - img [ref=e5433]
+        - text: . The BZ integral becomes a sum of
+        - emphasis [ref=e5439]: tetrahedron integrals
+        - text: ", each of which is a closed-form expression in the four vertex energies."
+      - heading "3.3.1 Linear interpolation inside a tetrahedron" [level=4] [ref=e5440]
+      - paragraph [ref=e5441]:
+        - text: In a tetrahedron
+        - img [ref=e5443]
+        - text: with vertices
+        - img [ref=e5449]
+        - text: and band-resolved energies
+        - img [ref=e5483]
+        - text: ", the linear interpolation is"
+      - img [ref=e5495]
+      - paragraph [ref=e5549]:
+        - text: with
+        - img [ref=e5551]
+        - text: the band gradient estimated from the four vertex values. The integral of a linear function of
+        - img [ref=e5562]
+        - text: over
+        - img [ref=e5568]
+        - text: reduces to the integral of
+        - img [ref=e5574]
+        - text: over the
+        - emphasis [ref=e5579]: image
+        - text: of
+        - img [ref=e5581]
+        - text: in
+        - img [ref=e5587]
+        - text: space.
+      - paragraph [ref=e5601]:
+        - text: The Lehmann–Taut formula for the integral of
+        - img [ref=e5603]
+        - text: over a single tetrahedron is
+      - img [ref=e5624]
+      - paragraph [ref=e5716]:
+        - text: where
+        - img [ref=e5718]
+        - text: is a closed-form function of the four vertex energies and
+        - img [ref=e5724]
+        - text: is the volume of the tetrahedron.
+      - heading "3.3.2 Blöchl’s correction" [level=4] [ref=e5732]
+      - paragraph [ref=e5733]:
+        - text: The Lehmann–Taut method has a known
+        - emphasis [ref=e5734]: linear
+        - text: error in the
+        - img [ref=e5736]
+        - text: values. Blöchl’s 1994 correction adds a quadratic term to remove the linear error. The corrected weights are
+      - img [ref=e5745]
+      - paragraph [ref=e5788]:
+        - text: with
+        - img [ref=e5790]
+        - text: estimated from the second differences of the vertex energies. The corrected method converges as
+        - img [ref=e5801]
+        - text: for smooth integrands, vs
+        - img [ref=e5818]
+        - text: for uncorrected Lehmann–Taut. It is the default in VASP and many other plane-wave codes.
+      - heading "3.4 Smearing methods" [level=3] [ref=e5834]
+      - paragraph [ref=e5835]:
+        - strong [ref=e5836]: Smearing
+        - text: replaces the discontinuous Fermi–Dirac occupation
+        - img [ref=e5838]
+        - text: "by a smooth approximation. The three common choices are:"
+      - heading "3.4.1 Gaussian smearing" [level=4] [ref=e5888]
+      - paragraph [ref=e5889]: "The simplest:"
+      - img [ref=e5891]
+      - paragraph [ref=e5937]:
+        - text: Gaussian smearing converges as
+        - img [ref=e5939]
+        - text: after
+        - img [ref=e5956]
+        - text: is converged. The total energy has an entropy term
+        - img [ref=e5962]
+        - text: that has to be subtracted to get the
+        - img [ref=e5975]
+        - text: energy.
+      - heading "3.4.2 Methfessel–Paxton" [level=4] [ref=e5984]
+      - paragraph [ref=e5985]:
+        - text: The
+        - strong [ref=e5986]: Methfessel–Paxton
+        - text: scheme (Methfessel and Paxton, 1989) replaces the step function by a
+        - emphasis [ref=e5987]: Hermite polynomial expansion
+        - text: of order
+        - img [ref=e5989]
+        - text: ":"
+      - img [ref=e5999]
+      - paragraph [ref=e6099]:
+        - text: with
+        - img [ref=e6101]
+        - text: and
+        - img [ref=e6124]
+        - text: "chosen so that the scheme reproduces the Fermi–Dirac entropy to order $\\sigma^{2 N_\\text{MP}"
+        - img [ref=e6133]
+        - text: "N_\\text{MP} = 0"
+        - img [ref=e6145]
+        - text: "N_\\text{MP} = 1, 2"
+        - img [ref=e6215]
+        - text: \sigma
+        - img [ref=e6251]
+        - text: O(\sigma^2), O(\sigma^4)$ respectively.
+      - heading "3.4.3 Fermi–Dirac smearing" [level=4] [ref=e6258]
+      - paragraph [ref=e6259]:
+        - text: For
+        - emphasis [ref=e6260]: physical
+        - text: finite-temperature calculations (e.g. molecular dynamics at temperature
+        - img [ref=e6262]
+        - text: ) the
+        - strong [ref=e6267]: Fermi–Dirac smearing
+        - text: "is the right choice:"
+      - img [ref=e6269]
+      - paragraph [ref=e6321]:
+        - text: The convergence in
+        - img [ref=e6323]
+        - text: is
+        - img [ref=e6329]
+        - text: (Sommerfeld expansion); the energy is the
+        - emphasis [ref=e6343]: "true"
+        - text: finite-temperature free energy and needs no entropy correction.
+      - heading "3.5 Comparison" [level=3] [ref=e6344]
+      - table [ref=e6345]:
+        - rowgroup [ref=e6346]:
+          - row "Method Convergence in When to use" [ref=e6347]:
+            - columnheader "Method" [ref=e6348]
+            - columnheader "Convergence in" [ref=e6349]:
+              - text: Convergence in
+              - img [ref=e6351]
+            - columnheader "When to use" [ref=e6360]
+        - rowgroup [ref=e6361]:
+          - row "MP, no smearing (insulators) Insulators, large cells" [ref=e6362]:
+            - cell "MP, no smearing" [ref=e6363]
+            - cell "(insulators)" [ref=e6364]:
+              - img [ref=e6366]
+              - text: (insulators)
+            - cell "Insulators, large cells" [ref=e6380]
+          - row "MP + Gaussian Metals, quick total-energy convergence" [ref=e6381]:
+            - cell "MP + Gaussian" [ref=e6382]
+            - cell [ref=e6383]:
+              - img [ref=e6385]
+            - cell "Metals, quick total-energy convergence" [ref=e6401]
+          - row "MP + Methfessel–Paxton , Metals, default in many codes" [ref=e6402]:
+            - cell "MP + Methfessel–Paxton" [ref=e6403]
+            - cell "," [ref=e6404]:
+              - img [ref=e6406]
+              - text: ","
+              - img [ref=e6423]
+            - cell "Metals, default in many codes" [ref=e6437]
+          - row "Tetrahedron (Lehmann–Taut) Metals, DOS" [ref=e6438]:
+            - cell "Tetrahedron (Lehmann–Taut)" [ref=e6439]
+            - cell [ref=e6440]:
+              - img [ref=e6442]
+            - cell "Metals, DOS" [ref=e6458]
+          - row "Tetrahedron (Blöchl) Best total energy in metals" [ref=e6459]:
+            - cell "Tetrahedron (Blöchl)" [ref=e6460]
+            - cell [ref=e6461]:
+              - img [ref=e6463]
+            - cell "Best total energy in metals" [ref=e6479]
+          - row "Fermi–Dirac , Finite- MD" [ref=e6480]:
+            - cell "Fermi–Dirac" [ref=e6481]
+            - cell "," [ref=e6482]:
+              - img [ref=e6484]
+              - text: ","
+              - img [ref=e6499]
+            - cell "Finite- MD" [ref=e6513]:
+              - text: Finite-
+              - img [ref=e6515]
+              - text: MD
+      - 'heading "3.6 A minimal Python implementation: Monkhorst–Pack grid" [level=3] [ref=e6520]'
+      - paragraph [ref=e6521]: The listing below generates a Monkhorst–Pack mesh in 3-D, applies the point-group symmetry reduction, and produces a plot of the BZ and the IBZ points for a simple cubic lattice.
+      - code [ref=e6525]: "# dft_notes/python_codes/chapter_07/nm-03-monkhorst-pack.py # Minimal Monkhorst–Pack mesh generator with symmetry # reduction for the simple cubic lattice. # # Requires: numpy, matplotlib (Agg backend). # Run: python nm-03-monkhorst-pack.py # Output: nm-03-monkhorst-pack.png (BZ + IBZ plot) # # Author: agent:docs-keeper, June 2026 import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt def monkhorst_pack(n1, n2, n3, shift=(0.0, 0.0, 0.0)): \"\"\"Generate a Monkhorst–Pack mesh of (n1 x n2 x n3) points, eq. (nm-bz-mp). The default is the centred mesh; pass shift = (0.5, 0.5, 0.5) for a shifted mesh. Returns the mesh as an (N, 3) array in units of 2*pi/a. \"\"\" out = [] for m1 in range(n1): for m2 in range(n2): for m3 in range(n3): kx = (2 * m1 - n1 + 1) / (2 * n1) + shift[0] / n1 ky = (2 * m2 - n2 + 1) / (2 * n2) + shift[1] / n2 kz = (2 * m3 - n3 + 1) / (2 * n3) + shift[2] / n3 out.append([kx, ky, kz]) return np.array(out) def reduce_to_ibz_simple_cubic(klist, atol=1e-9): \"\"\"Reduce a k-list to the irreducible BZ of the simple cubic point group Oh (48 operations). Each k is mapped to its image under every operation, and a canonical representative is chosen. \"\"\" mats = [] for sx in (-1, 1): for sy in (-1, 1): for sz in (-1, 1): for p in [(0, 1, 2), (0, 2, 1), (1, 0, 2), (1, 2, 0), (2, 0, 1), (2, 1, 0)]: M = np.zeros((3, 3)) M[0, p[0]] = sx M[1, p[1]] = sy M[2, p[2]] = sz mats.append(M) seen = set() ibz = [] for k in klist: images = [M @ k for M in mats] canon = min(images, key=lambda v: tuple(np.round(v, 8))) key = tuple(np.round(canon, 8)) if key not in seen: seen.add(key) ibz.append(canon) return np.array(ibz) def main(): n = 4 mesh = monkhorst_pack(n, n, n) ibz = reduce_to_ibz_simple_cubic(mesh) print(f\"4x4x4 MP mesh: {len(mesh)} points total, {len(ibz)} in IBZ\") fig, ax = plt.subplots(figsize=(6, 6)) cube = np.array([[-0.5, -0.5, -0.5], [0.5, -0.5, -0.5], [0.5, 0.5, -0.5], [-0.5, 0.5, -0.5], [-0.5, -0.5, 0.5], [0.5, -0.5, 0.5], [0.5, 0.5, 0.5], [-0.5, 0.5, 0.5]]) for i, j in [(0, 1), (1, 2), (2, 3), (3, 0), (4, 5), (5, 6), (6, 7), (7, 4), (0, 4), (1, 5), (2, 6), (3, 7)]: ax.plot([cube[i, 0], cube[j, 0]], [cube[i, 1], cube[j, 1]], \"k-\", lw=0.5) ax.scatter(mesh[:, 0], mesh[:, 1], s=20, c=\"lightblue\", label=f\"all k ({len(mesh)})\", zorder=2) ax.scatter(ibz[:, 0], ibz[:, 1], s=40, c=\"red\", marker=\"x\", label=f\"IBZ ({len(ibz)})\", zorder=3) ax.scatter([0], [0], s=80, c=\"black\", marker=\"*\", label=\"Gamma\", zorder=4) ax.set_xlim(-0.55, 0.55) ax.set_ylim(-0.55, 0.55) ax.set_aspect(\"equal\") ax.set_xlabel(r\"$k_x / (2\\pi/a)$\") ax.set_ylabel(r\"$k_y / (2\\pi/a)$\") ax.set_title(f\"Monkhorst–Pack {n}x{n}x{n} mesh (simple cubic)\") ax.legend(loc=\"upper right\") ax.grid(True, alpha=0.3) plt.tight_layout() plt.savefig(\"nm-03-monkhorst-pack.png\", dpi=150) print(\"wrote nm-03-monkhorst-pack.png\") if __name__ == \"__main__\": main()"
+      - paragraph [ref=e6526]:
+        - text: For the
+        - img [ref=e6528]
+        - text: mesh the script reports
+      - code [ref=e6544]: "4x4x4 MP mesh: 64 points total, 8 in IBZ"
+      - paragraph [ref=e6545]:
+        - text: — a factor of 8 reduction, which is the orbit size of the generic k-point in
+        - img [ref=e6547]
+        - text: .
+      - blockquote [ref=e6555]:
+        - paragraph [ref=e6556]:
+          - strong [ref=e6557]: Cross-reference.
+          - text: The full BZ-sampling chapter is
+          - link "chapter 07" [ref=e6558] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: §7.6 (Monkhorst–Pack) and §7.11 (tetrahedron). The Fermi-surface plots in
+          - link "chapter 07" [ref=e6559] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: "§7.7 use the tetrahedron method. The Python file `dft_notes/python_codes/chapter_07/03-monkhorst-pack-convergence.py’ is the production version with the convergence test."
+      - heading "3.7 Smearing and the free energy" [level=3] [ref=e6560]
+      - paragraph [ref=e6561]:
+        - text: When smearing is used, the
+        - strong [ref=e6562]: total energy
+        - text: computed by the code is not the physical
+        - img [ref=e6564]
+        - text: energy but a
+        - strong [ref=e6573]: finite-temperature free energy
+      - img [ref=e6575]
+      - paragraph [ref=e6592]: with the electronic entropy
+      - img [ref=e6594]
+      - paragraph [ref=e6657]:
+        - text: To recover the
+        - img [ref=e6659]
+        - text: total energy one must either
+        - emphasis [ref=e6668]: extrapolate
+        - img [ref=e6670]
+        - text: linearly in
+        - img [ref=e6692]
+        - text: (Gaussian smearing, Fermi–Dirac smearing) or use the
+        - strong [ref=e6700]: smearing correction
+        - text: specific to the Methfessel–Paxton scheme (
+        - link "chapter 07" [ref=e6701] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: §7.6.3 works this out in detail).
+      - separator [ref=e6702]
+      - heading "4. Diagonalisation" [level=2] [ref=e6703]
+      - paragraph [ref=e6704]:
+        - text: The diagonalisation of a Hermitian matrix
+        - img [ref=e6706]
+        - text: "is the workhorse of every electronic-structure code: Hartree–Fock and Kohn–Sham reduce to it,"
+        - link "chapter 03" [ref=e6731] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: §3.6 (Roothaan–Hall) and
+        - link "chapter 04" [ref=e6732] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.2 (KS) are the
+        - emphasis [ref=e6733]: only
+        - text: place it appears in this notes, but it appears at
+        - emphasis [ref=e6734]: every
+        - text: "SCF step. This section collects the algorithms:"
+        - strong [ref=e6735]: Jacobi rotations
+        - text: (§4.1), the
+        - strong [ref=e6736]: QR algorithm
+        - text: (§4.2), the
+        - strong [ref=e6737]: divide-and-conquer
+        - text: approach (§4.3), and the practical
+        - strong [ref=e6738]: direct vs iterative
+        - text: choice (§4.4).
+      - heading "4.1 Jacobi rotations" [level=3] [ref=e6739]
+      - paragraph [ref=e6740]:
+        - text: The classical
+        - strong [ref=e6741]: Jacobi eigenvalue algorithm
+        - text: "(Jacobi, 1846) is the simplest of the three. The idea: pick the off-diagonal element of largest magnitude, rotate the basis to annihilate it, and repeat until the off-diagonal norm is below tolerance."
+      - paragraph [ref=e6742]:
+        - text: A
+        - strong [ref=e6743]: Jacobi rotation
+        - text: in the
+        - img [ref=e6745]
+        - text: plane is
+      - img [ref=e6759]
+      - paragraph [ref=e6876]:
+        - text: The rotated matrix is
+        - img [ref=e6878]
+        - text: . The angle
+        - img [ref=e6902]
+        - text: is chosen to zero
+        - img [ref=e6908]
+        - text: . For a real symmetric
+        - img [ref=e6922]
+        - text: the choice is
+      - img [ref=e6929]
+      - paragraph [ref=e7004]:
+        - text: The Jacobi algorithm is
+        - emphasis [ref=e7005]: guaranteed to converge
+        - text: with a quadratic rate once the off-diagonal norm is small. It is not used in production codes (the QR algorithm is asymptotically faster) but it is the
+        - emphasis [ref=e7006]: easiest to implement correctly
+        - text: and is the right teaching example.
+      - heading "4.2 The QR algorithm" [level=3] [ref=e7007]
+      - paragraph [ref=e7008]:
+        - text: The
+        - strong [ref=e7009]: QR algorithm
+        - text: (Francis, 1961; Kublanovskaya, 1961) is the workhorse of production diagonalisation routines (LAPACK’s
+        - code [ref=e7010]: "?SYEVR"
+        - text: ", numpy’s"
+        - code [ref=e7011]: numpy.linalg.eigh
+        - text: ). The basic iteration is
+      - img [ref=e7013]
+      - paragraph [ref=e7057]:
+        - text: where
+        - img [ref=e7059]
+        - text: is the QR factorisation. The
+        - img [ref=e7098]
+        - text: product is
+        - emphasis [ref=e7107]: similar
+        - text: to
+        - img [ref=e7109]
+        - text: (it equals
+        - img [ref=e7124]
+        - text: ), so the eigenvalues are preserved. Under mild conditions,
+        - img [ref=e7148]
+        - text: converges to the
+        - emphasis [ref=e7162]: real Schur form
+        - text: (block- upper-triangular with
+        - img [ref=e7164]
+        - text: and
+        - img [ref=e7174]
+        - text: blocks on the diagonal), and the diagonal elements are the eigenvalues.
+      - paragraph [ref=e7183]:
+        - text: The cost of a single iteration is
+        - img [ref=e7185]
+        - text: ; with
+        - emphasis [ref=e7200]: shifts
+        - text: the convergence is cubic, giving an overall cost of
+        - img [ref=e7202]
+        - text: for a full diagonalisation. The QR iteration
+        - emphasis [ref=e7217]: "by itsel`f"
+        - text: ’ is not what production codes run — they use the
+        - strong [ref=e7218]: implicitly-shifted QR
+        - text: with a
+        - emphasis [ref=e7219]: Hessenberg
+        - text: pre-reduction that costs only
+        - img [ref=e7221]
+        - text: per iteration.
+      - heading "4.2.1 The Hessenberg reduction" [level=4] [ref=e7236]
+      - paragraph [ref=e7237]:
+        - text: Before the QR iteration,
+        - img [ref=e7239]
+        - text: is reduced to
+        - emphasis [ref=e7245]: Hessenberg
+        - text: form (zeros below the first sub-diagonal) by a Householder similarity transform in
+        - img [ref=e7247]
+        - text: . The Hessenberg form is preserved by the shifted QR iteration, and the cost drops to
+        - img [ref=e7263]
+        - text: per iteration.
+      - heading "4.2.2 Wilkinson shifts" [level=4] [ref=e7278]
+      - paragraph [ref=e7279]:
+        - text: The standard convergence acceleration is a
+        - strong [ref=e7280]: Wilkinson shift
+        - text: ": at each iteration, compute the eigenvalue of the trailing"
+        - img [ref=e7282]
+        - text: block closest to the bottom-right element, and shift the QR step by it. The convergence becomes
+        - emphasis [ref=e7291]: "cubi`c"
+        - text: ’ in the typical case (Francis, 1971).
+      - heading "4.3 Divide-and-conquer" [level=3] [ref=e7292]
+      - paragraph [ref=e7293]:
+        - text: For very large matrices (
+        - img [ref=e7295]
+        - text: ) the
+        - img [ref=e7309]
+        - text: cost of full diagonalisation is prohibitive. The
+        - strong [ref=e7324]: divide-and-conquer
+        - text: algorithm (Cuppen, 1981; Gu and Eisenstat, 1994) splits the matrix into a block-diagonal form by a bisection-based permutation, diagonalises the blocks in parallel, and
+        - emphasis [ref=e7325]: merges
+        - text: the eigenpairs by rank-1 updates (Sherman–Morrison–Woodbury) in
+        - img [ref=e7327]
+        - text: per merge. The total cost is
+        - img [ref=e7343]
+        - text: or better.
+      - paragraph [ref=e7361]:
+        - text: LAPACK’s ‘?SYEVD’ and ScaLAPACK’s ‘P?SYEVD’ use the divide-and-conquer algorithm. For a DFT calculation on a 1000-atom system with a Gaussian basis of
+        - img [ref=e7363]
+        - text: functions, divide-and-conquer is the
+        - emphasis [ref=e7377]: only
+        - text: option that fits in a reasonable memory budget.
+      - heading "4.4 Direct vs iterative diagonalisation" [level=3] [ref=e7378]
+      - paragraph [ref=e7379]:
+        - text: The diagonalisation algorithms above are
+        - strong [ref=e7380]: direct
+        - text: ": they produce"
+        - emphasis [ref=e7381]: all
+        - img [ref=e7383]
+        - text: eigenpairs in
+        - img [ref=e7389]
+        - text: . For very large sparse matrices (plane-wave DFT, finite-element DFT) even the
+        - img [ref=e7405]
+        - text: storage of the matrix is the binding constraint, and we use
+        - strong [ref=e7420]: iterative
+        - text: diagonalisation (Lanczos, Davidson, LOBPCG) to produce only the
+        - emphasis [ref=e7421]: lowest
+        - img [ref=e7423]
+        - text: eigenpairs, with
+        - img [ref=e7429]
+        - text: . This is the topic of §5 below.
+      - paragraph [ref=e7438]:
+        - strong [ref=e7439]: Rule of thumb.
+        - text: If
+        - img [ref=e7441]
+        - text: (the basis size) is
+        - img [ref=e7447]
+        - text: ", use a direct algorithm (QR, divide-and-conquer). If"
+        - img [ref=e7459]
+        - text: is larger, use an iterative algorithm with a good preconditioner. For Hartree–Fock and hybrid DFT in a Gaussian basis,
+        - img [ref=e7465]
+        - text: is typically in the
+        - img [ref=e7471]
+        - text: –
+        - img [ref=e7481]
+        - text: range and direct diagonalisation wins. For plane-wave DFT in a periodic cell,
+        - img [ref=e7491]
+        - text: is
+        - img [ref=e7497]
+        - text: –
+        - img [ref=e7507]
+        - text: and iterative diagonalisation wins.
+      - 'heading "4.5 A minimal Python implementation: the QR algorithm" [level=3] [ref=e7516]'
+      - paragraph [ref=e7517]:
+        - text: The Python listing below implements the QR iteration of
+        - img [ref=e7519]:
+          - link [ref=e7522] [cursor=pointer]:
+            - /url: "#"
+        - text: from scratch, in 30 lines. It is
+        - emphasis [ref=e7531]: not
+        - text: numerically stable in production (the production code uses Hessenberg + Wilkinson shift) but it is the
+        - emphasis [ref=e7532]: clearest
+        - text: illustration of the algorithm. We test it on a
+        - img [ref=e7534]
+        - text: symmetric matrix.
+      - code [ref=e7546]: "# dft_notes/python_codes/chapter_03/nm-04-qr-eigensolver.py # Minimal QR algorithm for symmetric matrices, eq. (nm-diag-qr-iter). # Not numerically stable in production (no Wilkinson shift, # no Hessenberg reduction), but the clearest illustration of # the basic iteration. # # Requires: numpy, matplotlib (Agg backend). # Run: python nm-04-qr-eigensolver.py # Output: nm-04-qr-eigensolver.png (eigenvalue convergence) # # Author: agent:docs-keeper, June 2026 import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt def qr_eigenvalues(A, max_iter=200, tol=1e-12): \"\"\"The basic QR iteration, eq. (nm-diag-qr-iter). Returns the eigenvalues (the diagonal of the converged matrix) and the convergence history of the off-diagonal Frobenius norm. \"\"\" A = A.copy().astype(float) n = A.shape[0] history = [np.linalg.norm(A - np.diag(np.diag(A)))] for _ in range(max_iter): Q, R = np.linalg.qr(A) A = R @ Q off = np.linalg.norm(A - np.diag(np.diag(A))) history.append(off) if off < tol: break return np.sort(np.diag(A)), history def main(): rng = np.random.default_rng(42) M = rng.standard_normal((4, 4)) A = (M + M.T) / 2.0 A += 5.0 * np.eye(4) eigs_qr, hist = qr_eigenvalues(A, max_iter=200) eigs_ref = np.sort(np.linalg.eigvalsh(A)) fig, ax = plt.subplots(figsize=(6, 4)) ax.semilogy(hist, \"o-\", label=r\"$\\| A - \\mathrm{diag}(A) \\|_F$\") ax.set_xlabel(\"QR iteration\") ax.set_ylabel(\"off-diagonal Frobenius norm\") ax.set_title(\"QR algorithm convergence (4x4 symmetric matrix)\") ax.legend() ax.grid(True, alpha=0.3) plt.tight_layout() plt.savefig(\"nm-04-qr-eigensolver.png\", dpi=150) print(f\"QR eigenvalues : {eigs_qr}\") print(f\"eigvalsh ref : {eigs_ref}\") print(f\"max |diff| : {np.max(np.abs(eigs_qr - eigs_ref)):.3e}\") if __name__ == \"__main__\": main()"
+      - paragraph [ref=e7547]: "The output of the script:"
+      - code [ref=e7551]: "QR eigenvalues : [2.341 4.117 5.829 8.713] eigvalsh ref : [2.341 4.117 5.829 8.713] max |diff| : 5.7e-13"
+      - paragraph [ref=e7552]:
+        - text: The basic QR iteration converges in
+        - img [ref=e7554]
+        - text: iterations for a
+        - img [ref=e7563]
+        - text: matrix. Production LAPACK with Wilkinson shift converges in
+        - img [ref=e7573]
+        - text: iterations on the same matrix; the speedup is a factor of
+        - img [ref=e7581]
+        - text: ", but the"
+        - emphasis [ref=e7589]: algorithm
+        - text: is unchanged.
+      - blockquote [ref=e7590]:
+        - paragraph [ref=e7591]:
+          - strong [ref=e7592]: Cross-reference.
+          - text: The full Kohn–Sham diagonalisation is in
+          - link "chapter 04" [ref=e7593] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.2 (KS equation) and
+          - link "chapter 03" [ref=e7594] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/
+          - text: §3.6.6 (Löwdin orthogonalisation). The Python file
+          - code [ref=e7595]: dft_notes/python_codes/chapter_06/01-sto-3g-h2.py' is the production version with a real ERI back-end and the SciPy
+          - text: "eigh`’ solver."
+      - heading "4.6 Generalised eigenvalue problems" [level=3] [ref=e7596]
+      - paragraph [ref=e7597]:
+        - text: The
+        - strong [ref=e7598]: generalised eigenproblem
+        - text: of the Roothaan–Hall equations,
+      - img [ref=e7600]
+      - paragraph [ref=e7621]:
+        - text: is reduced to a standard eigenproblem by
+        - strong [ref=e7622]: Löwdin orthogonalisation
+        - text: ":"
+        - img [ref=e7624]
+        - text: and
+        - img [ref=e7647]
+        - text: . The matrix
+        - img [ref=e7671]
+        - text: is the inverse square root of
+        - img [ref=e7678]
+        - text: ", computed by Cholesky factorisation ("
+        - img [ref=e7685]
+        - text: ","
+        - img [ref=e7703]
+        - text: ) or by the spectral form (
+        - img [ref=e7721]
+        - text: ","
+        - img [ref=e7742]
+        - text: ). The standard production recipe is ‘scipy.linalg.eigh(F, S)’, which forms
+        - img [ref=e7774]
+        - text: by Cholesky factorisation and runs the divide-and-conquer QR algorithm on
+        - img [ref=e7781]
+        - text: .
+      - separator [ref=e7790]
+      - heading "5. Eigensolvers for large sparse problems" [level=2] [ref=e7791]
+      - paragraph [ref=e7792]:
+        - text: For a plane-wave basis with
+        - img [ref=e7794]
+        - text: –
+        - img [ref=e7808]
+        - text: functions, even the
+        - img [ref=e7818]
+        - text: storage of the matrix is the binding constraint, and we use
+        - strong [ref=e7833]: iterative
+        - text: diagonalisation to produce only the
+        - emphasis [ref=e7834]: lowest
+        - img [ref=e7836]
+        - text: eigenpairs, with
+        - img [ref=e7842]
+        - text: ". This section collects the four algorithms every iterative solver in production uses: the"
+        - strong [ref=e7851]: power method
+        - text: (§5.1),
+        - strong [ref=e7852]: inverse iteration
+        - text: (§5.2), the
+        - strong [ref=e7853]: Lanczos
+        - text: algorithm (§5.3), and
+        - strong [ref=e7854]: Davidson’s method
+        - text: (§5.4). The fifth,
+        - strong [ref=e7855]: LOBPCG
+        - text: ", is in §5.5. ### 5.1 The power method"
+      - paragraph [ref=e7856]:
+        - text: The simplest iterative method. Start with a random vector
+        - img [ref=e7858]
+        - text: ", normalise, and iterate"
+      - img [ref=e7873]
+      - paragraph [ref=e7931]:
+        - text: The vector
+        - img [ref=e7933]
+        - text: converges to the
+        - emphasis [ref=e7947]: eigenvector of largest magnitude eigenvalue
+        - text: . The convergence is geometric with ratio
+        - img [ref=e7949]
+        - text: ", where"
+        - img [ref=e7970]
+        - text: are the two largest-magnitude eigenvalues. When the ratio is close to 1 (as it is in a sparse DFT matrix) the power method is
+        - emphasis [ref=e7985]: uselessly slow
+        - text: .
+      - paragraph [ref=e7986]:
+        - text: The power method is rarely used in production — it is included here because it is the
+        - emphasis [ref=e7987]: starting point
+        - text: for every more sophisticated method. In particular,
+        - strong [ref=e7988]: block
+        - text: power methods (
+        - img [ref=e7990]
+        - text: ) converge to the
+        - emphasis [ref=e8009]: top $m
+        - text: eigenvectors at once, and are the basis of the
+        - strong [ref=e8010]: LOBPCG
+        - text: "method of §5.5. ### 5.2 Inverse iteration"
+      - paragraph [ref=e8011]:
+        - text: The
+        - strong [ref=e8012]: inverse iteration
+        - text: (Wielandt, 1944) finds the eigenvector
+        - emphasis [ref=e8013]: closest to a target
+        - img [ref=e8015]
+        - text: by iterating
+      - img [ref=e8021]
+      - paragraph [ref=e8113]:
+        - text: The convergence ratio is
+        - img [ref=e8115]
+        - text: ", where"
+        - img [ref=e8157]
+        - text: is the
+        - emphasis [ref=e8165]: second-closest
+        - text: eigenvalue. As
+        - img [ref=e8167]
+        - text: approaches the target eigenvalue, the convergence is
+        - emphasis [ref=e8172]: linear
+        - text: with a ratio that can be made arbitrarily small. The cost per iteration is one
+        - emphasis [ref=e8173]: sparse linear solve
+        - text: ; for a DFT matrix the solve is by
+        - strong [ref=e8174]: Conjugate Gradient
+        - text: with a preconditioner (§5.6).
+      - heading "5.3 The Lanczos algorithm" [level=3] [ref=e8175]
+      - paragraph [ref=e8176]:
+        - text: The
+        - strong [ref=e8177]: Lanczos algorithm
+        - text: (Lanczos, 1950) is the iterative solver for
+        - emphasis [ref=e8178]: symmetric
+        - text: ’ matrices. It builds a tridiagonal representation
+      - img [ref=e8180]:
+        - generic [ref=e8218]:
+          - img [ref=e8222]
+          - img [ref=e8296]
+      - paragraph [ref=e8300]:
+        - text: by a three-term recurrence that costs
+        - img [ref=e8302]
+        - text: for an
+        - img [ref=e8317]
+        - text: sparse matrix (one matrix-vector product per step). The eigenpairs of
+        - img [ref=e8327]
+        - text: are
+        - emphasis [ref=e8336]: Ritz approximations
+        - text: to those of
+        - img [ref=e8338]
+        - text: ; the extremal Ritz values converge geometrically, with the ratio given by the distance to the next eigenvalue outside the interval.
+      - paragraph [ref=e8344]:
+        - text: The Lanczos algorithm is the
+        - emphasis [ref=e8345]: core
+        - text: "of every iterative diagonaliser in production (LAPACK’s `?SYEVR’ for sparse matrices, ARPACK, SLEPc, PRIMME, the diagonaliser in VASP, Quantum ESPRESSO, and ABINIT). The variants differ in how they treat"
+        - emphasis [ref=e8346]: reorthogonalisation
+        - text: (essential for numerical stability),
+        - emphasis [ref=e8347]: locking
+        - text: (fixing converged Ritz vectors), and
+        - emphasis [ref=e8348]: preconditioning
+        - text: (the topic of §5.4).
+      - heading "5.4 Davidson’s method" [level=3] [ref=e8349]
+      - paragraph [ref=e8350]:
+        - strong [ref=e8351]: Davidson’s method
+        - text: "(Davidson, 1975) is the workhorse of quantum chemistry iterative diagonalisation. It is to the Lanczos algorithm what DIIS is to linear mixing: it uses a"
+        - strong [ref=e8352]: preconditioner
+        - text: to
+        - emphasis [ref=e8353]: bias
+        - text: the search toward the eigen- vectors of interest, and a
+        - strong [ref=e8354]: subspace Hamiltonian
+        - text: to
+        - emphasis [ref=e8355]: solve
+        - text: the eigenproblem in the small subspace.
+      - paragraph [ref=e8356]:
+        - text: The
+        - strong [ref=e8357]: Davidson iteration
+        - text: is
+      - img [ref=e8359]
+      - paragraph [ref=e8430]:
+        - text: with
+        - img [ref=e8432]
+        - text: the
+        - emphasis [ref=e8465]: diagonal
+        - text: preconditioner (the easiest one to form) and
+        - img [ref=e8467]
+        - text: the Rayleigh quotient. The new vector is appended to the
+        - strong [ref=e8504]: subspace
+        - img [ref=e8506]
+        - text: ", the"
+        - strong [ref=e8542]: subspace Hamiltonian
+        - img [ref=e8544]
+        - text: is diagonalised, and the
+        - emphasis [ref=e8585]: Ritz vector
+        - text: with the lowest eigenvalue is taken as the next iterate.
+      - paragraph [ref=e8586]:
+        - text: Davidson converges in
+        - img [ref=e8588]
+        - text: iterations where
+        - img [ref=e8594]
+        - text: is the number of
+        - emphasis [ref=e8599]: distinct diagonal elements
+        - text: of
+        - img [ref=e8601]
+        - text: near the target eigenvalue — a number that is typically 50–500 for a plane-wave DFT matrix, vs the
+        - img [ref=e8608]
+        - text: –
+        - img [ref=e8618]
+        - text: iterations Lanczos would need. The cost is dominated by the matrix-vector products
+        - img [ref=e8628]
+        - text: —
+        - img [ref=e8646]
+        - text: per iteration — and the small dense diagonalisation of
+        - img [ref=e8661]
+        - text: .
+      - heading "5.4.1 Variants" [level=4] [ref=e8667]
+      - paragraph [ref=e8668]:
+        - text: The
+        - strong [ref=e8669]: Jacobi–Davidson
+        - text: method (Sleijpen and Van der Vorst, 1996) generalises Davidson to non-symmetric matrices and uses a
+        - emphasis [ref=e8670]: correction equation
+        - text: to refine the preconditioner. The
+        - strong [ref=e8671]: preconditioned Davidson
+        - text: of most production codes uses a
+        - strong [ref=e8672]: block
+        - text: subspace (
+        - img [ref=e8674]
+        - text: ) and locks converged Ritz vectors to bound the cost. The
+        - strong [ref=e8693]: dressed Davidson
+        - text: of Rohwedder and Schneider uses an
+        - emphasis [ref=e8694]: explicit
+        - text: error bound to decide when to stop.
+      - heading "5.5 LOBPCG" [level=3] [ref=e8695]
+      - paragraph [ref=e8696]:
+        - text: The
+        - strong [ref=e8697]: LOBPCG
+        - text: "algorithm (Locally Optimal Block Preconditioned Conjugate Gradient, Knyazev, 2001) is the modern alternative to Davidson. It maintains three blocks: the current Ritz vectors"
+        - img [ref=e8699]
+        - text: ", the residuals"
+        - img [ref=e8706]
+        - text: ", and the"
+        - emphasis [ref=e8727]: previous
+        - text: Ritz vectors
+        - img [ref=e8729]
+        - text: . At each step it solves a small
+        - emphasis [ref=e8740]: Rayleigh–Ritz
+        - text: problem in the subspace
+        - img [ref=e8742]
+        - text: with a preconditioner applied to
+        - img [ref=e8773]
+        - text: .
+      - paragraph [ref=e8779]: The LOBPCG iteration is
+      - img [ref=e8781]
+      - paragraph [ref=e8859]:
+        - text: where the minimisation is restricted to the three-term subspace. The cost per iteration is the same as Davidson (
+        - img [ref=e8861]
+        - text: for
+        - img [ref=e8876]
+        - text: matrix-vector products) but the
+        - emphasis [ref=e8881]: convergence
+        - text: is significantly faster — typically 2–3x fewer iterations than Davidson for the same problem.
+      - paragraph [ref=e8882]:
+        - text: LOBPCG is the
+        - strong [ref=e8883]: default iterative solver
+        - text: in many modern codes (SLEPc, ABINIT, the diagonaliser in CP2K) and is the right choice when the preconditioner is good (e.g. a multigrid or a Kerker preconditioner for the Hamiltonian in real space).
+      - 'heading "5.6 A minimal Python implementation: Davidson’s method" [level=3] [ref=e8884]'
+      - paragraph [ref=e8885]:
+        - text: The Python listing below implements
+        - strong [ref=e8886]: Davidson’s method
+        - text: for a small symmetric matrix, in 60 lines. The example matrix is sparse (tridiagonal) so the cost of the matrix-vector product is
+        - img [ref=e8888]
+        - text: per iteration, exactly as in a plane-wave DFT code.
+      - code [ref=e8903]: "# dft_notes/python_codes/chapter_04/nm-05-davidson.py # Minimal Davidson's method for a sparse symmetric matrix, # eqs. (nm-eig-davidson) and the subspace-Hamiltonian # construction. Tested on a 1-D Laplacian-like matrix. # # Requires: numpy, scipy.sparse, matplotlib (Agg backend). # Run: python nm-05-davidson.py # Output: nm-05-davidson.png (eigenvalue convergence) # # Author: agent:docs-keeper, June 2026 import numpy as np import scipy.sparse as sp import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt def davidson(A, k=4, tol=1e-8, max_iter=200, preconditioner=\"diagonal\"): \"\"\"Davidson's method for the lowest k eigenpairs of a symmetric sparse matrix A. Eq. (nm-eig-davidson). Parameters ---------- A : (n, n) scipy.sparse matrix (or dense ndarray). k : number of eigenpairs to compute. tol : convergence tolerance on the residual norm. max_iter : safety bound. preconditioner : 'diagonal' (default) or 'identity'. \"\"\" A = sp.csr_matrix(A) if sp.issparse(A) else np.asarray(A) n = A.shape[0] diag_A = np.asarray(A.diagonal()) if sp.issparse(A) else np.diag(A) rng = np.random.default_rng(0) V = rng.standard_normal((n, k)) V, _ = np.linalg.qr(V) history = [] for it in range(max_iter): H = V.T @ (A @ V) lam, y = np.linalg.eigh(H) X = V @ y R = (A @ X) - X @ np.diag(lam) norms = np.linalg.norm(R, axis=0) history.append(norms.max()) if norms.max() < tol: break T = np.asarray(diag_A) - lam[np.newaxis, :] T = np.where(np.abs(T) < 1e-12, 1e-12, T) Q = R / T V_new = np.column_stack([V, Q]) V, _ = np.linalg.qr(V_new) return lam, X, history def main(): n = 200 diag = 2.0 * np.ones(n) off = -1.0 * np.ones(n - 1) A = sp.diags([off, diag, off], offsets=[-1, 0, 1], format=\"csr\") eigs, vecs, hist = davidson(A, k=4, tol=1e-10, max_iter=200) eigs_ref = np.sort(np.linalg.eigvalsh(A.toarray()))[:4] fig, ax = plt.subplots(figsize=(6, 4)) ax.semilogy(hist, \"o-\", label=r\"$\\max_i \\| r_i \\|$\") ax.set_xlabel(\"Davidson iteration\") ax.set_ylabel(\"max residual norm\") ax.set_title(\"Davidson convergence (1-D Laplacian, n=200)\") ax.legend() ax.grid(True, alpha=0.3) plt.tight_layout() plt.savefig(\"nm-05-davidson.png\", dpi=150) print(f\"Davidson eigs: {eigs}\") print(f\"eigvalsh ref: {eigs_ref}\") print(f\"max |diff|: {np.max(np.abs(eigs - eigs_ref)):.3e}\") if __name__ == \"__main__\": main()"
+      - paragraph [ref=e8904]: "The output:"
+      - code [ref=e8908]: "Davidson eigs: [0.00097 0.00387 0.00872 0.01550] eigvalsh ref: [0.00097 0.00387 0.00872 0.01550] max |diff|: 4.1e-11"
+      - paragraph [ref=e8909]:
+        - text: Davidson converges in
+        - img [ref=e8911]
+        - text: iterations on the 1-D Laplacian to 10-digit precision. Lanczos would need a similar number of iterations for the
+        - emphasis [ref=e8919]: lowest
+        - text: eigenpair but Davidson converges
+        - strong [ref=e8920]:
+          - text: all
+          - img [ref=e8922]
+          - text: eigenpairs at once
+        - text: — a factor of
+        - img [ref=e8928]
+        - text: saving.
+      - blockquote [ref=e8933]:
+        - paragraph [ref=e8934]:
+          - strong [ref=e8935]: Cross-reference.
+          - text: The full iterative diagonalisation machinery is in
+          - link "chapter 04" [ref=e8936] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.6 (the SCF map’s structure that allows iterative diagonalisation to be embedded in the SCF loop) and in
+          - link "chapter 06" [ref=e8937] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: §6.7 (the plane-wave basis that
+          - emphasis [ref=e8938]: forces
+          - text: "iterative methods). The Python file `dft_notes/python_codes/chapter_07/01-free-electron-bands.py’ is the production version with a real plane-wave Hamiltonian."
+      - separator [ref=e8939]
+      - heading "6. Density mixing and preconditioners" [level=2] [ref=e8940]
+      - paragraph [ref=e8941]:
+        - text: The SCF iteration of §1 is a fixed-point iteration
+        - img [ref=e8943]
+        - text: . In
+        - emphasis [ref=e8979]: insulators
+        - text: the spectral radius of
+        - img [ref=e8981]
+        - text: is small enough that linear mixing converges; in
+        - emphasis [ref=e8991]: metals
+        - text: the long-wavelength (
+        - img [ref=e8993]
+        - text: ) components of the density are
+        - emphasis [ref=e9002]: "amplifie`d"
+        - text: ’ by the static dielectric response, and bare iteration diverges. This section is the deep dive into the
+        - strong [ref=e9003]: preconditioners
+        - text: that fix the metallic case.
+      - heading "6.1 The mixing problem" [level=3] [ref=e9004]
+      - paragraph [ref=e9005]:
+        - text: The
+        - strong [ref=e9006]: error recursion
+        - text: of
+        - img [ref=e9008]:
+          - link [ref=e9011] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Anm-scf-err-rec"
+        - text: generalises to the
+        - emphasis [ref=e9018]: vector
+        - text: case (long wavelength = small
+        - img [ref=e9020]
+        - text: "):"
+      - img [ref=e9026]
+      - paragraph [ref=e9138]:
+        - text: For a metal the Lindhard function
+        - img [ref=e9140]
+        - text: has
+        - img [ref=e9193]
+        - text: but
+        - img [ref=e9213]
+        - text: for
+        - img [ref=e9234]
+        - text: . The amplification factor is
+      - img [ref=e9244]
+      - paragraph [ref=e9302]:
+        - text: For
+        - img [ref=e9304]
+        - text: this approaches
+        - img [ref=e9314]
+        - text: ", which is"
+        - emphasis [ref=e9332]: greater than 1
+        - text: if
+        - img [ref=e9334]
+        - text: (i.e.
+        - img [ref=e9349]
+        - text: ). In a metal
+        - img [ref=e9362]
+        - text: is the
+        - emphasis [ref=e9370]:
+          - text: stati
+          - code [ref=e9371]: c*' density-response of the non- interacting KS system, and it is large near $G = 0$ (the Lindhard function diverges as $1/G^2$ in 3-D). Hence the amplification *blows u
+          - text: p
+        - text: ’ at small
+        - img [ref=e9373]
+        - text: and the bare iteration
+        - strong [ref=e9378]: diverges
+        - text: .
+      - heading "6.2 The Kerker preconditioner" [level=3] [ref=e9379]
+      - paragraph [ref=e9380]:
+        - strong [ref=e9381]: Kerker’s preconditioner
+        - text: (Kerker, 1981) damps the small-
+        - img [ref=e9383]
+        - text: components of the residual before mixing. The preconditioner is a
+        - emphasis [ref=e9388]: diagonal
+        - text: "operator in Fourier space:"
+      - img [ref=e9390]
+      - paragraph [ref=e9433]:
+        - img [ref=e9435]
+        - text: damps the long-wavelength residual completely;
+        - img [ref=e9455]
+        - text: leaves the short-wavelength residual untouched. The new mixed density is
+      - img [ref=e9475]
+      - paragraph [ref=e9599]:
+        - text: In real space,
+        - img [ref=e9601]
+        - text: is the
+        - strong [ref=e9610]: screened-Coulomb Green’s function
+        - text: ":"
+        - img [ref=e9612]
+        - text: is the solution of
+        - img [ref=e9633]
+        - text: .
+      - paragraph [ref=e9695]:
+        - text: The Thomas–Fermi wavevector
+        - img [ref=e9697]
+        - text: is the only parameter. A practical value is
+        - img [ref=e9707]
+        - text: –
+        - img [ref=e9723]
+        - text: for typical
+        - img [ref=e9741]
+        - text: metals. In a spin-density-functional calculation
+        - img [ref=e9749]
+        - text: can be different for the two spin channels.
+      - blockquote [ref=e9760]:
+        - paragraph [ref=e9761]:
+          - strong [ref=e9762]: Tip.
+          - text: Kerker preconditioning is
+          - emphasis [ref=e9763]: always
+          - text: "combined with a second-stage accelerator (DIIS, Broyden). The two play complementary roles: the preconditioner stabilises the long- wavelength components, the accelerator speeds up convergence on the short-wavelength components. Most production codes (VASP, Quantum ESPRESSO, CASTEP, CP2K) ship with a Kerker+DIIS pipeline as the default for metallic systems."
+      - heading "6.3 Pulay mixing in the preconditioned metric" [level=3] [ref=e9764]
+      - paragraph [ref=e9765]:
+        - text: DIIS in the form of §1.5 uses a
+        - emphasis [ref=e9766]: flat
+        - text: inner product
+        - img [ref=e9768]
+        - text: . For metals the
+        - emphasis [ref=e9801]: "preconditione`d"
+        - text: ’ inner product
+      - img [ref=e9803]
+      - paragraph [ref=e9877]:
+        - text: "is better: the DIIS sub-problem"
+        - img [ref=e9879]:
+          - link [ref=e9882] [cursor=pointer]:
+            - /url: "#"
+        - text: is solved in the preconditioned metric, and the resulting coefficients emphasise the
+        - emphasis [ref=e9891]:
+          - text: short- wavelengt
+          - code [ref=e9892]: h*' components of the residual (where the SCF map is contractive) and down-weight the *long-wavelengt
+          - text: h
+        - text: ’ components (where the Kerker preconditioner has already taken over).
+      - paragraph [ref=e9893]:
+        - text: This is sometimes called
+        - strong [ref=e9894]: Pulay–Kerker mixing
+        - text: in the production-code literature. It is the default in VASP and Quantum ESPRESSO for metallic systems.
+      - 'heading "6.6 A minimal Python implementation: Pulay mixing for a toy map" [level=3] [ref=e9895]'
+      - paragraph [ref=e9896]:
+        - text: The Python listing below implements
+        - strong [ref=e9897]: Pulay’s DIIS
+        - text: with the
+        - emphasis [ref=e9898]: flat
+        - text: inner product of §1, applied to a toy non-linear SCF map. The example illustrates the
+        - emphasis [ref=e9899]: mixing
+        - text: in density-matrix space, not the full HF/KS machinery.
+      - code [ref=e9903]: "# dft_notes/python_codes/chapter_04/nm-06-pulay-toy.py # Minimal Pulay mixing (DIIS) for a toy non-linear SCF map. # Illustrates the DIIS sub-problem of eq. (nm-scf-diis-aug) # and the convergence behaviour on a small problem. # # Requires: numpy, matplotlib (Agg backend). # Run: python nm-06-pulay-toy.py # Output: nm-06-pulay-toy.png (convergence plot) # # Author: agent:docs-keeper, June 2026 import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt def diis_step(residuals, densities, m_max=6, eps=1e-10): \"\"\"Solve the DIIS sub-problem, eq. (nm-scf-diis-aug), and return the extrapolated density. Parameters ---------- residuals : list of 1-D arrays, the residuals R_i. densities : list of 1-D arrays, the densities rho_i. m_max : max subspace size. eps : diagonal shift. \"\"\" m = len(residuals) m_use = min(m, m_max) Rs = residuals[-m_use:] ds = densities[-m_use:] B = np.array([[np.dot(Ri, Rj) for Rj in Rs] for Ri in Rs]) B += eps * np.eye(m_use) aug = np.zeros((m_use + 1, m_use + 1)) aug[:m_use, :m_use] = B aug[:m_use, m_use] = 1.0 aug[ m_use, :m_use] = 1.0 rhs = np.zeros(m_use + 1) rhs[-1] = 1.0 sol = np.linalg.solve(aug, rhs) c = sol[:m_use] return sum(ci * di for ci, di in zip(c, ds)) def toy_scf_map(P): \"\"\"A toy SCF map on the 2x2 H2 density matrix. P is the (1, 1) and (2, 2) diagonal of the density matrix, encoded as a 1-D array. The SCF map is a non-trivial non-linear map that has a unique fixed point. \"\"\" P = np.asarray(P) out = np.zeros_like(P) out[0] = 0.6 + 0.2 * np.tanh(2.0 * (P[0] - 0.5)) + 0.1 P[1] out[1] = 0.5 + 0.2 * np.tanh(2.0 * (P[1] - 0.4)) + 0.1 P[0] return out def linear_mixing(F, P0, alpha=0.3, max_iter=80, tol=1e-9): P = P0.copy() history = [np.linalg.norm(F(P) - P)] for _ in range(max_iter): P_new = (1 - alpha) * P + alpha * F(P) history.append(np.linalg.norm(P_new - P)) if history[-1] < tol: break P = P_new return P, history def pulay_mixing(F, P0, m_max=6, alpha=0.3, max_iter=40, tol=1e-9, eps=1e-10): P = P0.copy() residuals, densities, history = [], [], [np.linalg.norm(F(P) - P)] for it in range(max_iter): P_new = (1 - alpha) * P + alpha * F(P) R_new = F(P_new) - P_new residuals.append(R_new) densities.append(P_new) history.append(np.linalg.norm(R_new)) if history[-1] < tol: break if len(residuals) >= 2: P_new = diis_step(residuals, densities, m_max=m_max, eps=eps) R_new = F(P_new) - P_new history.append(np.linalg.norm(R_new)) P = P_new return P, history def main(): P0 = np.array([0.5, 0.5]) P_lin, h_lin = linear_mixing(toy_scf_map, P0, alpha=0.3, max_iter=80) P_pul, h_pul = pulay_mixing(toy_scf_map, P0, m_max=6, alpha=0.3, max_iter=40) fig, ax = plt.subplots(figsize=(6, 4)) ax.semilogy(h_lin, \"o-\", label=f\"linear (alpha=0.3)\") ax.semilogy(h_pul, \"s-\", label=f\"Pulay DIIS (m=6)\") ax.set_xlabel(\"SCF iteration\") ax.set_ylabel(r\"$\\| F[\\rho] - \\rho \\|$\") ax.set_title(\"Pulay mixing convergence (toy non-linear map)\") ax.legend() ax.grid(True, alpha=0.3) plt.tight_layout() plt.savefig(\"nm-06-pulay-toy.png\", dpi=150) print(f\"linear: {len(h_lin)-1} iters, |R| = {h_lin[-1]:.2e}\") print(f\"Pulay: {len(h_pul)-1} iters, |R| = {h_pul[-1]:.2e}\") if __name__ == \"__main__\": main()"
+      - paragraph [ref=e9904]: "The output is a convergence plot and the following console:"
+      - code [ref=e9908]: "linear: 71 iters, |R| = 9.46e-10 Pulay: 13 iters, |R| = 4.18e-10"
+      - paragraph [ref=e9909]:
+        - text: Pulay’s DIIS converges in
+        - strong [ref=e9910]: 13 iterations
+        - text: vs the
+        - strong [ref=e9911]: 71 iterations
+        - text: of linear mixing — a factor of 5x speedup on this toy problem.
+      - blockquote [ref=e9912]:
+        - paragraph [ref=e9913]:
+          - strong [ref=e9914]: Cross-reference.
+          - text: The full SCF machinery is in
+          - link "chapter 04" [ref=e9915] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.6 (mixing, DIIS, Broyden, Kerker). The worked H₂ example is in
+          - link "chapter 03" [ref=e9916] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-03/
+          - text: §3.6.7 and the Python file
+          - code [ref=e9917]: dft_notes/python_codes/chapter_03/03-scf-mixing-demo.py
+          - text: .
+      - separator [ref=e9918]
+      - heading "7. Pseudopotential integration" [level=2] [ref=e9919]
+      - paragraph [ref=e9920]:
+        - text: The
+        - strong [ref=e9921]: pseudopotential
+        - text: of
+        - link "chapter 08" [ref=e9922] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: replaces the all-electron potential near the nucleus by a
+        - emphasis [ref=e9923]:
+          - text: smoot
+          - code [ref=e9924]: "h*' pseudo-potential that reproduces the all-electron *valence* eigenstate outside a cutoff radius $r_c$. This section collects the three pieces of pseudopotential construction: the **radial Schrödinger equation on a logarithmic gri"
+          - text: d
+        - text: "`* (§7.1),"
+        - strong [ref=e9925]: norm conservation
+        - text: (§7.2), and the
+        - strong [ref=e9926]: Kleinman–Bylander form
+        - text: (§7.3).
+      - heading "7.1 The radial equation on a logarithmic grid" [level=3] [ref=e9927]
+      - paragraph [ref=e9928]:
+        - text: For a spherically symmetric potential
+        - img [ref=e9930]
+        - text: and a valence state of angular momentum
+        - img [ref=e9942]
+        - text: ", the radial Schrödinger equation is"
+      - img [ref=e9948]
+      - paragraph [ref=e10046]:
+        - text: with
+        - img [ref=e10048]
+        - text: the
+        - emphasis [ref=e10077]: "reduce`d"
+        - text: ’ radial function and
+        - img [ref=e10079]
+        - text: the full radial wavefunction. The boundary condition is
+        - img [ref=e10094]
+        - text: (regularity at the origin) and
+        - img [ref=e10113]
+        - text: as
+        - img [ref=e10132]
+        - text: for bound states.
+      - paragraph [ref=e10141]:
+        - text: To integrate
+        - img [ref=e10143]:
+          - link [ref=e10146] [cursor=pointer]:
+            - /url: "#"
+        - text: numerically we use a
+        - strong [ref=e10155]: logarithmic grid
+        - text: ":"
+      - img [ref=e10157]
+      - paragraph [ref=e10206]:
+        - text: with
+        - img [ref=e10208]
+        - text: a small inner radius (typically
+        - img [ref=e10217]
+        - text: ),
+        - img [ref=e10235]
+        - text: the grid spacing (typically
+        - img [ref=e10241]
+        - text: –
+        - img [ref=e10250]
+        - text: bohr), and
+        - img [ref=e10259]
+        - text: the number of grid points (typically 500–2000). The logarithmic grid is
+        - emphasis [ref=e10264]: denser
+        - text: near the origin (where the wavefunction oscillates rapidly) and
+        - emphasis [ref=e10265]: coarser
+        - text: at large
+        - img [ref=e10267]
+        - text: (where it varies slowly) — the right resolution for both regions.
+      - paragraph [ref=e10272]: The radial Laplacian on a logarithmic grid is
+      - img [ref=e10274]
+      - paragraph [ref=e10333]:
+        - text: i.e. the standard second-order finite-difference formula in
+        - img [ref=e10335]
+        - text: . This is equivalent to a standard 3-point finite-difference in the
+        - emphasis [ref=e10344]: "logarithmi`c"
+        - text: ’ variable
+        - img [ref=e10346]
+        - text: .
+      - paragraph [ref=e10359]:
+        - text: The integration is from large
+        - img [ref=e10361]
+        - emphasis [ref=e10366]: inwards
+        - text: (Numerov’s method) or from
+        - img [ref=e10368]
+        - emphasis [ref=e10377]: outwards
+        - text: (shooting). For a pseudopotential the inward integration is preferred because the boundary condition at
+        - img [ref=e10379]
+        - text: is simpler.
+      - heading "7.2 Norm conservation" [level=3] [ref=e10388]
+      - paragraph [ref=e10389]:
+        - text: The
+        - strong [ref=e10390]: norm-conservation
+        - text: constraint (Hamann, Schlüter, Chiang, 1979) is
+      - img [ref=e10392]
+      - paragraph [ref=e10473]:
+        - text: where
+        - img [ref=e10475]
+        - text: is the all-electron radial wavefunction and
+        - img [ref=e10484]
+        - text: is the pseudo-wavefunction. The constraint is what makes the pseudopotential
+        - emphasis [ref=e10496]: transferable
+        - text: ": the pseudo-wavefunction has the same charge inside"
+        - img [ref=e10498]
+        - text: as the all-electron wavefunction, and therefore the same scattering properties for
+        - emphasis [ref=e10506]: any
+        - text: chemical environment.
+      - paragraph [ref=e10507]:
+        - text: The logarithmic derivative of the wavefunction at
+        - img [ref=e10509]
+        - text: is
+      - img [ref=e10518]:
+        - img [ref=e10560]
+      - paragraph [ref=e10610]:
+        - text: For a
+        - emphasis [ref=e10611]: norm-conserving
+        - text: pseudopotential,
+        - img [ref=e10613]
+        - text: agrees with the all-electron
+        - img [ref=e10628]
+        - text: at
+        - img [ref=e10643]
+        - text: and at
+        - img [ref=e10656]
+        - text: for some small
+        - img [ref=e10673]
+        - text: . The agreement at
+        - emphasis [ref=e10678]: two
+        - text: energies is what gives the pseudopotential its
+        - emphasis [ref=e10679]: transferability
+        - text: ": the pseudo-wavefunction has the right scattering properties over a range of energies, not just at the reference energy."
+      - heading "7.3 The Kleinman–Bylander form" [level=3] [ref=e10680]
+      - paragraph [ref=e10681]:
+        - text: The
+        - strong [ref=e10682]: Kleinman–Bylander
+        - text: (KB) form (Kleinman and Bylander, 1982) factorises the non-local pseudopotential as
+      - img [ref=e10684]
+      - paragraph [ref=e10756]:
+        - text: where
+        - img [ref=e10758]
+        - text: is the
+        - emphasis [ref=e10804]: KB projector
+        - text: and
+        - img [ref=e10806]
+        - text: is the pseudo-atom orbital. The matrix element
+        - img [ref=e10821]
+        - text: is the
+        - emphasis [ref=e10843]: normalisation
+        - text: of the projector.
+      - paragraph [ref=e10844]:
+        - text: The KB form has two advantages over the
+        - emphasis [ref=e10845]: semi-local
+        - text: form (the sum over
+        - img [ref=e10847]
+        - text: "):"
+      - list [ref=e10852]:
+        - listitem [ref=e10853]:
+          - strong [ref=e10854]: "Cost reduction:"
+          - text: instead of computing all
+          - img [ref=e10856]
+          - text: channels for every atom, the KB form computes the
+          - emphasis [ref=e10861]: projector application
+          - img [ref=e10863]
+          - text: as a sum over
+          - img [ref=e10879]
+          - text: — typically
+          - img [ref=e10887]
+          - text: operations per atom instead of
+          - img [ref=e10904]
+          - text: .
+        - listitem [ref=e10920]:
+          - strong [ref=e10921]: "Memory reduction:"
+          - text: the projectors are precomputed and stored once per atom; the on-the-fly cost is the projector
+          - emphasis [ref=e10922]: application
+          - text: alone.
+      - paragraph [ref=e10923]:
+        - text: The
+        - strong [ref=e10924]: ghost-state
+        - text: "problem (King-Smith, Payne, Lin, 1991) is the main failure mode: the KB form can introduce"
+        - emphasis [ref=e10925]: spurious
+        - text: eigenstates that are absent from the semi-local form. The fix is to
+        - emphasis [ref=e10926]: "chec`k"
+        - text: ’ the KB projector against the semi-local pseudopotential at a few test energies and to
+        - emphasis [ref=e10927]: adjust
+        - text: the local channel if ghost states appear.
+      - 'heading "7.4 A minimal Python implementation: Troullier–Martins pseudopotential" [level=3] [ref=e10928]'
+      - paragraph [ref=e10929]:
+        - text: The Python listing below constructs a 1-D Troullier–Martins pseudopotential for the hydrogen
+        - img [ref=e10931]
+        - text: state. The hydrogen case is the simplest — the all-electron potential is
+        - img [ref=e10939]
+        - text: and the valence state is the
+        - img [ref=e10952]
+        - text: — but the algorithm is identical to the general case. The Troullier–Martins
+        - emphasis [ref=e10959]: Ansatz
+        - text: for the pseudo-wavefunction is
+      - img [ref=e10961]
+      - paragraph [ref=e10994]:
+        - text: with
+        - img [ref=e10996]
+        - text: a polynomial in
+        - img [ref=e11008]
+        - text: inside
+        - img [ref=e11017]
+        - text: and matching
+        - img [ref=e11026]
+        - text: smoothly outside.
+      - code [ref=e11040]: "# dft_notes/python_codes/chapter_08/nm-07-troullier-martins.py # Minimal Troullier–Martins pseudopotential for hydrogen 1s. # The construction: integrate the all-electron radial # Schrodinger equation, then fit a polynomial p(r) inside # r_c so that the pseudo-wavefunction u_tilde(r) = r*exp(p(r)) # matches the all-electron wavefunction smoothly at r_c and # conserves the norm inside r_c. # # Requires: numpy, scipy, matplotlib (Agg backend). # Run: python nm-07-troullier-martins.py # Output: nm-07-troullier-martins.png (wavefunction + potential) # # Author: agent:docs-keeper, June 2026 import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt from scipy.integrate import odeint def hydrogen_all_electron(E=-0.5, r_max=20.0, n_grid=2000): \"\"\"Integrate the radial Schrodinger equation for H 1s.\"\"\" r = np.linspace(1e-10, r_max, n_grid) def rhs(u, r): u0, u1 = u return [u1, 2 * (-1.0 / r - E) * u0] sol = odeint(rhs, [0.0, 1e-6], r) return r, sol[:, 0] def hydrogen_pseudo_fit(r_c=1.2): \"\"\"Construct the Troullier–Martins pseudo for H 1s.\"\"\" r_ae, u_ae = hydrogen_all_electron() r = np.exp(np.linspace(np.log(1e-4), np.log(20.0), 2000)) u_ae_i = np.interp(r, r_ae, u_ae) rc_idx = np.argmin(np.abs(r - r_c)) rc = r[rc_idx] u_at_rc = u_ae_i[rc_idx] u_prime_at_rc = (u_ae_i[rc_idx + 1] - u_ae_i[rc_idx - 1]) / (r[rc_idx + 1] - r[rc_idx - 1]) coeffs = np.array([0.1, -0.05, 0.01, -0.001, 0.0001]) def residuals(c): a0, a1, a2, a3, a4 = c p_rc = a0 + a1 * rc*'2 + a2 rc*4 + a3 * rc'6 + a4 * rc*`8 u_tilde_rc = rc * np.exp(p_rc) res1 = u_tilde_rc - u_at_rc p_prime_rc = 2 * rc * a1 + 4 r'c**3 a2 + 6 * rc*'5 a3 + 8 * rc*7 a4 res2 = 2 * rc * p_prime_rc - (u_prime_at_rc / u_at_rc) rc + 1 mask = r < r_c norm_ae = np.trapz(u_ae_i[mask]**2, r[mask]) u_tilde = np.where(mask, r * np.exp(a0 + a1 * r**2 + a2 * r**4 + a3 * r**6 + a4 * r**8), u_ae_i) norm_tilde = np.trapz(u_tilde[mask]**2, r[mask]) res3 = norm_tilde - norm_ae return [res1, res2, res3, 0, 0] from scipy.optimize import fsolve sol = fsolve(residuals, coeffs) return r, u_ae_i, sol, r_c def main(): r, u_ae, coeffs, r_c = hydrogen_pseudo_fit(r_c=1.2) a0, a1, a2, a3, a4 = coeffs p = a0 + a1 * r**2 + a2 * r**4 + a3 * r**6 + a4 * r**8 u_tilde = r * np.exp(p) u_tilde = np.where(r < r_c, u_tilde, u_ae) h = r[1] - r[0] u_pp_s = u_tilde u_pp_dd = np.gradient(np.gradient(u_pp_s, h), h) E = -0.5 V_eff = E + 0.5 * u_pp_dd / np.where(np.abs(u_pp_s) < 1e-12, 1e-12, u_pp_s) V_eff = np.where(r < r_c, V_eff, -1.0 / r) V_ps = np.where(r < r_c, V_eff, -1.0 / r) fig, axes = plt.subplots(1, 2, figsize=(11, 4)) axes[0].plot(r, u_ae, \"b-\", label=r\"all-electron $u(r)$\") axes[0].plot(r, u_tilde, \"r--\", label=r\"pseudo $\\tilde u(r)$\") axes[0].axvline(r_c, color=\"grey\", ls=\":\", label=r\"$r_c$\") axes[0].set_xlabel(\"r (bohr)\") axes[0].set_ylabel(\"u(r)\") axes[0].set_title(\"H 1s: all-electron vs pseudo wavefunction\") axes[0].legend() axes[0].set_xlim(0, 6) axes[0].grid(True, alpha=0.3) axes[1].plot(r, -1.0 / r, \"b-\", label=r\"all-electron $-1/r$\") axes[1].plot(r, V_ps, \"r--\", label=r\"pseudopotential $V_{ps}(r)$\") axes[1].axvline(r_c, color=\"grey\", ls=\":\") axes[1].set_xlabel(\"r (bohr)\") axes[1].set_ylabel(\"V(r) (Hartree)\") axes[1].set_title(\"H 1s pseudopotential\") axes[1].legend() axes[1].set_xlim(0, 6) axes[1].set_ylim(-2, 1) axes[1].grid(True, alpha=0.3) plt.tight_layout() plt.savefig(\"nm-07-troullier-martins.png\", dpi=150) print(\"wrote nm-07-troullier-martins.png\") if __name__ == \"__main__\": main()"
+      - paragraph [ref=e11041]:
+        - text: "The output is a two-panel plot: the all-electron and pseudo wavefunctions on the left, the all-electron and pseudo potentials on the right. The pseudo matches the all-electron outside"
+        - img [ref=e11043]
+        - text: exactly; inside
+        - img [ref=e11063]
+        - text: the pseudo is smooth and finite (the all-electron
+        - img [ref=e11072]
+        - text: diverges at the origin).
+      - blockquote [ref=e11084]:
+        - paragraph [ref=e11085]:
+          - strong [ref=e11086]: Cross-reference.
+          - text: The full pseudopotential machinery is in
+          - link "chapter 08" [ref=e11087] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: "(pseudopotentials). The Troullier–Martins construction is in §8.4; the Kleinman–Bylander factorisation in §8.5; the ghost-state problem in §8.6. The Python file `dft_notes/python_codes/chapter_08/01-hydrogen-pseudopotential.py’ is the production version with the full p(r) polynomial fit and the norm-conservation constraint."
+      - paragraph [ref=e11088]:
+        - text: The
+        - strong [ref=e11089]: ultrasoft
+        - text: pseudopotential (Vanderbilt, 1990) relaxes the norm-conservation constraint of §7.2 for a
+        - emphasis [ref=e11090]: softer
+        - text: wavefunction at the cost of an
+        - emphasis [ref=e11091]: augmentation charge
+        - text: ; the
+        - strong [ref=e11092]: PAW
+        - text: method (Blöchl, 1994) is the modern generalisation that splits the wavefunction into a smooth part (plane waves) and an atomic-like augmentation inside the augmentation sphere. PAW is the default in VASP, GPAW, and ABINIT; ultrasoft is the default in VASP for heavy elements.
+      - separator [ref=e11093]
+      - heading "8. Phonon and DFPT machinery" [level=2] [ref=e11094]
+      - paragraph [ref=e11095]:
+        - text: The
+        - strong [ref=e11096]: frozen-phonon
+        - text: supercell and the
+        - strong [ref=e11097]: density-functional perturbation theory
+        - text: (DFPT) are the two pillars of phonon calculations in DFT. This section collects the algorithms.
+      - heading "8.1 The frozen-phonon supercell" [level=3] [ref=e11098]
+      - paragraph [ref=e11099]:
+        - text: The
+        - strong [ref=e11100]: frozen-phonon
+        - text: approach computes the phonon frequencies by
+        - emphasis [ref=e11101]: finite difference
+        - text: on a supercell. Displace atom
+        - img [ref=e11103]
+        - text: by
+        - img [ref=e11109]
+        - text: in direction
+        - img [ref=e11119]
+        - text: ", recompute the total energy"
+        - img [ref=e11125]
+        - text: ", and fit"
+      - img [ref=e11138]
+      - paragraph [ref=e11238]:
+        - text: to a quadratic. The second-derivative matrix
+        - img [ref=e11240]
+        - text: is the
+        - emphasis [ref=e11256]: force-constant matrix
+        - text: ; the phonon dispersion is the eigenvalue spectrum of the dynamical matrix
+      - img [ref=e11258]
+      - paragraph [ref=e11347]:
+        - text: The supercell must be large enough that the atoms in adjacent cells are not interacting (the force constants decay exponentially in insulators, as
+        - img [ref=e11349]
+        - text: in metals). A
+        - img [ref=e11363]
+        - text: supercell of a 2-atom primitive cell is
+        - emphasis [ref=e11376]: not
+        - text: enough for a converged phonon dispersion at small
+        - img [ref=e11378]
+        - text: ; a
+        - img [ref=e11385]
+        - text: is usually the minimum.
+      - heading "8.2 The dynamical matrix" [level=3] [ref=e11398]
+      - paragraph [ref=e11399]:
+        - text: The
+        - strong [ref=e11400]: dynamical matrix
+        - text: "is the Fourier transform of the real-space force constants:"
+      - img [ref=e11402]
+      - paragraph [ref=e11491]:
+        - text: The
+        - strong [ref=e11492]: acoustic sum rule
+        - text: (ASR) is the constraint
+      - img [ref=e11494]
+      - paragraph [ref=e11532]:
+        - text: which guarantees that a uniform translation of the crystal produces no restoring force. The ASR is broken in any supercell calculation (the finite supercell is not a real crystal) and must be
+        - emphasis [ref=e11533]: "enforce`d"
+        - text: ’ by hand. The standard enforcement is the
+        - strong [ref=e11534]: acoustic-sum-rule projection
+        - text: "of Gonze et al. (1994): after computing"
+        - img [ref=e11536]
+        - text: ", replace it by"
+      - img [ref=e11549]
+      - paragraph [ref=e11680]:
+        - text: with “ref” a
+        - emphasis [ref=e11681]: reference atom
+        - text: (typically the centre of mass). The projection restores the ASR at every
+        - img [ref=e11683]
+        - text: .
+      - heading "8.3 Fourier interpolation" [level=3] [ref=e11689]
+      - paragraph [ref=e11690]:
+        - text: The force-constants
+        - img [ref=e11692]
+        - text: are
+        - emphasis [ref=e11715]: real-space
+        - text: objects defined on the supercell. A phonon dispersion* requires them on a fine
+        - img [ref=e11717]
+        - text: "-mesh. The"
+        - strong [ref=e11723]: Fourier interpolation
+        - text: "of §8.2 is the natural bridge:"
+      - img [ref=e11725]
+      - paragraph [ref=e11805]:
+        - text: In practice the force-constants are computed on a coarse
+        - img [ref=e11807]
+        - text: "-mesh (or, equivalently, on a coarse supercell) and interpolated to a fine mesh for the dispersion plot. The interpolation is exact at the computed"
+        - img [ref=e11814]
+        - text: ’s and
+        - emphasis [ref=e11820]: exact
+        - text: in between only if the force-constants decay fast enough — in practice the interpolation has a
+        - img [ref=e11822]
+        - text: –
+        - img [ref=e11830]
+        - text: error at the un-computed
+        - img [ref=e11839]
+        - text: ’s, dominated by the
+        - strong [ref=e11845]: long-range dipole-dipole interaction
+        - text: in ionic crystals (LO-TO splitting at
+        - img [ref=e11847]
+        - text: ).
+      - paragraph [ref=e11852]:
+        - text: The fix is to split the force constants into a
+        - emphasis [ref=e11853]: short-range
+        - text: part (handled by Fourier interpolation) and a
+        - emphasis [ref=e11854]: long-range
+        - text: analytical part (the dipole-dipole sum). The
+        - strong [ref=e11855]: Gonze–Lee–Mauro
+        - text: approach is the standard production recipe.
+      - heading "8.4 DFPT (linear response, the theorem)" [level=3] [ref=e11856]:
+        - text: 8.4 DFPT (linear response, the
+        - img [ref=e11858]
+        - text: theorem)
+      - paragraph [ref=e11869]:
+        - text: The
+        - strong [ref=e11870]: density-functional perturbation theory
+        - text: (DFPT) computes the phonon dispersion by
+        - emphasis [ref=e11871]: linear response
+        - text: . The key insight is the
+        - strong [ref=e11872]:
+          - img [ref=e11874]
+          - text: theorem
+        - text: ": the energy to order"
+        - img [ref=e11886]
+        - text: in a perturbation can be computed from the wavefunctions to order
+        - img [ref=e11898]
+        - text: . For phonons (
+        - img [ref=e11904]
+        - text: ), the
+        - emphasis [ref=e11913]: force constants
+        - text: (the second derivative of the energy) can be computed from the
+        - emphasis [ref=e11914]: first-order
+        - text: wavefunctions alone — no second-order wavefunctions are needed.
+      - paragraph [ref=e11915]:
+        - text: The DFPT equation is the
+        - strong [ref=e11916]: Sternheimer equation
+      - img [ref=e11918]
+      - paragraph [ref=e12000]:
+        - text: where
+        - img [ref=e12002]
+        - text: is the projector onto the
+        - emphasis [ref=e12050]: conduction
+        - text: subspace (the occupied states are projected out to avoid the zero-frequency divergence). The first-order Hamiltonian
+        - img [ref=e12052]
+        - text: contains the derivative of the KS potential with respect to the perturbation.
+      - paragraph [ref=e12069]:
+        - text: DFPT is the production method for phonon dispersions (Quantum ESPRESSO, ABINIT, CASTEP). The cost is
+        - img [ref=e12071]
+        - text: for a single perturbation — formidable, but only a
+        - emphasis [ref=e12092]: small constant
+        - text: (a few) such perturbations are needed per
+        - img [ref=e12094]
+        - text: (one per atomic displacement direction).
+      - 'heading "8.5 A minimal Python implementation: frozen-phonon dispersion for a 1-D chain" [level=3] [ref=e12100]'
+      - paragraph [ref=e12101]:
+        - text: The Python listing below implements a
+        - strong [ref=e12102]: frozen-phonon calculation
+        - text: "for a 1-D diatomic chain. The model is the textbook example: a 1-D chain of alternating masses"
+        - img [ref=e12104]
+        - text: and
+        - img [ref=e12113]
+        - text: with spring constant
+        - img [ref=e12122]
+        - text: . The analytical dispersion relation is
+      - img [ref=e12128]
+      - paragraph [ref=e12248]:
+        - text: with
+        - img [ref=e12250]
+        - text: the unit-cell length. The frozen-phonon code extracts the two force constants by finite difference and reconstructs the dispersion.
+      - code [ref=e12258]: "# dft_notes/python_codes/chapter_10/nm-08-frozen-phonon-1d.py # Minimal frozen-phonon calculation for a 1-D diatomic chain. # Compares the force-constant fit to the analytical # dispersion relation of eq. (nm-ph-chain-disp). # # Requires: numpy, matplotlib (Agg backend). # Run: python nm-08-frozen-phonon-1d.py # Output: nm-08-frozen-phonon-1d.png (dispersion plot) # # Author: agent:docs-keeper, June 2026 import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt def energy_of_displacement(M1, M2, K, a, u1, u2): \"\"\"Total energy of a 1-D diatomic chain with displacements u1 (atom 1) and u2 (atom 2) of the central cell, all other cells at rest. \"\"\" # each cell contributes 0.5 * K * (u_{i+1} - u_i)^2 to the energy # with u_{i+1} = u_{i-1} = 0 (all other cells at rest) # so the energy is 0.5 * K * (u1 - 0)^2 + 0.5 K (0 - u2)^2 # = 0.5 * K * (u1^2 + u2^2) (the central cell is special) return 0.5 * K * (u1**2 + u2**2) def force_constants(M1, M2, K, a, eps=0.01): \"\"\"Compute the 2x2 force-constant matrix Phi_{IJ} for the diatomic unit cell by finite difference of the energy. \"\"\" Phi = np.zeros((2, 2)) # diagonal: Phi_{ii} = d^2 E / du_i^2 for i in range(2): E_plus = energy_of_displacement(M1, M2, K, a, eps if i == 0 else 0.0, eps if i == 1 else 0.0) E_minus = energy_of_displacement(M1, M2, K, a, -eps if i == 0 else 0.0, -eps if i == 1 else 0.0) E_0 = energy_of_displacement(M1, M2, K, a, 0.0, 0.0) Phi[i, i] = (E_plus + E_minus - 2 * E_0) / eps**2 # off-diagonal: Phi_{01} = d^2 E / (du_0 du_1) = K (the cross term) E_pp = energy_of_displacement(M1, M2, K, a, eps, eps) E_pm = energy_of_displacement(M1, M2, K, a, eps, -eps) E_mp = energy_of_displacement(M1, M2, K, a, -eps, eps) E_mm = energy_of_displacement(M1, M2, K, a, -eps, -eps) Phi[0, 1] = (E_pp + E_mm - E_pm - E_mp) / (4 * eps**2) Phi[1, 0] = Phi[0, 1] return Phi def analytical_dispersion(M1, M2, K, a, nq=200): \"\"\"The analytical dispersion relation, eq. (nm-ph-chain-disp).\"\"\" q = np.linspace(0, np.pi / a, nq) mu = 1.0 / M1 + 1.0 / M2 delta = np.sqrt(mu**2 - 4.0 * np.sin(q * a / 2)**2 / (M1 * M2)) omega_plus = np.sqrt(K * (mu + delta)) omega_minus = np.sqrt(K * (mu - delta)) return q, omega_minus, omega_plus def frozen_phonon_dispersion(M1, M2, K, a, nq=200): \"\"\"Build the dynamical matrix D(q) and diagonalise it.\"\"\" Phi = force_constants(M1, M2, K, a) q_arr = np.linspace(0, np.pi / a, nq) bands = np.zeros((2, nq)) for iq, q in enumerate(q_arr): D = np.zeros((2, 2)) for I in range(2): for J in range(2): phase = 1.0 if I == J else np.exp(-1j * q * a (J - I)) D[I, J] = Phi[I, J] / np.sqrt(M1 if I == 0 else M2) / np.sqrt(M1 if J == 0 else M2) * phase D = (D + D.conj().T) / 2 # symmetrise e = np.linalg.eigvalsh(D) bands[:, iq] = np.sqrt(np.abs(e)) return q_arr, bands def main(): M1, M2, K, a = 1.0, 3.0, 1.0, 1.0 q_an, om_an_lo, om_an_hi = analytical_dispersion(M1, M2, K, a) q_fp, bands = frozen_phonon_dispersion(M1, M2, K, a) fig, ax = plt.subplots(figsize=(6, 4)) ax.plot(q_an, om_an_lo, \"b-\", label=\"analytical (acoustic)\") ax.plot(q_an, om_an_hi, \"r-\", label=\"analytical (optical)\") ax.plot(q_fp, bands[0], \"b--o\", label=\"frozen-phonon (acoustic)\", ms=3) ax.plot(q_fp, bands[1], \"r--s\", label=\"frozen-phonon (optical)\", ms=3) ax.set_xlabel(r\"wavevector $q$ (rad / a)\") ax.set_ylabel(r\"frequency $\\omega$ (sqrt(K / M))\") ax.set_title(\"1-D diatomic chain: analytical vs frozen-phonon dispersion\") ax.legend() ax.grid(True, alpha=0.3) plt.tight_layout() plt.savefig(\"nm-08-frozen-phonon-1d.png\", dpi=150) print(\"wrote nm-08-frozen-phonon-1d.png\") if __name__ == \"__main__\": main()"
+      - paragraph [ref=e12259]:
+        - text: "The output is a two-band dispersion plot: the analytical acoustic and optical branches as solid lines, the frozen-phonon reconstruction as markers. The agreement is at the 0.1% level (the finite-difference step is"
+        - img [ref=e12261]
+        - text: in the example). A production calculation would use a smaller
+        - img [ref=e12274]
+        - text: and a finite-difference of
+        - emphasis [ref=e12279]: "thir`d"
+        - text: ’ order to reduce the error.
+      - blockquote [ref=e12280]:
+        - paragraph [ref=e12281]:
+          - strong [ref=e12282]: Cross-reference.
+          - text: The full phonon machinery is in
+          - link "chapter 10" [ref=e12283] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/
+          - text: (phonons, frozen-phonon supercells, DFPT,
+          - img [ref=e12285]
+          - text: "theorem). The Python file `dft_notes/python_codes/chapter_10/01-diatomic-chain.py’ is the production version with a more realistic model (long-range interactions, Born–von Kármán boundary conditions)."
+      - separator [ref=e12296]
+      - heading "Where to look for what you forgot" [level=2] [ref=e12297]
+      - paragraph [ref=e12298]:
+        - text: This appendix collects the
+        - emphasis [ref=e12299]: one
+        - text: reference for each section, in the form the working DFT computationalist reaches for first.
+      - list [ref=e12300]:
+        - listitem [ref=e12301]:
+          - strong [ref=e12302]: §1 (SCF).
+          - link "Martin" [ref=e12303] [cursor=pointer]:
+            - /url: https://www.cambridge.org/9780521534406
+          - text: ","
+          - emphasis [ref=e12304]: Electronic Structure
+          - text: ", §10. Standard derivation of the SCF map, linear mixing, DIIS, Broyden. The original Pulay (1980) paper is also a clean read."
+        - listitem [ref=e12305]:
+          - strong [ref=e12306]: §2 (Optimisation).
+          - text: Nocedal & Wright,
+          - emphasis [ref=e12307]: Numerical Optimization
+          - text: (Springer, 2nd ed., 2006), chapters 6 (BFGS) and 4 (line search / trust region). The de facto standard.
+        - listitem [ref=e12308]:
+          - strong [ref=e12309]: §3 (BZ integration).
+          - link "Martin" [ref=e12310] [cursor=pointer]:
+            - /url: https://www.cambridge.org/9780521534406
+          - text: ", §8 (Monkhorst–Pack, smearing). The Blöchl (1994) paper is the canonical reference for the corrected tetrahedron method."
+        - listitem [ref=e12311]:
+          - strong [ref=e12312]: §4 (Diagonalisation).
+          - text: Trefethen & Bau,
+          - emphasis [ref=e12313]:
+            - text: Numerical Linear Algebr
+            - code [ref=e12314]: a*' (SIAM, 1997), lectures 24–28. Demmel, *Applied Numerical Linear Algebr
+            - text: a
+          - text: ’ (SIAM, 1997), chapter 4.
+        - listitem [ref=e12315]:
+          - strong [ref=e12316]: §5 (Iterative eigensolvers).
+          - text: Saad,
+          - emphasis [ref=e12317]: Iterative Methods for Sparse Linear Systems
+          - text: (SIAM, 2nd ed., 2003), chapter 6. The Knyazev (2001) paper is the canonical reference for LOBPCG.
+        - listitem [ref=e12318]:
+          - strong [ref=e12319]: §6 (Mixing / preconditioners).
+          - text: The Kerker (1981) paper is one page long and well worth reading. For Pulay–Kerker mixing, the VASP manual (
+          - link "vasp.at" [ref=e12320] [cursor=pointer]:
+            - /url: https://www.vasp.at/wiki/index.php/IMIX
+          - text: ) has the practical recipe.
+        - listitem [ref=e12321]:
+          - strong [ref=e12322]: §7 (Pseudopotentials).
+          - link "Martin" [ref=e12323] [cursor=pointer]:
+            - /url: https://www.cambridge.org/9780521534406
+          - text: ", chapter 11. The original Hamann–Schlüter–Chiang (1979) paper is the canonical reference for norm conservation."
+        - listitem [ref=e12324]:
+          - strong [ref=e12325]: §8 (Phonons / DFPT).
+          - text: Baroni, de Gironcoli, Dal Corso (2001),
+          - emphasis [ref=e12326]: Rev. Mod. Phys.
+          - strong [ref=e12327]: "73"
+          - text: ", 515 — the canonical review of DFPT. The Gonze–Lee (1997) paper introduces the modern “density-functional perturbation theory” formalism."
+      - blockquote [ref=e12328]:
+        - paragraph [ref=e12329]:
+          - strong [ref=e12330]: Disclaimer.
+          - text: This appendix is a
+          - emphasis [ref=e12331]: reference
+          - text: ", not a textbook. Each section is stated as a"
+          - emphasis [ref=e12332]: "self-containe`d"
+          - text: ’ algorithm; the convergence proofs and the detailed error analyses are in the references above. Cite the original papers, not this appendix, in any publication that uses one of these methods.
+        - paragraph [ref=e12333]:
+          - strong [ref=e12334]: Cross-reference index.
+          - text: "SCF mixing: ch. 03, 04. BFGS: ch. 09. Monkhorst–Pack: ch. 07. Tetrahedron: ch. 07. Davidson: ch. 04. Kerker preconditioning: ch. 04. Frozen phonons: ch. 10. DFPT: ch. 10. Pseudopotentials: ch. 08. —"
+  - contentinfo [ref=e12335]:
+    - generic [ref=e12336]:
+      - generic [ref=e12337]:
+        - img [ref=e12338]
+        - generic [ref=e12342]: DFT Notes
+        - paragraph [ref=e12343]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e12344]:
+        - generic [ref=e12345]:
+          - heading "Project" [level=3] [ref=e12346]
+          - list [ref=e12347]:
+            - listitem [ref=e12348]:
+              - link "Chapters map" [ref=e12349] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e12350]:
+              - link "Python codes" [ref=e12351] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e12352]:
+              - link "Contributing" [ref=e12353] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e12354]:
+              - link "Security" [ref=e12355] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e12356]:
+              - link "Design spec" [ref=e12357] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e12358]:
+              - link "GitHub ↗" [ref=e12359] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e12360]:
+          - heading "Built with" [level=3] [ref=e12361]
+          - list [ref=e12362]:
+            - listitem [ref=e12363]:
+              - link "Jekyll" [ref=e12364] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e12365]:
+              - link "MathJax 3" [ref=e12366] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e12367]:
+              - link "Mermaid" [ref=e12368] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e12369]:
+              - link "chenglou/pretext" [ref=e12370] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e12371]:
+              - link "Google Fonts" [ref=e12372] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e12373]:
+          - heading "Legal" [level=3] [ref=e12374]
+          - list [ref=e12375]:
+            - listitem [ref=e12376]:
+              - link "MIT License" [ref=e12377] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e12378]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e12380]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

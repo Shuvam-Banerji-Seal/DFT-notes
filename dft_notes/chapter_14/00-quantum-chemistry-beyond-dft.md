@@ -127,7 +127,6 @@ $$
 \hline
 \text{Method} & \text{Cost} & \text{Error} & \text{When} \\\
              &            & (\text{kcal mol}^{-1}) & \\\
-\hline
 \text{HF}                  & K^4   & 100\text{-}300  & \text{orbitals, qualitative} \\\
 \text{MP2}                 & K^5   & 5\text{-}15     & \text{large systems, dispersion} \\\
 \text{MP3}                 & K^6   & 3\text{-}8      & \text{rare; not size-extensive in open-shell} \\\
@@ -137,7 +136,6 @@ $$
 \text{CCSD(T)}             & K^7   & 0.1\text{-}0.5  & \text{gold standard} \\\
 \text{CCSDT}               & K^8   & < 0.1        & \text{rare; multi-reference problematic} \\\
 \text{FCI}                 & K^N   & 0            & \text{exact in a basis; benchmark only} \\\
-\hline
 \end{array}
 $$
 
@@ -1848,7 +1846,6 @@ $$
 \begin{array}{|lccc|}}
 \hline
 \text{Method} & \text{Scaling} & \text{Accuracy} & \text{When} \\\
-\hline
 \text{HF}                  & K^4   & 100\text{-}300  & \text{qualitative orbitals, geometries} \\\
 \text{MP2}                 & K^5   & 5\text{-}15     & \text{large systems, dispersion-dominated} \\\
 \text{MP3}                 & K^6   & 3\text{-}8      & \text{rare; mostly in composite methods} \\\
@@ -1866,7 +1863,6 @@ $$
 \text{DFT (hybrid)}        & K^4   & 1\text{-}3      & \text{medium systems, thermochemistry} \\\
 \text{Semiempirical (PM7)} & K^2   & 3\text{-}10     & \text{conformational search, screening} \\\
 \text{DFTB3}               & K^3   & 3\text{-}10     & \text{molecular dynamics, millions of atoms} \\
-\hline
 \end{array}
 $$
 

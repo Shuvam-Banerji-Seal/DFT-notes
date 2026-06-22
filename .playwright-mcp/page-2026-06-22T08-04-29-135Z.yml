@@ -1,0 +1,897 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - heading "Agents Handbook" [level=1] [ref=e26]
+    - blockquote [ref=e27]:
+      - paragraph [ref=e28]:
+        - text: This document describes
+        - strong [ref=e29]: how the DFT Notes site is built and maintained
+        - text: . It is the reference for any agent (human or AI) that contributes to the repo. Read this before writing code or content.
+      - paragraph [ref=e30]:
+        - strong [ref=e31]: TL;DR
+        - text: — We use a small set of named agents, each with a narrow responsibility, coordinated by a
+        - code [ref=e32]: lead:orchestrator
+        - text: . New chapters are written in parallel by
+        - code [ref=e33]: agent:content-writer
+        - text: instances, each producing a single chapter to the rigorous template below.
+        - code [ref=e34]: agent:code-runner
+        - text: then executes the Python samples and commits the plots.
+        - code [ref=e35]: agent:qa-reviewer
+        - text: catches the inevitable “this was omitted” / “this is hand-waved” issues before merge.
+        - code [ref=e36]: agent:literature-scholar
+        - text: reads the foundational papers and produces the cited-literature “deep-dive” sections.
+        - code [ref=e37]: agent:visualizer
+        - text: writes the Manim animations and renders them to MP4.
+    - separator [ref=e38]
+    - heading "The agent roster" [level=2] [ref=e39]
+    - paragraph [ref=e40]:
+      - text: All agents are referenced by their
+      - strong [ref=e41]: prefixed
+      - text: names. Use these in commit messages, PR descriptions, and any agent output that needs to be auditable.
+    - table [ref=e42]:
+      - rowgroup [ref=e43]:
+        - row "Prefix Responsibility Output path" [ref=e44]:
+          - columnheader "Prefix" [ref=e45]
+          - columnheader "Responsibility" [ref=e46]
+          - columnheader "Output path" [ref=e47]
+      - rowgroup [ref=e48]:
+        - row "lead:orchestrator Coordinates the other agents; sets priorities; opens the monthly tracking issue; aggregates QA results; makes the final commit message (comments only — no file output)" [ref=e49]:
+          - cell "lead:orchestrator" [ref=e50]:
+            - code [ref=e51]: lead:orchestrator
+          - cell "Coordinates the other agents; sets priorities; opens the monthly tracking issue; aggregates QA results; makes the final commit message" [ref=e52]
+          - cell "(comments only — no file output)" [ref=e53]
+        - row "agent:content-writer Writes one chapter to the rigorous template. Has access todesign.md, this file, and the existing chapters for style consistency. Doesnotwrite code or run it. dft_notes/chapter_NN/NN-slug.md" [ref=e54]:
+          - cell "agent:content-writer" [ref=e55]:
+            - code [ref=e56]: agent:content-writer
+          - cell "Writes one chapter to the rigorous template. Has access todesign.md, this file, and the existing chapters for style consistency. Doesnotwrite code or run it." [ref=e57]:
+            - text: Writes one chapter to the rigorous template. Has access to
+            - code [ref=e58]: design.md
+            - text: ", this file, and the existing chapters for style consistency. Does"
+            - strong [ref=e59]: not
+            - text: write code or run it.
+          - cell "dft_notes/chapter_NN/NN-slug.md" [ref=e60]:
+            - code [ref=e61]: dft_notes/chapter_NN/NN-slug.md
+        - row "agent:code-runner Takes the Python samples the content-writer produced (or the ones in the existing chapter), runs them, generates the plots, commits the PNGs. Also maintainsdft_notes/python_codes/README.mdand thepython_codes/chapter_NN/00-README.mdfiles. dft_notes/python_codes/chapter_NN/" [ref=e62]:
+          - cell "agent:code-runner" [ref=e63]:
+            - code [ref=e64]: agent:code-runner
+          - cell "Takes the Python samples the content-writer produced (or the ones in the existing chapter), runs them, generates the plots, commits the PNGs. Also maintainsdft_notes/python_codes/README.mdand thepython_codes/chapter_NN/00-README.mdfiles." [ref=e65]:
+            - text: Takes the Python samples the content-writer produced (or the ones in the existing chapter), runs them, generates the plots, commits the PNGs. Also maintains
+            - code [ref=e66]: dft_notes/python_codes/README.md
+            - text: and the
+            - code [ref=e67]: python_codes/chapter_NN/00-README.md
+            - text: files.
+          - cell "dft_notes/python_codes/chapter_NN/" [ref=e68]:
+            - code [ref=e69]: dft_notes/python_codes/chapter_NN/
+        - row "agent:diagram-artist Authors the Mermaid diagrams used in chapters and updatesdft_notes/chapters-map.mdwhenever a new chapter is added. inline in chapter +dft_notes/chapters-map.md" [ref=e70]:
+          - cell "agent:diagram-artist" [ref=e71]:
+            - code [ref=e72]: agent:diagram-artist
+          - cell "Authors the Mermaid diagrams used in chapters and updatesdft_notes/chapters-map.mdwhenever a new chapter is added." [ref=e73]:
+            - text: Authors the Mermaid diagrams used in chapters and updates
+            - code [ref=e74]: dft_notes/chapters-map.md
+            - text: whenever a new chapter is added.
+          - cell "inline in chapter +dft_notes/chapters-map.md" [ref=e75]:
+            - text: inline in chapter +
+            - code [ref=e76]: dft_notes/chapters-map.md
+        - row "agent:qa-reviewer Reads a finished chapter against the rigor checklist below. Returns a list of “must-fix” / “should-fix” / “nice-to-have” issues. Doesnotwrite the chapter. review comments only" [ref=e77]:
+          - cell "agent:qa-reviewer" [ref=e78]:
+            - code [ref=e79]: agent:qa-reviewer
+          - cell "Reads a finished chapter against the rigor checklist below. Returns a list of “must-fix” / “should-fix” / “nice-to-have” issues. Doesnotwrite the chapter." [ref=e80]:
+            - text: Reads a finished chapter against the rigor checklist below. Returns a list of “must-fix” / “should-fix” / “nice-to-have” issues. Does
+            - strong [ref=e81]: not
+            - text: write the chapter.
+          - cell "review comments only" [ref=e82]
+        - row "agent:site-builder Owns the Jekyll templates, CSS, and JS that wrap the content. Updatesassets/css/site.css,_includes/*,_layouts/*, and_config.yml. Doesnotwrite content or code. _includes/,_layouts/,assets/,_config.yml" [ref=e83]:
+          - cell "agent:site-builder" [ref=e84]:
+            - code [ref=e85]: agent:site-builder
+          - cell "Owns the Jekyll templates, CSS, and JS that wrap the content. Updatesassets/css/site.css,_includes/*,_layouts/*, and_config.yml. Doesnotwrite content or code." [ref=e86]:
+            - text: Owns the Jekyll templates, CSS, and JS that wrap the content. Updates
+            - code [ref=e87]: assets/css/site.css
+            - text: ","
+            - code [ref=e88]: _includes/*
+            - text: ","
+            - code [ref=e89]: _layouts/*
+            - text: ", and"
+            - code [ref=e90]: _config.yml
+            - text: . Does
+            - strong [ref=e91]: not
+            - text: write content or code.
+          - cell "_includes/,_layouts/,assets/,_config.yml" [ref=e92]:
+            - code [ref=e93]: _includes/
+            - text: ","
+            - code [ref=e94]: _layouts/
+            - text: ","
+            - code [ref=e95]: assets/
+            - text: ","
+            - code [ref=e96]: _config.yml
+        - row "agent:docs-keeper Maintainsdesign.md,agents.md,README.md,CONTRIBUTING.md, and the GitHub templates under.github/. design.md,agents.md,README.md, etc." [ref=e97]:
+          - cell "agent:docs-keeper" [ref=e98]:
+            - code [ref=e99]: agent:docs-keeper
+          - cell "Maintainsdesign.md,agents.md,README.md,CONTRIBUTING.md, and the GitHub templates under.github/." [ref=e100]:
+            - text: Maintains
+            - code [ref=e101]: design.md
+            - text: ","
+            - code [ref=e102]: agents.md
+            - text: ","
+            - code [ref=e103]: README.md
+            - text: ","
+            - code [ref=e104]: CONTRIBUTING.md
+            - text: ", and the GitHub templates under"
+            - code [ref=e105]: .github/
+            - text: .
+          - cell "design.md,agents.md,README.md, etc." [ref=e106]:
+            - code [ref=e107]: design.md
+            - text: ","
+            - code [ref=e108]: agents.md
+            - text: ","
+            - code [ref=e109]: README.md
+            - text: ", etc."
+        - 'row "agent:literature-scholar Reads the foundational papers (e.g. Hohenberg–Kohn 1964, Kohn–Sham 1965, Runge–Gross 1984, Casida 1995, Hedin 1965, Anisimov 1991, Behler–Parrinello 2007, Kane–Mele 2005, …) and produces acited-literature “deep-dive” sectionthat quotes the original equation numbers, page numbers, and results. new section indft_notes/chapter_NN/00-*.md, e.g. §NN.X “The original <paper> paper: a literature deep-dive”" [ref=e110]':
+          - cell "agent:literature-scholar" [ref=e111]:
+            - code [ref=e112]: agent:literature-scholar
+          - cell "Reads the foundational papers (e.g. Hohenberg–Kohn 1964, Kohn–Sham 1965, Runge–Gross 1984, Casida 1995, Hedin 1965, Anisimov 1991, Behler–Parrinello 2007, Kane–Mele 2005, …) and produces acited-literature “deep-dive” sectionthat quotes the original equation numbers, page numbers, and results." [ref=e113]:
+            - text: Reads the foundational papers (e.g. Hohenberg–Kohn 1964, Kohn–Sham 1965, Runge–Gross 1984, Casida 1995, Hedin 1965, Anisimov 1991, Behler–Parrinello 2007, Kane–Mele 2005, …) and produces a
+            - strong [ref=e114]: cited-literature “deep-dive” section
+            - text: that quotes the original equation numbers, page numbers, and results.
+          - 'cell "new section indft_notes/chapter_NN/00-*.md, e.g. §NN.X “The original <paper> paper: a literature deep-dive”" [ref=e115]':
+            - text: new section in
+            - code [ref=e116]: dft_notes/chapter_NN/00-*.md
+            - text: ", e.g. §NN.X “The original <paper> paper: a literature deep-dive”"
+        - 'row "agent:visualizer Writes a Manim Community 0.19.x script that animates one concept, renders to 720p30 H.264 MP4 + poster PNG, and embeds the result in the target chapter with the<figure class=\"dft-animation\">idiom. dft_notes/animations/chapter_NN/NN-slug.py+videos/NN-slug.{mp4,png}" [ref=e117]':
+          - cell "agent:visualizer" [ref=e118]:
+            - code [ref=e119]: agent:visualizer
+          - cell "Writes a Manim Community 0.19.x script that animates one concept, renders to 720p30 H.264 MP4 + poster PNG, and embeds the result in the target chapter with the<figure class=\"dft-animation\">idiom." [ref=e120]:
+            - text: Writes a Manim Community 0.19.x script that animates one concept, renders to 720p30 H.264 MP4 + poster PNG, and embeds the result in the target chapter with the
+            - code [ref=e121]: <figure class="dft-animation">
+            - text: idiom.
+          - 'cell "dft_notes/animations/chapter_NN/NN-slug.py+videos/NN-slug.{mp4,png}" [ref=e122]':
+            - code [ref=e123]: dft_notes/animations/chapter_NN/NN-slug.py
+            - text: +
+            - code [ref=e124]: "videos/NN-slug.{mp4,png}"
+        - row "agent:enricher Acontent-writerthatenrichesan existing chapter rather than writing a new one. Reads the current chapter + 1–3 foundational papers, then rewrites the target section witheveryintermediate step shown.Never summarises; never writes “by inspection” or “after some algebra” without the algebra immediately following. rewrites a section indft_notes/chapter_NN/00-*.md" [ref=e125]:
+          - cell "agent:enricher" [ref=e126]:
+            - code [ref=e127]: agent:enricher
+          - cell "Acontent-writerthatenrichesan existing chapter rather than writing a new one. Reads the current chapter + 1–3 foundational papers, then rewrites the target section witheveryintermediate step shown.Never summarises; never writes “by inspection” or “after some algebra” without the algebra immediately following." [ref=e128]:
+            - text: A
+            - code [ref=e129]: content-writer
+            - text: that
+            - strong [ref=e130]: enriches
+            - text: an existing chapter rather than writing a new one. Reads the current chapter + 1–3 foundational papers, then rewrites the target section with
+            - strong [ref=e131]: every
+            - text: intermediate step shown.
+            - strong [ref=e132]: Never summarises
+            - text: ; never writes “by inspection” or “after some algebra” without the algebra immediately following.
+          - cell "rewrites a section indft_notes/chapter_NN/00-*.md" [ref=e133]:
+            - text: rewrites a section in
+            - code [ref=e134]: dft_notes/chapter_NN/00-*.md
+        - row "agent:bug-hunter Aqa-reviewerspecialised in finding Mermaid 10 parsing bugs, Liquid escaping bugs, broken asset paths, and linter regressions. Uses the Playwright end-to-end test plus a headless Jekyll build. review comments + fix patches" [ref=e135]:
+          - cell "agent:bug-hunter" [ref=e136]:
+            - code [ref=e137]: agent:bug-hunter
+          - cell "Aqa-reviewerspecialised in finding Mermaid 10 parsing bugs, Liquid escaping bugs, broken asset paths, and linter regressions. Uses the Playwright end-to-end test plus a headless Jekyll build." [ref=e138]:
+            - text: A
+            - code [ref=e139]: qa-reviewer
+            - text: specialised in finding Mermaid 10 parsing bugs, Liquid escaping bugs, broken asset paths, and linter regressions. Uses the Playwright end-to-end test plus a headless Jekyll build.
+          - cell "review comments + fix patches" [ref=e140]
+    - paragraph [ref=e141]:
+      - strong [ref=e142]: Naming convention
+      - text: "— every commit made by an agent is prefixed with its role:"
+    - code [ref=e146]: "agent:content-writer: chapter 06 — basis sets Co-authored-by: agent:content-writer <noreply@example.com>"
+    - separator [ref=e147]
+    - heading "The chapter rigor checklist" [level=2] [ref=e148]
+    - paragraph [ref=e149]:
+      - text: "The user has been emphatic:"
+      - emphasis [ref=e150]: no calculation will be omitted, nothing should be kept like “do as I exercise” or “from here on”
+      - text: . Every chapter must satisfy this checklist before it is merged.
+    - paragraph [ref=e151]:
+      - code [ref=e152]: agent:qa-reviewer
+      - text: runs this checklist. Any item missing is a
+      - code [ref=e153]: must-fix
+      - text: (blocks merge).
+    - list [ref=e154]:
+      - listitem [ref=e155]:
+        - checkbox [disabled] [ref=e156]
+        - strong [ref=e157]: H1
+        - text: — chapter title; matches
+        - code [ref=e158]: chapter_NN — <Title>
+        - text: .
+      - listitem [ref=e159]:
+        - checkbox [disabled] [ref=e160]
+        - strong [ref=e161]: Front matter
+        - text: —
+        - code [ref=e162]: "layout: page"
+        - text: ","
+        - code [ref=e163]: "title:"
+        - text: ","
+        - code [ref=e164]: "permalink: /dft-notes/chapter-NN/"
+        - text: ","
+        - code [ref=e165]: "description:"
+        - text: ","
+        - code [ref=e166]: "keywords:"
+        - text: .
+      - listitem [ref=e167]:
+        - checkbox [disabled] [ref=e168]
+        - strong [ref=e169]: Reading-level entry
+        - text: — the first 200 words assume a reader who has read
+        - emphasis [ref=e170]: exactly
+        - text: the previous chapters and nothing else. No “as we saw in PHYS 101” hand-waves. Every concept used in the chapter is defined or cross-referenced inside the chapter.
+      - listitem [ref=e171]:
+        - checkbox [disabled] [ref=e172]
+        - strong [ref=e173]: Every claim has a number
+        - text: — the “claim” part of the chapter template must have numbered equations (
+        - code [ref=e174]: "\\begin{equation} ... \\label{eq:foo} ...\\end{equation}"
+        - text: ) and the cross-references in the body must use
+        - code [ref=e175]: "\\eqref{eq:foo}"
+        - text: .
+      - listitem [ref=e176]:
+        - checkbox [disabled] [ref=e177]
+        - strong [ref=e178]: Every derivation is step-by-step
+        - text: — see the “
+        - strong [ref=e179]: No-summaries, every step explicit
+        - text: ” section below for the full rule and the banned phrases.
+      - listitem [ref=e180]:
+        - checkbox [disabled] [ref=e181]
+        - strong [ref=e182]: The “code” part is real and runnable
+        - text: — copy-pasted from
+        - code [ref=e183]: dft_notes/python_codes/chapter_NN/
+        - text: ", not written ad hoc. Tested with the version pinned in the"
+        - code [ref=e184]: python_codes/README.md
+        - text: (currently Python 3.11+).
+      - listitem [ref=e185]:
+        - checkbox [disabled] [ref=e186]
+        - strong [ref=e187]: At least one Mermaid diagram
+        - text: that summarises the chapter’s structure (a flowchart, a state diagram, a
+        - code [ref=e188]: classDiagram
+        - text: ", whatever fits)."
+        - strong [ref=e189]:
+          - text: "No"
+          - code [ref=e190]: class X,Y,Z cls
+          - text: directives
+        - text: — the Mermaid 10 parser concatenates them with the preceding line. Either omit the class directive or use inline
+        - code [ref=e191]: :::cls
+        - text: (no spaces).
+      - listitem [ref=e192]:
+        - checkbox [disabled] [ref=e193]
+        - strong [ref=e194]: At least one worked example
+        - text: with full numbers. Numerical output shown.
+      - listitem [ref=e195]:
+        - checkbox [disabled] [ref=e196]
+        - strong [ref=e197]: At least one problem set
+        - text: with three problems ranging easy → hard. Each problem uses
+        - code [ref=e198]: <details class="problem">
+        - text: for the question and
+        - code [ref=e199]: <details class="answer">
+        - text: for the answer, so the reader can think first and reveal later.
+      - listitem [ref=e200]:
+        - checkbox [disabled] [ref=e201]
+        - strong [ref=e202]: Cross-references
+        - text: to prerequisite chapters (
+        - code [ref=e203]: "[Chapter 01](...chapter-01/)"
+        - text: ) and forward cross-references to where this material is used.
+      - listitem [ref=e204]:
+        - checkbox [disabled] [ref=e205]
+        - strong [ref=e206]: A “What we left out”
+        - text: section at the end, explicitly listing the omissions (e.g. “we did not cover spin–orbit coupling”, “we used the LDA form of the exchange, not the full GGA”). This is part of being honest about the scope.
+      - listitem [ref=e207]:
+        - checkbox [disabled] [ref=e208]
+        - strong [ref=e209]: A cited-literature “deep-dive”
+        - text: at the end (for chapters that have one) — see the
+        - code [ref=e210]: agent:literature-scholar
+        - text: section below.
+      - listitem [ref=e211]:
+        - checkbox [disabled] [ref=e212]
+        - strong [ref=e213]: A “Visualisation” subsection
+        - text: (for chapters that have a Manim animation) — see the
+        - code [ref=e214]: agent:visualizer
+        - text: section below.
+      - listitem [ref=e215]:
+        - checkbox [disabled] [ref=e216]
+        - strong [ref=e217]: No broken asset refs
+        - text: — every
+        - code [ref=e218]: /dft-notes/python_codes/...
+        - text: ","
+        - code [ref=e219]: /dft-notes/extras/...
+        - text: ", and"
+        - code [ref=e220]: /dft_notes/animations/...
+        - text: link returns 200. Run the Playwright end-to-end test to verify.
+    - separator [ref=e221]
+    - heading "The “no-summaries, every step explicit” rule" [level=2] [ref=e222]
+    - paragraph [ref=e223]:
+      - text: "This is the single most important rule in the project. The user’s words:"
+      - emphasis [ref=e224]: “for any derivation, all the intermediate steps are shown in details”
+      - text: .
+    - heading "Banned phrases" [level=3] [ref=e225]
+    - paragraph [ref=e226]:
+      - text: The following phrases are
+      - strong [ref=e227]: banned
+      - text: in derivation sections. If you write one of them,
+      - code [ref=e228]: agent:qa-reviewer
+      - text: will return the chapter as
+      - code [ref=e229]: must-fix
+      - text: with a list of the offending locations. The only allowed context is
+      - emphasis [ref=e230]: quoted criticism
+      - text: of the phrase in a “What we left out” or historical aside.
+    - table [ref=e231]:
+      - rowgroup [ref=e232]:
+        - row "Banned phrase Why it’s banned What to write instead" [ref=e233]:
+          - columnheader "Banned phrase" [ref=e234]
+          - columnheader "Why it’s banned" [ref=e235]
+          - columnheader "What to write instead" [ref=e236]
+      - rowgroup [ref=e237]:
+        - row "“by inspection” Hand-waves the algebra Show the algebra in 2-3 lines, then say “which is the desired form”" [ref=e238]:
+          - cell "“by inspection”" [ref=e239]
+          - cell "Hand-waves the algebra" [ref=e240]
+          - cell "Show the algebra in 2-3 lines, then say “which is the desired form”" [ref=e241]
+        - row "“after some algebra” The algebra is thepoint Write the algebra" [ref=e242]:
+          - cell "“after some algebra”" [ref=e243]
+          - cell "The algebra is thepoint" [ref=e244]:
+            - text: The algebra is the
+            - emphasis [ref=e245]: point
+          - cell "Write the algebra" [ref=e246]
+        - row "“it can be shown that” Not a derivation Derive it" [ref=e247]:
+          - cell "“it can be shown that”" [ref=e248]
+          - cell "Not a derivation" [ref=e249]
+          - cell "Derive it" [ref=e250]
+        - row "“straightforward to evaluate” Reader is not you Show the 2-5 lines of math" [ref=e251]:
+          - cell "“straightforward to evaluate”" [ref=e252]
+          - cell "Reader is not you" [ref=e253]
+          - cell "Show the 2-5 lines of math" [ref=e254]
+        - row "“by a similar argument” Reader can’t reconstruct “similar” Write the argument, even if it’s 80% the same as before" [ref=e255]:
+          - cell "“by a similar argument”" [ref=e256]
+          - cell "Reader can’t reconstruct “similar”" [ref=e257]
+          - cell "Write the argument, even if it’s 80% the same as before" [ref=e258]
+        - row "“leaves as an exercise” We are not the instructor Show the steps" [ref=e259]:
+          - cell "“leaves as an exercise”" [ref=e260]
+          - cell "We are not the instructor" [ref=e261]
+          - cell "Show the steps" [ref=e262]
+        - row "“after some manipulation” Same as “after some algebra” Show the manipulation" [ref=e263]:
+          - cell "“after some manipulation”" [ref=e264]
+          - cell "Same as “after some algebra”" [ref=e265]
+          - cell "Show the manipulation" [ref=e266]
+        - row "“it is easy to verify” Reader is paying attention Verify it" [ref=e267]:
+          - cell "“it is easy to verify”" [ref=e268]
+          - cell "Reader is paying attention" [ref=e269]
+          - cell "Verify it" [ref=e270]
+        - row "“trivially” Almost always wrong Replace with the actual step" [ref=e271]:
+          - cell "“trivially”" [ref=e272]
+          - cell "Almost always wrong" [ref=e273]
+          - cell "Replace with the actual step" [ref=e274]
+        - row "“similarly” / “analogously” Reader can’t fill in the gap Repeat the analogous step with the new variable names" [ref=e275]:
+          - cell "“similarly” / “analogously”" [ref=e276]
+          - cell "Reader can’t fill in the gap" [ref=e277]
+          - cell "Repeat the analogous step with the new variable names" [ref=e278]
+        - row "“a straightforward manipulation” Doubly banned Show the manipulation" [ref=e279]:
+          - cell "“a straightforward manipulation”" [ref=e280]
+          - cell "Doubly banned" [ref=e281]
+          - cell "Show the manipulation" [ref=e282]
+        - row "“omitted for brevity” Brevity ≠ clarity in a textbook Show the derivation" [ref=e283]:
+          - cell "“omitted for brevity”" [ref=e284]
+          - cell "Brevity ≠ clarity in a textbook" [ref=e285]
+          - cell "Show the derivation" [ref=e286]
+        - row "“we do not show the details here” The whole point is the details Show the details" [ref=e287]:
+          - cell "“we do not show the details here”" [ref=e288]
+          - cell "The whole point is the details" [ref=e289]
+          - cell "Show the details" [ref=e290]
+        - row "“the reader can verify” Burden shifts to reader Verify it yourself in 2 lines" [ref=e291]:
+          - cell "“the reader can verify”" [ref=e292]
+          - cell "Burden shifts to reader" [ref=e293]
+          - cell "Verify it yourself in 2 lines" [ref=e294]
+    - heading "What “every step” actually means" [level=3] [ref=e295]
+    - paragraph [ref=e296]: "A “step” is one algebraic or logical manipulation. The following are all steps and all must appear:"
+    - list [ref=e297]:
+      - listitem [ref=e298]: Substituting a definition into a formula (write the definition next to the substituted symbol).
+      - listitem [ref=e299]: Distributing a product (write the result).
+      - listitem [ref=e300]: Regrouping a sum (write the regrouped form).
+      - listitem [ref=e301]:
+        - text: Taking a partial derivative (write
+        - img [ref=e303]
+        - emphasis [ref=e317]: and
+        - text: the result).
+      - listitem [ref=e318]: Applying a known identity (state the identity, then apply).
+      - listitem [ref=e319]: Cancelling a common factor.
+      - listitem [ref=e320]: Renaming an index in a sum.
+      - listitem [ref=e321]: Recognising a result as a known equation (cite the equation number).
+    - paragraph [ref=e322]:
+      - text: A step may be
+      - emphasis [ref=e323]: labelled
+      - text: as mechanical, but the result of the step must be written. The only legitimate “skip” is a
+      - emphasis [ref=e324]: trivial notational
+      - text: "one: e.g. “collecting the"
+      - img [ref=e326]
+      - text: terms” is acceptable if the result is shown; “by Eq. (12)” is acceptable if Eq. (12) is the formula being substituted.
+    - heading "Allowed shorthand" [level=3] [ref=e331]
+    - list [ref=e332]:
+      - listitem [ref=e333]: “Combining Eqs. (3) and (5)” is fine — but Eqs. (3) and (5) must be the relevant equations, and the next line must show the result.
+      - listitem [ref=e334]:
+        - text: “Substituting
+        - img [ref=e336]
+        - text: into Eq. (5)” is fine if Eq. (5) is given in the previous section.
+      - listitem [ref=e361]:
+        - text: “Since the operator is Hermitian,
+        - img [ref=e363]
+        - text: is real” is fine if the Hermitian claim was made and justified earlier in the chapter.
+    - 'heading "Worked example: a derivation done right" [level=3] [ref=e384]'
+    - code [ref=e388]: "## 12.4.2 The Casida equation The Casida equation in matrix form is \\begin{equation} \\label{eq:ch-12-casida} \\begin{pmatrix} \\mathbf A & \\mathbf B \\\\ \\mathbf B^* & \\mathbf A^* \\end{pmatrix} \\begin{pmatrix} \\mathbf X \\\\ \\mathbf Y \\end{pmatrix} = \\omega^2 \\begin{pmatrix} \\mathbf X \\\\ \\mathbf Y \\end{pmatrix} \\end{equation} **Derivation.** We start from the density-response equation \\begin{equation} \\label{eq:ch-12-density-response} \\delta\\rho(\\mathbf r, \\omega) = \\int d\\mathbf r'\\, \\chi_s(\\mathbf r, \\mathbf r'; \\omega)\\, \\delta v_\\text{eff}(\\mathbf r', \\omega) \\end{equation} where $\\chi_s$ is the KS response function. Substituting the spin-summed version (Eq. (12.4.4) above) and expanding the effective perturbation as a sum over orbital transitions, $\\delta v_\\text{eff} = \\delta v_\\text{ext} + \\delta v_\\text{H} + \\delta v_\\text{xc}$, we get \\begin{align} \\delta\\rho(\\mathbf r, \\omega) &= \\sum_{ia} \\phi_i(\\mathbf r) \\phi_a(\\mathbf r) \\Bigl[ P_{ia}(\\omega) + P_{ia}(-\\omega) \\Bigr] \\\\ \\text{with} \\quad P_{ia}(\\omega) &= \\frac{2\\, n_{ia}} {\\omega - (\\varepsilon_a - \\varepsilon_i) + i\\eta} \\bigl[ \\delta v_\\text{eff} \\bigr]_{ia} \\quad\\quad (12.5) \\end{align} where $n_{ia} = f_i - f_a$ is the occupation difference and $\\eta$ is a positive infinitesimal. Substituting into the density-response equation and projecting onto the orbital product $\\phi_i(\\mathbf r)\\phi_a(\\mathbf r)$ gives, after some algebra (this is the step that takes the most care, so we write it out line by line below):"
+    - paragraph [ref=e389]:
+      - text: "[the actual algebra then continues, with each line numbered and each substitution explicitly written. The “after some algebra” preamble is"
+      - strong [ref=e390]: wrong
+      - text: — the “step that takes the most care” comment is acceptable only because the algebra immediately follows.]
+    - heading "Howagent:bug-hunterenforces this" [level=3] [ref=e391]:
+      - text: How
+      - code [ref=e392]: agent:bug-hunter
+      - text: enforces this
+    - paragraph [ref=e393]:
+      - code [ref=e394]: agent:bug-hunter
+      - text: runs
+      - code [ref=e395]: grep -nE
+      - text: over the chapter for the banned phrases. Any hit is a
+      - code [ref=e396]: must-fix
+      - text: . The grep is also run by the
+      - code [ref=e397]: markdown-lint.yml
+      - text: GitHub Action, so a regression on
+      - code [ref=e398]: main
+      - text: fails CI.
+    - code [ref=e402]: "# The \"no-summaries\" grep (returns 0 = clean) grep -nE \\ \"by inspection|after some algebra|it can be shown|straightforward to evaluate|by a similar argument|leaves as an exercise|after some manipulation|it is easy to verify|trivially|analogously,|a straightforward manipulation|omitted for brevity|we do not show the details here|the reader can verify\" \\ dft_notes/chapter_*/00-*.md && echo \"FAIL\" || echo \"OK\""
+    - paragraph [ref=e403]:
+      - text: This grep runs in
+      - code [ref=e404]: .github/workflows/markdown-lint.yml
+      - text: and fails the build on any match.
+    - separator [ref=e405]
+    - heading "The chapter writing template" [level=2] [ref=e406]
+    - paragraph [ref=e407]:
+      - text: A chapter written by
+      - code [ref=e408]: agent:content-writer
+      - text: follows this template. Sections in
+      - strong [ref=e409]: bold
+      - text: are required; everything else is recommended.
+    - code [ref=e413]: "--- layout: page title: \"Chapter NN — <Title>\" permalink: /dft-notes/chapter-NN/ description: >- <one-sentence description for SEO + meta tags> keywords: \"comma, separated, keywords\" --- # Chapter NN — <Title> > <one-sentence tagline that captures the chapter in plain > English> <one paragraph of prose, 100–200 words, that names the question the chapter answers, and why the answer matters. No equations in this paragraph.> ## NN.1 The claim <the main result of the chapter, stated as a numbered equation. This is the \"headline\" — what the reader should remember a year from now.> \\begin{equation} \\label{eq:ch-NN-headline} \\hat H = -\\frac{1}{2}\\sum_i \\nabla_i^2 + \\ldots \\end{equation} ## NN.2 The derivation <step-by-step. Every step explicit. Use a numbered list if the steps are non-trivial. Reference previous equations by `\\eqref{}`. **NEVER use the banned phrases from the no-summaries rule above.**> ## NN.3 The code <real, runnable Python. Inline the importable parts. This matches a file in `dft_notes/python_codes/chapter_NN/`.> ```python # dft_notes/python_codes/chapter_NN/NN-<slug>.py import numpy as np def example_function(x): ... ``` ## NN.4 The diagram <mermaid diagram that summarises the chapter's structure. **No `class X,Y,Z cls` directives.**> ```mermaid graph LR A[Input] --> B[Step 1] --> C[Step 2] --> D[Output] ``` ## NN.5 Worked example <full numerical example. Use real numbers. Show the output. Cross-reference the python_codes script that produces the plot.> ![Plot output from `dft_notes/python_codes/chapter_NN/NN-<slug>.py`](/DFT-notes/dft_notes/python_codes/chapter_NN/plots/NN-<slug>.png) ## NN.6 Problems <details class=\"problem\"> <summary>Problem 1 (easy) — <one-line statement></summary> <the problem statement. Define the variables. Give the expected form of the answer.> </details> <details class=\"answer\"> <summary>Show answer</summary> <full step-by-step solution, with the same rigor as Section NN.2. The first line restates the problem; the last line boxes the final answer.> </details> <details class=\"problem\"> <summary>Problem 2 (medium) — <one-line statement></summary> ... </details> <details class=\"answer\"> <summary>Show answer</summary> ... </details> <details class=\"problem\"> <summary>Problem 3 (hard) — <one-line statement></summary> ... </details> <details class=\"answer\"> <summary>Show answer</summary> ... </details> ## NN.7 What we left out <honest, explicit list of the things this chapter did not cover, in the same tone as the rest of the chapter. One bullet per topic. Two to five bullets is the norm.> > Next: [Chapter NN+1](/DFT-notes/dft-notes/chapter-NN+1/) > — <one-sentence teaser of the next chapter>"
+    - separator [ref=e414]
+    - heading "The cited-literature “deep-dive” template" [level=2] [ref=e415]
+    - paragraph [ref=e416]:
+      - code [ref=e417]: agent:literature-scholar
+      - text: adds an
+      - strong [ref=e418]: optional
+      - text: section at the end of a chapter (after “What we left out” or replacing it). The section’s purpose is to give the reader direct access to the foundational papers that the chapter is built on, with
+      - strong [ref=e419]: exact
+      - text: equation numbers, page numbers, and result quotes. This is the only way a reader can verify that the chapter’s math is right without going to the library.
+    - code [ref=e423]: "## NN.X The original <paper> papers: a literature deep-dive > *This section walks the reader through the foundational > papers that this chapter is built on, with page numbers, > equation numbers, and result quotes from the published > journal versions. Every equation and value cited below > carries the page number of the original paper.* ### NN.X.1 <First paper> (<year>) <one-paragraph summary of the paper's contribution, in the author's own words where possible. State the journal, the volume, and the page range.> The key equation is the <X>-matrix (Eq. (Y), p. ZZZ): \\begin{equation} \\label{eq:ch-NN-lit-1} <equation, with a citation to the original paper's equation number and page> \\end{equation} This is the *definition* of <X> used in Section NN.2 above. The reader is referred to <author>'s derivation on p. ZZZ for the full proof; the short version is: <2-3 paragraphs of the proof, **with every step explicit** following the no-summaries rule. Page numbers and equation numbers from the original paper appear in the running text, e.g. \"Substituting the definition of $\\Sigma$ (Hedin, 1965, Eq. (2.6), p. A796)\".> **Numerical result from the paper.** <Author> reports <value> for <quantity>, on p. ZZZ. This is the same number quoted in Section NN.5 above. ### NN.X.2 <Second paper> (<year>) <same template> ### NN.X.N Bibliography for this section <full bib entries, one per foundational paper. Each entry includes: - authors (full list, no \"et al.\") - title - journal - volume, issue (if any), page range - year - DOI (as a clickable link) - URL (the publisher's landing page or the arXiv preprint)> References: - Hohenberg, P.; Kohn, W. *Inhomogeneous Electron Gas*. *Physical Review* **136**, B864 (1964). DOI: [10.1103/PhysRev.136.B864](https://doi.org/10.1103/PhysRev.136.B864). URL: <https://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864>."
+    - paragraph [ref=e424]:
+      - text: The bibliography is added to
+      - code [ref=e425]: dft_notes/extras/03-bibliography.md
+      - text: (the global bibliography) AND in the chapter-local deep-dive section. The chapter-local entry includes the page-number citations; the global entry is the plain citation.
+    - paragraph [ref=e426]:
+      - strong [ref=e427]: Important
+      - text: ": the cited-literature section uses the SAME no-summaries rule. Every derivation from the paper is written out step-by-step. The page numbers and equation numbers are the value-add; the algebra is the same algebra."
+    - separator [ref=e428]
+    - heading "The Python code conventions" [level=2] [ref=e429]
+    - paragraph [ref=e430]:
+      - code [ref=e431]: dft_notes/python_codes/
+      - text: "mirrors the chapter structure one level down. Every chapter has its own folder. Within each folder, scripts are numbered with two-digit prefixes in the order they appear in the chapter:"
+    - code [ref=e435]: dft_notes/python_codes/ ├── README.md ├── chapter_00/ │ ├── 01-particle-in-box.py │ ├── 02-expected-values.py │ └── plots/ │ ├── 01-particle-in-box.png │ └── 02-expected-values.png ├── chapter_01/ │ ├── 01-postulates-check.py │ └── plots/ └── ...
+    - paragraph [ref=e436]: "Naming rules:"
+    - list [ref=e437]:
+      - listitem [ref=e438]:
+        - text: Two-digit numeric prefix, dash, kebab-case slug,
+        - code [ref=e439]: .py
+        - text: .
+      - listitem [ref=e440]:
+        - text: A single script produces one figure → the figure is named
+        - code [ref=e441]: plots/<same prefix>-<same slug>.png
+        - text: .
+      - listitem [ref=e442]: A script that doesn’t produce a figure still has the prefix — order matters across the whole chapter.
+      - listitem [ref=e443]:
+        - text: No script may
+        - code [ref=e444]: os.chdir
+        - text: ; use absolute paths from the chapter folder.
+      - listitem [ref=e445]:
+        - text: All scripts must be runnable as
+        - code [ref=e446]: python dft_notes/python_codes/chapter_NN/NN-slug.py
+        - text: from the repo root.
+      - listitem [ref=e447]:
+        - text: All scripts import only
+        - code [ref=e448]: numpy
+        - text: ","
+        - code [ref=e449]: scipy
+        - text: ", and"
+        - code [ref=e450]: matplotlib
+        - text: (with
+        - code [ref=e451]: matplotlib.use("Agg")
+        - text: so no display is required for headless runs). Anything else is added to
+        - code [ref=e452]: python_codes/README.md
+        - text: .
+    - paragraph [ref=e453]:
+      - text: The
+      - code [ref=e454]: agent:code-runner
+      - text: "workflow:"
+    - list [ref=e455]:
+      - listitem [ref=e456]:
+        - code [ref=e457]: cd /path/to/DFT-notes
+      - listitem [ref=e458]:
+        - code [ref=e459]: python dft_notes/python_codes/chapter_NN/NN-slug.py
+      - listitem [ref=e460]:
+        - text: Verify the PNG is in
+        - code [ref=e461]: plots/
+        - text: .
+      - listitem [ref=e462]: Commit both the script and the plot.
+    - paragraph [ref=e463]:
+      - text: The
+      - code [ref=e464]: plots/
+      - text: folder is committed to the repo. We do not use LFS for these — they’re small PNGs.
+    - separator [ref=e465]
+    - heading "The Manim animation pipeline" [level=2] [ref=e466]
+    - paragraph [ref=e467]:
+      - text: Manim Community 0.19.x is the rendering engine for explanatory animations. The first batch is documented in
+      - code [ref=e468]: dft_notes/ANIMATIONS_PLAN.md
+      - text: "; the deliverable per animation is:"
+    - list [ref=e469]:
+      - listitem [ref=e470]:
+        - code [ref=e471]: dft_notes/animations/chapter_NN/NN-slug.py
+        - text: — the Manim source (30-100 lines, follows the template below).
+      - listitem [ref=e472]:
+        - code [ref=e473]: dft_notes/animations/chapter_NN/videos/NN-slug.mp4
+        - text: — 720p30 H.264, 20-40 s scene time.
+      - listitem [ref=e474]:
+        - code [ref=e475]: dft_notes/animations/chapter_NN/videos/NN-slug.png
+        - text: — the last frame, as the poster.
+      - listitem [ref=e476]:
+        - text: An embed in the chapter with the
+        - code [ref=e477]: <figure class="dft-animation">
+        - text: idiom.
+    - paragraph [ref=e478]: "The Manim script template mirrors the Python-code template:"
+    - code [ref=e482]: "\"\"\" NN-slug.py ========== <one-line description> Scene graph ----------- 1. <step> 2. <step> … Why this animation lives in chapter NN: - <reason 1> - <reason 2> Run from the repo root: manim -qm dft_notes/animations/chapter_NN/NN-slug.py SceneName Writes to: dft_notes/animations/chapter_NN/videos/... \"\"\" from manim import (Axes, Create, Dot, FadeIn, FadeOut, MathTex, Scene, Text, VGroup, Write, UP, DOWN, LEFT, RIGHT) import numpy as np class SceneName(Scene): def construct(self): # 30-100 lines of Manim ..."
+    - paragraph [ref=e483]:
+      - code [ref=e484]: agent:visualizer
+      - text: "workflow:"
+    - list [ref=e485]:
+      - listitem [ref=e486]: Write the script following the template.
+      - listitem [ref=e487]:
+        - code [ref=e488]: manim -qm dft_notes/animations/chapter_NN/NN-slug.py SceneName
+      - listitem [ref=e489]:
+        - code [ref=e490]: mv media/videos/<file-stem>/720p30/<Scene>.mp4 dft_notes/animations/chapter_NN/videos/NN-slug.mp4
+      - listitem [ref=e491]:
+        - code [ref=e492]: ffmpeg -sseof -0.1 -i .../NN-slug.mp4 -frames:v 1 -q:v 2 .../NN-slug.png -y
+      - listitem [ref=e493]: Embed in the chapter.
+      - listitem [ref=e494]: Commit source, MP4, PNG, and chapter change as a single commit.
+    - paragraph [ref=e495]:
+      - text: The CI workflow at
+      - code [ref=e496]: .github/workflows/animations.yml
+      - text: automates steps 1-6 for the 10-scene matrix, with a “check if script exists” gate that skips scenes whose
+      - code [ref=e497]: .py
+      - text: file is not yet committed.
+    - paragraph [ref=e498]: "The chapter embed:"
+    - code [ref=e502]: "### Visualisation — <one-line description> <figure class=\"dft-animation\"> <video controls preload=\"metadata\" width=\"100%\" poster=\"/DFT-notes/dft_notes/animations/chapter_NN/videos/NN-slug.png\"> <source src=\"/DFT-notes/dft_notes/animations/chapter_NN/videos/NN-slug.mp4\" type=\"video/mp4\"> Your browser does not support embedded video. <a href=\"/DFT-notes/dft_notes/animations/chapter_NN/videos/NN-slug.mp4\">Download the MP4</a>. </video> <figcaption>Figure N.X — <caption text>. Rendered with <a href=\"https://www.manim.community/\">Manim Community</a>; source script in <a href=\"/DFT-notes/dft_notes/animations/chapter_NN/NN-slug.py\">chapter N's animation folder</a>.</figcaption> </figure>"
+    - paragraph [ref=e503]:
+      - text: Note the asset paths use
+      - code [ref=e504]: /dft_notes/...
+      - text: (underscore) for the static files (python_codes, animations) and
+      - code [ref=e505]: /dft-notes/...
+      - text: (dash) for permalinked pages (chapter-XX, extras).
+      - strong [ref=e506]: This is not a typo.
+      - text: Jekyll permalinks convert underscore to dash for pages; static files keep the underscore.
+    - separator [ref=e507]
+    - heading "Parallel research deploys (the operational pattern)" [level=2] [ref=e508]
+    - paragraph [ref=e509]:
+      - text: The user requested
+      - strong [ref=e510]: 20+ parallel research agents
+      - text: "writing chapters at the same time. The pattern:"
+    - list [ref=e511]:
+      - listitem [ref=e512]:
+        - strong [ref=e513]:
+          - code [ref=e514]: lead:orchestrator
+        - text: "opens a monthly tracking issue:"
+        - blockquote [ref=e515]:
+          - paragraph [ref=e516]:
+            - text: "**DFT Notes —"
+            - generic [ref=e517]: "-research deploy** Goal: write the next N chapters in parallel. This month: chapter 06 (basis sets), 07 (solids & PBC), 08 (pseudopotentials), 09 (forces & geometry opt), 10 (vibrations & phonons). Each chapter is owned by one `agent:content-writer`. Each chapter is reviewed by one `agent:qa-reviewer` before merge."
+      - listitem [ref=e518]:
+        - strong [ref=e519]:
+          - code [ref=e520]: agent:content-writer
+          - text: × N
+        - text: "— launched in parallel, each with a prompt like:"
+        - blockquote [ref=e521]:
+          - paragraph [ref=e522]:
+            - text: You are
+            - code [ref=e523]: agent:content-writer
+            - text: . Write chapter 06 (basis sets) to the template in
+            - code [ref=e524]: agents.md
+            - text: . The chapter must satisfy the rigor checklist, including the
+            - strong [ref=e525]: no-summaries, every step explicit
+            - text: rule. Read
+            - code [ref=e526]: design.md
+            - text: and the existing chapters 00–05 for style consistency. Output the file at
+            - code [ref=e527]: dft_notes/chapter_06/00-basis-sets.md
+            - text: . Do not run code —
+            - code [ref=e528]: agent:code-runner
+            - text: will do that.
+      - listitem [ref=e529]:
+        - paragraph [ref=e530]:
+          - strong [ref=e531]:
+            - code [ref=e532]: agent:code-runner
+            - text: × N
+          - text: — for each chapter that landed, extracts the Python samples, runs them, commits the plots. Outputs the
+          - code [ref=e533]: python_codes/chapter_NN/
+          - text: folder and updates the
+          - code [ref=e534]: python_codes/README.md
+          - text: if the chapter introduces a new dependency.
+      - listitem [ref=e535]:
+        - paragraph [ref=e536]:
+          - strong [ref=e537]:
+            - code [ref=e538]: agent:qa-reviewer
+            - text: × N
+          - text: — runs the rigor checklist. Returns must-fix / should-fix / nice-to-have. The content-writer addresses must-fix in a follow-up commit.
+      - listitem [ref=e539]:
+        - paragraph [ref=e540]:
+          - strong [ref=e541]:
+            - code [ref=e542]: agent:literature-scholar
+            - text: × N
+          - text: — for each finished chapter, reads the foundational papers, writes the cited-literature deep-dive section, updates the bibliography in
+          - code [ref=e543]: extras/03-bibliography.md
+          - text: .
+      - listitem [ref=e544]:
+        - paragraph [ref=e545]:
+          - strong [ref=e546]:
+            - code [ref=e547]: agent:visualizer
+            - text: × N
+          - text: — for each finished chapter, writes a Manim animation that captures the chapter’s central concept.
+      - listitem [ref=e548]:
+        - paragraph [ref=e549]:
+          - strong [ref=e550]:
+            - code [ref=e551]: agent:enricher
+            - text: × N
+          - text: — for the
+          - emphasis [ref=e552]: previous
+          - text: month’s chapters, runs the no-summaries grep, and rewrites the sections that contain banned phrases. This is the mechanism by which we
+          - emphasis [ref=e553]: progressively enrich
+          - text: the older chapters without rewriting them from scratch.
+      - listitem [ref=e554]:
+        - paragraph [ref=e555]:
+          - strong [ref=e556]:
+            - code [ref=e557]: agent:bug-hunter
+            - text: × 1
+          - text: — at the end of the cycle, runs the full Playwright end-to-end test plus a headless Jekyll build, files bug tickets for any regression, and patches the trivial ones.
+      - listitem [ref=e558]:
+        - strong [ref=e559]:
+          - code [ref=e560]: lead:orchestrator
+        - text: merges after QA passes, deploys via the existing GitHub Actions workflow, opens the next month’s tracking issue.
+    - heading "“Every step explicit” — what it costs in agent time" [level=3] [ref=e561]
+    - paragraph [ref=e562]:
+      - text: "The “no-summaries” rule has a real cost: a section that would have been 20 lines in a typical textbook becomes 80-150 lines in this project’s style. A chapter that would take an"
+      - code [ref=e563]: agent:content-writer
+      - text: 2 hours to write under the old “summarise where possible” rule takes 4-6 hours under the new rule.
+    - paragraph [ref=e564]: In return, the reader can read the chapter linearly, check every step, and trust the math. This is the trade-off the user explicitly requested.
+    - heading "How to balance content-writer throughput with depth" [level=3] [ref=e565]
+    - list [ref=e566]:
+      - listitem [ref=e567]:
+        - strong [ref=e568]: Use the parallel pattern
+        - text: . 10 agents in parallel each take 4-6 hours; the cluster produces 10 chapters in 4-6 hours wall time, not 40-60.
+      - listitem [ref=e569]:
+        - strong [ref=e570]:
+          - text: Use
+          - code [ref=e571]: agent:enricher
+          - text: for retrospective fixes
+        - text: . New chapters go in with the full rule applied; older chapters are enriched in later passes as time permits.
+      - listitem [ref=e572]:
+        - strong [ref=e573]:
+          - text: Use
+          - code [ref=e574]: agent:literature-scholar
+          - text: for citation depth
+        - text: . This is the agent that goes to the original papers and pulls out the page numbers. It runs in parallel with the content-writer.
+      - listitem [ref=e575]:
+        - strong [ref=e576]: Don’t re-render animations that haven’t changed
+        - text: . The CI workflow’s “check if script exists” step prevents wasted work.
+    - separator [ref=e577]
+    - heading "The site-builder guard-rails" [level=2] [ref=e578]
+    - paragraph [ref=e579]:
+      - code [ref=e580]: agent:site-builder
+      - text: is the only agent that touches
+      - code [ref=e581]: _includes/
+      - text: ","
+      - code [ref=e582]: _layouts/
+      - text: ","
+      - code [ref=e583]: assets/
+      - text: ", and"
+      - code [ref=e584]: _config.yml
+      - text: ". If you need a layout change, file a request against this agent. Reasons:"
+    - list [ref=e585]:
+      - listitem [ref=e586]:
+        - text: Jekyll’s front-matter parser is fragile around
+        - code [ref=e587]: "&#123;% comment %&#125;"
+        - text: blocks (see git history for
+        - code [ref=e588]: "Fix head.html: use &#123;% comment %&#125; block, not HTML <!-- -->"
+        - text: ). One character of carelessness here silently breaks the layout chain.
+      - listitem [ref=e589]: The CSS uses CSS custom properties; renaming a variable is a search-and-replace across all component styles.
+      - listitem [ref=e590]: Adding a new dependency (e.g. a JS library) is gated on the design.md review.
+    - paragraph [ref=e591]:
+      - text: If you are tempted to edit these files outside of
+      - code [ref=e592]: agent:site-builder
+      - text: ", stop and file a request instead."
+    - separator [ref=e593]
+    - heading "How to add a new chapter (the short version)" [level=2] [ref=e594]
+    - list [ref=e595]:
+      - listitem [ref=e596]:
+        - text: Pick the next free
+        - code [ref=e597]: chapter_NN/
+        - text: slot. Check
+        - code [ref=e598]: dft_notes/chapters-map.md
+        - text: to confirm the slot is free.
+      - listitem [ref=e599]:
+        - text: Open a tracking branch
+        - code [ref=e600]: ch/chapter-NN-<slug>
+        - text: .
+      - listitem [ref=e601]: Create the chapter file using the template above.
+      - listitem [ref=e602]:
+        - text: If your chapter has Python, write the script in
+        - code [ref=e603]: dft_notes/python_codes/chapter_NN/NN-slug.py
+        - strong [ref=e604]: first
+        - text: ", then inline the relevant parts in the chapter markdown."
+      - listitem [ref=e605]: Run the script to generate the plot. Commit both.
+      - listitem [ref=e606]:
+        - text: Update
+        - code [ref=e607]: dft_notes/chapters-map.md
+        - text: (Mermaid) to include the new chapter.
+      - listitem [ref=e608]:
+        - text: Update
+        - code [ref=e609]: dft_notes/index.md
+        - text: chapter table to include the new row.
+      - listitem [ref=e610]: Open a PR. The PR template will ask you to confirm the rigor checklist.
+      - listitem [ref=e611]:
+        - code [ref=e612]: agent:qa-reviewer
+        - text: reviews. Address must-fix. Merge.
+      - listitem [ref=e613]:
+        - code [ref=e614]: agent:literature-scholar
+        - text: adds the deep-dive section.
+      - listitem [ref=e615]:
+        - code [ref=e616]: agent:visualizer
+        - text: adds the animation (if applicable).
+      - listitem [ref=e617]:
+        - code [ref=e618]: agent:enricher
+        - text: runs the no-summaries grep against the chapter and patches any banned phrases.
+    - separator [ref=e619]
+    - heading "How to add a new component (CSS only)" [level=2] [ref=e620]
+    - list [ref=e621]:
+      - listitem [ref=e622]:
+        - text: Add the component class to
+        - code [ref=e623]: assets/css/site.css
+        - text: in the relevant section. Comment block at the top of each section explains what lives there.
+      - listitem [ref=e624]:
+        - text: Use CSS custom properties (
+        - code [ref=e625]: "--color-*"
+        - text: ","
+        - code [ref=e626]: "--space-*"
+        - text: ","
+        - code [ref=e627]: "--radius-*"
+        - text: ) — never inline hex.
+      - listitem [ref=e628]:
+        - text: Add a class demo to
+        - code [ref=e629]: design.md
+        - text: if the component is novel (i.e. not in the spec yet).
+      - listitem [ref=e630]:
+        - text: Update the Implementation Status checklist in
+        - code [ref=e631]: design.md
+        - text: .
+    - separator [ref=e632]
+    - heading "End-to-end test (the regression net)" [level=2] [ref=e633]
+    - paragraph [ref=e634]:
+      - text: Every push to
+      - code [ref=e635]: main
+      - text: runs the GitHub Actions workflow at
+      - code [ref=e636]: .github/workflows/jekyll.yml
+      - text: ", which:"
+    - list [ref=e637]:
+      - listitem [ref=e638]: Runs the Jekyll build.
+      - listitem [ref=e639]:
+        - text: Runs
+        - code [ref=e640]: markdownlint-cli2
+        - text: against every chapter and extra.
+      - listitem [ref=e641]: Runs the no-summaries grep.
+      - listitem [ref=e642]: Deploys the built site to GitHub Pages.
+    - paragraph [ref=e643]:
+      - text: In addition,
+      - code [ref=e644]: agent:bug-hunter
+      - text: "runs a Playwright end-to-end test (locally and in CI) that:"
+    - list [ref=e645]:
+      - listitem [ref=e646]: Visits every chapter URL.
+      - listitem [ref=e647]: "Counts the rendered Mermaid SVGs (should equal the number of ` ```mermaid ` code blocks)."
+      - listitem [ref=e648]: Counts the per-diagram “Download PNG” buttons (should equal the SVG count).
+      - listitem [ref=e649]: Clicks one PNG download per chapter to confirm the blob pipeline works.
+      - listitem [ref=e650]: Visits every extra URL.
+      - listitem [ref=e651]: Visits the chapters-map and counts the nodes (should be 18 in the current state).
+    - paragraph [ref=e652]: The end-to-end test is the single source of truth for “is the site working”. A regression in any of the above fails the test and blocks merge.
+    - separator [ref=e653]
+    - heading "Open questions for future iterations" [level=2] [ref=e654]
+    - list [ref=e655]:
+      - listitem [ref=e656]:
+        - text: How to handle the
+        - code [ref=e657]: agent:code-runner
+        - text: for chapters that have multi-hour compute (e.g. CCSD(T) energies on a drug-sized molecule)? Maybe a CI workflow that runs the code on a self-hosted runner and commits the result?
+      - listitem [ref=e658]: Do we want a build-time Mermaid renderer (so diagrams work without JavaScript), or is CDN-rendered Mermaid fine? Currently the latter.
+      - listitem [ref=e659]:
+        - text: When the chapter count exceeds ~30, the
+        - code [ref=e660]: chapters-map.md
+        - text: Mermaid graph will get unwieldy. Maybe a sub-graph per “track” (theory / solids / methods)?
+      - listitem [ref=e661]: How to keep the no-summaries rule from being circumvented by slightly-different phrases (e.g. “as a quick check”, “one can verify”, “the result follows from”)? The grep list should be reviewed quarterly.
+      - listitem [ref=e662]:
+        - text: When does
+        - code [ref=e663]: agent:visualizer
+        - text: retire? Tier 1 (Manim MP4) is the current goal; Tier 2 (interactive JS) and Tier 3 (animated SVG) are deferred to a later phase.
+  - contentinfo [ref=e664]:
+    - generic [ref=e665]:
+      - generic [ref=e666]:
+        - img [ref=e667]
+        - generic [ref=e671]: DFT Notes
+        - paragraph [ref=e672]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e673]:
+        - generic [ref=e674]:
+          - heading "Project" [level=3] [ref=e675]
+          - list [ref=e676]:
+            - listitem [ref=e677]:
+              - link "Chapters map" [ref=e678] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e679]:
+              - link "Python codes" [ref=e680] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e681]:
+              - link "Contributing" [ref=e682] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e683]:
+              - link "Security" [ref=e684] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e685]:
+              - link "Design spec" [ref=e686] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e687]:
+              - link "GitHub ↗" [ref=e688] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e689]:
+          - heading "Built with" [level=3] [ref=e690]
+          - list [ref=e691]:
+            - listitem [ref=e692]:
+              - link "Jekyll" [ref=e693] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e694]:
+              - link "MathJax 3" [ref=e695] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e696]:
+              - link "Mermaid" [ref=e697] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e698]:
+              - link "chenglou/pretext" [ref=e699] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e700]:
+              - link "Google Fonts" [ref=e701] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e702]:
+          - heading "Legal" [level=3] [ref=e703]
+          - list [ref=e704]:
+            - listitem [ref=e705]:
+              - link "MIT License" [ref=e706] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e707]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e709]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

@@ -1,0 +1,167 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Python codes" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: Every Python sample that appears in a chapter also lives here as a runnable file, in the same order it appears in the chapter. When a script produces a plot, the PNG is committed alongside the script.
+      - paragraph [ref=e30]:
+        - text: This is the
+        - strong [ref=e31]: executable
+        - text: companion to the chapters. The code in the chapters is inlined for reading; the code here is committed, tested, and reproducible. If you find a discrepancy between the chapter and the script, the script is the source of truth — open an issue.
+      - heading "How to run" [level=2] [ref=e32]
+      - paragraph [ref=e33]: "From the repo root:"
+      - code [ref=e37]: "# Pick a chapter ls dft_notes/python_codes/ # Run a single script (writes its plot to plots/) python dft_notes/python_codes/chapter_00/01-particle-in-box.py # Or run all scripts in a chapter for f in dft_notes/python_codes/chapter_00/NN-*.py; do python \"$f\" done"
+      - paragraph [ref=e38]:
+        - text: The scripts are tested against
+        - strong [ref=e39]: Python 3.11+
+        - text: "with the following pinned dependencies:"
+      - table [ref=e40]:
+        - rowgroup [ref=e41]:
+          - row "Package Version Why" [ref=e42]:
+            - columnheader "Package" [ref=e43]
+            - columnheader "Version" [ref=e44]
+            - columnheader "Why" [ref=e45]
+        - rowgroup [ref=e46]:
+          - row "numpy’ ≥ 1.24 arrays, linalg, FFT" [ref=e47]:
+            - cell "numpy’" [ref=e48]:
+              - code [ref=e49]: numpy
+              - text: ’
+            - cell "≥ 1.24" [ref=e50]
+            - cell "arrays, linalg, FFT" [ref=e51]
+          - row "‘scipy’ ≥ 1.10 sparse matrices, special functions, ‘integrate.solve_ivp’" [ref=e52]:
+            - cell "‘scipy’" [ref=e53]
+            - cell "≥ 1.10" [ref=e54]
+            - cell "sparse matrices, special functions, ‘integrate.solve_ivp’" [ref=e55]
+          - row "‘matplotlib’ ≥ 3.7 plots (‘matplotlib.use(“Agg”)’ for headless)" [ref=e56]:
+            - cell "‘matplotlib’" [ref=e57]
+            - cell "≥ 3.7" [ref=e58]
+            - cell "plots (‘matplotlib.use(“Agg”)’ for headless)" [ref=e59]
+      - paragraph [ref=e60]:
+        - text: Nothing else. If a chapter needs a new dependency (e.g.
+        - code [ref=e61]: pyscf
+        - text: ","
+        - code [ref=e62]: ase
+        - text: ","
+        - code [ref=e63]: gpaw
+        - text: ), it is added to this list in the same PR as the script.
+      - heading "Conventions" [level=2] [ref=e64]
+      - list [ref=e65]:
+        - listitem [ref=e66]:
+          - text: Scripts are numbered with a two-digit prefix in the order they appear in the chapter.
+          - code [ref=e67]: 01-foo.py' appears first in the chapter prose;
+          - text: 02-bar.py’ appears second; and so on.
+        - listitem [ref=e68]: "Plots are named with the same prefix and slug, and live in the chapter’s `plots/’ subfolder."
+        - listitem [ref=e69]:
+          - text: No script may
+          - code [ref=e70]: os.chdir
+          - text: ; everything is computed and written with absolute paths relative to the chapter folder.
+        - listitem [ref=e71]: A script that doesn’t produce a figure still has the prefix — order matters across the whole chapter.
+        - listitem [ref=e72]:
+          - text: A
+          - code [ref=e73]: chapter_NN/00-README.md' (optional) is where
+          - text: agent:content-writer’ explains anything specific to the chapter’s scripts (numerical tolerances, expected runtime, etc.).
+      - heading "Index of scripts" [level=2] [ref=e74]
+      - table [ref=e75]:
+        - rowgroup [ref=e76]:
+          - row "Chapter Script What it does" [ref=e77]:
+            - columnheader "Chapter" [ref=e78]
+            - columnheader "Script" [ref=e79]
+            - columnheader "What it does" [ref=e80]
+        - rowgroup [ref=e81]:
+          - 'row "00 01-particle-in-box.py Plots the first four particle-in-a-box eigenfunctions and the corresponding probability densities. Introduces ‘numpy’ arrays, ‘linalg.eigh’, and ‘matplotlib`." [ref=e82]':
+            - cell "00" [ref=e83]
+            - cell "01-particle-in-box.py" [ref=e84]:
+              - link "01-particle-in-box.py" [ref=e85] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/chapter_00/01-particle-in-box.py
+            - 'cell "Plots the first four particle-in-a-box eigenfunctions and the corresponding probability densities. Introduces ‘numpy’ arrays, ‘linalg.eigh’, and ‘matplotlib`." [ref=e86]'
+      - heading "Where the code goes in the chapter" [level=2] [ref=e87]
+      - paragraph [ref=e88]:
+        - text: "The chapter template (`agents.md’ § “The chapter writing template”) has a"
+        - strong [ref=e89]: "{NN}.3 The code"
+        - text: section. The code in that section
+        - strong [ref=e90]: must
+        - text: be a copy-paste of the runnable script here — not a re-typed ad-hoc version. If you change the script, the chapter changes too.
+  - contentinfo [ref=e91]:
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - img [ref=e94]
+        - generic [ref=e98]: DFT Notes
+        - paragraph [ref=e99]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e100]:
+        - generic [ref=e101]:
+          - heading "Project" [level=3] [ref=e102]
+          - list [ref=e103]:
+            - listitem [ref=e104]:
+              - link "Chapters map" [ref=e105] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e106]:
+              - link "Python codes" [ref=e107] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e108]:
+              - link "Contributing" [ref=e109] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e110]:
+              - link "Security" [ref=e111] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e112]:
+              - link "Design spec" [ref=e113] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e114]:
+              - link "GitHub ↗" [ref=e115] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e116]:
+          - heading "Built with" [level=3] [ref=e117]
+          - list [ref=e118]:
+            - listitem [ref=e119]:
+              - link "Jekyll" [ref=e120] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e121]:
+              - link "MathJax 3" [ref=e122] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e123]:
+              - link "Mermaid" [ref=e124] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e125]:
+              - link "chenglou/pretext" [ref=e126] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e127]:
+              - link "Google Fonts" [ref=e128] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e129]:
+          - heading "Legal" [level=3] [ref=e130]
+          - list [ref=e131]:
+            - listitem [ref=e132]:
+              - link "MIT License" [ref=e133] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e134]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e136]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

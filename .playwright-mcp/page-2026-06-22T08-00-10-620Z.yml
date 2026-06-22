@@ -1,0 +1,1398 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Physical constants and unit conversions" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: The single, comprehensive reference for every physical constant and every unit conversion that recurs in the DFT Notes. Open it, look up the value, close it, return to the chapter. Every numerical value is a 2019 CODATA recommended value; the values fixed by the 2019 SI redefinition are exact by definition and are flagged with
+          - emphasis [ref=e30]: (exact)
+          - text: .
+      - paragraph [ref=e31]:
+        - text: This page is the
+        - strong [ref=e32]: physical-constants analogue
+        - text: of the
+        - link "notation glossary" [ref=e33] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+        - text: and the
+        - link "math cheatsheet" [ref=e34] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+        - text: . It collects, in one place, the numbers the chapters refer to without proof. Whenever a chapter uses a constant (
+        - img [ref=e36]
+        - text: ","
+        - img [ref=e42]
+        - text: ","
+        - img [ref=e48]
+        - text: ","
+        - img [ref=e57]
+        - text: ","
+        - img [ref=e63]
+        - text: ", …) or a non-atomic unit (eV, kcal/mol, cm⁻¹, Debye, …), the value lives here and is linked back to its source."
+      - paragraph [ref=e71]:
+        - strong [ref=e72]: Conventions used in this page.
+      - list [ref=e73]:
+        - listitem [ref=e74]:
+          - text: The 2019 SI redefinition is adopted throughout. The defining constants
+          - img [ref=e76]
+          - text: ","
+          - img [ref=e82]
+          - text: ","
+          - img [ref=e88]
+          - text: ","
+          - img [ref=e97]
+          - text: ", and"
+          - img [ref=e106]
+          - text: are therefore
+          - strong [ref=e111]: exact
+          - text: (no uncertainty), and every other constant in the table is a 2019 CODATA recommended value.
+        - listitem [ref=e112]:
+          - text: All atomic-unit values follow the conventions of
+          - link "Chapter 00" [ref=e113] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-00/
+          - text: and the
+          - link "notation glossary §13.1" [ref=e114] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+          - text: ":"
+          - img [ref=e116]
+          - text: . The non-relativistic Hartree atomic units (not the Gaussian “au”) are used; the speed of light in these units is
+          - img [ref=e148]
+          - text: .
+        - listitem [ref=e172]: Numbers are quoted to the precision the chapters need. The 2019 CODATA values are quoted to 6–11 significant figures depending on the constant; the conversion factors are quoted to 6 significant figures, which is the precision at which rounding errors in DFT calculations are negligible.
+        - listitem [ref=e173]:
+          - text: MathJax 3 is used. Numbered equations use
+          - img [ref=e175]
+          - text: cross-references in this file are
+          - code [ref=e207]: "\\eqref{eq:pc-foo}"
+          - text: .
+      - separator [ref=e208]
+      - heading "1. The seven 2019 SI base units" [level=2] [ref=e209]
+      - paragraph [ref=e210]:
+        - text: The
+        - strong [ref=e211]: International System of Units (SI)
+        - text: is the system in which all of the 2019 CODATA values are reported. Since 20 May 2019 the seven base units have been defined by fixing seven constants of nature; the base units are no longer defined by
+        - emphasis [ref=e212]: artefacts
+        - text: (kilogram) or
+        - emphasis [ref=e213]: reference implementations
+        - text: (metre, candela). The seven defining constants are summarised at the bottom of this section.
+      - heading "1.1 Metre (length)" [level=3] [ref=e214]
+      - paragraph [ref=e215]:
+        - text: The
+        - strong [ref=e216]: metre
+        - text: ", symbol"
+        - img [ref=e218]
+        - text: ", is the SI unit of length, defined by fixing the speed of light in vacuum,"
+      - img [ref=e224]
+      - paragraph [ref=e263]:
+        - text: Historically the metre was the length of a prototype bar kept at Sèvres (1889), then a multiple of the wavelength of the krypton-86 2p₁₀ → 5d₅ transition (1960). Since 1983 it has been defined by
+        - img [ref=e265]
+        - text: . In atomic units (this page, §3) the metre is
+        - img [ref=e271]
+        - text: (§5).
+      - heading "1.2 Kilogram (mass)" [level=3] [ref=e303]
+      - paragraph [ref=e304]:
+        - text: The
+        - strong [ref=e305]: kilogram
+        - text: ", symbol"
+        - img [ref=e307]
+        - text: ", is the SI unit of mass, defined by fixing the Planck constant,"
+      - img [ref=e314]
+      - paragraph [ref=e360]:
+        - text: Combined with the definitions of the metre and the second, this fixes
+        - img [ref=e362]
+        - text: and hence (via the de Broglie relation
+        - img [ref=e368]
+        - text: ) the kilogram. The old “Le Grand K” prototype cylinder, kept at the BIPM in Sèvres, was retired on 20 May
+      - list [ref=e382]:
+        - listitem [ref=e383]:
+          - heading "1.3 Second (time)" [level=3] [ref=e384]
+      - paragraph [ref=e385]:
+        - text: The
+        - strong [ref=e386]: second
+        - text: ", symbol"
+        - img [ref=e388]
+        - text: ", is the SI unit of time, defined by fixing the cesium-133 ground-state hyperfine transition frequency,"
+      - img [ref=e394]
+      - paragraph [ref=e432]:
+        - text: The second is the duration of
+        - img [ref=e434]
+        - text: periods of the corresponding Cs-133 radiation.
+      - heading "1.4 Ampere (electric current)" [level=3] [ref=e451]
+      - paragraph [ref=e452]:
+        - text: The
+        - strong [ref=e453]: ampere
+        - text: ", symbol"
+        - img [ref=e455]
+        - text: ", is the SI unit of electric current, defined by fixing the elementary charge,"
+      - img [ref=e461]
+      - paragraph [ref=e506]:
+        - text: Historically the ampere was the current which, if maintained in two straight parallel conductors of infinite length and negligible cross-section placed one metre apart in vacuum, would produce a force of
+        - img [ref=e508]
+        - text: newtons per metre of length. The 2019 redefinition replaces that mechanical artefact with the fixed
+        - img [ref=e525]
+        - text: ", after which the magnetic constant"
+        - img [ref=e531]
+        - text: is measured and the electric constant
+        - img [ref=e540]
+        - text: is determined.
+      - heading "1.5 Kelvin (temperature)" [level=3] [ref=e569]
+      - paragraph [ref=e570]:
+        - text: The
+        - strong [ref=e571]: kelvin
+        - text: ", symbol"
+        - img [ref=e573]
+        - text: ", is the SI unit of thermodynamic temperature, defined by fixing the Boltzmann constant,"
+      - img [ref=e579]
+      - paragraph [ref=e631]:
+        - text: Combined with the definitions of the kilogram, metre, and second this fixes
+        - img [ref=e633]
+        - text: and hence the kelvin. The old triple-point-of-water definition (273.16 K) is no longer primary; water’s triple-point temperature is now a measured quantity. In atomic units the kelvin is
+        - img [ref=e642]
+        - text: (§4).
+      - heading "1.6 Mole (amount of substance)" [level=3] [ref=e682]
+      - paragraph [ref=e683]:
+        - text: The
+        - strong [ref=e684]: mole
+        - text: ", symbol"
+        - img [ref=e686]
+        - text: ", is the SI unit of amount of substance, defined by fixing the Avogadro constant,"
+      - img [ref=e694]
+      - paragraph [ref=e747]:
+        - text: The mole is the amount of substance of a system that contains exactly
+        - img [ref=e749]
+        - text: elementary entities (atoms, molecules, ions, electrons, …). Before 2019 the mole was defined by the 0.012 kg of carbon-12 convention; that definition is no longer primary.
+      - heading "1.7 Candela (luminous intensity)" [level=3] [ref=e775]
+      - paragraph [ref=e776]:
+        - text: The
+        - strong [ref=e777]: candela
+        - text: ", symbol"
+        - img [ref=e779]
+        - text: ", is the SI unit of luminous intensity, defined by fixing the luminous efficacy of monochromatic radiation of frequency"
+        - img [ref=e786]
+        - text: "Hz:"
+      - img [ref=e804]
+      - paragraph [ref=e840]: The candela does not enter the DFT chapters.
+      - heading "1.8 The seven defining constants at a glance" [level=3] [ref=e841]
+      - paragraph [ref=e842]:
+        - text: The seven constants of nature that
+        - strong [ref=e843]: define
+        - text: the seven base units of the SI are summarised in the table below. The 2019 redefinition is sometimes called the
+        - strong [ref=e844]: “new SI”
+        - text: ; it entered into force on 20 May 2019 (the 144th anniversary of the Metre Convention). Because the seven defining constants are exact, the
+        - emphasis [ref=e845]: only
+        - text: source of numerical uncertainty in any 2019 CODATA value is the
+        - emphasis [ref=e846]: measurement
+        - text: of the constant itself. For example, the value of the fine-structure constant
+        - img [ref=e848]
+        - text: is
+        - emphasis [ref=e868]: "measure`d"
+        - text: ’ (it is not fixed by the SI); its relative uncertainty is
+        - img [ref=e870]
+        - text: . The 2019 CODATA value is
+        - img [ref=e890]
+        - text: .
+      - separator [ref=e926]
+      - heading "2. The 2019 CODATA constants" [level=2] [ref=e927]
+      - paragraph [ref=e928]:
+        - text: The 2019 CODATA recommended values of the fundamental physical constants, in the SI units of §1. The values flagged
+        - emphasis [ref=e929]: (exact)
+        - text: "are fixed by the 2019 SI redefinition; the rest are the 2019 CODATA recommended values. References: Tiesinga, Mohr, Newell, Taylor (2021),"
+        - emphasis [ref=e930]: Rev. Mod. Phys.
+        - strong [ref=e931]: "93"
+        - text: ", 025010. ### 2.1 The five defining constants (also in §1)"
+      - table [ref=e932]:
+        - rowgroup [ref=e933]:
+          - row "Symbol Name Value (SI) Comment" [ref=e934]:
+            - columnheader "Symbol" [ref=e935]
+            - columnheader "Name" [ref=e936]
+            - columnheader "Value (SI)" [ref=e937]
+            - columnheader "Comment" [ref=e938]
+        - rowgroup [ref=e939]:
+          - row "speed of light in vacuum (exact) eq." [ref=e940]:
+            - cell [ref=e941]:
+              - img [ref=e943]
+            - cell "speed of light in vacuum" [ref=e948]
+            - cell "(exact)" [ref=e949]:
+              - img [ref=e951]
+              - emphasis [ref=e976]: (exact)
+            - cell "eq." [ref=e977]:
+              - text: eq.
+              - img [ref=e979]:
+                - link [ref=e982] [cursor=pointer]:
+                  - /url: "#"
+          - row "Planck constant (exact) eq." [ref=e991]:
+            - cell [ref=e992]:
+              - img [ref=e994]
+            - cell "Planck constant" [ref=e999]
+            - cell "(exact)" [ref=e1000]:
+              - img [ref=e1002]
+              - emphasis [ref=e1034]: (exact)
+            - cell "eq." [ref=e1035]:
+              - text: eq.
+              - img [ref=e1037]:
+                - link [ref=e1040] [cursor=pointer]:
+                  - /url: "#"
+          - row "Boltzmann constant (exact) eq." [ref=e1049]:
+            - cell [ref=e1050]:
+              - img [ref=e1052]
+            - cell "Boltzmann constant" [ref=e1060]
+            - cell "(exact)" [ref=e1061]:
+              - img [ref=e1063]
+              - emphasis [ref=e1098]: (exact)
+            - cell "eq." [ref=e1099]:
+              - text: eq.
+              - img [ref=e1101]:
+                - link [ref=e1104] [cursor=pointer]:
+                  - /url: "#"
+          - row "Avogadro constant (exact) eq." [ref=e1113]:
+            - cell [ref=e1114]:
+              - img [ref=e1116]
+            - cell "Avogadro constant" [ref=e1124]
+            - cell "(exact)" [ref=e1125]:
+              - img [ref=e1127]
+              - emphasis [ref=e1163]: (exact)
+            - cell "eq." [ref=e1164]:
+              - text: eq.
+              - img [ref=e1166]:
+                - link [ref=e1169] [cursor=pointer]:
+                  - /url: "#"
+          - row "elementary charge (exact) eq." [ref=e1178]:
+            - cell [ref=e1179]:
+              - img [ref=e1181]
+            - cell "elementary charge" [ref=e1186]
+            - cell "(exact)" [ref=e1187]:
+              - img [ref=e1189]
+              - emphasis [ref=e1220]: (exact)
+            - cell "eq." [ref=e1221]:
+              - text: eq.
+              - img [ref=e1223]:
+                - link [ref=e1226] [cursor=pointer]:
+                  - /url: "#"
+      - heading "2.2 The reduced Planck constant" [level=3] [ref=e1235]
+      - img [ref=e1237]
+      - paragraph [ref=e1287]:
+        - text: "Exact in the new SI:"
+        - img [ref=e1289]
+        - text: with
+        - img [ref=e1310]
+        - text: exact. In atomic units
+        - img [ref=e1316]
+        - text: (by definition).
+      - heading "2.3 The electron rest mass" [level=3] [ref=e1325]
+      - img [ref=e1327]
+      - paragraph [ref=e1369]:
+        - text: The 2019 CODATA value; the relative uncertainty is
+        - img [ref=e1371]
+        - text: . In atomic units
+        - img [ref=e1391]
+        - text: (by definition).
+      - heading "2.4 The fine-structure constant" [level=3] [ref=e1403]
+      - img [ref=e1405]
+      - paragraph [ref=e1486]:
+        - text: Dimensionless. Equal to
+        - img [ref=e1488]
+        - text: in Gaussian units (setting
+        - img [ref=e1508]
+        - text: ). Drives
+        - emphasis [ref=e1524]: all
+        - text: "of atomic physics: the speed of light in atomic units is"
+        - img [ref=e1526]
+        - text: (§7), the Bohr magneton contains
+        - img [ref=e1541]
+        - text: explicitly, and the relativistic correction to the kinetic energy of a 1s electron is
+        - img [ref=e1547]
+        - text: a.u. See Chapter 01 §1.10.7 for the
+        - img [ref=e1563]
+        - text: spontaneous emission rate of hydrogen, which is proportional to
+        - img [ref=e1577]
+        - text: .
+      - heading "2.5 The vacuum permittivity" [level=3] [ref=e1585]
+      - img [ref=e1587]
+      - paragraph [ref=e1653]:
+        - text: In atomic units
+        - img [ref=e1655]
+        - text: (so
+        - img [ref=e1672]
+        - text: ). The Coulomb interaction between two point charges is
+        - img [ref=e1696]
+        - text: ", which reduces to"
+        - img [ref=e1742]
+        - text: in atomic units.
+      - heading "2.6 The Rydberg constant" [level=3] [ref=e1752]
+      - img [ref=e1754]
+      - paragraph [ref=e1834]:
+        - text: The wavenumber of the lowest-energy (Lyman-
+        - img [ref=e1836]
+        - text: ) hydrogen 1s → 2p transition is
+        - img [ref=e1842]
+        - text: . Multiplied by
+        - img [ref=e1884]
+        - text: ", the ionisation energy of hydrogen is"
+        - img [ref=e1892]
+        - text: (since the Bohr-model 1s energy is
+        - img [ref=e1945]
+        - text: ; see
+        - link "Chapter 01 §1.10" [ref=e1973] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: ). The Rydberg
+        - emphasis [ref=e1974]: frequency
+        - text: is
+        - img [ref=e1976]
+        - text: ; the Rydberg energy is
+        - img [ref=e1987]
+        - text: .
+      - heading "2.7 The Bohr radius" [level=3] [ref=e1999]
+      - img [ref=e2001]
+      - paragraph [ref=e2074]:
+        - text: The most probable radius of the hydrogen 1s orbital. Equal to
+        - img [ref=e2076]
+        - text: in Gaussian units. In atomic units
+        - img [ref=e2098]
+        - text: (by definition); in SI,
+        - img [ref=e2111]:
+          - generic [ref=e2117]: Å
+        - text: .
+      - heading "2.8 The Hartree energy" [level=3] [ref=e2147]
+      - img [ref=e2149]
+      - paragraph [ref=e2235]:
+        - text: "The energy unit of atomic units. Twice the magnitude of the hydrogen 1s energy:"
+        - img [ref=e2237]
+        - text: .
+      - heading "2.9 The Bohr magneton" [level=3] [ref=e2276]
+      - img [ref=e2278]
+      - paragraph [ref=e2344]:
+        - text: The natural unit of electron magnetic moment; the spin magnetic moment is
+        - img [ref=e2346]
+        - text: (with
+        - img [ref=e2357]
+        - text: ). The nuclear magneton is
+        - img [ref=e2385]
+        - text: .
+      - heading "2.10 The classical electron radius" [level=3] [ref=e2415]
+      - img [ref=e2417]
+      - paragraph [ref=e2487]:
+        - text: The radius at which the electrostatic self-energy of a uniformly charged sphere equals
+        - img [ref=e2489]
+        - text: . The Thomson-scattering cross-section is
+        - img [ref=e2503]
+        - text: .
+      - heading "2.11 The reduced Compton wavelength" [level=3] [ref=e2533]
+      - img [ref=e2535]
+      - paragraph [ref=e2603]:
+        - text: The wavelength of a photon whose energy equals
+        - img [ref=e2605]
+        - text: (up to a factor of
+        - img [ref=e2619]
+        - text: ; the
+        - emphasis [ref=e2626]: "unreduce`d"
+        - text: ’ Compton wavelength is
+        - img [ref=e2628]
+        - text: ).
+      - heading "2.12 Where to find more" [level=3] [ref=e2673]
+      - blockquote [ref=e2674]:
+        - paragraph [ref=e2675]:
+          - strong [ref=e2676]: Cross-references.
+          - img [ref=e2678]
+          - text: ","
+          - img [ref=e2684]
+          - text: ": Chapter 01 §1.10.7 (hydrogen 2p→1s);"
+          - img [ref=e2690]
+          - text: ","
+          - img [ref=e2699]
+          - text: ","
+          - img [ref=e2708]
+          - text: ": throughout ("
+          - link "notation glossary §13.1" [ref=e2713] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+          - text: for the formal conventions);
+          - img [ref=e2715]
+          - text: ": Chapter 07 §7.6.3 (smearing);"
+          - img [ref=e2724]
+          - text: ": Chapter 09 (molar energies);"
+          - img [ref=e2733]
+          - text: ": Chapter 04 §4.8.4 (non-collinear spin DFT) and planned Chapter 11 (magnetic response)."
+      - separator [ref=e2741]
+      - heading "3. Atomic units (au)" [level=2] [ref=e2742]
+      - paragraph [ref=e2743]:
+        - text: The DFT notes use
+        - strong [ref=e2744]: atomic units
+        - text: (also called Hartree atomic units) throughout. In atomic units the four fundamental constants
+      - img [ref=e2746]
+      - paragraph [ref=e2795]: This choice of units turns the Schrödinger equation for a one-electron atom into the dimensionless equation
+      - img [ref=e2797]
+      - paragraph [ref=e2838]:
+        - text: with the Bohr-model 1s energy
+        - img [ref=e2840]
+        - text: a.u. and the Bohr radius
+        - img [ref=e2866]
+        - text: a.u. In Gaussian units, the equivalent choice is
+        - img [ref=e2879]
+        - text: (i.e.
+        - img [ref=e2900]
+        - text: is
+        - emphasis [ref=e2912]: not
+        - text: set to 1, but the Coulomb interaction is
+        - img [ref=e2914]
+        - text: directly because
+        - img [ref=e2925]
+        - text: in Gaussian units); the two conventions differ by factors of
+        - img [ref=e2938]
+        - text: in the electromagnetic potentials only.
+      - paragraph [ref=e2945]:
+        - text: The combination
+        - img [ref=e2947]
+        - text: is sometimes called a “natural unit” of force. The atomic units below are the units in which the defining constants of
+        - img [ref=e2964]:
+          - link [ref=e2967] [cursor=pointer]:
+            - /url: "#"
+        - text: "are 1. ### 3.1 The atomic unit of length — the Bohr radius"
+      - img [ref=e2977]:
+        - generic [ref=e3048]: Å
+      - paragraph [ref=e3077]:
+        - text: The Bohr radius of
+        - img [ref=e3079]:
+          - link [ref=e3082] [cursor=pointer]:
+            - /url: "#"
+        - text: . See §5 for the conversion table.
+      - heading "3.2 The atomic unit of energy — the Hartree" [level=3] [ref=e3091]
+      - img [ref=e3093]
+      - paragraph [ref=e3233]:
+        - text: The Hartree energy of
+        - img [ref=e3235]:
+          - link [ref=e3238] [cursor=pointer]:
+            - /url: "#"
+        - text: . Twice the binding energy of the hydrogen 1s electron. See §4 for the full conversion table; the values quoted here are the exact CODATA-based ones to the precision of the constants.
+      - heading "3.3 The atomic unit of time" [level=3] [ref=e3247]
+      - img [ref=e3249]
+      - paragraph [ref=e3354]: The time for an electron in the hydrogen 1s orbital to complete one classical orbit. 1 fs = 41.34 a.u. of time.
+      - heading "3.4 The atomic unit of force" [level=3] [ref=e3355]
+      - img [ref=e3357]
+      - paragraph [ref=e3434]:
+        - text: The natural unit of force in chemistry. A typical converged SCF force on a light atom is
+        - img [ref=e3436]
+        - text: a.u. of force =
+        - img [ref=e3451]
+        - text: N.
+      - heading "3.5 The atomic unit of momentum" [level=3] [ref=e3466]
+      - img [ref=e3468]
+      - paragraph [ref=e3545]:
+        - text: Appears in the
+        - strong [ref=e3546]: Hellmann–Feynman
+        - text: force on a nucleus (Chapter 04 §4.7.1).
+      - heading "3.6 The atomic unit of charge" [level=3] [ref=e3547]
+      - img [ref=e3549]
+      - paragraph [ref=e3603]:
+        - text: The elementary charge, exact in the new SI. In the electron-repulsion integral the factor
+        - img [ref=e3605]
+        - text: in atomic units absorbs the
+        - img [ref=e3616]
+        - text: .
+      - heading "3.7 The atomic unit of mass" [level=3] [ref=e3644]
+      - img [ref=e3646]
+      - paragraph [ref=e3703]:
+        - text: Nuclear masses in atomic units are
+        - img [ref=e3705]
+        - text: ": hydrogen"
+        - img [ref=e3722]
+        - text: ", carbon-12"
+        - img [ref=e3741]
+        - text: .
+      - heading "3.8 The atomic unit of electric field" [level=3] [ref=e3760]
+      - img [ref=e3762]
+      - paragraph [ref=e3845]: The electric field that, applied across a Bohr radius, does one Hartree of work on a unit charge. The field of a proton at the Bohr radius is exactly 1 a.u. of electric field.
+      - heading "3.9 The atomic unit of electric potential" [level=3] [ref=e3846]
+      - text: "\\[\\label{eq:pc-au-potential} 1\\;\\text{a.u. of electric potential} \\;\\equiv\\; \\frac{E_h}{e} \\;\\approx\\; 27.211\\,386\\,245\\,988\\;\\text{V} . \\end{equation> Numerically equal to the conversion factor of §4.2. The first ionisation potential of hydrogen is"
+      - img [ref=e3848]
+      - text: ". ### 3.10 The atomic unit of dipole moment \\label{eq:pc-au-dipole} 1\\;\\text{a.u. of dipole moment} \\;\\equiv\\; e\\,a_0 \\;\\approx\\; 8.478\\,353\\,6255 \\times 10^{-30}\\;\\text{C}\\,\\text{m} \\;\\approx\\; 2.5417\\;\\text{D} .\\]"
+      - paragraph [ref=e3874]:
+        - text: A molecule with one electron separated from a unit positive charge by
+        - img [ref=e3876]
+        - text: has a dipole moment of 1 a.u. See §6 for the Debye conversion.
+      - heading "3.11 The atomic unit of magnetic flux density" [level=3] [ref=e3884]
+      - img [ref=e3886]
+      - paragraph [ref=e3965]:
+        - text: The magnetic field that, acting on a Bohr magneton, gives
+        - img [ref=e3967]
+        - text: (one Hartree of Zeeman energy). Typical laboratory fields of 1–10 T are
+        - img [ref=e3985]
+        - text: –
+        - img [ref=e4004]
+        - text: a.u. See §6 for the conversion.
+      - heading "3.12 The atomic unit of frequency and angular frequency" [level=3] [ref=e4022]
+      - img [ref=e4024]
+      - paragraph [ref=e4091]:
+        - text: The inverse of the atomic unit of time. Visible-light frequencies (
+        - img [ref=e4093]
+        - text: ) are
+        - img [ref=e4114]
+        - text: a.u.; soft X-rays (
+        - img [ref=e4125]
+        - text: ) are
+        - img [ref=e4137]
+        - text: a.u. (since
+        - img [ref=e4148]
+        - text: a.u.).
+      - heading "3.13 Summary of the most-used atomic units" [level=3] [ref=e4165]
+      - table [ref=e4166]:
+        - rowgroup [ref=e4167]:
+          - row "Quantity Atomic unit Value in SI Ref. eq." [ref=e4168]:
+            - columnheader "Quantity" [ref=e4169]
+            - columnheader "Atomic unit" [ref=e4170]
+            - columnheader "Value in SI" [ref=e4171]
+            - columnheader "Ref. eq." [ref=e4172]
+        - rowgroup [ref=e4173]:
+          - row "length" [ref=e4174]:
+            - cell "length" [ref=e4175]
+            - cell [ref=e4176]:
+              - img [ref=e4178]
+            - cell [ref=e4186]:
+              - img [ref=e4188]
+            - cell [ref=e4213]:
+              - img [ref=e4215]:
+                - link [ref=e4218] [cursor=pointer]:
+                  - /url: "#"
+          - row "energy" [ref=e4227]:
+            - cell "energy" [ref=e4228]
+            - cell [ref=e4229]:
+              - img [ref=e4231]
+            - cell [ref=e4239]:
+              - img [ref=e4241]
+            - cell [ref=e4266]:
+              - img [ref=e4268]:
+                - link [ref=e4271] [cursor=pointer]:
+                  - /url: "#"
+          - row "time" [ref=e4280]:
+            - cell "time" [ref=e4281]
+            - cell [ref=e4282]:
+              - img [ref=e4284]
+            - cell [ref=e4297]:
+              - img [ref=e4299]
+            - cell [ref=e4324]:
+              - img [ref=e4326]:
+                - link [ref=e4329] [cursor=pointer]:
+                  - /url: "#"
+          - row "force" [ref=e4338]:
+            - cell "force" [ref=e4339]
+            - cell [ref=e4340]:
+              - img [ref=e4342]
+            - cell [ref=e4358]:
+              - img [ref=e4360]
+            - cell [ref=e4384]:
+              - img [ref=e4386]:
+                - link [ref=e4389] [cursor=pointer]:
+                  - /url: "#"
+          - row "momentum" [ref=e4398]:
+            - cell "momentum" [ref=e4399]
+            - cell [ref=e4400]:
+              - img [ref=e4402]
+            - cell [ref=e4415]:
+              - img [ref=e4417]
+            - cell [ref=e4453]:
+              - img [ref=e4455]:
+                - link [ref=e4458] [cursor=pointer]:
+                  - /url: "#"
+          - row "charge" [ref=e4467]:
+            - cell "charge" [ref=e4468]
+            - cell [ref=e4469]:
+              - img [ref=e4471]
+            - cell [ref=e4476]:
+              - img [ref=e4478]
+            - cell [ref=e4503]:
+              - img [ref=e4505]:
+                - link [ref=e4508] [cursor=pointer]:
+                  - /url: "#"
+          - row "mass" [ref=e4517]:
+            - cell "mass" [ref=e4518]
+            - cell [ref=e4519]:
+              - img [ref=e4521]
+            - cell [ref=e4529]:
+              - img [ref=e4531]
+            - cell [ref=e4557]:
+              - img [ref=e4559]:
+                - link [ref=e4562] [cursor=pointer]:
+                  - /url: "#"
+          - row "electric field" [ref=e4571]:
+            - cell "electric field" [ref=e4572]
+            - cell [ref=e4573]:
+              - img [ref=e4575]
+            - cell [ref=e4597]:
+              - img [ref=e4599]
+            - cell [ref=e4630]:
+              - img [ref=e4632]:
+                - link [ref=e4635] [cursor=pointer]:
+                  - /url: "#"
+          - row "potential" [ref=e4644]:
+            - cell "potential" [ref=e4645]
+            - cell [ref=e4646]:
+              - img [ref=e4648]
+            - cell [ref=e4661]:
+              - img [ref=e4663]
+            - cell [ref=e4676]:
+              - img [ref=e4678]:
+                - link [ref=e4681] [cursor=pointer]:
+                  - /url: "#"
+          - row "dipole moment" [ref=e4690]:
+            - cell "dipole moment" [ref=e4691]
+            - cell [ref=e4692]:
+              - img [ref=e4694]
+            - cell [ref=e4704]:
+              - img [ref=e4706]
+            - cell [ref=e4733]:
+              - img [ref=e4735]:
+                - link [ref=e4738] [cursor=pointer]:
+                  - /url: "#"
+          - row "magnetic flux density" [ref=e4747]:
+            - cell "magnetic flux density" [ref=e4748]
+            - cell [ref=e4749]:
+              - img [ref=e4751]
+            - cell [ref=e4772]:
+              - img [ref=e4774]
+            - cell [ref=e4796]:
+              - img [ref=e4798]:
+                - link [ref=e4801] [cursor=pointer]:
+                  - /url: "#"
+          - row "frequency" [ref=e4810]:
+            - cell "frequency" [ref=e4811]
+            - cell [ref=e4812]:
+              - img [ref=e4814]
+            - cell [ref=e4827]:
+              - img [ref=e4829]
+            - cell [ref=e4853]:
+              - img [ref=e4855]:
+                - link [ref=e4858] [cursor=pointer]:
+                  - /url: "#"
+      - blockquote [ref=e4867]:
+        - paragraph [ref=e4868]:
+          - strong [ref=e4869]: Cross-references.
+          - text: Atomic units are used in
+          - strong [ref=e4870]: every
+          - text: chapter of the DFT notes; see
+          - link "Chapter 00 §”Notation”" [ref=e4871] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-00/
+          - text: for the conventions and
+          - link "notation glossary §13.1" [ref=e4872] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+          - text: for the formal statement. When a chapter
+          - emphasis [ref=e4873]: deviates
+          - text: from atomic units (e.g. SI units for a spectroscopic rate, or natural units
+          - img [ref=e4875]
+          - text: for a relativistic digression), the deviation is announced at the top of the chapter.
+      - separator [ref=e4888]
+      - heading "4. Energy conversions" [level=2] [ref=e4889]
+      - paragraph [ref=e4890]:
+        - text: The energy unit of atomic units (
+        - img [ref=e4892]
+        - text: ) is convenient for the
+        - emphasis [ref=e4910]: "electroni`c"
+        - text: ’ degrees of freedom but is cumbersome for chemists (kcal/mol), spectroscopists (cm⁻¹), and thermal measurements (K). All values below are derived from the 2019 CODATA values of
+        - img [ref=e4912]
+        - text: ","
+        - img [ref=e4921]
+        - text: ","
+        - img [ref=e4927]
+        - text: ","
+        - img [ref=e4936]
+        - text: ","
+        - img [ref=e4945]
+        - text: and the definition
+        - img [ref=e4951]
+        - text: .
+      - heading "4.1 The Hartree as the master unit" [level=3] [ref=e4979]
+      - paragraph [ref=e4980]:
+        - text: The conversion factors are tabulated as
+        - strong [ref=e4981]: row unit → column unit
+        - text: ", with the"
+        - emphasis [ref=e4982]: Hartree
+        - text: as the common reference. To use the table, multiply the entry by the source quantity.
+      - table [ref=e4983]:
+        - rowgroup [ref=e4984]:
+          - row "Unit In Hartree In eV In kJ/mol In kcal/mol In cm⁻¹ In K ( )" [ref=e4985]:
+            - columnheader "Unit" [ref=e4986]
+            - columnheader "In Hartree" [ref=e4987]
+            - columnheader "In eV" [ref=e4988]
+            - columnheader "In kJ/mol" [ref=e4989]
+            - columnheader "In kcal/mol" [ref=e4990]
+            - columnheader "In cm⁻¹" [ref=e4991]
+            - columnheader "In K ( )" [ref=e4992]:
+              - text: In K (
+              - img [ref=e4994]
+              - text: )
+        - rowgroup [ref=e5004]:
+          - row "1 Hartree 1 27.2114 2625.50 627.509 219474.6 315775.1" [ref=e5005]:
+            - cell "1 Hartree" [ref=e5006]:
+              - strong [ref=e5007]: 1 Hartree
+            - cell "1" [ref=e5008]
+            - cell "27.2114" [ref=e5009]
+            - cell "2625.50" [ref=e5010]
+            - cell "627.509" [ref=e5011]
+            - cell "219474.6" [ref=e5012]
+            - cell "315775.1" [ref=e5013]
+          - row "1 eV 0.0367493 1 96.4853 23.0605 8065.54 11604.5" [ref=e5014]:
+            - cell "1 eV" [ref=e5015]
+            - cell "0.0367493" [ref=e5016]
+            - cell "1" [ref=e5017]
+            - cell "96.4853" [ref=e5018]
+            - cell "23.0605" [ref=e5019]
+            - cell "8065.54" [ref=e5020]
+            - cell "11604.5" [ref=e5021]
+          - row "1 kJ/mol 0.010364 1 0.239006 83.5935 120.272" [ref=e5022]:
+            - cell "1 kJ/mol" [ref=e5023]
+            - cell [ref=e5024]:
+              - img [ref=e5026]
+            - cell "0.010364" [ref=e5048]
+            - cell "1" [ref=e5049]
+            - cell "0.239006" [ref=e5050]
+            - cell "83.5935" [ref=e5051]
+            - cell "120.272" [ref=e5052]
+          - row "1 kcal/mol 0.043364 4.18400 1 349.755 503.217" [ref=e5053]:
+            - cell "1 kcal/mol" [ref=e5054]
+            - cell [ref=e5055]:
+              - img [ref=e5057]
+            - cell "0.043364" [ref=e5079]
+            - cell "4.18400" [ref=e5080]
+            - cell "1" [ref=e5081]
+            - cell "349.755" [ref=e5082]
+            - cell "503.217" [ref=e5083]
+          - row "1 cm⁻¹ 0.0119627 1 1.43878" [ref=e5084]:
+            - cell "1 cm⁻¹" [ref=e5085]
+            - cell [ref=e5086]:
+              - img [ref=e5088]
+            - cell [ref=e5110]:
+              - img [ref=e5112]
+            - cell "0.0119627" [ref=e5134]
+            - cell [ref=e5135]:
+              - img [ref=e5137]
+            - cell "1" [ref=e5159]
+            - cell "1.43878" [ref=e5160]
+          - row "1 K ( ) 0.695039 1" [ref=e5161]:
+            - cell "1 K ( )" [ref=e5162]:
+              - text: 1 K (
+              - img [ref=e5164]
+              - text: )
+            - cell [ref=e5174]:
+              - img [ref=e5176]
+            - cell [ref=e5198]:
+              - img [ref=e5200]
+            - cell [ref=e5222]:
+              - img [ref=e5224]
+            - cell [ref=e5246]:
+              - img [ref=e5248]
+            - cell "0.695039" [ref=e5270]
+            - cell "1" [ref=e5271]
+          - row "1 J" [ref=e5272]:
+            - cell "1 J" [ref=e5273]
+            - cell [ref=e5274]:
+              - img [ref=e5276]
+            - cell [ref=e5297]:
+              - img [ref=e5299]
+            - cell [ref=e5320]:
+              - img [ref=e5322]
+            - cell [ref=e5343]:
+              - img [ref=e5345]
+            - cell [ref=e5366]:
+              - img [ref=e5368]
+            - cell [ref=e5389]:
+              - img [ref=e5391]
+          - row "1 J/mol 0.0835935 0.120272" [ref=e5412]:
+            - cell "1 J/mol" [ref=e5413]
+            - cell [ref=e5414]:
+              - img [ref=e5416]
+            - cell [ref=e5438]:
+              - img [ref=e5440]
+            - cell [ref=e5462]:
+              - img [ref=e5464]
+            - cell [ref=e5486]:
+              - img [ref=e5488]
+            - cell "0.0835935" [ref=e5510]
+            - cell "0.120272" [ref=e5511]
+      - heading "4.2 The Hartree in the other units (explicitly)" [level=3] [ref=e5512]
+      - paragraph [ref=e5513]: "For convenience — these are the row of §4.1 for the Hartree:"
+      - paragraph [ref=e5514]:
+        - img [ref=e5516]
+        - img [ref=e5553]
+        - img [ref=e5601]
+        - img [ref=e5643]
+        - img [ref=e5691]
+        - img [ref=e5738]
+      - paragraph [ref=e5772]:
+        - text: The
+        - strong [ref=e5773]: hydrogen 1s binding energy
+        - img [ref=e5775]
+        - text: is the calibration point for every UV/vis spectrum of an atom.
+      - heading "4.3 The electronvolt as the practical unit" [level=3] [ref=e5841]
+      - paragraph [ref=e5842]:
+        - text: The electronvolt is the most common
+        - emphasis [ref=e5843]: practical
+        - text: "energy unit in atomic, molecular, and solid-state physics — the energy gained by an electron traversing a potential difference of one volt:"
+      - img [ref=e5845]
+      - paragraph [ref=e5903]: "The conversion to atomic units:"
+      - paragraph [ref=e5904]:
+        - img [ref=e5906]
+        - img [ref=e5949]
+        - img [ref=e6000]
+      - paragraph [ref=e6042]:
+        - text: A 1 eV excitation corresponds to a thermal energy of
+        - img [ref=e6044]
+        - text: ", well above"
+        - img [ref=e6062]
+        - text: at room temperature (
+        - img [ref=e6073]
+        - text: ) — the basis of photochemistry.
+      - heading "4.4 The cm⁻¹ as the spectroscopic unit" [level=3] [ref=e6091]
+      - paragraph [ref=e6092]:
+        - text: The wavenumber
+        - img [ref=e6094]
+        - text: in cm⁻¹ is the
+        - emphasis [ref=e6103]: practical
+        - text: unit for vibrational and rotational spectroscopy; the corresponding energy is
+        - img [ref=e6105]
+        - text: ":"
+      - paragraph [ref=e6122]:
+        - img [ref=e6124]
+        - img [ref=e6176]
+        - img [ref=e6230]
+        - img [ref=e6282]
+      - paragraph [ref=e6328]:
+        - text: The CO stretch at
+        - img [ref=e6330]
+        - text: corresponds to
+        - img [ref=e6350]
+        - text: .
+      - heading "4.5 The kelvin (as a thermal energy )" [level=3] [ref=e6378]:
+        - text: 4.5 The kelvin (as a thermal energy
+        - img [ref=e6380]
+        - text: )
+      - paragraph [ref=e6390]:
+        - text: The
+        - strong [ref=e6391]: thermal energy
+        - text: at temperature
+        - img [ref=e6393]
+        - text: is
+        - img [ref=e6399]
+        - text: . At room temperature
+        - img [ref=e6418]
+        - text: ","
+      - img [ref=e6435]
+      - paragraph [ref=e6517]:
+        - text: This is the “thermal scale” that sets the magnitude of finite-temperature smearing in Chapter 07 (§7.6.3) and the temperature dependence of the Fermi–Dirac distribution in
+        - link "math cheatsheet §14.3" [ref=e6518] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+        - text: .
+      - heading "4.6 The joule and the molar energy" [level=3] [ref=e6519]
+      - paragraph [ref=e6520]:
+        - text: The
+        - strong [ref=e6521]: joule
+        - text: is the SI unit of energy, with conversion
+      - img [ref=e6523]
+      - paragraph [ref=e6568]: The two relations that come up in thermochemistry are
+      - paragraph [ref=e6569]:
+        - img [ref=e6571]
+        - img [ref=e6676]
+      - paragraph [ref=e6782]:
+        - text: The factor
+        - img [ref=e6784]
+        - text: is exact in the post-2019 SI. The most common energy-unit confusion in chemistry is between
+        - emphasis [ref=e6813]: per molecule
+        - text: and
+        - emphasis [ref=e6814]: per mole
+        - text: ; the “hartree” is per particle, the “kcal/mol” is per mole.
+      - separator [ref=e6815]
+      - heading "5. Length conversions" [level=2] [ref=e6816]
+      - paragraph [ref=e6817]:
+        - text: Lengths in atomic units (the Bohr radius) are the natural unit for the DFT chapters. The most-used practical units are
+        - strong [ref=e6818]: Ångström
+        - text: (1 Å
+        - img [ref=e6820]
+        - text: m) for chemical bonds and
+        - strong [ref=e6835]: nanometre
+        - text: (1 nm
+        - img [ref=e6837]
+        - text: m) for mesoscopic structures.
+      - heading "5.1 Bohr as the master unit" [level=3] [ref=e6851]
+      - paragraph [ref=e6852]:
+        - text: The atomic unit of length is
+        - img [ref=e6854]
+        - text: Å.
+      - table [ref=e6874]:
+        - rowgroup [ref=e6875]:
+          - row "Unit In Bohr ( ) In metres In Ångström" [ref=e6876]:
+            - columnheader "Unit" [ref=e6877]
+            - columnheader "In Bohr ( )" [ref=e6878]:
+              - text: In Bohr (
+              - img [ref=e6880]
+              - text: )
+            - columnheader "In metres" [ref=e6888]
+            - columnheader "In Ångström" [ref=e6889]
+        - rowgroup [ref=e6890]:
+          - row "1 Bohr ( ) 1 0.529177" [ref=e6891]:
+            - cell "1 Bohr ( )" [ref=e6892]:
+              - strong [ref=e6893]:
+                - text: 1 Bohr (
+                - img [ref=e6895]
+                - text: )
+            - cell "1" [ref=e6903]
+            - cell [ref=e6904]:
+              - img [ref=e6906]
+            - cell "0.529177" [ref=e6929]
+          - row "1 metre (m) 1" [ref=e6930]:
+            - cell "1 metre (m)" [ref=e6931]
+            - cell [ref=e6932]:
+              - img [ref=e6934]
+            - cell "1" [ref=e6955]
+            - cell [ref=e6956]:
+              - img [ref=e6958]
+          - row "1 Ångström (Å) 1.88973 1" [ref=e6969]:
+            - cell "1 Ångström (Å)" [ref=e6970]
+            - cell "1.88973" [ref=e6971]
+            - cell [ref=e6972]:
+              - img [ref=e6974]
+            - cell "1" [ref=e6987]
+          - row "1 nanometre (nm) 18.8973 10" [ref=e6988]:
+            - cell "1 nanometre (nm)" [ref=e6989]
+            - cell "18.8973" [ref=e6990]
+            - cell [ref=e6991]:
+              - img [ref=e6993]
+            - cell "10" [ref=e7005]
+          - row "1 picometre (pm) 0.0188973 0.01" [ref=e7006]:
+            - cell "1 picometre (pm)" [ref=e7007]
+            - cell "0.0188973" [ref=e7008]
+            - cell [ref=e7009]:
+              - img [ref=e7011]
+            - cell "0.01" [ref=e7024]
+      - paragraph [ref=e7025]:
+        - text: The
+        - emphasis [ref=e7026]: exact
+        - text: (to 6 sig fig) conversion factor between metres and Bohr is
+      - img [ref=e7028]
+      - paragraph [ref=e7070]:
+        - text: the inverse of eq.
+        - img [ref=e7072]:
+          - link [ref=e7075] [cursor=pointer]:
+            - /url: "#"
+        - text: . The corresponding Ångström conversion is
+      - img [ref=e7085]:
+        - generic [ref=e7091]: Å
+      - paragraph [ref=e7117]: and the nanometre conversion is
+      - img [ref=e7119]
+      - heading "5.2 Typical length scales (sanity check)" [level=3] [ref=e7151]
+      - paragraph [ref=e7152]:
+        - text: "To check the magnitudes: a C–C single bond in ethane is"
+        - img [ref=e7154]:
+          - generic [ref=e7165]: Å
+        - text: ; a water molecule is
+        - img [ref=e7179]:
+          - generic [ref=e7187]: Å
+        - text: end-to-end
+        - img [ref=e7189]
+        - text: ; a typical unit cell of a metal is
+        - img [ref=e7204]:
+          - generic [ref=e7212]: Å
+        - text: ; a graphene lattice constant is
+        - img [ref=e7225]:
+          - generic [ref=e7236]: Å
+        - text: . The Bohr radius is small compared to chemistry but large compared to nuclear physics (a proton charge radius is
+        - img [ref=e7250]
+        - text: ).
+      - paragraph [ref=e7285]:
+        - text: For photons, the wavelength–energy correspondence
+        - img [ref=e7287]
+        - text: becomes
+        - img [ref=e7304]
+        - text: in eV·nm — the rule-of-thumb every photochemist memorises (200 nm = 6.20 eV, 500 nm = 2.48 eV, 1 µm = 1.24 eV).
+      - separator [ref=e7328]
+      - heading "6. Other common conversions" [level=2] [ref=e7329]
+      - paragraph [ref=e7330]: "A handful of additional unit conversions come up repeatedly in DFT: forces on atoms (in eV/Å or Hartree/Bohr), magnetic fields (in T or a.u. of B), and dipole moments (in Debye or a.u. of dipole). The conversion factors are tabulated below."
+      - heading "6.1 Force" [level=3] [ref=e7331]
+      - paragraph [ref=e7332]:
+        - text: The atomic unit of force is
+        - img [ref=e7334]
+        - text: "(§3.4). The most common practical unit is eV/Å, used by every solid-state code (VASP, Quantum ESPRESSO, CASTEP, …):"
+      - paragraph [ref=e7350]:
+        - img [ref=e7352]:
+          - generic [ref=e7362]: Å
+        - img [ref=e7413]
+      - paragraph [ref=e7472]:
+        - text: A converged SCF force on a light atom in a molecule is
+        - img [ref=e7474]:
+          - generic [ref=e7533]: Å
+        - text: .
+      - heading "6.2 Magnetic flux density" [level=3] [ref=e7554]
+      - paragraph [ref=e7555]:
+        - text: The atomic unit of magnetic flux density is
+        - img [ref=e7557]
+        - text: (§3.11). The most common practical unit is the
+        - strong [ref=e7578]: tesla
+        - text: "(1 T = 1 V·s/m² = 1 kg·s⁻²·A⁻¹):"
+      - img [ref=e7580]
+      - paragraph [ref=e7625]:
+        - text: The inverse is
+        - img [ref=e7627]
+        - text: . A field of 1 T gives an electron-spin Zeeman splitting of
+        - img [ref=e7666]
+        - text: — in the microwave / ESR range, as expected.
+      - heading "6.3 Dipole moment" [level=3] [ref=e7713]
+      - paragraph [ref=e7714]:
+        - text: The atomic unit of dipole moment is
+        - img [ref=e7716]
+        - text: (§3.10). The
+        - strong [ref=e7726]: Debye
+        - text: is the most common practical unit (1 D
+        - img [ref=e7728]
+        - text: "):"
+      - paragraph [ref=e7758]:
+        - img [ref=e7760]
+        - img [ref=e7799]
+      - paragraph [ref=e7830]:
+        - text: "Typical molecular dipoles: HCl"
+        - img [ref=e7832]
+        - text: D, water
+        - img [ref=e7843]
+        - text: D, NaCl
+        - img [ref=e7854]
+        - text: D, CO
+        - img [ref=e7862]
+        - text: D.
+      - heading "6.4 Pressure and stress (for chapter 09 on geometry optimisation)" [level=3] [ref=e7872]
+      - paragraph [ref=e7873]:
+        - text: The DFT chapters (Chapter 04 §4.7.4 on the stress tensor) use
+        - strong [ref=e7874]: GPa
+        - text: as the unit of pressure; the atomic-unit conversion is
+        - img [ref=e7876]
+        - text: . Atmospheric pressure is
+        - img [ref=e7922]
+        - text: GPa; a typical diamond-indenter pressure is
+        - img [ref=e7937]
+        - text: GPa; pressures at the centre of the Earth are
+        - img [ref=e7946]
+        - text: GPa. The conversion
+        - img [ref=e7956]
+        - text: is used in older solid-state papers.
+      - heading "6.5 Energy per unit area (surface energy)" [level=3] [ref=e7975]
+      - paragraph [ref=e7976]:
+        - text: The atomic unit of surface energy is
+        - img [ref=e7978]
+        - text: ", with"
+        - img [ref=e7997]
+        - text: and
+        - img [ref=e8049]:
+          - generic [ref=e8059]: Å
+        - text: ". Typical surface energies: Cu(111)"
+        - img [ref=e8102]
+        - text: ", Al(111)"
+        - img [ref=e8119]
+        - text: ", water/vapour"
+        - img [ref=e8136]
+        - text: .
+      - heading "6.6 Power and intensity (for laser–matter interaction)" [level=3] [ref=e8154]
+      - paragraph [ref=e8155]:
+        - text: For laser–matter interaction (planned Chapter 11), a “strong-field” laser pulse is
+        - img [ref=e8157]
+        - text: ; the Keldysh-parameter boundary between multiphoton and tunnelling ionisation is at
+        - img [ref=e8179]
+        - text: for typical atoms.
+      - separator [ref=e8200]
+      - heading "7. Useful formulae" [level=2] [ref=e8201]
+      - paragraph [ref=e8202]:
+        - text: A small set of derived relations come up over and over across the chapters. They are not the
+        - strong [ref=e8203]: fundamental
+        - text: constants of §2 — they are combinations of those constants that have their own names and that the chapters quote directly.
+      - heading "7.1 The speed of light in atomic units" [level=3] [ref=e8204]
+      - paragraph [ref=e8205]:
+        - text: In atomic units
+        - img [ref=e8207]
+        - text: has the numerical value
+        - img [ref=e8213]
+        - text: ":"
+      - img [ref=e8224]:
+        - img [ref=e8233]
+      - paragraph [ref=e8289]:
+        - text: i.e. 137 atomic units of velocity. The “137” is the famous fine-structure-constant number that appears in every introductory physics course (“the 137 problem”). In Gaussian units (where
+        - img [ref=e8291]
+        - text: is
+        - emphasis [ref=e8307]: not
+        - text: imposed but the Coulomb interaction is
+        - img [ref=e8309]
+        - text: ) the speed of light in atomic units is
+        - img [ref=e8320]
+        - text: as well, but the
+        - emphasis [ref=e8334]: unit of charge
+        - text: differs from the SI definition by a factor of
+        - img [ref=e8336]
+        - text: .
+      - heading "7.2 The fine-structure constant" [level=3] [ref=e8353]
+      - img [ref=e8355]
+      - paragraph [ref=e8436]:
+        - text: Dimensionless; equal to
+        - img [ref=e8438]
+        - text: in Gaussian units. The Hartree energy is
+        - img [ref=e8458]
+        - text: (§2.8), so
+        - emphasis [ref=e8476]: every
+        - text: atomic energy scale is “
+        - img [ref=e8478]
+        - text: ” in character.
+      - heading "7.3 The electron Compton wavelength" [level=3] [ref=e8496]
+      - img [ref=e8498]
+      - paragraph [ref=e8566]:
+        - text: The wavelength of a photon whose energy equals
+        - img [ref=e8568]
+        - text: (up to a factor of
+        - img [ref=e8582]
+        - text: ; the
+        - emphasis [ref=e8589]: "unreduce`d"
+        - text: ’ Compton wavelength is
+        - img [ref=e8591]
+        - text: ). The identity
+        - img [ref=e8637]
+        - text: is the simple algebraic relation between the Compton wavelength and the Bohr radius.
+      - heading "7.4 The classical electron radius" [level=3] [ref=e8658]
+      - img [ref=e8660]
+      - paragraph [ref=e8730]:
+        - text: The radius at which the electrostatic self-energy of a uniformly charged sphere equals
+        - img [ref=e8732]
+        - text: . The Thomson-scattering cross-section is
+        - img [ref=e8746]
+        - text: — the low-energy limit of Compton scattering. In atomic units
+        - img [ref=e8777]
+        - text: .
+      - heading "7.5 The Bohr magneton" [level=3] [ref=e8815]
+      - img [ref=e8817]
+      - paragraph [ref=e8883]:
+        - text: The natural unit of electron magnetic moment. The electron spin moment is
+        - img [ref=e8885]
+        - text: (with
+        - img [ref=e8896]
+        - text: ). The nuclear magneton is
+        - img [ref=e8924]
+        - text: ", about 1/1836 of"
+        - img [ref=e8955]
+        - text: ; used in NMR.
+      - separator [ref=e8963]
+      - heading "8. Source attribution" [level=2] [ref=e8964]
+      - paragraph [ref=e8965]: "The values in this page are taken from:"
+      - list [ref=e8966]:
+        - listitem [ref=e8967]:
+          - strong [ref=e8968]: Tiesinga, E., Mohr, P. J., Newell, D. B. & Taylor, B. N.
+          - text: "(2021). “CODATA recommended values of the fundamental physical constants: 2019.”"
+          - emphasis [ref=e8969]: Reviews of Modern Physics
+          - strong [ref=e8970]: "93"
+          - text: ", 025010. The five defining constants of the 2019 SI redefinition ("
+          - img [ref=e8972]
+          - text: ","
+          - img [ref=e8978]
+          - text: ","
+          - img [ref=e8984]
+          - text: ","
+          - img [ref=e8993]
+          - text: ","
+          - img [ref=e9002]
+          - text: ) are
+          - strong [ref=e9007]: exact by definition
+          - text: ; the rest are the 2019 CODATA recommended values.
+        - listitem [ref=e9008]:
+          - strong [ref=e9009]: Szabo, A. & Ostlund, N. S.
+          - text: (1982/1996).
+          - emphasis [ref=e9010]: "Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory."
+          - text: Dover/McGraw-Hill. The atomic-unit conventions follow this reference.
+        - listitem [ref=e9011]:
+          - strong [ref=e9012]: NIST Reference on Constants, Units, and Uncertainty
+          - text: (
+          - link "physics.nist.gov/cuu" [ref=e9013] [cursor=pointer]:
+            - /url: https://physics.nist.gov/cuu/Constants/
+          - text: ).
+      - heading "8.1 Discrepancies with earlier tables" [level=3] [ref=e9014]
+      - paragraph [ref=e9015]:
+        - text: The 2019 CODATA recommended values of the
+        - emphasis [ref=e9016]: "non-fixe`d"
+        - text: ’ constants differ from the 2014 CODATA values at the level of the 9th–11th significant figure; for the conversions in §4 the change is at the level of 1 part in
+        - img [ref=e9018]
+        - text: and is invisible at the 6-significant-figure precision used here. For example, the 2014 CODATA value of the Hartree energy is
+        - img [ref=e9029]
+        - text: ", whereas the 2019 CODATA value is"
+        - img [ref=e9069]
+        - text: ; the relative change is
+        - img [ref=e9109]
+        - text: .
+      - heading "8.2 What isnotin this page" [level=3] [ref=e9127]:
+        - text: 8.2 What is
+        - emphasis [ref=e9128]: not
+        - text: in this page
+      - paragraph [ref=e9129]:
+        - text: This page is
+        - strong [ref=e9130]: not
+        - text: the source of the
+        - emphasis [ref=e9131]: physical
+        - text: constants used in a DFT calculation — those are the
+        - emphasis [ref=e9132]: input
+        - text: to the code, not the
+        - emphasis [ref=e9133]: output
+        - text: ". Specifically:"
+      - list [ref=e9134]:
+        - listitem [ref=e9135]:
+          - text: The
+          - strong [ref=e9136]: atomic-orbital basis
+          - text: coefficients (Chapter 06 §6.3) are basis-set parameters, not physical constants; see the
+          - link "EMSL basis-set exchange" [ref=e9137] [cursor=pointer]:
+            - /url: https://www.basissetexchange.org/
+          - text: .
+        - listitem [ref=e9138]:
+          - text: The
+          - strong [ref=e9139]: nuclear charges
+          - img [ref=e9141]
+          - text: of the chemical elements are integers, defined by the atomic number.
+        - listitem [ref=e9149]:
+          - text: The
+          - strong [ref=e9150]: Standard Model
+          - text: constants (Fermi constant, CKM angles, …) do not enter DFT and are not listed here.
+        - listitem [ref=e9151]:
+          - text: The
+          - strong [ref=e9152]: isotopic masses
+          - text: are tabulated by the
+          - link "NIST Atomic Spectra Database" [ref=e9153] [cursor=pointer]:
+            - /url: https://www.nist.gov/pml/atomic-spectra-database
+          - text: .
+      - heading "8.3 Recommended reading" [level=3] [ref=e9154]
+      - list [ref=e9155]:
+        - listitem [ref=e9156]:
+          - text: "For a 20-page introduction to the 2019 SI redefinition: Newell, D. B. & Tiesinga, E. (2019),"
+          - emphasis [ref=e9157]: "Metrologi`a"
+          - text: ’
+          - strong [ref=e9158]: "56"
+          - text: ", 022001."
+        - listitem [ref=e9159]:
+          - text: "For the full 2019 CODATA adjustment: Tiesinga et al. (2021),"
+          - emphasis [ref=e9160]: Rev. Mod. Phys.
+          - strong [ref=e9161]: "93"
+          - text: ", 025010 — the primary source of every non-exact value in §2."
+        - listitem [ref=e9162]:
+          - text: "For the historical development of atomic units: Petley, B. W. (1988),"
+          - emphasis [ref=e9163]: The Fundamental Physical Constants and the Frontier of Measurement
+          - text: ", Adam Hilger."
+      - blockquote [ref=e9164]:
+        - paragraph [ref=e9165]:
+          - strong [ref=e9166]: Disclaimer.
+          - text: This page is a
+          - emphasis [ref=e9167]: reference
+          - text: ", not a primary source. Cite the original CODATA adjustment, not this page, for any value used in a publication. If you need more digits, go to the 2019 CODATA adjustment directly."
+      - separator [ref=e9168]
+      - heading "Where to look for what you need" [level=2] [ref=e9169]
+      - paragraph [ref=e9170]:
+        - text: This page is the entry point. The things that come up
+        - emphasis [ref=e9171]: alongside
+        - text: "the constants live in:"
+      - list [ref=e9172]:
+        - listitem [ref=e9173]:
+          - strong [ref=e9174]: Atomic-unit conventions
+          - text: —
+          - link "notation glossary §13.1" [ref=e9175] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+          - text: and
+          - link "Chapter 00 §”Notation”" [ref=e9176] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-00/
+          - text: .
+        - listitem [ref=e9177]:
+          - strong [ref=e9178]: Mathematical identities
+          - text: (commutators, Fourier transforms, special functions) —
+          - link "math cheatsheet" [ref=e9179] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/math-cheatsheet/
+          - text: .
+        - listitem [ref=e9180]:
+          - strong [ref=e9181]: Notation of every symbol used in the chapters
+          - text: —
+          - link "notation glossary" [ref=e9182] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/notation-glossary/
+          - text: .
+        - listitem [ref=e9183]:
+          - strong [ref=e9184]: Software (basis sets, codes, plotting libraries)
+          - text: —
+          - link "software cheatsheet" [ref=e9185] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/software-cheatsheet/
+          - text: .
+        - listitem [ref=e9186]:
+          - strong [ref=e9187]: Bibliography (the references for the chapters)
+          - text: —
+          - link "bibliography" [ref=e9188] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/extras/bibliography/
+          - text: .
+  - contentinfo [ref=e9189]:
+    - generic [ref=e9190]:
+      - generic [ref=e9191]:
+        - img [ref=e9192]
+        - generic [ref=e9196]: DFT Notes
+        - paragraph [ref=e9197]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e9198]:
+        - generic [ref=e9199]:
+          - heading "Project" [level=3] [ref=e9200]
+          - list [ref=e9201]:
+            - listitem [ref=e9202]:
+              - link "Chapters map" [ref=e9203] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e9204]:
+              - link "Python codes" [ref=e9205] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e9206]:
+              - link "Contributing" [ref=e9207] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e9208]:
+              - link "Security" [ref=e9209] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e9210]:
+              - link "Design spec" [ref=e9211] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e9212]:
+              - link "GitHub ↗" [ref=e9213] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e9214]:
+          - heading "Built with" [level=3] [ref=e9215]
+          - list [ref=e9216]:
+            - listitem [ref=e9217]:
+              - link "Jekyll" [ref=e9218] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e9219]:
+              - link "MathJax 3" [ref=e9220] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e9221]:
+              - link "Mermaid" [ref=e9222] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e9223]:
+              - link "chenglou/pretext" [ref=e9224] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e9225]:
+              - link "Google Fonts" [ref=e9226] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e9227]:
+          - heading "Legal" [level=3] [ref=e9228]
+          - list [ref=e9229]:
+            - listitem [ref=e9230]:
+              - link "MIT License" [ref=e9231] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e9232]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e9234]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

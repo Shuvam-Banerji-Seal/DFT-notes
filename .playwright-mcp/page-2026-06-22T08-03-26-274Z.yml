@@ -1,0 +1,2326 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Software cheatsheet" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]:
+          - text: The DFT chapters tell you
+          - emphasis [ref=e30]: what
+          - text: the equations are. This page tells you
+          - emphasis [ref=e31]: which program to run
+          - text: when you actually want a number.
+      - paragraph [ref=e32]:
+        - text: The cheatsheet is organised by
+        - strong [ref=e33]: use case
+        - text: ", not by history. Each section opens with a summary table and follows with a short profile of every code in the category: name, license, language, repository, the DFT methods it implements, the basis sets / boundary conditions it supports, the DFT Notes chapters it is most relevant to, and a “when to use” recommendation."
+      - blockquote [ref=e34]:
+        - paragraph [ref=e35]:
+          - strong [ref=e36]: How to read this page.
+          - text: Jump to the section that matches the
+          - emphasis [ref=e37]: boundary condition
+          - text: of your system (molecule vs. solid vs. surface) and its
+          - emphasis [ref=e38]: physics
+          - text: (ground-state DFT vs. TDDFT vs. high-accuracy wavefunction vs. excited-state
+          - img [ref=e40]
+          - text: "/BSE). The chapter cross-references in each profile are the most useful pointers: chapter numbers tell you"
+          - emphasis [ref=e47]: "whic`h"
+          - text: ’ theoretical machinery the code is exposing to you.
+      - separator [ref=e48]
+      - heading "Table of contents" [level=2] [ref=e49]
+      - list [ref=e50]:
+        - listitem [ref=e51]:
+          - link "Molecular / cluster codes (Gaussian basis)" [ref=e52] [cursor=pointer]:
+            - /url: "#1-molecular--cluster-codes-gaussian-basis"
+        - listitem [ref=e53]:
+          - link "Plane-wave / PAW codes" [ref=e54] [cursor=pointer]:
+            - /url: "#2-plane-wave--paw-codes"
+        - listitem [ref=e55]:
+          - link "All-electron codes (full potential)" [ref=e56] [cursor=pointer]:
+            - /url: "#3-all-electron-codes-full-potential"
+        - listitem [ref=e57]:
+          - link "Real-space grid codes" [ref=e58] [cursor=pointer]:
+            - /url: "#4-real-space-grid-codes"
+        - listitem [ref=e59]:
+          - link "Wavelet codes" [ref=e60] [cursor=pointer]:
+            - /url: "#5-wavelet-codes"
+        - listitem [ref=e61]:
+          - link "Coupled-cluster / high-accuracy wavefunction" [ref=e62] [cursor=pointer]:
+            - /url: "#6-coupled-cluster--high-accuracy-wavefunction"
+        - listitem [ref=e63]:
+          - link "Codes for special systems" [ref=e64] [cursor=pointer]:
+            - /url: "#7-codes-for-special-systems"
+        - listitem [ref=e65]:
+          - link "Visualisation" [ref=e66] [cursor=pointer]:
+            - /url: "#8-visualisation"
+        - listitem [ref=e67]:
+          - link "Workflow managers" [ref=e68] [cursor=pointer]:
+            - /url: "#9-workflow-managers"
+      - separator [ref=e69]
+      - heading "1. Molecular / cluster codes (Gaussian basis)" [level=2] [ref=e70]
+      - paragraph [ref=e71]:
+        - text: "For finite systems (molecules, clusters, bio-organic fragments, transition-metal complexes). Common thread: a"
+        - strong [ref=e72]: Gaussian-type orbital (GTO)
+        - text: basis (
+        - link "chapter 06" [ref=e73] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.3–6.6) centred on the atoms, with the Fock or Kohn–Sham matrix built from analytical electron-repulsion integrals (
+        - link "chapter 03" [ref=e74] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-03/
+        - text: §3.6.3).
+      - table [ref=e75]:
+        - rowgroup [ref=e76]:
+          - row "Code License Language Best at" [ref=e77]:
+            - columnheader "Code" [ref=e78]
+            - columnheader "License" [ref=e79]
+            - columnheader "Language" [ref=e80]
+            - columnheader "Best at" [ref=e81]
+        - rowgroup [ref=e82]:
+          - row "PySCF Apache-2.0 Python (C ext) Open-source QC, embedding, method development" [ref=e83]:
+            - cell "PySCF" [ref=e84]
+            - cell "Apache-2.0" [ref=e85]
+            - cell "Python (C ext)" [ref=e86]
+            - cell "Open-source QC, embedding, method development" [ref=e87]
+          - row "Psi4 LGPL-3.0 Python / C++ Open-source thermochemistry, DFT, CC" [ref=e88]:
+            - cell "Psi4" [ref=e89]
+            - cell "LGPL-3.0" [ref=e90]
+            - cell "Python / C++" [ref=e91]
+            - cell "Open-source thermochemistry, DFT, CC" [ref=e92]
+          - row "ORCA Free for academics C++ Main-group, TM spectroscopy, multi-reference" [ref=e93]:
+            - cell "ORCA" [ref=e94]
+            - cell "Free for academics" [ref=e95]
+            - cell "C++" [ref=e96]
+            - cell "Main-group, TM spectroscopy, multi-reference" [ref=e97]
+          - row "Q-Chem Commercial C++ / Fortran High-throughput, large molecules, excited states" [ref=e98]:
+            - cell "Q-Chem" [ref=e99]
+            - cell "Commercial" [ref=e100]
+            - cell "C++ / Fortran" [ref=e101]
+            - cell "High-throughput, large molecules, excited states" [ref=e102]
+          - row "Gaussian Commercial Fortran General-purpose, broad method coverage" [ref=e103]:
+            - cell "Gaussian" [ref=e104]
+            - cell "Commercial" [ref=e105]
+            - cell "Fortran" [ref=e106]
+            - cell "General-purpose, broad method coverage" [ref=e107]
+      - heading "1.1 PySCF" [level=3] [ref=e108]
+      - list [ref=e109]:
+        - listitem [ref=e110]:
+          - strong [ref=e111]: "License:"
+          - text: Apache-2.0.
+          - strong [ref=e112]: "Language:"
+          - text: Python (C kernels).
+          - strong [ref=e113]: "Repo:"
+          - link "https://github.com/pyscf/pyscf" [ref=e114] [cursor=pointer]:
+            - /url: https://github.com/pyscf/pyscf
+        - listitem [ref=e115]:
+          - strong [ref=e116]: "DFT methods:"
+          - text: RKS / UKS / GKS DFT, hybrid and range-separated functionals (
+          - link "chapter 05" [ref=e117] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: §5.4–5.5), collinear and non-collinear spin-DFT, density-fitting DFT, explicit-response TDDFT, real-time TDDFT, DFT+DMFT.
+        - listitem [ref=e118]:
+          - strong [ref=e119]: "Basis sets:"
+          - text: GTOs. Pople, Dunning, Karlsruhe (def2), ANO, even-tempered; user-defined sets.
+        - listitem [ref=e120]:
+          - strong [ref=e121]: "DFT Notes chapters:"
+          - text: 03, 04, 05, 06.
+        - listitem [ref=e122]:
+          - strong [ref=e123]: When to use.
+          - text: The de facto open-source QC code. The right default for
+          - emphasis [ref=e124]: method development
+          - text: ": the entire SCF, ERI contraction, and DIIS loop is in plain"
+          - code [ref=e125]: numpy
+          - text: "-readable Python, and the source compiles in minutes. It is"
+          - emphasis [ref=e126]: not
+          - text: the right default for
+          - emphasis [ref=e127]: production
+          - text: CCSD(T) on a 50-atom organic molecule with a triple-zeta basis — Psi4 or Q-Chem will be 3–10× faster because they ship hand-tuned integral engines (Libint) and more aggressive parallelisation. For TM multi-reference work, use ORCA or PySCF’s CASSCF.
+      - heading "1.2 Psi4" [level=3] [ref=e128]
+      - list [ref=e129]:
+        - listitem [ref=e130]:
+          - strong [ref=e131]: "License:"
+          - text: LGPL-3.0.
+          - strong [ref=e132]: "Language:"
+          - text: Python front end, C++ back end.
+          - strong [ref=e133]: "Repo:"
+          - link "https://github.com/psi4/psi4" [ref=e134] [cursor=pointer]:
+            - /url: https://github.com/psi4/psi4
+        - listitem [ref=e135]:
+          - strong [ref=e136]: "DFT methods:"
+          - text: SCF, DFT (LDA, GGA, hybrid, range-separated), explicit-response TDDFT, ADC(2), EOM-CCSD, MP2, MP3, CC2, CCSD, CCSD(T), SAPT, DFT-SAPT, FCIQMC plugin. Geometry optimisation, harmonic frequencies, IRC, transition states.
+        - listitem [ref=e137]:
+          - strong [ref=e138]: "Basis sets:"
+          - text: GTOs. Pople, Dunning, Karlsruhe, JKFIT / RIFIT auxiliary bases, ccECP effective core potentials.
+        - listitem [ref=e139]:
+          - strong [ref=e140]: "DFT Notes chapters:"
+          - text: 02, 03, 04, 05, 06.
+        - listitem [ref=e141]:
+          - strong [ref=e142]: When to use.
+          - text: The right pick for open-source
+          - emphasis [ref=e143]: production
+          - text: quantum chemistry at small-to-medium scale. The C++ side uses Libint and is fast; the Python front end is pleasant to script. The community is friendly and the documentation is excellent. For TM multi-reference work, reach for ORCA or PySCF.
+      - heading "1.3 ORCA" [level=3] [ref=e144]
+      - list [ref=e145]:
+        - listitem [ref=e146]:
+          - strong [ref=e147]: "License:"
+          - text: Free for academic use; commercial for industry (source-available, not OSI open source).
+          - strong [ref=e148]: "Language:"
+          - text: C++.
+          - strong [ref=e149]: "Repo:"
+          - link "https://orcaforum.kofo.mpg.de/" [ref=e150] [cursor=pointer]:
+            - /url: https://orcaforum.kofo.mpg.de/
+        - listitem [ref=e151]:
+          - strong [ref=e152]: "DFT methods:"
+          - text: "SCF, KS-DFT (LDA, GGA, meta-GGA, hybrid, range-separated, double-hybrid), TDDFT, RIJCOSX, broken-symmetry DFT for antiferromagnets, CASSCF, NEVPT2, MRCI, DLPNO-CCSD(T), CEPA. Strong on spectroscopy: UV/Vis, XAS, EPR, NMR, Mössbauer."
+        - listitem [ref=e153]:
+          - strong [ref=e154]: "Basis sets:"
+          - text: GTOs. def2 family, SARC auxiliary bases for transition metals, Karlsruhe segmented-contracted sets.
+        - listitem [ref=e155]:
+          - strong [ref=e156]: "DFT Notes chapters:"
+          - text: 03, 04, 05, 06.
+        - listitem [ref=e157]:
+          - strong [ref=e158]: When to use.
+          - text: The de facto standard in
+          - emphasis [ref=e159]: "inorganic and organometalli`c"
+          - text: ’ quantum chemistry.
+          - strong [ref=e160]: DLPNO-CCSD(T)
+          - text: makes canonical-accuracy coupled cluster tractable on 100–200-atom systems; the broken-symmetry DFT framework is the workhorse for antiferromagnetic TM clusters (
+          - link "chapter 04" [ref=e161] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.8.5); the spectroscopy modules are unmatched. The main weakness is the closed-source distribution and the steep licence procedure.
+      - heading "1.4 Q-Chem" [level=3] [ref=e162]
+      - list [ref=e163]:
+        - listitem [ref=e164]:
+          - strong [ref=e165]: "License:"
+          - text: Commercial.
+          - strong [ref=e166]: "Language:"
+          - text: C++ / Fortran.
+          - strong [ref=e167]: "Repo:"
+          - link "https://www.q-chem.com/" [ref=e168] [cursor=pointer]:
+            - /url: https://www.q-chem.com/
+        - listitem [ref=e169]:
+          - strong [ref=e170]: "DFT methods:"
+          - text: KS-DFT (LDA, GGA, meta-GGA, hybrid, range-separated, double-hybrid), explicit-response TDDFT, ADC(2), EOM-CCSD, CCSD(T), EOM-CC methods, spin-flip TDDFT, ab-initio MD, fragment-based methods (ALMO, FMO, XPol), constrained DFT, non-equilibrium PCM.
+        - listitem [ref=e171]:
+          - strong [ref=e172]: "Basis sets:"
+          - text: GTOs. Pople, Dunning, Karlsruhe, midbond functions, user-definable.
+        - listitem [ref=e173]:
+          - strong [ref=e174]: "DFT Notes chapters:"
+          - text: 03, 04, 05, 06.
+        - listitem [ref=e175]:
+          - strong [ref=e176]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e177]: high-throughput quantum chemistry
+          - text: "in a commercial setting: pharmaceutical screening, large-molecule excited states (EOM-CCSD is well-developed), spin-flip TDDFT for diradicals. The fragment-based methods (ALMO) are unmatched for large covalently-bonded systems."
+      - heading "1.5 Gaussian" [level=3] [ref=e178]
+      - list [ref=e179]:
+        - listitem [ref=e180]:
+          - strong [ref=e181]: "License:"
+          - text: Commercial.
+          - strong [ref=e182]: "Language:"
+          - text: Fortran.
+          - strong [ref=e183]: "Repo:"
+          - link "https://gaussian.com/" [ref=e184] [cursor=pointer]:
+            - /url: https://gaussian.com/
+        - listitem [ref=e185]:
+          - strong [ref=e186]: "DFT methods:"
+          - text: KS-DFT (LDA, GGA, meta-GGA, hybrid, range-separated, double-hybrid), TDDFT, MP2, MP4, CCSD, CCSD(T), CASSCF, CASPT2, ECP, ONIOM, PCM, SMD. The broadest method coverage in the commercial QC ecosystem, with a 50-year track record.
+        - listitem [ref=e187]:
+          - strong [ref=e188]: "Basis sets:"
+          - text: GTOs. STO-nG, 3-21G, 6-31G family, 6-311G family, cc-pV
+          - emphasis [ref=e189]: X
+          - text: Z, aug-cc-pVXZ, LanL2DZ, SDD, ANO.
+        - listitem [ref=e190]:
+          - strong [ref=e191]: "DFT Notes chapters:"
+          - text: 03, 04, 05, 06.
+        - listitem [ref=e192]:
+          - strong [ref=e193]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e194]: "publication- benchmar`k"
+          - text: ’ organic-chemistry calculations where maximum compatibility with the historical record is wanted (chapter 05 §5.4 explains why B3LYP is the lingua franca). GaussView is unmatched for setting up geometry optimisations, IRCs, and NMR calculations. The Fortran internals are old, parallel scaling is poor past ~32 cores, and the licence model is restrictive. For new
+          - emphasis [ref=e195]: method-development
+          - text: work the open-source codes win; for new
+          - emphasis [ref=e196]: production
+          - text: work in TM chemistry, ORCA wins.
+      - separator [ref=e197]
+      - heading "2. Plane-wave / PAW codes" [level=2] [ref=e198]
+      - paragraph [ref=e199]:
+        - text: For
+        - strong [ref=e200]: periodic solids
+        - text: ": crystals, surfaces, defects, interfaces, liquids (with PBC). The common thread is a"
+        - strong [ref=e201]: plane-wave basis
+        - text: (
+        - link "chapter 06" [ref=e202] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.7,
+        - link "chapter 07" [ref=e203] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: ) with
+        - strong [ref=e204]: Bloch’s theorem
+        - text: for periodicity (
+        - link "chapter 07" [ref=e205] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-07/
+        - text: §7.3) and
+        - strong [ref=e206]: pseudopotentials or PAW
+        - text: to handle the core electrons (
+        - link "chapter 08" [ref=e207] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: ). The plane-wave basis is
+        - emphasis [ref=e208]: position-independent
+        - text: ", which eliminates the Pulay force ("
+        - link "chapter 04" [ref=e209] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.7.3).
+      - table [ref=e210]:
+        - rowgroup [ref=e211]:
+          - row "Code License Language Best at" [ref=e212]:
+            - columnheader "Code" [ref=e213]
+            - columnheader "License" [ref=e214]
+            - columnheader "Language" [ref=e215]
+            - columnheader "Best at" [ref=e216]
+        - rowgroup [ref=e217]:
+          - row "Quantum ESPRESSO GPL Fortran Open-source periodic DFT, phonons, TDDFT" [ref=e218]:
+            - cell "Quantum ESPRESSO" [ref=e219]
+            - cell "GPL" [ref=e220]
+            - cell "Fortran" [ref=e221]
+            - cell "Open-source periodic DFT, phonons, TDDFT" [ref=e222]
+          - row "VASP Commercial Fortran Industry / academic standard for solids" [ref=e223]:
+            - cell "VASP" [ref=e224]
+            - cell "Commercial" [ref=e225]
+            - cell "Fortran" [ref=e226]
+            - cell "Industry / academic standard for solids" [ref=e227]
+          - row "CASTEP Commercial (UK) Fortran UK academic, phonons, NMR, TDDFT" [ref=e228]:
+            - cell "CASTEP" [ref=e229]
+            - cell "Commercial (UK)" [ref=e230]
+            - cell "Fortran" [ref=e231]
+            - cell "UK academic, phonons, NMR, TDDFT" [ref=e232]
+          - row "ABINIT GPL Fortran Open-source, response properties, GW" [ref=e233]:
+            - cell "ABINIT" [ref=e234]
+            - cell "GPL" [ref=e235]
+            - cell "Fortran" [ref=e236]
+            - cell "Open-source, response properties, GW" [ref=e237]
+          - row "CP2K GPL Fortran Mixed Gaussian / plane wave, AIMD, large cells" [ref=e238]:
+            - cell "CP2K" [ref=e239]
+            - cell "GPL" [ref=e240]
+            - cell "Fortran" [ref=e241]
+            - cell "Mixed Gaussian / plane wave, AIMD, large cells" [ref=e242]
+          - row "WIEN2k Commercial (ac.) Fortran Full-potential LAPW (see §3)" [ref=e243]:
+            - cell "WIEN2k" [ref=e244]
+            - cell "Commercial (ac.)" [ref=e245]
+            - cell "Fortran" [ref=e246]
+            - cell "Full-potential LAPW (see §3)" [ref=e247]
+      - heading "2.1 Quantum ESPRESSO" [level=3] [ref=e248]
+      - list [ref=e249]:
+        - listitem [ref=e250]:
+          - strong [ref=e251]: "License:"
+          - text: GPL.
+          - strong [ref=e252]: "Language:"
+          - text: Fortran 2003.
+          - strong [ref=e253]: "Repo:"
+          - link "https://gitlab.com/QEF/q-e" [ref=e254] [cursor=pointer]:
+            - /url: https://gitlab.com/QEF/q-e
+        - listitem [ref=e255]:
+          - strong [ref=e256]: "DFT methods:"
+          - text: KS-DFT (LDA, GGA, meta-GGA, hybrid HSE06, PBE0, exact exchange), spin-polarised and non-collinear DFT, DFT+U(+V), Wannier-function methods (Wannier90), TDDFT in the real-time (
+          - code [ref=e257]: turboTDDFT
+          - text: ) and linear-response (
+          - code [ref=e258]: turboEELS
+          - text: ) flavours,
+          - img [ref=e260]
+          - text: and
+          - img [ref=e274]
+          - text: via ‘Yambo’ and ‘West
+          - code [ref=e281]: ", phonon dispersion and electron-phonon coupling ("
+          - text: EPW
+          - code [ref=e282]: ), NMR chemical shifts (
+          - text: QE-Knopp
+          - code [ref=e283]: ), Hubbard parameters (
+          - text: "HP`), Born–Oppenheimer and Car–Parrinello MD."
+        - listitem [ref=e284]:
+          - strong [ref=e285]: "Basis sets:"
+          - text: Plane waves (kinetic cutoff
+          - img [ref=e287]
+          - text: ), with norm-conserving (Troullier–Martins, ONCV), ultrasoft, or PAW datasets from the
+          - code [ref=e297]: pseudodojo
+          - text: ’ library.
+        - listitem [ref=e298]:
+          - strong [ref=e299]: "DFT Notes chapters:"
+          - text: 04, 05, 06 §6.7, 07, 08.
+        - listitem [ref=e300]:
+          - strong [ref=e301]: When to use.
+          - text: The de facto open-source plane-wave DFT code. The right pick for any
+          - emphasis [ref=e302]: "academi`c"
+          - text: ’ solid-state DFT project that wants to read, modify, and publish the source. The phonons module is the most-used open-source phonon code. The hybrid / GW / TDDFT stack is well-maintained but a step behind VASP in user-friendliness. If you want a method VASP does not have (Wannier interpolation, second-variational spin–orbit,
+          - img [ref=e304]
+          - text: at scale), Quantum ESPRESSO is usually the right pick.
+      - heading "2.2 VASP" [level=3] [ref=e317]
+      - list [ref=e318]:
+        - listitem [ref=e319]:
+          - strong [ref=e320]: "License:"
+          - text: Commercial.
+          - strong [ref=e321]: "Language:"
+          - text: Fortran.
+          - strong [ref=e322]: "Repo:"
+          - link "https://www.vasp.at/" [ref=e323] [cursor=pointer]:
+            - /url: https://www.vasp.at/
+        - listitem [ref=e324]:
+          - strong [ref=e325]: "DFT methods:"
+          - text: KS-DFT (LDA, GGA, meta-GGA, hybrid, PBE0, HSE06, SCAN, r²SCAN, exact exchange), spin-polarised and non-collinear DFT, DFT+U, DFT+DMFT via external interface, electric-field response, dipole corrections, GW and BSE via the
+          - code [ref=e326]: vasp_gw
+          - text: ’ module, MD, NEB, dimer method, finite-difference phonons, ML force-field interface.
+        - listitem [ref=e327]:
+          - strong [ref=e328]: "Basis sets:"
+          - text: Plane waves with
+          - strong [ref=e329]: PAW
+          - text: augmentation (
+          - link "chapter 08" [ref=e330] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: "§8.7, §8.12). The PAW library is the most extensive in the field: a wide range of valence configurations (small-core, large-core,"
+          - img [ref=e332]
+          - text: "- and"
+          - img [ref=e338]
+          - text: "-electron “sv” / “pv” / “d” / “s” variants)."
+        - listitem [ref=e343]:
+          - strong [ref=e344]: "DFT Notes chapters:"
+          - text: 04, 05, 06, 07, 08.
+        - listitem [ref=e345]:
+          - strong [ref=e346]: When to use.
+          - text: The workhorse of
+          - emphasis [ref=e347]: industrial and academic solid-state DFT
+          - text: ". The materials community has converged on it, and the convergence of opinion is itself a reason to use it: every reviewer of a solid-state paper expects to see “VASP” in the methods section. The PAW library is the deepest, the parallel efficiency is the highest, and the documentation is comprehensive. The main weaknesses are the closed-source licence and the cost. For light elements in simple structures, Quantum ESPRESSO produces equivalent results. For strongly-correlated oxides ("
+          - link "chapter 04" [ref=e348] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.5), VASP + DFT+U is the workhorse; for
+          - img [ref=e350]
+          - text: spectroscopy, VASP GW or Yambo on top of VASP is standard.
+      - heading "2.3 CASTEP" [level=3] [ref=e357]
+      - list [ref=e358]:
+        - listitem [ref=e359]:
+          - strong [ref=e360]: "License:"
+          - text: Commercial, but the
+          - strong [ref=e361]: UK academic site licence
+          - text: gives every UK university unlimited use.
+          - strong [ref=e362]: "Language:"
+          - text: Fortran.
+          - strong [ref=e363]: "Repo:"
+          - link "https://www.castep.org/" [ref=e364] [cursor=pointer]:
+            - /url: https://www.castep.org/
+        - listitem [ref=e365]:
+          - strong [ref=e366]: "DFT methods:"
+          - text: KS-DFT (LDA, GGA, meta-GGA, hybrid, exact exchange), spin-polarised DFT, DFT+U, NMR chemical shifts, EELS, phonon dispersion, electron-phonon coupling, TDDFT in the linear-response Casida formulation, ab-initio MD (NVT, NPT, metadynamics via PLUMED), NEB, transition-state search, linear-scaling DFT for large cells (DFPT + TS).
+        - listitem [ref=e367]:
+          - strong [ref=e368]: "Basis sets:"
+          - text: Plane waves with norm-conserving or ultrasoft pseudopotentials. PAW is not native; the on-the-fly-generated “C9” library is well-tested.
+        - listitem [ref=e369]:
+          - strong [ref=e370]: "DFT Notes chapters:"
+          - text: 04, 05, 06, 07, 08.
+        - listitem [ref=e371]:
+          - strong [ref=e372]: When to use.
+          - text: A strong pick for
+          - emphasis [ref=e373]: "UK academi`c"
+          - text: ’ solid-state work where the licence is free; outside the UK, Quantum ESPRESSO is the standard open-source alternative. The NMR chemical-shift and EELS modules are particularly well-developed. The phonon and electron-phonon coupling suite is mature. The user community is smaller than VASP / Quantum ESPRESSO’s.
+      - heading "2.4 ABINIT" [level=3] [ref=e374]
+      - list [ref=e375]:
+        - listitem [ref=e376]:
+          - strong [ref=e377]: "License:"
+          - text: GPL.
+          - strong [ref=e378]: "Language:"
+          - text: Fortran 2003.
+          - strong [ref=e379]: "Repo:"
+          - link "https://github.com/abinit/abinit" [ref=e380] [cursor=pointer]:
+            - /url: https://github.com/abinit/abinit
+        - listitem [ref=e381]:
+          - strong [ref=e382]: "DFT methods:"
+          - text: KS-DFT (LDA, GGA, meta-GGA, hybrid, exact exchange), spin-polarised DFT, DFT+U, linear-response DFPT for phonons, dielectric response, Born effective charges, IR / Raman,
+          - img [ref=e384]
+          - text: (the ‘Optics’ and ‘SIGMA’ modules are the workhorse
+          - img [ref=e398]
+          - text: code for the open-source community), BSE, TDDFT in the Casida and Sternheimer flavours, electron stopping power, electron–phonon coupling, finite electric fields, orbital-free DFT, PAW (Blöchl’s original 1994 algorithm); one of the most mature
+          - emphasis [ref=e405]: response-property
+          - text: suites in the field.
+        - listitem [ref=e406]:
+          - strong [ref=e407]: "Basis sets:"
+          - text: Plane waves. Norm-conserving pseudopotentials (Troullier–Martins, ONCV), PAW datasets from the ABINIT
+          - code [ref=e408]: JTH
+          - text: ’ table.
+        - listitem [ref=e409]:
+          - strong [ref=e410]: "DFT Notes chapters:"
+          - text: 04, 05, 06, 07, 08; also the response-property chapters 10/11 (in preparation).
+        - listitem [ref=e411]:
+          - strong [ref=e412]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e413]: response-property
+          - text: and
+          - emphasis [ref=e414]: many-body perturbation theory
+          - text: work where the open-source path is mandatory. The DFPT implementation is one of two production implementations in the world (the other being Quantum ESPRESSO’s
+          - code [ref=e415]: PHonon
+          - text: ); ABINIT’s response suite is broader. The
+          - img [ref=e417]
+          - text: implementation is the most-used open-source
+          - img [ref=e431]
+          - text: code. ABINIT is
+          - emphasis [ref=e438]: not
+          - text: the right pick for high-throughput materials screening (no comprehensive potential library, no batch interface).
+      - heading "2.5 CP2K" [level=3] [ref=e439]
+      - list [ref=e440]:
+        - listitem [ref=e441]:
+          - strong [ref=e442]: "License:"
+          - text: GPL.
+          - strong [ref=e443]: "Language:"
+          - text: Fortran 2003 (MPI / OpenMP hybrid, GPU via CUDA / HIP).
+          - strong [ref=e444]: "Repo:"
+          - link "https://github.com/cp2k/cp2k" [ref=e445] [cursor=pointer]:
+            - /url: https://github.com/cp2k/cp2k
+        - listitem [ref=e446]:
+          - strong [ref=e447]: "DFT methods:"
+          - text: KS-DFT in the
+          - strong [ref=e448]: mixed Gaussian / plane-wave (GPW)
+          - text: and Gaussian / augmented-plane-wave (GAPW) flavours. LDA, GGA, meta-GGA, hybrid (HFX, PBE0, HSE06 via truncated Coulomb), DFT+U, range-separated hybrids, MP2, RPA, GW, TDDFT, Ehrenfest MD, Born–Oppenheimer MD, metadynamics (PLUMED), NEB, finite-temperature DFT, ML potentials (MTP); one of the
+          - emphasis [ref=e449]: fastest
+          - text: ab-initio MD codes for systems in the 100–10,000-atom range.
+        - listitem [ref=e450]:
+          - strong [ref=e451]: "Basis sets:"
+          - text: Gaussian for the wavefunctions (DZVP, TZV2P, QZV2P, MOLOPT, ccGRB); plane waves for the auxiliary density. GTH pseudopotentials, ONCV, and PAW via the GAPW back end.
+        - listitem [ref=e452]:
+          - strong [ref=e453]: "DFT Notes chapters:"
+          - text: 03, 04, 05, 06 §6.7, 07, 08.
+        - listitem [ref=e454]:
+          - strong [ref=e455]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e456]: ab-initio molecular dynamics of large systems
+          - text: ": water simulations (1,000+ water molecules in a box), solid–liquid interfaces, organic–inorganic interfaces, battery electrolytes, MOFs with diffusing ions. The GPW/GAPW mixed basis is what makes this scale: the plane-wave auxiliary grid is much cheaper than a pure plane-wave code at the same accuracy for inhomogeneous systems. CP2K also ships"
+          - emphasis [ref=e457]: linear-scaling
+          - text: DFT for systems beyond 10,000 atoms where diagonalisation becomes the bottleneck. If you are running solid-state DFT and do not need MD, Quantum ESPRESSO or VASP are better defaults.
+      - heading "2.6 WIEN2k" [level=3] [ref=e458]
+      - paragraph [ref=e459]:
+        - text: See section 3 (all-electron codes). WIEN2k is the most widely-used
+        - strong [ref=e460]: full-potential LAPW
+        - text: code and is listed in this table because of its prominence in solid-state DFT; it is the entry that breaks the “plane-wave + pseudopotential” mould.
+      - separator [ref=e461]
+      - heading "3. All-electron codes (full potential)" [level=2] [ref=e462]
+      - paragraph [ref=e463]:
+        - text: Codes that make
+        - strong [ref=e464]: no pseudopotential approximation
+        - text: "— the core electrons are computed explicitly, on the same footing as the valence. The price is computational cost: the core wavefunctions are sharp and require a very high plane-wave cutoff or an alternative basis (Muffin-tin orbitals in LAPW). The reward is the correct treatment of magnetic core states, hyperfine parameters, NMR contact shifts, Mössbauer isomer shifts, spin–orbit coupling, and"
+        - img [ref=e466]
+        - text: "-electron localisation ("
+        - link "chapter 08" [ref=e471] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: §8.13–8.14).
+      - table [ref=e472]:
+        - rowgroup [ref=e473]:
+          - row "Code License Language Basis Best at" [ref=e474]:
+            - columnheader "Code" [ref=e475]
+            - columnheader "License" [ref=e476]
+            - columnheader "Language" [ref=e477]
+            - columnheader "Basis" [ref=e478]
+            - columnheader "Best at" [ref=e479]
+        - rowgroup [ref=e480]:
+          - row "WIEN2k Commercial (ac.) Fortran APW + LAPW + lo Solids, -electron systems, hyperfine" [ref=e481]:
+            - cell "WIEN2k" [ref=e482]
+            - cell "Commercial (ac.)" [ref=e483]
+            - cell "Fortran" [ref=e484]
+            - cell "APW + LAPW + lo" [ref=e485]
+            - cell "Solids, -electron systems, hyperfine" [ref=e486]:
+              - text: Solids,
+              - img [ref=e488]
+              - text: "-electron systems, hyperfine"
+          - row "Elk GPL Fortran FP-LAPW Open-source all-electron DFT, response" [ref=e493]:
+            - cell "Elk" [ref=e494]
+            - cell "GPL" [ref=e495]
+            - cell "Fortran" [ref=e496]
+            - cell "FP-LAPW" [ref=e497]
+            - cell "Open-source all-electron DFT, response" [ref=e498]
+          - row "FLEUR GPL (BSD-style) Fortran FP-LAPW + lo Open-source, magnetism, MAE, NRIXS" [ref=e499]:
+            - cell "FLEUR" [ref=e500]
+            - cell "GPL (BSD-style)" [ref=e501]
+            - cell "Fortran" [ref=e502]
+            - cell "FP-LAPW + lo" [ref=e503]
+            - cell "Open-source, magnetism, MAE, NRIXS" [ref=e504]
+      - heading "3.1 WIEN2k" [level=3] [ref=e505]
+      - list [ref=e506]:
+        - listitem [ref=e507]:
+          - strong [ref=e508]: "License:"
+          - text: Commercial, free for academic use.
+          - strong [ref=e509]: "Language:"
+          - text: Fortran.
+          - strong [ref=e510]: "Repo:"
+          - link "https://susi.theochem.tuwien.ac.at/" [ref=e511] [cursor=pointer]:
+            - /url: https://susi.theochem.tuwien.ac.at/
+        - listitem [ref=e512]:
+          - strong [ref=e513]: "DFT methods:"
+          - text: Full-potential LAPW + local orbitals (lo) in the WIEN2k / Madsen–Kunesch formulation. LDA, GGA, meta-GGA (SCAN, TB-mBJ), hybrid (PBE0, HSE06 via Yukawa screening), exact exchange, DFT+U, spin-polarised and non-collinear DFT, spin–orbit coupling as a
+          - emphasis [ref=e514]: first-class
+          - text: option, electric-field gradient, NMR chemical shifts and Knight shifts, Mössbauer isomer shifts, EELS, XANES, optical conductivity,
+          - img [ref=e516]
+          - text: and BSE via the
+          - code [ref=e529]: wien2wannier
+          - text: ’ and
+          - code [ref=e530]: exciting
+          - text: ’ interfaces.
+        - listitem [ref=e531]:
+          - strong [ref=e532]: "Basis sets:"
+          - text: APW + LAPW + lo in a
+          - strong [ref=e533]: Muffin-tin + interstitial
+          - text: decomposition. The MT spheres handle the strongly-bound core and valence states; the plane-wave expansion handles the smooth interstitial region. No pseudopotential.
+        - listitem [ref=e534]:
+          - strong [ref=e535]: "DFT Notes chapters:"
+          - text: 04 §4.9 (relativistic KS, spin–orbit), 08 §8.13 (the all-electron analog).
+        - listitem [ref=e536]:
+          - strong [ref=e537]: When to use.
+          - text: The right pick when the physics
+          - emphasis [ref=e538]: forces
+          - text: "full-potential treatment: hyperfine parameters that depend on the core electron density at the nucleus, magnetic anisotropy energies of"
+          - img [ref=e540]
+          - text: "-electron compounds, NMR shifts in heavy-element materials, Mössbauer isomer shifts. The user community is concentrated in the magnetism and actinide communities. The trade-off is pragmatics: the code is harder to use than VASP or Quantum ESPRESSO, the run-time is typically 10–100× longer than PAW for the same system, and the inputs (MT radii, basis-set choice, RKmax) require more care. If you can use PAW and get away with it, use PAW."
+      - heading "3.2 Elk" [level=3] [ref=e545]
+      - list [ref=e546]:
+        - listitem [ref=e547]:
+          - strong [ref=e548]: "License:"
+          - text: GPL.
+          - strong [ref=e549]: "Language:"
+          - text: Fortran 2003.
+          - strong [ref=e550]: "Repo:"
+          - link "https://elk.sourceforge.io/" [ref=e551] [cursor=pointer]:
+            - /url: https://elk.sourceforge.io/
+        - listitem [ref=e552]:
+          - strong [ref=e553]: "DFT methods:"
+          - text: "Full-potential LAPW. LDA, GGA, meta-GGA (SCAN), hybrid (HSE06, PBE0, exact exchange), DFT+U, spin-polarised and non-collinear DFT, spin–orbit coupling as a first-class option, ground state and linear-response DFPT: phonons, dielectric response, Born effective charges, IR / Raman, electron-phonon coupling,"
+          - img [ref=e555]
+          - text: ", BSE."
+        - listitem [ref=e568]:
+          - strong [ref=e569]: "Basis sets:"
+          - text: APW + LAPW + lo; same formal structure as WIEN2k.
+        - listitem [ref=e570]:
+          - strong [ref=e571]: "DFT Notes chapters:"
+          - text: 04, 05, 08.
+        - listitem [ref=e572]:
+          - strong [ref=e573]: When to use.
+          - text: The open-source alternative to WIEN2k. The implementation is faithful to the LAPW formalism and the documentation is thorough. Elk is
+          - emphasis [ref=e574]: slower
+          - text: than WIEN2k for serial runs but supports MPI parallelism and is on par in production. The right pick for open-source, all-electron, full-potential DFT, in particular for response properties at the DFT level.
+      - heading "3.3 FLEUR" [level=3] [ref=e575]
+      - list [ref=e576]:
+        - listitem [ref=e577]:
+          - strong [ref=e578]: "License:"
+          - text: BSD-style (open source).
+          - strong [ref=e579]: "Language:"
+          - text: Fortran 2003.
+          - strong [ref=e580]: "Repo:"
+          - link "https://www.flapw.de/maX-4/" [ref=e581] [cursor=pointer]:
+            - /url: https://www.flapw.de/maX-4/
+        - listitem [ref=e582]:
+          - strong [ref=e583]: "DFT methods:"
+          - text: Full-potential LAPW. LDA, GGA, meta-GGA, hybrid (PBE0, HSE06), exact exchange, DFT+U, spin-polarised and non-collinear DFT, spin–orbit coupling, magnetic anisotropy energy (MAE), NMR contact and dipolar hyperfine fields, resonant inelastic X-ray scattering (NRIXS) via the
+          - emphasis [ref=e584]: Rixs
+          - text: module,
+          - img [ref=e586]
+          - text: "via interface with ‘Spex’ and ‘Yambo`."
+        - listitem [ref=e599]:
+          - strong [ref=e600]: "Basis sets:"
+          - text: APW + LAPW + lo.
+        - listitem [ref=e601]:
+          - strong [ref=e602]: "DFT Notes chapters:"
+          - text: 04, 05, 08.
+        - listitem [ref=e603]:
+          - strong [ref=e604]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e605]: magnetism
+          - text: and
+          - emphasis [ref=e606]: spectroscopy
+          - text: on open-source infrastructure. The MAE workflow is the most-used benchmark for the open-source LAPW community. The RIXS / NRIXS implementation is unique. The user interface is more challenging than VASP’s, and the parallel scaling on large systems is good but not class-leading.
+      - separator [ref=e607]
+      - heading "4. Real-space grid codes" [level=2] [ref=e608]
+      - paragraph [ref=e609]:
+        - text: Codes that discretise
+        - strong [ref=e610]: all of real space
+        - text: (not just the atoms) on a finite-difference, finite-element, or multigrid grid. The basis is
+        - emphasis [ref=e611]: position-independent
+        - text: (no atom-centred functions), so the Pulay force vanishes (
+        - link "chapter 04" [ref=e612] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: §4.7.3) and the representation is exact in the limit of an infinitely-fine grid. Real-space grids are the natural setting for
+        - strong [ref=e613]: time-dependent
+        - text: "problems: the wavefunction can be propagated in time with a leap-frog, Crank– Nicolson, or exponential-midpoint scheme, and there is no wrap-around artefact from periodic images of a localised excitation."
+      - table [ref=e614]:
+        - rowgroup [ref=e615]:
+          - row "Code License Language Best at" [ref=e616]:
+            - columnheader "Code" [ref=e617]
+            - columnheader "License" [ref=e618]
+            - columnheader "Language" [ref=e619]
+            - columnheader "Best at" [ref=e620]
+        - rowgroup [ref=e621]:
+          - row "Octopus GPL Fortran + C TDDFT, atoms in strong fields, large clusters" [ref=e622]:
+            - cell "Octopus" [ref=e623]
+            - cell "GPL" [ref=e624]
+            - cell "Fortran + C" [ref=e625]
+            - cell "TDDFT, atoms in strong fields, large clusters" [ref=e626]
+          - row "GPAW GPL Python + C PAW on a grid, ASE integration, ML hooks" [ref=e627]:
+            - cell "GPAW" [ref=e628]
+            - cell "GPL" [ref=e629]
+            - cell "Python + C" [ref=e630]
+            - cell "PAW on a grid, ASE integration, ML hooks" [ref=e631]
+          - row "SIESTA GPL Fortran NAO basis, linear-scaling DFT, large systems" [ref=e632]:
+            - cell "SIESTA" [ref=e633]
+            - cell "GPL" [ref=e634]
+            - cell "Fortran" [ref=e635]
+            - cell "NAO basis, linear-scaling DFT, large systems" [ref=e636]
+      - heading "4.1 Octopus" [level=3] [ref=e637]
+      - list [ref=e638]:
+        - listitem [ref=e639]:
+          - strong [ref=e640]: "License:"
+          - text: GPL.
+          - strong [ref=e641]: "Language:"
+          - text: Fortran 2003, C for I/O.
+          - strong [ref=e642]: "Repo:"
+          - link "https://gitlab.com/octopus-code/octopus" [ref=e643] [cursor=pointer]:
+            - /url: https://gitlab.com/octopus-code/octopus
+        - listitem [ref=e644]:
+          - strong [ref=e645]: "DFT methods:"
+          - text: Real-space grid KS-DFT (LDA, GGA, meta-GGA, hybrid, exact exchange), real-time TDDFT, Ehrenfest MD, Maxwell + TDDFT coupling for plasmonics and light-matter interaction, magnetic response, multiplet ligand-field theory, density-functional tight-binding. Finite systems in real space with absorbing boundaries; periodic systems via a multi-cell or supercell formulation.
+        - listitem [ref=e646]:
+          - strong [ref=e647]: "Basis sets:"
+          - text: Real-space grid (uniform or adaptive mesh refinement), finite-element basis; optional plane-wave basis for compatibility.
+        - listitem [ref=e648]:
+          - strong [ref=e649]: "DFT Notes chapters:"
+          - text: 04, 05, 06 §6.8, 07 (real-space PBC); the TDDFT chapter 10/11.
+        - listitem [ref=e650]:
+          - strong [ref=e651]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e652]: time-dependent
+          - text: "DFT in real time: laser excitation of molecules, plasmonics, attosecond spectroscopy, atoms in strong laser fields, light–matter coupling beyond the dipole approximation. The user community is concentrated in the"
+          - emphasis [ref=e653]: atomic, molecular, and optical physics
+          - text: (AMO) community. For ground-state solid-state DFT the plane-wave codes (VASP, Quantum ESPRESSO) are faster and more established. Octopus is the right default for “I need to propagate a wavefunction in time on a grid” — there is essentially no other production open-source code for this.
+      - heading "4.2 GPAW" [level=3] [ref=e654]
+      - list [ref=e655]:
+        - listitem [ref=e656]:
+          - strong [ref=e657]: "License:"
+          - text: GPL.
+          - strong [ref=e658]: "Language:"
+          - text: Python (front end) + C / Cython (kernels); ASE (
+          - link "section 9" [ref=e659] [cursor=pointer]:
+            - /url: "#9-workflow-managers"
+          - text: ) is the standard geometry / calculator interface.
+          - strong [ref=e660]: "Repo:"
+          - link "https://gitlab.com/gpaw/gpaw" [ref=e661] [cursor=pointer]:
+            - /url: https://gitlab.com/gpaw/gpaw
+        - listitem [ref=e662]:
+          - strong [ref=e663]: "DFT methods:"
+          - text: PAW (
+          - link "chapter 08" [ref=e664] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: §8.7) on a real-space grid (default), a plane-wave mode (LAPW- equivalent accuracy with plane-wave diagonalisation), and an LCAO mode (atomic-orbital projection of the PAW solution, useful for linear-scaling DFT). LDA, GGA, meta-GGA, hybrid (HSE06, PBE0, exact exchange, range-separated), DFT+U, spin-polarised and non-collinear DFT, real-time TDDFT, linear-response TDDFT (Casida), GW and BSE via external interface, RPA, Delta-SCF, constrained DFT, transition-state search, NEB.
+        - listitem [ref=e665]:
+          - strong [ref=e666]: "Basis sets:"
+          - text: "PAW datasets (the GPAW / ASE PAW dataset library, with the `0.9.x’ series being the production default). Real-space grid (multi-grid for the Poisson solver) or plane waves. LCAO projections in dzp / szp configurations for the LCAO mode."
+        - listitem [ref=e667]:
+          - strong [ref=e668]: "DFT Notes chapters:"
+          - text: 04, 05, 06, 07, 08.
+        - listitem [ref=e669]:
+          - strong [ref=e670]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e671]: PAW-quality
+          - text: calculations with a
+          - emphasis [ref=e672]: Python
+          - text: "interface and ASE integration. It is the most user-friendly of the PAW codes for new methods development: most algorithm changes require no Fortran. The LCAO mode makes GPAW usable for systems with thousands of atoms. The main weakness is raw speed: the same calculation in VASP or Quantum ESPRESSO typically runs 2–5× faster."
+      - heading "4.3 SIESTA" [level=3] [ref=e673]
+      - list [ref=e674]:
+        - listitem [ref=e675]:
+          - strong [ref=e676]: "License:"
+          - text: GPL.
+          - strong [ref=e677]: "Language:"
+          - text: Fortran 2003.
+          - strong [ref=e678]: "Repo:"
+          - link "https://gitlab.com/siesta-project/siesta" [ref=e679] [cursor=pointer]:
+            - /url: https://gitlab.com/siesta-project/siesta
+        - listitem [ref=e680]:
+          - strong [ref=e681]: "DFT methods:"
+          - text: KS-DFT with
+          - strong [ref=e682]: numerical atomic orbitals (NAOs)
+          - text: as the basis (
+          - link "chapter 06" [ref=e683] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: §6.13). LDA, GGA, meta-GGA, hybrid (HSE06, PBE0), spin-polarised DFT, DFT+U, fully-relativistic spin–orbit, real-space grid for the Poisson solver, real-time TDDFT (newer developments), linear-scaling DFT (the “Order-N” mode) for systems with
+          - img [ref=e685]
+          - text: atoms and a finite band gap. Troullier–Martins pseudopotentials in the Kleinman–Bylander form.
+        - listitem [ref=e700]:
+          - strong [ref=e701]: "Basis sets:"
+          - text: "NAOs: radial numerical pseudo-atomic orbitals on a logarithmic radial grid, with multiple-ζ and polarisation variants. The user specifies a"
+          - emphasis [ref=e702]: single
+          - text: energy shift that controls the cutoff radius
+          - img [ref=e704]
+          - text: ; the basis is automatically generated. The result is a
+          - emphasis [ref=e712]: compact
+          - text: "basis: typical production calculations are tractable with"
+          - img [ref=e714]
+          - text: functions per atom (vs.
+          - img [ref=e726]
+          - text: for plane waves).
+        - listitem [ref=e740]:
+          - strong [ref=e741]: "DFT Notes chapters:"
+          - text: 06 §6.13, 07, 08; the linear-scaling chapter 10/11.
+        - listitem [ref=e742]:
+          - strong [ref=e743]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e744]: very large systems
+          - text: (thousands of atoms) where the atom-centred basis is an advantage and a tightly converged energy is not the goal. Widely used for biomolecular systems, polymers, disordered solids, and battery electrode / electrolyte interfaces. The linear-scaling mode is one of the few production linear-scaling DFT codes; it pays off for insulators with a clean band gap. The trade-off is that the
+          - emphasis [ref=e745]: energy
+          - text: convergence is harder to control than in VASP.
+      - separator [ref=e746]
+      - heading "5. Wavelet codes" [level=2] [ref=e747]
+      - paragraph [ref=e748]:
+        - text: Wavelet bases —
+        - strong [ref=e749]: Daubechies wavelets
+        - text: ", in particular — are the next step up from finite-difference real-space grids: they combine the locality of the real-space grid (so the Pulay force is zero) with the systematic improvability of a basis-set expansion ("
+        - link "chapter 06" [ref=e750] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.14). The convergence of the total energy with the wavelet resolution is
+        - emphasis [ref=e751]: exponential
+        - text: ", rather than the polynomial convergence of finite-difference / finite-element methods."
+      - heading "5.1 BigDFT" [level=3] [ref=e752]
+      - list [ref=e753]:
+        - listitem [ref=e754]:
+          - strong [ref=e755]: "License:"
+          - text: GPL.
+          - strong [ref=e756]: "Language:"
+          - text: Fortran 2003 (C kernels).
+          - strong [ref=e757]: "Repo:"
+          - link "https://gitlab.com/l_sim/bigdft-suite" [ref=e758] [cursor=pointer]:
+            - /url: https://gitlab.com/l_sim/bigdft-suite
+        - listitem [ref=e759]:
+          - strong [ref=e760]: "DFT methods:"
+          - text: KS-DFT (LDA, GGA, meta-GGA, hybrid, exact exchange) on a Daubechies-wavelet basis, in both finite systems and PBC. Wavelet-based multigrid Poisson solver, real-time TDDFT (
+          - code [ref=e761]: BigDFT-Turbo
+          - text: ), linear-response TDDFT, constrained DFT, high-lying / Rydberg states via a “C-IC” (continuum in crystal) embedding, fragmentation approach.
+        - listitem [ref=e762]:
+          - strong [ref=e763]: "Basis sets:"
+          - text: "Daubechies wavelets (the original BigDFT-1n) and the newer 2G (second-generation) formulation. Both are systematically improvable: the energy converges exponentially with the wavelet resolution parameter"
+          - code [ref=e764]: hgrids
+          - text: .
+        - listitem [ref=e765]:
+          - strong [ref=e766]: "DFT Notes chapters:"
+          - text: 06 §6.14.
+        - listitem [ref=e767]:
+          - strong [ref=e768]: When to use.
+          - text: The right pick when you want the
+          - emphasis [ref=e769]: guarantees
+          - text: "of a systematically-improvable basis: clean convergence behaviour, no basis-set superposition error in the localised-basis sense, and a Poisson solver that is exact (within the basis) for the whole simulation cell. The community is centred in the French electronic-structure community (the GenCI consortium). For a production run on a moderate-size solid, VASP or Quantum ESPRESSO will be faster and have more turnkey workflows. For"
+          - emphasis [ref=e770]: systematic basis-set convergence studies
+          - text: or
+          - emphasis [ref=e771]: systematically-improvable reference calculations
+          - text: ", BigDFT is the unique open-source choice."
+      - separator [ref=e772]
+      - heading "6. Coupled-cluster / high-accuracy wavefunction" [level=2] [ref=e773]
+      - paragraph [ref=e774]:
+        - text: Codes that implement wavefunction-based
+        - emphasis [ref=e775]: post-HF
+        - text: "methods to high accuracy: MP2, MP3, CCSD, CCSD(T), FCI, EOM-CC, explicitly correlated (F12) methods, multireference methods. The hierarchy is described in"
+        - link "chapter 02" [ref=e776] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: §2.3; DFT is the
+        - emphasis [ref=e777]: "chea`p"
+        - text: ’ alternative, but for small molecules where accuracy is paramount, CCSD(T) in a quadruple-zeta basis is the gold standard (
+        - link "chapter 02" [ref=e778] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-02/
+        - text: §2.4). The “all in Hartree” cost of CCSD(T) is
+        - img [ref=e780]
+        - text: ", so these codes are aimed at small-to-medium molecules."
+      - table [ref=e788]:
+        - rowgroup [ref=e789]:
+          - row "Code License Language Best at" [ref=e790]:
+            - columnheader "Code" [ref=e791]
+            - columnheader "License" [ref=e792]
+            - columnheader "Language" [ref=e793]
+            - columnheader "Best at" [ref=e794]
+        - rowgroup [ref=e795]:
+          - row "MRCC Free Fortran / C High-accuracy CC, F12, arbitrary-order CC" [ref=e796]:
+            - cell "MRCC" [ref=e797]
+            - cell "Free" [ref=e798]
+            - cell "Fortran / C" [ref=e799]
+            - cell "High-accuracy CC, F12, arbitrary-order CC" [ref=e800]
+          - row "CFOUR GPL Fortran / C Open-source CC, EOM-CC, MR-CC" [ref=e801]:
+            - cell "CFOUR" [ref=e802]
+            - cell "GPL" [ref=e803]
+            - cell "Fortran / C" [ref=e804]
+            - cell "Open-source CC, EOM-CC, MR-CC" [ref=e805]
+      - heading "6.1 MRCC" [level=3] [ref=e806]
+      - list [ref=e807]:
+        - listitem [ref=e808]:
+          - strong [ref=e809]: "License:"
+          - text: Free (closed-source but redistributable; no cost for any user).
+          - strong [ref=e810]: "Language:"
+          - text: Fortran / C.
+          - strong [ref=e811]: "Repo:"
+          - link "https://www.mrcc.hu/" [ref=e812] [cursor=pointer]:
+            - /url: https://www.mrcc.hu/
+        - listitem [ref=e813]:
+          - strong [ref=e814]: "Methods:"
+          - text: MP2, MP3, MP4, CCSD, CCSDT, CCSDTQ, CCSD(T), CCSDT(Q), CC(n) (closed-shell CCSD up to CCSDTQPHH), perturbative triples (T) and beyond, explicitly-correlated CC (F12), density-fitted integrals, arbitrary-order CC up to CCSDTQPHH, MR-CC methods (Mk-MRCCSD, BW-MRCCSD). The author is Mihály Kállay.
+        - listitem [ref=e815]:
+          - strong [ref=e816]: "Basis sets:"
+          - text: GTOs. Pople, Dunning, Karlsruhe, custom. Density-fitting auxiliary bases.
+        - listitem [ref=e817]:
+          - strong [ref=e818]: "DFT Notes chapters:"
+          - text: 02, 03.
+        - listitem [ref=e819]:
+          - strong [ref=e820]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e821]: single-point coupled-cluster reference
+          - text: calculations on small molecules. Its principal strength is the
+          - emphasis [ref=e822]: arbitrary- order
+          - text: "CC capability: there is no other production code that routinely reaches CCSDTQPHH, and the F12 implementation is one of the most accurate in the field. The trade-off is that MRCC is a single-point- energy code: geometry optimisations, finite differences, and properties are typically computed by calling MRCC from an external driver (CFOUR, Psi4, or a user script)."
+      - heading "6.2 CFOUR" [level=3] [ref=e823]
+      - list [ref=e824]:
+        - listitem [ref=e825]:
+          - strong [ref=e826]: "License:"
+          - text: GPL.
+          - strong [ref=e827]: "Language:"
+          - text: Fortran / C.
+          - strong [ref=e828]: "Repo:"
+          - link "https://github.com/CFOUR/cfour" [ref=e829] [cursor=pointer]:
+            - /url: https://github.com/CFOUR/cfour
+        - listitem [ref=e830]:
+          - strong [ref=e831]: "Methods:"
+          - text: HF, MP2, MP3, MP4, CCSD, CCSD(T), CCSDT, CC(n), EOM-CCSD (ionised, attached, excited), MR-CC (Mk-MRCCSD, BW-MRCCSD), explicit correlation (F12), analytic first- and second-derivatives (gradients, Hessians) for HF, MP2, CCSD, CCSD(T), EOM-CCSD; geometry optimisation, harmonic frequencies, anharmonic vibrational spectroscopy, vibrational configuration interaction (VCI), equation-of-motion coupled cluster for excited states.
+        - listitem [ref=e832]:
+          - strong [ref=e833]: "Basis sets:"
+          - text: GTOs. Pople, Dunning, Karlsruhe, ANO. Spherical-harmonic and Cartesian conventions.
+        - listitem [ref=e834]:
+          - strong [ref=e835]: "DFT Notes chapters:"
+          - text: 02, 03.
+        - listitem [ref=e836]:
+          - strong [ref=e837]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e838]: high-accuracy wavefunction
+          - text: methods where the open-source path is mandatory. The analytic second-derivatives for CCSD(T) are state-of-the-art and enable
+          - emphasis [ref=e839]: "anharmoni`c"
+          - text: ’ vibrational spectroscopy at the CCSD(T) level. The EOM-CCSD suite is mature. CFOUR is slower than MRCC for single-point energies above CCSD(T), but is the better pick for geometry optimisation, vibrational spectroscopy, and any workflow that needs gradients. The PySCF and Psi4 interfaces to CFOUR give a modern Python front end.
+      - separator [ref=e840]
+      - heading "7. Codes for special systems" [level=2] [ref=e841]
+      - paragraph [ref=e842]:
+        - text: Codes that occupy a niche. Either they implement a basis that is unique (CRYSTAL with Gaussians for solids, FHI-aims with NAOs of tier-4 quality, exciting with FP-LAPW for excited states), or they are layered on top of a more general code as a
+        - emphasis [ref=e843]: post-processor
+        - text: (WEST, Yambo for
+        - img [ref=e845]
+        - text: and BSE).
+      - table [ref=e858]:
+        - rowgroup [ref=e859]:
+          - row "Code License Language Best at" [ref=e860]:
+            - columnheader "Code" [ref=e861]
+            - columnheader "License" [ref=e862]
+            - columnheader "Language" [ref=e863]
+            - columnheader "Best at" [ref=e864]
+        - rowgroup [ref=e865]:
+          - row "CRYSTAL Free (ac.) Fortran Gaussian basis for crystals, phonons" [ref=e866]:
+            - cell "CRYSTAL" [ref=e867]
+            - cell "Free (ac.)" [ref=e868]
+            - cell "Fortran" [ref=e869]
+            - cell "Gaussian basis for crystals, phonons" [ref=e870]
+          - row "FHI-aims Academic (ac.) Fortran All-electron NAO, numerical basis, hybrid DFT" [ref=e871]:
+            - cell "FHI-aims" [ref=e872]
+            - cell "Academic (ac.)" [ref=e873]
+            - cell "Fortran" [ref=e874]
+            - cell "All-electron NAO, numerical basis, hybrid DFT" [ref=e875]
+          - row "exciting GPL Fortran FP-LAPW excited states, BSE," [ref=e876]:
+            - cell "exciting" [ref=e877]
+            - cell "GPL" [ref=e878]
+            - cell "Fortran" [ref=e879]
+            - cell "FP-LAPW excited states, BSE," [ref=e880]:
+              - text: FP-LAPW excited states, BSE,
+              - img [ref=e882]
+          - row "WEST GPL Fortran + BSE on top of PW / PAW codes" [ref=e889]:
+            - cell "WEST" [ref=e890]
+            - cell "GPL" [ref=e891]
+            - cell "Fortran" [ref=e892]
+            - cell "+ BSE on top of PW / PAW codes" [ref=e893]:
+              - img [ref=e895]
+              - text: + BSE on top of PW / PAW codes
+          - row "Yambo GPL Fortran + BSE on top of PW / PAW codes" [ref=e908]:
+            - cell "Yambo" [ref=e909]
+            - cell "GPL" [ref=e910]
+            - cell "Fortran" [ref=e911]
+            - cell "+ BSE on top of PW / PAW codes" [ref=e912]:
+              - img [ref=e914]
+              - text: + BSE on top of PW / PAW codes
+      - heading "7.1 CRYSTAL" [level=3] [ref=e927]
+      - list [ref=e928]:
+        - listitem [ref=e929]:
+          - strong [ref=e930]: "License:"
+          - text: Free for academic use; commercial for industry.
+          - strong [ref=e931]: "Language:"
+          - text: Fortran.
+          - strong [ref=e932]: "Repo:"
+          - link "https://www.crystal.unito.it/" [ref=e933] [cursor=pointer]:
+            - /url: https://www.crystal.unito.it/
+        - listitem [ref=e934]:
+          - strong [ref=e935]: "DFT methods:"
+          - text: KS-DFT (LDA, GGA, hybrid B3LYP, PBE0, range-separated), spin-polarised DFT, HF, MP2, CC, CI. Periodic systems in 1-D, 2-D, 3-D, with full space group symmetry. Phonon dispersion, elastic constants, piezo-electric tensors, NMR chemical shifts, EELS, XAS.
+        - listitem [ref=e936]:
+          - strong [ref=e937]: "Basis sets:"
+          - text: Gaussian basis for solids (the unique selling point). Pople, Dunning, Karlsruhe families; also CRYSTAL’s own polarised-valence sets. “Ghost-atom” approach supports basis-set superposition error (BSSE) studies.
+        - listitem [ref=e938]:
+          - strong [ref=e939]: "DFT Notes chapters:"
+          - text: 04, 05, 06, 07.
+        - listitem [ref=e940]:
+          - strong [ref=e941]: When to use.
+          - text: The right pick when you need a
+          - strong [ref=e942]: Gaussian basis for a crystalline solid
+          - text: ": reduced BSSE, well-defined extrapolation to the complete basis set, easier comparison to molecular calculations using the same basis family. The MP2 and CC implementations for periodic systems are unique. The trade-off is that the plane-wave + PAW codes are faster, more user-friendly, and have larger community for “standard” solid-state DFT; CRYSTAL is the specialist choice."
+      - heading "7.2 FHI-aims" [level=3] [ref=e943]
+      - list [ref=e944]:
+        - listitem [ref=e945]:
+          - strong [ref=e946]: "License:"
+          - text: Free for academic use; per-group licence for industry (source-available; not OSI open source).
+          - strong [ref=e947]: "Language:"
+          - text: Fortran.
+          - strong [ref=e948]: "Repo:"
+          - link "https://fhi-aims.org/" [ref=e949] [cursor=pointer]:
+            - /url: https://fhi-aims.org/
+        - listitem [ref=e950]:
+          - strong [ref=e951]: "DFT methods:"
+          - text: KS-DFT with
+          - strong [ref=e952]: all-electron numerical atom-centred orbital (NAO)
+          - text: basis at “tier” levels (tier 1, 2, 3, 4 — the higher the tier, the more functions). LDA, GGA, meta-GGA, hybrid, range-separated, exact exchange, DFT+U, spin-polarised and non-collinear DFT, real-time TDDFT, linear-response TDDFT, RPA, GW and BSE via interface, RPA correlation,
+          - img [ref=e954]
+          - text: ", dispersion-corrected DFT, ZORA scalar-relativistic and full-relativistic, geometry optimisation, MD, NEB, phonons. Tier-4 bases are essentially all-electron reference-quality."
+        - listitem [ref=e967]:
+          - strong [ref=e968]: "Basis sets:"
+          - text: NAO on a logarithmic radial grid; the user selects a “tier” (a basis-set level); the basis is pre-tabulated for the entire periodic table.
+        - listitem [ref=e969]:
+          - strong [ref=e970]: "DFT Notes chapters:"
+          - text: 04, 05, 06 §6.13, 08.
+        - listitem [ref=e971]:
+          - paragraph [ref=e972]:
+            - strong [ref=e973]: When to use.
+            - text: The right pick when you need
+            - emphasis [ref=e974]: all-electron
+            - text: accuracy on a molecular (or cluster) system without the cost of a full LAPW treatment. The tier-4 basis is the most accurate practical all-electron basis in the molecular regime; the GW and RPA implementations are the gold standard for molecular
+            - img [ref=e976]
+            - text: "benchmarks. The community is centred in the FHI Berlin and surrounding groups. The trade-off is the licence and the smaller user community relative to ORCA / Psi4. ### 7.3 exciting"
+        - listitem [ref=e989]:
+          - strong [ref=e990]: "License:"
+          - text: GPL.
+          - strong [ref=e991]: "Language:"
+          - text: Fortran.
+          - strong [ref=e992]: "Repo:"
+          - link "https://exciting-code.org/" [ref=e993] [cursor=pointer]:
+            - /url: https://exciting-code.org/
+        - listitem [ref=e994]:
+          - strong [ref=e995]: "DFT methods:"
+          - text: Full-potential LAPW (LDA, GGA, meta-GGA, hybrid, DFT+U, spin–orbit),
+          - emphasis [ref=e996]: linear-response TDDFT
+          - text: in the Bethe–Salpeter equation (BSE) formulation,
+          - img [ref=e998]
+          - text: ", phonon dispersion, electron-phonon coupling, optical absorption, XAS, EELS, magneto-optical Kerr effect."
+        - listitem [ref=e1011]:
+          - strong [ref=e1012]: "Basis sets:"
+          - text: APW + LAPW + lo; same as Elk / WIEN2k.
+        - listitem [ref=e1013]:
+          - strong [ref=e1014]: "DFT Notes chapters:"
+          - text: 04, 05, 07, 08; the excited-state chapter 10/11.
+        - listitem [ref=e1015]:
+          - strong [ref=e1016]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e1017]: excited-state solids
+          - text: with full-potential LAPW accuracy. The BSE implementation is among the best in the open-source LAPW community. The user community is smaller than Elk’s or WIEN2k’s, but the spectroscopic workflows (optical, XAS, EELS) are well-developed.
+      - heading "7.4 WEST" [level=3] [ref=e1018]
+      - list [ref=e1019]:
+        - listitem [ref=e1020]:
+          - strong [ref=e1021]: "License:"
+          - text: GPL.
+          - strong [ref=e1022]: "Language:"
+          - text: Fortran.
+          - strong [ref=e1023]: "Repo:"
+          - link "https://west-code.org/" [ref=e1024] [cursor=pointer]:
+            - /url: https://west-code.org/
+        - listitem [ref=e1025]:
+          - strong [ref=e1026]: "DFT methods:"
+          - text: "Many-body perturbation theory on top of KS-DFT ground state:"
+          - img [ref=e1028]
+          - text: ","
+          - img [ref=e1042]
+          - text: (partially self-consistent
+          - img [ref=e1050]
+          - text: ","
+          - img [ref=e1062]
+          - text: ), BSE. Reads the converged ground state from Quantum ESPRESSO, CP2K, or SIESTA. Large-scale parallelism (MPI + OpenMP + GPU). Stochastic approaches for ultra-large systems.
+        - listitem [ref=e1073]:
+          - strong [ref=e1074]: "Basis sets:"
+          - text: Inherits from the host code. Plane waves (Quantum ESPRESSO, CP2K GPW), NAOs (SIESTA).
+        - listitem [ref=e1075]:
+          - strong [ref=e1076]: "DFT Notes chapters:"
+          - text: 04 (response formalism), 05, 07, 10/11 (response properties).
+        - listitem [ref=e1077]:
+          - strong [ref=e1078]: When to use.
+          - text: The right pick for
+          - img [ref=e1080]
+          - text: and BSE on systems too large for VASP GW to handle. The stochastic
+          - img [ref=e1094]
+          - text: implementation makes the method scale to thousands of atoms; the deterministic
+          - img [ref=e1102]
+          - text: is the most-used open-source production
+          - img [ref=e1116]
+          - text: in the plane-wave community after Yambo. The downside is WEST’s tighter coupling to Quantum ESPRESSO and a smaller user community than Yambo.
+      - heading "7.5 Yambo" [level=3] [ref=e1123]
+      - list [ref=e1124]:
+        - listitem [ref=e1125]:
+          - strong [ref=e1126]: "License:"
+          - text: GPL.
+          - strong [ref=e1127]: "Language:"
+          - text: Fortran 2003.
+          - strong [ref=e1128]: "Repo:"
+          - link "https://www.yambo-code.org/" [ref=e1129] [cursor=pointer]:
+            - /url: https://www.yambo-code.org/
+        - listitem [ref=e1130]:
+          - strong [ref=e1131]: "DFT methods:"
+          - text: "Many-body perturbation theory:"
+          - img [ref=e1133]
+          - text: ","
+          - img [ref=e1147]
+          - text: ","
+          - img [ref=e1158]
+          - text: ", BSE, time-dependent BSE, dielectric response, EELS,"
+          - img [ref=e1170]
+          - text: in the “full-frequency” and plasmon-pole approximations, parallel over bands, k-points, and frequency.
+        - listitem [ref=e1177]:
+          - strong [ref=e1178]: "Basis sets:"
+          - text: Reads ground-state data from Quantum ESPRESSO, VASP, ABINIT, SIESTA, and others. Uses the host code’s basis (plane waves, PAW, etc.) for the KS orbitals, then constructs the
+          - img [ref=e1180]
+          - text: self-energy and BSE kernel in the host basis.
+        - listitem [ref=e1187]:
+          - strong [ref=e1188]: "DFT Notes chapters:"
+          - text: 04 (response), 05, 07, 10/11 (response and excited states).
+        - listitem [ref=e1189]:
+          - strong [ref=e1190]: When to use.
+          - text: The right pick for
+          - img [ref=e1192]
+          - text: and BSE on top of an existing KS-DFT calculation. It is
+          - emphasis [ref=e1205]: the
+          - text: de facto open-source code for these methods, with a large user community and well-developed documentation. The Yambo + Quantum ESPRESSO pipeline is the standard open-source route to a many-body corrected band gap, dielectric function, optical spectrum, or XAS. For very large systems, WEST is the better pick; for molecular
+          - img [ref=e1207]
+          - text: benchmarks, FHI-aims is the better pick.
+      - separator [ref=e1220]
+      - heading "8. Visualisation" [level=2] [ref=e1221]
+      - paragraph [ref=e1222]:
+        - text: Codes for rendering the
+        - strong [ref=e1223]: outputs
+        - text: of electronic- structure calculations. None of these are themselves electronic-structure codes; they read the outputs of the production codes and turn them into pictures. The DFT chapters that
+        - emphasis [ref=e1224]: produce
+        - text: the data are 04 (charge densities, Kohn–Sham orbitals), 05 (spin densities), 06 (basis-set isosurfaces), 07 (band structures, Fermi surfaces), 08 (PAW augmentation densities), and 10/11 (response properties, optical absorption).
+      - table [ref=e1225]:
+        - rowgroup [ref=e1226]:
+          - row "Code License Language Best at" [ref=e1227]:
+            - columnheader "Code" [ref=e1228]
+            - columnheader "License" [ref=e1229]
+            - columnheader "Language" [ref=e1230]
+            - columnheader "Best at" [ref=e1231]
+        - rowgroup [ref=e1232]:
+          - row "VESTA Freeware C Crystal structures, isosurfaces, charge" [ref=e1233]:
+            - cell "VESTA" [ref=e1234]
+            - cell "Freeware" [ref=e1235]
+            - cell "C" [ref=e1236]
+            - cell "Crystal structures, isosurfaces, charge" [ref=e1237]
+          - row "OVITO Commercial C++ / Python Molecular-dynamics visualisation" [ref=e1238]:
+            - cell "OVITO" [ref=e1239]
+            - cell "Commercial" [ref=e1240]
+            - cell "C++ / Python" [ref=e1241]
+            - cell "Molecular-dynamics visualisation" [ref=e1242]
+          - row "ParaView BSD C++ / Python General 3-D scientific visualisation" [ref=e1243]:
+            - cell "ParaView" [ref=e1244]
+            - cell "BSD" [ref=e1245]
+            - cell "C++ / Python" [ref=e1246]
+            - cell "General 3-D scientific visualisation" [ref=e1247]
+          - row "XCrySDen GPL C / Tcl/Tk Band structures, Fermi surfaces" [ref=e1248]:
+            - cell "XCrySDen" [ref=e1249]
+            - cell "GPL" [ref=e1250]
+            - cell "C / Tcl/Tk" [ref=e1251]
+            - cell "Band structures, Fermi surfaces" [ref=e1252]
+      - heading "8.1 VESTA" [level=3] [ref=e1253]
+      - list [ref=e1254]:
+        - listitem [ref=e1255]:
+          - strong [ref=e1256]: "License:"
+          - text: Freeware (no cost, source-closed).
+          - strong [ref=e1257]: "Language:"
+          - text: C.
+          - strong [ref=e1258]: "Repo:"
+          - link "https://jp-minerals.org/vesta/en/" [ref=e1259] [cursor=pointer]:
+            - /url: https://jp-minerals.org/vesta/en/
+        - listitem [ref=e1260]:
+          - strong [ref=e1261]: "Reads:"
+          - text: CIF, VASP POSCAR / CHGCAR / WAVECAR / LOCPOT, Gaussian cube, XCrySDen structure (XSF), PDB, Quantum ESPRESSO input / output, ABINIT input / output, SIESTA.
+        - listitem [ref=e1262]:
+          - strong [ref=e1263]: When to use.
+          - text: The right default for
+          - emphasis [ref=e1264]: crystal-structure and isosurface
+          - text: "visualisation: lattice, atoms, bonds, charge density isosurfaces, spin-density isosurfaces, ELF, structure comparison, polyhedral rendering. The bond-rendering and polyhedral drawing are the most developed in any open-source or freeware tool. Limitations: no animation, no MD visualisation, no large-scale 3-D scene handling."
+      - heading "8.2 OVITO" [level=3] [ref=e1265]
+      - list [ref=e1266]:
+        - listitem [ref=e1267]:
+          - strong [ref=e1268]: "License:"
+          - text: Commercial; academic licence free of charge; open-source Python API.
+          - strong [ref=e1269]: "Language:"
+          - text: C++ / Python.
+          - strong [ref=e1270]: "Repo:"
+          - link "https://www.ovito.org/" [ref=e1271] [cursor=pointer]:
+            - /url: https://www.ovito.org/
+        - listitem [ref=e1272]:
+          - strong [ref=e1273]: "Reads:"
+          - text: LAMMPS dump, XDATCAR (VASP), GROMACS, CIF, POSCAR, custom formats.
+        - listitem [ref=e1274]:
+          - strong [ref=e1275]: When to use.
+          - text: The right default for
+          - emphasis [ref=e1276]: molecular- dynamics visualisation
+          - text: ": trajectories, defects, dislocation analysis, CNA / DXA / Wigner–Seitz analysis, bond-orientational order parameters. The Python scripting layer is the most powerful of any visualisation tool."
+      - heading "8.3 ParaView" [level=3] [ref=e1277]
+      - list [ref=e1278]:
+        - listitem [ref=e1279]:
+          - strong [ref=e1280]: "License:"
+          - text: BSD.
+          - strong [ref=e1281]: "Language:"
+          - text: C++ / Python.
+          - strong [ref=e1282]: "Repo:"
+          - link "https://www.paraview.org/" [ref=e1283] [cursor=pointer]:
+            - /url: https://www.paraview.org/
+        - listitem [ref=e1284]:
+          - strong [ref=e1285]: "Reads:"
+          - text: VTK, NetCDF, Exodus II, raw arrays, custom readers; VASP data via
+          - emphasis [ref=e1286]: ParaView Catalyst
+          - text: and PVGeo plug-ins.
+        - listitem [ref=e1287]:
+          - strong [ref=e1288]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e1289]: general 3-D scientific visualisation at scale
+          - text: ": finite-element meshes, fluid flow, large spatiotemporal fields. The “client–server” model distributes rendering to a remote cluster. For DFT-specific visualisation (crystal structures, isosurfaces, band structures), VESTA and XCrySDen are more direct."
+      - heading "8.4 XCrySDen" [level=3] [ref=e1290]
+      - list [ref=e1291]:
+        - listitem [ref=e1292]:
+          - strong [ref=e1293]: "License:"
+          - text: GPL.
+          - strong [ref=e1294]: "Language:"
+          - text: C / Tcl/Tk.
+          - strong [ref=e1295]: "Repo:"
+          - link "http://www.xcrysden.org/" [ref=e1296] [cursor=pointer]:
+            - /url: http://www.xcrysden.org/
+        - listitem [ref=e1297]:
+          - strong [ref=e1298]: "Reads:"
+          - text: XSF, SIESTA output, Quantum ESPRESSO output, VASP, FHI-aims.
+        - listitem [ref=e1299]:
+          - strong [ref=e1300]: When to use.
+          - text: The right pick for
+          - emphasis [ref=e1301]: band-structure and Fermi-surface
+          - text: visualisation in the solid-state community. The Brillouin-zone rendering and the k-path generator are the most-used in the plane-wave DFT community. The “Fermi surface” mode (with a 3-D Brillouin-zone integration) is the unique feature.
+      - separator [ref=e1302]
+      - heading "9. Workflow managers" [level=2] [ref=e1303]
+      - paragraph [ref=e1304]:
+        - text: Codes for
+        - emphasis [ref=e1305]: organising
+        - text: electronic-structure calculations. A workflow manager accepts a high-level specification (“compute the band structure of MoS₂, then the phonons, then the GW correction”) and turns it into a sequence of job submissions, with dependency tracking, error recovery, and provenance. Workflow managers are not electronic-structure codes; they sit
+        - emphasis [ref=e1306]: "on top o`f"
+        - text: ’ the production codes from sections 1–7. | Code | License | Language | Best at | |:———-|:———|:———–|:————————————————-| | ASE | LGPL | Python | Lightweight scripting, structure handling, IO | | AiiDA | MIT | Python | Workflow + provenance, sharing, materials cloud | | Fireworks | BSD | Python | Lightweight workflow + database | | atomate | MIT | Python | Pre-built workflows (MP-style) for VASP, Q-Chem |
+      - heading "9.1 ASE (Atomic Simulation Environment)" [level=3] [ref=e1307]
+      - list [ref=e1308]:
+        - listitem [ref=e1309]:
+          - strong [ref=e1310]: "License:"
+          - text: LGPL.
+          - strong [ref=e1311]: "Language:"
+          - text: Python.
+          - strong [ref=e1312]: "Repo:"
+          - link "https://gitlab.com/ase/ase" [ref=e1313] [cursor=pointer]:
+            - /url: https://gitlab.com/ase/ase
+        - listitem [ref=e1314]:
+          - strong [ref=e1315]: "Capabilities:"
+          - text: Atom / geometry handling, file I/O for the major codes (VASP, Quantum ESPRESSO, CASTEP, ABINIT, GPAW, SIESTA, ORCA, FHI-aims, …), high-level “calculator” interface that lets the user swap codes by changing one line, structure optimisation, NEB, molecular dynamics, phonons, equation of state, defects and surfaces module, band structure helper, materials project compatibility.
+        - listitem [ref=e1316]:
+          - strong [ref=e1317]: "DFT Notes chapters:"
+          - text: all of them — ASE is the recommended Python interface for nearly every production code mentioned above.
+        - listitem [ref=e1318]:
+          - strong [ref=e1319]: When to use.
+          - text: The right default for
+          - emphasis [ref=e1320]: Python-driven
+          - text: "electronic-structure scripting. The calculator interface is the most useful pattern: a"
+          - code [ref=e1321]: Vasp
+          - text: ","
+          - code [ref=e1322]: GPAW
+          - text: ","
+          - code [ref=e1323]: Espresso
+          - text: ", or"
+          - code [ref=e1324]: ORCA
+          - text: "’ calculator exposes the same `.get_potential_energy()’ API. ASE does"
+          - emphasis [ref=e1325]: not
+          - text: manage job submission to a cluster (use Fireworks or AiiDA for that) and does
+          - emphasis [ref=e1326]: not
+          - text: track provenance (use AiiDA for that). For a
+          - emphasis [ref=e1327]: campaign
+          - text: (a thousand calculations) the workflow managers below are better.
+      - heading "9.2 AiiDA" [level=3] [ref=e1328]
+      - list [ref=e1329]:
+        - listitem [ref=e1330]:
+          - strong [ref=e1331]: "License:"
+          - text: MIT.
+          - strong [ref=e1332]: "Language:"
+          - text: Python.
+          - strong [ref=e1333]: "Repo:"
+          - link "https://github.com/aiidateam/aiida-core" [ref=e1334] [cursor=pointer]:
+            - /url: https://github.com/aiidateam/aiida-core
+        - listitem [ref=e1335]:
+          - strong [ref=e1336]: "Capabilities:"
+          - text: Workflow management with
+          - strong [ref=e1337]: provenance tracking
+          - text: ": every calculation is stored in a database with its full input, output, and dependencies. Workflows are written in Python, with built-in primitives for common patterns (relax, band structure, phonons). The Materials Cloud ("
+          - link "https://www.materialscloud.org/" [ref=e1338] [cursor=pointer]:
+            - /url: https://www.materialscloud.org/
+          - text: ) is built on AiiDA. Pluggable schedulers (SLURM, PBS, SGE, LSF, etc.) and pluggable codes (Quantum ESPRESSO, VASP, CP2K, CASTEP, SIESTA, Fleur, NWChem).
+        - listitem [ref=e1339]:
+          - strong [ref=e1340]: "DFT Notes chapters:"
+          - text: all of them, but especially the chapter 12 (high-throughput / database — planned) workflow.
+        - listitem [ref=e1341]:
+          - strong [ref=e1342]: When to use.
+          - text: The right default for a
+          - emphasis [ref=e1343]: research group that runs thousands of DFT calculations
+          - text: and needs to
+          - emphasis [ref=e1344]: reproduce
+          - text: "them. The provenance graph is the unique feature: every result is automatically linked to the input geometry, code version, pseudopotential library, and workflow definition. The trade-off is the on-ramp: AiiDA has its own daemon, its own database (PostgreSQL), and its own workflow language. For a single calculation the overhead is too much. For a campaign, the reproducibility gain is worth it."
+      - heading "9.3 Fireworks" [level=3] [ref=e1345]
+      - list [ref=e1346]:
+        - listitem [ref=e1347]:
+          - strong [ref=e1348]: "License:"
+          - text: BSD.
+          - strong [ref=e1349]: "Language:"
+          - text: Python.
+          - strong [ref=e1350]: "Repo:"
+          - link "https://github.com/materialsproject/fireworks" [ref=e1351] [cursor=pointer]:
+            - /url: https://github.com/materialsproject/fireworks
+        - listitem [ref=e1352]:
+          - strong [ref=e1353]: "Capabilities:"
+          - text: Lightweight workflow management with MongoDB-backed job tracking. Each calculation is a
+          - emphasis [ref=e1354]: firework
+          - text: ’, workflows are fireworks + links. The central
+          - code [ref=e1355]: lpad
+          - text: ’ command-line interface manages the queue. Pluggable queue interfaces (SLURM, PBS, SGE, LSF). Provenance tracking through the
+          - emphasis [ref=e1356]: "launchpa`d"
+          - text: ’ — not as deep as AiiDA’s, but lighter.
+        - listitem [ref=e1357]:
+          - strong [ref=e1358]: "DFT Notes chapters:"
+          - text: all of them.
+        - listitem [ref=e1359]:
+          - strong [ref=e1360]: When to use.
+          - text: The right default for
+          - emphasis [ref=e1361]: a research group that needs a queue manager and workflow
+          - text: without the full AiiDA overhead. The
+          - emphasis [ref=e1362]: atomate
+          - text: package (below) is built on top of Fireworks. Use Fireworks if you want the queue management and dependency tracking but do not need the formal provenance graph; use AiiDA if you do.
+      - heading "9.4 atomate" [level=3] [ref=e1363]
+      - list [ref=e1364]:
+        - listitem [ref=e1365]:
+          - strong [ref=e1366]: "License:"
+          - text: MIT.
+          - strong [ref=e1367]: "Language:"
+          - text: Python (built on top of Fireworks, pymatgen, and custodian).
+          - strong [ref=e1368]: "Repo:"
+          - link "https://github.com/materialsproject/atomate" [ref=e1369] [cursor=pointer]:
+            - /url: https://github.com/materialsproject/atomate
+        - listitem [ref=e1370]:
+          - strong [ref=e1371]: "Capabilities:"
+          - text: "Pre-built workflows for the Materials Project style: structural optimisation, static calculation, band structure, density of states, elastic tensor, dielectric constant, piezoelectric tensor, phonon dispersion, NEB, GW / BSE, defect formation energies. Plug-in calculators for VASP (the main target) and Q-Chem. Automatic error handling via"
+          - code [ref=e1372]: custodian
+          - text: ’ (the calculation re-runs with adjusted parameters if a job fails).
+        - listitem [ref=e1373]:
+          - strong [ref=e1374]: "DFT Notes chapters:"
+          - text: all of them.
+        - listitem [ref=e1375]:
+          - strong [ref=e1376]: When to use.
+          - text: The right default for
+          - emphasis [ref=e1377]: “I want a standard Materials-Project-style workflow, and I do not want to write it myself”
+          - text: . The pre-built workflows cover the 80% case; the remaining 20% is built by chaining them or by writing a new
+          - code [ref=e1378]: Firework
+          - text: . The error-correction infrastructure (
+          - code [ref=e1379]: custodian
+          - text: ") is the unique feature: a calculation that converges to the wrong magnetic state, or fails the convergence test, is automatically restarted with adjusted parameters. The cost is the deep coupling to VASP; for non-VASP workflows, AiiDA’s pluggability is more flexible."
+      - separator [ref=e1380]
+      - separator [ref=e1381]
+      - heading "10. Code cheatsheets (input files)" [level=2] [ref=e1382]
+      - blockquote [ref=e1383]:
+        - paragraph [ref=e1384]:
+          - text: Companion to the use-case profiles in §§1–9. The profiles tell you
+          - emphasis [ref=e1385]: which code to reach for
+          - text: ; the cheatsheets below tell you
+          - emphasis [ref=e1386]: what to type into it
+          - text: . Every entry shows a
+          - strong [ref=e1387]: minimal
+          - text: input that produces a sensible result on a trivial system (a hydrogen molecule or a primitive cell), an
+          - strong [ref=e1388]: annotated
+          - text: version of the same input for a slightly harder calculation (a band structure, a spin-polarised system, an MD step), a short list of
+          - emphasis [ref=e1389]: what to tweak for X
+          - text: ", a list of common pitfalls*, and a cross-reference to the chapter where the underlying theory is derived."
+      - paragraph [ref=e1390]:
+        - text: The cheatsheet is
+        - emphasis [ref=e1391]: not
+        - text: a replacement for the manual of any of these codes. It is the
+        - emphasis [ref=e1392]: first thing to look at
+        - text: when starting a new project, before reading the manual. The “what to tweak” lists are the answers to the questions you will ask on the third day of the project; the “common pitfalls” lists are the answers to the questions you will ask on the third week.
+      - heading "Table of contents" [level=3] [ref=e1393]
+      - list [ref=e1394]:
+        - listitem [ref=e1395]:
+          - link "Quantum ESPRESSO" [ref=e1396] [cursor=pointer]:
+            - /url: "#101-quantum-espresso"
+          - text: — Si band structure
+        - listitem [ref=e1397]:
+          - link "VASP" [ref=e1398] [cursor=pointer]:
+            - /url: "#102-vasp"
+          - text: — Si band structure with HSE06
+        - listitem [ref=e1399]:
+          - link "GPAW" [ref=e1400] [cursor=pointer]:
+            - /url: "#103-gpaw"
+          - text: — Si band structure in Python
+        - listitem [ref=e1401]:
+          - link "SIESTA" [ref=e1402] [cursor=pointer]:
+            - /url: "#104-siesta"
+          - text: — Si band structure
+        - listitem [ref=e1403]:
+          - link "CP2K" [ref=e1404] [cursor=pointer]:
+            - /url: "#105-cp2k"
+          - text: — water in a box and NVT MD
+        - listitem [ref=e1405]:
+          - link "FLEUR" [ref=e1406] [cursor=pointer]:
+            - /url: "#106-fleur"
+          - text: — Fe bcc, spin-polarised, with SOC
+      - heading "10.1 Quantum ESPRESSO" [level=3] [ref=e1407]
+      - paragraph [ref=e1408]:
+        - text: Quantum ESPRESSO is a Fortran 2003 plane-wave DFT code (
+        - link "§2.1" [ref=e1409] [cursor=pointer]:
+          - /url: "#21-quantum-espresso"
+        - text: ). The cheatsheet below covers the standard ‘pw.x’ (ground-state) and ‘bands.x’ (post-processing) executables. The input format is
+        - strong [ref=e1410]: name-list Fortran
+        - text: "— every section starts with ‘&NAME’ and ends with ‘/`."
+      - heading "10.1.1 Minimal input — H₂ SCF" [level=4] [ref=e1411]
+      - paragraph [ref=e1412]: "The smallest input that produces a sensible single-point energy on a hydrogen molecule:"
+      - code [ref=e1416]: "&CONTROL calculation = 'scf' ! 'scf' | 'relax' | 'vc-relax' | 'bands' | 'nscf' prefix = 'h2' ! base name for output files outdir = './tmp/' ! scratch directory (must exist) pseudo_dir = './pseudo/' ! directory containing *.UPF pseudopotentials verbosity = 'low' ! 'low' | 'high' / &SYSTEM ibrav = 0 ! 0 = free-format lattice (ATOMIC_POSITIONS below) nat = 2 ntyp = 1 ecutwfc = 30.0 ! plane-wave cutoff for wavefunctions, Ry ecutrho = 240.0 ! charge-density cutoff, Ry ! >= 4*ecutwfc for NC-PP ! >= 8-12 * ecutwfc for USPP / PAW / &ELECTRONS conv_thr = 1.0d-8 ! SCF convergence threshold, Ry / ATOMIC_SPECIES H 1.008 H.upf ! element, atomic mass, pseudopotential file ATOMIC_POSITIONS angstrom H 0.0 0.0 0.0 H 0.0 0.0 0.74 ! bond length 0.74 Å K_POINTS gamma ! Gamma-only: 1 k-point"
+      - paragraph [ref=e1417]: "To run: ‘pw.x < h2.scf.in > h2.scf.out’. The total energy (in Rydberg) is in `h2.scf.out’ after ‘! total energy’."
+      - heading "10.1.2 Annotated example — Si band structure" [level=4] [ref=e1418]
+      - paragraph [ref=e1419]: "A band structure of bulk silicon along the standard Γ–X–W–K–Γ–L path. Three calculations: (i) self-consistent ground state on a uniform Monkhorst–Pack mesh; (ii) non-self-consistent calculation along the k-path using the converged charge density; (iii) post-processing with `bands.x’ to extract the band energies."
+      - paragraph [ref=e1420]:
+        - strong [ref=e1421]: Step 1 — SCF
+        - text: (
+        - code [ref=e1422]: si.scf.in
+        - text: "):"
+      - code [ref=e1426]: "&CONTROL calculation = 'scf' prefix = 'si' outdir = './tmp/' pseudo_dir = './pseudo/' / &SYSTEM ibrav = 0 nat = 2 ntyp = 1 ecutwfc = 40.0 ! converged at 40 Ry for Si.pbe-n-rrkjus_psl.0.1.UPF ecutrho = 320.0 ! 8x ecutwfc for ultrasoft / PAW occupations = 'fixed' ! semiconductor: fixed occupations / &ELECTRONS conv_thr = 1.0d-10 ! tighter than the H2 default / ATOMIC_SPECIES Si 28.086 Si.pbe-n-rrkjus_psl.0.1.UPF ATOMIC_POSITIONS crystal Si 0.00 0.00 0.00 Si 0.25 0.25 0.25 ! diamond structure, fractional CELL_PARAMETERS angstrom 0.00 2.715 2.715 2.715 0.00 2.715 2.715 2.715 0.00 K_POINTS automatic ! Monkhorst-Pack mesh 8 8 8 0 0 0"
+      - paragraph [ref=e1427]:
+        - strong [ref=e1428]: Step 2 — bands
+        - text: (
+        - code [ref=e1429]: si.bands.in
+        - text: "): same as ‘si.scf.in’ but with ‘calculation = ‘bands’"
+        - code [ref=e1430]: ", an added"
+        - text: "nbnd`, and the k-path:"
+      - code [ref=e1434]: "&CONTROL calculation = 'bands' ! only this line differs from scf ... / &SYSTEM ... nbnd = 12 ! >= number of electrons / 2 occupations = 'fixed' / &ELECTRONS conv_thr = 1.0d-10 / ATOMIC_SPECIES Si 28.086 Si.pbe-n-rrkjus_psl.0.1.UPF ATOMIC_POSITIONS crystal Si 0.00 0.00 0.00 Si 0.25 0.25 0.25 CELL_PARAMETERS angstrom 0.00 2.715 2.715 2.715 0.00 2.715 2.715 2.715 0.00 K_POINTS tpiba_b ! high-symmetry path; cartesian, 2*pi/bohr 6 0.0 0.0 0.0 30 ! Gamma 0.5 0.0 0.5 30 ! X 0.5 0.25 0.75 30 ! W 0.375 0.375 0.375 30 ! K 0.0 0.0 0.0 30 ! Gamma 0.5 0.5 0.5 30 ! L"
+      - paragraph [ref=e1435]: "The ‘6’ is the number of segments, the ‘30’ is the number of k-points per segment. Run: ‘pw.x < si.scf.in > si.scf.out && pw.x < si.bands.in > si.bands.out’."
+      - paragraph [ref=e1436]:
+        - strong [ref=e1437]: Step 3 — post-processing
+        - text: (
+        - code [ref=e1438]: si.bands.post.in
+        - text: "): extract band energies:"
+      - code [ref=e1442]: "&BANDS prefix = 'si' outdir = './tmp/' filband = 'si.bands.dat' ! output: k-index, E_1, E_2, ..., E_nbands lsym = .true. ! enforce the symmetries of the path /"
+      - paragraph [ref=e1443]: "Run: ‘bands.x < si.bands.post.in > si.bands.post.out’. The file `si.bands.dat’ has one row per k-point and one column per band."
+      - heading "10.1.3 What to tweak for X" [level=4] [ref=e1444]
+      - list [ref=e1445]:
+        - listitem [ref=e1446]:
+          - strong [ref=e1447]: To converge the total energy to 1 meV/atom
+          - text: ": sweep"
+          - code [ref=e1448]: ecutwfc
+          - text: ’ from 20 to 80 Ry, recompute, and pick the smallest value at which the energy changes by less than 1 meV/atom. With PAW pseudopotentials from the
+          - code [ref=e1449]: pslibrary
+          - text: ", typical converged values are 40–80 Ry."
+        - listitem [ref=e1450]:
+          - strong [ref=e1451]: To converge the band gap to 0.1 eV
+          - text: ": increase"
+          - code [ref=e1452]: ecutwfc
+          - text: ’ (conduction bands converge more slowly), tighten ‘conv_thr’ to ‘1.0d-10
+          - code [ref=e1453]: ", and verify the k-point sampling. For an accurate gap with semilocal functionals, switch to a hybrid ('input_dft = 'HSE'', [chapter 05](/DFT-notes/dft-notes/chapter-05/) §5.5) or to $G_0W_0$ via 'Yambo' / 'West"
+          - text: .
+        - listitem [ref=e1454]:
+          - strong [ref=e1455]: To converge k-point sampling
+          - text: ": sweep the MP mesh from"
+          - img [ref=e1457]
+          - text: to
+          - img [ref=e1471]
+          - text: on a primitive cell, and pick the smallest at which the energy changes by less than 1 meV/atom.
+        - listitem [ref=e1487]:
+          - strong [ref=e1488]: To converge k-point sampling
+          - text: ": sweep the MP mesh from"
+          - img [ref=e1490]
+          - text: to
+          - img [ref=e1504]
+          - text: on a primitive cell, and pick the smallest mesh at which the total energy changes by less than 1 meV/atom.
+        - listitem [ref=e1520]:
+          - strong [ref=e1521]: For metals
+          - text: ": set ‘occupations = ‘smearing’’, use"
+          - code [ref=e1522]: smearing = 'mp'' (Methfessel–Paxton, 2nd order) with
+          - text: degauss = 0.02’ Ry, and increase the k-mesh substantially. Never use
+          - code [ref=e1523]: "'gaussian'' for production — it converges too slowly with mesh density. For very high accuracy, use"
+          - text: ‘fd’’ (Fermi–Dirac) and extrapolate.
+        - listitem [ref=e1524]:
+          - strong [ref=e1525]: For spin-polarised systems
+          - text: ": add `nspin = 2’ to ‘&SYSTEM’ and set ‘starting_magnetization(i)’ for each species. For non-collinear, use ‘noncolin = .true.’."
+        - listitem [ref=e1526]:
+          - strong [ref=e1527]: For geometry optimisation
+          - text: ": use"
+          - code [ref=e1528]: calculation = 'relax'' (ions only) or
+          - text: ‘vc-relax’’ (ions and cell). Set ‘ion_dynamics = ‘bfgs’’ or ‘‘damp’’ (Wentzcovich
+        - listitem [ref=e1529]:
+          - strong [ref=e1530]: For geometry optimisation
+          - text: ": use"
+          - code [ref=e1531]: calculation = 'relax'' (ions only) or
+          - text: ‘vc-relax’’ (ions and cell). Set ‘ion_dynamics = ‘bfgs’’ or ‘‘damp’’ (Wentzcovich damping) for stability on tricky systems.
+      - heading "10.1.4 Common pitfalls" [level=4] [ref=e1532]
+      - list [ref=e1533]:
+        - listitem [ref=e1534]:
+          - strong [ref=e1535]: Mismatched ecutrho
+          - text: ": must be"
+          - img [ref=e1537]
+          - code [ref=e1546]: ecutwfc
+          - text: ’ for norm-conserving and
+          - img [ref=e1548]
+          - text: (often
+          - img [ref=e1558]
+          - text: ) for US/PAW. The error is silent — the SCF converges to a “wrong” total energy that is
+          - emphasis [ref=e1566]: not
+          - text: variational.
+        - listitem [ref=e1567]:
+          - strong [ref=e1568]: Wrong pseudopotential file
+          - text: ":"
+          - code [ref=e1569]: pseudo_dir
+          - text: ’ is relative to the working directory. Mismatched valence configurations (e.g.
+          - img [ref=e1571]
+          - text: for Si when
+          - img [ref=e1589]
+          - text: is needed for excited states) silently produce wrong energies.
+        - listitem [ref=e1613]:
+          - strong [ref=e1614]: occupations = ‘tetrahedron’ on a coarse mesh
+          - text: ": the tetrahedron integrator needs at least"
+          - img [ref=e1616]
+          - text: on a primitive cell. With a coarser mesh, use
+          - code [ref=e1629]: "'fixed'' (semiconductor) or"
+          - text: ‘smearing’’ (metal).
+        - listitem [ref=e1630]:
+          - strong [ref=e1631]: Forgetting prefix consistency between SCF and bands
+          - text: ": the bands run reads the charge from"
+          - code [ref=e1632]: outdir/prefix.save/
+          - text: . If
+          - code [ref=e1633]: prefix
+          - text: ’ differs, the run fails with “file not found” or, worse, reads a different prefix’s charge and gives a wrong answer without erroring.
+        - listitem [ref=e1634]:
+          - strong [ref=e1635]: PAW / USPP family mixing
+          - text: ": the pseudopotentials must be from the"
+          - emphasis [ref=e1636]: same
+          - text: family across elements (e.g. PBE ultrasoft with PBE ultrasoft, not with LDA norm-conserving). Mixing families gives a non-variational answer.
+      - heading "10.1.5 Cross-references" [level=4] [ref=e1637]
+      - list [ref=e1638]:
+        - listitem [ref=e1639]:
+          - text: "Theory:"
+          - link "chapter 06" [ref=e1640] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: §6.7 (plane waves),
+          - link "chapter 07" [ref=e1641] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: §7.3 (Bloch), §7.6 (k-points), §7.11 (tetrahedron).
+        - listitem [ref=e1642]:
+          - text: "Pseudopotentials:"
+          - link "chapter 08" [ref=e1643] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: §8.3 (norm-conserving), §8.6 (ultrasoft), §8.7 (PAW).
+        - listitem [ref=e1644]:
+          - text: "Hybrid functionals:"
+          - link "chapter 05" [ref=e1645] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: §5.5.
+        - listitem [ref=e1646]:
+          - text: "Phonons (`ph.x’ DFPT):"
+          - link "chapter 10" [ref=e1647] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/
+          - text: .
+        - listitem [ref=e1648]:
+          - text: Yambo + QE pipeline for
+          - img [ref=e1650]
+          - text: "/ BSE:"
+          - link "§7.5" [ref=e1663] [cursor=pointer]:
+            - /url: "#75-yambo"
+          - text: .
+      - separator [ref=e1664]
+      - heading "10.2 VASP" [level=3] [ref=e1665]
+      - paragraph [ref=e1666]:
+        - text: VASP is the Fortran PAW plane-wave code (
+        - link "§2.2" [ref=e1667] [cursor=pointer]:
+          - /url: "#22-vasp"
+        - text: ). The cheatsheet below covers the four input files —
+        - code [ref=e1668]: INCAR
+        - text: ","
+        - code [ref=e1669]: KPOINTS
+        - text: ","
+        - code [ref=e1670]: POSCAR
+        - text: ","
+        - code [ref=e1671]: POTCAR
+        - text: . The “POSCAR” is the structure, the “INCAR” the run-time parameters, the “KPOINTS” the k-point sampling, and the “POTCAR” the PAW pseudopotential concatenation (one entry per species, in POSCAR order).
+      - heading "10.2.1 Minimal input — Si SCF" [level=4] [ref=e1672]
+      - paragraph [ref=e1673]: "The smallest input that produces a sensible single-point energy on bulk silicon:"
+      - code [ref=e1677]: "# INCAR ENCUT = 250 # plane-wave cutoff, eV (typically 1.3 x max ENMAX in POTCAR) EDIFF = 1.0e-5 # SCF convergence, eV ISMEAR = 0 # 0 = Gaussian (semiconductors and insulators) SIGMA = 0.05 # smearing width, eV IBRION = -1 # -1 = no ionic update (static calculation)"
+      - code [ref=e1681]: "# KPOINTS Automatic mesh 0 # 0 = auto: Monkhorst-Pack with explicit offsets Gamma # Gamma-centred (use Monkhorst for non-Gamma-centred) 8 8 8 # mesh 0. 0. 0. # shift"
+      - code [ref=e1685]: "# POSCAR Si 5.43 # cubic lattice constant, A 1.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0 Si 2 # number of atoms Cartesian 0.00 0.00 0.00 1.3575 1.3575 1.3575 # 1/4 of the cube diagonal"
+      - code [ref=e1689]: "# POTCAR -- built by concatenating per-element POTCAR files from # the VASP PAW library, in the order the species appear in POSCAR: $ cat $VASP_PP_PATH/potcar/Si/PBE/Si/POTCAR > POTCAR"
+      - paragraph [ref=e1690]:
+        - text: "To run: ‘mpirun -n 8 vasp_std’. The total energy (in eV) is on the last “free energy” line of"
+        - code [ref=e1691]: OUTCAR
+        - text: .
+      - heading "10.2.2 Annotated example — Si band structure with HSE06" [level=4] [ref=e1692]
+      - paragraph [ref=e1693]:
+        - text: A band structure of bulk silicon using the HSE06 range-separated hybrid (
+        - link "chapter 05" [ref=e1694] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-05/
+        - text: "§5.5). Three steps: (i) standard SCF at PBE; (ii) HSE06 SCF on the same mesh (re-using the PBE charge density as the initial guess); (iii) HSE06 non-self-consistent calculation along the k-path. The HSE06 step is"
+        - img [ref=e1696]
+        - text: slower than PBE; SCF convergence is harder.
+      - paragraph [ref=e1707]:
+        - strong [ref=e1708]: Step 1 — PBE SCF
+        - text: (
+        - code [ref=e1709]: INCAR.PBE
+        - text: "): add"
+        - code [ref=e1710]: LWAVE
+        - text: ’ and
+        - code [ref=e1711]: LCHARG
+        - text: "’ to the minimal input above (to write the wavefunction and charge for the next step):"
+      - code [ref=e1715]: LWAVE = .TRUE. LCHARG = .TRUE.
+      - paragraph [ref=e1716]:
+        - strong [ref=e1717]: Step 2 — HSE06 SCF
+        - text: (
+        - code [ref=e1718]: INCAR.HSE
+        - text: "): same POTCAR, KPOINTS, POSCAR. INCAR changes:"
+      - code [ref=e1722]: "LHFCALC = .TRUE. # turn on hybrid functional HFSCREEN = 0.2 # HSE06 screening, 1/Angstrom ALGO = Damped # robust for HSE; 'All' is faster when stable TIME = 0.4 # damped/All mixing parameter PRECFOCK = Normal # 'Fast' (FFT2) or 'Accurate' for the final run EDIFF = 1.0e-5 # tighter (1.0e-6) for production band gaps"
+      - paragraph [ref=e1723]:
+        - text: The HSE06 SCF starts from the PBE charge density in
+        - code [ref=e1724]: CHGCAR
+        - text: "’ if it is present. Run: ‘mpirun -n 8 vasp_std’."
+      - paragraph [ref=e1725]:
+        - strong [ref=e1726]: Step 3 — HSE06 bands
+        - text: (
+        - code [ref=e1727]: INCAR.bands
+        - text: "): the k-path is specified in"
+        - code [ref=e1728]: KPOINTS
+        - text: "’ as a “line-mode” path:"
+      - code [ref=e1732]: "# KPOINTS (line mode) K-Path # header 6 # number of high-symmetry segments 0.0 0.0 0.0 ! Gamma 0.5 0.0 0.5 ! X 0.5 0.25 0.75 ! W 0.375 0.375 0.375 ! K 0.0 0.0 0.0 ! Gamma 0.5 0.5 0.5 ! L"
+      - paragraph [ref=e1733]:
+        - text: The bands INCAR has
+        - code [ref=e1734]: ICHARG = 11' (read the converged charge from
+        - text: CHGCAR
+        - code [ref=e1735]: ", do not update) and"
+        - text: "LWAVE = .FALSE.’ (we only need the eigenvalues):"
+      - code [ref=e1739]: "LHFCALC = .TRUE. HFSCREEN = 0.2 ALGO = Normal # or 'Eigenvalue' ICHARG = 11 # read CHGCAR, do not update LWAVE = .FALSE. LCHARG = .FALSE. EDIFF = 1.0e-6 NBANDS = 16 # >= number of electrons / 2"
+      - paragraph [ref=e1740]:
+        - text: "To run: ‘mpirun -n 8 vasp_std’. The band energies are in"
+        - code [ref=e1741]: EIGENVAL
+        - text: . Plot them with
+        - code [ref=e1742]: p4vasp
+        - text: ","
+        - code [ref=e1743]: sumo
+        - text: ", or a custom script."
+      - heading "10.2.3 What to tweak for X" [level=4] [ref=e1744]
+      - list [ref=e1745]:
+        - listitem [ref=e1746]:
+          - strong [ref=e1747]: To converge the total energy to 1 meV/atom
+          - text: ": sweep ‘ENCUT’ from the POTCAR ‘ENMAX’ (or"
+          - code [ref=e1748]: ENMIN
+          - text: ) to
+          - img [ref=e1750]
+          - code [ref=e1759]: ENMAX
+          - text: ", recompute, and pick the smallest value at which the energy changes by less than 1 meV/atom. The VASP default `ENCUT = 1.3 x max(ENMAX)’ is usually safe."
+        - listitem [ref=e1760]:
+          - strong [ref=e1761]: To converge the band gap to 0.05 eV
+          - text: ": increase"
+          - code [ref=e1762]: ENCUT
+          - text: ", tighten ‘EDIFF’ to ‘1.0e-6"
+          - code [ref=e1763]: ", increase the k-point mesh, and add"
+          - text: LREAL = .FALSE.’ (the projector operators are evaluated in reciprocal space) for the final run. For an accurate gap with semilocal functionals, switch to a hybrid (‘LHFCALC = .TRUE.’,
+          - code [ref=e1764]: HFSCREEN = 0.2' for HSE06) or to a $G_0W_0$ correction via
+          - text: "vasp_gw`."
+        - listitem [ref=e1765]:
+          - strong [ref=e1766]: For metals
+          - text: ": use"
+          - code [ref=e1767]: ISMEAR = 1' (Methfessel– Paxton, 1st order) or
+          - text: ISMEAR = 2’ (Fermi–Dirac) with
+          - code [ref=e1768]: SIGMA = 0.05-0.2' eV. Never use
+          - text: "ISMEAR = 0’ (Gaussian) for metals. For very high accuracy, use `ISMEAR = -5’ (tetrahedron with Blöchl corrections) on a dense enough mesh."
+        - listitem [ref=e1769]:
+          - strong [ref=e1770]: For spin-polarised systems
+          - text: ": set"
+          - code [ref=e1771]: ISPIN = 2' and specify
+          - text: MAGMOM
+          - code [ref=e1772]: "' for every species (e.g. 'MAGMOM = 2*0.5' for two Fe atoms, or '2*2.0' for a strong initial moment). For non-collinear, use"
+          - text: LNONCOLLINEAR = .TRUE.’ and the 3-component
+          - code [ref=e1773]: MAGMOM
+          - text: ’ array.
+        - listitem [ref=e1774]:
+          - strong [ref=e1775]: For geometry optimisation
+          - text: ": use"
+          - code [ref=e1776]: IBRION = 2' (conjugate gradient) and
+          - text: ISIF = 3’ for full variable-cell, or
+          - code [ref=e1777]: ISIF = 2' for ions-only.
+          - text: "IBRION = 1’ (RMM-DIIS) is the workhorse. `EDIFFG = -0.02’ eV/Å is the default."
+      - heading "10.2.4 Common pitfalls" [level=4] [ref=e1778]
+      - list [ref=e1779]:
+        - listitem [ref=e1780]:
+          - strong [ref=e1781]: POTCAR ordering must match the POSCAR species order
+          - text: ": VASP silently uses the wrong pseudopotential if the order is wrong. The error is on the order of the difference between valence configurations. Always check with ‘grep TITEL POTCAR’ and ‘head POSCAR`."
+        - listitem [ref=e1782]:
+          - strong [ref=e1783]: POTCAR family mismatch
+          - text: ": the"
+          - code [ref=e1784]: POTCAR
+          - text: ’ must be all
+          - code [ref=e1785]: PBE
+          - text: ", all"
+          - code [ref=e1786]: LDA
+          - text: ", all"
+          - code [ref=e1787]: PBE_52
+          - text: ", etc. Mixing families gives a non-variational total energy."
+        - listitem [ref=e1788]:
+          - strong [ref=e1789]: LMAXMIX too small for d/f electrons
+          - text: ": VASP re-mixes the charge density in real space during SCF with an"
+          - code [ref=e1790]: LMAXMIX
+          - text: "-dependent augmentation. For transition metals and rare earths, set ‘LMAXMIX = 4’ (or ‘6’ for f-block) to avoid SCF convergence problems."
+        - listitem [ref=e1791]:
+          - strong [ref=e1792]: ISMEAR = 0 for metals
+          - text: ": Gaussian smearing with the default"
+          - code [ref=e1793]: SIGMA = 0.05' eV gives an entropy contribution to the free energy that is *larger* than the convergence error in the band energy. Always use 'ISMEAR = 1' or '-5' for metals, and check
+          - text: smearing T*S -> 0’ in
+          - code [ref=e1794]: OUTCAR
+          - text: .
+        - listitem [ref=e1795]:
+          - strong [ref=e1796]:
+            - text: Missing
+            - code [ref=e1797]: MAGMOM
+            - text: ’ for magnetic systems
+          - text: ": VASP defaults to non-spin-polarised (‘ISPIN = 1’). For a magnetic ground state set"
+          - code [ref=e1798]: ISPIN = 2' and an initial
+          - text: "MAGMOM`. Without it, the SCF converges to a non-magnetic state and gives a wrong energy."
+      - heading "10.2.5 Cross-references" [level=4] [ref=e1799]
+      - list [ref=e1800]:
+        - listitem [ref=e1801]:
+          - text: "Theory:"
+          - link "chapter 06" [ref=e1802] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: §6.7 (plane waves),
+          - link "chapter 07" [ref=e1803] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-07/
+          - text: §7.3 (Bloch), §7.6 (k-points), §7.11 (tetrahedron).
+        - listitem [ref=e1804]:
+          - text: "PAW:"
+          - link "chapter 08" [ref=e1805] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: §8.7 (Blöchl), §8.12 (the VASP PAW library).
+        - listitem [ref=e1806]:
+          - text: "Hybrid functionals:"
+          - link "chapter 05" [ref=e1807] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: §5.5.
+        - listitem [ref=e1808]:
+          - text: "Forces and relaxation:"
+          - link "chapter 04" [ref=e1809] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.7 (Hellmann–Feynman), §4.7.3 (Pulay).
+      - separator [ref=e1810]
+      - heading "10.3 GPAW" [level=3] [ref=e1811]
+      - paragraph [ref=e1812]:
+        - text: GPAW is a Python / C PAW code with a real-space grid (
+        - link "§4.2" [ref=e1813] [cursor=pointer]:
+          - /url: "#42-gpaw"
+        - text: ). The cheatsheet below uses the ASE interface (
+        - link "§9.1" [ref=e1814] [cursor=pointer]:
+          - /url: "#91-ase-atomic-simulation-environment"
+        - text: ") — the same script works in serial, in parallel (with ‘mpiexec gpaw python script.py’), and on a GPU (with the `gpaw.cuda’ build)."
+      - heading "10.3.1 Minimal script — H₂ SCF" [level=4] [ref=e1815]
+      - paragraph [ref=e1816]: "The smallest script that produces a sensible single-point energy on a hydrogen molecule:"
+      - code [ref=e1820]: "# h2.py from ase import Atoms from gpaw import GPAW, PW h2 = Atoms('H2', positions=[(0, 0, 0), (0, 0, 0.74)]) h2.center(vacuum=4.0) # pad the cell to avoid image interactions calc = GPAW( mode=PW(300), # plane-wave cutoff, eV xc='PBE', kpts=(1, 1, 1), # Gamma-only for a molecule txt='h2.txt', # log file ) h2.calc = calc energy = h2.get_potential_energy() print(f'H2 energy: {energy:.4f} eV')"
+      - paragraph [ref=e1821]: "Run: ‘gpaw python h2.py’. The total energy is in eV (the GPAW output is in eV by default, unlike Quantum ESPRESSO which uses Rydberg)."
+      - heading "10.3.2 Annotated example — Si band structure in 20 lines" [level=4] [ref=e1822]
+      - paragraph [ref=e1823]: "A band structure of bulk silicon with a plane-wave PAW calculation:"
+      - code [ref=e1827]: "# si_bands.py import numpy as np from ase.build import bulk from ase.dft.kpoints import bandpath from gpaw import GPAW, PW # 1. Build the structure si = bulk('Si', 'diamond', a=5.43) # 2. Standard SCF on a uniform mesh si.calc = GPAW( mode=PW(300), xc='PBE', kpts=(8, 8, 8), convergence={'energy': 1.0e-6}, txt='si.scf.txt', ) si.get_potential_energy() # runs the SCF si.calc.write('si.gpw', mode='all') # save everything for re-use # 3. Non-self-consistent band structure along a path calc = GPAW('si.gpw').fixed_density() # reload, hold density fixed kpts, x, X = bandpath('GXWKL', si.cell, npoints=60) calc.set(kpts=kpts) # re-attach the calculator si.calc = calc si.get_potential_energy() # NSCF run # 4. Extract the band structure bs = calc.band_structure() bs.plot(filename='si.bands.png', emax=15) # one line for the plot"
+      - paragraph [ref=e1828]:
+        - text: The ‘mode=’all’’ write in step 2 saves
+        - emphasis [ref=e1829]: bot’h
+        - text: ’ the wavefunctions and the density. The
+        - code [ref=e1830]: fixed_density()' load in step 3 re-uses the SCF density for a non-self-consistent NSCF run along the k-path — exactly the same two-step workflow as QE / VASP, but expressed in Python and re-runnable from a Jupyter notebook. The
+        - text: bs.plot()’ call in step 4 produces a publication-quality band-structure plot with one line of code.
+      - heading "10.3.3 What to tweak for X" [level=4] [ref=e1831]
+      - list [ref=e1832]:
+        - listitem [ref=e1833]:
+          - strong [ref=e1834]: To switch to a real-space grid
+          - text: ": replace ‘mode=PW(300)’ with ‘mode=’fd’’ (default"
+          - img [ref=e1836]
+          - text: Å). The FD mode is faster for small systems and has no wrap-around from periodic images of a localised excitation.
+        - listitem [ref=e1847]:
+          - strong [ref=e1848]: To switch to LCAO
+          - text: "(linear-scaling DFT for large systems): use"
+          - code [ref=e1849]: mode='lcao'' and
+          - text: "basis=’dzp’`. LCAO is mandatory for systems beyond a few hundred atoms; diagonalisation is the bottleneck otherwise."
+        - listitem [ref=e1850]:
+          - strong [ref=e1851]: To add spin–orbit coupling
+          - text: ": use `soc=True’ in the calculator (GPAW switches to non-collinear automatically) or run a non-collinear NSCF after a collinear SCF. Spin–orbit in GPAW is non-collinear by construction."
+        - listitem [ref=e1852]:
+          - strong [ref=e1853]: To compute a DOS
+          - text: ": after the SCF, use `e, dos = si.calc.get_dos(spin=0)’ and plot. Tetrahedron integration on the MP mesh by default; increase the mesh density to converge."
+        - listitem [ref=e1854]:
+          - strong [ref=e1855]: For TDDFT
+          - text: ": use the"
+          - code [ref=e1856]: GPAW(...).tddft()' API with
+          - text: propagate(…)’ (real-time TDDFT) or
+          - code [ref=e1857]: Casida
+          - text: ’ post-processing (linear-response TDDFT). Both are well-integrated with ASE.
+      - heading "10.3.4 Common pitfalls" [level=4] [ref=e1858]
+      - list [ref=e1859]:
+        - listitem [ref=e1860]:
+          - strong [ref=e1861]: kpts=(1, 1, 1) for a periodic solid
+          - text: ": this is right for a"
+          - emphasis [ref=e1862]: molecule
+          - text: in a large cell, but wrong for a periodic solid. The default
+          - code [ref=e1863]: kpts=(1, 1, 1)' (Gamma only) gives a wrong band structure for a metal and an under-converged one for a semiconductor. Always set
+          - text: "kpts`’ for a solid."
+        - listitem [ref=e1864]:
+          - strong [ref=e1865]: PAW dataset version
+          - text: ": GPAW ships its own PAW library (`gpaw-setups’ on PyPI). Default is the ‘0.9.x’ series; older ‘0.8.x’ data should not be used for new work."
+        - listitem [ref=e1866]:
+          - strong [ref=e1867]: LCAO basis convergence
+          - text: ": the"
+          - code [ref=e1868]: dzp
+          - text: "’ basis is the default; for production band gaps, check convergence with `basis=’tzp’’ or a manually constructed set."
+        - listitem [ref=e1869]:
+          - strong [ref=e1870]: Real-space grid spacing
+          - text: ": the default"
+          - img [ref=e1872]
+          - text: Å is usually fine, but for accurate forces use
+          - img [ref=e1884]
+          - text: Å or smaller. Convergence is exponential in
+          - img [ref=e1897]
+          - text: (multi-grid).
+        - listitem [ref=e1902]:
+          - strong [ref=e1903]: fixed_density() requires mode=’all’
+          - text: ": needs both density *an"
+          - code [ref=e1904]: d*' wavefunctions from the SCF. If you write
+          - text: mode=’wavefunctions’’ instead, the band-structure run fails.
+      - heading "10.3.5 Cross-references" [level=4] [ref=e1905]
+      - list [ref=e1906]:
+        - listitem [ref=e1907]:
+          - text: "ASE interface:"
+          - link "§9.1" [ref=e1908] [cursor=pointer]:
+            - /url: "#91-ase-atomic-simulation-environment"
+          - text: .
+        - listitem [ref=e1909]:
+          - text: "PAW method:"
+          - link "chapter 08" [ref=e1910] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: §8.7.
+        - listitem [ref=e1911]:
+          - text: "TDDFT:"
+          - link "chapter 04" [ref=e1912] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.10.3 (Runge–Gross, Casida).
+        - listitem [ref=e1913]:
+          - text: "Real-space grids:"
+          - link "chapter 06" [ref=e1914] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: §6.8. —
+      - heading "10.4 SIESTA" [level=3] [ref=e1915]
+      - paragraph [ref=e1916]:
+        - text: SIESTA is a Fortran NAO basis code (
+        - link "§4.3" [ref=e1917] [cursor=pointer]:
+          - /url: "#43-siesta"
+        - text: ). The cheatsheet below uses the
+        - strong [ref=e1918]: fdf
+        - text: (flexible data format) input — a Fortran-NAMELIST-inspired free format. The pseudopotential is a separate file (
+        - code [ref=e1919]: .psf' or
+        - text: ".vps`)."
+      - heading "10.4.1 Minimal input — H₂ SCF" [level=4] [ref=e1920]
+      - paragraph [ref=e1921]: "The smallest input that produces a sensible single-point energy on a hydrogen molecule:"
+      - code [ref=e1925]: "# h2.fdf SystemName h2 SystemLabel h2 LatticeConstant 1.0 Ang %block LatticeVectors 10.0 0.0 0.0 0.0 10.0 0.0 0.0 0.0 10.0 %endblock LatticeVectors NumberOfAtoms 2 NumberOfSpecies 1 %block ChemicalSpeciesLabel 1 1 H %endblock ChemicalSpeciesLabel %block AtomicCoordinatesAndAtomicNumbers 0.0 0.0 0.0 1 0.0 0.0 0.74 1 %endblock AtomicCoordinatesAndAtomicNumbers PAO.BasisSize DZP # SZ | DZ | DZP | TZP PAO.EnergyShift 0.05 eV # energy shift of the radial functions SplitNorm 0.15 MeshCutoff 100 Ry XC.functional GGA # PBE XC.authors PBE SolutionMethod diagon MaxSCFIterations 100 DM.MixingWeight 0.1 DM.NumberPulaySteps 5 DM.Tolerance 1.0d-4"
+      - paragraph [ref=e1926]: "The H₂ SCF total energy is in `h2.out’ after ‘siesta: Total energy =’."
+      - heading "10.4.2 Annotated example — Si band structure" [level=4] [ref=e1927]
+      - paragraph [ref=e1928]:
+        - text: A band structure of bulk silicon. The key SIESTA-specific parameters are the
+        - strong [ref=e1929]: PAO basis
+        - text: (
+        - code [ref=e1930]: PAO.BasisSize
+        - text: ","
+        - code [ref=e1931]: PAO.EnergyShift
+        - text: ","
+        - code [ref=e1932]: SplitNorm
+        - text: ) and the
+        - strong [ref=e1933]: MeshCutoff
+        - text: (the real-space grid for the Poisson solver and the local part of the Hamiltonian).
+      - code [ref=e1937]: "# si.fdf SystemName si SystemLabel si LatticeConstant 1.0 Ang %block LatticeVectors 0.0 2.715 2.715 2.715 0.0 2.715 2.715 2.715 0.0 %endblock LatticeVectors NumberOfAtoms 2 NumberOfSpecies 1 %block ChemicalSpeciesLabel 1 14 Si %endblock ChemicalSpeciesLabel %block AtomicCoordinatesAndAtomicNumbers 0.00 0.00 0.00 14 0.25 0.25 0.25 14 %endblock AtomicCoordinatesAndAtomicNumbers %block kgrid_Monkhorst_Pack 8 0 0 0.0 0 8 0 0.0 0 0 8 0.0 %endblock kgrid_Monkhorst_Pack PAO.BasisSize DZP PAO.EnergyShift 0.05 eV SplitNorm 0.15 MeshCutoff 200 Ry XC.functional GGA XC.authors PBE SolutionMethod diagon MaxSCFIterations 200 DM.MixingWeight 0.1 DM.NumberPulaySteps 5 DM.Tolerance 1.0d-5"
+      - paragraph [ref=e1938]:
+        - text: For a band structure, set ‘%block BandLines’
+        - emphasis [ref=e1939]: instea’d
+        - text: ’ of the Monkhorst–Pack
+        - code [ref=e1940]: kgrid_Monkhorst_Pack
+        - text: ":"
+      - code [ref=e1944]: BandPointsScale pi/a WriteBands .true. %block BandLines 1 0.000 0.000 0.000 Gamma 30 0.500 0.000 0.500 X 30 0.500 0.250 0.750 W 30 0.375 0.375 0.375 K 30 0.000 0.000 0.000 Gamma 30 0.500 0.500 0.500 L %endblock BandLines
+      - paragraph [ref=e1945]:
+        - text: The first column of
+        - code [ref=e1946]: BandLines
+        - text: ’ is the number of k-points per segment; the last column is a label. SIESTA writes the bands to
+        - code [ref=e1947]: SystemLabel.bands
+        - text: .
+      - heading "10.4.3 What to tweak for X" [level=4] [ref=e1948]
+      - list [ref=e1949]:
+        - listitem [ref=e1950]:
+          - strong [ref=e1951]: To converge the basis set
+          - text: ": sweep `PAO.BasisSize’ from SZ to DZP to TZP. For production band gaps, use DZP or TZP; for high-throughput screening, SZ is often acceptable."
+        - listitem [ref=e1952]:
+          - strong [ref=e1953]: To tighten the radial functions
+          - text: ": reduce `PAO.EnergyShift’ from 0.05 eV to 0.01 eV — increases the cutoff radius and improves basis completeness at the cost of more overlap."
+        - listitem [ref=e1954]:
+          - strong [ref=e1955]: To converge the real-space mesh
+          - text: ": increase"
+          - code [ref=e1956]: MeshCutoff
+          - text: ’ in Ry. The default 100–200 Ry is usually fine; for accurate forces, use 400 Ry or higher.
+        - listitem [ref=e1957]:
+          - strong [ref=e1958]: For metals
+          - text: ": set"
+          - code [ref=e1959]: SolutionMethod = diagon' with
+          - text: MeshCutoff = 300’ and a denser k-mesh (
+          - img [ref=e1961]
+          - text: "or more). Add `OccupationFunction FD’ and a small electronic temperature."
+        - listitem [ref=e1977]:
+          - strong [ref=e1978]: For spin-polarised systems
+          - text: ": set `SpinPolarized .true.’ and provide initial magnetic moments (‘%block DM.InitSpin’). For non-collinear, use ‘NonCollinearSpin .true.’."
+        - listitem [ref=e1979]:
+          - strong [ref=e1980]: For spin–orbit coupling
+          - text: ": set"
+          - code [ref=e1981]: SpinOrbitBit .true.' and use the fully- relativistic pseudopotential (
+          - text: .vps’ for some elements).
+      - heading "10.4.4 Common pitfalls" [level=4] [ref=e1982]
+      - list [ref=e1983]:
+        - listitem [ref=e1984]:
+          - strong [ref=e1985]: PAO.EnergyShift units
+          - text: ":"
+          - code [ref=e1986]: meV
+          - text: ","
+          - code [ref=e1987]: eV
+          - text: ", or"
+          - code [ref=e1988]: Ry
+          - text: ; SIESTA converts to the internal unit. The default (no unit) is
+          - code [ref=e1989]: Ry
+          - text: ; 0.05 eV is good. The legacy default of 0.02 Ry (272 meV) is
+          - emphasis [ref=e1990]: too large
+          - text: and gives a *too compact basis.
+        - listitem [ref=e1991]:
+          - strong [ref=e1992]:
+            - text: Basis convergence is
+            - emphasis [ref=e1993]: basis
+            - text: convergence, not
+            - emphasis [ref=e1994]: mes’h
+            - text: ’ convergence
+          - text: ": a too-small ‘PAO.BasisSize’ or a too-large"
+          - code [ref=e1995]: PAO.EnergyShift' is *not* fixed by
+          - text: "MeshCutoff`."
+        - listitem [ref=e1996]:
+          - strong [ref=e1997]:
+            - code [ref=e1998]: MeshCutoff
+            - text: ’ in Ry, not eV
+          - text: ": SIESTA uses Ry internally; the input is in Ry (or eV with the"
+          - code [ref=e1999]: eV
+          - text: ’ unit). A common mistake is to use 100
+          - emphasis [ref=e2000]: eV
+          - text: (about 7.35 Ry) thinking it is Ry — 100 Ry is 1360 eV.
+        - listitem [ref=e2001]:
+          - strong [ref=e2002]: ‘.vps’ vs ‘.psf’
+          - text: ": ‘.vps’ files (Siesta-specific generator) are usually better than the older `.psf’ files."
+        - listitem [ref=e2003]:
+          - strong [ref=e2004]: Forgetting XC.authors
+          - text: ":"
+          - code [ref=e2005]: XC.functional = GGA' without
+          - text: XC.authors = PBE’ falls back to PW91, not PBE. Always set the XC authors explicitly.
+      - heading "10.4.5 Cross-references" [level=4] [ref=e2006]
+      - list [ref=e2007]:
+        - listitem [ref=e2008]:
+          - text: "NAO basis:"
+          - link "chapter 06" [ref=e2009] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: §6.13.
+        - listitem [ref=e2010]:
+          - text: "Pseudopotentials:"
+          - link "chapter 08" [ref=e2011] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: §8.3 (norm-conserving), §8.5 (Kleinman–Bylander form).
+        - listitem [ref=e2012]:
+          - text: "Real-space Poisson:"
+          - link "chapter 06" [ref=e2013] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: §6.8.
+        - listitem [ref=e2014]:
+          - text: "Linear-scaling DFT: SIESTA’s “Order-N” mode is one of the few production linear-scaling codes ("
+          - link "§4.3" [ref=e2015] [cursor=pointer]:
+            - /url: "#43-siesta"
+          - text: ).
+      - separator [ref=e2016]
+      - heading "10.5 CP2K" [level=3] [ref=e2017]
+      - paragraph [ref=e2018]:
+        - text: CP2K is a Fortran mixed Gaussian / plane-wave (GPW) code (
+        - link "§2.5" [ref=e2019] [cursor=pointer]:
+          - /url: "#25-cp2k"
+        - text: ). The cheatsheet below covers the standard ‘cp2k.psmp’ (or ‘cp2k.popt
+        - code [ref=e2020]: ) executable. The input format is a *structure
+        - text: d*’ Fortran-NAMELIST with explicit section keywords (
+        - code [ref=e2021]: "&GLOBAL"
+        - text: ","
+        - code [ref=e2022]: "&SUBSYS"
+        - text: ","
+        - code [ref=e2023]: "&DFT"
+        - text: ", …) and matching `&END’ lines. Indentation is optional but is the standard convention."
+      - heading "10.5.1 Minimal input — water in a box" [level=4] [ref=e2024]
+      - paragraph [ref=e2025]: "The smallest input that produces a sensible geometry optimisation of a water molecule in a cubic box:"
+      - code [ref=e2029]: "! h2o.inp &GLOBAL PROJECT h2o RUN_TYPE GEO_OPT PRINT_LEVEL MEDIUM &END GLOBAL &MOTION &GEO_OPT TYPE MINIMIZATION OPTIMIZER BFGS MAX_ITER 100 &END GEO_OPT &END MOTION &FORCE_EVAL METHOD QUICKSTEP &DFT BASIS_SET_FILE_NAME BASIS_MOLOPT POTENTIAL_FILE_NAME GTH_POTENTIALS CHARGE 0 MULTIPLICITY 1 &QS EPS_DEFAULT 1.0E-12 &END QS &POISSON PERIODIC NONE PSOLVER MT &END POISSON &MGRID CUTOFF 300 REL_CUTOFF 50 &END MGRID &SCF MAX_SCF 50 EPS_SCF 1.0E-6 SCF_GUESS ATOMIC &END SCF &XC &XC_FUNCTIONAL PBE &END XC_FUNCTIONAL &END XC &END DFT &SUBSYS &CELL ABC 6.0 6.0 6.0 PERIODIC NONE &END CELL &COORD O 0.000 0.000 0.000 H 0.957 0.000 0.000 H -0.240 0.927 0.000 &END COORD &KIND O BASIS_SET DZVP-MOLOPT-GTH POTENTIAL GTH-PBE-q6 &END KIND &KIND H BASIS_SET DZVP-MOLOPT-GTH POTENTIAL GTH-PBE-q1 &END KIND &END SUBSYS &END FORCE_EVAL"
+      - paragraph [ref=e2030]: "To run: ‘mpiexec -n 4 cp2k.psmp -i h2o.inp -o h2o.out’. The geometry optimisation converges in ~5 steps; the total energy is in `h2o.out’ after ‘ENERGY| Total FORCE_EVAL ( QS ) energy (a.u.)’."
+      - heading "10.5.2 Annotated example — NVT molecular dynamics of water" [level=4] [ref=e2031]
+      - paragraph [ref=e2032]:
+        - text: A short Born–Oppenheimer MD of a 32-water box at 300 K, the canonical “CP2K can do this” test case. The
+        - code [ref=e2033]: "&FORCE_EVAL' block from the previous example is re-used almost unchanged; only the"
+        - text: "&MOTION’ block changes to MD."
+      - code [ref=e2037]: "! md32h2o.inp &GLOBAL PROJECT md32h2o RUN_TYPE MD PRINT_LEVEL LOW &END GLOBAL &MOTION &MD ENSEMBLE NVT STEPS 1000 TIMESTEP 0.5 TEMPERATURE 300 &THERMOSTAT REGION MASSIVE &NOSE LENGTH 3 YOSHIDA 3 TIMECON 1000 &END NOSE &END THERMOSTAT &END MD &PRINT &TRAJECTORY &EACH MD 1 &END EACH &END TRAJECTORY &RESTART &EACH MD 50 &END EACH &END RESTART &END PRINT &END MOTION ! &FORCE_EVAL re-uses the water molecule block from h2o.inp ! above, with the following changes: &FORCE_EVAL METHOD QUICKSTEP &DFT BASIS_SET_FILE_NAME BASIS_MOLOPT POTENTIAL_FILE_NAME GTH_POTENTIALS &POISSON PERIODIC XYZ PSOLVER PERIODIC &END POISSON &MGRID CUTOFF 400 REL_CUTOFF 60 &END MGRID &SCF MAX_SCF 20 EPS_SCF 1.0E-6 SCF_GUESS RESTART &OT MINIMIZER DIIS PRECONDITIONER FULL_SINGLE_INVERSE &END OT &END SCF &XC &XC_FUNCTIONAL PBE &END XC_FUNCTIONAL &VDW_POTENTIAL POTENTIAL_TYPE PAIR_POTENTIAL &PAIR_POTENTIAL PARAMETER_FILE_NAME dftd3.dat TYPE DFTD3 REFERENCE_FUNCTIONAL PBE &END PAIR_POTENTIAL &END VDW_POTENTIAL &END XC &END DFT &SUBSYS &CELL ABC 9.852 9.852 9.852 PERIODIC XYZ &END CELL &TOPOLOGY COORD_FILE_NAME water32.xyz COORD_FILE_FORMAT XYZ &CENTER_COORDINATES &END CENTER_COORDINATES &END TOPOLOGY &KIND O BASIS_SET DZVP-MOLOPT-GTH POTENTIAL GTH-PBE-q6 &END KIND &KIND H BASIS_SET DZVP-MOLOPT-GTH POTENTIAL GTH-PBE-q1 &END KIND &END SUBSYS &END FORCE_EVAL"
+      - paragraph [ref=e2038]:
+        - text: The
+        - code [ref=e2039]: water32.xyz' is a standard XYZ with 32 waters (96 atoms). D3 dispersion ([chapter 05](/DFT-notes/dft-notes/chapter-05/) §5.7) is enabled with '&VDW_POTENTIAL ... TYPE DFTD3'. The OT solver (
+        - text: "&OT`) is the recommended SCF solver for large systems: it is much more parallel-scalable than the default diagonalisation, at the cost of requiring a localised initial guess."
+      - heading "10.5.3 What to tweak for X" [level=4] [ref=e2040]
+      - list [ref=e2041]:
+        - listitem [ref=e2042]:
+          - strong [ref=e2043]: To converge the total energy to 1 meV/atom
+          - text: ": sweep"
+          - code [ref=e2044]: CUTOFF
+          - text: ’ from 300 to 1000 Ry, recompute, and pick the smallest value at which the energy changes by less than 1 meV/atom.
+        - listitem [ref=e2045]:
+          - strong [ref=e2046]: To converge the SCF
+          - text: ": tighten"
+          - code [ref=e2047]: EPS_SCF
+          - text: ’ from ‘1.0E-6’ to ‘1.0E-7
+          - code [ref=e2048]: . For a difficult system, switch from
+          - text: SCF_GUESS ATOMIC’ to
+          - code [ref=e2049]: RESTART
+          - text: ’ from a previous run.
+        - listitem [ref=e2050]:
+          - strong [ref=e2051]: For large systems
+          - text: "(thousands of atoms): switch the SCF solver from ‘DIAGONALIZATION’ to ‘OT’ (orbital transformation). OT scales linearly with system size and is the default for production MD on large boxes."
+        - listitem [ref=e2052]:
+          - strong [ref=e2053]: For periodic systems
+          - text: ": set"
+          - code [ref=e2054]: "&POISSON PERIODIC XYZ ... PSOLVER PERIODIC' and add a"
+          - text: "&KPOINTS’ section."
+        - listitem [ref=e2055]:
+          - strong [ref=e2056]: For geometry optimisation
+          - text: ": set ‘RUN_TYPE GEO_OPT’ and choose an ‘&OPTIMIZER’ (BFGS is the default; CG, LBFGS also available). For variable-cell, add ‘&CELL_OPT EXTERNAL_PRESSURE …’."
+        - listitem [ref=e2057]:
+          - strong [ref=e2058]: For AIMD
+          - text: ": set"
+          - code [ref=e2059]: RUN_TYPE MD' and add an
+          - text: "&MD’ block. The default is NVE; for NVT, add a thermostat (‘&NOSE’ / ‘&CSVR’ /"
+          - code [ref=e2060]: "&GLE"
+          - text: ).
+      - heading "10.5.4 Common pitfalls" [level=4] [ref=e2061]
+      - list [ref=e2062]:
+        - listitem [ref=e2063]:
+          - strong [ref=e2064]: CUTOFF too small for the chosen basis
+          - text: ": the Gaussian basis introduces spurious high-frequency components that the plane-wave auxiliary grid must represent. The"
+          - code [ref=e2065]: CUTOFF
+          - text: ’ is for the
+          - emphasis [ref=e2066]: auxiliary
+          - text: grid. 300 Ry is fine for DZVP, TZV2P needs 600–1000 Ry. Always check convergence.
+        - listitem [ref=e2067]:
+          - strong [ref=e2068]: SCF_GUESS ATOMIC for a difficult system
+          - text: ": the atomic guess is a superposition of atomic densities and is the most"
+          - emphasis [ref=e2069]: robust
+          - text: starting point, but it can be far from the converged density for covalent systems. Use
+          - code [ref=e2070]: RESTART
+          - text: ’ from a previous run, or ‘SCF_GUESS HISTORY’, for difficult cases.
+        - listitem [ref=e2071]:
+          - strong [ref=e2072]: Basis set / pseudopotential mismatch
+          - text: ": the GTH pseudopotential was generated with a *specifi"
+          - code [ref=e2073]: c*' basis set. Mixing GTH with a non- MOLOPT basis gives poor results. Always use the matched pair (e.g.
+          - text: DZVP-MOLOPT-GTH’ with
+          - code [ref=e2074]: GTH-PBE-q6
+          - text: ).
+        - listitem [ref=e2075]:
+          - strong [ref=e2076]: POISSON PSOLVER MT for a periodic system
+          - text: ": the Martyna–Tuckerman solver is for *isolate"
+          - code [ref=e2077]: d*' systems. For a periodic system, use 'PSOLVER PERIODIC' and 'PERIODIC XYZ
+          - text: .
+        - listitem [ref=e2078]:
+          - strong [ref=e2079]: MD timestep too large
+          - text: ": the default 0.5 fs is safe for water with PBE. For H–H bonds or fast stretches, use 0.25 fs or smaller."
+      - heading "10.5.5 Cross-references" [level=4] [ref=e2080]
+      - list [ref=e2081]:
+        - listitem [ref=e2082]:
+          - text: "Theory:"
+          - link "chapter 06" [ref=e2083] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: §6.7 (plane waves), §6.3 (Gaussians).
+        - listitem [ref=e2084]:
+          - text: "Pseudopotentials:"
+          - link "chapter 08" [ref=e2085] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: §8.8 (GTH).
+        - listitem [ref=e2086]:
+          - text: "Dispersion corrections:"
+          - link "chapter 05" [ref=e2087] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-05/
+          - text: §5.7 (D3, D4).
+        - listitem [ref=e2088]:
+          - text: "Forces and MD:"
+          - link "chapter 04" [ref=e2089] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.7 (Hellmann–Feynman), §4.10.3 (Ehrenfest / BO-MD).
+      - separator [ref=e2090]
+      - heading "10.6 FLEUR" [level=3] [ref=e2091]
+      - paragraph [ref=e2092]:
+        - text: FLEUR is a Fortran FP-LAPW code (
+        - link "§3.3" [ref=e2093] [cursor=pointer]:
+          - /url: "#33-fleur"
+        - text: "). The cheatsheet below covers the ‘inp’ file (the main input) and the ‘inpgen’ generator. FLEUR uses a two-step workflow:"
+        - code [ref=e2094]: inpgen
+        - text: ’ reads a structure (CIF or template) and produces the ‘inp’ file, then ‘fleur’ reads the
+        - code [ref=e2095]: inp
+        - text: ’ and runs.
+      - heading "10.6.1 Minimal input — Fe bcc, spin-polarised" [level=4] [ref=e2096]
+      - paragraph [ref=e2097]:
+        - text: The smallest input that produces a sensible spin-polarised ground state for bcc iron. The structure is taken from
+        - code [ref=e2098]: Fe.cif
+        - text: ; the generator produces the
+        - code [ref=e2099]: inp
+        - text: ’ file.
+      - paragraph [ref=e2100]:
+        - strong [ref=e2101]: Step 1 — generate the input
+        - text: ":"
+      - code [ref=e2105]: "# in the directory containing Fe.cif: cat > inp.txt <<EOF &input cartesian=F symrel=T film=T ! 3D periodic (set film=F for 2D) rmt= 2.0 ! muffin-tin radius, bohr lmax= 8 lnonsph= 4 kcrel= 0 ! 0 = scalar-relativistic, ! 1 = full-relativistic (with SOC) / &lattice ext=T ! read lattice from external file (CIF) / &atom id= 26.1 bmu= 2.2 ! initial magnetic moment, mu_B lo= 3s 3p ! local orbitals for semicore states econfig= 3d6 4s2 / EOF inpgen < inp.txt"
+      - paragraph [ref=e2106]:
+        - text: The ‘inpgen’ input is read from ‘inp.txt
+        - code [ref=e2107]: ; the output 'inp' is written. 'bmu=2.2' sets the initial magnetic moment;
+        - text: lo=3s 3p’ adds local orbitals for the 3s and 3p semicore states (necessary for an accurate all-electron treatment of 3
+        - img [ref=e2109]
+        - text: transition metals).
+      - paragraph [ref=e2114]:
+        - strong [ref=e2115]: Step 2 — run FLEUR
+        - text: ":"
+      - code [ref=e2119]: fleur_MPI
+      - paragraph [ref=e2120]: "The total energy is in ‘out’ (or ‘out.xml`) after ‘Total energy :’."
+      - heading "10.6.2 Annotated example — Fe bcc with spin–orbit coupling" [level=4] [ref=e2121]
+      - paragraph [ref=e2122]:
+        - text: The same system as above, but with spin–orbit coupling (necessary for a correct magnetic anisotropy energy;
+        - link "chapter 04" [ref=e2123] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: "§4.9). Re-run ‘inpgen’ with ‘kcrel=1’ (full-relativistic) and add the magnetisation direction ‘cth=30, 30, 30’:"
+      - code [ref=e2127]: "sed -i 's/kcrel= 0/kcrel= 1/' inp.txt # or edit by hand cat >> inp.txt <<EOF &input cth= 30.0, 30.0, 30.0 ! magnetisation direction (theta, phi, alpha) swsp= 0 ! 0 = ferromagnet, 1 = spin-spiral / EOF inpgen < inp.txt fleur_MPI"
+      - paragraph [ref=e2128]:
+        - text: The MAE is the
+        - emphasis [ref=e2129]: difference
+        - text: in total energy between two magnetisation directions (e.g.
+        - code [ref=e2130]: cth=0, 0, 0' — z axis — versus
+        - text: cth=90, 0, 0’ — x axis). With SOC, the k-mesh must be denser (an MAE of 0.1 meV/atom is the typical target), and
+        - code [ref=e2131]: lmax=8' should be increased to
+        - text: lmax=10’ for production.
+      - heading "10.6.3 What to tweak for X" [level=4] [ref=e2132]
+      - list [ref=e2133]:
+        - listitem [ref=e2134]:
+          - strong [ref=e2135]: To converge the basis set
+          - text: ": increase"
+          - code [ref=e2136]: lmax
+          - text: ’ (max angular momentum of LAPW) and
+          - code [ref=e2137]: lnonsph
+          - text: ’ (max
+          - img [ref=e2139]
+          - text: "in non-spherical potential). Default: ‘lmax=8, lnonsph=4’; production:"
+          - code [ref=e2144]: lmax=10, lnonsph=6
+          - text: .
+        - listitem [ref=e2145]:
+          - strong [ref=e2146]: To converge k-point sampling
+          - text: ": increase the k-point mesh. FLEUR uses a uniform Monkhorst–Pack mesh; default"
+          - img [ref=e2148]
+          - text: "for a primitive cubic cell. For accurate Fermi surfaces:"
+          - img [ref=e2162]
+          - text: or denser.
+        - listitem [ref=e2178]:
+          - strong [ref=e2179]: To converge the magnetic anisotropy energy
+          - text: ": the MAE is a difference of total energies and converges very slowly with k-point mesh. For an MAE of 0.1"
+          - img [ref=e2181]
+          - text: eV/atom, a
+          - img [ref=e2187]
+          - text: mesh is often required.
+        - listitem [ref=e2203]:
+          - strong [ref=e2204]:
+            - text: For
+            - img [ref=e2206]
+            - text: "-electron systems"
+          - text: "(rare earths, actinides): add local orbitals for"
+          - img [ref=e2212]
+          - text: ","
+          - img [ref=e2220]
+          - text: ","
+          - img [ref=e2228]
+          - text: (or
+          - img [ref=e2236]
+          - text: ","
+          - img [ref=e2244]
+          - text: ","
+          - img [ref=e2252]
+          - text: ) semicore states, and set ‘lmax=12, lnonsph=8’. Without them, the all-electron treatment is wrong by tens of mRy.
+        - listitem [ref=e2259]:
+          - strong [ref=e2260]: For spin–orbit coupling
+          - text: ": use"
+          - code [ref=e2261]: kcrel=1' and check convergence of
+          - text: "lmax`’ and the k-mesh. The non-collinear version of the code is mandatory."
+      - heading "10.6.4 Common pitfalls" [level=4] [ref=e2262]
+      - list [ref=e2263]:
+        - listitem [ref=e2264]:
+          - strong [ref=e2265]: Muffin-tin radii too small
+          - text: ": the MT radii must not overlap;"
+          - code [ref=e2266]: inpgen
+          - text: "’ checks and aborts if they do. Default `rmt=2.0’ is usually fine for bcc Fe. For low-symmetry structures, tune by hand."
+        - listitem [ref=e2267]:
+          - strong [ref=e2268]: Muffin-tin radii too large
+          - text: ": a too-large"
+          - code [ref=e2269]: rmt
+          - text: ’ leaves little room for the plane-wave expansion in the interstitial, and
+          - code [ref=e2270]: kmax = RKmax / RMT' becomes too small. Default
+          - text: "RKmax=7.0’ is usually fine; production: ‘RKmax=8.5’ or ‘9.0`."
+        - listitem [ref=e2271]:
+          - strong [ref=e2272]: Missing local orbitals for semicore states
+          - text: ": the"
+          - img [ref=e2274]
+          - text: and
+          - img [ref=e2282]
+          - text: of Fe overlap with the 3
+          - img [ref=e2290]
+          - text: valence in energy. Without local orbitals, the all-electron treatment of 3
+          - img [ref=e2296]
+          - text: "is wrong. Always add `lo=3s 3p’ for 3"
+          - img [ref=e2302]
+          - text: metals and the analogous local orbitals for heavier elements.
+        - listitem [ref=e2307]:
+          - text: "**"
+          - code [ref=e2308]: "kcrel=0' (scalar-relativistic) for SOC**: scalar-relativistic FLEUR misses spin–orbit coupling. For a correct MAE or any property that depends on the spin texture, use"
+          - text: "kcrel=1`."
+        - listitem [ref=e2309]:
+          - strong [ref=e2310]: Inconsistent kcrel between inpgen and fleur
+          - text: ": the flag must be set in"
+          - code [ref=e2311]: inpgen
+          - text: ’ and the input re-generated if changed. Running
+          - code [ref=e2312]: fleur
+          - text: ’ on an old ‘inp’ with the wrong ‘kcrel’ silently gives a scalar-relativistic answer.
+      - heading "10.6.5 Cross-references" [level=4] [ref=e2313]
+      - list [ref=e2314]:
+        - listitem [ref=e2315]:
+          - text: "LAPW basis:"
+          - link "chapter 06" [ref=e2316] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: §6.9–6.12 and
+          - link "chapter 08" [ref=e2317] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: §8.13–8.14 (all-electron methods).
+        - listitem [ref=e2318]:
+          - text: "Relativistic KS and MAE:"
+          - link "chapter 04" [ref=e2319] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.9 and §4.9.3 (magnetic anisotropy energy).
+        - listitem [ref=e2320]:
+          - text: "All-electron comparisons:"
+          - link "§3.1" [ref=e2321] [cursor=pointer]:
+            - /url: "#31-wien2k"
+          - text: (WIEN2k),
+          - link "§3.2" [ref=e2322] [cursor=pointer]:
+            - /url: "#32-elk"
+          - text: (Elk).
+      - separator [ref=e2323]
+      - blockquote [ref=e2324]:
+        - paragraph [ref=e2325]:
+          - text: Back to the
+          - link "chapter index" [ref=e2326] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/
+          - text: or jump to
+          - link "chapter 06" [ref=e2327] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: for the theory of basis sets that makes the “Gaussian vs. plane wave vs. real space” split sensible.
+  - contentinfo [ref=e2328]:
+    - generic [ref=e2329]:
+      - generic [ref=e2330]:
+        - img [ref=e2331]
+        - generic [ref=e2335]: DFT Notes
+        - paragraph [ref=e2336]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e2337]:
+        - generic [ref=e2338]:
+          - heading "Project" [level=3] [ref=e2339]
+          - list [ref=e2340]:
+            - listitem [ref=e2341]:
+              - link "Chapters map" [ref=e2342] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e2343]:
+              - link "Python codes" [ref=e2344] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e2345]:
+              - link "Contributing" [ref=e2346] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e2347]:
+              - link "Security" [ref=e2348] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e2349]:
+              - link "Design spec" [ref=e2350] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e2351]:
+              - link "GitHub ↗" [ref=e2352] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e2353]:
+          - heading "Built with" [level=3] [ref=e2354]
+          - list [ref=e2355]:
+            - listitem [ref=e2356]:
+              - link "Jekyll" [ref=e2357] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e2358]:
+              - link "MathJax 3" [ref=e2359] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e2360]:
+              - link "Mermaid" [ref=e2361] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e2362]:
+              - link "chenglou/pretext" [ref=e2363] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e2364]:
+              - link "Google Fonts" [ref=e2365] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e2366]:
+          - heading "Legal" [level=3] [ref=e2367]
+          - list [ref=e2368]:
+            - listitem [ref=e2369]:
+              - link "MIT License" [ref=e2370] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e2371]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e2373]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

@@ -1,0 +1,1230 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 00 — Welcome" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: This chapter has no equations. That’s the only one. Everything after this is math.
+      - paragraph [ref=e30]:
+        - text: These notes are an attempt to write down, in one place, the
+        - emphasis [ref=e31]: minimum viable theory
+        - text: of Density Functional Theory — enough to read a modern DFT paper, set up a calculation, and know which approximations you are making and why they might be wrong.
+      - heading "How to read this chapter" [level=2] [ref=e32]
+      - paragraph [ref=e33]:
+        - text: Chapter 00 is the
+        - strong [ref=e34]: only meta chapter
+        - text: in the collection. Every later chapter (01, 02, …) is about DFT; this one is about the
+        - emphasis [ref=e35]: document you are reading
+        - text: . If you are in a hurry to get to equations, you can read the
+        - emphasis [ref=e36]: Notation
+        - text: and What is not in scope sections and skip straight to
+        - link "chapter 01" [ref=e37] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: . If you are reading the notes for the first time and want to know what you are getting into, read this chapter linearly.
+      - heading "The document is uniform on purpose" [level=3] [ref=e38]
+      - paragraph [ref=e39]:
+        - text: Every content chapter (chapter 01 onward) is built from the
+        - strong [ref=e40]: same seven-part template
+        - text: (see
+        - emphasis [ref=e41]: The chapter structure template
+        - text: "below). That uniformity is the whole point of writing a fixed template: once you have read one chapter, you know the shape of every chapter, and you can navigate directly to the part that interests you. The template is enforced by"
+        - link "agent:qa-reviewer" [ref=e42] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/agents/#the-chapter-rigor-checklist
+          - code [ref=e43]: agent:qa-reviewer
+        - text: and recorded in
+        - link "agents.md" [ref=e44] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/agents/
+          - code [ref=e45]: agents.md
+        - text: .
+      - heading "How to read a chapter" [level=3] [ref=e46]
+      - paragraph [ref=e47]: There are three reasonable patterns. Pick whichever fits your goal.
+      - list [ref=e48]:
+        - listitem [ref=e49]:
+          - strong [ref=e50]: Linear, first pass.
+          - text: Read claim → derivation → diagram → worked example → problems, in order. This is the right way to learn a chapter the first time. Expect ~30–90 minutes per chapter depending on your background.
+        - listitem [ref=e51]:
+          - strong [ref=e52]: Reference, second pass.
+          - text: Jump to the
+          - emphasis [ref=e53]: claim
+          - text: (always equation 1 of the chapter) to recall the headline result. Then read the
+          - emphasis [ref=e54]: What we left out
+          - text: section to see what the chapter is silent on. Use this when you come back to a chapter months later and need a one-paragraph refresher.
+        - listitem [ref=e55]:
+          - strong [ref=e56]: Problem-driven.
+          - text: Skim the
+          - emphasis [ref=e57]: Problems
+          - text: section first. Each problem is calibrated to require material from a particular part of the chapter; if the problem makes no sense to you, that is a signal to go read the part of the chapter it references. This is the right way to use the notes to
+          - emphasis [ref=e58]: self-test
+          - text: .
+      - blockquote [ref=e59]:
+        - paragraph [ref=e60]:
+          - strong [ref=e61]: Tip.
+          - text: If you’re reading on a phone, the code blocks are horizontal-scrollable. If you’re reading on the e-reader surface (see the
+          - link "design spec" [ref=e62] [cursor=pointer]:
+            - /url: /DFT-notes/design.md
+          - text: ), use the font slider if the math is too small. Every Mermaid diagram is rendered client-side; if it does not appear, open the browser console and look for a CDN error.
+      - heading "The “no step skipped” promise" [level=3] [ref=e63]
+      - paragraph [ref=e64]:
+        - text: "The author has been emphatic:"
+        - emphasis [ref=e65]: no calculation will be omitted, nothing should be kept like “do as I exercise” or “from here on”
+        - text: . Every algebraic step in every chapter appears in the chapter. If a step is purely mechanical (expand, distribute, collect) it is labelled as such in one line, but the result is still written out. This is the only reliable way to be sure the math is correct, and it is the only reliable way for a reader to
+        - emphasis [ref=e66]: "chec`k"
+        - text: ’ the math is correct. If you ever find a derivation in these notes that skips a step in violation of this rule, please open an issue.
+      - heading "Cross-references" [level=3] [ref=e67]
+      - paragraph [ref=e68]: "Chapters cross-reference each other with two distinct signals:"
+      - list [ref=e69]:
+        - listitem [ref=e70]:
+          - text: "A plain Markdown link `"
+          - link "Chapter 01" [ref=e71] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-01/
+          - text: ’ — used for
+          - emphasis [ref=e72]: prerequisite
+          - text: material that the reader is expected to have already read.
+        - listitem [ref=e73]:
+          - text: "A forward link `"
+          - link "chapter 04" [ref=e74] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: ’ — used to flag material that
+          - emphasis [ref=e75]: will be developed later
+          - text: but is needed in the current chapter for context.
+      - paragraph [ref=e76]:
+        - text: In both cases, the link is to a
+        - emphasis [ref=e77]: chapter
+        - text: ", never to a section within a chapter. This is so the dependency graph stays legible (see"
+        - emphasis [ref=e78]: "Roadma`p"
+        - text: ’ below). If a section-level link seems essential, that is usually a sign the chapter should be split.
+      - heading "The “catch” is woven through" [level=3] [ref=e79]
+      - paragraph [ref=e80]:
+        - text: The chapter template has explicit “diagram”, “worked example”, “problems”, and “What we left out” sections. None of them is labelled “catch”. But the spirit of the catch —
+        - emphasis [ref=e81]: what does this formula not tell you, and where does it break?
+        - text: — is woven into
+        - emphasis [ref=e82]: every
+        - text: "part of the template:"
+      - list [ref=e83]:
+        - listitem [ref=e84]:
+          - text: the derivation has
+          - strong [ref=e85]: Tip
+          - text: ","
+          - strong [ref=e86]: Note
+          - text: ", and"
+          - strong [ref=e87]: Warning
+          - text: callouts that flag common pitfalls;
+        - listitem [ref=e88]:
+          - text: the worked example deliberately picks parameter values that
+          - emphasis [ref=e89]: exercise
+          - text: a known failure mode (small basis, large grid spacing, hard XC functional);
+        - listitem [ref=e90]: the “What we left out” section is the catch, made explicit.
+      - paragraph [ref=e91]: When you read a chapter, do not skip the callouts. They are where the lived experience of the topic lives.
+      - heading "Mathematical prerequisites" [level=2] [ref=e92]
+      - paragraph [ref=e93]:
+        - text: DFT, at the level of these notes, draws on roughly
+        - strong [ref=e94]: five mathematical subjects
+        - text: at the undergraduate / first-year-graduate level. Below, each is broken into the
+        - emphasis [ref=e95]: "specifi`c"
+        - text: ’ pieces the notes will use, with a one-sentence statement of what the reader should be able to do with each piece. Nothing in the list is exotic; everything is taught in standard curricula and is re-stated as it is used.
+      - heading "Linear algebra (used throughout)" [level=3] [ref=e96]
+      - list [ref=e97]:
+        - listitem [ref=e98]:
+          - strong [ref=e99]: Vector spaces and inner products.
+          - text: You should be comfortable with the inner product
+          - img [ref=e101]
+          - text: in
+          - img [ref=e134]
+          - text: and its extension
+          - img [ref=e144]
+          - text: for functions. Every chapter uses inner products.
+        - listitem [ref=e175]:
+          - strong [ref=e176]: Eigendecomposition.
+          - text: Given a Hermitian matrix
+          - img [ref=e178]
+          - text: ", you should be able to factor it as"
+          - img [ref=e185]
+          - text: with
+          - img [ref=e205]
+          - text: unitary and
+          - img [ref=e212]
+          - text: real diagonal. This is the
+          - emphasis [ref=e217]: only
+          - text: diagonalisation the notes use as a primitive. Singular-value decomposition is used once or twice in chapter 06 (density fitting) but is not assumed.
+        - listitem [ref=e218]:
+          - strong [ref=e219]: The spectral theorem.
+          - text: Hermitian operators have real eigenvalues and a complete orthonormal set of eigenvectors. The notes use this in chapter 03 (Hartree–Fock) and chapter 04 (Kohn–Sham) to argue that the Fock and Kohn–Sham operators can be diagonalised.
+        - listitem [ref=e220]:
+          - strong [ref=e221]: Bra-ket notation.
+          - text: You should be able to read
+          - img [ref=e223]
+          - text: as “the matrix element of
+          - img [ref=e251]
+          - text: between basis functions
+          - img [ref=e261]
+          - text: and
+          - img [ref=e267]
+          - text: "”. We use bra-ket throughout. The only operations we ever perform on a bra or a ket are: take the inner product, insert a resolution of the identity"
+          - img [ref=e273]
+          - text: ", and act with an operator from the left or the right."
+      - heading "Calculus of several variables (used throughout)" [level=3] [ref=e304]
+      - list [ref=e305]:
+        - listitem [ref=e306]:
+          - strong [ref=e307]: Partial derivatives and the chain rule.
+          - text: Used in chapter 04 to derive the Kohn–Sham potential by differentiating the exchange–correlation energy with respect to the density.
+        - listitem [ref=e308]:
+          - strong [ref=e309]: Gradient, divergence, Laplacian.
+          - text: Used in the kinetic operator
+          - img [ref=e311]
+          - text: ", in the gradient correction to GGA functionals (chapter 05), and in the stress tensor (chapter 09)."
+        - listitem [ref=e328]:
+          - strong [ref=e329]: Line, surface, and volume integrals.
+          - text: Used to define the electron number, the dipole moment, and the total energy.
+        - listitem [ref=e330]:
+          - strong [ref=e331]: Green’s theorem / the divergence theorem.
+          - text: Used once, in chapter 07, to relate the gradient of a Bloch function to its surface integral over a unit cell.
+      - heading "Probability and statistics (used in chapters 03, 04, 05, 09)" [level=3] [ref=e332]
+      - list [ref=e333]:
+        - listitem [ref=e334]:
+          - strong [ref=e335]: Expectation values.
+          - text: The notes use the quantum-mechanical definition
+          - img [ref=e337]
+          - text: . You should also be able to translate this to a classical average
+          - img [ref=e371]
+          - text: when
+          - img [ref=e397]
+          - text: is replaced by a function of position.
+        - listitem [ref=e406]:
+          - strong [ref=e407]: Joint and marginal distributions.
+          - text: Used in chapter 05 (one-electron reduced density matrices) and chapter 09 (Boltzmann sampling in finite-temperature DFT, briefly).
+        - listitem [ref=e408]:
+          - strong [ref=e409]: Independent and identically distributed samples.
+          - text: Not heavily used, but appears in the discussion of stochastic errors in Monte Carlo and in sampling the Brillouin zone.
+      - heading "Complex analysis (used in chapter 11, on response functions)" [level=3] [ref=e410]
+      - list [ref=e411]:
+        - listitem [ref=e412]:
+          - strong [ref=e413]: Analytic continuation.
+          - text: The density–density response function
+          - img [ref=e415]
+          - text: is a meromorphic function of complex frequency
+          - img [ref=e440]
+          - text: with poles at the excitation energies. You should know what “meromorphic” means and why the location of the poles is physical.
+        - listitem [ref=e445]:
+          - strong [ref=e446]: Cauchy’s residue theorem.
+          - text: Used to derive the fluctuation–dissipation theorem from the spectral representation of
+          - img [ref=e448]
+          - text: .
+        - listitem [ref=e453]:
+          - strong [ref=e454]: Contour integration.
+          - text: Used in chapter 11 to evaluate frequency integrals on a contour that avoids the real axis.
+          - emphasis [ref=e455]: If you are not continuing past chapter 10, you can skip this.
+      - heading "Special functions (used in chapters 01, 05, 06)" [level=3] [ref=e456]
+      - list [ref=e457]:
+        - listitem [ref=e458]:
+          - strong [ref=e459]:
+            - text: Spherical harmonics
+            - img [ref=e461]
+            - text: .
+          - text: Used in chapter 01 (angular part of the hydrogen atom) and in chapter 06 (atom-centred basis functions with
+          - img [ref=e482]
+          - text: ).
+        - listitem [ref=e491]:
+          - strong [ref=e492]:
+            - text: Hermite polynomials
+            - img [ref=e494]
+            - text: .
+          - text: Used in the analytical Gaussian integrals of chapter 06.
+        - listitem [ref=e508]:
+          - strong [ref=e509]:
+            - text: Laguerre polynomials
+            - img [ref=e511]
+            - text: .
+          - text: Used in the radial part of the hydrogen atom and in the STO radial functions.
+        - listitem [ref=e525]:
+          - strong [ref=e526]:
+            - text: The error function
+            - img [ref=e528]
+            - text: and the Boys function
+            - img [ref=e542]
+            - text: .
+          - text: Both appear in chapter 06 in the closed-form expressions for the two-electron integrals.
+      - blockquote [ref=e556]:
+        - paragraph [ref=e557]:
+          - strong [ref=e558]: Where to look up what you forgot.
+          - text: The classic reference is Abramowitz and Stegun,
+          - emphasis [ref=e559]: Handbook of Mathematical Functions
+          - text: (1964), still in print as the
+          - emphasis [ref=e560]: NIST Digital Library of Mathematical Functions
+          - text: (
+          - code [ref=e561]: dlmf.nist.gov
+          - text: ). For complex analysis, Ahlfors,
+          - emphasis [ref=e562]: Complex Analysis
+          - text: (any edition), is the standard.
+      - heading "Quantum mechanics, undergraduate level" [level=3] [ref=e563]
+      - list [ref=e564]:
+        - listitem [ref=e565]:
+          - strong [ref=e566]: The postulates.
+          - text: State vectors, observables, measurement outcomes, the Schrödinger equation, the Born rule. If you have never seen the Schrödinger equation before,
+          - strong [ref=e567]:
+            - text: start with
+            - link "chapter 01" [ref=e568] [cursor=pointer]:
+              - /url: /DFT-notes/dft-notes/chapter-01/
+          - text: ", which lays the postulates out one by one before any DFT-specific material is introduced."
+        - listitem [ref=e569]:
+          - strong [ref=e570]: The harmonic oscillator.
+          - text: Used as a sanity check in chapter 01 and in the example of the Hückel model in chapter 02.
+        - listitem [ref=e571]:
+          - strong [ref=e572]: The hydrogen atom.
+          - text: The exact solution is the only closed-form reference point in DFT. You should know the energy levels
+          - img [ref=e574]
+          - text: and the form of the 1s, 2s, 2p orbitals. The 1s density is plotted by the
+          - emphasis [ref=e607]: "hello worl`d"
+          - text: ’ program in the next section.
+      - heading "Programming prerequisites" [level=2] [ref=e608]
+      - paragraph [ref=e609]:
+        - text: The notes are accompanied by a parallel set of Python scripts under
+        - code [ref=e610]: dft_notes/python_codes/
+        - text: . Every chapter has its own folder; every script in that folder corresponds to one of the chapter’s worked-example snippets. The conventions are spelled out in
+        - link "agents.md" [ref=e611] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/agents/#the-python-code-conventions
+          - code [ref=e612]: agents.md
+        - text: "; the short version is:"
+      - list [ref=e613]:
+        - listitem [ref=e614]:
+          - strong [ref=e615]: Python 3.11+
+          - text: (the version pinned in
+          - code [ref=e616]: python_codes/README.md
+          - text: ).
+        - listitem [ref=e617]:
+          - strong [ref=e618]: Imports are restricted
+          - text: to
+          - code [ref=e619]: numpy
+          - text: ","
+          - code [ref=e620]: scipy
+          - text: ", and"
+          - code [ref=e621]: matplotlib
+          - text: . Anything else is added to the README on a case-by-case basis.
+        - listitem [ref=e622]:
+          - strong [ref=e623]: Headless rendering.
+          - text: "Every script begins with `matplotlib.use(“Agg”)’ so that the script runs on a server with no display."
+        - listitem [ref=e624]:
+          - strong [ref=e625]: "The `plots/’ subfolder"
+          - text: holds the committed PNGs. One script produces one figure; the figure file is named ‘plots/
+          - generic [ref=e626]: "-.png'."
+        - listitem [ref=e627]:
+          - strong [ref=e628]:
+            - text: "No"
+            - code [ref=e629]: os.chdir
+            - text: .
+          - text: Paths are constructed relative to the chapter folder using
+          - code [ref=e630]: pathlib.Path(__file__).parent
+          - text: .
+      - heading "What you should be able to do" [level=3] [ref=e631]
+      - paragraph [ref=e632]:
+        - text: Below is the working subset of Python the notes assume. If any item is unfamiliar, the
+        - emphasis [ref=e633]: official
+        - text: tutorial links in the right-hand column are the place to fill the gap.
+      - table [ref=e634]:
+        - rowgroup [ref=e635]:
+          - row "Topic One-line expectation Tutorial" [ref=e636]:
+            - columnheader "Topic" [ref=e637]
+            - columnheader "One-line expectation" [ref=e638]
+            - columnheader "Tutorial" [ref=e639]
+        - rowgroup [ref=e640]:
+          - row "‘numpy.ndarray’ Construct arrays, index them, broadcast, take ‘.T’, ‘.conj()’, ‘.dot()’ numpy.org/doc/stable/user/absolute_beginners.html" [ref=e641]:
+            - cell "‘numpy.ndarray’" [ref=e642]
+            - cell "Construct arrays, index them, broadcast, take ‘.T’, ‘.conj()’, ‘.dot()’" [ref=e643]
+            - cell "numpy.org/doc/stable/user/absolute_beginners.html" [ref=e644]
+          - 'row "`numpy.linalg.eigh’ Diagonalise a Hermitian matrix; sort eigenvalues numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html" [ref=e645]':
+            - 'cell "`numpy.linalg.eigh’" [ref=e646]'
+            - cell "Diagonalise a Hermitian matrix; sort eigenvalues" [ref=e647]
+            - cell "numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html" [ref=e648]
+          - 'row "`scipy.linalg.eigh(F, S)’ Solve the generalised eigenproblem docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.eigh.html" [ref=e649]':
+            - 'cell "`scipy.linalg.eigh(F, S)’" [ref=e650]'
+            - cell "Solve the generalised eigenproblem" [ref=e651]:
+              - text: Solve the generalised eigenproblem
+              - img [ref=e653]
+            - cell "docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.eigh.html" [ref=e672]
+          - row "‘scipy.special’ Use ‘erf’, ‘factorial’, ‘sph_harm’ docs.scipy.org/doc/scipy/reference/special.html" [ref=e673]:
+            - cell "‘scipy.special’" [ref=e674]
+            - cell "Use ‘erf’, ‘factorial’, ‘sph_harm’" [ref=e675]
+            - cell "docs.scipy.org/doc/scipy/reference/special.html" [ref=e676]
+          - row "‘matplotlib.pyplot’ ‘subplots’, ‘plot’, ‘xlabel’, ‘savefig’ matplotlib.org/stable/tutorials/introductory/pyplot.html" [ref=e677]:
+            - cell "‘matplotlib.pyplot’" [ref=e678]
+            - cell "‘subplots’, ‘plot’, ‘xlabel’, ‘savefig’" [ref=e679]
+            - cell "matplotlib.org/stable/tutorials/introductory/pyplot.html" [ref=e680]
+          - row "‘pathlib.Path’ Build paths relative to ‘file’ docs.python.org/3/library/pathlib.html" [ref=e681]:
+            - cell "‘pathlib.Path’" [ref=e682]
+            - cell "Build paths relative to ‘file’" [ref=e683]:
+              - text: Build paths relative to ‘
+              - strong [ref=e684]: file
+              - text: ’
+            - cell "docs.python.org/3/library/pathlib.html" [ref=e685]
+      - heading "Hello world — a chapter’s smallest program" [level=3] [ref=e686]
+      - paragraph [ref=e687]:
+        - text: The smallest program that does
+        - emphasis [ref=e688]: something
+        - text: chapter-relevant is the plot of the hydrogen 1s density. The 1s wavefunction of a hydrogenic atom with nuclear charge
+        - img [ref=e690]
+        - text: is
+      - img [ref=e696]
+      - paragraph [ref=e742]: so the corresponding one-electron density is
+      - img [ref=e744]
+      - paragraph [ref=e811]:
+        - text: The full source below produces a PNG that lives in
+        - code [ref=e812]: dft_notes/python_codes/chapter_00/plots/01-hydrogen-1s.png
+        - text: . Every later chapter has scripts of comparable length and shape; once you have read this one, you have read the format of them all.
+      - code [ref=e816]: "# dft_notes/python_codes/chapter_00/01-hydrogen-1s.py import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt from pathlib import Path def hydrogen_1s_density(r, Z=1): \"\"\"Electron density of the hydrogen 1s orbital, |psi_1s(r)|^2.\"\"\" return (Z ** 3 / np.pi) * np.exp(-2.0 * Z r) def main(): r = np.linspace(0.0, 20.0, 400) rho = hydrogen_1s_density(r, Z=1) fig, ax = plt.subplots(figsize=(6, 4)) ax.plot(r, rho, color=\"#0a4\", linewidth=2) ax.set_xlabel(\"r (a0)\") ax.set_ylabel(r\"$\\rho_{\\rm 1s}(r)$ (a0$^{-3}$)\") ax.set_title(\"Hydrogen 1s electron density\") out = Path(__file__).parent / \"plots\" / \"01-hydrogen-1s.png\" out.parent.mkdir(parents=True, exist_ok=True) fig.tight_layout() fig.savefig(out, dpi=120) print(f\"Wrote {out}\") if __name__ == \"__main__\": main()"
+      - paragraph [ref=e817]:
+        - text: "A reader fluent in ‘numpy’ and ‘matplotlib’ should be able to read this script in under a minute and predict the shape of the figure before running it: an exponentially decaying curve, equal to"
+        - img [ref=e819]
+        - text: at
+        - img [ref=e838]
+        - text: and falling to
+        - img [ref=e848]
+        - text: by
+        - img [ref=e863]
+        - text: .
+      - blockquote [ref=e878]:
+        - paragraph [ref=e879]:
+          - strong [ref=e880]: Tip.
+          - text: "The full directory layout (what `chapter_00/’ looks like after this script has been run) is:"
+        - paragraph [ref=e881]: "```text dft_notes/python_codes/ ├── README.md └── chapter_00/ ├── 01-hydrogen-1s.py └── plots/ └── 01-hydrogen-1s.png ``’"
+        - paragraph [ref=e882]:
+          - text: The two-digit prefix (
+          - code [ref=e883]: 01-
+          - text: ") preserves the order of scripts within a chapter; if a future chapter-00 script gets added it would be ‘02-…py’ and its plot ‘02-….png`. This ordering matters because chapters read top-to-bottom."
+      - heading "The chapter structure template" [level=2] [ref=e884]
+      - paragraph [ref=e885]:
+        - text: Every content chapter (chapters 01 and later) is built from the
+        - strong [ref=e886]: same seven-part template
+        - text: . The template is enforced by
+        - link "agent:qa-reviewer" [ref=e887] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/agents/#the-chapter-rigor-checklist
+          - code [ref=e888]: agent:qa-reviewer
+        - text: and is reproduced verbatim from
+        - code [ref=e889]: agents.md
+        - text: ". Below, each part is described in plain language:"
+        - emphasis [ref=e890]: what it is for
+        - text: ", what level of detail to expect*, and *what the reader should take away."
+      - heading "1. The claim" [level=3] [ref=e891]
+      - paragraph [ref=e892]:
+        - text: The chapter opens with
+        - strong [ref=e893]: the headline result
+        - text: — the one equation the reader should remember a year from now. It is always a
+        - img [ref=e895]:
+          - generic [ref=e946]:
+            - img [ref=e947]
+            - img [ref=e963]
+        - text: with
+        - code [ref=e1056]: "\\eqref{eq:ch-NN-headline}"
+        - text: . In chapter 06 the claim is the Roothaan–Hall equation
+        - img [ref=e1058]
+        - text: ; in chapter 04 it is the Kohn–Sham eigenvalue equation. The claim is the
+        - emphasis [ref=e1077]: destination
+        - text: of the derivation; everything in the chapter is in service of it.
+      - paragraph [ref=e1078]:
+        - strong [ref=e1079]: What to expect.
+        - text: One to four numbered equations, stated without proof, followed by a one-paragraph statement of
+        - emphasis [ref=e1080]: what it means
+        - text: and *why it matters. No algebra here.
+      - paragraph [ref=e1081]:
+        - strong [ref=e1082]: What to take away.
+        - text: The reader should be able to write down the claim from memory after closing the chapter.
+      - heading "2. The derivation" [level=3] [ref=e1083]
+      - paragraph [ref=e1084]:
+        - text: The body of the chapter. The derivation takes the claim apart into the smaller facts it is built on, and shows —
+        - emphasis [ref=e1085]:
+          - text: "*step by ste"
+          - code [ref=e1086]: p*
+        - text: ", with every algebraic step explicit — how those smaller facts combine to give the claim. The author is bound by the “no step skipped” rule: no “by a straightforward manipulation”, no“after some algebra”, no “it can be shown that”.If a step is purely mechanical (expand, distribute, collect), the chapter says so in one line, but it writes the result."
+      - paragraph [ref=e1087]:
+        - strong [ref=e1088]: What to expect.
+        - text: Numbered sub-sections (e.g. “6.2 Why we need a basis”), each with its own numbered equations. Cross-references to equations in
+        - emphasis [ref=e1089]: other
+        - text: chapters by chapter link, cross-references to equations in
+        - emphasis [ref=e1090]: this
+        - text: chapter by
+        - code [ref=e1091]: "\\eqref{}"
+        - text: . Inline
+        - strong [ref=e1092]: Tip
+        - text: ","
+        - strong [ref=e1093]: Note
+        - text: ", and"
+        - strong [ref=e1094]: Warning
+        - text: callouts flag common pitfalls and limits of the derivation.
+      - paragraph [ref=e1095]:
+        - strong [ref=e1096]: What to take away.
+        - text: The reader should be able to redo the derivation on a blank page, in the same order, with the same intermediate steps. This is the test of whether the chapter has done its job.
+      - heading "3. The code" [level=3] [ref=e1097]
+      - paragraph [ref=e1098]:
+        - text: A runnable Python snippet that
+        - strong [ref=e1099]: produces the result of the chapter
+        - text: (or a piece of it). The snippet is
+        - emphasis [ref=e1100]: not
+        - text: written ad hoc; it is copied from a file in
+        - code [ref=e1101]: dft_notes/python_codes/chapter_NN/
+        - text: ", with the chapter-relative path of the original file in the comment header. The convention is two-digit prefix, dash, kebab-case slug,"
+        - code [ref=e1102]: .py
+        - text: . The companion script is run by
+        - code [ref=e1103]: agent:code-runner' to produce the PNG; the PNG is committed under
+        - text: "plots/`."
+      - paragraph [ref=e1104]:
+        - strong [ref=e1105]: What to expect.
+        - text: A real Python program, ~10–50 lines, that imports only
+        - code [ref=e1106]: numpy
+        - text: ","
+        - code [ref=e1107]: scipy
+        - text: ", and"
+        - code [ref=e1108]: matplotlib
+        - text: ’ (with
+        - code [ref=e1109]: matplotlib.use("Agg")
+        - text: "). No display is required. The snippet is self-contained: copy it into a file, run it, get a PNG."
+      - paragraph [ref=e1110]:
+        - strong [ref=e1111]: What to take away.
+        - text: The reader should be able to read the snippet and predict the output before running it, and should be able to modify it (change basis, change grid, change functional) and have the change take effect without restructuring the script.
+      - heading "4. The diagram" [level=3] [ref=e1112]
+      - paragraph [ref=e1113]:
+        - text: A Mermaid diagram that
+        - strong [ref=e1114]: summarises the chapter’s structure
+        - text: ". Typical choices: a flowchart of the algorithm, a state diagram of the iteration, a class diagram of the objects. The diagram is rendered client-side (CDN-loaded Mermaid), so it requires JavaScript to appear. The diagram is"
+        - emphasis [ref=e1115]: not
+        - text: a substitute for prose; it is a visual index into the chapter.
+      - paragraph [ref=e1116]:
+        - strong [ref=e1117]: What to expect.
+        - text: "One to three Mermaid blocks, each with a `%%{init: …}%%’ directive for layout hints. A short caption explaining what the diagram is and what the reader should take from it. Cross-references back to the prose sections the diagram summarises."
+      - paragraph [ref=e1118]:
+        - strong [ref=e1119]: What to take away.
+        - text: The reader should be able to draw the diagram from memory after closing the chapter, and should be able to point to each box and say what chapter section it corresponds to.
+      - heading "5. Worked example" [level=3] [ref=e1120]
+      - paragraph [ref=e1121]:
+        - text: A
+        - strong [ref=e1122]: fully worked numerical example
+        - text: that takes the chapter’s general result and applies it to a
+        - emphasis [ref=e1123]:
+          - text: specifi
+          - code [ref=e1124]: c*' system with *specifi
+          - text: c
+        - text: ’ numbers. Every quantity has a numerical value; every intermediate result is shown; the final answer is stated. The example should be small enough to verify by hand (in principle) and large enough to exercise the typical failure modes of the method.
+      - paragraph [ref=e1125]:
+        - strong [ref=e1126]: What to expect.
+        - text: The full numerical trace, often as a
+        - code [ref=e1127]: text
+        - text: ’ code block. A reference back to the code snippet (section 3) that produced the plot. The plot itself, included as a Markdown image tag pointing to
+        - code [ref=e1128]: dft_notes/python_codes/chapter_NN/plots/NN-slug.png
+        - text: .
+      - paragraph [ref=e1129]:
+        - strong [ref=e1130]: What to take away.
+        - text: The reader should be able to
+        - emphasis [ref=e1131]: reproduce
+        - text: the numbers — and should be encouraged to do so, by running the companion script.
+      - heading "6. Problems" [level=3] [ref=e1132]
+      - paragraph [ref=e1133]:
+        - text: Three problems per chapter,
+        - strong [ref=e1134]: ranging easy → hard
+        - text: ", each followed by a fully worked solution. Problems use"
+        - code [ref=e1135]: <details class="problem">' for the question and
+      - group [ref=e1136]: ’ for the answer, so the reader can think first and reveal later. Easy problems test recall of the chapter’s claim. Medium problems test application of the derivation to a new but related system. Hard problems test synthesis across multiple parts of the chapter (or across multiple chapters).
+      - paragraph
+      - paragraph [ref=e1137]:
+        - strong [ref=e1138]: What to expect.
+        - text: Three to five problems per chapter. Solutions are written in the same step-by-step style as the derivation, and they end with a boxed final answer.
+      - paragraph [ref=e1139]:
+        - strong [ref=e1140]: What to take away.
+        - text: The reader who can solve all three problems unaided has genuinely understood the chapter.
+      - heading "7. What we left out" [level=3] [ref=e1141]
+      - paragraph [ref=e1142]:
+        - text: A
+        - strong [ref=e1143]: honest, explicit list of the topics the chapter does not cover
+        - text: . This is part of being honest about the scope. Two to five bullets is the norm. The list is written in the same tone as the rest of the chapter; it is not an apology, it is a hand-off to the next chapter or to a future note.
+      - paragraph [ref=e1144]:
+        - strong [ref=e1145]: What to expect.
+        - text: A bulleted list, with one-line explanations of
+        - emphasis [ref=e1146]: why
+        - text: the topic is omitted. Cross-references forward to later chapters when the omitted topic is developed there.
+      - paragraph [ref=e1147]:
+        - strong [ref=e1148]: What to take away.
+        - text: The reader should know, after reading this section, exactly what the chapter is silent on — and where to look if they need that material.
+      - heading "Roadmap" [level=2] [ref=e1149]
+      - paragraph [ref=e1150]:
+        - text: The notes are organised as a
+        - strong [ref=e1151]: dependency graph
+        - text: ", not a strictly linear sequence. The graph is shown in two views: a"
+        - emphasis [ref=e1152]: flat
+        - text: chapter-by-chapter view, and a
+        - emphasis [ref=e1153]: "trac`k"
+        - text: ’ view that groups chapters by what they teach.
+      - heading "Chapter-by-chapter dependency graph" [level=3] [ref=e1154]
+      - paragraph [ref=e1155]:
+        - text: Each box is a chapter. An arrow
+        - img [ref=e1157]
+        - text: means “chapter
+        - img [ref=e1167]
+        - text: presumes the reader has read chapter
+        - img [ref=e1173]
+        - text: ”. The orange-bordered box is the chapter you are reading.
+      - figure [ref=e1179]:
+        - code [ref=e1180]:
+          - document [ref=e1181]:
+            - generic [ref=e1193]:
+              - generic [ref=e1199]: Chapter 00Welcome
+              - generic [ref=e1205]: Chapter 01Schrödinger &postulates
+              - generic [ref=e1211]: Chapter 02Many-bodyproblem
+              - generic [ref=e1217]: Chapter 03Hartree-Fock
+              - generic [ref=e1223]: Chapter 04Kohn-Sham
+              - generic [ref=e1229]: Chapter 05XC functionals
+              - generic [ref=e1235]: Chapter 06Basis sets
+              - generic [ref=e1241]: Chapter 07Solids & PBC
+              - generic [ref=e1247]: Chapter 08Pseudopotentials
+              - generic [ref=e1253]: Chapter 09Forces &geometry opt
+              - generic [ref=e1259]: Chapter 10Vibrations &phonons
+        - button "Download this diagram as a PNG" [ref=e1260] [cursor=pointer]:
+          - img [ref=e1261]
+          - generic [ref=e1264]: Download PNG
+      - paragraph [ref=e1265]: "The graph has one source (chapter 00) and a “fan-in” structure in the middle: chapters 03 and 04 both depend on chapter 02 and both feed chapter 05. This is deliberate — Hartree–Fock and Kohn–Sham are alternative answers to the same question (chapter 02’s “what is the best independent-particle approximation?”), and the two paths merge again when we discuss exchange– correlation functionals."
+      - blockquote [ref=e1266]:
+        - paragraph [ref=e1267]:
+          - strong [ref=e1268]: Reading implication.
+          - text: If your interest is in
+          - emphasis [ref=e1269]: molecular
+          - text: DFT and you do not care about solids or phonons, you can read chapters 00 → 01 → 02 → 04 → 05 → 06 in sequence, then stop. Chapters 03, 07, 08, 09, 10 are not on your critical path.
+      - heading "Track view — theory, methods, applications" [level=3] [ref=e1270]
+      - paragraph [ref=e1271]:
+        - text: The same chapters grouped by what they teach. This view is useful when you already know which
+        - emphasis [ref=e1272]: "kin`d"
+        - text: ’ of question you are asking (“how do I represent a periodic system?” → methods track; “where does the functional come from?” → theory track).
+      - figure [ref=e1274]:
+        - code [ref=e1275]:
+          - document [ref=e1276]:
+            - generic [ref=e1278]:
+              - generic [ref=e1279]:
+                - generic [ref=e1284]: Applications track
+                - generic [ref=e1289]: Methods track
+                - generic [ref=e1294]: Theory track
+              - generic [ref=e1295]:
+                - generic [ref=e1301]: Ch 10Phonons
+                - generic [ref=e1307]: Ch 06Basis sets
+                - generic [ref=e1313]: Ch 07PBC & Bloch
+                - generic [ref=e1319]: Ch 08Pseudopotentials
+                - generic [ref=e1325]: Ch 09Forces & opt
+                - generic [ref=e1331]: Ch 01Postulates
+                - generic [ref=e1337]: Ch 02Many-body
+                - generic [ref=e1343]: Ch 03Hartree-Fock
+                - generic [ref=e1349]: Ch 04Kohn-Sham
+                - generic [ref=e1355]: Ch 05XC functionals
+        - button "Download this diagram as a PNG" [ref=e1356] [cursor=pointer]:
+          - img [ref=e1357]
+          - generic [ref=e1360]: Download PNG
+      - paragraph [ref=e1361]:
+        - text: The track view makes the same information as the dependency graph, but arranges it so that you can see the
+        - emphasis [ref=e1362]: kinds
+        - text: of chapters. The Theory track is essential for everyone; the Methods track is essential for practitioners; the Applications track is essential for materials work but optional for chemical work.
+      - heading "Worked example — anatomy of a chapter" [level=2] [ref=e1363]
+      - paragraph [ref=e1364]:
+        - text: The fastest way to internalise the template is to
+        - emphasis [ref=e1365]:
+          - text: "*take an existing chapter apart with the template in min"
+          - code [ref=e1366]: d*
+        - text: . This section does that for the first half of
+        - link "chapter 06" [ref=e1367] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: (basis sets). Read the chapter alongside this example; the two together should make the structure obvious.
+      - heading "Locate the claim" [level=3] [ref=e1368]
+      - paragraph [ref=e1369]: "Open chapter 06 and look for the first numbered equation. In chapter 06 it is in section 6.1 and is the Roothaan–Hall matrix equation:"
+      - img [ref=e1371]
+      - paragraph [ref=e1392]:
+        - text: That is
+        - strong [ref=e1393]: the claim
+        - text: "of chapter 06:"
+        - emphasis [ref=e1394]: the Fock eigenvalue problem in a finite basis is a generalised matrix eigenproblem
+        - text: ". The label `eq:ch-06-roothaan-hall’ in the actual chapter file is what allows the rest of the chapter (and other chapters) to refer to this equation."
+      - heading "Locate the derivation" [level=3] [ref=e1395]
+      - paragraph [ref=e1396]:
+        - text: "The derivation is the section that follows the claim. In chapter 06 it is the rest of section 6.1: it expands the orbital"
+        - img [ref=e1398]
+        - text: in the basis
+        - img [ref=e1407]
+        - text: ", multiplies by"
+        - img [ref=e1417]
+        - text: ", integrates, and collects the integrals into matrices. Every step is shown. The cross-reference to the claim is at the end of the derivation in the phrase “Collecting all"
+        - img [ref=e1428]
+        - text: MOs into one matrix gives
+        - code [ref=e1433]: "\\eqref{eq:ch-06-roothaan-hall}"
+        - text: .”
+      - heading "Locate the diagram, worked example, and problems" [level=3] [ref=e1434]
+      - paragraph [ref=e1435]: "Further down the chapter, you will find:"
+      - list [ref=e1436]:
+        - listitem [ref=e1437]:
+          - text: a
+          - strong [ref=e1438]: Mermaid diagram
+          - text: in section 6.10 (workflow end-to-end);
+        - listitem [ref=e1439]:
+          - text: a
+          - strong [ref=e1440]: worked example
+          - text: in section 6.9 (STO-3G H
+          - img [ref=e1442]
+          - text: with full numbers, including the SCF output and a plot of the MOs);
+        - listitem [ref=e1448]:
+          - strong [ref=e1449]: three problems
+          - text: in section 6.11 (basis-set counting, the Gaussian product theorem, plane-wave count for water in a 10 Å cell).
+      - heading "Locate the “What we left out”" [level=3] [ref=e1450]
+      - paragraph [ref=e1451]:
+        - text: "The final section of chapter 06 (section 6.12) lists four deliberate omissions: BSSE, numerical atom-centred orbitals, density fitting, and relativistic ECPs. The author explains"
+        - emphasis [ref=e1452]: why
+        - text: each was omitted (out of scope, developed in chapter 08, out of scope, etc.). This is the “catch” for the chapter as a whole.
+      - heading "A note on density across the roadmap" [level=3] [ref=e1453]:
+        - text: A note on density
+        - img [ref=e1455]
+        - text: across the roadmap
+      - paragraph [ref=e1460]:
+        - text: To see the
+        - emphasis [ref=e1461]: cross-chapter
+        - text: version of the same idea, follow the symbol
+        - img [ref=e1463]
+        - text: — the electron density — from chapter 01 to chapter 06. It is the single most reused symbol in the notes.
+      - table [ref=e1475]:
+        - rowgroup [ref=e1476]:
+          - row "Chapter Role of" [ref=e1477]:
+            - columnheader "Chapter" [ref=e1478]
+            - columnheader "Role of" [ref=e1479]:
+              - text: Role of
+              - img [ref=e1481]
+        - rowgroup [ref=e1493]:
+          - 'row "01 Defined from the wavefunction: ." [ref=e1494]':
+            - cell "01" [ref=e1495]
+            - 'cell "Defined from the wavefunction: ." [ref=e1496]':
+              - text: "Defined from the wavefunction:"
+              - img [ref=e1498]
+              - text: .
+          - 'row "03 The Hartree–Fock density is the trace of the one-particle density matrix: with ." [ref=e1570]':
+            - cell "03" [ref=e1571]
+            - 'cell "The Hartree–Fock density is the trace of the one-particle density matrix: with ." [ref=e1572]':
+              - text: "The Hartree–Fock density is the trace of the one-particle density matrix:"
+              - img [ref=e1574]
+              - text: with
+              - img [ref=e1618]
+              - text: .
+          - row "04 The Kohn–Sham density is built the same way, but from the KS orbitals. It is theonlyinput to the Hohenberg–Kohn functional." [ref=e1639]:
+            - cell "04" [ref=e1640]
+            - cell "The Kohn–Sham density is built the same way, but from the KS orbitals. It is theonlyinput to the Hohenberg–Kohn functional." [ref=e1641]:
+              - text: The Kohn–Sham density is built the same way, but from the KS orbitals. It is the
+              - emphasis [ref=e1642]: only
+              - text: input to the Hohenberg–Kohn functional.
+          - row "05 The exchange–correlation energy is a functional of (and possibly ); is the corresponding potential." [ref=e1643]:
+            - cell "05" [ref=e1644]
+            - cell "The exchange–correlation energy is a functional of (and possibly ); is the corresponding potential." [ref=e1645]:
+              - text: The exchange–correlation energy is a functional of
+              - img [ref=e1647]
+              - text: (and possibly
+              - img [ref=e1653]
+              - text: );
+              - img [ref=e1661]
+              - text: is the corresponding potential.
+          - row "06 In a basis, , where is the density matrix. The diagonal is the Mulliken population on basis function ." [ref=e1691]:
+            - cell "06" [ref=e1692]
+            - cell "In a basis, , where is the density matrix. The diagonal is the Mulliken population on basis function ." [ref=e1693]:
+              - text: In a basis,
+              - img [ref=e1695]
+              - text: ", where"
+              - img [ref=e1750]
+              - text: is the density matrix. The diagonal
+              - img [ref=e1757]
+              - text: is the Mulliken population on basis function
+              - img [ref=e1769]
+              - text: .
+      - paragraph [ref=e1774]: Following one symbol across chapters is a good way to verify that you have understood the cross-references.
+      - heading "Notation" [level=2] [ref=e1775]
+      - paragraph [ref=e1776]: We use the following conventions consistently. When a chapter deviates, it says so at the top.
+      - heading "Position, geometry, and units" [level=3] [ref=e1777]
+      - table [ref=e1778]:
+        - rowgroup [ref=e1779]:
+          - row "Symbol Meaning" [ref=e1780]:
+            - columnheader "Symbol" [ref=e1781]
+            - columnheader "Meaning" [ref=e1782]
+        - rowgroup [ref=e1783]:
+          - row "Position vector in" [ref=e1784]:
+            - cell [ref=e1785]:
+              - img [ref=e1787]
+            - cell "Position vector in" [ref=e1793]:
+              - text: Position vector in
+              - img [ref=e1795]
+          - row "Position of nucleus" [ref=e1804]:
+            - cell [ref=e1805]:
+              - img [ref=e1807]
+            - cell "Position of nucleus" [ref=e1816]:
+              - text: Position of nucleus
+              - img [ref=e1818]
+          - row "Centres of basis functions" [ref=e1823]:
+            - cell [ref=e1824]:
+              - img [ref=e1826]
+            - cell "Centres of basis functions" [ref=e1841]
+          - row "Bohr radius (~0.529 Å)" [ref=e1842]:
+            - cell [ref=e1843]:
+              - img [ref=e1845]
+            - cell "Bohr radius (~0.529 Å)" [ref=e1853]
+          - row "Hartree energy unit (~27.21 eV)" [ref=e1854]:
+            - cell [ref=e1855]:
+              - img [ref=e1857]
+            - cell "Hartree energy unit (~27.21 eV)" [ref=e1865]
+          - row "Unit-cell volume (periodic systems)" [ref=e1866]:
+            - cell [ref=e1867]:
+              - img [ref=e1869]
+            - cell "Unit-cell volume (periodic systems)" [ref=e1874]
+          - row "Nuclear charge of nucleus" [ref=e1875]:
+            - cell [ref=e1876]:
+              - img [ref=e1878]
+            - cell "Nuclear charge of nucleus" [ref=e1886]:
+              - text: Nuclear charge of nucleus
+              - img [ref=e1888]
+          - row "Number of electrons" [ref=e1893]:
+            - cell [ref=e1894]:
+              - img [ref=e1896]
+            - cell "Number of electrons" [ref=e1901]
+      - paragraph [ref=e1902]:
+        - text: Atomic units (
+        - img [ref=e1904]
+        - text: ) are used throughout unless a chapter is explicitly working in SI or eV.
+      - heading "Operators" [level=3] [ref=e1924]
+      - table [ref=e1925]:
+        - rowgroup [ref=e1926]:
+          - row "Symbol Meaning" [ref=e1927]:
+            - columnheader "Symbol" [ref=e1928]
+            - columnheader "Meaning" [ref=e1929]
+        - rowgroup [ref=e1930]:
+          - row "Hamiltonian operator" [ref=e1931]:
+            - cell [ref=e1932]:
+              - img [ref=e1934]
+            - cell "Hamiltonian operator" [ref=e1943]
+          - row "Kinetic energy operator," [ref=e1944]:
+            - cell [ref=e1945]:
+              - img [ref=e1947]
+            - cell "Kinetic energy operator," [ref=e1956]:
+              - text: Kinetic energy operator,
+              - img [ref=e1958]
+          - row "Potential energy operator (collective)" [ref=e1990]:
+            - cell [ref=e1991]:
+              - img [ref=e1993]
+            - cell "Potential energy operator (collective)" [ref=e2002]
+          - row "Electron–nuclear attraction" [ref=e2003]:
+            - cell [ref=e2004]:
+              - img [ref=e2006]
+            - cell "Electron–nuclear attraction" [ref=e2021]
+          - row "Electron–electron repulsion" [ref=e2022]:
+            - cell [ref=e2023]:
+              - img [ref=e2025]
+            - cell "Electron–electron repulsion" [ref=e2040]
+          - row "Fock operator (Hartree–Fock)" [ref=e2041]:
+            - cell [ref=e2042]:
+              - img [ref=e2044]
+            - cell "Fock operator (Hartree–Fock)" [ref=e2053]
+          - row "Kohn–Sham Hamiltonian" [ref=e2054]:
+            - cell [ref=e2055]:
+              - img [ref=e2057]
+            - cell "Kohn–Sham Hamiltonian" [ref=e2070]
+          - row "Exchange–correlation potential" [ref=e2071]:
+            - cell [ref=e2072]:
+              - img [ref=e2074]
+            - cell "Exchange–correlation potential" [ref=e2087]
+          - row "Generic operators" [ref=e2088]:
+            - cell [ref=e2089]:
+              - img [ref=e2091]
+            - cell "Generic operators" [ref=e2112]
+          - row "Hermitian conjugate" [ref=e2113]:
+            - cell [ref=e2114]:
+              - img [ref=e2116]
+            - cell "Hermitian conjugate" [ref=e2121]
+      - heading "Wavefunctions, states, and densities" [level=3] [ref=e2122]
+      - table [ref=e2123]:
+        - rowgroup [ref=e2124]:
+          - row "Symbol Meaning" [ref=e2125]:
+            - columnheader "Symbol" [ref=e2126]
+            - columnheader "Meaning" [ref=e2127]
+        - rowgroup [ref=e2128]:
+          - row "Single-particle wavefunction" [ref=e2129]:
+            - cell [ref=e2130]:
+              - img [ref=e2132]
+            - cell "Single-particle wavefunction" [ref=e2137]
+          - row "Many-body wavefunction" [ref=e2138]:
+            - cell [ref=e2139]:
+              - img [ref=e2141]
+            - cell "Many-body wavefunction" [ref=e2146]
+          - row "State in a Hilbert space (ket)" [ref=e2147]:
+            - cell [ref=e2148]:
+              - img [ref=e2150]
+            - cell "State in a Hilbert space (ket)" [ref=e2159]
+          - row "Inner product" [ref=e2160]:
+            - cell [ref=e2161]:
+              - img [ref=e2163]
+            - cell "Inner product" [ref=e2176]
+          - row "The -th (Kohn–Sham or Hartree–Fock) orbital" [ref=e2177]:
+            - cell [ref=e2178]:
+              - img [ref=e2180]
+            - cell "The -th (Kohn–Sham or Hartree–Fock) orbital" [ref=e2195]:
+              - text: The
+              - img [ref=e2197]
+              - text: "-th (Kohn–Sham or Hartree–Fock) orbital"
+          - row "The -th orbital energy" [ref=e2202]:
+            - cell [ref=e2203]:
+              - img [ref=e2205]
+            - cell "The -th orbital energy" [ref=e2213]:
+              - text: The
+              - img [ref=e2215]
+              - text: "-th orbital energy"
+          - row "One-particle electron density" [ref=e2220]:
+            - cell [ref=e2221]:
+              - img [ref=e2223]
+            - cell "One-particle electron density" [ref=e2235]
+          - row "Density functional" [ref=e2236]:
+            - cell [ref=e2237]:
+              - img [ref=e2239]
+            - cell "Density functional" [ref=e2250]
+          - row "Exchange–correlation energy functional" [ref=e2251]:
+            - cell [ref=e2252]:
+              - img [ref=e2254]
+            - cell "Exchange–correlation energy functional" [ref=e2269]
+      - heading "Basis set notation (chapter 06)" [level=3] [ref=e2270]
+      - table [ref=e2271]:
+        - rowgroup [ref=e2272]:
+          - row "Symbol Meaning" [ref=e2273]:
+            - columnheader "Symbol" [ref=e2274]
+            - columnheader "Meaning" [ref=e2275]
+        - rowgroup [ref=e2276]:
+          - row "Set of basis functions," [ref=e2277]:
+            - cell [ref=e2278]:
+              - img [ref=e2280]
+            - cell "Set of basis functions," [ref=e2289]:
+              - text: Set of
+              - img [ref=e2291]
+              - text: basis functions,
+              - img [ref=e2297]
+          - 'row "MO coefficient: orbital in terms of basis function" [ref=e2314]':
+            - cell [ref=e2315]:
+              - img [ref=e2317]
+            - 'cell "MO coefficient: orbital in terms of basis function" [ref=e2328]':
+              - text: "MO coefficient: orbital"
+              - img [ref=e2330]
+              - text: in terms of basis function
+              - img [ref=e2336]
+          - row "Overlap matrix element" [ref=e2341]:
+            - cell [ref=e2342]:
+              - img [ref=e2344]
+            - cell "Overlap matrix element" [ref=e2355]:
+              - text: Overlap matrix element
+              - img [ref=e2357]
+          - row "Fock matrix element" [ref=e2376]:
+            - cell [ref=e2377]:
+              - img [ref=e2379]
+            - cell "Fock matrix element" [ref=e2390]:
+              - text: Fock matrix element
+              - img [ref=e2392]
+          - row "Density matrix in the AO basis" [ref=e2419]:
+            - cell [ref=e2420]:
+              - img [ref=e2422]
+            - cell "Density matrix in the AO basis" [ref=e2428]
+          - row "Matrix of MO coefficients" [ref=e2429]:
+            - cell [ref=e2430]:
+              - img [ref=e2432]
+            - cell "Matrix of MO coefficients" [ref=e2438]
+          - row "Plane-wave kinetic-energy cutoff" [ref=e2439]:
+            - cell [ref=e2440]:
+              - img [ref=e2442]
+            - cell "Plane-wave kinetic-energy cutoff" [ref=e2452]
+          - row "Largest retained reciprocal-lattice vector" [ref=e2453]:
+            - cell [ref=e2454]:
+              - img [ref=e2456]
+            - cell "Largest retained reciprocal-lattice vector" [ref=e2466]
+          - row "Number of plane waves" [ref=e2467]:
+            - cell [ref=e2468]:
+              - img [ref=e2470]
+            - cell "Number of plane waves" [ref=e2479]
+          - row "Bloch wavevector (periodic systems)" [ref=e2480]:
+            - cell [ref=e2481]:
+              - img [ref=e2483]
+            - cell "Bloch wavevector (periodic systems)" [ref=e2489]
+          - row "Reciprocal-lattice vector" [ref=e2490]:
+            - cell [ref=e2491]:
+              - img [ref=e2493]
+            - cell "Reciprocal-lattice vector" [ref=e2499]
+      - heading "Linear algebra and indices" [level=3] [ref=e2500]
+      - table [ref=e2501]:
+        - rowgroup [ref=e2502]:
+          - row "Symbol Meaning" [ref=e2503]:
+            - columnheader "Symbol" [ref=e2504]
+            - columnheader "Meaning" [ref=e2505]
+        - rowgroup [ref=e2506]:
+          - row "Volume integral over all of" [ref=e2507]:
+            - cell [ref=e2508]:
+              - img [ref=e2510]
+            - cell "Volume integral over all of" [ref=e2520]:
+              - text: Volume integral over all of
+              - img [ref=e2522]
+          - row "Gradient" [ref=e2531]:
+            - cell [ref=e2532]:
+              - img [ref=e2534]
+            - cell "Gradient" [ref=e2539]
+          - row "Laplacian" [ref=e2540]:
+            - cell [ref=e2541]:
+              - img [ref=e2543]
+            - cell "Laplacian" [ref=e2551]
+          - row "/ Identity matrix" [ref=e2552]:
+            - cell / [ref=e2553]:
+              - img [ref=e2555]
+              - text: /
+              - img [ref=e2562]
+            - cell "Identity matrix" [ref=e2568]
+          - row "Partial derivative" [ref=e2569]:
+            - cell [ref=e2570]:
+              - img [ref=e2572]
+            - cell "Partial derivative" [ref=e2584]
+          - row "Functional variation; also Kronecker delta" [ref=e2585]:
+            - cell [ref=e2586]:
+              - img [ref=e2588]
+            - cell "Functional variation; also Kronecker delta" [ref=e2593]
+          - row "Orbital (state) indices" [ref=e2594]:
+            - cell [ref=e2595]:
+              - img [ref=e2597]
+            - cell "Orbital (state) indices" [ref=e2606]
+          - row "Basis function indices" [ref=e2607]:
+            - cell [ref=e2608]:
+              - img [ref=e2610]
+            - cell "Basis function indices" [ref=e2627]
+          - row "Primitive Gaussian indices (chapter 06)" [ref=e2628]:
+            - cell [ref=e2629]:
+              - img [ref=e2631]
+            - cell "Primitive Gaussian indices (chapter 06)" [ref=e2648]
+          - row "Angular momentum quantum numbers" [ref=e2649]:
+            - cell [ref=e2650]:
+              - img [ref=e2652]
+            - cell "Angular momentum quantum numbers" [ref=e2661]
+          - row "Principal quantum number / band index" [ref=e2662]:
+            - cell [ref=e2663]:
+              - img [ref=e2665]
+            - cell "Principal quantum number / band index" [ref=e2670]
+      - heading "Special symbols" [level=3] [ref=e2671]
+      - table [ref=e2672]:
+        - rowgroup [ref=e2673]:
+          - row "Symbol Meaning" [ref=e2674]:
+            - columnheader "Symbol" [ref=e2675]
+            - columnheader "Meaning" [ref=e2676]
+        - rowgroup [ref=e2677]:
+          - row "Expectation value of" [ref=e2678]:
+            - cell [ref=e2679]:
+              - img [ref=e2681]
+            - cell "Expectation value of" [ref=e2694]:
+              - text: Expectation value of
+              - img [ref=e2696]
+          - row "Time derivative (TDDFT chapters)" [ref=e2705]:
+            - cell [ref=e2706]:
+              - img [ref=e2708]
+            - cell "Time derivative (TDDFT chapters)" [ref=e2716]
+          - row "Kronecker delta" [ref=e2717]:
+            - cell [ref=e2718]:
+              - img [ref=e2720]
+            - cell "Kronecker delta" [ref=e2731]
+          - row "Error function" [ref=e2732]:
+            - cell [ref=e2733]:
+              - img [ref=e2735]
+            - cell "Error function" [ref=e2742]
+          - row "Boys function (chapter 06)" [ref=e2743]:
+            - cell [ref=e2744]:
+              - img [ref=e2746]
+            - cell "Boys function (chapter 06)" [ref=e2760]
+          - row "Spherical harmonic" [ref=e2761]:
+            - cell [ref=e2762]:
+              - img [ref=e2764]
+            - cell "Spherical harmonic" [ref=e2774]
+          - row "Hermite polynomial" [ref=e2775]:
+            - cell [ref=e2776]:
+              - img [ref=e2778]
+            - cell "Hermite polynomial" [ref=e2786]
+          - row "Laguerre polynomial" [ref=e2787]:
+            - cell [ref=e2788]:
+              - img [ref=e2790]
+            - cell "Laguerre polynomial" [ref=e2798]
+      - paragraph [ref=e2799]: A chapter that needs a symbol not in this table will introduce it with a one-line definition at first use, and will repeat the definition if the symbol is reused after a chapter boundary.
+      - heading "What isnotin scope" [level=2] [ref=e2800]:
+        - text: What is
+        - emphasis [ref=e2801]: not
+        - text: in scope
+      - paragraph [ref=e2802]: "These notes deliberately stop at the Kohn–Sham equations and the practical zoo of exchange–correlation functionals. The following are either out of scope or sketched only briefly:"
+      - list [ref=e2803]:
+        - listitem [ref=e2804]:
+          - strong [ref=e2805]: Relativistic DFT.
+          - text: Spin-orbit coupling, the Dirac equation, four- component methods.
+        - listitem [ref=e2806]:
+          - strong [ref=e2807]: Strong correlation.
+          - text: DFT+U, DMFT, multireference methods, quantum Monte Carlo.
+        - listitem [ref=e2808]:
+          - strong [ref=e2809]: Time-dependent DFT.
+          - text: The Runge–Gross theorem, the linear-response regime, excitons.
+        - listitem [ref=e2810]:
+          - strong [ref=e2811]: Embedding.
+          - text: ONIOM, QM/MM, subsystem DFT.
+        - listitem [ref=e2812]:
+          - strong [ref=e2813]: Materials-specific machinery.
+          - text: Phonons, electron-phonon coupling, Wannier functions, Berry-phase quantities.
+      - paragraph [ref=e2814]: Each of those is a separate knowledge base.
+      - heading "A short reading list" [level=2] [ref=e2815]
+      - table [ref=e2816]:
+        - rowgroup [ref=e2817]:
+          - row "Resource Use it for" [ref=e2818]:
+            - columnheader "Resource" [ref=e2819]
+            - columnheader "Use it for" [ref=e2820]
+        - rowgroup [ref=e2821]:
+          - row "Parr & Yang,Density-Functional Theory of Atoms and Molecules(1989) The classical text. Dense but complete." [ref=e2822]:
+            - cell "Parr & Yang,Density-Functional Theory of Atoms and Molecules(1989)" [ref=e2823]:
+              - text: Parr & Yang,
+              - emphasis [ref=e2824]: Density-Functional Theory of Atoms and Molecules
+              - text: (1989)
+            - cell "The classical text. Dense but complete." [ref=e2825]
+          - row "Engel & Dreizler,Density Functional Theory(2011) A gentler, more modern alternative." [ref=e2826]:
+            - cell "Engel & Dreizler,Density Functional Theory(2011)" [ref=e2827]:
+              - text: Engel & Dreizler,
+              - emphasis [ref=e2828]: Density Functional Theory
+              - text: (2011)
+            - cell "A gentler, more modern alternative." [ref=e2829]
+          - row "Burke,The ABC of DFT(ABC of DFT) A 40-page primer. Read this first." [ref=e2830]:
+            - cell "Burke,The ABC of DFT(ABC of DFT)" [ref=e2831]:
+              - text: Burke,
+              - emphasis [ref=e2832]: The ABC of DFT
+              - text: (
+              - link "ABC of DFT" [ref=e2833] [cursor=pointer]:
+                - /url: https://dft.uci.edu/doc/ABC_of_DFT.pdf
+              - text: )
+            - cell "A 40-page primer. Read this first." [ref=e2834]
+          - row "Koch & Holthausen,A Chemist’s Guide to DFT(2nd ed., 2001) For the chemistry-oriented practitioner." [ref=e2835]:
+            - cell "Koch & Holthausen,A Chemist’s Guide to DFT(2nd ed., 2001)" [ref=e2836]:
+              - text: Koch & Holthausen,
+              - emphasis [ref=e2837]: A Chemist’s Guide to DFT
+              - text: (2nd ed., 2001)
+            - cell "For the chemistry-oriented practitioner." [ref=e2838]
+          - row "Mardirossian & Head-Gordon,Thirty Years of Density Functional Theory(2017) The modern XC-functional landscape." [ref=e2839]:
+            - cell "Mardirossian & Head-Gordon,Thirty Years of Density Functional Theory(2017)" [ref=e2840]:
+              - text: Mardirossian & Head-Gordon,
+              - emphasis [ref=e2841]: Thirty Years of Density Functional Theory
+              - text: (2017)
+            - cell "The modern XC-functional landscape." [ref=e2842]
+      - heading "Problems" [level=2] [ref=e2843]
+      - paragraph [ref=e2844]:
+        - text: The problems in this chapter are *met
+        - code [ref=e2845]: a*
+        - text: ": they ask you to use the template, the notation, and the roadmap to navigate the rest of the notes, rather than to do new DFT calculations. In later chapters the problems are DFT problems proper."
+      - group [ref=e2846]:
+        - generic "▸ Problem 1 (easy) — Locate the claim" [ref=e2847] [cursor=pointer]
+        - text: "Open [chapter 06](/DFT-notes/dft-notes/chapter-06/) and look at section 6.1. Write down: 1. the *label* of the first numbered equation (the \"headline\" of chapter 06); 2. the *symbol* of the second numbered equation in section 6.1 (the explicit form of and ); 3. one sentence saying *what physical claim* the chapter is making. Do not skip ahead; the answer is all in section 6.1."
+      - group [ref=e2848]:
+        - generic "▸ Show answer" [ref=e2849] [cursor=pointer]
+        - text: "1. The first numbered equation in section 6.1 is the basis-set expansion of the orbital, with label `eq:ch-06-basis-expansion`: The *headline* of the chapter (the equation that is the destination of the derivation) is the next one, with label `eq:ch-06-roothaan-hall`: 2. The explicit forms are in `eq:ch-06-fock-overlap`: 3. The claim is: *the Fock eigenvalue equation in a finite, non-orthogonal basis is a generalised matrix eigenproblem, with the Fock matrix on the left, the overlap matrix on the right, and the MO coefficients as eigenvectors.* This exercise reinforces the discipline of always reading the *labels* of equations, not just their visual form. Cross- references in later chapters use the labels, so the labels are how you navigate the notes."
+      - group [ref=e2850]:
+        - generic "▸ Problem 2 (easy) — Translate the symbols" [ref=e2851] [cursor=pointer]
+        - text: For each of the following expressions, write a one-sentence "translation" into words. Use only the notation table in this chapter; do not look ahead. 1. 2. 3. (real orbitals, closed shell) 4.
+      - group [ref=e2852]:
+        - generic "▸ Show answer" [ref=e2853] [cursor=pointer]
+        - text: "1. The matrix element of the Fock operator between basis functions and . In a basis-set code this is computed as an integral over of . 2. The electron density at point in a closed-shell system, summing the squared modulus of each doubly-occupied spatial orbital. The factor of 2 accounts for spin pairing. 3. The density matrix in the AO basis is twice the outer product of the occupied MO coefficient matrix with its Hermitian conjugate. (This identity is exact only for real orbitals in a closed shell with even; in general with diagonal in the occupation numbers.) 4. The Kohn–Sham total energy as a functional of the density: the non-interacting kinetic energy, the electron–external- potential interaction, the classical Hartree (Coulomb) energy, and the exchange–correlation energy. (Note that is *not* the true kinetic energy of the interacting system; the difference is absorbed into .)"
+      - group [ref=e2854]:
+        - generic "▸ Problem 3 (medium) — Hand-diagonalise a 2×2 matrix" [ref=e2855] [cursor=pointer]
+        - text: "This is a self-test of the linear-algebra prerequisite. Diagonalise the matrix 1. Write out the characteristic polynomial and find its roots. 2. For each eigenvalue, find an eigenvector (any normalisation is fine; you may use unnormalised vectors and normalise at the end). 3. Verify that the two eigenvectors are orthogonal. Verify that the matrix is Hermitian and that the eigenvalues are real. You should be able to do this with pen and paper in under five minutes. If you cannot, revisit the *Linear algebr`a*' bullet in *Mathematical prerequisites* above."
+      - group [ref=e2856]:
+        - generic "▸ Show answer" [ref=e2857] [cursor=pointer]
+        - text: "**Step 1.** The characteristic polynomial is Setting it to zero: , so , giving the two roots **Step 2.** For , the eigenvector satisfies , i.e. Take . After normalisation, . For , the eigenvector satisfies , i.e. Take , normalised to . **Step 3.** Inner product: . ✓ Hermitian: (real symmetric), so is Hermitian. ✓ Eigenvalues are and , both real. ✓ The spectral decomposition is"
+      - group [ref=e2858]:
+        - generic "▸ Problem 4 (medium) — Hello world, in numpy" [ref=e2859] [cursor=pointer]
+        - text: "Write a short Python program (no more than 15 lines, not counting comments) that: 1. Constructs the matrix from [Problem 3](#problem-3-medium--hand-diagonalise-a-2x2-matrix) as a `numpy.ndarray`. 2. Calls `numpy.linalg.eigh' to compute its eigenvalues and eigenvectors. 3. Prints the eigenvalues, the eigenvector matrix , and verifies that is diagonal and that to within `1e-12`. You may use the `hello world' script in *Programming prerequisites* as a model for the file layout. You do not need to produce a plot."
+      - group [ref=e2860]:
+        - generic "▸ Show answer" [ref=e2861] [cursor=pointer]
+        - text: "```python import numpy as np A = np.array([[2.0, 1.0], [1.0, 2.0]]) evals, U = np.linalg.eigh(A) print(\"eigenvalues:\", evals) # [1. 3.] Adiag = U.conj().T @ A @ U print(\"U^dag A U =\", Adiag) print(\"U^dag U - I =\", U.conj().T @ U - np.eye(2)) assert np.allclose(Adiag, np.diag(evals)) assert np.allclose(U.conj().T @ U, np.eye(2)) ``` The output is ```text eigenvalues: [1. 3.] U^dag A U = [[1. 0.] [0. 3.]] U^dag U - I = [[0. 0.] [0. 0.]] ``` which confirms the hand calculation of Problem 3 and the spectral theorem itself: a real symmetric matrix is diagonalised by an orthogonal matrix to a real diagonal matrix. A production DFT code does the same thing, only with and the diagonaliser being (chapter 06, `eq:ch-06-roothaan-hall`)."
+      - group [ref=e2862]:
+        - generic "▸ Problem 5 (hard) — Reading list for molecular DFT" [ref=e2863] [cursor=pointer]
+        - text: "Suppose your research is *molecular* DFT: you have a desktop computer, a chemistry background, and no interest in solids, phonons, or pseudopotentials. You want to read the *minimum* number of chapters needed to set up a calculation with the 6-31G basis and the B3LYP functional on, say, an organic molecule. 1. From the chapter dependency graph in *Roadma`p*`, identify the minimum set of chapters you must read, in order. 2. Justify your choice: for each chapter you include, state *which piece of the calculation* it is needed for. 3. For each chapter you exclude, state *why* it is not on your critical path."
+      - group [ref=e2864]:
+        - generic "▸ Show answer" [ref=e2865] [cursor=pointer]
+        - text: "**The minimum set, in order:** 1. **Chapter 01 — Schrödinger and postulates.** You need the Born rule and the variational principle to understand what the calculation is *doing*. 2. **Chapter 02 — The many-body problem.** You need to see *why* the exact Schrödinger equation for a molecule is unsolvable, so that the Kohn–Sham shortcut makes sense. 3. **Chapter 04 — Kohn–Sham.** This is the DFT core. Skipping chapter 03 (Hartree–Fock) is fine if you are not interested in the wavefunction-based lineage. 4. **Chapter 05 — XC functionals.** You need this to choose B3LYP (or any other functional) and to understand what the choice *means*. 5. **Chapter 06 — Basis sets.** You need this to choose 6-31G and to understand the Roothaan–Hall machinery that the code runs under the hood. **Chapters deliberately excluded:** - **Chapter 03 (Hartree–Fock).** Not strictly needed if you are happy to take the Kohn–Sham equations as a starting point. The chapters are written so this is a legitimate path. (You will, however, miss the historical and conceptual bridge from postulates to Kohn–Sham.) - **Chapter 07 (Solids & PBC).** You are computing a finite molecule, so Bloch's theorem and Brillouin zones are not needed. You will use a *molecular* code (Gaussian, ORCA, Q-Chem) that does not invoke them. - **Chapter 08 (Pseudopotentials).** These are for plane-wave calculations on heavy elements; the 6-31G basis on a first-row organic molecule uses *all-electron* primitives on C, N, O, H. (For transition-metal organometallics, this exclusion is wrong — you would need to add chapter 08.) - **Chapter 09 (Forces & geometry opt).** Strictly, you do *not* need this to run a single-point energy. But you do need it to optimise a geometry, which is the typical workflow. In practice, include it. - **Chapter 10 (Vibrations & phonons).** Phonons are for solids; you do not need them. Molecular vibrations (IR/Raman spectra) are a separate topic, sketched briefly in chapter 10 but not required for the typical workflow. **The subgraph of your reading.** The minimum graph is ```mermaid graph TD C00[Ch 00] --> C01[Ch 01] --> C02[Ch 02] --> C04[Ch 04] --> C05[Ch 05] --> C06[Ch 06] ``` a *linear* chain, which is why the notes are written so that the chapters can be read linearly even though the *full* graph has branches."
+      - heading "What’s next" [level=2] [ref=e2866]
+      - paragraph [ref=e2867]:
+        - link "Chapter 01" [ref=e2868] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: — the Schrödinger equation and the postulates we’ll be building on.
+      - blockquote [ref=e2869]:
+        - paragraph [ref=e2870]:
+          - strong [ref=e2871]: Disclaimer.
+          - text: These notes are a personal study aid. They are correct to the best of the author’s knowledge, but they are
+          - emphasis [ref=e2872]: not
+          - text: a substitute for a textbook. Cite primary sources, not these notes.
+  - contentinfo [ref=e2873]:
+    - generic [ref=e2874]:
+      - generic [ref=e2875]:
+        - img [ref=e2876]
+        - generic [ref=e2880]: DFT Notes
+        - paragraph [ref=e2881]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e2882]:
+        - generic [ref=e2883]:
+          - heading "Project" [level=3] [ref=e2884]
+          - list [ref=e2885]:
+            - listitem [ref=e2886]:
+              - link "Chapters map" [ref=e2887] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e2888]:
+              - link "Python codes" [ref=e2889] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e2890]:
+              - link "Contributing" [ref=e2891] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e2892]:
+              - link "Security" [ref=e2893] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e2894]:
+              - link "Design spec" [ref=e2895] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e2896]:
+              - link "GitHub ↗" [ref=e2897] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e2898]:
+          - heading "Built with" [level=3] [ref=e2899]
+          - list [ref=e2900]:
+            - listitem [ref=e2901]:
+              - link "Jekyll" [ref=e2902] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e2903]:
+              - link "MathJax 3" [ref=e2904] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e2905]:
+              - link "Mermaid" [ref=e2906] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e2907]:
+              - link "chenglou/pretext" [ref=e2908] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e2909]:
+              - link "Google Fonts" [ref=e2910] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e2911]:
+          - heading "Legal" [level=3] [ref=e2912]
+          - list [ref=e2913]:
+            - listitem [ref=e2914]:
+              - link "MIT License" [ref=e2915] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e2916]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e2918]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.
