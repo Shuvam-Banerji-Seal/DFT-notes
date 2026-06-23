@@ -1064,18 +1064,18 @@ $$
 4. **Convergence.** Stop when
    $\lvert F(R_k) \rvert < 10^{-6}\,E_h/a_0$.
 
- ```mermaid
+```mermaid
 graph TD
-    A[Start: R_0 = 1.8 a_0] --> B[Build S, T, V, ERI at R_k]
+    A["Start: R_0 = 1.8 a_0"] --> B["Build S, T, V, ERI at R_k"]
     B --> C[Run Roothaan SCF]
     C --> D["Read E(R_k), P(R_k)"]
     D --> E["Compute F(R_k) via Hellmann-Feynman"]
-    E --> F{Converged?}
-    F -- No --> G["BFGS update: H_k -> H_{k+1}"]
-    G --> H[Step: R_{k+1} = R_k - H_k g_k]
+    E --> F{"Converged?"}
+    F -- No --> G["BFGS update: H_k to H_{k+1}"]
+    G --> H["Step: R_{k+1} = R_k - H_k g_k"]
     H --> B
-    F -- Yes --> I[Report R_eq, E_eq, F_final]
- ``'
+    F -- Yes --> I["Report R_eq, E_eq, F_final"]
+```
 
 - **Script** — [chapter_09/01-h2-bond-relaxation.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_09/01-h2-bond-relaxation.py)
 - **Plot** — [chapter_09/plots/01-h2-bond-relaxation.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_09/plots/01-h2-bond-relaxation.png)
@@ -1199,9 +1199,9 @@ active TO modes** that couple to light (Ch 10 §10.5).
 
 ```mermaid
 graph LR
-    A[m_1 at n*a] -- K --> B[m_2 at n*a + a/2]
-    B -- K --> C[m_1 at n*a + a]
-    C -- K --> D[m_2 at n*a + 3a/2]
+    A["m_1 at n*a"] -- K --> B["m_2 at n*a + a/2"]
+    B -- K --> C["m_1 at n*a + a"]
+    C -- K --> D["m_2 at n*a + 3a/2"]
     D -- K --> E[...]
     style A fill:#f9f
     style B fill:#9ff
@@ -1351,9 +1351,9 @@ graphene's other transport properties.
 
 ```mermaid
 graph TD
-    A[Build unit cell: 2 atoms A, B] --> B[Define tau_1, tau_2, tau_3]
+    A["Build unit cell: 2 atoms A, B"] --> B["Define tau_1, tau_2, tau_3"]
     B --> C[Define k-path: Gamma, M, K, Gamma]
-    C --> D[At each k, compute f(k) = sum exp(i k . tau_j)]
+    C --> D["At each k, compute f(k) = sum exp(i k . tau_j)"]
     D --> E[H(k) = [[0, tf],[tf*, 0]]]
     E --> F[Eigenvalues: +/- |t| |f|]
     F --> G[Plot pi and pi* bands]
@@ -1536,10 +1536,10 @@ controls the refractive index.
 
 ```mermaid
 graph TD
-    A[Set up 2-level system: omega_0, gamma, mu_ge] --> B[Linear-response: Lorentzian sigma(omega)]
+    A["Set up 2-level system: omega_0, gamma, mu_ge"] --> B["Linear-response: Lorentzian sigma(omega)"]
     A --> C[Real-time: Liouville-von Neumann eqn]
     C --> D[Apply delta-kick at t=0]
-    D --> E[Propagate rho_ge damped oscillation]
+    D --> E["Propagate rho_ge damped oscillation"]
     E --> F[Fourier transform d(t) -> d(omega)]
     F --> G[Compare Im d(omega) to sigma(omega)]
     G --> H{They agree?}
@@ -1692,14 +1692,14 @@ algorithm:
 
 ```mermaid
 graph TD
-    A[Enumerate Fock states with N_up=2, N_down=2] --> B[Apply translation symmetry: k = 0, pi/2, pi, 3pi/2]
+    A["Enumerate Fock states with N_up=2, N_down=2"] --> B["Apply translation symmetry: k = 0, pi/2, pi, 3pi/2"]
     B --> C[Build sparse Hamiltonian in Bloch basis]
     C --> D[Hopping: off-diagonal, flips single occupancy]
     C --> E[Interaction: diagonal, counts double occupancies]
     D --> F[Diagonalise each (k, S) sector]
     E --> F
     F --> G[Identify ground state: k=0, S=0]
-    G --> H[Compute gap: E_gs N+2 + E_gs N-2 - 2 E_gs N]
+    G --> H["Compute gap: E_gs N+2 + E_gs N-2 - 2 E_gs N"]
     H --> I[Plot gap vs U: Mott transition visible]
 ```
 
