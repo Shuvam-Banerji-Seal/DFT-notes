@@ -433,9 +433,7 @@ graph LR
 > reference with the same spin densities, and write
 > $E_\text{xc} = (F_\text{HK} - T_s) - J$.
 > **Answer:** the spin-DFT energy is
-> $E[\rho_\uparrow, \rho_\downarrow] = T_s[\rho_\uparrow, \rho_\downarrow]
-> + J[\rho] + E_\text{xc}[\rho_\uparrow, \rho_\downarrow] + \int v \rho
-> - \mu_B \int B m$; the LSDA evaluates $E_\text{xc}$ from the
+> $E[\rho_\uparrow, \rho_\downarrow] = T_s[\rho_\uparrow, \rho_\downarrow] + J[\rho] + E_\text{xc}[\rho_\uparrow, \rho_\downarrow] + \int v \rho - \mu_B \int B m$; the LSDA evaluates $E_\text{xc}$ from the
 > *homogeneous* electron gas, and functional differentiation
 > yields $v_{\text{xc},\sigma} = \partial(\rho \varepsilon_\text{xc}) /
 > \partial \rho_\sigma$.

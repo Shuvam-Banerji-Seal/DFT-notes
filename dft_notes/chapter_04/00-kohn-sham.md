@@ -459,10 +459,12 @@ unphysical cancellation of the constant part of the density.)
 Expand the objective using an inner product $\langle \cdot, \cdot \rangle$
 on density space:
 
+$$
 \begin{align}
 \langle \tilde R, \tilde R \rangle
 &= \sum_{i, j = 1}^{m} c_i c_j\, \langle R_i, R_j \rangle .
 \end{align}
+$$
 
 Introduce the **metric matrix** $B$ with elements
 
@@ -709,12 +711,14 @@ ground state.  The derivative of the energy
 $E(\lambda) = \langle \Psi(\lambda) | \hat H(\lambda) | \Psi(\lambda) \rangle$
 with respect to $\lambda$ is
 
+$$
 \begin{align}
 \frac{dE}{d\lambda}
 &= \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle
  + \left\langle \Psi \bigg| \frac{\partial \hat H}{\partial \lambda} \bigg| \Psi \right\rangle
  + \left\langle \Psi \bigg| \hat H \bigg| \frac{\partial \Psi}{\partial \lambda} \right\rangle .
 \end{align}
+$$
 
 The first and third terms combine to
 
@@ -853,6 +857,7 @@ Hellmann–Feynman part of the argument — the response cancels).
 The remaining $\mathbf R$-derivative comes only from the basis
 functions and the nuclear–nuclear repulsion:
 
+$$
 \begin{align}
 \mathbf F_I
 &= -\frac{\partial}{\partial \mathbf R_I} \sum_{\mu, \nu, i}^\text{occ}
@@ -863,6 +868,7 @@ functions and the nuclear–nuclear repulsion:
     \bigg[ 2 \sum_{i}^\text{occ} \sum_{\mu, \nu} C_{\mu i} C_{\nu i} J_{\mu\nu} \bigg]
  \;-\; \frac{\partial E_\text{xc}}{\partial \mathbf R_I} .
 \end{align}
+$$
 
 All the derivatives in the last two lines are derivatives of
 **integrals** whose integrands depend on $\mathbf R$ only through the
@@ -871,6 +877,7 @@ operators.  They produce, by the same Hellmann–Feynman argument as
 above, the classical forces in \eqref{eq:ch-04-force-nucleus} plus
 a basis-derivative term.  The basis-derivative term is
 
+$$
 \begin{align}
 \mathbf F_I^\text{Pulay}
 &= -\sum_{\mu \in I} \sum_{\nu, i}^\text{occ} C_{\mu i} C_{\nu i}
@@ -882,6 +889,7 @@ a basis-derivative term.  The basis-derivative term is
      \langle \frac{\partial \chi_\mu}{\partial \mathbf R_I} | 2 \hat J - \hat K_\text{xc} | \chi_\nu \rangle
    - (\text{symmetric term with } \partial\chi_\nu) .
 \end{align}
+$$
 
 Use the self-consistency condition $\mathbf F \mathbf C = \mathbf S
 \mathbf C \boldsymbol\varepsilon$ to combine the one-electron and
@@ -1409,12 +1417,14 @@ This is exact for any $\lambda$, hence for the $\lambda$-average.  The
 proof follows from the trace relation
 \eqref{eq:ch-04-9-pair-trace}:
 
+$$
 \begin{align}
 \int h_\text{xc}(\mathbf r, \mathbf r')\, d\mathbf r'
 &= \int \frac{\bar n_2(\mathbf r, \mathbf r')}{\rho(\mathbf r')}\, d\mathbf r'
  \;-\; \int \rho(\mathbf r)\, d\mathbf r' \\\
 &= (N - 1) \;-\; N \;=\; -1 .
 \end{align}
+$$
 
 The physical interpretation: the hole integrates to *minus one
 electron*.  Every electron carries with it a depletion of exactly one
@@ -1959,12 +1969,14 @@ $$
 The coefficients are the functional derivatives of $E_\text{xc}$
 evaluated at $\rho_0$:
 
+$$
 \begin{align}
 v_\text{xc}^{(1)}[\rho_0](\mathbf r)
    &= \frac{\delta E_\text{xc}}{\delta \rho(\mathbf r)} \bigg|_{\rho_0} , \\\
 f_\text{xc}^{(2)}[\rho_0](\mathbf r, \mathbf r')
    &= \frac{\delta^2 E_\text{xc}}{\delta \rho(\mathbf r)\, \delta \rho(\mathbf r')} \bigg|_{\rho_0} .
 \end{align}
+$$
 
 The first functional derivative is the XC potential at $\rho_0$, the
 second is the **XC kernel**.  Higher-order kernels exist in principle
@@ -2773,6 +2785,7 @@ basis and is given by \eqref{eq:ch-04-force-pulay}.
 **Step 1 — set-up.**  The KS energy in a finite basis
 $\{\chi_\mu(\mathbf r; \mathbf R)\}$ is
 
+$$
 \begin{align}
 E(\mathbf C, \mathbf R)
 &= 2 \sum_i^\text{occ} \sum_{\mu, \nu} C_{\mu i} C_{\nu i} h_{\mu\nu}(\mathbf R)
@@ -2780,6 +2793,7 @@ E(\mathbf C, \mathbf R)
    C_{\mu i} C_{\nu i} C_{\rho j} C_{\sigma j}\, (\mu\nu | \rho\sigma) \\\
 &\quad +\; E_\text{xc}[\rho] + V_{nn}(\mathbf R) ,
 \end{align}
+$$
 
 where $h_{\mu\nu}(\mathbf R) = \langle \chi_\mu | -\tfrac12 \nabla^2 + v_\text{ext}(\mathbf R) | \chi_\nu \rangle$
 is a one-electron integral, $(\mu\nu|\rho\sigma)$ the two-electron
@@ -2791,12 +2805,14 @@ with the orthonormality constraint $C_{\mu i}^* S_{\mu\nu} C_{\nu j}^* = \delta_
 
 **Step 2 — total derivative.**  The chain rule gives
 
+$$
 \begin{align}
 \frac{dE}{d\mathbf R_I}\bigg|_{\mathbf C = \mathbf C^*}
 &= \underbrace{\frac{\partial E}{\partial \mathbf R_I}\bigg|_{\mathbf C}}_{\text{(A) basis + Vnn derivatives}} \\\
 &\quad + \underbrace{\sum_{\mu, i} \frac{\partial E}{\partial C_{\mu i}}\,
    \frac{\partial C_{\mu i}^*}{\partial \mathbf R_I}}_{\text{(B) MO response}} .
 \end{align}
+$$
 
 **Step 3 — (B) vanishes at the SCF fixed point.**  This is the
 Hellmann–Feynman part.  The MO derivative is constrained by the
@@ -2816,6 +2832,7 @@ alone.
 **Step 4 — evaluate (A).**  Differentiate each term of $E$ with
 respect to $\mathbf R_I$ at fixed $\mathbf C$:
 
+$$
 \begin{align}
 \frac{\partial E}{\partial \mathbf R_I}\bigg|_{\mathbf C}
 &= 2 \sum_{i, \mu, \nu} C_{\mu i} C_{\nu i}\,
@@ -2825,6 +2842,7 @@ respect to $\mathbf R_I$ at fixed $\mathbf C$:
 &\quad + \frac{\partial E_\text{xc}}{\partial \mathbf R_I}
  + \frac{\partial V_{nn}}{\partial \mathbf R_I} .
 \end{align}
+$$
 
 In the **complete basis**, the basis-derivative
 $\partial \chi_\mu / \partial \mathbf R_I$ is *orthogonal* to
@@ -2925,12 +2943,14 @@ $$
 
 and the total energy
 
+$$
 \begin{align}
 E[\rho_\uparrow, \rho_\downarrow; v, B]
 &= F_\text{HK}[\rho_\uparrow, \rho_\downarrow]
  + \int \rho(\mathbf r) v(\mathbf r)\, d\mathbf r \\\
 &\quad - \mu_B \int B(\mathbf r)\, m(\mathbf r)\, d\mathbf r ,
 \end{align}
+$$
 
 where $m = \rho_\uparrow - \rho_\downarrow$ is the magnetisation
 density along $\hat z$.  The variational principle gives

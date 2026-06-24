@@ -160,10 +160,12 @@ SCF map at the fixed point.  Define the **error**
 $e^{(n)} = \rho^{(n)} - \rho^\star$.  Substituting
 \eqref{eq:nm-scf-lin} into \eqref{eq:nm-scf-linear-mix}:
 
+$$
 \begin{align}
 e^{(n+1)} &= (1 - \alpha)\, e^{(n)} + \alpha\, \mathcal F^{\prime} e^{(n)} \notag \\\
           &= \Bigl[ (1 - \alpha) \mathbf 1 + \alpha \mathcal F^{\prime} \Bigr] e^{(n)} . \label{eq:nm-scf-err-rec}
 \end{align}
+$$
 
 The damped map has eigenvalues
 $\mu_\text{damp} = (1 - \alpha) + \alpha \mu$, where $\mu$ is an

@@ -1352,12 +1352,12 @@ graphene's other transport properties.
 ```mermaid
 graph TD
     A["Build unit cell: 2 atoms A, B"] --> B["Define tau_1, tau_2, tau_3"]
-    B --> C[Define k-path: Gamma, M, K, Gamma]
+    B --> C["Define k-path: Gamma, M, K, Gamma"]
     C --> D["At each k, compute f(k) = sum exp(i k . tau_j)"]
-    D --> E[H(k) = [[0, tf],[tf*, 0]]]
-    E --> F[Eigenvalues: +/- |t| |f|]
-    F --> G[Plot pi and pi* bands]
-    G --> H[Verify Dirac crossing at K: |f(K)| = 0]
+    D --> E["H(k) = [[0, tf],[tf*, 0]]"]
+    E --> F["Eigenvalues: +/- |t| |f|"]
+    F --> G["Plot pi and pi* bands"]
+    G --> H["Verify Dirac crossing at K: |f(K)| = 0"]
 ```
 
 - **Script** — [chapter_11/01-graphene-bands.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/01-graphene-bands.py)
@@ -1537,14 +1537,14 @@ controls the refractive index.
 ```mermaid
 graph TD
     A["Set up 2-level system: omega_0, gamma, mu_ge"] --> B["Linear-response: Lorentzian sigma(omega)"]
-    A --> C[Real-time: Liouville-von Neumann eqn]
-    C --> D[Apply delta-kick at t=0]
+    A --> C["Real-time: Liouville-von Neumann eqn"]
+    C --> D["Apply delta-kick at t=0"]
     D --> E["Propagate rho_ge damped oscillation"]
-    E --> F[Fourier transform d(t) -> d(omega)]
-    F --> G[Compare Im d(omega) to sigma(omega)]
-    G --> H{They agree?}
-    H -- Yes --> I[Report FWHM = gamma, Kramers-Kronig consistency]
-    H -- No --> J[Debug: damping, time step, FFT window]
+    E --> F["Fourier transform d(t) to d(omega)"]
+    F --> G["Compare Im d(omega) to sigma(omega)"]
+    G --> H{"They agree?"}
+    H -- "Yes" --> I["Report FWHM = gamma, Kramers-Kronig consistency"]
+    H -- "No" --> J["Debug: damping, time step, FFT window"]
 ```
 
 - **Script** — [chapter_12/01-two-level-absorption.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_12/01-two-level-absorption.py)
@@ -1693,14 +1693,14 @@ algorithm:
 ```mermaid
 graph TD
     A["Enumerate Fock states with N_up=2, N_down=2"] --> B["Apply translation symmetry: k = 0, pi/2, pi, 3pi/2"]
-    B --> C[Build sparse Hamiltonian in Bloch basis]
-    C --> D[Hopping: off-diagonal, flips single occupancy]
-    C --> E[Interaction: diagonal, counts double occupancies]
-    D --> F[Diagonalise each (k, S) sector]
+    B --> C["Build sparse Hamiltonian in Bloch basis"]
+    C --> D["Hopping: off-diagonal, flips single occupancy"]
+    C --> E["Interaction: diagonal, counts double occupancies"]
+    D --> F["Diagonalise each (k, S) sector"]
     E --> F
-    F --> G[Identify ground state: k=0, S=0]
+    F --> G["Identify ground state: k=0, S=0"]
     G --> H["Compute gap: E_gs N+2 + E_gs N-2 - 2 E_gs N"]
-    H --> I[Plot gap vs U: Mott transition visible]
+    H --> I["Plot gap vs U: Mott transition visible"]
 ```
 
 **Step-by-step at $U = 0$.** At $U = 0$ the Hubbard

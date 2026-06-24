@@ -606,6 +606,7 @@ of *one-electron* and two-electron integrals, both of which are
 routinely computed by Gaussian integral codes.  Substituting
 \eqref{eq:ch-03-fock-operator}:
 
+$$
 \begin{align}
 F_{\mu\nu}
 &\;=\; \langle \chi_\mu \rvert \hat h + \hat J[\rho] - \hat K[\rho] \rvert \chi_\nu \rangle
@@ -615,6 +616,7 @@ F_{\mu\nu}
 \;-\; \underbrace{\langle \chi_\mu \rvert \hat K[\rho] \rvert \chi_\nu \rangle}_{K_{\mu\nu}} .
 \label{eq:ch-03-F-decomp}
 \end{align}
+$$
 
 **One-electron part.**  The core-Hamiltonian matrix
 $\mathbf h$ contains the kinetic energy and the
@@ -635,6 +637,7 @@ eq. 6.27–6.28).
 **Two-electron part — Coulomb.**  Inserting the definition
 \eqref{eq:ch-03-coulomb} of $\hat J$:
 
+$$
 \begin{align}
 J_{\mu\nu}
 &\;=\; \int \!\!\!\int
@@ -649,6 +652,7 @@ d\mathbf r_1\, d\mathbf r_2
 d\mathbf r_1\, d\mathbf r_2}_{(\mu\nu \rvert \rho\sigma)} .
 \label{eq:ch-03-J}
 \end{align}
+$$
 
 Here we have introduced the **AO density matrix** in the closed-
 shell case,
@@ -692,6 +696,7 @@ $\sim K^4 / 8$ unique integrals are stored or computed.
 **Two-electron part — exchange.**  Inserting
 \eqref{eq:ch-03-exchange}:
 
+$$
 \begin{align}
 K_{\mu\nu}
 &\;=\; \sum_{\rho\sigma} P_{\rho\sigma}
@@ -702,6 +707,7 @@ K_{\mu\nu}
 d\mathbf r_1\, d\mathbf r_2}_{(\mu\sigma \rvert \rho\nu)} .
 \label{eq:ch-03-K}
 \end{align}
+$$
 
 This has *one* $\mu$/$\nu$ index that crossed over to the other
 side of the kernel: in chemists' notation it is
@@ -1113,12 +1119,14 @@ $$
 
 with
 
+$$
 \begin{align}
 \rho^\alpha(\mathbf r) &\;=\; \sum_{i=1}^{N_\alpha} |\phi_i^\alpha(\mathbf r)|^2 ,
 \notag \\\
 \rho^\beta(\mathbf r) &\;=\; \sum_{i=1}^{N_\beta} |\phi_i^\beta(\mathbf r)|^2 .
 \label{eq:ch-03-rho-spin}
 \end{align}
+$$
 
 In the AO basis, define the **spin density matrices**
 
@@ -1899,6 +1907,7 @@ electron of $\alpha$ spin* from orbital $a$ (the $\beta$ electron
 in orbital $a$ is left in place; for a closed-shell initial state
 this is the natural choice).  The resulting UHF energy is
 
+$$
 \begin{align}
 E_\text{HF}(N-1)
 &\;=\; 2 \sum_{i \ne a} h_{ii} \;+\; h_{aa}
@@ -1906,6 +1915,7 @@ E_\text{HF}(N-1)
 &\quad\;+\; \sum_{j \ne a} \Bigl( 2 J_{aj} - K_{aj} \Bigr)
 \;-\; \sum_{j \ne a} K_{ja} .
 \end{align}
+$$
 
 (The factor 2 on $J_{aj}$ comes from the two spin-orbitals
 $\phi_a^\alpha$ and $\phi_a^\beta$ contributing to the Coulomb
@@ -1918,6 +1928,7 @@ using the Fock eigenvalue equation
 $\varepsilon_a = h_{aa} + \sum_j (2 J_{aj} - K_{aj})$ in the
 closed-shell MO basis,
 
+$$
 \begin{align}
 I_a
 &\;=\; E_\text{HF}(N-1) - E_\text{HF}(N)
@@ -1926,6 +1937,7 @@ I_a
 \notag \\\
 &\;=\; -\varepsilon_a .
 \end{align}
+$$
 
 The final line is \eqref{eq:ch-03-koopmans}.  $\quad\blacksquare$
 
@@ -2363,6 +2375,7 @@ spin-orbital in orbital $a$ is now vacant, and all $\beta$
 spin-orbitals are unchanged.  Summing spin-orbitals into spatial
 integrals,
 
+$$
 \begin{align}
 E_\text{HF}(N-1)
 &\;=\; 2 \sum_{i \ne a} h_{ii} \;+\; h_{aa}
@@ -2373,12 +2386,14 @@ E_\text{HF}(N-1)
 \;+\; \sum_{i,j \ne a} (2 J_{ij} - K_{ij})
 \;+\; \sum_{j \ne a} (2 J_{aj} - K_{aj}) .
 \end{align}
+$$
 
 (The last equality uses $K_{aj} = K_{ja}$ by the 8-fold
 permutational symmetry of the ERI tensor.)
 
 **3.**  Subtracting \eqref{eq:ch-03-E-hf-mo} from the result:
 
+$$
 \begin{align}
 I_a
 &\;=\; E_\text{HF}(N-1) - E_\text{HF}(N) \notag \\\
@@ -2386,6 +2401,7 @@ I_a
 &\;=\; -\Bigl( h_{aa} + \sum_j (2 J_{aj} - K_{aj}) \Bigr) \notag \\\
 &\;=\; -\varepsilon_a ,
 \end{align*}
+$$
 
 where the last line uses the MO Fock eigenvalue.  This is the
 **Koopmans' theorem** statement.  $\quad\blacksquare$

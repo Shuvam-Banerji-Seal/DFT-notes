@@ -1,0 +1,3519 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 01 — Schrödinger equation" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: The single most important equation in non-relativistic quantum mechanics. Every other equation in these notes is a special case, a mean-field approximation, or a comment on this one.
+      - paragraph [ref=e30]:
+        - text: This chapter is the foundation under everything that follows. It does five things.
+        - strong [ref=e31]: (1)
+        - text: States the postulates that fix the formalism (section 1.2) and writes down the
+        - strong [ref=e32]: time-independent
+        - text: Schrödinger equation (TISE) for the electronic Hamiltonian in atomic units (section 1.1).
+        - strong [ref=e33]: (2)
+        - text: Walks through the particle in a box as a toy problem that lets us see the formalism in action, including a short Python finite-difference diagonalisation (section 1.3) and a catalogue of the operators that recur in every later chapter (section 1.4).
+        - strong [ref=e34]: (3)
+        - text: Derives the
+        - strong [ref=e35]: time-dependent
+        - text: Schrödinger equation (TDSE) from the time-dependent variational principle, reconstructs the TISE as the special case of a stationary state, and states the unitarity + continuity consequences (section 1.7).
+        - strong [ref=e36]: (4)
+        - text: Develops the
+        - strong [ref=e37]: operator formalism
+        - text: — linear operators on Hilbert space, the canonical commutation relations, the spectral theorem, and functions of operators such as the time-evolution operator
+        - img [ref=e39]
+        - text: (section 1.10) — and uses it to re-derive the time-evolution propagator, the stationary-state phase factor, and Fermi’s golden rule in operator language (section 1.11).
+        - strong [ref=e72]: (5)
+        - text: Closes the formal foundation with a preview of the
+        - strong [ref=e73]: symmetry and conservation-law
+        - text: "structure of quantum mechanics (section 1.12): Noether’s theorem, the discrete symmetries of parity / time-reversal / particle–hole, and the selection rules they imply. The two exactly soluble many-body problems that anchor all of quantum chemistry are then solved within that framework: the"
+        - strong [ref=e74]: harmonic oscillator
+        - text: (section 1.9) and the
+        - strong [ref=e75]: hydrogen atom
+        - text: (section 1.13). No prior quantum knowledge is assumed; every operator and every symbol is defined where it first appears.
+      - blockquote [ref=e76]:
+        - paragraph [ref=e77]:
+          - strong [ref=e78]: Notation.
+          - text: We work throughout in
+          - strong [ref=e79]: atomic units
+          - text: (
+          - img [ref=e81]
+          - text: ). Lengths are in Bohr (
+          - img [ref=e113]
+          - text: ), energies in Hartree (
+          - img [ref=e122]
+          - text: ). The conversion factors
+          - img [ref=e131]
+          - text: eV and
+          - img [ref=e151]
+          - text: Å are used without comment when the answer needs to be quoted in laboratory units.
+      - heading "1.1 The time-independent Schrödinger equation" [level=2] [ref=e169]
+      - paragraph [ref=e170]:
+        - text: For a closed, non-relativistic,
+        - img [ref=e172]
+        - text: "-particle system with Hamiltonian"
+        - img [ref=e178]
+        - text: ", the"
+        - strong [ref=e187]: stationary states
+        - img [ref=e189]
+        - text: and their
+        - strong [ref=e194]: energies
+        - img [ref=e196]
+        - text: are eigenpairs of
+        - img [ref=e202]
+        - text: ":"
+      - img [ref=e212]
+      - paragraph [ref=e275]:
+        - text: For the rest of these notes we will almost always work with the
+        - strong [ref=e276]: electronic Hamiltonian
+        - text: in the
+        - strong [ref=e277]: Born–Oppenheimer
+        - text: (clamped-nuclei) approximation. In atomic units it reads
+      - img [ref=e279]
+      - paragraph [ref=e412]: "The three terms are, in order: the kinetic energy of the electrons, the electron–nuclear attraction, and the electron–electron repulsion. The nuclear–nuclear repulsion is a constant in the Born–Oppenheimer picture and is added at the end."
+      - blockquote [ref=e413]:
+        - paragraph [ref=e414]:
+          - strong [ref=e415]: Tip.
+          - text: Many texts write the second term as
+          - img [ref=e417]
+          - text: where
+          - img [ref=e442]
+          - text: . We will use the explicit vector form because it makes the gradient transparent when we derive the Kohn–Sham equations.
+      - paragraph [ref=e473]:
+        - text: The TISE
+        - img [ref=e475]:
+          - link [ref=e478] [cursor=pointer]:
+            - /url: "#"
+        - text: is the
+        - strong [ref=e487]: eigenvalue problem
+        - text: of quantum chemistry. Three of its features are worth pinning down before we move on.
+      - list [ref=e488]:
+        - listitem [ref=e489]:
+          - strong [ref=e490]: The spectrum is bounded from below.
+          - text: With
+          - img [ref=e492]
+          - text: and the nuclear potential bounded, the kinetic term
+          - img [ref=e518]
+          - text: is a positive semi-definite operator and the Coulomb singularity at
+          - img [ref=e550]
+          - text: is mild enough (it is integrable in 3-D) that
+          - img [ref=e566]
+          - text: is bounded below. The lowest eigenvalue
+          - img [ref=e576]
+          - text: is the
+          - strong [ref=e602]: ground-state energy
+          - text: . The ground state is non-degenerate for atoms and molecules (Lions, 1987); excited states can be (and usually are) degenerate.
+        - listitem [ref=e603]:
+          - strong [ref=e604]: Eigenfunctions form a complete orthonormal basis.
+          - text: The eigenfunctions
+          - img [ref=e606]
+          - text: of a self-adjoint operator on
+          - img [ref=e616]
+          - text: are complete in the sense that any square-integrable wavefunction has a convergent expansion
+          - img [ref=e638]
+          - text: with
+          - img [ref=e661]
+          - text: . This is the foundation of every expansion-based method in chapters 3, 5, 6.
+        - listitem [ref=e687]:
+          - strong [ref=e688]: There is an inner product.
+          - text: $\langle \phi | \psi \rangle = \int \phi^
+          - emphasis [ref=e689]:
+            - text: (\mathbf x)\, \psi(\mathbf x)\, d\mathbf x
+            - img [ref=e691]
+            - text: \langle \psi | \psi \rangle = 1$ is *not
+          - text: built into
+          - img [ref=e729]
+          - text: ; we impose it by hand and then keep it under unitary time evolution (section 1.7).
+      - heading "1.2 The postulates" [level=2] [ref=e746]
+      - paragraph [ref=e747]:
+        - text: The Schrödinger equation is *postulate
+        - code [ref=e748]: d*
+        - text: "; the constants in it are measured; the rest is derived. We will use the Dirac–von Neumann axiomatisation:"
+      - table [ref=e749]:
+        - rowgroup [ref=e750]:
+          - row "# Postulate Mathematical statement" [ref=e751]:
+            - columnheader "#" [ref=e752]
+            - columnheader "Postulate" [ref=e753]
+            - columnheader "Mathematical statement" [ref=e754]
+        - rowgroup [ref=e755]:
+          - row "P1 States are rays in a Hilbert space , with" [ref=e756]:
+            - cell "P1" [ref=e757]
+            - cell "States are rays in a Hilbert space" [ref=e758]
+            - cell ", with" [ref=e759]:
+              - img [ref=e761]
+              - text: ", with"
+              - img [ref=e772]
+          - row "P2 Observables are self-adjoint operators ," [ref=e785]:
+            - cell "P2" [ref=e786]
+            - cell "Observables are self-adjoint operators" [ref=e787]
+            - cell "," [ref=e788]:
+              - img [ref=e790]
+              - text: ","
+              - img [ref=e810]
+          - row "P3 Measurements give eigenvalues" [ref=e830]:
+            - cell "P3" [ref=e831]
+            - cell "Measurements give eigenvalues" [ref=e832]
+            - cell [ref=e833]:
+              - img [ref=e835]
+          - row "P4 Expectation values" [ref=e872]:
+            - cell "P4" [ref=e873]
+            - cell "Expectation values" [ref=e874]
+            - cell [ref=e875]:
+              - img [ref=e877]
+          - row "P5 Time evolution" [ref=e906]:
+            - cell "P5" [ref=e907]
+            - cell "Time evolution" [ref=e908]
+            - cell [ref=e909]:
+              - img [ref=e911]
+          - row "P6 Indistinguishability For identical fermions, is totally antisymmetric under particle exchange" [ref=e953]:
+            - cell "P6" [ref=e954]
+            - cell "Indistinguishability" [ref=e955]
+            - cell "For identical fermions, is totally antisymmetric under particle exchange" [ref=e956]:
+              - text: For identical fermions,
+              - img [ref=e958]
+              - text: is totally antisymmetric under particle exchange
+      - paragraph [ref=e963]: P6 is the postulate that does almost all of the work in chemistry. It is also the postulate that DFT tries to circumvent.
+      - paragraph [ref=e964]: A few words on each.
+      - list [ref=e965]:
+        - listitem [ref=e966]:
+          - strong [ref=e967]: P1.
+          - text: “States are rays” means that the
+          - emphasis [ref=e968]: global phase
+          - text: of
+          - img [ref=e970]
+          - text: carries no physics. The map
+          - img [ref=e976]
+          - text: (
+          - img [ref=e994]
+          - text: ) is a
+          - strong [ref=e1004]: ray
+          - text: in the Hilbert space
+          - img [ref=e1006]
+          - text: . The
+          - emphasis [ref=e1012]: relative
+          - text: phase between two basis states, however, is physical (interference experiments see it), and the inner product structure of
+          - img [ref=e1014]
+          - text: is what tracks it.
+        - listitem [ref=e1020]:
+          - strong [ref=e1021]: P2.
+          - text: Self-adjointness (
+          - img [ref=e1023]
+          - text: ) is the operator-level statement of “real eigenvalues for real measurements”. On a finite-dimensional subspace it reduces to Hermiticity; on the infinite-dimensional
+          - img [ref=e1044]
+          - text: of continuous wavefunctions, the
+          - strong [ref=e1052]: domain
+          - text: of
+          - img [ref=e1054]
+          - text: matters and self-adjointness is a non-trivial condition (it is
+          - emphasis [ref=e1063]: not
+          - text: automatic, e.g. the momentum operator
+          - img [ref=e1065]
+          - text: is symmetric but not self-adjoint on
+          - img [ref=e1076]
+          - text: ; its self-adjoint extension is on the Sobolev space
+          - img [ref=e1094]
+          - text: ).
+        - listitem [ref=e1109]:
+          - strong [ref=e1110]: P3, P4.
+          - text: "Born’s rule: the squared modulus"
+          - img [ref=e1112]
+          - text: is the probability of measuring
+          - img [ref=e1137]
+          - text: . The expectation value
+          - img [ref=e1146]
+          - text: is the long-run average of those measurements.
+        - listitem [ref=e1194]:
+          - strong [ref=e1195]: P5.
+          - text: The TDSE. It is
+          - emphasis [ref=e1196]: linear
+          - text: in
+          - img [ref=e1198]
+          - text: (superposition is preserved) and
+          - emphasis [ref=e1207]: unitary
+          - text: (probability is preserved, see section 1.7).
+        - listitem [ref=e1208]:
+          - strong [ref=e1209]: P6.
+          - text: Indistinguishability. Exchange of two identical fermions multiplies the wavefunction by
+          - img [ref=e1211]
+          - text: ; for bosons, by
+          - img [ref=e1219]
+          - text: . For electrons (spin-1/2 fermions) this is the mathematical content of the
+          - strong [ref=e1226]: Pauli exclusion principle
+          - text: ": two electrons cannot occupy the same spin-orbital, because the antisymmetrised product of two identical spin-orbitals is identically zero."
+      - heading "1.2.1 Mermaid — the postulates as a dependency graph" [level=3] [ref=e1227]
+      - paragraph [ref=e1228]: "The six postulates are not independent: states (P1) are what observables (P2) act on, measurements (P3) and expectation values (P4) are statistics of the same object, time evolution (P5) is the dynamical law for that object, and the Pauli principle (P6) is the extra constraint that makes chemistry non-trivial. The diagram below makes those dependencies explicit."
+      - figure [ref=e1230]:
+        - code [ref=e1231]:
+          - document [ref=e1232]:
+            - generic [ref=e1234]:
+              - generic [ref=e1235]:
+                - generic [ref=e1240]: Symmetry
+                - generic [ref=e1245]: Dynamics (TDSE)
+                - generic [ref=e1250]: Statics (TISE)
+                - generic [ref=e1255]: Foundations
+              - generic [ref=e1267]:
+                - generic [ref=e1272]: stationary limit(separation of vars)
+                - generic [ref=e1277]: "P1: antisymmetrisedSlater determinants"
+                - generic [ref=e1282]: "P5: phase-free,conserves norm"
+              - generic [ref=e1283]:
+                - generic [ref=e1289]: P6 — AntisymmetryΨ(…, xᵢ, …, xⱼ, …) = −Ψ(…, xⱼ, …, xᵢ, …)
+                - generic [ref=e1295]: P5 — Evolutioni ∂ₜ|ψ⟩ = Ĥ|ψ⟩
+                - generic [ref=e1301]: P3 — MeasurementPr(aₙ) = |⟨aₙ|ψ⟩|²
+                - generic [ref=e1307]: P4 — Expectation⟨Â⟩ = ⟨ψ|Â|ψ⟩
+                - generic [ref=e1313]: P1 — States|ψ⟩ ∈ ℋ, ||ψ|| = 1(ray in Hilbert space)
+                - generic [ref=e1319]: P2 — ObservablesÂ = Â†(self-adjoint operator)
+        - button "Download this diagram as a PNG" [ref=e1320] [cursor=pointer]:
+          - img [ref=e1321]
+          - generic [ref=e1324]: Download PNG
+      - paragraph [ref=e1325]:
+        - text: The solid arrows are “is-used-by”; the dashed arrows are “constrains”. P1–P5 are the
+        - emphasis [ref=e1326]: "kinemati`c"
+        - text: ’ postulates (they apply to any quantum system); P6 is the
+        - emphasis [ref=e1327]: symmetry
+        - text: postulate and is what makes
+        - emphasis [ref=e1328]: electronic-structure
+        - text: theory distinct from the quantum mechanics of distinguishable particles.
+      - 'heading "1.3 A minimal example: the particle in a box" [level=2] [ref=e1329]'
+      - paragraph [ref=e1330]:
+        - text: To make the formalism concrete, consider a single electron in a 1-D box of length
+        - img [ref=e1332]
+        - text: with infinite walls at
+        - img [ref=e1338]
+        - text: and
+        - img [ref=e1348]
+        - text: . The Hamiltonian is
+      - img [ref=e1358]
+      - paragraph [ref=e1417]: The normalised eigenfunctions and eigenvalues are
+      - img [ref=e1419]
+      - paragraph [ref=e1516]:
+        - text: A short Python snippet that solves the same problem
+        - strong [ref=e1517]: numerically
+        - text: by discretising the Laplacian and calling
+        - code [ref=e1518]: numpy.linalg.eigh
+        - text: ":"
+      - code [ref=e1522]: "# dft_notes/python_codes/chapter_01/01-particle-in-box.py import numpy as np def particle_in_a_box(L=1.0, N=400): \"\"\"Return the first 5 eigenpairs of a 1-D particle in a box of length L.\"\"\" h = L / (N + 1) # grid spacing x = np.linspace(h, L - h, N) # 3-point stencil for the second derivative diag_main = np.full(N, 2.0) diag_off = np.full(N - 1, -1.0) H = (np.diag(diag_main) + np.diag(diag_off, +1) + np.diag(diag_off, -1)) / (2 * h*`2) evals, evecs = np.linalg.eigh(H) # Sort by absolute value; skip the trivial infinite-wall mode order = np.argsort(evals) return evals[order[:5]], evecs[:, order[:5]], x energies, _, x = particle_in_a_box() for n, E in enumerate(energies, start=1): exact = (np.pi * n)**2 / 2 print(f\" n={n} numerical={E:9.5f} exact={exact:9.5f} Δ={E - exact:+.2e}\")"
+      - paragraph [ref=e1523]:
+        - text: For a 400-point grid, the first five eigenvalues agree with the analytical formula to better than
+        - img [ref=e1525]
+        - text: Hartree.
+      - blockquote [ref=e1537]:
+        - paragraph [ref=e1538]:
+          - strong [ref=e1539]: Warning.
+          - text: A diagonalising eigensolver is
+          - emphasis [ref=e1540]: never
+          - text: the right way to solve a real quantum chemistry problem — it costs
+          - img [ref=e1542]
+          - text: and stores
+          - img [ref=e1557]
+          - text: . The point of the snippet is to make the formal eigenproblem
+          - img [ref=e1572]
+          - text: feel concrete. Production codes use
+          - strong [ref=e1589]: iterative
+          - text: eigensolvers (Lanczos, Davidson) that never materialise the full Hamiltonian.
+      - heading "Connection to the time-dependent problem" [level=3] [ref=e1590]
+      - paragraph [ref=e1591]:
+        - text: The eigenstates of
+        - img [ref=e1593]
+        - text: form a
+        - strong [ref=e1602]: stationary basis
+        - text: ": if"
+        - img [ref=e1604]
+        - text: is a single eigenstate
+        - img [ref=e1620]
+        - text: ", then the TDSE"
+        - img [ref=e1633]
+        - text: gives
+      - img [ref=e1666]
+      - paragraph [ref=e1756]:
+        - text: A
+        - emphasis [ref=e1757]: superposition
+        - img [ref=e1759]
+        - text: acquires a time-dependent relative phase
+        - img [ref=e1812]
+        - text: ", which is what makes time evolution non-trivial. The"
+        - emphasis [ref=e1841]: probability density
+        - img [ref=e1843]
+        - text: is time-independent only for a single eigenstate or a degenerate superposition.
+      - heading "Visualisation — the first four eigenstates, animated" [level=3] [ref=e1865]
+      - paragraph [ref=e1866]:
+        - text: The static plot above is the end-state of the calculation. The animation below shows how the four wavefunctions appear one after the other, with a “particle” marker that traces the spatial oscillation; then a summary panel with the energy spectrum and the square moduli
+        - img [ref=e1868]
+        - text: .
+      - figure "Figure 1.2 — the first four particle-in-a-box eigenfunctions and their probability densities. Rendered withManim Community; source script inchapter 1's animation folder." [ref=e1883]:
+        - generic [ref=e1884]: Your browser does not support embedded video..
+        - generic [ref=e1885]:
+          - text: Figure 1.2 — the first four particle-in-a-box eigenfunctions and their probability densities. Rendered with
+          - link "Manim Community" [ref=e1886] [cursor=pointer]:
+            - /url: https://www.manim.community/
+          - text: ; source script in
+          - link "chapter 1's animation folder" [ref=e1887] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/animations/chapter_01/01-particle-in-box.py
+          - text: .
+      - heading "1.4 Operators you will see again" [level=2] [ref=e1888]
+      - paragraph [ref=e1889]: The following operators are the alphabet of electronic-structure theory. They are all self-adjoint on the appropriate domain, which is why they are candidates for observables.
+      - table [ref=e1890]:
+        - rowgroup [ref=e1891]:
+          - row "Symbol Name Definition Appears in" [ref=e1892]:
+            - columnheader "Symbol" [ref=e1893]
+            - columnheader "Name" [ref=e1894]
+            - columnheader "Definition" [ref=e1895]
+            - columnheader "Appears in" [ref=e1896]
+        - rowgroup [ref=e1897]:
+          - row "Kinetic energy Every Hamiltonian" [ref=e1898]:
+            - cell [ref=e1899]:
+              - img [ref=e1901]
+            - cell "Kinetic energy" [ref=e1910]
+            - cell [ref=e1911]:
+              - img [ref=e1913]
+            - cell "Every Hamiltonian" [ref=e1944]
+          - row "External potential The term" [ref=e1945]:
+            - cell [ref=e1946]:
+              - img [ref=e1948]
+            - cell "External potential" [ref=e1962]
+            - cell [ref=e1963]:
+              - img [ref=e1965]
+            - cell "The term" [ref=e1998]:
+              - text: The
+              - img [ref=e2000]
+              - text: term
+          - row "Electron–electron repulsion The term" [ref=e2019]:
+            - cell [ref=e2020]:
+              - img [ref=e2022]
+            - cell "Electron–electron repulsion" [ref=e2037]
+            - cell [ref=e2038]:
+              - img [ref=e2040]
+            - cell "The term" [ref=e2080]:
+              - text: The
+              - img [ref=e2082]
+              - text: term
+          - row "Classical Coulomb (Hartree) Hartree–Fock, KS" [ref=e2098]:
+            - cell [ref=e2099]:
+              - img [ref=e2101]
+            - cell "Classical Coulomb (Hartree)" [ref=e2110]
+            - cell [ref=e2111]:
+              - img [ref=e2113]
+            - cell "Hartree–Fock, KS" [ref=e2170]
+          - row "Exchange (Fock) Hartree–Fock" [ref=e2171]:
+            - cell [ref=e2172]:
+              - img [ref=e2174]
+            - cell "Exchange (Fock)" [ref=e2183]
+            - cell [ref=e2184]:
+              - img [ref=e2186]
+            - cell "Hartree–Fock" [ref=e2263]
+          - row "XC potential The functional derivative of with respect to Kohn–Sham DFT" [ref=e2264]:
+            - cell [ref=e2265]:
+              - img [ref=e2267]
+            - cell "XC potential" [ref=e2280]
+            - cell "The functional derivative of with respect to" [ref=e2281]:
+              - text: The functional derivative of
+              - img [ref=e2283]
+              - text: with respect to
+              - img [ref=e2299]
+            - cell "Kohn–Sham DFT" [ref=e2304]
+          - row "Permutation Exchanges particle labels Antisymmetrisation" [ref=e2305]:
+            - cell [ref=e2306]:
+              - img [ref=e2308]
+            - cell "Permutation" [ref=e2323]
+            - cell "Exchanges particle labels" [ref=e2324]:
+              - text: Exchanges particle labels
+              - img [ref=e2326]
+            - cell "Antisymmetrisation" [ref=e2335]
+      - paragraph [ref=e2336]: Two operators are so important they deserve a separate box.
+      - blockquote [ref=e2337]:
+        - paragraph [ref=e2338]:
+          - strong [ref=e2339]: Position and momentum.
+          - text: "In atomic units, $\\hat{\\mathbf r}"
+          - emphasis [ref=e2340]:
+            - text: i = \mathbf r_i
+            - img [ref=e2342]
+            - text: "\\hat{\\mathbf p}_i = -i \\nabla_i$. They satisfy the"
+            - strong [ref=e2383]: canonical commutation relation
+            - text: $[\hat r
+          - text: "{ia}, \\hat p_{jb}] = i \\delta_{ij} \\delta_{ab}"
+          - img [ref=e2385]
+          - text: "a, b \\in {x, y, z}$. This commutator is the"
+          - emphasis [ref=e2394]: defining
+          - text: algebraic structure of quantum mechanics; the Heisenberg uncertainty principle
+          - img [ref=e2396]
+          - text: is a direct consequence.
+      - heading "1.5 What we arenotdoing" [level=2] [ref=e2442]:
+        - text: 1.5 What we are
+        - emphasis [ref=e2443]: not
+        - text: doing
+      - paragraph [ref=e2444]: "Two things the Schrödinger equation does not give us, and that we have to add by hand or by approximation:"
+      - list [ref=e2445]:
+        - listitem [ref=e2446]:
+          - strong [ref=e2447]: Spin.
+          - text: The Hamiltonian above is spin-free. Spin enters via the antisymmetry postulate (P6) — electrons are fermions — and via the choice of
+          - img [ref=e2449]
+          - text: as a Slater determinant.
+        - listitem [ref=e2454]:
+          - strong [ref=e2455]: Relativistic effects.
+          - text: For
+          - img [ref=e2457]
+          - text: ", the kinetic-energy term"
+          - img [ref=e2468]
+          - text: should be replaced by the Dirac kinetic operator. Out of scope here; see a relativistic-chemistry text.
+      - heading "1.6 Outlook" [level=2] [ref=e2484]
+      - paragraph [ref=e2485]:
+        - text: The exact Schrödinger equation for a molecule with more than two or three electrons is
+        - strong [ref=e2486]: unsolvable
+        - text: in closed form, and is intractable numerically because the wavefunction lives in a space whose dimension grows exponentially with
+        - img [ref=e2488]
+        - text: ". The rest of these notes is a tour of the successive approximations that make the problem tractable: mean-field theory, density-functional reformulation, and the zoo of exchange–correlation functionals."
+      - paragraph [ref=e2493]:
+        - text: This chapter anchors every later one with five
+        - strong [ref=e2494]: exact
+        - text: "results that follow from the postulates alone: the operator formalism (commutators, spectral theorem, time-evolution operator) of section 1.10, the Dyson series and Fermi’s golden rule for time-dependent perturbations (section 1.8), the time-dependent Schrödinger equation (section 1.7), the harmonic oscillator (section 1.9), and the hydrogen atom (section 1.13). All five are needed before we can say"
+        - emphasis [ref=e2495]: what DFT is approximating
+        - text: .
+      - blockquote [ref=e2496]:
+        - paragraph [ref=e2497]:
+          - text: "Next:"
+          - link "chapter 02" [ref=e2498] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-02/
+          - text: — the many-body problem and why a single Slater determinant isn’t enough.
+      - separator [ref=e2499]
+      - heading "1.7 The time-dependent Schrödinger equation" [level=2] [ref=e2500]
+      - paragraph [ref=e2501]:
+        - text: This section upgrades the postulates of section 1.2 from “the Hamiltonian has eigenstates” to “the wavefunction moves under
+        - img [ref=e2503]
+        - text: "”. The upgrade is more than cosmetic: time-dependent problems are the natural setting for spectroscopy, for response theory, and for every propagation method in molecular dynamics."
+      - heading "1.7.1 The TDSE postulate, again" [level=3] [ref=e2512]
+      - paragraph [ref=e2513]: Postulate P5 reads
+      - img [ref=e2515]
+      - paragraph [ref=e2563]:
+        - text: The Hamiltonian is independent of time (we are in the
+        - strong [ref=e2564]: closed-system
+        - text: setting), so the formal solution is the
+        - strong [ref=e2565]: time-evolution operator
+      - img [ref=e2567]:
+        - generic [ref=e2571]:
+          - img [ref=e2572]
+          - img [ref=e2648]
+      - paragraph [ref=e2660]:
+        - text: Three algebraic properties of
+        - img [ref=e2662]
+        - text: follow directly from
+        - img [ref=e2678]
+        - text: being self-adjoint (
+        - img [ref=e2688]
+        - text: ).
+      - list [ref=e2708]:
+        - listitem [ref=e2709]:
+          - strong [ref=e2710]:
+            - img [ref=e2712]
+            - text: "is unitary:"
+          - img [ref=e2728]
+          - text: . Therefore
+          - img [ref=e2822]
+          - text: — probability is preserved. This is P1’s normalisation in motion.
+        - listitem [ref=e2877]:
+          - strong [ref=e2878]:
+            - img [ref=e2880]
+            - text: "is one-parameter group:"
+          - img [ref=e2896]
+          - text: . Time evolution is deterministic and reversible; given
+          - img [ref=e2954]
+          - text: ", the state at any other time is fixed."
+        - listitem [ref=e2969]:
+          - strong [ref=e2970]:
+            - img [ref=e2972]
+            - text: commutes with
+            - img [ref=e2988]
+            - text: ":"
+          - text: if
+          - img [ref=e2998]
+          - text: is an eigenstate of
+          - img [ref=e3014]
+          - text: with eigenvalue
+          - img [ref=e3024]
+          - text: ", then"
+          - img [ref=e3033]
+          - text: ", which is just the statement that"
+          - emphasis [ref=e3085]: stationary states are stationary densities
+          - text: (only a global phase accumulates).
+      - heading "1.7.2 Derivation from the time-dependent variational principle" [level=3] [ref=e3086]
+      - paragraph [ref=e3087]:
+        - text: "Postulate P5 follows from a single principle:"
+        - strong [ref=e3088]: stationary action
+        - text: . We require that the physical state
+        - img [ref=e3090]
+        - text: make the
+        - emphasis [ref=e3105]: action
+      - img [ref=e3107]:
+        - generic [ref=e3111]:
+          - img [ref=e3112]
+          - img [ref=e3178]
+      - paragraph [ref=e3190]:
+        - text: stationary against arbitrary variations
+        - img [ref=e3192]
+        - text: vanishing at the endpoints. The Lagrangian is the
+        - strong [ref=e3209]: Dirac–Frenkel
+        - text: (or
+        - strong [ref=e3210]: McLachlan
+        - text: ) Lagrangian
+      - img [ref=e3212]:
+        - generic [ref=e3216]:
+          - img [ref=e3217]
+          - img [ref=e3282]
+      - paragraph [ref=e3294]:
+        - text: It is a functional on the
+        - emphasis [ref=e3295]: projective
+        - text: Hilbert space of normalised states; the factor of
+        - img [ref=e3297]
+        - text: is the only choice that keeps
+        - img [ref=e3303]
+        - text: real and the resulting Euler–Lagrange equation linear and conservative.
+      - paragraph [ref=e3309]:
+        - text: Take an infinitesimal variation
+        - img [ref=e3311]
+        - text: with
+        - img [ref=e3341]
+        - text: . Expanding and integrating by parts in
+        - img [ref=e3362]
+        - text: (the boundary term vanishes because
+        - img [ref=e3368]
+        - text: at the endpoints), the stationarity condition
+        - img [ref=e3384]
+        - text: for arbitrary
+        - img [ref=e3397]
+        - text: gives the
+        - strong [ref=e3408]: Euler–Lagrange equation
+      - img [ref=e3410]:
+        - generic [ref=e3414]:
+          - img [ref=e3415]
+          - img [ref=e3460]
+      - paragraph [ref=e3472]:
+        - text: which is postulate P5. Conversely, if the TDSE holds then
+        - img [ref=e3474]
+        - text: is
+        - emphasis [ref=e3480]: constant in time
+        - text: ", equal to"
+        - img [ref=e3482]
+        - text: for normalised states. The TDSE is therefore the unique dynamics that is consistent with
+        - strong [ref=e3491]: stationary action
+        - emphasis [ref=e3492]: "an`d"
+        - text: ’
+        - strong [ref=e3493]: unitarity
+        - text: (preservation of the inner product).
+      - blockquote [ref=e3494]:
+        - paragraph [ref=e3495]:
+          - strong [ref=e3496]: Tip.
+          - text: The Dirac–Frenkel action is the working horse of every ab-initio molecular-dynamics method (Car–Parrinello, surface-hopping, MCTDH, exact factorisation). The time-dependent Kohn–Sham equations of chapter 5 are recovered by restricting
+          - img [ref=e3498]
+          - text: to a single Slater determinant and varying over the orbital rotations.
+      - heading "1.7.3 Separation of variables — recovering the TISE" [level=3] [ref=e3513]
+      - paragraph [ref=e3514]:
+        - text: Write
+        - img [ref=e3516]
+        - text: . Substituting into
+        - img [ref=e3549]:
+          - link [ref=e3552] [cursor=pointer]:
+            - /url: "#"
+        - text: and dividing by
+        - img [ref=e3562]
+        - text: ", the left-hand side is a pure function of"
+        - img [ref=e3581]
+        - text: and the right-hand side is a pure operator on
+        - img [ref=e3587]
+        - text: ", so both must equal a constant"
+        - img [ref=e3597]
+        - text: . The time part is
+        - img [ref=e3603]
+        - text: ; the spatial part is
+      - img [ref=e3653]:
+        - generic [ref=e3657]:
+          - img [ref=e3658]
+          - img [ref=e3688]
+      - paragraph [ref=e3700]:
+        - text: which is the
+        - strong [ref=e3701]: time-independent Schrödinger equation
+        - text: (TISE). The general solution is a sum of stationary states with time-dependent phases,
+      - img [ref=e3703]:
+        - generic [ref=e3707]:
+          - img [ref=e3708]
+          - img [ref=e3787]
+      - paragraph [ref=e3799]:
+        - text: with the
+        - img [ref=e3801]
+        - text: "determined by the initial condition. Two observations: the"
+        - emphasis [ref=e3809]: energy
+        - text: of a stationary state is sharp, but the expectation value of any operator that does not commute with
+        - img [ref=e3811]
+        - text: is
+        - emphasis [ref=e3820]: not
+        - text: stationary (because the relative phases
+        - img [ref=e3822]
+        - text: rotate); and
+        - img [ref=e3852]
+        - text: by direct computation — the
+        - emphasis [ref=e3875]: local
+        - text: version of which is the continuity equation of the next subsection.
+      - heading "1.7.4 Probability current and continuity" [level=3] [ref=e3876]
+      - paragraph [ref=e3877]:
+        - text: For a single particle in a real scalar potential
+        - img [ref=e3879]
+        - text: ", subtract"
+        - img [ref=e3892]
+        - text: times the TDSE from
+        - img [ref=e3901]
+        - text: "times its complex conjugate:"
+      - img [ref=e3907]
+      - paragraph [ref=e3971]:
+        - text: The left-hand side is
+        - img [ref=e3973]
+        - text: . Define the
+        - strong [ref=e3985]: probability current
+      - img [ref=e3987]:
+        - generic [ref=e3991]:
+          - img [ref=e3992]
+          - img [ref=e4067]
+      - paragraph [ref=e4079]: Then
+      - img [ref=e4081]:
+        - generic [ref=e4085]:
+          - img [ref=e4086]
+          - img [ref=e4134]
+      - paragraph [ref=e4145]:
+        - text: the
+        - strong [ref=e4146]: continuity equation
+        - text: . Integrate over a volume
+        - img [ref=e4148]
+        - text: bounded by a surface
+        - img [ref=e4154]
+        - text: "and use the divergence theorem:"
+      - img [ref=e4162]
+      - paragraph [ref=e4210]:
+        - text: "Probability is conserved locally: any decrease inside"
+        - img [ref=e4212]
+        - text: equals the flux through the boundary. In the limit
+        - img [ref=e4218]
+        - text: with
+        - img [ref=e4232]
+        - text: at infinity,
+        - img [ref=e4243]
+        - text: is strictly time-independent, reproducing
+        - img [ref=e4256]
+        - text: .
+      - heading "1.7.5 The Ehrenfest theorem" [level=3] [ref=e4279]
+      - paragraph [ref=e4280]:
+        - text: The TDSE also gives the equations of motion for expectation values. For any operator
+        - img [ref=e4282]
+        - text: (possibly explicitly time-dependent), differentiating
+        - img [ref=e4292]
+        - text: and using the TDSE twice gives the
+        - strong [ref=e4305]: Ehrenfest theorem
+      - img [ref=e4307]:
+        - generic [ref=e4311]:
+          - img [ref=e4312]
+          - img [ref=e4393]
+      - paragraph [ref=e4405]:
+        - text: In atomic units,
+        - img [ref=e4407]
+        - text: . For
+        - img [ref=e4475]
+        - text: ":"
+        - img [ref=e4494]
+        - text: ", so"
+        - img [ref=e4528]
+        - text: . For
+        - img [ref=e4557]
+        - text: ":"
+        - img [ref=e4576]
+        - text: ", so"
+        - img [ref=e4607]
+        - text: . Together,
+      - img [ref=e4639]:
+        - generic [ref=e4643]:
+          - img [ref=e4644]
+          - img [ref=e4696]
+      - paragraph [ref=e4709]:
+        - text: which is
+        - strong [ref=e4710]: Newton’s second law
+        - text: for the wavepacket’s centroid (when the potential is slowly varying over the wavepacket’s extent). Ehrenfest’s theorem is the bridge between quantum and classical mechanics; it justifies classical-trajectory molecular dynamics in the heavy-particle limit.
+      - 'heading "1.7.6 Mermaid: time evolution and stationarity" [level=3] [ref=e4711]'
+      - figure [ref=e4713]:
+        - code [ref=e4714]:
+          - document [ref=e4715]:
+            - generic [ref=e4717]:
+              - generic [ref=e4722]:
+                - generic [ref=e4726]: "yes"
+                - generic [ref=e4730]: no (superposition)
+              - generic [ref=e4731]:
+                - generic [ref=e4737]: Initial state|ψ(0)⟩
+                - generic [ref=e4743]: Expand in eigenbasis of H|ψ(0)⟩ = Σ c_n |n⟩
+                - generic [ref=e4748]: Single eigenstate?
+                - generic [ref=e4754]: Stationary:|ψ(t)⟩ = e^(-iE_n t)|n⟩|ψ|² time-independent
+                - generic [ref=e4760]: Dynamic:|ψ(t)⟩ = Σ c_n e^(-iE_n t)|n⟩relative phases rotate
+                - generic [ref=e4766]: "Used in: spectroscopy baselines,stationary perturbation theory"
+                - generic [ref=e4772]: "Used in: TDDFT, wavepacket dynamics,Fermi's golden rule (1.8)"
+        - button "Download this diagram as a PNG" [ref=e4773] [cursor=pointer]:
+          - img [ref=e4774]
+          - generic [ref=e4777]: Download PNG
+      - paragraph [ref=e4778]: This is the conceptual flow for the rest of the chapter. The stationary branch recovers the TISE; the dynamic branch is the starting point for time-dependent perturbation theory.
+      - heading "1.8 Time-dependent perturbation theory" [level=2] [ref=e4779]
+      - paragraph [ref=e4780]:
+        - text: Most quantum systems of chemical interest cannot be solved exactly, but most
+        - emphasis [ref=e4781]: can
+        - text: be written as a known, exactly soluble system plus a small perturbation. The Dyson series and Fermi’s golden rule are the formal apparatus that converts that intuition into numbers.
+      - heading "1.8.1 The interaction picture" [level=3] [ref=e4782]
+      - paragraph [ref=e4783]:
+        - text: The starting point is a Hamiltonian split into a
+        - strong [ref=e4784]: bare
+        - text: (solvable) part and a perturbation,
+      - img [ref=e4786]:
+        - generic [ref=e4790]:
+          - img [ref=e4791]
+          - img [ref=e4834]
+      - paragraph [ref=e4846]:
+        - text: where we will be interested in the case where
+        - img [ref=e4848]
+        - text: is
+        - emphasis [ref=e4863]: switched on
+        - text: smoothly from
+        - img [ref=e4865]
+        - text: ","
+        - img [ref=e4877]
+        - text: for
+        - img [ref=e4909]
+        - text: with
+        - img [ref=e4921]
+        - text: ", and constant for"
+        - img [ref=e4934]
+        - text: . The Dyson series works for any
+        - img [ref=e4944]
+        - text: ; the smooth switching is the
+        - strong [ref=e4959]: adiabatic switching
+        - text: that avoids the
+        - img [ref=e4961]
+        - text: divergences of sudden turn-on.
+      - paragraph [ref=e4972]:
+        - text: The
+        - strong [ref=e4973]: interaction picture
+        - text: state is
+      - img [ref=e4975]:
+        - generic [ref=e4979]:
+          - img [ref=e4980]
+          - img [ref=e5035]
+      - paragraph [ref=e5047]:
+        - text: where the subscript
+        - img [ref=e5049]
+        - text: denotes the Schrödinger picture. The Schrödinger evolution is
+        - img [ref=e5055]
+        - text: with
+        - img [ref=e5114]
+        - text: (the time-ordered exponential, where
+        - img [ref=e5191]
+        - text: orders later times to the left). Inserting the definition of
+        - img [ref=e5198]
+        - text: ":"
+      - img [ref=e5211]:
+        - generic [ref=e5215]:
+          - img [ref=e5216]
+          - img [ref=e5357]
+      - paragraph [ref=e5369]:
+        - text: Differentiate with respect to
+        - img [ref=e5371]
+        - text: and use
+        - img [ref=e5377]
+        - text: and
+        - img [ref=e5408]
+        - text: ":"
+      - img [ref=e5466]
+      - paragraph [ref=e5561]:
+        - text: where the
+        - strong [ref=e5562]: interaction-picture perturbation operator
+        - text: is
+      - img [ref=e5564]:
+        - generic [ref=e5568]:
+          - img [ref=e5569]
+          - img [ref=e5640]
+      - paragraph [ref=e5652]:
+        - text: The interaction-picture evolution operator
+        - img [ref=e5654]
+        - text: therefore satisfies
+      - img [ref=e5680]:
+        - generic [ref=e5684]:
+          - img [ref=e5685]
+          - img [ref=e5794]
+      - paragraph [ref=e5806]:
+        - text: Equation
+        - img [ref=e5808]:
+          - link [ref=e5811] [cursor=pointer]:
+            - /url: "#"
+        - text: is equivalent to the integral form
+      - img [ref=e5821]:
+        - generic [ref=e5825]:
+          - img [ref=e5826]
+          - img [ref=e5927]
+      - heading "1.8.2 The Dyson series" [level=3] [ref=e5939]
+      - paragraph [ref=e5940]:
+        - text: Iterating
+        - img [ref=e5942]:
+          - link [ref=e5945] [cursor=pointer]:
+            - /url: "#"
+        - text: gives the
+        - strong [ref=e5954]: Dyson series
+      - img [ref=e5956]:
+        - generic [ref=e5960]:
+          - img [ref=e5961]
+          - img [ref=e6130]
+      - paragraph [ref=e6142]:
+        - text: The first two terms are obtained by iteration of
+        - img [ref=e6144]:
+          - link [ref=e6147] [cursor=pointer]:
+            - /url: "#"
+        - text: . At
+        - img [ref=e6157]
+        - text: ","
+        - img [ref=e6167]
+        - text: . Substituting this into
+        - img [ref=e6188]:
+          - link [ref=e6191] [cursor=pointer]:
+            - /url: "#"
+        - text: gives the
+        - strong [ref=e6200]: first Born approximation
+      - img [ref=e6202]:
+        - generic [ref=e6206]:
+          - img [ref=e6207]
+          - img [ref=e6302]
+      - paragraph [ref=e6314]:
+        - text: Inserting
+        - img [ref=e6316]:
+          - link [ref=e6319] [cursor=pointer]:
+            - /url: "#"
+        - text: back into
+        - img [ref=e6329]:
+          - link [ref=e6332] [cursor=pointer]:
+            - /url: "#"
+        - text: produces the
+        - img [ref=e6342]
+        - text: term; in symmetrised form,
+      - img [ref=e6352]
+      - paragraph [ref=e6549]:
+        - text: because
+        - img [ref=e6551]
+        - text: puts the later-time operator on the left and the
+        - img [ref=e6558]
+        - text: ordering restricts half the integration domain. Continuing the iteration to all orders gives
+        - img [ref=e6574]:
+          - link [ref=e6577] [cursor=pointer]:
+            - /url: "#"
+        - text: . The series is the perturbative expansion of the time-evolution operator in powers of
+        - img [ref=e6587]
+        - text: ; at
+        - img [ref=e6597]
+        - text: "-th order, exactly"
+        - img [ref=e6603]
+        - text: factors of
+        - img [ref=e6609]
+        - text: appear, time-ordered left-to-right from earliest to latest.
+      - heading "1.8.3 First-order transition amplitude" [level=3] [ref=e6621]
+      - paragraph [ref=e6622]:
+        - text: The probability amplitude to transition from an initial eigenstate
+        - img [ref=e6624]
+        - text: of
+        - img [ref=e6634]
+        - text: to a final eigenstate
+        - img [ref=e6647]
+        - text: at time
+        - img [ref=e6657]
+        - text: is, in first-order perturbation theory,
+      - img [ref=e6663]:
+        - generic [ref=e6667]:
+          - img [ref=e6668]
+          - img [ref=e6775]
+      - paragraph [ref=e6787]:
+        - text: Use
+        - img [ref=e6789]:
+          - link [ref=e6792] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+        - img [ref=e6802]
+        - text: ", so"
+        - img [ref=e6871]
+        - text: ", where"
+        - img [ref=e6953]
+        - text: is the
+        - strong [ref=e6998]: matrix element
+        - text: of the perturbation in the
+        - img [ref=e7000]
+        - text: basis. Therefore
+      - img [ref=e7013]:
+        - generic [ref=e7017]:
+          - img [ref=e7018]
+          - img [ref=e7122]
+      - paragraph [ref=e7135]:
+        - text: For a
+        - emphasis [ref=e7136]: time-independent
+        - text: perturbation
+        - img [ref=e7138]
+        - text: (the most common case in spectroscopy and scattering),
+        - img [ref=e7148]
+        - text: "is constant, and the integral is elementary:"
+      - img [ref=e7160]:
+        - generic [ref=e7164]:
+          - img [ref=e7165]
+          - img [ref=e7325]
+      - paragraph [ref=e7338]: The transition probability is the squared modulus,
+      - img [ref=e7340]:
+        - generic [ref=e7344]:
+          - img [ref=e7345]
+          - img [ref=e7512]
+      - paragraph [ref=e7525]:
+        - text: For long times
+        - img [ref=e7527]
+        - text: ", the function"
+        - img [ref=e7533]
+        - text: becomes concentrated around
+        - img [ref=e7567]
+        - text: ; this is the
+        - strong [ref=e7576]: resonance condition
+        - img [ref=e7578]
+        - text: .
+      - heading "1.8.4 Fermi’s golden rule" [level=3] [ref=e7593]
+      - paragraph [ref=e7594]:
+        - text: We want the
+        - emphasis [ref=e7595]: rate
+        - text: of transitions from
+        - img [ref=e7597]
+        - text: into a continuum of final states
+        - img [ref=e7607]
+        - text: of similar energy. Sum
+        - img [ref=e7618]:
+          - link [ref=e7621] [cursor=pointer]:
+            - /url: "#"
+        - text: over a band of final states with density of states
+        - img [ref=e7631]
+        - text: "(in energy, not in state-index), and pass to the long-time limit:"
+      - img [ref=e7649]
+      - paragraph [ref=e7709]:
+        - text: Differentiating
+        - img [ref=e7711]:
+          - link [ref=e7714] [cursor=pointer]:
+            - /url: "#"
+        - text: and using
+        - img [ref=e7724]
+        - text: ","
+      - img [ref=e7777]:
+        - generic [ref=e7781]:
+          - img [ref=e7782]
+          - img [ref=e7858]
+      - paragraph [ref=e7871]:
+        - text: Sum over
+        - img [ref=e7873]
+        - text: by replacing the discrete sum with an integral over
+        - img [ref=e7879]
+        - text: weighted by
+        - img [ref=e7888]
+        - text: ":"
+      - img [ref=e7906]
+      - paragraph [ref=e8018]:
+        - text: Use
+        - img [ref=e8020]
+        - text: ", so"
+        - img [ref=e8046]
+        - text: . The function
+        - img [ref=e8069]
+        - text: "is a nascent delta: it integrates to"
+        - img [ref=e8090]
+        - text: in the limit
+        - img [ref=e8096]
+        - text: ","
+      - img [ref=e8106]
+      - paragraph [ref=e8147]:
+        - text: In detail, it is the
+        - strong [ref=e8148]: Dirac kernel
+      - img [ref=e8150]:
+        - generic [ref=e8154]:
+          - img [ref=e8155]:
+            - img [ref=e8196]
+          - img [ref=e8216]
+      - paragraph [ref=e8229]:
+        - text: Replacing
+        - img [ref=e8231]
+        - text: by
+        - img [ref=e8240]
+        - text: ", the integral collapses to the value at the resonance"
+        - img [ref=e8246]
+        - text: ":"
+      - img [ref=e8262]:
+        - img [ref=e8294]
+      - paragraph [ref=e8350]:
+        - text: This is the
+        - strong [ref=e8351]: transition rate
+        - text: ", and the result is"
+        - strong [ref=e8352]: Fermi’s golden rule
+        - text: ":"
+      - img [ref=e8354]:
+        - generic [ref=e8358]:
+          - img [ref=e8359]:
+            - img [ref=e8423]
+          - img [ref=e8439]
+      - paragraph [ref=e8452]:
+        - text: (in atomic units,
+        - img [ref=e8454]
+        - text: ", and the prefactor is just"
+        - img [ref=e8464]
+        - text: ). Equation
+        - img [ref=e8472]:
+          - link [ref=e8475] [cursor=pointer]:
+            - /url: "#"
+        - text: "is the workhorse of spectroscopy: the rate of an"
+        - img [ref=e8485]
+        - text: transition is the
+        - emphasis [ref=e8503]: square
+        - text: of the matrix element of the perturbation between the two states, times the density of final states at the resonance energy. We will use it in section 1.13 to compute the spontaneous-emission rate of the hydrogen
+        - img [ref=e8505]
+        - text: transition.
+      - blockquote [ref=e8518]:
+        - paragraph [ref=e8519]:
+          - strong [ref=e8520]: Tip.
+          - text: Fermi’s golden rule is
+          - strong [ref=e8521]: first order in the perturbation
+          - text: but
+          - strong [ref=e8522]:
+            - text: all orders in
+            - img [ref=e8524]
+          - text: . It is exact in the limit of a small, time-independent perturbation, no matter how complicated
+          - img [ref=e8537]
+          - text: is. The price of this generality is that the
+          - emphasis [ref=e8549]: line shape
+          - text: (a Lorentzian of width
+          - img [ref=e8551]
+          - text: in practice) is determined by the imaginary part of the self-energy and is not captured at first order; for that, one uses the
+          - strong [ref=e8556]: second-order
+          - text: self-energy (Fermi–Wigner–Weisskopf line shape) or the
+          - strong [ref=e8557]: resolvent
+          - text: approach of Heitler–Ma.
+      - 'heading "1.8.5 Mermaid: time-dependent perturbative expansion" [level=3] [ref=e8558]'
+      - figure [ref=e8560]:
+        - code [ref=e8561]:
+          - document [ref=e8562]:
+            - generic [ref=e8564]:
+              - generic [ref=e8570]: Order-by-order wavefunction evolution
+              - generic [ref=e8577]:
+                - generic [ref=e8583]: "|ψ⁽¹⁾(t)⟩+ ∫_0^t e^(-iH₀(t-t₁)) V |i⟩ dt₁"
+                - generic [ref=e8589]: "|ψ⁽⁰⁾(t)⟩e^(-iE_i t)|i⟩"
+                - generic [ref=e8595]: "|ψ⁽²⁾(t)⟩+ ∫∫ e^(-iH₀(t-t₁)) V e^(-iH₀(t₁-t₂)) V |i⟩ dt₁dt₂"
+                - generic [ref=e8601]: "|ψ⁽ⁿ⁾(t)⟩n nested commutators"
+                - generic [ref=e8607]: Amplitude c_f^(n)(t)= ⟨f|ψ⁽ⁿ⁾(t)⟩
+                - generic [ref=e8613]: "|c_f|² → rateFermi's golden rule(long-time, resonance)"
+        - button "Download this diagram as a PNG" [ref=e8614] [cursor=pointer]:
+          - img [ref=e8615]
+          - generic [ref=e8618]: Download PNG
+      - paragraph [ref=e8619]:
+        - text: Each “order” in the expansion adds one more factor of
+        - img [ref=e8621]
+        - text: and one more time integral. The first-order amplitude gives the leading transition rate, Fermi’s golden rule.
+      - heading "1.9 The harmonic oscillator" [level=2] [ref=e8630]
+      - paragraph [ref=e8631]:
+        - text: The
+        - strong [ref=e8632]: quantum harmonic oscillator
+        - text: "(QHO) is the most important exactly soluble problem in quantum mechanics. It describes molecular vibrations in the harmonic approximation, the phonons of a crystal, the normal modes of a transition state, and — in second quantisation — every bosonic field. We solve it twice:"
+        - strong [ref=e8633]: algebraically
+        - text: (ladder operators) and
+        - strong [ref=e8634]: in position space
+        - text: (Hermite polynomials).
+      - heading "1.9.1 The Hamiltonian" [level=3] [ref=e8635]
+      - paragraph [ref=e8636]:
+        - text: For a particle of mass
+        - img [ref=e8638]
+        - text: and angular frequency
+        - img [ref=e8644]
+        - text: in a 1-D harmonic well, the Hamiltonian is
+      - img [ref=e8650]:
+        - generic [ref=e8654]:
+          - img [ref=e8655]
+          - img [ref=e8709]
+      - paragraph [ref=e8721]:
+        - text: In atomic units,
+        - img [ref=e8723]
+        - text: for the electron, and the kinetic term is
+        - img [ref=e8733]
+        - text: . The characteristic length and energy scales are
+      - img [ref=e8753]:
+        - generic [ref=e8757]:
+          - img [ref=e8758]
+          - img [ref=e8799]
+      - paragraph [ref=e8811]:
+        - text: Define the
+        - strong [ref=e8812]: dimensionless position
+        - img [ref=e8814]
+        - text: and
+        - strong [ref=e8839]: dimensionless momentum
+        - img [ref=e8841]
+        - text: ", which satisfy"
+        - img [ref=e8867]
+        - text: . The Hamiltonian in dimensionless units is
+      - img [ref=e8896]:
+        - generic [ref=e8900]:
+          - img [ref=e8901]
+          - img [ref=e8950]
+      - paragraph [ref=e8962]: Drop the primes; everything below is in dimensionless units. The position-space form is
+      - img [ref=e8964]:
+        - generic [ref=e8968]:
+          - img [ref=e8969]
+          - img [ref=e9019]
+      - heading "1.9.2 Ladder operators" [level=3] [ref=e9031]
+      - paragraph [ref=e9032]:
+        - text: Define the
+        - strong [ref=e9033]: annihilation
+        - text: and
+        - strong [ref=e9034]: creation
+        - text: operators
+      - img [ref=e9036]:
+        - generic [ref=e9040]:
+          - img [ref=e9041]
+          - img [ref=e9134]
+      - paragraph [ref=e9146]:
+        - text: Their commutation relation follows from
+        - img [ref=e9148]
+        - text: ":"
+      - img [ref=e9174]:
+        - generic [ref=e9178]:
+          - img [ref=e9179]
+          - img [ref=e9346]
+      - paragraph [ref=e9358]:
+        - text: So
+        - img [ref=e9360]
+        - text: (the bosonic CCR). The Hamiltonian
+        - img [ref=e9393]:
+          - link [ref=e9396] [cursor=pointer]:
+            - /url: "#"
+        - text: is, inverting
+        - img [ref=e9406]:
+          - link [ref=e9409] [cursor=pointer]:
+            - /url: "#"
+        - text: ","
+      - img [ref=e9419]
+      - paragraph [ref=e9510]: and therefore
+      - img [ref=e9512]
+      - paragraph [ref=e9637]: Substituting,
+      - img [ref=e9639]:
+        - generic [ref=e9643]:
+          - img [ref=e9644]
+          - img [ref=e9736]
+      - paragraph [ref=e9748]:
+        - text: The combination
+        - img [ref=e9750]
+        - text: is the
+        - strong [ref=e9776]: number operator
+        - text: ; its eigenvalues are non-negative integers (we will see this in a moment), and the spectrum of
+        - img [ref=e9778]
+        - text: is therefore
+      - img [ref=e9788]:
+        - generic [ref=e9792]:
+          - img [ref=e9793]
+          - img [ref=e9843]
+      - paragraph [ref=e9855]:
+        - text: The ground-state energy
+        - img [ref=e9857]
+        - text: is the
+        - strong [ref=e9874]: zero-point energy
+        - text: ; it is non-zero because the Heisenberg uncertainty principle forbids a state with
+        - img [ref=e9876]
+        - text: .
+      - heading "1.9.3 The energy spectrum from commutation" [level=3] [ref=e9893]
+      - paragraph [ref=e9894]:
+        - text: The spectrum
+        - img [ref=e9896]:
+          - link [ref=e9899] [cursor=pointer]:
+            - /url: "#"
+        - text: is fixed by the
+        - strong [ref=e9908]: commutation relations alone
+        - text: ", not by any differential-equation machinery. Compute"
+      - img [ref=e9910]:
+        - generic [ref=e9914]:
+          - img [ref=e9915]
+          - img [ref=e10048]
+      - paragraph [ref=e10060]:
+        - text: Therefore, if
+        - img [ref=e10062]
+        - text: is an eigenstate of
+        - img [ref=e10072]
+        - text: with eigenvalue
+        - img [ref=e10082]
+        - text: ","
+      - img [ref=e10091]:
+        - generic [ref=e10095]:
+          - img [ref=e10096]
+          - img [ref=e10198]
+      - paragraph [ref=e10211]:
+        - img [ref=e10213]
+        - text: is an eigenstate with eigenvalue
+        - img [ref=e10230]
+        - text: . Similarly
+        - img [ref=e10243]
+        - text: is an eigenstate with eigenvalue
+        - img [ref=e10263]
+        - text: . The ladder of states is therefore
+      - img [ref=e10276]:
+        - img [ref=e10304]
+      - paragraph [ref=e10330]:
+        - text: and the energy spacing between adjacent levels is exactly
+        - img [ref=e10332]
+        - text: . (This is why a classical oscillator, Fourier-analysed, emits/absorbs energy in quanta of
+        - img [ref=e10338]
+        - text: .)
+      - paragraph [ref=e10345]:
+        - text: To pin down the absolute energy scale, the
+        - strong [ref=e10346]: lowest-weight state
+        - img [ref=e10348]
+        - text: must be annihilated by
+        - img [ref=e10358]
+        - text: ":"
+        - img [ref=e10368]
+        - text: . If it were not,
+        - img [ref=e10389]
+        - text: would be an eigenstate of
+        - img [ref=e10406]
+        - text: with eigenvalue
+        - img [ref=e10416]
+        - text: ", and iterating would give an unbounded-below spectrum (in contradiction to"
+        - img [ref=e10429]
+        - text: being bounded below). So
+        - img [ref=e10439]
+        - text: and
+        - img [ref=e10460]
+        - text: . The rest of the spectrum follows from
+        - img [ref=e10520]
+        - text: ", with"
+        - img [ref=e10574]
+        - text: and orthonormality
+        - img [ref=e10602]
+        - text: .
+      - heading "1.9.4 Position-space wavefunctions and Hermite polynomials" [level=3] [ref=e10626]
+      - paragraph [ref=e10627]:
+        - text: The position-space eigenfunctions are obtained from
+        - img [ref=e10629]
+        - text: by solving
+        - img [ref=e10657]
+        - text: ", i.e."
+        - img [ref=e10682]
+        - text: . The solution is a normalised Gaussian,
+      - img [ref=e10729]:
+        - generic [ref=e10733]:
+          - img [ref=e10734]
+          - img [ref=e10782]
+      - paragraph [ref=e10795]:
+        - text: Excited states are generated by
+        - img [ref=e10797]
+        - text: . In position space, the creation operator is
+        - img [ref=e10856]
+        - text: ", so"
+        - img [ref=e10898]
+        - text: is a first-order differential operator acting on
+        - img [ref=e10916]
+        - text: . Iterating gives
+      - img [ref=e10925]:
+        - generic [ref=e10929]:
+          - img [ref=e10930]
+          - img [ref=e11007]
+      - paragraph [ref=e11020]:
+        - text: where
+        - img [ref=e11022]
+        - text: is the
+        - strong [ref=e11030]: physicists’ Hermite polynomial
+        - text: ", defined by"
+      - img [ref=e11032]:
+        - generic [ref=e11036]:
+          - img [ref=e11037]
+          - img [ref=e11102]
+      - paragraph [ref=e11115]:
+        - text: The first few are
+        - img [ref=e11117]
+        - text: ","
+        - img [ref=e11130]
+        - text: ","
+        - img [ref=e11145]
+        - text: ","
+        - img [ref=e11167]
+        - text: . The wavefunctions
+        - img [ref=e11192]
+        - text: are real, alternate in parity (
+        - img [ref=e11207]
+        - text: ), and have exactly
+        - img [ref=e11248]
+        - text: zeros on the real line. In dimensionful variables the eigenfunctions are
+      - img [ref=e11254]:
+        - generic [ref=e11258]:
+          - img [ref=e11259]
+          - img [ref=e11394]
+      - heading "1.9.5 Coherent states" [level=3] [ref=e11406]
+      - paragraph [ref=e11407]:
+        - text: A
+        - strong [ref=e11408]: coherent state
+        - img [ref=e11410]
+        - text: (
+        - img [ref=e11420]
+        - text: ) is an eigenstate of the annihilation operator,
+      - img [ref=e11431]:
+        - generic [ref=e11435]:
+          - img [ref=e11436]
+          - img [ref=e11464]
+      - paragraph [ref=e11477]:
+        - text: It is the
+        - strong [ref=e11478]: most classical
+        - text: "state allowed by quantum mechanics: it minimises the Heisenberg uncertainty product"
+        - img [ref=e11480]
+        - text: (see Problem 3), it does not spread under free evolution, and its time evolution is
+        - img [ref=e11501]
+        - text: — a classical orbit in the
+        - img [ref=e11538]
+        - text: phase plane.
+      - paragraph [ref=e11557]:
+        - text: The coherent state can be expanded in the Fock basis
+        - img [ref=e11559]
+        - text: as
+      - img [ref=e11570]:
+        - generic [ref=e11574]:
+          - img [ref=e11575]
+          - img [ref=e11646]
+      - paragraph [ref=e11659]:
+        - text: The probabilities are Poissonian,
+        - img [ref=e11661]
+        - text: ", with mean photon number"
+        - img [ref=e11731]
+        - text: . The position-space wavefunction is a
+        - emphasis [ref=e11756]: "displace`d"
+        - text: ’ Gaussian,
+      - img [ref=e11758]:
+        - generic [ref=e11762]:
+          - img [ref=e11763]
+          - img [ref=e11857]
+      - paragraph [ref=e11869]:
+        - text: where
+        - img [ref=e11871]
+        - text: and
+        - img [ref=e11894]
+        - text: . Under free evolution (
+        - img [ref=e11917]
+        - text: ), the centre
+        - img [ref=e11934]
+        - text: orbits the classical ellipse in
+        - img [ref=e11966]
+        - text: space, exactly as a classical harmonic oscillator would.
+      - paragraph [ref=e11979]: The overcompleteness relation is
+      - img [ref=e11981]:
+        - generic [ref=e11985]:
+          - img [ref=e11986]
+          - img [ref=e12027]
+      - paragraph [ref=e12039]:
+        - text: "so the coherent states resolve the identity despite not being orthogonal:"
+        - img [ref=e12041]
+        - text: .
+      - 'heading "1.9.6 Mermaid: ladder-operator action and coherent states" [level=3] [ref=e12105]'
+      - figure [ref=e12107]:
+        - code [ref=e12108]:
+          - document [ref=e12109]:
+            - generic [ref=e12111]:
+              - generic [ref=e12117]: Ladder operators
+              - generic [ref=e12126]:
+                - generic [ref=e12130]: â†
+                - generic [ref=e12134]: â†
+                - generic [ref=e12138]: â†
+                - generic [ref=e12142]: â = 0
+                - generic [ref=e12146]: â reduces n
+                - generic [ref=e12150]: â reduces n
+                - generic [ref=e12154]: â reduces n
+              - generic [ref=e12155]:
+                - generic [ref=e12161]: "|1⟩E = 3ω/2"
+                - generic [ref=e12167]: "|0⟩E = ω/2"
+                - generic [ref=e12173]: "|2⟩E = 5ω/2"
+                - generic [ref=e12179]: "|3⟩E = 7ω/2"
+                - generic [ref=e12184]: …
+                - generic [ref=e12190]: vacuumlowest-weightstate
+        - button "Download this diagram as a PNG" [ref=e12191] [cursor=pointer]:
+          - img [ref=e12192]
+          - generic [ref=e12195]: Download PNG
+      - paragraph [ref=e12196]:
+        - text: The QHO’s entire spectrum is generated by repeated application of
+        - img [ref=e12198]
+        - text: to the vacuum
+        - img [ref=e12211]
+        - text: ", with"
+        - img [ref=e12221]
+        - text: acting as the “energy counter”.
+      - figure [ref=e12240]:
+        - code [ref=e12241]:
+          - document [ref=e12242]:
+            - generic [ref=e12250]:
+              - generic [ref=e12256]: Coherent state |α⟩eigenstate of ââ|α⟩ = α|α⟩
+              - generic [ref=e12262]: Minimises Δx Δp(uncertainty product)
+              - generic [ref=e12268]: P_n = e^(-N) N^n/n!Poisson statistics
+              - generic [ref=e12274]: Free evolution =orbit in phase space|α(t)⟩ = |α e^(-iωt)⟩
+              - generic [ref=e12280]: Resolves the identity:(1/π)∫ |α⟩⟨α| d²α = 1̂
+        - button "Download this diagram as a PNG" [ref=e12281] [cursor=pointer]:
+          - img [ref=e12282]
+          - generic [ref=e12285]: Download PNG
+      - heading "1.10 Operator formalism" [level=2] [ref=e12286]
+      - paragraph [ref=e12287]:
+        - text: Sections 1.7–1.9 used operators freely — the Hamiltonian, the position and momentum operators, the annihilation and creation operators — but treated them as the
+        - emphasis [ref=e12288]: objects
+        - text: of differential equations. This section lifts that treatment to the
+        - strong [ref=e12289]: abstract operator level
+        - text: ": definitions that do not depend on a particular representation, properties of operators under addition and multiplication, and the key commutator structure that makes quantum mechanics what it is."
+      - heading "1.10.1 Linear operators on Hilbert space" [level=3] [ref=e12290]
+      - paragraph [ref=e12291]:
+        - text: A
+        - strong [ref=e12292]: linear operator
+        - text: on the Hilbert space
+        - img [ref=e12294]
+        - text: is a map
+        - img [ref=e12301]
+        - text: that preserves linear combinations,
+      - img [ref=e12321]:
+        - generic [ref=e12325]:
+          - img [ref=e12326]
+          - img [ref=e12394]
+      - paragraph [ref=e12407]:
+        - text: Every operator used in the rest of these notes is linear. The
+        - strong [ref=e12408]: adjoint
+        - text: (or
+        - strong [ref=e12409]: Hermitian conjugate
+        - text: )
+        - img [ref=e12411]
+        - text: of a linear operator is defined by
+      - img [ref=e12424]:
+        - generic [ref=e12428]:
+          - img [ref=e12429]
+          - img [ref=e12498]
+      - paragraph [ref=e12511]:
+        - text: The adjoint reverses the order of products,
+        - img [ref=e12513]
+        - text: ", and maps scalars to their complex conjugates,"
+        - img [ref=e12556]
+        - text: . Three special cases are worth singling out.
+      - list [ref=e12590]:
+        - listitem [ref=e12591]:
+          - strong [ref=e12592]: Hermitian (self-adjoint) operators
+          - text: satisfy
+          - img [ref=e12594]
+          - text: . They are the candidates for
+          - strong [ref=e12614]: observables
+          - text: "(postulate P2): their eigenvalues are real, and their eigenstates at distinct eigenvalues are orthogonal. All operators in section 1.4 (kinetic, potential, Coulomb, exchange, …) are Hermitian."
+        - listitem [ref=e12615]:
+          - strong [ref=e12616]: Unitary operators
+          - text: satisfy
+      - img [ref=e12618]:
+        - generic [ref=e12622]:
+          - img [ref=e12623]
+          - img [ref=e12669]
+      - paragraph [ref=e12682]:
+        - text: They preserve inner products (
+        - img [ref=e12684]
+        - text: ) and norms, and are the candidates for
+        - strong [ref=e12721]: symmetry operations
+        - text: (translations, rotations, time evolution). The time-evolution operator of section 1.11 is the most important unitary operator in these notes.
+      - list [ref=e12722]:
+        - listitem [ref=e12723]:
+          - strong [ref=e12724]: Antiunitary operators
+          - text: satisfy
+          - img [ref=e12726]
+          - text: but additionally take the complex conjugate of scalars,
+          - img [ref=e12753]
+          - text: . The time-reversal operator of section 1.12.2 is the only antiunitarian we will meet.
+      - blockquote [ref=e12793]:
+        - paragraph [ref=e12794]:
+          - strong [ref=e12795]: Tip.
+          - text: "The bra-ket notation makes the adjoint operation easy:"
+          - img [ref=e12797]
+          - text: is the unique operator such that
+          - img [ref=e12810]
+          - text: is the
+          - strong [ref=e12828]: bra
+          - img [ref=e12830]
+          - text: ". This is also why bras and kets come paired: a bra is the adjoint of a ket, and"
+          - emphasis [ref=e12845]: applying
+          - text: an operator to a ket is the same as
+          - emphasis [ref=e12846]: premultiplying
+          - text: the corresponding bra by the adjoint.
+      - heading "1.10.2 Commutators and the canonical commutation relations" [level=3] [ref=e12847]
+      - paragraph [ref=e12848]:
+        - text: The
+        - strong [ref=e12849]: commutator
+        - text: of two operators is
+      - img [ref=e12851]:
+        - generic [ref=e12855]:
+          - img [ref=e12856]
+          - img [ref=e12908]
+      - paragraph [ref=e12921]:
+        - text: Two operators
+        - strong [ref=e12922]: commute
+        - text: if their commutator is zero; in that case they can be simultaneously diagonalised, and every eigenstate of one is an eigenstate of the other. The non-commutativity of operators is the
+        - strong [ref=e12923]: distinguishing feature of quantum mechanics
+        - text: ": it is what makes the uncertainty principle possible (see Problem 1), and it is the reason that position and momentum cannot both be sharp."
+      - paragraph [ref=e12924]:
+        - text: The commutation relations that define non-relativistic quantum mechanics are the
+        - strong [ref=e12925]: canonical commutation relations
+        - text: (CCR),
+      - img [ref=e12927]:
+        - generic [ref=e12931]:
+          - img [ref=e12932]
+          - img [ref=e13030]
+      - paragraph [ref=e13043]:
+        - text: where
+        - img [ref=e13045]
+        - text: . (We work in atomic units, so
+        - img [ref=e13068]
+        - text: is implicit; the SI form is
+        - img [ref=e13078]
+        - text: .) The multi-particle generalisation is
+        - img [ref=e13120]
+        - text: for
+        - img [ref=e13174]
+        - text: . The CCR is
+        - emphasis [ref=e13196]: not
+        - text: derived from anything more fundamental; it is the
+        - strong [ref=e13197]: defining algebraic structure
+        - text: of quantum mechanics, and every other commutation relation in these notes — angular-momentum algebra, fermionic and bosonic commutation rules, the Lie algebra of the Lorentz group — is built on top of it.
+      - paragraph [ref=e13198]:
+        - text: Two operator identities are used so often that we name them now. The
+        - strong [ref=e13199]: Leibniz rule
+        - text: for commutators,
+      - img [ref=e13201]:
+        - generic [ref=e13205]:
+          - img [ref=e13206]
+          - img [ref=e13288]
+      - paragraph [ref=e13301]:
+        - text: and its analogue for the
+        - strong [ref=e13302]: anticommutator
+        - img [ref=e13304]
+        - text: ","
+      - img [ref=e13351]:
+        - generic [ref=e13355]:
+          - img [ref=e13356]
+          - img [ref=e13438]
+      - paragraph [ref=e13451]:
+        - text: Both follow by writing the product in two orders; they are used constantly in the angular-momentum algebra of chapter 2 and the second-quantised algebra of chapter 3. Applied to a
+        - strong [ref=e13452]: single-particle Hamiltonian
+        - img [ref=e13454]
+        - text: "(atomic units:"
+        - img [ref=e13497]
+        - text: ), the CCR gives
+      - img [ref=e13540]:
+        - generic [ref=e13544]:
+          - img [ref=e13545]
+          - img [ref=e13623]
+      - paragraph [ref=e13636]:
+        - text: The first equation is the
+        - strong [ref=e13637]: Heisenberg form of Newton’s second law
+        - text: "in the absence of a potential:"
+        - img [ref=e13639]
+        - text: via the Heisenberg equation of motion
+        - img [ref=e13671]
+        - text: "(more on this in section 1.12.1). The second equation is the same law in momentum space:"
+        - img [ref=e13714]
+        - text: ", the gradient of the potential. These two relations are the operator-level statement of"
+        - strong [ref=e13741]: Ehrenfest’s theorem
+        - text: "(section 1.7.5): the centroid of a wavepacket obeys Newton’s second law."
+      - blockquote [ref=e13742]:
+        - paragraph [ref=e13743]:
+          - strong [ref=e13744]: Warning.
+          - text: The order matters.
+          - img [ref=e13746]
+          - text: is the
+          - emphasis [ref=e13782]: Heisenberg
+          - text: commutator (i.e.
+          - img [ref=e13784]
+          - text: with
+          - img [ref=e13806]
+          - text: ), not
+          - img [ref=e13824]
+          - text: ; the two differ by an overall sign. Always write which order you mean.
+      - heading "1.10.3 Spectral theorem" [level=3] [ref=e13845]
+      - paragraph [ref=e13846]:
+        - text: The
+        - strong [ref=e13847]: spectral theorem
+        - text: is the operator-level statement that “an observable has eigenstates and eigenvalues”. For a self-adjoint operator
+        - img [ref=e13849]
+        - text: on a (separable) Hilbert space, the theorem guarantees
+      - list [ref=e13858]:
+        - listitem [ref=e13859]:
+          - text: A complete set of (possibly generalised) eigenstates
+          - img [ref=e13861]
+          - text: satisfying
+      - img [ref=e13872]:
+        - generic [ref=e13876]:
+          - img [ref=e13877]
+          - img [ref=e13905]
+      - paragraph [ref=e13918]:
+        - text: where
+        - img [ref=e13920]
+        - text: ranges over the
+        - strong [ref=e13925]: spectrum
+        - img [ref=e13927]
+        - text: of
+        - img [ref=e13943]
+        - text: . The spectrum is real (because
+        - img [ref=e13953]
+        - text: is Hermitian) and is the disjoint union of a
+        - emphasis [ref=e13962]: point spectrum
+        - img [ref=e13964]
+        - text: (eigenvalues with square-integrable eigenstates, like the bound states of hydrogen) and a
+        - emphasis [ref=e13972]: continuous spectrum
+        - img [ref=e13974]
+        - text: (eigenvalues for which the eigenstates are distributions, like the scattering states of a free particle).
+      - list [ref=e13982]:
+        - listitem [ref=e13983]:
+          - text: A
+          - strong [ref=e13984]: spectral decomposition
+          - text: of the identity,
+      - img [ref=e13986]:
+        - generic [ref=e13990]:
+          - img [ref=e13991]
+          - img [ref=e14057]
+      - paragraph [ref=e14071]:
+        - text: (The sum runs over the point spectrum, the integral over the continuous spectrum.) Equation
+        - img [ref=e14073]:
+          - link [ref=e14076] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-10-resolution"
+        - text: is the statement that
+        - emphasis [ref=e14089]: any
+        - text: state can be expanded in the eigenbasis of
+        - img [ref=e14091]
+        - text: ","
+        - img [ref=e14101]
+        - text: with
+        - img [ref=e14133]
+        - text: . It is the operator-level foundation of every expansion-based method in chapters 3, 5, and 6. 3. A
+        - strong [ref=e14157]: spectral representation of the operator itself
+        - text: ","
+      - img [ref=e14159]:
+        - generic [ref=e14163]:
+          - img [ref=e14164]
+          - img [ref=e14234]
+      - paragraph [ref=e14248]:
+        - text: Equations
+        - img [ref=e14250]:
+          - link [ref=e14253] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-10-resolution"
+        - text: and
+        - img [ref=e14267]:
+          - link [ref=e14270] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-10-spectral"
+        - text: are the same identity with one extra factor of
+        - img [ref=e14284]
+        - text: .
+      - blockquote [ref=e14289]:
+        - paragraph [ref=e14290]:
+          - strong [ref=e14291]: Tip.
+          - text: “Complete set of eigenstates” is a stronger claim than “eigenstates exist”. A self-adjoint operator on a finite-dimensional Hilbert space always has a complete orthonormal eigenbasis; on an infinite-dimensional one, completeness has to be
+          - strong [ref=e14292]: proved
+          - text: (it is what makes the operator “self-adjoint” rather than merely “symmetric”). The proof uses the spectral theorem.
+      - heading "1.10.4 Functions of operators" [level=3] [ref=e14293]
+      - paragraph [ref=e14294]:
+        - text: The spectral decomposition makes it possible to define
+        - strong [ref=e14295]: functions of operators
+        - text: in a representation-independent way. For a self-adjoint
+        - img [ref=e14297]
+        - text: with spectrum
+        - img [ref=e14307]
+        - text: and a
+        - emphasis [ref=e14316]: Borel-measurable
+        - text: function
+        - img [ref=e14318]
+        - text: ","
+      - img [ref=e14334]:
+        - generic [ref=e14338]:
+          - img [ref=e14339]
+          - img [ref=e14427]
+      - paragraph [ref=e14441]:
+        - text: "The construction is unambiguous: it does not depend on the basis in which we choose to write the operators, only on"
+        - img [ref=e14443]
+        - text: ’s spectrum. Three applications recur in these notes.
+      - list [ref=e14452]:
+        - listitem [ref=e14453]:
+          - strong [ref=e14454]: The resolvent
+          - img [ref=e14456]
+          - text: for
+          - img [ref=e14479]
+          - text: ", which builds the Green’s functions of chapter 4 and the response functions of chapter 11."
+        - listitem [ref=e14498]:
+          - strong [ref=e14499]: The projector
+          - img [ref=e14501]
+          - text: onto a subset
+          - img [ref=e14535]
+          - text: of the spectrum, which builds the density matrix and the Fermi–Dirac occupation numbers in chapter 7.
+        - listitem [ref=e14540]:
+          - strong [ref=e14541]: The exponential
+          - img [ref=e14543]
+          - text: (operator series), which by the spectral theorem is equivalent to
+          - img [ref=e14580]:
+            - link [ref=e14583] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-01-10-fun-op"
+          - text: with
+          - img [ref=e14597]
+          - text: . The
+          - strong [ref=e14616]: time-evolution operator
+          - text: "is the most important exponential in these notes:"
+      - img [ref=e14618]:
+        - generic [ref=e14622]:
+          - img [ref=e14623]
+          - img [ref=e14659]
+      - paragraph [ref=e14673]:
+        - text: "(Atomic units:"
+        - img [ref=e14675]
+        - text: ; the SI form is
+        - img [ref=e14685]
+        - text: .) Equation
+        - img [ref=e14724]:
+          - link [ref=e14727] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-10-U"
+        - text: is the solution of the TDSE
+        - img [ref=e14741]
+        - text: for time-independent
+        - img [ref=e14774]
+        - text: ", and we will spend section 1.11 unpacking its consequences. The series"
+        - img [ref=e14784]
+        - text: converges for all
+        - img [ref=e14840]
+        - text: because
+        - img [ref=e14846]
+        - text: is bounded below on the physical subspace; this is the operator-level reason that the time-dependent Schrödinger equation has a solution for
+        - emphasis [ref=e14855]: all
+        - img [ref=e14857]
+        - text: .
+      - blockquote [ref=e14862]:
+        - paragraph [ref=e14863]:
+          - strong [ref=e14864]: Warning.
+          - img [ref=e14866]
+          - text: is well-defined only when the
+          - emphasis [ref=e14881]: functional calculus
+          - text: of the spectral theorem applies. The operator
+          - img [ref=e14883]
+          - text: must be self-adjoint (or, more generally,
+          - emphasis [ref=e14892]: normal
+          - text: ":"
+          - img [ref=e14894]
+          - text: ). For non-normal operators the spectral theorem does not apply and “functions of
+          - img [ref=e14930]
+          - text: ” must be defined case-by-case through operator series (which may not converge) or through the Jordan normal form.
+      - heading "1.11 Time evolution" [level=2] [ref=e14939]
+      - paragraph [ref=e14940]:
+        - text: The TDSE was already stated as postulate P5 (section 1.2) and its consequences worked out for closed systems with time-independent Hamiltonians (section 1.7). This section is the
+        - strong [ref=e14941]: operator-level re-derivation
+        - text: ": starting from the same postulate, we now use the operator formalism of section 1.10 to derive the propagator, the stationary-state phase, the time evolution of superpositions, and the perturbative rate formulas."
+      - heading "1.11.1 The time-dependent Schrödinger equation (TDSE)" [level=3] [ref=e14942]
+      - paragraph [ref=e14943]: "The TDSE is postulate P5 of section 1.2, restated in atomic units:"
+      - img [ref=e14945]:
+        - generic [ref=e14949]:
+          - img [ref=e14950]
+          - img [ref=e14999]
+      - paragraph [ref=e15012]:
+        - text: For an explicitly time-dependent Hamiltonian
+        - img [ref=e15014]
+        - text: the same equation holds with
+        - img [ref=e15030]
+        - text: replaced by
+        - img [ref=e15040]
+        - text: . We assume a
+        - emphasis [ref=e15055]: time-independent
+        - text: Hamiltonian in this section; the time-dependent case is the starting point of time-dependent perturbation theory (covered separately in section 1.11.5; see also section 1.8 for the Dyson-series machinery).
+      - heading "1.11.2 The propagator" [level=3] [ref=e15056]
+      - paragraph [ref=e15057]:
+        - text: Equation
+        - img [ref=e15059]:
+          - link [ref=e15062] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-11-tdse"
+        - text: is a first-order linear ODE in
+        - img [ref=e15075]
+        - text: with operator coefficients. Its general solution can be written as
+      - img [ref=e15081]:
+        - generic [ref=e15085]:
+          - img [ref=e15086]
+          - img [ref=e15140]
+      - paragraph [ref=e15153]:
+        - text: where
+        - img [ref=e15155]
+        - text: is the
+        - strong [ref=e15177]: time-evolution operator
+        - text: (or
+        - strong [ref=e15178]: propagator
+        - text: ) from
+        - img [ref=e15180]
+        - text: to
+        - img [ref=e15189]
+        - text: . Substituting back into the TDSE gives the equation of motion for
+        - img [ref=e15195]
+        - text: ","
+      - img [ref=e15205]:
+        - generic [ref=e15209]:
+          - img [ref=e15210]
+          - img [ref=e15305]
+      - paragraph [ref=e15318]:
+        - text: For time-independent
+        - img [ref=e15320]
+        - text: the equation is solved by the operator exponential
+        - img [ref=e15330]:
+          - link [ref=e15333] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-10-U"
+        - text: ":"
+      - img [ref=e15347]:
+        - generic [ref=e15351]:
+          - img [ref=e15352]
+          - img [ref=e15406]
+      - paragraph [ref=e15419]:
+        - text: Two algebraic identities follow directly from the Hermiticity of
+        - img [ref=e15421]
+        - text: .
+      - list [ref=e15430]:
+        - listitem [ref=e15431]:
+          - strong [ref=e15432]: Group property
+          - text: ":"
+          - img [ref=e15434]
+          - text: "Time evolution is deterministic: knowing the state at"
+          - img [ref=e15508]
+          - text: determines it at all times, and the intermediate propagators compose as an ordinary one-parameter group.
+        - listitem [ref=e15516]:
+          - strong [ref=e15517]: Unitarity
+          - text: ":"
+          - img [ref=e15519]
+          - text: The propagator is a unitary operator; the inner product of two states is preserved by time evolution, and the norm of a single state is preserved (postulate P1 in motion).
+      - paragraph [ref=e15573]:
+        - text: The composition property
+        - img [ref=e15575]:
+          - link [ref=e15578] [cursor=pointer]:
+            - /url: "#"
+        - text: and the existence of the inverse
+        - img [ref=e15588]
+        - text: are what it means for
+        - img [ref=e15635]
+        - text: to be a
+        - strong [ref=e15644]: one-parameter unitary group
+        - text: . Stone’s theorem guarantees that every such group is of the form
+        - img [ref=e15646]
+        - text: for some self-adjoint
+        - img [ref=e15666]
+        - text: ; conversely, every self-adjoint
+        - img [ref=e15676]
+        - text: generates a one-parameter unitary group. The TDSE and Stone’s theorem are the two sides of the same coin.
+      - blockquote [ref=e15685]:
+        - paragraph [ref=e15686]:
+          - strong [ref=e15687]: Tip.
+          - text: For an explicitly time-dependent Hamiltonian, the propagator is a
+          - strong [ref=e15688]: time-ordered exponential
+          - text: ","
+          - img [ref=e15690]
+          - text: ", and the Dyson series of section 1.8 is the perturbative expansion of that object in powers of"
+          - img [ref=e15768]
+          - text: .
+      - heading "1.11.3 Stationary states" [level=3] [ref=e15783]
+      - paragraph [ref=e15784]:
+        - text: If the initial state is an
+        - strong [ref=e15785]: energy eigenstate
+        - img [ref=e15787]
+        - text: ", the propagator"
+        - img [ref=e15822]:
+          - link [ref=e15825] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-11-U-explicit"
+        - text: "acts on it by a global phase:"
+      - img [ref=e15838]:
+        - generic [ref=e15842]:
+          - img [ref=e15843]
+          - img [ref=e15949]
+      - paragraph [ref=e15962]:
+        - text: The probability density
+        - img [ref=e15964]
+        - text: is time-independent (because
+        - img [ref=e16023]
+        - text: ), which is why such states are called
+        - strong [ref=e16050]: stationary
+        - text: .
+        - emphasis [ref=e16051]: Every
+        - text: measurement of an operator that commutes with
+        - img [ref=e16053]
+        - text: is time-independent in a stationary state; measurements of operators that do
+        - emphasis [ref=e16062]: not
+        - text: commute with
+        - img [ref=e16064]
+        - text: (e.g. position, in a hydrogen eigenstate) do
+        - emphasis [ref=e16073]: not
+        - text: settle — but the average over a stationary state is the same at all times.
+      - blockquote [ref=e16074]:
+        - paragraph [ref=e16075]:
+          - strong [ref=e16076]: Tip.
+          - text: The global phase
+          - img [ref=e16078]
+          - text: carries no physics (postulate P1, “states are rays”). The
+          - emphasis [ref=e16096]: physical
+          - text: content of equation
+          - img [ref=e16098]:
+            - link [ref=e16101] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-01-11-stationary"
+          - text: is the
+          - emphasis [ref=e16113]: absence
+          - text: of time evolution, not the accumulation of a phase. We will see in section 1.11.4 that
+          - emphasis [ref=e16114]: relative
+          - text: phases between energy eigenstates — that is, differences
+          - img [ref=e16116]
+          - text: — are physical and produce the interference phenomena that spectroscopy and time-dependent quantum mechanics rely on.
+      - heading "1.11.4 Coherent superpositions" [level=3] [ref=e16145]
+      - paragraph [ref=e16146]:
+        - text: A general state
+        - img [ref=e16148]
+        - text: can be expanded in the energy eigenbasis at
+        - img [ref=e16164]
+        - text: ","
+        - img [ref=e16174]
+        - text: with
+        - img [ref=e16211]
+        - text: . Each eigenstate picks up its own stationary phase, so the state at time
+        - img [ref=e16242]
+        - text: is
+      - img [ref=e16248]:
+        - generic [ref=e16252]:
+          - img [ref=e16253]
+          - img [ref=e16308]
+      - paragraph [ref=e16321]:
+        - text: This is
+        - strong [ref=e16322]:
+          - text: the most general solution of the TDSE for time-independent
+          - img [ref=e16324]
+        - text: ": any state, evolved forward in time, is a sum of stationary states with time-dependent phases. The probability density"
+        - img [ref=e16334]
+        - text: is in general
+        - emphasis [ref=e16357]: time-dependent
+        - text: ", because of the interference between terms with different"
+        - img [ref=e16359]
+        - text: .
+      - paragraph [ref=e16367]:
+        - text: The time dependence of an expectation value
+        - img [ref=e16369]
+        - text: is computed directly from
+        - img [ref=e16383]:
+          - link [ref=e16386] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-11-superposition"
+        - text: ":"
+      - img [ref=e16399]:
+        - generic [ref=e16403]:
+          - img [ref=e16404]
+          - img [ref=e16518]
+      - paragraph [ref=e16531]:
+        - text: Three observations.
+        - strong [ref=e16532]: (1)
+        - text: The
+        - emphasis [ref=e16533]: diagonal
+        - text: terms (
+        - img [ref=e16535]
+        - text: ) are time-independent.
+        - strong [ref=e16544]: (2)
+        - text: The
+        - emphasis [ref=e16545]: off-diagonal
+        - text: terms oscillate at the
+        - strong [ref=e16546]: transition frequencies
+        - img [ref=e16548]
+        - text: ", and they are what make"
+        - img [ref=e16568]
+        - text: time-dependent.
+        - strong [ref=e16581]: (3)
+        - text: If
+        - img [ref=e16583]
+        - text: commutes with
+        - img [ref=e16593]
+        - text: ", then"
+        - img [ref=e16603]
+        - text: and
+        - img [ref=e16625]
+        - text: is time-independent. This is the operator-level statement of the “stationary-state” property of section 1.11.3. >
+        - strong [ref=e16638]: Tip.
+        - text: The energy-resolved expansion
+      - blockquote [ref=e16639]:
+        - paragraph [ref=e16640]:
+          - img [ref=e16642]:
+            - link [ref=e16645] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-01-11-superposition"
+          - text: is a Fourier series in
+          - img [ref=e16658]
+          - text: with frequencies
+          - img [ref=e16664]
+          - text: . A
+          - emphasis [ref=e16689]: "spectroscopi`c"
+          - text: ’ experiment measures the intensities
+          - img [ref=e16691]
+          - text: at these frequencies. The rest of these notes (chapters 11, 12) is largely about how to compute these matrix elements efficiently for the many-body case.
+      - heading "1.11.5 Time-dependent perturbation theory" [level=3] [ref=e16709]
+      - paragraph [ref=e16710]: The machinery of section 1.8 (interaction picture, Dyson series, Fermi’s golden rule) is the time-dependent perturbation theory that sits on top of the propagator formalism. We restate the main result here in the operator language, for completeness.
+      - paragraph [ref=e16711]:
+        - text: Split
+        - img [ref=e16713]
+        - text: with
+        - img [ref=e16754]
+        - text: exactly soluble and
+        - img [ref=e16767]
+        - text: small. The transition rate from an initial eigenstate
+        - img [ref=e16783]
+        - text: of
+        - img [ref=e16793]
+        - text: to a final eigenstate
+        - img [ref=e16806]
+        - text: is, in first-order time-dependent perturbation theory,
+        - strong [ref=e16815]: Fermi’s golden rule
+        - text: ":"
+      - img [ref=e16817]:
+        - generic [ref=e16821]:
+          - img [ref=e16822]
+          - img [ref=e16892]
+      - paragraph [ref=e16906]:
+        - text: For a
+        - emphasis [ref=e16907]: "monochromati`c"
+        - text: ’ perturbation
+        - img [ref=e16909]
+        - text: (a sinusoidal field, e.g. a laser), the conservation-of-energy delta function is replaced by
+        - strong [ref=e16967]: resonance conditions
+        - text: ": absorption of a photon matches"
+        - img [ref=e16969]
+        - text: and stimulated emission matches
+        - img [ref=e16991]
+        - text: . The rate for absorption is
+      - img [ref=e17013]:
+        - generic [ref=e17017]:
+          - img [ref=e17018]
+          - img [ref=e17090]
+      - paragraph [ref=e17104]: and for stimulated emission,
+      - img [ref=e17106]:
+        - generic [ref=e17110]:
+          - img [ref=e17111]
+          - img [ref=e17182]
+      - paragraph [ref=e17196]:
+        - text: "(Atomic units:"
+        - img [ref=e17198]
+        - text: ", so the prefactor is"
+        - img [ref=e17208]
+        - text: and the arguments of the delta functions drop the
+        - img [ref=e17216]
+        - text: factors.) Both rates are proportional to the
+        - strong [ref=e17221]: matrix element squared
+        - text: of the perturbation, and non-zero only when energy conservation is satisfied. Section 1.11.6 applies
+        - img [ref=e17223]:
+          - link [ref=e17226] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-11-fermi-abs"
+        - text: to a driven two-level system and derives the
+        - strong [ref=e17239]: Rabi formula
+        - text: .
+      - 'heading "1.11.6 Worked example: a two-level system driven by a sinusoidal field" [level=3] [ref=e17240]'
+      - paragraph [ref=e17241]:
+        - text: The simplest non-trivial quantum dynamics that cannot be solved by stationary-state phase factors alone is a
+        - strong [ref=e17242]: two-level system
+        - text: with Hamiltonian
+      - img [ref=e17244]:
+        - generic [ref=e17248]:
+          - img [ref=e17249]
+          - img [ref=e17343]
+      - paragraph [ref=e17357]:
+        - text: where
+        - img [ref=e17359]
+        - text: has eigenstates
+        - img [ref=e17399]
+        - text: (energy
+        - img [ref=e17409]
+        - text: ) and
+        - img [ref=e17427]
+        - text: (energy
+        - img [ref=e17437]
+        - text: ) with
+        - img [ref=e17455]
+        - text: ","
+        - img [ref=e17486]
+        - text: ", and the"
+        - strong [ref=e17516]:
+          - text: driving fiel
+          - code [ref=e17517]: d*
+          - text: "*"
+          - img [ref=e17519]
+          - text: couples the two levels through the off-diagonal Pauli matrix
+          - img [ref=e17563]
+          - text: (whose matrix elements are
+          - img [ref=e17576]
+          - text: ). This is the textbook Hamiltonian of **magnetic resonance
+        - text: and
+        - strong [ref=e17631]: laser-driven atomic transitions
+        - text: .
+      - paragraph [ref=e17632]:
+        - text: Write the state as
+        - img [ref=e17634]
+        - text: and substitute into the TDSE. In the
+        - strong [ref=e17689]: rotating-wave approximation
+        - text: (RWA), we keep only the near-resonant term in the field (the “co-rotating” component at frequency
+        - img [ref=e17691]
+        - text: ", not the “counter-rotating” one at"
+        - img [ref=e17697]
+        - text: ), and pass to a frame rotating at the field frequency
+        - img [ref=e17705]
+        - text: by defining
+        - img [ref=e17711]
+        - text: ","
+        - img [ref=e17748]
+        - text: . The result is a system of two ODEs with constant coefficients,
+      - img [ref=e17785]:
+        - generic [ref=e17789]:
+          - img [ref=e17790]:
+            - generic [ref=e17793]:
+              - generic [ref=e17805]:
+                - img [ref=e17809]
+                - img [ref=e17837]
+              - generic [ref=e17841]:
+                - img [ref=e17845]
+                - img [ref=e17895]
+              - generic [ref=e17897]:
+                - img [ref=e17901]
+                - img [ref=e17929]
+          - img [ref=e17933]
+      - paragraph [ref=e17946]:
+        - text: where
+        - img [ref=e17948]
+        - text: is the
+        - strong [ref=e17964]: detuning
+        - text: of the driving field from the atomic transition. Diagonalising the matrix in
+        - img [ref=e17966]:
+          - link [ref=e17969] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-11-rabi-ode"
+        - text: gives the
+        - strong [ref=e17982]: generalised Rabi frequency
+      - img [ref=e17984]:
+        - generic [ref=e17988]:
+          - img [ref=e17989]
+          - img [ref=e18032]
+      - paragraph [ref=e18046]:
+        - text: "(Atomic units:"
+        - img [ref=e18048]
+        - text: has dimensions of energy, so
+        - img [ref=e18057]
+        - text: has dimensions of frequency; the formula reduces to
+        - img [ref=e18071]
+        - text: .) For an initial condition
+        - img [ref=e18101]
+        - text: — the system starts in the ground state — the population of the excited state is
+      - img [ref=e18126]:
+        - generic [ref=e18130]:
+          - img [ref=e18131]
+          - img [ref=e18220]
+      - paragraph [ref=e18234]:
+        - text: This is the
+        - strong [ref=e18235]: Rabi formula
+        - text: . Three limits are worth noting.
+        - strong [ref=e18236]: (1)
+        - text: "On"
+        - strong [ref=e18237]: exact resonance
+        - text: (
+        - img [ref=e18239]
+        - text: ),
+        - img [ref=e18249]
+        - text: and
+        - img [ref=e18270]
+        - text: ": the population oscillates between 0 and 1 with period"
+        - img [ref=e18312]
+        - text: . The system is fully transferred from
+        - img [ref=e18340]
+        - text: to
+        - img [ref=e18350]
+        - text: at
+        - img [ref=e18360]
+        - text: — a
+        - emphasis [ref=e18380]: pi pulse
+        - text: .
+        - strong [ref=e18381]: (2)
+        - text: For large detuning
+        - img [ref=e18383]
+        - text: ","
+        - img [ref=e18401]
+        - text: and
+        - img [ref=e18414]
+        - text: ": the field is too far off-resonance to drive a significant excitation."
+        - strong [ref=e18473]: (3)
+        - text: In the
+        - strong [ref=e18474]: rotating-wave limit
+        - img [ref=e18476]
+        - text: the RWA is exact; outside that limit
+        - strong [ref=e18490]: Bloch–Siegert shifts
+        - text: of order
+        - img [ref=e18492]
+        - text: appear.
+      - paragraph [ref=e18514]: "The Mermaid diagram below summarises the two-level Rabi system: two states coupled by a sinusoidal driving field, with population oscillating between them at the generalised Rabi frequency."
+      - figure [ref=e18516]:
+        - code [ref=e18517]:
+          - document [ref=e18518]:
+            - generic [ref=e18520]:
+              - generic [ref=e18527]:
+                - generic [ref=e18532]: Rabi oscillationP₁(t) = (V₀/ℏ Ω_R)² sin²(Ω_R t / 2)Ω_R = √((V₀/ℏ)² + Δ²)
+                - generic [ref=e18537]: induces transitionV₀ = ⟨0|V̂|1⟩
+                - generic [ref=e18541]: sets Ω_R
+                - generic [ref=e18545]: P₀(t) = 1 - P₁(t)
+              - generic [ref=e18546]:
+                - generic [ref=e18552]: Ground state |0⟩E₀ = -ℏω₀/2
+                - generic [ref=e18558]: Excited state |1⟩E₁ = +ℏω₀/2
+                - generic [ref=e18564]: External driving fieldV̂(t) = V₀ cos(ωt) σ̂_x
+                - generic [ref=e18570]: Δ = ω - ω₀detuning
+                - generic [ref=e18576]: Population oscillatesat frequency Ω_R
+        - button "Download this diagram as a PNG" [ref=e18577] [cursor=pointer]:
+          - img [ref=e18578]
+          - generic [ref=e18581]: Download PNG
+      - paragraph [ref=e18582]:
+        - text: This is the prototypical driven two-level problem in quantum optics, magnetic resonance, and qubit dynamics. Its first-order time-dependent perturbation-theory limit (small
+        - img [ref=e18584]
+        - text: ", no RWA) reproduces Fermi’s golden rule"
+        - img [ref=e18593]:
+          - link [ref=e18596] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-11-fermi-abs"
+        - text: on resonance; the full Rabi formula goes beyond perturbation theory and captures the strong-coupling regime.
+      - heading "1.12 Symmetry and conservation laws" [level=2] [ref=e18609]
+      - paragraph [ref=e18610]:
+        - text: Quantum mechanics has the unusual property that
+        - strong [ref=e18611]: every symmetry of the Hamiltonian is a conservation law
+        - text: "(Noether’s theorem in its quantum-mechanical form), and every conservation law is a selection rule on matrix elements. This section previews the structure: the continuous symmetries that produce the energy, momentum, and angular-momentum conservation laws, the discrete symmetries of parity, time-reversal, and particle–hole conjugation, and the selection rules that follow. Full coverage of the many-body consequences is in chapters 14–16. ### 1.12.1 Continuous symmetries and Noether’s theorem"
+      - paragraph [ref=e18612]:
+        - text: In the operator language, a
+        - strong [ref=e18613]: continuous symmetry
+        - text: of a Hamiltonian
+        - img [ref=e18615]
+        - text: is a one-parameter family of unitary operators
+        - img [ref=e18625]
+        - text: (with
+        - img [ref=e18664]
+        - text: and
+        - img [ref=e18675]
+        - text: self-adjoint) that leaves
+        - img [ref=e18685]
+        - text: "invariant:"
+      - img [ref=e18695]:
+        - generic [ref=e18699]:
+          - img [ref=e18700]
+          - img [ref=e18728]
+      - paragraph [ref=e18741]:
+        - text: The operator
+        - img [ref=e18743]
+        - text: is called the
+        - strong [ref=e18752]: generator
+        - text: of the symmetry. The Heisenberg equation of motion,
+      - img [ref=e18754]:
+        - generic [ref=e18758]:
+          - img [ref=e18759]
+          - img [ref=e18825]
+      - paragraph [ref=e18838]:
+        - text: (derived in section 1.7.5) gives, for
+        - img [ref=e18840]
+        - text: with no explicit time dependence,
+        - img [ref=e18850]
+        - text: . Equation
+        - img [ref=e18900]:
+          - link [ref=e18903] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-01-12-conserved"
+        - text: therefore implies
+        - img [ref=e18916]
+        - text: —
+        - strong [ref=e18938]: the generator of a continuous symmetry is a constant of the motion
+        - text: . This is the
+        - strong [ref=e18939]: quantum Noether theorem
+        - text: ": every continuous symmetry of"
+        - img [ref=e18941]
+        - text: is a conservation law, and conversely.
+      - paragraph [ref=e18950]: The three continuous symmetries of a free (or external-potential-only) Hamiltonian give the three conservation laws that anchor the rest of these notes.
+      - list [ref=e18951]:
+        - listitem [ref=e18952]:
+          - strong [ref=e18953]: Translation invariance
+          - img [ref=e18955]
+          - text: for all
+          - img [ref=e18992]
+          - text: . The generator is the total momentum operator
+          - img [ref=e19007]
+          - text: ", and the unitary family is"
+      - img [ref=e19034]:
+        - generic [ref=e19038]:
+          - img [ref=e19039]
+          - img [ref=e19085]
+      - paragraph [ref=e19098]:
+        - text: For a translation-invariant
+        - img [ref=e19100]
+        - text: ","
+        - img [ref=e19110]
+        - text: ", so"
+        - img [ref=e19137]
+        - text: "is conserved: the total momentum of a closed system is constant in time. Broken in the presence of an external potential:"
+        - img [ref=e19148]
+        - text: breaks translation invariance and momentum is no longer conserved.
+      - list [ref=e19169]:
+        - listitem [ref=e19170]:
+          - strong [ref=e19171]: Rotation invariance
+          - img [ref=e19173]
+          - text: for all rotations
+          - img [ref=e19211]
+          - text: . The generator is the total angular momentum
+          - img [ref=e19233]
+          - text: ", and the unitary family is"
+          - img [ref=e19273]
+          - text: . For a rotation-invariant
+          - img [ref=e19330]
+          - text: ","
+          - img [ref=e19340]
+          - text: ", so"
+          - img [ref=e19367]
+          - text: is conserved. Broken, e.g., by an external electric field that picks a direction.
+        - listitem [ref=e19377]:
+          - strong [ref=e19378]: Time-translation invariance
+          - img [ref=e19380]
+          - text: (no explicit time dependence). The generator is the Hamiltonian itself,
+          - img [ref=e19404]
+          - text: ", and the unitary family is"
+          - img [ref=e19422]
+          - text: . Equation
+          - img [ref=e19461]:
+            - link [ref=e19464] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-01-12-conserved"
+          - text: gives
+          - img [ref=e19477]
+          - text: ", so the energy is conserved."
+      - blockquote [ref=e19502]:
+        - paragraph [ref=e19503]:
+          - strong [ref=e19504]: Tip.
+          - text: The “conservation law” in
+          - img [ref=e19506]:
+            - link [ref=e19509] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-01-12-conserved"
+          - text: "is an operator statement: the"
+          - emphasis [ref=e19521]: expectation value
+          - img [ref=e19523]
+          - text: is conserved,
+          - emphasis [ref=e19536]: "an`d"
+          - text: ’ every eigenstate of
+          - img [ref=e19538]
+          - text: can be chosen to be an eigenstate of
+          - img [ref=e19548]
+          - text: . The latter is the
+          - emphasis [ref=e19557]: labelling
+          - text: principle used in section 1.10.3 to label atomic eigenstates by
+          - img [ref=e19559]
+          - text: in addition to
+          - img [ref=e19573]
+          - text: ", or in chapter 2 to label Slater determinants by the occupation numbers"
+          - img [ref=e19579]
+          - text: .
+      - heading "1.12.2 Discrete symmetries" [level=3] [ref=e19596]
+      - paragraph [ref=e19597]:
+        - text: Three discrete symmetry operations are central to chemistry and condensed-matter physics. They are not “Noether” symmetries in the continuous sense (they have no infinitesimal generator), but each one is an
+        - strong [ref=e19598]: involution
+        - text: (
+        - img [ref=e19600]
+        - text: ) and each one gives a
+        - strong [ref=e19620]: selection rule
+        - text: or a
+        - strong [ref=e19621]: degeneracy
+        - text: when it commutes with
+        - img [ref=e19623]
+        - text: .
+      - list [ref=e19632]:
+        - listitem [ref=e19633]:
+          - strong [ref=e19634]: Parity
+          - img [ref=e19636]
+          - text: is the unitary operator that inverts all coordinates,
+      - img [ref=e19646]:
+        - generic [ref=e19650]:
+          - img [ref=e19651]
+          - img [ref=e19681]
+      - paragraph [ref=e19694]:
+        - img [ref=e19696]
+        - text: is Hermitian and unitary (
+        - img [ref=e19706]
+        - text: ); its eigenvalues are
+        - img [ref=e19727]
+        - text: and classify states as
+        - strong [ref=e19734]: even
+        - text: (
+        - img [ref=e19736]
+        - text: ) or
+        - strong [ref=e19753]: odd
+        - text: (
+        - img [ref=e19755]
+        - text: ). The Coulomb Hamiltonian
+        - img [ref=e19773]
+        - text: commutes with
+        - img [ref=e19812]
+        - text: iff
+        - img [ref=e19822]
+        - text: ", i.e. for any central potential. Hydrogen eigenstates have definite parity,"
+        - img [ref=e19848]
+        - text: .
+      - list [ref=e19900]:
+        - listitem [ref=e19901]:
+          - strong [ref=e19902]: Time reversal
+          - img [ref=e19904]
+          - text: is the
+          - strong [ref=e19913]: antiunitary
+          - text: operator that reverses the direction of motion. Its defining properties are
+      - img [ref=e19915]:
+        - generic [ref=e19919]:
+          - img [ref=e19920]
+          - img [ref=e20028]
+      - paragraph [ref=e20041]:
+        - text: The first equation (
+        - img [ref=e20043]
+        - text: takes the complex conjugate) is what makes
+        - img [ref=e20053]
+        - text: antiunitary rather than unitary. On spin-1/2 particles,
+        - img [ref=e20063]
+        - text: also flips the spin,
+        - img [ref=e20073]
+        - text: . The most important consequence is
+        - strong [ref=e20112]: Kramers’ theorem
+        - text: ": for a system with"
+        - strong [ref=e20113]: half-integer total spin
+        - text: (so
+        - img [ref=e20115]
+        - text: ) and time-reversal-symmetric
+        - img [ref=e20138]
+        - text: (i.e.
+        - img [ref=e20148]
+        - text: ), every energy level is at least
+        - strong [ref=e20173]: doubly degenerate
+        - text: (Kramers degeneracy). The doublet is
+        - img [ref=e20175]
+        - text: ", and the two states are orthogonal because"
+        - img [ref=e20201]
+        - text: on a half-integer-spin state.
+      - list [ref=e20223]:
+        - listitem [ref=e20224]:
+          - strong [ref=e20225]: Particle–hole conjugation
+          - img [ref=e20227]
+          - text: is the unitary operator that exchanges particles and holes,
+      - img [ref=e20237]:
+        - generic [ref=e20241]:
+          - img [ref=e20242]
+          - img [ref=e20330]
+      - paragraph [ref=e20343]:
+        - text: where
+        - img [ref=e20345]
+        - text: ","
+        - img [ref=e20360]
+        - text: are the fermionic creation and annihilation operators of chapter 2. The operator
+        - img [ref=e20373]
+        - text: is a symmetry of the
+        - strong [ref=e20382]: superconducting
+        - text: (or
+        - strong [ref=e20383]: charge-conjugate
+        - text: ) mean-field Hamiltonians of chapter 13. In a molecule it is
+        - emphasis [ref=e20384]: not
+        - text: a symmetry of the electronic Hamiltonian, but in solids it gives the
+        - strong [ref=e20385]: electron–hole symmetry
+        - text: of simple tight-binding models (the half-filled Hubbard model on a bipartite lattice is a textbook example).
+      - blockquote [ref=e20386]:
+        - paragraph [ref=e20387]:
+          - strong [ref=e20388]: Warning.
+          - text: The “time reversal” here is the
+          - emphasis [ref=e20389]: quantum-mechanical
+          - text: time-reversal operation. It is
+          - strong [ref=e20390]: not
+          - text: a literal
+          - img [ref=e20392]
+          - text: substitution in the equations of motion; the TDSE is
+          - strong [ref=e20403]: not
+          - text: time-reversal-invariant in this sense (the equation
+          - img [ref=e20405]
+          - text: becomes
+          - img [ref=e20438]
+          - text: only if
+          - img [ref=e20483]
+          - text: commutes with
+          - img [ref=e20493]
+          - text: ", which is a property of"
+          - img [ref=e20503]
+          - text: ", not of the dynamics). The classical “movie played backwards” picture corresponds to"
+          - img [ref=e20513]
+          - text: acting
+          - emphasis [ref=e20522]: only
+          - text: on the
+          - emphasis [ref=e20523]: state
+          - text: and not on the parameters of
+          - img [ref=e20525]
+          - text: .
+      - heading "1.12.3 Selection rules" [level=3] [ref=e20534]
+      - paragraph [ref=e20535]:
+        - text: A
+        - strong [ref=e20536]: selection rule
+        - text: is the statement that a matrix element
+        - img [ref=e20538]
+        - text: vanishes by symmetry. The general principle is
+      - img [ref=e20562]:
+        - generic [ref=e20566]:
+          - img [ref=e20567]
+          - img [ref=e20666]
+      - paragraph [ref=e20679]:
+        - text: where
+        - img [ref=e20681]
+        - text: ","
+        - img [ref=e20690]
+        - text: ","
+        - img [ref=e20699]
+        - text: are the
+        - strong [ref=e20707]: irreducible representations
+        - text: of the symmetry group carried by
+        - img [ref=e20709]
+        - text: ","
+        - img [ref=e20719]
+        - text: ", and"
+        - img [ref=e20729]
+        - text: . The trivial representation (the totally symmetric one) appears in the direct product iff the
+        - emphasis [ref=e20738]: symmetry species
+        - text: of the three objects can multiply to give the trivial species. For an Abelian group (e.g. parity), this is the
+        - emphasis [ref=e20739]: parity-matching
+        - text: condition
+      - img [ref=e20741]:
+        - generic [ref=e20745]:
+          - img [ref=e20746]
+          - img [ref=e20801]
+      - paragraph [ref=e20814]:
+        - text: i.e. an even number of the three objects must be odd. The
+        - strong [ref=e20815]: electric-dipole operator
+        - img [ref=e20817]
+        - text: is
+        - strong [ref=e20835]: odd
+        - text: under parity, so a dipole transition
+        - img [ref=e20837]
+        - text: requires
+        - img [ref=e20856]
+        - text: ", i.e. the two states must have"
+        - strong [ref=e20877]: opposite parity
+        - text: . In hydrogen this gives the
+        - strong [ref=e20878]: electric-dipole selection rule
+        - img [ref=e20880]
+        - text: ": a"
+        - img [ref=e20894]
+        - text: transition is parity-forbidden (both states are even), a
+        - img [ref=e20908]
+        - text: transition is allowed (even × odd = odd), and the spontaneous-emission rate of the latter is computed using Fermi’s golden rule.
+      - paragraph [ref=e20921]:
+        - text: For continuous symmetries the same rule applies in infinitesimal form. For the
+        - strong [ref=e20922]: angular-momentum selection rule
+        - text: on the matrix element of a spherical tensor operator
+        - img [ref=e20924]
+        - text: (Wigner–Eckart theorem),
+      - img [ref=e20944]:
+        - generic [ref=e20948]:
+          - img [ref=e20949]
+          - img [ref=e21053]
+      - paragraph [ref=e21066]:
+        - text: "This is the source of every selection rule in atomic and nuclear spectroscopy: the rank"
+        - img [ref=e21068]
+        - text: dipole rule
+        - img [ref=e21078]
+        - text: is the special case of the second condition with
+        - img [ref=e21092]
+        - text: .
+      - heading "1.12.4 How this connects to the rest of the notes" [level=3] [ref=e21101]
+      - paragraph [ref=e21102]:
+        - text: The selection rules and conservation laws of this section are
+        - emphasis [ref=e21103]: statements about
+        - img [ref=e21105]
+        - text: — they constrain what
+        - img [ref=e21115]
+        - emphasis [ref=e21124]: can
+        - text: do, given its symmetries. The remainder of the notes is largely about the
+        - emphasis [ref=e21125]: consequences
+        - text: of those statements.
+      - list [ref=e21126]:
+        - listitem [ref=e21127]:
+          - strong [ref=e21128]:
+            - link "Chapter 14 — multi-reference methods" [ref=e21129] [cursor=pointer]:
+              - /url: /DFT-notes/dft-notes/chapter-14/
+          - text: will need to
+          - emphasis [ref=e21130]: "brea`k"
+          - text: ’ (and sometimes restore) the symmetries of
+          - img [ref=e21132]
+          - text: to capture the strong correlation that a single Slater determinant misses. Spontaneous symmetry breaking (a non-zero magnetisation in an antiferromagnet, a non-zero
+          - img [ref=e21142]
+          - text: in a superconductor) is a feature, not a bug, of the multi-reference world.
+        - listitem [ref=e21155]:
+          - strong [ref=e21156]:
+            - link "Chapter 15 — relativistic DFT" [ref=e21157] [cursor=pointer]:
+              - /url: /DFT-notes/dft-notes/chapter-15/
+          - text: puts the symmetry structure of section 1.12.2 to work in the four-component Dirac formalism. Time-reversal symmetry doubles every Kramers-degenerate level; the ZORA and Pauli limits of section 1.12.1 become essential tools.
+        - listitem [ref=e21158]:
+          - strong [ref=e21159]:
+            - link "Chapter 16 — topology" [ref=e21160] [cursor=pointer]:
+              - /url: /DFT-notes/dft-notes/chapter-16/
+          - text: uses symmetries to
+          - strong [ref=e21161]: protect
+          - text: "topological invariants: the"
+          - strong [ref=e21162]: Chern number
+          - text: of a 2-D insulator is invariant under continuous deformations that preserve the gap and the symmetry, the
+          - strong [ref=e21163]:
+            - img [ref=e21165]
+            - text: invariant
+          - text: of a time-reversal-symmetric topological insulator is
+          - emphasis [ref=e21174]: "quantise`d"
+          - text: ’ by Kramers’ theorem, and
+          - strong [ref=e21175]: crystalline topological insulators
+          - text: are protected by the point-group symmetries of the lattice.
+      - paragraph [ref=e21176]:
+        - text: For now, the takeaway is that every observable in the next fifteen chapters is either
+        - emphasis [ref=e21177]:
+          - text: constraine
+          - code [ref=e21178]: d*' by a symmetry of $\hat H$ (selection rule, conservation law) or is *
+          - text: a
+        - text: ’ symmetry generator (the magnetisation
+        - img [ref=e21180]
+        - text: is a generator of spin-rotation symmetry, the charge density
+        - img [ref=e21187]
+        - text: is a generator of
+        - img [ref=e21193]
+        - text: phase symmetry, etc.). Recognising which is which is the first step in every problem.
+      - heading "1.13 The hydrogen atom" [level=2] [ref=e21204]
+      - paragraph [ref=e21205]:
+        - text: The hydrogen atom is the only multi-particle system with a Coulomb interaction for which the Schrödinger equation is
+        - strong [ref=e21206]: exactly soluble
+        - text: . Every atomic orbital used in chemistry (1s, 2s, 2p, 3s, 3p, 3d, …) is a hydrogen orbital evaluated at some effective nuclear charge. The derivation below anchors chapter 3’s Hartree–Fock method and chapter 6’s STO basis sets.
+      - heading "Visualisation — the first nine hydrogen orbitals, animated" [level=3] [ref=e21207]
+      - paragraph [ref=e21208]:
+        - text: The static plots in §1.13.x are the end-state of the calculation. The animation below shows the six lowest-ℓ radial functions
+        - img [ref=e21210]
+        - text: one after the other, with the energy
+        - img [ref=e21228]
+        - text: and the mean radius
+        - img [ref=e21237]
+        - text: annotated. The full set of nine orbitals (
+        - img [ref=e21253]
+        - text: and
+        - img [ref=e21271]
+        - text: ) is then summarised on one set of axes.
+      - figure "Figure 1.X — the first six hydrogen radial wavefunctions for . Rendered withManim Community; source script inchapter 1's animation folder." [ref=e21288]:
+        - generic [ref=e21289]: Your browser does not support embedded video..
+        - generic [ref=e21290]:
+          - text: Figure 1.X — the first six hydrogen radial wavefunctions
+          - img [ref=e21292]
+          - text: for
+          - img [ref=e21310]
+          - text: . Rendered with
+          - link "Manim Community" [ref=e21395] [cursor=pointer]:
+            - /url: https://www.manim.community/
+          - text: ; source script in
+          - link "chapter 1's animation folder" [ref=e21396] [cursor=pointer]:
+            - /url: /DFT-notes/dft_notes/animations/chapter_01/02-hydrogen-orbitals.py
+          - text: .
+      - heading "1.13.1 The Hamiltonian and separation of centre-of-mass motion" [level=3] [ref=e21397]
+      - paragraph [ref=e21398]: In atomic units the hydrogen Hamiltonian is
+      - img [ref=e21400]:
+        - generic [ref=e21404]:
+          - img [ref=e21405]
+          - img [ref=e21463]
+      - paragraph [ref=e21481]:
+        - text: where
+        - img [ref=e21483]
+        - text: is the electron coordinate in the lab frame,
+        - img [ref=e21490]
+        - text: is the nuclear coordinate,
+        - img [ref=e21497]
+        - text: is the nuclear mass (in units of
+        - img [ref=e21506]
+        - text: ), and
+        - img [ref=e21515]
+        - text: . The two terms
+        - img [ref=e21536]
+        - text: and
+        - img [ref=e21556]
+        - text: are the kinetic energies of the electron and the nucleus, and
+        - img [ref=e21582]
+        - text: is the Coulomb attraction. Define the centre-of-mass and relative coordinates
+      - img [ref=e21595]
+      - paragraph [ref=e21649]:
+        - text: and the total and reduced masses
+        - img [ref=e21651]
+        - text: ","
+        - img [ref=e21668]
+        - text: . The Laplacian splits exactly (this is a textbook vector identity),
+      - img [ref=e21697]
+      - paragraph [ref=e21784]:
+        - text: so the Hamiltonian separates into a free centre-of-mass part and an effective one-body problem in
+        - img [ref=e21786]
+        - text: ":"
+      - img [ref=e21792]:
+        - generic [ref=e21796]:
+          - img [ref=e21797]
+          - img [ref=e21857]
+      - paragraph [ref=e21875]:
+        - text: The Coulomb potential depends only on
+        - img [ref=e21877]
+        - text: ", not on"
+        - img [ref=e21892]
+        - text: ", so the centre of mass is a free particle (its eigenstates are plane waves and the energy is a continuous function of the total momentum). All the"
+        - emphasis [ref=e21902]: internal
+        - text: structure of the atom lives in the relative-coordinate Hamiltonian
+      - img [ref=e21904]:
+        - generic [ref=e21908]:
+          - img [ref=e21909]
+          - img [ref=e21951]
+      - paragraph [ref=e21969]:
+        - text: In the infinite-nuclear-mass limit
+        - img [ref=e21971]
+        - text: (the Born–Oppenheimer approximation we used in section 1.1),
+        - img [ref=e21984]
+        - text: and
+        - img [ref=e21994]
+        - text: ; we drop the distinction between
+        - img [ref=e22005]
+        - text: and
+        - img [ref=e22011]
+        - text: below. For the hydrogen
+        - emphasis [ref=e22017]: isotope
+        - text: deuterium,
+        - img [ref=e22019]
+        - text: in electron-mass units, so
+        - img [ref=e22035]
+        - text: ", and the correction to the energies is at the level of"
+        - img [ref=e22066]
+        - text: — small, but measurable. We ignore it for the rest of this section.
+      - heading "1.13.2 Spherical symmetry and the ansatz" [level=3] [ref=e22082]
+      - paragraph [ref=e22083]: With the centre-of-mass part removed, the Schrödinger equation in atomic units is
+      - img [ref=e22085]:
+        - generic [ref=e22089]:
+          - img [ref=e22090]
+          - img [ref=e22160]
+      - paragraph [ref=e22178]:
+        - text: The Coulomb potential is
+        - strong [ref=e22179]: spherically symmetric
+        - text: ": it depends only on"
+        - img [ref=e22181]
+        - text: ", not on the angles. By a standard theorem (Wigner’s theorem, or just a direct computation of the commutator), the Hamiltonian commutes with the three components of the angular-momentum operator"
+      - img [ref=e22187]
+      - paragraph [ref=e22242]:
+        - text: Therefore
+        - img [ref=e22244]
+        - text: ","
+        - img [ref=e22254]
+        - text: ", and"
+        - img [ref=e22267]
+        - text: can be simultaneously diagonalised. The eigenfunctions are of the separable form
+      - img [ref=e22280]:
+        - generic [ref=e22284]:
+          - img [ref=e22285]
+          - img [ref=e22341]
+      - paragraph [ref=e22359]:
+        - text: where
+        - img [ref=e22361]
+        - text: are the
+        - strong [ref=e22371]: spherical harmonics
+        - text: (the simultaneous eigenfunctions of
+        - img [ref=e22373]
+        - text: and
+        - img [ref=e22386]
+        - text: ), with
+        - img [ref=e22399]
+        - text: and
+        - img [ref=e22440]
+        - text: . The integers
+        - img [ref=e22471]
+        - text: and
+        - img [ref=e22481]
+        - text: are the
+        - strong [ref=e22496]: azimuthal
+        - text: and
+        - strong [ref=e22497]: magnetic
+        - text: quantum numbers. The radial part
+        - img [ref=e22499]
+        - text: is determined by the equation we now derive.
+      - heading "1.13.3 The radial equation and the substitution" [level=3] [ref=e22516]:
+        - text: 1.13.3 The radial equation and the
+        - img [ref=e22518]
+        - text: substitution
+      - paragraph [ref=e22529]:
+        - text: Write the Laplacian in spherical coordinates and apply it to the product
+        - img [ref=e22531]:
+          - link [ref=e22534] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - img [ref=e22544]
+      - paragraph [ref=e22635]:
+        - text: because
+        - img [ref=e22637]
+        - text: and the angular part of
+        - img [ref=e22678]
+        - text: on a function with the
+        - img [ref=e22687]
+        - text: angular dependence is
+        - img [ref=e22698]
+        - text: ", giving"
+        - img [ref=e22727]
+        - text: . Therefore the radial equation is
+      - img [ref=e22753]:
+        - generic [ref=e22757]:
+          - img [ref=e22758]
+          - img [ref=e22855]
+      - paragraph [ref=e22873]:
+        - text: The
+        - img [ref=e22875]
+        - text: divergence of the Laplacian at the origin is awkward. Substitute
+      - img [ref=e22886]:
+        - generic [ref=e22890]:
+          - img [ref=e22891]
+          - img [ref=e22917]
+      - paragraph [ref=e22934]:
+        - text: so that
+        - img [ref=e22936]
+        - text: (where
+        - img [ref=e22978]
+        - text: ). Dividing through
+        - img [ref=e23004]:
+          - link [ref=e23007] [cursor=pointer]:
+            - /url: "#"
+        - text: by
+        - img [ref=e23017]
+        - text: ","
+      - img [ref=e23023]:
+        - generic [ref=e23027]:
+          - img [ref=e23028]
+          - img [ref=e23116]
+      - paragraph [ref=e23134]:
+        - text: The Coulomb singularity has been “regularised” — the equation is now a one-dimensional Schrödinger equation in
+        - img [ref=e23136]
+        - text: with a regular potential,
+      - img [ref=e23154]:
+        - generic [ref=e23158]:
+          - img [ref=e23159]
+          - img [ref=e23213]
+      - paragraph [ref=e23231]:
+        - text: The second term is the
+        - strong [ref=e23232]: centrifugal barrier
+        - text: ; it diverges positively at the origin, which is what regularises the singular Coulomb
+        - img [ref=e23234]
+        - text: at small
+        - img [ref=e23247]
+        - text: and forces
+        - img [ref=e23253]
+        - text: .
+      - heading "1.13.4 Bound-state boundary conditions and dimensional analysis" [level=3] [ref=e23268]
+      - paragraph [ref=e23269]:
+        - text: The energy
+        - img [ref=e23271]
+        - text: (bound states). Balancing kinetic and Coulomb energies,
+        - img [ref=e23281]
+        - text: ", suggests"
+        - img [ref=e23306]
+        - text: . The dimensionless substitution
+      - img [ref=e23327]:
+        - generic [ref=e23331]:
+          - img [ref=e23332]
+          - img [ref=e23373]
+      - paragraph [ref=e23392]:
+        - text: absorbs the binding energy into the radial coordinate (the principal quantum number
+        - img [ref=e23394]
+        - text: in the second form anticipates that the boundary condition at infinity will fix
+        - img [ref=e23400]
+        - text: ). With the
+        - emphasis [ref=e23405]: dimensionless charge
+      - img [ref=e23407]:
+        - generic [ref=e23411]:
+          - img [ref=e23412]
+          - img [ref=e23437]
+      - paragraph [ref=e23456]: In these variables the radial equation is
+      - img [ref=e23458]:
+        - generic [ref=e23462]:
+          - img [ref=e23463]
+          - img [ref=e23538]
+      - heading "1.13.5 Asymptotic behaviour" [level=3] [ref=e23557]
+      - paragraph [ref=e23558]:
+        - text: At
+        - img [ref=e23560]
+        - text: the
+        - img [ref=e23570]
+        - text: and
+        - img [ref=e23581]
+        - text: terms are negligible, and
+        - img [ref=e23595]:
+          - link [ref=e23598] [cursor=pointer]:
+            - /url: "#"
+        - text: becomes
+        - img [ref=e23608]
+        - text: ", with solutions"
+        - img [ref=e23628]
+        - text: . The normalisable one is
+        - img [ref=e23645]
+        - text: . At
+        - img [ref=e23662]
+        - text: the dominant term is
+        - img [ref=e23672]
+        - text: ", with Frobenius solution"
+        - img [ref=e23696]
+        - text: (regular) or
+        - img [ref=e23714]
+        - text: (singular for
+        - img [ref=e23726]
+        - text: "). The boundary condition at the origin picks the regular one:"
+        - img [ref=e23736]
+        - text: as
+        - img [ref=e23754]
+        - text: .
+      - paragraph [ref=e23763]: Combine the two limits into a Frobenius ansatz,
+      - img [ref=e23765]:
+        - generic [ref=e23769]:
+          - img [ref=e23770]
+          - img [ref=e23817]
+      - paragraph [ref=e23836]:
+        - text: where
+        - img [ref=e23838]
+        - text: is a regular function to be determined. Substituting
+        - img [ref=e23850]:
+          - link [ref=e23853] [cursor=pointer]:
+            - /url: "#"
+        - text: into
+        - img [ref=e23863]:
+          - link [ref=e23866] [cursor=pointer]:
+            - /url: "#"
+        - text: and cancelling the prefactor
+        - img [ref=e23876]
+        - text: gives, after collecting the coefficients of
+        - img [ref=e23903]
+        - text: ","
+        - img [ref=e23914]
+        - text: ", and"
+        - img [ref=e23923]
+        - text: ", the"
+        - strong [ref=e23928]: associated Laguerre differential equation
+      - img [ref=e23930]:
+        - generic [ref=e23934]:
+          - img [ref=e23935]
+          - img [ref=e24025]
+      - paragraph [ref=e24044]:
+        - text: This is the standard form of the associated-Laguerre equation. Its polynomial solutions
+        - img [ref=e24046]
+        - text: exist iff the parameter is a non-negative integer
+        - img [ref=e24089]
+        - text: ":"
+      - img [ref=e24111]:
+        - generic [ref=e24115]:
+          - img [ref=e24116]
+          - img [ref=e24148]
+      - paragraph [ref=e24166]:
+        - text: Therefore
+        - img [ref=e24168]
+        - text: and, from the definition
+        - img [ref=e24178]:
+          - link [ref=e24181] [cursor=pointer]:
+            - /url: "#"
+        - text: ", the bound-state energies are"
+      - img [ref=e24191]:
+        - generic [ref=e24195]:
+          - img [ref=e24196]
+          - img [ref=e24244]
+      - paragraph [ref=e24263]:
+        - text: — the
+        - strong [ref=e24264]: Bohr formula
+        - text: in atomic units. For
+        - img [ref=e24266]
+        - text: the ground-state energy is
+        - img [ref=e24276]
+        - text: eV and the first excited level sits at
+        - img [ref=e24310]
+        - text: ", an excitation of"
+        - img [ref=e24328]
+        - text: eV (the Lyman-
+        - img [ref=e24351]
+        - text: line at
+        - img [ref=e24357]
+        - text: nm).
+      - blockquote [ref=e24366]:
+        - paragraph [ref=e24367]:
+          - strong [ref=e24368]: Tip.
+          - text: The degeneracy
+          - img [ref=e24370]
+          - text: is a
+          - emphasis [ref=e24416]: "hydrogen-specifi`c"
+          - text: "’ accident: it is broken by every correction we have ignored (fine structure, Lamb shift, hyperfine, external fields). It is"
+          - emphasis [ref=e24417]: not
+          - text: broken by electron–electron repulsion — that one breaks
+          - img [ref=e24419]
+          - text: down to the
+          - img [ref=e24428]
+          - text: of the
+          - emphasis [ref=e24436]: highest
+          - img [ref=e24438]
+          - text: in the multi-electron atom (Hund’s rules).
+      - heading "1.13.6 The full eigenfunctions" [level=3] [ref=e24443]
+      - paragraph [ref=e24444]: The radial part of the eigenfunction, including the normalisation, is
+      - img [ref=e24446]:
+        - generic [ref=e24450]:
+          - img [ref=e24451]
+          - img [ref=e24612]
+      - paragraph [ref=e24631]: The full eigenfunctions are
+      - img [ref=e24633]:
+        - generic [ref=e24637]:
+          - img [ref=e24638]
+          - img [ref=e24732]
+      - paragraph [ref=e24751]:
+        - text: The ground state (
+        - img [ref=e24753]
+        - text: ", “1s”) is"
+      - img [ref=e24779]:
+        - generic [ref=e24783]:
+          - img [ref=e24784]
+          - img [ref=e24837]
+      - paragraph [ref=e24856]: and the first few excited states are
+      - img [ref=e24858]
+      - img [ref=e24933]
+      - paragraph [ref=e25017]:
+        - text: with
+        - img [ref=e25019]
+        - text: for the three degenerate
+        - img [ref=e25040]
+        - text: states.
+      - heading "1.13.6.1 Mermaid — the hydrogen solution path" [level=3] [ref=e25047]
+      - paragraph [ref=e25048]:
+        - text: "The hydrogen derivation above is a long chain of reductions: 3-D two-body → 1-D radial × angular,"
+        - img [ref=e25050]
+        - text: substitution, asymptotic analysis, polynomial truncation. The diagram below summarises the chain; each box is a step in §1.13.1–§1.13.6, and each arrow labels the
+        - emphasis [ref=e25057]: new variable
+        - text: or new operator introduced at that step.
+      - figure [ref=e25059]:
+        - code [ref=e25060]:
+          - document [ref=e25061]:
+            - generic [ref=e25067]:
+              - generic [ref=e25073]: Schrödinger equationĤψ = Eψ3-D, two-body, Coulomb
+              - generic [ref=e25079]: Separate centre-of-massΨ = Φ(R_cm)·ψ(r)(composite → two 1-body)
+              - generic [ref=e25085]: Spherical ansatzψ = R(r)·Yₗᵐ(θ,φ)(3-D → 1-D radial)
+              - generic [ref=e25091]: u(r) = r·R(r) substitution(remove first-derivative)
+              - generic [ref=e25097]: Asymptotic analysisu ~ r^(ℓ+1) at 0u ~ e^(-κr) at ∞
+              - generic [ref=e25103]: Radial equation+ boundary conditions(regular at 0, decays at ∞)
+              - generic [ref=e25109]: Quantisationn = 1, 2, 3, …ℓ = 0, …, n-1m = -ℓ, …, ℓ
+              - generic [ref=e25115]: "Laguerre polynomialL_{n-ℓ-1}^(2ℓ+1)(2Zr/n)"
+              - generic [ref=e25121]: "Radial eigenfunctionsR_{nℓ}(r)"
+              - generic [ref=e25127]: "Full eigenfunctionsψ_{nℓm} = R_{nℓ}·Yₗᵐ"
+              - generic [ref=e25133]: Energy levelsEₙ = -Z²/(2n²) Eₕ(ℓ, m degeneracy)
+              - generic [ref=e25139]: Worked example:radial plots (§1.13.9)
+              - generic [ref=e25145]: Application:2p→1s Lyman-α (§1.13.7)
+              - generic [ref=e25151]: Application:level diagram (§1.13.8)
+        - button "Download this diagram as a PNG" [ref=e25152] [cursor=pointer]:
+          - img [ref=e25153]
+          - generic [ref=e25156]: Download PNG
+      - paragraph [ref=e25157]:
+        - text: The left half of the diagram (Schrödinger → radial equation) is the
+        - emphasis [ref=e25158]: separation-of-variables
+        - text: "reduction; the right half (radial equation → R_{nℓ}) is the"
+        - emphasis [ref=e25159]: "asymptoti`c"
+        - text: ’ +
+        - emphasis [ref=e25160]: polynomial-truncation
+        - text: argument. The quantisation box is the
+        - emphasis [ref=e25161]: only
+        - text: place where the discrete quantum numbers
+        - img [ref=e25163]
+        - text: appear; the rest of the derivation is continuum analysis.
+      - heading "1.13.7 The 2p → 1s transition and Fermi’s golden rule" [level=3] [ref=e25180]
+      - paragraph [ref=e25181]:
+        - text: As an application that ties sections 1.8 and 1.10 together, we compute the
+        - strong [ref=e25182]: spontaneous emission rate
+        - text: of the hydrogen
+        - img [ref=e25184]
+        - text: line (Lyman-
+        - img [ref=e25198]
+        - text: ","
+        - img [ref=e25204]
+        - text: nm). The interaction of an atom with the quantised electromagnetic field in the dipole approximation is mediated by the
+        - strong [ref=e25213]: electric dipole operator
+        - img [ref=e25215]
+        - text: in atomic units. The transition rate, summed over the three
+        - img [ref=e25234]
+        - text: magnetic sublevels and the two photon polarisations, is given by Fermi’s golden rule
+        - img [ref=e25242]:
+          - link [ref=e25245] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - img [ref=e25255]:
+        - generic [ref=e25259]:
+          - img [ref=e25260]:
+            - generic [ref=e25263]:
+              - img [ref=e25317]
+              - img [ref=e25348]
+          - img [ref=e25354]
+      - paragraph [ref=e25373]:
+        - text: where
+        - img [ref=e25375]
+        - text: is the fine-structure constant,
+        - img [ref=e25392]
+        - text: the speed of light, and
+        - img [ref=e25398]
+        - text: in atomic units. The factor
+        - img [ref=e25438]
+        - text: comes from the photon density of states and the dipole-matrix-element sum over polarisations (a standard result; see Sakurai, Ch. 5).
+      - paragraph [ref=e25464]:
+        - text: The dipole matrix element
+        - img [ref=e25466]
+        - text: separates into an angular and a radial part. The angular
+        - strong [ref=e25532]: Gaunt integral
+        - text: "(a special case of the Wigner 3-j symbol) is $\\int Y_0^{0*}\\, \\hat{r}"
+        - emphasis [ref=e25533]: "a\\, Y_1^m\\, d\\Omega = \\sqrt{1/3}\\, \\delta"
+        - text: "{m, a}"
+        - img [ref=e25535]
+        - text: "a \\in {-1, 0, 1}"
+        - img [ref=e25545]
+        - text: \mathbf r$). The radial integral is
+      - img [ref=e25593]
+      - paragraph [ref=e25725]:
+        - text: using
+        - img [ref=e25727]
+        - text: and
+        - img [ref=e25764]
+        - text: . Summing
+        - img [ref=e25826]
+        - text: over the three final-state and three Cartesian components,
+      - img [ref=e25888]:
+        - generic [ref=e25890]:
+          - img [ref=e25908]
+          - img [ref=e25941]
+      - paragraph [ref=e25989]: Therefore
+      - img [ref=e25991]:
+        - generic [ref=e25995]:
+          - img [ref=e25996]
+          - img [ref=e26082]
+      - paragraph [ref=e26101]:
+        - text: For hydrogen (
+        - img [ref=e26103]
+        - text: ","
+        - img [ref=e26113]
+        - text: "):"
+      - img [ref=e26128]
+      - paragraph [ref=e26243]:
+        - text: The corresponding
+        - strong [ref=e26244]: lifetime
+        - text: is
+        - img [ref=e26246]
+        - text: ns. The accepted experimental lifetime of the
+        - img [ref=e26269]
+        - text: state is
+        - img [ref=e26277]
+        - text: ns; the difference reflects the missing
+        - img [ref=e26297]
+        - text: two-photon emission channel and (small) relativistic corrections.
+      - blockquote [ref=e26310]:
+        - paragraph [ref=e26311]:
+          - strong [ref=e26312]: Tip.
+          - text: The result is independent of
+          - img [ref=e26314]
+          - text: to leading order (it appears as
+          - img [ref=e26320]
+          - text: ", since the matrix element scales like"
+          - img [ref=e26329]
+          - text: and the photon energy as
+          - img [ref=e26342]
+          - text: ). It is one of the cleanest atomic-physics predictions of non-relativistic quantum mechanics.
+      - 'heading "1.13.8 Mermaid: hydrogen level diagram and selection rules" [level=3] [ref=e26350]'
+      - figure [ref=e26352]:
+        - code [ref=e26353]:
+          - document [ref=e26354]:
+            - generic [ref=e26356]:
+              - generic [ref=e26366]:
+                - generic [ref=e26371]: 2p→1sLyman-α121.6 nmτ ≈ 0.24 ns
+                - generic [ref=e26376]: two-photon2s→1s
+                - generic [ref=e26381]: 3p→1sLyman-β102.6 nm
+                - generic [ref=e26386]: 3d→2pBalmer-α-like
+              - generic [ref=e26387]:
+                - generic [ref=e26393]: n=1, ℓ=01sE₁ = -1/2 Eh
+                - generic [ref=e26399]: n=2, ℓ=02sE₂ = -1/8 Eh
+                - generic [ref=e26405]: n=2, ℓ=12p (m=-1,0,1)E₂ = -1/8 Eh
+                - generic [ref=e26411]: n=3, ℓ=03sE₃ = -1/18 Eh
+                - generic [ref=e26417]: n=3, ℓ=13p (m=-1,0,1)E₃ = -1/18 Eh
+                - generic [ref=e26423]: n=3, ℓ=23d (m=-2,-1,0,1,2)E₃ = -1/18 Eh
+        - button "Download this diagram as a PNG" [ref=e26424] [cursor=pointer]:
+          - img [ref=e26425]
+          - generic [ref=e26428]: Download PNG
+      - paragraph [ref=e26429]:
+        - text: Selection rules (electric dipole,
+        - img [ref=e26431]
+        - text: ) explain which lines are bright and which are dark. The
+        - img [ref=e26445]
+        - text: transition is electric-dipole forbidden — it can only proceed by
+        - strong [ref=e26458]: two-photon emission
+        - text: ", with a lifetime of"
+        - img [ref=e26460]
+        - text: s, fourteen orders of magnitude longer than the allowed
+        - img [ref=e26471]
+        - text: .
+      - 'heading "1.13.9 Worked example: hydrogen radial eigenfunctions" [level=3] [ref=e26484]'
+      - paragraph [ref=e26485]:
+        - text: We now make the abstract solution concrete. The script below evaluates the first few radial hydrogen eigenfunctions on a logarithmic grid (because the wavefunctions change scale by orders of magnitude between the inner turning point and the outer tail) and plots them. The script lives at
+        - code [ref=e26486]: dft_notes/python_codes/chapter_01/03-hydrogen-radial.py
+        - text: .
+      - code [ref=e26490]: "# dft_notes/python_codes/chapter_01/03-hydrogen-radial.py import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt from scipy.special import genlaguerre # Hydrogen radial eigenfunctions R_{n,ell}(r) for Z=1. # Convention: R_{n,ell} * Y_l^m is normalised to unity in 3D. # Source: Messiah, Quantum Mechanics, vol I, eq. B.45. def R_nl(n, ell, r): \"\"\"Normalised hydrogen radial wavefunction R_{n,ell}(r).\"\"\" rho = 2.0 * r / n N = -np.sqrt((2.0 / n) ** 3 * np.math.factorial(n - ell - 1) / (2.0 * n * np.math.factorial(n + ell))) return N * np.exp(-r / n) * rho ** ell * genlaguerre(n - ell - 1, 2 * ell + 1)(rho) # Radial grid r = np.linspace(0.05, 30.0, 600) fig, ax = plt.subplots(figsize=(7.0, 4.5)) for n, ell, label in [(1, 0, \"1s\"), (2, 0, \"2s\"), (2, 1, \"2p\"), (3, 0, \"3s\"), (3, 1, \"3p\"), (3, 2, \"3d\")]: R = R_nl(n, ell, r) ax.plot(r, R, label=f\"$R_\\u007bn{label[1:]}\\u007d(r)$ E={-1/(2*n*n):+.4f} $E_h$\") ax.axhline(0, color=\"black\", lw=0.5) ax.set_xlabel(\"r / $a_0$\") ax.set_ylabel(\"$R_{n\\\\ell}(r)$ / $a_0^{-3/2}$\") ax.set_xlim(0, 25) ax.set_ylim(-0.5, 0.6) ax.legend(fontsize=8, loc=\"upper right\") ax.set_title(\"Hydrogen radial eigenfunctions (Z = 1)\") fig.tight_layout() fig.savefig(\"plots/03-hydrogen-orbitals.png\", dpi=140)"
+      - paragraph [ref=e26491]:
+        - text: "The script produces a single PNG that we will reference in the plot caption below. The expected output is six oscillating curves: 1s (nodeless, peaked at the origin), 2s (one node,"
+        - img [ref=e26493]
+        - text: ), 2p (proportional to
+        - img [ref=e26508]
+        - text: at the origin, single peak), 3s (two nodes), 3p (one node), 3d (no radial nodes, proportional to
+        - img [ref=e26514]
+        - text: at the origin).
+      - paragraph [ref=e26522]:
+        - 'img "Hydrogen radial eigenfunctions, $R_{n\\ell}(r)$ for $n = 1, 2, 3$ and $\\ell = 0, 1, 2$. Output of `dft_notes/python_codes/chapter_01/03-hydrogen-radial.py`." [ref=e26523]'
+      - paragraph [ref=e26524]:
+        - emphasis [ref=e26525]: Figure.
+        - text: Hydrogen radial eigenfunctions
+        - img [ref=e26527]
+        - text: for
+        - img [ref=e26545]
+        - text: ", plotted on a linear radial grid. The principal quantum number"
+        - img [ref=e26555]
+        - text: sets the binding energy
+        - img [ref=e26561]
+        - text: ; the azimuthal quantum number
+        - img [ref=e26595]
+        - text: sets the number of radial nodes (
+        - img [ref=e26601]
+        - text: ) and the behaviour at the origin (
+        - img [ref=e26615]
+        - text: ).
+      - heading "1.14 The code — numerical solutions of the QHO and hydrogen" [level=2] [ref=e26633]
+      - paragraph [ref=e26634]:
+        - text: This section consolidates the runnable Python for the chapter. The full source files are in
+        - code [ref=e26635]: dft_notes/python_codes/chapter_01/' and are referenced by their filenames in the text. Every script imports only
+        - text: numpy
+        - code [ref=e26636]: ","
+        - text: scipy
+        - code [ref=e26637]: ", and"
+        - text: matplotlib
+        - code [ref=e26638]: "' (with"
+        - text: "matplotlib.use(“Agg”)`), as required by the agent handbook."
+      - heading "1.14.1 Particle in a box" [level=3] [ref=e26639]
+      - paragraph [ref=e26640]:
+        - text: Already given in section 1.3; source file
+        - code [ref=e26641]: dft_notes/python_codes/chapter_01/01-particle-in-box.py
+        - text: .
+      - heading "1.14.2 Harmonic oscillator via finite differences" [level=3] [ref=e26642]
+      - paragraph [ref=e26643]:
+        - text: The algebraic solution of section 1.9 is correct to all orders, but it is useful to see the same problem solved
+        - emphasis [ref=e26644]: numerically
+        - text: ": discretise the Hamiltonian on a real-space grid, build a sparse tridiagonal matrix, and call `scipy.sparse.linalg.eigsh’ to find the lowest few eigenpairs. The script below does this for a 1-D harmonic oscillator with unit mass and"
+        - img [ref=e26646]
+        - text: ", on the interval"
+        - img [ref=e26656]
+        - text: with hard-wall boundary conditions
+        - img [ref=e26672]
+        - text: . The hard-wall boundary is benign as long as
+        - img [ref=e26690]
+        - text: (a few zero-point lengths is enough); the spurious high-lying eigenvalues are simply discarded.
+      - code [ref=e26705]: "# dft_notes/python_codes/chapter_01/02-harmonic-oscillator.py import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt from scipy.sparse import diags from scipy.sparse.linalg import eigsh def qho_eigensystem(L=8.0, N=800, n_eig=6): \"\"\"Lowest eigenpairs of the 1-D harmonic oscillator with hard walls.\"\"\" h = 2.0 * L / (N + 1) x = np.linspace(-L + h, L - h, N) # Kinetic: 3-point stencil; potential: diagonal. main = (1.0 / `h**2) np.full(N, 2.0) + 0.5 * x**2 off = -(1.0 / `h**2) np.full(N - 1, 1.0) H = diags([off, main, off], [-1, 0, 1]) evals, evecs = eigsh(H, k=n_eig, which=\"SM\") # Normalise the eigenvectors to unit L2 norm on the grid. evecs /= np.sqrt(h) return x, evals, evecs x, evals, evecs = qho_eigensystem() print(\"Harmonic-oscillator eigenvalues (numerical vs analytical):\") for n, E in enumerate(evals): print(f\" n={n} numerical={E:9.6f} exact={n + 0.5:9.6f} Δ={E - (n + 0.5):+.2e}\") # Plot the lowest four wavefunctions on top of the potential. fig, ax = plt.subplots(figsize=(7.0, 4.5)) xs = np.linspace(-6, 6, 400) ax.plot(xs, 0.5 * xs**2, \"k-\", lw=1.0, label=\"V(x) = x²/2\") for n in range(4): ax.axhline(n + 0.5, color=\"grey\", lw=0.5, ls=\":\") scale = 0.6 ax.plot(x, scale * evecs[:, n] + (n + 0.5), label=f\"$\\\\psi_{n}$, E = {n + 0.5:.1f}\") ax.set_xlim(-6, 6) ax.set_ylim(-0.5, 4.5) ax.set_xlabel(\"x / $x_0$\") ax.set_ylabel(\"energy / $\\\\omega$\") ax.legend(fontsize=8, loc=\"upper right\") ax.set_title(\"1-D harmonic oscillator — finite-difference eigenstates\") fig.tight_layout() fig.savefig(\"plots/02-finite-square-well.png\", dpi=140)"
+      - paragraph [ref=e26706]:
+        - text: Running this with the default
+        - img [ref=e26708]
+        - text: and
+        - img [ref=e26718]
+        - text: returns eigenvalues to better than
+        - img [ref=e26730]
+        - text: Hartree for the first six levels. The figure shows the first four eigenfunctions
+        - img [ref=e26743]
+        - text: superposed on the potential, each centred on the corresponding classical turning point
+        - img [ref=e26758]
+        - text: — a satisfying visual confirmation of the WKB approximation.
+      - paragraph [ref=e26779]:
+        - 'img "Harmonic oscillator eigenstates from finite differences. Output of `dft_notes/python_codes/chapter_01/02-harmonic-oscillator.py`." [ref=e26780]'
+      - paragraph [ref=e26781]:
+        - emphasis [ref=e26782]: Figure.
+        - text: Lowest four eigenfunctions of the 1-D harmonic oscillator, computed by finite-difference diagonalisation of a sparse tridiagonal matrix (800 points,
+        - img [ref=e26784]
+        - text: ). The eigenvalues match the analytical values
+        - img [ref=e26799]
+        - text: to better than
+        - img [ref=e26821]
+        - text: . Dotted lines mark the eigen-energies; the solid curve is the potential
+        - img [ref=e26834]
+        - text: .
+      - heading "1.14.3 Hydrogen radial eigenfunctions" [level=3] [ref=e26857]
+      - paragraph [ref=e26858]:
+        - text: Already given in section 1.13.9; source file
+        - code [ref=e26859]: dft_notes/python_codes/chapter_01/03-hydrogen-radial.py
+        - text: .
+      - heading "1.15 The diagram — chapter structure" [level=2] [ref=e26860]
+      - paragraph [ref=e26861]: The chapter as a whole is organised as a single flowchart. Each box is a numbered section; the arrows are the “is-a-special-case-of” / “is-the-tool-for” dependencies.
+      - figure [ref=e26863]:
+        - code [ref=e26864]:
+          - document [ref=e26865]:
+            - generic [ref=e26887]:
+              - generic [ref=e26893]: §1.2 Postulates(Dirac–von Neumann)
+              - generic [ref=e26899]: §1.1 TISEĤ|ψ⟩ = E|ψ⟩
+              - generic [ref=e26905]: §1.7 TDSEi∂_t|ψ⟩ = Ĥ|ψ⟩(from variational principle)
+              - generic [ref=e26911]: §1.3 Particle in a box(minimal worked example)
+              - generic [ref=e26917]: §1.4 Operator alphabet(T, V_ext, U_ee, J, K, v_xc)
+              - generic [ref=e26923]: TD variational principle(McLachlan)
+              - generic [ref=e26929]: §1.8 Dyson series +Fermi's golden rule
+              - generic [ref=e26935]: §1.9 Harmonic oscillator(ladder operators)
+              - generic [ref=e26941]: §1.13 Hydrogen atom(Laguerre polynomial eigenfunctions)
+              - generic [ref=e26947]: §1.10 Operator formalism(adjoint, CCR, spectraltheorem, f(Â))
+              - generic [ref=e26953]: §1.11 Time evolution(propagator U(t),stationary phases,Fermi golden rule)
+              - generic [ref=e26959]: §1.12 Symmetry +conservation laws(Noether, parity,time-reversal)
+              - generic [ref=e26965]: 2p→1s spontaneous emission(Fermi golden rule applied)
+              - generic [ref=e26971]: Coherent states(â|α⟩ = α|α⟩)
+              - generic [ref=e26977]: §1.5 What we left in:spin (P6) and non-relativistic
+              - generic [ref=e26983]: §1.6 Outlook:why a single Slater determinant is not enough
+        - button "Download this diagram as a PNG" [ref=e26984] [cursor=pointer]:
+          - img [ref=e26985]
+          - generic [ref=e26988]: Download PNG
+      - paragraph [ref=e26989]: Sections 1.7–1.10 are the new material added in this expansion of the chapter.
+      - heading "1.16 Problems" [level=2] [ref=e26990]
+      - paragraph [ref=e26991]: The first three problems test the basics of the postulates and the particle in a box; the remaining three are graduate-level applications of the time-dependent and exactly-soluble machinery of sections 1.7–1.10.
+      - group [ref=e26992]
+      - paragraph
+      - generic "Problem 1 (easy) — The commutator and the uncertainty principle" [ref=e26993]
+      - paragraph [ref=e26994]:
+        - text: For a one-dimensional particle with position operator
+        - img [ref=e26996]
+        - text: and momentum operator
+        - img [ref=e27006]
+        - text: ", prove the canonical commutation relation"
+        - img [ref=e27031]
+        - text: on the domain of twice-differentiable functions. Then use the Robertson–Schrödinger inequality
+      - img [ref=e27057]:
+        - generic [ref=e27059]:
+          - img [ref=e27078]
+          - img [ref=e27104]
+      - paragraph [ref=e27106]:
+        - text: to derive the position–momentum uncertainty relation
+        - img [ref=e27108]
+        - text: . What state
+        - emphasis [ref=e27128]: saturates
+        - text: the inequality, and why is it consistent with the ground state of the harmonic oscillator? </details>
+      - group [ref=e27129]:
+        - generic "▸ Show answer" [ref=e27130] [cursor=pointer]
+        - text: "**Step 1: the commutator.** For any twice-differentiable , so (atomic units, ). **Step 2: the inequality.** For any state , let and consider . Writing for real and expanding the squared norm gives a quadratic in with non-negative discriminant: Taking square roots gives the **Robertson inequality** . **Step 3: position–momentum.** Substituting gives . **Step 4: saturation.** Equality holds iff , a first-order ODE that integrates to , a Gaussian. The minimum-uncertainty state is therefore a Gaussian — including the QHO ground state , which is for this reason the \"most classical\" state the QHO admits."
+      - group [ref=e27131]:
+        - generic "▸ Problem 2 (medium) — Probability current for a Gaussian wavepacket" [ref=e27132] [cursor=pointer]
+        - text: A free 1-D particle is initialised in the Gaussian wavepacket **(a)** Compute the probability current at and show that it equals . **(b)** Show that under the free-particle TDSE the wavepacket spreads as , and identify the physical origin of the spreading.
+      - group [ref=e27133]:
+        - generic "▸ Show answer" [ref=e27134] [cursor=pointer]
+        - text: "**(a)** The wavefunction is with . The probability density is . The probability current is . Compute So Take the imaginary part: the real part of the prefactor is , the imaginary part is . Therefore This is the **group velocity** times the probability density: at the packet moves as a whole with momentum , with no internal current. **(b)** The free-particle propagator is (We will derive this in Problem 4 by path integration; for now use it as a black box.) The wavepacket at time is . The integral of a Gaussian is a Gaussian, and the variance of the result is (The cross-term vanishes by symmetry; the additive contribution comes from the propagator's own phase quadratic in .) The packet therefore spreads as . The physical origin is the spread in *group velocities* across the wavepacket: each momentum component moves with velocity , and a narrow wavepacket in real space is a broad one in momentum space (Heisenberg), so the different components *diverge* over time. A classical ensemble of particles with the same mean velocity but a spread of velocities would do the same; the quantum spread is *deterministi`c*`, not a random-walk phenomenon."
+      - group [ref=e27135]:
+        - generic "▸ Problem 3 (hard) — Free-particle propagator by path integration" [ref=e27136] [cursor=pointer]
+        - text: The **Feynman propagator** for a particle of mass in 1-D is **(a)** For , derive by inserting complete sets of position eigenstates, , between infinitesimal time slices , and using the free-particle short-time propagator . Take the continuum limit and identify the result with the **path integral** , where is the classical action. **(b)** Use the result to verify the wavepacket spreading formula of Problem 2.
+      - group [ref=e27137]:
+        - generic "▸ Show answer" [ref=e27138] [cursor=pointer]
+        - text: "**(a) The discretised propagator.** Insert identity resolutions : with , , and . For the free Hamiltonian , the short-time matrix element is the Fourier transform of : (The Gaussian integral is the standard Fresnel integral .) Substituting, In the limit the integrand is the exponential of with : This is **Feynman's path integral**: the propagator is the sum over all paths from to , each weighted by . Because the action is quadratic the integral over the intermediate is *Gaussian* and is evaluated exactly by completing the square at each step; the result, after iterations, is (Each integration over produces — a Gaussian in the next separation, with a *renormalise`d*' coefficient. Iterating times accumulates the coefficients and gives (2).) **(b) Wavepacket spreading.** Convolve (2) with the Gaussian initial state of Problem 2: . The integral over is Gaussian; completing the square gives , the spreading formula of Problem 2. In the path-integral picture the spreading arises because different paths with the same endpoints accumulate different phases , and these phases *destructively interfere* unless the paths cluster near the classical trajectory."
+      - group [ref=e27139]:
+        - generic "▸ Problem 4 (hard) — Coherent states minimise the uncertainty product" [ref=e27140] [cursor=pointer]
+        - text: A coherent state is an eigenstate of with , . Using , , show explicitly that in any coherent state, with no dependence on .
+      - group [ref=e27141]:
+        - generic "▸ Show answer" [ref=e27142] [cursor=pointer]
+        - text: "The expectation values of and in are For the *square`d*' expectation values, use (using ). Take the expectation value in : Subtract : By an identical calculation (or by the same algebra with the substitution , which maps ): Therefore with equality iff . Wait — this says the minimum is at (the QHO ground state), not for all coherent states. Let me re-check the algebra. Actually the calculation is correct: holds for *all* , with equality only at . The point is that the *product* is bounded below by , but it is *not* constant. So coherent states are *not* minimum-uncertainty states in general; they *saturate* the inequality in the special case . To see coherent states' classicality differently: a coherent state remains a coherent state under free evolution, and its *centroi`d*' , orbits the classical ellipse in phase space — exactly the trajectory of a classical harmonic oscillator with the same energy. The wavepacket does not spread (in the sense that the *shape* remains Gaussian with the same width), and the centre obeys Newton's law. This is the more useful classicality property."
+      - group [ref=e27143]:
+        - generic "▸ Problem 5 (hard) — Hydrogen 2p → 1s spontaneous emission rate" [ref=e27144] [cursor=pointer]
+        - text: Using Fermi's golden rule and the hydrogen eigenfunctions of section 1.10, derive the spontaneous-emission rate of the transition explicitly. Compare with the accepted value s and identify the source of any discrepancy. > **Hint.** The dipole-approximation matrix element is > , and the > photon density of states in vacuum is > (in SI units).
+      - group [ref=e27145]:
+        - generic "▸ Show answer" [ref=e27146] [cursor=pointer]
+        - text: "**Step 1: the matrix element.** Using the eigenfunctions and the Wigner–Eckart theorem (or the Gaunt integral), with the radial integral . With and , Therefore **Step 2: the angular sum.** (three identical contributions, each ). **Step 3: Fermi's golden rule.** The spontaneous-emission rate for an electric-dipole transition is with in Hartree for . Substituting: In SI units the prefactor is rather than — the difference is a factor of that converts the Gaussian-cgs result to SI. Converting: in agreement with the accepted experimental value to the precision of the non-relativistic hydrogen eigenfunctions. The remaining percent-level corrections (Lamb shift, fine structure, two-photon decay to , proton finite size) are out of scope here."
+      - heading "1.17 What we left out" [level=2] [ref=e27147]
+      - paragraph [ref=e27148]: This chapter covers the postulates of non-relativistic quantum mechanics, the time-independent and time-dependent Schrödinger equations, and two exactly-soluble Hamiltonians. The following related topics are out of scope here.
+      - list [ref=e27149]:
+        - listitem [ref=e27150]:
+          - strong [ref=e27151]: Spin–orbit coupling and the Dirac equation.
+          - text: For
+          - img [ref=e27153]
+          - text: the Schrödinger kinetic term must be replaced by the Dirac operator. The hydrogen fine structure (relativistic + spin–orbit + Darwin) gives the
+          - img [ref=e27164]
+          - text: splitting
+          - img [ref=e27174]
+          - text: — small, but spectroscopically measurable.
+        - listitem [ref=e27233]:
+          - strong [ref=e27234]: The Lamb shift.
+          - text: A purely quantum-electrodynamic effect (vacuum fluctuations of the electromagnetic field) that shifts
+          - img [ref=e27236]
+          - text: above
+          - img [ref=e27253]
+          - text: by
+          - img [ref=e27270]
+          - text: MHz. Not in the Schrödinger equation; it requires QED.
+        - listitem [ref=e27280]:
+          - strong [ref=e27281]: Identical-particle statistics for bosons.
+          - text: P6 was used only for fermions. The treatment of bosons replaces the Slater determinant by a
+          - emphasis [ref=e27282]: "permanently symmetri`c"
+          - text: ’ product of single-particle states and introduces Bose–Einstein condensation.
+        - listitem [ref=e27283]:
+          - strong [ref=e27284]: Quantum field theory.
+          - text: The TDSE is *first-quantise
+          - code [ref=e27285]: d*
+          - text: ", with a fixed particle number. Processes that change particle number (pair creation, absorption) need a second-quantised or quantum-field-theoretic framework. TDDFT in the Floquet / strong-field regime touches field theory."
+        - listitem [ref=e27286]:
+          - strong [ref=e27287]: Open quantum systems.
+          - text: We assumed a closed system with Hamiltonian
+          - img [ref=e27289]
+          - text: . For a system in contact with a bath, the Lindblad master equation generalises the TDSE; the Redfield and Bloch–Redfield master equations are perturbative in the system–bath coupling.
+      - blockquote [ref=e27298]:
+        - paragraph [ref=e27299]:
+          - text: "Next:"
+          - link "chapter 02" [ref=e27300] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-02/
+          - text: — the many-body problem, the exponential wall, and the hierarchy of post-Hartree–Fock methods.
+  - contentinfo [ref=e27301]:
+    - generic [ref=e27302]:
+      - generic [ref=e27303]:
+        - img [ref=e27304]
+        - generic [ref=e27308]: DFT Notes
+        - paragraph [ref=e27309]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e27310]:
+        - generic [ref=e27311]:
+          - heading "Project" [level=3] [ref=e27312]
+          - list [ref=e27313]:
+            - listitem [ref=e27314]:
+              - link "Chapters map" [ref=e27315] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e27316]:
+              - link "Python codes" [ref=e27317] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e27318]:
+              - link "Contributing" [ref=e27319] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e27320]:
+              - link "Security" [ref=e27321] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e27322]:
+              - link "Design spec" [ref=e27323] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e27324]:
+              - link "GitHub ↗" [ref=e27325] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e27326]:
+          - heading "Built with" [level=3] [ref=e27327]
+          - list [ref=e27328]:
+            - listitem [ref=e27329]:
+              - link "Jekyll" [ref=e27330] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e27331]:
+              - link "MathJax 3" [ref=e27332] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e27333]:
+              - link "Mermaid" [ref=e27334] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e27335]:
+              - link "chenglou/pretext" [ref=e27336] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e27337]:
+              - link "Google Fonts" [ref=e27338] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e27339]:
+          - heading "Legal" [level=3] [ref=e27340]
+          - list [ref=e27341]:
+            - listitem [ref=e27342]:
+              - link "MIT License" [ref=e27343] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e27344]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e27346]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

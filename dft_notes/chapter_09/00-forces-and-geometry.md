@@ -172,12 +172,14 @@ was known to Güttinger (1932) and Pauli (1933).
 **Step 1 — expand the derivative.**  Differentiate
 \eqref{eq:ch-09-hf-ene} using the product rule:
 
+$$
 \begin{align}
 \frac{dE}{d\lambda}
 &= \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle
  + \left\langle \Psi \bigg| \frac{\partial \hat H}{\partial \lambda} \bigg| \Psi \right\rangle
  + \left\langle \Psi \bigg| \hat H \bigg| \frac{\partial \Psi}{\partial \lambda} \right\rangle .
 \end{align}
+$$
 
 The first and third terms involve $\partial\Psi/\partial\lambda$,
 the second does not.  We will show the first and third cancel.
@@ -186,6 +188,7 @@ the second does not.  We will show the first and third cancel.
 first and third terms, use the Hermiticity of $\hat H$, and pull
 out the $\hat H$:
 
+$$
 \begin{align}
 \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle
 + \left\langle \Psi \bigg| \hat H \bigg| \frac{\partial \Psi}{\partial \lambda} \right\rangle
@@ -193,12 +196,14 @@ out the $\hat H$:
  + \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle^*  \\\
 &= 2\, \operatorname{Re}\left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle .
 \end{align}
+$$
 
 A cleaner route: the two terms combine to
 $E(\lambda)\, \partial_\lambda \langle\Psi|\Psi\rangle$, because
 $\hat H|\Psi\rangle = E(\lambda)|\Psi\rangle$ and its adjoint
 $\langle\Psi|\hat H = E(\lambda)\langle\Psi|$.  Explicitly,
 
+$$
 \begin{align}
 \left\langle \frac{\partial \Psi}{\partial \lambda} \bigg| \hat H \bigg| \Psi \right\rangle
 + \left\langle \Psi \bigg| \hat H \bigg| \frac{\partial \Psi}{\partial \lambda} \right\rangle
@@ -207,6 +212,7 @@ $\langle\Psi|\hat H = E(\lambda)\langle\Psi|$.  Explicitly,
 &= E(\lambda)\, \frac{\partial}{\partial \lambda} \langle \Psi | \Psi \rangle \\\
 &= 0 ,
 \end{align}
+$$
 
 where the last equality uses the normalisation
 $\langle\Psi|\Psi\rangle = 1$ (constant in $\lambda$).
@@ -240,15 +246,18 @@ $$
 
 where the two-body terms are
 
+$$
 \begin{align}
 \hat V_{en} &= -\sum_{i=1}^{N_e} \sum_{I=1}^{N_\text{atoms}}
              \frac{Z_I}{|\mathbf r_i - \mathbf R_I|} ,  \\\
 \hat V_{nn} &= \phantom{-}\frac{1}{2} \sum_{I \neq J}
              \frac{Z_I Z_J}{|\mathbf R_I - \mathbf R_J|} .
 \end{align}
+$$
 
 Only $\hat V_{en}$ and $\hat V_{nn}$ depend on $\mathbf R_I$:
 
+$$
 \begin{align}
 \frac{\partial \hat V_{en}}{\partial \mathbf R_I}
   &= \sum_{i=1}^{N_e}
@@ -256,6 +265,7 @@ Only $\hat V_{en}$ and $\hat V_{nn}$ depend on $\mathbf R_I$:
 \frac{\partial \hat V_{nn}}{\partial \mathbf R_I}
   &= -\sum_{J \neq I} \frac{Z_I Z_J (\mathbf R_I - \mathbf R_J)}{|\mathbf R_I - \mathbf R_J|^3} .
 \end{align}
+$$
 
 (The sign in $\hat V_{en}$ gives a *negative* electron–nuclear
 attraction, whose derivative is the *positive* attractive force
@@ -362,6 +372,7 @@ with respect to $\mathbf R_I$, using the chain rule
 $\partial/\partial\mathbf R_I = \sum_\mu \partial\chi_\mu/\partial\mathbf R_I \cdot \partial/\partial\chi_\mu$,
 gives
 
+$$
 \begin{align}
 \mathbf F_I^\text{Pulay}
 &= -2 \sum_i^\text{occ} \sum_{\mu \in I} \sum_\nu
@@ -378,6 +389,7 @@ gives
     C_{\mu i}\, C_{\nu i}\,
     \frac{\partial S_{\mu\nu}}{\partial \mathbf R_I} ,
 \end{align}
+$$
 
 where $\hat h = -\tfrac{1}{2}\nabla^2 + \hat v_\text{ext}$ is the
 one-electron operator, $\hat J$ is the Coulomb operator, and
@@ -656,6 +668,7 @@ in the STO-3G example of [§9.10](#910-worked-example-relax-the-geometry-of-h2-i
 
 Define the **basis-derivative integrals**
 
+$$
 \begin{align}
 h_{\mu\nu}^{(I)} &\equiv
    \left\langle \frac{\partial \chi_\mu}{\partial \mathbf R_I}
@@ -670,6 +683,7 @@ G_{\mu\nu}^{(I)} &\equiv
 S_{\mu\nu}^{(I)} &\equiv
    \frac{\partial S_{\mu\nu}}{\partial \mathbf R_I} .
 \end{align}
+$$
 
 The Pulay formula \eqref{eq:ch-09-pulay-derivation} becomes, in
 matrix form,
@@ -1040,10 +1054,12 @@ degrees of freedom without adding physical content.
 
 Apply $\mathbf B^{(k+1)}$ to $\mathbf s^{(k)}$:
 
+$$
 \begin{align}
 \mathbf B^{(k+1)} \mathbf s^{(k)}
 &= \mathbf B^{(k)} \mathbf s^{(k)} + \mathbf a\, (\mathbf u^\text{T} \mathbf s^{(k)}) + \mathbf u\, (\mathbf a^\text{T} \mathbf s^{(k)}) .
 \end{align}
+$$
 
 For this to equal $\mathbf y^{(k)}$ we need
 
@@ -1108,6 +1124,7 @@ $$
 
 Plug \eqref{eq:ch-09-bfgs-vectors} into \eqref{eq:ch-09-bfgs-ansatz}:
 
+$$
 \begin{align}
 \mathbf B^{(k+1)}
 &= \mathbf B^{(k)} + \mathbf B^{(k)} \mathbf s^{(k)} (\beta \mathbf y^{(k)})^\text{T}
@@ -1115,9 +1132,11 @@ Plug \eqref{eq:ch-09-bfgs-vectors} into \eqref{eq:ch-09-bfgs-ansatz}:
 &= \mathbf B^{(k)} + \beta\, \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
    + \beta\, \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} .
 \end{align}
+$$
 
 Substitute $\beta = \frac{1}{2 a} - \frac{1}{2 b}$ and split:
 
+$$
 \begin{align}
 \mathbf B^{(k+1)}
 &= \mathbf B^{(k)}
@@ -1126,9 +1145,11 @@ Substitute $\beta = \frac{1}{2 a} - \frac{1}{2 b}$ and split:
 &\quad - \frac{1}{2 b}\, \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
    - \frac{1}{2 b}\, \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} .
 \end{align}
+$$
 
 Group the first two lines and the last two:
 
+$$
 \begin{align}
 \mathbf B^{(k+1)}
 &= \mathbf B^{(k)}
@@ -1139,12 +1160,14 @@ Group the first two lines and the last two:
      \Bigl[ \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
           + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \Bigr] / 2 .
 \end{align}
+$$
 
 Now add and subtract $\mathbf B^{(k)} \mathbf s^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} / a$
 to the first term and $\mathbf y^{(k)} \mathbf y^{(k)\text{T}} / b$
 to the second term.  This is the algebraic move that gives BFGS
 its compact form:
 
+$$
 \begin{align}
 \mathbf B^{(k+1)}
 &= \mathbf B^{(k)}
@@ -1160,6 +1183,7 @@ its compact form:
    + \frac{\mathbf y^{(k)} \mathbf y^{(k)\text{T}}}{\mathbf y^{(k)\text{T}} \mathbf s^{(k)}}
    - \frac{\mathbf y^{(k)} \mathbf y^{(k)\text{T}}}{\mathbf y^{(k)\text{T}} \mathbf s^{(k)}} .
 \end{align}
+$$
 
 The $\tfrac{1}{2}$ factors and the cross terms combine into
 $\mathbf B^{(k)} \mathbf s^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} / a$
@@ -1587,6 +1611,7 @@ convention
 $\mathbf A = (0, 0, -R/2)$, $\mathbf B = (0, 0, +R/2)$, the
 z-components are
 
+$$
 \begin{align}
 F_{A_z}^\text{HF} &=
    -Z_H \int \rho(\mathbf r)\, \frac{z + R/2}{|\mathbf r - \mathbf A|^3}\, d\mathbf r
@@ -1595,6 +1620,7 @@ F_{B_z}^\text{HF} &=
    -Z_H \int \rho(\mathbf r)\, \frac{z - R/2}{|\mathbf r - \mathbf B|^3}\, d\mathbf r
    \;-\; \frac{Z_H^2\,(R)}{R^3} .
 \end{align}
+$$
 
 In a *complete* basis these would be equal and opposite, and
 their magnitude $F^\text{HF} = |F_{A_z}^\text{HF}|$ would equal

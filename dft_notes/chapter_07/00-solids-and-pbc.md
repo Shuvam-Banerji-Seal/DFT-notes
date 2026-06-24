@@ -170,6 +170,7 @@ It is linear and bounded.
 
 For any two square-integrable functions $f, g$:
 
+$$
 \begin{align}
 \langle \hat T_{\mathbf R} f \mid \hat T_{\mathbf R} g \rangle
   &= \int_{\mathbb R^3} \Bigl[(\hat T_{\mathbf R} f)(\mathbf r)\Bigr]^* \, (\hat T_{\mathbf R} g)(\mathbf r) \, d^3r \nonumber \\\
@@ -178,6 +179,7 @@ For any two square-integrable functions $f, g$:
       \quad \text{(substituting } \mathbf u = \mathbf r + \mathbf R,\; d^3u = d^3r) \nonumber \\\
   &= \langle f \mid g \rangle.
 \end{align}
+$$
 
 So $\hat T_{\mathbf R}$ preserves inner products. In particular it
 preserves norms ($\|\hat T_{\mathbf R} f\| = \|f\|$), so it is
@@ -205,12 +207,14 @@ $V(\mathbf r + \mathbf R) = V(\mathbf r)$ for every $\mathbf R$.
 
 Apply the two operators in succession:
 
+$$
 \begin{align}
 \Bigl(\hat T_{\mathbf R} \hat H f\Bigr)(\mathbf r)
    &= (\hat H f)(\mathbf r + \mathbf R) \nonumber \\\
    &= -\tfrac{1}{2} \nabla^2 f(\mathbf r + \mathbf R) + V(\mathbf r + \mathbf R) f(\mathbf r + \mathbf R) \nonumber \\\
    &= -\tfrac{1}{2} \nabla^2 f(\mathbf r + \mathbf R) + V(\mathbf r) f(\mathbf r + \mathbf R).
 \end{align}
+$$
 
 The gradient $\nabla$ in the last line is taken with respect to
 $\mathbf r$; substituting $\mathbf u = \mathbf r + \mathbf R$ leaves
@@ -290,6 +294,7 @@ inherits the lattice periodicity.
 
 Compute $u_{\mathbf k}$ at a translated point:
 
+$$
 \begin{align}
 u_{\mathbf k}(\mathbf r + \mathbf R)
    &= e^{-i \mathbf k \cdot (\mathbf r + \mathbf R)} \, \psi(\mathbf r + \mathbf R) \nonumber \\\
@@ -299,6 +304,7 @@ u_{\mathbf k}(\mathbf r + \mathbf R)
    &= e^{-i \mathbf k \cdot \mathbf r} \, \psi(\mathbf r) \nonumber \\\
    &= u_{\mathbf k}(\mathbf r).
 \end{align}
+$$
 
 The two phase factors cancel exactly, and we have
 
@@ -484,12 +490,14 @@ We seek the matrix elements of $\hat H$ in the basis
 \eqref{eq:ch-07-pw-basis}. For a one-electron Hamiltonian
 $\hat H = -\tfrac{1}{2}\nabla^2 + V(\mathbf r)$ with periodic $V$:
 
+$$
 \begin{align}
 \langle \mathbf k + \mathbf G' \mid \hat H \mid \mathbf k + \mathbf G \rangle
    &= \int \frac{d^3r}{\Omega} \, e^{-i(\mathbf k + \mathbf G') \cdot \mathbf r} \,
       \left[-\tfrac{1}{2}\nabla^2 + V(\mathbf r)\right] e^{i(\mathbf k + \mathbf G) \cdot \mathbf r} \nonumber \\\
    &= \tfrac{1}{2} |\mathbf k + \mathbf G|^2 \, \delta_{\mathbf G \mathbf G'} + V_{\text{per}}(\mathbf G' - \mathbf G),
 \end{align}
+$$
 
 where
 
@@ -759,6 +767,7 @@ $$
 Substituting the explicit $V_{\text{per}}$ from
 \eqref{eq:ch-07-worked-V-matrix}:
 
+$$
 \begin{align}
 H_{m m'}(k)
   &= \tfrac{1}{2}\Bigl(k + m \cdot 2\pi/a\Bigr)^2 \delta_{m m'} \;
@@ -769,6 +778,7 @@ H_{m m'}(k)
        \phantom{-}0 & \text{otherwise}.
      \end{cases}
 \end{align}
+$$
 
 The first two rows of this matrix at $k = 0$ are:
 
@@ -860,10 +870,12 @@ $$
 
 The two degenerate levels at the BZ boundary split into
 
+$$
 \begin{align}
 \varepsilon_-(\pi/a) &= 0.1974 - 0.2500 = -0.0526 \text{ Hartree}, \nonumber \\\
 \varepsilon_+(\pi/a) &= 0.1974 + 0.2500 = 0.4474 \text{ Hartree},
 \end{align}
+$$
 
 with a gap of $0.5000$ Hartree between them. These numbers are
 checked numerically by the script (see the output of the script's
@@ -1419,6 +1431,7 @@ commutes with $\hat H$ (the analogue of \eqref{eq:ch-07-commute} for
 the full space group), the result is again an eigenstate of $\hat
 H$:
 
+$$
 \begin{align}
 (\{R \mid \mathbf v\} \psi_{n\mathbf k})(\mathbf r)
    &= \psi_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v)) \nonumber \\\
@@ -1426,6 +1439,7 @@ H$:
       \quad \text{by \eqref{eq:ch-07-bloch}} \nonumber \\\
    &= e^{-i \mathbf k \cdot \mathbf v} \cdot e^{i (R\mathbf k) \cdot \mathbf r} \cdot u_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v)),
 \end{align}
+$$
 
 using $R^{-T} = R$ for $R \in O(3)$. The function $e^{i (R\mathbf k)
 \cdot \mathbf r} u_{n\mathbf k}(R^{-1}(\mathbf r - \mathbf v))$ is a

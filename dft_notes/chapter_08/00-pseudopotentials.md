@@ -201,11 +201,13 @@ $$
 Subtracting, and using the boundary condition $u_l(0) = 0$,
 $\dot u_l(0) = 0$:
 
+$$
 \begin{align}
 &\int_0^{r_c} \frac{1}{2}\left[\dot u_l u_l'' - u_l \dot u_l''\right] dr = \int_0^{r_c} u_l^2 dr - \int_0^{r_c} \dot u_l u_l dr, \\\
 &\frac{1}{2}\left[\dot u_l(r) u_l'(r) - u_l(r) \dot u_l'(r)\right]_0^{r_c} = \int_0^{r_c} u_l^2 dr - \int_0^{r_c} \dot u_l u_l dr, \\\
 &\frac{1}{2}\left[u_l'(r_c) \dot u_l(r_c) - u_l(r_c) \dot u_l'(r_c)\right] = \int_0^{r_c} u_l^2 dr - \int_0^{r_c} \dot u_l u_l dr. \label{eq:ch-08-deriv-3}
 \end{align}
+$$
 
 Now, the *secon`d*' integral on the right, $\int_0^{r_c} \dot u_l u_l dr$,
 is the *change* in norm on $[0, r_c]$ when the energy changes by
@@ -385,6 +387,7 @@ $$
 To derive \eqref{eq:ch-08-phi-pp}, differentiate
 \eqref{eq:ch-08-phi-deriv}:
 
+$$
 \begin{align}
 \frac{\phi_l''}{\phi_l} - \frac{(\phi_l')^2}{\phi_l^2} &= -\frac{l+1}{r^2} + p''(r), \notag \\\
 \frac{\phi_l''}{\phi_l} &= \frac{(\phi_l')^2}{\phi_l^2} - \frac{l+1}{r^2} + p''(r) \notag \\\
@@ -392,6 +395,7 @@ To derive \eqref{eq:ch-08-phi-pp}, differentiate
 &= \frac{(l+1)^2}{r^2} + \frac{2(l+1)p'(r)}{r} + p'(r)^2 - \frac{l+1}{r^2} + p''(r) \notag \\\
 &= \frac{l(l+1)}{r^2} + \frac{2(l+1)p'(r)}{r} + p'(r)^2 + p''(r).
 \end{align}
+$$
 
 Multiplying by $1/2$ and subtracting $l(l+1)/(2r^2)$ (the
 centrifugal term) gives the cleanest form of the inversion
@@ -650,10 +654,12 @@ $$
 To verify: substituting into the radial equation
 $-\frac{1}{2}u_0'' - \frac{1}{r}u_0 = E_0 u_0$,
 
+$$
 \begin{align}
 \text{LHS} &= -\frac{1}{2}\cdot[-2(2-r)e^{-r}] - \frac{1}{r}\cdot 2r\,e^{-r} \notag \\\
 &= (2-r)\,e^{-r} - 2\,e^{-r} = -r\,e^{-r} = -\frac{1}{2}\cdot 2r\,e^{-r} = -\frac{1}{2}\,u_0(r) = E_0\,u_0(r).\quad\checkmark \notag
 \end{align}
+$$
 
 At the chosen cutoff $r_c = 0.5\,a_0$:
 
@@ -684,11 +690,13 @@ through the matching step by step, then solve.
 
 **Step 1 — value at $r_c$.**
 
+$$
 \begin{align}
 \phi_0(r_c) = r_c\,\exp\!\Bigl(c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6\Bigr) &= u_0(r_c) = 2r_c\,e^{-r_c}, \notag \\\
 \exp\!\Bigl(c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6\Bigr) &= 2\,e^{-r_c}, \notag \\\
 c_0 + c_1 r_c^2 + c_2 r_c^4 + c_3 r_c^6 &= \ln 2 - r_c. \label{eq:ch-08-h-match-1}
 \end{align}
+$$
 
 Equation \eqref{eq:ch-08-h-match-1} fixes $c_0$ once $c_1,
 c_2, c_3$ are known.
@@ -705,10 +713,12 @@ $$
 The all-electron ratio is
 $u_0'(r_c)/u_0(r_c) = (1 - r_c)/r_c$, so
 
+$$
 \begin{align}
 \frac{1}{r_c} + 2c_1 r_c + 4c_2 r_c^3 + 6c_3 r_c^5 &= \frac{1}{r_c} - 1, \notag \\\
 2c_1 r_c + 4c_2 r_c^3 + 6c_3 r_c^5 &= -1. \label{eq:ch-08-h-match-2}
 \end{align}
+$$
 
 **Step 3 — second derivative at $r_c$.** From
 \eqref{eq:ch-08-phi-pp} with $l = 0$,
@@ -791,12 +801,14 @@ $$
 **At the cutoff** $r = r_c$ (using the analytical
 3-parameter values $c_1 = -1.5$, $c_2 = +1$):
 
+$$
 \begin{align}
 p'(r_c) &= 2c_1 r_c + 4c_2 r_c^3 = 2(-1.5)(0.5) + 4(1)(0.5)^3 = -1.5 + 0.5 = -1.0, \notag \\\
 p''(r_c) &= 2c_1 + 12 c_2 r_c^2 = 2(-1.5) + 12(1)(0.5)^2 = -3.0 + 3.0 = 0.0, \notag \\\
 2p'(r_c)/r_c &= -4.0, \quad p'(r_c)^2 = 1.0, \notag \\\
 V_{ps,0}(r_c^-) &= -0.5 + \tfrac{1}{2}(-4.0 + 1.0 + 0.0) = -0.5 - 1.5 = -2.0. \notag
 \end{align}
+$$
 
 The all-electron value is $V_{ae}(r_c) = -1/r_c = -2.0$,
 so the pseudo-potential is *exactly* continuous at $r_c$
@@ -810,11 +822,13 @@ exactly.
 **At the origin** $r = 0$ (using the analytical 3-parameter
 values $c_1 = -1.5$, $c_2 = +1$, $c_3 = 0$):
 
+$$
 \begin{align}
 \lim_{r \to 0} \frac{2p'(r)}{r} &= \lim_{r \to 0}\Bigl(4c_1 + 8c_2 r^2 + 12 c_3 r^4\Bigr) = 4c_1 = -6.0, \notag \\\
 \lim_{r \to 0} p'(r)^2 &= 0, \quad \lim_{r \to 0} p''(r) = 2c_1 = -3.0, \notag \\\
 V_{ps,0}(0) &= -0.5 + \tfrac{1}{2}(-6.0 + 0 - 3.0) = -0.5 - 4.5 = -5.0\,E_h. \label{eq:ch-08-h-vps-zero}
 \end{align}
+$$
 
 The 4-parameter TM form gives
 $V_{ps,0}(0) \approx -4.64\,E_h$ (a difference of $\sim
@@ -1372,11 +1386,13 @@ completeness relation \eqref{eq:ch-08-paw-completeness}
 applied to $|\tilde\Psi_n^R\rangle$ inside $\Omega_R$. Now
 substitute into \eqref{eq:ch-08-paw-apply-t}:
 
+$$
 \begin{align}
 |\Psi_n\rangle &= |\tilde\Psi_n^{out}\rangle + \sum_R |\tilde\Psi_n^R\rangle + \sum_{R,i} \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\\
 &= |\tilde\Psi_n^{out}\rangle + \sum_R \sum_i |\tilde\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle + \sum_{R,i} \Bigl(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle\Bigr) \langle \tilde p_i^R | \tilde\Psi_n\rangle \notag \\\
 &= |\tilde\Psi_n^{out}\rangle + \sum_R \sum_i |\phi_i^R\rangle \langle \tilde p_i^R | \tilde\Psi_n\rangle. \label{eq:ch-08-paw-final}
 \end{align}
+$$
 
 So inside each augmentation sphere, $\Psi_n$ is the
 all-electron partial-wave expansion
@@ -1412,8 +1428,7 @@ $$
 \tilde O = \hat O + \sum_R \sum_{i,j} |\tilde p_i^R\rangle \Bigl[ \langle \phi_i^R | \hat O | \phi_j^R \rangle - \langle \tilde\phi_i^R | \hat O | \tilde\phi_j^R \rangle \Bigr] \langle \tilde p_j^R |.
 $$
 
-This follows from $\hat{\mathcal{T}} = 1 + \sum_{R,i}(|\phi_i^R\rangle
-- |\tilde\phi_i^R\rangle) \langle \tilde p_i^R |$ and the
+This follows from $\hat{\mathcal{T}} = 1 + \sum_{R,i}(|\phi_i^R\rangle - |\tilde\phi_i^R\rangle) \langle \tilde p_i^R |$ and the
 biorthogonality. The first term, $\hat O$, is the operator
 acting on the smooth wavefunction. The bracket is the
 **on-site correction**: the difference between the

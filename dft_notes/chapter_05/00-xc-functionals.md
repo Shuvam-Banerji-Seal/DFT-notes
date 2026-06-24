@@ -1964,6 +1964,7 @@ enhancement factor must recover the LDA for a uniform density,
 i.e. $F_\text{x}^\text{PBE}(0) = 1$. Substituting $s = 0$ into
 \eqref{eq:ch-05-lit-pbe-fx}:
 
+$$
 \begin{align}
 F_\text{x}^\text{PBE}(0) &=
 1 + \kappa - \frac{\kappa}{1 + \mu \cdot 0 / \kappa}
@@ -1973,6 +1974,7 @@ F_\text{x}^\text{PBE}(0) &=
 &= 1 + \kappa - \kappa \notag \\\
 &= 1 .
 \end{align}
+$$
 
 The constraint $F_\text{x}^\text{PBE}(0) = 1$ is *automatically*
 satisfied by the form of \eqref{eq:ch-05-lit-pbe-fx} for *any*
@@ -1997,12 +1999,14 @@ asymptotes from below), so its maximum is the asymptotic value
 $\lim_{s \to \infty} F_\text{x}^\text{PBE}(s) = 1 + \kappa$.
 Setting this maximum equal to the Lieb–Oxford bound gives
 
+$$
 \begin{align}
 \lim_{s \to \infty} F_\text{x}^\text{PBE}(s) &=
 1 + \kappa - \frac{\kappa}{1 + \infty} \notag \\\
 &= 1 + \kappa - 0 \notag \\\
 &= 1 + \kappa .
 \end{align}
+$$
 
 Equating $1 + \kappa$ to the numerical value implied by the
 Lieb–Oxford bound, the PBE paper sets (p. 3866)
@@ -2286,6 +2290,7 @@ tabulated in Table 5 of the VWN paper, on p. 1204. The
 explicit numerical values (commonly reproduced in modern
 DFT-code documentation) are:
 
+$$
 \begin{align}
 \text{Paramagnetic } (\zeta=0):\quad &
 A = 0.0621814, \quad
@@ -2302,6 +2307,7 @@ A = 0.0310907, \quad
 \beta_3 = 1.9943, \quad
 \beta_4 = 0.49934. \notag
 \end{align}
+$$
 
 The polarisation derivative $\alpha_\text{c}(r_s)$ has the
 sixth set of coefficients, also tabulated in the paper
@@ -2429,6 +2435,7 @@ when implementing B88.)
 **Constraint 1 — the LSD limit.** Substituting $s = 0$ into
 \eqref{eq:ch-05-lit-b88-fx}:
 
+$$
 \begin{align}
 F_\text{x}^\text{B88}(0) &=
 1 - \frac{\beta \cdot 0^2}{1 + \gamma \cdot 0^2}
@@ -2436,6 +2443,7 @@ F_\text{x}^\text{B88}(0) &=
 &= 1 - \frac{0}{1} \notag \\\
 &= 1 .
 \end{align}
+$$
 
 The B88 enhancement factor recovers the LDA at uniform
 density, as it must.
@@ -2527,6 +2535,7 @@ reports (Table I, p. 3100) the exchange energies of He, Ne,
 Ar, Kr, Xe from LDA, B88, and exact exchange. The numbers
 are (in Hartree):
 
+$$
 \begin{align}
 \text{He:}\quad & E_\text{x}^\text{LDA} = -1.025,\quad
 E_\text{x}^\text{B88} = -0.882,\quad
@@ -2544,6 +2553,7 @@ E_\text{x}^\text{exact} = -93.89. \notag \\\
 E_\text{x}^\text{B88} = -179.0,\quad
 E_\text{x}^\text{exact} = -179.2. \notag
 \end{align}
+$$
 
 (All values in Hartree.) The LDA errors are 1–3% (the LDA
 *under*-estimates the magnitude of the exchange energy of

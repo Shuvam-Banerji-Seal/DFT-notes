@@ -296,10 +296,12 @@ Subtracting \eqref{eq:ch-14-mp-e0-det} from
 \eqref{eq:ch-14-mp-e1} gives the **sum of zeroth- and first-
 order** energies,
 
+$$
 \begin{align}
 E^{(0)} + E^{(1)} &\;=\; \langle \Phi_0 \rvert \hat F \rvert \Phi_0 \rangle + \langle \Phi_0 \rvert \hat H \rvert \Phi_0 \rangle - \langle \Phi_0 \rvert \hat F \rvert \Phi_0 \rangle \notag \\\
 &\;=\; \langle \Phi_0 \rvert \hat H \rvert \Phi_0 \rangle \;\equiv\; E_\text{HF} . \label{eq:ch-14-mp-e01}
 \end{align}
+$$
 
 The HF energy is *exact* through first order in the
 Møller–Plesset perturbation series.  This is the
@@ -2068,10 +2070,12 @@ $$
 
 The HF atomisation energy is therefore
 
+$$
 \begin{align}
 D_e^\text{HF/cc-pVDZ} &\;=\; (-74.778\,451) + 2 (-0.499\,278) - (-76.024\,547) \notag \\\
 &\;=\; 0.247\,540\,E_h \;\approx\; 155.4\,\text{kcal mol}^{-1} . \label{eq:ch-14-h2o-dhf}
 \end{align}
+$$
 
 The HF atomisation energy is *much smaller* than the
 *experimental* $D_e = 232.0\,\text{kcal mol}^{-1}$
@@ -2087,11 +2091,13 @@ energy's correlation contribution — is *huge*.
 
 The MP2 atomisation energy is
 
+$$
 \begin{align}
 D_e^\text{MP2/cc-pVDZ} &\;=\; D_e^\text{HF/cc-pVDZ} + \Delta E_\text{MP2, corr} \notag \\\
 &\;=\; 0.247\,540 + 0.215\,864 \notag \\\
 &\;=\; 0.463\,404\,E_h \;\approx\; 290.8\,\text{kcal mol}^{-1} . \label{eq:ch-14-h2o-dmp2}
 \end{align}
+$$
 
 This is *too large* by chemical standards.  The
 $\Delta E_\text{MP2, corr} = 0.216\,E_h$ is the
@@ -2107,11 +2113,13 @@ atomic and molecular MP2 energies is
 
 The CCSD(T) atomisation energy is
 
+$$
 \begin{align}
 D_e^\text{CCSD(T)/cc-pVDZ} &\;=\; D_e^\text{HF/cc-pVDZ} + \Delta E_\text{CCSD(T), corr} \notag \\\
 &\;=\; 0.247\,540 + 0.236\,358 \notag \\\
 &\;=\; 0.483\,898\,E_h \;\approx\; 303.7\,\text{kcal mol}^{-1} . \label{eq:ch-14-h2o-dccsdt}
 \end{align}
+$$
 
 The CCSD(T) atomisation energy is *also* too large
 (by $\sim 72\,\text{kcal mol}^{-1}$), for the *same*
@@ -2304,10 +2312,12 @@ $2 \varepsilon_2 - 2 \varepsilon_1 = 2(0.670) - 2(-0.578) = 2.496\,E_h$.
 
 **Step 3 — assemble the MP2 energy.**
 
+$$
 \begin{align}
 E_\text{MP2} &\;=\; - \frac{(0.236)^2}{2.496} \;=\; -0.0223\,E_h , \notag \\\
 E_\text{MP2}^\text{STO-3G} &\;=\; E_\text{HF} + E_\text{MP2} \;=\; -1.117 - 0.022 \;=\; -1.139\,E_h . \label{eq:ch-14-prob-mp2}
 \end{align}
+$$
 
 **Step 4 — compare to FCI.**  The MP2 total energy
 $-1.139\,E_h$ is *below* the FCI energy

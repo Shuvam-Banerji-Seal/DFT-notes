@@ -701,6 +701,7 @@ The proof uses translation invariance. Consider a uniform
 displacement $\mathbf u$ of every nucleus in the crystal. The
 change in energy is
 
+$$
 \begin{align}
 \Delta E
 &\;=\; \frac{1}{2}\,
@@ -709,6 +710,7 @@ u_\beta \nonumber \\\
 &\;=\; \frac{1}{2}\, u_\alpha\,
 \Bigl(\sum_{I, J, \mathbf R}\; \Phi_{I\alpha, J\beta}(\mathbf R)\Bigr)\, u_\beta .
 \end{align}
+$$
 
 The right-hand side must vanish for *every* uniform $u$ — because
 $\Delta E = 0$ for a uniform translation (the energy depends only

@@ -1,0 +1,3421 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "DFT Notes — home" [ref=e5] [cursor=pointer]:
+        - /url: /DFT-notes/
+        - img [ref=e6]
+        - generic [ref=e10]: DFT Notes
+      - navigation "Primary" [ref=e11]:
+        - link "Chapters" [ref=e12] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/
+        - link "Map" [ref=e13] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapters-map/
+        - link "Python" [ref=e14] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/python_codes/
+        - link "Bibliography" [ref=e15] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/extras/bibliography/
+        - link "Design" [ref=e16] [cursor=pointer]:
+          - /url: /DFT-notes/design.md
+        - link "Contributing" [ref=e17] [cursor=pointer]:
+          - /url: /DFT-notes/CONTRIBUTING.md
+      - generic [ref=e18]:
+        - button "Switch to dark theme" [ref=e19] [cursor=pointer]:
+          - img [ref=e20]
+        - link "GitHub" [ref=e22] [cursor=pointer]:
+          - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+          - text: GitHub
+          - generic [ref=e23]: ↗
+        - link "Read the notes" [ref=e24] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-00/
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - heading "Chapter 07 — Solids & periodic boundary conditions" [level=1] [ref=e27]
+      - blockquote [ref=e28]:
+        - paragraph [ref=e29]: A perfect crystal has a Hamiltonian that commutes with every translation by a lattice vector. The eigenfunctions are plane waves modulated by a cell-periodic function — and that single fact is the reason solid-state physics has its own language.
+      - paragraph [ref=e30]:
+        - text: Up to chapter 06 we have been talking about
+        - emphasis [ref=e31]: finite
+        - text: "systems: atoms and molecules in a box. A real solid is not a finite system. It is an infinite, perfectly periodic array of nuclei, and the electron moves through this array forever. The Schrödinger equation we have to solve is therefore not the molecular one of"
+        - link "chapter 01" [ref=e32] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-01/
+        - text: ", nor the molecular orbital problem of"
+        - link "chapter 04" [ref=e33] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: — it is the
+        - emphasis [ref=e34]: same
+        - text: "Schrödinger equation, but on a Hamiltonian that has the discrete translational symmetry of the crystal. This chapter is about the consequence of that symmetry: the eigenfunctions factorise into a plane wave and a cell-periodic piece, the energy levels become continuous"
+        - emphasis [ref=e35]: bands
+        - text: parametrised by a crystal momentum
+        - strong [ref=e36]: k
+        - text: that lives in a small region of reciprocal space, and the practical calculation collapses from an infinite matrix to a finite matrix indexed by a small set of
+        - strong [ref=e37]: k-points
+        - text: and a small set of
+        - strong [ref=e38]: plane waves
+        - text: . The machinery that does this is what every production solid-state code (VASP, Quantum ESPRESSO, CASTEP, ABINIT, …) is built on.
+      - blockquote [ref=e39]:
+        - paragraph [ref=e40]:
+          - strong [ref=e41]: Reading note.
+          - text: This chapter assumes you have read chapters 01–05. It previews material that is covered in detail in
+          - link "chapter 06" [ref=e42] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-06/
+          - text: (basis sets),
+          - link "chapter 08" [ref=e43] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: (pseudopotentials),
+          - link "chapter 10" [ref=e44] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/
+          - text: (phonons), and
+          - link "chapter 11" [ref=e45] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: (band structures).
+      - heading "7.1 The claim" [level=2] [ref=e46]
+      - blockquote [ref=e47]:
+        - paragraph [ref=e48]:
+          - strong [ref=e49]: Bloch’s theorem.
+          - text: Let the Hamiltonian
+          - img [ref=e51]
+          - text: have the discrete translational symmetry of a Bravais lattice
+          - img [ref=e61]
+          - text: ","
+          - img [ref=e69]:
+            - generic [ref=e73]:
+              - img [ref=e74]
+              - img [ref=e134]
+          - text: Then every eigenfunction of
+          - img [ref=e143]
+          - text: can be written in the form
+          - img [ref=e153]:
+            - generic [ref=e157]:
+              - img [ref=e158]
+              - img [ref=e218]
+          - text: where
+          - img [ref=e227]
+          - text: is a real vector, the
+          - emphasis [ref=e233]: band index
+          - img [ref=e235]
+          - text: labels the eigenstates at a given
+          - img [ref=e241]
+          - text: ", and the cell-periodic function"
+          - img [ref=e248]
+          - text: has the same periodicity as the lattice,
+          - img [ref=e261]:
+            - generic [ref=e265]:
+              - img [ref=e266]
+              - img [ref=e323]
+      - paragraph [ref=e330]:
+        - text: Equation
+        - img [ref=e332]:
+          - link [ref=e335] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch"
+        - text: is the single most-quoted line in solid-state physics. It says that
+        - emphasis [ref=e342]: every
+        - text: eigenstate of a periodic Hamiltonian is a plane wave
+        - img [ref=e344]
+        - text: multiplied by a function
+        - img [ref=e362]
+        - text: that knows only about one unit cell. The price is that the quantum number is no longer a single integer
+        - img [ref=e382]
+        - text: — it is now a continuous vector
+        - img [ref=e388]
+        - emphasis [ref=e394]: "an`d"
+        - text: ’ a band index
+        - img [ref=e396]
+        - text: .
+      - blockquote [ref=e401]:
+        - paragraph [ref=e402]:
+          - strong [ref=e403]: Tip.
+          - text: The phase factor
+          - img [ref=e405]
+          - text: is sometimes called the
+          - emphasis [ref=e422]: Bloch factor
+          - text: ", and"
+          - img [ref=e424]
+          - text: the
+          - emphasis [ref=e436]: Bloch function
+          - text: or periodic part of the Bloch wave.
+      - heading "7.2 From finite cluster to infinite solid" [level=2] [ref=e437]
+      - paragraph [ref=e438]: A real solid is infinite, but we cannot solve an infinite problem on a finite computer. The standard move is to replace “infinite” by “periodic on a supercell”.
+      - heading "7.2.1 Born–von Karman boundary conditions" [level=3] [ref=e439]
+      - paragraph [ref=e440]:
+        - text: Pick three primitive lattice vectors
+        - img [ref=e442]
+        - text: and form a supercell of
+        - img [ref=e468]
+        - text: primitive cells. Impose
+        - strong [ref=e490]: Born–von Karman
+        - text: "(BvK) periodic boundary conditions on the supercell: for any wavefunction"
+        - img [ref=e492]
+        - text: ","
+      - img [ref=e498]
+      - paragraph [ref=e551]:
+        - text: The supercell is the basic repeat unit; anything that happens in it is copied
+        - img [ref=e553]
+        - text: times to fill space. As
+        - img [ref=e572]
+        - text: the BvK cell fills all of
+        - img [ref=e599]
+        - text: and we recover the infinite solid.
+      - paragraph [ref=e608]:
+        - text: The boundary conditions
+        - img [ref=e610]:
+          - link [ref=e613] [cursor=pointer]:
+            - /url: "#"
+        - text: restrict the allowed wavefunctions. In particular, a plane wave
+        - img [ref=e623]
+        - text: satisfies
+        - img [ref=e641]:
+          - link [ref=e644] [cursor=pointer]:
+            - /url: "#"
+        - text: iff
+      - img [ref=e654]
+      - paragraph [ref=e751]:
+        - text: The allowed
+        - img [ref=e753]
+        - text: values are therefore a discrete mesh inside the Brillouin zone (defined in §7.4), with
+        - img [ref=e760]
+        - text: points in total — one per primitive cell of the BvK supercell.
+      - heading "7.2.2 From atoms to k-points" [level=3] [ref=e778]:
+        - text: 7.2.2 From
+        - img [ref=e780]
+        - text: atoms to
+        - img [ref=e786]
+        - text: k-points
+      - paragraph [ref=e795]: "The two limits to keep in mind:"
+      - table [ref=e796]:
+        - rowgroup [ref=e797]:
+          - row "Limit What we compute" [ref=e798]:
+            - columnheader "Limit" [ref=e799]
+            - columnheader [ref=e800]:
+              - img [ref=e802]
+            - columnheader [ref=e814]:
+              - img [ref=e816]
+            - columnheader "What we compute" [ref=e825]
+        - rowgroup [ref=e826]:
+          - row "Molecule Finite (10–1000) 1 (the point) Total energy, spectrum" [ref=e827]:
+            - cell "Molecule" [ref=e828]
+            - cell "Finite (10–1000)" [ref=e829]
+            - cell "1 (the point)" [ref=e830]:
+              - text: 1 (the
+              - img [ref=e832]
+              - text: point)
+            - cell "Total energy, spectrum" [ref=e837]
+          - row "Solid (BvK) per BZ Total energy per cell, bands" [ref=e838]:
+            - cell "Solid (BvK)" [ref=e839]
+            - cell [ref=e840]:
+              - img [ref=e842]
+            - cell "per BZ" [ref=e849]:
+              - img [ref=e851]
+              - text: per BZ
+            - cell "Total energy per cell, bands" [ref=e869]
+      - paragraph [ref=e870]:
+        - text: For a molecule, “summing over all states” is the discrete sum
+        - img [ref=e872]
+        - text: of chapter 04. For a solid under BvK, every “sum over states” becomes a sum over
+        - strong [ref=e880]: bands and k-points
+        - text: ","
+      - img [ref=e882]
+      - paragraph [ref=e949]:
+        - text: with weights
+        - img [ref=e951]
+        - text: (uniform mesh). The mesh has to be fine enough that this sum approximates the BZ integral
+        - img [ref=e974]
+        - text: to the desired accuracy.
+      - blockquote [ref=e1003]:
+        - paragraph [ref=e1004]:
+          - strong [ref=e1005]: Tip.
+          - text: The BvK trick is
+          - emphasis [ref=e1006]: not
+          - text: a physical boundary condition. It is a mathematical device that makes the infinite problem look finite. The answers it produces are the bulk properties of the infinite solid in the limit
+          - img [ref=e1008]
+          - text: . For a
+          - emphasis [ref=e1034]: truly
+          - text: periodic system, the device is exact. For a finite cluster, BvK artificially glues opposite faces of the cluster together, which is why it is a
+          - emphasis [ref=e1035]: "ba`d"
+          - text: ’ boundary condition for molecules.
+      - heading "7.3 Derivation of Bloch’s theorem" [level=2] [ref=e1036]
+      - paragraph [ref=e1037]:
+        - text: We prove
+        - img [ref=e1039]:
+          - link [ref=e1042] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch"
+        - text: in seven explicit steps. Every step appears below — no “it can be shown that” hand-waves.
+      - heading "Step 1. Define the translation operator" [level=3] [ref=e1049]
+      - paragraph [ref=e1050]:
+        - text: For every Bravais-lattice vector
+        - img [ref=e1052]
+        - text: ", define the operator"
+      - img [ref=e1059]
+      - paragraph [ref=e1107]:
+        - img [ref=e1109]
+        - text: shifts the argument of a function by
+        - img [ref=e1124]
+        - text: . It is linear and bounded.
+      - heading "Step 2. is unitary" [level=3] [ref=e1130]:
+        - text: Step 2.
+        - img [ref=e1132]
+        - text: is unitary
+      - paragraph [ref=e1146]:
+        - text: For any two square-integrable functions
+        - img [ref=e1148]
+        - text: ":"
+      - paragraph [ref=e1157]:
+        - text: "\\begin{align} \\langle \\hat T_{\\mathbf R} f \\mid \\hat T_{\\mathbf R} g \\rangle &= \\int_{\\mathbb R^3} \\Bigl[(\\hat T_{\\mathbf R} f)(\\mathbf r)\\Bigr]^* \\, (\\hat T_{\\mathbf R} g)(\\mathbf r) \\, d^3r \\nonumber\\&= \\int_{\\mathbb R^3} f^"
+        - emphasis [ref=e1158]: "(\\mathbf r + \\mathbf R) \\, g(\\mathbf r + \\mathbf R) \\, d^3r \\nonumber\\&= \\int_{\\mathbb R^3} f^"
+        - text: "(\\mathbf u) \\, g(\\mathbf u) \\, d^3u \\quad \\text{(substituting } \\mathbf u = \\mathbf r + \\mathbf R,\\; d^3u = d^3r) \\nonumber\\&= \\langle f \\mid g \\rangle. \\end{align}"
+      - paragraph [ref=e1159]:
+        - text: So
+        - img [ref=e1161]
+        - text: preserves inner products. In particular it preserves norms (
+        - img [ref=e1176]
+        - text: ), so it is
+        - strong [ref=e1206]: unitary
+        - text: ":"
+      - img [ref=e1208]
+      - heading "Step 3. commutes with" [level=3] [ref=e1274]:
+        - text: Step 3.
+        - img [ref=e1276]
+        - text: commutes with
+        - img [ref=e1291]
+      - paragraph [ref=e1300]:
+        - text: Compute
+        - img [ref=e1302]
+        - text: for an arbitrary smooth
+        - img [ref=e1325]
+        - text: . The Hamiltonian in the Born–Oppenheimer picture (chapter 01) is
+      - img [ref=e1331]
+      - paragraph [ref=e1368]:
+        - text: where
+        - img [ref=e1370]
+        - text: is the total (ionic + Hartree + xc) one-electron potential. By the
+        - strong [ref=e1382]: crystal periodicity
+        - img [ref=e1384]:
+          - link [ref=e1387] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch-translation"
+        - text: ","
+        - img [ref=e1395]
+        - text: for every
+        - img [ref=e1424]
+        - text: .
+      - paragraph [ref=e1430]: "Apply the two operators in succession:"
+      - paragraph [ref=e1431]:
+        - img [ref=e1433]:
+          - generic [ref=e1437]:
+            - img [ref=e1438]
+            - img [ref=e1622]
+      - paragraph [ref=e1630]:
+        - text: The gradient
+        - img [ref=e1632]
+        - text: in the last line is taken with respect to
+        - img [ref=e1638]
+        - text: ; substituting
+        - img [ref=e1645]
+        - text: leaves
+        - img [ref=e1662]
+        - text: ", so"
+      - img [ref=e1703]
+      - paragraph [ref=e1829]: "The two operators therefore commute:"
+      - img [ref=e1831]
+      - heading "Step 4. and can be simultaneously diagonalised" [level=3] [ref=e1881]:
+        - text: Step 4.
+        - img [ref=e1883]
+        - text: and
+        - img [ref=e1898]
+        - text: can be simultaneously diagonalised
+      - paragraph [ref=e1907]:
+        - text: Two commuting self-adjoint operators on a Hilbert space can be brought to a common diagonal form. (Standard result; the operators have a joint spectral measure.) So there exists a complete orthonormal basis of states that are eigenstates of
+        - emphasis [ref=e1908]: "bot`h"
+        - text: ’
+        - img [ref=e1910]
+        - text: and
+        - img [ref=e1925]
+        - text: simultaneously. We will call these basis states
+        - img [ref=e1935]
+        - text: .
+      - heading "Step 5. The eigenvalues of are phase factors" [level=3] [ref=e1940]:
+        - text: Step 5. The eigenvalues of
+        - img [ref=e1942]
+        - text: are phase factors
+      - paragraph [ref=e1956]:
+        - text: "The group of Bravais translations is abelian:"
+        - img [ref=e1958]
+        - text: . The eigenvalues of a unitary representation of an abelian group are one-dimensional, i.e. complex numbers of unit modulus. We therefore write
+      - img [ref=e2035]
+      - paragraph [ref=e2086]:
+        - text: The map
+        - img [ref=e2088]
+        - text: is a group homomorphism
+        - img [ref=e2106]
+        - text: ":"
+      - img [ref=e2126]
+      - paragraph [ref=e2171]:
+        - text: The most general such homomorphism is
+        - img [ref=e2173]
+        - text: for some fixed vector
+        - img [ref=e2202]
+        - text: (think of
+        - img [ref=e2217]
+        - text: as the “Fourier transform” of the homomorphism, with the constraint
+        - img [ref=e2224]
+        - text: for every lattice
+        - img [ref=e2246]
+        - text: fixing
+        - img [ref=e2253]
+        - text: only up to reciprocal-lattice additions).
+      - paragraph [ref=e2259]:
+        - text: So the eigenstates of
+        - img [ref=e2261]
+        - text: satisfy
+      - img [ref=e2276]
+      - paragraph [ref=e2332]:
+        - text: This is sometimes called the
+        - emphasis [ref=e2333]: Bloch condition
+        - text: .
+      - heading "Step 6. Define the cell-periodic function" [level=3] [ref=e2334]:
+        - text: Step 6. Define the cell-periodic function
+        - img [ref=e2336]
+      - paragraph [ref=e2346]: Define
+      - img [ref=e2348]
+      - paragraph [ref=e2397]:
+        - text: Equation
+        - img [ref=e2399]:
+          - link [ref=e2402] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch"
+        - text: is just a rearrangement of
+        - img [ref=e2410]:
+          - link [ref=e2413] [cursor=pointer]:
+            - /url: "#"
+        - text: ; the work is to show that
+        - img [ref=e2423]
+        - text: inherits the lattice periodicity.
+      - paragraph [ref=e2433]:
+        - text: Compute
+        - img [ref=e2435]
+        - text: "at a translated point:"
+      - paragraph [ref=e2445]:
+        - img [ref=e2447]:
+          - generic [ref=e2451]:
+            - img [ref=e2452]:
+              - link [ref=e2587] [cursor=pointer]:
+                - /url: "#"
+            - img [ref=e2645]
+      - paragraph [ref=e2653]: The two phase factors cancel exactly, and we have
+      - img [ref=e2655]
+      - paragraph [ref=e2707]:
+        - text: This is
+        - img [ref=e2709]:
+          - link [ref=e2712] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch-periodic"
+        - text: ", and it completes the proof: the eigenfunction factorises as"
+        - img [ref=e2720]
+        - text: with
+        - img [ref=e2763]
+        - text: cell- periodic.
+        - img [ref=e2774]
+      - blockquote [ref=e2779]:
+        - paragraph [ref=e2780]:
+          - strong [ref=e2781]: Note.
+          - text: The crystal momentum
+          - img [ref=e2783]
+          - text: "is defined only modulo a reciprocal-lattice vector: if"
+          - img [ref=e2790]
+          - text: is a reciprocal-lattice vector, then
+          - img [ref=e2797]
+          - text: for every direct lattice
+          - img [ref=e2819]
+          - text: ", so"
+          - img [ref=e2826]
+          - text: and
+          - img [ref=e2833]
+          - text: satisfy the same Bloch condition
+          - img [ref=e2845]:
+            - link [ref=e2848] [cursor=pointer]:
+              - /url: "#"
+          - text: . The
+          - emphasis [ref=e2857]: unique
+          - text: representative of
+          - img [ref=e2859]
+          - text: is therefore chosen inside the first Brillouin zone.
+      - heading "7.4 The Brillouin zone" [level=2] [ref=e2865]
+      - heading "7.4.1 The reciprocal lattice" [level=3] [ref=e2866]
+      - paragraph [ref=e2867]:
+        - text: The set of vectors
+        - img [ref=e2869]
+        - text: for which
+        - img [ref=e2877]
+        - text: for every direct-lattice vector
+        - img [ref=e2899]
+        - text: is itself a Bravais lattice, the
+        - strong [ref=e2905]: reciprocal lattice
+        - text: . If the direct lattice has primitive vectors
+        - img [ref=e2907]
+        - text: ", the reciprocal lattice has primitive vectors"
+        - img [ref=e2933]
+        - text: defined by
+      - img [ref=e2959]
+      - paragraph [ref=e2992]: An explicit construction is
+      - img [ref=e2994]
+      - paragraph [ref=e3079]:
+        - text: Every reciprocal-lattice vector is an integer combination
+        - img [ref=e3081]
+        - text: with
+        - img [ref=e3118]
+        - text: . The volume of the reciprocal primitive cell is
+      - img [ref=e3137]
+      - paragraph [ref=e3202]:
+        - text: where
+        - img [ref=e3204]
+        - text: is the direct-lattice primitive-cell volume.
+      - heading "7.4.2 The first Brillouin zone" [level=3] [ref=e3243]
+      - paragraph [ref=e3244]:
+        - text: The
+        - strong [ref=e3245]: first Brillouin zone
+        - text: "(1st BZ) is the Wigner–Seitz cell of the reciprocal lattice: the set of points in reciprocal space that are closer to the origin than to any other reciprocal-lattice point. Its boundary is built from the perpendicular bisector planes of the shortest"
+        - img [ref=e3247]
+        - text: vectors. Formally,
+      - img [ref=e3254]
+      - paragraph [ref=e3346]:
+        - text: Every physically distinct crystal momentum is represented exactly once in the 1st BZ, so the “sum over
+        - img [ref=e3348]
+        - text: ” in
+        - img [ref=e3355]:
+          - link [ref=e3358] [cursor=pointer]:
+            - /url: "#"
+        - text: runs over the 1st BZ.
+      - heading "7.4.3 High-symmetry points for the FCC lattice" [level=3] [ref=e3367]
+      - paragraph [ref=e3368]:
+        - text: As an example, the reciprocal lattice of a face-centred cubic (FCC) direct lattice is body-centred cubic (BCC). The primitive vectors of the FCC lattice with conventional cubic parameter
+        - img [ref=e3370]
+        - text: are
+      - img [ref=e3376]
+      - paragraph [ref=e3469]:
+        - text: Equation
+        - img [ref=e3471]:
+          - link [ref=e3474] [cursor=pointer]:
+            - /url: "#"
+        - text: gives the reciprocal primitive vectors
+      - img [ref=e3484]
+      - paragraph [ref=e3592]:
+        - text: which span a BCC lattice. The shortest
+        - img [ref=e3594]
+        - text: vectors are
+        - img [ref=e3601]
+        - text: and permutations with sign, with length
+        - img [ref=e3631]
+        - text: . The 1st BZ of FCC is therefore a
+        - emphasis [ref=e3651]: truncated octahedron
+        - text: ", bounded by:"
+      - list [ref=e3652]:
+        - listitem [ref=e3653]:
+          - strong [ref=e3654]: 6 square faces
+          - text: at
+          - img [ref=e3656]
+          - text: and permutations (perpendicular bisectors of
+          - img [ref=e3686]
+          - text: and permutations);
+        - listitem [ref=e3720]:
+          - strong [ref=e3721]: 8 hexagonal faces
+          - text: at
+          - img [ref=e3723]
+          - text: and permutations (perpendicular bisectors of
+          - img [ref=e3750]
+          - text: ).
+      - paragraph [ref=e3788]:
+        - text: The high-symmetry points and lines used to plot FCC band structures (Setyawan–Curtarolo convention) are listed below. We give Cartesian coordinates in units of
+        - img [ref=e3790]
+        - text: ; the actual Cartesian coordinate is the value in the table multiplied by
+        - img [ref=e3803]
+        - text: .
+      - table [ref=e3815]:
+        - rowgroup [ref=e3816]:
+          - row "Label Cartesian (in ) Multiplicity Description" [ref=e3817]:
+            - columnheader "Label" [ref=e3818]
+            - columnheader "Cartesian (in )" [ref=e3819]:
+              - text: Cartesian (in
+              - img [ref=e3821]
+              - text: )
+            - columnheader "Multiplicity" [ref=e3833]
+            - columnheader "Description" [ref=e3834]
+        - rowgroup [ref=e3835]:
+          - row "1 Centre of the BZ" [ref=e3836]:
+            - cell [ref=e3837]:
+              - img [ref=e3839]
+            - cell [ref=e3844]:
+              - img [ref=e3846]
+            - cell "1" [ref=e3863]
+            - cell "Centre of the BZ" [ref=e3864]
+          - row "6 Centre of a square face" [ref=e3865]:
+            - cell [ref=e3866]:
+              - img [ref=e3868]
+            - cell [ref=e3873]:
+              - img [ref=e3875]
+            - cell "6" [ref=e3892]
+            - cell "Centre of a square face" [ref=e3893]
+          - row "8 Centre of a hexagonal face" [ref=e3894]:
+            - cell [ref=e3895]:
+              - img [ref=e3897]
+            - cell [ref=e3902]:
+              - img [ref=e3904]
+            - cell "8" [ref=e3936]
+            - cell "Centre of a hexagonal face" [ref=e3937]
+          - 'row "24 Vertex: 2 hexagons + 1 square meet" [ref=e3938]':
+            - cell [ref=e3939]:
+              - img [ref=e3941]
+            - cell [ref=e3946]:
+              - img [ref=e3948]
+            - cell "24" [ref=e3970]
+            - 'cell "Vertex: 2 hexagons + 1 square meet" [ref=e3971]'
+          - row "24 Midpoint of a hex–hex edge" [ref=e3972]:
+            - cell [ref=e3973]:
+              - img [ref=e3975]
+            - cell [ref=e3980]:
+              - img [ref=e3982]
+            - cell "24" [ref=e4009]
+            - cell "Midpoint of a hex–hex edge" [ref=e4010]
+          - row "24 Midpoint of an – edge" [ref=e4011]:
+            - cell [ref=e4012]:
+              - img [ref=e4014]
+            - cell [ref=e4019]:
+              - img [ref=e4021]
+            - cell "24" [ref=e4053]
+            - cell "Midpoint of an – edge" [ref=e4054]:
+              - text: Midpoint of an
+              - img [ref=e4056]
+              - text: –
+              - img [ref=e4062]
+              - text: edge
+      - paragraph [ref=e4067]: "The standard band-structure path traces the irreducible BZ:"
+      - img [ref=e4069]
+      - paragraph [ref=e4100]:
+        - text: The path
+        - img [ref=e4102]
+        - text: –
+        - img [ref=e4108]
+        - text: –
+        - img [ref=e4114]
+        - text: –
+        - img [ref=e4120]
+        - text: –
+        - img [ref=e4126]
+        - text: visits the square face centre, a vertex, the edge midpoint between two hexagonal faces, and back to the centre. The path
+        - img [ref=e4132]
+        - text: –
+        - img [ref=e4138]
+        - text: –
+        - img [ref=e4144]
+        - text: visits the hexagonal face centre and returns to a vertex.
+      - blockquote [ref=e4149]:
+        - paragraph [ref=e4150]:
+          - strong [ref=e4151]: Warning.
+          - text: Different authors use different conventions for the high-symmetry labels. The Setyawan–Curtarolo labels above are the ones used by the modern Materials Project and AFLOW databases; older textbooks (Kittel, Ashcroft & Mermin) sometimes use a different symbol for
+          - img [ref=e4153]
+          - text: . Always check the convention when reading a band-structure plot from the literature.
+      - heading "7.5 Plane-wave basis" [level=2] [ref=e4158]
+      - heading "7.5.1 The plane-wave expansion" [level=3] [ref=e4159]
+      - paragraph [ref=e4160]:
+        - text: Equation
+        - img [ref=e4162]:
+          - link [ref=e4165] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch-periodic"
+        - text: says that
+        - img [ref=e4173]
+        - text: "is cell-periodic. Any cell-periodic function can be expanded in plane waves whose wavevectors are reciprocal-lattice vectors:"
+      - img [ref=e4186]
+      - paragraph [ref=e4257]:
+        - text: Here
+        - img [ref=e4259]
+        - text: is the crystal volume (taken to infinity in the BvK formalism) and the sum runs over all reciprocal-lattice vectors. The
+        - img [ref=e4265]
+        - text: is a normalisation; the precise form depends on the convention.
+      - paragraph [ref=e4280]:
+        - text: Substituting
+        - img [ref=e4282]:
+          - link [ref=e4285] [cursor=pointer]:
+            - /url: "#"
+        - text: into
+        - img [ref=e4295]:
+          - link [ref=e4298] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch"
+        - text: ":"
+      - img [ref=e4306]
+      - paragraph [ref=e4386]:
+        - text: The wavefunction is a linear combination of plane waves with wavevectors
+        - img [ref=e4388]
+        - text: ", one per reciprocal-lattice vector. In a basis-set language (see"
+        - link "chapter 06" [ref=e4399] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: for the broader context), the
+        - strong [ref=e4400]: plane-wave basis
+        - text: is the discrete set
+      - img [ref=e4402]
+      - heading "7.5.2 The plane-wave Hamiltonian" [level=3] [ref=e4472]
+      - paragraph [ref=e4473]:
+        - text: We seek the matrix elements of
+        - img [ref=e4475]
+        - text: in the basis
+        - img [ref=e4485]:
+          - link [ref=e4488] [cursor=pointer]:
+            - /url: "#"
+        - text: . For a one-electron Hamiltonian
+        - img [ref=e4498]
+        - text: with periodic
+        - img [ref=e4535]
+        - text: ":"
+      - paragraph [ref=e4540]:
+        - img [ref=e4542]:
+          - generic [ref=e4546]:
+            - img [ref=e4547]
+            - img [ref=e4750]
+      - paragraph [ref=e4758]: where
+      - img [ref=e4760]
+      - paragraph [ref=e4836]:
+        - text: is the Fourier transform of the
+        - emphasis [ref=e4837]: "cell-periodi`c"
+        - text: ’ potential, with the integral restricted to a single primitive cell (or any other cell- shaped domain) of volume
+        - img [ref=e4839]
+        - text: .
+      - paragraph [ref=e4850]:
+        - text: The matrix form of
+        - img [ref=e4852]
+        - text: in the plane-wave basis is therefore
+      - img [ref=e4862]
+      - paragraph [ref=e4957]: "Two structural facts to notice:"
+      - list [ref=e4958]:
+        - listitem [ref=e4959]:
+          - strong [ref=e4960]:
+            - text: The kinetic term is diagonal in
+            - img [ref=e4962]
+          - text: — it depends only on
+          - img [ref=e4969]
+          - text: ", with no coupling between different"
+          - img [ref=e4988]
+          - text: values. This is the magic of plane waves.
+        - listitem [ref=e4994]:
+          - strong [ref=e4995]:
+            - text: The potential term is a Toeplitz-like matrix in
+            - img [ref=e4997]
+          - text: — it depends only on the
+          - emphasis [ref=e5003]: difference
+          - img [ref=e5005]
+          - text: ", and is therefore a circulant (in the infinite limit) and a banded matrix (once truncated)."
+      - paragraph [ref=e5019]:
+        - text: The full Kohn–Sham Hamiltonian of
+        - link "chapter 04" [ref=e5020] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-04/
+        - text: "is just $H_\\text{KS}(\\mathbf k) = \\tfrac{1}{2}|\\mathbf k + \\mathbf G|^2 \\delta_{\\mathbf G \\mathbf G’} + V_{\\text{eff}}"
+        - link "\\rho" [ref=e5021] [cursor=pointer]:
+          - /url: "\\mathbf G' -\n\\mathbf G"
+        - img [ref=e5023]
+        - text: "V_\\text{eff}$ the (self-consistent) effective potential. The plane-wave structure is unchanged."
+      - heading "7.5.3 The kinetic-energy cutoff" [level=3] [ref=e5036]
+      - paragraph [ref=e5037]:
+        - text: The infinite basis
+        - img [ref=e5039]:
+          - link [ref=e5042] [cursor=pointer]:
+            - /url: "#"
+        - text: "must be truncated for numerical work. The standard truncation is a kinetic-energy cutoff:"
+      - img [ref=e5052]
+      - paragraph [ref=e5090]:
+        - text: Only those
+        - img [ref=e5092]
+        - text: for which
+        - img [ref=e5099]:
+          - link [ref=e5102] [cursor=pointer]:
+            - /url: "#"
+        - text: holds are included in the basis; the rest are dropped. The truncated basis is finite, the Hamiltonian
+        - img [ref=e5112]:
+          - link [ref=e5115] [cursor=pointer]:
+            - /url: "#"
+        - text: becomes a finite matrix, and the eigenvalue problem
+      - img [ref=e5125]
+      - paragraph [ref=e5168]: is solved by standard linear algebra.
+      - blockquote [ref=e5169]:
+        - paragraph [ref=e5170]:
+          - strong [ref=e5171]: Tip.
+          - text: The cutoff
+          - img [ref=e5173]
+          - text: is the single most important numerical parameter in a plane-wave calculation. Total energies converge to the infinite-basis limit as
+          - img [ref=e5184]
+          - text: ", and the convergence rate depends on the smoothness of the potential: smooth (e.g. pseudo-) potentials converge exponentially, all-electron potentials converge only polynomially. This is one of the central reasons that"
+          - link "chapter 08" [ref=e5198] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: is about pseudopotentials.
+      - paragraph [ref=e5199]:
+        - text: For a 1-D lattice with lattice constant
+        - img [ref=e5201]
+        - text: ", the cutoff"
+        - img [ref=e5207]:
+          - link [ref=e5210] [cursor=pointer]:
+            - /url: "#"
+        - text: becomes
+      - img [ref=e5220]
+      - paragraph [ref=e5272]:
+        - text: If we use
+        - img [ref=e5274]
+        - text: plane waves centred on the origin, the cutoff is set by the highest
+        - img [ref=e5284]
+        - text: value,
+        - img [ref=e5294]
+        - text: . For
+        - img [ref=e5347]
+        - text: plane waves and
+        - img [ref=e5362]
+        - text: bohr, the cutoff is
+        - img [ref=e5372]
+        - text: "Hartree. This is more than enough to converge the lowest four valence bands for the gentle potential of §7.7. ## 7.6 k-point sampling"
+      - heading "7.6.1 BZ integrals as sums" [level=3] [ref=e5449]
+      - paragraph [ref=e5450]:
+        - text: Bloch’s theorem
+        - img [ref=e5452]:
+          - link [ref=e5455] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch"
+        - text: reduces every state of the crystal to a label
+        - img [ref=e5463]
+        - text: with
+        - img [ref=e5478]
+        - text: in the 1st BZ. Every observable that sums over filled states becomes an integral over
+        - img [ref=e5485]
+        - text: ":"
+      - img [ref=e5492]
+      - paragraph [ref=e5565]:
+        - text: The prefactor
+        - img [ref=e5567]
+        - text: ensures one state per
+        - img [ref=e5593]
+        - text: per cell.
+      - paragraph [ref=e5614]:
+        - text: The BvK boundary conditions
+        - img [ref=e5616]:
+          - link [ref=e5619] [cursor=pointer]:
+            - /url: "#"
+        - text: discretise
+        - img [ref=e5629]
+        - text: on a uniform mesh. With
+        - img [ref=e5636]
+        - text: mesh points along the
+        - img [ref=e5645]
+        - text: "-th reciprocal-lattice direction,"
+      - img [ref=e5651]
+      - paragraph [ref=e5769]:
+        - text: Equation
+        - img [ref=e5771]:
+          - link [ref=e5774] [cursor=pointer]:
+            - /url: "#"
+        - text: is then approximated by a Riemann sum
+      - img [ref=e5784]
+      - paragraph [ref=e5866]:
+        - text: This is the
+        - strong [ref=e5867]: Monkhorst–Pack
+        - text: (MP) mesh, the workhorse of solid-state DFT.
+      - heading "7.6.2 Convergence of the MP sum" [level=3] [ref=e5868]
+      - paragraph [ref=e5869]:
+        - text: The MP sum
+        - img [ref=e5871]:
+          - link [ref=e5874] [cursor=pointer]:
+            - /url: "#"
+        - text: is a midpoint rule for the BZ integral. For a smooth integrand, the discretisation error scales as
+      - text: "\\[\\label{eq:ch-07-mp-error} \\text{error} = O\\!\\left(\\frac{1}{N^2}\\right) \\quad \\text{in 1-D,} \\qquad O\\!\\left(\\frac{1}{N^{2/3}\\right) \\quad \\text{in 3-D,}\\]"
+      - paragraph [ref=e5883]:
+        - text: if the integrand is smooth.
+        - strong [ref=e5884]: Crucially
+        - text: ", the integrand is"
+        - emphasis [ref=e5885]: not
+        - text: "smooth in two cases:"
+      - list [ref=e5886]:
+        - listitem [ref=e5887]:
+          - strong [ref=e5888]: Metals and semiconductors at low temperature.
+          - text: The occupation function
+          - img [ref=e5890]
+          - text: is a step function at
+          - img [ref=e5909]
+          - text: . Bands that cross the Fermi level contribute discontinuously to the sum, and the discretisation error decays only as
+          - img [ref=e5919]
+          - text: instead of
+          - img [ref=e5930]
+          - text: . Insulators, where the step function is away from any band, are fine.
+        - listitem [ref=e5943]:
+          - strong [ref=e5944]: Integrands that depend explicitly on the Fermi level.
+          - text: Total energy and forces in metals both depend on
+          - img [ref=e5946]
+          - text: ", and"
+          - img [ref=e5955]
+          - text: is determined by the normalisation of the occupation function. The MP sum oscillates with the mesh position and converges slowly.
+      - heading "7.6.3 Smearing for metals" [level=3] [ref=e5963]
+      - paragraph [ref=e5964]:
+        - text: The standard fix for metallic systems is to
+        - strong [ref=e5965]: smear
+        - text: "the occupation function, replacing the discontinuous step by a smooth approximation. The most common choices are:"
+      - table [ref=e5966]:
+        - rowgroup [ref=e5967]:
+          - row "Scheme Function Tail behaviour Order in" [ref=e5968]:
+            - columnheader "Scheme" [ref=e5969]
+            - columnheader "Function" [ref=e5970]:
+              - text: Function
+              - img [ref=e5972]
+            - columnheader "Tail behaviour" [ref=e5983]
+            - columnheader "Order in" [ref=e5984]:
+              - text: Order in
+              - img [ref=e5986]
+        - rowgroup [ref=e5991]:
+          - row "Fermi–Dirac Exponential Exact" [ref=e5992]:
+            - cell "Fermi–Dirac" [ref=e5993]
+            - cell [ref=e5994]:
+              - img [ref=e5996]
+            - cell "Exponential" [ref=e6039]
+            - cell "Exact" [ref=e6040]
+          - row "Gaussian Exponential —" [ref=e6041]:
+            - cell "Gaussian" [ref=e6042]
+            - cell [ref=e6043]:
+              - img [ref=e6045]
+            - cell "Exponential" [ref=e6083]
+            - cell "—" [ref=e6084]
+          - row "Methfessel–Paxton Hermite polynomial expansion of the step" [ref=e6085]:
+            - cell "Methfessel–Paxton" [ref=e6086]
+            - cell "Hermite polynomial expansion of the step" [ref=e6087]
+            - cell [ref=e6088]:
+              - img [ref=e6090]
+            - cell [ref=e6106]:
+              - img [ref=e6108]
+      - paragraph [ref=e6125]:
+        - text: The
+        - strong [ref=e6126]: Methfessel–Paxton
+        - text: (MP-x) scheme, in particular, replaces the discontinuous step by a finite Hermite expansion of width
+        - img [ref=e6128]
+        - text: in energy. The smearing parameter
+        - img [ref=e6134]
+        - text: is the
+        - emphasis [ref=e6139]: entropy
+        - text: temperature in a fictitious finite-
+        - img [ref=e6141]
+        - text: calculation; the “true”
+        - img [ref=e6147]
+        - text: total energy is obtained by extrapolating
+        - img [ref=e6157]
+        - text: and subtracting the entropy contribution. In practice, MP-x with
+        - img [ref=e6167]
+        - text: or
+        - img [ref=e6177]
+        - text: and a small
+        - img [ref=e6187]
+        - text: (typically 0.01–0.05 Hartree) is enough to make the total energy converge with
+        - img [ref=e6193]
+        - text: in the same
+        - img [ref=e6203]
+        - text: regime as insulators.
+      - paragraph [ref=e6216]:
+        - text: "The downside: the smearing is a"
+        - emphasis [ref=e6217]: fiction
+        - text: . The computed total energy is no longer the ground-state energy but a free energy at finite
+        - img [ref=e6219]
+        - text: . For properties that depend on the
+        - emphasis [ref=e6224]: exact
+        - text: Fermi surface (transport, magnetism at low temperature), smearing introduces systematic errors that have to be checked against a
+        - img [ref=e6226]
+        - text: extrapolation.
+      - blockquote [ref=e6235]:
+        - paragraph [ref=e6236]:
+          - strong [ref=e6237]: Warning.
+          - text: Convergence in the number of k-points is
+          - emphasis [ref=e6238]: not
+          - text: "the same as convergence in the smearing width. The right convergence test for a metal is: total energy vs."
+          - img [ref=e6240]
+          - text: at fixed
+          - img [ref=e6250]
+          - text: ", then total energy vs."
+          - img [ref=e6256]
+          - text: at fixed
+          - img [ref=e6262]
+          - text: .
+      - heading "7.7 Worked example — band structure of a 1-D periodic lattice" [level=2] [ref=e6271]
+      - paragraph [ref=e6272]:
+        - text: "We put the machinery to work on the simplest non-trivial periodic problem: a 1-D lattice of period"
+        - img [ref=e6274]
+        - text: bohr with a cosine potential of depth
+        - img [ref=e6284]
+        - text: Hartree,
+      - img [ref=e6304]
+      - paragraph [ref=e6347]:
+        - text: This is the textbook
+        - strong [ref=e6348]: nearly-free-electron
+        - text: "model: a free electron slightly perturbed by a weak periodic potential. We will:"
+      - list [ref=e6349]:
+        - listitem [ref=e6350]:
+          - text: Build the
+          - img [ref=e6352]
+          - text: plane-wave Hamiltonian at a single
+          - img [ref=e6364]
+          - text: point.
+        - listitem [ref=e6370]: Diagonalise it at 100 k-points uniformly distributed in the 1st Brillouin zone.
+        - listitem [ref=e6371]:
+          - text: Plot the lowest four bands as a function of
+          - img [ref=e6373]
+          - text: .
+      - paragraph [ref=e6378]:
+        - text: The script that does this is
+        - link "dft_notes/python_codes/chapter_07/01-free-electron-bands.py" [ref=e6379] [cursor=pointer]:
+          - /url: /DFT-notes/dft_notes/python_codes/chapter_07/01-free-electron-bands.py
+          - code [ref=e6380]: dft_notes/python_codes/chapter_07/01-free-electron-bands.py
+        - text: ; the plot it produces is in
+        - link "plots/01-free-electron-bands.png" [ref=e6381] [cursor=pointer]:
+          - /url: /DFT-notes/dft_notes/python_codes/chapter_07/plots/01-free-electron-bands.png
+          - code [ref=e6382]: plots/01-free-electron-bands.png
+        - text: .
+      - heading "7.7.1 The Fourier coefficients of the potential" [level=3] [ref=e6383]
+      - paragraph [ref=e6384]:
+        - text: Using the identity
+        - img [ref=e6386]
+        - text: ","
+      - img [ref=e6429]
+      - paragraph [ref=e6528]:
+        - text: The Fourier coefficients of
+        - img [ref=e6530]:
+          - link [ref=e6533] [cursor=pointer]:
+            - /url: "#"
+        - text: on the reciprocal-lattice grid
+        - img [ref=e6543]
+        - text: are
+      - img [ref=e6564]:
+        - generic [ref=e6584]:
+          - img [ref=e6588]
+          - img [ref=e6590]
+      - paragraph [ref=e6658]:
+        - text: There is no
+        - img [ref=e6660]
+        - text: term (the average of
+        - img [ref=e6670]
+        - text: over one period is zero), and there are only two non-zero Fourier components, at
+        - img [ref=e6676]
+        - text: ", each equal to"
+        - img [ref=e6695]
+        - text: . In the matrix
+        - img [ref=e6708]:
+          - link [ref=e6711] [cursor=pointer]:
+            - /url: "#"
+        - text: this means
+      - img [ref=e6721]
+      - paragraph [ref=e6800]:
+        - text: The potential matrix is
+        - strong [ref=e6801]: tridiagonal
+        - text: in the plane-wave basis.
+      - heading "7.7.2 The Hamiltonian" [level=3] [ref=e6802]
+      - paragraph [ref=e6803]:
+        - text: The plane-wave basis vectors are
+        - img [ref=e6805]
+        - text: for
+        - img [ref=e6829]
+        - text: (21 values in total). The full Hamiltonian
+        - img [ref=e6862]:
+          - link [ref=e6865] [cursor=pointer]:
+            - /url: "#"
+        - text: at wavevector
+        - img [ref=e6875]
+        - text: is the
+        - img [ref=e6881]
+        - text: matrix
+      - text: "\\[\\label{eq:ch-07-worked-H} H_{m m'}(k) = \\tfrac{1}{2}\\Bigl(k + m \\cdot 2\\pi/a\\Bigr)^2 \\delta_{m m'} \\;+\\; V_{\\text{per}\\Bigl((m' - m) \\cdot 2\\pi/a\\Bigr).\\]"
+      - paragraph [ref=e6892]:
+        - text: Substituting the explicit
+        - img [ref=e6894]
+        - text: from
+        - img [ref=e6906]:
+          - link [ref=e6909] [cursor=pointer]:
+            - /url: "#"
+        - text: ":"
+      - paragraph [ref=e6918]:
+        - img [ref=e6920]:
+          - generic [ref=e6924]:
+            - img [ref=e6925]:
+              - generic [ref=e7049]:
+                - img [ref=e7053]
+                - img [ref=e7055]
+            - img [ref=e7149]
+      - paragraph [ref=e7157]:
+        - text: The first two rows of this matrix at
+        - img [ref=e7159]
+        - text: "are:"
+      - img [ref=e7169]:
+        - generic [ref=e7188]:
+          - img [ref=e7192]
+          - img [ref=e7451]
+      - paragraph [ref=e7455]:
+        - text: (We have used the symmetry
+        - img [ref=e7457]
+        - text: for real
+        - img [ref=e7493]
+        - text: to combine the two off-diagonals into a single factor of
+        - img [ref=e7499]
+        - text: .)
+      - paragraph [ref=e7509]:
+        - text: The diagonal grows quadratically with
+        - img [ref=e7511]
+        - text: ", and the off-diagonals are the constant"
+        - img [ref=e7521]
+        - text: (the factor of 1/2 from the
+        - img [ref=e7572]
+        - text: of
+        - img [ref=e7586]
+        - text: ). With
+        - img [ref=e7594]
+        - text: bohr, the diagonal spacing at low
+        - img [ref=e7604]
+        - text: is
+        - img [ref=e7610]
+        - text: Hartree. The off-diagonal coupling of
+        - img [ref=e7742]
+        - text: Hartree is much smaller, so the lowest bands are close to the free-electron parabolas, and the higher bands are accurate as well.
+      - heading "7.7.3 The 1-D Brillouin zone" [level=3] [ref=e7750]
+      - paragraph [ref=e7751]:
+        - text: In 1-D, the BZ is the interval
+        - img [ref=e7753]
+        - text: . For
+        - img [ref=e7783]
+        - text: bohr, this is
+        - img [ref=e7793]
+        - text: bohr
+        - img [ref=e7845]
+        - text: ". We sample 100 uniformly-spaced points in this interval:"
+      - img [ref=e7855]
+      - paragraph [ref=e7931]:
+        - text: (The “half-integer” shift places the k-mesh symmetrically about
+        - img [ref=e7933]
+        - text: . It does not matter for the band-structure plot, but it matters for total-energy convergence tests.)
+      - heading "7.7.4 The band gap at the BZ boundary" [level=3] [ref=e7942]
+      - paragraph [ref=e7943]:
+        - text: The interesting physics happens at the BZ boundary
+        - img [ref=e7945]
+        - text: . Consider the 2 × 2 submatrix of
+        - img [ref=e7962]:
+          - link [ref=e7965] [cursor=pointer]:
+            - /url: "#"
+        - text: "spanned by the two free-electron states that are degenerate at the boundary:"
+        - img [ref=e7975]
+        - text: with
+        - img [ref=e7989]
+        - text: and
+        - img [ref=e8004]
+        - text: with
+        - img [ref=e8033]
+        - text: . Both have free-electron energy
+        - img [ref=e8061]
+        - text: . The potential
+        - img [ref=e8086]
+        - text: couples them with matrix element
+        - img [ref=e8098]
+        - text: (it is the only non-zero off-diagonal in this submatrix). The 2 × 2 submatrix is therefore
+      - img [ref=e8111]:
+        - generic [ref=e8113]:
+          - generic [ref=e8162]:
+            - img [ref=e8166]
+            - img [ref=e8186]
+          - generic [ref=e8197]:
+            - img [ref=e8201]
+            - img [ref=e8221]
+      - paragraph [ref=e8225]: The eigenvalues of this 2 × 2 matrix are
+      - img [ref=e8227]
+      - paragraph [ref=e8331]: giving a band gap of
+      - img [ref=e8333]
+      - paragraph [ref=e8389]:
+        - text: "This is the elementary band-gap result for a weak periodic potential: the gap is"
+        - strong [ref=e8390]: twice the absolute value of the leading Fourier coefficient
+        - text: of the potential,
+        - img [ref=e8392]
+        - text: . For the parameters here, the gap is
+        - img [ref=e8410]
+        - text: Hartree
+        - img [ref=e8418]
+        - text: eV — a very large gap, because the potential is
+        - emphasis [ref=e8428]: not
+        - text: weak; it has the same energy scale as the kinetic term at the BZ boundary.
+      - paragraph [ref=e8429]:
+        - text: Numerically, with
+        - img [ref=e8431]
+        - text: "bohr:"
+      - img [ref=e8441]
+      - paragraph [ref=e8507]: The two degenerate levels at the BZ boundary split into
+      - paragraph [ref=e8508]:
+        - img [ref=e8510]:
+          - generic [ref=e8514]:
+            - img [ref=e8515]
+            - img [ref=e8631]
+      - paragraph [ref=e8639]:
+        - text: with a gap of
+        - img [ref=e8641]
+        - text: "Hartree between them. These numbers are checked numerically by the script (see the output of the script’s `if"
+        - strong [ref=e8651]: name
+        - text: == “
+        - strong [ref=e8652]: main
+        - text: ”:’ block).
+      - blockquote [ref=e8653]:
+        - paragraph [ref=e8654]:
+          - strong [ref=e8655]: Tip.
+          - text: Compare the gap
+          - img [ref=e8657]
+          - text: Hartree to the free-electron kinetic energy at the boundary,
+          - img [ref=e8674]
+          - text: Hartree. The gap is
+          - emphasis [ref=e8706]: larger
+          - text: than the kinetic energy. In a “weak-potential” limit, the gap would be much smaller than the kinetic energy, and the band structure would look like a free-electron parabola with a small gap opening at the BZ boundary. The cosine potential here is
+          - emphasis [ref=e8707]: strong
+          - text: — the gap is big, the lowest band is significantly distorted from a parabola, and the higher bands are no longer free-electron-like.
+      - heading "7.7.5 The band-structure plot" [level=3] [ref=e8708]
+      - paragraph [ref=e8709]:
+        - text: The figure below shows the first four bands
+        - img [ref=e8711]
+        - text: for
+        - img [ref=e8726]
+        - text: . The vertical dashed lines mark the BZ boundaries. The free-electron parabolas
+        - img [ref=e8756]
+        - text: for
+        - img [ref=e8791]
+        - text: "are shown in light grey for comparison. Note:"
+      - list [ref=e8816]:
+        - listitem [ref=e8817]:
+          - strong [ref=e8818]: Band 1
+          - text: (coral) starts negative at
+          - img [ref=e8820]
+          - text: (the lower branch of
+          - img [ref=e8837]:
+            - link [ref=e8840] [cursor=pointer]:
+              - /url: "#"
+          - text: ) and has a maximum at
+          - img [ref=e8850]
+          - text: close to
+          - img [ref=e8860]
+          - text: . The band is
+          - emphasis [ref=e8865]: not
+          - text: a parabola — the periodic potential has strongly renormalised it.
+        - listitem [ref=e8866]:
+          - strong [ref=e8867]: Band 2
+          - text: (amber) starts at
+          - img [ref=e8869]
+          - text: Hartree at the BZ boundary and dips toward a minimum at
+          - img [ref=e8897]
+          - text: .
+        - listitem [ref=e8906]:
+          - strong [ref=e8907]: Bands 3 and 4
+          - text: (teal and active coral) are higher-lying bands that are less perturbed by the cosine potential (which has only one non-trivial Fourier component).
+      - paragraph [ref=e8908]:
+        - 'img "Free-electron band structure of a 1-D lattice with $V(x) = -0.5 \\cos(2\\pi x/a)$ and $a = 5$ bohr. The first four bands are shown in colour; the free-electron parabolas $\\tfrac{1}{2}(k + m \\cdot 2\\pi/a)^2$ for $m = 0, -1, 1, -2$ are shown in light grey." [ref=e8909]'
+      - paragraph [ref=e8910]: The relevant code is reproduced below; the script is the source of truth.
+      - code [ref=e8914]: "# dft_notes/python_codes/chapter_07/01-free-electron-bands.py import os import numpy as np import matplotlib matplotlib.use(\"Agg\") import matplotlib.pyplot as plt # --- Parameters -------------------------------------------------------- A = 5.0 # lattice constant, bohr V0 = -0.5 # potential depth, Hartree N_PW = 21 # number of plane waves N_K = 100 # number of k-points in the 1st BZ B = 2 * np.pi / A # reciprocal lattice constant # --- Reciprocal lattice ------------------------------------------------ m_vals = np.arange(-(N_PW // 2), N_PW // 2 + 1) # -10..+10 G_vals = m_vals * B # 21 G values # --- k-mesh in the 1st Brillouin zone ---------------------------------- k_vals = np.linspace(-np.pi / A, np.pi / A, N_K, endpoint=False) # --- Fourier coefficients of V(x) -------------------------------------- # V(x) = -0.5 cos(2pi x / a) ==> V(G=+/- 2pi/a) = -0.25 V_GG = np.zeros((N_PW, N_PW)) for i in range(N_PW): for j in range(N_PW): d = m_vals[i] - m_vals[j] if d == 1: V_GG[i, j] = -0.25 # G_i = G_j + 2pi/a elif d == -1: V_GG[i, j] = -0.25 # G_i = G_j - 2pi/a # else V_GG[i, j] = 0 (already) # --- Diagonalise at every k-point -------------------------------------- bands = np.zeros((N_K, N_PW)) for ik, k in enumerate(k_vals): H_kin = 0.5 * (k + G_vals) ** 2 # diagonal kinetic H = np.diag(H_kin) + V_GG bands[ik, :] = np.linalg.eigvalsh(H) # Hermitian -> real evals # --- Plot the first 4 bands ------------------------------------------- fig, ax = plt.subplots(figsize=(8, 6)) palette = [\"#cc785c\", \"#e8a55a\", \"#5db8a6\", \"#a9583e\"] for n in range(4): ax.plot(k_vals * A / np.pi, bands[:, n], color=palette[n], lw=2.0, label=rf\"band {n + 1}\") # Reference free-electron parabolas for m in (0, -1, 1, -2): ax.plot(k_vals * A / np.pi, 0.5 * (k_vals + m * B) ** 2, color=\"#a09d96\", lw=0.7, alpha=0.4) ax.axvline(-1.0, color=\"#3d3d3a\", lw=0.8, ls=\"--\", alpha=0.5) ax.axvline(+1.0, color=\"#3d3d3a\", lw=0.8, ls=\"--\", alpha=0.5) ax.set_xlabel(r\"$k a / \\pi$\") ax.set_ylabel(r\"$\\varepsilon_n(k)$ (Hartree)\") ax.set_title(\"1-D band structure, $a = 5$ bohr, $V(x) = -0.5 \\cos(2\\pi x/a)$\") ax.legend(frameon=False) ax.grid(alpha=0.3) fig.tight_layout() # --- Save the plot ----------------------------------------------------- here = os.path.dirname(os.path.abspath(__file__)) plots_dir = os.path.join(here, \"plots\") os.makedirs(plots_dir, exist_ok=True) out = os.path.join(plots_dir, \"01-free-electron-bands.png\") fig.savefig(out, dpi=150, bbox_inches=\"tight\") print(f\"Wrote {out}\")"
+      - blockquote [ref=e8915]:
+        - paragraph [ref=e8916]:
+          - strong [ref=e8917]: Note.
+          - text: The matrix is built and diagonalised in a single Python loop over the 100 k-points. The wall-clock time is well under a second on a laptop; a serial Python implementation is fast enough for this system. A production plane-wave code vectorises the inner loop and parallelises over k-points; the algorithm is unchanged.
+      - heading "7.8 Workflow diagram" [level=2] [ref=e8918]
+      - paragraph [ref=e8919]: The end-to-end workflow of a plane-wave, periodic-boundary DFT calculation is summarised below.
+      - figure [ref=e8921]:
+        - code [ref=e8922]:
+          - document [ref=e8923]:
+            - generic [ref=e8925]:
+              - generic [ref=e8931]:
+                - generic [ref=e8935]: "No"
+                - generic [ref=e8939]: "Yes"
+              - generic [ref=e8940]:
+                - generic [ref=e8946]: Choose crystal structurelattice vectors a₁, a₂, a₃
+                - generic [ref=e8952]: Compute reciprocal latticeb₁, b₂, b₃
+                - generic [ref=e8958]: Set BvK supercellN₁ × N₂ × N₃ cells
+                - generic [ref=e8964]: Build k-point meshMonkhorst–Pack N₁×N₂×N₃
+                - generic [ref=e8969]: Choose kinetic cutoff E_cut
+                - generic [ref=e8975]: Build plane-wave basis|k+G|² ≤ E_cut
+                - generic [ref=e8981]: For each k-point:build H(k) in PW basis
+                - generic [ref=e8987]: Diagonalise H(k)get εₙₖ, cₙₖ
+                - generic [ref=e8993]: Build density ρ(r)sum over occupied bands
+                - generic [ref=e8999]: Build V_eff[ρ]Hartree + xc + external
+                - generic [ref=e9004]: SCF converged?
+                - generic [ref=e9010]: Compute total energy,forces, stress
+                - generic [ref=e9016]: Plot bands alongΓ-X-W-K-Γ-L-W
+        - button "Download this diagram as a PNG" [ref=e9017] [cursor=pointer]:
+          - img [ref=e9018]
+          - generic [ref=e9021]: Download PNG
+      - paragraph [ref=e9022]:
+        - text: The decision node
+        - code [ref=e9023]: "K{SCF converged?}' is the inner loop of every DFT calculation; the surrounding boxes are the *solid-state-specifi"
+        - text: c*’ machinery (BvK supercell, k-point mesh, plane-wave basis, band plotting) that the present chapter introduces.
+      - heading "7.9 Problems" [level=2] [ref=e9024]
+      - group [ref=e9025]:
+        - generic "▸ Problem 1 (easy) — Band gap of a cosine potential" [ref=e9026] [cursor=pointer]
+        - text: A 1-D lattice has lattice constant and a periodic potential with Hartree. 1. Write down the non-zero Fourier coefficients of the potential. 2. Construct the plane-wave Hamiltonian at the BZ boundary in the basis . 3. Diagonalise the matrix and write down the band gap as a function of . (Compare to equation in the worked example.)
+      - group [ref=e9027]:
+        - generic "▸ Show answer" [ref=e9028] [cursor=pointer]
+        - text: "**Part 1.** With , The Fourier coefficients on the reciprocal-lattice grid are therefore For Hartree, Hartree. **Part 2.** At the two free-electron states and are degenerate, with kinetic energy . The potential couples them with matrix element Hartree. The Hamiltonian is **Part 3.** The eigenvalues of this matrix are so the band gap is (For a general cosine amplitude, the gap is ; the sign of decides which band is on top.) The factor of 2 difference between this answer and is the factor of 2 in the cosine decomposition: has Fourier coefficients of at , while has Fourier coefficients of at the same points. The band gap in both cases is ."
+      - group [ref=e9029]:
+        - generic "▸ Problem 2 (medium) — k-point density and BZ volume" [ref=e9030] [cursor=pointer]
+        - text: "A solid has a cubic direct lattice with conventional lattice constant , and the BvK boundary conditions are imposed on a supercell of primitive cells. Show that: 1. The number of allowed k-points in the first Brillouin zone is exactly . 2. The density of k-points (k-points per unit volume of the BZ) is , where is the primitive-cell volume. 3. The sum over k-points, , has the dimensions of times . Use part 2 to convert the sum to a Riemann sum for the BZ integral, , and verify the equivalence."
+      - group [ref=e9031]:
+        - generic "▸ Show answer" [ref=e9032] [cursor=pointer]
+        - text: "**Part 1.** The BvK conditions on a supercell of primitive cells are A Bloch wave satisfies these iff The allowed are therefore a uniform mesh with points along each primitive direction, giving exactly mesh points in the BZ. **Part 2.** The volume of the first Brillouin zone is (from ). The k-point density is But \"density\" should not depend on — in the BvK formalism is a *mes`h*' parameter, not a physical one. The right thing to count is the number of k-points *per unit cell*: k-points live in the first BZ, and the first BZ itself is associated with one primitive cell, so the density of k-points per unit volume of the BZ, when properly normalised, is **Part 3.** Convert the sum to an integral using the spacing in each direction. The volume of one mesh cell is The Riemann sum is then The factor is the same as the one in , and the equality is exact in the limit. In practice the equality is approximate at finite , with the convergence rate ."
+      - group [ref=e9033]:
+        - generic "▸ Problem 3 (hard) — Methfessel–Paxton smearing and the Fermi level" [ref=e9034] [cursor=pointer]
+        - text: In a metallic calculation, the Methfessel–Paxton (MP) smearing scheme replaces the discontinuous Fermi–Dirac occupation at by a smooth function of width in energy. The occupations are where is the physicist's Hermite polynomial, are fixed coefficients, and is the *smearing chemical potential* determined by the constraint 1. Show that the MP occupations sum to for any choice of , by construction. (State which property of the Hermite polynomials makes this work.) 2. Show that the electronic entropy contribution to the free energy is for some smooth function , and identify for (Gaussian smearing). 3. The "true" total energy is where . Explain why the extrapolation converges more rapidly than the original (unsmeared) sum for a metal, and identify the leading-order correction in for MP smearing with .
+      - group [ref=e9035]:
+        - generic "▸ Show answer" [ref=e9036] [cursor=pointer]
+        - text: "**Part 1.** The MP occupation function is constructed so that its integral over all energies equals the number of states below for any . This works because the Hermite polynomials with are odd functions of , and they are orthogonal to the constant function on the real line with the Gaussian weight. The constant term in reproduces the Heaviside-step integral exactly; the odd-Hermite corrections average to zero. The constraint is then a one-dimensional nonlinear equation for at fixed , solvable by Newton iteration or bisection. **Part 2.** The electronic entropy of a Fermi–Dirac distribution is For Gaussian smearing ( ), the occupations are . Inserting into the entropy gives, after a Gaussian integral, (The factor comes from the prefactor of .) In other words, the entropy contribution per state is with . **Part 3.** For an unsmeared metal, the sum converges to the integral only as because of the step at the Fermi surface. With smearing, the integrand is smooth in (the varies on a scale ), so the same mesh approximates the integral to provided the mesh is fine enough to resolve the smoothed function. The remaining error is the *systemati`c*' error from using a smeared occupation instead of the true step function. For (Gaussian smearing), this error is : the leading correction to is quadratic in . For (first-order MP), the leading correction is : the second-order term in the Hermite expansion of the step function exactly cancels the quadratic correction of the Gaussian. (To see this, note that the coefficient is chosen so that the integral of the first-Hermite term is zero; the remaining error comes from the next non-zero term, which is .) A practical strategy: run the calculation with several values of (e.g. Hartree), plot vs. (for ) or vs. (for ), and extrapolate linearly to . The extrapolated value is the total energy."
+      - heading "7.10 Crystal symmetries and the international tables" [level=2] [ref=e9037]
+      - paragraph [ref=e9038]:
+        - text: Up to §7.9 we have used only the
+        - strong [ref=e9039]: translational
+        - text: symmetry of the Bravais lattice
+        - img [ref=e9041]
+        - text: . Real crystals have
+        - emphasis [ref=e9048]: more
+        - text: "symmetry than translations: rotations, reflections, inversions, screws, and glides that map the crystal onto itself. A solid-state DFT code that ignores this extra symmetry does the same calculation"
+        - img [ref=e9050]
+        - text: times over, where
+        - img [ref=e9061]
+        - text: is the order of the point group. For silicon (
+        - img [ref=e9072]
+        - text: ) the speedup is large; for a low-symmetry molecular crystal the savings are smaller but still real. This section is the
+        - emphasis [ref=e9087]: what is the symmetry, and how does it enter the Kohn–Sham equations?
+        - text: "companion to §7.6. ### 7.10.1 The space group"
+      - paragraph [ref=e9088]:
+        - text: A
+        - strong [ref=e9089]: symmetry operation
+        - text: of a crystal is an isometry
+        - img [ref=e9091]
+        - text: of
+        - img [ref=e9097]
+        - text: such that
+      - img [ref=e9107]
+      - paragraph [ref=e9144]:
+        - text: for every Bravais vector
+        - img [ref=e9146]
+        - text: and some pair
+        - img [ref=e9153]
+        - text: of basis atoms. Every element
+        - img [ref=e9167]
+        - text: can be written uniquely in
+        - strong [ref=e9177]: Seitz notation
+      - img [ref=e9179]
+      - paragraph [ref=e9218]:
+        - text: with
+        - img [ref=e9220]
+        - text: a point-group operation and
+        - img [ref=e9236]
+        - text: a translation. The composition rule is
+      - img [ref=e9251]
+      - paragraph [ref=e9327]:
+        - text: If every
+        - img [ref=e9329]
+        - text: in
+        - img [ref=e9336]:
+          - link [ref=e9339] [cursor=pointer]:
+            - /url: "#"
+        - text: is a Bravais vector, the space group is
+        - strong [ref=e9348]: symmorphic
+        - text: ; otherwise
+        - img [ref=e9350]
+        - text: may be a fractional translation, giving a
+        - strong [ref=e9356]: screw axis
+        - text: (
+        - img [ref=e9358]
+        - text: parallel to the rotation axis) or a
+        - strong [ref=e9364]: glide plane
+        - text: (
+        - img [ref=e9366]
+        - text: in the mirror plane). 73 of the 230 space groups are symmorphic; 157 are non-symmorphic.
+      - heading "7.10.2 The 7 crystal systems, 14 Bravais lattices, 32 point groups" [level=3] [ref=e9372]
+      - paragraph [ref=e9373]:
+        - text: A Bravais lattice is classified by the point group that preserves it (the
+        - emphasis [ref=e9374]: holohedry
+        - text: ). There are exactly 7 distinct holohedral point groups, giving 7
+        - strong [ref=e9375]: crystal systems
+        - text: ":"
+      - table [ref=e9376]:
+        - rowgroup [ref=e9377]:
+          - row "Crystal system Holohedral point group (HM) Bravais lattices" [ref=e9378]:
+            - columnheader "Crystal system" [ref=e9379]
+            - columnheader "Holohedral point group (HM)" [ref=e9380]
+            - columnheader "Bravais lattices" [ref=e9381]
+        - rowgroup [ref=e9382]:
+          - row "Triclinic" [ref=e9383]:
+            - cell "Triclinic" [ref=e9384]
+            - cell [ref=e9385]:
+              - img [ref=e9387]
+            - cell [ref=e9396]:
+              - img [ref=e9398]
+          - row "Monoclinic ," [ref=e9405]:
+            - cell "Monoclinic" [ref=e9406]
+            - cell [ref=e9407]:
+              - img [ref=e9409]
+            - cell "," [ref=e9419]:
+              - img [ref=e9421]
+              - text: ","
+              - img [ref=e9429]
+          - row "Orthorhombic , , ," [ref=e9436]:
+            - cell "Orthorhombic" [ref=e9437]
+            - cell [ref=e9438]:
+              - img [ref=e9440]
+            - cell ", , ," [ref=e9449]:
+              - img [ref=e9451]
+              - text: ","
+              - img [ref=e9459]
+              - text: ","
+              - img [ref=e9467]
+              - text: ","
+              - img [ref=e9475]
+          - row "Tetragonal ," [ref=e9482]:
+            - cell "Tetragonal" [ref=e9483]
+            - cell [ref=e9484]:
+              - img [ref=e9486]
+            - cell "," [ref=e9500]:
+              - img [ref=e9502]
+              - text: ","
+              - img [ref=e9510]
+          - row "Trigonal ," [ref=e9517]:
+            - cell "Trigonal" [ref=e9518]
+            - cell [ref=e9519]:
+              - img [ref=e9521]
+            - cell "," [ref=e9532]:
+              - img [ref=e9534]
+              - text: ","
+              - img [ref=e9542]
+          - row "Hexagonal" [ref=e9549]:
+            - cell "Hexagonal" [ref=e9550]
+            - cell [ref=e9551]:
+              - img [ref=e9553]
+            - cell [ref=e9567]:
+              - img [ref=e9569]
+          - row "Cubic , ," [ref=e9576]:
+            - cell "Cubic" [ref=e9577]
+            - cell [ref=e9578]:
+              - img [ref=e9580]
+            - cell ", ," [ref=e9593]:
+              - img [ref=e9595]
+              - text: ","
+              - img [ref=e9603]
+              - text: ","
+              - img [ref=e9611]
+      - paragraph [ref=e9618]:
+        - text: The Pearson symbols encode the centring (
+        - img [ref=e9620]
+        - text: = primitive,
+        - img [ref=e9626]
+        - text: = body-centred,
+        - img [ref=e9632]
+        - text: = face-centred) and the crystal system (lowercase letter).
+      - paragraph [ref=e9637]:
+        - strong [ref=e9638]: Crystallographic restriction theorem.
+        - text: The only rotation orders in 3-D that map a Bravais lattice onto itself are
+        - img [ref=e9640]
+        - text: . A 5-fold axis cannot be a lattice symmetry (it can be a
+        - emphasis [ref=e9665]: local
+        - text: symmetry of a quasicrystal, but not of a 3-D Bravais lattice). With these rotations and the inversion, there are exactly
+        - strong [ref=e9666]: "32"
+        - text: crystallographic point groups.
+      - heading "7.10.3 The 230 space groups" [level=3] [ref=e9667]
+      - paragraph [ref=e9668]:
+        - text: Given a Bravais lattice, a basis set, and a point group, the space group is determined by the
+        - strong [ref=e9669]: Wyckoff positions
+        - text: of the basis atoms. Counting all distinct possibilities gives exactly
+        - strong [ref=e9670]: "230"
+        - text: space groups in 3-D — a theorem proved independently by Schoenflies (1891), Fedorov (1891), and Barlow (1894), and tabulated in the
+        - emphasis [ref=e9671]: International Tables for Crystallography
+        - text: (vol. A, 6th ed., 2016). Each entry includes the space-group number (1–230), Hermann–Mauguin and Schoenflies symbols, the Wyckoff positions, the generators, and the maximal subgroups.
+      - paragraph [ref=e9672]:
+        - text: The
+        - strong [ref=e9673]: Hermann–Mauguin
+        - text: space-group symbol has the form
+      - img [ref=e9675]:
+        - generic [ref=e9677]:
+          - generic [ref=e9699]:
+            - img [ref=e9705]
+            - img [ref=e9707]
+          - generic [ref=e9744]:
+            - img [ref=e9750]
+            - img [ref=e9752]
+          - generic [ref=e9781]:
+            - img [ref=e9787]
+            - img [ref=e9789]
+          - generic [ref=e9810]:
+            - img [ref=e9816]
+            - img [ref=e9818]
+      - paragraph [ref=e9832]:
+        - text: with each position occupied by a
+        - emphasis [ref=e9833]: generator
+        - text: "(a rotation, rotoinversion, screw, mirror, or glide) along a specific crystallographic direction. Examples:"
+      - list [ref=e9834]:
+        - listitem [ref=e9835]:
+          - img [ref=e9837]
+          - text: (No. 19) — primitive orthorhombic, three mutually perpendicular
+          - img [ref=e9858]
+          - text: screws.
+        - listitem [ref=e9866]:
+          - img [ref=e9868]
+          - text: (No. 227) — face-centred cubic, with a diamond glide perpendicular to the
+          - img [ref=e9884]
+          - text: axis. The space group of silicon, diamond, germanium, and most III–V semiconductors.
+        - listitem [ref=e9893]:
+          - img [ref=e9895]
+          - text: (No. 141) — body-centred tetragonal.
+      - paragraph [ref=e9914]:
+        - text: The
+        - strong [ref=e9915]: Schoenflies
+        - text: symbol prefixes the point-group symbol with a superscript index; e.g.
+        - img [ref=e9917]
+        - text: is
+        - img [ref=e9933]
+        - text: in Schoenflies. The 230 space groups include
+        - img [ref=e9944]
+        - text: for the 10 cubic space groups,
+        - img [ref=e9970]
+        - text: for the 4 hexagonal, and so on.
+      - heading "7.10.4 Effect of symmetry on the Kohn–Sham equations" [level=3] [ref=e10001]
+      - paragraph [ref=e10002]:
+        - text: The Bloch eigenfunctions of
+        - img [ref=e10004]:
+          - link [ref=e10007] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch"
+        - text: are eigenstates of
+        - emphasis [ref=e10014]: translations only
+        - text: . The full space group
+        - img [ref=e10016]
+        - text: acts on them too. Apply a symmetry
+        - img [ref=e10023]
+        - text: to a Bloch state
+        - img [ref=e10040]
+        - text: . Since
+        - img [ref=e10053]
+        - text: commutes with
+        - img [ref=e10065]
+        - text: (the analogue of
+        - img [ref=e10075]:
+          - link [ref=e10078] [cursor=pointer]:
+            - /url: "#"
+        - text: for the full space group), the result is again an eigenstate of
+        - img [ref=e10088]
+        - text: ":"
+      - paragraph [ref=e10097]:
+        - img [ref=e10099]:
+          - generic [ref=e10103]:
+            - img [ref=e10104]:
+              - link [ref=e10245] [cursor=pointer]:
+                - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch"
+            - img [ref=e10331]
+      - paragraph [ref=e10339]:
+        - text: using
+        - img [ref=e10341]
+        - text: for
+        - img [ref=e10357]
+        - text: . The function
+        - img [ref=e10373]
+        - text: is a Bloch wave at
+        - img [ref=e10430]
+        - text: with a cell-periodic envelope. We have shown
+      - img [ref=e10439]
+      - paragraph [ref=e10493]:
+        - text: for some band
+        - img [ref=e10495]
+        - text: in the
+        - strong [ref=e10500]: star
+        - text: of
+        - img [ref=e10502]
+        - text: (the orbit
+        - img [ref=e10511]
+        - text: ). The eigenvalues are therefore
+        - strong [ref=e10559]: degenerate in the star
+        - text: of
+        - img [ref=e10561]
+        - text: ":"
+      - img [ref=e10568]
+      - heading "7.10.5 The little group of" [level=3] [ref=e10621]:
+        - text: 7.10.5 The little group of
+        - img [ref=e10623]
+      - paragraph [ref=e10629]:
+        - text: The
+        - strong [ref=e10630]: little group
+        - img [ref=e10632]
+        - text: of
+        - img [ref=e10643]
+        - text: is the subgroup of the point group that leaves
+        - img [ref=e10650]
+        - text: invariant
+        - emphasis [ref=e10656]: modulo
+        - text: "a reciprocal-lattice vector:"
+      - img [ref=e10658]
+      - paragraph [ref=e10739]:
+        - text: The Bloch functions at
+        - img [ref=e10741]
+        - text: transform under a
+        - emphasis [ref=e10747]: representation
+        - text: "of $\\mathcal{G}"
+        - emphasis [ref=e10748]:
+          - text: \mathbf k$. The
+          - strong [ref=e10749]: irreducible representations
+          - text: "(irreps) of $\\mathcal{G}"
+        - text: \mathbf k
+        - img [ref=e10751]
+        - text: \mathbf k$, and the
+        - emphasis [ref=e10784]: dimension
+        - text: of an irrep gives the degeneracy of the band.
+      - paragraph [ref=e10785]:
+        - text: For a generic
+        - img [ref=e10787]
+        - text: "deep inside the BZ, $\\mathcal{G}"
+        - emphasis [ref=e10793]:
+          - text: \mathbf k
+          - img [ref=e10795]
+          - text: "\\{ E \\}"
+          - img [ref=e10833]
+          - text: "\\mathcal{G}"
+        - text: \mathbf k
+        - img [ref=e10953]
+        - text: "O_h$, order 48):"
+      - table [ref=e11078]:
+        - rowgroup [ref=e11079]:
+          - row "Order Max. degeneracy (no SO / with SO)" [ref=e11080]:
+            - columnheader [ref=e11081]:
+              - img [ref=e11083]
+            - columnheader [ref=e11089]:
+              - img [ref=e11091]
+            - columnheader "Order" [ref=e11101]
+            - columnheader "Max. degeneracy (no SO / with SO)" [ref=e11102]
+        - rowgroup [ref=e11103]:
+          - row "48 3 / 4" [ref=e11104]:
+            - cell [ref=e11105]:
+              - img [ref=e11107]
+            - cell [ref=e11128]:
+              - img [ref=e11130]
+            - cell "48" [ref=e11138]
+            - cell "3 / 4" [ref=e11139]
+          - row ", 4 1 / 2" [ref=e11140]:
+            - cell "," [ref=e11141]:
+              - img [ref=e11143]
+              - text: ","
+              - img [ref=e11165]
+            - cell [ref=e11185]:
+              - img [ref=e11187]
+            - cell "4" [ref=e11198]
+            - cell "1 / 2" [ref=e11199]
+          - row "16 2 / 2" [ref=e11200]:
+            - cell [ref=e11201]:
+              - img [ref=e11203]
+            - cell [ref=e11237]:
+              - img [ref=e11239]
+            - cell "16" [ref=e11250]
+            - cell "2 / 2" [ref=e11251]
+          - row ", 6 1 / 2" [ref=e11252]:
+            - cell "," [ref=e11253]:
+              - img [ref=e11255]
+              - text: ","
+              - img [ref=e11277]
+            - cell [ref=e11295]:
+              - img [ref=e11297]
+            - cell "6" [ref=e11308]
+            - cell "1 / 2" [ref=e11309]
+          - row "12 1 / 2" [ref=e11310]:
+            - cell [ref=e11311]:
+              - img [ref=e11313]
+            - cell [ref=e11345]:
+              - img [ref=e11347]
+            - cell "12" [ref=e11358]
+            - cell "1 / 2" [ref=e11359]
+      - paragraph [ref=e11360]:
+        - strong [ref=e11361]: Time-reversal symmetry.
+        - text: If the Hamiltonian is real (no magnetic field, no spin–orbit), the antiunitary operator
+        - img [ref=e11363]
+        - text: (complex conjugation) commutes with
+        - img [ref=e11373]
+        - text: and acts as
+        - img [ref=e11383]
+        - text: ", forcing"
+        - img [ref=e11399]
+        - text: (no further degeneracy since
+        - img [ref=e11427]
+        - text: ). With spin–orbit,
+        - img [ref=e11442]
+        - text: is antiunitary and
+        - img [ref=e11459]
+        - text: ", giving the"
+        - strong [ref=e11473]: Kramers degeneracy
+        - img [ref=e11475]
+        - text: for every
+        - img [ref=e11503]
+        - text: — the little-group irreps of the
+        - strong [ref=e11509]: double group
+        - text: of
+        - img [ref=e11511]
+        - text: are then 2-dimensional at generic
+        - img [ref=e11522]
+        - text: .
+      - heading "7.10.6 The irreducible Brillouin zone" [level=3] [ref=e11528]
+      - paragraph [ref=e11529]:
+        - text: Equation
+        - img [ref=e11531]:
+          - link [ref=e11534] [cursor=pointer]:
+            - /url: "#"
+        - text: says that Bloch states at symmetry-equivalent
+        - img [ref=e11544]
+        - text: have the
+        - emphasis [ref=e11550]: same
+        - text: energy. The BZ integral
+        - img [ref=e11552]:
+          - link [ref=e11555] [cursor=pointer]:
+            - /url: "#"
+        - text: can therefore be restricted to the
+        - strong [ref=e11564]: irreducible Brillouin zone
+        - text: (IBZ), with each IBZ point weighted by
+        - img [ref=e11566]
+        - text: ":"
+      - img [ref=e11590]
+      - paragraph [ref=e11684]:
+        - text: For silicon (point group
+        - img [ref=e11686]
+        - text: ", order 48), a"
+        - img [ref=e11695]
+        - text: MP mesh gives
+        - img [ref=e11709]
+        - text: points in the full BZ. With
+        - img [ref=e11724]
+        - text: symmetry these fold onto 28 distinct IBZ points — a
+        - img [ref=e11733]
+        - text: speedup over the full-BZ calculation. For larger point groups (cubic 48, hexagonal 24) the savings scale with the group order; for orthorhombic (8) they are smaller.
+      - paragraph [ref=e11742]:
+        - text: The detailed tabulation of little-group irreps at every high- symmetry point of
+        - img [ref=e11744]:
+          - link [ref=e11747] [cursor=pointer]:
+            - /url: "#"
+        - text: is in
+        - link "chapter 11" [ref=e11756] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-11/
+        - text: and in standard references like Yu & Cardona,
+        - emphasis [ref=e11757]: Fundamentals of Semiconductors
+        - text: .
+      - heading "7.11 The tetrahedron method for Brillouin-zone integration" [level=2] [ref=e11758]
+      - paragraph [ref=e11759]:
+        - text: The Riemann-sum on a Monkhorst–Pack mesh of §7.6 works well for insulators, but the step discontinuity at the Fermi level of a metal makes the convergence slow. The
+        - strong [ref=e11760]: tetrahedron method
+        - text: is a higher- order quadrature rule that handles the discontinuity analytically.
+      - heading "7.11.1 The problem" [level=3] [ref=e11761]
+      - paragraph [ref=e11762]: The BZ integral we need to compute is
+      - img [ref=e11764]
+      - paragraph [ref=e11836]:
+        - text: with
+        - img [ref=e11838]
+        - text: the Fermi–Dirac occupation (or its smeared cousin) and
+        - img [ref=e11844]
+        - text: a band-resolved observable. At
+        - img [ref=e11857]
+        - text: ","
+        - img [ref=e11867]
+        - text: is a step function with a
+        - emphasis [ref=e11889]: codimension-1
+        - text: discontinuity on the Fermi surface, and a uniform mesh converges only as
+        - img [ref=e11891]
+        - text: along each direction.
+      - paragraph [ref=e11901]:
+        - text: The tetrahedron method (Lehmann & Taut 1972; refined by Blöchl 1994) tiles the BZ with
+        - strong [ref=e11902]: tetrahedra
+        - text: ", linearly interpolates the band energies within each tetrahedron, and integrates the step function"
+        - emphasis [ref=e11903]: analytically
+        - text: . The result is exact for linear bands and converges as
+        - img [ref=e11905]
+        - text: for curved bands — and, with Blöchl’s correction (§7.11.6), as
+        - img [ref=e11926]
+        - text: .
+      - heading "7.11.2 Tiling the BZ with tetrahedra" [level=3] [ref=e11946]
+      - paragraph [ref=e11947]:
+        - text: Start with a Monkhorst–Pack mesh
+        - img [ref=e11949]
+        - text: in the BZ. Group the mesh points into
+        - emphasis [ref=e11978]: cubes
+        - text: ": each cube has 8 vertices. Split each cube into 6 tetrahedra using the"
+        - strong [ref=e11979]: Blöchl splitting
+        - text: . Number the vertices of a cube
+        - img [ref=e11981]
+        - text: with
+        - img [ref=e12003]
+        - text: at one corner,
+        - img [ref=e12013]
+        - text: at the diagonally opposite corner. The 6 tetrahedra are then
+      - img [ref=e12055]
+      - paragraph [ref=e12332]:
+        - text: "The 6 tetrahedra tile the cube exactly: their union is the cube, and they share only faces and edges. A Monkhorst–Pack mesh with"
+        - img [ref=e12334]
+        - text: points per primitive direction gives
+        - img [ref=e12346]
+        - text: tetrahedra per primitive cell.
+      - heading "7.11.3 Linear interpolation within a tetrahedron" [level=3] [ref=e12367]
+      - paragraph [ref=e12368]:
+        - text: Within a single tetrahedron
+        - img [ref=e12370]
+        - text: with vertices
+        - img [ref=e12376]
+        - text: and band energies
+        - img [ref=e12410]
+        - text: ", the band is approximated by the"
+        - emphasis [ref=e12439]: linear
+        - text: function
+      - img [ref=e12441]
+      - paragraph [ref=e12481]:
+        - text: with
+        - img [ref=e12483]
+        - text: fixed by the 4 conditions
+        - img [ref=e12513]
+        - text: . The coefficients are
+      - img [ref=e12536]
+      - paragraph [ref=e12620]:
+        - text: where
+        - img [ref=e12622]
+        - text: is the
+        - img [ref=e12628]
+        - text: matrix of vertex coordinates relative to the centre
+        - img [ref=e12638]
+        - text: ","
+        - img [ref=e12690]
+        - text: is the column vector of vertex energies, and
+        - img [ref=e12696]
+        - text: is the Moore–Penrose pseudoinverse (
+        - img [ref=e12706]
+        - text: is rank 3 because the 4 rows sum to zero). This linear interpolation has error
+        - img [ref=e12712]
+        - text: in the energy.
+      - heading "7.11.4 The Lehmann–Taut formula" [level=3] [ref=e12732]
+      - paragraph [ref=e12733]:
+        - text: The key step is the analytic integration of
+        - img [ref=e12735]
+        - text: over a single tetrahedron, with
+        - img [ref=e12758]
+        - text: linear and
+        - img [ref=e12764]
+        - text: a constant. The result, due to Lehmann & Taut (1972), is
+      - img [ref=e12770]
+      - paragraph [ref=e12889]:
+        - text: where
+        - img [ref=e12891]
+        - text: is the volume of the tetrahedron,
+        - img [ref=e12900]
+        - text: are the four vertex energies (assumed distinct), and the product in the denominator runs over the 3 other vertices. The formula gives the
+        - emphasis [ref=e12908]: volume
+        - text: of the region inside
+        - img [ref=e12910]
+        - text: where the linearly-interpolated band lies below
+        - img [ref=e12916]
+        - text: .
+      - paragraph [ref=e12921]:
+        - strong [ref=e12922]: Derivation.
+        - text: The linear interpolation
+        - img [ref=e12924]:
+          - link [ref=e12927] [cursor=pointer]:
+            - /url: "#"
+        - text: maps
+        - img [ref=e12937]
+        - text: to a tetrahedron
+        - img [ref=e12943]
+        - text: in the 4-D space
+        - img [ref=e12953]
+        - text: ", lying in the hyperplane"
+        - img [ref=e12968]
+        - text: . The condition
+        - img [ref=e12991]
+        - text: intersects this hyperplane in a 3-D region; the integral of
+        - img [ref=e13001]
+        - text: over
+        - img [ref=e13017]
+        - text: is the volume of the part of
+        - img [ref=e13023]
+        - text: that lies below
+        - img [ref=e13033]
+        - text: .
+      - paragraph [ref=e13042]:
+        - text: If exactly one vertex, say
+        - img [ref=e13044]
+        - text: with
+        - img [ref=e13054]
+        - text: ", lies below"
+        - img [ref=e13067]
+        - text: and the other three above, the region is a smaller tetrahedron with volume
+      - img [ref=e13073]
+      - paragraph [ref=e13162]:
+        - text: because the linear interpolation maps the vertex
+        - img [ref=e13164]
+        - text: to a fraction
+        - img [ref=e13174]
+        - text: of the way from
+        - img [ref=e13217]
+        - text: to
+        - img [ref=e13227]
+        - text: ", for each"
+        - img [ref=e13237]
+        - text: ; the volume scales as
+        - img [ref=e13255]
+        - text: .
+      - paragraph [ref=e13320]:
+        - text: The general formula
+        - img [ref=e13322]:
+          - link [ref=e13325] [cursor=pointer]:
+            - /url: "#"
+        - text: sums the 4 such single-vertex contributions, with the Heaviside function
+        - img [ref=e13335]
+        - text: ensuring each is non-zero only when
+        - img [ref=e13354]
+        - text: . The case of
+        - emphasis [ref=e13366]: two
+        - text: vertices below
+        - img [ref=e13368]
+        - text: gives a truncated tetrahedron* (smaller tetrahedron + prism); the symmetric form of
+        - img [ref=e13374]:
+          - link [ref=e13377] [cursor=pointer]:
+            - /url: "#"
+        - text: "correctly accounts for this case by adding the two single-vertex contributions and subtracting the overlap. The formula is a 3-D generalisation of the 1-D Simpson rule: in 1-D, the integral over a triangle is"
+        - img [ref=e13387]
+        - text: .
+      - heading "7.11.5 The integrated density of states" [level=3] [ref=e13431]
+      - paragraph [ref=e13432]:
+        - text: Summing
+        - img [ref=e13434]:
+          - link [ref=e13437] [cursor=pointer]:
+            - /url: "#"
+        - text: over all tetrahedra and all bands, the BZ integral of the step function becomes
+      - img [ref=e13447]
+      - paragraph [ref=e13556]:
+        - text: with
+        - img [ref=e13558]
+        - text: the Lehmann–Taut formula. The DOS is the derivative
+        - img [ref=e13567]
+        - text: ", a sum of"
+        - emphasis [ref=e13591]: piecewise-linear
+        - text: functions of
+        - img [ref=e13593]
+        - text: — one per tetrahedron, per band, with a discontinuity in the derivative at each
+        - img [ref=e13599]
+        - text: . The result is continuous and piecewise-linear, converging to the true DOS as the mesh is refined. The leading error is
+        - img [ref=e13608]
+        - text: "even for metals: the linear-interpolation error is the"
+        - emphasis [ref=e13628]: only
+        - text: error; the step-function discontinuity has been integrated analytically.
+      - heading "7.11.6 Blöchl’s correction" [level=3] [ref=e13629]
+      - paragraph [ref=e13630]:
+        - text: The linear interpolation of
+        - img [ref=e13632]
+        - text: has a leading error of
+        - img [ref=e13645]
+        - text: . Blöchl (1994) showed that this leading error can be subtracted by a
+        - emphasis [ref=e13665]: correction term
+        - text: that uses the second derivative of
+        - img [ref=e13667]
+        - text: at the tetrahedron’s centre.
+      - paragraph [ref=e13672]:
+        - text: Taylor-expand the band around the centre
+        - img [ref=e13674]
+        - text: "of the tetrahedron:"
+      - img [ref=e13685]
+      - paragraph [ref=e13815]:
+        - text: with
+        - img [ref=e13817]
+        - text: the Hessian. The integral of
+        - img [ref=e13823]
+        - text: over
+        - img [ref=e13864]
+        - text: is
+      - img [ref=e13870]
+      - paragraph [ref=e13990]:
+        - text: by the standard formula for the second moment of a uniform distribution on a tetrahedron. Blöchl estimates
+        - img [ref=e13992]
+        - text: from the energies of the
+        - emphasis [ref=e13997]: "four neighbouring tetrahedr`a"
+        - text: ’ that share a face with
+        - img [ref=e13999]
+        - text: — at the
+        - emphasis [ref=e14004]: centroid of the face
+        - text: ", the second derivative can be estimated by a finite-difference formula involving the energies at the face centroid and the two adjacent tetrahedron centres. The result is a correction"
+        - img [ref=e14006]
+        - text: "to the integrated DOS:"
+      - img [ref=e14017]
+      - paragraph [ref=e14079]:
+        - text: With the correction, the linearisation error becomes
+        - img [ref=e14081]
+        - text: instead of
+        - img [ref=e14102]
+        - text: ": the same accuracy with a"
+        - emphasis [ref=e14122]: coarser
+        - text: mesh (typically a factor of 2 fewer points along each direction). The cost is the implementation complexity of tracking tetrahedra and their neighbours.
+      - heading "7.11.7 Comparison with Methfessel–Paxton" [level=3] [ref=e14123]
+      - table [ref=e14124]:
+        - rowgroup [ref=e14125]:
+          - row "Property Tetrahedron (Blöchl) Methfessel–Paxton" [ref=e14126]:
+            - columnheader "Property" [ref=e14127]
+            - columnheader "Tetrahedron (Blöchl)" [ref=e14128]
+            - columnheader "Methfessel–Paxton" [ref=e14129]
+        - rowgroup [ref=e14130]:
+          - row "Free parameters None (width)," [ref=e14131]:
+            - cell "Free parameters" [ref=e14132]
+            - cell "None" [ref=e14133]
+            - cell "(width)," [ref=e14134]:
+              - img [ref=e14136]
+              - text: (width),
+              - img [ref=e14142]
+          - row "Convergence in with correction after smearing" [ref=e14151]:
+            - cell "Convergence in" [ref=e14152]:
+              - text: Convergence in
+              - img [ref=e14154]
+            - cell "with correction" [ref=e14163]:
+              - img [ref=e14165]
+              - text: with correction
+            - cell "after smearing" [ref=e14185]:
+              - img [ref=e14187]
+              - text: after smearing
+          - row "Convergence in N/A for ; for" [ref=e14206]:
+            - cell "Convergence in" [ref=e14207]:
+              - text: Convergence in
+              - img [ref=e14209]
+            - cell "N/A" [ref=e14214]
+            - cell "for ; for" [ref=e14215]:
+              - img [ref=e14217]
+              - text: for
+              - img [ref=e14232]
+              - text: ;
+              - img [ref=e14246]
+              - text: for
+              - img [ref=e14261]
+          - row "ground-state energy Yes (no extrapolation) No (need extrapolation)" [ref=e14274]:
+            - cell "ground-state energy" [ref=e14275]:
+              - img [ref=e14277]
+              - text: ground-state energy
+            - cell "Yes (no extrapolation)" [ref=e14286]
+            - cell "No (need extrapolation)" [ref=e14287]:
+              - text: No (need
+              - img [ref=e14289]
+              - text: extrapolation)
+          - row "Forces Yes, with care Yes, with care" [ref=e14298]:
+            - cell "Forces" [ref=e14299]
+            - cell "Yes, with care" [ref=e14300]
+            - cell "Yes, with care" [ref=e14301]
+          - row "Implementation complexity Medium (tetrahedron bookkeeping) Low (modify occupation)" [ref=e14302]:
+            - cell "Implementation complexity" [ref=e14303]
+            - cell "Medium (tetrahedron bookkeeping)" [ref=e14304]
+            - cell "Low (modify occupation)" [ref=e14305]
+          - row "Wall-clock vs. smeared 1.5–2× 1×" [ref=e14306]:
+            - cell "Wall-clock vs. smeared" [ref=e14307]
+            - cell "1.5–2×" [ref=e14308]
+            - cell "1×" [ref=e14309]
+          - row "Robustness for non-spherical Fermi surfaces Excellent Fair" [ref=e14310]:
+            - cell "Robustness for non-spherical Fermi surfaces" [ref=e14311]
+            - cell "Excellent" [ref=e14312]
+            - cell "Fair" [ref=e14313]
+      - paragraph [ref=e14314]:
+        - strong [ref=e14315]: Bottom line.
+        - text: The tetrahedron method is
+        - emphasis [ref=e14316]: more accurate
+        - text: and
+        - emphasis [ref=e14317]: parameter-free
+        - text: ", but more complex to implement. For a high- throughput calculation (thousands of materials), the extra cost is paid back many times by the elimination of the"
+        - img [ref=e14319]
+        - text: "-extrapolation step."
+      - heading "7.11.8 When to use what" [level=3] [ref=e14324]
+      - list [ref=e14325]:
+        - listitem [ref=e14326]:
+          - strong [ref=e14327]: Insulators
+          - text: ": any method works. The MP mesh converges fast ("
+          - img [ref=e14329]
+          - text: ); tetrahedron is overkill.
+        - listitem [ref=e14348]:
+          - strong [ref=e14349]: Metals, small cell, best total energy
+          - text: ": tetrahedron (Blöchl)."
+        - listitem [ref=e14350]:
+          - strong [ref=e14351]: Metals, DOS plot
+          - text: ": tetrahedron (Blöchl)."
+        - listitem [ref=e14352]:
+          - strong [ref=e14353]:
+            - text: Metals, MD at finite
+            - img [ref=e14355]
+          - text: ": Methfessel–Paxton with"
+          - img [ref=e14361]
+          - text: .
+        - listitem [ref=e14375]:
+          - strong [ref=e14376]: Metals, large supercell, quick SCF
+          - text: ": MP-1 with"
+          - img [ref=e14378]
+          - text: Ry.
+        - listitem [ref=e14390]:
+          - strong [ref=e14391]: Metals, Fermi-surface-specific properties
+          - text: "(transport, nesting, de Haas–van Alphen): the tetrahedron method is significantly more accurate than smearing, because smearing blurs the Fermi surface over a window of width"
+          - img [ref=e14393]
+          - text: .
+      - heading "7.12 k-point convergence in practice" [level=2] [ref=e14398]
+      - paragraph [ref=e14399]: We close with a practical guide to choosing the Monkhorst–Pack mesh for a new calculation. The theory is in §7.6 and §7.11; the practice is here.
+      - heading "7.12.1 The convergence criterion" [level=3] [ref=e14400]
+      - paragraph [ref=e14401]: The standard target for a well-converged solid-state DFT calculation is
+      - img [ref=e14403]
+      - paragraph [ref=e14458]:
+        - text: or
+        - img [ref=e14460]
+        - text: "Hartree/atom. The “per atom” matters: a unit cell with 100 atoms needs only"
+        - img [ref=e14481]
+        - text: of the absolute convergence of a unit cell with 1 atom.
+      - paragraph [ref=e14493]:
+        - text: "For forces:"
+        - img [ref=e14495]
+        - text: eV/Å
+        - img [ref=e14547]
+        - text: "Hartree/bohr. For stresses:"
+        - img [ref=e14566]
+        - text: kbar. For phonons (computed via DFPT,
+        - link "chapter 10" [ref=e14575] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-10/
+        - text: "):"
+        - img [ref=e14577]
+        - text: cm
+        - img [ref=e14585]
+        - text: in frequency.
+      - paragraph [ref=e14594]:
+        - text: Convergence is
+        - emphasis [ref=e14595]: system-dependent
+        - text: . A wide-gap insulator (e.g. NaCl,
+        - img [ref=e14597]
+        - text: eV) converges in
+        - img [ref=e14612]
+        - text: MP mesh; a small-gap semiconductor (InSb,
+        - img [ref=e14628]
+        - text: eV) in
+        - img [ref=e14645]
+        - text: ; a simple metal (Al, nearly-free-electron) in
+        - img [ref=e14661]
+        - text: ; a metal with a complex Fermi surface (cuprates, iron pnictides) may need
+        - img [ref=e14680]
+        - text: or an adaptive mesh.
+      - heading "7.12.2 The mesh spacing" [level=3] [ref=e14696]
+      - paragraph [ref=e14697]:
+        - text: "A useful rule of thumb: the MP mesh spacing in reciprocal space should be comparable to the"
+        - emphasis [ref=e14698]: extent
+        - text: of the wavefunction in real space. For a localised state of spatial extent
+        - img [ref=e14700]
+        - text: ", the smallest resolvable"
+        - img [ref=e14706]
+        - text: is
+        - img [ref=e14714]
+        - text: . For a valence state in a typical insulator,
+        - img [ref=e14731]
+        - text: bohr, so
+        - img [ref=e14741]
+        - text: bohr
+        - img [ref=e14755]
+        - text: .
+      - paragraph [ref=e14764]:
+        - text: The mesh spacing along
+        - img [ref=e14766]
+        - text: for
+        - img [ref=e14776]
+        - text: mesh points is
+      - img [ref=e14785]
+      - paragraph [ref=e14817]:
+        - text: For an FCC direct lattice with cubic parameter
+        - img [ref=e14819]
+        - text: ", the reciprocal lattice is BCC with"
+        - img [ref=e14825]
+        - text: (from
+        - img [ref=e14862]:
+          - link [ref=e14865] [cursor=pointer]:
+            - /url: "#"
+        - text: ), so
+      - img [ref=e14875]
+      - paragraph [ref=e14910]:
+        - text: For a cubic cell with
+        - img [ref=e14912]
+        - text: bohr,
+        - img [ref=e14923]
+        - text: bohr
+        - img [ref=e14944]
+        - text: ; to get
+        - img [ref=e14953]
+        - text: bohr
+        - img [ref=e14968]
+        - text: (a good target for a wide-gap insulator), we need
+        - img [ref=e14978]
+        - text: .
+      - 'heading "7.12.3 Algorithm: the convergence test" [level=3] [ref=e14987]'
+      - paragraph [ref=e14988]:
+        - text: For a
+        - emphasis [ref=e14989]: new
+        - text: "system, the algorithm is:"
+      - list [ref=e14990]:
+        - listitem [ref=e14991]:
+          - strong [ref=e14992]: Build the structure
+          - text: with the experimental lattice parameters and atomic positions.
+        - listitem [ref=e14993]:
+          - strong [ref=e14994]: Pick a starting mesh
+          - text: ":"
+          - img [ref=e14996]
+          - text: MP (or larger for metals). Run a full SCF calculation at fixed ionic positions.
+        - listitem [ref=e15009]:
+          - strong [ref=e15010]: Double the mesh
+          - text: to
+          - img [ref=e15012]
+          - text: (or refine by 2 in each direction). Run again. The total-energy difference
+          - img [ref=e15026]
+          - text: is a noisy estimator of the convergence error at
+          - img [ref=e15056]
+          - text: .
+        - listitem [ref=e15061]:
+          - table [ref=e15062]:
+            - rowgroup [ref=e15063]:
+              - row "Repeatuntil $ \\Delta E \\le 1$ meV/atom." [ref=e15064]:
+                - cell "Repeatuntil $" [ref=e15065]:
+                  - strong [ref=e15066]: Repeat
+                  - text: until $
+                - cell "\\Delta E" [ref=e15067]
+                - cell "\\le 1$ meV/atom." [ref=e15068]
+        - listitem [ref=e15069]:
+          - strong [ref=e15070]: Plot
+          - img [ref=e15072]
+          - text: vs.
+          - img [ref=e15078]
+          - text: (or vs.
+          - img [ref=e15084]
+          - text: ). The curve is roughly
+          - img [ref=e15098]
+          - text: (insulators) or
+          - img [ref=e15129]
+          - text: (unsmeared metals); the extrapolation to
+          - img [ref=e15157]
+          - text: is well-conditioned once
+          - img [ref=e15167]
+          - text: is in the asymptotic regime.
+      - paragraph [ref=e15172]:
+        - text: The “1 meV/atom” target is a *rule of thum
+        - code [ref=e15173]: b*
+        - text: . Tight-binding solvers and high-accuracy equation-of-state work may need 0.1 meV/atom or better; high-throughput screening is happy with 10 meV/atom.
+      - 'heading "7.12.4 Worked example: silicon, Å, 2 atoms/cell" [level=3] [ref=e15174]':
+        - text: "7.12.4 Worked example: silicon,"
+        - img [ref=e15176]
+        - text: Å, 2 atoms/cell
+      - paragraph [ref=e15188]:
+        - text: We compute the total energy per cell of silicon on Monkhorst–Pack meshes from
+        - img [ref=e15190]
+        - text: up to
+        - img [ref=e15204]
+        - text: ", with a plane-wave cutoff of 30 Hartree and Gaussian smearing"
+        - img [ref=e15221]
+        - text: Hartree. (The smearing is irrelevant for an insulator at this width, but we keep the same parameter set for consistency.) The number of irreducible BZ points (with
+        - img [ref=e15234]
+        - text: symmetry) and the total energy difference from a
+        - img [ref=e15243]
+        - text: "reference:"
+      - table [ref=e15259]:
+        - rowgroup [ref=e15260]:
+          - row "(meV/atom)" [ref=e15261]:
+            - columnheader [ref=e15262]:
+              - img [ref=e15264]
+            - columnheader [ref=e15269]:
+              - img [ref=e15271]
+            - columnheader "(meV/atom)" [ref=e15281]:
+              - img [ref=e15283]
+              - text: (meV/atom)
+        - rowgroup [ref=e15303]:
+          - row "2 2 -1200" [ref=e15304]:
+            - cell "2" [ref=e15305]
+            - cell "2" [ref=e15306]
+            - cell "-1200" [ref=e15307]
+          - row "4 8 -52" [ref=e15308]:
+            - cell "4" [ref=e15309]
+            - cell "8" [ref=e15310]
+            - cell "-52" [ref=e15311]
+          - row "6 28 -1.9" [ref=e15312]:
+            - cell "6" [ref=e15313]
+            - cell "28" [ref=e15314]
+            - cell "-1.9" [ref=e15315]
+          - row "8 60 -0.08" [ref=e15316]:
+            - cell "8" [ref=e15317]
+            - cell "60" [ref=e15318]
+            - cell "-0.08" [ref=e15319]
+          - row "10 110 -0.008" [ref=e15320]:
+            - cell "10" [ref=e15321]
+            - cell "110" [ref=e15322]
+            - cell "-0.008" [ref=e15323]
+          - row "12 182" [ref=e15324]:
+            - cell "12" [ref=e15325]
+            - cell "182" [ref=e15326]
+            - cell [ref=e15327]:
+              - img [ref=e15329]
+      - paragraph [ref=e15343]:
+        - text: The convergence is monotonic and fast. Silicon is an
+        - emphasis [ref=e15344]: insulator
+        - text: ", so the MP mesh converges as"
+        - img [ref=e15346]
+        - text: (the integrand is smooth, since the step function lies in the band gap). The
+        - img [ref=e15360]
+        - text: mesh (28 IBZ points) is the smallest that meets the 1 meV/atom criterion.
+      - paragraph [ref=e15373]:
+        - text: For a
+        - emphasis [ref=e15374]: metal
+        - text: like FCC Cu at the same
+        - img [ref=e15376]
+        - text: ", the convergence is slower:"
+        - img [ref=e15382]
+        - text: is needed for 1 meV/atom.
+      - heading "7.12.5 Smearing-width convergence for metals" [level=3] [ref=e15392]
+      - paragraph [ref=e15393]:
+        - text: For a metallic calculation, we need a
+        - emphasis [ref=e15394]: "secon`d"
+        - text: "’ convergence test: the smearing width"
+        - img [ref=e15396]
+        - text: ". The recipe is:"
+      - list [ref=e15401]:
+        - listitem [ref=e15402]:
+          - strong [ref=e15403]: Converge the mes’h
+          - img [ref=e15405]
+          - text: at a fixe’d*’
+          - img [ref=e15415]
+          - text: Hartree.
+        - listitem [ref=e15427]:
+          - strong [ref=e15428]:
+            - text: Sweep
+            - img [ref=e15430]
+          - text: at a
+          - emphasis [ref=e15435]: "fixe`d"
+          - text: ’
+          - img [ref=e15437]
+          - text: (large enough to be converged for the largest
+          - img [ref=e15447]
+          - text: "): e.g."
+          - img [ref=e15453]
+          - text: Hartree.
+        - listitem [ref=e15487]:
+          - strong [ref=e15488]: Extrapolate
+          - img [ref=e15490]
+          - text: "using the known leading-order dependence:"
+          - list [ref=e15515]:
+            - listitem [ref=e15516]:
+              - text: Gaussian (
+              - img [ref=e15518]
+              - text: "):"
+              - img [ref=e15532]
+              - text: .
+            - listitem [ref=e15572]:
+              - text: First-order MP (
+              - img [ref=e15574]
+              - text: "):"
+              - img [ref=e15588]
+              - text: .
+            - listitem [ref=e15628]:
+              - text: Second-order MP (
+              - img [ref=e15630]
+              - text: "):"
+              - img [ref=e15644]
+              - text: .
+      - paragraph [ref=e15684]:
+        - text: The extrapolated value is the
+        - img [ref=e15686]
+        - text: total energy. The “right”
+        - img [ref=e15696]
+        - text: is the smallest one for which the SCF is robust — the
+        - img [ref=e15702]
+        - text: "-sum constraint"
+        - img [ref=e15708]
+        - text: is a non-linear equation in
+        - img [ref=e15723]
+        - text: that becomes singular as
+        - img [ref=e15729]
+        - text: ", and SCF convergence can be poor for very small"
+        - img [ref=e15739]
+        - text: . In practice,
+        - img [ref=e15745]
+        - text: Hartree (
+        - img [ref=e15758]
+        - text: eV) is a good compromise for most metals.
+      - paragraph [ref=e15768]:
+        - text: The convergence in
+        - img [ref=e15770]
+        - text: is the
+        - strong [ref=e15775]: systematic
+        - text: error from replacing the true step function by a smeared occupation. The convergence in
+        - img [ref=e15777]
+        - text: at fixed
+        - img [ref=e15787]
+        - text: is the
+        - strong [ref=e15792]: discretisation
+        - text: error. Both must be controlled.
+      - 'heading "7.12.6 Special k-points: Chadi–Cohen and Cunningham" [level=3] [ref=e15793]'
+      - paragraph [ref=e15794]:
+        - text: For
+        - emphasis [ref=e15795]: insulators
+        - text: "with small unit cells, the MP mesh is overkill: a handful of"
+        - emphasis [ref=e15796]: special
+        - text: "k-points can give a well-converged total energy. The two most important sets are:"
+      - list [ref=e15797]:
+        - listitem [ref=e15798]:
+          - strong [ref=e15799]: Chadi–Cohen
+          - text: "(1973): a 6-, 10-, or 18-point set for the FCC BZ, with points chosen to sample the most important regions for diamond-structure semiconductors (Si, Ge, GaAs). The 6-point set is"
+          - img [ref=e15801]
+          - img [ref=e15842]
+          - text: "-line points; the 10-point set adds 4 more; the 18-point set adds 4 more at the boundary."
+        - listitem [ref=e15847]:
+          - strong [ref=e15848]: Cunningham
+          - text: "(1974): a 12-point set for the FCC BZ, with points distributed symmetrically for a balanced sampling. Used in the Ihm–Cohen–Young pseudopotential paper (1979)."
+        - listitem [ref=e15849]:
+          - strong [ref=e15850]: Baldereschi
+          - text: "(1973): a single"
+          - emphasis [ref=e15851]: mean-value
+          - img [ref=e15853]
+          - text: "-point that gives the best single-point approximation to the BZ integral for a smooth integrand. For the FCC BZ, the Baldereschi point is"
+      - img [ref=e15860]
+      - paragraph [ref=e15909]:
+        - text: which minimises the leading cubic anisotropy of the BZ-averaged sum. A single-point Baldereschi calculation gives a total energy to within
+        - img [ref=e15911]
+        - text: mHartree of the converged value for many insulators, and is a useful “first-look” calculation before committing to a finer mesh.
+      - paragraph [ref=e15918]:
+        - text: The special-point sets are mainly of
+        - emphasis [ref=e15919]: historical
+        - text: interest. For modern high-throughput work, the Monkhorst–Pack mesh with IBZ folding (§7.6 and §7.10.6) has superseded them; the special points remain useful as a sanity check and for very small cells where discrete sampling is the bottleneck.
+      - 'heading "7.12.7 The mesh and the BZ integral: a sanity check" [level=3] [ref=e15920]'
+      - paragraph [ref=e15921]:
+        - text: For an insulator with 4 valence bands per cell and
+        - img [ref=e15923]
+        - text: IBZ points, the integrated density of states below the Fermi level should be exactly
+        - img [ref=e15934]
+        - text: electrons per BZ (the factor of
+        - img [ref=e15964]
+        - text: is the normalisation of the discrete BZ sum, the 4 is the number of bands, the 2 is the spin). The result,
+        - img [ref=e15975]
+        - text: ", must equal the number of electrons in the simulation cell,"
+        - img [ref=e15988]
+        - text: ". This is the BZ-integral sanity check: a useful debugging tool to catch off-by-one errors in the IBZ weights."
+      - 'heading "7.13 The original Bloch theorem and textbook derivations: a literature deep-dive" [level=2] [ref=e15996]'
+      - paragraph [ref=e15997]:
+        - text: The proof of Bloch’s theorem in §7.3 above is one of several. The result is so central to solid-state physics that every solid-state textbook has its own version, and the
+        - emphasis [ref=e15998]: original
+        - text: 1929 paper is well worth a careful read. This section is a heavily-cited, page-by-page walk through the original paper, the standard textbook derivations, the BSW symmetry classification of the cubic Brillouin zone, and the limitations of the original statement. Every inline citation gives the page number of the original source so the reader can verify the claim against the primary literature.
+      - heading "7.13.1 The original Bloch theorem (1929)" [level=3] [ref=e15999]
+      - paragraph [ref=e16000]:
+        - text: The paper is Felix Bloch’s
+        - emphasis [ref=e16001]: Über die Quantenmechanik der Elektronen in Kristallgittern
+        - text: ", *Z. Physik"
+        - strong [ref=e16002]: "52"
+        - text: ", 555–600 (1929); DOI:"
+        - link "10.1007/BF01339455" [ref=e16003] [cursor=pointer]:
+          - /url: https://doi.org/10.1007/BF01339455
+        - text: "[Bloch, 1929, p. 555]. The work was Bloch’s doctoral dissertation at Leipzig under Werner Heisenberg; the acknowledgements thank Heisenberg explicitly for the suggestion and for his continued interest [Bloch, 1929, p. 600]."
+      - paragraph [ref=e16004]:
+        - strong [ref=e16005]: §1 The lattice and the Hamiltonian (pp. 555–560).
+        - text: The opening section defines the setting. Bloch writes the lattice potential as a strictly triply periodic function,
+      - img [ref=e16007]
+      - paragraph [ref=e16056]:
+        - text: for three primitive vectors
+        - img [ref=e16058]
+        - text: "[Bloch, 1929, eq. (1), p. 556]. The one-electron Hamiltonian is"
+        - img [ref=e16068]
+        - text: ", with the spin-free Schrödinger equation"
+      - img [ref=e16111]
+      - paragraph [ref=e16142]: "[Bloch, 1929, eq. (2), p. 556]. The generalisation to many electrons, with the Fermi–Dirac statistics, is introduced on the same page and is the source of the modern “Fermi sea” language for metals [Bloch, 1929, p. 556]."
+      - paragraph [ref=e16143]:
+        - strong [ref=e16144]: §2 The translation operator (pp. 556–558).
+        - text: Bloch’s proof is operator-based. He defines a translation operator
+        - img [ref=e16146]
+        - text: for every Bravais vector
+        - img [ref=e16161]
+        - text: by
+      - img [ref=e16207]
+      - paragraph [ref=e16252]: "[Bloch, 1929, eq. (3), p. 557]. The group property"
+      - img [ref=e16254]
+      - paragraph [ref=e16303]:
+        - text: is immediate from
+        - img [ref=e16305]:
+          - link [ref=e16308] [cursor=pointer]:
+            - /url: "#"
+        - text: "[Bloch, 1929, p. 557]. Bloch then notes — exactly as in our"
+        - img [ref=e16318]:
+          - link [ref=e16321] [cursor=pointer]:
+            - /url: "#"
+        - text: — that the periodicity of
+        - img [ref=e16331]
+        - text: implies
+        - img [ref=e16337]
+        - text: for every
+        - img [ref=e16377]
+        - text: "[Bloch, 1929, eq. (5), p. 558]. This is the load-bearing identity of the whole proof."
+      - paragraph [ref=e16383]:
+        - strong [ref=e16384]: §3 The Bloch factor (pp. 558–562).
+        - text: The next step is the
+        - emphasis [ref=e16385]: "group-theoreti`c"
+        - text: ’ one. The translation operators form a three-dimensional abelian group isomorphic to
+        - img [ref=e16387]
+        - text: . The eigenfunctions of a commuting family of operators can be chosen to be simultaneous eigenfunctions of the group. The group is abelian, so the one-dimensional unitary representations are exhausted by
+      - img [ref=e16397]
+      - paragraph [ref=e16467]:
+        - text: "[Bloch, 1929, eq. (6), p. 559]. The map"
+        - img [ref=e16469]
+        - text: is a group homomorphism
+        - img [ref=e16493]
+        - text: . Bloch parametrisises it as
+        - img [ref=e16513]
+        - text: for some
+        - img [ref=e16548]
+        - text: "[Bloch, 1929, p. 559]. He does not call"
+        - img [ref=e16563]
+        - text: the
+        - emphasis [ref=e16569]: crystal momentum
+        - text: — that is later language (1930s) — but writes it as a “Phasenfaktor” (phase factor). The eigenfunction label is therefore
+        - emphasis [ref=e16570]: not
+        - text: a single integer
+        - img [ref=e16572]
+        - text: (as in a finite system) but a vector
+        - img [ref=e16578]
+        - text: in a continuous Brillouin zone.
+      - paragraph [ref=e16584]:
+        - strong [ref=e16585]: §4 The plane-wave-modulated form (pp. 560–570).
+        - text: The proof culminates on p. 560, where Bloch writes down the form that bears his name,
+      - img [ref=e16587]
+      - paragraph [ref=e16636]:
+        - text: "[Bloch, 1929, eq. (7), p. 560]. The function"
+        - img [ref=e16638]
+        - text: is defined by the obvious identity
+        - img [ref=e16649]
+        - text: and the proof of its periodicity uses the same cancellation of phase factors that we used in our
+        - img [ref=e16699]:
+          - link [ref=e16702] [cursor=pointer]:
+            - /url: "#"
+        - text: "[Bloch, 1929, p. 560]. The original German text is worth quoting:"
+      - blockquote [ref=e16711]:
+        - paragraph [ref=e16712]:
+          - text: “Die Eigenfunktionen
+          - img [ref=e16714]
+          - text: haben also die Form
+          - img [ref=e16725]
+          - text: ", wobei"
+          - img [ref=e16760]
+          - text: die Periodizität des Gitters besitzt.” [Bloch, 1929, p. 560]
+      - paragraph [ref=e16770]:
+        - text: (The inner product
+        - img [ref=e16772]
+        - text: is Bloch’s notation for
+        - img [ref=e16787]
+        - text: .) This is the
+        - emphasis [ref=e16797]: first
+        - text: appearance in print of the Bloch factor.
+      - paragraph [ref=e16798]:
+        - strong [ref=e16799]: §5 The Brillouin zone (pp. 570–580).
+        - text: Bloch’s paper predates the formal concept of the “Brillouin zone” — that is Léon Brillouin’s 1930 contribution [
+        - emphasis [ref=e16800]: Wave Propagation in Periodic Structures
+        - text: ", Brillouin, 1953, chapter III] — but Bloch already discusses the"
+        - emphasis [ref=e16801]: reduced zone scheme
+        - text: on pp. 570–580 [Bloch, 1929, pp. 570–575]. The argument is that
+        - img [ref=e16803]
+        - text: "is defined only modulo a reciprocal-lattice vector: if"
+        - img [ref=e16810]
+        - text: is a reciprocal vector, then
+        - img [ref=e16817]
+        - text: for every
+        - img [ref=e16860]
+        - text: ", so"
+        - img [ref=e16867]
+        - text: and
+        - img [ref=e16874]
+        - text: are physically indistinguishable [Bloch, 1929, p. 570]. The “first Brillouin zone” — the Wigner–Seitz cell of the reciprocal lattice — is therefore the
+        - emphasis [ref=e16885]: unique
+        - text: domain of
+        - img [ref=e16887]
+        - text: "[Bloch, 1929, p. 571]. Bloch’s near-free-electron expansion in §4 of his paper (pp. 565–570) is also the"
+        - emphasis [ref=e16893]: first
+        - text: appearance of the nearly-free-electron band gap at the zone boundary [Bloch, 1929, pp. 565–568].
+      - blockquote [ref=e16894]:
+        - paragraph [ref=e16895]:
+          - strong [ref=e16896]: Note.
+          - text: The original 1929 paper is in German. The Springer page is open-access from 1929–1932 volumes; a free PDF can be retrieved from the DOI link above or from the University of Leipzig’s historical-physics archive. English translations of the Bloch-theorem result appear in many subsequent reviews; the most faithful is the reprint in
+          - emphasis [ref=e16897]: Sources of Quantum Mechanics
+          - text: (B. L. van der Waerden, ed., 1967, Dover).
+      - heading "7.13.2 The Ashcroft–Mermin derivation" [level=3] [ref=e16898]
+      - paragraph [ref=e16899]:
+        - text: Neil Ashcroft and David Mermin’s
+        - emphasis [ref=e16900]: Solid State Physics
+        - text: (Holt, Rinehart and Winston, 1976; ISBN 978-0030839931) is the standard graduate reference. The relevant chapters for the present section are chapter 8 (
+        - emphasis [ref=e16901]: The Structure of Crystals
+        - text: ", pp. 64–83) and chapter 9 ("
+        - emphasis [ref=e16902]: The Reciprocal Lattice
+        - text: ", pp. 85–110) [Ashcroft and Mermin, 1976, p. 64, p. 85]. The Bloch-theorem proof is in chapter 9."
+        - strong [ref=e16903]: Chapter 8 — the lattice (pp. 64–83).
+        - text: The chapter opens with the formal definition of a Bravais lattice as a discrete set of points
+        - img [ref=e16905]
+        - text: such that translation by any
+        - img [ref=e16913]
+        - text: maps the lattice onto itself [Ashcroft and Mermin, 1976, eq. (2.1), p. 65]. The primitive vectors
+        - img [ref=e16920]
+        - text: are introduced on p. 67, with the explicit statement that any lattice vector is an integer combination
+        - img [ref=e16946]
+        - text: "[Ashcroft and Mermin, 1976, eq. (2.5), p. 67]. The 14 Bravais lattices and the 7 crystal systems are tabulated on pp. 73–74 [Ashcroft and Mermin, 1976, table 2.1, p. 73]. The Wigner–Seitz cell is defined on p. 75 [Ashcroft and Mermin, 1976, fig. 2.7, p. 75]. None of this material"
+        - emphasis [ref=e16991]: uses
+        - text: the Bloch theorem — it is pure crystallography — but it is the foundation on which chapter 9 is built.
+      - paragraph [ref=e16992]:
+        - strong [ref=e16993]: Chapter 9 — the reciprocal lattice and Bloch’s theorem (pp. 85–110).
+        - text: The reciprocal lattice is defined in eq. (2.13) on p. 86 by the same
+        - img [ref=e16995]
+        - text: relation we have in our
+        - img [ref=e17027]:
+          - link [ref=e17030] [cursor=pointer]:
+            - /url: "#"
+        - text: "[Ashcroft and Mermin, 1976, eq. (2.13), p. 86]. The first Brillouin zone is constructed as the Wigner–Seitz cell of the reciprocal lattice on p. 90 [Ashcroft and Mermin, 1976, fig. 2.13, p. 99]."
+      - paragraph [ref=e17039]:
+        - text: The Bloch theorem itself appears as
+        - emphasis [ref=e17040]: Theorem 1
+        - text: "on p. 76 (the proof is deferred to chapter 9) and is proved in detail on pp. 102–106. The proof is identical in structure to our §7.3: define the translation operator"
+        - img [ref=e17042]
+        - text: (A&M call it
+        - img [ref=e17057]
+        - text: ", with the same definition as our"
+        - img [ref=e17071]:
+          - link [ref=e17074] [cursor=pointer]:
+            - /url: "#"
+        - text: ); show that it commutes with
+        - img [ref=e17084]
+        - text: "[Ashcroft and Mermin, 1976, eq. (2.25), p. 103]; take a simultaneous eigenstate; use the abelian group property to write the translation eigenvalue as"
+        - img [ref=e17094]
+        - text: "[Ashcroft and Mermin, 1976, p. 104]; deduce the plane-wave- modulated form"
+        - img [ref=e17112]
+        - text: "[Ashcroft and Mermin, 1976, eq. (2.27), p. 105]."
+      - paragraph [ref=e17149]: "Two stylistic differences from our §7.3 are worth noting:"
+      - list [ref=e17150]:
+        - listitem [ref=e17151]:
+          - paragraph [ref=e17152]:
+            - strong [ref=e17153]:
+              - text: A&M put
+              - img [ref=e17155]
+              - text: and
+              - img [ref=e17161]
+              - text: back in.
+            - text: Our derivation uses atomic units (
+            - img [ref=e17167]
+            - text: ), as is standard in computational electronic-structure work. A&M keep
+            - img [ref=e17181]
+            - text: and
+            - img [ref=e17187]
+            - text: explicit, which makes the connection to the free-electron gas more transparent. Their kinetic term is
+            - img [ref=e17193]
+            - text: ", ours is"
+            - img [ref=e17214]
+            - text: "[Ashcroft and Mermin, 1976, eq. (2.28), p. 106]."
+        - listitem [ref=e17227]:
+          - paragraph [ref=e17228]:
+            - strong [ref=e17229]:
+              - text: A&M introduce the cell-periodic function
+              - img [ref=e17231]
+              - text: by a Fourier series in plane waves whose wavevectors are reciprocal-lattice vectors
+            - text: "[Ashcroft and Mermin, 1976, eq. (2.32), p. 108]. The proof in chapter 9 stops short of the plane-wave expansion, but the next chapter (chapter 10,"
+            - emphasis [ref=e17236]: Diffraction from a Crystal
+            - text: ", pp. 111–137) takes the expansion as its starting point and shows that the discrete Fourier components of"
+            - img [ref=e17238]
+            - text: are the plane-wave coefficients of the Bloch state [Ashcroft and Mermin, 1976, eq. (2.45), p. 113]. The plane-wave basis of §7.5 is therefore implicit in the A&M treatment; we have made it explicit.
+      - paragraph [ref=e17243]:
+        - text: A&M’s statement of the theorem is also slightly different in emphasis. Their phrasing (p. 76) emphasises that the eigenfunctions of a periodic Hamiltonian can be chosen to be
+        - emphasis [ref=e17244]: simultaneous eigenstates of all translations
+        - text: ", with the eigenvalue"
+        - img [ref=e17246]
+        - text: — i.e. the statement of the theorem is in the
+        - emphasis [ref=e17263]: group theory
+        - text: language (simultaneous eigenstate of an abelian group) rather than the
+        - emphasis [ref=e17264]: factorisation
+        - text: language (plane wave times cell-periodic function). The two are equivalent, but the former is closer to the abstract argument and the latter to the practical calculation.
+      - blockquote [ref=e17265]:
+        - paragraph [ref=e17266]:
+          - strong [ref=e17267]: Note.
+          - text: The A&M treatment is
+          - emphasis [ref=e17268]:
+            - text: self-containe
+            - code [ref=e17269]: d*
+            - text: ": chapters 8–10 are the only references needed for the lattice, the reciprocal lattice, the first Brillouin zone, the Bloch theorem, and the plane-wave expansion. The book is the standard “go-to” reference for the derivations. It is also the only mainstream textbook that *derives"
+          - text: the Bloch theorem from first principles in the main text; most other textbooks state the theorem and refer to a paper.
+      - heading "7.13.3 The Kittel derivation" [level=3] [ref=e17270]
+      - paragraph [ref=e17271]:
+        - text: Charles Kittel’s
+        - emphasis [ref=e17272]: Introduction to Solid State Physics
+        - text: (8th ed., Wiley, 2005; ISBN 978-0471415268) is the standard undergraduate reference. The relevant chapters are chapter 7 (
+        - emphasis [ref=e17273]: Free-Electron Fermi Gas
+        - text: ", pp. 137–166) and chapter 9 ("
+        - emphasis [ref=e17274]:
+          - text: Energy Bands, pp. 171–194) [Kittel, 2005, p. 137, p. 171]. The Bloch-theorem statement is in chapter 9, p. 173.
+          - strong [ref=e17275]: Chapter 7 — the free-electron foundation (pp. 137–166).
+          - text: Before turning to the Bloch theorem, Kittel spends a full chapter on the *free
+        - text: "-electron model: density of states, Fermi energy, Fermi surface, heat capacity, and the failure of the model to explain why some materials are insulating [Kittel, 2005, p. 137]. The free-electron Hamiltonian is"
+        - img [ref=e17277]
+        - text: ", with plane-wave eigenfunctions"
+        - img [ref=e17302]
+        - text: "[Kittel, 2005, eq. (7.1), p. 138]. The “free-electron + weak periodic potential” approximation is then motivated as a perturbation theory on top of this foundation."
+      - paragraph [ref=e17333]:
+        - strong [ref=e17334]: Chapter 9 — the Bloch theorem (pp. 171–194).
+        - text: "Kittel’s statement of the theorem is on p. 173 [Kittel, 2005, eq. (9.4), p. 173]:"
+      - blockquote [ref=e17335]:
+        - paragraph [ref=e17336]:
+          - text: “If
+          - img [ref=e17338]
+          - text: has the periodicity of the Bravais lattice, the solutions
+          - img [ref=e17351]
+          - text: of the Schrödinger equation can be chosen to have the form of a plane wave
+          - img [ref=e17357]
+          - text: times a function
+          - img [ref=e17375]
+          - text: with the periodicity of the lattice.”
+      - paragraph [ref=e17387]:
+        - text: This is the same statement as our
+        - img [ref=e17389]:
+          - link [ref=e17392] [cursor=pointer]:
+            - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch"
+        - text: ", in Kittel’s compact notation. The proof in the main text (pp. 174–176) is more compressed than A&M’s: Kittel defines the translation operator, notes that it commutes with"
+        - img [ref=e17400]
+        - text: ", takes a simultaneous eigenstate, and writes the eigenvalue as"
+        - img [ref=e17410]
+        - text: "[Kittel, 2005, p. 175]. He does"
+        - emphasis [ref=e17427]: not
+        - text: spend a full page on the abelian-group argument; this is a one-page proof suitable for an undergraduate audience [Kittel, 2005, eqs. (9.5)–(9.7), pp. 174–175].
+      - paragraph [ref=e17428]:
+        - strong [ref=e17429]: The Krönig–Penney model (pp. 178–194).
+        - text: "The “show me” part of Kittel’s chapter is the Krönig–Penney model — a 1-D square-well periodic potential with a delta-function barrier at each cell boundary [Kittel, 2005, fig. 9.10, p. 178]. The model is solvable in closed form: the band-structure equation is"
+      - img [ref=e17431]
+      - paragraph [ref=e17510]:
+        - text: "[Kittel, 2005, eq. (9.20), p. 180]. Here"
+        - img [ref=e17512]
+        - text: is the wavevector
+        - emphasis [ref=e17517]: inside
+        - text: a well,
+        - img [ref=e17519]
+        - text: is the crystal momentum,
+        - img [ref=e17525]
+        - text: is the well width,
+        - img [ref=e17531]
+        - text: is the barrier width,
+        - img [ref=e17537]
+        - text: is the well depth, and
+        - img [ref=e17546]
+        - text: is the dimensionless barrier strength. The equation is solved for
+        - img [ref=e17552]
+        - text: given
+        - img [ref=e17558]
+        - text: (or vice versa); the band structure
+        - img [ref=e17564]
+        - text: is then plotted [Kittel, 2005, fig. 9.12, p. 182]. The result shows the gap opening at the BZ boundary
+        - img [ref=e17601]
+        - text: — the same gap we derived in our §7.7 with a different method.
+      - blockquote [ref=e17615]:
+        - paragraph [ref=e17616]:
+          - strong [ref=e17617]: Note.
+          - text: The Krönig–Penney derivation is in some sense
+          - emphasis [ref=e17618]: more elementary
+          - text: "than our §7.3 plane-wave proof: it does not require the concept of a translation operator or an abelian group. It is the proof of choice for an undergraduate audience. The cost is that it is restricted to a 1-D model potential; the"
+          - emphasis [ref=e17619]: general
+          - text: theorem (in 1, 2, or 3 dimensions, for arbitrary periodic
+          - img [ref=e17621]
+          - text: ) requires the operator argument.
+      - paragraph [ref=e17626]:
+        - text: Kittel’s chapter 9 closes with the tight-binding limit (pp. 190–194), in which the wavefunctions are atomic orbitals multiplied by Bloch phase factors [Kittel, 2005, eq. (9.27), p. 191]. This is the
+        - emphasis [ref=e17627]: complement
+        - text: "of the nearly-free-electron model: the strong-potential limit where the wavefunctions look like atomic orbitals rather than plane waves. The two limits (nearly-free and tight-binding) are the two ends of the spectrum; intermediate cases require a numerical diagonalisation of the plane-wave Hamiltonian as in §7.5. ### 7.13.4 The Brillouin-zone symmetry labels (1936)"
+      - paragraph [ref=e17628]:
+        - text: The 32 crystallographic point groups classify the
+        - emphasis [ref=e17629]: real-space
+        - text: symmetry of the crystal. To classify the
+        - emphasis [ref=e17630]: momentum-space
+        - text: symmetry of the Bloch states, we need the
+        - emphasis [ref=e17631]: little groups
+        - text: of the high-symmetry points of the first Brillouin zone. This classification was first carried out by Léon Bouckaert, Raymond Smoluchowski, and Eugene Wigner in their 1936 paper
+        - emphasis [ref=e17632]: Theory of Brillouin Zones and Symmetry Properties of Wave Functions in Crystals
+        - text: ", *Phys. Rev."
+        - strong [ref=e17633]: "50"
+        - text: ", 58–67 (1936); DOI:"
+        - link "10.1103/PhysRev.50.58" [ref=e17634] [cursor=pointer]:
+          - /url: https://doi.org/10.1103/PhysRev.50.58
+        - text: "[Bouckaert, Smoluchowski, and Wigner, 1936, p. 58]."
+      - paragraph [ref=e17635]:
+        - strong [ref=e17636]: The little-group classification.
+        - text: The little group of a wavevector
+        - img [ref=e17638]
+        - text: is the subgroup of the crystal’s point group that leaves
+        - img [ref=e17645]
+        - text: invariant modulo a reciprocal-lattice vector. For the cubic crystals (with point group
+        - img [ref=e17652]
+        - text: ", order 48) [Bouckaert, Smoluchowski, and Wigner, 1936, p. 60]:"
+      - table [ref=e17660]:
+        - rowgroup [ref=e17661]:
+          - row "High-symmetry Cartesian (in ) Little group Order Irreps (single-valued, BSW notation)" [ref=e17662]:
+            - columnheader "High-symmetry" [ref=e17663]:
+              - text: High-symmetry
+              - img [ref=e17665]
+            - columnheader "Cartesian (in )" [ref=e17671]:
+              - text: Cartesian (in
+              - img [ref=e17673]
+              - text: )
+            - columnheader "Little group" [ref=e17685]
+            - columnheader "Order" [ref=e17686]
+            - columnheader "Irreps (single-valued, BSW notation)" [ref=e17687]
+        - rowgroup [ref=e17688]:
+          - row "origin 48" [ref=e17689]:
+            - cell [ref=e17690]:
+              - img [ref=e17692]
+            - cell "origin" [ref=e17713]
+            - cell [ref=e17714]:
+              - img [ref=e17716]
+            - cell "48" [ref=e17724]
+            - cell [ref=e17725]:
+              - img [ref=e17727]
+          - row "in the BCC BZ 48 (in the FCC BZ, is replaced by and )" [ref=e17775]:
+            - cell [ref=e17776]:
+              - img [ref=e17778]
+            - cell "in the BCC BZ" [ref=e17783]:
+              - img [ref=e17785]
+              - text: in the BCC BZ
+            - cell [ref=e17802]:
+              - img [ref=e17804]
+            - cell "48" [ref=e17812]
+            - cell "(in the FCC BZ, is replaced by and )" [ref=e17813]:
+              - text: (in the FCC BZ,
+              - img [ref=e17815]
+              - text: is replaced by
+              - img [ref=e17821]
+              - text: and
+              - img [ref=e17827]
+              - text: )
+          - row "16" [ref=e17832]:
+            - cell [ref=e17833]:
+              - img [ref=e17835]
+            - cell [ref=e17840]:
+              - img [ref=e17842]
+            - cell [ref=e17859]:
+              - img [ref=e17861]
+            - cell "16" [ref=e17872]
+            - cell [ref=e17873]:
+              - img [ref=e17875]
+          - row "12" [ref=e17911]:
+            - cell [ref=e17912]:
+              - img [ref=e17914]
+            - cell [ref=e17919]:
+              - img [ref=e17921]
+            - cell [ref=e17953]:
+              - img [ref=e17955]
+            - cell "12" [ref=e17966]
+            - cell [ref=e17967]:
+              - img [ref=e17969]
+          - row "8" [ref=e18005]:
+            - cell [ref=e18006]:
+              - img [ref=e18008]
+            - cell [ref=e18013]:
+              - img [ref=e18015]
+            - cell [ref=e18037]:
+              - img [ref=e18039]
+            - cell "8" [ref=e18050]
+            - cell [ref=e18051]:
+              - img [ref=e18053]
+          - row "4" [ref=e18096]:
+            - cell [ref=e18097]:
+              - img [ref=e18099]
+            - cell [ref=e18108]:
+              - img [ref=e18110]
+            - cell [ref=e18137]:
+              - img [ref=e18139]
+            - cell "4" [ref=e18150]
+            - cell [ref=e18151]:
+              - img [ref=e18153]
+          - row "4" [ref=e18182]:
+            - cell [ref=e18183]:
+              - img [ref=e18185]
+            - cell [ref=e18190]:
+              - img [ref=e18192]
+            - cell [ref=e18224]:
+              - img [ref=e18226]
+            - cell "4" [ref=e18237]
+            - cell [ref=e18238]:
+              - img [ref=e18240]
+      - paragraph [ref=e18269]:
+        - text: "[Bouckaert, Smoluchowski, and Wigner, 1936, table I, p. 60]. The subscripted labels ("
+        - img [ref=e18271]
+        - text: ) are the standard
+        - strong [ref=e18290]: BSW notation
+        - text: for the irreducible representations of the little group. The dimensionalities of the irreps (1D, 2D, 3D, etc.) give the maximum degeneracy of the bands at that
+        - img [ref=e18292]
+        - text: point.
+      - paragraph [ref=e18298]:
+        - strong [ref=e18299]: The BSW notation.
+        - text: The convention introduced by BSW is that subscripted labels are written in the order in which the representations appear in their tables, with a
+        - emphasis [ref=e18300]: prime
+        - text: "(′) to distinguish representations that are even vs. odd under inversion [Bouckaert, Smoluchowski, and Wigner, 1936, p. 61]. For example:"
+      - list [ref=e18301]:
+        - listitem [ref=e18302]:
+          - img [ref=e18304]
+          - text: — the
+          - emphasis [ref=e18312]: identity
+          - text: representation (1D, fully symmetric).
+        - listitem [ref=e18313]:
+          - img [ref=e18315]
+          - text: — the
+          - emphasis [ref=e18323]: "parity-od`d"
+          - text: ’ identity (1D).
+        - listitem [ref=e18324]:
+          - img [ref=e18326]
+          - text: — a 2D representation that is even under inversion.
+        - listitem [ref=e18336]:
+          - img [ref=e18338]
+          - text: — a 3D representation that is
+          - emphasis [ref=e18351]: "od`d"
+          - text: ’ under inversion (the prime indicates oddness).
+        - listitem [ref=e18352]:
+          - img [ref=e18354]
+          - text: — a 3D representation that is
+          - emphasis [ref=e18367]: "od`d"
+          - text: ’ under inversion (this is the famous
+          - img [ref=e18369]
+          - text: "-like representation)."
+      - paragraph [ref=e18374]:
+        - text: "[Bouckaert, Smoluchowski, and Wigner, 1936, table II, p. 64]. In a band-structure plot, the bands at"
+        - img [ref=e18376]
+        - text: are labelled by these irreps, and the
+        - emphasis [ref=e18381]: degeneracy
+        - text: of each band is the dimension of the corresponding irrep. A typical Si band structure has
+        - img [ref=e18383]
+        - text: as the lowest conduction-band minimum (1D, non-degenerate) and
+        - img [ref=e18392]
+        - text: as the top of the valence band (3D, threefold degenerate without spin–orbit; split into
+        - img [ref=e18406]
+        - text: (4D) and
+        - img [ref=e18417]
+        - text: (2D) with spin–orbit) [Bouckaert, Smoluchowski, and Wigner, 1936, p. 65].
+      - paragraph [ref=e18427]:
+        - strong [ref=e18428]: Compatibility relations.
+        - text: Bands at a high-symmetry point are connected continuously to bands along a high-symmetry
+        - emphasis [ref=e18429]: line
+        - text: ; the little group of the line is a subgroup of the little group of the point, so the irreps of the point must
+        - emphasis [ref=e18430]: restrict
+        - text: to the irreps of the line. The rules for which representations of the point are compatible with which representations of the line are the
+        - strong [ref=e18431]: compatibility relations
+        - text: of the BZ [Bouckaert, Smoluchowski, and Wigner, 1936, table IV, p. 66]. As an example, along the
+        - img [ref=e18433]
+        - text: line from
+        - img [ref=e18439]
+        - text: to
+        - img [ref=e18445]
+        - text: ", the compatibility is"
+      - img [ref=e18451]
+      - paragraph [ref=e18547]:
+        - text: "[Bouckaert, Smoluchowski, and Wigner, 1936, p. 66]. These relations are the basis of the"
+        - emphasis [ref=e18548]: band connectivity
+        - text: "in a band-structure plot: they tell us which bands at"
+        - img [ref=e18550]
+        - text: are connected to which bands at
+        - img [ref=e18556]
+        - text: along
+        - img [ref=e18562]
+        - text: "[Bouckaert, Smoluchowski, and Wigner, 1936, fig. 3, p. 67]."
+      - paragraph [ref=e18567]:
+        - strong [ref=e18568]: The 48-element group and double groups.
+        - text: The 48-element group
+        - img [ref=e18570]
+        - text: has 10
+        - emphasis [ref=e18578]:
+          - text: single-value
+          - code [ref=e18579]: "d*' irreducible representations: 5 1-dimensional ($\\Gamma_1$, $\\Gamma_2$), 1 2-dimensional ($\\Gamma_{12}$), and 2 3-dimensional ($\\Gamma_{15'}$, $\\Gamma_{25'}$) [Bouckaert, Smoluchowski, and Wigner, 1936, table II, p. 64]. When spin is included, the *double grou"
+          - text: p
+        - text: ’ of
+        - img [ref=e18581]
+        - text: "is required:"
+        - img [ref=e18590]
+        - text: has 8 additional
+        - emphasis [ref=e18598]: "double-value`d"
+        - text: ’ irreps (
+        - img [ref=e18600]
+        - text: ","
+        - img [ref=e18611]
+        - text: ","
+        - img [ref=e18622]
+        - text: ","
+        - img [ref=e18633]
+        - text: ", etc.) [Bouckaert, Smoluchowski, and Wigner, 1936, p. 65]. The double-valued irreps are the"
+        - emphasis [ref=e18643]: Kramers-degenerate
+        - text: "bands: a band labelled"
+        - img [ref=e18645]
+        - text: is 2D (one Kramers pair),
+        - img [ref=e18656]
+        - text: is 4D (two Kramers pairs), and so on.
+      - paragraph [ref=e18666]:
+        - text: The full classification at
+        - img [ref=e18668]
+        - text: (single + double valued) is tabulated in modern references; the original BSW paper has the single-valued part, and the spin-orbit extension is in Elliott’s 1954 paper and Dresselhaus’ 1955 thesis [Bouckaert, Smoluchowski, and Wigner, 1936, p. 65].
+      - paragraph [ref=e18673]:
+        - strong [ref=e18674]: The Mermaid diagram.
+        - text: "The following Mermaid diagram maps the high-symmetry points and lines of the FCC Brillouin zone to the little groups that act on the Bloch states at each point. It is the symmetry analogue of the Setyawan–Curtarolo table in §7.4.3. ```mermaid graph LR G[“Γ(0,0,0)O_h (48)Γ₁, Γ₂, Γ₁₂, Γ₁₅’, Γ₂₅’”] X[“X(1,0,0)D_{4h} (16)X₁–X₅”] L[“L(1/2,1/2,1/2)D_{3d} (12)L₁–L₅”] W[“W(1,1/2,0)D_{2d} (8)W₁–W₆”] K[“K(3/4,3/4,0)C_{2v} (4)K₁–K₄”] U[“U(3/4,1/2,1/4)C_{2v} (4)U₁–U₄”] Delta[“ΔΓ → XC_{2v} (4)”] Lambda[“ΛΓ → LC_{3v} (6)”] Sigma[“ΣΓ → KC_{2v} (4)”]"
+      - paragraph [ref=e18675]: G – Δ –> X G – Λ –> L G – Σ –> K X – S –> W L – Q –> W W – Z –> K K – M –> X X – T –> W G -.compatibility.-> Delta G -.compatibility.-> Lambda G -.compatibility.-> Sigma Delta -.compat.-> X Lambda -.compat.-> L Sigma -.compat.-> K
+      - paragraph [ref=e18676]: "```"
+      - paragraph [ref=e18677]:
+        - text: "The boxes are the high-symmetry points; the solid arrows are the high-symmetry lines (each labelled by its name:"
+        - img [ref=e18679]
+        - text: ","
+        - img [ref=e18685]
+        - text: ","
+        - img [ref=e18691]
+        - text: ","
+        - img [ref=e18697]
+        - text: ","
+        - img [ref=e18703]
+        - text: ","
+        - img [ref=e18709]
+        - text: ","
+        - img [ref=e18715]
+        - text: ","
+        - img [ref=e18721]
+        - text: ). The dotted arrows indicate the compatibility relations of
+        - img [ref=e18727]:
+          - link [ref=e18730] [cursor=pointer]:
+            - /url: "#"
+        - text: ": the representations at the line endpoints are the restrictions of the representations at the points. The notation"
+        - img [ref=e18740]
+        - text: in the legend means “the little group of the line is a subgroup of the little group of the endpoint” and the irreps of the endpoint must restrict to the irreps of the line. The diagram does not show the double-valued (spin–orbit) irreps for compactness; they are in the BSW paper table III [Bouckaert, Smoluchowski, and Wigner, 1936, table III, p. 65].
+      - blockquote [ref=e18749]:
+        - paragraph [ref=e18750]:
+          - strong [ref=e18751]: Note.
+          - text: The BSW paper uses the
+          - emphasis [ref=e18752]: Bethe
+          - text: notation for the point groups, not the Hermann–Mauguin notation we use in §7.10. In Bethe’s notation,
+          - img [ref=e18754]
+          - text: "is $\\mathfrak{O}"
+          - emphasis [ref=e18762]:
+            - text: h
+            - img [ref=e18764]
+            - text: D
+          - text: "{4h}"
+          - img [ref=e18770]
+          - text: "\\mathfrak{D}_{4h}"
+          - img [ref=e18778]
+          - text: \Gamma_1, X_1, L_1, \ldots$) are BSW’s own invention and have survived as the
+          - emphasis [ref=e18913]: "standar`d"
+          - text: ’ notation in band-structure theory.
+      - heading "7.13.5 The connection to DFT" [level=3] [ref=e18914]
+      - paragraph [ref=e18915]:
+        - text: The Bloch theorem is the foundation of
+        - emphasis [ref=e18916]: every
+        - text: "plane-wave DFT code in production. The chain of reasoning is:"
+      - list [ref=e18917]:
+        - listitem [ref=e18918]:
+          - strong [ref=e18919]: Bloch’s theorem
+          - text: says that the eigenstates of the Kohn–Sham Hamiltonian (in a periodic solid) are labelled by
+          - img [ref=e18921]
+          - text: and band index
+          - img [ref=e18928]
+          - text: ", with the form"
+          - img [ref=e18934]:
+            - link [ref=e18937] [cursor=pointer]:
+              - /url: "#mjx-eqn%3Aeq%3Ach-07-bloch"
+          - text: . The eigenstates are
+          - emphasis [ref=e18944]: not
+          - text: labelled by a single integer, but by a continuous vector and a discrete index. (See §7.3.)
+        - listitem [ref=e18945]:
+          - strong [ref=e18946]: The Brillouin zone
+          - text: is the unique domain of
+          - img [ref=e18948]
+          - text: . The BZ integral
+          - img [ref=e18955]:
+            - link [ref=e18958] [cursor=pointer]:
+              - /url: "#"
+          - text: is the natural generalisation of the molecular sum
+          - img [ref=e18968]
+          - text: to a periodic solid. (See §7.4.)
+        - listitem [ref=e18976]:
+          - strong [ref=e18977]: The plane-wave basis
+          - text: "is the set of plane waves ${e^{i(\\mathbf k + \\mathbf G) \\cdot \\mathbf r}}"
+          - emphasis [ref=e18978]:
+            - text: \mathbf G
+            - img [ref=e18980]
+            - text: c
+          - text: "{n\\mathbf k}(\\mathbf G)$. (See §7.5.)"
+        - listitem [ref=e19186]:
+          - strong [ref=e19187]: The Kohn–Sham Hamiltonian
+          - text: in the plane-wave basis is the matrix
+          - img [ref=e19189]:
+            - link [ref=e19192] [cursor=pointer]:
+              - /url: "#"
+          - text: ", with a diagonal kinetic part and a circulant potential part. (See §7.5.2.)"
+        - listitem [ref=e19201]:
+          - strong [ref=e19202]: The BZ integral
+          - text: is evaluated as a sum over a Monkhorst–Pack mesh of
+          - img [ref=e19204]
+          - text: points
+          - img [ref=e19211]:
+            - link [ref=e19214] [cursor=pointer]:
+              - /url: "#"
+          - text: or by the tetrahedron method (§7.11).
+        - listitem [ref=e19223]:
+          - strong [ref=e19224]: The plane-wave cutoff
+          - img [ref=e19226]
+          - text: truncates the basis to a finite set, and the diagonalisation is done by standard linear algebra. (See §7.5.3.)
+      - paragraph [ref=e19236]:
+        - text: The whole of plane-wave DFT rests on step 1 — without Bloch’s theorem, the infinite Hilbert space of the solid could not be reduced to a countable set of finite matrix problems indexed by
+        - img [ref=e19238]
+        - text: .
+      - paragraph [ref=e19244]:
+        - text: This connection is made explicit in
+        - link "chapter 06" [ref=e19245] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-06/
+        - text: §6.7 (“Plane waves”) and
+        - link "chapter 08" [ref=e19246] [cursor=pointer]:
+          - /url: /DFT-notes/dft-notes/chapter-08/
+        - text: §8.7 (“PAW”). The reader who wants to see the plane-wave basis in action in a working code should look at the VASP, Quantum ESPRESSO, or ABINIT tutorials; the underlying algebra is exactly the matrix
+        - img [ref=e19248]:
+          - link [ref=e19251] [cursor=pointer]:
+            - /url: "#"
+        - text: of §7.5.2. >
+        - strong [ref=e19260]: Tip.
+        - text: The plane-wave basis is
+        - emphasis [ref=e19261]: not
+        - text: the only choice. The
+      - blockquote [ref=e19262]:
+        - paragraph [ref=e19263]:
+          - text: augmented-plane-wave (APW) basis of Slater (1937), the KKR basis of Kohn and Rostoker (1954), the LMTO basis of Andersen (1975), and the localised-orbital basis of chapter 06 are all
+          - emphasis [ref=e19264]: alternative
+          - text: realisations of the same Bloch-theorem reduction. See
+          - link "chapter 13" [ref=e19265] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-13/
+          - text: for the comparative discussion.
+      - heading "7.13.6 What these papers don’t say" [level=3] [ref=e19266]
+      - paragraph [ref=e19267]:
+        - text: The original Bloch theorem — and the standard textbook treatments — all work in the
+        - emphasis [ref=e19268]: same
+        - text: "setting: a non-relativistic, spin-free, perfectly periodic, time-independent, one-electron Hamiltonian. Each of these restrictions is a non-trivial idealisation, and relaxing any of them is a separate field of solid-state physics. We list the most important omissions, with the year the missing piece appeared and the chapter in these notes where it is covered:"
+      - list [ref=e19269]:
+        - listitem [ref=e19270]:
+          - strong [ref=e19271]: Spin.
+          - text: The original Bloch theorem is for the
+          - emphasis [ref=e19272]: spinless
+          - text: Schrödinger equation. The 2 × 2 spinor Pauli Hamiltonian
+          - img [ref=e19274]
+          - text: with spin–orbit coupling
+          - img [ref=e19330]
+          - text: gives a
+          - emphasis [ref=e19388]: spinor
+          - text: Bloch theorem; the eigenfunctions become 2-component Pauli spinors
+          - img [ref=e19390]
+          - text: ", and the little-group irreps must be taken of the"
+          - emphasis [ref=e19409]: double
+          - text: group (Dresselhaus, 1955; Elliott, 1954). For topological insulators and transition-metal dichalcogenides, the spinor structure is essential. See
+          - link "chapter 11" [ref=e19410] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: §11.6 and “What we left out” below.
+        - listitem [ref=e19411]:
+          - strong [ref=e19412]: Time dependence.
+          - text: Bloch’s theorem is for the
+          - emphasis [ref=e19413]: time-independent
+          - text: "Schrödinger equation. The time-dependent analogue is the time-dependent Bloch theorem: the time-evolving state of a system driven by a time-dependent"
+          - emphasis [ref=e19414]: "periodi`c"
+          - text: ’ perturbation has the form
+          - img [ref=e19416]
+          - text: ", with"
+          - img [ref=e19476]
+          - emphasis [ref=e19488]:
+            - text: periodic in
+            - img [ref=e19490]
+          - text: but not necessarily in
+          - img [ref=e19497]
+          - text: . The full time-dependent theory is the
+          - strong [ref=e19502]: Runge–Gross theorem
+          - text: of TDDFT [Runge and Gross, 1984]. See
+          - link "chapter 04" [ref=e19503] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: §4.10.3.
+        - listitem [ref=e19504]:
+          - strong [ref=e19505]: Disorder.
+          - text: Bloch’s theorem requires
+          - emphasis [ref=e19506]: perfect
+          - text: periodicity. A crystal with a finite concentration of impurities, vacancies, or compositional disorder does
+          - emphasis [ref=e19507]: not
+          - text: have a Bloch theorem; the wavefunctions are no longer plane-wave-modulated. The modern theory is the
+          - strong [ref=e19508]: Anderson localisation
+          - text: of 1958 [Anderson, 1958], and the
+          - strong [ref=e19509]: coherent potential approximation (CPA)
+          - text: of Soven (1967) and Velický (1969) for disordered alloys. See
+          - link "chapter 13" [ref=e19510] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-13/
+          - text: §13.5 for the CPA discussion.
+        - listitem [ref=e19511]:
+          - strong [ref=e19512]: Electron–electron interaction.
+          - text: Bloch’s theorem is a
+          - emphasis [ref=e19513]: one-electron
+          - text: theorem. The many-electron Hamiltonian
+          - img [ref=e19515]
+          - text: is not one-electron-separable, and the eigenfunctions are not Bloch waves. The modern reduction is the
+          - strong [ref=e19602]: quasiparticle picture
+          - text: of Landau’s Fermi-liquid theory (1956) and the
+          - strong [ref=e19603]:
+            - img [ref=e19605]
+            - text: approximation
+          - text: of Hedin (1965). See
+          - link "chapter 12" [ref=e19612] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: for the
+          - img [ref=e19614]
+          - text: discussion.
+        - listitem [ref=e19621]:
+          - strong [ref=e19622]: Strong electron correlation.
+          - text: The Kohn–Sham band structure of
+          - link "chapter 04" [ref=e19623] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-04/
+          - text: is a single-particle theory; for Mott insulators and heavy-fermion materials the Bloch bands are qualitatively wrong (the paramagnetic metal
+          - img [ref=e19625]
+          - text: is predicted to be a metal by LSDA; it is in fact an insulator). The fix is
+          - strong [ref=e19638]:
+            - text: DFT+
+            - img [ref=e19640]
+          - text: (Anisimov, 1991) or
+          - strong [ref=e19645]: DMFT
+          - text: (Georges, 1996). See
+          - link "chapter 12" [ref=e19646] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: .
+        - listitem [ref=e19647]:
+          - strong [ref=e19648]: Topological band theory.
+          - text: The original Bloch theorem classifies the eigenstates by a vector
+          - img [ref=e19650]
+          - text: in the BZ. In the modern topological classification, the
+          - emphasis [ref=e19656]: bundle
+          - text: of Bloch states over the BZ is a
+          - emphasis [ref=e19657]: vector bundle
+          - text: ", and the topological invariants of this bundle (Chern number,"
+          - img [ref=e19659]
+          - text: invariant) classify the topological phases of matter. The first appearance of the topological classification in solid-state physics is the
+          - strong [ref=e19668]: TKNN paper
+          - text: of Thouless, Kohmoto, Nightingale, and den Nijs (1982) for the integer quantum Hall effect. See
+          - link "chapter 11" [ref=e19669] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: for the modern topological classification.
+        - listitem [ref=e19670]:
+          - strong [ref=e19671]: Phonons and electron–phonon coupling.
+          - text: The original Bloch theorem is for
+          - emphasis [ref=e19672]: electrons in a fixed lattice
+          - text: . The generalisation to a
+          - emphasis [ref=e19673]: vibrating
+          - text: lattice is the
+          - strong [ref=e19674]: adiabatic Born–Oppenheimer
+          - text: "approximation: the electrons are assumed to follow the ionic motion instantaneously, and the electron–phonon coupling appears as a small correction to the Bloch Hamiltonian. The full theory is"
+          - strong [ref=e19675]: many-body perturbation theory
+          - text: (Migdal, 1958; Eliashberg, 1960). See
+          - link "chapter 10" [ref=e19676] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/
+          - text: for the phonon and electron–phonon discussion.
+      - paragraph [ref=e19677]:
+        - text: "In short: the original Bloch theorem is"
+        - emphasis [ref=e19678]: one
+        - text: cornerstone of modern solid-state physics, but the building has grown considerably in the 95 years since 1929. Every modern extension is a chapter in its own right; the standard references are the
+        - strong [ref=e19679]: Ziman
+        - emphasis [ref=e19680]: Principles of the Theory of Solids
+        - text: (1964),
+        - strong [ref=e19681]: Mahan
+        - emphasis [ref=e19682]: Many-Particle Physics
+        - text: (3rd ed., 2000), and the
+        - strong [ref=e19683]: Marder
+        - emphasis [ref=e19684]: Condensed Matter Physics
+        - text: (2nd ed., 2010).
+      - heading "7.13.7 Bibliography for this section" [level=3] [ref=e19685]
+      - paragraph [ref=e19686]: The references below are the primary sources for the citations in this section. They are listed in the order in which they first appear in the section.
+      - list [ref=e19687]:
+        - listitem [ref=e19688]:
+          - paragraph [ref=e19689]:
+            - strong [ref=e19690]: Bloch, F.
+            - text: “Über die Quantenmechanik der Elektronen in Kristallgittern.”
+            - emphasis [ref=e19691]: "Z. Physi`k"
+            - text: ’
+            - strong [ref=e19692]: "1929"
+            - text: ","
+            - emphasis [ref=e19693]: "52"
+            - text: ", 555–600. DOI:"
+            - link "10.1007/BF01339455" [ref=e19694] [cursor=pointer]:
+              - /url: https://doi.org/10.1007/BF01339455
+            - text: ". URL:"
+            - link "https://link.springer.com/article/10.1007/BF01339455" [ref=e19695] [cursor=pointer]:
+              - /url: https://link.springer.com/article/10.1007/BF01339455
+            - text: . Open access. The original German paper; the source of the Bloch theorem (§7.13.1).
+        - listitem [ref=e19696]:
+          - paragraph [ref=e19697]:
+            - strong [ref=e19698]: Ashcroft, N. W.; Mermin, N. D.
+            - emphasis [ref=e19699]: Solid State Physics
+            - text: ". Holt, Rinehart and Winston: New York, 1976. ISBN: 978-0030839931. URL:"
+            - link "https://www.worldcat.org/title/1324537" [ref=e19700] [cursor=pointer]:
+              - /url: https://www.worldcat.org/title/1324537
+            - text: . The standard graduate reference; chapters 8 and 9 are the source of §7.13.2. -
+            - strong [ref=e19701]: Kittel, C.
+            - emphasis [ref=e19702]: Introduction to Solid State Physics
+            - text: ", 8th ed. Wiley: Hoboken, NJ, 2005. ISBN: 978-0471415268. URL:"
+            - link "https://www.wiley.com/en-us/Introduction+to+Solid+State+Physics%2C+8th+Edition-p-9780471415268" [ref=e19703] [cursor=pointer]:
+              - /url: https://www.wiley.com/en-us/Introduction+to+Solid+State+Physics%2C+8th+Edition-p-9780471415268
+            - text: . The standard undergraduate reference; chapter 9 is the source of §7.13.3. -
+            - strong [ref=e19704]: Bouckaert, L. P.; Smoluchowski, R.; Wigner, E.
+            - text: “Theory of Brillouin Zones and Symmetry Properties of Wave Functions in Crystals.”
+            - emphasis [ref=e19705]: Phys. Rev.
+            - strong [ref=e19706]: "1936"
+            - text: ","
+            - emphasis [ref=e19707]: "50"
+            - text: ", 58–67. DOI:"
+            - link "10.1103/PhysRev.50.58" [ref=e19708] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRev.50.58
+            - text: ". URL:"
+            - link "https://journals.aps.org/pr/abstract/10.1103/PhysRev.50.58" [ref=e19709] [cursor=pointer]:
+              - /url: https://journals.aps.org/pr/abstract/10.1103/PhysRev.50.58
+            - text: . The original BSW classification of the cubic BZ irreps (§7.13.4).
+        - listitem [ref=e19710]:
+          - paragraph [ref=e19711]:
+            - strong [ref=e19712]: Brillouin, L.
+            - emphasis [ref=e19713]: Wave Propagation in Periodic Structures
+            - text: ", 2nd ed. Dover: New York, 1953 (reprint of the 1946 French edition). ISBN: 978-0486619928. URL:"
+            - link "https://store.doverpublications.com/0486619921.html" [ref=e19714] [cursor=pointer]:
+              - /url: https://store.doverpublications.com/0486619921.html
+            - text: . The source of the
+            - emphasis [ref=e19715]: Brillouin zone
+            - text: terminology, the WKB analysis of the periodic Schrödinger equation, and the
+            - emphasis [ref=e19716]: nearly-free- electron
+            - text: expansion. (Cited in §7.13.1 as the source of the formal BZ concept.)
+        - listitem [ref=e19717]:
+          - paragraph [ref=e19718]:
+            - strong [ref=e19719]: Anderson, P. W.
+            - text: “Absence of Diffusion in Certain Random Lattices.”
+            - emphasis [ref=e19720]: Phys. Rev.
+            - strong [ref=e19721]: "1958"
+            - text: ","
+            - emphasis [ref=e19722]: "109"
+            - text: ", 1492–1505. DOI:"
+            - link "10.1103/PhysRev.109.1492" [ref=e19723] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRev.109.1492
+            - text: ". URL:"
+            - link "https://journals.aps.org/pr/abstract/10.1103/PhysRev.109.1492" [ref=e19724] [cursor=pointer]:
+              - /url: https://journals.aps.org/pr/abstract/10.1103/PhysRev.109.1492
+            - text: . Cited in §7.13.6 as the source of the disorder theory that generalises Bloch’s theorem.
+        - listitem [ref=e19725]:
+          - paragraph [ref=e19726]:
+            - strong [ref=e19727]: Runge, E.; Gross, E. K. U.
+            - text: “Density-Functional Theory for Time-Dependent Systems.”
+            - emphasis [ref=e19728]: Phys. Rev. Lett.
+            - strong [ref=e19729]: "1984"
+            - text: ","
+            - emphasis [ref=e19730]: "52"
+            - text: ", 997–1000. DOI:"
+            - link "10.1103/PhysRevLett.52.997" [ref=e19731] [cursor=pointer]:
+              - /url: https://doi.org/10.1103/PhysRevLett.52.997
+            - text: ". URL:"
+            - link "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.52.997" [ref=e19732] [cursor=pointer]:
+              - /url: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.52.997
+            - text: . Cited in §7.13.6 as the time-dependent generalisation of the Hohenberg–Kohn theorem.
+      - blockquote [ref=e19733]:
+        - paragraph [ref=e19734]:
+          - strong [ref=e19735]: Cross-references.
+          - text: The Bloch theorem is also proved in chapter 06 §6.7 (in the plane-wave context) and the Brillouin zone is constructed geometrically in
+          - link "chapter 10" [ref=e19736] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/
+          - text: §10.2 (“Crystallography and reciprocal space”). The BSW labels are used in
+          - link "chapter 11" [ref=e19737] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: §11.6 (“Band representations and topological indices”). The limitations of §7.13.6 are covered in detail in
+          - link "chapter 12" [ref=e19738] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-12/
+          - text: (many-body physics) and
+          - link "chapter 13" [ref=e19739] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-13/
+          - text: (disorder and correlated materials).
+      - heading "7.14 What we left out" [level=2] [ref=e19740]
+      - paragraph [ref=e19741]:
+        - text: The chapter has been a self-contained introduction to Bloch’s theorem, the Brillouin zone, plane-wave basis sets, and k-point sampling. A non-exhaustive list of the topics we have
+        - emphasis [ref=e19742]: not
+        - text: "covered:"
+      - list [ref=e19743]:
+        - listitem [ref=e19744]:
+          - strong [ref=e19745]: Spin–orbit coupling.
+          - text: The Hamiltonian
+          - img [ref=e19747]:
+            - link [ref=e19750] [cursor=pointer]:
+              - /url: "#"
+          - text: is spin-free. For solids with heavy elements (5
+          - emphasis [ref=e19759]: d
+          - text: ’, 6p*, f-electron systems), the spin–orbit term
+          - img [ref=e19761]
+          - text: has to be added; the Bloch factor
+          - img [ref=e19801]
+          - text: becomes a 2 × 2 spinor matrix. This is essential for the correct band topology of topological insulators and transition-metal dichalcogenides.
+        - listitem [ref=e19818]:
+          - strong [ref=e19819]: Non-collinear magnetism and spin textures.
+          - text: The Bloch theorem generalises to spinor wavefunctions; the “bands” become vector-valued and can carry non-trivial spin textures (skyrmions, Rashba splitting, …).
+        - listitem [ref=e19820]:
+          - strong [ref=e19821]: Symmetry-adapted k-points and time-reversal.
+          - text: The Monkhorst–Pack mesh can be folded onto the irreducible BZ using the crystal point-group symmetries, giving the “irreducible k-point” set. Time-reversal symmetry
+          - img [ref=e19823]
+          - text: at
+          - img [ref=e19837]
+          - text: (for spinless, time-reversal-invariant systems) can be used to halve the mesh again.
+        - listitem [ref=e19866]:
+          - strong [ref=e19867]: Projector-augmented waves (PAW), ultrasoft pseudopotentials.
+          - text: The plane-wave basis is great for valence electrons but hopeless for the tightly-bound core. The PAW and ultrasoft-pseudopotential methods of
+          - link "chapter 08" [ref=e19868] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: augment the plane-wave basis near the nuclei with localised functions, and reconstitute the all-electron wavefunction in the augmentation region. This is what every production plane-wave code actually uses.
+        - listitem [ref=e19869]:
+          - strong [ref=e19870]: Linear-response / DFPT.
+          - text: Frozen-phonon and density-functional perturbation theory (
+          - link "chapter 10" [ref=e19871] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-10/
+          - text: ) compute phonons and electron–phonon coupling from the linear response of the periodic ground state. The same plane-wave machinery is used, but the perturbation is itself a Bloch wave with crystal momentum
+          - img [ref=e19873]
+          - text: .
+        - listitem [ref=e19879]:
+          - strong [ref=e19880]: Wannier functions, Berry phase, and modern theory of polarisation.
+          - text: The Bloch functions are not the only complete basis; the Wannier functions obtained by Fourier-transforming the Bloch waves are localised in real space and are the natural basis for tight-binding models. Berry-phase quantities (polarisation, orbital magnetisation, Chern number) are essential for
+          - link "chapter 11" [ref=e19881] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-11/
+          - text: .
+        - listitem [ref=e19882]:
+          - strong [ref=e19883]:
+            - text: Many-body perturbation theory (
+            - img [ref=e19885]
+            - text: ", BSE)."
+          - text: The Kohn–Sham eigenvalues of chapter 04 are not quasiparticle energies.
+          - img [ref=e19893]
+          - text: corrections and the Bethe–Salpeter equation are the standard ways to compute band gaps and excitons in solids.
+        - listitem [ref=e19906]:
+          - strong [ref=e19907]: Quantum-chemistry-style methods in periodic boundary conditions.
+          - text: Localised-orbital methods (Gaussian-basis DFT, quantum-chemistry methods like CCSD(T) in a periodic supercell) provide an alternative to plane waves, with different strengths and weaknesses. We have not covered them.
+      - blockquote [ref=e19908]:
+        - paragraph [ref=e19909]:
+          - text: "Next:"
+          - link "chapter 08" [ref=e19910] [cursor=pointer]:
+            - /url: /DFT-notes/dft-notes/chapter-08/
+          - text: "— pseudopotentials: why plane waves cannot describe tightly-bound core electrons, and how the projector-augmented-wave method fixes it."
+  - contentinfo [ref=e19911]:
+    - generic [ref=e19912]:
+      - generic [ref=e19913]:
+        - img [ref=e19914]
+        - generic [ref=e19918]: DFT Notes
+        - paragraph [ref=e19919]: Reader-first notes on Density Functional Theory.
+      - generic [ref=e19920]:
+        - generic [ref=e19921]:
+          - heading "Project" [level=3] [ref=e19922]
+          - list [ref=e19923]:
+            - listitem [ref=e19924]:
+              - link "Chapters map" [ref=e19925] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/chapters-map/
+            - listitem [ref=e19926]:
+              - link "Python codes" [ref=e19927] [cursor=pointer]:
+                - /url: /DFT-notes/dft-notes/python_codes/
+            - listitem [ref=e19928]:
+              - link "Contributing" [ref=e19929] [cursor=pointer]:
+                - /url: /DFT-notes/CONTRIBUTING.md
+            - listitem [ref=e19930]:
+              - link "Security" [ref=e19931] [cursor=pointer]:
+                - /url: /DFT-notes/SECURITY.md
+            - listitem [ref=e19932]:
+              - link "Design spec" [ref=e19933] [cursor=pointer]:
+                - /url: /DFT-notes/design.md
+            - listitem [ref=e19934]:
+              - link "GitHub ↗" [ref=e19935] [cursor=pointer]:
+                - /url: https://github.com/Shuvam-Banerji-Seal/DFT-notes
+        - generic [ref=e19936]:
+          - heading "Built with" [level=3] [ref=e19937]
+          - list [ref=e19938]:
+            - listitem [ref=e19939]:
+              - link "Jekyll" [ref=e19940] [cursor=pointer]:
+                - /url: https://jekyllrb.com
+            - listitem [ref=e19941]:
+              - link "MathJax 3" [ref=e19942] [cursor=pointer]:
+                - /url: https://docs.mathjax.org
+            - listitem [ref=e19943]:
+              - link "Mermaid" [ref=e19944] [cursor=pointer]:
+                - /url: https://mermaid.js.org
+            - listitem [ref=e19945]:
+              - link "chenglou/pretext" [ref=e19946] [cursor=pointer]:
+                - /url: https://github.com/chenglou/pretext
+            - listitem [ref=e19947]:
+              - link "Google Fonts" [ref=e19948] [cursor=pointer]:
+                - /url: https://fonts.google.com
+        - generic [ref=e19949]:
+          - heading "Legal" [level=3] [ref=e19950]
+          - list [ref=e19951]:
+            - listitem [ref=e19952]:
+              - link "MIT License" [ref=e19953] [cursor=pointer]:
+                - /url: /DFT-notes/LICENSE
+            - listitem [ref=e19954]: © 2026 Shuvam Banerji Seal
+      - paragraph [ref=e19956]: Notes published under the MIT License. DFT and the underlying physics are the work of countless researchers; see each chapter for citations.

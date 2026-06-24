@@ -632,6 +632,7 @@ $$
 
 The four terms in detail:
 
+$$
 \begin{align}
 \label{eq:ch-16-kane-mele-terms}
 \hat H_0 &= -t \sum_{\langle i j \rangle, \sigma} c^\dagger_{i\sigma} c_{j\sigma} ,
@@ -642,6 +643,7 @@ The four terms in detail:
 \\\\[4pt]
 \hat H_\text{staggered} &= \lambda_v \sum_{i, \sigma} \nu_i\, c^\dagger_{i\sigma} c_{i\sigma} .
 \end{align}
+$$
 
 In \eqref{eq:ch-16-kane-mele-terms}:
 
@@ -708,12 +710,14 @@ $\{ |\Gamma_6, \uparrow\rangle, |\Gamma_8, \uparrow\rangle
 \}$ and $h^*(-\mathbf k)$ the time-reversed partner (so
 $H(\mathbf k)$ is TR-symmetric), and
 
+$$
 \begin{align}
 \label{eq:ch-16-bhz-d}
 d_a(\mathbf k) &= A \sin k_a , \quad a = x, y ,
 \\\
 d_z(\mathbf k) &= M - B (k_x^2 + k_y^2) .
 \end{align}
+$$
 
 The *topology* of the BHZ model is controlled by the mass
 parameter $M$. Inverting the sign of $M$ (relative to

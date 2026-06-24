@@ -790,6 +790,7 @@ $$
 Substitute into \eqref{eq:ch-12-chi-s-def} and use
 $\delta\rho = \delta\rho_s$:
 
+$$
 \begin{align}
 \delta\rho(\mathbf r, \omega)
 &= \int d\mathbf r'\,
@@ -802,11 +803,13 @@ $\delta\rho = \delta\rho_s$:
               f_\text{xc}(\mathbf r', \mathbf r''; \omega)\,
               \delta\rho(\mathbf r'', \omega) \Bigr] .
 \end{align}
+$$
 
 Use \eqref{eq:ch-12-chi-fourier} to replace
 $\delta v_\text{ext}$ with $\delta\rho$ on the right-hand
 side, and rearrange:
 
+$$
 \begin{align}
 \delta\rho(\mathbf r, \omega)
 &= \int d\mathbf r'\,
@@ -818,6 +821,7 @@ side, and rearrange:
           + f_\text{xc}(\mathbf r', \mathbf r''; \omega) \Bigr]\,
      \delta\rho(\mathbf r'', \omega) .
 \end{align}
+$$
 
 Identifying the first term on the right-hand side as
 $\int \chi_s\, \delta v_\text{ext}$ and the rest as the
@@ -1956,6 +1960,7 @@ field, and the trace of this commutator in the
 ground state is the sum of all $f_I$ weighted by
 $\omega_I$:
 
+$$
 \begin{align}
 \sum_I f_I\, \omega_I
 &= \frac{2\,m}{3\hbar}\, \sum_{\alpha, I}
@@ -1963,6 +1968,7 @@ $\omega_I$:
 &= -\frac{2\,m}{3\hbar}\, \sum_\alpha
    \langle \Psi_0 | \hat r_\alpha [\hat H_0, [\hat H_0, \hat r_\alpha]] | \Psi_0 \rangle .
 \end{align}
+$$
 
 Evaluating the double commutator,
 $[\hat H_0, \hat r_\alpha] = \hat p_\alpha / m$ and
@@ -2070,6 +2076,7 @@ $K(\mathbf r, \mathbf r') = v_H(\mathbf r, \mathbf r')
 symmetric, and frequency-independent.  The Dyson
 equation is
 
+$$
 \begin{align}
 \chi(\mathbf r, \mathbf r'; \omega)
 &= \chi_s(\mathbf r, \mathbf r'; \omega) \\\
@@ -2078,6 +2085,7 @@ equation is
    K(\mathbf r'', \mathbf r''')\,
    \chi(\mathbf r''', \mathbf r'; \omega) .
 \end{align}
+$$
 
 **Step 3.**  Look for the poles of $\chi$.  Write
 $\chi(\omega) = \chi_s + \chi_s K \chi$ and rearrange
@@ -2246,6 +2254,7 @@ Invert the relation.  Multiplying on the left by
 $\chi_s$ and on the right by $\chi$ and using
 $\chi \chi^{-1} = \mathbf 1$, we get
 
+$$
 \begin{align}
 \chi_s(\mathbf r, \mathbf r'; \omega)
 &= \chi(\mathbf r, \mathbf r'; \omega)
@@ -2255,9 +2264,11 @@ $\chi \chi^{-1} = \mathbf 1$, we get
        + f_\text{xc}(\mathbf r'', \mathbf r'''; \omega) \Bigr]\,
    \chi_s(\mathbf r''', \mathbf r'; \omega) .
 \end{align}
+$$
 
 Solving for $\chi$,
 
+$$
 \begin{align}
 \chi(\mathbf r, \mathbf r'; \omega)
 &= \chi_s(\mathbf r, \mathbf r'; \omega)
@@ -2267,6 +2278,7 @@ Solving for $\chi$,
        + f_\text{xc}(\mathbf r'', \mathbf r'''; \omega) \Bigr]\,
    \chi(\mathbf r''', \mathbf r'; \omega) .
 \end{align}
+$$
 
 This is the Dyson equation \eqref{eq:ch-12-dyson}.  QED.
 
