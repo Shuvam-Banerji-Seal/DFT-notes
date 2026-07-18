@@ -20,7 +20,7 @@ keywords: "problems, anthology, exercises, DFT, exercises, quantum
 > Forty problems, pulled from chapters 01 to 13, sorted by
 > topic and difficulty, plus three cross-chapter problem sets
 > that force the reader to *integrate* material across multiple
-> chapters. Every per-chapter entry is *self-containe`d*`: a
+> chapters. Every per-chapter entry is *self-contained*: a
 > problem statement, a difficulty rating, a cross-reference
 > to the chapter section where the result is developed, a
 > one-or-two-sentence hint on the approach, and a one-sentence
@@ -196,7 +196,7 @@ graph LR
 > is. The non-additivity is the **size-consistency error**.
 > **Hint:** write the CISD Ansatz for the dimer and the
 > product of two CISD Ansätze for the monomers; the
-> *quadruply-excite`d*' configurations (one double on each
+> *quadruply-excited* configurations (one double on each
 > monomer) appear in the *product* Ansatz but not in the
 > dimer CISD Ansatz.
 > **Answer:** the dimer CISD has $N^2$ doubles but the
@@ -242,26 +242,23 @@ graph LR
 > **[statement]** The coupled-cluster Ansatz is
 > $|\text{CC}\rangle = e^{\hat T} | \Phi_0 \rangle$ with
 > $\hat T = \hat T_1 + \hat T_2 + \dots$ and
-> $\hat T_n = (n!)^{-1} \sum t_{i_1 \dots i_n}^{a_1 \dots a_n}
-> \hat a^\dagger_{a_1} \dots \hat a_{i_n}$. The CCSD
+> $\hat T_n = (n!)^{-1} \sum t_{i_1 \dots i_n}^{a_1 \dots a_n} \hat a^\dagger_{a_1} \dots \hat a_{i_n}$. The CCSD
 > amplitude equations are
 > $\langle \Phi_i^a | e^{-\hat T} \hat H e^{\hat T} | \Phi_0 \rangle = 0$.
 > Show that for two non-interacting fragments A and B at
 > infinite separation, the CCSD amplitude equations *factor*:
-> $t_i^a = t_i^{a,\text{A}} + t_i^{a,\text{B}$ (with mixed
+> $t_i^a = t_i^{a,\text{A}} + t_i^{a,\text{B}}$ (with mixed
 > terms zero), and the CCSD energy is
 > $E_\text{CCSD}^\text{AB} = E_\text{CCSD}^\text{A} + E_\text{CCSD}^\text{B}$.
 > **Hint:** use the Campbell–Baker–Hausdorff theorem
-> $e^{-\hat T} \hat H e^{\hat T} = \hat H + [\hat H, \hat T]
-> + \tfrac{1}{2!} [[\hat H, \hat T], \hat T] + \dots$ and the
+> $e^{-\hat T} \hat H e^{\hat T} = \hat H + [\hat H, \hat T] + \tfrac{1}{2!} [[\hat H, \hat T], \hat T] + \dots$ and the
 > fact that $\hat T^\text{A}$ and $\hat T^\text{B}$ commute
 > (they act on disjoint orbital sets).
 > **Answer:** the CCSD amplitude equations factor
 > monomer-by-monomer because $e^{-\hat T} \hat H e^{\hat T}$ is
-> a polynomial in $\hat T$ and the *normal-ordere`d*' Hamiltonian
+> a polynomial in $\hat T$ and the *normal-ordered* Hamiltonian
 > $\hat H_N$ has no one-body terms connecting A and B;
-> therefore $E_\text{CCSD}^\text{AB} = E_\text{CCSD}^\text{A}
-> + E_\text{CCSD}^\text{B}$ exactly.
+> therefore $E_\text{CCSD}^\text{AB} = E_\text{CCSD}^\text{A} + E_\text{CCSD}^\text{B}$ exactly.
 
 ---
 
@@ -281,7 +278,7 @@ graph LR
 > with $\mathbf F$ the Fock matrix in the AO basis and
 > $\mathbf S$ the overlap matrix $S_{\mu\nu} = \langle \chi_\mu
 > | \chi_\nu \rangle$. Identify the origin of the
-> *generalise`d*' eigenvalue problem (the $\mathbf S$ on the
+> *generalised* eigenvalue problem (the $\mathbf S$ on the
 > right) and explain why the canonical MOs are *not* orthogonal
 > in the AO sense ($\mathbf C^\dagger \mathbf S \mathbf C = \mathbf 1$,
 > not $\mathbf C^\dagger \mathbf C = \mathbf 1$).
@@ -291,7 +288,7 @@ graph LR
 > matrix $F_{\mu\nu} = \langle \chi_\mu | \hat F | \chi_\nu \rangle$.
 > **Answer:** $F_{\mu\nu} = h_{\mu\nu} + \sum_{\rho\sigma}
 > P_{\rho\sigma} [(\mu\nu | \rho\sigma) - \tfrac{1}{2}(\mu\sigma | \rho\nu)]$
-> and the equations are *generalise`d*' because the AOs are
+> and the equations are *generalised* because the AOs are
 > non-orthogonal; the orthonormality condition on the MOs
 > reads $\mathbf C^\dagger \mathbf S \mathbf C = \mathbf 1$.
 
@@ -510,10 +507,10 @@ graph LR
 > | \Psi_\lambda \rangle d\lambda - E_H$, where
 > $E_H = \tfrac{1}{2} \int \rho(\mathbf r) \rho(\mathbf r')
 > / |\mathbf r - \mathbf r'| d\mathbf r d\mathbf r'$.
-> Show that the *coupling-constant average`d*' exchange energy
+> Show that the *coupling-constant averaged* exchange energy
 > is the exact HF exchange:
 > $\int_0^1 E_x[\Psi_\lambda]\, d\lambda = E_x^\text{exact}$,
-> and use this to interpret why *hybri`d*' functionals
+> and use this to interpret why *hybrid* functionals
 > $E_\text{xc}^\text{hybrid} = a E_x^\text{exact} + (1 - a)
 > E_x^\text{GGA} + E_c^\text{GGA}$ with $a \in [0.2, 0.3]$
 > outperform their GGA parent at finite $a$.
@@ -541,7 +538,7 @@ graph LR
 > **P6.1.1** (easy) · *§6.11, Problem 1*
 > **[statement]** Water (H₂O) has one O and two H atoms.
 > Count the number of contracted basis functions $K$ that
-> the basis sets **`STO-3G*`*, **`6-31G*`*, **`6-31G*`**, and
+> the basis sets **STO-3G**, **6-31G**, **6-31G***, and
 > **cc-pVDZ** give for water, using the spherical-harmonic
 > convention for $d$-functions (5 per shell, not 6).
 > **Hint:** count the per-atom contributions and use
@@ -858,7 +855,7 @@ graph LR
 > symmetric matrices is symmetric and $s s^\top$ is
 > symmetric. **(b)** the BFGS update is the *unique*
 > rank-2 update that satisfies the quasi-Newton
-> condition *an`d*' minimises the weighted distance to
+> condition *and* minimises the weighted distance to
 > the previous inverse Hessian — see
 > [Chapter 09, §9.7]({{ "/dft-notes/chapter-09/#97-the-bfgs-update-formula-in-full" | relative_url }})
 > for the Lagrange-multiplier derivation.
@@ -874,7 +871,7 @@ graph LR
 > $E(R) = D_e (1 - e^{-a(R - R_0)})^2 - D_e$ with
 > $D_e \approx 0.134\,E_h$ and $a \approx 1.03\,a_0^{-1}$.
 > Starting from $R_1 = 1.5\,a_0$, perform one
-> **steepest-descent** step with a *fixe`d*' step size
+> **steepest-descent** step with a *fixed* step size
 > $\eta = 0.05\,a_0 / F$ (where $F$ is the force at
 > $R_1$) and report the new bond length $R_2$. Then
 > perform a **line-search** step at $R_1$ and report the
@@ -902,7 +899,7 @@ graph LR
 > minimum* per force evaluation. At $R = 2.5\,a_0$ the
 > Morse $E$ is no longer quadratic, so both methods
 > slow down. The take-away: **always use a line
-> searc`h*`* when the energy surface is far from harmonic.
+> search when the energy surface is far from harmonic.
 
 ---
 
@@ -964,7 +961,7 @@ graph LR
 > no energy. **(b)** Argue why the ASR is satisfied
 > *automatically* if the interatomic force constants are
 > computed in a *finite* supercell with PBC and no
-> external field, and why it is *violate`d*' if the
+> external field, and why it is *violated* if the
 > supercell has a net dipole (e.g. a slab geometry).
 > **(c)** For the diatomic chain of §10.1, verify the
 > ASR by writing out the $2 \times 2$ dynamical matrix
@@ -1034,7 +1031,7 @@ graph LR
 > overcomes the kinetic energy; GaAs has
 > $\alpha \approx 0.036$, well below threshold, so the
 > **large (Fröhlich) polaron** is the correct picture —
-> the electron is *dresse`d*' by a phonon cloud but
+> the electron is *dressed* by a phonon cloud but
 > remains mobile. This is why GaAs is a good
 > semiconductor (high mobility) despite the strong
 > electron–phonon coupling.
@@ -1231,10 +1228,10 @@ graph LR
 > = N_e$. **(b)** with 42 electrons and ~10–20
 > dipole-allowed transitions in the first UV band, the
 > average $f \sim 0.2$–$0.4$ per state. **(c)** the TDA
-> and the adiabatic LDA *bot`h*' preserve the TRK sum
+> and the adiabatic LDA *both* preserve the TRK sum
 > rule *exactly* (effective one-body Hamiltonians); the
 > failure of the TRK sum rule is a signature of
-> *non-adiabati`c*' xc kernels (e.g. Bethe–Salpeter).
+> *non-adiabatic* xc kernels (e.g. Bethe–Salpeter).
 
 ### 12.2 Absorption cross-section of a two-level system
 
@@ -1254,7 +1251,7 @@ graph LR
 > (3 c^2)$. **(b)** Add a phenomenological linewidth
 > $\Gamma$ (a Lorentz broadening) and integrate
 > $\sigma(\omega)$ over $\omega$ to get the **dipole
-> strengt`h*`* $S = \int \sigma(\omega) d\omega$. Show
+> strength $S = \int \sigma(\omega) d\omega$. Show
 > that $S = 4\pi^2 \alpha |\boldsymbol\mu_{ge}|^2 / c$.
 > **(c)** For a typical dye molecule with
 > $|\boldsymbol\mu_{ge}|^2 \sim 10\,e a_0^2$ and
@@ -1335,7 +1332,7 @@ graph LR
 > **(c)** in CIS (TDA) the triplet–singlet splitting
 > comes only from the *exchange* integrals, not from
 > the xc kernel, so the singlet–triplet gap is
-> *underestimated*'; full TD-DFT captures the dynamical
+> *underestimated*; full TD-DFT captures the dynamical
 > correlation via the xc kernel, which lowers the
 > singlet more than the triplet.
 
@@ -1381,8 +1378,8 @@ graph LR
 > $E_\text{DC} = \tfrac{1}{2} U_\text{avg} n_d (n_d - 1)$
 > with $n_d = \text{Tr}\, \mathbf n$ and $U_\text{avg}$ the
 > *average* on-site repulsion already included in LDA (the
-> LDA cannot tell a *localise`d*' $d$ electron from a
-> *delocalise`d*' one). **(b)** for $n_d = 1$ integer,
+> LDA cannot tell a *localised* $d$ electron from a
+> *delocalised* one). **(b)** for $n_d = 1$ integer,
 > $\text{Tr}\, \mathbf n = 1$ and
 > $\text{Tr}\, (\mathbf n^2) = 1$ (a $1 \times 1$ projector
 > on the occupied orbital), so the correction is zero — the
@@ -1437,12 +1434,12 @@ graph LR
 > Mott transition is at $U_c \approx 4.5\,t$ in 2-D (QMC,
 > zero temperature); for $U < U_c$ the system is a metal,
 > for $U > U_c$ it is an antiferromagnetic insulator.
-> **(d)** the LDA is built on the *delocalise`d*' KS
+> **(d)** the LDA is built on the *delocalised* KS
 > orbitals of a non-interacting reference and has no way to
 > suppress the charge fluctuation that the Mott insulator
 > requires; the gap in LDA comes from *band splitting*
 > (Slater antiferromagnet), not from on-site repulsion.
-> The 3*`d*' transition-metal oxides (MnO, FeO, CoO, NiO)
+> The 3*d* transition-metal oxides (MnO, FeO, CoO, NiO)
 > are the textbook examples of this failure.
 
 ### 13.3 The Liechtenstein rotationally invariant DFT+U
@@ -1514,7 +1511,7 @@ of a frozen $1s$ core.
 <details class="problem">
 <summary>Part 1 (chapter 01) — The hydrogenic 2s orbital</summary>
 
-Treat the $2s$ valence electron of Li as a *hydrogeni`c*'
+Treat the $2s$ valence electron of Li as a *hydrogenic*
 orbital in an effective nuclear charge
 $Z_\text{eff} \in [1, 3]$ (the $1s^2$ core screens two
 of the three nuclear protons).  Write down the radial
@@ -1623,12 +1620,12 @@ of [Chapter 05, §5.1]({{ "/dft-notes/chapter-05/" | relative_url }}).
 This is a *Kohn–Sham DFT* calculation in a minimal
 basis (KS-LDA/STO-3G).  Report the new
 $\varepsilon_{2s}$ and compare with the UHF value.
-Discuss the *systemati`c*' difference: in atoms, KS-LDA
+Discuss the *systematic* difference: in atoms, KS-LDA
 *overbinds* the HOMO and underbinds the LUMO, but
 the *Koopmans* IE (which is $-\varepsilon_\text{HOMO}$,
 not the $\Delta$SCF value) is typically in *better*
 agreement with experiment for HF than for LDA,
-*reverse`d*' when the $\Delta$SCF correction is applied.
+*reversed* when the $\Delta$SCF correction is applied.
 </details>
 
 <details class="answer">
@@ -1708,12 +1705,12 @@ saving that makes plane-wave DFT on Li feasible.
 The deeper point: the all-electron $1s$ orbital of Li
 has $\varepsilon_{1s} \approx -2.46\,E_h$ and oscillates
 $\sim 2$ times inside $r_c$; the *pseudo-potential* is
-*designed*' to reproduce the valence $2s$ orbital
+*designed* to reproduce the valence $2s$ orbital
 *outside* $r_c$ and is allowed* to deviate inside —
 that deviation is the *frozen-core* approximation.
 For a Li atom in two different chemical environments
 (e.g. Li in LiH vs Li in Li₂), the $1s$ core is
-*assumed*' unchanged and the $V_{ps}$ is transferred*
+*assumed* unchanged and the $V_{ps}$ is transferred*
 between them — the transferability is the key
 property of the construction.
 </details>
@@ -1725,7 +1722,7 @@ property of the construction.
 This problem set takes a *single* physical system (a
 1-D periodic diatomic chain — the prototype of an ionic
 crystal) and walks it through four chapters: from
-*electronic*' band structure (ch 07) through phonons
+*electronic* band structure (ch 07) through phonons
 (ch 10) through *band-structure* analysis and DOS
 visualisation (ch 11) to its *optical* absorption
 spectrum (ch 12).
@@ -1734,7 +1731,7 @@ spectrum (ch 12).
 <summary>Part 1 (chapter 07) — Electronic band structure of the diatomic chain</summary>
 
 The chain has a two-atom unit cell, so the BZ is
-$|k| \le \pi / a$ and the *electroni`c*' band structure
+$|k| \le \pi / a$ and the *electronic* band structure
 has *two* bands,
 $\varepsilon_\pm(k) = \pm 2 t |\cos(ka/2)|$.
 **(a)** Sketch $\varepsilon_\pm(k)$ for
@@ -1812,7 +1809,7 @@ $\omega_+(0) = \sqrt{2 \cdot 1 \cdot 1.029 / 1836}
 \approx 0.0335\,E_h \approx 910\,\text{meV}$ — about
 ten times larger than typical acoustic phonons in
 real solids, because the 1-D spring constant
-$K = 1\,E_h / a_0^2$ is *muc`h*' stiffer than a real
+$K = 1\,E_h / a_0^2$ is *much* stiffer than a real
 interatomic spring.
 
 The LO–TO splitting is a *3-D* effect: in an ionic
@@ -1842,7 +1839,7 @@ $\alpha(\omega) \propto |\boldsymbol\mu_{vc}|^2
 g_\text{joint}(\hbar\omega)$ in the independent-
 particle approximation (without excitonic effects).
 **(c)** The actual optical gap of the chain is
-*reduce`d*' from $4t$ by the **exciton binding
+*reduced* from $4t$ by the **exciton binding
 energy** $E_b$: the optical absorption onsets at
 $\hbar\omega = 4t - E_b$, not at $4t$.  Estimate
 $E_b$ for a 1-D Wannier exciton in the *effective-
@@ -1850,7 +1847,7 @@ mass* approximation:
 $E_b = -\mu e^4 / (2 \hbar^2 \varepsilon^2)$ with
 $\mu$ the reduced effective mass of the electron-
 hole pair and $\varepsilon$ the dielectric
-constant of the chain.  (This is the *lin`k*' to
+constant of the chain.  (This is the *link* to
 chapter 12.)
 </details>
 
@@ -1873,11 +1870,11 @@ $\alpha(\omega) = (4\pi^2 e^2 / n c m_e^2 \omega)
 in the dipole approximation (Fermi's golden rule
 summed over $k$); the joint DOS has the van Hove
 singularity at $\omega = 4t/\hbar$, so $\alpha(\omega)$
-has a *pea`k*' just above the gap (the square-root
+has a *peak* just above the gap (the square-root
 edge of a 1-D DOS) and decays as
 $1/\sqrt{4t - \hbar\omega}$ above the gap.
 
-The exciton binding energy in 1-D is *muc`h*' larger
+The exciton binding energy in 1-D is *much* larger
 than in 3-D: the 1-D hydrogen-like problem has
 $E_b^{(1\text{D})} / E_b^{(3\text{D})} = 4$ (the
 binding is stronger because the electron and hole
@@ -1885,7 +1882,7 @@ are confined to 1-D), and for a typical reduced
 mass $\mu \sim 0.1\,m_e$ and dielectric constant
 $\varepsilon \sim 5$, $E_b \sim 0.1$–$0.5\,\text{eV}$
 — a significant fraction of the gap, especially in
-*organi`c*' semiconductors.
+*organic* semiconductors.
 </details>
 
 <details class="problem">
@@ -1911,7 +1908,7 @@ $\Omega_\text{triplet} = \varepsilon_+ - \varepsilon_-$
 (no exchange screening in the triplet). **(c)** In
 1-D, the Coulomb integrals $J, K$ are *larger* than
 in 3-D (the electron-hole overlap is larger), so the
-singlet is *more strongly redshifte`d*' and the
+singlet is *more strongly redshifted* and the
 singlet-triplet splitting is *larger*.  Discuss the
 **Bethe–Salpeter** correction to the xc kernel that
 is required to reproduce the experimental absorption
@@ -1947,7 +1944,7 @@ the binding energy can be $0.5$–$1.0\,\text{eV}$ —
 comparable to the band gap itself.  The **adiabatic
 LDA** (ALDA) *underestimates* the binding energy; the
 **Bethe–Salpeter equation** (BSE) is the
-*non-adiabati`c*' correction that gives quantitative
+*non-adiabatic* correction that gives quantitative
 agreement with experiment.
 </details>
 
@@ -1987,7 +1984,7 @@ treat the *same* problem in KS-DFT with the LDA xc
 functional.  The LDA self-consistent solution is
 *exactly* the non-interacting solution (because the
 homogeneous electron gas that LDA is fit to is
-*itsel`f*' non-interacting in the KS sense); LDA
+*itself* non-interacting in the KS sense); LDA
 predicts a *metal*. **(c)** Discuss why this is
 *wrong* for the real material: in the limit
 $U \to \infty$ the on-site repulsion forbids double
@@ -2022,9 +2019,9 @@ transition is a *correlation-driven* insulator-to-
 metal transition that LDA simply *cannot* describe.
 
 In real materials, this failure is visible in the
-3*`d*' transition-metal oxides (MnO, CoO, NiO, the
+3*d* transition-metal oxides (MnO, CoO, NiO, the
 parent compounds of the high-$T_c$ cuprates): LDA
-predicts *metalli`c*' ground states for materials
+predicts *metallic* ground states for materials
 that are *experimentally* antiferromagnetic
 insulators with gaps of $1$–$4\,\text{eV}$.  The
 LDA gaps are listed in the table of
@@ -2050,12 +2047,12 @@ transition: the GGA is a *local* (or semi-local)
 correction to LDA, and the Mott physics is *non-
 local* (it depends on the *fluctuation of the
 density, not just its value and gradient). **(c)**
-Discuss the *hybri`d*' functionals (PBE0, HSE) of
+Discuss the *hybrid* functionals (PBE0, HSE) of
 [Chapter 05, §5.4]({{ "/dft-notes/chapter-05/" | relative_url }}) and their *temporary* success on
 Mott insulators: the *exact-exchange* part of the
 hybrid is a *non-local* operator and partially
 captures the on-site repulsion, so PBE0 opens a gap
-in MnO and NiO — but with an *ad ho`c*' mixing
+in MnO and NiO — but with an *ad hoc* mixing
 parameter $a = 0.25$, not from first principles.
 </details>
 
@@ -2075,7 +2072,7 @@ transition-metal site), but the GGA correction is a
 describe the *non-local* physics of the on-site
 repulsion.
 
-The *hybri`d*' functionals (PBE0, HSE) replace a
+The *hybrid* functionals (PBE0, HSE) replace a
 fraction $a$ of the GGA exchange with *exact* (non-
 local) HF exchange, which *does* contain the on-
 site $d$–$d$ Coulomb repulsion in the form of the
@@ -2084,7 +2081,7 @@ opens a gap of $\sim 4\,\text{eV}$, in reasonable
 agreement with experiment ($4.3\,\text{eV}$), while
 LDA gives a *metal*.  But the amount of exact
 exchange is an *empirical* parameter: $a = 0.25$ is
-the PBE0 choice, but a *range-separate`d*' hybrid like
+the PBE0 choice, but a *range-separated* hybrid like
 HSE06 (with $a = 0.25$ at short range and 0 at long
 range) gives similar results.  The *fundamental*
 problem — that the hybrid is a *mixture* of DFT and
@@ -2109,7 +2106,7 @@ $\text{Tr}\, \mathbf n^\uparrow - \text{Tr}\,
 (\mathbf n^\uparrow)^2 = 0$ on both sublattices, so
 the DFT+U correction *vanishes* in the half-filled
 AF state. **(b)** The *non-trivial* DFT+U effect
-appears when the *spin-u`p*' occupation on one
+appears when the *spin-up* occupation on one
 sublattice is *less* than 1 (e.g. due to
 hybridisation with the other sublattice): then
 $\text{Tr}\, \mathbf n^\uparrow - \text{Tr}\,
@@ -2123,7 +2120,7 @@ too small (say $U = 2\,t$) and the gap does not
 open, the system stays metallic; too large
 ($U = 20\,t$) and the gap is grossly overestimated;
 the *physical* value is $U \approx 4$–$6\,t$ for the
-3*`d*' transition-metal oxides.
+3*d* transition-metal oxides.
 </details>
 
 <details class="answer">
@@ -2186,7 +2183,7 @@ Four suggestions, in increasing order of effort.
 4. **Integrate.** The three **cross-chapter** problem
    sets (A, B, C) test your ability to *combine*
    methods from multiple chapters.  Pick one and try
-   to identify the *threa`d*' that connects the parts:
+   to identify the *thread* that connects the parts:
    in A, the thread is the *pseudopotential
    construction* (H → HF → KS-DFT → pseudopotential);
    in B, the thread is the *single physical system*

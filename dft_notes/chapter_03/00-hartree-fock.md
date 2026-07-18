@@ -97,7 +97,7 @@ $\Psi_\text{HF}$.  In what follows we work in atomic units
 > multi-electron system — see
 > [chapter 02]({{ "/dft-notes/chapter-02/" | relative_url }})), the
 > variational theorem guarantees that $E_\text{HF}$ is an *upper
-> boun`d*' on $E_0$.  This converts a vague "the Fock operator
+> bound*' on $E_0$.  This converts a vague "the Fock operator
 > seems reasonable" into a quantitative, improvable statement.
 
 ## 3.2 The Fock operator
@@ -414,7 +414,7 @@ graph LR
   D3 --> U2
 ```
 
-The determinant basis is the *first-quantise`d*' language in which
+The determinant basis is the *first-quantised* language in which
 post-HF methods (CI, MP2, CC, EOM-CC) are written; the
 Slater–Condon rules are the *only* property of the Hamiltonian
 that makes these methods tractable. The "Δ = 0" and "Δ = 1"
@@ -472,7 +472,7 @@ It is important to separate two distinct errors hidden in
   ([chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }})).
 
 A useful sanity check on any electronic-structure calculation is
-to verify that *bot`h*' errors are small.  Reporting a "DFT energy
+to verify that *both* errors are small.  Reporting a "DFT energy
 of $-76.432$ Hartree" without naming the basis and the functional
 is like reporting "the price is 100" without naming the currency.
 
@@ -590,7 +590,7 @@ This is the Roothaan equation
 > orthonormal $\hat F \phi_i = \varepsilon_i \phi_i$ has no
 > $\mathbf S$.  This is not a mistake; it is the price of choosing
 > a basis adapted to the *physics* (atom-centred Gaussians look
-> like atomic orbitals) rather than to the *mat`h*' (an orthonormal
+> like atomic orbitals) rather than to the *math* (an orthonormal
 > basis is mathematically clean but physically unmotivated).  In
 > a basis where $\mathbf S = \mathbf I$ (e.g. a Löwdin-
 > orthogonalised basis, $\mathbf X = \mathbf S^{-1/2}$, see
@@ -679,7 +679,7 @@ symmetric under $\mu \leftrightarrow \nu$, symmetric under
 $\rho \leftrightarrow \sigma$, and satisfies
 $(\mu\nu \rvert \rho\sigma) = (\rho\sigma \rvert \mu\nu)^*$.
 For real basis functions all four symmetries reduce to a single
-statement of *8-fol`d*' permutational symmetry:
+statement of *8-fold* permutational symmetry:
 
 $$
 \label{eq:ch-03-eri-symm}
@@ -842,7 +842,7 @@ K_{\mu\nu} \;=\; \text{Tr}\Bigl[\mathbf P\, (\mu\cdot \rvert \nu\cdot) \Bigr] .
    \label{eq:ch-03-K-tr}
 $$
 
-   In `numpy`, both are `einsum`s — see the snippet in
+   In `numpy`, both are `einsums — see the snippet in
    section 3.3.
 
 3. **Solve the GEP.**  Diagonalise
@@ -876,7 +876,7 @@ $$
 
    with $\alpha \in (0, 1)$ (typically 0.3 for closed-shell
    molecules, 0.1 or less for transition metals).  The
-   convergence test is on the *unmixe`d*' new density (or on
+   convergence test is on the *unmixed* new density (or on
    $\Delta E$): continue if
    $\|\mathbf P^{(n+1, \text{raw})} - \mathbf P^{(n)}\| > \text{tol}$
    or $|E^{(n+1)} - E^{(n)}| > \text{tol}$.
@@ -913,7 +913,7 @@ MO transformation.
 
 ### 3.6.5.1 Mermaid — the AO-basis data flow
 
-The SCF algorithm above has six steps, but the *dat`a*' it carries
+The SCF algorithm above has six steps, but the *data* it carries
 between steps falls into four categories. The diagram below
 arranges the algorithm by *what is moving*, not by when:
 
@@ -1052,8 +1052,8 @@ metal complexes) we need a more general theory.
 
 The two main open-shell theories are:
 
-- **Restricted open-shell HF (ROHF):** *paire`d*' orbitals for the
-  closed-shell core, *unpaire`d*' orbitals for the open-shell
+- **Restricted open-shell HF (ROHF):** *paired* orbitals for the
+  closed-shell core, *unpaired* orbitals for the open-shell
   electrons.  Enforces a definite spin $S$ on the wavefunction.
   The Fock matrix is non-diagonal in the spin-orbital basis, but
   the energy and orbitals are spin-pure.  Implementation is
@@ -1064,7 +1064,7 @@ The two main open-shell theories are:
   fixed spin function ($\alpha$ or $\beta$); the spatial
   functions for $\alpha$ and $\beta$ are *not* required to be the
   same.  Implementation is essentially identical to the closed-
-  shell case with a *secon`d*' copy of every variable for the $\beta$
+  shell case with a *second* copy of every variable for the $\beta$
   spin.  The wavefunction is not a spin eigenfunction — that is
   the price.
 
@@ -1089,7 +1089,7 @@ $$
 $$
 
 The two sets of spatial orbitals $\{\phi_i^\alpha\}$ and
-$\{\phi_i^\beta\}$ are, a priori, *unrelate`d*`.  Each set is
+$\{\phi_i^\beta\}$ are, a priori, *unrelated*.  Each set is
 expanded in the same AO basis:
 
 $$
@@ -1240,8 +1240,8 @@ $$
 $$
 
 The first two terms are the eigenvalue of a *spin-pure*
-determinant of $N_\beta$ *paire`d*' electrons and
-$N_\alpha - N_\beta$ *unpaire`d*' electrons.  The third term is the
+determinant of $N_\beta$ *paired* electrons and
+$N_\alpha - N_\beta$ *unpaired* electrons.  The third term is the
 "overlap correction": the more the $\alpha$ and $\beta$ orbitals
 overlap, the smaller the contamination; if $\phi_i^\alpha =
 \phi_i^\beta$ for all $i$, the UHF determinant collapses to the
@@ -1324,7 +1324,7 @@ projected energy.
 ### 3.7.7 ROHF and the connection
 
 ROHF enforces a *spin-pure* open-shell determinant by
-constraining the $\alpha$ and $\beta$ orbitals to be *paire`d*'
+constraining the $\alpha$ and $\beta$ orbitals to be *paired*
 (equal spatial functions for doubly-occupied orbitals).  The
 implementation is more involved than UHF: there is no longer a
 single Fock matrix for each spin, but a block structure
@@ -1395,7 +1395,7 @@ $$
 Equation \eqref{eq:ch-03-G-direct} is identical to
 \eqref{eq:ch-03-G-build}; what is new is the implementation
 strategy.  The inner loop of the direct algorithm is a *four-level
-nested loo`p*' over basis-function quartets $(\chi_\mu, \chi_\nu,
+nested loop* over basis-function quartets $(\chi_\mu, \chi_\nu,
 \chi_\rho, \chi_\sigma)$, with a screening test that discards
 quartets whose contribution to $G_{\mu\nu}$ is guaranteed to be
 negligibly small.  The dominant screening inequality is the
@@ -1502,7 +1502,7 @@ chemistry code.
 **The idea.**  At iteration $n$, we have a sequence of Fock
 matrices $\mathbf F^{(1)}, \mathbf F^{(2)}, \dots, \mathbf F^{(n)}$
 (or, equivalently, density matrices $\mathbf P^{(i)}$).  The
-*extrapolate`d*' Fock matrix is a linear combination of the
+*extrapolated* Fock matrix is a linear combination of the
 previous $m$ iterates,
 
 $$
@@ -1885,7 +1885,7 @@ The "approximation" is the **frozen-orbital approximation**: we
 assume the orbitals *do not relax* when an electron is removed
 (or added).  In the language of quantum chemistry, the
 ionisation energy is the *vertical* $E(N - 1) - E(N)$ difference
-at fixed geometry, computed at the *unrelaxe`d*' orbitals.
+at fixed geometry, computed at the *unrelaxed* orbitals.
 
 ### 3.9.1 Derivation
 
@@ -1943,7 +1943,7 @@ The final line is \eqref{eq:ch-03-koopmans}.  $\quad\blacksquare$
 
 The crucial point is the *cancellation of the relaxation* in
 the closed-shell case.  When we remove the $\alpha$ electron from
-orbital $a$, the $\beta$ Fock matrix is *unchange`d*' (it depends
+orbital $a$, the $\beta$ Fock matrix is *unchanged* (it depends
 only on $\mathbf P^\beta$, and $\mathbf P^\beta$ has not been
 touched), so the $\beta$ orbitals do not need to relax.  The
 remaining $\alpha$ orbitals *do* change their Fock matrix, but
@@ -1965,7 +1965,7 @@ $$
 
 The frozen-orbital assumption is hidden in two places:
 
-1. We did not re-optimise the *ionise`d*' state.  The orbitals
+1. We did not re-optimise the *ionised* state.  The orbitals
    used to evaluate $E_\text{HF}(N-1)$ are the *neutral-state*
    orbitals.  In reality, removing an electron lowers the
    screening, and the remaining electrons relax inward; this
@@ -2041,7 +2041,7 @@ Koopmans' theorem is not enough.
 
 Koopmans' theorem is reliable when:
 
-- the orbital is *spatially localise`d*' (the relaxation is
+- the orbital is *spatially localised* (the relaxation is
   small because the orbital does not see the vacancy in detail),
 - the orbital is *not* strongly correlated with others (no
   near-degeneracy effect),
@@ -2052,7 +2052,7 @@ Koopmans' theorem is reliable when:
 
 It is unreliable when:
 
-- the orbital is *delocalise`d*' over many atoms (large
+- the orbital is *delocalised* over many atoms (large
   relaxation),
 - the state being ionised is *not* a single determinant of
   the neutral (e.g. open-shell singlets, near-degenerate
@@ -2155,7 +2155,7 @@ directions:
 - **Inclusions of correlation.**  Møller–Plesset perturbation
   theory (MP2, MP3, MP4), configuration interaction (CI),
   coupled cluster (CCSD, CCSD(T)), multireference methods
-  (CASSCF, CASPT2).  All of these *kee`p*' the HF orbital
+  (CASSCF, CASPT2).  All of these *keep* the HF orbital
   structure as a starting point and add correlation on top.
 - **Substitutions of the operator.**  Kohn–Sham DFT
   ([chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) and
@@ -2439,7 +2439,7 @@ core derivation:
 - **Integral screening beyond Schwarz.**  The Schwarz inequality
   \eqref{eq:ch-03-schwarz} is the *first* level of screening;
   production codes add *shell-pair*, shell-quartet, and
-  *density-base`d*' screenings that drive the effective scaling
+  *density-based* screenings that drive the effective scaling
   of the Fock build down to $\mathcal O(K)$ in the
   large-molecule limit.
 - **Multiconfigurational SCF (MCSCF) and CASSCF.**  When a

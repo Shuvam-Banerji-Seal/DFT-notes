@@ -73,7 +73,7 @@ solid-state physics. It says that *every* eigenstate of a periodic
 Hamiltonian is a plane wave $e^{i\mathbf k \cdot \mathbf r}$ multiplied
 by a function $u_{n\mathbf k}(\mathbf r)$ that knows only about one
 unit cell. The price is that the quantum number is no longer a single
-integer $n$ — it is now a continuous vector $\mathbf k$ *an`d*' a band
+integer $n$ — it is now a continuous vector $\mathbf k$ *and* a band
 index $n$.
 
 > **Tip.** The phase factor $e^{i\mathbf k \cdot \mathbf r}$ is
@@ -147,7 +147,7 @@ accuracy.
 > solid in the limit $N_1, N_2, N_3 \to \infty$. For a *truly*
 > periodic system, the device is exact. For a finite cluster, BvK
 > artificially glues opposite faces of the cluster together, which is
-> why it is a *ba`d*' boundary condition for molecules.
+> why it is a *bad* boundary condition for molecules.
 
 ## 7.3 Derivation of Bloch's theorem
 
@@ -239,7 +239,7 @@ $$
 Two commuting self-adjoint operators on a Hilbert space can be brought
 to a common diagonal form. (Standard result; the operators have a
 joint spectral measure.) So there exists a complete orthonormal basis
-of states that are eigenstates of *bot`h*' $\hat T_{\mathbf R}$ and
+of states that are eigenstates of *both* $\hat T_{\mathbf R}$ and
 $\hat H$ simultaneously. We will call these basis states $\psi$.
 
 ### Step 5. The eigenvalues of $\hat T_{\mathbf R}$ are phase factors
@@ -506,7 +506,7 @@ $$
 V_{\text{per}}(\mathbf q) := \frac{1}{V_\text{cell}} \int_{\text{cell}} V(\mathbf r) \, e^{-i \mathbf q \cdot \mathbf r} \, d^3r
 $$
 
-is the Fourier transform of the *cell-periodi`c*' potential, with the
+is the Fourier transform of the *cell-periodic* potential, with the
 integral restricted to a single primitive cell (or any other cell-
 shaped domain) of volume $V_\text{cell}$.
 
@@ -1029,7 +1029,7 @@ graph TD
 ```
 
 The decision node `K{SCF converged?}' is the inner loop of every
-DFT calculation; the surrounding boxes are the *solid-state-specifi`c*'
+DFT calculation; the surrounding boxes are the *solid-state-specific*
 machinery (BvK supercell, k-point mesh, plane-wave basis, band
 plotting) that the present chapter introduces.
 
@@ -1164,7 +1164,7 @@ $$
 $$
 
 But "density" should not depend on $N$ — in the BvK formalism $N$
-is a *mes`h*' parameter, not a physical one. The right thing to count
+is a *mesh* parameter, not a physical one. The right thing to count
 is the number of k-points *per unit cell*: $N^3$ k-points live in
 the first BZ, and the first BZ itself is associated with one
 primitive cell, so the density of k-points per unit volume of the
@@ -1287,7 +1287,7 @@ $\sigma$), so the same $1/N$ mesh approximates the integral to
 $O(1/N^2)$ provided the mesh is fine enough to resolve the
 smoothed function.
 
-The remaining error is the *systemati`c*' error from using a
+The remaining error is the *systematic* error from using a
 smeared occupation instead of the true step function. For
 $N_\text{MP} = 0$ (Gaussian smearing), this error is
 $O(\sigma^2)$: the leading correction to $E_0$ is quadratic in
@@ -1717,7 +1717,7 @@ $$
 
 by the standard formula for the second moment of a uniform
 distribution on a tetrahedron. Blöchl estimates $H$ from the
-energies of the *four neighbouring tetrahedr`a*' that share a face
+energies of the *four neighbouring tetrahedra* that share a face
 with $T$ — at the *centroid of the face*, the second derivative can
 be estimated by a finite-difference formula involving the energies
 at the face centroid and the two adjacent tetrahedron centres. The
@@ -1846,7 +1846,7 @@ For a *new* system, the algorithm is:
    A/N$ (unsmeared metals); the extrapolation to $N = \infty$ is
    well-conditioned once $N$ is in the asymptotic regime.
 
-The "1 meV/atom" target is a *rule of thum`b*`. Tight-binding solvers
+The "1 meV/atom" target is a *rule of thumb*. Tight-binding solvers
 and high-accuracy equation-of-state work may need 0.1 meV/atom or
 better; high-throughput screening is happy with 10 meV/atom.
 
@@ -1881,12 +1881,12 @@ slower: $N \approx 16$ is needed for 1 meV/atom.
 
 ### 7.12.5 Smearing-width convergence for metals
 
-For a metallic calculation, we need a *secon`d*' convergence test:
+For a metallic calculation, we need a *second* convergence test:
 the smearing width $\sigma$. The recipe is:
 
 1. **Converge the mes'h** $N_\mathbf k$ at a fixe'd*' $\sigma \approx
    0.02$ Hartree.
-2. **Sweep $\sigma$** at a *fixe`d*' $N_\mathbf k$ (large enough to
+2. **Sweep $\sigma$** at a *fixed* $N_\mathbf k$ (large enough to
    be converged for the largest $\sigma$): e.g. $\sigma = 0.04,
    0.02, 0.01, 0.005$ Hartree.
 3. **Extrapolate** $E(\sigma) \to E(\sigma = 0)$ using the known
@@ -2026,7 +2026,7 @@ $\mathbf R$ [Bloch, 1929, eq. (5), p. 558]. This is the load-bearing
 identity of the whole proof.
 
 **§3 The Bloch factor (pp. 558–562).**
-The next step is the *group-theoreti`c*' one. The translation operators
+The next step is the *group-theoretic* one. The translation operators
 form a three-dimensional abelian group isomorphic to $\mathbb Z^3$.
 The eigenfunctions of a commuting family of operators can be chosen to
 be simultaneous eigenfunctions of the group. The group is abelian, so
@@ -2169,7 +2169,7 @@ the *factorisation* language (plane wave times cell-periodic
 function). The two are equivalent, but the former is closer to the
 abstract argument and the latter to the practical calculation.
 
-> **Note.** The A&M treatment is *self-containe`d*`: chapters 8–10 are
+> **Note.** The A&M treatment is *self-contained*: chapters 8–10 are
 > the only references needed for the lattice, the reciprocal lattice,
 > the first Brillouin zone, the Bloch theorem, and the plane-wave
 > expansion. The book is the standard "go-to" reference for the
@@ -2292,11 +2292,11 @@ distinguish representations that are even vs. odd under inversion
 [Bouckaert, Smoluchowski, and Wigner, 1936, p. 61]. For example:
 
 - $\Gamma_1$ — the *identity* representation (1D, fully symmetric).
-- $\Gamma_2$ — the *parity-od`d*' identity (1D).
+- $\Gamma_2$ — the *parity-odd* identity (1D).
 - $\Gamma_{12}$ — a 2D representation that is even under inversion.
-- $\Gamma_{15'}$ — a 3D representation that is *od`d*' under
+- $\Gamma_{15'}$ — a 3D representation that is *odd* under
   inversion (the prime indicates oddness).
-- $\Gamma_{25'}$ — a 3D representation that is *od`d*' under
+- $\Gamma_{25'}$ — a 3D representation that is *odd* under
   inversion (this is the famous $p$-like representation).
 
 [Bouckaert, Smoluchowski, and Wigner, 1936, table II, p. 64]. In a
@@ -2331,12 +2331,12 @@ at $X$ along $\Delta$ [Bouckaert, Smoluchowski, and Wigner, 1936,
 fig. 3, p. 67].
 
 **The 48-element group and double groups.**
-The 48-element group $O_h$ has 10 *single-value`d*' irreducible
+The 48-element group $O_h$ has 10 *single-valued* irreducible
 representations: 5 1-dimensional ($\Gamma_1$, $\Gamma_2$), 1
 2-dimensional ($\Gamma_{12}$), and 2 3-dimensional ($\Gamma_{15'}$,
 $\Gamma_{25'}$) [Bouckaert, Smoluchowski, and Wigner, 1936, table
-II, p. 64]. When spin is included, the *double grou`p*' of $O_h$ is
-required: $O_h$ has 8 additional *double-value`d*' irreps
+II, p. 64]. When spin is included, the *double group* of $O_h$ is
+required: $O_h$ has 8 additional *double-valued* irreps
 ($\Gamma_6^+$, $\Gamma_7^+$, $\Gamma_8^+$, $\Gamma_6^-$, etc.)
 [Bouckaert, Smoluchowski, and Wigner, 1936, p. 65]. The
 double-valued irreps are the *Kramers-degenerate* bands: a band
@@ -2400,7 +2400,7 @@ table III, p. 65].
 > $\mathfrak{D}_{4h}$, and so on [Bouckaert, Smoluchowski, and
 > Wigner, 1936, p. 59]. The irrep labels ($\Gamma_1, X_1, L_1,
 > \ldots$) are BSW's own invention and have survived as the
-> *standar`d*' notation in band-structure theory.
+> *standard* notation in band-structure theory.
 
 ### 7.13.5 The connection to DFT
 
@@ -2475,7 +2475,7 @@ appeared and the chapter in these notes where it is covered:
 - **Time dependence.** Bloch's theorem is for the *time-independent*
   Schrödinger equation. The time-dependent analogue is
   the time-dependent Bloch theorem: the time-evolving state of
-  a system driven by a time-dependent *periodi`c*' perturbation
+  a system driven by a time-dependent *periodic* perturbation
   has the form $\psi_{n\mathbf k}(\mathbf r, t) = e^{i \mathbf k
   \cdot \mathbf r} u_{n\mathbf k}(\mathbf r, t)$, with
   $u_{n\mathbf k}$ *periodic in $\mathbf r$* but not necessarily
@@ -2547,7 +2547,7 @@ this section. They are listed in the order in which they first
 appear in the section.
 
 - **Bloch, F.** "Über die Quantenmechanik der Elektronen in
-  Kristallgittern." *Z. Physi`k*' **1929**, *52*, 555–600. DOI:
+  Kristallgittern." *Z. Physik* **1929**, *52*, 555–600. DOI:
   [10.1007/BF01339455](<https://doi.org/10.1007/BF01339455>). URL:
   <https://link.springer.com/article/10.1007/BF01339455>. Open
   access. The original German paper; the source of the Bloch
@@ -2616,7 +2616,7 @@ sampling. A non-exhaustive list of the topics we have *not* covered:
 
 - **Spin–orbit coupling.** The Hamiltonian
   \eqref{eq:ch-07-hamiltonian} is spin-free. For solids with heavy
-  elements (5*d*', 6p*, f-electron systems), the spin–orbit term
+  elements (5*d*, 6p*, f-electron systems), the spin–orbit term
   $\hat H_\text{SO} = \tfrac{1}{2} \boldsymbol{\sigma} \cdot (\nabla V
   \times \mathbf p)$ has to be added; the Bloch factor $e^{i\mathbf k
   \cdot \mathbf r}$ becomes a 2 × 2 spinor matrix. This is essential

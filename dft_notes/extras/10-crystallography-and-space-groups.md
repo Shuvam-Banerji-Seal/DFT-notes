@@ -57,7 +57,7 @@ $$
   and
   [chapter 11 §11.2]({{ "/dft-notes/chapter-11/" | relative_url }}).
 - Hermann–Mauguin (HM) symbols are written in **bold italic**
-  in the running text for legibility (e.g. *P 6₃/m m `c*`); Schoenflies
+  in the running text for legibility (e.g. *P 6₃/m m c*); Schoenflies
   symbols are written upright (e.g. $D_{6h}^4$).  The slash `/'
   in an HM symbol separates *equivalent* directions perpendicular
   and parallel to the principal axis.
@@ -82,7 +82,7 @@ translation tables (Pearson, HM/Schoenflies).
 |:-:|:------|:-------------------|
 | 1 | Direct and reciprocal lattices | "What are the 7 systems and 14 Bravais lattices?" |
 | 2 | The 32 point groups | "Which point group is this crystal?" |
-| 3 | The 230 space groups | "What's the space group number of *P 6₃/m m `c*`?" |
+| 3 | The 230 space groups | "What's the space group number of *P 6₃/m m c*?" |
 | 4 | Wyckoff positions | "Which sites in the unit cell are symmetry-equivalent?" |
 | 5 | Bravais lattice parameter table | "What's the Pearson symbol of a base-centred monoclinic cell?" |
 | 6 | Reciprocal lattice and Brillouin zones | "What is the first BZ of an FCC crystal?" |
@@ -126,7 +126,7 @@ pairs of edges (definitions in the conventions box above).
 | Hexagonal | $a = b \ne c$; $\alpha = \beta = 90°$, $\gamma = 120°$ | $6/mmm$ | 24 |
 | Cubic | $a = b = c$; $\alpha = \beta = \gamma = 90°$ | $m\bar 3 m$ | 48 |
 
-The **holohedral point grou`p** (or holohedry*) is the
+The **holohedral point group** (or holohedry*) is the
 full point group that maps the conventional cell onto itself.
 It is the highest-symmetry point group of the crystal system;
 every other point group in the same system is a subgroup of the
@@ -256,7 +256,7 @@ lattice from the direct lattice.
 
 ### 1.4 Reciprocal lattice of each Bravais lattice
 
-The reciprocal lattice of a centred direct lattice is *itsel`f*'
+The reciprocal lattice of a centred direct lattice is *itself*
 a Bravais lattice, and the pairing is its own kind of duality.
 The complete table:
 
@@ -279,7 +279,7 @@ The complete table:
 
 The two most important dualities for solid-state DFT are
 **FCC $\leftrightarrow$ BCC** and **body-centred orthorhombic
-$\leftrightarrow$ face-centred orthorhombi`c*`*.
+$\leftrightarrow$ face-centred orthorhombic.
 
 ### 1.5 Worked example: FCC direct $\to$ BCC reciprocal
 
@@ -516,7 +516,7 @@ example material.
 > number of distinct symmetry operations it contains.  For $C_n$
 > it is $n$; for $D_n$ it is $2n$; for $T$ (chiral tetrahedral)
 > it is 12; for $O$ (chiral octahedral, sometimes called the
-> *rotation grou`p*' of the cube) it is 24; for $O_h$ (full
+> *rotation group* of the cube) it is 24; for $O_h$ (full
 > octahedral) it is 48. The five cubic point groups are 12,
 > 24, 24, 24, 48 in size, which sums with the others to 32. ---
 
@@ -579,7 +579,7 @@ chapter.
 ### 3.2 Symmorphic vs non-symmorphic space groups
 
 A space group is **symmorphic** if its point group is a
-*subgrou`p*' of the space group in the literal sense — that is,
+*subgroup* of the space group in the literal sense — that is,
 if every element of the point group $\{R \mid \mathbf 0\}$ is in
 the space group.  Equivalently, a symmorphic space group is a
 *direct product* of the point group and the translation
@@ -676,7 +676,7 @@ examples.
 > *glide* planes.  In $F d \bar 3 m$ the two atoms of the basis
 > sit at $(0, 0, 0)$ and $(1/4, 1/4, 1/4)$, which is the
 > **diamond** structure.  In $F \bar 4 3 m$ the second atom is
-> at $(1/4, 1/4, 1/4)$ as well, but the *`d*' glide of the
+> at $(1/4, 1/4, 1/4)$ as well, but the *d* glide of the
 > diamond is replaced by a pure mirror — the **zincblende**
 > structure.  If the two basis atoms are different species
 > (GaAs, ZnS, CdTe), the inversion symmetry is broken and the
@@ -1112,7 +1112,7 @@ recommended starting point for any new crystal.
 ### 8.1 The CIF (Crystallographic Information File) format
 
 A **CIF** file is a plain-text file with a fixed structure:
-data are organised in `data_block`s, with each datum a
+data are organised in `data_blocks, with each datum a
 `key value' pair (text or numeric).  The standard fields for a
 crystal structure are:
 
@@ -1459,7 +1459,7 @@ Schoenflies symbols depend on the *rotational* subgroup (the
 "axial" part) and use letter+number, while the HM symbols
 depend on the full point group and use number+letter+number.
 Some groups have the same Schoenflies symbol across crystal
-systems (e.g. $C_{2h}$ is the point group of *bot`h*' the
+systems (e.g. $C_{2h}$ is the point group of *both* the
 monoclinic $P 2_1/c$ and the orthorhombic $P n m a$); the HM
 symbol distinguishes them.
 
@@ -1582,7 +1582,7 @@ section (or chapter):
 - **Magnetic space groups** (Shubnikov groups, 1651 of them).
   The 230 "grey" space groups above are the paramagnetic
   groups; once time-reversal symmetry is broken, the magnetic
-  point group can be any of 32 + 32 + 58 = 122 *magneti`c*' point
+  point group can be any of 32 + 32 + 58 = 122 *magnetic* point
   groups, and the magnetic space groups number 1651. The BCS
   has a separate `NCSYM`' tool for these.
 - **Incommensurate structures.**  Modulated structures and

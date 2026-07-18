@@ -126,7 +126,7 @@ real numbers per grid point — vastly more than any computer
 can store.  All measurable quantities are expectation values
 \(\langle \hat A \rangle = \langle \Psi \rvert \hat A \rvert \Psi \rangle\);
 the wavefunction evolves under the time-dependent Schrödinger
-equation.  DFT's big theoretical move is to *avoi`d*' the
+equation.  DFT's big theoretical move is to *avoid* the
 wavefunction and work with the one-electron density
 \(\rho(\mathbf r)\) instead, which lives in ordinary 3-D space
 and is enormously cheaper to store and manipulate.
@@ -174,8 +174,8 @@ anything bigger, approximation is unavoidable.
 The Born–Oppenheimer (BO) approximation **decouples the
 electrons from the nuclei** by exploiting the fact that a
 proton is ~1836 times heavier than an electron, so the
-electrons move *muc`h*' faster.  The approximation treats the
-nuclei as classical, point-like, *fixe`d*' sources of an external
+electrons move *much* faster.  The approximation treats the
+nuclei as classical, point-like, *fixed* sources of an external
 potential \(v_\text{ext}(\mathbf r) = -\sum_A Z_A / |\mathbf r -
 \mathbf R_A|\); the electronic Schrödinger equation is then
 solved for each nuclear geometry \(\{\mathbf R_A\}\) separately.
@@ -255,7 +255,7 @@ finite differences or DFPT); **elastic constants and moduli**;
 sites, polymorphs, reaction paths); **band structures and DOS**
 of semiconductors and metals (with caveats on the gap);
 **charge densities, dipoles, ESPs** for qualitative chemistry.
-DFT is *less goo`d*' for: **band gaps** of semiconductors and
+DFT is *less good* for: **band gaps** of semiconductors and
 insulators (typically 30–50 % too small with semilocal
 functionals, fixable with hybrids or $GW$); **weak
 interactions** (van der Waals / dispersion — needs a
@@ -457,7 +457,7 @@ $$
 
 The map \(\mathcal F\) is the **SCF map**; its fixed point is
 the self-consistent solution.  Convergence can be
-*accelerate`d*' by density mixing (Pulay, Broyden, DIIS); see
+*accelerated* by density mixing (Pulay, Broyden, DIIS); see
 [Chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }})
 §4.6. "SCF" stands for "self-consistent field" — a
 historical name from the Hartree–Fock days.
@@ -515,7 +515,7 @@ obtained by minimising the energy functional
 d\mathbf r\) over all \(v\)-representable densities; the
 minimiser is the exact ground-state density.
 
-The HK theorem is an *existence proo`f*`; it does not give a
+The HK theorem is an *existence proof*; it does not give a
 recipe for the functional \(F_\text{HK}[\rho]\).  The Kohn–
 Sham construction is the practical realisation: it replaces
 the *unknown* functional \(F_\text{HK}\) by an exactly known
@@ -575,10 +575,10 @@ CASTEP, ABINIT): the only knob is the **kinetic-energy
 cutoff \(E_\text{cut}\)**.  Converge the total energy to
 your target tolerance (typically 1 meV/atom) and the stress
 to ~0.1 kbar.  **Pseudopotential** files have a *recommended
-minimum cutof`f*`; use that as a starting point and converge
+minimum cutoff*`; use that as a starting point and converge
 *upwards*.  For structures that need empty / high-energy
 states (DOS, band structure), also converge the **augmentation
-cutof`f*`* (PAW) and the **number of bands**.
+cutoff (PAW) and the **number of bands**.
 
 Always **check for basis-set superposition error (BSSE)** in
 weakly-bound complexes — counterpoise correction.
@@ -601,7 +601,7 @@ as you tighten the numerical parameters.  Recipe:
    tolerance; solids: k-point mesh, then plane-wave cutoff,
    then smearing width, then SCF tolerance.
 3. **Plot the quantity vs. parameter** on a log scale; pick
-   the value at which the curve plateaus *an`d*' is still
+   the value at which the curve plateaus *and* is still
    affordable.  A monotonic improvement without a plateau
    means you are not yet converged.
 4. **Add a safety margin**: take the smallest converged
@@ -748,7 +748,7 @@ there.  **Geometry optimisation** finds a *stationary point*
 iteratively following the forces until they fall below some
 tolerance (typically 10 meV/Å).  The output is a single
 geometry and its energy.  Algorithms: steepest descent,
-conjugate gradient, BFGS, L-BFGS.  *Transition-state searc`h*'
+conjugate gradient, BFGS, L-BFGS.  *Transition-state search*
 is the same idea but targets a saddle point.  **Molecular
 dynamics (MD)** propagates the nuclei *classically*
 (Newton's second law) or *quantum-mechanically*
@@ -852,7 +852,7 @@ an on-site Coulomb penalty to localised $d$ states).  **$GW$**
 band structures; expensive.  The first thing to try is HSE06
 (solids) or PBE0 (molecules).  If your gap is *zero* (metallic)
 when the material is known to be an insulator, check that you
-have a spin-polarised calculation *i`f*' the gap is
+have a spin-polarised calculation *if* the gap is
 correlation-driven (NiO, MnO).
 
 **See:** [Chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.4 (hybrids), §5.5 (range-separated); [Chapter 11]({{ "/dft-notes/chapter-11/" | relative_url }}) §11.4
@@ -910,7 +910,7 @@ the geometry is closer to a transition state; try a different
 starting point, or use a transition-state search.  **The
 unit cell is also relaxing** (cell optimisation) with the
 wrong optimiser; use the variable-cell LBFGS / BFGS, not
-steepest descent.  If the oscillation is *periodi`c*' with two
+steepest descent.  If the oscillation is *periodic* with two
 geometries alternating, you are probably bouncing back and
 forth across a saddle.  Damp the step, or change the
 algorithm.
@@ -926,7 +926,7 @@ algorithm.
 "Noisy" forces — values that fluctuate by ~50 meV/Å or
 more between iterations, or that don't monotonically
 decrease in magnitude — have a few common culprits: **The SCF
-is not converge`d** — forces are gradients of the energy*;
+is not converged** — forces are gradients of the energy*;
 if the energy has \(10^{-4}\) eV noise, the forces have
 \(10^{-2}\) eV/Å noise.  Tighten the SCF convergence.
 **The k-mesh is too coarse** — especially in metals, an
@@ -962,7 +962,7 @@ A "different result" can mean:
   the convergence threshold are normal; differences above it
   mean at least one code is wrong.
 - **Different geometry** (after "optimisation").  Most codes
-  will find the same minimum *i`f*' the convergence parameters
+  will find the same minimum *if* the convergence parameters
   match; small (\(<0.001\) Å) differences are normal; larger
   ones usually mean one of the calculations did not actually
   converge.
@@ -1062,7 +1062,7 @@ non-licence-holders.  Typical licence categories:
 **Academic licence** — paid annually, available to
 universities and non-profit research institutes.
 **Commercial licence** — paid, for industry.  **Some
-national consorti`a*`* have site licences that cover every
+national consortia have site licences that cover every
 researcher at a participating institution — check with your
 local HPC centre.
 

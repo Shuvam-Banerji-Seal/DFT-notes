@@ -35,7 +35,7 @@ recommendation.
 > vs. surface) and its *physics* (ground-state DFT vs. TDDFT
 > vs. high-accuracy wavefunction vs. excited-state $GW$/BSE).
 > The chapter cross-references in each profile are the most
-> useful pointers: chapter numbers tell you *whic`h*'
+> useful pointers: chapter numbers tell you *which*
 > theoretical machinery the code is exposing to you.
 
 ---
@@ -129,7 +129,7 @@ built from analytical electron-repulsion integrals
   sets.
 - **DFT Notes chapters:** 03, 04, 05, 06.
 - **When to use.** The de facto standard in *inorganic and
-  organometalli`c*' quantum chemistry. **DLPNO-CCSD(T)**
+  organometallic* quantum chemistry. **DLPNO-CCSD(T)**
   makes canonical-accuracy coupled cluster tractable on
   100–200-atom systems; the broken-symmetry DFT framework
   is the workhorse for antiferromagnetic TM clusters
@@ -171,7 +171,7 @@ built from analytical electron-repulsion integrals
   ANO.
 - **DFT Notes chapters:** 03, 04, 05, 06.
 - **When to use.** The right pick for *publication-
-  benchmar`k*' organic-chemistry calculations where maximum
+  benchmark* organic-chemistry calculations where maximum
   compatibility with the historical record is wanted
   (chapter 05 §5.4 explains why B3LYP is the lingua
   franca). GaussView is unmatched for setting up geometry
@@ -225,7 +225,7 @@ eliminates the Pulay force
   library.
 - **DFT Notes chapters:** 04, 05, 06 §6.7, 07, 08.
 - **When to use.** The de facto open-source plane-wave DFT
-  code. The right pick for any *academi`c*' solid-state DFT
+  code. The right pick for any *academic* solid-state DFT
   project that wants to read, modify, and publish the
   source. The phonons module is the most-used open-source
   phonon code. The hybrid / GW / TDDFT stack is
@@ -284,7 +284,7 @@ eliminates the Pulay force
   ultrasoft pseudopotentials. PAW is not native; the
   on-the-fly-generated "C9" library is well-tested.
 - **DFT Notes chapters:** 04, 05, 06, 07, 08.
-- **When to use.** A strong pick for *UK academi`c*'
+- **When to use.** A strong pick for *UK academic*
   solid-state work where the licence is free; outside the
   UK, Quantum ESPRESSO is the standard open-source
   alternative. The NMR chemical-shift and EELS modules
@@ -634,7 +634,7 @@ to high accuracy: MP2, MP3, CCSD, CCSD(T), FCI, EOM-CC,
 explicitly correlated (F12) methods, multireference
 methods. The hierarchy is described in
 [chapter 02]({{ "/dft-notes/chapter-02/" | relative_url }}) §2.3;
-DFT is the *chea`p*' alternative, but for small molecules
+DFT is the *cheap* alternative, but for small molecules
 where accuracy is paramount, CCSD(T) in a quadruple-zeta
 basis is the gold standard
 ([chapter 02]({{ "/dft-notes/chapter-02/" | relative_url }}) §2.4).
@@ -692,7 +692,7 @@ codes are aimed at small-to-medium molecules.
 - **When to use.** The right pick for *high-accuracy
   wavefunction* methods where the open-source path is
   mandatory. The analytic second-derivatives for CCSD(T)
-  are state-of-the-art and enable *anharmoni`c*'
+  are state-of-the-art and enable *anharmonic*
   vibrational spectroscopy at the CCSD(T) level. The
   EOM-CCSD suite is mature. CFOUR is slower than MRCC
   for single-point energies above CCSD(T), but is the
@@ -933,7 +933,7 @@ A workflow manager accepts a high-level specification
 then the GW correction") and turns it into a sequence of
 job submissions, with dependency tracking, error
 recovery, and provenance. Workflow managers are not
-electronic-structure codes; they sit *on top o`f*' the
+electronic-structure codes; they sit *on top of* the
 production codes from sections 1–7. | Code      | License  | Language   | Best at                                          |
 |:----------|:---------|:-----------|:-------------------------------------------------|
 | ASE       | LGPL     | Python     | Lightweight scripting, structure handling, IO    |
@@ -1001,10 +1001,10 @@ production codes from sections 1–7. | Code      | License  | Language   | Best
   **Repo:** <https://github.com/materialsproject/fireworks>
 - **Capabilities:** Lightweight workflow management with
   MongoDB-backed job tracking. Each calculation is a
-  *firework*', workflows are fireworks + links. The
+  *firework*, workflows are fireworks + links. The
   central `lpad`' command-line interface manages the
   queue. Pluggable queue interfaces (SLURM, PBS, SGE,
-  LSF). Provenance tracking through the *launchpa`d*' —
+  LSF). Provenance tracking through the *launchpad* —
   not as deep as AiiDA's, but lighter.
 - **DFT Notes chapters:** all of them.
 - **When to use.** The right default for *a research
@@ -1649,7 +1649,7 @@ of code.
   forces use $h = 0.15$ Å or smaller. Convergence
   is exponential in $h$ (multi-grid).
 - **fixed_density() requires mode='all'**: needs
-  both density *an`d*' wavefunctions from the SCF.
+  both density *and* wavefunctions from the SCF.
   If you write `mode='wavefunctions'' instead, the
   band-structure run fails.
 
@@ -1844,7 +1844,7 @@ SIESTA writes the bands to `SystemLabel.bands`.
 CP2K is a Fortran mixed Gaussian / plane-wave (GPW)
 code ([§2.5](#25-cp2k)). The cheatsheet below covers
 the standard 'cp2k.psmp' (or 'cp2k.popt`) executable.
-The input format is a *structure`d*' Fortran-NAMELIST
+The input format is a *structured* Fortran-NAMELIST
 with explicit section keywords (`&GLOBAL`, `&SUBSYS`,
 `&DFT`, …) and matching `&END' lines. Indentation is
 optional but is the standard convention.
@@ -2012,12 +2012,12 @@ localised initial guess.
   difficult cases.
 - **Basis set / pseudopotential mismatch**: the
   GTH pseudopotential was generated with a
-  *specifi`c*' basis set. Mixing GTH with a non-
+  *specific* basis set. Mixing GTH with a non-
   MOLOPT basis gives poor results. Always use the
   matched pair (e.g. `DZVP-MOLOPT-GTH' with
   `GTH-PBE-q6`).
 - **POISSON PSOLVER MT for a periodic system**:
-  the Martyna–Tuckerman solver is for *isolate`d*'
+  the Martyna–Tuckerman solver is for *isolated*
   systems. For a periodic system, use
   'PSOLVER PERIODIC' and 'PERIODIC XYZ`.
 - **MD timestep too large**: the default 0.5 fs is

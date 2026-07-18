@@ -45,7 +45,7 @@ each entry is the same:
 6. **Chapter section** — the cross-reference into the prose.
 
 > **Status of the chapter scripts.**  Chapters 00–08 are
-> *shipped*'; chapters 09–13 are planned* (see
+> *shipped*; chapters 09–13 are planned* (see
 > [`chapters-map.md`]({{ site.baseurl }}/dft-notes/chapters-map/)).
 > Where a script exists in `python_codes/`, the entry below
 > links to it directly. Where the example exists only as inlined
@@ -87,7 +87,7 @@ labels each curve with its eigenvalue.
 
 - **Script** — [chapter_00/01-particle-in-box.py]({{ site.baseurl }}/dft_notes/python_codes/chapter_00/01-particle-in-box.py)
 - **Plot** — [chapter_00/plots/01-particle-in-box.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_00/plots/01-particle-in-box.png)
-- **Chapter section** — [Chapter 01, §1.3 (Particle in a box)]({{ site.baseurl }}/dft-notes/chapter-01/#13-a-minimal-example-the-particle-in-a-box); also discussed in [Chapter 00, *Hello worl`d*`]({{ site.baseurl }}/dft-notes/chapter-00/) (the 1s-density version of the same idea).
+- **Chapter section** — [Chapter 01, §1.3 (Particle in a box)]({{ site.baseurl }}/dft-notes/chapter-01/#13-a-minimal-example-the-particle-in-a-box); also discussed in [Chapter 00, *Hello world*]({{ site.baseurl }}/dft-notes/chapter-00/) (the 1s-density version of the same idea).
 - **Expected output.** Eigenvalues in atomic units:
   $E_1 = 4.9348$, $E_2 = 19.7392$, $E_3 = 44.4132$, $E_4 = 78.9568$ (in $E_h$).
   The first plot panel shows the four sine-shaped wavefunctions
@@ -225,7 +225,7 @@ with 'scipy.linalg.eigh(F, S)'.
   - **Converged HF energy: $E_\text{tot} = -1.1167\,E_h$** (Szabo & Ostlund, table 3.5).
   - SCF converges in 3 iterations from $\mathbf P = \mathbf 0$.
 
-> **Tip.**  This calculation is the *single most quote`d*'
+> **Tip.**  This calculation is the *single most quoted*
 > number in introductory quantum chemistry. It is also the
 > reference point for every KS calculation that follows
 > in the notes: a HF/KS-DFT result on H₂ in a minimal basis
@@ -305,7 +305,7 @@ The SCF loop is otherwise identical in shape to HF.
   DIIS.
 
 > **Tip.**  The shape of the loop in §4.4 is the
-> *proto-loo`p*' of every production DFT code.  The
+> *proto-loop* of every production DFT code.  The
 > differences between codes (Gaussian vs. plane-wave, all-
 > electron vs. pseudopotential, serial vs. parallel) are
 > all hiding inside the two lines that build $\mathbf J$
@@ -1177,7 +1177,7 @@ The acoustic branch is a sound wave (linear in $q$ at
 small $q$, zero frequency at $\Gamma$). The optical
 branch sits at finite frequency at $\Gamma$ (a
 long-wavelength out-of-phase oscillation of the two
-atoms in the unit cell) and *degenerates wit`h*' the
+atoms in the unit cell) and *degenerates with* the
 acoustic branch at the BZ boundary $q = \pi/a$ in the
 *equal-mass* limit (where the chain becomes
 monatomic); with $m_1 \ne m_2$ the two branches
@@ -1431,7 +1431,7 @@ delta-kick initial condition, followed by a Fourier
 transform of the time-dependent dipole that yields the
 same Lorentzian. The agreement of the two halves is the
 sanity check that the TDDFT machinery of chapter 12
-(linear response *an`d*' real time) gives the same answer.
+(linear response *and* real time) gives the same answer.
 
 ### 8.1 Two-level absorption spectrum
 
@@ -1773,7 +1773,7 @@ subspace (the **Gutzwiller approximation**, Ch 13
 - **Plot** — [chapter_13/plots/01-hubbard-4site.png]({{ site.baseurl }}/dft_notes/python_codes/chapter_13/plots/01-hubbard-4site.png)
 - **Chapter section** — [Chapter 13, §13.1 (The Hubbard model)]({{ site.baseurl }}/dft-notes/chapter-13/#1322-the-hubbard-model); §13.3 (exact diagonalisation); §13.4 (Mott transition); §13.5 (DFT+U).
 - **Expected output.** A plot of the **single-
-  particle ga`p*`* $\Delta(U) = E_\text{gs}(k = \pi) -
+  particle gap $\Delta(U) = E_\text{gs}(k = \pi) -
   E_\text{gs}(k = 0)$ as a function of $U/t$ at
   half-filling:
   - $U/t = 0$: $\Delta = 0$ (the chain is metallic).

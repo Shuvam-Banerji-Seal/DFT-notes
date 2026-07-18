@@ -74,7 +74,7 @@ Every algebraic step in every chapter appears in the chapter.  If a
 step is purely mechanical (expand, distribute, collect) it is
 labelled as such in one line, but the result is still written out.
 This is the only reliable way to be sure the math is correct, and
-it is the only reliable way for a reader to *chec`k*' the math is
+it is the only reliable way for a reader to *check* the math is
 correct.  If you ever find a derivation in these notes that skips a
 step in violation of this rule, please open an issue.
 
@@ -93,7 +93,7 @@ Chapters cross-reference each other with two distinct signals:
 
 In both cases, the link is to a *chapter*, never to a section
 within a chapter.  This is so the dependency graph stays legible
-(see *Roadma`p*' below).  If a section-level link seems essential,
+(see *Roadmap* below).  If a section-level link seems essential,
 that is usually a sign the chapter should be split.
 
 ### The "catch" is woven through
@@ -118,7 +118,7 @@ where the lived experience of the topic lives.
 
 DFT, at the level of these notes, draws on roughly **five
 mathematical subjects** at the undergraduate / first-year-graduate
-level.  Below, each is broken into the *specifi`c*' pieces the
+level.  Below, each is broken into the *specific* pieces the
 notes will use, with a one-sentence statement of what the reader
 should be able to do with each piece.  Nothing in the list is
 exotic; everything is taught in standard curricula and is
@@ -230,7 +230,7 @@ re-stated as it is used.
   reference point in DFT.  You should know the energy levels
   $E_n = -1/(2 n^2)\,E_h$ and the form of the 1s, 2s, 2p
   orbitals.  The 1s density is plotted by the
-  *hello worl`d*' program in the next section.
+  *hello world* program in the next section.
 
 ## Programming prerequisites
 
@@ -248,7 +248,7 @@ short version is:
 - **Headless rendering.**  Every script begins with
   `matplotlib.use("Agg")' so that the script runs on a server
   with no display.
-- **The `plots/' subfolder** holds the committed PNGs.  One script
+- **The plots/' subfolder** holds the committed PNGs.  One script
   produces one figure; the figure file is named
   'plots/<same prefix>-<same slug>.png'.
 - **No `os.chdir`.**  Paths are constructed relative to the chapter
@@ -382,7 +382,7 @@ the claim from memory after closing the chapter.
 
 The body of the chapter.  The derivation takes the claim apart
 into the smaller facts it is built on, and shows — **step by
-ste`p*`*, with every algebraic step explicit — how those smaller
+step, with every algebraic step explicit — how those smaller
 facts combine to give the claim.  The author is bound by the "no
 step skipped" rule: no "by a straightforward manipulation", no <!-- no-summaries-ok -->
 "after some algebra", no "it can be shown that". <!-- no-summaries-ok -->  If a step is
@@ -445,8 +445,8 @@ corresponds to.
 ### 5. Worked example
 
 A **fully worked numerical example** that takes the chapter's
-general result and applies it to a *specifi`c*' system with
-*specifi`c*' numbers.  Every quantity has a numerical value; every
+general result and applies it to a *specific* system with
+*specific* numbers.  Every quantity has a numerical value; every
 intermediate result is shown; the final answer is stated.  The
 example should be small enough to verify by hand (in principle)
 and large enough to exercise the typical failure modes of the
@@ -501,7 +501,7 @@ to look if they need that material.
 
 The notes are organised as a **dependency graph**, not a strictly
 linear sequence.  The graph is shown in two views: a *flat*
-chapter-by-chapter view, and a *trac`k*' view that groups
+chapter-by-chapter view, and a *track* view that groups
 chapters by what they teach.
 
 ### Chapter-by-chapter dependency graph
@@ -557,7 +557,7 @@ correlation functionals.
 ### Track view — theory, methods, applications
 
 The same chapters grouped by what they teach.  This view is
-useful when you already know which *kin`d*' of question you are
+useful when you already know which *kind* of question you are
 asking ("how do I represent a periodic system?" → methods
 track; "where does the functional come from?" → theory track).
 
@@ -600,7 +600,7 @@ optional for chemical work.
 ## Worked example — anatomy of a chapter
 
 The fastest way to internalise the template is to **take an
-existing chapter apart with the template in min`d*`*.  This section
+existing chapter apart with the template in mind.  This section
 does that for the first half of
 [chapter 06]({{ "/dft-notes/chapter-06/" | relative_url }})
 (basis sets).  Read the chapter alongside this example; the two
@@ -800,7 +800,7 @@ Each of those is a separate knowledge base.
 
 ## Problems
 
-The problems in this chapter are *met`a*`: they ask you to use the
+The problems in this chapter are *meta*: they ask you to use the
 template, the notation, and the roadmap to navigate the rest of
 the notes, rather than to do new DFT calculations.  In later
 chapters the problems are DFT problems proper.
@@ -919,7 +919,7 @@ $$
    that the matrix is Hermitian and that the eigenvalues are real.
 
 You should be able to do this with pen and paper in under five
-minutes.  If you cannot, revisit the *Linear algebr`a*' bullet in
+minutes.  If you cannot, revisit the *Linear algebra* bullet in
 *Mathematical prerequisites* above.
 
 </details>
@@ -1053,7 +1053,7 @@ number of chapters needed to set up a calculation with the
 6-31G basis and the B3LYP functional on, say, an organic
 molecule.
 
-1. From the chapter dependency graph in *Roadma`p*`, identify the
+1. From the chapter dependency graph in *Roadmap*, identify the
    minimum set of chapters you must read, in order.
 2. Justify your choice: for each chapter you include, state
    *which piece of the calculation* it is needed for.

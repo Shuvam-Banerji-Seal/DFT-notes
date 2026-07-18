@@ -320,7 +320,7 @@ Equation \eqref{eq:ch-09-force-nucleus} was derived under the
 assumption that $|\Psi(\lambda)\rangle$ is the *exact* ground state
 of $\hat H(\lambda)$ at every $\lambda$ — a promise no finite
 basis can keep.  In a basis $\{\chi_\mu(\mathbf r; \mathbf R)\}$
-that *itsel`f*' depends on the nuclear coordinates, the SCF
+that *itself* depends on the nuclear coordinates, the SCF
 wavefunction lives in a moving subspace, and the derivative
 $\partial\Psi/\partial\mathbf R_I$ acquires a piece from the basis-
 function motion that the Hellmann–Feynman argument did not see.
@@ -568,7 +568,7 @@ $$
 
 parameterised by a reciprocal-lattice vector $\mathbf G$ and a
 crystal momentum $\mathbf k$ in the first Brillouin zone.  Neither
-$\mathbf G$ nor $\Omega$ (the cell volume) depends on the *ioni`c*'
+$\mathbf G$ nor $\Omega$ (the cell volume) depends on the *ionic*
 positions; only the *cell shape* enters through $\Omega$ and the
 $\mathbf G$ grid.  Therefore
 
@@ -739,7 +739,7 @@ which is a *p-type* function (one factor of $\mathbf r$ in front
 of the Gaussian).  In other words, **the derivative of an
 s-type Gaussian is a p-type Gaussian**.  The matrix element
 $\langle \partial\chi_\mu/\partial\mathbf A_\mu | \hat O | \chi_\nu \rangle$
-is then a *mixed s–`p*' integral — a one-electron integral in
+is then a *mixed s–p* integral — a one-electron integral in
 angular-momentum space.  Every production Gaussian code
 pre-computes a set of auxiliary "s/p/d/f" integral routines and
 uses them for both the SCF and the force evaluation.
@@ -824,7 +824,7 @@ $$
 
 where $\mathbf p^{(k)}$ is a *search direction* (a vector in the
 $N = 3 N_\text{atoms}$-dimensional configuration space) and
-$\alpha_k$ is a *step lengt`h*`.  Convergence is reached when
+$\alpha_k$ is a *step length*.  Convergence is reached when
 
 $$
 \label{eq:ch-09-opt-conv}
@@ -889,7 +889,7 @@ $\sim 100$ atoms.  Direct Hessian evaluation also requires the
 coordinates**, which is the matrix of force constants (the topic
 of [chapter 10]({{ "/dft-notes/chapter-10/" | relative_url }})).
 A full evaluation is rarely done in production; one usually uses
-a **quasi-Newton** method that *builds u`p*' an approximation to
+a **quasi-Newton** method that *builds up* an approximation to
 $\mathbf H^{-1}$ from successive force evaluations.
 
 ### 9.6.3 Quasi-Newton (BFGS)
@@ -965,7 +965,7 @@ in [§9.7](#97-the-bfgs-update-formula-in-full)):
 
 ### 9.6.4 Trust-region radius
 
-In all of the above, the *step lengt`h*' $\alpha_k$ is a free
+In all of the above, the *step length* $\alpha_k$ is a free
 parameter.  The **trust-region** idea (originally due to Powell;
 in DFT mostly associated with the implementation in Gaussian and
 Q-Chem) is to bound the step by a *radius* $\Delta_k$ inside
@@ -997,7 +997,7 @@ the radius grows, if it is bad the radius shrinks and the step is
 rejected.
 
 > **Tip.**  The trust-region radius is the DFT-optimiser's
-> *time ste`p*`.  Too small and the optimiser crawls; too large and
+> *time step*.  Too small and the optimiser crawls; too large and
 > it oscillates or diverges.  Most production codes auto-adapt
 > $\Delta_k$ with a target success rate of about 80 %.
 
@@ -1016,7 +1016,7 @@ At step $k$ we have a Hessian approximation $\mathbf B^{(k)}$ and
 we take a step $\mathbf s^{(k)} = \mathbf R^{(k+1)} - \mathbf R^{(k)}$.
 The new gradient is $\mathbf F^{(k+1)}$, and the change in
 gradient is $\mathbf y^{(k)} = \mathbf F^{(k+1)} - \mathbf F^{(k)}$.
-We require the *update`d*' Hessian to satisfy the **secant
+We require the *updated* Hessian to satisfy the **secant
 condition**
 
 $$
@@ -1434,7 +1434,7 @@ $\Omega^{-1/2}$.  The Pulay stress \eqref{eq:ch-09-stress-pulay}
 therefore does *not* vanish in a plane-wave code, in contrast
 to the Pulay force.  It is the term that captures the dependence
 of the basis on the cell shape.  (For the *forces*, the basis
-does not depend on the *ioni`c*' positions, so the Pulay force
+does not depend on the *ionic* positions, so the Pulay force
 vanishes; for the *stress*, the basis depends on the cell,
 so the Pulay stress is non-zero.)
 
@@ -1457,7 +1457,7 @@ target pressure).
 
 The optimisation is the natural extension of \eqref{eq:ch-09-opt-loop}:
 the state vector now includes both
-$\{\mathbf R_I\}_{I=1}^{N_\text{atoms}$ *an`d*' the cell
+$\{\mathbf R_I\}_{I=1}^{N_\text{atoms}$ *and* the cell
 parameters $\{\mathbf a_i\}_{i=1}^{3}$ (or, equivalently, the
 six independent components of the strain tensor in a triclinic
 cell).  The BFGS / LBFGS machinery of
@@ -1483,9 +1483,9 @@ $\mathbf X = (\{\mathbf R_I\}, \{\mathbf a_i\})$ now contains
 both ionic positions and cell vectors. The gradient
 $\mathbf G = (-\mathbf F_I, -\Omega \boldsymbol\sigma)$ contains
 both the forces and the stress. The convergence check is
-extended: $\max|\mathbf F_I| < F_\text{tol}$ *an`d*'
+extended: $\max|\mathbf F_I| < F_\text{tol}$ *and*
 $\max_{\alpha \neq \beta} |\sigma_{\alpha\beta}| < S_\text{tol}$
-*an`d*' the diagonal stress matches the target pressure.
+*and* the diagonal stress matches the target pressure.
 
 ```mermaid
 %%{init: {'flowchart': {'htmlLabels': true, 'curve': 'basis'}}}%%
@@ -1520,7 +1520,7 @@ graph TD
 ```
 
 The **two compute boxes** ('F1' and 'F2`) are the workhorses:
-the force evaluation is the *ioni`c*' part of the gradient, the
+the force evaluation is the *ionic* part of the gradient, the
 stress evaluation is the *cell* part. Both depend on the
 self-consistent density from `SCF`, but they are otherwise
 *independent* and can be computed in parallel. The
@@ -1528,8 +1528,8 @@ self-consistent density from `SCF`, but they are otherwise
 cell relaxation, with the state vector now including the cell
 parameters — the BFGS machinery of §9.6.3 does not care whether
 a coordinate is an ion position or a cell vector. The
-**convergence chec`k** is the stricter* of the two checks
-(forces *an`d*' stress) — a cell may be at zero force on every
+**convergence check** is the stricter* of the two checks
+(forces *and* stress) — a cell may be at zero force on every
 ion but still have non-zero off-diagonal stress, in which case
 it must be sheared further.
 
@@ -1648,7 +1648,7 @@ The columns $F_A^\text{HF}$ and $F_B^\text{HF}$ are nearly
 equal in magnitude and *opposite* in sign (Newton's third law is
 approximately obeyed, as it should be for a homonuclear
 diatomic in a symmetric basis).  The third column is the
-*antisymmetri`c*' part, $(F_A^\text{HF} - F_B^\text{HF})/2$, which
+*antisymmetric* part, $(F_A^\text{HF} - F_B^\text{HF})/2$, which
 is the **Pulay correction** projected onto the bond axis; it is
 non-zero because the basis is finite.  The last column is the
 finite-difference gradient $dE/dR$ at the same $R$.  Within the
@@ -1754,7 +1754,7 @@ graph TD
 The top half of the diagram (from 'R(0)' to 'F_I`) is the
 *single-point* force evaluation: run an SCF, compute the
 energy, compute the forces.  The bottom half is the *outer
-loo`p*`: choose a step direction, choose a step length, update
+loop*`: choose a step direction, choose a step length, update
 the geometry, run the next SCF.  The two halves are the same
 SCF + force code; they differ only in who is calling whom.
 
@@ -1793,7 +1793,7 @@ integral vanishes term by term.  By the symmetry of a single
 
 **Step 2.**  Verify by direct differentiation.  The energy
 $E = -Z^2/2\,E_h$ does not depend on $R$ (the nucleus position
-$\mathbf R_I$ does not appear in the *electroni`c*' Hamiltonian
+$\mathbf R_I$ does not appear in the *electronic* Hamiltonian
 $\hat H$ — only the electron–nuclear separation $|\mathbf r -
 \mathbf R_I|$ does, and shifting $\mathbf R_I$ by a constant
 redefines the electron-coordinate origin without changing the
@@ -1849,7 +1849,7 @@ $$
 p(\mathbf s) \;=\; 2 \sum_p d_p\, N(\alpha_p)\, \alpha_p\, e^{-\alpha_p s^2} .
 $$
 
-The function $p(\mathbf s)$ is a sum of *unnormalise`d*' s-type
+The function $p(\mathbf s)$ is a sum of *unnormalised* s-type
 primitive Gaussians, and the prefactor $(\mathbf r - \mathbf R_I)$
 is the characteristic Cartesian p-type factor.  So the
 derivative of an s-type STO is a vector-valued p-type function.
@@ -2037,7 +2037,7 @@ follow-ups we did not cover:
   machinery applied to a chain of geometries.  See Henkelman
   & Jónsson, J. Chem. Phys. 113, 9978 (2000).
 - **Dimer method and growing-string method.**  When only one
-  minimum and a *roug`h*' idea of the transition state are
+  minimum and a *rough* idea of the transition state are
   known, the dimer method rotates a pair of geometries about
   their midpoint to find the lowest-curvature direction
   without the need for a full Hessian.  The growing-string

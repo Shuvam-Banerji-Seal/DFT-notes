@@ -117,7 +117,7 @@ and the valence calculation can stay non-relativistic.
 valence electrons. A carbon atom inside a methane molecule and a
 carbon atom inside a benzene ring have nearly identical $1s$
 orbitals. Treating only the 4 valence electrons instead of all 12
-cuts the cost of the SCF loop by a factor of 3 *an`d*' removes a stiff
+cuts the cost of the SCF loop by a factor of 3 *and* removes a stiff
 constraint (the orthogonality of valence orbitals to the core)
 that would otherwise force the valence basis to span the rapidly-
 oscillating core. The frozen-core approximation is implicit in every
@@ -209,7 +209,7 @@ $$
 \end{align}
 $$
 
-Now, the *secon`d*' integral on the right, $\int_0^{r_c} \dot u_l u_l dr$,
+Now, the *second* integral on the right, $\int_0^{r_c} \dot u_l u_l dr$,
 is the *change* in norm on $[0, r_c]$ when the energy changes by
 $\delta E$. To first order, the total $\int_0^\infty u_l^2 dr = 1$ is
 preserved (the all-electron wavefunction is normalised at every
@@ -323,7 +323,7 @@ $c_0, c_1, \ldots, c_N$ are the unknowns.
 
 The older **Bachelet–Hamann–Schlüter (BHS, 1982)** ansatz uses
 the same exponential-in-$r^2$ form but fits the polynomial
-coefficients to a *pre-define`d*' pseudo-potential shape, rather
+coefficients to a *pre-defined* pseudo-potential shape, rather
 than constructing the pseudo-potential by inversion. BHS is
 therefore an *analytic-fit* method; TM is an inversion method.
 We will use the TM approach in the worked example because the
@@ -480,11 +480,11 @@ smoothness is still demanding: $E_{cut} \gtrsim 80\,\text{Ry}$
 is common.
 
 **Vanderbilt (1990)** showed that one can *relax* the
-norm-conservation condition and recover a *muc`h*' smoother
+norm-conservation condition and recover a *much* smoother
 pseudo-wavefunction, at the cost of a more elaborate formalism.
 The idea is the following.
 
-Define a *generalise`d*' norm-conservation:
+Define a *generalised* norm-conservation:
 
 $$
 \label{eq:ch-08-uspp-norm}
@@ -509,7 +509,7 @@ $$
 \rho(\mathbf r) = \sum_i |\tilde\phi_i(\mathbf r)|^2 + \sum_{R,lm} Q_{lm}^{R}\,g_{lm}^R(\mathbf r - \mathbf R),
 $$
 
-where $\tilde\phi_i$ are the *smoot`h*' pseudo-orbitals (no
+where $\tilde\phi_i$ are the *smooth* pseudo-orbitals (no
 tildes in our notation, but the literature uses tildes to
 emphasise that they are the smooth part), the sum is over
 atomic sites $R$ and angular-momentum channels $lm$, and
@@ -1573,9 +1573,9 @@ that have no USPP analogue; these are the "non-linear core
 correction" terms of PAW.
 
 PAW is also the natural generalisation of LAPW. The
-difference is that PAW uses a *smoot`h*' partner
+difference is that PAW uses a *smooth* partner
 $\tilde\Psi_n$ that is expanded in plane waves, while LAPW
-uses a *linearise`d*' partner inside the sphere and matches
+uses a *linearised* partner inside the sphere and matches
 to plane waves outside. PAW's smooth partner is what makes
 the Hamiltonian a smooth function on the plane-wave grid,
 with the on-site corrections added as a localised
@@ -2062,7 +2062,7 @@ the harder pseudo reflects the more compact $4f$
 orbital. DFT+$U$ with $U_{4f} \sim 6\,\text{eV}$ is
 required to localise the $4f$ electrons; without
 $U$, the small-core calculation converges to a
-*metalli`c*' $4f$ state with the wrong volume.
+*metallic* $4f$ state with the wrong volume.
 
 The two calculations give similar lattice parameters
 for the *ground state*, but they differ substantially
@@ -2228,7 +2228,7 @@ recipe is, in modern notation:
    that the modern TM form adds (the
    "kinetic-energy-conservation" condition) are *not*
    in the original paper; the 1979 pseudo has
-   generically a discontinuity in the *secon`d*'
+   generically a discontinuity in the *second*
    derivative of $V_{ps,l}$ at $r_c$ [Hamann, Schlüter,
    and Chiang, 1979, p. 1495].
 
@@ -2341,7 +2341,7 @@ $(l, m)$, so the overlap matrix is cheap to apply
 **The construction of the ultrasoft pseudo** is on
 p. 7893–7894 [Vanderbilt, 1990, p. 7893–7894]. The
 recipe relaxes the norm-conservation constraint by
-defining a *generalise`d*' norm $Q_l = \int_0^{r_c}
+defining a *generalised* norm $Q_l = \int_0^{r_c}
 |\phi_l|^2\,dr$ that is *less than* the all-electron
 value $Q_l^{ae} = \int_0^{r_c} |u_l|^2\,dr$ — the
 "deficit" $\Delta Q_l = Q_l^{ae} - Q_l$ is the
@@ -2359,7 +2359,7 @@ charge density in real space, computed on radial
 grids around each atom [Vanderbilt, 1990, p. 7893].
 
 The smoothness of the ultrasoft pseudo is the
-*trade-of`f*' in the method: the pseudo-wavefunction
+*trade-off* in the method: the pseudo-wavefunction
 loses the strict equivalence with the all-electron
 wavefunction outside $r_c$, and the formalism
 acquires the augmentation charge and the non-trivial
@@ -2396,7 +2396,7 @@ value, and the vibrational frequency to within
 $5\,\text{cm}^{-1}$ [Vanderbilt, 1990, p. 7894].
 This is the first quantitative demonstration that
 the ultrasoft construction is *accurate*, not just
-*chea`p*`, for a transition metal
+*cheap*, for a transition metal
 [Vanderbilt, 1990, p. 7894].
 
 > **Note.** The 1990 paper introduces two technical
@@ -2529,7 +2529,7 @@ This is the same as our eq.
 first term, $\tilde\Psi_n$, is the smooth partner
 that is expanded in plane waves. The bracket
 $[\phi_i^R - \tilde\phi_i^R]$ is a function that
-is *localise`d*' inside $\Omega_R$ (zero outside by
+is *localised* inside $\Omega_R$ (zero outside by
 construction) and carries the difference between
 the all-electron partial wave and its smooth
 partner. The coefficient $\langle \tilde p_i^R |
@@ -2625,7 +2625,7 @@ linearisation [Kresse and Joubert, 1999, eqs. (4)–(5),
 p. 1761]. The result is that *the total energy
 functional of Vanderbilt's ultrasoft construction is
 a special case of the PAW energy functional with the
-non-linear terms droppe`d*'
+non-linear terms dropped*'
 [Kresse and Joubert, 1999, p. 1761]. The
 linearisation is exact in the limit of small
 augmentation charge (small $\Delta Q_l$), and
@@ -2774,7 +2774,7 @@ error of USPP for these systems is the
 ### 8.15.5 Comparison of the three approaches
 
 The three approaches — NC-PP, US-PP, and PAW — are
-*unifie`d*' by the Blöchl transformation of § 8.12.2,
+*unified* by the Blöchl transformation of § 8.12.2,
 and the Kresse–Joubert 1999 paper is explicit about
 this: the NC-PP, US-PP, and PAW functionals are
 *three special cases* of a single general linear
@@ -2848,7 +2848,7 @@ The diagram encodes the central message of the
 1999 Kresse–Joubert paper: the three methods are
 *limits of a single formalism*, and the choice
 between them is a choice about *which terms in the
-energy expression to kee`p*' [Kresse and Joubert,
+energy expression to keep* [Kresse and Joubert,
 1999, p. 1761]. The "expensive" path through full
 PAW gives the best accuracy; the "cheap" path
 through NC-PP gives the lowest cost; the
@@ -2858,7 +2858,7 @@ sweet spot of VASP versions 1–4. ### 8.15.6 What these papers don't say
 The four foundational papers are remarkably complete
 on the formal side — between them, they cover every
 pseudopotential concept in active use today. But
-they are also *historically situate`d*`, and several
+they are also *historically situated*, and several
 topics that the modern user takes for granted are
 *absent* from the original papers. The list below
 spells out the most important omissions.
@@ -2901,7 +2901,7 @@ alkali or alkaline-earth chemistry must add
 NLCC manually, or use a small-core / large-core
 choice as in § 8.14. **(3) No spin polarisation in the original
 construction.** The norm-conservation condition of
-eq. (1) of Hamann 1979 is *spin-average`d*`: it
+eq. (1) of Hamann 1979 is *spin-averaged*: it
 applies to a single $u_l(r)$ per channel
 [Hamann, Schlüter, and Chiang, 1979, eq. (1), p. 1494].
 Spin-polarised calculations (different $u_l$ for

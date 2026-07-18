@@ -14,7 +14,7 @@ keywords: "Runge-Gross, time-dependent Kohn-Sham, ALDA, exact exchange,
 
 # Chapter 12 — Time-Dependent DFT
 
-> Ground-state DFT is a *stati`c*' theory: it tells you the energy and
+> Ground-state DFT is a *static* theory: it tells you the energy and
 > the density of a system that has been sitting in one external
 > potential forever. Time-dependent DFT is its *dynamical* extension:
 > it tells you what happens when you shake the potential, and what
@@ -122,7 +122,7 @@ guarantees that the time-dependent external potential
 $v_\text{ext}(\mathbf r, t)$ is in one-to-one correspondence
 with the time-dependent density $\rho(\mathbf r, t)$ (up to a
 gauge $c(t)$), given a fixed initial state $|\Psi_0\rangle$.
-The diagram below shows the *forwar`d*' map (potential → wave
+The diagram below shows the *forward* map (potential → wave
 function → density, the natural arrow of the Schrödinger
 equation) and the *Runge–Gross* inverse (density → potential,
 which is what makes TD-DFT possible).
@@ -131,7 +131,7 @@ which is what makes TD-DFT possible).
 The **solid** arrows are the forward map — the Schrödinger
 equation determines the wave function from the potential, and
 the density is the diagonal of the one-body density matrix. The
-**dashe`d** arrow is the Runge–Gross* inverse, which says:
+**dashed** arrow is the Runge–Gross* inverse, which says:
 given the *density* $\rho(\mathbf r, t)$ and the initial state
 $|\Psi_0\rangle$, the potential $v_\text{ext}(\mathbf r, t)$ is
 *uniquely* determined (up to a purely time-dependent function
@@ -551,7 +551,7 @@ in the worked example of section 12.10. The adiabatic **GGA** (adiabatic PBE, et
 **hybrid** functionals follow the same pattern, with the static
 functional plugged in at the instantaneous density. They do
 not introduce any new physics beyond ALDA — they only improve
-the *stati`c*' xc potential that is being evaluated adiabatically.
+the *static* xc potential that is being evaluated adiabatically.
 
 > **Tip.** The "adiabatic" label is a physical statement, not a
 > technical one. The static LDA, GGA, or hybrid xc potential is
@@ -580,7 +580,7 @@ f_\text{x}^\text{EXX}(\mathbf r, \mathbf r', t - t')
         {|\mathbf r - \mathbf r'|\, \rho(\mathbf r, t)\, \rho(\mathbf r', t')}\, \delta(t - t') .
 $$
 
-(The $\delta(t - t')$ enforces the *adiabati`c*' approximation;
+(The $\delta(t - t')$ enforces the *adiabatic* approximation;
 EXX is, in practice, almost always used adiabatically.) The
 "$\frac{1}{2}$" is the same exchange factor as in Hartree–Fock;
 the sum runs over the Kramers spin pair; and
@@ -651,7 +651,7 @@ review by Onida, Reining, and Rubio (2002).
 > three. We summarise the relationships in section 12.11. ## 12.5 Linear-response TD-DFT (TD-DFRT)
 
 The exact time-dependent KS equations are nonlinear. The
-**linear-response** regime — the response to a *wea`k*'
+**linear-response** regime — the response to a *weak*
 perturbation — is far more tractable and is the workhorse of
 practical TD-DFT for excitation spectra.
 
@@ -925,7 +925,7 @@ $$
 with $\Psi_0$ the ground state, $\Psi_I$ the excited state, and
 $\hat r_\alpha$ the dipole operator in the $\alpha$ direction.
 The factor 2 in front is the standard convention in the
-*length*' gauge; the velocity gauge uses
+*length* gauge; the velocity gauge uses
 $|\langle \Psi_I | \hat p_\alpha | \Psi_0 \rangle|^2$ instead.
 
 > **Tip.** The oscillator strength is dimensionless. The
@@ -1317,7 +1317,7 @@ is non-local in $\mathbf r$ but frequency-independent.
 ### 12.7.4 Diagram — the Casida construction pipeline
 
 The Casida equation is the practical realisation of
-linear-response TD-DFT for *excitation spectr`a*`. The pipeline
+linear-response TD-DFT for *excitation spectra*. The pipeline
 runs from a *ground-state* calculation (which provides the KS
 orbitals and energies) through the *KS response function*
 $\chi_s$, the *coupling matrix* $\mathbf K$ (which contains the
@@ -1372,7 +1372,7 @@ graph TD
 The **three vertical branches** of the diagram converge on the
 'EIG' box. 'A' (top branch) provides the *diagonal* of the
 Casida matrix — it contains the KS excitation energies
-$\omega_{ia}$ and is the part that survives the *Tamm–Dancof`f*'
+$\omega_{ia}$ and is the part that survives the *Tamm–Dancoff*
 approximation (TDA, where 'B' is neglected). 'K' (middle
 branch) is the *coupling matrix*, computed from the chosen
 xc kernel; it is the *only* branch where the kernel choice
@@ -1396,7 +1396,7 @@ directly.
 
 The simplest integrator for \eqref{eq:ch-12-tdks-orbital} is
 the **Crank–Nicolson** (CN) propagator. For the linear part
-of the Hamiltonian the CN step is unitary, *symplecti`c*`, and
+of the Hamiltonian the CN step is unitary, *symplectic*, and
 second-order accurate in the time step $\Delta t$. The
 nonlinear part of the Hamiltonian (the self-consistent
 update of $v_\text{eff}$) is handled by a predictor-
@@ -1455,7 +1455,7 @@ $$
    e^{-i\omega t}\, dt .
 $$
 
-In practice the Fourier transform of a *finite-lengt`h*' time
+In practice the Fourier transform of a *finite-length* time
 series produces sidelobes that obscure the spectrum. The
 fix is to multiply $\boldsymbol\mu(t)$ by a smooth
 **window function** (Hann, Gaussian, exponential damping)
@@ -1495,7 +1495,7 @@ literature).
 Real-time TD-DFT propagates the time-dependent KS orbitals
 forward in time, monitors the time-dependent dipole moment, and
 extracts the absorption spectrum by Fourier transform. The
-diagram below shows the *propagation loo`p*' (top half) and the
+diagram below shows the *propagation loop* (top half) and the
 *post-processing* chain (bottom half).
 
 ```mermaid
@@ -1865,7 +1865,7 @@ Two things to take away from the example:
 1. **Casida and real-time agree.** Within numerical noise,
    the peak of the Fourier-transformed real-time dipole
    moment sits at the Casida excitation energy. This is
-   the *consistency chec`k*' that the two formulations of
+   the *consistency check* that the two formulations of
    linear-response TD-DFT are equivalent.
 
 2. **The kernel matters.** With $K = 0$ the excitation is
@@ -2364,7 +2364,7 @@ $$
 \frac{\delta \rho(\mathbf r, t)}{\delta v_\text{ext}(\mathbf r', t')} .
 $$
 
-The two time arguments $t$ and $t'$ are *bot`h*' on the
+The two time arguments $t$ and $t'$ are *both* on the
 physical (forward) branch of the Keldysh contour; the
 retardedness of $\chi$ comes from the requirement
 $\chi(\mathbf r, t; \mathbf r', t') = 0$ for $t < t'$.
@@ -2568,7 +2568,7 @@ Section 12.7.1:
    \eqref{eq:ch-12-casida-K}.
 2. **Insert the BSE kernel $K^\text{BSE}$ in place of
    $K^\text{TDDFT} = 2 K$.** In the BSE, the kernel is
-   the *bare Coulomb*' plus the electron–hole exchange minus
+   the *bare Coulomb* plus the electron–hole exchange minus
    the *electron–hole direct* (see the $f_\text{Hxc}$ of
    section 12.4.3 for the formal definition); we omit the
    factor of 2 because the BSE is a *two-particle* response
@@ -2854,7 +2854,7 @@ graph LR
   CHI_S --> SOLVE
   SOLVE["Invert Dyson equation<br/>chi = (chi_s^-1 - v_H - f_xc)^-1"]
   SOLVE --> EIG
-  EIG["Casida eigenvalue problem<br/>(A B; B A)(X;Y) = omega (X;Y)<br/>A_ia,jb = delta omega_ia + K_ia,jb<br/>K_ia,jb = int xi_i`a*`(v_H + f_xc) xi_jb"]
+  EIG["Casida eigenvalue problem<br/>(A B; B A)(X;Y) = omega (X;Y)<br/>A_ia,jb = delta omega_ia + K_ia,jb<br/>K_ia,jb = int xi_ia*`(v_H + f_xc) xi_jb"]
   EIG --> OMEGA["Excitation energies<br/>omega_I (eigenvalues)"]
   EIG --> XY["Excitation amplitudes<br/>(X_I, Y_I)"]
   XY --> FOSC["Oscillator strengths<br/>f_I = (2/3) omega_I |sum_ia sqrt(w_ia/w_I)<br/>(X_ia + Y_ia) mu_ia|^2"]
@@ -2873,7 +2873,7 @@ the *bare* KS excitation energies $\omega_{ia}$. The
 \eqref{eq:ch-12-09-dyson}, which dresses the
 $\chi_s$ poles with the electron–electron
 interaction. The **output** is the spectrum
-$\{\omega_I, f_I\}$ of the *dresse`d*' system. The
+$\{\omega_I, f_I\}$ of the *dressed* system. The
 single matrix diagonalisation in the central box
 produces *all* excitation energies and amplitudes
 at once; the spectrum is then constructed by
@@ -2892,7 +2892,7 @@ a bound electron–hole pair with a binding energy of
 order $0.1$–$1.0$ eV that lives *below* the
 fundamental band gap and dominates the optical
 absorption edge. The Casida equation, with the
-*adiabati`c*' kernel of section 12.9.5, fails to bind
+*adiabatic* kernel of section 12.9.5, fails to bind
 the exciton because the adiabatic kernel has no
 long-range component. The **Bethe–Salpeter equation**
 (BSE) is the formalism that does.
@@ -2923,9 +2923,9 @@ principle describe excitons — the Dyson equation
 \eqref{eq:ch-12-09-dyson} is exact, and the exact
 $f_\text{xc}$ would bind the electron–hole pair
 through its long-range component. The problem is
-the *adiabati`c*' approximation. The adiabatic
+the *adiabatic* approximation. The adiabatic
 kernel of \eqref{eq:ch-12-09-adiabatic} is built
-from the *stati`c*' xc energy functional of the KS
+from the *static* xc energy functional of the KS
 ground state, and a static functional has no way
 to generate a frequency-dependent xc response of
 the kind required for a long-range, retarded
@@ -2934,12 +2934,12 @@ electron–hole attraction.
 > **The deep reason.** The xc kernel $f_\text{xc}
 > (\mathbf r, \mathbf r'; \omega)$ has a long-
 > range $-\alpha/|\mathbf r - \mathbf r'|$ tail
-> that comes from the *screene`d*' Coulomb interaction
+> that comes from the *screened* Coulomb interaction
 > $W(\omega)$, not from the *bare* Hartree kernel
 > $v_H = 1/|\mathbf r - \mathbf r'|$. The adiabatic
 > kernel of the KS DFT has *no* $W$ in it. Only
 > kernels built from a *two-particle* propagator
-> (BSE) or from a *range-separate`d*' hybrid (CAM-
+> (BSE) or from a *range-separated* hybrid (CAM-
 > B3LYP, $\omega$B97X) recover the long-range tail.
 
 The BSE is a kernel of the right form. In the
@@ -2950,9 +2950,9 @@ the GW dielectric function. The screening *reduces*
 the bare $1/r$ tail to a finite-range Yukawa-
 like $e^{-\lambda r}/r$, which still binds the
 exciton. The Casida equation with the **EXX** kernel
-(section 12.4.2) is the *unscreene`d*' limit of the
+(section 12.4.2) is the *unscreened* limit of the
 BSE and over-binds the exciton; the Casida equation
-with the **BSE kernel** is the *screene`d*' limit and
+with the **BSE kernel** is the *screened* limit and
 is the correct treatment.
 
 ### 12.10.2 The two-particle Green's function
@@ -3015,10 +3015,10 @@ K(5, 6; 7, 8) \;=\;
 \underbrace{i\, \delta(5, 7)\, \delta(6, 8)\, W(5, 6)}_{\displaystyle K^d = W(\text{direct})} ,
 $$
 
-where $W$ is the *statically screene`d*' Coulomb
+where $W$ is the *statically screened* Coulomb
 interaction of the GW approximation. The
 *exchange* kernel $K^x = -v$ (in the bare limit)
-or $K^x = -W$ (in the *screene`d*' limit) gives the
+or $K^x = -W$ (in the *screened* limit) gives the
 local-field effects; the *direct* kernel
 $K^d = +W$ gives the attractive electron–hole
 interaction that binds the exciton.
@@ -3029,7 +3029,7 @@ interaction that binds the exciton.
 > function $G$. The Casida equation of section
 > 12.9 is the TD-DFT *approximation* to the BSE,
 > in which the kernel is replaced by the
-> *adiabati`c*' xc kernel of the KS system. The BSE
+> *adiabatic* xc kernel of the KS system. The BSE
 > has the more complete kernel $v + W$; the Casida
 > equation has the cheaper but more approximate
 > kernel $f_\text{xc}^\text{ad}$.
@@ -3127,7 +3127,7 @@ $\{\omega_I, (\mathbf X_I, \mathbf Y_I)\}$.
 
 > **Warning.** The dimension of the BSE matrix
 > \eqref{eq:ch-12-10-H-eh} is $N_\text{occ} \cdot
-> N_\text{virt}$ — *hal`f*' the dimension of the
+> N_\text{virt}$ — *half* the dimension of the
 > Casida matrix, because the BSE uses only the
 > *resonant* amplitude. In a periodic solid the
 > dimension is the number of $(\mathbf k, n)$
@@ -3158,7 +3158,7 @@ semiconductors, $\sim 1$ nm in organic crystals.
 
 The second term $\overline{v}$ is the **Coulomb
 hole**: the short-range part of the bare Coulomb
-interaction that has been *subtracte`d*' from the
+interaction that has been *subtracted* from the
 screened $W$ to avoid double-counting with the
 direct term of \eqref{eq:ch-12-10-H-eh}. It is
 short-ranged and contributes a constant
@@ -3180,7 +3180,7 @@ $$
 Equation \eqref{eq:ch-12-10-Kxc-tddf} is the
 "TD-DFT kernel in a BSE matrix element" — it uses
 the static adiabatic kernel of TD-DFT inside the
-BSE. This is the *hybri`d*' BSE+TD-DFT approach used
+BSE. This is the *hybrid* BSE+TD-DFT approach used
 by some production codes; it is cheaper than the
 full BSE but still recovers most of the
 screening.
@@ -3190,9 +3190,9 @@ screening.
 > following. GW gives the *quasiparticle* energies
 > (replacing $\varepsilon_a - \varepsilon_i$ in
 > \eqref{eq:ch-12-10-H-eh} with the GW gaps). BSE
-> gives the *excitoni`c*' spectrum on top of those
+> gives the *excitonic* spectrum on top of those
 > gaps. The TD-DFT Casida equation does both at
-> once, with the *static adiabati`c*' xc kernel of
+> once, with the *static adiabatic* xc kernel of
 > the KS system. In practice the GW + BSE workflow
 > is more accurate but more expensive; the Casida
 > equation is faster but less reliable for
@@ -3394,7 +3394,7 @@ GW alone does not.
 > **Note.** The example uses the Wannier model,
 > which is the limit of a parabolic two-band
 > structure and a long-range screened kernel.
-> Real materials have *non-paraboli`c*' bands and
+> Real materials have *non-parabolic* bands and
 > *non-local* screening, and the Wannier
 > formula is replaced by a numerical BSE
 > diagonalisation. The qualitative conclusion
@@ -3411,7 +3411,7 @@ equations in the form that is actually solved
 numerically, we discuss the two *gauges* (length
 and velocity), we survey the *time-propagation
 algorithms* in current use, we set the *time
-ste`p*, we show how the *absorption spectrum is
+step*, we show how the *absorption spectrum is
 extracted from a real-time propagation, we
 introduce the *Ehrenfest* extension for coupled
 electron–ion dynamics, and we close with a
@@ -3522,7 +3522,7 @@ $$
 
 The vector potential $\mathbf A(t) = -\int^t
 \mathbf E(t')\, dt'$ is the time integral of the
-field. The velocity gauge is *periodi`c*' — the
+field. The velocity gauge is *periodic* — the
 operator $\hat{\mathbf p} = -i\nabla$ commutes
 with lattice translations — and is the natural
 gauge for plane-wave calculations. The
@@ -3625,7 +3625,7 @@ analytically.
 > predictor–corrector is the cheapest. ETRS
 > is the most-used production algorithm.
 > Magnus is the basis of several
-> specialised methods for *strong-fiel`d*'
+> specialised methods for *strong-field*
 > problems.
 
 ### 12.11.4 The time step
@@ -3676,7 +3676,7 @@ terms. A typical real-time TD-DFT run on a
 molecule takes a few minutes; on a solid-state
 supercell it takes a few hours.
 
-> **Tip.** The time step can be *adapte`d*' to
+> **Tip.** The time step can be *adapted* to
 > the instantaneous HOMO energy (which is not
 > strictly constant in TD-DFT, because the
 > xc potential is dynamic). The adaptive
@@ -3764,7 +3764,7 @@ excitation energies gives the spectrum. The
 dipole-allowed transitions at once; the
 Fourier transform separates them in
 frequency. An alternative is a *short*,
-*finite-widt`h*' pulse shaped to cover a
+*finite-width* pulse shaped to cover a
 specific frequency window; this is more
 efficient for narrow spectral regions but
 requires a separate run for each window.
@@ -3806,7 +3806,7 @@ time-dependent KS energy with respect to the
 nuclear coordinate $\mathbf R_I$, taken with
 the *orbitals* $\phi_i(\mathbf r, t)$ held
 fixed. The orbital and nuclear equations are
-*couple`d*`: the orbitals depend on the
+*coupled*: the orbitals depend on the
 nuclear coordinates (through the external
 potential $v_\text{ext}$), and the nuclear
 trajectory depends on the orbitals (through
@@ -3815,7 +3815,7 @@ the expectation value of the Hamiltonian).
 The Ehrenfest method is the workhorse of
 *ab initio* molecular dynamics with
 electronic excitations. It captures the
-*mean-fiel`d*' response of the electrons to
+*mean-field* response of the electrons to
 the nuclear motion — including the
 non-adiabatic transitions between
 electronic states that are *not* accessible
@@ -3835,7 +3835,7 @@ of Tully is the standard alternative.
 > **Note.** The Ehrenfest force on the
 > right-hand side of
 > \eqref{eq:ch-12-11-ehrenfest} is a
-> *mean-fiel`d*' force. The forces on
+> *mean-field* force. The forces on
 > *different* nuclei are correlated
 > through the time-dependent KS
 > wavefunction — the dynamics is
@@ -3865,7 +3865,7 @@ The real-time TD-DFT calculation uses:
 - A *norm-conserving* pseudopotential for
   carbon, with the $2s$ and $2p$ valence
   electrons treated explicitly.
-- A *real-space gri`d*' with spacing
+- A *real-space grid* with spacing
   $h = 0.18$ a.u. and a *spherical
   boundary* of radius $R = 20$ a.u. (the
   cage has a diameter of $\sim 7$ a.u.,
@@ -3874,10 +3874,10 @@ The real-time TD-DFT calculation uses:
 - A *PBE* exchange–correlation
   functional, with the adiabatic
   approximation.
-- A *delta-kic`k*' initial perturbation of
+- A *delta-kick* initial perturbation of
   strength $k = 0.01$ a.u. along the
   $x$-axis.
-- A *time ste`p*' of $\Delta t = 0.05$ a.u.
+- A *time step* of $\Delta t = 0.05$ a.u.
   ($\sim 1.2 \times 10^{-3}$ fs), well
   below the stability limit of
   \eqref{eq:ch-12-11-timestep}.
@@ -3928,7 +3928,7 @@ a typical EELS experiment).
 
 ## 12.14 The original papers: a literature deep-dive
 
-This section is a *page-cite`d*' companion to the rest
+This section is a *page-cited* companion to the rest
 of the chapter: every claim has a page number from
 the original publication, so a reader can *verify*
 a result against the primary literature without
@@ -4026,7 +4026,7 @@ The proof is on **p. 998–999** of the original paper
 [Runge and Gross, 1984, p. 998–999]. (1) The
 continuity equation
 $\partial_t \rho = -\nabla \cdot \mathbf j$ gives the
-*zerot`h*' time-derivative of the density in terms of
+*zeroth* time-derivative of the density in terms of
 the current [Runge and Gross, 1984, p. 998, left
 column]. (2) The *force-balance equation* (eq. (4)
 on p. 998) gives the *first* time-derivative of the
@@ -4046,7 +4046,7 @@ $v_\text{ext} - v'_\text{ext}$ is *spatially
 constant*, the iteration breaks down, and the
 two potentials differ by the purely-time-dependent
 $c(t)$ [Runge and Gross, 1984, p. 999, right column].
-The Runge–Gross proof is *muc`h*' shorter than the
+The Runge–Gross proof is *much* shorter than the
 Hohenberg–Kohn proof because the time-dependent
 Schrödinger equation is *linear* ($v$-representability
 issues are absent); the price is the requirement of
@@ -4157,8 +4157,8 @@ Gross, 2004, p. 444–446].
 
 The initial state $|\Phi_0\rangle$ at $t = t_0$ is
 a *fixed input* to the Runge–Gross theorem. The
-density at $t > t_0$ depends on *bot`h*' the
-time-dependent external potential *an`d*' the initial
+density at $t > t_0$ depends on *both* the
+time-dependent external potential *and* the initial
 state. The density-to-potential map is one-to-one
 *given* the initial state; if the initial state
 changes, the density changes even at fixed
@@ -4167,7 +4167,7 @@ column]. This is a *fundamental difference* from
 ground-state DFT, where the initial state is *the*
 ground state of the Hamiltonian and is uniquely
 determined by $v_\text{ext}$. In TDDFT the initial
-state is an *extra piece of dat`a*' that the user
+state is an *extra piece of data* that the user
 must supply; most production calculations use the
 ground-state KS Slater determinant as the initial
 state at $t = 0$, and the chapter does the same
@@ -4252,7 +4252,7 @@ matrix [Casida, 1995, eq. (3.16), p. 168].
 > **Note.** Equation (3.16) on p. 168 of Casida 1995
 > has the *square* $\omega_I^2$ on the right-hand side,
 > not $\omega_I$ as in the modern form. The reason is
-> that the 1995 derivation works in the *symmetri`c*'
+> that the 1995 derivation works in the *symmetric*
 > basis of $\sqrt{\omega_{ia}} (\mathbf X + \mathbf Y)$,
 > which diagonalises the Casida matrix into a standard
 > eigenvalue problem with $\omega^2$ on the right
@@ -4314,7 +4314,7 @@ where the factor $2/3$ is the spherical average
 over the three Cartesian components, and the
 $\sqrt{\omega_{ia}/\omega_I}$ is the velocity-gauge
 rescaling that ensures gauge-independence. The
-$F_{I, ia}$ is the *symmetri`c*' eigenvector of the
+$F_{I, ia}$ is the *symmetric* eigenvector of the
 Casida matrix \eqref{eq:ch-12-14-casida-omega},
 related to the chapter's $(\mathbf X, \mathbf Y)$
 by $F_I = \sqrt{\omega} (X + Y)$ [Casida, 1995,
@@ -4346,7 +4346,7 @@ p. 1212–1213]. The textual statement is:
 > In the limit of the *exact* time-dependent xc
 > kernel, the lowest TDDFT excitation energy of a
 > many-electron system converges to the
-> *Kohn–Sham ga`p*' — the difference between the
+> *Kohn–Sham gap* — the difference between the
 > Kohn–Sham HOMO and LUMO eigenvalues
 > [Petersilka, Gossmann, and Gross, 1996, p. 1213].
 
@@ -4389,7 +4389,7 @@ small ($\sim 0.1$–$0.3$ eV for valence
 excitations of organic molecules) because the
 kernel correction is small for the *lowest*
 excitation. The ALDA is *less* accurate for higher
-excitations, and *muc`h*' less accurate for
+excitations, and *much* less accurate for
 charge-transfer and Rydberg excitations, where
 the kernel correction is large [Petersilka,
 Gossmann, and Gross, 1996, p. 1214].
@@ -4421,7 +4421,7 @@ xc functional is discussed in the language of
 the **adiabatic approximation** is dissected. The
 review of the Runge–Gross theorem is on
 **pp. 432–435** [Marques and Gross, 2004, p. 432–435]
-— *muc`h*' more detailed than the original 1984 paper,
+— *much* more detailed than the original 1984 paper,
 with the full Keldysh-contour action formulation,
 the van Leeuwen (1998) reformulation, and the
 modern "up to $c(t)$" caveat [Marques and Gross,
@@ -4437,7 +4437,7 @@ and Gross, 2004, p. 438].
 The adiabatic approximation is reviewed in detail
 on **pp. 444–446** of the 2004 paper [Marques and
 Gross, 2004, p. 444–446]. The presentation is
-*self-containe`d*`: the 2004 review gives the
+*self-contained*: the 2004 review gives the
 explicit form of the adiabatic kernel for the LDA,
 the GGA, and the hybrid functionals, with a
 discussion of the *failure modes* of each. The
@@ -4495,7 +4495,7 @@ flowchart LR
 The **left-to-right** flow is the *time* axis. The
 *first three* boxes (RG theorem, TD KS equations,
 Mearns–Kohn response) are the *foundation*; the
-*Casida*' box is the practical realisation; the
+*Casida* box is the practical realisation; the
 *PGG* box is the first rigorous result that
 connects TDDFT to KS orbital energies; the
 *Marques–Gross* box is the modern review. The
@@ -4515,11 +4515,11 @@ only in passing. The list below is in order of
 The Casida equation is built on the *single-
 excitation* basis $|i \to a\rangle$ and cannot
 describe *double* excitations $|i, j \to a, b\rangle$
-in the *standar`d*' form, because the single-excitation
+in the *standard* form, because the single-excitation
 basis does not contain the double-excitation
 configurations [Marques and Gross, 2004, p. 446].
 The *exact* response function does contain double
-excitations, but the *adiabati`c*' kernel of section
+excitations, but the *adiabatic* kernel of section
 12.14.5.3 does *not* mix singles with doubles.
 Practical workarounds include the **spin-flip**
 TDDFT of Shao et al. (2003) and the **double-hybrid**
@@ -4533,17 +4533,17 @@ Gossmann, and Gross, 1996, p. 1214].
 
 #### 12.14.6.2 The wrong long-range asymptote of the ALDA kernel
 
-The ALDA kernel is *short-range`d*' — it is local in
+The ALDA kernel is *short-ranged* — it is local in
 $\mathbf r$, and falls off as a $\delta$-function.
 The *exact* $f_\text{xc}$ has a long-range
 $-\alpha/|\mathbf r - \mathbf r'|$ tail that
-comes from the *screene`d*' Coulomb interaction
+comes from the *screened* Coulomb interaction
 $W(\omega)$ [Marques and Gross, 2004, p. 444].
 The missing long-range tail is why ALDA TDDFT
 *fails* for charge-transfer excitations (in
 molecules) and for excitons (in solids). The *fix*
 is the **range-separated hybrid** (CAM-B3LYP,
-$\omega$B97X), which is a *hybri`d*' kernel with the
+$\omega$B97X), which is a *hybrid* kernel with the
 correct long-range behaviour — a *post-2004*
 development [Marques and Gross, 2004, p. 444–446].
 
@@ -4559,7 +4559,7 @@ Runge–Gross paper. The 2004 Marques–Gross review
 discusses the Vignale–Rasolt formulation on
 **p. 445** [Marques and Gross, 2004, p. 445], but
 the practical implementation of the Vignale–Rasolt
-kernel is rare; the *standar`d*' production TDDFT
+kernel is rare; the *standard* production TDDFT
 codes do *not* include the magnetic-field response
 [Marques and Gross, 2004, p. 445].
 
@@ -4577,7 +4577,7 @@ functional of Dion et al. (2004) or the
 al. (2012), both of which are *post-2004*
 developments [Marques and Gross, 2004, p. 444–446].
 The 2004 Marques–Gross review mentions dispersion
-as an *outloo`k*' topic on **p. 446**
+as an *outlook* topic on **p. 446**
 [Marques and Gross, 2004, p. 446].
 
 > **Note.** Other topics that are *not* in the four
@@ -4586,7 +4586,7 @@ as an *outloo`k*' topic on **p. 446**
 > of insulators, the **strong-field** response of
 > atoms in intense laser pulses, and the
 > **non-adiabatic** coupling of electrons and ions
-> at conical intersections. Each is a *specialise`d*'
+> at conical intersections. Each is a *specialised*
 > sub-field of TDDFT that post-dates the four
 > foundational papers.
 
@@ -4657,7 +4657,7 @@ the topics we did *not* cover.
   correction.**  Standard ALDA fails for charge-
   transfer excitations because the ALDA xc kernel
   is short-ranged.  The fix is the **range-separated
-  hybri`d*`*, in which a fraction of exact exchange is
+  hybrid, in which a fraction of exact exchange is
   used at long range to recover the $-1/r$ tail of
   the true kernel. CAM-B3LYP and $\omega$B97X are
   the standard parameterisations. We did not discuss

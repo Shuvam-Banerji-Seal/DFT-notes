@@ -38,8 +38,8 @@ potential and the orbitals together; and a fixed-point solver
 all four in turn. The first five sections (4.1–4.5) recall the
 canonical content; the next eight (4.6–4.13) are the extensions
 that turn the textbook KS equations into a tool that can be
-*implemented*' (§4.6 mixing), differentiated* (§4.7 forces),
-*spin-polarised*' (§4.8), formally grounded* (§4.9 ACFDT, §4.10
+*implemented* (§4.6 mixing), differentiated* (§4.7 forces),
+*spin-polarised* (§4.8), formally grounded* (§4.9 ACFDT, §4.10
 OEP, §4.11 Görling–Levy perturbation theory), *pushed into the
 heavy-element regime* (§4.12 relativistic KS), and *summarised*
 (§4.13 worked example + problems).
@@ -322,7 +322,7 @@ rung for which system".
 Section 4.4 wrote the SCF as a single `for`' loop.  In practice, that
 loop diverges or oscillates for everything but the smallest systems
 unless the iteration is damped, extrapolated, or otherwise
-*stabilise`d*`.  This section is about that stabilisation.
+*stabilised*.  This section is about that stabilisation.
 
 We model the SCF as a **fixed-point problem**.  Define the SCF
 update as a map from the input density to the output density:
@@ -872,7 +872,7 @@ $$
 
 All the derivatives in the last two lines are derivatives of
 **integrals** whose integrands depend on $\mathbf R$ only through the
-basis centres, *an`d*' through the explicit $\mathbf R_I$ in the
+basis centres, *and* through the explicit $\mathbf R_I$ in the
 operators.  They produce, by the same Hellmann–Feynman argument as
 above, the classical forces in \eqref{eq:ch-04-force-nucleus} plus
 a basis-derivative term.  The basis-derivative term is
@@ -960,8 +960,8 @@ $$
 
 The spin-density version of the Hohenberg–Kohn theorem
 (von Barth and Hedin, 1972) says that in the presence of an
-*external magnetic fiel`d*' $B(\mathbf r) \hat z$ (the typical
-case), the external potential *an`d*' the external magnetic field are
+*external magnetic field* $B(\mathbf r) \hat z$ (the typical
+case), the external potential *and* the external magnetic field are
 uniquely determined by $\boldsymbol\rho(\mathbf r)$ (equivalently,
 by $\rho(\mathbf r)$ and $m(\mathbf r)$).  Every ground-state
 observable is then a functional of $(\rho_\uparrow, \rho_\downarrow)$.
@@ -982,7 +982,7 @@ $$
 $T_s$ is the non-interacting kinetic energy of two independent
 Fermi seas (one for each spin).  The Hartree $J$ depends only on
 the total $\rho$.  The XC functional $E_\text{xc}[\rho_\uparrow,
-\rho_\downarrow]$ is now a functional of *bot`h*' spin densities
+\rho_\downarrow]$ is now a functional of *both* spin densities
 (and, in GGAs and beyond, of their gradients).
 
 The **L(S)DA** approximation takes the homogeneous electron gas
@@ -1014,8 +1014,8 @@ $$
 \qquad -1 \le \zeta \le 1,
 $$
 
-and the LSDA XC energy can be decomposed into a *paramagneti`c*'
-(average) part and a *ferromagneti`c*' (polarised) part.  The
+and the LSDA XC energy can be decomposed into a *paramagnetic*
+(average) part and a *ferromagnetic* (polarised) part.  The
 so-called *spin-stiffness* — the energy cost of a small
 $\zeta$ — is the coefficient that determines the spin-wave
 dispersion and the Curie temperature of itinerant magnets.
@@ -1159,7 +1159,7 @@ Three practical points for the working calculator:
 
 Sections 4.1–4.8 told us that the Kohn–Sham equations are *exact* given
 the exact $E_\text{xc}[\rho]$.  We have not, however, written down a
-*formul`a*' for $E_\text{xc}$.  The **adiabatic-connection
+*formula* for $E_\text{xc}$.  The **adiabatic-connection
 fluctuation-dissipation theorem (ACFDT)** is one such formula.  It is
 exact in principle and reproduces every "rung" of Jacob's ladder
 (§4.5) as a particular approximation to the same underlying
@@ -1179,7 +1179,7 @@ where $\lambda$ is the **coupling constant** and
 $\hat V_{ee} = \sum_{i<j} 1/|\mathbf r_i - \mathbf r_j|$ is the full
 electron–electron repulsion.  The one-body potential
 $\hat V_\text{ext}^\lambda = \sum_i v_\text{ext}^\lambda(\mathbf r_i)$
-is *adjuste`d*' at every $\lambda$ so that the ground-state density is
+is *adjusted* at every $\lambda$ so that the ground-state density is
 **fixed** to the physical density $\rho(\mathbf r)$ for every $\lambda$:
 
 $$
@@ -1191,7 +1191,7 @@ $$
 Two limits are easy to identify.
 
 - **$\lambda = 0$:** $\hat H_0 = \hat T + \hat V_\text{ext}^0$.  The
-  electron–electron interaction is *of`f*`, so $\hat H_0$ is a one-body
+  electron–electron interaction is *off*, so $\hat H_0$ is a one-body
   Hamiltonian.  The potential $v_\text{ext}^0(\mathbf r)$ that gives
   the right density is, by the Hohenberg–Kohn uniqueness theorem
   (chapter 02), **the KS effective potential**
@@ -1378,7 +1378,7 @@ $$
 
 ### 4.9.4 The exchange-correlation hole
 
-The classical Hartree term $J[\rho]$ corresponds to the *uncorrelate`d*'
+The classical Hartree term $J[\rho]$ corresponds to the *uncorrelated*
 pair density $n_2^\text{uncorr}(\mathbf r, \mathbf r') = \rho(\mathbf r) \rho(\mathbf r')$,
 i.e. the probability of finding two electrons at $\mathbf r$ and
 $\mathbf r'$ *as if they were independent*.  The difference between the
@@ -1584,7 +1584,7 @@ is a different *approximation* to the same integral:
 - **LDA, GGA, meta-GGA**: replace the ISI $\langle \Psi_\lambda | \hat V_{ee} | \Psi_\lambda \rangle$
   by a model that depends only on $\rho$ and its derivatives (and the
   KS kinetic-energy density $\tau$).  This is an approximation to the
-  *integran`d*`.
+  *integrand*.
 - **Hybrid**: add a fraction of the $\lambda = 0$ value $\langle \Psi_0 | \hat V_{ee} | \Psi_0 \rangle$,
   which is the **exact exchange** $E_x^\text{exact} = \langle \Psi_0 | \hat V_{ee} | \Psi_0 \rangle - J[\rho]$
   of \eqref{eq:ch-04-9-exact-exchange}.  The fraction is the mixing
@@ -1820,7 +1820,7 @@ production codes that need orbital-dependent XC.
 
 > **Note.**  The KLI approximation is *not* a functional: it is a
 > *prescription* for the local potential that the orbital-dependent
-> functional *woul`d*' produce if the OEP integral equation could be
+> functional *would* produce if the OEP integral equation could be
 > solved.  The two differ by the *off-diagonal* orbital contributions,
 > which are typically small for "well-behaved" systems but can be a
 > few percent of $v_\text{xc}$ in transition-metal atoms with
@@ -1916,7 +1916,7 @@ a non-local integral operator.  The OEP says: "if your functional is
 orbital-dependent, here is the *local* potential that gives you the
 same orbitals and orbital energies as the non-local one would".  The
 OEP is the limit of the generalised KS theory in which the
-non-locality is *eliminate`d*' by an integral transformation.
+non-locality is *eliminated* by an integral transformation.
 
 ## 4.11 Görling–Levy perturbation theory
 
@@ -1943,10 +1943,10 @@ its derivatives and can be evaluated by the chain rule.  For
 *orbital-dependent* functionals (EXX, MP2, RPA), the chain rule
 requires the response of the orbitals to a change in the density, and
 the derivative is no longer local — this is the OEP problem of
-§4.10. Görling and Levy's contribution is a *thir`d*' way: instead of working
+§4.10. Görling and Levy's contribution is a *third* way: instead of working
 with orbital-dependent functionals directly, they **expand $E_\text{xc}$
 in powers of the density perturbation** around a uniform reference, and
-they show that the expansion can be *systematically rearrange`d*' so that
+they show that the expansion can be *systematically rearranged* so that
 each order produces a well-defined local $v_\text{xc}(\mathbf r)$.
 
 ### 4.11.2 The coupling-constant perturbation theory
@@ -1992,7 +1992,7 @@ the HEG.
 
 The HEG expansion is the **only case in which the GL perturbation
 theory converges term-by-term in closed form**.  For non-uniform
-systems, the expansion is *asymptoti`c*`: each term can be evaluated,
+systems, the expansion is *asymptotic*: each term can be evaluated,
 but the series does not converge in the mathematical sense.  The art
 of building a "rung" of Jacob's ladder is to truncate the GL series at
 the order that gives the best balance of accuracy and cost.
@@ -2058,20 +2058,20 @@ The GL perturbation theory is the **unifying language** of the
   information is kept.
 - **GGA**: add the *first-order* term in $\nabla \rho$.  The kernel is
   the gradient-expansion coefficient of the HEG, evaluated on the
-  local density *an`d*' its gradient.
+  local density *and* its gradient.
 - **Meta-GGA**: add the *second-order* term in $\nabla \rho$ and the
   *zeroth-order* term in the KS kinetic-energy density $\tau$.  The
-  meta-GGA is the *third*' rung because it includes the one
+  meta-GGA is the *third* rung because it includes the one
   non-local piece of information that the LDA + GGA cannot reach.
-- **Hybri`d**: add the full* $\lambda = 0$ value of the ISI of the
+- **Hybrid**: add the full* $\lambda = 0$ value of the ISI of the
   ACFDT (§4.9) — i.e. the exact exchange of
   \eqref{eq:ch-04-9-exact-exchange}.  The hybrid is a GL perturbation
-  theory in which the *integran`d*' of the ACFDT is approximated, not
+  theory in which the *integrand* of the ACFDT is approximated, not
   the XC energy density directly.
 - **Range-separated hybrid**: separate the ACFDT integrand into a
   short-range DFT piece and a long-range exact-exchange piece.  This
   is a *decomposition* of the ACFDT, not a new GL order.
-- **Double hybri`d**: add the first-order* correlation correction to
+- **Double hybrid**: add the first-order* correlation correction to
   the GL series.  The MP2-like term \eqref{eq:ch-04-9-mp2-two-electron}
   is the *first* correction to the $\lambda = 0$ ACFDT integrand.
 - **RPA**: sum the *infinite* GL series for the correlation part, in
@@ -2079,7 +2079,7 @@ The GL perturbation theory is the **unifying language** of the
   theory to all orders, in a specific (uniform) limit.
 
 > **Tip.**  The GL perturbation theory is the *only* framework in
-> which every rung of Jacob's ladder is a *well-define`d*' truncation of
+> which every rung of Jacob's ladder is a *well-defined* truncation of
 > a single, exact expansion.  This is why "higher rung = more physics"
 > is a *consistent* statement in DFT, not a heuristic one.
 
@@ -2289,13 +2289,13 @@ added by:
    non-magnetic case).  This is the same brutal approximation as
    in section 4.8.4, and the same caveat applies.
 
-A simpler *post ho`c*' alternative is to compute the orbitals and
+A simpler *post hoc* alternative is to compute the orbitals and
 eigenvalues with a scalar-relativistic code, then evaluate the
 spin–orbit matrix elements $\langle \phi_i | \xi(r) \hat{\mathbf L}
 \cdot \hat{\mathbf S} | \phi_j \rangle$ and diagonalise the
 spin–orbit Hamiltonian in the subspace of interest (typically
 near the Fermi level).  This is the **second-variational
-metho`d*`* of Koelling and Harmon (1977), and it is the default in
+method of Koelling and Harmon (1977), and it is the default in
 many all-electron codes (WIEN2k, Elk, FLEUR).
 
 ### 4.12.5 4-component Dirac–KS DFT
@@ -2321,7 +2321,7 @@ superheavy elements, where the spin–orbit splitting is comparable
 to the chemical-bond energy.
 
 A common compromise is the **2-component (or scalar +
-spin–orbit) relativisti`c*`* method, in which the Dirac Hamiltonian
+spin–orbit) relativistic method, in which the Dirac Hamiltonian
 is **block-diagonalised** by a unitary transformation (the
 **Douglas–Kroll–Hess (DKH)** transformation, or the
 **exact-2-component (X2C)** method, or the **zeroth-order regular
@@ -2914,10 +2914,10 @@ enters when one writes $E_\text{xc}[\rho_\uparrow, \rho_\downarrow]$.
 **Step 1 — the extended HK theorem.**  The original
 Hohenberg–Kohn theorem (section 4.1) says that the external
 potential $v_\text{ext}(\mathbf r)$ is a unique functional of the
-ground-state density $\rho(\mathbf r)$, for systems with a *fixe`d*'
+ground-state density $\rho(\mathbf r)$, for systems with a *fixed*
 number of electrons $N$ and *no* magnetic field.  Von Barth and
 Hedin (1972) extended the theorem to include a *static external
-magnetic fiel`d*' $\mathbf B(\mathbf r) = B(\mathbf r) \hat z$ that
+magnetic field* $\mathbf B(\mathbf r) = B(\mathbf r) \hat z$ that
 couples to the electron spin via the Zeeman term
 $- \boldsymbol\mu \cdot \mathbf B$ (where $\boldsymbol\mu = -g_s
 \mu_B \mathbf S/\hbar$).  In this case the Hamiltonian carries a
@@ -3105,7 +3105,7 @@ $\frac{\hbar}{4 m^2 c^2}\, \boldsymbol\sigma \cdot (\nabla v
 the electron's rest frame when the electron is moving through
 the gradient of the electric potential.  Write
 $\nabla v \times \hat{\mathbf p} = -\nabla v \times i\hbar \nabla$.
-For a *spherically symmetri`c*' potential $v(r)$, $\nabla v =
+For a *spherically symmetric* potential $v(r)$, $\nabla v =
 (dv/dr) \hat{\mathbf r}$, and the cross product can be rewritten
 using $\hat{\mathbf r} \times \hat{\mathbf p} = \hat{\mathbf L}/\hbar$
 (the angular-momentum operator) as
@@ -3360,7 +3360,7 @@ spin-dependent case [Kohn and Sham, 1965, p. A1136]).
 
 **The exchange–correlation energy, KS 1965, eq. (3),
 p. A1134.**  The decomposition that makes the KS construction
-*wor`k*' is the definition of $E_\text{xc}$:
+*work* is the definition of $E_\text{xc}$:
 
 $$
 \label{eq:ch-04-14-ks-exc}
@@ -3505,7 +3505,7 @@ the density with its own hole*, and the hole is always
 
 The *self-interaction error* (SIE) is the error made by every
 LDA/GGA XC functional: the Coulomb self-interaction of the
-density with itself is *not exactly cancelle`d*' by the
+density with itself is *not exactly cancelled* by the
 exchange part.  KS 1965 is the first paper to identify this
 problem, in the discussion of the universal functional
 following eq. (3):
@@ -3559,7 +3559,7 @@ orbitals) or to OEP (rung 5: the OEP exchange potential is
 [Sharp and Horton, 1953]; [Talman and
 Shadwick, 1976]; see §4.10 of this chapter).
 
-> **Tip.**  The SIE is the *most-cite`d*' failure of
+> **Tip.**  The SIE is the *most-cited* failure of
 > approximate DFT, and it is the most-cited reason to
 > introduce orbital-dependent functionals, hybrid functionals,
 > or DFT+U.  But the *original* observation — that $E_\text{xc}$
@@ -3576,7 +3576,7 @@ omissions:
 
 - **DFT for magnetic systems** (spin-polarised DFT,
   collinear and non-collinear).  The HK 1964 paper
-  explicitly restricts itself to *non-magneti`c*' systems
+  explicitly restricts itself to *non-magnetic* systems
   with a non-degenerate ground state [Hohenberg and Kohn,
   1964, p. B864].  The spin-density generalisation is the
   [von Barth and Hedin, 1972] paper; the non-collinear
@@ -3633,7 +3633,7 @@ omissions:
 > **Note.**  Every item on this list corresponds to at least
 > one Nobel-prize-winning or Nobel-prize-nominated extension
 > of the original HK/KS formulation.  The two original
-> papers are the *trunk*'; the extensions are the branches.
+> papers are the *trunk*; the extensions are the branches.
 
 ### 4.14.6 Bibliography for this section
 

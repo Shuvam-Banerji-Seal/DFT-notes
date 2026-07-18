@@ -347,10 +347,10 @@ parallel and merged in larger PRs (2-3 animations per PR).
   separately as 'agent:visualizer' follow-up work in 'agents.md`.
 - **Tier 3 (animated SVG / CSS).** Tiny inline accents. Will be
   added opportunistically when a chapter wants one.
-- **The `extras/10-visualizations.md' gallery page.** Deferred
+- **The extras/10-visualizations.md' gallery page.** Deferred
   until there are enough animations to make the page worth
   navigating to.
-- **A new 'agent:visualizer' role in 'agents.md`.** After the
+- **A new 'agent:visualizer' role in 'agents.md.** After the
   first batch lands, we add the role to the roster, with the
   template from §7 as the contract.
 
