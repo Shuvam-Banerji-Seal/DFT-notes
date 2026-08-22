@@ -59,18 +59,22 @@ def hubbard_hamiltonian(N: int, n_up: int, n_dn: int, t: float, U: float):
         doubly = len(set(up) & set(dn))
         H[i, i] = U * doubly
 
-        # Off-diagonal: hopping of an up-spin
+        # Off-diagonal: hopping of an up-spin (with fermionic signs)
         for k, site in enumerate(up):
             for shift in (-1, +1):
                 target_site = (site + shift) % N
                 if target_site in up:
                     continue
-                new_up = list(up)
-                new_up[k] = target_site
-                new_up = tuple(sorted(new_up))
+                # c^dag_target c_site : annihilate site (position k),
+                # create target_site (sign from sorting)
+                sign = (-1) ** k
+                rest = list(up)
+                rest.pop(k)
+                q = sum(1 for x in rest if x > target_site)
+                sign *= (-1) ** q
+                new_up = tuple(sorted(rest + [target_site]))
                 j = index[(new_up, dn)]
-                H[i, j] += -t
-                H[j, i] += -t
+                H[j, i] += -t * sign
 
         # Off-diagonal: hopping of a dn-spin (same recipe)
         for k, site in enumerate(dn):
@@ -78,12 +82,14 @@ def hubbard_hamiltonian(N: int, n_up: int, n_dn: int, t: float, U: float):
                 target_site = (site + shift) % N
                 if target_site in dn:
                     continue
-                new_dn = list(dn)
-                new_dn[k] = target_site
-                new_dn = tuple(sorted(new_dn))
+                sign = (-1) ** k
+                rest = list(dn)
+                rest.pop(k)
+                q = sum(1 for x in rest if x > target_site)
+                sign *= (-1) ** q
+                new_dn = tuple(sorted(rest + [target_site]))
                 j = index[(up, new_dn)]
-                H[i, j] += -t
-                H[j, i] += -t
+                H[j, i] += -t * sign
 
     return np.array(H), basis
 
@@ -148,13 +154,18 @@ def main() -> None:
             doubly += psi0[i] ** 2 * n_d
         double_occs.append(doubly)
 
-        # Charge gap: E(N+2) + E(N-2) - 2 E(N)
-        # (half-filling, so N+2 means N_up=N_dn=3, N-2 means 1, 1)
-        H_pp, _ = hubbard_hamiltonian(N_SITES, 3, 3, T, U)
-        H_mm, _ = hubbard_hamiltonian(N_SITES, 1, 1, T, U)
-        E_pp = np.linalg.eigh(H_pp)[0][0]
-        E_mm = np.linalg.eigh(H_mm)[0][0]
-        gap = (E_pp + E_mm - 2 * e0) / 2.0  # the chemical-potential gap
+        # Charge gap: E(N+1) + E(N-1) - 2 E(N)
+        # (standard definition, no factor of 2; half-filling means
+        #  N+1 = (3 up, 2 down) or (2 up, 3 down), N-1 = (2,1)/(1,2))
+        E_pp = min(
+            np.linalg.eigh(hubbard_hamiltonian(N_SITES, 3, 2, T, U)[0])[0][0],
+            np.linalg.eigh(hubbard_hamiltonian(N_SITES, 2, 3, T, U)[0])[0][0],
+        )
+        E_mm = min(
+            np.linalg.eigh(hubbard_hamiltonian(N_SITES, 2, 1, T, U)[0])[0][0],
+            np.linalg.eigh(hubbard_hamiltonian(N_SITES, 1, 2, T, U)[0])[0][0],
+        )
+        gap = E_pp + E_mm - 2 * e0  # the chemical-potential gap
         gaps.append(gap)
 
         # Quasi-particle weight Z from the discontinuity in mu

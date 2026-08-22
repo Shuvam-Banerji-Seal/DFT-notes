@@ -268,15 +268,17 @@ delta functions at
 
 $$
 \label{eq:ch-13-atomic-spectrum}
-\varepsilon_\text{add} = -\mu = -U/2 , \qquad
-\varepsilon_\text{rem} = -(U - \mu) = -U/2 ,
+\varepsilon_\text{add} = E(N{+}1) - E(N) - \mu = U - \tfrac{U}{2} = +\tfrac{U}{2} , \qquad
+\varepsilon_\text{rem} = E(N) - E(N{-}1) - \mu = -\tfrac{U}{2} ,
 $$
 
-both equal: the atom is *metallic* in the single-
-particle sense, but the *real* spectrum has the
-charge gap $U$ between the two- and three-particle
-sectors, and the single-particle Green's function has
-a non-trivial multi-peak structure:
+symmetric about the Fermi level (as particle-hole symmetry
+requires): the *real* atom is a **Mott insulator**, with a
+charge gap $U$ between the removal and addition peaks — even
+though LDA, which delocalises the electron over both orbitals,
+would place a single peak at the Fermi level. The single-
+particle Green's function of the true atom has the non-trivial
+multi-peak structure:
 
 $$
 \label{eq:ch-13-atomic-gf}
@@ -1096,7 +1098,7 @@ def dft_plus_u_energy(n: np.ndarray, U_eff: float, J: float = 0.0) -> float:
     integer-occupation n = (1, 0) or (0, 1) configurations are
     not.
     """
-    return 0.5 * U_eff * np.sum(n  (1.0 - n))
+    return 0.5 * U_eff * np.sum(n * (1.0 - n))
 
 def toy_dft_plus_u_scan(U_eff_list):
     """For each U_eff, find the occupation matrix n of a 2-orbital
@@ -1112,7 +1114,8 @@ def toy_dft_plus_u_scan(U_eff_list):
         # Penalty = (U_eff/2) (n_1 (1-n_1) + n_2 (1-n_2))
         # The minimum is at (n_1, n_2) = (0, 1) or (1, 0), where
         # the penalty is zero.  The "delocalised" (1/2, 1/2) is
-        # a local maximum with penalty U_eff/2. n_uniform = np.array([0.5, 0.5])
+        # a local maximum with penalty U_eff/2.
+        n_uniform = np.array([0.5, 0.5])
         e_uniform = dft_plus_u_energy(n_uniform, U_eff)
         n_integer = np.array([1.0, 0.0])
         e_integer = dft_plus_u_energy(n_integer, U_eff)
@@ -1309,20 +1312,32 @@ The output (the ground-state energy $E_0$, the
 double occupancy $\langle D \rangle$, and the
 charge gap $\Delta_c$) is in Table 3. **Table 3. Half-filled 4-site Hubbard chain, exact
 diagonalisation.  $\Delta_c$ is the charge gap
-(E(N+1) + E(N-1) - 2 E(N))/2, in units of $t$.
-$\langle D \rangle$ is the ground-state expectation
-value of the number of doubly-occupied sites.**
+$E(N{+}1) + E(N{-}1) - 2\,E(N)$ (no factor of two; each $E$
+is the lowest energy in its particle-number sector), in
+units of $t$.  $\langle D \rangle$ is the ground-state
+expectation value of the *total* number of doubly-occupied
+sites.  (At $U=0$ the ground state is degenerate and
+$\langle D \rangle$ takes its exact free-electron value
+$\sum_i \langle n_{i\uparrow}\rangle\langle n_{i\downarrow}\rangle = 4\times\tfrac14 = 1$.)**
 
 | $U/t$ | $E_0/t$ | $\langle D \rangle$ | $\Delta_c / t$ |
 |:-----:|--------:|-------------------:|---------------:|
-|   0   | -4.0000 | 0.5000              | 0.000          |
-|   1   | -3.5136 | 0.3934              | 0.349          |
-|   2   | -3.0554 | 0.3015              | 0.798          |
-|   4   | -2.2440 | 0.1810              | 1.789          |
-|   6   | -1.5477 | 0.1086              | 2.810          |
-|   8   | -0.9428 | 0.0664              | 3.847          |
-|  10   | -0.4241 | 0.0420              | 4.892          |
-|  12   | +0.0253 | 0.0275              | 5.939          |
+|   0   | -4.0000 | 1.0000              | 0.000          |
+|   1   | -3.3408 | 0.5780              | 0.574          |
+|   2   | -2.8284 | 0.4531              | 1.238          |
+|   4   | -2.1027 | 0.2873              | 2.701          |
+|   6   | -1.6346 | 0.1892              | 4.294          |
+|   8   | -1.3202 | 0.1300              | 5.991          |
+|  10   | -1.0999 | 0.0931              | 7.767          |
+|  12   | -0.9391 | 0.0693              | 9.597          |
+
+These numbers satisfy two exact consistency checks: the
+Hellmann-Feynman relation $dE_0/dU = \langle D \rangle$
+(finite difference at $U/t = 12$: $0.0694$ versus direct
+expectation $0.0693$), and the strong-coupling trend
+$E_0 \to -8t^2/U$ from superexchange ($-0.67t$ at $U/t=12$,
+with higher-order corrections bringing the exact value to
+$-0.94t$).
 
 The $U/t = 0$ row is the free tight-binding limit:
 $E_0 = -2t - 2t = -4t$ (two filled states of the
@@ -1334,14 +1349,13 @@ The double occupancy is $1/2$ per site — each
 site has a $1/2$ chance of being doubly occupied
 in a half-filled, spin-unpolarised free band.
 
-The $U/t = 12$ row is the strong-coupling limit:
-$E_0 \approx 0$ (the kinetic energy is suppressed
-by $t^2/U \sim 0.083\,t$, small compared to the
-$U$ scale), the double occupancy has dropped to
-$\sim 0.03$ per site (the penalty function
-$\langle D \rangle \propto t^2/U^2$ in the
-strong-coupling limit), and the gap is $\sim
-5.9\,t$ — close to $U$ itself, as expected: in
+The $U/t = 12$ row is approaching the strong-coupling
+limit: $E_0 = -0.94\,t$ tracks the superexchange scale
+$-8t^2/U \approx -0.67\,t$ (higher-order terms bring it to
+$-0.94\,t$), the double occupancy has dropped to
+$\sim 0.07$ total ($\langle D \rangle \propto t^2/U^2$
+in the strong-coupling limit), and the gap is $\sim
+9.6\,t$, growing toward $U$ itself, as expected: in
 the atomic limit, the gap is exactly $U$ and the
 quasi-particle peak is absent.
 

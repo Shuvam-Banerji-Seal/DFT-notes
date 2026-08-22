@@ -626,9 +626,12 @@ where $L_0$ is the non-interacting two-particle propagator
 (built from the KS orbitals and quasiparticle energies), and
 $K$ is the **Bethe–Salpeter kernel**. In the standard
 approximation $K = K^x + K^\text{direct}$ where
-$K^x = -W$ is the **exchange** kernel (a statically screened
-Coulomb interaction $W$) and $K^\text{direct} = -\bar v$ is
-the **direct** (unscreened) Coulomb interaction.
+$K^x = \bar v$ is the **exchange** kernel (the *bare*
+Coulomb interaction — repulsive) and $K^\text{direct} = -W$
+is the **direct** (correlation) kernel — the *statically
+screened* Coulomb interaction $W$, entered with a minus sign
+and therefore **attractive** between the excited electron and
+the hole it left behind.
 
 The BSE captures the **electron–hole interaction** that binds
 an exciton in a semiconductor. Standard ALDA TD-DFT misses
@@ -1212,15 +1215,24 @@ With $\mathbf A - \mathbf B = \mathrm{diag}(\omega_{ia})$
 have the same off-diagonal $\mathbf K$) and
 $\mathbf A + \mathbf B = \mathrm{diag}(\omega_{ia}) + 2\mathbf K$,
 equation \eqref{eq:ch-12-b} gives
-$\mathbf G = \omega_I^{-1}\, \mathrm{diag}(\omega_{ia})\, \mathbf F$
-componentwise, i.e. $G_{ia} = \omega_{ia}\, F_{ia} / \omega_I$.
+$\mathbf G = \omega_I\, \mathrm{diag}(\omega_{ia})^{-1}\, \mathbf F$
+componentwise, i.e. $G_{ia} = (\omega_I / \omega_{ia})\, F_{ia}$.
 Substituting into \eqref{eq:ch-12-a}:
+
+$$
+\Bigl[ \mathrm{diag}(\omega_{ia}) + 2\, \mathbf K \Bigr]\,
+       \mathbf F
+   \;=\; \omega_I^2\, \mathrm{diag}(\omega_{ia})^{-1}\, \mathbf F ,
+$$
+
+and multiplying both sides by $\mathrm{diag}(\omega_{ia})$ from
+the *left*:
 
 $$
 \label{eq:ch-12-casida-omega2}
 \boxed{
+\mathrm{diag}(\omega_{ia})\,
 \Bigl[ \mathrm{diag}(\omega_{ia}) + 2\, \mathbf K \Bigr]\,
-       \mathrm{diag}(\omega_{ia})\,
        \mathbf F
    \;=\; \omega_I^2\, \mathbf F ,
 }
@@ -1230,22 +1242,29 @@ or, in components,
 
 $$
 \label{eq:ch-12-casida-omega2-comp}
-\sum_{jb} \Bigl[ \delta_{ij}\delta_{ab}\, \omega_{ia}
-                + 2\, K_{ia, jb} \Bigr]\,
-       \omega_{jb}\, F_{jb}
+\sum_{jb} \Bigl[ \delta_{ij}\delta_{ab}\, \omega_{ia}\, \omega_{jb}
+                + 2\, \omega_{ia}\, K_{ia, jb} \Bigr]\,
+       F_{jb}
    \;=\; \omega_I^2\, F_{ia} .
 $$
 
-This is the **Casida equation in the symmetric form** (Casida
-1995, Eq. (3.16), p. 168). The matrix on the left,
-$\Omega_{ia, jb} = \delta_{ij}\delta_{ab}\, \omega_{ia}^2 + 2
-\sqrt{\omega_{ia} \omega_{jb}}\, K_{ia, jb}$ (after the
-rescaling $F_{ia} \to F_{ia}/\sqrt{\omega_{ia}}$), is
-real-symmetric for closed-shell systems, so the eigenvalues
-$\omega_I^2$ are real and non-negative. The square-root
-rescaling symmetrises the equation and is the standard
-presentation; the original form \eqref{eq:ch-12-casida-omega2-comp}
-is the form actually derived above.
+With the rescaling $\mathbf F = \mathrm{diag}(\omega_{ia})^{-1/2}\,
+\boldsymbol\phi$ and a left multiplication by
+$\mathrm{diag}(\omega_{ia})^{-1/2}$, equation
+\eqref{eq:ch-12-casida-omega2} becomes the **Casida equation in the
+symmetric form** (Casida 1995, Eq. (3.16), p. 168):
+
+$$
+\Omega_{ia, jb} \;=\; \delta_{ij}\delta_{ab}\, \omega_{ia}^2
+   \;+\; 2\,\sqrt{\omega_{ia}}\; K_{ia, jb}\; \sqrt{\omega_{jb}} ,
+$$
+
+which is real-symmetric for closed-shell systems, so the
+eigenvalues $\omega_I^2$ are real and non-negative. The
+square-root rescaling symmetrises the equation and is the standard
+presentation; the unsymmetrised form
+\eqref{eq:ch-12-casida-omega2-comp} is what was actually derived
+above.
 
 In the **Tamm–Dancoff approximation** (TDA, equivalent to
 neglecting the $\mathbf B$ block, i.e. setting $Y_{ia} = 0$),
