@@ -317,8 +317,8 @@ URL: <https://doi.org/10.1063/1.1564060>.
 
 Erratum: *The Journal of Chemical Physics* **2006**, *124* (21),
 219906. DOI:
-[10.1063/1.219906](<https://doi.org/10.1063/1.219906>).
-URL: <https://doi.org/10.1063/1.219906>.
+[10.1063/1.2204597](<https://doi.org/10.1063/1.2204597>).
+URL: <https://doi.org/10.1063/1.2204597>.
 
 Cited in: [chapter 05]({{ "/dft-notes/chapter-05/" | relative_url }}) §5.5
 ("Range-separated hybrids").
@@ -496,8 +496,8 @@ chemistry.
 "A fifth-order perturbation comparison of electron correlation
 theories." *Chemical Physics Letters* **1989**, *157* (6), 479–483.
 DOI:
-[10.1016/0009-2614(89)87395-6](<https://doi.org/10.1016/0009-2614(89>)87395-6).
-URL: <https://doi.org/10.1016/0009-2614(89)87395-6>.
+[10.1016/0009-2614(89)87395-6](https://doi.org/10.1016/0009-2614%2889%2987395-6).
+URL: https://doi.org/10.1016/0009-2614%2889%2987395-6.
 
 Cited in: [chapter 02]({{ "/dft-notes/chapter-02/" | relative_url }}) §2.3
 and §2.4 ("The 'gold standard' and its limits").
@@ -955,7 +955,8 @@ and molecular-dynamics run.
 ### 8.1 Hellmann (1937) — The Hellmann–Feynman theorem {#hellmann-1937}
 
 **Hellmann, H.** *Einführung in die Quantenchemie*; **Franz Deuticke**:
-Leipzig, **1937**; p 285. (No ISBN — pre-ISBN era.)
+Leipzig, **1937**; p 285. (No ISBN — pre-ISBN era; no digital edition
+is available, so this entry has no clickable link by design.)
 
 Cited in: [chapter 04]({{ "/dft-notes/chapter-04/" | relative_url }}) §4.7.1
 as the source of the force-formula $dE/d\lambda = \langle \Psi |
@@ -1035,8 +1036,8 @@ DFT.
 **Pulay, P.** "Convergence acceleration of iterative sequences. The
 case of SCF iteration." *Chemical Physics Letters* **1980**, *73* (2),
 393–398. DOI:
-[10.1016/0009-2614(80)80396-4](<https://doi.org/10.1016/0009-2614(80>)80396-4).
-URL: <https://doi.org/10.1016/0009-2614(80)80396-4>.
+[10.1016/0009-2614(80)80396-4](https://doi.org/10.1016/0009-2614%2880%2980396-4).
+URL: https://doi.org/10.1016/0009-2614%2880%2980396-4.
 
 Cited in: [chapter 03]({{ "/dft-notes/chapter-03/" | relative_url }}) §3.8.4
 ("DIIS — Pulay's accelerator") as the source of the Direct

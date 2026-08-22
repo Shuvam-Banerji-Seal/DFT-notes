@@ -804,6 +804,21 @@ electron density, and the second is the repulsion from the other
 nuclei.  The KS electrons "see" the nuclei and respond adiabatically;
 the nuclei move as if dragged by this classical force.
 
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%" playsinline
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_04/videos/01-hellmann-feynman.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_04/videos/01-hellmann-feynman.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_04/videos/01-hellmann-feynman.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Animation 4.1 — the Hellmann–Feynman theorem derived live:
+    the three-term product rule, the normalisation cancellation, and the
+    final force expression, with every step shown. Rendered with
+    <a href="https://www.manim.community/">Manim</a>; source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_04/01-hellmann-feynman.py">chapter 04's animation folder</a>.</figcaption>
+</figure>
+
 > **Warning.**  In a *complete* basis set, \eqref{eq:ch-04-force-nucleus}
 > is the whole force.  In a *finite* basis set, the basis functions
 > themselves depend on the nuclear coordinates (atom-centred

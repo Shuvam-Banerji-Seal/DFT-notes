@@ -1380,6 +1380,21 @@ $$
 
 ### 2.5.5 The ground state and its energy
 
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%" playsinline
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_02/videos/01-h2-two-configuration.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_02/videos/01-h2-two-configuration.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_02/videos/01-h2-two-configuration.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Animation 2.1 — the two-configuration problem solved live:
+    every matrix element and every arithmetic step of the eigenvalue
+    evaluation is shown explicitly. Rendered with
+    <a href="https://www.manim.community/">Manim</a>; source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_02/01-h2-two-configuration.py">chapter 02's animation folder</a>.</figcaption>
+</figure>
+
 The four full-CI energies of \eqref{eq:ch-02-h2-ci-matrix}, including
 $V_{NN}$, are
 
