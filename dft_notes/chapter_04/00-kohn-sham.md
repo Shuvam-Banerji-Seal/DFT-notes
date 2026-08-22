@@ -774,7 +774,7 @@ the electrons and by the other nuclei on nucleus $I$:
 
 $$
 \frac{\partial \hat V_{en}}{\partial \mathbf R_I}
-= \sum_i \frac{Z_I (\mathbf r_i - \mathbf R_I)}{|\mathbf r_i - \mathbf R_I|^3} ,
+= -\sum_i \frac{Z_I (\mathbf r_i - \mathbf R_I)}{|\mathbf r_i - \mathbf R_I|^3} ,
 \qquad
 \frac{\partial \hat V_{nn}}{\partial \mathbf R_I}
 = -\sum_{J \neq I} \frac{Z_I Z_J (\mathbf R_I - \mathbf R_J)}{|\mathbf R_I - \mathbf R_J|^3} .
@@ -792,9 +792,9 @@ $$
 \label{eq:ch-04-force-nucleus}
 \boxed{\;
 \mathbf F_I
-= -Z_I \int \rho(\mathbf r)\,
+= +Z_I \int \rho(\mathbf r)\,
    \frac{\mathbf r - \mathbf R_I}{|\mathbf r - \mathbf R_I|^3}\, d\mathbf r
-   - \sum_{J \neq I} \frac{Z_I Z_J (\mathbf R_I - \mathbf R_J)}{|\mathbf R_I - \mathbf R_J|^3} .
+   + \sum_{J \neq I} \frac{Z_I Z_J (\mathbf R_I - \mathbf R_J)}{|\mathbf R_I - \mathbf R_J|^3} .
 \;}
 $$
 

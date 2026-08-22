@@ -632,7 +632,7 @@ $$
 \text{error} = O\!\left(\frac{1}{N^2}\right)
 \quad \text{in 1-D,}
 \qquad
-O\!\left(\frac{1}{N^{2/3}\right)
+O\!\left(\frac{1}{N^{2/3}}\right)
 \quad \text{in 3-D,}
 $$
 
@@ -761,7 +761,7 @@ $21 \times 21$ matrix
 
 $$
 \label{eq:ch-07-worked-H}
-H_{m m'}(k) = \tfrac{1}{2}\Bigl(k + m \cdot 2\pi/a\Bigr)^2 \delta_{m m'} \;+\; V_{\text{per}\Bigl((m' - m) \cdot 2\pi/a\Bigr).
+H_{m m'}(k) = \tfrac{1}{2}\Bigl(k + m \cdot 2\pi/a\Bigr)^2 \delta_{m m'} \;+\; V_{\text{per}}\Bigl((m' - m) \cdot 2\pi/a\Bigr).
 $$
 
 Substituting the explicit $V_{\text{per}}$ from

@@ -553,7 +553,7 @@ $$
 
 In atomic units, $d \langle \hat A\rangle / dt = -i \langle [\hat A, \hat H]\rangle + \langle \partial_t \hat A\rangle$.
 For $\hat A = \hat{\mathbf r}$: $[\hat{\mathbf r}, \hat H] = i\, \hat{\mathbf p}$, so $d \langle \mathbf r \rangle / dt = \langle \mathbf p \rangle$.
-For $\hat A = \hat{\mathbf p}$: $[\hat{\mathbf p}, \hat H] = i\, \nabla V$, so $d \langle \mathbf p \rangle / dt = -\langle \nabla V \rangle$.
+For $\hat A = \hat{\mathbf p}$: $[\hat{\mathbf p}, \hat H] = -i\, \nabla V$, so $d \langle \mathbf p \rangle / dt = -\langle \nabla V \rangle$.
 Together,
 
 $$
@@ -1280,8 +1280,8 @@ $\hat H = \tfrac{1}{2}\hat p^2 + V(\hat{\mathbf r})$), the CCR
 gives
 
 $$
-[\hat H, \hat x] \;=\; \frac{i}{m}\, \hat p , \qquad
-[\hat H, \hat{\mathbf p}] \;=\; i\, \nabla V(\hat{\mathbf r}) .
+[\hat x, \hat H] \;=\; \frac{i}{m}\, \hat p , \qquad
+[\hat{\mathbf p}, \hat H] \;=\; -\,i\, \nabla V(\hat{\mathbf r}) .
 \label{eq:ch-01-10-H-comm}
 \tag{1.10.8}
 $$
@@ -1296,10 +1296,12 @@ potential. These two relations are the operator-level statement
 of **Ehrenfest's theorem** (section 1.7.5): the centroid of a
 wavepacket obeys Newton's second law.
 
-> **Warning.** The order matters. $[\hat H, \hat x] = i\hat p / m$
-> is the *Heisenberg* commutator (i.e. $[\hat A, \hat H]$ with
-> $\hat A = \hat x$), not $[\hat x, \hat H]$; the two differ by
-> an overall sign. Always write which order you mean.
+> **Warning.** The order matters: $[\hat x, \hat H] = +i\hat p/m$
+> while $[\hat H, \hat x] = -i\hat p/m$ — the two differ by an
+> overall sign, and flipping it turns Newton's law into
+> anti-Newton's law. Both equations above are written in the
+> $[\hat A, \hat H]$ order used by the Heisenberg equation of
+> motion. Always write which order you mean.
 
 ### 1.10.3 Spectral theorem
 
@@ -2458,23 +2460,31 @@ $$
 For hydrogen ($Z = 1$, $\omega = 3/8$):
 
 $$
+\Gamma_{2p \to 1s} \;=\;
+\frac{2^{17}}{3^{11}} \cdot
+\frac{\alpha\, \omega^3}{c^2}
+\;\approx\;
+0.7399 \times
+\frac{7.297 \times 10^{-3} \times 0.0527}{(137.036)^2}
+\;\approx\; 1.52 \times 10^{-8} \; E_h / \hbar .
+$$
+
+Converting with the atomic unit of time
+$t_0 = \hbar/E_h = 2.419 \times 10^{-17}\,$s:
+
+$$
 \Gamma_{2p \to 1s} \;\approx\;
-6.27 \times \frac{7.30 \times 10^{-3} \times 0.0425}{137^2}
-\;\approx\; 1.03 \times 10^{-7} \; E_h / \hbar
-\;\approx\; 4.25 \times 10^{9} \;\text{s}^{-1} .
+1.52 \times 10^{-8} / (2.419 \times 10^{-17}\,\text{s})
+\;\approx\; 6.27 \times 10^{8}\;\text{s}^{-1} .
 $$
 
 The corresponding **lifetime** is
-$\tau = 1/\Gamma \approx 0.235\,$ns. The accepted experimental
-lifetime of the $2p$ state is $\tau(2p) \approx 1.6\,$ns; the
-difference reflects the missing $2p \to 2s$ two-photon
-emission channel and (small) relativistic corrections.
-
-> **Tip.** The result is independent of $\alpha$ to leading
-> order (it appears as $\alpha^3$, since the matrix element
-> scales like $a_0 = 1$ and the photon energy as $\alpha^2$).
-> It is one of the cleanest atomic-physics predictions of
-> non-relativistic quantum mechanics.
+$\tau = 1/\Gamma \approx 1.60\,$ns, in excellent agreement with the
+accepted experimental lifetime of the $2p$ state,
+$\tau(2p) \approx 1.6\,$ns — one of the cleanest quantitative
+successes of non-relativistic quantum mechanics (the residual
+sub-percent difference reflects $2p \to 2s$ two-photon emission and
+small relativistic corrections).
 
 ### 1.13.8 Mermaid: hydrogen level diagram and selection rules
 

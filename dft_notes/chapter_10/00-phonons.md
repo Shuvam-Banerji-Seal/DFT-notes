@@ -832,7 +832,7 @@ $\mathbf q = 0$. The classical result is the
 $$
 \label{eq:ch-10-lst}
 \frac{\omega_\text{LO}^2}{\omega_\text{TO}^2} \;=\;
-\frac{\varepsilon_\infty}{\varepsilon_0} ,
+\frac{\varepsilon_0}{\varepsilon_\infty} ,
 $$
 
 where $\varepsilon_0$ is the *static* dielectric constant of the
@@ -1749,21 +1749,21 @@ The acoustic-branch speed of sound is
 $$
 v_s \;=\; \frac{a}{2}\,\sqrt{\frac{K}{\mu}}
 \;=\; 2.5 \times 10^{-10}\,\text{m} \times
-\sqrt{\frac{160.2}{1.248 \times 10^{-26}}}
-\;=\; 2.5 \times 10^{-10} \times 3.58 \times 10^{14}
-\;\approx\; 8.96 \times 10^4 \,\text{m/s} .
+\sqrt{\frac{160.2}{1.139 \times 10^{-26}}}
+\;=\; 2.5 \times 10^{-10} \times 1.19 \times 10^{14}
+\;\approx\; 2.97 \times 10^4 \,\text{m/s} .
 $$
 
-In other words the sound speed is $\sim 9 \times 10^4$ m/s in
+In other words the sound speed is $\sim 3 \times 10^4$ m/s in
 this artificial diatomic solid.
 
 The optical-branch frequency at $q = 0$ is
 
 $$
 \omega_+(q=0) \;=\; \sqrt{2K/\mu} \;=\;
-\sqrt{2 \times 160.2 / (1.248 \times 10^{-26})}
-\;=\; 1.60 \times 10^{14} \,\text{rad/s}
-\;=\; 25.5 \,\text{THz} .
+\sqrt{2 \times 160.2 / (1.139 \times 10^{-26})}
+\;=\; 1.68 \times 10^{14} \,\text{rad/s}
+\;=\; 26.7 \,\text{THz} .
 $$
 
 The gap at the BZ boundary is
@@ -1772,13 +1772,13 @@ $$
 \Delta(\omega^2) \;=\; 2K \!\left(\frac{1}{M_1} - \frac{1}{M_2}\right)
 \;=\; 2 \times 160.2 \times
 \left(\frac{1}{1.993 \times 10^{-26}} - \frac{1}{2.657 \times 10^{-26}}\right)
-\;=\; 4.00 \times 10^{27} \,\text{(rad/s)}^2 ,
+\;=\; 4.02 \times 10^{27} \,\text{(rad/s)}^2 ,
 $$
 
 i.e. the BZ-boundary frequencies are
-$\sqrt{2K/M_1} = 28.4$ THz (upper) and
-$\sqrt{2K/M_2} = 24.7$ THz (lower), a gap of
-$\sim 3.7$ THz.
+$\sqrt{2K/M_1} = 20.2$ THz (upper) and
+$\sqrt{2K/M_2} = 17.5$ THz (lower), a gap of
+$\sim 2.7$ THz.
 
 The script
 [`dft_notes/python_codes/chapter_10/01-diatomic-chain.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/01-diatomic-chain.py)
@@ -1787,7 +1787,7 @@ q$-mesh and produces the plot of the two branches.
 
 ### 10.9.6 The plot
 
-![Phonon dispersion of a 1-D diatomic chain with $M_1 = 12$ amu, $M_2 = 16$ amu, $K = 10$ eV/Å$^2$, $a = 5$ Å. The acoustic branch (lower) starts at $\omega = 0$ at the zone centre and rises with slope $v_s \approx 8.96 \times 10^4$ m/s. The optical branch (upper) starts at $\omega \approx 25.5$ THz at the zone centre. At the BZ boundary $q = \pi/a$ the branches reach $\omega_- = 24.7$ THz (lower) and $\omega_+ = 28.4$ THz (upper).]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/plots/01-diatomic-chain.png)
+![Phonon dispersion of a 1-D diatomic chain with $M_1 = 12$ amu, $M_2 = 16$ amu, $K = 10$ eV/Å$^2$, $a = 5$ Å. The acoustic branch (lower) starts at $\omega = 0$ at the zone centre and rises with slope $v_s \approx 2.97 \times 10^4$ m/s. The optical branch (upper) starts at $\omega \approx 26.7$ THz at the zone centre. At the BZ boundary $q = \pi/a$ the branches reach $\omega_- = 17.5$ THz (lower) and $\omega_+ = 20.2$ THz (upper).]({{ site.baseurl }}/dft_notes/python_codes/chapter_10/plots/01-diatomic-chain.png)
 
 *Figure 1.* Phonon dispersion of a 1-D diatomic chain.
 The horizontal axis is the phonon wavevector $q$ in units of
@@ -1864,11 +1864,11 @@ print(f"Wrote {out}")
 > **Note.** The numerical values can be cross-checked with the
 > analytical expressions of §10.9.4. At $q = 0$ the script
 > returns the optical-branch frequency
-> $\omega_+/(2\pi) = 25.5$ THz and the acoustic-branch
+> $\omega_+/(2\pi) = 26.7$ THz and the acoustic-branch
 > frequency $\omega_- = 0$ — both in agreement with
 > \eqref{eq:ch-10-worked-optic} and the limit
 > $\omega_- \to v_s q$ as $q \to 0$. At $q = \pi/a$ the script
-> returns $\omega_- = 24.7$ THz and $\omega_+ = 28.4$ THz, the
+> returns $\omega_- = 17.5$ THz and $\omega_+ = 20.2$ THz, the
 > two values given by
 > $2K/M_1$ and $2K/M_2$ in the same units.
 
@@ -1973,10 +1973,14 @@ $$
 For $a = 5$ Å, $K = 10$ eV/Å$^2$ (i.e. $K = 160.2$ N/m), and
 $M = 12$ amu ($M = 1.993 \times 10^{-26}$ kg), this gives
 $v_s = 5 \times 10^{-10} \times \sqrt{160.2 / 1.993 \times
-10^{-26}} \approx 1.42 \times 10^5$ m/s. The acoustic
-dispersion of the diatomic chain of §10.9 has the *same*
-$v_s$ for the *light* mass at the zone centre, reduced by a
-factor of $\sqrt{M_1/\mu}$ where $\mu$ is the reduced mass.
+10^{-26}} \approx 4.5 \times 10^4$ m/s. For comparison, the
+diatomic chain of §10.9 (same $K$ and $a$, masses 12 and 16 amu)
+has the slower sound speed
+$v_s = (a/2)\sqrt{K/\mu} \approx 2.97 \times 10^4$ m/s, where
+$\mu = M_1 M_2/(M_1 + M_2)$ is the reduced mass: in the
+long-wavelength acoustic mode of the diatomic chain the two atoms
+in each cell move *in phase*, and the inertia that resists the
+motion is set by the reduced mass, not by $M_1$ alone.
 
 </details>
 
@@ -2239,7 +2243,7 @@ than the experimental 7.2 K. The reason is that the McMillan
 formula in the form \eqref{eq:ch-10-mcmillan} is *quantitative*
 only for $\lambda \lesssim 1.3$; for stronger coupling it
 *overestimates* $T_c$ by a factor of 2–10. The
-**Allen–Dynes修正 formula** of
+**Allen–Dynes corrected formula** of
 [Allen & Dynes (1975)](<https://doi.org/10.1103/PhysRevB.12.905>)
 extends the McMillan formula to strong coupling:
 
@@ -2262,7 +2266,7 @@ approximation: it captures the *qualitative* dependence of
 $T_c$ on $\lambda$, $\omega_\text{log}$, and $\mu^*$, but for
 *quantitative* predictions of $T_c$ in strong-coupling
 superconductors one must solve the full Eliashberg equations
-numerically (or use the Allen–Dynes修正 formula as a
+numerically (or use the Allen–Dynes corrected formula as a
 *correction*). Pb is on the strong-coupling side of the
 McMillan regime, and the discrepancy with experiment is
 *expected*.

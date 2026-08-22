@@ -25,10 +25,10 @@ boundary q = π/a the branches are ω_- = sqrt(2K/M_2) and
 
 For the parameters above:
 
-    v_s       ≈ 8.96 × 10^4 m/s
-    ω_+(0)    ≈ 25.5 THz
-    ω_-(π/a)  ≈ 24.7 THz
-    ω_+(π/a)  ≈ 28.4 THz
+    v_s       ≈ 2.97 × 10^4 m/s
+    ω_+(0)    ≈ 26.7 THz
+    ω_-(π/a)  ≈ 17.5 THz
+    ω_+(π/a)  ≈ 20.2 THz
 
 The script:
 
@@ -82,6 +82,7 @@ THz_to_Hz = 1.0e12  # 1 THz in Hz
 K_SI = K * eV_to_J / A_to_m**2  # 160.2 N/m = 160.2 kg/s^2
 M1_SI = M1 * amu_to_kg  # 1.993e-26 kg
 M2_SI = M2 * amu_to_kg  # 2.657e-26 kg
+A_SI = A * 1.0e-10      # lattice constant in metres
 
 
 def dispersion(q_vals, K, M1, M2, A):
@@ -117,10 +118,10 @@ def main() -> None:
     # --- Wavevector mesh in the 1st BZ -----------------------------------
     N_Q = 401
     q_frac = np.linspace(0.0, 1.0, N_Q)
-    q_vals = q_frac * np.pi / A  # m^-1
+    q_vals = q_frac * np.pi / A_SI  # m^-1
 
     # --- Dispersion ------------------------------------------------------
-    omega_minus, omega_plus = dispersion(q_vals, K_SI, M1_SI, M2_SI, A)
+    omega_minus, omega_plus = dispersion(q_vals, K_SI, M1_SI, M2_SI, A_SI)
 
     # Convert to THz for plotting: ν = ω / (2π) in Hz, then /1e12.
     nu_minus_THz = omega_minus / (2.0 * np.pi * THz_to_Hz)
@@ -128,7 +129,7 @@ def main() -> None:
 
     # --- Sanity checks against analytical limits ------------------------
     mu = M1_SI * M2_SI / (M1_SI + M2_SI)  # reduced mass
-    v_s = (A / 2.0) * np.sqrt(K_SI / mu)  # speed of sound
+    v_s = (A_SI / 2.0) * np.sqrt(K_SI / mu)  # speed of sound
     nu_optical_at_0 = np.sqrt(2.0 * K_SI / mu) / (2.0 * np.pi * THz_to_Hz)
     nu_lower_at_bz = np.sqrt(2.0 * K_SI / M2_SI) / (2.0 * np.pi * THz_to_Hz)
     nu_upper_at_bz = np.sqrt(2.0 * K_SI / M1_SI) / (2.0 * np.pi * THz_to_Hz)

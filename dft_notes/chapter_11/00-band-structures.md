@@ -1640,22 +1640,6 @@ k_x a + 0 \cdot k_y a &= 2\pi / 3 , \nonumber \\\
 k_x a / 2 + k_y a \sqrt 3 / 2 &= 4 \pi / 3 .
 \end{align}
 
-From the first equation, $k_x = 2\pi / (3a)$.  Substituting into
-the second:
-
-$$
-\pi / 3 + k_y a \sqrt 3 / 2 = 4\pi / 3 \;\Longrightarrow\;
-k_y = \frac{2\pi}{a \sqrt 3} \Bigl( 4\pi/3 - \pi/3 \Bigr) \frac{1}{\pi}
-   \;=\; \frac{2\pi}{a \sqrt 3} .
-$$
-
-Wait, let me redo this carefully.  We have
-
-\begin{align}
-k_x a &= 2\pi / 3 , \nonumber \\\
-k_x a / 2 + k_y a \sqrt 3 / 2 &= 4 \pi / 3 .
-\end{align}
-
 From the first, $k_x = 2\pi / (3 a)$.  Substituting:
 
 $$
@@ -2177,24 +2161,6 @@ $$
 \Bigr] .
 $$
 
-Compute the components:
-
-- $x$-component:
-  $i t a (e^{2\pi i / 3} + e^{4\pi i / 3}/2)$.
-  With $e^{2\pi i/3} = -1/2 + i \sqrt 3 / 2$ and
-  $e^{4\pi i/3} = -1/2 - i \sqrt 3 / 2$:
-  $e^{2\pi i/3} + e^{4\pi i/3}/2 = -1/2 + i \sqrt 3 / 2 + (-1/4 - i \sqrt 3 / 4)
-   = -3/4 + i \sqrt 3 / 4$.
-  So the $x$-component is $i t a (-3/4 + i \sqrt 3 / 4)
-   = -3 i t a / 4 - t a \sqrt 3 / 4$.
-
-- $y$-component:
-  $i t a (\sqrt 3 / 2) e^{4\pi i / 3} = i t a \sqrt 3 / 2 \cdot (-1/2 - i \sqrt 3 / 2)
-   = i t a \sqrt 3 (-1/4 - i \sqrt 3 / 4)
-   = -i t a \sqrt 3 / 4 + t a \cdot 3 / 4 \cdot (-1)
-  $
-
-Hmm, let me redo this more carefully.  We have
 
 $$
 f(\mathbf k) \;=\; t (1 + e^{i k_x a} e^{i k_y a / \sqrt 3} + e^{i k_x a / 2} e^{i k_y a \sqrt 3 / 2})
@@ -2204,15 +2170,9 @@ with $a_1 = (a, 0)$ and $a_2 = (a/2, a\sqrt 3/2)$.  Then
 $\mathbf k \cdot \mathbf a_1 = k_x a$ and
 $\mathbf k \cdot \mathbf a_2 = k_x a/2 + k_y a \sqrt 3 / 2$.
 
-But actually, looking at the more standard convention with the
-$\tau_B = (0, a/\sqrt 3)$:
-
-$a_1 = a(1, 0)$, $a_2 = a(1/2, \sqrt 3/2)$ and the structure factor is
-
-$f(\mathbf k) = t(e^{i \mathbf k \cdot 0} + e^{-i \mathbf k \cdot a_1} + e^{-i \mathbf k \cdot a_2})$
-
-depending on which convention.  We can use any of the three phase
-conventions; the spectrum $\pm |f|$ is the same.
+(An equivalent convention places the phase factors as
+$e^{-i\mathbf k\cdot \mathbf a_j}$; all three phase conventions give
+the same spectrum $\pm|f|$.)
 
 The result is that the linearised Hamiltonian near $K$ takes the
 form
@@ -2246,20 +2206,9 @@ v_F \;=\; \frac{3 \cdot 2.8 \text{ eV} \cdot 2.46 \text{ Å}}
                   {2 \cdot 6.582 \times 10^{-16} \text{ eV·s}} .
 $$
 
-The numerator is $3 \cdot 2.8 \cdot 2.46 \approx 20.66$ eV·Å $=$
-$20.66 \times 1.602 \times 10^{-19} \cdot 10^{-10}$ J·m $= 3.31
-\times 10^{-29}$ J·m.  The denominator is $1.316 \times 10^{-15}$
-J·s.  So
-
-$$
-v_F \;\approx\; \frac{3.31 \times 10^{-29}}{1.316 \times 10^{-15}} \text{ m/s}
-              \;\approx\; 2.51 \times 10^{-14} \text{ m/s} \cdot 10^? .
-$$
-
-Let me redo with care.  $v_F = (3 \cdot 2.8 \text{ eV} \cdot
-2.46 \text{ Å}) / (2 \hbar)$.  $2.8$ eV $= 2.8 \cdot 1.602
-\times 10^{-19}$ J $= 4.486 \times 10^{-19}$ J.  $2.46$ Å $= 2.46
-\times 10^{-10}$ m.  $\hbar = 1.055 \times 10^{-34}$ J·s.  So
+The numerator is $3 \cdot 2.8 \cdot 2.46 \approx 20.66$
+eV·Å.  Converting units ($1$ eV $= 1.602\times10^{-19}$ J,
+$1$ Å $= 10^{-10}$ m, $\hbar = 1.055 \times 10^{-34}$ J·s):
 
 $$
 v_F \;=\; \frac{3 \cdot 4.486 \times 10^{-19} \cdot 2.46 \times 10^{-10}}

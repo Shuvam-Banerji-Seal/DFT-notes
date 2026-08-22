@@ -1138,9 +1138,11 @@ the density $\rho(\mathbf r)$ remains.
 We now make the machinery of §2.2 concrete on the *smallest*
 non-trivial molecule, $\mathrm{H}_2$, in a *minimal* basis.  The
 worked example reproduces the Szabo–Ostlund benchmark
-(Szabo & Ostlund, *Modern Quantum Chemistry*, §4.2) for the
-minimal-basis full-CI calculation of $\mathrm{H}_2$ at the
-equilibrium bond length.
+(Szabo & Ostlund, *Modern Quantum Chemistry*, §3.8.5 and Table 3.5)
+for minimal-basis full CI on $\mathrm{H}_2$ at the equilibrium bond
+length, and every number below is reproduced by
+[`dft_notes/python_codes/chapter_02/03-h2-full-ci-toy.py`]({{
+site.baseurl }}/dft_notes/python_codes/chapter_02/03-h2-full-ci-toy.py).
 
 ### 2.5.1 The system
 
@@ -1149,327 +1151,325 @@ hydrogen (the same set used in
 [chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/)).  The bond
 axis is the $z$-axis, the two nuclei are at
 $\mathbf A = (0, 0, -R/2)$ and $\mathbf B = (0, 0, +R/2)$ with
-$R = 1.4\,a_0$, and the basis is
+$R = 1.4\,a_0$, and the raw basis is
 
 $$
 \label{eq:ch-02-h2-basis}
 \chi_1(\mathbf r) \;=\; \chi(\mathbf r - \mathbf A),
 \qquad
-\chi_2(\mathbf r) \;=\; \chi(\mathbf r - \mathbf B) .
+\chi_2(\mathbf r) \;=\; \chi(\mathbf r - \mathbf B).
 $$
 
 With $K = 2$ spatial orbitals and $N = 2$ electrons
 ($N_\alpha = N_\beta = 1$), the full-CI basis of
 \eqref{eq:ch-02-fci-explicit} has
-$\binom{2}{1} \binom{2}{1} = 4$ determinants:
+$\binom{2}{1}\binom{2}{1} = 4$ determinants.
+
+> **A trap to avoid: the raw AOs are not orthonormal.**  The two
+> centred functions overlap,
+> $S_{12} = \langle \chi_1 \mid \chi_2 \rangle = 0.6593$, so
+> determinants built directly from $\{\chi_1, \chi_2\}$ are *not*
+> orthonormal either — $\langle \Phi_I \mid \Phi_J \rangle \neq
+> \delta_{IJ}$ — and the Slater–Condon rules of §2.2.6 do **not**
+> apply in that raw basis.  (Applying them anyway produces a
+> Hamiltonian whose ground-state energy lies *above* the HF energy,
+> violating the variational principle.)  Every determinant method —
+> from this toy example to production FCI — therefore works in an
+> *orthonormal* orbital basis.  We use the canonical RHF orbitals:
+> the bonding combination $\sigma_g$ and antibonding $\sigma_u$
+> with orbital energies
+> $\varepsilon_g = -0.5782$ and $\varepsilon_u = +0.6703\ E_h$.
+> (Symmetric Löwdin orthogonalisation gives the same physics; see
+> Problem 4.)
+
+In terms of the orthonormal MOs the four determinants are
 
 $$
 \label{eq:ch-02-h2-dets}
-\Phi_1 = | \chi_1 \bar\chi_1 \rangle, \quad
-\Phi_2 = | \chi_1 \bar\chi_2 \rangle, \quad
-\Phi_3 = | \chi_2 \bar\chi_1 \rangle, \quad
-\Phi_4 = | \chi_2 \bar\chi_2 \rangle .
+\Phi_1 = | \sigma_g \bar\sigma_g \rangle, \quad
+\Phi_2 = | \sigma_g \bar\sigma_u \rangle, \quad
+\Phi_3 = | \sigma_u \bar\sigma_g \rangle, \quad
+\Phi_4 = | \sigma_u \bar\sigma_u \rangle .
 $$
 
-(Here $\chi_i$ and $\bar\chi_i$ denote the spin-orbitals with
-$\chi_i$ in the $\alpha$ and $\beta$ spin sectors, respectively.)
+(Here $\sigma_i$ and $\bar\sigma_i$ denote the spin-orbitals with
+$\sigma_i$ in the $\alpha$ and $\beta$ spin sectors, respectively.)
 
-The Hamiltonian matrix in this basis is a $4 \times 4$ Hermitian
-matrix.  By spin symmetry ($\hat S_z$ commutes with $\hat H_{\text{el}}$)
-the matrix is block-diagonal: the two $M_S = 0$ determinants
-$\Phi_2$ and $\Phi_3$ are decoupled from the two $M_S = \pm 1$
-determinants $\Phi_1$ and $\Phi_4$, and the $M_S = \pm 1$ block is
-the $2 \times 2$ "triplet" problem (the open-shell singlet and the
-triplet, in the language of spin-coupling).
+Note carefully what spin symmetry says about this basis.  *All four*
+determinants have $M_S = 0$: each contains exactly one $\alpha$ and
+one $\beta$ electron.  What $M_S$ conservation does *not* give us is
+a block-diagonal matrix.  Instead, the clean statement is in terms of
+spin-adapted combinations of $\Phi_2$ and $\Phi_3$ (§2.5.4): the
+open-shell *singlet* and the open-shell *triplet* decouple from each
+other, and the triplet decouples from everything else.
 
 ### 2.5.2 The integrals
 
-We need the four one-electron integrals
-$\{h_{11}, h_{12}, h_{22}\}$ and the six distinct two-electron
-integrals $\{\langle 11 \mid 11 \rangle, \langle 11 \mid 12 \rangle,
-\langle 11 \mid 22 \rangle, \langle 12 \mid 12 \rangle, \langle 12
-\mid 22 \rangle, \langle 22 \mid 22 \rangle\}$.  With the STO-3G
-contraction of [chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/)
-and the bond length $R = 1.4\,a_0$, the integral tables
-(Szabo & Ostlund, Table 4.1; reproduced by
-[`dft_notes/python_codes/chapter_06/01-sto-3g-h2.py`]({{ site.baseurl
-}}/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py)) give the
-following values (in Hartree):
+For reference, the raw AO-basis integrals at $R = 1.4\,a_0$
+(Szabo–Ostlund Table 4.1; computed by
+[`chapter_06/01-sto-3g-h2.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py),
+in Hartree) are
 
 $$
 \label{eq:ch-02-h2-h}
-h_{11} = h_{22} = -1.1204, \qquad h_{12} = h_{21} = -0.9584 .
+h_{11} = h_{22} = -1.1204, \qquad h_{12} = h_{21} = -0.9584 ,
 $$
-
-(The diagonal is the same on both centres because of homonuclear
-symmetry.)
 
 $$
 \label{eq:ch-02-h2-v}
 \begin{aligned}
-\langle 11 \mid 11 \rangle &= 0.7746, &
-\langle 11 \mid 22 \rangle &= 0.5697, \\\
-\langle 12 \mid 12 \rangle &= 0.2970, &
-\langle 11 \mid 12 \rangle &= 0.4441, \\\
-\langle 12 \mid 22 \rangle &= 0.4441, &
-\langle 22 \mid 22 \rangle &= 0.7746 .
+(\,11 \mid 11\,) &= 0.7746, &
+(\,11 \mid 22\,) &= 0.5697, \\
+(\,12 \mid 12\,) &= 0.2970, &
+(\,11 \mid 12\,) &= 0.4441 .
 \end{aligned}
 $$
 
-The $V_{NN} = 1/R = 1/1.4 \approx 0.7143\,E_h$ is the same in all
-configurations and is added at the end.
+Transforming to the canonical MOs (one-electron integrals rotate as
+$h_{pq} \to \sum_{\mu\nu} C_{\mu p} h_{\mu\nu} C_{\nu q}$, two-electron
+integrals as $(pq \mid rs) \to \sum C_{\mu p} C_{\nu r} C_{\lambda s}
+C_{\sigma q}\,(\mu\nu \mid \lambda\sigma)$) gives the MO-basis set we
+actually need:
 
-> **Note (units and accuracy).**  The numbers in
-> \eqref{eq:ch-02-h2-h} and \eqref{eq:ch-02-h2-v} are given to
-> four decimal places.  The integrals in
-> [`dft_notes/python_codes/chapter_06/01-sto-3g-h2.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_06/01-sto-3g-h2.py)
-> are computed to ten decimal places; the truncation here is for
-> readability.  The four-decimal figures reproduce the Szabo–
-> Ostlund *Modern Quantum Chemistry* Table 4.1. ### 2.5.3 The 4 × 4 CI matrix
+$$
+\label{eq:ch-02-h2-mo-ints}
+h_{gg} = -1.2528, \quad h_{uu} = -0.4756;
+\qquad
+J_{gg} = 0.6746, \;\; J_{uu} = 0.6975,
+$$
 
-The Slater–Condon rules of §2.2.6 give the matrix elements.  We
-list the matrix elements of $\hat H_{\text{el}}$ between the four
-determinants of \eqref{eq:ch-02-h2-dets}; the $V_{NN}$ contribution
-is added at the end.  By symmetry (the determinants are
-$\Phi_1 = |\chi_1 \bar\chi_1\rangle$,
-$\Phi_4 = |\chi_2 \bar\chi_2\rangle$ are closed-shell, and
-$\Phi_2 = |\chi_1 \bar\chi_2\rangle$,
-$\Phi_3 = |\chi_2 \bar\chi_1\rangle$ are open-shell singlets):
+$$
+\label{eq:ch-02-h2-mo-ints2}
+J_{gu} = (\,gg \mid uu\,) = 0.6636,
+\qquad
+K_{gu} = (\,gu \mid gu\,) = 0.1813 .
+$$
 
-- $H_{11} = H_{44}$ — diagonal of the two closed shells:
+The nuclear repulsion $V_{NN} = 1/R = 0.7143\,E_h$ is added at the end.
+
+### 2.5.3 The CI matrix
+
+The Slater–Condon rules \eqref{eq:ch-02-sc-doubles} now apply
+directly, because the MOs are orthonormal.  Element by element:
+
+- $H_{11}$ — diagonal of the closed-shell bonding determinant:
 $$
   \label{eq:ch-02-h2-h11}
-  H_{11} \;=\; 2 h_{11} + \langle 11 \mid 11 \rangle
-            \;=\; 2(-1.1204) + 0.7746
-            \;=\; -1.4662\; E_h .
+  H_{11} \;=\; 2 h_{gg} + J_{gg}
+            \;=\; 2(-1.2528) + 0.6746
+            \;=\; -1.8310\; E_h .
+$$
+  This is exactly the electronic part of the RHF energy
+  ($E_\mathrm{RHF}^{\text{el}} = -1.1167 - 0.7143 = -1.8310$):
+  $\Phi_1$ *is* the HF determinant.
+
+- $H_{44}$ — diagonal of the doubly excited determinant:
+$$
+  \label{eq:ch-02-h2-h44}
+  H_{44} \;=\; 2 h_{uu} + J_{uu}
+            \;=\; 2(-0.4756) + 0.6975
+            \;=\; -0.2537\; E_h .
 $$
 
-- $H_{14} = H_{41}$ — coupling of the two closed shells: they
-  differ by *two* spin-orbitals, so the Slater–Condon rule
-  \eqref{eq:ch-02-sc-doubles} gives
+- $H_{14} = H_{41}$ — coupling of the two closed shells: they differ
+  by *two* spin-orbitals, so the double-excitation rule applies.  The
+  direct term carries the factor
+  $\langle \bar\sigma_g \mid \bar\sigma_u\rangle = 0$ (opposite spins
+  are orthogonal), so only the exchange-type integral survives:
 $$
   \label{eq:ch-02-h2-h14}
-  H_{14} \;=\; \langle 11 \mid 22 \rangle
-            - \langle 12 \mid 21 \rangle
-            \;=\; 0.5697 - 0.2970
-            \;=\; 0.2727\; E_h .
+  H_{14} \;=\; K_{gu} \;=\; (\,gu \mid gu\,)
+         \;=\; 0.1813\; E_h .
 $$
-  (The exchange term $\langle 12 \mid 21 \rangle$ is the
-  *same number* as $\langle 12 \mid 12 \rangle$ because the
-  orbitals are real.)
+  This is worth pausing on: for a double excitation in which both
+  electrons hop $g \to u$ *with their spins*, the Coulomb-like term
+  vanishes by spin orthogonality and the surviving coupling is the
+  exchange integral $K_{gu}$ — the same quantity that splits singlet
+  from triplet states.
 
-- $H_{22} = H_{33}$ — diagonal of the open-shell singlet: two
-  spin-orbitals in two different spatial orbitals, no same-spin
-  exchange term, but a Coulomb repulsion:
+- $H_{22} = H_{33}$ — diagonal of the open-shell determinants: one
+  electron in each MO, opposite spins, no same-spin exchange:
 $$
   \label{eq:ch-02-h2-h22}
-  H_{22} \;=\; h_{11} + h_{22} + \langle 11 \mid 22 \rangle
-            \;=\; -1.1204 - 1.1204 + 0.5697
-            \;=\; -1.6711\; E_h .
+  H_{22} \;=\; h_{gg} + h_{uu} + J_{gu}
+            \;=\; -1.2528 - 0.4756 + 0.6636
+            \;=\; -1.0648\; E_h .
 $$
 
-- $H_{23} = H_{32}$ — coupling of the two open-shell singlets: they
-  differ by *two* spin-orbitals, so by
-  \eqref{eq:ch-02-sc-doubles}:
+- $H_{23} = H_{32}$ — coupling of the two open-shell determinants,
+  again a double excitation ($g\beta \leftrightarrow u\alpha$ swap):
 $$
   \label{eq:ch-02-h2-h23}
-  H_{23} \;=\; \langle 12 \mid 12 \rangle
-            - \langle 12 \mid 21 \rangle
-            \;=\; 0.2970 - 0.2970
-            \;=\; 0.0\; E_h .
+  H_{23} \;=\; -K_{gu} \;=\; -0.1813\; E_h .
 $$
-  The vanishing exchange difference is *not* an accident: the
-  exchange term $\langle 12 \mid 21 \rangle$ equals the Coulomb
-  term $\langle 12 \mid 12 \rangle$ for real orbitals, so
-  $H_{23} = 0$ exactly for any *homogeneous* 2-electron problem
-  in a real basis.  This is a special property of two electrons
-  in two spatial orbitals.
 
-- $H_{12} = H_{13} = H_{24} = H_{34} = 0$ — these matrix elements
-  couple determinants with *different* $M_S$ and vanish by
-  $\hat S_z$ conservation.
+- Single excitations: $H_{12} = H_{13} = H_{24} = H_{34} = 0$.  This
+  is **Brillouin's theorem**: for the HF determinant built from
+  *canonical* orbitals, all singly excited configurations decouple
+  from $\Phi_1$.  (It holds here precisely because $\{\sigma_g,
+  \sigma_u\}$ are the canonical HF orbitals; in a non-canonical
+  orthonormal basis the single-excitation elements are non-zero —
+  see Problem 4.)
 
-Putting it all together, the $\hat H_{\text{el}}$ matrix in the
-determinant basis is
+Putting it all together,
 
 $$
 \label{eq:ch-02-h2-ci-matrix}
 \mathbf H_{\text{el}} \;=\;
    \begin{pmatrix}
-      -1.4662 & 0       & 0       & 0.2727 \\\
-       0       & -1.6711 & 0       & 0      \\\
-       0       & 0       & -1.6711 & 0      \\\
-       0.2727  & 0       & 0       & -1.4662
+      -1.8310 &  0      &  0      &  0.1813 \\
+       0      & -1.0648 & -0.1813 &  0      \\
+       0      & -0.1813 & -1.0648 &  0      \\
+       0.1813 &  0      &  0      & -0.2537
    \end{pmatrix}\; E_h .
 $$
 
-The matrix is block-diagonal: a $2 \times 2$ "closed-shell" block
-spanned by $\{\Phi_1, \Phi_4\}$, a $2 \times 2$ "open-shell" block
-spanned by $\{\Phi_2, \Phi_3\}$, and zero coupling between them.
-(The zero coupling of $\Phi_2$ and $\Phi_3$ to the closed shells
-follows from $\hat S_z$ conservation: $\Phi_1$ and $\Phi_4$ have
-$M_S = 0$ but they are *closed-shell* singlets, not open-shell
-singlets, so the off-diagonal elements of $\hat H_{\text{el}}$ that
-connect them to $\Phi_2$ or $\Phi_3$ vanish — the "spin-flip"
-term in the Slater–Condon rules requires two single excitations in
-opposite directions, and a single excitation in one direction is
-not a singlet-to-singlet operator in this basis.)
+The structure is now transparent: a $2\times 2$ closed-shell block
+$\{\Phi_1, \Phi_4\}$ coupled through $K_{gu}$, and a $2\times 2$
+open-shell block $\{\Phi_2, \Phi_3\}$ coupled through $-K_{gu}$, with
+Brillouin's theorem keeping the blocks independent.
 
-### 2.5.4 The four eigenvalues
+### 2.5.4 Spin adaptation and the block eigenvalues
 
-The closed-shell block $\{\Phi_1, \Phi_4\}$ is a $2 \times 2$ matrix
-with the structure of the **Hund–Mulliken** two-configuration
-problem.  The eigenvalues are the roots of
+Define the spin-adapted combinations
 
 $$
-\label{eq:ch-02-h2-closed-2x2}
-\det\!\begin{pmatrix}
-   H_{11} - E & H_{14} \\\
-   H_{41}     & H_{44} - E
-\end{pmatrix}
-\;=\; (H_{11} - E)^2 - H_{14}^2 \;=\; 0,
+\label{eq:ch-02-h2-csf}
+T_0 \;=\; \tfrac{1}{\sqrt 2}\bigl(\Phi_2 + \Phi_3\bigr),
+\qquad
+S_{gu} \;=\; \tfrac{1}{\sqrt 2}\bigl(\Phi_2 - \Phi_3\bigr),
 $$
 
-so
+which are the $M_S = 0$ components of the open-shell **triplet**
+($S = 1$) and open-shell **singlet** ($S = 0$), respectively.  In the
+$\{T_0, S_{gu}\}$ block the Hamiltonian diagonalises into
+
+$$
+E(T_0) \;=\; H_{22} + H_{23}
+        \;=\; -1.2461\; E_h \quad\text{(electronic)},
+$$
+
+$$
+E(S_{gu}) \;=\; H_{22} - H_{23}
+          \;\phantom{=}\; -0.8835\; E_h \quad\text{(electronic)}.
+$$
+
+Adding $V_{NN}$: the triplet $^3\Sigma_u$ state lies at
+$-0.5318\,E_h$ total and the open-shell singlet $^1\Sigma_u$ at
+$-0.1693\,E_h$ total.  The triplet lies *below* the corresponding
+singlet by $2K_{gu} = 0.363\,E_h$ — the same Hund-rule exchange
+splitting seen in atomic spectra — but both lie well above the
+ground state.
+
+The closed-shell block $\{\Phi_1, \Phi_4\}$ is the classic
+**two-configuration problem**, with eigenvalues
 
 $$
 \label{eq:ch-02-h2-closed-evals}
-E_\pm^{(\text{closed})} \;=\; H_{11} \pm |H_{14}|
-   \;=\; -1.4662 \pm 0.2727
-   \;=\; \begin{cases}
-            -1.1935\; E_h, \\\
-            -1.7389\; E_h .
-   \end{cases}
+E_\pm \;=\; \frac{H_{11} + H_{44}}{2}
+        \;\pm\; \sqrt{\Bigl(\frac{H_{11} - H_{44}}{2}\Bigr)^{2}
+                      + H_{14}^{2}}
 $$
 
-The open-shell block $\{\Phi_2, \Phi_3\}$ is *diagonal* by
-\eqref{eq:ch-02-h2-h23}, so its eigenvalues are
-
 $$
-\label{eq:ch-02-h2-open-evals}
-E^{(\text{open})} \;=\; -1.6711\; E_h
-   \qquad \text{(doubly degenerate)} .
+\label{eq:ch-02-h2-closed-numbers}
+E_- \;=\; -1.8516\; E_h \;\xrightarrow{\;+\,V_{NN}\;}\; -1.1373\; E_h,
+\qquad
+E_+ \;=\; -0.2331\; E_h \;\to\; +0.4811\; E_h .
 $$
-
-The four eigenvalues of the full-CI matrix \eqref{eq:ch-02-h2-ci-matrix}
-are therefore
-
-$$
-\label{eq:ch-02-h2-fci-evals}
-E_1 = -1.7389\; E_h, \quad
-E_2 = E_3 = -1.6711\; E_h, \quad
-E_4 = -1.1935\; E_h .
-$$
-
-The ground-state energy is $E_1 = -1.7389\,E_h$, the (doubly
-degenerate) first excited state is the open-shell singlet at
-$E_{2,3} = -1.6711\,E_h$, and the closed-shell antibonding
-combination is at $E_4 = -1.1935\,E_h$.
 
 ### 2.5.5 The ground state and its energy
 
-The ground state is the lower eigenvalue of the closed-shell
-block.  The corresponding eigenvector is
-$(\Phi_1 - \Phi_4)/\sqrt 2$ (the minus sign follows from the
-positive off-diagonal $H_{14} > 0$ — the lower eigenvalue is the
-*anti-bonding* combination of the two closed-shell determinants):
+The four full-CI energies of \eqref{eq:ch-02-h2-ci-matrix}, including
+$V_{NN}$, are
+
+$$
+\label{eq:ch-02-h2-fci-evals}
+E_0 = -1.1373\; E_h \;\;(^1\Sigma_g), \quad
+E(T_0) = -0.5318\; E_h \;\;(^3\Sigma_u),
+$$
+
+$$
+E(S_{gu}) = -0.1693\; E_h \;\;(^1\Sigma_u), \quad
+E_+ = +0.4811\; E_h \;\;(^1\Sigma_g, \text{doubly excited}) .
+$$
+
+The ground state is the lower root of the two-configuration problem,
+with eigenvector
 
 $$
 \label{eq:ch-02-h2-gs}
-\Psi_0 \;=\; \frac{1}{\sqrt 2}\Bigl(\Phi_1 - \Phi_4\Bigr)
-   \;=\; \frac{1}{\sqrt 2}
-         \Bigl(|\chi_1 \bar\chi_1\rangle
-              -|\chi_2 \bar\chi_2\rangle\Bigr) .
+\Psi_0 \;=\; 0.9936\,\Phi_1 \;-\; 0.1128\,\Phi_4
+   \;=\; 0.9936\,|\sigma_g \bar\sigma_g\rangle
+        - 0.1128\,|\sigma_u \bar\sigma_u\rangle .
 $$
 
-In the spatial-orbital language, this is the **Hund–Mulliken**
-wavefunction: an equal-weight superposition of the two *closed-
-shell* configurations, with the two open-shell singlets completely
-absent.  (The open-shell singlets enter *only* as excited states.)
+This is the textbook picture of **left–right correlation**: the exact
+wavefunction is dominated by the HF configuration but mixes in a small
+amount of the doubly excited configuration, which shifts charge
+density away from the bond midpoint toward the two nuclei.  The
+weights (98.7% and 1.3%) quantify how "good" the HF approximation is
+for $\mathrm{H}_2$ near equilibrium — good, but not exact.
 
-The ground-state electronic energy is the lower eigenvalue of
-\eqref{eq:ch-02-h2-closed-2x2},
-
-$$
-\label{eq:ch-02-h2-gs-energy}
-E_0^{\text{el}} \;=\; -1.7389\,E_h .
-$$
-
-Adding the nuclear–nuclear repulsion $V_{NN} = 1/R = 0.7143\,E_h$
-gives the total energy
+The correlation energy is
 
 $$
-\label{eq:ch-02-h2-gs-total}
-E_0^{\text{tot}} \;=\; E_0^{\text{el}} + V_{NN}
-   \;=\; -1.7389 + 0.7143
-   \;=\; -1.0246\,E_h .
+\label{eq:ch-02-h2-ecorr}
+E_{\text{corr}} \;=\; E_0 - E_{\text{HF}}
+   \;=\; -1.1373 - (-1.1167)
+   \;=\; -0.0206\; E_h .
 $$
 
-> **Tip.**  Compare to the **restricted Hartree–Fock** answer in
-> [chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/),
-> §6.9: $E_{\text{HF}} = -1.1167\,E_h$.  The full-CI energy is
-> lower by
-$$
-> \begin{equation}
-> \label{eq:ch-02-h2-corr}
-> E_{\text{corr}} \;=\; E_0 - E_{\text{HF}}
->    \;=\; -1.0246 - (-1.1167)
->    \;=\; +0.0921\,E_h
->    \;\approx\; 2.5\;\text{eV} .
-> \end{equation}
-$$
-> This is the **correlation energy** of $\mathrm{H}_2$ in the
-> STO-3G basis.  It is large (about 9% of the total HF energy) by
-> the standards of post-HF benchmarks, because the minimal basis
-> is far from the basis-set limit: the "missing" correlation is
-> dominated by the inability of two STO-3G functions to represent
-> the cusp of the wavefunction at the electron–electron
-> coincidence.  In a triple-zeta basis with correlating
-> polarisation functions, the STO-3G correlation energy is
-> recovered, and the *remaining* correlation is the small
-> ~0.3 eV that standard post-HF methods target.
+By convention $E_{\text{corr}} \le 0$: correlation always *lowers*
+the energy relative to HF, because FCI minimises over a strictly
+larger variational space than any single determinant.  (If your
+"correlation energy" comes out positive, the calculation has an
+error — most commonly, inconsistent orbital bases between the two
+numbers, as Problem 4 illustrates.)
 
 ### 2.5.6 The 1-particle density
 
-The one-particle density of the ground state
-\eqref{eq:ch-02-h2-gs} follows from
-\eqref{eq:ch-02-1pdm}.  Each of the two determinants contributes
-$|\chi_1|^2 + |\chi_2|^2$ to the spin-summed density, so the
-ground-state density is
+The one-particle density of the ground state follows from
+\eqref{eq:ch-02-1pdm}.  Because $\Psi_0$ contains no
+$\Phi_2/\Phi_3$ character, the spin-summed 1-RDM is diagonal in the
+MO basis, with occupations
+
+$$
+\gamma_{gg} = 2\,(0.9936)^2 = 1.9746,
+\qquad
+\gamma_{uu} = 2\,(0.1128)^2 = 0.0254 ,
+$$
+
+so the density is
 
 $$
 \label{eq:ch-02-h2-density}
-\rho(\mathbf r) \;=\; 2 \cdot \tfrac{1}{2}\Bigl(|\chi_1(\mathbf r)|^2
-                                            + |\chi_2(\mathbf r)|^2\Bigr)
-   \;=\; |\chi_1(\mathbf r)|^2 + |\chi_2(\mathbf r)|^2 .
+\rho(\mathbf r) \;=\; 1.9746\,\lvert\sigma_g(\mathbf r)\rvert^2
+                  \;+\; 0.0254\,\lvert\sigma_u(\mathbf r)\rvert^2 ,
 $$
 
-The two $\chi$'s contribute *equally* to the density.  This is
-exact for the Hund–Mulliken ground state and would *not* be exact
-for a general 2-determinant ground state — the relative weights of
-the two determinants enter the density through their squares.
-
-The physical interpretation is straightforward: in the ground state,
-electron 1 is equally likely to be on nucleus A as on nucleus B,
-and electron 2 follows suit.  The probability of finding
-*either* electron at $\mathbf r$ is the sum
-$|\chi_1|^2 + |\chi_2|^2$, normalised to $N = 2$.
+which integrates to exactly $N = 2$.  The numbers
+$(1.9746,\ 0.0254)$ are the **natural occupation numbers** — the
+eigenvalues of the 1-RDM — and they quantify the correlation: an
+uncorrelated closed-shell state has occupations $(2, 0)$, while the
+deviation $(1.9746,\ 0.0254)$ measures how much the doubly excited
+configuration has smeared electrons out of the bonding orbital.
 
 ### 2.5.7 What this tells us
 
 The full-CI calculation on $\mathrm{H}_2$ in a minimal basis is
 small enough to do by hand in a few minutes, and it contains
-*every* ingredient of a real many-body calculation: a one-electron
-basis, a two-electron integrals tensor, the Slater–Condon rules, a
-4 × 4 Hamiltonian matrix in the determinant basis, a numerical
-diagonalisation, and an interpretation of the resulting
-eigenvector in terms of a physically meaningful wavefunction.  The
-*only* difference between this calculation and a real production
-calculation is the *size* of the basis and the number of
-electrons.
+*every* ingredient of a real many-body calculation: an orthonormal
+orbital basis, a two-electron integrals tensor, the Slater–Condon
+rules, Brillouin's theorem, spin adaptation, a $4 \times 4$
+Hamiltonian matrix in the determinant basis, a numerical
+diagonalisation, and an interpretation of the resulting eigenvector
+in terms of a physically meaningful wavefunction.  The *only*
+difference between this calculation and a real production
+calculation is the *size* of the basis and the number of electrons.
 
 The size is what gets us into trouble.  A minimal-basis full CI on
-benzene in a `6-31G*' basis has $K = 36$ spatial orbitals and $N =
+benzene in a `6-31G*` basis has $K = 36$ spatial orbitals and $N =
 30$ electrons, so
 $N_{\text{det}} = \binom{36}{15}^2 \approx 1.6 \times 10^{16}$.
 A full CI on water in cc-pVTZ has $K = 58$ spatial orbitals and
@@ -1480,7 +1480,6 @@ Hamiltonian is $\sim 7$ PB at 16 bytes per entry, and its
 diagonalisation would take more than the age of the universe on a
 laptop).  Every practical method is a strategy for not having to
 build this matrix.
-
 ## 2.6 Problems
 
 <details class="problem">
@@ -1716,9 +1715,9 @@ integral.  This is the result we used in
 
 The full-CI ground-state energy of $\mathrm{H}_2$ in a STO-3G
 minimal basis at $R = 1.4\,a_0$ is
-$E_0 = -1.0246\,E_h$ (equation \eqref{eq:ch-02-h2-gs-total}).
-The restricted Hartree–Fock ground-state energy in the same basis
-is $E_{\text{HF}} = -1.1167\,E_h$
+$E_0 = -1.1373\,E_h$ (§2.5.5).  The restricted Hartree–Fock
+ground-state energy in the same basis is
+$E_{\text{HF}} = -1.1167\,E_h$
 ([chapter 06]({{ site.baseurl }}/dft-notes/chapter-06/),
 §6.9).  Carry out the following calculation, step by step, *by
 hand* (with a calculator — no computer):
@@ -1728,92 +1727,165 @@ hand* (with a calculator — no computer):
 2. Express $E_{\text{corr}}$ in **eV** and in
    **kcal/mol** (using
    $1\,E_h = 27.2114\,\text{eV} = 627.509\,\text{kcal/mol}$).
-3. The **Hund–Mulliken** wavefunction of
-   \eqref{eq:ch-02-h2-gs} is
-   $\Psi_{\text{HM}} = (\Phi_1 - \Phi_4)/\sqrt 2$, where
-   $\Phi_1 = |1\bar 1\rangle$ and $\Phi_4 = |2\bar 2\rangle$.  Show
-   that the *energy expectation value* of $\hat H_{\text{el}}$ in
-   this state is the lower eigenvalue
-   $E_- = H_{11} - |H_{14}|$ of the closed-shell block.  Explain
-   in one sentence why this is the case.
-4. Compare the Hund–Mulliken energy to the full-CI energy
-   $-1.0246\,E_h$.  Are they equal?  If not, identify which
-   determinant is missing from the Hund–Mulliken Ansatz, and
-   argue *qualitatively* whether the missing determinant would
-   raise or lower the energy if it were added.
+3. The ground state \eqref{eq:ch-02-h2-gs} is
+   $\Psi_0 = 0.9936\,\Phi_1 - 0.1128\,\Phi_4$.  Compute the
+   *energy expectation value* of $\hat H_{\text{el}} + V_{NN}$ in
+   this state directly from the matrix elements
+   \eqref{eq:ch-02-h2-h11}, \eqref{eq:ch-02-h2-h44} and
+   \eqref{eq:ch-02-h2-h14}, and verify that it equals $E_0$.
+4. Compare with the single-determinant HF energy.  Show that the
+   variational principle guarantees
+   $\langle\Psi_0|\hat H|\Psi_0\rangle \le E_{\text{HF}}$, and
+   explain in one sentence why a calculation that reports
+   $E_0 > E_{\text{HF}}$ in the same orbital basis has an error.
 </details>
 
 <details class="answer">
 <summary>Show answer</summary>
 
-**Part 1.**  From \eqref{eq:ch-02-ecorr},
+**Part 1.**
 
 $$
 E_{\text{corr}} \;=\; E_0 - E_{\text{HF}}
-   \;=\; -1.0246 - (-1.1167)
-   \;=\; +0.0921\,E_h .
+   \;=\; -1.1373 - (-1.1167)
+   \;=\; -0.0206\,E_h .
 $$
+
+The sign is *negative*: correlation always lowers the energy,
+because FCI minimises over a strictly larger variational space
+than any single determinant.
 
 **Part 2.**  Using the conversions,
 
 $$
 \begin{aligned}
-E_{\text{corr}} \;=\; 0.0921 \times 27.2114\;\text{eV}
-                  \;\approx\; 2.506\;\text{eV}, \\
-E_{\text{corr}} \;=\; 0.0921 \times 627.509\;\text{kcal/mol}
-                  \;\approx\; 57.80\;\text{kcal/mol}.
+E_{\text{corr}} \;=\; -0.0206 \times 27.2114\;\text{eV}
+                  \;\approx\; -0.561\;\text{eV}, \\
+E_{\text{corr}} \;=\; -0.0206 \times 627.509\;\text{kcal/mol}
+                  \;\approx\; -12.93\;\text{kcal/mol}.
 \end{aligned}
 $$
 
-For a *minimal basis* on $\mathrm H_2$, this is a huge
-correlation energy — about 9% of the total HF energy.  The reason
-is the basis: a STO-3G basis cannot represent the
-electron–electron cusp in the wavefunction, so the missing
-correlation is dominated by this basis-set artefact, not by
-physical dynamical correlation.  In a triple-zeta basis with
-correlating polarisation functions, the *physical* correlation
-energy is ~0.3 eV, more than an order of magnitude smaller.
+This is a substantial fraction of the $\mathrm H_2$ bond energy
+($D_e \approx 0.174\,E_h \approx 109$ kcal/mol): even in this tiny
+system, left–right correlation contributes at the several-kcal/mol
+level, which matters for thermochemistry.
 
-**Part 3.**  The state
-$\Psi_{\text{HM}} = (\Phi_1 - \Phi_4)/\sqrt 2$ is the *lowest
-eigenvector* of the $2 \times 2$ closed-shell block of
-\eqref{eq:ch-02-h2-ci-matrix}, by construction.  The energy
-expectation value of $\hat H_{\text{el}}$ in this state is the
-lower eigenvalue of the $2 \times 2$ block, which is
-$H_{11} - |H_{14}| = -1.4662 - 0.2727 = -1.7389\,E_h$.
-Adding $V_{NN} = 0.7143\,E_h$ gives the total energy
-$-1.0246\,E_h$, *exactly* equal to the full-CI ground-state
-energy of \eqref{eq:ch-02-h2-gs-total}.  The reason is that the
-open-shell singlets $\Phi_2$ and $\Phi_3$ are *uncoupled* from
-the closed shells by symmetry (their $H_{12}$ and $H_{34}$ matrix
-elements vanish), so the full-CI ground state is in fact a
-superposition of *just* the two closed-shell determinants.  In a
-*bigger* basis, the coupling to the open-shell singlets would be
-non-zero and the Hund–Mulliken Ansatz would be an approximation
-to the full-CI ground state.
+**Part 3.**  For
+$\Psi_0 = c_1\Phi_1 + c_4\Phi_4$ with $c_1 = 0.9936$ and
+$c_4 = -0.1128$, the expectation value is
 
-**Part 4.**  The Hund–Mulliken energy is *exactly* equal to the
-full-CI energy in this calculation — they are the *same* number.
-The reason is the symmetry of the 2-electron 2-orbital problem:
-the open-shell singlets are *uncoupled* from the closed shells,
-and the ground state is the *only* state in the $M_S = 0$ block
-that has the right symmetry.  In a bigger basis, the
-Hund–Mulliken Ansatz would *underestimate* the correlation
-energy, because it would miss the contribution of the open-shell
-singlets (and of higher excitations).  The sign of the missing
-contribution is *lowering*: any additional determinant that is
-*coupled* to the ground state and has a non-zero matrix element
-to it will lower the energy by the variational principle.
+$$
+\langle \Psi_0 | \hat H | \Psi_0 \rangle
+   \;=\; c_1^2 H_{11} + c_4^2 H_{44}
+        + 2 c_1 c_4 H_{14},
+$$
 
-**Bottom line.**  The 2-electron 2-orbital problem in a real
-basis is *exactly* solvable by the Hund–Mulliken Ansatz.  This is
-a special case.  In a real basis with $K > 2$ spatial orbitals,
-the Hund–Mulliken Ansatz is a *2-configuration* CI, and it is
-*not* exact; the missing configurations (especially the open-shell
-singlets and the doubles into the virtual space) account for the
-rest of the correlation energy.
+$$
+\;=\; (0.9873)(-1.8310) + (0.0127)(-0.2537)
+     + 2(0.9936)(-0.1128)(0.1813)
+$$
+
+$$
+\;=\; -1.8078 - 0.0032 - 0.0407
+   \;=\; -1.8517\; E_h \quad(\text{electronic}),
+$$
+
+and adding $V_{NN} = 0.7143\,E_h$ gives $-1.1374\,E_h \approx E_0$
+(the last digit differs by rounding the coefficients to four
+decimals).  This is just the statement that $\Psi_0$ is an
+eigenvector: its expectation value equals the eigenvalue.
+
+**Part 4.**  The variational principle gives
+$\langle\Psi_0|\hat H|\Psi_0\rangle \le E_{\text{HF}}$ because the
+variational space of FCI contains the HF determinant as one of its
+basis states ($\Phi_1$ *is* the HF determinant), so minimising over
+the larger space can only stay equal or go lower.  A reported
+$E_0 > E_{\text{HF}}$ therefore signals an inconsistency — most
+commonly, building the CI matrix in a non-orthonormal determinant
+basis (see Problem 4) or comparing energies from two different
+orbital bases.
 
 </details>
+
+<details class="problem">
+<summary>Problem 4 (medium) — Why the orbitals must be orthonormal</summary>
+
+Suppose you build the $4\times 4$ CI matrix of §2.5 directly in the
+*raw* AO basis $\{\chi_1, \chi_2\}$ — i.e. determinants
+$|1\bar 1\rangle, |1\bar 2\rangle, |2\bar 1\rangle, |2\bar 2\rangle$
+with $\langle\chi_1|\chi_2\rangle = S_{12} = 0.6593$ — while using
+the ordinary Slater–Condon rules, which assume orthonormal
+spin-orbitals.
+
+1. Compute $\langle 1\bar 1 \mid 1\bar 2\rangle$ for these raw-AO
+   determinants and show that the determinant basis is not
+   orthonormal.
+2. Using the raw AO integrals of \eqref{eq:ch-02-h2-h} and
+   \eqref{eq:ch-02-h2-v}, build the naive $4\times 4$ matrix
+   (diagonal elements $2h_{11} + (11|11)$ etc., coupling
+   $(11|22) - (12|21)$ for the double excitation), diagonalise it,
+   and compare the lowest root with $E_\mathrm{RHF} = -1.1167$.
+3. Explain why the result violates the variational principle, and
+   fix it by repeating the calculation in the Löwdin-orthogonalised
+   basis $\phi_i = \sum_j (S^{-1/2})_{ji}\chi_j$.  Verify that you
+   recover the correct FCI energy $-1.1373\,E_h$.
+</details>
+
+<details class="answer">
+<summary>Show answer</summary>
+
+**Part 1.**  For two determinants built from non-orthogonal
+spin-orbitals,
+
+$$
+\langle 1\bar 1 \mid 1\bar 2 \rangle
+   \;=\; \langle \chi_1|\chi_1\rangle
+          \langle \bar\chi_1|\bar\chi_2\rangle
+   \;=\; 1 \times S_{12} \;=\; 0.6593 \neq 0 .
+$$
+
+The four determinants are linearly independent but far from
+orthogonal, so they do not form an orthonormal basis and the usual
+eigenvalue problem $\mathbf H\mathbf c = E\mathbf c$ does not apply.
+
+**Part 2.**  Applying the orthonormal-basis Slater–Condon rules to
+the raw integrals gives
+
+$$
+H_{11} = H_{44} = 2(-1.1204) + 0.7746 = -1.4662,
+\qquad
+H_{14} = (11|22) - (12|21) = 0.5697 - 0.2970 = 0.2727,
+$$
+
+(and analogously for the open-shell block).  Diagonalising the
+resulting $4\times 4$ matrix yields a lowest root near
+$-1.59\,E_h$, which lies *below* both the correct answer
+$-1.1373\,E_h$ and the exact non-relativistic $\mathrm H_2$ energy
+$-1.1745\,E_h$ — an impossible outcome.
+
+**Part 3.**  The violation happens because the generalised
+eigenproblem for a non-orthogonal basis is
+$\mathbf H\mathbf c = E\,\mathbf S\mathbf c$ with the determinant
+overlap matrix $\mathbf S_{IJ} = \langle\Phi_I|\Phi_J\rangle$;
+ignoring $\mathbf S$ amounts to solving the wrong problem, and the
+resulting energies are not variational upper bounds.  With the
+Löwdin orthogonalisation
+$\boldsymbol\phi = \boldsymbol\chi\,\mathbf S^{-1/2}$, where
+
+$$
+\mathbf X = \mathbf S^{-1/2}
+= \begin{pmatrix} 1.2448 & -0.4685 \\ -0.4685 & 1.2448 \end{pmatrix},
+$$
+
+the transformed integrals reproduce the canonical-MO results of
+§2.5 up to a rotation among the degenerate-symmetry orbitals, and
+the lowest root becomes exactly the full-CI energy $-1.1373\,E_h$.
+Moral: **second quantisation and the Slater–Condon rules presuppose
+an orthonormal spin-orbital basis — always orthogonalise first.**
+
+</details>
+
 
 ## 2.7 Cross-references
 
