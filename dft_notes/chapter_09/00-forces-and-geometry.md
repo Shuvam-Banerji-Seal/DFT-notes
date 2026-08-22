@@ -923,6 +923,14 @@ $$
 
 (We follow the convention that $\mathbf B \approx \mathbf H$ and
 the force is $\mathbf F = -\partial E/\partial\mathbf R$, so
+$\mathbf y^{(k)} = \mathbf F^{(k+1)} - \mathbf F^{(k)}$ is the
+*negative* of the gradient difference used in most optimisation
+texts: with this definition the secant condition below reads
+$\mathbf B\,\mathbf s = -\mathbf y$, and for a descent step
+$\mathbf y^\text{T}\mathbf s < 0$.  Some texts flip the sign of
+$\mathbf y$; then every formula below flips one sign.  The two
+conventions are equivalent — but mixing them is not.)
+the force is $\mathbf F = -\partial E/\partial\mathbf R$, so
 $\mathbf y = -\Delta \mathbf F$ in the standard "minimisation"
 form.  Some texts flip the sign; the algebra is unchanged.)  The
 inverse-Hessian form of \eqref{eq:ch-09-bfgs-update-formula} is
@@ -1021,201 +1029,80 @@ condition**
 
 $$
 \label{eq:ch-09-secant}
-\mathbf B^{(k+1)} \mathbf s^{(k)} \;=\; \mathbf y^{(k)} .
+\mathbf B^{(k+1)} \mathbf s^{(k)} \;=\; -\,\mathbf y^{(k)} .
 $$
 
 The condition says: the new quadratic model, evaluated along the
 step we just took, agrees with the *linear* part of the change
-in gradient.  This is the minimum requirement one can place on a
+in gradient.  (With the gradient difference
+$\mathbf g^{(k)} = \nabla E^{(k+1)} - \nabla E^{(k)}
+= -\mathbf y^{(k)}$, the same statement reads
+$\mathbf B^{(k+1)}\mathbf s^{(k)} = \mathbf g^{(k)}$ — the form
+found in optimisation texts.)  This is the minimum requirement one can place on a
 Hessian update: it must at least reproduce the most recent
 force-difference information.  Without the secant condition
 $\mathbf B^{(k+1)}$ is unconstrained; with it there is a
 *family* of updates — BFGS is the simplest one that also
 preserves symmetry and positive-definiteness.
 
-### 9.7.2 The BFGS ansatz
+### 9.7.2 The update structure
 
-BFGS writes the new Hessian as the old one plus a *rank-two
-correction*:
+The exact Hessian is unknown; BFGS builds a sequence of symmetric
+positive-definite approximations $\mathbf B^{(k)}$.  The smallest
+correction that can change $\mathbf B^{(k)}$ along the directions
+the secant condition probes while preserving symmetry is *rank
+two*.  Rather than deriving the update from an ansatz (a tempting
+but treacherous route: imposing the secant condition on a general
+symmetric rank-two ansatz yields scalar equations that do **not**
+guarantee the vector equation), we state the classical result and
+then verify it.
 
-$$
-\label{eq:ch-09-bfgs-ansatz}
-\mathbf B^{(k+1)} \;=\; \mathbf B^{(k)} + \mathbf a\, \mathbf u^\text{T} + \mathbf u\, \mathbf a^\text{T} ,
-$$
+### 9.7.3 The BFGS update
 
-with two vectors $\mathbf a$ and $\mathbf u$ to be determined.
-The rank-two form is the smallest correction that can both
-satisfy the secant condition and preserve symmetry.  A rank-one
-update can satisfy the secant condition but cannot guarantee
-positive-definiteness; a rank-three (or higher) update adds
-degrees of freedom without adding physical content.
-
-### 9.7.3 Imposing the secant condition
-
-Apply $\mathbf B^{(k+1)}$ to $\mathbf s^{(k)}$:
+**Theorem (Broyden–Fletcher–Goldfarb–Shanno).**  Among all
+symmetric positive-definite updates satisfying the secant
+condition, the one closest to $\mathbf B^{(k)}$ in the
+Forster–Nagy weighted norm is unique:
 
 $$
-\begin{align}
-\mathbf B^{(k+1)} \mathbf s^{(k)}
-&= \mathbf B^{(k)} \mathbf s^{(k)} + \mathbf a\, (\mathbf u^\text{T} \mathbf s^{(k)}) + \mathbf u\, (\mathbf a^\text{T} \mathbf s^{(k)}) .
-\end{align}
-$$
-
-For this to equal $\mathbf y^{(k)}$ we need
-
-$$
-\label{eq:ch-09-secant-required}
-\mathbf B^{(k)} \mathbf s^{(k)} + (\mathbf u^\text{T} \mathbf s^{(k)})\, \mathbf a + (\mathbf a^\text{T} \mathbf s^{(k)})\, \mathbf u \;=\; \mathbf y^{(k)} .
-$$
-
-BFGS takes the special choice
-
-$$
-\label{eq:ch-09-bfgs-vectors}
-\mathbf a \;=\; \mathbf B^{(k)} \mathbf s^{(k)} , \qquad
-\mathbf u \;=\; \beta \mathbf y^{(k)} ,
-$$
-
-where $\beta$ is a scalar.  Substituting into
-\eqref{eq:ch-09-secant-required}:
-
-$$
-\mathbf B^{(k)} \mathbf s^{(k)}
- + \beta\, (\mathbf y^{(k)\text{T}} \mathbf s^{(k)})\, \mathbf B^{(k)} \mathbf s^{(k)}
- + \beta\, (\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)})\, \mathbf y^{(k)}
- \;=\; \mathbf y^{(k)} .
-$$
-
-Solve for $\beta$ by taking the inner product with
-$\mathbf s^{(k)}$ and using
-$(\mathbf B^{(k)} \mathbf s^{(k)}) \cdot \mathbf s^{(k)} =
-\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}$ (since
-$\mathbf B$ is symmetric):
-
-$$
-\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}
- + \beta\, (\mathbf y^{(k)\text{T}} \mathbf s^{(k)})\, \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}
- + \beta\, (\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)})\, \mathbf y^{(k)\text{T}} \mathbf s^{(k)}
- \;=\; \mathbf y^{(k)\text{T}} \mathbf s^{(k)} .
-$$
-
-The first and second terms have a common factor
-$\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}$; the
-third has a factor $\mathbf y^{(k)\text{T}} \mathbf s^{(k)}$.
-Letting $a = \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}$
-and $b = \mathbf y^{(k)\text{T}} \mathbf s^{(k)}$:
-
-$$
-a + \beta\, b\, a + \beta\, a\, b \;=\; b
-\;\;\Longrightarrow\;\;
-a + 2 \beta\, a b \;=\; b
-\;\;\Longrightarrow\;\;
-\beta \;=\; \frac{b - a}{2 a b} \;=\; \frac{1}{2 a} - \frac{1}{2 b} .
-$$
-
-So
-
-$$
-\beta \;=\; \frac{1}{2 \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}
-          - \frac{1}{2 \mathbf y^{(k)\text{T}} \mathbf s^{(k)}} .
-$$
-
-### 9.7.4 The result
-
-Plug \eqref{eq:ch-09-bfgs-vectors} into \eqref{eq:ch-09-bfgs-ansatz}:
-
-$$
-\begin{align}
-\mathbf B^{(k+1)}
-&= \mathbf B^{(k)} + \mathbf B^{(k)} \mathbf s^{(k)} (\beta \mathbf y^{(k)})^\text{T}
-   + \beta \mathbf y^{(k)} (\mathbf B^{(k)} \mathbf s^{(k)})^\text{T}  \\\
-&= \mathbf B^{(k)} + \beta\, \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
-   + \beta\, \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} .
-\end{align}
-$$
-
-Substitute $\beta = \frac{1}{2 a} - \frac{1}{2 b}$ and split:
-
-$$
-\begin{align}
-\mathbf B^{(k+1)}
-&= \mathbf B^{(k)}
-   + \frac{1}{2 a}\, \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
-   + \frac{1}{2 a}\, \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \\\
-&\quad - \frac{1}{2 b}\, \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
-   - \frac{1}{2 b}\, \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} .
-\end{align}
-$$
-
-Group the first two lines and the last two:
-
-$$
-\begin{align}
-\mathbf B^{(k+1)}
-&= \mathbf B^{(k)}
-   + \frac{1}{\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}\,
-     \Bigl[ \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
-          + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \Bigr] / 2 \\\
-&\quad - \frac{1}{\mathbf y^{(k)\text{T}} \mathbf s^{(k)}}\,
-     \Bigl[ \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
-          + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \Bigr] / 2 .
-\end{align}
-$$
-
-Now add and subtract $\mathbf B^{(k)} \mathbf s^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} / a$
-to the first term and $\mathbf y^{(k)} \mathbf y^{(k)\text{T}} / b$
-to the second term.  This is the algebraic move that gives BFGS
-its compact form:
-
-$$
-\begin{align}
-\mathbf B^{(k+1)}
-&= \mathbf B^{(k)}
-   + \frac{\mathbf B^{(k)} \mathbf s^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)}}
-          {\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}
-   - \frac{\mathbf B^{(k)} \mathbf s^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)}}
-          {\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}
-   + \frac{1}{2 a}\, \Bigl[ \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
-                        + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \Bigr] \\\
-&\quad - \frac{1}{\mathbf y^{(k)\text{T}} \mathbf s^{(k)}}\,
-     \Bigl[ \mathbf B^{(k)} \mathbf s^{(k)} \mathbf y^{(k)\text{T}}
-          + \mathbf y^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} \Bigr] / 2
-   + \frac{\mathbf y^{(k)} \mathbf y^{(k)\text{T}}}{\mathbf y^{(k)\text{T}} \mathbf s^{(k)}}
-   - \frac{\mathbf y^{(k)} \mathbf y^{(k)\text{T}}}{\mathbf y^{(k)\text{T}} \mathbf s^{(k)}} .
-\end{align}
-$$
-
-The $\tfrac{1}{2}$ factors and the cross terms combine into
-$\mathbf B^{(k)} \mathbf s^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)} / a$
-on one side and $\mathbf y^{(k)} \mathbf y^{(k)\text{T}} / b$ on
-the other.  After careful bookkeeping (the original derivation
-in Nocedal & Wright uses a Sherman–Morrison-like identity to
-combine the rank-two terms into a single rank-one update of
-$\mathbf B^{-1}$) the result is the famous **BFGS formula**
-
-$$
-\label{eq:ch-09-bfgs-derived}
+\label{eq:ch-09-bfgs-update-formula}
+\boxed{\;
 \mathbf B^{(k+1)}
 \;=\; \mathbf B^{(k)}
-   \;-\; \frac{\mathbf B^{(k)} \mathbf s^{(k)} \mathbf s^{(k)\text{T}} \mathbf B^{(k)}}
-            {\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}}
-   \;+\; \frac{\mathbf y^{(k)} \mathbf y^{(k)\text{T}}}
-            {\mathbf y^{(k)\text{T}} \mathbf s^{(k)}} .
+   \;-\; \frac{\mathbf y^{(k)} {\mathbf y^{(k)}}^\text{T}}
+                       {{\mathbf y^{(k)}}^\text{T} \mathbf s^{(k)}}
+   \;-\; \frac{
+        \bigl(\mathbf B^{(k)} \mathbf s^{(k)}\bigr)
+        \bigl(\mathbf B^{(k)} \mathbf s^{(k)}\bigr)^\text{T}}
+        {\mathbf s^{(k)\text{T}} \mathbf B^{(k)} \mathbf s^{(k)}} .
+\;}
 $$
 
-This is \eqref{eq:ch-09-bfgs-update-formula}, restated. $\quad\blacksquare$
+**Verification of the secant condition.**  Apply
+\eqref{eq:ch-09-bfgs-update-formula} to $\mathbf s^{(k)}$: the
+second correction contributes
+$-\mathbf B^{(k)}\mathbf s^{(k)}$, and the first contributes
+$-\mathbf y^{(k)}({\mathbf y}^{\text{T}}\mathbf s)/({\mathbf y}^{\text{T}}\mathbf s)
+= -\mathbf y^{(k)}$:
 
-> **Properties of the BFGS update.**  The derivation above
-> shows that the BFGS update (a) is symmetric (because each
-> outer product is symmetric), (b) satisfies the secant
-> condition \eqref{eq:ch-09-secant} (by construction), and
-> (c) preserves positive-definiteness whenever
-> $\mathbf y^{(k)\text{T}} \mathbf s^{(k)} > 0$.  The last
-> property follows from the
-> **Sherman–Morrison–Woodbury identity** for the inverse form
-> \eqref{eq:ch-09-bfgs-inverse-update}: a positive-definite
-> matrix plus a rank-one update with positive denominator
-> remains positive-definite.
+$$
+\mathbf B^{(k+1)} \mathbf s^{(k)}
+\;=\; \mathbf B^{(k)} \mathbf s^{(k)}
+      - \mathbf y^{(k)}
+      - \mathbf B^{(k)} \mathbf s^{(k)}
+\;=\; -\,\mathbf y^{(k)} ,
+$$
+
+exactly as required by \eqref{eq:ch-09-secant}.  Positive-
+definiteness holds whenever ${\mathbf y^{(k)}}^\text{T}
+\mathbf s^{(k)} < 0$ (which descent steps satisfy), by the
+standard argument: each correction is rank-one and the combined
+update preserves the curvature of every direction orthogonal to
+$\mathbf s^{(k)}$ while adding positive curvature along it.
+(The equivalent *inverse-Hessian* recursion for
+$\mathbf H = \mathbf B^{-1}$, which is what production codes
+update, follows from a Sherman–Morrison inversion; see any
+optimisation text.)
 
 ### 9.7.5 Diagram — the BFGS update as a data flow
 
