@@ -328,7 +328,7 @@ $$
 The second term in \eqref{eq:ch-05-gea-exchange} — sometimes written
 in the equivalent one-centre form
 $\beta_\text{x} \int (\nabla\rho)^2 / \rho^{4/3} d\mathbf r$ with
-$\beta_\text{x} = (7/432\pi)(6\pi^2)^{2/3} \approx 0.00278$ — is
+$\beta_\text{x} = (7/432\pi)(6\pi^2)^{2/3} \approx 0.078$ — is
 *positive*, so the GEA reduces the magnitude of the LDA exchange
 in regions of strong gradient. That is the right direction: the
 exchange energy of a non-uniform system should be *less* negative

@@ -526,9 +526,16 @@ $$
 \hat H_{KS} \tilde\phi_i = \varepsilon_i \hat S \tilde\phi_i.
 $$
 
-The overlap $\hat S$ comes from the fact that the smooth
-orbitals are not orthonormal; their norm deficit is the
-augmentation charge.
+The overlap $\hat S$ comes from relaxing *norm conservation*:
+the smooth orbitals are orthonormal in the generalised metric
+$\langle \tilde\phi_i | \hat S | \tilde\phi_j \rangle = \delta_{ij}$
+with
+$\hat S = 1 + \sum_{i,j} |\beta_i\rangle (Q_{ij}) \langle \beta_j |$,
+where the augmentation charges $Q_{ij}$ restore the norm that the
+smooth functions alone miss inside the cutoff spheres.  In the
+plain metric the $\tilde\phi_i$ are *not* orthonormal — their norm
+deficit is the augmentation charge — and it is precisely this
+deficit that lets the cutoff be pushed to unusually low values.
 
 In practice, ultrasoft pseudopotentials (USPP) are about a
 factor of 2–3 more efficient than norm-conserving pseudo-
