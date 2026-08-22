@@ -399,20 +399,31 @@ order in $K$, but with a different prefactor.
 
 $$
 \label{eq:ch-14-mp2-sf}
-E_\text{MP2}^\text{closed} \;=\; - \sum_{i<j}^{n} \sum_{a<b}^{K-n} \frac{2 \Bigl[ (ia \rvert jb) - (ib \rvert ja) \Bigr]^2}{\varepsilon_a + \varepsilon_b - \varepsilon_i - \varepsilon_j} ,
+E_\text{MP2}^\text{closed} \;=\; \sum_{i,j}^{n} \sum_{a,b}^{K-n}
+\frac{\bigl(\,i a \rvert j b\,\bigr)\,
+      \Bigl[ 2 \bigl(\,i a \rvert j b\,\bigr)
+             - \bigl(\,i b \rvert j a\,\bigr) \Bigr]}
+     {\varepsilon_i + \varepsilon_j - \varepsilon_a - \varepsilon_b} ,
 $$
 
-where $i, j$ now run over *spatial* occupied orbitals,
-$a, b$ over *spatial* virtual orbitals, and the factor $2$
-arises from the spin sum (a spin-orbital double excitation
-$(\bar\imath, \bar\jmath) \to (\bar a, \bar b)$ in
-$\alpha\alpha \to \alpha\alpha$ plus a corresponding
-$\beta\beta \to \beta\beta$ contribution, and the two
-contributions combine to give the $2 \times$ factor).  The
-energy denominator in \eqref{eq:ch-14-mp2-sf} is
-$\varepsilon_a + \varepsilon_b - \varepsilon_i - \varepsilon_j$ in
-*spatial* orbital energies (the factor of $2$ from spin has
-already been accounted for).
+where $i, j$ run over *all* pairs of occupied spatial orbitals
+(including $i = j$!), $a, b$ over *all* pairs of virtual spatial
+orbitals (including $a = b$!), and each orbital-energy denominator
+$\varepsilon_i + \varepsilon_j - \varepsilon_a - \varepsilon_b$ is
+negative, so every term is negative and the correlation energy
+lower(s) the HF energy.  The structure of the integrand,
+$2(\,ia \rvert jb\,) - (\,ib \rvert ja\,)$, comes from the spin sum:
+the direct term $(\,ia \rvert jb\,)$ acquires a factor of $2$
+($\alpha\alpha$, $\beta\beta$ and the two mixed-spin double
+excitations all contribute), while the exchange-type term
+$(\,ib \rvert ja\,)$ survives only for parallel spins and carries no
+factor.  Do *not* restrict the sums to $i<j$ and $a<b$: the
+$i=j$ and $a=b$ terms are genuine contributions, and dropping them
+(for example by reusing a pair-restricted form from a
+singlet-pair derivation) gives zero correlation energy for any
+one-occupied-orbital system such as $\mathrm H_2$ — contradicting
+the exact result $E_\text{corr} = -0.0132\,E_h$ for H₂/STO-3G at
+$R = 1.4\,a_0$.
 
 > **Tip.**  The MP2 formula \eqref{eq:ch-14-mp2} is a
 > *sum over pairs*.  This is the source of its

@@ -268,14 +268,19 @@ anomalous velocity term
 
 $$
 \label{eq:ch-16-anomalous-velocity}
-\dot{\mathbf r}_n = \frac{\partial \varepsilon_n}{\hbar \partial \mathbf k} - \dot{\mathbf k} \times \boldsymbol \Omega_n(\mathbf k) ,
+\dot{\mathbf r}_n = \frac{1}{\hbar}\frac{\partial \varepsilon_n}{\partial \mathbf k} - \dot{\mathbf k} \times \boldsymbol \Omega_n(\mathbf k) ,
 \qquad
-\hbar \dot{\mathbf k}_n = -\frac{\partial \varepsilon_n}{\partial \mathbf r} - \hbar \dot{\mathbf r} \times \boldsymbol \Omega_n(\mathbf k) .
+\hbar \dot{\mathbf k}_n = -\frac{\partial \varepsilon_n}{\partial \mathbf r} ,
 $$
 
-The second term is the **anomalous velocity**,
+The second term of the velocity equation is the **anomalous velocity**,
 perpendicular to $\dot{\mathbf k}$ and proportional to
-$\boldsymbol \Omega_n$. It is the *microscopic* origin of
+$\boldsymbol \Omega_n$. Note that the Berry curvature enters *only*
+the velocity equation: the crystal-momentum equation is the plain
+Lorentz-force statement (in an electromagnetic field,
+$\hbar \dot{\mathbf k} = -e(\mathbf E + \dot{\mathbf r} \times \mathbf B)$),
+with no curvature term (Xiao, Chang & Niu, *Rev. Mod. Phys.* **82**, 1959
+(2010), eq. (1)). The anomalous term is the *microscopic* origin of
 the intrinsic anomalous Hall effect of a magnetic metal
 and the *chiral* edge current of a Chern insulator.
 
@@ -1106,7 +1111,7 @@ presence of electromagnetic fields:
 $$
 \label{eq:ch-16-chiral-anomaly}
 \boxed{
-\partial_\mu j_5^\mu \;=\; \frac{e^2}{16 \pi^2 \hbar^2}\, \epsilon^{\mu\nu\rho\sigma} F_{\mu\nu} F_{\rho\sigma} \;=\; \frac{e^3}{2 \pi^2 \hbar^2}\, \mathbf E \cdot \mathbf B .
+\partial_\mu j_5^\mu \;=\; \frac{e^2}{16 \pi^2 \hbar^2}\, \epsilon^{\mu\nu\rho\sigma} F_{\mu\nu} F_{\rho\sigma} \;=\; \frac{e^2}{2 \pi^2 \hbar^2}\, \mathbf E \cdot \mathbf B .
 }
 $$
 

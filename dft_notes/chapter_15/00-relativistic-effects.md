@@ -147,8 +147,8 @@ this chapter:
    non-relativistic limit is the **Pauli Hamiltonian** with
    four correction terms beyond the non-relativistic
    Schrödinger form: the **kinetic-relativistic**
-   ($p^4/8m^3c^2$) and **Darwin** ($-\hbar^2 \nabla^2 v /
-   4m^2c^2$) corrections together form the
+   ($p^4/8m^3c^2$) and **Darwin** ($+\hbar^2 \nabla^2 v /
+   8m^2c^2$) corrections together form the
    **scalar-relativistic** (SR) part; the **spin-orbit** term
    $\xi(r)\hat{\mathbf L}\!\cdot\!\hat{\mathbf S}$ is the
    **fully-relativistic** part; and the **contact** (or
@@ -391,29 +391,39 @@ and $j = \ell - 1/2$ levels (for $\ell \ge 1$) is
 
 $$
 \label{eq:ch-15-so-split}
-\Delta E_\text{SO} \;=\; E_{n,j=\ell+1/2} - E_{n,j=\ell-1/2} \;\approx\; \frac{(Z\alpha)^2}{2n}\,\frac{E_n^\text{nr}}{\Bigl(\ell + \tfrac{1}{2}\Bigr)\Bigl(\ell + 1\Bigr)} ,
+\Delta E_\text{SO} \;=\; E_{n,j=\ell+1/2} - E_{n,j=\ell-1/2}
+\;=\; \frac{Z^4 \alpha^2}{2 n^3\,\ell(\ell+1)}\,E_h
+\;=\; \frac{(Z\alpha)^4}{2 n^3\,\ell(\ell+1)}\, m_e c^2 ,
 $$
 
-where $E_n^\text{nr} = -Z^2/(2n^2)$ is the non-relativistic
-binding energy. For the hydrogen $2p$ level
+which is *positive*: the $j = \ell + 1/2$ level lies **above**
+$j = \ell - 1/2$.  For the hydrogen $2p$ level
 ($Z = 1$, $\ell = 1$, $n = 2$),
 
 $$
 \label{eq:ch-15-so-h}
-\Delta E_\text{SO}(2p,\, Z=1) \;\approx\; \frac{(1/137)^2}{4}\,\frac{-1/8}{3/2 \cdot 2} \;\approx\; -4.5 \times 10^{-5}\,\text{eV} ,
+\Delta E_\text{SO}(2p,\, Z=1)
+\;=\; \frac{\alpha^4}{32}\, m_e c^2
+\;\approx\; \frac{2.84 \times 10^{-9} \times 511\,000\;\text{eV}}{32}
+\;\approx\; +4.5 \times 10^{-5}\,\text{eV} ,
 $$
 
 i.e. a $45$ micro-electron-volt splitting — invisible
-in chemistry. For the gold $5d$ level
-($Z = 79$, $\ell = 2$, $n = 5$), the actual
-$5d_{3/2} - 5d_{5/2}$ splitting is $\sim 1.5$ eV, the
-right order of magnitude and comparable to a chemical
-bond. The **$Z^4$ scaling** is therefore the
-headline: the absolute splitting scales as
+in chemistry. For heavy atoms the $Z^4$ scaling takes over: for a
+*hydrogenic* gold valence electron ($Z = 79$, $\ell = 2$, $n = 5$)
+the same formula would give $\sim 38$ eV — a gross overestimate,
+because a valence electron in gold is screened by the other
+electrons and sees an effective charge far below the bare $Z$. The
+*observed* $5d_{3/2} - 5d_{5/2}$ splitting in gold is
+$\sim 1.5$ eV (corresponding to an effective charge of roughly
+$35$), which is comparable to a chemical bond.
+
+Despite screening, the **$Z^4$ scaling** remains the headline rule
+of thumb: at fixed shell structure the absolute splitting scales as
 
 $$
 \label{eq:ch-15-z4-scaling}
-\Delta E_\text{SO}(n, j) \;\propto\; (Z\alpha)^2 \times E_n^\text{nr} \;\propto\; \frac{Z^4 \alpha^2}{n^3} .
+\Delta E_\text{SO}(n, j) \;\propto\; \frac{Z^4 \alpha^2}{n^3} .
 $$
 
 Doubling the nuclear charge increases the spin-orbit
@@ -517,7 +527,7 @@ the block-diagonal part of \eqref{eq:ch-15-fw-h} is the
 
 $$
 \label{eq:ch-15-pauli-hamiltonian}
-\hat H_\text{Pauli} \;=\; \underbrace{\frac{\hat{\mathbf p}^2}{2m} + v(\mathbf r)}_{\hat H_\text{Schr\"odinger}} \;\underbrace{-\; \frac{\hat{\mathbf p}^4}{8 m^3 c^2}}_{\text{kinetic-relativistic}} \;\underbrace{-\; \frac{\hbar^2}{4 m^2 c^2}\,\nabla^2 v}_{\text{Darwin}} \;\underbrace{+\; \frac{1}{2 m^2 c^2}\,\frac{1}{r}\frac{dv}{dr}\,\hat{\mathbf L}\!\cdot\!\hat{\mathbf S}}_{\text{spin-orbit}} ,
+\hat H_\text{Pauli} \;=\; \underbrace{\frac{\hat{\mathbf p}^2}{2m} + v(\mathbf r)}_{\hat H_\text{Schr\"odinger}} \;\underbrace{-\; \frac{\hat{\mathbf p}^4}{8 m^3 c^2}}_{\text{kinetic-relativistic}} \;\underbrace{+\; \frac{\hbar^2}{8 m^2 c^2}\,\nabla^2 v}_{\text{Darwin}} \;\underbrace{+\; \frac{1}{2 m^2 c^2}\,\frac{1}{r}\frac{dv}{dr}\,\hat{\mathbf L}\!\cdot\!\hat{\mathbf S}}_{\text{spin-orbit}} ,
 $$
 
 where we have used the operator identity
@@ -551,38 +561,30 @@ are contracted in heavy atoms.
 
 $$
 \label{eq:ch-15-darwin}
-\hat H_\text{D} \;=\; -\frac{\hbar^2}{4 m^2 c^2}\,\nabla^2 v(\mathbf r) .
+\hat H_\text{D} \;=\; +\frac{\hbar^2}{8 m^2 c^2}\,\nabla^2 v(\mathbf r) .
 $$
 
-The Darwin term can be rewritten in two useful forms.
-First, integration by parts gives
-
-$$
-\label{eq:ch-15-darwin-int}
-\langle \hat H_\text{D} \rangle \;=\; +\frac{\hbar^2}{4 m^2 c^2} \int |\nabla \psi|^2\, d\mathbf r \quad\text{(for real } \psi\text{)},
-$$
-
-which is positive-definite and therefore *repulsive*
-(it stabilises the energy, not destabilises it). Second,
-substituting the Coulomb potential
+For a Coulomb potential the Laplacian turns the smooth
+potential into a *contact* term.  Substituting
 $v = -Z/r$ gives $\nabla^2 v = 4\pi Z\, \delta(\mathbf r)$,
-so the Darwin term is
+so
 
 $$
 \label{eq:ch-15-darwin-coulomb}
-\hat H_\text{D}^\text{Coulomb} \;=\; -\frac{\pi \hbar^2 Z}{m^2 c^2}\,\delta(\mathbf r) .
+\hat H_\text{D}^\text{Coulomb} \;=\; +\frac{\pi \hbar^2 Z}{2 m^2 c^2}\,\delta(\mathbf r) ,
 $$
 
-The Darwin correction therefore acts *only* on
-wavefunctions with a finite amplitude at the nucleus —
-i.e. on $s$ orbitals and on $p_{1/2}$ orbitals. It
-originates from the **Zitterbewegung** (trembling
+a **positive** delta-function (contact) potential: it
+*raises* the energies of states with finite amplitude at
+the nucleus — i.e. $s$ orbitals and $p_{1/2}$ orbitals.
+It originates from the **Zitterbewegung** (trembling
 motion) of a relativistic electron: the electron
 does not sit at a point but fluctuates over a region
 of size the reduced Compton wavelength
 $\lambdabar_C = \hbar / mc \approx 386$ fm, smearing
-out the singular Coulomb potential into a smoothed
-effective potential. The Darwin term vanishes for
+out the singular Coulomb potential and sampling a
+slightly weaker attraction on average — hence the
+positive energy shift. The Darwin term vanishes for
 $\ell \ge 1$ in the non-relativistic limit because
 $\psi(\mathbf 0) = 0$ for $\ell \ge 1$.
 
@@ -683,12 +685,12 @@ $\sim 80$ keV total $1s$ binding energy.
 
 **Scaling of the Darwin term.** The Darwin expectation
 value on a hydrogenic $s$ orbital,
-$-\pi Z \alpha \lambdabar_C^3 \langle \delta(\mathbf r) \rangle$,
+$+\frac{\pi Z \hbar^2}{2 m^2 c^2}\langle \delta(\mathbf r) \rangle$,
 is
 
 $$
 \label{eq:ch-15-darwin-scaling}
-\Bigl| \langle \hat H_\text{D} \rangle \Bigr| \;\sim\; \frac{Z^4 \alpha^2}{n^3} \times E_h ,
+\Bigl| \langle \hat H_\text{D} \rangle \Bigr| \;\sim\; \frac{Z^4 \alpha^2}{2 n^3} \times E_h ,
 $$
 
 the same $Z^4 \alpha^2 / n^3$ scaling as the kinetic-
@@ -1301,7 +1303,7 @@ The **Darwin term** is the second correction of
 
 $$
 \label{eq:ch-15-darwin-15}
-\hat H_\text{D} \;=\; -\frac{\hbar^2}{4 m^2 c^2}\,\nabla^2 v(\mathbf r) .
+\hat H_\text{D} \;=\; +\frac{\hbar^2}{8 m^2 c^2}\,\nabla^2 v(\mathbf r) .
 $$
 
 The Darwin term is **non-zero only for wavefunctions
@@ -1320,7 +1322,7 @@ $\nabla^2 v = 4\pi Z \delta(\mathbf r)$, so
 
 $$
 \label{eq:ch-15-darwin-coulomb-15}
-\hat H_\text{D}^\text{Coulomb} \;=\; -\frac{\pi \hbar^2 Z}{m^2 c^2}\,\delta(\mathbf r) .
+\hat H_\text{D}^\text{Coulomb} \;=\; +\frac{\pi \hbar^2 Z}{2 m^2 c^2}\,\delta(\mathbf r) .
 $$
 
 The Darwin expectation value on a hydrogenic $ns$
@@ -1328,23 +1330,29 @@ orbital is
 
 $$
 \label{eq:ch-15-darwin-ns}
-\langle \hat H_\text{D} \rangle_{ns} \;=\; -\frac{\pi \hbar^2 Z}{m^2 c^2}\, |\psi_{ns}(0)|^2 \;=\; -\frac{\pi \hbar^2 Z}{m^2 c^2}\,\frac{Z^3}{\pi n^3 a_0^3} \;=\; -\frac{Z^4 \alpha^2}{n^3}\,E_h .
+\langle \hat H_\text{D} \rangle_{ns} \;=\; +\frac{\pi \hbar^2 Z}{2 m^2 c^2}\, |\psi_{ns}(0)|^2 \;=\; +\frac{\pi \hbar^2 Z}{2 m^2 c^2}\,\frac{Z^3}{\pi n^3 a_0^3} \;=\; +\frac{Z^4 \alpha^2}{2 n^3}\,E_h .
 $$
 
 For hydrogen ($Z = 1$, $n = 1$) the Darwin shift of
 the $1s$ orbital is
-$\sim 9 \times 10^{-4}$ eV (the same order of magnitude
-as the MV shift), but *opposite in sign*. The MV
-shift is $-\frac{Z^4 \alpha^2}{2n^3} E_h$ on the
-$1s$ orbital (from $\langle p^4 \rangle = 5 Z^4$ on a
-$1s$ hydrogenic orbital, in atomic units), and the
-Darwin shift is $-\frac{Z^4 \alpha^2}{n^3} E_h$; the
-sum is $-\frac{3 Z^4 \alpha^2}{2n^3} E_h$ on the $1s$ orbital. (The factor-of-two
-discrepancy with the perturbation-theory formula
-\eqref{eq:ch-15-mv-shift} is a standard
-hydrogen-atom result; the $1s$ orbital has
-$\langle p^4 \rangle = 5 Z^4 / a_0^2$ in atomic units,
-giving a MV shift of $-5 Z^4 / 8c^2 = -5 Z^4 \alpha^2 E_h / 8$.)
+$+7.2 \times 10^{-4}$ eV — the same order of magnitude
+as the MV shift, and *opposite in sign*: the Darwin term
+**raises** the $s$ levels (less binding), while MV lowers
+them. The MV
+shift is $-\frac{5 Z^4 \alpha^2}{8}\, E_h$ on the
+$1s$ orbital (from $\langle p^4 \rangle = 5 Z^4 / a_0^2$
+on a $1s$ hydrogenic orbital, in atomic units, giving
+$-5 Z^4/8c^2 = -5 Z^4 \alpha^2 E_h / 8$), and the Darwin
+shift is $+\frac{Z^4 \alpha^2}{2 n^3} E_h = +\frac{4}{8} Z^4 \alpha^2 E_h$;
+the scalar sum is
+
+$$
+\Delta E_\text{SR}(1s) \;=\; -\frac{5}{8} Z^4 \alpha^2 E_h + \frac{4}{8} Z^4 \alpha^2 E_h \;=\; -\frac{Z^4 \alpha^2}{8}\, E_h ,
+$$
+
+which reproduces the exact Dirac fine structure for
+$n = 1$ exactly — a useful consistency check on the signs
+and factors of both terms.
 
 The Darwin term is *responsible* for the famous
 **self-energy regularisation** of a point charge. A
@@ -1365,7 +1373,7 @@ only the spin-independent terms of
 
 $$
 \label{eq:ch-15-sr-hamiltonian}
-\hat H_\text{SR} \;=\; \frac{\hat{\mathbf p}^2}{2m} + v(\mathbf r) - \frac{\hat{\mathbf p}^4}{8 m^3 c^2} - \frac{\hbar^2}{4 m^2 c^2}\,\nabla^2 v(\mathbf r) .
+\hat H_\text{SR} \;=\; \frac{\hat{\mathbf p}^2}{2m} + v(\mathbf r) - \frac{\hat{\mathbf p}^4}{8 m^3 c^2} + \frac{\hbar^2}{8 m^2 c^2}\,\nabla^2 v(\mathbf r) .
 $$
 
 The SR Hamiltonian is *spin-independent*: the eigenstates
@@ -1382,16 +1390,16 @@ the non-relativistic Schrödinger) is
 
 $$
 \label{eq:ch-15-sr-shift}
-\Delta E_\text{SR} \;=\; \langle \hat H_\text{MV} \rangle + \langle \hat H_\text{D} \rangle \;=\; -\frac{1}{2mc^2}\langle T^2 \rangle - \frac{\hbar^2}{4 m^2 c^2}\int |\nabla \psi|^2\, d\mathbf r .
+\Delta E_\text{SR} \;=\; \langle \hat H_\text{MV} \rangle + \langle \hat H_\text{D} \rangle \;=\; -\frac{1}{2mc^2}\langle T^2 \rangle + \frac{\hbar^2}{8 m^2 c^2}\,\langle \nabla^2 v \rangle .
 $$
 
-The second form comes from integrating the Darwin term
-by parts (the surface term vanishes at infinity) and is
-useful for showing that the Darwin expectation value is
-*positive* (it is the integrated squared gradient, a
-positive-definite quantity). The first form is more
-useful for the order-of-magnitude estimates. Both
-contributions scale as $Z^4 \alpha^2$ in atomic units.
+For a Coulomb potential the Darwin piece is the contact term
+$+\frac{\pi Z \hbar^2}{2 m^2 c^2} |\psi(\mathbf 0)|^2$: *positive*,
+and acting only where the wavefunction has amplitude at the
+nucleus. The MV piece is always negative and dominates for $s$
+orbitals, so the net scalar shift lowers strongly-bound states —
+but by less than MV alone would suggest. Both contributions scale
+as $Z^4 \alpha^2$ in atomic units.
 
 The SR approximation is the **default** in production
 DFT for elements lighter than the lanthanides. It is
@@ -1515,7 +1523,9 @@ The SOC splitting of an $\ell \ge 1$ shell is therefore
 
 $$
 \label{eq:ch-15-ls-splitting}
-\Delta E_\text{SO}(n\ell) \;=\; \Bigl\langle \xi \bigr\rangle_{n\ell}\,\Bigl(\ell + 1\Bigr) \;=\; \frac{(Z\alpha)^2}{2}\,\frac{E_n^\text{nr}}{\Bigl(\ell + \tfrac{1}{2}\Bigr)(\ell + 1)} \quad \text{(hydrogenic)} .
+\Delta E_\text{SO}(n\ell) \;=\; E_{j=\ell+1/2} - E_{j=\ell-1/2}
+\;=\; \Bigl(\ell + \tfrac{1}{2}\Bigr)\,\langle \xi \rangle_{n\ell}
+\;=\; \frac{Z^4 \alpha^2}{2 n^3\,\ell(\ell+1)}\,E_h \quad \text{(hydrogenic)} .
 $$
 
 For an attractive Coulomb potential $\langle \xi \rangle > 0$ (since
@@ -2041,7 +2051,7 @@ where $\hat K$ is complex conjugation. The action on a
 
 $$
 \label{eq:ch-15-tr-action}
-\hat{\mathcal T} \begin{pmatrix} \phi_\uparrow(\mathbf r) \\\\ \phi_\downarrow(\mathbf r) \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \phi_\uparrow^*(\mathbf r) \\\\ \phi_\downarrow^*(\mathbf r) \end{pmatrix} \;=\; \begin{pmatrix} -\phi_\downarrow^(\mathbf r) \\\\ \phi_\uparrow^(\mathbf r) \end{pmatrix} .
+\hat{\mathcal T} \begin{pmatrix} \phi_\uparrow(\mathbf r) \\\\ \phi_\downarrow(\mathbf r) \end{pmatrix} \;=\; i \sigma_y \begin{pmatrix} \phi_\uparrow^*(\mathbf r) \\\\ \phi_\downarrow^*(\mathbf r) \end{pmatrix} \;=\; \begin{pmatrix} \phi_\downarrow^*(\mathbf r) \\\\ -\phi_\uparrow^*(\mathbf r) \end{pmatrix} .
 $$
 
 The time-reversal operator squares to $-1$ for a
@@ -2062,13 +2072,16 @@ $$
 
 The Kramers degeneracy is the *only* degeneracy that
 *cannot* be lifted by a time-reversal-invariant
-perturbation. In a crystal, the Kramers degeneracy
-splits at the $\Gamma$ point (where the two states
-can be mixed by a $\mathbf k \cdot \mathbf p$ coupling)
-but is preserved at every *generic* $\mathbf k$ point
-in the Brillouin zone (away from time-reversal-
-invariant momenta). In a molecule, the Kramers
-degeneracy splits in a magnetic field (which breaks
+perturbation. In a crystal, the Kramers degeneracy is
+*enforced* at the **time-reversal-invariant momenta**
+(TRIM) — the points where $\mathbf k \equiv -\mathbf k + \mathbf G$
+(the $\Gamma$ point and the zone-boundary centres of
+time-reversal-symmetric faces). At a *generic* $\mathbf k$
+(away from TRIM), $\mathbf k$ and $-\mathbf k$ are distinct
+points, the two members of the pair live at different
+crystal momenta, and no degeneracy is required between
+the bands *at the same* $\mathbf k$. In a molecule, the
+Kramers degeneracy splits in a magnetic field (which breaks
 time-reversal) but is preserved in zero field.
 
 The Kramers pair is the **fundamental building block**
@@ -2529,45 +2542,47 @@ the chemistry of Au, the $5d$ or the $6p$ splitting?
 <details class="answer">
 <summary>Show answer</summary>
 
-**Part (a).** Substituting the values:
+**Part (a).**  Substituting into the formula of the problem
+statement:
 
-| Element | $Z$ | $n$ | $\Delta E_\text{SO}$ (eV) |
-|:--------|:----|:----|:--------------------------|
-| H       | 1   | 2   | $4.5 \times 10^{-5}$      |
-| Cu      | 29  | 3   | $1.1 \times 10^{-2}$      |
-| Ag      | 47  | 4   | $5.7 \times 10^{-2}$      |
-| Au      | 79  | 5   | $1.4$                     |
-| Pb      | 82  | 6   | $1.5$                     |
-| Og      | 118 | 7   | $9.0$                     |
+| Element | $Z$ | $n$ | $\Delta E_\text{SO}$ (naive, eV) |
+|:--------|:----|:----|:----------------------------------|
+| H       | 1   | 2   | $4.5 \times 10^{-5}$             |
+| Cu      | 29  | 3   | $9.5$                            |
+| Ag      | 47  | 4   | $27.6$                           |
+| Au      | 79  | 5   | $113$                            |
+| Pb      | 82  | 6   | $75.8$                           |
+| Og      | 118 | 7   | $205$                            |
 
-The formula gives $\Delta E_\text{SO} \propto Z^4 / n^3$.
-Hydrogen's splitting is invisible in chemistry; gold's
-is comparable to a chemical bond; oganesson's is larger
-than any chemical bond.
+(Values from $\Delta E_\text{SO} = (Z\alpha)^2 Z^2 E_h / (4 n^3)$,
+converted at $1\,E_h = 27.2114$ eV.)  Note what the naive
+hydrogenic estimate does beyond copper: it *overshoots* wildly.
+The reason is screening — a valence electron in a neutral atom does
+not see the bare nuclear charge $Z$, but a screened
+$Z_\text{eff} \ll Z$.  The observed gold $5d$ splitting is
+$\approx 1.5$ eV; inserting that into the same formula gives
+$Z_\text{eff} \approx 35$, not $79$.  The formula is therefore a
+*scaling* tool — compare ratios, not absolutes.
 
-**Part (b).** Gold and lead (and any element with
-$Z \gtrsim 70$) have a spin-orbit splitting comparable
-to a chemical bond. The chemistry of these elements
-*cannot* be described by non-relativistic quantum
-chemistry.
+**Part (b).**  Once screening is accounted for, heavy-element
+splittings reach the eV scale: the observed Au $5d$ splitting
+($\approx 1.5$ eV) and Pb $6p$ splitting ($\approx 1$–$2$ eV) are
+comparable to chemical bond energies ($\sim 1$–$5$ eV).  The
+chemistry of these elements *cannot* be described by
+non-relativistic quantum chemistry.
 
-**Part (c).** The $1/(\ell(\ell+1))$ factor gives
-$\ell = 1$ (p shell) a factor of $1/2$ and $\ell = 2$
-(d shell) a factor of $1/6$. So a $d$-shell splitting
-is *smaller* than a $p$-shell splitting for the same
-$Z$ and $n$. But the $5d$ shell of Au is at lower
-$n$ than the $6p$ shell, and the formula
-$\Delta E_\text{SO} \propto Z^4 / (n^3 \ell(\ell+1))$
-gives $\sim 0.5$ eV for the $5d$ and $\sim 1.5$ eV
-for the $6p$ (with the corrected $Z = 79$ and $Z = 82$).
-The $6p$ splitting of Pb is therefore *larger* than
-the $5d$ splitting of Au. In the chemistry of Au, the
-$5d$ splitting is the most important (because the $5d$
-electrons are the *valence* electrons of Au), and in
-the chemistry of Pb, the $6p$ splitting is the most
-important. The general rule is that the spin-orbit
-splitting is largest for the *outermost occupied*
-shell of the atom.
+**Part (c).**  The extra $1/(\ell(\ell+1))$ factor gives an
+$s$ shell nothing, a $p$ shell a divisor of $2$, and a $d$ shell a
+divisor of $6$: at the same $Z$ and $n$, a $d$-shell splitting is
+$3\times$ smaller than a $p$-shell splitting.  Applying the factor:
+the naive Au $5d$ value drops to $113/6 \approx 19$ eV while Pb
+$6p$ stays at $76$ eV — so on the bare-$Z$ formula Pb $6p$ wins by
+$\sim 4\times$, and with realistic screening the two land close
+enough that both matter.  In the chemistry of Au the $5d$ splitting
+is the more important one anyway (the $5d$ electrons *are* the
+valence electrons of Au), and in Pb the $6p$ splitting governs the
+inverted lone-pair chemistry.  The general rule stands: SOC matters
+most for the *outermost occupied* shell of heavy atoms.
 </details>
 
 <details class="problem">
