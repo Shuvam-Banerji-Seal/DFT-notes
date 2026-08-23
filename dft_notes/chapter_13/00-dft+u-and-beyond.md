@@ -1394,9 +1394,10 @@ spectrum (the Hubbard sidebands) carries the
 weight $1 - Z$ that the LDA cannot reproduce;
 the *coherent* part (the QP peak) carries the
 weight $Z < 1$ for $U > 0$ and $Z = 1$ for
-$U = 0$.  For the 4-site chain at $U = 8\,t$,
-the QP weight is $Z \approx 0.4$ — a Mott
-insulator in 4 sites is well into the
+$U = 0$.  For the 4-site chain at $U = 8\,t$, the
+QP weight is well below unity ($Z \lesssim 0.5$ by
+the Hubbard-I estimate) — a Mott
+insulator in 4 sites is already deep into the
 strong-coupling regime.
 
 ![Plot output from `dft_notes/python_codes/chapter_13/01-hubbard-4site-exact-diag.py`]({{ site.baseurl }}/dft_notes/python_codes/chapter_13/plots/01-hubbard-4site-exact-diag.png)

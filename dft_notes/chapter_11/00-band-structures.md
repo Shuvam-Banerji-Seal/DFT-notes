@@ -1497,7 +1497,7 @@ $$
 The first Brillouin zone is a regular hexagon.  The high-symmetry
 points are
 
-| Label | Cartesian (in $1/a$)        | Description                     |
+| Label | Cartesian (in units of $2\pi/a$) | Description                |
 |:-----:|:---------------------------:|:--------------------------------|
 | $\Gamma$ | $(0, 0)$                 | Centre of the BZ                |
 | $M$      | $(1/2, 0)$               | Centre of a hexagonal edge      |
@@ -1683,7 +1683,7 @@ $$
 
 The Fermi velocity is determined by the magnitude of the nearest-
 neighbour hopping and the C–C distance: with $|t| = 2.8$ eV and
-$a = 2.46$ Å, $v_F \approx 9.4 \times 10^5$ m/s.
+$a = 2.46$ Å, $v_F \approx 1.57 \times 10^6$ m/s.
 
 > **Note.**  The Dirac cone is at the $K$ point of the hexagonal
 > BZ, which is the **corner** of the hexagon (the meeting point of
@@ -1779,7 +1779,7 @@ $f(\mathbf k)$ on the sampled k-points, and plots
 $\varepsilon_\pm = \pm |f|$ along $\Gamma$–$M$–$K$–$\Gamma$.  The
 output is the figure below.
 
-![Tight-binding band structure of graphene along the path $\Gamma$–$M$–$K$–$\Gamma$ in the hexagonal Brillouin zone, with a single $p_z$ orbital per carbon and nearest-neighbour hopping $t = -2.8$ eV. The lower blue band is the bonding $\pi$ band, the upper orange band is the antibonding $\pi^*$ band. The two bands touch at the $K$ point (the Dirac point), with linear dispersion and Fermi velocity $v_F = 3|t|a / 2\hbar \approx 9.4 \times 10^5$ m/s. The Fermi level is at $\varepsilon = 0$ (dashed line); graphene is a zero-gap semiconductor.]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/plots/01-graphene-bands.png)
+![Tight-binding band structure of graphene along the path $\Gamma$–$M$–$K$–$\Gamma$ in the hexagonal Brillouin zone, with a single $p_z$ orbital per carbon and nearest-neighbour hopping $t = -2.8$ eV. The lower blue band is the bonding $\pi$ band, the upper orange band is the antibonding $\pi^*$ band. The two bands touch at the $K$ point (the Dirac point), with linear dispersion and Fermi velocity $v_F = 3|t|a / 2\hbar \approx 1.57 \times 10^6$ m/s. The Fermi level is at $\varepsilon = 0$ (dashed line); graphene is a zero-gap semiconductor.]({{ site.baseurl }}/dft_notes/python_codes/chapter_11/plots/01-graphene-bands.png)
 
 *Figure 1.*  Tight-binding band structure of graphene along the
 path $\Gamma$–$M$–$K$–$\Gamma$, computed by the script
