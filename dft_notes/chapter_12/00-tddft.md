@@ -402,53 +402,69 @@ section 2.4.) For a $v_\text{ext}$-representable density, the
 minimum is attained at the physical $|\Psi(\bar t)\rangle$ and
 $\mathcal B_\gamma[\rho] = \mathcal B_\gamma[\Psi]$.
 
-### 12.3.4 The fixed-point equation for the density
+### 12.3.4 The Runge–Gross proof
 
-Vary \eqref{eq:ch-12-A-density-functional} with respect to
-$\rho(\mathbf r, \bar t)$ on the upper branch of the contour
-(for $\bar t \in (t_0, t_1)$). The first variation gives
+> **Why not an action argument?**  It is tempting to vary the
+> Keldysh action $\mathcal B_\gamma[\rho]$ and read off a
+> fixed-point equation $\delta\mathcal B_\gamma/\delta\rho =
+> v_\text{ext}$.  That route is *circular*: subtracting the two
+> fixed-point equations for $v$ and $v'$ presumes that
+> $\delta\mathcal B_\gamma/\delta\rho$ is a single-valued
+> functional of $\rho$ — which is precisely the invertibility the
+> theorem is supposed to establish.  The genuine proof instead
+> works directly with the quantum-mechanical equations of motion.
 
-$$
-\label{eq:ch-12-fp-equation}
-\frac{\delta \mathcal B_\gamma}{\delta \rho(\mathbf r, \bar t)}
-\;-\; v_\text{ext}(\mathbf r, \bar t) \;=\; 0 .
-$$
+**Setup (Runge & Gross 1984).**  Two external potentials
+$v(\mathbf r, t)$ and $v'(\mathbf r, t)$ evolve the *same*
+initial state $|\Psi_0\rangle$ and are both expandable in Taylor
+series about $t_0$.  Suppose they produce the same density:
+$\rho(\mathbf r, t) = \rho'(\mathbf r, t)$ for all $t \ge t_0$.
 
-The functional derivative $\delta \mathcal B_\gamma / \delta
-\rho$ is taken with $\rho$ held fixed on the lower branch, by
-the chain rule of contour-ordered functional differentiation.
-The physical density $\rho(\mathbf r, \bar t)$ is the
-**unique** solution of \eqref{eq:ch-12-fp-equation} for a
-given $v_\text{ext}(\mathbf r, \bar t)$ and initial state
-$|\Psi_0\rangle$ — uniqueness of the forward-propagated state
-under a given Hamiltonian is just unitarity of time evolution.
+**Step 1 — equal densities imply equal currents.**  By the
+continuity equation $\partial_t\rho + \nabla\cdot\mathbf j = 0$
+with identical initial data $\rho(\mathbf r, t_0)$ and
+$\mathbf j(\mathbf r, t_0)$ (same $|\Psi_0\rangle$), equal
+densities force $\mathbf j = \mathbf j'$ everywhere.
 
-Now suppose two external potentials $v_\text{ext}(\mathbf r,
-t)$ and $v'_\text{ext}(\mathbf r, t)$ produce the same density
-$\rho(\mathbf r, t)$ on the upper branch for the same initial
-state. By the same fixed-point argument applied to
-$v'_\text{ext}$, the density is also a fixed point of
-
-$$
-\label{eq:ch-12-fp-equation-prime}
-\frac{\delta \mathcal B_\gamma}{\delta \rho(\mathbf r, \bar t)}
-\;-\; v'_\text{ext}(\mathbf r, \bar t) \;=\; 0 .
-$$
-
-Subtracting \eqref{eq:ch-12-fp-equation} from
-\eqref{eq:ch-12-fp-equation-prime},
+**Step 2 — first equation of motion.**  The Heisenberg equation
+for the paramagnetic current gives Newton's law in local form,
 
 $$
-\label{eq:ch-12-difference}
-v'_\text{ext}(\mathbf r, t) - v_\text{ext}(\mathbf r, t) \;=\; 0 .
+\partial_t \mathbf j(\mathbf r, t)
+   \;=\; -\rho(\mathbf r, t)\,\nabla v(\mathbf r, t)
+        + \mathbf T(\mathbf r, t),
 $$
 
-This is the original Runge–Gross conclusion: **two external
-potentials that give the same density must be equal as
-functions of $\mathbf r$ (and not just equal up to a constant)**
-— and, by the assumption of Taylor-expandability used to fix
-the freedom, they differ by at most a constant $c(t)$ that is
-the same at $t_0$.
+where $\mathbf T$ is built from the kinetic operator and the
+state alone.  At $t = t_0$ both systems share $|\Psi_0\rangle$,
+so their $\mathbf T$ terms coincide.  Subtracting the two
+equations of motion and using $\rho = \rho'$:
+
+$$
+\rho(\mathbf r, t_0)\,
+\nabla\bigl[v - v'\bigr](\mathbf r, t_0) \;=\; 0 .
+$$
+
+On the support of $\rho(\mathbf r, t_0)$ (a $v$-representable
+density is positive there by assumption), this forces
+$\nabla(v-v')(\mathbf r, t_0) = 0$, i.e.
+$v(\mathbf r, t_0) - v'(\mathbf r, t_0) = c_1$, a constant in
+$\mathbf r$.
+
+**Step 3 — iterate in time.**  If $c_1 \neq 0$, differentiate
+the equation-of-motion mismatch once more in $t$.  The new
+terms contain $\partial_t(v-v')(t_0)$ multiplied by known
+quantities fixed entirely by $|\Psi_0\rangle$; each order of
+the Taylor expansion therefore forces the next coefficient of
+$v - v'$ to be a constant.  Analyticity then makes
+$v(\mathbf r, t) - v'(\mathbf r, t) = c(t)$ for all $t$: a
+purely time-dependent function.
+
+This is the original **Runge–Gross conclusion**: **two
+Taylor-expandable potentials that generate the same density from
+the same initial state differ by at most a purely time-dependent
+constant** — and such a constant changes nothing physical, since
+it shifts every orbital by a phase $e^{-i\int c(t)dt}$.
 
 ### 12.3.5 The full statement
 
