@@ -30,7 +30,7 @@
 ## Optional future work
 | Item | Notes |
 |------|-------|
-| (none) | all 10 ANIMATIONS_PLAN items delivered |
+| (none) | all 10 ANIMATIONS_PLAN items delivered; plan doc marked DELIVERED (47dcaee) |
 | Interactive Tier-2 | p5.js sliders (deferred by plan) |
 | Content expansion | New sections from audit concept-gap lists |
 
