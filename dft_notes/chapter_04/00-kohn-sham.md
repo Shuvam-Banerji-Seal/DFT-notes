@@ -46,6 +46,23 @@ heavy-element regime* (§4.12 relativistic KS), and *summarised*
 
 ## 4.1 The Hohenberg–Kohn theorems
 
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%" playsinline
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_04/videos/02-kohn-sham-mapping.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_04/videos/02-kohn-sham-mapping.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_04/videos/02-kohn-sham-mapping.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Animation 4.2 — the Hohenberg–Kohn bijection: the trivial
+    forward direction ($v_\text{ext} \to \rho$) and the theorem's
+    reverse arrow ($\rho \to v_\text{ext}$, up to a constant), with the
+    consequence chain $v_\text{ext} \to \hat H \to \Psi \to$ all
+    observables. Rendered with
+    <a href="https://www.manim.community/">Manim</a>; source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_04/02-kohn-sham-mapping.py">chapter 04's animation folder</a>.</figcaption>
+</figure>
+
 The 1964 paper by Hohenberg and Kohn contains two theorems.
 
 **Theorem 1 (existence).** For any non-degenerate ground state of a
