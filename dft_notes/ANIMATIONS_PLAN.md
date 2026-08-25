@@ -4,7 +4,10 @@
 > that live alongside the static chapter content, and pick the first
 > batch to produce.
 
-**Status: draft, awaiting review.** Do not start rendering yet.
+**Status: DELIVERED.** All ten first-batch animations are rendered,
+QA'd frame-by-frame, embedded in their chapters, and verified live
+(see `animations/chapter_*/videos/`). Tier-2 interactive work remains
+future scope.
 
 ---
 
