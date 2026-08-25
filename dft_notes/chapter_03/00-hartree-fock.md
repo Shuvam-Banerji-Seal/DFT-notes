@@ -1346,6 +1346,21 @@ The trade-off:
 
 ## 3.8 Direct SCF, conventional SCF, and DIIS
 
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%" playsinline
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_03/videos/01-scf-convergence.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_03/videos/01-scf-convergence.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_03/videos/01-scf-convergence.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Animation 3.1 — the SCF loop in action: the total energy
+    oscillates and settles while the density change falls below the
+    $10^{-6}$ threshold. Rendered with
+    <a href="https://www.manim.community/">Manim</a>; source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_03/01-scf-convergence.py">chapter 03's animation folder</a>.</figcaption>
+</figure>
+
 The SCF loop in section 3.3 / 3.6 was written as if the ERI
 tensor $(\mu\nu \rvert \rho\sigma)$ were available in memory.  For
 a basis of size $K$, that tensor has $K^4$ elements.  Even with
