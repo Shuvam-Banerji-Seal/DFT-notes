@@ -13,7 +13,7 @@
 | Blockers | none |
 | Audit status | DOUBLE_PASS + live media verification |
 
-## Animations now live (8 total)
+## Animations now live (9 total)
 | Chapter | Animation | Duration |
 |---------|-----------|----------|
 | ch-01 | particle-in-box, hydrogen orbitals (pre-existing) | — |
@@ -21,6 +21,7 @@
 | ch-03 | SCF convergence (live two-panel plot) | 59 s |
 | ch-04 | Hellmann-Feynman derivation | 74 s |
 | ch-04 | Hohenberg-Kohn mapping (bijection) | 60 s |
+| ch-13 | DFT+U penalty functional (UHB/LHB split) | 61 s |
 | ch-05 | Jacob's ladder (staircase + accuracy/cost bars) | 64 s |
 | ch-07 | Bloch factorisation (live k-variation) | 60 s |
 | ch-10 | phonon chain eigenmodes (acoustic/optical/zone-boundary) | 61 s |
@@ -28,7 +29,7 @@
 ## Optional future work
 | Item | Notes |
 |------|-------|
-| ANIMATIONS_PLAN items 8, 10 | pseudopotential inversion (ch-08), DFT+U (ch-13) |
+| ANIMATIONS_PLAN item 8 | pseudopotential inversion (ch-08) |
 | Interactive Tier-2 | p5.js sliders (deferred by plan) |
 | Content expansion | New sections from audit concept-gap lists |
 
