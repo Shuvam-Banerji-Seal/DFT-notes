@@ -151,6 +151,22 @@ accuracy.
 
 ## 7.3 Derivation of Bloch's theorem
 
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%" playsinline
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_07/videos/01-bloch-factorisation.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_07/videos/01-bloch-factorisation.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_07/videos/01-bloch-factorisation.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Animation 7.1 — the Bloch factorisation
+    $\psi = e^{ikx}u(x)$ built live: periodic potential, plane wave,
+    cell-periodic envelope, and their product, with $k$ varied in real
+    time. Rendered with
+    <a href="https://www.manim.community/">Manim</a>; source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_07/01-bloch-factorisation.py">chapter 07's animation folder</a>.</figcaption>
+</figure>
+
 We prove \eqref{eq:ch-07-bloch} in seven explicit steps. Every step
 appears below — no "it can be shown that" hand-waves <!-- no-summaries-ok -->.
 
