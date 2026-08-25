@@ -635,6 +635,22 @@ transition-metal and rare-earth systems.
 
 ## 8.8 Worked example — hydrogen $1s$, $l = 0$, $r_c = 0.5\,a_0$
 
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%" playsinline
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_08/videos/01-pseudopotential-inversion.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_08/videos/01-pseudopotential-inversion.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_08/videos/01-pseudopotential-inversion.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Animation 8.1 — the pseudopotential construction: the
+    all-electron $1s$ cusp vs the smooth pseudo-wavefunction, the
+    divergent $-Z/r$ vs the finite pseudo-potential, and the matching
+    region beyond $r_c$. Rendered with
+    <a href="https://www.manim.community/">Manim</a>; source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_08/01-pseudopotential-inversion.py">chapter 08's animation folder</a>.</figcaption>
+</figure>
+
 The simplest non-trivial construction is for the hydrogen
 $1s$ state. Hydrogen has no core, so the pseudo-potential is
 just a smoother replacement for the $-1/r$ Coulomb tail. The
