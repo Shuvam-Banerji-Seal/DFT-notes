@@ -3,15 +3,36 @@
 ## Session Summary
 | Field | Value |
 |-------|-------|
-| Session | Final verification pass |
-| Phase | AUDIT (complete) |
-| What I did | Full Playwright re-audit of all 34 live pages in 4 batches |
-| What worked | Every page renders clean; all animation media serves (HTTP 206) |
+| Session | Post-audit animation production |
+| Phase | COMPLETE (audit double-pass + 3 new animations) |
+| What I did | Full 34-page Playwright re-audit (all clean); produced and embedded 3 new Manim animations (SCF convergence ch-03, phonon chain ch-10, plus earlier H₂ FCI ch-02 and Hellmann-Feynman ch-04) |
+| What worked | Subagent pipeline with template + frame-QA discipline; all embeds verified live |
 | What failed | Nothing |
 | Errors remaining | none |
-| Next priorities | Optional future work only (see below) |
+| Next priorities | Remaining plan items (Kohn-Sham mapping, Jacob's ladder, Bloch factorisation, pseudopotential inversion, DFT+U) |
 | Blockers | none |
-| Audit status | DOUBLE_PASS (all pages verified twice across sessions) |
+| Audit status | DOUBLE_PASS + live media verification |
+
+## Animations now live (5 total)
+| Chapter | Animation | Duration |
+|---------|-----------|----------|
+| ch-01 | particle-in-box, hydrogen orbitals (pre-existing) | — |
+| ch-02 | H₂ two-configuration FCI (every step) | 75 s |
+| ch-03 | SCF convergence (live two-panel plot) | 59 s |
+| ch-04 | Hellmann-Feynman derivation | 74 s |
+| ch-10 | phonon chain eigenmodes (acoustic/optical/zone-boundary) | 61 s |
+
+## Optional future work
+| Item | Notes |
+|------|-------|
+| ANIMATIONS_PLAN items 5,6,7,8,10 | Kohn-Sham mapping, Jacob's ladder, Bloch factorisation, pseudopotential inversion, DFT+U |
+| Interactive Tier-2 | p5.js sliders (deferred by plan) |
+| Content expansion | New sections from audit concept-gap lists |
+
+## Continuation Prompt Hints
+If re-invoked: continue with ANIMATIONS_PLAN items 5-10 via the same
+subagent pipeline (template = chapter_02 script, frame-QA required),
+or expand chapter content from audit concept-gap lists.
 
 ## Final Audit Results (live site, this session)
 | Check | Result |
