@@ -333,6 +333,21 @@ the LDA cannot describe.
 
 ### 13.2.3 DFT+U (Liechtenstein 1995; Dudarev 1998)
 
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%" playsinline
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_13/videos/01-dft-u.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_13/videos/01-dft-u.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_13/videos/01-dft-u.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Animation 13.1 — the DFT+U penalty functional: the
+    parabola $n(1-n)$ penalises delocalised occupations, and the
+    resulting level splitting opens the Mott gap (UHB/LHB). Rendered
+    with <a href="https://www.manim.community/">Manim</a>; source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_13/01-dft-u.py">chapter 13's animation folder</a>.</figcaption>
+</figure>
+
 DFT+U adds the Hubbard-model physics to a chosen
 set of atomic-like orbitals $\{|m \sigma\rangle\}$
 on each correlated atom.  The energy functional is
@@ -1094,7 +1109,7 @@ def dft_plus_u_energy(n: np.ndarray, U_eff: float, J: float = 0.0) -> float:
     E_U = (U_eff / 2) sum_m n_m (1 - n_m).
 
     For a half-filled M=2 atom with n = (1/2, 1/2), the penalty
-    is U_eff/2 -- the LDA uniform density is penalised, the
+    is U_eff/4 -- the LDA uniform density is penalised, the
     integer-occupation n = (1, 0) or (0, 1) configurations are
     not.
     """
@@ -1114,7 +1129,7 @@ def toy_dft_plus_u_scan(U_eff_list):
         # Penalty = (U_eff/2) (n_1 (1-n_1) + n_2 (1-n_2))
         # The minimum is at (n_1, n_2) = (0, 1) or (1, 0), where
         # the penalty is zero.  The "delocalised" (1/2, 1/2) is
-        # a local maximum with penalty U_eff/2.
+        # a local maximum with penalty U_eff/4.
         n_uniform = np.array([0.5, 0.5])
         e_uniform = dft_plus_u_energy(n_uniform, U_eff)
         n_integer = np.array([1.0, 0.0])
