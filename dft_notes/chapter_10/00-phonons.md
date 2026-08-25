@@ -260,6 +260,22 @@ $N_\mathbf q = N_1 N_2 N_3$ in the Born–von Karman supercell.
 
 ## 10.2 The frozen-phonon method
 
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%" playsinline
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_10/videos/01-phonon-chain.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_10/videos/01-phonon-chain.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_10/videos/01-phonon-chain.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Animation 10.1 — the acoustic (in-phase), optical
+    (out-of-phase), and zone-boundary eigenmodes of a diatomic chain,
+    animated on a mass–spring model with the dispersion inset tracking
+    each mode. Rendered with
+    <a href="https://www.manim.community/">Manim</a>; source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_10/01-phonon-chain.py">chapter 10's animation folder</a>.</figcaption>
+</figure>
+
 The *frozen-phonon* method builds the force-constant matrix by
 explicitly displacing atoms and computing the forces that result.
 It is conceptually the simplest route from a DFT code to a phonon
