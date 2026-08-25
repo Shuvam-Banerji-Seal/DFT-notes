@@ -56,6 +56,21 @@ orders these ingredients by increasing **rung**, and the rule of thumb
 is "higher rung = more ingredients = more physics = (usually) more
 accuracy and (always) more cost":
 
+<figure class="dft-animation">
+  <video controls preload="metadata" width="100%" playsinline
+         poster="{{ site.baseurl }}/dft_notes/animations/chapter_05/videos/01-jacobs-ladder-poster.png">
+    <source src="{{ site.baseurl }}/dft_notes/animations/chapter_05/videos/01-jacobs-ladder.mp4"
+            type="video/mp4">
+    Your browser does not support embedded video.
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_05/videos/01-jacobs-ladder.mp4">Download the MP4</a>.
+  </video>
+  <figcaption>Animation 5.1 — climbing Jacob's ladder: each rung adds
+    one physical ingredient while the accuracy and cost bars grow.
+    Rendered with
+    <a href="https://www.manim.community/">Manim</a>; source script in
+    <a href="{{ site.baseurl }}/dft_notes/animations/chapter_05/01-jacobs-ladder.py">chapter 05's animation folder</a>.</figcaption>
+</figure>
+
 $$
 \label{eq:ch-05-jacobs-ladder}
 E_\text{xc}^{\text{approx}}[\rho] \;=\; \underbrace{E_\text{xc}^{(0)}[\rho]}_{\text{LDA: }\rho \text{ only}}
